@@ -1,24 +1,24 @@
 ---
-title: "Azure Search におけるデータと操作のセキュリティ保護 | Microsoft Docs"
-description: "Azure Search のセキュリティは、SOC 2 コンプライアンス、暗号化、認証のほか、Azure Search フィルターのユーザーおよびグループ セキュリティ識別子を通じた ID アクセスに基づいています。"
+title: Azure Search におけるデータと操作のセキュリティ保護 | Microsoft Docs
+description: Azure Search のセキュリティは、SOC 2 コンプライアンス、暗号化、認証のほか、Azure Search フィルターのユーザーおよびグループ セキュリティ識別子を通じた ID アクセスに基づいています。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: search
-ms.devlang: 
+ms.devlang: ''
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: c3aa4883e33b1f3494f8502fe7f8b12f7d64a72f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 35f875e5f6345b9ebb9abc4deb71b7bf9c78907d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Azure Search のセキュリティとアクセス制御
 
@@ -57,29 +57,16 @@ Azure Search は [SOC 2 に準拠](https://servicetrust.microsoft.com/ViewPage/M
 
 ## <a name="service-access-and-authentication"></a>サービス アクセスと認証
 
-Azure Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
+Azure Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 検索サービスへのアクセスには 2 種類のキーが使用されます。
 
-要求ごとに認証が必要です。この各要求は必須のキー、操作、およびオブジェクトで構成されています。 2 つのアクセス許可レベル (完全または読み取り専用) とコンテキストを組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 
+* 管理 (サービスに対するすべての読み取り/書き込み操作に有効)
+* クエリ (インデックスに対するクエリなどの読み取り専用操作に有効)
 
-|キー|[説明]|制限|  
-|---------|-----------------|------------|  
-|[Admin]|サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与します。<br /><br /> ポータルの 2 つの管理者 **API キー** ("*プライマリ キー*" および "*セカンダリ キー*" と呼ばれる) はサービスの作成時に生成され、要求に応じて個別に再生成できます。 キーが 2 つあることで、サービスへの継続的なアクセスに 1 つのキーを使用している間に、もう 1 つのキーをロールオーバーできます。<br /><br /> 管理者キーは、HTTP 要求ヘッダーでのみ指定されます。 管理者 API キーを URL に加えることはできません。|最大でサービスあたり 2 つ|  
-|クエリ|インデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。<br /><br /> クエリ キーは要求に応じて作成されます。 これらはポータルで手動で作成できるほか、[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を通じてプログラムで作成できます。<br /><br /> クエリ キーは、検索、推奨、または参照の操作に使用するために HTTP 要求ヘッダーで指定できます。 または、クエリ キーは URL 上のパラメーターとして渡すことができます。 クライアント アプリケーションが要求を作成する方法によっては、キーをクエリ パラメーターとして渡すほうが簡単な場合があります。<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|サービスあたり 50 個|  
+管理キーは、サービスのプロビジョニング時に作成されます。 2 つの管理キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 どちらの管理キーも再生成できますが、管理キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理キーがあります。
 
- 管理者キーとクエリ キーに見た目の違いはありません。 どちらのキーも、ランダムに生成された 32 個の英数字からなる文字列です。 アプリケーションで指定されているキーの種類がわからなくなった場合、[ポータルでキーの値を確認](https://portal.azure.com)したり、[REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して値とキーの種類を返したりできます。  
+クエリ キーは必要に応じて作成され、Search を直接呼び出すクライアント アプリケーション向けに設計されています。 クエリ キーは最大 50 個まで作成できます。 アプリケーション コードでは、サービスへの読み取り専用アクセスを許可するために検索の URL とクエリ API キーを指定します。 また、アプリケーション コードでは、アプリケーションで使用されるインデックスも指定します。 エンドポイント、読み取り専用アクセスのための API キー、およびターゲット インデックスの組み合わせにより、クライアント アプリケーションからの接続のスコープとアクセス レベルが定義されます。
 
-> [!NOTE]  
->  `api-key` などの機微なデータを要求 URI で渡すことは、セキュリティ上推奨されません。 そのため、Azure Search はクエリ キーをクエリ文字列の `api-key` としてのみ受け入れます。また、インデックスのコンテンツを公開する必要がない限り、そうすることは避けてください。 一般的なルールとして、`api-key` は要求ヘッダーとして渡すことをお勧めします。  
-
-### <a name="how-to-find-the-access-keys-for-your-service"></a>サービスのアクセス キーを見つける方法
-
-アクセス キーはポータルで取得するか、または[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 経由で取得できます。 詳細については、[キーの管理](search-manage.md#manage-api-keys)に関するページを参照してください。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
-3. サービスを選択し、サービスのページで **[設定]** >**[キー]** の順に移動して管理者キーとクエリ キーを表示します。
-
-![ポータル ページの [設定] の [キー] セクション](media/search-security-overview/settings-keys.png)
+要求ごとに認証が必要です。この各要求は必須のキー、操作、およびオブジェクトで構成されています。 2 つのアクセス許可レベル (完全または読み取り専用) とコンテキスト (インデックスでのクエリ操作など) を組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 キーの詳細については、[API キーの作成と管理](search-security-api-keys.md)に関するページを参照してください。
 
 ## <a name="index-access"></a>インデックへのアクセス
 
@@ -123,7 +110,7 @@ Azure Search での要求の構成について詳しくは、「[Azure Search Se
 | インデックスのクエリ | 管理者キーまたはクエリ キー (RBAC は適用不可) |
 | クエリ システム情報 (オブジェクトの統計、カウントおよび一覧を返す操作など) | 管理者キー、リソースに対する RBAC (所有者、共同作成者、閲覧者) |
 | 管理者キーの管理 | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者。 |
-| クエリ キーの管理 |  管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者。 RBAC 閲覧者はクエリ キーを表示できます。 |
+| クエリ キーの管理 |  管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者。  |
 
 
 ## <a name="see-also"></a>関連項目

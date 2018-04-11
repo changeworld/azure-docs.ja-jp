@@ -1,8 +1,8 @@
 ---
-title: "OMS ソリューションの Azure Automation リソース | Microsoft Docs"
-description: "一般的な OMS のソリューションでは、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。"
+title: 管理ソリューションの Azure Automation リソース | Microsoft Docs
+description: 一般的な管理ソリューションでは、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5750cd1147ec861ea38ff2ebc9ce481d256c1959
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>OMS 管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
+> 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
 
 
-一般的な [OMS の管理ソリューション](operations-management-suite-solutions.md)では、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  Automation アカウントには、Runbook だけでなく、ソリューションで用いる Runbook をサポートする変数やスケジュールなどのアセットも用意されています。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。
+一般的な[管理ソリューション](operations-management-suite-solutions.md)では、Azure Automation の Runbook を追加して、監視データの収集や処理などのプロセスを自動化します。  Automation アカウントには、Runbook だけでなく、ソリューションで用いる Runbook をサポートする変数やスケジュールなどのアセットも用意されています。  この記事では、ソリューションに Runbook とその関連リソースを追加する方法について説明します。
 
 > [!NOTE]
-> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Operations Management Suite (OMS) での管理ソリューションの作成](operations-management-suite-solutions-creating.md)」で説明しています。 
+> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Azure での管理ソリューションの設計とビルド](operations-management-suite-solutions-creating.md)」で説明しています。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/01/2018
 - [Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)方法
 
 ## <a name="automation-account"></a>Automation アカウント
-Azure Automation のリソースはすべて、[Automation アカウント](../automation/automation-security-overview.md#automation-account-overview) に含まれています。  [OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) に関するページの説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Azure Automation のリソースはすべて、[Automation アカウント](../automation/automation-security-overview.md#automation-account-overview) に含まれています。  「[Log Analytics ワークスペースと Automation アカウント](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)」の説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
 各 Automation リソースの名前には、Automation アカウントの名前を含めます。  これは、次の Runbook リソースの例で示すように **accountName** パラメーターをソリューションで指定することにより行います。
 
@@ -118,7 +118,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 ジョブでは、Runbook 名と、Runbook に送信するパラメーター値を指定します。  Runbook はジョブよりも前に作成しなければならないため、ジョブは起動対象の Runbook に[依存](operations-management-suite-solutions-solution-file.md#resources)させる必要があります。  起動すべき Runbook が複数ある場合は、ジョブを最初に実行する必要のある別のジョブに依存させることによって順番を定義できます。
 
-ジョブ リソースの名前には GUID を含める必要があります。これは、通常はパラメーターで割り当てます。  GUID パラメーターの詳細は、「[Creating solutions in Operations Management Suite (OMS)](operations-management-suite-solutions-solution-file.md#parameters)」(Operations Management Suite (OMS) でのソリューションの作成) に記載されています。  
+ジョブ リソースの名前には GUID を含める必要があります。これは、通常はパラメーターで割り当てます。  GUID パラメーターの詳細は、「[Azure での管理ソリューション ファイルの作成](operations-management-suite-solutions-solution-file.md#parameters)」に記載されています。  
 
 
 ## <a name="certificates"></a>証明書

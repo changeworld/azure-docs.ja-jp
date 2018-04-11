@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights のアプリケーション マップ | Microsoft Docs"
-description: "アプリケーション マップを使用した複雑なアプリケーション トポロジの監視"
+title: Azure Application Insights のアプリケーション マップ | Microsoft Docs
+description: アプリケーション マップを使用した複雑なアプリケーション トポロジの監視
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ: 分散アプリケーションのトリアージ
 アプリケーション マップを使用すると、分散アプリケーションのすべてのコンポーネントを対象にパフォーマンスのボトルネックや障害のホットスポットを特定できます。 マップ上の各ノードは、アプリケーション コンポーネントまたはその依存関係を表すと共に、正常性の KPI やアラートの状態を保持しています。 任意のコンポーネントをクリックして、さらに詳しい診断結果 (Application Insights イベントなど) にアクセスすることができます。 アプリで Azure サービスを使用している場合は、Azure 診断 (SQL Database アドバイザーのアドバイス情報など) をクリックすることもできます。

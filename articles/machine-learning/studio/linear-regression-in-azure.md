@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning での線形回帰の使用 | Microsoft Docs"
-description: "Excel と Azure Machine Learning Studio での線形回帰モデルの比較"
-metakeywords: 
+title: Machine Learning での線形回帰の使用 | Microsoft Docs
+description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較
+metakeywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: kbaroni;garye
-ms.openlocfilehash: 218f2b141e3551180a2152570f99fdb427980dd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Azure Machine Learning での線形回帰の使用
 > *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。 
@@ -61,7 +61,7 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 
 |  | Excel | スタジオ |
 | --- |:---:|:---:|
-| パフォーマンス | | |
+| [パフォーマンス] | | |
 | <ul style="list-style-type: none;"><li>自由度調整済み決定係数</li></ul> |0.96 |該当なし |
 | <ul style="list-style-type: none;"><li>決定 <br />係数</li></ul> |該当なし |0.78<br />(低精度) |
 | 平均絶対誤差 |$9.5M |$ 19.4M |
@@ -100,7 +100,7 @@ Recommendations を適用した結果、Machine Learning Studio で Excel と同
 | 特徴 B |11071967.08 |11007300 |
 | 特徴 C |25383318.09 |25140800 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Excel 内で Machine Learning Web サービスを使用したいと考えました。 ビジネス アナリストは Excel に依存しているため、Excel データの行で Machine Learning Web サービスを呼び出し、予測値を Excel に返す方法が必要でした。 
 
 また、Machine Learning Studio で使用可能なオプションとアルゴリズムを使用して、モデルを最適化したいと考えました。
@@ -108,7 +108,7 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 ### <a name="integration-with-excel"></a>Excel との統合
 ソリューションは、トレーニング済みのモデルから Web サービスを作成することで、Machine Learning の回帰モデルを運用することでした。 数分以内に、Web サービスを作成し、これを Excel から直接呼び出して予測収益値を返すことができます。 
 
-*Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *[Download Excel Workbook (Excel ブックのダウンロード)]* をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
+*Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *[Excel ブックのダウンロード]*をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
 
 ![][1]
 
@@ -140,9 +140,9 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 ## <a name="resources"></a>リソース
 次のリソースは、回帰を使用する際に役立ちます。 
 
-* Excel での回帰。 Excel で回帰を初めて試してみる場合は、このチュートリアルが簡単です: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Excel での回帰。 Excel で回帰を試したことがない場合は、このチュートリアル ([http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)) を利用すれば、簡単にできます。
 * 回帰と予測。 Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* 通常の最小二乗法の線形回帰: 欠点、問題、注意点 回帰の概要と説明: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* 通常の最小二乗法の線形回帰: 欠点、問題、注意点 回帰の概要とディスカッションについては、[http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/) を参照してください。
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

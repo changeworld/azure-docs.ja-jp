@@ -1,34 +1,32 @@
 ---
-title: "Azure Load Balancer の複数フロントエンド | Microsoft Docs"
-description: "Azure Load Balancer の複数フロントエンドの概要"
+title: Azure Load Balancer の複数フロントエンド | Microsoft Docs
+description: Azure Load Balancer の複数フロントエンドの概要
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
 manager: narayan
-editor: 
+editor: ''
 ms.assetid: 748e50cd-3087-4c2e-a9e1-ac0ecce4f869
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: e4c77f3b9bd53df632a433532376eb859969a036
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cf8fa396e0518e1c847225dfc1d8f91c3421bd11
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数フロントエンド
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer は、複数のポート、複数の IP アドレス、またはその両方のサービスの負荷を分散できます。 パブリックおよび内部ロード バランサーの定義を使用して、一連の VM のフローの負荷を分散できます。
 
 この記事では、この機能の基礎と重要な概念、制約について説明します。 1 つの IP アドレスにのみサービスを公開する場合は、[パブリック](load-balancer-get-started-internet-portal.md)または[内部](load-balancer-get-started-ilb-arm-portal.md)ロード バランサーの構成に関する簡略化された手順が用意されています。 複数フロントエンドの追加は、1 つのフロントエンド構成に対する増分です。 この記事の概念を使用することで、簡略化された構成をいつでも展開できます。
 
-Azure Load Balancer を定義するとき、フロントエンドおよびバックエンドの構成は規則に接続されています。 規則によって参照される正常性プローブは、新しいフローをバックエンド プールのノードに送信する方法を決定します。 フロントエンドはフロントエンド IP 構成 (VIP) によって定義されます。これは、負荷分散規則の IP アドレス (パブリックまたは内部)、トランスポート プロトコル (UDP または TCP)、およびポート番号で構成される 3 タプルです。 DIP は、バックエンド プール内の VM に接続されている Azure の仮想 NIC の IP アドレスです。
+Azure Load Balancer を定義するときに、フロントエンドおよびバックエンド プールの構成は規則に接続されています。 規則によって参照される正常性プローブは、新しいフローをバックエンド プールのノードに送信する方法を決定します。 フロントエンド (VIP ともいう) は、IP アドレス (パブリックまたは内部)、トランスポート プロトコル (UDP または TCP)、および負荷分散規則のポート番号で構成される 3 タプルで定義されます。 バックエンド プールは、Load Balancer バックエンド プールを参照する、Virtual Machine IP 構成 (NIC リソースの一部) のコレクションです。
 
 次の表に、フロントエンド構成の例をいくつか示します。
 
@@ -134,6 +132,10 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 ## <a name="limitations"></a>制限事項
 
 * 複数フロントエンドの構成は、IaaS VM でのみサポートされます。
-* Floating IP 規則では、お使いアプリケーションは送信フローに DIP を使用する必要があります。 お使いのアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、SNAT が送信フローを書き換えることができないため、フローが失敗します。
+* Floating IP 規則の場合、ご利用のアプリケーションでは送信フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure の SNAT が送信フローを書き換えることができないため、フローが失敗します。
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-subscription-service-limits.md#networking-limits) 」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+- 「[送信接続](load-balancer-outbound-connections.md)」を参照して、送信接続の動作への複数のフロントエンドの影響を理解します。

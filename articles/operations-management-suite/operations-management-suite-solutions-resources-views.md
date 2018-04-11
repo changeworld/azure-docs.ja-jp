@@ -1,8 +1,8 @@
 ---
-title: "Operations Management Suite (OMS) 管理ソリューションのビュー | Microsoft Docs"
-description: "Operations Management Suite (OMS) の管理ソリューションには、通常データを視覚化する 1 つまたは複数のビューが含まれています。  この記事では、ビュー デザイナーで作成したビューをエクスポートし、管理ソリューションに含める方法について説明します。 "
+title: 管理ソリューションのビュー | Microsoft Docs
+description: '管理ソリューションには、通常データを視覚化する 1 つまたは複数のビューが含まれています。  この記事では、ビュー デザイナーで作成したビューをエクスポートし、管理ソリューションに含める方法について説明します。 '
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b44763fe67b1c70c0b6ecdff73c32d8bb4fab3a4
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Operations Management Suite (OMS) 管理ソリューションのビュー (プレビュー)
+# <a name="views-in-management-solutions-preview"></a>管理ソリューションのビュー (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。    
->
->
+> 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。    
 
-[Operations Management Suite (OMS) の管理ソリューション](operations-management-suite-solutions.md)には、通常データを視覚化する 1 つまたは複数のビューが含まれています。  この記事では、[ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)で作成したビューをエクスポートし、管理ソリューションに含める方法について説明します。  
+
+[管理ソリューション](operations-management-suite-solutions.md)には、通常データを視覚化する 1 つまたは複数のビューが含まれています。  この記事では、[ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)で作成したビューをエクスポートし、管理ソリューションに含める方法について説明します。  
 
 > [!NOTE]
-> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Operations Management Suite (OMS) での管理ソリューションの作成](operations-management-suite-solutions-creating.md)」で説明しています。
+> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Azure での管理ソリューションの設計とビルド](operations-management-suite-solutions-creating.md)」で説明しています。
 >
 >
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 01/17/2018
 ## <a name="export-the-view-to-a-file"></a>ビューをファイルにエクスポートする
 [Log Analytics ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)の指示に従って、ビューをファイルにエクスポートします。  エクスポートされたファイルは JSON 形式で、[ソリューション ファイルと同じ要素](operations-management-suite-solutions-solution-file.md)が含まれています。  
 
-ビュー ファイルの**resources** 要素には、OMS ワークスペースを表す **Microsoft.OperationalInsights/workspaces** 型のリソースがあります。  この要素には、ビューを表し、その詳細な構成を含む**views** 型のサブ要素があります。  この要素の詳細をコピーしてからソリューションにコピーします。
+ビュー ファイルの **resources** 要素には、Log Analytics ワークスペースを表す **Microsoft.OperationalInsights/workspaces** 型のリソースがあります。  この要素には、ビューを表し、その詳細な構成を含む**views** 型のサブ要素があります。  この要素の詳細をコピーしてからソリューションにコピーします。
 
 ## <a name="create-the-view-resource-in-the-solution"></a>ソリューションでビュー リソースを作成する
 次のビュー リソースをソリューション ファイルの **resources** 要素に追加します。  これは以下に説明する変数を使用して、追加する必要があります。  **Dashboard** と **OverviewTile** プロパティは、エクスポートしたビュー ファイルの対応するプロパティで上書きするプレースホルダーであることに注意してください。

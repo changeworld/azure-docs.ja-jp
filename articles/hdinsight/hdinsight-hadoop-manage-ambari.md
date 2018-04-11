@@ -1,8 +1,8 @@
 ---
-title: "Ambari Web UI を使用して Azure HDInsight を監視および管理する | Microsoft Docs"
-description: "Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。"
+title: Ambari Web UI を使用して Azure HDInsight を監視および管理する | Microsoft Docs
+description: Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/04/2018
+ms.date: 03/23/2018
 ms.author: larryfr
-ms.openlocfilehash: dc1265c7af011b92a9f862cf2e91b47c3998b2e4
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 922dfd475f27f182d8958887087fc2f4945cc43a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -41,7 +41,7 @@ Ambari Web UI は、Linux オペレーティング システムを使用する H
 
 ## <a name="connectivity"></a>接続
 
-Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdidnsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。
+Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdinsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。
 
 > [!IMPORTANT]
 > HDInsight の Ambari に接続するには、HTTPS が必要です。 認証情報の入力を求められたら、クラスターの作成時に提供された管理者アカウント名とパスワードを入力します。

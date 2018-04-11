@@ -1,8 +1,8 @@
 ---
-title: "OMS ソリューションでの保存された検索条件とアラート | Microsoft Docs"
-description: "通常、OMS のソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。  この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを Resource Manager テンプレートで定義する方法について説明します。"
+title: 管理ソリューションでの保存された検索条件とアラート | Microsoft Docs
+description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。  この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを Resource Manager テンプレートで定義する方法について説明します。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを OMS 管理ソリューションに追加する (プレビュー)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
+> 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
 
 
-通常、[OMS の管理ソリューション](operations-management-suite-solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../log-analytics/log-analytics-log-searches.md)が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../log-analytics/log-analytics-alerts.md)も定義できます。  この記事では、[管理ソリューション](operations-management-suite-solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../resource-manager-template-walkthrough.md)で定義する方法について説明します。
+通常、[管理ソリューション](operations-management-suite-solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../log-analytics/log-analytics-log-searches.md)が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../log-analytics/log-analytics-alerts.md)も定義できます。  この記事では、[管理ソリューション](operations-management-suite-solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../resource-manager-template-walkthrough.md)で定義する方法について説明します。
 
 > [!NOTE]
-> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Operations Management Suite (OMS) での管理ソリューションの作成](operations-management-suite-solutions-creating.md)」で説明しています。  
+> この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Azure での管理ソリューションの設計とビルド](operations-management-suite-solutions-creating.md)」で説明しています。  
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、[管理ソリューションの作成方法](operations-management-suite-solutions-creating.md)および [Resource Manager テンプレート](../resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-Log Analytics のすべてのリソースは、[ワークスペース](../log-analytics/log-analytics-manage-access.md)に含まれています。  「[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Log Analytics のすべてのリソースは、[ワークスペース](../log-analytics/log-analytics-manage-access.md)に含まれています。  「[Log Analytics ワークスペースと Automation アカウント](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
 ワークスペースの名前は、各 Log Analytics リソースの名前に含まれます。  これは、次の savedsearch リソースの例で示すように **workspace** パラメーターをソリューションで指定することにより行います。
 

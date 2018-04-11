@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 7e556bff2e9ebdd1efc969660cc8b4a33f3adcdb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -48,6 +48,13 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 
 ### <a name="what-do-i-need-on-premises"></a>オンプレミスには何が必要ですか?
 オンプレミスでは、Site Recovery のコンポーネントが 1 つの VMware VM にインストールされている必要があります。 また、少なくとも 1 つの ESXi ホストを含む VMware インフラストラクチャも必要であり、vCenter サーバーをお勧めします。 さらに、レプリケートする 1 つ以上の VMware VM が必要です。 VMware から Azure へのアーキテクチャについて詳しくは、[こちら](vmware-azure-architecture.md)をご覧ください。
+
+次の 2 つの方法のいずれかで、オンプレミスの構成サーバーをデプロイすることができます。
+
+1. 構成サーバーが事前にインストールされている VM テンプレートを使用してデプロイする。 詳細については、[こちら](vmware-azure-tutorial.md#download-the-vm-template)を参照してください。
+2. 任意の Windows Server 2016 コンピューターでセットアップを使用してデプロイする。 詳細については、[こちら](physical-azure-disaster-recovery.md#set-up-the-source-environment)を参照してください。
+
+独自の Windows Server コンピューターで構成サーバーをデプロイする手順の概要を見つけるには、保護の有効化の [Protection goal]\(保護の目標\) で、**[To Azure]\(Azure へ\)、[Not virtualized/Other]\(非仮想化/その他\)** の順に選択します。
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>オンプレミスの VM のレプリケート先はどこですか?
 Azure ストレージにデータがレプリケートされます。 フェールオーバーを実行すると、Site Recovery はストレージ アカウントから Azure VM を自動的に作成します。

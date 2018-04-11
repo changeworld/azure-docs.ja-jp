@@ -1,24 +1,24 @@
 ---
-title: "MongoDB を使用する Node.js アプリケーションのデプロイ |Microsoft Docs"
-description: "複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric クラスターにデプロイする方法に関するチュートリアル"
+title: MongoDB を使用する Node.js アプリケーションを Azure Service Fabric にデプロイする |Microsoft Docs
+description: 複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric クラスターにデプロイする方法に関するチュートリアル
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
-ms.author: msfussell;mikhegn
-ms.openlocfilehash: d7a37d7c04f85e9031cab52fa86026e56315c882
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-multiple-guest-executables"></a>複数のゲスト実行可能ファイルのデプロイ
 この記事では、複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric にデプロイする方法について説明します。 単一の Service Fabric のパッケージを作成しデプロイする方法については、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」を参照してください。
@@ -214,7 +214,7 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfguest:AddService` を実行し、必要な詳細を指定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * コンテナーのデプロイについて、[Service Fabric とコンテナーの概要](service-fabric-containers-overview.md)に関する記事で確認してください
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-containers)

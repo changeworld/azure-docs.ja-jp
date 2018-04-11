@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの StorageAccountSelector UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Storage.StorageAccountSelector UI 要素について説明します。"
+title: Azure StorageAccountSelector UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Storage.StorageAccountSelector UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 366a862acc15decf6a8e19f875d5d052695f373c
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: ca66b788af68699b4750e1e2826b6a6b104c72c7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI 要素
-新規または既存のストレージ アカウントを選択するコントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+新規または既存のストレージ アカウントを選択するコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
@@ -65,7 +65,6 @@ ms.lasthandoff: 10/27/2017
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

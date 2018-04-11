@@ -11,14 +11,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 04/02/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
@@ -45,7 +45,7 @@ Java で関数アプリを開発するには、以下のものがインストー
 
 [Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) では、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 
 
-インストール方法については、「[Installing (インストール)](https://github.com/azure/azure-functions-core-tools#installing)」セクションにアクセスして、お使いのオペレーティング システム (Windows、Linux、Mac) に合った具体的な手順を参照してください。
+インストールするには、Azure Functions Core Tools プロジェクトの「[Installing (インストール)](https://github.com/azure/azure-functions-core-tools#installing)」セクションにアクセスし、オペレーティング システムに固有の手順を参照してください。
 
 次の要件のインストール後、[Node.js](https://nodejs.org/) に付属する [npm](https://www.npmjs.com/) を使って手動でインストールすることもできます。
 
@@ -80,7 +80,9 @@ mvn archetype:generate ^
     -DarchetypeArtifactId=azure-functions-archetype
 ```
 
-Maven では、プロジェクトの生成を終了するための値の入力を求められます。 _groupId_、_artifactId_、_version_ の値については、[Maven の名前付け規則](https://maven.apache.org/guides/mini/guide-naming-conventions.html)をご覧ください。 _appName_ の値は Azure 全体で一意である必要があるため、Maven は既定値として前に入力された _artifactId_ を基にしてアプリ名を生成します。 _packageName_ の値により、生成される関数コードの Java パッケージが決まります。
+Maven によって、プロジェクトの生成を終了するために必要な値の入力を求めるメッセージが表示されます。 _groupId_、_artifactId_、_version_ の値については、[Maven の名前付け規則](https://maven.apache.org/guides/mini/guide-naming-conventions.html)をご覧ください。 _appName_ の値は Azure 全体で一意である必要があるため、Maven は既定値として前に入力された _artifactId_ を基にしてアプリ名を生成します。 _packageName_ の値により、生成される関数コードの Java パッケージが決まります。
+
+以下の `com.fabrikam.functions` および `fabrikam-functions` 識別子は例として使用されており、このクイック スタートの後の方の手順を読みやすくしています。 この手順では、Maven に独自の値を指定することをお勧めします。
 
 ```Output
 Define value for property 'groupId': com.fabrikam.functions
@@ -91,7 +93,7 @@ Define value for property 'appName' fabrikam-functions-20170927220323382:
 Confirm properties configuration: Y
 ```
 
-Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)、要求の本文をエコーする簡単な関数です。
+Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 プロジェクトで生成される、すぐに実行できるコードは、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)、要求の本文をエコーする簡単な関数です。
 
 ```java
 public class Function {
@@ -133,7 +135,7 @@ mvn azure-functions:run
 > [!NOTE]
 > Java 9 でこの例外、`javax.xml.bind.JAXBException` が発生している場合は、[GitHub](https://github.com/jOOQ/jOOQ/issues/6477) で回避策を参照してください。
 
-関数を実行すると次のような出力が表示されます。
+関数がシステム上でローカルに実行されていて、HTTP 要求に応答する準備ができている場合に、次の出力が表示されます。
 
 ```Output
 Listening on http://localhost:7071
@@ -144,7 +146,7 @@ Http Functions:
    hello: http://localhost:7071/api/hello
 ```
 
-新しいターミナルで curl を使ってコマンド ラインから関数をトリガーします。
+新しいターミナル ウィンドウで curl を使用して、コマンド ラインから関数をトリガーします。
 
 ```
 curl -w '\n' -d LocalFunction http://localhost:7071/api/hello
@@ -158,10 +160,15 @@ Hello LocalFunction!
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 [Azure CLI でログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)し、`azure-functions:deploy` Maven ターゲットを使って新しい関数アプリにコードをデプロイします。
+Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+
+```azurecli
+az login
+```
+
+`azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。
 
 ```
-az login
 mvn azure-functions:deploy
 ```
 
@@ -175,7 +182,7 @@ mvn azure-functions:deploy
 [INFO] ------------------------------------------------------------------------
 ```
 
-curl を使って Azure で実行して関数アプリをテストします。
+`cURL` を使用して、Azure で実行している関数アプリをテストします。 前の手順でデプロイされた独自の関数アプリの URL と一致するように、下のサンプルの URL を変更する必要があります。
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions

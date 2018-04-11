@@ -1,6 +1,6 @@
 ---
-title: "Web アプリケーションからの Azure Key Vault の使用 | Microsoft Docs"
-description: "このチュートリアルを使用すると、Web アプリケーションから Azure Key Vault を使用する方法について学習できます。"
+title: Web アプリケーションからの Azure Key Vault の使用 | Microsoft Docs
+description: このチュートリアルを使用すると、Web アプリケーションから Azure Key Vault を使用する方法について学習できます。
 services: key-vault
 author: adhurwit
 manager: mbaldwin
@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 93ef76729123c7187c3dd616419b5771324fe2cb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Web アプリケーションからの Azure Key Vault の使用
 
@@ -151,7 +151,7 @@ makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-終了日と .pfx のパスワードをメモしておいてください (この例では、2017 年 7 月 31 日と test123)。 この情報は以下で必要になります。
+終了日と .pfx のパスワードをメモしておいてください (この例では、2018 年 7 月 31 日と test123)。 この情報は以下で必要になります。
 
 テスト証明書の作成の詳細については、 [独自のテスト証明書を作成する方法](https://msdn.microsoft.com/library/ff699202.aspx)
 

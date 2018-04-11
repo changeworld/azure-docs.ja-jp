@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの PublicIpAddressCombo UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Network.PublicIpAddressCombo UI 要素について説明します。"
+title: Azure の PublicIpAddressCombo UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Network.PublicIpAddressCombo UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990b84cf0df74b7b08a5fa105c2c2213aa251f9d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 要素
-新規または既存のパブリック IP アドレスを選択するコントロールのグループです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+新規または既存のパブリック IP アドレスを選択するコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/22/2017
   },
   "defaultValue": {
     "publicIpAddressName": "ip01",
-    "domainNameLabel": "foobar"
+    "domainNameLabel": "mydomain"
   },
   "constraints": {
     "required": {
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/22/2017
 {
   "name": "ip01",
   "resourceGroup": "rg01",
-  "domainNameLabel": "foobar",
+  "domainNameLabel": "mydomain",
   "publicIPAllocationMethod": "Dynamic",
   "newOrExistingOrNone": "new"
 }
@@ -88,6 +88,5 @@ ms.lasthandoff: 12/22/2017
 - `options.hideDomainNameLabel` が **true** として指定されると、`domainNameLabel` は宣言されません。
 
 ## <a name="next-steps"></a>次の手順
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

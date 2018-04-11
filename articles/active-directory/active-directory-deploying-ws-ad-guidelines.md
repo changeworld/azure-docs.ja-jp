@@ -1,24 +1,24 @@
 ---
-title: "Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン | Microsoft Docs"
-description: "AD ドメイン サービスと AD フェデレーション サービスをオンプレミスにデプロイする方法をご存じの方を対象に、Azure 仮想マシンへのデプロイ方法を説明します。"
+title: Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン | Microsoft Docs
+description: AD ドメイン サービスと AD フェデレーション サービスをオンプレミスにデプロイする方法をご存じの方を対象に、Azure 仮想マシンへのデプロイ方法を説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 03/20/2018
 ms.author: femila
-ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c2d58e056cdb285be51d259492e11e6ae37b253e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
 この記事では、Windows Server の Active Directory Domain Services (AD DS) および Active Directory フェデレーション サービス (AD FS) に関して、オンプレミスへのデプロイと Microsoft Azure 仮想マシンへのデプロイとの大きな違いについて説明します。
@@ -71,8 +71,10 @@ Azure 仮想マシンをオンプレミスの企業ネットワークに折り�
 > 
 > 
 
-### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>静的 IP アドレスは Azure PowerShell を使って構成する必要がある。
-既定では動的アドレスが割り当てられますが、静的 IP アドレスを割り当てるには、Set-AzureStaticVNetIP コマンドレットを使用します。 このコマンドレットによって設定される静的 IP アドレスは、サービス復旧後や VM のシャットダウン/再起動後も変化しません。 詳細については、「 [Static internal IP address for virtual machines (仮想マシンに使用する静的な内部 IP アドレス)](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)」を参照してください。
+### <a name="static-ip-addresses-can-be-configured-with-azure-powershell"></a>静的 IP アドレスは Azure PowerShell を使って構成することができる
+既定では動的アドレスが割り当てられますが、静的 IP アドレスを割り当てる場合は、Set-AzureStaticVNetIP コマンドレットを使用します。 このコマンドレット セットによって設定される静的 IP アドレスは、サービス復旧後や VM のシャットダウン/再起動後も変化しません。 詳細については、「 [Static internal IP address for virtual machines (仮想マシンに使用する静的な内部 IP アドレス)](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)」を参照してください。 次に示すように、Azure Portal で VM を作成しながら、静的 IP アドレスを構成することもできます。 詳細については、「[Azure Portal を使用して静的パブリック IP を持つ VM を作成する](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)」をご覧ください。
+
+![VM の作成時に静的 IP アドレスを追加する手順のスクリーン ショット](media/active-directory-deploying-ws-ad-guidelines/static-ip.png)
 
 ## <a name="BKMK_Glossary"></a>用語と定義
 以下、この記事に出現する各種 Azure テクノロジで用いられているいくつかの用語をピックアップしました。
@@ -408,7 +410,7 @@ VM は VM 自体の DNS 名を起動時または名前変更時に自動的に�
 
 ブランチ オフィスにおける物理的なセキュリティ リスクは、Azure にはありません。しかしそれでも、RODC の方が、コスト効果の面で有利であると考えられます。本来の意義とは大きく異なるものの、RODC の機能はこうした環境によく適合しているためです。 たとえば、RODC では送信方向のレプリケーションがなく、またシークレット (パスワード) の取り込みも選択的に行うことができます。 シークレットが不足しているために、ユーザーまたはコンピューターが本人性を証明する際、それらを検証するための送信トラフィックがオンデマンドで発生するのが欠点となります。 しかしシークレットは、あらかじめ取り込んでキャッシュしておくこともできます。
 
-RODC は、HBI (高ビジネス インパクト) や PII (個人を特定できる情報) の保護にも寄与し、RODC で除外される属性セット (FAS) に、機密データが入った属性を追加することができます。 RODC へのレプリケート対象外となる属性の集合として、FAS はカスタマイズすることができます。 Azure に PII や HBI を保存することが好ましくない、または禁止されている場合、FAS を保護対策として使用できます。 詳細については、「[RODC で除外される属性セット[(https://technet.microsoft.com/library/cc753459)]」を参照してください。
+RODC は、HBI (高ビジネス インパクト) や PII (個人を特定できる情報) の保護にも寄与し、RODC で除外される属性セット (FAS) に、機密データが入った属性を追加することができます。 RODC へのレプリケート対象外となる属性の集合として、FAS はカスタマイズすることができます。 Azure に PII や HBI を保存することが好ましくない、または禁止されている場合、FAS を保護対策として使用できます。 詳細については、RODC で除外される属性セットに関するページ (https://technet.microsoft.com/library/cc753459)を参照してください。
 
 使用予定の RODC がアプリケーションの動作に支障をきたさないことを確認してください。 Windows Server Active Directory 対応のアプリケーションはその多くが RODC と正しく連動しますが、書き込み可能 DC にアクセスできない場合、効率的または正常に実行できないアプリケーションもあります。 詳細については、「 [アプリケーションと読み取り専用ドメイン コントローラーの互換性](https://technet.microsoft.com/library/cc755190)」を参照してください。
 

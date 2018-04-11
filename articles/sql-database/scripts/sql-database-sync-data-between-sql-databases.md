@@ -1,13 +1,13 @@
 ---
-title: "PowerShell サンプル - 複数の Azure SQL Database 間の同期 | Microsoft Docs"
-description: "複数の Azure SQL データベース間を同期するための Azure PowerShell サンプル スクリプト"
+title: PowerShell サンプル - 複数の Azure SQL Database 間の同期 | Microsoft Docs
+description: 複数の Azure SQL データベース間を同期するための Azure PowerShell サンプル スクリプト
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
@@ -17,15 +17,15 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 23446e4156daca3903f15e538e2c47e63fcbf673
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8a6dbf6e8cdd2fe066c11cc14ae587912873f7e4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
  
-この PowerShell サンプル スクリプトは、複数の Azure SQL データベース間で同期するデータ同期を構成します。
+この PowerShell サンプル スクリプトは、複数の Azure SQL データベース間で同期するデータ同期 (プレビュー) を構成します。
 
 このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。
  

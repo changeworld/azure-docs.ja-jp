@@ -35,7 +35,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage ディスク**
 
-    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、Fs シリーズ、および Esv3 シリーズの VM をサポートしています。 選択することができるディスク サイズは、P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1,024 GB)、P40 (2,048 GB)、P50 (4,095 GB) の 7 つです。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
+    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、Fs シリーズ、および Esv3 シリーズの VM をサポートしています。 ディスク サイズは次の 7 つから選択できます: P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
 
 * **Premium ページ BLOB**
 
@@ -45,11 +45,11 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage アカウント**
 
-    Premium Storage の使用を開始するには、非管理対象ディスクの Premium Storage アカウントを作成します。 [Azure Portal](https://portal.azure.com) で、Premium Storage アカウントを作成するには、**[Premium]** パフォーマンス レベルを選択します。 **[ローカル冗長ストレージ (LRS)]** レプリケーション オプションを選択します。 また、次のいずれかの場所では、種類を **Premium_LRS** を設定することで Premium Storage アカウントを作成できます。
-    * [Storage REST API](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference) (バージョン 2014-02-14 以降のバージョン)
-    * [サービス管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) (バージョン 2014-10-01 以降のバージョン、Azure クラシック デプロイメント向け)
-    * [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (Azure Resource Manager デプロイメント向け)
-    * [Azure PowerShell](/powershell/azureps-cmdlets-docs.md) (バージョン 0.8.10 以降のバージョン)
+    Premium Storage の使用を開始するには、非管理対象ディスクの Premium Storage アカウントを作成します。 [Azure Portal](https://portal.azure.com) で、Premium Storage アカウントを作成するには、**[Premium]** パフォーマンス レベルを選択します。 **[ローカル冗長ストレージ (LRS)]** レプリケーション オプションを選択します。 また、パフォーマンス レベルを **Premium_LRS** に設定することで、Premium Storage アカウントを作成することもできます。 パフォーマンス レベルを変更するには、次の方法のいずれかを使用します。
+     
+    - [Azure Storage 用の PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+    - [Azure Storage 用の Azure CLI](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+    - [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (Azure Resource Manager デプロイメント向け)、または Azure Storage リソース プロバイダーのクライアント ライブラリのいずれか
 
     Premium Storage アカウントの制限については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションを参照してください。
 
@@ -103,7 +103,7 @@ Windows 向けの Azure の VM の種類とサイズについては、[Windows V
 
     現時点では、DS シリーズの最大の VM は Standard_DS15_v2 です。 Standard_DS15_v2 のすべてのディスクの帯域幅は最大 960 MB/秒になります。 GS シリーズの最大の VM は Standard_GS5 です。 Standard_GS5 のすべてのディスクの帯域幅は最大 2,000 MB/秒になります。
 
-    これらの制限は、ディスク トラフィックのみを対象としていることに注意してください。 これらの制限にキャッシュ ヒット数とネットワーク トラフィックは含まれません。 VM ネットワーク トラフィックには、別の帯域幅を使用できます。 ネットワーク トラフィックの帯域幅は、Premium Storage ディスクで使用される専用の帯域幅とは異なります。
+    これらの制限は、ディスク トラフィックのみを対象としています。 これらの制限にキャッシュ ヒット数とネットワーク トラフィックは含まれません。 VM ネットワーク トラフィックには、別の帯域幅を使用できます。 ネットワーク トラフィックの帯域幅は、Premium Storage ディスクで使用される専用の帯域幅とは異なります。
 
     Premium Storage でサポートされる VM の最大 IOPS とスループット (帯域幅) の最新情報については、[Windows VM のサイズ](../articles/virtual-machines/windows/sizes.md)に関する記事または [Linux VM のサイズ](../articles/virtual-machines/linux/sizes.md)に関する記事を参照してください。
 
@@ -129,11 +129,11 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
 Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P20、P30、P40、および P50 の 7 種類を提供しています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 32 GB| 64 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| ディスクあたりの IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 
+| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| ディスク サイズ           | 32 GB| 64 GB| 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 
+| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 
 
 > [!NOTE]
 > [Premium Storage でサポートされる VM](#premium-storage-supported-vms) に関するセクションの説明に従って、ディスク トラフィックを促進するために、VM で十分な帯域幅を使用できることを確認してください。 確認できない場合、ディスクのスループットと IOPS の値は低くなります。 スループットと IOPS の最大値は、上記の表で説明したディスクの制限ではなく、VM の制限に基づきます。  
@@ -170,7 +170,7 @@ Premium Storage のスケーラビリティとパフォーマンスのターゲ�
 
 * **キャッシュ ヒット数**
 
-    キャッシュ ヒット数には、ディスクの割り当て済みの IOPS またはスループットによる制限はありません。 たとえば、Premium Storage でサポートされている VM でキャッシュが **ReadOnly** に設定されているデータ ディスクを使用する場合、そのキャッシュからの読み取りは、ディスクの IOPS とスループットの上限の対象にはなりません。 ディスクのワークロードの大部分が読み取りの場合、スループットが非常に高くなる可能性があります。 キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの制限が個別に適用されます。 DS シリーズの VM では、IOPS が約 4,000、キャッシュとローカル SSD の I/O のコアあたりのスループットが 33 MB/秒になります。 GS シリーズ VM では、IOPS が 5,000、キャッシュとローカル SSD の I/O のコアあたりのスループットが 50 MB/秒という制限があります。 
+    キャッシュ ヒット数には、ディスクの割り当て済みの IOPS またはスループットによる制限はありません。 たとえば、Premium Storage でサポートされている VM でキャッシュが **ReadOnly** に設定されているデータ ディスクを使用する場合、そのキャッシュからの読み取りは、ディスクの IOPS とスループットの上限の対象にはなりません。 ディスクのワークロードの大部分が読み取りの場合、スループットが非常に高くなる可能性があります。 キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの制限が個別に適用されます。 DS シリーズの VM では、IOPS が約 4,000、キャッシュとローカル SSD の I/O のコアあたりのスループットが 33 MB/秒になります。 GS シリーズの VM には、IOPS が 5,000 まで、キャッシュとローカル SSD の I/O のコアあたりのスループットが 50 MB/秒までという制限があります。 
 
 ## <a name="throttling"></a>調整
 アプリケーションの IOPS またはスループットが Premium Storage ディスクに割り当てられている制限を超えた場合、調整が行われることがあります。 また、VM 上のすべてのディスクのディスク トラフィックの合計がその VM で使用可能なディスク帯域幅の上限を超えた場合にも調整が行われることがあります。 調整を回避するには、ディスクの保留中の I/O 要求の数を制限することをお勧めします。 プロビジョニングしたディスクのスケーラビリティとパフォーマンスのターゲットに基づいた制限や、VM で使用可能なディスク帯域幅に基づいた制限を使用してください。  
@@ -297,14 +297,3 @@ Premium Storage、Premium Storage でサポートされる VM、管理ディス�
 
 ## <a name="next-steps"></a>次の手順
 Premium Storage の詳細については、次の記事を参照してください。
-
-### <a name="design-and-implement-with-premium-storage"></a>Premium Storage での設計と実装
-* [Premium Storage でのパフォーマンスのための設計](../articles/virtual-machines/windows/premium-storage-performance.md)
-* [Premium Storage での Blob Storage の操作](http://go.microsoft.com/fwlink/?LinkId=521969)
-
-### <a name="operational-guidance"></a>操作ガイダンス
-* [Azure Premium Storage への移行](../articles/storage/common/storage-migration-to-premium-storage.md)
-
-### <a name="blog-posts"></a>ブログ記事
-* [Azure Premium Storage の一般提供開始](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
-* [GS シリーズの提供開始を発表: パブリック クラウドの最大の VM に Premium Storage サポートを追加](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)

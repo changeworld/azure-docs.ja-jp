@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用した Azure Stack での Key Vault の管理 | Microsoft Docs"
-description: "PowerShell を使用して Azure Stack で Key Vault を管理する方法を説明します"
+title: PowerShell を使用した Azure Stack での Key Vault の管理 | Microsoft Docs
+description: PowerShell を使用して Azure Stack で Key Vault を管理する方法を説明します
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 22B62A3B-B5A9-4B8C-81C9-DA461838FAE5
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 6ee2ceff10d16456a6e8c6283f40fa594b3311bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 9dac59d74347e21bebaf7cb65d199711f45b29a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
 
@@ -90,7 +90,7 @@ Active Directory フェデレーション サービス (AD FS) ベースのデ�
 $adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
 $objectSID = $adUser.SID.Value 
 
-#Set the key vault access policy
+# Set the key vault access policy
 Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation 
 ```
 
@@ -111,10 +111,10 @@ Add-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01” -verbose -Destin
 
 ![新しいキー](media/azure-stack-kv-manage-powershell/image5.png)
 
-これで、作成されたキーの URI を使用してそのキーを参照できます。 既存のキーと同じ名前のキーを作成またはインポートした場合、元のキーは、新しいキーで指定される値で更新されます。 前のバージョンにアクセスするには、キーのバージョン固有の URI を使用します。 For example: 
+これで、作成されたキーの URI を使用してそのキーを参照できます。 既存のキーと同じ名前のキーを作成またはインポートした場合、元のキーは、新しいキーで指定される値で更新されます。 前のバージョンにアクセスするには、キーのバージョン固有の URI を使用します。 例:  
 
-* "https://vault10.vault.local.azurestack.external:443/keys/key01" を使用すると、常に現在のバージョンが取得されます。 
-* "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" を使用すると、この特定のバージョンが取得されます。
+* "https://vault10.vault.local.azurestack.external:443/keys/key01" を使用して、常に現在のバージョンを取得します。 
+* "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" を使用して、この特定のバージョンを取得します。
 
 ### <a name="get-a-key"></a>キーの取得
 
@@ -162,7 +162,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Key Vault に格納されているパスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md) 
 * [Key Vault に格納されている証明書を使用して VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
 

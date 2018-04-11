@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights の FAQ | Microsoft Docs"
-description: "Application Insights についてよく寄せられる質問。"
+title: Azure Application Insights の FAQ | Microsoft Docs
+description: Application Insights についてよく寄せられる質問。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -60,7 +60,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ## <a name="how-much-is-it-costing"></a>どれくらいのコストが発生していますか?
 
-* Application Insights リソースの **[機能と価格設定]** ページを開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
+* Application Insights リソースで **[使用量と推定コスト]** ページを開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
 * [Azure の [課金] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)を開き、リソース全体での請求額を確認します。
 
 ## <a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?
@@ -121,7 +121,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 * [Azure 診断](app-insights-azure-diagnostics.md)
 * [Docker コンテナー](app-insights-docker.md)
 * [Analytics へのインポート テーブル](app-insights-analytics-import.md)
-* [OMS (Log Analytics)](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
+* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
 * [Logstash](app-insights-analytics-import.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>一部のテレメトリを除外または変更することはできますか?
@@ -250,7 +250,7 @@ Microsoft の SDK と [SDK API](app-insights-api-custom-events-metrics.md) を�
 
 ### <a name="firewall-door"></a>ファイアウォール ドア
 
-Web サーバーから Microsoft のエンドポイント https://dc.services.visualstudio.com:443 と https://rt.services.visualstudio.com:443 にテレメトリを送信できるようにします。 
+ご利用の Web サーバーから Microsoft のエンドポイント https://dc.services.visualstudio.com:443 および https://rt.services.visualstudio.com:443 への利用統計情報の送信を許可します。 
 
 ### <a name="proxy"></a>プロキシ
 
@@ -262,7 +262,7 @@ ApplicationInsights.config 内に次のコードを設定し、トラフィッ�
 </TelemetryChannel>
 ```
 
-ゲートウェイにより、トラフィックが https://dc.services.visualstudio.com:443/v2/track にルーティングされます
+ご利用のゲートウェイはトラフィックを https://dc.services.visualstudio.com:443/v2/track にルーティングする必要があります。
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>イントラネット サーバーで可用性 Web テストを実行できますか?
 

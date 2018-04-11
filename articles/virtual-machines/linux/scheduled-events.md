@@ -1,13 +1,13 @@
 ---
-title: "Azure の Linux VM 向けのスケジュールされたイベント | Microsoft Docs"
-description: "Linux 仮想マシンに Azure Metadata Service を使用してイベントをスケジュールします。"
+title: Azure の Linux VM 向けのスケジュールされたイベント | Microsoft Docs
+description: Linux 仮想マシンに Azure Metadata Service を使用してイベントをスケジュールします。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: ericrad
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e697a8f1160aff5774dc416c81819220c316707a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: c87dd5bdbdc87bf238f34d145bd7380a61b90cb6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM のスケジュールされたイベント
 
@@ -129,7 +129,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`: このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`: このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
-| NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> 2016-09-19T18:29:47Z  |
+| NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>イベントのスケジューリング
 各イベントは、スケジュールされているイベントの種類に基づいて、将来の最小値の時間でスケジュールされます。 この時間は、イベントの `NotBefore` プロパティに反映されます。 

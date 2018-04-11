@@ -1,24 +1,24 @@
 ---
-title: "Azure Portal でのアクション グループの作成および管理 | Microsoft Docs"
-description: "Azure Portal でアクション グループを作成および管理する方法について説明します。"
+title: Azure Portal でのアクション グループの作成および管理 | Microsoft Docs
+description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
 manager: chrad
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 03/12/2018
 ms.author: dukek
-ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/21/2018
 アクション グループには、最大 10 個のアクションの種類を設定できます。 各アクションは次のプロパティで構成されます。
 
 * **名前**: アクション グループ内の一意識別子。  
-* **アクションの種類**: SMS の送信、メールの送信、webhook の呼び出し、ITSM ツールへのデータの送信、Azure アプリの呼び出し、または Automation Runbook の実行。
+* **アクションの種類**: 音声通話または SMS の送信、電子メールの送信、webhook の呼び出し、ITSM ツールへのデータの送信、Azure アプリの呼び出し、または Automation Runbook の実行。
 * **詳細**: 対応する電話番号、メール アドレス、webhook の URI、または ITSM 接続の詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](monitoring-create-action-group-with-resource-manager-template.md)」を参照してください。
@@ -56,7 +56,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]**: このアクションの一意識別子を入力します。
 
-    b. **[アクションの種類]**: 電子メール/SMS/Azure アプリ、webhook、ITSM、または Automation Runbook を選択します。
+    b. **[アクションの種類]**: 電子メール/SMS/プッシュ/音声、webhook、ITSM、または Automation Runbook を選択します。
 
     c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、webhook の URI、Azure アプリ、ITSM 接続、Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
 

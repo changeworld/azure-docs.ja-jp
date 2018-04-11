@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS での DNS ゾーンの管理 - PowerShell | Microsoft Docs"
-description: "Azure Powershell を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します"
+title: Azure DNS での DNS ゾーンの管理 - PowerShell | Microsoft Docs
+description: Azure Powershell を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 03/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b9c263acf754a72cde5b2716703b8e771a349457
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/21/2017
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 この記事では、Azure PowerShell を使用して DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、クロスプラットフォームの [Azure CLI](dns-operations-dnszones-cli.md) または Azure Portal を使用して、管理することもできます。
+
+このガイドでは、特にパブリック DNS ゾーンについて説明します。 Azure PowerShell を使用する Azure DNS での Private Zones の管理については、「[PowerShell で Azure DNS プライベート ゾーンの使用を開始する](private-dns-getstarted-powershell.md)」を参照してください。
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -50,7 +52,7 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Azure DNS で新たにプライベート DNS ゾーンがサポートされました (現在はプレビュー機能)。  プライベート DNS ゾーンを作成する例については、「[PowerShell で Azure DNS プライベート ゾーンの使用を開始する](./private-dns-getstarted-powershell.md)」を参照してください。
+Azure DNS では、プライベート DNS ゾーンもサポートされるようになりました (現在はパブリック プレビュー段階です)。  プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。 プライベート DNS ゾーンを作成する例については、「[PowerShell で Azure DNS プライベート ゾーンの使用を開始する](./private-dns-getstarted-powershell.md)」を参照してください。
 
 ## <a name="get-a-dns-zone"></a>DNS ゾーンの取得
 
@@ -165,7 +167,7 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 `-Confirm` と `$ConfirmPreference` の詳細については、「[About Preference Variables (設定変数について)](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](dns-operations-recordsets.md)をご覧ください。
 <br>

@@ -1,21 +1,5 @@
----
-title: 'チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する'
-description: このチュートリアルでは、Azure CLI を使用して最初の Azure Database for PostgreSQL サーバーを作成、構成、照会する方法を説明します。
-services: postgresql
-author: rachel-msft
-ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
-ms.service: postgresql
-ms.custom: mvc
-ms.devlang: azure-cli
-ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 56425ec7ccb1d6629b82db6683a02a57ab9999b4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+-- タイトル: 'チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する' 説明: このチュートリアルでは、Azure CLI を使用して最初の Azure Database for PostgreSQL サーバーを作成、構成、クエリを実行する方法を示します。
+services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
@@ -61,11 +45,11 @@ az extension list
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.3"
+    "version": "0.0.5"
 }
 ```
 
-バージョン 0.0.3 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
+バージョン 0.0.5 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -149,7 +133,7 @@ psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<db
   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mydemoserver.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 パスワードの入力を求められたら、選択した `<server_admin_password>` を入力します。
   
   ```azurecli-interactive
-psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver ---dbname=postgres
+psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
 ```
 
 2.  サーバーに接続したら、プロンプトで空のデータベースを作成します。

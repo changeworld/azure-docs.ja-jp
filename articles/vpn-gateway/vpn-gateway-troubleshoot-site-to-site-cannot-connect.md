@@ -1,24 +1,24 @@
 ---
-title: "接続できない Azure サイト間 VPN 接続のトラブルシューティング | Microsoft Docs"
-description: "突然停止して再接続できないサイト間 VPN 接続をトラブルシューティングする方法を説明します。"
+title: 接続できない Azure サイト間 VPN 接続のトラブルシューティング | Microsoft Docs
+description: 突然停止して再接続できないサイト間 VPN 接続をトラブルシューティングする方法を説明します。
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2017
+ms.date: 03/29/2018
 ms.author: genli
-ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
 
@@ -52,7 +52,7 @@ Azure VPN ゲートウェイの種類を確認します。
 
 Azure VPN 接続の共有キーを確認するには、次のいずれかの方法を使います。
 
-**Azure ポータル**
+**Azure Portal**
 
 1. 作成した VPN ゲートウェイ サイト間接続に移動します。
 
@@ -92,7 +92,9 @@ Azure Resource Manager デプロイメント モデルの場合:
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>手順 7. Azure ゲートウェイの正常性プローブを確認する
 
-1. 正常性プローブに移動します。
+1. 次の URL を参照して正常性プローブを開きます。
+
+    `https://<YourVirtualNetworkGatewayIP>:8081/healthprobe`
 
 2. 証明書の警告を無視して続行します。
 3. 応答を受け取った場合、VPN ゲートウェイは正常であると考えられます。 応答を受け取らない場合、ゲートウェイが正常な状態にないか、またはゲートウェイ サブネット上の NSG が問題の原因になっている可能性があります。 応答のサンプル テキストを次に示します。

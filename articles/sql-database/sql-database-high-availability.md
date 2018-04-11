@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d26fe28d301cf563dc6bdb3d9e17903dea3e73fc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 マイクロソフトは、Azure SQL Database PaaS サービスの開発当初から、お客様が操作したり、特別なロジックを追加したり、高可用性に関する意思決定をしなくても実現できる高可用性 (HA) をサービスに組み込むことをお約束してきました。 マイクロソフトは、お客様に SLA を提供し、HA システム構成および運用を完全に制御します。 HA SLA は、領域内の SQL データベースに適用され、マイクロソフトの妥当な制御の及ばない事象 (自然災害、戦争、テロ行為、暴動、政府の行為、または、お客様の施設、またはお客様の施設とマイクロソフトのデータ センターの間を含む、マイクロソフトのデータ センター外のネットワークまたはデバイスの障害など) に起因する、領域全体の障害の場合の保護は提供できません。
@@ -46,7 +46,7 @@ Microsoft Azure SQL Database では、直結されたディスク/VHD を使用�
 
 ## <a name="data-redundancy"></a>データの冗長性
 
-Microsoft Azure SQL Database の高可用性ソリューションは、SQL Server の [AlwaysON](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) テクノロジを使用し、LS データベースと RS データベースの違いが最小限に抑えられているため、いずれのデータベースでも動作します。 AlwaysON は、LS 構成では永続化のために使用され、RS では可用性 (低 RTO) のために使用されます。 
+SQL Database の高可用性ソリューションは、SQL Server の [Always ON 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) テクノロジを使用し、LS データベースと RS データベースの違いが最小限に抑えられているため、いずれのデータベースでも動作します。 Always ON 可用性グループ テクノロジは、LS 構成では永続化のために使用され、RS では可用性 (低 RTO) のために使用されます。 
 
 ## <a name="local-storage-configuration"></a>ローカル ストレージの構成
 

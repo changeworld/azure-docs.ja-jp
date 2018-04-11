@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C: Microsoft アカウントの構成 | Microsoft Docs"
-description: "Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Microsoft アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
+title: 'Azure Active Directory B2C: Microsoft アカウントの構成 | Microsoft Docs'
+description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Microsoft アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 06407322-142c-4cb3-9106-a8d752c4c853
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: e746a5e7a2d9a13eb23ac0268104a9394c9b198d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e167c8737bc600f52759f33456fec3bc6e0a3678
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには Microsoft アカウントが必要です。 アカウントがない場合は、 [https://www.live.com/](https://www.live.com/)で取得できます。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには Microsoft アカウントが必要です。 アカウントがない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
 
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) に移動し、Microsoft アカウントの資格情報でサインインします。
 2. **[アプリの追加]**をクリックします。

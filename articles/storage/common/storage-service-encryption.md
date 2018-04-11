@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
 
@@ -52,7 +52,7 @@ A: Storage Service Encryption は、既定で既存のすべての Resource Mana
 
 **Q: Resource Manager ストレージ アカウントのデータはどのように暗号化すればよいですか?**
 
-A: Storage Service Encryption は、既定ですべてのストレージ アカウント (クラシックと Resource Manager) に対して有効になります。 ただし、既存のデータは暗号化されません。 既存のデータを暗号化するには、別の名前または別のコンテナーにコピーしてから、暗号化されていないバージョンを削除します。 
+A: Storage Service Encryption は、既定ですべてのストレージ アカウント (クラシックと Resource Manager) に対して有効になります。暗号化が有効になる前に作成されたストレージ アカウント内の既存のファイルは、バック グラウンド暗号化プロセスによって遡って暗号化されます。
 
 **Q: Azure PowerShell および Azure CLI を使用して、Storage Service Encryption を有効にしたストレージ アカウントを作成できますか?**
 

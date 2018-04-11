@@ -1,27 +1,28 @@
 ---
-title: "C# を使用して Azure Time Series Insights 環境の参照データを管理する | Microsoft Docs"
-description: "この記事では、C# .NET 言語で記述されたカスタム アプリケーションを作成して、Azure Time Series Insights 環境の参照データを管理する方法について説明します。"
+title: C# を使用して Azure Time Series Insights 環境の参照データを管理する | Microsoft Docs
+description: この記事では、C# .NET 言語で記述されたカスタム アプリケーションを作成して、Azure Time Series Insights 環境の参照データを管理する方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/21/2017
-ms.openlocfilehash: b08b6af7abccb550884adc6cc90d180cfcadb2af
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.date: 03/23/2018
+ms.openlocfilehash: 61375ae3b304959d5cda37c4ce0364d566d576a5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の参照データを管理する
 
-このトピックでは、コンパイルして Azure Time Series Insights 環境の参照データを管理できる C# サンプル コードについて説明します。
+この記事では、コンパイルして Azure Time Series Insights 環境の参照データを管理できるサンプル C# プロジェクトについて説明します。
 
+## <a name="prerequistes"></a>前提条件
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 1. [参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。
 
@@ -30,6 +31,11 @@ ms.lasthandoff: 12/14/2017
    非対話型アプリケーションのセットアップ方法については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関するページをご覧ください。
 
 3. サンプル コードを編集して、**#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。 
+
+このコード例は [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights) にもあります。
+
+## <a name="project-references"></a>プロジェクトの参照
+この例のために NuGet パッケージの `Microsoft.IdentityModel.Clients.ActiveDirectory` と `Newtonsoft.Json` を追加します。 
 
 ## <a name="c-sample-code"></a>C# サンプル コード 
 ```csharp

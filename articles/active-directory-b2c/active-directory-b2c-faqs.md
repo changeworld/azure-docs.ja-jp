@@ -10,11 +10,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 338520f273a88866834e43e17da1f8b131ca38f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -28,7 +28,9 @@ Azure AD B2C は、Microsoft Office 365 のユーザーの認証に使用でき�
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C のローカル アカウントとは何ですか。 それらは、Azure AD の職場または学校アカウントとはどのような点が異なるのですか。
 Azure AD テナントでは、テナントに属するユーザーは、`<xyz>@<tenant domain>` の形式の電子メール アドレスを使用してサインインします。  `<tenant domain>` は、テナントの確認済みドメインの 1 つ、または初期の `<...>.onmicrosoft.com` ドメインです。 この種類のアカウントは、職場または学校アカウントです。
 
-Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。  ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C サービスを構成することで、これらの 2 種類のローカル アカウントのいずれかを選択できます。
+Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。  ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C の ID プロバイダーを構成する場合、この 2 種類のローカル アカウントのいずれかを選択できます。 Azure AD B2C テナントで、**[ID プロバイダー]** をクリックし、[ローカル アカウント] の **[ユーザー名]** を選択します。 
+
+アプリケーションのユーザー アカウントは常に、サインアップ ポリシーによって、サインアップもしくはサインイン ポリシーによって、または Azure AD Graph API を使用して作成する必要があります。 Azure Portal で作成されたユーザー アカウントは、テナントを管理するためだけに使用されます。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。

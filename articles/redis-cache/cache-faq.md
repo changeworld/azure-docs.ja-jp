@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache の FAQ | Microsoft Docs"
-description: "Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。"
+title: Azure Redis Cache の FAQ | Microsoft Docs
+description: Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 82c01419d65e00ddf27dfeb8fd444d5d3d81803c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache の FAQ
 Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
@@ -89,7 +89,7 @@ Azure Redis Cache を開始する方法はいくつかあります。
 
 * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)、[ASP.NET](cache-web-app-howto.md)、[Java](cache-java-get-started.md)、[Node.js](cache-nodejs-get-started.md)、[Python](cache-python-get-started.md) で使用可能なチュートリアルのいずれかを確認できます。
 * [Microsoft Azure Redis Cache を使用して高パフォーマンス アプリケーションを構築する方法](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)のビデオを見ることができます。
-* プロジェクトの開発言語と一致するクライアントのドキュメントで、Redis を使用する方法を確認できます。 Azure Redis Cache で使用できる Redis クライアントは多数あります。 Redis クライアントの一覧については、 [http://redis.io/clients](http://redis.io/clients)を参照してください。
+* プロジェクトの開発言語と一致するクライアントのドキュメントで、Redis を使用する方法を確認できます。 Azure Redis Cache で使用できる Redis クライアントは多数あります。 Redis クライアントの一覧については、「[http://redis.io/clients](http://redis.io/clients)」を参照してください。
 
 Azure アカウントをお持ちでない場合は、次の操作を行います。
 
@@ -111,7 +111,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * **Redis クラスター**: 53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有するには、Premium レベルで利用可能な Redis クラスタリングを使用することができます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、「 [Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 * **強化されたセキュリティとネットワーク分離**: Azure Virtual Network (VNET) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、およびサブネット、アクセス制御ポリシー、さらにアクセスを制限するためのその他の機能が提供されます。 詳細については、「 [Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 * **Redis の構成**: Standard レベルと Premium レベルでは、Keyspace 通知用に Redis を構成できます。
-* **最大クライアント接続数**: Premium レベルでは、Redis に接続できるクライアントの最大数が提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。 詳細については、 [Azure Redis Cache の価格に関するページ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。
+* **最大クライアント接続数**: Premium レベルでは、Redis に接続できるクライアントの最大数が提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。 クラスタリングでは、クラスター化されたキャッシュで使用できる接続の数は増加しません。 詳細については、 [Azure Redis Cache の価格に関するページ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。
 * **Redis サーバー専用コア**: Premium レベルでは、すべてのキャッシュ サイズに Redis 専用のコアがあります。 Basic/Standard レベルでは、C1 サイズ以上に Redis サーバー専用コアがあります。
 * **Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても 2 つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます。 キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
 * **パフォーマンス向上**: Premium レベルのキャッシュは、高速プロセッサを備えたハードウェア上にデプロイされ、Basic/Standard レベルと比較して優れたパフォーマンスを発揮します。 Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。

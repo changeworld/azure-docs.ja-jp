@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric サービス エンドポイントの指定 | Microsoft Docs"
-description: "サービス マニフェストにエンドポイント リソースを記述する方法 (HTTPS エンドポイントの設定方法を含みます)"
+title: Service Fabric サービス エンドポイントの指定 | Microsoft Docs
+description: サービス マニフェストにエンドポイント リソースを記述する方法 (HTTPS エンドポイントの設定方法を含みます)
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 6fa425829e8da294c8db3d64c3d8fd202c74375a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a028471871754c2b9c3981ec13f5788643675a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -154,7 +154,7 @@ Linux クラスターの場合、**MY** ストアは既定で **/var/lib/sfcerts
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml のエンドポイントのオーバーライド
 
-ApplicationManifest に、ConfigOverrides セクションの兄弟になるようにResourceOverrides セクションを追加します。 このセクションでは、サービス マニフェストに指定されたリソース セクション内の Endpoints セクションのオーバーライドを指定できます。
+ApplicationManifest に、ConfigOverrides セクションの兄弟になるようにResourceOverrides セクションを追加します。 このセクションでは、サービス マニフェストに指定されたリソース セクション内の Endpoints セクションのオーバーライドを指定できます。 エンドポイントのオーバーライドは、ランタイム 5.7.217/SDK 2.7.217 以降でサポートされています。
 
 ServiceManifest で ApplicationParameters を使用してエンドポイントをオーバーライドするには、次のように ApplicationManifest を変更します。
 

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0cfa79b9c44953c613eaec8d701f351c6f2ce212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD の省略可能な要求 (プレビュー)
 
@@ -69,9 +69,7 @@ ms.lasthandoff: 03/23/2018
 | `is_device_managed`        | デバイスに MDM がインストールされているかどうかを示します。 条件付きアクセス ポリシーに関連します。                                                                                                                  | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
 | `is_device_compliant`      | デバイスが組織のデバイス セキュリティ ポリシーに準拠していると MDM が判断したことを示します。                                                                                  | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
 | `kmsi`                     | ユーザーが [サインインしたままにする] オプションを選択したかどうかを示します。                                                                                                                                    | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
-| `upn`                      | UserPrincipalName 要求。  この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 | JWT、SAML  |           | 追加のプロパティ: <br> include_externally_authenticated_upn <br> include_externally_authenticated_upn_without_hash                                                                                                                                                                 |
-| `groups`                   | ユーザーがメンバーであるグループ。                                                                                                                                                               | JWT、SAML  |           | 追加のプロパティ: <br> Sam_account_name<br> Dns_domain_and_sam_account_name<br> Netbios_domain_and_sam_account<br> Max_size_limit<br> Emit_as_roles<br>                                                                                                                            |
-
+| `upn`                      | UserPrincipalName 要求。  この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 | JWT、SAML  |           | 追加のプロパティ: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>V2.0 の省略可能な要求
 これらの要求は常に v1.0 トークンに含まれますが、要求されない限り v2.0 トークンからは削除されます。  これらの要求は、JWT (ID トークンとアクセス トークン) にのみ適用されます。  
 
@@ -90,26 +88,19 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
 
-一部の省略可能な要求は、要求が返される方法を変更するように構成することができます。  このような追加のプロパティには、書式設定の変更プロパティ (例:`include_externally_authenticated_upn_without_hash`) や、返されるデータ セットの変更プロパティ (`Dns_domain_and_sam_account_name`) などがあります。
+一部の省略可能な要求は、要求が返される方法を変更するように構成することができます。  このような追加のプロパティは、ほとんどの場合、異なるデータが期待されるオンプレミス アプリケーションの移行のために使用されます (たとえば、`include_externally_authenticated_upn_without_hash` は UPN 内のハッシュマーク (`#`) を処理できないクライアントで役立ちます)。
 
 **表 4: 標準の省略可能な要求を構成する値**
 
 | プロパティ名                                     | 追加のプロパティ名                                                                                                             | [説明] |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `Upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |             |
 | | `include_externally_authenticated_upn`              | リソース テナントに格納されているゲスト UPN が含まれます。  たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。                            |             
 | | `include_externally_authenticated_upn_without_hash` | 前項と同じですが、ハッシュマーク (`#`) はアンダースコア (`_`) に置き換えられます (例: `foo_hometenant.com_EXT_@resourcetenant.com`)。 |             
-| `groups`                                              |                                                                                                                                      |             |
-| | `sam_account_name`                                  |                                                                                                                                      |             
-| | `dns_domain_and_sam_account_name`                   |                                                                                                                                      |             
-| | `netbios_domain_and_sam_account_name`               |                                                                                                                                      |             
-| | `max_size_limit`                                    | 返されるグループ数をグループ サイズの上限 (1,000) に上げます。                                                            |             
-| | `emit_as_roles`                                     | 同じ値で、"グループ" 要求の代わりに "ロール" 要求を発行します。  従来はグループ メンバーシップを使用して RBAC が管理されていたオンプレミス環境から移行するアプリ向けです。   |             
 
 > [!Note]
 >追加のプロパティを指定せずに省略可能な要求 upn を指定しても、動作は変わりません。トークンで発行された新しい要求を表示するには、追加のプロパティのうち少なくとも 1 つを追加する必要があります。 
->
->グループの `account_name` 追加プロパティは相互運用性がありません。追加のプロパティの順序が重要です。列挙されている最初のアカウント名の追加のプロパティのみが使用されます。 
+
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例:
 
@@ -118,15 +109,15 @@ ms.lasthandoff: 03/23/2018
    {
        "idToken": [ 
              { 
-                "name": "groups", 
+                "name": "upn", 
             "essential": false,
-                "additionalProperties": [ "netbios_domain_and_sam_account_name", "sam_account_name" , "emit_as_roles"]  
+                "additionalProperties": [ "include_externally_authenticated_upn"]  
               }
         ]
 }
 ```
 
-この OptionalClaims オブジェクトは、`sam_account_name` が含まれていない場合と同じ `groups`要求を返します。これは `netbios_domain_and_sam_account_name` の後にあるため、無視されます。 
+この OptionalClaims オブジェクトにより、ID トークンがクライアントに返され、追加のホーム テナントとリソース テナントの情報を持つ追加の upn が含められます。  
 
 ## <a name="configuring-optional-claims"></a>省略可能な要求の構成
 

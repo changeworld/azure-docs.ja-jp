@@ -15,16 +15,13 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 958b1757dd773f8c46185b13c84f766ce4f827ee
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
-
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
-
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
 
 ## <a name="personas"></a>ペルソナ
@@ -165,5 +162,5 @@ Microsoft Azure Stack は、すべてのリソース プロバイダーの使用
 - その他の機能強化
 
 ## <a name="next-steps"></a>次の手順
-[Azure Stack のデプロイの前提条件](azure-stack-deploy.md)
+[Azure Stack Development Kit の評価](azure-stack-deploy-overview.md)
 

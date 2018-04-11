@@ -1,14 +1,29 @@
-
-
-
-**ドキュメントの最終更新日**: 3 月 6 日午前 10:00 (PST)。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 04/02/2018
+ms.author: cynthn;kareni
+ms.custom: include file
+ms.openlocfilehash: 6ad9c365894feed61fa4f55d442194d1cf996889
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/03/2018
+---
+**ドキュメントの最終更新日**: 4 月 2 日午前 10:00 (PST)。
 
 予測実行のサイドチャネル攻撃として知られる [CPU 脆弱性の新しいクラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)の最近の公開では、顧客がよりわかりやすい説明を求めていることがわかりました。  
 
-Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。  つまり、Azure を使用する他の顧客は、これらの脆弱性を使用してアプリケーションを攻撃することはできません。
+Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。  つまり、Azure を使用する他の顧客は、これらの脆弱性を使用してアプリケーションを攻撃することはできません。
+
+さらに、Azure では、[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)の使用を可能な限り拡大して、ホストが更新されたり、VM が既に更新されているホストに移動されたりする間、VM を最大 30 秒間一時停止させます。  さらに、メモリ保持メンテナンスによって顧客への影響が最小限に抑えられ、再起動する必要がなくなります。  Azure では、ホストに対してシステム全体の更新を行うときに、これらの方法が使用されます。
 
 > [!NOTE] 
-> Intel Corporation は、2018 年 2 月下旬に「[Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)」(マイクロコード リビジョン ガイダンス) の Intel 製マイクロコードのリリース状況を更新しました。このリリースにより、[Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) から開示された最近の脆弱性に対する安定性が改善されています。 [2018 年 1 月 3 日](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)に Azure で実施された軽減策は、Intel 製マイクロコードの更新プログラムの影響を受けません。 Microsoft は、Azure ユーザーを他の Azure のテナントから保護するために強力な軽減策を既に実施しています。  
+> Intel Corporation は、2018 年 2 月下旬に「[Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)」(マイクロコード リビジョン ガイダンス) の Intel 製マイクロコードのリリース状況を更新しました。このリリースにより、[Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) から開示された最近の脆弱性に対する安定性が改善されています。 [2018 年 1 月 3 日](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)に Azure で実施された軽減策は、Intel 製マイクロコードの更新プログラムの影響を受けません。 Microsoft は、Azure ユーザーを他の Azure 仮想マシンから保護するために、既に強力な軽減策を実施しています。  
 >
 > Intel 製マイクロコードでは、スペクター バリアント 2 ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)) に対処しています。このマイクロコードで、Azure 上の VM 内で共有ワークロードまたは信頼できないワークロードを実行する場合にのみ適用される攻撃から保護できます。 Microsoft のエンジニアは、Azure ユーザーにマイクロコードを提供する前に、パフォーマンスへの影響を最小限に抑えるために安定性をテストしています。  VM 内で信頼できないワークロードを実行するお客様がほとんどいないため、ほとんどのお客様はこの機能がリリースされても有効にする必要がありません。 
 >
@@ -21,7 +36,7 @@ Azure を実行し、顧客ワークロードを互いに分離するインフ�
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>オペレーティング システムを最新の状態に保つ
 
-Azure で実行するアプリケーションを、Azure を使用する他の顧客から切り離すために OS 更新は必要ありませんが、OS のバージョンを常に最新に保つことをお勧めします。 
+Azure で実行するアプリケーションを、Azure を使用する他の顧客から切り離すために OS 更新は必要ありませんが、OS のバージョンを常に最新に保つことをお勧めします。 2018 年 1 月以降の [Windows 用セキュリティ ロールアップ](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)には、これらの脆弱性に対する軽減策が含まれています。
 
 次のサービスでは、オペレーティング システムを更新するために次の操作が推奨されます。 
 
@@ -49,7 +64,7 @@ Azure で実行するアプリケーションを、Azure を使用する他の�
 
 
 ### <a name="windows"></a>Windows 
-Windows を使用して、信頼できないコードをホストする場合、予測実行のサイドチャネルの脆弱性に対する追加の保護を提供する Kernel Virtual Address (KVA) Shadowing と呼ばれる Windows の機能を有効にする必要もあります。 この機能は既定ではオフになっており、有効にすると、パフォーマンスに影響が出る場合があります。 サーバーで保護を有効にする方法については、[Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) を参照してください。 Azure Cloud Services を実行している場合は、WA-GUEST-OS-5.15_201801-01 または WA-GUEST-OS-4.50_201801-01 (2018 年 1 月 10 日から利用可能) を実行していることを確認し、スタートアップ タスクを使用してレジストリ キーを有効にします。
+Windows を使用して信頼できないコードをホストする場合、予測実行のサイドチャネルの脆弱性 (具体的には variant 3 Meltdown である [CVE-2017-5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754)) に対する追加の保護を提供する、Kernel Virtual Address (KVA) Shadowing と呼ばれる Windows の機能を有効にする必要もあります。 この機能は既定ではオフになっており、有効にすると、パフォーマンスに影響が出る場合があります。 サーバーで保護を有効にする方法については、[Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) を参照してください。 Azure Cloud Services を実行している場合は、WA-GUEST-OS-5.15_201801-01 または WA-GUEST-OS-4.50_201801-01 (2018 年 1 月 10 日から利用可能) を実行していることを確認し、スタートアップ タスクを使用してレジストリ キーを有効にします。
 
 
 ### <a name="linux"></a>Linux

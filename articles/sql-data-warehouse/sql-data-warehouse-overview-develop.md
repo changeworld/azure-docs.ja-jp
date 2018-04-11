@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: develop
-ms.date: 03/15/2018
+ms.date: 03/22/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: 329217faaf865052b79a1d44200cc3c788702046
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c81a6f9af556a86f10d2482333fdc98f9cfb1454
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL Data Warehouse の設計上の決定と コーディング技法
 SQL Data Warehouse に関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、開発に関する次の記事に目を通してください。
@@ -49,7 +49,7 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 * [変数の代入][variable assignment]
 
 ## <a name="next-steps"></a>次の手順
-詳細な参照情報については、SQL Data Warehouse の「[Transact-SQL リファレンス][Transact-SQL reference]」をご覧ください。
+詳細な参照情報については、[SQL Data Warehouse ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -71,7 +71,7 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [user-defined schemas]: ./sql-data-warehouse-develop-user-defined-schemas.md
 [variable assignment]: ./sql-data-warehouse-develop-variable-assignment.md
 [views]: ./sql-data-warehouse-develop-views.md
-[Transact-SQL reference]: ./sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 [renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx

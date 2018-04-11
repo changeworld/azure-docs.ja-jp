@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 680e9967010771b8e3651c6f4eed81237f8fb4c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/16/2018
 - iOS 設定アシスタントを使用している Apple Device Enrollment Program (Apple DEP) で、最新の認証がサポートされていません。 この場合、パススルー認証を使用して、管理対象ドメインの Apple DEP デバイスを Intune に登録できません。 代わりに、[ポータル サイト アプリ](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/)の使用を検討してください。
 
 >[!IMPORTANT]
->サポートされていないシナリオに対処する場合に_のみ_、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。
+>サポートされていないシナリオに対処する場合に_のみ_、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。 ユーザーが "サポートされていないシナリオ" セクションにリストされているアプリケーションにサインインすると、それぞれのサインイン要求はパススルー認証エージェントで処理され_ない_ため、[パススルー認証ログ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)に記録されません。
 
 >[!NOTE]
 パスワード ハッシュ同期を有効にすると、オンプレミスのインフラストラクチャが中断された場合に認証をフェールオーバーするオプションが提供されます。 このパススルー認証から Active Directory パスワード ハッシュ同期へのフェールオーバーは自動的には行われません。 Azure AD Connect を使用して手動でサインイン方法を切り替える必要があります。 Azure AD Connect を実行しているサーバーで障害が発生した場合、パススルー認証をオフにするには、Microsoft サポートに対処方法をお問い合わせください。

@@ -1,11 +1,11 @@
 ---
 title: Red Hat Update Infrastructure | Microsoft Docs
-description: "Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します"
+description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: BorisB2015
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/10/2017
 ms.author: borisb
-ms.openlocfilehash: ea9a5cbd9b9b7b67ceb131cb8ba1d2476dbd5f72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe354c6c9415c1525527dd6b95d1b3a481b5a2de
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -50,6 +50,7 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 40.85.190.91
 52.187.75.218
 52.174.163.213
+52.237.203.198
 
 # Azure US Government
 13.72.186.193
@@ -70,11 +71,11 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 
 1. Azure RHUI エンドポイントの VM 構成を確認します。
 
-    a. `/etc/yum.repos.d/rh-cloud.repo` ファイルの `[rhui-microsoft-azure-rhel*]` セクションの `baseurl` に `rhui-[1-3].microsoft.com` への参照が含まれているかどうかを確認します。 含まれていれば、新しい Aure RHUI を使用していることになります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `/etc/yum.repos.d/rh-cloud.repo` ファイルの `[rhui-microsoft-azure-rhel*]` セクションの `baseurl` に `rhui-[1-3].microsoft.com` への参照が含まれているかどうかを確認します。 含まれていれば、新しい Aure RHUI を使用していることになります。
 
     b. 次のパターン `mirrorlist.*cds[1-4].cloudapp.net` の場所をポイントしている場合、構成の更新が必要です。 古い VM スナップショットが使用されているため、新しい Azure RHUI をポイントするように更新する必要があります。
 
-2. Azure でホストされている RHUI へのアクセスは、[Azure データセンターの IP 範囲] (https://www.microsoft.com/download/details.aspx?id=41653) 内の VM に限定されます。
+2. Azure でホストされている RHUI へのアクセスは、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。
  
 3. 新しい構成を使用し、VM が Azure IP 範囲から接続していることを確認したが、それでも Azure RHUI に接続できない場合は、Microsoft または Red Hat にサポート ケースを提出してください。
 
@@ -129,7 +130,7 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
     >[!NOTE]
     >パッケージ バージョンは変わります。 Azure RHUI に手動で接続する場合は、ギャラリーから最新のイメージをプロビジョニングすることで、各 RHEL ファミリ用のクライアント パッケージの最新バージョンを見つけることができます。
   
-   a. ダウンロードします。 
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ダウンロードします。 
    
     - RHEL 6 の場合:
         ```bash
@@ -165,5 +166,5 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 
 6. 完了したら、VM から Azure RHUI にアクセスできることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Marketplace PAYG イメージから Red Hat Enterprise Linux VM を作成し、Azure でホストされる RHUI を使用する場合は、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/) にアクセスしてください。 

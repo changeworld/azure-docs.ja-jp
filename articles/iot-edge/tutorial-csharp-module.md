@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 95ca66f34548f86e25c1e7af331fa88797847906
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 11c737adb6578437a3708bb97397a24114e39585
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>C# IoT Edge モジュールを開発して、シミュレートしたデバイスにデプロイする - プレビュー
 
@@ -223,6 +223,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
+   このコマンドで使用するユーザー名、パスワード、ログイン サーバーを見つけるには、[Azure Portal] (https://portal.azure.com) に移動します。 **[すべてのリソース]** から、Azure Container Registry のタイルをクリックして、プロパティを開き、**[アクセス キー]** をクリックします。 **ユーザー名**、**パスワード**、**ログイン サーバー**の各フィールドの値をコピーします。 
 
 2. VS Code エクスプローラーで、**module.json** ファイルを右クリックし、**[Build and Push IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージをビルドしてプッシュ\)** をクリックします。 VS Code ウィンドウの上部にあるポップアップ ドロップダウン ボックスで、コンテナー プラットフォームを選択します。Linux コンテナーの場合は **[Amd64]**、Windows コンテナーの場合は **[windows-amd64]** を選択します。 VS Code によってコードがビルドされ、`FilterModule.dll` がコンテナーに格納されて、指定したコンテナー レジストリにプッシュされます。
 

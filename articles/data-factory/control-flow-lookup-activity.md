@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 ルックアップ アクティビティを使用して、任意の外部ソースからレコード、テーブル名、または値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
@@ -30,12 +30,23 @@ ms.lasthandoff: 03/23/2018
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 現在、ルックアップでは次のデータ ソースがサポートされています。
-- Azure Blob Storage の JSON ファイル
-- ファイル システム内の JSON ファイル
-- Azure SQL Database (クエリから変換された JSON データ)
-- Azure SQL Data Warehouse (クエリから変換された JSON データ)
-- SQL Server (クエリから変換された JSON データ)
-- Azure Table Storage (クエリから変換された JSON データ)
+
+- Amazon Redshift
+- Azure BLOB ストレージ
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure File ストレージ
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- Azure Table Storage
+- Dynamics 365
+- Dynamics CRM
+- ファイル システム
+- PostgreSQL
+- Salesforce
+- Salesforce Service Cloud
+- SFTP
+- SQL Server
 
 ルックアップ アクティビティによって返される最大行数は **5000** であり、サイズは最大 **10MB** です。
 
@@ -62,9 +73,14 @@ ms.lasthandoff: 03/23/2018
 ## <a name="type-properties"></a>型のプロパティ
 Name | [説明] | type | 必須
 ---- | ----------- | ---- | --------
-dataset | ルックアップ用のデータセット参照を提供します。 現在サポートされているデータセットの種類は次のとおりです。<ul><li>[Azure Blob Storage ](connector-azure-blob-storage.md#dataset-properties)の場合 `AzureBlobDataset` (ソースとして)</li><li>[ファイル システム](connector-file-system.md#dataset-properties)の場合 `FileShareDataset` (ソースとして)</li><li>[Azure SQL Database](connector-azure-sql-database.md#dataset-properties) または [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) の場合 `AzureSqlTableDataset` (ソースとして)</li><li>[SQL Server](connector-sql-server.md#dataset-properties) の場合 `SqlServerTable` (ソースとして)</li><li>[Azure Table Storage](connector-azure-table-storage.md#dataset-properties) の場合 `AzureTableDataset` (ソースとして)</li> | キーと値のペア | [はい]
+dataset | ルックアップ用のデータセット参照を提供します。 対応する各コネクタの記事の "データセットのプロパティ" セクションから詳細を取得します。 | キーと値のペア | [はい]
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「コピー アクティビティのプロパティ」セクションから詳細を取得します。 | キーと値のペア | [はい]
 firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | ブール | いいえ。 既定値は `true` です。
+
+以下の点に注意してください。
+
+1. ByteArray 型のソース列はサポートされていません。
+2. データセット定義で構造体はサポートされていません。 特にテキスト形式のファイルの場合は、ヘッダー行を使用して列名を指定できます。
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>後続のアクティビティでルックアップ アクティビティの結果を使用する
 

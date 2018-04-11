@@ -1,32 +1,32 @@
 ---
-title: "Azure CLI を使用したゾーン Linux VM の作成 | Microsoft Docs"
-description: "Azure CLI を使用して可用性ゾーン内に Linux VM を作成する"
+title: Azure CLI を使用したゾーン Linux VM の作成 | Microsoft Docs
+description: Azure CLI を使用して可用性ゾーン内に Linux VM を作成する
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/27/2018
 ms.author: danlep
-ms.custom: 
-ms.openlocfilehash: e31eb02fda7ade027225c428c5b15804ebc6f182
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: cfc3fbf5432108222ee7941d92d78e49d3eaed78
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
 この記事では、Azure CLI を使用して Azure 可用性ゾーン内に Linux VM を作成する手順を説明します。 [可用性ゾーン](../../availability-zones/az-overview.md)とは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
+可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#regions-that-support-availability-zones)に仮想マシンを作成します。
 
 [Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index#az_login) で Azure アカウントにログインしていることを確認します。
 
@@ -43,19 +43,19 @@ az vm list-skus --location eastus2 --output table
 次に示したのは、その出力例の抜粋です。これは各 VM サイズが提供されている可用性ゾーンを確認できます。
 
 ```azurecli
-ResourceType      Locations  Name               Tier       Size     Zones
-----------------  ---------  -----------------  ---------  -------  -------
-virtualMachines   eastus2    Standard_DS1_v2    Standard   DS1_v2   1,2,3
-virtualMachines   eastus2    Standard_DS2_v2    Standard   DS2_v2   1,2,3
+ResourceType      Locations  Name               [...]    Tier       Size     Zones
+----------------  ---------  -----------------           ---------  -------  -------
+virtualMachines   eastus2    Standard_DS1_v2             Standard   DS1_v2   1,2,3
+virtualMachines   eastus2    Standard_DS2_v2             Standard   DS2_v2   1,2,3
 [...]
-virtualMachines   eastus2    Standard_F1s       Standard   F1s      1,2,3
-virtualMachines   eastus2    Standard_F2s       Standard   F2s      1,2,3
+virtualMachines   eastus2    Standard_F1s                Standard   F1s      1,2,3
+virtualMachines   eastus2    Standard_F2s                Standard   F2s      1,2,3
 [...]
-virtualMachines   eastus2    Standard_D2s_v3    Standard   D2_v3    1,2,3
-virtualMachines   eastus2    Standard_D4s_v3    Standard   D4_v3    1,2,3
+virtualMachines   eastus2    Standard_D2s_v3             Standard   D2_v3    1,2,3
+virtualMachines   eastus2    Standard_D4s_v3             Standard   D4_v3    1,2,3
 [...]
-virtualMachines   eastus2    Standard_E2_v3     Standard   E2_v3    1,2,3
-virtualMachines   eastus2    Standard_E4_v3     Standard   E4_v3    1,2,3
+virtualMachines   eastus2    Standard_E2_v3              Standard   E2_v3    1,2,3
+virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2,3
 ```
 
 
@@ -63,9 +63,9 @@ virtualMachines   eastus2    Standard_E4_v3     Standard   E4_v3    1,2,3
 
 [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。  
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus2* リージョンに作成されます。 米国東部 2 は、可用性ゾーン (プレビュー段階) をサポートする Azure リージョンの 1 つです。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus2* リージョンに作成されます。 米国東部 2 は、可用性ゾーンをサポートする Azure リージョンの 1 つです。
 
-```azurecli-interactive 
+```azurecli 
 az group create --name myResourceGroupVM --location eastus2
 ```
 
@@ -75,7 +75,7 @@ az group create --name myResourceGroupVM --location eastus2
 
 仮想マシンを作成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 VM は、可用性ゾーン *1* に作成されます。 既定では、VM は、*Standard_DS1_v2* サイズで作成されます。 このサイズは、可用性ゾーン (プレビュー) でサポートされています。
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 VM は、可用性ゾーン *1* に作成されます。 既定では、VM は、*Standard_DS1_v2* サイズで作成されます。
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys --zone 1
@@ -83,10 +83,10 @@ az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --
 
 VM の作成には数分かかることがあります。 VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `zones` の値を書き留めておきます。この値は、VM が実行されている可用性ゾーンを表します。 
 
-```azurecli-interactive 
+```azurecli 
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
   "location": "eastus2",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
@@ -97,34 +97,81 @@ VM の作成には数分かかることがあります。 VM が作成される�
 }
 ```
 
-## <a name="zone-for-ip-address-and-managed-disk"></a>IP アドレスおよび管理ディスクのゾーン
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>管理ディスクのゾーンと IP アドレスを確認する
 
-VM が可用性ゾーン内にデプロイされると、IP アドレスと管理ディスク リソースが同じ可用性ゾーン内にデプロイされます。 次の例では、これらのリソースについての情報を取得します。
+VM が可用性ゾーンに展開されると、その VM の管理ディスクが同じ可用性ゾーンに作成されます。 既定では、パブリック IP アドレスもそのゾーンに作成されます。 次の例では、これらのリソースについての情報を取得します。
 
-まず [az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) コマンドを使用して、*myVM* 内のパブリック IP アドレス リソースの名前を返します。 この例では名前を変数に格納し、後の手順で使用します。
+VM の管理ディスクが可用性ゾーンにあることを確認するには、[az vm show](/cli/azure/vm#az_vm_show) コマンドを使ってディスク ID を取得します。この例ではディスク ID を変数に格納し、後の手順で使用します。 
 
 ```azurecli-interactive
+osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
+```
+これで、管理ディスクに関する情報を取得できます。
+
+```azurecli-interactive
+az disk show --resource-group myResourceGroupVM --name $osdiskname
+```
+
+この出力は、管理ディスクが VM と同じ可用性ゾーン内にあることを示しています。
+
+```azurecli
+{
+  "creationData": {
+    "createOption": "FromImage",
+    "imageReference": {
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/16.04-LTS/Versions/latest",
+      "lun": null
+    },
+    "sourceResourceId": null,
+    "sourceUri": null,
+    "storageAccountId": null
+  },
+  "diskSizeGb": 30,
+  "encryptionSettings": null,
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/disks/osdisk_761c570dab",
+  "location": "eastus2",
+  "managedBy": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
+  "name": "myVM_osdisk_761c570dab",
+  "osType": "Linux",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroupVM",
+  "sku": {
+    "name": "Premium_LRS",
+    "tier": "Premium"
+  },
+  "tags": {},
+  "timeCreated": "2018-03-05T22:16:06.892752+00:00",
+  "type": "Microsoft.Compute/disks",
+  "zones": [
+    "1"
+  ]
+}
+```
+
+[az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) コマンドを使って、*myVM* 内のパブリック IP アドレス リソースの名前を取得します。 この例では名前を変数に格納し、後の手順で使用します。
+
+```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
 ```
 
 これで、IP アドレスに関する情報を取得できます。
 
-```azurecli-interactive
+```azurecli
 az network public-ip show --resource-group myResourceGroupVM --name $ipaddressname
 ```
 
 この出力は、IP アドレスが VM と同じ可用性ゾーン内にあることを示しています。
 
-```azurecli-interactive
+```azurecli
 {
   "dnsSettings": null,
   "etag": "W/\"b7ad25eb-3191-4c8f-9cec-c5e4a3a37d35\"",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/publicIPAddresses/myVMPublicIP",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/publicIPAddresses/myVMPublicIP",
   "idleTimeoutInMinutes": 4,
   "ipAddress": "52.174.34.95",
   "ipConfiguration": {
     "etag": null,
-    "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM",
+    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM",
     "name": null,
     "privateIpAddress": null,
     "privateIpAllocationMethod": null,
@@ -147,55 +194,6 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
   ]
 }
 ```
-
-同様に、VM の管理ディスクがこの可用性ゾーン内にあることを確認します。 ディスク ID を取得するには、[az vm show](/cli/azure/vm#az_vm_show) コマンドを使用します。この例ではディスク ID を変数に格納し、後の手順で使用します。 
-
-```azurecli-interactive
-osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
-```
-これで、管理ディスクに関する情報を取得できます。
-
-```azurecli-interactive
-az disk show --resource-group myResourceGroupVM --name $osdiskname
-```
-
-この出力は、管理ディスクが VM と同じ可用性ゾーン内にあることを示しています。
-
-```azurecli-interactive
-{
-  "creationData": {
-    "createOption": "FromImage",
-    "imageReference": {
-      "id": "/Subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/16.04-LTS/Versions/latest",
-      "lun": null
-    },
-    "sourceResourceId": null,
-    "sourceUri": null,
-    "storageAccountId": null
-  },
-  "diskSizeGb": 30,
-  "encryptionSettings": null,
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/disks/osdisk_761c570dab",
-  "location": "eastus2",
-  "managedBy": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
-  "name": "osdisk_761c570dab",
-  "osType": "Linux",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroupVM",
-  "sku": {
-    "name": "Premium_LRS",
-    "tier": "Premium"
-  },
-  "tags": {},
-  "timeCreated": "2017-09-05T22:16:06.892752+00:00",
-  "type": "Microsoft.Compute/disks",
-  "zones": [
-    "1"
-  ]
-}
-```
- 
-
 
 ## <a name="next-steps"></a>次の手順
 

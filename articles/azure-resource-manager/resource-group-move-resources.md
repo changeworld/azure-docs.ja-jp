@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 40e79ba584843787ad7744f91e14907deb99ccaa
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -87,6 +87,11 @@ ms.lasthandoff: 03/16/2018
   az provider register --namespace Microsoft.Batch
   ```
 
+4. リソースを動かすアカウントには少なくとも次のアクセス許可を与える必要があります。
+
+   * ソース リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action**。
+   * ターゲット リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/write**。
+
 ## <a name="when-to-call-support"></a>サポートに問い合わせる場合
 
 この記事で説明するセルフサービス操作を使用すれば、ほとんどのリソースを移動できます。 次の場合にセルフサービス操作を使用します。
@@ -105,6 +110,7 @@ ms.lasthandoff: 03/16/2018
 
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
+* App Service 証明書
 * アプリケーション インサイト
 * Automation
 * Azure Cosmos DB
@@ -125,7 +131,7 @@ ms.lasthandoff: 03/16/2018
 * Key Vault
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Logic Apps
-* 機械学習
+* Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -193,7 +199,9 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 
-App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。
+App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 
+
+以上のセクションで説明した制限は、App Service 証明書ではなく、アップロードされた証明書に適用されます。 App Service 証明書は、新しいリソース グループまたはサブスクリプションに制限なく移動できます。 複数の Web アプリで同じ App Service 証明書が使用される場合、最初にすべての Web アプリを移動し、次に証明書を移動します。
 
 ### <a name="moving-within-the-same-subscription"></a>同じサブスクリプション内で移動する場合
 

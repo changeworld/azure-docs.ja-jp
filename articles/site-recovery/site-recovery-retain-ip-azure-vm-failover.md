@@ -1,12 +1,12 @@
 ---
-title: "Azure 仮想マシンを別の Azure リージョンにフェールオーバーする際に IP アドレスを保持する | Microsoft Docs"
-description: "Azure Site Recovery を使用した Azure フェールオーバーのシナリオで Azure の IP アドレスを保持する方法について説明します。"
+title: Azure 仮想マシンを別の Azure リージョンにフェールオーバーする際に IP アドレスを保持する | Microsoft Docs
+description: Azure Site Recovery を使用した Azure フェールオーバーのシナリオで Azure の IP アドレスを保持する方法について説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Azure 仮想マシンのフェールオーバーでの IP アドレスの保持
 
@@ -84,11 +84,7 @@ A 社は、Recovery VNet と Azure VNet の接続の確立に、VNET ピアリ�
 
 ### <a name="further-considerations"></a>その他の考慮事項
 
-VPN Gateway ではパブリック IP アドレスとゲートウェイ ホップを使用して接続を確立します。 パブリック IP アドレスを使用しない場合や、ホップが増えることを避けたい場合は、グローバル VNET ピアリングを使用して、Azure リージョン間で仮想ネットワークをピアリングできます。
-
-この機能は現在パブリック プレビュー段階で、より多くのサポート リージョンに拡張中です。これにより、パブリック インターネットを経由したりホップを追加したりせずに、VM 間を直接接続できるようになります。
-
-詳細については、[ピアリングに関するドキュメント](../virtual-network/tutorial-connect-virtual-networks-portal.md#register)と[価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network/)をご覧ください。
+VPN Gateway ではパブリック IP アドレスとゲートウェイ ホップを使用して接続を確立します。 パブリック IP アドレスを使用しない場合や、ホップが増えることを避けたい場合は、Azure [仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を使って、[サポートされる Azure リージョン](../virtual-network/virtual-network-manage-peering.md#cross-region)間で仮想ネットワークをピアリングできます。
 
 ## <a name="on-premises-to-azure-connectivity"></a>オンプレミスと Azure の間の接続
 

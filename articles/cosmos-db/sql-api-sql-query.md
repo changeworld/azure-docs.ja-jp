@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB の SQL クエリ | Microsoft Docs"
-description: "Azure Cosmos DB の SQL 構文、データベースの概念、および SQL クエリについて説明します。 Azure Cosmos DB では、JSON クエリ言語として SQL を使用できます。"
-keywords: "sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数"
+title: Azure Cosmos DB の SQL クエリ | Microsoft Docs
+description: Azure Cosmos DB の SQL 構文、データベースの概念、および SQL クエリについて説明します。 Azure Cosmos DB では、JSON クエリ言語として SQL を使用できます。
+keywords: sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: LalithaMV
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリ
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Microsoft Azure Cosmos DB は、SQL API アカウントで JSON クエリ言語として SQL (Structured Query Language) を使用するドキュメントのクエリをサポートしています。 Azure Cosmos DB は完全にスキーマフリーです。 データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
 
@@ -34,11 +32,17 @@ Microsoft Azure Cosmos DB は、SQL API アカウントで JSON クエリ言語�
 
 マイクロソフトでは、アプリケーションとデータベース間の不整合を削減し、開発者の生産性を高めるには、こうした方針が鍵になると考えています。
 
-最初に、Aravind Ramachandran 氏が Cosmos DB のクエリ機能を紹介している次のビデオを見てから、 [クエリのプレイグラウンド](http://www.documentdb.com/sql/demo)のページで、Cosmos DB を使ってデータセットに対して SQL クエリを実行する機能を試すことから始めることをお勧めします。
+始めに次の動画をご覧いただくことをお勧めします。Azure Cosmos DB プログラム マネージャーの Andrew Liu が Azure Cosmos DB のクエリ機能と[オンライン クエリ プレイグラウンド](http://www.documentdb.com/sql/demo)を紹介します。オンライン クエリ プレイグラウンドでは、Azure Cosmos DB を試したり、動画で紹介するようにデータセットに対して SQL クエリを実行したりできます。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
-> 
-> 
+> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
+>
+>
+
+フォローアップ動画では、さらに高度なクエリ手法を紹介しています。
+
+> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
+>
+>
 
 その後、この記事に戻って、いくつかのシンプルな JSON ドキュメントと SQL コマンドを使用する SQL クエリのチュートリアルを開始します。
 
@@ -1146,7 +1150,7 @@ JOIN 句の動作を示す例をいくつか紹介します。 以下の例の�
 
 
 
-まず注意が必要な点は、この `from_source`JOIN **句の**  が反復子であるという点です。 このため、この場合のフローは以下のようになります。  
+まず注意が必要な点は、この `from_source`JOIN**句の** が反復子であるという点です。 このため、この場合のフローは以下のようになります。  
 
 * 各子要素 **c** を配列に展開します。
 * ドキュメント **f** のルートと、最初の手順でフラット化された各子要素 **c** とのクロス積を適用します。
@@ -2260,7 +2264,7 @@ Cosmos DB が提供するプログラミング モデルでは、ストアド �
 6. JSON [http://json.org/](http://json.org/)
 7. Javascript 仕様 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. 大規模なデータベース向けのクエリ評価技術 [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+9. 大規模データベースのクエリ評価手法 [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. 「Query Processing in Parallel Relational Database Systems」(IEEE Computer Society Press、1994 年)
 11. 「Query Processing in Parallel Relational Database Systems」(Lu、Ooi、Tan、IEEE Computer Society Press、1994 年)
 12. 「Pig Latin: A Not-So-Foreign Language for Data Processing」(Christopher Olston、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins、SIGMOD、2008 年)

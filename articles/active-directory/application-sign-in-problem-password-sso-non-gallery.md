@@ -1,11 +1,11 @@
 ---
-title: "パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題 | Microsoft Docs"
-description: "パスワード シングル サインオン用に構成された Azure AD ギャラリー アプリケーションへのサインインに関連する問題をトラブルシューティングするガイダンスを提供する問題領域について説明します"
+title: パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題 | Microsoft Docs
+description: パスワード シングル サインオン用に構成された Azure AD ギャラリー アプリケーションへのサインインに関連する問題をトラブルシューティングするガイダンスを提供する問題領域について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -38,7 +38,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 -   Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
 >[!NOTE]
->パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Edge でサポートされるようになると、Edge で使用できるようになります。
+>パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Microsoft Edge でサポートされるようになると、Microsoft Edge で使用できるようになります。
 >
 >
 

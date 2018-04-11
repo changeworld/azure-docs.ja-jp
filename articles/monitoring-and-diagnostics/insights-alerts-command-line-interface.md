@@ -1,9 +1,9 @@
 ---
-title: "Azure サービス アラートの作成 - クロスプラットフォーム CLI | Microsoft Docs"
-description: "指定した条件が満たされたときに、電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。"
+title: Azure サービス アラートの作成 - クロスプラットフォーム CLI | Microsoft Docs
+description: 指定した条件が満たされたときに、電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 5c6a2d27-7dcc-4f89-8752-9bb31b05ff35
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Azure サービス アラートの作成 - クロスプラットフォーム CLI
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Azure Monitor での Azure サービス クラシック メトリック アラートの作成 - クロスプラットフォーム CLI
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,7 +29,12 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>概要
-この記事では、クロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用して Azure メトリック アラートを設定する方法について説明します。
+> [!NOTE]
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しい、より優れたメトリック アラート](monitoring-near-real-time-metric-alerts.md)がサポートされるようになりました。 これらのアラートでは複数のメトリックを監視でき、次元メトリックのアラートが許可されます。 新しいメトリック アラートの CLI サポートはまもなく提供されます。
+>
+>
+
+この記事では、クロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用して Azure クラシック メトリック アラートを設定する方法について説明します。
 
 > [!NOTE]
 > Azure Monitor は、2016 年 9 月 25 日まで "Azure Insights" と呼ばれていたサービスの新しい名前です。 ただし、名前空間と、それに伴って以下のコマンドには引き続き "insights" が含まれています。
@@ -39,23 +44,23 @@ ms.lasthandoff: 12/21/2017
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
-* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーされます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
+* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーできます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
 
-メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
+クラシック メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
 * Azure Runbook の実行を開始する (現時点では Azure ポータルからのみ)
 
-メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
+クラシック メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 
-* [Azure ポータル](insights-alerts-portal.md)
+* [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
 * [コマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-コマンドの末尾に -help を追加して入力すると、そのコマンドのヘルプをいつでも確認することができます。 次に例を示します。
+コマンドの末尾に -help を追加して入力すると、そのコマンドのヘルプをいつでも確認することができます。 例: 
 
     ```console
     azure insights alerts -help
@@ -107,7 +112,7 @@ ms.lasthandoff: 12/21/2017
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. メトリック アラートが発生したときに webhook を作成するか、電子メールを送信するには、最初に電子メールと webhook、またはそのいずれかを作成します。 その後すぐに、ルールを作成します。 CLI を使用して、webhook または電子メールを、作成済みのルールと関連付けることはできません。
+5. クラシック メトリック アラートが発生したときに webhook を作成するか、電子メールを送信するには、最初に電子メールと webhook、またはそのいずれかを作成します。 その後すぐに、ルールを作成します。 CLI を使用して、webhook または電子メールを、作成済みのルールと関連付けることはできません。
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com
@@ -134,7 +139,7 @@ ms.lasthandoff: 12/21/2017
     azure insights alerts rule delete myresourcegroup myActivityLogRule
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
 * [アクティビティ ログ イベントに対するアラートの構成](monitoring-activity-log-alerts.md)に関する詳細情報を確認します。

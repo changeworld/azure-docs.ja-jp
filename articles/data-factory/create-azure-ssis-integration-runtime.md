@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: dc4c690633d14163eddfa70e8417a645f95a0861
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c8804dce7dd8291b65f704ba36aaa1cd05eb4518
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 この記事では、Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイできます。
 
 チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」では、SSIS カタログのストアとして Azure SQL Database を使用して Azure SSIS Integration Runtime (IR) を作成する方法を説明しました。 この記事では、チュートリアルをさらに掘り下げ、次の操作を行う方法を示します。 
 
-- Azure SQL マネージ インスタンス (プライベート プレビュー) を使用して、SSIS カタログ (SSISDB データベース) をホストする。
+- Azure SQL マネージ インスタンス (プレビュー) を使って、SSIS カタログ (SSISDB データベース) をホストする。
 - Azure-SSIS IR を Azure 仮想ネットワーク (VNet) に参加させる。 VNet への Azure SSIS IR の参加と、Azure Portal での VNet の構成に関する概念的な情報については、[VNet への Azure SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md)に関する記事をご覧ください。 
 
 > [!NOTE]
@@ -44,11 +44,11 @@ Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure 
 ## <a name="prerequisites"></a>前提条件
 
 - **Azure サブスクリプション**。 サブスクリプションがない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)アカウントを作成できます。
-- **Azure SQL Database サーバー**または **SQL Server マネージ インスタンス (プライベート プレビュー) (延長プライベート プレビュー)**。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 このサーバーは、SSIS カタログ データベース (SSISDB) をホストします。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 Azure SQL Server の価格レベルを書き留めておいてください。 Azure SQL Database でサポートされている価格レベルの一覧については、[SQL Database のリソース制限](../sql-database/sql-database-resource-limits.md)に関するページを参照してください。
+- **Azure SQL Database サーバー**または **SQL Server マネージ インスタンス (プレビュー) (延長プライベート プレビュー)**。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 このサーバーは、SSIS カタログ データベース (SSISDB) をホストします。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 Azure SQL Server の価格レベルを書き留めておいてください。 Azure SQL Database でサポートされている価格レベルの一覧については、[SQL Database のリソース制限](../sql-database/sql-database-resource-limits.md)に関するページを参照してください。
 
-    Azure SQL Database サーバーまたは SQL Server マネージ インスタンス (延長プライベート プレビュー) に、SSIS カタログ (SSIDB データベース) がないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSIS カタログの使用がサポートされていません。
+    Azure SQL Database サーバーまたは SQL Server マネージ インスタンス (プレビュー) に、SSIS カタログ (SSIDB データベース) がないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSIS カタログの使用がサポートされていません。
 - **クラシックまたは Azure Resource Manager Virtual Network (VNet) (省略可能)**。 次の条件に 1 つでも当てはまる場合は、Azure 仮想ネットワーク (VNet) が必要です。
-    - VNet の一部である SQL Server マネージ インスタンス (プライベート プレビュー) 上の SSIS カタログ データベースをホストしている。
+    - SSIS カタログ データベースのホストとなる SQL Server マネージ インスタンス (プレビュー) が VNet に属している。
     - Azure-SSIS 統合ランタイム上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。
 - **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。 SSIS パッケージをクラウドで実行する Azure-SSIS 統合ランタイムは、スクリプトを実行してプロビジョニングします。PowerShell はその実行に使用します。 
 
@@ -181,15 +181,15 @@ $AzureSSISNodeNumber = 2
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (private preview) server endpoint]"
+$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or your Azure SQL Managed Instance (Preview) server endpoint]"
 $SSISDBServerAdminUserName = "[your server admin username]"
 $SSISDBServerAdminPassword = "[your server admin password]"
 
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0, S1, S2, S3, etc.]"
 
-## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (private preview) 
+## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (Preview) 
 # Specify information about your classic or Azure Resource Manager virtual network (VNet). 
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
@@ -204,7 +204,7 @@ Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 ```
 
 ### <a name="validate-the-connection-to-database"></a>データベースへの接続の検証
-Azure SQL Database サーバー (server.database.windows.net) または Azure SQL マネージ インスタンス (プライベート プレビュー) サーバー エンドポイントを検証するには、次のスクリプトを追加します。 
+Azure SQL Database サーバー (server.database.windows.net) または Azure SQL マネージ インスタンス (プレビュー) サーバー エンドポイントを検証するには、次のスクリプトを追加します。 
 
 ```powershell
 $SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID="+ $SSISDBServerAdminUserName +";Password="+ $SSISDBServerAdminPassword
@@ -263,7 +263,7 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 
 ### <a name="create-an-integration-runtime"></a>統合ランタイムの作成
-Azure 内で SSIS パッケージを実行する Azure-SSIS 統合ランタイムを作成するには、次のコマンドを実行します。使用するデータベースの種類 (Azure SQL Database または Azure SQL マネージ インスタンス (プライベート プレビュー)) に該当するセクションのスクリプトを使用してください。 
+Azure 内で SSIS パッケージを実行する Azure-SSIS 統合ランタイムを作成するには、次のコマンドを実行します。使用するデータベースの種類 (Azure SQL Database または Azure SQL マネージ インスタンス (プレビュー)) に該当するセクションのスクリプトを使ってください。 
 
 #### <a name="azure-sql-database-to-host-the-ssisdb-database-ssis-catalog"></a>Azure SQL Database を使用して SSISDB データベース (SSIS カタログ) をホストする 
 
@@ -286,7 +286,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
 
 オンプレミスのデータ アクセスが不要な場合、つまりオンプレミスのデータ ソース/移動先が SSIS パッケージ内にある場合は、VNetId とサブネットの値を渡す必要はありません。 CatalogPricingTier パラメーターの値を渡す必要があります。 Azure SQL Database でサポートされている価格レベルの一覧については、[SQL Database のリソース制限](../sql-database/sql-database-resource-limits.md)に関するページを参照してください。
 
-#### <a name="azure-sql-managed-instance-private-preview-to-host-the-ssisdb-database"></a>Azure SQL マネージ インスタンス (プライベート プレビュー) を使用して SSISDB データベースをホストする
+#### <a name="azure-sql-managed-instance-preview-to-host-the-ssisdb-database"></a>Azure SQL マネージ インスタンス (プレビュー) を使って SSISDB データベースをホストする
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -306,7 +306,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -Subnet $SubnetName
 ```
 
-VNet に参加させる Azure SQL マネージ インスタンス (プライベート プレビュー) に、VnetId とサブネットのパラメーターの値を渡す必要があります。 CatalogPricingTier パラメーターは、Azure SQL のマネージ インスタンスには適用されません。 
+VNet に参加させる Azure SQL マネージ インスタンス (プレビュー) に、VnetId とサブネットのパラメーターの値を渡す必要があります。 CatalogPricingTier パラメーターは、Azure SQL のマネージ インスタンス (プレビュー) には適用されません。 
 
 ### <a name="start-integration-runtime"></a>統合ランタイムの起動
 Azure-SSIS 統合ランタイムを起動するには、次のコマンドを実行します。 
@@ -325,7 +325,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 
 ### <a name="full-script"></a>完全なスクリプト
-Azure-SSIS IR を作成して VNet に参加させるための完全なスクリプトを次に示します。 このスクリプトでは、Azure SQL マネージ インスタンス (MI) を使用して SSIS カタログをホストしていることを前提としています。 
+Azure-SSIS IR を作成して VNet に参加させるための完全なスクリプトを次に示します。 このスクリプトでは、Azure SQL マネージ インスタンス (プレビュー) を使って SSIS カタログをホストしていることを前提としています。 
 
 ```powershell
 # Azure Data Factory version 2 information 
@@ -351,7 +351,7 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (private preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
 

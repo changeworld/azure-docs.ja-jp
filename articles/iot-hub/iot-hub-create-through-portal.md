@@ -1,24 +1,24 @@
 ---
-title: "Azure Portal を使用して IoT Hub を作成する | Microsoft Docs"
-description: "Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。"
+title: Azure Portal を使用して IoT Hub を作成する | Microsoft Docs
+description: Azure Portal で Azure IoT Hub を作成、管理、および削除する方法。 価格レベル、スケーリング、セキュリティ、およびメッセージングの構成に関する情報が含まれています。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ac1a52355ffa5354bebe3b98fdb75783bcd57697
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -53,18 +53,9 @@ IoT Hub を作成するには、IoT ハブに名前を付ける必要があり�
 
 ### <a name="choose-the-pricing-tier"></a>価格レベルの選択
 
-**Free**、**Standard 1**、**Standard 2**、**Standard S3** の 4 つのレベルから選択することができます。 Free レベルでは、IoT Hub に接続できるデバイスは 500 個のみで、1 日に許可されるメッセージ数は最大 8,000 件です。
+必要な機能およびソリューションで 1 日に送信するメッセージの数に応じて、複数のレベルから適切なものを選びます。 無料レベルは、テストおよび評価用です。 IoT Hub に接続できるデバイスは 500 個で、1 日に許可されるメッセージ数は最大 8,000 件です。 Azure サブスクリプションごとに、無料レベルの IoT Hub を 1 つ作成できます。 
 
-**Standard S1**: S1 エディションは、少量のデータを生成するデバイスが多数存在する IoT ソリューションで使用します。 S1 エディションのユニットごとに、すべての接続デバイスでの合計で 1 日に最大 400,000 メッセージを送信できます。
-
-**Standard S2**: S2 エディションは、デバイスが大量のデータを生成する IoT ソリューションで使用します。 S2 エディションのユニットごとに、すべての接続デバイスでの合計で 1 日に最大 600 万メッセージを送信できます。
-
-**Standard S3**: S3 エディションは、大量のデータが生成される IoT ソリューションで使用します。 S3 エディションのユニットごとに、すべての接続デバイスでの合計で 1 日に最大 3 億件のメッセージを送信できます。
-
-![][4]
-
-> [!NOTE]
-> IoT Hub で許可される無料ハブは Azure サブスクリプションごとに 1 つのみです。
+他のレベルのオプションについて詳しくは、[適切な IoT Hub レベルの選択](iot-hub-scaling.md)に関するページをご覧ください。
 
 ### <a name="iot-hub-units"></a>IoT Hub ユニット
 
@@ -154,22 +145,11 @@ IoT Hub にルートを追加するには、**[ルート]*** ブレードの上�
 
 ![][15]
 
-## <a name="pricing-and-scale"></a>価格とスケール
-
-既存の IoT Hub の価格は **[価格]** 設定を介して変更できますが、次の例外があります。
-
-* 現在の実装では、無料の SKU の IoT Hub のレベルを、有料の SKU のいずれかに変更することはできません。その逆も同じです。
-* Azure サブスクリプションで許可される Free レベルの IoT Hub は 1 つのみです。
-
-![][12]
-
-高レベルから低レベルへの移行は、当該日に送信されるメッセージの数が、低レベルのクォータを超えている場合にのみ可能です。 たとえば、1 日あたりのメッセージの数が 400,000 件を超える場合、IoT Hub のレベルを変更できます。 ただし、S1 レベルに変更すると、その IoT ハブは当該日に制限を受けます。
-
 ## <a name="delete-the-iot-hub"></a>IoT Hub の削除
 
 削除する IoT Hub は、 **[参照]**をクリックしてから、削除対象の適切なハブを選択することで参照できます。 IoT Hub を削除するには、IoT Hub 名の下の **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 

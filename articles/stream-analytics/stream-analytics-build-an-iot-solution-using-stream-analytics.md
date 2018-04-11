@@ -1,25 +1,24 @@
 ---
-title: "Stream Analytics を使って IoT ソリューションを構築する | Microsoft Docs"
-description: "料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。"
-keywords: "IOT ソリューション, ウィンドウ関数"
-documentationcenter: 
+title: Stream Analytics を使って IoT ソリューションを構築する | Microsoft Docs
+description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
+keywords: IOT ソリューション, ウィンドウ関数
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/12/2018
+ms.date: 03/21/2018
 ms.author: sngun
-ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: b36833a9fe35f14eba6d9e397eb0958b716b313b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -41,8 +40,7 @@ ms.lasthandoff: 01/16/2018
 * Visual Studio 2017、2015、または無料の [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 * コンピューターの管理特権
-* [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) (Microsoft ダウンロード センターからダウンロード)
-* 省略可能: [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
+* TollApp センサー データ分析用のソース コードを [azure-stream-analytics GitHub リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)からダウンロードします。 このリポジトリには、次のセクションで使用するサンプルのデータとクエリが含まれています。 
 
 ## <a name="scenario-introduction-hello-toll"></a>シナリオの説明 - "料金所"
 有料道路の料金所は一般的な事象です。 世界中の多くの高速道路、橋、トンネルでそれらを目にします。 各料金所には複数の料金所ブースがあります。 手動式の料金所ブースでは、車を停めて通行料金を支払います。 自動式の料金所ブースでは、通過する車両のフロントガラスに貼り付けられた RFID カードを、各ブースの上方に設置されているセンサーがスキャンします。 車両が料金所を通過した事実は、イベント ストリームとして簡単に可視化でき、そのストリームを介して必要な処理を実行することができます。
@@ -173,7 +171,7 @@ ps1 ファイル、.dll ファイル、.exe ファイルは Windows によって
 
 ![Screenshot of "Sending event hub data"](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image7.png)
 
-この時点で Azure Portal に、リソースが表示されます。 <https://portal.azure.com> にアクセスし、アカウントの資格情報でサインインします。 現在、一部の機能ではクラシック ポータルを利用しています。 その手順を以下に示します。
+この時点で Azure Portal に、リソースが表示されます。 <https://portal.azure.com> に移動して、アカウントの資格情報でサインインします。 現在、一部の機能ではクラシック ポータルを利用しています。 その手順を以下に示します。
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
@@ -182,7 +180,7 @@ Azure Portal で、左側の管理ウィンドウの下部にある **[その他
 ### <a name="azure-storage-container"></a>Azure Storage コンテナー
 Azure Portal でストレージ アカウントを参照すると、**tolldata** で始まるストレージ アカウントが表示されます。 **[tolldata]** コンテナーをクリックし、車両の登録データが含まれる、アップロード済みの JSON ファイルを表示します。
 
-### <a name="azure-sql-database"></a>の接続文字列
+### <a name="azure-sql-database"></a>Azure SQL Database
 1. ブラウザーで表示されている最初のタブで Azure Portal に戻ります。 Azure Portal の左側にある **[SQL データベース]** をクリックしてチュートリアルで使う SQL データベースを表示し、**tolldatadb** をクリックします。
    
     ![Screenshot of the created SQL database](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)

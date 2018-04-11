@@ -1,13 +1,13 @@
 ---
-title: "Hadoop の高可用性 - Azure HDInsight | Microsoft Docs"
-description: "HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。"
+title: Hadoop の高可用性 - Azure HDInsight | Microsoft Docs
+description: HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。
 services: hdinsight
 editor: cgronlun
-manager: jhubbard
+manager: cgronlun
 author: Blackmist
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
-keywords: "Hadoop の高可用性"
+keywords: Hadoop の高可用性
 ms.assetid: 99c9f59c-cf6b-4529-99d1-bf060435e8d4
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 0822502bcd3e2b0d20f718a158d6db489a650bde
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 556aedf5ce822d681caf1373ed7d51999bd439b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -112,7 +112,7 @@ Ambari REST API の使用方法の詳細については、[Ambari REST API を�
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-https://CLUSTERNAME.azurehdinsight.net で Ambari Web UI を表示できます。 **CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、クラスターの HTTP ユーザーの資格情報を入力します。 既定の HTTP ユーザー名は **admin** であり、パスワードはクラスターを作成するときに入力したパスワードです。
+Ambari Web UI は https://CLUSTERNAME.azurehdinsight.net で表示できます。 **CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、クラスターの HTTP ユーザーの資格情報を入力します。 既定の HTTP ユーザー名は **admin** であり、パスワードはクラスターを作成するときに入力したパスワードです。
 
 Ambari ページにアクセスすると、インストールされているサービスがページの左側に表示されます。
 

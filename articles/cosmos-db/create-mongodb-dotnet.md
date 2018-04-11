@@ -15,17 +15,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/19/2018
 ms.author: mimig
-ms.openlocfilehash: 90b1ec66007302ed02032e04e7f3d771012ad02d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cffce67988f6e703b5152f4eb7fc39fccf63a9a5
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: .NET と Azure Portal による MongoDB API Web アプリの構築
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)に基づいたタスク リスト Web アプリを構築し、デプロイします。
+このクイックスタートでは、Azure Portal を使用して、Azure Cosmos DB [MongoDB API](mongodb-introduction.md) アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)に基づいたタスク リスト Web アプリを構築し、デプロイします。
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>サンプル アプリを実行するための前提条件
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同期: 同期を理解してカスタマイズする | Microsoft Docs"
-description: "Azure AD Connect の同期のしくみとカスタマイズ方法について説明します。"
+title: 'Azure AD Connect 同期: 同期を理解してカスタマイズする | Microsoft Docs'
+description: Azure AD Connect の同期のしくみとカスタマイズ方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ee4bf802-045b-4da0-986e-90aba2de58d6
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: d58baa89c9d11b6b7a6bbb3b53974184ef1903b5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a808f929dcd27b53821f59ed8fd3ab67af81a273
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
 Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。 オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。 Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
@@ -46,7 +46,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 | **機能とシナリオ** | |
 | [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) |" *誤って削除されないように保護する* " 機能とその構成方法について説明します。 |
 | [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) |データをインポート、同期、およびエクスポートする組み込みのスケジューラについて説明します。 |
-| [パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) |パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
+| [パスワード ハッシュ同期の実装](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
 | [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) |Azure AD Connect のデバイスの書き戻しのしくみについて説明します。 |
 | [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) |独自のカスタム属性で Azure AD スキーマを拡張する方法について説明します。 |
 | [Office 365 の PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) |ユーザーの Office 365 リソースをユーザーと同じリージョンに配置する方法について説明します。 |

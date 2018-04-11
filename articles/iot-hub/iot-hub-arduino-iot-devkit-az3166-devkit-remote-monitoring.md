@@ -1,12 +1,12 @@
 ---
-title: "IoT DevKit をクラウドへ: IoT DevKit AZ3166 を Azure IoT Hub に接続する | Microsoft Docs"
-description: "このチュートリアルでは、IoT DevKit AZ3166 でのセンサーの状態を監視および視覚化のために Azure IoT Suite に送信する方法を説明します。"
+title: 'IoT DevKit をクラウドへ: IoT MXChip DevKit を Azure IoT Hub に接続する | Microsoft Docs'
+description: このチュートリアルでは、IoT DevKit AZ3166 でのセンサーの状態を監視および視覚化のために Azure IoT Suite に送信する方法を説明します。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b43061f5af3e836ba3f0b37eb11b351a769890be
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 92efd0970bcf516c4210f831a0c2f23b3ee7b5d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="connect-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring"></a>リモート監視のために IoT DevKit AZ3166 を Azure IoT Suite に接続する
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>リモート監視のために MXChip IoT DevKit を Azure IoT Suite に接続する
 
 このチュートリアルでは、DevKit でサンプル アプリを実行して、センサー データを Azure IoT Suite に送信する方法を説明します。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/27/2018
 
 1. [Azure IoT Suite サイト](https://www.azureiotsuite.com/)に移動して、**[新しいソリューションの作成]** をクリックします。
   ![ Azure IoT Suite タイプの選択](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
-  > [!NOTE]
+  > [!WARNING]
   > 既定では、このサンプルでは、1 つの IoT Suite が作成された後、S2 IoT Hub が作成されます。 この IoT ハブを膨大な数のデバイスと共に使用しない場合、S2 から S1 にダウングレードして IoT Suite を削除することを強くお勧めします。これにより、必要なくなった際に関連の IoT Hub も削除できます。 
 
 2. **[リモート監視]** を選択します。

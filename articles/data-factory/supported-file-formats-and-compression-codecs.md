@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 33e0d1d54a533d68ac08f223e1a41e65c7b301a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -444,6 +444,30 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 * 複雑なデータ型はサポートされていません (STRUCT、MAP、LIST、UNION)。
 * ORC ファイルには 3 つの [圧縮関連のオプション](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)(NONE、ZLIB、SNAPPY) があります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
+### <a name="data-type-mapping-for-orc-files"></a>ORC ファイルデータ型マッピング
+
+| Data Factory の中間データ型 | ORC 型 |
+|:--- |:--- |
+| ブール | ブール |
+| SByte | Byte |
+| Byte | ショート |
+| Int16 | ショート |
+| UInt16 | int |
+| Int32 | int |
+| UInt32 | long |
+| Int64 | long |
+| UInt64 | String |
+| Single | Float |
+| Double | Double |
+| Decimal | Decimal |
+| String | String |
+| Datetime | Timestamp |
+| DateTimeOffset | Timestamp |
+| timespan | Timestamp |
+| ByteArray | Binary |
+| Guid | String |
+| Char | Char(1) |
+
 ## <a name="parquet-format"></a>Parquet 形式
 
 Parquet ファイルを解析するか、Parquet 形式でデータを書き込む場合は、`format` `type` プロパティを **ParquetFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
@@ -463,6 +487,31 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 
 * 複雑なデータ型はサポートされていません (MAP、LIST)。
 * Parquet ファイルには圧縮関連のオプション (NONE、SNAPPY、GZIP、LZO) があります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+
+### <a name="data-type-mapping-for-parquet-files"></a>Parquet ファイルのデータ型マッピング
+
+| Data Factory の中間データ型 | Parquet のプリミティブ型 | Parquet の元の型 (逆シリアル化) | Parquet の元の型 (シリアル化) |
+|:--- |:--- |:--- |:--- |
+| ブール | ブール | 該当なし | 該当なし |
+| SByte | Int32 | Int8 | Int8 |
+| Byte | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/Binary | UInt64 | Decimal |
+| Single | Float | 該当なし | 該当なし |
+| Double | Double | 該当なし | 該当なし |
+| Decimal | Binary | Decimal | Decimal |
+| String | Binary | Utf8 | Utf8 |
+| Datetime | Int96 | 該当なし | 該当なし |
+| timespan | Int96 | 該当なし | 該当なし |
+| DateTimeOffset | Int96 | 該当なし | 該当なし |
+| ByteArray | Binary | 該当なし | 該当なし |
+| Guid | Binary | Utf8 | Utf8 |
+| Char | Binary | Utf8 | Utf8 |
+| CharArray | サポートされていません | 該当なし | 該当なし |
 
 ## <a name="compression-support"></a>圧縮のサポート
 

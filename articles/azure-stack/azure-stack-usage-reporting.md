@@ -11,14 +11,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9153efb73e84d7b84a732217b92a9c66617e90ae
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/12/2018
 使用量ベースの課金モデルを採用する Azure Stack マルチモード システムは、課金のために使用状況データを Azure に報告する必要があります。  Azure Stack オペレーターは、使用状況データを Azure に報告するように Azure Stack インスタンスを構成する必要があります。
 
 > [!NOTE]
-> 使用状況データの報告は、従量課金モデルのライセンスを持つ Azure Stack マルチモード システムのユーザーにとっては必須事項です。 一方、容量モデルのライセンスを持つユーザーはこの報告を省略できます ([購入方法](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack)に関するページを参照してください)。 Azure Stack Development Kit ユーザーの場合は、Azure Stack オペレーターが使用状況データを報告し、機能をテストできます。 ただし、ユーザーの使用に対して課金されることはありません。 
+> 使用状況データの報告は、従量課金モデルのライセンスを持つ Azure Stack マルチモード システムのユーザーにとっては必須事項です。 一方、容量モデルのライセンスを持つユーザーはこの報告を省略できます ([購入方法](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/)に関するページを参照してください)。 Azure Stack Development Kit ユーザーの場合は、Azure Stack オペレーターが使用状況データを報告し、機能をテストできます。 ただし、ユーザーの使用に対して課金されることはありません。 
 
 
 ![課金のフロー](media/azure-stack-usage-reporting/billing-flow.png)

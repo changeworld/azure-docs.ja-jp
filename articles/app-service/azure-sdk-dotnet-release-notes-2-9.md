@@ -1,10 +1,10 @@
 ---
-title: "Azure SDK for .NET 2.9 リリース ノート"
-description: "Azure SDK for .NET 2.9 リリース ノート"
+title: Azure SDK for .NET 2.9 リリース ノート
+description: Azure SDK for .NET 2.9 リリース ノート
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
 ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Azure SDK for .NET 2.9 リリース ノート
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/22/2018
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 Release Candidate
 
-- Visual Studio 2017 RC では、Azure SDK for .NET のこのリリースが Azure ワークロードに組み込まれています。 Azure の開発に必要なすべてのツールは、今後 Visual Studio 2017 RC の一部になります。 Visual Studio 2015 と Visual Studio 2013 の場合、SDK は WebPI から引き続き使用できます。 Visual Studio 2013 用の Azure SDK for .NET のリリースは、Visual Studio 2017 が最終製品としてリリースされた時点で中止される予定です。 Visual Studio 2017 RC をダウンロードするには、https://www.visualstudio.com/vs/visual-studio-2017-rc/ にアクセスしてください。
+- Visual Studio 2017 RC では、Azure SDK for .NET のこのリリースが Azure ワークロードに組み込まれています。 Azure の開発に必要なすべてのツールは、今後 Visual Studio 2017 RC の一部になります。 Visual Studio 2015 と Visual Studio 2013 の場合、SDK は WebPI から引き続き使用できます。 Visual Studio 2013 用の Azure SDK for .NET のリリースは、Visual Studio 2017 が最終製品としてリリースされた時点で中止される予定です。 Visual Studio 2017 RC をダウンロードするには、リンク https://www.visualstudio.com/vs/visual-studio-2017-rc/ をご利用ください。
 
 ### <a name="azure-diagnostics"></a>Azure 診断
 

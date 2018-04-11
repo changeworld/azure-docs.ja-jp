@@ -3,24 +3,24 @@ title: Azure SQL Database サービス | Microsoft Docs
 description: 単一のデータベースとプールされたデータベースに対してパフォーマンス レベルとストレージ サイズを提供するサービス レベルについて説明します。
 services: sql-database
 author: CarlRabeler
-manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/21/2018
+manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6153616de763eee1b20fff40d38816eca8b455de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3fe7add4ad4c5563a6307db0dec27c658913429b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベルとは
 
 [Azure SQL Database](sql-database-technical-overview.md) では、[単一データベース](sql-database-single-database-resources.md)と[エラスティック プール](sql-database-elastic-pool.md)の両方に対し、**Basic**、**Standard**、**Premium** の各サービス レベルが提供されます。 SQL Database は、[Azure SQL Database マネージ インスタンス](sql-database-managed-instance.md#managed-instance-service-tier)に対して、汎用サービス階層を提供します。 サービス レベルは、主に、パフォーマンス レベルとストレージ サイズの選択の範囲および価格によって区別されます。  すべてのサービス レベルでは、パフォーマンス レベルとストレージのサイズを柔軟に変更できます。  単一データベースとエラスティック プールは、サービス レベル、パフォーマンス レベル、およびストレージのサイズに基づいて、時間単位で課金されます。   
 
 > [!IMPORTANT]
-> SQL Database マネージ インスタンスは、現在、パブリック プレビューの最中で、単一の汎用サービス階層を提供しています。 詳細については、[Azure SQL Database マネージ インスタンスに関するページ](sql-database-managed-instance.md)を参照してください。 この記事の残りの部分は、マネージ インスタンスには適用されません。
+> SQL Database マネージ インスタンスは、現在、パブリック プレビューの最中で、単一の汎用サービス階層を提供しています。 詳細については、[Azure SQL Database マネージ インスタンスに関するページ](sql-database-managed-instance.md)を参照してください。 この記事の残りの部分は、Azure SQL Database マネージ インスタンスには適用されません。
 
 ## <a name="choosing-a-service-tier"></a>サービス階層の選択
 
@@ -33,7 +33,8 @@ ms.lasthandoff: 03/17/2018
 |CPU|低|低、中、高|中、高|
 |IO スループット (概算) |DTU あたり 2.5 IOPS  | DTU あたり 2.5 IOPS | DTU あたり 48 IOPS|
 |IO 待機時間 (概算)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
-|列ストア インデックス作成とインメモリ OLTP|該当なし|該当なし|サポートされています|
+|列ストア インデックス作成 |該当なし|S3 以上|サポートされています|
+|インメモリ OLTP|該当なし|該当なし|サポートされています|
 |||||
 
 ## <a name="performance-level-and-storage-size-limits"></a>パフォーマンス レベルとストレージ サイズの制限

@@ -122,6 +122,8 @@
           href: author-visually.md
         - name: 継続的インテグレーションとデプロイ
           href: continuous-integration-deployment.md
+        - name: 反復開発とデバッグ
+          href: iterative-development-debugging.md
     - name: データをコピーする
       items:
         - name: コピー アクティビティを使用したデータのコピー

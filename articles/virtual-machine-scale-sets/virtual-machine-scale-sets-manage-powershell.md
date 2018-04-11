@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell を使用した仮想マシン スケール セットの管理 | Microsoft Docs"
-description: "仮想マシン スケール セットを管理するための一般的な Azure PowerShell コマンドレット (インスタンスを起動および停止したり、スケール セットの容量を変更したりする方法など)。"
+title: Azure PowerShell を使用した仮想マシン スケール セットの管理 | Microsoft Docs
+description: 仮想マシン スケール セットを管理するための一般的な Azure PowerShell コマンドレット (インスタンスを起動および停止したり、スケール セットの容量を変更したりする方法など)。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
 ms.service: virtual-machine-scale-sets
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 5b5f3eb05f0d6c10f7efe8af1b93b2cb4fc585c5
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c463dd26c106b3178becc977a8afd742220d7973
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するために使用できる一般的な Azure PowerShell コマンドレットのいくつかについて詳細に説明します。
 
-これらの管理タスクを完了するには、最新の Azure PowerShell モジュールが必要です。 最新バージョンをインストールして使用する方法については、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure Portal でスケール セットを作成](virtual-machine-scale-sets-create-portal.md)できます。
+これらの管理タスクを完了するには、最新の Azure PowerShell モジュールが必要です。 詳細については、「[Azure PowerShell の概要](/powershell/azure/get-started-azureps)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure PowerShell でスケール セットを作成](quick-create-powershell.md)できます。
 
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する

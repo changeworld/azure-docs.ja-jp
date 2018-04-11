@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6ed3fb7c7c4de9edbf31fb2c47290e2e39ceadcd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack Development Kit (ASDK) のトラブルシューティング
 このドキュメントでは、ASDK の一般的なトラブルシューティング情報を提供します。 記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で追加のサポートと情報についてご確認ください。  
@@ -31,7 +31,12 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="deployment"></a>デプロイ
 ### <a name="deployment-failure"></a>デプロイの失敗
-インストール時に障害が発生した場合、デプロイ スクリプトの -rerun オプションを使用して、失敗した手順からデプロイを再開できます。  
+インストール時に障害が発生した場合、次の例に示すように、デプロイ スクリプトの -rerun オプションを使用して、失敗した手順からデプロイを再開できます。
+
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>デプロイの最後に、PowerShell セッションがまだ開いており、出力が表示されません
 この動作は、PowerShell コマンド ウィンドウが選択されている場合の既定の動作の結果に過ぎない可能性があります。 開発キットのデプロイは成功しましたが、ウィンドウを選択したときに、スクリプトが一時停止しました。 設定が完了したことを確認するには、コマンド ウィンドウのタイトル バーで、"select" という単語を探します。 ESC キーを押してその選択を解除すると、その後に完了メッセージが表示されるはずです。

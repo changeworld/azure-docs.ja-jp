@@ -1,11 +1,11 @@
 ---
-title: "Azure Docker VM 拡張機能を使用する | Microsoft Docs"
-description: "Docker VM 拡張機能を使用して、Resource Manager テンプレートと Azure CLI 2.0 を使って Azure で Docker 環境をすばやく安全にデプロイする方法を説明する"
+title: Azure Docker VM 拡張機能を使用する | Microsoft Docs
+description: Docker VM 拡張機能を使用して、Resource Manager テンプレートと Azure CLI 2.0 を使って Azure で Docker 環境をすばやく安全にデプロイする方法を説明する
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: fe4013eefc0a7a896d6e8eb737ee8e2bc26ecf61
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1e5a4fcfd758c12213d6de7d0f5cfcc78531ee97
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
 Docker は一般的なコンテナー管理とイメージング プラットフォームで、Linux 上のコンテナーを簡単に操作できます。 Azure では、ニーズに応じた様々な方法で Docker をデプロイできます。 この記事では、Azure CLI 2.0 での Docker VM 拡張機能と Azure Resource Manager テンプレートの使用について説明します。 これらの手順は、[Azure CLI 1.0](dockerextension-nodejs.md) を使用して実行することもできます。
+
+> [!WARNING]
+> Linux 向けの Azure Docker VM 拡張は非推奨であり、2018 年 11 月に廃止となります。
+> この拡張は Docker をインストールするだけです。そのため、cloud-init や Custom Script Extension などの代替方法が Docker バージョンのインストール方法として優れています。 cloud-init の使用方法については、「[cloud-init を使用して Linux VM をカスタマイズする](tutorial-automate-vm-deployment.md)」を参照してください。
 
 ## <a name="azure-docker-vm-extension-overview"></a>Azure Docker VM 拡張機能の概要
 Azure Docker VM 拡張機能では、Linux 仮想マシン (VM) に Docker デーモン、Docker クライアント、Docker Compose をインストールして構成します。 Azure Docker VM 拡張機能を使うと、単に Docker マシンを使ったり、自分で Docker ホストを作成するより、管理と機能の範囲が広がります。 [Docker Compose](https://docs.docker.com/compose/overview/) などの追加機能により、Azure Docker VM 拡張機能はより堅牢な開発環境または運用環境に適したものになっています。

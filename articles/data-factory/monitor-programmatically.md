@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory をプログラムで監視する | Microsoft Docs"
-description: "さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。"
+title: Azure Data Factory をプログラムで監視する | Microsoft Docs
+description: さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,17 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 95934de9b84270ff112489a7b67f622dad609970
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 87e69349245c5f67e23022e3a45ed798400e6a2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 この記事では、さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法について説明します。 
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のパイプラインの監視と管理](v1/data-factory-monitor-manage-pipelines.md)に関する記事をご覧ください。
+
+## <a name="data-range"></a>データの範囲
+
+Data Factory では、パイプラインの実行データを 45 日間だけ格納します。 Data Factory パイプラインの実行に関するデータに対し、プログラムによってクエリを実行する場合 (たとえば、PowerShell コマンド `Get-AzureRmDataFactoryV2PipelineRun` を使用して)、省略可能な `LastUpdatedAfter` パラメーターおよび `LastUpdatedBefore` パラメーターには日付の制限がありません。 ただし、たとえば、過去 1 年間のデータに対してクエリを実行した場合、クエリによってエラーは返されませんが、返されるパイプライン実行データは過去 45 のデータのみとなります。
+
+過去 45 日より前のパイプライン実行データを保持する場合は、[Azure Monitor](monitor-using-azure-monitor.md) を使用して独自の診断ログを設定する必要があります。
 
 ## <a name="net"></a>.NET
 .NET SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[.NET を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-dot-net.md)に関する記事をご覧ください。

@@ -1,11 +1,11 @@
 ---
-title: "Data Factory のチュートリアル: 初めてのデータ パイプライン | Microsoft Docs"
-description: "この Azure Data Factory のチュートリアルでは、Hadoop クラスターで Hive スクリプトを使用してデータを処理するデータ ファクトリを作成およびスケジュールする方法を示します。"
+title: 'Data Factory のチュートリアル: 初めてのデータ パイプライン | Microsoft Docs'
+description: この Azure Data Factory のチュートリアルでは、Hadoop クラスターで Hive スクリプトを使用してデータを処理するデータ ファクトリを作成およびスケジュールする方法を示します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 374eebfe35207f6e5264159dcb72abddc6de4598
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2fc9c0a823f48446f98fe9686242b8500462427b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 1. **Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。 無料試用版アカウントの取得方法については、「 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) 」を参照してください。
 2. **Azure Storage** – このチュートリアルのデータは、Azure ストレージ アカウントを使用して格納します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 ストレージ アカウントを作成したら、**アカウント名**と**アクセス キー**をメモしておきます。 「 [ストレージ アクセス キーの表示、コピーおよび再生成](../../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 3. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) にある Hive クエリ ファイル (**HQL**) をダウンロードして確認します。 このクエリが、入力データを変換して出力データを生成します。 
-4. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) にあるサンプル入力ファイル (**input.log**) をダウンロードして確認します。
+4. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) にあるサンプルの入力ファイル (**input.log**) をダウンロードして確認します。
 5. Azure Blob Storage に **adfgetstarted** という名前の BLOB コンテナーを作成します。 
 6. **partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。 
 7. **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルをアップロードします。 

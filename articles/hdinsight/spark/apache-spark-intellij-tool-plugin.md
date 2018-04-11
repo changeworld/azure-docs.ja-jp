@@ -1,8 +1,8 @@
 ---
-title: "Azure Toolkit for IntelliJ: HDInsight クラスター向けの Spark アプリケーションを作成する | Microsoft Docs"
-description: "Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信します。"
+title: 'Azure Toolkit for IntelliJ: HDInsight クラスター向けの Spark アプリケーションを作成する | Microsoft Docs'
+description: Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 69f5857f89271b3e4865b93e42e5233ead572715
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2ebf87b0436dbc5ee12a1c41d33ff3d17af1f043
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -44,6 +44,10 @@ Azure Toolkit for IntelliJ プラグインを使用して Scala で記述され�
 
 ## <a name="install-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ をインストールする
 インストール手順については、「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)」を参照してください。
+
+## <a name="get-started"></a>作業の開始
+[Azure サブスクリプションにサインイン](#sign-in-to-your-azure-subscription)するか、[HDInsight クラスターをリンク](#link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を利用してください。
+
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 
@@ -75,12 +79,14 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. **[クラスター名]**、**[ストレージ アカウント]**、**[ストレージ キー]** を入力し、**[ストレージ コンテナー]** からコンテナーを選択し、最後に [ユーザー名] と [パスワード] を入力します。 認証エラーが発生した場合、ユーザー名とパスワードを確認する必要があります。
+2. **[クラスター名]**、**[ユーザー名]**、**[パスワード]** を入力します。 認証エラーが発生した場合、ユーザー名とパスワードを確認する必要があります。 任意で、[ストレージ アカウント] と [ストレージ キー] を追加し、[ストレージ コンテナー] からコンテナーを選択します。 ストレージ情報は、左のツリーのストレージ エクスプローラーに関するものです。
    
    ![リンク クラスターのダイアログ](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
 
    > [!NOTE]
-   > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。 
+   > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
+   > ![IntelliJ のストレージ エクスプローラー](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
+
    
 3. 入力した情報が正しい場合、**[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 

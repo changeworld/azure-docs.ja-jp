@@ -1,9 +1,9 @@
 ---
-title: "Azure サービス アラートの作成 - Azure Portal | Microsoft Docs"
-description: "指定した条件が満たされたときに、電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。"
+title: Azure サービス アラートの作成 - Azure Portal | Microsoft Docs
+description: 指定した条件が満たされたときに、電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 3e09c145d35665ec1c2467b60f06191ac51a5c16
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Azure Monitorでの Azure サービス メトリック アラートの作成 - Azure Portal
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Azure Monitor での Azure サービス クラシック メトリック アラートの作成 - Azure Portal
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,28 +29,29 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>概要
-この記事では、Azure ポータルを使用して Azure メトリック アラートを設定する方法について説明します。 
+
+> [!NOTE]
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)がサポートされるようになりました。 
+>
+>
+
+この記事では、Azure Portal を使用してクラシック Azure メトリック アラートを設定する方法について説明します。 
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
-* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーされます。 [アクティビティ ログのアラート](monitoring-activity-log-alerts.md)について詳しく学習します。
+* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーできます。 [アクティビティ ログのアラート](monitoring-activity-log-alerts.md)について詳しく学習します。
 
-メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
+クラシック メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
 * Azure Runbook の実行を開始する (Azure ポータルからのみ)
 
-> [!NOTE]
-> Azure Monitor では、パブリック プレビューでほぼリアルタイムのメトリック アラートをサポートするようになりました。 これらはアクション グループを使用します。 [ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)について詳しく学習します。
->
->
+クラシック メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 
-メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-
-* [Azure ポータル](insights-alerts-portal.md)
+* [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
 * [コマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -58,11 +59,11 @@ ms.lasthandoff: 12/21/2017
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 
-2. [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
+2. [監視] セクションで、**[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。 **[アラート (クラシック)]** が見つからない場合は、**[アラート]** または **[アラート ルール]** で見つかることがあります。
 
     ![監視](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. **[アラートの追加]** コマンドを選択し、フィールドに入力します。
+3. **[メトリック アラートの追加 (クラシック)]** コマンドを選択して、フィールドに入力します。
 
     ![[アラートの追加]](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 
@@ -89,9 +90,9 @@ ms.lasthandoff: 12/21/2017
 * 編集または削除する。
 * そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを**無効**または**有効**にする。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
-* [ほぼリアルタイムのメトリック アラート (プレビュー)](monitoring-near-real-time-metric-alerts.md) について詳しく学習します。
+* [新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)に関する詳細情報を確認します。
 * [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
 * [アクティビティ ログ イベントに対するアラートの構成](monitoring-activity-log-alerts.md)に関する詳細情報を確認します。
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。

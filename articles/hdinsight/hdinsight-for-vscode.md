@@ -1,14 +1,14 @@
 ---
-title: "Azure HDInsight Tools - Hive、LLAP、pySpark に Visual Studio Code を使用する | Microsoft Docs"
-description: "Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。"
+title: Azure HDInsight Tools - Hive、LLAP、pySpark に Visual Studio Code を使用する | Microsoft Docs
+description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
 Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
-manager: 
+manager: ''
 editor: jgao
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 4f0bcd0992a02e64b4b10347fc30776af17900bd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -69,9 +69,9 @@ Azure に接続するには、まず VS Code にワークスペースを作成�
 
 4. **[エクスプローラー]** から **XXXX_hdi_settings.json** を開くか、スクリプト エディターを右クリックして **[構成の設定]** を選択します。 ファイルのサンプルに示すように、ログイン エントリ、既定のクラスター、ジョブの送信の各パラメーターを構成できます。 残りのパラメーターを空のままにすることもできます。
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-hdinsight-cluster"></a>HDInsight クラスターへの接続
 
-VS Code から HDInsight クラスターにスクリプトを送信するには、Azure アカウントに接続しておく必要があります。
+VS Code から HDInsight クラスターにスクリプトを送信するには、(Ambari のユーザー名/パスワードかドメイン参加アカウントを利用し) 先に Azure アカウントに接続するか、クラスターをリンクする必要があります。
 
 **Azure に接続するには**
 
@@ -120,7 +120,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
    ![リンクされたクラスター](./media/hdinsight-for-vscode/linked-cluster.png)
 
-4. また、コマンド パレットに「**HDInsight: Unlink a cluster**」と入力してクラスターのリンクを解除することもできます。
+4. コマンド パレットに「**HDInsight: Unlink a cluster**」と入力してクラスターのリンクを解除することもできます。
 
 ## <a name="list-hdinsight-clusters"></a>List HDInsight clusters
 

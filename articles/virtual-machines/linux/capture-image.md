@@ -1,11 +1,11 @@
 ---
-title: "CLI 2.0 を利用し、Azure で Linux VM のイメージをキャプチャする | Microsoft Docs"
-description: "Azure CLI 2.0 を使用し、Azure VM のイメージをキャプチャし、一括デプロイに利用します。"
+title: CLI 2.0 を利用し、Azure で Linux VM のイメージをキャプチャする | Microsoft Docs
+description: Azure CLI 2.0 を使用し、Azure VM のイメージをキャプチャし、一括デプロイに利用します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e83319b8b4ace495a4301dd850cea27633115426
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 
@@ -89,6 +89,8 @@ Azure CLI 2.0 を使用し、一般化されたものとして VM を設定し�
    
    > [!NOTE]
    > このイメージは、ソース VM と同じリソース グループに作成されます。 このイメージから、サブスクリプション内の任意のリソース グループに VM を作成できます。 管理の観点から、VM のリソースとイメージに専用のリソース グループを作成することをお勧めします。
+   >
+   > イメージをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、`--zone-resilient true` パラメーターを含める必要があります。
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>手順 3: キャプチャしたイメージから VM を作成する
 [az vm create](/cli/azure/vm#az_vm_create) で、作成したイメージを使用して VM を作成します。 次の例では、*myImage* という名前のイメージから *myVMDeployed* という名前の VM を作成します。

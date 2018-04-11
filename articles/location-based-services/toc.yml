@@ -25,10 +25,12 @@
       href: geocoding-coverage.md
     - name: トラフィックの対象範囲
       href: traffic-coverage.md
-    - name: カバレッジをレンダリングする
+    - name: レンダーの対象範囲
       href: render-coverage.md
-    - name: カバレッジをルーティングする
+    - name: ルーティングの対象範囲
       href: routing-coverage.md
+    - name: サポートされている言語
+      href: supported-languages.md
 - name: ハウツー ガイド
   items:
     - name: アカウントとキーの管理

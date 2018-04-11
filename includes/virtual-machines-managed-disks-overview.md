@@ -104,7 +104,8 @@ Managed Disks に関して説明する暗号化には 2 つの種類がありま
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-[Azure Storage Service Encryption ](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、管理ディスクを使用できるすべてのリージョンのすべての管理ディスク、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべての管理ディスク、スナップショット、イメージおよび既存の管理ディスクに書き込まれた新しいデータは、Microsoft が管理するキーで自動的に暗号化されます。  詳細については、「[管理ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+[Azure Storage Service Encryption ](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、管理ディスクを使用できるすべてのリージョンのすべての管理ディスク、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべての管理ディスク、スナップショット、イメージおよび既存の管理ディスクに書き込まれた新しいデータは、既定でマイクロソフトが管理するキーで自動的に暗号化されます。 Azure BLOB や Azure Files の暗号化に独自のキーを使用することもできます。 テーブルとキューの暗号化には、常にマイクロソフトが管理するキーが使用されます。
+Storage Service Encryption を有効にした後は新しいデータのみが暗号化され、このストレージ アカウントの既存のファイルはすべて、バックグラウンドの暗号化プロセスで遡及的に暗号化されます。 詳細については、「[管理ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)

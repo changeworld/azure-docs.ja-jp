@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 202c75366477ae3445f607f75d08faf0335de79f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -119,7 +119,7 @@ Heartbeat
 
 Windows コンピューターでは、次の内容を調べて、Log Analytics とエージェントの接続を確認できます。
 
-1.  コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics (OMS)]** タブで、エージェントに "**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**" というメッセージが表示されていることを確認します。   
+1.  コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。   
 2.  Windows イベント ログを開き、**アプリケーションとサービス ログ\Operations Manager** に移動して、ソースのサービス コネクタでイベント ID 3000 および 5002 を検索します。 これらのイベントは、コンピューターが Log Analytics ワークスペースに登録され、構成を受信していることを示しています。  
 
 エージェントが Log Analytics と通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されているのであれば、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関するページを参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
@@ -131,18 +131,18 @@ Windows コンピューターでは、次の内容を調べて、Log Analytics �
 
 新しく追加された Linux エージェントは、評価が完了した後、状態が "**更新済み**" と表示されます。 このプロセスには最大で 6 時間かかります。
 
-Operations Manager 管理グループが Log Analytics と通信していることを確認する方法については、「[Operations Manager と OMS の統合を検証する](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)」を参照してください。
+Operations Manager 管理グループが Log Analytics と通信していることを確認する方法については、「[Validate Operations Manager Integration with Log Analytics (Operations Manager と Log Analytics の統合を検証する)](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)」を参照してください。
 
 ## <a name="data-collection"></a>データ収集
 
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
-| Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。 管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
@@ -173,7 +173,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 ## <a name="viewing-update-deployments"></a>更新プログラムの展開の表示
 
-**[更新プログラムの展開]** をクリックすると、既存の更新プログラムの展開の一覧が表示されます。 一覧で更新プログラムの展開のいずれかをクリックすると、その更新プログラムの展開の **[更新プログラムの展開の実行]** ページが開きます。
+**[Update Deployments]\(更新プログラムの展開\)** タブをクリックすると、既存の更新プログラムの展開の一覧が表示されます。 表で更新プログラムの展開のいずれかをクリックすると、その更新プログラムの展開の **[更新プログラムの展開の実行]** ページが開きます。
 
 ![更新プログラムの展開結果の概要](./media/automation-update-management/update-deployment-run.png)
 
@@ -181,9 +181,9 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 新しい更新プログラムの展開を作成するには、画面上部にある **[更新プログラムの展開のスケジュール]** をクリックして、**[新しい更新プログラムの展開]** ページを開きます。 指定する必要があるプロパティの値を次の表に示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
-| 名前 |更新プログラムの展開を識別する一意の名前。 |
+| Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
 | 更新するマシン |[保存した検索条件] を選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します |
 |更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
@@ -199,21 +199,21 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 | --- | --- |
-|Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
-| Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
-| Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント |
-| Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム | 
+|プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
+| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
+| Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
+| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム | 
 | UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" | 
-| Update<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 | 
+| プライマリの<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 | 
 | UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
 
 PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、ソフトウェア更新管理 (SUM) サイクルの一環として、ソフトウェア更新プログラムの管理でもその強さと成熟度を活用できます。
 
-OMS Update Management ソリューションを System Center Configuration Manager と統合する方法については、「[System Center Configuration Manager と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)」を参照してください。
+管理ソリューションを System Center Configuration Manager と統合する方法については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)」を参照してください。
 
 ## <a name="patching-linux-machines"></a>Linux マシンへのパッチ適用
 

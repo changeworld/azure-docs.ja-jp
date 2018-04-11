@@ -1,28 +1,28 @@
 ---
-title: "PowerShell for Azure Stack のインストールと構成のクイックスタート | Microsoft Docs"
-description: "PowerShell for Azure Stack のインストールと構成について説明します。"
+title: PowerShell for Azure Stack のインストールと構成のクイックスタート | Microsoft Docs
+description: PowerShell for Azure Stack のインストールと構成について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 6996DFC1-5E05-423A-968F-A9427C24317C
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: cba6f8295e5d4b75192e566d4931cbd617e7dc8d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 55fd212a895ed861cb5a9be0e4dae283e3cb5cfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Azure Stack での PowerShell を使用した準備と実行
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 このクイック スタートは、PowerShell を使用して Azure Stack 環境をインストールして構成する際に役立ちます。 この記事で提供するスクリプトは、**Azure Stack オペレーター**のみを対象としています。
 
@@ -32,9 +32,6 @@ ms.lasthandoff: 03/08/2018
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Azure Active Directory ベースのデプロイ用に PowerShell を設定する
 
 Azure Stack Development Kit にサインインするか、VPN 経由で接続している場合は Windows ベースの外部クライアントにサインインします。 管理者特権の PowerShell ISE セッションを開き、次のスクリプトを実行します。 必要に応じて、**TenantName**、**ArmEndpoint**、**GraphAudience** 変数をお使いの環境の構成に合わせて更新してください。
-
-> [!IMPORTANT]
-> AzureRM 1.2.11 リリースの PowerShell モジュールには、重大な変更が多数追加されています。 1.2.10 バージョンからアップグレードするには、[移行ガイド](https://aka.ms/azspowershellmigration)を参照してください。
 
 ```powershell
 # Specify Azure Active Directory tenant name.
@@ -83,10 +80,6 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 
 # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
-
-# For Azure Stack development kit, this value is adminvault.local.azurestack.external 
-$KeyvaultDnsSuffix = "<Keyvault DNS suffix for your environment>"
-
 
 # Register an AzureRM environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
@@ -154,9 +147,6 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
 $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-# For Azure Stack development kit, this value is adminvault.local.azurestack.external 
-$KeyvaultDnsSuffix = "<Keyvault DNS suffix for your environment>"
-
 # Register an AzureRM environment that targets your Azure Stack instance
 Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
@@ -181,6 +171,9 @@ PowerShell を構成したので、リソース グループを作成して構�
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
+> [!note]  
+> リソース グループを指定するには、サブスクリプションのリソース グループが必要です。 サブスクリプションの詳細については、「[プラン、オファー、クォータ、サブスクリプションの概要](azure-stack-plan-offer-quota-overview.md)」を参照してください。
+
 リソース グループが作成されると、**[Provisioning state]\(プロビジョニング状態\)** プロパティは **[Succeeded]\(成功\)** に設定されます。
 
 ## <a name="next-steps"></a>次の手順
@@ -188,10 +181,3 @@ New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 * [CLI のインストールと構成](azure-stack-connect-cli.md)
 
 * [テンプレートの開発](user/azure-stack-develop-templates.md)
-
-
-
-
-
-
-

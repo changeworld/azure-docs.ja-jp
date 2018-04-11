@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 
@@ -324,9 +324,9 @@ Logic Apps デザイナーで **[実行]** をクリックしてロジック ア
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>手順 5 - Log Analytics での Azure アクティビティ ログの表示
 最後の手順では、Log Analytics ワークスペースを調べて、データが意図したとおりに収集されていることを確認します。
 
-1. Azure Portal で **[Log Analytics]** を選択します。
-2. ご使用のワークスペースを選択し、**[ログ検索]**  タイルを選択します。
-3. 検索クエリ バーに `AzureActivity_CL` を入力し、検索ボタンをクリックします。 カスタム ログに *AzureActivity* という名前を付けなかった場合は、選択した名前を入力して末尾に `_CL` を追加します。
+1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+2. Log Analytics ワークスペースの一覧からワークスペースを選択します。
+3.  **[ログ検索]** タイルをクリックし、[ログ検索] ウィンドウのクエリ フィールドに「`AzureActivity_CL`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。 カスタム ログに *AzureActivity* という名前を付けなかった場合は、選択した名前を入力して末尾に `_CL` を追加します。
 
 >[!NOTE]
 > 新しいカスタム ログが Log Analytics に最初に送信されるときは、カスタム ログを検索可能にするために 1 時間程度かかることがあります。

@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse Transact-SQL リファレンス | Microsoft Docs"
-description: "SQL Data Warehouse によって使用される Transact-SQL トピックのリファレンス コンテンツへのリンク。"
+title: SQL Data Warehouse Transact-SQL リファレンス | Microsoft Docs
+description: SQL Data Warehouse によって使用される Transact-SQL トピックのリファレンス コンテンツへのリンク。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 03/22/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="transact-sql-topics"></a>Transact-SQL トピック
 ## <a name="data-definition-language-ddl-statements"></a>データ定義言語 (DDL) ステートメント
@@ -112,13 +112,13 @@ ms.lasthandoff: 10/11/2017
 * [DROP USER](https://msdn.microsoft.com/library/ms189438.aspx)
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
-## <a name="next-steps"></a>次のステップ
-TSQL の例については、「[SQL Data Warehouse の参照トピック][SQL Data Warehouse reference overview]」を参照してください。
+## <a name="next-steps"></a>次の手順
+その他の TSQL 参照については、[SQL Data Warehouse T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 

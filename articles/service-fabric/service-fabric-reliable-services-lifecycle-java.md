@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric Reliable Services のライフサイクル | Microsoft Docs"
-description: "Service Fabric Reliable Services のライフサイクル イベントについて説明します。"
+title: Azure Service Fabric Reliable Services のライフサイクル | Microsoft Docs
+description: Service Fabric Reliable Services のライフサイクル イベントについて説明します。
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.openlocfilehash: ad4228ade68f4494e5be0454643752e742c1cc81
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 4270bf0b8002b5328241c6d31f399511fc38274e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services のライフサイクル
 > [!div class="op_single_selector"]
@@ -65,11 +65,11 @@ Reliable Services でのイベントの順序は、リライアブル サービ�
 1. 次のイベントが並列に発生します。
     - 開いているすべてのリスナーが閉じられます。 `CommunicationListener.closeAsync()` が各リスナーに呼び出されます。
     - `runAsync()` に渡されたキャンセル トークンが取り消されます。 キャンセル トークンの `isCancelled` プロパティをチェックすると `true` が返され、メソッドを呼び出した場合、トークンの `throwIfCancellationRequested` メソッドは `CancellationException` をスローします。
-2. 各リスナーで `closeAsync()` が完了し、`runAsync()` も完了すると、サービスの `StatelessService.onCloseAsync()` メソッドが呼び出されます (存在する場合)。 やはり、これは一般的なオーバーライドではありません。
+2. 各リスナーで `closeAsync()` が完了し、`runAsync()` も完了すると、サービスの `StatelessService.onCloseAsync()` メソッドが呼び出されます (存在する場合)。 繰り返しになりますが、これは一般的なオーバーライドではなく、安全にすべてのリソースを閉じたり、バック グラウンド処理を停止したり、外部の状態の保存を完了したり、既存の接続を終了したりすることができます。
 3. `StatelessService.onCloseAsync()` が完了すると、サービス オブジェクトは破棄されます。
 
 ## <a name="stateful-service-startup"></a>ステートフル サービスのスタートアップ
-ステートフル サービスのパターンはステートレス サービスに似ていますが、変更点がいくつかあります。 ステートフル サービスを開始する場合のイベントの順序は次のとおりです。
+ステートフル サービスのパターンはステートレス サービスに似ていますが、変更点がいくつかあります。  ステートフル サービスを開始する場合のイベントの順序は次のとおりです。
 
 1. サービスが構築されます。
 2. `StatefulServiceBase.onOpenAsync()` が呼び出されます この呼び出しがサービスで上書きされることはほとんどありません。
@@ -127,15 +127,14 @@ Service Fabric によってスローされる例外には、永続的なもの [
 Reliable Services のテストと検証の重要な部分は、`ReliableCollections` とサービスのライフサイクル イベントを組み合わせて使ったことによる例外を処理することです。 負荷がかかった状態で常にサービスを実行することをお勧めします。 また、運用環境にデプロイする前に、アップグレードと[混乱テスト](service-fabric-controlled-chaos.md)を実行する必要もあります。 これらの基本手順を行うことで、サービスが正しく実装され、ライフサイクル イベントが正しく処理されるようになります。
 
 ## <a name="notes-on-service-lifecycle"></a>サービスのライフサイクルに関するメモ
-* `runAsync()` メソッドおよび `createServiceInstanceListeners/createServiceReplicaListeners` の呼び出しは両方とも省略可能です。 サービスでは、どちらか一方だけまたは両方を使うか、どちらも使わない場合があります。 たとえば、サービスがユーザーの呼び出しに応答してすべての処理を実行する場合、`runAsync()` を実装する必要はありません。 通信リスナーおよびそれに関連付けられたコードのみが必要です。 
-
-  同様に、通信リスナーを作成して返すことも省略可能です。 サービスで行うのがバックグラウンド処理だけの場合、`runAsync()` を実装することだけが必要です。
+* `runAsync()` メソッドおよび `createServiceInstanceListeners/createServiceReplicaListeners` の呼び出しは両方とも省略可能です。 サービスでは、どちらか一方だけまたは両方を使うか、どちらも使わない場合があります。 たとえば、サービスがユーザーの呼び出しに応答してすべての処理を実行する場合、`runAsync()` を実装する必要はありません。 通信リスナーおよびそれに関連付けられたコードのみが必要です。  同様に、通信リスナーを作成して返すことも省略可能です。 サービスで行うのがバックグラウンド処理だけの場合、`runAsync()` を実装することだけが必要です。
 * サービスは、正常に `runAsync()` を完了して戻ることができます。 これは障害状態とは見なされません。 これは、サービスのバックグラウンド処理の終了を表します。 ステートフル リライアブル サービスでは、サービスがプライマリから一度降格して再度プライマリに昇格した場合、`runAsync()` が再度呼び出されます。
 * サービスが予期しない例外をスローして `runAsync()` を終了した場合はエラーです。 サービス オブジェクトがシャットダウンされ、正常性のエラーが報告されます。
 * これらのメソッドから制御が戻るときに時間制限はありませんが、書き込みはすぐにできなくなります。 そのため、実際の処理を完了できません。 取り消し要求を受信したらできるだけ短時間で制御を戻すことをお勧めします。 サービスが適切な時間内にこれらの API 呼び出しに応答しない場合、Service Fabric はサービスを強制的に終了する場合があります。 通常、これはアプリケーションのアップグレード中か、サービスの削除中のみに発生します。 このタイムアウト時間は既定で 15 分です。
-* `onCloseAsync()` のパスで障害が起きると、`onAbort()` が呼び出されます。 これは、サービスが要求したリソースすべてをクリーンアップし解放するための最後のベストエフォートの機会になります。
+* `onCloseAsync()` のパスで障害が起きると、`onAbort()` が呼び出されます。 これは、サービスが要求したリソースすべてをクリーンアップし解放するための最後のベストエフォートの機会になります。 これは一般に、ノードで永続的なエラーが検出されたときや Service Fabric が内部エラーのために、サービス インスタンスのライフ サイクルを確実に管理できないときに呼び出されます。
+* `OnChangeRoleAsync()` は、ステートフル サービス レプリカのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。 プライマリ レプリカには書き込み状態が与えられます (Reliable Collection の作成と Reliable Collection への書き込みが可能)。 セカンダリ レプリカには読み取り状態が与えられます (既存の Reliable Collection からの読み取りのみが可能)。 ステートフル サービスの作業のほとんどは、プライマリ レプリカで実行されます。 セカンダリ レプリカでは、読み取り専用の検証、レポートの生成、データ マイニングなど、読み取り専用のジョブを実行できます。
 
 ## <a name="next-steps"></a>次の手順
 * [Reliable Services 入門](service-fabric-reliable-services-introduction.md)
 * [Reliable Services の概要](service-fabric-reliable-services-quick-start-java.md)
-* [Reliable Services の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
+

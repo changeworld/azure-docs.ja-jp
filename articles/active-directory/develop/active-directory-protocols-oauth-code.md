@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a24ae9b620557e3106eb7f51b3f002cd76dd03
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 241f872b3069a58a35df7104f3335964298c7a20
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
 Azure Active Directory (Azure AD) が OAuth 2.0 を使用することにより、ユーザーは Azure AD テナントの Web アプリケーションと Web API へのアクセスを承認することができます。 本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
@@ -138,9 +138,9 @@ grant_type=authorization_code
 | grant_type |必須 |承認コード フローでは `authorization_code` を指定する必要があります。 |
 | code |必須 |前のセクションで取得した `authorization_code` 。 |
 | redirect_uri |必須 |`authorization_code` を取得するために使用したのと同じ `redirect_uri` 値。 |
-| client_secret |Web アプリの場合は必須 |アプリ登録ポータルで作成した、アプリケーションのシークレット。  ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。  Web アプリや Web API では `client_secret` をサーバー側で安全に保存する機能が備わっており、指定する必要があります。 |
+| client_secret |Web アプリで必須、パブリック クライアントでは使用不可 |アプリ登録ポータルで作成した、アプリケーションのシークレット。  ネイティブ アプリ (パブリック クライアント) では使用できません。デバイスに client_secret を確実に保存することができないためです。  Web アプリや Web API (すべての機密クライアント) では `client_secret` をサーバー側で安全に保存する機能が備わっているため、これを指定する必要があります。 |
 | resource |承認コード要求で指定された場合は必須、それ以外の場合は省略可 |Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 |
-| code_verifier | 省略可能              | authorization_code を取得するために使用されたのと同じ code_verifier。  承認コード付与要求で PKCE が使用された場合は必須です。  詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。                                                                                                                                                                                                                                                                                             |
+| code_verifier | 省略可能              | authorization_code を取得するために使用されたのと同じ code_verifier。  承認コード付与要求で PKCE が使用された場合は必須です。  詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。   |
 
 アプリケーション ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。
 

@@ -1,11 +1,10 @@
 ---
-title: "Data Factory を使用して Salesforce からデータを移動する | Microsoft Docs"
-description: "Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。"
+title: Data Factory を使用して Salesforce からデータを移動する | Microsoft Docs
+description: Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e678e947a686b5a672af13cb0f0e60b4a272de9
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: d4c679722e36eb9533b65037a488fb9af9a5bc80
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +71,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 | プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | 型 |type プロパティを **Salesforce**に設定する必要があります。 |[はい] |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
 | password |ユーザー アカウントのパスワードを指定します。 |[はい] |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |[はい] |

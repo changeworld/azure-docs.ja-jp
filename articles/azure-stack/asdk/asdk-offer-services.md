@@ -13,14 +13,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 083b5e20b89f22cb8e523926858fe9ffb1441319
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8bcc2f3077e79ff83ac2e90db0bb0fa53ae83adc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-offer-azure-stack-iaas-services"></a>チュートリアル: Azure Stack の IaaS サービスをオファーする
 Azure Stack のクラウド管理者は、ユーザー (テナントとも呼ばれます) がサブスクライブできるオファーを作成できます。 ユーザーはサブスクリプションを使用して Azure Stack サービスを利用できます。
@@ -112,14 +112,24 @@ Azure Stack では、サブスクリプション、オファー、プランを�
 > オファーの変更は、ユーザーにすぐに表示されるわけではありません。 変更された新しいオファーをユーザーが見るには、ログアウトしてから、もう一度[ユーザー ポータル](https://portal.local.azurestack.external)にログインしなければならない場合があります。
 
 新しいオファーをパブリックに設定するには、次のように操作します。 
+   - バージョン 1803 以降: 
+     1. ダッシュ ボード メニューの **[Offer]** (オファー) をクリックしてから、作成したオファーをクリックします。
 
-1. ダッシュ ボード メニューの **[Offer]** (オファー) をクリックしてから、作成したオファーをクリックします。
+     2. **[アクセシビリティの状態]** をクリックし、**[パブリック]** をクリックします。
 
-2. **[状態の変更]** をクリックし、**[パブリック]** をクリックします。
+        ![状態の変更](media/asdk-offer-services/change-state.png)
 
-   ![[パブリック] の状態](media/asdk-offer-services/set-public.png)
+     3. これで、オファーを Azure Stack ユーザー ポータルで使用できるようになりました。
 
-3. これで、オファーを Azure Stack ユーザー ポータルで使用できるようになりました。
+
+   - バージョン 1803 よりも前:  
+     1. ダッシュ ボード メニューの **[Offer]** (オファー) をクリックしてから、作成したオファーをクリックします。
+
+     2. **[状態の変更]** をクリックし、**[パブリック]** をクリックします。
+
+        ![[パブリック] の状態](media/asdk-offer-services/set-public.png)
+
+     3. これで、オファーを Azure Stack ユーザー ポータルで使用できるようになりました。
 
 ## <a name="next-steps"></a>次の手順
 

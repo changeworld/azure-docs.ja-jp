@@ -1,16 +1,16 @@
 ---
-title: "Azure Site Recovery での Hyper-V から Azure へのレプリケーション アーキテクチャ | Microsoft Docs"
-description: "この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します。"
+title: Azure Site Recovery での Hyper-V から Azure へのレプリケーション アーキテクチャ | Microsoft Docs
+description: この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/194/2018
 ms.author: raynew
-ms.openlocfilehash: dd3dcf325ed5a628c98ac63683440e1796aa8c3f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 978d290287a4ff8875eea7e93f003c78e7177dae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V から Azure へのレプリケーション アーキテクチャ
 
@@ -28,7 +28,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
 **Azure** | Azure サブスクリプション、Azure ストレージ アカウント、および Azure ネットワーク。 | オンプレミスの VM ワークロードからレプリケートされたデータはストレージ アカウントに格納されます。 オンプレミス サイトからのフェールオーバーが発生したときにそのレプリケートされたワークロード データで Azure VM が作成されます。<br/><br/> Azure VM は、作成時に Azure 仮想ネットワークに接続します。
-**Hyper-V** | Site Recovery のデプロイ中には、Hyper-V サイトに Hyper-V ホストとクラスターを収集します。 Azure Site Recovery プロバイダーと Recovery Services エージェントは個々の Hyper-V ホストにインストールします。 | Site Recovery を使用したレプリケーションは、Site Recovery プロバイダーがインターネット経由で統制します。 Recovery Services エージェントは、データ レプリケーションを担います。<br/><br/> プロバイダーとエージェントの両方からの通信は、セキュリティで保護され、暗号化されます。 Azure Storage 内のレプリケートされたデータも暗号化されます。
+**Hyper-V** | Site Recovery のデプロイ中には、Hyper-V サイトに Hyper-V ホストとクラスターを収集します。 Azure Site Recovery プロバイダーと Recovery Services エージェントは、各スタンドアロン Hyper-V ホスト、または各 Hyper-V クラスター ノードにインストールします。 | Site Recovery を使用したレプリケーションは、Site Recovery プロバイダーがインターネット経由で統制します。 Recovery Services エージェントは、データ レプリケーションを担います。<br/><br/> プロバイダーとエージェントの両方からの通信は、セキュリティで保護され、暗号化されます。 Azure Storage 内のレプリケートされたデータも暗号化されます。
 **Hyper-V VM** | Hyper-V を実行する 1 つ以上の VM。 | VM に明示的にインストールする必要があるものはありません。
 
 
@@ -46,7 +46,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 --- | --- | ---
 **Azure** | Azure サブスクリプション、Azure ストレージ アカウント、および Azure ネットワーク。 | オンプレミスの VM ワークロードからレプリケートされたデータはストレージ アカウントに格納されます。 オンプレミス サイトからのフェールオーバーが発生したときにそのレプリケートされたデータで Azure VM が作成されます。<br/><br/> Azure VM は、作成時に Azure 仮想ネットワークに接続します。
 **VMM サーバー** | VMM サーバーに、Hyper-V ホストを含むクラウドが 1 つ以上存在する。 | VMM サーバーで、Site Recovery プロバイダーをインストールして Site Recovery でレプリケーションを調整し、サーバーを Recovery Services コンテナーに登録します。
-**Hyper-V ホスト** | VMM で管理されている 1 つ以上の Hyper-V ホスト/クラスター。 |  各ホストまたはクラスター メンバーに Recovery Services エージェントをインストールします。
+**Hyper-V ホスト** | VMM で管理されている 1 つ以上の Hyper-V ホスト/クラスター。 |  各 Hyper-V ホストまたはクラスター ノードに Recovery Services エージェントをインストールします。
 **Hyper-V VM** | Hyper-V ホスト サーバー上で実行されている 1 つ以上の VM。 | VM に明示的にインストールする必要があるものはありません。
 **ネットワーク** | VMM サーバー上に設定された論理ネットワークおよび VM ネットワーク。 VM ネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。 | VM ネットワークは、Azure 仮想ネットワークにマッピングされます。 Azure VM がフェールオーバー後に作成されると、VM ネットワークにマッピングされている Azure ネットワークに追加されます。
 

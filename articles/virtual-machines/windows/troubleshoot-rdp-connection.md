@@ -1,12 +1,12 @@
 ---
-title: "RDP を使って Azure の Windows VM に接続できない | Microsoft Docs"
-description: "リモート デスクトップを使用して Azure で Windows 仮想マシンに接続できない場合の問題のトラブルシューティング"
-keywords: "リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング"
+title: RDP を使って Azure の Windows VM に接続できない | Microsoft Docs
+description: リモート デスクトップを使用して Azure で Windows 仮想マシンに接続できない場合の問題のトラブルシューティング
+keywords: リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング
 services: virtual-machines-windows
-documentationcenter: 
-author: genlin
+documentationcenter: ''
+author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
-ms.author: genli
-ms.openlocfilehash: 4731a34d143d402372aaff7c03f95dbf0bb508a4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 03/23/2018
+ms.author: danis
+ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。 VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。 この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。 
@@ -77,7 +77,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能]**と表示されます。
    
     ![Azure Portal で VM リソース ヘルスを確認する](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、ローカル管理者アカウントのパスワードをリセットします。
+6. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、ローカル管理者アカウントのパスワードをリセットします。  VM にログインしたら、そのユーザーのパスワードをリセットしてください。
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Reset password]** ボタンをクリックします。 **[モード]** が **[パスワードのリセット]** に設定されていることを確認し、ユーザー名と新しいパスワードを入力します。 最後に、**[更新]** ボタンをクリックします。
    
@@ -207,7 +207,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Resource health]** ボタンをクリックします。 正常な VM には **[使用可能]** と表示されます。
    
     ![Azure Portal で VM リソース ヘルスを確認する](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、指定したローカル管理者アカウントのパスワードをリセットします。
+5. **ユーザーの資格情報をリセットする**。 このトラブルシューティングの手順では、資格情報が明確でないか、覚えていない場合に、指定したローカル管理者アカウントのパスワードをリセットします。  VM にログインしたら、そのユーザーのパスワードをリセットしてください。
    
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Reset password]** ボタンをクリックします。 ユーザー名と新しいパスワードを入力します。 最後に、**[保存]** ボタンをクリックします。
    

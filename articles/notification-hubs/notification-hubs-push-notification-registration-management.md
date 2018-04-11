@@ -1,11 +1,11 @@
 ---
-title: "登録管理"
-description: "ここでは、プッシュ通知を受信するために通知ハブにデバイスを登録する方法について説明します。"
+title: 登録管理
+description: ここでは、プッシュ通知を受信するために通知ハブにデバイスを登録する方法について説明します。
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af5738ac96bd2afacee493765453567f7f13c9e5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="registration-management"></a>登録管理
 ## <a name="overview"></a>概要
@@ -39,7 +39,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 * インストール モデルを使用すると、特定のデバイスを対象にした個別のプッシュを簡単に実行できるようになります。 システム タグ **"$InstallationId:[installationId]"** は、インストール ベースの登録ごとに自動的に追加されます。 そのため、コードを追加することなく、特定のデバイスを対象にしてこのタグに対する送信を呼び出すことができます。
 * また、インストールを使用することで、部分的な登録の更新を実行できます。 インストールの部分的な更新は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。 これは登録時にタグを更新するときに特に便利です。 登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
-インストールには、次のプロパティを含めることができます。 インストールのプロパティの一覧については、[REST API を使用してインストールを作成または上書きする方法](https://msdn.microsoft.com/library/azure/mt621153.aspx)に関するページ、または[インストールのプロパティに関するページ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)をご覧ください。
+インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://msdn.microsoft.com/library/azure/mt621153.aspx)に関するページ、または[インストール プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)に関するページを参照してください。
 
     // Example installation format to show some supported properties
     {
@@ -293,7 +293,7 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 
 #### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>登録 ID を使用してデバイスから通知ハブに登録するコード例
-アプリ バックエンドから、登録に対して基本の CRUDS 操作を実行できます。 次に例を示します。
+アプリ バックエンドから、登録に対して基本の CRUDS 操作を実行できます。 例: 
 
     var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 

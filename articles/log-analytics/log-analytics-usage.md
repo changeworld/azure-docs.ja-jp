@@ -1,27 +1,27 @@
 ---
-title: "Log Analytics でのデータ使用状況の分析 | Microsoft Docs"
-description: "Log Analytics の利用状況ダッシュボードでは、Log Analytics サービスに送信されているデータの量を確認することや、大量のデータが送信されている理由のトラブルシューティングを行うことができます。"
+title: Log Analytics でのデータ使用状況の分析 | Microsoft Docs
+description: Log Analytics に送信されたデータの量を評価したり、予想外の増加を引き起こした原因を特定したりするには、Log Analytics の [使用量と推定コスト] ダッシュボードを使用します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2018
+ms.date: 03/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
-Log Analytics には、収集されたデータの量、データを送信したシステム、送信されたさまざまな種類のデータに関する情報が含まれます。  **[ログ分析の利用状況]** ダッシュボードを使用すると、Log Analytics サービスに送信されたデータの量を確認できます。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
+Log Analytics には、収集されたデータの量、データの送信元、送信されたさまざまな種類のデータに関する情報が含まれます。  データ使用状況を確認して分析するには、**[ログ分析の利用状況]** ダッシュボードを使用します。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
 
 ## <a name="understand-the-usage-dashboard"></a>利用状況ダッシュボードについて
 **[Log Analytics Usage (Log Analytics の使用量)]** ダッシュボードには、次の情報が表示されます。
@@ -41,20 +41,17 @@ Log Analytics には、収集されたデータの量、データを送信した
     - データの収集とインデックス作成に要した時間  
 - クエリのリスト
 
-![[使用量] ダッシュボード](./media/log-analytics-usage/usage-dashboard01.png)
+![使用量とコストのダッシュボード](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+)
 
 ### <a name="to-work-with-usage-data"></a>使用量データを扱うには
-1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** をクリックし、リソースの一覧で「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** をクリックします。  
-    ![Azure のハブ](./media/log-analytics-usage/hub.png)
-3. **[Log Analytics]** ダッシュボードにワークスペースの一覧が表示されます。 ワークスペースを選択します。
-4. *[ワークスペース]* ダッシュボードで、**[Log Analytics Usage (Log Analytics の使用量)]** をクリックします。
-5. **[Log Analytics Usage (Log Analytics の使用量)]** ダッシュボードで、**[時間: 過去 24 時間]** をクリックして期間を変更します。  
-    ![期間](./media/log-analytics-usage/time.png)
-6. 確認したい領域が示されている使用量カテゴリ ブレードを確認します。 ブレードを選択し、その項目をクリックして、[[ログ検索]](log-analytics-log-searches.md) に詳細を表示します。  
-    ![データ使用量ブレードの例](./media/log-analytics-usage/blade.png)
-7. [ログ検索] ダッシュボードで、検索によって返された結果を確認します。  
-    ![使用量のログの検索の例](./media/log-analytics-usage/usage-log-search.png)
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. Log Analytics ワークスペースの一覧からワークスペースを選択します。
+4. 左側のウィンドウにある一覧から **[使用量と推定コスト]** を選択します。
+5. **[使用量と推定コスト]** ダッシュボードでは、**[時間: 過去 24 時間]** を選択して時間の範囲を変更したり、期間を変更したりすることができます。<br><br> ![期間](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
+6. 確認したい領域が示されている使用量カテゴリ ブレードを確認します。 ブレードを選択し、その項目をクリックして、[[ログ検索]](log-analytics-log-searches.md) に詳細を表示します。<br><br> ![データ使用量 KPI の例](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+7. [ログ検索] ダッシュボードで、検索によって返された結果を確認します。<br><br> ![使用量のログの検索の例](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>収集したデータの量が予測よりも多い場合のアラートを作成する
 このセクションでは、次の場合のアラートを作成する方法について説明します。

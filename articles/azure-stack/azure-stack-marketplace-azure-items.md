@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b91cfdfe89f1f15354595400ed9547496fdcd796
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -220,4 +220,5 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application Firewall は既知の脆弱性および不明な脆弱性を検出し、Web アプリに対する攻撃を防止します。 <b>両方の PT Marketplace アイテムをダウンロードします。</b> | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise では、Azure Stack インフラストラクチャのライフ サイクル全体を自動化することができます。 <b>両方の Puppet Marketplace アイテムをダウンロードしてください。</b> | Puppet |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | クラス最高のオープン ソースのインフラストラクチャ管理。 | SUSE |
+| ![Veeam Backup and Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup and Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication) | Veeam Backup & Replication 9.5。 | Veeam |
 | ![ZeroDown Software Tool](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Tool ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown Software Tool v7.1 - Migrate + HA。 | ZeroDown Software |

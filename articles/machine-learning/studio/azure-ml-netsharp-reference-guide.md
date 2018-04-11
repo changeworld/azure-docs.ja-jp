@@ -1,11 +1,12 @@
 ---
-title: "Net# ニューラル ネットワーク仕様言語ガイド - Azure Machine Learning | Microsoft Docs"
-description: "Net# ニューラル ネットワーク仕様言語の構文と、Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例"
+title: Net# ニューラル ネットワーク仕様言語ガイド - Azure Machine Learning | Microsoft Docs
+description: Net# ニューラル ネットワーク仕様言語の構文と、Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例
 services: machine-learning
-documentationcenter: 
-author: jeannt
-manager: cgronlun
-editor: 
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
+editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.author: jeannt
-ms.openlocfilehash: a166b45e7e482092006ddad276986b6f8b0f378c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 599dc158cde0508aa0836c7028a87ed708ba1d86
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Azure Machine Learning のための Net# ニューラル ネットワーク仕様言語について
 

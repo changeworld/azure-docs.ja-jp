@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C: Facebook の構成 | Microsoft Docs"
-description: "Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Facebook アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
+title: 'Azure Active Directory B2C: Facebook の構成 | Microsoft Docs'
+description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Facebook アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: 
-author: sromeroz
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: sromeroz
-ms.assetid: b875f235-a1d2-4abb-b9f0-b89beac38a32
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 8/7/2017
-ms.author: sromeroz
-ms.openlocfilehash: 7f551a7ba9b7ddbb373e6b6418ab43fe7ce9be36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 899677500b0d33b5f98807a341449199b6b3dcac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Facebook を使用するには、Facebook アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには Facebook アカウントが必要です。 ない場合は、 [https://www.facebook.com/](https://www.facebook.com/)で取得できます。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Facebook を使用するには、Facebook アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには Facebook アカウントが必要です。 アカウントがない場合は、[https://www.facebook.com/](https://www.facebook.com/) で取得できます。
 
 1. [Facebook for developers](https://developers.facebook.com/) の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 2. まだ登録していない場合は、Facebook 開発者として登録する必要があります。 そのためには、ページの右上隅にある **[Register (登録)]** をクリックし、Facebook のポリシーに同意して登録手順を完了します。

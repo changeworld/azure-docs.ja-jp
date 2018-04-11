@@ -1,12 +1,12 @@
 ---
-title: "Azure で運用可能なセキュリティに関するベスト プラクティス | Microsoft Docs"
-description: "この記事は、Azure で運用可能なセキュリティに関するベスト プラクティスを提供します。"
+title: Azure で運用可能なセキュリティに関するベスト プラクティス | Microsoft Docs
+description: この記事は、Azure で運用可能なセキュリティに関するベスト プラクティスを提供します。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
@@ -50,7 +50,7 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 
 [OMS Security and Audit ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)によって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小化することができます。 OMS のセキュリティと監査には、リソースを監視するために利用できるセキュリティ ドメインがあります。
 
-OMS の詳細については、[Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx) に関する記事をご覧ください。
+OMS の詳細については、[Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx)に関する記事を参照してください。
 
 ユーザーが脅威を回避、検出、対応できるように、[Operations Management Suite (OMS) Security and Audit ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)は、次のような、リソースに関するデータを収集して処理します。
 
@@ -167,12 +167,12 @@ Network Watcher には、[VPN Gateway と接続に関する最も一般的な問
 これは、企業や開発チームの生産性と効率性を支援する、Microsoft Cloud スペースでの Azure DevOps ベスト プラクティスの一覧です。
 
 -   **コードとしてのインフラストラクチャ (IaC):**コードとしてのインフラストラクチャは、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とベスト プラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。 Azure では、[Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) で提供されている宣言型のテンプレートを使用してアプリケーションをプロビジョニングできます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
--   **継続的インテグレーションとデプロイ:** Azure Web アプリまたはクラウド サービスを[自動的に構築し展開](https://www.visualstudio.com/docs/build/overview)するよう、Visual Studio Team Services オンライン チーム プロジェクトを構成できます。 コードをチェックインするたびに、VSO が、Azure へビルドを実行し、バイナリを自動的に展開します。 この記事で説明されているパッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
+-   **継続的インテグレーションとデプロイ:** Azure Web アプリまたはクラウド サービスを[自動的に構築しデプロイ](https://www.visualstudio.com/docs/build/overview)するよう、Visual Studio Team Services (VSTS) チーム プロジェクトを構成できます。 コードをチェックインするたびに、VSTS が、Azure へビルドを実行し、バイナリを自動的にデプロイします。 この記事で説明されているパッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
 -   **リリース管理:** Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) は、複数の段階にわかれた展開を自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Release Management を使用することにより、リリース プロセスの大部分を自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
 -   **アプリケーションのパフォーマンス監視:** 課題を検出し、問題を解決して、アプリケーションを継続的に改善します。 実際のアプリケーションの問題を今すぐ診断する。 ユーザーがそれで何を行っているかを理解します。 JS コードと webconfig エントリを追加するだけで簡単に構成でき、わずか数分間で詳細結果をポータルで確認できます。[アプリケーションに対する洞察](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/)を得ることで、企業は迅速に問題を検出し修復できます。
--   **ロード テストと自動スケール:** アプリケーション内のパフォーマンスの問題を検出して、デプロイの品質を改善できるため、アプリケーションを常に稼働、または使用可能状態に維持してビジネス ニーズに対応できます。 アプリケーションが、次の立ち上げ、またはマーケティング キャンペーン時のトラフィックに対応できることを保証できます。 Visual Studio Online では、すぐにクラウドベースの[ロード テスト](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)を開始できます。
+-   **ロード テストと自動スケール:** アプリケーション内のパフォーマンスの問題を検出して、デプロイの品質を改善できるため、アプリケーションを常に稼働、または使用可能状態に維持してビジネス ニーズに対応できます。 アプリケーションが、次の立ち上げ、またはマーケティング キャンペーン時のトラフィックに対応できることを保証できます。 VSTS では、すぐにクラウドベースの[ロード テスト](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)を開始できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 詳細については [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)を参照してください。
 - [Operations Management Suite | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
 - [Operations Management Suite Security and Audit ソリューションの概要](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)

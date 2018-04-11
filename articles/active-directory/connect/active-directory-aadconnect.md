@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: febe055348efb49ea1e6bc670333f435de654cfc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>オンプレミスのディレクトリと Azure Active Directory の統合
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
@@ -88,7 +88,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [フィルター処理](active-directory-aadconnectsync-configure-filtering.md) は、Azure AD に同期するオブジェクトを制限する場合に使用します。 既定では、すべてのユーザー、連絡先、グループ、Windows 10 コンピューターが同期の対象となります。 フィルター処理は、ドメインや OU、属性に基づいて変更することができます。
 
-[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md) は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。 エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを 1 か所で管理することができます。 オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
+[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。 エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを 1 か所で管理することができます。 オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
 
 [パスワード ライトバック](../active-directory-passwords-getting-started.md) により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
 
@@ -102,8 +102,8 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 |トピック |リンク|  
 | --- | --- |
 |フィルター処理の構成 | [Azure AD Connect Sync: フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)|
-|パスワードの同期 | [Azure AD Connect Sync: パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md)|
-|パスワード ライトバック | [パスワード管理の概要](../active-directory-passwords-getting-started.md)|
+|パスワード ハッシュの同期 | [Azure AD Connect Sync: パスワード ハッシュ同期の実装](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
+|パスワードの書き戻し | [パスワード管理の概要](../active-directory-passwords-getting-started.md)|
 |デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md)|
 |誤って削除されないように保護する | [Azure AD Connect Sync: 誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
 |自動アップグレード | [Azure AD Connect: 自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)|

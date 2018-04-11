@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Sync: フィルター処理の構成 | Microsoft Docs"
-description: "Azure AD Connect Sync でフィルター処理を構成する方法を説明します。"
+title: 'Azure AD Connect Sync: フィルター処理の構成 | Microsoft Docs'
+description: Azure AD Connect Sync でフィルター処理を構成する方法を説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -44,7 +44,7 @@ Azure AD Connect Sync では、いつでもフィルター処理を有効にで�
 
 意図せず多数のオブジェクトを削除してしまうことのないよう、"[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" 機能が既定で有効になっています。 フィルター処理で多数のオブジェクトを削除する場合 (既定では 500 個)、この記事の手順に従って、削除処理を Azure AD に反映できるようにする必要があります。
 
-November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) より前のビルドを使用し、フィルターの構成を変更して、パスワード同期を使用する場合は、構成を完了した後、すべてのパスワードの完全同期をトリガーする必要があります。 パスワードの完全同期をトリガーする方法の手順については、「[すべてのパスワードの完全同期の開始](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords)」を参照してください。 ビルド 1.0.9125 以降を使用している場合、パスワードを同期する必要があるかどうかとこの特別な手順が今後必要かどうかの計算も、通常の**完全同期**処理で行われます。
+November 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) より前のビルドを使用し、フィルターの構成を変更して、パスワード ハッシュ同期を使用する場合は、構成を完了した後、すべてのパスワードの完全同期をトリガーする必要があります。 パスワードの完全同期をトリガーする方法の手順については、「[すべてのパスワードの完全同期の開始](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)」を参照してください。 ビルド 1.0.9125 以降を使用している場合、パスワードを同期する必要があるかどうかとこの特別な手順が今後必要かどうかの計算も、通常の**完全同期**処理で行われます。
 
 フィルター処理のエラーが原因で**ユーザー** オブジェクトが Azure AD から誤って削除された場合、フィルター処理構成を削除することで Azure AD 内にユーザー オブジェクトを再生成できます。 その後、ディレクトリの同期を再実行できます。 この操作により、Azure AD 内のごみ箱からユーザーが復元されます。 ただし、その他の種類のオブジェクトについては削除を取り消すことができません。 たとえば、リソースの ACL に使用されていたセキュリティ グループをうっかり削除すると、そのグループおよび対応する ACL は復元できなくなります。
 

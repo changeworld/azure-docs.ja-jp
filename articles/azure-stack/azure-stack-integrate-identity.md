@@ -1,20 +1,20 @@
 ---
-title: "Azure Stack とデータセンターの統合 - ID"
-description: "Azure Stack の AD FS をデータセンターの AD FS と統合する方法について説明します。"
+title: Azure Stack とデータセンターの統合 - ID
+description: Azure Stack の AD FS をデータセンターの AD FS と統合する方法について説明します。
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
-ms.openlocfilehash: 9e71707f13a14cb4cd0bc9cc7cd7d13dd7bb38e5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+keywords: ''
+ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -261,7 +261,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
    > [!IMPORTANT]
    > Windows Server 2012 または 2012 R2 AD FS を使用している場合は、AD FS MMC スナップインを使用して発行承認規則を構成する必要があります。
 
-4. Internet Explorer または Edge ブラウザーを使用して Azure Stack にアクセスするには、トークンのバインドを無視する必要があります。 無視しないと、サインインの試行が失敗します。 AD FS インスタンスまたはファーム メンバーで、次のコマンドを実行します。
+4. Internet Explorer または Microsoft Edge ブラウザーを使用して Azure Stack にアクセスするには、トークンのバインドを無視する必要があります。 無視しないと、サインインの試行が失敗します。 AD FS インスタンスまたはファーム メンバーで、次のコマンドを実行します。
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true
@@ -334,4 +334,4 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Stack の登録](azure-stack-registration.md)
+[外部の監視ソリューションの統合](azure-stack-integrate-monitor.md)

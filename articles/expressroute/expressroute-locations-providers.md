@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 03/30/2018
 ms.author: pareshmu
-ms.openlocfilehash: 5710126b0ba8534f01b7be7aa825a28e22521884
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b69daef5529e950b2504773f126869a2d3ac6e42
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -44,7 +44,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **北米** |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、マイアミ、ニューヨーク、サンアントニオ、シアトル、シリコン バレー、ワシントン DC、モントリオール、ケベックシティ、トロント |
 | **南アメリカ** |ブラジル南部 |サンパウロ |
 | **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)、パリ |
-| **アジア** |東アジア、東南アジア |香港、シンガポール、シンガポール 2 |
+| **アジア** |東アジア、東南アジア |香港特別行政区、シンガポール、シンガポール 2 |
 | **日本** |西日本、東日本 |大阪、東京 |
 | **オーストラリア** |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー |
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
@@ -77,11 +77,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo|
 | **デンバー** |CoreSite、Megaport |
 | **ダブリン** |Colt、eir、Interxion、Megaport、Telecity Group |
-| **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
+| **香港特別行政区** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ラスベガス** |Level 3 Communications、Megaport |
 | **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo |
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo |
-| **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
+| **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Optus+、Telstra Corporation |
 | **マイアミ** |C3ntro+、Equinix、Megaport、Neutrona Networks |
 | **モントリオール** |Bell Canada、Cologix、Telus、Zayo |
 | **ムンバイ** |Airtel+、Global CloudXchange (GCX)、Sify、Tata Communications |
@@ -97,7 +97,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シリコン バレー** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Coresite、Equinix、PacketFabric、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
 | **シンガポール** |Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **シンガポール 2** |Megaport、SingTel |
-| **シドニー** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Orange、Telstra Corporation、Verizon |
+| **シドニー** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
 | **東京** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank、Verizon |
 | **トロント** |AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Console、Equinix、Megaport、Telus、Zayo |
 | **ワシントン DC** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、Sprint、Tata Communications、Verizon、Zayo |
@@ -150,11 +150,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
-| **アムステルダム** | Equinix、Telecity | Eurofiber、Fastweb S.p.A、MainOne、Nianet、Telia |
+| **アムステルダム** | Equinix、Telecity | BICS、Eurofiber、Fastweb S.p.A、MainOne、Nianet、Telia |
 | **シカゴ** | Equinix | Lightower、Windstream |
 | **ダラス** | Equinix、Megaport | C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
-| **フランクフルト** | Telecity | Nianet、QSC AG |
-| **香港** | Equinix | Macroview Telecom |
+| **フランクフルト** | Telecity | BICS、Nianet、QSC AG |
+| **香港特別行政区** | Equinix | Macroview Telecom |
 | **ロンドン** | Equinix、euNetworks、Telecity | Bezeq International Ltd.、Epsilon、Exponential E、HSO、NexGen Networks、Tamares Telecom、Zain |
 | **ロサンゼルス** | Equinix |Transtelco |
 | **マドリッド** | Level3 | Zertia |
@@ -162,12 +162,12 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ニューヨーク** |Equinix、Megaport | Altice Business、Lightower、Webair |
 | **シアトル** |Equinix | Alaska Communications |
 | **シリコン バレー** |Equinix | Cox Business、Windstream |
-| **シンガポール** |Equinix |1CLOUDSTAR、Epsilon Telecommunications Limited、LGA Telecom、United Information Highway (UIH) |
+| **シンガポール** |Equinix |1CLOUDSTAR、BICS、Epsilon Telecommunications Limited、LGA Telecom、United Information Highway (UIH) |
 | **スラウ** | Equinix | HSO|
 | **シドニー** | Megaport | Macquarie Telecom Group|
 | **東京** | Equinix | アルテリア・ネットワークス株式会社、株式会社ブロードバンドタワー |
 | **トロント** | Equinix | Airgate Technologies. Inc、Cogeco Peer 1、Rogers、Thinktel、Zirro|
-| **ワシントン DC** |Equinix | Altice Business、Gtt Communications Inc、Epsilon、Lightower、Masergy、Windstream |
+| **ワシントン DC** |Equinix | Altice Business、BICS、Gtt Communications Inc、Epsilon、Lightower、Masergy、Windstream |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute システム インテグレーター
 ネットワークの規模によっては、ニーズに合わせてプライベート接続を有効にするのは難しい場合があります。 次の表のいずれかのシステム インテグレーターを使用すると、ExpressRoute の利用開始に役立ちます。
@@ -177,7 +177,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **アジア** |Avanade Inc.、OneAs1a |
 | **オーストラリア** | Ensyst、IT Consultancy、MOQdigital、Vigilant.IT |
 | **ヨーロッパ** |Avanade Inc.、Altogee、Bright Skies GmbH、Inframon、MSG Services、New Signature、Nelite、Orange Networks、sol-tec |
-| **北米** |Avanade Inc.、Equinix Professional Services、FlexManage、Perficient、Presidio |
+| **北米** |Avanade Inc.、Equinix Professional Services、FlexManage、Lightstream、Perficient、Presidio |
 | **南アメリカ** |Avanade Inc. |
 ## <a name="next-steps"></a>次の手順
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

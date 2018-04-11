@@ -1,11 +1,11 @@
 ---
-title: "PowerShell for Azure Stack のインストール | Microsoft Docs"
-description: "PowerShell for Azure Stack をインストールする方法について説明します。"
+title: PowerShell for Azure Stack のインストール | Microsoft Docs
+description: PowerShell for Azure Stack をインストールする方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: F8D99A91-15B5-4073-BE07-A43514A6D2CF
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b5cc53387b6867d776059856b6e7793abbc67c9a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7bf2d9b999db738007f75d72a8818ca0eb6f34ba
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack のインストール  
 
@@ -53,10 +53,10 @@ Set-PSRepository `
 
 ## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>接続されているシナリオでの PowerShell のインストール (インターネット接続を使用)
 
-Azure Stack と互換性のある AzureRM モジュールは、API バージョン プロファイルを使用してインストールされます。 Azure Stack には **2017-03-09-profile** API バージョン プロファイルが必要です。このプロファイルは、AzureRM.Bootstrapper モジュールをインストールすることで利用できます。 API バージョン プロファイル、およびそれらのプロファイルによって提供されるコマンドレットについては、 「[manage API version profiles](azure-stack-version-profiles.md)」(API バージョン プロファイルの管理) を参照してください。 AzureRM モジュールだけでなく、Azure Stack 固有の PowerShell モジュールもインストールする必要があります。 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
+Azure Stack と互換性のある AzureRM モジュールは、API バージョン プロファイルを使用してインストールされます。 Azure Stack には **2017-03-09-profile** API バージョン プロファイルが必要です。このプロファイルは、AzureRM.Bootstrapper モジュールをインストールすることで利用できます。 API バージョン プロファイル、およびそれらのプロファイルによって提供されるコマンドレットについては、 「[manage API version profiles](azure-stack-version-profiles-powershell.md)」(API バージョン プロファイルの管理) を参照してください。 AzureRM モジュールだけでなく、Azure Stack 固有の PowerShell モジュールもインストールする必要があります。 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
-> [!IMPORTANT]
-> AzureRM 1.2.11 リリースの PowerShell モジュールには、重大な変更が多数追加されています。 1.2.10 バージョンからアップグレードする場合は、[https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration) の移行ガイドを参照してください。
+> [!IMPORTANT]  
+> AzureRM 1.2.11 リリースの PowerShell モジュールには、重大な変更が多数追加されています。 バージョン 1.2.10 からのアップグレードについては、[https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration) の移行ガイドをご覧ください。
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -85,7 +85,7 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
 接続が切断されたシナリオまたは部分的に接続されているシナリオでは、まずインターネット接続が確立されたコンピューターに PowerShell モジュールをダウンロードしてから、モジュールを Azure Stack Development Kit に転送してインストールします。
 
 > [!IMPORTANT]
-> AzureRM 1.2.11 リリースの PowerShell モジュールには、重大な変更が多数追加されています。 1.2.10 バージョンからアップグレードする場合は、[https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration) の移行ガイドを参照してください。
+> AzureRM 1.2.11 リリースの PowerShell モジュールには、重大な変更が多数追加されています。 バージョン 1.2.10 からのアップグレードについては、[https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration) の移行ガイドをご覧ください。
 
 1. インターネット接続が確立されたコンピューターにサインインし、次のスクリプトを使用して、AzureRM および AzureStack パッケージをローカル コンピューターにダウンロードします。
 
@@ -132,8 +132,8 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
      -Repository $RepoName 
    ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [GitHub からの Azure Stack ツールのダウンロード](azure-stack-powershell-download.md)
+* [GitHub からの Azure Stack ツールのダウンロード](azure-stack-powershell-download.md)  
 * [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)  
-* [Azure Stack での API バージョン プロファイルの管理](azure-stack-version-profiles.md)  
+* [Azure Stack での API バージョン プロファイルの管理](azure-stack-version-profiles-powershell.md)  

@@ -1,22 +1,22 @@
 ---
-title: "Azure デバイス プロビジョニングにおけるデバイスの概念 | Microsoft Docs"
-description: "デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のデバイス プロビジョニングの概念を説明します。"
+title: Azure デバイス プロビジョニングにおけるデバイスの概念 | Microsoft Docs
+description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のデバイス プロビジョニングの概念を説明します。
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 09/05/2017
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5297bc57729d9e983d63244c71eb21995cf73f0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5482801461e2afea33d65d559723116f37a35d1f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub デバイス プロビジョニング サービスのデバイスの概念
 
@@ -33,7 +33,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 デバイス プロビジョニング サービスでは、2 つの形式の構成証明がサポートされます。
 * 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。
-* キーの TPM 標準を使用する nonce チャレンジに基づく **SAS トークン**。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
+* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 

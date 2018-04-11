@@ -1,0 +1,358 @@
+- name: Virtual Network のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Virtual Network について
+      href: virtual-networks-overview.md
+- name: クイック スタート
+  items:
+    - name: 仮想ネットワークの作成 - ポータル
+      href: quick-create-portal.md
+    - name: 仮想ネットワークの作成 - PowerShell
+      href: quick-create-powershell.md
+    - name: 仮想ネットワークの作成 - Azure CLI
+      href: quick-create-cli.md
+- name: チュートリアル
+  items:
+    - name: ネットワーク トラフィックをフィルター処理する
+      href: tutorial-filter-network-traffic.md
+    - name: ネットワーク トラフィックをルーティングする
+      href: tutorial-create-route-table-portal.md
+    - name: リソースへのネットワーク アクセスを制限する
+      href: tutorial-restrict-network-access-to-resources.md
+    - name: 仮想ネットワークを接続する
+      href: tutorial-connect-virtual-networks-portal.md
+- name: サンプル
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: 概念
+  items:
+    - name: トラフィックのフィルター処理
+      href: security-overview.md
+    - name: サービス エンドポイント
+      href: virtual-network-service-endpoints-overview.md
+    - name: ルーティング
+      href: virtual-networks-udr-overview.md
+    - name: ピアリング
+      href: virtual-network-peering-overview.md
+    - name: Azure サービス用の仮想ネットワーク
+      href: virtual-network-for-azure-services.md
+    - name: コンテナー ネットワーク
+      href: container-networking.md
+    - name: ビジネス継続性
+      href: virtual-network-disaster-recovery-guidance.md
+    - name: IP アドレス指定
+      href: virtual-network-ip-addresses-overview-arm.md
+    - name: DDoS 保護
+      href: ddos-protection-overview.md
+    - name: クラシック
+      items:
+        - name: IP アドレス指定
+          href: virtual-network-ip-addresses-overview-classic.md
+        - name: アクセス制御リスト
+          href: virtual-networks-acl.md
+- name: ハウツー ガイド
+  items:
+    - name: 計画と設計
+      items:
+        - name: 仮想ネットワーク
+          href: virtual-network-vnet-plan-design-arm.md
+        - name: ネットワーク セキュリティ グループ
+          href: virtual-networks-nsg.md
+    - name: デプロイ
+      items:
+        - name: ネットワーク セキュリティ グループ
+          items:
+            - name: Azure CLI
+              href: tutorial-filter-network-traffic-cli.md
+            - name: Azure ポータル
+              href: virtual-networks-create-nsg-arm-pportal.md
+            - name: テンプレート
+              href: virtual-networks-create-nsg-arm-template.md
+            - name: クラシック
+              items:
+                - name: Azure PowerShell
+                  href: virtual-networks-create-nsg-classic-ps.md
+                - name: Azure CLI 1.0
+                  href: virtual-networks-create-nsg-classic-cli.md
+        - name: ルート テーブル
+          items:
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: テンプレート
+              href: virtual-network-create-udr-arm-template.md
+            - name: クラシック
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-create-udr-classic-ps.md
+                - name: Azure CLI
+                  href: virtual-network-create-udr-classic-cli.md
+        - name: サービス エンドポイント
+          items:
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: 仮想ネットワーク ピアリング
+          items:
+            - name: 同じデプロイメント モデル - 同じサブスクリプション
+              items:
+                - name: Azure PowerShell
+                  href: tutorial-connect-virtual-networks-powershell.md
+                - name: Azure CLI
+                  href: tutorial-connect-virtual-networks-cli.md
+            - name: 同じデプロイ モデル - 異なるサブスクリプション
+              href: create-peering-different-subscriptions.md
+            - name: 異なるデプロイ モデル - 同じサブスクリプション
+              href: create-peering-different-deployment-models.md
+            - name: 異なるデプロイ モデル - 異なるサブスクリプション
+              href: create-peering-different-deployment-models-subscriptions.md
+        - name: 仮想マシン
+          items:
+            - name: 静的パブリック IP アドレスを持つ VM を作成する
+              items:
+                - name: Azure ポータル
+                  href: virtual-network-deploy-static-pip-arm-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-deploy-static-pip-arm-ps.md
+                - name: Azure CLI
+                  href: virtual-network-deploy-static-pip-arm-cli.md
+                - name: テンプレート
+                  href: virtual-network-deploy-static-pip-arm-template.md
+                - name: クラシック
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-networks-reserved-public-ip.md
+            - name: VM の作成 - 静的プライベート IP アドレス
+              items:
+                - name: Azure ポータル
+                  href: virtual-networks-static-private-ip-arm-pportal.md
+                - name: Azure PowerShell
+                  href: virtual-networks-static-private-ip-arm-ps.md
+                - name: Azure CLI
+                  href: virtual-networks-static-private-ip-arm-cli.md
+                - name: クラシック
+                  items:
+                    - name: Azure ポータル
+                      href: virtual-networks-static-private-ip-classic-pportal.md
+                    - name: Azure PowerShell
+                      href: virtual-networks-static-private-ip-classic-ps.md
+                    - name: Azure CLI
+                      href: virtual-networks-static-private-ip-classic-cli.md
+            - name: VM の作成 - 複数のネットワーク インターフェイス
+              items:
+                - name: Azure PowerShell
+                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: テンプレート
+                  href: virtual-network-deploy-multinic-arm-template.md
+                - name: クラシック
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-network-deploy-multinic-classic-ps.md
+                    - name: Azure CLI
+                      href: virtual-network-deploy-multinic-classic-cli.md
+            - name: VM の作成 - 複数の IP アドレス
+              items:
+                - name: Azure ポータル
+                  href: virtual-network-multiple-ip-addresses-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-multiple-ip-addresses-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-multiple-ip-addresses-cli.md
+                - name: テンプレート
+                  href: virtual-network-multiple-ip-addresses-template.md
+            - name: VM の作成 - 高速ネットワーク
+              items:
+                - name: Azure PowerShell
+                  href: create-vm-accelerated-networking-powershell.md
+                - name: Azure CLI
+                  href: create-vm-accelerated-networking-cli.md
+            - name: 仮想マシンのネットワーク スループット
+              href: virtual-machine-network-throughput.md
+        - name: 接続のシナリオ
+          items:
+            - name: 仮想ネットワーク (VNet) から VNet に
+              href: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: VNet (Resource Manager) から VNet に (クラシック)
+              href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: VNet からオンプレミスのネットワークに (VPN)
+              href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: VNet からオンプレミスのネットワークに (ExpressRoute)
+              href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: 高可用性ハイブリッド ネットワーク アーキテクチャ
+              href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: セキュリティのシナリオ
+          items:
+            - name: 仮想アプライアンスでネットワークをセキュリティで保護する
+              href: virtual-network-scenario-udr-gw-nva.md
+            - name: Azure とインターネットの間の DMZ
+              href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: クラウド サービスとネットワーク セキュリティ
+              href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              items:
+                - name: NSG を使用した DMZ の作成
+                  href: virtual-networks-dmz-nsg.md
+                - name: NSG を使用した DMZ の作成 (クラシック)
+                  href: virtual-networks-dmz-nsg-asm.md
+                - name: ファイアウォールと NSG を使用した DMZ の作成 (クラシック)
+                  href: virtual-networks-dmz-nsg-fw-asm.md
+                - name: ファイアウォール、UDR、NSG を使用した DMZ (クラシック)
+                  href: virtual-networks-dmz-nsg-fw-udr-asm.md
+                - name: サンプル アプリケーション
+                  href: virtual-networks-sample-app.md
+        - name: クラシック
+          items:
+            - name: Virtual Network
+              href: create-virtual-network-classic.md
+              items:
+                - name: Azure ポータル
+                  href: virtual-networks-create-vnet-classic-pportal.md
+                - name: Azure PowerShell
+                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
+                - name: Azure CLI
+                  href: virtual-networks-create-vnet-classic-cli.md
+            - name: 仮想ネットワーク構成ファイルでの DNS 設定の指定
+              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
+            - name: サービス構成ファイルでの DNS 設定の指定
+              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
+    - name: 構成
+      items:
+        - name: 仮想マシン
+          items:
+            - name: ネットワーク インターフェイスの追加または削除
+              href: virtual-network-network-interface-vm.md
+            - name: VM とクラウド サービスの名前解決
+              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+            - name: 独自の DNS サーバーでの動的 DNS の使用
+              href: virtual-networks-name-resolution-ddns.md
+            - name: ネットワーク スループットの最適化
+              href: virtual-network-optimize-network-bandwidth.md
+            - name: ホスト名を表示および変更する
+              href: virtual-networks-viewing-and-modifying-hostnames.md
+            - name: クラシック
+              items:
+                - name: 静的 IP アドレス
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-networks-reserved-private-ip.md
+                    - name: Azure CLI
+                      href: virtual-networks-static-private-ip-classic-cli.md
+                - name: インスタンス レベル パブリック IP アドレス
+                  href: virtual-networks-instance-level-public-ip.md
+        - name: クラシック
+          items:
+            - name: アクセス制御リスト
+              items:
+                - name: Azure ポータル
+                  href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: virtual-networks-acl-powershell.md
+    - name: '[管理]'
+      items:
+        - name: 仮想ネットワーク
+          href: manage-virtual-network.md
+          items:
+            - name: サブネット
+              href: virtual-network-manage-subnet.md
+            - name: ピアリング
+              href: virtual-network-manage-peering.md
+            - name: DDoS 保護
+              items:
+                - name: Azure ポータル
+                  href: ddos-protection-manage-portal.md
+                - name: Azure PowerShell
+                  href: ddos-protection-manage-ps.md
+            - name: クラシック
+              items:
+                - name: ネットワーク構成ファイル
+                  href: virtual-networks-using-network-configuration-file.md
+                - name: アフィニティ グループからリージョンへの移行
+                  href: virtual-networks-migrate-to-regional-vnet.md
+        - name: ネットワーク セキュリティ グループ
+          items:
+            - name: Azure ポータル
+              href: virtual-network-manage-nsg-arm-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-manage-nsg-arm-ps.md
+            - name: Azure CLI
+              href: virtual-network-manage-nsg-arm-cli.md
+            - name: ログ
+              href: virtual-network-nsg-manage-log.md
+        - name: ルート テーブル
+          href: manage-route-table.md
+        - name: ネットワーク インターフェイス
+          href: virtual-network-network-interface.md
+          items:
+            - name: IP アドレス
+              href: virtual-network-network-interface-addresses.md
+        - name: パブリック IP アドレス
+          href: virtual-network-public-ip-address.md
+        - name: 仮想マシン
+          items:
+            - name: VM を別のサブネットに移動する
+              href: virtual-networks-move-vm-role-to-subnet.md
+    - name: トラブルシューティング
+      items:
+        - name: ネットワーク セキュリティ グループ
+          items:
+            - name: Azure ポータル
+              href: virtual-network-nsg-troubleshoot-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-nsg-troubleshoot-powershell.md
+        - name: ルート
+          items:
+            - name: Azure ポータル
+              href: virtual-network-routes-troubleshoot-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-routes-troubleshoot-powershell.md
+        - name: スループットのテスト
+          href: virtual-network-bandwidth-testing.md
+        - name: 仮想ネットワークを削除できない
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: VM 間の接続に関する問題
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: SMTP バナー チェック用の PTR の構成
+          href: create-ptr-for-smtp-service.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.network
+    - name: .NET
+      href: /api/overview/azure/virtual-network
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST ()
+      href: /rest/api/virtual-network
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ネットワークのブログ
+      href: 'http://azure.microsoft.com/blog/topics/networking'
+    - name: ネットワークのフォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: ネットワーク リソース プロバイダー
+      href: resource-groups-networking.md
+    - name: FAQ
+      href: virtual-networks-faq.md

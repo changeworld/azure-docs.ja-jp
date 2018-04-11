@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能 | Microsoft Docs"
-description: "Resource Manager テンプレートによる Azure の Desired State Configuration (DSC) 拡張機能の定義について説明します。"
+title: Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能 | Microsoft Docs
+description: Resource Manager テンプレートによる Azure の Desired State Configuration (DSC) 拡張機能の定義について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -14,99 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 0f1c53c9eafcd96e49232b75d46ef34537a1160f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ea259fc316827872cb1df8bcec385dddf8d2a461
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
-この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)の Azure Resource Manager テンプレートについて説明します。 
+この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)の Azure Resource Manager テンプレートについて説明します。
 
 > [!NOTE]
 > スキーマの例に若干の違いがある可能性があります。 スキーマの変更は 2016 年 10 月 のリリースで発生しました。 詳しくは、[以前の形式からの更新](#update-from-the-previous-format)に関する記事をご覧ください。
 
 ## <a name="template-example-for-a-windows-vm"></a>Windows VM のテンプレートの例
 
-以下のスニペットは、テンプレートの **Resource** セクションに含まれます。 DSC 拡張機能は、既定の拡張機能プロパティを継承します。 詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)」をご覧ください。
+以下のスニペットは、テンプレートの **Resource** セクションに含まれます。
+DSC 拡張機能は、既定の拡張機能プロパティを継承します。
+詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)」をご覧ください。
 
 ```json
-            "name": "Microsoft.Powershell.DSC",
-            "type": "extensions",
-             "location": "[resourceGroup().location]",
-             "apiVersion": "2015-06-15",
-             "dependsOn": [
-                  "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-              ],
-              "properties": {
-                  "publisher": "Microsoft.Powershell",
-                  "type": "DSC",
-                  "typeHandlerVersion": "2.72",
-                  "autoUpgradeMinorVersion": true,
-                  "forceUpdateTag": "[parameters('dscExtensionUpdateTagVersion')]",
-                  "settings": {
-                    "configurationArguments": {
-                        {
-                            "Name": "RegistrationKey",
-                            "Value": {
-                                "UserName": "PLACEHOLDER_DONOTUSE",
-                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                            },
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+    "apiVersion": "2017-12-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.75",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "protectedSettings": {
+            "Items": {
+                        "registrationKeyPrivate": "registrationKey"
+            }
+            },
+            "publicSettings": {
+                "configurationArguments": [
+                    {
+                        "Name": "RegistrationKey",
+                        "Value": {
+                            "UserName": "PLACEHOLDER_DONOTUSE",
+                            "Password": "PrivateSettingsRef:registrationKeyPrivate"
                         },
-                        "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                        "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
+                    },
+                    {
+                        "RegistrationUrl" : "registrationUrl",
+                    },
+                    {
+                        "NodeConfigurationName" : "nodeConfigurationName"
                     }
+                ]
+            }
+        },
+    }
+}
 ```
 
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Windows 仮想マシン スケール セット用のテンプレート例
 
-仮想マシン スケール セット ノードには、**VirtualMachineProfile** を備えた **properties** セクション、extensionProfile 属性があります。 **extensions** の下に、DSC を追加します。
+仮想マシン スケール セット ノードには、**VirtualMachineProfile** を備えた **properties** セクション、extensionProfile 属性があります。
+**[拡張機能]** の下に DSC 拡張機能の詳細を追加します。
 
-DSC 拡張機能は、既定の拡張機能プロパティを継承します。 詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)」をご覧ください。
+DSC 拡張機能は、既定の拡張機能プロパティを継承します。
+詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)」をご覧ください。
 
 ```json
 "extensionProfile": {
-            "extensions": [
-                {
-                    "name": "Microsoft.Powershell.DSC",
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.72",
-                        "autoUpgradeMinorVersion": true,
-                        "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
-                        "settings": {
-                            "configurationArguments": {
-                                {
-                                    "Name": "RegistrationKey",
-                                    "Value": {
-                                        "UserName": "PLACEHOLDER_DONOTUSE",
-                                        "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                                    },
-                                },
-                                "RegistrationUrl" : "[parameters('registrationUrl1')]",
-                                "NodeConfigurationName" : "nodeConfigurationNameValue1"
-                        }
-                        },
-                        "protectedSettings": {
-                            "Items": {
-                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
-                                    }
-                        }
+    "extensions": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+            "apiVersion": "2017-12-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.75",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "protectedSettings": {
+                    "Items": {
+                                "registrationKeyPrivate": "registrationKey"
                     }
-                ]
+                    },
+                    "publicSettings": {
+                        "configurationArguments": [
+                            {
+                                "Name": "RegistrationKey",
+                                "Value": {
+                                    "UserName": "PLACEHOLDER_DONOTUSE",
+                                    "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                                },
+                            },
+                            {
+                                "RegistrationUrl" : "registrationUrl",
+                            },
+                            {
+                                "NodeConfigurationName" : "nodeConfigurationName"
+                            }
+                        ]
+                    }
+                },
             }
         }
+    ]
+}
 ```
 
 ## <a name="detailed-settings-information"></a>設定情報の詳細
@@ -175,7 +197,8 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。 
 
 ## <a name="default-configuration-script"></a>既定の構成スクリプト
 
-次の値について詳しくは、[ローカル構成マネージャーの基本設定](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
+次の値について詳しくは、[ローカル構成マネージャーの基本設定](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
+DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
 | プロパティ名 | type | [説明] |
 | --- | --- | --- |
@@ -191,7 +214,10 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。 
 
 ## <a name="settings-vs-protectedsettings"></a>Settings と ProtectedSettings
 
-すべての設定は、VM の設定テキスト ファイルに保存されます。 **settings** の下に記載されているプロパティはパブリック プロパティです。 パブリック プロパティは、設定のテキスト ファイル内で暗号化されません。 **protectedSettings** の下に記載されたプロパティは証明書で暗号化されるため、VM 上の設定ファイルにプレーンテキストで表示されません。
+すべての設定は、VM の設定テキスト ファイルに保存されます。
+**settings** の下に記載されているプロパティはパブリック プロパティです。
+パブリック プロパティは、設定のテキスト ファイル内で暗号化されません。
+**protectedSettings** の下に記載されたプロパティは証明書で暗号化されるため、VM 上の設定ファイルにプレーンテキストで表示されません。
 
 構成に資格情報が必要な場合は、**protectedSettings** に資格情報を含めることができます。
 
@@ -208,7 +234,9 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。 
 
 ## <a name="example-configuration-script"></a>構成スクリプトの例
 
-次の例は、DSC 拡張機能の既定の動作を示したものです (LCM にメタデータの設定を提供し、Automation DSC サービスに登録します)。 構成引数は必須です。  構成引数は、LCM のメタデータを設定するために既定の構成スクリプトに渡されます。
+次の例は、DSC 拡張機能の既定の動作を示したものです (LCM にメタデータの設定を提供し、Automation DSC サービスに登録します)。
+構成引数は必須です。
+構成引数は、LCM のメタデータを設定するために既定の構成スクリプトに渡されます。
 
 ```json
 "settings": {
@@ -233,7 +261,10 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。 
 
 ## <a name="example-using-the-configuration-script-in-azure-storage"></a>Azure Storage での構成スクリプトの使用例
 
-次の例は、[DSC 拡張機能ハンドラーの概要](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事から引用したものです。 この例では、コマンドレットの代わりに Resource Manager テンプレートを使用して拡張機能をデプロイします。 IisInstall.ps1 の構成を保存し、.zip ファイル内に配置してから、アクセス可能な URL にファイルをアップロードします。 この例では、Azure Blob Storage を使用しますが、.zip ファイルを任意の場所からダウンロードすることもできます。
+次の例は、[DSC 拡張機能ハンドラーの概要](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事から引用したものです。
+この例では、コマンドレットの代わりに Resource Manager テンプレートを使用して拡張機能をデプロイします。
+IisInstall.ps1 の構成を保存し、.zip ファイル内に配置してから、アクセス可能な URL にファイルをアップロードします。
+この例では、Azure Blob Storage を使用しますが、.zip ファイルを任意の場所からダウンロードすることもできます。
 
 Resource Manager テンプレートでは、次のコードにより、正しいファイルをダウンロードして適切な PowerShell 関数を実行するように VM に対して指示をします。
 
@@ -252,7 +283,8 @@ Resource Manager テンプレートでは、次のコードにより、正しい
 
 ## <a name="update-from-a-previous-format"></a>以前の形式からの更新
 
-拡張機能の以前の形式の設定 (**ModulesUrl**、**ConfigurationFunction**、**SasToken**、または **Properties** の各パブリック プロパティを含むもの) は、自動的に拡張機能の現在の形式に対応します。 これらは以前と同じように動作します。
+拡張機能の以前の形式の設定 (**ModulesUrl**、**ConfigurationFunction**、**SasToken**、または **Properties** の各パブリック プロパティを含むもの) は、自動的に拡張機能の現在の形式に対応します。
+これらは以前と同じように動作します。
 
 次のスキーマは、以前の設定スキーマの例を示したものです。
 
@@ -302,7 +334,9 @@ Resource Manager テンプレートでは、次のコードにより、正しい
 
 ## <a name="troubleshooting---error-code-1100"></a>トラブルシューティング - エラー コード 1100
 
-エラー コード 1100 は、DSC 拡張機能に対するユーザー入力に問題があることを示します。 これらのエラーのテキストは状況に応じて異なり、変更される可能性があります。 直面する可能性のあるいくつかのエラーとそのエラーの修正方法について説明します。
+エラー コード 1100 は、DSC 拡張機能に対するユーザー入力に問題があることを示します。
+これらのエラーのテキストは状況に応じて異なり、変更される可能性があります。
+直面する可能性のあるいくつかのエラーとそのエラーの修正方法について説明します。
 
 ### <a name="invalid-values"></a>無効な値
 
@@ -313,7 +347,8 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 **問題点**: 指定した値が許可されていません。
 
-**解決策**: 無効な値を有効な値に変更してください。 詳しくは、「[詳細](#details)」の表をご覧ください。
+**解決策**: 無効な値を有効な値に変更してください。
+詳しくは、「[詳細](#details)」の表をご覧ください。
 
 ### <a name="invalid-url"></a>無効な URL
 
@@ -321,7 +356,8 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 **問題点**: 指定した URL が無効です。
 
-**解決策**: 指定した URL すべてを確認してください。 拡張機能がリモート マシンにアクセスできるように、すべての URL が有効な場所に解決されていることを確認します。
+**解決策**: 指定した URL すべてを確認してください。
+拡張機能がリモート マシンにアクセスできるように、すべての URL が有効な場所に解決されていることを確認します。
 
 ### <a name="invalid-configurationargument-type"></a>無効な ConfigurationArgument の型
 
@@ -329,7 +365,8 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 **問題点**: *ConfigurationArguments* プロパティが**ハッシュテーブル** オブジェクトに解決できません。
 
-**解決策**: *ConfigurationArguments* プロパティを**ハッシュテーブル**にしてください。 前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
+**解決策**: *ConfigurationArguments* プロパティを**ハッシュテーブル**にしてください。
+前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments の重複
 

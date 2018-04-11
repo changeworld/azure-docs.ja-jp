@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: a011c31c5ccf70c379358f2b2c7748011b2fdd44
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d4a57e45d5ddf55906fcf575df39135a227418ec
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 

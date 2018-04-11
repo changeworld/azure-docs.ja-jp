@@ -1,25 +1,23 @@
 ---
-title: "Azure Application Gateway の正常性監視の概要 | Microsoft Docs"
-description: "Azure Application Gateway の監視機能の概要"
+title: Azure Application Gateway の正常性監視の概要
+description: Azure Application Gateway の監視機能の概要
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
-ms.assetid: 7eeba328-bb2d-4d3e-bdac-7552e7900b7f
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
-ms.author: davidmu
-ms.openlocfilehash: 83a0b1be1aba48146aa1aaedb36ad9d9d23f17d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 3/30/2018
+ms.author: victorh
+ms.openlocfilehash: 2f62f01c1178f9529eb46051f088affccc5279a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -40,9 +38,28 @@ ms.lasthandoff: 10/11/2017
 
 サーバー A に対する既定のプローブ チェックが失敗した場合、アプリケーション ゲートウェイはサーバー A をバックエンド プールから削除するため、ネットワーク トラフィックがこのサーバーに送られなくなります。 既定のプローブは、削除後もサーバー A を 30 秒ごとにチェックし続けます。 サーバー A は、既定の正常性プローブからの要求に正常に応答するようになるとバックエンド プールに「正常」として戻され、このサーバーへのトラフィックの送信が再開されます。
 
+### <a name="probe-matching"></a>プローブの一致
+
+既定では、状態コード 200 の HTTP(S) 応答は正常と見なされます。 カスタム正常性プローブでは、さらに 2 つの一致条件がサポートされます。 一致条件を使用して、正常な応答の構成要素の既定の解釈を必要に応じて変更できます。
+
+一致条件は、次のとおりです。 
+
+- **HTTP 応答の状態コードの一致** - ユーザー指定 http 応答コードまたは応答コードの範囲を受け入れるためのプローブの一致条件。 個々のコンマ区切りの応答状態コードまたは状態コードの範囲がサポートされています。
+- **HTTP 応答本文の一致** - HTTP 応答本文をチェックし、ユーザー指定文字列と一致させるプローブの一致条件。 一致ではユーザー指定文字列が応答本文内にあるかどうかのみがチェックされ、完全な正規表現の一致ではないことに注意してください。
+
+一致条件は `New-AzureRmApplicationGatewayProbeHealthResponseMatch` コマンドレットを使用して指定できます。
+
+例: 
+
+```
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```
+一致条件が指定されたら、PowerShell の `-Match` パラメーターを使用してプローブの構成にアタッチできます。
+
 ### <a name="default-health-probe-settings"></a>既定の正常性プローブの設定
 
-| プローブのプロパティ | 値 | Description |
+| プローブのプロパティ | 値 | [説明] |
 | --- | --- | --- |
 | プローブの URL |http://127.0.0.1:\<port\>/ |URL パス |
 | 間隔 |30 |プローブの間隔 (秒) |
@@ -62,7 +79,7 @@ ms.lasthandoff: 10/11/2017
 
 カスタム正常性プローブのプロパティの定義を次の表に示します。
 
-| プローブのプロパティ | Description |
+| プローブのプロパティ | [説明] |
 | --- | --- |
 | Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
@@ -76,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 > Application Gateway を単一のサイトで構成する場合、既定ではホスト名は "127.0.0.1" と指定する必要があります (カスタム プローブで構成する場合は除く)。
 > プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 使用されるポートは、バックエンドの HTTP 設定で定義されているものと同じポートになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイト モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png

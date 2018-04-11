@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric の複数の環境向けにアプリケーションを管理する | Microsoft Docs"
-description: "Azure Service Fabric アプリケーションは、1 台から数千台のコンピューターで構成されたさまざまな規模のクラスターで実行できます。 場合によっては、このようなさまざまな環境に合わせて異なる方法でアプリケーションを構成したい場合があります。 この記事では、環境ごとに異なるアプリケーション パラメーターを定義する方法について説明します。"
+title: Azure Service Fabric の複数の環境向けにアプリケーションを管理する | Microsoft Docs
+description: Azure Service Fabric アプリケーションは、1 台から数千台のコンピューターで構成されたさまざまな規模のクラスターで実行できます。 場合によっては、このようなさまざまな環境に合わせて異なる方法でアプリケーションを構成したい場合があります。 この記事では、環境ごとに異なるアプリケーション パラメーターを定義する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 6bc986236d50106485dce151f1f74622f56400c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
@@ -41,7 +41,7 @@ Azure Service Fabric クラスターは、1 台から数千台のコンピュー
 
 > [!NOTE]
 > アプリケーションおよびサービスのマニフェスト ファイルの属性の中には、パラメーターをサポートしていないものがあります。
-> そのような場合は、展開ワークフローの一部として置換文字列に依存する必要があります。 Visual Studio Team Services では、置換トークン https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens のような拡張機能を使うことができます。Jenkins では、スクリプト タスクを実行して値を置き換えることができます。
+> そのような場合は、展開ワークフローの一部として置換文字列に依存する必要があります。 Visual Studio Team Services では、置換トークン (https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens) のような拡張機能を使用することができます。また、Jenkins では、スクリプト タスクを実行して値を置き換えることができます。
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>アプリケーション作成時のパラメーターの指定

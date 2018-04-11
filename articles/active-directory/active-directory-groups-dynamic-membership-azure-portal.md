@@ -12,31 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 8a52d80f32f822691be862d566c17c84efc73c26
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
-Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
+Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
 
 ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、この変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループのメンバーとして追加されます。 ルールを満たさなくなると、削除されます。
 
 > [!NOTE]
-> セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
->
 > この機能を使うには、少なくとも 1 つの動的グループに追加される各ユーザー メンバーに Azure AD Premium P1 ライセンスが必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーに実際にライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数は必要です。 たとえば、テナントのすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 以上に対するライセンスが 1,000 個以上必要です。
 >
 > デバイスまたはユーザーの動的グループは作成できても、ユーザー オブジェクトとデバイス オブジェクトの両方を含むルールは作成できません。
 > 
 > 現時点では、ユーザーの属性の所有に基づいてデバイス グループを作成することはできません。 デバイスのメンバーシップのルールは、ディレクトリ内のデバイス オブジェクトの直接の属性のみを参照できます。
-> 
-> Microsoft Teams では動的グループのメンバーシップはまだサポートされていません。 [Cannot migrate Dynamic membership group]\(動的なメンバーシップ グループを移行できない\) に関連するログのエラーを検証できます。
 
 ## <a name="to-create-an-advanced-rule"></a>高度なルールを作成するには
 1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
@@ -228,9 +224,9 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ## <a name="use-of-null-values"></a>Null 値の使用
 
-ルールで null 値を指定するには、*null* 値を使用します。 *null* という語を引用符で囲まないように注意してください。引用符をつけると、リテラル文字列値として解釈されます。 null 値を参照する正しい方法は次のとおりです。
+ルールで null 値を指定するには、*null* 値を使用します。 *null* という語を引用符で囲まないように注意してください。引用符をつけると、リテラル文字列値として解釈されます。 -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。 代わりに、-eq または -ne を使います。 null 値を参照する正しい方法は次のとおりです。
 ```
-   user.mail –ne null
+   user.mail –ne $null
 ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>拡張属性とカスタム属性
@@ -254,13 +250,14 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 > [!NOTE]
 > 1. このルールを機能させるには、テナント内のユーザーについて **[Manager ID] \(マネージャー ID)** プロパティが正しく設定されていることを確認してください。 各ユーザーの現在の値は、そのユーザーの **[プロファイル] タブ**で確認できます。
 > 2. このルールは、**直接の**部下のみをサポートします。 現在、入れ子になった階層のグループ (たとえば、直接の部下とその部下が含まれたグループ) を作成することはできません。
+> 3. このルールを、他の高度なルールと組み合わせることはできません。
 
 **グループを構成するには**
 
 1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」のセクションの手順 1. ～ 5. に従い、**[Dynamic User] \(動的ユーザー)** の **[Membership type] \(メンバシップの種類)** を選択します。
 2. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、次の構文を使用してルールを入力します。
 
-    *Direct Reports for "{obectID_of_manager}"*
+    *Direct Reports for "{objectID_of_manager}"*
 
     有効なルールの例:
 ```
@@ -295,19 +292,43 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>動的メンバーシップを静的に変更する、またはその逆の変更を行う
 グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
 
-この機能をサポートするように Azure Portal の更新を行っているところです。 それまでの間は、次に示すように PowerShell コマンドレットを使うことができます。
+Azure AD 管理センターが更新されて、この機能のサポートが追加されました。 現在は、次のように、Azure AD 管理センターまたは PowerShell コマンドレットを使って、既存のグループを、動的なメンバーシップから割り当て済みのメンバーシップに、またはその逆に変換できます。
 
 > [!WARNING]
 > 既存の静的グループを動的グループに変更すると、既存のすべてのメンバーはグループから削除され、新しいメンバーを追加するためにメンバーシップ ルールが処理されます。 アプリまたはリソースへのアクセスを制御するためにグループが使用されている場合、元のメンバーは、メンバーシップ ルールが完全に処理されるまでアクセスできなくなる可能性があります。
 >
 > グループの新しいメンバーシップが予期したとおりのものになるように、事前に新しいメンバーシップ ルールをテストすることをお勧めします。
 
-**PowerShell を使用してグループに対するメンバーシップの管理を変更する**
+### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>Azure AD 管理センターを使用してグループに対するメンバーシップの管理を変更する 
+
+1. グローバル管理者またはテナントのユーザー アカウントの管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+2. **[グループ]** を選びます。
+3. **[すべてのグループ]** の一覧から、変更するグループを開きます。
+4. **[プロパティ]**を選択します。
+5. グループの **[プロパティ]** ページで、目的のメンバーシップの種類に応じて、[割り当て済み] (静的)、[動的ユーザー]、または [動的なデバイス] の **[メンバーシップの種類]** を選びますす。 動的メンバーシップの場合は、ルール ビルダーを使って簡単なルールのオプションを選んだり、高度なルールを自分で作成したりすることができます。 
+
+次の手順は、ユーザーのグループを静的メンバーシップから動的メンバーシップに変更する例です。 
+
+1. 選択したグループの **[プロパティ]** ページで、**[動的ユーザー]** の **[メンバーシップの種類]** を選び、グループ メンバーシップの変更について説明するダイアログ ボックスで [はい] を選んで続行します。 
+  
+   ![動的ユーザーのメンバーシップの種類を選ぶ](./media/active-directory-groups-dynamic-membership-azure-portal/select-group-to-convert.png)
+  
+2. **[動的クエリの追加]** を選び、ルールを指定します。
+  
+   ![ルールを入力する](./media/active-directory-groups-dynamic-membership-azure-portal/enter-rule.png)
+  
+3. ルールを作成した後、ページの下部にある **[クエリの追加]** を選びます。
+4. グループの **[プロパティ]** ページで **[保存]** を選んで、変更を保存します。 グループの一覧でグループの **[メンバーシップの種類]** がすぐに更新されます。
+
+> [!TIP]
+> 入力した詳細なルールが正しくない場合、グループの変換が失敗する可能性があります。 ポータルの右上隅に通知が表示されます。ルールがシステムで受け付けられない理由の説明が含まれます。 それをよく読み、有効にするためにできる調整の方法を理解してください。
+
+### <a name="using-powershell-to-change-membership-management-on-a-group"></a>PowerShell を使用してグループに対するメンバーシップの管理を変更する
 
 > [!NOTE]
-> 動的なグループ プロパティを変更するには、[Azure AD PowerShell バージョン 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) の**プレビュー バージョン**のコマンドレットを使用する必要があります。 プレビューは[こちら](https://www.powershellgallery.com/packages/AzureADPreview)からインストールできます。
+> 動的なグループ プロパティを変更するには、[Azure AD PowerShell バージョン 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) の**プレビュー バージョン**のコマンドレットを使用する必要があります。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview)からプレビューをインストールできます。
 
-既存のグループにおいてメンバーシップの管理を切り替える関数を次に示します。 GroupTypes プロパティを正しく操作し、動的なメンバーシップに関係のない値がそこに存在する場合はその値を保持するようにしてください。
+既存のグループにおいてメンバーシップの管理を切り替える関数を次に示します。 この例では、GroupTypes プロパティを正しく操作し、動的なメンバーシップに関係のない値を保持するようにしてください。
 
 ```
 #The moniker for dynamic groups as used in the GroupTypes property of a group object

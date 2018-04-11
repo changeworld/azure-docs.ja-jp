@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>ポータルを使用して NSG を管理する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/21/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -197,5 +197,5 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 
     ![Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。

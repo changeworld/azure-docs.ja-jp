@@ -1,10 +1,11 @@
 ---
-title: "Azure Machine Learning でモデルのパフォーマンスを評価する方法 | Microsoft Docs"
-description: "Azure Machine Learning でモデルのパフォーマンスを評価する方法を説明します。"
+title: Azure Machine Learning でモデルのパフォーマンスを評価する方法 | Microsoft Docs
+description: Azure Machine Learning でモデルのパフォーマンスを評価する方法を説明します。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 48ce4584f7270d78b1d09b848bfdd305d03012b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Azure Machine Learning でモデルのパフォーマンスを評価する方法
 この記事では、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。 以下の 3 種類の学習のシナリオを取り上げます。 
@@ -151,7 +151,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 [[モデルのトレーニング]][train-model] モジュールのラベル列のインデックスを 5 に設定します。 このデータセットにはヘッダー行がありませんが、クラス ラベルが第 5 列にあります。
 
-[[データのインポート]][import-data] モジュールをクリックし、"*データ ソース*" プロパティを "*HTTP 経由の Web URL*" に設定し、"*URL*" を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
+[[データのインポート]][import-data] モジュールをクリックし、*[データ ソース]* プロパティを *[HTTP を使用する Web URL]* に設定し、*[URL]* を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
 
 [[データの分割]][split] モジュールでトレーニングに使用する事例の割合を設定します (0.7 など)。
 

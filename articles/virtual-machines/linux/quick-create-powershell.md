@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 40abc884a898dc16ae4d785c13d3e926fb30e432
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1d477bfe42cebbc35db4fd40aa5bc3de4829c49b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>PowerShell で Linux 仮想マシンを作成する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
-最後に、*id_rsa.pub* という名前の公開 SSH キーを Windows ユーザー プロファイルの *.ssh* ディレクトリに格納しておく必要があります。 Azure 用 SSH キーの作成の詳細については、[Azure 用 SSH キーの作成](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+最後に、*id_rsa.pub* という名前の公開 SSH キーを Windows ユーザー プロファイルの *.ssh* ディレクトリに格納しておく必要があります。 SSH キーを作成および使用する方法の詳細については、[Azure 用の SSH キーの作成](ssh-from-windows.md)に関するページを参照してください。
 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする

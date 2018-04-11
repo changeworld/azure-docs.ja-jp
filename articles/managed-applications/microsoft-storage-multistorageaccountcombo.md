@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの MultiStorageAccountCombo UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Storage.MultiStorageAccountCombo UI 要素について説明します。"
+title: Azure の MultiStorageAccountCombo UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Storage.MultiStorageAccountCombo UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: e1dda7917988146807ca6cfab10a3a4eac0b7bb2
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c395c076a4910e124c1b93ebc61b5e491b2b53ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI 要素
-名前が共通のプレフィックスで始まる複数のストレージ アカウントを作成するコントロールのグループです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+名前が共通のプレフィックスで始まる複数のストレージ アカウントを作成するコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
@@ -69,7 +69,6 @@ ms.lasthandoff: 10/27/2017
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

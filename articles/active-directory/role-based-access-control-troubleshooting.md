@@ -1,6 +1,6 @@
 ---
-title: "ロールベースのアクセス制御 Azure RBAC のトラブルシューティング | Microsoft Docs"
-description: "ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。"
+title: ロールベースのアクセス制御 Azure RBAC のトラブルシューティング | Microsoft Docs
+description: ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: seohack1
-ms.openlocfilehash: c2589aabce86f848fa1aa3e25b3f78be180c5525
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 766ff118638538520c8f17694b32f35dbe6d1025
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のトラブルシューティング 
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/09/2018
 
 所有者と共同作成者には管理操作に対するフル アクセス許可がありますが、共同作成者は、他のユーザーやグループにアクセス権を付与できません。 閲覧者のロールはさらに興味深いので、以下で詳しく考慮します。 アクセス権を付与する方法の詳細については、「 [Azure のロールベースのアクセス制御](role-based-access-control-configure.md) 」をご覧ください。
 
-## <a name="app-service-workloads"></a>アプリ サービスのワークロード
+## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>書き込みアクセス機能
 1 つの Web アプリに対する読み取り専用アクセスをユーザーに付与する場合、予期しない機能が無効になることがあります。 以下の管理機能には、Web アプリに対する**書き込み**アクセス権 (共同作成者または所有者) が必要なので、読み取り専用のシナリオでは利用できません。
 
@@ -69,7 +69,14 @@ ms.lasthandoff: 02/09/2018
 * Application Insights コンポーネント  
 * Web テスト  
 
-## <a name="virtual-machine-workloads"></a>仮想マシンのワークロード
+## <a name="azure-functions"></a>Azure Functions
+[Azure Functions](../azure-functions/functions-overview.md) の一部の機能では、書き込みアクセスが必要です。 たとえば、ユーザーに閲覧者ロールが割り当てられている場合、そのユーザーは関数アプリ内の関数を表示することができません。 ポータルには **(アクセスなし)** が表示されます。
+
+![Function App のアクセスなし](./media/role-based-access-control-troubleshooting/functionapps-noaccess.png)
+
+閲覧者は、**[プラットフォーム機能]** タブをクリックし、**[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
+
+## <a name="virtual-machine"></a>仮想マシン
 Web アプリと同様、仮想マシン ブレード上の機能にも、仮想マシンかリソース グループ内の他のリソースに対する書き込みアクセス権が必要なものがあります。
 
 仮想マシンは、ドメイン名、仮想ネットワーク、ストレージ アカウント、アラート ルールなどのリソースと関連しています。

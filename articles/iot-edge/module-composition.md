@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b59a715919e38e68c3b7518932617e9950940e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する - プレビュー
 
@@ -134,32 +134,21 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 ### <a name="condition"></a>条件
 条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語][lnk-iothub-query] を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。
 
-Azure IoT メッセージは JSON 形式であり、少なくとも**本文**パラメーターを常に含みます。 例: 
+IoT Edge のモジュール間を通過するメッセージは、デバイスと Azure IoT Hub の間を通過するメッセージと同じ形式になります。 すべてのメッセージは JSON で書式設定され、パラメーターとして **systemProperties**、**appProperties**、**body** が与えられます。 
 
-```json
-"message": {
-    "body":{
-        "ambient":{
-            "temperature": 54.3421,
-            "humidity": 25
-        },
-        "machine":{
-            "status": "running",
-            "temperature": 62.2214
-        }
-    },
-    "appProperties":{
-        ...
-    }
-}
+3 つすべてのパラメーターでクエリを構築できます。次の構文を利用します。 
+
+* システム プロパティ: `$<propertyName>` または `{$<propertyName>}`
+* アプリケーション プロパティ: `<propertyName>`
+* 本文プロパティ: `$body.<propertyName>` 
+
+メッセージ プロパティのクエリを作成する方法の例は、「[デバイスからクラウドへのメッセージ ルートのクエリ式](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions)」を参照してください。
+
+IoT Edge に固有の例としては、たとえば、リーフ デバイスからゲートウェイ デバイスに到着したメッセージにフィルターを適用します。 モジュールから送信されるメッセージには、**connectionModuleId** と呼ばれるシステム プロパティが含まれます。 したがって、リーフ デバイスからメッセージを直接 IoT Hub にルーティングする場合は、次のルートを使用してモジュールのメッセージを除外します。
+
+```sql
+FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
-
-このサンプル メッセージを使用する場合、次のようないくつかの条件を定義することができます。
-* `WHERE $body.machine.status != "running"`
-* `WHERE $body.ambient.temperature <= 60 AND $body.machine.temperature >= 60`
-
-条件を使用してメッセージの種類を並べ替えることもできます。たとえば、リーフ デバイスからのメッセージをルーティングする必要があるゲートウェイで使用できます。 モジュールから送信されるメッセージには、**connectionModuleId** と呼ばれる特定のプロパティが含まれます。 したがって、リーフ デバイスからメッセージを直接 IoT Hub にルーティングする場合は、次のルートを使用してモジュールのメッセージを除外します。
-* `FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream`
 
 ### <a name="sink"></a>シンク
 シンクでは、メッセージの送信先が定義されます。 次のいずれかの値を指定できます。

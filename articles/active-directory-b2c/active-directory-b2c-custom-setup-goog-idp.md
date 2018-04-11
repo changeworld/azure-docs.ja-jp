@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーを使って Google+ を OAuth2 ID プロバイダーとして追加する"
-description: "OAuth2 プロトコルを使った ID プロバイダーとしての Google+ の使用のサンプル"
+title: 'Azure Active Directory B2C: カスタム ポリシーを使って Google+ を OAuth2 ID プロバイダーとして追加する'
+description: OAuth2 プロトコルを使った ID プロバイダーとしての Google+ の使用のサンプル
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: d389a44ce38d84e510060f3b0a53cda58513dee5
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.author: davidmu
+ms.openlocfilehash: f12bbc2472aa2d83088c7d4d7b8f173744fb36b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Google+ を OAuth2 ID プロバイダーとして追加する
 
@@ -39,7 +36,7 @@ ms.lasthandoff: 01/09/2018
 5.  Azure AD B2C テナントにポリシーをアップロードし、テストする
 
 ## <a name="create-a-google-account-application"></a>Google+ アカウント アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+ を使用するには、Google+ アプリケーションを作成し、適切なパラメーターを提供する必要があります。 Googl + アプリケーションは、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) で登録できます
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+ を使用するには、Google+ アプリケーションを作成し、適切なパラメーターを提供する必要があります。 Google + アプリケーションは、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) で登録することができます。
 
 1.  [Google Developers Console](https://console.developers.google.com/) に移動し、Google+ アカウントの資格情報でサインインします。
 2.  **[プロジェクトの作成]** をクリックし、**[プロジェクト名]** を入力して、**[作成]** をクリックします。

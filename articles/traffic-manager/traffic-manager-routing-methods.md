@@ -1,11 +1,11 @@
 ---
-title: "Azure Traffic Manager - トラフィック ルーティング方法 | Microsoft Docs"
-description: "この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。"
+title: Azure Traffic Manager - トラフィック ルーティング方法 | Microsoft Docs
+description: この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
 ms.service: traffic-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: kumud
-ms.openlocfilehash: fe776e24a4f78b389c6096694055b38befa3c419
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9bd9b4913e38ed5c1f7f4ec8ee7e3210fa3be8f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager のルーティング方法
 
@@ -50,7 +50,7 @@ Azure Resource Manager では、エンドポイントごとに "priority" プロ
 
 ![Azure Traffic Manager の "重み付け" トラフィック ルーティング方法][2]
 
-重み付けトラフィック ルーティング方法では、Traffic Manager プロファイル構成で各エンドポイントに重みを割り当てます。 重みは 1 から 1000 の整数です。 このパラメーターは省略可能です。 省略すると、Traffic Managers では、既定の重みの "1" が使用されます。
+重み付けトラフィック ルーティング方法では、Traffic Manager プロファイル構成で各エンドポイントに重みを割り当てます。 重みは 1 から 1000 の整数です。 このパラメーターは省略可能です。 省略すると、Traffic Managers では、既定の重みの "1" が使用されます。 重みが大きくなると、優先順位がそれだけ上がります。
 
 Traffic Manager では、受信する DNS クエリごとに、使用可能なエンドポイントをランダムに選択します。 あるエンドポイントが選択される確率は、すべての利用可能なエンドポイントに割り当てられている重みに基づきます。 すべてのエンドポイント間で同じ重みを使用すると、トラフィック分散は均一になります。 特定のエンドポイントの重みを大きくする (または小さくする) と、それらのエンドポイントは DNS からの応答の頻度が増えます (または減ります)。
 
@@ -124,7 +124,7 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 [Traffic Manager の動作のしくみ](traffic-manager-how-traffic-manager-works.md)で説明したように、Traffic Manager は、クライアントから直接には DNS クエリを受信しません。 代わりに、DNS クエリは、クライアントが使用するように構成された再帰 DNS サービスから受信します。 そのため、リージョンの特定に使用される IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになります。 実際には、この IP アドレスはクライアントにとって適切なプロキシとなります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
 

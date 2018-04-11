@@ -1,26 +1,30 @@
 ---
-title: "Azure Media Services を使用したライブ ストリーミングの概要 | Microsoft Docs"
-description: "このトピックでは、Azure Media Services を使用したライブ ストリーミングの概要を説明します。"
+title: Azure Media Services を使用したライブ ストリーミングの概要 | Microsoft Docs
+description: このトピックでは、Azure Media Services を使用したライブ ストリーミングの概要を説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6f500f25129470a679c75cae6cd1abc9d71b72a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 451513c364978348eba922f5cf42b6e6c79f8700
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Azure Media Services を使用したライブ ストリーミングの概要
+
+> [!NOTE]
+> 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
+
 ## <a name="overview"></a>概要
 Azure Media Services を使用してライブ ストリーミング イベントを配信する場合、通常、次のコンポーネントが必要になります。
 
@@ -60,20 +64,20 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 ## <a name="comparison-of-channel-types"></a>チャネルの種類の比較
 次の表では、Media Services でサポートされている 2 種類のチャネルを比較し、説明しています。
 
-| 機能 | パススルー チャネル | 標準チャネル |
+| Feature | パススルー チャネル | 標準チャネル |
 | --- | --- | --- |
-| シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |なし |はい |
+| シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
 | 最大解像度、層の数 |1080p、8 層、60 fps 以上 |720p、6 層、30 fps |
 | 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング、RTP |
 | 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長実行時間 |24 時間 365 日 |8 時間 |
-| スレートの挿入のサポート |なし |はい |
-| 広告信号のサポート |なし |はい |
-| パススルー CEA 608/708 キャプション |はい |はい |
-| 投稿フィードでの短時間の停止から回復する機能 |はい |なし (6 秒経過しても入力データがない場合、チャネルはスレートを開始します) |
-| 均一でない入力 GOP のサポート |はい |いいえ – 入力は固定の 2 秒の GOP である必要があります |
-| 可変フレーム レートの入力のサポート |はい |なし。入力は固定フレーム レートにする必要があります。<br/>たとえば、動きの大きなシーンでは、多少の変化は許容されます。 しかし、エンコーダーは 10 フレーム/秒に下げることはできません。 |
-| 入力フィードがなくなった場合のチャネルの自動停止 |なし |12 時間後 (実行中のプログラムがない場合) |
+| スレートの挿入のサポート |いいえ  |[はい] |
+| 広告信号のサポート |いいえ  |[はい] |
+| パススルー CEA 608/708 キャプション |[はい] |[はい] |
+| 投稿フィードでの短時間の停止から回復する機能 |[はい] |なし (6 秒経過しても入力データがない場合、チャネルはスレートを開始します) |
+| 均一でない入力 GOP のサポート |[はい] |いいえ – 入力は固定の 2 秒の GOP である必要があります |
+| 可変フレーム レートの入力のサポート |[はい] |なし。入力は固定フレーム レートにする必要があります。<br/>たとえば、動きの大きなシーンでは、多少の変化は許容されます。 しかし、エンコーダーは 10 フレーム/秒に下げることはできません。 |
+| 入力フィードがなくなった場合のチャネルの自動停止 |いいえ  |12 時間後 (実行中のプログラムがない場合) |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
 次の図は、 **パススルー** ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
@@ -134,9 +138,9 @@ Media Services においてライブ ストリーミング コンテンツの処
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- |
 | 開始中 |開始中 |いいえ (遷移状態) |
-| 実行中 |準備完了 (実行中プログラムなし)<br/>または<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
+| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
 | 停止中 |停止中 |いいえ (遷移状態) |
-| 停止済み |停止済み |なし |
+| 停止済み |停止済み |いいえ  |
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

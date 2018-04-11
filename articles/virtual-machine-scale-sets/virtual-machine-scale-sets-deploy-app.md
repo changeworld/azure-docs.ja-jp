@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシン スケール セットにアプリをデプロイする | Microsoft Docs"
-description: "スケール セット内の Linux と Windows の仮想マシン インスタンスにアプリケーションを展開する方法について説明します。"
+title: Azure 仮想マシン スケール セットにアプリをデプロイする | Microsoft Docs
+description: スケール セット内の Linux と Windows の仮想マシン インスタンスにアプリケーションを展開する方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 288bcdf6628f60d0b08fe151e630784d665db56f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
@@ -28,94 +28,17 @@ ms.lasthandoff: 02/01/2018
 ## <a name="build-a-custom-vm-image"></a>カスタム VM イメージの構築
 Azure プラットフォーム イメージの 1 つを使用してスケール セット内にインスタンスを作成するために、追加のソフトウェアをインストールしたり構成する必要はありません。 これらのコンポーネントのインストールは自動化できますが、スケール セットへ VM インスタンスをプロビジョニングするには時間がかかります。 VM インスタンスに多くの構成変更を適用する場合は、これらの構成スクリプトとタスクを実行するための管理オーバーヘッドが必要になります。
 
-スケール セットにインスタンスがプロビジョニングされると同時にアプリケーションを実行できるカスタム VM イメージを構築すれば、構成管理と VM のプロビジョニングにかかる時間を短縮できます。 スケール セット インスタンスのためのカスタム VM イメージを作成する全体的なプロセスは次のとおりです。
+スケール セットにインスタンスがプロビジョニングされると同時にアプリケーションを実行できるカスタム VM イメージを構築すれば、構成管理と VM のプロビジョニングにかかる時間を短縮できます。 スケール セットでカスタム VM イメージを作成し、使用する方法については、次のチュートリアルをご覧ください。
 
-1. スケール セット インスタンスのためのカスタム VM イメージを作成するには、VM にログインし、アプリケーションをインストール、構成します。 Packer を使用して [Linux](../virtual-machines/linux/build-image-with-packer.md) または [Windows](../virtual-machines/windows/build-image-with-packer.md) VM イメージを定義および構築できます。 または、手動で VM を作成し構成することができます。
-
-    - [Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)、[Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)、または[ポータル](../virtual-machines/linux/quick-create-portal.md)を使用して Linux VM を作成します。
-    - [Azure PowerShell](../virtual-machines/windows/quick-create-powershell.md)、[Azure CLI 2.0](../virtual-machines/windows/quick-create-cli.md)、または[ポータル](../virtual-machines/windows/quick-create-portal.md)を使用して Windows VM を作成します。
-    - [Linux](../virtual-machines/linux/mac-create-ssh-keys.md#use-the-ssh-key-pair) または [Windows](../virtual-machines/windows/connect-logon.md) VM にログインします。
-    - 必要なアプリケーションとツールをインストールし、構成します。 特定のバージョンのライブラリまたはランタイムが必要な場合、カスタム VM イメージを使用することでバージョンを定義でき、さらに 
-
-2. [Azure CLI 2.0](../virtual-machines/linux/capture-image.md) または [Azure PowerShell](../virtual-machines/windows/capture-image.md) を使用して仮想マシンをキャプチャできます。 この手順で作成したカスタム VM イメージは、スケール セットにインスタンスを展開するために使用されます。
-
-3. [スケール セットを作成](virtual-machine-scale-sets-create.md)し、上記の手順で作成したカスタム VM イメージを指定します。
+- [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+- [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>カスタム スクリプト拡張機能を使用してアプリケーションをインストールする
-カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。
+カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 スケール セットでカスタム VM イメージを作成し、使用する方法については、次のチュートリアルをご覧ください。
 
-カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合されており、Azure CLI、PowerShell、Azure Portal、または Azure 仮想マシン REST API を使用して実行することもできます。 
-
-詳細については、「[Windows のカスタム スクリプト拡張機能](../virtual-machines/windows/extensions-customscript.md)」を参照してください。
-
-
-### <a name="use-azure-powershell"></a>Azure PowerShell の使用
-PowerShell では、ハッシュテーブルを使用してダウンロードするファイルおよび実行するコマンドを格納します。 次の例をご覧ください。
-
-- GitHub からスクリプトをダウンロードするよう VM インスタンスに指示する - *https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate-iis.ps1*
-- インストール スクリプトを実行するよう拡張機能を設定する - `powershell -ExecutionPolicy Unrestricted -File automate-iis.ps1`
-- [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) を使用して、スケール セットに関する情報を取得する
-- [Update-AzureRmVms](/powershell/module/azurerm.compute/update-azurermvmss) を使用して、VM インスタンスに拡張機能を適用する
-
-*myResourceGroup* という名前のリソース グループ内の *myScaleSet* VM インスタンスにカスタム スクリプト拡張機能が適用されます。 独自の名前を次のように入力します。
-
-```powershell
-# Define the script for your Custom Script Extension to run
-$customConfig = @{
-    "fileUris" = (,"https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate-iis.ps1");
-    "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File automate-iis.ps1"
-}
-
-# Get information about the scale set
-$vmss = Get-AzureRmVmss `
-                -ResourceGroupName "myResourceGroup" `
-                -VMScaleSetName "myScaleSet"
-
-# Add the Custom Script Extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
-    -VirtualMachineScaleSet $vmss `
-    -Name "customScript" `
-    -Publisher "Microsoft.Compute" `
-    -Type "CustomScriptExtension" `
-    -TypeHandlerVersion 1.8 `
-    -Setting $customConfig
-
-# Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myScaleSet" `
-    -VirtualMachineScaleSet $vmss
-```
-
-スケール セットのアップグレード ポリシーが*手動*の場合は、[Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
-
-
-### <a name="use-azure-cli-20"></a>Azure CLI 2.0 の使用
-カスタム スクリプト拡張機能を Azure CLI で使用するには、取得するファイルと実行するコマンドが定義された JSON ファイルを作成します。 これらの JSON 定義は、一貫したアプリケーション インストールを適用するためにスケール セット デプロイメント全体で再利用することができます。
-
-現在のシェルで、*customConfig.json* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloudConfig.json` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。
-
-```json
-{
-  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx.sh"],
-  "commandToExecute": "./automate_nginx.sh"
-}
-```
-
-[az vmss 拡張機能セット](/cli/azure/vmss/extension#az_vmss_extension_set)を使用して、カスタム スクリプト拡張機能構成をスケール セット内の VM インスタンスに適用します。 次の例では、*customConfig.json* 構成を *myResourceGroup* という名前のリソース グループ内の *myScaleSet* VM インスタンスに適用します。 独自の名前を次のように入力します。
-
-```azurecli
-az vmss extension set \
-    --publisher Microsoft.Azure.Extensions \
-    --version 2.0 \
-    --name CustomScript \
-    --resource-group myResourceGroup \
-    --vmss-name myScaleSet \
-    --settings @customConfig.json
-```
-
-スケール セットのアップグレード ポリシーが*手動*の場合は、[az vmss update-instances](/cli/azure/vmss#update-instances) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
+- [Azure CLI 2.0](tutorial-install-apps-cli.md)
+- [Azure PowerShell](tutorial-install-apps-powershell.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>PowerShell DSC を使用して Windows VM にアプリをインストールする
@@ -123,7 +46,7 @@ az vmss extension set \
 
 PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケール セット内の VM インスタンスをカスタマイズできます。 次の例をご覧ください。
 
-- DSC パッケージを GitHub からダウンロードするよう VM インスタンスに指示する - *https://github.com/iainfoulds/azure-samples/raw/master/dsc.zip*
+- GitHub から DSC パッケージをダウンロードするように VM インスタンスに指示する - *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - インストール スクリプトを実行するよう拡張機能を設定する - `configure-http.ps1`
 - [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) を使用して、スケール セットに関する情報を取得する
 - [Update-AzureRmVms](/powershell/module/azurerm.compute/update-azurermvmss) を使用して、VM インスタンスに拡張機能を適用する
@@ -135,7 +58,7 @@ PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケ
 $dscConfig = @{
   "wmfVersion" = "latest";
   "configuration" = @{
-    "url" = "https://github.com/iainfoulds/azure-samples/raw/master/dsc.zip";
+    "url" = "https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip";
     "script" = "configure-http.ps1";
     "function" = "WebsiteTest";
   };
@@ -184,36 +107,6 @@ az vmss create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
-
-
-## <a name="install-applications-as-a-set-scales-out"></a>セット スケール アウトとしてアプリケーションをインストールする
-スケール セットを使用すると、アプリケーションを実行する VM インスタンスの数を増やせます。 このスケール アウトのプロセスは、手動で起動するか、あるいは CPU またはメモリ使用率などのメトリックに基づいて自動的に起動できます。
-
-スケール セットにカスタム スクリプト拡張機能を適用した場合は、新しい VM インスタンスごとに、アプリケーションがインストールされます。 スケール セットで、事前にアプリケーションがインストールされているカスタム イメージを使用している場合は、新しい VM インスタンスはそれぞれ使用可能な状態で配置されます。 
-
-スケール セット VM インスタンスがコンテナー ホストの場合は、カスタム スクリプト拡張機能を使用してプルし、必要なコンテナー イメージを実行することができます。 カスタム スクリプト拡張機能は、Azure Container Service などのオーケストレーターに新しい VM インスタンスを登録することもできます。
-
-
-## <a name="deploy-application-updates"></a>アプリケーションの更新プログラムをデプロイする
-アプリケーション コード、ライブラリ、またはパッケージを更新する場合は、スケール セット内の VM インスタンスにアプリケーションの最新状態をプッシュできます。 カスタム スクリプト拡張機能を使用した場合、アプリケーションの更新プログラムは自動的に展開されません。 たとえば、更新後のバージョン名のインストール スクリプトを指すように、カスタム スクリプトの構成を変更します。 前の例では、カスタム スクリプト拡張機能は *automate_nginx.sh* という名前のスクリプトを使用しています。
-
-```json
-{
-  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx.sh"],
-  "commandToExecute": "./automate_nginx.sh"
-}
-```
-
-アプリケーションに加えた更新は、そのインストール スクリプトが変更されない限り、カスタム スクリプト拡張機能には公開されません。 アプリケーションがリリースされるたびに増分するバージョン番号を含めることも 1 つの方法です。 そうすると、カスタム スクリプト拡張機能は、次のように *automate_nginx_v2.sh* を参照できます。
-
-```json
-{
-  "fileUris": ["https://raw.githubusercontent.com/iainfoulds/azure-samples/master/automate_nginx_v2.sh"],
-  "commandToExecute": "./automate_nginx_v2.sh"
-}
-```
-
-これで、カスタム スクリプト拡張機能は、VM インスタンスに対して実行され、最新のアプリケーションの更新プログラムが適用されます。
 
 
 ### <a name="install-applications-with-os-updates"></a>OS 更新プログラムを使用してアプリケーションをインストールする

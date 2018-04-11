@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6c6422bc2b13c0c40e48dabf0470c821b13e7851
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>ユーザー割り当ての管理対象サービス ID (MSI) で VM のアクセス トークンを取得する
 
@@ -42,7 +42,9 @@ ms.lasthandoff: 03/16/2018
 | [CURL を使用してトークンを取得する](#get-a-token-using-curl) | Bash クライアントまたは CURL クライアントからの MSI REST エンドポイントの使用例 |
 | [トークンの有効期限の処理](#handling-token-expiration) | 有効期限が切れたアクセス トークンの処理に関するガイダンス |
 | [エラー処理](#error-handling) | MSI トークン エンドポイントから返される HTTP エラーの処理に関するガイダンス |
+| [スロットル ガイダンス](#throttling-guidance) | MSI トークン エンドポイントの調整を処理するためのガイダンス |
 | [Azure サービスのリソース ID](#resource-ids-for-azure-services) | サポートされている Azure サービスのリソース ID を取得する場所 |
+
 
 ## <a name="get-a-token-using-http"></a>HTTP を使用してトークンを取得する 
 
@@ -164,6 +166,16 @@ MSI エンドポイントは、HTTP 応答メッセージのヘッダーに含�
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
 | 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | VM で MSI が有効化されていることを確認します。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](msi-qs-configure-portal-windows-vm.md)」をご覧ください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、「[HTTP を使用してトークンを取得する](#get-a-token-using-http)」の「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](msi-overview.md#azure-services-that-support-azure-ad-authentication)」で、サービスの一覧と、そのリソース ID を参照してください。
+
+## <a name="throttling-guidance"></a>スロットル ガイダンス 
+
+スロットル制限は、MSI IMDS エンドポイントの呼び出し回数に適用されます。 スロットルがしきい値を超えた場合、MSI IMDS エンドポイントは、スロットルが有効な状態にあっても、それ以降の要求を制限します。 この期間中は、MSI IMDS エンドポイントから HTTP 状態コード 429 ("要求が多すぎます") が返され、要求は失敗します。 
+
+再試行については、次の方法をお勧めします。 
+
+| **再試行戦略** | **設定** | **値** | **動作のしくみ** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |再試行回数<br />最小バックオフ<br />最大バックオフ<br />差分バックオフ<br />最初の高速再試行 |5<br />0 秒<br />60 秒<br />2 秒<br />false |試行 1 - 0 秒の遅延<br />試行 2 - 最大 2 秒の遅延<br />試行 3 - 最大 6 秒の遅延<br />試行 4 - 最大 14 秒の遅延<br />試行 5 - 最大 30 秒の遅延 |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure サービスのリソース ID
 

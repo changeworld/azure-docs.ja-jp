@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a33056ccd908b43319125b3fe517988b1507c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf0bfa052c8cd7589af40972fda1e1802b4d1acb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
@@ -29,9 +29,10 @@ ms.lasthandoff: 03/16/2018
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
 
-## <a name="notes-for-03082018---release-of-spark-22-on-hdinsight-36"></a>2018 年 3 月 8 日 - HDInsight 3.6 での Spark 2.2 のリリース
+## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>2018 年 3 月 20 日 - HDInsight 3.6 での Spark 2.2 のリリース
 
 - Spark 2.2.0 では、Spark Core、SQL、ML での安定性が向上し、Structured Streaming が GA 状態になります。 Spark 2.2.0 は現在 HDInsight 3.6 で利用可能です。
+
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight の 2017 年 8 月 1 日リリース
 

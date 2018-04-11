@@ -1,11 +1,11 @@
 ---
-title: "Azure の Desired State Configuration の概要 | Microsoft Docs"
-description: "PowerShell Desired State Configuration (DSC) の Microsoft Azure 拡張機能ハンドラーの使用方法について学習します。 この記事には、前提条件、アーキテクチャ、およびコマンドレットが含まれています。"
+title: Azure の Desired State Configuration の概要 | Microsoft Docs
+description: PowerShell Desired State Configuration (DSC) の Microsoft Azure 拡張機能ハンドラーの使用方法について学習します。 この記事には、前提条件、アーキテクチャ、およびコマンドレットが含まれています。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: 14d29223435e9a133b112a61f2ecdde0aad581a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b16261c9a9f046b7bc55a06dd71aa154a0cec27
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -71,7 +71,7 @@ Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオン
 
 対話型のトラブルシューティングや情報収集のシナリオには、DSC 拡張機能を管理するために使用される PowerShell コマンドレットが最適です。 このコマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。 DSC 拡張機能用のコマンドレットは、[既定の構成スクリプト](#default-configuration-script)で動作するようにはまだ更新されていません。
 
-**Publish-AzureRMVMDscConfiguration** コマンドレットは構成ファイルを取り込み、構成ファイルをスキャンして依存 DSC リソースを探し、.zip ファイルを作成します。 .zip ファイルには、構成と、構成を適用するために必要な DSC リソースが含まれています。 コマンドレットは*-ConfigurationArchivePath* パラメーターを使用してローカルでパッケージを作成することもできます。 それ以外の場合は、コマンドレットは Blob Storage に .zip ファイルを発行し、SAS トークンを使用して保護します。
+**Publish-AzureRMVMDscConfiguration** コマンドレットは構成ファイルを取り込み、構成ファイルをスキャンして依存 DSC リソースを探し、.zip ファイルを作成します。 .zip ファイルには、構成と、構成を適用するために必要な DSC リソースが含まれています。 コマンドレットは *-OutputArchivePath* パラメーターを使用してローカルでパッケージを作成することもできます。 それ以外の場合は、コマンドレットは Blob Storage に .zip ファイルを発行し、SAS トークンを使用して保護します。
 
 このコマンドレットによって作成された .ps1 構成スクリプトは、アーカイブ フォルダーのルートの .zip ファイル内にあります。 モジュール フォルダーは、リソースのアーカイブ フォルダーに配置されます。
 
@@ -133,7 +133,7 @@ Set-AzureRmVmDscExtension -Version 2.72 -ResourceGroupName $resourceGroup -VMNam
 
 このポータルでは次の入力が必要です。
 
-* **[Configuration Modules or Script (構成モジュールまたはスクリプト)]**: このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script) 用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -ConfigurationArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
+* **[Configuration Modules or Script (構成モジュールまたはスクリプト)]**: このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script) 用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
 
 * **[Configuration Data PSD1 File (構成データ PSD1 ファイル)]**: このフィールドはオプションです。 .psd1 の構成データ ファイルが必要な構成では、このフィールドを使用してデータ フィールドを選択し、ユーザーの Blob Storage にアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
 

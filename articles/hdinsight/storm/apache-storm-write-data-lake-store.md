@@ -1,6 +1,6 @@
 ---
-title: "Storage/Data Lake Store への Apache Storm 書き込み - Azure HDInsight | Microsoft Docs"
-description: "Apache Storm を使用して、HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。 Azure Storage または Azure Data Lake Store は、HDInsight 用の HDFS と互換性のあるストレージを提供します。 このドキュメントおよび関連する例では、HdfsBolt コンポーネントを使用して HDInsight クラスター上の Storm の既定のストレージに書き込む方法を示します。"
+title: Storage/Data Lake Store への Apache Storm 書き込み - Azure HDInsight | Microsoft Docs
+description: Apache Storm を使用して、HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。 Azure Storage または Azure Data Lake Store は、HDInsight 用の HDFS と互換性のあるストレージを提供します。 このドキュメントおよび関連する例では、HdfsBolt コンポーネントを使用して HDInsight クラスター上の Storm の既定のストレージに書き込む方法を示します。
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 908a1130171cc091b4d95d4532cc3bb95edb44f9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2310894e7257d0ddb919406a8f297089189a9484
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から HDFS への書き込み
 
-Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight は、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Store の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。 
+Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight では、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Store の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。 
 
 > [!IMPORTANT]
 > このドキュメントで使用されているトポロジの例は、HDInsight 上の Storm に含まれているコンポーネントによって異なります。 他の Apache Storm クラスターと共に使用された場合、Azure Data Lake Store で動作するには、この例に変更が必要になる可能性があります。
 
 ## <a name="get-the-code"></a>コードの入手
 
-このトポロジを含むプロジェクトは、 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store)からダウンロードして利用できます。
+このトポロジを含むプロジェクトは、[https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) からダウンロードして入手できます。
 
 このプロジェクトをコンパイルするには、開発環境に次の構成が必要です。
 
@@ -134,7 +134,7 @@ bolts:
 * `rotationPolicy`: ファイルをいつローテーションするかを定義します。 この例では、ローテーションは実行されません。
 * `hdfs-bolt`: 前のコンポーネントを `HdfsBolt` クラスの構成パラメーターとして使用します。
 
-Flux フレームワークの詳細については、[https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html) を参照してください。
+Flux フレームワークの詳細については、「[https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html)」を参照してください。
 
 ## <a name="configure-the-cluster"></a>クラスターを構成する
 

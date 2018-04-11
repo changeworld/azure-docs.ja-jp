@@ -11,11 +11,11 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: 82983c8926bdf3c7256c529448e5b4f3b2c2381c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
 
@@ -172,7 +172,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 2. **F5** (**F8** ではない) を押してスクリプトを実行します (この時点では、既定値のままにしておきます)。
 
    > [!NOTE]
-   > **F8** キーを押してスクリプトの選択部分を実行するのではなく、**F5** キーだけを押して PowerShell スクリプトを実行する必要があります。 **F8** の問題は、*$PSScriptRoot* 変数が評価されないことです。 この変数は、フォルダーのナビゲーション、別のスクリプトの呼び出し、モジュールのインポートなどを行う多くのスクリプトで必要です。
+   > **F8** キーを押してスクリプトの選択部分を実行するのではなく、**F5** キーだけを押して PowerShell スクリプトを実行する必要があります。 **F8** の問題は、*$PSScriptRoot* 変数が評価されないことです。 この変数は、フォルダー間の移動、別のスクリプトの呼び出し、モジュールのインポートなどを行う多くのスクリプトで必要です。
 
 新しい Red Maple Racing テナントが *Tenants1* データベースに追加され、カタログに登録されます。 ブラウザーに新しいテナントのチケット販売 **Events** サイトが開きます。
 

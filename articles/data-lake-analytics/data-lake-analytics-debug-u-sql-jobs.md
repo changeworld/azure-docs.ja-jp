@@ -1,8 +1,8 @@
 ---
-title: "失敗した Azure Data Lake U-SQL ジョブについてユーザー定義の C# コードをデバッグする | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。"
+title: 失敗した Azure Data Lake U-SQL ジョブについてユーザー定義の C# コードをデバッグする | Microsoft Docs
+description: Azure Data Lake Tools for Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
@@ -41,7 +41,7 @@ Azure Data Lake Tools for Visual Studio で失敗したジョブを開くと、�
 
 1. **[ダウンロード]** をクリックして必要なリソースと入力ストリームをすべてダウンロードします。 ダウンロードが完了しない場合は、**[再試行]** をクリックします。
 
-2. ダウンロードが完了したら **[開く]** をクリックし、ローカルのデバッグ環境を生成します。 デバッグのソリューションを備えた新しい Visual Studio インスタンスが自動的に作成されて開きます。
+2. ダウンロードが完了したら **[開く]** をクリックし、ローカルのデバッグ環境を生成します。 新しいデバッグ ソリューションが開きます。Visual Studio で既存のソリューションを開いている場合は、デバッグする前に必ず保存してから閉じてください。
 
 ![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 頂点のダウンロード](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
@@ -109,7 +109,7 @@ C# ソース コードがキャプチャされるケースは 2 つあります�
 
 3. U-SQL ジョブを再送信します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 - [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)

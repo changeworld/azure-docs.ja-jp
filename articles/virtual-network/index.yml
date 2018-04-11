@@ -1,0 +1,97 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 仮想ネットワーク
+metadata:
+  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
+  title: 仮想ネットワーク
+  meta.description: Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.
+  services: virtual-network
+  author: jdial
+  manager: jeconnoc
+  ms.service: virtual-network
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/23/2018
+  ms.author: jdial
+  ms.openlocfilehash: 80704fedebafe097d199a4f00fba04f51adfe2d9
+  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/05/2018
+abstract:
+  description: Azure Virtual Network の使用方法について説明します。 クイック スタート、チュートリアル、サンプルなどで、仮想ネットワークのデプロイ、トラフィックのフィルター処理とルーティングの制御、仮想ネットワークどうしの接続を行う方法を紹介します。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: 仮想ネットワークを作成し、それに仮想マシンをデプロイして、仮想マシンどうしや仮想マシンとインターネット間で通信する方法を学習します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg
+      text: Azure ポータル
+      href: /azure/virtual-network/quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg
+      text: Azure PowerShell
+      href: /azure/virtual-network/quick-create-powershell
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/virtual-network/quick-create-cli
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: 仮想ネットワークの作成と接続、ルーティングやフィルター処理の制御の方法を学習します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">ネットワーク トラフィックをフィルター処理する</a>
+    - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">ネットワーク トラフィックをルーティングする</a>
+    - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">リソースへのネットワーク アクセスを制限する</a>
+    - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">仮想ネットワークを接続する</a>
+- title: 無料の Pluralsight ビデオ トレーニング
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Microsoft Azure ネットワークの実装
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Microsoft Azure ネットワーク ソリューションの計画と設計
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+    - title: AWS 管理者向け Microsoft Azure 管理
+      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+- title: サンプル
+  items:
+  - type: paragraph
+    text: 一般的なタスクのサンプル スクリプトです。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/virtual-network/cli-samples">Azure CLI</a>
+    - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>
+    - title: 言語
+      html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/virtual-network/">REST API リファレンスに関するページ</a></p>

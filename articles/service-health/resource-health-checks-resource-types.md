@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Health でサポートされるリソースの種類 |Microsoft Docs"
-description: "Azure Resource Health でサポートされるリソースの種類"
+title: Azure Resource Health でサポートされるリソースの種類 |Microsoft Docs
+description: Azure Resource Health でサポートされるリソースの種類
 services: Resource health
-documentationcenter: 
+documentationcenter: ''
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: b67e72af8a34799af97cd46f968636050f4ce485
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0694c45363eb2534416f1dad59196ecfa1dacd17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -120,7 +120,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>ホスト サーバーが稼働しているか</li><li>インターネット インフォメーション サーバーが実行されているか</li><li>ロード バランサーが実行されているか</li><li>データセンターから Web アプリにアクセスできるか</li><li>サイト コンテンツをホストしているストレージ アカウントを利用できるか</li></ul>|
 
-# <a name="next-steps"></a>次のステップ
--  [Azure サービスの正常性の概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
+# <a name="next-steps"></a>次の手順
+-  [Azure Service Health ダッシュボードの概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
 -  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
-- 正常性に問題が生じたとき通知を受けることができるようにアラートを設定します。 詳細については、[サービス正常性のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事を参照してください。 
+- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関するページを参照してください。 

@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: b68e8f7e67f767cff19e57f5864db89d6f059316
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のデプロイ方法
 
@@ -32,13 +30,13 @@ Hybrid Runbook Worker ロールの技術的な概要については、「[Automa
 Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 要求を処理するワーカーは、グループのメンバーが決定します。 特定のワーカーを指定することはできません。
 
 ## <a name="installing-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のインストール
-Linux コンピューターに Hybrid Runbook Worker をインストールして構成するには、ロールを手動でインストールおよび構成するための非常に簡単なプロセスに従います。 **Automation Hybrid Worker** ソリューションを OMS ワークスペースで有効にする必要があります。その後、一連のコマンドを実行してコンピューターを worker として登録し、新規または既存のグループに追加します。 
+Linux コンピューターに Hybrid Runbook Worker をインストールして構成するには、ロールを手動でインストールおよび構成するための非常に簡単なプロセスに従います。 **Automation Hybrid Worker** ソリューションを Log Analytics ワークスペースで有効にする必要があります。その後、一連のコマンドを実行してコンピューターを worker として登録し、新規または既存のグループに追加します。 
 
 続行する前に、Automation アカウントがリンクされている Log Analytics ワークスペースだけでなく、Automation アカウントの主キーにも注意する必要があります。 ポータルから、Automation アカウント、ワークスペース ID の**ワークスペース**、および主キーの**キー**を選択することで両方を検索できます。  
 
-1.  OMS で "Automation Hybrid Worker" ソリューションを有効にします。 これは以下のいずれかの方法で実行できます。
+1.  Azure で "Automation Hybrid Worker" ソリューションを有効にします。 これは以下のいずれかの方法で実行できます。
 
-   1. [OMS ポータル](https://mms.microsoft.com)内のソリューション ギャラリーから、**Automation Hybrid Worker** ソリューションを有効にします。
+   1. 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions)」の手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
    2. 次のコマンドレットを実行します。
 
         ```powershell
@@ -47,18 +45,18 @@ Linux コンピューターに Hybrid Runbook Worker をインストールして
 
 2.  次のコマンドを、*-w*、*-k*、*-g*、および *-e* パラメーターの値を変更して実行します。 *-g* パラメーターを、新しい Linux Hybrid Runbook Worker を参加させる Hybrid Runbook Worker グループの名前の値に置き換えます。 この名前がまだ Automation アカウントに存在しない場合は、その名前を持つ新しい Hybrid Runbook Worker グループが作成されます。
     
-    ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
+    ```python
+    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
     ```
 3. コマンドが完了すると、Azure Portal の [ハイブリッド worker グループ] ブレードに新しいグループとメンバー数が表示されますが、既存のグループの場合はメンバー数が追加されます。 **[ハイブリッド worker グループ]** ブレード上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ブレードで、グループの各メンバーが一覧表示されます。  
 
 
 ## <a name="turning-off-signature-validation"></a>署名の検証をオフにする 
-既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して未署名の Runbook を実行した場合は、"署名の検証が失敗しました" を含むエラーが表示されます。 署名の検証をオフにするには、2 番目のパラメーターを OMS ワークスペース ID に置き換えて、次のコマンドを 実行します。
+既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して未署名の Runbook を実行した場合は、"署名の検証が失敗しました" を含むエラーが表示されます。 署名の検証をオフにするには、2 番目のパラメーターを Log Analytics ワークスペース ID に置き換えて、次のコマンドを実行します。
 
-    ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <OMSworkspaceId>
-    ```
+ ```python
+ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
+ ```
 
 ## <a name="supported-runbook-types"></a>サポートされている Runbook の種類
 

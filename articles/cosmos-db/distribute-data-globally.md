@@ -1,24 +1,24 @@
 ---
-title: "Azure Cosmos DB を使用したデータのグローバル分散 | Microsoft Docs"
-description: "グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。"
+title: Azure Cosmos DB を使用したデータのグローバル分散 | Microsoft Docs
+description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
 Azure はユビキタスです。30 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する差別化機能の 1 つは、グローバル分散アプリケーションを簡単に構築し、デプロイ、管理できることです。 
@@ -37,6 +37,11 @@ Azure Cosmos DB のターンキー グローバル分散により、開発者は
 
 ## <a id="EnableGlobalDistribution"></a>ターンキー グローバル配布の有効化
 Azure Cosmos DB には、地球規模のアプリケーションを簡単に作成できるようにするための以下の機能が用意されています。 これらの機能は、Azure Cosmos DB のリソース プロバイダー ベースの [REST API](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) と Azure Portal で使用できます。
+
+次の動画では、Azure Cosmos DB プログラム マネージャーの Andrew Liu がターン キー グローバル分散機能を紹介します。
+
+> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ### <a id="RegionalPresence"></a>ユビキタスなリージョン プレゼンス 
 Azure では、[新しいリージョン](https://azure.microsoft.com/regions/)をオンラインにすることで、地理的プレゼンスを常に高めています。 Azure Cosmos DB は、すべての新しい Azure リージョンで既定で利用できます。 これにより、Azure がビジネス向けの新しいリージョンを開設するとすぐに、地理的リージョンを Azure Cosmos DB データベース アカウントに関連付けることができます。

@@ -1,18 +1,18 @@
 ---
-title: "タスクを状態別にカウントすることでジョブの進行状況を監視する - Azure Batch | Microsoft Docs"
-description: "Get Task Counts 操作を呼び出してジョブのタスクをカウントすることで、ジョブの進行状況を監視します。 アクティブなタスク、実行中のタスク、完了したタスク、成功したタスク、および失敗したタスクの数を取得できます。"
+title: タスクを状態別にカウントすることでジョブの進行状況を監視する - Azure Batch | Microsoft Docs
+description: Get Task Counts 操作を呼び出してジョブのタスクをカウントすることで、ジョブの進行状況を監視します。 アクティブなタスク、実行中のタスク、完了したタスク、成功したタスク、および失敗したタスクの数を取得できます。
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: tamram
-ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bc112ed5b481560362962d6b550d336de6b3d9b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>タスクを状態別にカウントしてジョブの進行状況を監視する (プレビュー)
 
@@ -31,7 +31,7 @@ Get Task Counts 操作は、次に示すように、タスクを状態別にカ�
 - コンピューティング ノードに割り当てられているが、まだ完了していないタスクは、**実行中**としてカウントされます。 [Get information about a task][rest_get_task] 操作で指示される状態が `preparing` または `running` のいずれかであるタスクは、**実行中**としてカウントされます。
 - 実行される資格がなくなったタスクは、**完了**としてカウントされます。 **完了**としてカウントされるタスクは、通常は、正常に完了しているか、失敗したが再試行の上限を超えているタスクです。 
 
-Get Task Counts 操作は、成功または失敗したタスクの数も報告します。 Batch は、[executionInfo][https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] プロパティの **result** プロパティをチェックすることで、タスクが成功したか失敗したかを判断します。
+Get Task Counts 操作は、成功または失敗したタスクの数も報告します。 Batch は、[executionInfo][https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] プロパティの **result** プロパティを調べることで、タスクが成功したか失敗したかを判断します。
 
     - タスクは、タスクの実行結果が `success` の場合に **成功**としてカウントされます。
     - タスクは、タスクの実行結果が `failure` の場合に **失敗**としてカウントされます。
@@ -70,7 +70,7 @@ Get Task Counts 操作の呼び出しは、ジョブの状態別のタスクの�
 
 Get Task Counts 操作は 2017-06-01.5.1.1 より前のバージョンの Batch サービスでは使用できません。 古いバージョンのサービスを使用している場合は、代わりにリスト クエリを使用してジョブ内のタスクをカウントしてください。 詳細については、「[効率的に Batch リソースを一覧表示するクエリを作成する](batch-efficient-list-queries.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Batch サービスの概念と機能の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 記事では、プール、コンピューティング ノード、ジョブ、タスクなどの主要な Batch リソースと、サービスの機能の概要について説明しています。
 * [Batch .NET クライアント ライブラリ](batch-dotnet-get-started.md)または [Python](batch-python-tutorial.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらの入門記事では、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行する実用アプリケーションの開発手順を説明しています。

@@ -1,24 +1,17 @@
 ---
-title: "Azure Automation アカウントで監視タスクを作成する | Microsoft Docs"
-description: "Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。"
+title: Azure Automation アカウントで監視タスクを作成する
+description: Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。
 services: automation
-documentationcenter: 
-author: eamonoreilly
-manager: 
-editor: 
-ms.assetid: 0dd95270-761f-448e-af48-c8b1e82cd821
 ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/11/2017
+author: eamonoreilly
 ms.author: eamono
-ms.openlocfilehash: 294faa48f9840919b087594835706bad8048d45b
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.topic: article
+ms.date: 03/19/2017
+ms.openlocfilehash: 8cd5f77d9711ffc95e6a55e97297a23fd87c6bb7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
 

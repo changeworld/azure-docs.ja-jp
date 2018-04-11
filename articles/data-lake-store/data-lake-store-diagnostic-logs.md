@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store の診断ログの表示 | Microsoft Docs"
-description: "Azure Data Lake Store の診断ログの設定方法およびアクセス方法を理解する  "
+title: Azure Data Lake Store の診断ログの表示 | Microsoft Docs
+description: 'Azure Data Lake Store の診断ログの設定方法およびアクセス方法を理解する  '
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Azure Data Lake Store の診断ログへのアクセス
 Data Lake Store アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
@@ -31,7 +31,7 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Data Lake Store アカウントの診断ログを有効にする
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
-2. Data Lake Store アカウントを開き、Data Lake Store アカウントのブレードで **[設定]**、**[診断ログ]** の順にクリックします。
+2. Data Lake Store アカウントを開き、Data Lake Store アカウントのブレードで **[診断ログ]** をクリックします。
 3. **[診断ログ]** ブレードで、**[診断を有効にする]** をクリックします。
 
     ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "診断ログの有効化")
@@ -150,6 +150,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
+             "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
              "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
@@ -167,6 +168,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | カテゴリ |String |ログのカテゴリ。 **Audit**など。 |
 | operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
 | resultType |String |操作の状態。200 など。 |
+| resultSignature |String |操作に関する追加情報。 |
 | correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
 | ID |オブジェクト |ログを生成した ID |
 | プロパティ |JSON |詳細については、以下をご覧ください。 |
@@ -186,7 +188,7 @@ search *
 ```
 
 
-Azure Data Lake Store では、ログ データの処理と分析方法のサンプルを提供しています。 サンプルについては [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)をご覧ください。 
+Azure Data Lake Store では、ログ データの処理と分析方法のサンプルを提供しています。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) でサンプルを見つけることができます。 
 
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)

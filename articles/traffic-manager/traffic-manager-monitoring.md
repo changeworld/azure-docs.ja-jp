@@ -1,11 +1,11 @@
 ---
-title: "Azure Traffic Manager エンドポイントの監視 | Microsoft Docs"
-description: "この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。"
+title: Azure Traffic Manager エンドポイントの監視 | Microsoft Docs
+description: この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3b30aa04854b779c25582abafc0f9ebba65b71ba
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -78,6 +78,9 @@ Traffic Manager のプロファイルとエンドポイントは、ユーザー�
 | 有効 |有効 |停止済み |このエンドポイントが参照するクラウド サービスまたは Web アプリが実行されていません。 クラウド サービスまたは Web アプリの設定を確認してください。 この状況は、エンドポイントが入れ子になったエンドポイントであり、子プロファイルが無効になっているか非アクティブである場合にも発生する可能性があります。 <br>停止状態のエンドポイントは監視されません。 DNS 応答に含まれないため、トラフィックを受信しません。 すべてのエンドポイントが低下状態の場合は例外です。この場合、すべてのエンドポイントがクエリの応答で返されると見なされます。</br>|
 
 入れ子になったエンドポイントのエンドポイント監視の状態を計算する方法の詳細については、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」を参照してください。
+
+>[!NOTE]
+> エンドポイント モニターの停止状態は、Web アプリケーションが Standard レベル以上で実行されていない場合に App Service で発生することがあります。 詳細については、[Traffic Manager と App Service の統合](/azure/app-service/web-sites-traffic-manager)に関するページを参照してください。
 
 ### <a name="profile-monitor-status"></a>プロファイル モニターの状態
 
@@ -150,7 +153,7 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)
 

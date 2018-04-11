@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines
+author: iainfoulds
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/27/2018
+ms.author: iainfou
+ms.custom: include file
+ms.openlocfilehash: a6b75b3804e7736fe5203caecb8c6badcfbf9ab4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/03/2018
+---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョンと可用性について
 Azure は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
 
@@ -55,7 +71,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数施設にわたってのデータのレプリケート |いいえ  |可能  |[はい] |[はい] |
+| 複数施設にわたってのデータのレプリケート |いいえ  |可能  |はい |[はい] |
 | 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ  |いいえ  |いいえ  |[はい] |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
@@ -90,11 +106,9 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 ## <a name="availability-zones"></a>可用性ゾーン
 
-[可用性ゾーン](../articles/availability-zones/az-overview.md) (プレビュー) は可用性セットに代わる機能で、よりきめ細やかな制御により VM 上のアプリケーションとデータの可用性を維持します。 可用性ゾーンとは、Azure リージョンの物理的に独立したゾーンのことです。 サポートされている Azure リージョンごとに 3 つの可用性ゾーンがあります。 可用性ゾーンはそれぞれ異なる供給源、ネットワーク、および冷却装置を持ち、Azure リージョン内で他の可用性ゾーンから論理的に分離されています。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。 
+[可用性ゾーン](../articles/availability-zones/az-overview.md)は可用性セットに代わる機能で、よりきめ細やかな制御により VM 上のアプリケーションとデータの可用性を維持します。 可用性ゾーンとは、Azure リージョンの物理的に独立したゾーンのことです。 サポートされている Azure リージョンごとに 3 つの可用性ゾーンがあります。 可用性ゾーンはそれぞれ異なる供給源、ネットワーク、および冷却装置を持ち、Azure リージョン内で他の可用性ゾーンから論理的に分離されています。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。 
 
 ![可用性ゾーン](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-[!INCLUDE [availability-zones-preview-statement.md](availability-zones-preview-statement.md)]
 
 可用性ゾーンに [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) または [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) の VM をデプロイする方法の詳細をご覧ください。
 

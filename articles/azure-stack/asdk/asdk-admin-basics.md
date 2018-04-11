@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Development Kit の基礎 | Microsoft Docs
-description: Azure Stack Development Kit の基本的な管理作業を実行する方法について説明します。
+description: Azure Stack Development Kit (ASDK) の基本的な管理作業を実行する方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/30/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: cb169c2d2a5aa918fb6d330ebc4677d6c16d308d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="asdk-administration-basics"></a>ASDK の管理の基本 
 Azure Stack Development Kit (ASDK) の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイダンスでは、評価環境での Azure Stack オペレーターとしての役割の概要と、テスト ユーザーの生産性を迅速に向上させる方法を示します。
@@ -27,6 +27,17 @@ Azure Stack Development Kit (ASDK) の管理経験がない場合は、知って
 まず、「[What is Azure Stack Development Kit?](asdk-what-is.md)」(Azure Stack Development Kit とは) という記事に目を通し、ASDK の目的と制限事項について確実に理解しておく必要があります。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 
 
 Azure と同様に、Azure Stack はイノベーションが迅速であるため、ASDK の新しいビルドを定期的にリリースします。 ただし、Azure Stack 統合システムのデプロイとは異なり、ASDK をアップグレードすることはできません。 そのため、最新のビルドに移行する場合は、[ASDK を再度デプロイする](asdk-redeploy.md)必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能が使用可能になったらすぐに試すことができるというメリットがあります。 
+
+## <a name="what-account-should-i-use"></a>使用するアカウントについて
+Azure Stack を管理する場合に注意するいくつかのアカウントに関する考慮事項があります。 特に、Azure Active Directory (Azure AD) ではなく ID プロバイダーとして Windows Server Active Directory Federation Services (AD FS) を使用する展開では注意が必要です。 次のアカウントに関する考慮事項は、Azure Stack 統合システムと ASDK 展開の両方に適用されます。
+
+|アカウント|Azure AD|AD FS|
+|-----|-----|-----|
+|ローカル管理者 (.\Administrator)|ASDK ホスト管理者|ASDK ホスト管理者|
+|AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルにログインできます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|
+|AzureStack\CloudAdmin|特権エンドポイント内で許可されたコマンドにアクセス、実行できます|特権エンドポイント内で許可されたコマンドにアクセス、実行できます<br><br>ASDK ホストにログインできません<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|
+|Azure AD 全体管理者|インストール時に使用<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|適用不可|
+|
 
 ## <a name="what-tools-do-i-use-to-manage"></a>管理に使用するツールについて
 [Azure Stack 管理者ポータル](https://adminportal.local.azurestack.external)または PowerShell を使って Azure Stack を管理できます。 基本的概念を学ぶためには、ポータルを介するのが最も容易な方法です。 PowerShell を使う場合は、[PowerShell for Azure Stack](asdk-post-deploy.md#install-azure-stack-powershell) をインストールし、[GitHub から Azure Stack ツールをダウンロードする](asdk-post-deploy.md#download-the-azure-stack-tools)必要があります。

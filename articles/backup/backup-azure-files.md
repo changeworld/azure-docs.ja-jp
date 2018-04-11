@@ -1,6 +1,6 @@
 ---
 title: Azure Files を Azure にバックアップする
-description: この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明し、管理タスクについても説明します。
+description: この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明するほか、管理タスクについて説明します。
 services: backup
 keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
 author: markgalioto
@@ -9,15 +9,14 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="back-up-azure-file-shares-preview"></a>Azure ファイル共有 (プレビュー) のバックアップ
-
-この記事では、[Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を Azure Portal を使って Azure から行う方法について説明します。
+# <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
+この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
 
 このガイドでは、以下の方法について説明します。
 > [!div class="checklist"]
@@ -29,21 +28,20 @@ ms.lasthandoff: 03/28/2018
 > * バックアップ データを削除する
 
 ## <a name="prerequisites"></a>前提条件
-Azure ファイル共有をバックアップするには、[サポートされているストレージ アカウントの種類](troubleshoot-azure-files.md#preview-boundaries)のいずれかに存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
+Azure ファイル共有をバックアップする前に、[サポートされているストレージ アカウントの種類](troubleshoot-azure-files.md#preview-boundaries)のいずれかにそれが存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
-Azure Files のバックアップはプレビュー段階にあります。 プレビュー期間は、次の制限に注意してください。
-- [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) または [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) レプリケーションを使用してストレージ アカウントのファイル共有を保護することはできません。
-- 仮想ネットワークが有効になっているストレージ アカウントのファイル共有を保護することはできません。
+Azure ファイル共有のバックアップはプレビュー段階です。 プレビュー期間は、次の制限に注意してください。
+- [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。
+- 仮想ネットワークが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
 - Azure Files の保護を目的とした PowerShell と CLI は提供されていません。
 - スケジュール バックアップの数は、1 日につき 1 個が上限となります。
 - オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
 - Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。 
 
-## <a name="configuring-azure-file-shares-backup"></a>Azure ファイル共有のバックアップを構成する
-
-すべてのバックアップ データは、Recovery Services コンテナーに格納されます。 このチュートリアルでは、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには、次を実行します。
+## <a name="configuring-backup-for-an-azure-file-share"></a>Azure ファイル共有のバックアップの構成
+すべてのバックアップ データは、Recovery Services コンテナーに格納されます。 このチュートリアルでは、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには:
 
 1. ファイル共有と同じリージョンに Recovery Services コンテナーを作成します。 コンテナーが既にある場合は、そのコンテナーの [概要] ページを開き、**[バックアップ]** をクリックします。
 
@@ -99,7 +97,7 @@ Azure Files のバックアップはプレビュー段階にあります。 プ�
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/select-restore-location.png)
 
-## <a name="restore-individual-files-or-folders-from-backup-of-azure-file-shares"></a>Azure ファイル共有のバックアップから個々のファイルやフォルダーを復元する
+## <a name="restore-individual-files-or-folders-from-backup-of-azure-file-shares"></a>Azure ファイル共有のバックアップから個々のファイルまたはフォルダーを復元する
 Azure Backup を使用すると、Azure Portal 内で復元ポイントを参照できます。 任意のファイルまたはフォルダーを復元するには、[Backup Item]\(バックアップ項目\) ページの [ファイルの回復] をクリックし、復元ポイントの一覧から選択します。 [回復先] を選択し、**[ファイルの選択]** をクリックして復元ポイントを参照します。 任意のファイルまたはフォルダーを選択し、**[復元]** を選択します。
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/restore-individual-files-folders.png)
@@ -127,7 +125,7 @@ Azure Backup を使用すると、Azure Portal 内で復元ポイントを参照
 
 ### <a name="create-a-new-policy"></a>新しいポリシーの作成
 
-Recovery Services コンテナーの **[バックアップ ポリシー]** から、Azure ファイル共有をバックアップするための新しいポリシーを作成できます。 ファイル共有のバックアップを構成する際に作成されたすべてのポリシーは、ポリシーの種類を Azure ファイル共有として表示されます。
+Recovery Services コンテナーの **[バックアップ ポリシー]** から、Azure ファイル共有をバックアップするための新しいポリシーを作成できます。 ファイル共有のバックアップを構成する際に作成されたすべてのポリシーは、Azure ファイル共有というポリシーの種類で表示されます。
 
 既存のバックアップ ポリシーを表示するには:
 
@@ -190,6 +188,6 @@ Azure ファイル共有の保護を停止するには:
 次の手順では、仮想マシンのバックアップ ジョブが停止されていることを前提としています。 バックアップ ジョブが停止されたら、[Backup Items]\(バックアップ項目\) ダッシュボードで [バックアップの再開] オプションと [バックアップ データの削除] オプションが使用できるようになります。 [バックアップ データの削除] をクリックし、ファイル共有の名前を入力して削除を確定します。 必要に応じて、削除の理由またはコメントを入力します。
 
 ## <a name="see-also"></a>関連項目
-Azure ファイル共有の詳細については、以下を参照してください。
+Azure ファイル共有の詳細については、以下を参照してください
 - [Azure ファイル共有のバックアップに関する FAQ](backup-azure-files-faq.md)
 - [Azure ファイル共有のバックアップのトラブルシューティング](troubleshoot-azure-files.md)

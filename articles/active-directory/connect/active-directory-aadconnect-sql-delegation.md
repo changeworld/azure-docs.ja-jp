@@ -1,24 +1,24 @@
 ---
-title: "SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール | Microsoft Docs"
-description: "このトピックでは、SQL dbo アクセス許可のみを持つアカウントを使用してインストールを許可する Azure AD Connect への更新について説明します。"
-documentationcenter: 
+title: SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール | Microsoft Docs
+description: このトピックでは、SQL dbo アクセス許可のみを持つアカウントを使用してインストールを許可する Azure AD Connect への更新について説明します。
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: jparsons
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: c2d77c37f2f65c9a7db1fd5c4010fc43bcbc7ebf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール
 以前の Azure AD Connect ビルドでは、SQL を必要とする構成をデプロイするとき、管理の委任はサポートされていませんでした。  Azure AD Connect をインストールするユーザーには、SQL サーバーにおけるサーバー管理者 (SA) アクセス許可が必要でした。
@@ -51,6 +51,8 @@ Azure AD Connect 管理者|Azure AD Connect をインストールし、カスタ
 
 ## <a name="additional-information"></a>追加情報
 データベースがプロビジョニングされたら、Azure AD Connect 管理者は、必要に応じてオンプレミスの同期をインストールおよび構成できます。  
+
+事前に作成されたデータベースを使用する場合は、**/UseExistingDatabase** フラグが必要です。  これは回復時に使用されるだけではありません。
 
 この機能は、Azure AD Connect の新規インストールをサポートするほか、**/UseExistingDatabase** フラグに関連するすべてシナリオについて委任を有効にできます。  既存のデータベースを使用した Azure AD Connect のインストールの詳細については、「[既存の ADSync データベースを使用して Azure AD Connect をインストールする](active-directory-aadconnect-existing-database.md)」を参照してください
 

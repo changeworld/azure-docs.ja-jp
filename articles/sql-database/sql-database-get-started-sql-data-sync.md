@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f9318b5baa46ab991b5e72e12a89a25e4f635db3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) をセットアップする
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
@@ -38,6 +38,8 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
     ![Azure SQL データベースの一覧](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
 3.  **[SQL データベース]** ページで、データ同期のハブ データベースとして使用する既存の SQL データベースを選択します。[SQL データベース] ページが開きます。
+
+    ハブ データベースは、同期グループが複数のデータベース エンドポイントを持つ、同期トポロジの中心になるエンドポイントです。 同じ同期グループ内の他のすべてのデータベース エンドポイント (つまり、すべてのメンバー データベース) は、ハブ データベースと同期します。
 
 4.  選択したデータベースの [SQL データベース] ページで、**[別のデータベースに同期]** を選択します。 [データ同期] ページが開きます。
 
@@ -67,6 +69,8 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
         ![同期の頻度の指定](media/sql-database-get-started-sql-data-sync/datasync-preview-syncfreq.png)
 
     4.  **[競合の解決]** セクションで、[ハブ側に合わせる] または [Member wins]\(メンバー側に合わせる\) を選択します。
+
+        "ハブ側に合わせる" とは、競合が発生した場合、ハブ データベースのデータで、メンバー データベースの競合するデータを上書きすることを意味します。 "メンバー側に合わせる" とは、競合が発生した場合、メンバー データベースのデータで、ハブ データベースの競合するデータを上書きすることを意味します。 
 
         ![競合の解決方法の指定](media/sql-database-get-started-sql-data-sync/datasync-preview-conflictres.png)
 

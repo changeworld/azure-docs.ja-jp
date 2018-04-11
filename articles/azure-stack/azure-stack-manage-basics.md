@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
@@ -31,9 +31,9 @@ Azure Stack 統合システムを使用している場合、Azure Stack の更�
  
 ### <a name="development-kit"></a>開発キット
 
-Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](azure-stack-poc.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit](azure-stack-deploy-overview.md) のデプロイ クイックスタートを参照してください。)
+Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](.\asdk\asdk-what-is.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit](.\asdk\asdk-deploy.md) のデプロイ チュートリアルを参照してください。)
 
-Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](azure-stack-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
+Azure のように、Microsoft は迅速にイノベーションを進めています。 新しいビルドは定期的にリリースされます。 Development Kit を実行しており、最新のビルドに移行する場合は、[Azure Stack を再デプロイ](.\asdk\asdk-redeploy.md)する必要があります。 更新プログラム パッケージは適用できません。 このプロセスは時間がかかりますが、最新の機能を試すことができるというメリットがあります。 Microsoft Web サイトの Development Kit ドキュメントには、最新のリリース ビルドが反映されています。
 
 ## <a name="learn-about-available-services"></a>利用できるサービスの詳細
 
@@ -63,6 +63,18 @@ Azure Stack をデプロイすると、Azure Stack には既定で以下の "基
 **サービスのロードマップ**
 
 Azure Stack には、引き続き Azure サービスのサポートが追加される予定です。 計画されているロードマップについては、「[Azure Stack: An extension of Azure (Azure Stack: Azure の拡張機能)](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)」のホワイトペーパーをご覧ください。 新しい発表については、[Azure Stack のブログ投稿](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)をチェックすることもできます。
+
+## <a name="what-account-should-i-use"></a>使用するアカウントについて
+Azure Stack を管理する場合に注意するいくつかのアカウントに関する考慮事項があります。 特に、Azure Active Directory (Azure AD) ではなく ID プロバイダーとして Windows Server Active Directory Federation Services (AD FS) を使用する展開では注意が必要です。 次のアカウントに関する考慮事項は、Azure Stack 統合システムと ASDK 展開の両方に適用されます。
+
+
+|アカウント|Azure AD|AD FS|
+|-----|-----|-----|
+|ローカル管理者 (.\Administrator)|ASDK ホスト管理者|ASDK ホスト管理者|
+|AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルにログインできます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|
+|AzureStack\CloudAdmin|特権エンドポイント内で許可されたコマンドにアクセス、実行できます|特権エンドポイント内で許可されたコマンドにアクセス、実行できます<br><br>ASDK ホストにログインできません<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|
+|Azure AD 全体管理者|インストール時に使用<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|適用不可|
+|
 
 ## <a name="what-tools-do-i-use-to-manage"></a>管理に使用するツールについて
  

@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics への Azure Automation ジョブ データの転送
-description: この記事では、ジョブの状態と Runbook ジョブ ストリームを Microsoft Operations Management Suite Log Analytics に送信して、詳細な情報の入手ときめ細かい管理を実現する方法について説明します。
+title: Log Analytics に Azure Automation のジョブ データを転送する
+description: この記事では、ジョブの状態と Runbook ジョブ ストリームを Azure Log Analytics に送信して、詳細な情報の入手ときめ細かい管理を実現する方法について説明します。
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,16 +8,14 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: c73a523f1239fb7d549b573ea6105168f4a63144
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 116096fb27af299545a0f9a6adf57d794bbb2f6e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Automation から Log Analytics (OMS) へのジョブの状態とジョブ ストリームの転送
-Automation からは、Runbook ジョブの状態とジョブ ストリームを Microsoft Operations Management Suite (OMS) Log Analytics ワークスペースに送信できます。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Log Analytics では、次のことが可能になりました。
+# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
+Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Log Analytics では、次のことが可能になりました。
 
 * Automation ジョブに関する情報を得る。
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする。
@@ -157,7 +155,7 @@ Automation ジョブのログを Log Analytics に送信し始めたので、次
 最後に、ジョブの履歴を時系列で視覚化する必要が生じることもあります。 次のクエリを使うと、ジョブの状態を時系列で検索できます。
 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
-<br> ![OMS Historical Job Status Chart](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
+<br> ![Log Analytics でのジョブの状態の履歴を示すグラフ](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>まとめ
 Automation ジョブの状態およびストリーム データを Log Analytics に送信し、次の対応を行うことで、Automation ジョブの状態をより理解できるようになります。
@@ -170,4 +168,4 @@ Log Analytics によって、Automation ジョブの状態をさらに詳しく�
 * 各種検索クエリの作成方法と、Log Analytics での Automation ジョブ ログの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
 * Runbook から出力とエラー メッセージを作成および取得する方法については、[Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページを参照してください。
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
-* OMS Log Analytics とデータ収集ソースの詳細については、[Log Analytics での Azure Storage データの収集の概要](../log-analytics/log-analytics-azure-storage.md)に関するページを参照してください。
+* Log Analytics とデータ収集ソースの詳細については、[Log Analytics における Azure Storage データの収集](../log-analytics/log-analytics-azure-storage.md)に関するページをご覧ください。

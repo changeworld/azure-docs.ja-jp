@@ -1,10 +1,11 @@
 ---
-title: "Cortana Intelligence コンペティションの FAQ | Microsoft Docs"
-description: "Microsoft Cortana Intelligence コンペティションについてよく寄せられる質問。"
+title: Cortana Intelligence コンペティションの FAQ | Microsoft Docs
+description: Microsoft Cortana Intelligence コンペティションについてよく寄せられる質問。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: haining;garye
-ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: db6fb6cd6c500ffe4537b57a968ef3b8792bcad6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
@@ -52,7 +52,6 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 コンペティション参加者は、データ サイエンス モデルの開発に、Cortana Intelligence Suite 内のクラウドベースのサービスである Azure Machine Learning Studio を使用して、送信用のコンペティション エントリを作成します。 Machine Learning Studio は、機械学習の実験を構築するための GUI インターフェイスを提供するだけでなく、R や Python の独自のスクリプトをネイティブで実行できるようにします。 Studio の R と Python のランタイムには、オープン ソースの R/Python パッケージの豊富なセットが付属しています。 独自のパッケージも実験の一部としてインポートできます。 Machine Learning Studio には、フリー スタイルのデータ探索を行うための、組み込みの Jupyter Notebook サービスも用意されています。 もちろん、コンペティションで使用されるデータセットをいつでもダウンロードして、Machine Learning Studio 以外の任意のツールで探索することもできます。 
 
 **参加するには、データ サイエンティストである必要はありますか?**
-
 
 いいえ。 実際には、データ処理に強い関心がある人、データ サイエンスに興味がある人、データ サイエンティストになろうとしている人などに、コンテストへの参加をお勧めしています。 補助ドキュメントは、全員が完了できるように設計されています。 対象読者:
 
@@ -104,7 +103,6 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 送信時刻が判断基準になります。 先に送信されたエントリが、後で送信されたエントリより上位になります。
 
 **Guest ワークスペースを使用して参加することはできますか。**
-
 
 いいえ。 参加するには Free または Standard ワークスペースを使用する必要があります。 コンペティションの Starter Experiment は Guest ワークスペースでも開くことはできますが、そのワークスペースから送信できる有効なエントリを作成することはできません。 
 

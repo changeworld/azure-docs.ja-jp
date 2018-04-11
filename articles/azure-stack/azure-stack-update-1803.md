@@ -1,0 +1,214 @@
+---
+title: Azure Stack 1803 更新プログラム | Microsoft Docs
+description: Azure Stack 統合システムの 1803 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。
+services: azure-stack
+documentationcenter: ''
+author: brenduns
+manager: femila
+editor: ''
+ms.assetid: ''
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/27/2018
+ms.author: brenduns
+ms.reviewer: justini
+ms.openlocfilehash: 560261b5d353c7e9510124985c644d895612e2bb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/03/2018
+---
+# <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新プログラム
+
+*適用対象: Azure Stack 統合システム*
+
+この記事では、この 1803 更新プログラム パッケージで機能強化および修正された内容、このリリースの既知の問題、および更新プログラムをダウンロードする場所について説明します。 既知の問題は、更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
+
+> [!IMPORTANT]        
+> 更新プログラム パッケージは、Azure Stack 統合システム専用です。 Azure Stack Development Kit にこの更新プログラム パッケージは適用しないでください。
+
+## <a name="build-reference"></a>ビルドのリファレンス    
+Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** です。
+
+
+## <a name="before-you-begin"></a>開始する前に    
+> [!IMPORTANT]    
+> この更新プログラムのインストール中に仮想マシンを作成しようとしないでください。 更新プログラムの管理方法については、「[Azure Stack での更新プログラムの管理概要](/azure-stack-updates#plan-for-updates)」を参照してください。
+
+
+### <a name="prerequisites"></a>前提条件
+- Azure Stack 1803 更新プログラムを適用する前に Azure Stack [1802 更新プログラム](azure-stack-update-1802.md)をインストールします。    
+
+
+### <a name="post-update-steps"></a>更新後の手順
+*更新プログラム 1803 には更新後の手順はありません。*
+
+
+### <a name="new-features"></a>新機能 
+この更新プログラムには、Azure Stack に対する次の機能強化と修正が含まれています。
+
+- **Azure Stack シークレットの更新** - (アカウントおよび証明書)。 シークレットの管理に関する詳細については、「[Azure Stack でシークレットをローテーションする](azure-stack-rotate-secrets.md)」をご覧ください。 
+
+- <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
+
+- <!-- 2202621  --> **Access the Marketplace** – You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+ 
+- <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
+
+   この変更の一環として、**[More services]\(その他のサービス\)** 下では、*[監査ログ]* が *[アクティビティ ログ]* と表示されるようになります。 Azure Portal との機能の一貫性が確保できました。 
+
+- <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
+ 
+   スパース ファイルは、記憶域スペースの使用を減らして I/O を改善するために使用される、効率的なファイル形式です。  詳細については、Windows Server の「[Fsutil sparse](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse)」 (fsutil sparse) をご覧ください。 
+
+
+### <a name="fixed-issues"></a>修正された問題
+
+- <!-- 1739988 -->  **Fixed** - Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
+
+- <!-- 1805496 --> **Fixed** - An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure.  The values now match the values in Azure. 
+
+- <!-- 2209262 --> **Fixed** - The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
+
+- <!-- 1766332 --> **Fixed** - Azure Stack does not support Policy Based VPN Gateways, even though the option appears in the Portal.  The option has been removed from the Portal. 
+
+- <!-- 2096388 --> **Fixed** - Unable to update Network Security Group Rules from the Portal is now fixed. 
+
+- <!-- 1868283 --> **Fixed** - Azure Stack now prevents resizing of a virtual machine that is created with dynamic disks. 
+
+- <!-- 1756324--> **Fixed** - Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
+
+- <!--  2253274 --> **Fixed** - The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+
+- **修正済み** - 仮想マシンを作成する際、VM サイズ用のサイズを選択したときのメッセージ "*Unable to display pricing*"/(価格を表示できません/) は表示されなくなりました。
+
+- **さまざまな修正** - パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
+
+
+### <a name="changes"></a>変更点
+- 新しく作成されたオファーの状態を *[プライベート]* から *[パブリック]* または *[使用停止]* に切り替える方法が変更されました。 詳細については、[オファ―の作成](azure-stack-create-offer.md)に関するページをご覧ください。
+
+
+### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題    
+*更新プログラム 1803 のインストールに関する既知の問題はありません。*
+
+
+### <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
+ビルド **20180323.2** のインストール後について次の既知の問題があります。
+
+#### <a name="portal"></a>ポータル
+- 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
+    - Azure Stack 統合システムの場合は、https://aka.ms/newsupportrequest を使用します。
+
+- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
+
+- 管理ポータルでコンピューティング リソースやストレージ リソースを表示できない場合があります。 この問題の原因は、更新プログラムのインストール中にエラーが発生し、更新が正常に行われたことが誤って報告されたためです。 この問題が発生した場合は、Microsoft カスタマー サポート サービスにお問い合わせください。
+
+- ポータルに空のダッシュボードが表示されることがあります。 ダッシュボードを復元するには、ポータルの右上にある歯車アイコンを選択し、**[既定の設定に戻す]** を選択します。
+
+- リソースまたはリソース グループのプロパティを表示する際に、**[移動]** が無効になっています。 これは正しい動作です。 リソース グループまたはサブスクリプション間のリソースまたはリソース グループの移動は現在サポートされていません。
+
+- ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
+
+- Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、PowerShell を使用してアクセス許可を確認します。
+
+- 管理ポータルのダッシュボードの [更新] タイルで、更新プログラムに関する情報を表示できません。 この問題を解決するには、そのタイルをクリックして更新してください。
+
+- 管理ポータルに、*Microsoft.Update.Admin* コンポーネントに関する重大なアラートが表示される場合があります。 アラート名、説明、修復方法が、次のようにすべて表示されます。  
+    - *エラー - FaultType ResourceProviderTimeout 用のテンプレートが見つかりません。*
+
+  このアラートは無視してかまいません。 
+
+
+<!-- #### Health and monitoring --> 
+
+#### <a name="marketplace"></a>マーケットプレース
+- ユーザーはサブスクリプションなしですべてのマーケットプレースを参照し、プランやオファーなどの管理アイテムを表示できます。 ユーザーはこれらのアイテムを使用できません。
+
+
+
+#### <a name="compute"></a>コンピューティング
+- 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
+
+- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1803. This is due to the change in support for using availability sets with virtual machine scale sets. This support is added with version 1803.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message Provisioning state failed. We are investigating a fix for this issue to enable an older VMSS to scale, and will update this content if and when that is available. 
+
+- ポータルで **[新規]** > **[コンピューティング]** > **[可用性セット]** に移動して可用性セットを作成した場合、障害ドメインと更新ドメインが 1 の可用性セットのみを作成できます。 回避策として、新しい仮想マシンを作成する場合は、PowerShell、CLI、またはポータル内から可用性セットを作成します。
+
+- Azure Stack ユーザー ポータルで仮想マシンを作成するとき、ポータルでは、DS シリーズ VM にアタッチできるデータ ディスクの数に誤った値が表示されます。 DS シリーズ VM は Azure の構成と同数のデータ ディスクに対応できます。
+
+- VM イメージの作成に失敗した場合に、エラーが発生したが削除できない項目が、VM イメージのコンピューティング ブレードに追加される可能性があります。
+
+  この問題を回避するには、Hyper-V (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB) で作成できるダミーの VHD で新しい VM イメージを作成します。 このプロセスによって、エラーが発生した項目の削除を妨げている問題が修正されます。 その後、ダミーのイメージを作成して 15 分たつと、正常に削除できます。
+
+  次に、前に失敗した VM イメージの再ダウンロードを試すことができます。
+
+-  VM の展開で拡張機能のプロビジョニングに時間がかかりすぎる場合、ユーザーは、プロセスを停止して VM の割り当て解除または削除を試みるのではなく、プロビジョニングをタイムアウトさせる必要があります。  
+
+- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+
+
+#### <a name="networking"></a>ネットワーク
+- VM を作成してパブリック IP アドレスに関連付けた後に、IP アドレスからその VM の関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。
+
+  現時点では、作成した新しい VM には新しいパブリック IP アドレスのみを使用する必要があります。
+
+  この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。
+
+
+
+- Azure Stack では、IP アドレスごとに 1 つの "*ローカル ネットワーク ゲートウェイ*" をサポートしています。 これは、テナントのすべてのサブスクリプションに当てはまります。 最初のローカル ネットワーク ゲートウェイ接続を作成した後に、続いて同じ IP アドレスでローカル ネットワーク ゲートウェイ リソースを作成しようとすると、ブロックされます。
+
+- "*自動*" の DNS サーバー設定を使用して作成された仮想ネットワークで、カスタム DNS サーバーに変更すると失敗します。 更新した設定は、その Vnet 内の VM にプッシュされません。
+
+- Azure Stack では、VM を展開した後に、VM インスタンスにネットワーク インターフェイスをさらに追加することはできません。 VM に複数のネットワーク インターフェイスが必要な場合は、展開時に定義する必要があります。
+
+
+#### <a name="sql-and-mysql"></a>SQL および MySQL
+- 続行する前に、これらのリリース ノートの冒頭にある「[開始する前に](#before-you-begin)」の重要な注意事項を確認します。
+
+- ユーザーがデータベースを新しい SQL または MySQL の展開で作成するまでに、最大で 1 時間かかる場合があります。
+
+- SQL または MySQL をホストするサーバー上に項目を作成できるのは、リソース プロバイダーのみです。 リソース プロバイダー以外がホスト サーバー上に項目を作成すると、不一致状態になる可能性があります。  
+
+
+> [!NOTE]  
+> Azure Stack 1803 に更新した後も、以前にデプロイした SQL および MySQL リソース プロバイダーを引き続き使用できます。  新しいリリースが公開されたら、SQL と MySQL を更新することをお勧めします。 Azure Stack と同様に、SQL と MySQL リソース プロバイダーに順番に更新プログラムを適用します。  たとえば、バージョン 1711 を使用している場合は、最初にバージョン 1712、次に 1802 を適用してから、1803 に更新します。      
+>   
+> 更新プログラム 1803 をインストールしても、ユーザーによる現在の SQL または MySQL リソース プロバイダーの使用には影響しません。
+> 使用しているリソース プロバイダーのバージョンに関係なく、データベース内のユーザー データは変更されず、アクセス可能な状態が維持されます。    
+
+
+
+#### <a name="app-service"></a>App Service
+- ユーザーは、サブスクリプションに最初の Azure 関数を作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
+
+- インフラストラクチャ (worker、管理、フロントエンド ロール) をスケールアウトするには、コンピューティングのリリース ノートの説明に従って PowerShell を使用する必要があります。
+
+
+#### <a name="usage"></a>使用法  
+- パブリック IP アドレス使用量メーターのデータは、レコードが作成された日時を示す *TimeDate* スタンプではなく、各レコードに対して同じ *EventDateTime* 値を示します。 現在、このデータを使用して、パブリック IP アドレスの使用を正確に算出することはできません。
+
+<!--
+#### Identity
+-->
+
+#### <a name="downloading-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
+- *invoke-webrequest* PowerShell コマンドレットを使用して Github から Azure Stack ツールをダウンロードする場合、次のエラーが発生します。     
+    -  "*invoke-webrequest : 要求は中止されました: SSL/TLS のセキュリティで保護されているチャネルを作成できませんでした。*"     
+
+  このエラーは、GitHub で、Tlsv1 および Tlsv1.1 の暗号化標準 (PowerShell の既定) のサポートが最近廃止されたために発生します。 詳細については、[脆弱な暗号化標準の削除の通知](https://githubengineering.com/crypto-removal-notice/)に関するページを参照してください。
+
+  この問題を解決するには、スクリプトの先頭に `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` を追加して、GitHub リポジトリからダウンロードするときに TLSv1.2 を使用するように PowerShell コンソールに強制します。
+
+
+## <a name="download-the-update"></a>更新プログラムをダウンロードする
+Azure Stack 1803 更新プログラム パッケージは、[ここから](https://aka.ms/azurestackupdatedownload)ダウンロードできます。
+
+
+## <a name="see-also"></a>関連項目
+- 特権エンドポイント (PEP) を使用して更新プログラムを監視および再開するには、「[特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする](azure-stack-monitor-update.md)」をご覧ください。
+- Azure Stack での更新プログラム管理の概要については、「[Azure Stack での更新プログラムの管理概要](azure-stack-updates.md)」を参照してください。
+- Azure Stack に更新プログラムを適用する方法については、「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」を参照してください。

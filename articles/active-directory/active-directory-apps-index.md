@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory のアプリケーション構成の管理に関する記事の索引 | Microsoft Azure"
-description: "フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。"
+title: Azure Active Directory のアプリケーション構成の管理に関する記事の索引 | Microsoft Azure
+description: フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 5321b8e4-2afa-4dfe-8d53-4add7abb5ec8
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/22/2018
 | フェデレーション シングル サインオン |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |
 | パスワードベースのシングル サインオン |[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
 | アプリケーション プロキシ |[アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md) |
-| オンプレミス AD と Azure AD 間のシングル サインオン |[パスワード同期のトラブルシューティング](connect/active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)<br /><br />[パスワード管理のトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| オンプレミス AD と Azure AD 間のシングル サインオン |[パスワード ハッシュ同期のトラブルシューティング](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[パスワード管理のトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | 動的グループ メンバーシップ |[グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>シングル サインオン (SSO)
@@ -95,7 +95,7 @@ ms.lasthandoff: 02/22/2018
 |:---:| --- |
 | Azure AD Connect に用意されているシングル サインオン オプションの概要と、ハイブリッド環境の管理に関する情報 |[Azure AD Connect ユーザーのサインオン オプション](active-directory-aadconnect-user-signin.md) |
 | オンプレミスの Active Directory と Azure Active Directory 両方を使用している環境を管理するための一般的なガイダンス |[Azure AD ハイブリッド ID の設計上の考慮事項](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md) |
-| SSO を有効にするためのパスワード同期の使用についてのガイダンス |[Azure AD Connect でのパスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[Azure Active Directory 同期ツール使用時にパスワード同期で発生する問題をトラブルシューティングする方法](https://support.microsoft.com/en-us/kb/2855271) |
+| SSO を有効にするためのパスワード同期の使用についてのガイダンス |[Azure AD Connect でのパスワード同期の実装](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Azure Active Directory 同期ツール使用時にパスワード同期で発生する問題をトラブルシューティングする方法](https://support.microsoft.com/en-us/kb/2855271) |
 | SSO を有効にするためのパスワード ライトバックの使用についてのガイダンス |[Azure AD でのパスワード管理の概要](active-directory-passwords-getting-started.md)<br /><br />[パスワード ライトバックのトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | SSO を有効にするためのサード パーティ ID プロバイダーの使用についてのガイダンス |[サードパーティ ID プロバイダーを使用してシングル サインオンを実装する](https://aka.ms/ssoproviders) |
 | Windows 10 ユーザーが Azure AD 参加によるシングル サインオンの利点を活用する方法 |[Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md) |

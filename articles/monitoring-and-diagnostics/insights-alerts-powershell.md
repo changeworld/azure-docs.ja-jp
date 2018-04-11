@@ -1,9 +1,9 @@
 ---
-title: "Azure サービス アラートの作成 - PowerShell | Microsoft Docs"
-description: "指定した条件が満たされたときに、電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。"
+title: Azure サービス アラートの作成 - PowerShell | Microsoft Docs
+description: 指定した条件が満たされたときに、電子メール、通知、Websites URL (webhook) の呼び出し、またはオートメーションをトリガーします。
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d26ab15b-7b7e-42a9-81c8-3ce9ead5d252
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: d3fca8675c1f15b8fd0f952cfbf520f5c68478b3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Azure Monitor での Azure サービス メトリック アラートの作成
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Azure Monitor での Azure サービス クラシック メトリック アラートの作成 - PowerShell
 > [!div class="op_single_selector"]
 > * [ポータル](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,14 +29,20 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>概要
-この記事では、PowerShell を使用して Azure メトリック アラートを設定する方法について説明します。  
+
+> [!NOTE]
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しい、より優れたメトリック アラート](monitoring-near-real-time-metric-alerts.md)がサポートされるようになりました。 これらのアラートでは複数のメトリックを監視でき、次元メトリックのアラートが許可されます。 新しいメトリック アラートの Powershell サポートはまもなく提供されます。
+>
+>
+
+この記事では、PowerShell を使用して Azure クラシック メトリック アラートを設定する方法について説明します。  
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
-* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーされます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
+* **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーできます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
 
-メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
+クラシック メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
@@ -45,7 +51,7 @@ ms.lasthandoff: 12/21/2017
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
 
-* [Azure ポータル](insights-alerts-portal.md)
+* [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
 * [コマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -127,10 +133,10 @@ ms.lasthandoff: 12/21/2017
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myLogAlertRule
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure での監視の概要](monitoring-overview.md) 情報を入手します。
-* [アラートでの webhook の構成](insights-webhooks-alerts.md)に関する詳細情報を確認します。
-* [アクティビティ ログ イベントに対するアラートの構成](monitoring-activity-log-alerts.md)に関する詳細情報を確認します。
+* [アラートで webhook を構成する](insights-webhooks-alerts.md)方法を確認します。
+* [アクティビティ ログ イベントでアラートを構成する](monitoring-activity-log-alerts.md)方法を確認します。
 * [Azure Automation Runbooks](../automation/automation-starting-a-runbook.md)の詳細情報を確認します。
 * [診断ログ収集の概要](monitoring-overview-of-diagnostic-logs.md) 情報を入手して、サービスに関する詳細な頻度の高いメトリックを収集します。
 * [メトリック収集の概要](insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

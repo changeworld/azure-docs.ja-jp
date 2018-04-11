@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: パスワード同期を有効にする | Microsoft Docs"
-description: "Azure Active Directory Domain Services の概要"
+title: 'Azure Active Directory Domain Services: パスワード ハッシュの同期を有効にする | Microsoft Docs'
+description: Azure Active Directory Domain Services の概要
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2017
+ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: ea65659b1d35246bc3e7235b3faed8d2a5368010
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5d65ce4c199c9ddc54e0120fe1c456a95a34f649
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
-前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、管理対象ドメインにサインインできます。
+# <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする
+前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュを Azure AD Domain Services との間で同期できるようにします。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、管理対象ドメインにサインインできます。
 
 対象となるユーザー アカウントがクラウド専用のアカウントであるか、オンプレミス ディレクトリとの間で Azure AD Connect を使って同期されたアカウントであるかによって、必要な手順は異なります。 
 
 <br>
 | **ユーザー アカウントの種類** | **実行する手順** |
 | --- |---|
-| **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |
-| **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [オンプレミス AD との間で同期されたユーザー アカウントのパスワードを管理対象ドメインとの間で同期する](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
+| **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |
+| **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [オンプレミス AD との間で同期されたユーザー アカウントのパスワード ハッシュを管理対象ドメインとの間で同期する](active-directory-ds-getting-started-password-sync-synced-tenant.md) | 
 
 <br>
 
@@ -38,17 +38,17 @@ ms.lasthandoff: 12/11/2017
 > Azure AD テナントにクラウドのみのユーザーとオンプレミス AD からのユーザーとが混在している場合、両方の手順を実行する必要があります。
 >
 
-## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>タスク 5: 管理対象ドメインとの間でクラウド専用ユーザー アカウントのパスワード同期を有効にする
-Azure Active Directory Domain Services では、管理対象ドメインでユーザーを認証するために、NTLM および Kerberos 認証に適した形式の資格情報ハッシュが必要です。 テナントに対して Azure Active Directory Domain Services を有効にしない限り、Azure AD で NTLM または Kerberos 認証に必要な形式の資格情報ハッシュが生成または保存されることはありません。 明らかなセキュリティ上の理由から、Azure AD はパスワード資格情報をクリア テキスト形式でも保存しません。 そのため、Azure AD には、これらの NTLM または Kerberos 資格情報ハッシュをユーザーの既存の資格情報に基づいて自動的に生成する方法がありません。
+## <a name="task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts"></a>タスク 5: 管理対象ドメインとの間でクラウド専用ユーザー アカウントのパスワード ハッシュの同期を有効にする
+Azure Active Directory Domain Services では、管理対象ドメインでユーザーを認証するために、NTLM および Kerberos 認証に適した形式のパスワード ハッシュが必要です。 テナントに対して Azure Active Directory Domain Services を有効にしない限り、Azure AD で NTLM または Kerberos 認証に必要な形式のパスワード ハッシュが生成または保存されることはありません。 明らかなセキュリティ上の理由から、Azure AD はパスワード資格情報をクリア テキスト形式でも保存しません。 そのため、Azure AD には、これらの NTLM または Kerberos パスワード ハッシュをユーザーの既存の資格情報に基づいて自動的に生成する方法がありません。
 
 > [!NOTE]
 > **組織にクラウド専用ユーザー アカウントが存在する場合、Azure Active Directory Domain Services を使用する必要があるすべてのユーザーは、自分のパスワードを変更しなければなりません。** クラウド専用ユーザー アカウントとは、Azure Portal または Azure AD PowerShell コマンドレットを使って Azure AD ディレクトリに作成されたアカウントです。 そのようなユーザー アカウントは、オンプレミス ディレクトリとの間で同期されません。
 >
 >
 
-このパスワード変更プロセスにより、Azure Active Directory Domain Services での Kerberos および NTLM 認証に必要な資格情報ハッシュが Azure AD 内に生成されます。 パスワードの変更を促す方法として、Azure Active Directory Domain Services を使用する必要があるテナント内の全ユーザーのパスワードを有効期限切れにすることも、それらのユーザーにパスワードを変更するように指示することもできます。
+このパスワード変更プロセスにより、Azure Active Directory Domain Services での Kerberos および NTLM 認証に必要なパスワード ハッシュが Azure AD 内に生成されます。 パスワードの変更を促す方法として、Azure Active Directory Domain Services を使用する必要があるテナント内の全ユーザーのパスワードを有効期限切れにすることも、それらのユーザーにパスワードを変更するように指示することもできます。
 
-### <a name="enable-ntlm-and-kerberos-credential-hash-generation-for-a-cloud-only-user-account"></a>NTLM と Kerberos の資格情報ハッシュの生成を有効にする (クラウド専用ユーザー アカウント)
+### <a name="enable-ntlm-and-kerberos-password-hash-generation-for-a-cloud-only-user-account"></a>NTLM と Kerberos のパスワード ハッシュの生成を有効にする (クラウド専用ユーザー アカウント)
 ユーザーがパスワードを変更できるように、以下の手順をユーザーに伝える必要があります。
 
 1. 組織の [Azure AD アクセス パネル](http://myapps.microsoft.com)のページに移動します。
@@ -69,7 +69,7 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
    >
 4. **[パスワードの変更]** ページで既存の (古い) パスワードを入力し、新しいパスワードを入力して、それを確認します。
 
-    ![Azure AD Domain Services 用の仮想ネットワークを作成します。](./media/active-directory-domain-services-getting-started/user-change-password2.png)
+    ![ユーザーがパスワードを変更する](./media/active-directory-domain-services-getting-started/user-change-password2.png)
 
 5. **[送信]**をクリックします。
 
@@ -78,7 +78,7 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
 ## <a name="related-content"></a>関連コンテンツ
 * [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md)
 * [Azure AD でのパスワード管理の概要](../active-directory/active-directory-passwords-getting-started.md)
-* [Azure Active Directory Domain Services とのパスワード同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+* [Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Azure Active Directory Domain Services で管理されているドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
 * [Azure Active Directory Domain Services で管理されているドメインに Windows 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Azure Active Directory Domain Services で管理されているドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

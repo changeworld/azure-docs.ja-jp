@@ -1,37 +1,48 @@
 ---
-title: "Azure - Azure の Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法 | Microsoft Docs"
-description: "Azure - Azure の Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法"
+title: Azure - Azure の Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法
+description: Azure - Azure の Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法
 services: iot-dps
-keywords: 
+keywords: ''
 author: yzhong94
 ms.author: yizhon
-ms.date: 08/28/2017
+ms.date: 03/28/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
-manager: 
+documentationcenter: ''
+manager: ''
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 184bbdc0a6bef74d0e5ac79afe3858354c6b1695
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0d392f4a8d935cb37b6f4cfcd69826de58b33880
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk"></a>Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法
-以下の手順では、C 言語で Device Provisioning Service クライアント SDK を利用し、物理デバイスおよびシミュレーターと共に各種の[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) を使用する方法について説明しています。  このプロビジョニング サービスでは、X**.**509 とトラステッド プラットフォーム モジュール (TPM) という 2 つの認証モードがサポートされています。
+# <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法
+
+この記事では、C 言語用 Device Provisioning Service クライアント SDK で各種の [ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) を使用する方法について説明します。物理デバイスとシミュレーターのどちらを使用してもかまいません。 このプロビジョニング サービスは、X**.**509 とトラステッド プラットフォーム モジュール (TPM) の 2 種類の構成証明メカニズムでの認証をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
 [シミュレートされたデバイスの作成とプロビジョニング](./quick-create-simulated-device.md)に関するガイドの「開発環境の準備」セクションに従って開発環境を準備してください。
 
-## <a name="enable-authentication-with-different-hsms"></a>各種 HSM を使った認証の有効化
+### <a name="choose-a-hardware-security-module"></a>ハードウェア セキュリティ モジュールを選択する
 
-Azure Portal で物理デバイスまたはシミュレーターを登録するためには、その物理デバイスまたはシミュレーターに使用する認証モード (X**.**509 または TPM) を有効にしておく必要があります。  azure-iot-sdk-c のルート フォルダーに移動します。  選択した認証モードに応じて、指定のコマンドを実行してください。
+デバイスの製造元は、サポートされるいずれかの種類に基づくハードウェア セキュリティ モジュール (HSM) を最初に選択する必要があります。 現在、[C 言語用 Device Provisioning Service クライアント SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) では、次の HSM がサポートされています。 
+
+- [トラステッド プラットフォーム モジュール (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの代表的な標準です。 デバイスの製造元は、製造するデバイスでこれらの OS のいずれかが稼働している場合や、代表的な HSM 標準を求めている場合に、この HSM を選択できます。 TPM チップを使用すると、各デバイスの Device Provisioning Service への個別登録のみが可能です。 開発向けの場合、Windows または Linux の開発マシンで TPM シミュレーターを使用できます。
+
+- [X.509](https://cryptography.io/en/latest/x509/): X.509 ベースの HSM は比較的新しいチップです。 また、X.509 証明書を実装する RIoT チップまたは DICE チップ上での作業が Microsoft 内で現在進められています。 X.509 チップを使用すると、ポータルでデバイスの一括登録を実行できます。 また、X.509 チップは、embedOS などの Windows 以外の特定の OS もサポートしています。 開発のために、Device Provisioning Service クライアント SDK は、X.509 デバイス シミュレーターをサポートしています。 
+
+詳細については、「[IoT Hub デバイス プロビジョニング サービスのセキュリティの概念](concepts-security.md)」を参照してください。 
+
+## <a name="enable-authentication-for-supported-hsms"></a>サポートされている HSM での認証を有効にする
+
+Azure Portal で物理デバイスまたはシミュレーターを登録するためには、その物理デバイスまたはシミュレーターに使用する認証モード (X**.**509 または TPM) を有効にしておく必要があります。 まず、azure-iot-sdk-c のルート フォルダーに移動します。 その後、選択した認証モードに応じて、指定のコマンドを実行してください。
 
 ### <a name="use-x509-with-simulator"></a>X**.**509 をシミュレーターで使用する場合
 
-プロビジョニング サービスには、デバイスの認証用の X**.**509 証明書を生成する Device Identity Composition Engine (DICE) エミュレーターが付属しています。  X**.**509 認証を有効にするには、次のコマンドを実行します。
+プロビジョニング サービスには、デバイスの認証用の X**.**509 証明書を生成する Device Identity Composition Engine (DICE) エミュレーターが付属しています。 X**.**509 認証を有効にするには、次のコマンドを実行します。 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -41,11 +52,11 @@ DICE 対応ハードウェアについては、[こちら](https://azure.microso
 
 ### <a name="use-x509-with-hardware"></a>X**.**509 をハードウェアで使用する場合
 
-プロビジョニング サービスは、他のハードウェア上の X**.**509 と共に使用することができます。  ハードウェアと SDK との間には、接続を確立するためのインターフェイスが必要となります。  このインターフェイスについては、ご利用の HSM の製造元にお問い合わせください。
+プロビジョニング サービスは、他のハードウェア上の X**.**509 と共に使用することができます。 ハードウェアと SDK との間には、接続を確立するためのインターフェイスが必要となります。 このインターフェイスについては、ご利用の HSM の製造元にお問い合わせください。
 
 ### <a name="use-tpm"></a>TPM を使用する場合
 
-プロビジョニング サービスは、Windows および Linux のハードウェア TPM チップに対し、SAS トークンを使って接続することができます。  TPM 認証を有効にするには、次のコマンドを実行します。
+プロビジョニング サービスは、Windows および Linux のハードウェア TPM チップに対し、SAS トークンを使って接続することができます。 TPM 認証を有効にするには、次のコマンドを実行します。
 
 ```
 cmake -Ddps_auth_type=tpm ..
@@ -53,7 +64,7 @@ cmake -Ddps_auth_type=tpm ..
 
 ### <a name="use-tpm-with-simulator"></a>TPM をシミュレーターで使用する場合
 
-TPM チップを搭載したデバイスがない場合は、Windows OS での開発を目的としてシミュレーターを使用できます。  TPM 認証を有効にして TPM シミュレーターを実行するには、次のコマンドを実行します。
+TPM チップを搭載したデバイスがない場合は、Windows OS での開発を目的としてシミュレーターを使用できます。 TPM 認証を有効にして TPM シミュレーターを実行するには、次のコマンドを実行します。
 
 ```
 cmake -Ddps_auth_type=tpm_simulator ..
@@ -128,19 +139,47 @@ cmake -Ddps_auth_type=tpm_simulator ..
     - プロビジョニング サービス: dps_http_transport、dps_client、dps_security_client
     - IoTHub セキュリティ: iothub_security_client
 
-## <a name="create-a-device-enrollment-entry-in-dps"></a>DPS におけるデバイス登録エントリの作成
+## <a name="create-a-device-enrollment-entry-in-device-provisioning-services"></a>Device Provisioning Service でのデバイス登録エントリの作成
 
 ### <a name="tpm"></a>TPM
-TPM を使用する場合は、「[シミュレートされたデバイスを作成して IoT Hub Device Provisioning Service でプロビジョニングする](./quick-create-simulated-device.md)」の手順に従って、DPS にデバイス登録エントリを作成し、初回ブートをシミュレートします。
+TPM を使用する場合は、「[シミュレートされたデバイスを作成して IoT Hub Device Provisioning Service でプロビジョニングする](./quick-create-simulated-device.md)」の手順に従って、Device Provisioning Service にデバイス登録エントリを作成し、初回ブートをシミュレートします。
 
 ### <a name="x509"></a>X**.**509
 1. プロビジョニング サービスにデバイスを登録するためには、各デバイスの保証キーと登録 ID を書き留めておく必要があります。これらの情報は、クライアント SDK に含まれるプロビジョニング ツールに表示されます。 次のコマンドを実行して、ルート CA 証明書 (グループ登録用) と署名者証明書 (個別登録用) を出力してください。
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** ボタンをクリックして、DPS サービスを開きます。
+2. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** ボタンをクリックして、DPS サービスを開きます。
    - X**.**509 個別登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、ブレードの指示に従って署名者証明書をアップロードします。 作業が完了したら、**[保存]** をクリックします。 
    - X**.**509 グループ登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Group Enrollments]\(グループ登録\)** タブを選択して、上部の **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、グループ名と証明書名を入力してから、ブレードの指示に従ってルート CA 証明書をアップロードします。 作業が完了したら、**[保存]** をクリックします。 
+
+## <a name="enable-authentication-for-custom-tpm-and-x509-devices-optional"></a>カスタム TPM デバイスおよびカスタム X.509 デバイスでの認証を有効にする (省略可)
+
+> [!NOTE]
+> このセクションの内容は、C 言語用 Device Provisioning Service クライアント SDK で現在サポート対象外となっているカスタム プラットフォーム (HSM) のサポートを必要とするデバイスのみを対象としています。
+
+まず、カスタム HSM リポジトリとライブラリを開発する必要があります。
+
+1. HSM にアクセスするためのライブラリを作成します。 このプロジェクトでは、Device Provisioning SDK で使用するスタティック ライブラリを生成する必要があります。
+
+2. ライブラリでは、次のヘッダー ファイルで定義されている関数を実装する必要があります。 
+
+    - カスタム TPM の場合: [HSM TPM API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api) に定義されているカスタム HSM 関数を実装します。  
+    - カスタム X.509 の場合: [HSM X509 API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api) に定義されているカスタム HSM 関数を実装します。 
+
+ライブラリ単独でのビルドに成功したら、それを Device Provisioning Service クライアント SDK に統合するために、ライブラリへのリンクを行う必要があります。 :
+
+1. 次の `cmake` コマンドで、カスタム HSM GitHub リポジトリ、ライブラリのパス、ライブラリの名前を指定します。
+    ```cmd/sh
+    cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=<path_and_name_of_library> <PATH_TO_AZURE_IOT_SDK>
+    ```
+   
+2. CMake でビルドされた Visual Studio ソリューション ファイル (`\azure-iot-sdk-c\cmake\azure_iot_sdks.sln`) を開いてビルドします。 
+
+    - ビルド プロセスにより、SDK ライブラリがコンパイルされます。
+    - SDK は、`cmake` コマンドで定義されたカスタム HSM へのリンクを試みます。
+
+3. "Provision_Samples" の "prov_dev_client_ll_sample" サンプル アプリ (`\azure-iot-sdk-c\cmake\provisioning_client\samples\prov_dev_client_ll_sample`) を実行して、HSM が正しく実装されているかどうかを確認します。
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>プロビジョニング後の IoT Hub への接続
 
@@ -148,3 +187,4 @@ TPM を使用する場合は、「[シミュレートされたデバイスを作
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```
+

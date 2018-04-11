@@ -1,13 +1,12 @@
 ---
-title: "Azure Stream Analytics ジョブの互換性レベルを理解する。 | Microsoft Docs"
-description: "Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します"
-keywords: "互換性レベル, ストリーミング データ"
-documentationcenter: 
+title: Azure Stream Analytics ジョブの互換性レベルを理解する。 | Microsoft Docs
+description: Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します
+keywords: 互換性レベル, ストリーミング データ
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
 manager: kfile
-editor: 
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/03/2018
 ms.author: sngun
-ms.openlocfilehash: f354c39fc3b366795fe4ed8dbeeb961bb11d5420
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6f7f2314d225aa02be28fa817151f8f245478cf0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
  

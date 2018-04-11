@@ -1,8 +1,8 @@
 ---
-title: "PowerShell での Azure Application Insights の自動化 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成を自動化します。"
+title: PowerShell での Azure Application Insights の自動化 | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成を自動化します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
@@ -204,7 +204,7 @@ ms.lasthandoff: 11/01/2017
 * 既定の Basic 料金プランのみを使用する場合は、テンプレートから CurrentBillingFeatures リソースを除外することができます。
 * コンポーネント リソースが作成された後に料金プランを変更する場合は、"microsoft.insights/components" リソースを除外するテンプレートを使用することができます。 また、課金リソースから `dependsOn` ノードを除外します。 
 
-更新された料金プランを確認するには、ブラウザーで [機能と価格設定] ブレードを確認します。 **ブラウザーを最新表示**し、必ず、最新の状態を表示してください。
+更新された料金プランを確認するには、ブラウザーで **[使用量と推定コスト] ページ** ブレードを確認します。 **ブラウザーを最新表示**し、必ず、最新の状態を表示してください。
 
 
 
@@ -441,7 +441,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](app-insights-powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法

@@ -1,8 +1,8 @@
 ---
-title: "Apache Spark を使用して Azure SQL Database のデータを読み書きする | Microsoft Docs"
-description: "HDInsight Spark クラスターと Azure SQL Database の間の接続をセットアップし、SQL Database のデータの読み取り、SQL Database へのデータの書き込み、SQL Database へのデータのストリーミングを行うことができるようにする方法を説明します"
+title: Apache Spark を使用して Azure SQL Database のデータを読み書きする | Microsoft Docs
+description: HDInsight Spark クラスターと Azure SQL Database の間の接続をセットアップし、SQL Database のデータの読み取り、SQL Database へのデータの書き込み、SQL Database へのデータのストリーミングを行うことができるようにする方法を説明します
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/29/2018
+ms.date: 03/28/2018
 ms.author: nitinme
-ms.openlocfilehash: 28ed6b9774bb85c7ec806c7775c34f8bc3d66bde
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011471224d79ae326ccc33fc23fd6fada347497b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
 
@@ -234,7 +234,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
         
          var streamingQuery = WriteToSQLQuery.start()
 
-6. 次のクエリを実行し、**hvactable** にデータがストリーミングされていることを確認します。 クエリを実行するたびに、表示されるテーブル行数の値が増加します。
+6. SQL Server Management Studio (SSMS) で、次のクエリを実行し、**hvactable** にデータがストリーミングされていることを確認します。 クエリを実行するたびに、表示されるテーブル行数の値が増加します。
 
         SELECT COUNT(*) FROM hvactable
 

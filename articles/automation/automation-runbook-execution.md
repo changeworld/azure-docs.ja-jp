@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: edfd317e7d3f7595f656c6c24ad65f3d87fea14c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18059ef1e0efba4f030a6e99198f0b7c72b7daf3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 Azure Automation で runbook を開始するときに、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 各ジョブを実行する Azure Automation ワーカーが割り当てられます。 ワーカーは複数の Azure アカウントで共有されるが、さまざまな Automation アカウントからのジョブは互いに分離されます。 ジョブに対する要求をどのワーカーで処理するかを制御することはできません。 1 つの Runbook で、複数のジョブを同時に実行することができます。  同じ Automation アカウントからのジョブの実行環境を再利用できます。 Azure Portal で Runbook の一覧を表示すると、各 Runbook に対して起動されたすべてのジョブの状態が一覧表示されます。 それぞれの状態を追跡するために、Runbook ごとにジョブの一覧を表示できます。 ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」をご覧ください。
@@ -46,7 +46,7 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 | 中断中 |ユーザーの要求を受けてシステムはジョブを中断しようとしています。 Runbook は、次のチェックポイントに到達してからでないと、中断できません。 Runbook は、次のチェックポイントに到達してからでないと、中断できません。  [グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。 |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Azure Portal を使用したジョブの状態の表示
-Azure Portal では、すべての Runbook ジョブの状態の概要や、特定の Runbook ジョブの詳細を表示できます。また、Microsoft Operations Management Suite (OMS) Log Analytics ワークスペースとの統合を構成して、Runbook ジョブの状態やジョブ ストリームを転送することもできます。  OMS Log Analytics との統合の詳細については、「[Automation から Log Analytics (OMS) へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。  
+Azure Portal では、すべての Runbook ジョブの状態の概要や、特定の Runbook ジョブの詳細を表示できます。また、Log Analytics ワークスペースとの統合を構成して、Runbook ジョブの状態やジョブ ストリームを転送することもできます。  Log Analytics との統合の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。  
 
 ### <a name="automation-runbook-jobs-summary"></a>Automation Runbook ジョブの概要
 選択した [Automation アカウント] の右にある**[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。<br><br> ![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)。<br> このタイルでは、実行されたすべてのジョブの数を確認できるほか、その状態がグラフィカルに表示されます。  

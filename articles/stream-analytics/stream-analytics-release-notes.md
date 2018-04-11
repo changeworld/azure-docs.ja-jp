@@ -1,11 +1,10 @@
 ---
-title: "Stream Analytics のリリース ノート | Microsoft Docs"
-description: "Stream Analytics のリリース ノート"
+title: Stream Analytics のリリース ノート | Microsoft Docs
+description: Stream Analytics のリリース ノート
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 5e59f893-cd2c-43fb-9eca-c146ce637203
 ms.service: stream-analytics
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/03/2017
-ms.author: samacha
-ms.openlocfilehash: 3251cd47bb917912d63330345dbf392e724448ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 645c9e7014beba0312de3784bbc04734927929a9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-release-notes"></a>Stream Analytics のリリース ノート
 
 ## <a name="notes-for-06142017-update-of-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Stream Analytics ツールの 2017 年 6 月 14 日付けの更新に関するノート
 この更新は、Visual Studio Tools を対象としています。 このリリースには、次の新機能が含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Java スクリプト エディターのサポート |Java スクリプト関数の作成後に、ネイティブの Java スクリプト エディターのエクスペリエンスを利用できます。|
 | ジョブの実行時のエラー メッセージの表示 | ジョブの実行中にランタイム エラーが発生した場合、表示時間枠を調整することによってそれらのエラーを [エラー] タブに表示できます。 既定では、過去 30 分間のエラー メッセージが表示されます。 |
@@ -39,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-04242017-update-of-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Stream Analytics ツールの 2017 年 4 月 24 日付けの更新に関するノート
 この更新は、Visual Studio Tools を対象としています。 このリリースには、次の新機能が含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Visual Studio でのローカル テストの結果の表示 | ローカル テストの出力結果を表示するには、出力コンソール ウィンドウで Enter キーを押すか、ウィンドウを閉じます。 結果は、Visual Studio のウィンドウに表形式で表示されます。 |
 | JSON 形式のローカル出力結果 | ローカル テストを実行すると、JSON と CSV の両方のファイル形式で出力結果が生成されます。 |
@@ -50,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>Stream Analytics の 2017 年 2 月 1 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | JavaScript ユーザー定義関数 (UDF) の導入 |[Java ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)を使用して、さらに柔軟にクエリを作成できるようになりました。 |
 | Visual Studio と Stream Analytics の導入 |[Tools for Visual Studio](stream-analytics-tools-for-visual-studio.md) が、デバッグとさらに優れたユーティリティで使用できるようになりました。 |
@@ -60,21 +59,21 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-04152016-release-of-stream-analytics"></a>Stream Analytics の 2016 年 4 月 15 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Power BI 出力の一般提供 |[Power BI 出力](stream-analytics-power-bi-dashboard.md) の一般提供が開始しました。 Power BI の 90 日間の承認有効期限は削除されました。 承認の更新が必要となるシナリオの詳細については、Power BI ダッシュボードの作成に関するページの「[承認の更新](stream-analytics-power-bi-dashboard.md#renew-authorization)」セクションを参照してください。 |
 
 ## <a name="notes-for-03032016-release-of-stream-analytics"></a>Stream Analytics の 2016 年 3 月 3 日付リリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | 新しい Stream Analytics クエリ言語項目 |SAQL には [GetType](https://msdn.microsoft.com/library/azure/mt643890.aspx "GetType MSDN ページ")、[TRY_CAST](https://msdn.microsoft.com/library/azure/mt643735.aspx "TRY_CAST MSDN ページ")、および [REGEXMATCH](https://msdn.microsoft.com/library/azure/mt643891.aspx "REGEXMATCH MSDN ページ") があります。 |
 
 ## <a name="notes-for-12102015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 12 月 10 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | REST API バージョン更新 |REST API バージョンが 2015-10-01 に更新されました。 詳細については、MSDN の [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)、および「[Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)」を参照してください。 |
 | Azure Machine Learning 統合 |このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。 詳細については、[チュートリアル](stream-analytics-machine-learning-integration-tutorial.md)と、[ブログでの全般的なお知らせ](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)を参照してください。 |
@@ -82,14 +81,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-11122015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 11 月 12 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
-| SELECT の新しい動作 |Stream Analytics の SELECT が拡張され、入れ子になったレコードのプロパティ アクセサーとして、"*" を使用できるようになりました。 詳細については、[http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "複合データ型") をご覧ください。 |
+| SELECT の新しい動作 |Stream Analytics の SELECT が拡張され、入れ子になったレコードのプロパティ アクセサーとして、"*" を使用できるようになりました。 詳細については、「[http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "Complex Data Types (複合データ型)")」を参照してください。 |
 
 ## <a name="notes-for-10222015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 10 月 22 日のリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Additional query language features (追加のクエリ言語機能) |Stream Analytics では、機能 [ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx)、[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx)、[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx)、[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx)、[POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx)、[SIGN](https://msdn.microsoft.com/library/azure/mt605290.aspx)、[SQUARE](https://msdn.microsoft.com/library/azure/mt605288.aspx)、および [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx) を含めることでクエリ言語が拡張されました。 |
 | Removed aggregate limitations (集計の制限を削除) |このリリースでは、クエリにおける 15 の集計の制限が削除されます。 クエリごとの集計の数に制限がなくなりました。 |
@@ -99,7 +98,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-09292015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 9 月 29 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Azure IoT Suite のパブリック プレビュー |Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。 |
 | Azure ポータルの統合 |Azure Portal で引き続き提供されている Stream Analytics が、[Azure Portal](https://azure.microsoft.com/overview/preview-portal/) にも統合されました。 現在、プレビュー ポータルの Stream Analytics 機能は Azure Portal で提供されている機能のサブセットであり、ブラウザー内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。 |
@@ -110,14 +109,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-09102015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 9 月 10 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | PowerBI グループのサポート |他の Power BI ユーザーとデータを共有できるようにするために、Stream Analytics ジョブで Power BI アカウント内の [PowerBI グループ](stream-analytics-define-outputs.md#power-bi) に書き込むことができるようになりました。 |
 
 ## <a name="notes-for-08202015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 8 月 20 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Last 関数の追加 |Stream Analytics ジョブで [Last](http://msdn.microsoft.com/library/mt421186.aspx) 関数が使用できるようになりました。これにより、特定の期間内のイベント ストリームで最新のイベントを取得することができます。 |
 | 新しい配列関数 |配列関数 [GetArrayElement](http://msdn.microsoft.com/library/mt270218.aspx)、[GetArrayElements](http://msdn.microsoft.com/library/mt298451.aspx)、[GetArrayLength](http://msdn.microsoft.com/library/mt270226.aspx) を使用できるようになりました。 |
@@ -126,7 +125,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-07302015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 7 月 30 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Azure ID から切り離された Power BI の組織 ID |この機能により、任意の種類の Azure アカウント (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md) が可能になりました。 さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。 |
 | Service Bus キューの出力のサポート |[Service Bus キュー](stream-analytics-define-outputs.md#service-bus-queues)の出力を、Stream Analytics ジョブで使用できるようになりました。 |
@@ -135,20 +134,20 @@ ms.lasthandoff: 10/11/2017
 ## <a name="notes-for-07092015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 9 月 7 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | カスタム Blob 出力のパーティション分割 |Blob ストレージ出力で、出力 blob が書き込まれる頻度、よび出力データ パス フォルダーの構造と形式を指定するオプションが使用できるようになりました。 |
 
 ## <a name="notes-for-05032015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 5 月 3 日付けリリースに関するノート
 このリリースには、次の更新プログラムが含まれています。
 
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | 順不同許容範囲ウィンドウの最大値の増加 |順不同許容範囲 ウィンドウの最大サイズは 59:59 (MM:SS) になりました。 |
 | JSON 出力形式: 行区切りまたは配列 |Blob ストレージまたは Event Hub に出力する際に、JSON オブジェクトの配列として、または JSON オブジェクトを改行で分割することにより、出力するオプションができました。 |
 
 ## <a name="notes-for-04162015-release-of-stream-analytics"></a>Stream Analytics の 2015 年 4 月 16 日付けリリースに関するノート
-| タイトル | Description |
+| タイトル | [説明] |
 | --- | --- |
 | Azure Storage アカウント構成の遅延 |Stream Analytics ジョブをリージョンで初めて作成すると、そのリージョンで Stream Analytics ジョブを監視するために、新しいストレージ アカウントを作成するか、既存のアカウントを指定するように求められます。 監視の構成に待機時間が生じるせいで、同じリージョンで 30 分以内に別の Stream Analytics のジョブを作成すると、構成したばかりのアカウントが [監視ストレージ アカウント] ボックスの一覧に表示される代わりに、2 つ目のストレージ アカウントを指定するように求められます。 不要なストレージ アカウントの作成を回避するには、そのリージョンで初めてジョブを作成した後に 30 分待ってから、追加のジョブをプロビジョニングしてください。 |
 | ジョブのアップグレード |現時点では、Stream Analytics は、実行中のジョブの定義または構成に対するライブ編集をサポートしていません。 実行中のジョブに対する入力、出力、クエリ、スケール、または構成を変更するには、先にジョブを停止する必要があります。 |
@@ -163,7 +162,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

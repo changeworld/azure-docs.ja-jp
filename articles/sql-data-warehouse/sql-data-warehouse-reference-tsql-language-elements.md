@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse Transact-SQL 言語要素 | Microsoft Docs"
-description: "SQL Data Warehouse に使用される Transact-SQL 言語要素のリファレンス コンテンツへのリンクのリスト。"
+title: SQL Data Warehouse Transact-SQL 言語要素 | Microsoft Docs
+description: SQL Data Warehouse に使用される Transact-SQL 言語要素のリファレンス コンテンツへのリンクのリスト。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: 7a20cd8f3c2f304d12a49755dbe6e04f9b1d36df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="language-elements"></a>言語要素
 ## <a name="core-elements"></a>コア要素
@@ -278,12 +278,6 @@ ms.lasthandoff: 10/11/2017
 * [SET TRANSACTION ISOLATION LEVEL](https://msdn.microsoft.com/library/ms173763.aspx)
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
-## <a name="next-steps"></a>次のステップ
-詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse reference overview]に関するページをご覧ください。
+## <a name="next-steps"></a>次の手順
+その他の TSQL 参照については、[SQL Data Warehouse T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)に関するページをご覧ください。
 
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
-
-<!--MSDN references-->

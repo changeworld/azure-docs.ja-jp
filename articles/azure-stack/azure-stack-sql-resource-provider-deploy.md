@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d0b287eb61087e90c898aad5273ab5be8c1f98b2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 SQL Server リソースプロバイダー アダプターを使用して、SQL データベースを [Azure Stack](azure-stack-poc.md) のサービスとして公開します。 リソースプロバイダーをインストールして 1 つまたは複数の SQL Server インスタンスに接続すると、御社および御社のユーザーは次のものを作成できます。
 - クラウドネイティブ アプリ向けデータベース。
@@ -71,7 +71,7 @@ SQL Server をホストする仮想マシン (VM) を毎回プロビジョニン
     | 1710: 1.0.171028.1 | [SQL RP バージョン 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 Azure Stack SDK では、このプロセスの一環として自己署名証明書が作成されます。 統合システムの場合は、適切な証明書を提供する必要があります。
+4. Azure Stack SDK では、このプロセスの一環として自己署名証明書が作成されます。 統合システムの場合は、適切な証明書を提供する必要があります。
 
    独自の証明書を提供するには、次のように .pfx ファイルを **DependencyFilesLocalPath** に配置します。
 
@@ -251,10 +251,10 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 ## <a name="collect-diagnostic-logs"></a>診断ログの収集
 SQL リソース プロバイダーは、ロック ダウンされた仮想マシンです。 仮想マシンからログを収集することが必要になった場合は、、そのために PowerShell Just Enough Administration (JEA) エンドポイント _DBAdapterDiagnostics_ が提供されています。 このエンドポイントで使用できる 2 つのコマンドが 2 つあります。
 
-* Get AzsDBAdapterLog - は、RP 診断ログを含む zip パッケージを準備し、セッションのユーザー ドライブに配置します。 コマンドは、パラメーターなしで呼び出すことができ、過去 4 時間分のログが収集されます。
+* Get-AzsDBAdapterLog - RP 診断ログを含む zip パッケージを準備し、セッション ユーザー ドライブに配置します。 このコマンドは、パラメーターなしで呼び出すことができます。過去 4 時間分のログが収集されます。
 * Remove-AzsDBAdapterLog - リソース プロバイダー VM 上の既存のログ パッケージを削除します。
 
-RP 展開中または更新中に、RP ログを抽出するための診断エンドポイントに接続するための _dbadapterdiag_ ユーザー アカウントが作成されます。 このアカウントのパスワードは、展開/更新中に指定したローカル管理者アカウントのパスワードと同じです。
+RP ログを抽出する診断エンドポイントに接続するために、RP 展開中または更新中に _dbadapterdiag_ というユーザー アカウントが作成されます。 このアカウントのパスワードは、展開/更新中に指定したローカル管理者アカウントのパスワードと同じです。
 
 これらのコマンドを使用するには、リソース プロバイダーの仮想マシンにリモート PowerShell セッションを作成し、コマンドを呼び出す必要があります。 必要に応じて、FromDate および ToDate パラメーターを指定できます。 これらの一方または両方を指定しない場合、FromDate は現在の時刻より 4 時間前になり、ToDate は現在の時刻になります。
 
@@ -305,14 +305,14 @@ Windows Server VM を更新するには、いくつかの方法があります�
 
 1. [Windows Defender の定義](https://www.microsoft.com/en-us/wdsi/definitions)から Windows Defender 定義の更新をダウンロードします。
 
-    そのページの [Manually download and install the definitions]\(手動でダウンロードして、定義ファイルをインストール\) から "Windows Defender Antivirus for Windows 10 および Windows 8.1" 64 ビット ファイルをダウンロードします。 
+    そのページの [Manually download and install the definitions]\(定義を手動でダウンロードしてインストールする\) から "Windows Defender Antivirus for Windows 10 および Windows 8.1" 64 ビット ファイルをダウンロードします。 
     
     直接リンク: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
 
 2. SQL RP アダプター仮想マシンのメンテナンス エンドポイントに対し PowerShell セッションを作成します。
 3. メンテナンス エンドポイントのセッションを使用して DB アダプター コンピューターに、定義更新ファイルをコピーします。
 4. メンテナンス PowerShell セッションで _Update-DBAdapterWindowsDefenderDefinitions_ コマンドを呼び出します。
-5. インストール後に使用される定義更新ファイルを削除することをお勧めします。 定義更新ファイルは、メンテナンス セッションで _Remove-ItemOnUserDrive)_ コマンドを使用して削除できます。
+5. インストール後に使用される定義更新ファイルを削除することをお勧めします。 定義更新ファイルは、メンテナンス セッションで _Remove-ItemOnUserDrive_ コマンドを使用して削除できます。
 
 
 Defender の定義を更新するサンプル スクリプトを次に示します (仮想マシンのアドレスまたは名前を実際の値に置き換えてください)。

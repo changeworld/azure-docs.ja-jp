@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics の IT Service Management Connector | Microsoft Docs"
-description: "この記事では、IT Service Management Connector (ITSMC) の概要を説明し、このソリューションを使用して ITSM の作業項目を Azure Log Analytics で一元的に監視および管理して、問題を迅速に解決する方法に関する情報を示します。"
+title: Azure Log Analytics の IT Service Management Connector | Microsoft Docs
+description: この記事では、IT Service Management Connector (ITSMC) の概要を説明し、このソリューションを使用して ITSM の作業項目を Azure Log Analytics で一元的に監視および管理して、問題を迅速に解決する方法に関する情報を示します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 56da2d4349a4a32eed783045381e504b529b1a1c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c39cf464a7e838fecf7ebd4a3cbb08612388a5fa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -191,7 +191,7 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 4. **[連絡先の種類]**、**[影響]**、**[緊急度]**、**[カテゴリ]**、**[サブ カテゴリ]** のテキスト ボックスに適切な値を入力し、**[作成]** をクリックします。
 
 
-##<a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する
+## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する
 
 接続を設定したときの構成に基づいて、ITSM Connector は最大 120 日のインシデントと変更要求データを同期できます。 このデータのログ レコードのスキーマについては、[次のセクション](#additional-information)をご覧ください。
 
@@ -342,7 +342,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 2.  ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
 3.  OMS アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
  -  ITSMC: このソリューションでは、接続/作業項目/コンピューターなどの概要が表示されます。**接続の状態**を示すタイルをクリックします。これにより、関連するクエリを使用する **[ログ検索]** が表示されます。 詳細については、LogType_S が ERROR のログ レコードを確認してください。
- - **[ログ検索]** ページ: *Type=ServiceDeskLog_CL* というクエリを使用して直接エラー/関連情報を表示します。
+ - **[ログ検索]** ページ: `*`ServiceDeskLog_CL`*` というクエリを使用して直接エラー/関連情報を表示します。
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。

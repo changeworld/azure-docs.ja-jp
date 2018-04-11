@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 91eccd2b4587d7cb926ca506ae2f2e5b91ea1f3e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 アプリケーションのライフサイクルを通して、仮想マシン スケール セットを変更したり更新したりすることが必要になる場合があります。 スケール セットの構成を更新したりアプリケーションの構成を変更したりする際の方法が、こうした更新の対象になることもあります。 この記事では、REST API、Azure PowerShell、Azure CLI 2.0 を使って、既存のスケール セットに変更を加える方法を説明します。
@@ -403,16 +403,16 @@ Azure Load Balancer を使用するスケール セットがあり、Azure Load 
 - Azure Powershell:
 
     ```powershell
-    # Get the current model of the scale set and store it in a local powershell object named $vmss
+    # Get the current model of the scale set and store it in a local PowerShell object named $vmss
     $vmss=Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
     
-    # Create a local powershell object for the new desired IP configuration, which includes the referencerence to the application gateway
+    # Create a local PowerShell object for the new desired IP configuration, which includes the referencerence to the application gateway
     $ipconf = New-AzureRmVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
     
-    # Replace the existing IP configuration in the local powershell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
+    # Replace the existing IP configuration in the local PowerShell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
     $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
     
-    # Update the model of the scale set with the new configuration in the local powershell object
+    # Update the model of the scale set with the new configuration in the local PowerShell object
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
     ```
 

@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: c2a52a387860de640e290746b25c164090819654
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>チュートリアル: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザーを認証する
 
@@ -66,7 +66,7 @@ Azure AD B2C テナントの全体管理者として、[Azure Portal](https://po
 
 ### <a name="create-a-client-password"></a>クライアント パスワードの作成
 
-Azure AD B2C では、[クライアント アプリケーション](../active-directory/develop/active-directory-dev-glossary.md#client-application)に OAuth2 承認が使用されます。 Web アプリは [Confidential クライアント](../active-directory/develop/active-directory-dev-glossary.md#web-client)であり、クライアント シークレット (パスワード) を必要とします。 アプリケーション クライアント ID とクライアント シークレットは、Web アプリが Azure Active Directory で認証されるときに使用されます。 
+Azure AD B2C では、[クライアント アプリケーション](../active-directory/develop/active-directory-dev-glossary.md#client-application)に OAuth2 承認が使用されます。 Web アプリは、[Confidential クライアント](../active-directory/develop/active-directory-dev-glossary.md#web-client)であり、クライアント ID (またはアプリケーション ID) のほか、クライアント シークレット、クライアント パスワード、アプリケーション キーのいずれかが必要となります。
 
 1. 登録されている Web アプリの [キー] ページを選択し、**[キーの生成]** をクリックします。
 
@@ -150,7 +150,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 **Web API のサンプル アプリ (TaskService):** タスク リストの作成、読み取り、更新、削除機能をサポートする Web API。 この Web API は Azure AD B2C によって保護されており、Web アプリによって呼び出されます。
 
-テナントでアプリの登録を使用するには、アプリを変更する必要があります。 また、作成したポリシーを構成する必要もあります。 サンプル Web アプリでは、Web.config ファイルでアプリの設定として構成値を定義します。 アプリの設定を変更するには、次の手順に従います。
+ご利用のテナントで、クライアント ID (またはアプリケーション ID) およびクライアント パスワード (またはアプリケーション キー) を含むアプリの登録を使用するには、アプリに変更を加える必要があります。 また、作成したポリシーを構成する必要もあります。 サンプル Web アプリでは、Web.config ファイルでアプリの設定として構成値を定義します。 アプリの設定を変更するには、次の手順に従います。
 
 1. Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 
@@ -161,7 +161,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     
     <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
     
-    <add key="ida:ClientSecret" value="Client password (client secret)" />
+    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
 3. ポリシーの作成時に生成された名前で、ポリシーの設定を更新します。
 

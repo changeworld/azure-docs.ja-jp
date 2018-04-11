@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/30/2017
 ms.author: cakarst;douglasl;barbkess
 ms.openlocfilehash: 6c9cebdd715b6997d0633bc725a3945ba9e0c357
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS)
 > [!div class="op_single_selector"]
@@ -167,7 +167,7 @@ Visual Studio で、新しい Integration Services (SSIS) プロジェクトが�
 
 ご利用ありがとうございます。 SQL Server Integration Services を使用して、Azure SQL Data Warehouse にデータを問題なく読み込むことができました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * SSIS データ フローの詳細を確認します。 まずは、「[データ フロー][Data Flow]」をご覧ください。
 * デザイン環境で直接パッケージのデバッグおよびトラブルシューティングを行う方法について確認します。 まずは、「[パッケージ開発のトラブルシューティング ツール][Troubleshooting Tools for Package Development]」をご覧ください。
 * Integration Services サーバーまたは別のストレージの場所に SSIS プロジェクトとパッケージをデプロイする方法について確認します。 まずは、「[プロジェクトとパッケージの展開][Deployment of Projects and Packages]」をご覧ください。

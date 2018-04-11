@@ -1,10 +1,10 @@
 ---
-title: "Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する | Microsoft Docs"
-description: "Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。"
+title: Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する | Microsoft Docs
+description: Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 services: event-grid, functions
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/08/2018
 
 既存のイメージ アップロード アプリにサイズ変更機能を追加するには、Azure CLI と Azure Portal を使います。
 
-![Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Microsoft Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -157,7 +157,7 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 
 アップロードされたイメージが消えた後、アップロードされたイメージのコピーが **[Generated thumbnails]** 領域に表示されることを確認します。 このイメージは、関数によってサイズが変更され、*thumbs* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
 
-![Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Microsoft Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>次の手順
 

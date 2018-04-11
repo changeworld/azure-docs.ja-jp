@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache をスケーリングする方法 | Microsoft Docs"
-description: "Azure Redis Cache インスタンスをスケーリングする方法を学習する"
+title: Azure Redis Cache をスケーリングする方法 | Microsoft Docs
+description: Azure Redis Cache インスタンスをスケーリングする方法を学習する
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: b0a9208681b164fe7be33bf9ef5f635358284ba3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Azure Redis Cache のスケーリング方法
 Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -111,6 +111,7 @@ Azure CLI によるスケーリングの詳細については、「 [既存の R
 * [スケーリング中にキャッシュからデータは失われますか](#will-i-lose-data-from-my-cache-during-scaling)
 * [スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)
 * [スケーリング中にキャッシュを使用できますか](#will-my-cache-be-available-during-scaling)
+* [geo レプリケーションを構成していますが、キャッシュをスケーリングしたり、クラスターのシャードを変更したりできません。](#scaling-limitations-with-geo-relication)
 * [サポートされていない処理](#operations-that-are-not-supported)
 * [スケーリングにはどのくらいの時間がかかりますか](#how-long-does-scaling-take)
 * [スケーリングが完了したことをどのようにして確認できますか](#how-can-i-tell-when-scaling-is-complete)
@@ -119,7 +120,7 @@ Azure CLI によるスケーリングの詳細については、「 [既存の R
 * **Premium** キャッシュから **Basic** または **Standard** の価格レベルにスケーリングすることはできません。
 * ある **Premium** キャッシュの価格レベルから別の Premium キャッシュの価格レベルにスケーリングすることはできます。
 * **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 まず、1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングします。
-* **Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、 [クラスター サイズを変更](cache-how-to-premium-clustering.md#cluster-size)できます。 クラスタリングを有効にせずに作成されたキャッシュの場合、後でクラスタリングを構成することはできません。
+* **Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、 [クラスター サイズを変更](cache-how-to-premium-clustering.md#cluster-size)できます。 クラスタリングを有効にせずに作成されたキャッシュの場合、後でクラスタリングを構成できます。
   
   詳細については、「 [Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
@@ -151,6 +152,12 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 * **Standard** キャッシュと **Premium** キャッシュはスケーリング処理中でも使用できます。 ただし、Standard および Premium キャッシュのスケーリングや、Basic から Standard キャッシュへのスケーリングの際に接続の中断が発生する可能性があります。 こうした接続の中断はわずかで、Redis クライアントはすぐに接続を再確立できます。
 * 別のサイズにスケーリングする場合、**Basic** キャッシュはオフラインになります。 **Basic** から **Standard** にスケーリングする際は、Basic キャッシュを引き続き利用できますが、接続の中断がわずかに発生する可能性があります。 接続の中断が発生しても、Redis クライアントはすぐに接続を再確立できます。
 
+
+### <a name="scaling-limitations-with-geo-relication"></a>geo レプリケーションのスケーリング制限
+
+2 つのキャッシュ間で geo レプリケーションを追加すると、スケーリング操作を監視したり、クラスターのシャード数を変更したりできなくなります。 これらのコマンドを発行するには、キャッシュのリンクを解除する必要があります。 詳細については、「[geo レプリケーションの構成](cache-how-to-geo-replication.md)」を参照してください。
+
+
 ### <a name="operations-that-are-not-supported"></a>サポートされていない処理
 * 上位の価格レベルから下位の価格レベルにスケーリングすることはできません。
   * **Premium** キャッシュから **Standard** または **Basic** キャッシュにスケールすることはできません。
@@ -160,6 +167,7 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 * **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
 
 スケール処理でエラーが発生すると、サービスは処理を取り消してキャッシュを元のサイズに戻すように試行します。
+
 
 ### <a name="how-long-does-scaling-take"></a>スケーリングにはどのくらいの時間がかかりますか
 スケーリングには約 20 分かかりますが、キャッシュ内のデータ量によって変わります。

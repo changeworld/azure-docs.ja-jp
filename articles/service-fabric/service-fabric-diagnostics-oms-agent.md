@@ -1,31 +1,31 @@
 ---
-title: "OMS エージェントによる監視の設定 - Azure Service Fabric | Microsoft Docs"
-description: "Azure Service Fabric クラスターのコンテナーとパフォーマンス カウンターを監視するように OMS エージェントを設定する方法を説明します。"
+title: OMS エージェントによる監視の設定 - Azure Service Fabric | Microsoft Docs
+description: Azure Service Fabric クラスターのコンテナーとパフォーマンス カウンターを監視するように OMS エージェントを設定する方法を説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/31/2017
+ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 095db20e7d22bd517337f24fc9a81b84988d1465
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 4b0845cbb25d160b53b483641e242422c98029ee
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="add-the-oms-agent-to-a-cluster"></a>OMS エージェントをクラスターに追加する
 
-この記事では、OMS エージェントを仮想マシン スケール セットの拡張機能としてクラスターに追加し、既存の OMS Log Analytics ワークスペースに接続する手順について説明します。 これにより、コンテナー、アプリケーション、およびパフォーマンスの監視に関する診断データを収集できます。 拡張機能として追加することで、クラスターをスケーリングしても Azure Resource Manager によってすべてのノードにインストールされるようになります。
+この記事では、OMS エージェントを仮想マシン スケール セットの拡張機能としてクラスターに追加し、既存の Azure Log Analytics ワークスペースに接続する手順について説明します。 これにより、コンテナー、アプリケーション、およびパフォーマンスの監視に関する診断データを収集できます。 拡張機能として追加することで、クラスターをスケーリングしても Azure Resource Manager によってすべてのノードにインストールされるようになります。
 
 > [!NOTE]
-> この記事では、OMS Log Analytics ワークスペースが設定済みであることを前提としています。 設定していない場合は、[OMS Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)に関するページに進んでください。
+> この記事では、Azure Log Analytics ワークスペースが設定済みであることを前提としています。 設定していない場合は、[Azure Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)に関するページに進んでください。
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Azure CLI を使用して拡張機能を追加する
 
@@ -33,9 +33,9 @@ OMS エージェントをクラスターに追加する最も良い方法は、A
 
 1. Cloud Shell を要求されたら、お使いのリソースと同じサブスクリプションで作業していることを確認します。 確認には `az account show` を使用し、"name" (名前) の値がクラスターのサブスクリプション名と一致することを確認します。
 
-2. ポータルで、OMS ワークスペースがあるリソース グループに移動します。 Log Analytics リソース (リソースの種類は Log Analytics になります) をクリックし、右側のナビゲーションで下にスクロールして **[プロパティ]** をクリックします。
+2. Portal で、Log Analytics ワークスペースがあるリソース グループに移動します。 Log Analytics リソース (リソースの種類は Log Analytics になります) をクリックし、右側のナビゲーションで下にスクロールして **[プロパティ]** をクリックします。
 
-    ![OMS プロパティ ページ](media/service-fabric-diagnostics-oms-agent/oms-properties.png)
+    ![Log Analytics のプロパティ ページ](media/service-fabric-diagnostics-oms-agent/oms-properties.png)
 
     `workspaceId` を書き留めておきます。 
 
@@ -59,6 +59,12 @@ OMS エージェントをクラスターに追加する最も良い方法は、A
 
     ![OMS エージェント CLI コマンド](media/service-fabric-diagnostics-oms-agent/cli-command.png)
  
+5. 既に存在する VM インスタンスにこの構成を適用するコマンドを実行します。  
+
+    ```sh
+    az vmss update-instances
+    ```
+
     15 分以内にお使いのノードに正常にエージェントが追加されます。 `az vmss extension list` API を使用するとエージェントが追加されたことを確認できます。
 
     ```sh
@@ -67,11 +73,11 @@ OMS エージェントをクラスターに追加する最も良い方法は、A
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Resource Manager テンプレートを使用してエージェントを追加する
 
-OMS Log Analytics ワークスペースをデプロイし、お使いの各ノードにエージェントを追加する Resource Manager テンプレートのサンプルは、[Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) または [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) で使用できます。
+Azure Log Analytics ワークスペースをデプロイし、ご利用の各ノードにエージェントを追加する Resource Manager テンプレートのサンプルは、[Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) または [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) で使用できます。
 
 このテンプレートをダウンロードして、ニーズに最適なクラスターをデプロイするように変更することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-* 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを取得するように OMS エージェントを構成するには、OMS ポータルに移動します (OMS Log Analytics リソースの上部にリンクがあります)。 次に、**[ホーム] > [設定] > [データ] > [Windows パフォーマンス カウンター]** (または **[Linux パフォーマンス カウンター]**) の順にクリックし、収集するカウンターを選択します。
-* OMS を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する
+* 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように OMS エージェントを構成する場合は、「[データ ソースの構成](../log-analytics/log-analytics-data-sources.md#configuring-data-sources)」を確認してください。
+* Log Analytics を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する。

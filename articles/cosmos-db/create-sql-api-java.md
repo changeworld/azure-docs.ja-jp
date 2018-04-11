@@ -15,17 +15,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 669a11368ed6ccec041701e691323a2bb2cac56a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 99c4c15893d1318be13781558fb7ed35203bd971
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、管理対象のドキュメントやテーブル、グラフのデータベースを迅速に作成しクエリできます。
 
-このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使ってドキュメント データベースを作成します。 また、[SQL Java API](sql-api-sdk-java.md) を使ってすばやく Java コンソール アプリを作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、ドキュメント データベース リソースの作成と変更ができるようになります。
+このクイックスタートでは、Azure Cosmos DB [SQL API](sql-api-introduction.md) 用の Azure Portal ツールを使ってドキュメント データベースを作成します。 また、[SQL Java API](sql-api-sdk-java.md) を使ってすばやく Java コンソール アプリを作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、ドキュメント データベース リソースの作成と変更ができるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 

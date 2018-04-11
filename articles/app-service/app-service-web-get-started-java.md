@@ -4,7 +4,7 @@ description: 基本の Java アプリをデプロイして、App Service で Web
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: routlaw
+manager: mbaldwin
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/08/2017
+ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](http://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
+
+> [!NOTE]
+>
+> このクイック スタートの手順では、Eclipse IDE を使って Java Web アプリを App Service に発行する方法について説明していますが、IntelliJ IDEA Ultimate Edition または Community Edition を使用することもできます。 詳細については、「[IntelliJ を使用して Azure 用の Hello World Web アプリを作成する](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)」を参照してください。
+>
 
 このクイックスタートを完了し、作成したアプリケーションを Web ブラウザーで開くと、次の図のようになります。
 
@@ -37,6 +42,11 @@ ms.lasthandoff: 03/29/2018
 
 * 無料の <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 このクイック スタートでは Eclipse Neon を使用します。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure Toolkit for Eclipse</a>。
+
+> [!NOTE]
+>
+> Azure Toolkit for Eclipse を使ってこのクイック スタートの手順を完了するためには、Azure アカウントにサインインする必要があります。 具体的な手順については、「[Azure Toolkit for Eclipse の Azure サインイン手順](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions)」を参照してください。
+>
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Eclipse で動的 Web プロジェクトを作成する
 
@@ -74,15 +84,20 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 変更を保存します。
 
+> [!NOTE]
+>
+> Java サーブレット クラスが見つからないという内容のエラーが 1 行目で発生した場合は無視してかまいません。
+> 
+> ![無害な Java サーブレット エラー](./media/app-service-web-get-started-java/java-servlet-benign-error.png)
+>
+
 ## <a name="publish-the-web-app-to-azure"></a>Web アプリを Azure に発行する
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**Azure** > 、**Azure Web アプリとして発行\** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App]\(Azure Web アプリとして発行\)** の順にクリックします。
 
 ![[Publish as Azure Web App\(Azure Web アプリとして発行\)] コンテキスト メニュー](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-**[Azure Sign In\(Azure へのサインイン\)]** ダイアログ ボックスで、**[対話]** オプションをそのままにした状態で、**[サインイン]** をクリックします。
-
-サインインの手順に従います。
+**[Azure Sign In]\(Azure サインイン\)** ダイアログ ボックスで入力を求められた場合は、「[Azure Toolkit for Eclipse の Azure サインイン手順](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions)」の記事の手順に従って資格情報を入力する必要があります。
 
 ### <a name="deploy-web-app-dialog-box"></a>[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス
 
@@ -100,8 +115,8 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 
 **[App Service の作成]** ダイアログ ボックスで、次の操作を行います。
 
-* 生成された Web アプリの名前をそのまま使用します。 この名前は Azure 全体で一意である必要があります。 名前は、Web アプリの URL アドレスの一部です。 例: Web アプリケーションの名前が **MyJavaWebApp** の場合、URL は *myjavawebapp.azurewebsites.net* です。
-* 既定の Web コンテナーをそのまま使用します。
+* Web アプリの一意の名前を入力するか、生成された名前をそのまま使用します。 この名前は Azure 全体で一意である必要があります。 名前は、Web アプリの URL アドレスの一部です。 例: Web アプリケーションの名前が **MyJavaWebApp** の場合、URL は *myjavawebapp.azurewebsites.net* です。
+* このクイック スタートでは、既定の Web コンテナーをそのまま使用します。
 * Azure サブスクリプションを選択します。
 * **[App Service プラン]** タブで、次の操作を行います。
 
@@ -187,7 +202,7 @@ Web アプリを選択し、**[デプロイ]** をクリックして変更を発
 
 リソース グループを選択します。 ページには、このクイック スタートで作成したリソースが表示されます。
 
-![リソース グループ myResourceGroup](media/app-service-web-get-started-java/rg2.png)
+![リソース グループ](media/app-service-web-get-started-java/rg2.png)
 
 Web アプリ (上の画像の **webapp-170602193915**) を選択します。
 

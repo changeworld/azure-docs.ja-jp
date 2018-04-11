@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2018
+ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループのリソースを整理する 
 
@@ -24,15 +24,13 @@ ms.lasthandoff: 03/17/2018
 
 管理グループ機能は、パブリック プレビューで使用できます。 管理グループを使い始めるには、[Azure Portal](https://portal.azure.com) にログインし、**[すべてのサービス]** セクションで **[管理グループ]** を探します。 
 
-管理グループに対する Azure Policy のサポートは、パブリック プレビューではまだ利用できず、数週間以内に提供される予定です。  
-
 たとえば、仮想マシン (VM) の作成に使えるリージョンを制限するポリシーを管理グループに適用できます。 そのリージョンでの VM の作成を許可するだけで、その管理グループの下にあるすべての管理グループ、サブスクリプション、リソースに、このポリシーが適用されます。
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>管理グループとサブスクリプションの階層 
 
 管理グループとサブスクリプションの柔軟な構造を作成し、リソースを階層に整理して、統一されたポリシーとアクセス管理を適用できます。 次の図では、部門別に整理された管理グループとサブスクリプションで構成される階層の例を示します。    
 
-![階層](media/management-groups/MG_overview.png)
+![ツリー](media/management-groups/MG_overview.png)
 
 部門別にグループ化された階層を作成することで、その管理グループに属する部門に "*継承*" される [Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) のロールを割り当てることができます。 管理グループを使うと、ロールの割り当てが 1 回しか必要ないので、ワークロードが減り、エラーのリスクが軽減されます。 
 
@@ -42,6 +40,18 @@ ms.lasthandoff: 03/17/2018
     - この制限には、ルート レベルまたはサブスクリプション レベルは含まれません。
 - 各管理グループは、1 つの親のみをサポートできます。
 - 各管理グループは、複数の子を持つことができます。 
+
+### <a name="preview-subscription-visibility-limitation"></a>プレビュー サブスクリプションの可視性の制限 
+現在、プレビューにはアクセス権を継承したサブスクリプションを表示できないという制限があります。 サブスクリプションへのアクセス権は継承されましたが、その継承は Azure Resource Manager によってまだ受け入れられていません。  
+
+アクセス権を持っている場合、サブスクリプションに関する情報を取得するために REST API を使用すると詳細情報が返されます。しかし、Azure Portal および Azure PowerShell では、サブスクリプションは表示されません。 
+
+この項目については現在処理中であり、管理グループの "一般提供" を発表するまでには解決する予定です。  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>プレビュー期間中のクラウド ソリューション プロバイダー (CSP) の制限 
+現在、クラウド ソリューション プロバイダー (CSP) パートナーに、その顧客のディレクトリ内の顧客の管理グループを作成または管理することができないという制限があります。  
+この項目については現在処理中であり、管理グループの "一般提供" を発表するまでには解決する予定です。
+
 
 ## <a name="root-management-group-for-each-directory"></a>各ディレクトリのルート管理グループ
 

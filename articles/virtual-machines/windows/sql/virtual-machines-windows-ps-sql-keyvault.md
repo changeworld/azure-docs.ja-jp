@@ -1,11 +1,11 @@
 ---
-title: "Key Vault と Azure の Windows VM 上の SQL Server との統合 (Resource Manager) | Microsoft Docs"
-description: "Azure Key Vault で使用するために SQL Server 暗号化の構成を自動化する方法について説明します。 このトピックでは、リソース マネージャーで作成される SQL Server 仮想マシンで Azure Key Vault 統合を使用する方法について説明します。"
+title: Key Vault と Azure の Windows VM 上の SQL Server との統合 (Resource Manager) | Microsoft Docs
+description: Azure Key Vault で使用するために SQL Server 暗号化の構成を自動化する方法について説明します。 このトピックでは、リソース マネージャーで作成される SQL Server 仮想マシンで Azure Key Vault 統合を使用する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: cd66dfb1-0e9b-4fb0-a471-9deaf4ab4ab8
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/23/2017
 ms.author: jroth
-ms.openlocfilehash: 2d24bb839368b4f7fff61f0696c79a00c03af917
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -55,6 +55,11 @@ AKV 統合はプロビジョニング時に有効にできます。または、�
 ![既存の VM 用の SQL AKV 統合を構成する](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
 
 終了したら、**[SQL Server の構成]** ブレードの下部にある **[OK]** ボタンをクリックして変更を保存します。
+
+> [!NOTE]
+> ここで作成した資格情報名は、後で SQL ログインにマップされます。 これにより、SQL ログインで Key Vault にアクセスできるようになります。 
+>
+>
 
 > [!NOTE]
 > テンプレートを使用して AKV 統合を構成することもできます。 詳細については、 [Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)に関するページをご覧ください。

@@ -1,11 +1,11 @@
 ---
-title: "REST での Azure Media Services テレメトリの構成 | Microsoft Docs"
-description: "この記事では、REST API を使用して Azure Media Services テレメトリを使用する方法について説明します。"
+title: REST での Azure Media Services テレメトリの構成 | Microsoft Docs
+description: この記事では、REST API を使用して Azure Media Services テレメトリを使用する方法について説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7d785c6eb9a9e16ae4853cded3c7c142080c7a09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abd093a0b8408e9dcffd4eb9765a767f78fd6fc1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST での Azure Media Services テレメトリの構成
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 - 通知エンドポイントを取得する
 - 監視するための通知エンドポイントを作成する 
 
-    通知エンドポイントを作成するには、EndPointType を AzureTable (2) に設定し、endPontAddress をストレージ テーブル (例: https://telemetryvalidationstore.table.core.windows.net/) に設定します。
+    通知エンドポイントを作成するには、EndPointType を AzureTable (2) に設定し、endPontAddress をストレージ テーブル (例: https://telemetryvalidationstore.table.core.windows.net/)) に設定します。
   
 - 監視構成を取得する
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
  
 ## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Media Services に関連付けられたストレージ アカウントを取得する
 
-###<a name="request"></a>要求
+### <a name="request"></a>要求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.13
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="get-the-notification-endpoints"></a>通知エンドポイントを取得する
 
-###<a name="request"></a>要求
+### <a name="request"></a>要求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     
-###<a name="response"></a>応答
+### <a name="response"></a>Response
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 20
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>監視するための通知エンドポイントを作成する
 
-###<a name="request"></a>要求
+### <a name="request"></a>要求
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -125,9 +125,9 @@ ms.lasthandoff: 10/11/2017
     }
 
 >[!NOTE]
->"https://telemetryvalidationstore.table.core.windows.net" 値は、必ず実際に使用するストレージ アカウントに変更してください。
+>必ず、"https://telemetryvalidationstore.table.core.windows.net" の値をご利用のストレージ アカウントに変更してください。
 
-###<a name="response"></a>応答
+### <a name="response"></a>Response
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -158,7 +158,7 @@ ms.lasthandoff: 10/11/2017
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-###<a name="response"></a>応答
+### <a name="response"></a>Response
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -200,7 +200,7 @@ ms.lasthandoff: 10/11/2017
        ]
     }
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -221,7 +221,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="stop-telemetry"></a>テレメトリを停止する
 
-###<a name="request"></a>要求
+### <a name="request"></a>要求
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.13
@@ -236,7 +236,7 @@ ms.lasthandoff: 10/11/2017
 
 テレメトリ情報の使用については、[こちら](media-services-telemetry-overview.md)のトピックを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
