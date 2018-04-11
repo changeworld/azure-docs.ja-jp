@@ -1,6 +1,6 @@
-﻿---
-title: "SQL Server 可用性グループ - Azure 仮想マシン - 前提条件 | Microsoft Docs"
-description: "このチュートリアルでは、Azure VM で SQL Server Always On 可用性グループを作成するための前提条件の構成方法について説明します。"
+---
+title: SQL Server 可用性グループ - Azure 仮想マシン - 前提条件 | Microsoft Docs
+description: このチュートリアルでは、Azure VM で SQL Server Always On 可用性グループを作成するための前提条件の構成方法について説明します。
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 85ad53f0b7b4b14784bb0755ee22763d124e63ba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2a0af65af068f3a78a08e46e0e42caefd87d7b1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -51,9 +51,9 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
    ![リソース グループ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. **[リソース グループ]** をクリックします。
 5. **Create** をクリックしてください。
-6. **[リソース グループ]** ブレードの **[リソース グループ名]** に、リソース グループの名前を入力します。 たとえば、「**sql-ha-rg**」と入力します。
+6. **[リソース グループ名]** には、リソース グループの名前を入力します。 たとえば、「**sql-ha-rg**」と入力します。
 7. Azure サブスクリプションが複数ある場合は、可用性グループの作成先にする Azure サブスクリプションを選択します。
-8. 場所を選択します。 場所とは、可用性グループを作成する Azure リージョンのことです。 このチュートリアルでは、すべてのリソースを Azure 上の 1 つの場所に構築します。
+8. 場所を選択します。 場所とは、可用性グループを作成する Azure リージョンのことです。 この記事では、すべてのリソースを 1 つの Azure の場所に作成します。
 9. **[ダッシュボードにピン留めする]** がオンになっていることを確認します。 これは、Azure ポータルのダッシュボードにリソース グループのショートカットを作成するためのオプションです。この設定は省略してもかまいません。
 
    ![リソース グループ](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
@@ -69,14 +69,14 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
 仮想ネットワークを作成するには、次の手順に従います。
 
-1. Azure Portal のリソース グループで、**[+ 追加]** をクリックします。 Azure の **[すべて]** ブレードが開きます。
+1. Azure Portal のリソース グループで、**[+ 追加]** をクリックします。 
 
    ![新しい項目](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/02-newiteminrg.png)
 2. 「 **仮想ネットワーク**」を検索します。
 
      ![仮想ネットワークの検索](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/04-findvirtualnetwork.png)
 3. **[仮想ネットワーク]**をクリックします。
-4. **[仮想ネットワーク]** ブレードで **[Resource Manager]** デプロイメント モデルをクリックし、**[作成]** をクリックします。
+4. **[仮想ネットワーク]** で **[Resource Manager]** デプロイ モデルをクリックし、**[作成]** をクリックします。
 
     次の表に、仮想ネットワークの設定を示します。
 
@@ -106,14 +106,14 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 1. ダッシュボードで、先ほど作成したリソース グループ ( **SQL-HA-RG**) をクリックします。 このリソース グループ内のネットワークを **[リソース]**から探します。
 
     **SQL-HA-RG** が表示されない場合は、**[リソース グループ]** をクリックし、リソース グループ名でフィルター処理を行ってください。
-2. リソースの一覧で **[autoHAVNET]** をクリックします。 ネットワークの構成ブレードが開きます。
-3. **autoHAVNET** 仮想ネットワーク ブレードの **[設定]** の下で **[サブネット]** をクリックします。
+2. リソースの一覧で **[autoHAVNET]** をクリックします。 
+3. **autoHAVNET** 仮想ネットワークの **[設定]** で、**[サブネット]** をクリックします。
 
     既に作成してあるサブネットに注目してください。
 
    ![仮想ネットワークの構成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. 2 つ目のサブネットを作成します。 **[+ サブネット]**をクリックします。
-6. **[サブネットの追加]** ブレードで、**[名前]** に「**sqlsubnet**」と入力してサブネットを構成します。 有効な **アドレス範囲**が Azure によって自動的に指定されます。 このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。 運用環境では、さらに多くのアドレスが必要になる場合があります。
+6. **[サブネットの追加]** で、**[名前]** に「**sqlsubnet**」と入力してサブネットを構成します。 有効な **アドレス範囲**が Azure によって自動的に指定されます。 このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。 運用環境では、さらに多くのアドレスが必要になる場合があります。
 7. **[OK]**をクリックします。
 
     ![仮想ネットワークの構成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
@@ -134,7 +134,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
 ## <a name="create-availability-sets"></a>可用性セットを作成する
 
-仮想マシンを作成する前に、可用性セットを作成する必要があります。 可用性セットにより、計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムを短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 詳細については、[仮想マシンの可用性の管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+仮想マシンを作成する前に、可用性セットを作成する必要があります。 可用性セットにより、計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムを短縮できます。 Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。 可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。 一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。 詳しくは、[仮想マシンの可用性の管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 可用性セットは 2 つ必要です。 1 つ目はドメイン コントローラー用です。 2 つ目は SQL Server VM 用です。
 
@@ -157,9 +157,9 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>ドメイン コントローラーに使用する仮想マシンの作成
 ドメイン コントローラーを作成して構成するために、 **SQL-HA-RG** リソース グループに戻ります。
 
-1. **[追加]**をクリックします。 **[すべて]** ブレードが開きます。
+1. **[追加]**をクリックします。 
 2. 「**Windows Server 2016 Datacenter**」と入力します。
-3. **[Windows Server 2016 Datacenter]** をクリックします。 **[Windows Server 2016 Datacenter]** ブレードでデプロイメント モデルが **[Resource Manager]** に設定されていることを確認し、**[作成]** をクリックします。 **[仮想マシンの作成]** ブレードが開きます。
+3. **[Windows Server 2016 Datacenter]** をクリックします。 **[Windows Server 2016 Datacenter]** でデプロイメント モデルが **[Resource Manager]** に設定されていることを確認し、**[作成]** をクリックします。 
 
 前の手順を繰り返して、2 つの仮想マシンを作成します。 2 つの仮想マシンには、次のように名前を付けます。
 
@@ -202,7 +202,7 @@ Azure で仮想マシンが作成されます。
 ### <a name="configure-the-domain-controller"></a>ドメイン コントローラーの構成
 次の手順では、 **ad-primary-dc** マシンを corp.contoso.com のドメイン コントローラーとして構成します。
 
-1. ポータルで **SQL-HA-RG** リソース グループを開き、**ad-primary-dc** マシンを選択します。 **[ad-primary-dc]** ブレードで **[接続]** をクリックし、リモート デスクトップ アクセス用の RDP ファイルを開きます。
+1. ポータルで **SQL-HA-RG** リソース グループを開き、**ad-primary-dc** マシンを選択します。 **ad-primary-dc** の **[接続]** をクリックして、リモート デスクトップ アクセス用の RDP ファイルを開きます。
 
     ![仮想マシンへの接続](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
 2. 構成した管理者アカウント (**\DomainAdmin**) とパスワード (**Contoso!0000**) を使用してサインインします。
@@ -246,7 +246,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 2. プライマリ ドメイン コントローラーをクリックします。
 
-3. プライマリ ドメイン コントローラーのブレードで、**[ネットワーク インターフェイス]** をクリックします。
+3. プライマリ ドメイン コントローラーで、**[ネットワーク インターフェイス]** をクリックします。
 
 ![ネットワーク インターフェイス](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/25-primarydcip.png)
 
@@ -266,7 +266,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 ### <a name="configure-the-second-domain-controller"></a>2 番目のドメイン コントローラーの構成
 プライマリ ドメイン コントローラーの再起動後、2 つ目のドメイン コントローラーの構成を行うことができます。 これは高可用性を確保するための任意の手順です。 次の手順に従って 2 つ目のドメイン コントローラーを構成します。
 
-1. ポータルで **SQL-HA-RG** リソース グループを開き、**ad-secondary-dc** マシンを選択します。 **[ad-secondary-dc]** ブレードで **[接続]** をクリックし、リモート デスクトップ アクセス用の RDP ファイルを開きます。
+1. ポータルで **SQL-HA-RG** リソース グループを開き、**ad-secondary-dc** マシンを選択します。 **ad-secondary-dc** の **[接続]** をクリックして、リモート デスクトップ アクセス用の RDP ファイルを開きます。
 2. 構成した管理者アカウント (**BUILTIN\DomainAdmin**) とパスワード (**Contoso!0000**) を使用して、VM にサインインします。
 3. 優先 DNS サーバーのアドレスをドメイン コントローラーのアドレスに変更します。
 4. **[ネットワークと共有センター]** でネットワーク インターフェイスをクリックします。
@@ -305,7 +305,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 ### <a name="add-the-private-ip-address-to-the-second-domain-controller-to-the-vpn-dns-server"></a>VPN DNS サーバーの 2 番目のドメイン コント ローラーにプライベート IP アドレスを追加する
 
-Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン コント ローラーの IP アドレスを含めるように DNS サーバーを変更します。 これにより、DNS サービスの冗長性が可能になります。
+Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン コント ローラーの IP アドレスを含めるように DNS サーバーを変更します。 この設定により、DNS サービスの冗長性が可能になります。
 
 ### <a name=DomainAccounts></a> ドメイン アカウントの構成
 
@@ -358,7 +358,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 * **ネットワーク: 運用中のプライベート IP アドレス**
 
-   このチュートリアルでは、仮想マシンにパブリック IP アドレスを使用します。 これにより、インターネット経由で仮想マシンに直接リモート接続できるため、構成手順が簡素化されます。 運用環境では、SQL Server インスタンス VM リソースの脆弱性の範囲を縮小するため、プライベート IP アドレスのみを使用することをお勧めします。
+   このチュートリアルでは、仮想マシンにパブリック IP アドレスを使用します。 パブリック IP アドレスを使うと、インターネット経由で仮想マシンに直接リモート接続できるため、構成手順が簡素化されます。 運用環境では、SQL Server インスタンス VM リソースの脆弱性の範囲を縮小するため、プライベート IP アドレスのみを使用することをお勧めします。
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>SQL Server VM の作成と構成
 次に、2 つの SQL Server VM と追加のクラスター ノード用 VM の 1 つで合計 3 つの VM を作成します。 それぞれの VM を作成するには、**SQL-HA-RG** リソース グループに戻って **[追加]** をクリックし、適切なギャラリー アイテム (**仮想マシン**) を検索して、**[ギャラリーから]** をクリックします。 次の表の情報を使用すると、VM の作成に役立ちます。
@@ -493,6 +493,36 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 2 つ目の SQL Server VM についても同じ手順を繰り返します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="configure-system-account-permissions"></a>システム アカウントのアクセス許可を構成する
+
+システム アカウント用のアカウントを作成し、適切なアクセス許可を付与するには、各 SQL Server インスタンスで次の手順を実行します。
+
+1. 各 SQL Server インスタンスで、`[NT AUTHORITY\SYSTEM]` 用のアカウントを作成します。 次のスクリプトはこのアカウントを作成します。
+
+   ```sql
+   USE [master]
+   GO
+   CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS WITH DEFAULT_DATABASE=[master]
+   GO 
+   ```
+
+1. 各 SQL Server インスタンスで、次のアクセス許可を `[NT AUTHORITY\SYSTEM]` に付与します。
+
+   - `ALTER ANY AVAILABILITY GROUP`
+   - `CONNECT SQL`
+   - `VIEW SERVER STATE`
+
+   次のスクリプトは、これらのアクセス許可を付与します。
+
+   ```sql
+   GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM]
+   GO
+   GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM]
+   GO 
+   ```
+
+## <a name="next-steps"></a>次の手順
 
 * [Azure 仮想マシンで SQL Server Always On 可用性グループを作成する](virtual-machines-windows-portal-sql-availability-group-tutorial.md)

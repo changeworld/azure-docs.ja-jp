@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの FileUpload UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Common.FileUpload UI 要素について説明します。"
+title: Azure の FileUpload UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Common.FileUpload UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 095880322ba801895a22efcf3476fa37d9e2ac3c
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bfde11a189348472942248a6b90fd5ef1b5a1c89
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 要素
-アップロードするファイルを 1 つまたは複数指定できるコントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+アップロードするファイルを 1 つまたは複数指定できるコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
@@ -90,7 +90,6 @@ options.multiple が true で options.uploadMode が url である場合、出�
 CreateUiDefinition をテストする際、一部のブラウザー (Google Chrome など) では、Microsoft.Common.FileUpload 要素によって生成された URL がブラウザー コンソールで切り詰められます。 完全な URL をコピーするには、個々のリンクを右クリックしなければならない場合があります。
 
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

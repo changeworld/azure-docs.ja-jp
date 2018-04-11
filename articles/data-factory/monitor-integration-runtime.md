@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory の統合ランタイムを監視する | Microsoft Docs"
-description: "Azure Data Factory のさまざまな種類の統合ランタイムを監視する方法について説明します。"
+title: Azure Data Factory の統合ランタイムを監視する | Microsoft Docs
+description: Azure Data Factory のさまざまな種類の統合ランタイムを監視する方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 74a4ad6438f9e66331f76e87d20d1eb8b29e8451
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する  
 **統合ランタイム**は、異なるネットワーク環境間のさまざまなデータ統合機能を提供するために Azure Data Factory によって使われるコンピューティング インフラストラクチャです。 3 種類の統合ランタイムが Data Factory によって提供されています。
@@ -162,10 +162,10 @@ Azure-SSIS 統合ランタイムは、SSIS パッケージ実行専用の Azure 
 | NodeSize | Azure-SSIS 統合ランタイムの各ノードのサイズです。 |
 | NodeCount | Azure-SSIS 統合ランタイムのノードの数です。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 統合ランタイムのノードごとの並列実行の数です。 |
-| CatalogServerEndpoint | SSISDB をホストするための既存の Azure SQL Database/マネージ インスタンス サーバーのエンドポイントです。 |
-| CatalogAdminUserName | 既存の Azure SQL Database/マネージ インスタンス サーバーの管理者のユーザー名です。 データ ファクトリ サービスはこの情報を使って、自動的に SSISDB を準備および管理します。 |
-| CatalogAdminPassword | 既存の Azure SQL Database/マネージ インスタンス サーバーの管理者のパスワードです。 |
-| CatalogPricingTier | 既存の Azure SQL Database サーバーによってホストされている SSISDB の価格レベルです。  Azure SQL マネージ インスタンスがホストする SSISDB には適用されません。 |
+| CatalogServerEndpoint | SSISDB をホストするための既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーのエンドポイントです。 |
+| CatalogAdminUserName | 既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーの管理者のユーザー名です。 データ ファクトリ サービスはこの情報を使って、自動的に SSISDB を準備および管理します。 |
+| CatalogAdminPassword | 既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーの管理者のパスワードです。 |
+| CatalogPricingTier | 既存の Azure SQL Database サーバーによってホストされている SSISDB の価格レベルです。  Azure SQL マネージ インスタンス (プレビュー) がホストする SSISDB には適用されません。 |
 | VNetId | Azure-SSIS 統合ランタイムが参加する仮想ネットワーク (VNet) のリソース ID です。 |
 | サブネット | Azure-SSIS 統合ランタイムが参加するサブネット名です。 |
 | ID | Azure-SSIS 統合ランタイムのリソース ID です。 |
@@ -199,7 +199,7 @@ Azure-SSIS 統合ランタイムについて詳しくは、以下の記事をご
 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL Database を使って SSIS カタログをホストする手順が説明されています。 
-- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プライベート プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md):  この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
 - [Azure-SSIS IR を VNet に参加させる](join-azure-ssis-integration-runtime-virtual-network.md):  この記事では、Azure 仮想ネットワーク (VNet) への Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が VNet に参加できるように Azure Portal を使って VNet を構成する手順も説明されています。 
 

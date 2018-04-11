@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights のカスタム メトリックと診断を使用した Live Metrics Stream | Microsoft Docs"
-description: "カスタム メトリックを使用して Web アプリをリアルタイムで監視し、エラー、トレース、イベントのライブ フィードを使用して問題を診断します。"
+title: Azure Application Insights のカスタム メトリックと診断を使用した Live Metrics Stream | Microsoft Docs
+description: カスタム メトリックを使用して Web アプリをリアルタイムで監視し、エラー、トレース、イベントのライブ フィードを使用して問題を診断します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 866fc729b3167863c2d423d0e6ac0d7640e3425e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f0338642ab99af2fd5ec4f6432bbb8d626daea29
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断 
 
@@ -115,12 +115,15 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 ![API キーの作成](./media/app-insights-live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>API キーを構成に追加する
+
+# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+
 applicationinsights.config ファイルで、AuthenticationApiKey を QuickPulseTelemetryModule に追加します。
 ``` XML
 
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
-</Add> 
+</Add>
 
 ```
 または、コードで QuickPulseTelemetryModule に API キーを設定します。
@@ -130,6 +133,34 @@ applicationinsights.config ファイルで、AuthenticationApiKey を QuickPulse
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
+# <a name="net-core-tabnet-core"></a>[.NET Core] (#tab/.net-core)
+
+startup.cs ファイルを次のように変更します。
+
+最初に以下を追加します。
+
+``` C#
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.ApplicationInsights.Extensibility;
+```
+
+次に、Configure メソッドに以下を追加します。
+
+``` C#
+  QuickPulseTelemetryModule dep;
+            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
+            foreach (var module in modules)
+            {
+                if (module is QuickPulseTelemetryModule)
+                {
+                    dep = module as QuickPulseTelemetryModule;
+                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+                    dep.Initialize(TelemetryConfiguration.Active);
+                }
+            }
+```
+
+---
 
 ただし、接続されているすべてのサーバーを認識し、信頼している場合は、認証済みチャネルなしにカスタム フィルターを試すことができます。 このオプションは 6 か月間使用できます。 この上書きは、新しいセッションごとに 1 回、または新しいサーバーがオンラインになったときに必要になります。
 
@@ -154,7 +185,7 @@ applicationinsights.config ファイルで、AuthenticationApiKey を QuickPulse
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Application Insights による使用状況の監視](app-insights-web-track-usage.md)
 * [診断検索の使用](app-insights-diagnostic-search.md)
 * [プロファイラー](app-insights-profiler.md)

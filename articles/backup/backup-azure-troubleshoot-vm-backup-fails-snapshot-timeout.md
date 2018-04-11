@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -78,21 +78,6 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 4:[ スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 5:[ バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
 **原因 6:[ リソース グループのロックが原因で、Backup サービスに古い復元ポイントを削除するためのアクセス許可がない](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
-
-## <a name="disk-configuration-is-not-supported"></a>ディスク構成がサポートされていない
-
-エラー メッセージ: "The specified Disk configuration is not supported (指定されたディスク構成はサポートされていません)"
-
-> [!NOTE]
-> 1 TB を超えるディスクが存在する VM のバックアップをサポートするためのプライベート プレビューがあります。 詳細については、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページを参照してください。
->
->
-
-現在 Azure Backup は [1,023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスクをサポートしていません。 ディスク サイズが 1 TB を超える場合は、次の手順を実行してください。  
-1. 1 TB 未満の[新しいディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)します。  
-2. 1 TB を超えるディスクから、新しく作成した 1 TB 未満のディスクにデータをコピーします。  
-3. データがすべてコピー済みであることを確認します。 その後、1 TB を超えるディスクを取り外します。  
-4. バックアップを開始します。
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
 

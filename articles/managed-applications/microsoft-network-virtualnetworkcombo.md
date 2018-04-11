@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの VirtualNetworkCombo UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Network.VirtualNetworkCombo UI 要素について説明します。"
+title: Azure の VirtualNetworkCombo UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Network.VirtualNetworkCombo UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: c17ef740dcc709b5b344c4e60ef997a948b2e5de
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 38202b3b669a162f1cdbe88663d050d8d791c964
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 要素
-新規または既存の仮想ネットワークを選択するコントロールのグループです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+新規または既存の仮想ネットワークを選択するコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
@@ -114,7 +114,6 @@ ms.lasthandoff: 10/27/2017
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -375,27 +375,13 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. 仮想マシンが含まれている Azure リソース グループに戻り、新しいロード バランサーを探します。 リソース グループの表示を更新する必要がある場合があります。 ロード バランサーをクリックします。
 
-1. [ロード バランサー] ブレードで **[バックエンド プール]** をクリックします。
+1. **[バックエンド プール]** をクリックし、**[+ 追加]** をクリックしてバックエンド プールを追加します。
 
-1. **[+ 追加]** をクリックして、バックエンド プールを追加します。
+1. VM を含む可用性セットにバックエンド プールを関連付けます。
 
-1. バックエンド プールの名前を入力します。
+1. **[ターゲット ネットワーク IP 構成]** で、**[仮想マシン]** をオンにして、クラスター ノードとして参加する仮想マシンを選びます。 必ず、FCI をホストするすべての仮想マシンを含めます。 
 
-1. **[+ 仮想マシンの追加]** をクリックします。
-
-1. **[仮想マシンの選択]** ブレードで **[可用性セットの選択]** をクリックします。
-
-1. SQL Server 仮想マシンを配置した可用性セットを選択します。
-
-1. **[仮想マシンの選択]** ブレードで、**[仮想マシンの選択]** をクリックします。
-
-   Azure Portal は、次の図のように表示されます。
-
-   ![CreateLoadBalancerBackEnd](./media/virtual-machines-windows-portal-sql-create-failover-cluster/33-load-balancer-back-end.png)
-
-1. **[仮想マシンの選択]** ブレードで **[選択]** をクリックします。
-
-1. **[OK]** を 2 回クリックします。
+1. **[OK]** をクリックして、バックエンド プールを作成します。
 
 ### <a name="configure-a-load-balancer-health-probe"></a>ロード バランサーの正常性プローブを構成する
 

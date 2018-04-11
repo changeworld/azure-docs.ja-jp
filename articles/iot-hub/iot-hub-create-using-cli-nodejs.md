@@ -3,7 +3,7 @@ title: Azure CLI (azure.js) を使用した IoT ハブの作成 | Microsoft Docs
 description: クロスプラットフォームの Azure CLI (azure.js) を使用して Azure IoT ハブを作成する方法。
 services: iot-hub
 documentationcenter: .net
-author: BeatriceOltean
+author: kgremban
 manager: timlt
 editor: ''
 ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
-ms.author: boltean
-ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/01/2018
+ms.author: kgremban
+ms.openlocfilehash: 7e761ba66f4b28dd7cc59dc8998c23810dd2b7d1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -90,8 +90,8 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **resource-group**。 リソース グループ名。 形式は、英数字 (大文字と小文字を区別しない)、アンダー スコア、ハイフン、長さが 1 ~ 64 です。
 * **name**。 作成する IoT Hub の名前。 形式は、英数字 (大文字と小文字を区別しない)、ハイフン、長さが 3 ~ 50 です。
 * **location**。 IoT Hub をプロビジョニングする場所 (Azure リージョン/データ センター)。
-* **sku-name**。 SKU の名前。次のいずれかから選択: [F1, S1, S2, S3]。 最新の完全な一覧については、IoT Hub の料金に関するページを参照してください。
-* **units**。 プロビジョニングしたユニットの数。 範囲は: F1 [1-1] : S1, S2 [1-200] : S3 [1-10]。 IoT Hub 単位は、メッセージの合計数と接続するデバイスの数に基づきます。
+* **sku-name**。 SKU の名前。次のいずれかから選択: [F1, S1, S2, S3]。 各 SKU について詳しくは、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」をご覧ください。 現時点では、Basic レベルはポータルからのみ利用できます。 
+* **units**。 プロビジョニングしたユニットの数。 ユニットの制限について詳しくは、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」をご覧ください。
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 

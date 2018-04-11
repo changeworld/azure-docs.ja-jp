@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher を使用したネットワーク セキュリティ グループのフロー ログの管理 | Microsoft Docs"
-description: "このページでは、Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。"
+title: Azure Network Watcher を使用したネットワーク セキュリティ グループのフロー ログの管理 | Microsoft Docs
+description: このページでは、Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 633543aba99f5c09b14a9e4b11adf59ca04d0fe5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Azure Portal におけるネットワーク セキュリティ グループのフロー ログの管理
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
@@ -38,7 +38,10 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher のインスタンスの作成](network-watcher-create.md)に関する記事の手順を実施済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを所有していることも前提としています。
+この記事の手順を行うには、次のリソースが既にある必要があります。
+
+- 既存の Network Watcher。 Network Watcher を作成するには、「[Azure Network Watcher のインスタンスの作成](network-watcher-create.md)」をご覧ください。
+- 有効な仮想マシンを含む既存のリソース グループ。 仮想マシンがない場合は、[Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) での仮想マシンの作成方法をご覧ください。
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 
@@ -68,7 +71,7 @@ Network Watcher インスタンスに移動し、**[NSG フロー ログ]** を�
 
 ### <a name="step-3"></a>手順 3. 
 
-**[フローのログ設定]** ブレードで、状態を **[オン]** に設定し、ストレージ アカウントを構成します。  終了したら、**[OK]** を選択します。 次に、**[保存]** を選択します。
+**[フローのログ設定]** ブレードで、状態を **[オン]** に設定し、ストレージ アカウントを構成します。 ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選ばれている既存のストレージ アカウントを選びます。 ストレージ アカウントを選んだ後、**[OK]** を選び、**[保存]** を選びます。
 
 ![フロー ログの概要][3]
 
@@ -96,7 +99,7 @@ Network Watcher インスタンスに移動し、**[NSG フロー ログ]** を�
 
 ログの構造については、[ネットワーク セキュリティ グループのフロー ログの概要](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Power BI を使用して、NSG フロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-power-bi.md)方法を確認します。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher の概要 | Microsoft Docs"
-description: "このページでは、Azure のネットワークに接続されたリソースを監視および視覚化する Network Watcher サービスの概要を示します。"
+title: Azure Network Watcher の概要 | Microsoft Docs
+description: このページでは、Azure のネットワークに接続されたリソースを監視および視覚化する Network Watcher サービスの概要を示します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure のネットワーク監視の概要
 
@@ -47,6 +47,7 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 * **[ネットワーク サブスクリプションの制限](#network-subscription-limits)** - ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
 * **[診断ログの構成](#diagnostic-logs)** – 1 つのペインで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
 * **[接続のトラブルシューティング](network-watcher-connectivity-overview.md)** - 仮想マシンから、Azure のコンテキストで拡充された指定のエンドポイントまでの直接の TCP 接続が確立されたかどうかを確認します。
+* **[接続モニター](connection-monitor.md)**  - 発信元と宛先の IP アドレスとポートを使って、Azure 仮想マシンと IP アドレスの間の待機時間と構成の問題を監視します。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Network Watcher におけるロールベースのアクセス制御 (RBAC)
 

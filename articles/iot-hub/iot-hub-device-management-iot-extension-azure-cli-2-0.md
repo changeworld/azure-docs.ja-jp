@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT デバイス管理 | Microsoft Docs"
-description: "Azure IoT Hub デバイス管理用の Azure CLI 2.0 向けの IoT 拡張機能を使用します。このツールでは、ダイレクト メソッドとデバイス ツインの必要なプロパティを管理するためのオプションを使用できます。"
+title: Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT デバイス管理 | Microsoft Docs
+description: Azure IoT Hub デバイス管理用の Azure CLI 2.0 向けの IoT 拡張機能を使用します。このツールでは、ダイレクト メソッドとデバイス ツインの必要なプロパティを管理するためのオプションを使用できます。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: chrissie926
 manager: timlt
-tags: 
-keywords: "Azure IoT デバイス管理, Azure IoT Hubデバイス管理, デバイス管理 IoT, IoT Hub デバイス管理"
+tags: ''
+keywords: Azure IoT デバイス管理, Azure IoT Hubデバイス管理, デバイス管理 IoT, IoT Hub デバイス管理
 ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 07b9f14048b6618863efd5bd8eb8bcc8f52ec735
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ceace7331c7548c5b4e27f8529152fd69d5469cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -27,7 +27,9 @@ ms.lasthandoff: 03/09/2018
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure CLI 2.0 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、Azure Resource Manager と管理エンドポイントと対話するためのコマンドを含む [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) の機能に追加される新しいオープン ソースの IoT 拡張機能です。 Azure CLI 2.0 には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI 2.0 を使用して Azure VM または IoT Hub を作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
+[Azure CLI 2.0 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は新しいオープン ソースの IoT 拡張機能であり、[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) の機能に追加されます。 Azure CLI 2.0 には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI 2.0 を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 | 管理オプション          | タスク                                                                                                                            |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -39,8 +41,7 @@ ms.lasthandoff: 03/09/2018
 
 これらのオプションの相違点の詳細な説明と使用するためのガイダンスについては、「[device-to-cloud 通信に関するガイダンス](iot-hub-devguide-d2c-guidance.md)」と「[cloud-to-device 通信に関するガイダンス](iot-hub-devguide-c2d-guidance.md)」を参照してください。
 
-> [!NOTE]
-> デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
+デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
 
 ## <a name="what-you-learn"></a>学習内容
 

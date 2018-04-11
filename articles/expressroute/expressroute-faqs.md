@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 03/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -70,11 +70,12 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 * Power BI
 * Dynamics 365 for Finance and Operations (旧称 Dynamics AX Online)
-* 以下のいくつかの例外を除く、ほとんどの Azure サービス
-  * CDN
-  * Visual Studio Team Services のロード テスト
-  * Multi-factor Authentication
-  * Traffic Manager
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>
+  以下のサービスはサポートされていません。
+    * CDN
+    * Visual Studio Team Services のロード テスト
+    * Multi-factor Authentication
+    * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 
@@ -87,7 +88,8 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 * [ルート フィルター](#route-filters-for-microsoft-peering)を使用して、Microsoft ピアリングで同じパブリック サービスへのアクセスを取得します。
   * Power BI
   * Dynamics 365 for Finance and Operations
-  * 以下のいくつかの例外を除く、ほとんどの Azure サービス
+  * ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>
+  以下のサービスはサポートされていません。
     * CDN
     * Visual Studio Team Services のロード テスト
     * Multi-factor Authentication
@@ -214,7 +216,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>仮想ネットワークで ExpressRoute ゲートウェイに関連付けられているパブリック IP アドレスが存在するのはなぜですか。
 
-パブリック IP アドレスは内部管理でのみ使用されます。 このパブリック IP アドレスはインターネットには公開されず、仮想ネットワークのセキュリティを損なうものではありません。
+パブリック IP アドレスは内部管理にのみ使われ、仮想ネットワークのセキュリティを損なうことはありません。
 
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>ExpressRoute を経由して Azure Storage に接続するには何が必要ですか。
 

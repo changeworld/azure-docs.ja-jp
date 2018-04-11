@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights for ASP.NET Core
 
@@ -95,7 +95,7 @@ Application Insights は非常に低オーバーヘッドです。 Application I
 
 1. IIS Express をクリックしてアプリを実行します ![Visual Studio IIS Express アイコンのスクリーンショット](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. ブラウザーのアドレス バーから URL をコピーします。 これは、http://localhost:{ランダムなポート番号} という形式になります
+2. ブラウザーのアドレス バーから URL をコピーします。 これは、http://localhost:{random port number} という形式になります
 
    ![ブラウザーの URL アドレス バーのスクリーンショット](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -159,7 +159,7 @@ Visual Studio から、**[プロジェクト]** > **[NuGet パッケージの管
    ```
      ![_ViewImports.cshtml へのコード変更のスクリーンショット](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. **Layout.cshtml** で、``</head>`` タグの前 (他のどのスクリプトよりも前) に下記の行を追加します。
+3. **_Layout.cshtml** で、``</head>`` タグの前 (他のどのスクリプトよりも前) に下記の行を追加します。
 
     ```C#
     @Html.Raw(snippet.FullScript)

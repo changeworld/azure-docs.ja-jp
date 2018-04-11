@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/29/2018
 * 正しい AI リソースを見ていますか? アプリケーションの iKey を、テレメトリが必要なリソースに一致させてください。 これらが同じである必要があります。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>予期しているデータがすべて表示されません
-* [Quotas and Pricing (クォータと価格)] ブレードを開き、[サンプリング](app-insights-sampling.md)が実行中かどうかを確認します  (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。 
+* [使用量と推定コスト] ページを開き、[サンプリング](app-insights-sampling.md)が動作中かどうかを確認します  (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。 
 * SDK サンプリングを有効にしていますか? 有効にしている場合、該当するすべての型について、指定したレートでデータがサンプリングされます。
 * 古いバージョンの Java SDK を実行していませんか? バージョン 2.0.1 以降に、ローカル ドライブでのデータ永続化だけでなく、ネットワークやバックエンドの断続的障害に対処できるように、フォールト トレランスのメカニズムを導入しました。
 * テレメトリが過度になるという理由から、調整を行っていますか? 情報のログ記録を有効にしている場合は、"アプリが調整されました" というログ メッセージが表示されます。 現在の制限は、32,000 テレメトリ項目/秒です。

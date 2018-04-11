@@ -4,7 +4,7 @@ description: Resource Manager で作成されて異なる Azure サブスクリ�
 services: virtual-network
 documentationcenter: ''
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: e4ca1f62be8185dd7e0e45f6736bc0273b466309
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 92cbcad42508f2ae6113d13449aba7eed5acd251
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション 
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/28/2018
 
 クラシック デプロイメント モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイメント モデルで作成された仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。 
 
-このチュートリアルでは同じリージョンで複数の仮想ネットワークをピアリングします。 異なるリージョンの複数の仮想ネットワークをピアリングする機能は、現在プレビュー段階です。 [グローバル 仮想ネットワーク ピアリング への登録](#register)の手順を実行してから、異なるリージョンの仮想ネットワークのピアリングを試みます。その登録手順を実行しなければ、ピアリングは失敗します。 Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用して異なるリージョンの仮想ネットワークに接続する機能は一般公開されており、登録は不要です。
+このチュートリアルでは同じリージョンで複数の仮想ネットワークをピアリングします。 異なる[サポート対象リージョン](virtual-network-manage-peering.md#cross-region)間での仮想ネットワーク ピアリングも可能です。 
 
 仮想ネットワーク ピアリングは、[Azure Portal](#portal)、Azure [コマンド ライン インターフェイス](#cli) (CLI)、Azure [PowerShell](#powershell)、[Azure Resource Manager テンプレート](#template)のいずれかを使って作成できます。 いずれかのリンクをクリックすると、そのツールを使って仮想ネットワーク ピアリングを作成するための手順に直接移動します。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/28/2018
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、ポータルからログアウトする手順と、他のユーザーのアクセス許可を仮想ネットワークに割り当てる手順はスキップできます。
 
-1. [Azure Portal](https://portal.azure.com) に UserA としてログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
+1. [Azure Portal](https://portal.azure.com) に UserA としてログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 2. **[+ 新規]**、**[ネットワーキング]**、**[仮想ネットワーク]** の順にクリックします。
 3. **[仮想ネットワークの作成]** ブレードで、次の設定の値を入力するか選択し、**[作成]** をクリックします。
     - **[名前]**: *myVnetA*
@@ -106,7 +106,7 @@ ms.lasthandoff: 03/28/2018
 
 CLI とその依存関係をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** をクリックすると Cloud Shell が開き、Azure アカウントでログインできます。 
 
-1. CLI セッションを開き、`azure login` コマンドを使って UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
+1. CLI セッションを開き、`azure login` コマンドを使って UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 2. PC で次のスクリプトをテキスト エディターにコピーし、`<SubscriptionA-Id>` を SubscriptionA の ID に置き換えた後、変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 サブスクリプション ID がわからない場合は、"az account show" コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。
 
     ```azurecli-interactive
@@ -129,7 +129,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       --scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
     
-3. `az logout` コマンドを使って UserA として Azure からログアウトした後、UserB として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
+3. `az logout` コマンドを使って UserA として Azure からログアウトした後、UserB として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 4. myVnetB を作成します。 PC で、手順 2 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionB の ID に置き換えます。 10.0.0.0/16 を 10.1.0.0/16 に、すべての A を B に、すべての B を A に変更します。変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 
 5. UserB として Azure をログアウトし、UserA として Azure にログインします。
 6. myVnetA から myVnetB への仮想ネットワーク ピアリングを作成します。 PC で次のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionB-Id>` を SubscriptionB の ID に置き換えます。 スクリプトを実行するには、変更後のスクリプトをコピーし、CLI セッションに貼り付けて、Enter キーを押します。
@@ -179,7 +179,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 1. PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 2. PowerShell セッションを開始します。
-3. PowerShell で、`login-azurermaccount` コマンドを入力して UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
+3. PowerShell で、`login-azurermaccount` コマンドを入力して UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 4. リソース グループと仮想ネットワーク A を作成します。PC で、次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionA の ID に置き換えます。 サブスクリプション ID がわからない場合は、`Get-AzureRmSubscription` コマンドを入力して表示します。 返された出力の **id** の値がサブスクリプション ID です。 スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
 
     ```powershell
@@ -202,7 +202,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
 
-5. Azure から UserA をログアウトし、UserB でログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
+5. Azure から UserA をログアウトし、UserB でログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 6. PC で、手順 4 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を、サブスクリプション B の ID に置き換えます。10.0.0.0/16 を 10.1.0.0/16 に変更します。 すべての A を B に、すべての B を A に変更します。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
 7. Azure から UserB をログアウトし、UserA でログインします。
 8. myVnetA から myVnetB へのピアリングを作成します。 PC で次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionB-Id>` を、サブスクリプション B の ID に置き換えます。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
@@ -241,7 +241,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 ## <a name="template"></a>ピアリングの作成 - Resource Manager テンプレート
 
-1. 仮想ネットワークを作成し、適切な[アクセス許可](#permissions)を各サブスクリプションのアカウントに割り当てるには、この記事の[ポータル](#portal)、[Azure CLI](#cli)、または [PowerShell](#powershell) のセクションの手順を完了します。
+1. 仮想ネットワークを作成し、適切な[アクセス許可](virtual-network-manage-peering.md#permissions)を割り当てるには、この記事の[ポータル](#portal)、[Azure CLI](#cli)、または [PowerShell](#powershell) のセクションの手順を完了します。
 2. 次のテキストをローカル コンピューター上のファイルに保存します。 `<subscription ID>` は、UserA のサブスクリプション ID で置き換えてください。 たとえば、このファイルを vnetpeeringA.json として保存します。
 
     ```json
@@ -279,17 +279,6 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 5. 再び手順 3. を行います。ここでは Azure に UserB としてログインします。
 6. **(省略可)** このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 7. **(省略可)** このチュートリアルで作成したリソースを削除するには、Azure Portal、PowerShell、Azure CLI のいずれかを使って、この記事の「[リソースの削除](#delete)」セクションの手順を実行してください。
-
-## <a name="permissions"></a>アクセス許可
-
-仮想ネットワーク ピアリングの作成に使用するアカウントには、必要なロールまたはアクセス許可が割り当てられている必要があります。 たとえば、**myVnetA** と **myVnetB** という名前の 2 つの仮想ネットワークをピアリングする場合、各仮想ネットワークに対する次の最小限のロールまたはアクセス許可をアカウントに割り当てる必要があります。
-    
-|Virtual Network|役割|アクセス許可|
-|---|---|---|
-|myVnetA|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-|myVnetB|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-
-[組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
 
 ## <a name="delete"></a>リソースの削除
 このチュートリアルが完了したら、使用料がかからないように、チュートリアルで作成したリソースを削除することをお勧めします。 リソース グループを削除すると、リソース グループ内にあるリソースもすべて削除されます。
@@ -331,54 +320,6 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
     ```powershell
     Remove-AzureRmResourceGroup -Name myResourceGroupB -force
     ```
-
-## <a name="register"></a>グローバル仮想ネットワーク ピアリング プレビューへの登録
-
-同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン内の複数の仮想ネットワークのピアリングは、現在プレビュー段階です。 使用可能なリージョンについては、[仮想ネットワークの更新情報](https://azure.microsoft.com/en-us/updates/?product=virtual-network)を参照してください。 リージョン間で仮想ネットワークをピアリングするには、まずプレビューに登録する必要があります。登録には Azure PowerShell または Azure CLI を使用して、(ピアリングする各仮想ネットワークがあるサブスクリプション内で) 次の手順を実行します。
-
-### <a name="powershell"></a>PowerShell
-
-1. PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
-2. PowerShell セッションを開始し、`Login-AzureRmAccount` コマンドを使用して Azure にログインします。
-3. 次のコマンドを入力して、ピアリングする各仮想ネットワークがあるサブスクリプションをプレビューに登録します。
-
-    ```powershell
-    Register-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    
-    Register-AzureRmResourceProvider `
-      -ProviderNamespace Microsoft.Network
-    ```
-4. 次のコマンドを入力して、プレビューに登録されていることを確認します。
-
-    ```powershell    
-    Get-AzureRmProviderFeature `
-      -FeatureName AllowGlobalVnetPeering `
-      -ProviderNamespace Microsoft.Network
-    ```
-
-    前のコマンドを入力した後に表示される **RegistrationState** の出力が両方のサブスクリプションに対して **Registered** になるまで、この記事の Portal、Azure CLI、PowerShell または Resource Manager テンプレート セクションの手順を実行しないでください。
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. [Azure CLI のインストールと構成](/cli/azure/install-azure-cli?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)
-2. `az --version` コマンドを入力して、使用している Azure CLI のバージョンが 2.0.18 以降であることを確認してください。 そうでない場合は、最新バージョンをインストールします。
-3. `az login` コマンドを使用して Azure にログインします。
-4. 次のコマンドを入力して、プレビューに登録します。
-
-   ```azurecli-interactive
-   az feature register --name AllowGlobalVnetPeering --namespace Microsoft.Network
-   az provider register --name Microsoft.Network
-   ```
-
-5. 次のコマンドを入力して、プレビューに登録されていることを確認します。
-
-    ```azurecli-interactive
-    az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
-    ```
-
-    前のコマンドを入力した後に表示される **RegistrationState** の出力が両方のサブスクリプションに対して **Registered** になるまで、この記事の Portal、Azure CLI、PowerShell または Resource Manager テンプレート セクションの手順を実行しないでください。
 
 ## <a name="next-steps"></a>次の手順
 

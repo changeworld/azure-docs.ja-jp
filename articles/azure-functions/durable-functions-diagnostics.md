@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions における診断 - Azure"
-description: "Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。"
+title: Durable Functions における診断 - Azure
+description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ebab8660dfe21984e1a7f9a1cb925aea60de213
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions における診断 (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) に関する問題の診断には、いくつかの方法があります。 その中には、通常の関数の場合と同じ方法もあれば、Durable Functions に固有の方法もあります。
 
-## <a name="application-insights"></a>Application Insights
+## <a name="application-insights"></a>アプリケーション インサイト
 
 Azure Functions の診断と監視には、[Application Insights](../application-insights/app-insights-overview.md) を使用する方法が推奨されています。 Durable Functions にもそれが当てはまります。 Application Insights を関数アプリで活用する方法の概要については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
@@ -50,6 +50,7 @@ Azure Functions の診断と監視には、[Application Insights](../application
 * **reason**: 追跡イベントに関連付けられている付加的なデータ。 たとえば外部イベントの通知をインスタンスが待機している場合、待機しているイベントの名前がこのフィールドによって表されます。 関数が失敗した場合、エラーの詳細がここに格納されます。
 * **isReplay**: 再生された実行の追跡イベントであるかどうかを示すブール値。
 * **extensionVersion**: Durable Task 拡張機能のバージョン。 拡張機能のバグの可能性を報告するときにこのデータが特に重要となります。 長時間実行されるインスタンスでは、実行中に更新が生じた場合、複数のバージョンが報告されます。 
+* **sequenceNumber**: イベントの実行シーケンス番号。 タイムスタンプと組み合わせると、イベントを実行時刻順に並べ替えるのに役立ちます。 "*インスタンスの実行中にホストが再起動した場合、この番号はゼロにリセットされるので、常に、最初にタイムスタンプで並べ替えて、次に sequenceNumber で並べ替えることが重要です。*"
 
 Application Insights に出力される追跡データの詳細レベルは、`host.json` ファイルの `logger` セクションで構成できます。
 
@@ -72,11 +73,11 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 
 ### <a name="single-instance-query"></a>シングル インスタンス クエリ
 
-次のクエリでは、[Hello シーケンス](durable-functions-sequence.md)関数オーケストレーションの単一インスタンスに関する履歴追跡データが表示されます。 これは、[Application Insights クエリ言語 (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) で記述されています。 "*論理*" 実行パスだけを表示するために、再生実行は除外されています。
+次のクエリでは、[Hello シーケンス](durable-functions-sequence.md)関数オーケストレーションの単一インスタンスに関する履歴追跡データが表示されます。 これは、[Application Insights クエリ言語 (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) で記述されています。 "*論理*" 実行パスだけを表示するために、再生実行は除外されています。 次のクエリで示すように、イベントは `timestamp` と `sequenceNumber` で並べ替えることができます。 
 
 ```AIQL
-let targetInstanceId = "bf71335b26564016a93860491aa50c7f";
-let start = datetime(2017-09-29T00:00:00);
+let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
+let start = datetime(2018-03-25T09:20:00);
 traces
 | where timestamp > start and timestamp < start + 30m
 | where customDimensions.Category == "Host.Triggers.DurableTask"
@@ -84,16 +85,17 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
 | where isReplay == false
 | where instanceId == targetInstanceId
-| project timestamp, functionName, state, instanceId, appName = cloud_RoleName
+| sort by timestamp asc, sequenceNumber asc
+| project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
-結果では、アクティビティ関数を含め、オーケストレーションの実行パスを示す追跡イベントが一覧表示されます。
 
-![Application Insights クエリ](media/durable-functions-diagnostics/app-insights-single-instance-query.png)
+結果では、実行時刻の昇順に並べ替えられたアクティビティ関数など、オーケストレーションの実行パスを示す追跡イベントが一覧表示されます。
 
-> [!NOTE]
-> `timestamp` 列の有効桁数が原因で、これらの追跡イベントの順序が狂うことがあります。 これは GitHub で [issue #71](https://github.com/Azure/azure-functions-durable-extension/issues/71) として追跡されています。
+![Application Insights クエリ](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+
 
 ### <a name="instance-summary-query"></a>インスタンス サマリー クエリ
 
@@ -191,7 +193,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 > [!TIP]
 > ブレークポイントを設定するとき、再生以外の実行でのみ停止させる必要がある場合は、`IsReplaying` が `false` の場合にのみ停止させる条件付きブレークポイントを設定できます。
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 
 既定では、Durable Functions の状態が Azure Storage に格納されます。 つまり、オーケストレーションの状態は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用して調査することができます。
 
@@ -202,7 +204,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 > [!WARNING]
 > テーブル ストレージ内の実行履歴を確認できるのは便利ですが、このテーブルに依存することは避けてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [持続的タイマーの使用方法](durable-functions-timers.md)

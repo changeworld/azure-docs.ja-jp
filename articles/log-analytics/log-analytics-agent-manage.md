@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics エージェントの管理 | Microsoft Docs"
-description: "この記事では、コンピューターに配置された Microsoft Monitoring Agent (MMA) のライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。"
+title: Azure Log Analytics エージェントの管理 | Microsoft Docs
+description: この記事では、コンピューターに配置された Microsoft Monitoring Agent (MMA) のライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -69,6 +69,34 @@ $mma.ReloadConfiguration()
 >[!NOTE]
 >以前、コマンド ラインまたはスクリプトを使用してエージェントをインストールまたは構成している場合、`EnableAzureOperationalInsights` は `AddCloudWorkspace` と `RemoveCloudWorkspace` に置き換えられています。
 >
+
+### <a name="linux-agent"></a>Linux エージェント
+次の手順では、Linux エージェントを別のワークスペースに登録する場合、またはその構成からワークスペースを削除する場合に、Linux エージェントを再構成する方法を示します。  
+
+1.  ワークスペースに登録されていることを確認するには、次のコマンドを実行します。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    次の例のような状態が返される必要があります。 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+    状態はエージェントが実行されていることも示すので重要です。実行していないと、エージェントを再構成する次の手順は正常に完了しません。  
+
+2. ワークスペースに既に登録されている場合は、次のコマンドを実行して、登録されているワークスペースを削除します。  登録されていない場合は、次の手順に進みます。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -X`  
+    
+3. 別のワークスペースに登録するには、`/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` コマンドを実行します 
+4. 変更が有効になったことを確認するには、次のコマンドを実行します。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    次の例のような状態が返される必要があります。 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+変更を有効にするために、エージェント サービスを再起動する必要はありません。
 
 ## <a name="update-proxy-settings"></a>プロキシ設定を更新する 
 配置後にプロキシ サーバーまたは [OMS ゲートウェイ](log-analytics-oms-gateway.md)経由で通信するようにエージェントを構成するには、次の方法のいずれかを使用して、このタスクを完了します。

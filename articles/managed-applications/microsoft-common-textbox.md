@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの TextBox UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Common.TextBox UI 要素について説明します。"
+title: Azure の TextBox UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Common.TextBox UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d3fae42ae202fe720761382e1020fa8bd8c62b44
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: daee95c177ecddfea1cf7d6d162906fcc86938b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 要素
-書式設定されていないテキストの編集に使用できるコントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+書式設定されていないテキストの編集に使用できるコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
@@ -31,8 +31,8 @@ ms.lasthandoff: 10/27/2017
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
   "label": "Some text box",
-  "defaultValue": "foobar",
-  "toolTip": "Halp!",
+  "defaultValue": "my value",
+  "toolTip": "Use only allowed characters",
   "constraints": {
     "required": true,
     "regex": "^[a-z0-9A-Z]{1,30}$",
@@ -54,7 +54,6 @@ ms.lasthandoff: 10/27/2017
 "foobar"
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

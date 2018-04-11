@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 71862463a62f11a4f2cea7dfcc60961331ded377
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b3a3c07446ad04a58d5180793404fc04677749b2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新プログラム
 
@@ -129,6 +129,8 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 - 管理ポータルとユーザー ポータルの両方で、古い API バージョン (2015-06-15 など) で作成されたストレージ アカウントの [概要] ブレードを選択した場合、[概要] ブレードの読み込みに失敗します。 これには、パッチと更新プログラムの実行時に使用される **updateadminaccount** などのシステム ストレージ アカウントが含まれます。 
 
   この問題を回避するには、PowerShell を使用して **Start-ResourceSynchronization.ps1** スクリプトを実行し、ストレージ アカウントの詳細へのアクセスを復元します。 [このスクリプトは GitHub から入手可能]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)であり、特権エンドポイントでサービス管理者の資格情報で実行する必要があります。 
+
+- **[サービス正常性]** ブレードの読み込みに失敗します。 管理ポータルまたはユーザー ポータルで [サービス正常性] ブレードを開くと、Azure Stack にエラーが表示され、情報は読み込まれません。 これは正しい動作です。 [サービス正常性] を選択して開けますが、この機能はまだ利用できません。Azure Stack の今後のバージョンに実装されます。
 
 
 #### <a name="health-and-monitoring"></a>正常性と監視

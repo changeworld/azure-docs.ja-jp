@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse の復元 (PowerShell) | Microsoft Docs"
-description: "Azure SQL Data Warehouse を復元するための PowerShell タスク。"
+title: Azure SQL Data Warehouse の復元 (PowerShell) | Microsoft Docs
+description: Azure SQL Data Warehouse を復元するための PowerShell タスク。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: ac62f154-c8b0-4c33-9c42-f480808aa1d2
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 02/27/2018
 ms.author: barbkess
-ms.openlocfilehash: 533907ccbae5db3b68ede2ee1b226e663a04cb64
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 6c4ed8415e60e32b7813bc27dd9aff620ddc65cc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Azure SQL Data Warehouse の復元 (PowerShell)
 > [!div class="op_single_selector"]
@@ -125,6 +125,11 @@ $RestoredDatabase.status
 ## <a name="restore-from-an-azure-geographical-region"></a>Azure 地理的リージョンからの復元
 データベースを復旧するには、[Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase] コマンドレットを使用します。
 
+> [!NOTE]
+> コンピューティング用に最適化されたパフォーマンス レベルへの geo リストアを実行できます。 そのためには、省略可能なパラメーターとしてコンピューティング用に最適化された ServiceObjectiveName を指定します。 
+>
+> 
+
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
 3. 復元するデータベースを含むサブスクリプションを選択します。
@@ -141,7 +146,7 @@ Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
 
 # Recover database
-$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID
+$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID -ServiceObjectiveName "<YourTargetServiceLevel>"
 
 # Verify that the geo-restored database is online
 $GeoRestoredDatabase.status
