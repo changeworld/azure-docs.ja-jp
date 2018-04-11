@@ -1,6 +1,6 @@
----
-title: Azure のネットワーク | Microsoft Docs
-description: Azure のネットワーク サービスとネットワーク機能について説明します。
+﻿---
+title: "Azure のネットワーク | Microsoft Docs"
+description: "Azure のネットワーク サービスとネットワーク機能について説明します。"
 services: networking
 documentationcenter: na
 author: jimdial
