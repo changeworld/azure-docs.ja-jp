@@ -24,14 +24,14 @@ ms.lasthandoff: 04/05/2018
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-このチュートリアルは、チュートリアル「[SimulatedDevice]」に基づいています。  このチュートリアルでは以下を行います。
+このチュートリアルは、チュートリアル「[IoT Hub の概要]」に基づいています。  このチュートリアルでは以下を行います。
 
 * ルーティング規則を使用して、簡単な構成ベースの方法でデバイスからクラウドにメッセージをディスパッチする方法について説明します。
 * さらに処理するために早急な対応を必要とする対話型メッセージを、ソリューションのバックエンドから分離する方法を示します。  たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。  これに対して、温度テレメトリなどのデータポイント メッセージは、分析エンジンにフィードされます。
 
 このチュートリアルの最後に、次の 3 つの Node.js コンソール アプリを実行します。
 
-* **SimulatedDevice.js** は [SimulatedDevice] に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージをランダムな間隔で送信します。 このアプリでは、IoT Hub との通信に MQTT プロトコルを使用します。
+* **SimulatedDevice.js** は [IoT Hub の概要] に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージをランダムな間隔で送信します。 このアプリでは、IoT Hub との通信に MQTT プロトコルを使用します。
 * **ReadDeviceToCloudMessages.js** は、デバイス アプリから送信されたテレメトリを表示します。
 * **ReadCriticalQueue.js** は、IoT hub に接続された Service Bus キューから重大なメッセージをデキューします。
 
@@ -40,16 +40,16 @@ ms.lasthandoff: 04/05/2018
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [SimulatedDevice] に関するチュートリアルで完成させたアプリ。
+* [IoT Hub の概要] に関するチュートリアルで完成させたアプリ。
 * Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [Azure Storage] と [Azure Service Bus] の記事も読むことをお勧めします。
 
 ## <a name="send-interactive-messages-from-a-device-app"></a>デバイス アプリからの対話型メッセージの送信
-このセクションでは、[SimulatedDevice]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
+このセクションでは、[IoT Hub の概要]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
 
-1. テキスト エディターを使用して **simulateddevice\SimulatedDevice.js** ファイルを開きます。 このファイルには、 **IoT Hub の概要** のチュートリアルで作成した [SimulatedDevice] アプリのコードが含まれています。
+1. テキスト エディターを使用して **simulateddevice\SimulatedDevice.js** ファイルを開きます。 このファイルには、 [IoT Hub の概要] のチュートリアルで作成した **SimulatedDevice** アプリのコードが含まれています。
 
 2. **connectCallback** 関数内のコードを次のコードに置き換えます。
 
@@ -257,7 +257,7 @@ IoT Hub でのメッセージのルーティングの詳細については、[Io
 
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-[SimulatedDevice]: iot-hub-node-node-getstarted.md
+[IoT Hub の概要]: iot-hub-node-node-getstarted.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh675232.aspx
 
