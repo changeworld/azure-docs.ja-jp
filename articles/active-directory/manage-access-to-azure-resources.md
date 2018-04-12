@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory による Azure リソースへのアクセス管理"
-description: "Azure Active Directory のさまざまな機能を使用して Azure リソースへのアクセスを管理する方法について説明します。"
+title: Azure Active Directory による Azure リソースへのアクセス管理
+description: Azure Active Directory のさまざまな機能を使用して Azure リソースへのアクセスを管理する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: skwan
 manager: mtillman
 editor: bryanla
@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 10/05/2017
 ms.author: skwan
 ms.openlocfilehash: eee4353c183aeec19f72f8e1dec6c20b6c5bb226
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>Azure Active Directory による Azure リソースへのアクセス管理
 

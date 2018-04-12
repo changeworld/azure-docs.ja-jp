@@ -9,13 +9,13 @@ ms.reviewer: billgib;andrela;genemi
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb0229731d8fd1495173915b3bc95b48538f1e85
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL データベースを使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 

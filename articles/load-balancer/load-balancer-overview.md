@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 3a5d1e897d8ffe063ecf9277bef346c8b7c5092b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f4410932f00f8505ae5a894caa002e1223196d95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
 
@@ -142,7 +142,7 @@ Azure Load Balancer では、Basic と Standard の 2 種類の SKU がサポー
 
 ![パブリックのロード バランサーの例](./media/load-balancer-overview/IC727496.png)
 
-**図 1: パブリック ロード バランサーを使った Web トラフィックの負荷分散**
+*図: パブリック ロード バランサーを使った Web トラフィックの負荷分散*
 
 複数のインターネット クライアントが TCP ポート 80 で Web アプリのパブリック IP アドレスに Web ページ要求を送信すると、Azure Load Balancer は負荷分散セット内の 3 台の仮想マシンにこれらの要求を分散します。 ロード バランサーのアルゴリズムの詳細については、[ロード バランサーの概要に関するページ](load-balancer-overview.md#load-balancer-features)をご覧ください。
 
@@ -161,7 +161,7 @@ Azure Load Balancer では、Basic と Standard の 2 種類の SKU がサポー
 
 ![内部ロード バランサーの例](./media/load-balancer-overview/IC744147.png)
 
-**図 2 - パブリック ロード バランサーと内部ロード バランサーの両方を使った、多層アプリケーションの負荷分散**
+*図 - パブリック ロード バランサーと内部ロード バランサーの両方を使った、多層アプリケーションの負荷分散*
 
 ## <a name="pricing"></a>価格
 Standard Load Balancer は、構成された負荷分散ルールの数と、処理されたすべての受信および送信データの数に基づいて課金される製品です。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。

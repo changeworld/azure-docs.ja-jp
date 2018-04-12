@@ -1,11 +1,11 @@
 ---
-title: "ネットワーク セキュリティ グループの管理 - Azure PowerShell | Microsoft Docs"
-description: "PowerShell を使用してネットワーク セキュリティ グループを管理する方法について説明します。"
+title: ネットワーク セキュリティ グループの管理 - Azure PowerShell | Microsoft Docs
+description: PowerShell を使用してネットワーク セキュリティ グループを管理する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3706ce6c-d9ae-46cb-a048-f0a4e84dc5cc
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループの管理
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/13/2018
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]

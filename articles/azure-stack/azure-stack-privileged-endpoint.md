@@ -12,17 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.reviewer: fiseraci
+ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack オペレーターは、管理ポータル、PowerShell、または Azure Resource Manager API を使用して、ほとんどの日常的な管理タスクを実行します。 ただし、あまり一般的でない一部の操作については、*特権エンドポイント* (PEP) を使用する必要があります。 この PEP は、あらかじめ構成されたリモート PowerShell コンソールであり、必要なタスクを実行するために十分な機能だけを提供します。 エンドポイントは [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/en-us/powershell/jea/overview) を使用して、コマンドレットの限定的なセットのみを公開します。 PEP にアクセスしてコマンドレットの限定的なセットを起動するために、低権限のアカウントが使用されます。 管理者アカウントは必要ありません。 セキュリティ強化のため、スクリプトは許可されません。
 
@@ -43,18 +44,20 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
 統合システムに対してこの手順を開始する前に、IP アドレスによって、または DNS を介して PEP にアクセスできることを確認してください。 Azure Stack の初期デプロイ後は、DNS 統合がまだセットアップされていないため、IP アドレスでしか PEP にアクセスできません。 PEP の IP アドレス を含む **AzureStackStampDeploymentInfo** という名前の JSON ファイルが、OEM ハードウェア ベンダーから提供されます。
 
-PEP への接続は、ハードウェア ライフサイクル ホストから、または [Privileged Access Workstation](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) のような専用のセキュリティで保護されたコンピューターからに限定して行うことをお勧めします。
 
-1. Privileged Access Workstation にアクセスします。
+> [!NOTE]
+> セキュリティ上の理由から、PEP への接続は、ハードウェア ライフサイクル ホスト上で実行するセキュリティを強化された仮想マシンから、または [Privileged Access Workstation](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) のような専用のセキュリティで保護されたコンピューターからに限定して行う必要があります。 ハードウェア ライフサイクル ホストは、元の構成から変更しないようにするか (新しいソフトウェアのインストールするなど)、または PEP への接続に使わないようにする必要があります。
 
-    - 統合システムでは、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation 上で次のコマンドを実行して、信頼されたホストとして PEP を追加します。
+1. 信頼関係を確立します。
+
+    - 統合システムで、管理者特権の Windows PowerShell セッションから次のコマンドを実行して、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行されているセキュリティ強化された仮想マシンの信頼されたホストとして PEP を追加します。
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - ADSK を実行している場合、開発キットのホストにサインインします。
 
-2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation 上で、昇格した Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
+2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
     - 統合システム上で:
       ````PowerShell
@@ -74,11 +77,12 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
       ```` 
    入力を求められたら、次の資格情報を使用します。
 
-      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\accountname** の形式で CloudAdmin アカウントを指定します  (ASDK の場合、ユーザー名は **azurestack\accountname** です)。 
+      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
       - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
+
     > [!NOTE]
     > ERCS エンドポイントに接続できない場合は、まだ接続を試みていない ERCS VM の IP アドレスを使用して、手順 1 と手順 2 を再試行してください。
-    
+
 3.  接続後、環境に応じて **[*IP アドレスまたは ERCS VM 名*]: PS>** または **[azs-ercs01]: PS>** プロンプトが変わります。 ここから `Get-Command` を実行して、利用可能なコマンドレットの一覧を表示します。
 
     これらのコマンドレットの多くは、統合システム環境での使用のみが意図されています (データセンター統合に関連するコマンドレットなど)。 ASDK では、次のコマンドレットが検証済みです。
@@ -116,16 +120,16 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
 
 ローカル コンピューターに PEP セッションをインポートするには、次の手順を実行します。
 
-1. Privileged Access Workstation にアクセスします。
+1. 信頼関係を確立します。
 
-    - 統合システムでは、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation 上で次のコマンドを実行して、信頼されたホストとして PEP を追加します。
+    統合システムで、管理者特権の Windows PowerShell セッションから次のコマンドを実行して、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行されているセキュリティ強化された仮想マシンの信頼されたホストとして PEP を追加します。
 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
     - ADSK を実行している場合、開発キットのホストにサインインします。
 
-2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation 上で、昇格した Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
+2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
     - 統合システム上で:
       ````PowerShell
@@ -145,7 +149,7 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
       ```` 
    入力を求められたら、次の資格情報を使用します。
 
-      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\accountname** の形式で CloudAdmin アカウントを指定します  (ASDK の場合、ユーザー名は **azurestack\accountname** です)。 
+      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
       - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
 
 3. ローカル コンピューターに PEP セッションをインポートします
@@ -157,7 +161,7 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
 
 ## <a name="close-the-privileged-endpoint-session"></a>特権エンドポイント セッションを閉じる
 
- 前述のとおり、PEP では、PowerShell セッションで実行するすべてのアクション (および、それに対応する出力) がログに記録されます。 `Close-PrivilegedEndpoint` コマンドレットを使用してセッションを閉じる必要があります。 このコマンドレットは、エンドポイントを正しく閉じて、ログ ファイルを保管用の外部ファイル共有に転送します。
+ 前述のとおり、PEP では、PowerShell セッションで実行するすべてのアクション (および、それに対応する出力) がログに記録されます。 `Close-PrivilegedEndpoint` コマンドレットを使ってセッションを閉じる必要があります。 このコマンドレットは、エンドポイントを正しく閉じて、ログ ファイルを保管用の外部ファイル共有に転送します。
 
 エンドポイント セッションを閉じるには:
 
@@ -167,7 +171,11 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
 
     ![トランスクリプトの保存先パスとして指定した場所を示す Close-PrivilegedEndpoint コマンドレットの出力](media/azure-stack-privileged-endpoint/closeendpoint.png)
 
-トランスクリプト ログ ファイルがファイル共有に正常に転送された後、それらのファイルは PEP から自動的に削除されます。 コマンドレット `Exit-PSSession` または `Exit` を使用して PEP セッションを閉じた、または単に PowerShell コンソールを閉じた場合、トランスクリプト ログはファイル共有に転送されません。 それらは PEP に残ります。 次に `Close-PrivilegedEndpoint` を実行してファイル共有をインクルードしたときに、以前のセッションのトランスクリプト ログも併せて転送されます。
+トランスクリプト ログ ファイルがファイル共有に正常に転送された後、それらのファイルは PEP から自動的に削除されます。 
+
+> [!NOTE]
+> コマンドレット `Exit-PSSession` または `Exit` を使用して PEP セッションを閉じた、または単に PowerShell コンソールを閉じた場合、トランスクリプト ログはファイル共有に転送されません。 それらは PEP に残ります。 次に `Close-PrivilegedEndpoint` を実行してファイル共有をインクルードしたときに、以前のセッションのトランスクリプト ログも併せて転送されます。 `Exit-PSSession` または `Exit` を使って PEP セッションを閉じないでください。代わりに、`Close-PrivilegedEndpoint` を使ってください。
+
 
 ## <a name="next-steps"></a>次の手順
 [Azure Stack の診断ツール](azure-stack-diagnostics.md)

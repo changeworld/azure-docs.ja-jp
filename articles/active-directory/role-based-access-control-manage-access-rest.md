@@ -1,11 +1,11 @@
 ---
-title: "REST を使用したロールベースのアクセス制御 - Azure AD | Microsoft Docs"
-description: "REST API を使用したロールベースの Access Control の管理"
+title: REST を使用したロールベースのアクセス制御 - Azure AD | Microsoft Docs
+description: REST API を使用したロールベースの Access Control の管理
 services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: active-directory
 ms.workload: multiple
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.openlocfilehash: ba25340e41cefe2b7847a39a6c9182cd0fc057d3
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
 > [!div class="op_single_selector"]

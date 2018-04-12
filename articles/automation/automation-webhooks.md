@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b3e8e489ef4b79a89facb2395543743c427b0310
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ea7366a02dd95fac5c1a7307e6156a0481fa16d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure Automation API を使用した完全なソリューションを実装しなくても、Visual Studio Team Services、GitHub、Microsoft Operations Management Suite Log Analytics などの外部サービスやカスタム アプリケーションで Runbook を開始できます。  
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Visual Studio Team Services、GitHub、Azure Log Analytics などの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)

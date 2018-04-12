@@ -1,26 +1,26 @@
 ---
-title: "PowerShell の例 - アクティブ geo レプリケーション - プールされた Azure SQL データベース | Microsoft Docs"
-description: "プールされた Azure SQL Database のアクティブ geo レプリケーションの設定とフェールオーバーを実行する Azure PowerShell のサンプル スクリプト。"
+title: PowerShell の例 - アクティブ geo レプリケーション - プールされた Azure SQL データベース | Microsoft Docs
+description: プールされた Azure SQL Database のアクティブ geo レプリケーションの設定とフェールオーバーを実行する Azure PowerShell のサンプル スクリプト。
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
 manager: jhubbard
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: business continuity, mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 11/29/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: b45e829b9f168e28530bc6237433463d4bfc1bed
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 69bbb256e78b63b3b5e2137a88888ce9139e7594
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>プールされた Azure SQL データベースのアクティブ geo レプリケーションを PowerShell を使用して構成する
 
@@ -59,7 +59,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $secondaryresourcegroupname
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
