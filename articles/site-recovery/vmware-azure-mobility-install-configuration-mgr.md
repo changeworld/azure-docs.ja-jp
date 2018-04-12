@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
 ms.openlocfilehash: 8382fadc02a7e80b6f28bd777f423013aed9add3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>System Center Configuration Manager を使用して Mobility Service のインストールを自動化する
 

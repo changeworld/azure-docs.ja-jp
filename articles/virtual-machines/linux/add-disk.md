@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI を使用して Linux VM にディスクを追加する | Microsoft Docs"
-description: "Azure CLI 1.0 および 2.0 を使用して Linux VM に永続ディスクを追加する方法について説明します。"
-keywords: "Linux 仮想マシン,リソース ディスクの追加"
+title: Azure CLI を使用して Linux VM にディスクを追加する | Microsoft Docs
+description: Azure CLI 1.0 および 2.0 を使用して Linux VM に永続ディスクを追加する方法について説明します。
+keywords: Linux 仮想マシン,リソース ディスクの追加
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
@@ -17,11 +17,11 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。 
@@ -264,7 +264,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 ## <a name="troubleshooting"></a>トラブルシューティング
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 新しいディスクは、 [fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
 * [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 * ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。

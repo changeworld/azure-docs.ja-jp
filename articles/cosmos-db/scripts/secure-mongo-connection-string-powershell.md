@@ -1,13 +1,12 @@
 ---
-title: "Azure PowerShell スクリプト - MongoDB アプリ用の Azure Cosmos DB 接続文字列を取得する | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - MongoDB アプリ用の Azure Cosmos DB 接続文字列を取得する"
+title: Azure PowerShell スクリプト - MongoDB アプリ用の Azure Cosmos DB 接続文字列を取得する | Microsoft Docs
+description: Azure PowerShell サンプル スクリプト - MongoDB アプリ用の Azure Cosmos DB 接続文字列を取得する
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: PowerShell
@@ -15,12 +14,12 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
-ms.author: mimig
-ms.openlocfilehash: e44e35cc7d11db48cd82e470ce8226b3c8cc220a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: sngun
+ms.openlocfilehash: 0f53c060468c1473e0ed1329907fc84a37a2b902
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>PowerShell を使用して MongoDB アプリ用の Azure Cosmos DB 接続文字列を取得する
 
@@ -52,7 +51,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

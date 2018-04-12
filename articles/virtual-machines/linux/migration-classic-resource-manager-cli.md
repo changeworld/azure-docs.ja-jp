@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI を使用して Resource Manager に VM を移行する | Microsoft Docs"
-description: "この記事では、Azure CLI を使用した、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します。"
+title: Azure CLI を使用して Resource Manager に VM を移行する | Microsoft Docs
+description: この記事では、Azure CLI を使用した、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 607ab59dbeb414c69a6272d0aeb00299296bca6a
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: f986246e74305789eb2978a95fd6a3e51accd25e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。 この記事では、[Azure CLI 1.0](../../cli-install-nodejs.md) が必要です。 Azure CLI 2.0 は、Azure Resource Manager リソースにのみ適用されるため、この移行には使用できません。
@@ -180,7 +180,7 @@ CLI または Azure ポータルを使用して、準備したストレージ �
 
     azure storage account commit-migration <storageAccountName>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

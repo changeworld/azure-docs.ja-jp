@@ -4,6 +4,7 @@ description: Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラ�
 services: cosmos-db
 author: LuisBosquez
 documentationcenter: ''
+manager: kfile
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: b9455605587dc3c0d8b96916e453e2c2fe3bbe75
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3ad5a5e0e5ea2cccfc70c3fac946a18cb1942a8b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 

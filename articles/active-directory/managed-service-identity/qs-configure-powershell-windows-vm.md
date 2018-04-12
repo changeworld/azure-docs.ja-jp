@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用して Azure VM で MSI を構成する方法"
-description: "PowerShell を使用して、Azure VM で管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。"
+title: PowerShell を使用して Azure VM で MSI を構成する方法
+description: PowerShell を使用して、Azure VM で管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 42c361ac69122d00df290f4c3c2eb2cfeeb9eb47
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 76ea24a658c728aebd15be55cc0c8dfca27f01ec
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>PowerShell を使用して、VM 管理対象サービス ID (MSI) を構成する
 
@@ -40,9 +40,9 @@ MSI 対応 VM を作成するには
 1. 次のいずれかの Azure VM クイックスタートを参照して、必要なセクション (「Azure へのログイン」、「リソース グループの作成」、「ネットワーク グループの作成」、「VM の作成」) のみを実行してください。 
 
    > [!IMPORTANT] 
-   > 「VM の作成」セクションに到達したときに、[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットの構文にわずかな変更を加えます。 たとえば、`-IdentityType "SystemAssigned"` パラメーターを追加して、MSI で VM をプロビジョニングします。
+   > 「VM の作成」セクションに到達したときに、[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットの構文にわずかな変更を加えます。 たとえば、`-AssignIdentity "SystemAssigned"` パラメーターを追加して、MSI で VM をプロビジョニングします。
    >  
-   > `$vmConfig = New-AzureRmVMConfig -VMName myVM -IdentityType "SystemAssigned" ...`
+   > `$vmConfig = New-AzureRmVMConfig -VMName myVM -AssignIdentity "SystemAssigned" ...`
 
    - [PowerShell で Windows 仮想マシンを作成する](../../virtual-machines/windows/quick-create-powershell.md)
    - [PowerShell で Linux 仮想マシンを作成する](../../virtual-machines/linux/quick-create-powershell.md)
@@ -66,11 +66,11 @@ MSI 対応 VM を作成するには
    Login-AzureRmAccount
    ```
 
-2. 最初に、`Get-AzureRmVM` コマンドレットを使用して VM プロパティを取得します。 MSI を有効にするには、[Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) コマンドレットで `-IdentityType` スイッチを使用します。
+2. 最初に、`Get-AzureRmVM` コマンドレットを使用して VM プロパティを取得します。 MSI を有効にするには、[Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) コマンドレットで `-AssignIdentity` スイッチを使用します。
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType "SystemAssigned"
+   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity "SystemAssigned"
    ```
 
 3. [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) コマンドレットで `-Type` パラメーターを使用して、MSI VM 拡張機能を追加します。 VM の種類に応じて "ManagedIdentityExtensionForWindows" または "ManagedIdentityExtensionForLinux" を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。 既存の VM の場所に一致する正しい `-Location` パラメーターを指定してください。

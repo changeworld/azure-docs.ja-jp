@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: mimig
 ms.openlocfilehash: dcfa3d40414401b67d53d8e9759f897fb23909fc
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cosmos-db-documentation-experiment"></a>Azure Cosmos DB のドキュメントの実験
 

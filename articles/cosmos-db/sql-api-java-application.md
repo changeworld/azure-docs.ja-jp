@@ -5,8 +5,7 @@ keywords: アプリケーション開発, データベース チュートリア�
 services: cosmos-db
 documentationcenter: java
 author: dennyglee
-manager: jhubbard
-editor: mimig
+manager: kfile
 ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
 ms.service: cosmos-db
 ms.devlang: java
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 816ea6e575759186973e23c6adfccd389c6920d9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2124e22ca5ab47b5e1836384132014cc0b356ff1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]

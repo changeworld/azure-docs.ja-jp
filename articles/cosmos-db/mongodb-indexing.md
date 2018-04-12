@@ -4,7 +4,7 @@ description: Azure Cosmos DB MongoDB API のインデックス作成機能につ
 services: cosmos-db
 documentationcenter: ''
 author: orestis-ms
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: daacbabf-1bb5-497f-92db-079910703047
 ms.service: cosmos-db
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: 090f8a664409d9cde1e4440ca9e2390a7c9def7a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6cb267096e04d4957b166e539a4fc58aa25e04cb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API でのインデックス作成
 

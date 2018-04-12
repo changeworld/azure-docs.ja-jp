@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/19/2018
 ms.author: raynew
 ms.openlocfilehash: b2c89a980411cac02f46bc91d53620bc94fa845b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 

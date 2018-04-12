@@ -7,13 +7,13 @@ services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 04/01/2018
 ms.author: aamalvea
-ms.openlocfilehash: 611b88c540902bc7a72d53671dacd098d9798b48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 

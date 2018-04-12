@@ -4,7 +4,7 @@ description: 人気のある OSS MongoDB API と Azure Cosmos DB を使用して
 keywords: MongoDB とは
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
+manager: kfile
 editor: ''
 documentationcenter: ''
 ms.assetid: 4afaf40d-c560-42e0-83b4-a64d94671f0a
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: cd80f349f2fb376178e02d947db1fefbcbe3ac88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d58933e510a56bf21bcd714dc93d4c7f0b57340b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB の概要: MongoDB API
 

@@ -4,7 +4,7 @@ description: チュートリアル - Azure CLI を使用した Azure ディス�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2a8a6e7da89f864c1bb63bf5b26b297653ff4a94
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1207ae8160739bcf27a651880dd58ea6893ebf37
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Azure CLI を使用した Azure ディスクの管理
 

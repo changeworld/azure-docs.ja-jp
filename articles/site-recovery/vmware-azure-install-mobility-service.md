@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
 ms.openlocfilehash: 445a5f10eac0959dab57e10680659c0792ad6fba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-the-mobility-service"></a>モビリティ サービスをインストールする 
 

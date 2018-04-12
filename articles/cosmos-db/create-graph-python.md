@@ -1,25 +1,24 @@
 ---
-title: "クイックスタート: Python での Graph API の使用 - Azure Cosmos DB | Microsoft Docs"
-description: "このクイックスタートでは、Azure Portal および Python で Azure Cosmos DB Graph API を使ってコンソール アプリケーションを作成する方法を説明します"
+title: 'クイックスタート: Python での Graph API の使用 - Azure Cosmos DB | Microsoft Docs'
+description: このクイックスタートでは、Azure Portal および Python で Azure Cosmos DB Graph API を使ってコンソール アプリケーションを作成する方法を説明します
 services: cosmos-db
 documentationcenter: python
 author: luisbosquez
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: 383a51c5-7857-440d-ab54-1efb1c0c7079
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: bb39cc25cc1c431c7ab98bfc3ed816934cb03e45
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: aa1d70d33e1f9cefee4d06ea182ffb3fc960e07a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal を使用してグラフ データベースを作成する
 
@@ -58,7 +57,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 2. **[グラフの追加]** ページで、新しいグラフの設定を入力します。
 
-    設定|推奨値|[説明]
+    Setting|推奨値|[説明]
     ---|---|---
     データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
     グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。

@@ -4,7 +4,7 @@ description: Azure CLI のサンプル
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ec76e211062890b4325b5c2cb1cf186ac7b89c55
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 938e61a7ab831b6f0632d0426afe4d0f947af223
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux 仮想マシン用の Azure CLI サンプル
 

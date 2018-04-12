@@ -5,7 +5,7 @@ keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Drewm3
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: drewm
-ms.openlocfilehash: 05d84e4b8c0ac84db5d0784e64071931408ec1d6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a33aca62c63269ed179b7086cacc3cf758e862ea
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>仮想マシンの vCPU クォータ
 

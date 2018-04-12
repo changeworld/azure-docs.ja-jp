@@ -3,7 +3,7 @@ title: Azure Active Directory Graph API | Microsoft Docs
 description: REST API エンドポイントを介して Azure AD にプログラムでアクセスできる Azure AD Graph API の概要およびクイック スタート ガイドです。
 services: active-directory
 documentationcenter: ''
-author: viv-liu
+author: mtillman
 manager: mtillman
 editor: mbaldwin
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
-ms.author: viviali
+ms.date: 04/02/2018
+ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 1d1cfed6782ae2ea93f350aa11993d257800ce7b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c0f5110fe73fb48cf6cf5307de08045bd843cb5a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]

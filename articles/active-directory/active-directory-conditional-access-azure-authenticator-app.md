@@ -1,11 +1,11 @@
 ---
-title: "Android 用の Azure Authenticator | Microsoft Docs"
-description: "Microsoft Azure Authenticator アプリを使用してサインインして、勤務先のリソースにアクセスすることができます。 Azure Authenticator アプリにより、モバイル デバイスにアラートが表示されて、保留中の 2 要素検証要求がユーザーに通知されます。"
+title: Android 用の Azure Authenticator | Microsoft Docs
+description: Microsoft Azure Authenticator アプリを使用してサインインして、勤務先のリソースにアクセスすることができます。 Azure Authenticator アプリにより、モバイル デバイスにアラートが表示されて、保留中の 2 要素検証要求がユーザーに通知されます。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-authenticator-for-android"></a>Android 用の Azure Authenticator
 IT 管理者から、勤務先のリソースにアクセスする際に Microsoft Azure Authenticator を使用してサインインすることが推奨される場合があります。 このアプリケーションには、次の 2 つのサインイン オプションが用意されています。

@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリで FTP コネクタを使用する方法 | Microsoft Docs"
-description: "Azure App Service を使用してロジック アプリを作成します。 FTP サーバーに接続して、ファイルを管理します。 FTP サーバーのファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
+title: ロジック アプリで FTP コネクタを使用する方法 | Microsoft Docs
+description: Azure App Service を使用してロジック アプリを作成します。 FTP サーバーに接続して、ファイルを管理します。 FTP サーバーのファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d83c55fe-eb59-4b7b-a5ec-afac5c772616
 ms.service: logic-apps
@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP コネクタの使用
 FTP コネクタを使用して、FTP サーバー上のファイルを監視、管理、作成します。 

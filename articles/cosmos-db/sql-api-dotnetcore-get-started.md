@@ -4,7 +4,7 @@ description: Azure Cosmos DB SQL API .NET Core SDK を使用してオンライ�
 services: cosmos-db
 documentationcenter: .net
 author: arramac
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 3fb14a2ae6e820c289e7000a4876efe4b4a3b89c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ad6b8889b1d98993eadeb531b7e63771a848719b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: SQL API と .NET Core を使ってみる
 > [!div class="op_single_selector"]

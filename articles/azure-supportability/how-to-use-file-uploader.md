@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン | Microsoft Docs"
-description: "Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティを使用する際のガイドラインについて説明します。"
-services: 
-documentationcenter: 
+title: Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン | Microsoft Docs
+description: Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティを使用する際のガイドラインについて説明します。
+services: ''
+documentationcenter: ''
 author: genlin
 manager: mbaldwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: eb13bc8012e2d58e1a9b68bb1cf2da11d65e8159
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン
 [サポート要求を作成](https://portal.azure.com/#create/Microsoft.Support)するときに、ファイル アップロード ユーティリティを使用すると、診断ファイル、またはインシデントに関連すると思われるその他のファイルを簡単にアップロードできます。  

@@ -1,10 +1,10 @@
 ---
-title: "クイック スタート: Cassandra API (.NET) - Azure Cosmos DB |Microsoft Docs"
-description: "このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。"
+title: 'クイック スタート: Cassandra API (.NET) - Azure Cosmos DB |Microsoft Docs'
+description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: c1830d13e759205935fbd769574c1132a8e70d09
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: 7cd8c61f19e09900267cdc93c1d478f5b0f75afe
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
 
@@ -37,7 +37,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 * [Git](https://www.git-scm.com/) をインストールして例を複製します。
 
 <a id="create-account"></a>
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 [!INCLUDE [cosmos-db-create-dbaccount-cassandra](../../includes/cosmos-db-create-dbaccount-cassandra.md)]
 
@@ -106,7 +106,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
     mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列情報によって、ホストされているデータベースと通信できます。
 
@@ -165,7 +165,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 

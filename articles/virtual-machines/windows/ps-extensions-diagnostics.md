@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell を使用して Windows VM で診断を有効にする | Microsoft Docs"
+title: Azure PowerShell を使用して Windows VM で診断を有効にする | Microsoft Docs
 services: virtual-machines-windows
-documentationcenter: 
-description: "PowerShell を使用して、Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します"
+documentationcenter: ''
+description: PowerShell を使用して、Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します
 author: sbtron
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 49c6fe69afdee6a075d9f888f8a2417455bc7e51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -194,7 +194,7 @@ VM で診断拡張機能を有効にしたら、 [Get-AzureRMVmDiagnosticsExtens
     </PublicConfig>
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事を参照してください。
 * [Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
 

@@ -1,25 +1,24 @@
 ---
-title: "Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する | Microsoft Docs"
-description: "Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する方法について説明します"
+title: Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する | Microsoft Docs
+description: Azure Cosmos DB MongoDB API で MongoDB 読み取り設定を使用する方法について説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: vidhoonv
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
-ms.custom: 
-ms.workload: 
+ms.custom: ''
+ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: viviswan
-ms.openlocfilehash: b28285695f52d6dbcc33d9fb0efe06b43cdf1cab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cc9f22bc5e7b54ed03fbf83b58dda0aff0114737
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API で読み取り設定を使用してグローバルに読み取りを分配する方法 
 

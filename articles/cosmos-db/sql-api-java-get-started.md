@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
 ms.openlocfilehash: 5052c3cdeabd5001c6d0144dc77401a9495ba887
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 > [!div class="op_single_selector"]

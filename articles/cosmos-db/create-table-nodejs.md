@@ -1,31 +1,30 @@
 ---
-title: "クイックスタート: Node.js での Table API の使用 - Azure Cosmos DB | Microsoft Docs"
-description: "このクイックスタートでは、Azure Cosmos DB Table API を使用して Azure Portal と Node.js でアプリケーションを作成する方法を示します"
+title: 'クイックスタート: Node.js での Table API の使用 - Azure Cosmos DB | Microsoft Docs'
+description: このクイックスタートでは、Azure Cosmos DB Table API を使用して Azure Portal と Node.js でアプリケーションを作成する方法を示します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: 66327041-4d5e-4ce6-a394-fee107c18e59
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 8cf8820ceea19fe8c4926c65d107d4f770f40926
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 0aa8f31f0c5607c82a2da36db791c29cf8769d9e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB での Table API アプリの構築
 
 このクイックスタートでは、GitHub から例を複製することで、Node.js と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、ワイドカラム、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、ワイドカラム、およびグラフ データベースをすばやく作成およびクエリできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +36,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 * [Node.js](https://nodejs.org/en/) バージョン v0.10.29 以降
 * [Git](http://git-scm.com/)
 
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 > [!IMPORTANT] 
 > 新しいテーブル API アカウントを作成して一般公開のテーブル API SDK を操作する必要があります。 プレビュー期間中に作成されたテーブル API アカウントは、一般公開の SDK ではサポートされません。
@@ -78,7 +77,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
@@ -130,7 +129,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、アプリを実行する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
 

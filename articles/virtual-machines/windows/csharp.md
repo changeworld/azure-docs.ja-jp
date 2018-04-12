@@ -1,10 +1,10 @@
 ---
-title: "C# を使用した Azure 仮想マシンの作成および管理 | Microsoft Docs"
-description: "C# と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。"
+title: C# を使用した Azure 仮想マシンの作成および管理 | Microsoft Docs
+description: C# と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43dcc8e5d9756807a3e005d629e84469a2e6eb04
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -393,7 +393,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * テンプレートを使用して仮想マシンを作成する方法については、「 [C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 * [Azure libraries for .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet) の使用方法の詳細について学習します。
 

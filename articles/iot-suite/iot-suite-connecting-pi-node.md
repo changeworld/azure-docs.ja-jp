@@ -1,12 +1,12 @@
 ---
-title: "Node.js でリモート監視するために Raspberry Pi をプロビジョニング - Azure | Microsoft Docs"
-description: "Node.js で記述されたアプリケーションを使用して、Raspberry Pi デバイスを Azure IoT Suite 構成済みリモート監視ソリューションに接続する方法について説明します。"
+title: Node.js でリモート監視するために Raspberry Pi をプロビジョニング - Azure | Microsoft Docs
+description: Node.js で記述されたアプリケーションを使用して、Raspberry Pi デバイスを Azure IoT Suite 構成済みリモート監視ソリューションに接続する方法について説明します。
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 7f489a6b26edb9a58b21d318785d3804197b33cb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Raspberry Pi デバイスをリモート監視構成済みソリューションに接続する (Node.js)
 

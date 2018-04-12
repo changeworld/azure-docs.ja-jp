@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI: Azure Database for MySQL サーバーのスケーリング"
-description: "このサンプル CLI スクリプトは、Azure Database for MySQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。"
+title: 'Azure CLI: Azure Database for MySQL サーバーのスケーリング'
+description: このサンプル CLI スクリプトは、Azure Database for MySQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -10,12 +10,12 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: cab3b03dceffc68400a7481aecbb7ee2425d8095
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 04/05/2018
+ms.openlocfilehash: 943a1f55450bcc2254a837334cd1c31935da8307
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング
 このサンプル CLI スクリプトは、単一の Azure Database for MySQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。

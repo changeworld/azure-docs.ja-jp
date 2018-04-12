@@ -1,12 +1,12 @@
 ---
-title: "Azure サービス正常性通知とは | Microsoft Docs"
-description: "サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。"
+title: Azure サービス正常性通知とは | Microsoft Docs
+description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
 author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
 ms.openlocfilehash: 4a95e9882515e6a2861292829a44847e11f39063
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 

@@ -1,24 +1,24 @@
 ---
-title: "Azure VPN Gateway の FAQ | Microsoft Docs"
-description: "VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ。"
+title: Azure VPN Gateway の FAQ | Microsoft Docs
+description: VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 6ce36765-250e-444b-bfc7-5f9ec7ce0742
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/20/2017
-ms.author: cherylmc,yushwang,anzaman
-ms.openlocfilehash: 2b648caa51eb457a62e846b74f1b95ca84974635
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.date: 04/05/2018
+ms.author: cherylmc
+ms.openlocfilehash: 9ebdbb8958779e074195623aec90b7a6f6de2bb4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -71,7 +71,6 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 ルート ベースのゲートウェイは、ルート ベースの VPN を実装したものです。 ルート ベースの VPN は、「ルート」を使用して、IP 転送やルーティング テーブルを使用してパケットを対応するトンネル インターフェイスに直接送信します。 その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。 ルート ベースの VPN に向けたポリシーまたはトラフィック セレクターは任意の環境間 (またはワイルドカード) として構成されます。
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
-
 いいえ。 Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
 1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
 2. ゲートウェイを削除します。
@@ -88,16 +87,13 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 
 ### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet"></a>ゲートウェイ サブネットに仮想マシンやロール インスタンスをデプロイできますか。
 
-
 いいえ。
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>ゲートウェイを作成する前に VPN ゲートウェイの IP アドレスを取得できますか。
 
-
 いいえ。 IP アドレスを取得する前にゲートウェイを作成する必要があります。 VPN ゲートウェイを削除してもう一度作成すると、IP アドレスは変更されます。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>VPN Gateway に静的なパブリック IP アドレスを指定することはできますか。
-
 
 いいえ。 サポートされるのは、動的な IP アドレスの割り当てのみです。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 VPN ゲートウェイの IP アドレスが変更されるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN Gateway のパブリック IP アドレスは、VPN Gateway のサイズ変更、リセット、その他の内部メンテナンス/アップグレードの際には変更されません。 
 
@@ -232,7 +228,6 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 また、同一仮想ネットワークに存在する別の仮想マシンからプライベート IP アドレスで仮想マシンに接続することもできます。 仮想ネットワークの外部から接続している場合は、プライベート IP アドレスを使用して仮想マシンに RDP 接続することはできません。 たとえば、ポイント対サイト仮想ネットワークが構成済みで、使用中のコンピューターからの接続が確立されていない場合は、プライベート IP アドレスを使用して仮想マシンに接続することはできません。
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity-does-all-the-traffic-from-my-vm-go-through-that-connection"></a>クロスプレミス接続が確立されている仮想ネットワーク内に仮想マシンが存在する場合、VM からのトラフィックはすべてその接続を経由しますか。
-
 
 いいえ。 仮想ネットワーク ゲートウェイを経由して送信されるのは、仮想ネットワークのローカル ネットワークの IP アドレス範囲内に存在する送信先 IP が指定されているトラフィックのみです。 送信先 IP が同一仮想ネットワーク内に存在する場合は、その仮想ネットワーク内のみで通信が行われます。 それ以外のトラフィックは、ロード バランサーを経由してパブリック ネットワークに送信されます。ただし、強制トンネリングを使用する場合は Azure VPN ゲートウェイを経由して送信されます。
 

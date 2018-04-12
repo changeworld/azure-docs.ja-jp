@@ -1,10 +1,10 @@
 ---
-title: "Linux を実行する仮想マシンで LVM を構成する | Microsoft Docs"
-description: "Azure で Linux の LVM を構成する方法について説明します。"
+title: Linux を実行する仮想マシンで LVM を構成する | Microsoft Docs
+description: Azure で Linux の LVM を構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 7926627aaa3f0da935131f491d927ab5cb4b35c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a22426d0422585714cb78d541a84d55d2fce6e0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure で Linux VM の LVM を構成する
 このドキュメントでは、Azure 仮想マシンに論理ボリューム マネージャー (LVM) を構成する方法を説明します。 仮想マシンにアタッチされているすべてのディスクに LVM を構成できますが、既定では、ほとんどのクラウド イメージでは OS ディスクに構成された LVM はありません。 これは、ディストリビューションと種類が同じ別の VM に OS ディスクがアタッチされている場合のボリューム グループの重複に伴う問題、つまり回復シナリオにおける問題を予防するためです。 したがって、LVM は、データ ディスクでのみ使用することをお勧めします。

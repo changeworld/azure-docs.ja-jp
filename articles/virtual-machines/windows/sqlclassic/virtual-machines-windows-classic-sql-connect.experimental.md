@@ -1,6 +1,6 @@
 ---
-title: "Azure で SQL Server 仮想マシンに接続する (クラシック) | Microsoft Docs"
-description: "Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。 このトピックでは、クラシック デプロイメント モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
+title: Azure で SQL Server 仮想マシンに接続する (クラシック) | Microsoft Docs
+description: Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。 このトピックでは、クラシック デプロイメント モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -16,10 +16,10 @@ ms.date: 01/31/2017
 ms.author: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: e986440edc0b683d1b1cd49207a355dac060c53d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)
 > [!div class="op_single_selector"]

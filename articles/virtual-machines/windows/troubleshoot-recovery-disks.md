@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell での Windows トラブルシューティング VM の使用 | Microsoft Docs"
-description: "Azure PowerShell で OS ディスクを復旧 VM に接続して、Azure で Windows VM の問題をトラブルシュートする方法を説明します。"
+title: Azure PowerShell での Windows トラブルシューティング VM の使用 | Microsoft Docs
+description: Azure PowerShell で OS ディスクを復旧 VM に接続して、Azure で Windows VM の問題をトラブルシュートする方法を説明します。
 services: virtual-machines-windows
-documentationCenter: 
+documentationCenter: ''
 authors: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 8bac3457e70e86c0f2fb0e70b166097da4a89c23
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: cbb9a47b878471e6efd5f4e280f44c6c8fe78df4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Azure PowerShell で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でのトラブルシューティング手順の実行が必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure PowerShell を使用して仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。
@@ -201,7 +201,7 @@ Set-AzureRmVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enabl
 Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 VM への接続の問題が発生した場合は、[Azure VM への RDP 接続のトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Windows VM でのアプリケーションの接続の問題のトラブルシューティング](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
 Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。

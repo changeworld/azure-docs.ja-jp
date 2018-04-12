@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub デバイス管理の開始 (Python) | Microsoft Docs"
-description: "IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Python を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
+title: Azure IoT Hub デバイス管理の開始 (Python) | Microsoft Docs
+description: IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Python を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。
 services: iot-hub
 documentationcenter: .net
-author: msebolt
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
 ms.service: iot-hub
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
-ms.author: v-masebo
-ms.openlocfilehash: b9dfbd775de3bb54e405e4054bca4e2b878305a3
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.author: v-masebo;kgremban
+ms.openlocfilehash: 001a5d180e2b97894174ba7c63ec3947c9968364
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 

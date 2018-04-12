@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Encryption-at-Rest | Microsoft Docs
-description: "この記事では、Microsoft Azure の保存データの暗号化の概要、全体的な機能、および一般的な考慮事項について説明します。"
+description: この記事では、Microsoft Azure の保存データの暗号化の概要、全体的な機能、および一般的な考慮事項について説明します。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
 ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 Microsoft Azure では、会社のセキュリティとコンプライアンスのニーズに合わせてデータを保護するためのツールが複数用意されています。 このドキュメントでは次に重点を置いています。
@@ -256,14 +256,14 @@ SQL Azure データのクライアント側の暗号化は、[Always Encrypted](
 |                                  | **キー管理** | **サービス管理キー** | **ユーザーが Key Vault で管理** | **ユーザーが管理するオンプレミス** |        |
 | **ストレージとデータベース**            |                |                     |                              |                              |        |
 | ディスク (IaaS)                      |                | -                   | [はい]                          | はい*                         | -      |
-| SQL Server (IaaS)                |                | [はい]                 | [はい]                          | [はい]                          | [はい]    |
+| SQL Server (IaaS)                |                | [はい]                 | はい                          | はい                          | [はい]    |
 | SQL Azure (PaaS)                 |                | [はい]                 | プレビュー                      | -                            | [はい]    |
 | Azure Storage (ブロック/ページ Blob) |                | [はい]                 | プレビュー                      | -                            | [はい]    |
 | Azure Storage (ファイル)            |                | [はい]                 | -                            | -                            | -      |
 | Azure Storage (テーブル、キュー)   |                | -                   | -                            | -                            | [はい]    |
 | Cosmos DB (ドキュメント DB)          |                | [はい]                 | -                            | -                            | -      |
 | StorSimple                       |                | [はい]                 | -                            | -                            | [はい]    |
-| Backup                           |                | -                   | -                            | -                            | [はい]    |
+| バックアップ                           |                | -                   | -                            | -                            | [はい]    |
 | **インテリジェンスおよび分析**       |                |                     |                              |                              |        |
 | Azure Data Factory               |                | [はい]                 | -                            | -                            | -      |
 | Azure Machine Learning           |                | -                   | プレビュー                      | -                            | -      |

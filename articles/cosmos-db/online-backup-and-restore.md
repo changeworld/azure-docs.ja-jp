@@ -1,12 +1,11 @@
 ---
-title: "Azure Cosmos DB でのオンライン バックアップと復元 | Microsoft Docs"
-description: "Azure Cosmos DB データベースで自動バックアップと復元を実行する方法について説明します。"
-keywords: "バックアップと復元、オンライン バックアップ"
+title: Azure Cosmos DB でのオンライン バックアップと復元 | Microsoft Docs
+description: Azure Cosmos DB データベースで自動バックアップと復元を実行する方法について説明します。
+keywords: バックアップと復元、オンライン バックアップ
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 98eade4a-7ef4-4667-b167-6603ecd80b79
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: f88bdd6ffb70ccd2aa48453747964c4afb5bea46
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.author: sngun
+ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Azure Cosmos DB での自動オンライン バックアップと復元
 Azure Cosmos DB は、すべてのデータのバックアップを、一定の間隔で自動的に取得します。 自動バックアップは、データベース操作のパフォーマンスにも可用性にも影響を与えずに取得されます。 すべてのバックアップは別のストレージ サービスに保存され、これらのバックアップは、局地的な障害の発生時に回復機能を提供するためにグローバルにレプリケートされます。 自動バックアップは、Cosmos DB コンテナーを誤って削除した後のデータの回復やディザスター リカバリー ソリューションを必要とするシナリオを想定しています。  

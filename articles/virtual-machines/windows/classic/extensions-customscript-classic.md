@@ -1,11 +1,11 @@
 ---
-title: "Windows VM のカスタム スクリプト拡張機能 | Microsoft Docs"
-description: "カスタム スクリプト拡張機能を使って Azure VM 構成タスクを自動化し、リモート Windows VM でPowerShell スクリプトを実行する"
+title: Windows VM のカスタム スクリプト拡張機能 | Microsoft Docs
+description: カスタム スクリプト拡張機能を使って Azure VM 構成タスクを自動化し、リモート Windows VM でPowerShell スクリプトを実行する
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: ebb7340a-8f61-4d3c-a290-d7bf8de2d0bd
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: danis
-ms.openlocfilehash: 5de2949561ed5f64582898006de7818e81f79f5b
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 0ed73a53e6ec40af888f12cbf8f002a62098cda5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Windows 用のカスタム スクリプト拡張機能
 
@@ -73,7 +73,7 @@ Windows 用のカスタム スクリプト拡張機能では、ターゲット�
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Compute |

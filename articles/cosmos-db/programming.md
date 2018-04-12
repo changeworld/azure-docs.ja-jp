@@ -5,8 +5,7 @@ keywords: データベース トリガー, ストアド プロシージャ, ス�
 services: cosmos-db
 documentationcenter: ''
 author: aliuy
-manager: jhubbard
-editor: mimig
+manager: kfile
 ms.assetid: 0fba7ebd-a4fc-4253-a786-97f1354fbf17
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b55307c3122513b414c3f90a6a36d230f3459c2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 25ae6bde2ca89b2f944a8879c746dcedcf798ec2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
@@ -54,7 +53,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
   * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 この抽象化レイヤーは、データがスキーマを持たない場合に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
   * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-データベース トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[Azure Portal](https://portal.azure.com)、[REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および .NET、Node.js、JavaScript を含む多くのプラットフォームにある[クライアント SDK](sql-api-sdk-dotnet.md) 経由でサポートされます。
+データベース トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[Azure Portal](https://portal.azure.com)、[REST API](/rest/api/cosmos-db/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および .NET、Node.js、JavaScript を含む多くのプラットフォームにある[クライアント SDK](sql-api-sdk-dotnet.md) 経由でサポートされます。
 
 このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/) を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。   
 

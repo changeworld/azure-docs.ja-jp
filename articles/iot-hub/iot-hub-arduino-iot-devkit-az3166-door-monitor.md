@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: e0882a6c87454498d0d1370ee244bfffc137aafb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="door-monitor"></a>ドア モニター          
 
@@ -44,7 +44,7 @@ MXChip IoT DevKit には、磁気センサーが組み込まれています。 �
 
 有効な Azure サブスクリプション 持っていない場合は、次のいずれかの方法で登録できます。
 
-* [30 日間の無料試用版 Microsoft Azure アカウント](https://azureinfo.microsoft.com/us-freetrial.html)をアクティブにします。
+* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)をアクティブにします。
 * MSDN または Visual Studio サブスクライバーの場合は、[Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を要求します。
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Azure に SendGrid サービスをデプロイする

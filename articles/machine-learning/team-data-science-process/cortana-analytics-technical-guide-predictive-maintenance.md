@@ -1,8 +1,8 @@
 ---
-title: "航空宇宙業界における Azure による予測メンテナンス - Cortana Intelligence Solution テクニカル ガイド | Microsoft Docs"
-description: "航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence によるソリューション テンプレートに関する技術ガイドです。"
+title: 航空宇宙業界における Azure による予測メンテナンス - Cortana Intelligence Solution テクニカル ガイド | Microsoft Docs
+description: 航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence によるソリューション テンプレートに関する技術ガイドです。
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
 ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -71,7 +71,7 @@ HDInsight を使用して、(Azure Data Factory によって調整される) [Hi
 (Azure Data Factory によって調整される) [Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning/)で受け取った入力を使用して、特定の航空機エンジンの残存耐用年数 (RUL) を予測します。 
 
 ## <a name="data-publishing"></a>データの公開
-### <a name="azure-sql-database"></a>の接続文字列
+### <a name="azure-sql-database"></a>Azure SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) を使用して、Azure Machine Learning サービスが受け取った予測を格納します。予測は次に [Power BI](https://powerbi.microsoft.com) ダッシュボードで使用されます。
 
 ## <a name="data-consumption"></a>データの使用

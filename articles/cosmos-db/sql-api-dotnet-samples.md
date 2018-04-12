@@ -4,8 +4,7 @@ description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的な�
 keywords: NoSQL のサンプル
 services: cosmos-db
 author: rnagpal
-manager: jhubbard
-editor: monicar
+manager: kfile
 documentationcenter: .net
 ms.assetid: d824d517-903e-4d82-ab0a-09fc3b984c84
 ms.service: cosmos-db
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: a461f2867346bce5faf232ce598c410364b78255
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b826c41f0f7e452d1be29a5c525fad7deac61b9b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET のサンプル
 > [!div class="op_single_selector"]

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 シリーズ ソリューションの概要 | Microsoft Docs"
-description: "StorSimple 階層化と、デバイス、仮想デバイス、サービス、およびストレージの管理について説明し、StorSimple で使用される主な用語を紹介します。"
+title: StorSimple 8000 シリーズ ソリューションの概要 | Microsoft Docs
+description: StorSimple 階層化と、デバイス、仮想デバイス、サービス、およびストレージの管理について説明し、StorSimple で使用される主な用語を紹介します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7144d218-db21-4495-88fb-e3b24bbe45d1
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -213,8 +213,8 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 | 仮想化 |仮想マシン |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | データベース |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | ビデオの監視 |ビデオの監視 |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 2 以降 |
-| Backup |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
-| Backup |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
+| バックアップ |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
+| バックアップ |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
 
 *はい&#42; - ソリューション ガイドラインと制限事項を適用する必要があります。*
 

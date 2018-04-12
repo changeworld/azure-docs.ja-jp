@@ -1,11 +1,11 @@
 ---
-title: "Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う | Microsoft Docs"
-description: "Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う方法"
+title: Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う | Microsoft Docs
+description: Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う方法
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: glimoli
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: genli
-ms.openlocfilehash: b50d139f62ef773fb5b9bb2638e40f8154e80979
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 2743a00404a2ee990147dfb6e73e9c2369eb4753
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 

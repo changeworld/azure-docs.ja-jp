@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: de6cbf954f175777407432845ece24ac49198e46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する
 > [!NOTE]

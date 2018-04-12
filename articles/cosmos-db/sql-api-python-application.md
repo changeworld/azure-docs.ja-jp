@@ -17,10 +17,10 @@ ms.date: 02/23/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 333d34e2c7b07b1ec09d1375d4d05075ed7dde0d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Python Flask Web アプリケーションの作成
 > [!div class="op_single_selector"]

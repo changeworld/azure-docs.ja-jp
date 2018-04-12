@@ -8,13 +8,13 @@ author: tmullaney
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 04/01/2018
 ms.author: thmullan
-ms.openlocfilehash: 62213eeeee0b1d93cabc32101ad6fe51bf394080
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 151a21a60b6205ca9a454faaaeff65330d9b57ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 

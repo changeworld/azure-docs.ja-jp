@@ -1,13 +1,13 @@
 ---
-title: "Azure で Linux VM 用の SSH キー ペアを作成する詳細な手順 | Microsoft Docs"
-description: "Azure で Linux VM 用の SSH 公開キーおよび秘密キーのペアと、各種ユース ケースに応じた証明書を作成する詳細な手順について説明します。"
+title: Azure で Linux VM 用の SSH キー ペアを作成する詳細な手順 | Microsoft Docs
+description: Azure で Linux VM 用の SSH 公開キーおよび秘密キーのペアと、各種ユース ケースに応じた証明書を作成する詳細な手順について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.openlocfilehash: 1308812287fa4484e244c47497a7aef7aa994b14
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Azure で Linux VM 用の SSH キー ペアと追加の証明書を作成する詳細なチュートリアル
 SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。 パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure CLI または Resource Manager テンプレートで作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、SSH のパスワード ログインを無効にするというデプロイ後の構成手順を省略できます。 この記事では、Linux 仮想マシンなどで使用する証明書を生成する詳細な手順について説明します。 SSH キー ペアを短時間で作成して使用したい場合は、「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](mac-create-ssh-keys.md)」をご覧ください。
@@ -208,7 +208,7 @@ ssh fedora22
 
 `ssh fedora22` が実行されると SSH はまず、`Host fedora22` ブロックの設定を見つけて読み込んだ後、最後のブロック `Host *` から残りの設定をすべて読み込みます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次のステップでは、新しい SSH 公開キーを使用して Azure Linux VM を作成します。  Azure VM は、SSH 公開キーをログインとして作成した方が、既定のログイン方法であるパスワードを使って作成するよりも高いセキュリティが得られます。  SSH キーを使用して作成された Azure VM は、既定ではパスワードが無効にされます。そのため、推測によるブルート フォース攻撃を回避できます。
 

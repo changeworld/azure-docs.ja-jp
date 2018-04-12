@@ -1,11 +1,11 @@
 ---
-title: "Azure で Windows VM リソースを移動する | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルで Windows VM を他の Azure サブスクリプションまたはリソース グループに移動します。"
+title: Azure で Windows VM リソースを移動する | Microsoft Docs
+description: Resource Manager デプロイメント モデルで Windows VM を他の Azure サブスクリプションまたはリソース グループに移動します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: cynthn
-ms.openlocfilehash: f4b739fd34cc0c85d47b97b7b42a70eb7f5f5ac7
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: b98b8c947fb34b60c7bd27b006672e0e9d923d3b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>他の Azure サブスクリプションまたはリソース グループへの Windows VM の移動
 この記事では、リソース グループまたはサブスクリプション間で Windows VM を移動する方法について説明します。 サブスクリプション間での移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。

@@ -4,7 +4,7 @@ description: Windows 仮想マシンでは Azure メタデータ サービスを
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
 author: ericrad
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.assetid: 28d8e1f2-8e61-4fbe-bfe8-80a68443baba
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 4740f3f189746a9ea0956d832678858b0528311e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0410b6c7a231f08f9a6a1ccfe3542f0567392d7b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 

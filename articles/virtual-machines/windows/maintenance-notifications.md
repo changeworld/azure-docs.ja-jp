@@ -1,13 +1,13 @@
 ---
-title: "Azure での Windows VM のメンテナンス通知の処理 | Microsoft Docs"
-description: "Azure で実行されている Windows 仮想マシンのメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。"
+title: Azure での Windows VM のメンテナンス通知の処理 | Microsoft Docs
+description: Azure で実行されている Windows 仮想マシンのメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: zivraf
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: zivr
-ms.openlocfilehash: d6d8507508ef1946c1dfa41c47ae81f51c0ad4ef
-ms.sourcegitcommit: 8fc9b78a2a3625de2cecca0189d6ee6c4d598be3
+ms.openlocfilehash: a9cb24b569af4ff0fd3cf9bf66d0b937415907ae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 

@@ -16,10 +16,10 @@ ms.date: 02/20/2018
 ms.author: TomSh
 ms.custom: azlog
 ms.openlocfilehash: 3e229c4db44fc3c8d16aa2bd0a014fb1acc64a5e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure 診断ログおよび Windows イベント転送
 

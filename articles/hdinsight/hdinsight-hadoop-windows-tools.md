@@ -1,8 +1,8 @@
 ---
-title: "Windows PC を使用して HDInsight の Hadoop で作業する - Azure | Microsoft Docs"
-description: "Windows PC から HDInsight の Hadoop で作業します。 PowerShell、Visual Studio、および Linux ツールを使用してクラスターを管理し、クエリを実行します。 .NET でビッグ データ ソリューションを開発します。"
+title: Windows PC を使用して HDInsight の Hadoop で作業する - Azure | Microsoft Docs
+description: Windows PC から HDInsight の Hadoop で作業します。 PowerShell、Visual Studio、および Linux ツールを使用してクラスターを管理し、クエリを実行します。 .NET でビッグ データ ソリューションを開発します。
 services: hdinsight
-keywords: "Windows の Hadoop, Windows 用の Hadoop"
+keywords: Windows の Hadoop, Windows 用の Hadoop
 author: cjgronlund
 manager: jhubbard
 ms.author: cgronlun
@@ -11,10 +11,10 @@ ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: c9e4476334db95c66650f663dc3d8d13df2c5b52
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Hadoop エコシステムで作業する
 
@@ -87,7 +87,7 @@ Linux のみで提供されているツールまたはテクノロジを使用�
 * **Docker for Windows** は、多くの Linux ベースのツールへのアクセスを提供し、Windows から直接実行できます。 たとえば、Docker を使用して、Windows から Hive 用 Beeline クライアントを直接実行できます。 また、Docker を使用して、ローカルの Jupyter ノートブックを実行し、HDInsight の Spark にリモート接続することもできます。 [Docker for Windows を使用する](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](http://mobaxterm.mobatek.net/)** を使用すると、SSH 接続経由でクラスター ファイル システムをグラフィカルに参照することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Linux ベースのクラスターで作業するのが初めての方は、次の記事を参照してください。
 * [Hadoop、Kafka、Spark、その他のクラスターを設定する](hdinsight-hadoop-provision-linux-clusters.md)
 * [Linux 上の HDInsight クラスターに関するヒント](hdinsight-hadoop-linux-information.md)

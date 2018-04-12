@@ -1,11 +1,11 @@
 ---
-title: "Azure で MariaDB (MySQL) クラスターを実行する | Microsoft Docs"
-description: "Azure の仮想マシン上に MariaDB + Galera MySQL クラスターを作成する"
+title: Azure で MariaDB (MySQL) クラスターを実行する | Microsoft Docs
+description: Azure の仮想マシン上に MariaDB + Galera MySQL クラスターを作成する
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: sabbour
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) クラスター: Azure チュートリアル
 > [!IMPORTANT]
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 2. RAID サポートをインストールします。
 
-    a. mdadm をインストールします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 mdadm をインストールします。
 
               yum install mdadm
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/11/2017
 
 3. MariaDB をインストールします。
 
-    a. MariaDB.repo ファイルを作成します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MariaDB.repo ファイルを作成します。
 
                 vi /etc/yum.repos.d/MariaDB.repo
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 10/11/2017
 
 4. MySQL のデータ ディレクトリを、RAID ブロック デバイスに移動します。
 
-    a. 新しい場所に現在の MySQL のディレクトリをコピーし、古いディレクトリを削除します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しい場所に現在の MySQL のディレクトリをコピーし、古いディレクトリを削除します。
 
            cp -avr /var/lib/mysql /mnt/data  
            rm -rf /var/lib/mysql
@@ -146,7 +146,7 @@ ms.lasthandoff: 10/11/2017
             then editing `/etc/selinux/config` to set `SELINUX=permissive`
 6. MySQL の実行を検証します。
 
-   a. MySQL を開始します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MySQL を開始します。
 
            service mysql start
    b. MySQL のインストールをセキュリティで保護し、ルート パスワードを設定、匿名ユーザーを削除してリモート ルート ログインを無効にし、テスト データベースを削除します。
@@ -163,7 +163,7 @@ ms.lasthandoff: 10/11/2017
             service mysql stop
 7. 構成プレースホルダーを作成します。
 
-   a. MySQL の構成を編集して、クラスター設定のプレースホルダーを作成します。 ここでは、 **`<Variables>`** を置き換えたり、コメントを解除したりしないでください。 それらの処理は、このテンプレートから VM を作成した後で行います。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 MySQL の構成を編集して、クラスター設定のプレースホルダーを作成します。 ここでは、 **`<Variables>`** を置き換えたり、コメントを解除したりしないでください。 それらの処理は、このテンプレートから VM を作成した後で行います。
 
             vi /etc/my.cnf.d/server.cnf
    b. **[[galera]]** セクションを編集して空にします。
@@ -192,7 +192,7 @@ ms.lasthandoff: 10/11/2017
 
 9. パフォーマンスにシステムを最適化します。 詳細については、[パフォーマンス チューニング戦略に関するページ](optimize-mysql.md)をご覧ください。
 
-   a. 再度、MySQL の構成ファイルを編集します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 再度、MySQL の構成ファイルを編集します。
 
             vi /etc/my.cnf.d/server.cnf
    b. **[mariadb]** セクションを編集し、次の内容を追加します。
@@ -216,7 +216,7 @@ ms.lasthandoff: 10/11/2017
         waagent -deprovision
 11. ポータルで VM をキャプチャします。 (現在、 [Azure CLI ツールの issue #1268](https://github.com/Azure/azure-xplat-cli/issues/1268) には、Azure CLI ツールでキャプチャしたイメージで、接続されているデータ ディスクがキャプチャされていないという問題が記載されています。)
 
-    a. ポータル経由でコンピューターをシャット ダウンします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ポータル経由でコンピューターをシャット ダウンします。
 
     b. **[取り込み]** をクリックして、イメージの名前を **mariadb-galera-image** として指定します。 説明を入力して、[waagent を実行しました] をオンにします。
       
@@ -344,7 +344,7 @@ Azure CLI を使用して、マシン上で次のコマンドを実行します�
     2 rows in set (0.00 sec)
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、CentOS 7 を実行している Azure の仮想マシン上に、3 ノードの MariaDB + Galera の可用性の高いクラスターを作成しました。 VM では、Azure Load Balancer で、負荷分散が行われます。
 
 必要に応じて、[Linux 上で MySQL をクラスター化する別の方法](mysql-cluster.md)と [Azure Linux VM 上で MySQL のパフォーマンスを最適化とテストする方法](optimize-mysql.md)をご覧ください。

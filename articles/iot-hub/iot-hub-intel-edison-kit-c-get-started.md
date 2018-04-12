@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison からクラウドへの接続 (C) - Intel Edison を Azure IoT Hub に接続する | Microsoft Docs"
-description: "このチュートリアルでは、Intel Edison を Azure IoT Hub に接続し、Intel Edison で Azure クラウド プラットフォームにデータを送信する方法について説明します。"
+title: Intel Edison からクラウドへの接続 (C) - Intel Edison を Azure IoT Hub に接続する | Microsoft Docs
+description: このチュートリアルでは、Intel Edison を Azure IoT Hub に接続し、Intel Edison で Azure クラウド プラットフォームにデータを送信する方法について説明します。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "azure iot intel edison, intel edison iot hub, intel edison からクラウドへのデータの送信, intel edison からクラウドへの接続"
+tags: ''
+keywords: azure iot intel edison, intel edison iot hub, intel edison からクラウドへのデータの送信, intel edison からクラウドへの接続
 ms.assetid: 4885fa2c-c2ee-4253-b37f-ccd55f92b006
 ms.service: iot-hub
 ms.devlang: c
@@ -17,10 +17,10 @@ ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison を Azure IoT Hub に接続する (C)
 

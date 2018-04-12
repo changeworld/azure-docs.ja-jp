@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup - PowerShell を使用して DPM ワークロードをバックアップする | Microsoft Docs"
-description: "PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
+title: Azure Backup - PowerShell を使用して DPM ワークロードをバックアップする | Microsoft Docs
+description: PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: NKolli1
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: e9bd223c-2398-4eb1-9bf3-50e08970fea7
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 9322037427c84f0b8a91cc76f5c0fed52167bc3c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
@@ -59,7 +59,7 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
 * ネットワークの設定
 * 暗号化の設定
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
 次の手順では、Recovery Services コンテナーの作成について説明します。 Recovery Services コンテナーは Backup コンテナーとは異なります。
 
 1. Azure Backup を初めて使用する場合、 **Register-AzureRMResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
@@ -77,7 +77,7 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) を使用できます。 次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) を使用できます。 次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
 
    > [!TIP]
    > Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
@@ -365,5 +365,5 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 使用されているコマンドは、任意のデータソースの種類に合わせて簡単に拡張できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Backup と DPM の詳細については、 [DPM バックアップの概要](backup-azure-dpm-introduction.md)

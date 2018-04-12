@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: mvc,develop apps
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 04/01/2018
 ms.author: v-daveng
-ms.openlocfilehash: ae13f6e3c530e2807d1f52e322663b65aebbb076
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b10d3e469ffac22a2b0994708f50125d21496fef
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Go を使用して Azure SQL Database に照会する
 

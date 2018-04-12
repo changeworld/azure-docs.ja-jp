@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Hightail の統合 | Microsoft Docs"
-description: "Azure Active Directory と Hightail の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Hightail の統合 | Microsoft Docs'
+description: Azure Active Directory と Hightail の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>チュートリアル: Azure Active Directory と Hightail の統合
 

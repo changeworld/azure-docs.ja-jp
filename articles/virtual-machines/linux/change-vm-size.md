@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI 2.0 を使用して Linux VM のサイズを変更する方法 | Microsoft Docs"
-description: "スケールアップまたは VM のサイズを変更することで Linux 仮想マシンをスケールアップまたはスケールダウンする方法。"
+title: Azure CLI 2.0 を使用して Linux VM のサイズを変更する方法 | Microsoft Docs
+description: スケールアップまたは VM のサイズを変更することで Linux 仮想マシンをスケールアップまたはスケールダウンする方法。
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
-manager: timlt
-editor: 
-tags: 
+manager: jeconnoc
+editor: ''
+tags: ''
 ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fa8ca130fdcbe408d75e7315ad5ebdb8caae94e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e9d15a6927c0fea8bc79d359817158c167433d25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>CLI 2.0 を使用して Linux 仮想マシンのサイズを変更する
 

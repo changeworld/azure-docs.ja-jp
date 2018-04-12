@@ -5,8 +5,7 @@ keywords: インデックス作成のしくみ, 自動インデックス作成, 
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
-editor: monicar
+manager: kfile
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
 ms.service: cosmos-db
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 5610c5fdc6a04f9ef13d2e4592f0d7e5d8eba30c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 277ddd5777ff8edf5195e79885929e3a8c758d7c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB のデータ インデックス作成のしくみ
 

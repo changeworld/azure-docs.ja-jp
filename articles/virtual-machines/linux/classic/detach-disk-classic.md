@@ -1,11 +1,11 @@
 ---
-title: "Azure で Linux VM からディスクを切断する | Microsoft Docs"
-description: "クラシック デプロイ モデルを使用して作成した Azure の仮想マシンから、データ ディスクを切断する方法について説明します。"
+title: Azure で Linux VM からディスクを切断する | Microsoft Docs
+description: クラシック デプロイ モデルを使用して作成した Azure の仮想マシンから、データ ディスクを切断する方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 8433affa-376b-4c22-863a-40488adda486
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 3b9678e7b1cfbff1ba83ae6cf881546335ab3e12
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 1d4490e21dba139117471bbf270bd33e7503b6b6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Linux 仮想マシンからディスクを切断する方法
 > [!IMPORTANT] 

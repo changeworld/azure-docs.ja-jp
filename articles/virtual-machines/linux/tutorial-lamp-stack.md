@@ -1,11 +1,11 @@
 ---
-title: "Azure の Linux 仮想マシンへの LAMP のデプロイ | Microsoft Docs"
-description: "チュートリアル - Azure 上の Linux VM に LAMP スタックをインストールする"
+title: Azure の Linux 仮想マシンへの LAMP のデプロイ | Microsoft Docs
+description: チュートリアル - Azure 上の Linux VM に LAMP スタックをインストールする
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: 8fcf411db844e227e0c4db0e690a1832f98b42f1
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 21790a44ff60bd11202814efd5c0f32e8b614ec4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="install-a-lamp-web-server-on-an-azure-vm"></a>Azure VM への LAMP Web サーバーのインストール
 この記事では、Apache Web サーバー、MySQL、PHP (LAMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 NGINX Web サーバーを実行する場合は、[LEMP スタック](tutorial-lemp-stack.md)チュートリアルを参照してください。 LAMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/28/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
@@ -114,7 +114,7 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure に LAMP サーバーを展開しました。 以下の方法について学習しました。
 

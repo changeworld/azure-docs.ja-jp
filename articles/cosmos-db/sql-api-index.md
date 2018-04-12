@@ -2,8 +2,8 @@
 title: 'Azure Cosmos DB: SQL API の記事 | Microsoft Docs'
 description: Azure Cosmos DB で SQL API を使用したドキュメント データベース作成に固有の記事の一覧。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 82bec99a-ac2b-474e-b41f-d2fb296c8feb
 ms.service: cosmos-db
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
-ms.author: mimig
-ms.openlocfilehash: 20b8cabded739335e9615d001138bde16e6308e5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: sngun
+ms.openlocfilehash: 5e6f277a3c020334ba26a0b1a2681cbbdd672f45
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Azure Cosmos DB: SQL API のドキュメント
 
@@ -51,7 +51,7 @@ Azure Cosmos DB の SQL API の学習を開始するにあたり、次のトピ�
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
 - [.NET](sql-api-dotnet-application.md)
-- [Node.js](sql-api-nodejs-application.md) 
+- [Node.JS](sql-api-nodejs-application.md) 
 - [Java](sql-api-java-application.md)
 - [Python](sql-api-python-application.md)
 
@@ -60,7 +60,7 @@ Azure Cosmos DB の SQL API の学習を開始するにあたり、次のトピ�
 - [.NET](sql-api-get-started.md)
 - [.NET Core](sql-api-dotnetcore-get-started.md) 
 - [Java](sql-api-java-get-started.md) 
-- [Node.JS](sql-api-nodejs-get-started.md) 
+- [Node.js](sql-api-nodejs-get-started.md) 
 - [C++](sql-api-cpp-get-started.md)
 
 ### <a name="create-a-mobile-app"></a>モバイル アプリを作成する
@@ -97,7 +97,7 @@ Azure Cosmos DB には、クライアント側でのアプリケーション開�
 - [.NET](sql-api-sdk-dotnet.md)
 - [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 - [.NET Core](sql-api-sdk-dotnet-core.md)
-- [Node.JS](sql-api-sdk-node.md)
+- [Node.js](sql-api-sdk-node.md)
 - [Python](sql-api-sdk-python.md)
 
 ## <a name="reference"></a>リファレンス

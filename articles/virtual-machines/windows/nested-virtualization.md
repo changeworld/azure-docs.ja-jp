@@ -1,21 +1,21 @@
 ---
-title: "Azure Virtual Machines で入れ子になった仮想化を有効にする方法 | Microsoft Docs"
-description: "Azure Virtual Machines で入れ子になった仮想化を有効にする方法"
+title: Azure Virtual Machines で入れ子になった仮想化を有効にする方法 | Microsoft Docs
+description: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: philmea
-manager: timlt
+manager: jeconnoc
 ms.author: philmea
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 180b87e18d98bb1e7ddefdcce09fc45d2fc26d0f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: bf2de6738f83be96cd574c43dd6584fa3885ba6d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -46,10 +46,10 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Azure VM の Hyper-V 機能を有効にする
-この設定は手動で構成するか、用意されている PowerShell スクリプトを使って構成を有効にできます。
+この設定は手動で構成するか、用意されている PowerShell スクリプトを使って自動で構成できます。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>オプション 1: PowerShell スクリプトを使用して、入れ子になった仮想化を構成する
-Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください  (https://aka.ms/AzureNVblog)。
+Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください  https://aka.ms/AzureNVblog
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>オプション 2: 入れ子になった仮想化を手動で構成する
 
@@ -80,7 +80,7 @@ Windows Server 2016 ホストの入れ子になった仮想化を有効にする
     New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
     ```
 
-3. スイッチのプロパティを表示し、新しいアダプターの ifIndex 書き留めます。
+3. スイッチのプロパティを表示し、新しいアダプターの ifIndex を書き留めます。
 
     ```powershell
     Get-NetAdapter
@@ -90,13 +90,13 @@ Windows Server 2016 ホストの入れ子になった仮想化を有効にする
 
     >[!NOTE] 
     >
-    >作成したばかりの仮想スイッチの"ifIndex" を書き留めます。
+    >作成したばかりの仮想スイッチの "ifIndex" を書き留めます。
     
 4. NAT ゲートウェイの IP アドレスを作成します。
     
 ゲートウェイを構成するには、ネットワークに関する情報がいくつか必要です。    
   * IPAddress - NAT ゲートウェイ IP は、仮想ネットワーク サブネットの既定のゲートウェイ アドレスとして使用する IPv4 または IPv6 アドレスを指定します。 一般的な形式は a.b.c.1 ("192.168.0.1" など) です。 末尾は .1 である必要はありませんが、通常は .1 です (プレフィックス長に基づきます)。 一般的には、RFC 1918 プライベート ネットワーク アドレス空間を使用する必要があります。 
-  * PrefixLength - サブネット プレフィックス長は、ローカル サブネット サイズ (サブネット マスク) を定義します。 サブネット プレフィックス長は 0 ～ 32 の整数値になります。 0 は、インターネット全体をマップし、32 は、マップされた IP を 1 つのみ許可します。 共通の値は 24 ～ 12 で、NAT に接続する必要がある IP 数によって異なります。 共通の PrefixLength が 24 の場合、これはサブネット マスク 255.255.255.0 です。
+  * PrefixLength - サブネット プレフィックス長は、ローカル サブネット サイズ (サブネット マスク) を定義します。 サブネット プレフィックス長は 0 ～ 32 の整数値になります。 0 は、インターネット全体をマップし、32 は、マップされた IP を 1 つのみ許可します。 一般的な値は 24 ～ 12 で、NAT に接続する必要がある IP 数によって異なります。 通常、PrefixLength は 24 です。これは 255.255.255.0 のサブネット マスクです。
   * InterfaceIndex - **ifIndex** は、前の手順で作成した仮想スイッチのインターフェイス インデックスです。 
 
     ```powershell
@@ -125,7 +125,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
     
     >[!NOTE] 
     >
-    >VM にインストールするには、オペレーティング システム用のインストール メディアが必要です。 ここでは、Windows 10 Enterprise を使用しています。
+    >VM にインストールするオペレーティング システムのインストール メディアが必要です。 ここでは、Windows 10 Enterprise を使用しています。
 
 ## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>IP アドレスをゲスト仮想マシンに割り当てる
 
@@ -152,7 +152,7 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
   
 3. スコープの名前と説明を入力し、**[次へ]** をクリックします。
   
-4. DCHP サーバーの IP 範囲を定義します (192.168.0.100 ～ 192.168.0.200 など)。
+4. DHCP サーバーの IP 範囲を定義します (192.168.0.100 ～ 192.168.0.200 など)。
   
 5. [デフォルト ゲートウェイ] ページが表示されるまで、**[次へ]** をクリックします。 既定のゲートウェイとして前に作成した IP アドレス (192.168.0.1 など) を入力します。
   

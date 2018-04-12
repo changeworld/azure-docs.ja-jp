@@ -1,11 +1,11 @@
 ---
-title: "負荷分散セットを使用して MySQL をクラスター化する | Microsoft Docs"
-description: "Azure 上のクラシック デプロイメント モデルを使用して作成された負荷分散された可用性の高い Linux MySQL クラスターをセットアップする"
+title: 負荷分散セットを使用して MySQL をクラスター化する | Microsoft Docs
+description: Azure 上のクラシック デプロイメント モデルを使用して作成された負荷分散された可用性の高い Linux MySQL クラスターをセットアップする
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: bureado
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 6c413a16-e9b5-4ffe-a8a3-ae67046bbdf3
 ms.service: virtual-machines-linux
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2671def47879e3d4eae000c9084cd458e29b933
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>負荷分散セットを使用して Linux の MySQL をクラスター化する
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 MySQL クラスターをデプロイする必要がある場合、[Resource Manager テンプレート](https://azure.microsoft.com/documentation/templates/mysql-replication/)を使用できます。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 MySQL クラスターをデプロイする必要がある場合、[Resource Manager テンプレート](https://azure.microsoft.com/documentation/templates/mysql-replication/)を使用できます。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 この記事では、Linux ベースの高可用性サービスを Microsoft Azure 上にデプロイする際に使用できるさまざまな方法について詳細に説明すると共に、MySQL サーバーの高可用性についての初歩的な知識も説明します。 この記事の内容を紹介するビデオが [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL) で視聴できます。

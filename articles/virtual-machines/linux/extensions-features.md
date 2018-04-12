@@ -1,11 +1,11 @@
 ---
-title: "Linux 用の仮想マシンの拡張機能とその機能 | Microsoft Docs"
-description: "Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。"
+title: Linux 用の仮想マシンの拡張機能とその機能 | Microsoft Docs
+description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 30e606154830b867382ea1ea439b97749370a1f6
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 2a53e34ed6f1eef3e54585587ddadd544b1ae728
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 

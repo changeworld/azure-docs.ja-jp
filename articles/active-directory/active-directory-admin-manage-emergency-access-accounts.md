@@ -1,8 +1,7 @@
 ---
-title: "Azure AD で緊急アクセス用管理者アカウントを管理する | Microsoft Docs"
-description: "この記事では、既存の Azure Active Directory 環境内での特権アクセスを制限するのに役立つ緊急アクセス用アカウントを使う方法について説明します。"
+title: Azure AD で緊急アクセス用管理者アカウントを管理する | Microsoft Docs
+description: この記事では、既存の Azure Active Directory 環境内での特権アクセスを制限するのに役立つ緊急アクセス用アカウントを使う方法について説明します。
 services: active-directory
-keywords: "SEO チャンプを確認せずに、キーワードを追加または編集しないでください。"
 author: markwahl-msft
 ms.author: billmath
 ms.date: 12/13/2017
@@ -11,11 +10,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 1545fb9a89794a74efbb855c4480040973c3308e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 5c256befba4c73527b529c953f7b9cd4d266450c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する 
 

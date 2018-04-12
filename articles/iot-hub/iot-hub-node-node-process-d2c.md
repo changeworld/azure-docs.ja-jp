@@ -3,7 +3,7 @@ title: Azure IoT Hub (ノード) を使用したメッセージのルーティ�
 description: 他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。
 services: iot-hub
 documentationcenter: node
-author: msebolt
+author: dominicbetts
 manager: timlt
 editor: ''
 ms.assetid: bd9af5f9-a740-4780-a2a6-8c0e2752cf48
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
-ms.author: v-masebo
-ms.openlocfilehash: f314d24250330a4dadf99d98b94c98b3db03f22c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: v-masebo;dobett
+ms.openlocfilehash: 02edb06d2d871cffac717358e33a6720c444a9b3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="routing-messages-with-iot-hub-node"></a>IoT Hub (ノード) でのメッセージのルーティング
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/03/2018
    node SimulatedDevice.js
    ```
    
-   ![simulated-device の実行][simulateddevice]
+   ![SimulatedDevice][simulateddevice]
 
 ## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(省略可能) IoT ハブにストレージ コンテナーを追加してメッセージをルーティングする
 

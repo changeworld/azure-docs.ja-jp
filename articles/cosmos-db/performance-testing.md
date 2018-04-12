@@ -4,7 +4,7 @@ description: Azure Cosmos DB のスケールとパフォーマンスをテスト
 keywords: パフォーマンス テスト
 services: cosmos-db
 author: arramac
-manager: jhubbard
+manager: kfile
 editor: ''
 documentationcenter: ''
 ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 36665c0c26dad4e3b667b341b63c5859ece7605b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 40088ca4d97a3fe1b2bc325a26e25ab68729ebbd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 

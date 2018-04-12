@@ -1,11 +1,11 @@
 ---
-title: "Azure AD .NET プロトコルの概要 | Microsoft Docs"
-description: "Azure AD を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法。"
+title: Azure AD .NET プロトコルの概要 | Microsoft Docs
+description: Azure AD を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法。
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mbaldwin
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/21/2016
 ms.author: priyamo
 ms.openlocfilehash: 42ce8dfd30cda7d4085778954350550fd9fdf13d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>AD テナントへのアプリケーションの登録
 まず、Azure Active Directory (Azure AD) テナントにアプリケーションを登録する必要があります。 これにより、アプリケーションのアプリケーション ID を取得でき、トークンを受信できるようになります。

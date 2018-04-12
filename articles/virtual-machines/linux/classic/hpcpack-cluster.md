@@ -1,11 +1,11 @@
 ---
-title: "HPC Pack クラスター内の Linux コンピューティング VM | Microsoft Docs"
-description: "Linux ハイ パフォーマンス コンピューティング (HPC) ワークロード用の HPC Pack クラスターを Azure で作成して管理する方法を説明します。"
+title: HPC Pack クラスター内の Linux コンピューティング VM | Microsoft Docs
+description: Linux ハイ パフォーマンス コンピューティング (HPC) ワークロード用の HPC Pack クラスターを Azure で作成して管理する方法を説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 4d080fdd-5ffe-4f54-a78d-4c818f6eb3fb
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 Windows Server を実行するヘッド ノードとサポートされる Linux ディストリビューションを実行する計算ノードを含む [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) クラスターを Azure に設定します。 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するオプションを調べます。 クラスターに Linux HPC ジョブを送信する方法について説明します。
@@ -145,7 +145,7 @@ HPC Pack IaaS デプロイ スクリプトは、XML 構成ファイルを入力�
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 上記のコマンドには **AdminPassword** が指定されていないため、ユーザー *MyAdminName* のパスワードを入力するよう求められます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上記のコマンドには **AdminPassword** が指定されていないため、ユーザー *MyAdminName* のパスワードを入力するよう求められます。
    
     b. スクリプトにより構成ファイルの検証が開始されます。 ネットワーク接続の状態にもよりますが、最大で数分かかることがあります。
    
@@ -296,7 +296,7 @@ HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) ツー�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ノード数を増やしてクラスターをスケール アップするか、クラスター上で Linux のワークロードの実行を試行します。 例については、 [Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](hpcpack-cluster-namd.md)方法に関するページを参照してください。
 * [RDMA 対応のコンピューティング集中型 VM](../../windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) で MPI ワークロードを実行して、クラスターを試します。 たとえば、「 [Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](hpcpack-cluster-openfoam.md)」を参照してください。
 * オンプレミスの HPC Pack クラスターでの Linux ノードの使用については、 [TechNet のガイダンス](https://technet.microsoft.com/library/mt595803.aspx)を参照してください。

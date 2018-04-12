@@ -9,10 +9,10 @@ ms.date: 03/23/2018
 ms.author: marsma
 ms.custom: include file
 ms.openlocfilehash: 575483192954f4e05db50e701e223829e041cffc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 | リソース | Basic | 標準 | Premium |
 |---|---|---|---|---|

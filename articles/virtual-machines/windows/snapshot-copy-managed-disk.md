@@ -1,10 +1,10 @@
 ---
-title: "Azure で VHD のスナップショットを作成する | Microsoft Docs"
-description: "バックアップまたは問題のトラブルシューティングに使うために、Azure VM のコピーを作成する方法について説明します。"
-documentationcenter: 
+title: Azure で VHD のスナップショットを作成する | Microsoft Docs
+description: バックアップまたは問題のトラブルシューティングに使うために、Azure VM のコピーを作成する方法について説明します。
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 15eb778e-fc07-45ef-bdc8-9090193a6d20
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 9f773a8dfe772864fc9fc437052ac766a87623d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c5f4c7224e04b601d7d3fe4da7d8f5f0c02c7039
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 

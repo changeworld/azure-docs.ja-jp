@@ -1,8 +1,8 @@
 ---
-title: "Python を使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
-description: "Python を使用して Data Lake Store アカウントを作成し、ジョブを送信する方法について説明します。 "
+title: Python を使用して Azure Data Lake Analytics を管理する | Microsoft Docs
+description: 'Python を使用して Data Lake Store アカウントを作成し、ジョブを送信する方法について説明します。 '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: matt1883
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
 ms.custom: devcenter
-ms.openlocfilehash: 22b56e9569ac1fd2afe2c91013fa5605f9f3ef99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
 
@@ -150,13 +150,11 @@ armGroupResult = resourceClient.resource_groups.create_or_update( rg, ResourceGr
 最初にストア アカウントを作成します。
 
 ```python
-adlaAcctResult = adlaAcctClient.account.create(
+adlsAcctResult = adlsAcctClient.account.create(
     rg,
-    adla,
-    DataLakeAnalyticsAccount(
-        location=location,
-        default_data_lake_store_account=adls,
-        data_lake_store_accounts=[DataLakeStoreAccountInfo(name=adls)]
+    adls,
+    DataLakeStoreAccount(
+        location=location)
     )
 ).wait()
 ```
@@ -251,7 +249,7 @@ newPolicyParams = ComputePolicyCreateOrUpdateParameters(userAadObjectId, "User",
 adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams)
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 - U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
