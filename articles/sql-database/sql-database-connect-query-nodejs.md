@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: mvc,develop apps
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/06/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 3f28f360eda52087c8fca841bbd0a6804185813f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ebc199f740179ce14c7fb374e8be8862d24d6c32
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>Node.js を使用して Azure SQL Database に照会する
 

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array 更新プログラムのリリース ノート | Microsoft Docs"
-description: "Update 0.2 および Update 0.1 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。"
+title: StorSimple Virtual Array 更新プログラムのリリース ノート | Microsoft Docs
+description: Update 0.2 および Update 0.1 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 3993864d-2ddd-4302-a2f1-8d737fba6eab
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 および 0.1 のリリース ノート
 ## <a name="overview"></a>概要

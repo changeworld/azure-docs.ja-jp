@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array ジョブの表示と管理 | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスの [ジョブ] ページと、そのページを使用して、StorSimple Virtual Array の最近のジョブと現在のジョブを追跡する方法を説明します。"
+title: StorSimple Virtual Array ジョブの表示と管理 | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスの [ジョブ] ページと、そのページを使用して、StorSimple Virtual Array の最近のジョブと現在のジョブを追跡する方法を説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 31879821-b599-4609-a7f4-d4b0f658a933
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のジョブを表示する
 ## <a name="overview"></a>概要

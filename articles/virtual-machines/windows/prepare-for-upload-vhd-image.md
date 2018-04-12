@@ -1,11 +1,11 @@
 ---
-title: "Windows VHD の Azure へのアップロードの準備 | Microsoft Docs"
-description: "Azure にアップロードする前に Windows VHD または VHDX を準備する方法"
+title: Windows VHD の Azure へのアップロードの準備 | Microsoft Docs
+description: Azure にアップロードする前に Windows VHD または VHDX を準備する方法
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: glimoli
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 67832fd20b758af6fd7a31c0099ce8019bb2442d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 74c47907698e3365d093f0e17dba87b690406443
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代の VM のみがサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -384,7 +384,7 @@ Windows ベースのコンピューターにインストールされているロ
 
     ![システム準備ツール](media/prepare-for-upload-vhd-image/syspre.png)
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-5. **[OK]**をクリックします。
+5. Click **OK**.
 6. sysprep が完了したら、VM をシャットダウンします。 VM をシャットダウンするために **[再起動]** を使用しないでください。
 7. これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化した VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
 
@@ -425,7 +425,7 @@ Windows ベースのコンピューターにインストールされているロ
     ```
 VM に接続されているデータ ディスクがある場合、テンポラル ドライブ ボリュームのドライブ文字は通常 "D" になります。 この文字は、使用可能なドライブ数や行った設定に応じて異なる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
 * [Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング](troubleshoot-activation-problems.md)
 

@@ -1,10 +1,10 @@
 ---
-title: "Azure CLI 1.0 を使用して Linux VM のコピーを作成する | Microsoft Docs"
-description: "Azure CLI 1.0 を使用して Resource Manager デプロイメント モデルに Azure Linux 仮想マシンのコピーを作成する方法を説明します"
+title: Azure CLI 1.0 を使用して Linux VM のコピーを作成する | Microsoft Docs
+description: Azure CLI 1.0 を使用して Resource Manager デプロイメント モデルに Azure Linux 仮想マシンのコピーを作成する方法を説明します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 tags: azure-resource-manager
 ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 62ae54f3596c9383cbf3b401fcfdb42ecfdee63c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb350f8d14ad451ad3ff7cd617ca3f90967aaa4b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Azure で実行されている Linux 仮想マシンのコピーを作成する
 この記事では、Resource Manager デプロイ モデルを使用して、Linux を実行する Azure 仮想マシン (VM) のコピーを 作成する方法について説明します。 はじめにオペレーティング システムとデータ ディスクを新しいコンテナーにコピーし、次にネットワーク リソースをセットアップして、新しい仮想マシンを作成します。
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 | --- | --- |
 | VM 名 |`azure vm list` |
 | リソース グループ名 |`azure vm list` |
-| Location (場所) |`azure vm list` |
+| 場所 |`azure vm list` |
 | ストレージ アカウント名 |`azure storage account list -g <resourceGroup>` |
 | コンテナー名 |`azure storage container list -a <sourcestorageaccountname>` |
 | ソース VM の VHD ファイル名 |`azure storage blob list --container <containerName>` |
@@ -110,6 +110,6 @@ azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure CLI を使用して新しい仮想マシンを管理する方法については、 [Azure Resource Manager の Azure CLI コマンド](../azure-cli-arm-commands.md)に関する記事をご覧ください。
 

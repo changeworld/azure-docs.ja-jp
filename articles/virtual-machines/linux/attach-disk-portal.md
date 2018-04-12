@@ -1,11 +1,11 @@
 ---
-title: "データ ディスクを Linux VM に接続する | Microsoft Docs"
-description: "ポータルを利用し、新しいデータ ディスクまたは既存のデータ ディスクを Linux VM に接続します。"
+title: データ ディスクを Linux VM に接続する | Microsoft Docs
+description: ポータルを利用し、新しいデータ ディスクまたは既存のデータ ディスクを Linux VM に接続します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 1a7c98207a5f19d514a0cd05b66898e7fb725944
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 4acfe53d68db3192c1f6c3c9e5f91b55bd5df7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -32,7 +32,7 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューで **[仮想マシン]** をクリックします。
 3. 一覧から仮想マシンを選択します。
 4. [仮想マシン] ページにアクセスし、**[要点]** にある **[ディスク]** をクリックします。
@@ -73,5 +73,5 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure CLI を利用し、[データ ディスクを接続する](add-disk.md)こともできます。

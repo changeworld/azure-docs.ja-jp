@@ -1,10 +1,10 @@
 ---
-title: "Linux を実行する仮想マシンでのソフトウェア RAID の構成 | Microsoft Docs"
-description: "mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。"
+title: Linux を実行する仮想マシンでのソフトウェア RAID の構成 | Microsoft Docs
+description: mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
@@ -61,7 +61,7 @@ zypper install mdadm
                     sectors (command 'u').
     ```
 
-2. プロンプトが表示されたら **n** キーを押して、新しいパーティションを作成します。
+2. プロンプトが表示されたら 'n' キーを押して、**新しい**パーティションを作成します。
 
     ```bash
     Command (m for help): n
@@ -120,7 +120,7 @@ zypper install mdadm
 
 2. 新しい RAID デバイスにファイル システムを作成します。
    
-    a. **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127

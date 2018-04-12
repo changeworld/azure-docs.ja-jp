@@ -6,8 +6,6 @@ items:
     items:
       - name: Azure Cosmos DB について
         href: introduction.md
-      - name: ドキュメントの実験
-        href: experiment.experimental.md
   - name: クイック スタート
     expanded: true
     items:
@@ -80,7 +78,7 @@ items:
       - name: Throughput
         href: request-units.md
       - name: TCO
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: サーバーレス データベース
         href: serverless-computing-database.md
       - name: セキュリティ
@@ -200,6 +198,8 @@ items:
                 items:
                   - name: パフォーマンス テスト
                     href: performance-testing.md
+                  - name: Async Java のパフォーマンスに関するヒント
+                    href: performance-tips-async-java.md
                   - name: .NET のパフォーマンスに関するヒント
                     href: performance-tips.md
                   - name: Java のパフォーマンスに関するヒント
@@ -217,17 +217,17 @@ items:
                   - name: Logic Apps を使用したアプリケーション ログ記録
                     href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
                   - name: Azure Functions にバインドする
-                    href: ../azure-functions/functions-bindings-documentdb.md
+                    href: ../azure-functions/functions-bindings-cosmosdb.md
                   - name: Azure Search と統合する
-                    href: ../search/search-howto-index-documentdb.md
+                    href: ../search/search-howto-index-cosmosdb.md
                   - name: Azure Data Factory を使用してデータを移動する
                     href: ../data-factory/connector-azure-cosmos-db.md
                   - name: Azure Stream Analytics でリアルタイム データを分析する
-                    href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+                    href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
                   - name: Logic Apps を使用して変更された HL7 FHIR レコードを取得する
                     href: change-feed-hl7-fhir-logic-apps.md
                   - name: センサー データをリアルタイムで処理する
-                    href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+                    href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
                   - name: Power BI でデータを視覚化する
                     href: powerbi-visualize.md
                   - name: ODBC ドライバーを利用してデータを視覚化する
@@ -263,7 +263,7 @@ items:
               - name: スキーマ独立型インデックス作成資料
                 href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: SQL のプレイグラウンド
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
       - name: MongoDB API ドキュメント
         items:
           - name: 概要

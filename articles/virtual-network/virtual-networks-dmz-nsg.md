@@ -1,12 +1,12 @@
 ---
-title: "Azure DMZ の例 – NSG を使用して単純な DMZ を構築する | Microsoft Docs"
-description: "ネットワーク セキュリティ グループ (NSG) を使用して DMZ を構築する"
+title: Azure DMZ の例 – NSG を使用して単純な DMZ を構築する | Microsoft Docs
+description: ネットワーク セキュリティ グループ (NSG) を使用して DMZ を構築する
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>例 1 – NSG と Azure Resource Manager テンプレートを使用して簡単な DMZ を構築する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]

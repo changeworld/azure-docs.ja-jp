@@ -1,6 +1,6 @@
 ---
-title: "Azure Search についてよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Microsoft Azure Search サービスについてよく寄せられる質問とその回答が掲載されています"
+title: Azure Search についてよく寄せられる質問 (FAQ) | Microsoft Docs
+description: Microsoft Azure Search サービスについてよく寄せられる質問とその回答が掲載されています
 services: search
 author: HeidiSteen
 manager: jhubbard
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: heidist
 ms.openlocfilehash: f61fe2930bc70e800e5d79773e0de6827621e845
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
 

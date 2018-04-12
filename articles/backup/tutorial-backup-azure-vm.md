@@ -1,13 +1,13 @@
 ---
-title: "Azure での Azure VM の大規模なバックアップ | Microsoft Docs"
-description: "このチュートリアルでは、複数の Azure 仮想マシンを Recovery Services コンテナーにバックアップする方法について説明します。"
+title: Azure での Azure VM の大規模なバックアップ | Microsoft Docs
+description: このチュートリアルでは、複数の Azure 仮想マシンを Recovery Services コンテナーにバックアップする方法について説明します。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "仮想マシン バックアップ; 仮想マシンのバックアップ; バックアップとディザスター リカバリー"
-ms.assetid: 
+editor: ''
+keywords: 仮想マシン バックアップ; 仮想マシンのバックアップ; バックアップとディザスター リカバリー
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 09/06/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: mvc
-ms.openlocfilehash: 01609c00c6f0585eff4843932b9eb7a090a59c19
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 62cc623dc3130119c5ec803933012c5545d703e5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>Azure での Azure 仮想マシンの大規模なバックアップ
 
@@ -46,7 +46,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
 New-AzureRmRecoveryServicesVault -Name myRSvault -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
 
-Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。 次に **Set-AzureRmRecoveryServicesBackupProperties** を使用して、**-BackupStorageRedundancy** オプションを [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) に設定します。 
+Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。 次に **Set-AzureRmRecoveryServicesBackupProperties** を使用して、**-BackupStorageRedundancy** オプションを [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) に設定します。 
 
 ```powershell
 $vault1 = Get-AzureRmRecoveryServicesVault –Name myRSVault
@@ -87,7 +87,7 @@ Remove-AzureRmRecoveryServicesVault -Vault $vault1
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 仮想マシンのバックアップ中に問題が発生した場合は、[Azure 仮想マシンのバックアップのトラブルシューティングに関する記事](backup-azure-vms-troubleshoot.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでお使いの仮想マシンが保護されました。管理タスクおよび仮想マシンを復旧ポイントから復元する方法の詳細については、次の記事をご覧ください。
 
 * バックアップ ポリシーを変更する場合は、「[AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする](backup-azure-vms-automation.md#create-a-protection-policy)」をご覧ください。

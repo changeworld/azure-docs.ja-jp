@@ -1,13 +1,12 @@
 ---
-title: "Azure PowerShell スクリプト - Azure Cosmos DB アカウント キーを再生成する | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - Azure Cosmos DB アカウント キーを再生成する"
+title: Azure PowerShell スクリプト - Azure Cosmos DB アカウント キーを再生成する | Microsoft Docs
+description: Azure PowerShell サンプル スクリプト - Azure Cosmos DB アカウント キーを再生成する
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: PowerShell
@@ -15,12 +14,12 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
-ms.author: mimig
-ms.openlocfilehash: 187d7b0839e1cd94122d4455c11eda05673f5acc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: sngun
+ms.openlocfilehash: e4ef312ec96bb51b36297ce2d68d3c9f41333033
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウント キーを再生成する
 
@@ -52,7 +51,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

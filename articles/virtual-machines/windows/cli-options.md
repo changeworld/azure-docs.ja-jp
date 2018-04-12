@@ -1,13 +1,13 @@
 ---
-title: "Windows 上での Azure CLI の使用 | Microsoft Docs"
-description: "Windows 上での Azure CLI の使用"
+title: Windows 上での Azure CLI の使用 | Microsoft Docs
+description: Windows 上での Azure CLI の使用
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: e54ea62b7b7a7adb4874866a540ed9a6a097fc42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6eaad8bc4374cf84ee248e6f4b1be20fd4dfd955
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>Windows 上での Azure CLI の使用
 

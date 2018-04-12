@@ -1,13 +1,13 @@
 ---
-title: "Azure での作成時に cloud-init を使用して Linux VM をカスタマイズする | Microsoft Docs"
-description: "Azure CLI 1.0 による作成時に cloud-init を使用して Linux VM をカスタマイズする方法"
+title: Azure での作成時に cloud-init を使用して Linux VM をカスタマイズする | Microsoft Docs
+description: Azure CLI 1.0 による作成時に cloud-init を使用して Linux VM をカスタマイズする方法
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
-ms.openlocfilehash: 0b6150bca333188666935b3c9aa02c4b33690db9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e9182a18a2827ed7f54f5fd042e5934b3b1fd5c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Azure CLI 1.0 による作成時に cloud-init を使用して Linux VM をカスタマイズする
 この記事では、ホスト名の設定、インストールされているパッケージの更新、およびユーザー アカウントの管理を行う cloud-init スクリプトを作成する方法について説明します。  cloud-init スクリプトは、VM の作成時に Azure CLI から呼び出します。  この記事では以下が必要です。
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
 * `azure login` でログインした [Azure CLI](../../cli-install-nodejs.md)。
-* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である *必要があります* 。
+* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である*必要があります*。
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
@@ -99,12 +99,12 @@ Azure では、3 つの方法でデプロイ時または起動時に Linux VM �
 ## <a name="cloud-init-availability-on-azure-vm-quick-create-image-aliases"></a>Azure VM の各簡易作成イメージ エイリアスで cloud-init を使用できるかどうかを次に示します。
 | エイリアス | 発行元 | プラン | SKU | バージョン | cloud-init |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| CentOS |OpenLogic |Centos |7.2 |最新 |× |
-| CoreOS |CoreOS |CoreOS |安定版 |最新 |○ |
-| Debian |credativ |Debian |8 |最新 |× |
-| openSUSE |SUSE |openSUSE |13.2 |最新 |× |
-| RHEL |Redhat |RHEL |7.2 |最新 |× |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |最新 |○ |
+| CentOS |OpenLogic |Centos |7.2 |latest |× |
+| CoreOS |CoreOS |CoreOS |安定版 |latest |はい |
+| Debian |credativ |Debian |8 |latest |× |
+| openSUSE |SUSE |openSUSE |13.2 |latest |× |
+| RHEL |Redhat |RHEL |7.2 |latest |× |
+| UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |latest |はい |
 
 Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。
 
@@ -265,7 +265,7 @@ sudo:x:27:myCloudInitAddedAdminUser
 myCloudInitAddedAdminUser:x:1000:
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 cloud-init は、起動時に Linux VM を変更する標準的な方法の 1 つになっています。 Azure では、Linux VM を起動時または実行中に変更できる VM 拡張機能も使用可能です。 たとえば、Azure VMAccess 拡張機能を使用すると、VM の実行中に SSH またはユーザー情報をリセットすることができます。 cloud-init を使用する場合、パスワードをリセットするには再起動の必要があります。
 
 [仮想マシンの拡張機能とその機能について](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -1,25 +1,24 @@
 ---
-title: "クイックスタート: PHP での Graph API の使用 - Azure Cosmos DB | Microsoft Docs"
-description: "このクイックスタートでは、Azure Portal および PHP で Azure Cosmos DB Graph API を使ってコンソール アプリケーションを作成する方法を説明します"
+title: 'クイックスタート: PHP での Graph API の使用 - Azure Cosmos DB | Microsoft Docs'
+description: このクイックスタートでは、Azure Portal および PHP で Azure Cosmos DB Graph API を使ってコンソール アプリケーションを作成する方法を説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: dfce0de9-a326-401c-9940-406ac0414461
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: 
+ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 3f80e682a89dcf6b5d3d5d6f2f15c4eeab2046e7
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを PHP と Azure Portal で作成する
 
@@ -53,7 +52,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 2. **[グラフの追加]** ページで、新しいグラフの設定を入力します。
 
-    設定|推奨値|[説明]
+    Setting|推奨値|[説明]
     ---|---|---
     データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
     グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。

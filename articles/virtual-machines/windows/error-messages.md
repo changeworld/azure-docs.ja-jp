@@ -1,13 +1,13 @@
 ---
-title: "Azure で一般的な Windows 仮想マシンのエラー コード | Microsoft Docs"
-description: "Azure で Windows 仮想マシンをプロビジョニングおよび管理するときに発生する一般的なエラー コードのいくつかについて説明します"
+title: Azure で一般的な Windows 仮想マシンのエラー コード | Microsoft Docs
+description: Azure で Windows 仮想マシンをプロビジョニングおよび管理するときに発生する一般的なエラー コードのいくつかについて説明します
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: xujing-ms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: xujing;genli
-ms.openlocfilehash: 579c73ee30096dca7db1d2da4638c220ec66d518
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 365fdcc8c7bf4ae8ec68b98734971d324032797f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="understand-common-error-messages-when-you-manage-windows-virtual-machines-in-azure"></a>Azure で Windows 仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 

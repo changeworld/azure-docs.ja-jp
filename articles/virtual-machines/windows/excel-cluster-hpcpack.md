@@ -1,11 +1,11 @@
 ---
-title: "Excel と SOA 用の HPC Pack クラスター | Microsoft Docs"
-description: "Azure の HPC Pack クラスターで大規模な Excel と SOA ワークロードを実行する"
+title: Excel と SOA 用の HPC Pack クラスター | Microsoft Docs
+description: Azure の HPC Pack クラスターで大規模な Excel と SOA ワークロードを実行する
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: cb6a9abe-caf3-44da-b911-849a50f6cfb3
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Excel と SOA ワークロードを実行する
 この記事では、Azure クイックスタート テンプレートまたは必要に応じて Azure PowerShell デプロイ スクリプトを使用して、Azure Virtual Machines に Microsoft HPC Pack 2012 R2 クラスターをデプロイする方法を示します。 クラスターは、HPC Pack で Microsoft Excel またはサービス指向アーキテクチャ (SOA) のワークロードを実行するように設計されている Azure Marketplace VM イメージを使用します。 クラスターを使用して、オンプレミスのクライアント コンピューターから Excel HPC サービスおよび SOA サービスを実行できます。 Excel の HPC サービスには、Excel ブックのオフロードと Excel ユーザー定義関数、または UDF が含まれます。
@@ -57,7 +57,7 @@ Azure クイックスタート テンプレートを使用すると、Azure Port
    ![テンプレートを Azure にデプロイする][github]
 3. ポータルで以下の手順に従って、HPC クラスター テンプレートのパラメーターを入力します。
    
-   a. **[パラメーター]** ページで、テンプレート パラメーターの値を入力または変更します  (各設定の隣のアイコンをクリックするとヘルプ情報が表示されます)。次の画面に示されているのはサンプルの値です。 この例では、1 つのヘッド ノードと 2 つの計算ノードで構成される *hpc01* という名前のクラスターが、*hpc.local* ドメインに作成されます。 コンピューティング ノードは、Microsoft Excel を含む HPC Pack VM イメージから作成されます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[パラメーター]** ページで、テンプレート パラメーターの値を入力または変更します  (各設定の隣のアイコンをクリックするとヘルプ情報が表示されます)。次の画面に示されているのはサンプルの値です。 この例では、1 つのヘッド ノードと 2 つの計算ノードで構成される *hpc01* という名前のクラスターが、*hpc.local* ドメインに作成されます。 コンピューティング ノードは、Microsoft Excel を含む HPC Pack VM イメージから作成されます。
    
    ![パラメーターを入力する][parameters-new-portal]
    
@@ -77,7 +77,7 @@ Azure クイックスタート テンプレートを使用すると、Azure Port
    e. **[法律条項]** ページで、条項を確認します。 同意する場合は、**[購入]** をクリックします。 テンプレートの値の設定が完了したら、**[作成]** をクリックします。
 4. デプロイが完了したら (通常約 30 分かかります)、クラスターのヘッド ノードからクラスターの証明書ファイルをエクスポートします。 後の手順でこのパブリック証明書をクライアント コンピューターにインポートし、セキュリティで保護された HTTP バインディングのサーバー側認証を提供します。
    
-   a. Azure ポータルで、ダッシュボードに移動し、ヘッド ノードを選択して、ページの上部にある **[接続]** をクリックし、リモート デスクトップを使用して接続します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure ポータルで、ダッシュボードに移動し、ヘッド ノードを選択して、ページの上部にある **[接続]** をクリックし、リモート デスクトップを使用して接続します。
    
     <!-- ![Connect to the head node][connect] -->
    
@@ -341,7 +341,7 @@ NetTcp バインディングを使用するための構成は、オンプレミ�
 
 SOA クライアント アプリケーションでは、IaaS クラスターの完全な名前にヘッド名を変更する以外の変更は不要です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * HPC Pack での Excel ワークロードの実行に関する詳細については、 [これらのリソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) を参照してください。
 * HPC Pack での SOA サービスのデプロイと管理について詳しくは、「 [サービス](https://technet.microsoft.com/library/ff919412.aspx) 」を参照してください。
 

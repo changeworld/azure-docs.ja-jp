@@ -1,12 +1,12 @@
 ---
-title: "NetBackup を使用したバックアップ ターゲットとしての StorSimple 8000 シリーズ | Microsoft Docs"
-description: "Veritas NetBackup を使用した StorSimple バックアップ ターゲットの構成について説明します。"
+title: NetBackup を使用したバックアップ ターゲットとしての StorSimple 8000 シリーズ | Microsoft Docs
+description: Veritas NetBackup を使用した StorSimple バックアップ ターゲットの構成について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Azure PowerShell を使用した Windows Virtual Machine の監視と更新
 
@@ -238,7 +238,7 @@ VM の起動時と停止時には、イベントがアクティビティ ログ�
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-使用している VM をさらに詳しく監視するには、Azure Automation で提供される変更やインベントリ、Update Management などのソリューションを使用します。 [Operations Management Suite](../../automation/automation-intro.md)。
+使用している VM をさらに詳しく監視するには、[Azure Automation](../../automation/automation-intro.md) で提供される変更やインベントリ、Update Management などのソリューションを使用します。
 
 Log Analytics ワークスペースにアクセスして、ワークスペース キーとワークスペース識別子を確認するには、**[設定]** の **[詳細設定]** を選択します。 [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) コマンドを使用して、Microsoft Monitoring Agent 拡張機能を VM に追加します。 以下のサンプルの変数値を更新して、お使いの Log Analytics ワークスペース キーとワークスペース ID を反映させます。
 

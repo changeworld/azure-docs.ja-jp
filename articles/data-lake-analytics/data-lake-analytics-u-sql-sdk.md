@@ -1,12 +1,12 @@
 ---
-title: "Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする | Microsoft Docs"
-description: "Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのローカル実行のスケーリングと、ローカル ワークステーションでのコマンド ラインとプログラミング インターフェイスを使用したテストの実行方法について説明します。"
+title: Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする | Microsoft Docs
+description: Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのローカル実行のスケーリングと、ローカル ワークステーションでのコマンド ラインとプログラミング インターフェイスを使用したテストの実行方法について説明します。
 services: data-lake-analytics
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする
 

@@ -1,13 +1,13 @@
 ---
-title: "Linux VM からデータ ディスクを切断する - Azure | Microsoft Docs"
-description: "CLI 2.0 または Azure Portal を使用して、Azure の仮想マシンからデータ ディスクをデタッチする方法について説明します。"
+title: Linux VM からデータ ディスクを切断する - Azure | Microsoft Docs
+description: CLI 2.0 または Azure Portal を使用して、Azure の仮想マシンからデータ ディスクをデタッチする方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: c589dd8c9d597145fd87a00d9a2ba040988cd8ec
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 572fe5bd4d6d79bb9dd94353732e273282e2a0af
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 
@@ -56,6 +56,6 @@ az vm disk detach \
 ディスクはストレージに残りますが、仮想マシンからは切断されています。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 データ ディスクを再利用する場合は、[別の VM にそのデータ ディスクをアタッチ](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)します。
 

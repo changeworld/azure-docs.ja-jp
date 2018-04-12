@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: monitor & tune
 ms.workload: On Demand
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: dc4660b33d8df28fd59929838e054f6703c48107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4a1a8a332628e79972e7c03dbc2ac839f244a002
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]

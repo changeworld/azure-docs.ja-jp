@@ -1,11 +1,11 @@
 ---
-title: "プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要 | Microsoft Docs"
-description: "この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します"
+title: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要 | Microsoft Docs
+description: この記事では、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: kasing
-ms.openlocfilehash: 99a77b2c817b1b3f5834870f0085be805693cd0b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 951c347e6d897163935fdf76b7f1f0791576e92a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]
 
