@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7cd16d64d18b4cdcb710f68c55a8251904acda86
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>管理対象ドメインの無効なサービス プリンシパル構成のトラブルシューティング
 
@@ -93,7 +93,7 @@ Azure AD ディレクトリで ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` の
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>アラート AADDS105: パスワード同期アプリケーションが古い
 
-**アラート メッセージ:** アプリケーション ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" のサービス プリンシパルは削除されましたが、その後再作成されました。 このサービス プリンシパルは、パスワード同期のために使用されるもう 1 つのサービス プリンシパルと 1 つのアプリケーションを管理します。 管理対象のサービス プリンシパルやアプリケーションは、新しく作成されたサービス プリンシパルでは承認されませんでしたので、それらを Microsoft のサービスによって管理することはできません。 つまり、新しく作成されるサービス プリンシパルは、管理対象の使用していないアプリケーションを管理できなくなり、パスワードの同期が影響を受けます。
+**アラート メッセージ:** アプリケーション ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" のサービス プリンシパルは削除されましたが、その後再作成されました。 The recreation leaves behind inconsistent permissions on Azure AD Domain Services resources needed to service your managed domain. (再作成により、管理対象ドメインのサービスに必要な Azure AD Domain Services リソースに整合性のないアクセス許可が残っています。) Synchronization of passwords on your managed domain could be affected. (管理対象ドメインでのパスワードの同期が影響を受ける可能性があります。)
 
 
 **解決策:** この手順を完了するには Azure AD PowerShell が必要です。 Azure AD PowerShell のインストールについては、[こちらの記事](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)を参照してください。

@@ -8,13 +8,13 @@ author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: ec47a10fcfcb3ef52810ba2b3da9599b65db375a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dd2219c01f194dad658d08a01f5f525640ef1c7c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 ![シャード間のクエリ][1]

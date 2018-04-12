@@ -1,12 +1,12 @@
 ---
-title: "コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル | Microsoft Docs"
+title: コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル | Microsoft Docs
 services: cloud-services
-description: "Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。"
-documentationcenter: 
+description: Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。
+documentationcenter: ''
 author: mikejo
-manager: ghogen
-editor: 
-tags: 
+manager: douge
+editor: ''
+tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
 ms.service: cloud-services
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ee7febeb04d3a956b4a0a11b69f8f34acee23067
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ff7b88a3086488ab669288687c274237ca30b47
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。
@@ -30,7 +30,7 @@ Azure にクラウド サービスを発行するときは、[Azure アプリケ
 この記事では、エミュレーターでローカルに実行できるプロファイル手法である CPU サンプリングについて説明します。 CPU サンプリングは、あまり侵入的でないプロファイル手法です。 プロファイラーは、指定されたサンプリング間隔でコール スタックのスナップショットを取得します。 データはある期間にわたって収集され、レポートに示されます。 このプロファイル手法では、コンピューティング処理が集中するアプリケーションで大部分の CPU 処理が行われる箇所が示されます。  これによって、アプリケーションが多くの時間を費やしている "ホット パス" に焦点を合わせる機会が与えられます。
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio をプロファイル向けに構成する
-まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。 プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。 使用可能なシンボル サーバーを参照していることを確認してください。 確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。 Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]**の下に表示されていることを確認します。  その他のシンボル ファイルが含まれている http://referencesource.microsoft.com/symbols を参照することもできます。
+まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。 プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。 使用可能なシンボル サーバーを参照していることを確認してください。 確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。 Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]**の下に表示されていることを確認します。  http://referencesource.microsoft.com/symbols を参照することもできます。追加のシンボル ファイルが含まれる可能性があります。
 
 ![Symbol options][4]
 

@@ -1,9 +1,25 @@
- ---
-タイトル: Usage API のよくあるご質問 | Microsoft Docs 説明: Azure Stack の測定、Azure Usage API との比較、使用時間と報告時間、エラー コードの一覧。
-services: azure-stack documentationcenter: '' author: mattbriggs manager: femila editor: ''
-
-ms.assetid: 847f18b2-49a9-4931-9c09-9374e932a071 ms.service: azure-stack ms.workload: na ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 03/09/2018 ms.author: mabrigg ms.reviewer: alfredop
-
+---
+title: Usage API のよくあるご質問 (FAQ) | Microsoft Docs
+description: Azure Stack の測定、Azure Usage API との比較、使用時間と報告時間、エラー コードの一覧。
+services: azure-stack
+documentationcenter: ''
+author: mattbriggs
+manager: femila
+editor: ''
+ms.assetid: 847f18b2-49a9-4931-9c09-9374e932a071
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/09/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 3d6f2bf569ecfebe3bf4f535a7a8ab3bf22849f1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack Usage API のよくあるご質問
 この記事では、Azure Stack Usage API についてよくあるご質問 (FAQ) とその回答を紹介します。

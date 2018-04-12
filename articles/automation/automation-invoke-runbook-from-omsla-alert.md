@@ -1,6 +1,6 @@
 ---
 title: Log Analytics アラートから Azure Automation Runbook を呼び出す
-description: この記事では、Operations Management Suite の Log Analytics アラートから Automation Runbook を呼び出す方法の概要について説明します。
+description: この記事では、Azure で Log Analytics アラートから Automation Runbook を呼び出す方法の概要を示します。
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3f95d6b9385b252bce05f19b38ae38f11e88a88c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2a0e497535f783cbffc21004331ccd2a50ab8eef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Log Analytics アラートから Azure Automation Runbook を呼び出す
 
@@ -23,11 +23,11 @@ Azure Log Analytics で、結果が条件と一致する場合にアラート �
 アラートの構成で Runbook を呼び出す方法は 2 つあります。
 
 * Webhook を使用する。
-   * これは、Operations Management Suite ワークスペースが Automation アカウントにリンクされていない場合に使用できる唯一のオプションです。
-   * Automation アカウントを既に Operations Management Suite ワークスペースにリンクしている場合も引き続きこのオプションを使用できます。  
+   * これは、Log Analytics ワークスペースが Automation アカウントにリンクされていない場合に使用できる唯一のオプションです。
+   * Automation アカウントを既に Log Analytics ワークスペースにリンクしている場合も引き続きこのオプションを使用できます。  
 
 * 直接 Runbook を選択する。
-   * このオプションは、Operations Management Suite ワークスペースが Automation アカウントにリンクされている場合にのみ使用できます。
+   * このオプションは、Log Analytics ワークスペースが Automation アカウントにリンクされている場合のみ使用できます。
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>webhook を使用して Runbook を呼び出す
 
@@ -35,7 +35,7 @@ Webhook を使用して、単一の HTTP 要求を通して Azure Automation で
 
 ## <a name="calling-a-runbook-directly"></a>直接 Runbook を呼び出す
 
-Operations Management Suite ワークスペースで Automation & Control サービスをインストールして構成することができます。 アラートの Runbook アクションのオプションを構成するときに、**[Runbook の選択]** ボックスの一覧ですべての Runbook を表示し、そのアラートに対応して実行する特定の Runbook を選択できます。 選択した Runbook は、Azure ワークスペース、または Hybrid Runbook Worker で実行できます。 
+Log Analytics ワークスペースに Automation & Control サービスをインストールして構成することができます。 アラートの Runbook アクションのオプションを構成するときに、**[Runbook の選択]** ボックスの一覧ですべての Runbook を表示し、そのアラートに対応して実行する特定の Runbook を選択できます。 選択した Runbook は、Azure ワークスペース、または Hybrid Runbook Worker で実行できます。 
 
 Runbook オプションを使用してアラートを作成すると、その Runbook 用に webhook が作成されます。 その webhook は、Automation アカウントに移動し、選択した Runbook の webhook ウィンドウを開くと表示されます。 
 
@@ -90,7 +90,7 @@ $SearchResult.SvcDisplayName_CF
 
 サービスが停止すると、Log Analytics のアラート ルールは、一致を検出して Runbook をトリガーし、アラートのコンテキストを Runbook に送信します。 Runbook は、サービスが停止していることを確認します。 停止している場合はサービスの再開を試み、正しく開始されたことを確認し、結果を表示します。     
 
-または、Automation アカウントを Operations Management Suite ワークスペースにリンクしていない場合は、webhook アクションを使用してアラート ルールを構成できます。 この webhook アクションで Runbook がトリガーされます。 また、JSON 形式の文字列を変換し、前述のガイダンスに従って **SearchResult** に対してフィルターを実行するように Runbook を構成します。    
+または、Automation アカウントを Log Analytics ワークスペースにリンクしていない場合は、webhook アクションを使用してアラート ルールを構成できます。 この webhook アクションで Runbook がトリガーされます。 また、JSON 形式の文字列を変換し、前述のガイダンスに従って **SearchResult** に対してフィルターを実行するように Runbook を構成します。    
 
 >[!NOTE]
 > ご使用のワークスペースが[新しい Log Analytics クエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)にアップグレードされている場合は、webhook ぺイロードが変わります。 形式の詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」を参照してください。

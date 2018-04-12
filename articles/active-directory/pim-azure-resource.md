@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
 ms.openlocfilehash: 1e74579ef2f0e18f23a40dfc573177938b9b726f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>Privileged Identity Management で Azure リソースへのアクセスを管理する
 

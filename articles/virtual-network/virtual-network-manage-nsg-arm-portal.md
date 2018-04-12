@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal を使用して NSG を管理する | Microsoft Docs"
-description: "Azure Portal を使用して既存の NSG を管理する方法について説明します。"
+title: Azure Portal を使用して NSG を管理する | Microsoft Docs
+description: Azure Portal を使用して既存の NSG を管理する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5d55679d-57da-457c-97dc-1e1973909ee5
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>ポータルを使用して NSG を管理する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/13/2018
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -44,9 +44,9 @@ ms.lasthandoff: 02/13/2018
 
 サブスクリプションの既存の NSG をすべて表示するには、次の手順を実行します。
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+1. ブラウザーで http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 
-2. **[参照] &gt;**  > **[ネットワーク セキュリティ グループ]** をクリックします。
+2. **[参照] &gt;** > **[ネットワーク セキュリティ グループ]** をクリックします。
 
     ![Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure1.png)
 

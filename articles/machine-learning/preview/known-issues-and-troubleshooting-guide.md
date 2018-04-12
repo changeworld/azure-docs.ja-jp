@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3699e2a59061d8a2870a263588917268ca504866
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -238,6 +238,14 @@ Windows のローカル Docker コンテナーで実行している場合、`aml
     - [Windows PowerShell スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1)  (スクリプトを実行する前に、管理者特権の PowerShell ウィンドウで `Set-ExecutionPolicy Unrestricted` を実行することが必要な場合があります)。
 - macOS の場合:
   - [macOS bash シェル スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh)をダウンロードして実行します。
+
+## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Azure ML がインストールした Python 環境とは異なる Python の場所を使用する Azure ML
+Azure Machine Learning Workbench の最近の変更により、Azure ML Workbench によってインストールされた Python 環境をローカル実行が指し示していないことに気付く場合があります。 このようなことは、ユーザーが自身のコンピューターに別の Python 環境をインストールしてあり、"Python" パスがその環境を指すように設定されている場合に発生する可能性があります。 Azure ML Workbench がインストールした Python 環境を使うには、以下の手順のようにします。
+- プロジェクト ルートの下の aml_config フォルダーにある local.compute ファイルを開きます。
+- "pythonLocation" 変数を、Azure ML Workbench によってインストールされた Python 環境の物理パスを指すように変更します。 このパスは、2 つの方法で取得できます。
+    - Azure ML Python の場所は、%localappdata%\AmlWorkbench\python\python.exe でわかります
+    - Azure ML Workbench から cmd を開き、コマンド プロンプトで「python」と入力して、sys.exe をインポートし、sys.executable を実行して、そこからパスを取得します。 
+
 
 
 ## <a name="some-useful-docker-commands"></a>便利な Docker コマンド

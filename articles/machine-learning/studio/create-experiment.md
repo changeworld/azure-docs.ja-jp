@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
-ms.openlocfilehash: 57461cf94898012619b865c455955f511e978995
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ec49d7e82da58c90e66f65a1a1d303ca9b3824f7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning のチュートリアル: Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
@@ -140,7 +140,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
     <br/>
     ***実験キャンバスへの "データセット内の列の選択" モジュールの追加と接続***
 
-3. [データセット内の列の選択][select-columns]モジュールを選択し、**[プロパティ]** ウィンドウの **[Launch column selector (列セレクターの起動)]** をクリックします。
+3. [データセット内の列の選択][select-columns]モジュールを選択し、**[プロパティ]** ウィンドウの [**Launch column selector (列セレクターの起動)**] をクリックします。
 
     - 左側の **[With rules (規則を使用)]**
     - **[Begin With (次で始まる)]** の **[All columns (すべての列)]** をクリックします。 これにより、[データセット内の列の選択][select-columns]では、(これから除外する列を除き) すべての列がフィルターを通過します。
@@ -159,7 +159,6 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
     > [!TIP]
     モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。 これで、実験でモジュールがどのような処理をするのかがひとめでわかります。 この例では、[データセット内の列の選択][select-columns]モジュールをダブルクリックして、「正規化された損失を除外する」というコメントを入力します。
-
 
     ![モジュールをダブルクリックしてコメントを追加][add-comment]
     <br/>

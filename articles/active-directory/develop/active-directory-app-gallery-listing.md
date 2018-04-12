@@ -1,32 +1,32 @@
 ---
-title: "Azure Active Directory アプリケーション ギャラリーでアプリケーションを公開する | Microsoft Docs"
-description: "シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーで公開する方法を説明します"
+title: Azure Active Directory アプリケーション ギャラリーでアプリケーションを公開する | Microsoft Docs
+description: シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーで公開する方法を説明します
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/09/2018
+ms.date: 03/20/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
 
 ##  <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーとは
 
-Azure Active Directory (Azure AD) は、クラウド ベースの ID サービスです。 [Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)は、Azure Marketplace アプリ ストア内にあり、シングル サインオンおよびユーザー プロビジョニング用のすべてのアプリケーション コネクタが公開されています。 ID プロバイダーとして Azure AD を使うお客様は、ここで発行されているさまざまな SaaS アプリケーション コネクタを検索します。 IT 管理者は、アプリ ギャラリーからコネクタを追加した後、シングル サインオンおよびプロビジョニング用にコネクタを構成して使います。 Azure AD は、SAML 2.0、OpenID Connect、OAuth、WS-Fed など、シングル サインオン用の主要なフェデレーション プロトコルをすべてサポートします。 
+Azure Active Directory (Azure AD) は、クラウド ベースの ID サービスです。 [Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)は、Azure Marketplace アプリ ストア内にあり、シングル サインオンおよびユーザー プロビジョニング用のすべてのアプリケーション コネクタが公開されています。 ID プロバイダーとして Azure AD を使うお客様は、ここで発行されているさまざまな SaaS アプリケーション コネクタを検索します。 IT 管理者は、アプリ ギャラリーからコネクタを追加した後、シングル サインオンおよびプロビジョニング用にコネクタを構成して使います。 Azure AD は、SAML 2.0、OpenID Connect、OAuth、WS-Fed など、シングル サインオン用の主要なフェデレーション プロトコルをすべてサポートします。
 
 ## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>ギャラリーにアプリケーションを公開する利点とは
 
@@ -51,7 +51,21 @@ Azure AD アプリ ギャラリーにアプリケーションを公開するに�
 
 *   **SAML 2.0** または **WS-Fed**: アプリケーションに、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能が必要です。 アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
 
-*   [パスワード SSO](../active-directory-appssoaccess-whatis.md): HTML サインイン ページがある Web アプリケーションを作成して、**パスワード ベースのシングル サインオン**を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
+*   [パスワード SSO](../active-directory-appssoaccess-whatis.md): HTML サインイン ページがある Web アプリケーションを作成して、**パスワード ベースのシングル サインオン**を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。
+
+##  <a name="updateremove-existing-listing"></a>既存の公開を更新/削除する
+
+Azure AD アプリ ギャラリーの既存のアプリケーションを更新または削除するには、最初に[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)で要求を送信する必要があります。 Office 365 アカウントがある場合は、それを使ってこのポータルにサインインします。 ない場合は、Microsoft アカウント (Outlook、Hotmail など) を使ってサインインします。
+
+* 次の画面で適切なオプションを選びます
+
+    ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/active-directory-app-gallery-listing/updateorremove.png)
+
+    * 既存のアプリケーションを更新する場合は、**[Update existing application listing]\(既存のアプリケーション公開を更新する\)** を選びます。
+
+    * Azure AD ギャラリーから既存のアプリケーションを削除する場合は、**[Remove existing application listing]\(既存のアプリケーション公開を削除する\)** を選びます。
+
+    * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
 
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 
@@ -75,5 +89,4 @@ OpenID Connect アプリケーションをギャラリーに公開するプロ�
 
 ## <a name="escalations"></a>エスカレーション
 
-すべてのエスカレーションについては、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にメールでご連絡いただけば、可能な限り早く対応します。
-
+すべてのエスカレーションについては、[Azure AD SSO 統合チーム](mailto:SaaSApplicationIntegrations@service.microsoft.com) (SaaSApplicationIntegrations@service.microsoft.com) にメールでご連絡いただけば、可能な限り早く対応します。

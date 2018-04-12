@@ -1,23 +1,23 @@
 ---
-title: "作成時に Azure VM のバックアップを有効にする | Microsoft Docs"
-description: "作成プロセスの間に Azure 仮想マシンのバックアップを有効にする手順を説明します。"
+title: 作成時に Azure VM のバックアップを有効にする | Microsoft Docs
+description: 作成プロセスの間に Azure 仮想マシンのバックアップを有効にする手順を説明します。
 services: backup, virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4041fc555fe4b61d10f84236dcae5156c6282fd3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e16714eee697d9dc8102b5f29d9639d650517562
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Azure 仮想マシンの作成時にバックアップを有効にする 
 
@@ -57,6 +57,10 @@ Azure Backup サービスでは、クラウドへのバックアップを作成�
 ## <a name="initiate-a-backup-after-creating-the-vm"></a>VM の作成後にバックアップを開始する 
 
 バックアップ ポリシーが作成されていたとしても、初期バックアップを作成するのがよい方法です。 VM 作成テンプレートが完了した後で仮想マシンのバックアップの詳細を確認するには、左側のメニューの **[操作]** の設定から、**[バックアップ]** をクリックします。 これを使って、オンデマンド バックアップの開始、完全な VM またはすべてのディスクの復元、VM のバックアップからのファイルの復元、または仮想マシンに関連付けられているバックアップ ポリシーの変更を、行うことができます。  
+
+## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Resource Manager テンプレートを使用して保護された VM を展開する
+
+前の手順では、Azure Portal を使って仮想マシンを作成し、Recovery Services コンテナーにそれを保護する方法について説明しました。 仮想マシンをすばやく展開し、Recovery Services コンテナーにそれを保護したい場合は、[Windows VM を展開してバックアップを有効にする](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)ためのテンプレートをご覧ください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問 
 

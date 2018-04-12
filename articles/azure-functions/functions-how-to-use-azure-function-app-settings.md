@@ -1,24 +1,25 @@
 ---
-title: "Azure Function App の設定の構成 | Microsoft Docs"
-description: "Azure Function App の設定を構成する方法について説明します。"
-services: 
+title: Azure Function App の設定の構成 | Microsoft Docs
+description: Azure Function App の設定を構成する方法について説明します。
+services: ''
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 8974b2ca243da5dd2f7202c66602f7254496d040
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -27,6 +28,24 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 まず、[Azure Portal](http://portal.azure.com) に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
 
 ![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+
+## <a name="favorite"></a>ポータルでのお気に入りの関数 
+
+[Azure Portal] でリソースを見つけにくいことがあります。 作成した関数アプリを見つけやすくするには、ポータルでお気に入りに関数アプリを追加します。 
+
+1. [Azure Portal] にログインします。
+
+2. 左下にある矢印をクリックしてすべてのサービスを展開して、**[Filter] \(フィルター)** フィールドに「`Functions`」と入力し、**[Function Apps] \(Function App)** の横にある星をクリックします。  
+ 
+    ![Azure Portal での Function App の作成](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
+
+    これにより、ポータルの左側のメニューに [Functions] \(関数) アイコンが追加されます。
+
+3. メニューを閉じ、最下部までスクロールして [Functions] \(関数) アイコンを表示します。 すべての Function App の一覧を表示するには、このアイコンをクリックします。 このアプリで関数を操作するには、Function App をクリックします。 
+ 
+    ![お気に入りの関数アプリ](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
+ 
+[Azure Portal]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>関数アプリの [設定] タブ
 

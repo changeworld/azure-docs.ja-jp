@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 03/06/2018
 ms.author: rolyon
 ms.openlocfilehash: 0b8c8823c6d21df96dcfd926db1855169f1570e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -2502,7 +2502,7 @@ ms.lasthandoff: 03/23/2018
 |/Vaults/backupconfig/write|Recovery Services コンテナーの構成を更新します。|
 |/Vaults/backupEngines/read|コンテナーに登録されているすべてのバックアップ管理サーバーを返します。|
 |/Vaults/backupFabrics/{fabricName}/protectionContainers/{containerName}/items/read|コンテナー内のすべての項目を取得します。|
-|/Vaults/backupFabrics/backupProtectionIntent/write|バックアップ保護の意図を作成します。|
+|/Vaults/backupFabrics/backupProtectionIntent/write|バックアップの保護インテントを作成します|
 |/Vaults/backupFabrics/operationResults/read|操作の状態を返します。|
 |/Vaults/backupFabrics/protectableContainers/read|すべての保護可能なコンテナーを取得します。|
 |/Vaults/backupFabrics/protectionContainers/inquire/action|コンテナー内のワークロードを照会します。|

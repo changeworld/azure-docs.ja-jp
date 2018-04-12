@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: seohack1
 ms.openlocfilehash: 766ff118638538520c8f17694b32f35dbe6d1025
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="troubleshooting-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のトラブルシューティング 
 

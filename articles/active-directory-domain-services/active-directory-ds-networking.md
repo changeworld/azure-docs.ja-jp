@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -73,7 +73,7 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 **ポート 443 (Azure AD との同期)**
 * 管理対象ドメインと Azure AD ディレクトリを同期するために使用されます。
 * NSG でこのポートへのアクセスを許可する必要があります。 このポートにアクセスできない場合、管理対象ドメインは Azure AD ディレクトリと同期されません。 ユーザーのパスワードが管理対象ドメインと同期されていないために、ユーザーがサインインできないことがあります。
-* このポートへの受信アクセスを、Azure の IP アドレス範囲に属する IP アドレスに限定できます。
+* このポートへの受信アクセスを、Azure の IP アドレス範囲に属する IP アドレスに限定できます。 Azure の IP アドレス範囲は、以下の規則で示されている PowerShell の範囲とは異なることに注意してください。
 
 **Port 5986 (PowerShell リモート処理)**
 * PowerShell のリモート処理を使用して管理対象ドメインの管理タスクを実行するために使用されます。

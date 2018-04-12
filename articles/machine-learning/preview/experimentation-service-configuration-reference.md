@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning 実験サービス構成ファイル
 
@@ -149,6 +149,8 @@ _\<コンピューティング ターゲット名>.compute_ ファイルは、�
 **nativeSharedDirectory**: このプロパティは、同じコンピューティング ターゲットでの複数の実行で共有するためにファイルを保存できるベース ディレクトリ (例: _~/.azureml/share/_) を指定します。 Docker コンテナーでの実行時にこの設定を使用する場合、_sharedVolumes_ を true に設定する必要があります。 それ以外の場合、実行は失敗します。
 
 **userManagedEnvironment**: このプロパティは、この計算ターゲットがユーザーによって直接管理されるか、あるいは実験サービスを介して管理されるかどうかを指定します。  
+
+**pythonLocation**: このプロパティは、ユーザーのプログラムを実行するためにコンピューティング ターゲットで使われる Python ランタイムの場所を指定します。 
 
 ### <a name="run-configuration-namerunconfig"></a>\<実行構成名>.runconfig
 _\<実行構成名>.runconfig_ は、Azure ML 実験の実行動作を指定します。 実行履歴の追跡や、使用するコンピューティング ターゲットなど、多くの実行動作を構成できます。 実行構成ファイルの名前は、Azure ML ワークベンチのデスクトップ アプリケーションでの実行コンテキスト ドロップダウンの作成に使用されます。

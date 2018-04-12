@@ -1,5 +1,5 @@
 ---
-title: Log Analytics から Azure Automation アカウントのリンクを解除する
+title: Log Analytics から Azure Automation アカウントのリンクを解除する | Microsoft Docs
 description: この記事では、Log Analytics ワークスペースから Azure Automation アカウントのリンクを解除する方法の概要を説明します。
 services: automation
 ms.service: automation
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2e6f887a7684ae995e9b7da84dace523843ff555
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b8b00f8a82dd63df13ccd0bc7e10429323c15ab3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースから Automation アカウントのリンクを解除する方法
 
@@ -46,4 +46,4 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 ## <a name="next-steps"></a>次の手順
 
-Automation アカウントを再構成して OMS Log Analytics と統合する場合は、「[Automation から Log Analytics (OMS) へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。 
+Automation アカウントを再構成して Log Analytics と統合する場合は、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。 

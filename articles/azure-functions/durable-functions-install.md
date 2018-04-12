@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Durable Functions 拡張機能とサンプルをインストールする (Azure Functions)
 
 Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機能は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) に提供されます。 この記事では、次の開発環境用のパッケージとサンプル セットをインストールする方法を示します。
 
 * Visual Studio 2017 (推奨) 
-
+* Visual Studio Code
 * Azure ポータル
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -48,11 +48,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 サンプルから始めるのと同じ手順に従いますが、*.zip* ファイルをダウンロードする代わりに次の手順に従います。
 
 1. Function App プロジェクトを作成します。
-2. 次の NuGet パッケージ参照を *.csproj* ファイルに追加します。
-
-   ```xml
-   <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.0.0-beta" />
-   ```
+2. *[NuGet パッケージの管理]* を使って NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0-beta2 を検索し (このパッケージを検索するときは、[*プレリリースを含める*] をオンにしてください)、プロジェクトに追加します。
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -129,6 +125,8 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 1. [functions.azure.com](https://functions.azure.com/signin) で関数アプリを新規作成します。
 
 2. 関数アプリを [2.0 ランタイム バージョン](set-runtime-version.md)を使用するように構成します。
+
+   Durable Functions 拡張機能は、1.X ランタイムと 2.0 ランタイムの両方で動作しますが、Azure Portal テンプレートは 2.0 ランタイムを対象にした場合にのみ使用できます。
 
 3. **[カスタム関数を作成する]** を選択して新しい関数を作成します。
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions を監視する"
-description: "Azure Application Insights を Azure Functions とともに使用して、関数の実行を監視する方法を説明します。"
+title: Azure Functions を監視する
+description: Azure Application Insights を Azure Functions とともに使用して、関数の実行を監視する方法を説明します。
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -493,7 +493,7 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ### <a name="logging-to-storage"></a>ストレージへのログ記録
 
-組み込みログは、`AzureWebJobsDashboard` アプリ設定の接続文字列で指定されたストレージ アカウントを使用します。 そのアプリ設定が構成済みの場合は、Azure Portal でログ データを確認できます。 Function App ページで、関数を選択し、次に**[モニター]** タブを選択すると、関数実行のリストが表示されます。 関数実行を選択して、時間、入力データ、エラー、および関連するログ ファイルを確認します。
+組み込みログは、`AzureWebJobsDashboard` アプリ設定の接続文字列で指定されたストレージ アカウントを使用します。 そのアプリ設定が構成済みの場合は、Azure Portal でログ データを確認できます。 ストレージ リソースで [ファイル] に移動し、関数のファイル サービスを選んでから、`LogFiles > Application > Functions > Function > your_function` に移動してログ ファイルを表示します。 Function App ページで、関数を選択し、次に**[モニター]** タブを選択すると、関数実行のリストが表示されます。 関数実行を選択して、時間、入力データ、エラー、および関連するログ ファイルを確認します。
 
 Application Insights を使用し、[組み込みログを無効化](#disable-built-in-logging)すると、**[モニター]** タブに Application Insights が表示されます。
 
