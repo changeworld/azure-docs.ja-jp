@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: zhiweiw
-ms.openlocfilehash: a57bb4a019ce51e67516761ae6fb89461fe89e15
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6803d0a5cff45736013a840451b940ef7108bca1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health のアラート カタログ 
 
@@ -25,9 +25,15 @@ Azure AD Connect Health サービスは、ID インフラストラクチャに�
 Connect Health サービスから生成されるアラートには、エラー、警告、および事前警告という 3 つの段階があります。 トリガーされたアラートには、すぐに対応することを強くお勧めします。 <br />
 Azure AD Connect Health アラートは、成功条件を満たすと解決されます。 Azure AD Connect Health エージェントは、定期的に成功条件を検出してサービスにレポートします。 一部のアラートは、時間に基づいて抑制されます。 つまり、アラートの生成から 72 時間以内に同じエラー条件が観察されない場合、アラートは自動的に解決されます。
 
+## <a name="general-alerts"></a>一般的なアラート
+
+| アラート名 | [説明] | 修復 |
+| --- | --- | ----- |
+| Health サービス データが最新ではありません | 1 台以上のサーバー上で実行されている正常性エージェントがヘルス サービスに接続されておらず、ヘルス サービスはこのサーバーから最新データを受信していません。 ヘルス サービスによって最後に処理されたデータは 2 時間より前のものです。 | 正常性エージェントに次のサービス エンドポイントへの送信接続があることを確認します。 [詳細](active-directory-aadconnect-health-data-freshness.md) |
+
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect のアラート (同期)
 
-| アラート名 | 説明 | 修復 |
+| アラート名 | [説明] | 修復 |
 | --- | --- | ----- |
 | Azure AD Connect Sync Service が実行されていません | Microsoft Azure AD Sync Windows サービスが実行されていないか開始できませんでした。 その結果、オブジェクトは Azure Active Directory と同期しなくなります。 | Microsoft Azure Active Directory 同期サービスを開始します。</b> <ol> <li><b>[スタート]</b> ボタンをクリックし、<b>[ファイル名指定して実行]</b> をクリックします。「<b>Services.msc</b>」と入力し、<b>[OK]</b> をクリックします。</li> <li><b>Microsoft Azure AD Sync サービス</b>を探し、サービスが開始されているかどうかを確認します。 サービスが開始されていない場合は、サービスを右クリックし、<b>[開始]</b> をクリックします。 | 
 | Azure Active Directory からのインポートが失敗しました | Azure Active Directory コネクタからのインポート操作が失敗しています。 |  インポート操作のイベント ログ エラーで詳細を調べます。  |
@@ -35,14 +41,14 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 | Active Directory へのエクスポートが失敗しました | Active Directory コネクタへのエクスポート操作が失敗しています。 | エクスポート操作のイベント ログ エラーで詳細を調べます。 | 
 | Active Directory からのインポートが失敗しました | Active Directory からのインポートが失敗しました。 その結果、このフォレストの一部のドメインのオブジェクトはインポートされていない可能性があります。 | <li>DC 接続を確認します。</li> <li>インポートを手動で再実行します。</li> <li> インポート操作のイベント ログ エラーで詳細を調べます。 | 
 | Azure Active Directory へのエクスポートが失敗しました | Azure Active Directory コネクタへのエクスポート操作が失敗しています。 その結果、一部のオブジェクトが Azure Active Directory に正常にエクスポートされていない可能性があります。 | エクスポート操作のイベント ログ エラーで詳細を調べます。 |
-| パスワード同期のハートビートが 120 分間スキップされました | パスワード同期が Azure Active Directory に 120 分間接続されていません。 その結果、パスワードは Azure Active Directory と同期しなくなります。 | Microsoft Azure Active Directory 同期サービスをもう一度開始します。</b><br> 現在実行中のすべての同期操作は中断されます。 進行中の同期操作がない場合は、次の手順を実行できます。<br> 1.<b>[スタート]</b> ボタンをクリックし、<b>[ファイル名指定して実行]</b> をクリックします。「<b>Services.msc</b>」と入力し、<b>[OK]</b> をクリックします。<br> 2.<b>Microsoft Azure AD Sync</b> を探して右クリックし、<b>[再起動]</b> をクリックします。 | 
+| パスワード ハッシュ同期のハートビートが 120 分間スキップされました | パスワード ハッシュ同期が Azure Active Directory に 120 分間接続されていません。 その結果、パスワードは Azure Active Directory と同期しなくなります。 | Microsoft Azure Active Directory 同期サービスをもう一度開始します。</b><br> 現在実行中のすべての同期操作は中断されます。 進行中の同期操作がない場合は、次の手順を実行できます。<br> 1.<b>[スタート]</b> ボタンをクリックし、<b>[ファイル名指定して実行]</b> をクリックします。「<b>Services.msc</b>」と入力し、<b>[OK]</b> をクリックします。<br> 2.<b>Microsoft Azure AD Sync</b> を探して右クリックし、<b>[再起動]</b> をクリックします。 | 
 | CPU 使用率が高くなっていることが検出されました | CPU 消費率が、このサーバーの推奨しきい値を超えました。 | <li>これは、CPU 消費率の一時的なスパイクである可能性があります。 [監視] セクションで CPU 使用量の傾向を確認します。</li><li>サーバー上の CPU 使用量が高いプロセスを調べます。<ol type="a"><li>タスク マネージャーを使用するか、次の PowerShell コマンドを実行できます。 <br> <i>get-process \| Sort-Object -Descending CPU \| Select-Object -First 10</i></li><li>CPU 使用率が高い予期しないプロセスがある場合は、次の PowerShell コマンドを使用してそのプロセスを停止します。 <br> <i>stop-process -ProcessName [プロセスの名前]</i></li></li></ol><li>上記の一覧に表示されるプロセスが、サーバーで実行されることを意図しているプロセスであり、その CPU 消費率が継続的にしきい値に近い場合は、サーバーのデプロイ要件を再評価することを検討してください。</li><li>フェールセーフ オプションとして、サーバーの再起動を検討できます。 |
 | メモリ使用量が多くなっていることを検出しました | サーバーのメモリ使用量が、このサーバーの推奨しきい値を超えています。 | サーバー上の メモリ使用量が多いプロセスを調べます。 タスク マネージャーを使用するか、次の PowerShell コマンドを実行できます。<br> <i>get-process \| Sort-Object -Descending WS \| Select-Object -First 10</i> </br> メモリ使用量が多い予期しないプロセスがある場合は、次の PowerShell コマンドを使用してそのプロセスを停止します。<br><i>stop-process -ProcessName [プロセスの名前] </i></li><li> 上記の一覧に表示されるプロセスが、サーバーで実行されることを意図しているプロセスである場合は、サーバーのデプロイ要件を再評価することを検討してください。</li><li>フェールセーフ オプションとして、サーバーの再起動を検討できます。 | 
-| パスワード同期の動作が停止しました | パスワードの同期が停止しています。 その結果、パスワードは Azure Active Directory と同期しなくなります。 | Microsoft Azure Active Directory 同期サービスをもう一度開始します。 <br /> 現在実行中のすべての同期操作は中断されます。 進行中の同期操作がない場合は、次の手順を実行できます。 <br /> <ol> <li><b>[スタート]</b> ボタンをクリックし、<b>[ファイル名指定して実行]</b> をクリックします。「<b>Services.msc</b>」と入力し、<b>[OK]</b> をクリックします。</li> <li><b>Microsoft Azure AD Sync</b> を探して右クリックし、<b>[再起動]</b> をクリックします。</li> </ol> </p>  | 
+| パスワード ハッシュ同期の動作が停止しました | パスワード ハッシュ同期が停止しています。 その結果、パスワードは Azure Active Directory と同期しなくなります。 | Microsoft Azure Active Directory 同期サービスをもう一度開始します。 <br /> 現在実行中のすべての同期操作は中断されます。 進行中の同期操作がない場合は、次の手順を実行できます。 <br /> <ol> <li><b>[スタート]</b> ボタンをクリックし、<b>[ファイル名指定して実行]</b> をクリックします。「<b>Services.msc</b>」と入力し、<b>[OK]</b> をクリックします。</li> <li><b>Microsoft Azure AD Sync</b> を探して右クリックし、<b>[再起動]</b> をクリックします。</li> </ol> </p>  | 
 | Azure Active Directory へのエクスポートが停止されました。 予想外の削除のしきい値に達しました | Azure Active Directory へのエクスポート操作が失敗しています。 構成されたしきい値を超える数の削除されるオブジェクトがありました。 その結果、オブジェクトはエクスポートされませんでした。 | <li> 削除するようにマークされたオブジェクトの数が、設定されたしきい値を超えています。 この操作が意図されたものであることを確認します。</li> <li> エクスポートを続行するには次の手順を実行します。 <ol type="a"> <li>Disable-ADSyncExportDeletionThreshold を実行して、しきい値を無効にします。</li> <li>Synchronization Service Manager を起動します。</li> <li>種類を Azure Active Directory に設定して、コネクタでエクスポートを実行します。</li> <li>オブジェクトが正常にエクスポートされたら、ADSyncExportDeletionThreshold を実行して、しきい値を有効にします。</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory フェデレーション サービスのアラート
-| アラート名 | 説明 | 修復 |
+| アラート名 | [説明] | 修復 |
 | --- | --- | ----- |
 |テスト認証要求 (代理トランザクション) は、トークンの取得に失敗しました | このサーバーから開始されたテスト認証要求 (代理トランザクション) は、5 回試行しましたが、トークンを取得できませんでした。 これは、一時的なネットワークの問題、AD DS ドメイン コントローラーの可用性、または AD FS サーバーの不適切な構成が原因である可能性があります。  その結果、フェデレーション サービスによって処理される認証要求は失敗することがあります。 エージェントは、ローカル コンピューター アカウントのコンテキストを使用して、フェデレーション サービスからトークンを取得します。 | 次の手順を実行して、サーバーの正常性を確認します。<ol><li>ファーム内のこの AD FS サーバーまたはその他の AD FS サーバーに未解決のアラートがないことを確認します。</li><li>AD FS ログイン ページ (https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx) からテスト ユーザーでログインして、これが一時的なエラーではないことを確認します。</li><li><a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> に移動し、[Office 365] タブを選択します。Office 365 シングル サインオン テストを実行します。</li><li>このサーバーでコマンド プロンプトから次のコマンドを実行して、AD FS サービス名がこのサーバーから解決できるかどうかを検証します。 nslookup your_adfs_server_name</li></ol><p>サービス名を解決できない場合は、FAQ セクションの手順を参照して、AD FS サービスの HOST ファイル エントリにこのサーバーの IP アドレスを追加します。 これにより、このサーバーで代理トランザクション モジュールを実行してトークンを要求できるようになります。</p> | 
 | プロキシ サーバーがフェデレーション サーバーに到達できません | この AD FS プロキシ サーバーが ADFS サービスに接続できません。 その結果、このサーバーによって処理される認証要求は失敗します。 | 次の手順を実行して、このサーバーと AD FS サービス間の接続を検証します。 <ol><li> このサーバーと AD FS サービス間のファイアウォールが適切に構成されていることを確認します。 </li><li> AD FS サービス名の DNS 解決が、企業ネットワークに存在する AD FS サービスを適切に指定していることを確認します。 これは、境界ネットワークでこのサーバーに対して機能している DNS サーバーによって、またはADFS サービス名の HOSTS ファイル内のエントリによって実現できます。 </li><li> このサーバーでブラウザーを開き、フェデレーション メタデータ エンドポイント (https://<ADFS サービス名>/federationmetadata/2007-06/federationmetadata.xml) にアクセスすることで、ネットワーク接続を確認します。 </li> | 
@@ -69,7 +75,7 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Azure Active Directory Domain Services のアラート
 
-| アラート名 | 説明 | 修復 |
+| アラート名 | [説明] | 修復 |
 | --- | --- | ----- |
 | LDAP ping を介してドメイン コントローラーに到達できません | LDAP ping を介してドメイン コントローラーに到達できません。 これは、ネットワークの問題またはマシンの問題が原因で発生する可能性があります。 その結果、LDAP ping は失敗します。 |  <li>アラートの一覧で関連するアラートを調べます。例: ドメイン コントローラーがアドバタイズされていません。 </li><li>影響を受けているドメイン コントローラーに十分なディスク領域があることを確認します。 領域が不足していると、DC は、自身を LDAP サーバーとしてアドバタイズすることを停止します。 </li><li> PDC を検索します。 <br> <i>netdom query fsmo</i> </br> を影響を受けているドメイン コントローラーで実行します。 <li> 物理ネットワークが正しく構成されている/接続されていることを確認します。 </li> |
 | Active Directory のレプリケーション エラーが発生しました | このドメイン コントローラーでレプリケーションの問題が発生しています。レプリケーションの状態ダッシュボードで問題を確認できます。 レプリケーション エラーは、不適切な構成やその他の関連する問題が原因で発生する可能性があります。 プリケーション エラーを放置すると、データの不整合に至る可能性があります。 | 追加の詳細で、影響を受けているソースと送信先 DC の名前を確認します。 レプリケーションの状態ダッシュ ボードに移動し、影響を受けている DC 上のアクティブなエラーを探します。 エラーをクリックしてブレードを開くと、その特定のエラーを修復する方法の詳細が表示されます。| 

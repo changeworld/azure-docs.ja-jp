@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 29ab87b6afe31b7bbb40ef7d743e209f86811c9d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -61,7 +61,7 @@ Windows エージェントは、Windows Server Update Services (WSUS) サーバ�
 
 Linux エージェントは、更新リポジトリへのアクセスが必要です。
 
-このソリューションでは、複数の Operations Management Suite ワークスペースにレポートするように構成された OMS Agent for Linux はサポートされていません。
+このソリューションでは、OMS エージェント for Linux が複数の Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Azure 仮想マシンの更新管理を有効にする
 
@@ -176,5 +176,5 @@ Azure 以外の Linux 仮想マシンとコンピューターの更新管理を�
 
 ## <a name="next-steps"></a>次の手順
 
-* ログ、出力、エラーなど、更新管理の詳細については、「[OMS の更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)」を参照してください。
+* ログ、出力、エラーなど、更新管理について詳しくは、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
 

@@ -1,18 +1,18 @@
 ---
-title: "インベントリ収集による Azure 仮想マシンの管理 | Microsoft Docs"
-description: "インベントリ収集による仮想マシンの管理"
+title: インベントリ収集による Azure 仮想マシンの管理 | Microsoft Docs
+description: インベントリ収集による仮想マシンの管理
 services: automation
-keywords: "インベントリ, オートメーション, 変更, 追跡"
+keywords: インベントリ, オートメーション, 変更, 追跡
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7b0e39e98a81231b68414f36ac5c1fc0897304a1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b23132f6e5693f5d731bf044ac5c2544a9308ee1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
@@ -66,4 +66,4 @@ Azure 仮想マシンをお持ちでない場合は、[仮想マシンを作成]
 ## <a name="next-steps"></a>次の手順
 
 * 仮想マシン上のファイルとレジストリ設定内の変更を管理する方法については、「[変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する](../log-analytics/log-analytics-change-tracking.md)」を参照してください。
-* 仮想マシン上の Windows とパッケージの更新を管理する方法については、「[OMS の更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)」を参照してください。
+* 仮想マシン上の Windows とパッケージの更新を管理する方法については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。

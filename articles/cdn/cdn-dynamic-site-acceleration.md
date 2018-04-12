@@ -1,12 +1,12 @@
 ---
-title: "Azure CDN による動的サイトの高速化"
-description: "動的サイトの高速化の詳細"
+title: Azure CDN による動的サイトの高速化
+description: Azure CDN は、動的コンテンツを含むファイルに対する動的サイトの高速化 (DSA) の最適化をサポートします。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli
-ms.openlocfilehash: 713f00f432095b7a8a19996fb7bdb7e5f8d79b63
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -104,7 +104,7 @@ Akamai ネットワークは、リアルタイムでデータを収集し、開�
 
 TCP *スロー スタート*は、ネットワーク経由で送信されるデータの量を制限することでネットワークの輻輳を回避する TCP プロトコルのアルゴリズムです。 スロー スタートでは、送信側と受信側の間で小さな輻輳ウィンドウ サイズから始めて、最大サイズに達するかパケットの消失が検出されるまで送信量を増やしていきます。
 
- **Azure CDN from Akamai** と **Azure CDN from Verizon** では、次の 3 つの手順で TCP スロー スタートを排除します。
+ **Azure CDN from Akamai** プロファイルと **Azure CDN from Verizon** プロファイルでは、次の 3 つの手順で TCP スロー スタートを排除します。
 
 1. 正常性と帯域幅の監視を使用して、エッジ PoP サーバー間の接続の帯域幅を測定します。
     
@@ -152,19 +152,32 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 静的資産と動的な資産が混在している Web サイトがある場合は、最高のパフォーマンスを得るために複数の方法を使用することをお勧めします。 
 
-**Azure CDN from Verizon Premium** プロファイルの場合、DSA エンドポイントの[ルール エンジン](cdn-rules-engine.md)を使用して、特定のケースでキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
+**Azure CDN from Verizon Standard** プロファイルおよび **Azure CDN from Akamai Standard** プロファイルでは、[キャッシュ規則](cdn-caching-rules.md)を使うことによって、特定の DSA エンドポイントのキャッシュを有効にできます。
 
-DSA エンドポイントのルール エンジンにアクセスするには、次の手順を実行します。
+キャッシュ規則にアクセスするには:
+
+1. **[CDN のプロファイル]** ページの設定で、**[キャッシュ規則]** を選びます。  
+    
+    ![CDN の [キャッシュ規則] ボタン](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+
+    **[キャッシュ規則]** ページが開きます。
+
+2. グローバル キャッシュ規則またはカスタム キャッシュ規則を作成して、DSA エンドポイントのキャッシュを有効にします。 
+
+**Azure CDN from Verizon Premium** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
+
+ルール エンジンにアクセスするには:
     
 1. **[CDN プロファイル]** ページで、**[管理]** を選択します。  
     
-    ![[CDN プロファイル] の [管理] ボタン](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![[CDN プロファイル] の [管理] ボタン](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     CDN 管理ポータルが開きます。
 
 2. CDN 管理ポータルで、**[ADN]** を選択し、**[ルール エンジン]** を選択します。 
 
-    ![DSA のルール エンジン](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![DSA のルール エンジン](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
+
 
 
 2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。 

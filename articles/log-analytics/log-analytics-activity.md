@@ -1,24 +1,24 @@
 ---
-title: "Log Analytics での Azure アクティビティ ログの収集と分析 | Microsoft Docs"
-description: "Azure アクティビティ ログ ソリューションを使用すると、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。"
+title: Log Analytics での Azure アクティビティ ログの収集と分析 | Microsoft Docs
+description: Azure アクティビティ ログ ソリューションを使用すると、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c13890862c058701268c07d032d6d990c659287a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Log Analytics での Azure アクティビティ ログの収集と分析
 
@@ -40,7 +40,7 @@ Azure アクティビティ ログを Log Analytics に接続すると、次の�
 - リソースに影響する停止またはサービスの正常性の問題を特定する
 - ログ検索を使用して、ユーザー アクティビティ、自動スケール操作、承認の変更、サービスの正常性を、使用している環境から得られる他のログや指標と関連付ける
 
-<sup>1</sup>既定では、Log Analytics は、Free レベルの場合でも Azure アクティビティ ログを 90 日間保持します。 また、ワークスペース リテンション期間の設定が 90 日未満の場合もそうです。 ワークスペースのリテンション期間が 90 日より長い場合、アクティビティ ログはワークスペースのリテンション期間の間保持されます。
+<sup>1</sup>既定では、Log Analytics は、Free レベルの場合でも Azure アクティビティ ログを 90 日間保持します。 また、ワークスペース リテンション期間の設定が 90 日未満の場合もそうです。 ワークスペースのリテンション期間が 90 日より長い場合、アクティビティ ログはワークスペースのリテンション期間に基づいて保持されます。
 
 Log Analytics では、アクティビティ ログを無料で収集し、90 日間無料でログを保管します。 90 日より長くログを保管する場合は、90 日より長く保管されているデータについてデータ リテンション期間の料金が請求されます。
 
