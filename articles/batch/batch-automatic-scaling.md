@@ -1,25 +1,25 @@
 ---
-title: "Azure Batch プール内の計算ノードの自動スケール | Microsoft Docs"
-description: "クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。"
+title: Azure Batch プール内の計算ノードの自動スケール | Microsoft Docs
+description: クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0e49cd8a64a48c53f5b6104703164a597c797f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1114ea90ae6976a3bc3580ebae5fd853de0274a1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
 
@@ -72,7 +72,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 この自動スケールの数式では、プールは最初は 1 つの VM で作成されます。 `$PendingTasks` メトリックにより、実行中またはキューに置かれているタスクの数が定義されます。 この数式により、最後の 180 秒間の保留タスク平均数が判明し、`$TargetDedicatedNodes` 変数が適宜設定されます。 この数式により、専用ノードの目標数が 25 台の VM を超えることはありません。 新しいタスクが送信されると、プールは自動的に拡大します。 タスクが完了すると、VM が 1 台ずつ解放され、自動スケーリングの数式によってプールが縮小します。
 
-## <a name="variables"></a>変数
+## <a name="variables"></a>variables
 自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。 ユーザー定義の変数は、ユーザーが定義する変数です。 前のセクションで示した例の数式では、`$TargetDedicatedNodes` と`$PendingTasks` がサービス定義の変数です。 `startingNumberOfVMs` と `maxNumberofVMs` がユーザー定義の変数です。
 
 > [!NOTE]
@@ -84,7 +84,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 これらのサービス定義の変数の値を取得および設定することで、プール内の計算ノードの数を管理できます。
 
-| 読み取り/書き込み可能なサービス定義変数 | Description |
+| 読み取り/書き込み可能なサービス定義変数 | [説明] |
 | --- | --- |
 | $TargetDedicatedNodes |プールの専用計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、専用ノードの数は目標として指定されます。 たとえば、自動スケール評価によって専用ノードの目標数がプールが最初に設定された目標に達する前に変更された場合、そのプールは目標に到達しない可能性があります。 <br /><br /> Batch Service 構成で作成されたアカウント内のプールの目標が Batch アカウント ノードまたはコア クォータを超える場合、その目標に到達しない可能性があります。 ユーザー サブスクリプション構成で作成されたアカウント内のプールの目標がそのサブスクリプションの共有コア クォータを超える場合、その目標に到達しない可能性があります。|
 | $TargetLowPriorityNodes |プールの優先順位の低い計算ノードの目標数。 プールが目的の数のノードに常に到達するとは限らないため、優先順位の低いノードの数は目標として指定されます。 たとえば、自動スケール評価によって優先順位の低いノードの目標数がプールが最初に設定された目標に達する前に変更された場合、プールは目標に到達しない可能性があります。 また、目標が Batch アカウント ノードまたはコア クォータを超える場合、プールはその目標に到達しない可能性があります。 <br /><br /> 優先順位の低い計算ノードについて詳しくは、「[優先順位の低い VM で Batch を使用する (プレビュー)](batch-low-pri-vms.md)」をご覧ください。 |
@@ -92,7 +92,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 これらのサービス定義変数の値を取得して、Batch サービスのメトリックに基づいて調整できます。
 
-| 読み取り専用のサービス定義変数 | Description |
+| 読み取り専用のサービス定義変数 | [説明] |
 | --- | --- |
 | $CPUPercent |平均 CPU 使用率。 |
 | $WallClockSeconds |使用された秒数。 |
@@ -125,7 +125,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 * double
 * doubleVec
 * doubleVecList
-* string
+* 文字列
 * timestamp -- timestamp は次のメンバーを含む複合構造になっています。
 
   * year
@@ -172,10 +172,10 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 
 3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** になります。
 
-## <a name="functions"></a>関数
+## <a name="functions"></a>Functions
 次の定義済みの **関数** は、自動スケールの数式の定義に使用できます。
 
-| 関数 | 戻り値の型 | Description |
+| 関数 | 戻り値の型 | [説明] |
 | --- | --- | --- |
 | avg(doubleVecList) |double |doubleVecList のすべての値の平均値を返します。 |
 | len(doubleVecList) |double |doubleVecList から作成されたベクター長を返します。 |
@@ -197,7 +197,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 | time(string dateTime="") |timestamp |パラメーターが渡されない場合は現在の時刻のタイムスタンプ、渡された場合は dateTime 文字列のタイムスタンプを返します。 サポートされている dateTime 形式は、W3C-DTF と RFC 1123 です。 |
 | val(doubleVec v, double i) |double |開始インデックス 0 のベクター v の位置 i にある要素の値を返します。 |
 
-前の表に示した一部の関数は、リストを引数として受け入れることができます。 コンマ区切りのリストは、*double* と *doubleVec* の任意の組み合わせです。 次に例を示します。
+前の表に示した一部の関数は、リストを引数として受け入れることができます。 コンマ区切りのリストは、*double* と *doubleVec* の任意の組み合わせです。 例: 
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -210,13 +210,13 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| メソッド | Description |
+| 方法 | [説明] |
 | --- | --- |
 | GetSample() |`GetSample()` メソッドは、データ サンプルのベクターを返します。<br/><br/>サンプルは、30 秒相当のメトリック データです。 つまり、30 秒ごとにサンプルが取得されます。 ただし、この後も説明しますが、サンプルが収集されてから、それが数式に使用できるようになるまでには時間差があります。 そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。<ul><li>`doubleVec GetSample(double count)`<br/>最新の収集済みサンプルから取得するサンプル数を指定します。<br/><br/>`GetSample(1)` は、使用できる最新のサンプルを返します。 ただし、`$CPUPercent` などのメトリックの場合、サンプルが収集された "*時間*" がわからないので、GetSample を使用できません。 最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。 このような場合は、次のように期間を使用することをお勧めします。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>サンプル データを収集する期間を指定します。 指定した期間内に必要となるサンプルの割合をオプションで指定できます。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` は、過去 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、20 個のサンプルを返します。 ただし、過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。 この場合、次のようになります。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` は、サンプルの 90% しか使用できないため、失敗します。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` は成功します。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>開始時刻と終了時刻の両方を使用して、データを収集する期間を指定します。<br/><br/>前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。 `GetSample` メソッドを使用する際にはこの遅延を考慮します。 後述の `GetSamplePercent` をご覧ください。 |
 | GetSamplePeriod() |履歴のサンプル データ セットで受け取ったサンプルの期間を返します。 |
 | Count() |メトリック履歴のサンプルの合計数を返します。 |
 | HistoryBeginTime() |使用可能な最も古いメトリックのデータ サンプルのタイムスタンプを返します。 |
-| GetSamplePercent() |特定の時間間隔で利用できるサンプルの割合を返します。 For example:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>返されたサンプルの割合が指定した `samplePercent` 未満の場合、`GetSample` メソッドは失敗するので、まず `GetSamplePercent` メソッドを使用して確認します。 その後、十分なサンプルが存在しない場合は、自動スケール評価を停止せずに代替の操作を実行します。 |
+| GetSamplePercent() |特定の時間間隔で利用できるサンプルの割合を返します。 例: <br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>返されたサンプルの割合が指定した `samplePercent` 未満の場合、`GetSample` メソッドは失敗するので、まず `GetSamplePercent` メソッドを使用して確認します。 その後、十分なサンプルが存在しない場合は、自動スケール評価を停止せずに代替の操作を実行します。 |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>サンプル、サンプルの割合、 *GetSample()* メソッド
 タスクおよびリソースのメトリック データを取得し、そのデータに基づいてプールのサイズを調整することが、自動スケールの数式の主要な動作となります。 そのため、自動スケールの数式とメトリック データ (サンプル) とがどのように関与するのかをしっかりと把握しておくことが重要です。
@@ -241,7 +241,7 @@ Batch サービスでは、タスクおよびリソースのメトリックの�
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-上記の行は Batch によって評価されると、値のベクターとしてサンプルの範囲を返します。 次に例を示します。
+上記の行は Batch によって評価されると、値のベクターとしてサンプルの範囲を返します。 例: 
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -268,7 +268,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 <table>
   <tr>
     <th>メトリック</th>
-    <th>Description</th>
+    <th>[説明]</th>
   </tr>
   <tr>
     <td><b>リソース</b></td>
@@ -296,7 +296,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Task</b></td>
+    <td><b>タスク</b></td>
     <td><p>タスク メトリックは、タスクの状態 (アクティブ、保留中、完了) に基づくメトリックです。 次のサービス定義の変数は、タスク メトリックに基づいてプールのサイズを調整する場合に有用です。</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -397,7 +397,7 @@ Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accoun
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>既存のプールでの自動スケールの有効化
 
-各 Batch SDK には自動スケールを有効にする方法が用意されています。 For example:
+各 Batch SDK には自動スケールを有効にする方法が用意されています。 例: 
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [プールの自動スケーリングを有効にする][rest_enableautoscale] (REST API)
@@ -655,7 +655,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」では、プール内のコンピューティング ノードで複数のタスクを同時に実行する方法の詳細を説明しています。 自動スケール以外にも、この機能は一部のワークロードのジョブの実行時間短縮に役立つことがあり、費用の節約になります。
 * 他にも、効率を上げるために、Batch アプリケーションによって、最適な方法で Batch サービスが照会されていることを確認してください。 数千に上る可能性のある計算ノードやタスクの状態を照会するときに、送信されるデータの量を制限する方法について詳しくは、[効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)に関する記事をご覧ください。
 

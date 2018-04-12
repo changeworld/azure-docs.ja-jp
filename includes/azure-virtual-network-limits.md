@@ -54,9 +54,9 @@
 | IP 構成あたりのルール数 | 299 |299 |
 | フロントエンド IP の構成、Basic | 10 | 200 |
 | フロントエンド IP の構成、Standard | 10 | 600 |
-| バックエンド プール、Basic | 100、1 つの可用性セット | - |
-| バックエンド プール、Standard | 1000、1 つの VNet | - |
-| HA ポート、Standard | 内部フロント エンドごとに 1 個 | - |
+| バックエンド プール、Basic | 100、1 つの可用性セット | 100、1 つの可用性セット |
+| バックエンド プール、Standard | 1000、1 つの VNet | 1000、1 つの VNet |
+| HA ポート、Standard | 内部フロント エンドごとに 1 個 | 内部フロント エンドごとに 1 個 |
 
 制限値を既定値から引き上げる必要がある場合は、[サポートにお問い合わせ](../articles/azure-supportability/resource-manager-core-quotas-request.md )ください。
 

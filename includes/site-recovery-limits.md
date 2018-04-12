@@ -1,11 +1,11 @@
 ---
-title: "Site Recovery に関する制限の表"
-description: "Site Recovery に関するシステムの制限について説明します。"
+title: Site Recovery に関する制限の表
+description: Site Recovery に関するシステムの制限について説明します。
 services: site recovery
 documentationcenter: NA
 author: csilauraa
 manager: jwhit
-editor: 
+editor: ''
 ms.service: site recovery
 ms.devlang: NA
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: e0694aa8c5226b794be59358e73751cc493a7e95
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 次の制限は、Azure Site Recovery に適用されます。
 

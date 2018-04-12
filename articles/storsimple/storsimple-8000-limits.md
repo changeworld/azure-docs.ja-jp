@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 シリーズのシステム制限 | Microsoft Docs"
-description: "StorSimple 8000 シリーズ コンポーネントおよび接続のシステム制限および推奨サイズについて説明します。"
+title: StorSimple 8000 シリーズのシステム制限 | Microsoft Docs
+description: StorSimple 8000 シリーズ コンポーネントおよび接続のシステム制限および推奨サイズについて説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc3c0ad193af7625c8c4c1c2e82b6bdc8be33310
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 シリーズのシステム制限とは
 

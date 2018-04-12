@@ -1,11 +1,11 @@
 ---
-title: "国に応じて Azure CDN コンテンツへのアクセスを制限 | Microsoft Docs"
-description: "地理のフィルタリング機能を使用して Azure CDN コンテンツへのアクセスを制限する方法について説明します。"
+title: 国に応じて Azure CDN コンテンツへのアクセスを制限 | Microsoft Docs
+description: 地理のフィルタリング機能を使用して Azure CDN コンテンツへのアクセスを制限する方法について説明します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>国に応じて Azure CDN コンテンツへのアクセスを制限
 
