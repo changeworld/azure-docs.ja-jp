@@ -1,11 +1,11 @@
 ---
-title: "Azure での Windows 用の仮想マシン拡張機能とその機能 | Microsoft Docs"
-description: "Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。"
+title: Azure での Windows 用の仮想マシン拡張機能とその機能 | Microsoft Docs
+description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0065468e4172f62dc1759c1905a8df48e91e01a6
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: efb7f7cf911ad5dc753afffd077c473cc0faaf74
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
-Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使って、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、Azure Portal を使って実行できます。 拡張機能は、新しい仮想マシン デプロイにバンドルすることも、既存の任意のシステムに対して実行することもできます。
+Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使って、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、Azure Portal を使って実行できます。 拡張機能は、新しい仮想マシンの展開にバンドルすることも、既存の任意のシステムに対して実行することもできます。
 
 このドキュメントでは、仮想マシン拡張機能の概要と仮想マシン拡張機能を使う場合の前提条件を示し、仮想マシン拡張機能を検出、管理、削除する方法についてのガイダンスを提供します。 構成がそれぞれ固有の VM 拡張機能が多数あるため、このドキュメントでは一般的な情報を示します。 拡張機能に固有の詳細情報については、それぞれの拡張機能のドキュメントをご覧ください。
 
@@ -35,7 +35,7 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 - Windows 用の DSC 拡張機能を使って、仮想マシンに PowerShell Desired State Configuration を適用します。 詳しくは、[Azure Desired State Configuration 拡張機能](extensions-dsc-overview.md)に関する記事をご覧ください。
 - Microsoft Monitoring Agent の VM 拡張機能を使って仮想マシンの監視を構成します。 詳しくは、[「Azure 仮想マシンを Log Analytics に接続する」](../../log-analytics/log-analytics-azure-vm-extension.md)をご覧ください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳しくは、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)をご覧ください。
-- Chef を使って、Azure 仮想マシンを構成します。 詳しくは、「[Chef で Azure 仮想マシンのデプロイメントを自動化する](chef-automation.md)」をご覧ください。
+- Chef を使って、Azure 仮想マシンを構成します。 詳しくは、「[Chef で Azure 仮想マシンの展開を自動化する](chef-automation.md)」をご覧ください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Windows 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の PowerShell スクリプトを使用できます。 これは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳しくは、[Windows VM のカスタム スクリプト拡張機能](extensions-customscript.md)に関する記事をご覧ください。
 
@@ -113,7 +113,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 `Set-AzureRmVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳しくは、[Set-AzureRmVMExtension のリファレンス](https://msdn.microsoft.com/en-us/library/mt603745.aspx)に関する記事をご覧ください。
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure ポータル
 
 VM 拡張機能は、Azure Portal から既存の仮想マシンに適用できます。 そのためには、使う仮想マシンを選び、**[拡張機能]** を選択して **[追加]** をクリックします。 これで、使用可能な拡張機能の一覧が表示されます。 必要な拡張機能を選び、ウィザードの手順に従います。
 
@@ -121,7 +121,7 @@ VM 拡張機能は、Azure Portal から既存の仮想マシンに適用でき�
 
 ![antimalware 拡張機能のインストール](./media/extensions-features/installantimalwareextension.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
 VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使って実行できます。 テンプレートを使った拡張機能のデプロイは、完全に構成された Azure デプロイの作成に役立ちます。 たとえば、次の JSON は、負荷分散された一連の仮想マシンと Azure SQL データベースをデプロイし、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
 
@@ -279,7 +279,7 @@ Azure Portalを使って拡張機能を削除することもできます。 そ�
 4. **[アンインストール]** を選択します。
 
 ## <a name="common-vm-extensions-reference"></a>一般的な VM 拡張機能のリファレンス
-| 拡張機能の名前 | 説明 | 詳細情報 |
+| 拡張機能の名前 | [説明] | 詳細情報 |
 | --- | --- | --- |
 | Windows でのカスタムのスクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します |[Windows でのカスタムのスクリプト拡張機能](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Windows での DSC 拡張機能 |PowerShell DSC (必要な状態の構成) 拡張機能 |[Windows での DSC 拡張機能](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |

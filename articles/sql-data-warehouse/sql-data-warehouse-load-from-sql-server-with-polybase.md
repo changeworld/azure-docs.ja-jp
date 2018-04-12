@@ -1,11 +1,11 @@
 ---
-title: "SQL Server から Azure SQL Data Warehouse へのデータの読み込み (PolyBase) | Microsoft Docs"
-description: "bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。"
+title: SQL Server から Azure SQL Data Warehouse へのデータの読み込み (PolyBase) | Microsoft Docs
+description: bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 860c86e0-90f7-492c-9a84-1bdd3d1735cd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: barbkess
 ms.openlocfilehash: f8c251fb9b8275eeea2940f8856669d2ef9f3549
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
 > [!div class="op_single_selector"]
@@ -240,7 +240,7 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 
 詳細については、[統計][Statistics]に関するページを参照してください。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、[PolyBase ガイド][PolyBase guide]を参照してください。
 
 <!--Image references-->

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: 宣言型プロビジョニングの式 | Microsoft Docs"
-description: "宣言型のプロビジョニングの式について説明します。"
+title: 'Azure AD Connect: 宣言型プロビジョニングの式 | Microsoft Docs'
+description: 宣言型のプロビジョニングの式について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 797c0949aceea415652a72df5ee23ef9888ab975
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。

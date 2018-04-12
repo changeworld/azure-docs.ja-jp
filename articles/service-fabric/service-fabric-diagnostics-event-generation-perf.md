@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric のパフォーマンスの監視 | Microsoft Docs"
-description: "Azure Service Fabric クラスターの監視と診断に使うパフォーマンス カウンターについて説明します。"
+title: Azure Service Fabric のパフォーマンスの監視 | Microsoft Docs
+description: Azure Service Fabric クラスターの監視と診断に使うパフォーマンス カウンターについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 

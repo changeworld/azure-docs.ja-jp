@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager で Windows VM に Key Vault を設定する | Microsoft Docs"
-description: "Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法"
+title: Azure Resource Manager で Windows VM に Key Vault を設定する | Microsoft Docs
+description: Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: a5083a5216efbfd76fd912ec48c2f0ec3b30c4a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8f094bfb0f304123cbdf719bec22185431aca5a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
 

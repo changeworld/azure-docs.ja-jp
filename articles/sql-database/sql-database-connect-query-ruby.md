@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: mvc,develop apps
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 07/15/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 19ff40c5e4a42195dcfe0b68c8d0b941e53f25a2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 30dce6caefc0b95435d1dadc48aa927be475fc66
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>Ruby を使用して Azure SQL Database に照会する
 

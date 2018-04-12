@@ -1,11 +1,11 @@
 ---
-title: "Azure の HPC Pack クラスターにジョブを送信する | Microsoft Docs"
-description: "Azure の HPC Pack クラスターに HPC ジョブを送信するようにオンプレミス コンピューターを設定する方法について説明します。"
+title: Azure の HPC Pack クラスターにジョブを送信する | Microsoft Docs
+description: Azure の HPC Pack クラスターに HPC ジョブを送信するようにオンプレミス コンピューターを設定する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management,hpc-pack
 ms.assetid: 78f6833c-4aa6-4b3e-be71-97201abb4721
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: d5953f1e1dd2deb4d871bd67352a6a5b2ae13dbf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -118,7 +118,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
     ```
    
-    または
+    or
    
     ```command
     job list /scheduler:https://<HeadNodeDnsName>.<region>.cloudapp.azure.com /all
@@ -136,7 +136,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 
 1. ジョブの送信時にクラスター ユーザーのドメイン資格情報を保存しなかった場合は、資格情報マネージャーで資格情報を追加できます。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 クライアント コンピューターのコントロール パネルで、資格情報マネージャーを起動します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クライアント コンピューターのコントロール パネルで、資格情報マネージャーを起動します。
    
     b. **[Windows 資格情報]** > **[汎用資格情報の追加]** をクリックします。
    
@@ -154,7 +154,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
     https://<HeadNodeDnsName>.cloudapp.net/HpcPortal
     ```
    
-    または
+    or
    
     ```
     https://<HeadNodeDnsName>.<region>.cloudapp.azure.com/HpcPortal
@@ -167,7 +167,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 5. **[Submit]**をクリックします。 入力が求められたら、HPC クラスター管理者のドメインの資格情報を入力します。 ジョブが送信され、ジョブ ID が **[自分のジョブ]** ページに表示されます。
 6. 送信したジョブの結果を表示するには、ジョブ ID をクリックし、**[タスクの表示]** をクリックしてコマンドの出力を表示します (**[出力]** の下で)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)を使用し、Azure クラスターにジョブを送信することもできます。
 * Linux クライアントからクラスター ジョブを送信する場合は、 [HPC Pack 2012 R2 SDK およびサンプル コード](https://www.microsoft.com/download/details.aspx?id=41633)の Python サンプルをご覧ください。
 

@@ -1,31 +1,30 @@
 ---
-title: "収集された Azure Log Analytics データの表示または分析 | Microsoft Docs"
-description: "この記事のチュートリアルでは、ログ検索ポータルを使用してログ検索を作成し、Log Analytics リソースに保存されたデータを分析する方法を説明します。  このチュートリアルでは、さまざまな種類のデータを返すシンプルなクエリを実行し、結果を分析します。"
+title: 収集された Azure Log Analytics データの表示または分析 | Microsoft Docs
+description: この記事のチュートリアルでは、ログ検索ポータルを使用してログ検索を作成し、Log Analytics リソースに保存されたデータを分析する方法を説明します。  このチュートリアルでは、さまざまな種類のデータを返すシンプルなクエリを実行し、結果を分析します。
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2017
+ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Log Analytics のログ検索で収集されたデータの表示または分析
 
 Log Analytics では、収集されたデータを分析するクエリを構築してログ検索を利用できます。また、よく利用する検索のグラフィカルな表示を使用してカスタマイズした既存のダッシュボードを利用することもできます。  Azure VM とアクティビティ ログから運用データのコレクションを定義したので、このチュートリアルでは次の方法について説明します。
 
 > [!div class="checklist"]
-> * Azure Log Analytics リソースを新しいクエリ言語にアップグレードする 
 > * イベント データの単純な検索を実行し、結果を変更およびフィルターする機能を使用する 
 > * パフォーマンス データを処理する方法を学ぶ
 
@@ -42,15 +41,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 最初に、ログ検索ポータルを開きます。   
 
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
-2. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[ログ検索]** タイルを選択します。<br> ![[ログ検索] ボタン](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
-
-ポータルの Log Analytics リソース ページの上部に、アップグレードを促すバナーが表示されているのがわかります。<br> ![Azure Portal に表示されている Log Analytics のアップグレード通知](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
-
-最近、Log Analytics では、新しいクエリ言語が導入されました。クエリの構築が簡単になり、多様なソースのデータを関連付け、分析して傾向や問題をすばやく特定できます。
-
-アップグレードは簡単です。  **[詳細を表示して、アップグレードする]** と表示されているバナーをクリックして、プロセスを開始します。  アップグレード情報ページでアップグレードに関する追加情報を確認し、**[今すぐアップグレード]** をクリックします。
-
-このプロセスは、完了までに数分かかります。その間の進行状況は、メニューの **[通知]** で確認することができます。 詳細については、「[新しい言語を使用する理由](log-analytics-log-search-upgrade.md#why-the-new-language)」を参照してください。
+2. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[ログ検索]** タイルを選択します。<br><br> ![[ログ検索] ボタン](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
 
 ## <a name="create-a-simple-search"></a>シンプルな検索を作成する
 テーブルのすべてのレコードを返すシンプルなクエリを使用すると、作業データを最も簡単に取得できます。  Windows クライアントまたは Linux クライアントがワークスペースに接続されている場合、データは Event (Windows) テーブルまたは Syslog (Linux) テーブルにあります。

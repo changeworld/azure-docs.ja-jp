@@ -2,9 +2,8 @@
 title: Azure Cosmos DB のデータへのアクセスをセキュリティで保護する方法 | Microsoft Docs
 description: マスター キー、読み取り専用キー、ユーザー、アクセス許可など、Azure Cosmos DB のアクセス制御の概念について説明します。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 8641225d-e839-4ba6-a6fd-d6314ae3a51c
 ms.service: cosmos-db
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: mimig
-ms.openlocfilehash: 771c4a539d240a6bfdc9770adc7cfada01571939
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: sngun
+ms.openlocfilehash: 7a53dda7d6b49187d77ca44bcb55db5f9c305f64
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -151,7 +150,7 @@ Cosmos DB アクセス許可リソースは Cosmos DB ユーザーに関連付�
 Permission docPermission = new Permission
 {
     PermissionMode = PermissionMode.Read,
-    ResourceLink = documentCollection.SelfLink,
+    ResourceLink = UriFactory.CreateDocumentCollectionUri("db", "collection"),
     Id = "readperm"
 };
   

@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI 1.0 を使用した Linux VM の作成 | Microsoft Docs"
-description: "Azure CLI 1.0 を使用した Azure での Linux VM の作成"
+title: Azure CLI 1.0 を使用した Linux VM の作成 | Microsoft Docs
+description: Azure CLI 1.0 を使用した Azure での Linux VM の作成
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 71bb55ab4800389c956cebd00eb3e6e506610153
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: ea9eab1a02a29005917848ed54ab8ba160b89b63
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM を作成する
 
@@ -51,12 +51,12 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 
 | エイリアス | 発行元 | プラン | SKU | バージョン |
 |:--- |:--- |:--- |:--- |:--- |
-| CentOS |OpenLogic |CentOS |7.2 |最新 |
-| CoreOS |CoreOS |CoreOS |安定版 |最新 |
-| Debian |credativ |Debian |8 |最新 |
-| openSUSE |SUSE |openSUSE |13.2 |最新 |
-| RHEL |Red Hat |RHEL |7.2 |最新 |
-| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |最新 |
+| CentOS |OpenLogic |CentOS |7.2 |latest |
+| CoreOS |CoreOS |CoreOS |安定版 |latest |
+| Debian |credativ |Debian |8 |latest |
+| openSUSE |SUSE |openSUSE |13.2 |latest |
+| RHEL |Red Hat |RHEL |7.2 |latest |
+| UbuntuLTS |Canonical |Ubuntu Server |14.04.4-LTS |latest |
 
 以下のセクションでは、**ImageURN** オプション (`-Q`) に `UbuntuLTS` エイリアスを使用して、Ubuntu 14.04.4 LTS Server をデプロイします。
 
@@ -200,7 +200,7 @@ applicable law.
 myAdminUser@myVM:~$
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 `azure vm quick-create` を使用すると、bash シェルにログインして作業できるように、VM をすばやくデプロイできます。 ただし、 `vm quick-create` を使用した場合、広範な制御を行ったり、より複雑な環境を作成したりすることはできません。  インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
 
 * [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

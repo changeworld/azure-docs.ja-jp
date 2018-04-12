@@ -4,7 +4,7 @@ description: Linux オペレーティング システムを格納した Azure �
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: b06144e6ad3df1626022edd856e14d6c47494336
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d08c752af23845a31428b16ee3de594044b4129
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -75,7 +75,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 これを修正するには、HYPER-V マネージャー コンソールまたは [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) Powershell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、qemu-img を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 参照: https://bugs.launchpad.net/qemu/+bug/1490611
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
 > 
 > 
 

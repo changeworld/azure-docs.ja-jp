@@ -1,10 +1,10 @@
 ---
-title: "クイック スタート: Cassandra API (Java) - Azure Cosmos DB | Microsoft Docs"
-description: "このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します"
+title: 'クイック スタート: Cassandra API (Java) - Azure Cosmos DB | Microsoft Docs'
+description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: ef611081-0195-4ad8-9b54-b313588e5754
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: 4d12fe3890b1d3190af1bc94eba7b93059a03f10
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: f132c20f1bcb2de2af708e87f869fbe06fe6914b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>クイックスタート: Java と Azure Cosmos DB で Cassandra アプリを構築する
 
@@ -44,7 +44,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 
 
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 ドキュメント データベースを作成するには、Azure Cosmos DB を含んだ Cassandra アカウントを事前に作成しておく必要があります。
 
@@ -142,7 +142,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
     }
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。
 
@@ -214,7 +214,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、Cassandra データベース、コレクションを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Azure Cosmos DB コレクションに追加のデータをインポートできます。 
 

@@ -4,7 +4,7 @@ description: PowerShell スクリプトを実行し、Azure 仮想マシンで W
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 286b2be8-2533-40df-b02a-26156b1f1133
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 82aa2942a6a4fe6a3ac1c3ec2c0710e39f4282b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e05562aeac0ea89ec1c3d80d2967c8f59c68d332
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
 HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC Pack 2012 R2 クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。 Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「 [HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](../../linux/classic/hpcpack-cluster-powershell-script.md)」をご覧ください。 

@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 10/05/2017
 ms.author: skwan
 ms.openlocfilehash: eee4353c183aeec19f72f8e1dec6c20b6c5bb226
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>Azure Active Directory による Azure リソースへのアクセス管理
 

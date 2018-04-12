@@ -1,13 +1,12 @@
 ---
-title: "Azure PowerShell スクリプト - Azure Cosmos DB の SQL API アカウントを作成する | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - Azure Cosmos DB の SQL API アカウントを作成する"
+title: Azure PowerShell スクリプト - Azure Cosmos DB の SQL API アカウントを作成する | Microsoft Docs
+description: Azure PowerShell サンプル スクリプト - Azure Cosmos DB の SQL API アカウントを作成する
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: PowerShell
@@ -15,12 +14,12 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
-ms.author: mimig
-ms.openlocfilehash: 060270f424cb3bbb984430d9e17656453fa30c4d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: sngun
+ms.openlocfilehash: c44f4a5998ac8159d3bc5d1e41f1fe94b0897c6b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-a-sql-api-account-using-powershell"></a>Azure Cosmos DB: PowerShell を使用して SQL API アカウントを作成する
 
@@ -51,7 +50,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

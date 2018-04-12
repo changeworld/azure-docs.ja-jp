@@ -1,13 +1,13 @@
 ---
-title: "Azure でのリモート デスクトップの詳細なトラブルシューティング | Microsoft Docs"
-description: "Azure の Windows 仮想マシンに接続できないリモート デスクトップ エラーをトラブルシューティングする詳細な手順の確認"
+title: Azure でのリモート デスクトップの詳細なトラブルシューティング | Microsoft Docs
+description: Azure の Windows 仮想マシンに接続できないリモート デスクトップ エラーをトラブルシューティングする詳細な手順の確認
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: "リモート デスクトップに接続できない, リモート デスクトップのトラブルシューティング, リモート デスクトップで接続できない, リモート デスクトップ エラー, リモート デスクトップのトラブルシューティング, リモート デスクトップの問題"
+keywords: リモート デスクトップに接続できない, リモート デスクトップのトラブルシューティング, リモート デスクトップで接続できない, リモート デスクトップ エラー, リモート デスクトップのトラブルシューティング, リモート デスクトップの問題
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/06/2017
 ms.author: genli
-ms.openlocfilehash: afbaa3afc78efd220d74def2e9f106e9fbd1ee2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1485bc5ac7ae47df9a1a36c8b88d6515b5624360
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
@@ -39,7 +39,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 次に例を示します。
+先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 例: 
 
 * VM、または VM が含まれるクラウド サービスのパブリック IP アドレス (仮想 IP アドレス ( [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) とも呼ばれる) が変更されました。 この RDP 障害は、DNS 名について登録された *古い IP アドレス* が DNS クライアント キャッシュにまだ入っているために発生した可能性があります。 DNS クライアント キャッシュをフラッシュしてから、もう一度 VM に接続してみてください。 または、新しい VIP に直接接続してみてください。
 * Azure ポータルによって生成された接続を使用する代わりに、サード パーティのアプリケーションを使用してリモート デスクトップ接続を管理しています。 アプリケーションの構成にリモート デスクトップのトラフィック用の正しい TCP ポートが含まれていることを確認します。 クラシック仮想マシンのこのポートを確認するには、[Azure Portal](https://portal.azure.com) で VM の [設定]、[エンドポイント] の順にクリックします。
@@ -194,7 +194,7 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 ## <a name="additional-resources"></a>その他のリソース
 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](reset-rdp.md)
 
-[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

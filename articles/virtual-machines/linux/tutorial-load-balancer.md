@@ -1,13 +1,13 @@
 ---
-title: "Azure で Linux 仮想マシンの負荷分散を行う方法 | Microsoft Docs"
-description: "Azure Load Balancer を使用して、可用性が高く堅牢なアプリケーションを 3 つの Linux VM にまたがって作成する方法について説明します。"
+title: Azure で Linux 仮想マシンの負荷分散を行う方法 | Microsoft Docs
+description: Azure Load Balancer を使用して、可用性が高く堅牢なアプリケーションを 3 つの Linux VM にまたがって作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: feb2c369fc00d37c9a6af0c0be68cbf7d9e59921
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法
 負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。

@@ -1,11 +1,11 @@
 ---
-title: "Azure で特殊化したディスクから VM を作成する | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルで、特殊化された非管理ディスクを接続して新しい VM を作成します。"
+title: Azure で特殊化したディスクから VM を作成する | Microsoft Docs
+description: Resource Manager デプロイメント モデルで、特殊化された非管理ディスクを接続して新しい VM を作成します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ffa36967eb987f5e1b66f007ae60a63e640a609a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 

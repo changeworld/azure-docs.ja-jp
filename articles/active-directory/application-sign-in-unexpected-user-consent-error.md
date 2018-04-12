@@ -1,11 +1,11 @@
 ---
-title: "アプリケーションに同意すると、予期しないエラーが発生する | Microsoft Docs"
-description: "アプリケーションに同意する処理の最中に発生する可能性があるエラーとそれらに対処する方法について説明します"
+title: アプリケーションに同意すると、予期しないエラーが発生する | Microsoft Docs
+description: アプリケーションに同意する処理の最中に発生する可能性があるエラーとそれらに対処する方法について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
@@ -71,7 +71,7 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 
     -   Azure AD アプリケーション ギャラリーからのアプリケーションの追加
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 
 [Azure Active Directory (v1 エンドポイント) のアプリ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 

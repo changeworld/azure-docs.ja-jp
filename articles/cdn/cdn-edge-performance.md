@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN でのエッジ ノード パフォーマンスの分析 | Microsoft Docs"
-description: "Microsoft Azure CDN でエッジ ノード パフォーマンスを分析します。 エッジ パフォーマンス分析は、CDN のトラフィックや帯域幅の使用状況の詳細な情報を提供します。"
+title: Azure CDN でのエッジ ノード パフォーマンスの分析 | Microsoft Docs
+description: Microsoft Azure CDN でエッジ ノード パフォーマンスを分析します。 エッジ パフォーマンス分析は、CDN のトラフィックや帯域幅の使用状況の詳細な情報を提供します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad285b4e2226c85859acb22ba214cc44c77c08e2
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]

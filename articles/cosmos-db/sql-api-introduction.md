@@ -4,8 +4,7 @@ description: SQL と JavaScript を使用して、Azure Cosmos DB に大量の J
 keywords: json データベース, ドキュメント データベース
 services: cosmos-db
 author: rafats
-manager: jhubbard
-editor: monicar
+manager: kfile
 documentationcenter: ''
 ms.assetid: 686cdd2b-704a-4488-921e-8eefb70d5c63
 ms.service: cosmos-db
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: 32313c28de9065b57ec98d3668813a4b24c0becc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: eb3967a279352a7cd33486dec63c345b0287d3a3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Azure Cosmos DB の概要: SQL API
 

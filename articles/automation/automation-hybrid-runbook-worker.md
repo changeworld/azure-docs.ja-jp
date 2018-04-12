@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b317a2d9241016b66651af4659c7daf2e8d8f2cc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8f212797decdd967154584927984bc0a4e58f4ba
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
@@ -93,6 +93,7 @@ Windows Hybrid Worker ロールのインストールと構成を自動化する�
 最初の 2 つのステップは Automation 環境に対して 1 回だけ実行し、残りのステップは worker コンピューターごとに繰り返します。
 
 #### <a name="1-create-log-analytics-workspace"></a>1.Log Analytics ワークスペースの作成
+
 Log Analytics ワークスペースがまだない場合は、[ワークスペースの管理](../log-analytics/log-analytics-manage-access.md)に関するページの手順に従って作成します。 既存のワークスペースがある場合は、それを使用できます。
 
 #### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2.Log Analytics ワークスペースに Automation ソリューションを追加する
@@ -102,6 +103,7 @@ Log Analytics ワークスペースがまだない場合は、[ワークスペ�
 [ソリューション ギャラリーを使用したソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順に従って、Log Analytics ワークスペースに **Automation** ソリューションを追加します。
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>手順 3.Microsoft Monitoring Agent をインストールする
+
 Microsoft Monitoring Agent は Log Analytics にコンピューターを接続します。 エージェントをオンプレミスのコンピューターにインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
 
 「[Windows コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-windows-agent.md)」の手順に従って、オンプレミスのコンピューターにエージェントをインストールします。 コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。

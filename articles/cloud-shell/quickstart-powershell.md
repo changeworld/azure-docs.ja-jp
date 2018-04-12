@@ -145,7 +145,7 @@ net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<My
 
 詳しくは、「[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]」をご覧ください。
 
-次のようにして、Azure Files 共有の下のディレクトリ間を移動することもできます。
+次のようにして、Azure ファイル共有の下のディレクトリ間を移動することもできます。
 
             
 ``` PowerShell

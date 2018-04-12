@@ -1,11 +1,11 @@
 ---
-title: "Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルでの Windows 仮想マシンのデプロイに関する問題のトラブルシューティング。"
+title: Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング | Microsoft Docs
+description: Azure Resource Manager デプロイメント モデルでの Windows 仮想マシンのデプロイに関する問題のトラブルシューティング。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: adbe54dec363b454d64340bf3a862cdead2e5435
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 84363a92445991d08a2593bb3ade863db06b8670
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 

@@ -1,11 +1,10 @@
 ---
-title: "Azure Cosmos DB で地理空間データを扱う | Microsoft Docs"
-description: "Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。"
+title: Azure Cosmos DB で地理空間データを扱う | Microsoft Docs
+description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
-manager: jhubbard
-editor: monicar
+manager: kfile
 ms.assetid: 82ce2898-a9f9-4acf-af4d-8ca4ba9c7b8f
 ms.service: cosmos-db
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.workload: data-services
 ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e778f4a9b7ec4935d53eb335462f3c414ff99cd
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 6a78426ed6b54f0227dbd89c150f23af712f1b35
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。

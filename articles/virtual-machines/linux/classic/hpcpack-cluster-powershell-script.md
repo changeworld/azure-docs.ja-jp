@@ -4,7 +4,7 @@ description: PowerShell スクリプトを実行し、Azure 仮想マシンで L
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 73041960-58d3-4ecf-9540-d7e1a612c467
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 477859db8c884714d9b5140483d300ebfe6c116a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 66affb47190ba0c6fccaae8e8267b310682aee46
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>HPC Pack IaaS デプロイ スクリプトを使用し、Linux ハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
 HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Linux ワークロード用に完全な HPC Pack 2012 R2 クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、HPC Pack でサポートされるいずれかの Linux ディストリビューションを実行するコンピューティング ノードとから成ります。 Windows ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は「 [HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
 > [!IMPORTANT] 
 > この記事で説明する PowerShell スクリプトでは、クラシック デプロイメント モデルを使用して Azure で Microsoft HPC Pack 2012 R2 クラスターを作成します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
-> また、この記事で説明するスクリプトは HPC Pack 2016 をサポートしていません。 HPC Pack 2012 R2 および HPC Pack 2016 の Resource Manager テンプレートの詳細については、[Azure での HPC Pack クラスターのデプロイ オプション](../hpcpack-cluster-options.md)に関するページを参照してください。
+> また、この記事で説明するスクリプトは HPC Pack 2016 をサポートしていません。 HPC Pack 2012 R2 および HPC Pack 2016 の Resource Manager テンプレートの詳細については、[Azure での HPC Pack クラスターの展開オプション](../hpcpack-cluster-options.md)に関するページを参照してください。
 
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]

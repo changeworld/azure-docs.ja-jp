@@ -1,12 +1,12 @@
 ---
-title: "Red Hat Linux VM を Azure Active Directory DS に参加させる | Microsoft Docs"
-description: "既存の Red Hat Enterprise Linux 7 VM を Azure Active Directory ドメイン サービスに参加させる方法。"
+title: Red Hat Linux VM を Azure Active Directory DS に参加させる | Microsoft Docs
+description: 既存の Red Hat Enterprise Linux 7 VM を Azure Active Directory ドメイン サービスに参加させる方法。
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2016
 ms.author: v-livech
-ms.openlocfilehash: 2e46a0f3c9bdbe267d121b4bf62e25d5d411fcc2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68971372a3c9d9671ccad43db8d7b543d286fc7a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="join-a-redhat-linux-vm-to-an-azure-active-directory-domain-service"></a>Red Hat Linux VM を Azure Active Directory ドメインサービスに参加させる
 
@@ -105,7 +105,7 @@ sudo realm join --verbose mydomain.com -U 'ahmet@mydomain.com'
 ssh -l ahmet@mydomain.com mydomain.cloudapp.net
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure (RHUI)](update-infrastructure-redhat.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Resource Manager の仮想マシンの Key Vault を設定する](key-vault-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

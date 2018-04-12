@@ -1,12 +1,12 @@
 ---
-title: "Chef による Azure 仮想マシンの展開 | Microsoft Docs"
-description: "Chef を使用して自動化された仮想マシンの展開と構成を Microsoft Azure で実行する方法について説明します。"
+title: Chef による Azure 仮想マシンの展開 | Microsoft Docs
+description: Chef を使用して自動化された仮想マシンの展開と構成を Microsoft Azure で実行する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: diegoviso
-manager: timlt
+manager: jeconnoc
 tags: azure-service-management,azure-resource-manager
-editor: 
+editor: ''
 ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 9dabf666c633b59c7d1f9478b0e9cfe9d313e129
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 36293c41219a1b42d75850fa66d3c631637bb855
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]

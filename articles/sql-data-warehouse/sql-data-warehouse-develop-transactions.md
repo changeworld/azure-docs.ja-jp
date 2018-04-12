@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse のトランザクション | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。"
+title: SQL Data Warehouse のトランザクション | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ae621788-e575-41f5-8bfe-fa04dc4b0b53
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>SQL Data Warehouse のトランザクション
 予想される通り、SQL Data Warehouse では、トランザクションは、データ ウェアハウスのワークロードの一部としてサポートされます。 ただし、SQL Data Warehouse のパフォーマンスを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。 

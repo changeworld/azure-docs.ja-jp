@@ -1,12 +1,12 @@
 ---
-title: "Azure の vCPU クォータ | Microsoft Docs"
-description: "Azure の vCPU クォータについて説明します。"
-keywords: 
+title: Azure の vCPU クォータ | Microsoft Docs
+description: Azure の vCPU クォータについて説明します。
+keywords: ''
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: drewm
-ms.openlocfilehash: 8b99fd92d9031b7172e698cf5db1f776387bdfb9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a4e0bbe1c6d9b121dfb422934cdd67ff19f80482
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>仮想マシンの vCPU クォータ
 
@@ -72,6 +72,6 @@ az vm list-usage --location "East US"
 
 単一サブスクリプション RI を購入するためにクォータの引き上げが必要な場合は、そのサブスクリプションの[クォータの引き上げを要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 課金とクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json)」を参照してください。

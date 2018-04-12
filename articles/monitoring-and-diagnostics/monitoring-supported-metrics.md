@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。
@@ -811,11 +811,11 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
 |---|---|---|---|---|---|
 |Throughput|Throughput|BytesPerSecond|合計|Application Gateway が処理した 1 秒あたりのバイト数|ディメンションなし|
-|UnhealthyHostCount|異常なホストの数|Count|平均|異常なバックエンド ホストの数|BackendSettingsPool|
-|HealthyHostCount|正常なホストの数|Count|平均|正常なバックエンド ホストの数|BackendSettingsPool|
+|UnhealthyHostCount|異常なホストの数|Count|平均|異常なバックエンド ホストの数。 バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。|BackendSettingsPool|
+|HealthyHostCount|正常なホストの数|Count|平均|正常なバックエンド ホストの数。 バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。|BackendSettingsPool。 |
 |TotalRequests|要求の合計数|Count|合計|Application Gateway が処理した成功した要求の数|BackendSettingsPool|
 |FailedRequests|失敗した要求|Count|合計|Application Gateway が処理した失敗した要求の数|BackendSettingsPool|
-|ResponseStatus|応答の状態|Count|合計|Application Gateway によって返された HTTP 応答の状態|HttpStatusGroup|
+|ResponseStatus|応答の状態|Count|合計|Application Gateway によって返された HTTP 応答の状態。 応答状態コードの分布をさらに分類し、2xx、3xx、4xx、5xx のカテゴリで応答を表示できます。|HttpStatusGroup|
 |CurrentConnections|現在の接続数|Count|合計|Application Gateway で確立された現在の接続の数|ディメンションなし|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways

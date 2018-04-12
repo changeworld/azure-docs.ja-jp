@@ -2,18 +2,17 @@
 title: Azure Files を Azure にバックアップする
 description: この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明するほか、管理タスクについて説明します。
 services: backup
-keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
 author: markgalioto
 ms.author: markgal
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -32,7 +31,7 @@ Azure ファイル共有をバックアップする前に、[サポートされ�
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
 Azure ファイル共有のバックアップはプレビュー段階です。 プレビュー期間は、次の制限に注意してください。
-- [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。
+- [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy-zrs.md) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-redundancy-grs.md) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。
 - 仮想ネットワークが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
 - Azure Files の保護を目的とした PowerShell と CLI は提供されていません。
 - スケジュール バックアップの数は、1 日につき 1 個が上限となります。

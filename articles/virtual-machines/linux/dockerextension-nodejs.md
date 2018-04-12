@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI 1.0 で Azure Docker VM 拡張機能を使用する | Microsoft Docs"
-description: "Docker VM 拡張機能を使用して、Resource Manager テンプレートを使って Azure で Docker 環境をすばやく安全にデプロイする方法を説明します。"
+title: Azure CLI 1.0 で Azure Docker VM 拡張機能を使用する | Microsoft Docs
+description: Docker VM 拡張機能を使用して、Resource Manager テンプレートを使って Azure で Docker 環境をすばやく安全にデプロイする方法を説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f981a50887138660d26a9d011870a05f1270c94
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Azure CLI 1.0 で Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
 Docker は一般的なコンテナー管理およびイメージング プラットフォームで、Linux (および Windows) 上のコンテナーを簡単に操作できます。 Azure では、ニーズに応じた様々な方法で Docker をデプロイできます。 この記事では、Docker VM 拡張機能と Azure Resource Manager テンプレートの使用について説明します。 
@@ -192,7 +192,7 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 
 Resource Manager テンプレートの詳しい使い方は、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Docker デーモン TCP ポートを構成](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket)したり、[Docker セキュリティ](https://docs.docker.com/engine/security/security/)について理解したり、[Docker Compose](https://docs.docker.com/compose/overview/) を使ってコンテナーをデプロイすることができます。 Azure Docker VM 拡張機能自体の詳細については、「[GitHub プロジェクト](https://github.com/Azure/azure-docker-extension/)」をご覧ください。
 
 Azure での Docker のデプロイの他のオプションについて詳しくは、以下をご覧ください。

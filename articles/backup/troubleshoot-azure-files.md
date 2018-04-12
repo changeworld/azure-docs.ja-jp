@@ -3,25 +3,24 @@ title: Azure Files のバックアップのトラブルシューティング
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 services: backup
 ms.service: backup
-keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Azure Files のバックアップに関する問題のトラブルシューティング
 次の表に示す情報を使って、Azure Files のバックアップを使用中に発生した問題やエラーのトラブルシューティングを行うことができます。
 
 ## <a name="preview-boundaries"></a>プレビュー境界
 Azure Files のバックアップはプレビュー段階にあります。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
-- [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) または [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護する。
+- [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) または [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護する。
 - 仮想ネットワークが有効になっているストレージ アカウントの Azure ファイル共有を保護する。
 - PowerShell または CLI を使用して Azure ファイル共有をバックアップする。
 

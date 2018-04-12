@@ -1,11 +1,11 @@
 ---
-title: "Azure VM の障害復旧のシナリオ | Microsoft Docs"
-description: "Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法について説明します。"
+title: Azure VM の障害復旧のシナリオ | Microsoft Docs
+description: Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法について説明します。
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: kmouss
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
 ms.workload: virtual-machines
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb986a41e33501ee71c93a48457ac4114e33c671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70aec41c885ab81371f5318f7557b0e628ac3308
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Azure サービスの中断が Azure VM に影響を与える場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -47,7 +47,7 @@ VM に Azure Site Recovery を構成して、1 回のクリックによってわ
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure Site Recovery を使用して [Azure 仮想マシンで実行されているアプリケーションの保護](https://aka.ms/a2a-getting-started)を開始する
 

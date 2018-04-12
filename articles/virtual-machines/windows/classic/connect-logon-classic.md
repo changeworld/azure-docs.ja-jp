@@ -1,10 +1,10 @@
 ---
-title: "クラシック Azure VM へのログオン | Microsoft Docs"
-description: "Azure Portal を使用して、クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにログオンします。"
+title: クラシック Azure VM へのログオン | Microsoft Docs
+description: Azure Portal を使用して、クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにログオンします。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: c35bfeaa81f89dc5a636d67ed9a2a930d689c54a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: bcbebc216dbd63acfb33cf72ba774d088149a3a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Azure ポータルを使用して Windows 仮想マシンにログオンする
 Azure ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始し、Windows VM にログオンします。

@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI 1.0 で Azure テンプレートを使用して Linux VM を作成する | Microsoft Docs"
-description: "Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して、Linux VM を Azure に作成します。"
+title: Azure CLI 1.0 で Azure テンプレートを使用して Linux VM を作成する | Microsoft Docs
+description: Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して、Linux VM を Azure に作成します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 620adcba9e136aa56e7a4867196ce5b9249b6072
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して Linux VM を作成する方法
 この記事では、Azure CLI 1.0 と Azure Resource Manager テンプレートを使用してすばやく Linux 仮想マシンをデプロイする方法を説明します。 この記事では以下が必要です。
@@ -83,6 +83,6 @@ info:    group create command OK
 
 この例では、 `--template-uri` パラメーターを使用して VM をデプロイしています。  また、テンプレートをローカルでダウンロードまたは作成し、 `--template-file` パラメーターを使ってテンプレート ファイルへのパスを引数として指定して、そのテンプレートを渡すこともできます。 テンプレートで必要となるパラメーターは、Azure CLI のプロンプトで入力します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次にデプロイするアプリ フレームワークを見つけるには、 [テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/) を検索します。
 

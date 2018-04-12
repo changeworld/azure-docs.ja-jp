@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse - Data Factory へのデータの読み込み | Microsoft Docs"
-description: "このチュートリアルでは、Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込み、データ ソースとして SQL Server データベースを使用します。"
+title: Azure SQL Data Warehouse - Data Factory へのデータの読み込み | Microsoft Docs
+description: このチュートリアルでは、Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込み、データ ソースとして SQL Server データベースを使用します。
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-sql-data-warehouse;azure-data-factory
 ms.service: sql-data-warehouse
 ms.workload: data-management
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Data Factory による SQL Data Warehouse へのデータの読み込み
 
@@ -36,7 +36,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
 - **Azure ストレージ アカウント**が必要です。 ストレージ アカウントがまだない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)」をご覧ください。 最大のパフォーマンスを引き出すため、ストレージ アカウントとデータ ウェアハウスは同じ Azure リージョンに配置してください。
 
 ## <a name="configure-a-data-factory"></a>データ ファクトリ ページを構成する
-1. [Azure ポータル][]にログインします。
+1. [Azure Portal][] にログインします。
 2. データ ウェアハウスを見つけて、クリックして開きます。
 3. メイン ブレードで、**[データの読み込み]** > **[Azure Data Factory]** をクリックします。
 
@@ -146,7 +146,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
 
 5. この監視ビューを後で起動するには、SQL Data Warehouse に移動して **[データの読み込み > Azure Data Factory]** をクリックし、ファクトリを選択して **[Monitor existing loading tasks (既存の読み込み中タスクを監視)]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 SQL Data Warehouse にデータベースを移行するには、[移行の概要](sql-data-warehouse-overview-migrate.md)に関する記事を参照してください。
 
@@ -162,4 +162,4 @@ SQL Data Warehouse のデータを探索するには、次の記事をご覧く�
 - [Power BI を使用したビジュアル データ](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 
 <!-- Azure references -->
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

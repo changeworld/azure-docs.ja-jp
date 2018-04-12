@@ -1,26 +1,26 @@
 ---
-title: "PowerShell サンプル - モニター - スケーリング - Azure SQL データベース | Microsoft Docs"
-description: "単一 Azure SQL データベースを監視し、スケーリングするための Azure PowerShell サンプル スクリプト"
+title: PowerShell サンプル - モニター - スケーリング - Azure SQL データベース | Microsoft Docs
+description: 単一 Azure SQL データベースを監視し、スケーリングするための Azure PowerShell サンプル スクリプト
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: monitor & tune, mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 12/14/2017
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 70dcac2449b18e7afef3f96817593128ca1ab315
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: adb2da80ecf0b0c8feb7ebd242b1e98a871aef77
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>PowerShell を使用して単一の SQL データベースを監視およびスケーリングする
 

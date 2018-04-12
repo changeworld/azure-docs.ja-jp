@@ -1,26 +1,26 @@
 ---
-title: "BACPAC ファイルを Azure SQL データベースにインポートする PowerShell サンプル | Microsoft Docs"
-description: "BACPAC ファイルを SQL データベースにインポートするための Azure PowerShell サンプル スクリプト"
+title: BACPAC ファイルを Azure SQL データベースにインポートする PowerShell サンプル | Microsoft Docs
+description: BACPAC ファイルを SQL データベースにインポートするための Azure PowerShell サンプル スクリプト
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: c24a3b7551058a69cbfdddf8b859b635e0829402
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 1ee17d416baa99105ea870cf334bdb360ed39272
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>PowerShell を使用して BACPAC ファイルを Azure SQL データベースにインポートする
 
@@ -52,7 +52,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 | [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) | BACPAC ファイルをインポートし、新しいデータベースをサーバー上に作成します。 |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

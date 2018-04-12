@@ -1,11 +1,11 @@
 ---
-title: "Azure Application Gateway のリダイレクトの概要 | Microsoft Docs"
-description: "Azure Application Gateway のリダイレクト機能について説明します"
+title: Azure Application Gateway のリダイレクトの概要 | Microsoft Docs
+description: Azure Application Gateway のリダイレクト機能について説明します
 services: application-gateway
 documentationcenter: na
 author: amsriva
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
 ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 

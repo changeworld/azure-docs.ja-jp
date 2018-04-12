@@ -15,10 +15,10 @@ ms.date: 12/06/2017
 ms.author: curtand
 ms.custom: it-pro;
 ms.openlocfilehash: 621ebec898e5b345556832097b12ca9b54506e7c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="understanding-resource-access-in-azure"></a>Azure でのリソース アクセスについて
 

@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3708c4a1bae93682f81d8aad0f3649f6b2381ff5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Azure Table Storage: Node.js Web アプリ
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -55,7 +55,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 3. Azure Powershell ウィンドウで次のコマンドレットを入力して、ストレージ アカウント情報を取得します。
 
     ```powershell
-    PS C:\node\tasklist\WebRole1> Get-AzureStorageAccounts
+    PS C:\node\tasklist\WebRole1> Get-AzureStorageAccount
     ```
 
    先述のコマンドレットにより、ホストされるサービスに関連付けられたストレージ アカウントとアカウント キーのリストが取得されます。
@@ -342,9 +342,20 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 
 1. [Twitter Bootstrap](http://getbootstrap.com/)のファイルをダウンロードして展開します。 **bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 2. テキスト エディターで **views** フォルダーにある **layout.jade** を開き、内容を次のように置き換えます。
-
-    doctype html  html    head      title= title      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')      link(rel='stylesheet', href='/stylesheets/style.css')    body.app      nav.navbar.navbar-default        div.navbar-header          a.navbar-brand(href='/') My Tasks      block content
-
+ 
+```jade
+    doctype html
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+      body.app
+        nav.navbar.navbar-default
+          div.navbar-header
+            a.navbar-brand(href='/') My Tasks
+        block content
+```
 3. **layout.jade** ファイルを保存します。
 
 ### <a name="running-the-application-in-the-emulator"></a>エミュレーターでのアプリケーションの実行

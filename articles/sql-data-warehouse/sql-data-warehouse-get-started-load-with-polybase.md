@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse の PolyBase チュートリアル | Microsoft Docs"
-description: "データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。"
+title: SQL Data Warehouse の PolyBase チュートリアル | Microsoft Docs
+description: データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/01/2017
 ms.author: barbkess
 ms.openlocfilehash: 47a2f48a1eef0c138875fbc079724b8d631abc54
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
 > [!div class="op_single_selector"]
@@ -241,7 +241,7 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 
 詳細については、[統計][Statistics]に関するページを参照してください。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 PolyBase を使用するソリューションを開発する際に知っておく必要がある情報については、[PolyBase ガイド][PolyBase guide]を参照してください。
 
 <!--Image references-->

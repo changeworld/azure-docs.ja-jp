@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager テンプレートの仮想マシン | Microsoft Azure"
-description: "Azure Resource Manager テンプレートで仮想マシン リソースがどのように定義されるかについて説明します。"
+title: Azure Resource Manager テンプレートの仮想マシン | Microsoft Azure
+description: Azure Resource Manager テンプレートで仮想マシン リソースがどのように定義されるかについて説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: 9c0039987ec28601c9338d2b94633c38c31e01f8
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 43cd6322bb03b5c781a890c3280247cbb2d118f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -453,7 +453,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
     
 リソースの作成や既存のリソースの更新に同じテンプレートを使用しても問題はありません。 コマンドを使用してテンプレートをデプロイする際は、使用する[モード](../../resource-group-template-deploy.md)を指定することができます。 モードは、**Complete** または **Incremental** に設定することができます。 既定では、増分更新が実行されます。 **Complete** モードを使用する場合は、誤ってリソースを削除することがあるため、注意してください。 モードを **Complete** に設定すると、Resource Manager は、テンプレートに含まれていない、リソース グループ内のリソースすべてを削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。

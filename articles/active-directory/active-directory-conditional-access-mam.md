@@ -17,10 +17,10 @@ ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.openlocfilehash: b35aed3583307c34eadbed3dd13d1ffd51494927
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory のアプリベースの条件付きアクセス  
 

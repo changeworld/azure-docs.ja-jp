@@ -3,9 +3,8 @@ title: SQL API を使って Azure Cosmos DB による .NET Web アプリを作�
 description: このクイック スタートでは、Azure Cosmos DB SQL API と Azure Portal を使って .NET Web アプリを作成します。
 services: cosmos-db
 documentationcenter: ''
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
-ms.author: mimig
-ms.openlocfilehash: eb9512436202b819a430e987fef353cac9bc5d1f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: sngun
+ms.openlocfilehash: 5932cf29572377e4e221d7a217f36211c0fe04b8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>クイック スタート: SQL API と Azure Portal を使って Azure Cosmos DB による .NET Web アプリを作る
 

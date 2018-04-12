@@ -1,13 +1,13 @@
 ---
-title: "Python を使用して Azure で Windows VM を作成および管理する |Microsoft Docs"
-description: "Python を使って Azure で Windows VM を作成および管理する方法について説明します。"
+title: Python を使用して Azure で Windows VM を作成および管理する |Microsoft Docs
+description: Python を使って Azure で Windows VM を作成および管理する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
-ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d56143a470be4da1faaea949ea286fca1ffd319d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -570,7 +570,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
     このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 アプリケーションが終了してから、すべてのリソースとリソース グループが削除されるまで、数分かかる場合があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - [Azure Python ライブラリ](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。

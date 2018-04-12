@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub を使用したメッセージのルーティング (Python) | Microsoft Docs"
-description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
+title: Azure IoT Hub を使用したメッセージのルーティング (Python) | Microsoft Docs
+description: 他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。
 services: iot-hub
 documentationcenter: python
-author: msebolt
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bd9af5f9-a740-4780-a2a6-8c0e2752cf48
 ms.service: iot-hub
 ms.devlang: python
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
-ms.author: v-masebo
-ms.openlocfilehash: f467437afb4bf89e77668cfd3e8a824bfbde9e10
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: v-masebo;kgremban
+ms.openlocfilehash: c6182f878076bae27b18d0556a77c8d95677e9c1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>IoT Hub でのメッセージのルーティング (Python)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/03/2018
 
 このチュートリアルの最後に、次の 3 つの Python コンソール アプリを実行します。
 
-* **SimulatedDevice.py** は [SimulatedDevice]に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージをランダムな間隔で送信します。 このアプリでは、IoT Hub との通信に MQTT プロトコルを使用します。
+* **SimulatedDevice.py** は [SimulatedDevice] に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージをランダムな間隔で送信します。 このアプリでは、IoT Hub との通信に MQTT プロトコルを使用します。
 * **ReadCriticalQueue.py** は、IoT hub に接続された Service Bus キューから重大なメッセージをデキューします。
 
 > [!NOTE]

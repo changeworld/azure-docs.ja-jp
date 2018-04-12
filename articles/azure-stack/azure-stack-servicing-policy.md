@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e37b63580d8cea4b5772bc54f7b2f79980afc0bc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 この記事では、Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持する必要があることについて説明します。 
@@ -47,19 +47,6 @@ Microsoft 更新プログラム パッケージでは、リリース日を確認
 
 Microsoft ソフトウェア更新プログラム パッケージは累積的ではないため、前提として前のバージョンの更新パッケージが必要です。 1 つ以上の更新プログラムを先送りにする場合は、最新のバージョンを取得する際に全体のランタイムを考慮してください。 
 
-次の表で、更新プログラム パッケージのリリースおよびその前提条件の例と、ご利用のシステムで継続してサポートを受けるために必要な最低限のバージョンを示します。 この表は、Azure Stack 統合システムの最初のリリース (ビルド 1708) と、2017 年 9 月にリリースされた最初の更新プログラム パッケージ リリース (1709) に基づいています。 
-
-| 最新の更新プログラム パッケージ (*例*) | 前提条件 | サポートを受けられる最低限のバージョン |
-| -- | -- | -- |
-| 1710 | 1709 | 該当なし |
-| 1711 | 1710 | 1709 |
-| 1712 | 1711 | 1710 |
-| 1802 | 1712 | 1711 |
-| 1803 | 1802 | 1712 |
-| 1804 | 1803 | 1802 |
-| 1805 | 1804 | 1803 |
-| | | 
-前の表には、リリース バージョン 1801 はありません。
 
 ## <a name="next-steps"></a>次の手順
 

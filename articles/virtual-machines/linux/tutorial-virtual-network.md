@@ -4,7 +4,7 @@ description: チュートリアル - Azure CLI を使用した Azure 仮想ネ�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: f6172ac465f2de2c29529f8c1a2ef75acf674484
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4fc6779472a0c680c53d7f25e6fe412ab386fc32
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Azure CLI を使用した Azure 仮想ネットワークと Linux 仮想マシンの管理
 

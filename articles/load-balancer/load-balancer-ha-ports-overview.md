@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6e9dd09558a3485629d5b70dd8b68b292427b18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -72,20 +72,20 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ただし、この HA ポート規則に加えて、バックエンド インスタンス用のパブリックな Standard Load Balancer を構成できます。
 
-## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の 1 つのフローティング IP (Direct Server Return) HA ポートの構成
+### <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の 1 つのフローティング IP (Direct Server Return) HA ポートの構成
 
 同様に、**HA ポート**と単一のフロントエンドを使用するロード バランサーを構成し、**[フローティング IP]** を **[有効]** に設定できます。 
 
 この構成では、複数のフローティング IP の負荷分散規則またはパブリック ロード バランサー、あるいはその両方を追加できます。 ただし、この構成の上で、非フローティング IP と HA ポートを使用する負荷分散構成は使用できません。
 
-## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の複数の HA ポート構成
+### <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の複数の HA ポート構成
 
 同じバックエンド プールに対して 1 つ以上の HA ポート フロントエンドを構成する必要があるシナリオの場合は、以下によってこれを実現できます。 
 - 単一の内部 Standard Load Balancer リソース用の 1 つ以上のフロントエンドのプライベート IP アドレスを構成する。
 - 複数の負荷分散規則を構成する。各規則には、1 つの一意のフロントエンド IP アドレスが選択されます。
 - **[HA ポート]** オプションを選択し、すべての負荷分散ルールで **[フローティング IP]** を **[有効]** に設定します。
 
-## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>同じバックエンド インスタンス上で HA ポートとパブリック ロード バランサーを使用する内部ロード バランサー
+### <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>同じバックエンド インスタンス上で HA ポートとパブリック ロード バランサーを使用する内部ロード バランサー
 
 バックエンド リソース用の **1 つの**パブリック Standard Load Balancer リソースと、HA ポートを使用する単一の Standard Load Balancer を構成できます。
 

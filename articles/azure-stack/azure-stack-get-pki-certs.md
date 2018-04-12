@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Azure Stack デプロイのための PKI 証明書を生成する
 これで Azure Stack デプロイのための [PKI 証明書の要件](azure-stack-pki-certs.md)がわかったので、選択した証明機関 (CA) からこれらの証明書を取得する必要があります。 
@@ -75,4 +75,4 @@ ms.lasthandoff: 03/23/2018
 5. **.PFX をエクスポートし、デプロイ フォルダーにコピーします**。 証明書 (秘密キーを含む) を .PFX ファイルとしてエクスポートし、その .PFX ファイルを「[Azure Stack deployment PKI requirements (Azure Stack デプロイの PKI の要件)](azure-stack-pki-certs.md)」で説明されているデプロイ フォルダーにコピーします。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Stack PKI 証明書の準備](prepare-pki-certs.md)
+[Azure Stack PKI 証明書の準備](azure-stack-prepare-pki-certs.md)

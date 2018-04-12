@@ -4,8 +4,7 @@ description: Gremlin を使用した Azure Cosmos DB 内のグラフ データ�
 services: cosmos-db
 documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
-editor: ''
+manager: kfile
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -15,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: bbf322b698f9237799c05f2ab85297452b7f9a10
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 730a59aab76140159536c3d564d8bd66e0466899
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
 

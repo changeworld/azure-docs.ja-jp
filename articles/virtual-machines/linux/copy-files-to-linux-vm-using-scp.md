@@ -1,13 +1,13 @@
 ---
-title: "SCP を使用して Azure Linux VM とファイルをやり取りする | Microsoft Docs"
-description: "SCP と SSH キー ペアを使用して Azure の Linux VM とファイルを安全にやり取りする方法について説明します。"
+title: SCP を使用して Azure Linux VM とファイルをやり取りする | Microsoft Docs
+description: SCP と SSH キー ペアを使用して Azure の Linux VM とファイルを安全にやり取りする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 736f7c11ec3de04f1ad52ee29d0a4c952c9b0545
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0231e402848e617a46ca70470ba4d3272ace59f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする
 
@@ -73,6 +73,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 `-r` cli フラグを使用すると、コマンド内にリスト化されたディレクトリのポイントからファイルやディレクトリを再帰的にコピーするように SCP に指示できます。  また、コマンドラインの構文は `cp` コピー コマンドの構文に似ています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [VMAccess 拡張機能を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
