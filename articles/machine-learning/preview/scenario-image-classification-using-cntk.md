@@ -1,8 +1,8 @@
 ---
-title: "Azure Machine Learning Workbench 内での CNTK を使用した画像分類 | Microsoft Docs"
-description: "Azure ML Workbench を使用して、カスタム画像分類モデルをトレーニング、評価、およびデプロイします。"
+title: Azure Machine Learning Workbench 内での CNTK を使用した画像分類 | Microsoft Docs
+description: Azure ML Workbench を使用して、カスタム画像分類モデルをトレーニング、評価、およびデプロイします。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: PatrickBue
 ms.author: pabuehle
 manager: mwinkle
@@ -118,7 +118,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="step-1-data-preparation"></a>手順 1: データの準備
 `Script: 1_prepareData.py. Notebook: showImages.ipynb`
 
-ノートブック `showImages.ipynb` を使用して、画像を視覚化し、必要に応じて、それらの注釈を修正できます。 ノートブックを実行するには、Azure Machine Learning Workbench でそれを開き、[Start Notebook Server] (ノートブック サーバーの起動) オプションが表示されている場合はこれをクリックして、ローカル プロジェクト カーネルを "PROJECTNAME local" (例: "myImgClassUsingCNTK local") という名前に変更した後、ノートブックのすべてのセルを実行します。 ノートブックが大きすぎて、表示できないことを示すエラーが発生した場合は、このドキュメントのトラブルシューティングのセクションを参照してください。
+ノートブック `showImages.ipynb` を使用して、画像を視覚化し、必要に応じて、それらの注釈を修正できます。 ノートブックを実行するには、Azure Machine Learning Workbench でそれを開き、[Start Notebook Server]\(ノートブック サーバーの起動\) オプションが表示されている場合はこれをクリックして、ローカル プロジェクト カーネルを "PROJECTNAME local" (例: "myImgClassUsingCNTK local") という名前に変更した後、ノートブックのすべてのセルを実行します。 ノートブックが大きすぎて、表示できないことを示すエラーが発生した場合は、このドキュメントのトラブルシューティングのセクションを参照してください。
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showImages.jpg" alt="alt text" width="700"/>
 </p>
