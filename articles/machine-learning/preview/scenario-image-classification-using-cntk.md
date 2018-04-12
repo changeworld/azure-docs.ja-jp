@@ -1,8 +1,8 @@
----
+﻿---
 title: "Azure Machine Learning Workbench 内での CNTK を使用した画像分類 | Microsoft Docs"
 description: "Azure ML Workbench を使用して、カスタム画像分類モデルをトレーニング、評価、およびデプロイします。"
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: PatrickBue
 ms.author: pabuehle
 manager: mwinkle
