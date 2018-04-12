@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c646b0b1ab0ec62cffb4f7cf7474b48c68dfabb4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Azure Portal を使用して VM の負荷を分散するパブリック Basic Load Balancer を作成する
 
@@ -38,8 +38,8 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
 2. **[Create a load balancer]\(ロード バランサーの作成\)** ページで、ロード バランサーの以下の値を入力します。
     - *myLoadBalancer* - ロード バランサーの名前。
-    - **パブリック** - ロード バランサーのフロントの種類。 
-     - *myPublicIP* - SKU を **Basic** として作成する必要があるパブリック IP。**[割り当て]** は **[動的]** に設定します。
+    - **パブリック** - ロード バランサーの種類。
+    - *myPublicIP* - SKU を **Basic** として作成する必要があるパブリック IP。**[割り当て]** は **[動的]** に設定します。
     - *myResourceGroupLB* - 作成する新しいリソース グループの名前。
 3. **[作成]** をクリックして、ロード バランサーを作成します。
    
