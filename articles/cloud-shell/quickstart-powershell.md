@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Cloud Shell (プレビュー) の PowerShell のクイック スタート | Microsoft Docs
 description: Cloud Shell の PowerShell のクイックスタート
 services: Azure
@@ -54,7 +54,7 @@ MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    S
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
 ```
 
-## <a name="navigate-azure-resources"></a>Azure リソース間を移動する
+## <a name="navigate-azure-resources"></a>Azure リソース間を移動する	
 
  1. サブスクリプションを一覧表示します
 
@@ -88,13 +88,13 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
      ```
 
 ### <a name="allresources-view"></a>AllResources ビュー 
-`AllResources` ディレクトリで「`dir`」と入力して、Azure リソースを表示します。
+`AllResources` ディレクトリで「`dir`」と入力して、Azure リソースを表示します。	
     
     PS Azure:\MySubscriptionName> dir AllResources
 
-### <a name="explore-resource-groups"></a>リソース グループを調べる
+### <a name="explore-resource-groups"></a>リソース グループを探索する
 
- `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内で仮想マシンを検索できます。
+ `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内で仮想マシンを検索できます。	
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -116,10 +116,10 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 > これは、ユーザー エクスペリエンス向上のため、子項目がメモリ内にキャッシュされるためです。
 ただし、`dir -Force` を使うと常に最新のデータを取得できます。
 
-### <a name="navigate-storage-resources"></a>ストレージ リソース間を移動する
+### <a name="navigate-storage-resources"></a>ストレージ リソース間を移動する	
     
 `StorageAccounts` ディレクトリに入ることで、ストレージ リソース間を簡単に移動することができます
-    
+    
 ``` PowerShell 
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
 
@@ -135,7 +135,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 
 ```
 
-接続文字列で次のコマンドを使って、Azure Files 共有をマウントできます。
+次のコマンドを接続文字列（ConnectionString）と共に使用することで、Azure ファイル共有をマウントできます。
         
 ``` PowerShell
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
@@ -225,7 +225,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
  ```
 
-### <a name="discover-webapps"></a>WebApps を検出する
+### <a name="discover-webapps"></a>WebApps を検出する	
 
 `WebApps` ディレクトリに入ることで、Web アプリ リソース間を簡単に移動することができます
 
@@ -266,13 +266,13 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) は、PowerShell Cloud Shell で使うことができます。
-SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開/秘密キー ペアを生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
+PowerShell Cloud Shell 上で [Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) を利用できます。
+SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開キーと秘密キーの組を生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
 
 > [!NOTE]
-> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、Cloud Shell でそれらを `$env:USERPROFILE\.ssh` に発行できます。
+> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、Cloud Shell でそれらを `$env:USERPROFILE\.ssh` に発行できます。	
 
-### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って GiT と SSH の設定を保持する
+### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って Git と SSH の設定を保持する
 
 サインアウトするとセッションは保持されないので、`$env:USERPROFILE\.ssh` ディレクトリを `CloudDrive` に保存するか、Cloud Shell の起動時にシンボリック リンクを作成します。
 CloudDrive へのシンボリック リンクを作成するには、profile.ps1 に次のコード スニペットを追加します。
