@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d7dd0986878c747f92afc712301453bc8772ef2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f1c6b5cd07752c6b29234a365b3298d76b639b3a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure 関数を IoT Edge モジュールとして展開する - プレビュー
 Azure Functions を使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスで、センサー データをフィルター処理する Azure 関数を作成および展開します。 このチュートリアルで学習する内容は次のとおりです。     
@@ -95,8 +95,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
                 // Copy the properties of the original message into the new Message object
                 foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    filteredMessage.Properties.Add(prop.Key, prop.Value);                }
                 // Add a new property to the message to indicate it is an alert
                 filteredMessage.Properties.Add("MessageType", "Alert");
                 // Send the message        
@@ -136,10 +135,13 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
    ```
    このコマンドで使用するユーザー名、パスワード、ログイン サーバーを見つけるには、[Azure Portal] (https://portal.azure.com) に移動します。 **[すべてのリソース]** から、Azure Container Registry のタイルをクリックして、プロパティを開き、**[アクセス キー]** をクリックします。 **ユーザー名**、**パスワード**、**ログイン サーバー**の各フィールドの値をコピーします。 
 
-2. VS Code エクスプローラーで、**module.json** ファイルを右クリックし、**[Build and Push IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージをビルドしてプッシュ\)** をクリックします。 VS Code ウィンドウの上部にあるポップアップ ドロップダウン ボックスで、コンテナー プラットフォームを選択します。Linux コンテナーの場合は **[amd64]**、Windows コンテナーの場合は **[windows-amd64]** を選択します。 VS Code によって関数コードがコンテナー化され、指定したコンテナー レジストリにプッシュされます。
+2. **module.json** を開きます。 必要に応じて、`"version"` を  **"1.0"** などに更新できます。 さらに、`dotnet new aziotedgefunction` の `-r` パラメーターに入力したリポジトリの名前も表示されます。
 
+3. **module.json** ファイルを保存します。
 
-3. VS Code 統合ターミナルで、タグを含む完全なコンテナー イメージ アドレスを取得できます。 ビルドおよびプッシュ定義の詳細については、`module.json` ファイルを参照してください。
+4. VS Code エクスプローラーで、**module.json** ファイルを右クリックし、**[Build and Push IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージをビルドしてプッシュ\)** をクリックします。 VS Code ウィンドウの上部にあるポップアップ ドロップダウン ボックスで、コンテナー プラットフォームを選択します。Linux コンテナーの場合は **[amd64]**、Windows コンテナーの場合は **[windows-amd64]** を選択します。 VS Code によって関数コードがコンテナー化され、指定したコンテナー レジストリにプッシュされます。
+
+5. VS Code 統合ターミナルで、タグを含む完全なコンテナー イメージ アドレスを取得できます。 ビルドおよびプッシュ定義の詳細については、`module.json` ファイルを参照してください。
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>レジストリ資格情報を Edge デバイスに追加する
 Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 これにより、コンテナーを取得するためのランタイム アクセスが得られます。 

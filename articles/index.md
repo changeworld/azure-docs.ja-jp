@@ -106,7 +106,7 @@ ms.lasthandoff: 04/05/2018
                                             <div class="cardText">
                                                 <h3>リソースの保護と管理</h3>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/security-center/">[Azure Security Center] (Azure Security Center)</a></li>
+                                                    <li><a class="barLink" href="/azure/security-center/">Azure Security Center</a></li>
                                                     <li><a class="barLink" href="/azure/monitoring-and-diagnostics/">Azure Monitor</a></li>
                                                     <li><a class="barLink" href="/azure/application-insights/">Azure Application Insights</a></li>
                                                     <li><a class="barLink" href="/azure/cost-management/">Azure Cost Management</a></li>
@@ -175,7 +175,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
-                                                    <li><a class="barLink" href="/azure/containers/">コンテナー</a></li>
+                                                    <li><a class="barLink" href="/azure/containers/">Containers</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Service Fabric でのマイクロサービス</a></li>
                                                 </ul>
                                             </div>
@@ -408,7 +408,7 @@ Terraform </a>
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>コンテナー</h3>
+                                    <h3>Containers</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/aks/">
@@ -2044,7 +2044,7 @@ Terraform </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#containers">コンテナー</a>
+                        <a href="#containers">Containers</a>
                         <ul id="containers" class="cardsA">
                             <li>
                                 <a href="/azure/aks/">
