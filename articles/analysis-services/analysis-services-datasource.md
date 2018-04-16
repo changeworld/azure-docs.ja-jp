@@ -29,7 +29,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|の接続文字列     |   [はい]      |    [はい]      |
+|Azure SQL Database     |   [はい]      |    [はい]      |
 |Azure SQL Data Warehouse     |   [はい]      |   [はい]       |
 |Azure Blob Storage*     |   [はい]       |    いいえ       |
 |Azure Table Storage*    |   [はい]       |    いいえ       |
