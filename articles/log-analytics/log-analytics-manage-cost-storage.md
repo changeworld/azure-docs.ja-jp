@@ -43,7 +43,7 @@ Log Analytics は、企業内のソースまたは Azure に展開されたソ�
 
 データ ボリュームを制限してコストを管理するには、日次上限とデータ リテンション期間の 2 つの方法があります。  
 
-## <a name="review-estimated-cost"></a>推定りコストを確認する
+## <a name="review-estimated-cost"></a>推定コストを確認する
 Log Analytics では、最近の使用パターンに基づいてコストを簡単に理解できます。  このためには、次の手順を実行します。  
 
 1. [Azure Portal](http://portal.azure.com) にサインインします。 
