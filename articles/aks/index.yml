@@ -2,9 +2,9 @@
 documentType: LandingData
 title: Azure Container Service (AKS)
 metadata:
-  document_id: null
+  document_id: 
   title: Azure Container Service (AKS) のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
+  meta.description: AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.
   services: container-service
   author: carolz
   manager: carolz
@@ -14,42 +14,47 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
+  ms.openlocfilehash: a381697e27a2d85d99fcbb1eb54bd7c0ab7d743a
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/16/2018
 abstract:
   description: Azure Container Service (AKS) は、ホストされている Kubernetes 環境を管理するため、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
 sections:
-  - title: 5 分間のクイック スタート
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: AKS クラスターのデプロイ方法を確認してください。
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: AKS クラスターのデプロイ方法を確認してください。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/ContainerService.svg
-            text: AKS クラスターの作成
-            href: /azure/aks/kubernetes-walkthrough
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: /azure/media/index/ContainerService.svg
+      text: AKS クラスターの作成
+      href: /azure/aks/kubernetes-walkthrough
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: AKS クラスターでアプリケーションをデプロイ、管理、更新する方法を確認してください。
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: AKS クラスターでアプリケーションをデプロイ、管理、更新する方法を確認してください。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS クラスターをデプロイする</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-monitor">OMS で Kubernetes を監視する</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS クラスターをアップグレードする</a>
-  - title: リファレンス
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS クラスターをデプロイする</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">Log Analytics で Kubernetes を監視する</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS クラスターをアップグレードする</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
-          - title: REST ()
-            html: <p><a href="/rest/api/aks">REST API</a></p>
+    - title: コマンド ライン
+      html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/aks">REST API</a></p>

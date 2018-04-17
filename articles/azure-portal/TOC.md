@@ -1,9 +1,9 @@
 # 概要
 ## [Azure Portal の概要](../azure-portal-overview.md)
-# Tutorials (チュートリアル)
+# チュートリアル
 ## [Azure Portal での DevOps](tutorial-azureportal-devops.md)
 # 概念
-## [Azure リソース マネージャー](../azure-resource-manager/resource-group-overview.md)
+## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [キーボード ショートカット](azure-portal-keyboard-shortcuts.md)
 ## [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)
 ## [Azure ダッシュボードの構造](azure-portal-dashboards-structure.md)
@@ -13,10 +13,10 @@
 ### [Resource Manager テンプレートを使用したデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 ### [Azure ダッシュボードの作成と共有](azure-portal-dashboards.md)
 ### [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)
-## 管理
+## [管理]
 ### [ハイコントラストの有効化またはテーマの変更](azure-portal-change-theme-high-contrast.md)
 ### [ポータルを使用したリソースの管理](../azure-resource-manager/resource-group-portal.md)
-### [ロールベースのアクセス制御を使用したアクセス管理](../active-directory/role-based-access-control-configure.md)
+### [ロールベースのアクセス制御を使用したアクセス管理](../role-based-access-control/role-assignments-portal.md)
 ### [ロールベースのアクセス制御を使用したダッシュボードの共有](azure-portal-dashboard-share-access.md)
 ### [タグを使用してリソースを整理する](../azure-resource-manager/resource-group-using-tags.md)
 ### [リソースのスケール](../monitoring-and-diagnostics/insights-how-to-scale.md)

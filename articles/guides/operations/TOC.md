@@ -24,7 +24,7 @@
 ###[Azure CLI を使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [セキュリティ (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[ロールの割り当てを使用したリソースの管理](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[ロールの割り当てを使用したリソースの管理](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [仮想マシン](azure-operations-guide.md#azure-virtual-machines)
 ### [Windows の VM サイズ](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 

@@ -196,6 +196,8 @@
               href: app-insights-usage-segmentation.md
             - name: ファネル
               href: usage-funnels.md
+            - name: コーホート
+              href: app-insights-usage-cohorts.md
             - name: 影響
               href: app-insights-usage-impact.md
             - name: 保持

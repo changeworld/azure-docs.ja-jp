@@ -55,7 +55,7 @@
 
 # 関連項目
 ## [Azure Active Directory](/azure/active-directory/)
-## [ロールベースのアクセス制御](../role-based-access-control-what-is.md)
+## [ロールベースのアクセス制御](../../role-based-access-control/overview.md)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

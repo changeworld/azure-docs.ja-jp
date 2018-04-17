@@ -7,18 +7,18 @@ metadata:
   description: Azure Cosmos DB を使用して、グローバルに分散されたマルチモデル データベースを構築する方法について説明します。 チュートリアルでは、ドキュメント、キー/値、グラフ データベースを作成して照会する方法について説明します。
   services: cosmos-db
   author: mimig1
-  manager: jhubbard
+  manager: kfile
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/14/2018
   ms.author: mimig
-  ms.openlocfilehash: 684b0f00e85755b55aa0bfd9e8e6f68af3d38886
-  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.openlocfilehash: 017130095fc8de6a83cbff075f47cbff9fd48089
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/05/2018
+  ms.lasthandoff: 04/16/2018
 abstract:
   description: Azure Cosmos DB は、グローバル分散型のマルチモデル データベース サービスです。 以下のクイックスタート、チュートリアル、サンプルを使用すると、一般的な API とプログラミング モデルを使って、ドキュメント、キー値、ワイドカラム、グラフのデータベースを構築できます。 また、一方で包括的な SLA を活用しながら、任意の数の Azure リージョンにデータをレプリケートし、ストレージから独立してスループットをスケーリングする方法について説明します。
   aside:
@@ -119,7 +119,7 @@ sections:
     className: cardsD
     items:
     - title: SQL API
-      html: <p><a href="sql-api-sdk-dotnet">.NET</a></p><p><a href="sql-api-sdk-dotnet-changefeed">.NET Change Feed</a></p><p><a href="sql-api-sdk-dotnet-core">.NET Core</a></p><p><a href="sql-api-sdk-node">Node.js</a></p><p><a href="sql-api-sdk-async-java">Async Java</a></p><p><a href="sql-api-sdk-java">Java</a></p><p><a href="sql-api-sdk-python">Python</a></p><p><a href="/rest/api/cosmos-db/">REST</a></p><p><a href="/rest/api/cosmos-db-resource-provider/">REST リソース プロバイダー</a></p><p><a href="sql-api-sql-query-reference">SQL</a></p>
+      html: <p><a href="sql-api-sdk-dotnet">.NET</a></p><p><a href="sql-api-sdk-dotnet-changefeed">.NET Change Feed</a></p><p><a href="sql-api-sdk-dotnet-core">.NET Core</a></p><p><a href="sql-api-sdk-node">Node.JS</a></p><p><a href="sql-api-sdk-async-java">Async Java</a></p><p><a href="sql-api-sdk-java">Java</a></p><p><a href="sql-api-sdk-python">Python</a></p><p><a href="/rest/api/cosmos-db/">REST</a></p><p><a href="/rest/api/cosmos-db-resource-provider/">REST リソース プロバイダー</a></p><p><a href="sql-api-sql-query-reference">SQL</a></p>
     - title: MongoDB API
       html: <p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.JS</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
     - title: テーブル API

@@ -25,6 +25,8 @@
       href: frequently-asked-questions-genomics.md
     - name: バージョンのリリース履歴
       href: version-release-history-genomics.md
+    - name: ビジネス継続性
+      href: business-continuity-genomics.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: 価格

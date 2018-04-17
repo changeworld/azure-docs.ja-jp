@@ -23,7 +23,7 @@
       href: container-service-tutorial-kubernetes-scale.md
     - name: 6 - アプリケーションを更新する
       href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7 - OMS で監視する
+    - name: 7 - Log Analytics を使用して監視する
       href: container-service-tutorial-kubernetes-monitor.md
 - name: 概念
   items:
@@ -45,7 +45,7 @@
       href: container-service-scale.md
     - name: 監視
       items:
-        - name: OMS で監視する
+        - name: Log Analytics による監視
           href: container-service-kubernetes-oms.md
         - name: Datadog で監視する
           href: container-service-kubernetes-datadog.md
