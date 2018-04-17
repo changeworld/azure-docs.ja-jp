@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -109,7 +109,7 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 | ユーザー ID |使用されたユーザー ID を示しています。 この値はユーザーが入力した内容です。ときどき、間違ったユーザー ID が使用されていることがあります。 |
 | 失敗した試行の回数 |そのユーザー ID で試行が失敗した回数の合計を示しています。 この表は、失敗した試行の回数が多いものから降順に並べ替えられています。 |
 | 最後の失敗 |最後に失敗したときのタイム スタンプを示しています。 |
-| 最後のエラー IP |直近の無効な要求のクライアント IP アドレスを示します。 |
+| 最後のエラー IP |直近の無効な要求のクライアント IP アドレスを示します。 この値に複数の IP アドレスが表示されている場合は、転送クライアント IP アドレスとユーザーが最後に試行した要求 IP アドレスが含まれている可能性があります。  |
 
 > [!NOTE]
 > このレポートは 12 時間ごとに自動的に更新され、その間に収集された新しい情報が反映されます。 そのため、直近の 12 時間に行われたログインの試行は、レポートに反映されていない可能性があります。
@@ -191,11 +191,14 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 1. レポートにプライベート IP アドレス範囲が表示されるのはなぜですか?  <br />
 プライベート IP アドレス (<i>10.x.x.x、172.x.x.x、192.168.x.x</i>) と Exchange IP アドレスはフィルター処理され、IP ホワイトリスト内で True とマークされます。 プライベート IP アドレス範囲が表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。
 
-2. IP アドレスをブロックするにはどうすればよいですか?  <br />
+2. レポートにロード バランサーの IP アドレスが表示されるのはなぜですか?  <br />
+ロード バランサーの IP アドレスが表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。 転送クライアント IP アドレスを渡すようにロード バランサーを適切に構成してください。 
+
+3. IP アドレスをブロックするにはどうすればよいですか?  <br />
 特定した悪意のある IP アドレスをファイアウォールまたは Exchange のブロックに追加する必要があります。   <br />
 AD FS 2016 + 1803.C+ QFE では、AD FS で IP アドレスを直接ブロックできます。 
 
-3. このレポートに項目が何も表示されないのはなぜですか? <br />
+4. このレポートに項目が何も表示されないのはなぜですか? <br />
    - 失敗したサインイン アクティビティがしきい値の設定を超えていません。 
    - AD FS サーバー リストで "Health Service が最新ではありません" アラートがアクティブになっていないことを確認します。  [このアラートのトラブルシューティングを行う方法](active-directory-aadconnect-health-data-freshness.md)を確認してください。
    - AD FS ファームで監査が有効になっていません。

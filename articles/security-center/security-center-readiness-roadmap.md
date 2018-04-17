@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
+ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 0de8dda6f88f31208c3fe7d560a461fea46a67e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 88b95c28cd64afb97fb34d2bced09161c3aa9312
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -94,8 +94,9 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 
 これらの Security Center 機能の使い方については、次の資料を参照してください。
 
-ビデオ   
+ビデオ  
 * [Azure Security Center - Just-in-Time VM Access (Azure Security Center - Just-in-Time VM アクセス)](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center - アダプティブ アプリケーション制御](https://youtu.be/wWWekI1Y9ck)
 
 記事    
 * [ジャスト イン タイムを使用した仮想マシン アクセスの管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
@@ -105,6 +106,7 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 
 * [Security Center ハンズオン ラボ](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Security Center の Web アプリケーション ファイアウォール (WAF) 推奨プレイブック](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
+* [Azure Security Center Playbook: Security Alerts (Azure Security Center プレイブック: セキュリティ アラート)](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Security Center のドキュメント ページ](https://docs.microsoft.com/azure/security-center/)
@@ -115,6 +117,7 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 * [ネットワーク セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
 * [PaaS に関する推奨情報](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [コンプライアンス](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist)
+* [OMS customers can now use Azure Security Center to protect their hybrid cloud workloads (OMS のお客さまが Azure Security Center を使用してハイブリッド クラウド ワークロードを保護できるようになりました)](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>コミュニティ リソース
 

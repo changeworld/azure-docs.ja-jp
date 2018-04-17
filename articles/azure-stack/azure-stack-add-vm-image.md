@@ -1,24 +1,24 @@
 ---
-title: "VM イメージを Azure Stack に追加する | Microsoft Docs"
-description: "テナントが使用するために組織のカスタム イメージ (Windows または Linux VM) を追加する"
+title: VM イメージを Azure Stack に追加する | Microsoft Docs
+description: テナントが使用するために組織のカスタム イメージ (Windows または Linux VM) を追加する
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/17/2018
+ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0ba0bc4e8350a65a95dc41788c93d5c89fc48334
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure Stack でカスタム仮想マシン イメージを提供する
 
@@ -126,6 +126,7 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
     -osDiskLocalPath 'C:\Users\AzureStackAdmin\Desktop\UbuntuServer.vhd' `
   ```
 
+
 このコマンドは、次の処理を実行します。
 
 * Azure Stack 環境に対する認証。
@@ -133,9 +134,9 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
 * VM イメージを VM イメージ リポジトリに追加。
 * Marketplace 項目の作成。
 
-コマンドが正常に実行されたことを確認するには、ポータルから Marketplace に移動します。 **[Virtual Machines]** カテゴリで VM イメージが利用できることを確認します。
+コマンドが正常に実行されたことを確認するには、ポータルから Marketplace に移動します。 **[Compute]** カテゴリで VM イメージが利用できることを確認します。
 
-![VM イメージが正常に追加](./media/azure-stack-add-vm-image/image5.PNG)
+![VM イメージが正常に追加](./media/azure-stack-add-vm-image/verify-vm.png)
 
 ## <a name="remove-a-vm-image-by-using-powershell"></a>PowerShell を使用して VM イメージを削除する
 

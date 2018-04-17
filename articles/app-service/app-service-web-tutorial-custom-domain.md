@@ -1,12 +1,12 @@
 ---
-title: "既存のカスタム DNS 名を Azure Web Apps にマップする | Microsoft Docs"
-description: "既存のカスタム DNS ドメイン名 (バニティ ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。"
-keywords: "App Service, Azure App Service, ドメイン マッピング, ドメイン名, 既存のドメイン, ホスト名"
+title: 既存のカスタム DNS 名を Azure Web Apps にマップする | Microsoft Docs
+description: 既存のカスタム DNS ドメイン名 (バニティ ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。
+keywords: App Service, Azure App Service, ドメイン マッピング, ドメイン名, 既存のドメイン, ホスト名
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.service: app-service-web
 ms.workload: web
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9867cc2f8a8d484ca4bfb160c20a07df38790f4d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 431268082b24d23289188f5422cd596dc5f37d30
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>既存のカスタム DNS 名を Azure Web Apps にマップする
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>チュートリアル: 既存のカスタム DNS 名を Azure Web Apps にマップする
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、既存のカスタム DNS 名を Azure Web Apps にマップする方法について説明します。
 
@@ -292,7 +292,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 ![仮想ディレクトリのカスタマイズ](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-操作が完了すると、アプリからルート パスの正しいページが返されます (http://contoso.com など)。
+操作が完了すると、アプリからルート パスの正しいページが返されます (http://contoso.com) など)。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 

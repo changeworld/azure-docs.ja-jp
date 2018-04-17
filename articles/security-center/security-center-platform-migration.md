@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center のプラットフォームの移行 | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center がデータを収集する方法に対するいくつかの変更について説明します。"
+title: Azure Security Center のプラットフォームの移行 | Microsoft Docs
+description: このドキュメントでは、Azure Security Center がデータを収集する方法に対するいくつかの変更について説明します。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 80246b00-bdb8-4bbc-af54-06b7d12acf58
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2e2e8d7213504ccd71df7048045925bf566c76d5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure Security Center のプラットフォームの移行
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/13/2017
 
 これまで、Security Center では、Azure Monitoring Agent を使用して、ユーザーの VM からセキュリティ データを収集していました。 これには、脆弱性を識別するために使用されるセキュリティ構成と、脅威を検出するために使用されるセキュリティ イベントに関する情報が含まれています。 このデータは、Azure のストレージ アカウントに保存されていました。
 
-今後、Security Center は、Microsoft Monitoring Agent を使用します。これは Operations Management Suite と Log Analytics サービスで使用されるものと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の *Log Analytics* [ワークスペース](../log-analytics/log-analytics-manage-access.md)または新規のワークスペースのいずれかに格納されます。
+今後、Security Center では、Microsoft Monitoring Agent が使用されます。これは Log Analytics サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の *Log Analytics* [ワークスペース](../log-analytics/log-analytics-manage-access.md)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="agent"></a>エージェント
 
@@ -62,9 +62,9 @@ Security Center によって作成されたワークスペースでは、デー�
 > [!NOTE]
 > これまで Security Center で収集されたデータは、ストレージ アカウントに残ります。 移行が完了したら、これらのストレージ アカウントを削除することができます。
 
-### <a name="oms-security-solution"></a>OMS セキュリティ ソリューション 
+### <a name="security-management-solution"></a>セキュリティ管理ソリューション 
 
-OMS セキュリティ ソリューションがインストールされていない既存のユーザーに対して、Microsoft は、そのワークスペースにソリューションをインストールしますが、Azure VM のみを対象とします。 このソリューションをアンインストールしないでください。これは、アンインストールが OMS 管理コンソールから実行された場合、自動修復する方法がないためです。
+Log Analytics のセキュリティ管理ソリューションがインストールされていない既存のユーザーに対して、Microsoft は、そのワークスペースにソリューションをインストールしますが、Azure VM のみを対象とします。 このソリューションをアンインストールしないでください。これは、アンインストールが管理コンソールから実行された場合、自動修復する方法がないためです。
 
 
 ## <a name="other-updates"></a>他の更新プログラム

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8a5d05342a1db5f27d115364798885a278d09fc0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cd17826afece44eff9f4a4c403b077dc78fd1c9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 1. ポータルで、左側の **[+ リソースの作成]** をクリックし、検索ボックスに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で "**仮想ネットワーク ゲートウェイ**" を探してその項目をクリックします。 **[仮想ネットワーク ゲートウェイ]** ページで、ページ下部の **[作成]** をクリックして **[仮想ネットワーク ゲートウェイの作成]** ページを開きます。
 2. **[仮想ネットワーク ゲートウェイの作成]** ページで、仮想ネットワーク ゲートウェイの値を入力します。
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
     - 最初に、**[ゲートウェイ IP 構成の作成]** をクリックして [パブリック IP アドレスの選択] ページを開き、次に、**[+ 新規作成]** をクリックして [パブリック IP アドレスの作成] ページを開きます。
     - 次に、パブリック IP アドレスの**名前**を入力します。 [SKU] は、特に変更する理由がなければ **[Basic]** のままにしておいてください。その後、このページの下部にある **[OK]** をクリックして変更を保存します。
 
-      ![パブリック IP の作成](./media/vpn-gateway-add-gw-s2s-rm-portal-include/gwip.png "PIP の作成")
+      ![パブリック IP アドレスの要求](./media/vpn-gateway-add-gateway-portal-include/public-ip-address-name.png "パブリック IP アドレスの要求")
 
 4. 設定を確認します。 ゲートウェイをダッシュボードに表示する場合は、ページの下部にある **[ダッシュボードにピン留めする]** を選択します。 
 5. **[作成]** をクリックして、VPN ゲートウェイの作成を開始します。 設定が検証され、ダッシュボードに [Deploying Virtual network gateway]\(仮想ネットワーク ゲートウェイのデプロイ\) タイルが表示されます。 ゲートウェイの作成には、最大で 45 分かかる場合があります。 完了状態を確認するために、ポータル ページの更新が必要な場合があります。

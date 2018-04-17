@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Web アプリの作成およびステージング環境へのコードのデプロイ | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Web アプリの作成およびステージング環境へのコードのデプロイ"
+title: Azure PowerShell のサンプル スクリプト - Web アプリの作成およびステージング環境へのコードのデプロイ | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Web アプリの作成およびステージング環境へのコードのデプロイ
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
 ms.service: app-service-web
@@ -15,11 +15,11 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 55adc13350eb0f4711efa3c901f6e4e7755dfb27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed45ca536509dc73e83ec4cd78ba289d2d4064a2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Web アプリを作成してステージング環境にコードをデプロイする
 
@@ -51,9 +51,9 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [Set-AzureRmAppServicePlan](/powershell/module/azurerm.websites/set-azurermappserviceplan) | App Service プランを変更して価格レベルを変更します。 |
 | [New-AzureRmWebAppSlot](/powershell/module/azurerm.websites/new-azurermwebappslot) | Web アプリのデプロイ スロットを作成します。 |
 | [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | リソース グループのリソースを変更します。 |
-| [Swap-AzureRmWebAppSlot](/powershell/module/azurerm.websites/swap-azurermwebappslot) | Web アプリのデプロイ スロットを運用環境にスワップします。 |
+| [Switch-AzureRmWebAppSlot](/powershell/module/azurerm.websites/switch-azurermwebappslot) | Web アプリのデプロイ スロットを運用環境にスワップします。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

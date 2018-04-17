@@ -1,11 +1,11 @@
 ---
-title: "既存のカスタム SSL 証明書の Azure Web Apps へのバインド | Microsoft Docs"
-description: "Azure App Service で、Web アプリ、モバイル アプリのバックエンド、または API アプリにカスタム SSL 証明書をバインドする方法について説明します。"
+title: 既存のカスタム SSL 証明書の Azure Web Apps へのバインド | Microsoft Docs
+description: Azure App Service で、Web アプリ、モバイル アプリのバックエンド、または API アプリにカスタム SSL 証明書をバインドする方法について説明します。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5d5bf588-b0bb-4c6d-8840-1b609cfb5750
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f69bc731b2858c338d7f7b4d347e7107a0f4eeed
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>既存のカスタム SSL 証明書の Azure Web Apps へのバインド
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
 
 Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、信頼された証明機関から購入したカスタム SSL 証明書を [Azure Web Apps](app-service-web-overview.md) にバインドする方法について説明します。 完了したら、カスタムの DNS ドメインの HTTPS エンドポイントで、Web アプリにアクセスできるようになります。
 
@@ -65,7 +65,7 @@ App Service で証明書を使用するには、証明書が次のすべての�
 
 カスタム SSL 証明書を Web アプリにバインドするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard** または **Premium** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
 
-### <a name="log-in-to-azure"></a>Azure へのログイン
+### <a name="log-in-to-azure"></a>Azure にログインする
 
 [Azure Portal](https://portal.azure.com)を開きます。
 
@@ -220,7 +220,7 @@ Web アプリ ページで、左側のナビゲーションにある **[カス�
 
 ![HTTPS の適用](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 For example:
+操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 例: 
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -272,7 +272,7 @@ New-AzureRmWebAppSSLBinding `
 
 ![パブリック証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

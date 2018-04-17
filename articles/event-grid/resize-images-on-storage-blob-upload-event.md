@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 68343c3ffd87496ed4ae89b478ee5c8119ed67f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0edf5648ddef58db74273635c84d7473e17e1b30
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -90,7 +90,7 @@ storageConnectionString=$(az storage account show-connection-string \
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
 --settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbs
+myContainerName=thumbnails
 ```
 
 この Function App に関数コード プロジェクトをデプロイできるようになります。
@@ -145,7 +145,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **サブスクライバー エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 | 
     | **プレフィックス フィルター** | /blobServices/default/containers/images/blobs/ | **images** コンテナーのストレージ イベントだけになるようにフィルター処理します。| 
 
-4. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `imageresizerfunc` をトリガーするイベント サブスクリプションが作成されます。 この関数によって、イメージは、サイズが変更され、*thumbs* コンテナーに追加されます。
+4. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `imageresizerfunc` をトリガーするイベント サブスクリプションが作成されます。 この関数によって、画像は、サイズが変更され、*thumbnails* コンテナーに追加されます。
 
 バックエンド サービスの構成が済んだので、サンプル Web アプリでイメージ サイズ変更の機能をテストします。 
 
@@ -155,7 +155,7 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 
 **[Upload photos]** 領域をクリックし、ファイルを選んでアップロードします。 この領域に写真をドラッグしてもかまいません。 
 
-アップロードされたイメージが消えた後、アップロードされたイメージのコピーが **[Generated thumbnails]** 領域に表示されることを確認します。 このイメージは、関数によってサイズが変更され、*thumbs* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
+アップロードされたイメージが消えた後、アップロードされたイメージのコピーが **[Generated thumbnails]** 領域に表示されることを確認します。 この画像は、関数によってサイズが変更され、*thumbnails* コンテナーに追加された後、Web クライアントによってダウンロードされたものです。
 
 ![Microsoft Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 

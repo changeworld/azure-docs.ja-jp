@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 7df0c8153cc5b2e3a785d79e23ecb7d56285c6f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2769be7097ebc65bc7c022ebd2e3f2de6e57e9b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -460,7 +460,7 @@ DeploymentDebugLogLevel :
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)] 
 
-## <a name="json-definitions-for-entities"></a>エンティティの JSON 定義
+## <a name="data-factory-entities-in-the-template"></a>エンティティの JSON 定義
 JSON テンプレートには、次の Data Factory エンティティが定義されています。 
 
 - [Azure Storage のリンクされたサービス](#azure-storage-linked-service)

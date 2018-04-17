@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f772485dd49a730e34ec856768fa91bc3fdd114b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -46,9 +46,6 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.Application Insights SDK for Java をプロジェクトに追加する
 *プロジェクトに適した方法を選択してください。*
-
-#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>Eclipse を使用して動的 Web プロジェクトを作成している場合:
-[Application Insights SDK for Java プラグイン][eclipse]を使用します。
 
 #### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Maven を使用している場合: <a name="maven-setup" />
 プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のコードをマージします。
@@ -94,6 +91,9 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
       // or applicationinsights-core for bare API
     }
 ```
+
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Eclipse を使用して動的 Web プロジェクトを作成している場合:
+[Application Insights SDK for Java プラグイン][eclipse]を使用します。 注意: (Maven/Gradle を使用していないとの想定において) このプラグインを使用することで Application Insights をより迅速に実行できるとしても、それは依存関係管理システムではありません。 そのため、プラグインが更新されても、プロジェクトの Application Insights ライブラリは自動的に更新されません。
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `version:'2.0.n'`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
 * "*新しい SDK に更新するには*" プロジェクトの依存関係を更新します。
@@ -170,6 +170,61 @@ Application Insights SDK は、次の順序でキーを探します。
 ## <a name="4-add-an-http-filter"></a>4.HTTP フィルターを追加する
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします  (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
 
+### <a name="spring-boot-applications"></a>Spring Boot アプリケーション
+Application Insights の `WebRequestTrackingFilter` を Configuration クラスに登録します。
+
+```Java
+package devCamp.WebApp.configurations;
+
+    import javax.servlet.Filter;
+
+    import org.springframework.boot.context.embedded.FilterRegistrationBean;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.core.Ordered;
+    import org.springframework.beans.factory.annotation.Value;
+    import org.springframework.context.annotation.Configuration;
+    import com.microsoft.applicationinsights.TelemetryConfiguration;
+    import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
+
+
+    @Configuration
+    public class AppInsightsConfig {
+
+    //Initialize AI TelemetryConfiguration via Spring Beans
+        @Bean
+        public String telemetryConfig() {
+            String telemetryKey = System.getenv("APPLICATION_INSIGHTS_IKEY");
+            if (telemetryKey != null) {
+                TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
+            }
+            return telemetryKey;
+        }
+    
+    //Set AI Web Request Tracking Filter
+        @Bean
+        public FilterRegistrationBean aiFilterRegistration(@Value("${spring.application.name:application}") String applicationName) {
+           FilterRegistrationBean registration = new FilterRegistrationBean();
+           registration.setFilter(new WebRequestTrackingFilter(applicationName));
+           registration.setName("webRequestTrackingFilter");
+           registration.addUrlPatterns("/*");
+           registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
+           return registration;
+       } 
+
+    //Set up AI Web Request Tracking Filter
+        @Bean(name = "WebRequestTrackingFilter")
+        public Filter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
+            return new WebRequestTrackingFilter(applicationName);
+        }   
+    }
+```
+
+このクラスにより、`WebRequestTrackingFilter` が http フィルター チェーンの最初のフィルターとして構成されます。 また、取得可能な場合は、オペレーティング システムの環境変数からインストルメンテーション キーがプルされます。
+
+> ここでは Spring MVC 構成ではなく Web http フィルター構成を使用しています。なぜなら、これは Spring Boot アプリケーションであり、独自の Spring MVC 構成があるためです。 Spring MVC に固有の構成については、以降のセクションを参照してください。
+
+
+### <a name="applications-using-webxml"></a>Web.xml を使用するアプリケーション
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコードをマージします。
 
 最も正確な結果を得るためには、他のすべてのフィルターの前にこのフィルターをマップする必要があります。

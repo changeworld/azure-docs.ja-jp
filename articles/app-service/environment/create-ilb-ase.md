@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -63,7 +63,7 @@ ILB ASE を作成する方法は次のとおりです。
 
 4. VNet を選択するか、作成します。
 
-5. 既存の VNet を選択した場合は、ASE を保持するサブネットを作成する必要があります。 サブネットのサイズは ASE の将来の拡大を考慮した大きさにする必要があります。 推奨されるサイズは、最大サイズの ASE を処理できる 128 のアドレスを持つ `/25` です。 選択できる最小サイズは、`/28` です。 インフラストラクチャで必要になったときには、このサイズを最大 11 インスタンスまでスケーリングできます。
+5. 既存の VNet を選択した場合は、ASE を保持するサブネットを作成する必要があります。 サブネットのサイズは ASE の将来の拡大を考慮した大きさにする必要があります。 推奨されるサイズは、最大サイズの ASE を処理できる 128 のアドレスを持つ `/25` です。 選択できる最小サイズは、`/28` です。 インフラストラクチャで必要になったときには、このサイズは最大 3 インスタンスまでしかスケーリングできません。
 
     * ご使用の App Service プランで、既定の最大 100 インスタンス以上にする。
 
@@ -81,7 +81,7 @@ ILB ASE を作成する方法は次のとおりです。
 
     * &lt;asename&gt;.p.azurewebsites.net
 
-   アプリで使用するカスタム ドメイン名と、ご使用の ASE によって使用されるドメイン名を重複させることはできません。 ILB ASE のドメイン名が _contoso.com_ である場合、次のようなカスタム ドメイン名はご使用のアプリで使用できません。
+   既存の DNS 名を Web アプリにマップできる、カスタム ドメイン名と呼ばれる機能があります。 この機能の詳細については、[既存の DNS 名を Web アプリにマップする方法][customdomain]に関するページを参照してください。 アプリで使用するカスタム ドメイン名と、ご使用の ASE によって使用されるドメイン名を重複させることはできません。 ILB ASE のドメイン名が _contoso.com_ である場合、次のようなカスタム ドメイン名はご使用のアプリで使用できません。
 
     * www.contoso.com
 
@@ -250,3 +250,4 @@ ILB ASE と WAF デバイスを構成する方法について詳しくは、「[
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md

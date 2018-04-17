@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 7a06ed8433ebcf728c7b090f5e984d4e3ebeb846
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3b703c96e309294e5327fb7fb013cbf28c369e4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
-SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージ [シングル SQL データベース](sql-database-servers-databases.md)と[エラスティック プール](sql-database-elastic-pool.md)内のマネージ SQL データベース、およびマネージ SQL インスタンス、いわゆる [SQL Database マネージ インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) が用意されています。 それは、[動的にスケーラブルなパフォーマンス](sql-database-service-tiers.md)を提供し、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 
+SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージ [シングル SQL データベース](sql-database-servers-databases.md)と[エラスティック プール](sql-database-elastic-pool.md)内のマネージ SQL データベース、および SQL [マネージ インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) が用意されています。 それは、[動的にスケーラブルなパフォーマンス](sql-database-service-tiers.md)を提供し、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 
 
 SQL Database は、そのコード ベースを [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と共有しています。 Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 発表される新しい機能の詳細については、以下を参照してください。
 
@@ -41,9 +41,13 @@ SQL Database マネージ インスタンスでは、各インスタンスが他
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
 
-SQL Database には、データベースの軽量のワークロードから重量のワークロードまでをサポートする、Basic、Standard、Premium の 3 つのサービス レベルがあります。 最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers.md#dtu-based-purchasing-model)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview) があります。 
+- DTU ベースの購入モデルには、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
+- 仮想コアベースの購入モデルでは、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
 
-   ![スケーリング](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+
+   ![DTU スケーリング](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 SQL Database マネージ インスタンスはプレビュー段階であり、単一サービス レベルでの提供となります。 詳細については、[SQL Database マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください
 
@@ -64,7 +68,7 @@ SQL Database マネージ インスタンスはプレビュー段階であり、
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>広範囲に及ぶ監視とアラートの機能
 
-しかし、単一データベースとエラスティック プールの相対的なパフォーマンスは、どのような方法で比較すればよいでしょうか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? [組み込みのパフォーマンス監視ツール](sql-database-performance.md)と[アラート ツール](sql-database-insights-alerts-portal.md)を、パフォーマンス評価と組み合わせて使用してください。この評価は、[単一データベースの場合はデータベース トランザクション ユニット (DTU)、エラスティック プールの場合はエラスティック DTU (eDTU)](sql-database-what-is-a-dtu.md) に基づいています。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 詳細については、「 [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md) 」を参照してください。
+しかし、単一データベースとエラスティック プールの相対的なパフォーマンスは、どのような方法で比較すればよいでしょうか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? [組み込みのパフォーマンス監視](sql-database-performance.md)および[アラート](sql-database-insights-alerts-portal.md) ツールと、パフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 詳細については、「 [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md) 」を参照してください。
 
 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
@@ -82,7 +86,7 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 - **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)**: SQL Database は、自動バックアップのリテンション期間内の任意の時点への回復をサポートします。
 - **[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 
 - **[フェールオーバー グループ](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、透過的な geo レプリケーションや大量のデータベースとエラスティック プールのフェールオーバーなどによって、高可用性と負荷分散をグローバル スケールで有効にすることができます。 フェールオーバー グループとアクティブ geo レプリケーションを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。
-- **[ゾーン冗長データベース](sql-database-high-availability.md)**: SQL Database の Premium データベースまたは Premium エラスティック プールは、複数の可用性ゾーンにまたがってプロビジョニングすることができます。 Premium データベースと Premium エラスティック プールには、高可用性を目的とする複数の冗長レプリカが存在します。それらのレプリカを複数の可用性ゾーンに配置することで回復性を高め、たとえばデータの損失を生じさせずにデータセンター規模の障害から自動的に復旧することができます。 現在、この機能はプレビュー段階にあります。 
+- **[ゾーン冗長データベース](sql-database-high-availability.md)**: SQL Database の Premium または Business Critical (プレビュー) データベースまたはエラスティック プールは、複数の可用性ゾーンにまたがってプロビジョニングすることができます。 これらのデータベースとエラスティック プールには、高可用性を目的とする複数の冗長レプリカが存在します。それらのレプリカを複数の可用性ゾーンに配置することで回復性を高め、たとえばデータの損失を生じさせずにデータセンター規模の障害から自動的に復旧することができます。 現在、この機能はプレビュー段階にあります。 
 
 ## <a name="built-in-intelligence"></a>組み込みのインテリジェンス
 
@@ -166,7 +170,7 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 
 - 単一データベースとエラスティック プールのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 
-- すぐに始めるには、次のクイック スタートをご覧ください。
+- すぐに始めるには、次のクイック スタート チュートリアルをご覧ください。
 
   - [Azure Portal で SQL データベースを作成する](sql-database-get-started-portal.md)  
   - [Azure CLI で SQL データベースを作成する](sql-database-get-started-cli.md)

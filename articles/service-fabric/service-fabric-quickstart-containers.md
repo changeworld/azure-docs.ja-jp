@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/18
+ms.date: 04/03/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: eb4de9d7781ae355e42a6fec9f7732ad67228e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47a4e75699e024dae367524f16eb23fb72043ef5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>クイック スタート: Service Fabric の Windows コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -28,12 +28,12 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 ![IIS の既定の Web ページ][iis-default]
 
-このクイックスタートでは、次の方法について説明します。
-> [!div class="checklist"]
-> * Docker イメージ コンテナーをパッケージ化する
-> * 通信を構成する
-> * Service Fabric アプリケーションのビルドとパッケージ化
-> * コンテナー アプリケーションを Azure にデプロイする
+このクイック スタートでは、次の方法について説明します。
+
+* Docker イメージ コンテナーをパッケージ化する
+* 通信を構成する
+* Service Fabric アプリケーションのビルドとパッケージ化
+* コンテナー アプリケーションを Azure にデプロイする
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション ([無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます)。
@@ -210,16 +210,16 @@ Thumbprint                                Subject
 
 ## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
-> [!div class="checklist"]
-> * Docker イメージ コンテナーをパッケージ化する
-> * 通信を構成する
-> * Service Fabric アプリケーションのビルドとパッケージ化
-> * コンテナー アプリケーションを Azure にデプロイする
 
-* [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
-* [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
-* Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
-* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
+* Docker イメージ コンテナーをパッケージ化する
+* 通信を構成する
+* Service Fabric アプリケーションのビルドとパッケージ化
+* コンテナー アプリケーションを Azure にデプロイする
+
+Service Fabric で Windows コンテナーを操作する方法の詳細については、Windows コンテナー アプリのチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [Windows コンテナー アプリの作成](./service-fabric-host-app-in-a-container.md)
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png

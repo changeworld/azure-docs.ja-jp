@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a34a94a9421c65a2b1d4ce5c390732e0adbb69d6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -56,26 +56,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、storage-blobs-dotnet-quickstart フォルダーを開き、storage-blobs-dotnet-quickstart.sln をダブルクリックします。 
+このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、*storage-blobs-dotnet-quickstart* フォルダーを開き、*storage-blobs-dotnet-quickstart.sln* をダブルクリックします。 
+
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 
-アプリケーションを実行するには、ストレージ アカウントの接続文字列を指定する必要があります。 Azure Portal から接続文字列をコピーし、新しい環境変数に書き込みます。 サンプルでは、環境変数から接続文字列を読み取り、それを使って、Azure Storage に対する要求の認証を行います。
+アプリケーションを実行するには、ストレージ アカウントの接続文字列を指定する必要があります。 サンプル アプリケーションは、環境変数から接続文字列を読み取り、それを使って、Azure Storage に対する要求を認証します。
 
-### <a name="copy-your-connection-string-from-the-azure-portal"></a>Azure Portal から接続文字列をコピーする
-
-接続文字列をコピーするには、次の手順を実行します。
-
-1. [Azure Portal](https://portal.azure.com) に移動します。
-2. 自分のストレージ アカウントを探します。
-3. ストレージ アカウントの概要の **[設定]** セクションで、**[アクセス キー]** を選択します。
-4. **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。  
-
-    ![Azure Portal から接続文字列をコピーする方法を示すスクリーン ショット](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
-
-## <a name="write-your-connection-string-to-an-environment-variable"></a>環境変数に接続文字列を書き込む
-
-次に、アプリケーションを実行するローカル コンピューター上に新しい環境変数を作成します。 環境変数を設定するには、コンソール ウィンドウを開いて、お使いのオペレーティング システムの手順に従います。 `<yourconnectionstring>` は、実際の接続文字列に置き換えてください。
+接続文字列をコピーした後、アプリケーションを実行しているローカル マシンの新しい環境変数にそれを書き込みます。 環境変数を設定するには、コンソール ウィンドウを開いて、お使いのオペレーティング システムの手順に従います。 `<yourconnectionstring>` は、実際の接続文字列に置き換えてください。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 

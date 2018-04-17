@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - Windows コンピューターでの Security Center の利用開始 | Microsoft Docs"
-description: "このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。"
+title: Azure Security Center クイックスタート - Windows コンピューターでの Security Center の利用開始 | Microsoft Docs
+description: このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -62,7 +62,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 2. **[ようこそ]** ページで **[次へ]** をクリックします。
 3. **[ライセンス条項]** ページの記述内容を確認し、**[同意する]** を選択します。
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、そのまま使用して、**[次へ]** を選択します。
-5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics (OMS) をクリックし、**[次へ]** を選択します。
+5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics を選択し、**[次へ]** を選択します。
 6. **[Azure Log Analytics]** ページで、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
 7. コンピューターが Azure Government クラウド内の Log Analytics ワークスペースにレポートする必要がある場合は、**[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、**[詳細]** を選択し、プロキシ サーバーの URL とポート番号を指定します。
 8. 必要な構成設定が完了したら、**[次へ]** を選択します。

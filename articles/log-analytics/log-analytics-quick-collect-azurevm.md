@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2018
+ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: ff610c4efa9db16ca8a1e151b36e0e08dfe30d69
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 3b21a3ae5940cd736fe23b76e7ede9dc0061b711
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
@@ -37,7 +37,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
   * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
   * **[リソース グループ]** では、1 つ以上の Azure Virtual Machines を含む既存のリソース グループを選択します。  
   * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
-  * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、3 つの価格レベルから選ぶことができます。  このクイック スタートでは、Free レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
+  * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
   
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
@@ -45,19 +45,12 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 情報が検証され、ワークスペースが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 
 
->[!NOTE]
->作成日が 2018 年 4 月 2 日より後の新しいサブスクリプションにリンクされた新しいワークスペースを作成すると、自動的に *PerGB2018* 価格プランが使用されます。  このプランには、Application Insights リソースおよび Log Analytics リソースについて横断的に、1 か月あたり 5 GB のデータが無料で含まれます。 価格モデルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
->
-
 ## <a name="enable-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能を有効にする
 Azure に既にデプロイされている Windows および Linux の仮想マシンでは、Log Analytics VM 拡張機能を使用して Log Analytics エージェントをインストールします。  この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
 
 >[!NOTE]
 >Linux 用 OMS エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。 
 
-Azure Government クラウドでワークスペースを作成した場合は、ポータルの Log Analytics リソース ページの上部に、アップグレードを促すバナーが表示されているのがわかります。  このクイック スタートの目的上、アップグレードは必要ありません。<br>
-
-![Azure Portal に表示されている Log Analytics のアップグレード通知](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)が必要です。    
 1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
 3. 左側のメニューの [ワークスペースのデータ ソース] で **[仮想マシン]** をクリックします。  
@@ -93,10 +86,6 @@ Log Analytics は、イベントを Windows イベント ログまたは Linux S
 
 1. Azure Portal で Log Analytics に移動し、前の手順で作成したワークスペースを選択します。
 2. **[ログ検索]** タイルをクリックし、[ログ検索] ウィンドウのクエリ フィールドに「`Perf`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。<br> ![Log Analytics のログ検索クエリの例](./media/log-analytics-quick-collect-azurevm/log-analytics-portal-perf-query.png)<br> 
-
-   >[!NOTE]
-   >ワークスペースを Azure Government クラウドで作成した場合は、クエリ `Type=Perf` を使用します。  
-   >
 
 たとえば、次の画像のクエリでは、78,000 個のパフォーマンス レコードが返されています。  実際の結果はかなり少なくなります。<br> ![Log Analytics のログ検索の結果](media/log-analytics-quick-collect-azurevm/log-analytics-search-perf.png)
 

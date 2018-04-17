@@ -1,105 +1,80 @@
 ---
-title: "Azure CDN の概要 | Microsoft Docs"
-description: "Azure Content Delivery Network (CDN) の概要と、CDN を使用して BLOB と静的コンテンツをキャッシュして高帯域幅コンテンツを配信する方法について説明します。"
+title: コンテンツ配信ネットワーク (CDN) とは - Azure | Microsoft Docs
+description: Azure Content Delivery Network (CDN) の概要と、CDN を使用して高帯域幅コンテンツを配信する方法について説明します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
-ms.date: 11/10/2017
-ms.author: v-semcev
-ms.openlocfilehash: cdcf07b6af2bd915345361c0bda2dcd9abe5486e
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.topic: overview
+ms.date: 04/06/2018
+ms.author: rli
+ms.custom: mvc
+ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="overview-of-the-azure-content-delivery-network"></a>Azure Content Delivery Network の概要
+# <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
+コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 
 
-Azure Content Delivery Network (CDN) では、戦略的に配置された場所に静的 Web コンテンツをキャッシュすることで、スループットを最大限に引き出し、ユーザーに対して安全にコンテンツを配信できます。 CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを高速配信するためのグローバル ソリューションを開発者に提供します。 
+Azure Content Delivery Network (CDN) では、世界中に戦略的に配置された物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツをユーザーに高速配信するためのグローバル ソリューションを開発者に提供します。 さらに、Azure CDN では、CDN POP を使って各種のネットワーク最適化を利用して、キャッシュできない動的なコンテンツも高速化できます。 たとえば、Border Gateway Protocol (BGP) をバイパスするルート最適化などがあります。
 
-> [!NOTE]
-> この記事では、Azure CDN とそのしくみ、各 Azure CDN 製品の機能について説明します。 この情報をスキップし、CDN エンドポイントの作成方法に関するチュートリアルに進む場合は、「[Azure CDN の概要](cdn-create-new-endpoint.md)」を参照してください。 現在の CDN ノードの場所の一覧については、「[Azure CDN の POP の場所](cdn-pop-locations.md)」を参照してください。
-
-CDN を使用して Web サイト資産をキャッシュすると、次のような利点があります。
+Azure CDN を使用して Web サイト資産を配信すると、次のような利点があります。
 
 * エンド ユーザーのパフォーマンスとユーザー エクスペリエンスの向上。コンテンツの読み込みに複数のラウンドトリップか必要なアプリケーションを使用する場合は特にそうです。
 * 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型のスケーリング。
-* ユーザー要求を分散させ、コンテンツをエッジ サーバーから直接配信することによる、配信元へのトラフィックの削減。
+* ユーザー要求を分散させ、コンテンツをエッジ サーバーから直接配信することによる、配信元サーバーへのトラフィックの削減。
+
+現在の CDN ノードの場所の一覧については、[Azure CDN の POP の場所](cdn-pop-locations.md)に関するページを参照してください。
 
 ## <a name="how-it-works"></a>動作のしくみ
 ![CDN の概要](./media/cdn-overview/cdn-overview.png)
 
-1. ユーザー (Alice) は、特殊なドメイン名 ( `<endpointname>.azureedge.net`など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。 DNS は、パフォーマンスが最も高い Point-of-Presence (POP) に要求をルーティングします。通常その場所は、ユーザーに地理的に最も近い位置にある POP になります。
-2. POP のエッジ サーバーのキャッシュにファイルがない場合、エッジ サーバーは配信元にあるファイルを要求します。  配信元は、Azure Web App、Azure Cloud Service、Azure ストレージ アカウント、またはパブリックにアクセスできる Web サーバーです。
-3. 配信元からエッジ サーバーに対して、ファイルの有効期間 (TTL) を記述したオプションの HTTP ヘッダーなどのファイルが戻されます。
-4. エッジ サーバーはファイルをキャッシュし、ファイルを要求元 (Alice) に返します。  TTL が期限切れになるまで、ファイルはエッジ サーバーにキャッシュされた状態になります。  配信元で TTL を指定していなかった場合、既定の TTL は 7 日間です。
-5. その他のユーザーが同じ URL を使用して同じファイルを要求し、同じ POP に転送することもできます。
-6. ファイルの TTL が期限切れになっていない場合、エッジ サーバーはキャッシュのファイルを返します。 そのプロセスの結果、応答時間が短縮されます。
+1. ユーザー (Alice) は、特殊なドメイン名 (_&lt;endpoint name&gt;_.azureedge.net など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。 この名前には、エンドポイント ホスト名またはカスタム ドメインを指定できます。 DNS は、パフォーマンスが最も高い POP に要求をルーティングします。通常、その場所は、ユーザーに地理的に最も近い位置にある POP になります。
+    
+2. POP のエッジ サーバーのキャッシュにファイルがない場合、POP は配信元サーバーにあるファイルを要求します。 配信元サーバーは、Azure Web App、Azure Cloud Service、Azure ストレージ アカウント、またはパブリックにアクセスできる Web サーバーです。
+   
+3. 配信元サーバーは、POP のエッジ サーバーにファイルを返します。
+    
+4. POP のエッジ サーバーはファイルをキャッシュし、ファイルを要求元 (Alice) に返します。 HTTP ヘッダーによって指定された Time to Live (TTL) まで、ファイルは POP のエッジ サーバー上にキャッシュされたままです。 配信元サーバーで TTL を指定していなかった場合、既定の TTL は 7 日間です。
+    
+5. その他のユーザーは、Alice と同じ URL を使用して同じファイルを要求し、同じ POP に転送することもできます。
+    
+6. ファイルの TTL が期限切れになっていない場合、POP エッジ サーバーはキャッシュから直接ファイルを返します。 そのプロセスの結果、応答時間が短縮されます。
 
+## <a name="requirements"></a>必要条件
+Azure CDN を使用するには、少なくとも 1 つの Azure サブスクリプションを所有する必要があります。 さらに、少なくとも 1 つの CDN プロファイルを作成する必要があります。これは、CDN エンドポイントをまとめたものです。 各 CDN エンドポイントは、コンテンツ配信動作およびアクセスの特定の構成を表します。 インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する場合、複数のプロファイルを使用できます。 [Azure CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)は CDN プロファイル レベルで適用されるので、価格レベルを組み合わせたい場合は、複数の CDN プロファイルを作成する必要があります。
+
+### <a name="limitations"></a>制限事項
+各 Azure サブスクリプションには、次のリソースに関して既定の制限が設けられています。
+ - 作成できる CDN プロファイルの数。
+ - CDN プロファイルに作成できるエンドポイントの数。 
+ - エンドポイントにマッピングできるカスタム ドメインの数。
+
+CDN サブスクリプションの制限の詳細については、「[CDN の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits)」を参照してください。
+    
 ## <a name="azure-cdn-features"></a>Azure CDN の機能
-Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 3 つがあります。  次の表に、各製品で使用できる機能を示します。
+Azure CDN が提供する主要な機能は、次のとおりです。
 
-|  | Standard Akamai | Standard Verizon | Premium Verizon |
-| --- | --- | --- | --- |
-| __パフォーマンス機能と最適化__ |
-| [動的サイト アクセラレーション](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[動的サイト アクセラレーション - アダプティブ イメージの圧縮](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-akamai-only) | **&#x2713;**  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[動的サイト アクセラレーション - オブジェクトのプリフェッチ](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-akamai-only) | **&#x2713;**  |  |  |
-| [ビデオ ストリーミングの最適化](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization) | **&#x2713;**  | \* |  \* |
-| [大きなファイルの最適化](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization) | **&#x2713;**  | \* |  \* |
-| [グローバル サーバー負荷分散 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [高速消去](cdn-purge-endpoint.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [資産の事前読み込み](cdn-preload-endpoint.md) | |**&#x2713;** |**&#x2713;** |
-| キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用) |**&#x2713;** |**&#x2713;** | |
-| キャッシュ/ヘッダーの設定 ( [ルール エンジン](cdn-rules-engine.md)を使用) | | |**&#x2713;** |
-| [クエリ文字列のキャッシュ](cdn-query-string.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| IPv4/IPv6 デュアルスタック |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTP/2 のサポート](cdn-http2.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| __セキュリティ__ |
-| CDN エンドポイントでの HTTPS のサポート |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [カスタム ドメイン HTTPS](cdn-custom-ssl.md) | |**&#x2713;** |**&#x2713;** |
-| [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Geo-filtering](cdn-restrict-access-by-country.md) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [認証トークン](cdn-token-auth.md)|  |  |**&#x2713;**| 
-| [DDOS 保護](https://www.us-cert.gov/ncas/tips/ST04-015) |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| __分析とレポート__ |
-| [Azure 診断ログ](cdn-azure-diagnostic-logs.md) | **&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Verizon からのコア レポート](cdn-analyze-usage-patterns.md) | |**&#x2713;** |**&#x2713;** |
-| [Verizon からのカスタム レポート](cdn-verizon-custom-reports.md) | |**&#x2713;** |**&#x2713;** |
-| [詳細な HTTP レポート](cdn-advanced-http-reports.md) | | |**&#x2713;** |
-| [リアルタイム統計](cdn-real-time-stats.md) | | |**&#x2713;** |
-| [エッジ ノードのパフォーマンス](cdn-edge-performance.md) | | |**&#x2713;** |
-| [リアルタイム アラート](cdn-real-time-alerts.md) | | |**&#x2713;** |
-| __使いやすさ__ |
-| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md)、[Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md)、[PowerShell](cdn-manage-powershell.md) を介した管理。 |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md) | | |**&#x2713;** |
-| URL のリダイレクト/書き換え ([ルール エンジン](cdn-rules-engine.md)を使用) | | |**&#x2713;** |
-| モバイル デバイスのルール ( [ルール エンジン](cdn-rules-engine.md)を使用) | | |**&#x2713;** |
+- [動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
+- [CDN キャッシュ規則](cdn-caching-rules.md)
+- [HTTPS カスタム ドメインのサポート](cdn-custom-ssl.md)
+- [Azure 診断ログ](cdn-azure-diagnostic-logs.md)
+- [ファイル圧縮](cdn-improve-performance.md)
+- [Geo-filtering](cdn-restrict-access-by-country.md)
 
-\* Verizon は、一般的な Web 配信で大きなファイルやメディアを直接配信することができます。
+各 Azure CDN 製品でサポートされる機能の完全な一覧については、「[Azure CDN product features (Azure CDN 製品の機能)](cdn-features.md)」を参照してください。
 
-
-> [!TIP]
-> Azure CDN に搭載してほしい機能がありましたら、  [ぜひご意見をお聞かせください](https://feedback.azure.com/forums/169397-cdn)。 
-> 
-> 
-
-## <a name="next-steps"></a>次のステップ
-CDN を導入するには、「[Azure CDN の概要](cdn-create-new-endpoint.md)」を参照してください。
-
-既存の CDN 顧客は、[Microsoft Azure Portal](https://portal.azure.com) から、または [PowerShell](cdn-manage-powershell.md) を使用して、CDN エンドポイントを管理できるようになりました。
-
-実際の CDN の効果については、[Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
-
-[.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
-
-価格については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
+## <a name="next-steps"></a>次の手順
+- CDN の使用を開始するには、[Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)に関するページを参照してください。
+- [Microsoft Azure Portal](https://portal.azure.com) または [PowerShell](cdn-manage-powershell.md) を使用して、CDN エンドポイントを管理します。
+- [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
+- Azure CDN の実際の動作を確認するには、[Azure CDN の動画](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest)をご覧ください。
 

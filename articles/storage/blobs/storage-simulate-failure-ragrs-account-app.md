@@ -10,11 +10,11 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a86f54d580db6e577b878cb1701c7b969d23c129
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 
@@ -179,9 +179,9 @@ route delete <destination_ip>
 > * [fiddler](#simulate-a-failure-with-fiddler) または[無効な静的ルート](#simulate-a-failure-with-an-invalid-static-route)で失敗をシミュレートする 
 > * プライマリ エンドポイントの復元をシミュレートする
 
-事前に作成されたストレージ サンプルを確認するには、次のリンクに従ってください。
+RA-GRS ストレージのしくみ (とそれに関連するリスク) の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Storage のサンプル スクリプト](storage-samples-blobs-cli.md)
+> [RA-GRS を使用した HA アプリの設計](../common/storage-designing-ha-apps-with-ragrs.md)
 
 [previous-tutorial]: storage-create-geo-redundant-storage.md

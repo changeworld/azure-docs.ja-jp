@@ -1,11 +1,11 @@
 ---
-title: "SQL Database を使用して Azure に ASP.NET アプリを作成する | Microsoft Docs"
-description: "Azure で動作し、SQL データベースに接続する ASP.NET アプリの入手方法を説明します。"
+title: SQL Database を使用して Azure に ASP.NET アプリを作成する | Microsoft Docs
+description: Azure で動作し、SQL データベースに接続する ASP.NET アプリの入手方法を説明します。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>SQL Database を使用して Azure に ASP.NET アプリを作成する
+# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure でデータ主導の ASP.NET Web アプリを開発し、それを [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
 
@@ -48,6 +48,8 @@ ms.lasthandoff: 02/01/2018
   - **Azure 開発**
 
   ![ASP.NET および Web 開発と Azure 開発 ([Web & Cloud\(Webとクラウド\)] 下)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+既に Visual Studio をインストールしている場合は、**[ツール]** > **[Get Tools and Features]\(ツールと機能の取得\)** の順にクリックして、Visual Studio 内でワークロードを追加します。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -118,7 +120,7 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| 設定  | 推奨値 | BLOB の詳細 |
+| Setting  | 推奨値 | BLOB の詳細 |
 | ----------------- | ------------ | ----|
 |**App Service プラン**| myAppServicePlan | [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |
 |**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |

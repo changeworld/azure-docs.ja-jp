@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76bbe686d07ff83bff6271f62793713194938212
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -187,9 +187,9 @@ Service Fabric アプリケーションを作成して構築したら、[Service
 
 [.NET Core 2.0 SDK for Mac](https://www.microsoft.com/net/core#macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core 2.0 Service Fabric アプリケーション用のパッケージは、現在プレビューの段階で NuGet.org でホストされています。
 
-## <a name="install-the-service-fabric-plug-in-for-eclipse-neon-on-your-mac"></a>Eclipse Neon 用の Service Fabric プラグインを Mac にインストールする
+## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Eclipse 用の Service Fabric プラグインを Mac にインストールする
 
-Azure Service Fabric には、Eclipse Neon Java IDE 用のプラグインが用意されています。 このプラグインを使用すると、Java サービスの作成、ビルド、およびデプロイの手順を簡素化できます。 Eclipse 用の Service Fabric プラグインをインストールしたり、最新バージョンに更新したりするには、[これらの手順](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon)に従います。 [Eclipse 用の Service Fabric のドキュメント](service-fabric-get-started-eclipse.md)に記載されている、アプリケーションの構築、アプリケーションへのサービスの追加、アプリケーションのアンインストールなどの他のすべての手順も適用できます。
+Azure Service Fabric には、Java IDE 用として Eclipse Neon (以降) 用のプラグインが用意されています。 このプラグインを使用すると、Java サービスの作成、ビルド、およびデプロイの手順を簡素化できます。 Eclipse 用の Service Fabric プラグインをインストールしたり、最新バージョンに更新したりするには、[これらの手順](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse)に従います。 [Eclipse 用の Service Fabric のドキュメント](service-fabric-get-started-eclipse.md)に記載されている、アプリケーションの構築、アプリケーションへのサービスの追加、アプリケーションのアンインストールなどの他のすべての手順も適用できます。
 
 最後の手順では、ホストと共有されているパスでコンテナーをインスタンス化します。 このプラグインでは、Mac 上の Docker コンテナーを操作するために、この種のインスタンス化が必要です。 例: 
 

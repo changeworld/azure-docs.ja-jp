@@ -1,12 +1,12 @@
 ---
-title: "Azure で Java と MySQL Web アプリを構築する"
-description: "Azure MySQL データベース サービスに接続する Java アプリを Azure App Service で動作させる方法について説明します。"
+title: Azure で Java と MySQL Web アプリを構築する
+description: Azure MySQL データベース サービスに接続する Java アプリを Azure App Service で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: Java
 author: bbenz
 manager: jeffsand
 editor: jasonwhowell
-ms.assetid: 
+ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 2df08c8e3dbadbfc1a9d2cfb3adcda4f5bae2851
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0712035f317adb318d60285637526f951bf5bdec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-java-and-mysql-web-app-in-azure"></a>Azure で Java と MySQL Web アプリを構築する
+# <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で Java と MySQL Web アプリを構築する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、[コンテナー化された Spring Boot アプリを Azure にデプロイする方法](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)に関するページを参照してください。
@@ -137,7 +137,7 @@ az group create --name myResourceGroup --location "North Europe"
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (プレビュー) でサーバーを作成します。 `<mysql_server_name>` プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.mysql.database.azure.com`) の一部であるため、グローバルに一意である必要があります。 `<admin_user>` と `<admin_password>` も独自の値に置き換えます。
+Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。 `<mysql_server_name>` プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.mysql.database.azure.com`) の一部であるため、グローバルに一意である必要があります。 `<admin_user>` と `<admin_password>` も独自の値に置き換えます。
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
@@ -168,7 +168,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> 現時点では、Azure Database for MySQL (プレビュー) は、Azure Services からの接続を自動的に有効にすることはできません。 Azure の IP アドレスは動的に割り当てられるため、当面はすべての IP アドレスを有効にしておくことをお勧めします。 サービスは引き続きプレビュー段階にあり、データベースを保護するためのより優れた方法が利用可能になる予定です。
+> Azure Database for MySQL では、現在、Azure サービスからの接続が自動的に有効になりません。 Azure の IP アドレスは動的に割り当てられるため、当面はすべての IP アドレスを有効にしておくことをお勧めします。 データベースを保護するためのより優れた方法が利用可能になる予定です。
 
 ## <a name="configure-the-azure-mysql-database"></a>Azure MySQL データベースを構成する
 

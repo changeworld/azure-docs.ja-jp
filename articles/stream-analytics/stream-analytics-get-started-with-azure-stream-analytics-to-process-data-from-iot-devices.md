@@ -1,24 +1,19 @@
 ---
-title: IoT リアルタイム データ ストリームと Azure Stream Analytics | Microsoft Docs
+title: Azure Stream Analytics を使用した IoT リアルタイム データ ストリーム
 description: IoT センサー タグと、Stream Analytics によるデータ ストリームとリアルタイムのデータ処理
-keywords: IoT ソリューション, IoT の概要
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: ryanw
-ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: sngun
-ms.openlocfilehash: 52b05d4daf75d81402d7c72cd05f3819a3456171
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 491b0fdba464e5b0c6225a75c534ca6abb710855
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Azure Stream Analytics の使用を開始して IoT デバイスからのデータを処理する
 このチュートリアルでは、モノのインターネット (IoT) デバイスからデータを収集するストリーム処理ロジックの作成方法について学習します。 実際のモノのインターネット (IoT) ユース ケースを使用して、迅速で経済的なソリューションを構築する方法を紹介します。

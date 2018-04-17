@@ -1,6 +1,6 @@
 ---
-title: ネットワーク トラフィックをフィルター処理する - Azure PowerShell | Microsoft Docs
-description: この記事では、ネットワーク セキュリティ グループと PowerShell を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
+title: ネットワーク トラフィックをフィルター処理する - チュートリアル - Azure PowerShell | Microsoft Docs
+description: このチュートリアルでは、ネットワーク セキュリティ グループと PowerShell を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -11,35 +11,35 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 53406150cfc2ec4229ecd9cf3356ad03d60f8e7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc
+ms.openlocfilehash: 8e04ed7ad16b673597b62d947c3f782ee0d27c7c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>ネットワーク セキュリティ グループと PowerShell を使用してネットワーク トラフィックをフィルター処理する
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-powershell"></a>チュートリアル: ネットワーク セキュリティ グループと PowerShell を使用してネットワーク トラフィックをフィルター処理する
 
-ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 この記事では、次のことについて説明します:
+ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * ネットワーク セキュリティ グループと規則を作成する
 > * 仮想ネットワークを作成し、ネットワーク セキュリティ グループをサブネットに関連付ける
-> * 仮想マシン (VM) を異なるサブネットに展開する
+> * 仮想マシン (VM) をサブネットに展開する
 > * トラフィック フィルターをテストする
 
-好みに応じて、[Azure CLI](tutorial-filter-network-traffic-cli.md) を使ってこの記事の手順を実行することもできます。
+好みに応じて、[Azure CLI](tutorial-filter-network-traffic-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -47,7 +47,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ### <a name="create-application-security-groups"></a>アプリケーション セキュリティ グループを作成する
 
-まず [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して、この記事で作成したすべてのリソースのリソース グループを作成します。 次の例では、*eastus* の場所にリソース グループを作成します。 
+まず [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して、このチュートリアルで作成したすべてのリソースのリソース グループを作成します。 次の例では、*eastus* の場所にリソース グループを作成します。 
 
 
 ```azurepowershell-interactive
@@ -70,7 +70,7 @@ $mgmtAsg = New-AzureRmApplicationSecurityGroup `
 
 ### <a name="create-security-rules"></a>セキュリティ規則を作成する
 
-[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用してセキュリティ規則を作成します。 次の例では、ポート 80 および 443 を介してインターネットから *myWebServers* アプリケーション セキュリティ グループに対して送信されるトラフィックを許可する規則を作成します。
+[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用してセキュリティ規則を作成します。 次の例では、インターネットから *myWebServers* アプリケーション セキュリティ グループへの、ポート 80 および 443 経由の受信トラフィックを許可する規則を作成します。
 
 ```azurepowershell-interactive
 $webRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -98,7 +98,7 @@ $mgmtRule = New-AzureRmNetworkSecurityRuleConfig `
   -DestinationPortRange 3389
 ```
 
-この記事では、RDP (ポート 3389) が *myAsgMgmtServers* VM のインターネットに公開されています。 運用環境では、ポート 3389 をインターネットに公開せずに、[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または[プライベート](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ネットワーク接続を使用して、管理する Azure リソースに接続することをお勧めします。
+このチュートリアルでは、*myAsgMgmtServers* VM の RDP (ポート 3389) がインターネットに公開されています。 運用環境では、ポート 3389 をインターネットに公開せずに、[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または[プライベート](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ネットワーク接続を使用して、管理する Azure リソースに接続することをお勧めします。
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -297,9 +297,9 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](security-overview.md)と[ネットワーク セキュリティ グループの管理](virtual-network-manage-nsg-arm-ps.md)に関する記事を参照してください。
+このチュートリアルでは、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md)と[ネットワーク セキュリティ グループの管理](virtual-network-manage-nsg-arm-ps.md)に関する記事を参照してください。
 
-Azure の既定では、サブネット間でトラフィックがルーティングされます。 代わりに、たとえばファイアウォールとして機能する VM を介してサブネット間でトラフィックをルーティングすることもできます。 ルート テーブルを作成する方法については、次の記事に進んでください。
+Azure の既定では、サブネット間でトラフィックがルーティングされます。 代わりに、たとえばファイアウォールとして機能する VM を介してサブネット間でトラフィックをルーティングすることもできます。 ルート テーブルを作成する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [ルート テーブルの作成](./tutorial-create-route-table-portal.md)

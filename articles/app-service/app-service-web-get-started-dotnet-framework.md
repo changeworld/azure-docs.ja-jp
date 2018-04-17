@@ -1,11 +1,11 @@
 ---
-title: "Azure に ASP.NET Framework Web アプリを作成する | Microsoft Docs"
-description: "既定の ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。"
+title: Azure に ASP.NET Framework Web アプリを作成する | Microsoft Docs
+description: 既定の ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6ce5d49fe4e58b3c89c09ef80d563d001a4abb41
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
@@ -40,6 +40,8 @@ ms.lasthandoff: 02/01/2018
     - **Azure 開発**
 
     ![ASP.NET および Web 開発と Azure 開発 ([Web & Cloud\(Webとクラウド\)] 下)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+既に Visual Studio をインストールしている場合は、**[ツール]** > **[Get Tools and Features]\(ツールと機能の取得\)** の順にクリックして、Visual Studio 内でワークロードを追加します。
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
@@ -102,7 +104,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 ![Create App Service plan](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
-| 設定 | 推奨値 | [説明] |
+| Setting | 推奨値 | [説明] |
 |-|-|-|
 |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
 | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |

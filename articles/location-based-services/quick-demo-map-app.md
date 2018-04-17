@@ -1,26 +1,26 @@
 ---
-title: "Azure Location Based Services による対話型マップ検索 | Microsoft Docs"
-description: "Azure クイック スタート - Azure Location Based Services (プレビュー) によるデモ版対話型マップ検索を開始する"
+title: Azure Location Based Services による対話型マップ検索 | Microsoft Docs
+description: Azure クイック スタート - Azure Location Based Services (プレビュー) によるデモ版対話型マップ検索を開始する
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 04/03/2018
 ms.topic: quickstart
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 288044b2f8a4b996489bbd6a6b0a61b455e8f4ad
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a61d56f8e649d60dacff8f9849ab7e26363e119
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Azure Location Based Services (プレビュー) によるデモ版対話型マップ検索を開始する
 
-この記事では、Azure Location Based Services (LBS) のデモ版対話型マップ検索機能について説明します。 また、デモ版の Web アプリケーションで使用する LBS アカウントを作成し、キーを取得する基本的な手順についても説明します。 
+この記事では、Azure Location Based Services (LBS) の対話型検索機能について説明します。 また、デモ版の Web アプリケーションで使用する LBS アカウントを作成し、キーを取得する基本的な手順についても説明します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -40,14 +40,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. アカウントが正常に作成されたら、アカウントを開いて、アカウントの **[設定]** に移動します。 **[キー]** をクリックして、Azure Location Based Services アカウントの主キーとセカンダリ キーを取得します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。 
 
-## <a name="download-the-demo-application-for-azure-maps"></a>Azure Maps のデモ アプリケーションをダウンロードする
+## <a name="download-the-demo-application"></a>デモ アプリケーションをダウンロードする
 
 1. [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存し、テキスト エディターで開きます。
 3. 文字列 `<insert-key>` を検索し、前のセクションで取得した、**主キー**の値で置換します。 
 
 
-## <a name="launch-the-demo-application-for-azure-maps"></a>Azure Maps のデモ アプリケーションを起動する
+## <a name="launch-the-demo-application-for"></a>デモ アプリケーションを起動する
 
 1. **AzureMapDemo.html** ファイルを任意のブラウザーで開きます。
 2. 表示されるロサンゼルス市の地図を見てください。 市は、*AzureMapDemo.html* の **center** という名前の JavaScript 変数に指定された `[longitude, latitude]` の組で規定されます。 これらの座標は、任意の他の市に変更できます。 たとえば、ニューヨーク市の座標は *[-74.0060, 40.7128]* です。

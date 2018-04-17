@@ -1,11 +1,11 @@
 ---
-title: "Azure で PHP と MySQL Web アプリを構築する | Microsoft Docs"
-description: "Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。"
+title: Azure で PHP と MySQL Web アプリを構築する | Microsoft Docs
+description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 39bfc4e6a4f4066e8aeda0da387fe570525b6086
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>Azure で PHP と MySQL Web アプリを構築する
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で PHP と MySQL Web アプリを構築する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[Azure App Service on Linux で PHP と MySQL Web アプリを構築する](./containers/tutorial-php-mysql-app.md)」をご覧ください。
@@ -154,7 +154,7 @@ PHP サーバーを停止するには、ターミナルに「`Ctrl + C`」と入
 
 ## <a name="create-mysql-in-azure"></a>Azure に MySQL を作成する
 
-この手順では、MySQL データベースを[Azure Database for MySQL (Preview)](/azure/mysql) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
+この手順では、MySQL データベースを [Azure Database for MySQL](/azure/mysql) に作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -162,7 +162,7 @@ PHP サーバーを停止するには、ターミナルに「`Ctrl + C`」と入
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (プレビュー) でサーバーを作成します。
+Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
 
 次のコマンドで、_&lt;mysql_server_name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
@@ -199,7 +199,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> 現在のところ、Azure Database for MySQL (Preview) では、接続を Azure Services のみに制限することはできません。 Azure の IP アドレスは動的に割り当てられるため、すべての IP アドレスを有効にしておくことをお勧めします。 このサービスはプレビューの段階です。 データベースを保護するためのより優れた方法が提供される予定です。
+> 現在のところ、Azure Database for MySQL では、接続を Azure Services のみに制限することはできません。 Azure の IP アドレスは動的に割り当てられるため、すべての IP アドレスを有効にしておくことをお勧めします。 データベースを保護するためのより優れた方法が提供される予定です。
 >
 >
 
@@ -236,7 +236,7 @@ quit
 
 ## <a name="connect-app-to-azure-mysql"></a>アプリを Azure MySQL に接続する
 
-この手順では、Azure Database for MySQL (Preview) に作成した MySQL データベースに PHP アプリケーションを接続します。
+この手順では、Azure Database for MySQL に作成した MySQL データベースに PHP アプリケーションを接続します。
 
 <a name="devconfig"></a>
 
@@ -260,7 +260,7 @@ MYSQL_SSL=true
 変更を保存します。
 
 > [!TIP]
-> MySQL の接続情報を保護するために、このファイルは既に Git リポジトリから除外されています (リポジトリのルートで _.gitignore_ を参照してください)。 後で、App Service の環境変数を構成して Azure Database for MySQL (Preview) のデータベースに接続する方法を学習します。 環境変数を構成するので、App Service には *.env* ファイルは必要ありません。
+> MySQL の接続情報を保護するために、このファイルは既に Git リポジトリから除外されています (リポジトリのルートで _.gitignore_ を参照してください)。 後で、App Service の環境変数を構成して Azure Database for MySQL のデータベースに接続する方法を学習します。 環境変数を構成するので、App Service には *.env* ファイルは必要ありません。
 >
 
 ### <a name="configure-ssl-certificate"></a>SSL 証明書を構成する
@@ -283,7 +283,7 @@ _config/database.php_ を開き、次のコードに示すように `sslmode` �
 
 ### <a name="test-the-application-locally"></a>ローカルでアプリケーションをテストする
 
-環境ファイルとして _.env.production_ を使用して Laravel データベースの移行を実行して、Azure Database for MySQL (Preview) の MySQL データベース内にテーブルを作成します。 _.env.production_ には Azure の MySQL データベースへの接続情報が含まれていることに注意してください。
+環境ファイルとして _.env.production_ を使用して Laravel データベースの移行を実行して、Azure Database for MySQL の MySQL データベース内にテーブルを作成します。 _.env.production_ には Azure の MySQL データベースへの接続情報が含まれていることに注意してください。
 
 ```bash
 php artisan migrate --env=production --force
@@ -305,7 +305,7 @@ php artisan serve --env=production
 
 ページにいくつかのタスクを追加します。
 
-![PHP が Azure Database for MySQL (Preview) に正常にデータベースに接続されている](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![PHP が Azure Database for MySQL に正常にデータベースに接続されている](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 

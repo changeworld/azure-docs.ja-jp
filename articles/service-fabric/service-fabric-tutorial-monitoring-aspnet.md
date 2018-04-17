@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 030c6fbfb5eb76a745a1089acab54e74ce7a01e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>チュートリアル: Service Fabric の ASP.NET Core アプリケーションを監視および診断する
 このチュートリアルは、シリーズの第 4 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。 
@@ -89,8 +89,12 @@ Application Insights では、シナリオによって使い分けられる Serv
 1. ソリューション エクスプローラーの上部にある **'Voting' ソリューション**を右クリックし、**[ソリューションの NuGet パッケージの管理...]** をクリックします。
 2. [NuGet - ソリューション] ウィンドウ上部のナビゲーション メニューにある **[参照]** をクリックし、検索バーの横にある **[プレリリースを含める]** チェックボックスをオンにします。
 3. `Microsoft.ApplicationInsights.ServiceFabric.Native` を検索し、適切な NuGet パッケージをクリックします。
+
+>[!NOTE]
+>Microsoft.ServiceFabric.Diagnistics.Internal パッケージが事前にインストールされていない場合は、Application Insights パッケージをインストールする前に同様の方法でこのパッケージをインストールすることが必要になる場合があります
+
 4. 右側で、アプリケーションの 2 つのサービス (**[VotingWeb]** と **[VotingData]**) の横にある 2 つのチェックボックスをオンにして、**[インストール]** をクリックします。
-    ![AI 登録の完了](./media/service-fabric-tutorial-monitoring-aspnet/aisdk-sf-nuget.png)
+    ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. ポップアップで表示される *[変更の確認]* ダイアログ ボックスで **[OK]** をクリックし、*[ライセンスの同意]* に同意します。 これで、サービスへの NuGet の追加が完了します。
 6. 今度は 2 つのサービスにテレメトリの初期化子を設定する必要があります。 この処理を行うには、*VotingWeb.cs* と *VotingData.cs* を開きます。 両方に対して、次の 2 つの手順を実行します。
     1. それぞれの *\<サービス名>.cs* の上部に、次の 2 つの *using* ステートメントを追加します。
@@ -114,6 +118,7 @@ Application Insights では、シナリオによって使い分けられる Serv
                 .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
+        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -137,6 +142,19 @@ Application Insights では、シナリオによって使い分けられる Serv
         .Build();
     ```
 
+上記のように、両方のファイルで `UseApplicationInsights()` メソッドが呼び出されていることを再度確認します。 
+
+>[!NOTE]
+>このサンプル アプリでは、サービスの通信に http を使用します。 サービスのリモート処理 V2 を使用してアプリを開発する場合は、上記と同じ場所に次のコード行も追加する必要があります
+
+```csharp
+ConfigureServices(services => services
+    ...
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingDependencyTrackingTelemetryModule())
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingRequestTrackingTelemetryModule())
+)
+```
+
 この時点で、アプリケーションをデプロイする準備が整いました。 上部にある **[開始]** をクリックする (または **F5** キーを押す) と、Visual Studio でアプリケーションがビルドおよびパッケージ化され、ローカル クラスターが設定され、そのクラスターにアプリケーションがデプロイされます。 
 
 アプリケーションのデプロイが完了した後に [localhost:8080](localhost:8080) にアクセスすると、単一ページの投票アプリケーションのサンプルを確認できます。 サンプル データとテレメトリを作成する項目をいくつか選んで投票します。この例ではデザートにしています!
@@ -147,9 +165,7 @@ Application Insights では、シナリオによって使い分けられる Serv
 
 ## <a name="view-telemetry-and-the-app-map-in-application-insights"></a>Application Insights でテレメトリとアプリ マップを表示する 
 
-Azure Portal で Application Insights リソースにアクセスして、リソースの左側のナビゲーション バーで *[構成]* の下にある **[プレビュー]** をクリックします。 利用可能なプレビューの一覧で、*[複数ロールのアプリケーション マップ]* を **[オン]** にします。
-
-![AI アプリケーション マップを有効にする](./media/service-fabric-tutorial-monitoring-aspnet/ai-appmap-enable.png)
+Azure Portal で、Application Insights リソースのページに移動します。
 
 **[概要]** をクリックして、お使いのリソースのランディング ページに戻ります。 次に、上部の **[検索]** をクリックして受信トレースを確認します。 Application Insights にトレースが表示されるまで数分かかります。 何も表示されない場合は、しばらく待ってから上部の **[更新]** をクリックします。
 ![AI トレースの確認](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
@@ -160,9 +176,9 @@ Azure Portal で Application Insights リソースにアクセスして、リソ
 
 ![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-また、アプリケーション マップを有効にしたため、*[概要]* ページで**アプリ マップ** アイコンをクリックすると、接続されている両方のサービスが表示されます。
+さらに、[概要] ページの左側のメニューの *[Application map]\(アプリケーション マップ\)* をクリックするか、**[アプリ マップ]** アイコンをクリックすると、2 つのサービスが接続されていることを示すアプリ マップが表示されます。
 
-![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/app-map.png)
+![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリ マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../application-insights/app-insights-app-map.md)」をご覧ください。
 

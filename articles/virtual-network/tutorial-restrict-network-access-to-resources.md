@@ -1,38 +1,41 @@
 ---
-title: PaaS リソースへのネットワーク アクセスを制限する - Azure Portal | Microsoft Docs
-description: Azure Portal を使って仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
+title: PaaS リソースへのネットワーク アクセスを制限する - チュートリアル - Azure Portal | Microsoft Docs
+description: このチュートリアルでは、Azure Portal を使って仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: ''
-ms.tgt_pltfrm: virtual-network
+ms.topic: tutorial
+ms.tgt_pltfrm: virtual-networ
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 9a64a5c1f63dc05cba6fdfa310b694e34bdba7d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.custom: mvc
+ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Azure Portal を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
-仮想ネットワーク サービスのエンドポイントを使うと、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、お使いの仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、自分の仮想ネットワークのプライベート アドレス空間を使って、Azure サービスにアクセスできます。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 この記事では、次のことについて説明します:
+仮想ネットワーク サービスのエンドポイントを使用すると、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * 1 つのサブネットを含む仮想ネットワークを作成する
 > * サブネットを追加し、サービス エンドポイントを有効にする
 > * Azure リソースを作成し、サブネットからのみネットワーク アクセスできるようにする
-> * 各サブネットに仮想マシン (VM) を展開する
+> * 各サブネットに仮想マシン (VM) をデプロイする
 > * サブネットからリソースへのアクセスを確認する
 > * サブネットおよびインターネットからリソースへのアクセスが拒否されたことを確認する
+
+好みに応じて、[Azure CLI](tutorial-restrict-network-access-to-resources-cli.md) または [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -53,7 +56,7 @@ Azure Portal (http://portal.azure.com) にログインします。
     |[サブスクリプション]| サブスクリプションを選択します。|
     |リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
     |場所| **[米国東部]** を選択します。 |
-    |サブネット名| Public|
+    |サブネット名| パブリック|
     |サブネットのアドレス範囲| 10.0.0.0/24|
     |サービス エンドポイント| 無効|
 
@@ -71,11 +74,11 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     |Setting|値|
     |----|----|
-    |Name| Private |
+    |Name| プライベート |
     |アドレス範囲| 10.0.1.0/24|
     |サービス エンドポイント| **[サービス]** で **Microsoft.Storage** を選びます|
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>サブネットとの間のネットワーク アクセスを制限する
+## <a name="restrict-network-access-for-a-subnet"></a>サブネットのネットワーク アクセスを制限する
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
 2. **[ネットワーク]** を選び、**[ネットワーク セキュリティ グループ]** を選びます。
@@ -141,7 +144,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="restrict-network-access-to-a-resource"></a>リソースへのネットワーク アクセスを制限する
 
-サービス エンドポイントが有効な Azure サービスを介して作成されたリソースへのネットワーク アクセスを制限するために必要な手順は、サービスによって異なります。 各サービスの具体的な手順については、それぞれのサービスのドキュメントをご覧ください。 この記事の残りの部分では、例として、Azure ストレージ アカウントのネットワーク アクセスを制限する手順を示します。
+サービス エンドポイントが有効な Azure サービスを介して作成されたリソースへのネットワーク アクセスを制限するために必要な手順は、サービスによって異なります。 各サービスの具体的な手順については、それぞれのサービスのドキュメントをご覧ください。 このチュートリアルの残りの部分では、例として、Azure Storage アカウントのネットワーク アクセスを制限する手順を示します。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -160,7 +163,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>ストレージ アカウントにファイル共有を作成する
 
-1. ストレージ アカウントを作成した後、ポータルの上部にある **[リソース、サービス、ドキュメントの検索]** ボックスにストレージ アカウントの名前を入力します。 指定したストレージ アカウントの名前が検索結果に表示されたら、それを選びます。
+1. ストレージ アカウントを作成した後、ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\)** ボックスにストレージ アカウントの名前を入力します。 指定したストレージ アカウントの名前が検索結果に表示されたら、それを選びます。
 2. 次の図に示すように、**[ファイル]** を選びます。
 
     ![ストレージ アカウント](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
@@ -292,9 +295,9 @@ VM のデプロイには数分かかります。 作成が完了して設定が�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントを運用仮想ネットワークに作成する前に、[サービス エンドポイント](virtual-network-service-endpoints-overview.md)について十分に理解しておくことをお勧めします。
+このチュートリアルでは、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントの詳細については、[サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)と[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。
 
-アカウントに複数の仮想ネットワークがある場合は、各仮想ネットワーク内のリソースが相互に通信できるように、2 つの仮想ネットワークを接続することもできます。 次のチュートリアルに進み、仮想ネットワークを接続する方法を学習してください。
+アカウントに複数の仮想ネットワークがある場合は、各仮想ネットワーク内のリソースが相互に通信できるように、2 つの仮想ネットワークを接続することもできます。 仮想ネットワークを接続する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [仮想ネットワークを接続する](./tutorial-connect-virtual-networks-portal.md)

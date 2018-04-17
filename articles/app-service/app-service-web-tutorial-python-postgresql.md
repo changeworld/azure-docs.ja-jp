@@ -1,6 +1,6 @@
 ---
-title: "Azure で Python と PostgreSQL Web アプリを構築する | Microsoft Docs"
-description: "PostgreSQL データベースに接続する Python アプリを Azure で動作させる方法について説明します。"
+title: Azure で Python と PostgreSQL Web アプリを構築する | Microsoft Docs
+description: PostgreSQL データベースに接続する Python アプリを Azure で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: python
 author: berndverst
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: de20dae10ae6b43adcbc5040a8a71ba5650bafec
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9694dcfec7b3297e925bb45bee5e74b69609063d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-python-and-postgresql-web-app-in-azure"></a>Azure で Python と PostgreSQL Web アプリを構築する
+# <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>チュートリアル: Azure で Python と PostgreSQL Web アプリを構築する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、[Azure で Docker Python と PostgreSQL アプリを構築する](./containers/tutorial-docker-python-postgresql-app.md)に関するページを参照してください。
@@ -345,7 +345,7 @@ FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" 
 FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
-変更を表示するには、ブラウザーで http://localhost:5000 にアクセスします。 テスト登録を作成します。
+変更を表示するには、ブラウザーで http://localhost:5000 に移動します。 テスト登録を作成します。
 
 ![ローカルで実行されている Python Flask アプリケーション](./media/app-service-web-tutorial-python-postgresql/local-app-v2.png)
 

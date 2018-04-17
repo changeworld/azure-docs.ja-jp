@@ -1,30 +1,31 @@
 ---
-title: ネットワーク トラフィックをルーティングする - Azure Portal | Microsoft Docs
-description: Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
+title: ネットワーク トラフィックをルーティングする - チュートリアル - Azure Portal | Microsoft Docs
+description: このチュートリアルでは、Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 980cf7b59ed16778bbb6cd1b657e3522407c79c9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.custom: mvc
+ms.openlocfilehash: 7254e9336fca14daee2021d5bde4c5538509fe35
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
+# <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
-既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成して上書きすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次の方法について説明します。
+既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成して上書きすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * ルート テーブルの作成
@@ -34,6 +35,8 @@ ms.lasthandoff: 03/23/2018
 > * トラフィックをルーティングする NVA を作成する
 > * 仮想マシン (VM) を異なるサブネットに展開する
 > * NVA を介して、あるサブネットから別のサブネットにトラフィックをルーティングする
+
+好みに応じて、[Azure CLI](tutorial-create-route-table-cli.md) または [Azure PowerShell](tutorial-create-route-table-powershell.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -170,41 +173,41 @@ Azure で *myVmPublic* VM が作成されている場合に *myVmPrivate* VM を
 3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。
 4. VM の作成時に指定したユーザー名とパスワードを入力し (VM の作成時に入力した資格情報を指定するために、**[その他]**、**[別のアカウントを使う]** の選択が必要になる場合があります)、**[OK]** を選択します。
 5. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** を選択して、接続処理を続行します。
-6. 後の手順では、ルーティングのテストに tracert.exe コマンドを使用します。 Tracert は Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由では拒否されます。 PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
+6. 後の手順では、ルーティングのテストにトレース ルート ツールを使用します。 トレース ルートは Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由では拒否されます。 *myVmPrivate* VM 上の PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-    この記事では tracert を使用してルーティングをテストしていますが、運用環境のデプロイでは Windows ファイアウォールで ICMP を許可することは推奨されません。
-7. [IP 転送の有効化](#enable-ip-forwarding)に関するセクションで、VM のネットワーク インターフェイスに対して Azure 内での IP 転送を有効にしました。 VM 内では、オペレーティング システム、または VM 内で実行中のアプリケーションも、ネットワーク トラフィックを転送できる必要があります。 *myVmPrivate* VM から次の手順を実行し、*myVmNva* VM のオペレーティング システム内で IP 転送を有効にします。
+    このチュートリアルではトレース ルートを使用してルーティングをテストしていますが、運用環境のデプロイでは Windows ファイアウォールで ICMP を許可することは推奨されません。
+7. [IP 転送の有効化](#enable-ip-forwarding)に関するセクションで、VM のネットワーク インターフェイスに対して Azure 内での IP 転送を有効にしました。 VM 内では、オペレーティング システム、または VM 内で実行中のアプリケーションも、ネットワーク トラフィックを転送できる必要があります。 *myVmNva* VM のオペレーティング システム内での IP 転送を有効にします。
 
-    コマンド プロンプトから次のコマンドを使用して、*myVmNva* VM にリモート デスクトップ接続します。
+    *myVmPrivate* VM でコマンド プロンプトを使用して、*myVmNva* VM にリモート デスクトップ接続します。
 
     ``` 
     mstsc /v:myvmnva
     ```
     
-    オペレーティング システム内で IP 転送を有効にするには、PowerShell で次のコマンドを入力します。
+    オペレーティング システム内で IP 転送を有効にするには、*myVmNva* VM 上の PowerShell から次のコマンドを入力します。
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
     
-    VM を再起動すると、リモート デスクトップ セッションも切断されます。
-8. *myVmPrivate* VM に接続されている状態で、*myVmNva* VM の再起動後、次のコマンドを使用して、*myVmPublic* VM へのリモート デスクトップ セッションを作成します。
+    *myVmNva* VM を再起動します。これにより、リモート デスクトップ セッションも切断されます。
+8. *myVmPrivate* VM に接続されている状態で、*myVmNva* VM の再起動後、*myVmPublic* VM へのリモート デスクトップ セッションを作成します。
 
     ``` 
     mstsc /v:myVmPublic
     ```
     
-    PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
+    *myVmPublic* VM 上の PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-9. *myVmPublic* VM から *myVmPrivate* VM へのネットワーク トラフィックのルーティングをテストするには、PowerShell から次のコマンドを入力します。
+9. *myVmPublic* VM から *myVmPrivate* VM へのネットワーク トラフィックのルーティングをテストするには、*myVmPublic* VM 上の PowerShell から次のコマンドを入力します。
 
     ```
     tracert myVmPrivate
@@ -224,7 +227,7 @@ Azure で *myVmPublic* VM が作成されている場合に *myVmPrivate* VM を
       
     最初のホップが 10.0.2.4 であることを確認できます。これは、NVA のプライベート IP アドレスです。 2 番目のホップは 10.0.1.4 です。これは、*myVmPrivate* VM のプライベート IP アドレスです。 *myRouteTablePublic* ルート テーブルに追加され、"*パブリック*" サブネットに関連付けられているルートにより、Azure はトラフィックを "*プライベート*" サブネットに直接ルーティングするのではなく、NVA 経由でルーティングするようになります。
 10.  *myVmPublic* VM へのリモート デスクトップ セッションを閉じます。*myVmPrivate* VM にはまだ接続されたままです。
-11. *myVmPrivate* VM から *myVmPublic* VM へのネットワーク トラフィックのルーティングをテストするには、コマンド プロンプトから次のコマンドを入力します。
+11. *myVmPrivate* VM から *myVmPublic* VM へのネットワーク トラフィックのルーティングをテストするには、*myVmPrivate* VM 上のコマンド プロンプトから次のコマンドを入力します。
 
     ```
     tracert myVmPublic
@@ -254,10 +257,10 @@ Azure で *myVmPublic* VM が作成されている場合に *myVmPrivate* VM を
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純な NVA を作成しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) からファイアウォールや WAN 最適化などのネットワーク機能を実行する、さまざまな事前構成された NVA を展開します。 運用で使用するためにルート テーブルを展開する前に、[Azure でのルーティング](virtual-networks-udr-overview.md)、[ルート テーブルの管理](manage-route-table.md)、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)について十分に理解しておくことをお勧めします。
+このチュートリアルでは、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純な NVA を作成しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) からファイアウォールや WAN 最適化などのネットワーク機能を実行する、さまざまな事前構成された NVA を展開します。 ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)と[ルート テーブルの管理](manage-route-table.md)に関する記事を参照してください。
 
 
-仮想ネットワーク内では多数の Azure リソースをデプロイできますが、一部の Azure PaaS サービスのリソースは仮想ネットワークにデプロイできなません。 ただし、一部の Azure PaaS サービスのリソースへのアクセスを、仮想ネットワーク サブネットからのトラフィックのみに制限できます。 Azure PaaS リソースへのネットワーク アクセスを制限する方法を確認するには、次のチュートリアルに進みます。
+仮想ネットワーク内では多数の Azure リソースをデプロイできますが、一部の Azure PaaS サービスのリソースは仮想ネットワークにデプロイできなません。 ただし、一部の Azure PaaS サービスのリソースへのアクセスを、仮想ネットワーク サブネットからのトラフィックのみに制限できます。 Azure PaaS リソースへのネットワーク アクセスを制限する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [PaaS リソースへのネットワーク アクセスを制限する](tutorial-restrict-network-access-to-resources.md)

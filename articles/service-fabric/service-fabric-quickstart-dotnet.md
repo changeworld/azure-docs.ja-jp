@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6038251ba79797312a0fec61e4a6f3d2e99d5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>クイック スタート: Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -29,14 +29,14 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 ![アプリケーションのスクリーンショット](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
 
 このアプリケーションを通じて次の方法を説明します。
-> [!div class="checklist"]
-> * .NET と Service Fabric を使用してアプリケーションを作成する
-> * ASP.NET Core を Web フロントエンドとして使用する
-> * アプリケーション データをステートフル サービスに保存する
-> * アプリケーションをローカルでデバッグする
-> * アプリケーションを Azure のクラスターにデプロイする
-> * 複数のノードにアプリケーションをスケールアウトする
-> * アプリケーションのローリング アップグレードを実行する
+
+* .NET と Service Fabric を使用してアプリケーションを作成する
+* ASP.NET Core を Web フロントエンドとして使用する
+* アプリケーション データをステートフル サービスに保存する
+* アプリケーションをローカルでデバッグする
+* アプリケーションを Azure のクラスターにデプロイする
+* 複数のノードにアプリケーションをスケールアウトする
+* アプリケーションのローリング アップグレードを実行する
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、以下が必要です。
@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
-Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、**[アプリケーション デバッグ モード]** を変更してください。
+アプリケーションは正常に実行されているはずですが、デバッガーを使用して、アプリケーションの主要部分がどのように動作しているかを確認することができます。 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、**[アプリケーション デバッグ モード]** を変更してください。
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
 1. **/VotingWeb/Controllers/VotesController.cs** ファイルを開き、Web API の **Put** メソッド (69 行目) にブレークポイントを設定します。このファイルは、Visual Studio のソリューション エクスプローラーで検索できます。
@@ -181,8 +181,8 @@ Service Fabric Explorer は、あらゆる Service Fabric クラスターで動�
 
 Web フロントエンド サービスをスケールするには、次の手順に従います。
 
-1. クラスターで Service Fabric Explorer を開きます (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。
-2. ツリー ビューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
+1. クラスターで Service Fabric Explorer を開きます (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
+2. ツリー ビューで、**[アプリケーション]**->**[VotingType]**->**[fabric:/Voting]** の順に展開します。 ツリー ビューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
 
@@ -213,25 +213,26 @@ Web フロントエンド サービスをスケールするには、次の手順
 7. **[Service Fabric アプリケーションの発行]** ダイアログで、[アプリケーションをアップグレードする] チェック ボックスをオンにし、**[発行]** をクリックします。
 
     ![[発行] ダイアログのアップグレード設定](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
+
+    アップグレード中もアプリケーションを使い続けることができます。 クラスターで実行されているサービスのインスタンスは 2 つあるため、アップグレード後のアプリケーションによって処理される要求と、アップグレード前のアプリケーションによって処理される要求が混在する可能性があります。
+
 8. ブラウザーを開いて、クラスターのアドレスにポート 19080 でアクセスします (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。
 9. ツリー ビューの **[Applications]\(アプリケーション\)** ノードをクリックし、右側のペインの **[Upgrades in Progress]\(進行中のアップグレード\)** をクリックします。 アップグレードが、クラスター内のアップグレード ドメインに展開されていくようすが表示されます。個々のドメインが正常であることを確認してから、次の手順に進んでください。 ドメインの正常性が確認されると、進行状況バーのアップグレード ドメインが緑で表示されます。
     ![Service Fabric Explorer のアップグレード ビュー](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Service Fabric はアップグレードを安全に行うために、クラスター内の各ノードについて、サービスのアップグレード後、2 分間待ちます。 更新がすべて完了するまでに約 8 分かかります。
 
-10. アップグレード中もアプリケーションを使い続けることができます。 クラスターで実行されているサービスのインスタンスは 2 つあるため、アップグレード後のアプリケーションによって処理される要求と、アップグレード前のアプリケーションによって処理される要求が混在する可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
 
-> [!div class="checklist"]
-> * .NET と Service Fabric を使用してアプリケーションを作成する
-> * ASP.NET Core を Web フロントエンドとして使用する
-> * アプリケーション データをステートフル サービスに保存する
-> * アプリケーションをローカルでデバッグする
-> * アプリケーションを Azure のクラスターにデプロイする
-> * 複数のノードにアプリケーションをスケールアウトする
-> * アプリケーションのローリング アップグレードを実行する
+* .NET と Service Fabric を使用してアプリケーションを作成する
+* ASP.NET Core を Web フロントエンドとして使用する
+* アプリケーション データをステートフル サービスに保存する
+* アプリケーションをローカルでデバッグする
+* アプリケーションを Azure のクラスターにデプロイする
+* 複数のノードにアプリケーションをスケールアウトする
+* アプリケーションのローリング アップグレードを実行する
 
 Service Fabric と .NET の詳細については、次のチュートリアルを参照してください。
 > [!div class="nextstepaction"]

@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service に CDN を追加する | Microsoft Docs"
-description: "静的なファイルをキャッシュし、世界各地の顧客に対して地理的に近いサーバーから配信するには、Azure App Service にコンテンツ配信ネットワーク (CDN) を追加します。"
+title: Azure App Service に CDN を追加する | Microsoft Docs
+description: 静的なファイルをキャッシュし、世界各地の顧客に対して地理的に近いサーバーから配信するには、Azure App Service にコンテンツ配信ネットワーク (CDN) を追加します。
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
@@ -10,13 +10,13 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Azure App Service にコンテンツ配信ネットワーク (CDN) を追加する
+# <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>チュートリアル: Azure App Service に Content Delivery Network (CDN) を追加する
 
 [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) では、効果を狙って配置された場所に静的 Web コンテンツをキャッシュすることで、ユーザーへのコンテンツ配信のスループットを最大化できます。 Web アプリでのサーバーの負荷も CDN によって軽減されます。 このチュートリアルでは、[Azure App Service 内の Web アプリ](app-service-web-overview.md)に Azure CDN を追加する方法について説明します。 
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 
 既存のドメイン名がない場合は、[App Service ドメインのチュートリアル](custom-dns-web-site-buydomains-web-app.md)に従って、Azure Portal を使用してドメインを購入することを検討してください。 
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 ブラウザーを開いて [Azure Portal](https://portal.azure.com) に移動します。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 
 ![ポータルでプロファイルとエンドポイントを作成](media/app-service-web-tutorial-content-delivery-network/portal-new-endpoint.png)
 
-| Setting | 推奨値 | Description |
+| Setting | 推奨値 | [説明] |
 | ------- | --------------- | ----------- |
 | **[CDN プロファイル]** | myCDNProfile | 新しい CDN プロファイルを作成するには、**[新規作成]** を選択します。 CDN プロファイルは、同じ価格レベルの CDN エンドポイントをまとめたものです。 |
 | **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](../cdn/cdn-overview.md#azure-cdn-features)によって規定されます。 このチュートリアルでは、Standard Akamai を使用します。 |
@@ -204,7 +204,7 @@ Azure Portal の **[CDN エンドポイント]** ページで **[キャッシュ
 
 **[クエリ文字列のキャッシュ動作]** ボックスの一覧から **[一意の URL をすべてキャッシュ]** を選択します。
 
-[ **保存**] を選択します。
+**[保存]** を選択します。
 
 ![クエリ文字列のキャッシュ動作の選択](media/app-service-web-tutorial-content-delivery-network/portal-select-caching-behavior.png)
 
@@ -290,7 +290,7 @@ CNAME レコードがインターネット上のネーム サーバーに伝播�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここで学習した内容は次のとおりです。
 

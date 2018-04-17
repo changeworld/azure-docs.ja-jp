@@ -1,24 +1,19 @@
 ---
-title: Stream Analytics による高頻度取引のシミュレーション | Microsoft Docs
-description: 線形回帰モデルのトレーニングとスコア付けを同じ Stream Analytics ジョブで実行する方法
-keywords: 機械学習, 高度な分析, 線形回帰, シミュレーション, UDA, ユーザー定義関数
-documentationcenter: ''
+title: Azure Stream Analytics を使用した高頻度取引のシミュレーション
+description: 線形回帰モデルのトレーニングとスコア付けを Azure Stream Analytics ジョブで実行する方法。
 services: stream-analytics
 author: zhongc
-manager: ryanw
-ms.assetid: 997ccfc1-abaf-4c12-bef2-632481140f05
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 11/05/2017
 ms.author: zhongc
-ms.openlocfilehash: 349dc5c5277260b664d7214979ef15d1689b2716
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: get-started-article
+ms.date: 11/05/2017
+ms.openlocfilehash: cf04cf92f204b89c0641a23ba38b05dbcad409b2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
 Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
