@@ -1,11 +1,11 @@
 ---
-title: "ローカルでの Azure Functions の開発と実行 | Microsoft Docs"
-description: "Azure 関数を Azure Functions で実行する前に、ローカル コンピューターでコーディングしてテストする方法について説明します。"
+title: ローカルでの Azure Functions の開発と実行 | Microsoft Docs
+description: Azure 関数を Azure Functions で実行する前に、ローカル コンピューターでコーディングしてテストする方法について説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -110,7 +110,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 
 Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用する[バインディング拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)を明示的に登録する必要があります。 
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
 詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md#register-binding-extensions)」をご覧ください。
 
@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値: launch.json または 5858 の値。 |
 | **`--debugLevel -d`** | コンソール トレース レベル (オフ、詳細、情報、警告、またはエラー)。 既定値: 情報。|
 | **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値: 20 秒。|
-| **`--useHttps`** | https://localhost:{port} rather than to http://localhost:{port} にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
+| **`--useHttps`** | http://localhost:{port} ではなく https://localhost:{port} にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
 | **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 統合開発環境 (IDE) から Azure Functions Core Tools を起動する場合に役立ちます。|
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。

@@ -1,11 +1,11 @@
-﻿---
-title: "Azure Network Watcher との接続のトラブルシューティング - PowerShell | Microsoft Docs"
-description: "PowerShell を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。"
+---
+title: Azure Network Watcher との接続のトラブルシューティング - PowerShell | Microsoft Docs
+description: PowerShell を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: cdbce4bde08cbff28b9b7c173a203bf699f9b876
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 5b22da43fe36a4e048483bb558a7705a3a670a9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell を使用した Azure Network Watcher との接続のトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/29/2018
 * 接続のトラブルシューティングを行う仮想マシン。
 
 > [!IMPORTANT]
-> 接続のトラブルシューティングには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
+> 接続のトラブルシューティングを行うには、トラブルシューティングの実行に使用する VM に `AzureNetworkWatcherExtension` VM 拡張機能がインストールされている必要があります。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。 接続先のエンドポイントでは、拡張機能は必要ありません。
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>仮想マシンへの接続を確認する
 

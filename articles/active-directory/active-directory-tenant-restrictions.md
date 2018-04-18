@@ -1,24 +1,24 @@
 ---
-title: "テナントを制限してクラウド アプリへのアクセスを管理する - Azure | Microsoft Docs"
-description: "テナント制限を使用して、Azure AD テナントに基づいてアプリにアクセスできるユーザーを管理する方法について説明します。"
+title: テナントを制限してクラウド アプリへのアクセスを管理する - Azure | Microsoft Docs
+description: テナント制限を使用して、Azure AD テナントに基づいてアプリにアクセスできるユーザーを管理する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
 editor: yossib
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: 63e0fa54433a60fe7384d21cf7d215cc8283afca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -112,7 +112,9 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 
 現在、テナント制限はブラウザー ベースの Office 365 アプリケーション (Office Portal、Yammer、SharePoint サイト、Outlook on the Web など) でサポートされています。 シック クライアント (Outlook、Skype for Business、Word、Excel、PowerPoint など) の場合、最新の認証が使用されている場合にのみ、テナント制限を適用できます。  
 
-最新の認証をサポートする Outlook クライアントと Skype for Business クライアントでは、最新の認証が有効になっていないテナントに対して従来のプロトコルを引き続き使用できるため、テナント制限を実質的に迂回します。 Windows 上の Outlook の場合、エンド ユーザーが未承認の電子メール アカウントをプロファイルに追加できないようにする制限を実装することもできます。 例については、[既定以外の Exchange アカウントを追加できないようにする](http://gpsearch.azurewebsites.net/default.aspx?ref=1)グループ ポリシー設定に関するページをご覧ください。 Windows 以外のプラットフォーム上の Outlook と、すべてのプラットフォーム上の Skype for Business では、現在、テナントの制限が完全にはサポートされていません。
+最新の認証をサポートする Outlook クライアントと Skype for Business クライアントでは、最新の認証が有効になっていないテナントに対して従来のプロトコルを引き続き使用できる可能性があるため、テナント制限を実質的に迂回します。 認証時に login.microsoftonline.com、login.microsoft.com、または login.windows.net に接続する場合、従来のプロトコルを使用するアプリケーションは、テナントの制限によってブロックされる可能性があります。
+
+Windows 上の Outlook の場合、エンド ユーザーが未承認の電子メール アカウントをプロファイルに追加できないようにする制限を実装することもできます。 例については、[既定以外の Exchange アカウントを追加できないようにする](http://gpsearch.azurewebsites.net/default.aspx?ref=1)グループ ポリシー設定に関するページをご覧ください。 Windows 以外のプラットフォーム上の Outlook と、すべてのプラットフォーム上の Skype for Business では、現在、テナントの制限が完全にはサポートされていません。
 
 ## <a name="testing"></a>テスト
 
@@ -132,7 +134,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
   ```
 
-  複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 次に例を示します。
+  複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例: 
 
   ```
   oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
@@ -151,7 +153,7 @@ Fiddler を構成したら、**[File]** メニューに移動し、**[Capture Tr
 
 具体的な詳細については、ご使用のプロキシ サーバーのドキュメントを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Office 365 の最新の認証の更新](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/)について確認する
 

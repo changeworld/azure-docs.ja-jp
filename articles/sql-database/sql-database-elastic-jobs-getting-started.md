@@ -7,13 +7,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5d55ae225ca1b550bbf70314e2f48fc0161ad107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2d8760476fd7b8a5a11d01a434a383ec1ba27ef1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Elastic Database ジョブの概要
 Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用すると、複数のデータベースに対して T-SQL スクリプトを確実に実行できます。また、スクリプトは自動的に再試行されるので、最終的な完了が保証されます。 Elastic Database ジョブ機能の詳細については、[Elastic ジョブ](sql-database-elastic-jobs-overview.md)に関するページをご覧ください。
@@ -460,7 +460,7 @@ Elastic Database ジョブでは、カスタム データベース ターゲッ�
 これで Excel のデータ機能を使用できるようになりました。 サーバー名、データベース名、および資格情報が含まれる接続文字列を使用して、BI とデータ統合ツールをエラスティック クエリ データベースに接続してください。 使用しているツールのデータ ソースとして SQL Server がサポートされていることを確認してください。 エラスティック クエリ データベースおよび外部テーブル (ツールを使用して接続するその他の SQL Server データベースおよび SQL Server テーブルのような) を参照してください。
 
 ### <a name="cost"></a>コスト
-Elastic Database クエリ機能を使用する場合に追加の料金は発生しません。 ただし、この時点で、この機能はエンド ポイントとして動作するプレミアム データベースでしか利用できません。ただし、シャードのサービス階層に制限はありません。
+Elastic Database クエリ機能を使用する場合に追加の料金は発生しません。 ただし、この時点で、この機能はエンド ポイントとして動作する Premium および Business Critical (プレビュー) データベースとエラスティック プールでしか利用できません。ただし、シャードのサービス階層に制限はありません。
 
 料金情報については、「 [SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 

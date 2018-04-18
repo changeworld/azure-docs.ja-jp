@@ -1,11 +1,11 @@
 ---
-title: "トークン認証による Azure CDN 資産の保護 | Microsoft Docs"
-description: "トークン認証を使用して、Azure CDN 資産へのアクセスをセキュリティで保護する方法について説明します。"
+title: トークン認証による Azure CDN 資産の保護 | Microsoft Docs
+description: トークン認証を使用して、Azure CDN 資産へのアクセスをセキュリティで保護する方法について説明します。
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: zhangmanling
-editor: 
+editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: cdn
 ms.devlang: multiple
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: f6d008a92677d28d0184e64637dcb2e093299519
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: aaec713a7680aeda8317f5af41b9b99bcbdca4b7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>トークン認証による Azure Content Delivery Network 資産の保護
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>概要
 
-トークン認証メカニズムを使用すると、承認されていないクライアントに Azure Content Delivery Network (CDN) が資産を提供できないように指定できます。 トークン認証は、通常、コンテンツの "ホットリンク" を防止するために行います。このホットリンクでは、自分の資産が他の Web サイト (掲示板など) によって許可なく使用されます。 ホットリンクは、コンテンツの配信コストに影響を与えることがあります。 CDN でトークン認証を有効にすると、CDN がコンテンツを配信する前に、CDN エッジ サーバーで要求が認証されます。 
+トークン認証メカニズムを使用すると、承認されていないクライアントに Azure Content Delivery Network (CDN) が資産を提供できないように指定できます。 トークン認証は、通常、コンテンツの "*ホットリンク*" を防止するために行います。このホットリンクでは、自分の資産が他の Web サイト (掲示板など) によって許可なく使用されます。 ホットリンクは、コンテンツの配信コストに影響を与えることがあります。 CDN でトークン認証を有効にすると、CDN がコンテンツを配信する前に、CDN エッジ サーバーで要求が認証されます。 
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -42,6 +42,9 @@ ms.lasthandoff: 11/21/2017
 
 詳細については、「[トークン認証の設定](#setting-up-token-authentication)」で各パラメーターの詳しい構成例を参照してください。
 
+>[!IMPORTANT] 
+> このアカウントのいずれかのパスでトークン承認が有効になっている場合、クエリ文字列キャッシュに使用できるモードは standard-cache モードだけです。 詳細については、「[クエリ文字列による Azure CDN キャッシュ動作の制御](cdn-query-string-premium.md)」を参照してください。
+
 ## <a name="reference-architecture"></a>参照アーキテクチャ
 
 次のワークフロー図は、CDN がトークン認証を使用して Web アプリと連携するようすを示しています。
@@ -56,11 +59,11 @@ ms.lasthandoff: 11/21/2017
 
 ## <a name="setting-up-token-authentication"></a>トークン認証の設定
 
-1. [Azure Portal](https://portal.azure.com) で CDN プロファイルを参照し、**[管理]** をクリックして、補助ポータルを起動します。
+1. [Azure Portal](https://portal.azure.com) で CDN プロファイルを参照し、**[管理]** を選択して、補助ポータルを起動します。
 
     ![[CDN プロファイル] の [管理] ボタン](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. **[HTTP Large]\(HTTP ラージ\)** にポインターを置いて、フライアウトで **[Token Auth]\(トークン認証\)** をクリックします。 その後、次のように、暗号化キーと暗号化パラメーターを設定できます。
+2. **[HTTP Large]\(HTTP ラージ\)** にポインターを置いて、ポップアップで **[Token Auth]\(トークン認証\)** をクリックします。 その後、次のように、暗号化キーと暗号化パラメーターを設定できます。
 
     1. 1 つまたは複数の暗号化キーを作成します。 暗号化キーは、大文字と小文字が区別され、任意の組み合わせの英数字を含めることができます。 スペースなどのその他の種類の文字は使用できません。 最大長は 250 文字です。 暗号化キーが確実にランダムになるようにするには、[OpenSSL ツール](https://www.openssl.org/)を使用して作成することをお勧めします。 
 
@@ -68,7 +71,7 @@ ms.lasthandoff: 11/21/2017
 
        ```rand -hex <key length>```
 
-       For example:
+       例: 
 
        ```OpenSSL> rand -hex 32``` 
 
@@ -92,7 +95,7 @@ ms.lasthandoff: 11/21/2017
        > <table>
        > <tr>
        >   <th>パラメーター名</th> 
-       >   <th>説明</th>
+       >   <th>[説明]</th>
        > </tr>
        > <tr>
        >    <td><b>ec_expire</b></td>
@@ -110,7 +113,7 @@ ms.lasthandoff: 11/21/2017
        >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
        >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
        >       </ul></li>
-       >       <li>入力値 `/pictures/`: `/pictures/` パスを含む要求のみが許可されます。 たとえば、「 `http://www.mydomain.com/pictures/city/strasbourg.png`」のように入力します。</li>
+       >       <li>入力値 `/pictures/`: `/pictures/` パスを含む要求のみが許可されます。 たとえば、「`http://www.mydomain.com/pictures/city/strasbourg.png`」のように入力します。</li>
        >       <li>入力値 `/pictures/city/strasbourg.png`: この特定のパスと資産に対する要求のみが許可されます。</li>
        >    </ul>
        > </tr>
@@ -156,27 +159,29 @@ ms.lasthandoff: 11/21/2017
     
     6. **[Encryption Version]\(暗号化バージョン\)** の一覧から暗号化バージョンを選びます。**V2** はバージョン 2 用、**V3** はバージョン 3 用 (推奨) です。 
 
-    7. **[暗号化]** をクリックして、トークンを生成します。
+    7. **[暗号化]** を選択して、トークンを生成します。
 
-    トークンが生成されると、そのトークンが **[Generated Token]\(生成されたトークン)\** ボックスに表示されます。 トークンを使用するには、そのトークンをクエリ文字列として URL パスのファイルの末尾に追加します。 たとえば、「 `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`」のように入力します。
+    トークンが生成されると、そのトークンが **[Generated Token]\(生成されたトークン)\** ボックスに表示されます。 トークンを使用するには、そのトークンをクエリ文字列として URL パスのファイルの末尾に追加します。 たとえば、「`http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`」のように入力します。
         
     8. 必要に応じて、トークンのパラメーターを表示できるように、暗号化解除ツールでトークンをテストします。 **[Token to Decrypt]\(暗号化を解除するトークン\)** ボックスに、トークンの値を貼り付けます。 **[Key To Decrypt]\(暗号化を解除するキー\)** リストで暗号化キーを選び、**[暗号化解除]** をクリックします。
 
     トークンが暗号化解除されると、そのパラメーターが **[元のパラメーター]** ボックスに表示されます。
 
-    9. 必要に応じて、要求が拒否されたときに返される応答コードの種類をカスタマイズします。 **[有効]** を選択し、**[応答コード]** リストから応答コードを選択します。 **[ヘッダー名]** は、自動的に **[場所]** に設定されます。 **[保存]** をクリックして新しい応答コードを実装します。 特定の応答コードについては、**[ヘッダー値]** ボックスにエラー ページの URL も入力する必要があります。 既定では、**403** 応答コード (許可されていません) が選択されています。 
+    9. 必要に応じて、要求が拒否されたときに返される応答コードの種類をカスタマイズします。 **[有効]** を選択し、**[応答コード]** リストから応答コードを選択します。 **[ヘッダー名]** は、自動的に **[場所]** に設定されます。 **[保存]** を選択して新しい応答コードを実装します。 特定の応答コードについては、**[ヘッダー値]** ボックスにエラー ページの URL も入力する必要があります。 既定では、**403** 応答コード (許可されていません) が選択されています。 
 
-3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** をクリックします。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](cdn-rules-engine-reference.md)を参照してください。
+3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** を選択します。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](cdn-rules-engine-reference.md)を参照してください。
 
     1. 既存のルールを選択するか、新しいルールを作成して、トークン認証を適用する資産またはパスを定義します。 
-    2. ルールでトークン認証を有効にするには、**[機能]** リストから **[[Token Auth]\(トークン認証\)](cdn-rules-engine-reference-features.md#token-auth)** を選択し、**[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** をクリックします。
+    2. ルールでトークン認証を有効にするには、**[機能]** リストから **[[Token Auth]\(トークン認証\)](cdn-rules-engine-reference-features.md#token-auth)** を選択し、**[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** を選択します。
         
     ![CDN ルール エンジンのトークン認証を有効にする例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. ルール エンジンで、追加のトークン認証関連機能を有効にすることもできます。 次の機能のいずれかを有効にするには、**[機能]** リストからその機能を選択し、**[有効]** を選択します。
     
     - **[トークン認証拒否コード](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: 要求が拒否されたときにユーザーに返される応答の種類を決定します。 トークン ベースの認証ページの **[Custom Denial Handling]\(カスタム拒否の処理\)** セクションで設定された応答コードは、ここで設定されたルールで上書きされます。
+
     - **[トークン認証の URL 大文字と小文字の無視](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
+
     - **[トークン認証パラメーター](cdn-rules-engine-reference-features.md#token-auth-parameter)**: 要求された URL に表示されるトークン認証クエリ文字列パラメーターの名前を変更します。 
         
     ![CDN ルール エンジンのトークン認証設定の例](./media/cdn-token-auth/cdn-rules-engine2.png)
@@ -193,4 +198,4 @@ ms.lasthandoff: 11/21/2017
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN の機能とプロバイダーの価格
 
-機能については、[CDN の概要](cdn-overview.md)に関するページをご覧ください。 価格については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
+機能については、[Azure CDN 製品の機能](cdn-features.md)に関する記事をご覧ください。 価格については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。

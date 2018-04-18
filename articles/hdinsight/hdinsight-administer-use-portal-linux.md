@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal を使用した HDInsight での Hadoop クラスターの管理 | Microsoft Docs"
-description: "Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。"
+title: Azure Portal を使用した HDInsight での Hadoop クラスターの管理 | Microsoft Docs
+description: Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b0a9b808f2c1a65d10c1c12500325a9b5a34bc5a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/23/2018
 この記事の手順を実行するには、**Azure サブスクリプション**が必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 ## <a name="open-the-azure-portal"></a>Azure ポータルを開きます
-1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
+1. [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. ポータルを開くと、次の操作を行うことができます。
 
    * 左側のメニューの **[リソースの作成]** をクリックして新しいクラスターを作成します。
@@ -75,7 +75,7 @@ HDInsight クラスターを作成するときは Azure サブスクリプショ
 NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エラーが発生した場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」を参照してください。
 
 ## <a name="list-and-show-clusters"></a>クラスターの一覧と表示
-1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
+1. [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックして既存のクラスターを一覧表示します。 **[HDInsight クラスター]** が表示されない場合は、先に **[すべてのサービス]** をクリックします。
 3. クラスター名をクリックします。 クラスターの一覧が長い場合は、ページの上部でフィルターを使用できます。
 4. クラスターの一覧から概要ページを表示するクラスターをクリックします。
@@ -103,7 +103,7 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
     * **[外部メタストア]**: Hive メタストアと Oozie メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。 「[Hive/Oozie メタストアの使用](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)」を参照してください。
     * **[スクリプト アクション]**: クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
     * **[アプリケーション]**: HDInsight アプリケーションを追加/削除します。  「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
-    * **[監視]**: Azure Operations Management Suite および Azure Log Analytics でクラスターを監視します。
+    * **[監視]**: Azure Log Analytics でクラスターを監視します。
     * **[プロパティ]**: クラスターのプロパティを表示します。
     * **[ストレージ アカウント]**: ストレージ アカウントとキーを表示します。 ストレージ アカウントは、クラスター作成プロセス中に構成されます。
     * **[Data Lake Store アクセス]**: Data Lake Store へのアクセスを構成します。  「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
@@ -345,7 +345,7 @@ Azure ポータルから直接 Hive ジョブを実行することはできま�
 ## <a name="browse-files"></a>Browse files
 Azure ポータルを使用して、既定のコンテナーのコンテンツを参照できます。
 
-1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
+1. [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックして既存のクラスターを一覧表示します。
 3. クラスター名をクリックします。 クラスターの一覧が長い場合は、ページの上部でフィルターを使用できます。
 4. クラスターの左側のメニューから、**[ストレージ アカウント]** をクリックします。

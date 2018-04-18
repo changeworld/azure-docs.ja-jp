@@ -7,17 +7,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 160e65130efc78bc1a98a0feceb1c824cf226156
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -27,20 +26,20 @@ ms.lasthandoff: 03/16/2018
 
 SQL Database には、自動バックアップ、オプションのデータベース レプリケーションなど、ビジネス継続性の機能がいくつか用意されており、 推定復旧時間 (ERT) と、最近のトランザクションに対する潜在的なデータ損失の特徴が、それぞれ異なります。 オプションについて理解したら、その中から適切なものを選択できます。これらのオプションは、ほとんどの場合、さまざまなシナリオに対して組み合わせて使用できます。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。これが目標復旧時間 (RTO) です。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。これは目標復旧時点 (RPO) です。
 
-次のテーブルは、3 つの一般的なシナリオについて ERT と RPO を比較しています。
+次の表では、最も一般的な 3 つのシナリオについて、各サービス レベルの ERT と RPO を比較しています。
 
-| 機能 | Basic レベル | Standard レベル | Premium レベル |
-| --- | --- | --- | --- |
-| バックアップからのポイントインタイム リストア |7 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |
-| Geo レプリケーション バックアップからの geo リストア |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間 |
-| Azure Backup コンテナーからの復元 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |
-| アクティブ geo レプリケーション |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒 |
+| 機能 | Basic | 標準 | Premium  | 汎用 | Business Critical
+| --- | --- | --- | --- |--- |--- |
+| バックアップからのポイントインタイム リストア |7 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |構成済み期間内の任意の復元ポイント (最大 35 日間)|構成済み期間内の任意の復元ポイント (最大 35 日間)|
+| Geo レプリケーション バックアップからの geo リストア |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間 |ERT < 12 時間、RPO < 1 時間|ERT < 12 時間、RPO < 1 時間|
+| Azure Backup コンテナーからの復元 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間 |ERT < 12 時間、RPO < 1 週間|ERT < 12 時間、RPO < 1 週間|
+| アクティブ geo レプリケーション |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒 |ERT < 30 秒、RPO < 5 秒|ERT < 30 秒、RPO < 5 秒|
 
-### <a name="use-database-backups-to-recover-a-database"></a>データベース バックアップを使用してデータベースを復旧する
+### <a name="use-point-in-time-restore-to-recover-a-database"></a>ポイントインタイム リストアを使用して、データベースを復旧します
 
-SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (1 時間ごと)、およびトランザクション ログのバックアップ (5 ～ 10 分ごと) を組み合わせて自動的に実行します。 これらのバックアップは、Standard および Premium サービス レベルの場合は 35 日間、Basic サービス レベルでは 7 日間、geo 冗長ストレージに格納されます。 詳細については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。 サービス階層のリテンション期間がビジネス要件を満たしていない場合、リテンション期間を長くするには、[サービス階層を変更](sql-database-service-tiers.md)します。 データベースの完全バックアップと差分バックアップは、データ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にもレプリケートされます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。
+SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (1 時間ごと)、およびトランザクション ログのバックアップ (5 ～ 10 分ごと) を組み合わせて自動的に実行します。 これらのバックアップは、Standard および Premium サービス レベルの場合は 35 日間、Basic サービス レベルでは 7 日間、RA-GRS ストレージに格納されます。 General Purpose および Business Critical サービス レベル (プレビュー) では、バックアップ リテンション期間は最大 35 日に設定できます。 詳細については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。 サービス階層のリテンション期間がビジネス要件を満たしていない場合、リテンション期間を長くするには、[サービス階層を変更](sql-database-service-tiers.md)します。 データベースの完全バックアップと差分バックアップは、データ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にもレプリケートされます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。
 
-組み込みのリテンション期間がアプリケーションにとって十分でない場合は、データベースの長期的なリテンション期間ポリシーを構成することでリテンション期間を拡張できます。 詳細については、[長期間のリテンション](sql-database-long-term-retention.md)に関するページを参照してください。
+サポートされている PITR リテンション期間がアプリケーションにとって十分でない場合は、データベースの長期リテンション期間 (LTR) ポリシーを構成することで、リテンション期間を拡張できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
 これらのデータベースの自動バックアップを使用して、さまざまな中断イベントから、データ センター内または別のデータ センターにデータベースを回復することができます。 データベースの自動バックアップでの復旧時間は、同じリージョン内で同時に復旧するデータベースの合計数、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅など、複数の要因によって異なりますが、 通常は 12 時間もかかりません。 他のデータ リージョンに復旧する場合は、geo 冗長ストレージで 1 時間ごとにデータベースの差分バックアップが実行されるため、潜在的なデータ損失が 1 時間分の量を超えることはありません。
 
@@ -55,7 +54,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 * データ変更率 (1 時間あたりのトランザクション数など) が低く、最大 1 時間分の変更に対するデータ損失を許容できる。
 * コスト重視である。
 
-迅速に復旧する必要がある場合は、後述する [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用してください。 35 日より前の期間のデータを回復する能力が必要な場合は、[長期のバックアップ リテンション期間](sql-database-long-term-retention.md)を使用します。 
+迅速に復旧する必要がある場合は、後述する [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用してください。 35 日より前の期間のデータを回復する能力が必要な場合は、[長期リテンション期間](sql-database-long-term-retention.md)を使用します。 
 
 ### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>アクティブ geo レプリケーションと自動フェールオーバー グループ (プレビュー段階) を使用して、復旧時間を短縮し、復旧に伴うデータ損失を抑える
 
@@ -77,11 +76,11 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 * データ変更率が高く、1 時間分のデータの損失が許容されない。
 * アクティブ geo レプリケーションの追加コストが、潜在的な財務責任と関連するビジネス損失を下回る。
 
->
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの発生後にデータベースを復旧する
+
 ミスをしない人など存在しません。 一部のデータ、重要なテーブル、そしてデータベース全体さえも、うっかり削除してしまう場合があります。 アプリケーションの欠陥で、正しいデータが不良データによって誤って上書きされることもあります。
 
 ここでは、このような場合の復旧オプションを紹介します。
@@ -101,8 +100,9 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 >
 >
 
-### <a name="restore-from-azure-backup-vault"></a>Azure Backup コンテナーからの復元
-自動化されたバックアップの現在のリテンション期間外にデータの損失が発生したが、データベースに長期保存が構成されている場合は、Azure Backup コンテナーの毎週のバックアップから、新しいデータベースにデータを復元できます。 この時点で、元のデータベースを復元したデータベースに置き換えるか、復元したデータベースから必要なデータを元のデータベースにコピーできます。 アプリケーションのメジャー アップグレードの前の古いバージョンのデータベースを取得し、監査担当者からの要求または法律上の要請に対応する必要がある場合は、Azure Backup コンテナーに保存されている完全バックアップを使用してデータベースを作成することができます。  詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+### <a name="restore-backups-from-long-term-retention"></a>長期リテンション期間からのバックアップの復元
+
+自動化されたバックアップの現在のリテンション期間外にデータの損失が発生したとき、お使いのデータベースが長期リテンション期間用に構成されている場合は、LTR ストレージの完全バックアップから、新しいデータベースにデータを復元できます。 この時点で、元のデータベースを復元したデータベースに置き換えるか、復元したデータベースから必要なデータを元のデータベースにコピーできます。 アプリケーションのメジャー アップグレードの前の古いバージョンのデータベースを取得し、監査担当者からの要求または法律上の要請に対応する必要がある場合は、Azure Backup コンテナーに保存されている完全バックアップを使用してデータベースを作成することができます。  詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Azure リージョン データ センターが停止した場合にデータベースを別のリージョンで回復する
 <!-- Explain this scenario -->

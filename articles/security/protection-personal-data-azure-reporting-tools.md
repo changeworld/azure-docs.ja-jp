@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc859f3aa34531133b7a21e36591b011c63d511c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Azure のレポート ツールによる、個人データのドキュメント保護
 
@@ -95,13 +95,13 @@ Azure Directory レポート機能に接続するためのプログラミング�
 
 #### <a name="how-do-i-use-log-analytics"></a>Log Analytics の使用方法
 
-Log Analytics は、任意の Web ブラウザーを使用して、OMS ポータルまたは Azure ポータルからアクセスできます。 Log Analytics には、リポジトリ内のデータを迅速に取得して統合するためのクエリ言語が用意されています。 ログ検索を作成、保存して、ポータルで直接データを解析できます。
+Log Analytics は、任意の Web ブラウザーを使用して、OMS ポータルまたは Azure ポータルからアクセスできます。 Log Analytics には、Log Analytics ワークスペース内のデータを迅速に取得して統合するためのクエリ言語が用意されています。 ログ検索を作成、保存して、ポータルで直接データを解析できます。
 
 Azure ポータルで、Log Analytics ワークスペースを作成するには、次の操作を行います。
 
 1. Marketplace のサービス一覧から **[Log Analytics]** を選択します。
 
-2. **[作成]** を選択し、OMS のワークスペースの名前を指定して、サブスクリプション、リソース グループ、場所、価格レベルを選択します。
+2. **[作成]** を選択し、Log Analytics のワークスペースの名前を指定して、サブスクリプション、リソース グループ、場所、価格レベルを選択します。
 
 3. **[OK]** をクリックするとワークスペースの一覧が表示されます。
 

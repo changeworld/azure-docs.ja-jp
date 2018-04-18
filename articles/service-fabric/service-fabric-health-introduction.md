@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric の正常性モニタリング | Microsoft Docs"
-description: "クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。"
+title: Service Fabric の正常性モニタリング | Microsoft Docs
+description: クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d979210-b1eb-4022-be24-799fd9d8e003
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c5ce0a765451171f7cbd6d875d4302d1e406b4f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
 
 Service Fabric のコンポーネントは、この豊富な機能を持つ正常性モデルを使用して、現在の状態を報告します。 アプリケーションからの正常性レポートにも同じメカニズムを使用できます。 カスタム条件をキャプチャする高品質の正常性レポートに投資すれば、実行中のアプリケーションの問題をより簡単に検出し、修正できます。
 
-次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法について説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+次の Microsoft Virtual Academy のビデオでは、Service Fabric の正常性モデルとその使用方法についても説明しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 

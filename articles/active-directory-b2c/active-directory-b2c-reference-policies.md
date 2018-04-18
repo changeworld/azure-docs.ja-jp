@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 35b31c46b350474caa1472829d705b4d068d9642
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c733f919189dadcf1181ddbe2a1057b2bcf66fc4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: 組み込みのポリシー
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>サインアップまたはサインイン ポリシーを作成する
 
-このポリシーは、1 つの構成でコンシューマーのサインアップ エクスペリエンスとサインイン エクスペリエンスの両方を処理します。 コンシューマーは、状況に応じて正しいパス (サインアップまたはサインイン) に誘導されます。 このポリシーはまた、サインアップまたはサインインが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。サインアップまたはサインイン ポリシーのサンプル コードは、 [こちらで入手できます](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  サインアップ ポリシーとサインイン ポリシーにはこのポリシーを使用することをお勧めします。  
+このポリシーは、1 つの構成でコンシューマーのサインアップ エクスペリエンスとサインイン エクスペリエンスの両方を処理します。 コンシューマーは、状況に応じて正しいパス (サインアップまたはサインイン) に誘導されます。 このポリシーはまた、サインアップまたはサインインが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。サインアップまたはサインイン ポリシーのサンプル コードは、 [こちらで入手できます](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  サインアップ ポリシーとサインイン ポリシーには、このポリシーを使用することをお勧めします。  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 

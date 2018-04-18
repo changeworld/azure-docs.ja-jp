@@ -1,6 +1,6 @@
 ---
-title: "暗号化 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威への対応"
+title: 暗号化 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
+description: Threat Modeling Tool で公開されている脅威への対応
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
 | 製品/サービス | 記事 |
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/13/2018
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、承認済みの乱数ジェネレーターを使用する必要があります。 そのため、C ランタイム関数の rand などの擬似ランダム関数、.NET Framework の System.Random クラス、GetTickCount などのシステム関数をコードで使用することはできません。 双対楕円曲線乱数ジェネレーター (DUAL_EC_DRBG) アルゴリズムの使用は禁止されています。</p><ul><li>**CNG -** BCryptGenRandom (呼び出し元が 0 より大きい IRQL (つまり、PASSIVE_LEVEL) で実行されている場合を除き、BCRYPT_USE_SYSTEM_PREFERRED_RNG フラグを使用することをお勧めします)。</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64 -** RtlGenRandom (新しい実装では、BCryptGenRandom または CryptGenRandom を使用する必要があります) * rand_s * SystemPrng (カーネル モードの場合)</li><li>**.NET -** RNGCryptoServiceProvider または RNGCng</li><li>**Windows ストア アプリ -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom または .GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef ランダム、size_t の数、uint8_t*バイト)</li><li>* * Apple OS X (< 10.7)-**/開発/ランダムを使用して乱数を取得</li><li>**Java(Google Android Java コードを含む) -** java.security.SecureRandom クラス。 Android 4.3 (Jelly Bean) の場合、開発者は Android の推奨回避策に従い、アプリケーションを更新して、/dev/urandom または /dev/random のエントロピーで PRNG を明示的に初期化する必要があります。</li></ul>|
+| **手順** | <p>製品では、承認済みの乱数ジェネレーターを使用する必要があります。 そのため、C ランタイム関数の rand などの擬似ランダム関数、.NET Framework の System.Random クラス、GetTickCount などのシステム関数をコードで使用することはできません。 双対楕円曲線乱数ジェネレーター (DUAL_EC_DRBG) アルゴリズムの使用は禁止されています。</p><ul><li>**CNG -** BCryptGenRandom (呼び出し元が 0 より大きい IRQL (つまり、PASSIVE_LEVEL) で実行されている場合を除き、BCRYPT_USE_SYSTEM_PREFERRED_RNG フラグを使用することをお勧めします)。</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64 -** RtlGenRandom (新しい実装では、BCryptGenRandom または CryptGenRandom を使用する必要があります) * rand_s * SystemPrng (カーネル モードの場合)</li><li>**.NET -** RNGCryptoServiceProvider または RNGCng</li><li>**Windows ストア アプリ -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom または .GenerateRandomNumber</li><li>**Apple OS X (10.7 以降)/iOS(2.0 以降) -** int SecRandomCopyBytes (SecRandomRef random, size_t count, uint8_t \*bytes )</li><li>**Apple OS X (10.7 より前)-** /dev/random を使って乱数を取得します</li><li>**Java(Google Android Java コードを含む) -** java.security.SecureRandom クラス。 Android 4.3 (Jelly Bean) の場合、開発者は Android の推奨回避策に従い、アプリケーションを更新して、/dev/urandom または /dev/random のエントロピーで PRNG を明示的に初期化する必要があります。</li></ul>|
 
 ## <a id="stream-ciphers"></a>対称ストリーム暗号は使用しない
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/13/2018
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (非 FIPS 準拠) (SHA512 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA384Managed (非 FIPS 準拠) (SHA384 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA256Managed (非 FIPS 準拠) (SHA256 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
+| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA512 を使用)</li><li>SHA384Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA384 を使用)</li><li>SHA256Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA256 を使用)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
 
 ## <a id="strong-db"></a>強力な暗号化アルゴリズムを使用してデータベース内のデータを暗号化する
 

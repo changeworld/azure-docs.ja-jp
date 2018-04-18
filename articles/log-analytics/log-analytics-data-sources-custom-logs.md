@@ -1,8 +1,8 @@
-﻿---
-title: "Azure Log Analytics のカスタム ログの収集 | Microsoft Docs"
-description: "Log Analytics は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、Log Analytics ワークスペースで作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。"
+---
+title: Azure Log Analytics のカスタム ログの収集 | Microsoft Docs
+description: Log Analytics は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、Log Analytics ワークスペースで作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics のカスタム ログ
 Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。  収集後、Log Analytics の [カスタム フィールド](log-analytics-custom-fields.md)機能を利用し、ログの各レコードを個別のフィールドに解析できます。
@@ -31,7 +31,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
     YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM <br>Mon DD,YYYY HH:MM:SS
 
-- ログ ファイルには、新しいエントリでファイルが上書きされる巡回更新を許可しません。
+- ログ ファイルでは、新しいエントリでファイルが上書きされる巡回ログまたはログ ローテーションを許可しないでください。
 - ログ ファイルでは、ASCII または UTF-8 エンコードを使用する必要があります。  UTF-16 など他の形式はサポートされていません。
 
 >[!NOTE]
@@ -70,7 +70,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 次の表は、異なるログ ファイルを指定する有効なパターンの例をまとめたものです。
 
-| 説明 | パス |
+| [説明] | パス |
 |:--- |:--- |
 | Windows エージェントの *C:\Logs* にあり、拡張子が .txt のすべてのファイル |C:\Logs\\\*.txt |
 | Windows エージェントの *C:\Logs* にあり、名前が log で始まり、拡張子が .txt のすべてのファイル |C:\Logs\log\*.txt |
@@ -118,7 +118,7 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 ## <a name="custom-log-record-properties"></a>カスタム ログ レコードのプロパティ
 カスタム ログ レコードには、種類、ユーザーが指定するログ名、次の表にあるプロパティが与えられます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | TimeGenerated |Log Analytics がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |
@@ -130,7 +130,7 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 
 次の表は、カスタム ログからレコードを取得するログ検索のさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 |:--- |:--- |
 | MyApp_CL |MyApp_CL という名前のカスタム ログからのすべてのイベント |
 | MyApp_CL &#124。ここで Severity_CF=="error" |MyApp_CL という名前のカスタム ログに含まれ、*Severity_CF* という名前のカスタム フィールドの値が *error* になっているすべてのイベント。 |

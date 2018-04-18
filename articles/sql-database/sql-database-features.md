@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d8adf097d6bee404cff8e7b15782c6c59531a897
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bca2629ea4a0c859e92d829b49072fbdf3f9ffe2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較: Azure SQL Database と SQL Server 
 
@@ -45,7 +45,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [変更データのキャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | いいえ  | [はい] |
 | [変更の追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | [はい] |[はい] |
 | [照合順序ステートメント](https://docs.microsoft.com/sql/t-sql/statements/collations) | [はい] | [はい] |
-| [列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | はい - [Premium レベルと Standard レベル - S3 以上](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |[はい] |
+| [列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | はい - [Premium レベル、Standard レベル - S3 以上、General Purpose レベル、および Business Critical レベル](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |[はい] |
 | [共通言語ランタイム (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ  | はい - [CLR の相違点](sql-database-managed-instance-transact-sql-information.md#clr)に関する記事を参照してください |
 | [包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | [はい] | [はい] |
 | [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | [はい] | [はい] |
@@ -82,7 +82,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | [はい] | いいえ (定期的に取得する COPY_ONLY の完全バックアップを復元できます) - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)と[復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
 | [geo レプリケーション](sql-database-geo-replication-overview.md) | [はい] | いいえ  |
 | [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | [はい] | [はい] |
-| [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | ○ - [Premium Edition のみ](sql-database-in-memory.md) | いいえ  |
+| [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | はい - [Premium および Business Critical レベルのみ](sql-database-in-memory.md) | いいえ  |
 | [JSON データのサポート](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [はい] | [はい] |
 | [言語要素](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | ほとんどの場合 - 個々の要素に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 | [リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | × - [エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md)に関する記事を参照してください | SQL Server に対してのみ |

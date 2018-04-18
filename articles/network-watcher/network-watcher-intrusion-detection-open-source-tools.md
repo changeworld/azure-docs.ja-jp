@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行 | Microsoft Docs"
-description: "この記事では、Azure Network Watcher とオープン ソース ツールを使用してネットワーク不正侵入検出を実行する方法について説明します"
+title: Azure Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行 | Microsoft Docs
+description: この記事では、Azure Network Watcher とオープン ソース ツールを使用してネットワーク不正侵入検出を実行する方法について説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 

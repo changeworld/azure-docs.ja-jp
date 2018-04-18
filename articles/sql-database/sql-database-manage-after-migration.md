@@ -12,15 +12,15 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
-従来の自己管理型で自己制御型の環境から PaaS 環境への移行は、最初は少し面倒に思えるかもしれません。 アプリの開発者や DBA であれば、常に、アプリケーションの高い可用性、パフォーマンス、セキュリティ、回復力を維持するのに役立つプラットフォームのコア機能を知りたいと思うでしょう。 この記事の目的はまさにそれです。 この記事では、リソースを簡潔に整理すると共に、アプリケーションの効率的な実行を管理および維持し、クラウドで最善の結果を得るために、SQL Database の主要な機能を最大限に活用する方法のガイダンスを示します。 この記事は主に以下のような読者を対象に書かれています。
+従来の自己管理型で自己制御型の環境から PaaS 環境への移行は、最初は少し面倒に思えるかもしれません。 アプリの開発者や DBA であれば、常に、アプリケーションの高い可用性、パフォーマンス、セキュリティ、回復力を維持するのに役立つプラットフォームのコア機能を知りたいと思うでしょう。 この記事の目的はまさにそれです。 この記事では、リソースを簡潔に整理すると共に、アプリケーションの効率的な実行を管理および維持し、クラウドで最善の結果を得るために、SQL Database の主要な機能を最大限に活用する方法のガイダンスを示します。 この記事は、主に以下のような読者を対象に書かれています。 
 - Azure SQL DB へのアプリケーションの移行を評価している – アプリケーションの現代化。
 - アプリケーションの移行を行っている – 進行中の移行シナリオ。
 - Azure SQL DB への移行を最近完了した – クラウドの新しい DBA。
@@ -218,7 +218,7 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
 パフォーマンスのトラブルシューティングでは、アプリケーションだけの問題であるか、それともデータベースの問題がアプリケーションのパフォーマンスに影響しているのかを、識別することが重要です。 多くの場合、パフォーマンスの問題はアプリケーション層にあります。 アーキテクチャまたはデータ アクセス パターンが原因である可能性があります。 たとえば、ネットワーク待機時間の影響を受けやすい、頻繁に通信を行うアプリケーションについて考えます。 この場合、アプリケーションとサーバーの間で多数の短い要求がやり取りされ、混雑したネットワークではこれらのラウンドトリップが急速に蓄積されるため、アプリケーションに悪影響があります。 この場合にパフォーマンスを向上させるには、[バッチ クエリ](sql-database-performance-guidance.md#batch-queries)を使うことができます。 バッチを使うと、要求が一括処理されるようになるので非常に有効です。ラウンドトリップ遅延時間を削減し、アプリケーションのパフォーマンスを向上させることができます。 
 
-さらに、データベースの全体的なパフォーマンスの低下が生じている場合は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) の各動的管理ビューを監視して、CPU、I/O、メモリ使用率を確認できます。 パフォーマンスは、データベースのリソース不足のために影響を受けている可能性があります。 ワークロードの需要の増減に応じて、パフォーマンス レベルやサービス階層の変更が必要になる場合があります。 
+さらに、データベースの全体的なパフォーマンスの低下が生じている場合は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) の各動的管理ビューを監視して、CPU、IO、メモリ使用率を把握できます。 パフォーマンスは、データベースのリソース不足のために影響を受けている可能性があります。 ワークロードの需要の増減に応じて、パフォーマンス レベルやサービス階層の変更が必要になる場合があります。 
 
 パフォーマンスのチューニングに関する問題の包括的な推奨事項については、「[データベースの調整](sql-database-performance-guidance.md#tune-your-database)」をご覧ください。
 

@@ -26,7 +26,7 @@
 
 1. デバイスで呼び出すことができるメソッドの一覧を表示するには、**[スケジュール]** を選択します。 複数のデバイスで実行するメソッドのスケジュールを設定するために、一覧から複数のデバイスを選択することができます。 **[スケジュール]** パネルには、選択したすべてのデバイスに共通のメソッドの型が表示されます。
 
-1. **[FirmwareUpdate]** を選択し、ジョブ名を **UpdatePhysicalChiller** に設定します。 **[ファームウェアのバージョン]** を **[2.0.0]** に設定し、**[Firmware URI]\(ファームウェアの URI\)** を **http://contoso.com/updates/firmware.bin** に設定したら **[適用]** を選択します。
+1. **[FirmwareUpdate]** を選択し、ジョブ名を **UpdatePhysicalChiller** に設定します。 **[ファームウェア バージョン]** を **[2.0.0]** に、**[Firmware URI]\(ファームウェアの URI\)** を **http://contoso.com/updates/firmware.bin** に設定し、**[適用]** を選択します。
 
     ![ファームウェア更新のスケジュール](media/iot-suite-visualize-connecting/deviceschedule.png)
 

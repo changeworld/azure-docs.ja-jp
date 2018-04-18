@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 5a08fd7d20dc78512315ab5d154ba95bd8e8494b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7b6da166ddd53162ca1177e925f00291ae78de2a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -338,7 +338,7 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 多くの Azure サービスで、次の 1 つ以上の操作を実行できるように追加のログとテレメトリが提供されます。 
  - Azure Storage アカウントにデータを保存するための構成
  - Event Hubs への送信
- - OMS Log Analytics ワークスペースへの送信 
+ - Log Analytics ワークスペースへの送信 
 
 操作は、リソース レベルでのみ実行できます。 ストレージ アカウントまたはイベント ハブは、診断設定が構成されているターゲット リソースと同じリージョンに存在する必要があります。
 
@@ -377,7 +377,7 @@ Event Hubs の診断設定を有効にする
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
-Log Analytics (OMS) の診断設定を有効にする
+Log Analytics の診断設定を有効にする
 
 ```PowerShell
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId /subscriptions/s1/resourceGroups/insights-integration/providers/providers/microsoft.operationalinsights/workspaces/myWorkspace -Enabled $true

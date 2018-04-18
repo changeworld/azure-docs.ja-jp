@@ -2,19 +2,20 @@
 title: Azure SQL Database のバックアップ - 自動、geo 冗長 | Microsoft Docs
 description: SQL Database は数分ごとにローカル データベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。
 services: sql-database
-author: CarlRabeler
-manager: jhubbard
+author: anosov1960
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
 ms.workload: Active
-ms.date: 07/05/2017
-ms.author: carlrab
-ms.openlocfilehash: 053dd680af020aa05bc071c49f0f47ebe6a8f0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
@@ -22,7 +23,7 @@ SQL Database はデータベースをバックアップし、Azure 読み取り�
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
 
-SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップはパフォーマンス レベルとデータベース活動の量に基づいて、一般的には 5 - 10 分ごとに発生します。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
+SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://msdn.microsoft.com/library/ms175526.aspx)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップはパフォーマンス レベルとデータベース活動の量に基づいて、一般的には 5 - 10 分ごとに発生します。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
 
 これらのバックアップを使用して、以下を行うことができます。
@@ -30,7 +31,7 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 * リテンション期間内の特定の時点にデータベースを復元します。 この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されます。
 * 削除したデータベースを、削除された時点または保有期間内の任意の時点に復元します。 削除されたデータベースは、元のデータベースが作成されたサーバーと同じサーバーにのみ復元できます。
 * 別の地理的リージョンにデータベースを復元します。 これにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。 
-* Azure Recovery Services コンテナーに格納されている特定のバックアップからデータベースを復元します。 これにより、データベースの古いバージョンに復元でき、コンプライアンスの要求を満たし、またはアプリケーションの古いバージョンを実行できます。 [長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
+* データベースが長期リテンション ポリシーで構成されている場合、そのデータベースは、特定の長期バックアップから復元します。 これにより、データベースの古いバージョンに復元でき、コンプライアンスの要求を満たし、またはアプリケーションの古いバージョンを実行できます。 [長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 * 復元を実行するには、[バックアップからのデータベースの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 
 > [!NOTE]
@@ -49,10 +50,14 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 * Basic サービスレベルの場合、7 日間です。
 * Standard サービス レベルの場合、35 日間です。
 * Premium サービス レベルの場合、35 日間です。
+* 汎用レベルは、最大 35 日間で構成できます (既定では 7 日間)*
+* Business Critical レベル (プレビュー) は、最大 35 日間で構成できます (既定では 7 日間)*
 
-Standard または Premium サービス レベルから Basic にデータベースをダウングレードした場合、バックアップは 7 日間保存されます。 7 日間を過ぎた場合、既存のバックアップはすべて利用できなくなります。 
+\* プレビュー段階では、バックアップ リテンション期間は構成できず、7 日間に固定されています。
 
-Basic サービス レベルから Standard または Premium にデータベースをアップグレードした場合、SQL Database は 35 日間が経過するまで既存のバックアップを保持します。 新しいバックアップは 35 日間保持されます。
+バックアップ リテンション期間が長いデータベースを、短いリテンション期間のデータベースに変換すると、変換先のレベルのリテンション期間よりも古い既存のバックアップはすべて利用できなくなります。
+
+リテンション期間が短いデータベースを、長いリテンション期間のデータベースにアップグレードすると、SQL Database では、長いリテンション期間に達するまで既存のバックアップが保持されます。 
 
 データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、リテンション期間が 7 日間の Basic データベースを削除するとします。 3 日経過したバックアップはあと 4 日間保存されます。
 
@@ -61,17 +66,17 @@ Basic サービス レベルから Standard または Premium にデータベー
 > 
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>バックアップの保有期間を延長するにはどうすればよいですか。
-アプリケーションで、バックアップがより長期間使用可能である必要がある場合、個別のデータベースの長期的バックアップ保持ポリシー (LTR ポリシー) を構成することによって、組み込みの保有期間を延長できます。 これにより、組み込みの保有期間を 35 日から 10 年に延長できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
-Azure Portal または API を使用して LTR ポリシーをデータベースに追加すると、週単位のデータベースの完全バックアップが自動的にユーザー独自の Azure Backup サービス コンテナーにコピーされます。 データベースが TDE で暗号化されている場合、バックアップは保存中に自動的に暗号化されます。  期限切れのバックアップは、そのタイムスタンプおよび LTR ポリシーに基づいて、サービス コンテナーによって自動的に削除されます。  そのため、バックアップのスケジュールを管理したり、古いファイルのクリーンアップについて心配したりする必要はありません。 復元の API は、資格情報コンテナーが SQL Database と同じサブスクリプションにある限り、資格情報コンテナーに格納されているバックアップをサポートします。 Azure Portal または PowerShell を使用してこれらのバックアップにアクセスできます。
+アプリケーションで、最大 PITR バックアップ リテンション期間よりも長い期間、バックアップを使用可能にしておく必要がある場合は、個々のデータベースに対して長期バックアップ リテンション ポリシー (LTR ポリシー) を構成できます。 これにより、組み込みのリテンション期間を最大 35 日から 10 年に延長できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
-> [!TIP]
-> ハウツー ガイドについては、「[Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する](sql-database-long-term-backup-retention-configure.md)」を参照してください
->
+Azure Portal または API を使用して LTR ポリシーをデータベースに追加すると、週単位のデータベースの完全バックアップが、長期リテンション期間用の個別の RA-GRS ストレージ コンテナー (LTR ストレージ) に、自動的にコピーされます。 データベースが TDE で暗号化されている場合、バックアップは保存中に自動的に暗号化されます。 期限切れのバックアップは、そのタイムスタンプおよび LTR ポリシーに基づいて、SQL Database によって自動的に削除されます。 ポリシーの設定後は、バックアップのスケジュールを管理したり、古いファイルのクリーンアップについて心配したりする必要はありません。 これらのバックアップは、Azure Portal または PowerShell を使用して表示、復元、または削除できます。
 
 ## <a name="are-backups-encrypted"></a>バックアップは暗号化されますか?
 
 Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
+
+## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>自動バックアップは GDPR に準拠していますか。
+バックアップに個人データが含まれ、これが一般データ保護規則 (GDPR) の対象である場合は、セキュリティ対策を強化して、そのデータを不正なアクセスから保護する必要があります。 GDPR に準拠するには、バックアップにアクセスせずにデータ所有者のデータ要求を管理する手段が必要です。  短期バックアップについては、1 つの解決策として、バックアップ期間を 30 日より短くします。これは、データ アクセス要求を満たすために許容される期間とします。  さらに長い期間のバックアップが必要な場合は、"偽名" データのみをバックアップに格納することをお勧めします。 たとえば、個人に関するデータを削除または更新する必要がある場合でも、これにより既存のバックアップの削除または更新が不要になります。 GDPR に関するベスト プラクティスの詳細については、[GDPR コンプライアンスのデータ ガバナンス](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

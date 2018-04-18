@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store を使用するためのベスト プラクティス
 この記事では、Azure Data Lake Store の操作に関するベスト プラクティスと考慮事項について説明します。 この記事では、Data Lake Store のセキュリティ、パフォーマンス、回復性、監視に関連する情報を取り上げます。 Data Lake Store が登場するまで、Azure HDInsight などのサービスで大規模なビッグデータを取り扱うことは大変な作業でした。 ペタバイト クラスのストレージとそのスケールでの最適なパフォーマンスを達成できるように、複数の Blob Storage アカウント間でデータをシャードする必要がありました。 Data Lake Store では、サイズやパフォーマンスに関するほとんどのハード制限が取り除かれています。 ただし、Data Lake Store で最適なパフォーマンスを得るための考慮事項がまだいくつか残っています。この記事ではそれについて取り上げます。 
@@ -129,7 +129,7 @@ Data Lake Store には詳細な診断ログと監査機能が用意されてい�
 
 ### <a name="export-data-lake-store-diagnostics"></a>Data Lake Store の診断をエクスポートする 
 
-Data Lake Store から検索可能なログへのログを取得する最も早い方法の 1 つは、Data Lake Store アカウントの **[診断]** ブレードで、**Operations Management Suite (OMS)** へのログ配布を有効にする方法です。 これにより、時間およびコンテンツのフィルターと 15 分間隔でトリガーされるアラート オプション (電子メール/Webhook) を使用して、受信したログにすぐにアクセスできます。 手順については、「[Azure Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」をご覧ください。 
+Data Lake Store から検索可能なログへのログを取得する最も早い方法の 1 つは、Data Lake Store アカウントの **[診断]** ブレードで、**Log Analytics** へのログ配布を有効にする方法です。 これにより、時間およびコンテンツのフィルターと 15 分間隔でトリガーされるアラート オプション (電子メール/Webhook) を使用して、受信したログにすぐにアクセスできます。 手順については、「[Azure Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」をご覧ください。 
 
 よりリアルタイムにアラートを設定する、およびログをランディングさせる場所をより詳しく指定するには、Azure EventHub にログをエクスポートすることを検討してください。Azure EventHub では、個々のコンテンツまたは期間を区切って分析し、リアルタイムの通知をキューに送信できます。 これで、[Logic App](../connectors/connectors-create-api-azure-event-hubs.md) などの別個のアプリケーションがアラートを適切なチャネルに伝達し、NewRelic、Datadog、AppDynamics などの監視ツールに指標を送信できます。 または、ElasticSearch などのサードパーティ製のツールを使用している場合は、ログを Blob Storage にエクスポートし、[Azure Logstash プラグイン](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)を使用して Elasticsearch、Kibana、Logstash (ELK) スタック内のデータを消費できます。
 
@@ -139,7 +139,7 @@ Data Lake Store のログ配布が有効になっていない場合、Azure HDIn
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-このプロパティを設定してノードを再起動すると、Data Lake Store の診断がノード上の YARN ログ (/tmp/<user>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Data Lake Store アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの OMS や他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Store でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
+このプロパティを設定してノードを再起動すると、Data Lake Store の診断がノード上の YARN ログ (/tmp/<user>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Data Lake Store アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの Log Analytics や他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Store でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
 
 ### <a name="run-synthetic-transactions"></a>代理トランザクションを実行する 
 

@@ -1,7 +1,7 @@
 ---
-title: "SendGrid 電子メール サービスの使用方法 (Java) | Microsoft Docs"
-description: "Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。 コード サンプルは Java で記述されています。"
-services: 
+title: SendGrid 電子メール サービスの使用方法 (Java) | Microsoft Docs
+description: Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。 コード サンプルは Java で記述されています。
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Java から SendGrid を使用して電子メールを送信する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 コード サンプルは Java で記述されています。 紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
@@ -39,7 +39,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>方法: javax.mail ライブラリを使用する
-javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> などから取得し、コードにインポートします。 大まかに言えば、javax.mail ライブラリと SMTP を使用して電子メールを送信するプロセスは、次の処理を実行することです。
+javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> などから取得し、自分のコードにインポートします。 大まかに言えば、javax.mail ライブラリと SMTP を使用して電子メールを送信するプロセスは、次の処理を実行することです。
 
 1. SMTP に関する値を指定します。たとえば、SMTP サーバーは、 SendGrid では smtp.sendgrid.net になります。
 
@@ -158,7 +158,7 @@ SendGrid では、 *フィルター*を使用することでその他の電子�
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>方法: 電子メールのプロパティを更新する
-使用して一部の電子メール プロパティを上書きできる**設定 * プロパティ*** またはを使用して追加された **追加*プロパティ * * *。
+メールの一部のプロパティは、**set*Property*** を使って上書きすることや、**add*Property*** を使って追加することができます。
 
 たとえば、 **ReplyTo** アドレスを指定するには、次のコードを使用します。
 

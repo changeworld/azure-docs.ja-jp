@@ -1,12 +1,12 @@
 ---
-title: "Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行する方法 | Microsoft Docs"
-description: "Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行してアプリ内に埋め込む最新技術について説明します。"
+title: Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行する方法 | Microsoft Docs
+description: Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行してアプリ内に埋め込む最新技術について説明します。
 services: power-bi-embedded
-documentationcenter: 
+documentationcenter: ''
 author: guyinacube
 manager: erikre
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行する方法
 
@@ -121,8 +121,8 @@ Power BI 内でアプリケーション ワークスペースを作成するに�
 2. Power BI ワークスペース コレクション ワークスペースから Download PBIX API を呼び出します。
 3. PBIX を保存します。
 4. Power BI Embedded ワークスペースに Import PBIX を呼び出します。
-5. POST  https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections を呼び出して接続文字列を更新します。
-6. GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources を呼び出して GW ID とデータ ソース ID を取得します。
+5. POST https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections を呼び出して接続文字列を更新します。
+6. GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources を呼び出して GW ID とデータソース ID を取得します。
 7. PATCH https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id} を呼び出してユーザーの資格情報を更新します。
 
 #### <a name="old-dataset-and-reports"></a>古いデータセットとレポート

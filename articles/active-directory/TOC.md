@@ -56,6 +56,7 @@
 #### [招待メール](active-directory-b2b-invitation-email.md)
 #### [招待の利用](active-directory-b2b-redemption-experience.md)
 #### [招待を使用せずに B2B ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
+#### [招待を許可またはブロックする](active-directory-b2b-allow-deny-list.md)
 #### [B2B 向けの条件付きアクセス](active-directory-b2b-mfa-instructions.md)
 #### [B2B の共有ポリシー](active-directory-b2b-delegate-invitations.md)
 #### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
@@ -311,7 +312,7 @@
 #### [条件](active-directory-conditional-access-conditions.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
@@ -327,13 +328,10 @@
 #### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 #### [FAQ](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)
-#### [Windows Hello for Business の有効化](active-directory-azureadjoin-passport-deployment.md)
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
+#### [概要](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

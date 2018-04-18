@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: d908cdcd9e77f91a726f985d21bdc5bbc80ffd27
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a8d2e017ee0b368c2d509ab4bf47ea566ee52a3b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure 管理ディスクおよび非管理対象ディスクを見つけて削除する
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 この機能は、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを見つけて削除し、不要なコストを削減する方法を示します。 
@@ -129,8 +129,7 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>次の手順
 
-[ストレージ アカウントの削除](../../storage/common/storage-create-storage-account.md)
-
+詳細については、[ストレージ アカウントの削除](../../storage/common/storage-create-storage-account.md)に関するページと、「[Identify Orphaned Disks Using PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)」(PowerShell を使用した孤立したディスクの特定) をご覧ください。
 
 
 

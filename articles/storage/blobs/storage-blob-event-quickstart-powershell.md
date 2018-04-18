@@ -8,24 +8,22 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 374a24448eb1bf366e26bb55fdf09e470b030c89
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e5524732185d7b80ebf16a9bce6de9ca0183c27e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>PowerShell を使って Blob Storage のイベントをカスタム Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 
 
-通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 この記事では、紹介している例を単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サードパーティ製ツール ([RequestBin](https://requestb.in/) または [Hookbin](https://hookbin.com/)) を使用して作成します。
+通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 この記事では、紹介している例を単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サード パーティ製ツール ([Hookbin](https://hookbin.com/)) を使用して作成します。
 
 > [!NOTE]
-> **RequestBin** と **Hookbin** は、高いスループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこれらのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+> **Hookbin** は、高スループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
 
 この記事の手順の最後に、イベント データがエンドポイントに送信済みであることを確認できます。
-
-![イベント データ](./media/storage-blob-event-quickstart/request-result.png)
 
 ## <a name="setup"></a>セットアップ
 
@@ -84,7 +82,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin と Hookbin は、エンドポイントの作成と、エンドポイントに送信された要求の表示を可能にする、サード パーティ製のツールです。 [RequestBin](https://requestb.in/), に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックするか、または[Hookbin](https://hookbin.com/) に移動して **[新しいエンドポイントの作成]** をクリックします。 bin の URL をコピーして、次のスクリプトの `<bin URL>` を置き換えます。
+トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 Hookbin は、エンドポイントを作成し、そこに送信された要求を表示できるサードパーティ ツールです。 [Hookbin](https://hookbin.com/) に移動し、**[新しいエンドポイントの作成]** をクリックします。 bin の URL をコピーして、次のスクリプトの `<bin URL>` を置き換えます。
 
 ```powershell
 $binEndPoint = "<bin URL>"
@@ -92,7 +90,7 @@ $binEndPoint = "<bin URL>"
 
 ## <a name="subscribe-to-your-storage-account"></a>ストレージ アカウントをサブスクライブする
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントをサブスクライブし、RequestBin または Hookbin からの URL をイベント通知のエンドポイントとして渡します。 
+どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントをサブスクライブし、Hookbin からの URL をイベント通知のエンドポイントとして渡します。 
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 ## <a name="about-this-list"></a>このリストについて
@@ -27,9 +27,11 @@ API をインポートするときに、制限や ID の問題が発生し、修
 ## <a name="open-api"> </a>Open API/Swagger
 Open API ドキュメントのインポートでエラーが発生した場合は、Azure Portal のデザイナー ([Design]\(設計\) - [フロント エンド] - [Open API Specification Editor]\(Open API 仕様エディター\))、または <a href="http://www.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して、そのドキュメントが有効であることを確認してください。
 
-* **ホスト名** APIM ではホスト名属性が必要です。
-* **ベース パス**  APIM ではベース パス属性が必要です。
-* **スキーム**  APIM ではスキーム配列が必要です。
+* OpenAPI 用の JSON 形式のみがサポートされています。
+* **$ref** プロパティを使用して参照されるスキーマには、他の **$ref** プロパティを含めることができません。
+* **$ref** ポインターは、外部ファイルを参照できません。
+* サポートされている拡張子は、**x-ms-paths** と **x-servers** のみです。
+* カスタム拡張子は、インポート時に無視され、エクスポートでは保存されず、保持もされません。
 
 > [!IMPORTANT]
 > OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)を参照してください。

@@ -1,95 +1,77 @@
 ---
-title: "Azure Container Service (AKS) クラスター ノードへの SSH 接続"
-description: "Azure Container Service (AKS) クラスター ノードとの SSH 接続を作成します"
+title: Azure Container Service (AKS) クラスター ノードへの SSH 接続
+description: Azure Container Service (AKS) クラスター ノードとの SSH 接続を作成します
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 2/28/2018
+ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 00affc3d1c02c477826261aeac6e092934037e81
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>Azure Container Service (AKS) クラスター ノードへの SSH 接続
 
 場合によっては、メンテナンス、ログ収集、またはその他のトラブルシューティング操作のために、Azure Container Service (AKS) ノードにアクセスしなければならない場合があります。 Azure Container Service (AKS) ノードは、インターネットに公開されていません。 このドキュメントで説明されている手順を使用して、AKS ノードとの SSH 接続を作成してください。
 
-## <a name="configure-ssh-access"></a>SSH アクセスの構成
+## <a name="get-aks-node-address"></a>AKS ノード アドレスの取得
 
- 特定のノードに SSH 接続するために、`hostNetwork` アクセスを持つポッドが作成されます。 ポッド アクセス用に、サービスも作成されます。 この構成には特権が与えられているため、使用後に削除する必要があります。
+`az vm list-ip-addresses` コマンドを使用して、AKS クラスター ノードの IP アドレスを取得します。 リソース グループ名は AKS リソース グループの名前に置き換えます。
 
-`aks-ssh.yaml` という名前のファイルを作成し、このマニフェストにコピーします。 ノード名をターゲット AKS ノードの名前に更新します。
+```console
+$ az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: aks-ssh
-spec:
-  selector:
-    app: aks-ssh
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 22
-    targetPort: 22
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: aks-ssh
-  labels:
-    app: aks-ssh
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: aks-ssh
-  template:
-    metadata:
-      labels:
-        app: aks-ssh
-    spec:
-      containers:
-      - name: alpine
-        image: alpine:latest
-        ports:
-        - containerPort: 22
-        command: ["/bin/sh", "-c", "--"]
-        args: ["while true; do sleep 30; done;"]
-      hostNetwork: true
-      nodeName: aks-nodepool1-42032720-0
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-42032720-0  10.240.0.6
+aks-nodepool1-42032720-1  10.240.0.5
+aks-nodepool1-42032720-2  10.240.0.4
 ```
 
-マニフェストを実行して、ポッドとサービスを作成します。
+## <a name="create-ssh-connection"></a>SSH 接続の作成
 
-```azurecli-interactive
-$ kubectl apply -f aks-ssh.yaml
+`debian`コンテナー イメージを実行し、ターミナル セッションをそれにアタッチします。 コンテナーを使用して、AKS クラスター内の任意のノードで SSH セッションを作成できます。
+
+```console
+kubectl run -it --rm aks-ssh --image=debian
 ```
 
-公開されているサービスの外部 IP アドレスを取得します。 IP アドレスの構成が完了するまでに 1 分ほどかかることがあります。 
+コンテナーに SSH クライアントをインストールします。
 
-```azurecli-interactive
-$ kubectl get service
-
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
-kubernetes         ClusterIP      10.0.0.1      <none>          443/TCP        1d
-aks-ssh            LoadBalancer   10.0.51.173   13.92.154.191   22:31898/TCP   17m
+```console
+apt-get update && apt-get install openssh-client -y
 ```
 
-SSH 接続を作成します。 
+2 番目のターミナルを開き、すべてのポッドを一覧表示して新しく作成したポッド名を取得します。
 
-AKS クラスターの既定のユーザー名は、`azureuser` です。 クラスターの作成時にこのアカウントが変更された場合は、適切な管理者ユーザー名を使用してください。 
+```console
+$ kubectl get pods
 
-キーが `~/ssh/id_rsa` にない場合は、`ssh -i` 引数を使用して正しい場所を指定します。
+NAME                       READY     STATUS    RESTARTS   AGE
+aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
+```
 
-```azurecli-interactive
-$ ssh azureuser@13.92.154.191
+ポッドに SSH キーをコピーし、ポッド名を適切な値に置き換えます。
+
+```console
+kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+```
+
+ユーザーに対して読み取り専用となるように `id_rsa` ファイルを更新します。
+
+```console
+chmod 0600 id_rsa
+```
+
+ここで AKS ノードへの SSH 接続を作成します。 AKS クラスターの既定のユーザー名は、`azureuser` です。 クラスターの作成時にこのアカウントが変更された場合は、適切な管理者ユーザー名を使用してください。
+
+```console
+$ ssh -i id_rsa azureuser@10.240.0.6
 
 Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
@@ -114,8 +96,4 @@ azureuser@aks-nodepool1-42032720-0:~$
 
 ## <a name="remove-ssh-access"></a>SSH アクセスの削除
 
-終了したら、SSH アクセスのポッドとサービスを削除します。
-
-```azurecli-interactive
-kubectl delete -f aks-ssh.yaml
-```
+完了したら、SSH セッションを終了し、対話型のコンテナー セッションを終了します。 このアクションにより、AKS クラスターからの SSH アクセスに使用されるポッドが削除されます。

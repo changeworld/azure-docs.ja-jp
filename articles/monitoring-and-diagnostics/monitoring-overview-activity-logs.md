@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9768fd96b8023ac97d8c5711e0c02f2c147e28f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
+
 **Azure アクティビティ ログ**は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 管理者のカテゴリではサブスクリプションのコントロール プレーン イベントが報告されるため、アクティビティ ログは以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
 
 ![アクティビティ ログとその他の種類のログ ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
@@ -37,9 +38,7 @@ ms.lasthandoff: 04/03/2018
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 > [!NOTE]
-
 >  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
-
 
 アクティビティ ログの概要については、次のビデオを参照してください。
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -103,7 +102,7 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 * エクスポートするリージョン (場所)。 アクティビティ ログのイベントの多くはグローバル イベントなので、"global" を含めてください。
 * アクティビティ ログをストレージ アカウントに保持する期間。
     - リテンション期間が 0 日の場合、ログは永続的に保持されます。 リテンション期間が 0 日の場合、ログは永続的に保持されます。
-    - リテンション期間ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+    - リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (たとえば、Event Hubs または Log Analytics オプションだけが選択されている場合)、リテンション ポリシーは無効になります。
     - 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。
 
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
@@ -129,12 +128,15 @@ Azure Portal の [エクスポート] オプションを使用して、アクテ
 4. **[保存]** をクリックして設定を保存します。 設定はサブスクリプションにすぐに適用されます。
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用したログ プロファイルの構成
+
 #### <a name="get-existing-log-profile"></a>既存のログ プロファイルの取得
+
 ```
 Get-AzureRmLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>ログ プロファイルの追加
+
 ```
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
 ```
@@ -153,33 +155,32 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cross-platform-cli"></a>Azure クロスプラットフォーム CLI を使用したログ プロファイルの構成
+### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したログ プロファイルの構成
+
 #### <a name="get-existing-log-profile"></a>既存のログ プロファイルの取得
+
+```azurecli
+az monitor log-profiles list
+az monitor log-profiles show --name <profile name>
 ```
-azure insights logprofile list
-```
-```
-azure insights logprofile get --name my_log_profile
-```
+
 `name` プロパティには、ログ プロファイルの名前を指定する必要があります。
 
 #### <a name="add-a-log-profile"></a>ログ プロファイルの追加
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+
+```azurecli
+az monitor log-profiles create --name <profile name> \
+    --locations <location1 location2 ...> \
+    --location <location> \
+    --categories <category1 category2 ...>
 ```
 
-| プロパティ | 必須 | [説明] |
-| --- | --- | --- |
-| name |[はい] |ログ プロファイルの名前。 |
-| storageId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| serviceBusRuleId |いいえ  |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| categories |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
+CLI でのモニター プロファイルの作成について詳しくは、[CLI コマンド リファレンス](/cli/azure/monitor/log-profiles#az-monitor-log-profiles-create)をご覧ください。
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
-```
-azure insights logprofile delete --name my_log_profile
+
+```azurecli
+az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>次の手順

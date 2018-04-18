@@ -1,11 +1,11 @@
 ---
-title: "B2B トランザクションのメッセージの監視とログの設定を行う - Azure Logic Apps | Microsoft Docs"
-description: "AS2、X12、および EDIFACT メッセージを監視し、統合アカウントの診断ログを開始します"
+title: B2B トランザクションのメッセージの監視とログの設定を行う - Azure Logic Apps | Microsoft Docs
+description: AS2、X12、および EDIFACT メッセージを監視し、統合アカウントの診断ログを開始します
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -15,22 +15,22 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6afab12b9e2d6e8686ecbc95be9743afbe70d98c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>統合アカウントでの B2B 通信の監視と診断ログの設定を行う
 
-統合アカウントを通して 2 つの実行中のビジネス プロセスまたはアプリケーション間の B2B 通信を設定すると、これらのエンティティは相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) サービスを使用して、AS2、X12、および EDIFACT メッセージの監視と統合アカウントの診断ログを設定できます。 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) に含まれるこのサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援することに加え、深いデバッグを行うためのランタイムの詳細とイベントの収集も実行します。 [診断データを他のサービスで使用する](#extend-diagnostic-data)こともできます (Azure Storage や Azure Event Hubs などで使用できます)。
+統合アカウントを通して 2 つの実行中のビジネス プロセスまたはアプリケーション間の B2B 通信を設定すると、これらのエンティティは相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) サービスを使用して、AS2、X12、および EDIFACT メッセージの監視と統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援することに加え、深いデバッグを行うためのランタイムの詳細とイベントの収集も実行します。 [診断データを他のサービスで使用する](#extend-diagnostic-data)こともできます (Azure Storage や Azure Event Hubs などで使用できます)。
 
 ## <a name="requirements"></a>必要条件
 
 * 診断ログが設定されているロジック アプリ。 [ロジック アプリのログの設定方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)に関する記事を参照してください。
 
   > [!NOTE]
-  > この要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 統合アカウントのログを設定したときと同じ OMS ワークスペースを使用する必要があります。 OMS ワークスペースを持っていない場合は、[OMS ワークスペースの作成方法](../log-analytics/log-analytics-get-started.md)に関する記事を参照してください。
+  > この要件を満たした後、Log Analytics 内にワークスペースを用意する必要があります。 統合アカウントのログを設定したときと同じ Log Analytics ワークスペースを使用する必要があります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
 * ロジック アプリにリンクされた統合アカウント。 [ロジック アプリにリンクする統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に関する記事を参照してください。
 
@@ -58,17 +58,17 @@ ms.lasthandoff: 10/11/2017
 
    ![Azure 診断を有効にする](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. 次に、ログで使用する OMS ワークスペースとデータを次に示すように選択します。
+4. 次に、ログで使用する Log Analytics ワークスペースとデータを次に示すように選択します。
 
-   1. **[Log Analytics に送信]** を選択します。 
+   1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
-   3. **[OMS ワークスペース]** で、ログで使用する OMS ワークスペースを選択します。
+   3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。
    4. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択します。
    5. **[保存]** を選択します。
 
    ![診断データをログに送信できるように Log Analytics を設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. 次に、[OMS で B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
+5. 次に、[Log Analytics で B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
 
 <a name="azure-monitor-service"></a>
 
@@ -92,17 +92,17 @@ ms.lasthandoff: 10/11/2017
 
    ![Azure 診断を有効にする](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account-2.png)
 
-4. 次に、ログ用の OMS ワークスペースとイベント カテゴリを次に示すように選択します。
+4. ここで、次のように、ログ用に Log Analytics ワークスペースとイベント カテゴリを選択します。
 
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
-   3. **[OMS ワークスペース]** で、ログで使用する OMS ワークスペースを選択します。
+   3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。
    4. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択します。
    5. 完了したら、**[保存]** を選択します。
 
    ![診断データをログに送信できるように Log Analytics を設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-5. 次に、[OMS で B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
+5. 次に、[Log Analytics で B2B メッセージを追跡するための設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)を行います。
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>診断データを他のサービスで使用する方法と場所を拡張する
 
@@ -111,7 +111,7 @@ Azure Log Analytics と併せて、ロジック アプリの診断データを�
 * [Azure 診断ログを Azure Storage にアーカイブする](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Azure 診断ログを Azure Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../log-analytics/log-analytics-powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 For example:
+これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../log-analytics/log-analytics-powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 例: 
 
 * [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -131,8 +131,8 @@ Azure では、次の種類の追跡スキーマをサポートしています�
 * [X12 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [OMS で B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "OMS で B2B メッセージを追跡する")
+* [Log Analytics で B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "OMS で B2B メッセージを追跡する")
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 

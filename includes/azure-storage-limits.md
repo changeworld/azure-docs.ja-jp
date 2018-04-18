@@ -1,13 +1,29 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/03/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 6381f8f0e68853183fc3e17e76b4ab93b152b48b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/05/2018
+---
 | リソース | 既定の制限 |
 | --- | --- |
 | リージョンあたりのストレージ アカウント数 | 200<sup>1</sup> |
 | ストレージ アカウントの最大容量 | 500 TiB<sup>2</sup> |
 | ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数 | 制限なし |
 | ストレージ アカウントあたりの最大要求レート | 20,000 RPS (1 秒あたりの要求数)<sup>2</sup> |
-| ストレージ アカウントあたりの最大受信速度<sup>3</sup> (米国リージョン) | RA-GRS/GRS/ZRS<sup>4</sup> が有効な場合は 10 Gbps、LRS<sup>2</sup> の場合は 20 Gbps |
-| ストレージ アカウントあたりの最大送信速度<sup>3</sup> (米国リージョン) | RA-GRS/GRS/ZRS<sup>4</sup> が有効な場合は 20 Gbps、LRS<sup>2</sup> の場合は 30 Gbps |
-| ストレージ アカウントあたりの最大受信速度<sup>3</sup> (米国以外のリージョン) | RA-GRS/GRS/ZRS<sup>4</sup> が有効な場合は 5 Gbps、LRS<sup>2</sup> の場合は 10 Gbps |
-| ストレージ アカウントあたりの最大送信速度<sup>3</sup> (米国以外のリージョン) | RA-GRS/GRS/ZRS<sup>4</sup> が有効な場合は 10 Gbps、LRS<sup>2</sup> の場合は 15 Gbps |
+| ストレージ アカウントあたりの最大受信速度<sup>3</sup> (米国リージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS<sup>4</sup> の場合は 20 Gbps |
+| ストレージ アカウントあたりの最大送信速度<sup>3</sup> (米国リージョン) | RA-GRS/GRS が有効な場合は 20 Gbps、LRS/ZRS<sup>4</sup> の場合は 30 Gbps |
+| ストレージ アカウントあたりの最大受信速度<sup>3</sup> (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 5 Gbps、LRS/ZRS<sup>4</sup> の場合は 10 Gbps |
+| ストレージ アカウントあたりの最大送信速度<sup>3</sup> (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS<sup>4</sup> の場合は 15 Gbps |
 
 <sup>1</sup> Standard および Premium ストレージ アカウントの両方が含まれます。 必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。 
 

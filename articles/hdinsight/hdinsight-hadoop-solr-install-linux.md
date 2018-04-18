@@ -1,8 +1,8 @@
 ---
-title: "スクリプト アクションを使用した Linux ベースの HDInsight での Solr のインストール - Azure | Microsoft Docs"
-description: "Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。"
+title: スクリプト アクションを使用した Linux ベースの HDInsight での Solr のインストール - Azure | Microsoft Docs
+description: Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -61,7 +61,7 @@ Solr がインストールされているクラスターを作成するには、
 1. __[クラスターの概要]__ セクションで、[詳細設定] を選択し、__[スクリプト アクション]__ を選択します。 次の情報を使用して、フォームに記入します。
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **[ヘッド]**: このオプションをオンにします。
    * **[ワーカー]**: このオプションをオンにします
    * **[Zookeeper]**: Zookeeper ノードにインストールするには、このオプションをオンにします
@@ -319,7 +319,7 @@ sudo start solr
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Solr のバックアップと復元の操作の詳細については、 [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups)をご覧ください。
+Solr のバックアップと復元の操作の詳細については、[https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

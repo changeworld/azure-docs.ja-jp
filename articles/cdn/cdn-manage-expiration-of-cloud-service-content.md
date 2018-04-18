@@ -1,11 +1,11 @@
 ---
-title: "Azure Content Delivery Network で Web コンテンツの有効期限を管理する | Microsoft Docs"
-description: "Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、または IIS コンテンツの有効期限を管理する方法について説明します。"
+title: Azure Content Delivery Network で Web コンテンツの有効期限を管理する | Microsoft Docs
+description: Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、または IIS コンテンツの有効期限を管理する方法について説明します。
 services: cdn
 documentationcenter: .NET
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Web コンテンツの有効期限を管理する
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/21/2018
 Web サーバーの `Cache-Control` ヘッダーを設定するための推奨される方法は、Azure Portal でのキャッシュ規則の使用です。 CDN キャッシュ規則の詳細については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページを参照してください。
 
 > [!NOTE] 
-> キャッシュ規則は、**Azure CDN from Verizon Standard** および **Azure CDN from Akamai Standard** プロファイルでのみ使用できます。 **Azure CDN from Verizon Premium** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
 
 **[CDN キャッシュ規則] ページに移動するには**:
 

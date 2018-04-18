@@ -4,7 +4,7 @@ description: カスタム ドメインを使って Azure CDN エンドポイン�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
-ms.author: casoper
-ms.openlocfilehash: fea7121fc67944b20b8f39007edb0c0aad86aeaa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: rli; v-deasim
+ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する
 
@@ -45,7 +45,7 @@ HTTPS の機能の主な特性は次のとおりです。
 
 ### <a name="step-1-enable-the-feature"></a>ステップ 1: 機能を有効にする 
 
-1. [Azure Portal](https://portal.azure.com) で、Verizon Standard または Premium CDN のプロファイルを参照します。
+1. [Azure Portal](https://portal.azure.com) で、お使いの **Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** の CDN プロファイルを参照します。
 
 2. エンドポイントの一覧で、カスタム ドメインを含むエンドポイントをクリックします。
 
@@ -149,7 +149,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="step-1-disable-the-feature"></a>ステップ 1: 機能を無効にする 
 
-1. [Azure Portal](https://portal.azure.com) で、Verizon Standard または Premium CDN のプロファイルを参照します。
+1. [Azure Portal](https://portal.azure.com) で、お使いの **Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** の CDN プロファイルを参照します。
 
 2. エンドポイントの一覧で、カスタム ドメインを含むエンドポイントをクリックします。
 

@@ -1,53 +1,47 @@
 ---
-title: "Azure Active Directory での B2B コラボレーション ユーザーの要求マッピング | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションの要求マッピング リファレンス"
+title: Azure Active Directory での B2B コラボレーション ユーザーの要求マッピング | Microsoft Docs
+description: Azure Active Directory (Azure AD) B2B ユーザーの SAML トークンで発行されたユーザー要求をカスタマイズします。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/15/2017
+ms.date: 04/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 3fe75e96c153a7cbcad638d606d0fbc248bd983a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8f5e471d4e7102300cd5581976b45c9fa8cc57bc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーション ユーザーの要求マッピング
 
-Azure Active Directory (Azure AD) では、B2B コラボレーション ユーザーの SAML トークンで発行される要求のカスタマイズがサポートされています。 アプリケーションに対するユーザーの認証時に、Azure AD は、ユーザーを一意に識別する情報 (要求) を含む SAML トークンをアプリに発行します。 既定では、ユーザーのユーザー名、電子メール アドレス、名、および姓が含まれます。 [属性] タブで、アプリケーションに SAML トークンで送信された要求を表示または編集できます。
+Azure Active Directory (Azure AD) では、B2B コラボレーション ユーザーの SAML トークンで発行される要求のカスタマイズがサポートされています。 アプリケーションに対するユーザーの認証時に、Azure AD は、ユーザーを一意に識別する情報 (要求) を含む SAML トークンをアプリに発行します。 既定では、ユーザーのユーザー名、電子メール アドレス、名、および姓が含まれます。
+
+[Azure Portal](https://portal.azure.com) では、アプリケーションに SAML トークンで送信された要求を表示または編集できます。 設定にアクセスするには、**[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > シングル サインオン用に構成されたアプリケーション > **[シングル サインオン]** の順に選択します。 **[ユーザー属性]** セクションの SAML トークン設定を参照してください。
+
+![UI の SAML トークン属性を表示する](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
 
 SAML トークンで発行された要求を編集する必要がある理由は、2 つ考えられます。
 
-1. アプリケーションが、別の要求 URI または要求値のセットを必要とするように記述されている。
+1. アプリケーションで、別の要求 URI または要求値のセットが必要である。
 
-2. アプリケーションで NameIdentifier 要求が Azure Active Directory に格納されているユーザー プリンシパル名以外のものである必要がある。
+2. アプリケーションで NameIdentifier 要求が Azure AD に格納されているユーザー プリンシパル名 (UPN) 以外のものである必要がある。
 
-  ![SAML トークンの要求の表示](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
+要求の追加と編集については、「[Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](develop/active-directory-saml-claims-customization.md)」を参照してください。
 
-要求を追加および編集する方法については、要求のカスタマイズについての記事である「[Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](develop/active-directory-saml-claims-customization.md)」を参照してください。 B2B コラボレーション ユーザーの場合は、セキュリティ上の理由で、NameID と UPN クロステナントとのマッピングは許可されていません。
-
+B2B コラボレーション ユーザーの場合は、セキュリティ上の理由で、NameID と UPN クロステナントとのマッピングは許可されていません。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+- B2B コラボレーション ユーザーのプロパティについては、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)」を参照してください。
+- B2B コラボレーション ユーザーのユーザー トークンについては、「[Azure AD B2B コラボレーションのユーザー トークンについて](active-directory-b2b-user-token.md)」を参照してください。
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
-* [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
-* [B2B コラボレーションの招待の委任](active-directory-b2b-delegate-invitations.md)
-* [動的グループと B2B コラボレーション](active-directory-b2b-dynamic-groups.md)
-* [B2B コラボレーション コードと PowerShell サンプル](active-directory-b2b-code-samples.md)
-* [B2B コラボレーション用の SaaS アプリの構成](active-directory-b2b-configure-saas-apps.md)
-* [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
-* [B2B コラボレーション ユーザーのトークン](active-directory-b2b-user-token.md)
-* [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)

@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup の Log Analytics データ モデル"
-description: "この記事では、Azure Backup データに使用する Log Analytics データ モデルの詳細について説明します。"
+title: Azure Backup の Log Analytics データ モデル
+description: この記事では、Azure Backup データに使用する Log Analytics データ モデルの詳細について説明します。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
-この記事では、Log Analytics にレポート データをプッシュするのに使用するデータ モデルについて説明します。 このデータ モデルを使用すると、カスタム クエリ、ダッシュボードを作成し、OMS で活用することができます。 
+この記事では、Log Analytics にレポート データをプッシュするのに使用するデータ モデルについて説明します。 このデータ モデルを使用すると、カスタム クエリ、ダッシュボードを作成し、Log Analytics で活用することができます。 
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
 データ モデルの一部として提供される次のフィールドを使用して、ビジュアル、カスタム クエリ、ダッシュボードを要件に合わせて作成できます。
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="alert"></a>アラート:
 次の表は、アラートに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | AlertUniqueId_s |テキスト |生成されたアラートの一意の ID |
 | AlertType_s |テキスト |生成されたアラートの種類 (例: バックアップ) |
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="backupitem"></a>BackupItem
 次の表は、バックアップ項目に関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |  
 | BackupItemUniqueId_s |テキスト |バックアップ項目の一意の ID |
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 次の表は、バックアップ項目 アソシエーションとさまざまなエンティティの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |  
 | BackupItemUniqueId_s |テキスト |バックアップ項目の一意の ID |
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="job"></a>ジョブ
 次の表は、ジョブに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | BackupItemUniqueId_s |テキスト |このジョブが属しているバックアップ項目の一意の ID |
@@ -133,10 +133,10 @@ ms.lasthandoff: 10/11/2017
 | ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
 | ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
 
-### <a name="policy"></a>[ポリシー]
+### <a name="policy"></a>ポリシー
 次の表は、ポリシーに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -176,7 +176,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="policyassociation"></a>PolicyAssociation
 次の表は、ポリシー アソシエーションとさまざまなエンティティの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -197,7 +197,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="protectedserver"></a>ProtectedServer
 次の表は、保護されるサーバーに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | ProtectedServerName_s |テキスト |保護されるサーバーの名前 |
@@ -222,7 +222,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="protectedserverassociation"></a>ProtectedServerAssociation
 次の表は、保護されるサーバー アソシエーションとさまざまなエンティティの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -240,10 +240,10 @@ ms.lasthandoff: 10/11/2017
 | ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
 | ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 次の表は、ストレージに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | CloudStorageInBytes_s |10 進数 |最新の値に基づいて計算された、バックアップによって使用されるクラウド バックアップ ストレージ |
 | ProtectedInstances_s |10 進数 |最新の値に基づいて計算された、課金されるフロントエンド ストレージの計算に使用する保護されるインスタンスの数 |
@@ -266,7 +266,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="vault"></a>コンテナー
 次の表は、コンテナーに関連するフィールドの詳細を示しています。
 
-| フィールド | データ型 | Description |
+| フィールド | データ型 | [説明] |
 | --- | --- | --- |
 | EventName_s |テキスト |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
 | SchemaVersion_s |テキスト |このフィールドは、スキーマの現在のバージョン (**V1**) を表します。 |
@@ -285,5 +285,5 @@ ms.lasthandoff: 10/11/2017
 | ResourceProvider |テキスト |このフィールドはデータの収集対象のリソース プロバイダー (Microsoft.RecoveryServices) を表します。 |
 | ResourceType |テキスト |このフィールドはデータの収集対象のリソースの種類 (コンテナー) を表します。 |
 
-## <a name="next-steps"></a>次のステップ
-Azure Backup のレポートを作成するためのデータ モデルを確認したら、Log Analytics および OMSで[ダッシュボードの作成](../log-analytics/log-analytics-dashboards.md)を開始できます。
+## <a name="next-steps"></a>次の手順
+Azure Backup のレポートを作成するためのデータ モデルを確認したら、Log Analytics で[ダッシュボードの作成](../log-analytics/log-analytics-dashboards.md)を開始できます。

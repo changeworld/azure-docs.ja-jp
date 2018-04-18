@@ -1,11 +1,11 @@
 ---
-title: "Azure App Service での認証と承認 | Microsoft Docs"
-description: "Azure App Service の認証/承認の機能の概念リファレンスと概要"
+title: Azure App Service での認証と承認 | Microsoft Docs
+description: Azure App Service の認証/承認の機能の概念リファレンスと概要
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
@@ -14,146 +14,141 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: f0d2644903181cd2e20166feae4f90ddd4037fa8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 342aeee25a7cb9f6a0f5af055d04e67d0c52db80
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
-## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
-App Service の認証および承認は、アプリケーションで、アプリのバックエンドでコードを変更する必要がないように、ユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
-App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の 5 つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
+Azure App Service は組み込みの認証と承認のサポートを提供するので、Web アプリ、API、モバイル バックエンド、さらには [Azure Functions](../azure-functions/functions-overview.md) でも、最小限のコードを記述するだけで、またはまったく記述せずに、ユーザーのサインインとデータへのアクセスを可能にできます。 この記事では、App Service によりアプリの認証と承認を簡略化する方法について説明します。 
 
-すぐに開始する場合は、「[iOS アプリに認証を追加する][iOS]」(または [Android][Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova]) のチュートリアルのいずれかを参照してください。
+安全な認証と承認には、フェデレーション、暗号化、[JSON Web トークン (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[付与タイプ](https://oauth.net/2/grant-types/)など、セキュリティについての深い理解が必要です。 App Service ではこれらのユーティリティが提供されているので、ビジネス価値を顧客に提供することにいっそうの時間と労力を費やすことができます。
 
-## <a name="how-authentication-works-in-app-service"></a>App Service の承認のしくみ
-いずれかの ID プロバイダーで認証を行うには、最初にその ID プロバイダーを構成してアプリケーションを把握させる必要があります。 すると、ID プロバイダーから ID とシークレットが提供されるので、それらを App Service に提供します。 これにより信頼関係が完成し、App Service は、ID プロバイダーから、認証トークンなどのユーザー アサーションを検証できるようになります。
+> [!NOTE]
+> 認証と承認に App Service を必ず使う必要はありません。 多くの Web フレームワークにセキュリティ機能がバンドルされており、必要に応じてそれらを使うことができます。 App Service より高い柔軟性が必要な場合は、独自のユーティリティを記述することもできます。  
+>
 
-こうしたプロバイダーのいずれかを使用してユーザーをサインインさせるには、そのプロバイダーのユーザーをサインインさせるエンドポイントにユーザーをリダイレクトする必要があります。 顧客が Web ブラウザーを使用している場合は、App Service を使用して、認証されていないすべてのユーザーを、ユーザーをサインインさせるエンドポイントに自動的に転送できます。 それ以外の場合は、顧客を `{your App Service base URL}/.auth/login/<provider>` に転送する必要があります。ここで、`<provider>` は、aad、facebook、google、microsoft、twitter のいずれかの値になります。 モバイルおよび API のシナリオについては、この記事の後のセクションで説明します。
+ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と承認](../app-service-mobile/app-service-mobile-auth.md)に関する記事をご覧ください。
 
-Web ブラウザーを使用してアプリケーションとやり取りするユーザーは、Cookie を設定することになるため、アプリケーションを参照するときに認証された状態を維持できます。 モバイルなどの他のタイプのクライアントでは、 `X-ZUMO-AUTH` ヘッダーに表示する必要がある JSON Web トークン (JWT) がクライアントに発行されます。 これは、Mobile Apps クライアント SDK によって処理されます。 または、Azure Active Directory の ID トークンまたはアクセス トークンを、 `Authorization` ヘッダーに [ベアラー トークン](https://tools.ietf.org/html/rfc6750)として直接含めることができます。
+## <a name="how-it-works"></a>動作のしくみ
 
-App Service は、アプリケーションが発行したすべての Cookie とトークンを検証して、ユーザーを認証します。 アプリケーションにアクセスできるユーザーを制限するには、この記事で後述する [認証](#authorization) に関するセクションを参照してください。
+認証と承認のモジュールは、アプリケーションのコードと同じサンドボックスで実行します。 有効になっている場合、すべての受信 HTTP 要求は、アプリケーション コードによって処理される前に、認証と承認のモジュールを通過します。
 
-### <a name="mobile-authentication-with-a-provider-sdk"></a>プロバイダー SDK を使用したモバイル認証
-バックエンドですべてを構成したら、App Service にサインインできるようにモバイル クライアントを変更できます。 これには 2 つの方法はあります。
+![](media/app-service-authentication-overview/architecture.png)
 
-* 特定の ID プロバイダーが発行する SDK を使用して、ID を確立し、App Service にアクセスできるようにします。
-* 1 行のコードを使用して、Mobile Apps クライアント SDK でユーザーがサインインできるようにします。
+このモジュールは、アプリのためにいくつかの処理を行います。
 
-> [!TIP]
-> ほとんどのアプリケーションで、ユーザーのサインイン時に一貫性のあるエクスペリエンスを実現し、更新サポートを使用して、プロバイダーが指定する他の利点を得るために、プロバイダー SDK を使用する必要があります。
-> 
-> 
+- 指定されたプロバイダーでユーザーを認証します
+- トークンを検証、格納、更新します
+- 認証されたセッションを管理します
+- 要求ヘッダーに ID 情報を挿入します
 
-プロバイダー SDK を使用すると、ユーザーは、アプリが実行しているオペレーティング システムとより緊密に統合するエクスペリエンスにサインインできます。 これにより、プロバイダーのトークンとクライアント上のユーザー情報の一部が得られるので、グラフ API が使用しやすくなったり、ユーザー エクスペリエンスをカスタマイズしやすくなったりします。 クライアント コードがユーザーをサインインさせ、クライアント コードがプロバイダーのトークンにアクセスするため、これは "クライアント フロー" または "クライアント主導のフロー" と、ブログやフォーラムで呼ばれることがあります。
+このモジュールはアプリケーションのコードとは別に実行され、アプリの設定を使って構成されます。 SDK、特定の言語、またはアプリケーションのコードの変更は必要ありません。 
 
-プロバイダーのトークンが取得されたら、App Service に送信して検証する必要があります。 App Service では、トークンの検証後、クライアントに返される新しい App Service トークンが作成されます。 Mobile Apps クライアント SDK には、この交換を管理してアプリケーション バックエンドへのすべての要求にトークンを自動的に添付するヘルパー メソッドがあります。 希望する場合、開発者はプロバイダー トークンへの参照を保持できます。
+### <a name="user-claims"></a>ユーザーの要求
 
-### <a name="mobile-authentication-without-a-provider-sdk"></a>プロバイダー SDK を使用しないモバイル認証
-SDK プロバイダーを設定しない場合は、Azure App Service の Mobile Apps 機能によって自動的にサインインさせることができます。 Mobile Apps クライアント SDK が、選択したプロバイダーの Web ビューを開き、ユーザーをサインインさせます。 サーバーがユーザーをサインインさせるプロセスを管理し、クライアント SDK がプロバイダーのトークンを受け取ることはないため、これは "サーバー フロー" または "サーバー主導のフロー" と、ブログやフォーラムで呼ばれることがあります。
+すべての言語フレームワークで、App Service はユーザーの要求を要求ヘッダーに挿入することによってコードで要求を使用できるようにします。 ASP.NET 4.6 アプリの場合、App Service は認証されたユーザーの要求で [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) を設定するので、標準の .NET コード パターン (`[Authorize]` 属性など) に従うことができます。 同様に、PHP アプリの場合、App Service は `_SERVER['REMOTE_USER']` 変数を設定します。
 
-このフローを開始するコードは、各プラットフォームの認証のチュートリアルに含まれています。 フローの最後では、クライアント SDK が App Service トークンを取得し、そのトークンがアプリケーション バックエンドへのすべての要求に自動的に添付されます。
+[Azure Functions](../azure-functions/functions-overview.md) では、`ClaimsPrincipal.Current` は .NET コードに対してハイドレートされませんが、それでも要求ヘッダー内でユーザーの要求を見つけることができます。
 
-### <a name="service-to-service-authentication"></a>サービス間認証
-ユーザーにアプリケーションへのアクセス権を付与できますが、独自の API を呼び出すために別のアプリケーションを信頼することもできます。 たとえば、ある Web アプリで別の Web アプリに API を呼び出させることができます。 このシナリオでは、ユーザーの資格情報ではなく、サービス アカウントの資格情報を使用して、トークンを取得します。 サービス アカウントは、Azure Active Directory の用語では *サービス プリンシパル* とも呼ばれ、このようなアカウントを使用する認証は、サービス間シナリオとも呼ばれます。
+詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
 
-> [!IMPORTANT]
-> モバイル アプリはお客様のデバイスで実行されるので、信頼されたアプリケーションとは "*見なされません*"。また、サービス プリンシパルのフローも使用できません。 代わりに、先述のユーザー フローを使用する必要があります。
-> 
-> 
+### <a name="token-store"></a>トークン ストア
 
-サービス間シナリオでは、App Service は Azure Active Directory を使用してアプリケーションを保護できます。 呼び出し元のアプリケーションは、Azure Active Directory からクライアント ID とクライアント シークレットを提供することで取得した Azure Active Directory サービスのプリンシパル認証トークンを提供するだけで済みます。 このシナリオの ASP.NET API アプリを使った例が、[API Apps の サービス プリンシパル認証][apia-service] に関するチュートリアルで紹介されています。
+App Service が提供する組み込みのトークン ストアは、Web アプリ、API、またはネイティブ モバイル アプリのユーザーに関連付けられているトークンのリポジトリです。 いずれかのプロバイダーで認証を有効にすると、このトークン ストアはアプリですぐに使用できるようになります。 次のような場合、アプリケーション コードはユーザーに代わってこれらのプロバイダーのデータにアクセスする必要があります。 
 
-App Service 認証を使用して、サービス間のシナリオを処理する場合、クライアント証明書または基本認証を利用することができます。 Azure のクライアント証明書の詳細については、「 [Web Apps の TLS 相互認証を構成する方法](app-service-web-configure-tls-mutual-auth.md)」を参照してください。 ASP.NET での基本認証の詳細については、「 [Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
+- 認証されたユーザーの Facebook タイムラインに投稿する
+- Azure Active Directory Graph API や Microsoft Graph などからユーザーの会社データを読み取る
 
-App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、 [App Service でホストされたカスタム API の Logic Apps での使用に関するページ](../logic-apps/logic-apps-custom-hosted-api.md) で説明されています。
+ID トークン、アクセス トークン、更新トークンは認証されたセッションに対してキャッシュされ、関連付けられているユーザーだけがアクセスできます。  
 
-## <a name="authorization"></a>App Service の認証のしくみ
-アプリケーションにアクセスできる要求を完全に制御することができます。 App Service の認証/承認は、次の動作のいずれかになるように構成できます。
+通常、アプリケーションでこれらのトークンを収集、格納、更新するには、コードを記述する必要があります。 トークン ストアに関しては、トークンが必要になったら[トークンを取得](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)し、トークンが無効になったら[トークンを更新するよう App Service に指示する](app-service-authentication-how-to.md#refresh-access-tokens)だけです。 
 
-* 認証済みの要求のみアプリケーションへの到達を許可する。
-  
-    ブラウザーで匿名要求を送信した場合、App Service は、ユーザーがサインインできるように選択した ID プロバイダーのページにリダイレクトされます。 要求がモバイル デバイスから送信された場合は、HTTP *401 Unauthorized* 応答が返されます。
-  
-    このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 細かい承認を行う必要がある場合は、ユーザーに関する情報をコードで使用できます。
-* すべての要求にアプリケーションへの到達を許可したうえで、認証済みの要求を検証し、HTTP ヘッダー内の認証情報を受け渡しする。
-  
-    このオプションでは、承認に関する決定をアプリケーション コードに委ねます。 匿名要求処理の柔軟性は高まりますが、コードを記述する必要があります。
-* すべての要求にアプリケーションへの到達を許可し、要求に含まれる認証情報に対して何も実行しない。
-  
-    この場合、認証/承認の機能は無効になります。 認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
+アプリでトークンを使う必要がない場合は、トークン ストアを無効にしてもかまいません。
 
-前述の動作は、Azure ポータルの **[ 要求が認証されない場合に実行するアクション ]** オプションによって制御します。 [***<プロバイダー名>* でのログイン**] を選択した場合、すべての要求が認証される必要があります。 **[要求の許可 (操作不要)]** では、承認に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
+### <a name="logging-and-tracing"></a>ログとトレース
 
-## <a name="working-with-user-identities-in-your-application"></a>アプリケーションでのユーザー ID の使用
-App Service では、特殊なヘッダーを使用して、アプリケーションにユーザー情報の一部を渡します。 外部要求ではこれらのヘッダーが禁じられており、App Service の認証/承認によって設定された場合にのみ、使用できます。 いくつかのヘッダーの例は次のとおりです。
+[アプリケーション ログを有効にする](web-sites-enable-diagnostic-log.md)と、認証と承認のトレースをログ ファイルで直接見ることができます。 予期しない認証エラーが発生した場合は、既存のアプリケーション ログを参照して、すべての詳細を簡単に確認できます。 [失敗した要求トレース](web-sites-enable-diagnostic-log.md)を有効にしてある場合は、失敗した要求で認証および承認モジュールが演じていた役割を正確に確認できます。 トレース ログでは、`EasyAuthModule_32/64` という名前のモジュールへの参照を探します。 
 
-* X-MS-CLIENT-PRINCIPAL-NAME
-* X-MS-CLIENT-PRINCIPAL-ID
-* X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN
-* X-MS-TOKEN-FACEBOOK-EXPIRES-ON
+## <a name="identity-providers"></a>ID プロバイダー
 
-任意の言語またはフレームワークで記述されたコードで、これらのヘッダーから必要な情報を取得できます。 ASP.NET 4.6 アプリの場合は、 **ClaimsPrincipal** が自動的に適切な値に設定されます。
+App Service が使用する[フェデレーション ID](https://en.wikipedia.org/wiki/Federated_identity) では、サード パーティの ID プロバイダーが代わりにユーザー ID と認証フローを管理します。 既定では 5 つの ID プロバイダーを利用できます。 
 
-アプリケーションでは、HTTP GET を介してアプリケーションの `/.auth/me` エンドポイントで、その他のユーザー詳細も取得できます。 要求に含まれている有効なトークンにより、使用されているプロバイダー、基になっているプロバイダー トークン、およびその他のユーザー情報に関する詳細を含む JSON ペイロードが返されます。 Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。 詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)」を参照してください。
+| プロバイダー | サインイン エンドポイント |
+| - | - |
+| [Azure Active Directory](../active-directory/active-directory-whatis.md) | `/.auth/login/aad` |
+| [Microsoft アカウント](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoft` |
+| [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
+| [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
+| [Twitter](https://developer.twitter.com/docs/basics/authentication) | `/.auth/login/twitter` |
 
-## <a name="documentation-and-additional-resources"></a>ドキュメントおよびその他のリソース
-### <a name="identity-providers"></a>ID プロバイダー
-以下のチュートリアルは、さまざまな認証プロバイダーを使用する、App Service の構成方法について説明しています。
+これらのプロバイダーのいずれかで認証と承認を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。 別の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合することもできます。
+
+## <a name="authentication-flow"></a>Authentication flow
+
+認証フローは、プロバイダーによる違いはありませんが、プロバイダーの SDK でログインするかどうかによって異なります。
+
+- プロバイダーの SDK を使わない場合: アプリケーションは、フェデレーション サインインを App Service に委任します。 これはブラウザー アプリで通常のケースであり、プロバイダーのログイン ページをユーザーに表示することができます。 サーバーのコードがサインイン プロセスを管理するので、"_サーバー主導のフロー_" または "_サーバー フロー_" とも呼ばれます。 このケースは Web アプリに適用されます。 また、Mobile Apps クライアント SDK を使ってユーザーをサインインさせるネイティブ アプリにも適用されます。その場合は、SDK が Web ビューを開いて App Service 認証でユーザーをサインインさせます。 
+- プロバイダーの SDK を使う場合: アプリケーションは、手動でユーザーをサインインさせてから、検証のために App Service に認証トークンを送信します。 これはブラウザーレス アプリで通常のケースであり、プロバイダーのサインイン ページをユーザーに表示することはできません。 アプリケーションのコードがサインイン プロセスを管理するので、"_クライアント主導のフロー_" または "_クライアント フロー_" とも呼ばれます。 このケースは、REST API、[Azure Functions](../azure-functions/functions-overview.md)、JavaScript ブラウザー クライアント、およびいっそう柔軟なサインイン プロセスを必要とする Web アプリに適用されます。 また、プロバイダーの SDK を使ってユーザーをサインインさせるネイティブ モバイル アプリにも適用されます。
+
+> [!NOTE]
+> App Service または [Azure Functions](../azure-functions/functions-overview.md) の別の REST API を呼び出す App Service 内の信頼されたブラウザー アプリからの呼び出しは、サーバー主導のフローを使って認証することができます。 詳しくは、[Azure App Service でのユーザーの認証]()に関する記事をご覧ください。
+>
+
+次の表では、認証フローの手順を示します。
+
+| 手順 | プロバイダーの SDK を使わない場合 | プロバイダーの SDK を使う場合 |
+| - | - | - |
+| 1.ユーザーをサインインさせる | クライアントを `/.auth/login/<provider>` にリダイレクトします。 | クライアント コードはプロバイダーの SDK でユーザーを直接サインインさせ、認証トークンを受け取ります。 詳しくは、プロバイダーのドキュメントをご覧ください。 |
+| 2.認証をポストする | プロバイダーはクライアントを `/.auth/login/<provider>/callback` にリダイレクトします。 | クライアント コードは検証のためにプロバイダーからのトークンを `/.auth/login/<provider>` にポストします。 |
+| 手順 3.認証済みのセッションを確立する | App Service は認証された Cookie を応答に追加します。 | App Service は独自の認証トークンをクライアント コードに返します。 |
+| 4.認証済みのコンテンツを提供する | クライアントは以降の要求に認証クッキーを含めます (ブラウザーによって自動的に処理されます)。 | クライアント コードは `X-ZUMO-AUTH` ヘッダーで認証トークンを提示します (Mobile Apps クライアント SDK によって自動的に処理されます)。 |
+
+クライアント ブラウザーの場合、App Service は認証されていないすべてのユーザーを `/.auth/login/<provider>` に自動的に送ることができます。 また、ユーザーが選んだプロバイダーを使ってアプリにサインインするための 1 つまたは複数の `/.auth/login/<provider>` リンクをユーザーに表示することもできます。
+
+<a name="authorization"></a>
+
+## <a name="authorization-behavior"></a>承認の動作
+
+[Azure Portal](https://portal.azure.com) では、複数の動作で App Service の承認を構成することができます。
+
+![](media/app-service-authentication-overview/authorization-flow.png)
+
+以下の見出しではそれらのオプションを説明します。
+
+### <a name="allow-all-requests-default"></a>すべての要求を許可する (既定値)
+
+認証と承認は App Service によって管理されません (オフ)。 
+
+認証と承認を必要としない場合、または認証と承認のコードを独自に記述する場合は、このオプションを選びます。
+
+### <a name="allow-only-authenticated-requests"></a>認証された要求のみを許可する
+
+オプションは **[\<プロバイダー> でのログイン]** です。 App Service は、すべての匿名要求を、選ばれたプロバイダーの `/.auth/login/<provider>` にリダイレクトします。 匿名要求がネイティブ モバイル アプリからのものである場合、返される応答は `HTTP 401 Unauthorized` です。
+
+このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 役割固有の承認などのさらに細かい承認は、ユーザーの要求を調べることで処理できます (「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください)。
+
+### <a name="allow-all-requests-but-validate-authenticated-requests"></a>すべての要求を許可するが、認証された要求を検証する
+
+オプションは **[匿名要求を許可する]** です。 このオプションは、App Service での認証と承認を有効にしますが、承認の決定をアプリケーション コードまで延期します。 認証された要求について、App Service は HTTP ヘッダーで認証情報も渡します。 
+
+このオプションでは、匿名要求をいっそう柔軟に処理できます。 たとえば、ユーザーに[複数のサインイン オプションを提示する](app-service-authentication-how-to.md#configure-multiple-sign-in-options)ことができます。 ただし、コードを記述する必要があります。 
+
+## <a name="more-resources"></a>その他のリソース
+
+[チュートリアル: Azure App Service でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)  
+[App Service での認証と承認のカスタマイズ](app-service-authentication-how-to.md)
+
+プロバイダー固有の手順ガイド:
 
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法][AAD]
 * [Facebook ログインを使用するようにアプリを構成する方法][Facebook]
 * [Google ログインを使用するようにアプリを構成する方法][Google]
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法][MSA]
 * [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
-
-ここで示す以外の ID システムを使用する場合は、[Mobile Apps .NET サーバー SDK でのカスタム認証のサポートのプレビュー][custom-auth]も利用できます。このプレビューは、Web アプリ、モバイル アプリ、API アプリで使用できます。
-
-### <a name="mobile-applications"></a>モバイル アプリケーション
-以下のチュートリアルで、サーバー主導のフローを使用し、モバイル クライアントに認証を追加する方法について説明しています。
-
-* [iOS アプリに認証を追加する][iOS]
-* [Android アプリに認証を追加する][Android]
-* [Windows アプリに認証を追加する][Windows]
-* [Xamarin.iOS アプリに認証を追加する][Xamarin.iOS]
-* [Xamarin.Android アプリに認証を追加する][Xamarin.Android]
-* [Xamarin.Forms アプリに認証を追加する][Xamarin.Forms]
-* [Cordova アプリに認証を追加する][Cordova]
-
-Azure Active Directory のクライアント主導のフローを使用する場合は、次のリソースを使用します。
-
-* [iOS 向け Active Directory 認証ライブラリを使用する][ADAL-iOS]
-* [Android 向け Active Directory 認証ライブラリを使用する][ADAL-Android]
-* [Windows および Xamarin 向け Active Directory 認証ライブラリを使用する][ADAL-dotnet]
-
-Facebook のクライアント主導のフローを使用する場合は、次のリソースを使用します。
-
-* [Facebook SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
-
-Twitter のクライアント主導のフローを使用する場合は、次のリソースを使用します。
-
-* [Twitter Fabric for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
-
-Google のクライアント主導のフローを使用する場合は、次のリソースを使用します。
-
-* [Google Sign-In SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
-
-<!-- ### API applications
-The following tutorials show how to protect your API apps:
-
-* [User authentication for API Apps in Azure App Service][apia-user]
-* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
-
-[iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
-[Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
-[Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
-[Xamarin.Android]: ../app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md
-[Xamarin.Forms]: ../app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md
-[Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
-[Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
+* [方法: アプリケーションにカスタム認証を使用する][custom-auth]
 
 [AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md

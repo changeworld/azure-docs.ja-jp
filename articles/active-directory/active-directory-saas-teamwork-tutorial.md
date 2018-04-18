@@ -1,10 +1,10 @@
 ---
-title: "チュートリアル: Azure Active Directory と Teamwork.com の統合 | Microsoft Docs"
-description: "Azure Active Directory と Teamwork.com の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Teamwork.com の統合 | Microsoft Docs'
+description: Azure Active Directory と Teamwork.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b4be1256b77ac35efab9c6b2d593b4763cdf86
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>チュートリアル: Azure Active Directory と [Teamwork.com](https://www.teamwork.com/projects) の統合
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル: Azure Active Directory と Teamwork.com の統合
 
 このチュートリアルでは、Teamwork.com と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Teamwork.com と Azure AD の統合を構成するには、以下が必要です。
 
 - Azure AD サブスクリプション
-- Pro プラン以上の [Teamwork.com](https://www.teamwork.com/projects) サブスクリプション
+- Teamwork.com でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -108,10 +108,17 @@ Teamwork.com で Azure AD のシングル サインオンを構成してテス�
 
     ![[Teamwork.com のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-teamwork-tutorial/tutorial_teamwork_url.png)
 
-    **[サインオン URL]** ボックスに、`https://<company name>.teamwork.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.teamwork.com` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスに次の URL を入力します。
+
+    |||
+    |-|-|
+    | `https://teamwork.com/saml`|
+    | `https://eu.teamwork.com/saml`|
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Teamwork.com サポート チーム](mailto:support@teamwork.com)にお問い合わせください。 
+    > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Teamwork.com サポート チーム](mailto:support@teamwork.com)にお問い合わせください。 
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -122,10 +129,6 @@ Teamwork.com で Azure AD のシングル サインオンを構成してテス�
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-teamwork-tutorial/tutorial_general_400.png)
 
 6. **Teamwork.com** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Teamwork.com サポート チーム](mailto:support@teamwork.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -204,8 +207,6 @@ Teamwork.com で Azure AD のシングル サインオンを構成してテス�
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

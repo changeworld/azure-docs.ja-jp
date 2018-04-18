@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI 1.0 を使用して Linux VM に MongoDB をインストールする | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルを使って Azure の Linux 仮想マシンに MongoDB をインストールして構成する方法について説明します。"
+title: Azure CLI 1.0 を使用して Linux VM に MongoDB をインストールする | Microsoft Docs
+description: Resource Manager デプロイメント モデルを使って Azure の Linux 仮想マシンに MongoDB をインストールして構成する方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: ff9e23de41245ea21ba6e9c3efe13ca13b0b0ae1
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: a334a0b7b3b638229c61eef086b1919b4c303338
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM に MongoDB をインストールして構成する方法
 [MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Resource Manager デプロイメント モデルを使って Azure の Linux VM に MongoDB をインストールして構成する方法を説明します。 次の方法が詳しくわかる例を示します。
@@ -113,7 +113,7 @@ sudo chkconfig mongod on
 ## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>テンプレートを使って CentOS に基本的な MongoDB インスタンスを作成する
 GitHub にある次の Azure クイックスタート テンプレートを使って、単一の CentOS VM に基本的な MongoDB インスタンスを作成できます。 このテンプレートは、Linux 用のカスタム スクリプト拡張機能を使って、新しく作成した CentOS VM に `yum` リポジトリを追加してから、MongoDB をインストールします。
 
-* [CentOS 上の基本的な MongoDB インスタンス](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
+* [CentOS での基本的な MongoDB インスタンス](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
 次の例では、`eastus` リージョンに `myResourceGroup` という名前のリソース グループを作成します。 実際の値を次のように入力します。
 
@@ -160,7 +160,7 @@ test
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>テンプレートを使って CentOS に複雑な MongoDB シャード化クラスターを作成する
 GitHub にある次の Azure クイックスタート テンプレートを使って、複雑な MongoDB シャード化クラスターを作成できます。 このテンプレートは、[MongoDB シャード化クラスターのベスト プラクティス](https://docs.mongodb.com/manual/core/sharded-cluster-components/)に従って、冗長性と高可用性を提供します。 このテンプレートは、2 つのシャードと、各レプリカ セット内に 3 つのノードを作成します。 3 つのノードを含む 1 つの構成サーバー レプリカ セットも作成され、さらに 2 つの **mongos** ルーター サーバーが作成されてシャード全体のアプリケーションの一貫性が提供されます。
 
-* [CentOS 上の MongoDB シャード化クラスター](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
+* [CentOS での MongoDB シャード化クラスター](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
 > この複雑な MongoDB シャード化クラスターをデプロイするには、20 個より多くの vCPU が必要です。サブスクリプションに対するリージョンごとの既定の vCPU 数は、通常 20 個です。 vCPU 数を増やすには、Azure サポート要求を提出してください。
@@ -178,7 +178,7 @@ azure group create \
 > デプロイを作成して数秒で Azure CLI はプロンプトに戻りますが、インストールと構成が完了するには 1 時間以上かかることがあります。 デプロイの状態は `azure group deployment show myResourceGroup` で確認します。リソース グループの名前を入力します。 **ProvisioningState** に *Succeeded* と表示されるまで待ってから、VM に接続します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事の例では、VM からローカルに MongoDB インスタンスに接続しました。 別の VM またはネットワークから MongoDB インスタンスに接続する場合は、適切な[ネットワーク セキュリティ グループ規則を作成する](nsg-quickstart.md)必要があります。
 
 テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。

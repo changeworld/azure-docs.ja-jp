@@ -1,11 +1,11 @@
 ---
-title: "Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能 | Microsoft Docs"
-description: "仮想マシン拡張機能を使用して、Windows 仮想マシンに Network Watcher Agent をデプロイします。"
+title: Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能 | Microsoft Docs
+description: 仮想マシン拡張機能を使用して、Windows 仮想マシンに Network Watcher Agent をデプロイします。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 84ac50ea555df538cc6347be58537e31b0f14611
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/20/2017
 [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン拡張機能は、オンデマンドでネットワーク トラフィックをキャプチャするためと、Azure 仮想マシンに関するその他の高度な機能を使用するための要件です。
 
 
-このドキュメントでは、Windows 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します。
+このドキュメントでは、Windows 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します。 エージェントのインストールによって、仮想マシンが中断されることも、再起動が必要になることはありません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
-| type | NetworkWatcherAgentWindows |
+| 型 | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
 

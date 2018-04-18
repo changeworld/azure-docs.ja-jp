@@ -1,11 +1,11 @@
 ---
-title: "Operations Manager を Log Analytics に接続する | Microsoft Docs"
-description: "Operations Manager と OMS ワークスペースを統合することにより、System Center Operations Manager における既存の投資を維持しながら、Log Analytics で拡張機能を使用することができます。"
+title: Operations Manager を Log Analytics に接続する | Microsoft Docs
+description: Operations Manager と OMS ワークスペースを統合することにより、System Center Operations Manager における既存の投資を維持しながら、Log Analytics で拡張機能を使用することができます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: magoedte
 ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
 Operations Manager と OMS ワークスペースを統合することにより、System Center Operations Manager における既存の投資を維持しながら、Log Analytics で拡張機能を使用することができます。  この統合により、Operations Manager を使用して以下に示す処理を引き続き行いながら、OMS によってもたらされる利点を活用することができます。
@@ -101,7 +101,7 @@ OMS ワークスペースとの統合を構成しても、OMS との接続が確
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 2. [Operations Management Suite] を展開し、 **[接続]**をクリックします。
 3. [OMS の接続] ビューで、 **[プロキシ サーバーの構成]**をクリックします。
-4. **[Operations Management Suite 設定ウィザード: プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80 )、**[完了]** をクリックします。
+4. **[Operations Management Suite 設定ウィザード: プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80)、**[完了]** をクリックします。
 
 プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の OMS への報告を行う管理されたコンピューターに伝達される必要がある設定と資格情報を構成します。
 

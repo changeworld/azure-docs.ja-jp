@@ -1,11 +1,11 @@
 ---
-title: "CORS を利用した Azure CDN の使用 | Microsoft Docs"
-description: "クロス オリジン リソース共有 (CORS) を利用して Azure Content Delivery Network (CDN) を使用する方法について説明します。"
+title: CORS を利用した Azure CDN の使用 | Microsoft Docs
+description: クロス オリジン リソース共有 (CORS) を利用して Azure Content Delivery Network (CDN) を使用する方法について説明します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは

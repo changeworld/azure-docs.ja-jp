@@ -55,11 +55,11 @@
         - name: Azure Stack のデプロイの PKI 要件
           href: azure-stack-pki-certs.md
           items:
-            - name: Azure Stack PKI 証明書の取得
+            - name: PKI 証明書の生成
               href: azure-stack-get-pki-certs.md
             - name: Azure Stack PKI 証明書の準備
               href: azure-stack-prepare-pki-certs.md
-            - name: Azure Stack PKI 証明書の検証
+            - name: PKI 証明書の検証
               href: azure-stack-validate-pki-certs.md
         - name: ID の統合
           href: azure-stack-integrate-identity.md
@@ -286,8 +286,6 @@
           href: azure-stack-diagnostics.md
         - name: Azure Stack に対する検証
           href: azure-stack-diagnostic-test.md
-        - name: Azure Stack Development Kit の再デプロイ
-          href: azure-stack-redeploy.md
 - name: リファレンス
   items:
     - name: Azure Stack PowerShell

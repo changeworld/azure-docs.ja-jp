@@ -85,8 +85,6 @@
           href: backup-azure-files.md
         - name: Azure ファイル共有のバックアップに関する FAQ
           href: backup-azure-files-faq.md
-        - name: Azure ファイル共有のバックアップに関するトラブルシューティング
-          href: troubleshoot-azure-files.md
     - name: Azure VM
       items:
         - name: VM を準備する
@@ -181,18 +179,20 @@
           href: backup-azure-delete-vault.md
     - name: トラブルシューティング
       items:
-        - name: Azure Portal での Azure VM のバックアップに関する問題
+        - name: IaaS VM のバックアップのエラー メッセージ
           href: backup-azure-vms-troubleshoot.md
-        - name: 'Azure VM のバックアップの失敗: スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました'
+        - name: Azure Backup (MARS) エージェントまたは VM 拡張機能がタイムアウトした
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-        - name: Azure Backup でファイルとフォルダーのバックアップが遅い
+        - name: ファイルとフォルダーのバックアップが遅い
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
-        - name: Azure Backup Server のトラブルシューティング
+        - name: Azure Backup Server
           href: backup-azure-mabs-troubleshoot.md
-        - name: System Center Data Protection Manager のトラブルシューティング
+        - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup エージェントのトラブルシューティング
+        - name: Azure Backup (MARS) エージェント
           href: backup-azure-mars-troubleshoot.md
+        - name: Azure ファイル共有のバックアップ
+          href: troubleshoot-azure-files.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

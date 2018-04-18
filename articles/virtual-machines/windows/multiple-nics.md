@@ -1,11 +1,11 @@
 ---
-title: "複数の NIC を使用する Azure での Windows VM の作成と管理 | Microsoft Docs"
-description: "Azure PowerShell または Resource Manager テンプレートを使用して、複数の NIC を持つ Windows VM を作成および管理する方法について説明します。"
+title: 複数の NIC を使用する Azure での Windows VM の作成と管理 | Microsoft Docs
+description: Azure PowerShell または Resource Manager テンプレートを使用して、複数の NIC を持つ Windows VM を作成および管理する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0f19ed89e49b34ff4b8abf5d22e7d59b89fd6d72
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -116,11 +116,13 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. 最後に、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。
+5. [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。
 
     ```powershell
     New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
+
+6. [複数の NIC 用のオペレーティング システムの構成](#configure-guest-os-for-multiple-nics)に関する記事の手順を完了して、セカンダリ NIC の OS へのルートを追加します。
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>既存の VM への NIC の追加
 既存の VM に仮想 NIC を追加するには、この VM の割り当てを解除し、仮想 NIC を追加してから、VM を起動します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](resize-vm.md)。
@@ -175,6 +177,8 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     ```powershell
     Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
+
+5. [複数の NIC 用のオペレーティング システムの構成](#configure-guest-os-for-multiple-nics)に関する記事の手順を完了して、セカンダリ NIC の OS へのルートを追加します。
 
 ## <a name="remove-a-nic-from-an-existing-vm"></a>既存の VM からの NIC の削除
 既存の VM から仮想 NIC を削除するには、この VM の割り当てを解除し、仮想 NIC を削除してから、VM を起動します。
@@ -232,6 +236,8 @@ Azure Resource Manager テンプレートでは、複数の NIC の作成など�
 ```
 
 完全な例については、「[Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
+
+[複数の NIC 用のオペレーティング システムの構成](#configure-guest-os-for-multiple-nics)に関する記事の手順を完了して、セカンダリ NIC の OS へのルートを追加します。
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>複数の NIC 用にゲスト OS を構成する
 

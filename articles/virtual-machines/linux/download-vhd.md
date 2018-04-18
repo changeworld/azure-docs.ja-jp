@@ -1,13 +1,13 @@
 ---
-title: "Azure から Linux VHD をダウンロードする | Microsoft Docs"
-description: "Azure CLI と Azure Portal を使用して Linux VHD をダウンロードします。"
+title: Azure から Linux VHD をダウンロードする | Microsoft Docs
+description: Azure CLI と Azure Portal を使用して Linux VHD をダウンロードします。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 20af28dd4caa6ee5487b9a2ed83715b9b16fad48
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d177e8de7ace571c57a0b8b39c8834fb5b115365
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -35,10 +35,10 @@ VHD は、実行中の VM に接続されている場合、Azure からダウン
 
 VHD をイメージとして使用して他の VM を作成するには、次の手順を実行します。
 
-1. SSH、アカウント名、および VM のパブリック IP アドレスを使用して VM に接続し、プロビジョニング解除します。 +user パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 アカウントの資格情報を VM に組み込む場合は、この +user パラメーターを指定しないでください。 次の例では、前回プロビジョニングされたユーザー アカウントを削除します。
+1. SSH、アカウント名、および VM のパブリック IP アドレスを使用して VM に接続し、プロビジョニング解除します。 パブリック IP アドレスは、[az network public-ip show](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show) で検索できます。 +user パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 アカウントの資格情報を VM に組み込む場合は、この +user パラメーターを指定しないでください。 次の例では、前回プロビジョニングされたユーザー アカウントを削除します。
 
     ```bash
-    ssh azureuser@40.118.249.235
+    ssh azureuser@<publicIpAddress>
     sudo waagent -deprovision+user -force
     exit 
     ```

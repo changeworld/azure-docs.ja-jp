@@ -1,13 +1,13 @@
 ---
-title: "Azure DDoS Protection Standard の概要 | Microsoft Docs"
-description: "Azure DDoS Protection サービスについて説明します。"
+title: Azure DDoS Protection Standard の概要 | Microsoft Docs
+description: Azure DDoS Protection サービスについて説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb19baae1bc03633b7646fd2255ca910532595c5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -65,7 +65,7 @@ DDoS Protection Standard の機能には、次のものが含まれます。
 - **レイヤー 3 からレイヤー 7 までの保護:** アプリケーション ゲートウェイと併用すると、全スタックにわたって DDoS 保護が提供されます。
 - **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。 
 - **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
-- **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Operations Management Suite、Splunk、Azure Storage、電子メール、Azure Portal などの運用ソフトウェアに統合されます。
+- **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Log Analytics、Splunk、Azure Storage、電子メール、Azure Portal などの運用ソフトウェアに統合されます。
 - **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
 
 ## <a name="ddos-protection-standard-mitigation"></a>DDoS Protection Standard の軽減策
@@ -82,6 +82,6 @@ DDoS Protection は、攻撃トラフィックをブロックし、残りのト�
 
 顧客が独自の DDoS 攻撃をシミュレートすることはお勧めできません。 代わりに、顧客はサポート チャンネルを使用して、Azure のネットワークによって実行される DDoS 攻撃のシミュレーションを要求できます。 エンジニアからご連絡し、DDoS 攻撃の詳細 (ポート、プロトコル、ターゲット IP) と、テストをスケジュールする時間を調整いたします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure PowerShell](ddos-protection-manage-ps.md) または [Azure Portal](ddos-protection-manage-portal.md) を使用した DDoS Protection Standard の管理の詳細を学習します。

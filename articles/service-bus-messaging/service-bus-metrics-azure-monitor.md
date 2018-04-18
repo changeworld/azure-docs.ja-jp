@@ -1,12 +1,12 @@
 ---
-title: "Azure Monitor での Azure Service Bus メトリック (プレビュー) | Microsoft Docs"
-description: "Azure 監視を使用した Service Bus エンティティの監視"
+title: Azure Monitor での Azure Service Bus メトリック (プレビュー) | Microsoft Docs
+description: Azure 監視を使用した Service Bus エンティティの監視
 services: service-bus-messaging
 documentationcenter: .NET
 author: christianwolf42
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 20115897bb5ae2638588e79d80700fa8ece06104
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3660f0a6794a2fd784ec8846177da7effe7fe681
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、Azure Monitor API (REST および .NET) と Operation Management Suite (OMS) や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor metrics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api)」(Azure Monitor メトリック) を参照してください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor metrics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api)」(Azure Monitor メトリック) を参照してください。
 
 メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)で構成されます。
 
@@ -46,7 +46,7 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 ## <a name="billing"></a>課金
 
-Azure Monitor でのメトリックの使用は、プレビュー段階にある間は無料です。 ただし、メトリック データを取り込む追加のソリューションを使用する場合は、これらのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 また、高度な分析のためにメトリック データを Operation Management Suite (OMS) にストリーミングする場合は、OMS によっても課金されます。
+Azure Monitor でのメトリックの使用は、プレビュー段階にある間は無料です。 ただし、メトリック データを取り込む追加のソリューションを使用する場合は、これらのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 また、高度な分析のためにメトリック データを Log Analytics にストリーミングする場合は、Log Analytics によっても課金されます。
 
 次のメトリックによって、サービスの正常性の概要が提供されます。 
 

@@ -1,35 +1,30 @@
 ---
-title: Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定 | Microsoft Docs
-description: Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定のチュートリアル
-keywords: visual studio, NuGet, DevOps, CI/CD
-documentationcenter: ''
+title: Stream Analytics ツールで継続的に統合および開発する
+description: この記事では、Azure Stream Analytics 用の Visual Studio Tools を使って継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 14bb15f19b517b55281959f0de970e3f5e0d360b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 9/27/2017
+ms.openlocfilehash: e4e831c602255df66f4c86ffa17336f51d2b52f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定
-このチュートリアルでは、Azure Stream Analytics Visual Studio Tools を使用して継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
+# <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Stream Analytics ツールで継続的に統合および開発する
+この記事では、Visual Studio の Azure Stream Analytics ツールを使って継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
 
-最新バージョン (2.3.0000.0 以降) の [Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)では、MSBuild のサポートが追加されています。
+MSBuild のサポートを得るには、[Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)のバージョン 2.3.0000.0 以降を使います。
 
-新しくリリースされた NuGet パッケージ [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) もあります。 これは、Stream Analytics Visual Studio プロジェクトの継続的インテグレーションおよびデプロイ プロセスをサポートする MSBuild、ローカル実行、デプロイ ツールを提供します。 
+NuGet パッケージは [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) で入手できます。 これは、Stream Analytics Visual Studio プロジェクトの継続的インテグレーションおよびデプロイ プロセスをサポートする MSBuild、ローカル実行、デプロイ ツールを提供します。 
 > [!NOTE] 
 NuGet パッケージは、Visual Studio の Stream Analytics ツールのバージョン 2.3.0000.0 以降でのみ使用できます。 以前のバージョンの Visual Studio Tools で作成されたプロジェクトがある場合は、バージョン 2.3.0000.0 以降で開き、保存します。 その後、新しい機能が有効になります。 
 
-[Visual Studio の Stream Analytics ツールの使用方法](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)を確認してください。
+詳しくは、[Visual Studio の Azure Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)に関する記事をご覧ください。
 
 ## <a name="msbuild"></a>MSBuild
 標準の Visual Studio MSBuild エクスペリエンスと同様に、プロジェクトをビルドするオプションは 2 つあります。 プロジェクトを右クリックし、次に **[ビルド]** を選択できます。 コマンド ラインから NuGet パッケージの **MSBuild** を使用することもできます。

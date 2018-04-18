@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2018
 ms.author: johnkem
-ms.openlocfilehash: e09fe4fd48d1806e2194ed3065e7c2edbe2d1aa5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 05e9430dd8b7a14bc94869071cd145696f34567f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Azure Monitor の使用
 Azure Monitor は、Azure リソースを監視するための 1 つのソースを提供するプラットフォーム サービスです。 Azure Monitor を使用すると、Azure のリソースのメトリックとログに対して、視覚化、クエリ、ルーティング、アーカイブなどのアクションを実行できます。 このデータを操作するには、Azure Portal、[Monitor PowerShell コマンドレット](insights-powershell-samples.md)、[クロスプラットフォーム CLI](insights-cli-samples.md)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用します。 この記事では、Azure Monitor の重要なコンポーネントをいくつか取り上げて、ポータルを使用しながら説明します。
@@ -37,9 +37,9 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
     [**アクティビティ ログ**](monitoring-overview-activity-logs.md)には、サブスクリプションのリソースに対して実行されたすべての操作が示されています。 アクティビティ ログを使用すると、サブスクリプションのリソースに対する作成、更新、または削除操作すべてについて、"いつ誰が何を" 行ったのかを確認できます。 たとえば、アクティビティ ログにより、いつ誰が Web アプリを停止したかがわかります。 アクティビティ ログ イベントがプラットフォームに保存され、クエリで使用できる期間は 90 日です。
 
     ![アクティビティ ログ](./media/monitoring-get-started/monitor-act-log-blade.png)
-    
+
     一般的なフィルターに対するクエリを作成して保存し、最も重要なクエリをポータル ダッシュボードに固定すると、発生したイベントが条件を満たしているかどうかを常に把握できます。
-4. 過去 1 週間の特定のリソース グループが表示されるようにビューをフィルター処理し、 **保存** ボタンをクリックします。 クエリに名前を付けます。 
+4. 過去 1 週間の特定のリソース グループが表示されるようにビューをフィルター処理し、 **保存** ボタンをクリックします。 クエリに名前を付けます。
 
     ![アクティビティ ログ クエリの保存](./media/monitoring-get-started/monitor-act-log-save.png)
 5. **固定** ボタンをクリックします。
@@ -63,6 +63,7 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
    > メトリックの中には、リソースで [[Application Insights]](../application-insights/app-insights-overview.md) や Windows または Linux の Azure 診断拡張機能を有効にしないと使用できないものがあります。
    >
    >
+
 9. グラフに問題がない場合は、 **[固定]** ボタンを使用して、そのグラフをにダッシュボードに固定できます。
 10. **[Monitor]** ページに戻り、**[診断ログ]** をクリックします。
 
@@ -71,6 +72,13 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
     [**Azure 診断ログ**](monitoring-overview-of-diagnostic-logs.md)は、リソース*によって*出力されるログです。このログでは、その特定のリソースの操作に関するデータを確認できます。 たとえば、ネットワーク セキュリティ グループの規則の数とロジック アプリ ワークフロー ログの種類は両方とも診断ログです。 こうしたログは、ストレージ アカウントに格納したり、Event Hub にストリーミングしたり、[Log Analytics](../log-analytics/log-analytics-overview.md) に送信したりできます。 Log Analytics は、高度な検索およびアラート機能を備えた Microsoft のオペレーション インテリジェンス製品です。
 
     ポータルでは、サブスクリプションのリソースの一覧を表示およびフィルター処理して、診断ログが有効になっているかどうかを確認できます。
+    > [!NOTE]
+    > 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+    >
+    > *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
+    >
+    >
+
 11. 診断ログ ページのリソースをクリックします。 診断ログがストレージ アカウントに保存されている場合は、時間単位のログの一覧が表示されます。このログは直接ダウンロードできます。
 
     ![1 つのリソースの診断ログ](./media/monitoring-get-started/monitor-diaglogs-detail.png)
@@ -84,8 +92,8 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
 
     ![パブリックのアラート ブレード](./media/monitoring-get-started/monitor-alerts-nopp.png)
 
-    ここで、Azure リソースの[**クラシック アラート**](monitoring-overview-alerts.md)をすべて管理できます。 これには、メトリック、アクティビティ ログのイベント、Application Insights Web テスト (場所)、および Application Insights プロアクティブ診断のアラートが含まれます。 アラートはアクション グループに接続されます。 [アクション グループ](monitoring-action-groups.md)を使用することで、アラートが発生したときにユーザーに通知したり、特定のアクションを実行したりできます。 
-    
+    ここで、Azure リソースの[**クラシック アラート**](monitoring-overview-alerts.md)をすべて管理できます。 これには、メトリック、アクティビティ ログのイベント、Application Insights Web テスト (場所)、および Application Insights プロアクティブ診断のアラートが含まれます。 アラートはアクション グループに接続されます。 [アクション グループ](monitoring-action-groups.md)を使用することで、アラートが発生したときにユーザーに通知したり、特定のアクションを実行したりできます。
+
 13. **[Add metric alert (メトリック アラートの追加)]** をクリックして、アラートを作成します。
 
     ![[Add metric alert (メトリック アラートの追加)]](./media/monitoring-get-started/monitor-alerts-add.png)
@@ -93,7 +101,7 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
     その後、アラートをダッシュボードに固定すると、いつでも簡単にその状態を確認できます。
 
     Azure Monitor では、毎分ごとの低頻度で評価できる[**新しいアラート**](https://aka.ms/azuremonitor/near-real-time-alerts)も使用できるようになりました。
-    
+
 14. [Monitor] セクションには、[Application Insights](../application-insights/app-insights-overview.md) アプリケーションと [Log Analytics](../log-analytics/log-analytics-overview.md) 管理ソリューションへのリンクも含まれます。 こうした他の Micorosoft 製品は Azure Monitor に緊密に統合されています。
 15. Application Insights または Log Analytics を使用していない場合、Azure Monitor は、現在のパートナーの監視、ログ、およびアラート製品と連携している可能性があります。 パートナーの一覧と統合方法については、 [パートナー ページ](monitoring-partners.md) を参照してください。
 
@@ -102,6 +110,4 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
 ![Azure Monitor ダッシュボード](./media/monitoring-get-started/monitor-final-dash.png)
 
 ## <a name="next-steps"></a>次の手順
-* Azure Monitor が監視ツールと連動するしくみを把握するには、[Azure のすべての監視ツールの概要](monitoring-overview.md)に関するページを参照してください。 
-
-
+* Azure Monitor が監視ツールと連動するしくみを把握するには、[Azure のすべての監視ツールの概要](monitoring-overview.md)に関するページを参照してください。

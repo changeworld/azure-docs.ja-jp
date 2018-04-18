@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Azure Data Lake Store の診断ログへのアクセス
 Data Lake Store アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
@@ -47,7 +47,7 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
         
         * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Operations Management Suite ワークスペースの詳細情報を指定する必要があります。 Log Analytics の使用についての詳細は、「[Log Analytics のログ検索で収集されたデータの表示または分析](../log-analytics/log-analytics-tutorial-viewdata.md)」をご覧ください。
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Log Analytics の使用についての詳細は、「[Log Analytics のログ検索で収集されたデータの表示または分析](../log-analytics/log-analytics-tutorial-viewdata.md)」をご覧ください。
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。

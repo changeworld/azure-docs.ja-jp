@@ -1,13 +1,13 @@
 ---
-title: "Azure 仮想マシン スケール セットを使用した OS の自動アップグレード | Microsoft Docs"
-description: "スケール セット内の VM インスタンス上の OS を自動的にアップグレードする方法について説明します"
+title: Azure 仮想マシン スケール セットを使用した OS の自動アップグレード | Microsoft Docs
+description: スケール セット内の VM インスタンス上の OS を自動的にアップグレードする方法について説明します
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: negat
-ms.openlocfilehash: 59dad832977c4afc39db3773edf9789cd1a704e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 28a9b3d68037aac0c1198da4232c045487b01174
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure 仮想マシン スケール セットによる OS の自動アップグレード
 
@@ -93,9 +93,9 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 > [!NOTE]
 > このセクションは、Service Fabric を使用しないスケール セットにのみ適用されます。 Service Fabric には、アプリケーションの正常性に関する独自の概念があります。 Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)を参照してください。
 
-OS のアップグレード中は、スケール セット内の VM インスタンスが、一度に 1 つのバッチでアップグレードされます。 アップグレードは、アップグレード済みの VM インスタンス上でユーザーのアプリケーションが正常である場合のみ続行されます。 アプリケーションがスケール セットの OS アップグレード エンジンに正常性通知を提供することをお勧めします。 既定では、OS のアップグレード中、プラットフォームは、VM の電源状態と拡張機能のプロビジョニング状態を考慮して、アップグレード後に VM インスタンスが正常であるかどうかを判断します。 VM インスタンスの OS のアップグレード中、VM インスタンス上の OS ディスクは、最新バージョンのイメージに基づく新しいディスクに置き換えられます。 OS のアップグレードが完了した後、構成済みの拡張機能がこれらの VM 上で実行されます。 VM 上のすべての拡張機能が正常にプロビジョニングされた場合にのみ、アプリケーションは正常であるとみなされます。 
+OS のアップグレード中は、スケール セット内の VM インスタンスが、一度に 1 つのバッチでアップグレードされます。 アップグレードは、アップグレード済みの VM インスタンス上でユーザーのアプリケーションが正常である場合のみ続行されます。 このため、アプリケーションがスケール セットの OS アップグレード エンジンに正常性通知を提供することが必要になります。 OS のアップグレード中、プラットフォームは、VM の電源状態と拡張機能のプロビジョニング状態を考慮して、アップグレード後に VM インスタンスが正常であるかどうかを判断します。 VM インスタンスの OS のアップグレード中、VM インスタンス上の OS ディスクは、最新バージョンのイメージに基づく新しいディスクに置き換えられます。 OS のアップグレードが完了した後、構成済みの拡張機能がこれらの VM 上で実行されます。 VM 上のすべての拡張機能が正常にプロビジョニングされた場合にのみ、アプリケーションは正常であるとみなされます。 
 
-スケール セットにアプリケーション正常性プローブをオプションで構成して、アプリケーションの進行中の状態に関する正確な情報をプラットフォームに提供できます。 アプリケーション正常性プローブは、正常性シグナルとして使用されるカスタム ロード バランサー プローブです。 スケール セットの VM インスタンスで実行されているアプリケーションは、外部 HTTP または TCP 要求に応答して、正常かどうかを示すことができます。 カスタム ロード バランサー プローブの動作方法の詳細については、「[Load Balancer プローブを理解する](../load-balancer/load-balancer-custom-probe-overview.md)」を参照してください。 アプリケーション正常性プローブは、OS の自動アップグレードでは必須ではありませんが、使用することを強くお勧めします。
+さらに、スケール セットにアプリケーション正常性プローブを構成して、アプリケーションの進行中の状態に関する正確な情報をプラットフォームに提供する*必要があります*。 アプリケーション正常性プローブは、正常性シグナルとして使用されるカスタム ロード バランサー プローブです。 スケール セットの VM インスタンスで実行されているアプリケーションは、外部 HTTP または TCP 要求に応答して、正常かどうかを示すことができます。 カスタム ロード バランサー プローブの動作方法の詳細については、「[Load Balancer プローブを理解する](../load-balancer/load-balancer-custom-probe-overview.md)」を参照してください。
 
 スケール セットが複数の配置グループを使用するように構成されている場合は、[Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) を使用するプローブを使用する必要があります。
 
@@ -110,7 +110,7 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 * 障害が発生したものを含むすべての VM インスタンスを更新する、更新されたスケール セットをデプロイします。 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>スケール セットに関するアプリケーション正常性プローブとしてのカスタム ロード バランサー プローブの構成
-ベスト プラクティスとして、スケール セットの正常性のためのロード バランサー プローブを明示的に作成します。 既存の HTTP プローブまたは TCP プローブと同じエンドポイントを使用できますが、この正常性プローブでは、従来のロード バランサー プローブとは異なる動作が必要になる可能性があります。 たとえば、従来のロード バランサー プローブは、インスタンスの負荷が高すぎる場合に異常を返すことがありますが、OS の自動アップグレード中にインスタンスの正常性を決定するには、その動作は適切ではない可能性があります。 2 分未満のプローブ率が高いプローブを構成します。
+スケール セットの正常性のためのロード バランサー プローブを明示的に作成する*必要があります*。 既存の HTTP プローブまたは TCP プローブと同じエンドポイントを使用できますが、この正常性プローブでは、従来のロード バランサー プローブとは異なる動作が必要になる可能性があります。 たとえば、従来のロード バランサー プローブは、インスタンスの負荷が高すぎる場合に異常を返すことがありますが、OS の自動アップグレード中にインスタンスの正常性を決定するには、その動作は適切ではない可能性があります。 2 分未満のプローブ率が高いプローブを構成します。
 
 ロード バランサー プローブは、スケール セットの *networkProfile* 内で参照でき、次のように、内部または公開されているロード バランサーに関連付けることができます。
 
@@ -227,7 +227,7 @@ GET 呼び出しは、次の例の出力に似たプロパティを返します�
 2. アップグレードする VM インスタンスの次のバッチ (インスタンスの合計数の最大 20% を持っているバッチ) を識別します。
 3. VM インスタンスの次のバッチの OS をアップグレードします。
 4. アップグレードされたインスタンスの 20% を超えるインスタンスが異常である場合は、アップグレードを停止します。それ以外の場合は先に進みます。
-5. アプリケーション正常性プローブが構成されている場合、アップグレードはプローブが正常になるまで 5 分間待機した後、すぐに次のバッチに進みます。それ以外の場合は、30 分間待機した後、次のバッチに進みます。
+5. Service Fabric クラスターに属していないスケール セットの場合、プローブが正常になるまでアップグレードは最大 5 分間待機して、その後すぐに次のバッチが続行されます。 Service Fabric クラスターに属しているスケール セットの場合、スケール セットは 30 分間待機してから、次のバッチに移動します。
 6. アップグレードするインスタンスが残っている場合は、次のバッチで手順 1 を実行します。それ以外の場合、アップグレードは完了します。
 
 スケール セットの OS アップグレード エンジンは、すべてのバッチをアップグレードする前に、VM インスタンスの全体的な正常性を確認します。 バッチのアップグレード中に、Azure データ センターで他の計画済みまたは計画外のメンテナンスが同時に発生されることがあり、これによって VM の可用性に影響が出る場合があります。 そのため、一時的に 20% を超えるインスタンスがダウンする可能性があります。 このような場合は、現在のバッチの最後に、スケール セットのアップグレードは停止します。
@@ -237,9 +237,10 @@ GET 呼び出しは、次の例の出力に似たプロパティを返します�
 
 次のテンプレートを使用して、自動アップグレードを使用するスケール セットをデプロイできます。<a href='https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json'>自動ローリング アップグレード - Ubuntu 16.04 LTS</a>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 スケール セットを使用して OS の自動アップグレードを使用する方法の例については、[プレビュー機能の GitHub リポジトリ](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)を参照してください。

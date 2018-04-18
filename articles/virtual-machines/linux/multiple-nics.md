@@ -1,11 +1,11 @@
 ---
-title: "複数の NIC を持つ Linux VM を Azure に作成する | Microsoft Docs"
-description: "Azure CLI 2.0 または Resource Manager テンプレートを使って、複数の NIC が接続された Linux VM を作成する方法について説明します。"
+title: 複数の NIC を持つ Linux VM を Azure に作成する | Microsoft Docs
+description: Azure CLI 2.0 または Resource Manager テンプレートを使って、複数の NIC が接続された Linux VM を作成する方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d981ffc9a0053ed8bf2d49f386f7c1c82d50c907
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、接続された複数の NIC を使用して VM を作成する方法、および既存の VM の NIC を追加または削除する方法について詳しく説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -100,6 +100,8 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
+「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
+
 ## <a name="add-a-nic-to-a-vm"></a>VM に NIC を追加する
 前の手順では、複数の NIC を含む VM を作成しました。 Azure CLI 2.0 を使用して NIC を既存の VM に追加することもできます。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](change-vm-size.md)。
 
@@ -135,6 +137,8 @@ az vm nic add \
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
+
+「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="remove-a-nic-from-a-vm"></a>NIC を VM から削除する
 NIC を既存の VM から削除するには、最初に [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
@@ -179,6 +183,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 完全な例については、「 [Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
 
+「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>複数の NIC 用にゲスト OS を構成する
 Linux VM に複数の NIC を追加する場合は、ルーティング規則を作成する必要があります。 これらの規則が特定の NIC に属しているトラフィックの送受信を VM に許可します。 それ以外の場合、たとえば、*eth1* に属しているトラフィックを定義された既定のルートで正しく処理できません。
@@ -190,7 +195,7 @@ echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-ネットワーク スタックのアクティブ化の間に変更を持続させて適用するには、*/etc/sysconfig/network-scipts/ifcfg-eth0* と */etc/sysconfig/network-scipts/ifcfg-eth1* を編集します。 行 *"NM_CONTROLLED=yes"* を *"NM_CONTROLLED=no"* に変更します。 このステップがない場合、追加の規則またはルーティングは自動的に適用されません。
+ネットワーク スタックのアクティブ化の間に変更を持続させて適用するには、*/etc/sysconfig/network-scripts/ifcfg-eth0* と */etc/sysconfig/network-scripts/ifcfg-eth1* を編集します。 行 *"NM_CONTROLLED=yes"* を *"NM_CONTROLLED=no"* に変更します。 このステップがない場合、追加の規則またはルーティングは自動的に適用されません。
  
 次にルーティング テーブルを拡張します。 次の設定が実行されていると仮定します。
 

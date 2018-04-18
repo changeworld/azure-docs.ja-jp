@@ -1,11 +1,11 @@
 ---
-title: "Azure AD のアクセス レビューによるゲスト アクセスの管理 | Microsoft Docs"
-description: "Azure Active Directory アクセス レビューを使用し、ゲスト ユーザーをグループのメンバーとして、またはアプリケーションに割り当てられたユーザーとして管理します。"
+title: Azure AD のアクセス レビューによるゲスト アクセスの管理 | Microsoft Docs
+description: Azure Active Directory アクセス レビューを使用し、ゲスト ユーザーをグループのメンバーとして、またはアプリケーションに割り当てられたユーザーとして管理します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 ## <a name="prerequisites"></a>前提条件 
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
+アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
 
 ゲスト ユーザーに自身のアクセス権をレビューするよう依頼する場合は、ゲスト ユーザーのライセンスについて確認しておいてください。 詳細については、[Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)に関するページを参照してください。
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 2. 各ゲストに自身のメンバーシップをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、アクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページを参照してください。
 
-3. レビュー担当者が結果を入力したら、アクセス レビューを停止して変更を適用します。 詳細については、「[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)」を参照してください。
+3. レビュー担当者が結果を入力したら、アクセス レビューを停止して変更を適用します。 詳細については、[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)に関するページをご覧ください。
 
 4. アクセス権の継続が不要であると自分で判断したユーザーに加え、回答が得られなかったユーザーも削除した方がよいでしょう。 回答がないユーザーはもうメールを受け取っていないと考えられます。
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 2. レビュー担当者に確認を依頼します。 既定では、各レビュー担当者には、アクセス パネルへのリンクが記載されたメールが Azure AD から届き、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
 
-3. レビュー担当者が結果を入力したら、アクセス レビューを停止して変更を適用します。 詳細については、「[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)」を参照してください。
+3. レビュー担当者が入力したら、アクセス レビューを停止し、変更を適用します。 詳細については、[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)に関するページをご覧ください。
 
 ### <a name="ask-guests-to-review-their-own-access-to-an-application"></a>ゲストに自身のアプリケーション アクセスをレビューするよう依頼する
 
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 2. レビュー担当者に確認を依頼します。 既定では、各レビュー担当者には、アクセス パネルへのリンクが記載されたメールが Azure AD から届き、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
 
-3. レビュー担当者が結果を入力したら、アクセス レビューを停止して変更を適用します。 詳細については、「[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)」を参照してください。
+3. レビュー担当者が入力したら、アクセス レビューを停止し、変更を適用します。 詳細については、[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)に関するページをご覧ください。
 
 ### <a name="ask-guests-to-review-their-need-for-access-in-general"></a>ゲストに全般的なアクセスの必要性をレビューするよう依頼する
 
@@ -105,17 +105,17 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 > [!NOTE]
 > 以前のバージョンの Azure Portal では、UserType が Guest であるユーザーの管理アクセスが認められていませんでした。 ディレクトリの管理者が PowerShell を使ってゲストの UserType の値を Member に変更している場合があります。 過去にそのような変更がご利用のディレクトリで行われていた場合、前述したクエリでは、以前管理アクセス権を持っていたゲスト ユーザーが対象から漏れる場合があります。 その場合は、ゲストの UserType を変更するか、該当するゲストをグループ メンバーシップに手動で追加する必要があります。
 
-1. ゲストをメンバーとするセキュリティ グループを Azure AD に作成します (適切なグループがまだ存在しない場合)。 たとえば、手動で管理されたゲストのメンバーシップを基にグループを作成します。 または、UserType 属性の値が Guest である Contoso テナントのユーザー用に "Guests of Contoso" などの名前の動的グループを作成してもよいでしょう。
+1. ゲストをメンバーとするセキュリティ グループを Azure AD に作成します (適切なグループがまだ存在しない場合)。 たとえば、手動で管理されたゲストのメンバーシップを基にグループを作成します。 または、UserType 属性の値が Guest である Contoso テナントのユーザー用に "Guests of Contoso" などの名前の動的グループを作成してもよいでしょう。  効率を高めるために、そのグループが主にゲストで構成されるようにしてください。レビューが不要なユーザーを含むグループを選択しないようにしてください。
 
 2. そのグループのアクセス レビューを開始するには、メンバー自身をレビュー担当者として選択します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
-3. 各ゲストに自身のメンバーシップをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、組織のアクセス パネル内のアクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページを参照してください。
+3. 各ゲストに自身のメンバーシップをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、組織のアクセス パネル内のアクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページを参照してください。  招待状を受け取っていないゲストは、レビューの結果に [未通知] として表示されます。
 
-4. レビュー担当者が結果を入力したら、アクセス レビューを停止します。 詳細については、「[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)」を参照してください。
+4. レビュー担当者が結果を入力したら、アクセス レビューを停止します。 詳細については、[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)に関するページをご覧ください。
 
-5. 拒否されたゲスト、レビューが完了していないゲスト、招待状を受け取っていないゲストについては、ゲスト アクセスを削除します。 過去に招待状を受け取っていないためにレビューの対象として選ばれた連絡先がゲストの中に存在する場合、そのアカウントは、Azure Portal または PowerShell を使って無効にしてかまいません。 そのゲストがアクセス権をもう必要としておらず、連絡先でもない場合は、該当するユーザー オブジェクトを Azure Portal または PowerShell を使ってディレクトリから削除してください。
+5. 拒否されたゲスト、レビューが完了していないゲスト、招待状を受け取っていないゲストについては、ゲスト アクセスを削除します。 レビューの対象として選ばれた連絡先がゲストの中に存在する場合や、ゲストが過去に招待状を受け取っていない場合は、そのアカウントは、Azure Portal または PowerShell を使って無効にしてかまいません。 そのゲストがアクセス権をもう必要としておらず、連絡先でもない場合は、ゲスト ユーザー オブジェクトを削除するために、該当するユーザー オブジェクトを Azure Portal または PowerShell を使ってディレクトリから削除してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](active-directory-azure-ad-controls-create-access-review.md)
 

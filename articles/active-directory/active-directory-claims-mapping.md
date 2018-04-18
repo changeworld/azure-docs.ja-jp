@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求のマッピング (パブリック プレビュー)
 
@@ -234,7 +234,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>要求のマッピング ポリシーのプロパティ
-要求のマッピング ポリシーのプロパティを使用して、出力される要求とデータのソースを制御します。 ポリシーが設定されていない場合は、アプリケーションが受信するように選んだコア要求セット、基本要求セット、省略可能な要求を含むトークンが発行されます。
+要求のマッピング ポリシーのプロパティを使用して、出力される要求とデータのソースを制御します。 ポリシーが設定されていない場合は、アプリケーションが受信するように選んだコア要求セット、基本要求セット、[省略可能な要求](develop/active-directory-optional-claims.md)を含むトークンが発行されます。
 
 ### <a name="include-basic-claim-set"></a>Include 基本要求セット
 

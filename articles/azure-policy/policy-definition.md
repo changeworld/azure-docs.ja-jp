@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -70,7 +70,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 * `all`: リソース グループとすべてのリソースの種類を評価します 
 * `indexed`: タグと場所をサポートするリソースの種類のみを評価します
 
-ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定する必要があります。
+ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定する必要があります。 ポリシー定義に **mode** の値が含まれていない場合は、下位互換性のために既定で `indexed` になります。
 
 タグまたは場所を適用するポリシーを作成するときには、`indexed` を使用する必要があります。 これは必須ではありませんが、タグや場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表れないようになります。 これの例外の 1 つは、**リソース グループ**です。 リソース グループに場所またはタグを適用しようとしているポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](scripts/enforce-tag-rg.md)ことに関する記事を参照してください。
 
@@ -102,6 +102,8 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 * `"resourceTypes"`
 * `"storageSkus"`
 * `"vmSKUs"`
+* `"existingResourceGroups"`
+* `"omsWorkspace"`
 
 ポリシー規則では、次の構文でパラメーターを参照します。
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure VM への SSH 接続の問題に関するトラブルシューティング | Microsoft Docs"
-description: "Linux を実行する Azure VM に対する \"SSH 接続の失敗\" や \"SSH 接続の拒否\" などの問題のトラブルシューティング方法。"
-keywords: "ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に失敗する"
+title: Azure VM への SSH 接続の問題に関するトラブルシューティング | Microsoft Docs
+description: Linux を実行する Azure VM に対する "SSH 接続の失敗" や "SSH 接続の拒否" などの問題のトラブルシューティング方法。
+keywords: ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に失敗する
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 176477105e1f660b0bd22d95142b744ef17044ee
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 Linux 仮想マシン (VM) に接続しようとしたときに、さまざまな理由で Secure Shell (SSH) エラー、SSH 接続エラー、または SSH 拒否が発生することがあります。 この記事は、問題を特定して修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -68,6 +68,14 @@ Azure Portal で VM を選択します。 **[サポート + トラブルシュ�
 既存のユーザーの資格情報をリセットするには、**[モード]** ドロップダウン メニューから `Reset SSH public key` または `Reset password` を選択します (上のスクリーンショット参照)。 ユーザー名と、SSH キーまたは新しいパスワードを指定し、**[リセット]** ボタンをクリックします。
 
 このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、**[リセット]** ボタンをクリックします。
+
+### <a name="check-security-rules"></a>セキュリティ規則を確認する
+
+[IP フロー検証](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、SSH ポート (既定では 22) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow)」を参照してください。
+
+### <a name="check-routing"></a>ルーティングを確認する
+
+Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-next-hop-portal.md)機能を使用して、ルートが仮想マシンとの間でトラフィックのルーティングを妨げていないことを確認します。 有効なルートを見直し、ネットワーク インターフェイスのすべての有効なルートを確認することもできます。 詳細については、「[有効なルートを使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow)」を参照してください。
 
 ## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
 まだインストールしていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。

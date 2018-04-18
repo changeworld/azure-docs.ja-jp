@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: 接続に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Azure AD Connect での接続に関する問題のトラブルシューティング方法について説明します。"
+title: 'Azure AD Connect: 接続に関する問題のトラブルシューティング | Microsoft Docs'
+description: Azure AD Connect での接続に関する問題のトラブルシューティング方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -40,7 +40,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 その中でも、次の表に記載したものは Azure AD への接続に最低限必要な URL です。 この一覧には、パスワード ライトバックや Azure AD Connect Health のようなオプション機能は含まれていません。 ここには、初期構成に関するトラブルシューティングに役立つものが記載されています。
 
-| URL | Port | [説明] |
+| URL | ポート | [説明] |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
 | \*.verisign.com |HTTP/80 |CRL リストのダウンロードに使用します。 |

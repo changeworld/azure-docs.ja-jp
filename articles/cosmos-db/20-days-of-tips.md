@@ -1,23 +1,23 @@
 ---
-title: "20 日間の Azure Cosmos DB のヒント | Microsoft Docs"
-description: "Simona Cotin の「20 日間の Azure Cosmos DB のヒント」シリーズをすべてまとめて読むことができます。"
+title: 20 日間の Azure Cosmos DB のヒント | Microsoft Docs
+description: Simona Cotin の「20 日間の Azure Cosmos DB のヒント」シリーズをすべてまとめて読むことができます。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>20 日間の Azure Cosmos DB のヒント
 
@@ -53,7 +53,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-4-gremlin-graph-support"></a>ヒント 4: Gremlin グラフのサポート
 
-ヒント 4: Gremlin はお好きですか。 #cosmosdb も Gremlin がお気に入りです。 Azure Portal を使用して、グラフ DB を表示、照会、編集しましょう [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
+ヒント 4: Gremlin はお好きですか。 #cosmosdb も Gremlin がお気に入りです。 Azure Portal を使用して、グラフ DB を表示、照会、編集しましょう ([https://aka.ms/tfmi37](https://aka.ms/tfmi37))  
 
 > [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
 
@@ -77,7 +77,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-8-build-a-nodejs-app-by-using-sql-api"></a>ヒント 8: SQL API を使用して Node.js アプリをビルドする
 
-ヒント 8: SQL API と Azure #CosmosDB を使用して、@nodejs アプリをビルドします。 詳細については、ドキュメントのページ ([https://aka.ms/Bd77a8](https://aka.ms/Bd77a8)) をご覧ください  
+ヒント 8: SQL API と Azure #CosmosDB を使用して、@nodejs アプリをビルドします。 詳細については、ドキュメントのページ ([https://aka.ms/Bd77a8](https://aka.ms/Bd77a8)) を参照してください  
 
 > [!VIDEO https://www.youtube.com/embed/_gd9ZY-rHtM]
 
@@ -85,7 +85,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-9-query-using-mongodb-in-nodejs"></a>ヒント 9: Node.js で MongoDB を使用したクエリの実行
 
-ヒント 9: Node.js で MongoDB API を使用して Azure #CosmosDB をクエリします。 詳細については、ドキュメントのページ ([https://aka.ms/Dert0r](https://aka.ms/Dert0r)) をご覧ください  
+ヒント 9: Node.js で MongoDB API を使用して Azure #CosmosDB をクエリします。 詳細については、ドキュメントのページ ([https://aka.ms/Dert0r](https://aka.ms/Dert0r)) を参照してください  
 
 ![MongoDB を使用したクエリの実行](./media/20-days-of-tips/cosmos-db-tip-9-mongodb-query.png)
 
@@ -93,7 +93,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-10-copy-mongodb-data-using-studio-3t"></a>ヒント 10: Studio 3T を使用した MongoDB データのコピー 
 
-ヒント 10: Studio 3T (MongoChef) を使用して Azure Cosmos DB に、MongoDB データをコピーする方法を学習します。 [https://aka.ms/apzhww](https://aka.ms/apzhww) のドキュメント
+ヒント 10: Studio 3T (MongoChef) を使用して Azure Cosmos DB に、MongoDB データをコピーする方法を学習します。 ドキュメントは [https://aka.ms/apzhww](https://aka.ms/apzhww) にあります
 
 > [!VIDEO https://www.youtube.com/embed/Qa4YpShYEcI]
 
@@ -109,7 +109,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-12-go-serverless"></a>ヒント 12: サーバーレスで作業
 
-ヒント 12: Azure #CosmosDB と @AzureFunctions を使用してサーバーレスで作業します。 完全なドキュメントは [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j) をご覧ください
+ヒント 12: Azure #CosmosDB と @AzureFunctions を使用してサーバーレスで作業します。 完全なドキュメントは [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j) を参照してください
 
 > [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
 
@@ -125,7 +125,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-14-use-cases"></a>ヒント 14: ユース ケース
 
-ヒント 14: 一般的な Azure #CosmosDB ユース ケースをご紹介します IoT、ゲームやソーシャル アプリについては、[https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) をご覧ください
+ヒント 14: 一般的な Azure #CosmosDB ユース ケースをご紹介します IoT、ゲームやソーシャル アプリについては、[https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) を参照してください
 
 記事: [Azure Cosmos DB の一般的なユース ケース](https://aka.ms/Ihpf00)
 
@@ -142,7 +142,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-16-functions-and-twilio-demo"></a>ヒント 16: 機能と Twilio のデモ
 
-ヒント 16: 素晴らしいデモをご用意しました。 Azure #cosmosDB、機能および @twilio を統合し、DB の変更時に SMS を送信します。 [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) のドキュメントを参照してください。 
+ヒント 16: 素晴らしいデモをご用意しました。 Azure #cosmosDB、機能および @twilio を統合し、DB の変更時に SMS を送信します。 [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) のドキュメントを参照してください 
 
 > [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
 
@@ -151,7 +151,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-17-using-mongoose-discriminators"></a>ヒント 17: Mongoose 識別子の使用
 
-ヒント 17: Mongoose 識別子を使用して単一の #CosmosDB コレクションに複数のエンティティを格納する ([https://aka.ms/M488jm](https://aka.ms/M488jm)) ことで、コストを最適化します。
+ヒント 17: Mongoose 識別子を使用して単一の #CosmosDB コレクションに複数のエンティティを格納する ([https://aka.ms/M488jm](https://aka.ms/M488jm)) ことで、コストを最適化します
 
 ブログ:  [Mongoose 識別子を使用して単一の Cosmos DB コレクションに複数のエンティティを格納する (投稿者: Anthony Chu)](https://aka.ms/M488jm)
 
@@ -167,7 +167,7 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-19-partition-partition-partition"></a>ヒント 19: パーティション。 パーティション。 パーティション。 
 
-ヒント 19: パーティション。 パーティション。 パーティション。 Azure #CosmosDB で使用する理由と方法を説明します。 [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon) のドキュメント  
+ヒント 19: パーティション。 パーティション。 パーティション。 Azure #CosmosDB で使用する理由と方法を説明します。 ドキュメントは [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon) にあります  
 
 > [!VIDEO https://www.youtube.com/embed/I_tVk3hKvSI]
 
@@ -175,13 +175,13 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-20-cheatsheet"></a>ヒント 20: チートシート
 
-ヒント 20: 古き良きチートシートは、皆大好きです。 Azure #CosmosDB にも、チートシートがあります。 [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl) でご覧ください
+ヒント 20: 古き良きチートシートは、皆大好きです。 Azure #CosmosDB にも、チートシートがあります。 [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl) でご確認ください
 
 チートシート: [Azure Cosmos DB: SQL クエリのチート シート PDF](https://aka.ms/Nt01nl)
 
 [![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](introduction.md)」と「[A technical overview of Azure Cosmos DB](https://azure.microsoft.com/blog/a-technical-overview-of-azure-cosmos-db/)」(Azure Cosmos DB の技術的概要) を参照してください。
 

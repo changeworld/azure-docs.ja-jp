@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Hub の正常性の監視 | Microsoft Docs"
-description: "Azure Monitor と Azure Resource Health を使用して IoT Hub を監視し、問題を迅速に診断します"
+title: Azure IoT Hub の正常性の監視 | Microsoft Docs
+description: Azure Monitor と Azure Resource Health を使用して IoT Hub を監視し、問題を迅速に診断します
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: 3051af03d0c1433db98bcc674a072188e7ce80e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28903c4cc530937b4b39a5239d2a6d1ea6896924
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
 Azure IoT Hub を実装する企業では、そのリソースに信頼性の高いパフォーマンスを期待します。 IoT Hub は、[Azure Monitor][lnk-AM] および [Azure Resource Health][lnk-ARH] と完全に統合され、操作を緊密に監視するのに役立ちます。 これらの 2 つのサービスは連携して、IoT ソリューションの実行を正常な状態に保つために必要なデータを提供します。 
 
-Azure Monitor は、すべての Azure サービスの監視およびログの唯一のソースです。 Azure Monitor が生成するログを OMS Log Analytics、Event Hubs、または Azure Storage に送信して、カスタムの処理を実行することができます。 Azure Monitor のメトリックと診断の設定により、リソースのパフォーマンスをリアルタイムで把握できます。 この記事を読み進めると、IoT Hub で [Azure Monitor を使用する](#use-azure-monitor)方法を理解することができます。 
+Azure Monitor は、すべての Azure サービスの監視およびログの唯一のソースです。 Azure Monitor が生成するログを Log Analytics、Event Hubs、または Azure Storage に送信して、カスタムの処理を実行することができます。 Azure Monitor のメトリックと診断の設定により、リソースのパフォーマンスをリアルタイムで把握できます。 この記事を読み進めると、IoT Hub で [Azure Monitor を使用する](#use-azure-monitor)方法を理解することができます。 
 
 Azure Resource Health は、リソースが Azure の問題を影響を受けているときに診断を行ったりサポートを受けたりする場合に役立ちます。 パーソナライズされたダッシュボードには、IoT Hub の現在および過去の状態が表示されます。 この記事を読み進めると、IoT Hub で [Azure Resource Health を使用する](#use-azure-resource-health)方法を理解することができます。 
 
@@ -316,13 +316,13 @@ Azure IoT Hub では、リージョン レベルでの正常性が示されま�
 
 IoT Hub の正常性を確認するには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[Service Health]\(サービス正常性\)** > **[リソース正常性]** に移動します。
 1. ドロップダウン ボックスから、サブスクリプションと **IoT Hub** を選択します。
 
 正常性データを解釈する方法の詳細については、「[Azure Resource Health の概要][lnk-ARH]」を参照してください
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [IoT Hub メトリックの理解][lnk-metrics]
 - [Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知][lnk-monitoring-notifications]

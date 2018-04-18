@@ -9,23 +9,20 @@ ms.author: xshi
 ms.date: 3/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8da16ffe72ad265f0201c2fe7e00e585dfa255e8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8c266a01375bf74fd4df9290255e84bc28e6089c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-debug-azure-functions-with-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge で Azure Functions をデバッグする
 
 この記事では、主要開発ツールとして [Visual Studio Code](https://code.visualstudio.com/) を使用して、IoT Edge で Azure Functions をデバッグする手順について詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルでは、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 別の物理デバイスを IoT Edge デバイスとして使用することも、開発用マシンで IoT Edge デバイスをシミュレートすることもできます。
+この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 別の物理デバイスを IoT Edge デバイスとして使用することも、開発用マシンで IoT Edge デバイスをシミュレートすることもできます。
 
-このガイダンスを開始する前に、次のチュートリアルを完了していることを確認してください。
-- [Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する](tutorial-multiple-modules-in-vscode.md)
-
-上記のチュートリアルを終了したら、次のものを準備してください。
+この記事のガイダンスに従う前に、「[Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する](tutorial-multiple-modules-in-vscode.md)」の手順を完了してください。 その後、次の項目を準備する必要があります。
 - 開発用マシンで実行されているローカル Docker レジストリ。 プロトタイプ作成とテストのために、ローカル Docker レジストリを使用することをお勧めします。 各モジュール フォルダーの `module.json` ファイルでコンテナー レジストリを更新できます。
 - Azure 関数モジュール サブフォルダーを含む IoT Edge ソリューション プロジェクト ワークスペース。
 - 関数コードを含む `run.csx` ファイル。
@@ -59,8 +56,6 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Function を作成してデバッグ用に IoT Edge にデプロイし、VS Code でデバッグを開始しました。 次のチュートリアルに進み、VS Code で Azure IoT Edge を開発するときの他のシナリオを確認できます。 
 
-> [!div class="nextstepaction"]
-> [Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する](tutorial-multiple-modules-in-vscode.md)
+[Visual Studio Code を使用して Azure IoT Edge で C# モジュールをデバッグする](how-to-vscode-debug-csharp-module.md)
 

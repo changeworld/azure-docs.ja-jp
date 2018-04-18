@@ -1,11 +1,11 @@
 ---
-title: "Azure Scheduler のプランと課金"
-description: "Azure Scheduler のプランと課金"
+title: Azure Scheduler のプランと課金
+description: Azure Scheduler のプランと課金
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,33 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Azure Scheduler のプランと課金
 ## <a name="job-collection-plans"></a>ジョブ コレクション プラン
-ジョブ コレクションは、Azure Scheduler における課金対象のエンティティです。 複数のジョブを格納するジョブ コレクションは、Free、Standard、および Premium の 3 つのプランで提供されます。以降では、これらのプランについて説明します。
+ジョブ コレクションは、Azure Scheduler における課金対象のエンティティです。 複数のジョブを格納するジョブ コレクションは、Standard、P10 Premium、および P20 Premium の 3 つのプランで提供されます。以降では、これらのプランについて説明します。
 
 | **ジョブ コレクション プラン** | **ジョブ コレクションあたりのジョブの最大数** | **最大繰り返し頻度** | **サブスクリプションあたりのジョブ コレクションの最大数** | **制限** |
 |:--- |:--- |:--- |:--- |:--- |
-| **Free** |ジョブ コレクションあたり 5 個のジョブ |1 時間に 1 回。 1 時間に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 1 個の Free ジョブ コレクションが許可されます。 |[HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md) |
 | **Standard** |ジョブ コレクションあたり 50 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 100 個の Standard ジョブ コレクションが許可されます。 |Scheduler の完全な機能セットへのアクセス |
 | **P10 Premium** |ジョブ コレクションあたり 50 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 10,000 個の P10 Premium ジョブ コレクションが許可されます。 詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。 |Scheduler の完全な機能セットへのアクセス |
 | **P20 Premium** |ジョブ コレクションあたり 1,000 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 10,000 個の P20 Premium ジョブ コレクションが許可されます。 詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。 |Scheduler の完全な機能セットへのアクセス |
 
 ## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>ジョブ コレクション プランのアップグレードとダウングレード
-ジョブ コレクション プランは、Free、Standard、および Premium の間でいつでもアップグレードまたはダウングレードできます。 ただし、Free ジョブ コレクションにダウングレードする場合、次のいずれかの理由でダウングレードが失敗することがあります。
-
-* サブスクリプションに既に Free ジョブ コレクションが存在している。
-* ジョブ コレクション内のジョブに、Free ジョブ コレクションのジョブに許可されているよりも高い繰り返し頻度が設定されている。 Free ジョブ コレクションで許可される最大繰り返し頻度は 1 時間に 1 回です。
-* ジョブ コレクションに 5 つを超えるジョブが含まれている。
-* ジョブ コレクション内のジョブに、 [HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md)
+ジョブ コレクション プランは、Standard、P10 Premium、および P20 Premium の間でいつでもアップグレードまたはダウングレードできます。
 
 ## <a name="billing-and-azure-plans"></a>課金および Azure プラン
-Free ジョブ コレクションについては、課金されません。 100 を超える Standard ジョブ コレクション (Standard 課金単位 10 単位) を使用している場合は、Premium プランにすべてのジョブ コレクションを移行することをお勧めします。
+100 を超える Standard ジョブ コレクション (Standard 課金単位 10 単位) を使用している場合は、Premium プランにすべてのジョブ コレクションを移行することをお勧めします。
 
 1 つの Standard ジョブ コレクションと 1 つの Premium ジョブ コレクションを使用している場合、Standard プランの 1 課金単位*および* Premium プランの 1 課金単位が請求されます。 Scheduler サービスでは、Standard または Premium のどちらかに設定されているアクティブなジョブ コレクションの数に基づいて課金されます。これについては、次の 2 つのセクションで詳しく説明します。
 

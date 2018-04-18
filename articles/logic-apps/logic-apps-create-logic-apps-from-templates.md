@@ -1,11 +1,11 @@
 ---
-title: "テンプレートからワークフローを作成する - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリ テンプレートを使用してすばやくワークフローを作成します"
+title: テンプレートからワークフローを作成する - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリ テンプレートを使用してすばやくワークフローを作成します
 author: kevinlam1
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2e939143d7181722df17ea7837658d96272e3a3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -56,7 +56,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **[リソース グループ]** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
    | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
-   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Log Analytics](../log-analytics/log-analytics-overview.md) によるロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) ワークスペースを既に持っている必要があります。 | 
+   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Log Analytics](../log-analytics/log-analytics-overview.md) によるロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
 4. 準備ができたら、**[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]**を選択します。

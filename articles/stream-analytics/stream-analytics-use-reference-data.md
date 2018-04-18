@@ -1,26 +1,21 @@
 ---
-title: Stream Analytics で参照データとルックアップ テーブルを使用する | Microsoft Docs
-description: Stream Analytics クリエで参照データを使用する
-keywords: ルックアップ テーブル、参照データ
+title: Azure Stream Analytics での参照に参照データを使用する
+description: この記事では、Azure Stream Analytics ジョブのクエリ デザインで参照データを使用してデータを参照または関連付ける方法について説明します。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 06103be5-553a-4da1-8a8d-3be9ca2aff54
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 77a4a9a28060206a30c658216156d7339bddc398
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 9d1763697e93ea0bd5eaeaeb92f5f882f39a6c64
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-reference-data-or-lookup-tables-in-a-stream-analytics-input-stream"></a>Stream Analytics の入力ストリームでの参照データまたはルックアップ テーブルの使用
+# <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。 Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 Stream Analytics は、参照データのストレージ レイヤーとして Azure Blob Storage を使用し、Azure Data Factory を使用して参照データを Azure Blob Storage に変換、コピー、またはその両方を実行して、[任意の数のクラウドベースとオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)から、参照データとして使用することができます。 参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
 
 Stream Analytics には **BLOB あたり 100 MB の制限**がありますが、ジョブは **[パス パターン]** プロパティを使用して複数の参照 BLOB を処理できます。
@@ -97,7 +92,7 @@ Stream Analytics には **BLOB あたり 100 MB の制限**がありますが、
 3. 多数の BLOB を列挙する必要がないように、今後処理を行う予定がない非常に古い BLOB は削除することを検討してください。 ASA では、再起動のような一部のシナリオで少量の再処理が必要になる可能性がある点に注意してください。
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次の手順
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。

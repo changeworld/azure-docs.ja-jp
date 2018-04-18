@@ -1,12 +1,12 @@
 ---
-title: "Azure Site Recovery で Windows VM を Azure Premium Storage に移行する | Microsoft Docs"
-description: "Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
+title: Azure Site Recovery で Windows VM を Azure Premium Storage に移行する | Microsoft Docs
+description: Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 services: virtual-machines-windows
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 171b0f938e44218d11cfb001e3f58ebd0feb35fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -80,7 +80,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
 ### <a name="step-1-create-a-recovery-services-vault"></a>手順 1: Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-2. **[リソースの作成]** > **[管理]** > **[Backup** and **Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。 
+2. **[リソースの作成]** > **[管理]** > **[Backup and Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。 
 3. VM をレプリケートする先のリージョンを指定します。 今回は同じリージョン内で移行を行うため、ソース VM とソース ストレージ アカウントがあるリージョンを選択します。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>手順 2: 保護の目標を選択する 

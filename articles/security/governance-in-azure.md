@@ -1,12 +1,12 @@
 ---
-title: "Azure でのガバナンス | Microsoft Docs"
-description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
+title: Azure でのガバナンス | Microsoft Docs
+description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="governance-in-azure"></a>Azure でのガバナンス
 
@@ -133,7 +133,7 @@ Azure 加入契約の階層では、エンタープライズ契約の範囲内�
 
   - 制限
 
-  - Virtual Network
+  - 仮想ネットワーク
 
 - 1 つの AAD へのアタッチ (1 つの AAD は多数のサブスクリプションと関連付けられる)
 
@@ -263,7 +263,7 @@ Azure Portal からタグ付きのリソースを表示することもできま�
 
 リソース ロックでは、CanNotDelete と ReadOnly の 2 つの値を現在サポートしています。 CanNotDelete では、(適切な権限を持つ) ユーザーはリソースの読み取りまたは変更を引き続き行うことができますが、リソースを削除することはできません。 ReadOnly では、許可されたユーザーがリソースを削除することも変更することもできません。
 
-Resource Manager のロックは、管理ウィンドウで実行され、<https://management.azure.com> に送信される操作で構成される操作のみに適用されます。ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に対する ReadOnly ロックは、ユーザーによるデータベースの削除または変更を禁止しますが、データベースに対するデータの作成、更新、または削除は禁止しません。
+Resource Manager のロックは、管理ウィンドウで実行され、<https://management.azure.com> に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に対する ReadOnly ロックは、ユーザーによるデータベースの削除または変更を禁止しますが、データベースに対するデータの作成、更新、または削除は禁止しません。
 
 **ReadOnly** を適用すると、読み取り操作のように見えるいくつかの操作には追加のアクションが必要となるため、予期しない結果を招く可能性があります。 たとえば、 **ReadOnly** ロックをストレージ アカウントに設定すると、すべてのユーザーがキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
 
@@ -396,7 +396,7 @@ Azure Security Center には、Azure サブスクリプション内のすべて�
 >[!Note]
 > 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](https://docs.microsoft.com/azure/security-center/security-center-recommendations)」を参照してください。
 
-Security Center では、仮想マシンからデータを収集して、そのセキュリティ状態の評価、セキュリティ推奨事項の提供、脅威についての警告を行います。 最初にセキュリティ センターにアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、セキュリティ センター ポリシーで [データ収集を無効](https://docs.microsoft.com/azure/security-center/security-center-faq) にして、オプトアウトすることもできます。
+Security Center では、仮想マシンからデータを収集して、そのセキュリティ状態の評価、セキュリティ推奨事項の提供、脅威についての警告を行います。 最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 データ収集は有効にしておくことをお勧めしますが、セキュリティ センター ポリシーで [データ収集を無効](https://docs.microsoft.com/azure/security-center/security-center-faq) にして、オプトアウトすることもできます。
 
 Azure Security Center はオープン プラットフォームです。Microsoft のパートナーと独立系ソフトウェア ベンダーは、Azure Security Center に接続して機能を強化するソフトウェアを作成できます。
 
@@ -410,33 +410,33 @@ Azure Security Center は、次の Azure リソースを監視します。
 
 - Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および [App Service Environment](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme) 上の Web アプリケーション ファイアウォールなど)
 
-### <a name="operations-management-suite"></a>Operations Management Suite
+### <a name="log-analytics"></a>Log Analytics
 
-OMS ソフトウェア開発およびサービス チームの情報セキュリティと[ガバナンスのプログラム](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)は、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)で説明されている規定を順守しています。 そこでは、OMS によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティと[ガバナンスのプログラム](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)は、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
-OMS 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
+Log Analytics 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
-Microsoft には、Microsoft のすべてのサービスを監視して評価する、セキュリティとコンプライアンスのチームがあります。 情報セキュリティ責任者がチームを構成します。彼らは、OMS を開発するエンジニアリング部門とは関係ありません。 セキュリティ責任者には独自の管理チェーンがあり、製品とサービスについて独立した評価を行い、セキュリティとコンプライアンスを確保します。
+Microsoft には、Microsoft のすべてのサービスを監視して評価する、セキュリティとコンプライアンスのチームがあります。 情報セキュリティ責任者がチームを構成します。彼らは、Log Analytics を開発するエンジニアリング部門とは関係ありません。 セキュリティ責任者には独自の管理チェーンがあり、製品とサービスについて独立した評価を行い、セキュリティとコンプライアンスを確保します。
 
-Operations Management Suite (OMS) は、最初からクラウド用に設計された一連の管理サービスです。 オンプレミスのリソースのデプロイと管理は行わず、OMS コンポーネント全体が Azure にホストされます。 構成が最小限で済むため、文字どおり数分で稼働させることができます。
+Azure は、最初からクラウド用に設計された一連の管理サービスです。 オンプレミスのリソースのデプロイと管理は行わず、これらのコンポーネント全体が Azure にホストされます。 構成が最小限で済むため、文字どおり数分で稼働させることができます。
 
 ![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-OMS サービスがクラウドで実行されるからといって、オンプレミスの環境を効果的に管理できないわけではありません。
+Log Analytics サービスがクラウドで実行されるからといって、オンプレミスの環境を効果的に管理できないわけではありません。
 
 データ センター内の Windows コンピューターまたは Linux コンピューターにエージェントを配置すると、そのエージェントによって Log Analytics にデータが送信されます。Log Analytics で、このデータをクラウドまたはオンプレミスのサービスから収集されたその他すべてのデータと共に分析できます。 Azure Backup と Azure Site Recovery を使用すると、クラウドを活用して、オンプレミスのリソースのバックアップと高可用性を実現できます。
 
 クラウドの Runbook は通常オンプレミスのリソースにアクセスできませんが、エージェントは、データ センターで Runbook をホストする 1 つ以上のコンピューターにもインストールできます。 Runbook を開始するときは、単に、クラウドで実行するかローカル worker で実行するかを指定します。
 
-OMS のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
+Log Analytics のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
 ![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Azure Operation Manager の機能は、管理ソリューションを提供することによって拡張されます。 [管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)は、1 つ以上の OMS サービスを活用する管理シナリオが実装された、パッケージになった一連のロジックです。
+Azure Operation Manager の機能は、管理ソリューションを提供することによって拡張されます。 [管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)は、1 つ以上の管理サービスを活用する管理シナリオが実装された、パッケージになった一連のロジックです。
 
 ![Azure Operation Manager](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、OMS への投資の価値を高めることができます。
+さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、Log Analytics への投資の価値を高めることができます。
 
 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
 
@@ -455,7 +455,7 @@ Azure Operation Manager の機能は、管理ソリューションを提供す�
 >[!Note]
 > 「[Application Insights のアラートの設定](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)」と「[Web サイトの可用性と応答性の監視](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)」をご覧ください。
 
-- Log Analytics (Operations Management Suite): アクティビティ ログと診断ログの Log Analytics へのルーティングを有効にします。 Operations Management Suite では、メトリック、ログなどのアラートの種類が許可されています。
+- Log Analytics: アクティビティ ログと診断ログの Log Analytics へのルーティングを有効にして、メトリック、ログ、その他のアラートの種類を可能にします。
 
 >[!Note]
 > 詳細については、「[Log Analytics のアラート](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)」を参照してください。
@@ -484,7 +484,7 @@ Azure のアプリケーションとサービスを監視するためにさま�
 - **System Center Operations Manager (SCOM)** は、大規模なクラウド インストールの管理と監視向けです。 オンプレミスの Windows Sever および Hyper-V ベースのクラウド用の管理ツールとして既に使い慣れているかもしれませんが、Azure アプリと統合したり Azure アプリを管理したりすることもできます。 特に重要なこととして、既存のライブ アプリに Application Insights をインストールできます。 アプリがダウンすると、すぐに通知されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Resource Manager テンプレートを作成するためのベスト プラクティス](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)
 

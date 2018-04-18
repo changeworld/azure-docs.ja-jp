@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: c2e11d89f35915ef0a0c1e1f544b0be8df0473de
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>OMS から Azure にアラートを拡張 (コピー) する方法
-**2018 年 4 月 23日**以降、[Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で構成されているアラートを使っているすべてのユーザーは、Azure に拡張される予定です。 Azure に拡張されたアラートは、OMS と同じように動作します。 監視機能も変わりません。 OMS で作成したアラートを Azure に拡張すると、多くのメリットがあります。 OMS から Azure へのアラートの拡張の利点とプロセスについて詳しくは、「[OMS から Azure にアラートを拡張する](monitoring-alerts-extend.md)」をご覧ください。
+**2018 年 5 月 14 日**以降、[Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で構成されているアラートを使っているすべてのユーザーは、Azure に拡張される予定です。 Azure に拡張されたアラートは、OMS と同じように動作します。 監視機能も変わりません。 OMS で作成したアラートを Azure に拡張すると、多くのメリットがあります。 OMS から Azure へのアラートの拡張の利点とプロセスについて詳しくは、「[OMS から Azure にアラートを拡張する](monitoring-alerts-extend.md)」をご覧ください。
 
 OMS から Azure にアラートをすぐに移行することを希望するユーザーは、以下で説明するオプションのいずれかを使って実行できます。
 
@@ -157,8 +157,87 @@ POST が成功した場合は、200 OK の応答と共に次の結果が返り�
 ```
 これは、バージョン 2 で示される Azure にアラートが拡張されたことを示します。 このバージョンは、アラートが Azure に拡張されて、[Log Analytics Search API](../log-analytics/log-analytics-api-alerts.md) での使用に影響がないかどうかを確認するためだけのものです。 アラートが Azure に正常に拡張されると、GET の間に指定されたすべてのメール アドレスに、行われた変更の詳細を含むレポートが送信されます。
 
+また、指定したワークスペースのすべてのアラートが、Azure への拡張を既にスケジューリングされている場合は、POST に対する応答が 403 Forbidden になります。 エラー メッセージを表示したり、拡張プロセスが停止しているかどうかを確認したりするには、GET の呼び出しを実行し、概要と共に返されるエラー メッセージを確認します。
 
-また、指定したワークスペースのすべてのアラートが、Azure への拡張を既にスケジューリングされている場合は、POST に対する応答が 403 Forbidden になります。
+```json
+{
+    "version": 1,
+    "message": "OMS was unable to extend your alerts into Azure, Error: The subscription is not registered to use the namespace 'microsoft.insights'. OMS will schedule extending your alerts, once remediation steps illustrated in the troubleshooting guide are done.",
+    "recipients": [
+       "john.doe@email.com",
+       "jane.doe@email.com"
+     ],
+    "migrationSummary": {
+        "alertsCount": 2,
+        "actionGroupsCount": 2,
+        "alerts": [
+            {
+                "alertName": "DemoAlert_1",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_1"
+            },
+            {
+                "alertName": "DemoAlert_2",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_2"
+            }
+        ],
+        "actionGroups": [
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                "actions": {
+                    "emailIds": [
+                        "JohnDoe@mail.com"
+                    ],
+                    "webhookActions": [
+                        {
+                            "name": "Webhook_1",
+                            "serviceUri": "http://test.com"
+                        }
+                    ],
+                    "itsmAction": {}
+                }
+            },
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                 "actions": {
+                    "emailIds": [
+                        "test1@mail.com",
+                          "test2@mail.com"
+                    ],
+                    "webhookActions": [],
+                    "itsmAction": {
+                        "connectionId": "<Guid>",
+                        "templateInfo":"{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\",\"UseTemplate\":false,\"WorkItemData\":\"{\\\"contact_type\\\":\\\"email\\\",\\\"impact\\\":\\\"3\\\",\\\"urgency\\\":\\\"2\\\",\\\"category\\\":\\\"request\\\",\\\"subcategory\\\":\\\"password\\\"}\",\"CreateOneWIPerCI\":false}"
+                    }
+                }
+            }
+        ]
+    }
+}              
+
+```
+
+## <a name="troubleshooting"></a>トラブルシューティング 
+OMS から Azure にアラートを拡張するプロセスでは、システムが必要な[アクション グループ](monitoring-action-groups.md)を作成できないことがあります。 このような場合、エラー メッセージは、アラート セクションのバナーを介して OMS ポータルに表示されます。また、API に対する GET の呼び出しの完了時に表示されます。
+
+次に各エラーの修復手順を説明します。
+1. **エラー: サブスクリプションが名前空間 'microsoft.insights' を使用するように登録されていません**。![登録エラー メッセージが表示された OMS ポータルの [アラート設定] ページ](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 OMS ワークスペースに関連付けられたサブスクリプションは Azure Monitor (microsoft.insights) 機能を使用できるように登録されていません。そのため OMS は Azure Monitor および Azure アラートにアラートを拡張できません。
+    
+    b. 解決するには、Powershell、Azure CLI、または Azure Portal を使用して、サブスクリプションに microsoft.insights (Azure Monitor および Azure アラート) の使用を登録します。 詳細については、[リソース プロバイダー登録時のエラーの解決](../azure-resource-manager/resource-manager-register-provider-errors.md)に関する記事を参照してください
+    
+    c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
+2. **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**。![ScopeLock エラー メッセージが表示された OMS ポータルの [アラート設定] ページ](./media/monitor-alerts-extend/ErrorScopeLock.png)
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 スコープ ロックを有効にすると、Log Analytics (OMS) ワークスペースを含むサブスクリプションまたはリソース グループの新しい変更がすべて制限されます。システムはアラートを Azure に拡張 (コピー) することができず、必要なアクション グループを作成することができません。
+    
+    b. 解決するには、Azure Portal、Powershell、Azure CLI、または API を使用して、ワークスペースを含むサブスクリプションまたはリソース グループの *ReadOnly* ロックを削除します。 詳細については、[リソース ロックの使用方法](../azure-resource-manager/resource-group-lock-resources.md)に関する記事を参照してください。 
+    
+    c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
 
 
 ## <a name="next-steps"></a>次の手順

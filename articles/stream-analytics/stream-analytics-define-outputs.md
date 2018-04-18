@@ -1,29 +1,24 @@
 ---
-title: 'Stream Analytics の出力: ストレージのオプション、分析 | Microsoft Docs'
+title: Azure Stream Analytics ジョブからの出力の種類
 description: 分析結果の Power BI など、Stream Analytics データ出力の対象設定オプションについて説明します。
-keywords: データ変換、分析結果、データ ストレージ オプション
-services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
-documentationcenter: ''
-author: SnehaGunda
+services: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 02/18/2017
-ms.author: sngun
-ms.openlocfilehash: a641c7e5e792b020be54a2ebc4bac63b545ce71e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics の出力: ストレージのオプション、分析
+# <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Stream Analytics の出力: ストレージと分析のオプション
 Stream Analytics ジョブを作成するときは、生成されたデータがどのように使用されるかを考慮してください。 Stream Analytics ジョブの結果は、どのような方法で表示して、どの場所に保存できるのでしょうか?
 
-さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。 そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。 ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。 たとえば、出力として BLOB ストレージを使用する場合、ジョブはストレージ アカウントを自動的に作成しません。 Stream Analytics ジョブが開始される前に、ストレージ アカウントを作成します。
+さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。 そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。 ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。 たとえば、出力として BLOB ストレージを使用する場合、ジョブはストレージ アカウントを自動的に作成しません。 Stream Analytics ジョブが開始される前に、ストレージ アカウントを作成してください。
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 この記憶域を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。 承認と (必要に応じて) Data Lake Store にサインアップする方法の詳細については、[Data Lake 出力の記事](stream-analytics-data-lake-output.md)を参照してください。
@@ -79,20 +74,20 @@ Data Lake Storage を Azure Portal で出力として選択すると、既存の
 </tr>
 <tr>
 <td>形式</td>
-<td>JSON のシリアル化のみに適用されます。 行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。 配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。</td>
+<td>JSON のシリアル化のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。</td>
 </tr>
 </tbody>
 </table>
 
 ### <a name="renew-data-lake-store-authorization"></a>Data Lake Store の承認を更新する
-ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Data Lake Store アカウントを再認証する必要があります。
+ジョブが作成されてから、または前回の認証以降に Data Lake Store アカウントのパスワードが変わった場合、そのアカウントを再認証する必要があります。
 
 ![Data Lake Store の承認](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。 また、SQL Database 出力オプションを使用して、 [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます (これはプレビュー機能です)。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型にぴったり一致する必要があります。 また、SQL Database 出力オプションを使用して、 [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます (これはプレビュー機能です)。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
 | データベース |出力を送信するデータベースの名前 |
@@ -115,7 +110,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 <tbody>
 <tr>
 <td>プロパティ名</td>
-<td>Description</td>
+<td>説明</td>
 </tr>
 <tr>
 <td>出力のエイリアス</td>
@@ -159,7 +154,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 </tr>
 <tr>
 <td>形式</td>
-<td>JSON のシリアル化のみに適用されます。 行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。 配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。</td>
+<td>JSON のシリアル化のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。</td>
 </tr>
 </tbody>
 </table>
@@ -178,7 +173,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 イベント ハブのデータ ストリームを出力として構成するために必要なパラメーターがいくつかあります。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこのイベント ハブに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
@@ -189,13 +184,13 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
-| 形式 |JSON のシリアル化のみに適用されます。 行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。 配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。 |
+| 形式 |JSON のシリアル化のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。 |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。 この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
 ### <a name="authorize-a-power-bi-account"></a>Power BI アカウントを承認する
-1. Power BI を Azure Portal で出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
+1. [Power BI] を Azure Portal で出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
    
    ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 2. まだアカウントを持っていない場合は新しいアカウントを作成し、[今すぐ承認] をクリックします。  次のような画面が表示されます。  
@@ -206,7 +201,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 ### <a name="configure-the-power-bi-output-properties"></a>Power BI 出力プロパティを構成する
 Power BI アカウントを認証すると、Power BI 出力のプロパティを構成できます。 次の表は、Power BI 出力を構成するためのプロパティ名とその説明の一覧です。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこの PowerBI 出力に出力するためにクエリで使用されるわかりやすい名前です。 |
 | グループ ワークスペース |他の Power BI ユーザーとのデータの共有を有効にするには、Power BI アカウント内のグループを選択できます。グループに書き込む必要がない場合は、[個人用ワークスペース] を選択します。  既存のグループを更新するには、Power BI の認証を更新する必要があります。 |
@@ -265,7 +260,7 @@ DateTime | String | String |  DateTime | String
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこのテーブル ストレージに出力するためにクエリで使用されるわかりやすい名前です。 |
 | ストレージ アカウント |出力を送信するストレージ アカウントの名前。 |
@@ -280,7 +275,7 @@ DateTime | String | String |  DateTime | String
 
 次の表に、キュー出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこの Service Bus キューに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 |
@@ -290,14 +285,14 @@ DateTime | String | String |  DateTime | String
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
-| 形式 |JSON 型のみに適用されます。 行区切りを指定すると、各 JSON オブジェクトを新しい行で区切ることで、出力が書式設定されます。 配列を指定すると、出力が JSON オブジェクトの配列として書式設定されます。 |
+| 形式 |JSON 型のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 |
 
 ## <a name="service-bus-topics"></a>Service Bus トピック
 Service Bus キューには、送信者から受信者への 1 対 1 の通信メソッドが備わっていますが、 [Service Bus トピック](https://msdn.microsoft.com/library/azure/hh367516.aspx) では 1 対多の形式で通信することができます。
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこの Service Bus トピックに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
@@ -328,7 +323,7 @@ Azure Functions は、インフラストラクチャを明示的にプロビジ�
 
 Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions を呼び出します。 新しい Azure 関数出力アダプターは、次の構成可能なプロパティで使用できます。
 
-| プロパティ名 | [説明] |
+| プロパティ名 | 説明 |
 | --- | --- |
 | Function App |Azure Functions アプリの名前 |
 | 関数 |Azure Functions アプリ内の関数の名前 |
@@ -342,7 +337,7 @@ Azure Stream Analytics は、Azure 関数から 413 (http の "要求したエ�
 
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次の手順
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。

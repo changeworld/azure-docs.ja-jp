@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 0339dc2ecc93fb9ec260ede9d3f2e9b7b1419b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 Azure SQL Database 監査では、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
@@ -118,7 +118,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
-* 作成した[同期アプリケーション](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration)を使用します。 アプリケーションは Azure で実行され、Operations Management Suite (OMS) Log Analytics のパブリック API を使用して SQL 監査ログを OMS にプッシュします。 同期アプリケーションは OMS Log Analytics ダッシュボード経由で、OMS Log Analytics へ SQL 監査ログをプッシュして使用します。
+* 作成した[同期アプリケーション](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration)を使用します。 アプリケーションは Azure で実行され、Log Analytics のパブリック API を使用して SQL 監査ログを Log Analytics にプッシュします。 同期アプリケーションは Log Analytics ダッシュボード経由で、Log Analytics へ SQL 監査ログをプッシュして使用します。
 
 * Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 [Power BI の詳細を確認し、ダウンロード可能なテンプレートにアクセスします](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)。
 

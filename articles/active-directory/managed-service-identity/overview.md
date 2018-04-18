@@ -1,24 +1,24 @@
 ---
-title: "Azure Active Directory の管理対象サービス ID (MSI)"
-description: "Azure リソースの管理対象サービス ID の概要。"
+title: Azure Active Directory の管理対象サービス ID (MSI)
+description: Azure リソースの管理対象サービス ID の概要。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 2d711d4fa48a1d10d4c37b9591a66e5b746f1ca7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
@@ -38,7 +38,7 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 2. Azure Resource Manager は、Azure AD で VM の ID を表すサービス プリンシパルを作成します。 このサブスクリプションによって信頼されている Azure AD テナントで、サービス プリンシパルが作成されます。
 3. Azure Resource Manager は、VM の MSI VM 拡張機能でサービス プリンシパルの詳細を構成します。  この手順には、拡張機能で使用されるクライアント ID と証明書を構成して、Azure AD からアクセス トークンを取得することが含まれます。
 4. これで、VM のサービス プリンシパル ID が認識され、Azure リソースへのアクセスを付与することができます。  たとえば、コードが Azure Resource Manager を呼び出す必要がある場合、Azure AD でロールベースのアクセス制御 (RBAC) を使用して、VM のサービス プリンシパルに適切な役割を割り当てることができます。  コードが Key Vault を呼び出す必要がある場合、Key Vault 内の特定のシークレットまたはキーへのアクセスをコードに付与します。
-5. VM で実行されているコードは、次のように MSI VM 拡張機能によってホストされているローカル エンドポイントからトークンを要求します。http://localhost:50342/oauth2/token  リソース パラメーターは、トークンの送信先のサービスを指定します。 たとえば、Azure Resource Manager に認証するようにコードを設定する場合は、resource=https://management.azure.com/ を使用します。
+5. VM で実行されているコードは、次のように MSI VM 拡張機能によってホストされているローカル エンドポイントからトークンを要求します: http://localhost:50342/oauth2/token。  リソース パラメーターは、トークンの送信先のサービスを指定します。 たとえば、Azure Resource Manager に認証するようにコードを設定する場合は、resource=https://management.azure.com/ を使用します。
 6. MSI VM 拡張機能は、構成したクライアント ID と証明書を使用して Azure AD からアクセス トークンを要求します。  Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
 7. コードは、Azure AD 認証をサポートするサービスへの呼び出しでアクセス トークンを送信します。
 
@@ -62,7 +62,7 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 |                    | [Linux VM 管理対象サービス ID を使用して SAS で Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md) |
 |                    | [Linux VM 管理対象サービス ID と Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
-| Azure 関数     | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
+| Azure Functions    | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Azure Service Bus で管理対象サービス ID を使用する](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure Event Hubs   | [Azure Event Hubs で管理対象サービス ID を使用する](../../event-hubs/event-hubs-managed-service-identity.md) |
 
@@ -78,8 +78,10 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 | ------- | ------ | ---- | --------- | ----------- |
 | Azure Virtual Machines | プレビュー | 2017 年 9 月 | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
 | Azure App Service | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Functions<sup>1</sup> | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Data Factory V2 | プレビュー | 2017 年 11 月 | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+
+<sup>1</sup> Azure Functions がサポートされ、ユーザー コードで ID を使用できるようになりましたが、引き続きトリガーとバインドに接続文字列が必要な場合があります。
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD 認証をサポートしている Azure サービス
 

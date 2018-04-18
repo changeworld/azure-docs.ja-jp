@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid のカスタム トピックにイベントを投稿する"
-description: "Azure Event Grid のカスタム トピックにイベントを投稿する方法について説明します"
+title: Azure Event Grid のカスタム トピックにイベントを投稿する
+description: Azure Event Grid のカスタム トピックにイベントを投稿する方法について説明します
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 43dcdf9ab0fee5f7e61ecdc42aaf40430e272d92
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid のカスタム トピックに投稿する
 
@@ -91,8 +91,34 @@ PowerShell でカスタム トピックのキーを取得するには、次の�
 }]
 ```
 
+## <a name="response"></a>Response
+
+トピック エンドポイントへの投稿後に、応答を受信します。 応答は、標準 HTTP 応答コードです。 いくつかの一般的な応答を次に示します。
+
+|結果  |Response  |
+|---------|---------|
+|成功  | 200 OK  |
+|エンドポイントが正しくない | 404 見つかりません |
+|無効なアクセス キー | 401 権限がありません |
+|イベント データの形式が正しくない | 400 Bad Request |
+
+エラーの場合、メッセージ本文は次の形式になります。
+
+```json
+{
+    "error": {
+        "code": "<HTTP status code>",
+        "message": "<description>",
+        "details": [{
+            "code": "<HTTP status code>",
+            "message": "<description>"
+    }]
+  }
+}
+```
+
 ## <a name="next-steps"></a>次の手順
 
-* カスタム イベントのルーティングの概要については、「[Azure CLI と Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart.md)」または「[Azure PowerShell と Event Grid を使用したカスタム イベントの作成とルーティング](custom-event-quickstart-powershell.md)」をご覧ください。
+* イベント配信の監視について詳しくは、「[Event Grid メッセージ配信の監視](monitor-event-delivery.md)」をご覧ください。
 * 認証キーについて詳しくは、「[Event Grid のセキュリティと認証](security-authentication.md)」をご覧ください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

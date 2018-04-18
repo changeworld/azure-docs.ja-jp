@@ -8,16 +8,16 @@ ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 04/01/2018
 ms.author: jodebrui
-ms.openlocfilehash: 77e73ec1004babb5fce1e293acfade9264cd6945
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cd76f475f330c49dec737d2c4a25aa75a18b41a7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>インメモリ OLTP を使用した SQL Database のアプリケーション パフォーマンスの向上
-[インメモリ OLTP](sql-database-in-memory.md) は、[Premium](sql-database-service-tiers.md) Azure SQL Database で、価格レベルを上げることなくトランザクション処理、データの取り込み、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 
+[インメモリ OLTP](sql-database-in-memory.md) は、[Premium および Business Critical レベル](sql-database-service-tiers.md)のデータベースで、価格レベルを上げることなくトランザクション処理、データ インジェスト、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 
 
 > [!NOTE] 
 > 「[Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (クォーラムが SQL Database で DTU の 70% を削減しながら主要なデータベースのワークロードを 2 倍にする)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)」方法について
@@ -25,8 +25,8 @@ ms.lasthandoff: 03/16/2018
 
 既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。
 
-## <a name="step-1-ensure-you-are-using-a-premium-database"></a>手順 1: Premium データベースを使用していることを確認する
-インメモリ OLTP は、Premium データベースでのみサポートされています。 返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>手順 1: Premium および Business Critical レベルのデータベースを使用していることを確認する
+インメモリ OLTP は、Premium および Business Critical レベルのデータベースでのみサポートされています。 返された結果が (0 ではなく) 1 である場合は、インメモリがサポートされています。
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');

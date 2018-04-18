@@ -7,13 +7,13 @@ manager: drasumic
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: cfee95f5978073277a5351b976156cafefb87c16
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f29a7c883450cbc0f1f2b5a230a6c6e081222906
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
@@ -22,7 +22,7 @@ Azure SQL Database は自動的に管理されるデータ サービスです。
 ## <a name="enable-automatic-tuning-on-server"></a>サーバーでの自動チューニングの有効化
 自動チューニングの構成を [Azure の既定値] から継承するかどうかをサーバー レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効で、DROP_INDEX が無効です。
 
-## <a name="configure-automiatic-tuning-e-mail-notifications"></a>メール通知の自動チューニングの構成
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>メール通知の自動チューニングの構成
 
 [メール通知の自動チューニング](sql-database-automatic-tuning-email-notifications.md)に関するページを参照してください。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI 2.0 でトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
-description: "Azure CLI 2.0 で OS ディスクを復旧 VM に接続して、Linux VM の問題のトラブルシューティングを行う方法について説明します"
+title: Azure CLI 2.0 でトラブルシューティング用 Linux VM を使用する | Microsoft Docs
+description: Azure CLI 2.0 で OS ディスクを復旧 VM に接続して、Linux VM の問題のトラブルシューティングを行う方法について説明します
 services: virtual-machines-linux
-documentationCenter: 
+documentationCenter: ''
 authors: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 9f1ac319e87f321306a2239b2e17725d281fbf59
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e96f31b3e91066bfc04af62c2bf82db200f35002
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
 Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI 2.0 で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
@@ -59,7 +59,7 @@ az vm show --resource-group myResourceGroup --name myVM \
     --query [storageProfile.osDisk.vhd.uri] --output tsv
 ```
 
-この URI は、**https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** のようになります。
+URI は **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** のようになります。
 
 ## <a name="delete-existing-vm"></a>既存の VM を削除する
 Azure では、仮想ハード ディスクと VM は 2 つの異なるリソースです。 仮想ハード ディスクには、オペレーティング システム自体、アプリケーション、構成が格納されています。 VM 自体は、サイズや場所を定義し、仮想ハード ディスクや仮想ネットワーク インターフェイス カード (NIC) などのリソースを参照するメタデータにすぎません。 各仮想ハード ディスクには、VM に接続されたときにリースが割り当てられています。 データ ディスクは、VM の実行中でも接続および切断できますが、OS ディスクは、VM リソースを削除しない限り、切断することはできません。 VM が停止され、割り当てが解除された状態であっても、リースによって OS ディスクは引き続きその VM に関連付けられています。
@@ -151,7 +151,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
         --query '[].{Disk:vhd.uri}' --output table
     ```
 
-    既存の仮想ハード ディスクの名前を書き留めます。 たとえば、**https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** という URI のディスクの名前は **myVHD** です。 
+    既存の仮想ハード ディスクの名前を書き留めます。 たとえば、URI が **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** のディスクの名前は **myVHD** です。 
 
     [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach) を使用して、VM からデータ ディスクを切断します。 次の例では、`myResourceGroup` リソース グループ内の `myVMRecovery` という名前の VM から `myVHD` という名前のディスクを切断します。
 

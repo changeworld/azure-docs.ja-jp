@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 6e0b8a999cf38cbef37498d4ee0fb2bceae8f292
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e66adb8b0485e30fded487e18af6b2030f9c7f5b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
 
@@ -166,7 +166,7 @@ SQL データ同期の詳細については、以下を参照してください�
 
 -   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   [OMS Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   [Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例

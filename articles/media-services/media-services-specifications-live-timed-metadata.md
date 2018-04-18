@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: ae726b141f5f44b1eb0887cbd988881e41e163c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知
 
@@ -134,7 +134,7 @@ Movie Box ("moov") は、スパース トラックのストリーム ヘッダ�
 
 スパース トラックのフラグメントは、Movie Fragment Box ("moof") と Media Data Box ("mdat") で構成されます。
 
-MovieFragmentBox ("moof") ボックスは、[FMP4] で定義された以下のフィールドを含む **TrackFragmentExtendedHeaderBox ("uuid")** ボックスを含んでいなければなりません。
+MovieFragmentBox ("moof") ボックスは、[MS-SSTR] で定義された以下のフィールドを含む **TrackFragmentExtendedHeaderBox ("uuid")** ボックスを含んでいなければなりません。
 
 | **フィールド名**         | **フィールドの型**          | **必須** | **説明**                                                                               |
 |------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
@@ -177,7 +177,7 @@ MediaDataBox ("mdat") ボックスは次のような形式でなければなり�
 
 ## <a name="31-smooth-streaming-delivery"></a>3.1 Smooth Streaming の配信
 
-[FMP4] および [MS-SSTR] の仕様で、スパース トラックの処理の詳細を参照してください。
+[MS-SSTR] でスパース トラックの処理の詳細を確認してください。
 
 #### <a name="smooth-client-manifest-example"></a>Smooth クライアントのマニフェストの例
 ~~~ xml
@@ -407,13 +407,11 @@ Smooth Streaming の取り込みでは、[SCTE-35] の表 8-1 で定義されて
 
 **[AMF0]** ["アクション メッセージ形式 AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[FMP4]** [IIS Smooth Streaming ファイル/ワイヤ形式仕様](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7bAC5A31A4-E455-4000-96E1-AB17BD083144%7d&file=IIS%20Smooth%20Streaming%20File%20Format%20Specification%20-%20v%202%203%2001%20latest%20draft.docx&action=default)
-
-**[LIVE-FMP4]** [Azure Media Services の Fragmented MP4 ライブ取り込み仕様](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7b5CEE1122-AA28-4368-BC8E-9C0048BF1529%7d&file=AMS%20F-MP4%20Live%20Ingest%20Specification.docx&action=default)
+**[LIVE-FMP4]** [Azure Media Services の Fragmented MP4 ライブ取り込み仕様](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]** ISO/IEC 14496-12: パート 12 ISO ベースのメディア ファイル形式、第 4 版、2012 年 7 月 15 日。
 
-**[RTMP]** ["Adobe の Real-Time Messaging Protocol"、2012 年 12 月 21 日](http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/rtmp/pdf/rtmp_specification_1.0.pdf) 
+**[RTMP]** ["Adobe の Real-Time Messaging Protocol"、2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html) 
 
 ------------------------------------------
 

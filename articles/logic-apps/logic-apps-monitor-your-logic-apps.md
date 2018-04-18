@@ -1,11 +1,11 @@
 ---
-title: "状態の確認、ログの設定、アラートの取得 - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリの状態とパフォーマンスを監視し、診断データをログに記録して、アラートを設定します"
+title: 状態の確認、ログの設定、アラートの取得 - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリの状態とパフォーマンスを監視し、診断データをログに記録して、アラートを設定します
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -76,9 +76,9 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>ロジック アプリの診断ログを有効にする
 
-実行時の詳細情報やイベントを使用した高度なデバッグの場合は、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して診断ログを設定できます。 Log Analytics は、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して、それらの可用性とパフォーマンスを維持できるようにします。 
+実行時の詳細情報やイベントを使用した高度なデバッグの場合は、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して診断ログを設定できます。 Log Analytics は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するうえで役立ちます。 
 
-開始する前に、OMS ワークスペースを用意しておく必要があります。 [OMS ワークスペースの作成方法](../log-analytics/log-analytics-get-started.md)を確認してください。
+開始する前に、Log Analytics ワークスペースを用意しておく必要があります。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
 1. [Azure Portal](https://portal.azure.com) で、ご利用のロジック アプリを探して選択します。 
 
@@ -90,16 +90,16 @@ ms.lasthandoff: 02/28/2018
 
    ![診断ログを有効にする](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
-4. ここで、次のように、ログ用に OMS ワークスペースとイベント カテゴリを選択します。
+4. ここで、次のように、ログ用に Log Analytics ワークスペースとイベント カテゴリを選択します。
 
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
-   3. **[OMS ワークスペース]** で、ログに使用する OMS ワークスペースを選択します。
+   3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。
    4. **[ログ]** で、**[WorkflowRuntime]** カテゴリを選択します。
    5. メトリックの間隔を選択します。
    6. 完了したら、**[保存]** を選択します。
 
-   ![ログ用に OMS ワークスペースとデータを選択する](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
+   ![Log Analytics ワークスペースとログ対象のデータを選択する](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
 
 これで、トリガー イベント、実行イベント、アクション イベントに関して、イベントとその他のデータを検索できるようになりました。
 
@@ -113,21 +113,21 @@ ms.lasthandoff: 02/28/2018
 
    ![[Log Analytics] を選択する](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 
-2. **[Log Analytics]** で、ご利用の OMS ワークスペースを検索して選択します。 
+2. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
 
-   ![OMS ワークスペースを選択する](media/logic-apps-monitor-your-logic-apps/selectla.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
 3. **[管理]** で、**[OMS ポータル]** を選択します。
 
    ![[OMS ポータル] を選択する](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
 
-4. OMS ホーム ページで、**[ログ検索]** を選択します。
+4. ホーム ページで **[ログ検索]** を選択します。
 
-   ![OMS ホーム ページで [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch.png)
+   ![ホーム ページで [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch.png)
 
    または
 
-   ![[OMS] メニューの [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
+   ![メニューの [ログ検索] を選択する](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
 
 5. 検索ボックスに、検索するフィールドを指定し、**Enter** キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 
 

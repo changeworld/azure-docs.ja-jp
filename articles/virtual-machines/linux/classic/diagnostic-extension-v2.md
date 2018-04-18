@@ -1,10 +1,10 @@
 ---
-title: "VM 拡張機能による Linux VM の監視 | Microsoft Doc"
-description: "Linux の診断拡張機能を使用して Azure 内の Linux VM のパフォーマンスと診断データを監視する方法を説明します。"
+title: VM 拡張機能による Linux VM の監視 | Microsoft Doc
+description: Linux の診断拡張機能を使用して Azure 内の Linux VM のパフォーマンスと診断データを監視する方法を説明します。
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
 
@@ -64,7 +64,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 * **Azure Linux エージェント バージョン 2.0.6 またはそれ以降**。
 
   大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。 **WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。 VM が 2.0.6 より前のバージョンを実行している場合は、 [GitHub のこちらの説明](https://github.com/Azure/WALinuxAgent "説明") に従って更新できます。
-* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../../../cli-install-nodejs.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 次に例を示します。
+* **Azure CLI**。 [このガイダンスの CLI のインストール手順](../../../cli-install-nodejs.md) に従って、コンピューターに Azure CLI 環境をセットアップします。 Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。 例: 
 
   * ヘルプ情報の詳細については、 **azure vm extension set --help** を実行します。
   * Azure にサインインするには、 **azure login** を実行します。

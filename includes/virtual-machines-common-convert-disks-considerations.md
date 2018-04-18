@@ -3,6 +3,8 @@
 
 * 一度行った変換を元に戻すことはできません。 
 
+* [仮想マシン共同作成者](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)ロールを持つユーザーは、VM のサイズを変更できないことに注意してください (事前の変換は可能)。 管理ディスクを持つ VM が OS ディスク上での Microsoft.Compute/disks/write 権限をユーザーに要求するのは、これが理由です。
+
 * 変換のテストは必ず行ってください。 まずテスト用の仮想マシンで試してから運用環境で移行を実行します。
 
 * 変換中に、VM の割り当てを解除します。 VM は、変換後に起動されたときに、新しい IP アドレスを受け取ります。 VM には必要に応じて[静的 IP アドレスを割り当て](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)ることができます。

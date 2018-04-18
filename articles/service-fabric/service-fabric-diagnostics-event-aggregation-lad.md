@@ -1,12 +1,12 @@
 ---
-title: "Linux Azure 診断を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs"
-description: "Azure Service Fabric クラスターの監視と診断に LAD を使用したイベントの集計と収集について説明します。"
+title: Linux Azure 診断を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
+description: Azure Service Fabric クラスターの監視と診断に LAD を使用したイベントの集計と収集について説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: b70780b2e1d169aced3412f6fe6d13ad4dab82be
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9ad63a67d3b51cad1376eb9e97e68fb9102013e3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログをアップロードして収集する方法として、Linux Azure 診断 (LAD) 拡張機能を使用できます。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[OMS Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの分析プラットフォーム製品や別のログ解析ソリューションで取り込めます。
+ログをアップロードして収集する方法として、Linux Azure 診断 (LAD) 拡張機能を使用できます。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 ## <a name="log-and-event-sources"></a>ログとイベントのソース
 
@@ -49,7 +49,7 @@ Service Fabric では、操作イベントやランタイム イベントなど�
 これにより、LAD エージェントが指定されたログ ファイルを監視するように構成されます。 新しい行がファイルに追加されるたびに、指定したストレージ (テーブル) に送信される syslog エントリが作成されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 1. 問題をトラブルシューティングするときに調査する必要があるイベントの詳細については、[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
-2. メトリックの収集、クラスターにデプロイされた Containers の監視、ログの視覚化に役立つように [OMS エージェントを設定](service-fabric-diagnostics-event-analysis-oms.md)します。 
+2. メトリックの収集、クラスターにデプロイされた Containers の監視、ログの視覚化に役立つように [Log Analytics エージェントを設定](service-fabric-diagnostics-event-analysis-oms.md)します。 

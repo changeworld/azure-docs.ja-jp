@@ -1,10 +1,10 @@
 ---
 title: Windows 用 Azure N シリーズ ドライバー セットアップ | Microsoft Docs
-description: Azure で Windows を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法
+description: Azure で Windows Server または Windows を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 04/04/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61bcbe23ec3afd7091084dd0102010a9b8ef0b7c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: efa8c2603d6ff4493656cda41306a5dad46bc5f3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server を実行している N シリーズ VM の GPU ドライバーをセットアップする
-Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA グラフィック ドライバーをインストールする必要があります。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも利用可能です。
+# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM の GPU ドライバーをセットアップする 
+サポートされているバージョンの Windows Server または Windows を実行する Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA グラフィック ドライバーをインストールする必要があります。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも利用可能です。
 
 基本仕様、ストレージの容量、およびディスクの詳細については、「[GPU Windows VM のサイズ](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 
 

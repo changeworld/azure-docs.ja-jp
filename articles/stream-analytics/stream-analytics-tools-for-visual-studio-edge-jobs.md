@@ -1,26 +1,21 @@
 ---
-title: Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定 | Microsoft Docs
-description: Visual Studio の Stream Analytics ツールを使用して Stream Analytics Edge ジョブをオーサリング、デバッグ、および作成するためのチュートリアル。
-keywords: Visual Studio, NuGet, DevOps, Edge jobs, Stream analytics
-documentationcenter: ''
+title: Visual Studio の Azure Stream Analytics ツールでの Edge ジョブ
+description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics Edge ジョブのオーサリング、デバッグ、および作成を行う方法について説明します。
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/13/2018
 ms.author: sujie
-ms.openlocfilehash: c6e1d0693035ef343e20cee4b09f0669e089afee
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/13/2018
+ms.openlocfilehash: ec916ea2104df9d694aad2462df7ca5a487017f2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="develop-stream-analytics-edge-jobs-by-using-visual-studio-tools"></a>Visual Studio ツールを使用して Stream Analytics Edge ジョブを作成する
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
 このチュートリアルでは、Visual Studio の Stream Analytics ツールを使用して、Stream Analytics ジョブのオーサリング、デバッグ、および作成を行う方法について説明します。 ジョブを作成してテストした後、 Azure Portal に移動して、それをデバイスに配置できます。 
 
@@ -105,7 +100,7 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>ジョブを Azure に送信する
 
-1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]** >  を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
+1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]**  > を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、**[Azure に送信]** を選択します。  
 
@@ -117,7 +112,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー** > で、**[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、 > **[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのオプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

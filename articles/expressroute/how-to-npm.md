@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
-Network Performance Monitor (NPM) は、Azure クラウド デプロイとオンプレミス拠点 (支社など) との間の接続性を監視するクラウドベースのネットワーク監視ソリューションです。 NPM は、Microsoft Operations Management Suite (OMS) に含まれています。 新たに ExpressRoute 用の拡張機能が追加され、プライベート ピアリングを使用するように構成された ExpressRoute 回線上のネットワーク パフォーマンスを監視できるようになりました。 ExpressRoute に対して NPM を構成することにより、特定して排除すべきネットワークの問題を検出することができます。
+Network Performance Monitor (NPM) は、Azure クラウド デプロイとオンプレミス拠点 (支社など) との間の接続性を監視するクラウドベースのネットワーク監視ソリューションです。 NPM は Log Analytics の一部です。 新たに ExpressRoute 用の拡張機能が追加され、プライベート ピアリングを使用するように構成された ExpressRoute 回線上のネットワーク パフォーマンスを監視できるようになりました。 ExpressRoute に対して NPM を構成することにより、特定して排除すべきネットワークの問題を検出することができます。
 
 次のようにすることができます。
 
@@ -72,11 +72,11 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
 1. ExpressRoute 回線に VNET がピアリングされているサブスクリプションを [Azure Portal](https://portal.azure.com) で選択します。 **[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
 
->[!NOTE]
->新しいワークスペースを作成するか、既存のワークスペースを使用することができます。  既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
->
+   >[!NOTE]
+   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。  既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >
 
-  ![ポータル](.\media\how-to-npm\3.png)<br><br>
+   ![ポータル](.\media\how-to-npm\3.png)<br><br>
 2. **[Network Performance Monitor]** メイン ページの一番下にある **[作成]** をクリックして **[Network Performance Monitor - 新しいソリューションの作成]** ページを開きます。 **[OMS ワークスペース - ワークスペースを選択します]** をクリックしてワークスペース ページを開きます。 **[+ 新しいワークスペースの作成]** をクリックしてワークスペース ページを開きます。
 3. **[OMS ワークスペース]** ページの **[新規作成]** を選択し、次の設定を構成します。
 
@@ -86,15 +86,15 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
   * [場所] - [サポートされているリージョン](#regions)を選択する必要があります。
   * [価格レベル] - [無料] を選択します。
   
-  >[!NOTE]
-  >ExpressRoute 回線は、世界中のどこにあってもかまいません。ワークスペースと同じリージョンにある必要はありません。
-  >
+    >[!NOTE]
+    >ExpressRoute 回線は、世界中のどこにあってもかまいません。ワークスペースと同じリージョンにある必要はありません。
+    >
   
-  ![ワークスペース](.\media\how-to-npm\4.png)<br><br>
+    ![ワークスペース](.\media\how-to-npm\4.png)<br><br>
 4. 設定テンプレートを保存してデプロイするには、**[OK]** をクリックします。 テンプレートの検証後、**[作成]** をクリックしてワークスペースをデプロイします。
 5. ワークスペースがデプロイされたら、作成した **[NetworkMonitoring(<名前>)]** リソースに移動します。 設定を確認して、**[このソリューションにはさらに構成が必要です]** をクリックします。
 
-  ![追加の構成](.\media\how-to-npm\5.png)
+   ![追加の構成](.\media\how-to-npm\5.png)
 
 ## <a name="agents"></a>手順 2. エージェントをインストールして構成する
 
@@ -126,9 +126,9 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 2. **[ようこそ]** ページで **[次へ]** をクリックします。
 3. **[ライセンス条項]** ページの記述内容を確認し、**[同意する]** をクリックします。
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、そのまま使用して、**[次へ]** をクリックします。
-5. **[エージェントのセットアップ オプション]** ページで、Azure Log Analytics (OMS) または Operations Manager にエージェントを接続することを選択できます。 また、エージェントを後から構成する場合は、この選択肢を空欄にしておいてもかまいません。 必要な選択を行ったら、**[次へ]** をクリックします。
+5. **[エージェントのセットアップ オプション]** ページで、Azure Log Analytics または Operations Manager にエージェントを接続することを選択できます。 また、エージェントを後から構成する場合は、この選択肢を空欄にしておいてもかまいません。 必要な選択を行ったら、**[次へ]** をクリックします。
 
-  * **Azure Log Analytics (OMS)** に接続することを選んだ場合は、前のセクションでメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー** (主キー) を貼り付けます。 次に、 **[次へ]**をクリックします。
+  * **Azure Log Analytics** に接続することを選んだ場合は、前のセクションでメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー** (主キー) を貼り付けます。 次に、 **[次へ]**をクリックします。
 
     ![ID とキー](.\media\how-to-npm\8.png)
   * **Operations Manager** に接続することを選んだ場合は、**[管理グループの構成]** ページで **[管理グループ名]**、**[管理サーバー]**、**[管理サーバー ポート]** に入力します。 次に、 **[次へ]**をクリックします。
@@ -139,7 +139,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
     ![アカウント](.\media\how-to-npm\10.png)
 6. **[インストールの準備完了]** ページで、設定内容を確認し、**[インストール]** をクリックします。
 7. **[構成は正常に終了しました]** ページで **[完了]** をクリックします。
-8. 完了すると、コントロール パネルに Microsoft Monitoring Agent が表示されます。 そこでは構成を検証して、エージェントが Operational Insights (OMS) に接続されていることを確認できます。 OMS に接続されると、"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**" というメッセージがエージェントにより表示されます。
+8. 完了すると、コントロール パネルに Microsoft Monitoring Agent が表示されます。 そこでは構成を検証して、エージェントが Azure Log Analytics (OMS) に接続されていることを確認できます。 接続されると、"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**" というメッセージがエージェントにより表示されます。
 
 9. 監視対象となるすべての VNET に対してこの作業を繰り返してください。
 
@@ -162,8 +162,8 @@ Web プロキシを使用してインターネットにアクセスしている�
 
 1. 監視エージェントがインストールされているサーバーの**コントロール パネル**を開きます。
 2. **[Microsoft Monitoring Agent]** を開きます。
-3. **[Azure Log Analytics (OMS)]** タブをクリックします。
-4. **[状態]** 列に、エージェントが Operations Management Suite サービスに正常に接続されていることが表示されます。
+3. **[Azure Log Analytics]** タブをクリックします。
+4. **[状態]** 列に、エージェントが Log Analytics に正常に接続されていることが表示されます。
 
   ![status](.\media\how-to-npm\12.png)
 

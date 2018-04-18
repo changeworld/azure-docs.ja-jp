@@ -2,18 +2,18 @@
 title: Azure SQL データ同期 (プレビュー) のトラブルシューティング | Microsoft Docs
 description: Azure SQL データ同期 (プレビュー) における一般的な問題のトラブルシューティングの方法について説明します。
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) に関する問題のトラブルシューティング
 
@@ -442,7 +442,7 @@ SQL データ同期 (プレビュー) の詳細については、以下をご覧
 -   [Azure SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)  
 -   [Azure SQL データ同期 (プレビュー) のセットアップ](sql-database-get-started-sql-data-sync.md)  
 -   [Azure SQL データ同期 (プレビュー) のベスト プラクティス](sql-database-best-practices-data-sync.md)  
--   [OMS Log Analytics を使用した Microsoft Azure SQL データ同期 (プレビュー) の監視](sql-database-sync-monitor-oms.md)  
+-   [Log Analytics を使用した Azure SQL データ同期 (プレビュー) の監視](sql-database-sync-monitor-oms.md)  
 -   SQL データ同期 (プレビュー) の構成方法を示した完全な PowerShell の例:  
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)  

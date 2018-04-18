@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate を使用したスケールの検出と評価 | Microsoft Docs"
-description: "Azure Migrate サービスを使用して、多数のオンプレミス マシンを評価する方法について説明します。"
+title: Azure Migrate を使用したスケールの検出と評価 | Microsoft Docs
+description: Azure Migrate サービスを使用して、多数のオンプレミス マシンを評価する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 03/05/2018
 
 | **エンティティ** | **マシンの制限** |
 | ---------- | ----------------- |
-| Project    | 1,500              | 
-| 探索  | 1,500              |
-| 評価 | 1,500               |
+| Project    | 1,500             |
+| 探索  | 1,500             |
+| 評価 | 1,500             |
 
 <!-- 
 - If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
@@ -40,12 +40,12 @@ ms.lasthandoff: 03/05/2018
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
     - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
--->
+      -->
 
 ## <a name="plan-multiple-discoveries"></a>複数の検出を計画する
 
 同じ Azure Migrate コレクターを使用して、1 つ以上のプロジェクトに対して複数の検出を行うことができます。 このような計画の場合は、以下の事項を考慮してください。
- 
+
 - Azure Migrate コレクターを使用して検出を行う場合、検出範囲を vCenter Server フォルダー、データセンター、クラスター、またはホストに設定できます。
 - 2 つ以上の検出を行うには、検出を行う VM が、マシンの数が 1500 台という制限に対応しているフォルダー、データセンター、クラスター、またはホスト内にあることを、vCenter Server で確認します。
 - 評価を目的としている場合は、複数のマシンを同じプロジェクトと同じ評価内にまとめ、相互に依存関係にある状態にすることをお勧めします。 そして vCenter Server で、依存関係にあるマシンが評価のために同じフォルダー、データセンター、またはクラスター内にあることを確認してください。
@@ -73,18 +73,28 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 2. **[マシンの検出]** で **[ダウンロード]** を選択し、OVA ファイルをダウンロードします。
 3. **[プロジェクトの資格情報をコピーします]** で、プロジェクトの ID とキーをコピーします。 これらの情報はコレクターを構成するときに必要になります。
 
-   
+
 ### <a name="verify-the-collector-appliance"></a>コレクター アプライアンスを確認する
 
 OVA ファイルをデプロイする前に、そのファイルが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
+
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
    使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
 3. 生成されたハッシュが次の設定と一致することを確認します。
+
+    OVA バージョン 1.0.9.7 の場合
+
+    **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | d5b6a03701203ff556fa78694d6d7c35
+    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
     OVA バージョン 1.0.9.5 の場合
 
@@ -109,7 +119,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
     MD5 | 71139e24a532ca67669260b3062c3dad
     SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
     SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
- 
+
     OVA バージョン 1.0.8.49 の場合
 
     **アルゴリズム** | **ハッシュ値**
@@ -136,11 +146,11 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
 2. [Deploy OVF Template] ウィザードで **[Source]** を選択し、OVA ファイルの場所を指定します。
 3. **[Name]\(名前\)** と **[Location]\(場所\)** で、コレクター VM のフレンドリ名と、VM がホストされるインベントリ オブジェクトを指定します。
-5. **[Host/Cluster]\(ホスト/クラスター\)** で、コレクター VM が実行するホストまたはクラスターを指定します。
-7. ストレージで、コレクター VM の保存先を指定します。
-8. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
-9. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。 
-10. 設定を確認し、**[Finish]\(完了\)** を選択します。
+4. **[Host/Cluster]\(ホスト/クラスター\)** で、コレクター VM が実行するホストまたはクラスターを指定します。
+5. ストレージで、コレクター VM の保存先を指定します。
+6. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
+7. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。 
+8. 設定を確認し、**[Finish]\(完了\)** を選択します。
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>各プロジェクトの ID とキーの特定
 
@@ -157,16 +167,16 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
 また、次の表では、特定のカウンターが収集されなかった場合に影響を受ける評価結果を示しています。
 
-|カウンター                                  |Level    |デバイスごとのレベル  |評価の影響                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |該当なし                |推奨される VM サイズとコスト                    |
-|mem.usage.average                        | 1       |該当なし                |推奨される VM サイズとコスト                    |
-|virtualDisk.read.average                 | 2       |2                 |ディスク サイズ、ストレージ コスト、VM サイズ         |
-|virtualDisk.write.average                | 2       |2                 |ディスク サイズ、ストレージ コスト、VM サイズ         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |ディスク サイズ、ストレージ コスト、VM サイズ         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |ディスク サイズ、ストレージ コスト、VM サイズ         |
-|net.received.average                     | 2       |3                 |VM サイズとネットワーク コスト                        |
-|net.transmitted.average                  | 2       |3                 |VM サイズとネットワーク コスト                        |
+| カウンター                                 | Level | デバイスごとのレベル | 評価の影響                    |
+| --------------------------------------- | ----- | ---------------- | ------------------------------------ |
+| cpu.usage.average                       | 1     | 該当なし               | 推奨される VM サイズとコスト         |
+| mem.usage.average                       | 1     | 該当なし               | 推奨される VM サイズとコスト         |
+| virtualDisk.read.average                | 2     | 2                | ディスク サイズ、ストレージ コスト、VM サイズ |
+| virtualDisk.write.average               | 2     | 2                | ディスク サイズ、ストレージ コスト、VM サイズ |
+| virtualDisk.numberReadAveraged.average  | 1     | 3                | ディスク サイズ、ストレージ コスト、VM サイズ |
+| virtualDisk.numberWriteAveraged.average | 1     | 3                | ディスク サイズ、ストレージ コスト、VM サイズ |
+| net.received.average                    | 2     | 3                | VM サイズとネットワーク コスト             |
+| net.transmitted.average                 | 2     | 3                | VM サイズとネットワーク コスト             |
 
 > [!WARNING]
 > 統計レベルを高く設定した場合は、パフォーマンス カウンターを生成するのに最大 1 日かかります。 そのため、1 日経ってから検出を実行することをお勧めします。
@@ -175,28 +185,28 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
 実行する必要があるそれぞれの検出について、コレクターを実行して指定のスコープの VM を検出します。 1 つずつ検出を実行します。 検出の同時実行はサポートされておらず、各検出は異なるスコープである必要があります。
 
-1. vSphere Client コンソールで、[VM] を右クリックして **[Open Console]\(コンソールを開く\)** を選択します。
-2. アプライアンスの設定で、言語、タイム ゾーン、パスワードを指定します。
-3. デスクトップにある **[Run collector]** ショートカットをクリックします。
-4. Azure Migrate コレクターで、**[Set up prerequisites]** を開きます。
+1.  vSphere Client コンソールで、[VM] を右クリックして **[Open Console]\(コンソールを開く\)** を選択します。
+2.  アプライアンスの設定で、言語、タイム ゾーン、パスワードを指定します。
+3.  デスクトップにある **[Run collector]** ショートカットをクリックします。
+4.  Azure Migrate コレクターで、**[Set up prerequisites]** を開きます。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 ライセンス条項に同意し、サード パーティの情報を確認します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 ライセンス条項に同意し、サード パーティの情報を確認します。
 
-   VM がインターネットにアクセスできることをコレクターがチェックします。
-   
-   b. VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]** を選択し、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。
+    VM がインターネットにアクセスできることをコレクターがチェックします。
 
-   コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
+    b. VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]** を選択し、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。
 
-   c. VMware PowerCLI をダウンロードしてインストールします。
+    コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
 
-5. **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
+    c. VMware PowerCLI をダウンロードしてインストールします。
+
+5.  **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
     - vCenter Server の名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter Server の VM を検出するために使用する読み取り専用の資格情報を指定します。
     - **[Select scope]\(スコープの選択\)** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1,000 台を超えないようにします。 
 
-6. **[Specify migration project]\(移行プロジェクトの指定\)** で、プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** を選択して値をコピーします。  
-7. **[View collection progress]** で検出プロセスを監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。
+6.  **[Specify migration project]\(移行プロジェクトの指定\)** で、プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** を選択して値をコピーします。  
+7.  **[View collection progress]** で検出プロセスを監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。
 
 
 ### <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 961b783b44b95a871c98f96d3783f3429636f295
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2fcbbc2532e5cb9963922b4987ba0c7080fdb170
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-azure-automation"></a>Azure オートメーションの使用
 
@@ -33,11 +33,11 @@ Automation サンドボックスは、モジュール、ストレージ、メモ
 
 複数の Hybrid Runbook Worker をデプロイできます。 Runbook や負荷分散 Runbook ジョブに高可用性を提供するには、Hybrid Runbook Worker を使用します。 場合によっては、Runbook ジョブを特定のワークロードまたは環境専用にできます。 Hybrid Runbook Worker 上の Microsoft Monitoring Agent は、TCP ポート 443 経由で Automation サービスとの通信を開始します。 Hybrid Runbook Worker には、受信ファイアウォールの要件はありません。  
 
-環境内の他のマシンまたはサービスに対する管理タスクを実行するために Hybrid Runbook Worker 上で実行されている Runbook が必要になることがあります。 そのシナリオでは、その Runbook も他のポートへのアクセスが必要になることがあります。 IT セキュリティ ポリシーでネットワーク上のコンピューターによるインターネットへの接続が許可されない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)を確認してください。 Operations Management Suite (OMS) ゲートウェイは、Hybrid Runbook Worker のプロキシとして機能します。 これはジョブの状態を収集し、Automation アカウントから構成情報を受信します。
+環境内の他のマシンまたはサービスに対する管理タスクを実行するために Hybrid Runbook Worker 上で実行されている Runbook が必要になることがあります。 そのシナリオでは、その Runbook も他のポートへのアクセスが必要になることがあります。 IT セキュリティ ポリシーでネットワーク上のコンピューターによるインターネットへの接続が許可されない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)を確認してください。 OMS ゲートウェイは、Hybrid Runbook Worker のプロキシとして機能します。 これはジョブの状態を収集し、Automation アカウントから構成情報を受信します。
 
 Hybrid Runbook Worker 上で実行されている Runbook は、コンピューター上のローカル システム アカウントのコンテキストで実行されます。 ローカルの Windows マシンに対する管理アクションを実行する場合は、セキュリティ コンテキストをお勧めします。 Runbook でローカル コンピューターの外部にあるリソースに対するタスクを実行する場合は、Automation アカウントでのセキュリティ保護された資格情報資産の定義が必要になることがあります。 Runbook からそれらのセキュリティ保護された資格情報資産にアクセスし、それを使用して外部リソースに対して認証できます。 Runbook では、[資格情報](automation-credentials.md)、[証明書](automation-certificates.md)、および[接続](automation-connections.md)資産を使用できます。 これらの資産は、それを認証する資格情報を指定するために使用できるコマンドレットで使用します。
 
-仮想マシンには、Azure Automation に格納されている DSC 構成を適用できます。 その他の物理および仮想マシンは、Automation DSC プル サーバーに構成を要求できます。 オンプレミスの物理または仮想 Windows および Linux システムの構成を管理するために、Automation DSC プル サーバーをサポートするインフラストラクチャをデプロイする必要はありません。 Automation DSC を使用して管理する各システムからの送信インターネット アクセスだけが必要です。 OMS サービスへの通信が TCP ポート 443 経由で発生します。   
+仮想マシンには、Azure Automation に格納されている DSC 構成を適用できます。 その他の物理および仮想マシンは、Automation DSC プル サーバーに構成を要求できます。 オンプレミスの物理または仮想 Windows および Linux システムの構成を管理するために、Automation DSC プル サーバーをサポートするインフラストラクチャをデプロイする必要はありません。 Automation DSC を使用して管理する各システムからの送信インターネット アクセスだけが必要です。 Log Analytics サービスへの通信が TCP ポート 443 経由で発生します。   
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -125,9 +125,9 @@ Azure AD ユーザー アカウントや実行アカウントに許可された�
 Azure 実行アカウントおよびクラシック実行アカウントの場合は、「[Automation 実行アカウントを更新する](automation-create-runas-account.md)」に、ポータルからそれらの実行アカウントを使用して既存の Automation アカウントを更新する方法が示されています。 そこにはまた、最初に実行アカウントまたはクラシック実行アカウントと共に Automation アカウントが構成されなかった場合に PowerShell を使用する方法も説明されています。 実行アカウントおよびクラシック実行アカウントは、エンタープライズ証明機関 (CA) によって発行された証明書を使用して作成できます。 この構成を使用してアカウントを作成する方法を学習するには、「[Automation 実行アカウントを更新する](automation-create-runas-account.md)」をレビューしてください。     
  
 ## <a name="network-planning"></a>ネットワークを計画する
-Hybrid Runbook Worker が OMS に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 これは、OMS に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agent.md) に加えて必要です。 
+Hybrid Runbook Worker が Log Analytics に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 これは、Log Analytics に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agent.md) に加えて必要です。 
 
-エージェントと OMS サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
+エージェントと Log Analytics サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
 
 Hybrid Runbook Worker ロールが Automation と通信するには、次のポートと URL が必要です。
 
@@ -167,36 +167,36 @@ Hybrid Runbook Worker ロールが Automation と通信するには、次のポ�
 
 |方法 | [説明] |
 |-------|-------------|
-| Azure Marketplace で **[オートメーションと制御]** を選択する | Azure Marketplace サービスは、互いにリンクされ、同じリソース グループおよびリージョン内にある Automation アカウントと OMS ワークスペースを作成します。 OMS との統合には、Log Analytics を使用して Runbook ジョブの状態やジョブ ストリームを一定期間にわたって監視したり、分析したりするメリットも含まれます。 また、Log Analytics の高度な機能を使用して、問題をエスカレートまたは調査することもできます。 このサービスは、既定で有効になっている **[変更の追跡]** および **[更新管理]** ソリューションをデプロイします。 |
-| Marketplace で **[Automation]** を選択する | この方法では、OMS ワークスペースにリンクされていない新規または既存のリソース グループ内に Automation アカウントを作成します。 これには、**[オートメーションと制御]** サービスの使用可能なソリューションは含まれません。 この方法は、ユーザーを Automation に導入するための基本構成です。 これは、Runbook および DSC 構成を書き込む方法を学習したり、このサービスの機能の使用方法を学習したりするのに役立ちます。 |
-| **管理**ソリューションを選択する | **[管理]**ソリューション ([[更新管理]](../operations-management-suite/oms-solution-update-management.md)、[[勤務時間外に VM を起動/停止する]](automation-solution-vm-management.md)、または [[変更の追跡]](../log-analytics/log-analytics-change-tracking.md) を含む) を選択すると、そのソリューションから既存の Automation アカウントと OMS ワークスペースを選択するよう求められます。 このソリューションでは、サブスクリプション内にデプロイされるソリューション用の Automation アカウントと OMS ワークスペースを必要に応じて作成するオプションが提供されます。 |
+| Azure Marketplace で **[オートメーションと制御]** を選択する | Azure Marketplace サービスは、互いにリンクされ、同じリソース グループおよびリージョン内にある Automation アカウントと Log Analytics ワークスペースを作成します。 Log Analytics との統合には、Log Analytics を使用して Runbook ジョブの状態やジョブ ストリームを一定期間にわたって監視したり、分析したりするメリットも含まれます。 また、Log Analytics の高度な機能を使用して、問題をエスカレートまたは調査することもできます。 このサービスは、既定で有効になっている **[変更の追跡]** および **[更新管理]** ソリューションをデプロイします。 |
+| Marketplace で **[Automation]** を選択する | この方法では、Log Analytics ワークスペースにリンクされていない新規または既存のリソース グループ内に Automation アカウントを作成します。 これには、**[オートメーションと制御]** サービスの使用可能なソリューションは含まれません。 この方法は、ユーザーを Automation に導入するための基本構成です。 これは、Runbook および DSC 構成を書き込む方法を学習したり、このサービスの機能の使用方法を学習したりするのに役立ちます。 |
+| **管理**ソリューションを選択する | **[管理]**ソリューション ([[更新管理]](../operations-management-suite/oms-solution-update-management.md)、[[勤務時間外に VM を起動/停止する]](automation-solution-vm-management.md)、または [[変更の追跡]](../log-analytics/log-analytics-change-tracking.md) を含む) を選択すると、そのソリューションから既存の Automation アカウントと Log Analytics ワークスペースを選択するよう求められます。 このソリューションでは、サブスクリプション内にデプロイされるソリューション用の Automation アカウントと Log Analytics ワークスペースを必要に応じて作成するオプションが提供されます。 |
 
-### <a name="create-an-automation-account-thats-integrated-with-oms"></a>OMS と統合された Automation アカウントを作成する
-Automation を利用開始するには、Marketplace で **[オートメーションと制御]** サービスを選択することをお勧めします。 この方法を使用すると、Automation アカウントが作成され、OMS ワークスペースとの統合が確立されます。 この方法を使用する場合は、そのサービスで使用可能な管理ソリューションをインストールするオプションも提供されます。  
+### <a name="create-an-automation-account-thats-integrated-with-log-analytics"></a>Log Analytics と統合された Automation アカウントを作成する
+Automation を利用開始するには、Marketplace で **[オートメーションと制御]** サービスを選択することをお勧めします。 この方法を使用すると、Automation アカウントが作成され、Log Analytics ワークスペースとの統合が確立されます。 この方法を使用する場合は、そのサービスで使用可能な管理ソリューションをインストールするオプションも提供されます。  
 
-「[Create a standalone Automation account (スタンドアロン Automation アカウントを作成する)](automation-create-standalone-account.md)」では、**[オートメーションと制御]** サービスを利用開始することによって Automation アカウントと OMS ワークスペースを作成するプロセスについて説明しています。 このサービスのテストまたはプレビューのためにスタンドアロン Automation アカウントを作成する方法を学習できます。  
+「[スタンドアロン Azure Automation アカウントを作成する](automation-create-standalone-account.md)」では、**Automation & Control** サービスを利用開始することによって Automation アカウントと Log Analytics ワークスペースを作成するプロセスについて説明しています。 このサービスのテストまたはプレビューのためにスタンドアロン Automation アカウントを作成する方法を学習できます。  
 
-**[オートメーションと制御]** Marketplace サービスを使用して Automation アカウントと OMS ワークスペースを作成するには:
+**Automation & Control** Marketplace サービスを使用して Automation アカウントと Log Analytics ワークスペースを作成するには:
 
 1. サブスクリプション管理者ロールのメンバーであり、かつサブスクリプションの共同管理者であるアカウントを使用して Azure Portal にサインインします。
 2. **[新規]**を選択します。<br><br> ![Azure Portal で [新規] を選択する](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 3. **Automation** を検索します。 検索結果で、**[オートメーションと制御]** を選択します。<br><br> ![Azure Marketplace で [オートメーションと制御] を検索して選択します](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)。<br>   
 4. サービスの説明を確認してから、**[作成]** を選択します。  
-5. **[オートメーションと制御]** で、**[OMS ワークスペース]** を選択します。 **[OMS ワークスペース]** で、Automation アカウントが存在する Azure サブスクリプションにリンクされた OMS ワークスペースを選択します。 OMS ワークスペースが存在しない場合は、**[新しいワークスペースの作成]** を選択します。 **[OMS ワークスペース]** で、次の操作を行います。 
+5. **[オートメーションと制御]** で、**[OMS ワークスペース]** を選択します。 **[OMS ワークスペース]** で、Automation アカウントが存在する Azure サブスクリプションにリンクされた Log Analytics ワークスペースを選択します。 Log Analytics ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択します。 **[OMS ワークスペース]** で、次の操作を行います。 
   1. **[OMS ワークスペース]** では、新しいワークスペースの名前を入力します。
   2. **[サブスクリプション]** では、リンク先のサブスクリプションを選択します。 既定の選択が使用するサブスクリプションでない場合は、ドロップダウン リストからサブスクリプションを選択します。
   3. **[リソース グループ]** では、リソース グループを作成するか、または既存のリソース グループを選択できます。  
   4. **[場所]** では、リージョンを選択します。 詳細については、「[which regions Azure Automation is available in (Azure Automation を使用できるリージョン)](https://azure.microsoft.com/regions/services/)」を参照してください。 ソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。 Free レベルには、1 日に収集されるデータ量、保有期間、および Runbook ジョブの実行時間 (分) に関する制限があります。 ノードごと (OMS) レベルには、1 日に収集されるデータ量に関する制限はありません。  
-  5. **[Automation アカウント]** を選択します。  新しい OMS ワークスペースを作成する場合は、新しい OMS ワークスペースに関連付けられた Automation アカウントも作成する必要があります。 Azure サブスクリプション、リソース グループ、およびリージョンを含めます。 
+  5. **[Automation アカウント]** を選択します。  新しい Log Analytics ワークスペースを作成する場合は、新しい Log Analytics ワークスペースに関連付けられた Automation アカウントも作成する必要があります。 Azure サブスクリプション、リソース グループ、およびリージョンを含めます。 
     1. **[Create an Automation account] (Automation アカウントの作成)** を選択します。
     2. **[Automation アカウント]** の **[名前]** フィールドに、Automation アカウントの名前を入力します。
-    それ以外のオプションはすべて、選択した OMS ワークスペースに基づいて自動的に入力されます。 これらのオプションは変更できません。 
+    それ以外のオプションはすべて、選択した Log Analytics ワークスペースに基づいて自動的に入力されます。 これらのオプションは変更できません。 
     3. このサービスでは、Azure 実行アカウントが既定の認証方法になります。 **[OK]** を選択すると、構成オプションが検証され、Automation アカウントが作成されます。 その進行状況を追跡するには、メニューの **[通知]** を選択します。 
-    4. または、既存の Automation 実行アカウントを選択します。 選択するアカウントが既に別の OMS ワークスペースにリンクされていてはいけません。 リンクされていると、通知メッセージが表示されます。 アカウントが既に OMS ワークスペースにリンクされている場合は、別の Automation 実行アカウントを選択または作成します。
+    4. または、既存の Automation 実行アカウントを選択します。 選択するアカウントが既に別の Log Analytics ワークスペースにリンクされていてはいけません。 リンクされていると、通知メッセージが表示されます。 アカウントが既に Log Analytics ワークスペースにリンクされている場合は、別の Automation 実行アカウントを選択または作成します。
     5. 必要な情報を入力または選択したら、**[作成]** を選択します。 情報が検証され、Automation アカウントと実行アカウントが作成されます。 自動的に **[OMS ワークスペース]** ペインに戻ります。  
 6. **[OMS ワークスペース]** ペインで必要な情報を入力または選択したら、**[作成]** を選択します。  情報が検証され、ワークスペースが作成されます。 その進行状況を追跡するには、メニューの **[通知]** を選択します。 **[ソリューションの追加]** ペインに戻ります。  
 7. **[オートメーションと制御]** 設定で、推奨される事前に選択されたソリューションをインストールすることを確認します。 既定のオプションのいずれかを変更した場合は、後でソリューションを個別にインストールできます。  
-8. Automation と OMS ワークスペースの利用開始を続行するには、**[作成]** を選択します。 すべての設定が検証された後、Azure はサブスクリプションへのサービスのデプロイを試みます。 このプロセスには数秒かかることがあります。 その進行状況を追跡するには、メニューの **[通知]** を選択します。 
+8. Automation と Log Analytics ワークスペースの利用開始を続行するには、**[作成]** を選択します。 すべての設定が検証された後、Azure はサブスクリプションへのサービスのデプロイを試みます。 このプロセスには数秒かかることがあります。 その進行状況を追跡するには、メニューの **[通知]** を選択します。 
 
 このサービスが利用開始された後は、次のタスクを実行できます。
 * Runbook の作成を開始します。

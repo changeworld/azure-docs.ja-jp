@@ -1,6 +1,6 @@
 ---
-title: "Azure クラウド サービスと Azure CDN との統合 | Microsoft Docs"
-description: "統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明します"
+title: Azure クラウド サービスと Azure CDN との統合 | Microsoft Docs
+description: 統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明します
 services: cdn, cloud-services
 documentationcenter: .net
 author: zhangmanling
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="intro"></a> クラウド サービスと Azure CDN との統合
 クラウド サービスを Azure CDN に統合すると、クラウド サービスの場所からコンテンツを配信できます。 この方法には、次の利点があります。
@@ -138,7 +138,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
    > 
 
 ## <a name="test-the-cdn-endpoint"></a>CDN エンドポイントをテストする
-発行、ステータスが**完了**ブラウザー ウィンドウを開きに移動**http://<cdnName>*.azureedge.net/Content/bootstrap.css**です。 この設定では、次の URL を使用します。
+発行状態が **[完了]** と表示されたら、ブラウザー ウィンドウを開き、**http://<cdnName>*.azureedge.net/Content/bootstrap.css** に移動します。 この設定では、次の URL を使用します。
 
     http://camservice.azureedge.net/Content/bootstrap.css
 
@@ -146,18 +146,18 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
     http://camcdnservice.cloudapp.net/Content/bootstrap.css
 
-移動すると**http://*&lt;cdnName >*.azureedge.net/Content/bootstrap.css**、ブラウザーによって求められますダウンロードしたり開いたり付属 bootstrap.css発行された Web アプリです。
+**http://*&lt;cdnName>*.azureedge.net/Content/bootstrap.css** に移動すると、発行された Web アプリケーションから bootstrap.css をダウンロードまたは開くよう求められます。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-任意のパブリックにアクセスできる URL で同様にアクセスできる**http://*&lt;serviceName >*.cloudapp.net/**CDN エンドポイントから直接、します。 例: 
+同様に、CDN エンドポイントから、**http://*&lt;サービス名>*.cloudapp.net/** のパブリックにアクセスできる任意の URL にアクセスできます。 例: 
 
 * /Script パスの .js ファイル
 * /Content パスの任意のコンテンツ ファイル
 * 任意のコントローラー/アクション
 * CDN エンドポイントでクエリ文字列が有効になっている場合、クエリ文字列を含む任意の URL
 
-実際には、上記の構成では、全体のクラウド サービスをホストできます**http://*&lt;cdnName >*.azureedge.net/**です。 **http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
+実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。 **http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -325,7 +325,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
             <br />
             <input class="btn" type="submit" value="Generate meme" />
         </form>
-5. クラウド サービスを再度発行しに移動**http://*&lt;serviceName >*.cloudapp.net/MemeGenerator/Index**ブラウザーにします。
+5. もう一度クラウド サービスを発行して、ブラウザーで **http://*&lt;serviceName>*.cloudapp.net/MemeGenerator/Index** に移動します。
 
 フォームの値を `/MemeGenerator/Index` に送信すると、`Index_Post` アクション メソッドにより、`Show` アクション メソッドへのリンクとそれぞれの入力識別子が返されます。 リンクをクリックすると、次のコードに到達します。  
 

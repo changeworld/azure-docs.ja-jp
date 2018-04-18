@@ -1,13 +1,13 @@
 ---
-title: "AWS やその他のプラットフォームから Azure の Managed Disks に移行する | Microsoft Docs"
-description: "AWS などの他のクラウドやその他の仮想化プラットフォームからアップロードされた VHD を使用して Azure で VM を作成し、Azure Managed Disks を活用します。"
+title: AWS やその他のプラットフォームから Azure の Managed Disks に移行する | Microsoft Docs
+description: AWS などの他のクラウドやその他の仮想化プラットフォームからアップロードされた VHD を使用して Azure で VM を作成し、Azure Managed Disks を活用します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02dce319c055f7988355cfadbc1d63df5e268e53
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: b7fe27ed8615b9684e14276d6d0f5bf84ee5ee81
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure の Managed Disks に移行する
 
@@ -55,8 +55,9 @@ Azure Managed Disks は、ストレージ アカウントを管理する必要�
 
 このセクションでは、VM とディスクの種類に関する最適な決定を行います。
 
+管理されていないディスクから管理ディスクへの移行を計画している場合は、[仮想マシンの共同作成者](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)ロールが割り当てられているユーザーは VM のサイズを変更できないことに注意してください (それらは事前に変換されている可能性があるためです)。 管理ディスクを持つ VM が OS ディスク上での Microsoft.Compute/disks/write 権限をユーザーに要求するのは、これが理由です。
 
-### <a name="location"></a>Location (場所)
+### <a name="location"></a>場所
 
 Azure Managed Disks を使用できる場所を選びます。 Premium Managed Disks に移行する場合は、移行を計画しているリージョンで Premium Storage が使用可能であることも確認します。 使用できる場所に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/#services)」をご覧ください。
 
@@ -98,6 +99,6 @@ VM で使用できる Standard Managed Disks は 5 種類あります。 それ�
 [Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium 非管理対象ディスクと同じです。 一方、Standard Managed Disks の価格は、Standard Unmanaged Disks と異なります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に従う必要があります

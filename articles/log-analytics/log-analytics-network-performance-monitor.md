@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -250,7 +250,9 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 
 すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[Log Analytics 検索](log-analytics-log-search-new.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの  **[共通クエリ]** 領域には、便利なクエリがいくつかあります。これらのクエリは、独自のクエリとレポートを作成するための出発点として利用できます。 
 
- 
+##<a name="pricing"></a>価格
+
+価格についての情報は、[オンライン](log-analytics-network-performance-monitor-pricing-faq.md)で入手できます。
 
 ## <a name="provide-feedback"></a>フィードバックの提供 
 

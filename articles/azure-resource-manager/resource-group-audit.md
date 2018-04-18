@@ -1,8 +1,8 @@
 ---
-title: "リソースを監視する Azure アクティビティ ログの表示 | Microsoft Docs"
-description: "アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure Portal、PowerShell、Azure CLI、および REST を表示します。"
+title: リソースを監視する Azure アクティビティ ログの表示 | Microsoft Docs
+description: アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure Portal、PowerShell、Azure CLI、および REST を表示します。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,15 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
+
 アクティビティ ログを使用すると、次の内容を判断することができます。
 
 * サブスクリプション内のリソースで行われた操作
@@ -38,6 +39,7 @@ ms.lasthandoff: 02/09/2018
 ポータル、PowerShell、Azure CLI、Insights REST API、または [Insights .NET Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/)を利用し、アクティビティ ログから情報を取得できます。
 
 ## <a name="portal"></a>ポータル
+
 1. ポータルからアクティビティ ログを表示するには、**[監視]** を選択します。
    
     ![select activity logs](./media/resource-group-audit/select-monitor.png)
@@ -68,6 +70,7 @@ ms.lasthandoff: 02/09/2018
     ![表示操作](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
+
 1. ログ エントリを取得するには、 **Get-AzureRmLog** コマンドを実行します。 パラメーターを追加し、エントリの一覧を絞り込むことができます。 開始時間と終了時間を指定しない場合は、過去 1 時間のエントリが返されます。 たとえば、過去 1 時間のリソース グループの操作を取得するには、次を実行します。
 
   ```powershell
@@ -136,17 +139,20 @@ ms.lasthandoff: 02/09/2018
 
 
 ## <a name="azure-cli"></a>Azure CLI
-* ログ エントリを取得するには、 **azure group log show** コマンドを実行します。
+
+ログ エントリを取得するには、[az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) コマンドを実行します。
 
   ```azurecli
-  azure group log show ExampleGroup --json
+  az monitor activity-log list --resource-group <group name>
   ```
 
 
 ## <a name="rest-api"></a>REST API
+
 アクティビティ ログを利用するための REST 操作は [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx)に含まれています。 アクティビティ ログのイベントを取得するには、 [サブスクリプション内の管理イベントの一覧表示](https://msdn.microsoft.com/library/azure/dn931934.aspx)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 * Azure アクティビティ ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。 [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関する記事をご覧ください。
 * セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関するページをご覧ください。

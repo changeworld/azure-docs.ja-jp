@@ -1,26 +1,21 @@
 ---
-title: Stream Analytics の JSON 出力 | Microsoft Docs
-description: Stream Analytics で、Azure Cosmos DB for JSON 出力をターゲットにして、構造化されていない JSON データに対するデータ アーカイブと待機時間の短いクエリを有効にする方法について説明します。
-keywords: JSON 出力
-documentationcenter: ''
-services: stream-analytics,documentdb
+title: Cosmos DB への Azure Stream Analytics の出力
+description: この記事では、構造化されていない JSON データに対するデータ アーカイブと待機時間の短いクエリのために、Azure Stream Analytics を使用して、Azure Cosmos DB for JSON 出力に出力を保存する方法について説明します。
+services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 8bda2abda6f2b7207a5a7195c24b07da9089fb06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: f7115f7d19cd44ae7d0812d3aa6c48d8dd58c20d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Stream Analytics からの JSON 出力に Azure Cosmos DB をターゲットにする
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
 
 Cosmos DB を詳しく理解していない場合は、開始する前に [Azure Cosmos DB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に関するページをご覧ください。 
@@ -35,7 +30,7 @@ Stream Analytics で Azure Cosmos DB 出力を使用すると、ストリーム�
 Cosmos DB コレクションの一部のオプションの詳細を以下に示します。
 
 ## <a name="tune-consistency-availability-and-latency"></a>調整の整合性、可用性、および待機時間
-Cosmos DB では、アプリケーション要件を満たすために、データベースやコレクションを微調整し、整合性、可用性、待機時間の間で妥協点を見つけることができます。 読み取りおよび書き込みの待機時間に対してシナリオで求められる読み取りの一貫性レベルに応じて、データベース アカウントでの一貫性レベルを選択することができます。 また Cosmos DB では、コレクションへの各 CRUD 操作に対する同期インデックス作成も、既定で有効になっています。 この機能も、Cosmos DB で書き込みと読み取りのパフォーマンスを制御するための便利なオプションの 1 つです。 このトピックの詳細については、 [データベースとクエリの一貫性レベルの変更](../cosmos-db/consistency-levels.md) に関する記事を参照してください。
+Cosmos DB では、アプリケーション要件を満たすために、データベースやコレクションを微調整し、整合性、可用性、待機時間の間で妥協点を見つけることができます。 読み取りおよび書き込みの待機時間に対してシナリオで求められる読み取りの一貫性レベルに応じて、データベース アカウントでの一貫性レベルを選択することができます。 また Cosmos DB では、コレクションへの各 CRUD 操作に対する同期インデックス作成も、既定で有効になっています。 この機能も、Cosmos DB で書き込みと読み取りのパフォーマンスを制御するための便利なオプションの 1 つです。 詳しくは、[データベースとクエリの一貫性レベルの変更](../cosmos-db/consistency-levels.md) に関する記事をご覧ください。
 
 ## <a name="upserts-from-stream-analytics"></a>Stream Analytics からのアップサート
 Stream Analytics を Cosmos DB と統合することで、特定のドキュメント ID 列に基づき、Cosmos DB コレクションでレコードを挿入または更新できるようになります。 この機能は、 *アップサート*とも呼ばれています。

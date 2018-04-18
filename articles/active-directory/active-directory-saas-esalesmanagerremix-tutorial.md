@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
 ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -98,7 +98,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[E Sales Manager Remix のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/esales-pc*
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/esales-pc*
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/*
 
@@ -151,11 +151,11 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[SAML authentication setting]\(SAML 認証設定\)](./media/active-directory-saas-esalesmanagerremix-tutorial/configure3.png)
     
-    a. **[PC version]\(PC バージョン\)** チェック ボックスをオンにします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[PC version]\(PC バージョン\)** チェック ボックスをオンにします。
     
     b. **[Collaboration item]\(コラボレーション項目\)** セクションで、ドロップダウン リストから **[email]\(電子メール\)** を選択します。
 
-    c. **[Collaboration item]\(コラボレーション項目\)** ボックスに、Azure Portal からコピーしておいた要求値 (つまり **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**) を貼り付けます。
+    c. **[Collaboration item]\(コラボレーション項目\)** ボックスに、先ほど Azure Portal からコピーした要求の値 (**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**) を貼り付けます。
 
     d. **[Issuer (entity ID)]\(発行者 (エンティティ ID)\)** ボックスに、Azure Portal の **[E Sales Manager Remix のドメインと URL]** セクションからコピーしておいた識別子の値を貼り付けます。
 
@@ -219,7 +219,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
     
     ![[New employee registration]\(従業員の新規登録) セクション](./media/active-directory-saas-esalesmanagerremix-tutorial/user2.png)
 
-    a. **[Employee Name]\(従業員の名前\)** ボックスに、ユーザーの名前 (たとえば **Britta**) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Employee Name]\(従業員の名前\)** ボックスに、ユーザーの名前 (たとえば **Britta**) を入力します。
 
     b. その他の必須フィールドに入力します。
     

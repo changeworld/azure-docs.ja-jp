@@ -1,12 +1,12 @@
 ---
-title: "収入分類 - Team Data Science Process - Azure Machine Learning | Microsoft Docs"
-description: "Team Data Science Process テンプレートを使用して、米国の収入を分類するプロジェクトを Azure Machine Learning で作成します。"
+title: 収入分類 - Team Data Science Process - Azure Machine Learning | Microsoft Docs
+description: Team Data Science Process テンプレートを使用して、米国の収入を分類するプロジェクトを Azure Machine Learning で作成します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
 ms.openlocfilehash: dc6279a1bac230146f4f0cebf2fbdbb6333cb7a1
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 

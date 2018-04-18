@@ -12,90 +12,173 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: 3df5374911ee6381f25d08d23d565cdf8a7cd12f
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 471e5a79600d6a963a4fa5b6cec8d2cc16137489
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>ローカル ユーザー アカウントまたはローカル システム アカウントとしてサービスを実行する
-Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 Service Fabric はまた、ローカル ユーザー アカウントまたはローカル システム アカウントのもとでアプリケーションを実行する機能も提供します。これは、アプリケーション マニフェスト内で RunAs ポリシーを指定することによって実行されます。 サポートされているローカル システム アカウントの種類は、**LocalUser**、**NetworkService**、**LocalService**、**LocalSystem** です。  Windows スタンドアロン クラスターで Service Fabric を実行している場合は、[Active Directory ドメイン アカウント](service-fabric-run-service-as-ad-user-or-group.md)または[グループ管理サービス アカウント](service-fabric-run-service-as-gmsa.md)でサービスを実行することができます。
+Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 Service Fabric には、ローカル ユーザーまたはシステム アカウントでアプリケーションを実行する機能もあります。 サポートされているローカル システム アカウントの種類は、**LocalUser**、**NetworkService**、**LocalService**、**LocalSystem** です。  Windows スタンドアロン クラスターで Service Fabric を実行している場合は、[Active Directory ドメイン アカウント](service-fabric-run-service-as-ad-user-or-group.md)または[グループ管理サービス アカウント](service-fabric-run-service-as-gmsa.md)でサービスを実行することができます。
 
-また、1 人以上のユーザーを各グループに追加してまとめて管理できるように、ユーザー グループを定義および作成することもできます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に便利です。
+アプリケーション マニフェストの **Principals** セクションで、サービスの実行またはリソースの保護に必要なユーザー アカウントを定義します。 1 人以上のユーザーをまとめて管理できるように、ユーザー グループを定義および作成することもできます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、それらのユーザーがグループ レベルで使用できる共通の特権を必要とする場合に便利です。  ユーザーは、アプリケーション内の特定のサービスまたはすべてのサービスに適用される RunAs ポリシーで参照されます。 
+
+既定では、RunAs ポリシーはメイン エントリ ポイントに適用されます。  [システム アカウントで特定の高特権セットアップ操作を実行する](service-fabric-run-script-at-service-startup.md)必要がある場合は、RunAs ポリシーをセットアップ エントリ ポイントに適用することもでき、メイン エントリ ポイントとセットアップ エントリポイントの両方に適用することもできます。  
 
 > [!NOTE] 
 > サービスに RunAs ポリシーを適用し、サービス マニフェストで HTTP プロトコルのエンドポイント リソースを宣言する場合は、**SecurityAccessPolicy** を指定する必要があります。  詳細については、[HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる](service-fabric-assign-policy-to-endpoint.md)をご覧ください。 
 >
 
-## <a name="create-local-user-groups"></a>ローカル ユーザー グループの作成
-ユーザー グループを定義して作成し、1 人以上のユーザーをグループに追加できます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に便利です。 次の例では、管理者特権を持つローカル グループ **LocalAdminGroup** を示します。 このアプリケーション マニフェストの例では、2 人のユーザー Customer1 と Customer2 がこのローカル グループのメンバーになっています。
+## <a name="run-a-service-as-a-local-user"></a>ローカル ユーザーとしてのサービスの実行
+アプリケーション内のサービスをセキュリティで保護するために使用できるローカル ユーザーを作成できます。 アプリケーション マニフェストの Principals セクションでアカウントの種類として **LocalUser** が指定されている場合、Service Fabric はアプリケーションがデプロイされているコンピューターにローカル ユーザー アカウントを作成します。 既定では、これらのアカウントにアプリケーション マニフェストで指定されているものと同じ名前は付けられません (たとえば、次のアプリケーション マニフェストの例では *Customer3*)。 代わりに、動的に生成され、ランダムなパスワードが与えられます。
+
+**ServiceManifestImport** の **RunAsPolicy** セクションでは、**Principals** セクションからユーザー アカウントを指定してサービス コード パッケージを実行します。  次の例は、ローカル ユーザーを作成し、メイン エントリ ポイントに RunAs ポリシーを適用する方法を示しています。
 
 ```xml
-<Principals>
- <Groups>
-   <Group Name="LocalAdminGroup">
-     <Membership>
-       <SystemGroup Name="Administrators"/>
-     </Membership>
-   </Group>
- </Groups>
-  <Users>
-     <User Name="Customer1">
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application7Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Web1_InstanceCount" DefaultValue="-1" />
+  </Parameters>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Web1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <Policies>
+      <RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main" />
+    </Policies>
+  </ServiceManifestImport>
+  <DefaultServices>    
+    <Service Name="Web1" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+  </DefaultServices>
+  <Principals>
+    <Users>
+      <User Name="Customer3" />
+    </Users>
+  </Principals>
+</ApplicationManifest>
+```
+
+## <a name="create-a-local-user-group"></a>ローカル ユーザー グループを作成する
+ユーザー グループを作成し、グループに 1 人以上のユーザーを追加できます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に便利です。 次のアプリケーション マニフェスト例は、管理者特権を持つ *LocalAdminGroup* というローカル グループを示しています。 2 人のユーザー、*Customer1* と *Customer2* がこのローカル グループのメンバーになっています。 **ServiceManifestImport** セクションで、*Stateful1Pkg* コード パッケージを *Customer2* として実行する RunAs ポリシーが適用されます。  *Web1Pkg* コード パッケージを *Customer1* として実行する別の RunAs ポリシーが適用されます。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application7Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Stateful1_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="Stateful1_PartitionCount" DefaultValue="1" />
+    <Parameter Name="Stateful1_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="Web1_InstanceCount" DefaultValue="-1" />
+  </Parameters>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Stateful1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <Policies>
+      <RunAsPolicy CodePackageRef="Code" UserRef="Customer2" EntryPointType="Main"/>
+    </Policies>
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Web1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    <Policies>
+      <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" EntryPointType="Main"/>
+    </Policies>
+  </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="Stateful1" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[Stateful1_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="Web1" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+  </DefaultServices>
+  <Principals>
+    <Groups>
+      <Group Name="LocalAdminGroup">
+        <Membership>
+          <SystemGroup Name="Administrators" />
+        </Membership>
+      </Group>
+    </Groups>
+    <Users>
+      <User Name="Customer1">
         <MemberOf>
-           <Group NameRef="LocalAdminGroup" />
+          <Group NameRef="LocalAdminGroup" />
         </MemberOf>
-     </User>
-    <User Name="Customer2">
-      <MemberOf>
-        <Group NameRef="LocalAdminGroup" />
-      </MemberOf>
-    </User>
-  </Users>
-</Principals>
+      </User>
+      <User Name="Customer2">
+        <MemberOf>
+          <Group NameRef="LocalAdminGroup" />
+        </MemberOf>
+      </User>
+    </Users>
+  </Principals>
+</ApplicationManifest>
 ```
-
-## <a name="create-local-users"></a>ローカル ユーザーの作成
-アプリケーション内のサービスをセキュリティで保護するために使用できるローカル ユーザーを作成できます。 アプリケーション マニフェストの Principals セクションでアカウントの種類として **LocalUser** が指定されている場合、Service Fabric はアプリケーションがデプロイされているコンピューターにローカル ユーザー アカウントを作成します。 既定では、これらのアカウントにアプリケーション マニフェストで指定されているものと同じ名前は付けられません (たとえば、次のアプリケーション マニフェストの例では Customer3)。 代わりに、動的に生成され、ランダムなパスワードが与えられます。
-
-```xml
-<Principals>
-  <Users>
-     <User Name="Customer3" AccountType="LocalUser" />
-  </Users>
-</Principals>
-```
-
-アプリケーションで (たとえば、NTLM 認証を有効にするために) すべてのマシンでユーザー アカウントとパスワードが同じである必要がある場合は、クラスター マニフェストで **NTLMAuthenticationEnabled** を true に設定する必要があります。 また、クラスター マニフェストでは、すべてのマシンにわたって同じパスワードを生成するために使用される **NTLMAuthenticationPasswordSecret** も指定する必要があります。
-
-```xml
-<Section Name="Hosting">
-      <Parameter Name="EndpointProviderEnabled" Value="true"/>
-      <Parameter Name="NTLMAuthenticationEnabled" Value="true"/>
-      <Parameter Name="NTLMAuthenticationPassworkSecret" Value="******" IsEncrypted="true"/>
- </Section>
-```
-
-## <a name="assign-policies-to-the-service-code-packages"></a>サービス コード パッケージにポリシーを割り当てる
-**ServiceManifestImport** の **RunAsPolicy** セクションでは、コード パッケージの実行に使用されるアカウントが Principals セクションから指定されます。 また、Principals セクションのユーザー アカウントとサービス マニフェストのパッケージが関連付けられます。 これは、Setup または Main エントリ ポイントに対して指定することも、 `All` を指定して両方に適用することもできます。 次の例では、異なるポリシーの適用を示します。
-
-```xml
-<Policies>
-<RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
-<RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
-</Policies>
-```
-
-**EntryPointType** が指定されていない場合は、既定で `EntryPointType=”Main”` に設定されます。 **SetupEntryPoint** の指定は、高い特権を必要とする特定のセットアップ操作をシステム アカウントで実行するときに特に便利です。 詳細については、「[サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する](service-fabric-run-script-at-service-startup.md)」を参照してください。 実際のサービス コードは低い特権のアカウントで実行できます。
 
 ## <a name="apply-a-default-policy-to-all-service-code-packages"></a>すべてのサービス コード パッケージに既定のポリシーを適用する
-**DefaultRunAsPolicy** セクションを使用して、特定の **RunAsPolicy** が定義されていないすべてのコード パッケージに既定のユーザー アカウントを指定します。 アプリケーションによって使用されるサービス マニフェストで指定されているほとんどのコード パッケージが同じユーザーで実行される必要がある場合、そのユーザー アカウントで既定の RunAs ポリシーのみを定義することができます。 次の例では、コード パッケージで **RunAsPolicy** が指定されていない場合、コード パッケージは Principals セクションで指定されている **MyDefaultAccount** を使用して実行するように指定しています。
+**DefaultRunAsPolicy** セクションを使用して、特定の **RunAsPolicy** が定義されていないすべてのコード パッケージに既定のユーザー アカウントを指定します。 アプリケーションによって使用されるサービス マニフェストで指定されているほとんどのコード パッケージが同じユーザーで実行される必要がある場合、そのユーザー アカウントで既定の RunAs ポリシーのみを定義することができます。 次の例では、コード パッケージで **RunAsPolicy** が指定されていない場合、コード パッケージは Principals セクションで指定されている **MyDefaultAccount** ユーザーを使用して実行する必要があります。  サポートされているアカウントの種類は、LocalUser、NetworkService、LocalSystem、LocalService です。  ローカル ユーザーまたはサービスを使用する場合は、アカウント名とパスワードも指定します。
 
 ```xml
-<Policies>
-  <DefaultRunAsPolicy UserRef="MyDefaultAccount"/>
-</Policies>
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application7Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Web1_InstanceCount" DefaultValue="-1" />
+  </Parameters>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="Web1Pkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+    
+  </ServiceManifestImport>
+  <DefaultServices>    
+    <Service Name="Web1" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+  </DefaultServices>
+  <Principals>
+    <Users>
+      <User Name="MyDefaultAccount" AccountType="NetworkService" />      
+    </Users>
+  </Principals>
+  <Policies>
+    <DefaultRunAsPolicy UserRef="MyDefaultAccount" />
+  </Policies>
+</ApplicationManifest>
+```
+
+## <a name="debug-a-code-package-locally-using-console-redirection"></a>コンソール リダイレクトを使用してローカルでコード パッケージをデバッグする
+場合によっては、デバッグ目的で実行中のサービスの実行結果をコンソールに出力し、確認すると便利です。 サービス マニフェストのエントリ ポイントでは、コンソール リダイレクト ポリシーを設定できます。これにより出力がファイルに書き込まれます。 ファイル出力はアプリケーションがデプロイおよび実行されるクラスター ノード上の **log** と呼ばれるアプリケーション フォルダーに書き込まれます。 
+
+> [!WARNING]
+> アプリケーションのフェールオーバーに影響する可能性があるため、運用環境でデプロイされたアプリケーションのコンソール リダイレクト ポリシーは決して使用しないでください。 これは、ローカル デプロイおよびデバッグの目的のため "*だけ*" に使用します。  
+> 
+> 
+
+次のサービス マニフェストの例は、FileRetentionCount 値を使用したコンソール リダイレクトの有効化を示しています。
+
+```xml
+<CodePackage Name="Code" Version="1.0.0">
+    <EntryPoint>
+      <ExeHost>
+        <Program>VotingWeb.exe</Program>
+        <WorkingFolder>CodePackage</WorkingFolder>
+        <ConsoleRedirection FileRetentionCount="10"/>
+      </ExeHost>
+    </EntryPoint>
+</CodePackage>
+
 ```
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

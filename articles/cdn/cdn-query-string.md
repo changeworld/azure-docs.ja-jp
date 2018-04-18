@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: 87f00575e0c2c4cd7a8525df96b2f5b13d470643
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed6f0b2c021fc4b31b85986c07df0502dba826f2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル
 > [!div class="op_single_selector"]
@@ -36,8 +36,13 @@ ms.lasthandoff: 03/30/2018
 次の 3 つのクエリ文字列モードを使用できます。
 
 - **クエリ文字列を無視する**: 既定のモードです。 このモードでは、CDN Point-of-Presence (POP) ノードは、クエリ文字列を要求元から最初の要求の配信元サーバーに渡して、資産をキャッシュします。 POP から提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
+
 - **クエリ文字列のキャッシュをバイパス**: このモードでは、クエリ文字列のある要求は CDN POP ノードでキャッシュされません。 POP ノードは配信元サーバーから直接資産を取得し、それを各要求により要求元に渡します。
-- **一意の URL をすべてキャッシュ**: このモードでは、クエリ文字列を含む一意の URL が指定された各要求は、独自のキャッシュがある一意の資産として扱われます。 たとえば、`example.ashx?q=test1` の要求の配信元サーバーからの応答は POP ノードでキャッシュされ、後続のキャッシュではその同じクエリ文字列により返されます。 `example.ashx?q=test2` の要求は、独自の有効期限設定を持つ個別の資産としてキャッシュされます。
+
+- **一意の URL をすべてキャッシュ**: このモードでは、クエリ文字列を含む一意の URL が指定された各要求は、独自のキャッシュがある一意の資産として扱われます。 たとえば、example.ashx?q=test1 の要求の配信元サーバーからの応答は POP ノードでキャッシュされ、後続のキャッシュではその同じクエリ文字列により返されます。 example.ashx?q=test2 の要求は、独自の有効期限設定を持つ個別の資産としてキャッシュされます。
+   
+    >[!IMPORTANT] 
+    > セッション ID やユーザー名など、要求ごとに変わるパラメーターがクエリ文字列に含まれる場合は、キャッシュ ヒット率が低くなるので、このモードを使わないでください。
 
 ## <a name="changing-query-string-caching-settings-for-standard-cdn-profiles"></a>Standard CDN プロファイル用にクエリ文字列のキャッシュ設定を変更する
 1. CDN プロファイルを開き、管理する CDN エンドポイントを選択します。

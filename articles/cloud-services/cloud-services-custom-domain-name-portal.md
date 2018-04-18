@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services のカスタム ドメイン名を構成する | Microsoft Docs"
-description: "DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータをインターネットに公開する方法について説明します。  これらの例では、Azure ポータルを使用します。"
+title: Cloud Services のカスタム ドメイン名を構成する | Microsoft Docs
+description: DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータをインターネットに公開する方法について説明します。  これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
 ms.service: cloud-services
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://contoso.cloudapp.net のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。

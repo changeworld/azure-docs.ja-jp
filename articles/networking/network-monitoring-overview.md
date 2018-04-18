@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -36,9 +36,9 @@ Network Performance Monitor (NPM) は機能のスイートであり、各機能�
 
 パフォーマンス モニター、ExpressRoute モニター、およびサービス エンドポイント モニターは、NPM 内の監視機能です。以下のセクションでこれらについて説明します。
 
-## <a name="performance-monitor"></a>パフォーマンス モニター
+## <a name="performance-monitor"></a>パフォーマンスの監視
 
-パフォーマンス モニターは NPM の一部であり、クラウド、ハイブリッド、オンプレミスの環境のネットワーク監視を行います。 リモート ブランチとフィールド オフィス、店舗の場所、データ センター、クラウドの間のネットワーク接続性を監視できます。 ユーザーから不満があがる前に、ネットワークの問題を検出できます。 主な利点は次のとおりです。
+Performance Monitor は NPM の一部であり、クラウド、ハイブリッド、オンプレミスの環境のネットワーク監視を行います。 リモート ブランチとフィールド オフィス、店舗の場所、データ センター、クラウドの間のネットワーク接続性を監視できます。 ユーザーから不満があがる前に、ネットワークの問題を検出できます。 主な利点は次のとおりです。
 
 * 各種サブネット間の損失と待ち時間を監視し、アラートを設定する
 * ネットワーク上のすべてのパス (冗長パスを含む) を監視する
@@ -60,9 +60,11 @@ ExpressRoute 用の NPM は、プライベート ピアリング接続の包括�
 
 * サブスクリプションに関連付けられている ER 回線の自動検出
 * オンプレミスからクラウド アプリケーションへのネットワーク トポロジの検出
-* 容量計画、使用率分析
+* Virtual Network ごとの容量計画、使用率の分析、帯域幅使用率
 * プライマリ パスとセカンダリ パス両方の監視とアラート
 * VNet への接続性の低下の検出
+
+![リージョン間のトラフィックを示すマップ](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 詳細については、次の記事を参照してください。
 
@@ -116,7 +118,6 @@ DNS 管理者用に開発されたこのソリューションは、DNS ログの
 関連リンク:
 * [ブログ記事](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[ドキュメント](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="next-steps"></a>次の手順
+## <a name="miscellaneous"></a>その他
 
-* [Network Performance Monitor の構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
-* [ExpressRoute に使用する Network Performance Monitor の構成](../expressroute/how-to-npm.md)
+* [新しい価格](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
