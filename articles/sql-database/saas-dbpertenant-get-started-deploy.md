@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: c62817b6bb60d99a4762e433510cc54d15add35a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -40,7 +40,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 ## <a name="deploy-the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS アプリケーションのデプロイ
 
-#### <a name="plan-the-names"></a>名前を付ける
+#### <a name="plan-the-names"></a>名前を考える
 
 このセクションの手順では、リソースの名前がグローバルに一意であることを確認するために使用する、ユーザー値を指定します。 また、アプリのデプロイメントによって作成されるすべてのリソースが含まれる、リソース グループの名前も指定します。 たとえば、架空の名前が Ann Finley である場合、次のような名前にすることをお勧めします。
 
@@ -108,7 +108,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 中央の **Events Hub** ページには、デプロイのテナントへのリンク一覧が表示されます。
 
-1. Web ブラウザーで URL http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net と指定して Events Hub を開きます。 &lt;user&gt; をデプロイのユーザーの値に置換してください。
+1. Web ブラウザーで URL http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net と指定して Events Hub を開きます。 &lt;user&gt; をデプロイのユーザーの値に置換してください。
 
     ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -120,7 +120,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 Wingtip アプリケーションでは、[*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) を使用して受信要求の分散を制御します。 特定のテナントのイベント ページにアクセスする URL では、次の形式を使用します。
 
-- http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     上記の形式の各部分の説明を次の表に示します。
 

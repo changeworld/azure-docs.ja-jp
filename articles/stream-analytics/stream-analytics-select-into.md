@@ -1,24 +1,19 @@
 ---
-title: SELECT INTO を使用した Azure Stream Analytics クエリのデバッグ | Microsoft Docs
-description: Stream Analytics で SELECT INTO ステートメントを使用して、クエリ実行中のデータをサンプリングします
-keywords: ''
+title: SELECT INTO を使用した Azure Stream Analytics クエリのデバッグ
+description: この記事では、クエリ構文で SELECT INTO ステートメントを使って、Azure Stream Analytics ジョブでのクエリ中にデータをサンプリングする方法について説明します。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: f232ba9804886f416ac0941ddc7e602782b6ebe2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: ccaa6203e4bfe52758e26416646f9152ac5378ea
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>SELECT INTO ステートメントを使用したクエリのデバッグ
 
@@ -73,7 +68,7 @@ Azure Stream Analytics ジョブの次のサンプル クエリには、1 つの
 
 ## <a name="get-help"></a>問い合わせ
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

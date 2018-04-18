@@ -1,11 +1,11 @@
 ---
-title: "Windows での SSH キーを使用した Linux VM への接続 | Microsoft Docs"
-description: "Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。"
+title: Windows での SSH キーを使用した Linux VM への接続 | Microsoft Docs
+description: Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
-ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Azure では、長さ 2,048 ビット以上の **ssh-rsa** 形式の公開キー
 ## <a name="install-git-for-windows"></a>Git for Windows のインストール
 前のセクションで、Windows 用の `openssl` ツールを含むいくつかのパッケージを紹介しました。 このツールは、公開キーと秘密キーを作成するために必要です。 任意のパッケージを選択できますが、ここでは **Git for Windows** をインストールして使用する方法を次の例に示します。 **Git for Windows** では、Linux VM を使用する際に役立つ追加のオープンソース ソフトウェア ([OSS](https://en.wikipedia.org/wiki/Open-source_software)) のツールとユーティリティにアクセスできます。
 
-1. [https://git-for-windows.github.io/](https://git-for-windows.github.io/) から **Git for Windows** をダウンロードしてインストールします。
+1. 次の場所から **Windows 用の Git** をダウンロードしてインストールします。[https://git-for-windows.github.io/](https://git-for-windows.github.io/)
 2. インストール プロセスでは、既定のオプションを使用します (ただし、変更する必要がある場合を除きます)。
 3. **[スタート] メニュー** > **[Git]** > **[Git Bash]** を順に選択して **Git Bash** を実行します。 次のようなコンソールが表示されます。
 
@@ -137,7 +137,7 @@ PuTTY は、Windows 用の一般的な SSH クライアントです。 SSH ク�
     ```bash
     chmod 0600 myPrivateKey_rsa
     ```
-2. [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から PuTTYgen をダウンロードして実行します。
+2. 次の場所から puttygen をダウンロードしてインストールします。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 3. **[File (ファイル)]** > **[Load a Private Key (秘密キーの読み込み)]** の順にクリックします。
 4. 秘密キー (前の例の `myPrivateKey_rsa`) を見つけます。 **Git Bash** を起動したときの既定のディレクトリは `C:\Users\%username%` です。 ファイル フィルターを **[All Files (\*.\*) (すべてのファイル (*.*))]** に変更します。
 
@@ -168,7 +168,7 @@ PuTTY は、Windows 用の一般的な SSH クライアントです。 SSH ク�
 ## <a name="use-putty-to-ssh-to-a-linux-machine"></a>Putty を使用した Linux マシンへの SSH 接続
 前に説明したように、PuTTY は、Windows 用の一般的な SSH クライアントです。 SSH クライアントには任意のクライアントを使用できます。 次の手順では、秘密キーを使い、SSH を使用して Azure VM に対する認証を行う方法を示します。 他の SSH キー クライアントを使用する場合でも、SSH 接続を認証するために秘密キーを読み込む必要があるという点で、手順は似ています。
 
-1. [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から PuTTY をダウンロードして実行します。
+1. 次の場所から putty をダウンロードしてインストールします。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2. Azure Portal で取得した VM のホスト名と IP アドレスを入力します。
 
     ![新しい PuTTY 接続の開始](./media/ssh-from-windows/putty-new-connection.png)
@@ -177,7 +177,7 @@ PuTTY は、Windows 用の一般的な SSH クライアントです。 SSH ク�
     ![認証用の PuTTY 秘密キーの選択](./media/ssh-from-windows/putty-auth-dialog.png)
 4. **[Open]** をクリックして、仮想マシンに接続します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 公開キーと秘密キーは [OS X と Linux を使用して](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)生成することもできます。
 
 Bash for Windows の詳細および Windows コンピューターで OSS ツールを使用できるようにしておくメリットについては、「[Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about)」を参照してください。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: ede128d23ca73dc46f2d4dc4b1dd4b1f83a2bc3f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 65e5e45300e66cd8c3acc44a91335de45a919eb5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログをアップロードして収集する 1 つの方法として、Windows Azure 診断 (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[OMS Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
+ログをアップロードして収集する 1 つの方法として、Windows Azure 診断 (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 このドキュメントの一部の操作は、次のツールを使用して実行されます。
@@ -285,11 +285,11 @@ Application Insights (AI) への監視および診断データの送信は、WAD
 
 ## <a name="next-steps"></a>次の手順
 
-Azure 診断を正しく構成すると、ETW ログと EventSource ログのデータがストレージ テーブルに表示されます。 OMS、Kibana、または Resource Manager テンプレートで直接構成されていないその他のデータ分析および視覚化プラットフォームを使用する場合は、これらのストレージ テーブルからデータを読み取るように、選択したプラットフォームを設定する必要があります。 OMS でこれを行うのは比較的簡単です。方法については、[OMS を使用したイベントとログの分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事をご覧ください。 Application Insights は、診断拡張機能の構成の一部として構成できるので、少し特殊と言えます。AI を使用する場合は、[こちらの記事](service-fabric-diagnostics-event-analysis-appinsights.md)をご覧ください。
+Azure 診断を正しく構成すると、ETW ログと EventSource ログのデータがストレージ テーブルに表示されます。 Log Analytics、Kibana、または Resource Manager テンプレートで直接構成されていないその他のデータ分析および視覚化プラットフォームを使用する場合は、これらのストレージ テーブルからデータを読み取るように、選択したプラットフォームを設定する必要があります。 Log Analytics でこれを行うのは比較的簡単です。方法については、[イベントとログの分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照してください。 Application Insights は、診断拡張機能の構成の一部として構成できるので、少し特殊と言えます。AI を使用する場合は、[こちらの記事](service-fabric-diagnostics-event-analysis-appinsights.md)をご覧ください。
 
 >[!NOTE]
 >現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加を続けます。 現在、[ウォッチドッグ サンプル](https://github.com/Azure-Samples/service-fabric-watchdog-service)で実行されるデータ グルーミング サービスの例があります。30 日または 90 日の期間を超えてログを保存する正当な理由がない限り、データ グルーミング サービスを自分で作成することをお勧めします。
 
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [OMS を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
+* [Log Analytics を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Microsoft Advanced Threat Analytics を Azure Security Center に接続する
 このドキュメントは、Microsoft Advanced Threat Analytics と Azure Security Center 間の統合を構成する場合に役立ちます。
@@ -58,7 +58,7 @@ ATA が既にインストールされ、オンプレミスで適切に動作し�
 
     ![直接エージェント](./media/security-center-ata-integration/security-center-ata-integration-fig6.png)
 
-12. ATA Center でこのエージェントをインストールします。 インストール中に **[Azure ログ分析 (OMS) にエージェントを接続する]** オプションをオンにして、指示に従って*ワークスペース ID* と*プライマリ キー*を入力します。
+12. ATA Center でこのエージェントをインストールします。 インストール中に **[Connect the agent to Azure Log Analytics]\(Azure Log Analytics にエージェントを接続する\)** オプションをオンにして、指示に従って*ワークスペース ID* と*プライマリ キー*を入力します。
 
 
 インストールを完了し、統合が完了すると、ATA から Security Center に送信された新しいアラートを **[検索]** 結果で確認できるようになります。 ソリューションは **[接続済みソリューション]** の **[セキュリティ ソリューション]** に表示されます。 

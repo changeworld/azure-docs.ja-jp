@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics でデータのコストを管理する | Microsoft Docs
-description: Azure Portal で Log Analytics ワークスペースの料金プランを変更し、データ ボリュームとアイテム保持ポリシーを管理する方法について説明します。
+description: Azure で Log Analytics ワークスペースの料金プランを変更し、データ ボリュームとアイテム保持ポリシーを管理する方法について説明します。
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 629031310eba21bc3308754706bd7ba227009ac6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="manage-cost-by-controlling-data-volume-and-retention-with-your-log-analytics-workspace"></a>Log Analytics ワークスペースでデータ ボリュームとリテンション期間を制御することによりコストを管理する
+# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する
 Log Analytics は、企業内のソースまたは Azure に展開されたソースから毎日大量のデータを収集し、インデックスを付けて、保存する処理をスケーリングおよびサポートするように設計されています。  これは組織の主要な原動力になる場合がありますが、最終的に基になる原動力はコスト効率です。 そのためには、Log Analytisc ワークスペースのコストは、収集されるデータのボリュームだけでなく、選択されているプラン、および接続されたソースから生成されたデータの保持期間にも依存することを、理解しておくことが重要です。  
 
 この記事では、データ ボリュームとストレージの拡大を事前に監視し、制限を定義して関連コストを制御する方法を説明します。 
@@ -43,7 +43,7 @@ Log Analytics は、企業内のソースまたは Azure に展開されたソ�
 
 データ ボリュームを制限してコストを管理するには、日次上限とデータ リテンション期間の 2 つの方法があります。  
 
-## <a name="review-estimated-cost"></a>推定コストを確認する
+## <a name="review-estimated-cost"></a>推定りコストを確認する
 Log Analytics では、最近の使用パターンに基づいてコストを簡単に理解できます。  このためには、次の手順を実行します。  
 
 1. [Azure Portal](http://portal.azure.com) にサインインします。 

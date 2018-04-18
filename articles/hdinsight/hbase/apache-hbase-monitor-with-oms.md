@@ -1,6 +1,6 @@
 ---
-title: Operations Management Suite (OMS) による HBase の監視 - Azure HDInsight | Microsoft Docs
-description: OMS と Azure Log Analytics を使用して Azure HDInsight HBase クラスターを監視します。
+title: Azure Log Analytics による HBase の監視- Azure HDInsight | Microsoft Docs
+description: Azure Log Analytics を使用して HDInsight HBase クラスターを監視します。
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f78d570cfa8b040cd7673a5e14e6a992511f60bb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-hbase-with-operations-management-suite-oms"></a>Operations Management Suite (OMS) による HBase の監視
+# <a name="monitor-hbase-with-log-analytics"></a>Log Analytics による HBase の監視
 
 HDInsight HBase Monitoring では、Azure Log Analytics を使用して、HDInsight のクラスター ノードから HDInsight HBase のパフォーマンス メトリックを収集します。 このモニターでは、HBase 固有の視覚化とダッシュボード、メトリック検索ツール、独自の監視ルールおよびアラートの作成機能が提供されます。 複数の Azure サブスクリプションにわたって複数の HDInsight HBase クラスターのメトリックを監視することができます。
 
-Log Analytics は、[Operations Management Suite (OMS)](../../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+Log Analytics は [Azure](../../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 
-[Log Analytics 管理ソリューション](../../log-analytics/log-analytics-add-solutions.md)を使用すると、OMS に機能を追加して、追加のデータおよび分析ツールを提供できます。 Log Analytics 管理ソリューションには、特定の領域に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。 また、収集対象のレコードの種類を新たに定義することもできます。これらのレコードは、ログ検索または新しいユーザー インターフェイス機能を使用して分析可能です。
+[Log Analytics 管理ソリューション](../../log-analytics/log-analytics-add-solutions.md)を使用すると、Log Analytics に機能を追加して、追加のデータおよび分析ツールを提供できます。 Log Analytics 管理ソリューションには、特定の領域に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。 また、収集対象のレコードの種類を新たに定義することもできます。これらのレコードは、ログ検索または新しいユーザー インターフェイス機能を使用して分析可能です。
 
 [Insight & Analytics](https://azure.microsoft.com/pricing/details/insight-analytics/) は、Log Analytics プラットフォームを基盤としています。 Log Analytics 機能を使用してこのサービスに取り込まれたデータ (GB 単位) の分だけお支払いいただくか、または Insight & Analytics レベルに切り替えてこのサービスの管理対象となるノードの分だけお支払いいただくことができます。 Insight & Analytics では、Log Analytics で提供される機能の上位セットを利用できます。 HBase Monitoring ソリューションは、Log Analytics か Insight & Analytics で利用可能です。
 
-HDInsight HBase Monitoring ソリューションをプロビジョニングするときは、OMS ワークスペースを作成します。 それぞれのワークスペースが、独自のデータ リポジトリ、データ ソース、ソリューションを備えた一意の Log Analytics 環境となります。 サブスクリプションで複数のワークスペースを作成し、運用やテストなど複数の環境をサポートできます。
+HDInsight HBase Monitoring ソリューションをプロビジョニングするときは、Log Analytics ワークスペースを作成します。 それぞれのワークスペースが、独自のデータ リポジトリ、データ ソース、ソリューションを備えた一意の Log Analytics 環境となります。 サブスクリプションで複数のワークスペースを作成し、運用やテストなど複数の環境をサポートできます。
 
 ## <a name="provision-hdinsight-hbase-monitoring"></a>HDInsight HBase Monitoring のプロビジョニング
 
@@ -50,7 +50,7 @@ HDInsight HBase Monitoring ソリューションをプロビジョニングす�
 
     ![[管理ソリューション] ウィンドウ](./media/apache-hbase-monitor-with-oms/hbase-solution.png)  
 6. [管理ソリューション] ウィンドウで、管理ソリューションに関する情報を確認し、**[作成]** を選択します。 
-7. "*管理ソリューション名*" のウィンドウで、管理ソリューションに関連付ける既存のワークスペースを選択するか、新しい OMS ワークスペースを作成して選択します。
+7. "*管理ソリューション名*" のウィンドウで、管理ソリューションに関連付ける既存のワークスペースを選択するか、新しい Log Analytics ワークスペースを作成して選択します。
 8. 必要に応じて、Azure サブスクリプション、リソース グループ、場所に関するワークスペースの設定を変更します。 
     ![ソリューションのワークスペース](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
 9. **[作成]**を選択します。  
@@ -68,9 +68,9 @@ HDInsight HBase Monitoring ソリューションをプロビジョニングす�
 
 HDInsight HBase Monitoring のツールを使用するには、リージョン サーバー、ヘッド ノード、Zookeeper ノードから Log Analytics にメトリックを送信できるようにクラスターを構成する必要があります。 HDInsight HBase クラスターに対してスクリプト操作を実行し、構成を完了します。
 
-### <a name="get-oms-workspace-id-and-workspace-key"></a>OMS ワークスペース ID とワークスペース キーの取得
+### <a name="get-log-analytics-workspace-id-and-workspace-key"></a>Log Analytics ワークスペース ID とワークスペース キーの取得
 
-クラスター内のノードを Log Analytics で認証するには、OMS ワークスペース ID とワークスペース キーが必要です。 これらの値を取得するには、次の手順を実行します。
+クラスター内のノードを Log Analytics で認証するには、Log Analytics ワークスペース ID とワークスペース キーが必要です。 これらの値を取得するには、次の手順を実行します。
 
 1. Azure Portal の HBase Monitoring ウィンドウから、[概要] を選択します。
 
@@ -146,5 +146,5 @@ HDInsight HBase クラスターからのデータ収集を有効にするには�
 
 ## <a name="next-steps"></a>次の手順
 
-* [OMS Log Analytics のアラートの作成](../../log-analytics/log-analytics-alerts-creating.md)
+* [Log Analytics のアラートの作成](../../log-analytics/log-analytics-alerts-creating.md)
 * [Azure Log Analytics におけるログ検索でのデータ収集](../../log-analytics/log-analytics-log-searches.md)

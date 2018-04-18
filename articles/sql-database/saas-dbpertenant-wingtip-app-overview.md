@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 563d82076721a669069ba3e36df84a050188813c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 
@@ -37,13 +37,13 @@ Wingtip SaaS アプリでは、テナントごとのデータベース モデル
 アプリをデプロイしたら、初期デプロイを前提とする以下のチュートリアルを参照してください。 これらのチュートリアルで、SQL Database、Azure SQL Data Warehouse、およびその他の Azure サービスに組み込まれた機能を活用する一般的な SaaS パターンを確認できます。 チュートリアルには、PowerShell スクリプトと詳細な説明が含まれています。 説明を参照することで、同じ SaaS 管理パターンの理解とアプリケーションでの実装が容易になります。
 
 
-| チュートリアル | 説明 |
+| チュートリアル | [説明] |
 |:--|:--|
 | [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-tenancy-wingtip-app-guidance-tips.md) | PowerShell スクリプトをダウンロードして実行し、アプリケーションの各部分を準備します。 |
 |[Wingtip SaaS アプリケーションをデプロイして調査する](saas-dbpertenant-get-started-deploy.md)|  Wingtip SaaS アプリケーションをお使いの Azure サブスクリプションにデプロイして調査します。 |
 |[テナントのプロビジョニングおよびカタログ登録を行う](saas-dbpertenant-provision-and-catalog.md)| アプリケーションがカタログ データベースを使用してテナントに接続する方法と、カタログがテナントを各自のデータにマッピングする方法について説明します。 |
 |[パフォーマンスを監視および管理する](saas-dbpertenant-performance-monitoring.md)| SQL Database の監視機能の使用方法と、パフォーマンスのしきい値を超過した場合のアラートの設定方法について説明します。 |
-|[Azure Log Analytics (Operations Management Suite) を使用して管理する](saas-dbpertenant-log-analytics.md) | [Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、複数のプールにある大量のリソースを監視する方法を説明します。 |
+|[Log Analytics を使用して監視する](saas-dbpertenant-log-analytics.md) | [Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、複数のプールにある大量のリソースを監視する方法を説明します。 |
 |[シングル テナントを復元する](saas-dbpertenant-restore-single-tenant.md)| テナント データベースを前のポイント イン タイムに復元する方法を説明します。 既存のテナント データベースをオンラインにしたまま、並列のデータベースに復元する手順についても説明します。 |
 |[テナント データベースのスキーマの管理に関するページ](saas-tenancy-schema-management.md)| すべてのテナント データベースに対してスキーマの更新と参照データの更新を行う方法について説明します。 |
 |[テナント間で分散クエリを実行する](saas-tenancy-cross-tenant-reporting.md) | アドホック分析データベースを作成し、すべてのテナントに対して実行されるリアルタイムの分散クエリを実行します。  |

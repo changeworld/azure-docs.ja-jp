@@ -1,13 +1,13 @@
 ---
-title: "Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする | Microsoft Docs"
-description: "Azure の Cloud Foundry にアプリケーションをデプロイします。"
+title: Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする | Microsoft Docs
+description: Azure の Cloud Foundry にアプリケーションをデプロイします。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: seanmck
-manager: timlt
-editor: 
-tags: 
-keywords: 
+manager: jeconnoc
+editor: ''
+tags: ''
+keywords: ''
 ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e7b321c9fc8f8568cd8109cea0ae877048d3663
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -141,7 +141,7 @@ cf scale -i 2 hello-spring-cloud
 アプリケーションで `cf app` コマンドを実行することは、Cloud Foundry がアプリケーションの別のインスタンスを作成していることを示します。 アプリケーションが起動すると、Cloud Foundry が自動的にトラフィックの負荷分散を開始します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Cloud Foundry のドキュメントを読む][cloudfoundry-docs]
 - [Cloud Foundry 用の Visual Studio Team Services プラグインをセットアップする][vsts-plugin]

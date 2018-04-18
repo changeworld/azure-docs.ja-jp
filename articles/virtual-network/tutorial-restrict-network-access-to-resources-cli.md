@@ -1,38 +1,38 @@
 ---
 title: PaaS リソースへのネットワーク アクセスを制限する - Azure CLI | Microsoft Docs
-description: Azure CLI を使って仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
+description: この記事では、Azure CLI を使って仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5c0c6a802c931b71f5be8b01c610cf0810b0b4d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f357861a7a44b249e06f091a8693b7f2d8dd5178
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
 仮想ネットワーク サービスのエンドポイントを使用すると、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 この記事では、次のことについて説明します:
 
-> [!div class="checklist"]
-> * 1 つのサブネットを含む仮想ネットワークを作成する
-> * サブネットを追加し、サービス エンドポイントを有効にする
-> * Azure リソースを作成し、サブネットからのみネットワーク アクセスできるようにする
-> * 各サブネットに仮想マシン (VM) をデプロイする
-> * サブネットからリソースへのアクセスを確認する
-> * サブネットおよびインターネットからリソースへのアクセスが拒否されたことを確認する
+* 1 つのサブネットを含む仮想ネットワークを作成する
+* サブネットを追加し、サービス エンドポイントを有効にする
+* Azure リソースを作成し、サブネットからのみネットワーク アクセスできるようにする
+* 各サブネットに仮想マシン (VM) をデプロイする
+* サブネットからリソースへのアクセスを確認する
+* サブネットおよびインターネットからリソースへのアクセスが拒否されたことを確認する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -82,7 +82,7 @@ az network vnet subnet create \
   --service-endpoints Microsoft.Storage
 ```
 
-## <a name="restrict-network-access-to-and-from-subnet"></a>サブネットとの間のネットワーク アクセスを制限する
+## <a name="restrict-network-access-for-a-subnet"></a>サブネットへのネットワーク アクセスを制限する
 
 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
 
@@ -311,7 +311,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-作成したディレクトリに Azure ファイル共有のマウントを試みます。 このチュートリアルでは、最新バージョンの Ubuntu を展開してあるものとします。 以前のバージョンの Ubuntu を使っている場合は、「[Linux でのマウント](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」でファイル共有のマウントに関する追加説明を参照してください。 次のコマンドを実行する前に、`<storage-account-name>` をアカウント名に置き換え、`<storage-account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
+作成したディレクトリに Azure ファイル共有のマウントを試みます。 この記事では、最新バージョンの Ubuntu を展開してあるものとします。 以前のバージョンの Ubuntu を使っている場合は、「[Linux でのマウント](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」でファイル共有のマウントに関する追加説明を参照してください。 次のコマンドを実行する前に、`<storage-account-name>` をアカウント名に置き換え、`<storage-account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -341,9 +341,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントを運用仮想ネットワークに作成する前に、[サービス エンドポイント](virtual-network-service-endpoints-overview.md)について十分に理解しておくことをお勧めします。
+この記事では、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントについて詳しくは、[サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)と[サブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。
 
-アカウントに複数の仮想ネットワークがある場合は、各仮想ネットワーク内のリソースが相互に通信できるように、2 つの仮想ネットワークを接続することもできます。 次のチュートリアルに進み、仮想ネットワークを接続する方法を学習してください。
-
-> [!div class="nextstepaction"]
-> [仮想ネットワークを接続する](./tutorial-connect-virtual-networks-cli.md)
+アカウントに複数の仮想ネットワークがある場合は、各仮想ネットワーク内のリソースが相互に通信できるように、2 つの仮想ネットワークを接続することもできます。 方法については、[仮想ネットワークの接続](tutorial-connect-virtual-networks-cli.md)に関する記事をご覧ください。

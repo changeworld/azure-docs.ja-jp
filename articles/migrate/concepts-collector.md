@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="collector-appliance"></a>コレクター アプライアンス
 
@@ -53,7 +53,7 @@ Azure Migrate Collector は、オンプレミスの vCenter 環境の検出に�
 1. コレクターをインターネットに直接接続するよう構成することができます。
 2. コレクターをプロキシ サーバー経由で接続するよう構成することができます。
     * プロキシ サーバーで認証が必要な場合は、接続設定でユーザー名とパスワードを指定できます。
-    * プロキシ サーバーの IP アドレスまたは FQDN は、http://IP アドレス、または http://FQDN の形式である必要があります。 サポートされるのは HTTP プロキシのみです。
+    * プロキシ サーバーの IP アドレスまたは FQDN は、http://IPaddress または http://FQDN の形式である必要があります。 サポートされるのは HTTP プロキシのみです。
 
 > [!NOTE]
 > HTTPS ベースのプロキシ サーバーは、コレクターではサポートされていません。
@@ -126,7 +126,7 @@ vCenter に接続すると、検出範囲を選択できます。 検出範囲�
 
 1. 検出範囲には、データ センター、フォルダー、または ESXi ホストのいずれかを指定できます。 
 2. 一度に選択できる検出範囲は 1 つのみです。 より多くの仮想マシンを選択するには、1 つの検出を完了し、新しい検出範囲で検出プロセスを再開します。
-3. 選択できるのは、*1000 台未満の仮想マシン*のある検出範囲のみです。 1000 以上の仮想マシンのある検出範囲を選択した場合は、フォルダーを作成してより小さな単位に検出範囲を分割する必要があります。 次に、より小さなフォルダーの検出を個別に実行する必要があります。
+3. 選択できるのは、"*仮想マシンが 1500 台未満*" の検出範囲のみです。
 
 ## <a name="specify-migration-project"></a>移行プロジェクトの指定
 
@@ -197,6 +197,16 @@ OVA を再度ダウンロードせずに、コレクターを最新バージョ�
 5. Setup.ps1 を右クリックして [Run with PowerShell]\(PowerShell で実行\) を選択し、画面に指示に従って更新プログラムをインストールします。
 
 ### <a name="list-of-updates"></a>更新プログラムのリスト
+
+#### <a name="upgrade-to-version-1097"></a>バージョン 1.0.9.7 へのアップグレード
+
+バージョン 1.0.9.7 にアップグレードするには、[パッケージ](https://aka.ms/migrate/col/upgrade_9_7)をダウンロードします。
+
+**アルゴリズム** | **ハッシュ値**
+--- | ---
+MD5 | 01ccd6bc0281f63f2a672952a2a25363
+SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
+SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 #### <a name="upgrade-to-version-1095"></a>バージョン 1.0.9.5 へのアップグレード
 

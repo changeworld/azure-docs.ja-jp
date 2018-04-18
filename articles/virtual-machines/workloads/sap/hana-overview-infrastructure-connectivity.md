@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続 
 
@@ -49,9 +49,9 @@ ms.lasthandoff: 03/09/2018
 - 各 HANA L インスタンス システムのデータ:
   - 適切なホスト名 (できれば完全修飾ドメイン名を含める)。
   - HANA L インスタンス ユニットの適切な IP アドレス (サーバー IP プールのアドレス範囲から)。サーバー IP プール アドレス範囲に含まれる最初の 30 個の IP アドレスは、HANA L インスタンスの内部的な用途で予約されています。
-  - SAP HANA インスタンス用の SAP HANA SID 名 (SAP HANA に関連する必要なディスク ボリュームの作成に必要)。 HANA SID は、NFS ボリューム上の <sidadm> のアクセス許可を作成するために必要です。これらのアクセス許可は、HANA L インスタンス ユニットに関連付けられているところです。 また、マウントされるディスク ボリュームの名前の構成要素の 1 つとしても使用されます。 ユニット上で複数の HANA インスタンスを実行する場合は、複数の HANA SID の一覧を指定する必要があります。 それぞれに個別のボリュームのセットが割り当てられます。
-  - Linux OS における hana-sidadm ユーザーのグループ ID (SAP HANA に関連する必要なディスク ボリュームの作成に必要)。 SAP HANA のインストールでは通常、グループ ID 1001 の sapsys グループが作成されます。 hana-sidadm ユーザーは、そのグループに属しています。
-  - Linux OS における hana-sidadm ユーザーのユーザー ID (SAP HANA に関連する必要なディスク ボリュームの作成に必要)。 ユニット上で複数の HANA インスタンスを実行している場合は、すべての <sid>adm ユーザーの一覧を指定する必要があります。 
+  - SAP HANA インスタンス用の SAP HANA SID 名 (SAP HANA に関連する必要なディスク ボリュームの作成に必要)。 HANA SID は、NFS ボリューム上の sidadm のアクセス許可を作成するために必要です。これらのアクセス許可は、HANA L インスタンス ユニットに関連付けられているところです。 また、マウントされるディスク ボリュームの名前の構成要素の 1 つとしても使用されます。 ユニット上で複数の HANA インスタンスを実行する場合は、複数の HANA SID の一覧を指定する必要があります。 それぞれに個別のボリュームのセットが割り当てられます。
+  - Linux OS における sidadm ユーザーのグループ ID (SAP HANA に関連する必要なディスク ボリュームの作成に必要)。 SAP HANA のインストールでは通常、グループ ID 1001 の sapsys グループが作成されます。 sidadm ユーザーは、そのグループに属しています。
+  - Linux OS における sidadm ユーザーのユーザー ID (SAP HANA に関連する必要なディスク ボリュームの作成に必要)。 ユニット上で複数の HANA インスタンスを実行している場合は、すべての <sid>adm ユーザーの一覧を指定する必要があります。 
 - SAP HANA on Azure (L インスタンス) が直接接続する Azure サブスクリプションの Azure サブスクリプション ID。 このサブスクリプション ID は、Azure サブスクリプションを参照します。そのサブスクリプションに HANA L インスタンス ユニットが課金されます。
 
 これらの情報を入力すると、Microsoft によって SAP HANA on Azure (L インスタンス) がプロビジョニングされ、Azure VNet と HANA L インスタンスとのリンクや HANA L インスタンス ユニットへのアクセスに必要な情報が返されます。

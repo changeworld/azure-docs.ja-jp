@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 アプリケーションのライフサイクルを通して、仮想マシン スケール セットを変更したり更新したりすることが必要になる場合があります。 スケール セットの構成を更新したりアプリケーションの構成を変更したりする際の方法が、こうした更新の対象になることもあります。 この記事では、REST API、Azure PowerShell、Azure CLI 2.0 を使って、既存のスケール セットに変更を加える方法を説明します。
@@ -367,7 +367,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="scenarios"></a>シナリオ
 
 ### <a name="application-updates"></a>アプリケーションの更新
-拡張機能を通じてアプリケーションがスケール セットにデプロイされている場合、拡張機能の構成を更新すると、アップグレード ポリシーに従ってアプリケーションが更新されます。 たとえば、カスタム スクリプト拡張機能で実行するスクリプトの新しいバージョンがある場合は、新しいスクリプトを指すように *fileUris* プロパティを更新できます。 場合によっては、拡張機能の構成が変更されていない場合でも、強制的に更新したいことがあります (たとえば、スクリプトの URI を変更せずにスクリプトを更新した場合など)。 このような場合は、強制的に更新するように *forceUpdateTag* を変更することができます。 Azure プラットフォームはこのプロパティを解釈しません。 その値を変更しても、拡張機能の動作は変わりません。 変更しても、拡張機能が強制的に再実行されるだけです。 *forceUpdateTag* について詳しくは、[拡張機能の REST API ドキュメント](/rest/api/compute/virtualmachineextensions/createorupdate)をご覧ください。
+拡張機能を通じてアプリケーションがスケール セットにデプロイされている場合、拡張機能の構成を更新すると、アップグレード ポリシーに従ってアプリケーションが更新されます。 たとえば、カスタム スクリプト拡張機能で実行するスクリプトの新しいバージョンがある場合は、新しいスクリプトを指すように *fileUris* プロパティを更新できます。 場合によっては、拡張機能の構成が変更されていない場合でも、強制的に更新したいことがあります (たとえば、スクリプトの URI を変更せずにスクリプトを更新した場合など)。 このような場合は、強制的に更新するように *forceUpdateTag* を変更することができます。 Azure プラットフォームはこのプロパティを解釈しません。 その値を変更しても、拡張機能の動作は変わりません。 変更しても、拡張機能が強制的に再実行されるだけです。 *forceUpdateTag* について詳しくは、[拡張機能の REST API ドキュメント](/rest/api/compute/virtualmachineextensions/createorupdate)をご覧ください。 *forceUpdateTag* はカスタム スクリプト拡張機能だけでなく、すべての拡張機能で使用できることに注意してください。
 
 カスタム イメージを使用してアプリケーションをデプロイするのも一般的です。 このシナリオについては、次のセクションで説明します。
 

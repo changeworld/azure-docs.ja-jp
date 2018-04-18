@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database ベンチマークの概要
+title: Azure SQL Database DTU ベンチマークの概要
 description: このトピックでは、Azure SQL Database のパフォーマンス測定で使用される Azure SQL Database ベンチマークについて説明します。
 services: sql-database
 author: jan-eng
@@ -7,17 +7,20 @@ manager: jhubbard
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 06/21/2016
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0dae04ab3de16e2ef51134ec6979c6c289a6da3f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-sql-database-benchmark-overview"></a>Azure SQL Database ベンチマークの概要
+# <a name="azure-sql-database-dtu-benchmark-overview"></a>Azure SQL Database DTU ベンチマークの概要
 ## <a name="overview"></a>概要
-Microsoft Azure SQL Database は、3 つの [サービス階層](sql-database-service-tiers.md) と複数のパフォーマンス レベルを提供します。 パフォーマンス レベルごとに提供されるリソースのセット ("能力") が増加し、スループットが段階的に高くなるように設計されています。
+DTU ベースの購入モデルの場合、Microsoft Azure SQL Database は、3 つの[サービス レベル](sql-database-service-tiers.md)と複数のパフォーマンス レベルを提供します。 パフォーマンス レベルごとに提供されるリソースのセット ("能力") が増加し、スループットが段階的に高くなるように設計されています。
+
+> [!IMPORTANT]
+> また、Azure SQL Database は、仮想コアベースの購入モデル (プレビュー) をサポートするようになりました。 詳細については、「[vCore-based purchasing model (preview)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)」(仮想コアベースの購入モデル (プレビュー)) を参照してください。
 
 各パフォーマンス レベルの能力を上げたときにデータベース パフォーマンスがどのくらい向上するかを数値化できることが重要です。 そのため、マイクロソフトは Azure SQL Database ベンチマーク (ASDB) を開発しました。 このベンチマークでは、すべての OLTP ワークロードに見られるさまざまな基本操作を実行します。 各パフォーマンス レベルで実行しているデータベースで達成されるスループットを測定します。
 

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8ea7e7453ba49b17560b7c2147dd6c71c6c1a7a0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning 実験サービス構成ファイル
 
@@ -64,7 +64,7 @@ dependencies:
      # a package hosted in a public URL endpoint
      - https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp35-cp35m-win_amd64.whl
      
-     # a wheel file available locally on disk (this only works if you are executing against local target)
+     # a wheel file available locally on disk (this only works if you are executing against local Docker target)
      - C:\temp\my_private_python_pkg.whl
 ```
 
@@ -190,7 +190,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **TrackedRun**: このフラグは、Azure ML Workbench 実行履歴インフラストラクチャ内での実行を追跡するかどうかを実験サービスに指示します。 既定値は _true_です。 
 
-**UseSampling**: _UseSampling_ は、データ ソースのアクティブなサンプル データセットを実行に使用するかどうかを指定します。 _false_ に設定した場合、データ ソースを取り込み、データ ストアから読み取られた完全なデータを使用します。 _true_ に設定した場合、アクティブなサンプルが使用されます。 ユーザーは、"DataSourceSettings" を使用して、アクティブなサンプルを上書きする場合に使用する特定のサンプル データセットを指定できます。 
+**UseSampling**: _UseSampling_ は、データ ソースのアクティブなサンプル データセットを実行に使用するかどうかを指定します。 _false_ に設定した場合、データ ソースを取り込み、データ ストアから読み取られた完全なデータを使用します。 _true_ に設定した場合、アクティブなサンプルが使用されます。 ユーザーは、**DataSourceSettings** を使って、アクティブなサンプルを上書きする場合に使う特定のサンプル データセットを指定できます。 
 
 **DataSourceSettings**: この構成セクションは、データ ソース設定を指定します。 このセクションでは、ユーザーは、実行の一部として使用される特定のデータ ソースの既存のデータ サンプルを指定します。 
 

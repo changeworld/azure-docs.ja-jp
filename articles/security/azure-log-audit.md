@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに
@@ -74,7 +74,7 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログと、ストレージ アカウントのメトリック データの提供|要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断に対する洞察が得られます。|    REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG (ネットワーク セキュリティ グループ) のフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式、送信および受信のフローをルールごとに表示|ネットワーク セキュリティ グループを介した IP トラフィックの送信と受信に関する情報を表示します。|[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|    複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。| REST API、[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|データの処理/セキュリティ アラート| Azure Security Center アラート、OMS アラート| セキュリティに関する情報と警告。|   REST API、JSON|
+|データの処理/セキュリティ アラート| Azure Security Center アラート、Log Analytics アラート|   セキュリティに関する情報と警告。|   REST API、JSON|
 
 ### <a name="activity-log"></a>アクティビティ ログ
 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)では、サブスクリプションのリソースに対して実行された操作を調査できます。 アクティビティ ログではサブスクリプションの[コントロールプレーン イベント](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)が報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作は含まれません。
@@ -114,7 +114,7 @@ Azure 診断ログは、PowerShell、コマンド ライン インターフェ�
 
 -   サード パーティーのサービスや [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミングする](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs)。
 
--   診断ログを [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) で分析する。
+-   これを [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) で分析する
 
 **サポートされるサービス、診断ログ用スキーマ、リソース タイプごとのサポートされるログ カテゴリ**
 
@@ -333,11 +333,11 @@ Security Center には、シグネチャ ベースの手法とは比較になら
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Log Analytics は、[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。 統合検索とカスタム ダッシュボードによるリアルタイムの洞察が得られるため、物理的な場所に関係なくワークロードおよびサーバー全体の無数のレコードをただちに分析できます。
+Log Analytics は Azure のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。 統合検索とカスタム ダッシュボードによるリアルタイムの洞察が得られるため、物理的な場所に関係なくワークロードおよびサーバー全体の無数のレコードをただちに分析できます。
 
 ![Log Analytics](./media/azure-log-audit/azure-log-audit-fig8.png)
 
-Log Analytics の核となる機能は、Azure クラウドでホストされている OMS リポジトリです。 データは、データ ソースを構成してソリューションをサブスクリプションに追加することによって接続されているソースからリポジトリに収集されます。 データ ソースとソリューションは、独自のプロパティのセットを持つさまざまなレコードの種類をそれぞれ作成しますが、リポジトリへのクエリでまとめて分析することもできます。 これにより、同じツールと方法を使用して、異なるソースによって収集されたさまざまな種類のデータを操作できます。
+Log Analytics の核となる機能は、Azure クラウドでホストされている Log Analytics ワークスペースです。 データは、データ ソースを構成してソリューションをサブスクリプションに追加することによって接続されているソースからワークスペースに収集されます。 データ ソースとソリューションは、独自のプロパティのセットを持つさまざまなレコードの種類をそれぞれ作成しますが、ワークスペースへのクエリでまとめて分析することもできます。 これにより、同じツールと方法を使用して、異なるソースによって収集されたさまざまな種類のデータを操作できます。
 
 接続先のソースは、Log Analytics によって収集されたデータを生成するコンピューターとその他のリソースです。 これには、直接接続している [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) および [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) のコンピューターにインストールされているエージェント、または[接続されている System Center Operations Manager 管理グループ](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents)のエージェントを含めることができます。 Log Analytics は [Azure Storage](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) からのデータも収集できます。
 

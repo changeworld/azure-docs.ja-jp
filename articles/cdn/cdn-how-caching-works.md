@@ -4,7 +4,7 @@ description: キャッシュは、後でデータに対する要求があった�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
-ms.author: v-deasim
-ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: rli; v-deasim
+ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -64,7 +64,7 @@ Web ブラウザーでキャッシュを実装する方法と同様、キャッ�
 ## <a name="cache-directive-headers"></a>キャッシュ ディレクティブ ヘッダー
 
 > [!IMPORTANT]
-> 既定では、DSA 用に最適化された Azure CDN エンドポイントは、キャッシュ ディレクティブ ヘッダーを無視し、キャッシュをバイパスします。 **Azure CDN from Verizon Standard** プロファイルおよび **Azure CDN from Akamai Standard** プロファイルの場合は、[CDN キャッシュ ルール](cdn-caching-rules.md)を使ってキャッシュを有効にすることで、Azure CDN エンドポイントがこれらのヘッダーを処理する方法を調整できます。 **Azure CDN from Verizon Premium** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使ってキャッシュを有効にします。
+> 既定では、DSA 用に最適化された Azure CDN エンドポイントは、キャッシュ ディレクティブ ヘッダーを無視し、キャッシュをバイパスします。 **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Standard from Akamai** プロファイルの場合は、[CDN キャッシュ ルール](cdn-caching-rules.md)を使ってキャッシュを有効にすることで、Azure CDN エンドポイントがこれらのヘッダーを処理する方法を調整できます。 **Azure CDN Premium from Verizon** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使ってキャッシュを有効にします。
 
 Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダーがサポートされます。こうしたヘッダーを使用して、キャッシュ期間やキャッシュ共有を定義します。
 
@@ -102,7 +102,7 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 - キャッシュは、要求で 1 つ以上の `ETag` 検証コントロールを含む `If-None-Match` ヘッダーを送信することで、`ETag` が使用されているファイルを検証します。 たとえば、「`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`」のように入力します。 サーバーのバージョンが一覧の `ETag` 検証コントロールと一致する場合、応答で状態コード 304 (変更なし) が送信されます。 バージョンが異なる場合、サーバーは、状態コード 200 (OK) と、更新されたリソースで応答します。
 
 **Last-Modified:**
-- **Azure CDN from Verizon のみ**で、`ETag` が HTTP 応答に含まれない場合、`Last-Modified` 検証コントロールが使用されます。 
+- **Azure CDN from Verizon のみ**で、`ETag` が HTTP 応答に含まれない場合、`Last-Modified` が使用されます。 
 - リソースが最後に更新されたことが配信元サーバーによって確認された日時を指定します。 たとえば、「`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`」のように入力します。
 - キャッシュは、要求で日時を含む `If-Modified-Since` ヘッダーを送信することで、`Last-Modified` が使用されているファイルを検証します。 配信元サーバーは、その日付と、最新リソースの `Last-Modified` ヘッダーを比較します。 指定されている時刻以降、リソースが変更されていない場合、サーバーは、応答で状態コード 304 (変更なし) を返します。 リソースが変更されている場合、サーバーは、状態コード 200 (OK) と、更新されたリソースを返します。
 

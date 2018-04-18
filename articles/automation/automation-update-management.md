@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -30,7 +30,7 @@ Update Management で管理されるコンピューターでは、評価と更�
 * Automation Hybrid Runbook Worker
 * Microsoft Update または Windows Server Update Services (Windows コンピューターの場合)
 
-次の図は、動作とデータ フローの概念図です。ワークスペース内の接続された Windows Server と Linux コンピューターすべてがこのソリューションによってどのように評価され、セキュリティ更新プログラムが適用されるかを示しています。    
+次の図は、動作とデータ フローの概念図です。ワークスペース内の接続された Windows Server と Linux コンピューターすべてがこのソリューションによってどのように評価され、セキュリティ更新プログラムが適用されるかを示しています。
 
 ![Update Management プロセスのフロー](media/automation-update-management/update-mgmt-updateworkflow.png)
 
@@ -70,21 +70,24 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 #### <a name="windows"></a>Windows
 
-Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。 また、Windows エージェントは、System Center Configuration Manager で同時に管理することはできません。 [Windows エージェント](../log-analytics/log-analytics-agent-windows.md)が必要です。 Azure VM の配布準備を行う場合、このエージェントは自動的にインストールされます。
+Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。 Update Management は System Center Configuration Manager と供に使うことができます。統合のシナリオについて詳しくは、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md#configuration)」をご覧ください。 [Windows エージェント](../log-analytics/log-analytics-agent-windows.md)が必要です。 Azure VM の配布準備を行う場合、このエージェントは自動的にインストールされます。
 
 #### <a name="linux"></a>Linux
 
 Linux の場合、マシンは、プライベートまたはパブリックの更新リポジトリにアクセスする必要があります。 このソリューションでは、OMS エージェント for Linux が複数の Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
-OMS エージェント for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite エージェント for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。 Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページを参照してください。  
+OMS エージェント for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite エージェント for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。 Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページを参照してください。
 
 ## <a name="permissions"></a>アクセス許可
-更新プログラムの展開を作成および管理するには、特定のアクセス許可が必要です。 これらのアクセス許可の詳細については、[ロールベースのアクセス - Update Management](automation-role-based-access-control.md#update-management) に関するページをご覧ください 
+
+更新プログラムの展開を作成および管理するには、特定のアクセス許可が必要です。 これらのアクセス許可の詳細については、[ロールベースのアクセス - Update Management](automation-role-based-access-control.md#update-management) に関するページをご覧ください
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
+
 このソリューションは以下のリソースで構成されています。これらのリソースは、Automation アカウントに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。
 
 ### <a name="hybrid-worker-groups"></a>ハイブリッド worker グループ
+
 このソリューションを有効にすると、ソリューションに含まれている Runbook をサポートするために、Log Analytics ワークスペースに直接接続された Windows コンピューターが自動的に Hybrid Runbook Worker として構成されます。 ソリューションで管理されている各 Windows コンピューターは、<*ホスト名 FQDN_GUID*> という命名規則に従って、[ハイブリッド worker グループ] ページに、Automation アカウントのシステム ハイブリッド worker グループとして表示されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。指定すると失敗します。 これらのグループは、管理ソリューションをサポートすることのみを目的としています。
 
 ただし、このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すれば、Windows コンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートすることができます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
@@ -119,14 +122,13 @@ Heartbeat
 
 Windows コンピューターでは、次の内容を調べて、Log Analytics とエージェントの接続を確認できます。
 
-1.  コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。   
-2.  Windows イベント ログを開き、**アプリケーションとサービス ログ\Operations Manager** に移動して、ソースのサービス コネクタでイベント ID 3000 および 5002 を検索します。 これらのイベントは、コンピューターが Log Analytics ワークスペースに登録され、構成を受信していることを示しています。  
+1. コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。   
+2. Windows イベント ログを開き、**アプリケーションとサービス ログ\Operations Manager** に移動して、ソースのサービス コネクタでイベント ID 3000 および 5002 を検索します。 これらのイベントは、コンピューターが Log Analytics ワークスペースに登録され、構成を受信していることを示しています。
 
 エージェントが Log Analytics と通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されているのであれば、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関するページを参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
 
 > [!NOTE]
-> Linux システムがプロキシまたは OMS ゲートウェイと通信するよう構成されており、このソリューションの配布準備を行っている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新してください。  
-> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
+> Linux システムがプロキシまたは OMS ゲートウェイと通信するよう構成されており、このソリューションの配布準備を行っている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新してください。`sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
 新しく追加された Linux エージェントは、評価が完了した後、状態が "**更新済み**" と表示されます。 このプロセスには最大で 6 時間かかります。
@@ -136,6 +138,7 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 ## <a name="data-collection"></a>データ収集
 
 ### <a name="supported-agents"></a>サポートされているエージェント
+
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
 | 接続先ソース | サポートされています | [説明] |
@@ -145,11 +148,13 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 | Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
+
 管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。 管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
 
-ダッシュボードが管理対象コンピューターの更新されたデータを表示するのに、30 分～ 6 時間かかります。   
+ダッシュボードが管理対象コンピューターの更新されたデータを表示するのに、30 分～ 6 時間かかります。
 
 ## <a name="viewing-update-assessments"></a>更新プログラムの評価の表示
+
 Automation アカウントで **[更新の管理]** をクリックすると、使用しているマシンの状態が表示されます。
 
 このビューには、ご利用のマシン、不足している更新プログラム、更新プログラムの展開、およびスケジュールされている更新プログラムの展開に関する情報が表示されます。
@@ -165,7 +170,7 @@ Automation アカウントで **[更新の管理]** をクリックすると、�
 
 Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 構成方法については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)をご覧ください。
 
-Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。  
+Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。
 
 ## <a name="viewing-missing-updates"></a>不足している更新プログラムの表示
 
@@ -204,8 +209,8 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 |プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
 | プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
 | Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
-| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム | 
-| UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" | 
+| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム |
+| UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
 | プライマリの<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 | 
 | UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
 
@@ -239,15 +244,15 @@ Red Hat Enterprise Linux で、除外するパッケージ名は redhat-release-
 
 このセクションでは、更新管理ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。
 
-ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、**アプリケーションとサービス ログ\Operations Manager** イベント ログで、イベント ID 4502 のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。 次の表に、具体的なエラー メッセージと、考えられる個別の解決策を示します。  
+ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、**アプリケーションとサービス ログ\Operations Manager** イベント ログで、イベント ID 4502 のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。 次の表に、具体的なエラー メッセージと、考えられる個別の解決策を示します。
 
-| メッセージ | 理由 | 解決策 |   
-|----------|----------|----------|  
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.InvalidOperationException: {"Message":"Machine is already<br>registered to a different account. "} (System.InvalidOperationException: {"メッセージ": "マシンは既に別のアカウントに登録されています。) | マシンは既に Update Management 用の別のワークスペースにオンボードされています。 | [Hybrid Runbook グループを削除する](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)ことにより、古いアーティファクトのクリーンアップを実行します。|  
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---><br>System.Net.WebException: 基になる接続が<br>閉じられました。受信時に予期しないエラーが<br>発生しました。 ---> System.ComponentModel.Win32Exception:<br>クライアントとサーバーは共通のアルゴリズムを保持していないため<br>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|  
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。| 
-| サービス <wsid>.oms.opinsights.azure.com によって提示された証明書は、<br>Microsoft サービスで使用する証明機関が<br>発行したものではありませんでした。 連絡先<br>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを<br>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|  
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>AgentService.HybridRegistration。<br>PowerShell.Certificates.CertificateCreationException:<br>自己署名証明書を作成できませんでした。 ---><br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br>読み取りアクセスを持っていることを確認します。<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
+| メッセージ | 理由 | 解決策 |
+|----------|----------|----------|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.InvalidOperationException: {"Message":"Machine is already<br>registered to a different account. "} (System.InvalidOperationException: {"メッセージ": "マシンは既に別のアカウントに登録されています。) | マシンは既に Update Management 用の別のワークスペースにオンボードされています。 | [Hybrid Runbook グループを削除する](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)ことにより、古いアーティファクトのクリーンアップを実行します。|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---><br>System.Net.WebException: 基になる接続が<br>閉じられました。受信時に予期しないエラーが<br>発生しました。 ---> System.ComponentModel.Win32Exception:<br>クライアントとサーバーは共通のアルゴリズムを保持していないため<br>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
+| サービス <wsid>.oms.opinsights.azure.com によって提示された証明書は、<br>Microsoft サービスで使用する証明機関が<br>発行したものではありませんでした。 連絡先<br>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを<br>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>AgentService.HybridRegistration。<br>PowerShell.Certificates.CertificateCreationException:<br>自己署名証明書を作成できませんでした。 ---><br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br>読み取りアクセスを持っていることを確認します。<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
 
 ## <a name="next-steps"></a>次の手順
 

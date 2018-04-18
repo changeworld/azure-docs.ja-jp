@@ -1,18 +1,18 @@
 ---
-title: "Azure SQL データ同期 (プレビュー) のベスト プラクティス | Microsoft Docs"
-description: "Azure SQL データ同期 (プレビュー) の構成と実行に関するベスト プラクティスについて説明します。"
+title: Azure SQL データ同期 (プレビュー) のベスト プラクティス | Microsoft Docs
+description: Azure SQL データ同期 (プレビュー) の構成と実行に関するベスト プラクティスについて説明します。
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) のベスト プラクティス 
 
@@ -43,7 +43,7 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 -   フェーズごとに資格情報を変更します (たとえば、セットアップには *credentials1* を使用し、継続的な同期には *credentials2* を使用します)。  
 -   資格情報のアクセス許可を変更します (つまり、同期の設定後にアクセス許可を変更します)。
 
-## <a name="setup"></a>[Setup]
+## <a name="setup"></a>セットアップ
 
 ### <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
 
@@ -207,12 +207,12 @@ SQL データ同期 (プレビュー) には、自動プロビジョニングに
 
 データベースを削除した後、変更のいずれかをデプロイする前に同期グループを編集すると、いずれか一方の操作が失敗します。 ポータルのインターフェイスが不整合な状態になる場合があります。 その場合は、ページを更新することで正しい状態を復元できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL データ同期 (プレビュー) の詳細については、以下をご覧ください。
 
 -   [Azure SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   [Azure SQL データ同期 (プレビュー) をセットアップする](sql-database-get-started-sql-data-sync.md)
--   [OMS Log Analytics を使用した Azure SQL データ同期 (プレビュー) の監視](sql-database-sync-monitor-oms.md)
+-   [Log Analytics を使用した Azure SQL データ同期 (プレビュー) の監視](sql-database-sync-monitor-oms.md)
 -   [Azure SQL データ同期 (プレビュー) に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)  
 -   SQL データ同期 (プレビュー) の構成方法を示した完全な PowerShell の例:  
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)  

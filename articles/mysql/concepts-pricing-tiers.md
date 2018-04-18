@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 9d4e42df3137108248a043bb0d9def181d766c7a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c9a74aa00ee263b8fb4e19b77ad5be418e31c7d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -24,7 +24,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 | コンピューティング世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
 | 仮想コア | 1、2 | 2、4、8、16、32 |2、4、8、16 |
 | 仮想コアあたりのメモリ | ベースライン | 2x Basic | 2x 汎用 |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 1 TB | 5 GB ～ 1 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 2 TB | 5 GB ～ 2 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | データベース バックアップのリテンション期間 | 7 ～ 35 日間 | 7 ～ 35 日間 | 7 ～ 35 日間 |
 
@@ -46,9 +46,9 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 |:---|:----------:|:--------------------:|
 | 米国中央部 |  | ○ |
 | 米国東部 | ○ | ○ |
-| 米国東部 2 | ○ |  |
+| 米国東部 2 | ○ | ○ |
 | 米国中北部 | ○ |  |
-| 米国中南部 | ○ |  |
+| 米国中南部 | ○ | ○ |
 | 米国西部 | ○ | ○ |
 | 米国西部 2 |  | ○ |
 | カナダ中部 | ○ | ○ |
@@ -76,7 +76,7 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 1 TB | 5 GB ～ 1 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 2 TB | 5 GB ～ 2 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
 | IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS | 3 IOPS/GB<br/>最小 100 IOPS |
 

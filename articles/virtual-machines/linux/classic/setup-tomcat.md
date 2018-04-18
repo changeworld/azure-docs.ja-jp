@@ -1,11 +1,11 @@
 ---
-title: "Linux 仮想マシンで Apache Tomcat をセットアップする | Microsoft Docs"
-description: "Linux を実行している Azure 仮想マシンを使用して Apache Tomcat7 をセットアップする方法について説明します。"
+title: Linux 仮想マシンで Apache Tomcat をセットアップする | Microsoft Docs
+description: Linux を実行している Azure 仮想マシンを使用して Apache Tomcat7 をセットアップする方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Azure で Linux 仮想マシンに Tomcat7 をセットアップする
 Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat には、Sun Microsystems の Java Servlet と JavaServer Pages (JSP) 仕様が実装されています。 Tomcat は、Java コードを実行する純粋な Java HTTP Web サーバー環境を提供します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  
@@ -54,7 +54,7 @@ SSH はシステム管理者にとって重要なツールです。 ただし、
 
 次の手順に従って、SSH 認証のキーを生成します。
 
-1. 次の場所から PuTTYgen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 次の場所から PuTTYgen をダウンロードしてインストールします。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2. Puttygen.exe を実行します。
 3. **[生成]** をクリックしてキーを生成します。 処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。  
    ![新しいキーの生成ボタンが表示されている PuTTY Key Generator のスクリーンショット][1]
@@ -90,9 +90,9 @@ TCP ポート 8080 は、Tomcat がリッスンに使用する既定のポート
 
    1. エンドポイントについては、**[エンドポイント]** にエンドポイントの名前を入力し、**[パブリック ポート]** に「80」と入力します。  
 
-      80 に設定した場合は、Tomcat にアクセスするための URL にポート番号を含める必要はありません。 たとえば、http://tomcatdemo.cloudapp.net のようになります。    
+      80 に設定した場合は、Tomcat にアクセスするための URL にポート番号を含める必要はありません。 たとえば、「http://tomcatdemo.cloudapp.net」のように入力します。    
 
-      別の値 (81 など) に設定した場合は、Tomcat にアクセスするための URL にポート番号を追加する必要があります。 たとえば、http://tomcatdemo.cloudapp.net:81/。
+      別の値 (81 など) に設定した場合は、Tomcat にアクセスするための URL にポート番号を追加する必要があります。 たとえば、http://tomcatdemo.cloudapp.net:81/ を使用します。
    2. **[プライベート ポート]** に「8080」と入力します。 既定では、Tomcat は TCP ポート 8080 でリッスンします。 Tomcat の既定のリッスン ポートを変更した場合は、Tomcat のリッスン ポートと同じになるように **[プライベート ポート]** を更新する必要があります。  
       ![[追加] コマンド、[パブリック ポート]、[プライベート ポート] が表示されている UI のスクリーンショット][7]
 4. **[OK]** をクリックして、仮想マシンにエンドポイントを追加します。
@@ -184,7 +184,7 @@ Oracle JDK をインストールすると、次のようなメッセージが表
 Tomcat7 を使用しない場合は、このコマンドを適宜変更して使用してください。  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>Tomcat7 のインストールが成功したことを確認する
-Tomcat7 が正常にインストールされたかどうかを確認するには、Tomcat サーバーの DNS 名を参照します。 この記事では、URL の例は http://tomcatexample.cloudapp.net/ です。 次のようなメッセージが表示された場合は、Tomcat7 は正常にインストールされています。
+Tomcat7 が正常にインストールされたかどうかを確認するには、Tomcat サーバーの DNS 名を参照します。 この記事では、例の URL は http://tomcatexample.cloudapp.net/ です。 次のようなメッセージが表示された場合は、Tomcat7 は正常にインストールされています。
 ![Tomcat7 のインストール成功のメッセージ][16]
 
 ### <a name="install-other-tomcat7-components"></a>その他の Tomcat7 コンポーネントをインストールする
@@ -231,7 +231,7 @@ Tomcat のユーザー構成ファイルを編集して、管理者の資格情�
 
     sudo /etc/init.d/tomcat7 restart  
 
-ブラウザーを開き、URL として「**http://<your tomcat server DNS name>/manager/html**」と入力します。 たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html. です。  
+ブラウザーを開き、URL として「**http://<your tomcat server DNS name>/manager/html**」と入力します。 この記事の例では、URL は http://tomcatexample.cloudapp.net/manager/htmlです。  
 
 接続後に、次のようなものが表示されます。  
 ![Tomcat Web Application Manager のスクリーンショット][18]

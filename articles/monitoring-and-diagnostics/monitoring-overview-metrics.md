@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 この記事では、Microsoft Azure のメトリック概要、利点、および使用方法について説明します。  
@@ -47,7 +47,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 * 設定したしきい値をメトリックが超えたときに、そのメトリックに対して、**通知を送信するアラート ルール、または自動化されたアクションを実行するアラート ルール**を構成します。 自動スケールは自動化された特別なアクションで、リソースをスケールアウトして、Web サイトまたはコンピューティング リソースの受信要求や負荷に対応します。 しきい値を超えたメトリックに基づいてスケールインまたはスケールアウトするように、自動スケール設定のルールを構成できます。
 
-* すべてのメトリックを Application Insights または Log Analytics (OMS) に**ルーティング**して、リソースのメトリック データでインスタント分析、検索、カスタム アラートを使用できるようにします。 メトリックをイベント ハブにストリーミングすることもできます。これにより、メトリックを Azure Stream Analytics またはカスタム アプリにルーティングし、ほぼリアルタイムで分析できます。 イベント ハブへのストリーミングは、診断設定を使用して設定します。
+* すべてのメトリックを Application Insights または Log Analytics に**ルーティング**して、リソースのメトリック データでインスタント分析、検索、カスタム アラートを使用できるようにします。 メトリックをイベント ハブにストリーミングすることもできます。これにより、メトリックを Azure Stream Analytics またはカスタム アプリにルーティングし、ほぼリアルタイムで分析できます。 イベント ハブへのストリーミングは、診断設定を使用して設定します。
 
 * メトリックは、長期間保持するために**ストレージにアーカイブ**できるほか、オフライン レポートに使用することもできます。 リソースの診断設定を構成するときに、メトリックを Azure Blob Storage にルーティングできます。
 
@@ -100,11 +100,18 @@ Azure メトリックには、Azure Monitor API を使用してアクセスで�
 Azure Monitor REST API を使用した詳細なチュートリアルについては、「[Azure 監視 REST API のチュートリアル](monitoring-rest-api-walkthrough.md)」を参照してください。
 
 ## <a name="export-metrics"></a>メトリックのエクスポート
-**[Monitor]** タブで **[診断設定]** ブレードに移動し、メトリックのエクスポート オプションを表示できます。 この記事で前述したユースケースでは、メトリック (および診断ログ) を選択して、Blob Storage、Azure Event Hubs、または OMS にルーティングできます。
+**[Monitor]** タブで **[診断設定]** ブレードに移動し、メトリックのエクスポート オプションを表示できます。 この記事で前述したユースケースでは、メトリック (および診断ログ) を選択して、Blob Storage、Azure Event Hubs、または Log Analytics にルーティングできます。
 
  ![Azure Monitor のメトリックのエクスポート オプション](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 これを構成するには、Resource Manager テンプレート、[PowerShell](insights-powershell-samples.md)、[Azure CLI](insights-cli-samples.md)、または [REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用します。
+
+> [!NOTE]
+> 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+>
+> "*例*": イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
+>
+>
 
 ## <a name="take-action-on-metrics"></a>メトリックでの操作
 メトリック データの通知を受け取ったり、自動化されたアクションを実行したりするには、アラート ルールまたは自動スケール設定を構成します。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でアラートを作成する](monitor-alerts-unified-usage.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -54,7 +54,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | Search Interval StartTime |#searchintervalstarttimeutc |UTC 形式で記述したクエリの開始時刻。 
 | SearchQuery |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
 | SearchResults |"IncludeSearchResults": true|クエリで JSON テーブルとして返されるレコード。上限は最初の 1,000 レコード。"IncludeSearchResults":true がカスタム JSON webhook 定義に最上位レベルのプロパティとして追加されている場合。 |
-| WorkspaceID |#workspaceid |Log Analytics (OMS) ワークスペースの ID。 |
+| WorkspaceID |#workspaceid |Log Analytics ワークスペースの ID |
 | アプリケーション ID |#applicationid |Application Insight アプリの ID。 |
 | サブスクリプション ID |#subscriptionid |Application Insights で使用する Azure サブスクリプションの ID。 
 
@@ -77,7 +77,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 このセクションでは、ペイロードが標準の場合やカスタムの場合など、ログ アラートの webhook のサンプル ペイロードを紹介します。
 
 > [!NOTE]
-> 旧バージョンとの互換性を確保するために、Azure Log Analytics を使用するアラートの標準 webhook ペイロードは、[Operations Management Suite のアラート管理](../log-analytics/log-analytics-alerts-creating.md)と同じです。 ただし、[Application Insights](../application-insights/app-insights-analytics.md) を使用するログ アラートの場合、標準 webhook ペイロードはアクション グループ スキーマに基づいています。
+> 旧バージョンとの互換性を確保するために、Azure Log Analytics を使用するアラートの標準 webhook ペイロードは、[Log Analytics のアラート管理](../log-analytics/log-analytics-alerts-creating.md)と同じです。 ただし、[Application Insights](../application-insights/app-insights-analytics.md) を使用するログ アラートの場合、標準 webhook ペイロードはアクション グループ スキーマに基づいています。
 
 ### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 webhook 
 以下のサンプルはどちらも、2 つの列と 2 つの行のみで構成されたダミー ペイロードを示しています。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -152,7 +152,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 静的資産と動的な資産が混在している Web サイトがある場合は、最高のパフォーマンスを得るために複数の方法を使用することをお勧めします。 
 
-**Azure CDN from Verizon Standard** プロファイルおよび **Azure CDN from Akamai Standard** プロファイルでは、[キャッシュ規則](cdn-caching-rules.md)を使うことによって、特定の DSA エンドポイントのキャッシュを有効にできます。
+**Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Standard from Akamai** プロファイルでは、[キャッシュ規則](cdn-caching-rules.md)を使うことによって、特定の DSA エンドポイントのキャッシュを有効にできます。
 
 キャッシュ規則にアクセスするには:
 
@@ -164,7 +164,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 2. グローバル キャッシュ規則またはカスタム キャッシュ規則を作成して、DSA エンドポイントのキャッシュを有効にします。 
 
-**Azure CDN from Verizon Premium** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
+**Azure CDN Premium from Verizon** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
 
 ルール エンジンにアクセスするには:
     

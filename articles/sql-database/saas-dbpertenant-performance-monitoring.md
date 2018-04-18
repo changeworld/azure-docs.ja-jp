@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f76a9f0aa5e68e729c67dad52f6dae4e01fdb56a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -54,7 +54,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリでは、会場 (テナント)
 
 [Azure Portal](https://portal.azure.com) には、ほとんどのリソースに監視とアラートが組み込まれています。 SQL Database については、データベースとプールで監視とアラートを利用できます。 この組み込みの監視とアラートはリソース固有であるため、リソースが少数の場合は便利ですが、リソースの数が多くなると、それほど便利とは言えません。
 
-多くのリソースを処理する大規模なシナリオの場合は、[Log Analytics (OMS)](saas-dbpertenant-log-analytics.md) を使用できます。 これは、出力された診断ログと、ログ分析ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Log Analytics は、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
+多くのリソースを処理する大規模なシナリオの場合は、[Log Analytics](saas-dbpertenant-log-analytics.md) を使用できます。 これは、出力された診断ログと、ログ分析ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Log Analytics は、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 

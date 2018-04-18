@@ -1,31 +1,25 @@
 ---
-title: スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Docs
-description: Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
-keywords: データ ストリーミング、ストリーミング データ処理、分析のチューニング
+title: Azure Stream Analytics ジョブでのスケールアップとスケールアウト
+description: この記事では、入力データのパーティション分割、クエリのチューニング、ジョブ ストリーミング ユニットの設定によって、Stream Analytics ジョブをスケーリングする方法について説明します。
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>スループット向上のための Azure Stream Analytics ジョブのスケーリング
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>スループット向上のために Azure Stream Analytics ジョブをスケーリングする
 この記事では、Stream Analytics クエリをチューニングして、Streaming Analytics ジョブのスループットを向上させる方法について説明します。 次のガイドを使用して、高い負荷を処理し、より多くのシステム リソース (より多くの帯域幅、より多くの CPU リソース、より多くのメモリなど) を利用するようにジョブをスケーリングできます。
 前提条件として、次の記事を読む必要があります。
 -   [ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)
 -   [並列化可能ジョブの作成](stream-analytics-parallelization.md)
-
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>ケース 1 - 複数の入力パーティションでクエリが本質的に完全並列化可能な場合
 入力のパーティション間でクエリが本質的に完全並列化可能な場合は、次の手順に従うことができます。
@@ -40,7 +34,6 @@ ms.lasthandoff: 03/30/2018
 >[!Note]
 > 適切なストリーミング ユニット数を選択します。Stream Analytics では、6 SU が追加されるごとに処理ノードが作成されるため、ノード数を入力パーティション数の除数として、パーティションがノードに均等に分散されるようにすることが最適です。
 > たとえば、6 SU ジョブが 4 MB/秒の処理速度を達成できることを測定し、入力パーティション数が 4 であるとします。 約 8 MB/秒の処理速度を達成するには 12 SU、16 MB/秒を達成するには 24 SU でジョブを実行することを選択できます。 入力速度の関数として、ジョブの SU 数をいつどのような値に増やすかを決定できます。
-
 
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>ケース 2 - クエリが驚異的並列でない場合。
@@ -150,7 +143,7 @@ Stream Analytics ジョブのスケールのしくみを理解できるように
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

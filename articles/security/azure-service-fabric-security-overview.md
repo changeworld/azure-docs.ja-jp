@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric セキュリティの概要 | Microsoft Docs"
-description: "この記事では、Azure Service Fabric のセキュリティの概要を示します。"
+title: Azure Service Fabric セキュリティの概要 | Microsoft Docs
+description: この記事では、Azure Service Fabric のセキュリティの概要を示します。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9b6c2463c2a782f463e64d6e350a565fa7898b63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。
@@ -104,7 +104,7 @@ Windows Server 2012 R2 と Active Directory を使用しているスタンドア
 
 -   **イベントの集計**: 生成されたイベントを表示するには、生成されたイベントを収集して集計する必要があります。 一般的に、[Azure 診断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (エージェント ベースのログ収集に類似) または [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (インプロセスのログ収集) を使用することをお勧めします。
 
--   **分析**: イベントは、分析して表示できるように、視覚化して、特定の形式でアクセスできるようにする必要があります。 データの監視と診断を分析し、視覚化するプラットフォームはいくつかあります。 Service Fabric と緊密に統合できることから、[Operations Management Suite](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) と[Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) の 2 つを推奨します。
+-   **分析**: イベントは、分析して表示できるように、視覚化して、特定の形式でアクセスできるようにする必要があります。 データの監視と診断を分析し、視覚化するプラットフォームはいくつかあります。 Service Fabric と緊密に統合できることから、[Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) と [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) の 2 つを推奨します。
 
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) を使用しても、Service Fabric クラスターの基盤となる Azure リソースの多くを監視できます。
 
@@ -120,7 +120,7 @@ Windows Server 2012 R2 と Active Directory を使用しているスタンドア
 
 次の表は、クラスターのセットアップに必要な証明書の一覧です。
 
-|証明書情報の設定 |説明|
+|証明書情報の設定 |[説明]|
 |-------------------------------|-----------|
 |ClusterCertificate|    クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 2 つの異なる証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。|
 |ServerCertificate| この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。|
@@ -189,6 +189,6 @@ Azure Service Fabric セキュリティを使用すると、別のユーザー �
 -   [リモート処理を使用している場合のサービスのセキュリティ保護](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication)
 -   [WCF ベースの通信スタックを使用している場合のサービスのセキュリティ保護](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication#help-secure-a-service-when-youre-using-a-wcf-based-communication-stack)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - クラスターのセキュリティの概念については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)」と [Azure Portal に関する記事](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)を参照してください。
 - Service Fabric のクラスターのセキュリティについては、「[Service Fabric クラスターのセキュリティに関するシナリオ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)」を参照してください。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2018
 ms.author: johnkem
-ms.openlocfilehash: 4b2d9866839f943f65beb271d44bc691441b0fb3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8a599558fc35ca2bf48ce2a5f11ec4978bf10277
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [Azure アクティビティ ログ](monitoring-overview-activity-logs.md)は、以下のいずれかを実行することで、あらゆるアプリケーションでほぼリアルタイムにストリームできます。
@@ -56,38 +56,48 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
 
    > [!WARNING]  
    > **[All regions]\(すべての領域\)** 以外を選択した場合、受信することを期待している重要なイベントを受信できなくなります。 アクティビティ ログはグローバル (領域に限定されない) ログであるため、ほとんどのイベントに領域は関連付けられていません。 
-   > 
+   >
 
 4. **[保存]** をクリックしてこれらの設定を保存します。 設定はサブスクリプションにすぐに適用されます。
 5. 複数のサブスクリプションがある場合は、この操作を繰り返して、すべてのデータを同じイベント ハブに送信します。
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
-ログ プロファイルが既に存在する場合は、まず、そのプロファイルを削除する必要があります。
+ログ プロファイルが既に存在する場合は、最初に既存のログ プロファイルを削除してから、新しいログ プロファイルを作成する必要があります。
 
-1. `Get-AzureRmLogProfile` を使用して、ログ プロファイルが存在するかどうかを確認します。
-2. 存在する場合は、 `Remove-AzureRmLogProfile` を使用して削除します。
-3. `Set-AzureRmLogProfile` を使用して、プロファイルを作成します。
+1. `Get-AzureRmLogProfile` を使用して、ログ プロファイルが存在するかどうかを確認します。  ログ プロファイルが存在する場合は、*name* プロパティを探します。
+2. `Remove-AzureRmLogProfile` を使用し、*name* プロパティの値を使用してログ プロファイルを削除します。
+
+    ```powershell
+    # For example, if the log profile name is 'default'
+    Remove-AzureRmLogProfile -Name "default"
+    ```
+3. `Add-AzureRmLogProfile` を使用して、新しいログ プロファイルを作成します。
 
    ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your event hub belongs to>"
+   $eventHubNamespace = "<event hub namespace>"
 
-   Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+   # Build the service bus rule Id from the settings above
+   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespaceName/authorizationrules/RootManageSharedAccessKey"
 
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
-
-Service Bus ルール ID は、この形式 `{service bus resource ID}/authorizationrules/{key name}` の文字列です。 
 
 ### <a name="via-azure-cli"></a>Azure CLI の使用
-ログ プロファイルが既に存在する場合は、まず、そのプロファイルを削除する必要があります。
+ログ プロファイルが既に存在する場合は、最初に既存のログ プロファイルを削除してから、新しいログ プロファイルを作成する必要があります。
 
-1. `azure insights logprofile list` を使用して、ログ プロファイルが存在するかどうかを確認します。
-2. 存在する場合は、 `azure insights logprofile delete` を使用して削除します。
-3. `azure insights logprofile add` を使用して、プロファイルを作成します。
+1. `az monitor log-profiles list` を使用して、ログ プロファイルが存在するかどうかを確認します。
+2. `az monitor log-profiles delete --name "<log profile name>` を使用し、*name* プロパティの値を使用してログ プロファイルを削除します。
+3. `az monitor log-profiles create` を使用して、新しいログ プロファイルを作成します。
 
    ```azurecli-interactive
-   azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
-
-Service Bus ルール ID は、この形式 `{service bus resource ID}/authorizationrules/{key name}` の文字列です。
 
 ## <a name="consume-the-log-data-from-event-hubs"></a>Event Hubs からのログ データを使用する
 アクティビティ ログのスキーマについては、[Azure アクティビティ ログで、サブスクリプションのアクティビティを監視する](monitoring-overview-activity-logs.md)に関するドキュメントを参照してください。 各イベントは、*レコード*と呼ばれる JSON BLOB の配列です。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: 0d550d3bda119cfcb9ecc6f852006d5e325fdfa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用して Azure Network Watcher とのネットワーク接続を監視する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/03/2018
 
 * 接続を監視するリージョンの Network Watcher のインスタンス。 まだ Azure Network Watcher インスタンスを作成していない場合は、「[Azure Network Watcher のインスタンスの作成](network-watcher-create.md)」の手順を実行して作成できます。
 * 監視元の VM。 VM を作成する方法については、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) での VM の作成に関するページをご覧ください。
-* 接続を監視する VM に `AzureNetworkWatcherExtension` をインストールします。 Windows VM に拡張機能をインストールする方法については、「[Windows 用 Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」を、Linux VM に拡張機能をインストールする方法については、「[Linux 用 Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」を参照してください。
+* 接続を監視する VM に `AzureNetworkWatcherExtension` をインストールします。 Windows VM に拡張機能をインストールする方法については、「[Windows 用 Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」を、Linux VM に拡張機能をインストールする方法については、「[Linux 用 Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」を参照してください。 監視する接続先のエンドポイントでは、拡張機能は必要ありません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 

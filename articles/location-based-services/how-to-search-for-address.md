@@ -1,18 +1,17 @@
 ---
-title: "Azure Location Based Services (プレビュー) Search サービス | Microsoft Docs"
-description: "Azure Location Based Services (プレビュー) Search サービスを使用して住所を検索する方法について説明します。"
+title: Azure Location Based Services (プレビュー) Search サービス | Microsoft Docs
+description: Azure Location Based Services (プレビュー) Search サービスを使用して住所を検索する方法について説明します。
 services: location-based-services
-keywords: "SEO チャンプを確認せずに、キーワードを追加または編集しないでください。"
 author: kgremban
 ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8b886607fe0915396a659593cd5910a271fca93
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Azure Location Based Services (プレビュー) Search サービスを使用して住所を見つける方法
 Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計した RESTful API のセットです。 Search サービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 Search サービスの API から返される緯度と経度の値は、経路および交通量に関する API など、他の Azure Location Based Services のパラメーターとして使用できます。
@@ -44,7 +43,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     | 要求 URL | https://atlas.microsoft.com/search/fuzzy/json? |
     | 承認 | No Auth |
 
-    URL パスの **json** 属性で、応答形式が決定まります。 使いやすく、かつ読みやすいように、この記事では json を使用しています。 使用可能な応答形式については、Location Based Services Functional API のリファレンス「**Get Search Fuzzy (あいまいな検索の取得)**」(https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy) で確認できます。
+    URL パスの **json** 属性で、応答形式が決定まります。 使いやすく、かつ読みやすいように、この記事では json を使用しています。 使用可能な応答形式については、[Location Based Services Functional API のリファレンス](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy)の「**Get Search Fuzzy**」(あいまいな検索の取得) の定義で確認できます。
 
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
 

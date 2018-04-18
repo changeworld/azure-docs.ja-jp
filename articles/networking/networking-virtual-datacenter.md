@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 仮想データセンター: ネットワークの観点
 **Microsoft Azure**: 移行の高速化、コストの削減、オンプレミスのアプリとデータの統合
@@ -259,9 +259,9 @@ vDC では、NSG ログの特に次の情報を追跡することが非常に重
 
 監査、スタティック分析、またはバックアップのために、すべてのログを Azure Storage アカウントに格納できます。 Azure Storage アカウントにログが保存されていると、ユーザーはさまざまな種類のフレームワークを使ってこのデータを取得、準備、分析、視覚化し、クラウド リソースの状態と正常性を報告できます。
 
-大規模な企業は、オンプレミス システムの監視用に標準的なフレームワークを既に利用しているはずであり、そのフレームワークを拡張してクラウドのデプロイによって生成されたログを統合することができます。 すべてのログ記録をクラウド内の保持したい場合は、[Microsoft Operations Management Suite (OMS)][OMS] が最適です。 OMS はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 OMS は、System Center Operations Manager などの System Center のコンポーネントと統合して、管理のための既存の投資をクラウドに拡張することもできます。
+大規模な企業は、オンプレミス システムの監視用に標準的なフレームワークを既に利用しているはずであり、そのフレームワークを拡張してクラウドのデプロイによって生成されたログを統合することができます。 すべてのログ記録をクラウド内の保持したい場合は、[Log Analytics][LogAnalytics] が最適です。 Log Analytics はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 Log Analytics は、System Center Operations Manager などの System Center のコンポーネントと統合して、管理のための既存の投資をクラウドに拡張することもできます。
 
-OMS のログ分析は、オペレーティング システム、アプリケーション、インフラストラクチャ クラウド コンポーネントによって生成されたログおよびパフォーマンス データを収集、関連付け、検索、操作するための、OMS フレームワークのコンポーネントです。 統合された検索およびカスタム ダッシュ ボードを使って、vDC のすべてのワークロードのすべてのレコードを分析するためのリアルタイムの運用インサイトを提供します。
+Log Analytics は、オペレーティング システム、アプリケーション、インフラストラクチャ クラウド コンポーネントによって生成されたログおよびパフォーマンス データを収集、関連付け、検索、操作するための、Azure のサービスです。 統合された検索およびカスタム ダッシュ ボードを使って、vDC のすべてのワークロードのすべてのレコードを分析するためのリアルタイムの運用インサイトを提供します。
 
 #### <a name="component-type-workloads"></a>コンポーネントの種類: ワークロード
 ワークロード コンポーネントは、実際のアプリケーションとサービスが存在する場所です。 アプリケーション開発チームはここで最も多くの時間を費やします。
@@ -332,7 +332,7 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 |ネットワーク機能|負荷分散|接続|
 |[Azure Virtual Network][VNet]</br>[ネットワーク セキュリティ グループ][NSG]</br>[NSG ログ][NSGLog]</br>[ユーザー定義ルーティング][UDR]</br>[ネットワーク仮想アプライアンス][NVA]</br>[Public IP Addresses][PIP]|[Azure Load Balancer (L3) ][ALB]</br>[Application Gateway (L7) ][AppGW]</br>[Web アプリケーション ファイアウォール][WAF]</br>[Azure Traffic Manager][TM] |[VNet ピアリング][VNetPeering]</br>[仮想プライベート ネットワーク][VPN]</br>[ExpressRoute][ExR]
 |ID</br>|監視</br>|ベスト プラクティス</br>|
-|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[ロールベースのアクセス制御][RBAC]</br>[既定の AAD ロール][Roles] |[アクティビティ ログ][ActLog]</br>[診断ログ][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br> |[境界ネットワークのベスト プラクティス][DMZ]</br>[サブスクリプション管理][SubMgmt]</br>[リソース グループの管理][RGMgmt]</br>[Azure サブスクリプションの制限][Limits] |
+|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[ロールベースのアクセス制御][RBAC]</br>[既定の AAD ロール][Roles] |[アクティビティ ログ][ActLog]</br>[診断ログ][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[境界ネットワークのベスト プラクティス][DMZ]</br>[サブスクリプション管理][SubMgmt]</br>[リソース グループの管理][RGMgmt]</br>[Azure サブスクリプションの制限][Limits] |
 |その他の Azure サービス|
 |[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
@@ -379,7 +379,7 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b3a3c07446ad04a58d5180793404fc04677749b2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新プログラム
 
@@ -56,7 +56,9 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 
 ### <a name="post-update-steps"></a>更新後の手順
-*更新プログラム 1802 のための更新後の手順はありません。*
+1802 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。  
+- [KB 4103348 - Azure Stack 更新プログラムをインストールしようとするとネットワーク コントローラー API サービスがクラッシュする](https://support.microsoft.com/help/4103348)
+
 
 
 ### <a name="new-features-and-fixes"></a>新機能と修正
@@ -82,7 +84,7 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 - **複数の障害ドメインのサポートが追加されました**。  詳細については、[Azure Stack の高可用性](azure-stack-key-features.md#high-availability-for-azure-stack)に関するページを参照してください。
 
-- **さまざまな修正**。パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
+- **さまざまな修正** - パフォーマンス、安定性、セキュリティ、Azure Stack で使用されるオペレーティング システムが修正されました。
 
 <!--
 #### New features
@@ -141,6 +143,10 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 #### <a name="compute"></a>コンピューティング
 - 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
+
+- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
+
+  この問題はバージョン 1803 で解決されました。 バージョン 1802 のこの問題を解決するには、Azure Stack 修正プログラム **1.0.180302.4** をインストールしてください。 詳細については、[KB 4131152 (既存の Virtual Machine Scale Sets を使用できなくなることがある)]( https://support.microsoft.com/help/4131152) を参照してください。 
 
 - Azure Stack でサポートされるのは、固定サイズの VHD のみです。 Azure Stack のマーケットプレースで提供されていた一部のイメージは動的 VHD を使用しますが、これらは削除されました。 ダイナミック ディスクがアタッチされている仮想マシン (VM) のサイズを変更すると、VM は失敗した状態のままになります。
 

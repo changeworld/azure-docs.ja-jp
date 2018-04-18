@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid の概念"
-description: "Azure Event Grid とその概念について説明します。 Event Grid のいくつかの主要コンポーネントを定義します。"
+title: Azure Event Grid の概念
+description: Azure Event Grid とその概念について説明します。 Event Grid のいくつかの主要コンポーネントを定義します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/04/2018
 ms.author: babanisa
-ms.openlocfilehash: 4fd44387ac1c3dad9f0194f1b2c97d6350f9b15d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
@@ -32,9 +32,11 @@ Azure Event Grid の主要な概念を次に示します。
 
 システム トピックは、Azure サービスが提供する組み込みのトピックです。 カスタム トピックは、アプリケーションとサード パーティのトピックです。
 
+アプリケーションを設計するときに、関連するイベントのカテゴリごとにカスタム トピックを作成します。 たとえば、ユーザー アカウントの変更と注文の処理に関連するイベントを送信するアプリケーションがあるものとします。 イベント ハンドラーで両方のイベント カテゴリが必要になることはまずありません。 このような場合は、2 つのカスタム トピックを作成し、イベント ハンドラーが自分と関係のあるトピックをサブスクライブできるようにします。 カスタム トピックをサブスクライブするとき、イベント ハンドラーはイベントの種類でフィルター処理できます。
+
 ## <a name="event-subscriptions"></a>イベントのサブスクリプション
 
-サブスクリプションは、サブスクライバーが受信するつもりのイベントのトピックを Event Grid に指示します。  サブスクリプションは、サブスクライバーにイベントを配信する方法に関する情報も保持します。
+サブスクリプションは、サブスクライバーが受信するつもりのイベントのトピックを Event Grid に指示します。 サブスクリプションは、サブスクライバーにイベントを配信する方法に関する情報も保持します。
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 

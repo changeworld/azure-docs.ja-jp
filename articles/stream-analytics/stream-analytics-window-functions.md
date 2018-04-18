@@ -1,24 +1,19 @@
 ---
-title: Stream Analytics ウィンドウ関数の概要 | Microsoft Docs
-description: Stream Analytics の 3 つのウィンドウ関数 (タンブリング、ホッピング、スライディング) について説明します。
-keywords: タンブリング ウィンドウ, スライディング ウィンドウ, ホッピング ウィンドウ
-documentationcenter: ''
+title: Azure Stream Analytics ウィンドウ関数の概要
+description: この記事では、Azure Stream Analytics ジョブで使われる 3 つのウィンドウ関数 (タンブリング、ホッピング、スライディング) について説明します。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 0d8d8717-5d23-43f0-b475-af078ab4627d
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 3757834ff816fffc4571aeef8c164c2230c0f7c2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: c6f5dbe49cb60e3c7b2bc6562acf2d7fd79096ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>Stream Analytics ウィンドウ関数の概要
 リアルタイム ストリーミング シナリオでは、多くの場合、テンポラル ウィンドウに含まれるデータでのみ操作を実行する必要があります。 ウィンドウ化関数のネイティブ サポートは Azure Stream Analytics の主要機能で、複雑なストリーム処理のジョブで開発者の生産性に大きな変化をもたらします。 Stream Analytics により、開発者は、[**タンブリング**](https://msdn.microsoft.com/library/dn835055.aspx)、[**ホッピング**](https://msdn.microsoft.com/library/dn835041.aspx)、[**スライディング**](https://msdn.microsoft.com/library/dn835051.aspx) ウィンドウを使用して、ストリーミング データで一時的な操作を実行できます。 すべての [ウィンドウ](https://msdn.microsoft.com/library/dn835019.aspx) 操作が、ウィンドウ **終了** 時に結果を出力していることに注意してください。 ウィンドウの出力は、使用される集計関数に基づく単一のイベントになります。 イベントにはウィンドウ終了のタイム スタンプが提供され、すべてのウィンドウ関数が固定長で定義されています。 最後に、すべてのウィンドウ関数を [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx) 句で使用する必要があることにも注意してください。
@@ -41,7 +36,7 @@ ms.lasthandoff: 03/30/2018
 ![Stream Analytics ウィンドウ関数 (スライディング) の概要](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="getting-help-with-window-functions"></a>ウィンドウ関数に関するヘルプ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

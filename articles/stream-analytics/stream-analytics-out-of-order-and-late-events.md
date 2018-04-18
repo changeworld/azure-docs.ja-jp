@@ -1,24 +1,19 @@
 ---
-title: Azure Stream Analytics によるイベントの順序と遅延の処理 | Microsoft Docs
-description: データ ストリーム中の順序を逸脱したイベントまたは遅延イベントが Stream Analytics によって処理されるしくみを説明します。
-keywords: 順序の逸脱, 遅延, イベント
-documentationcenter: ''
+title: Azure Stream Analytics でのイベントの順序と遅延の処理
+description: この記事では、データ ストリーム中の順序を逸脱したイベントまたは遅延イベントが Stream Analytics によって処理されるしくみを説明します。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Azure Stream Analytics のイベントの順序に関する考慮事項
 
@@ -132,7 +127,7 @@ Azure Stream Analytics では、[TIMESTAMP BY OVER](https://msdn.microsoft.com/l
 * 複数のタイムラインを組み合わせる場合、ソースまたはパーティションのいずれかにデータがないと、到着遅延許容期間の追加によって出力が遅延する可能性があります。
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [Stream Analytics の概要](stream-analytics-introduction.md)
