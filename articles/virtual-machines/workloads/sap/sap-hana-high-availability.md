@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: f8c01c4e3f060c6a5ad52f1ed16103ea42d8cd2b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e3fb06309dabd7f66d5873e4c5faa48b468854f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 03/29/2018
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2388694]:https://launchpad.support.sap.com/#/notes/2388694
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -155,15 +156,36 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
         1. 新しい正常性プローブの名前を入力します (例: hana-hp)
         1. プロトコルに TCP、ポートに 625**03** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
         1. [OK] をクリックします
-    1. 負荷分散規則の作成
+    1. SAP HANA 1.0: 負荷分散規則の作成
         1. ロード バランサーを開き、[負荷分散規則] を選択して [追加] をクリックします
         1. 新しい負荷分散規則の名前を入力します (例: hana-lb-3**03**15)
+        1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: hana-frontend)
+        1. プロトコルは TCP のままにし、ポートに「3**03**15」を入力します
+        1. アイドル タイムアウトを 30 分に増やします
+        1. **Floating IP を有効にします**
+        1. [OK] をクリックします
+        1. ポート 3**03**17 に対しても上記の手順を繰り返します
+    1. SAP HANA 2.0: システム データベースの負荷分散規則の作成
+        1. ロード バランサーを開き、[負荷分散規則] を選択して [追加] をクリックします
+        1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**13)
         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: hana-frontend)
         1. プロトコルは TCP のままにし、ポートに「3**03**13」を入力します
         1. アイドル タイムアウトを 30 分に増やします
         1. **Floating IP を有効にします**
         1. [OK] をクリックします
-        1. ポート 3**03**15 および 3**03**17 に対して、上記の手順を繰り返します
+        1. ポート 3**03**14 に対しても上記の手順を繰り返します
+    1. SAP HANA 2.0: 最初のテナント データベースの負荷分散規則の作成
+        1. ロード バランサーを開き、[負荷分散規則] を選択して [追加] をクリックします
+        1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**40)
+        1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: hana-frontend)
+        1. プロトコルは TCP のままにし、ポートに「3**03**40」を入力します
+        1. アイドル タイムアウトを 30 分に増やします
+        1. **Floating IP を有効にします**
+        1. [OK] をクリックします
+        1. ポート 3**03**41 および 3**03**42 に対して、上記の手順を繰り返します
+
+SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント データベース](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) ガイドの[テナント データベースへの接続](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)に関する章または [SAP Note 2388694][2388694] をご覧ください。
+
 
 ## <a name="create-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
