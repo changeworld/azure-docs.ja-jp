@@ -7,9 +7,9 @@
 ### [概要](active-directory-authentication-scenarios.md#native-application-to-web-api)
 ### [iOS](active-directory-devquickstarts-ios.md)
 ### [Android](active-directory-devquickstarts-android.md)
-### [.NET](active-directory-devquickstarts-dotnet.md)
-### [Windows](active-directory-devquickstarts-windowsstore.md)
-### [Xamarin](active-directory-devquickstarts-xamarin.md)
+### [.NET (Windows デスクトップ)](active-directory-devquickstarts-dotnet.md)
+### [.NET (Windows ユニバーサル)](active-directory-devquickstarts-windowsstore.md)
+### [.NET (Xamarin)](active-directory-devquickstarts-xamarin.md)
 ### [Cordova](active-directory-devquickstarts-cordova.md)
 ### [OAuth 2.0](active-directory-protocols-oauth-code.md)
 ## Web Apps
@@ -96,11 +96,16 @@
 ### モバイル アプリとデスクトップ アプリ
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [Windows デスクトップ .NET](guidedsetups/active-directory-windesktop.md)
+#### [.NET (Windows デスクトップ)](guidedsetups/active-directory-windesktop.md)
 ### Web Apps
-#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
-#### [ASP.NET Web サーバー](guidedsetups/active-directory-aspnetwebapp.md)
-#### [NodeJS Web アプリ](active-directory-v2-devquickstarts-node-web.md)
+#### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
+#### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
+### シングル ページ アプリ
+#### [JavaScript](guidedsetups/active-directory-javascriptspa.md)
+### Web API
+#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
+### サービス間
+#### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## ガイド
 ### [アプリを登録する](active-directory-v2-app-registration.md)
 ## リファレンス
@@ -111,9 +116,9 @@
 #### [OAuth 2.0 の暗黙的な付与](active-directory-v2-protocols-implicit.md)
 #### [OAuth 2.0 クライアント資格情報の付与](active-directory-v2-protocols-oauth-client-creds.md)
 #### [OAuth 2.0 の On-Behalf-Of フロー](active-directory-v2-protocols-oauth-on-behalf-of.md)
-#### [トークンのリファレンス](active-directory-v2-tokens.md)
 #### [証明書の資格情報](active-directory-certificate-credentials.md)
-### [スコープ](active-directory-v2-scopes.md)
+### [トークン](active-directory-v2-tokens.md)
+### [スコープと同意](active-directory-v2-scopes.md)
 # リソース
 ## [サポートの利用](active-directory-develop-help-support.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)

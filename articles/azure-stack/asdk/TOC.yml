@@ -57,6 +57,8 @@
       href: asdk-register.md
     - name: Azure Stack のテレメトリ設定の構成
       href: asdk-telemetry.md
+    - name: ASDK を起動および停止する
+      href: asdk-start-stop.md
     - name: トラブルシューティング
       href: asdk-troubleshooting.md
 - name: リファレンス

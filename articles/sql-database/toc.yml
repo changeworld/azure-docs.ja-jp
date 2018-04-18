@@ -48,14 +48,18 @@
       href: sql-database-design-first-database.md
     - name: 1 - .NET を使用して DB を設計する
       href: sql-database-design-first-database-csharp.md
-    - name: 2 - SQL Server DB への移行
+    - name: 2 - DMS を使用して SQL Server DB に移行する
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 - SQL DB をセキュリティ保護する
       href: sql-database-security-tutorial.md
     - name: 4 - 地理的に分散したデータベースの実装
       href: sql-database-implement-geo-distributed-database.md
     - name: 5 - マネージ インスタンスの作成
-      href: sql-database-managed-instance-tutorial-portal.md
+      href: sql-database-managed-instance-create-tutorial-portal.md
+    - name: 6 - バックアップをマネージ インスタンスに復元する
+      href: sql-database-managed-instance-restore-from-backup-tutorial.md
+    - name: 7 - DMS を使用してマネージ インスタンスに移行する
+      href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -410,6 +414,10 @@
               href: saas-tenancy-cross-tenant-reporting.md
             - name: 分析用の ETL
               href: saas-tenancy-tenant-analytics.md
+            - name: geo 復元を使用したディザスター リカバリー
+              href: saas-dbpertenant-dr-geo-restore.md
+            - name: データベースの geo レプリケーションを使用したディザスター リカバリー
+              href: saas-dbpertenant-dr-geo-replication.md
         - name: マルチテナント データベース
           items:
             - name: サンプル アプリのデプロイ

@@ -1,26 +1,25 @@
 ---
-title: "Azure SQL Data Warehouse のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "SQL Data Warehouse を使用して、SQL Server に超並列処理を統合する方法について説明します。 ドキュメントでは、データの読み込み、分析、管理、エクスポートの方法を紹介します。"
+title: Azure SQL Data Warehouse のドキュメント - チュートリアル、概念 | Microsoft Docs
+description: SQL リレーショナル データベースに超並列処理を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。
 services: sql-data-warehouse
-author: czeumault
-manager: carolz
+author: hirokib
+manager: craigg-msft
 layout: LandingPage
-ms.assetid: 
 ms.service: sql-data-warehouse
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 47807360dd58f0c19360d90ed66f726d8922be1e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.component: design
+ms.date: 04/11/2018
+ms.author: elbutter
+ms.reviewer: jrj
+ms.openlocfilehash: 42db87fd64bca58ee3e86589acdc85107e057665
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse のドキュメント
 
-SQL Server リレーショナル データベースに超並列処理を統合する SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データをウェアハウスに読み込み、分析、管理、エクスポートする方法を紹介します。
+SQL リレーショナル データベースに超並列処理を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。 
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -89,6 +89,8 @@
           href: sizes-hpc.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
+        - name: ベンチマーク スコア
+          href: compute-benchmark-scores.md
     - name: 動作保証済みディストリビューション
       href: endorsed-distros.md
     - name: メンテナンスと更新
@@ -145,7 +147,7 @@
         - name: 暗号化
           href: encrypt-disks.md
         - name: アクセス制御の使用
-          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: ポリシーの使用
           href: policy.md
         - name: Key Vault の作成
@@ -400,6 +402,8 @@
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: パブリック DNS 名の割り当て
           href: portal-create-fqdn.md
+        - name: 接続されていない NIC の検索と削除
+          href: find-unattached-nics.md
         - name: DNS の解決
           href: azure-dns.md
           items:

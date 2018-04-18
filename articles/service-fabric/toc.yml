@@ -96,7 +96,7 @@
     - name: アプリケーションの構築
       href: service-fabric-choose-framework.md
       items:
-        - name: コンテナー
+        - name: Containers
           href: service-fabric-containers-overview.md
           items:
             - name: Docker Compose (プレビュー)
@@ -201,6 +201,8 @@
       items:
         - name: クラスターのセキュリティ
           href: service-fabric-cluster-security.md
+        - name: スケーリング
+          href: service-fabric-cluster-scaling.md
         - name: Linux と Windows での機能の違い
           href: service-fabric-linux-windows-differences.md
         - name: Azure 上のクラスター
@@ -323,6 +325,8 @@
               href: service-fabric-resource-governance.md
             - name: ボリュームとログ ドライバー
               href: service-fabric-containers-volume-logging-drivers.md
+            - name: コンテナー ログの表示
+              href: service-fabric-containers-view-logs.md
             - name: コンテナー内のサービス
               href: service-fabric-services-inside-containers.md
             - name: コンテナー ネットワーク モード
@@ -539,8 +543,10 @@
           href: service-fabric-visualizing-your-cluster.md
         - name: セキュリティ保護されたクラスターに接続する
           href: service-fabric-connect-to-secure-cluster.md
-        - name: クラスター ノードへのパッチの適用
+        - name: クラスター ノードへのパッチの適用 (Windows)
           href: service-fabric-patch-orchestration-application.md
+        - name: クラスター ノードへのパッチの適用 (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
     - name: 監視と診断
       items:
         - name: OMS での分析

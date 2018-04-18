@@ -6,8 +6,6 @@ items:
     items:
       - name: Azure Cosmos DB について
         href: introduction.md
-      - name: ドキュメントの実験
-        href: experiment.md
   - name: クイック スタート
     expanded: true
     items:
@@ -185,7 +183,7 @@ items:
                 href: sql-api-sql-query-metrics.md
               - name: SQL のプレイグラウンド
                 href: 'https://aka.ms/cosmos-db-playground'
-              - name: パーティション分割
+              - name: SQL データのパーティション分割
                 href: sql-api-partition-data.md
               - name: ストアド プロシージャ、トリガー、UDF
                 href: programming.md
@@ -288,6 +286,8 @@ items:
             items:
               - name: Gremlin サポート
                 href: gremlin-support.md
+              - name: グラフのパーティション分割
+                href: graph-partitioning.md
           - name: テーブル API
             items:
               - name: テーブルの開発
@@ -330,8 +330,6 @@ items:
             href: geospatial.md
           - name: インデックス作成
             href: indexing-policies.md
-          - name: Visual Studio での接続済みサービス
-            href: connected-service.md
       - name: '[管理]'
         items:
           - name: コスト効率の優れた読み取りと書き込み
@@ -396,7 +394,7 @@ items:
           - name: ODBC ドライバーを利用してデータを視覚化する
             href: odbc-driver.md
           - name: SQL API で Spring Boot Starter を使用する
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
+            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
   - name: リファレンス
     items:
       - name: コード サンプル

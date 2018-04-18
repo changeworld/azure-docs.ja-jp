@@ -293,8 +293,8 @@
               href: delete-vault.md
         - name: 監視とトラブルシューティング
           items:
-            - name: Azure へのフェールオーバーに関するトラブルシューティング
-              href: site-recovery-failover-to-azure-troubleshoot.md
+            - name: Hyper-V レプリケーションのトラブルシューティング
+              href: hyper-v-azure-troubleshoot.md
             - name: Azure Site Recovery の監視
               href: site-recovery-monitor-and-troubleshoot.md
     - name: Hyper-V からセカンダリ

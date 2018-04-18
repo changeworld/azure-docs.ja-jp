@@ -21,7 +21,7 @@
       href: automation-tutorial-update-management.md
     - name: Runbook による更新および変更の追跡のオンボード
       href: automation-onboard-solutions.md
-    - name: VM 上のソフトウェアの特定
+    - name: 環境のソフトウェアの特定
       href: automation-tutorial-installed-software.md
     - name: VM に対する変更のトラブルシューティング
       href: automation-tutorial-troubleshoot-changes.md

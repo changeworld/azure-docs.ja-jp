@@ -364,6 +364,10 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Azure での SSIS パッケージの実行
       items:
+        - name: Azure-SSIS 統合ランタイムのカスタム セットアップ
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Azure-SSIS 統合ランタイムの Enterprise Edition のプロビジョニング
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Azure-SSIS 統合ランタイムの VNet への参加
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: Azure SSIS 統合ランタイムの管理
@@ -374,6 +378,8 @@
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS 統合ランタイムのスケジュール設定
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: Azure-SSIS 統合ランタイムのライセンス付きコンポーネントの開発
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: トリガーの作成
       items:
         - name: スケジュール トリガーの作成
