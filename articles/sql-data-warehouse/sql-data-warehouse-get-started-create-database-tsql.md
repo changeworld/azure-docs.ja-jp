@@ -17,10 +17,10 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 10d8aa2b3ab8d7d8a9b91e95ffccf03faa89d237
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREA
 
 照合順序が指定されていない場合の既定の照合順序は COLLATE SQL_Latin1_General_CP1_CI_AS です。  `MAXSIZE` には、250 GB から 240 TB までの値を指定できます。  `SERVICE_OBJECTIVE` には、DW100 から DW2000 までの [DWU][DWU] を指定できます。  すべての有効な値の一覧については、[CREATE DATABASE][CREATE DATABASE] に関する MSDN ドキュメントを参照してください。  MAXSIZE と SERVICE_OBJECTIVE のどちらも、[ALTER DATABASE][ALTER DATABASE] T-SQL コマンドで変更できます。  データベースの作成後にその照合順序を変更することはできません。   SERVICE_OBJECTIVE を変更する際は注意が必要です。DWU を変更するとサービスが再起動され、処理中のすべてのクエリが取り消されるためです。  MAXSIZE の変更は、単なるメタデータ操作であるため、サービスが再起動されることはありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][load sample data]、[開発][develop]、[読み込み][load]、[移行][migrate]の方法を確認したりできます。
 
 <!--Article references-->

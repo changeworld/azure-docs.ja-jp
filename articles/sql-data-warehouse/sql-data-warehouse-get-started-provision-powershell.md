@@ -16,10 +16,10 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: a763f1c600c1a3f37cb565a8eb7db3c3f27dcf75
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-sql-data-warehouse-using-powershell"></a>PowerShell を使用して SQL Data Warehouse を作成する
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/18/2017
 
 パラメーターのオプションの詳細については、「[New-AzureRmSqlDatabase][New-AzureRmSqlDatabase]」と「[CREATE DATABASE (Azure SQL Data Warehouse)][Create Database (Azure SQL Data Warehouse)]」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][loading sample data]、[開発][develop]、[読み込み][load]、[移行][migrate]の方法を確認したりできます。
 
 プログラムで SQL Data Warehouse を管理する方法の詳細については、[PowerShell コマンドレットと REST API][PowerShell cmdlets and REST APIs] の使用方法に関する記事を参照してください。
