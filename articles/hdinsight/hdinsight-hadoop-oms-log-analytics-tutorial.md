@@ -1,8 +1,8 @@
 ---
-title: "Log Analytics を使用して Azure HDInsight クラスターを監視する | Microsoft Docs"
-description: "Azure Log Analytics を使って HDInsight クラスターで実行中のジョブを監視する方法を説明します。"
+title: Log Analytics を使用して Azure HDInsight クラスターを監視する | Microsoft Docs
+description: Azure Log Analytics を使って HDInsight クラスターで実行中のジョブを監視する方法を説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: be71b065999c30546432895804df8633da21b43e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
 Azure Log Analytics を使って HDInsight でHadoop クラスターの操作を監視する方法を説明します。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md) は、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
+[Log Analytics](../log-analytics/log-analytics-overview.md) は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free)」をご覧ください。
 
-* **Azure HDInsight クラスター**。 現在、Azure Operations Management Suite は次の HDInsight クラスター タイプで使用することができます。
+* **Azure HDInsight クラスター**。 現在、Log Analytics は次の HDInsight クラスター タイプで使用することができます。
 
     * Hadoop
     * hbase

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -85,8 +85,8 @@ Azure Load Balancer と ASE サブネット間の通信では、最低限開く�
 
 | 用途 | ソース | ターゲット |
 |-----|------|----|
-| Azure Storage (Azure Storage) | ASE サブネット | table.core.windows.net、blob.core.windows.net、queue.core.windows.net、file.core.windows.net: 80、443、445 (445 は ASEv1 にのみ必要です。) |
-| の接続文字列 | ASE サブネット | database.windows.net: 1433、11000-11999、14000-14999 (詳細については、[SQL Database V12 ポートの使用](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)に関するページを参照。)|
+| Azure Storage | ASE サブネット | table.core.windows.net、blob.core.windows.net、queue.core.windows.net、file.core.windows.net: 80、443、445 (445 は ASEv1 にのみ必要です。) |
+| Azure SQL Database | ASE サブネット | database.windows.net: 1433、11000-11999、14000-14999 (詳細については、[SQL Database V12 ポートの使用](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)に関するページを参照。)|
 | Azure の管理 | ASE サブネット | management.core.windows.net、management.azure.com: 443 
 | SSL 証明書の検証 |  ASE サブネット            |  ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com: 443
 | Azure Active Directory        | ASE サブネット            |  インターネット: 443
@@ -128,7 +128,7 @@ ILB ASE がドメイン名 *contoso.net* であり、アプリ名が *testapp* �
 
 ## <a name="functions-and-web-jobs"></a>関数と Web ジョブ ##
 
-関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Microsoft Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
+関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 
@@ -175,31 +175,10 @@ NSG が定義されたら、それを ASE が存在するサブネットに割�
 
 ## <a name="routes"></a>ルート ##
 
-強制トンネリングとは何か、またどのように扱えばよいかを考えるうえで、ルートは重要な要素です。 Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) に基づいてルーティングが実行されます。 同じ LPM マッチの複数のルートが存在する場合は、そのルートが検出された経緯に応じて次の順序でルートが選択されます。
+VNet でルートを設定し、送信トラフィックがインターネットに直接送信されるのではなく、ExpressRoute ゲートウェイや仮想アプライアンスなどの他の場所に送信されるようにすることを強制トンネリングといいます。  ASE をこのように構成する必要がある場合には、「[強制トンネリングを使用した App Service Environment の構成][forcedtunnel]」のドキュメントを参照してください。  このドキュメントでは、ExpressRoute および強制トンネリングで使用できるオプションについて説明しています。
 
-- ユーザー定義のルート (UDR)
-- BGP のルート (ExpressRoute を使用している場合)
-- システム ルート
-
-仮想ネットワークにおけるルーティングの詳細については、[ユーザー定義ルートと IP 転送][UDRs]に関するページをご覧ください。
-
-ASE がシステムを管理するために使用する Azure SQL データベースには、ファイアウォールがあります。 これには、ASE パブリック VIP から発信するための通信が必要です。 ASE から SQL データベースへの接続は、ExpressRoute 接続経由で別の IP アドレスに送信される場合は拒否されます。
-
-受信管理要求への応答が ExpressRoute 経由で送信される場合、その応答アドレスは元の宛先とは異なります。 この不一致により、TCP 通信が停止します。
-
-VNet が ExpressRoute で構成されている間も ASE を機能させるために最も簡単な方法は次のとおりです。
-
--   _0.0.0.0/0_ をアドバタイズするように ExpressRoute を構成します。 既定では、すべての送信トラフィックをオンプレミスに強制的にトンネリングします。
--   UDR を作成します。 それを ASE が含まれるサブネットに _[0.0.0.0/0]_ のアドレス プレフィックスと _[インターネット]_ の次ホップの種類を指定して適用します。
-
-これらの 2 つの変更を行った場合、ASE サブネットから発信されたインターネット宛てのトラフィックは ExpressRoute を強制的に経由せず、ASE は機能します。 
-
-> [!IMPORTANT]
-> UDR に定義されているルートは、ExpressRoute 構成でアドバタイズされたどのルートよりも優先されるように、詳細にする必要があります。 前の例では、0.0.0.0/0 という広いアドレス範囲を使用しています。 これは、より具体的なアドレス範囲を使用するルート アドバタイズによって誤って上書きされる可能性があります。
->
-> ASE は、ルートをパブリックピアリング パスからプライベートピアリング パスにクロスアドバタイズする ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、Microsoft からルート アドバタイズを受信します。 これらのアドバタイズには、Microsoft Azure の一連の広い IP アドレス範囲が含まれています。 これらのアドレス範囲がプライベートピアリング パスでクロスアドバタイズされた場合、ASE のサブネットからの送信ネットワーク パケットはすべて、顧客のオンプレミスのネットワーク インフラストラクチャに強制的にトンネリングされます。 現在、このネットワーク フローは ASE でサポートされていません。 この問題の 1 つの解決策として、パブリックピアリング パスからプライベートピアリング パスへのクロスアドバタイズ ルートの停止があります。
-
-UDR を作成するには、次の手順を実行します
+ポータルで ASE を作成するときに、ASE で作成されるサブネットのルート テーブルのセットも作成します。  これらのルートでは、単純に送信トラフィックを直接インターネットに送信します。  
+同じルートを手動で作成するには、次の手順に従います。
 
 1. Azure Portal にアクセスします。 **[ネットワーク]** > **[ルート テーブル]** を選択します。
 
@@ -217,17 +196,15 @@ UDR を作成するには、次の手順を実行します
 
     ![NSG とルート][7]
 
-### <a name="deploy-into-existing-azure-virtual-networks-that-are-integrated-with-expressroute"></a>ExpressRoute と統合された既存の Azure 仮想ネットワークにデプロイする ###
+## <a name="service-endpoints"></a>サービス エンドポイント ##
 
-ASE を ExpressRoute と統合された VNet にデプロイするには、ASE をデプロイするサブネットを事前に構成します。 次に、Resource Manager テンプレートを使用してデプロイします。 VNet で ExpressRoute が既に構成されている ASE を作成するには、次の手順を実行します。
+サービス エンドポイントを設けることで、マルチテナント サービスへのアクセスを、一連の Azure 仮想ネットワークとサブネットに制限することができます。 サービス エンドポイントについて詳しくは、「[仮想ネットワーク サービスのエンドポイント][serviceendpoints]」のドキュメントをご覧ください。 
 
-- ASE をホストするサブネットを作成します。
+リソースに対するサービス エンドポイントを有効にすると、他のどのルートよりも高い優先度でルートが作成されます。 トンネリングが強制された ASE との間でサービス エンドポイントを使用した場合、Azure SQL と Azure Storage の管理トラフィックについては、強制的にトンネリングされることはありません。 
 
-    > [!NOTE]
-    > サブネット内には ASE の他に何も存在できません。 将来の拡張を考慮に入れたアドレス空間を選択するようにしてください。 この設定を後で変更することはできません。 推奨されるサイズは、128 のアドレスを持つ `/25` です。
+サブネットに対し、Azure SQL インスタンスとのサービス エンドポイントを有効にすると、そのサブネットから接続されるすべての Azure SQL インスタンスについてサービス エンドポイントが有効になります。 同じサブネットから複数の Azure SQL インスタンスにアクセスする場合に、サービス エンドポイントの有効と無効を Azure SQL インスタンスごとに分けることはできません。 Azure Storage の動作は、Azure SQL のそれとは異なります。 Azure Storage とのサービス エンドポイントを有効にした場合、そのリソースには、自分のサブネットからしかアクセスできないようロックされますが、他の Azure Storage アカウントには、サービス エンドポイントが有効になっていなくても引き続きアクセスすることができます。  
 
-- 先に説明したように UDR (ルート テーブルなど) を作成し、それをサブネット上に設定します。
-- [Resource Manager テンプレートを使用した ASE の作成][MakeASEfromTemplate]に関するページに従って、Resource Manager テンプレートを使用して ASE を作成します。
+![サービス エンドポイント][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png
@@ -237,6 +214,7 @@ ASE を ExpressRoute と統合された VNet にデプロイするには、ASE �
 [5]: ./media/network_considerations_with_an_app_service_environment/networkase-outboundnsg.png
 [6]: ./media/network_considerations_with_an_app_service_environment/networkase-udr.png
 [7]: ./media/network_considerations_with_an_app_service_environment/networkase-subnet.png
+[8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -258,3 +236,6 @@ ASE を ExpressRoute と統合された VNet にデプロイするには、ASE �
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[forcedtunnel]: ./forced-tunnel-support.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

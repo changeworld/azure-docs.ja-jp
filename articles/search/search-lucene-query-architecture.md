@@ -1,10 +1,10 @@
 ---
-title: "Azure Search のフルテキスト検索エンジン (Lucene) アーキテクチャ | Microsoft Docs"
-description: "Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。"
+title: Azure Search のフルテキスト検索エンジン (Lucene) アーキテクチャ | Microsoft Docs
+description: Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。
 services: search
 manager: jhubbard
 author: yahnoosh
-documentationcenter: 
+documentationcenter: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
 ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -363,7 +363,7 @@ search=Spacious, air-condition* +"Ocean view"
 Azure Search の関連度スコアは、次の 2 とおりの方法でチューニングできます。
 
 1. **スコアリング プロファイル**: ランク付けされた結果リストにおいて、一連のルールに基づく重みを文書に与えます。 このページの例では、title フィールドに一致の見つかった文書の方が、description フィールドに一致の見つかった文書よりも関連性が高いと見なすことができます。 加えて、仮にホテルごとの料金フィールドをインデックスに含めた場合、料金の低い方の文書に高い重みを与えることも可能です。 詳細については、[スコアリング プロファイルを検索インデックスに追加する方法](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
-2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 この例では、プレフィックスを検索する代わりに*air-condition*\*、正確なという用語は、いずれかのいずれかの検索でした*air-condition*や、プレフィックスが、正確な語句に一致するドキュメントは語句クエリをブーストを適用して上位: * 空気条件 ^2 | |air-condition * *。 詳細については、[項目ブースト](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
+2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 このページの例では、*air-condition*\* というプレフィックスで検索する代わりに、*air-condition^2||air-condition** のように単語検索にブーストを適用することもできます。そうすれば、*air-condition* で完全一致する語句と、プレフィックスで一致する語句との両方を検索したうえで、完全一致の語句で一致した文書の方に、より高いランクを与えることができます。 詳細については、[項目ブースト](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
 
 
 ### <a name="scoring-in-a-distributed-index"></a>分散されたインデックスにおけるスコア付け

@@ -1,25 +1,25 @@
 ---
-title: "オンプレミスのデータ ゲートウェイをインストールする | Microsoft Docs"
-description: "オンプレミスのデータ ゲートウェイをインストールして構成する方法について説明します。"
+title: オンプレミスのデータ ゲートウェイをインストールする | Microsoft Docs
+description: オンプレミスのデータ ゲートウェイをインストールして構成する方法について説明します。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 04/03/2018
 ms.author: owend
-ms.openlocfilehash: c2cbe1c60f67c689a38d1585245610a6fa73bff4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。 ゲートウェイの詳細については、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を参照してください。
@@ -44,6 +44,7 @@ ms.lasthandoff: 02/21/2018
 * 常に稼働していてスリープ状態にならないコンピューターにゲートウェイをインストールします。
 * ネットワークにワイヤレス接続されているコンピューターにはゲートウェイをインストールしないでください。 パフォーマンスが低下することがあります。
 * ゲートウェイを登録するサブスクリプションと同じ[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
+* ここで説明されている (統合) ゲートウェイは、Azure Government (Fairfax) ではサポートされていません。 Azure Analysis Services の専用オンプレミス ゲートウェイを使用します。 専用ゲートウェイは、Power BI や Power Apps などのその他のサービスをサポートしていません。 専用ゲートウェイは、ポータルにあるサーバーのクイック スタートからインストールします。
 
 
 ## <a name="download"></a>ダウンロード

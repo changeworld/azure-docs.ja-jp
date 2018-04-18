@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Workplace by Facebook を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Azure Active Directory と Workplace by Facebook の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Workplace by Facebook を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Azure Active Directory と Workplace by Facebook の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 15cbaafcd86c576f4789a61ed80c526b6fe705ab
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d42a6b63833bffc3cce1830a728ec21083b25dc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル: Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -75,7 +75,7 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 
     ![プロビジョニング](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. **[管理者資格情報]** セクションの下で、Workplace by Facebook 管理者のシークレット トークンを入力し、テナント URL の値を `https://www.facebook.com/scim/v1/`に設定します。
+5. **[管理者資格情報]** セクションの下で、Workplace by Facebook 管理者からアクセス トークンを入力し、テナント URL の値を `https://www.facebook.com/scim/v1/` に設定します。 Workplace のアクセス トークンを作成する方法については、こちらの[手順](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps)を参照してください。 
 
 6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Workplace by Facebook アプリに接続できることを確認します。 接続が失敗した場合、使用中の Workplace by Facebook アカウントに Team Admin アクセス許可があることを確認してください。
 
@@ -91,7 +91,7 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 
 12. **[保存]** をクリックします。
 
-自動プロビジョニングの構成方法について詳しくは、[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers) をご覧ください
+自動プロビジョニングを構成する方法の詳細については、[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers) を参照してください。
 
 これでテスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Workplace by Facebook に同期されたことを確認します。
 

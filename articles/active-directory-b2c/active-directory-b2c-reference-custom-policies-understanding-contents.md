@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Azure AD B2C カスタム ポリシー スターター パックのカスタム ポリシーについて
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/23/2018
 3.  最後に 3 番目のセクションでは、ユーザーから収集してディレクトリに格納し、サインイン中にトークンで送信できる省略可能な追加の要求を一覧で表示します。 ユーザーから収集され、トークンで送信される新しい要求の種類は、このセクションに追加できます。
 
 > [!IMPORTANT]
-> 要求スキーマには、パスワードやユーザー名といった特定の要求に関する制限があります。 信頼フレームワーク (TF) ポリシーでは Azure AD が他の要求プロバイダーと同様に処理され、そのすべての制限がプレミアム ポリシーでモデル化されます。 ポリシーは制限をさらに追加するために修正できます。また、独自の制限のある資格情報ストレージのために別の要求プロバイダーをポリシーで使用することもできます。
+> 要求スキーマには、パスワードやユーザー名といった特定の要求に関する制限があります。 信頼フレームワーク (TF) ポリシーでは Azure AD が他の要求プロバイダーと同様に処理され、そのすべての制限がカスタム ポリシーでモデル化されます。 ポリシーは制限をさらに追加するために修正できます。また、独自の制限のある資格情報ストレージのために別の要求プロバイダーをポリシーで使用することもできます。
 
 使用できる要求の種類を次に一覧で示します。
 
@@ -51,12 +51,12 @@ ms.lasthandoff: 03/23/2018
 |-------------|-------------|
 | *UserId* | ユーザー名 |
 | *signInName* | サインイン名 |
-| *tenantId* | Azure AD B2C Premium におけるユーザー オブジェクトのテナント識別子 (ID) |
-| *objectId* | Azure AD B2C Premium におけるユーザー オブジェクトのオブジェクト識別子 (ID) |
+| *tenantId* | Azure AD B2C におけるユーザー オブジェクトのテナント識別子 (ID) |
+| *objectId* | Azure AD B2C におけるユーザー オブジェクトのオブジェクト識別子 (ID) |
 | *password* | パスワード |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | パスワード強度や有効期限などを決定するために Azure AD B2C Premium によって使用されるパスワード ポリシー。 |
+| *passwordPolicies* | パスワード強度や有効期限などを決定するために Azure AD B2C によって使用されるパスワード ポリシー。 |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
@@ -66,9 +66,9 @@ ms.lasthandoff: 03/23/2018
 | *email* | ユーザーに連絡するために使用できるメール アドレス |
 | *signInNamesInfo.emailAddress* | ユーザーがサインインに使用できるメール アドレス |
 | *otherMails* | ユーザーに連絡するために使用できるメール アドレス |
-| *userPrincipalName* | Azure AD B2C Premium に格納されるユーザー名 |
+| *userPrincipalName* | Azure AD B2C に格納されるユーザー名 |
 | *upnUserName* | ユーザー プリンシパル名を作成するためのユーザー名 |
-| *mailNickName* | Azure AD B2C Premium に格納されるユーザーの電子メール ニックネーム |
+| *mailNickName* | Azure AD B2C に格納されるユーザーの電子メール ニックネーム |
 | *newUser* | |
 | *executed-SelfAsserted-Input* | ユーザーから属性が収集されたかどうかを示す要求 |
 | *executed-PhoneFactor-Input* | ユーザーから新しい電話番号が収集されたかどうかを示す要求 |

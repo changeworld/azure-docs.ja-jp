@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/03/2018
 ms.author: bonova
-ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージ インスタンス (プレビュー) とは?
 
@@ -69,6 +69,23 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 ![シングル サインオン](./media/sql-database-managed-instance/sso.png) 
 
+## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
+
+仮想コアベースの購入モデルでは、柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージをスケーリングできます。 また、仮想コア モデルは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)による最大 30% の割引の対象となります。
+
+仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。
+- Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz のプロセッサを基盤とします。
+- Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz のプロセッサを基盤とします。
+
+次の表は、コンピューティング、メモリ、ストレージ、I/O リソースの最適な構成を選択する方法を理解するために役立ちます。
+
+||Gen 4|Gen 5|
+|----|------|-----|
+|ハードウェア|Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア)|Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ、高速 eNVM SSD、仮想コア=1 LP (ハイパー スレッド)|
+|パフォーマンス レベル|8、16、24 の仮想コア|8、16、24、32、40 の仮想コア|
+|メモリ|仮想コアあたり 7 GB|仮想コアあたり 5.5 GB|
+||||
+
 ## <a name="managed-instance-service-tier"></a>マネージ インスタンスのサービス階層
 
 マネージ インスタンスは最初は単一のサービス階層 (汎用) で使用できます。これは、一般的な可用性および共通の IO 待機時間の要件を持つアプリケーション用に設計されたものです。
@@ -89,11 +106,11 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 |Feature | [説明]|
 |---|---|
-| vCores* の数 | 8、16、24|
+| vCores* の数 | 8、16、24 (Gen 4)<br>8、16、24、32、40 (Gen5)|
 | SQL Server のバージョン/ビルド | SQL Server (最新版) |
 | 最小ストレージ サイズ | 32 GB |
 | 最大ストレージ サイズ | 8 TB |
-| データベースあたりの最大ストレージ容量 | 4 TB |
+| データベースあたりの最大ストレージ容量 | 8 TB |
 | 期待されるストレージ IOPS | データ ファイルあたり 500 から 7500 IOPS (データ ファイルによって異なる)。 [Premium Storage](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) に関するセクションを参照してください。 |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 | 
 | データベースごとのログ ファイル数 (LOG) | 1 | 
@@ -106,7 +123,7 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 | ポータルのサポート | [はい]|
 |||
 
-\* 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。  
+\* 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。 
 
 ## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス 
 
@@ -152,7 +169,7 @@ SQL Database では、[Azure Active Directory との統合](sql-database-aad-aut
 SQL データベース認証とは、データベースへの接続時にユーザーが自分の ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。  
 
 - SQL 認証。ユーザー名とパスワードを使用します。
-- Azure Active Directory 認証。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。  
+- Azure Active Directory 認証。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。 
 
 ### <a name="authorization"></a>承認
 
@@ -160,11 +177,11 @@ SQL データベース認証とは、データベースへの接続時にユー�
 
 ## <a name="database-migration"></a>データベース移行 
 
-マネージ インスタンスのターゲットは、オンプレミスまたは IaaS データベース実装からのデータベースの一括移行を使用するユーザー シナリオです。  マネージ インスタンスでは、次に示すような複数のデータベース移行オプションをサポートします。 
+マネージ インスタンスのターゲットは、オンプレミスまたは IaaS データベース実装からのデータベースの一括移行を使用するユーザー シナリオです。 マネージ インスタンスでは、次に示すような複数のデータベース移行オプションをサポートします。 
 
 ### <a name="data-migration-service"></a>データ移行サービス
 
-Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。   このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビュー段階のデプロイ オプションには、Azure SQL Database、マネージ インスタンス、および Azure VM 内の SQL Server があります。 [DMS を使用してオンプレミスのデータベースをマネージ インスタンスに移行する方法](https://aka.ms/migratetoMIusingDMS)に関するページを参照してください。  
+Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、既存のサード パーティ製データベースと SQL Server データベースを Azure に移行するために必要なタスクを効率化します。 パブリック プレビュー段階のデプロイ オプションには、Azure SQL Database、マネージ インスタンス、および Azure VM 内の SQL Server があります。 [DMS を使用してオンプレミスのデータベースをマネージ インスタンスに移行する方法](https://aka.ms/migratetoMIusingDMS)に関するページを参照してください。 
 
 ### <a name="backup-and-restore"></a>バックアップと復元  
 
@@ -174,7 +191,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 
 マネージ インスタンスではサービスの一般提供までに、最新のオンプレミスの SQL Server との、100% 近くのセキュリティ、外部からのアクセス互換性を段階的に実現することを目的としています。 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。
  
-マネージ インスタンスでは、SQL 2008 データベースに対する下位互換性をサポートします。  SQL 2005 データベース サーバーからの直接の移行がサポートされており、移行される SQL 2005 データベースの互換性レベルは SQL 2008 に更新されます。 
+マネージ インスタンスでは、SQL 2008 データベースに対する下位互換性をサポートします。 SQL 2005 データベース サーバーからの直接の移行がサポートされており、移行される SQL 2005 データベースの互換性レベルは SQL 2008 に更新されます。 
  
 次の図では、マネージ インスタンスでのセキュリティ、外部からのアクセス互換性について概説します。  
 
@@ -182,7 +199,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 
 ### <a name="key-differences-between-sql-server-on-premises-and-managed-instance"></a>SQL Server オンプレミスとマネージ インスタンスとの主な相違点 
 
-マネージ インスタンスはクラウド内で常に最新の状態が維持されることから利点が得られます。これは、オンプレミスの SQL Server の一部の機能が使用されなくなるか、削除されるか、代替機能が用意される可能性があることを意味します。  特定の機能の動作がやや異なること、または完全には制御できない環境でサービスが実行されていないことをツールで認識することが必要な特定のケースがあります。 
+マネージ インスタンスはクラウド内で常に最新の状態が維持されることから利点が得られます。これは、オンプレミスの SQL Server の一部の機能が使用されなくなるか、削除されるか、代替機能が用意される可能性があることを意味します。 特定の機能の動作がやや異なること、または完全には制御できない環境でサービスが実行されていないことをツールで認識することが必要な特定のケースがあります。 
 
 - 高可用性が組み込まれ、事前に構成されています。 Always On 高可用性機能は、SQL IaaS 実装で使用する場合と同じ方法で公開されません。 
 - 自動バックアップおよびポイントイン タイム リストア。 顧客は自動バックアップ チェーンに影響を及ぼさない `copy-only` バックアップを開始できます。 
@@ -192,7 +209,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
  
 ### <a name="managed-instance-administration-features"></a>マネージ インスタンスの管理機能  
 
-マネージ インスタンスを使用することで、システム管理者はビジネスにとって最も重要な問題に集中することができます。 システム管理者/DBA のアクティビティの多くは必須ではないかシンプルなものです。 該当するアクティビティとして、OS/RDBMS のインストールおよび修正プログラムの適用、動的なインスタンスのサイズ変更および構成、バックアップ、データベース レプリケーション (システム データベースを含む)、高可用性の構成、正常性およびパフォーマンス監視データ ストリームの構成などが挙げられます。  
+マネージ インスタンスを使用することで、システム管理者はビジネスにとって最も重要な問題に集中することができます。 システム管理者/DBA のアクティビティの多くは必須ではないかシンプルなものです。 該当するアクティビティとして、OS/RDBMS のインストールおよび修正プログラムの適用、動的なインスタンスのサイズ変更および構成、バックアップ、データベース レプリケーション (システム データベースを含む)、高可用性の構成、正常性およびパフォーマンス監視データ ストリームの構成などが挙げられます。 
 
 > [!IMPORTANT]
 > サポートされている機能、部分的にサポートされている機能、サポートされていない機能の一覧については、[SQL Database の機能](sql-database-features.md)に関するページを参照してください。 マネージ インスタンスと SQL Server における T-SQL の相違点の一覧については、[マネージ インスタンスと SQL Server における T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関するページを参照してください。

@@ -1,34 +1,33 @@
 ---
-title: "Power BI Desktop ファイルを Azure Analysis Services にインポートする | Microsoft Docs"
-description: "Azure Portal を使って Power BI Desktop ファイル (pbix) をインポートする方法を説明します。"
+title: Power BI Desktop ファイルを Azure Analysis Services にインポートする | Microsoft Docs
+description: Azure Portal を使って Power BI Desktop ファイル (pbix) をインポートする方法を説明します。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/26/2018
+ms.date: 04/03/2018
 ms.author: owend
-ms.openlocfilehash: e0be0c69b501d7e93c65bcf23d4dd1b6bfa89caf
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2ba9bc0e4b9a55312875fe120ee179800aeefb23
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Power BI Desktop ファイルをインポートする
 
 Power BI Desktop (pbix) ファイルをインポートすることにより、Azure AS で新しいモデルを作成することができます。 モデルのメタデータ、キャッシュ データ、およびデータ ソース接続がインポートされます。 レポートや視覚エフェクトはインポートされません。
 
 **制限事項**   
-- pbix モデルは、必ず [Analysis Services でサポートされたデータ ソース](analysis-services-datasource.md)に接続する必要があります。 
+- pbix モデルは、Azure SQL Database と Azure SQL Data Warehouse のデータ ソースにのみ接続できます。 
 - pbix モデルでは、ライブ接続や DirectQuery 接続は使用できません。 
-- pbix モデルがオンプレミスのデータ ソースに接続する場合は、[オンプレミスの データ ゲートウェイ](analysis-services-gateway.md)を Analysis Services サーバー用に構成する必要があります。
 - Analysis Services でサポートされていないメタデータが pbix データ モデルに含まれている場合は、インポートが失敗する可能性があります。
 
 ## <a name="to-import-from-pbix"></a>pbix からインポートするには

@@ -1,23 +1,23 @@
 ---
-title: "セルフ サービス アプリケーションの割り当ての構成方法 | Microsoft Docs"
-description: "セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。"
+title: セルフ サービス アプリケーションの割り当ての構成方法 | Microsoft Docs
+description: セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 04/02/2018
 ms.author: asteen
-ms.openlocfilehash: 8aeda498847759debab18ddf4b44a75cd739a56c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cf70da4933f5513b75f84aef01dec1ef902eab85
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 
@@ -64,7 +64,10 @@ ms.lasthandoff: 02/21/2018
 8.  このアプリケーションへのセルフ サービス アプリケーションのアクセスを有効にするには、**[このアプリケーションへのアクセスの要求をユーザーに許可しますか?]** トグルを **[はい]** にします。
 
 9.  次に、このアプリケーションへのアクセスを要求するユーザーを追加するグループを選択するには、**[割り当てられたユーザーが追加されるグループ]** ラベルの横にあるセレクターをクリックしてグループを選択します。
-
+  
+  > [!NOTE]
+  > オンプレミスから同期されたグループは、このアプリケーションへのアクセスを要求するユーザーを追加するグループとしては使用できません。
+  
 10. **省略可能:** ユーザーのアクセスが許可される前にビジネス承認が必要な場合は、**[このアプリケーションへのアクセスを許可する前に承認が必要ですか?]** トグルを **[はい]** に設定します。
 
 11. **省略可能: パスワード シングル サインオンのみを使用するアプリケーションで、**これらのビジネス承認者による承認されたユーザーへのアプリケーションに送信されるパスワードの指定を許可する場合、**[このアプリケーションに対するユーザーのパスワードを設定することを承認者に許可しますか?]** トグルを **[はい]** に設定します。

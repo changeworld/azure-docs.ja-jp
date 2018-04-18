@@ -1,11 +1,11 @@
 ---
-title: "ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題 | Microsoft Docs"
-description: "ギャラリー以外の (Azure AD アプリケーション ギャラリーに表示されていない) カスタム アプリケーションのパスワード シングル サインオンを構成する場合に直面する一般的な問題についての説明"
+title: ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題 | Microsoft Docs
+description: ギャラリー以外の (Azure AD アプリケーション ギャラリーに表示されていない) カスタム アプリケーションのパスワード シングル サインオンを構成する場合に直面する一般的な問題についての説明
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 02/21/2018
 
 -   **詳細** – 操作の結果として発生した内容についての詳細な説明
 
-    -   例 – **内部 URL "http://bing.com/" は既に使用中のため無効です**
+    -   例 - **内部 URL "http://bing.com/" は既に使用中のため無効です**
 
 -   **エラーのコピー** - **[エラーのコピー]** ボックスの右にある**コピー アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有します
 

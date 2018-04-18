@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシー
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/23/2018
 - **証明書利用者 (RP) ファイル**。これは、アプリケーションまたはサービス (証明書利用者) から直接呼び出される、単一タスクに焦点を置いたファイルです。  詳細については、ポリシー ファイルの定義に関する記事を参照してください。  固有の各タスクには独自の RP が必要であり、ブランドの要件に応じて、この数は "アプリケーションの合計 x ユースケースの総数" になることがあります。
 
 
-Azure AD B2C での組み込みのポリシーは上に示した 3 つのファイルのパターンに従いますが、ポータルが EXTenstions ファイルへの変更をバックグラウンドで行なっている間、開発者には証明書利用者 (RP) ファイルしか表示されません。
+Azure AD B2C での組み込みのポリシーは上に示した 3 つのファイルのパターンに従いますが、ポータルが EXTensions ファイルへの変更をバックグラウンドで行なっている間、開発者には証明書利用者 (RP) ファイルしか表示されません。
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>カスタム ポリシーを使用するときに知っておくべき主要な概念
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure AD アプリケーション プロキシを使用したアプリの発行 | Microsoft Docs"
-description: "Azure Portal で Azure AD アプリケーション プロキシを使用して、オンプレミス アプリケーションをクラウドに発行します。"
+title: Azure AD アプリケーション プロキシを使用したアプリの発行 | Microsoft Docs
+description: Azure Portal で Azure AD アプリケーション プロキシを使用して、オンプレミス アプリケーションをクラウドに発行します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 43cabb03a698dd87f12fef8e9a4dd54ee42c3ec9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
@@ -53,7 +53,7 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
    - **内部 URL**: プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。
 
      > [!TIP]
-     > パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリケーションが https://yourapp/app にあり、https://yourapp/media にある画像を使用する場合は、パスとして https://yourapp/ を発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-office365-app-launcher.md)」を参照してください。
+     > パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリが https://yourapp/app にあり、https://yourapp/media にあるイメージを使用している場合、https://yourapp/ をパスとして発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-office365-app-launcher.md)」を参照してください。
 
    - **外部 URL**: ネットワークの外部からアプリにアクセスするためにユーザーが移動するアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](active-directory-application-proxy-custom-domains.md)に関する記事を参照してください。
    - **事前認証**: ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。 
@@ -61,6 +61,9 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
      - Azure Active Directory: アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication などの Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。
      - パススルー: アプリケーションにアクセスするための Azure Active Directory に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。
    - **コネクタ グループ**: コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。
+
+>[!NOTE]
+>アプリケーションで接続に WebSocket が使用されている場合、WebSocket をサポートしているバージョン 1.5.612.0 以降のコネクタを使用していることと、割り当てられているコネクタ グループではこれらのコネクタのみを使用していることを確認してください。
 
    ![アプリケーションの作成](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. 必要に応じて、追加設定を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 

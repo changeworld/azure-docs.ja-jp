@@ -1,11 +1,11 @@
 ---
-title: "B2B 監視の AS2 追跡スキーマ - Azure Logic Apps | Microsoft Docs"
-description: "AS2 追跡スキーマを使用して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。"
+title: B2B 監視の AS2 追跡スキーマ - Azure Logic Apps | Microsoft Docs
+description: AS2 追跡スキーマを使用して、Azure 統合アカウントのトランザクションからの B2B メッセージを監視します。
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31bd296dc5ed5ac6998a6c05ee80fd38b12d662c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8605950f3cc07730ee13b91999076e3a093e8d92
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>AS2 メッセージおよび MDN の追跡を開始または有効にして、成功、失敗、メッセージのプロパティを監視する
 Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して企業間 (B2B) 取引の監視に役立てることができます。
@@ -59,7 +59,7 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
     }
 ````
 
-| プロパティ | 型 | Description |
+| プロパティ | type | [説明] |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | AS2 メッセージ受信者のパートナー名。 (省略可能) |
@@ -70,14 +70,14 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
 | messageId | String | AS2 メッセージ ID (AS2 メッセージのヘッダーから取得します)(省略可能) |
 | dispositionType |String | Message Disposition Notification (MDN) のディスポジション タイプ値。 (省略可能) |
 | fileName | String | ファイル名 (AS2 メッセージのヘッダーから取得します)。 (省略可能) |
-| isMessageFailed |Boolean | AS2 メッセージが失敗したかどうか。 (必須) |
-| isMessageSigned | Boolean | AS2 メッセージが署名されたかどうか。 (必須) |
-| isMessageEncrypted | Boolean | AS2 メッセージが暗号化されたかどうか。 (必須) |
-| isMessageCompressed |Boolean | AS2 メッセージが圧縮されたかどうか。 (必須) |
+| isMessageFailed |ブール | AS2 メッセージが失敗したかどうか。 (必須) |
+| isMessageSigned | ブール | AS2 メッセージが署名されたかどうか。 (必須) |
+| isMessageEncrypted | ブール | AS2 メッセージが暗号化されたかどうか。 (必須) |
+| isMessageCompressed |ブール | AS2 メッセージが圧縮されたかどうか。 (必須) |
 | correlationMessageId | String | AS2 メッセージ ID (メッセージを MDN と関連付けるために使用します)。 (省略可能) |
 | incomingHeaders |JToken の辞書 | 受信 AS2 メッセージのヘッダー詳細。 (省略可能) |
 | outgoingHeaders |JToken の辞書 | 送信 AS2 メッセージのヘッダー詳細。 (省略可能) |
-| isNrrEnabled | Boolean | 値が不明の場合は、既定値を使用してください。 (必須) |
+| isNrrEnabled | ブール | 値が不明の場合は、既定値を使用してください。 (必須) |
 | isMdnExpected | Boolean | 値が不明の場合は、既定値を使用してください。 (必須) |
 | mdnType | 列挙型 | 許可されている値は、**NotConfigured**、**Sync**、**Async** です。 (必須) |
 
@@ -111,7 +111,7 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
     }
 ````
 
-| プロパティ | 型 | Description |
+| プロパティ | type | [説明] |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | String | AS2 メッセージ受信者のパートナー名。 (省略可能) |
@@ -122,18 +122,18 @@ Azure 統合アカウントでは、次の AS2 追跡スキーマを使用して
 | messageId | String | AS2 メッセージ ID。 (省略可能) |
 | originalMessageId |String | AS2 の元のメッセージ ID。 (省略可能) |
 | dispositionType | String | MDN のディスポジション タイプ値。 (省略可能) |
-| isMessageFailed |Boolean | AS2 メッセージが失敗したかどうか。 (必須) |
-| isMessageSigned |Boolean | AS2 メッセージが署名されたかどうか。 (必須) |
-| isNrrEnabled | Boolean | 値が不明の場合は、既定値を使用してください。 (必須) |
+| isMessageFailed |ブール | AS2 メッセージが失敗したかどうか。 (必須) |
+| isMessageSigned |ブール | AS2 メッセージが署名されたかどうか。 (必須) |
+| isNrrEnabled | ブール | 値が不明の場合は、既定値を使用してください。 (必須) |
 | StatusCode | 列挙型 | 許可されている値は、**Accepted**、**Rejected**、**AcceptedWithErrors** です。 (必須) |
 | micVerificationStatus | 列挙型 | 許可されている値は、**NotApplicable**、**Succeeded**、**Failed** です。 (必須) |
 | correlationMessageId | String | 関連付け ID。 元のメッセージ ID (MDN の構成対象であるメッセージのメッセージ ID) です。 (省略可能) |
 | incomingHeaders | JToken の辞書 | 受信メッセージのヘッダー詳細を示します。 (省略可能) |
 | outgoingHeaders |JToken の辞書 | 送信メッセージのヘッダー詳細を示します。 (省略可能) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) についての詳細情報。    
 * [B2B メッセージの監視方法](logic-apps-monitor-b2b-message.md)についての詳細情報。   
 * [B2B カスタム追跡スキーマ](logic-apps-track-integration-account-custom-tracking-schema.md)についての詳細情報。   
 * [X12 追跡スキーマ](logic-apps-track-integration-account-x12-tracking-schema.md)についての詳細情報。   
-* [Operations Management Suite ポータルでの B2B メッセージ追跡](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。
+* [Log Analytics での B2B メッセージの追跡方法](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)についての詳細情報。

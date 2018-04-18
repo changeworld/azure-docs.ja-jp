@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher との接続のトラブルシューティングの概要 | Microsoft Docs"
-description: "このページでは、Network Watcher の接続のトラブルシューティング機能の概要を説明します。"
+title: Azure Network Watcher との接続のトラブルシューティングの概要 | Microsoft Docs
+description: このページでは、Network Watcher の接続のトラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: f8825af71620722065c03a28c93e113876c5aa71
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0268c7e54aa82df12243f98fd72de836fbc82070
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Network Watcher の接続のトラブルシューティングの概要
 
 Network Watcher の接続のトラブルシューティング機能を使用すると、仮想マシンから仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 ネットワークのシナリオは複雑であり、ネットワーク セキュリティ グループ、ファイアウォール、ユーザー定義ルート、および Azure が提供するリソースを使用して実装されます。 構成が複雑であるため、接続に関する問題のトラブルシューティングは困難です。 Network Watcher を使用すると、接続に関する問題を検出するまでの時間を減らすのに役立ちます。 返される結果は、接続に関する問題がプラットフォームによるものか、ユーザーの構成が問題であるかの洞察を提供します。 接続は、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md)、および [REST API](network-watcher-connectivity-rest.md) を使用してチェックできます。
 
 > [!IMPORTANT]
-> 接続のトラブルシューティングには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
+> 接続のトラブルシューティングを行うには、トラブルシューティングの実行に使用する VM に `AzureNetworkWatcherExtension` VM 拡張機能がインストールされている必要があります。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。 接続先のエンドポイントでは、拡張機能は必要ありません。
 
 ## <a name="response"></a>Response
 

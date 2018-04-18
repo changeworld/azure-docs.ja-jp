@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7af0dd37b5c16e48ce4e504211e68a29cf8bce77
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-and-service-level-logging"></a>アプリケーションとサービス レベルのログ記録
 
@@ -36,10 +36,11 @@ Visual Studio でテンプレートから Service Fabric ソリューション�
 
 コードをインストルメント化する方法を入念に計画することが重要です。 適切なインストルメンテーション計画により、コード ベースの安定性が失われ、コードの再インストルメント化が必要になる状況を回避できます。 リスクを軽減するために、Microsoft ASP.NET Core の一部である [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) などのインストルメンテーション ライブラリを選択できます。 ASP.NET Core には、既存のコードへの影響を最小限に抑えながら、選択したプロバイダーで使用できる [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) インターフェイスがあります。 Windows および Linux 上の ASP.NET Core 内と完全な .NET Framework 内でコードを使用できるので、インストルメンテーション コードが標準化されます。
 
-## <a name="choosing-a-logging-provider"></a>ログ記録プロバイダーの選択
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
-アプリケーションが高パフォーマンスに依存する場合は、通常は **EventSource** が有効な方法です。 **EventSource** は*一般に*使用するリソースが少なく、ASP.NET Core のログ記録や使用可能なサード パーティ製ソリューションよりもパフォーマンスが向上します。  多くのサービスではパフォーマンスは問題になりませんが、サービスがパフォーマンス指向の場合は、**EventSource** を使用することをお勧めします。 ただし、**EventSource** でこうした構造化されたログ記録の利点を得るには、エンジニアリング チームによる、より大規模な投資が必要となります。 可能であれば、いくつかのログ オプションの簡単なプロトタイプを作成して、ニーズに最も合うものを選択してください。
+Application Insights は、そのままで Service Fabric と強固に統合されています。 ユーザーは、AI Service Fabric NuGet パッケージを追加したり、作成および収集された、Azure Portal で表示可能なデータとログを受信したりできます。 また、アプリケーションを診断およびデバッグするためと、どのサービスとアプリケーションのどの部分が最も使用されているかを追跡するために、独自の利用統計情報を追加することが推奨されます。 SDK の [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) クラスには、アプリケーションの利用統計情報を追跡するためのさまざまな方法が用意されています。 [.NET アプリケーションの監視および診断](service-fabric-tutorial-monitoring-aspnet.md)に関するチュートリアルで、Application Insights をインストルメント化してアプリケーションに追加する方法の例を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 
-アプリケーションとサービスのインストルメント化にログ プロバイダーを選択したら、任意の分析プラットフォームに送信できるようにログとイベントを集計する必要があります。 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) に関する記事と [WAD](service-fabric-diagnostics-event-aggregation-wad.md) に関する記事を読んで、推奨されるオプションについて理解を深めてください。
+アプリケーションとサービスのインストルメント化にログ プロバイダーを選択したら、任意の分析プラットフォームに送信できるようにログとイベントを集計する必要があります。 [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)、[EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)、および [WAD](service-fabric-diagnostics-event-aggregation-wad.md) に関する記事を読んで、推奨されるオプションについて理解を深めてください。

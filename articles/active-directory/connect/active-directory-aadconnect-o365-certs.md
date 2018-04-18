@@ -1,8 +1,8 @@
 ---
-title: "Office 365 と Azure AD のユーザー向け証明書の更新 | Microsoft Docs"
-description: "この記事では、証明書の更新を通知する電子メールによって生じる問題を解決する方法を Office 365 のユーザー向けに説明します。"
+title: Office 365 と Azure AD のユーザー向け証明書の更新 | Microsoft Docs
+description: この記事では、証明書の更新を通知する電子メールによって生じる問題を解決する方法を Office 365 のユーザー向けに説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: a0e3b65c108f8d839b8107e98a5cd59df78e1ab0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0435f1c5aae9381c76441b1233a47799af94768
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Active Directory (Azure AD) と Active Directory Federation Services (AD FS) とのフェデレーションが正常に機能するためには、AD FS が Azure AD に提示するセキュリティ トークンに署名するときに使う証明書が、Azure AD 側の構成内容と一致している必要があります。 完全に一致していないと、信頼関係が失われる可能性があります。 証明書の情報は、AD FS と (エクストラネット アクセスに使用される) Web アプリケーション プロキシをデプロイするときに Azure AD によって同期されます。
 
 この記事では、トークン署名証明書を管理し、Azure AD との同期状態を維持する方法について詳しく説明します。以下のケースを想定しています。
@@ -87,11 +87,11 @@ AD FS と Azure AD との間の信頼関係のプロパティで証明書が構�
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>手順 3: 証明書の有効期限が迫っているかどうかを確認する
 Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"有効期間の終了時刻" の日付を確認します。 今日の日付から 30 日未満である場合、期限切れに対処する必要があります。
 
-| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | [操作] |
+| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | アクションを表示します。 |
 |:---:|:---:|:---:|:---:|:---:|
-| はい |あり |はい |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
-| はい |なし |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
-| いいえ |- |- |30 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
+| [はい] |はい |[はい] |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
+| [はい] |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
+| いいえ  |- |- |30 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
 
 \[-] 該当せず
 
@@ -112,7 +112,6 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-
 ## トークン署名証明書を手動で更新する <a name="manualrenew"></a>
 トークン署名証明書を手動で更新することもできます。 たとえば、次のシナリオは手動更新の方が適している場合があります。
 
@@ -152,8 +151,8 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 1. Windows PowerShell 用 Microsoft Azure Active Directory モジュールを開きます。
 2. $cred=Get-Credential を実行します。 このコマンドレットで資格情報の入力を求められたら、クラウド サービス管理者アカウントの資格情報を入力します。
 3. Connect-MsolService –Credential $cred を実行します。このコマンドレットでクラウド サービスに接続します。 クラウド サービスに接続している状況を作った後で、ツールによってインストールされた追加のコマンドレットを実行する必要があります。
-4. AD FS のプライマリ フェデレーション サーバー以外のコンピューターでこれらのコマンドを実行している場合は、Set-MSOLAdfscontext -Computer <AD FS primary server> を実行します。この <AD FS primary server> は、プライマリ AD FS サーバーの内部 FQDN 名です。 このコマンドレットで AD FS に接続している状況を作ります。
-5. Update-MSOLFederatedDomain –DomainName <domain> を実行します。 このコマンドレットは、AD FS の設定でクラウド サービスを更新し、両者の信頼関係を構成します。
+4. AD FS のプライマリ フェデレーション サーバー以外のコンピューターでこれらのコマンドを実行している場合は、Set-MSOLAdfscontext -Computer &lt;AD FS プライマリ サーバー&gt;を実行します。この &lt;AD FS プライマリ サーバー&gt;は、プライマリ AD FS サーバーの内部 FQDN 名です。 このコマンドレットで AD FS に接続している状況を作ります。
+5. Update-MSOLFederatedDomain –DomainName &lt;ドメイン&gt; を実行します。 このコマンドレットは、AD FS の設定でクラウド サービスを更新し、両者の信頼関係を構成します。
 
 > [!NOTE]
 > contoso.com や fabrikam.com などの複数のトップ レベル ドメインをサポートする必要がある場合は、すべてのコマンドレットで **SupportMultipleDomain** スイッチを使用する必要があります。 詳細については、 [複数のトップ レベル ドメインのサポート](active-directory-aadconnect-multiple-domains.md)に関するページを参照してください。

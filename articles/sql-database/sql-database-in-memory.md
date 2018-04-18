@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -22,7 +22,7 @@ Azure SQL Database のインメモリ テクノロジを使用することで、
 インメモリ OLTP がパフォーマンスの著しい向上を促した例を 2 つ紹介します。
 
 - インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
-    - DTU とは "*データベース スループット ユニット*" のことで、リソース消費量の測定値が含まれます。
+    - DTU とは "*データベース トランザクション ユニット*" のことで、リソース使用量の測定値が含まれます。
 - [Azure SQL Database のインメモリ OLTP のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)では、サンプル ワークロードでリソースの消費量が大幅に向上したことが示されています。
     - 詳細については、[Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)を参照してください。
 
@@ -36,7 +36,7 @@ Azure SQL Database のインメモリ テクノロジを使用することで、
 
 Azure SQL Database には、次のインメモリ テクノロジがあります。
 
-- *インメモリ OLTP*: スループットが向上し、トランザクション処理の遅延が減少します。 インメモリ OLTP が有益なシナリオには、取引やゲームなどのスループットの高いトランザクション処理、イベントまたは IoT デバイスからのデータの取り込み、キャッシュ、データの読み込み、一時テーブルやテーブル変数のシナリオなどがあります。
+- "*インメモリ OLTP*" により、トランザクションが増え、トランザクション処理の遅延が少なくなります。 インメモリ OLTP が有益なシナリオには、取引やゲームなどのスループットの高いトランザクション処理、イベントまたは IoT デバイスからのデータの取り込み、キャッシュ、データの読み込み、一時テーブルやテーブル変数のシナリオなどがあります。
 - "*クラスター化列ストア インデックス*": ストレージのフットプリントを減らし (最大 10 倍)、レポートと分析のクエリのパフォーマンスを向上させます。 データ マートでファクト テーブルと共に使用してデータベースにより多くのデータを格納し、パフォーマンスを向上させることができます。 さらに、オペレーション データベースで履歴データと共に使用してアーカイブし、最大で 10 倍のデータのクエリを実行可能にすることができます。
 - HTAP 用の "*非クラスター化列ストア インデックス*": オペレーション データベースに直接クエリを実行して、ビジネスのリアルタイムの情報を取得します。抽出、変換、ロード (ETL) の高コストなプロセスを実行してデータ ウェアハウスが設定されるまで待機する必要はありません。 非クラスター化列ストア インデックスにより、OLTP データベースで非常に高速の分析クエリを実行しながら、運用ワークロードの影響を軽減できます。
 - メモリ最適化テーブルと列ストア インデックスを組み合わせて使用することもできます。 これにより、高速なトランザクション処理を実行すると*同時に*、同じデータに対して分析クエリを迅速に実行できます。
@@ -71,7 +71,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 インメモリ OLTP には、ユーザー データの格納に使用されるメモリ最適化テーブルが含まれています。 これらのテーブルは、メモリに格納する必要があります。 メモリは SQL Database サービスで直接管理するため、ユーザー データについてクォータの概念があります。 この考え方は、"*インメモリ OLTP ストレージ*" と呼ばれます。
 
-サポートされている各スタンドアロン データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。 この記事の執筆時点では、125 のデータベース トランザクション ユニット (DTU) またはエラスティック データベース トランザクション ユニット (eDTU) ごとに 1 GB のストレージが提供されます。 詳細については、[リソースの制限](sql-database-resource-limits.md)に関するページをご覧ください。
+サポートされている各スタンドアロン データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。 [DTU ベースのリソース制限](sql-database-dtu-resource-limits.md)および[仮想コアベースのリソース制限](sql-database-vcore-resource-limits.md)に関する記事をご覧ください。
 
 インメモリ OLTP ストレージ上限では、以下が考慮されます。
 
@@ -87,8 +87,8 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 エラスティック プールでは、インメモリ OLTP ストレージはプール内のすべてのデータベースで共有されます。 したがって、1 つのデータベースでの使用が他のデータベースに影響を及ぼす可能性があります。 これに対する軽減策は次の 2 つです。
 
-- データベースに対し、プール全体の eDTU 数よりも少ない最大 eDTU を構成します。 これにより、プール内のすべてのデータベースでインメモリ OLTP のストレージ使用率について、この eDTU に対応する上限が設定されます。
-- 0 より大きい最小 eDTU を構成します。 これにより、プール内の各データベースに、構成された最小 eDTU に対応する利用可能なインメモリ OLTP ストレージの量が確保されます。
+- データベースに対し、プール全体の eDTU または仮想コア数よりも少ない `Max-eDTU` または `MaxvCore` を構成します。 これにより、プール内のすべてのデータベースでインメモリ OLTP のストレージ使用率について、この eDTU に対応する上限が設定されます。
+- 0 より大きい `Min-eDTU` または `MinvCore` を構成します。 これにより、プール内の各データベースに、構成された `Min-eDTU` または `vCore` に対応する利用可能なインメモリ OLTP ストレージの量が確保されます。
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列ストア インデックスのデータ サイズとストレージ
 
@@ -152,7 +152,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 #### <a name="installation-steps"></a>インストール手順
 
-1. [Azure Portal](https://portal.azure.com/) で、サーバー上に Premium データベースを作成します。 **ソース** を AdventureWorksLT サンプル データベースに設定します。 詳細な手順については、[最初の Azure SQL データベースの作成](sql-database-get-started-portal.md)に関する記事を参照してください。
+1. [Azure Portal](https://portal.azure.com/) で、サーバー上に Premium または Business Critical (プレビュー) データベースを作成します。 **ソース** を AdventureWorksLT サンプル データベースに設定します。 詳細な手順については、[最初の Azure SQL データベースの作成](sql-database-get-started-portal.md)に関する記事を参照してください。
 
 2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx)を使用して、データベースに接続します。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -26,7 +26,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
  - Azure ストレージ アカウント
  - Azure Event Hubs
- - [OMS Log Analytics リポジトリ](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Log Analytics ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 この機能は、Verizon (Standard/Premium) および Akamai (Standard) の CDN プロファイルに属しているすべての CDN エンドポイントで使用できます。 
 
@@ -34,7 +34,7 @@ Azure 診断ログにより、基本的な使用メトリックを CDN エンド
 
 - BLOB ストレージへのデータのエクスポート、CSV へのエクスポート、Excel でのグラフの生成。
 - イベント ハブへのデータのエクスポートと、他の Azure サービスのデータとの関連付け。
-- ログ分析へのデータのエクスポートと、自分の OMS ワークスペースでのデータ表示
+- ログ分析へのデータのエクスポートと、自分の Log Analytics ワークスペースでのデータ表示
 
 次の図は、データの一般的な CDN コア分析ビューを示しています。
 
@@ -68,9 +68,9 @@ CDN コア分析を使用してログ記録を有効にするには、次の手�
 
 *図 2 - Azure Storage のログ記録*
 
-### <a name="logging-with-oms-log-analytics"></a>OMS Log Analytics によるログ記録
+### <a name="logging-with-log-analytics"></a>Log Analytics によるログ記録
 
-OMS Log Analytics を使用してログを保存するには、次の手順に従います。
+Log Analytics を使用してログを保存するには、次の手順に従います。
 
 1. **[診断ログ]** ブレードで、**[Log Analytics への送信]** を選択します。 
 
@@ -84,7 +84,7 @@ OMS Log Analytics を使用してログを保存するには、次の手順に�
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 新しい OMS ワークスペース名を入力します。 OMS ワークスペースには一意の名前を付ける必要があります。名前には、英字、数字、およびハイフンのみを使用できます。スペースとアンダースコアは使用できません。 
+4. 新しい Log Analytics ワークスペース名を入力します。 Log Analytics ワークスペースには一意の名前を付ける必要があります。名前には、英字、数字、およびハイフンのみを使用できます。スペースとアンダースコアは使用できません。 
 5. 次に、既存のサブスクリプション、リソース グループ (新規または既存)、場所、および価格レベルを選択します。 また、この構成をダッシュボードにピン留めするオプションもあります。 **[OK]** をクリックして、構成を完了します。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/08_Workspace-resource.png)
@@ -97,11 +97,11 @@ OMS Log Analytics を使用してログを保存するには、次の手順に�
 
 6. **[Save]** をクリックします。
 
-7. 新しい OMS ワークスペースを確認するには、Azure Portal のダッシュボードに移動し、Log Analytics ワークスペースの名前をクリックします。 OMS リポジトリのワークスペースを表示するには、[OMS Portal] タイルをクリックします。 
+7. 新しい Log Analytics ワークスペースを確認するには、Azure Portal のダッシュボードに移動し、Log Analytics ワークスペースの名前をクリックします。 Log Analytics ワークスペースを表示するには、[OMS Portal] タイルをクリックします。 
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    以上で、OMS リポジトリにデータを記録する準備ができました。 そのデータを使用するためには、[OMS ソリューション](#consuming-oms-log-analytics-data)を使用する必要があります。これについては、この記事の中で後で説明します。
+    これで、Log Analytics ワークスペースがデータをログ記録する準備ができました。 そのデータを使用するためには、[Log Analytics ソリューション](#consuming-diagnostics-logs-from-a-log-analytics-workspace)を使用する必要があります。これについては、この記事の中で後で説明します。
 
 ログ データの遅延の詳細については、「[Log data delays](#log-data-delays)」(ログ データの遅延) を参照してください。
 
@@ -123,7 +123,7 @@ OMS Log Analytics を使用してログを保存するには、次の手順に�
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-OMS ワークスペースで診断ログを有効にするには、次のコマンドを使用します。
+Log Analytics ワークスペースで診断ログを有効にするには、次のコマンドを使用します。
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -179,16 +179,16 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 4.  ツールを実行します。
 5.  生成される CSV ファイルには単純なフラット階層の分析データが示されています。
 
-## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>OMS Log Analytics リポジトリの診断ログの使用
-Log Analytics は、Operations Management Suite (OMS) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースからの診断ログの使用
+Log Analytics は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。 
 
-Log Analytics を使用するには、Azure OMS Log Analytics リポジトリに対する[ログ記録を有効にする](#enable-logging-with-azure-storage)必要があります。これについては、この記事の前半で説明しています。
+Log Analytics を使用するには、Azure Log Analytics ワークスペースに対する[ログ記録を有効にする](#enable-logging-with-azure-storage)必要があります。これについては、この記事の前半で説明しています。
 
-### <a name="using-the-oms-repository"></a>OMS リポジトリの使用
+### <a name="using-the-log-analytics-workspace"></a>Log Analytics ワークスペースの使用
 
  次の図は、リポジトリの入力と出力のアーキテクチャを示しています。
 
-![OMS Log Analytics リポジトリ](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Log Analytics ワークスペース](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 *図 3 - Log Analytics リポジトリ*
 
@@ -196,7 +196,7 @@ Log Analytics を使用するには、Azure OMS Log Analytics リポジトリに
 
 Azure Marketplace から各ソリューションの下にある **[Get it now (今すぐ入手する)]** リンクをクリックして管理ソリューションをインストールすることができます。
 
-### <a name="adding-an-oms-cdn-management-solution"></a>OMS CDN 管理ソリューションの追加
+### <a name="adding-a-log-analytics-cdn-management-solution"></a>Log Analytics CDN 管理ソリューションの追加
 
 管理ソリューションを追加するには、次の手順に従います。
 
@@ -219,7 +219,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
     ![すべて表示](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  **[作成]** をクリックすると、新しい OMS ワークスペースを作成するか既存のものを使用するかを質問されます。 
+6.  **[作成]** をクリックすると、新しい Log Analytics ワークスペースを作成するか既存のものを使用するかを質問されます。 
 
     ![すべて表示](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -241,11 +241,11 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
     ワークスペースに移動するために作成した Log Analytics ワークスペースをクリックします。 
 
-11. OMS ポータルで新しいソリューションを確認するには、**[OMS Portal]** タイルをクリックします。
+11. 新しいソリューションを確認するには、**[OMS Portal]** タイルをクリックします。
 
     ![すべて表示](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. OMS ポータルは次の画面のようになります。
+12. ポータルは次の画面のようになります。
 
     ![すべて表示](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
@@ -261,11 +261,11 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 ### <a name="offers-and-pricing-tiers"></a>プランと価格レベル
 
-[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で OMS 管理ソリューションのプランと価格レベルを確認できます。
+[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で管理ソリューションのプランと価格レベルを確認できます。
 
 ### <a name="customizing-views"></a>ビューのカスタマイズ
 
-**ビュー デザイナー**を使用して、データのビューをカスタマイズできます。 デザインを開始するには、OMS ワークスペースに移動し、**[ビュー デザイナー]** タイルをクリックします。
+**ビュー デザイナー**を使用して、データのビューをカスタマイズできます。 デザインを開始するには、Log Analytics ワークスペースに移動し、**[ビュー デザイナー]** タイルをクリックします。
 
 ![ビュー デザイナー](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -410,7 +410,7 @@ Verizon のログ データには 1 時間の遅延があり、エンドポイ�
 
 * [Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Azure CDN の補助ポータルを使用したコア分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

@@ -1,6 +1,6 @@
 ---
 title: Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする | Microsoft Docs
-description: 概念と有効化方法に関する詳細手順チュートリアル
+description: Application Insights Profiler の使用方法についての概念の概要と、詳細な手順を説明したチュートリアルです。
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,43 +12,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 63a7ceacffe1ee33227d3a8272dda7de7b3b1135
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5596c4efeba14e9d2bfdadd7ce92bb6b2c9fcbf0
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
 現在、この機能はプレビュー段階にあります。
 
-[Application Insights](app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Profiler は現在、App Services の Linux でホストされている ASP.NET Core Web アプリで利用できます。 このガイドでは、ASP.NET Core Linux Web アプリのためにプロファイラー トレースを収集するしくみについて段階的に説明します。
+[Application Insights](app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights Profiler は現在、Azure App Service の Linux でホストされている ASP.NET Core Web アプリで利用できます。 このガイドでは、ASP.NET Core Linux Web アプリのためにプロファイラー トレースを収集するしくみについて段階的に説明します。
 
-このチュートリアルを完了すると、下のスクリーンショットのようにアプリはプロファイラー トレースを収集します。 この例では、プロファイラー トレースは、特定の Web 要求が遅くなっていることを示しています。ほとんどが待ち時間になっています。 アプリを遅くしているコードのホット パスには炎を模したアイコンが付きます。 この例では、`HomeController` の `About` メソッドが Web アプリを遅くしています。`Thread.Sleep` を呼び出しているためです。
+このチュートリアルを完了すると、図に示されているトレースのようなプロファイラー トレースをアプリで収集できるようになります。 この例では、プロファイラー トレースは、特定の Web 要求が待ち時間のために遅くなっていることを示しています。 アプリを遅くしているコード内の*ホット パス*には炎を模したアイコンが付きます。 **HomeController** セクションの **About** メソッドが **Thread.Sleep** 関数を呼び出しているため、Web アプリが遅くなっています。
 
 ![プロファイラー トレース](./media/app-insights-profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="pre-requisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 以下の指示は、あらゆる Windows、Linux、Mac 開発環境に適用されます。
 
-* [.NET core SDK 2.1.2 以降](https://www.microsoft.com/net/download/windows/build)をインストールします。
-* 「[Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)」の指示に基づいて Git をインストールします。
+* [.NET Core SDK 2.1.2 以降](https://www.microsoft.com/net/download/windows/build)をインストールします。
+* 「[Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)」(はじめに - Git をインストールする) の指示に基づいて Git をインストールします。
 
-## <a name="setup-project-locally"></a>プロジェクトをローカルでセットアップする
+## <a name="set-up-the-project-locally"></a>プロジェクトをローカルで設定する
 
-1. お使いのコンピューターでコマンド プロンプトを開きます。 以下の指示は、あらゆる Windows、Linux、Mac 開発環境に適用されます。
+1. お使いのコンピューターでコマンド プロンプト ウィンドウを開きます。 以下の指示は、あらゆる Windows、Linux、Mac 開発環境で有効です。
 
 2. ASP.NET Core MVC Web アプリケーションを作成します。
+
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
-3. コマンド プロンプトのディレクトリをプロジェクトのルート フォルダーに変更します。
 
-4. プロファイラー トレースを収集するための NuGet パッケージを追加します。
+3. 作業ディレクトリをプロジェクトのルート フォルダーに変更します。
+
+4. プロファイラー トレースを収集する NuGet パッケージを追加します。
+
     ```
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
-5. HomeController.cs に無作為で数秒遅らせるためのコード行を追加します。
+
+5. **HomeController.cs** セクションに無作為で数秒遅らせるためのコード行を追加します。
 
     ```csharp
         using System.Threading;
@@ -62,6 +66,7 @@ ms.lasthandoff: 03/23/2018
                 return View();
             }
     ```
+
 6. 変更内容をローカル リポジトリに保存し、コミットします。
 
     ```
@@ -70,12 +75,16 @@ ms.lasthandoff: 03/23/2018
         git commit -m "first commit"
     ```
 
-## <a name="create-azure-app-service-for-hosting-your-project"></a>プロジェクトをホストするための Azure App Service を作成する
-1. App Services Linux 環境を作成します。
+## <a name="create-the-linux-web-app-to-host-your-project"></a>プロジェクトをホストする Linux Web アプリを作成する
 
-    ![Linux App Services を作成する](./media/app-insights-profiler-aspnetcore-linux/create-linux-appservice.png)
+1. App Service on Linux を使用して Web アプリ環境を作成します。
 
-2. デプロイ資格情報を作成します。 パスワードをメモしておきます。後でアプリをデプロイするときに必要になります。
+    ![Linux Web アプリを作成する](./media/app-insights-profiler-aspnetcore-linux/create-linux-appservice.png)
+
+2. デプロイ資格情報を作成します。
+
+    > [!NOTE]
+    > 後で Web アプリをデプロイするときに使用するためにパスワードを記録しておきます。
 
     ![デプロイ資格情報を作成する](./media/app-insights-profiler-aspnetcore-linux/create-deployment-credentials.png)
 
@@ -83,24 +92,26 @@ ms.lasthandoff: 03/23/2018
 
     ![Git リポジトリを設定する](./media/app-insights-profiler-aspnetcore-linux/setup-git-repo.png)
 
-その他のデプロイ オプションは[こちら](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type)にあります。
+その他のデプロイ オプションについては、[この記事](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type)を参照してください。
 
 ## <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-1. コマンド プロンプトで、プロジェクトのルート フォルダーに移動します。 App Services のものを指すように Git リモート リポジトリを追加します。
+1. コマンド プロンプト ウィンドウで、プロジェクトのルート フォルダーを参照します。 App Service のリポジトリを指すように Git リモート リポジトリを追加します。
 
     ```
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
-    * "デプロイ資格情報の作成" 手順の 'ユーザー名' を使用します。
-    * "アプリ サービスの作成" 手順の 'ユーザー名' を使用します。
+
+    * デプロイ資格情報を作成するために使用した**ユーザー名**を使用します。
+    * App Service on Linux を使用して Web アプリを作成するために使用した**アプリ名**を使用します。
 
 2. Azure に変更をプッシュし、プロジェクトをデプロイします。
 
     ```
     git push azure master
     ```
-次のような出力が表示されます。
+
+次の例のような出力が表示されます。
 
     ```
     Counting objects: 9, done.
@@ -124,39 +135,43 @@ ms.lasthandoff: 03/23/2018
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights を追加して Web アプリを監視する
+
 1. [Application Insights リソースを作成します](./app-insights-create-new-resource.md)。
-2. Application Insights リソースの iKey をコピーし、自分のアプリ サービスで次のように設定します。
+
+2. Application Insights リソースの **iKey** 値をコピーし、自分の Web アプリで次のように設定します。
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
     ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-    ![アプリの設定](./media/app-insights-profiler-aspnetcore-linux/set-appsettings.png)
+    ![アプリ設定を構成する](./media/app-insights-profiler-aspnetcore-linux/set-appsettings.png)
 
-    アプリの設定を変更すると、サイトが自動的に再起動します。 新しい設定が適用されると、直後、プロファイラーが 2 分間の実行を開始します。 その後、1 時間ごとに 2 分間実行します。
+    アプリ設定を変更すると、サイトは自動的に再起動します。 新しい設定が適用されると、すぐにプロファイラーが 2 分間実行されます。 その後、プロファイラーは 1 時間ごとに 2 分間実行されます。
 
-3. Web サイトにいくらかのトラフィックを生成させます。 たとえば、サイトの ```About``` ページを数回更新してみます。
+3. Web サイトにいくらかのトラフィックを生成させます。 サイトの **[About]** ページを何回か更新することで、トラフィックを生成できます。
 
-4. イベントが Application Insights に集計されるように、2 - 5 分間待ちます。
+4. イベントを 2 から 5 分間待機して、Application Insights に集計します。
 
-5. Azure Portal の Application Insights パフォーマンス ウィンドウに移動します。 右下隅にプロファイラー トレースが表示されます。
+5. Azure Portal で Application Insights の **[パフォーマンス]** ウィンドウを参照します。 ウィンドウの右下でプロファイラー トレースを確認できます。
 
-    ![トレースを表示する](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
+    ![プロファイラー トレースを表示する](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>既知の問題
 
-### <a name="enable-button-in-profiler-configuration-pane-does-not-work"></a>[プロファイラーの構成] ウィンドウの [有効化] ボタンが機能しない
-**App Services Linux を使用してアプリをホストしている場合、App Insights ポータルの [パフォーマンス] ウィンドウで Profiler を再度有効にする必要はありません。NuGet パッケージをプロジェクトに含め、[アプリ設定] で App Insights の iKey を設定すれば、Profiler を有効にするには十分です**。
+### <a name="the-enable-action-in-the-profiler-configuration-pane-doesnt-work"></a>[プロファイラーの構成] ウィンドウの [有効化] アクションが機能しない
 
-[Windows のための App Insights Profiler](./app-insights-profiler.md) 有効化ワークフローに従い、[Profiler の構成] ウィンドウで **[有効化]** をクリックすると、その操作で、Linux 環境に Windows バージョンのプロファイラー エージェントのインストールが試みられるため、エラーが表示されます。
+> [!NOTE]
+> App Service on Linux を使用してアプリをホストする場合は、Application Insights ポータルの **[パフォーマンス]** ウィンドウでプロファイラーを再度有効にする必要はありません。 プロジェクトに NuGet パッケージを含めて、Web アプリの設定で Application Insights の **iKey** 値を設定することで、プロファイラーを有効にすることができます。
 
-有効化の操作におけるこの問題については、解決に取り組んでいます。
+[Windows のための Application Insights Profiler](./app-insights-profiler.md) の有効化ワークフローに従い、**[Profiler の構成]** ウィンドウで **[有効化]** を選択すると、エラーが表示されます。 有効化アクションにより、Linux 環境への Windows バージョンのプロファイラー エージェントのインストールが試みられます。
 
-![Linux App Services でプロファイラーを機能させるために、[パフォーマンス] ウィンドウで再度 Profiler を有効にする必要はありません](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
+この問題の解決に取り組んでいます。
+
+![[パフォーマンス] ウィンドウでプロファイラーを再度有効にしないでください](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
 
 
 ## <a name="next-steps"></a>次の手順
-App Services でホストされているカスタム コンテナーを使用している場合は、[ コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で App Insight Profiler を有効にします
+Azure App Service でホストされているカスタム コンテナーを使用する場合は、[コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で Application Insight Profiler を有効にします。
 
-問題や提案があれば、Github リポジトリ [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues) に報告してください。
+問題や提案があれば、Application Insights GitHub リポジトリ [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues) に報告してください。

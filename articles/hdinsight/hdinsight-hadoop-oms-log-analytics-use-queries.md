@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics でクエリを実行して Azure HDInsight クラスターを監視する | Microsoft Docs"
-description: "Azure Log Analytics でクエリを実行し、HDInsight クラスターで実行されているジョブを監視する方法を説明します。"
+title: Azure Log Analytics でクエリを実行して Azure HDInsight クラスターを監視する | Microsoft Docs
+description: Azure Log Analytics でクエリを実行し、HDInsight クラスターで実行されているジョブを監視する方法を説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: f9e023ae8d6c50049b588cf056629cd8d46ee603
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1b2f5fc9bd4f8fc8cd70437e38831595d0a8a819
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics でクエリを実行して HDInsight クラスターを監視する
 
@@ -33,7 +33,7 @@ Azure Log Analytics を使用して Azure HDInsight クラスターを監視す�
 
 * Azure Log Analytics を使用するように HDInsight クラスターを構成しておく必要があります。 手順については、「[Log Analytics を使用して Azure HDInsight クラスターを監視する](hdinsight-hadoop-oms-log-analytics-tutorial.md)」をご覧ください。
 
-* 「[Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)」の手順に従って、HDInsight クラスター固有の管理ソリューションを [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) ワークスペースに追加しておく必要があります。
+* 「[Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)」の手順に従って、HDInsight クラスター固有の管理ソリューションを [Log Analytics](../operations-management-suite/operations-management-suite-overview.md) ワークスペースに追加しておく必要があります。
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight クラスターのメトリックを分析する
 
@@ -86,7 +86,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
     ![OMS ダッシュボードを開く](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS ダッシュボードを開く")
 
-2. OMS ダッシュボードのホーム画面で **[ログ検索]** をクリックします。
+2. OMS ポータルのホーム画面で **[ログ検索]** をクリックします。
 
     ![ログ検索を開く](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "ログ検索を開く")
 
@@ -126,7 +126,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
     ![OMS ダッシュボードを開く](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS ダッシュボードを開く")
 
-2. OMS ダッシュボードのホーム画面で **[ログ検索]** をクリックします。
+2. OMS ポータルのホーム画面で **[ログ検索]** をクリックします。
 
     ![ログ検索を開く](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "ログ検索を開く")
 
@@ -152,5 +152,5 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 ## <a name="see-also"></a>関連項目
 
-* [Operations Management Suite Log Analytics の操作](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Log Analytics の使用](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [Log Analytics でのアラート ルールの作成](../log-analytics/log-analytics-alerts-creating.md)

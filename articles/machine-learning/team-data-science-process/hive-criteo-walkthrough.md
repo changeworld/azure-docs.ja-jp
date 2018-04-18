@@ -1,8 +1,8 @@
 ---
-title: "Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用 | Microsoft Docs"
-description: "HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されている大量 (1 TB) のデータセットを使ってモデルを構築してデプロイします"
+title: Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用 | Microsoft Docs
+description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されている大量 (1 TB) のデータセットを使ってモデルを構築してデプロイします
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
 ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -437,7 +437,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 1. [Hive クエリ] を **データ ソース**
 2. **[Hive データベース クエリ]** ボックスでは、SELECT * FROM <your\_database\_name.your\_table\_name> のみで十分です。
-3. **[Hcatalog サーバー URI]**: クラスターが "abc" の場合は、https://abc.azurehdinsight.net のみです。
+3. **[Hcatalog サーバー URI]**: クラスターが "abc" の場合は、単純に https://abc.azurehdinsight.net となります。
 4. **[Hadoop ユーザーのアカウント名]**: クラスターの設定時に選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 5. **[Hadoop ユーザー アカウントのパスワード]**: クラスターの設定時に選択した上記のユーザー名のパスワード (リモート アクセスのパスワードではありません)。
 6. **[出力データの場所]**: [Azure] を選択します。

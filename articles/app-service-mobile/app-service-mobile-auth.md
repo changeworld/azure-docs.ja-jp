@@ -1,108 +1,103 @@
 ---
-title: "Azure Mobile Apps での認証および承認 | Microsoft Docs"
-description: "Azure Mobile Apps の認証および承認機能の概念リファレンスと概要について説明します"
-services: app-service\mobile
-documentationcenter: 
+title: モバイル アプリを対象とした Azure App Service での認証および承認 | Microsoft Docs
+description: 特にモバイル アプリを対象とした Azure App Service の認証/承認機能の概念リファレンスと概要
+services: app-service
+documentationcenter: ''
 author: mattchenderson
-manager: cfowler
-editor: 
-ms.assetid: a46dbf70-867d-48f6-8885-7f5207ad102e
-ms.service: app-service-mobile
+manager: erikre
+editor: ''
+ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 57deec4acffc1387fcb5c42c17085bb363dfdbc1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 237310c607eb8488e53631b6e69d01703d1ebf99
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Azure Mobile Apps での認証および承認
-## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
-> [!NOTE]
-> この記事は、Web、Mobile、および API Apps に関する説明が記載された [App Service の認証/承認](../app-service/app-service-authentication-overview.md)に関する記事に統合される予定です。
-> 
-> 
+# <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>モバイル アプリを対象とした Azure App Service での認証および承認
 
-App Service の認証および承認とは、アプリのバックエンドのコードを変更せずに、アプリケーションがユーザーのログインを許可する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
+この記事では、App Service のバックエンドでネイティブ モバイル アプリを開発するときの認証と承認のしくみについて説明します。 App Service では統合認証および承認を利用できます。このため、App Service のコードを変更しなくても、お使いのモバイル アプリでユーザーをサインインさせることができます。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。 
 
-App Service では、フェデレーション ID が使用されます。つまりアカウントの保存とユーザーの認証は、サード パーティの **ID プロバイダー** ("IDP") によって行われます。 この ID が、アプリケーション独自の ID の代わりに使用されます。 App Service では、標準で *Azure Active Directory*、*Facebook*、*Google*、*Microsoft アカウント*、および *Twitter* の 5 つの ID プロバイダーをサポートしています。 他の ID プロバイダーや独自のカスタム ID ソリューションを統合して、アプリでのこのサポートを拡張することもできます。
+この記事では、モバイル アプリの開発に重点を置いて説明します。 モバイル アプリを対象とした App Service の認証と承認をすぐに開始する場合は、「[iOS アプリに認証を追加する][iOS]」(または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova]) のチュートリアルのいずれかを参照してください。 
 
-アプリで使用できる ID プロバイダーの数には制限がないため、エンド ユーザーにログイン方法のオプションを提供できます。
+App Service での認証と承認のしくみについては、「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」を参照してください。
 
-すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
+## <a name="authentication-with-provider-sdk"></a>プロバイダー SDK を使用した認証
 
-* [iOS アプリに認証を追加する]
-* [Xamarin.iOS アプリに認証を追加する]
-* [Xamarin.Android アプリに認証を追加する]
-* [Windows アプリに認証を追加する]
+App Service ですべてを構成したら、App Service にサインインできるようにモバイル クライアントを変更できます。 これには 2 つの方法はあります。
 
-## <a name="how-authentication-works"></a>認証のしくみ
-いずれかの ID プロバイダーで認証を行うには、最初にその ID プロバイダーを構成してアプリケーションを把握させる必要があります。 すると、ID プロバイダーが、ID とシークレットを求めてくるので、ユーザーはそれをアプリケーションに戻します。 これにより信頼関係が確立し、App Service は提供された ID を検証できるようになります。
-
-これらの手順の詳細については、以下のトピックを参照してください。
-
-* [Azure Active Directory ログインを使用するようにアプリを構成する方法]
-* [Facebook ログインを使用するようにアプリを構成する方法]
-* [Google ログインを使用するようにアプリを構成する方法]
-* [Microsoft アカウント ログインを使用するようにアプリを構成する方法]
-* [Twitter ログインを使用するようにアプリを構成する方法]
-
-バックエンドですべてを構成したら、クライアントを変更してログインできるようにできます。 これには 2 つの方法はあります。
-
+* 特定の ID プロバイダーが発行する SDK を使用して、ID を確立し、App Service にアクセスできるようにします。
 * 1 行のコードを使用して、Mobile Apps クライアント SDK でユーザーがサインインできるようにします。
-* 特定の ID プロバイダーが発行している SDK を使用し、ID を確立し、App Service にアクセスできるようにします。
 
 > [!TIP]
-> 多くのアプリケーションでは、よりネイティブに感じられるログイン エクスペリエンスを得たり、更新のサポートを利用したり、その他のプロバイダーに固有のメリットを得るために、プロバイダーの SDK を使用した方がよいでしょう。
+> ほとんどのアプリケーションで、ユーザーのサインイン時に一貫性のあるエクスペリエンスを実現し、トークン更新サポートを使用して、プロバイダーが指定する他の利点を得るために、プロバイダー SDK を使用する必要があります。
 > 
 > 
 
-### <a name="how-authentication-without-a-provider-sdk-works"></a>プロバイダー SDK の動作のしくみ
-プロバイダー SDK の設定を希望しない場合は、Mobile Apps でのログインを許可できます。 Mobile Apps クライアント SDK が、選択したプロバイダーの Web ビューを開き、サインインを完了させます。 サーバーがログイン管理を行い、クライアント SDK がプロバイダーのトークンを受け取ることはないため、このワークフローは "サーバー フロー" または "サーバー主導のフロー" と呼ばれることがあります。
+プロバイダー SDK を使用すると、ユーザーは、アプリが実行しているオペレーティング システムとより緊密に統合するエクスペリエンスにサインインできます。 この方法により、プロバイダーのトークンとクライアント上のユーザー情報の一部が得られるので、グラフ API の使用やユーザー エクスペリエンスのカスタマイズが容易になります。 クライアント コードがユーザーをサインインさせ、クライアント コードがプロバイダーのトークンにアクセスするため、これは "クライアント フロー" または "クライアント主導のフロー" と、ブログやフォーラムで呼ばれることがあります。
 
-このフローを開始するために必要なコードは、各プラットフォームの認証のチュートリアルで説明されています。 フローの最後では、クライアント SDK が App Service トークンを取得し、そのトークンはバックエンドへのすべての要求に自動的に添付されます。
+プロバイダーのトークンが取得されたら、App Service に送信して検証する必要があります。 App Service では、トークンの検証後、クライアントに返される新しい App Service トークンが作成されます。 Mobile Apps クライアント SDK には、この交換を管理してアプリケーション バックエンドへのすべての要求にトークンを自動的に添付するヘルパー メソッドがあります。 開発者はプロバイダー トークンへの参照を保持できます。
 
-### <a name="how-authentication-with-a-provider-sdk-works"></a>プロバイダー SDK での認証のしくみ
-プロバイダー SDK を使用すると、アプリが実行されているプラットフォーム OS とログイン エクスペリエンスがより緊密に通信するようになります。 プロバイダー SDK により、プロバイダーのトークンとクライアント上のユーザー情報の一部が得られるので、グラフ API が使用しやすくなったり、ユーザー エクスペリエンスをカスタマイズしやすくなったりします。 クライアント コードがログインを処理し、クライアント コードがプロバイダーのトークンにアクセスするため、このワークフローは "クライアント フロー" または "クライアント主導のフロー" と呼ばれることがあります。
+認証フローの詳細については、[App Service の認証フロー](../app-service/app-service-authentication-overview.md#authentication-flow)に関する記事をご覧ください。 
 
-プロバイダーのトークンが取得されたら、App Service に送信して検証する必要があります。 フローの最後では、クライアント SDK が App Service トークンを取得し、そのトークンはバックエンドへのすべての要求に自動的に添付されます。 希望する場合、開発者はプロバイダー トークンへの参照を保持できます。
+## <a name="authentication-without-provider-sdk"></a>プロバイダー SDK を使用しない認証
 
-## <a name="how-authorization-works"></a>承認のしくみ
-App Service の認証および承認では、**要求が認証されない場合のアクション**にいくつかの選択肢があります。 コードが特定の要求を受け取る前に、App Service に要求が認証されているかを確認できます。認証されていない場合、拒否し、再試行する前にユーザー ログインを試行させます。
+SDK プロバイダーを設定しない場合は、Azure App Service の Mobile Apps 機能によって自動的にサインインさせることができます。 Mobile Apps クライアント SDK が、選択したプロバイダーの Web ビューを開き、ユーザーをサインインさせます。 サーバーがユーザーをサインインさせるプロセスを管理し、クライアント SDK がプロバイダーのトークンを受け取ることはないため、これは "サーバー フロー" または "サーバー主導のフロー" と、ブログやフォーラムで呼ばれることがあります。
 
-1 つの選択肢として、認証されていない要求を ID プロバイダーのいずれかにリダイレクトさせることができます。 このリダイレクトでは実際、ユーザーは Web ブラウザーで新しいページに移動させられます。 ただし、モバイル クライアントはこの方法ではリダイレクトできず、認証されていないことの応答として HTTP "*401 権限がありません*" が表示されます。 そのため、クライアントが行う最初の要求は必ずログイン エンドポイントに対してである必要があり、それからその他の任意の API を呼び出す必要があります。 ログイン前に別の API を呼び出そうとすると、クライアントにはエラーが表示されます。
+このフローを開始するコードは、各プラットフォームの認証のチュートリアルに含まれています。 フローの最後では、クライアント SDK が App Service トークンを取得し、そのトークンがアプリケーション バックエンドへのすべての要求に自動的に添付されます。
 
-認証が必要なエンドポイントをより細かく制御するには、認証されていない要求に対しては "アクションなし (要求を許可)" を選択することも可能です。 この場合、すべての認証の決定は、アプリケーションのコードに委ねられます。 これにより、カスタム承認規則に基づき特定のユーザーにアクセスを許可できます。
+認証フローの詳細については、[App Service の認証フロー](../app-service/app-service-authentication-overview.md#authentication-flow)に関する記事をご覧ください。 
+## <a name="more-resources"></a>その他のリソース
 
-## <a name="documentation"></a>ドキュメント
-以下のチュートリアルは、App Service を使用し、モバイル クライアントに認証を追加する方法について説明しています。
+以下のチュートリアルで、[サーバー主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用し、モバイル クライアントに認証を追加する方法について説明しています。
 
-* [iOS アプリに認証を追加する]
-* [Xamarin.iOS アプリに認証を追加する]
-* [Xamarin.Android アプリに認証を追加する]
-* [Windows アプリに認証を追加する]
+* [iOS アプリに認証を追加する][iOS]
+* [Android アプリに認証を追加する][Android]
+* [Windows アプリに認証を追加する][Windows]
+* [Xamarin.iOS アプリに認証を追加する][Xamarin.iOS]
+* [Xamarin.Android アプリに認証を追加する][Xamarin.Android]
+* [Xamarin.Forms アプリに認証を追加する][Xamarin.Forms]
+* [Cordova アプリに認証を追加する][Cordova]
 
-以下のチュートリアルは、さまざまな認証プロバイダーを使用する、App Service の構成方法について説明しています。
+Azure Active Directory の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
 
-* [Azure Active Directory ログインを使用するようにアプリを構成する方法]
-* [Facebook ログインを使用するようにアプリを構成する方法]
-* [Google ログインを使用するようにアプリを構成する方法]
-* [Microsoft アカウント ログインを使用するようにアプリを構成する方法]
-* [Twitter ログインを使用するようにアプリを構成する方法]
+* [iOS 向け Active Directory 認証ライブラリを使用する][ADAL-iOS]
+* [Android 向け Active Directory 認証ライブラリを使用する][ADAL-Android]
+* [Windows および Xamarin 向け Active Directory 認証ライブラリを使用する][ADAL-dotnet]
 
-ここで示す以外の ID システムを使用する場合、「[.NET サーバー SDK でのカスタム認証のサポートのプレビュー](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth)」も参照してください。
+Facebook の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
 
-[iOS アプリに認証を追加する]: app-service-mobile-ios-get-started-users.md
-[Xamarin.iOS アプリに認証を追加する]: app-service-mobile-xamarin-ios-get-started-users.md
-[Xamarin.Android アプリに認証を追加する]: app-service-mobile-xamarin-android-get-started-users.md
-[Windows アプリに認証を追加する]: app-service-mobile-windows-store-dotnet-get-started-users.md
+* [Facebook SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-[Azure Active Directory ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[Google ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[Microsoft アカウント ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter ログインを使用するようにアプリを構成する方法]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
+Twitter の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
+
+* [Twitter Fabric for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+
+Google の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
+
+* [Google Sign-In SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
+
+[iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
+[Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
+[Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
+[Xamarin.Android]: ../app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md
+[Xamarin.Forms]: ../app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md
+[Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
+[Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
+
+[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
+[Google]: app-service-mobile-how-to-configure-google-authentication.md
+[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
+
+[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+
+[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
+[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
+[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal

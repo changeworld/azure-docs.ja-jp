@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理 | Microsoft Docs"
-description: "HDInsight サービスを管理する方法を学習します。 HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。"
+title: Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理 | Microsoft Docs
+description: HDInsight サービスを管理する方法を学習します。 HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/27/2018
 * **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。 Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。 Azure ストレージ アカウントの作成の詳細については、 [ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md)に関するページを参照してください。
 
 ## <a name="open-the-portal"></a>ポータルを開く
-1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
+1. [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. ポータルを開くと、次の操作を行うことができます。
 
    * 左側のメニューの **[リソースの作成]** をクリックして新しいクラスターを作成します。
@@ -73,7 +73,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 リモート デスクトップ接続を使用したクラスターへのカスタム ソフトウェアのインストールはサポートされていません。 クラスターの再作成が必要な場合にファイルが失われるため、ヘッド ノードのドライブにはファイルを保存しないでください。 Azure BLOB ストレージにファイルを保存することをお勧めします。 BLOB ストレージは永続的です。
 
 ## <a name="list-and-show-clusters"></a>クラスターの一覧と表示
-1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
+1. [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックする。
 3. クラスター名をクリックします。 クラスターの一覧が長い場合は、ページの上部でフィルターを使用できます。
 4. 一覧にあるクラスターをダブルクリックして詳細を表示します。

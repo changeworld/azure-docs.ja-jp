@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: 08906939ecc80999de94ad7e7141081f959fb6f2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure と Jenkins
 
@@ -31,7 +31,7 @@ Azure で Jenkins をホストすることで、ビルドの自動化を集中�
 - [Azure 仮想マシン](/azure/virtual-machines/linux/overview)。 VM で Jenkins を作成するには、[チュートリアル](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)を参照してください。
 - [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) で実行されている Kubernetes クラスターについては、こちらの[手順](/azure/container-service/kubernetes/container-service-kubernetes-jenkins)を参照してください。
 
-Azure Jenkins のデプロイは、[Log Analytics](/azure/log-analytics/log-analytics-overview)、[Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview)、および [[Azure CLI]](/cli/azure) を使用して監視および管理します。
+Azure Jenkins のデプロイは、[Log Analytics](/azure/log-analytics/log-analytics-overview) および [Azure CLI](/cli/azure) を使用して監視および管理します。
 
 ## <a name="scale-your-build-automation-on-demand"></a>ビルド自動化をオン デマンドで拡大縮小する
 

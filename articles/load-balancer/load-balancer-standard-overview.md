@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/02/2018
 ms.author: kumud
-ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -43,7 +43,7 @@ Standard Load Balancer は、パブリック ロード バランサーまたは�
 
 ## <a name="why-use-standard-load-balancer"></a>Standard Load Balancer を使用する理由
 
-Standard Load Balancer は、小規模の展開から、大規模で複雑なマルチゾーン アーキテクチャまで、あらゆる仮想データ センターに使うことができます。
+Standard Load Balancer を使用すると、アプリケーションをスケーリングし、小規模のデプロイから大規模で複雑なマルチゾーン アーキテクチャまで、高可用性を実現することができます。
 
 Standard Load Balancer と Basic Load Balancer の違いの概要については、次の表をご覧ください。
 
@@ -76,9 +76,6 @@ Standard Load Balancer バックエンド プールは、仮想ネットワー�
 バックエンド プールの設計方法を検討するときは、個々のバックエンド プール リソースを最小限の数に設計して、管理操作の期間をさらに最適化できます。  データ プレーンのパフォーマンスやスケールに違いはありません。
 
 ## <a name="az"></a>可用性ゾーン
-
->[!NOTE]
-> Standard Load Balancer で[可用性ゾーン (プレビュー)](https://aka.ms/availabilityzones) を使うには、[可用性ゾーンへのサインアップ](https://aka.ms/availabilityzones)が必要です。
 
 Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。  これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の Standard Load Balancer で利用できます。
 
@@ -229,7 +226,7 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 
 ## <a name="next-steps"></a>次の手順
 
-- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
+- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
 - [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)について学習する。
@@ -238,6 +235,6 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 - [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) について学習する。
 - [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)について学習する。
 - [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)の詳細を確認する。
-- [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)について学習する。
+- [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)について学習する
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
 - [Load Balancer](load-balancer-overview.md) について詳しく学習する。
