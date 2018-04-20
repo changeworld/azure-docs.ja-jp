@@ -16,10 +16,10 @@ ms.author: daveba
 ms.reviewer: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 95980c082b09ad959ab8bbaae0250b40ac08d2c8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
