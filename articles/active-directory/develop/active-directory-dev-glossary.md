@@ -24,7 +24,7 @@ ms.lasthandoff: 12/11/2017
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
 
-## <a name="access-token"></a>Twitter アプリケーションの
+## <a name="access-token"></a>アクセス トークン
 [承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、[保護されたリソース サーバー](#resource-server)にアクセスする目的で使用します。 要求されたレベルのアクセスに関して、[リソース所有者](#resource-owner)がクライアントに付与しているアクセス権限を通常 [JSON Web トークン (JWT)][JWT] の形式で 1 つにまとめたものがこのトークンです。 このトークンは、認証対象に関して当てはまる[要求](#claim)をすべて含んでおり、クライアント アプリケーションが特定のリソースにアクセスする際に一種の資格情報として使用することができます。 また、これを使用すると、リソース所有者がクライアントに資格情報を開示する必要がなくなります。
 
 表現の対象となる資格情報によっては、アクセス トークンを "User+App" や "App-Only" と呼ぶこともあります。 たとえばクライアント アプリケーションが使用する承認付与には、次のようなタイプがあります。
