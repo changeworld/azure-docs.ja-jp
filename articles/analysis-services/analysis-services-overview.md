@@ -99,14 +99,14 @@ Azure Analysis Services では、組織のオンプレミス データ ソース
 Azure Analysis Services のユーザー認証は、[Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) によって処理されます。 ユーザーが Azure Analysis Services データベースにログインするときは、対象のデータベースへのアクセス権がある組織のアカウント ID を使います。 これらのユーザー ID は、Azure Analysis Services サーバーが存在しているサブスクリプションの既定の Azure Active Directory のメンバーである必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
 #### <a name="data-security"></a>データのセキュリティ
-Azure Analysis Services は、Azure Blob Storage を利用して、Analysis Services データベースのストレージとメタデータを保持します。 BLOB 内のデータ ファイルは、Azure Blob Server Side Encryption (SSE) を使って暗号化されます。 直接クエリ モードを使用している場合は、メタデータのみが格納されます。 実際のデータは、クエリ時にデータ ソースからアクセスされます。
+Azure Analysis Services は、Azure Blob Storage を利用して、Analysis Services データベースのストレージとメタデータを保持します。 BLOB 内のデータ ファイルは、Azure Blob Server Side Encryption (SSE) を使って暗号化されます。 DirectQuery モードを使用している場合は、メタデータのみが格納されます。 実際のデータは、クエリ時にデータ ソースからアクセスされます。
 
 #### <a name="firewall"></a>ファイアウォール
 
 Azure Analysis Services ファイアウォールは、ルールに規定されているクライアント接続を除く、すべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロック許可することもできます。 
 
 #### <a name="on-premises-data-sources"></a>オンプレミス データ ソース
-組織のオンプレミス データへの安全なアクセスは、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールして構成することにより実現します。 ゲートウェイは、直接クエリ モードとメモリ内モード両方のデータへのアクセスを提供します。 Azure Analysis Services モデルがオンプレミス データ ソースに接続すると、オンプレミス データ ソースに対する暗号化された資格情報を含むクエリが作成されます。 ゲートウェイ クラウド サービスはクエリを分析して、Azure Service Bus に要求をプッシュします。 オンプレミス ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。 その後、ゲートウェイはクエリを取得して、資格情報を復号化し、データ ソースに接続して実行します。 結果は、データ ソースからゲートウェイ経由で Azure Analysis Services データベースに返送されます。
+組織のオンプレミス データへの安全なアクセスは、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールして構成することにより実現します。 ゲートウェイは、DirectQuery モードとインメモリ モード両方のデータへのアクセスを提供します。 Azure Analysis Services モデルがオンプレミス データ ソースに接続すると、オンプレミス データ ソースに対する暗号化された資格情報を含むクエリが作成されます。 ゲートウェイ クラウド サービスはクエリを分析して、Azure Service Bus に要求をプッシュします。 オンプレミス ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。 その後、ゲートウェイはクエリを取得して、資格情報を復号化し、データ ソースに接続して実行します。 結果は、データ ソースからゲートウェイ経由で Azure Analysis Services データベースに返送されます。
 
 Azure Analysis Services は、[Microsoft オンライン サービス使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)および[Microsoft オンライン サービス プライバシー表明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)によって管理されます。
 Azure のセキュリティについて詳しくは、[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter/Security/AzureSecurity)をご覧ください。
