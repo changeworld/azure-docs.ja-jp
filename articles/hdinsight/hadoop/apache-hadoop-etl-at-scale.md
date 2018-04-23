@@ -1,26 +1,24 @@
 ---
-title: "大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight | Microsoft Docs"
-description: "HDInsight での Hadoop による ETL の使用方法について説明します。"
+title: 大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight | Microsoft Docs
+description: HDInsight での Hadoop による ETL の使用方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 8b55bafee83dd43d535f9ebb0488134b5c7b3446
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2f34233a68bec506d9f69426d779aee8e493d759
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -60,7 +58,7 @@ Azure Data Factory の詳細については、[こちらのドキュメント](.
 
 ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Store 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルが使用されます。 
 
-### <a name="azure-storage"></a>Azure Storage (Azure Storage) 
+### <a name="azure-storage"></a>Azure Storage 
 
 [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) には、[固有のスケーラビリティ ターゲット](../../storage/common/storage-scalability-targets.md)があります。  大半の分析ノードでは、Azure Storage は、多数の小さなファイルを処理する場合に最善のスケーリングを行います。  Azure Storage は、ファイルの数やサイズが制限内である限り、数やサイズに関係なく、同等のパフォーマンスを保証します。  つまり、テラバイトのデータを格納し、そのデータのサブセットを使用する場合でもすべてを使用する場合でも、一貫性のあるパフォーマンスを得ることができます。
 

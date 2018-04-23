@@ -1,5 +1,5 @@
 ---
-title: "Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス | Microsoft Docs"
+title: Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス | Microsoft Docs
 description: " ワークロードを Azure IaaS に移行すると、設計を再評価する機会が得られます "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 376a3e47e5099aa4d74732e0b6ed14ed9af14091
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -83,7 +83,7 @@ Azure サブスクリプションを管理できるアカウントの保護は�
 
 ラボ環境と開発環境として Azure を使用すると、ハードウェアの調達によって生じる遅れを排除してテストと開発における俊敏性を獲得できます。 残念なことに、Azure に関する知識の不足や Azure を迅速に採用したいという願望が原因で、管理者に過度な権限が割り当てられてしまうことがあります。 このリスクがもとで、意図せず組織が内部からの攻撃にさらされるおそれがあります。 ユーザーに、必要とされるよりもはるかに多くのアクセス権が付与される可能性もあります。
 
-[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) サービスでは、[Azure のロール ベースのアクセス制御 ](../active-directory/role-based-access-control-what-is.md) (RBAC) を使用します。 RBAC を使用すると、チーム内での職務を複数のロールに分けて、業務を行うために必要なレベルのアクセス権だけをユーザーに付与することができます。 RBAC には、あらかじめ定義されたロール (所有者、ラボ ユーザー、共同作成者) があります。 これらのロールを使用して、外部のパートナーに権限を割り当て、コラボレーションを大幅に簡略化することもできます。
+[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) サービスでは、[Azure のロール ベースのアクセス制御 ](../role-based-access-control/overview.md) (RBAC) を使用します。 RBAC を使用すると、チーム内での職務を複数のロールに分けて、業務を行うために必要なレベルのアクセス権だけをユーザーに付与することができます。 RBAC には、あらかじめ定義されたロール (所有者、ラボ ユーザー、共同作成者) があります。 これらのロールを使用して、外部のパートナーに権限を割り当て、コラボレーションを大幅に簡略化することもできます。
 
 RBAC を使用しているため、追加の[カスタム ロール](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md)も作成できます。 DevTest Labs は、アクセス許可の管理だけでなく、環境のプロビジョニング プロセスも簡略化されています。 開発環境やテスト環境を利用するチームが直面する他の一般的な課題に対処するようにも設計されています。 DevTest Labs を使用するには多少の準備が必要ですが、長期的に見ると、チームの業務の効率化につながります。
 
@@ -224,7 +224,7 @@ Operations Management Suite のセキュリティとコンプライアンスの�
 
 ![Operations Management Suite のセキュリティ ベースライン](./media/azure-security-iaas/oms-security-baseline.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure セキュリティ チームのブログ](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 487eca98b9be20faaa52c0a8952e84c6027ee1f0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 83e2c726228e43612caf94bd8564abc9df3882f9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
 ## <a name="overview"></a>概要
 
-[Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン拡張機能は、Azure 仮想マシンの一部の Network Watcher 機能に必要です。 これには、ネットワーク トラフィックのオンデマンドでのキャプチャなどの高度な機能が含まれます。
+[Azure Network Watcher](/azure/network-watcher/) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン拡張機能は、Azure 仮想マシンの一部の Network Watcher 機能に必要です。 これには、ネットワーク トラフィックのオンデマンドでのキャプチャなどの高度な機能が含まれます。
 
 このドキュメントでは、Linux 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します エージェントのインストールによって、仮想マシンが中断されることも、再起動が必要になることもありません。
 
@@ -49,7 +49,7 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-一部の Network Watcher Agent 機能では、ターゲット仮想マシンがインターネットに接続されている必要があります。 送信接続を確立できない場合、一部の Network Watcher Agent 機能が正しく動作しなかったり、使用できなくなったりすることがあります。 詳細については、[Network Watcher のドキュメント](https://review.docs.microsoft.com/azure/network-watcher/)をご覧ください。
+一部の Network Watcher Agent 機能では、ターゲット仮想マシンがインターネットに接続されている必要があります。 送信接続を確立できない場合、一部の Network Watcher Agent 機能が正しく動作しなかったり、使用できなくなったりすることがあります。 詳細については、[Network Watcher のドキュメント](/azure/network-watcher/)をご覧ください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 

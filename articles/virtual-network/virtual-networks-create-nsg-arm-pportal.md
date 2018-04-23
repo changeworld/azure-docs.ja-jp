@@ -1,6 +1,6 @@
 ---
-title: "ネットワーク セキュリティ グループの作成 - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
+title: ネットワーク セキュリティ グループの作成 - Azure Portal | Microsoft Docs
+description: Azure Portal を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd05df542327f9d8dae924b7097d247980a0558b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループの作成
 
@@ -39,8 +39,8 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-the-nsg-frontend-nsg"></a>NSG-FrontEnd NSG を作成する
 上記のシナリオのように **NSG-FrontEnd** という名前の NSG を作成するには、次の手順を実行します。
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. **[参照] &gt;**  > **[ネットワーク セキュリティ グループ]** をクリックします。
+1. ブラウザーで http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+2. **[参照] &gt;** > **[ネットワーク セキュリティ グループ]** をクリックします。
    
     ![Azure ポータル - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
 3. **[ネットワーク セキュリティ グループ]** ブレードで、**[追加]** をクリックします。
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-rules-in-an-existing-nsg"></a>既存の NSG に規則を作成する
 Azure ポータルから既存の NSG に規則を作成するには、次の手順を実行します。
 
-1. **[参照] &gt;**  > **[ネットワーク セキュリティ グループ]** をクリックします。
+1. **[参照] >**  > **[ネットワーク セキュリティ グループ]** をクリックします。
 2. NSG の一覧で、 **NSG-FrontEnd** > **[受信セキュリティ規則]**
    
     ![Azure ポータル - NSG-FrontEnd](./media/virtual-networks-create-nsg-arm-pportal/figure2.png)
@@ -91,7 +91,7 @@ Azure ポータルから既存の NSG に規則を作成するには、次の手
    | ![Azure ポータル - 受信規則](./media/virtual-networks-create-nsg-arm-pportal/figure17.png) |![Azure ポータル - 送信規則](./media/virtual-networks-create-nsg-arm-pportal/figure18.png) |
 3. 「[NSG を FrontEnd サブネットに関連付ける](#Associate-the-NSG-to-the-FrontEnd-subnet)」の手順を繰り返し、**NSG-Backend** NSG を **BackEnd** サブネットに関連付けます。
 
-## <a name="next-steps"></a>次のステップ
-* [既存の NSG の管理](virtual-network-manage-nsg-arm-portal.md)
+## <a name="next-steps"></a>次の手順
+* [既存の NSG の管理](manage-network-security-group.md)
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
 

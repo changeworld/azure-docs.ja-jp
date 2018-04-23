@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning データ準備の運用化の使用方法に関する詳細ガイド | Microsoft Docs"
-description: "このドキュメントでは、以前に設計されたデータ ソースおよびデータ準備パッケージの実行について詳しく説明しています"
+title: Azure Machine Learning データ準備の運用化の使用方法に関する詳細ガイド | Microsoft Docs
+description: このドキュメントでは、以前に設計されたデータ ソースおよびデータ準備パッケージの実行について詳しく説明しています
 services: machine-learning
 author: hughz
 ms.author: cforbe
@@ -8,15 +8,15 @@ manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/13/2018
 ms.openlocfilehash: 0849747fe6d66d55d11c131b51b07d8f689774e1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparation-operationalization"></a>データ準備の運用化 
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/05/2018
 
 ### <a name="description"></a>[説明]
 
-運用化の目的から、データ準備には、アクティビティを実行し、Pandas または Spark Dataframe を生成するための  **ReadJsonLiteral**  変換が含まれています。 この変換は、既存のデータ準備パッケージと JSON データ ソースを入力として一意に受け取ります。 この変換は、DataPrep Python CLI を介して公開されます。
+運用化の目的から、データ準備には、アクティビティを実行し、Pandas または Spark Dataframe を生成するための **ReadJsonLiteral** 変換が含まれています。 この変換は、既存のデータ準備パッケージと JSON データ ソースを入力として一意に受け取ります。 この変換は、DataPrep Python CLI を介して公開されます。
 
 ### <a name="instructions"></a>このサンプルについての指示
 

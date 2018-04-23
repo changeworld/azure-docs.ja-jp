@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Edge 用 AI ツールキットを使用する | Microsoft Docs"
-description: "この記事では、Azure IoT Edge 用 AI ツールキットの使用方法について説明します。"
+title: Azure IoT Edge 用 AI ツールキットを使用する | Microsoft Docs
+description: この記事では、Azure IoT Edge 用 AI ツールキットの使用方法について説明します。
 services: machine-learning
 author: tedway
 ms.author: tedway
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ms.openlocfilehash: 315d545e7ee530d660e92e29a60428e09e3795d5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Azure IoT Edge 用 AI ツールキットを使用する
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/08/2018
 
 ジャスト イン タイムが有効になっている場合、Security Center では NSG ルールの作成により Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックがロックダウンされるポートを選択します。 これらのポートは、ジャスト イン タイム ソリューションによって制御されます。
 
-ユーザーが VM へのアクセスを要求すると、そのユーザーに、VM への書き込みアクセス権を付与する[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) アクセス許可があるかとうかが、Security Center によってチェックされます。 ユーザーが書き込みアクセス許可を持っている場合は要求が承認され、Security Center では、管理ポートへの受信トラフィックを指定された時間だけ許可するように、ネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。
+ユーザーが VM へのアクセスを要求すると、そのユーザーに、VM への書き込みアクセス権を付与する[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) アクセス許可があるかとうかが、Security Center によってチェックされます。 ユーザーが書き込みアクセス許可を持っている場合は要求が承認され、Security Center では、管理ポートへの受信トラフィックを指定された時間だけ許可するように、ネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。
 
 > [!NOTE]
 > Security Center のジャスト イン タイム VM アクセスでは、現在 Azure Resource Manager 経由でデプロイされた VM のみがサポートされています。 クラシック モデルと Resource Manager デプロイメント モデルの詳細については、[Azure Resource Manager とクラシック デプロイの比較](../azure-resource-manager/resource-manager-deployment-model.md)に関するページを参照してください。

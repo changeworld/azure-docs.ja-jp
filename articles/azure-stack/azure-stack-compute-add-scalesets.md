@@ -12,11 +12,11 @@ ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: ''
-ms.openlocfilehash: cdabd2a9d336cdd8ac83d27460fe129c45b7e1c6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f844576edfb2869ed906415368eb809c7b4b6746
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
@@ -67,7 +67,7 @@ $User = "<your Azure Stack service administrator user name>"
 $Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
 
 $AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
-$AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
+$AzsEnvContext = Connect-AzureRmAccount -Environment $AzsEnv -Credential $Creds
 
 Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 

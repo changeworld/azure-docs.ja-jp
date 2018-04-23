@@ -1,13 +1,13 @@
 ---
-title: "Azure ExpressRoute の Microsoft ピアリングにルート フィルターを構成する: PowerShell | Microsoft Docs"
-description: "この記事では、PowerShell を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。"
+title: 'Azure ExpressRoute の Microsoft ピアリングにルート フィルターを構成する: PowerShell | Microsoft Docs'
+description: この記事では、PowerShell を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 9d953ea68e1e14ae12aa401af935d207f0747e8c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6e767166ecf248aa0e7fc16dc21361394e03107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する: PowerShell
 > [!div class="op_single_selector"]
@@ -91,7 +91,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 複数の Azure サブスクリプションを所有している場合には、アカウントのサブスクリプションをすべて確認します。

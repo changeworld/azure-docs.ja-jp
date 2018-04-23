@@ -1,12 +1,12 @@
 ---
-title: "Team Data Science Process テンプレートでのプロジェクトの体系化 | Microsoft Docs"
-description: "コラボレーションのためにプロジェクトを体系化する Team Data Science Process (TDSP) テンプレートを Azure Machine Learning でインスタンス化する方法"
+title: Team Data Science Process テンプレートでのプロジェクトの体系化 | Microsoft Docs
+description: コラボレーションのためにプロジェクトを体系化する Team Data Science Process (TDSP) テンプレートを Azure Machine Learning でインスタンス化する方法
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/16/2017
 ms.author: bradsev
 ms.openlocfilehash: 0f7a6d0a58e2dcfd94e20a81ae12b42f238016c8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Team Data Science Process テンプレートでのプロジェクトの体系化
 

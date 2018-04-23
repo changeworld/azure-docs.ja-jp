@@ -1,25 +1,20 @@
 ---
-title: "Azure SQL Data Warehouse の操作について | Microsoft Docs"
-description: "SQL Data Warehouse の柔軟性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。 この記事では、データ ウェアハウスのメトリックと、それらが DWU とどのように関連するのかを説明します。 "
+title: Azure SQL Data Warehouse の操作について | Microsoft Docs
+description: 'SQL Data Warehouse の柔軟性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。 この記事では、データ ウェアハウスのメトリックと、それらが DWU とどのように関連するのかを説明します。 '
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: cadffa9c-589d-4db7-888a-1f202a753bc5
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: e48d0a3028d5ebcb5d1bc0afbfc96a391bf4c076
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-warehouse-workload"></a>データ ウェアハウスのワークロード
 データ ウェアハウスのワークロードは、データ ウェアハウスに対して発生するすべての操作を指します。 データ ウェアハウスのワークロードには、ウェアハウスへのデータの読み込み、データ ウェアハウスでの分析の実行とレポート作成、データ ウェアハウスでのデータの管理、およびデータ ウェアハウスからのデータのエクスポートというプロセス全体が含まれます。 これらのコンポーネントの深度や幅は、多くの場合データ ウェアハウスの成熟度レベルと比例します。
@@ -53,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 * データ ウェアハウスに容量を追加するために長いリード タイムが必要な場合は特に、容量計画は混合されたクエリ ワークロードに対して複雑なタスクになる可能性があります。 SQL Data Warehouse では、いつでもコンピューティング容量を増減でき、ストレージやコンピューティング容量を個別にサイズ調整できるため、容量計画を急いで立てる必要はありません。
 
-### <a name="data-management"></a>データ管理
+### <a name="data-management"></a>[データ管理]
 近い将来にディスク スペースが不足する可能性があることを認識している場合は特に、データ管理が重要になります。 通常、データ ウェアハウスではデータを意味のある範囲に分割し、それらをテーブル内のパーティションとして保存します。 SQL Server ベースのすべての製品では、テーブルの内外にパーティションを移動できます。 このパーティション切り替えにより、古いデータをコストがあまりかからないストレージに移動し、最新のデータをオンライン ストレージで使用できるように設定できます。
 
 * columnstore インデックスは、パーティション分割されたテーブルをサポートします。 columnstore インデックスの場合、パーティション分割されたテーブルはデータ管理およびアーカイブに使用されます。 行ごとに保存されたテーブルの場合、クエリのパフォーマンスに関してパーティションはより重大な役目を果たします。  
@@ -65,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 * レポートを生成するために、読み取り専用のレポート サーバーに毎日のデータのスナップショットを取り込むことができます。 これにより、顧客により広い帯域幅を提供しながら、データ ウェアハウスに必要なコンピューティング リソースを削減することができます。 データ マートを使用すると、セキュリティの面からデータ ウェアハウスへのアクセス権を持つユーザーの数を減らすことができます。
 * 分析に関しては、データ ウェアハウスに分析キューブを作成し、データ ウェアハウスに対して分析を実行するか、データを事前処理して、将来の分析用にそれを分析サーバーにエクスポートすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。
 
 <!--Image references-->

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management の FAQ | Microsoft Docs"
-description: "Azure API Management についてよくあるご質問 (FAQ) の回答、パターン、ベスト プラクティスについて説明します。"
+title: Azure API Management の FAQ | Microsoft Docs
+description: Azure API Management についてよくあるご質問 (FAQ) の回答、パターン、ベスト プラクティスについて説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -88,7 +88,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用できます。 次の手順に従って、管理者としてサインインできます。
 
-1. `Login-AzureRmAccount` コマンドレットを使用してサインインします。
+1. `Connect-AzureRmAccount` コマンドレットを使用してサインインします。
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
 3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して、シングル サインオン URL を取得します。
 4. この URL を使って管理ポータルにアクセスできます。

@@ -3,8 +3,8 @@ title: PowerShell を使用してネットワーク セキュリティ グルー
 description: PowerShell を使ってネットワーク セキュリティ グループ (クラシック) を作成し、展開する方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: genli
+manager: cshepard
 editor: ''
 tags: azure-service-management
 ms.assetid: 86810b0d-0240-46a2-8548-fca22daa56f3
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
-ms.openlocfilehash: dece453e0ac6d4a8d31accaeb2403f1acdb1266f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: genli
+ms.openlocfilehash: 40dcb05f17ed9a044e09c03f421e592826de33d8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>PowerShell を使用してネットワーク セキュリティ グループ (クラシック) を作成する
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

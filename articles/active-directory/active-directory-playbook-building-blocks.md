@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -380,8 +380,8 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | テナントでセルフサービスによるパスワード管理を有効にします。 | [IT 管理者のための Azure Active Directory のパスワード リセット](active-directory-passwords-update-your-own-password.md) |
-| オンプレミスのパスワードを管理するためのパスワード ライトバックを有効にします。 これには、特定のバージョンの Azure AD Connect が必要となることに注意してください。 | [パスワード ライトバックの前提条件](active-directory-passwords-writeback.md) |
-| この機能を使用する PoC ユーザーを把握し、セキュリティ グループのメンバーになっていることを確認します。 この機能を完全に実証するには、ユーザーが非管理者である必要があります。 | [カスタマイズ: Azure AD Password Management: パスワード リセットへのアクセスの制限](active-directory-passwords-writeback.md) |
+| オンプレミスのパスワードを管理するためのパスワード ライトバックを有効にします。 これには、特定のバージョンの Azure AD Connect が必要となることに注意してください。 | [パスワード ライトバックの前提条件](authentication/howto-sspr-writeback.md) |
+| この機能を使用する PoC ユーザーを把握し、セキュリティ グループのメンバーになっていることを確認します。 この機能を完全に実証するには、ユーザーが非管理者である必要があります。 | [カスタマイズ: Azure AD Password Management: パスワード リセットへのアクセスの制限](authentication/howto-sspr-writeback.md) |
 
 
 ### <a name="steps"></a>手順
@@ -412,7 +412,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 前提条件 | リソース |
 | --- | --- |
 | MFA を使用する POC ユーザーを把握していること。  |  |
-| MFA チャレンジ用の受信状態の良い電話。  | [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md) |
+| MFA チャレンジ用の受信状態の良い電話。  | [Azure Multi-Factor Authentication とは](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>手順
 
@@ -421,7 +421,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | Azure AD 管理ポータルの [ユーザーとグループ] ブレードに移動します。 | [Azure AD 管理ポータル: ユーザーとグループ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | [すべてのユーザー] ブレードを選択します。 |  |
 | 最上部のバーにある [Multi-Factor Authentication] ボタンをクリックします。 | Azure MFA ポータルへの直接 URL: https://aka.ms/mfaportal |
-| [ユーザー] 設定で目的の PoC ユーザーを選択し、その MFA を有効にします。 | [Azure Multi-Factor Authentication におけるユーザーの状態](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) |
+| [ユーザー] 設定で目的の PoC ユーザーを選択し、その MFA を有効にします。 | [Azure Multi-Factor Authentication におけるユーザーの状態](authentication/howto-mfa-userstates.md) |
 | PoC ユーザーとしてログインし、実証プロセスを行います。  |  |
 
 ### <a name="considerations"></a>考慮事項
@@ -457,7 +457,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 ### <a name="considerations"></a>考慮事項
 
-フェデレーションを使用している場合、オンプレミスの ID プロバイダー (IdP) を使用し、企業ネットワークの内部/外部の状態を要求でやり取りすることができます。 この手法を使用するうえで、大規模な組織では評価および管理が難しい場合がある IP アドレスのリストの管理は必要ありません。 このセットアップには、"ネットワーク ローミング" (ユーザーが内部ネットワークからログインし、その状態のまま、コーヒー ショップなどの場所に移動するシナリオ) 用のアカウントが必要です。また、それによって生じる影響を理解しておく必要があります。 詳細情報: [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護: フェデレーション ユーザー用の信頼できる IP](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md#trusted-ips-for-federated-users)
+フェデレーションを使用している場合、オンプレミスの ID プロバイダー (IdP) を使用し、企業ネットワークの内部/外部の状態を要求でやり取りすることができます。 この手法を使用するうえで、大規模な組織では評価および管理が難しい場合がある IP アドレスのリストの管理は必要ありません。 このセットアップには、"ネットワーク ローミング" (ユーザーが内部ネットワークからログインし、その状態のまま、コーヒー ショップなどの場所に移動するシナリオ) 用のアカウントが必要です。また、それによって生じる影響を理解しておく必要があります。 詳細情報: [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護: フェデレーション ユーザー用の信頼できる IP](authentication/howto-mfa-adfs.md#trusted-ips-for-federated-users)
 
 ## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 

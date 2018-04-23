@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: f13ac366a1c382e955db23f3bcefb8f31c89fcb9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c8a8561c6241968419c5014bf2a37cca05723e81
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 
@@ -74,8 +74,8 @@ cls;
 #--------------- 1 -----------------------
 
 'Script assumes you have already logged your PowerShell session into Azure.
-But if not, run  Add-AzureRmAccount (or  Login-AzureRmAccount), just one time.';
-#Add-AzureRmAccount;   # Same as  Login-AzureRmAccount.
+But if not, run  Connect-AzureRmAccount (or  Connect-AzureRmAccount), just one time.';
+#Connect-AzureRmAccount;   # Same as  Connect-AzureRmAccount.
 
 #-------------- 2 ------------------------
 

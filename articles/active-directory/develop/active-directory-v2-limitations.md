@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 エンドポイントの制限事項および制約事項 | Microsoft Docs"
-description: "Azure AD v2.0 エンドポイントに関する制限事項と制約事項のリスト"
+title: Azure Active Directory v2.0 エンドポイントの制限事項および制約事項 | Microsoft Docs
+description: Azure AD v2.0 エンドポイントに関する制限事項と制約事項のリスト
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a81f505c189da31edb91d1b522d9f3140f821cb4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
 Azure Active Directory と統合するアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすか判断する必要があります。 Azure Active Directory の元のエンドポイントは引き続き完全にサポートされ、いくつかの点においては v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。
@@ -84,15 +84,6 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 また、特定のアプリケーションが持つことのできる返信 URL は 20 個だけであることに注意してください。
 
 アプリケーション登録ポータルでアプリを登録する方法については、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」を参照してください。
-
-## <a name="restrictions-on-services-and-apis"></a>サービスと API に関する制限事項
-現在、v2.0 エンドポイントは、アプリケーション登録ポータルに登録されているすべてのアプリのサインインをサポートしています。これらのアプリは、[サポートされる認証フロー](active-directory-v2-flows.md)のリストに含まれています。 ただし、これらのアプリで取得できるのは、ごく限られたリソースの OAuth 2.0 アクセス トークンだけです。 v2.0 エンドポイントは、次に対してのみアクセス トークンを発行します。
-
-* トークンを要求したアプリ。 論理的に複数の異なるコンポーネントまたは階層で構成されている場合にアプリが取得できるのはそれ自身のアクセス トークンとなります。 その実際のシナリオについては、 [こちら](active-directory-appmodel-v2-overview.md#getting-started) のチュートリアルを参照してください。
-* Outlook メール、カレンダー、連絡先の REST API (いずれも https://outlook.office.com に存在)。これらの API にアクセスするアプリの作成方法については、[Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) に関するチュートリアルを参照してください。
-* Microsoft Graph API。 [Microsoft Graph](https://graph.microsoft.io) と利用可能なデータについて詳細を確認できます。
-
-現時点では、上記以外のサービスはサポートされていません。 独自のカスタム ビルド Web API やサービスのサポート以外にも、その他の Microsoft Online Services が将来追加される予定です。
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>ライブラリと SDK に関する制限事項
 現時点では、v2.0 エンドポイントのライブラリ サポートは制限されています。 運用環境のアプリケーションで v2.0 エンドポイントを使用する場合は、次の選択肢があります。

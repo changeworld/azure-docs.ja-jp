@@ -1,6 +1,6 @@
 ---
-title: "Azure の Visual Studio Tools for Machine Learning に関するクイックスタート記事 | Microsoft Docs"
-description: "この記事では、Visual Studio Tools for Machine Learning の使用を開始するために、実験の作成、モデルのトレーニング、Web サービスの運用を開始する方法について説明します。"
+title: Azure の Visual Studio Tools for Machine Learning に関するクイックスタート記事 | Microsoft Docs
+description: この記事では、Visual Studio Tools for Machine Learning の使用を開始するために、実験の作成、モデルのトレーニング、Web サービスの運用を開始する方法について説明します。
 services: machine-learning
 author: ahgyger
 ms.author: ahgyger
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 Visual Studio Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 また、[Azure Batch AI (プレビュー)](https://docs.microsoft.com/azure/batch-ai/) にも簡単にアクセスできるようになっています。

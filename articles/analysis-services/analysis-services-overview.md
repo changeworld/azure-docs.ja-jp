@@ -1,25 +1,18 @@
 ---
 title: Azure Analysis Services の概要 | Microsoft Docs
 description: Azure での Analysis Services の概要を説明します。
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: 83d7a29c-57ae-4aa0-8327-72dd8f00247d
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: overview
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: c71d6fd7e3542a22edf093b0c9fccbd5185e0f85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-analysis-services-overview"></a>Azure Analysis Services の概要
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -62,7 +55,7 @@ Azure Analysis Services のスケールアウトにより、クライアント �
 ## <a name="keep-your-data-close"></a>データを近くに維持
 Azure Analysis Services サーバーは、次の [Azure リージョン](https://azure.microsoft.com/regions/)で作成できます。
 
-| アメリカ合衆国 | ヨーロッパ | アジア太平洋 |
+| アメリカ | ヨーロッパ | アジア太平洋 |
 |----------|--------|--------------|
 |  ブラジル南部<br> カナダ中部<br> 米国東部 2<br> 米国中北部<br> 米国中南部<br> 米国中西部<br> 米国西部 | 北ヨーロッパ<br> 英国南部<br> 西ヨーロッパ |   オーストラリア南東部<br> 東日本<br> 東南アジア<br> インド西部  |
 

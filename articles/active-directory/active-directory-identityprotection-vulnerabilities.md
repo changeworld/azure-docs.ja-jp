@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Identity Protection で検出される脆弱性 | Microsoft Docs"
-description: "Azure Active Directory Identity Protection で検出される脆弱性の概要"
+title: Azure Active Directory Identity Protection で検出される脆弱性 | Microsoft Docs
+description: Azure Active Directory Identity Protection で検出される脆弱性の概要
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 65b1ae76794c812f9fcf2955d09e023195ef6342
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
@@ -38,7 +38,7 @@ Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 の�
 
 ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。多要素認証は、Identity Protection で使用可能なリスクに基づく条件付きアクセス ポリシーにおいて重要な役割を果たします。
 
-詳しくは、「 [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
+詳しくは、「 [Azure Multi-Factor Authentication とは](authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>管理されていないクラウド アプリ
 この脆弱性は、組織内にある管理されていないクラウド アプリの識別に役立ちます。

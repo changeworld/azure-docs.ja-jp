@@ -1,31 +1,26 @@
 ---
-title: "SQL Data Warehouse ビジネス インテリジェンス パートナー | Microsoft Docs"
-description: "SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。"
+title: SQL Data Warehouse ビジネス インテリジェンス パートナー | Microsoft Docs
+description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: 1d9cdbd0-76c0-4b87-8a80-e792b73ffe10
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: partners
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: 7c88e55b420d45f6d0cd4486377e3f2b1347bd9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: 22f05607d85a1425c54b890e233b161e72c10848
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse ビジネス インテリジェンス パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートするビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。
 
 ## <a name="our-business-intelligence-partners"></a>ビジネス インテリジェンス パートナー
-| パートナー | Description | リンク | ビデオ |
+| パートナー | [説明] | リンク | ビデオ |
 | --- | --- | --- | --- |
 | ![Birst][1] |**Birst**<br>Birst は、クラウド BI および分析における世界的リーダーです。 主要なビジネス ユーザーごとの状況に応じて、信頼できるデータ ソースを作成できます。 次に、組織全体のビジネス ユーザーが、世界最高クラスの BI ツールを使用して情報をレポートおよび分析できます。 |[Marketplace][birst_marketplace]<br>[Web サイト][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
 | ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data は、SQL Data Warehouse に格納されている各種データ全体にわたる高速サイクル分析を実現します。 ClearStory の Spark ベース プラットフォームと分析アプリケーションにより、多種多様なデータ セットへのアクセスと協調が高速化されます。 また、高速で調和的な探索が実現されるため、ビジネス ユーザーは他のユーザーに頼らずに知見を得ることができます。 |[Web サイト][clearstory_website]<br>[データシート][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |
@@ -42,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 その他のパートナーの詳細については、[データ統合パートナー][di_partners]に関するページと[データ管理パートナー][dm_partners]に関するページをご覧ください。
 
 <!--Image references-->

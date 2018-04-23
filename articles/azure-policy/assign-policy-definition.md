@@ -1,19 +1,19 @@
 ---
-title: "ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する | Microsoft Docs"
-description: "この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。"
+title: ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する | Microsoft Docs
+description: この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/10/2018
+ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4287b139f26d17e58f6caffbadb2c7da2a9b7b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e5b27bdc2aef15b619022d1c08fa3e6dccaa5736
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
@@ -71,15 +71,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 既存のリソースに対して条件が評価され、該当した場合、そのリソースはポリシーに準拠していないとしてマークされます。 上記の例のイメージは、準拠していないリソースを示しています。 次の表は、結果のコンプライアンスの状態に対する条件の評価が、さまざまなポリシーのアクションでどのように処理されるかを示しています。 Azure Portal では評価ロジックは表示されませんが、コンプライアンスの状態の結果が表示されます。 コンプライアンスの状態の結果は、"対応" または "準拠していない" のいずれかです。
 
-|リソース  |ポリシーの条件の評価結果  |ポリシーでのアクション   |コンプライアンスの状態  |
-|-----------|---------|---------|---------|
-|Exists     |True     |拒否     |準拠していない |
-|Exists     |False    |拒否     |対応     |
-|Exists     |True     |追加   |準拠していない |
-|Exists     |False    |追加   |対応     |
-|Exists     |True     |Audit    |準拠していない |
-|Exists     |False    |Audit    |準拠していない |
+| **リソースの状態** | **アクション** | **ポリシーの評価** | **コンプライアンスの状態** |
+| --- | --- | --- | --- |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 非準拠 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 対応 |
+| 新規 | Audit、AuditIfNotExist\* | True | 非準拠 |
+| 新規 | Audit、AuditIfNotExist\* | False | 対応 |
 
+\* Append、DeployIfNotExist、および AuditIfNotExist の各アクションでは、IF ステートメントが TRUE であることが要求されます。 また、非準拠となるには、既存の条件が FALSE であることが要求されます。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このコレクションの他のガイドは、このクイックスタートに基づいています。 引き続きチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを Azure Portal で削除してください。

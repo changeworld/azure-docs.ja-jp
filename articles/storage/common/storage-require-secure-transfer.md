@@ -1,12 +1,12 @@
 ---
-title: "Azure Storage で安全な転送が必要 | Microsoft Docs"
-description: "Azure Storage の \"安全な転送が必須\" 機能、およびこの機能を有効にする方法について説明します。"
+title: Azure Storage で安全な転送が必要 | Microsoft Docs
+description: Azure Storage の "安全な転送が必須" 機能、およびこの機能を有効にする方法について説明します。
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: Jason.Hogg
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 797ac45a41cdf655e7465a01875a0394081c08a7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 0ec36864377d724795197851341cbb837f47c4c6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Azure Storage で安全な転送が必要
 
@@ -66,7 +66,7 @@ Azure Files サービスを使用する場合、[安全な転送が必須] を�
 
 このサンプルには、Azure PowerShell モジュール バージョン 4.1 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
-`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
+`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。
 
  以下のコマンド ラインを使って、設定を確認します。
 
@@ -122,5 +122,5 @@ EnableHttpsTrafficOnly : True
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、「[Azure Storage セキュリティ ガイド](storage-security-guide.md)」を参照してください。

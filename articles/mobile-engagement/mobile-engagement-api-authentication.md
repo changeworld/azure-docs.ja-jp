@@ -14,11 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 52843c926248627e4e530612cfe9326d4302eb95
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Mobile Engagement REST API での認証
 > [!IMPORTANT]
@@ -67,7 +67,7 @@ PowerShell スクリプトを使用してセットアップを実行するには
         Import-Module Azure
 3. 次のコマンドを実行して、PowerShell から Azure Resource Manager にサインインします。 Azure アカウントのユーザー名とパスワードを入力します。 
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 4. 複数のサブスクリプションがある場合は、次の手順を実行します。
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 すべてのサブスクリプションの一覧を取得します。 次に、使用するサブスクリプションの **SubscriptionId** をコピーします。 このサブスクリプションに Mobile Engagement アプリが含まれていることを確認します。 このアプリを使用して、API を操作します。 

@@ -3,7 +3,7 @@ title: PowerShell を使って Azure 内の Windows VM のサイズを変更す�
 description: Resource Manager デプロイメント モデルで作成された Windows 仮想マシンのサイズを Azure Powershell を使用して変更します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: Drewm3
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
-ms.author: drewm
-ms.openlocfilehash: 09a20892770ada7c67c43c20f3c4f36b5a76f09d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: d2010ee9017416360069c74118b8ae25e71e1da7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 この記事では、Resource Manager デプロイメント モデルで作成された Windows VM のサイズを Azure Powershell を使用して変更する方法について説明します。

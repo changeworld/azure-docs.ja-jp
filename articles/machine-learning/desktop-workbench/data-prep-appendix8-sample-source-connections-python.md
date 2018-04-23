@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning データ準備で可能な追加ソース データベース接続の例 | Microsoft Docs"
-description: "このドキュメントでは、Azure Machine Learning データ準備ツールで可能なソース データの接続の例を示します"
+title: Azure Machine Learning データ準備で可能な追加ソース データベース接続の例 | Microsoft Docs
+description: このドキュメントでは、Azure Machine Learning データ準備ツールで可能なソース データの接続の例を示します
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 27d72f1b49a89929098c0cc35f92d3915fc8b0b9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-of-custom-source-connections-python"></a>カスタム ソース接続のサンプル (Python) 
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。

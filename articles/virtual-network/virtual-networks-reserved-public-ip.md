@@ -1,10 +1,10 @@
 ---
-title: "Azure 予約済み IP アドレス (クラシック) の管理 - PowerShell | Microsoft Docs"
-description: "予約済み IP アドレス (クラシック) の概要と、PowerShell を使用して管理する方法について説明します。"
+title: Azure 予約済み IP アドレス (クラシック) の管理 - PowerShell | Microsoft Docs
+description: 予約済み IP アドレス (クラシック) の概要と、PowerShell を使用して管理する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 34652a55-3ab8-4c2d-8fb2-43684033b191
 ms.service: virtual-network
@@ -13,20 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 5e9c83cebec96c6bc8afd53b0c637d7af899746f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: genli
+ms.openlocfilehash: fafb2566d1b58a37dd1d0e4bab129d7fb01a9f89
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="reserved-ip-addresses-classic"></a>予約済み IP アドレス (クラシック)
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
+> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 > * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-> * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
 Azure での IP アドレスは、動的と予約済みという 2 つのカテゴリに分類されます。 Azure で管理されるパブリック IP アドレスは、既定では動的です。 これは、リソースがシャットダウンまたは停止 (割り当て解除) されたときに、特定のクラウド サービスに使用される IP アドレス (VIP)、または VM やロール インスタンスへの直接アクセスに使用される IP アドレス (ILPIP) が変更される場合があるということです。
@@ -34,7 +33,7 @@ Azure での IP アドレスは、動的と予約済みという 2 つのカテ�
 IP アドレスが変更されないようにするには、IP アドレスを予約します。 予約済み IP は VIP としてのみ使用できるので、リソースがシャットダウンまたは停止 (割り当て解除) された場合でも、クラウド サービスの IP アドレスが変更されることはありません。 さらに、VIP として使用されている既存の動的 IP を、予約済み IP アドレスに変換できます。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-ip-addresses-overview-arm.md)を使用して静的パブリック IP アドレスを予約する方法を確認してください。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](virtual-network-ip-addresses-overview-arm.md)を使用して静的パブリック IP アドレスを予約する方法を確認してください。
 
 Azure における IP アドレスの詳細については、[IP アドレス](virtual-network-ip-addresses-overview-classic.md)に関する記事をご覧ください。
 
@@ -45,8 +44,7 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 
 ## <a name="faq"></a>FAQ
 1. 予約済み IP はすべての Azure サービスに使用できますか。 <br>
-    
-いいえ。 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
+    いいえ。 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
 2. 予約済み IP は、いくつ使用できますか。 <br>
     詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 3. 予約済み IP に料金はかかりますか。 <br>
@@ -54,8 +52,7 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 4. どうやって IP アドレスを予約するのですか。 <br>
     PowerShell、[Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)、または [Azure Portal](https://portal.azure.com) を使用して、Azure リージョンの IP アドレスを予約できます。 予約済み IP アドレスは、サブスクリプションに関連付けられます。
 5. アフィニティ グループ ベースの VNet で予約済み IP を使用できますか。 <br>
-    
-いいえ。 予約済み IP はリージョン VNet に対してのみサポートされます。 予約済み IP は、アフィニティ グループに関連付けられている VNet ではサポートされていません。 リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet とアフィニティ グループ](virtual-networks-migrate-to-regional-vnet.md)に関する記事をご覧ください。
+    いいえ。 予約済み IP はリージョン VNet に対してのみサポートされます。 予約済み IP は、アフィニティ グループに関連付けられている VNet ではサポートされていません。 リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet とアフィニティ グループ](virtual-networks-migrate-to-regional-vnet.md)に関する記事をご覧ください。
 
 ## <a name="manage-reserved-vips"></a>予約済み VIP を管理する
 
@@ -165,7 +162,7 @@ Set-AzureReservedIPAssociation -ReservedIPName MyReservedIP -ServiceName TestSer
       </NetworkConfiguration>
     </ServiceConfiguration>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md) の仕組みを理解します。
 * [予約済みプライベート IP アドレス](virtual-networks-reserved-private-ip.md)について理解する。
 * [インスタンス レベル パブリック IP (ILPIP) アドレス](virtual-networks-instance-level-public-ip.md)について理解する。

@@ -1,23 +1,23 @@
 ---
-title: "Azure ID について | Microsoft Docs"
-description: "組織に最適な ID ガバナンスの決定を行えるように、Microsoft Azure ID ソリューションに関する基本的な用語、概念、および推奨事項について説明します。"
-keywords: 
+title: Azure ID について | Microsoft Docs
+description: 組織に最適な ID ガバナンスの決定を行えるように、Microsoft Azure ID ソリューションに関する基本的な用語、概念、および推奨事項について説明します。
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/17/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 4438917db93c37ddbba3e7ee692b2e3c065d2beb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
 Microsoft Azure Active Directory (Azure AD) は、ディレクトリ サービス、ID ガバナンス、アプリケーション アクセス管理を提供する、ID およびアクセス管理クラウド ソリューションです。 Azure AD により、[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)にある事前に統合された数千個の商用アプリやカスタム アプリへの[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) を簡単に実現できます。 Office 365、Salesforce.com、Box、ServiceNow、Workday など、これらのアプリの多くは既に使用されていると考えられます。
@@ -32,7 +32,7 @@ Microsoft Azure には、複雑さのレベルがさまざまな IDaaS (Identity
 
 組織の Azure ID ソリューションに関する決定を行うには、Azure ID サービスについて説明するときによく使用される用語の基本を理解しておく必要があります。
 
-|知っておくべき用語| Description|
+|知っておくべき用語| [説明]|
 |-----|-----|
 |Azure サブスクリプション |サブスクリプションは、Azure クラウド サービスの支払いに使用され、通常はクレジット カードにリンクされます。 サブスクリプションを複数持つことはできるものの、サブスクリプション間でリソースを共有するのは難しい場合があります。|
 |Azure テナント | Azure AD テナントは、1 つの組織を代表するものです。 テナントは、Azure AD の信頼された専用インスタンスであり、組織が Azure、Intune、Office 365 などの Microsoft クラウド サービスのサブスクリプションにサインアップしたときに自動的に作成されます。 テナントは、専用の環境 (シングル テナント) または他の組織との共有環境 (マルチテナント) でサービスにアクセスできます。|
@@ -49,11 +49,11 @@ Microsoft Azure には、複雑さのレベルがさまざまな IDaaS (Identity
 
 Azure ID の基本的な用語を把握したら、十分な情報に基づいて Azure ID サービスに関する決定を行うことができるように、次の Azure ID の概念を理解しておく必要があります。
 
-|理解しておくべき概念 |Description|
+|理解しておくべき概念 |[説明]|
 |-----|-----|
 |[Azure サブスクリプションを Azure Active Directory に関連付ける方法](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) |すべての Azure サブスクリプションには、Azure AD ディレクトリとの間に、ユーザー、サービス、およびデバイスの認証を行うための信頼関係があります。 *複数のサブスクリプションが同じ Azure AD ディレクトリを信頼することはできますが、1 つのサブスクリプションが信頼できる Azure AD ディレクトリは 1 つに限られます*。 この信頼関係は、サブスクリプションと他の Azure リソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。 サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられている Azure AD 以外のリソースへのアクセスも停止します。 ただし、Azure AD ディレクトリは Azure 内に残るため、別のサブスクリプションをそのディレクトリと関連付けて、テナント リソースの管理を継続できます。|
 |[Azure AD ライセンスのしくみ](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-get-started-azure-portal) | Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入またはアクティブにすると、有効期間や前払いライセンスを含め、ディレクトリとサブスクリプションが更新されます。 サブスクリプションがアクティブになると、サービスは、Azure AD 全体管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 割り当てられているライセンスの数や使用可能なライセンスの数などのサブスクリプション情報は、Azure Portal の **[Azure Active Directory]** > **[ライセンス]** ブレードで確認できます。 この場所は、ライセンスの割り当ての管理にも最適です。|
-|[Azure Portal でのロールベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)|Azure のロールベースのアクセス制御 (RBAC) を利用すれば、Azure リソースのアクセス権を詳細に管理できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 RBAC を使用すると、すべてのリソース グループに適用される 3 つの基本的なロール (所有者、共同作成者、閲覧者) に基づいて、必要かつ適切なアクセス許可を従業員に付与することができます。 また、特定のニーズを満たすために、最大 2,000 個の[カスタム RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)を独自に作成することもできます。 |
+|[Azure Portal でのロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)|Azure のロールベースのアクセス制御 (RBAC) を利用すれば、Azure リソースのアクセス権を詳細に管理できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 RBAC を使用すると、すべてのリソース グループに適用される 3 つの基本的なロール (所有者、共同作成者、閲覧者) に基づいて、必要かつ適切なアクセス許可を従業員に付与することができます。 また、特定のニーズを満たすために、最大 2,000 個の[カスタム RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)を独自に作成することもできます。 |
 |[ハイブリッド ID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)|ハイブリッド ID は、[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) を使用してオンプレミスの Windows Server Active Directory (AD DS) と Azure AD を統合することで実現されます。 これにより、Azure AD と統合された Office 365、Azure、オンプレミスのアプリまたは SaaS アプリケーションのユーザーに、共通の ID を提供できます。 ハイブリッド ID を使用すると、オンプレミス環境の ID とアクセスに関する処理をクラウドに効果的に拡張できます。|
 
 ### <a name="the-difference-between-windows-server-ad-ds-and-azure-ad"></a>Windows Server AD DS と Azure AD の違い
@@ -118,7 +118,7 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 * [Microsoft Azure Active Directory ライセンスとは](active-directory-licensing-whatis-azure-portal.md)
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、Azure ID の概念と選べるオプションについて理解できました。次に、以下のリソースを利用して、選択したオプションの実装を開始できます。
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
 
-1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 これらのセキュリティ グループを使用して、Azure Portal でロールベースのアクセス制御 (RBAC) を実装します。 詳細については、[Microsoft Azure でのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページを参照してください。
+1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 これらのセキュリティ グループを使用して、Azure Portal でロールベースのアクセス制御 (RBAC) を実装します。 詳細については、[Microsoft Azure でのロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 2. AAD セキュリティ グループを Azure Data Lake Store アカウントに割り当てます。 これにより、ポータルから Data Lake Store アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
 3. AAD セキュリティ グループをアクセス制御リスト (ACL) として Data Lake Store ファイル システムに割り当てます。
 4. さらに、Data Lake Store 内のデータにアクセスできるクライアントの IP アドレスの範囲を設定することもできます。

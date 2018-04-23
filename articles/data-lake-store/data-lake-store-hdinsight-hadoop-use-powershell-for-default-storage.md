@@ -1,8 +1,8 @@
 ---
-title: "PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成する | Microsoft Docs"
-description: "Azure PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成および使用します"
+title: PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成する | Microsoft Docs
+description: Azure PowerShell を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成および使用します
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 2f1793c2de2b68a8b155ada73044c6bc36882612
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 81074d303fbcefdf396de09510f69067eac3f3f6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Data Lake Store アカウントを作成するには、次の操作を行いま�
 1. デスクトップで、PowerShell ウィンドウを開き、次のスニペットを入力します。 サインインを求められたら、サブスクリプションの管理者または所有者としてサインインします。 
 
         # Sign in to your Azure account
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 
         # List all the subscriptions associated to your account
         Get-AzureRmSubscription

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/02/2018
 ms.author: maheshu
-ms.openlocfilehash: 5d65ce4c199c9ddc54e0120fe1c456a95a34f649
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4122052e48e57a27492433d01ee93536a9bbcf35
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュを Azure AD Domain Services との間で同期できるようにします。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、管理対象ドメインにサインインできます。
@@ -64,7 +64,7 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
     ![[パスワードの変更] をクリック](./media/active-directory-domain-services-getting-started/user-change-password.png)
 
    > [!TIP]
-   > アクセス パネル ウィンドウに **[パスワードの変更]** オプションが表示されない場合は、組織で [Azure AD でのパスワード管理](../active-directory/active-directory-passwords-getting-started.md)を構成済みであることを確認します。
+   > アクセス パネル ウィンドウに **[パスワードの変更]** オプションが表示されない場合は、組織で [Azure AD でのパスワード管理](../active-directory/authentication/quickstart-sspr.md)を構成済みであることを確認します。
    >
    >
 4. **[パスワードの変更]** ページで既存の (古い) パスワードを入力し、新しいパスワードを入力して、それを確認します。
@@ -77,7 +77,7 @@ Azure Active Directory Domain Services では、管理対象ドメインでユ�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md)
-* [Azure AD でのパスワード管理の概要](../active-directory/active-directory-passwords-getting-started.md)
+* [Azure AD でのパスワード管理の概要](../active-directory/authentication/quickstart-sspr.md)
 * [Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 * [Azure Active Directory Domain Services で管理されているドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
 * [Azure Active Directory Domain Services で管理されているドメインに Windows 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)

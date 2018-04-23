@@ -1,13 +1,13 @@
 ---
-title: "Azure 仮想マシン スケール セットでディスクを暗号化する | Microsoft Docs"
-description: "仮想マシン スケール セット内の接続されているディスクを暗号化する方法について説明します。"
+title: Azure 仮想マシン スケール セットでディスクを暗号化する | Microsoft Docs
+description: 仮想マシン スケール セット内の接続されているディスクを暗号化する方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3263ed4d6325207f38656d741fa4a1f091d4fdea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570764ad5d657a8b1efa2425423a89ddc518451c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セット内の OS および接続されているデータ ディスクを暗号化する
 [Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)は、Azure Disk Encryption (ADE) をサポートしています。  Windows および Linux の仮想マシン スケール セットで Azure Disk Encryption を有効にすると、業界標準の暗号化テクノロジを使用して、保存されているスケール セット データを保護および防御することができます。 詳細については、Windows および Linux 仮想マシン用 Azure Disk Encryption に関するドキュメントを参照してください。
@@ -42,7 +42,7 @@ Linux スケール セット データ ディスクの暗号化のエンドツ�
 仮想マシン スケール セット (プレビュー) の Azure Disk Encryption では、次の PowerShell コマンドを使用してサブスクリプションを自己登録する必要があります。 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning プレビュー機能の概念の概要 | Microsoft Docs"
-description: "サブスクリプション、アカウント、ワークスペース、プロジェクトなど、Azure Machine Learning のプレビュー機能の概念の概要。"
+title: Azure Machine Learning プレビュー機能の概念の概要 | Microsoft Docs
+description: サブスクリプション、アカウント、ワークスペース、プロジェクトなど、Azure Machine Learning のプレビュー機能の概念の概要。
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ms.openlocfilehash: ea9da6f23fd08c09f9e805519487648480816f35
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning---concepts"></a>Azure Machine Learning - 概念
 

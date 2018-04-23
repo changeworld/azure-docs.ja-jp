@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 回線の作成および変更: PowerShell: Azure Resource Manager | Microsoft Docs"
-description: "この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。"
+title: 'ExpressRoute 回線の作成および変更: PowerShell: Azure Resource Manager | Microsoft Docs'
+description: この記事では、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
 ms.service: expressroute
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: ef092a48994b68268109cb98bd6cd4526e259d5b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0d45e97cc42826375a99df16a73c9a7b0c359224
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
-> * [Azure ポータル](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/21/2017
 構成を始めるには、Azure アカウントにサインインします。 接続については、次の例を参照してください。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 アカウントのサブスクリプションを確認します。
@@ -57,7 +57,7 @@ ExpressRoute 回線を作成するサブスクリプションを選択します�
 Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>手順 2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。
 
 PowerShell コマンドレット **Get-AzureRmExpressRouteServiceProvider** を実行すると、この情報が返されます。この情報は、後のステップで使用します。
@@ -68,13 +68,13 @@ Get-AzureRmExpressRouteServiceProvider
 
 接続プロバイダーがそこにリストされているかどうかを確認します。 以下の項目は、回線を作成する際に後で必要になるため、書き留めておいてください。
 
-* 名前
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
 これで、ExpressRoute 回線を作成する準備が整いました。   
 
-### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
+### <a name="3-create-an-expressroute-circuit"></a>手順 3.ExpressRoute 回線の作成
 リソース グループがまだない場合は、ExpressRoute 回線を作成する前に、作成しておく必要があります。 リソース グループを作成するには、次のコマンドを実行します。
 
 ```powershell
@@ -407,7 +407,7 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 回線を作成したら、次の手順を必ず実行します。
 

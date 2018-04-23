@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
 ms.openlocfilehash: 0859031ac26b061861aa51dce1093f2fe4350935
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 

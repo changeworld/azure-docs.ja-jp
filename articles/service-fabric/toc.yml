@@ -238,6 +238,8 @@
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: サービスの移動
               href: service-fabric-cluster-resource-manager-movement-cost.md
+            - name: 自動スケーリング サービス
+              href: service-fabric-cluster-resource-manager-autoscaling.md
     - name: 監視と診断
       items:
         - name: 監視の概要
@@ -261,8 +263,6 @@
           href: service-fabric-health-introduction.md
         - name: 正常性イベントのレポート
           href: service-fabric-report-health.md
-        - name: OMS で監視する
-          href: service-fabric-diagnostics-event-analysis-oms.md
     - name: API Management との統合
       href: service-fabric-api-management-overview.md
 - name: ハウツー ガイド
@@ -405,6 +405,10 @@
               href: service-fabric-securing-containers.md
             - name: Windows コンテナーの gMSA を設定する
               href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: 定期的なバックアップを構成する (Azure 上のクラスター)
+          href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
+        - name: 定期的なバックアップを構成する (スタンドアロン クラスター)
+          href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Maven への対応を目的とした従来の Java アプリケーションの移行
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Windows/VS 開発環境での作業
@@ -555,6 +559,8 @@
               href: service-fabric-diagnostics-oms-setup.md
             - name: OMS エージェントの追加
               href: service-fabric-diagnostics-oms-agent.md
+            - name: OMS で監視する
+              href: service-fabric-diagnostics-event-analysis-oms.md
             - name: コンテナーの監視
               href: service-fabric-diagnostics-oms-containers.md
         - name: Application Insights での分析

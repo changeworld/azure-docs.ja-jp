@@ -9,6 +9,34 @@
               href: tutorial-windows-vm-access-arm.md
             - name: Linux VM
               href: tutorial-linux-vm-access-arm.md
+    - name: チュートリアル
+      items:
+        - name: Windows VM/VMSS
+          items:
+            - name: Azure Data Lake Store へのアクセス
+              href: tutorial-windows-vm-access-datalake.md
+            - name: アクセス キーを使用した Azure Storage へのアクセス
+              href: tutorial-windows-vm-access-storage.md
+            - name: SAS を使用した Azure Storage へのアクセス
+              href: tutorial-windows-vm-access-storage-sas.md
+            - name: Azure SQL へのアクセス
+              href: tutorial-windows-vm-access-sql.md
+            - name: Azure Key Vault へのアクセス
+              href: tutorial-windows-vm-access-nonaad.md
+            - name: Azure Cosmos DB へのアクセス
+              href: tutorial-windows-vm-access-cosmos-db.md
+        - name: Linux VM/VMSS
+          items:
+            - name: Azure Data Lake Store へのアクセス
+              href: tutorial-linux-vm-access-datalake.md
+            - name: アクセス キーを使用した Azure Storage へのアクセス
+              href: tutorial-linux-vm-access-storage-access-key.md
+            - name: SAS を使用した Azure Storage へのアクセス
+              href: tutorial-linux-vm-access-storage-sas.md
+            - name: Azure Key Vault へのアクセス
+              href: tutorial-linux-vm-access-nonaad.md
+            - name: Azure Cosmos DB へのアクセス
+              href: tutorial-linux-vm-access-cosmos-db.md
     - name: Azure VM 用の MSI の構成
       items:
         - name: Azure Portal の使用
@@ -45,30 +73,6 @@
           href: how-to-use-vm-sign-in.md
         - name: Azure SDK での使用
           href: how-to-use-vm-sdk.md
-    - name: Windows VM/VMSS の管理対象 ID の使用
-      items:
-        - name: Azure Data Lake Store へのアクセス
-          href: tutorial-windows-vm-access-datalake.md
-        - name: Azure SQL へのアクセス
-          href: tutorial-windows-vm-access-sql.md
-        - name: アクセス キーを使用した Azure Storage へのアクセス
-          href: tutorial-windows-vm-access-storage.md
-        - name: SAS を使用した Azure Storage へのアクセス
-          href: tutorial-windows-vm-access-storage-sas.md
-        - name: Azure Key Vault へのアクセス
-          href: tutorial-windows-vm-access-nonaad.md
-    - name: Linux VM/VMSS の管理対象 ID の使用
-      items:
-        - name: Azure Data Lake Store へのアクセス
-          href: tutorial-linux-vm-access-datalake.md
-        - name: アクセス キーを使用した Azure Storage へのアクセス
-          href: tutorial-linux-vm-access-storage.md
-        - name: SAS を使用した Azure Storage へのアクセス
-          href: tutorial-linux-vm-access-storage-sas.md
-        - name: Azure Key Vault へのアクセス
-          href: tutorial-linux-vm-access-nonaad.md
-        - name: Azure Cosmos DB へのアクセス
-          href: tutorial-linux-vm-access-cosmos-db.md
     - name: FAQ と既知の問題
       href: known-issues.md
     - name: リファレンス

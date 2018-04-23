@@ -1,6 +1,6 @@
 ---
-title: "Application Insights リソースを作成するための PowerShell スクリプト | Microsoft Docs"
-description: "Application Insights リソースの作成を自動化します。"
+title: Application Insights リソースを作成するための PowerShell スクリプト | Microsoft Docs
+description: Application Insights リソースの作成を自動化します。
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: 376bcb542e4e83c2464d9f3f53ea71965ce79c33
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d06b44246b694c0d2a83503ecd1ae0cedfadd9ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Application Insights リソースを作成するための PowerShell スクリプト
 
@@ -51,7 +51,7 @@ PowerShell を使用して、新しいリソースの作成を自動化できま
 # If running manually, uncomment before the first 
 # execution to login to the Azure Portal:
 
-# Add-AzureRmAccount / Login-AzureRmAccount
+# Connect-AzureRmAccount / Connect-AzureRmAccount
 
 # Set the name of the Application Insights Resource
 

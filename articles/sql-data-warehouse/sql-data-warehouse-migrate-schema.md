@@ -1,25 +1,20 @@
 ---
-title: "SQL Data Warehouse へのスキーマの移行 | Microsoft Docs"
-description: "ソリューション開発のための Azure SQL Data Warehouse へのスキーマの移行に関するヒント。"
+title: SQL Data Warehouse へのスキーマの移行 | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse へのスキーマの移行に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: 538b60c9-a07f-49bf-9ea3-1082ed6699fb
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 07ca2321852e276502187e768177e7e82bdfd080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: fb1085450a16acb0f9a06a9dea9d91fc5ca23363
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>SQL Data Warehouse にスキーマを移行する
 SQL Data Warehouse に SQL スキーマを移行するためのガイダンス。 
@@ -61,7 +56,7 @@ SQL Data Warehouse は分散型データベースです。 各テーブルは、
 各テーブルに最善の分散オプションを選択する方法については、「[SQL Data Warehouse のテーブルの分散](sql-data-warehouse-tables-distribute.md)」をご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse にデータベース スキーマを正常に移行したら、次の記事のいずれかに進みます。
 
 * [データの移行][Migrate your data]

@@ -1,11 +1,11 @@
 ---
-title: "Media Encoder Standard を使用して Azure 資産をエンコードする方法 | Microsoft Docs"
-description: "Media Encoder Standard を使用して Azure Media Services でメディア コンテンツをエンコードする方法について説明します。 コード サンプルでは REST API を使用しています。"
+title: Media Encoder Standard を使用して Azure 資産をエンコードする方法 | Microsoft Docs
+description: Media Encoder Standard を使用して Azure Media Services でメディア コンテンツをエンコードする方法について説明します。 コード サンプルでは REST API を使用しています。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: a58cf1402d31538cb4d9753a66846f683839810c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: efd4df24baaaf40ba90dd171d5227f61d1c0b36e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
@@ -72,9 +72,9 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-    Host: media.windows.net
+        Authorization: Bearer <ENCODED JWT TOKEN> 
+        x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+        Host: media.windows.net
 
     {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "Adaptive Streaming", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
 
@@ -114,7 +114,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {  
@@ -156,7 +156,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Content-Type: multipart/mixed; boundary=batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
     Accept: multipart/mixed
     Accept-Charset: UTF-8
-    Authorization: Bearer <token>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
     Host: media.windows.net
@@ -176,7 +176,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
-    Authorization: Bearer <token>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -193,7 +193,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
-    Authorization: Bearer <token>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -219,7 +219,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
 
@@ -246,7 +246,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     x-ms-version: 2.17
-    Authorization: Bearer <token value>
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
 
@@ -273,7 +273,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[Media Services でジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックを参照してください。
 
 ## <a name="see-also"></a>関連項目

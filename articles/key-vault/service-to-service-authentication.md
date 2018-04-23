@@ -1,39 +1,39 @@
 ---
-title: ".NET を使用した Azure Key Vault に対するサービス間認証"
-description: ".NET を使用して Azure Key Vault の認証を受けるために Microsoft.Azure.Services.AppAuthentication ライブラリを使用します。"
-keywords: "Azure Key Vault 認証 ローカル資格情報"
+title: .NET を使用した Azure Key Vault に対するサービス間認証
+description: .NET を使用して Azure Key Vault の認証を受けるために Microsoft.Azure.Services.AppAuthentication ライブラリを使用します。
+keywords: Azure Key Vault 認証 ローカル資格情報
 author: lleonard-msft
 manager: mbaldwin
 services: key-vault
 ms.author: alleonar
 ms.date: 11/15/2017
 ms.topic: article
-ms.prod: 
-ms.service: microsoft-keyvault
-ms.technology: 
+ms.prod: ''
+ms.service: key-vault
+ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db0b0ca72f41c68e19db6635d9ba0e9144183204
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
 Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資格情報として、共有シークレットまたは証明書のいずれかが必要です。 このような資格情報を管理するのは煩雑な作業になるため、資格情報をソース ファイルまたは構成ファイルに組み込んでアプリにバンドルしたくなります。
 
-.NET ライブラリ用の `Microsoft.Azure.Services.AppAuthentication` を使うと、この問題が簡略化されます。 このライブラリでは、ローカルでの開発中は、開発者の資格情報を使用して認証を行います。 その後、ソリューションを Azure にデプロイすると、このライブラリは、自動的にアプリケーションの資格情報に切り替わります。  
+.NET 用の `Microsoft.Azure.Services.AppAuthentication` ライブラリを使うと、この問題が簡略化されます。 これにより、ローカルでの開発中は認証に開発者の資格情報が使用されます。 その後、ソリューションを Azure にデプロイすると、このライブラリは、自動的にアプリケーションの資格情報に切り替わります。  
 
 ローカルでの開発中に開発者の資格情報を使用するという方法は、Azure AD 資格情報を作成したり、開発者間で資格情報を共有したりする必要がないため、セキュリティの面で有利です。
 
 `Microsoft.Azure.Services.AppAuthentication` ライブラリによって認証が自動的に管理される結果、資格情報ではなくソリューションに重点を置くことができます。
 
-`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD 統合認証を使用したローカル開発がサポートされます。 Azure App Services または Azure 仮想マシン (VM) にデプロイされると、このライブラリは自動的に[管理対象サービス ID](/azure/active-directory/msi-overview) (MSI) を使用します。 コードまたは構成を変更する必要はありません。 MSI を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)を直接使用することもサポートします。
+`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発がサポートされます。 Azure App Services または Azure 仮想マシン (VM) にデプロイされると、このライブラリは自動的に[管理対象サービス ID](/azure/active-directory/msi-overview) (MSI) を使用します。 コードまたは構成を変更する必要はありません。 MSI を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)を直接使用することもサポートします。
 
 <a name="asal"></a>
 ## <a name="using-the-library"></a>ライブラリの使用
 
-.NET アプリケーションの場合、管理対象サービス ID (MSI) を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
+.NET アプリケーションの場合、管理対象サービス ID (MSI) と連携する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) NuGet パッケージに対する参照をアプリケーションに追加します。
 
@@ -73,7 +73,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 
 <a name="local"></a>
-## <a name="local-development-authentication"></a>ローカル開発用の認証
+## <a name="local-development-authentication"></a>ローカル開発用における認証
 
 ローカル開発の場合、次の 2 つの主要な認証シナリオがあります。
 
@@ -93,15 +93,15 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 Visual Studio を使用するには、次の点をご確認ください。
 
-1. [Visual Studio 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/) またはそれ以降をインストールしたこと。
+1. [Visual Studio 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/) またはそれ以降をインストール済みであること。
 
 2. [Visual Studio 用のアプリ認証拡張機能](https://go.microsoft.com/fwlink/?linkid=862354) がインストールされていること。
  
-3. Visual Studio にサインインしており、ローカル開発に使用するアカウントを選択してあること。 **[ツール]**&nbsp;>&nbsp;**[オプション]**&nbsp;>&nbsp;**[Azure サービスの認証]** を使用してローカル開発アカウントを選択します。 
+3. Visual Studio にサインイン済み、かつローカル開発に使用するアカウントが選択済みであること。 **[ツール]**&nbsp;>&nbsp;**[オプション]**&nbsp;>&nbsp;**[Azure サービスの認証]** を使用してローカル開発アカウントを選択します。 
 
-トークン プロバイダー ファイルに関するエラーなど、Visual Studio の使用に関して問題が発生した場合は、これらの手順を注意深くご確認ください。 
+トークン プロバイダー ファイルに関するエラーなど、Visual Studio の使用に関して問題が発生した場合は、これらの手順をよくご確認ください。 
 
-また、開発者トークンを再認証する必要がある場合もあります。  これを行うには、**[ツール]**&nbsp;>&nbsp;**[オプション]**>**[Azure&nbsp;サービスの認証]**&nbsp; に移動し、選択したアカウントの下にある **[再認証]** リンクを探します。  それを選択して認証してください。 
+また、開発者トークンの再認証が必要となる場合もあります。  これを行うには、**[ツール]**&nbsp;>&nbsp;**[オプション]**>**[Azure&nbsp;サービスの認証]**&nbsp; に移動し、選択したアカウントの下にある **[再認証]** リンクを探します。  それを選択して認証してください。 
 
 ### <a name="authenticating-with-azure-cli"></a>Azure CLI での認証
 
@@ -111,7 +111,7 @@ Visual Studio を使用するには、次の点をご確認ください。
 
 2. **az login** を使用して Azure にサインインします。
 
-`az account get-access-token` を使用してアクセスを確認します。  エラーが発生した場合は、手順 1 が正常に完了したことを確認します。 
+`az account get-access-token` を使用してアクセスを確認します。  エラーが発生した場合は、手順 1 が正常に完了したことを確認してください。 
 
 Azure CLI が既定のディレクトリにインストールされていない場合は、`AzureServiceTokenProvider` が Azure CLI のパスを見つけられないというエラーが出ることがあります。  **AzureCLIPath** 環境変数を使用して、Azure CLI のインストール フォルダーを定義してください。 `AzureServiceTokenProvider` は、必要な場合に、**AzureCLIPath** 環境変数に指定されたディレクトリを **Path** 環境変数に追加します。
 
@@ -131,16 +131,16 @@ az account list
 
 Azure AD の認証を使用するには、次の点を確認します。
 
-- オンプレミスの Active Directory が [Azure AD と同期している](/azure/active-directory/connect/active-directory-aadconnect)こと。
+- ご利用のオンプレミスの Active Directory が [Azure AD と同期している](/azure/active-directory/connect/active-directory-aadconnect)こと。
 
-- 使用しているコードが、ドメインに参加しているマシンで実行されていること。
+- ご自分のコードが、ドメインに参加しているマシンで実行されていること。
 
 
 ### <a name="authenticating-to-custom-services"></a>カスタム サービスに対する認証
 
 サービスから Azure サービスを呼び出すとき、Azure サービスがユーザーとアプリケーションの両方にアクセスすることを許可するので、前の手順が動作します。  
 
-カスタム サービスを呼び出すサービスを作成するときには、ローカル開発用の認証に Azure AD のクライアント資格情報を使用します。  2 つのオプションがあります。 
+カスタム サービスを呼び出すサービスを作成するときには、ローカル開発における認証に Azure AD のクライアント資格情報を使用します。  2 つのオプションがあります。 
 
 1.  次のようにサービス プリンシパルを使用して Azure にサインインします。
 

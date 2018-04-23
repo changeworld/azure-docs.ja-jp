@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: joflore
-ms.openlocfilehash: e6210cf7ece0aa0cdeec8f95b74910893c22b1bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7ae9ad5429c9bdfe8fba2648f8b7a3390705b23
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
 この記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。
@@ -41,7 +41,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="turn-on-two-step-verification-for-users"></a>ユーザーに対する 2 段階認証をオンにする
 
-[ユーザーまたはグループに 2 段階認証を要求する方法](../../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md)に関するページに記載されているいずれかの手順を使用して、実際に Azure MFA を使ってみましょう。 すべてのサインインに対して 2 段階認証を実施するか、条件付きアクセス ポリシーを作成して必要なときにのみ 2 段階認証を要求するかを選ぶことができます。
+[ユーザーまたはグループに 2 段階認証を要求する方法](howto-mfa-userstates.md)に関するページに記載されているいずれかの手順を使用して、実際に Azure MFA を使ってみましょう。 すべてのサインインに対して 2 段階認証を実施するか、条件付きアクセス ポリシーを作成して必要なときにのみ 2 段階認証を要求するかを選ぶことができます。
 
 ## <a name="next-steps"></a>次の手順
 クラウド側の Azure Multi-Factor Authentication を設定したら、デプロイ側の構成とセットアップを行います。 詳細については、「[Azure Multi-Factor Authentication の構成](howto-mfa-mfasettings.md)」を参照してください。

@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory の概要 | Microsoft Docs"
-description: "Azure Active Diretory で、ライセンスの取得、ドメイン名の追加、カスタム サインイン ページの作成、セルフサービスによるパスワードのリセットを行います"
-keywords: 
+title: Azure Active Directory の概要 | Microsoft Docs
+description: Azure Active Diretory で、ライセンスの取得、ドメイン名の追加、カスタム サインイン ページの作成、セルフサービスによるパスワードのリセットを行います
+keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD の概要
 最新の ID 管理には、アプリケーションとサービスの可用性を、認証済みユーザーに対してのみ確保できるように、スケーラブルで一貫性のある信頼性が求められています。 ユーザーの ID 管理のニーズに適切に対応するには、IT には、承認済みパブリック SaaS (サービスとしてのソフトウェア) アプリへのアクセスを提供する方法、内部の基幹業務アプリをホストする方法、さらにはオンプレミスのアプリの開発と使用を強化する方法も必要です。 こうした要件はすべて、クラウド ベースの ID 管理ソリューションの必要性を示しています。      
@@ -81,7 +81,7 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 **[Azure Active Directory]**  >  **[ライセンス]**  >  **[すべての製品]** で、割り当てられている利用可能なライセンスを確認します。
 
 ## <a name="configure-self-service-password-reset"></a>セルフサービスのパスワードのリセットを構成する
-[セルフサービスのパスワードのリセット (SSPR)](active-directory-passwords-getting-started.md) は、IT 管理者が、ユーザーによるパスワードやアカウントのリセットまたはロック解除を、簡単に許可できるようにします。 このシステムには、ユーザーがいつシステムを使用したかを追跡する詳細なレポートと、誤用や悪用について警告する通知が用意されています。
+[セルフサービスのパスワードのリセット (SSPR)](authentication/quickstart-sspr.md) は、IT 管理者が、ユーザーによるパスワードやアカウントのリセットまたはロック解除を、簡単に許可できるようにします。 このシステムには、ユーザーがいつシステムを使用したかを追跡する詳細なレポートと、誤用や悪用について警告する通知が用意されています。
 
 ### <a name="verification-step"></a>確認手順
 **Azure Active Directory**  >  **[パスワードのリセット]** の有効な SSPR プロパティに、適切なユーザーとグループが割り当てられていることを確認します。 

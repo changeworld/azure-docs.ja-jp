@@ -1,25 +1,18 @@
 ---
-title: "Azure Search 用の SKU または価格レベルの選択 | Microsoft Docs"
-description: "Azure Search は無料、Basic、Standard の各 SKU にプロビジョニングできます。Standard は、複数のリソース構成および容量レベルで使用できます。"
-services: search
-documentationcenter: 
+title: Azure Search 用の SKU または価格レベルの選択 | Microsoft Docs
+description: Azure Search は無料、Basic、Standard の各 SKU にプロビジョニングできます。Standard は、複数のリソース構成および容量レベルで使用できます。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 8d4b7bca-02a5-43ee-b3f8-03551dfb32fd
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 498ceb4a5d9e0bb9c8c5b5711c8c2687df3a3409
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Azure Search 用の SKU または価格レベルの選択
 Azure Search では、特定の価格レベルまたは SKU で[サービスがプロビジョニングされます](search-create-service-portal.md)。 指定できる選択肢には、**Free**、**Basic**、**Standard** があります。このうち **Standard** は、複数の構成および容量で指定できます。
@@ -73,9 +66,9 @@ Azure Search では、価格レベルにより、利用できる機能ではな�
 ## <a name="review-limits-per-tier"></a>レベルごとの制限を確認する
 次の表は、「 [Azure Search サービスの制限](search-limits-quotas-capacity.md)」から制限の一部を抜粋したものです。 この表には、SKU の決定に最も影響しやすい要因を示しています。 以下の質問事項を確認する際は、この表を参考にしてください。
 
-| リソース | 無料 | 基本 | S1 | S2 | S3 | S3 HD |
+| リソース | 無料 | Basic | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| サービス レベル アグリーメント (SLA) |なし <sup>1</sup> |はい |あり |あり |あり |はい |
+| サービス レベル アグリーメント (SLA) |なし <sup>1</sup> |[はい] |はい |はい |はい |[はい] |
 | インデックスの制限 |3 |5 |50 |200 |200 |1000 <sup>2</sup> |
 | ドキュメントの制限 |合計 10,000 |サービスあたり 100 万 |パーティションあたり 1,500 万 |パーティションあたり 6,000 万 |パーティションあたり 1 億 2,000 万 |インデックスあたり 100 万 |
 | 最大パーティション数 |該当なし |1 |12 |12 |12 |3 <sup>2</sup> |

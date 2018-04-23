@@ -1,5 +1,5 @@
 ---
-title: "Azure Machine Learning ワークベンチを使用して JSON 変換を展開します"
+title: Azure Machine Learning ワークベンチを使用して JSON 変換を展開します
 description: "\"JSON の展開\" 変換の参照ドキュメント"
 services: machine-learning
 author: ranvijaykumar
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 21de94d2d0d3cc12aabcb8e9e8b0eec39b0a2710
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="expand-json-transformation"></a>JSON の展開変換
 **JSON の展開**変換を使用すると、ユーザーは、有効な JSON テキストが含まれている既存の列を複数の列に展開できます。

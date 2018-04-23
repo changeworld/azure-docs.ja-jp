@@ -1,6 +1,6 @@
 ---
-title: "データ セキュリティと暗号化のベスト プラクティス | Microsoft Docs"
-description: "この記事では、 Azure の組み込み機能を利用した、データ セキュリティと暗号化に関する一連のベスト プラクティスについて説明します。"
+title: データ セキュリティと暗号化のベスト プラクティス | Microsoft Docs
+description: この記事では、 Azure の組み込み機能を利用した、データ セキュリティと暗号化に関する一連のベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0cebc7ae5279b720e8fd0d6c986e1706d944476f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: dae93a622bad3ddfb1d9492d17b700d82e9969c0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 クラウドにおけるデータ保護で重要なポイントの 1 つは、データが置かれうる状態と、その状態でどのような制御を使用できるのかを把握することです。 Azure のデータ セキュリティと暗号化のベスト プラクティスでは、次のデータの状態に関する推奨事項が定められています。
@@ -58,16 +58,16 @@ Microsoft Azure におけるデータ アクセスとデータ制御で最初に
 
 認証をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) (MFA オンプレミスとも呼ばれます) を利用できます。 この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
 
-Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」をご覧ください。
+Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](../active-directory/authentication/howto-mfa-getstarted.md)」をご覧ください。
 
 ## <a name="use-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用する
 [知る必要性](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)という 2 つのセキュリティ原則に基づいて、アクセスを制限します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 Azure のロールベースのアクセス制御 (RBAC) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。 ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。
 
-Azure の[組み込み RBAC ロール](../active-directory/role-based-access-built-in-roles.md)を利用して、ユーザーに権限を割り当てることができます。 クラウド事業者は、ストレージ アカウントを管理する必要がある場合は*ストレージ アカウント作成協力者*ロール、従来のストレージ アカウントを管理する場合は*従来のストレージ アカウント作成協力者*ロールの使用を検討してください。 VM とストレージ アカウントを管理する必要があるクラウド事業者は、それを*仮想マシン作成協力者*ロールに追加することを検討してください。
+Azure の[組み込み RBAC ロール](../role-based-access-control/built-in-roles.md)を利用して、ユーザーに権限を割り当てることができます。 クラウド事業者は、ストレージ アカウントを管理する必要がある場合は*ストレージ アカウント作成協力者*ロール、従来のストレージ アカウントを管理する場合は*従来のストレージ アカウント作成協力者*ロールの使用を検討してください。 VM とストレージ アカウントを管理する必要があるクラウド事業者は、それを*仮想マシン作成協力者*ロールに追加することを検討してください。
 
 RBAC などの機能を利用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。 これにより、一部のユーザーがアクセスする必要がないデータにアクセスできるようになり、データのセキュリティ侵害につながる恐れがあります。
 
-Azure RBAC の詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」をご覧ください。
+Azure RBAC の詳細については、「[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」をご覧ください。
 
 ## <a name="encrypt-azure-virtual-machines"></a>Azure 仮想マシンを暗号化する
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。 Azure Disk Encryption を利用して、Windows および Linux の IaaS 仮想マシン (VM) ディスクを暗号化できます。 Azure Disk Encryption では、業界標準である Windows の BitLocker 機能と Linux の DM-Crypt 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。

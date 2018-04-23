@@ -1,13 +1,13 @@
 ---
-title: "Azure ネットワーク インターフェイスの IP アドレスの構成 | Microsoft Docs"
-description: "ネットワーク インターフェイスのプライベート IP アドレスとパブリック IP アドレスを追加、変更、削除する方法について説明します。"
+title: Azure ネットワーク インターフェイスの IP アドレスの構成 | Microsoft Docs
+description: ネットワーク インターフェイスのプライベート IP アドレスとパブリック IP アドレスを追加、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 478a2ebfa6a4cc504119734ac2f67b1f7c77dd5a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 79b84e3231886f62bf5978195562339d5c3275b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 03/05/2018
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.26 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="add-ip-addresses"></a>IP アドレスを追加する
 
 [Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事で示されている制限内であれば、必要なだけいくつでも、[プライベート](#private)および[パブリック](#public)な [IPv4](#ipv4) アドレスをネットワーク インターフェイスに追加できます。 ポータルを使って IPv6 アドレスを既存のネットワーク インターフェイスに追加することはできません (ただし、ネットワーク インターフェイスを作成するときに、ポータルを使ってプライベート IPv6 アドレスを追加することはできます)。 PowerShell または CLI を使って、仮想マシンにアタッチされていない既存のネットワーク インターフェイスの 1 つの[セカンダリ IP 構成](#secondary) に、プライベート IPv6 アドレスを追加できます (既存のセカンダリ IP 構成がない場合のみ)。 どのツールを使っても、ネットワーク インターフェイスにパブリック IPv6 アドレスを追加することはできません。 IPv6 アドレスの使用の詳細については、「[IPv6](#ipv6)」を参照してください。 
 
-1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
+1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
 2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それをクリックします。
 3. 表示される **[ネットワーク インターフェイス]** ブレードで、IPv4 アドレスを追加するネットワーク インターフェイスをクリックします。
 4. 選んだネットワーク インターフェイスのブレードの **[設定]** セクションで、**[IP 構成]** をクリックします。
@@ -67,7 +67,7 @@ ms.lasthandoff: 03/05/2018
 
 IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変更、またはネットワーク インターフェイスに割り当てられたパブリック IP アドレスの変更が必要になることがあります。 仮想マシンのセカンダリ ネットワーク インターフェイスに関連付けられているセカンダリ IP 構成のプライベート IPv4 アドレスを変更する場合は (詳細については、[プライマリとセカンダリのネットワーク インターフェイス](virtual-network-network-interface-vm.md)に関する記事を参照)、仮想マシンを停止 (割り当て解除) 状態にしてから、次の手順を実行します。 
 
-1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
+1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
 2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それをクリックします。
 3. 表示される **[ネットワーク インターフェイス]** ブレードで、IP アドレス設定を表示または変更するネットワーク インターフェイスをクリックします。
 4. 選んだネットワーク インターフェイスのブレードの **[設定]** セクションで、**[IP 構成]** をクリックします。
@@ -88,7 +88,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 ネットワーク インターフェイスから[プライベート](#private) IP アドレスと[パブリック](#public) IP アドレスを削除することはできますが、ネットワーク インターフェイスには少なくとも 1 つのプライベート IPv4 アドレスが常に割り当てられている必要があります。
 
-1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
+1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
 2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それをクリックします。
 3. 表示される **[ネットワーク インターフェイス]** ブレードで、IP アドレスを削除するネットワーク インターフェイスをクリックします。
 4. 選んだネットワーク インターフェイスのブレードの **[設定]** セクションで、**[IP 構成]** をクリックします。

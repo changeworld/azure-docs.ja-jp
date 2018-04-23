@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning Workbench で精度が最適で最短時間の実行を見つける | Microsoft Docs"
-description: "Azure Machine Learning Workbench を使用して CLI で最適な精度を見つけるためのエンドツーエンドのユース ケース"
+title: Azure Machine Learning Workbench で精度が最適で最短時間の実行を見つける | Microsoft Docs
+description: Azure Machine Learning Workbench を使用して CLI で最適な精度を見つけるためのエンドツーエンドのユース ケース
 services: machine-learning
 author: totekp
 ms.author: kefzhou
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
 ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>精度が最適で最短時間の実行を見つける
 実行が複数回の場合、ユース ケース例として、最適な精度の実行を見つけることがあります。 アプローチの 1 つは、[JMESPath](http://jmespath.org/) クエリでコマンド ライン インターフェイス (CLI) を使用することです。 Azure CLI で JMESPath を使用する方法については、「[Azure CLI 2.0 での JMESPath クエリの使用](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)」をご覧ください。 次の例では、0、0.98、1、および 1 の精度で 4 個の実行が作成されます。 範囲 `[MaxAccuracy-Threshold, MaxAccuracy]` (`Threshold = .03`) 内に含まれる場合、実行はフィルターされます。

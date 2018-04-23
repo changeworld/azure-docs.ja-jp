@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 02849fb63a8d696fa4296f5ec885a2d24f9adca1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>オンプレミスのディレクトリと Azure Active Directory の統合
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
@@ -97,7 +97,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。 エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを 1 か所で管理することができます。 オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
 
-[パスワード ライトバック](../active-directory-passwords-getting-started.md) により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
+[パスワード ライトバック](../authentication/quickstart-sspr.md) により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
 
 [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)により、Azure AD に登録されているデバイスをオンプレミスの Active Directory にライトバックできます。これにより、そのデバイスを条件付きアクセスに使用できるようになります。
 
@@ -110,7 +110,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 | --- | --- |
 |フィルター処理の構成 | [Azure AD Connect Sync: フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)|
 |パスワード ハッシュの同期 | [Azure AD Connect Sync: パスワード ハッシュ同期の実装](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
-|パスワードの書き戻し | [パスワード管理の概要](../active-directory-passwords-getting-started.md)|
+|パスワードの書き戻し | [パスワード管理の概要](../authentication/quickstart-sspr.md)|
 |デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md)|
 |誤って削除されないように保護する | [Azure AD Connect Sync: 誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
 |自動アップグレード | [Azure AD Connect: 自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)|

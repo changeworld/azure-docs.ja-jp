@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 810c585e104f6b7bc63222594375527c45c6082d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット
 
@@ -42,7 +42,7 @@ Azure AD SSPR は、以下を行うのに役立ちます。
 * **モビリティの推進**: ユーザーはどこからでも自分のパスワードをリセットできます。
 * **制御を維持**: セキュリティ ポリシーの制御は維持されます。 管理者は現行のポリシーを引き続き強制できます。
 
-準備ができたら、[クイック スタート ガイド](../active-directory-passwords-getting-started.md)を使用して、Azure AD SSPR の使用を開始できます。 ユーザーに、自分のパスワードをリセットする機能を迅速に付与できます。
+準備ができたら、[クイック スタート ガイド](quickstart-sspr.md)を使用して、Azure AD SSPR の使用を開始できます。 ユーザーに、自分のパスワードをリセットする機能を迅速に付与できます。
 
 ## <a name="azure-ad-sspr-availability"></a>Azure AD SSPR の可用性
 
@@ -65,7 +65,7 @@ Azure AD SSPR は、サブスクリプションに応じて次の 3 つのレベ
 
 ## <a name="next-steps"></a>次の手順
 
-* SSPR を開始できるように [Azure AD のセルフ サービスによるパスワードのリセットをセットアップ](../active-directory-passwords-getting-started.md)。
+* SSPR を開始できるように [Azure AD のセルフ サービスによるパスワードのリセットをセットアップ](quickstart-sspr.md)。
 * [ロールアウト ガイド](howto-sspr-deployment.md)のガイダンスを使用して、ユーザーに SSPR を適切にデプロイできるよう計画。
 * [パスワードのリセットと変更。](../active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](../active-directory-passwords-reset-register.md)
