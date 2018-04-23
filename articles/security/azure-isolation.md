@@ -1,12 +1,12 @@
 ---
-title: "Azure Public Cloud での分離 | Microsoft Docs"
-description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
+title: Azure Public Cloud での分離 | Microsoft Docs
+description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a153d70e077ad63a042e76d0c4ae40e3cc067a2a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -52,7 +52,7 @@ Microsoft Azure を使用すると、共有物理インフラストラクチャ�
 各 Azure AD ディレクトリは、他の Azure AD ディレクトリと区別され分離されています。 会社のオフィス ビルが組織に固有のセキュリティで保護された資産であるのと同様に、Azure AD ディレクトリも特定の組織だけが使用するセキュリティで保護された資産として設計されています。 Azure AD アーキテクチャは、顧客のデータや ID 情報が混合しないよう分離します。 これは、Azure AD ディレクトリのユーザーや管理者が、別のディレクトリのデータに誤ってまたは悪意をもってアクセスすることはできないことを意味します。
 
 ### <a name="azure-tenancy"></a>Azure テナント
-Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)での一意の[テナント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
+Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)での一意の[テナント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](https://docs.microsoft.com/azure/role-based-access-control/overview)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
 
@@ -80,7 +80,7 @@ Azure Active Directory は、保護された専用コンテナーで各コンテ
 複数の Azure Active Directory テナントのメタデータが同じ物理ディスクに格納されている場合でも、コンテナー間に関係はありません (ディレクトリ サービスによる定義を除きます。これは後でテナント管理者によって指示されます)。
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure ロールベースのアクセス制御 (RBAC)
-[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
+[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
 
 Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
 
@@ -94,7 +94,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
-「[RBAC: 組み込みのロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)を作成する方法を参照してください。
+「[RBAC: 組み込みのロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)を作成する方法を参照してください。
 
 Azure Active Directory のその他の機能を次に示します。
 - Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの SSO が可能です。 一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。 フェデレーション アプリケーションでは、ユーザー プロビジョニングと[パスワード保管](https://www.techopedia.com/definition/31415/password-vault)もサポートできます。
@@ -209,7 +209,7 @@ SAS により、ストレージ アカウントのオブジェクトへの制限
 
 IP 記憶域データは、トラフィックの専用トンネルを IP 記憶域に割り当てるネットワーキング メカニズムによって未許可のユーザーから保護することができます。
 
-### <a name="encryption"></a>Encryption
+### <a name="encryption"></a>暗号化
 Azure では、データを保護するために次の種類の暗号化が提供されます。
 -   転送中の暗号化
 
@@ -333,7 +333,7 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 [サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Windows Azure Virtual Network 内のマシンのためのネットワーク分離のオプション](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 

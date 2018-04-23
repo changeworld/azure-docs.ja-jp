@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -233,7 +233,7 @@ Traffic View の価格は、出力の作成に使用されたデータ ポイン
 
 Azure Web Apps では、複数のサブスクリプションからのエンドポイントを使用できません。 Azure Web Apps の要件により、Web Apps で使用するカスタム ドメイン名を使用できるのは 1 つのサブスクリプション内に限定されます。 複数のサブスクリプション内で同一のドメイン名を持つ Web Apps を使用することはできません。
 
-他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。 Resource Manager では、任意のサブスクリプションのエンドポイントを Traffic Manager に追加できますが、Traffic Manager プロファイルを構成するユーザーにそのエンドポイント対する読み取りアクセス権が必要となります。 こうしたアクセス許可を付与するには、 [Azure Resource Manager のロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md)を使用します。
+他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。 Resource Manager では、任意のサブスクリプションのエンドポイントを Traffic Manager に追加できますが、Traffic Manager プロファイルを構成するユーザーにそのエンドポイント対する読み取りアクセス権が必要となります。 こうしたアクセス許可を付与するには、 [Azure Resource Manager のロール ベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md)を使用します。
 
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>クラウド サービス 'Staging' スロットで Traffic Manager を使用できますか。

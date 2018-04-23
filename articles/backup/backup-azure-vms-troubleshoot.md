@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: trinadhk;markgal;jpallavi;sogup
-ms.openlocfilehash: 89535fc22faccfb184d9b56a6138337877957829
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 93eb9a65e9d5733963f7d6269a06d5f3cde5e256
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
@@ -45,7 +45,6 @@ ms.lasthandoff: 03/23/2018
 | 仮想マシン エージェントが仮想マシン上に存在しません - 前提条件である項目と VM エージェントをインストールしてから、操作をやり直してください。 |[こちら](#vm-agent) を参照してください。 |
 | VSS ライターの状態が正しくないため、スナップショット操作に失敗しました |状態が正しくない VSS (ボリューム シャドウ コピー サービス) ライターを再起動する必要があります。 これを実現するには、管理者特権でのコマンド プロンプトから、_vssadmin list writers_ を実行します。 出力には、すべての VSS ライターとそれらの状態が含まれています。 "[1] 安定" 状態ではない VSS ライターすべてに対して、管理者特権でのコマンド プロンプトから次のコマンドを実行して、VSS ライターを再起動します。<br> _net stop serviceName_ <br> _net start serviceName_|
 | 構成の解析に失敗したため、スナップショット操作に失敗しました |これは、次の MachineKeys ディレクトリでアクセス許可が変更されたことで発生します。_%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys。_ <br>次のコマンドを実行し、MachineKeys ディレクトリのアクセス許可が既定のものであることを確認してください。<br>_icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br><br> 既定のアクセス許可は、次のとおりです。<br>Everyone:(R,W) <br>BUILTIN\Administrators:(F)<br><br>MachineKeys ディレクトリで既定以外のアクセス許可が表示される場合は、以下の手順に従い、アクセス許可の修正、証明書の削除、バックアップのトリガーを行ってください。<ol><li>MachineKeys ディレクトリのアクセス許可を修正します。<br>ディレクトリで Explorer のセキュリティ プロパティやセキュリティの詳細設定を使用して、アクセス許可を既定値にリセットし、ディレクトリに追加 (既定値以外) のユーザー オブジェクトがある場合は削除し、次の項目で "Everyone" アクセス許可に特殊なアクセス許可が設定されていることを確認します。<br>- フォルダーの一覧、データの読み取り <br>- 属性の読み取り <br>- 拡張属性の読み取り <br>- ファイルの作成、データの書き込み <br>-フォルダーの作成、データの追加<br>- 属性の書き込み<br>- 拡張属性の書き込み<br>- アクセス許可の読み取り<br><br><li>"発行先" フィールドが [Windows Azure Service Management for Extensions] または [Windows Azure CRP Certificate Generator] になっている証明書をすべて削除します。<ul><li>[証明書 (ローカル コンピューター) コンソールを開く](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)<li>[個人用] -> [証明書] の "発行先" フィールドが [Windows Azure Service Management for Extensions] または [Windows Azure CRP Certificate Generator] になっている証明書をすべて削除します。</ul><li>VM のバックアップをトリガーします。 </ol>|
-| 仮想マシンが BEK だけで暗号化されているため、検証に失敗しました。 バックアップは、BEK と KEK の両方を使って暗号化した仮想マシンに限り、有効にすることができます。 |仮想マシンは、BitLocker 暗号化キーとキー暗号化キーの両方を使って暗号化する必要があります。 それが済んだら、バックアップを有効にしてください。 |
 | Azure Backup サービスには、暗号化された仮想マシンのバックアップ用 Key Vault に対する十分な権限がありません。 |[PowerShell ドキュメント](backup-azure-vms-automation.md)の「**バックアップの有効化**」セクションの手順に従い、PowerShell を使って Backup サービスに適切なアクセス許可を付与する必要があります。 |
 |"COM+ が Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーでスナップショット拡張機能のインストールが失敗しました | Windows サービス "COM+ システム アプリケーション" を起動してみてください (管理者特権のコマンド プロンプトで _net start COMSysApp_ を実行します)。 <br>起動中に失敗した場合は、以下の手順に従ってください。<ol><li> サービスのログオン アカウントが "分散トランザクション コーディネーター" または "ネットワーク サービス" であることを確認します。 そうでない場合は、"ネットワーク サービス" に変更してサービスを再度起動し、"COM+ システム アプリケーション" サービスを起動してみてください。<li>それでも起動できない場合は、以下の手順に従って、"分散トランザクション コーディネーター" サービスのアンインストールとインストールを行ってください。<br> - MSDTC サービスを停止します<br> - コマンド プロンプト (cmd) を開きます <br> - コマンド “msdtc -uninstall” を実行します <br> - コマンド “msdtc -install” を実行します <br> - MSDTC サービスを起動します<li>Windows サービスの "COM + システム アプリケーション" を起動し、サービスが起動されたら、ポータルからバックアップをトリガーします。</ol> |
 |  COM+ エラーが発生したため、スナップショット操作に失敗しました | 推奨される操作は、Windows サービス "COM+ System Application" を再起動 (管理者特権でのコマンド プロンプトから _net start COMSysApp_ を実行) することです。 問題が解決しない場合は、VM を再起動します。 VM を再起動しても問題が解決しない場合は、[VMSnapshot 拡張機能を削除](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)してバックアップを手動でトリガーしてみてください。 |

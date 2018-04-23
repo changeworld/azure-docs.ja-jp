@@ -1,6 +1,6 @@
 ---
-title: "Azure でのリモート管理セキュリティの強化 | Microsoft Docs"
-description: "この記事では、クラウド サービスや仮想マシン、カスタム アプリケーションをはじめとする Microsoft Azure 環境の管理という観点で、リモート管理のセキュリティを強化するための手順を説明します。"
+title: Azure でのリモート管理セキュリティの強化 | Microsoft Docs
+description: この記事では、クラウド サービスや仮想マシン、カスタム アプリケーションをはじめとする Microsoft Azure 環境の管理という観点で、リモート管理のセキュリティを強化するための手順を説明します。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 026a22355ab1d35fa1fe6b7ba624fed5d10b3e38
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -64,7 +64,7 @@ Azure のインターフェイス (SMAPI など) に対する多種多様なエ�
 ### <a name="providing-security-for-azure-remote-management"></a>Azure のリモート管理に対するセキュリティの確保
 Azure には、そのクラウド サービスと仮想マシンの管理者を支援するセキュリティ メカニズムが備わっています。 その例を次に示します。
 
-* 認証と[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)。
+* 認証と[ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)。
 * 監視、ログ、監査。
 * 証明書と通信の暗号化。
 * Web 管理ポータル。
@@ -216,10 +216,10 @@ Azure にデプロイされるアプリケーションやサービスには、�
 * 暗号化。 [暗号化ファイル システム](https://technet.microsoft.com/library/cc700811.aspx) (EFS) や BitLocker の効果を高めるために、管理ワークステーションに TPM が搭載されていることを確認します。 Windows To Go を使用している場合は必ず、暗号化された USB キーと BitLocker を使用してください。
 * ガバナンス。 ファイル共有など、管理者のすべての Windows インターフェイスは、AD DS GPO を使用して制御してください。 監査、監視、ログのプロセスに管理ワークステーションを追加します。 管理者と開発者のすべてのアクセスと使用状況を追跡するようにします。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure のクラウド サービス、仮想マシン、アプリケーションの管理に使用するワークステーションの構成を堅牢化することで、重要な IT インフラストラクチャをリモートから管理することで生じるさまざまなリスクや脅威を排除することができます。 Azure と Windows にはどちらも、通信と認証を保護し、クライアントの動作を制御するための機能が用意されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このホワイト ペーパーで触れた具体的な情報のほか、Azure とそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
 
 * [特権アクセスのセキュリティ保護](https://technet.microsoft.com/library/mt631194.aspx) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します

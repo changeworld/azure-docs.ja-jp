@@ -1,26 +1,24 @@
 ---
-title: "Azure HDInsight Spark クラスターに対して対話型クエリを実行する | Microsoft Docs"
-description: "HDInsight で Apache Spark クラスターを作成する方法に関する HDInsight Spark のクイック スタート。"
-keywords: "spark クイック スタート,対話型 spark,対話型クエリ,hdinsight spark,azure spark"
+title: Azure HDInsight Spark クラスターに対して対話型クエリを実行する | Microsoft Docs
+description: HDInsight で Apache Spark クラスターを作成する方法に関する HDInsight Spark のクイック スタート。
+keywords: spark クイック スタート,対話型 spark,対話型クエリ,hdinsight spark,azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 78ab44a7afa6523e1e9e4082b3f45b1a28affe77
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 177fb47c72e9abbafcda69416643fbd3848373bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-interactive-queries-on-spark-clusters-in-hdinsight"></a>HDInsight で Spark クラスターに対して対話型クエリを実行する
 

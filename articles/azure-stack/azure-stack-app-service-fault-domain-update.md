@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 851747263879aa89fabe8b168876238a004ea8b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 34823b856b48af66ab81dda3359d2e50289f8d2f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
 
@@ -53,9 +53,9 @@ App Service リソース プロバイダー向けに展開されたスケール 
     ![Azure App Service スケール セットは、仮想マシン スケール セット UX に表示されます][1]
 
 2. 次に、各セットをスケールアウトします。  たとえば、スケール セット内に 3 つの既存のインスタンスがある場合は、3 つの新しいインスタンスが障害ドメイン間でプロビジョニングされるように、6 にスケールアウトする必要があります。
-    a. [PowerShell で Azure Stack 管理環境を設定します](azure-stack-powershell-configure-admin.md)。b. この例を使用して、スケール セットをスケールアウトします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [PowerShell で Azure Stack 管理環境を設定します](azure-stack-powershell-configure-admin.md)。b. この例を使用して、スケール セットをスケールアウトします。
         ```powershell
-                Login-AzureRMAccount -EnvironmentName AzureStackAdmin 
+                Connect-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
                 # Get current scale set
                 $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"

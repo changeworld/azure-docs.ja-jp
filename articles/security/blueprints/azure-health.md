@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bdd7dbf4f39529ac76fb496f0d459577e6f929dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -79,14 +79,14 @@ ms.lasthandoff: 03/28/2018
 ## <a name="roles"></a>ロール
 
 
-このブループリントでは、管理ユーザー (オペレーター) の 2 つのロールと、病院管理および患者ケアに従事するユーザーの 3 つのロールが定義されています。 6 番目の役割は、HIPAA や他の規制の遵守を評価する監査担当者向けに定義されています。 Azure のロールベースのアクセス制御 (RBAC) は、組み込みロールとカスタム ロールによって、ソリューションの各ユーザーの厳密に対象を絞ったアクセス管理を実現します。 RBAC、ロール、アクセス許可の詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)」および「[Azure ロールベースのアクセス制御の組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」をご覧ください。
+このブループリントでは、管理ユーザー (オペレーター) の 2 つのロールと、病院管理および患者ケアに従事するユーザーの 3 つのロールが定義されています。 6 番目の役割は、HIPAA や他の規制の遵守を評価する監査担当者向けに定義されています。 Azure のロールベースのアクセス制御 (RBAC) は、組み込みロールとカスタム ロールによって、ソリューションの各ユーザーの厳密に対象を絞ったアクセス管理を実現します。 RBAC、ロール、アクセス許可の詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](https://docs.microsoft.com/azure/role-based-access-control/overview)」および「[Azure ロールベースのアクセス制御の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」をご覧ください。
 
 ### <a name="site-administrator"></a>サイト管理者
 
 
 サイト管理者は、顧客の Azure サブスクリプションに対して責任を負います。 全体的なデプロイを管理しますが、患者記録にアクセスすることはできません。
 
--   既定のロールの割り当て: [所有者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   既定のロールの割り当て: [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 03/28/2018
 データベース アナリストは、SQL Server インスタンスおよびデータベースを管理します。
 患者記録にアクセスすることはできません。
 
--   組み込みロールの割り当て: [SQL DB 共同作業者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor)、[SQL Server 共同作業者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   組み込みロールの割り当て: [SQL DB 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor)、[SQL Server 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 03/28/2018
 
 データ サイエンティストは、Azure Machine Learning サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
 
--   組み込みロールの割り当て: [ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   組み込みロールの割り当て: [ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -138,7 +138,7 @@ CMIO は、医療機関において情報科学/技術の専門家と医療従�
 
 監査担当者は、コンプライアンスについてソリューションを評価します。 ネットワークに直接アクセスすることはできません。
 
--   組み込みロールの割り当て: [閲覧者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   組み込みロールの割り当て: [閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   カスタム ロールの割り当て: 該当なし
 
@@ -222,7 +222,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 -   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) は、組織の ID に影響を及ぼす可能性のある脆弱性を検出し、検出された、組織の ID に関連する疑わしいアクションに対する自動応答を構成します。さらに、疑わしいインシデントを調査し、適切なアクションを実行してそれらを解決します。
 
--   [Azure のロールベースのアクセス制御 (RBAC)](/azure/active-directory/role-based-access-control-configure) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスはサイト管理者に制限されます。 強力なパスワード (12 文字以上で、大文字/小文字、数字、および特殊文字を少なくとも 1 つ含む) が必要です。
+-   [Azure のロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/role-assignments-portal) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスはサイト管理者に制限されます。 強力なパスワード (12 文字以上で、大文字/小文字、数字、および特殊文字を少なくとも 1 つ含む) が必要です。
 
 -   デプロイ時に -enableMFA スイッチが有効になっている場合、多要素認証がサポートされます。
 
@@ -230,7 +230,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **ロール:**
 
--   ソリューションでは、[組み込みロール](/azure/active-directory/role-based-access-built-in-roles)を使用してリソースへのアクセスを管理します。
+-   ソリューションでは、[組み込みロール](/azure/role-based-access-control/built-in-roles)を使用してリソースへのアクセスを管理します。
 
 -   すべてのユーザーに、特定の組み込みロールが既定で割り当てられます。
 
@@ -356,7 +356,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 
 -   Machine Learning Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
-- [Machine Learning](/azure/machine-learning/preview/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/preview/using-git-ml-project)すると、実験の管理を効率化できます。
+- [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/desktop-workbench/using-git-ml-project)すると、実験の管理を効率化できます。
 
 ## <a name="security"></a>セキュリティ
 

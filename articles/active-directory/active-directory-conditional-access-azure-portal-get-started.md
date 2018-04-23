@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory での条件付きアクセスの基本 | Microsoft Docs"
-description: "場所の条件を使用して、条件付きアクセスをテストします。"
+title: Azure Active Directory での条件付きアクセスの基本 | Microsoft Docs
+description: 場所の条件を使用して、条件付きアクセスをテストします。
 services: active-directory
-keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
-documentationcenter: 
+keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory での条件付きアクセスの基本
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-多くの組織で共通する要件の 1 つとして、企業のイントラネットから実行されないアプリへのアクセスに対してのみ多要素認証が必要になることが挙げられます。 Azure Active Directory を使えば、場所ベースの条件付きアクセス ポリシーを構成して、この目標を簡単に実現できます。 このトピックでは、関連するポリシーを構成するための詳細な手順を説明します。 ポリシーは[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) を利用して、企業のイントラネットからのアクセス試行と他のすべての場所からのアクセス試行を区別します。
+多くの組織で共通する要件の 1 つとして、企業のイントラネットから実行されないアプリへのアクセスに対してのみ多要素認証が必要になることが挙げられます。 Azure Active Directory を使えば、場所ベースの条件付きアクセス ポリシーを構成して、この目標を簡単に実現できます。 このトピックでは、関連するポリシーを構成するための詳細な手順を説明します。 ポリシーは[信頼できる IP](authentication/howto-mfa-mfasettings.md#trusted-ips) を利用して、企業のイントラネットからのアクセス試行と他のすべての場所からのアクセス試行を区別します。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/16/2018
 
 - 信頼できる IP の構成
 
-信頼できる IP について詳しくは、「[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)」をご覧ください。
+信頼できる IP について詳しくは、「[信頼できる IP](authentication/howto-mfa-mfasettings.md#trusted-ips)」をご覧ください。
 
 
 ## <a name="policy-configuration-steps"></a>ポリシーの構成の手順

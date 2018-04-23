@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight 上の Apache Spark クラスターのリソースを管理する | Microsoft Docs"
-description: "Azure HDInsight で Spark クラスターのリソースを管理してパフォーマンスを向上させる方法について説明します。"
+title: Azure HDInsight 上の Apache Spark クラスターのリソースを管理する | Microsoft Docs
+description: Azure HDInsight で Spark クラスターのリソースを管理してパフォーマンスを向上させる方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 9da7d4e3-458e-4296-a628-77b14643f7e4
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 914811812b7e01f7b58f92c85cb5a16580c45796
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: afefec77d9d79ad97fa351bc8b0710894c242d76
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理 
 

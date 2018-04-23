@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services チュートリアルの補足のレッスン: 不規則階層 | Microsoft Docs"
-description: "この Azure Analysis Services チュートリアルでは、不規則階層を修正する方法について説明します。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアルの補足のレッスン: 不規則階層 | Microsoft Docs'
+description: この Azure Analysis Services チュートリアルでは、不規則階層を修正する方法について説明します。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 955bc57bbf5f8bc3f0d91350f885d5dc77db93a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
 

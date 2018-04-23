@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cc64ef8d820db6a072b708323eb110d62ed0a83c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -461,7 +461,7 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 
 -   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
--   [[Azure Security Center] (Azure Security Center)](https://docs.microsoft.com/azure/security-center/security-center-intro)
+-   [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 -   [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
 

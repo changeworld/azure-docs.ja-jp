@@ -1,5 +1,21 @@
--- タイトル: 'チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する' 説明: このチュートリアルでは、Azure CLI を使用して最初の Azure Database for PostgreSQL サーバーを作成、構成、クエリを実行する方法を示します。
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
+---
+title: 'チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する'
+description: このチュートリアルでは、Azure CLI を使用して最初の Azure Database for PostgreSQL サーバーを作成、構成、照会する方法を説明します。
+services: postgresql
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
+editor: jasonwhowell
+ms.service: postgresql
+ms.custom: mvc
+ms.devlang: azure-cli
+ms.topic: tutorial
+ms.date: 04/01/2018
+ms.openlocfilehash: acba480631ba69a81da3029aadfb9cb51797549a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
@@ -27,31 +43,6 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 [az group create](/cli/azure/group#az_group_create) コマンドで [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-
-## <a name="add-the-extension"></a>拡張機能の追加
-次のコマンドを使用して最新の Azure Database for PostgreSQL 管理拡張機能を追加します。
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-正しいバージョンの拡張機能がインストールされていることを確認します。 
-```azurecli-interactive
-az extension list
-```
-
-返される JSON には、次の内容が含まれている必要があります。 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-バージョン 0.0.5 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成

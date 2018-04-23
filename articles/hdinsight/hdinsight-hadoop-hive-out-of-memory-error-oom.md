@@ -1,9 +1,9 @@
 ---
-title: "Azure HDInsight における Hive メモリ不足エラーの解決 | Microsoft Docs"
-description: "HDInsight における Hive メモリ不足エラーを解決する方法について説明します。 ユーザーのシナリオは、多数の大きなテーブルに対するクエリです。"
-keywords: "メモリ不足エラー、OOM、Hive 設定"
+title: Azure HDInsight における Hive メモリ不足エラーの解決 | Microsoft Docs
+description: HDInsight における Hive メモリ不足エラーを解決する方法について説明します。 ユーザーのシナリオは、多数の大きなテーブルに対するクエリです。
+keywords: メモリ不足エラー、OOM、Hive 設定
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 7bce3dff-9825-4fa0-a568-c52a9f7d1dad
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: ea83a6b4fa3399ae6a30157c720005683d445d8a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d34ef0828b64ea32adbef8c49cdad1d3bcce6268
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Hive メモリ不足エラーの解決
 

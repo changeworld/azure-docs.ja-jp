@@ -1,38 +1,35 @@
 ---
-title: "詳細情報 - 高度な分析 - Azure HDInsight | Microsoft Docs"
-description: "高度な分析において、どのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。"
+title: 詳細情報 - 高度な分析 - Azure HDInsight | Microsoft Docs
+description: 高度な分析において、どのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 61a00c902be5cd3e37dabba09c15f9226e5e88b4
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>HDInsight の高度な分析とは
 
-HDInsight を使用すると、大量の構造化されたデータ、構造化されていないデータ、動きの速いデータから、価値のある分析情報を得ることができます。 高度な分析では、拡張性の高いアーキテクチャ、統計モデルと機械学習モデル、インテリジェント ダッシュボードを使用することで、示唆に富んだ分析情報を提供します。 機械学習、あるいは *"予測分析"* は、データ内のリレーションシップを特定して学習するアルゴリズムを使用し、予測を行ってユーザーの決定をガイドします。
+HDInsight を使用すると、大量の構造化されたデータ、構造化されていないデータ、動きの速いデータから、価値のある分析情報を得ることができます。 高度な分析では、スケーラビリティの高いアーキテクチャ、統計モデルと機械学習モデル、インテリジェント ダッシュボードを使用することで、示唆に富んだ分析情報を提供します。 機械学習、あるいは *"予測分析"* は、データ内のリレーションシップを特定して学習するアルゴリズムを使用し、予測を行ってユーザーを決断へと導きます。
 
 ## <a name="advanced-analytics-process"></a>高度な分析のプロセス
 
 ![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
-ビジネス上の問題を特定し、データの収集と処理を開始したら、予測する課題を表すモデルを作成する必要があります。 モデルは 1 つ以上の機械学習アルゴリズムを使用して、お客様のビジネス上のニーズに最適な予測タイプを作成します。  ご利用のデータはテストや評価に使用する分を残して、その大部分をモデルのトレーニングに使用する必要があります。 
+ビジネス上の問題を特定し、データの収集と処理を開始したら、予測する課題を象徴するモデルを作成する必要があります。 モデルは 1 つ以上の機械学習アルゴリズムを使用して、お客様のビジネス上のニーズに最適な予測タイプを作成します。  ご利用のデータはテストや評価に使用する分を残して、その大部分をモデルのトレーニングに使用する必要があります。 
 
 使用するモデルを作成、読み込み、テスト、評価したら、次はそのモデルをデプロイして、お客様の質問に対する回答を開始するようにします。 最後にモデルのパフォーマンスを監視して、必要に応じて調整します。 
 
@@ -79,7 +76,7 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 ### <a name="r-and-r-server"></a>R と R Server
 
-大量のデータセットとモデルを扱えるよう準備された [R Server](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケールすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
+大量のデータセットとモデルを扱えるよう準備された [R Server](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケーリングすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
 
 ### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
 

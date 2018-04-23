@@ -9,12 +9,13 @@ ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
-ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: fab5d893697a961ef588b0b26008fb27f92a5a18
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.author: anjangsh
+ms.reviewer: billgib, genemi
+ms.openlocfilehash: 6ce67afc2959580699798dd70417ca235e743552
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>抽出されたデータを使用したクロステナント分析
 

@@ -1,24 +1,24 @@
 ---
-title: "Azure Portal での Power BI Embedded 容量の作成 | Microsoft Docs"
-description: "この記事では、Microsoft Azure で Power BI Embedded 容量を作成する手順について説明します。"
+title: Azure Portal での Power BI Embedded 容量の作成 | Microsoft Docs
+description: この記事では、Microsoft Azure で Power BI Embedded 容量を作成する手順について説明します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: 2fadfde13aee3aaf965c6ba30188544a8a075b9d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Azure Portal での Power BI Embedded 容量の作成
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートを完了するには、次のものが必要です。
 
 * **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/free/)にアクセスしてアカウントを作成します。
-* **Azure Active Directory**: サブスクリプションは、Azure Active Directory (AAD) テナントに関連付けられている必要があります。 また、"***そのテナントのアカウントを使用して Azure にサインインしている必要があります***"。 Microsoft アカウントはサポートされていません。 詳細については、認証とユーザーのアクセス許可に関するページを参照してください。
+* **Azure Active Directory**: サブスクリプションは、Azure Active Directory (AAD) テナントに関連付けられている必要があります。 また、"***そのテナントのアカウントを使用して Azure にサインインしている必要があります***"。 Microsoft アカウントはサポートされていません。 詳細については、「[認証とユーザーのアクセス許可](../analysis-services/analysis-services-manage-users.md)」を参照してください。
 * **Power BI テナント**: AAD テナント内の少なくとも 1 つのアカウントは Power BI にサインアップ済みである必要があります。
 * **リソース グループ**: 既存のリソース グループを使用するか、[新しいリソース グループを作成](../azure-resource-manager/resource-group-overview.md)します。
 

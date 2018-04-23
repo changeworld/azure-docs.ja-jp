@@ -1,6 +1,6 @@
 ---
-title: "Azure コンテナー レジストリでの認証"
-description: "Azure Active Directory サービス プリンシパルによるレジストリへの直接ログインなど、Azure コンテナー レジストリの認証オプションについて説明します。"
+title: Azure コンテナー レジストリでの認証
+description: Azure Active Directory サービス プリンシパルによるレジストリへの直接ログインなど、Azure コンテナー レジストリの認証オプションについて説明します。
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 349d4f8cba2967edcedb202979695d271283fa8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
@@ -31,11 +31,11 @@ Azure Container Registry では、認証されていない Docker 操作と匿�
 az acr login --name <acrName>
 ```
 
-`az acr login` を使用してログインすると、CLI は `az login` の実行時に作成されたトークンを使用して、レジストリとのセッションをシームレスに認証します。 この方法でログインすると、資格情報がキャッシュされるので、以降の `docker` コマンドではユーザー名やパスワードが不要になります。 トークンの有効期限が切れた場合は、`az acr login` コマンドを再度使用して再認証することで、トークンを更新できます。 Azure ID で `az acr login` を使用すると、[ロールベースのアクセス](../active-directory/role-based-access-control-configure.md)が可能になります。
+`az acr login` を使用してログインすると、CLI は `az login` の実行時に作成されたトークンを使用して、レジストリとのセッションをシームレスに認証します。 この方法でログインすると、資格情報がキャッシュされるので、以降の `docker` コマンドではユーザー名やパスワードが不要になります。 トークンの有効期限が切れた場合は、`az acr login` コマンドを再度使用して再認証することで、トークンを更新できます。 Azure ID で `az acr login` を使用すると、[ロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)が可能になります。
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
-アプリケーションやサービスがヘッドレス認証に使用できる[サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)をレジストリに割り当てることができます。 サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../active-directory/role-based-access-control-configure.md)が可能になります。1 つのレジストリに複数のサービス プリンシパルを割り当てることができます。 複数のサービス プリンシパルを割り当てることで、アプリケーションごとに異なるアクセスを定義できます。
+アプリケーションやサービスがヘッドレス認証に使用できる[サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)をレジストリに割り当てることができます。 サービス プリンシパルを使用すると、レジストリへの[ロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)が可能になります。1 つのレジストリに複数のサービス プリンシパルを割り当てることができます。 複数のサービス プリンシパルを割り当てることで、アプリケーションごとに異なるアクセスを定義できます。
 
 使用可能なロールは次のとおりです。
 

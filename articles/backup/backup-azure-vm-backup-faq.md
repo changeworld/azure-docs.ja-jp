@@ -1,12 +1,12 @@
 ---
-title: "Azure VM バックアップの FAQ | Microsoft Docs"
-description: "一般的な質問への回答: Azure VM バックアップの動作、制限、ポリシーの変更があったときに起こること"
+title: Azure VM バックアップの FAQ | Microsoft Docs
+description: '一般的な質問への回答: Azure VM バックアップの動作、制限、ポリシーの変更があったときに起こること'
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "azure vm バックアップ, azure vm 復元, バックアップ ポリシー"
+editor: ''
+keywords: azure vm バックアップ, azure vm 復元, バックアップ ポリシー
 ms.assetid: c4cd7ff6-8206-45a3-adf5-787f64dbd7e1
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Azure VM バックアップ サービスについての質問
 この記事では、Azure VM バックアップの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -33,12 +33,11 @@ Recovery Services コンテナーでは両方のモデルがサポートされ�
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>バックアップ構成ウィザードに VM が表示されません。なぜでしょうか。
 バックアップの構成ウィザードで Azure Backup の対象として表示されるのは、次に該当する VM だけです。
-  * まだ保護されていない (VM のバックアップ状態は、VM ブレードに移動し、設定メニューの [バックアップ状態] を見て確認できます。) 詳細については、[VM のバックアップ状態の確認](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)方法に関するページを参照してください。
+  * まだ保護されていない (VM のバックアップ状態は、VM ブレードに移動し、設定メニューの [バックアップ状態] を見て確認できます。) 詳細については、[VM のバックアップ状態の確認](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu)方法に関するページを参照してください。
   * VM と同じリージョンに属している
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>バックアップ
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>オンデマンド バックアップ ジョブのリテンション期間スケジュールは、スケジュールされたバックアップと同じでしょうか。
-
 いいえ。 オンデマンド バックアップ ジョブのリテンション期間はご自身で指定する必要があります。 ポータルからトリガーした場合、既定で 30 日間保存されます。 
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>最近いくつかの VM で Azure Disk Encryption を有効にしました。 既存のバックアップは今後も正常に機能しますか。

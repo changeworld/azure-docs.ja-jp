@@ -1,12 +1,12 @@
 ---
-title: "サンプルの使用"
-description: "この記事では、Power BI ワークスペース コレクションの使用を開始するためのサンプルを紹介します。"
+title: サンプルの使用
+description: この記事では、Power BI ワークスペース コレクションの使用を開始するためのサンプルを紹介します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 9049f95c9f81c0217c96469a45561b6cd0b33ae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI ワークスペース コレクションのサンプルの使用
 
@@ -141,7 +141,7 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 
 **Reports.cshtml**: **ActionLink** を作成するために **Model.Reports** を反復処理します。 **ActionLink** の構成は次のとおりです。
 
-| パーツ | 説明 |
+| パーツ | [説明] |
 | --- | --- |
 | タイトル |レポートの名前。 |
 | QueryString |レポート ID へのリンク。 |

@@ -1,24 +1,17 @@
 ---
-title: "Azure Search への SQL VM 接続 | Microsoft Docs"
-description: "暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。"
-services: search
-documentationcenter: 
+title: Azure Search への SQL VM 接続 | Microsoft Docs
+description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
 author: HeidiSteen
-manager: pablocas
-editor: 
-ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
+manager: cgronlun
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f9f429a8a18a6e0722e1cb5e190104665305e06
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
 「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
@@ -85,6 +78,6 @@ Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つ
 #### <a name="include-the-azure-search-portal-ip-addresses"></a>Azure Search ポータルの IP アドレスを含める
 Azure Portal を使用してインデクサーを作成する場合は、作成時に、Azure Search ポータル ロジックから SQL Azure VM にアクセスできることも必要になります。 Azure Search ポータルの IP アドレスは、 `stamp2.search.ext.azure.com`に ping を実行すると確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで構成が完了し、Azure VM 上 の SQL Server を Azure Search インデクサーのデータ ソースとして指定できるようになりました。 詳細については、「 [インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) 」を参照してください。
 

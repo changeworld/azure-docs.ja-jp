@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database のサーバーとデータベースを作成し、管理する
 
@@ -46,7 +46,7 @@ Azure SQL Database 論理サーバーは、
 - データベース、エラスティック プール、およびデータ ウェアハウスの親リソースです
 - データベース、エラスティック プール、データ ウェアハウスの名前空間を提供します
 - 強力な有効期間のセマンティクスが含まれる論理コンテナーです。サーバーを削除すると、包含データベース、エラスティック プール、データ ウェアハウスが削除されます
-- [Azure ロール ベースのアクセス制御 (RBAC)](/active-directory/role-based-access-control-what-is) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウスはサーバーからアクセス権を継承します
+- [Azure ロール ベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウスはサーバーからアクセス権を継承します
 - Azure のリソース管理目的での、データベース、エラスティック プール、データ ウェアハウスの上位要素です (データベースとプールの URL スキーマを参照してください)
 - 領域内にリソースを併置します
 - データベース アクセスの接続エンドポイント (<serverName>.database.windows.net) を提供します
@@ -79,9 +79,8 @@ Azure SQL Database 論理サーバーは、
 
 > [!IMPORTANT]
 > データベースの価格レベルを選択する方法については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。
->
 
-Azure SQL Database マネージ インスタンスを作成する方法については、[マネージ インスタンスを作成する](sql-database-managed-instance-tutorial-portal.md)を参照してください。
+Azure SQL Database マネージ インスタンスを作成する方法については、[マネージ インスタンスを作成する](sql-database-managed-instance-create-tutorial-portal.md)を参照してください。
 
 ### <a name="manage-an-existing-sql-server"></a>既存の SQL Server を管理する
 

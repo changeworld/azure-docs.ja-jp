@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに
@@ -101,7 +101,7 @@ Azure Portal、[CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli)
 
 -   ログ プロファイルを使用して、アクティビティ ログを [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) にエクスポートする。
 
-ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは [Event Hub 名前空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) へのアクセス権を持っている必要があります。
+ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは [Event Hub 名前空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) へのアクセス権を持っている必要があります。
 ### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 Azure 診断ログはリソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースのタイプによって異なります (たとえば、[Windows イベント システム ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)は、VM の診断ログのカテゴリの 1 つであり、[BLOB ログ、Table ログ、Queue ログ](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)は、ストレージ アカウントの診断ログのカテゴリです)。また、診断ログは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られるアクティビティ ログとは異なります。
 

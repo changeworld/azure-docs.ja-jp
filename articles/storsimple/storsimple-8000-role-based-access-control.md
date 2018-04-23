@@ -1,12 +1,12 @@
 ---
-title: "StorSimple でロールベースのアクセス制御を使用する | Microsoft Docs"
-description: "StorSimple のコンテキストで Azure ロールベースのアクセス制御 (RBAC) を使用する方法について説明します。"
+title: StorSimple でロールベースのアクセス制御を使用する | Microsoft Docs
+description: StorSimple のコンテキストで Azure ロールベースのアクセス制御 (RBAC) を使用する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: d040849360a47c611d44b3a5d7649c685dcc8068
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 412098ad6b8a6620b165b6cecaa0d0b3ee05f63e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
 
-この記事では、StorSimple デバイスで Azure ロールベースのアクセス制御 (RBAC) を使用する方法について、簡単に説明します。 RBAC は、Azure の粒度の細かいアクセス管理を提供します。 RBAC を使用して、StorSimple のすべてのユーザーに無制限のアクセス権を与える代わりに、仕事を行うために必要な適切なアクセス権をユーザーに付与します。 Azure でのアクセス管理の基本については、「[Azure ポータルでのロールベースの Access Control の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。
+この記事では、StorSimple デバイスで Azure ロールベースのアクセス制御 (RBAC) を使用する方法について、簡単に説明します。 RBAC は、Azure の粒度の細かいアクセス管理を提供します。 RBAC を使用して、StorSimple のすべてのユーザーに無制限のアクセス権を与える代わりに、仕事を行うために必要な適切なアクセス権をユーザーに付与します。 Azure でのアクセス管理の基本については、「[Azure ポータルでのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 
 この記事は、Azure ポータルで Update 3.0 以降を実行している StorSimple 8000 シリーズのデバイスに適用されます。
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/12/2017
 
 RBAC は、ロールに基づいて割り当てることができます。 ロールは、環境内で利用できるリソースに基づく特定のアクセス許可レベルを保証します。 StorSimple ユーザーが選択できるロールには、組み込みまたはカスタムの 2 種類があります。
 
-* **組み込みのロール** - 組み込みのロールは、所有者、共同作成者、閲覧者、またはユーザー アクセス管理者が可能です。 詳細については、「[Azure ロールベースのアクセス制御の組み込みのロール](../active-directory/role-based-access-control-what-is.md#built-in-roles)」を参照してください。
+* **組み込みのロール** - 組み込みのロールは、所有者、共同作成者、閲覧者、またはユーザー アクセス管理者が可能です。 詳細については、「[Azure ロールベースのアクセス制御の組み込みのロール](../role-based-access-control/overview.md#built-in-roles)」を参照してください。
 
-* **カスタム ロール** - 組み込みのロールがニーズに適合しない場合は、StorSimple 用のカスタム RBAC ロールを作成できます。 カスタム RBAC ロールを作成するには、組み込みのロールから始めてそれを編集した後、環境にインポートします。 ロールのダウンロードとアップロードは Azure PowerShell または Azure CLI を使用して管理されます。 詳細については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md)」を参照してください。
+* **カスタム ロール** - 組み込みのロールがニーズに適合しない場合は、StorSimple 用のカスタム RBAC ロールを作成できます。 カスタム RBAC ロールを作成するには、組み込みのロールから始めてそれを編集した後、環境にインポートします。 ロールのダウンロードとアップロードは Azure PowerShell または Azure CLI を使用して管理されます。 詳細については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md)」を参照してください。
 
 Azure ポータルの StorSimple デバイス ユーザーのために使用できる異なるロールを表示するには、StorSimple デバイス マネージャー サービスに移動し、**[Access control (IAM)]、[ロール]** の順に選択します。
 
@@ -45,7 +45,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 2. Azure にログインします。
 
-    `Login-AzureRMAccount`
+    `Connect-AzureRmAccount`
 
 3. 閲覧者ロールを JSON テンプレートとしてコンピューターにエクスポートします。
 
@@ -108,12 +108,12 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 ![RBAC ロールの表示](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-詳細については、[PowerShell を使用したカスタム RBAC ロールの作成](../active-directory/role-based-access-control-create-custom-roles-for-internal-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell)に関する記事を参照してください。
+詳細については、[PowerShell を使用したカスタム RBAC ロールの作成](../role-based-access-control/role-assignments-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell)に関する記事を参照してください。
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Powershell によるカスタム ロールの作成のサンプル出力
 
 ```
-PS C:\WINDOWS\system32> Login-AzureRMAccount
+PS C:\WINDOWS\system32> Connect-AzureRmAccount
 
 Environment           : AzureCloud
 Account               : john.doe@contoso.com
@@ -153,7 +153,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>カスタム ロールにユーザーを追加する
 
-アクセス権は、リソース内、リソース グループ内、またはサブスクリプション内から付与します。これは、ロール割り当てのスコープになります。 アクセス権を付与するときは、親ノードに付与されたアクセス権は子ノードに継承されることを忘れないでください。 詳細については、「[リソースの階層とアクセスの継承](../active-directory/role-based-access-control-what-is.md#resource-hierarchy-and-access-inheritance)」を参照してください。
+アクセス権は、リソース内、リソース グループ内、またはサブスクリプション内から付与します。これは、ロール割り当てのスコープになります。 アクセス権を付与するときは、親ノードに付与されたアクセス権は子ノードに継承されることを忘れないでください。 詳細については、「[リソースの階層とアクセスの継承](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance)」を参照してください。
 
 1. **[アクセス制御 (IAM)]** を選択します。 アクセス制御ブレードで **[+追加]** を選択します。
 
@@ -184,7 +184,7 @@ PS C:\WINDOWS\system32>
     ![StorSimple インフラストラクチャ管理者ロールのユーザーを表示する](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[内部ユーザーと外部ユーザーへのカスタム ロールの割り当て](../active-directory/role-based-access-control-create-custom-roles-for-internal-external-users.md)に関する記事で詳細を確認します。
+[内部ユーザーと外部ユーザーへのカスタム ロールの割り当て](../role-based-access-control/role-assignments-external-users.md)に関する記事で詳細を確認します。
 

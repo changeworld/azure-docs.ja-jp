@@ -1,6 +1,6 @@
 ---
-title: "サブスクリプション ガバナンスのシナリオと例 | Microsoft Docs"
-description: "一般的なシナリオでの Azure サブスクリプション ガバナンスの実装方法の例を紹介します。"
+title: サブスクリプション ガバナンスのシナリオと例 | Microsoft Docs
+description: 一般的なシナリオでの Azure サブスクリプション ガバナンスの実装方法の例を紹介します。
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure エンタープライズ スキャフォールディングの実装例
 このトピックでは、企業が [Azure エンタープライズ スキャフォールディング](resource-manager-subscription-governance.md)の推奨事項を実装する方法の例を紹介します。 Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。
@@ -43,7 +43,7 @@ Contoso 社では、世界中の開発者が使用するソース コード管�
 ### <a name="naming-standards--resource-groups"></a>命名規則とリソース グループ
 Dave は、すべての部署に共通する開発者ツールをサポートするサブスクリプションを作成することにしました。 サブスクリプションと (アプリケーションおよびネットワークの) リソース グループにわかりやすい名前を付ける必要があります。 Dave は次のサブスクリプションとリソース グループを作成しました。
 
-| 項目 | 名前 | 説明 |
+| 項目 | Name | [説明] |
 | --- | --- | --- |
 | [サブスクリプション] |Contoso ETS DeveloperTools Production |共通の開発ツールをサポートします。 |
 | リソース グループ |bitbucket-prod-rg |アプリケーションの Web サーバーとデータベース サーバーが含まれます。 |
@@ -54,12 +54,12 @@ Dave は、すべての部署に共通する開発者ツールをサポートす
 
 Dave はサブスクリプションの次のロールを割り当てました。
 
-| 役割 | 割り当て先 | 説明 |
+| 役割 | 割り当て先 | [説明] |
 | --- | --- | --- |
-| [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso 社の AD のマネージ ID |この ID は、Contoso 社の ID 管理ツールを使用して Just In Time (JIT) アクセスで管理されます。この ID により、サブスクリプションの所有者のアクセスを完全に監査できます |
-| [Security Manager](../active-directory/role-based-access-built-in-roles.md#security-manager) |セキュリティおよびリスク管理部門 |このロールでは、ユーザーは Azure Security Center とリソースの状態を確認できます |
-| [Network Contributor](../active-directory/role-based-access-built-in-roles.md#network-contributor) |ネットワーク チーム |このロールでは、Contoso 社のネットワーク チームがサイト間 VPN と仮想ネットワークを管理できます |
-| *カスタム ロール* |アプリケーションの所有者 |Dave は、リソース グループ内のリソースを変更できるロールを作成しました。 詳細については、「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-custom-roles.md)」をご覧ください。 |
+| [所有者](../role-based-access-control/built-in-roles.md#owner) |Contoso 社の AD のマネージ ID |この ID は、Contoso 社の ID 管理ツールを使用して Just In Time (JIT) アクセスで管理されます。この ID により、サブスクリプションの所有者のアクセスを完全に監査できます |
+| [Security Manager](../role-based-access-control/built-in-roles.md#security-manager) |セキュリティおよびリスク管理部門 |このロールでは、ユーザーは Azure Security Center とリソースの状態を確認できます |
+| [Network Contributor](../role-based-access-control/built-in-roles.md#network-contributor) |ネットワーク チーム |このロールでは、Contoso 社のネットワーク チームがサイト間 VPN と仮想ネットワークを管理できます |
+| *カスタム ロール* |アプリケーションの所有者 |Dave は、リソース グループ内のリソースを変更できるロールを作成しました。 詳細については、「[Azure RBAC のカスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。 |
 
 ### <a name="policies"></a>ポリシー
 Dave には、サブスクリプション内のリソースの管理に関する次の要件があります。
@@ -70,10 +70,10 @@ Dave には、サブスクリプション内のリソースの管理に関する
 
 Dave は次の [Azure ポリシー](../azure-policy/azure-policy-introduction.md)を作成します。
 
-| フィールド | 効果 | 説明 |
+| フィールド | 効果 | [説明] |
 | --- | --- | --- |
 | location |audit |すべてのリージョンでのリソースの作成を監査します。 |
-| type |deny |G シリーズ仮想マシンの作成を拒否します。 |
+| 型 |deny |G シリーズ仮想マシンの作成を拒否します。 |
 | tags |deny |アプリケーションの所有者タグが必要です。 |
 | tags |deny |コスト センター タグが必要です。 |
 | tags |append |タグ名 **BusinessUnit** とタグ値 **ETS** をすべてのリソースに追加します。 |
@@ -94,10 +94,10 @@ Contoso ETS 情報セキュリティおよびリスク管理チームは、Dave 
 
 Dave は次のリソースを作成しました。
 
-| リソースの種類 | 名前 | 説明 |
+| リソースの種類 | Name | [説明] |
 | --- | --- | --- |
-| Virtual Network |internal-vnet |BitBucket アプリケーションで使用されます。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています。  サブネット (`bitbucket`) は、特定の IP アドレス空間を使用してアプリケーションを提供します |
-| Virtual Network |external-vnet |公開エンドポイントを必要とする将来のアプリケーションで使用できます |
+| 仮想ネットワーク |internal-vnet |BitBucket アプリケーションで使用されます。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています。  サブネット (`bitbucket`) は、特定の IP アドレス空間を使用してアプリケーションを提供します |
+| 仮想ネットワーク |external-vnet |公開エンドポイントを必要とする将来のアプリケーションで使用できます |
 | ネットワーク セキュリティ グループ |bitbucket-nsg |アプリケーションが存在するサブネット (`bitbucket`) に対して、ポート 443 での接続だけを許可することで、このワークロードの攻撃対象領域を最小限に抑えることができます |
 
 ### <a name="resource-locks"></a>リソース ロック
@@ -105,14 +105,14 @@ Dave は、Contoso 社の企業ネットワークから内部仮想ネットワ�
 
 そこで、次の[リソース ロック](resource-group-lock-resources.md)を作成しました。
 
-| ロックの種類 | リソース | 説明 |
+| ロックの種類 | リソース | [説明] |
 | --- | --- | --- |
 | **CanNotDelete** |internal-vnet |ユーザーが仮想ネットワークまたはサブネットを削除できないようにします。ただし、新しいサブネットの追加を妨げることはありません |
 
 ### <a name="azure-automation"></a>Azure Automation
 このアプリケーションには自動化するものはありません。 Dave は Azure Automation アカウントを作成しましたが、最初のうちはこのアカウントを使用しません。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="azure-security-center"></a>Azure Security Center
 Contoso IT サービス管理部門では、脅威をすばやく特定し、処理する必要があります。 また、どのような問題が存在する可能性があるかを理解したいと思っています。  
 
 これらの要件を満たすために、Dave は [Azure Security Center](../security-center/security-center-intro.md) を有効にし、セキュリティ マネージャー ロールがアクセスできるようにしました。
@@ -123,7 +123,7 @@ Contoso IT サービス管理部門では、脅威をすばやく特定し、処
 ### <a name="azure-subscriptions"></a>Azure サブスクリプション
 Dave は Azure Enterprise Portal にログインし、サプライ チェーン部門が既に存在することを確認しました。  ただし、このプロジェクトは Azure におけるサプライ チェーン チームの最初の開発プロジェクトであるため、Dave は Alice の開発チーム用の新しいアカウントが必要であることに気付きました。  Dave はチーム用の "R & D" アカウントを作成し、Alice にアクセスを割り当てました。 Alice は Azure Portal からログインし、2 つのサブスクリプションを作成しました。1 つは開発サーバーを保持するためのサブスクリプション、もう 1 つは運用サーバーを保持するためのサブスクリプションです。  Alice は次のサブスクリプションを作成するときに、以前に定めた命名規則に従いました。
 
-| サブスクリプションの用途 | 名前 |
+| サブスクリプションの用途 | Name |
 | --- | --- |
 | 開発 |Contoso SupplyChain ResearchDevelopment LoyaltyCard Development |
 | Production |Contoso SupplyChain Operations LoyaltyCard Production |
@@ -133,7 +133,7 @@ Dave と Alice はアプリケーションについて話し合い、このア�
 
 **開発サブスクリプション**では、次のポリシーを作成しました。
 
-| フィールド | 効果 | 説明 |
+| フィールド | 効果 | [説明] |
 | --- | --- | --- |
 | location |audit |すべてのリージョンでのリソースの作成を監査します。 |
 
@@ -141,7 +141,7 @@ Dave と Alice はアプリケーションについて話し合い、このア�
 
 **運用サブスクリプション**では、次のポリシーを作成しました。
 
-| フィールド | 効果 | 説明 |
+| フィールド | 効果 | [説明] |
 | --- | --- | --- |
 | location |deny |米国のデータセンター以外でのリソースの作成を拒否します |
 | tags |deny |アプリケーションの所有者タグが必要です。 |
@@ -164,15 +164,15 @@ Contoso ETS 情報セキュリティおよびリスク管理チームは、Dave 
 
 **開発サブスクリプション**では、次のリソースを作成しました。
 
-| リソースの種類 | 名前 | 説明 |
+| リソースの種類 | Name | [説明] |
 | --- | --- | --- |
-| Virtual Network |internal-vnet |Contoso ロイヤルティ カード開発環境を提供します。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています |
+| 仮想ネットワーク |internal-vnet |Contoso ロイヤルティ カード開発環境を提供します。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています |
 
 **運用サブスクリプション**では、次のリソースを作成しました。
 
-| リソースの種類 | 名前 | 説明 |
+| リソースの種類 | Name | [説明] |
 | --- | --- | --- |
-| Virtual Network |external-vnet |ロイヤルティ カード アプリケーションをホストします。Contoso 社の ExpressRoute には直接接続されていません。 コードは、ソース コード システムによって PaaS サービスに直接プッシュされます |
+| 仮想ネットワーク |external-vnet |ロイヤルティ カード アプリケーションをホストします。Contoso 社の ExpressRoute には直接接続されていません。 コードは、ソース コード システムによって PaaS サービスに直接プッシュされます |
 | ネットワーク セキュリティ グループ |loyaltycard-nsg |TCP 443 での受信通信だけを許可することで、このワークロードの攻撃対象領域を最小限に抑えることができます。  Contoso 社では、保護を強化するために、Web アプリケーション ファイアウォールを使用した調査も行っています |
 
 ### <a name="resource-locks"></a>リソース ロック
@@ -180,7 +180,7 @@ Dave と Alice は話し合い、誤ったコード プッシュ時の誤削除�
 
 次のロックを作成しました。
 
-| ロックの種類 | リソース | 説明 |
+| ロックの種類 | リソース | [説明] |
 | --- | --- | --- |
 | **CanNotDelete** |external-vnet |ユーザーが仮想ネットワークまたはサブネットを削除できないようにします。 このロックによって、新しいサブネットの追加が妨げられることはありません |
 
@@ -189,10 +189,10 @@ Alice と開発チームは、このアプリケーションの環境を管理�
 
 これらの Runbook を使用するために、[Automation](../automation/automation-intro.md) を有効にしました。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="azure-security-center"></a>Azure Security Center
 Contoso IT サービス管理部門では、脅威をすばやく特定し、処理する必要があります。 また、どのような問題が存在する可能性があるかを理解したいと思っています。  
 
 これらの要件を満たすために、Dave は Azure Security Center を有効にしました。 Dave は Azure Security Center がリソースを監視していることを確認し、DevOps チームとセキュリティ チームがアクセスできるようにしました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Resource Manager テンプレートの作成方法については、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](resource-manager-template-best-practices.md)」をご覧ください。

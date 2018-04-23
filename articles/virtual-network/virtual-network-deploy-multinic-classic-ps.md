@@ -1,11 +1,11 @@
 ---
-title: "複数の NIC を持つ VM (クラシック) を作成する - Azure PowerShell | Microsoft Docs"
-description: "PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する方法について説明します。"
+title: 複数の NIC を持つ VM (クラシック) を作成する - Azure PowerShell | Microsoft Docs
+description: PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
 ms.service: virtual-network
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 824af3f0f5f6d42341f6f1dc94104f6009b568b8
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: a86a3cecffa50143afbb7aad20b1a40baeb87c38
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/20/2017
 Azure に仮想マシン (VM) を作成し、複数のネットワーク インターフェイス (NIC) を各 VM にアタッチできます。 複数 NIC では、複数の NIC 全体にトラフィック タイプを分散できます。 たとえば、インターネットと通信する NIC もあれば、インターネットに接続されていない内部リソースとのみ通信する NIC もあるとします。 アプリケーションの配布や WAN の最適化ソリューションなど、多くのネットワーク仮想アプライアンスでは、複数の NIC 間にネットワーク トラフィックを分散できる必要があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](../virtual-machines/windows/multiple-nics.md)を使用してこれらの手順を実行する方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](../virtual-machines/windows/multiple-nics.md)を使用してこれらの手順を実行する方法について説明します。
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 

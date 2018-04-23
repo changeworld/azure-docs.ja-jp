@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 31e71f153c7bbf76b0f06f8f17a74c43cc1b1c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループのリソースを整理する 
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2018
 
 ![ツリー](media/management-groups/MG_overview.png)
 
-部門別にグループ化された階層を作成することで、その管理グループに属する部門に "*継承*" される [Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) のロールを割り当てることができます。 管理グループを使うと、ロールの割り当てが 1 回しか必要ないので、ワークロードが減り、エラーのリスクが軽減されます。 
+部門別にグループ化された階層を作成することで、その管理グループに属する部門に "*継承*" される [Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) のロールを割り当てることができます。 管理グループを使うと、ロールの割り当てが 1 回しか必要ないので、ワークロードが減り、エラーのリスクが軽減されます。 
 
 ### <a name="important-facts-about-management-groups"></a>管理グループに関する重要な事実
 - 1 つのディレクトリでは、10,000 個の管理グループをサポートできます。 
@@ -55,7 +55,7 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="root-management-group-for-each-directory"></a>各ディレクトリのルート管理グループ
 
-各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 [ディレクトリ管理者は自分自身を昇格させて](../active-directory/role-based-access-control-tenant-admin-access.md)、最初にこのルート グループの所有者にする必要があります。 グループの所有者になった管理者は、任意の RBAC ロールを他のディレクトリ ユーザーまたはグループに割り当てて、階層を管理することができます。  
+各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 [ディレクトリ管理者は自分自身を昇格させて](../role-based-access-control/elevate-access-global-admin.md)、最初にこのルート グループの所有者にする必要があります。 グループの所有者になった管理者は、任意の RBAC ロールを他のディレクトリ ユーザーまたはグループに割り当てて、階層を管理することができます。  
 
 ### <a name="important-facts-about-the-root-management-group"></a>ルート管理グループに関する重要な事実
 - ルート管理グループの名前と ID は、既定では Azure Active Directory ID に設定されます。 表示名はいつでも更新でき、Azure Portal 内での表示を変えることができます。 
@@ -67,9 +67,9 @@ ms.lasthandoff: 04/03/2018
   
 ## <a name="management-group-access"></a>管理グループ アクセス
 
-Azure 管理グループは、すべてのリソース アクセスとロール定義について、[Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) をサポートします。 これらのアクセス許可は、階層内に存在する子リソースに継承されます。   
+Azure 管理グループは、すべてのリソース アクセスとロール定義について、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) をサポートします。 これらのアクセス許可は、階層内に存在する子リソースに継承されます。   
 
-任意の[組み込み RBAC ロール](../active-directory/role-based-access-control-what-is.md#built-in-roles)を管理グループに割り当てることができますが、よく使われるロールが 4 つあります。 
+任意の[組み込み RBAC ロール](../role-based-access-control/overview.md#built-in-roles)を管理グループに割り当てることができますが、よく使われるロールが 4 つあります。 
 - **所有者** は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 
 - **共同作成者**は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
 - **リソース ポリシーの共同作成者**は、リソースのディレクトリ内のポリシーを作成および管理できます。     

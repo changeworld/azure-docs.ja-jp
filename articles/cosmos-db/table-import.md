@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB Table API で使用するデータのインポート | Microsoft Docs"
-description: "Azure Cosmos DB Table API で使用するデータのインポート方法を説明します。"
+title: Azure Cosmos DB Table API で使用するデータのインポート | Microsoft Docs
+description: Azure Cosmos DB Table API で使用するデータのインポート方法を説明します。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: mimig
-ms.openlocfilehash: 1c53be736ad65a53767626033be27f0891de06ba
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API で使用するデータのインポート
 
@@ -131,7 +131,7 @@ Table API (プレビュー) から一般公開の Table API に移行するに�
 
 3. データ移行ツールを使用して、プレビュー テーブルのクライアント データを GA テーブルに移行します。 この目的でデータ移行ツールを使用する手順については、「[データ移行ツール](#data-migration-tool)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

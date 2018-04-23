@@ -1,11 +1,11 @@
 ---
-title: "ロールを使用した Azure 課金情報へのアクセスの管理 | Microsoft Docs"
-description: 
-services: 
-documentationcenter: 
+title: ロールを使用した Azure 課金情報へのアクセスの管理 | Microsoft Docs
+description: ''
+services: ''
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: vikdesai
-ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ded7904c6cb855994d92e68c4a1af64ccdb2c3a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>ロールに基づくアクセス制御を使用した Azure の課金情報へのアクセスの管理
 
-Azure 課金情報へのアクセス権をチームのメンバーに与えるには、いずれかのユーザー ロール (アカウント管理者、サービス管理者、共同管理者、所有者、共同作成者、閲覧者または請求閲覧者) をサブスクリプションに割り当てます。 メンバーに [Azure Portal](https://portal.azure.com/) での課金情報へのアクセス権が与えられ、[請求 API](billing-usage-rate-card-overview.md) を使用して請求書 (オプトイン済み) と使用明細をプログラムによって取得できるようになります。 ロールを付与できるユーザーの詳細や、ロールごとに行うことができる操作については、[Azure RBAC のロール](../active-directory/role-based-access-built-in-roles.md)に関する記事を参照してください。
+Azure 課金情報へのアクセス権をチームのメンバーに与えるには、いずれかのユーザー ロール (アカウント管理者、サービス管理者、共同管理者、所有者、共同作成者、閲覧者または請求閲覧者) をサブスクリプションに割り当てます。 メンバーに [Azure Portal](https://portal.azure.com/) での課金情報へのアクセス権が与えられ、[請求 API](billing-usage-rate-card-overview.md) を使用して請求書 (オプトイン済み) と使用明細をプログラムによって取得できるようになります。 ロールを付与できるユーザーの詳細や、ロールごとに行うことができる操作については、[Azure RBAC のロール](../role-based-access-control/built-in-roles.md)に関する記事を参照してください。
 
 ## <a name="opt-in"></a> その他のユーザーの請求書へのアクセスを許可する
 

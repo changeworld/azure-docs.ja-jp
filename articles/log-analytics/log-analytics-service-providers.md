@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics のサービス プロバイダー向け機能 | Microsoft Docs"
-description: "Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。"
+title: Log Analytics のサービス プロバイダー向け機能 | Microsoft Docs
+description: Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 3910038e788352df45ab00c0f697d9a5426b3498
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Log Analytics のサービス プロバイダー向け機能
 Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。 
@@ -40,7 +40,7 @@ Log Analytics では、*クラウド ソリューション プロバイダー* �
 テナントのサブスクリプションにログインするには、テナント ID を指定する必要があります。 テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
 
 * OMS ポータルでは、ポータルの URL に `?tenant=contoso.com` を追加します。 たとえば、`mms.microsoft.com/?tenant=contoso.com` のように指定します。
-* PowerShell では、`Add-AzureRmAccount` コマンドレットを使用する場合 `-Tenant contoso.com` パラメーターを使用します。
+* PowerShell では、`Connect-AzureRmAccount` コマンドレットを使用する場合 `-Tenant contoso.com` パラメーターを使用します。
 * Azure Portal からの `OMS portal` リンクを使用して、選択したワークスペースの OMS ポータルを開いたりログインすると、テナント ID が自動的に追加されます。
 
 クラウド ソリューション プロバイダーの*顧客*としてできることは次の通りです。
@@ -77,7 +77,7 @@ Log Analytics では、*クラウド ソリューション プロバイダー* �
 
 ワークスペース全体のデータを要約するエグゼクティブ レベルのレポートには、Log Analytics と [PowerBI](log-analytics-powerbi.md) 間の統合を利用することができます。 別のレポート システムと統合する必要がある場合は、クエリの実行と検索結果のエクスポートに (PowerShell または [REST](log-analytics-log-search-api.md) で) Search API を使用することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Resource Manager テンプレート](log-analytics-template-workspace-configuration.md)を使用してワークスペースの作成および構成を自動化する
 * [PowerShell](log-analytics-powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する 
 * [アラート](log-analytics-alerts.md) を使用して既存のシステムと統合する

@@ -374,7 +374,9 @@
           href: manage-azure-ssis-integration-runtime.md
         - name: Azure-SSIS 統合ランタイムのパフォーマンス設定の構成
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの呼び出し
+        - name: SSIS アクティビティを使用した SSIS パッケージの実行
+          href: how-to-invoke-ssis-package-ssis-activity.md
+        - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS 統合ランタイムのスケジュール設定
           href: how-to-schedule-azure-ssis-integration-runtime.md

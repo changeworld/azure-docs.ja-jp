@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal を使用した Azure リソースの管理 | Microsoft Docs"
-description: "Azure ポータルと Azure Resource Manager を使用してリソースを管理します。 ダッシュボードを使用してリソースを監視する方法について説明します。"
+title: Azure Portal を使用した Azure リソースの管理 | Microsoft Docs
+description: Azure ポータルと Azure Resource Manager を使用してリソースを管理します。 ダッシュボードを使用してリソースを監視する方法について説明します。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 11/16/2017
 別のリソース グループまたは別のサブスクリプションにリソースを移動する必要がある場合は、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
 ## <a name="lock-resources"></a>リソースのロック
-サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、「 [Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
+サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。 詳細については、[「Azure Resource Manager によるリソースのロック」](resource-group-lock-resources.md)を参照してください。
 
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
@@ -123,10 +123,10 @@ ms.lasthandoff: 11/16/2017
 
 ![グループの削除](./media/resource-group-portal/delete-group.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * アクティビティ ログの表示については、[Resource Manager の監査操作](resource-group-audit.md)に関するページを参照してください。
 * デプロイの詳細については、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * ポータルを使用したリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
-* リソースへのアクセスの管理については、「 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
+* リソースへのアクセスの管理については、「 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 

@@ -1,25 +1,20 @@
 ---
-title: "SQL Data Warehouse での Azure Stream Analytics の使用 | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。"
+title: SQL Data Warehouse での Azure Stream Analytics の使用 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Stream Analytics の使用に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: ckarst
-manager: barbkess
-editor: 
-ms.assetid: 8aeb2247-20c5-4a29-b327-30a8ce09dfdc
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 10/31/2016
-ms.author: cakarst;barbkess
-ms.openlocfilehash: c5c0450cba541a9346f023057345c5fc9b147903
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 76cbbddca70d3bc8091dbea383213446adac533e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Stream Analytics の使用
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。 基本事項については、「[Stream Analytics とは][Introduction to Azure Stream Analytics]」を参照してください。 その後で、「[Azure Stream Analytics の使用][Get started using Azure Stream Analytics]」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
@@ -70,7 +65,7 @@ SQL Database を選択し、[次へ] をクリックします。
 
 データベースへの接続が成功すると、ポータルの下部に通知が表示されます。 下部にある [接続のテスト] をクリックすると、データベースへの接続をテストできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 統合の概要については、「[SQL Data Warehouse の設計上の決定と コーディング技法][SQL Data Warehouse integration overview]」を参照してください。
 
 開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。

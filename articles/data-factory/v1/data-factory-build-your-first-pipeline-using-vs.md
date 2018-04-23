@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8497e8f7b268c52878648d08f94dde6bb81ff94
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca8d5a26205e65668d46be6b558d596ab066c5f8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/23/2018
   
 ### <a name="prerequisites"></a>前提条件
 1. 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。 冒頭のドロップダウン リストの **[Overview and prerequisites (概要と前提条件)]** というオプションを選択して、その記事に移動することもできます。 前提条件を満たすことができたら、ドロップダウン リストの **[Visual Studio]** というオプションを選択して、この記事に戻ります。
-2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。  
+2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。  
 3. コンピューターに以下がインストールされている必要があります。
    * Visual Studio 2013 または Visual Studio 2015
    * Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。

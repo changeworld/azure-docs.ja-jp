@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a4bdea4844c4aaa9990d619d59326a83cf0aef6c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Azure Portal によるデバイスの管理
 
@@ -74,7 +74,7 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 
 - **[ユーザーはデバイスを Azure AD に登録できます]** - デバイスを Azure AD に[登録](device-management-introduction.md#azure-ad-registered-devices)できるようにするには、この設定を構成する必要があります。 **[なし]** を選択すると、デバイスは Azure AD 参加済みかハイブリッド Azure AD 参加済みでない場合に、登録を許可されません。 Microsoft Intune または Mobile Device Management (MDM) for Office 365 への登録には、この登録が必要です。 これらのサービスのいずれかを構成した場合は、**[すべて]** が選択され、**[なし]** は選択できなくなります。
 
-- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に[参加](device-management-introduction.md#azure-ad-joined-devices)させるときに、ユーザーが 2 番目の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]**です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication-get-started.md)に関するページを参照してください。 
+- **[デバイスを参加させるには Multi-factor Auth が必要]** - デバイスを Azure AD に[参加](device-management-introduction.md#azure-ad-joined-devices)させるときに、ユーザーが 2 番目の認証要素の提供を求められるようにするかどうかを選ぶことができます。 既定値は **[いいえ]**です。 デバイスの登録時に多要素認証を必要とすることをお勧めします。 このサービスの多要素認証を有効にする前に、デバイスを登録するユーザーに対して多要素認証が構成されていることを確認する必要があります。 他の Azure Multi-Factor Authentication サービスの詳細については、[Azure Multi-Factor Authentication の概要](authentication/concept-mfa-whichversion.md)に関するページを参照してください。 
 
 - **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができるデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 デバイス クォータには、現時点で Azure AD 参加済みまたは Azure AD 登録済みのすべてのデバイスがカウントされます。 既定値は **20** です。
 

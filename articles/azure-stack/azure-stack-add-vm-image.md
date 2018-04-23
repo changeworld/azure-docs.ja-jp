@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3680777439678a93b1283cf94b9f8a173965feeb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure Stack でカスタム仮想マシン イメージを提供する
 
@@ -81,7 +81,7 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
         -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
         -EnvironmentName AzureStackAdmin
 
-      Login-AzureRmAccount `
+      Connect-AzureRmAccount `
         -EnvironmentName "AzureStackAdmin" `
         -TenantId $TenantID
       ```
@@ -109,7 +109,7 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
           -ADFS `
           -EnvironmentName AzureStackAdmin
 
-        Login-AzureRmAccount `
+        Connect-AzureRmAccount `
           -EnvironmentName "AzureStackAdmin" `
           -TenantId $TenantID
         ```

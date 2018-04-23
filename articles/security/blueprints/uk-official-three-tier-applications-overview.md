@@ -1,6 +1,6 @@
 ---
-title: "Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化"
-description: "Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化"
+title: Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化
+description: Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化
 
@@ -211,7 +211,7 @@ Storage
 
 **リソース管理**: VM、VNet、ロード バランサーなどの Azure リソースは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource)にグループ化することで管理されます。 リソース ベースのアクセス制御ロールを各リソース グループに割り当てて、許可されているユーザーのみにアクセスを制限することができます。
 
-**アクセスの制御制限**: [ロールベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) を使用し、DevOps が各階層で実行できる操作を制限するために使用できる[カスタム ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) RBAC を使用して、アプリケーション内のリソースを管理します。 権限を付与する場合は、[最小限の特権の原則](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)を使用します。 すべての管理操作をログに記録し、定期的な監査を実行して、構成変更が計画されていることを確認します。
+**アクセスの制御制限**: [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) を使用し、DevOps が各階層で実行できる操作を制限するために使用できる[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC を使用して、アプリケーション内のリソースを管理します。 権限を付与する場合は、[最小限の特権の原則](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)を使用します。 すべての管理操作をログに記録し、定期的な監査を実行して、構成変更が計画されていることを確認します。
 
 **インターネット アクセス**: この参照アーキテクチャは、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) をインターネット接続ゲートウェイおよびロード バランサーとして利用します。 一部のお客様は、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) の代わりにサード パーティ製のネットワーク仮想アプライアンスを使用してネットワーク セキュリティのレイヤーを追加することも検討できます。
 

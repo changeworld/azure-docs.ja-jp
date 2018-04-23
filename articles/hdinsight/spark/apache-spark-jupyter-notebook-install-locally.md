@@ -1,8 +1,8 @@
 ---
-title: "Jupyter をローカルにインストールして Azure HDInsight Spark クラスターに接続する | Microsoft Docs"
-description: "Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。"
+title: Jupyter をローカルにインストールして Azure HDInsight Spark クラスターに接続する | Microsoft Docs
+description: Jupyter Notebook をローカル コンピューターにインストールして Azure HDInsight 上の Apache Spark クラスターに接続する方法を説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 48593bdf-4122-4f2e-a8ec-fdc009e47c16
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 5549c175c280961b09f5996e3387a50dae31222f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: eea61586054f34142d77f16333fe70a66d95d529
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 

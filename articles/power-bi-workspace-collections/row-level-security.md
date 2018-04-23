@@ -1,12 +1,12 @@
 ---
-title: "Power BI ワークスペース コレクションでの行レベルのセキュリティ"
-description: "Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細"
+title: Power BI ワークスペース コレクションでの行レベルのセキュリティ
+description: Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.service: power-bi-embedded
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 8c3ce8bc69a098d3133f27a2604f9d564693ea54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 7256e2f798fbc32c098f19f60b62e577300868c7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 ![Power BI ワークスペース コレクションでの行レベルのセキュリティのフロー](media/row-level-security/flow-1.png)
 
 > [!IMPORTANT]
-> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、「[How to migrate Power BI Workspace Collection content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)」(Power BI Embedded に Power BI ワークスペース コレクション コンテンツを移行する方法) を参照してください。
+> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 RLS を利用するには、ユーザー、ロール、ルールの 3 つの主要概念を理解しておくことが重要です。 各概念について詳しく見てみましょう。
 

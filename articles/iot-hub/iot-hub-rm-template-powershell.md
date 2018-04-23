@@ -1,11 +1,11 @@
 ---
-title: "テンプレートを使用した Azure IoT Hub の作成 (PowerShell) | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して PowerShell から IoT ハブを作成する方法。"
+title: テンプレートを使用した Azure IoT Hub の作成 (PowerShell) | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して PowerShell から IoT ハブを作成する方法。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7eade855-c289-4ffb-b5ef-02be8c5f670f
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 242c50b61b00bbf71b26e2aea1a66e2b2c55dbd5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0e5f95d98f772b226e162f601939bc94bf8fb78b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 
@@ -31,7 +31,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * [Azure PowerShell 1.0][lnk-powershell-install] 以降。
 
 > [!TIP]
@@ -42,7 +42,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 PowerShell コマンド プロンプトから、次のコマンドを入力して Azure サブスクリプションにサインインします。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
@@ -143,7 +143,7 @@ JSON テンプレートを使用して、リソース グループに IoT Hub �
 > [!NOTE]
 > このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 IoT ハブを削除するには、[Azure Portal][lnk-azure-portal] を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、PowerShell と Azure Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
 

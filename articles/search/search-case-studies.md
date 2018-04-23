@@ -1,25 +1,19 @@
 ---
-title: "Azure Search を使用しているユーザー: ケース スタディとお客様事例 | Microsoft Docs"
-description: "Microsoft Azure のホスト型のクラウド検索サービスである Azure Search に関するケース スタディとお客様事例"
-services: search
-documentationcenter: 
+title: 'Azure Search を使用しているユーザー: ケース スタディとお客様事例 | Microsoft Docs'
+description: Microsoft Azure のホスト型のクラウド検索サービスである Azure Search に関するケース スタディとお客様事例
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: ad48e927-aaf9-48f5-8efd-48150cfe79b2
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: e7cbbdc606920b9698b30e4b7a9c3325a0f866e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6fddec08f23de8f310ad9e675409b80818b1c98d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Azure Search を使用しているユーザー: ケース スタディとお客様事例
 以下の組織が Azure Search の高度な機能をオンライン アプリケーションに統合することで業務を改善した事例について説明します。

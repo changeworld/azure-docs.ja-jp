@@ -5,7 +5,7 @@
 ## [Azure リソース向けの PIM](azure-pim-resource-rbac.md)
 ## [PIM の承認ワークフロー](azure-ad-pim-approval-workflow.md)
 ## [ロール](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Privileged Identity Management の承認ワークフロー](azure-ad-pim-approval-workflow.md)
+
 
 
 # 作業開始

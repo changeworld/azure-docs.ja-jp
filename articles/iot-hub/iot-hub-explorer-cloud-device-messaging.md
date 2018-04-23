@@ -3,7 +3,7 @@ title: iothub-explorer を使用した Azure IoT Hub クラウド デバイス �
 description: iothub-explorer CLI ツールを使用して、Azure IoT Hub で D2C (デバイスからクラウド) メッセージを監視し、C2D (クラウドからデバイス) メッセージを送信する方法について説明します。
 services: iot-hub
 documentationcenter: ''
-author: shizn
+author: rangv
 manager: timlt
 tags: ''
 keywords: iothub-explorer, クラウド デバイス メッセージング, IoT Hub C2D, C2D メッセージング
@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
-ms.author: xshi
-ms.openlocfilehash: 7e74c08849ae2f98d3189c0cd3d340874ea085ff
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: ed15f7749676d8a7f0c2ef8b23e238f7bc90e341
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
 

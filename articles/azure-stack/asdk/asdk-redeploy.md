@@ -16,11 +16,11 @@ ms.custom: mvc
 ms.date: 03/16/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 579414f79da29a443ddaf8e167bf3889a647f33d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 33879187a912394b5cec6e9f9a8898f431134f5c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-redeploy-the-asdk"></a>チュートリアル: ASDK の再デプロイ
 このチュートリアルでは、非運用環境で Azure Stack Development Kit (ASDK) を再デプロイする方法について説明します。 ASDK のアップグレードはサポートされていないため、新しいバージョンに移行するには、ASDK を完全に再デプロイする必要があります。 また、ゼロからやり直したいときにも、いつでも ASDK を再デプロイすることができます。
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/17/2018
   Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
   # Provide Azure subscription admin credentials
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
 
   # Provide ASDK admin credentials
   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"

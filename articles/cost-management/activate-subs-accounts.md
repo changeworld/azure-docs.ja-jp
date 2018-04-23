@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure Cost Management で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -29,7 +29,7 @@ Azure Resource Manager の資格情報を追加または更新すると、Azure 
 - Azure AD テナントに CloudynCollector アプリケーションを登録するためのアクセス許可。
 - Azure サブスクリプションのロールにアプリケーションを割り当てる権限。
 
-CloudynCollector アプリケーションを割り当てるには、Azure サブスクリプションのアカウントに `Microsoft.Authorization/*/Write` アクセス権が必要です。 このアクションは、[所有者](../active-directory/role-based-access-built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](../active-directory/role-based-access-built-in-roles.md#user-access-administrator)ロールを通じて許可されます。
+CloudynCollector アプリケーションを割り当てるには、Azure サブスクリプションのアカウントに `Microsoft.Authorization/*/Write` アクセス権が必要です。 このアクションは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)ロールを通じて許可されます。
 
 アカウントが**共同作成者**ロールに割り当てられている場合は、アプリケーションの割り当てに必要な適切なアクセス許可がありません。 CloudynCollector アプリケーションを Azure サブスクリプションに割り当てようとすると、エラーが表示されます。
 

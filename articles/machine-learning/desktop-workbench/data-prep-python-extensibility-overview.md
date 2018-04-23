@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning データ準備での Python 拡張機能の使用 | Microsoft Docs"
-description: "このドキュメントでは、Python コードを使用してデータ準備の機能を拡張する方法の概要と、いくつかの詳細な例を示します"
+title: Azure Machine Learning データ準備での Python 拡張機能の使用 | Microsoft Docs
+description: このドキュメントでは、Python コードを使用してデータ準備の機能を拡張する方法の概要と、いくつかの詳細な例を示します
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-python-extensions"></a>データ準備の Python 拡張機能
 組み込み機能間の機能性ギャップを埋める方法として、Azure Machine Learning データ準備には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 

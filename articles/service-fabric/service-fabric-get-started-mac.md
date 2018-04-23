@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 76bbe686d07ff83bff6271f62793713194938212
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f6813d98782d31dc780da21f78aafbbfdfc5e688
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >
     >大規模なアプリケーションをテストする際は、Docker に割り当てられたリソースを増やすことをお勧めします。 **Docker アイコン**を選択し、**[詳細]** を選択して、コア数やメモリを調整してください。
 
-2. 新しいディレクトリに、Service Fabric イメージを構築する `.Dockerfile` というファイルを作成します。
+2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
 
     ```dockerfile
     FROM microsoft/service-fabric-onebox
@@ -86,7 +86,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >[!TIP]
     > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
 
-3. 再利用可能なイメージを `.Dockerfile` から構築するには、ターミナルを開き、`cd` で `.Dockerfile` の格納場所に移動して次のコマンドを実行します。
+3. 再利用可能なイメージを `Dockerfile` から構築するには、ターミナルを開き、`cd` で `Dockerfile` の格納場所に移動して次のコマンドを実行します。
 
     ```bash 
     docker build -t mysfcluster .

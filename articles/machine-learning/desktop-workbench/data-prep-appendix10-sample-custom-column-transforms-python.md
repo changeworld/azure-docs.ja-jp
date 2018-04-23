@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning データ準備で新しい列を派生させるためのサンプル Python | Microsoft Docs"
-description: "このドキュメントでは、Azure Machine Learning データ準備で新しい列を作成するための Python コード例について説明します。"
+title: Azure Machine Learning データ準備で新しい列を派生させるためのサンプル Python | Microsoft Docs
+description: このドキュメントでは、Azure Machine Learning データ準備で新しい列を作成するための Python コード例について説明します。
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 02670fa4506237ac391e467e5c7a1187b1131ece
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-of-custom-column-transforms-python"></a>カスタム列変換のサンプル (Python) 
 メニュー内でのこの変換の名前は、**列の追加 (スクリプト)** です。

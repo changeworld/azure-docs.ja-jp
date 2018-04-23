@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: c7e536b62ecaa374a278aeb8d18ef39489675711
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a23a969f1381e3a10c81a903793bad2870b436f6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Azure Resource Manager PowerShell コマンドレットの最新版をダウン�
 PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 アカウントのサブスクリプションを確認します。

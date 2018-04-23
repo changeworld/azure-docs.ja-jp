@@ -1,24 +1,24 @@
 ---
-title: "Azure Power BI Embedded の概要 | Microsoft Docs"
-description: "Power BI Embedded は、ISV や開発者が Power BI の機能を簡単に使えるようにするサービスです。魅力的なビジュアル、レポート、ダッシュ ボードをアプリケーションにすばやく追加できるようになります。"
+title: Azure Power BI Embedded の概要 | Microsoft Docs
+description: Power BI Embedded は、ISV や開発者が Power BI の機能を簡単に使えるようにするサービスです。魅力的なビジュアル、レポート、ダッシュ ボードをアプリケーションにすばやく追加できるようになります。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/04/2018
-ms.author: asaxton
-ms.openlocfilehash: 2e96575e74e20c80a79803ea56cdcbd4542e54a2
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.author: maghan
+ms.openlocfilehash: 1bc641e210a5bd965c5cdbf41efe853e9b297132
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-power-bi-embedded"></a>Power BI Embedded の概要
 

@@ -1,25 +1,23 @@
 ---
-title: "HDInsight の Hadoop を使用した Twitter データの分析 - Azure | Microsoft Docs"
-description: "HDInsight の Hadoop に格納されている Twitter データを Hive で分析し、特定の単語の使用頻度を調べる方法について説明します。"
+title: HDInsight の Hadoop を使用した Twitter データの分析 - Azure | Microsoft Docs
+description: HDInsight の Hadoop に格納されている Twitter データを Hive で分析し、特定の単語の使用頻度を調べる方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: a5f97dfa084291cefde9bf27b5639926de1bc80e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
@@ -38,7 +36,7 @@ ms.lasthandoff: 11/03/2017
     Windows PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
     Azure サブスクリプションが複数ある場合は、次のコマンドレットを使用して、現在のサブスクリプションを設定します。
@@ -56,7 +54,7 @@ ms.lasthandoff: 11/03/2017
 
 このチュートリアルで使用するファイルを次の表に示します。
 
-| ファイル | Description |
+| ファイル | [説明] |
 | --- | --- |
 | /tutorials/twitter/data/tweets.txt |Hive ジョブのソース データです。 |
 | /tutorials/twitter/output |Hive ジョブの出力フォルダーです。 既定の Hive ジョブ出力ファイル名は **000000_0** です。 |
@@ -77,14 +75,14 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **Twitter アプリケーションを作成するには**
 
-1. [https://apps.twitter.com/](https://apps.twitter.com/)にサインインします。 Twitter アカウントを持っていない場合は、 **[今すぐ登録]** リンクをクリックします。
+1. [https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、 **[今すぐ登録]** リンクをクリックします。
 2. **[Create New App]**をクリックします。
 3. **名前**、**説明**、**Web サイト**を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
    | フィールド | 値 |
    | --- | --- |
-   |  名前 |MyHDInsightApp |
-   |  Description |MyHDInsightApp |
+   |  Name |MyHDInsightApp |
+   |  [説明] |MyHDInsightApp |
    |  Web サイト |http://www.myhdinsightapp.com |
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
@@ -122,7 +120,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
     #region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     #endregion
 
     #region - Create a block blob object for writing tweets into Blob storage
@@ -231,7 +229,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 3. スクリプトに、最初の 5 ～ 8 個の変数を設定します。
 
-    変数|Description
+    変数|[説明]
     ---|---
     $clusterName|アプリケーションを実行する HDInsight クラスターの名前です。
     $oauth_consumer_key|Twitter アプリケーションを作成したときに書き留めた Twitter アプリケーションの **コンシューマー キー** です。
@@ -396,7 +394,7 @@ HiveQL スクリプトは、次の作業を実行します。
         Get-AzureRmSubscription
     }
     Catch{
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     }
 
     Select-AzureRmSubscription -SubscriptionId $subscriptionID
@@ -440,7 +438,7 @@ HiveQL スクリプトは、次の作業を実行します。
 
 3. スクリプトの最初の 2 個の変数を設定します。
 
-   | 変数 | Description |
+   | 変数 | [説明] |
    | --- | --- |
    |  $clusterName |アプリケーションを実行する HDInsight クラスター名を入力します。 |
    |  $subscriptionID |Azure サブスクリプション ID を入力します。 |
@@ -539,7 +537,7 @@ Write-Host "==================================" -ForegroundColor Green
 
 分析結果が Azure BLOB ストレージに配置されると、Azure SQL Database/SQL Server へのデータのエクスポート、Power Query を使用してのデータの Excel へのエクスポート、または Hive ODBC ドライバーを使用してのアプリケーションのデータへの接続ができます。 詳細については、[HDInsight での Sqoop の使用][hdinsight-use-sqoop]に関するページ、[HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]に関するページ、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」、および「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure 上で HDInsight を使用し、Twitter から収集したデータを照会、探索、分析するため、構造化されていない JSON データセットを構造化された Hive テーブルへ変換する方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight の概要][hdinsight-get-started]

@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher の IP フロー検証を使用したトラフィックの検証 - REST | Microsoft Docs"
-description: "この記事では、仮想マシンから送受信されるトラフィックが許可されているか拒否されているかを確認する方法について説明します"
+title: Azure Network Watcher の IP フロー検証を使用したトラフィックの検証 - REST | Microsoft Docs
+description: この記事では、仮想マシンから送受信されるトラフィックが許可されているか拒否されているかを確認する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3307a79f-03be-46a0-aaaf-b2079cb5f3b2
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3ccef9ef521b86ffc1eb6047174f4f9e5d9e4296
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c3d38f776db63e777174b7dca8b09a0d19c387e8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Azure Network Watcher のコンポーネントである IP フロー検証を使用して、トラフィックが許可されているか拒否されているかを確認する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-check-ip-flow-verify-portal.md)
+> - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 > - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
@@ -34,9 +34,9 @@ IP フロー検証は Network Watcher の機能であり、仮想マシンから
 
 ## <a name="before-you-begin"></a>開始する前に
 
-PowerShell を使用している REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
+PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順に従って、Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -163,9 +163,9 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-ブロックされるべきでないトラフィックがブロックされている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関する記事を参照し、Network Security Groups について確認してください。
+ブロックされるべきでないトラフィックがブロックされている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関する記事を参照し、Network Security Groups について確認してください。
 
 
 

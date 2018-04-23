@@ -1,25 +1,23 @@
 ---
-title: "Azure HDInsight を使用した YARN のトラブルシューティング | Microsoft Docs"
-description: "Apache Hadoop YARN と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。"
-keywords: "Azure HDInsight, YARN, FAQ, トラブルシューティング ガイド, よくあるご質問"
+title: Azure HDInsight を使用した YARN のトラブルシューティング | Microsoft Docs
+description: Apache Hadoop YARN と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
+keywords: Azure HDInsight, YARN, FAQ, トラブルシューティング ガイド, よくあるご質問
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: fbcb4807aa7f6a3d6227cd630c77714c4d2834b3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した YARN のトラブルシューティング
 
@@ -33,7 +31,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 新しい YARN キューを作成し、すべてのキューの間で容量の割り当てのバランスを取るには、Ambari で次の手順を実行します。 
 
 この例では、次の 2 つの既存のキュー (**default** と **thriftsvr**) 両方の容量を 50% から 25% に変更し、新しいキュー (Spark) が容量の 50% を使用できるようにします。
-| キュー | Capacity | 最大容量 |
+| キュー | 容量 | 最大容量 |
 | --- | --- | --- | --- |
 | default | 25% | 50% |
 | thrftsvr | 25% | 50% |

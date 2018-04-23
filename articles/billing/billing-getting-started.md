@@ -1,11 +1,11 @@
 ---
-title: "課金を管理して予想外のコストを防ぐ - Azure | Microsoft Docs"
-description: "Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Microsoft Azure サブスクリプションに対して、コスト管理機能を使用します。"
-services: 
-documentationcenter: 
+title: 課金を管理して予想外のコストを防ぐ - Azure | Microsoft Docs
+description: Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Microsoft Azure サブスクリプションに対して、コスト管理機能を使用します。
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -172,7 +172,7 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
 
 ![Azure Portal の [サブスクリプション] ビューに表示された役割のスクリーンショット](./media/billing-getting-started/sub-blade-view.PNG)
 
-アカウント管理者でない場合、別のユーザーが [Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md) (RBAC) 使用して部分的なアクセス権を付与していると考えられます。 サブスクリプションを管理し、課金情報を変更するには、[アカウント管理者を見つけて](billing-subscription-transfer.md#whoisaa)、これらのタスクの実行または[サブスクリプションの転送](billing-subscription-transfer.md)を依頼します。
+アカウント管理者でない場合、別のユーザーが [Azure Active Directory のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md) (RBAC) 使用して部分的なアクセス権を付与していると考えられます。 サブスクリプションを管理し、課金情報を変更するには、[アカウント管理者を見つけて](billing-subscription-transfer.md#whoisaa)、これらのタスクの実行または[サブスクリプションの転送](billing-subscription-transfer.md)を依頼します。
 
 組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください

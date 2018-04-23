@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 2 : データを取得する | Microsoft Docs"
-description: "Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 2 : データを取得する | Microsoft Docs'
+description: Azure Analysis Services チュートリアル プロジェクトでデータを取得､インポートする方法を説明します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 138f9f6e85d5e206c8b09d5c93822cfef5dd1246
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: be3368b5207669d7cc5b03e7eeb6953b757c786d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-data"></a>データを取得する
 

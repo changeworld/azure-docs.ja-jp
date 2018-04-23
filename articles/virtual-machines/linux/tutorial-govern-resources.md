@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1f52079e00c7c5f4e70acf8c86f648ed9281744e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a7d44e421162cf5784dde58f757e235d12b63cba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Azure CLI での仮想マシンの管理
 
@@ -43,15 +43,15 @@ az group create --name myResourceGroup --location "East US"
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [ロールベースのアクセス制御](../../active-directory/role-based-access-control-what-is.md)を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
+組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [ロールベースのアクセス制御](../../role-based-access-control/overview.md)を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
 
 ロールの割り当てを作成および削除するには、`Microsoft.Authorization/roleAssignments/*` アクセス権が必要です。 このアクセス権は、所有者ロールまたはユーザー アクセス管理者ロールを通じて許可されます。
 
 仮想マシン ソリューションを管理するために、一般的に必要なアクセスを提供する、リソースに固有の次の 3 つのロールがあります。
 
-* [Virtual Machine Contributor](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Network Contributor](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Storage Account Contributor](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Network Contributor](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [Storage Account Contributor](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../../active-directory/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
 

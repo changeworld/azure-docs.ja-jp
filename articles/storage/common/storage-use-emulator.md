@@ -1,8 +1,8 @@
 ---
-title: "Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs"
-description: "Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。"
+title: Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs
+description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -27,7 +27,7 @@ Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、Q
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターの取得
 ストレージ エミュレーターは、 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/)に付属しています。 また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (直接ダウンロード) を使用して、ストレージ エミュレーターをインストールすることも可能です。 ストレージ エミュレーターをインストールするには、お使いのコンピューターに対する管理者特権が必要です。
 
-ストレージ エミュレーターは、現在、Windows でのみ実行されます。 Linux 用のストレージ エミュレーターをお探しの場合、コミュニティで管理されているオープン ソースのストレージ エミュレーター [Azurite](https://github.com/arafato/azurite) が選択肢の 1 つとして挙げられます。
+ストレージ エミュレーターは、現在、Windows でのみ実行されます。 Linux 用のストレージ エミュレーターをお探しの場合、コミュニティで管理されているオープン ソースのストレージ エミュレーター [Azurite](https://github.com/azure/azurite) が選択肢の 1 つとして挙げられます。
 
 > [!NOTE]
 > ストレージ エミュレーターの特定のバージョンで作成されたデータには、別のバージョンを使用しているとアクセスできない場合があります。 データを永続化して長期にわたって保持する必要がある場合、そのデータはストレージ エミュレーターではなく Azure ストレージ アカウントに格納することをお勧めします。

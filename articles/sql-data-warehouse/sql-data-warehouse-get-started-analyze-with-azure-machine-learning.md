@@ -1,25 +1,20 @@
 ---
-title: "Azure Machine Learning を使用したデータの分析 | Microsoft Docs"
-description: "Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。"
+title: Azure Machine Learning を使用したデータの分析 | Microsoft Docs
+description: Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: 95635460-150f-4a50-be9c-5ddc5797f8a9
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 03/02/2017
-ms.author: kevin;barbkess
-ms.openlocfilehash: 3197948e32fe5c95b111fe5495a0e5f85966a24b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 4a5137ef22455c304dc672520aabd16cac2570e1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 > [!div class="op_single_selector"]
@@ -87,7 +82,7 @@ FROM [dbo].[vTargetMail]
 3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。
    ![不要な列を削除する][5]
 
-## <a name="3-build-the-model"></a>3.モデルを構築する
+## <a name="3-build-the-model"></a>手順 3.モデルを構築する
 データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。 今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
@@ -124,7 +119,7 @@ FROM [dbo].[vTargetMail]
 
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。 次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][Introduction to Machine Learning on Azure]に関するページを参照してください。
 
 <!--Image references-->

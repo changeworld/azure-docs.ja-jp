@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center と Azure SQL Database サービス | Microsoft Docs"
-description: "この記事では、Azure SQL Database に存在するデータベースのセキュリティに Security Center を活かす方法について説明します。"
+title: Azure Security Center と Azure SQL Database サービス | Microsoft Docs
+description: この記事では、Azure SQL Database に存在するデータベースのセキュリティに Security Center を活かす方法について説明します。
 services: sql-database
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center と Azure SQL Database サービス
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -38,7 +38,7 @@ Security Center の機能は、SQL Database のリソースを保護すること
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがあれば、Security Center の Free レベルが有効になっています。 Security Center の Free レベルと Standard レベルの詳細については、「[セキュリティ センターの価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
-セキュリティ センターは、ロール ベースのアクセスをサポートしています。 ロールベースのアクセス制御 (RBAC) の詳細については、「 [Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。 Security Center の FAQ に、[Security Center でのアクセス許可の処理](security-center-faq.md#permissions)についての情報が提供されています。
+セキュリティ センターは、ロール ベースのアクセスをサポートしています。 ロールベースのアクセス制御 (RBAC) の詳細については、「 [Azure Active Directory のロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」を参照してください。 Security Center の FAQ に、[Security Center でのアクセス許可の処理](security-center-faq.md#permissions)についての情報が提供されています。
 
 ## <a name="access-security-center"></a>セキュリティ センターへのアクセス
 Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 [ポータルにサインイン](https://portal.azure.com/)して **[セキュリティ センター] オプション**を選択します。
@@ -66,7 +66,7 @@ Security Center には [Azure ポータル](https://azure.microsoft.com/features
 
 セキュリティ ポリシーを設定すると、Security Center によってリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。 推奨事項は表形式で表示されます。表の行はそれぞれ特定の推奨事項を表します。 Azure SQL Database に関して提案される推奨事項とそれを適用する利点については、以下の表を参考にしてください。 推奨事項を選択すると、それを Security Center で実装する方法について説明した記事をご覧いただけます。
 
-| 推奨 | Description |
+| 推奨 | [説明] |
 | --- | --- |
 | [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md) |SQL Database サーバーの監査と脅威検出を有効にするよう推奨されます。 (対象になるのは SQL Database サービスのみです。 仮想マシン上で実行されている Microsoft SQL Server は含まれません。) |
 | [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md) |SQL Database データベースの監査と脅威検出を有効にするよう推奨されます。 (対象になるのは SQL Database サービスのみです。 仮想マシン上で実行されている Microsoft SQL Server は含まれません。) |
@@ -74,7 +74,7 @@ Security Center には [Azure ポータル](https://azure.microsoft.com/features
 
 Azure リソースに関する推奨事項を確認するには、[セキュリティ センター] ブレードの **[推奨事項]** タイルを選択してください。 **[推奨事項]** ブレードで特定の推奨事項を選択すると詳細が表示されます。 この例では、**[Enable Auditing & Threat detection on SQL servers (SQL サーバーの監査と脅威検出を有効にする)]** を選択してみましょう。
 
-![推奨事項][4]
+![Recommendations][4]
 
 監査と脅威検出が有効になっていない SQL サーバーが、下図のように Security Center によって示されます。 監査を有効にしたら、脅威の検出設定と、セキュリティの警告を受信する電子メールの設定を構成できます。 脅威の検出機能を使用すると、データベースのセキュリティを脅かす可能性のある異常なデータベース アクティビティが検出されたときに警告を受けることができます。 この警告は、Security Center ダッシュボードに表示されます。
 ![監査と脅威の検出][5]
@@ -83,7 +83,7 @@ Azure リソースに関する推奨事項を確認するには、[セキュリ�
 
 推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
 
-## <a name="monitor-security-health"></a>セキュリティ正常性の監視
+## <a name="monitor-security-health"></a>セキュリティ正常性を監視する
 サブスクリプションのリソースに対して [セキュリティ ポリシー](security-center-policies.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  リソースのセキュリティの状態は、**[リソース セキュリティの正常性]** タイルで確認できます。 **[リソース セキュリティの正常性]** タイルの **[データ]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開き、監査や Transparent Data Encryption が有効になっていないなど、SQL の問題に関する推奨事項が示されます。 また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
 ![リソースのセキュリティ正常性][6]
 
@@ -100,7 +100,7 @@ Security Center は、真の脅威を検出し、偽陽性の検出を減らす�
 
 詳細については、[セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) - 組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。
 * [Security Center のデータ セキュリティ](security-center-data-security.md) – Security Center は、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、Azure リソースに関するさまざまなデータを収集、処理しています。その具体的な方法について説明します。

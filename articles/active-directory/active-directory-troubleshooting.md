@@ -1,11 +1,11 @@
 ---
-title: "トラブルシューティング: Active Directory 項目が不足しているか使用できない | Microsoft Docs"
-description: "Microsoft Azure 管理ポータルに Active Directory メニュー項目が表示されないときの対処方法。"
+title: 'トラブルシューティング: Active Directory 項目が不足しているか使用できない | Microsoft Docs'
+description: Microsoft Azure 管理ポータルに Active Directory メニュー項目が表示されないときの対処方法。
 services: active-directory
 documentationcenter: na
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3383020d-6397-43ea-b7aa-c6a9d6a1e3df
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.openlocfilehash: 27a884b89224ed5765e9fcef134e711e3952ff72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6e8557ec66db51df0bb463a9511b0cdc94811d4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>トラブルシューティング: Active Directory 項目が不足しているか使用できない
 Azure Active Directory の機能とサービスを使用するための手順の多くが、"Microsoft Azure 管理ポータルに移動し、**[Active Directory]** をクリックします。" という指示で始まります。 Active Directory 拡張機能またはメニュー項目が表示されない、または **[使用不可]** とマークされている場合はどうすればよいのでしょうか。 このトピックを役立ててください。 **Active Directory** が表示されない状況と使用できない状況について説明し、どのように対応するかについて説明しています。
@@ -39,7 +39,7 @@ Active Directory 項目は、次のいずれかの条件が満たされている
 * Azure テナントが少なくとも 1 つの Azure AD Access Control (ACS) 名前空間を持っている。 詳細については、「 [Access Control 名前空間](https://msdn.microsoft.com/library/azure/gg185908.aspx)」を参照してください。
   
     または
-* Azure テナントが少なくとも 1 つの Azure Multi-factor Authentication プロバイダーを持っている。 詳細については、「 [Administering Azure Multi-Factor Authentication Providers (Azure Multi-Factor Authentication プロバイダーの管理)](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
+* Azure テナントが少なくとも 1 つの Azure Multi-factor Authentication プロバイダーを持っている。 詳細については、「 [Administering Azure Multi-Factor Authentication Providers (Azure Multi-Factor Authentication プロバイダーの管理)](authentication/howto-mfa-getstarted.md)」を参照してください。
 
 Access Control 名前空間または Multi-factor Authentication プロバイダーを作成するには、**[+新規]** > **[App Services]** > **[Active Directory]** の順にクリックします。
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 28caca06dd756732314f758e6acb4629f857dd91
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: be2ec6df33f5756dc080195bfad32e0c9079453c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>一般化した VHD を Azure にアップロードして新しい VM を作成する
 
@@ -74,7 +74,7 @@ PowerShell バージョン 1.4 以降がまだインストールされていな�
 1. Azure PowerShell を開き、Azure アカウントにサインインします。 Azure アカウント資格情報を入力するためのポップアップ ウィンドウが開きます。
    
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 2. 使用可能なサブスクリプションのサブスクリプション ID を取得します。
    

@@ -1,24 +1,22 @@
 ---
 title: HDInsight の R Server の運用化 - Azure | Microsoft Docs
 description: Azure HDInsight で R Server を運用化する方法について説明します。
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: nitinme
-ms.openlocfilehash: 93957b7ee10527039bf2e96cc5470420cdef0651
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Azure HDInsight での R Server クラスターの運用化
 

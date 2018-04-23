@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB Emulator 証明書のエクスポート | Microsoft Docs"
-description: "Windows 証明書ストアを使用しない言語とランタイムで開発を行う場合、SSL 証明書をエクスポートして管理する必要があります。 この記事では詳しい手順について説明します。"
+title: Azure Cosmos DB Emulator 証明書のエクスポート | Microsoft Docs
+description: Windows 証明書ストアを使用しない言語とランタイムで開発を行う場合、SSL 証明書をエクスポートして管理する必要があります。 この記事では詳しい手順について説明します。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 keywords: Azure Cosmos DB Emulator
 author: voellm
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: ef43deda-c2e9-4193-99e2-7f6a88a0319f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d3811a9d59e388a1ceaacdefebc17afeda5b07d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 87d453cd544b3e913209f50e4e08b77282efab39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート
 

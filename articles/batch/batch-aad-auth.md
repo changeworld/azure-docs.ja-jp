@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 2479701174086ddf680e0ecb1da4a9d13b32b76e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -80,7 +80,7 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 テナント ID は、アプリケーションに認証サービスを提供する Azure AD テナントを識別します。 テナント ID を取得するには、次の手順に従います。
 
 1. Azure Portal で、使用している Active Directory を選択します。
-2. **[プロパティ]**をクリックします。
+2. **[プロパティ]** をクリックします。
 3. ディレクトリ ID 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
 
 ![ディレクトリ ID をコピーする](./media/batch-aad-auth/aad-directory-id.png)
@@ -139,7 +139,7 @@ Azure Portal で次の手順に従います。
 1. Azure Portal ポータルで、アプリケーションで使用する Batch アカウントに移動します。
 2. Batch アカウントの **[設定]** ブレードで、**[Access Control (IAM)]** を選択します。
 3. **[追加]** をクリックします。 
-4. **[ロール]** ドロップダウン リストで、アプリケーションに _[共同作成者]_ または _[リーダー]_ のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。  
+4. **[ロール]** ドロップダウン リストで、アプリケーションに _[共同作成者]_ または _[リーダー]_ のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。  
 5. **[選択]** フィールドに、アプリケーションの名前を入力します。 リストからアプリケーションを選択し、**[保存]** をクリックします。
 
 この時点で、RBAC ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。 
@@ -151,7 +151,7 @@ Azure Portal で次の手順に従います。
 テナント ID は、アプリケーションに認証サービスを提供する Azure AD テナントを識別します。 テナント ID を取得するには、次の手順に従います。
 
 1. Azure Portal で、使用している Active Directory を選択します。
-2. **[プロパティ]**をクリックします。
+2. **[プロパティ]** をクリックします。
 3. ディレクトリ ID 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
 
 ![ディレクトリ ID をコピーする](./media/batch-aad-auth/aad-directory-id.png)

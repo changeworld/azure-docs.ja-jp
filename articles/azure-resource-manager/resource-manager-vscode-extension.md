@@ -1,8 +1,8 @@
 ---
-title: "VS Code 拡張機能による Azure Resource Manager テンプレート | Microsoft Docs"
-description: "Azure Resource Manager ツールの拡張機能を使って Resource Manager テンプレートを作成する方法について説明します。"
+title: VS Code 拡張機能による Azure Resource Manager テンプレート | Microsoft Docs
+description: Azure Resource Manager ツールの拡張機能を使って Resource Manager テンプレートを作成する方法について説明します。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.date: 09/06/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 0dd48146624052fbd00093066d79067b75e33c92
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 9d15d3e48f7e952e1454718759f4770be0d8d135
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Visual Studio Code 拡張機能を使って Azure Resource Manager テンプレートを作成する
 この記事では、Azure Resource Manager ツールの拡張機能を Visual Studio Code にインストールして使用する利点を紹介します。 VS Code では、拡張機能を使わずに Resource Manager テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 テンプレートで使用できる関数やパラメーター、変数の入力候補が表示されます。
@@ -261,7 +261,7 @@ Azure ソリューションのデプロイと管理に関する概念につい�
 * PowerShell の場合、テンプレートを含むフォルダーから次のコマンドを使用します。
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    
    New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
    New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json
@@ -294,7 +294,7 @@ Azure CLI では、次を使用します。
 az group delete --name examplegroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * テンプレートの構造の詳細については、「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 * ストレージ アカウントのプロパティについては、[ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)のページを参照してください。
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。

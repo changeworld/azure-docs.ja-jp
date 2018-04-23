@@ -1,21 +1,21 @@
 ---
-title: "Event Hubs を使用して Azure Key Vault からのログを統合する | Microsoft Docs"
-description: "このチュートリアルには、Azure ログ統合を利用して Key Vault ログを SIEM で使用できるようにするための必要な手順が用意されています。"
+title: Event Hubs を使用して Azure Key Vault からのログを統合する | Microsoft Docs
+description: このチュートリアルには、Azure ログ統合を利用して Key Vault ログを SIEM で使用できるようにするための必要な手順が用意されています。
 services: security
 author: barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9b3ae914774d2d6a66c5732f1d63f09926bb48fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
@@ -81,14 +81,14 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 
    ![読み込まれたモジュール一覧](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. `Login-AzureRmAccount` コマンドを入力します。 ログイン ウィンドウで、このチュートリアルで使用するサブスクリプションの資格情報を入力します。
+3. `Connect-AzureRmAccount` コマンドを入力します。 ログイン ウィンドウで、このチュートリアルで使用するサブスクリプションの資格情報を入力します。
 
    >[!NOTE]
    >これがこのマシンから Azure への初回ログインの場合、マイクロソフトによる PowerShell 使用状況データの収集を許可するかどうかに関するメッセージが表示されます。 使用状況データの収集は Azure PowerShell の向上に利用されるため、有効にすることをお勧めします。
 
 4. 認証およびログインに成功すると、次のスクリーンショットの情報が表示されます。 サブスクリプション ID と サブスクリプション名をメモに取ります。後の手順で使用します。
 
-   ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
+   ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/Connect-AzureRmAccount.png)
 5. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力します。 使用する環境に合わせて値を調整する必要がある場合があります。
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
     - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した場所のものに変更できます。)

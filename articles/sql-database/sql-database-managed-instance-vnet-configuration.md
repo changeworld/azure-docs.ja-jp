@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: e724a660f8ba2373cefdabe8595908b7bb42f4d6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bccc2d52c592101a23338e57791a992441e80047
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Azure SQL Database マネージ インスタンスの VNet を構成する
 
@@ -145,5 +145,5 @@ VNet が作成されたら、マネージ インスタンスを作成できま�
 ## <a name="next-steps"></a>次の手順
 
 - 概要については、[マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
-- VNet を作成し、マネージ インスタンスを作成して、データベース バックアップからデータベースを復元する方法を示すチュートリアルについては、[Azure SQL Database マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関するページを参照してください。
+- VNet を作成し、マネージ インスタンスを作成して、データベース バックアップからデータベースを復元する方法を示すチュートリアルについては、[Azure SQL Database マネージ インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するページを参照してください。
 - DNS の問題については、[カスタム DNS の構成](sql-database-managed-instance-custom-dns.md)に関するページを参照してください。

@@ -1,24 +1,22 @@
 ---
-title: "Ambari を使用したクラスター構成の最適化 - Azure HDInsight | Microsoft Docs"
-description: "Ambari Web UI を使用して、HDInsight クラスターを構成および最適化します。"
-documentationcenter: 
+title: Ambari を使用したクラスター構成の最適化 - Azure HDInsight | Microsoft Docs
+description: Ambari Web UI を使用して、HDInsight クラスターを構成および最適化します。
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: ashish
-ms.openlocfilehash: 74c1b3298cd7b6ffd5b4a60e2fa78ed733232f92
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f3c1edc767ab07bcdd8b09a0e40e291cbd1f3d9a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Ambari を使用した HDInsight クラスター構成の最適化
 
@@ -96,7 +94,7 @@ Hadoop では、1 つのファイルを複数のファイルに分割 (*"マッ�
 
 1. 制限パラメーターを変更するには、Tez サービスの **[Configs]\(構成\)** タブに移動します。 **[General]\(全般\)** パネルを展開し、`tez.grouping.max-size` パラメーターと `tez.grouping.min-size` パラメーターを見つけます。
 
-2. 両方のパラメーターを  **33,554,432**  バイト(32 MB) に設定します。
+2. 両方のパラメーターを **33,554,432** バイト(32 MB) に設定します。
 
     ![Tez のグループ化サイズ](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
@@ -284,7 +282,7 @@ Hive の既定の結合の種類は "*シャッフル結合*" です。 Hive で
 
 Hive 実行エンジンの最適化に関するその他の推奨事項を次に示します。
 
-| 設定 | 推奨 | HDInsight の既定値 |
+| Setting | 推奨 | HDInsight の既定値 |
 | -- | -- | -- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = 安全性は高いが低速、false = 高速 | false |
 | `tez.am.resource.memory.mb` | ほとんどの場合、上限は 4 GB | Auto-Tuned |

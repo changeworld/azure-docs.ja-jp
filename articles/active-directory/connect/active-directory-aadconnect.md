@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: bd2b65c31e7736346957dde4edfb7c32894c833e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 02849fb63a8d696fa4296f5ec885a2d24f9adca1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>オンプレミスのディレクトリと Azure Active Directory の統合
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
 
 > [!IMPORTANT]
 > [Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日以降はサポートされなくなるので、Azure AD Connect へアップグレードする絶好の機会です。](active-directory-aadconnect-dirsync-deprecated.md)  また、次の点にも注目してください。
+
+
+
 > 
 > - ユーザーと Azure AD を同期する機能は**無料の機能**であり、顧客は有料のサブスクリプションを必要としません。
 >- 同期されたユーザーには、"*いかなる*" ライセンスも**自動的に付与されません**。 ライセンスの割り当ては、引き続き管理者が完全に管理します。 
@@ -51,6 +54,10 @@ Azure Active Directory Connect は、同期サービスと Active Directory フ�
 * 正常性の監視 - Azure AD Connect Health により、強力に監視し、Azure ポータルでこのアクティビティを一元的に表示できます。 詳細については、「 [Azure Active Directory Connect Health](../connect-health/active-directory-aadconnect-health.md)」を参照してください。
 
 ## <a name="install-azure-ad-connect"></a>Azure AD Connect のインストール
+
+> [!IMPORTANT]
+> 公式に文書化されているアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 サポートされていないアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについてテクニカル サポートを提供できなくなります。
+
 Azure AD Connect は [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
 
 | 解決策 | シナリオ |

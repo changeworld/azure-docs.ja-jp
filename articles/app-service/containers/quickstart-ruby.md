@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 079eb7b89ff3d6c1e4ec0de6136cd934ba3a1f70
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
 
@@ -53,34 +53,6 @@ rails server
 ```
 
 Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。
-
-![Hello-world](./media/quickstart-ruby/hello-world.png)
-
-## <a name="modify-app-to-display-welcome-message"></a>ウェルカム メッセージを表示するようにアプリを変更する
-
-ウェルカム メッセージを表示するようにアプリケーションを変更します。 最初にルートを設定する必要があります。そのためには、*~/workspace/ruby-docs-hello-world/config/routes.rb* ファイルを編集して `hello` という名前のルートを含めます。
-
-  ```ruby
-  Rails.application.routes.draw do
-      #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-      root 'application#hello'
-  end
-  ```
-
-ブラウザーに HTML としてメッセージを返すように、アプリケーションのコントローラーを変更します。 
-
-編集するために *~/workspace/hello-world/app/controllers/application_controller.rb* を開きます。 次のコード サンプルになるように `ApplicationController` クラスを変更します。
-
-  ```ruby
-  class ApplicationController > ActionController :: base
-    protect_from_forgery with: :exception
-    def hello
-      render html: "Hello, world from Azure Web App on Linux!"
-    end
-  end
-  ```
-
-これでアプリの構成は完了です。 Web ブラウザーで `http://localhost:3000` に移動して、ルート ランディング ページを確認します。
 
 ![構成された Hello World](./media/quickstart-ruby/hello-world-configured.png)
 

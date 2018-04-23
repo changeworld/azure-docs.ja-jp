@@ -100,7 +100,7 @@
         - name: VM をバックアップする
           items:
             - name: Recovery Services コンテナーへの Azure VM のバックアップ
-              href: backup-azure-arm-vms.md
+              href: backup-azure-vms-first-look-arm.md
             - name: 暗号化された VM のバックアップ
               href: backup-azure-vms-encryption.md
             - name: VM 作成中の VM バックアップの有効化
@@ -179,9 +179,9 @@
           href: backup-azure-delete-vault.md
     - name: トラブルシューティング
       items:
-        - name: IaaS VM のバックアップのエラー メッセージ
+        - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
-        - name: Azure Backup (MARS) エージェントまたは VM 拡張機能がタイムアウトした
+        - name: Azure Backup エージェントまたは VM 拡張機能がタイムアウトした
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: ファイルとフォルダーのバックアップが遅い
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
@@ -189,16 +189,22 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure Backup (MARS) エージェント
+        - name: Azure Backup エージェント
           href: backup-azure-mars-troubleshoot.md
-        - name: Azure ファイル共有のバックアップ
+        - name: Azure ファイル共有
           href: troubleshoot-azure-files.md
 - name: リファレンス
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Azure CLI 2.0
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/azurerm.recoveryservices.backup
+    - name: REST - Backup
+      href: /rest/api/backup/
+    - name: REST - Recovery Services コンテナー
+      href: /rest/api/recoveryservices/
 - name: リソース
   items:
     - name: Azure のロードマップ

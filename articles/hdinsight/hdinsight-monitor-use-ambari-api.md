@@ -1,26 +1,24 @@
 ---
-title: "Ambari API を使用した HDInsight の Hadoop クラスターの監視 - Azure | Microsoft Docs"
-description: "Apache Ambari API は、Hadoop クラスターの作成、管理、および監視を目的として使用します。 直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。"
+title: Ambari API を使用した HDInsight の Hadoop クラスターの監視 - Azure | Microsoft Docs
+description: Apache Ambari API は、Hadoop クラスターの作成、管理、および監視を目的として使用します。 直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 editor: cgronlun
 manager: jhubbard
 ms.assetid: 052135b3-d497-4acc-92ff-71cee49356ff
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 57b63490037760c9150fd4b8fdb66267739f20ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 3c8b1af3ad151a7a901150352202ab0b85aa6ec8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Ambari API を使用した HDInsight の Hadoop クラスターの監視
 Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
@@ -48,7 +46,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
   > 
 * **Azure HDInsight クラスター**。 クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。 このチュートリアルを読み進めるには、次のデータが必要です。
   
-  | クラスター プロパティ | Azure PowerShell 変数名 | 値 | Description |
+  | クラスター プロパティ | Azure PowerShell 変数名 | 値 | [説明] |
   | --- | --- | --- | --- |
   |   HDInsight クラスター名 |$clusterName | |HDInsight クラスターの名前です。 |
   |   クラスター ユーザー名 |$clusterUsername | |クラスターのユーザー名は、クラスターの作成時に指定されています。 |
@@ -128,7 +126,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 ## <a name="ambari-monitoring-apis"></a>Ambari での API の監視
 以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。 API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。
 
-| API 呼び出しの監視 | URI | Description |
+| API 呼び出しの監視 | URI | [説明] |
 | --- | --- | --- |
 | クラスターの取得 |`/api/v1/clusters` | |
 | クラスター情報の取得 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |クラスター、サービス、ホスト |
@@ -143,7 +141,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 | 構成の取得 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations` |構成の種類: core-site、hdfs-site、mapred-site、hive-site |
 | 構成情報の取得 |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |構成の種類: core-site、hdfs-site、mapred-site、hive-site |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。 詳細については、次を参照してください。
 
 * [Azure Portal を使用した HDInsight クラスターの管理][hdinsight-admin-portal]

@@ -1,11 +1,11 @@
 ---
-title: "複数の NIC を持つ VM (クラシック) の作成 - Azure CLI 1.0 | Microsoft Docs"
-description: "Azure コマンドライン インターフェイス (CLI) 1.0 を使用して、複数の NIC を持つ VM (クラシック) を作成する方法について説明します。"
+title: 複数の NIC を持つ VM (クラシック) の作成 - Azure CLI 1.0 | Microsoft Docs
+description: Azure コマンドライン インターフェイス (CLI) 1.0 を使用して、複数の NIC を持つ VM (クラシック) を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: b436e41e-866c-439f-a7c7-7b4b041725ef
 ms.service: virtual-network
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5569209d3628003b3f3e169b227e069b920c03f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: d2631e531368df4f00d7ffd8fef585038658797b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して複数の NIC が設定された VM (クラシック) を作成する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/20/2017
 Azure に仮想マシン (VM) を作成し、複数のネットワーク インターフェイス (NIC) を各 VM にアタッチできます。 複数 NIC では、複数の NIC 全体にトラフィック タイプを分散できます。 たとえば、インターネットと通信する NIC もあれば、インターネットに接続されていない内部リソースとのみ通信する NIC もあるとします。 アプリケーションの配布や WAN の最適化ソリューションなど、多くのネットワーク仮想アプライアンスでは、複数の NIC 間にネットワーク トラフィックを分散できる必要があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](../virtual-machines/linux/multiple-nics.md)を使用してこれらの手順を実行する方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイ モデル](../virtual-machines/linux/multiple-nics.md)を使用してこれらの手順を実行する方法について説明します。
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 

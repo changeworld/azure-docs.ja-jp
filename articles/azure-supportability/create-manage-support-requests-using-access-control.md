@@ -7,15 +7,15 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
 
-[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) を使用すると、Azure のアクセス権をきめ細かく管理できます。
+[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を使用すると、Azure のアクセス権をきめ細かく管理できます。
 Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要求を作成するときは、Azure の RBAC モデルを使用して、サポート要求を作成および管理できるユーザーを定義します。
 アクセス権を付与するには、特定のスコープでユーザー、グループ、アプリケーションに適切な RBAC ロールを割り当てます。スコープには、サブスクリプション、リソース グループ、またはリソースを指定できます。
 

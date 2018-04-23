@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal で API の応答の模擬テストを実行する | Microsoft Docs"
-description: "このチュートリアルでは、API Management (APIM) を使用して、モック応答を返すように API でポリシーを設定する方法について説明します。 この方法を使用すると、実際の応答を送信するためにバックエンドを使用できない場合に、開発者が、API Management インスタンスの実装とテストを進めることができます。"
+title: Azure Portal で API の応答の模擬テストを実行する | Microsoft Docs
+description: このチュートリアルでは、API Management (APIM) を使用して、モック応答を返すように API でポリシーを設定する方法について説明します。 この方法を使用すると、実際の応答を送信するためにバックエンドを使用できない場合に、開発者が、API Management インスタンスの実装とテストを進めることができます。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: e485071b026c52eb23532639546ad475fc92cde3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
 
@@ -39,16 +39,14 @@ ms.lasthandoff: 12/04/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します。
-
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 
 ## <a name="create-a-test-api"></a>テスト API を作成する 
 
 このセクションの手順では、バックエンドがない空の API を作成する方法について説明します。 また、API に操作を追加する方法についても説明します。 このセクションの手順を完了した後、操作を呼び出すと、エラーが発生します。 「応答のモック作成を有効にする」セクションの手順の完了後は、エラーは発生しません。
 
-1. **[API Management]** で **[API]** を選択します。
-2. 左側のメニューで、**[+ API を追加]** を選択します。
+1. **[API Management]** で **[API]** を選びます。
+2. 左側のメニューで、**[+ API の追加]** を選びます。
 3. 一覧から **[空の API]** を選択します。
 4. **[表示名]** に「*テスト API*」と入力します。
 5. **[製品]**に「*無制限*」と入力します。
@@ -56,16 +54,16 @@ ms.lasthandoff: 12/04/2017
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
 
-1. 前の手順で作成した API を選択します。
+1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
 
     ![モック操作の応答](./media/mock-api-responses/mock-api-responses02.png)
 
-    |設定|値|説明|
+    |Setting|値|[説明]|
     |---|---|---|
     |**URL** (HTTP 動詞)|GET|定義済み HTTP 動詞のいずれかを選択できます。|
     |**URL** |*/test*|API の URL パス。 |
-    |**表示名**|"*テスト呼び出し*"|**開発者ポータル**に表示される名前。|
+    |**[表示名]**|"*テスト呼び出し*"|**開発者ポータル**に表示される名前。|
     |**説明**||**開発者ポータル**でこの API を使用する開発者にドキュメントを提供するために使用される操作の説明を指定します。|
     |**[クエリ]** タブ||クエリ パラメーターを追加できます。 名前と説明を提供するだけでなく、このパラメーターに割り当て可能な値を指定することもできます。 値の 1 つを既定値としてマークすることができます (オプション)。|
     |**[要求]** タブ||要求のコンテンツの種類、例、およびスキーマを定義できます。 |
@@ -107,7 +105,7 @@ ms.lasthandoff: 12/04/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -119,4 +117,4 @@ ms.lasthandoff: 12/04/2017
 次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [発行された API の変換と保護](transform-api.md)
+> [公開された API の変換と保護](transform-api.md)

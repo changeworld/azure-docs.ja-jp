@@ -470,6 +470,8 @@
           href: troubleshoot-app-connection.md
         - name: 割り当ての失敗
           href: allocation-failure.md
+        - name: 割り当ての失敗 - クラシック VM
+          href: allocation-failure-classic.md
         - name: デプロイの問題
           href: troubleshoot-deploy-vm.md
         - name: VM の作成

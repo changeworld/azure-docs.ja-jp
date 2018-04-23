@@ -4,7 +4,7 @@ description: Azure Cosmos DB のメトリックを使用して、一般的な問
 keywords: metrics
 services: cosmos-db
 author: gnot
-manager: jhubbard
+manager: kfile
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 37ef1bc01bd3679e664e71e6a6e3bede84615305
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a2934e636166867ce158d79897d8f1fccb1699fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 

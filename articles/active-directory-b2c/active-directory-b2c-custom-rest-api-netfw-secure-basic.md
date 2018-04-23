@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 90bbcc865f13a1d048ea12fdccd3ca848cf362ba
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 749157d16c1c394b173545dddb8751d58fdcfd56
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 [関連する Azure AD B2C の記事](active-directory-b2c-custom-rest-api-netfw.md)では、Azure Active Directory B2C (Azure AD B2C) のユーザー体験を認証なしで統合する RESTful サービス (Web API) を作成しました。 
 
 この記事では、RESTful サービスに HTTP 基本認証を追加して、B2C を含む検証済みのユーザーのみが API にアクセスできるようにします。 HTTP 基本認証では、ユーザーの資格情報 (アプリ ID とアプリ シークレット) をカスタム ポリシーに設定します。 

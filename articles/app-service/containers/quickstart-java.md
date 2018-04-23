@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 2c37151c09c7b180993056532c07ff081f576b83
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 657a5a72650b330323406703d2c479c96c096f2e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="preview-create-a-java-web-app-in-app-service-on-linux"></a>プレビュー: App Service on Linux で Java Web アプリを作成する
 
@@ -60,7 +60,10 @@ App Service on Linux は、現在、Java Web アプリをサポートするた�
 Cloud Shell で、`myAppServicePlan` App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 これは、[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して実行できます。 次の例では、*\<app_name>* をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 
 
 ```azurecli-interactive
+# Bash
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
+# PowerShell
+az --% webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
 ```
 
 **runtime** パラメーターには、以下のいずれかのランタイムを使用します。

@@ -1,24 +1,22 @@
 ---
 title: HDInsight で R Server クラスターを管理する - Azure | Microsoft Docs
 description: Azure HDInsight で R Server を管理する方法について説明します。
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: nitinme
-ms.openlocfilehash: c0a996555e35a99a6025e92bcb41fa192b18eece
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 827bcb7bb20f1def9acec8cb2043ea295801583a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-r-server-cluster-on-azure-hdinsight"></a>Azure HDInsight で R Server クラスターを管理する
 

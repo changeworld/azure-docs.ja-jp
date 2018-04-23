@@ -1,11 +1,11 @@
 ---
-title: "Azure Media Services REST API を使用したフィルターの作成 | Microsoft Docs"
-description: "このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
+title: Azure Media Services REST API を使用したフィルターの作成 | Microsoft Docs
+description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
 ms.service: media-services
 ms.workload: media
@@ -14,16 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 98df3b6592ed865fc0eb4b942d298b26e930365f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ce234d23c30f08f2c98c855b148bc98e90d118cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [REST ()](media-services-rest-dynamic-manifest.md)
+> * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
@@ -62,7 +62,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
@@ -115,7 +115,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
@@ -165,7 +165,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     Host: media.windows.net 
 
@@ -176,7 +176,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
@@ -188,7 +188,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000
 
@@ -210,7 +210,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
@@ -250,7 +250,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
@@ -288,7 +288,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN>  
     x-ms-version: 2.17 
     Host: media.windows.net 
 
@@ -302,7 +302,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     Host: media.windows.net 
 

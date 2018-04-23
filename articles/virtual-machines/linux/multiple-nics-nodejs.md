@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 20e3a65c28e95849822d81076b6780e05a2aebbf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a4e19f232abce8701e6d2e12a876c55079b91a2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して複数の NIC を持つ Linux 仮想マシンを作成する
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -163,7 +163,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-完全な例については、「 [Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
+完全な例については、「 [Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/template-samples.md)」を参照してください。
 
 Linux VM に複数の NIC を追加する場合は、ルーティング規則を作成する必要があります。 これらの規則が特定の NIC に属しているトラフィックの送受信を VM に許可します。 そうしないと、たとえば、eth1 に属しているトラフィックを、定義された既定のルートで正しく処理できません。 このルーティングの問題を修正するには、「[複数の NIC 用にゲスト OS を構成する](multiple-nics.md#configure-guest-os-for-multiple-nics)」をご覧ください。
 

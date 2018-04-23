@@ -1,6 +1,6 @@
 ---
-title: "大きなデータ ファイルの読み取りと書き込み | Microsoft Docs"
-description: "Azure Machine Learning の実験で大きなファイルの読み取りと書き込みを実行します。"
+title: 大きなデータ ファイルの読み取りと書き込み | Microsoft Docs
+description: Azure Machine Learning の実験で大きなファイルの読み取りと書き込みを実行します。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
 ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>変更の保持と大きなファイルの操作
 Azure Machine Learning 実験サービスでは、さまざまな実行ターゲットを構成できます。 ターゲットは、ローカル (ローカル コンピューターやローカル コンピューター上の Docker コンテナーなど) の場合もあれば、 リモート (リモート コンピューター上の Docker コンテナーや HDInsight クラスターなど) の場合もあります。 詳細については、[Azure Machine Learning 実験実行サービスの概要](experimentation-service-configuration.md)に関する記事をご覧ください。 

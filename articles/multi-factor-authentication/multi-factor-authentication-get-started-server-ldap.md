@@ -1,8 +1,8 @@
 ---
-title: "LDAP 認証と Azure MFA Server | Microsoft Docs"
-description: "LDAP 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
+title: LDAP 認証と Azure MFA Server | Microsoft Docs
+description: LDAP 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
 ms.openlocfilehash: 37f96afab67680b3140a6f4da6bff0c23a1f328f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 認証と Azure Multi-Factor Authentication Server
 既定では、Azure Multi-Factor Authentication Server は、Active Directory からユーザーをインポートするか同期するように構成されます。 ただし、ADAM ディレクトリや特定の Active Directory ドメイン コントローラーなどの別の LDAP ディレクトリにバインドするように構成できます。 LDAP 経由でディレクトリに接続する場合、Azure Multi-Factor Authentication Server は、認証を実行する LDAP プロキシとして機能できます。 RADIUS ターゲットとしての LDAP バインドの使用、IIS 認証使用時のユーザーの事前認証、Azure MFA ユーザー ポータルでのプライマリ認証も許可します。

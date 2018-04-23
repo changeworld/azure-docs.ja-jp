@@ -1,11 +1,11 @@
 ---
-title: "Azure VPN Gateways: Resource Manager: PowerShell で BGP を構成する | Microsoft Docs"
-description: "この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。"
+title: 'Azure VPN Gateways: Resource Manager: PowerShell で BGP を構成する | Microsoft Docs'
+description: この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 905b11a7-1333-482c-820b-0fd0f44238e5
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: b00a3fe7ba4b12c2e9c486188c292cd6fafb60a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc9337188fd439082c4aa34f0cbebe3eb2da5d99
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell を使用して Azure VPN Gateway で BGP を構成する方法
 この記事では、Resource Manager デプロイメント モデルと PowerShell を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続上で BGP を有効にする手順について説明します。
@@ -84,12 +84,12 @@ Resource Manager コマンドレットを使用する場合は、必ず PowerShe
 PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="3-create-testvnet1"></a>3.TestVNet1 を作成する
+#### <a name="3-create-testvnet1"></a>手順 3.TestVNet1 を作成する
 以下の例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
 ```powershell
@@ -118,7 +118,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3.Azure BGP ピア IP アドレスを取得する
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>手順 3.Azure BGP ピア IP アドレスを取得する
 ゲートウェイが作成されたら、Azure VPN ゲートウェイの BGP ピア IP アドレスを取得する必要があります。 オンプレミス VPN デバイスの BGP ピアとして Azure VPN ゲートウェイを構成するには、このアドレスが必要です。
 
 ```powershell
@@ -190,7 +190,7 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $
 $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>手順 2.TestVNet1 から Site5 への接続を作成する
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2.TestVNet1 から Site5 への接続を作成する
 
 この手順では、TestVNet1 から Site5 への接続を作成します。 この接続の BGP を有効にするために、"-EnableBGP $True" を指定する必要があります。 既に説明したように、同じ Azure VPN ゲートウェイで BGP 接続と BGP 以外の接続の両方を混在させることはできません。 接続プロパティで BGP を有効にしない限り、両方のゲートウェイで BGP パラメーターが既に構成されていても、Azure はこの接続の BGP を有効にしません。
 
@@ -264,7 +264,7 @@ $gwsub2 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3.BGP パラメーターを指定して TestVNet2 の VPN ゲートウェイを作成する
+#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>手順 3.BGP パラメーターを指定して TestVNet2 の VPN ゲートウェイを作成する
 
 VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求し、必要なサブネットと IP 構成を定義します。
 
@@ -316,6 +316,6 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 ![BGP for VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。

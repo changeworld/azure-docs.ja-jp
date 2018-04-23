@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Web アプリへのカスタム ドメインの割り当て | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Web アプリへのカスタム ドメインの割り当て"
+title: Azure PowerShell のサンプル スクリプト - Web アプリへのカスタム ドメインの割り当て | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Web アプリへのカスタム ドメインの割り当て
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d25fe8098848fc69470c77e3200bee554c1f875
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f9412a40920c6887d85bbbbe2b9e9c23a242bdc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-custom-domain-to-a-web-app"></a>カスタム ドメインを Web アプリに割り当てる
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、`www.<yourdomain>` を作成したアプリにマップします。 
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。 また、ドメイン レジストラーの DNS 構成ページにアクセスできることも必要です。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。 また、ドメイン レジストラーの DNS 構成ページにアクセスできることも必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -51,7 +51,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [Set-AzureRmAppServicePlan](/powershell/module/azurerm.websites/set-azurermappserviceplan) | App Service プランを変更して価格レベルを変更します。 |
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Web アプリの構成を変更します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

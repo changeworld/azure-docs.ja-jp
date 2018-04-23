@@ -1,8 +1,8 @@
 ---
-title: "RBAC を使用した Azure Portal ダッシュボードの共有 | Microsoft Docs"
-description: "この記事では、Azure ポータルでロールベースのアクセス制御を使用して、ダッシュボードを共有する方法について説明します。"
+title: RBAC を使用した Azure Portal ダッシュボードの共有 | Microsoft Docs
+description: この記事では、Azure ポータルでロールベースのアクセス制御を使用して、ダッシュボードを共有する方法について説明します。
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 33ddfef1e23a6ff0c2cb8e359d408d2c42cbcf3a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 75f06e49aa317fc887831a9e04861d9a7989bdb2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
-構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
+構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
 
 発行したダッシュボードはすべて Azure リソースとして実装されます。つまり、それらは管理可能な要素としてサブスクリプションに存在し、リソース グループに属します。  アクセス制御の見地からは、ダッシュボードはその他のリソース (仮想マシン、ストレージ アカウントなど) と変わりありません。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 ロールベースのアクセス制御 (RBAC) では、以下に示した 3 つのスコープ レベルでユーザーをロールに割り当てることができます。
 
 * サブスクリプション
-* リソース グループ
+* resource group
 * resource
 
 割り当てたアクセス許可は、サブスクリプションからリソースへと継承されます。 発行したダッシュボードはリソースです。 したがってサブスクリプションのロールに対して既にユーザーが割り当てられていると、発行したダッシュボードに対しても、そのロールが作用します。 
@@ -73,7 +73,7 @@ ms.lasthandoff: 12/11/2017
    
      ![assigned roles](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
-## <a name="next-steps"></a>次のステップ
-* 一連のロールについては、「 [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
+* 一連のロールについては、「 [RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 * リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 

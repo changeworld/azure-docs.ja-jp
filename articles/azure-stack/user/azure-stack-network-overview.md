@@ -1,22 +1,22 @@
 ---
-title: "Azure Stack ネットワークの概要"
-description: "Azure Stack ネットワークについて"
+title: Azure Stack ネットワークの概要
+description: Azure Stack ネットワークについて
 services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 02/28/2018
+ms.date: 04/09/2018
 ms.author: mabrigg
-ms.openlocfilehash: 1d2067653e357ee6dbc9a469f238531c80684f19
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6d08d11a3768b2db909920058dcb0b5a1fcb1534
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Azure Stack ネットワークの概要
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack には、単独でまたは組み合わせて使用できるさまざまなネットワーク機能が用意されています。
 - Azure Stack リソース間の接続: クラウド内の安全なプライベート仮想ネットワークで Azure のリソースを接続します。

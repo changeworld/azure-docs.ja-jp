@@ -1,11 +1,11 @@
 ---
-title: "Azure DevTest Labs に関する FAQ | Microsoft Docs"
-description: "Azure DevTest Labs についてよく寄せられる質問の回答を示します。"
+title: Azure DevTest Labs に関する FAQ | Microsoft Docs
+description: Azure DevTest Labs についてよく寄せられる質問の回答を示します。
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: afe83109-b89f-4f18-bddd-b8b4a30f11b4
 ms.service: devtest-lab
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: 24a3220a21280684a34405ac4c3d9f9eab9e3683
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: d8b9e48db9e75fb41ecad1958b3aa930a6bce3aa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -55,7 +55,7 @@ DevTest Labs は無料サービスです。 DevTest Labs でのラボの作成�
 
 **セキュリティ**
 ## <a name="what-are-the-different-security-levels-in-devtest-labs"></a>DevTest Labs の各種セキュリティ レベルはどのようなものですか。
-セキュリティ アクセスは、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-built-in-roles.md) によって決定されます。 アクセスのしくみを理解するには、RBAC で定義されているアクセス許可、ロール、スコープの違いを理解することが有用です。
+セキュリティ アクセスは、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/built-in-roles.md) によって決定されます。 アクセスのしくみを理解するには、RBAC で定義されているアクセス許可、ロール、スコープの違いを理解することが有用です。
 
 * **アクセス許可**: アクセス許可とは、特定のアクションへのアクセスを定義したものです。 たとえば、すべての VM への読み取りアクセス許可などがあります。
 * **ロール**: ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、サブスクリプション所有者ロールが割り当てられたユーザーは、サブスクリプション内のすべてのリソースにアクセスできます。
@@ -99,7 +99,7 @@ Visual Studio Team Services を使用している場合は、[DevTest Labs タ�
 * [Team Services から既存の DevTest Labs ラボに新しい VM をデプロイする](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [Team Services のリリース管理を使用した DevTest Labs への継続的なデプロイ](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-他の継続的インテグレーション (CI)/継続的配信 (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://aka.ms/dtlquickstarttemplate)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](http://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。  
+他の継続的インテグレーション (CI)/継続的デリバリー (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://aka.ms/dtlquickstarttemplate)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](http://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。  
 
 
 **仮想マシン**
@@ -159,7 +159,7 @@ Azure Portal でラボから VM を削除できます。 また、PowerShell ス
     $labName = "<Enter lab name here>"
 
     # Sign in to your Azure account.
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     # Select the Azure subscription that has the lab. This step is optional
     # if you have only one subscription.

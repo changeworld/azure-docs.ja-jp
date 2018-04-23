@@ -1,11 +1,11 @@
 ---
-title: "Azure Automation で Runbook を使用して Log Analytics データを収集する | Microsoft Docs"
-description: "Log Analytics による分析用のデータを OMS リポジトリに収集するための Runbook を Azure Automation で作成する詳細な手順について説明します。"
+title: Azure Automation で Runbook を使用して Log Analytics データを収集する | Microsoft Docs
+description: Log Analytics による分析用のデータを OMS リポジトリに収集するための Runbook を Azure Automation で作成する詳細な手順について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: operations-management-suite
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0784e2317fbc98561b486547654ca27bb30e76c3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Azure Automation の Runbook を使用して Log Analytics でデータを収集する
 エージェントの[データ ソース](../log-analytics/log-analytics-data-sources.md)や [Azure から収集されたデータ](../log-analytics/log-analytics-azure-storage.md)など、Log Analytics ではさまざまなソースから大量のデータを収集できます。  しかし、これらの標準的なソースではアクセスできないデータの収集が必要なシナリオがあります。  このような場合は、[HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) を使って、REST API クライアントから Log Analytics にデータを書き込むことができます。  このデータ収集を実行する一般的な方法は、Azure Automation で Runbook を使うものです。   
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 4. Automation アカウントを選び、**[OK]** をクリックしてモジュールをインストールします。
 
 
-## <a name="2-create-automation-variables"></a>手順 2.Automation 変数を作成する
+## <a name="2-create-automation-variables"></a>2.Automation 変数を作成する
 [Automation 変数](..\automation\automation-variables.md)は、Automation アカウントのすべての Runbook で使うことができる値を保持します。  実際の Runbook を編集することなくこれらの値を変更できるので、Runbook の柔軟性が高くなります。 HTTP データ コレクター API からのすべての要求では、OMS ワークスペースの ID とキーが必要であり、この情報を格納するには変数資産が最適です。  
 
 ![variables](media/operations-management-suite-runbook-datacollect/variables.png)
@@ -65,10 +65,10 @@ ms.lasthandoff: 10/11/2017
 
 | プロパティ | ワークスペース ID の値 | ワークスペース キーの値 |
 |:--|:--|:--|
-| 名前 | WorkspaceId | WorkspaceKey |
-| 型 | String | String |
+| Name | WorkspaceId | WorkspaceKey |
+| type | String | String |
 | 値 | Log Analytics ワークスペースのワークスペース ID を貼り付けます。 | Log Analytics ワークスペースのプライマリ キーまたはセカンダリ キーを貼り付けます。 |
-| 暗号化 | いいえ | あり |
+| 暗号化 | いいえ  | [はい] |
 
 
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
         # Code copied from the runbook AzureAutomationTutorial.
         $connectionName = "AzureRunAsConnection"
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -171,7 +171,7 @@ Runbook が正しく動作していることを確認した後、運用環境で
 
 1. Runbook のプロパティで、**[Runbook の設定]** の **[ログとトレース]** を選びます。
 2. **[詳細レコードの記録]** の設定を **[オン]** に変更します。
-3. [ **Save**] をクリックします。
+3. **[Save]** をクリックします。
 
 ## <a name="8-schedule-runbook"></a>8.Runbook のスケジュールを設定する
 監視データを収集する Runbook を開始する最も一般的な方法は、自動的に実行するようにスケジュールを設定することです。  そのためには、[Azure Automation でスケジュール](../automation/automation-schedules.md)を作成し、Runbook に関連付けます。
@@ -184,17 +184,17 @@ Runbook が正しく動作していることを確認した後、運用環境で
 
 | プロパティ | 値 |
 |:--|:--|
-| 名前 | AutomationJobs-Hourly |
+| Name | AutomationJobs-Hourly |
 | 開始 | 現在時刻より 5 分以上後の任意の時刻を選びます。 |
 | 繰り返し | 繰り返し |
 | 繰り返しの間隔 | 1 時間 |
-| 有効期限の設定 | いいえ |
+| 有効期限の設定 | いいえ  |
 
 スケジュールを作成した後、このスケジュールが Runbook を開始するたびに使われるパラメーター値を設定する必要があります。
 
 6. **[パラメータと実行設定を構成する]** をクリックします。
 7. **[ResourceGroupName]** と **[AutomationAccountName]** に値を入力します。
-8. **[OK]**をクリックします。 
+8. Click **OK**. 
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9.スケジュールに従って Runbook が開始することを確認する
 Runbook が開始されるたびに、[ジョブが作成](../automation/automation-runbook-execution.md)されて、出力がログに記録されます。  実際、これらは Runbook が収集している同じジョブです。  スケジュールの開始時刻が経過した後、Runbook のジョブをチェックして、Runbook が意図したように開始していることを確認できます。
@@ -210,7 +210,7 @@ Runbook が開始されるたびに、[ジョブが作成](../automation/automat
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)を使って、Log Analytics リポジトリに収集したデータを表示するビューを作成します。
 - Runbook を[管理ソリューション](operations-management-suite-solutions-creating.md)にパッケージ化し、ユーザーに配布します。
 - [Log Analytics](https://docs.microsoft.com/azure/log-analytics/) についてさらに学習します。

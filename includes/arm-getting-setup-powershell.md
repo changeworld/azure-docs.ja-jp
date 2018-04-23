@@ -26,7 +26,7 @@ Azure サブスクリプションを持っていない場合は、[MSDN サブ�
 
 Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Azure サブスクリプションが複数ある場合は、次のコマンドで、Azure サブスクリプションの一覧を表示できます。
 

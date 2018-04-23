@@ -1,12 +1,12 @@
 ---
-title: "Power BI ワークスペース コレクションの新機能"
-description: "Power BI ワークスペース コレクションの新機能を紹介します。"
+title: Power BI ワークスペース コレクションの新機能
+description: Power BI ワークスペース コレクションの新機能を紹介します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2794ae98-b9a7-45df-b6e1-962a395b91fa
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: a2faf610ca50acdb54353ade7c7a4ecabd314347
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 647b571fc05dca12ab9d4db45236962e4794ef4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションの新機能
 
 **Power BI ワークスペース コレクション**の更新は定期的にリリースされます。 ただし、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。一部のリリースでは、バックエンド サービス機能に重点を置いています。 ここでは、ユーザー向けの新機能について説明します。
 
 > [!IMPORTANT]
-> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、「[How to migrate Power BI Workspace Collection content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)」(Power BI Embedded に Power BI ワークスペース コレクション コンテンツを移行する方法) を参照してください。
+> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 ## <a name="march-2017"></a>2017 年 3 月
 

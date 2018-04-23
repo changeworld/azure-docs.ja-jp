@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,14 +45,14 @@ ms.lasthandoff: 03/28/2018
 
 
 ## <a name="expressions"></a>式  
-式は、JSON 文字列値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
+式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
 |"@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
-|\" \@\"|\" \@\" を含む 2 文字の文字列が返されます。|  
+|\" \@\"|" \@\" を含む 2 文字の文字列が返されます。|  
   
  また、式が `@{ ... }` にラップされる*文字列補間*と呼ばれる機能を使用して、式を文字列の内部に指定することもできます。 次に例を示します。`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -63,10 +63,10 @@ ms.lasthandoff: 03/28/2018
 |"@pipeline().parameters.myString"| `foo` が文字列として返されます。|  
 |"@{pipeline().parameters.myString}"| `foo` が文字列として返されます。|  
 |"@pipeline().parameters.myNumber"| `42` が "*数値*" として返されます。|  
-|"@{pipeline().parameters.myNumber}"| `42` が "*文字列*" として返されます。|  
-|"Answer is: @{pipeline().parameters.myNumber}"| 文字列 `Answer is: 42` が返されます。|  
-|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| 文字列 `Answer is: 42` が返されます。|  
-|"Answer is: @@{pipeline().parameters.myNumber}"| 文字列 `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
+|"@{pipeline().parameters.myNumber}"| `42` が "*string*" として返されます。|  
+|"Answer is: @{pipeline().parameters.myNumber}"| string `Answer is: 42` が返されます。|  
+|"@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
+|"Answer is: @@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
   
 ### <a name="examples"></a>例
 

@@ -1,11 +1,11 @@
 ---
-title: "ルートのトラブルシューティング - PowerShell | Microsoft Docs"
-description: "Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してルートをトラブルシューティングする方法について説明します。"
+title: ルートのトラブルシューティング - PowerShell | Microsoft Docs
+description: Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してルートをトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bf7dc5e7-9399-460e-8e0d-8992dbed98a6
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: ac7f8ddaf84ba94075a9c9c3195bd57534c6821b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2d501419dde633f89a5760af9f82604006de6b6f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Azure PowerShell を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
 ### <a name="view-effective-routes-for-a-network-interface"></a>ネットワーク インターフェイスの有効なルートを表示する
 ネットワーク インターフェイスに適用されている集約ルートを表示するには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
 2. 次のコマンドを使用すると、リソース グループ *RG1* の *VM1-NIC1* という名前のネットワーク インターフェイスに適用されているすべてのルートが返されます。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

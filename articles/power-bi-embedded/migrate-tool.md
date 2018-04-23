@@ -1,24 +1,24 @@
 ---
-title: "Power BI Embedded 移行ツールの使用 | Microsoft Docs"
-description: "Power BI Embedded 移行ツールを使用して、Power BI ワークスペース コレクションのレポートを Power BI Embedded にコピーすることができます。"
+title: Power BI Embedded 移行ツールの使用 | Microsoft Docs
+description: Power BI Embedded 移行ツールを使用して、Power BI ワークスペース コレクションのレポートを Power BI Embedded にコピーすることができます。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 0b7b5089045daf6dd88fcd84e316b2bd44f8c927
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4f76b1efb509745653bfde0926f56032030f7d47
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-power-bi-embedded-migration-tool"></a>Power BI Embedded 移行ツールの使用
 
@@ -31,7 +31,7 @@ Power BI Embedded 移行ツールを使用して、Power BI ワークスペー�
 * プッシュされたデータセットはダウンロードできません。Power BI サービス用の Power BI REST API を使用して作成し直す必要があります。
 * 2016 年 11 月 26 日より前にインポートされた PBIX ファイルはダウンロードできなくなります。
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 
 移行ツールのサンプルは [GitHub](https://github.com/Microsoft/powerbi-migration-sample) からダウンロードできます。 リポジトリを zip ファイルとしてダウンロードするか、ローカルに複製することができます。 ダウンロードしたら、Visual Studio 内で *powerbi-migration-sample.sln* を開いてビルドし、移行ツールを実行できます。
 
@@ -262,7 +262,7 @@ Power BI サービス内のデータセットの接続文字列を更新し、�
 * [Power BI Embedded で DirectQuery の接続文字列を更新する](migrate-code-snippets.md#update-directquery-connection-string-in-power-bi-embedded)
 * [Power BI Embedded で DirectQuery の資格情報を設定する](migrate-code-snippets.md#set-directquery-credentials-in-power-bi-embedded)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Power BI ワークスペース コレクションから Power BI Embedded にレポートを移行したので、アプリケーションを更新し、このアプリ ワークスペースにレポートを埋め込むことができます。
 

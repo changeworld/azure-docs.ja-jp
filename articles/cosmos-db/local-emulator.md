@@ -5,7 +5,7 @@ services: cosmos-db
 documentationcenter: ''
 keywords: Azure Cosmos DB Emulator
 author: David-Noble-at-work
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
 ms.author: danoble
-ms.openlocfilehash: e0d23a163f16763dd4764eb7857dec8076f4754c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 810e3e8af5295348ba73b4f7433e3203f47f4554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 

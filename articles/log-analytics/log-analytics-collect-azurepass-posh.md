@@ -1,12 +1,12 @@
 ---
-title: "Log Analytics を使用して Azure PaaS リソース メトリックを収集する | Microsoft Docs"
-description: "Log Analytics で保持して分析するために PowerShell を使用して Azure PaaS リソース メトリックの収集を可能にする方法について説明します。"
+title: Log Analytics を使用して Azure PaaS リソース メトリックを収集する | Microsoft Docs
+description: Log Analytics で保持して分析するために PowerShell を使用して Azure PaaS リソース メトリックの収集を可能にする方法について説明します。
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 83491c4902dabc6bab1e222551298cfaffbaecf4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 8a2c04c2f79f310b7e70e7add7a8d5f318f056d2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Log Analytics を使用した Azure PaaS リソース メトリックの収集を構成する
 
@@ -57,7 +57,7 @@ Azure 診断によるメトリックの収集をサポートし、Log Analytics 
     PS C:\> save-script -Name Enable-AzureRMDiagnostics -Path "C:\users\<username>\desktop\temp"
     ```
 
-3. `Login-AzureRmAccount` を実行して、Azure との接続を作成します。   
+3. `Connect-AzureRmAccount` を実行して、Azure との接続を作成します。   
 4. 次の `.\Enable-AzureRmDiagnostics.ps1` スクリプトを実行します。パラメーターを使用せずに実行すると、サブスクリプション内の特定のリソースからのデータ収集を有効にできます。`-ResourceGroup <myResourceGroup>` パラメーターを使用して、特定のリソース グループ内のリソースを指定できます。   
 5. 複数のサブスクリプションがある場合は、適切な値を入力することで、一覧から適切なサブスクリプションを選択します。<br><br> ![スクリプトによって返されるサブスクリプションを選択する](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> それ以外の場合は、使用可能な単一のサブスクリプションが自動的に選択されます。
 6. 次に、スクリプトは、サブスクリプションに登録されている Log Analytics ワークスペースの一覧を返します。  一覧から適切なものを選択します。<br><br> ![スクリプトによって返されるワークスペースを選択する](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 

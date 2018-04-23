@@ -1,32 +1,26 @@
 ---
-title: "インデックスの作成 (.NET API - Azure Search) | Microsoft Docs"
-description: "Azure Search .NET SDK を使用して、コードでインデックスを作成します。"
-services: search
-documentationcenter: 
+title: インデックスの作成 (.NET API - Azure Search) | Microsoft Docs
+description: Azure Search .NET SDK を使用して、コードでインデックスを作成します。
 author: brjohnstmsft
-manager: jhubbard
-editor: 
+manager: jlembicz
 tags: azure-portal
-ms.assetid: 3a851647-fc7b-4fb6-8506-6aaa519e77cd
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: fac41903c3e5731d17f832ff58145fe74dfa29f1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 429613b7699ada732c56b642141ff8c4505cbc33
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-an-index.md)
 > * [ポータル](search-create-index-portal.md)
 > * [.NET](search-create-index-dotnet.md)
-> * [REST ()](search-create-index-rest-api.md)
+> * [REST](search-create-index-rest-api.md)
 > 
 > 
 
@@ -189,6 +183,6 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Search インデックスを作成すると、データの検索を開始できるように [インデックスにコンテンツをアップロードする](search-what-is-data-import.md) 準備が完了します。
 

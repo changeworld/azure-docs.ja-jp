@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: e1dfd7ec4a2475142423f00a457a909989a36bea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be7db6f8a69731dec83ba94aecc272bc1df17892
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション 
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 04/03/2018
 
     > [!WARNING]
     > 変更したネットワーク構成ファイルをインポートすると、サブスクリプションの既存の仮想ネットワーク (クラシック) が変更される可能性があります。 前の仮想ネットワークのみを追加し、サブスクリプションの既存の仮想ネットワークは変更または削除しないようにしてください。 
-5. `login-azurermaccount` コマンドを入力し、Azure にログインして仮想ネットワーク (Resource Manager) を作成します。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
+5. `Connect-AzureRmAccount` コマンドを入力し、Azure にログインして仮想ネットワーク (Resource Manager) を作成します。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
 6. リソース グループと仮想ネットワーク (Resource Manager) を作成します。 スクリプトをコピーして PowerShell に貼り付け、`Enter` を押します。
 
     ```powershell

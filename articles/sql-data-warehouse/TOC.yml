@@ -11,6 +11,8 @@
   items:
     - name: 作成と接続 - ポータル
       href: create-data-warehouse-portal.md
+    - name: 作成 - PowerShell
+      href: create-data-warehouse-powershell.md
     - name: コンピューティングの一時停止と再開
       items:
         - name: ポータル

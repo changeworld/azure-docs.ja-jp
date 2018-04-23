@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 10decbd5291e2054e373bfef266b64eae36ea1cf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証と承認のカスタマイズ
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/06/2018
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル: Azure App Service でのエンドツーエンドのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル: Azure App Service でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Google ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-google-authentication.md)
@@ -44,7 +44,7 @@ ms.lasthandoff: 04/06/2018
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoft">Log in with Microsoft Account</a> 
+<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>

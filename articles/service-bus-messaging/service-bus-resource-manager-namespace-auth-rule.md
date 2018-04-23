@@ -1,30 +1,30 @@
 ---
-title: "Service Bus に使用する承認規則を Azure Resource Manager テンプレートで作成する | Microsoft Docs"
-description: "Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する"
+title: Service Bus に使用する承認規則を Azure Resource Manager テンプレートで作成する | Microsoft Docs
+description: Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7f1443a0-5fa8-4d90-8637-1a977ef0b1f0
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm;shvija
-ms.openlocfilehash: 384a2fce4bf338ffc4ab6690980c12ad7ff34a6e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 04/11/2018
+ms.author: sethm
+ms.openlocfilehash: e29045f43f5b80ffc66d7b10bac39f3d8d03ae3c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
 
 この記事では、Azure Resource Manager テンプレートを使用して、Service Bus の名前空間とキューに使用する[承認規則](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)を作成する方法について説明します。 この記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを指定する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
+テンプレートの作成について詳しくは、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。
 
 完全なテンプレートについては、GitHub の [Service Bus 承認規則テンプレート][Service Bus auth rule template]に関するページを参照してください。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/11/2017
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-auth-rule/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F301-servicebus-create-authrule-namespace-and-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
@@ -107,8 +107,7 @@ Service Bus 名前空間のキューの名前。
             "location": "[variables('location')]",
             "kind": "Messaging",
             "sku": {
-                "name": "StandardSku",
-                "tier": "Standard"
+                "name": "Standard",
             },
             "resources": [
                 {
@@ -164,7 +163,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
 * [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)

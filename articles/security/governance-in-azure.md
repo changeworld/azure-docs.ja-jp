@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="governance-in-azure"></a>Azure でのガバナンス
 
@@ -147,7 +147,7 @@ Azure が最初にリリースされたときには、サブスクリプショ�
 
 このようにサブスクリプションを急増させる必要はなくなりました。 ロールベースのアクセス制御により、ユーザーを標準ロール (一般的な "リーダー" および "ライター" タイプのロールなど) を割り当てることができます。 また、カスタム ロールを定義することもできます。
 
-[Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースのアクセス制御 (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。 RBAC を使用すると、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与することができます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
+[Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースのアクセス制御 (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。 RBAC を使用すると、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与することができます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
 
 たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
 
@@ -161,7 +161,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する仮想ネットワークまたはサブネットへのアクセス権は付与されません。
 
-[RBAC: 組み込みのロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) 」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。
+[RBAC: 組み込みのロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。
 
 アクセス権を付与するには、ユーザー、グループ、およびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てます。 ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。 親スコープでロールが割り当てられると、その親に含まれる子へのアクセス権も付与されます。
 
@@ -169,9 +169,9 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure リソースの管理操作のみに対応しています。 Azure リソースのデータ レベルの操作の中には、許可されていないものもあります。 たとえば、同じユーザーにストレージ アカウントを管理することを承認できますが、ストレージ アカウントでの BLOB またはテーブルの操作を許可することはできません。 同様に、SQL データベースは管理できますが、その中のテーブルは管理できません。
 
-RBAC を使用した高度なアクセス管理については、「 [What is Role-Based Access Control (ロールベースのアクセス制御とは)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)」を参照してください。
+RBAC を使用した高度なアクセス管理については、「 [What is Role-Based Access Control (ロールベースのアクセス制御とは)](https://docs.microsoft.com/azure/role-based-access-control/overview)」を参照してください。
 
-組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) で[カスタム ロールを作成](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)できます。 カスタム ロールは、[Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli)、および [REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
+組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) で[カスタム ロールを作成](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)できます。 カスタム ロールは、[Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、および [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
 
 各サブスクリプション内では、最大 2,000 のロールの割り当てを許可できます。
 
@@ -271,7 +271,7 @@ Resource Manager のロックは、管理ウィンドウで実行され、<https
 
 別の例として、ReadOnly ロックを App Service リソースに配置すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
 
-ロールベースのアクセス制御とは異なり、管理ロックを使用すると、すべてのユーザーとロールに対して制限を適用することができます。 ユーザーとロールのアクセス許可を設定する方法については、「[Azure のロールベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)」を参照してください。
+ロールベースのアクセス制御とは異なり、管理ロックを使用すると、すべてのユーザーとロールに対して制限を適用することができます。 ユーザーとロールのアクセス許可を設定する方法については、「[Azure のロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
 
 親スコープでロックを適用すると、そのスコープ内のすべてのリソースは同じロックを継承します。 後で追加するリソースも、親からロックを継承します。 継承されるロックの中で最も制限の厳しいロックが優先されます。
 

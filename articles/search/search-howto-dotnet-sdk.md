@@ -1,24 +1,18 @@
 ---
-title: ".NET アプリケーションから Azure Search を使用する方法 | Microsoft Docs"
-description: ".NET アプリケーションから Azure Search を使用する方法"
-services: search
-documentationcenter: 
+title: .NET アプリケーションから Azure Search を使用する方法 | Microsoft Docs
+description: .NET アプリケーションから Azure Search を使用する方法
 author: brjohnstmsft
 manager: jlembicz
-editor: 
-ms.assetid: 93653341-c05f-4cfd-be45-bb877f964fcb
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 7273ae6a698f2af52e78ea2aae9ca5cd80f6a2b1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 67d56b89ece9baf92d033708981b1d83d4f757a9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
@@ -56,7 +50,7 @@ Azure Search .NET SDK は、.NET Framework 4.6 および .NET Core を対象と�
 
 後のサンプル コードではこれらについて示します。 これらのコード スニペットを独自のアプリケーションに自由に使用してください。
 
-### <a name="overview"></a>Overview
+### <a name="overview"></a>概要
 これから説明するサンプル アプリケーションは、"hotels" という名前のインデックスを新しく作成し、いくつかのドキュメントをそこに格納してから、検索クエリを実行します。 全体的な流れがわかるメイン プログラムを次に示します。
 
 ```csharp
@@ -582,7 +576,7 @@ WriteDocuments(results);
 
 チュートリアルはここまでですが、ここで止めないでください。 **次のステップ** では、Azure Search をさらに学習するための他のリソースを提供します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンスを参照してください。
 * [ビデオおよび他のサンプルとチュートリアル](search-video-demo-tutorial-list.md)によって、知識を深めてください。
 * [名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。

@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services でのデータ モデルの互換性レベル| Microsoft Docs"
-description: "表形式のデータ モデルの互換性レベルを理解します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services でのデータ モデルの互換性レベル| Microsoft Docs
+description: 表形式のデータ モデルの互換性レベルを理解します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: a07514c7734f3cd4be1e11a984151abb8ee3f23d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 231a7ea42560aac3fba0ccf27e27123320f219a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表形式モデルの互換性レベル
 

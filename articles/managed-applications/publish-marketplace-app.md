@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージ アプリケーション
 
@@ -107,7 +107,7 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
 
 複数の承認を追加できますが、 AD ユーザー グループを作成し、その ID を **PrincipalId** で指定することをお勧めします。 これにより、SKU を更新せずに、より多くのユーザーをユーザー グループに追加できます。
 
-RBAC の詳細については、[Azure Portal での RBAC の使用](../active-directory/role-based-access-control-what-is.md)に関するページをご覧ください。
+RBAC の詳細については、[Azure Portal での RBAC の使用](../role-based-access-control/overview.md)に関するページをご覧ください。
 
 ## <a name="marketplace-form"></a>[Marketplace] フォーム
 

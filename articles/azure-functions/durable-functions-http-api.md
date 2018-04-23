@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5fa5d9e66912bdeffdf553ddc0cb7d3feb0a5b77
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 07e6e5beb96042c2da82ac8be19e391d6153eabd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -42,7 +42,7 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 
 この例の関数では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
 
-| フィールド             |説明                           |
+| フィールド             |[説明]                           |
 |-------------------|--------------------------------------|
 | id                |オーケストレーション インスタンスの ID。 |
 | statusQueryGetUri |オーケストレーション インスタンスの状態の URL。 |
@@ -55,13 +55,13 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/webhookextensions/handler/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/webhookextensions/handler/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/webhookextensions/handler/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/webhookextensions/handler/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -85,7 +85,7 @@ Location: https://{host}/webhookextensions/handler/DurableTaskExtension/instance
 
 拡張機能によって実装されるすべての HTTP API では、次のパラメーターを指定します。 すべてのパラメーターのデータ型は `string` です。
 
-| パラメーター  | パラメーターのタイプ  | 説明 |
+| パラメーター  | パラメーターのタイプ  | [説明] |
 |------------|-----------------|-------------|
 | instanceId | URL             | オーケストレーション インスタンスの ID。 |
 | taskHub    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
@@ -113,7 +113,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>Response
@@ -127,7 +127,7 @@ GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskH
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド           | データ型 | 説明 |
+| フィールド           | データ型 | [説明] |
 |-----------------|-----------|-------------|
 | runtimeStatus   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | input           | JSON      | インスタンスを初期化するために使用される JSON データ。 |
@@ -207,17 +207,17 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-POST /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド       | パラメーターの種類  | データ型 | 説明 |
+| フィールド       | パラメーターのタイプ  | データ型 | [説明] |
 |-------------|-----------------|-----------|-------------|
 | eventName   | URL             | 文字列    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
 | {content}   | 要求内容 | JSON      | JSON 形式のイベント ペイロード。 |
 
-#### <a name="response"></a>応答
+#### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -253,16 +253,16 @@ DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?r
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-DELETE /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド       | パラメーターの種類  | データ型 | 説明 |
+| フィールド       | パラメーターのタイプ  | データ型 | [説明] |
 |-------------|-----------------|-----------|-------------|
 | reason      | クエリ文字列    | 文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
 
-#### <a name="response"></a>応答
+#### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 

@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8f6c2c54dd20b663eb43c716a2bd82310cf0256a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 283a505f9e16b081e0eb2e51d935c9b12e8721cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -78,7 +78,7 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 |-------------------|------------------------|---------------|---------|
 |コレクター          |Azure Migrate サービス   |TCP 443        |コレクターは、SSL ポート 443 経由でサービスに接続します。|
 |コレクター          |vCenter Server          |9443 (既定)   | 既定では、コレクターはポート 9443 で vCenter Server に接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。 |
-|オンプレミス VM     | Operations Management Suite (OMS) ワークスペース          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |MMA エージェントは、TCP 443 を使用して Log Analytics に接続します。 依存関係の視覚化機能を使用していて、Microsoft Monitoring Agent (MMA) エージェントをインストールする場合のみ、このポートが必要になります。 |
+|オンプレミス VM     | Log Analytics ワークスペース          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |MMA エージェントは、TCP 443 を使用して Log Analytics に接続します。 依存関係の視覚化機能を使用していて、Microsoft Monitoring Agent (MMA) エージェントをインストールする場合のみ、このポートが必要になります。 |
 
 
   

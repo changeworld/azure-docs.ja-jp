@@ -1,11 +1,11 @@
 ---
-title: "ネットワーク構成ファイルを使用した仮想ネットワークの作成 | PowerShell | クラシック | Microsoft Docs"
-description: "Azure ポータルでネットワーク構成ファイルを使用して仮想ネットワークを作成する方法について説明します。"
+title: ネットワーク構成ファイルを使用した仮想ネットワークの作成 | PowerShell | クラシック | Microsoft Docs
+description: Azure ポータルでネットワーク構成ファイルを使用して仮想ネットワークを作成する方法について説明します。
 services: virtual-network
-documentationcenter: 
-author: jimdial
-manager: jeconnoc
-editor: 
+documentationcenter: ''
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 95eadae3-cffd-45d1-89bc-b74d030f3d57
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: a4995040e59ce7c9b2ff4558815b76e82f0c87ea
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: genli
+ms.openlocfilehash: 6ff57a307ef00965d1c907d3ef95445031090145
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-virtual-network-classic-using-a-network-configuration-file-with-powershell"></a>PowerShell でのネットワーク構成ファイルを使用した仮想ネットワーク (クラシック) の作成
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]

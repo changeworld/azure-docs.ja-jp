@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: d6c675d314e96cd0caab7e5eb5c60e3b1458e4a0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9cebb196bd91da704798fb001763a76e6d090472
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute 回線のピアリングの作成と変更 (クラシック)
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 ### <a name="log-in-to-your-azure-account-and-select-a-subscription"></a>Azure アカウントにログインしてサブスクリプションを選択する
 1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 
 2. アカウントのサブスクリプションを確認します。
 

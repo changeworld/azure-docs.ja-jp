@@ -1,6 +1,6 @@
 ---
-title: "SSL 終了でアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs"
-description: "Azure PowerShell を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。"
+title: SSL 終了でアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
+description: Azure PowerShell を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -11,15 +11,15 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: 4972597e8e2db36be47c86b9aa1e592d94d4c2fe
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3a10cf99c34ea32168c04588777f75c7e18a7b45
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Azure PowerShell を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
-Azure PowerShell を使用して、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する [SSL 終了](application-gateway-backend-ssl.md)の証明書で、[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成することができます。 この例では、スケール セットに、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスが含まれています。 
+Azure PowerShell を使用して、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する [SSL 終了](application-gateway-backend-ssl.md)の証明書で、[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。 
 
 この記事では、次のことについて説明します:
 
@@ -31,7 +31,7 @@ Azure PowerShell を使用して、バックエンド サーバーに[仮想マ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
@@ -189,7 +189,7 @@ $appgw = New-AzureRmApplicationGateway `
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
-この例では、仮想マシン スケール セットを作成して、サーバーを、アプリケーション ゲートウェイのバックエンド プールに提供します。 スケール セットは、IP 設定を構成するときにバックエンド プールに割り当てます。
+この例では、アプリケーション ゲートウェイのバックエンド プールにサーバーを提供する仮想マシン スケール セットを作成します。 スケール セットは、IP 設定を構成するときにバックエンド プールに割り当てます。
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -258,7 +258,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![セキュリティに関する警告](./media/application-gateway-ssl-arm/application-gateway-secure.png)
 
-自己署名証明書を使用した場合、セキュリティ警告を受け入れるには、そのまま **[詳細]** を選択し **Web ページに進みます**。 セキュリティで保護された IIS Web サイトは、次の例のように表示されます。
+自己署名証明書を使用した場合、セキュリティ警告を受け入れるには、そのまま **[詳細]** を選択し **[Web ページへ移動]** を選択します。 セキュリティで保護された IIS Web サイトは、次の例のように表示されます。
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-ssl-arm/application-gateway-iistest.png)
 

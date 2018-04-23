@@ -1,13 +1,13 @@
 ---
-title: "複数のオンプレミス ポリシー ベース VPN デバイスへの Azure VPN ゲートウェイの接続 : Azure Resource Manager: PowerShell | Microsoft Docs"
-description: "Azure Resource Manager と PowerShell を使用して、複数のポリシー ベース VPN デバイスに Azure ルート ベース VPN ゲートウェイを構成します。"
+title: '複数のオンプレミス ポリシー ベース VPN デバイスへの Azure VPN ゲートウェイの接続 : Azure Resource Manager: PowerShell | Microsoft Docs'
+description: Azure Resource Manager と PowerShell を使用して、複数のポリシー ベース VPN デバイスに Azure ルート ベース VPN ゲートウェイを構成します。
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 90c855e768f403098e535391afb55e3c78044b0a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dc2dc660262cec892270f8d6e70691fdd169a5c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
@@ -113,7 +113,7 @@ Resource Manager コマンドレットを使用する場合は、必ず PowerShe
 PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: 676feb0b01ec5622feff4351ade54e9856e54b13
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f5205bb158141a3f8e0296fefe2528d1bc5ea64c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する
 Cloud Explorer を使用すると、Azure リソースやリソース グループを表示し、そのプロパティを調べることができます。また、開発者は Visual Studio 内から重要な診断操作を実行できます。 
 
-[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) と同様に、Cloud Explorer は Azure Resource Manager スタックを基盤としています。 そのため、Cloud Explorer はリソース (Azure リソース グループなど) と Azure サービス (Logic Apps や API Apps など) を認識し、[ロールベースのアクセス制御](active-directory/role-based-access-control-configure.md) (RBAC) をサポートします。 
+[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) と同様に、Cloud Explorer は Azure Resource Manager スタックを基盤としています。 そのため、Cloud Explorer はリソース (Azure リソース グループなど) と Azure サービス (Logic Apps や API Apps など) を認識し、[ロールベースのアクセス制御](role-based-access-control/role-assignments-portal.md) (RBAC) をサポートします。 
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure ワークロード**が選択された [Visual Studio 2017](https://www.visualstudio.com/downloads/)、または [Microsoft Azure SDK for .NET 2.9](https://www.microsoft.com/en-us/download/details.aspx?id=51657) を使用する以前のバージョンの Visual Studio

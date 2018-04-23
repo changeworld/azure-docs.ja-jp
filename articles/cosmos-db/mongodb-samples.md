@@ -4,7 +4,7 @@ description: MongoDB 用の Azure Cosmos DB API を使用してオンライン �
 keywords: mongodb の例
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
+manager: kfile
 editor: ''
 documentationcenter: ''
 ms.assetid: fb38bc53-3561-487d-9e03-20f232319a87
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: anhoh
-ms.openlocfilehash: 1571ed8bc3146a6351d0010a9f072cad986d6dc7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 81eff479c94af938918e6a221d45184ca1a84aef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Node.js を使用して Azure Cosmos DB: MongoDB 用 API を構築する
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/29/2018
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [MongoDB 用 Node.js](mongodb-samples.md)
-> * [Node.JS](sql-api-nodejs-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
 > * [C++](sql-api-cpp-get-started.md)
 >  
 >

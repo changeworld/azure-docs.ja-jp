@@ -1,12 +1,12 @@
 ---
-title: "管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する | Microsoft Docs"
-description: "管理イベントに関するアラートは 10 月 1 日に削除されます。 既存に関するアラートを移行して準備してください。"
+title: 管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する | Microsoft Docs
+description: 管理イベントに関するアラートは 10 月 1 日に削除されます。 既存に関するアラートを移行して準備してください。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.openlocfilehash: 08a457029d3721f5c38dbcd2d2aab7d09a241d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cc02664a345da49c276a6876d5cdfaf5bdb8477
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
@@ -38,7 +38,7 @@ Azure Monitor (旧称 Azure Insights) では、管理イベントからトリガ
 次の PowerShell スクリプトは、各アラートに設定されている条件だけでなく、サブスクリプション内にある管理イベントに関するすべてのアラートの一覧を返します。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $alerts = $null
 foreach ($rg in Get-AzureRmResourceGroup ) {
   $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -113,7 +113,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 以前に作成した、管理イベントに関するアラートは、アクティビティ ログ アラートに自動的には移行されません。 上記の PowerShell スクリプトを使用して、現在構成済みで、かつアクティビティ ログ アラートとして手動で再作成する、管理イベントに関するアラートを一覧表示する必要があります。 この操作は、10 月 1 日より前に行う必要があります。10 月 1 日以降、管理イベントに関するアラートが Azure サブスクリプションに表示されなくなります。 Azure Monitor のメトリック アラート、Application Insights のアラート、および Log Analytics のアラートを含むその他の種類の Azure アラートは、この変更による影響を受けません。 ご質問があれば、後のコメントに投稿してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [アクティビティ ログ](monitoring-overview-activity-logs.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](monitoring-activity-log-alerts.md)の構成

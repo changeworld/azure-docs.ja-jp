@@ -11,6 +11,12 @@
 ### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
 ### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
+# サンプル
+## [VPN ゲートウェイの作成](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md)
+## [ポイント対サイト - RADIUS 認証](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md)
+## [ポイント対サイト - 証明書認証](./scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md)
+## [サイト間](./scripts/vpn-gateway-sample-site-to-site-powershell.md)
+
 # 概念
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)
 ## [VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)
@@ -19,8 +25,9 @@
 ## [BGP および VPN Gateway について](vpn-gateway-bgp-overview.md)
 ## [高可用性接続について](vpn-gateway-highlyavailable.md)
 ## [ポイント対サイト接続について](point-to-site-about.md)
+## [ポイント対サイト ルーティングについて](vpn-gateway-about-point-to-site-routing.md)
 
-# 方法
+# ハウツー ガイド
 ## サイト対サイト接続の構成
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)

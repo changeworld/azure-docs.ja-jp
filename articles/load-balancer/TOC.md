@@ -12,15 +12,15 @@
 ## [Standard Load Balancer のメトリックと診断](load-balancer-standard-diagnostics.md)
 
 # 作業の開始
-## [Basic Load Balancer を作成する](load-balancer-get-started-internet-portal.md)
-### [Basic Load Balancer を作成する (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [Basic Load Balancer を作成する (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-## [Standard Load Balancer を作成する](load-balancer-standard-public-portal.md)
-### [Standard Load Balancer を作成する (CLI)](load-balancer-standard-public-cli.md)
+## [Basic Load Balancer を作成する](quickstart-create-basic-load-balancer-portal.md)
+### [Basic Load Balancer を作成する (CLI)](quickstart-create-basic-load-balancer-cli.md)
+### [Basic Load Balancer を作成する (PowerShell)](quickstart-create-basic-load-balancer-powershell.md)
+## [Standard Load Balancer を作成する](quickstart-load-balancer-standard-public-portal.md)
+### [Standard Load Balancer を作成する (CLI)](quickstart-load-balancer-standard-public-cli.md)
 
 # 方法
 
-## [ゾーン冗長パブリック Standard Load Balancer の作成](load-balancer-get-started-internet-az-portal.md)
+## [ゾーン冗長パブリック Standard Load Balancer の作成](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 ### [ゾーン冗長パブリック Standard Load Balancer の作成 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [ゾーン冗長パブリック Standard Load Balancer の作成 (CLI)](load-balancer-get-started-internet-az-cli.md)
 ## [ゾーンのパブリック Standard Load Balancer の作成](load-balancer-get-started-internet-availability-zones-zonal-portal.md)

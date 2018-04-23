@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell サンプル スクリプト - VHD からスナップショットを作成してまったく同じ複数の管理ディスクを短時間で作成する | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - VHD からスナップショットを作成してまったく同じ複数の管理ディスクを短時間で作成する"
+title: Azure PowerShell サンプル スクリプト - VHD からスナップショットを作成してまったく同じ複数の管理ディスクを短時間で作成する | Microsoft Docs
+description: Azure PowerShell サンプル スクリプト - VHD からスナップショットを作成してまったく同じ複数の管理ディスクを短時間で作成する
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 4cd6d9cc4f2b1fa41530349c957e180e2513586e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7148d28038986d3ac7f88dd57f937942b0d29bfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>PowerShell で VHD からスナップショットを作成してまったく同じ複数の管理ディスクを短時間で作成する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 4.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell ](/powershell/azure/install-azurerm-ps)のインストールに関するページをご覧ください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 4.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell ](/powershell/azure/install-azurerm-ps)のインストールに関するページをご覧ください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -45,7 +45,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 | [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | ディスクの作成に使用するディスク構成を作成します。 この構成には、ストレージの種類、場所、親 VHD が格納されているストレージ アカウントのリソース ID、親 VHD の URI が含まれます。 |
 | [New-AzureRmDisk](/powershell/module/azurerm.compute/New-AzureRmDisk) | パラメーターとして渡されたディスク構成、ディスク名、リソース グループ名を使ってディスクを作成します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [スナップショットから管理ディスクを作成する](virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

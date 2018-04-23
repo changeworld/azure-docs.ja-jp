@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/07/2018
 ms.author: iainfou
-ms.openlocfilehash: 4f21e457b266fdd0106992dad29578eef6e89144
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 442ff942150af8a8dec89164fbc017a9e6f360e8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Windows VM の仮想ディスクを暗号化する方法
 仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、Azure の仮想ディスクを暗号化できます。 ディスクは、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure PowerShell を使用して Windows VM の仮想ディスクを暗号化する方法について詳しく説明します。 [Azure CLI 2.0 を使って Linux VM のディスクを暗号化する](../linux/encrypt-disks.md)こともできます。
@@ -102,7 +102,7 @@ Add-AzureKeyVaultKey -VaultName $keyVaultName `
 ## <a name="create-the-azure-active-directory-service-principal"></a>Azure Active Directory サービス プリンシパルを作成する
 仮想ディスクを暗号化または暗号化解除するときは、認証と Key Vault の暗号化キーの交換を処理するアカウントを指定します。 このアカウント (Azure Active Directory サービス プリンシパル) を使用して、Azure プラットフォームは VM の代わりに適切な暗号化キーを要求できます。 サブスクリプションでは既定の Azure Active Directory インスタンスを使うことができますが、多くの場合、専用の Azure Active Directory ディレクトリが使われます。
 
-[New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) を使用して、Azure Active Directory にサービス プリンシパルを作成します。 安全なパスワードを作成するには、「[Azure Active Directory のパスワード ポリシーと制限](../../active-directory/active-directory-passwords-policy.md)」に従ってください。
+[New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) を使用して、Azure Active Directory にサービス プリンシパルを作成します。 安全なパスワードを作成するには、「[Azure Active Directory のパスワード ポリシーと制限](../../active-directory/authentication/concept-sspr-policy.md)」に従ってください。
 
 ```powershell
 $appName = "My App"

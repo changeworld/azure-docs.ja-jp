@@ -1,11 +1,11 @@
 ---
-title: "クラウド ソリューション プロバイダー向けの Azure ExpressRoute | Microsoft Docs"
-description: "この記事では、Azure サービスと ExpressRoute を独自のサービスに組み込むことを希望するクラウド サービス プロバイダー向けに情報を提供します。"
+title: クラウド ソリューション プロバイダー向けの Azure ExpressRoute | Microsoft Docs
+description: この記事では、Azure サービスと ExpressRoute を独自のサービスに組み込むことを希望するクラウド サービス プロバイダー向けに情報を提供します。
 documentationcenter: na
 services: expressroute
 author: richcar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
@@ -65,7 +65,7 @@ Connect-To モデルでは、サービス プロバイダーが顧客のネッ�
 
 これら 2 つのモデルのどちらを選択するかは、顧客のニーズと、Azure サービスの提供に対する貴社の現在のニーズによって決まります。 各モデルの詳細と、関連するロールベースのアクセス制御、ネットワーク、ID 設計パターンなどの詳細については、以下のリンクを参照してください。
 
-* **ロールベースのアクセス制御 (RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、 [こちら](../active-directory/role-based-access-control-configure.md)を参照してください。
+* **ロールベースのアクセス制御 (RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、 [こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
 * **ネットワーク** - Microsoft Azure でのネットワークに関するさまざまなトピックを紹介します。
 * **Azure Active Directory (Azure AD)** - Azure AD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、 [こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
 
@@ -129,7 +129,7 @@ Connect-To モデルと Connect-Through モデルのどちらが使用されて�
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラウド ソリューション プロバイダー サービスを利用することで、高価なインフラストラクチャや機能を購入することなく、顧客に対する自社の価値を高めることが可能になり、同時にプライマリ アウトソーシング プロバイダーとしての地位も保つことができます。 CSP API を通じて Microsoft Azure とのシームレスな統合が実現できるため、既存の管理フレームワークの範囲内で Microsoft Azure の管理を統合することができます。  
 
 詳細については、以下のリンクを参照してください。

@@ -1,46 +1,44 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Search のドキュメント"
+title: Azure Search のドキュメント
 metadata:
   document_id: 
-  title: "Azure Search のドキュメント - チュートリアル、クイックスタート、API リファレンス"
+  title: Azure Search のドキュメント - チュートリアル、クイックスタート、API リファレンス
   meta.description: Learn how to create an enterprise search solution over private, heterogenous content using Azure Search. Tutorials, API references, and other docs show you how to  consolidate searchable content into a single fast index, queryable using simple-to-advanced syntax for a broad range of scenarios.
-  services: search
   author: HeidiSteen
   manager: cgronlun
   ms.service: search
-  ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/04/2018
   ms.author: heidist
-  ms.openlocfilehash: 046159c537d31579f0eb0dcd65c7fb8903dffd20
-  ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+  ms.openlocfilehash: e22cd20edcb9e60b13a5c608b5e51064101b4813
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/13/2018
+  ms.lasthandoff: 04/18/2018
 abstract:
-  description: "Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合し、幅広いシナリオに対応する簡単かつ高度な構文を使用してクエリできるようにします。"
+  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合し、幅広いシナリオに対応する簡単かつ高度な構文を使用してクエリできるようにします。
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
       width: 250
-    title: "Azure Search の概要 (9:32)"
+    title: Azure Search の概要 (9:32)
     href: https://channel9.msdn.com/Events/Connect/2016/138/player
     width: 250
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: "ポータルで Search サービスを開始した後、C# または REST でインデックスの定義、読み込み、クエリを実行できます。"
+    text: ポータルで Search サービスを開始した後、C# または REST でインデックスの定義、読み込み、クエリを実行できます。
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/search/media/index/portal.svg
-      text: "Azure ポータル"
+      text: Azure ポータル
       href: https://docs.microsoft.com/azure/search/search-create-service-portal
     - image:
         src: /azure/search/media/index/logo_Csharp.svg
@@ -50,25 +48,25 @@ sections:
         src: /azure/search/media/index/rest.svg
       text: REST ()
       href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: "ステップバイステップのチュートリアル"
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: ".NET または REST でコードを書くか、ポータルを使用して、概念の簡単なテストを実行します。"
+    text: .NET または REST でコードを書くか、ポータルを使用して、概念の簡単なテストを実行します。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/search/search-howto-dotnet-sdk\">.NET で Azure Search を使用する方法</a>"
-    - html: "<a href=\"/azure/search/search-indexer-tutorial\">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>"
-    - html: "<a href=\"/azure/search/search-semi-structured-data\">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>"
-    - html: "<a href=\"/azure/search/search-synonyms-tutorial-sdk\">シノニムを追加して同等の語句に関する結果を返す</a>"
-    - html: "<a href=\"/azure/search/search-get-started-portal\">インデックスの作成とクエリのテストにポータルを使用する</a>"
-- title: "参照"
+    - html: <a href="/azure/search/search-howto-dotnet-sdk">.NET で Azure Search を使用する方法</a>
+    - html: <a href="/azure/search/search-indexer-tutorial">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>
+    - html: <a href="/azure/search/search-semi-structured-data">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>
+    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">シノニムを追加して同等の語句に関する結果を返す</a>
+    - html: <a href="/azure/search/search-get-started-portal">インデックスの作成とクエリのテストにポータルを使用する</a>
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "言語"
-      html: "<p><a href=\"/dotnet/api/?term=microsoft.azure.search\">.NET</a></p><p><a href=\"/dotnet/api/?term=microsoft.azure.management.search\">.NET (管理)</a></p><p><a href=\"http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html\">Python (管理)</a></p>"
+    - title: 言語
+      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (管理)</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python (管理)</a></p>
     - title: REST ()
-      html: "<p><a href=\"/rest/api/searchservice\">Service API リファレンス</a></p><p><a href=\"/rest/api/searchmanagement\">Management API リファレンス</a></p>"
+      html: <p><a href="/rest/api/searchservice">Service API リファレンス</a></p><p><a href="/rest/api/searchmanagement">Management API リファレンス</a></p>

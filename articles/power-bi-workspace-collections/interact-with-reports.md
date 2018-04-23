@@ -1,12 +1,12 @@
 ---
-title: "JavaScript API を使ったレポートの対話操作 | Microsoft Docs"
-description: "Power BI JavaScript API を使用すると、Power BI レポートをアプリケーションに簡単に埋め込むことができます。"
+title: JavaScript API を使ったレポートの対話操作 | Microsoft Docs
+description: Power BI JavaScript API を使用すると、Power BI レポートをアプリケーションに簡単に埋め込むことができます。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 62a95807c35fcba15a8e5ffdf340a307dd22a642
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 0b10f0fc39382e1944f11eef925733cbe5733c32
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>JavaScript API を使った Power BI レポートの対話操作
 
@@ -133,7 +133,7 @@ const advancedFilter: pbi.models.IAdvancedFilter = {
 
 [イベント処理の詳細についてはこちらをご覧ください](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Handling-Events)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Power BI JavaScript API の詳細については、次のリンク先を確認してください。
 

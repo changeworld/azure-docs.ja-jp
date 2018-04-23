@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup のバックアップ コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs"
-description: "バックアップ コンテナーを Recovery Services コンテナーにアップグレードすることによって、Resource Manager VM のバックアップ、強化されたセキュリティ、VMware VM のバックアップ、Windows Server のシステム状態バックアップなど、新しい機能が利用できます。"
+title: Azure Backup のバックアップ コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs
+description: バックアップ コンテナーを Recovery Services コンテナーにアップグレードすることによって、Resource Manager VM のバックアップ、強化されたセキュリティ、VMware VM のバックアップ、Windows Server のシステム状態バックアップなど、新しい機能が利用できます。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: 
+editor: ''
 keyword: backup vault; upgrade vault; recovery services vault
 ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>バックアップ コンテナーを Recovery Services コンテナーにアップグレードする
 この記事では、Recovery Services コンテナーの機能や、既にあるバックアップ コンテナーを Recovery Services コンテナーにアップグレードすることに関してよく寄せられる質問、アップグレード後の手順について取り上げます。 Recovery Services コンテナーは、バックアップ データを格納するバックアップ コンテナーの Azure Resource Manager 版に相当します。 オンプレミスにあるか、Azure 内にあるかに関係なく、データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。
@@ -34,7 +34,7 @@ Recovery Services コンテナーが Azure の Azure Resource Manager モデル�
 
 - **ハイブリッド IT 環境の一元監視**: Recovery Services コンテナーの場合、[Azure IaaS VM](backup-azure-manage-vms.md) だけでなく、[オンプレミス資産](backup-azure-manage-windows-server.md#manage-backup-items)も中央ポータルで監視することができます。 [詳細情報](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **ロールベースのアクセス制御 (RBAC)**: RBAC を使用して、Azure のアクセス権を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../active-directory/role-based-access-built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
+- **ロールベースのアクセス制御 (RBAC)**: RBAC を使用して、Azure のアクセス権を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
 
 - **Azure Virtual Machines のあらゆる構成の保護**: Recovery Services コンテナーは、Resource Manager ベースの VM (Premium ディスク、Managed Disks、暗号化された VM など) を保護します。 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、Service Manager ベースの VM を Resource Manager ベースの VM にアップグレードできます。 コンテナーをアップグレードするときに、Service Manager ベースの VM の復旧ポイントを維持し、アップグレードされた (Resource Manager が有効な) VM の保護を構成できます。 [詳細情報](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
@@ -68,18 +68,15 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **アップグレード プランは進行中のバックアップに影響を与えますか?**</br>
-
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
 **このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
 既存のオートメーションまたはツールがアップグレード後も正常に機能するためには、Resource Manager デプロイメント モデルへの更新が必要となります。 [Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
 
 **アップグレード後にロールバックすることはできますか。**</br>
-
 いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
 
 **アップグレード後に、従来のコンテナーを表示できますか?**</br>
-
 いいえ。 アップグレード後は、従来のコンテナーは、表示することも管理することもできません。 コンテナーのすべての管理操作は、新しい Azure ポータルを使用してのみ実行できます。
 
 **アップグレード後のコンテナーに、MARS エージェントによって保護されているサーバーが見つかりません。**</br>

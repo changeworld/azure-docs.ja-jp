@@ -3,22 +3,23 @@ title: Azure での Linux データ サイエンス仮想マシンを使用し�
 description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: gokuma
+ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。

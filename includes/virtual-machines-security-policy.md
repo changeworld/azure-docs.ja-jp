@@ -4,7 +4,7 @@
 
 最近のクラウド環境に対する脅威は変化が激しく、コンプライアンスとセキュリティの要件を満たすために効果的な保護を維持しなければならないという圧力はますます大きくなっています。 [Azure に対する Microsoft マルウェア対策](../articles/security/azure-security-antimalware.md)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 悪意のあることまたは望ましくないことが確認されているソフトウェアが VM 上で実行されようとしていたり、自らインストールを試みたりした場合に、その事実を把握できるようにアラートを構成することができます。
 
-## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+## <a name="azure-security-center"></a>Azure Security Center
 
 [Azure Security Center](../articles/security-center/security-center-intro.md) は、VM に対する脅威の防御、検出、対応を可能にする機能です。 Security Center は、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
@@ -28,8 +28,8 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-[ロールベースのアクセス制御 (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) を使用すると、チーム内で職務を分離し、職務に必要なアクセス許可のみを VM のユーザーに付与することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../articles/active-directory/role-based-access-control-configure.md) で構成できるほか、[Azure CLI](https://docs.microsoft.com/cli/azure/role) または [Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md) を使って構成することもできます。
+[ロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用すると、チーム内で職務を分離し、職務に必要なアクセス許可のみを VM のユーザーに付与することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../articles/role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](https://docs.microsoft.com/cli/azure/role) または [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Azure Security Center を使って [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md) または [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。

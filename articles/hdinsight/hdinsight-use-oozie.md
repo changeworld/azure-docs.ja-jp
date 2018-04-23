@@ -1,8 +1,8 @@
 ---
-title: "HDInsight での Hadoop Oozie の使用 | Microsoft Docs"
-description: "ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
+title: HDInsight での Hadoop Oozie の使用 | Microsoft Docs
+description: ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -10,18 +10,16 @@ editor: cgronlun
 ms.assetid: 870098f0-f416-4491-9719-78994bf4a369
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 73d8a26945be05ac0131148b5c0ffdd5f8053bcd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e9be2649421ca5280fc93199a7e6d2d81295d5d7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -130,21 +128,21 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 RunHiveScript には、変数がいくつかあります。 その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
 
 <table border = "1">
-<tr><th>ワークフローの変数</th><th>Description</th></tr>
+<tr><th>ワークフローの変数</th><th>[説明]</th></tr>
 <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
 <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、<i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
 <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Hive アクションの変数</th><th>Description</th></tr>
+<tr><th>Hive アクションの変数</th><th>[説明]</th></tr>
 <tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリを指定します。</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダーを指定します。</td></tr>
 <tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前を指定します。</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Sqoop アクションの変数</th><th>Description</th></tr>
+<tr><th>Sqoop アクションの変数</th><th>[説明]</th></tr>
 <tr><td>${sqlDatabaseConnectionString}</td><td>Azure SQL データベースの接続文字列を指定します。</td></tr>
 <tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブルを指定します。</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。 これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
@@ -244,7 +242,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
         Select-AzureRmSubscription -SubscriptionId $subscriptionID
     }
     #endregion
@@ -617,7 +615,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
     $conn.close()
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Oozie ワークフローを定義する方法と、PowerShell を使用して Oozie ジョブを実行する方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での時間ベースの Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]

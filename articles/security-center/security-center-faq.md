@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center のよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "この FAQ は、Azure セキュリティ センターについて寄せられる質問とその回答です。"
+title: Azure Security Center のよく寄せられる質問 (FAQ) | Microsoft Docs
+description: この FAQ は、Azure セキュリティ センターについて寄せられる質問とその回答です。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2018
 ms.author: terrylan
-ms.openlocfilehash: 2bbd0a8be891bd472cdc631a1f8dc79471d66a77
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -44,7 +44,7 @@ Azure Security Center は 2 つのレベルで提供されます。
 **Standard レベル**には、脅威インテリジェンス、行動分析、異常検出、セキュリティ インシデント、脅威評価レポートなどの高度な脅威検出機能が追加されます。 Standard レベルは、最初の 60 日間は無料です。 60 日目以降もこのサービスを引き続き使用することを選択した場合は、サービスへの課金が自動的に開始されます。  アップグレードを行うには、 [セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-pricing)で価格レベルを選択してください。
 
 ## <a name="permissions"></a>アクセス許可
-Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
+Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) が使用されています。RBAC が提供する[組み込みのロール](../role-based-access-control/built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
 
 Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
 
@@ -120,7 +120,7 @@ Azure Security Center は、次の Azure リソースを監視します。
 * ([App Service 環境](../app-service/environment/intro.md)にある) Azure Web アプリ
 * Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および App Service Environment 上の Web アプリケーション ファイアウォールなど)
 
-## <a name="virtual-machines"></a>[Virtual Machines]
+## <a name="virtual-machines"></a>Virtual Machines
 ### <a name="what-types-of-virtual-machines-are-supported"></a>サポートされる仮想マシンのタイプは何ですか。
 監視と推奨事項は、[クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
 

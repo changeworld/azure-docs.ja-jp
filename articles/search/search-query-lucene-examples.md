@@ -1,25 +1,18 @@
 ---
-title: "Azure Search の Lucene クエリ例 | Microsoft Docs"
-description: "あいまい検索、近接検索、用語ブースト、正規表現検索、ワイルドカード検索の Lucene クエリ構文。"
-services: search
-documentationcenter: 
+title: Azure Search の Lucene クエリ例 | Microsoft Docs
+description: あいまい検索、近接検索、用語ブースト、正規表現検索、ワイルドカード検索の Lucene クエリ構文。
 author: LiamCa
-manager: pablocas
-editor: 
+manager: jlembicz
 tags: Lucene query analyzer syntax
-ms.assetid: 147f360d-a5ce-4d7b-a909-c8b65bfb748c
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: liamca
-ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf033d7549f3a1213d7a2b2c3694ae7415643eb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Azure Search でクエリを作成するための Lucene クエリ構文例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)または代替の [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用できます。 Lucene Query Parser は、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
@@ -128,7 +121,7 @@ musicstoreindex の例の **genre** など、特定のフィールドの一致�
 
 検索の最初の文字として * または ? を使用することはできません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 自分のコードに Lucene Query Parser を指定してみてください。 次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。 これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
 * [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)

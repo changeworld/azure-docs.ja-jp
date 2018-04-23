@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0cd21c0367a95d3e866137797ac32fc5bdd196c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache の構成方法
 このトピックでは、Azure Redis Cache インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Redis Cache インスタンスの既定の Redis サーバー構成についても説明します。
@@ -79,7 +79,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
-**[アクセス制御 (IAM)]** セクションでは、Azure Portal でのロールベースのアクセス制御 (RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
+**[アクセス制御 (IAM)]** セクションでは、Azure Portal でのロールベースのアクセス制御 (RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 ### <a name="tags"></a>タグ
 
@@ -92,7 +92,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 
 
-## <a name="settings"></a>[設定]
+## <a name="settings"></a>設定
 **[設定]** セクションでは、キャッシュに関する次の設定にアクセスして構成できます。
 
 * [アクセス キー](#access-keys)

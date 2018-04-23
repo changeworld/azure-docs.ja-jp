@@ -1,11 +1,11 @@
 ---
-title: "Azure Virtual Network ゲートウェイと接続のトラブルシューティング - ポータル | Microsoft Docs"
-description: "このページでは Azure Network Watcher を使用してポータルのトラブルシューティングを行う方法を説明します"
+title: Azure Virtual Network ゲートウェイと接続のトラブルシューティング - ポータル | Microsoft Docs
+description: このページでは Azure Network Watcher を使用してポータルのトラブルシューティングを行う方法を説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: becc4f799e34aabba5c703f09e51a4b7d497c45a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Azure Portal での Network Watcher を使用した Virtual Network ゲートウェイと接続のトラブルシューティング
 
@@ -74,7 +74,7 @@ Network Watcher は、Azure 内のネットワーク リソースの把握に関
 
 ## <a name="next-steps"></a>次の手順
 
-設定が変更されて VPN 接続が停止される場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関する記事を参照して、問題がある可能性のあるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
+設定が変更されて VPN 接続が停止される場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関する記事を参照して、問題がある可能性のあるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
 
 
 [2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

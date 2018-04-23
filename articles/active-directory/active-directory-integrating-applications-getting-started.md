@@ -1,11 +1,11 @@
 ---
-title: "Azure AD とアプリの統合の概要 | Microsoft Docs"
-description: "この記事は、オンプレミスのアプリケーションおよびクラウド アプリケーションと Azure Active Directory (AD) を統合するための概要ガイドです。"
+title: Azure AD とアプリの統合の概要 | Microsoft Docs
+description: この記事は、オンプレミスのアプリケーションおよびクラウド アプリケーションと Azure Active Directory (AD) を統合するための概要ガイドです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: db6d210d-c970-49e9-bd20-36d984bcd1c3
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: bf8ef28b49a3a12772965e7ebc85539c1a86e10f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dd118dbda9b7b0bee27bf9c97627bb8269e2d9b4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 ## <a name="overview"></a>概要
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/16/2018
 * 統合する前にユーザーやグループのデータベースをクリーンアップする必要があるか。  (これは非常に重要な質問です。 ゴミを入れるとゴミが出てきます。)
 
 ### <a name="access-management-inventory"></a>アクセス管理インベントリ
-* アプリケーションへのユーザーのアクセスを現在どのように管理しているか。 変更する必要があるか。  [RBAC](role-based-access-control-configure.md) など、他の方法でアクセスを管理することを検討したか。
+* アプリケーションへのユーザーのアクセスを現在どのように管理しているか。 変更する必要があるか。  [RBAC](../role-based-access-control/role-assignments-portal.md) など、他の方法でアクセスを管理することを検討したか。
 * どのユーザーが何にアクセスする必要があるか。
 
 一部の質問にはあらかじめ回答できないこともありますが、それでもかまいません。  このガイドにより、そのような質問の一部に回答し、一部に情報に基づいて判断できるようになります。

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: deebe5d8ff4c35c4507d2daf5c15025a1810d865
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack の ID の概要
 
@@ -169,9 +169,9 @@ ID プロバイダーで認証して JSON Web トークンを受け取るには�
 
 ### <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する  
 Azure Stack のロールベースのアクセス制御 (RBAC) は、Microsoft Azure での実装と一貫しています。 適切な RBAC ロールをユーザー、グループ、およびアプリケーションに割り当てることによって、リソースへのアクセスを管理することができます。 Azure Stack で RBAC を使用する方法については、以下の記事を参照してください。
-- [Azure Portal でのロールベースの Access Control の基礎を確認する](/azure/active-directory/role-based-access-control-what-is)
-- [ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](/azure/active-directory/role-based-access-control-configure)
-- [Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](/azure/active-directory/role-based-access-control-custom-roles)
+- [Azure Portal でのロールベースの Access Control の基礎を確認する](/azure/role-based-access-control/overview)
+- [ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](/azure/role-based-access-control/role-assignments-portal)
+- [Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](/azure/role-based-access-control/custom-roles)
 - Azure Stack での[ロール ベースのアクセス制御の管理](azure-stack-manage-permissions.md)
 
 

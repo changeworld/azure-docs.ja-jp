@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -127,7 +127,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 
 > [!NOTE]
 > このレポートを使用するには、AD FS 監査が有効になっている必要があります。 詳細については、「 [AD FS の監査の有効化](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。 <br />
-> プレビューにアクセスするには、全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader)のアクセス許可が必要です。  
+> プレビューにアクセスするには、全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)のアクセス許可が必要です。  
 > 
 
 ### <a name="what-is-in-the-report"></a>レポートの内容

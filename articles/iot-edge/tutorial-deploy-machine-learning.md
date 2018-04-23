@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3d3a271bcdd5c507125b8b1a5482f833607a5a78
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0a508f6430bd97e7c76aee686f4837acf246ad3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
@@ -33,8 +33,8 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 * クイック スタートまたは最初のチュートリアルで作成した Azure IoT Edge デバイス。
 * IoT Edge デバイスの接続先 IoT ハブに対する IoT ハブ接続文字列。
-* Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
-* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration)」の手順に従います。
+* Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
+* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration)」の手順に従います。
 
 Azure Machine Learning モジュールでは、ARM プロセッサをサポートしていません。 
 

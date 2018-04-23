@@ -1,25 +1,20 @@
 ---
-title: "Azure SQL Data Warehouse のよく寄せられる質問 | Microsoft Docs"
-description: "この記事では、Azure SQL Data Warehouse に関して顧客と開発者からよく寄せられる質問を示します"
+title: Azure SQL Data Warehouse のよく寄せられる質問 | Microsoft Docs
+description: この記事では、Azure SQL Data Warehouse に関して顧客と開発者からよく寄せられる質問を示します
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: 812CA525-3BF3-49DF-8DF3-FB4342464F4F
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 3/1/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ee34cbf38e8cde754e6d1cec9dce6885b0b56709
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
 
@@ -102,7 +97,7 @@ Q: HDI に接続できますか。
 
 A: HDI は、HDFS レイヤーとして ADLS または WASB を使うことができます。 HDFS レイヤーとしていずれかがある場合は、SQL DW にそのデータを読み込むことができます。 ただし、HDI インスタンスに対するプッシュダウン計算を生成することはできません。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse 全体について詳しくは、[概要に関するページ]をご覧ください。
 
 

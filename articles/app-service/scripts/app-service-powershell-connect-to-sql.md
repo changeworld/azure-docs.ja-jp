@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - SQL データベースへの Web アプリの接続 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - SQL データベースへの Web アプリの接続"
+title: Azure PowerShell のサンプル スクリプト - SQL データベースへの Web アプリの接続 | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - SQL データベースへの Web アプリの接続
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: syntaxc4
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.service: app-service
@@ -16,17 +16,17 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 5312bf6b81d1cc48490b71c3f77323cca23e1559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ffd907d14265a43fd769aaa751fb3678c3c30dea
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-a-web-app-to-a-sql-database"></a>Web アプリを SQL データベースに接続する
 
 このシナリオでは、Azure SQL データベースと Azure Web アプリの作成方法について説明します。 作成後、アプリの設定で SQL データベースを Web アプリにリンクします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -54,7 +54,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [New-AzureRMSQLDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | データベースまたはエラスティック データベースを作成します。 |
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Web アプリの構成を変更します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

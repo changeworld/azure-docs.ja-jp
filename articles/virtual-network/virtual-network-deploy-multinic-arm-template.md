@@ -1,11 +1,11 @@
 ---
-title: "複数の NIC を持つ VM の作成 - Azure Resource Manager テンプレート | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成します。"
+title: 複数の NIC を持つ VM の作成 - Azure Resource Manager テンプレート | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 486f7dd5-cf2f-434c-85d1-b3e85c427def
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 85bfa264c6cf2b0586816a47b3ab72f3aee8ec96
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-with-multiple-nics-using-a-template"></a>テンプレートを使用して複数の NIC を持つ VM を作成する
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/13/2018
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-ps.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-ps.md)ではなくこのモデルをお勧めします。
 > 
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]

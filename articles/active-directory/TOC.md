@@ -134,24 +134,24 @@
 #### [証明書の使用](active-directory-reporting-api-with-certificates.md)
 
 ## パスワードの管理
-### [パスワードの概要](active-directory-passwords-overview.md)
+### [パスワードの概要](authentication/active-directory-passwords-overview.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
 #### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
-### [SSPR のしくみ](active-directory-passwords-how-it-works.md)
-### [SSPR デプロイ ガイド](active-directory-passwords-best-practices.md)
+### [SSPR のしくみ](authentication/concept-sspr-howitworks.md)
+### [SSPR デプロイ ガイド](authentication/howto-sspr-deployment.md)
 ### [SSPR と Windows 10](active-directory-passwords-login.md)
-### [SSPR のポリシー](active-directory-passwords-policy.md)
-### [SSPR のカスタマイズ](active-directory-passwords-customize.md)
-### [SSPR データ要件](active-directory-passwords-data.md)
-### [SSPR のレポート](active-directory-passwords-reporting.md)
+### [SSPR のポリシー](authentication/concept-sspr-policy.md)
+### [SSPR のカスタマイズ](authentication/concept-sspr-customization.md)
+### [SSPR データ要件](authentication/howto-sspr-authenticationdata.md)
+### [SSPR のレポート](authentication/howto-sspr-reporting.md)
 ### IT 管理者: パスワードのリセット
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-### [SSPR のライセンス](active-directory-passwords-licensing.md)
+### [SSPR のライセンス](authentication/concept-sspr-licensing.md)
 ### [パスワード ライトバック](active-directory-passwords-writeback.md)
-### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
-### [FAQ](active-directory-passwords-faq.md)
+### [トラブルシューティング](authentication/active-directory-passwords-troubleshoot.md)
+### [FAQ](authentication/active-directory-passwords-faq.md)
 
 
 ## デバイスを管理する

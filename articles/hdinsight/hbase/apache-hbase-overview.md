@@ -1,9 +1,9 @@
 ---
-title: "Azure HDInsight の HBase とは | Microsoft Docs"
-description: "Hadoop 上に構築される NoSQL データベースである HDInsight の Apache HBase の概要 ユース ケースについて説明し、HBase を他の Hadoop クラスターと比較します。"
-keywords: "BigTable, NoSQL, HBase, Apache HBase, HBase, HBase の概要,"
+title: Azure HDInsight の HBase とは | Microsoft Docs
+description: Hadoop 上に構築される NoSQL データベースである HDInsight の Apache HBase の概要 ユース ケースについて説明し、HBase を他の Hadoop クラスターと比較します。
+keywords: BigTable, NoSQL, HBase, Apache HBase, HBase, HBase の概要,
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -11,17 +11,15 @@ editor: cgronlun
 ms.assetid: d2a76d53-133a-4849-a30c-88d9c794391c
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b1453828c61d9944938b695b329aebec5ab06e4
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 36c6a16520d78d4fa2465a1fdea585a3b3c88cd7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-hadoop"></a>HDInsight の HBase とは: Hadoop で BigTable のような機能を提供する NoSQL データベース
 Apache HBase は、オープン ソースの NoSQL データベースで、Hadoop 上に構築され、Google BigTable を模範にしています。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。

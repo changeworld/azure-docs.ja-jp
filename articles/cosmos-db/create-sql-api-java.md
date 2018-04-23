@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 99b400d17164881f75cb8313c939d713610c221e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5be05ebd201796707934eac665793dd2c1dc8f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
 
@@ -54,43 +54,11 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>サンプル データの追加
 
-これで、データ エクスプローラーを使用して、新しいコレクションにデータを追加できます。
-
-1. **[項目]** コレクションを展開して、**[ドキュメント]** > **[新しいドキュメント]** をクリックします。
-
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-java/azure-cosmosdb-data-explorer-new-document.png)
-  
-2. ここで、次の構造のドキュメントをコレクションに追加し、**[保存]** をクリックします。 コード ボックスの **[コピー]** ボタンを使用して、クリップボードに json をコピーしてください。
-
-     ```json
-     {
-         "id": "1",
-         "category": "personal",
-         "name": "groceries",
-         "description": "Pick up apples and strawberries.",
-         "isComplete": false
-     }
-     ```
-
-    ![json データをコピーし、Azure Portal のデータ エクスプローラーで [保存] をクリックします。](./media/create-sql-api-java/azure-cosmosdb-data-explorer-save-document.png)
-
-3.  `id` を 2 に変更したもう 1 つのドキュメントを作成して保存し、他のプロパティを適宜変更します。 Azure Cosmos DB では、データにスキーマを課さないため、新しいドキュメントは必要な任意の構造にすることができます。
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
 ## <a name="query-your-data"></a>データのクエリ
 
-これで、データ エクスプローラーでクエリを使用して、データを取得しフィルター処理できるようになりました。
-
-1. 既定では、クエリは `SELECT * FROM c` と設定されていることを確認してください。 この既定のクエリでは、コレクション内のすべてのドキュメントを取得し、表示します。 
-
-    ![データ エクスプローラーの既定のクエリは `SELECT * FROM c`](./media/create-sql-api-java/azure-cosmosdb-data-explorer-query.png)
-
-2. 引き続き **[ドキュメント]** タブで **[フィルターの編集]** ボタンをクリックし、クエリの述語のボックスに `ORDER BY c._ts DESC` を追加してから、**[フィルターの適用]** をクリックすることでクエリを変更します。
-
-    ![ORDER BY c._ts DESC を追加し [フィルタの適用] をクリックすることで既定のクエリを変更](./media/create-sql-api-java/azure-cosmosdb-data-explorer-edit-query.png)
-
-この変更したクエリでは、ドキュメントがそのタイムスタンプの降順に一覧表示されるので、ここでは 2 番目のドキュメントが最初に表示されます。 SQL 構文に慣れている場合は、サポートされている任意の [SQL クエリ](sql-api-sql-query.md)をこのボックスに入力できます。 
-
-以上でデータ エクスプローラーでの作業は完了です。 コードにとりかかる前に、データ エクスプローラーを使用すると、ストアド プロシージャ、UDF、トリガーを作成し、サーバー側ビジネス ロジックを実行できるほか、スループットのスケールもできることに注目してください。 データ エクスプローラーでは、API で使用可能な、組み込みのプログラムによるデータ アクセスがすべて公開されていますが、Azure Portal でデータに簡単にアクセスできます。
+[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB の MongoDB 用 API を使用した Web アプリの構築 | Microsoft Docs"
-description: "MongoDB 用 API を使用してオンライン データベース Web アプリを作成する Azure Cosmos DB チュートリアル。"
-keywords: "mongodb の例"
+title: Azure Cosmos DB の MongoDB 用 API を使用した Web アプリの構築 | Microsoft Docs
+description: MongoDB 用 API を使用してオンライン データベース Web アプリを作成する Azure Cosmos DB チュートリアル。
+keywords: mongodb の例
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+editor: ''
+documentationcenter: ''
 ms.assetid: 61a2ab3a-2fc3-4d49-a263-ed87c66628f6
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,15 +16,15 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: f7aed1c69e930bdd5e5b451fa2726a75b78515eb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 76a8e19bacdbde938758bf41ed7f209521f513aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: .NET を使用した MongoDB アプリへの接続
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
 このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[MongoDB API](mongodb-introduction.md)を使用してデータを格納するデータベースおよびコレクションの作成方法を説明します。 
 
@@ -214,7 +214,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 
@@ -226,5 +226,5 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次のチュートリアルに進んで、MongoDB データを Azure Cosmos DB にインポートすることができます。  
 
 > [!div class="nextstepaction"]
-> [MongoDB データの Azure Cosmos DB へのインポート](mongodb-migrate.md)
+> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
 

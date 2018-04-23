@@ -1,23 +1,18 @@
 ---
-title: "Azure Search でのマルチテナント機能のモデル化 | Microsoft Docs"
-description: "Azure Search の使用時のマルチテナント SaaS アプリケーションの一般的な設計パターンについて説明します。"
-services: search
-manager: jhubbard
+title: Azure Search でのマルチテナント機能のモデル化 | Microsoft Docs
+description: Azure Search の使用時のマルチテナント SaaS アプリケーションの一般的な設計パターンについて説明します。
+manager: jlembicz
 author: ashmaka
-documentationcenter: 
-ms.assetid: 72e9696a-553b-47dc-9e05-a82db0ebf094
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 99be323b72326a9d912fa28cd63999ecd98a671b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
@@ -30,7 +25,7 @@ Azure Search を使用する場合、" *検索サービス*" にサブスクラ�
 
 検索サービス内の各インデックスは、カスタマイズ可能な多数の " *フィールド*" によって定義された独自のスキーマを持ちます。 データは、個々の " *ドキュメント*" の形で Azure Search インデックスに追加されます。 各ドキュメントは特定のインデックスにアップロードする必要があり、そのインデックスのスキーマに適合する必要があります。 Azure Search を使用してデータを検索するときは、特定のインデックスに対してフルテキスト検索クエリが発行されます。  これらの概念をデータベースの概念と照らし合わせた場合、フィールドはテーブル内の列に例えることができ、ドキュメントは行に例えることができます。
 
-### <a name="scalability"></a>拡張性
+### <a name="scalability"></a>スケーラビリティ
 Standard [価格レベル](https://azure.microsoft.com/pricing/details/search/) の Azure Search サービスは、ストレージと可用性の 2 つのディメンションで拡張できます。
 
 * *パーティション* " を追加すると、検索サービスのストレージを増やすことができます。
@@ -41,7 +36,7 @@ Standard [価格レベル](https://azure.microsoft.com/pricing/details/search/) 
 ### <a name="service-and-index-limits-in-azure-search"></a>Azure Search におけるサービスとインデックスの制限
 Azure Search には数種類の[価格レベル](https://azure.microsoft.com/pricing/details/search/)があり、レベルごとに[制限とクォータ](search-limits-quotas-capacity.md)が異なります。 サービス レベルの制限、インデックス レベルの制限、パーティション レベルの制限があります。
 
-|  | 基本 | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | サービスあたりの最大レプリカ数 |3 |12 |12 |12 |12 |
 | サービスあたりの最大パーティション数 |1 |12 |12 |12 |3 |
@@ -109,7 +104,7 @@ Azure Search では、個々のインデックスとインデックスの総数�
 
 個々のテナントがサービスを拡大しすぎると、このパターンのスケーリングの問題が発生します。 Azure Search では、検索サービスの価格レベルのアップグレードは現在サポートされていないので、すべてのデータを新しいサービスに手動でコピーする必要があります。
 
-## <a name="3-mixing-both-models"></a>3.両方のモデルの組み合わせ
+## <a name="3-mixing-both-models"></a>手順 3.両方のモデルの組み合わせ
 マルチテナント機能をモデル化する際のもう 1 つのパターンは、テナントごとのインデックスとテナントごとのサービスの 2 つの戦略を組み合わせたものです。
 
 2 つのパターンを組み合わせることで、アプリケーションの最大規模のテナントは専用のサービスを占有することができ、ロングテールのあまりアクティブではない小規模なテナントは共有サービス内のインデックスを占有できます。 このモデルでは、最大規模のテナントがサービスの高いパフォーマンスを常に維持できると同時に、小規模なテナントをノイジー ネイバーから保護することもできます。
@@ -130,7 +125,7 @@ Azure Search でマルチテナント シナリオをモデル化する前述の
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Search は、多くのアプリケーションにとって魅力的な選択肢です。このサービスの信頼性の高い機能の詳細については、[こちら](http://aka.ms/whatisazsearch)をご覧ください。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Search を最適に調整してください。
 
 Azure Search とマルチテナント シナリオに関するご質問があれば、azuresearch_contact@microsoft.com までお問い合わせください。

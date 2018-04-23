@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: b7d6e48a6f34472bc38947fd70e850b1c3bf6f8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>仮想マシンのシリアル コンソール (プレビュー) 
 
@@ -32,7 +32,7 @@ Azure の仮想マシンのシリアル コンソールでは、Linux および 
 ## <a name="prerequisites"></a>前提条件 
 
 * 仮想マシンの[ブート診断](boot-diagnostics.md)が有効になっている必要があります。 
-* シリアル コンソールを使用するアカウントには、VM の[共同作成者ロール](../../active-directory/role-based-access-built-in-roles.md)と[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です。 
+* シリアル コンソールを使用するアカウントには、VM の[共同作成者ロール](../../role-based-access-control/built-in-roles.md)と[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です。 
 * Linux ディストリビューションに固有の設定については、「[Linux のシリアル コンソールへのアクセス](#accessing-serial-console-for-linux)」をご覧ください。
 
 
@@ -56,7 +56,7 @@ Azure の仮想マシンのシリアル コンソールでは、Linux および 
 ## <a name="serial-console-security"></a>シリアル コンソールのセキュリティ 
 
 ### <a name="access-security"></a>アクセス セキュリティ 
-シリアル コンソールへのアクセスは、仮想マシンへの [VM 共同作成者](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)以上のアクセス権を持つユーザーに制限されます。 シリアル コンソールには [Azure Portal](https://portal.azure.com) からアクセスするため、AAD テナントに Multi-Factor Authentication が必要な場合は、シリアル コンソールへのアクセスにも MFA が必要になります。
+シリアル コンソールへのアクセスは、仮想マシンへの [VM 共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)以上のアクセス権を持つユーザーに制限されます。 シリアル コンソールには [Azure Portal](https://portal.azure.com) からアクセスするため、AAD テナントに Multi-Factor Authentication が必要な場合は、シリアル コンソールへのアクセスにも MFA が必要になります。
 
 ### <a name="channel-security"></a>チャネル セキュリティ
 やり取りされるすべてのデータがネットワーク上で暗号化されます。

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/03/2016
 ms.author: mbaldwin;
 ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Azure Marketplace の仮想マシン プランの作成後ガイド
 この記事では、Azure Marketplace の発行済みの仮想マシン プランを更新する方法について説明します。 既存のプランに 1 つ以上の新しい SKU を追加するプロセスについて説明します。 Azure Marketplace から発行済みの仮想マシン プランまたは SKU を削除するプロセスについても説明します。

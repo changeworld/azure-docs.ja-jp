@@ -1,26 +1,24 @@
 ---
-title: "外部メタデータ ストアの使用 - Azure HDInsight | Microsoft Docs"
-description: "HDInsight クラスターで外部メタデータ ストアを使用します。"
+title: 外部メタデータ ストアの使用 - Azure HDInsight | Microsoft Docs
+description: HDInsight クラスターで外部メタデータ ストアを使用します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 tags: azure-portal
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: 767a1b8a8213b0139878c82d64639b2ba10b5f4f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 26f71b8efb7d31192ceecf03d9c0ed904196faf1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 

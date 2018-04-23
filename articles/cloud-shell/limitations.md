@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell の制限 | Microsoft Docs"
-description: "Azure Cloud Shell の制限の概要"
+title: Azure Cloud Shell の制限 | Microsoft Docs
+description: Azure Cloud Shell の制限の概要
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 245e2e1ca52e7d3c5bd22d5f2569e3e8d7ae6671
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 15e3dd11c371e0b23d5b506da9d824e1409fd359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -76,7 +76,7 @@ Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間�
 
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
-Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Login-AzureRMAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
+Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Connect-AzureRmAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,22 +1,22 @@
 ---
-title: "Python を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs"
-description: "Azure クイック スタート - Python Provisioning Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する"
+title: Python を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
+description: Azure クイック スタート - Python Provisioning Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する
 services: iot-dps
-keywords: 
-author: msebolt
+keywords: ''
+author: bryanla
 ms.author: v-masebo
 ms.date: 01/26/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 941e6d53b136a3cfef368e436b31a3022f5223fa
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d191a4b0034c50973d66ae6f0dd1bc55f0eaa31f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Python Provisioning Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]

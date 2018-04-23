@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell を使用した Azure Redis Cache の管理 | Microsoft Docs"
-description: "Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。"
+title: Azure PowerShell を使用した Azure Redis Cache の管理 | Microsoft Docs
+description: Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure PowerShell を使用した Azure Redis Cache の管理
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Azure PowerShell をインストール済みである場合、Azure PowerShell V
 
 まず、次のコマンドで Azure にログインする必要があります。
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Microsoft Azure のサインイン ダイアログで、Azure アカウントの電子メール アドレスとそのパスワードを指定します。
 
@@ -66,18 +66,18 @@ Azure リソース マネージャーで Windows PowerShell を使用するに�
     Get-Help New-AzureRmRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>他のクラウドに接続する方法
-既定では、Azure 環境はグローバル Azure クラウド インスタンスを表す `AzureCloud`です。 別のインスタンスに接続するには、`Add-AzureRmAccount` コマンドと `-Environment` または -`EnvironmentName` コマンド ライン スイッチを使用し、任意の環境または環境名を指定します。
+既定では、Azure 環境はグローバル Azure クラウド インスタンスを表す `AzureCloud`です。 別のインスタンスに接続するには、`Connect-AzureRmAccount` コマンドと `-Environment` または -`EnvironmentName` コマンド ライン スイッチを使用し、任意の環境または環境名を指定します。
 
 利用可能な環境の一覧を表示するには、 `Get-AzureRmEnvironment` コマンドレットを実行します。
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Azure Government Cloud に接続するには
 Azure Government Cloud に接続するには、次のいずれかのコマンドを使用します。
 
-    Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+    Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 or
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
 Azure Government Cloud でキャッシュを作成するには、次のいずれかの場所を使用します。
 
@@ -89,11 +89,11 @@ Azure Government Cloud の詳細については、「[Microsoft Azure Government
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Azure China Cloud に接続するには
 Azure China Cloud に接続するには、次のいずれかのコマンドを使用します。
 
-    Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+    Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 or
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
 Azure China Cloud でキャッシュを作成するには、次のいずれかの場所を使用します。
 
@@ -105,12 +105,12 @@ Azure China Cloud の詳細については、 [中国の 21Vianet が運営し�
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Microsoft Azure Germany に接続するには
 Microsoft Azure Germany に接続するには、次のいずれかのコマンドを使用します。
 
-    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+    Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 
 または
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
 
 Microsoft Azure Germany でキャッシュを作成するには、次のいずれかの場所を使用します。
 

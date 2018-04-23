@@ -1,11 +1,11 @@
 ---
-title: "クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: PowerShell | Microsoft Docs"
-description: "VPN Gateway と PowerShell を使用して、クラシック VNet と Resource Manager VNet の間に VPN 接続を作成します。"
+title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: PowerShell | Microsoft Docs'
+description: VPN Gateway と PowerShell を使用して、クラシック VNet と Resource Manager VNet の間に VPN 接続を作成します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/14/2018
 
 * 両方の VNet が既に作成されている。
 * これらの VNet のアドレス範囲が互いに重複していない。また、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していない。
-* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 必ず Service Management (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
+* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
 
 ### <a name="exampleref"></a>設定例
 
@@ -176,7 +176,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
 1. PowerShell コンソールで Azure アカウントにログインします。 次のコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ``` 
    
   Azure サブスクリプションの一覧を取得します。

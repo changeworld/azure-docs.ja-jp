@@ -25,6 +25,7 @@
 ## [互換性レベル](stream-analytics-compatibility-level.md)
 ## [一般的なクエリのパターン](stream-analytics-stream-analytics-query-patterns.md)
 ## [イベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)
+## [チェックポイントと再生](stream-analytics-concepts-checkpoint-replay.md)
 
 # ハウツーガイド
 
@@ -68,7 +69,7 @@
 
 ## トラブルシューティング
 ### [トラブルシューティングの手順](stream-analytics-troubleshooting-guide.md)
-### [一般的なトラブルシューティングの問題](stream-analytics-common-troubleshooting-issues.md)
+### [一般的な問題](stream-analytics-common-troubleshooting-issues.md)
 ### [ジョブ ダイアグラム](stream-analytics-job-diagram-with-metrics.md)
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)
 ### [リソース正常性の確認](stream-analytics-resource-health.md)
@@ -94,16 +95,8 @@
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [料金](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-## [リリース ノート](stream-analytics-release-notes.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [お客様導入事例](https://azure.microsoft.com/case-studies/?service=stream-analytics)
 ## [ホワイトペーパー - リアルタイム イベント処理](stream-analytics-real-time-event-processing-reference-architecture.md)
-## [Storm と Stream Analytics を比較する](stream-analytics-comparison-storm.md)
-
-
-
-
-
-

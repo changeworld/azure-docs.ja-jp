@@ -1,12 +1,12 @@
 ---
-title: "Azure 用語集 - Azure 辞書 | Microsoft Docs"
-description: "この Azure 用語集を使えば、Azure プラットフォームにおけるクラウド用語の意味を調べることができます。 この簡単な Azure 辞書には、Azure の一般的なクラウド用語の定義が記載されています。"
-keywords: "Azure 辞書, クラウド用語, Azure 用語集, 用語の定義, クラウドの用語"
+title: Azure 用語集 - Azure 辞書 | Microsoft Docs
+description: この Azure 用語集を使えば、Azure プラットフォームにおけるクラウド用語の意味を調べることができます。 この簡単な Azure 辞書には、Azure の一般的なクラウド用語の定義が記載されています。
+keywords: Azure 辞書, クラウド用語, Azure 用語集, 用語の定義, クラウドの用語
 services: na
 documentationcenter: na
 author: MonicaRush
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 953320734c1601c411144bd7a6496716a65e452e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -111,7 +111,7 @@ Resource Manager でデプロイおよび管理できるリソースを提供す
 
 ## <a name="role"></a>role
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  
-「[RBAC: 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」をご覧ください。
+「[RBAC: 組み込みのロール](role-based-access-control/built-in-roles.md)」をご覧ください。
 
 ## <a name="sla"></a>サービス レベル アグリーメント (SLA)
 稼働時間と接続に関する Microsoft の確約内容を示す契約です。 Azure サービスごとに固有の SLA があります。  

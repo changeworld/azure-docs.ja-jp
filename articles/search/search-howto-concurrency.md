@@ -1,25 +1,17 @@
 ---
-title: "Azure Search でリソースへの同時書き込みを管理する方法"
-description: "オプティミスティック同時実行制御を使用して、Azure Search インデックス、インデクサー、データ ソースの更新または削除の競合を回避します。"
-services: search
-documentationcenter: 
+title: Azure Search でリソースへの同時書き込みを管理する方法
+description: オプティミスティック同時実行制御を使用して、Azure Search インデックス、インデクサー、データ ソースの更新または削除の競合を回避します。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 
+manager: cgronlun
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
-ms.openlocfilehash: aee1b7376d4829e3e2f5a232525e3c3cb4df9d8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26c285a016443bd67eb8dca008510debe82bcc32
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search で同時実行を管理する方法
 
@@ -211,7 +203,7 @@ ms.lasthandoff: 10/11/2017
         }
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [シノニム C# サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)を確認し、既存のインデックスを安全に更新する方法について理解を深めます。
 

@@ -1,10 +1,10 @@
 ---
-title: "HPC Pack クラスター ノードの自動スケール | Microsoft Docs"
-description: "Azure で HPC Pack クラスターコンピューティング ノードの数を自動的に拡大縮小する "
+title: HPC Pack クラスター ノードの自動スケール | Microsoft Docs
+description: 'Azure で HPC Pack クラスターコンピューティング ノードの数を自動的に拡大縮小する '
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: 
+manager: ''
 editor: tysonn
 ms.assetid: 38762cd1-f917-464c-ae5d-b02b1eb21e3f
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 4a2350183bc0cb9360e9315cd8a351be20b66584
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する
 HPC Pack クラスターで Azure の "バースト" ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターのワークロードに合わせて、ノードやコアなどのクラスター リソースを自動的に増減できれば便利です。 この方法でクラスター リソースをスケーリングすると、Azure リソースをさらに効率的に利用し、そのコストを制御できます。
@@ -50,13 +50,13 @@ HPC Pack クラスターで Azure の "バースト" ノードをデプロイす
     ```powershell
         cd $env:CCP_HOME\bin
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     ```
         
     自分のアカウントが複数の Azure Active Directory テナントまたは Azure サブスクリプションにある場合は、次のコマンドを実行することで、適切なテナントとサブスクリプションを選択できます。
   
     ```powershell
-        Login-AzureRMAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
+        Connect-AzureRmAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
     ```     
        
     現在選択されているテナントとサブスクリプションを表示するには、次のコマンドを実行します。
@@ -186,12 +186,12 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
 * **HPC Pack 2012 R2 更新プログラム 1 以降のクラスター** - **AzureAutoGrowShrink.ps1** スクリプトが %CCP_HOME%bin フォルダーにインストールされています。 クラスターのヘッド ノードはオンプレミスにするか、Azure VM に配置できます。 Azure の「バースト」ノードでオンプレミス ヘッド ノードを使用するには、「 [HPC Pack でハイブリッド クラスターをセットアップする](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) 」を参照してください。 Azure VM で HPC Pack クラスターをすばやくデプロイするには、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md)に関するページをご覧ください。または、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)を使用してください。
 * **Azure PowerShell 1.4.0** - 現時点で、スクリプトはこのバージョンの Azure PowerShell を使用しています。
 * **Azure バースト ノードを含むクラスターの場合** -HPC Pack がインストールされているクライアント コンピューターで、またはヘッド ノードではスクリプトを実行します。 クライアント コンピューターで実行する場合、ヘッド ノードをポイントするように $env:CCP_SCHEDULER 変数を設定します。 Azure の "バースト" ノードをクラスターに追加する必要がありますが、"未デプロイ" の状態になっている場合があります。
-* **Azure VM にデプロイされているクラスター (Resource Manager デプロイメント モデル)** - Resource Manager デプロイメント モデルにデプロイされている Azure VM のクラスターの場合、スクリプトは 2 つの Azure 認証方法をサポートします (Azure アカウントにサインインして毎回スクリプト (`Login-AzureRmAccount`) を実行するか、または証明書を使用して認証するようにサービス プリンシパルを構成します)。 HPC Pack は、証明書を使用してサービス プリンシパルを作成するための **ConfigARMAutoGrowShrinkCert.ps** スクリプトを提供します。 このスクリプトでは、Azure Active Directory (Azure AD) アプリケーションとサービス プリンシパルを作成し、サービス プリンシパルに共同作成者ロールを割り当てます。 スクリプトを実行するには、Azure PowerShell を管理者として起動し、次のコマンドを実行します。
+* **Azure VM にデプロイされているクラスター (Resource Manager デプロイメント モデル)** - Resource Manager デプロイメント モデルにデプロイされている Azure VM のクラスターの場合、スクリプトは 2 つの Azure 認証方法をサポートします (Azure アカウントにサインインして毎回スクリプト (`Connect-AzureRmAccount`) を実行するか、または証明書を使用して認証するようにサービス プリンシパルを構成します)。 HPC Pack は、証明書を使用してサービス プリンシパルを作成するための **ConfigARMAutoGrowShrinkCert.ps** スクリプトを提供します。 このスクリプトでは、Azure Active Directory (Azure AD) アプリケーションとサービス プリンシパルを作成し、サービス プリンシパルに共同作成者ロールを割り当てます。 スクリプトを実行するには、Azure PowerShell を管理者として起動し、次のコマンドを実行します。
 
     ```powershell
     cd $env:CCP_HOME\bin
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     .\ConfigARMAutoGrowShrinkCert.ps1 -DisplayName “YourHpcPackAppName” -HomePage "https://YourHpcPackAppHomePage" -IdentifierUri "https://YourHpcPackAppUri" -PfxFile "d:\yourcertificate.pfx"
     ```
@@ -217,7 +217,7 @@ AzureAutoGrowShrink.ps1 [-NodeTemplates <String[]>] [-JobTemplates <String[]>] [
 
 AzureAutoGrowShrink.ps1 -UseLastConfigurations [-ArgFile <String>] [-LogFilePrefix <String>] [<CommonParameters>]
 ```
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 * **NodeTemplates** - ノードを拡大縮小するための範囲を定義するノード テンプレートの名前。 指定されていない場合 (既定値は @() です)、**NodeType** の値が AzureNodes のとき、**AzureNodes** ノード グループのすべてのノードが範囲内となり、**NodeType** の値が ComputeNodes のとき、**ComputeNodes** ノード グループのすべてのノードが範囲内になります。
 * **JobTemplates** - ノードを拡大する範囲を定義するジョブ テンプレートの名前。
 * **NodeType** - 拡大縮小するノードの型。 サポートされる値は次のとおりです。

@@ -1,12 +1,12 @@
 ---
-title: "Azure ファイル共有を作成する方法 | Microsoft Docs"
-description: "Azure ポータル、PowerShell、Azure CLI を使用して Azure Files に Azure ファイル共有を作成する方法。"
+title: Azure ファイル共有を作成する方法 | Microsoft Docs
+description: Azure ポータル、PowerShell、Azure CLI を使用して Azure Files に Azure ファイル共有を作成する方法。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: bc01e5427f32e9532e39694f6de9f0b1146eda35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Azure Files にファイル共有を作成する
 Azure のファイル共有は、[Azure ポータル](https://portal.azure.com/)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 このチュートリアルでは、次の事項について説明します。
@@ -69,7 +69,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>コマンド ライン インターフェイス (CLI) を使用したファイル共有の作成
 1. **コマンド ライン インターフェイス (CLI) の使用の準備をするには、Azure CLI をダウンロードしてインストールします。**  
-    [Azure CLI 2.0 のインストール](/cli/azure/install-az-cli2.md)と [Azure CLI 2.0 の使用開始](/cli/azure/get-started-with-azure-cli.md)に関する各ページを参照してください。
+    [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)と [Azure CLI 2.0 の使用開始](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関する各ページを参照してください。
 
 2. **共有の作成先となるストレージ アカウントへの接続文字列を作成します。**  
     次の例の ```<storage-account>``` と ```<resource_group>``` は、実際のストレージ アカウント名とリソース グループに置き換えてください。
@@ -87,7 +87,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
     az storage share create --name files --quota 2048 --connection-string $current_env_conn_string 1 > /dev/null
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ファイル共有の接続とマウント - Windows](storage-how-to-use-files-windows.md)
 * [ファイル共有の接続とマウント - Linux](../storage-how-to-use-files-linux.md)
 * [ファイル共有の接続とマウント - macOS](storage-how-to-use-files-mac.md)

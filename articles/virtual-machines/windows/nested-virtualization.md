@@ -3,19 +3,19 @@ title: Azure Virtual Machines で入れ子になった仮想化を有効にす�
 description: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: philmea
+author: cynthn
 manager: jeconnoc
-ms.author: philmea
+ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: bf2de6738f83be96cd574c43dd6584fa3885ba6d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0648a7555cb94543dadf5d73e0187927a90f5b5a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 

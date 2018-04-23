@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル: Resource Manager テンプレートを使用してパイプラインを作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory パイプラインを作成します。 このパイプラインは、Azure Blob Storage から Azure SQL データベースにデータをコピーします。"
+title: 'チュートリアル: Resource Manager テンプレートを使用してパイプラインを作成する | Microsoft Docs'
+description: このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory パイプラインを作成します。 このパイプラインは、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6d4006389fffe999ce83d3c2535505869ecc0519
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c8f96ffa44cb584cef3c3a5f785c20469aac38bd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -319,7 +319,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
    
     ```PowerShell
-    Login-AzureRmAccount    
+    Connect-AzureRmAccount      
     ```  
    * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
    

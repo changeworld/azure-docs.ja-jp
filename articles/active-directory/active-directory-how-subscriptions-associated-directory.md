@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/16/2018
 2. **[ディレクトリの変更]** をクリックしします。
 
     ![[ディレクトリの変更] ボタンを示すスクリーンショット](./media/active-directory-how-subscriptions-associated-directory/edit-directory-button.PNG)
-3. 警告を確認します。 サブスクリプションのディレクトリを変更すると、アクセス権が割り当てられているすべての[ロール ベースのアクセス制御 (RBAC)](role-based-access-control-configure.md) ユーザーとすべてのサブスクリプション管理者がアクセス権を失います。
+3. 警告を確認します。 サブスクリプションのディレクトリを変更すると、アクセス権が割り当てられているすべての[ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) ユーザーとすべてのサブスクリプション管理者がアクセス権を失います。
 4. ディレクトリを選択します。
 
     ![ディレクトリの変更 UI を示すスクリーンショット](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/16/2018
 
 * 新しい Azure AD ディレクトリの無料作成の詳細については、「[Azure Active Directory テナントを取得する方法](develop/active-directory-howto-tenant.md)」を参照してください。
 * Azure サブスクリプションの課金所有権の譲渡の詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。
-* Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)
+* Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Azure AD でロールを割り当てる方法の詳細については、「 [Azure Active Directory (Azure AD) の管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)
 
 <!--Image references-->

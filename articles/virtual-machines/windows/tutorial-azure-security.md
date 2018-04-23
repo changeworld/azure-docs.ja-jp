@@ -3,7 +3,7 @@ title: Azure Security Center と Azure 内の Windows 仮想マシン | Microsof
 description: Azure Security Center による Azure Windows 仮想マシンのセキュリティについて説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
-ms.author: nepeters
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4597de035e352387c22e92412ee6361f9c38a8ca
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Azure Security Center を使用して仮想マシンのセキュリティを監視する
 

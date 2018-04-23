@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
 Azure Cosmos DB では、[Apache Tinkerpop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) をサポートしています。これは、グラフ エンティティを作成し、グラフ クエリ操作を実行するための Graph API です。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
@@ -153,12 +153,6 @@ GraphSON で使用される頂点のプロパティは次のとおりです。
 | プロパティ | [説明] |
 | --- | --- |
 | value | プロパティの値。
-
-## <a name="gremlin-partitioning"></a>Gremlin のパーティション分割
-
-Azure Cosmos DB では、ストレージとスループット (1 秒当たりの正規化された要求数で表現) に関して個別にスケールできるコンテナーにグラフが格納されます。 各コンテナーでは、関連データの論理パーティション境界を決定するパーティション キー プロパティを定義する必要があります (パーティション キー プロパティは省略可能ですが、定義することをお勧めします)。 各頂点と辺には、そのパーティション キー値内のエンティティに対して一意である `id` プロパティが必要です。 詳細については、「[Azure Cosmos DB でのパーティション分割](partition-data.md)」をご覧ください。
-
-Gremlin の操作は、Azure Cosmos DB の複数のパーティションにまたがるグラフ データでシームレスに動作します。 ただし、クエリでフィルターとして一般的に使用され、多数の異なる値を持ち、これらの値に同様の頻度でアクセスできる、グラフのパーティション キーを選択することをお勧めします。 
 
 ## <a name="gremlin-steps"></a>Gremlin のステップ
 次に、Azure Cosmos DB でサポートされている Gremlin のステップを見てみましょう。 Gremlin の完全なリファレンスについては、[TinkerPop リファレンス](http://tinkerpop.apache.org/docs/current/reference)をご覧ください。

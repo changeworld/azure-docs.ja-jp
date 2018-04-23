@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2018
+ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b121684b3b9a5d03fe89e0892179140e9f5de80f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 73f6f1c5a61fd7d60666df2bff99ee67a41c9cb8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用してゾーン冗長仮想マシン スケール セットを作成する
 このスクリプトでは、複数の可用性ゾーンにわたって Windows Server 2016 を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
@@ -44,31 +44,12 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | 仮想ネットワーク サブネットを定義する構成オブジェクトを作成します。 |
-| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | 仮想ネットワークとサブネットを作成します。 |
-| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | 静的パブリック IP アドレスを作成します。 |
-| [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig) | パブリック IP アドレスなど、ロード バランサーのフロントエンドを定義する構成オブジェクトを作成します。 |
-| [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig) | ロード バランサーのバックエンドを定義する構成オブジェクトを作成します。 |
-| [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) | フロントエンドおよびバックエンド構成オブジェクトに基づいて、ロード バランサーを作成します。 |
-| [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig) | TCP ポート 80 のトラフィックを監視するために、ロード バランサーの正常性プローブを作成します。 15 秒間隔で 2 回連続して失敗した場合、エンドポイントは異常と判断されます。 |
-| [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerruleconfig) | フロントエンド プールからバックエンド プールへの TCP ポート 80 でのトラフィックを分散するロード バランサー規則を定義する構成オブジェクトを作成します。 |
-| [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer) | 正常性プローブとロード バランサー規則でロード バランサーを更新します。 |
-| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | TCP ポート 80 のトラフィックを許可するようにネットワーク セキュリティ グループの規則を定義する構成オブジェクトを作成します。 |
-| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | ネットワーク セキュリティ グループと規則を作成します。 |
-| [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) | ネットワーク セキュリティ グループに関連付けられるように仮想ネットワーク サブネットを更新します。 サブネットに接続されているすべての VM インスタンスは、ネットワーク セキュリティ グループ規則を継承します。 |
-| [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) | サブネットおよびネットワーク セキュリティ グループ構成で仮想ネットワークを更新します。 |
-| [New-AzureRmVmssIpConfig](/powershell/module/azurerm.compute/new-azurermvmssipconfig) | VM インスタンスをロード バランサーのバックエンド プールと受信 NAT プールに接続するための仮想マシン スケール セットの IP アドレス情報を定義する構成オブジェクトを作成します。
-| [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) | スケール セット内の VM インスタンスの数、VM インスタンスのサイズ、およびアップグレード ポリシー モードを定義する構成オブジェクトを作成します。 |
-| [Set-AzureRmVmssStorageProfile](/powershell/module/azurerm.compute/set-azurermvmssstorageprofile) | VM インスタンスのために使用する VM イメージを定義する構成オブジェクトを作成します。 |
-| [Set-AzureRmVmssOsProfile](/powershell/module/azurerm.compute/set-azurermvmssosprofile) | VM インスタンス名とユーザー資格情報を定義する構成プロファイルを作成します。 |
-| [Add-AzureRmVmssNetworkInterfaceConfiguration](/powershell/module/azurerm.compute/add-azurermvmssnetworkinterfaceconfiguration) | 各 VM インスタンスの仮想ネットワーク インターフェイス カードを定義する構成オブジェクトを作成します。 |
-| [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) | すべての構成オブジェクトを結合して、仮想マシン スケール セットを作成します。 |
+| [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) | 仮想マシン スケール セットと、仮想ネットワーク、ロード バランサー、NAT 規則などのすべてのサポート リソースを作成します。 |
 | [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) | 仮想マシン スケール セットに関する情報を取得します。 |
 | [Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) | 基本的な Web アプリケーションをインストールするために、カスタム スクリプト用の VM 拡張機能を追加します。 |
 | [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) | VM 拡張機能を適用するために、仮想マシン スケール セット モデルを更新します。 |
 | [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) | ロード バランサーによって使用される、割り当てられたパブリック IP アドレスについての情報を取得します。 |
-|[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
 
 ## <a name="next-steps"></a>次の手順

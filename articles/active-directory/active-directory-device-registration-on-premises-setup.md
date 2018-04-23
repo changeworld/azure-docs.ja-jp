@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory でオンプレミスの条件付きアクセスを設定する | Microsoft Docs"
-description: "Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順。"
+title: Azure Active Directory でオンプレミスの条件付きアクセスを設定する | Microsoft Docs
+description: Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 466cd564f08b07d443db7cb1de59c5778682ed73
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -89,7 +89,7 @@ Azure Active Directory デバイス登録サービスを Azure Active Directory 
 | 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。 それが終了したら、このガイドに戻ります。 |[Azure AD Connect でのデバイスの書き戻しの有効化](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[省略可能] パート 4: Multi-Factor Authentication を有効にする
-Multi-Factor Authentication に関するいくつかのオプションのいずれかを構成することを強くお勧めします。 Multi-Factor Authentication を必要とする場合は、「[ユーザーに適した Multi-factor Authentication セキュリティ ソリューションの選択](../multi-factor-authentication/multi-factor-authentication-get-started.md)」を参照してください。 これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
+Multi-Factor Authentication に関するいくつかのオプションのいずれかを構成することを強くお勧めします。 Multi-Factor Authentication を必要とする場合は、「[ユーザーに適した Multi-factor Authentication セキュリティ ソリューションの選択](authentication/concept-mfa-whichversion.md)」を参照してください。 これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
 
 ## <a name="part-5-verification"></a>パート 5: 検証
 これでデプロイが完了したので、いくつかのシナリオを試すことができます。 以下のリンクを使用してサービスを試し、その機能をよく理解してください。

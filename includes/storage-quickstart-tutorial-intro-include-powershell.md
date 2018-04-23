@@ -1,9 +1,9 @@
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 この例では、**eastus** を使います。 これを変数に格納し、1 か所で変更できるように変数を使用します。

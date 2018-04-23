@@ -1,8 +1,23 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-network
+author: jimdial
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: f1dc43b6fea4ebfb47439ec64b573cc471614d98
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/18/2018
+---
 > [!div class="op_single_selector"]
-> * [Azure ポータル](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
+> * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
 > * [PowerShell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
 > * [Azure CLI](../articles/virtual-network/virtual-network-multiple-ip-addresses-cli.md)
-> * [テンプレート](../articles/virtual-network/virtual-network-multiple-ip-addresses-template.md)
 >
 
 Azure 仮想マシン (VM) には、1 つ以上のネットワーク インターフェイス (NIC) がアタッチされています。 NIC には、1 つ以上の静的または動的パブリックおよびプライベート IP アドレスを割り当てることができます。 VM に複数の IP アドレスを割り当てると、次のことが可能になります。

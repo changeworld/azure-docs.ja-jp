@@ -1,25 +1,19 @@
 ---
-title: "Powershell スクリプトによる Azure Search の管理 | Microsoft Azure | Microsoft Docs"
-description: "PowerShell スクリプトを使用して Azure Search サービスを管理します。 Azure Search サービスの作成または更新と、Azure Search 管理者キーの管理"
-services: search
-documentationcenter: 
-author: seansaleh
-manager: mblythe
-editor: 
+title: Powershell スクリプトによる Azure Search の管理 | Microsoft Azure | Microsoft Docs
+description: PowerShell スクリプトを使用して Azure Search サービスを管理します。 Azure Search サービスの作成または更新と、Azure Search 管理者キーの管理
+author: HeidiSteen
+manager: cgronlun
 tags: azure-resource-manager
-ms.assetid: 9b3dc1f2-3619-4235-ba1f-d2d6f5c45dd5
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: powershell
+ms.devlang: powershell
+ms.topic: conceptual
 ms.date: 08/15/2016
-ms.author: seasa
-ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: heidist
+ms.openlocfilehash: fc9d23b0c11484c7fec575c411f32522b6e46e28
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -37,7 +31,7 @@ ms.lasthandoff: 12/21/2017
 
 まず、次のコマンドで Azure にログインする必要があります。
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Microsoft Azure のログイン ダイアログで、Azure アカウントの電子メール アドレスとパスワードを指定します。
 
@@ -129,7 +123,7 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
     # Deleting your service will delete all indexes and data in the service
     $resource | Remove-AzureRmResource
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 以上でサービスの作成は終了です。引き続き、[インデックスの作成](search-what-is-an-index.md)、[インデックスのクエリ](search-query-overview.md)、最後に Azure Search を使用した独自の検索アプリケーションの作成と管理に進むことができます。
 
 * [Azure ポータルでの Azure Search インデックスの作成](search-create-index-portal.md)

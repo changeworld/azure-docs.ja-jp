@@ -8,6 +8,7 @@
 ## [DNS に関する FAQ](dns-faq.md)
 ## [プライベート DNS ゾーンの使用](private-dns-overview.md)
 ## [プライベート DNS のシナリオ](private-dns-scenarios.md)
+## [DNS メトリックとアラート](dns-alerts-metrics.md)
 
 
 # 作業の開始
@@ -55,7 +56,7 @@
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
-## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html)
 ## [REST](/rest/api/dns/)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 0be60fff3d49ff39691f19cb1013e023f9f984e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>クラウド コンピューティングと Microsoft Azure の概要
 
@@ -187,7 +187,7 @@ Azure コマンド ライン インターフェイスは、コマンド ライ�
 
 Azure サービスを利用するには、サブスクリプションが必要です。 いくつかの種類のサブスクリプションを利用できます。
 
-**無料アカウント**: [Azure Web サイト](https://azure.microsoft.com/)に、無料アカウントの新規登録リンクがあります。 無料アカウントでは、30 日間のコースでクレジットが与えられます。Azure のリソースをあらゆる組み合わせでお試しいただけます。 クレジット額を超えると、アカウントが一時停止されます。 試用期間が終わると、サービスが撤去され、使用不可になります。 従量課金のサブスクリプションにいつでもアップグレードできます。
+**無料アカウント**: [Azure Web サイト](https://azure.microsoft.com/)に、無料アカウントの新規登録リンクがあります。 無料アカウントでは、30 日間のコースでクレジットが与えられます。Azure のリソースをあらゆる組み合わせでお試しいただけます。 クレジット額を超えると、アカウントが一時停止されます。 試用期間が終わると、サービスが撤去され、使用不可になります。 従量課金制サブスクリプションにいつでもアップグレードできます。
 
 **MSDN サブスクリプション**: MSDN サブスクリプションを契約すると、毎月、Azure クレジットに一定の額が与えられます。 たとえば、 MSDN サブスクリプション付きの Microsoft Visual Studio Enterprise を契約すると、Azure クレジットに毎月 \$150 与えられます。
 
@@ -195,7 +195,8 @@ Azure サービスを利用するには、サブスクリプションが必要�
 
 **BizSpark アカウント**: Microsoft BizSpark プログラムでは、ベンチャー企業にとってさまざまな特典が用意されています。 その 1 つに、開発環境とテスト環境を対象に、最大 5 つの MSDN アカウントですべての Microsoft ソフトウェアにアクセスできるというものがあります。 5 つの MSDN アカウントのそれぞれに、$150 の Azure クレジットが与えられます。仮想マシンなど、一部の Azure サービスに関して割り引きが受けられます。
 
-**従量課金**: このサブスクリプションでは、クレジット カードまたはデビット カードをアカウントに登録することで、使用した分だけ支払います。 契約者が組織の場合、請求承認を受けることもできます。
+
+  **従量課金制**: このサブスクリプションでは、クレジット カードまたはデビット カードをアカウントに登録することで、使用した分だけ支払います。 契約者が組織の場合、請求承認を受けることもできます。
 
 **エンタープライズ契約**: エンタープライズ契約では、向こう 1 年、Azure の一定数のサービスを使用する契約を結び、料金を前払いします。 契約分はその年を通して使用します。 契約額を超えた場合、超過分は後払いできます。 契約額によっては、Azure のサービスで割り引きが受けられます。
 
@@ -323,7 +324,7 @@ Azure に組み込まれているロールの例:
 
 -   **ストレージ アカウント共同作成者** : このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
 
-詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../active-directory/role-based-access-control-configure.md)」を参照してください。
+詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
@@ -368,7 +369,7 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 最後になりますが、あらゆるコンピューター システムの管理と同様に、セキュリティ資格情報とソフトウェア ファイアウォールを利用し、オペレーティング システムで Azure 仮想マシンを守る必要があります。
 
-## <a name="azure-storage"></a>Azure Storage (Azure Storage)
+## <a name="azure-storage"></a>Azure Storage
 
 Azure Storage は耐久性がありスケーラブルな冗長ストレージを提供するサービスであり、Microsoft が管理しています。 リソース デプロイ方法を利用し、リソース グループにリソースとして Azure ストレージ アカウントを追加できます。 Azure には、BLOB ストレージ、File Storage、Table Storage、Queue Storage という 4 種類のストレージがあります。 ストレージ アカウントをデプロイするとき、2 種類のアカウントを利用できます。汎用ストレージと BLOB ストレージです。 汎用ストレージ アカウントの場合、4 種類すべてのストレージにアクセスできます。 BLOB ストレージ アカウントは汎用アカウントと似ていますが、ホット アクセス層とコールド アクセス層を含む、特別な BLOB が含まれています。 BLOB ストレージの詳細については、「[Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 

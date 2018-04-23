@@ -1,32 +1,25 @@
 ---
-title: "データのアップロード (REST API - Azure Search) | Microsoft Docs"
-description: "REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
-services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 8d0749fb-6e08-4a17-8cd3-1a215138abc6
+title: データのアップロード (REST API - Azure Search) | Microsoft Docs
+description: REST API を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 12/08/2016
-ms.author: ashmaka
-ms.openlocfilehash: f22a33ed86fbfc46dfa732239263a49f34c4afee
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5322faf04d29643bba2d1371cef23ab224675adb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>REST API を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]
 >
 > * [概要](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
-> * [REST ()](search-import-data-rest-api.md)
+> * [REST](search-import-data-rest-api.md)
 >
 >
 
@@ -55,7 +48,7 @@ REST API を使用する場合は、JSON 要求本文を利用して HTTP POST �
 
 "value" 配列内の各 JSON オブジェクトは、インデックスを作成するドキュメントを表します。 これらの各オブジェクトにはドキュメントのキーが含まれます。また、これらの各オブジェクトで、目的のインデックス作成アクション (アップロード、マージ、削除など) を指定します。 以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
 
-| @search.action | Description | 各ドキュメントに必要なフィールド | メモ |
+| @search.action | [説明] | 各ドキュメントに必要なフィールド | メモ |
 | --- | --- | --- | --- |
 | `upload` |`upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 |キーのほか、定義するその他すべてのフィールド |既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null`に設定されます。 この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。 |
 | `merge` |指定されたフィールドで既存のドキュメントを更新します。 ドキュメントがインデックスに存在しない場合、マージは失敗します。 |キーのほか、定義するその他すべてのフィールド |マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。 これには、 `Collection(Edm.String)`型のフィールドも含まれます。 たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。 `["budget", "economy", "pool"]`にはなりません。 |
@@ -177,5 +170,5 @@ URL では、サービス名とインデックス名 (この場合は "hotels") 
 
 ドキュメント アクションおよび成功/エラー応答の詳細については、「 [ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)」を参照してください。 エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「 [HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。

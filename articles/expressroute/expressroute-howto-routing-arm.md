@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/3/2018
 ms.author: osamaz, jaredr80
-ms.openlocfilehash: 8b16bb057da5aed6229d4228c87e7746ac029333
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d4f8f0e6c8fab5dfb4efcc4f1659ba90336c8bf0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 
@@ -86,7 +86,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
   ご使用のアカウントにサインインします。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   ExpressRoute 回線を作成するサブスクリプションを選択します。
@@ -213,7 +213,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ご使用のアカウントにサインインします。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   ExpressRoute 回線を作成するサブスクリプションを選択します。
@@ -350,7 +350,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ご使用のアカウントにサインインします。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   ExpressRoute 回線を作成するサブスクリプションを選択します。

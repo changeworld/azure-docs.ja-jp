@@ -4,7 +4,7 @@ description: オープン ソースの Azure Cosmos DB データ移行ツール�
 keywords: csv を json へ、データベース移行ツール、csv を json へ
 services: cosmos-db
 author: andrewhoh
-manager: jhubbard
+manager: kfile
 editor: monicar
 documentationcenter: ''
 ms.assetid: d173581d-782a-445c-98d9-5e3c49b00e25
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 317e5f2696635d28b5dbab302e45960af9c8aee2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9c4908775ab9a471201cc4bb0c35ab863f5d6d50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
 

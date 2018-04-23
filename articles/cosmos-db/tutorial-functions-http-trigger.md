@@ -1,24 +1,24 @@
 ---
-title: "Azure Cosmos DB 入力バインドで HTTP トリガーを作成する | Microsoft Docs"
-description: "HTTP トリガーで Azure Functions を使用して Azure Cosmos DB にクエリを実行する方法について説明します。"
+title: Azure Cosmos DB 入力バインドで HTTP トリガーを作成する | Microsoft Docs
+description: HTTP トリガーで Azure Functions を使用して Azure Cosmos DB にクエリを実行する方法について説明します。
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 3fca64db9e19f8295fc462b790beb95f6796ae4c
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Azure Cosmos DB 入力バインドで Azure Functions HTTP トリガーを作成する
 
@@ -52,7 +52,7 @@ Azure Cosmos DB は、スキーマレスかつサーバーレスなグローバ�
 
 2. Azure Functions プロジェクトを作成したら、NuGet 関連の更新およびインストールをいくつか実行します。 
 
-    a. Functions SDK を最新の状態にするには、NuGet マネージャーを使用して、**Microsoft.NET.Sdk.Functions** パッケージを更新します。 **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選びます。 **[インストール]** タブで [Microsoft.NET.Sdk.Functions] を選択し、**[更新]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Functions SDK を最新の状態にするには、NuGet マネージャーを使用して、**Microsoft.NET.Sdk.Functions** パッケージを更新します。 **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選びます。 **[インストール]** タブで [Microsoft.NET.Sdk.Functions] を選択し、**[更新]** をクリックします。
 
    ![NuGet パッケージの更新](./media/tutorial-functions-http-trigger/02-update-functions-sdk.png)
 
@@ -68,14 +68,14 @@ Azure Cosmos DB は、スキーマレスかつサーバーレスなグローバ�
    
    次に、コードをいくつか記述する必要があるため、新しい **Azure 関数**項目をプロジェクトに追加します。 
 
-    a. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[追加]** > **[新しい項目]** の順に選択します。   
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[追加]** > **[新しい項目]** の順に選択します。   
     b. **[新しい項目の追加]** ダイアログで、**[Visual C# アイテム]**、**[Azure 関数]** の順に選択し、プロジェクトの名前として「**Search**」と入力し、**[追加]** をクリックします。  
  
    ![Search という名前の新しい関数の作成](./media/tutorial-functions-http-trigger/05-add-function.png)
 
 4. Azure 関数は HTTP 要求に応答します。したがって、この HTTP トリガー テンプレートは適切です。
    
-   **[新しい Azure 関数]** ボックスで、**[HTTP トリガー]** を選択します。 この Azure 関数を "公開" したいので、**[アクセス権]** を **[匿名]** に設定します。これにより全員がアクセスできます。 **[OK]**をクリックします。
+   **[新しい Azure 関数]** ボックスで、**[HTTP トリガー]** を選択します。 この Azure 関数を "公開" したいので、**[アクセス権]** を **[匿名]** に設定します。これにより全員がアクセスできます。 Click **OK**.
 
    ![アクセス権を匿名に設定](./media/tutorial-functions-http-trigger/06-http-trigger.png)
 
@@ -223,7 +223,7 @@ Azure 関数が検証され、正しく機能していると思われる場合�
 
 3. **[発行]** ダイアログで、次の操作を行います。
    
-    a. **[アプリ名]** で、関数に一意の名前を指定します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリ名]** で、関数に一意の名前を指定します。
 
     b. **[サブスクリプション]** で、使用する Azure サブスクリプションを選択します。
    
@@ -233,7 +233,7 @@ Azure 関数が検証され、正しく機能していると思われる場合�
    
     e. 他の機能の実行をトリガーするために BLOB、Table、または Queue のサポートが必要な場合に備えて、**[ストレージ アカウント]** でも **[新規]** をクリックし、Azure 関数で使用する新しいストレージ アカウントを作成します。 **[ストレージ アカウント]** ページでは既定値を使用し、**[OK]** をクリックします。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 その後、ダイアログで **[作成]** をクリックすると、Azure サブスクリプションですべてのリソースが作成されます。 次回 Azure 関数コードを発行するときに使用される発行プロファイル (単純な XML ファイル) が、Visual Studio によってダウンロードされます。
+    f. その後、ダイアログで **[作成]** をクリックすると、Azure サブスクリプションですべてのリソースが作成されます。 次回 Azure 関数コードを発行するときに使用される発行プロファイル (単純な XML ファイル) が、Visual Studio によってダウンロードされます。
 
    ![ストレージ アカウントの作成](./media/tutorial-functions-http-trigger/14-new-function-app.png)
 
@@ -260,7 +260,7 @@ Azure 関数が検証され、正しく機能していると思われる場合�
     ![REST クライアントを使用して Azure 関数にクエリを実行する](./media/tutorial-functions-http-trigger/17-calling-function-from-code.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 

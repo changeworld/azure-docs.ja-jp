@@ -1,25 +1,18 @@
 ---
-title: "ポータルを使用した Azure Search のインデックス作成、クエリ、フィルター処理に関するチュートリアル | Microsoft Docs"
-description: "Azure Portal で、定義済みのサンプル データを使用して Azure Search のインデックスを生成します。 フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索などについて確認します。"
-services: search
-documentationcenter: 
+title: ポータルを使用した Azure Search のインデックス作成、クエリ、フィルター処理に関するチュートリアル | Microsoft Docs
+description: Azure Portal で、定義済みのサンプル データを使用して Azure Search のインデックスを生成します。 フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索などについて確認します。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: hero-article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: 528fd6e82079f37c1e9f907e081a1e918abd241e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a0dbc4ca0b3ca5ce59fb81e1a241982bca099aab
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>ポータルでの Azure Search インデックスの作成、照会、フィルター処理
 

@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル: データを移動するパイプラインを Azure PowerShell で作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
+title: 'チュートリアル: データを移動するパイプラインを Azure PowerShell で作成する | Microsoft Docs'
+description: このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc9476e6a9ee4f4832862ad45dc5a9fbae6ccce6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 09698f06ebbc39d9913c0cbd43ad29c1f0dae9c8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル: データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ ms.lasthandoff: 03/02/2018
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```   
    
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。

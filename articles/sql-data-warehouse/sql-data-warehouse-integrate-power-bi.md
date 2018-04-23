@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse での Power BI の使用 | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Power BI の使用に関するヒント。"
+title: SQL Data Warehouse での Power BI の使用 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Power BI の使用に関するヒント。
 services: sql-data-warehouse
 documentationcenter: NA
 author: mlee3gsd
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
 ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>SQL Data Warehouse での Power BI の使用
 Azure SQL Database の場合と同様、SQL Data Warehouse Direct Connect を使用すると、強力な論理プッシュ ダウンと共に Power BI の分析機能を活用できます。  Direct Connect では、データを検索する際に、クエリがリアルタイムで Azure SQL Data Warehouse に送信されます。  これを SQL Data Warehouse のスケールで組み合わすことで、テラバイト単位のデータに対して動的レポートを数分で作成できます。  さらに、[Power BI で開く] ボタンが導入されたため、Azure の他の部分から情報を収集しなくても、Power BI を直接 SQL Data Warehouse に接続できるようになりました。

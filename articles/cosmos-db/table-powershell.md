@@ -1,12 +1,12 @@
 ---
-title: "PowerShell を使用した Azure Cosmos DB Table API 操作の実行 | Microsoft Docs"
-description: "PowerShell を使用して Azure Cosmos DB Table API 操作を実行する方法"
+title: PowerShell を使用した Azure Cosmos DB Table API 操作の実行 | Microsoft Docs
+description: PowerShell を使用して Azure Cosmos DB Table API 操作を実行する方法
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: d0f835db8a9fbe3833a9c7931ad1d8b4a778f016
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cosmos DB Table API 操作の実行 
 
@@ -55,10 +55,10 @@ Install-Module AzureRmStorageTable
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-table-or-reference-a-table"></a>テーブルを作成する、またはテーブルを参照する
@@ -100,7 +100,7 @@ PowerShell では、Azure Cosmos DB からのテーブルの削除はサポー�
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このハウツー記事では、次のような、PowerShell を使用した Table API の一般的な操作について学習しました。 
 

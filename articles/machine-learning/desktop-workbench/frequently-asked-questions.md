@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ms.openlocfilehash: 864e9ff5551637a93b957e5011a8857072c6eaaf
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 

@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル: REST API を使用して Azure Data Factory パイプラインを作成する | Microsoft Docs"
-description: "このチュートリアルでは、REST API を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。"
+title: 'チュートリアル: REST API を使用して Azure Data Factory パイプラインを作成する | Microsoft Docs'
+description: このチュートリアルでは、REST API を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0b7383c8b984c5f9e9600c0f04be703f6bc20711
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7576589e7be1668d94e80bbe63453a41fe6b85fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/02/2018
   1. 次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
     
     ```PowerShell 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```   
   2. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 

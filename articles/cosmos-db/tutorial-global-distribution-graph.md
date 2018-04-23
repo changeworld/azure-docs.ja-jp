@@ -1,11 +1,11 @@
 ---
-title: "Graph API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs"
-description: "Graph API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。"
+title: Graph API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs
+description: Graph API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
 services: cosmos-db
-keywords: "グローバル分散, グラフ, gremlin"
-documentationcenter: 
+keywords: グローバル分散, グラフ, gremlin
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 1806bde383f04747f1f0fef46e5cf4d38de1e939
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 273b5aeafbf67016259da787f4dfef078ec0a669
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>Graph API を使用して Azure Cosmos DB グローバル分散をセットアップする方法
 

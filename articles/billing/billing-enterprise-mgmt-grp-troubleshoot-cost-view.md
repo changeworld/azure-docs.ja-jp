@@ -1,10 +1,10 @@
 ---
-title: "エンタープライズ コスト表示のトラブルシューティング - Azure | Microsoft Docs"
-description: "Azure Portal で組織のコストを表示するときに発生しうる問題を解決する方法を説明します。"
+title: エンタープライズ コスト表示のトラブルシューティング - Azure | Microsoft Docs
+description: Azure Portal で組織のコストを表示するときに発生しうる問題を解決する方法を説明します。
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 527e12cdcc4eaebf98708c389dd21e8ac6ae4ac7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング 
 
-エンタープライズ加入契約では、多くの設定において登録ユーザーがコストを表示できません。  これらの設定を管理するのは、登録管理者、または Microsoft と直接加入契約をしていない場合はパートナーです。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、[Azure RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)には依存しません。 
+エンタープライズ加入契約では、多くの設定において登録ユーザーがコストを表示できません。  これらの設定を管理するのは、登録管理者、または Microsoft と直接加入契約をしていない場合はパートナーです。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、[Azure RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)には依存しません。 
 
 
 ## <a name="enabling-access-to-costs"></a>コストへのアクセスを有効にする
@@ -44,4 +44,4 @@ ms.lasthandoff: 02/23/2018
 ![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 アクセスを付与してもらうには、サブスクリプションまたは管理グループの管理者に問い合わせてください。  
-* サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。
+* サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。

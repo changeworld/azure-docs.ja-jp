@@ -1,11 +1,11 @@
 ---
-title: "Azure DevTest Labs での所有者とユーザーの追加 | Microsoft Docs"
-description: "Azure Portal または PowerShell を使用した Azure DevTest Labs での所有者とユーザーの追加"
+title: Azure DevTest Labs での所有者とユーザーの追加 | Microsoft Docs
+description: Azure Portal または PowerShell を使用した Azure DevTest Labs での所有者とユーザーの追加
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
 ms.service: devtest-lab
 ms.workload: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f7f7562f0af4753bc08018227a967f9ca3736021
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md)で制御します。 RBAC を使用して、チーム内で職務を *ロール* に分離し、職務に必要なアクセス許可のみをユーザーに付与します。 RBAC ロールは、"*所有者*"、"*DevTest Labs ユーザー*"、および "*共同作成者*" の 3 つです。 この記事では、これら 3 つの主な RBAC ロールそれぞれで実行できるアクションについて説明します。 ポータルを経由して、および PowerShell スクリプトを使用してラボにユーザーを追加する方法、およびサブスクリプション レベルでユーザーを追加する方法について説明します。
+Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md)で制御します。 RBAC を使用して、チーム内で職務を *ロール* に分離し、職務に必要なアクセス許可のみをユーザーに付与します。 RBAC ロールは、"*所有者*"、"*DevTest Labs ユーザー*"、および "*共同作成者*" の 3 つです。 この記事では、これら 3 つの主な RBAC ロールそれぞれで実行できるアクションについて説明します。 ポータルを経由して、および PowerShell スクリプトを使用してラボにユーザーを追加する方法、およびサブスクリプション レベルでユーザーを追加する方法について説明します。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>各ロールで実行できるアクション
 次の 3 つの主なロールをユーザーを割り当てることができます。
@@ -43,16 +43,16 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 | コストの設定の更新 |いいえ  |可能  |[はい] |
 | **VM ベースのタスク** | | | |
 | カスタム イメージの追加と削除 |いいえ  |可能  |[はい] |
-| 数式の追加、更新、および削除 |[はい] |[はい] |[はい] |
+| 数式の追加、更新、および削除 |[はい] |はい |[はい] |
 | Azure Marketplace のイメージのホワイトリスト |いいえ  |可能  |[はい] |
 | **VM タスク** | | | |
-| VM の作成 |[はい] |[はい] |[はい] |
+| VM の作成 |[はい] |はい |[はい] |
 | VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |[はい] |[はい] |
 | VM のポリシーの更新 |いいえ  |可能  |[はい] |
 | データ ディスクの VM への追加と VM からの削除 |ユーザーによって作成された VM のみ |[はい] |[はい] |
 | **アーティファクトのタスク** | | | |
 | アーティファクトのリポジトリの追加と削除 |いいえ  |可能  |[はい] |
-| アーティファクトの適用 |[はい] |[はい] |[はい] |
+| アーティファクトの適用 |[はい] |はい |[はい] |
 
 > [!NOTE]
 > ユーザーが VM を作成すると、そのユーザーは作成された VM の **所有者** ロールに自動的に割り当てられます。
@@ -97,7 +97,7 @@ Azure Portal にユーザーを追加するだけでなく、PowerShell スク�
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.

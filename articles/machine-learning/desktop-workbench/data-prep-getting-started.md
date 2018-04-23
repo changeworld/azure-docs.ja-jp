@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning の Data Preparation の概要 | Microsoft Docs"
-description: "これは、AML Workbench の Data Preparation セクションのファースト ステップ ガイドです。"
+title: Azure Machine Learning の Data Preparation の概要 | Microsoft Docs
+description: これは、AML Workbench の Data Preparation セクションのファースト ステップ ガイドです。
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
 ms.openlocfilehash: b0fbb0af433cfad6693b022d7a00373dc39533aa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="getting-started-with-data-preparation"></a>Data Preparation の概要
 
@@ -77,7 +77,7 @@ Data Preparation では、データ準備のための基本的な 5 ステップ
 
 #### <a name="step-2-understandprofile-the-data"></a>ステップ 2: データの理解/プロファイリング ####
 
-まず、各列の最上部にある [Data Quality Bar] \(データ品質バー) に注目します。 緑色は、値のある行を表します。 灰色は、値のない行、null の行、その他の行を表します。赤色は、エラー値を示します。 バーにマウス カーソルを合わせると、3 つのバケットそれぞれの正確な行数がヒントに表示されます。 データ品質バーでは対数スケールを使用するので、欠落データの分量を大まかに把握するには、常に実際の数値をチェックします。
+まず、各列の最上部にある [Data Quality Bar] (データ品質バー) に注目します。 緑色は、値のある行を表します。 灰色は、値のない行、null の行、その他の行を表します。赤色は、エラー値を示します。 バーにマウス カーソルを合わせると、3 つのバケットそれぞれの正確な行数がヒントに表示されます。 データ品質バーでは対数スケールを使用するので、欠落データの分量を大まかに把握するには、常に実際の数値をチェックします。
 
 ![columns](media/data-prep-getting-started/columns.png)
 
@@ -93,7 +93,7 @@ Data Preparation では、データ準備のための基本的な 5 ステップ
  
 
 #### <a name="step-3-transform-the-data"></a>ステップ 3: データの変換 ####
-変換では、現在の作業仮説を支持するために、データを変更し、データの実行を許可します。 変換は右側の [Step List] \(ステップ リスト) に [Steps] \(ステップ) として表示されます。 ステップ リスト内で任意の箇所をクリックすることにより、ステップ リスト内で “タイム トラベル” ができます。
+変換では、現在の作業仮説を支持するために、データを変更し、データの実行を許可します。 変換は右側の [Step List] \(ステップ リスト) に [Steps] (ステップ) として表示されます。 ステップ リスト内で任意の箇所をクリックすることにより、ステップ リスト内で “タイム トラベル” ができます。
 
 特定のステップの左側にある緑色のアイコンは、ステップが実行済みであり、データには変換の実行が反映されていることを示します。 ステップの左側の縦棒は、インスペクターにおけるデータの現在の状態を示します。
 

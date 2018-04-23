@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric クラスターのアップグレード | Microsoft Docs"
-description: "Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。 アップグレードを実行しているときに、どのようなことが起きるでしょうか?"
+title: Azure Service Fabric クラスターのアップグレード | Microsoft Docs
+description: Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。 アップグレードを実行しているときに、どのようなことが起きるでしょうか?
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
-ms.author: chackdan
-ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: aljo
+ms.openlocfilehash: 22dae85c4125c54003f65aba3ef112ffcec9b76d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレード
 > [!div class="op_single_selector"]
@@ -210,7 +210,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>クラスターを構成する VM の OS アップグレード
 クラスターの仮想マシンで OS イメージをアップグレードする必要がある場合は、一度に 1 つの VM で行う必要があります。 お客様がこのアップグレードを実行する必要があります。現時点では自動化はされていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
 * [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)

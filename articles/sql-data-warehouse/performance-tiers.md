@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse のパフォーマンス レベル | Microsoft Docs"
-description: "Azure SQL Data Warehouse で利用可能な弾力性用およびコンピューティング用に最適化されたパフォーマンス レベルの概要です。"
+title: Azure SQL Data Warehouse のパフォーマンス レベル | Microsoft Docs
+description: Azure SQL Data Warehouse で利用可能な弾力性用およびコンピューティング用に最適化されたパフォーマンス レベルの概要です。
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 03881c12faed723999e97431e4a69fdeb6bfa10d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Azure SQL Data Warehouse のパフォーマンス レベル (プレビュー)
 Azure SQL Data Warehouse では、分析ワークロード用に最適化された 2 つのパフォーマンス レベルが用意されています。 この記事では、ワークロードに最適なパフォーマンス レベルを選択するための、パフォーマンス レベルの概念について説明します。 

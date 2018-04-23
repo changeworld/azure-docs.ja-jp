@@ -1,12 +1,12 @@
 ---
-title: "Azure のデータベース セキュリティに関するベスト プラクティス | Microsoft Docs"
-description: "この記事では、Azure のデータベース セキュリティに関するベスト プラクティス一式を提供します。"
+title: Azure のデータベース セキュリティに関するベスト プラクティス | Microsoft Docs
+description: この記事では、Azure のデータベース セキュリティに関するベスト プラクティス一式を提供します。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3c019e8e1518c661eb75065f061ee681f0231efa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 
@@ -112,7 +112,7 @@ SQL Database は SQL 認証と Azure Active Directory 認証 (Azure AD Authentic
 セキュリティ管理者やデータベース管理者などの特権を持つユーザーは、TDE で暗号化されたデータベースのデータにもアクセスできるため、次の推奨事項にも従う必要があります。
 
 -   データベース レベルでの SQL 認証を有効にします。
--   [RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)を使用して Azure AD Authentication を使用します。
+-   [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/overview)を使用して Azure AD Authentication を使用します。
 -   ユーザーとアプリケーションは、別々のアカウントを使って認証する必要があります。 そうすることで、ユーザーとアプリケーションに付与されるアクセス許可を制限し、悪意のあるアクティビティのリスクを減らすことができます。
 -   固定データベース ロール (db_datareader、db_datawriter など) を使用してデータベース レベルのセキュリティを実装しますが、アプリケーション用のカスタム ロールを作成して、選択したデータベース オブジェクトに明示的なアクセス許可を付与することもできます。
 
@@ -166,7 +166,7 @@ Azure Portal でデータベースの脅威の検出を設定する方法につ�
 ## <a name="conclusion"></a>まとめ
 Azure データベースは、多くの組織や規制のコンプライアンス要件を満たすセキュリティ機能を豊富に備えた堅牢なデータベース プラットフォームです。 データへの物理的アクセスの制御と、Transparent Data Encryption、セルレベルの暗号化、行レベルのセキュリティによるファイル、列、または行レベルのデータ セキュリティの各種オプションの使用によって、データを保護することができます。 Always Encrypted によって、暗号化されたデータに対する操作も可能になり、アプリケーションの更新プロセスが簡略化されます。 そして、SQL Database のアクティビティの監査ログにアクセスして必要な情報を入手し、データがいつどのようにアクセスされているかを把握することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - ファイアウォール規則の詳細については、[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)に関するページを参照してください。
 - ユーザーとログインの詳細については、[ログインの管理](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)に関するページを参照してください。
 - チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial)」を参照してください。

@@ -1,25 +1,17 @@
 ---
-title: "Azure Search の容量計画 | Microsoft Docs"
-description: "Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。"
-services: search
-documentationcenter: 
+title: Azure Search の容量計画 | Microsoft Docs
+description: Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 1dc16afe-56f9-439d-8874-1733ae1a2b74
+manager: cgronlun
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: caca793b529d8025f3c6a994ea8598068ee1b053
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。

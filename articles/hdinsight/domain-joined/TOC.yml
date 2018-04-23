@@ -14,8 +14,12 @@
     - name: Hive ポリシーを構成する
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: ドメイン参加済みクラスターの管理
-      href: apache-domain-joined-manage.md
+    - name: VS Code を使用してドメイン参加済みクラスターにリンクする
+      href: ../hdinsight-for-vscode.md
+    - name: IntelliJ を使用してドメイン参加済みクラスターにリンクする
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+    - name: Eclipse を使用してドメイン参加済みクラスターにリンクする
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
 - name: データのセキュリティ保護
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true

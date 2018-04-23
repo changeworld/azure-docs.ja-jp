@@ -1,24 +1,18 @@
 ---
-title: "Azure Search でのページ検索結果の表示方法 | Microsoft Docs"
-description: "Microsoft Azure のホスト型クラウド検索サービスである Azure Search の改ページ。"
-services: search
-documentationcenter: 
+title: Azure Search でのページ検索結果の表示方法 | Microsoft Docs
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search の改ページ。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: a0a1d315-8624-4cdf-b38e-ba12569c6fcc
+manager: cgronlun
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 066358241b79f8bc0fb40e5e5b5989e561d9c909
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Azure Search でのページ検索結果の表示方法
 この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを、Azure Search サービス REST API を使用して実装する方法を説明します。

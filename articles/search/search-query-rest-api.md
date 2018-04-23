@@ -1,23 +1,17 @@
 ---
-title: "インデックスの照会 (REST API - Azure Search) | Microsoft Docs"
-description: "Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。"
-services: search
-documentationcenter: 
-manager: jhubbard
-author: ashmaka
-ms.assetid: 8b3ca890-2f5f-44b6-a140-6cb676fc2c9c
+title: インデックスの照会 (REST API - Azure Search) | Microsoft Docs
+description: Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 01/12/2017
-ms.author: ashmaka
-ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d6cba61c670d005b59c9bc88bd1c90399f29cc3d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]
@@ -25,7 +19,7 @@ ms.lasthandoff: 12/18/2017
 > * [概要](search-query-overview.md)
 > * [ポータル](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
+> * [REST](search-query-rest-api.md)
 >
 >
 

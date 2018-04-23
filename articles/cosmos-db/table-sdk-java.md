@@ -1,12 +1,12 @@
 ---
 title: Azure Cosmos DB Table API for Java | Microsoft Docs
-description: "リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。"
+description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
 services: cosmos-db
 documentationcenter: java
 author: yarong
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,18 +14,18 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: yaronyg
-ms.custom: 
-ms.openlocfilehash: 06ce541b42de2ad20014199a7e87fe3d8c2dfe01
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.custom: ''
+ms.openlocfilehash: ac699f3b0d8e0e352d7701682f832c53074b0238
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API for Java: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [Java](table-sdk-java.md)
-> * [Node.JS](table-sdk-nodejs.md)
+> * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
  
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/21/2017
 |---|---|
 |**SDK のダウンロード**|[ダウンロード オプション](https://github.com/azure/azure-storage-java#download)|
 |**API ドキュメント**|[Java API リファレンス ドキュメント](http://azure.github.io/azure-storage-java/)|
-|**SDK への協力**|[Github](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
+|**SDK への協力**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]
 > プレビュー中にテーブル API アカウントを作成した場合、一般公開されたテーブル API SDK を使うには[新しいテーブル API アカウント](create-table-dotnet.md#create-a-database-account)を作成してください。

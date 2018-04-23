@@ -1,11 +1,11 @@
 ---
-title: "初めてのデータ ファクトリの作成 (PowerShell) | Microsoft Docs"
-description: "このチュートリアルでは、Azure PowerShell を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
+title: 初めてのデータ ファクトリの作成 (PowerShell) | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使用して、サンプルの Azure Data Factory パイプラインを作成します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bea8f944e59774abdb70f0f1cad37cfe0749b195
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 915c2eb6be14520d8a6eeccf173ac30b70eca45b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/02/2018
 1. Azure PowerShell を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
    * 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```    
    * 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
     ```PowerShell

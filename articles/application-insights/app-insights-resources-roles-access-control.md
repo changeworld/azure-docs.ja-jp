@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights のリソース、ロール、アクセス制御 | Microsoft Docs"
-description: "組織の insights の所有者、共同作成者、閲覧者。"
+title: Azure Application Insights のリソース、ロール、アクセス制御 | Microsoft Docs
+description: 組織の insights の所有者、共同作成者、閲覧者。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6e811c9b427469fa781cf1f5b7c7deff3a8e6eb3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
-Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
+Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
 
 > [!IMPORTANT]
 > リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細情報](#access)。
@@ -81,7 +81,7 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 * Resources
 * Web tests
-* Alerts
+* アラート
 * 連続エクスポート
 
 #### <a name="select-the-user"></a>ユーザーを選択する
@@ -91,7 +91,7 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [Azure の役割基準のアクセス制御](../active-directory/role-based-access-control-configure.md)
+* [Azure の役割基準のアクセス制御](../role-based-access-control/role-assignments-portal.md)
 
 <!--Link references-->
 

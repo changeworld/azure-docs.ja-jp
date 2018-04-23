@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning データ準備で使用可能なサポートされているデータ変換先および出力先 | Microsoft Docs"
-description: "このドキュメントでは、Azure Machine Learning データ準備で使用可能なサポートされている変換先および出力先の完全な一覧を示します"
+title: Azure Machine Learning データ準備で使用可能なサポートされているデータ変換先および出力先 | Microsoft Docs
+description: このドキュメントでは、Azure Machine Learning データ準備で使用可能なサポートされている変換先および出力先の完全な一覧を示します
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 5451a5f525da845f97141a97241efb53ec42ff58
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-data-exports-for-this-preview"></a>このプレビューでサポートしているデータ エクスポート 
 いくつかの異なる形式にエクスポートすることができます。 これらの形式を使用して、Machine Learning ワークフローの残りの部分に結果を統合する前にデータ準備の中間結果を保持できます。

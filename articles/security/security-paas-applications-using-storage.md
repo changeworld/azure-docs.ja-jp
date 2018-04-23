@@ -1,12 +1,12 @@
 ---
-title: "Azure Storage を使用して PaaS アプリケーションをセキュリティで保護する | Microsoft Docs"
+title: Azure Storage を使用して PaaS アプリケーションをセキュリティで保護する | Microsoft Docs
 description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage のセキュリティ ベスト プラクティスについて説明します。 "
 services: security
 documentationcenter: na
 author: TomShinder
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomShinder
-ms.openlocfilehash: 16ee6d9d2f02c758d7682626a8b71a3ff17f841c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
 [Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)には、Azure Storage とセキュリティに関する詳細な情報が記載されています。  この記事では、セキュリティ ガイドに記載されているいくつかの概念をおおまかに説明し、セキュリティ ガイドへのリンクなど、詳細を確認するためのソースを紹介しています。
 
-## <a name="azure-storage"></a>Azure Storage (Azure Storage)
+## <a name="azure-storage"></a>Azure Storage
 Azure は、オンプレミスでは簡単に実現できない方法で、ストレージをデプロイして使用することを可能にしています。 Azure Storage を使用すれば、比較的少ない労力で高レベルのスケーラビリティと可用性を実現できます。 Azure Storage は、Windows と Linux の Azure Virtual Machines の基盤となるだけでなく、大規模な分散アプリケーションもサポートしています。
 
 Azure Storage では、4 つのサービスが提供されます。Blob Storage、Table Storage、Queue Storage、および File Storage です。 詳細については、「[Introduction to Microsoft Azure Storage (Microsoft Azure Storage の概要)](../storage/storage-introduction.md)」をご覧ください。
@@ -75,7 +75,7 @@ SAS を使用すれば、ストレージ アカウント キーを知らせる�
 
 Shared Access Signature (SAS) を使用すれば、ストレージ アカウント キーを知らせずに、ストレージ アカウントのオブジェクトに制限付きでアクセスする権限を他のクライアントに付与できることは既に述べました。 ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。 別の方法でアクセスを管理した方が容易である場合もあります。
 
-アクセスを管理する別の方法として、[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) (RBAC) を使用する方法があります。 RBAC を使用すれば、知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、実際に必要となるアクセス許可を従業員に付与することに注力できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 RBAC は、Azure の詳細なアクセス管理によってこの問題を解決します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。
+アクセスを管理する別の方法として、[Azure のロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) を使用する方法があります。 RBAC を使用すれば、知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、実際に必要となるアクセス許可を従業員に付与することに注力できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 RBAC は、Azure の詳細なアクセス管理によってこの問題を解決します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。
 
 Azure の組み込み RBAC ロールを利用して、ユーザーに権限を割り当てることができます。 クラウド事業者は、ストレージ アカウントを管理する必要がある場合はストレージ アカウント共同作業者ロール、従来のストレージ アカウントを管理する場合は従来のストレージ アカウント共同作業者ロールの使用を検討してください。 VM を管理する必要はあるが接続先の仮想ネットワークまたはストレージ アカウントを管理する必要がないというクラウド事業者は、作業者に仮想マシン共同作業者ロールを追加することを検討してください。
 
@@ -83,8 +83,8 @@ RBAC などの機能を利用したデータ アクセス制御を適用しな�
 
 RBAC の詳細については、次の記事をご覧ください。
 
-- [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
-- [Azure ロールベースのアクセス制御の組み込みロール](../active-directory/role-based-access-built-in-roles.md)
+- [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
+- [Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)
 - RBAC を使用してストレージ アカウントをセキュリティ保護する方法の詳細については、[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)をご覧ください。
 
 ## <a name="storage-encryption"></a>ストレージ暗号化
@@ -104,7 +104,7 @@ Azure Disk Encryption は、Windows と Linux の IaaS 仮想マシン ディス
 ### <a name="storage-service-encryption"></a>Storage Service Encryption
 File Storage の [Storage Service Encryption](../storage/storage-service-encryption.md) を有効にすると、データは自動的に AES-256 暗号化で暗号化されます。 Microsoft がすべての暗号化、復号化、キー管理を処理します。 この機能は、LRS と GRS という種類の冗長性を使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 
 - [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)

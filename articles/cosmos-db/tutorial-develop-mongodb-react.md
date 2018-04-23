@@ -1,25 +1,25 @@
 ---
-title: "Azure を対象とした MongoDB、React、Node.js のチュートリアル | Microsoft Docs"
-description: "このチュートリアル シリーズでは、React と Node.js で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成する方法について、動画を交えながら説明しています。"
+title: Azure を対象とした MongoDB、React、Node.js のチュートリアル | Microsoft Docs
+description: このチュートリアル シリーズでは、React と Node.js で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成する方法について、動画を交えながら説明しています。
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 96cd397a7f04fe579b9c6331423abe107ad1c6d9
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: c2cb4b30cb056303c07d5e82861e4022489c7072
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/05/2017
 これと同じアプリを Angular で作成する方法については、 [Angular のチュートリアル ビデオ シリーズ](tutorial-develop-mongodb-nodejs.md)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-* [Node.JS](https://www.nodejs.org)
+* [Node.js](https://www.nodejs.org)
 
 ### <a name="finished-project"></a>完全なプロジェクト
 完成したアプリケーションは、[GitHub から](https://github.com/Azure-Samples/react-cosmosdb)ダウンロードできます。
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/05/2017
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

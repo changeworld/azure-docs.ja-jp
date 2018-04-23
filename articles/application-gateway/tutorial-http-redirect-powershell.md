@@ -1,6 +1,6 @@
 ---
-title: "HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs"
-description: "Azure PowerShell を使用して、HTTP から HTTPS にトラフィックがリダイレクトされるアプリケーション ゲートウェイを作成する方法について説明します。"
+title: HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
+description: Azure PowerShell を使用して、HTTP から HTTPS にトラフィックがリダイレクトされるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: davidmu
-ms.openlocfilehash: a831171b267cca1ffdbf8eef33baafa71dd9bd79
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d67ed204ee263c139b09232b63ad18a85af1e82e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Azure PowerShell を使用して HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -32,7 +32,7 @@ Azure PowerShell を使用して、SSL 終了の証明書を使って[アプリ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 このチュートリアルでコマンドを実行するには、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 このチュートリアルでコマンドを実行するには、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
@@ -320,7 +320,7 @@ Update-AzureRmVmss `
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、アプリケーション ゲートウェイのパブリック IP アドレスを取得できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 例: http://52.170.203.149
+[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、アプリケーション ゲートウェイのパブリック IP アドレスを取得できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、http://52.170.203.149 のように指定します。
 
 ```powershell
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

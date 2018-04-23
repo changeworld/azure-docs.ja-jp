@@ -3,7 +3,7 @@ title: Azure Cosmos DB のスケールとパフォーマンスのテスト | Mic
 description: Azure Cosmos DB のスケールとパフォーマンスをテストする方法について説明します
 keywords: パフォーマンス テスト
 services: cosmos-db
-author: arramac
+author: SnehaGunda
 manager: kfile
 editor: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
-ms.author: arramac
-ms.openlocfilehash: 40088ca4d97a3fe1b2bc325a26e25ab68729ebbd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: 3b908f1df9228505b2f3bce18bd42d9b502844c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 

@@ -1,22 +1,17 @@
 ---
-title: "Azure Search でのシノニム プレビュー チュートリアル | Microsoft Docs"
-description: "Azure Search のインデックスにシノニム プレビュー機能を追加します。"
-services: search
-manager: jhubbard
-documentationcenter: 
+title: Azure Search でのシノニム プレビュー チュートリアル | Microsoft Docs
+description: Azure Search のインデックスにシノニム プレビュー機能を追加します。
+manager: cgronlun
 author: HeidiSteen
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.date: 03/31/2017
 ms.author: heidist
-ms.openlocfilehash: 014959ed471f796d2184f0f8ff10d15cdc8a2ec6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5614b0253b43938b5079515899590c7c560d232c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="synonym-preview-c-tutorial-for-azure-search"></a>Azure Search のシノニム (プレビュー) C# チュートリアル
 
@@ -162,7 +157,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ## <a name="sample-application-source-code"></a>サンプル アプリケーションのソース コード
 このチュートリアルで使用したサンプル アプリケーションの完全なソース コードが [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) にあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Search でのシノニムの使用方法](search-synonyms.md)を調べる
 * [シノニムの REST API ドキュメント](https://aka.ms/rgm6rq)を調べる

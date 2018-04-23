@@ -3,7 +3,7 @@ title: SMB を使用して Linux VM に Azure File Storage をマウントする
 description: Azure CLI 2.0 で SMB を使用して Linux VM に Azure File Storage をマウントする方法
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: vlivech
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
-ms.author: v-livech
-ms.openlocfilehash: de200c9b18b9d27325bcb92e0d27e83ad7c65811
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: iainfou
+ms.openlocfilehash: 01e18103f9e94615357ff3b9c4be7f2473763a57
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
-この記事では、Azure CLI 2.0 で SMB マウントを使用して、Linux VM で Azure File Storage サービスを利用する方法を説明します。 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 これらの手順は、[Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。 要件は次のとおりです。
+この記事では、Azure CLI 2.0 で SMB マウントを使用して、Linux VM で Azure File Storage サービスを利用する方法を説明します。 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 これらの手順は、[Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md) を使用して実行することもできます。 要件は次のとおりです。
 
 - [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 - [SSH パブリック キー ファイルおよびプライベート キー ファイル](mac-create-ssh-keys.md)
@@ -49,14 +49,14 @@ mkdir -p /mnt/mymountpoint
 ### <a name="mount-the-file-storage-smb-share-to-the-mount-point"></a>File Storage SMB 共有をマウント ポイントにマウントする
 
 ```bash
-sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ### <a name="persist-the-mount-after-a-reboot"></a>再起動後もマウントを維持する
 これを行うには、`/etc/fstab` に次の行を追加します。
 
 ```bash
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+//myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
@@ -121,7 +121,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
     SMB 共有のマウント先となる、Linux ファイル システムのローカル ディレクトリを作成します。 ローカル マウント ディレクトリに書き込まれるファイルや読み取られるファイルは、File Storage でホストされる SMB 共有に転送されます。 /mnt/mymountdirectory にローカル ディレクトリを作成するには、次の例を使用します。
 
     ```bash
-    sudo mkdir -p /mnt/mymountdirectory
+    sudo mkdir -p /mnt/mymountpoint
     ```
 
 6. ローカル ディレクトリに SMB 共有をマウントします。
@@ -129,7 +129,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
     次の例のように、マウントの資格情報として独自のストレージ アカウント ユーザー名とストレージ アカウント キーを指定します。
 
     ```azurecli
-    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
+    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountpoint -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
     ```
 
 7. 再起動中に SMB マウントを維持します。
@@ -137,11 +137,11 @@ File Storage でホストされている SMB マウントに VM からファイ�
     Linux VM を再起動すると、マウントされた SMB 共有はシャットダウン中にマウント解除されます。 起動時に SMB 共有を再マウントするには、Linux の /etc/fstab に行を追加します。 Linux では、fstab ファイルを使用して、起動プロセスでマウントする必要があるファイル システムを示します。 SMB 共有を追加することによって、File Storage 共有は Linux VM に永続的にマウントされるファイル システムとして設定されます。 File Storage SMB 共有を新しい VM に追加するには、cloud-init を使用します。
 
     ```bash
-    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
 ## <a name="next-steps"></a>次の手順
 
-- [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Linux VM へのディスクの追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
+- [Linux VM へのディスクの追加](add-disk.md)
+- [Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md)

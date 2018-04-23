@@ -14,13 +14,13 @@
       href: quick-create-cli.md
 - name: チュートリアル
   items:
-    - name: ネットワーク トラフィックをフィルター処理する
+    - name: ネットワーク トラフィックのフィルター処理
       href: tutorial-filter-network-traffic.md
     - name: ネットワーク トラフィックをルーティングする
       href: tutorial-create-route-table-portal.md
     - name: リソースへのネットワーク アクセスを制限する
       href: tutorial-restrict-network-access-to-resources.md
-    - name: 仮想ネットワークを接続する
+    - name: 仮想ネットワークの接続
       href: tutorial-connect-virtual-networks-portal.md
 - name: サンプル
   items:
@@ -28,6 +28,8 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Resource Manager テンプレート
+      href: template-samples.md
 - name: 概念
   items:
     - name: セキュリティ
@@ -70,16 +72,12 @@
               href: tutorial-filter-network-traffic-cli.md
             - name: Azure ポータル
               href: virtual-networks-create-nsg-arm-pportal.md
-            - name: テンプレート
-              href: virtual-networks-create-nsg-arm-template.md
         - name: ルート テーブル
           items:
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
-            - name: テンプレート
-              href: virtual-network-create-udr-arm-template.md
         - name: サービス エンドポイント
           items:
             - name: Azure PowerShell
@@ -110,8 +108,6 @@
                   href: virtual-network-deploy-static-pip-arm-ps.md
                 - name: Azure CLI
                   href: virtual-network-deploy-static-pip-arm-cli.md
-                - name: テンプレート
-                  href: virtual-network-deploy-static-pip-arm-template.md
             - name: VM の作成 - 静的プライベート IP アドレス
               items:
                 - name: Azure ポータル
@@ -126,8 +122,6 @@
                   href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                 - name: Azure CLI
                   href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: テンプレート
-                  href: virtual-network-deploy-multinic-arm-template.md
             - name: VM の作成 - 複数の IP アドレス
               items:
                 - name: Azure ポータル
@@ -136,8 +130,6 @@
                   href: virtual-network-multiple-ip-addresses-powershell.md
                 - name: Azure CLI
                   href: virtual-network-multiple-ip-addresses-cli.md
-                - name: テンプレート
-                  href: virtual-network-multiple-ip-addresses-template.md
             - name: VM の作成 - 高速ネットワーク
               items:
                 - name: Azure PowerShell
@@ -190,11 +182,7 @@
             - name: ピアリング
               href: virtual-network-manage-peering.md
             - name: DDoS 保護
-              items:
-                - name: Azure ポータル
-                  href: ddos-protection-manage-portal.md
-                - name: Azure PowerShell
-                  href: ddos-protection-manage-ps.md
+              href: manage-ddos-protection.md
         - name: ネットワーク セキュリティ グループ
           href: manage-network-security-group.md
           items:

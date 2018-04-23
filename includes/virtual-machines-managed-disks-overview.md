@@ -24,7 +24,7 @@ Azure ディスクは、99.999% の可用性で設計されています。 3 つ
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) を使用して、管理ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、管理ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用して管理ディスクをコピーできないようにする場合は、その管理ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 
 ### <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート
 Managed Disks で Azure Backup サービスを使用して、時間ベースのバックアップ、VM の簡易復元、バックアップ リテンション期間ポリシーを適用したバックアップ ジョブを作成できます。 Managed Disks は、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートしています。つまり、1 つのリージョン内にデータのコピーを 3 つ保持します。 地域的な障害復旧では、[Azure Backup サービス](../articles/backup/backup-introduction-to-azure-backup.md)と GRS ストレージ アカウントをバックアップ コンテナーとして使用して VM ディスクを別のリージョンにバックアップする必要があります。 現在 Azure Backup では、最大 1 TB のデータ ディスク サイズがサポートされます。 詳細については、[Managed Disks を使用する VM での Azure Backup サービスの使用](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するセクションをご覧ください。
@@ -104,8 +104,7 @@ Managed Disks に関して説明する暗号化には 2 つの種類がありま
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-[Azure Storage Service Encryption ](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、管理ディスクを使用できるすべてのリージョンのすべての管理ディスク、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべての管理ディスク、スナップショット、イメージおよび既存の管理ディスクに書き込まれた新しいデータは、既定でマイクロソフトが管理するキーで自動的に暗号化されます。 Azure BLOB や Azure Files の暗号化に独自のキーを使用することもできます。 テーブルとキューの暗号化には、常にマイクロソフトが管理するキーが使用されます。
-Storage Service Encryption を有効にした後は新しいデータのみが暗号化され、このストレージ アカウントの既存のファイルはすべて、バックグラウンドの暗号化プロセスで遡及的に暗号化されます。 詳細については、「[管理ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+[Azure Storage Service Encryption ](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、管理ディスクを使用できるすべてのリージョンのすべての管理ディスク、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべての管理ディスク、スナップショット、イメージおよび既存の管理ディスクに書き込まれた新しいデータは、既定でマイクロソフトが管理するキーで自動的に暗号化されます。 詳細については、「[管理ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)

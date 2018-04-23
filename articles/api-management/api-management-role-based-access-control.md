@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c775780a39c4d423c62bf88f55d35675c70442c7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bf01cf4fe5d7c7219fa7c53e54db60cd4bafb928
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management でロールベースのアクセス制御を使用する方法
 Azure API Management では、Azure の ロールベースのアクセス制御 (RBAC) を使用して、API Management のサービスとエンティティ (API やポリシーなど) に関するきめ細かいアクセス管理を可能にしています。 この記事では、API Management における組み込みロールとカスタム ロールについて説明します。 Azure ポータルでのアクセス管理の詳細については、「[Azure ポータルでのアクセス管理の概要](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)」を参照してください。
@@ -26,7 +26,7 @@ Azure API Management では、Azure の ロールベースのアクセス制御 
 ## <a name="built-in-roles"></a>組み込みのロール
 API Management には、現在、組み込みロールが 3 つ提供されており、近い将来、さらに 2 つのロールが追加されます。 これらのロールは、サブスクリプション、リソース グループ、および個々の API Management インスタンスなどのさまざまなスコープで割り当てることができます。 たとえば、"Azure API Management サービスのリーダー" ロールをリソース グループ レベルのユーザーに割り当てた場合、そのユーザーはリソース グループ内のすべての API Management インスタンスに読み取りアクセスを行うことができます。 
 
-次の表に、組み込みのロールについての簡単な説明を示します。 これらのロールは Azure ポータルや、Azure [PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)、[Azure CLI](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli)、[REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest) などのツールを使用して割り当てることができます。 組み込みロールを割り当てる方法の詳細については、[ロール割り当てを使用した Azure サブスクリプション リソースへのアクセス管理](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)に関するページを参照してください。
+次の表に、組み込みのロールについての簡単な説明を示します。 これらのロールは Azure ポータルや、Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、[REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) などのツールを使用して割り当てることができます。 組み込みロールを割り当てる方法の詳細については、[ロール割り当てを使用した Azure サブスクリプション リソースへのアクセス管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)に関するページを参照してください。
 
 | 役割          | 読み取りアクセス<sup>[1]</sup> | 書き込みアクセス<sup>[2]</sup> | サービスの作成、削除、スケーリング、VPN、カスタム ドメインの構成 | 以前のパブリッシャー ポータルへのアクセス | [説明]
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -43,7 +43,7 @@ API Management には、現在、組み込みロールが 3 つ提供されて�
 <sup>\* 既存の発行者ポータルから Azure ポータルへすべての管理者 UI を移行すると、サービス エディターのロールが利用可能になります。コンテンツ マネージャー ロールは、発行者ポータルが開発者ポータルの管理に関連する特定の機能のみを含むようリファクタリングされた後、利用可能になります。</sup>  
 
 ## <a name="custom-roles"></a>カスタム ロール
-特定のニーズを満たす組み込みロールがない場合は、カスタム ロールを作成して、API Management エンティティのアクセス管理をより詳細にすることができます。 たとえば、API Management サービスへの読み取り専用アクセス権はあるが、特定の 1 つの API にしか書き込みアクセス権がないカスタム ロールを作成できます。 カスタム ロールの詳細については、「[Azure RBAC のカスタム ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)」を参照してください。 
+特定のニーズを満たす組み込みロールがない場合は、カスタム ロールを作成して、API Management エンティティのアクセス管理をより詳細にすることができます。 たとえば、API Management サービスへの読み取り専用アクセス権はあるが、特定の 1 つの API にしか書き込みアクセス権がないカスタム ロールを作成できます。 カスタム ロールの詳細については、「[Azure RBAC のカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。 
 
 カスタム ロールを作成するときは、いずれかの組み込みロールを土台にすると簡単です。 **Actions**、**NotActions**、または **AssignableScopes** を追加して属性を編集した後、変更内容を新しいロールとして保存します。 次の例では、"Azure API Management Service Reader (Azure API Management サービスのリーダー)" ロールから、"Calculator API Editor (Calculator API の編集者)" という名前のカスタム ロールを作成します。 このカスタム ロールを、特定の API に割り当てることができます。 その結果、このロールは、その API にのみアクセスできます。 
 
@@ -59,7 +59,7 @@ New-AzureRmRoleDefinition -Role $role
 New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionName 'Calculator API Contributor' -Scope '/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>'
 ```
 
-記事「[Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md#microsoftapimanagement)」に、API Management レベルで許可できる権限の一覧が含まれています。
+記事「[Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)」に、API Management レベルで許可できる権限の一覧が含まれています。
 
 ## <a name="video"></a>ビデオ
 
@@ -71,8 +71,8 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
 ## <a name="next-steps"></a>次の手順
 
 Azure でのロールベースのアクセス制御の詳細については、次の記事を参照してください。
-  * [Azure Portal でのアクセス管理の概要](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)
-  * [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)
-  * [Azure RBAC のカスタム ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)
-  * [Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md#microsoftapimanagement)
+  * [Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)
+  * [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)
+  * [Azure RBAC のカスタム ロール](../role-based-access-control/custom-roles.md)
+  * [Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
 

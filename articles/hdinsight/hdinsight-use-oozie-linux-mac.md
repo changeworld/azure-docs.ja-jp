@@ -1,8 +1,8 @@
 ---
-title: "Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する | Microsoft Docs"
-description: "Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
+title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する | Microsoft Docs
+description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 53c249c24af774499becdf18350ff75dbc2ab861
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 586879c949a2acf5e84c0947864910fe120052ff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -692,7 +690,7 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 **解決方法**: ジョブが使う Blob Storage アドレスを変更します。
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie is not allowed to impersonate &lt;USER> (Oozie は &lt;USER> の偽装を許可されていません)
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie is not allowed to impersonate &lt;USER&gt; (Oozie は &lt;USER&gt; の偽装を許可されていません)
 
 **現象**: ジョブの状態が **SUSPENDED** に変更されます。 ジョブの詳細に、`RunHiveScript` の状態が **START_MANUAL** と示されます。 アクションを選ぶと、次のエラー メッセージが表示されます。
 

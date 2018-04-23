@@ -1,26 +1,24 @@
 ---
-title: "HBase .NET SDK の使用 - Azure HDInsight | Microsoft Docs"
-description: "HBase .NET SDK を使用して、テーブルの作成と削除、およびデータの読み取りと書き込みを行います。"
+title: HBase .NET SDK の使用 - Azure HDInsight | Microsoft Docs
+description: HBase .NET SDK を使用して、テーブルの作成と削除、およびデータの読み取りと書き込みを行います。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 083150fe5f8787ba791d3d692db73c5156f11e55
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: a1b9cd3fd9dbad5d8f27027a97c284b1bc3ba783
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-hbase-net-sdk"></a>HBase .NET SDK の使用
 

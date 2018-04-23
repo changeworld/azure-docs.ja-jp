@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services チュートリアル - レッスン 13: デプロイする | Microsoft Docs"
-description: "Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアル - レッスン 13: デプロイする | Microsoft Docs'
+description: Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 251795f394d30418e1c03ec7b92fec40a75b2c3d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 889cc4224e2ffe31e15590c04c3dbf4b656bc386
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy"></a>デプロイ
 

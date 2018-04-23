@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning の Azure データ ソース ウィザード | Microsoft Docs"
-description: "AML Workbench のデータ ソース ウィザードについて説明します"
+title: Azure Machine Learning の Azure データ ソース ウィザード | Microsoft Docs
+description: AML Workbench のデータ ソース ウィザードについて説明します
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
 ms.openlocfilehash: 4f9a2249142220f3c57cb2e479a175d4227749fd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-source-wizard"></a>データ ソース ウィザード #
 
@@ -22,7 +22,7 @@ Data Source Wizard は、コードなしでデータセットを Azure ML Workbe
 
 ## <a name="step-1-trigger-the-data-source-wizard"></a>ステップ 1: データ ソース ウィザードの起動 ## 
 
-データ ソース ウィザードを使用してプロジェクトにデータを取り込みます。 データ ビューで検索ボックスの横にある **+** ボタンを選択して、[Add Data Source] \(データ ソースの追加) を選択します。 
+データ ソース ウィザードを使用してプロジェクトにデータを取り込みます。 データ ビューで検索ボックスの横にある **+** ボタンを選択して、[Add Data Source] (データ ソースの追加) を選択します。 
 
 ![データ ソースの追加](media/data-source-wizard/add-data-source.png)
 
@@ -36,7 +36,7 @@ Data Source Wizard は、コードなしでデータセットを Azure ML Workbe
 
 パスを入力するか、**[Browse…] \(参照...)**  ボタンをクリックして参照することによってパスを指定します。 ディレクトリまたは 1 つ以上のファイルを参照できます。
 
-残りのステップを省略する場合は **[Finish] \(完了)** をクリックし、次のステップに進む場合は [Next] \(次へ) をクリックします。
+残りのステップを省略する場合は **[Finish] (完了)** をクリックし、次のステップに進む場合は [Next] (次へ) をクリックします。
 
 
 ![ステップ 4](media/data-source-wizard/step2.png)
@@ -64,7 +64,7 @@ Data Source Wizard は、コードなしでデータセットを Azure ML Workbe
 -     ランダムの行割合
 -     ファイル全体
 
-サンプリング方法は必要な数だけ指定できますが、データを準備するときにアクティブに設定できるのは 1 つの方法だけです。 方法を選択してツールバーの [Set as Active] \(アクティブに設定) をクリックすることにより、任意の方法をアクティブに設定できます。
+サンプリング方法は必要な数だけ指定できますが、データを準備するときにアクティブに設定できるのは 1 つの方法だけです。 方法を選択してツールバーの [Set as Active] (アクティブに設定) をクリックすることにより、任意の方法をアクティブに設定できます。
 
 データの元の場所によっては、一部の方法がサポートされない場合があります。 サンプリングの詳細については、[こちらのドキュメント](data-prep-user-guide.md)の「サンプリング」のセクションを参照してください。 
 

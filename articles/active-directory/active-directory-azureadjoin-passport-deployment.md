@@ -1,9 +1,9 @@
 ---
-title: "組織での Microsoft Windows Hello for Business の有効化 | Microsoft Docs"
-description: "組織で Microsoft Passport を有効にするためのデプロイメント手順"
+title: 組織での Microsoft Windows Hello for Business の有効化 | Microsoft Docs
+description: 組織で Microsoft Passport を有効にするためのデプロイメント手順
 services: active-directory
-documentationcenter: 
-keywords: "Microsoft Passport、Microsoft Windows Hello for Business デプロイの構成"
+documentationcenter: ''
+keywords: Microsoft Passport、Microsoft Windows Hello for Business デプロイの構成
 author: MarkusVi
 manager: mtillman
 tags: azure-classic-portal
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>組織での Microsoft Windows Hello for Business の有効化
 [Windows 10 ドメイン参加済みデバイスを Azure Active Directory に接続](active-directory-azureadjoin-devices-group-policy.md)したら、以下の手順を実行して組織で Microsoft Windows Hello for Business を有効にします。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f91ebe0f94c57c9ad217ffe280f9aa0a9aa6acb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -72,7 +72,7 @@ Azure RBAC ロールについては、サブスクリプション管理者、リ
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management の概要 (エントリ ポイント)
 
-Azure AD Privileged Identity Management は、Azure AD ディレクトリのロールおよび Azure リソース (プレビュー) のロールの管理を支援します。 Azure リソースに使用されるロールの機能は、Azure AD における管理者ロールとは異なります。 Azure リソース ロールでは、その割り当て先となるリソースとその階層におけるすべての下位リソース (継承) を対象とした、きめ細かなアクセス許可が得られます。 RBAC、リソース階層、継承について詳しくは[こちら](role-based-access-control-configure.md)を参照してください。 Azure AD ディレクトリ ロールと Azure リソース (プレビュー) のどちらについても、PIM の管理は、エントリ ポイント (PIM の概要) の左側のナビゲーション メニューにある [管理] セクションで適切なリンクにアクセスして行います。
+Azure AD Privileged Identity Management は、Azure AD ディレクトリのロールおよび Azure リソース (プレビュー) のロールの管理を支援します。 Azure リソースに使用されるロールの機能は、Azure AD における管理者ロールとは異なります。 Azure リソース ロールでは、その割り当て先となるリソースとその階層におけるすべての下位リソース (継承) を対象とした、きめ細かなアクセス許可が得られます。 RBAC、リソース階層、継承について詳しくは[こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。 Azure AD ディレクトリ ロールと Azure リソース (プレビュー) のどちらについても、PIM の管理は、エントリ ポイント (PIM の概要) の左側のナビゲーション メニューにある [管理] セクションで適切なリンクにアクセスして行います。
 
 PIM はロールのアクティブ化、保留中のアクティブ化/要求の表示、保留中の承認 (Azure AD ディレクトリ ロールの場合) の表示のためのアクセスを簡単にし、左側のナビゲーション メニューの [タスク] セクションの応答に対する保留をレビューします。
 

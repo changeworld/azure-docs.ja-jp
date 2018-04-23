@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3eb6f08d89daec063841eeb5fff8479c9f2f41fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Azure Machine Learning Web サービスのパラメーターの使用
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。 状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、 *Web サービスのパラメーター*を使えばこのタスクを実行できます。 
@@ -52,8 +52,8 @@ Web サービスの API ドキュメントには、Web サービス アクセス
    * **[Please specify data destination]**で [Azure Blob Storage] を選択します。
    * **[Please specify authentication type]**の下の [アカウント] を選択します。
    * Azure BLOB ストレージのアカウント情報を入力します。 
-     <p />
-3. [Path to blob beginning with container parameter] \(コンテナー パラメーターから始まる BLOB のパス\) **の右にあるアイコンをクリックします**。 次のように表示されています。
+
+3. **[Path to blob beginning with container parameter]**の右にあるアイコンをクリックします。 次のように表示されています。
    
    ![Web サービスのパラメーター アイコン][icon]
    

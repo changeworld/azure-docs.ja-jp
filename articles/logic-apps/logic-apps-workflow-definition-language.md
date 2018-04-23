@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語スキーマ
 
@@ -126,14 +126,14 @@ outputs では、ワークフローの実行から返すことができる情報
 > [!NOTE]
 > 一部の式は、実行開始時には存在しない可能性のある値を実行時のアクションから取得します。 **関数**を使って、これらの値の一部を取得できます。  
   
-式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式であると特定されると、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使って文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
+式は、JSON 文字列値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式であると特定されると、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使って文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
-|"\@@\"|\"\@\" を含む 1 文字の文字列が返されます。|  
-|\" \@\"|" \@\" を含む 2 文字の文字列が返されます。|  
+|"@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
+|\" \@\"|\"  \@ \" を含む 2 文字の文字列が返されます。|  
   
 "*文字列の補間*" により、式が `@{ ... }` にラップされている文字列の内部で式を使うこともできます。 例:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
@@ -144,9 +144,9 @@ outputs では、ワークフローの実行から返すことができる情報
 |"@parameters('myString')"|`sampleString` が文字列として返されます。|  
 |"@{parameters('myString')}"|`sampleString` が文字列として返されます。|  
 |"@parameters('myNumber')"|`42` が "*数値*" として返されます。|  
-|"@{parameters('myNumber')}"|`42` が "*string*" として返されます。|  
-|"Answer is: @{parameters('myNumber')}"|string `Answer is: 42` が返されます。|  
-|"@concat('Answer is: ', string(parameters('myNumber')))"|string `Answer is: 42` が返されます。|  
+|"@{parameters('myNumber')}"|`42` が "*文字列*" として返されます。|  
+|"Answer is: @{parameters('myNumber')}"|文字列 `Answer is: 42` が返されます。|  
+|"@concat('Answer is: ', string(parameters('myNumber')))"|文字列 `Answer is: 42` が返されます。|  
 |"Answer is: @@{parameters('myNumber')}"|string `Answer is: @{parameters('myNumber')}` が返されます。|  
   
 ## <a name="operators"></a>演算子  

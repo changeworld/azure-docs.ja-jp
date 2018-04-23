@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services での認証とユーザーのアクセス許可 | Microsoft Docs"
-description: "Azure Analysis Services での認証とユーザーのアクセス許可について説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services での認証とユーザーのアクセス許可 | Microsoft Docs
+description: Azure Analysis Services での認証とユーザーのアクセス許可について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/active-directory-administer.md)に有効なユーザー ID が必要です。
@@ -69,7 +62,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ![Azure Portal の [アクセス制御 (IAM)]](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)」をご覧ください。 
+このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../role-based-access-control/overview.md)」をご覧ください。 
 
 
 ## <a name="database-roles"></a>データベース ロール
@@ -85,4 +78,4 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 [Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [サーバー管理者の管理](analysis-services-server-admins.md)  
-[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)  
+[ロールベースのアクセス制御](../role-based-access-control/overview.md)  

@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -21,7 +21,7 @@ Azure Portal を使って、Azure SQL Database のパフォーマンスを最適
 
 ## <a name="viewing-recommendations"></a>推奨事項の表示
 
-パフォーマンスの推奨事項を表示して適用するには、Azure の適切な[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)アクセス許可が必要です。 推奨事項を表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
+パフォーマンスの推奨事項を表示して適用するには、Azure の適切な[ロールベースのアクセス制御](../role-based-access-control/overview.md)アクセス許可が必要です。 推奨事項を表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
 
 Azure Portal でパフォーマンスに関する推奨事項を調べるには、次の手順のようにします。
 
@@ -154,5 +154,5 @@ Azure SQL Database は、データベースのパフォーマンス向上のた�
 ## <a name="additional-resources"></a>その他のリソース
 * [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)
+* [ロールベースのアクセス制御](../role-based-access-control/overview.md)
 

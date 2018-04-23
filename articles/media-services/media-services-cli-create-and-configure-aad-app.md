@@ -1,11 +1,11 @@
 ---
-title: "CLI 2.0 で Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する | Microsoft Docs"
-description: "このトピックでは、CLI 2.0 を使用して Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する方法を説明します。"
+title: CLI 2.0 で Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する | Microsoft Docs
+description: このトピックでは、CLI 2.0 を使用して Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する方法を説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 205e554fa42b1c28ed78add3e84c046855875872
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b640455b151d0e5d4701b8c076ee1a587b92f5b6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>CLI 2.0 で AAD アプリを作成し、Azure Media Services API にアクセスするよう構成する
 
@@ -61,7 +61,7 @@ az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role
 
 詳細については、「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)」を参照してください。
 
-また、「[Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理](../active-directory/role-based-access-control-manage-access-azure-cli.md)」も参照してください。 
+また、「[Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理](../role-based-access-control/role-assignments-cli.md)」も参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

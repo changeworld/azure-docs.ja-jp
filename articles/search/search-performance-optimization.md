@@ -1,24 +1,18 @@
 ---
-title: "Azure Search のパフォーマンスと最適化に関する考慮事項 | Microsoft Docs"
-description: "Azure Search のパフォーマンスを調整し、最適なスケールを構成します。"
-services: search
-documentationcenter: 
+title: Azure Search のパフォーマンスと最適化に関する考慮事項 | Microsoft Docs
+description: Azure Search のパフォーマンスを調整し、最適なスケールを構成します。
 author: LiamCavanagh
-manager: pablocas
-editor: 
-ms.assetid: 4d3cd864-29d2-4921-be0d-a3f1a819de46
+manager: jlembicz
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14f46e2f76268f4d865d9ea6b16e8eda047ffe31
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure Search のパフォーマンスと最適化に関する考慮事項
 優れた検索機能は、多くのモバイル アプリケーションと Web アプリケーションの成功の鍵となります。 不動産から中古車市場、オンライン カタログまで、高速検索と適切な結果はカスタマー エクスペリエンスに影響を及ぼします。 このドキュメントは、特に、スケーラビリティ、複数の言語のサポート、またはカスタム ランキングの非常に複雑な要件がある高度なシナリオで、Azure Search を最大限に活用する方法のベスト プラクティスを示すことを目的としています。  また、内部の概要を説明し、実際の顧客アプリで効果的に機能する方法についても説明します。
@@ -98,7 +92,7 @@ Azure Search では、[検索トラフィックの分析 (STA)](search-traffic-a
 
 STA は、その Azure Search の観点から待機時間の割合を把握するのに役立つツールです。  ログに記録されたクエリのパフォーマンス メトリックは、Azure Search でクエリが完全に処理されるまでの所要時間 (クエリが要求された時点から送信されるまでの時間) に基づいているので、これを使用して、待機時間の問題が Azure Search サービス側とサービスの外部 (ネットワーク待ち時間など) のどちらで発生しているのかを特定できます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 価格レベルと各レベルのサービスの制限の詳細については、「 [Azure Search サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
 
 パーティションとレプリカの組み合わせの詳細については、 [キャパシティ プランニング](search-capacity-planning.md) に関する記事をご覧ください。

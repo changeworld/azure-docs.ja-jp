@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning データ準備の使用方法に関する詳細ガイド | Microsoft Docs"
-description: "このドキュメントでは、Azure Machine Learning データ準備に関するデータの問題を解決する方法の概要と詳細について説明します"
+title: Azure Machine Learning データ準備の使用方法に関する詳細ガイド | Microsoft Docs
+description: このドキュメントでは、Azure Machine Learning データ準備に関するデータの問題を解決する方法の概要と詳細について説明します
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9fc0ae8929f12447123321a5c64ac89309c68dca
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-user-guide"></a>データ準備ユーザー ガイド 
 Azure Machine Learning データ準備には豊富な機能が搭載されています。 この記事では、その操作方法について深く掘り下げます。

@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用して、Azure リソースに MSI アクセスを割り当てる方法"
-description: "PowerShell を使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。"
+title: PowerShell を使用して、Azure リソースに MSI アクセスを割り当てる方法
+description: PowerShell を使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 36b95a1de64fe49a1225bd647ca963c8957fe160
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7074aeddaf5ff3e64c4ccb12c3bfbb53b54eea33
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>PowerShell を使用して、リソースに管理対象サービス ID (MSI) アクセスを割り当てる
 
@@ -35,10 +35,10 @@ MSI で Azure リソースを構成したら、他のセキュリティ プリ�
 
 [Azure VM などの](qs-configure-powershell-windows-vm.md) Azure リソースで MSI を有効にした後、次のようにします。
 
-1. `Login-AzureRmAccount` コマンドレットを使用して Azure にサインインします。 次のように、MSI を構成した Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. `Connect-AzureRmAccount` コマンドレットを使用して Azure にサインインします。 次のように、MSI を構成した Azure サブスクリプションに関連付けられているアカウントを使用します。
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 2. この例では、ストレージ アカウントに Azure VM アクセスを許可しています。 まず、[Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) を使用して "myVM" という VM のサービス プリンシパルを取得します。これは、MSI が有効になっているときに作成されたものです。 次に、[New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) を使用して、VM の「閲覧者」アクセスを "myStorageAcct" というストレージ アカウントに付与します。
 

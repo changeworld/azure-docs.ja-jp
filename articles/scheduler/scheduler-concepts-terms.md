@@ -1,11 +1,11 @@
 ---
-title: "Scheduler の概念、用語、およびエンティティ | Microsoft Docs"
-description: "Azure Scheduler の概念、用語、およびエンティティ階層構造 (ジョブやジョブ コレクションなど)。  スケジュールされたジョブの全体をまとめた例を示します。"
+title: Scheduler の概念、用語、およびエンティティ | Microsoft Docs
+description: Azure Scheduler の概念、用語、およびエンティティ階層構造 (ジョブやジョブ コレクションなど)。  スケジュールされたジョブの全体をまとめた例を示します。
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Scheduler の概念、用語集、エンティティ階層構造
 ## <a name="scheduler-entity-hierarchy"></a>Scheduler エンティティの階層構造
 次の表では、Scheduler API で公開または使用される主要なリソースについて説明します。
 
-| リソース | Description |
+| リソース | [説明] |
 | --- | --- |
 | **ジョブ コレクション** |ジョブ コレクションはジョブのグループを含み、コレクション内のジョブで共有される設定、クォータ、調整を保持します。 ジョブ コレクションは、サブスクリプションの所有者によって作成され、使用状況やアプリケーションの境界に基づいてジョブをグループ化します。 ジョブ コレクションは、1 つのリージョンに制限されます。 ジョブ コレクションでは、クォータを適用して、そのコレクション内のすべてのジョブの使用量を制限することもできます。 クォータには、MaxJobs と MaxRecurrence が含まれます。 |
 | **ジョブ** |ジョブは、単純または複雑な実行方法による単一の反復的な操作を定義します。 操作には、HTTP、ストレージ キュー、Service Bus キュー、Service Bus トピックの要求が含まれます。 |
@@ -176,7 +176,7 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 
 再試行ポリシーを設定する場合、再試行間隔 (**retryInterval**) と再試行回数 (**retryCount**) の 2 つの追加の設定を指定できます。
 
-**retryInterval** オブジェクトを使用して指定する再試行間隔は、再試行の間隔を示します。 既定値は 30 秒、最小構成可能値は 15 秒で、最大値は 18 か月です。 無料ジョブ コレクションのジョブの最小構成可能値は、1 時間です。  この値は、ISO 8601 形式で定義します。 同様に、 **retryCount** オブジェクトを使用して指定する再試行回数は、再試行を行う回数を示します。 既定値は 4、最大値は 20 です。 **retryInterval** と **retryCount** は、どちらも省略可能です。 **retryType** を **fixed** に設定し、値を明示的に指定しない場合、これらの設定では既定値が使用されます。
+**retryInterval** オブジェクトを使用して指定する再試行間隔は、再試行の間隔を示します。 既定値は 30 秒、最小構成可能値は 15 秒で、最大値は 18 か月です。 この値は、ISO 8601 形式で定義します。 同様に、 **retryCount** オブジェクトを使用して指定する再試行回数は、再試行を行う回数を示します。 既定値は 4、最大値は 20 です。 **retryInterval** と **retryCount** は、どちらも省略可能です。 **retryType** を **fixed** に設定し、値を明示的に指定しない場合、これらの設定では既定値が使用されます。
 
 ## <a name="see-also"></a>関連項目
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)

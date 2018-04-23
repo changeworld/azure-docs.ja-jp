@@ -1,13 +1,13 @@
 ---
-title: "Azure Portal からの関数アプリを作成する | Microsoft Docs"
-description: "ポータルで Azure App Service の新しい関数アプリを作成します。"
+title: Azure Portal からの関数アプリを作成する | Microsoft Docs
+description: ポータルで Azure App Service の新しい関数アプリを作成します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 4f9882ebc86b8119e6e683c7442ee3448a8d111b
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 4716d29a7b8c0830e2311398f033f8358ef24529
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から関数アプリを作成する
 
@@ -40,7 +40,7 @@ Azure Function App では、Azure App Service のインフラストラクチャ�
 
 Azure Functions には、従量課金プランと App Service プランの 2 つの異なるサービス プランがあります。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 App Service プランでは、関数アプリが App Service のすべての機能にアクセスできます。 サービス プランは関数アプリの作成時に選択する必要があり、現時点では変更できません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md)に関するページをご覧ください。
 
-App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-vcpu-app-service-plans) ページを参照してください。
+App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-vcpu-app-service-plans)」を参照してください。
 
 <a name="storage-account-requirements"></a>
 
@@ -51,9 +51,9 @@ App Service で関数アプリを作成するときに、BLOB、キュー、お�
 >[!NOTE]
 >従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
-ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)」を参照してください。 
+ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#azure-storage-services)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
 

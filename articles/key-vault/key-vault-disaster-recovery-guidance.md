@@ -1,11 +1,11 @@
 ---
-title: "Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 | Microsoft Docs"
-description: "Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。"
+title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 | Microsoft Docs
+description: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: adamglick
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
 ms.service: key-vault
 ms.workload: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: sumedhb;aglick
-ms.openlocfilehash: 1f19c4bba2152eb021831dedda734fd54ee78d75
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: aglick
+ms.openlocfilehash: 11c2fe5d4b84f99c3b0e303d1abeea73442f57aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 0c1c9364d6d7071e0aa454889417eeec3807f406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3a06374119851560d517704b817fb9bf18728059
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for MySQL を設計する
 
@@ -48,30 +48,6 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-## <a name="add-the-extension"></a>拡張機能の追加
-次のコマンドを使用して最新の Azure Database for MySQL 管理拡張機能を追加します。
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-正しいバージョンの拡張機能がインストールされていることを確認します。 
-```azurecli-interactive
-az extension list
-```
-
-返される JSON には、次の内容が含まれている必要があります。 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-バージョン 0.0.5 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成

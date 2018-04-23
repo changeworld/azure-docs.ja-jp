@@ -1,30 +1,24 @@
 ---
-title: "インデックスの照会 (ポータル - Azure Search) | Microsoft Docs"
-description: "Azure Portal の Search エクスプローラーで検索クエリを発行します。"
-services: search
-manager: jhubbard
-documentationcenter: 
-author: ashmaka
-ms.assetid: 8e524188-73a7-44db-9e64-ae8bf66b05d3
+title: インデックスの照会 (ポータル - Azure Search) | Microsoft Docs
+description: Azure Portal の Search エクスプローラーで検索クエリを発行します。
+manager: cgronlun
+author: HeidiSteen
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 07/10/2017
-ms.author: ashmaka
-ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: heidist
+ms.openlocfilehash: f952587150fa2d49709bdce6cbc5fe1a7aea16b1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Azure Portal の Search エクスプローラーを使用して Azure Search インデックスを照会する
 > [!div class="op_single_selector"]
 > * [概要](search-query-overview.md)
 > * [ポータル](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
+> * [REST](search-query-rest-api.md)
 > 
 > 
 
@@ -60,7 +54,7 @@ Search エクスプローラーを使用している場合は、[クエリ パ�
 
    ![](./media/search-explorer/search-bar.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 クエリ構文のその他の情報や例については、次のリソースを参照してください。
 

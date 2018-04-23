@@ -1,6 +1,6 @@
 ---
-title: "ネットワーク セキュリティ グループの作成 - Azure Resource Manager テンプレート | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して、ネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
+title: ネットワーク セキュリティ グループの作成 - Azure Resource Manager テンプレート | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、ネットワーク セキュリティ グループを作成してデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fc210ac5e28efe10be27f8b5a752788d3d5a5a3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してネットワーク セキュリティ グループを作成する
 

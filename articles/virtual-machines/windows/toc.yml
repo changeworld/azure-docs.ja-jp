@@ -421,6 +421,8 @@
           href: troubleshoot-activation-problems.md
         - name: 割り当ての失敗
           href: allocation-failure.md
+        - name: 割り当ての失敗 - クラシック VM
+          href: allocation-failure-classic.md
         - name: VM を再デプロイする
           href: redeploy-to-new-node.md
         - name: 一般的なエラー メッセージ

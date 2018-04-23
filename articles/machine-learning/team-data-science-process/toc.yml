@@ -51,10 +51,10 @@
         - name: センチメント分類
           href: predict-twitter-sentiment.md
         - name: 米国の所得の分類
-          href: ../preview/scenario-tdsp-classifying-us-incomes.md
+          href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: 生体エンティティの認識
-          href: ../preview/scenario-tdsp-biomedical-recognition.md
+          href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
     - name: PySpark と Scala を使用した Spark
       href: walkthroughs-spark.md
@@ -82,7 +82,7 @@
 - name: 方法
   items:
     - name: Azure ML での TDSP の使用
-      href: ../preview/how-to-use-tdsp-in-azure-ml.md
+      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
       maintainContext: true
     - name: データ サイエンス環境の設定
       href: environment-setup.md

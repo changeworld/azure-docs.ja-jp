@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化 | Microsoft Docs"
-description: "このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します"
+title: Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化 | Microsoft Docs
+description: このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c9450099ad3561611796a9b45157932f9ac85a9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 
@@ -139,7 +139,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 
 ## <a name="retrieve-security-group-view"></a>セキュリティ グループ ビューの取得
 
-次の手順では、セキュリティ グループ ビューの結果を取得します。 この結果は、先ほど表示した "基準" の json と比較されます。
+次に、セキュリティ グループ ビューの結果を取得します。 この結果は、先ほど表示した "基準" の json と比較されます。
 
 ```powershell
 $secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -185,9 +185,9 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-設定が変更されている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関するページを参照して、問題があるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
+設定が変更されている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関するページを参照して、問題があるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
 
 
 

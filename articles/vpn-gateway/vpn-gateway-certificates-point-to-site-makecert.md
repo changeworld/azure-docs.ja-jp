@@ -1,13 +1,13 @@
 ---
-title: "ポイント対サイトの証明書の作成とエクスポート: MakeCert : Azure | Microsoft Docs"
-description: "MakeCert を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行います。"
+title: 'ポイント対サイトの証明書の作成とエクスポート: MakeCert : Azure | Microsoft Docs'
+description: MakeCert を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、クライアント証明書の生成を行います。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/14/2018
 > * [自己署名証明書の作成 - PowerShell](vpn-gateway-certificates-point-to-site.md)
 > * [自己署名証明書の作成 - Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 > * [ポイント対サイトの構成 - Resource Manager - Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [ポイント対サイトの構成 - Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+> * [ポイント対サイトの構成 - リソース マネージャー - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [ポイント対サイトの構成 - クラシック - Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 > 
 > 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 
-次の手順では、MakeCert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 Resource Manager とクラシックの両方で有効です。
+次の手順では、MakeCert を使用して自己署名証明書を作成する方法を説明します。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
 1. [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx) をダウンロードし、インストールします。
 2. インストール後、makecert.exe ユーティリティは通常、C:\Program Files (x86)\Windows Kits\10\bin\<arch> で見つかります。 ただし、別の場所にインストールされている場合もあります。 管理者としてコマンド プロンプトを開き、MakeCert ユーティリティの場所に移動します。 次の例を使って、適切な場所に調整できます。
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="create-and-install-client-certificates"></a>クライアント証明書の作成とインストール
 
-自己署名証明書をクライアント コンピューターに直接インストールすることはしません。 自己署名証明書からクライアント証明書を生成し、 生成したクライアント証明書をエクスポートして、クライアント コンピューターにインストールします。 これらの手順は、デプロイ モデル固有のものではありません。 Resource Manager とクラシックの両方で有効です。
+自己署名証明書をクライアント コンピューターに直接インストールすることはしません。 自己署名証明書からクライアント証明書を生成し、 生成したクライアント証明書をエクスポートして、クライアント コンピューターにインストールします。 これらの手順は、デプロイ モデル固有のものではありません。 リソース マネージャーとクラシックの両方で有効です。
 
 ### <a name="clientcert"></a>クライアント証明書の生成
 

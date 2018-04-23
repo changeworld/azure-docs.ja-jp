@@ -1,10 +1,10 @@
 ---
-title: "管理グループを変更、削除、または管理する方法 - Azure | Microsoft Docs"
-description: "管理グループ階層をメンテナンスおよび更新する方法を説明します。"
+title: 管理グループを変更、削除、または管理する方法 - Azure | Microsoft Docs
+description: 管理グループ階層をメンテナンスおよび更新する方法を説明します。
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 33797ddcd2a6ff083c5fb4b2fa7ddb8f9d6bd76c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する 
-管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを変更、削除、管理して、[Azure Policy](../azure-policy/azure-policy-introduction.md) と [Azure ロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) で使用できる階層を作成できます。 管理グループについて詳しくは、「[Organize your resources with Azure management groups](management-groups-overview.md)」(Azure 管理グループでリソースを整理する) をご覧ください。
+管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを変更、削除、管理して、[Azure Policy](../azure-policy/azure-policy-introduction.md) と [Azure ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) で使用できる階層を作成できます。 管理グループについて詳しくは、「[Organize your resources with Azure management groups](management-groups-overview.md)」(Azure 管理グループでリソースを整理する) をご覧ください。
 
 管理グループ機能は、パブリック プレビューで使用できます。 管理グループの使用を開始するには、[Azure Portal](https://portal.azure.com) にログインするか、[Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)、または [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) を使用して管理グループを管理できます。
 
-管理グループに変更を加えるには、管理グループに対する所有者または共同作成者ロールが必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../active-directory/role-based-access-control-what-is.md)に関する記事をご覧ください。
+管理グループに変更を加えるには、管理グループに対する所有者または共同作成者ロールが必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../role-based-access-control/overview.md)に関する記事をご覧ください。
 
 ## <a name="change-the-name-of-a-management-group"></a>管理グループの名前を変更する 
 管理グループの名前を変更するには、ポータル、PowerShell、または Azure CLI を使用します。
@@ -64,7 +64,7 @@ C:\> az account management-group update --group-name Contoso --display-name "Con
 1. 管理グループの下に子管理グループやサブスクリプションがないこと。 
     - サブスクリプションを管理グループ外に移動するには、[別の管理グループへのサブスクリプションの移動](#Move-subscriptions-in-the-hierarchy)に関する記事をご覧ください。 
     - 管理グループを別の管理グループに移動するには、[階層内での管理グループの移動](#Move-management-groups-in-the-hierarchy)に関する記事をご覧ください。 
-2. 管理グループに対する書き込みアクセス許可、管理グループの所有者または共同作成者ロールが必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../active-directory/role-based-access-control-what-is.md)に関する記事をご覧ください。  
+2. 管理グループに対する書き込みアクセス許可、管理グループの所有者または共同作成者ロールが必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../role-based-access-control/overview.md)に関する記事をご覧ください。  
 
 ### <a name="delete-in-the-portal"></a>ポータルでの削除
 
@@ -139,7 +139,7 @@ az account management-group show --group-name Contoso
 - 子サブスクリプションに対する "所有者" ロール。
 - 新しい親管理グループに対する "所有者" または "作成者" ロール。 
 - 以前の親管理グループに対する "所有者" または "作成者" ロール。
-どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../active-directory/role-based-access-control-what-is.md)に関する記事をご覧ください。 
+どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../role-based-access-control/overview.md)に関する記事をご覧ください。 
 
 ### <a name="move-subscriptions-in-the-portal"></a>ポータルでのサブスクリプションの移動
 

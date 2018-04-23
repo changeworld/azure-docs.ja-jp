@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 57aa5a1ccc45548c3e789b50c888f669df39d5f1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 52faec51b5bd6ceb8eebfb1a6a0d46b2e4b8efce
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-the-azure-stack-operators-powershell-environment"></a>Azure Stack オペレーターの PowerShell 環境の構成
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 PowerShell を使用してオファー、プラン、クォータ、アラートの作成などのリソース管理を行うように、Azure Stack を構成できます。 このトピックは、オペレーター環境を構成するために役立ちます。 ユーザー環境用の PowerShell を構成する場合は、「[Azure Stack ユーザーの PowerShell 環境の構成](user/azure-stack-powershell-configure-user.md)」を参照してください。
 
@@ -48,7 +48,7 @@ $TenantID = Get-AzsDirectoryTenantId -AADTenantName "<mydirectorytenant>.onmicro
 
 # After registering the AzureRM environment, cmdlets can be 
 # easily targeted at your Azure Stack instance.
-Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
+Connect-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
 ````
 
 
@@ -63,7 +63,7 @@ $TenantID = Get-AzsDirectoryTenantId -ADFS -EnvironmentName AzureStackAdmin
 
 # After registering the AzureRM environment, cmdlets can be 
 # easily targeted at your Azure Stack instance.
-Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
+Connect-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
 ````
 
 ## <a name="test-the-connectivity"></a>接続のテスト

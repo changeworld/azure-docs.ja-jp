@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.openlocfilehash: 9429f690940e1282d94b4d67ad1c618a24655cb5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4a530b3d6b4f6d4f5ec6087adcee839422dd01d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのようなやり取りをするかを学習します。
 
 ## <a name="introduction"></a>はじめに

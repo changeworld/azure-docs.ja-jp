@@ -18,6 +18,12 @@
       href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
+    - name: オンプレミスのリソースを Azure に移行する
+      items:
+        - name: シナリオの概要 - オンプレミスのリソースを Azure に移行する
+          href: migrate-scenarios-overview.md
+        - name: シナリオ 1 - Azure への移行についてオンプレミスのリソースを評価する
+          href: migrate-scenarios-assessment.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md
     - name: マシンのグループ化

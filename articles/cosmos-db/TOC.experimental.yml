@@ -71,14 +71,12 @@ items:
     items:
       - name: グローバル配信
         href: distribute-data-globally.md
-      - name: 整合性
-        href: consistency-levels.md
       - name: パーティション分割
         href: partition-data.md
       - name: Throughput
         href: request-units.md
-      - name: TCO
-        href: 'https://aka.ms/cosmosdb-tco-paper'
+      - name: 整合性
+        href: consistency-levels.md
       - name: サーバーレス データベース
         href: serverless-computing-database.md
       - name: セキュリティ
@@ -86,10 +84,10 @@ items:
         items:
           - name: 保存時の暗号化
             href: database-encryption-at-rest.md
-          - name: ファイアウォールのサポート
-            href: firewall-support.md
           - name: データへのアクセスのセキュリティ保護
             href: secure-access-to-data.md
+      - name: TCO
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: ユース ケース
         href: use-cases.md
         items:
@@ -180,7 +178,7 @@ items:
                     href: sql-api-sql-query-metrics.md
               - name: Index
                 href: indexing-policies.md
-              - name: データのパーティション分割
+              - name: SQL データのパーティション分割
                 href: sql-api-partition-data.md
               - name: ストアド プロシージャ、トリガー、UDF
                 href: programming.md
@@ -233,7 +231,7 @@ items:
                   - name: ODBC ドライバーを利用してデータを視覚化する
                     href: odbc-driver.md
                   - name: SQL API で Spring Boot Starter を使用する
-                    href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
+                    href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           - name: リファレンス
             items:
               - name: Async Java
@@ -346,6 +344,8 @@ items:
                 href: tutorial-global-distribution-graph.md
           - name: ハウツー ガイド
             items:
+              - name: グラフのパーティション分割
+                href: graph-partitioning.md
               - name: 統合
                 items:
                   - name: Spark GraphX に接続する
@@ -434,6 +434,8 @@ items:
         href: manage-account.md
       - name: Throughput
         href: set-throughput.md
+      - name: ファイアウォールのサポート
+        href: firewall-support.md
       - name: メトリック
         href: use-metrics.md
       - name: SLA の監視
@@ -466,5 +468,3 @@ items:
         href: faq.md
       - name: 野球で説明するデータ整合性
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
-      - name: Azure Cosmos DB のトラブルシューティング
-        href: troubleshoot-azure-cosmosdb.md

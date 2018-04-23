@@ -3,22 +3,21 @@ title: Python を使用して Azure Table Storage を使用する | Microsoft Do
 description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
 services: cosmos-db
 documentationcenter: python
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 7ddb9f3e-4e6d-4103-96e6-f0351d69a17b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/08/2018
-ms.author: mimig
-ms.openlocfilehash: 455479c9eb77093dd5611263fe5bdcf699b9d026
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: c8f35656e9db07b596cd24ecb570fa0960f540b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-python"></a>Python を使用して Azure Table Storage を使用する
 
@@ -45,22 +44,14 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 - [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
 - [Azure Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#create-a-storage-account)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/en-us/try/cosmosdb/)
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
-
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
-
-Azure Table ストレージまたは Azure Cosmos DB を使用してテーブルを操作できます。 サービスによる違いの詳細については、「[Table のサービス](table-introduction.md#table-offerings)」を参照してください。 使用するサービスのアカウントを作成する必要があります。 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
-最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
-
-[Azure PowerShell](../storage/common/storage-powershell-guide-full.md) または [Azure CLI](../storage/common/storage-azure-cli.md) を使って、Azure Storage アカウントを作成することもできます。
-
-現時点でストレージ アカウントを作成しない場合は、Azure ストレージ エミュレーターを使用して、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、「 [開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
-
-Azure Cosmos DB Table API アカウントの作成手順については、[Table API アカウントの作成](create-table-dotnet.md#create-a-database-account)に関するセクションを参照してください。
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Azure Cosmos DB Table SDK for Python をインストールする
 

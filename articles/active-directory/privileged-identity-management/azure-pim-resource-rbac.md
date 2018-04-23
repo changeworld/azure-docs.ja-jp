@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
-ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: edf22ea0cfe60cb734b4339363d50af050466000
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="pim-for-azure-resources"></a>Azure リソース向けの PIM
 
@@ -43,7 +43,7 @@ Azure AD PIM は、組み込みの Azure リソース ロールと、以下を�
 - セキュリティ マネージャーなど
 
 >[!NOTE]
-Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者ロールに割り当てられたグループのユーザーまたはメンバー、および全体管理者がリソース管理者です。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソースの PIM を使用したアクセスの確認ができます。 [Azure リソースの組み込みロール](../role-based-access-built-in-roles.md)の一覧をご確認ください。
+Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者ロールに割り当てられたグループのユーザーまたはメンバー、および全体管理者がリソース管理者です。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソースの PIM を使用したアクセスの確認ができます。 [Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)の一覧をご確認ください。
 
 ## <a name="tasks"></a>タスク
 
@@ -193,6 +193,6 @@ Just Enough Administration (JEA) をリソースのロール割り当てで使�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure リソースの組み込みロール](../role-based-access-built-in-roles.md)
+- [Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)
 - Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください
 - [PIM の承認ワークフロー](azure-ad-pim-approval-workflow.md)

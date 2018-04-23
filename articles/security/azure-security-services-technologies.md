@@ -1,6 +1,6 @@
 ---
-title: "Azure セキュリティ サービスおよびテクノロジ | Microsoft Docs"
-description: "この記事では、Azure セキュリティ サービスとテクノロジを精選した一覧を示します。"
+title: Azure セキュリティ サービスおよびテクノロジ | Microsoft Docs
+description: この記事では、Azure セキュリティ サービスとテクノロジを精選した一覧を示します。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
 現在と将来の Azure の顧客との話し合いで、“Azure で提供する必要のあるすべてのセキュリティ関連のサービスとテクノロジを一覧したリストはありますか?” という質問を受けることがよくあります。
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/23/2017
 * [Azure SQL Database 監査](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Azure の ID 管理とアクセス管理
-* [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
+* [Azure のロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
 * [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)

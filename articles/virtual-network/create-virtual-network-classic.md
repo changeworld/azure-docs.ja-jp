@@ -1,26 +1,26 @@
 ---
-title: "複数のサブネットを含んだ Azure 仮想ネットワーク (クラシック) を作成する | Microsoft Docs"
-description: "Azure で、複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する方法について説明します。"
+title: 複数のサブネットを含んだ Azure 仮想ネットワーク (クラシック) を作成する | Microsoft Docs
+description: Azure で、複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する方法について説明します。
 services: virtual-network
-documentationcenter: 
-author: jimdial
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 
+documentationcenter: ''
+author: genli
+manager: cshepard
+editor: ''
+tags: azure-service-management
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: genli
+ms.custom: ''
+ms.openlocfilehash: f9a3788ae13fe198cd40eceed78a407d7f0439a9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 

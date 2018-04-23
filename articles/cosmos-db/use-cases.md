@@ -2,10 +2,8 @@
 title: Azure Cosmos DB の一般的なユース ケースとシナリオ | Microsoft Docs
 description: Azure Cosmos DB の上位 5 つのユース ケースとして、ユーザーが生成したコンテンツ、イベントのログ記録、カタログ データ、ユーザー設定のデータ、およびモノのインターネット (IoT) について説明します。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: ''
-documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: c85aa1a010ea9ccac807d676fd69473de07abca9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -114,7 +112,7 @@ Azure Cosmos DB の使用を開始するには、[クイック スタート](cre
 * [トヨタ](https://www.toyota.com/)。 トヨタ自動車は日本の自動車メーカーです。 トヨタでは、グローバル IoT アプリに Cosmos DB を活用しています。
 * [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix では、Azure Service Fabric および Azure Cosmos DB を使用してシングル サインオン ソリューションを開発しています。
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA の革新的な車両所有者向け IoT ソリューションは、時間、費用、ガソリンを節約し、ひいては生活全般の負担を軽減します。
-* [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. は、アメリカ合衆国のピザ レストラン チェーンです。
+* [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. は、アメリカのピザ レストラン チェーンです。
 * [Johnson Controls](http://www.johnsoncontrols.com)。 Johnson Controls は、150 か国以上で幅広い顧客にサービスを提供する、グローバルな総合テクノロジーおよび多業種のリーダーです。
 * [Microsoft Windows、ユニバーサル ストア、Azure IoT Hub、Xbox Live、その他のインターネット規模のサービス](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft が Azure Cosmos DB を使用して大規模でスケーラブルなサービスを構築する方法。
 * [Microsoft のデータと分析チーム](https://customers.microsoft.com/story/microsoftdataandanalytics)。 マイクロソフトのデータと分析チームは、Azure Cosmos DB を使用して、地球規模のビッグデータの収集を実現しました。

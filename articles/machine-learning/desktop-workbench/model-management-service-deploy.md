@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
 ms.openlocfilehash: 5211fa29af1d8cba17049b69974189990d30f34a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Machine Learning モデルを Web サービスとしてデプロイする
 

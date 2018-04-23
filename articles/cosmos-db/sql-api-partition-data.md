@@ -3,7 +3,7 @@ title: Azure Cosmos DB でのパーティション分割とスケーリング | 
 description: Azure Cosmos DB でのパーティション分割のしくみ、パーティション分割とパーティション キーを構成する方法、アプリケーションに適したパーティション キーを選択する方法について説明します。
 services: cosmos-db
 author: rafats
-manager: jhubbard
+manager: kfile
 documentationcenter: ''
 ms.assetid: 702c39b4-1798-48dd-9993-4493a2f6df9e
 ms.service: cosmos-db
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 50be809df0938272a3e1d710b879ca3dd5de9428
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>SQL API を使用した Azure Cosmos DB でのパーティション分割
 

@@ -1,11 +1,11 @@
 ---
-title: "Media Services Operations REST API の概要 | Microsoft Docs"
-description: "Media Services REST API の概要"
+title: Media Services Operations REST API の概要 | Microsoft Docs
+description: Media Services REST API の概要
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: juliako;johndeu
-ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 472408f1c367984d5f4e0e435366c4a0af2e5b34
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -42,7 +42,7 @@ REST を使用するときには、次の考慮事項が適用されます。
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
         x-ms-version: 2.17
-        Authorization: Bearer <token> 
+        Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
         {
@@ -54,7 +54,7 @@ REST を使用するときには、次の考慮事項が適用されます。
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
 Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
 
-| ヘッダー | 型 | 値 |
+| ヘッダー | type | 値 |
 | --- | --- | --- |
 | 承認 |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
@@ -68,9 +68,9 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 省略可能なヘッダーのセットを次に示します。
 
-| ヘッダー | 型 | 値 |
+| ヘッダー | type | 値 |
 | --- | --- | --- |
-| Date |RFC 1123 の日付 |要求のタイムスタンプ |
+| 日付 |RFC 1123 の日付 |要求のタイムスタンプ |
 | Accept |コンテンツの種類 |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
 | Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注: 大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
@@ -82,18 +82,18 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
 要求したリソースと実行を意図した操作によって返されるヘッダーのセットを次に示します。
 
-| ヘッダー | 型 | 値 |
+| ヘッダー | type | 値 |
 | --- | --- | --- |
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
-| Date |RFC 1123 の日付 |要求が処理された日時。 |
+| 日付 |RFC 1123 の日付 |要求が処理された日時。 |
 | Content-Type |多様 |応答本文のコンテンツの種類。 |
 | Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 動詞
 HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次に示します。
 
-| 動詞 | Description |
+| 動詞 | [説明] |
 | --- | --- |
 | GET |オブジェクトの現在の値を返します。 |
 | POST |提供されるデータに基づくオブジェクトを作成、またはコマンドを送信します。 |
@@ -116,7 +116,7 @@ Media Services アカウントに必要な認証の詳細を Azure Portal から
 
 Azure AD 認証を使用して REST API に接続するコードの作成の詳細については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Media Services REST API で Azure AD 認証を使用する方法については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

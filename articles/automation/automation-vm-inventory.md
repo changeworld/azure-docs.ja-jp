@@ -2,17 +2,18 @@
 title: インベントリ収集による Azure 仮想マシンの管理 | Microsoft Docs
 description: インベントリ収集による仮想マシンの管理
 services: automation
+ms.service: automation
 keywords: インベントリ, オートメーション, 変更, 追跡
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6eb1a77613c6f7784e251bb99a03e6ca7e1f7017
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0b744911d37e2d54f88ebeac3ec64a309bab22b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
@@ -71,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス (例: "c:\temp\myfile.txt")。
+|パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"
 
 ### <a name="linux-files"></a>Linux ファイル
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Web アプリの作成および GitHub からのコードのデプロイ | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Web アプリの作成および GitHub からのコードのデプロイ"
+title: Azure PowerShell のサンプル スクリプト - Web アプリの作成および GitHub からのコードのデプロイ | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Web アプリの作成および GitHub からのコードのデプロイ
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 573766f4b1256ec0ba85edd3742b16684db4bd10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0fbda001d86c63c6ec045f7a3ac5ec1d10e15fe4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>Web アプリを作成して GitHub からコードをデプロイする
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、(継続的なデプロイは行わずに) パブリックの GitHub リポジトリから Web アプリのコードをデプロイします。 継続的なデプロイを使用した GitHub でのデプロイについては、「[GitHub からの継続的なデプロイで Web アプリを作成する](app-service-powershell-continuous-deployment-github.md)」を参照してください。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。 また、Web アプリのコードを含む GitHub リポジトリへのリンクも必要です。
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。 また、Web アプリのコードを含む GitHub リポジトリへのリンクも必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -50,7 +50,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Web アプリを作成します。 |
 | [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | リソース グループのリソースを変更します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

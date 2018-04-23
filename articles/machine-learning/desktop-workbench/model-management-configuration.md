@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning モデル管理のセットアップと構成 | Microsoft Docs"
-description: "このドキュメントでは、Azure Machine Learning でのモデル管理の設定と構成に関連する手順および概念について説明します。"
+title: Azure Machine Learning モデル管理のセットアップと構成 | Microsoft Docs
+description: このドキュメントでは、Azure Machine Learning でのモデル管理の設定と構成に関連する手順および概念について説明します。
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -83,7 +83,7 @@ sudo /opt/microsoft/azureml/initial_setup.sh
 開始するには、デプロイメント環境をセットアップする必要があります。 環境のセットアップは 1 回限りのタスクです。 セットアップが完了したら、以降のデプロイのためにその環境を再利用できます。 詳細については、次のセクションを参照してください。
 
 環境のセットアップを完了した場合:
-- Azure にサインインするよう求められます。 サインインするには、Web ブラウザーを使用してページ https://aka.ms/devicelogin を開き、認証のための提供されたコードを入力します。
+- Azure にサインインするよう求められます。 サインインするには、Web ブラウザーを使用して https://aka.ms/devicelogin ページを開き、認証するためのコードを入力します。
 - 認証プロセス中に、認証するためのアカウントを入力するよう求められます。 重要: 有効な Azure サブスクリプションと、リソースを作成するための十分なアクセス許可を持つアカウントを選択してください。ログインが完了したら、サブスクリプション情報が表示され、選択されたアカウントで続行するかどうかを確認するメッセージが表示されます。
 
 ### <a name="environment-setup"></a>環境のセットアップ

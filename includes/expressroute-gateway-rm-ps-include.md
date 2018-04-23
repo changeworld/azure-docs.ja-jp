@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7e33d4ed7100287ef6b22aa4c90fd52671363902
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 このタスクの手順では、以下の構成参照一覧の値に基づいて VNet を使用します。 その他の設定と名前についても、一覧で概要を説明します。 ここでは、この一覧内の値に基づいて変数を追加しますが、どの手順でもこの一覧を直接使用しません。 参照として使用する一覧をコピーし、値を独自の値で置き換えることができます。
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/28/2018
 1. Azure サブスクリプションに接続します。
 
   ```powershell 
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   Get-AzureRmSubscription 
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```

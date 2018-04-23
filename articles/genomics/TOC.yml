@@ -23,6 +23,8 @@
   items:
     - name: 一般的な質問
       href: frequently-asked-questions-genomics.md
+    - name: トラブルシューティング ガイド
+      href: troubleshooting-guide-genomics.md
     - name: バージョンのリリース履歴
       href: version-release-history-genomics.md
     - name: ビジネス継続性

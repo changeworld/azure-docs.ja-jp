@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery を使用して Azure に物理的オンプレミス サーバーのディザスター リカバリーを設定する |Microsoft Docs"
-description: "Azure Site Recovery サービスを使用して Azure にオンプレミス Windows/Linux サーバーのディザスター リカバリーを設定する方法について説明します。"
+title: Azure Site Recovery を使用して Azure に物理的オンプレミス サーバーのディザスター リカバリーを設定する |Microsoft Docs
+description: Azure Site Recovery サービスを使用して Azure にオンプレミス Windows/Linux サーバーのディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: d460da197c6e9f0bface402d83d4788f8164cc9c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -54,7 +54,7 @@ Microsoft [Azure アカウント](http://azure.microsoft.com/)を取得します
 VM を Azure にレプリケートするアクセス許可がお使いの Azure アカウントに与えられていることを確認します。
 
 - Azure にマシンをレプリケートするために必要な[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)を確認します。
-- [ロールベースのアクセス許可](../active-directory/role-based-access-control-configure.md)を確認し、変更します。 
+- [ロールベースのアクセス許可](../role-based-access-control/role-assignments-portal.md)を確認し、変更します。 
 
 
 

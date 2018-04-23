@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 04/12/2018
 ms.author: sethm
-ms.openlocfilehash: 8ca00b234c00bfeb52a5b601e8780d56a0732dd9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 445b439ff77a88a4b7783427f5fab0e40a485542
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Event Hubs メトリック (プレビュー)
 

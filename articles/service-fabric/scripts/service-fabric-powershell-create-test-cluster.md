@@ -15,11 +15,11 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: a03362ebd4b8502f12b7c7bb9aadc558f6a073d2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 169f68d179c7f895078fe649d0e2a69e58d148cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-three-node-test-service-fabric-cluster"></a>3 ノードのテスト Service Fabric クラスターを作成する
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/23/2018
 
 このコマンドを実行すると、自己署名証明書が作成され、クラスターと同じリソース グループに作成された新しいキー コンテナーにアップロードされます。 証明書はローカル ディレクトリにもコピーされます。  *-OS* パラメーターを設定して、クラスター ノードで実行される Windows または Linux のバージョンを選択します。  必要に応じてパラメーターをカスタマイズします。
 
-必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。 
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzureRmAccount` を実行して、Azure との接続を作成します。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

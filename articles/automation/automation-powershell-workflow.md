@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 32f991f0b0017e673828b1ceb832511e118efa92
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 173d151c2b86db621ee452e68b06baa709f86cdc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明 
 Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いがいくつかあるため、効果的なワークフローを記述するにはさらに作業が必要になります。  
@@ -228,7 +228,7 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
     workflow CreateTestVms
     {
        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-       $null = Add-AzureRmAccount -Credential $Cred
+       $null = Connect-AzureRmAccount -Credential $Cred
 
        $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
 
@@ -243,7 +243,7 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
           $Cred = $null
           Checkpoint-Workflow
           $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-          $null = Add-AzureRmAccount -Credential $Cred
+          $null = Connect-AzureRmAccount -Credential $Cred
          }
      }
 

@@ -1,11 +1,11 @@
 ---
-title: "初めてのデータ ファクトリの作成 (Azure Portal) | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal で Data Factory エディターを使用して、サンプルの Azure Data Factory パイプラインを作成します。"
+title: 初めてのデータ ファクトリの作成 (Azure Portal) | Microsoft Docs
+description: このチュートリアルでは、Azure Portal で Data Factory エディターを使用して、サンプルの Azure Data Factory パイプラインを作成します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c4fe0e01936ebc131b10f011b98e9d0c1782179b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 75139e39c3391a7662e3d02ee8d56463ac9fcc7a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ ms.lasthandoff: 03/02/2018
 8. **[作成]**を選択します。
 
    > [!IMPORTANT]
-   > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
+   > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
    >
    >
 9. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。    

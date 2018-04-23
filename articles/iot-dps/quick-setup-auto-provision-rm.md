@@ -3,7 +3,7 @@ title: Azure Resource Manager テンプレートを使用した Device Provision
 description: Azure クイック スタート - テンプレートを使用して Azure IoT Hub Device Provisioning Service を設定する
 services: iot-dps
 keywords: ''
-author: JimacoMS2
+author: bryanla
 ms.author: v-jamebr
 ms.date: 02/26/2018
 ms.topic: hero-article
@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 389691bddf1a7d6cab0845ca0a0cf1bde1152507
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8fc014efab898bf0ab3d8cd5eaa83dce53ee275b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 

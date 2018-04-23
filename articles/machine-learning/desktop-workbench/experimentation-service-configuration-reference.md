@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
 ms.openlocfilehash: 8ea7e7453ba49b17560b7c2147dd6c71c6c1a7a0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning 実験サービス構成ファイル
 

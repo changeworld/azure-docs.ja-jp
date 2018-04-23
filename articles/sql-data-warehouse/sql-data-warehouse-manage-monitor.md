@@ -2,23 +2,19 @@
 title: DMV を利用してワークロードを監視する | Microsoft Docs
 description: DMV を利用してワークロードを監視するについて説明します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: ''
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 03/15/2018
-ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 3bd7431b9371b1de762558b8bd3c4ed0ed360495
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 887fa4b9f950531438986269d041189d45cdecb2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。

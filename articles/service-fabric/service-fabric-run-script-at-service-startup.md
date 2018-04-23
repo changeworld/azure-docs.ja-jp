@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
 ms.openlocfilehash: bd2bb0d05029237242b42225a2c846c78a7c6de9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
 Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要がありません。

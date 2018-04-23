@@ -1,23 +1,18 @@
 ---
 pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
-description: "Azure Search REST API で公開されているシノニム (プレビュー) 機能の暫定版ドキュメント。"
-services: search
-documentationCenter: 
+description: Azure Search REST API で公開されているシノニム (プレビュー) 機能の暫定版ドキュメント。
 authors: mhko
-manager: pablocas
-editor: 
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/07/2016
+manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 447abc48cca3dee398e641f8458e52a5b2cb8e42
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e11a020c737261c902a54a3a1ad5540e1525de44
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Azure Search のシノニム (プレビュー)
 
@@ -160,7 +155,7 @@ Washington, Wash., WA => WA
 
 - 検索アプリケーションでは、複数のシノニム マップを作成できます (アプリケーションで多言語の顧客ベースをサポートしている場合に言語別など)。 現在、フィールドではそれらのうちの 1 つしか使用できません。 フィールドの synonymMaps プロパティは、いつでも更新できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 開発 (非運用) 環境に既存のインデックスがある場合は、小さな辞書で実験して、シノニムの追加によって、スコアリング プロファイル、検索結果の強調表示、検索候補への影響など、検索操作がどのように変わるかを確認します。
 

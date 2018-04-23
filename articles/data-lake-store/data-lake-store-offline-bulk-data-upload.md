@@ -1,8 +1,8 @@
 ---
-title: "オフライン メソッドを使用して大量のデータを Data Lake Store へアップロードする | Microsoft Docs"
-description: "AdlCopy ツールを使用して Azure Storage BLOB のデータを Data Lake Store にコピーします"
+title: オフライン メソッドを使用して大量のデータを Data Lake Store へアップロードする | Microsoft Docs
+description: AdlCopy ツールを使用して Azure Storage BLOB のデータを Data Lake Store にコピーします
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8dd20d0cf7f202b5d5fdeffb5848235e73eb9349
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ee6f4ab1ac5892536d7f419c198158dc34d6f49e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Azure Import/Export サービスを使用した Data Lake Store へのデータのオフライン コピー
 この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Store にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
@@ -195,7 +195,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 
 ````
 # Login to our account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List your subscriptions
 Get-AzureRmSubscription

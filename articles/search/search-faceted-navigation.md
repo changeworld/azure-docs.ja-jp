@@ -1,24 +1,17 @@
 ---
-title: "Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Docs"
-description: "Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。"
-services: search
-documentationcenter: 
+title: Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Docs
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。
 author: HeidiSteen
-manager: mblythe
-editor: 
-ms.assetid: cdf98fd4-63fd-4b50-b0b0-835cb08ad4d3
+manager: cgronlun
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ca289d4a8ce9849e3ec8fa4c2a3ca89f4dc311e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。

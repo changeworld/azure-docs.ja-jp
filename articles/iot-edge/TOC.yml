@@ -45,16 +45,12 @@
       href: how-to-install-iot-core.md
     - name: VS Code を使用した IoT Edge ソリューションの開発
       items:
-        - name: 'C# モジュールの開発とデプロイ'
-          href: how-to-vscode-develop-csharp-module.md
-        - name: 'C# モジュールのデバッグ'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: Azure 関数の開発とデプロイ
-          href: how-to-vscode-develop-azure-function.md
-        - name: Azure 関数のデバッグ
-          href: how-to-vscode-debug-azure-function.md
         - name: 複数のモジュールの処理
           href: tutorial-multiple-modules-in-vscode.md
+        - name: 'C# モジュールのデバッグ'
+          href: how-to-vscode-debug-csharp-module.md
+        - name: Azure 関数のデバッグ
+          href: how-to-vscode-debug-azure-function.md
     - name: エッジでのデータの格納
       href: sql-storage.md
     - name: トラブルシューティング

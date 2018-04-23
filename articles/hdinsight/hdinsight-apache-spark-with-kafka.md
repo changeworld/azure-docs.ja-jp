@@ -1,26 +1,24 @@
 ---
-title: "Kafka に対する Apache Spark ストリーミング - Azure HDInsight | Microsoft Docs"
-description: "Apache Spark を使用して、DStreams による Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Jupyter ノートブックを使用して HDInsight 上の Spark からデータをストリームします。"
+title: Kafka に対する Apache Spark ストリーミング - Azure HDInsight | Microsoft Docs
+description: Apache Spark を使用して、DStreams による Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Jupyter ノートブックを使用して HDInsight 上の Spark からデータをストリームします。
 keywords: kafka example,kafka zookeeper,spark streaming kafka,spark streaming kafka example
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 8c9a901b8922bf349959438487c88e3df4f2ebea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a9463b5983b5f41683a5cfe416ca125bf2810062
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>HDInsight 上の Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
@@ -49,7 +47,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure Resource Manager テンプレートは **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
+    Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
 
     > [!WARNING]
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
@@ -87,7 +85,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 ## <a name="use-the-notebooks"></a>ノートブックを使用する
 
-このドキュメントで説明する例で使用するコードは、[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) で入手できます。
+このドキュメントで説明した例のコードは、[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) で入手できます。
 
 この例を完了するには、`README.md` の手順に従ってください。
 

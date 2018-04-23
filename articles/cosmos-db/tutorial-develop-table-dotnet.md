@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB: .NET での Table API を使用した開発 | Microsoft Docs"
-description: ".NET を使用した Azure Cosmos DB の Table API による開発方法について"
+title: 'Azure Cosmos DB: .NET での Table API を使用した開発 | Microsoft Docs'
+description: .NET を使用した Azure Cosmos DB の Table API による開発方法について
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
 ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/18/2017
-ms.author: arramac
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bb08a60a9ec2db0fa145f75e00be96bc05664e32
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 52d91205e7b0daa82fb12c166222b1dce4c699eb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 

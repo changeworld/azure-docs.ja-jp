@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル: データをコピーする Azure Data Factory パイプラインを作成する (Azure Portal) | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。"
+title: 'チュートリアル: データをコピーする Azure Data Factory パイプラインを作成する (Azure Portal) | Microsoft Docs'
+description: このチュートリアルでは、Azure Portal を使用してコピー アクティビティが含まれた Azure Data Factory パイプラインを作成し、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: d9317652-0170-4fd3-b9b2-37711272162b
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7f42cfda1684b7ff5bd2a1655154b6a11d4ffd31
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c4e8de6b229fe027e43a2b13f2a7ad54b7c3eaf2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Portal を使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/02/2018
    6. **Create** をクリックしてください。
       
       > [!IMPORTANT]
-      > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
+      > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
       > 
       > データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。                
       > 

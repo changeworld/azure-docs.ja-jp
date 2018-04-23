@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 377a8255961a4c7fa55f8bbc5cb98ae4deff3205
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方に同じパスワードを使用してサインインできます。
   - パスワード関連の問題を解決するのに、ユーザーが IT ヘルプデスクと対話する時間が減ります。
-  - ユーザーはクラウドで[セルフ サービスによるパスワード管理](../active-directory-passwords-overview.md)ができます。
+  - ユーザーはクラウドで[セルフ サービスによるパスワード管理](../authentication/active-directory-passwords-overview.md)ができます。
 - *簡単にデプロイし、管理できる*
   - 簡単にオンプレミスにデプロイしてネットワーク構成できます。
   - オンプレミスには、軽量エージェントのみをインストールすれば済みます。
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - ユーザーが[先進認証](https://aka.ms/modernauthga)を使用する、すべての Web ブラウザー ベースのアプリケーションおよび Microsoft Office クライアント アプリケーションにサインインすることがサポートされています。
 - サインイン ユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID` と呼ばれます) を指定できます。
 - この機能は、多要素認証 (MFA) など、ユーザーを保護する[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)とシームレスに連携します。
-- クラウド ベースの[セルフサービスのパスワード管理](../active-directory-passwords-overview.md) (オンプレミスの Active Directory へのパスワード ライトバックや、よく使用されているパスワードの禁止によるパスワードの保護を含む) と統合されています。
+- クラウド ベースの[セルフサービスのパスワード管理](../authentication/active-directory-passwords-overview.md) (オンプレミスの Active Directory へのパスワード ライトバックや、よく使用されているパスワードの禁止によるパスワードの保護を含む) と統合されています。
 - ご使用の AD フォレスト間にフォレストの信頼があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - これは、[Azure AD Connect](active-directory-aadconnect.md) を使用して有効にすることができます。

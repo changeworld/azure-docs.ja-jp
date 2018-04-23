@@ -4,7 +4,7 @@ description: Azure の vCPU クォータについて説明します。
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Drewm3
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
-ms.author: drewm
-ms.openlocfilehash: a33aca62c63269ed179b7086cacc3cf758e862ea
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 50f28fcb2d7945949134d89f6bcc4238cf625bd1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>仮想マシンの vCPU クォータ
 

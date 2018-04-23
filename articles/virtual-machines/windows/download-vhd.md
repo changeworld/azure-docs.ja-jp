@@ -3,7 +3,7 @@ title: Azure から Windows VHD をダウンロードする | Microsoft Docs
 description: Azure Portal を使用して Windows VHD をダウンロードします。
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
-ms.author: davidmu
-ms.openlocfilehash: c9a75890af86a5342debe1d6fdb18f5e9bd2b227
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 83d6715d6d8178e273131a6bc123627126644271
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 

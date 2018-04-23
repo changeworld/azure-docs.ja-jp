@@ -2,23 +2,19 @@
 title: 列ストア インデックスのパフォーマンスを上げる - Azure SQL Data WareHouse | Microsoft Docs
 description: メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 03/15/2018
-ms.author: barbkess
-ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: be167e298a4c0e76d7cf3bb638838047d4e9bcee
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
@@ -139,7 +135,7 @@ OPTION (MAXDOP 1);
 DWU のサイズとユーザー リソースのクラスによって、ユーザー クエリで使用可能なメモリの量が決まります。 読み込みクエリのメモリ許可を増やすために、DWU の数を増やすか、リソース クラスを増やすことができます。
 
 - DWU を増やす方法については、[パフォーマンスのスケーリング方法](quickstart-scale-compute-portal.md)に関するセクションを参照してください。
-- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](resource-classes-for-workload-management.md#assigning-resource-classes)」を参照してください。
+- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](resource-classes-for-workload-management.md#change-a-users-resource-class)」を参照してください。
 
 たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](resource-classes-for-workload-management.md)に関する記事を参照してください。
 

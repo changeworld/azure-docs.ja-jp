@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 94a066c43d1b04161a46dac15e5b373d97cc063d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM での別の管理者ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -67,7 +67,7 @@ PIM 自体で管理するためのアクセス権を別のユーザーに付与�
 ## <a name="roles-not-managed-in-pim"></a>PIM で管理されないロール
 Exchange Online または SharePoint Online 内のロールについて、上述以外のロールは Azure AD で表示されないため、PIM でも表示されません。 これらの Office 365 サービスでのきめ細かなロールの割り当てを変更する方法の詳細については、「 [Office 365 の権限](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)」を参照してください。
 
-Azure サブスクリプションとリソース グループも、Azure AD では表示されません。 Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC の詳細については、[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)に関する記事を参照してください。
+Azure サブスクリプションとリソース グループも、Azure AD では表示されません。 Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC の詳細については、[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 

@@ -8,18 +8,16 @@ author: raviperi
 manager: ''
 editor: ''
 ms.assetid: 74E51183-3EF4-4C67-AA60-6E12FAC999B5
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 6ee408b32650fe0f0e0b66294896756732a2ca5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 46f07a1512435fd8ad5cae4df1858f948fe017e1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Storm のトラブルシューティング
 

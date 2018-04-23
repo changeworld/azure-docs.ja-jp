@@ -1,24 +1,24 @@
 ---
-title: "Raspberry Pi からクラウドへ (Python) - Raspberry Pi の Azure IoT Hub への接続 | Microsoft Docs"
-description: "このチュートリアルでは、Raspberry Pi を Azure IoT Hub に接続し、Raspberry Pi で Azure クラウド プラットフォームにデータを送信する方法について説明します。"
+title: Raspberry Pi からクラウドへ (Python) - Raspberry Pi の Azure IoT Hub への接続 | Microsoft Docs
+description: このチュートリアルでは、Raspberry Pi を Azure IoT Hub に接続し、Raspberry Pi で Azure クラウド プラットフォームにデータを送信する方法について説明します。
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ"
+tags: ''
+keywords: azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ
 ms.service: iot-hub
 ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2017
-ms.author: xshi
-ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 7069748c10f7c98f80fadc008f43a3aa02f7ac0e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi の Azure IoT Hub への接続 (Python)
 
@@ -154,7 +154,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    既定のユーザー名は `pi` で、パスワードは`raspberry` です。
 
 
-### <a name="configure-the-sample-application"></a>サンプル アプリケーションの構成
+### <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する
 
 1. 次のコマンドを実行して、サンプル アプリケーションを複製します。
 
@@ -204,7 +204,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    ![出力 - Raspberry Pi から IoT Hub に送信されるセンサー データ](media/iot-hub-raspberry-pi-kit-c-get-started/success.png
 )
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 コマンド ライン インターフェイスで Raspberry Pi にメッセージを送信したり、Raspberry Pi から IoT Hub に送信されたメッセージを表示したりする方法については、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
 

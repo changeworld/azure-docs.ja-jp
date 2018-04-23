@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd11ec7c8a32792853e60b4bb14d4ed52f53f4a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/06/2018
 * 操作の状態
 * 操作を調査するために役立つ可能性のあるその他のプロパティの値
 
-アクティビティ ログには、リソースで実行されたすべての書き込み操作 (PUT、POST、DELETE) が含まれます。 このログには読み取り操作 (GET) は含まれません。 リソース アクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md)」を参照してください。 監査ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。
+アクティビティ ログには、リソースで実行されたすべての書き込み操作 (PUT、POST、DELETE) が含まれます。 このログには読み取り操作 (GET) は含まれません。 リソース アクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md)」を参照してください。 監査ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。
 
 アクティビティ ログは、90 日間保持されます。 開始日が過去 90 日以内である限り、任意の日付の範囲にクエリを実行できます。
 
@@ -154,8 +154,8 @@ ms.lasthandoff: 04/06/2018
 ## <a name="next-steps"></a>次の手順
 
 * Azure アクティビティ ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。 [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関する記事をご覧ください。
-* セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
+* セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関するページをご覧ください。
 * すべてのユーザーのリソースに対する削除を回避する方法については、「 [Azure Resource Manager によるリソースのロック](resource-group-lock-resources.md)」をご覧ください。
-* 各 Microsoft Azure Resource Manager プロバイダーで使用できる操作の一覧については、「[Azure Resource Manager のリソース プロバイダー操作](~/articles/active-directory/role-based-access-control-resource-provider-operations.md)」をご覧ください。
+* 各 Microsoft Azure Resource Manager プロバイダーで使用できる操作の一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md)」をご覧ください。
 

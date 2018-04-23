@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mbaldwin
-ms.openlocfilehash: e3a0bbe75177ac25a0aeff89d171dfe88bd0880f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c716f54a1361d41dbad00e2e45562d5fbf8fd6ca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure Portal でプライベート テンプレートを使ってみる
 [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) テンプレートは、デプロイの定義に使う宣言型のテンプレートです。 ソリューションでデプロイするリソースを定義し、さまざまな環境に応じた値を入力できるパラメーターと変数を指定できます。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
@@ -103,7 +103,7 @@ Azure ポータルで **テンプレート** リソースを作成する方法�
 ![テンプレートのデプロイ](media/deploy-template-portal1b.png)
 
 ## <a name="share-a-template-resource"></a>テンプレート リソースの共有
-**テンプレート** リソースは、仲間と共有できます。 共有の動作は、 [Azure 上のリソースへのロールの割り当て](../active-directory/role-based-access-control-configure.md)に似ています。 **テンプレート** の所有者は、他のユーザーにアクセス許可を付与し、テンプレート リソースを操作できるようにします。 **テンプレート**の共有相手であるユーザーまたはユーザーのグループは、Resource Manager テンプレートとそのギャラリーのプロパティを参照できます。
+**テンプレート** リソースは、仲間と共有できます。 共有の動作は、 [Azure 上のリソースへのロールの割り当て](../role-based-access-control/role-assignments-portal.md)に似ています。 **テンプレート** の所有者は、他のユーザーにアクセス許可を付与し、テンプレート リソースを操作できるようにします。 **テンプレート**の共有相手であるユーザーまたはユーザーのグループは、Resource Manager テンプレートとそのギャラリーのプロパティを参照できます。
 
 ### <a name="access-control-for-the-microsoftgallery-resources"></a>Microsoft.Gallery リソースのアクセス制御
 | 役割 | アクセス許可 |

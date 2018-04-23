@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ae0e4e8149772d79190ee196cdd1c1bef344681
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4a1a2d0c40012649f6cd89193fd3f704f325e38a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする
 
@@ -96,10 +96,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 システム割り当て MSI とは異なり、ユーザー割り当て MSI は、複数の Azure リソース上のクライアントで使用できます。 このチュートリアルでは、ユーザー割り当て MSI を単一の VM に割り当てます。 ユーザー割り当て MSI は複数の VM に割り当てることもできます。
 
-[az vm assign-identity](/cli/azure/vm#az_vm_assign_identity) を使用して、ユーザー割り当て MSI を Linux VM に割り当てます。 `<RESOURCE GROUP>` と `<VM NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `--identities` パラメーターの値には、前の手順で返された `id` プロパティを使用します。
+[az vm assign-identity](/cli/azure/vm#az-vm-identity-assign) を使用して、ユーザー割り当て MSI を Linux VM に割り当てます。 `<RESOURCE GROUP>` と `<VM NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `--identities` パラメーターの値には、前の手順で返された `id` プロパティを使用します。
 
 ```azurecli-interactive
-az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"
+az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
@@ -189,7 +189,7 @@ az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "
 4. このアクセス トークンを使用して Azure Storage にアクセスします。たとえば、コンテナーに事前にアップロードされたサンプル ファイルの内容を読み取るなどです。 `<STORAGE ACCOUNT>`、`<CONTAINER NAME>`、`<FILE NAME>` の値を、以前に指定した値で置き換えます。`<ACCESS TOKEN>` は、前の手順で返されたトークンに置き換えます。
 
    ```bash
-   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME>?api-version=2017-11-09 -H "Authorization: Bearer <ACCESS TOKEN>"
+   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME> -H "x-ms-version: 2017-11-09" -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
    応答には、次のようなファイルの内容が含まれています。

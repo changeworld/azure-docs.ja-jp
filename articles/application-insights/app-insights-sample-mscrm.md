@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ced4f62b4f27ede28c61e8d2670432ddd7b76f9b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
 この記事では、[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft Dynamics CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。 アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/17/2018
     ![テキスト エディターを開く](./media/app-insights-sample-mscrm/00004.png)
 2. Application Insights からコードをコピーします。 コピーの際はスクリプト タグを無視します。 次のスクリーン ショットを参照してください。
 
-    ![インストルメンテーション キーを設定する](./media/app-insights-sample-mscrm/00005.png)
+    ![インストルメンテーション キーを設定する](./media/app-insights-sample-mscrm/000005.png)
 
     コードには Application Insights リソースを識別するインストルメンテーション キーが含まれています。
 3. 保存して発行します。

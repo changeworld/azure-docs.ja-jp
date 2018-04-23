@@ -1,11 +1,11 @@
 ---
-title: "PowerShell コマンドレットを使用して Azure IoT Hub を作成する | Microsoft Docs"
-description: "PowerShell コマンドレットを使用して IoT Hub を作成する方法。"
+title: PowerShell コマンドレットを使用して Azure IoT Hub を作成する | Microsoft Docs
+description: PowerShell コマンドレットを使用して IoT Hub を作成する方法。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1d22e1a20d18e06686f893b1f4ae22e6373633b3
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e7dbfabadf72b8abece02907cd16644ef95e67a9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>New-AzureRmIotHub コマンドレットを使用して IoT Hub を作成する
 
@@ -32,14 +32,14 @@ Azure PowerShell コマンドレットを使用すると、Azure IoT Hub を作�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * [Azure PowerShell コマンドレット][lnk-powershell-install]。
 
 ## <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
 PowerShell コマンド プロンプトから、次のコマンドを入力して Azure サブスクリプションにサインインします。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
@@ -110,7 +110,7 @@ Remove-AzureRmIotHub `
 Remove-AzureRmResourceGroup -Name MyIoTRG1
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、PowerShell コマンドレットを使用して IoT Hub をデプロイしました。次の手順に進んでください。
 

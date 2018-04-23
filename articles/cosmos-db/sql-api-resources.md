@@ -5,7 +5,7 @@ keywords: 階層型モデル, cosmosdb, azure, Microsoft azure
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 階層型リソース モデルと中心的概念
 
@@ -158,7 +158,7 @@ Cosmos DB データベース アカウントの作成および管理は、Azure 
     </tbody>
 </table>
 
-Azure Portal からデータベース アカウントをプロビジョニング、構成、管理するだけでなく、[Azure Cosmos DB REST API](/rest/api/documentdb/) と[クライアント SDK](sql-api-sdk-dotnet.md) を使用すると、Cosmos DB データベース アカウントをプログラムで作成または管理できます。  
+Azure Portal からデータベース アカウントをプロビジョニング、構成、管理するだけでなく、[Azure Cosmos DB REST API](/rest/api/cosmos-db/) と[クライアント SDK](sql-api-sdk-dotnet.md) を使用すると、Cosmos DB データベース アカウントをプログラムで作成または管理できます。  
 
 ## <a name="databases"></a>データベース
 Cosmos DB データベースは、次の図に示すように、1 つ以上のコレクションとユーザーの論理コンテナーです。 プラン上の制約はありますが、Cosmos DB データベース アカウントには任意の数のデータベースを作成できます。  
@@ -177,7 +177,7 @@ Cosmos DB データベースは、既定で高い柔軟性を持ち、数 GB か
 
 Azure Cosmos DB データベースはユーザーのコンテナーでもあります。 ユーザーは同様に、一連のアクセス許可に対する論理上の名前空間です。きめ細かな承認と、コレクション、ドキュメント、添付ファイルに対するアクセス権を提供します。  
 
-Azure Cosmos DB リソース モデルの他のリソースと同様に、データベースも [REST API](/rest/api/documentdb/) や任意の[クライアント SDK](sql-api-sdk-dotnet.md) を使用して作成、置換、削除、読み取り、または列挙が簡単にできます。 Azure Cosmos DB は、データベース リソースのメタデータの読み取りや照会で強力な一貫性を保証します。 データベースを削除すると、含まれるすべてのコレクションやユーザーに自動的にアクセスできなくなります。   
+Azure Cosmos DB リソース モデルの他のリソースと同様に、データベースも [REST API](/rest/api/cosmos-db/) や任意の[クライアント SDK](sql-api-sdk-dotnet.md) を使用して作成、置換、削除、読み取り、または列挙が簡単にできます。 Azure Cosmos DB は、データベース リソースのメタデータの読み取りや照会で強力な一貫性を保証します。 データベースを削除すると、含まれるすべてのコレクションやユーザーに自動的にアクセスできなくなります。   
 
 ## <a name="collections"></a>コレクション
 Cosmos DB コレクションは JSON ドキュメントのコンテナーです。 
@@ -195,7 +195,7 @@ Azure Cosmos DB は真にスキーマのないデータベース システムで
 * ドキュメントの特定のパスまたはパターンをインデックスから含めるか除外するかを選択します。 これは、コレクションの indexingPolicy に includedPaths と excludedPaths のいずれかを設定することで実現できます。 また、特定のパス パターンの範囲やハッシュ クエリに対してもストレージとパフォーマンスのバランスを構成できます。 
 * 同期 (一貫した) または非同期 (遅延) のインデックス更新を選択します。 既定では、コレクションに対するドキュメントの挿入、置換、削除のたびに、インデックスが同期的に更新されます。 これにより、クエリには、ドキュメントの読み取りと同じ一貫性レベルが保証されます。 Azure Cosmos DB は、書き込みを最適化し、同期インデックス メンテナンスによってドキュメントの持続的書き込みをサポートすると共に、クエリの一貫性を確保していますが、特定のコレクションのインデックスが遅れて更新されるように構成することもできます。 インデックスの遅延作成は、書き込みのパフォーマンスを飛躍的に高める効果があり、コレクションで主に読み取りの負荷が激しい状況での一括インジェストに最適です。
 
-インデックス作成ポリシーは、コレクションで PUT を実行することで変更可能です。 これは、[クライアント SDK](sql-api-sdk-dotnet.md)、[Azure Portal](https://portal.azure.com)、または [REST API](/rest/api/documentdb/) を使用して行うことができます。
+インデックス作成ポリシーは、コレクションで PUT を実行することで変更可能です。 これは、[クライアント SDK](sql-api-sdk-dotnet.md)、[Azure Portal](https://portal.azure.com)、または [REST API](/rest/api/cosmos-db/) を使用して行うことができます。
 
 ### <a name="querying-a-collection"></a>コレクションの照会
 コレクション内のドキュメントは任意のスキーマを持つことができ、事前にスキーマやセカンダリ インデックスを提供しなくても、コレクション内でドキュメントを照会することができます。 高度な階層、関係、および空間演算子と JavaScript ベースの UDF による拡張性を備えた [Azure Cosmos DB SQL 構文リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)を使用して、コレクションを照会できます。 JSON の文法により、ツリー ノードのラベルを付けたツリーとして JSON ドキュメントをモデリングできます。 これは SQL API の自動インデックス作成技法と Azure Cosmos DB の SQL 方言の両方で利用されています。 SQL クエリ言語の主な機能には以下の 3 つがあります。   
@@ -204,7 +204,7 @@ Azure Cosmos DB は真にスキーマのないデータベース システムで
 2. コンポジション、フィルター、プロジェクション、集計、自己結合などの関係演算子のサブセット。 
 3. (1) と (2) を使用する純粋な JavaScript ベースの UDF  
 
-Azure Cosmos DB クエリ モデルは、機能、効率、簡潔さのバランスを取るように試みます。 Azure Cosmos DB のデータベース エンジンは、SQL クエリ ステートメントをネイティブでコンパイルして実行します。 コレクションは [REST API](/rest/api/documentdb/) または任意の[クライアント SDK](sql-api-sdk-dotnet.md) で照会できます。 .NET SDK は、LINQ プロバイダーと共に提供されます。
+Azure Cosmos DB クエリ モデルは、機能、効率、簡潔さのバランスを取るように試みます。 Azure Cosmos DB のデータベース エンジンは、SQL クエリ ステートメントをネイティブでコンパイルして実行します。 コレクションは [REST API](/rest/api/cosmos-db/) または任意の[クライアント SDK](sql-api-sdk-dotnet.md) で照会できます。 .NET SDK は、LINQ プロバイダーと共に提供されます。
 
 > [!TIP]
 > SQL API の操作とデータセットに対する SQL クエリの実行は、[クエリのプレイグラウンド](https://www.documentdb.com/sql/demo)で試せます。
@@ -226,7 +226,7 @@ JavaScript と JSON がデータベース エンジン内で直接的に深く�
 
 バッファー プールと同じアドレス空間のデータベース エンジン内部で JavaScript を直接実行する機能により、コレクションのドキュメントに対してデータベース操作を高いパフォーマンスでトランザクション実行できます。 加えて、Cosmos DB データベース エンジンが JSON および JavaScript と深く関与していることから、アプリケーションとデータベースの型システム間のインピーダンス ミスマッチが解消されます。   
 
-コレクションの作成後、[REST API](/rest/api/documentdb/) または任意の[クライアント SDK](sql-api-sdk-dotnet.md) でストアド プロシージャ、トリガー、UDF をコレクションに登録できます。 登録が終了すると、これらを参照、実行できます。 次に示す全体が JavaScript で記述されたストアド プロシージャを検討してください。以下のコードでは 2 つの引数 (書名と著者名) を使用して、新しいドキュメントを作成し、照会してから更新しますが、すべて暗黙の ACID トランザクション内にあります。 実行中のいずれかの時点で JavaScript 例外がスローされた場合、トランザクション全体が中止されます。
+コレクションの作成後、[REST API](/rest/api/cosmos-db/) または任意の[クライアント SDK](sql-api-sdk-dotnet.md) でストアド プロシージャ、トリガー、UDF をコレクションに登録できます。 登録が終了すると、これらを参照、実行できます。 次に示す全体が JavaScript で記述されたストアド プロシージャを検討してください。以下のコードでは 2 つの引数 (書名と著者名) を使用して、新しいドキュメントを作成し、照会してから更新しますが、すべて暗黙の ACID トランザクション内にあります。 実行中のいずれかの時点で JavaScript 例外がスローされた場合、トランザクション全体が中止されます。
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -279,10 +279,10 @@ JavaScript と JSON がデータベース エンジン内で直接的に深く�
 
 ストアド プロシージャとトリガーは、現在のコレクションのコンテキストを明示する、適切に定義されたオブジェクト モデルを通じて、コレクションやコレクション内のドキュメントと対話します。  
 
-SQL API のコレクションは、[REST API](/rest/api/documentdb/) または任意の[クライアント SDK](sql-api-sdk-dotnet.md) を使用して作成、削除、読み取り、または列挙が簡単にできます。 SQL API は、コレクションのメタデータの読み取りや照会で強力な一貫性を常に提供します。 コレクションを削除すると、含まれているドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF へのアクセスが自動的にできなくなります。   
+SQL API のコレクションは、[REST API](/rest/api/cosmos-db/) または任意の[クライアント SDK](sql-api-sdk-dotnet.md) を使用して作成、削除、読み取り、または列挙が簡単にできます。 SQL API は、コレクションのメタデータの読み取りや照会で強力な一貫性を常に提供します。 コレクションを削除すると、含まれているドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF へのアクセスが自動的にできなくなります。   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF)
-前のセクションで説明したように、実行するアプリケーション ロジックは、データベース エンジン内部のトランザクション内に直接記述できます。 アプリケーション ロジック全体を JavaScript で記述し、ストアド プロシージャ、トリガーまたは UDF としてモデル化することができます。 ストアド プロシージャまたはトリガー内の JavaScript コードは、コレクションの内部で、ドキュメントの挿入、置換、削除、読み取り、または照会ができます。 一方、UDF 内の JavaScript ではドキュメントを挿入、置換、削除できません。 UDF では、クエリの結果セットのドキュメントを列挙し、別の結果セットを生成します。 マルチテナントの Azure Cosmos DB では、厳密な予約ベースのリソース ガバナンスが施行されます。 ストアド プロシージャ、トリガー、または UDF はいずれも、固定クォンタムのオペレーティング システムのリソースを入手して作業を実施します。 さらに、ストアド プロシージャ、トリガーまたは UDF は、外部の JavaScript ライブラリへの関連付けはできず、割り当てられたリソースの予算が超過するとブラックリストに掲載されます。 ストアド プロシージャ、トリガー、または UDF は、REST API を使用してコレクションに登録と登録解除ができます。  ストアド プロシージャ、トリガー、または UDF の登録はプリコンパイルされ、後で実行するためのバイト コードで格納されます。 次のセクションでは、Azure Cosmos DB JavaScript SDK を使用して、ストアド プロシージャ、トリガー、UDF を登録、実行、登録解除する方法について説明します。 JavaScript SDK は、[REST API](/rest/api/documentdb/) のシンプルなラッパーです。 
+前のセクションで説明したように、実行するアプリケーション ロジックは、データベース エンジン内部のトランザクション内に直接記述できます。 アプリケーション ロジック全体を JavaScript で記述し、ストアド プロシージャ、トリガーまたは UDF としてモデル化することができます。 ストアド プロシージャまたはトリガー内の JavaScript コードは、コレクションの内部で、ドキュメントの挿入、置換、削除、読み取り、または照会ができます。 一方、UDF 内の JavaScript ではドキュメントを挿入、置換、削除できません。 UDF では、クエリの結果セットのドキュメントを列挙し、別の結果セットを生成します。 マルチテナントの Azure Cosmos DB では、厳密な予約ベースのリソース ガバナンスが施行されます。 ストアド プロシージャ、トリガー、または UDF はいずれも、固定クォンタムのオペレーティング システムのリソースを入手して作業を実施します。 さらに、ストアド プロシージャ、トリガーまたは UDF は、外部の JavaScript ライブラリへの関連付けはできず、割り当てられたリソースの予算が超過するとブラックリストに掲載されます。 ストアド プロシージャ、トリガー、または UDF は、REST API を使用してコレクションに登録と登録解除ができます。  ストアド プロシージャ、トリガー、または UDF の登録はプリコンパイルされ、後で実行するためのバイト コードで格納されます。 次のセクションでは、Azure Cosmos DB JavaScript SDK を使用して、ストアド プロシージャ、トリガー、UDF を登録、実行、登録解除する方法について説明します。 JavaScript SDK は、[REST API](/rest/api/cosmos-db/) のシンプルなラッパーです。 
 
 ### <a name="registering-a-stored-procedure"></a>ストアド プロシージャの登録
 ストアド プロシージャの登録により、新しいストアド プロシージャのリソースがコレクションに HTTP POST を介して作成されます。  
@@ -410,7 +410,7 @@ UDF は、既存の UDF のリソースに HTTP DELETE を発行するだけで�
             console.log("Error");
         });
 
-上記のスニペットでは、[JavaScript SDK](https://github.com/Azure/azure-documentdb-js) を使用した登録 (POST)、登録解除 (PUT)、読み取りと一覧表示 (GET)、実行 (POST) を示していますが、[REST API](/rest/api/documentdb/) や他の[クライアント SDK](sql-api-sdk-dotnet.md) も使用できます。 
+上記のスニペットでは、[JavaScript SDK](https://github.com/Azure/azure-documentdb-js) を使用した登録 (POST)、登録解除 (PUT)、読み取りと一覧表示 (GET)、実行 (POST) を示していますが、[REST API](/rest/api/cosmos-db/) や他の[クライアント SDK](sql-api-sdk-dotnet.md) も使用できます。 
 
 ## <a name="documents"></a>ドキュメント
 コレクションでは、任意の JSON ドキュメントを挿入、置換、削除、読み取り、列挙、照会することができます。 Azure Cosmos DB では、スキーマやセカンダリ インデックスを必要とせずに、コレクションのドキュメントへのクエリをサポートできます。 ドキュメントの最大サイズは 2 MB です。   

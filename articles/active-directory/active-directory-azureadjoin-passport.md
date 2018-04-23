@@ -1,11 +1,11 @@
 ---
-title: "Windows Hello for Business および Azure AD 経由でのパスワードを使用しない ID の認証 | Microsoft Docs"
-description: "Windows Hello for Business の概要と、Windows Hello for Business のデプロイに関する詳細を示します。"
+title: Windows Hello for Business および Azure AD 経由でのパスワードを使用しない ID の認証 | Microsoft Docs
+description: Windows Hello for Business の概要と、Windows Hello for Business のデプロイに関する詳細を示します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
 ms.service: active-directory
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>Windows Hello for Business 経由でのパスワードを使用しない ID の認証
 パスワードだけで認証する現在の方法は、ユーザーの安全を保つうえで十分ではありません。 ユーザーは、パスワードを再利用したり、忘れたりすることがあります。 パスワードに対しては、攻撃やフィッシング、解読、推測が可能です。 また、パスワードは、覚えるのが難しく、“[pass the hash](https://technet.microsoft.com/dn785092.aspx)” のような攻撃の対象にもなります。

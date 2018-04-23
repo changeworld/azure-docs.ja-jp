@@ -12,10 +12,10 @@ ms.date: 03/14/2018
 ms.author: bonova
 manager: craigg
 ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Azure Portal で Azure SQL Database マネージ インスタンスを作成する
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/16/2018
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 > [!IMPORTANT]
-> 現在マネージ インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Azure SQL Database マネージ インスタンスを使用してデータベースを完全管理型サービスに移行する)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」を参照してください。
+> 現在マネージ インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」(Azure SQL Database マネージ インスタンスを使用してデータベースを完全管理型サービスに移行する) を参照してください。
  
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ここでは、マネージ インスタンスで使用する新しい[Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-model.md) 仮想ネットワーク (VNet) を作成する手順について説明します。 VNet の構成の詳細については、[マネージ インスタンス VNet の構成](sql-database-managed-instance-vnet-configuration.md)に関するページを参照してください。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[仮想ネットワーク]** を見つけてクリックし、**[リソース マネージャー]** がデプロイ モードとして選択されていることを確認してから、**[作成]** をクリックします。
+2. **[Virtual Network]** を見つけてクリックし、**[Resource Manager]** がデプロイ モードとして選択されていることを確認してから、**[作成]** をクリックします。
 
    ![仮想ネットワークの作成](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
 

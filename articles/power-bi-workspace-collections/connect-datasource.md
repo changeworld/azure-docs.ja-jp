@@ -1,12 +1,12 @@
 ---
-title: "Power BI ワークスペース コレクション内のデータ ソースへの接続 | Microsoft Docs"
-description: "Power BI ワークスペース コレクション内のデータ ソースに接続する方法を説明します。"
+title: Power BI ワークスペース コレクション内のデータ ソースへの接続 | Microsoft Docs
+description: Power BI ワークスペース コレクション内のデータ ソースに接続する方法を説明します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 24600c4343e3bfebe14f25020c5a7ba02d15af64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5a154c4899db974645bb7ade028d8bd8f267aad7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-a-data-source"></a>データ ソースへの接続
 
 **Power BI ワークスペース コレクション**を使用することで、独自のアプリにレポートを埋め込むことができます。 Power BI レポートをアプリに組み込むと、レポートは基になるデータに接続する際に、データのコピーを**インポート**するか、**DirectQuery** を使用してデータ ソースに**直接接続**します。
 
 > [!IMPORTANT]
-> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、「[How to migrate Power BI Workspace Collection content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)」(Power BI Embedded に Power BI ワークスペース コレクション コンテンツを移行する方法) を参照してください。
+> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 **インポート**する方法と **DirectQuery** を使う方法の違いを次に示します。
 

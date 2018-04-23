@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f97de4e93c9330206ed22c071d8ade0821bf6691
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -154,7 +154,7 @@ Azure Event Grid では、次の操作がサポートされています。
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-最後の 3 つの操作は秘密情報を返す可能性がありますが、この情報は通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 カスタム ロールは、[Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)、[Azure コマンド ライン インターフェイス (CLI)](../active-directory/role-based-access-control-manage-access-azure-cli.md)、および [REST API](../active-directory/role-based-access-control-manage-access-rest.md) で作成することができます。
+最後の 3 つの操作は秘密情報を返す可能性がありますが、この情報は通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 カスタム ロールは、[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure コマンド ライン インターフェイス (CLI)](../role-based-access-control/role-assignments-cli.md)、および [REST API](../role-based-access-control/role-assignments-rest.md) で作成することができます。
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>ロール ベースのアクセス確認 (RBAC) の適用
 

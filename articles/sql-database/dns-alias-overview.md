@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;ayolubek
 ms.author: dmalik
-ms.openlocfilehash: c2a2bce3b385bd5700bf327f283289cf4d94b057
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1793f44026db55d17fabde5fb92bc46795109418
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 
@@ -63,7 +63,7 @@ SQL Database サーバーの各 DNS エイリアスには次のプロパティ�
 - *どのリージョンにもバインドされない:* DNS エイリアスはリージョンにバインドされません。 どの DNS エイリアスも任意のリージョンに存在する Azure SQL Database サーバーを参照するよう更新できます。
     - ただし、別のサーバーを参照するようエイリアスを更新する際は、両方のサーバーが同じ Azure *サブスクリプション*に存在する必要があります。
 
-- *アクセス許可:* DNS エイリアスを管理するユーザーには、*サーバー共同作成者*権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。
+- *アクセス許可:* DNS エイリアスを管理するユーザーには、*サーバー共同作成者*権限以上の権限が必要です。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 
 
 

@@ -1,8 +1,8 @@
 ---
-title: "Sqoop を使用して Data Lake Store と Azure SQL Database の間でデータをコピーする | Microsoft Docs"
-description: "Sqoop を使用して Azure SQL Database と Data Lake Store の間でデータをコピーする"
+title: Sqoop を使用して Data Lake Store と Azure SQL Database の間でデータをコピーする | Microsoft Docs
+description: Sqoop を使用して Azure SQL Database と Data Lake Store の間でデータをコピーする
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 2611b50114a9fae003fe6e77300780a9af0698cc
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 2e68f74976c25a5c2db32867dabca147f5c30e80
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Store と Azure SQL Database の間でデータをコピーする
 Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデータのインポートおよびエクスポートを行う方法について説明します。
@@ -48,7 +48,7 @@ Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデ
         [ID] [int] NOT NULL,
         [FName] [nvarchar](50) NOT NULL,
         [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_4] PRIMARY KEY CLUSTERED
+         CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
             (
                    [ID] ASC
             )
@@ -61,7 +61,7 @@ Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデ
         [ID] [int] NOT NULL,
         [FName] [nvarchar](50) NOT NULL,
         [LName] [nvarchar](50) NOT NULL,
-         CONSTRAINT [PK_Table_4] PRIMARY KEY CLUSTERED
+         CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
             (
                    [ID] ASC
             )

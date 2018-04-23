@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store のセキュリティ
 多くの企業が、ビッグ データの分析によってビジネスに関する洞察を獲得し、それを意思決定に活かしています。 ただ、一部の組織はユーザーが多様化し、その数も増加の一途を辿っているばかりか、各種の規制が存在する複雑な環境に直面しています。 このため、重要なビジネス データはこれまで以上に強固なセキュリティをもって保管すると同時に、個々のユーザーには適切な水準のアクセス権を付与することがきわめて重要になっています。 Azure Data Lake Store は、このようなセキュリティ要件を満たすことを目指して設計されています。 この記事では、以下に示す Data Lake Store のセキュリティ機能について説明します。
@@ -42,7 +42,7 @@ Azure サブスクリプションはそれぞれ、Azure Active Directory のイ
 ## <a name="authorization-and-access-control"></a>承認とアクセス制御
 Azure Active Directory の認証によってユーザーが Azure Data Lake Store にアクセスできるようになった後は、承認によって Data Lake Store のアクセス許可を制御します。 Data Lake Store では、アカウント関連アクティビティとデータ関連アクティビティの承認が次のように区別されます。
 
-* [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md) (RBAC)
+* [ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC)
 * ストア内のデータにアクセスするための POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>RBAC を使用したアカウント管理

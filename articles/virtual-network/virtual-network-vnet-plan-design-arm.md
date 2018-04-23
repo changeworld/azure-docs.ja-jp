@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure Virtual Network の計画と設計
 試験的に VNet を作成することは簡単ですが、あなたはおそらく、組織の運用ニーズに対応するために、時間の経過と共に複数の VNet をデプロイすることになるでしょう。 ある程度の計画と設計を行うことで、より効率的に VNet をデプロイし、必要なリソースを接続できます。 VNet に慣れていない場合、続行する前に [VNet の概要](virtual-networks-overview.md)と[デプロイ方法](quick-create-portal.md)について学習することが推奨されます。
@@ -87,12 +87,12 @@ VNet には、次のプロパティが含まれています。
 設計がいずれの制限とも競合していないことを確認するには、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事のネットワークの制限をご覧ください。 一部の制限は、サポート チケットを開いて引き上げることができます。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
-[Azure RBAC](../active-directory/role-based-access-built-in-roles.md) を利用し、さまざまなユーザーが Azure のさまざまなリソースにアクセスするために必要なアクセス権のレベルを制御できます。 この方法で、チームが行う作業をチームのニーズに基づいて分離できます。
+[Azure RBAC](../role-based-access-control/built-in-roles.md) を利用し、さまざまなユーザーが Azure のさまざまなリソースにアクセスするために必要なアクセス権のレベルを制御できます。 この方法で、チームが行う作業をチームのニーズに基づいて分離できます。
 
 仮想ネットワークに関する限り、 **ネットワークの共同作業者** ロールのユーザーは Azure リソース マネージャーの仮想ネットワーク リソースを自由に利用できます。 同様に、 **従来のネットワークの共同作業者** ロールのユーザーは従来の仮想ネットワーク リソースを自由に利用できます。
 
 > [!NOTE]
-> [独自のロールを作成](../active-directory/role-based-access-control-configure.md) し、管理ニーズを分離することもできます。
+> [独自のロールを作成](../role-based-access-control/role-assignments-portal.md) し、管理ニーズを分離することもできます。
 >
 >
 

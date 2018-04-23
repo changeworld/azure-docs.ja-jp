@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: klam; LADocs
 ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>ロジック アプリ ワークフローのトリガーとアクション
 
@@ -1121,7 +1121,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | `"expression": "@greater(actions('action1').output.value, parameters('threshold'))"` | 比較関数をサポートします。 この例では、action1 の出力がしきい値より大きい場合にのみ、アクションが実行されます。 | 
 | `"expression": "@or(greater(actions('action1').output.value, parameters('threshold')), less(actions('action1').output.value, 100))"` | 入れ子になったブール式を作成する場合、論理関数がサポートされます。 この例では、action1 の出力がしきい値より大きいか 100 未満の場合に、アクションが実行されます。 | 
 | `"expression": "@equals(length(actions('action1').outputs.errors), 0))"` | 配列にアイテムがあるかどうかを確認するには、配列関数を使用できます。 この例では、errors 配列が空のときにアクションが実行されます。 | 
-| `"expression": "parameters('hasSpecialAction')"` | この式ではエラーが生成されます。有効な条件ではありません。 条件では \"\@\" 記号を使用する必要があります。 | 
+| `"expression": "parameters('hasSpecialAction')"` | この式ではエラーが生成されます。有効な条件ではありません。 条件では "@" 記号を使用する必要があります。 | 
 ||| 
 
 ## <a name="switch-action"></a>switch アクション

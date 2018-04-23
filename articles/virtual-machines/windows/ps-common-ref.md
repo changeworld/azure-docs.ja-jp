@@ -3,7 +3,7 @@ title: Azure Virtual Machines 用の一般的な PowerShell コマンド | Micro
 description: Azure で Windows VM の作成および管理を開始する際に使用される一般的な PowerShell コマンド。
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/17/2017
-ms.author: davidmu
-ms.openlocfilehash: f84473e73a32da43cc6cc80b21deb49ab4f3ceb9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 313a313764f8ba14c9661429d1f6a8463778c934
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Azure Virtual Machines の作成および管理に使用される一般的な PowerShell コマンド
 

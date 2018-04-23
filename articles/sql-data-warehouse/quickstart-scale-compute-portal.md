@@ -1,24 +1,20 @@
 ---
-title: "クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - Azure Portal | Microsoft Docs"
-description: "コンピューティング能力を管理するための Azure ポータルのタスク。 DWU を調整することで、コンピューティング リソースをスケーリングします。 また、コストを節約するために、コンピューティング リソースを一時停止および再開します。"
+title: 'クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - Azure Portal | Microsoft Docs'
+description: Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/31/2018
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 6b86042ed6b95ba49fa2089ba36b1dbe9a61cc40
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: quickstart
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: d93ea939a938fa88615161d3d048ee1881dd319a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>クイックスタート: Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングする
 

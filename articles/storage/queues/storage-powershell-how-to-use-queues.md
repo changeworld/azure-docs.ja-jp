@@ -1,12 +1,12 @@
 ---
-title: "PowerShell を使用し、Azure Queue Storage を操作する | Microsoft Docs"
-description: "PowerShell を使用し、Azure Queue Storage を操作する方法"
+title: PowerShell を使用し、Azure Queue Storage を操作する | Microsoft Docs
+description: PowerShell を使用し、Azure Queue Storage を操作する方法
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 36eb6db83bb902b35efb8c9666ab06e0c618d602
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bad9f1f3fd5737e865a8f4d1d15ab3d5eb68b4cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用し、Azure Queue Storage を操作する
 
@@ -38,10 +38,10 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>場所の一覧を取得する
@@ -177,7 +177,7 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このハウツー記事では、次のような、PowerShell による基本的な Queue Storage 管理について説明しました。
 

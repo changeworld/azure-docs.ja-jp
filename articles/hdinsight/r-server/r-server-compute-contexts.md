@@ -1,25 +1,23 @@
 ---
 title: HDInsight の R Server のコンピューティング コンテキストのオプション - Azure | Microsoft Docs
 description: HDInsight の R Server でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションについて説明します。
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 0deb0b1c-4094-459b-94fc-ec9b774c1f8a
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: nitinme
-ms.openlocfilehash: 7d10f58c345eff334f40c0ec64d7b9427d6a70e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2aa10e1eab6cabe058062519ecc023b88361d742
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>HDInsight の R Server (プレビュー) の計算コンテキストのオプション
 

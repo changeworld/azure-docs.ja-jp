@@ -1,25 +1,18 @@
 ---
-title: "Azure Search で複合データ型をモデル化する方法 | Microsoft Docs"
-description: "階層または入れ子になったデータ構造は、フラット化された行セットとコレクション データ型を使用して、Azure Search インデックスでモデル化できます。"
-services: search
-documentationcenter: 
-author: LiamCa
-manager: pablocas
-editor: 
+title: Azure Search で複合データ型をモデル化する方法 | Microsoft Docs
+description: 階層または入れ子になったデータ構造は、フラット化された行セットとコレクション データ型を使用して、Azure Search インデックスでモデル化できます。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
-ms.assetid: e4bf86b4-497a-4179-b09f-c1b56c3c0bb2
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
-ms.author: liamca
-ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: bc7deddc73139e587114c2d58c3fd176df47225c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Azure Search で複合データ型をモデル化する方法
 Azure Search インデックスの設定に使用する外部データセットの中には、下部構造が階層または入れ子となっているために、表形式の行セットに適切に分解できないものが存在します。 このような構造の例として、単一の顧客に複数の住所と電話番号が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデル化の際に使う用語では、このような構造を "*複合データ型*"、"*コンパウンド データ型*"、"*コンポジット データ型*"、"*集合体データ型*" などの用語で呼ぶことがあります。
@@ -102,7 +95,7 @@ var index = new Index()
 * "Home Office" で働く人の数をカウントする。  
 * "Home Office" で働く人のうち、他のオフィスでも働く人について、そのオフィス名を表示し、各オフィスで働く人数をカウントする。  
 
-場所の ID と場所の説明の両方を組み合わせた検索を実行する必要がある場合、この手法ではうまくいきません。 次に例を示します。
+場所の ID と場所の説明の両方を組み合わせた検索を実行する必要がある場合、この手法ではうまくいきません。 例: 
 
 * "Home Office" で働き、かつ場所の ID が "4" である人をすべて検索する。  
 
@@ -117,7 +110,7 @@ var index = new Index()
 
 ところが、既にデータを別々のフィールドに分割してしまったため、Jen Campbell の "Home Office" が `locationsID 3` に関連しているのか、`locationsID 4` に関連しているのかを知るすべはありません。  
 
-このようなケースを処理するには、インデックスでもう 1 つのフィールドを定義し、そのフィールドですべてのデータを単一のコレクションに結合します。  この例では、このフィールドを `locationsCombined` と呼びます。ここでは、内容を区切るために `||` を使用しますが、内容に対して一意である文字の組み合わせであれば、どのような区切り記号でも選択できます。 次に例を示します。 
+このようなケースを処理するには、インデックスでもう 1 つのフィールドを定義し、そのフィールドですべてのデータを単一のコレクションに結合します。  この例では、このフィールドを `locationsCombined` と呼びます。ここでは、内容を区切るために `||` を使用しますが、内容に対して一意である文字の組み合わせであれば、どのような区切り記号でも選択できます。 例:  
 
 ![sample data, 2 rows with separator](./media/search-howto-complex-data-types/sample-data-2.png)
 
@@ -127,7 +120,7 @@ var index = new Index()
 * "Home Office" で働き、かつ場所の ID が "4" である人を検索する。 
 
 ## <a name="limitations"></a>制限事項
-この手法は多くのシナリオで役立ちますが、すべての場合に適用できるわけではありません。  次に例を示します。
+この手法は多くのシナリオで役立ちますが、すべての場合に適用できるわけではありません。  例: 
 
 1. 複合データ型に静的な一連のフィールドがなく、すべての指定可能な型を 1 つのフィールドにマップすることができない場合。 
 2. 入れ子になったオブジェクトを更新する際に、Azure Search インデックスで何を更新する必要があるのかを正確に判断するための追加作業が必要になる場合。

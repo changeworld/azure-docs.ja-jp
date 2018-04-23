@@ -3,7 +3,7 @@ title: Windows VM でパスワードまたはリモート デスクトップの�
 description: Azure Portal または Azure PowerShell を使用して、Windows VM でアカウントのパスワードまたはリモート デスクトップ サービスをリセットする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
-ms.author: danis
-ms.openlocfilehash: 038fc81fd46f81a454ec908e2156579ff8d41ee6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 26a213d490ee3f661735ff5b893b0a5f5f9906da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 Windows 仮想マシン (VM) に接続できない場合、ローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。 VM にログインしたら、そのユーザーのパスワードをリセットしてください。  
@@ -54,24 +54,24 @@ Windows 仮想マシンを選び、**[サポート + トラブルシューティ
 
 
 ## <a name="vmaccess-extension-and-powershell"></a>VMAccess 拡張機能と PowerShell
-[最新の PowerShell モジュールのインストールと構成](/powershell/azure/overview)が完了しており、`Login-AzureRmAccount` コマンドレットを使用して Azure サブスクリプションにサインインしていることを確認します。
+[最新の PowerShell モジュールのインストールと構成](/powershell/azure/overview)が完了しており、`Connect-AzureRmAccount` コマンドレットを使用して Azure サブスクリプションにサインインしていることを確認します。
 
 ### <a name="reset-the-local-administrator-account-password"></a>**ローカル管理者アカウント パスワードのリセット**
-[Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、管理者パスワードまたはユーザー名をリセットします。 次のようにアカウントの資格情報を作成します。
+[Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、管理者パスワードまたはユーザー名をリセットします。 
 
 ```powershell
-$cred=Get-Credential
+$SubID = "<SUBSCRIPTION ID>" 
+$RgName = "<RESOURCE GROUP NAME>" 
+$VmName = "<VM NAME>" 
+$Location = "<LOCATION>" 
+ 
+Connect-AzureRmAccount 
+Select-AzureRMSubscription -SubscriptionId $SubID 
+Set-AzureRmVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMName $VmName -Credential (get-credential) -typeHandlerVersion "2.0" -Name VMAccessAgent 
 ```
 
 > [!NOTE] 
 > VM で現在のローカル管理者アカウントと異なる名前を入力すると、VMAccess 拡張機能によってローカル管理者アカウントの名前が追加されて、指定したパスワードがそのアカウントに割り当てられます。 VM にローカル管理者アカウントが存在する場合はパスワードがリセットされ、アカウントが無効になっている場合は VMAccess 拡張機能によって有効化されます。
-
-
-次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM を指定した資格情報に更新します。
-
-```powershell
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -UserName $cred.GetNetworkCredential().UserName -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
-```
 
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**リモート デスクトップ サービスの構成のリセット**
 [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell コマンドレットを使用して、VM へのリモート アクセスをリセットします。 次の例では、`myResourceGroup` リソース グループの `myVM` という名前の VM で、`myVMAccess` という名前のアクセス拡張機能をリセットします。

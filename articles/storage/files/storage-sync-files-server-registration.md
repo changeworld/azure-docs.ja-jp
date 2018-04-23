@@ -1,8 +1,8 @@
 ---
-title: "Azure File Sync (プレビュー) に登録されたサーバーの管理 | Microsoft Docs"
-description: "Azure ファイル同期のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。"
+title: Azure File Sync (プレビュー) に登録されたサーバーの管理 | Microsoft Docs
+description: Azure ファイル同期のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: fcd79f25dee4ccaf674594222a6465fda137fd7a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 9367b2bdb1bb77725356d2be41d5e44d900cb927
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Azure File Sync (プレビュー) に登録されたサーバーの管理
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -66,7 +66,7 @@ Azure ファイル同期 (プレビュー) を使用すると、オンプレミ�
 ### <a name="register-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録する
 Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー エンドポイント*" として使用するには、"*ストレージ同期サービス*" にサーバーを登録しておく必要があります。 サーバーを登録できるストレージ同期サービスは、一度に 1 つに限られます。
 
-#### <a name="install-the-azure-file-sync-agent"></a>Azure ファイル同期エージェントをインストールする
+#### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
 1. [Azure ファイル同期エージェントをダウンロード](https://go.microsoft.com/fwlink/?linkid=858257)します。
 2. Azure ファイル同期エージェントのインストーラーを起動します。
     
@@ -139,7 +139,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Login-AzureRmAccount
+$accountInfo = Connect-AzureRmAccount
 Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
@@ -194,4 +194,4 @@ Windows Server 仮想化ホストで実行されている仮想マシンで Azur
 ## <a name="see-also"></a>関連項目
 - [Azure File Sync (プレビュー) のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync (プレビュー) をデプロイする](storage-sync-files-deployment-guide.md) 
-- [Azure ファイル同期のトラブルシューティング (プレビュー)](storage-sync-files-troubleshoot.md)
+- [Azure File Sync のトラブルシューティング (プレビュー)](storage-sync-files-troubleshoot.md)

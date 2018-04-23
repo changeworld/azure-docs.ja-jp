@@ -1,8 +1,8 @@
 ---
-title: "プログラムによる Azure ダッシュボードの作成 | Microsoft Docs"
-description: "この記事では、プログラムで Azure ダッシュボードを作成する方法について説明します。"
+title: プログラムによる Azure ダッシュボードの作成 | Microsoft Docs
+description: この記事では、プログラムで Azure ダッシュボードを作成する方法について説明します。
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
 manager: timlt
 editor: tysonn
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3d72c8b026dd7c72be01aabcb47e76174d7afd6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -55,7 +55,7 @@ Azure 内の共有ダッシュボードは、仮想マシンやストレージ �
 
 ![[共有] コマンド](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-[共有] コマンドをクリックすると、発行するサブスクリプションとリソース グループを選択するダイアログが表示されます。 選択したサブスクリプションとリソース グループに[書き込みアクセス権が必要](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)であることに注意してください。
+[共有] コマンドをクリックすると、発行するサブスクリプションとリソース グループを選択するダイアログが表示されます。 選択したサブスクリプションとリソース グループに[書き込みアクセス権が必要](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)であることに注意してください。
 
 ![共有とアクセス](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

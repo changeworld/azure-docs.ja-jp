@@ -1,11 +1,11 @@
 ---
-title: "VNet 間接続を使用して Azure 仮想ネットワークを別の VNet に接続する: PowerShell | Microsoft Docs"
-description: "VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続します。"
+title: 'VNet 間接続を使用して Azure 仮想ネットワークを別の VNet に接続する: PowerShell | Microsoft Docs'
+description: VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8f2ecf4f10c5506b79adb033c67c41a4b1e17777
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a96326e23a2ed913ccab8a23666a4f408157d3da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -153,7 +153,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 2. アカウントに接続します。 接続については、次の例を参考にしてください。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   アカウントのサブスクリプションを確認します。
@@ -349,7 +349,7 @@ TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するに
 2. サブスクリプション 5 に接続します。 PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   アカウントのサブスクリプションを確認します。

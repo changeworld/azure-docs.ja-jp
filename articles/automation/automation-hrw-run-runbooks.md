@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 1db1bf6f147ae4635b0d23e84faa67dbd8f786bc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6fc89469e1a9b2d7142e38f7aea5596fc9adb4e4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -113,8 +113,6 @@ AUTHOR: Azure Automation Team
 LASTEDIT: 2016.10.13
 #>
 
-[OutputType([string])]
-
 # Generate the password used for this certificate
 Add-Type -AssemblyName System.Web -ErrorAction SilentlyContinue | Out-Null
 $Password = [System.Web.Security.Membership]::GeneratePassword(25, 10)
@@ -139,7 +137,7 @@ Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\
 # Test that authentication to Azure Resource Manager is working
 $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
 
-Add-AzureRmAccount `
+Connect-AzureRmAccount `
     -ServicePrincipal `
     -TenantId $RunAsConnection.TenantId `
     -ApplicationId $RunAsConnection.ApplicationId `

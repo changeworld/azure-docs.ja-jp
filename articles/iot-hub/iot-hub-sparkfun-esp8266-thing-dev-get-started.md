@@ -1,25 +1,25 @@
 ---
-title: "ESP8266 をクラウドへ - Sparkfun ESP8266 Thing Dev を Azure IoT Hub に接続する | Microsoft Docs"
-description: "このチュートリアルでは、Sparkfun ESP8266 Thing Dev を Azure IoT Hub に接続し、Sparkfun ESP8266 Thing Dev で Azure クラウド プラットフォームにデータを送信する方法について説明します。"
+title: ESP8266 をクラウドへ - Sparkfun ESP8266 Thing Dev を Azure IoT Hub に接続する | Microsoft Docs
+description: このチュートリアルでは、Sparkfun ESP8266 Thing Dev を Azure IoT Hub に接続し、Sparkfun ESP8266 Thing Dev で Azure クラウド プラットフォームにデータを送信する方法について説明します。
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
-ms.author: xshi
-ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: e6837d0312217d8e27e3639b8220f5016a2505a6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Sparkfun ESP8266 Thing Dev をクラウドの Azure IoT Hub に接続する
 
@@ -39,7 +39,7 @@ Sparkfun ESP8266 Thing Dev を、作成する Azure IoT Hub に接続します�
 * IoT Hub を作成し、Thing Dev のデバイスを登録する方法。
 * センサー付き Thing Dev をコンピューターに接続する方法。
 * Thing Dev のサンプル アプリケーションを実行して、センサー データを収集する方法。
-* センサー データを IoT Hub に送信する方法。
+* センサー データを IoT ハブに送信する方法。
 
 ## <a name="what-you-will-need"></a>前提条件
 
@@ -221,7 +221,7 @@ DHT22 センサーがない場合は、サンプル アプリケーションで�
 
 ![Arduino IDE での最終出力](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Sparkfun ESP8266 Thing Dev を IoT Hub に接続し、キャプチャしたセンサー データを IoT Hub に送信できるようになりました。 
 

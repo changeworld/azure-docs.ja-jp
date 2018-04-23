@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 6fb783b79f0e4fd1c453695c1ebd360b91962f41
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dbb4176ac61cf707b28cddc98db80a1188be3cc8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-powershell"></a>Azure PowerShell を使用してゾーン フロントエンドでパブリック Load Balancer Standard を作成する
 
@@ -32,13 +32,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
-## <a name="create-resource-group"></a>リソース グループの作成
+## <a name="create-resource-group"></a>Create resource group
 
 リソース グループを作成するには、次のコマンドを使用します。
 
@@ -96,7 +96,7 @@ $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoa
 ```
 
 ## <a name="next-steps"></a>次の手順
-- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の詳細を確認します。
+- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)を確認します。
 
 
 

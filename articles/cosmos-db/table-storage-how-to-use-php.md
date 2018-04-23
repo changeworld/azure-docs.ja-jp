@@ -3,22 +3,21 @@ title: PHP から Azure Storage Table service API または Azure Cosmos DB Tabl
 description: PHP から Table service API を使って、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。
 services: cosmos-db
 documentationcenter: php
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mimig
-ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,23 +26,18 @@ ms.lasthandoff: 04/06/2018
 ## <a name="overview"></a>概要
 このガイドでは、Azure Storage Table service API および Azure Cosmos DB Table API を使って一般的なシナリオを実行する方法を説明します。 サンプルは PHP で記述されており、[Azure Storage Table PHP Client Library][download] を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
-Azure テーブル ストレージ API または Azure Cosmos DB テーブル API を使ってテーブルを操作できます。 サービスによる違いの詳細については、「[Table のサービス](table-introduction.md#table-offerings)」を参照してください。 使用するサービスのアカウントを作成する必要があります。 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
+### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-最初のストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-[Azure PowerShell](../storage/common/storage-powershell-guide-full.md) または [Azure CLI](../storage/common/storage-azure-cli.md) を使って、ストレージ アカウントを作成することもできます。
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
 
-現時点でストレージ アカウントを作成しない場合は、Azure Storage エミュレーターを使って、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../storage/common/storage-use-emulator.md)」を参照してください。
-
-### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
-
-Azure Cosmos DB アカウントの作成手順については、[Table API アカウントの作成](create-table-dotnet.md#create-a-database-account)に関するページをご覧ください。
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
 

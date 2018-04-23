@@ -3,9 +3,8 @@ title: Azure Cosmos DB のリージョン内フェールオーバー | Microsoft
 description: Azure Cosmos DB での手動および自動フェールオーバーの動作について説明します。
 services: cosmos-db
 documentationcenter: ''
-author: arramac
+author: SnehaGunda
 manager: kfile
-editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -13,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: arramac
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a221a0d4f9ef6b6b32ed9b684939b9f277e2084
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 977027de0627a6eca5f9eb5d1ab83dea5347c6d4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB でのビジネス継続性のためのリージョン内自動フェールオーバー
 Azure Cosmos DB はデータのグローバル分散を容易にします。そのために、対応する保証と共に一貫性、可用性、パフォーマンスの間の明確なトレードオフを提供する、完全に管理された[複数リージョンのデータベース アカウント](distribute-data-globally.md)が用意されています。 Cosmos DB アカウントには、高可用性、10 ミリ秒未満の遅延、[明確に定義された整合性レベル](consistency-levels.md)、マルチホーム API による透過的なリージョン内フェールオーバー、世界規模でスループットとストレージを柔軟にスケーリングする機能が備わっています。 
@@ -61,7 +60,7 @@ usConnectionPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
 
 DocumentClient usClient = new DocumentClient(
     new Uri("https://contosodb.documents.azure.com"),
-    "memf7qfF89n6KL9vcb7rIQl6tfgZsRt5gY5dh3BIjesarJanYIcg2Edn9uPOUIVwgkAugOb2zUdCR2h0PTtMrA==",
+    "<Fill your Cosmos DB account's AuthorizationKey>",
     usConnectionPolicy);
 ```
 

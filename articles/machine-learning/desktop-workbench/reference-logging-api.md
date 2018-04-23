@@ -1,6 +1,6 @@
 ---
-title: "Azure ML ロギング API リファレンス | Microsoft Docs"
-description: "ロギング API リファレンス。"
+title: Azure ML ロギング API リファレンス | Microsoft Docs
+description: ロギング API リファレンス。
 services: machine-learning
 author: akshaya-a
 ms.author: akannava
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
 ms.openlocfilehash: 1906425c6657fb6232a9dc306b05f9171c9c7bef
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="logging-api-reference"></a>ロギング API リファレンス
 

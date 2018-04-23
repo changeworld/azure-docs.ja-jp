@@ -1,12 +1,12 @@
 ---
-title: "Azure で運用可能なセキュリティの概要 | Microsoft Docs"
-description: "この記事では、Azure で運用可能なセキュリティの概要について説明します。"
+title: Azure で運用可能なセキュリティの概要 | Microsoft Docs
+description: この記事では、Azure で運用可能なセキュリティの概要について説明します。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f656edee1460ce2bb17a582ca240e3bb4089b708
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)は、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワークです。
@@ -43,7 +43,7 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 
 -   Log Analytics
 -   Automation
--   Backup
+-   バックアップ
 -   Site Recovery
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -52,7 +52,7 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 ### <a name="automation"></a>Automation
 ユーザーは Microsoft [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。 時間を節約し、普段の管理タスクの信頼性が向上し、一定の間隔で自動的に実行されるようにスケジュールを設定します。 Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>バックアップ
 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 [Azure Backup コンポーネントの表](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use)をご覧ください。
 
 ### <a name="site-recovery"></a>Site Recovery
@@ -65,7 +65,7 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 -   一元的なアクセス管理、シングル サインオン (SSO)、およびレポート機能を提供
 -   Salesforce、Google Apps、Box、Concur などのアプリケーション ギャラリーの [数千のアプリケーション](https://azure.microsoft.com/marketplace/active-directory/) に対する統合アクセス管理のサポート
 
-Azure AD には、[多要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)、[デバイスの登録]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)、[セルフサービスのパスワード管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)、[セルフサービスのグループ管理](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)、[特権を持つアカウントの管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)、[ロールベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)、[アプリケーション使用状況の監視](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)、[機能豊富な監査](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)、[セキュリティの監視とアラート](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)など、一連の [ID 管理機能](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)も用意されています。
+Azure AD には、[多要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)、[デバイスの登録]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)、[セルフサービスのパスワード管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)、[セルフサービスのグループ管理](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)、[特権を持つアカウントの管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)、[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)、[アプリケーション使用状況の監視](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)、[機能豊富な監査](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)、[セキュリティの監視とアラート](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)など、一連の [ID 管理機能](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)も用意されています。
 
 Azure Active Directory を使用すると、パートナーと顧客 (ビジネスまたはコンシューマー) 向けに発行したすべてのアプリケーションに同じ ID およびアクセス管理の機能が備わります。 これにより、運用コストを大幅に減らすことができます。
 
@@ -80,7 +80,7 @@ Azure Active Directory を使用すると、パートナーと顧客 (ビジネ�
 -   ディスク暗号化の検証
 -   ネットワークベースの攻撃
 
-Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) が使用されています。RBAC が提供する[組み込みのロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)は、Azure でユーザー、グループ、サービスに割り当てることができます。
+Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) が使用されています。RBAC が提供する[組み込みのロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)は、Azure でユーザー、グループ、サービスに割り当てることができます。
 
 Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
 
@@ -149,7 +149,7 @@ DevOps アプリケーション開発の前に、チームは、ソフトウェ�
 -   [アジャイル計画およびプロジェクト管理](https://www.visualstudio.com/learn/what-is-agile/)手法を使用して、作業の計画とスプリントへの分離、チームのキャパシティの管理、チームがビジネス ニーズの変化にすばやく適応するための支援を行います。
 -   [通常は Git を使用したバージョン コントロール](https://www.visualstudio.com/learn/what-is-git/)により、チームは世界中のどこにいてもソースを共有でき、ソフトウェア開発ツールと統合してリリース パイプラインを自動化できます。
 -   [継続的インテグレーション](https://www.visualstudio.com/learn/what-is-continuous-integration/)は、実行中のコードのマージとテストを推進します。これにより、障害を早期に検出できるようになります。  その他のメリットとして、マージの問題への取り組みや開発チームへの迅速なフィードバックに浪費される時間が短縮されます。
--   環境の保護とテストのためのソフトウェア ソリューションの[継続的配信](https://www.visualstudio.com/learn/what-is-continuous-delivery/)により、組織はバグを迅速に修正し、絶えず変化するビジネス要件に対応できます。
+-   環境の保護とテストのためのソフトウェア ソリューションの[継続的デリバリー](https://www.visualstudio.com/learn/what-is-continuous-delivery/)により、組織はバグを迅速に修正し、絶えず変化するビジネス要件に対応できます。
 -   アプリケーションの正常性と顧客の使用状況に関する、運用環境を含む実行中のアプリケーションの[監視](https://www.visualstudio.com/learn/what-is-monitoring/)は、組織が仮説を形成し、戦略を迅速に検証または誤りを証明するのに役立ちます。  豊富なデータがキャプチャされ、さまざまなログ形式で格納されます。
 -   [コードとしてのインフラストラクチャ (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
 -   [マイクロサービス](https://www.visualstudio.com/learn/what-are-microservices/) アーキテクチャを活用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。

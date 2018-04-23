@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 03/15/2018
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 3b43bc17b7f9cf80a9520c5c573be3a48d82e4e7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Premium Storage へのデータ ウェアハウスの移行
 Azure SQL Data Warehouse では最近、パフォーマンス予測能力の向上を目的として [Premium Storage][premium storage for greater performance predictability] が導入されました。 これにより、現在 Standard Storage 上に存在するデータ ウェアハウスを Premium Storage に移行できるようになりました。 移行は自動で行われますが、移行のタイミングを制御する必要がある場合は、手動で行うこともできます (移行の際にはダウンタイムが生じます)。

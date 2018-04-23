@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics データのダッシュボードを作成して共有する | Microsoft Docs"
-description: "このチュートリアルでは、保存されているすべてのログ検索を Log Analytics ダッシュボードに可視化して、環境をわかりやすく表示できるようにする方法について説明します。"
+title: Azure Log Analytics データのダッシュボードを作成して共有する | Microsoft Docs
+description: このチュートリアルでは、保存されているすべてのログ検索を Log Analytics ダッシュボードに可視化して、環境をわかりやすく表示できるようにする方法について説明します。
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 272945134b534a5ded794379ce5e96b0902a4227
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: f6a70f33b143a5b9354411af9717d2a21e24af0c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -48,7 +48,7 @@ Microsoft Azure ポータルにサインインすると、[ダッシュボード
 
 作成したダッシュボードは既定ではプライベートです。つまり、自分だけがこのダッシュボードを見ることができます。 他のユーザーもこのダッシュボードを表示できるようにするには、ダッシュボードの他のコマンドと共に表示されている **[共有]** ボタンを使用します。<br> ![Azure ポータルで新しいダッシュボードを共有する](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
 
-ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。 便宜上、ポータルの発行機能によって、 **dashboards**という名前のリソース グループにダッシュボードを配置するように案内されます。  選択したサブスクリプションを確認し、**[発行]** をクリックします。  ダッシュボードに表示される情報へのアクセスは、[Azure リソース ベースのアクセスの制御](../active-directory/role-based-access-control-configure.md)によって制御されます。   
+ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。 便宜上、ポータルの発行機能によって、 **dashboards**という名前のリソース グループにダッシュボードを配置するように案内されます。  選択したサブスクリプションを確認し、**[発行]** をクリックします。  ダッシュボードに表示される情報へのアクセスは、[Azure リソース ベースのアクセスの制御](../role-based-access-control/role-assignments-portal.md)によって制御されます。   
 
 ## <a name="visualize-a-log-search"></a>ログ検索を可視化する
 
@@ -70,7 +70,7 @@ Perf | where CounterName == "% Processor Time" and ObjectName == "Processor" and
 
 ![構成が完了したサンプル ダッシュボード](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure ポータルでダッシュボードを作成して、ログ検索を追加する方法について学習しました。  次のチュートリアルに進んで、ログ検索の結果に基づいて実装できる異なる応答について学習してください。  
 
 > [!div class="nextstepaction"]

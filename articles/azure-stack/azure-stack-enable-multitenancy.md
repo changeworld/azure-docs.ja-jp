@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9ee54827ae9e8a803a5e3d7464559aec62c67119
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナントの有効化
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 複数の Azure Active Directory (Azure AD) テナントのユーザーが Azure Stack のサービスを使用できるように Azure Stack を構成することができます。 ここでは、次のシナリオを例に説明します。
 
@@ -91,7 +91,7 @@ Register-AzSWithMyDirectoryTenant `
 ## <a name="direct-users-to-sign-in"></a>ユーザーをサインインに誘導する
 あなたとメアリーの両方が Fabrikam ディレクトリのオンボード手順を完了したので、メアリーは Fabrikam のユーザーをサインインに誘導することができます。  Fabrikam のユーザー (つまり、fabrikam.onmicrosoft.com のサフィックスを持つユーザー) は、https://portal.local.azurestack.external にアクセスしてサインインします。  
 
-メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../active-directory/active-directory-understanding-resource-access.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。この URL を使用しなかった場合、これらのユーザーは既定のディレクトリ (Fabrikam) に送られ、管理者による同意がないことを示すエラーが表示されます。
+メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../role-based-access-control/rbac-and-directory-admin-roles.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。この URL を使用しなかった場合、これらのユーザーは既定のディレクトリ (Fabrikam) に送られ、管理者による同意がないことを示すエラーが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

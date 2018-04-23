@@ -1,24 +1,18 @@
 ---
 title: インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Docs
 description: インデクサーを使用して Azure SQL Database から Azure Search インデックスにデータを取得する方法について説明します。
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: e9bbf352-dfff-4872-9b17-b1351aae519f
+manager: jlembicz
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: eugenesh
-ms.openlocfilehash: a5198cc6e3b019fc6fd241f22c4da088f0839066
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c0aa256f856a85f53c00ed88b9b8303e1af527d4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
 

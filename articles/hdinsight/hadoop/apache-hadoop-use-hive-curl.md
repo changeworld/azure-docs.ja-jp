@@ -1,8 +1,8 @@
 ---
-title: "HDInsight での Hadoop Hive と Curl の使用 - Azure | Microsoft Docs"
-description: "Curl を使用して Pig ジョブを HDInsight にリモートで送信する方法について説明します。"
+title: HDInsight での Hadoop Hive と Curl の使用 - Azure | Microsoft Docs
+description: Curl を使用して Pig ジョブを HDInsight にリモートで送信する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 6ce18163-63b5-4df6-9bb6-8fcbd4db05d8
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: dfe9efdb57a0ce2506abd251267f39020568d081
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8a7627e35a39dd4c9c94d273aa9f02c977dc88bf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
 

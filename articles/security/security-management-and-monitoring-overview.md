@@ -1,5 +1,5 @@
 ---
-title: "Azure セキュリティの管理と監視の概要 | Microsoft Docs"
+title: Azure セキュリティの管理と監視の概要 | Microsoft Docs
 description: " Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。  この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。 "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 6787877deabafd0b7308e190cb45b4036049b05b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 906ea3c37823616597ee74dbadf50618d5c4e11d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。 この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。 それぞれの詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
@@ -50,7 +50,7 @@ Microsoft クラウド サービスのセキュリティは、パートナーシ
 詳細情報:
 
 * [RBAC に関する Active Directory チームのブログ](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
-* [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
+* [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>マルウェア対策
 Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などの主要なセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。
@@ -76,7 +76,7 @@ Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を�
 
 * [多要素認証](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
-* [Azure Multi-Factor Authentication のしくみ](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Azure Multi-Factor Authentication のしくみ](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。
@@ -114,7 +114,7 @@ Identity Protection は、通知と推奨される修復を提供することで
 * [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>セキュリティ センター
+## <a name="security-center"></a>Security Center
 Azure Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。

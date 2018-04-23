@@ -1,8 +1,8 @@
 ---
-title: "PowerShell を使用した Azure Active Directory Domain Services の有効化 | Microsoft Docs"
-description: "PowerShell を使用した Azure Active Directory Domain Services の有効化"
+title: PowerShell を使用した Azure Active Directory Domain Services の有効化 | Microsoft Docs
+description: PowerShell を使用した Azure Active Directory Domain Services の有効化
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: maheshu
-ms.openlocfilehash: a456a6265400abe1d3a3620df74e41d8b4399b97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 22be243b9da5afd93744ca9410b63a8ec936088a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 この記事では、PowerShell を使用して Azure Active Directory (AD) Domain Services を有効にする方法について説明します。
@@ -161,7 +161,7 @@ $AzureLocation = "westus"
 Connect-AzureAD
 
 # Login to your Azure subscription.
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId “2565bd9d-da50-47d4-8b85-4c97f669dc36”
@@ -225,7 +225,7 @@ New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGro
 * Azure AD Domain Services とのパスワード同期を有効にして、エンド ユーザーが会社の資格情報を使用して管理対象ドメインにサインインできるようにします。
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 管理対象ドメインを作成した後は、管理対象のドメインを使用できるように、次の構成タスクを実行します。
 
 * [仮想ネットワークの DNS サーバー設定を管理対象ドメインを指定するように更新する](active-directory-ds-getting-started-dns.md)

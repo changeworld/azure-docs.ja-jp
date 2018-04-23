@@ -1,11 +1,11 @@
 ---
-title: "アプリケーションに Azure Stack Key Vault のシークレットの取得を許可する | Microsoft Docs"
-description: "サンプル アプリを使用して Azure Stack Key Vault を操作する"
+title: アプリケーションに Azure Stack Key Vault のシークレットの取得を許可する | Microsoft Docs
+description: サンプル アプリを使用して Azure Stack Key Vault を操作する
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2017
 ms.author: mabrigg
-ms.openlocfilehash: 50103dca21d047c5cee211b2250e750739131bc1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: c32667f240c9e825a82b1e9623c672b00ac999ed
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Key Vault に格納されているキーとシークレットを使用するサンプル アプリケーション
 
@@ -72,7 +72,7 @@ $TenantID = Get-AzsDirectoryTenantId `
   -EnvironmentName AzureStackUser
 
 # Sign in to the user portal.
-Login-AzureRmAccount `
+Connect-AzureRmAccount `
   -EnvironmentName "AzureStackUser" `
   -TenantId $TenantID `
   
@@ -141,7 +141,7 @@ HelloKeyVault\App.config ファイルを開き、<appSettings> 要素の値を�
 アプリケーションは、Azure AD にサインインし、そのトークンを使用して Azure Stack でキー コンテナーを認証します。 アプリケーションは、キー コンテナーのキーとシークレットで作成、暗号化、ラップ、削除などの操作を実行します。 *encrypt*、*decrypt* などの特定のパラメーターをアプリケーションに渡して、アプリケーションがそのコンテナーに対して指定した操作のみを実行するようにすることもできます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Key Vault パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
 
 [Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)

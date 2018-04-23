@@ -1,24 +1,17 @@
 ---
 title: Azure Search におけるデータと操作のセキュリティ保護 | Microsoft Docs
 description: Azure Search のセキュリティは、SOC 2 コンプライアンス、暗号化、認証のほか、Azure Search フィルターのユーザーおよびグループ セキュリティ識別子を通じた ID アクセスに基づいています。
-services: search
-documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: ''
-ms.assetid: ''
 ms.service: search
-ms.devlang: ''
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 35f875e5f6345b9ebb9abc4deb71b7bf9c78907d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3985e4fff5eb1eb0c80b267dd8983488d10cb4e5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Azure Search のセキュリティとアクセス制御
 
@@ -51,7 +44,7 @@ Azure Search は [SOC 2 に準拠](https://servicetrust.microsoft.com/ViewPage/M
 いくつかのセキュリティ メカニズムが Azure Stack 全体で利用できます。これらは当然、作成された Azure Search リソースでも利用できます。
 
 + [削除を防止するサブスクリプション レベルまたはリソース レベルのロック](../azure-resource-manager/resource-group-lock-resources.md)
-+ [情報および管理操作に対するアクセスをコントロールするロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md)
++ [情報および管理操作に対するアクセスをコントロールするロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md)
 
 ロールベースのアクセス制御 (RBAC) はすべての Azure サービスでサポートされており、すべてのサービスで一貫してアクセスのレベルを設定できます。 たとえば、機微なデータ (管理者キーなど) の表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。 RBAC には所有者、共同作成者、閲覧者のロールがあります。 既定では、すべてのサービス管理者が、所有者ロールのメンバーです。
 

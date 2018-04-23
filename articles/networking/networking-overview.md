@@ -1,6 +1,6 @@
-﻿---
-title: "Azure のネットワーク | Microsoft Docs"
-description: "Azure のネットワーク サービスとネットワーク機能について説明します。"
+---
+title: Azure のネットワーク | Microsoft Docs
+description: Azure のネットワーク サービスとネットワーク機能について説明します。
 services: networking
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -138,7 +138,7 @@ Azure には、ネットワークを監視したり管理したりするため�
 - **診断ログ:** 定期イベントと自然発生イベントがネットワーク リソースにより作成され、Azure Storage アカウント内に記録されるか、Azure イベント ハブまたは Azure Log Analytics に送信されます。 診断ログを通じて、リソースの正常性についての洞察を得ることができます。 診断ログは、ロード バランサー (インターネット接続)、ネットワーク セキュリティ グループ、ルーティング、Application Gateway で利用できます。 診断ログの詳細については、[診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **メトリック:** メトリックとは、リソースに関して一定期間にわたり収集されたパフォーマンスの測定値とカウンターのことです。 メトリックを使用すると、しきい値に基づいてアラートをトリガーすることができます。 現在、Application Gateway に関するメトリックが利用できます。 メトリックの詳細については、[メトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **トラブルシューティング:** トラブルシューティング情報には、Azure Portal から直接アクセスすることができます。 この情報を基に、ExpressRoute 、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager に関する一般的な問題を診断することができます。
-- **ロールベースのアクセス制御 (RBAC):** ネットワーク リソースをだれが作成し、だれが管理できるかは、ロールベースのアクセス制御 (RBAC) を使って制御します。 RBAC の詳細については、[RBAC の基礎](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 
+- **ロールベースのアクセス制御 (RBAC):** ネットワーク リソースをだれが作成し、だれが管理できるかは、ロールベースのアクセス制御 (RBAC) を使って制御します。 RBAC の詳細については、[RBAC の基礎](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 
 - **パケット キャプチャ:** Azure Network Watcher サービスでは、VM 内の拡張機能を通じて VM のパケット キャプチャを実行することができます。 この機能は、Linux VM と Windows VM で利用できます。 パケット キャプチャの詳細については、[パケット キャプチャの概要](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **IP フロー検証:** Azure VM とリモート リソースとの間の IP フローを Network Watcher で検証することにより、パケットが許可 (または拒否) されているかどうかを調べることができます。 管理者は、この機能を利用して、接続の問題をすばやく診断することができます。 IP フローを確認する方法については、[IP フロー検証の概要](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **VPN 接続のトラブルシューティング:** Network Watcher の VPN トラブルシューティング ツールの機能で、接続やゲートウェイを照会し、リソースの正常性を確認することができます。 VPN 接続のトラブルシューティングについて詳しくは、[VPN 接続のトラブルシューティングに関する概要](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)についての記事を参照してください。

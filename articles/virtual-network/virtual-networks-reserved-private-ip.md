@@ -1,10 +1,10 @@
 ---
-title: "静的内部プライベート IP - Azure VM - クラシック"
-description: "静的内部 IP  (DIP) とそれらを管理する方法を理解します。"
+title: 静的内部プライベート IP - Azure VM - クラシック
+description: 静的内部 IP  (DIP) とそれらを管理する方法を理解します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 93444c6f-af1b-41f8-a035-77f5c0302bf0
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
-ms.author: jdial
-ms.openlocfilehash: cf9ee59ca4e44ed01836c2efb1f4df5f073bf6e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: b668a06b91a5fcb1dd08737e0422b599bdb3e27f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>PowerShell を使用した静的内部プライベート IP アドレスの設定方法 (クラシック)
 ほとんどの場合は、仮想マシンに対して静的内部 IP アドレスを指定する必要はありません。 仮想ネットワーク内の VM は、指定された範囲の内部 IP アドレスを自動的に受け取るからです。 ただし、場合によっては、特定の VM に対して静的 IP アドレスを指定したほうが効果的な場合があります。 たとえば、VM が、DNS を実行したり、ドメイン コントローラーとして機能する場合です。 静的内部 IP アドレスは、VM が停止またはプロビジョニング解除された状態になっても VM で保持されます。 
@@ -101,7 +101,7 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
     | Update-AzureVM
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [予約済み IP](virtual-networks-reserved-public-ip.md)
 
 [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md)

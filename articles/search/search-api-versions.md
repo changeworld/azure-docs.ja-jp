@@ -1,23 +1,18 @@
 ---
-title: "Azure Search の API バージョン | Microsoft Docs"
-description: "Azure Search REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ"
-services: search
-documentationcenter: 
+title: Azure Search の API バージョン | Microsoft Docs
+description: Azure Search REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 1a7f5b9c53d3258e5f8eda40401c61a85971d8c7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ca459f8de0b28e0e292f8ea7ba73611d2e058cfc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
 Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンの公開が必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。

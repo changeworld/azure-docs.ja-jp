@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2216a2d5c30e95fcd02b4df56305153335511e0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fb3b78cd91a1554e278230cd85e5f4da8d43a26a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -420,7 +420,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -1233,7 +1233,7 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
   _**図 38:** クラスターを再構成したことを確認する_
 
-Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更するパラメーターは、ブログ (https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) に記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
+Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更されるパラメーターは、https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/のブログに記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 

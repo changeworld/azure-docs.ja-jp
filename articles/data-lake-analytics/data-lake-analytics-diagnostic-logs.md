@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Lake Analytics の診断ログの表示 | Microsoft Docs"
-description: "Azure Data Lake Analytics の診断ログの設定方法およびアクセス方法を学びます  "
+title: Azure Data Lake Analytics の診断ログの表示 | Microsoft Docs
+description: 'Azure Data Lake Analytics の診断ログの設定方法およびアクセス方法を学びます  '
 services: data-lake-analytics
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.service: data-lake-analytics
 ms.devlang: na
@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/12/2018
-ms.author: larryfr
-ms.openlocfilehash: e6cc5fd3d45691dbdc004f346c10d7b4568ae9aa
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: efec1e00e9c2da519028f7e6ff094a0f0876df79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -215,7 +214,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 
 ## <a name="process-the-log-data"></a>ログ データの処理
 
-Azure Data Lake Analytics では、ログ データの処理と分析方法に関するサンプルを提供しています。 サンプルについては [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)をご覧ください。
+Azure Data Lake Analytics では、ログ データの処理と分析方法に関するサンプルを提供しています。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) でサンプルを見つけることができます。
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)

@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse での Azure Data Factory の使用 | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Azure Data Factory (ADF) の使用に関するヒント。"
+title: SQL Data Warehouse での Azure Data Factory の使用 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Data Factory (ADF) の使用に関するヒント。
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 492de762-c7a2-4cdb-943f-3135230e94f1
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 6adfa1264c9d196d6c6e57f1d108710b9ee73265
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-factory-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Data Factory の使用
 Azure Data Factory では、SQL Data Warehouse におけるデータ転送とストアド プロシージャの実行を、完全に管理された方法で調整できます。  これにより、複雑な抽出、変換、および読み込み (ETL) プロシージャを、SQL Data Warehouse を使用して簡単に設定およびスケジュールできます。 Azure Data Factory の概要については、[Azure Data Factory のドキュメント][Azure Data Factory documentation]を参照してください。
@@ -28,7 +28,7 @@ Azure Data Factory では、SQL Data Warehouse におけるデータ転送とス
 Azure Data Factory により、オンプレミス ソースとさまざまな Azure サービスの両方の間でデータを移動できます。  Azure Data Factory との現在の包括的統合では、次の場所との間でのデータ移動がサポートされています。
 
 * Azure BLOB ストレージ
-* の接続文字列
+* Azure SQL Database
 * オンプレミスの SQL Server
 * IaaS 上の SQL Server
 

@@ -1,8 +1,8 @@
 ---
-title: "キー コンテナーのセキュリティ保護 | Microsoft Docs"
-description: "コンテナーおよびキーとシークレットを管理するためのキー コンテナーのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法"
+title: キー コンテナーのセキュリティ保護 | Microsoft Docs
+description: コンテナーおよびキーとシークレットを管理するためのキー コンテナーのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
 Azure Key Vault は、クラウド アプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護する必要があります。 この記事では、キー コンテナーのアクセス モデルの概要、認証と承認に加え、例を挙げて、クラウド アプリケーションのキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 キー コンテナーへのアクセスは、2 つの独立したインターフェイス (管理プレーンとデータ プレーン) を使って制御します。 どちらのプレーンでも、呼び出し元 (ユーザーまたはアプリケーション) がキー コンテナーにアクセスするには、適切な認証と承認が必要です。 認証では呼び出し元の ID を確認し、承認では呼び出し元が実行できる操作を決定します。
 
 認証については、管理プレーンとデータ プレーンの両方で Azure Active Directory を使用します。 承認については、管理プレーンではロールベースのアクセス制御 (RBAC) を使用し、データ プレーンでは Key Vault アクセス ポリシーを使用します。
@@ -61,7 +61,7 @@ Azure Key Vault は、Azure Resource Manager デプロイメント モデルを�
 
 管理プレーンとデータ プレーンのインターフェイスには異なるエンドポイントを介してアクセスします (表を参照してください)。 表の 2 列目では、さまざまな Azure 環境におけるこれらのエンドポイントの DNS 名について説明しています。 3 列目では、各アクセス プレーンから実行できる操作について説明しています。 どちらのアクセス プレーンにも、独自のアクセス制御メカニズムが用意されています。管理プレーンのアクセス制御は Azure Resource Manager のロールベースのアクセス制御 (RBAC) を使用して設定し、データ プレーンのアクセス制御は Key Vault アクセス ポリシーを使用して設定します。
 
-| アクセス プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム |
+| アクセス プレーン | アクセス エンドポイント | [操作] | アクセス制御メカニズム |
 | --- | --- | --- | --- |
 | 管理プレーン |**グローバル:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 |キー コンテナーの作成/読み取り/更新/削除 <br> キー コンテナーのアクセス ポリシーの設定<br>キー コンテナーのタグの設定 |Azure Resource Manager のロールベースのアクセス制御 (RBAC) |
 | データ プレーン |**グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |キーの場合: 復号化、暗号化、キーのラップ解除、キーのラップ、確認、署名、取得、一覧表示、更新、作成、インポート、削除、バックアップ、復元<br><br> シークレットの場合: 取得、一覧表示、設定、削除 |Key Vault アクセス ポリシー |
@@ -76,7 +76,7 @@ Azure Key Vault は、Azure Resource Manager デプロイメント モデルを�
 
 Azure Resource Manager モデルでは、リソース グループにキー コンテナーを作成し、Azure Active Directory を使用してこのキー コンテナーの管理プレーンに対するアクセス権を制御します。 たとえば、ユーザーまたはグループに対して、特定のリソース グループのキー コンテナーを管理する権限を付与できます。
 
-特定のスコープでユーザー、グループ、およびアプリケーションにアクセス権を付与するには、適切な RBAC ロールを割り当てます。 たとえば、キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みのロール "キー コンテナーの共同作成者" を特定のスコープでこのユーザーに割り当てます。 この場合のスコープは、サブスクリプション、リソース グループ、または特定のキー コンテナーになります。 サブスクリプション レベルで割り当てられたロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループ レベルで割り当てられたロールは、そのリソース グループ内のすべてのリソースに適用されます。 特定のリソースに対して割り当てられたロールは、そのリソースにのみ適用されます。 定義済みのロールはいくつかあります (「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」をご覧ください)。定義済みのロールがニーズに合わない場合、独自のロールを定義することもできます。
+特定のスコープでユーザー、グループ、およびアプリケーションにアクセス権を付与するには、適切な RBAC ロールを割り当てます。 たとえば、キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みのロール "キー コンテナーの共同作成者" を特定のスコープでこのユーザーに割り当てます。 この場合のスコープは、サブスクリプション、リソース グループ、または特定のキー コンテナーになります。 サブスクリプション レベルで割り当てられたロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループ レベルで割り当てられたロールは、そのリソース グループ内のすべてのリソースに適用されます。 特定のリソースに対して割り当てられたロールは、そのリソースにのみ適用されます。 定義済みのロールはいくつかあります (「[RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)」をご覧ください)。定義済みのロールがニーズに合わない場合、独自のロールを定義することもできます。
 
 > [!IMPORTANT]
 > キー コンテナーの管理プレーンに対する共同作成者権限 (RBAC) を持っているユーザーは、データ プレーンへのアクセスを制御する Key Vault アクセス ポリシーを設定することで、データ プレーンへのアクセス権を自分に付与できることに注意してください。 そのため、キー コンテナーに対する "共同作成者" アクセス権を持つユーザーをしっかりと管理して、承認されたユーザーのみがキー コンテナー、キー、シークレット、および証明書にアクセスして管理できるようにすることをお勧めします。
@@ -204,19 +204,19 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
 > 
 
 ## <a name="resources"></a>リソース
-* [Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
+* [Azure Active Directory のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
   
   この記事では、Azure Active Directory のロールベースのアクセス制御とそのしくみについて説明しています。
-* [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)
   
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
 * [リソース マネージャー デプロイと従来のデプロイを理解する](../azure-resource-manager/resource-manager-deployment-model.md)
   
   この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。
-* [Azure PowerShell を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-powershell.md)
+* [Azure PowerShell を使用したロールベースのアクセス制御の管理](../role-based-access-control/role-assignments-powershell.md)
   
   この記事では、Azure PowerShell を使用してロールベースのアクセス制御を管理する方法について説明しています。
-* [REST API を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-rest.md)
+* [REST API を使用したロールベースのアクセス制御の管理](../role-based-access-control/role-assignments-rest.md)
   
   この記事では、REST API を使用して RBAC を管理する方法について説明しています。
 * [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -241,7 +241,7 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
   
   Key Vault アクセス ポリシーを管理するための PowerShell コマンドレットのリファレンス ドキュメントへのリンクです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 管理者用の概要チュートリアルについては、「[Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。
 
 Key Vault の使用状況に関するログ記録の詳細については、「[Azure Key Vault のログ記録](key-vault-logging.md)」を参照してください。

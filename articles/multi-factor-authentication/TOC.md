@@ -2,23 +2,23 @@
 
 # 概要
 ## [Azure Multi-Factor Authentication とは](multi-factor-authentication.md)
-## [動作のしくみ](multi-factor-authentication-how-it-works.md)
-## [Azure MFA の入手方法](multi-factor-authentication-versions-plans.md)
+## [動作のしくみ](../active-directory/authentication/concept-mfa-howitworks.md)
+## [Azure MFA の入手方法](../active-directory/authentication/concept-mfa-licensing.md)
 
 # 作業開始
-## [デプロイする場所を選択する](multi-factor-authentication-get-started.md)
-## [クラウドでの MFA](multi-factor-authentication-get-started-cloud.md)
+## [デプロイする場所を選択する](../active-directory/authentication/concept-mfa-whichversion.md)
+## [クラウドでの MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 ## [オンプレミスでの MFA](multi-factor-authentication-get-started-server.md)
 ## [O365 のユーザーの MFA](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [セキュリティのベスト プラクティス](multi-factor-authentication-security-best-practices.md)
 
 # 方法
 ## デプロイと使用
-### [設定を構成する](multi-factor-authentication-whats-next.md)
+### [設定を構成する](../active-directory/authentication/howto-mfa-mfasettings.md)
 ### [MFA でのレポート](multi-factor-authentication-manage-reports.md)
-### [既存のネットワーク ポリシー サーバーを使用する](multi-factor-authentication-nps-extension.md)
-#### [NPS 拡張機能の詳細な構成](nps-extension-advanced-configuration.md)
-### [認証プロバイダーを作成する](multi-factor-authentication-get-started-auth-provider.md)
+### [既存のネットワーク ポリシー サーバーを使用する](../active-directory/authentication/howto-mfa-nps-extension.md)
+#### [NPS 拡張機能の詳細な構成](../active-directory/authentication/howto-mfa-nps-extension-advanced.md)
+### [認証プロバイダーを作成する](../active-directory/authentication/concept-mfa-authprovider.md)
 ### オンプレミスでの MFA のデプロイ
 #### [ユーザー ポータルのインストール](multi-factor-authentication-get-started-portal.md)
 #### [高度な VPN 構成](multi-factor-authentication-advanced-vpn-configurations.md)
@@ -38,9 +38,9 @@
 ### [VPN](nps-extension-vpn.md)
 ### オンプレミスでの MFA の統合
 #### [フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)
-##### [AD FS を使用する](multi-factor-authentication-get-started-adfs-cloud.md)
+##### [AD FS を使用する](../active-directory/authentication/howto-mfa-adfs.md)
 ##### [AD FS 2.0 を使用する](multi-factor-authentication-get-started-adfs-adfs2.md)
-##### [Windows Server 2012 R2 AD FS を使用する](multi-factor-authentication-get-started-adfs-w2k12.md)
+##### [Windows Server 2012 R2 AD FS を使用する](../active-directory/authentication/howto-mfaserver-adfs-2012.md)
 #### ディレクトリ
 ##### [LDAP 認証](multi-factor-authentication-get-started-server-ldap.md)
 ##### [RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)
@@ -54,7 +54,7 @@
 ## トラブルシューティング
 ### [FAQ](multi-factor-authentication-faq.md)
 ### [質問する](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
-### [NPS 拡張機能のエラー](multi-factor-authentication-nps-errors.md)
+### [NPS 拡張機能のエラー](../active-directory/authentication/howto-mfa-nps-extension-errors.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)

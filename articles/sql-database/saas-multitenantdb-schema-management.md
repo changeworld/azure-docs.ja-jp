@@ -12,10 +12,10 @@ ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
 ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>共有マルチテナント SQL データベースを使用している SaaS アプリケーションでのスキーマの管理
 
