@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -99,7 +99,7 @@ Azure クラウド サービスの構成は、Azure ポータルを使用して�
 
 Virtual Machines にデプロイされるアプリケーションには、必要に応じて独自のクライアント ツールとインターフェイスが用意されています。Microsoft 管理コンソール (MMC) やエンタープライズ管理コンソール (Microsoft System Center、Windows Intune など)、各種管理アプリケーション (Microsoft SQL Server Management Studio など) がその例です。 こうしたツールは通常、企業環境内やクライアント ネットワーク内で動作するものであり、 リモート デスクトップ プロトコル (RDP) など、ステートフルな直接接続を必要とする特定のネットワーク プロトコルに依存している場合があります。 そうしたツールの中には、Web 対応インターフェイスを備えているものもあり、そのままインターネットに公開したりインターネット経由でのアクセスを許可したりすることが望ましくないケースもあるでしょう。
 
-Azure では、[多要素認証](../multi-factor-authentication/multi-factor-authentication.md)、[X.509 管理証明書](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)、およびファイアウォール規則を使ってインフラストラクチャやプラットフォームのサービス管理へのアクセスを制限できます。 Azure ポータルと SMAPI には、トランスポート層セキュリティ (TLS) が必要となります。 一方、Azure にデプロイするサービスやアプリケーションには、アプリケーションに応じた適切な防御手段が求められます。 堅牢化したワークステーションの構成が標準化されていれば、こうしたメカニズムに何度でも簡単に対応することができます。
+Azure では、[多要素認証](../active-directory/authentication/multi-factor-authentication.md)、[X.509 管理証明書](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)、およびファイアウォール規則を使ってインフラストラクチャやプラットフォームのサービス管理へのアクセスを制限できます。 Azure ポータルと SMAPI には、トランスポート層セキュリティ (TLS) が必要となります。 一方、Azure にデプロイするサービスやアプリケーションには、アプリケーションに応じた適切な防御手段が求められます。 堅牢化したワークステーションの構成が標準化されていれば、こうしたメカニズムに何度でも簡単に対応することができます。
 
 ### <a name="management-gateway"></a>管理ゲートウェイ
 すべての管理アクセス権を一元管理し、監視とログを省力化するためには、専用の[リモート デスクトップ ゲートウェイ](https://technet.microsoft.com/library/dd560672) (RD ゲートウェイ) サーバーをオンプレミス ネットワークにデプロイし、Azure 環境に接続します。
@@ -110,7 +110,7 @@ Azure では、[多要素認証](../multi-factor-authentication/multi-factor-aut
 * 管理者のワークステーションと同じ[管理ドメイン](http://technet.microsoft.com/library/bb727085.aspx)に RD ゲートウェイを参加させます。 これは、Azure AD に対する一方向の信頼関係を持ったドメイン内でサイト間 IPsec VPN または ExpressRoute を使用する場合や、オンプレミスの AD DS インスタンスと Azure AD との間で資格情報をフェデレーションしている場合に必要となります。
 * クライアント コンピューターの名前が有効であること (ドメインに参加していること)、また Azure Portal へのアクセスが許可されていることを RD ゲートウェイが確認できるように[クライアント接続承認ポリシー](http://technet.microsoft.com/library/cc753324.aspx)を構成します。
 * [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) に IPsec を使用し、盗聴やトークンの盗難から管理トラフィックをさらに保護します。または、[Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) を介してインターネット リンクを隔離することを検討します。
-* RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) 経由) またはスマート カード認証を使用します。
+* RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) 経由) またはスマート カード認証を使用します。
 * 発信元 [IP アドレスの制限](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
 
 ## <a name="security-guidelines"></a>セキュリティ ガイドライン

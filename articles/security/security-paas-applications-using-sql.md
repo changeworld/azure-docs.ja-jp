@@ -1,12 +1,12 @@
 ---
-title: "Azure で Paas データベースをセキュリティで保護する | Microsoft Docs"
+title: Azure で Paas データベースをセキュリティで保護する | Microsoft Docs
 description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure SQL Database と SQL Data Warehouse のセキュリティ ベスト プラクティスについて説明します。 "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ed15ff750e73179f6979d13e45ab27aeee5c82ab
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 3e7dc4dfba001228a4d11e2b21cdeed8e7af45ac
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-databases-in-azure"></a>Azure で Paas データベースをセキュリティで保護する
 
@@ -51,7 +51,7 @@ SQL 認証ではなく Azure AD 認証を使用する利点は次のとおりで
 - 包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - SQL Database に接続するアプリケーション向けにトークンベース認証をサポートしています。
 - ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure AD のネイティブ ユーザー/パスワード認証をサポートします。
-- [Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。 MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、「 [SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
+- [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。 MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、「 [SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
 
 Azure AD 認証の詳細については、次を参照してください。
 
@@ -86,7 +86,7 @@ Azure SQL では [Always Encrypted](/sql/relational-databases/security/encryptio
 
 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護する追加の対策を講じることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、SQL Database と SQL Data Warehouse の一連のセキュリティ ベスト プラクティスについて説明しました。 PaaS デプロイのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 
 - [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)

@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール | Microsoft Docs"
-description: "Azure HDInsight にサード パーティ製 Hadoop アプリケーションをインストールする方法について説明します。"
+title: Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール | Microsoft Docs
+description: Azure HDInsight にサード パーティ製 Hadoop アプリケーションをインストールする方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: eaf5904d-41e2-4a5f-8bec-9dde069039c2
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: cfaad24e7bf1c38f3be1e13c88fc932be0bd502c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bd74be9c78744619f60606b509ea16d000bd3998
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール
 
@@ -80,11 +78,11 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
     ![HDInsight アプリケーションのインストールされたアプリ](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. インストール済みのアプリケーションのいずれかをクリックし、プロパティを表示します。 プロパティには次の項目が一覧表示されます。
    
-   * [アプリケーション名]: アプリケーションの名前。
-   * [状態]: アプリケーションの状態。 
-   * [Web ページ]: エッジ ノードにデプロイした Web アプリケーションの URL。 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。
-   * [HTTP エンドポイント]: 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。 
-   * [SSH エンドポイント]: SSH を使用してエッジ ノードに接続できます。 SSH 資格情報は、クラスター向けに構成した SSH ユーザーの資格情報と同じです。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+   * アプリケーション名: アプリケーションの名前。
+   * 状態: アプリケーションの状態。 
+   * Web ページ: エッジ ノードにデプロイした Web アプリケーションの URL。 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。
+   * HTTP エンドポイント: 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。 
+   * SSH エンドポイント: SSH を使用してエッジ ノードに接続できます。 SSH 資格情報は、クラスター向けに構成した SSH ユーザーの資格情報と同じです。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 6. アプリケーションを削除するには、アプリケーションを右クリックし、コンテキスト メニューの **[削除]** をクリックします。
 
 ## <a name="connect-to-the-edge-node"></a>エッジ ノードへの接続

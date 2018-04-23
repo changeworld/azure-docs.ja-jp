@@ -10,12 +10,12 @@ ms.topic: landing-page
 ms.component: design
 ms.date: 04/11/2018
 ms.author: elbutter
-ms.reviewer: jrj
-ms.openlocfilehash: 42db87fd64bca58ee3e86589acdc85107e057665
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: igorstan
+ms.openlocfilehash: 28e610f2d7b2f7a30045012eeac9c135e428fd62
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sql-data-warehouse-documentation"></a>SQL Data Warehouse のドキュメント
 

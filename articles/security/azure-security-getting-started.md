@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure セキュリティの概要 | Microsoft Docs"
-description: "この記事では、Microsoft Azure のセキュリティ機能の概要と、クラウド プロバイダーに資産を移行しようとする組織の一般的な考慮事項について説明します。"
+title: Microsoft Azure セキュリティの概要 | Microsoft Docs
+description: この記事では、Microsoft Azure のセキュリティ機能の概要と、クラウド プロバイダーに資産を移行しようとする組織の一般的な考慮事項について説明します。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: e1ee07f2284df925b8bbd9050de7ae40fa66bf65
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure セキュリティの概要
 IT 資産を構築し、クラウド プロバイダーに移行したとしましょう。このとき、移行したアプリケーションやデータをどこまで保護できるかは、採用したプロバイダーがクラウド ベースの資産のセキュリティ管理のためにどのようなサービスと体制を用意しているかに応じて変わってきます。
@@ -45,7 +45,7 @@ ID およびアクセス管理に関しては、他にも次のような機能�
 * Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) が可能です。 一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。 フェデレーション アプリケーションでは、ユーザー プロビジョニングとパスワード保管もサポートできます。
 * [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。 各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://msdn.microsoft.com/library/azure/ee460785.aspx) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
 * Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](../active-directory/fundamentals-identity.md)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
-* [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
+* [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
 * [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure 仮想マシンをドメインに参加させることができます。 ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 * [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスを提供します。 モバイルと Web の両方のプラットフォームにわたる統合を実現できます。 コンシューマーは、既に持っているソーシャル アカウントを使用するか、新たな資格情報を作成して、すべてのアプリケーションにサインインできます。その場合のエクスペリエンスは、カスタマイズすることができます。
 
@@ -186,7 +186,7 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 * Microsoft の侵入テストには、"[レッド チーム](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)" も含まれています。このテストでは、Microsoft のセキュリティ専門家が Azure の実際の運用システム (お客様のシステム以外) を攻撃して、現実の高度な継続的脅威に対する防御を検証します。
 * Azure プラットフォーム全体にわたるセキュリティ更新プログラムの配布とインストールは、統合されたデプロイ システムが管理しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)
 
 [Azure セキュリティ チームのブログ](http://blogs.msdn.com/b/azuresecurity/)

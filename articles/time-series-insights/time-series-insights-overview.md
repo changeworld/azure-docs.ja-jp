@@ -1,6 +1,6 @@
 ---
-title: "Azure Time Series Insights とは | Microsoft Docs"
-description: "時系列データ分析と IoT ソリューション向けの新しいサービスである Azure Time Series Insights の概要を説明します。"
+title: Azure Time Series Insights とは | Microsoft Docs
+description: 時系列データ分析と IoT ソリューション向けの新しいサービスである Azure Time Series Insights の概要を説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -12,16 +12,16 @@ ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
 ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
 Time Series Insights は、IoT デバイスによって生成されるデータなど、大量の時系列データの保存、視覚化、照会を目的としています。  クラウドの時系列データを保存、管理、照会、または視覚化する場合は、Time Series Insights が適しています。  
 
-![Time Series Insights のフローチャート](media/overview/time-series-insights-flowchart.png)
+![Time Series Insights のフローチャート] (media/overview/time-series-insights-flowchart.png)
 
 Time Series Insights には 4 つの主要な仕事があります。
 

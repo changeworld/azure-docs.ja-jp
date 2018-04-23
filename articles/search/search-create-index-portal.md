@@ -1,30 +1,26 @@
 ---
-title: "インデックスを作成する (ポータル - Azure Search) | Microsoft Docs"
-description: "Azure Portal を利用してインデックスを作成する"
-services: search
-manager: jhubbard
+title: インデックスを作成する (ポータル - Azure Search) | Microsoft Docs
+description: Azure Portal を利用してインデックスを作成する
+manager: cgronlun
 author: heidisteen
-documentationcenter: 
-ms.assetid: 
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ea05cd34e5ba3f55b2f5400f1252f729401c5d6a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>Azure Portal を利用して Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-an-index.md)
 > * [ポータル](search-create-index-portal.md)
 > * [.NET](search-create-index-dotnet.md)
-> * [REST ()](search-create-index-rest-api.md)
+> * [REST](search-create-index-rest-api.md)
 > 
 > 
 
@@ -83,7 +79,7 @@ Azure Portal の組み込みのインデックス デザイナーを使用して
 
 フィールド属性は、フィールドがどのように使用されるか (フルテキスト検索、ファセット ナビゲーション、並べ替えなどの操作で使用されるかどうか) を決定します。 次の表は、各属性を示しています。
 
-|Attribute|Description|  
+|Attribute|[説明]|  
 |---------------|-----------------|  
 |**検索可能**|フルテキスト検索可能であり、インデックス作成中の単語分割などの字句解析に従います。 検索可能フィールドを "sunny day" などの値に設定した場合、その値は内部的に個別のトークン "sunny" と "day" に分割されます。 詳細については、「[フルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。|  
 |**フィルター可能**|**$filter** クエリで参照されます。 型 `Edm.String` または `Collection(Edm.String)` のフィルター可能フィールドは単語分割されないため、比較は完全に一致するかどうかだけになります。 たとえば、このようなフィールドを "sunny day" に設定した場合、`$filter=f eq 'sunny'` では一致が見つかりませんが、`$filter=f eq 'sunny day'` では見つかります。 |  
@@ -100,7 +96,7 @@ Azure Search API のドキュメントには、単純な*ホテル* インデッ
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Search インデックスを作成した後、次の手順である「[upload searchable data into the index (検索可能なデータをインデックスにアップロードする)](search-what-is-data-import.md)」に移動できます。
 

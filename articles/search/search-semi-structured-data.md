@@ -3,15 +3,16 @@ title: Azure クラウド ストレージで半構造化データを検索する
 description: Azure Search を使用した半構造化 BLOB データの検索。
 author: roygara
 manager: cgronlun
+services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
-ms.openlocfilehash: f05e9dd12a838199b23deddb4f6c4fb4c2fced08
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7579862e132724d101e4267023afd9e3336bc3b1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>パート 2: クラウド ストレージで半構造化データを検索する
 

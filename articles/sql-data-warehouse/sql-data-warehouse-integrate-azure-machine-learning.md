@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse での Azure Machine Learning の使用 | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。"
+title: SQL Data Warehouse での Azure Machine Learning の使用 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: ac6bc731-6add-47a9-b3fe-68996e656f4d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Machine Learning の使用
 Azure Machine Learning は、完全に管理された予測分析サービスです。このサービスを使用して、SQL Data Warehouse のデータに対して予測モデルを作成し、いつでも利用できる Web サービスとして発行することができます。 予測分析と機械学習の基礎については、[Azure の Machine Learning の概要][Introduction to Machine Learning on Azure]に関する記事をご覧ください。  機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][Create experiment tutorial]のページをご覧ください。
@@ -43,15 +43,15 @@ Machine Learning Studio ウィンドウの下部にある [+新規] をクリッ
 リーダー モジュールを選択し、プロパティ ウィンドウに情報を入力します。
 
 1. [データ ソース] として [Azure SQL Database] を選択します。
-2. [データベース サーバー名]: サーバー名を入力します。 これは、[Azure Portal][Azure portal] を使用して見つけることができます。
+2. データベース サーバー名: サーバー名を入力します。 これは、[Azure Portal][Azure portal] を使用して見つけることができます。
 
 ![][server_name]
 
-1. [データベース名]: 指定したサーバー上のデータベースの名前を入力します。
-2. [サーバー ユーザー アカウント名]: データベースに対するアクセス許可を持つアカウントのユーザー名を入力します。
-3. [サーバー ユーザー アカウントのパスワード]: 指定したユーザー アカウントのパスワードを入力します。
-4. [すべてのサーバー証明書を受け入れる]: データを読み取る前に、サイト証明書の確認をスキップする場合は、このオプションを使用します (セキュリティが低下します)。
-5. [データベース クエリ]: 読み取るデータを記述した SQL ステートメントを入力します。 この例では、次のクエリを使用して Product テーブルからデータを読み取ります。
+1. データベース名: 指定したサーバー上のデータベースの名前を入力します。
+2. サーバー ユーザー アカウント名: データベースに対するアクセス許可を持つアカウントのユーザー名を入力します。
+3. サーバー ユーザー アカウントのパスワード: 指定したユーザー アカウントのパスワードを入力します。
+4. すべてのサーバー証明書を受け入れる: データを読み取る前に、サイト証明書の確認をスキップする場合は、このオプションを使用します (セキュリティが低下します)。
+5. データベース クエリ: 読み取るデータを記述した SQL ステートメントを入力します。 この例では、次のクエリを使用して Product テーブルからデータを読み取ります。
 
 ```SQL
 SELECT ProductKey, EnglishProductName, StandardCost,
@@ -93,15 +93,15 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 ライター モジュールを選択し、プロパティ ウィンドウに情報を入力します。
 
 1. [データ ソース] として [Azure SQL Database] を選択します。
-2. [データベース サーバー名]: サーバー名を入力します。 これは、[Azure Portal][Azure portal] を使用して見つけることができます。
-3. [データベース名]: 指定したサーバー上のデータベースの名前を入力します。
-4. [サーバー ユーザー アカウント名]: データベースに対する書き込みアクセス許可を持つアカウントのユーザー名を入力します。
-5. [サーバー ユーザー アカウントのパスワード]: 指定したユーザー アカウントのパスワードを入力します。
-6. [すべてのサーバー証明書を受け入れる (安全ではありません)]: 証明書を表示しない場合は、このオプションを選択します。
-7. [保存する列のコンマ区切りのリスト]: 出力するデータセットまたは結果の列のリストを指定します。
-8. [データ テーブル名]: データ テーブルの名前を指定します。
-9. [データ テーブル列のコンマ区切りのリスト]: 新しいテーブルで使用する列名を指定します。 ソース データセットとは異なる列名を指定できますが、出力テーブル用に定義した列数と同じ列数をここで示す必要があります。
-10. [SQL Azure 操作ごとの書き込み行数]: 1 つの操作で SQL Database に書き込む行数を設定できます。
+2. データベース サーバー名: サーバー名を入力します。 これは、[Azure Portal][Azure portal] を使用して見つけることができます。
+3. データベース名: 指定したサーバー上のデータベースの名前を入力します。
+4. サーバー ユーザー アカウント名: データベースに対する書き込みアクセス許可を持つアカウントのユーザー名を入力します。
+5. サーバー ユーザー アカウントのパスワード: 指定したユーザー アカウントのパスワードを入力します。
+6. すべてのサーバー証明書を受け入れる (安全ではありません): 証明書を表示しない場合は、このオプションを選択します。
+7. 保存する列のコンマ区切りのリスト: 出力するデータセットまたは結果の列のリストを指定します。
+8. データ テーブル名: データ テーブルの名前を指定します。
+9. データ テーブル列のコンマ区切りのリスト: 新しいテーブルで使用する列名を指定します。 ソース データセットとは異なる列名を指定できますが、出力テーブル用に定義した列数と同じ列数をここで示す必要があります。
+10. SQL Azure 操作ごとの書き込み行数: 1 つの操作で SQL Database に書き込む行数を設定できます。
 
 ![][writer_properties]
 

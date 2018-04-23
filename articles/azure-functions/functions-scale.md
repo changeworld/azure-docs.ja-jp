@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions のスケールとホスティング | Microsoft Docs"
-description: "Azure Functions の従量課金プランと App Service プランの選択方法について説明します。"
+title: Azure Functions のスケールとホスティング | Microsoft Docs
+description: Azure Functions の従量課金プランと App Service プランの選択方法について説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, 従量課金プラン, App Service プラン, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 関数, 従量課金プラン, App Service プラン, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5be2fe57287f816434b6d6fdf40dbbcb0dd435f4
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -86,7 +86,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 <!-- JH: Does using a PRemium Storage account improve perf? -->
 
-ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)に関する記事をご覧ください。
+ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#azure-storage-services)に関する記事をご覧ください。
 
 ## <a name="how-the-consumption-plan-works"></a>従量課金プランの仕組み
 

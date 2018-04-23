@@ -327,7 +327,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: ネットワーク リソース プロバイダー
-      href: resource-groups-networking.md
     - name: FAQ
       href: virtual-networks-faq.md

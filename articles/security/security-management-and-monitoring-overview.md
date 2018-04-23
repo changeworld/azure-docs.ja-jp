@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 906ea3c37823616597ee74dbadf50618d5c4e11d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 66a3a31574778bb1238498b523d51dc0d32ac22f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。 この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。 それぞれの詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
@@ -75,7 +75,7 @@ Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を�
 詳細情報:
 
 * [多要素認証](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
+* [Azure Multi-Factor Authentication とは](../active-directory/authentication/multi-factor-authentication.md)
 * [Azure Multi-Factor Authentication のしくみ](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute

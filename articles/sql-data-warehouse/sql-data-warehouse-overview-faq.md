@@ -2,19 +2,19 @@
 title: Azure SQL Data Warehouse のよく寄せられる質問 | Microsoft Docs
 description: この記事では、Azure SQL Data Warehouse に関して顧客と開発者からよく寄せられる質問を示します
 services: sql-data-warehouse
-author: ronortloff
+author: acomet
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.component: design
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: ee34cbf38e8cde754e6d1cec9dce6885b0b56709
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 475dd2de05c2691d4698ae1112118ecea9bc2d2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
 

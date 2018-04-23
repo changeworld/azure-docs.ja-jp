@@ -2,23 +2,20 @@
 title: Visual Studio の Azure アプリケーションの公開ウィザードの使用 | Microsoft Docs
 description: Visual Studio の Azure アプリケーションの公開ウィザードで、さまざまな設定を構成する方法について説明します。
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
-ms.service: multiple
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 980809bc62f7766971ea4753e1cfb165aa1cffc2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 02d38f49a1bfe490acbcfee95a8a703cf0d7594f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Visual Studio の Azure アプリケーションの公開ウィザードの使用
 

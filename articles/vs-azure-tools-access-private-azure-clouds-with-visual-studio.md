@@ -2,23 +2,20 @@
 title: Visual Studio での Azure プライベート クラウドへのアクセス | Microsoft Docs
 description: Visual Studio を使用してプライベート クラウドのリソースにアクセスする方法について説明します。
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 9d733c8d-703b-44e7-a210-bb75874c45c8
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 9d733c8d-703b-44e7-a210-bb75874c45c8
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: ghogen
-ms.openlocfilehash: 09f74e1e43d63fbd1a8fd4ddea7b23f8dc9370db
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0160ac6db2b92d5a30a19dd444d01a8558b3eed3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>Visual Studio での Azure プライベート クラウドへのアクセス
 

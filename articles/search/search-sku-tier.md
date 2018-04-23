@@ -1,6 +1,7 @@
 ---
 title: Azure Search 用の SKU または価格レベルの選択 | Microsoft Docs
 description: Azure Search は無料、Basic、Standard の各 SKU にプロビジョニングできます。Standard は、複数のリソース構成および容量レベルで使用できます。
+services: search
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -8,11 +9,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 498ceb4a5d9e0bb9c8c5b5711c8c2687df3a3409
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6fe41a8c4d184fef4d1bb0a12fed44a49ef8a6da
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Azure Search 用の SKU または価格レベルの選択
 Azure Search では、特定の価格レベルまたは SKU で[サービスがプロビジョニングされます](search-create-service-portal.md)。 指定できる選択肢には、**Free**、**Basic**、**Standard** があります。このうち **Standard** は、複数の構成および容量で指定できます。

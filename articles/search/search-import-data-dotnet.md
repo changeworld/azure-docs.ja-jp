@@ -4,15 +4,16 @@ description: .NET SDK を使用して Azure Search のインデックスにデ�
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
+services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: 48b697c67d4a860c10375de249eb842b2cc4830d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fb8fb153c7393af0e084cb96ee2f5e82fba5b220
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>.NET SDK を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]

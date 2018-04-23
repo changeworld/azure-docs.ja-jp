@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: bf09e4b7866a2320b1a26c7164565d5c2f9c4d0a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 47e05c5acbcd0c36efb7fcef2f0997aac4f46470
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 
@@ -24,7 +24,7 @@ Azure SQL Database の多要素認証の概要については、「[SQL Database
 ## <a name="configuration-steps"></a>構成の手順
 
 1. **Azure Active Directory の構成** - 詳細については、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、「[オンプレミスのディレクトリと Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[独自のドメイン名を Azure AD に追加する方法に関するブログ](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure が Windows Server Active Directory とのフェデレーションをサポートするようになったことに関するブログ](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、および[Windows PowerShell を使用した Azure AD の管理に関する記事](https://msdn.microsoft.com/library/azure/jj151815.aspx)を参照してください。
-2. **MFA の構成** - 詳細な手順については、「[Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)」、「[Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)](sql-database-conditional-access.md)」を参照してください (完全な条件付きアクセスの場合は Premium Azure Active Directory (Azure AD) が必要です。 標準の Azure AD では、制限付きの MFA を使用できます)。
+2. **MFA の構成** - 詳細な手順については、「[Azure Multi-Factor Authentication とは](../active-directory/authentication/multi-factor-authentication.md)」、「[Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)](sql-database-conditional-access.md)」を参照してください (完全な条件付きアクセスの場合は Premium Azure Active Directory (Azure AD) が必要です。 標準の Azure AD では、制限付きの MFA を使用できます)。
 3. **SQL Database または SQL Data Warehouse での Azure AD 認証の構成** - 手順については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」をご覧ください。
 4. **SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 このトピックのすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  
 

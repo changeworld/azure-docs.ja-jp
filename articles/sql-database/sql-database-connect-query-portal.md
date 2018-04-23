@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 97b14de64c4aa6bf134f2c293e4bb8b5725810d3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6e9dbeb5915f98ec4d08d8656b6b338ea78117da
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: SQL クエリ エディターを使用した接続とデータの照会
 
-SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタート チュートリアルでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。
+SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

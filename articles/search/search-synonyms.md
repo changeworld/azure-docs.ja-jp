@@ -2,17 +2,18 @@
 pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
 description: Azure Search REST API で公開されているシノニム (プレビュー) 機能の暫定版ドキュメント。
 authors: mhko
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 07/07/2016
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: e11a020c737261c902a54a3a1ad5540e1525de44
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 612bf30281703bd9cdec3a904f27df8e7dba3641
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Azure Search のシノニム (プレビュー)
 

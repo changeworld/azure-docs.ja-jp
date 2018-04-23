@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: 0f4c766bd68227a85e2438bc68b2d61c69ce706c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dc83ac568ddf3b7a70ec2d39c94c8bb2952c8386
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-android-apps-and-firebase-cloud-messaging"></a>Azure Notification Hubs の使用 (Android アプリと Firebase Cloud Messaging)
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -285,8 +285,8 @@ ms.lasthandoff: 03/23/2018
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
-
-3. Add the following private members at the top of the class. You use these to [check the availability of Google Play Services as recommended by Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+    ```
+3. クラスの最上位に、次のプライベート メンバーを追加します。 これらを利用し、[Google の推奨事項に従って Google Play 開発者サービスが利用可能かどうかを確認](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)します。
    
     ```java
         public static MainActivity mainActivity;

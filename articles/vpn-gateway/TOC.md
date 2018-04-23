@@ -3,7 +3,6 @@
 # 概要
 ## [VPN Gateway について](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)
-## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 作業の開始
 ## ルートベースの VPN ゲートウェイの作成
@@ -122,6 +121,7 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## [料金](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)

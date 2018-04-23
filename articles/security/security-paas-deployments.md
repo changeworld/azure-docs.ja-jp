@@ -1,12 +1,12 @@
 ---
-title: "PaaS デプロイをセキュリティで保護する | Microsoft Docs"
+title: PaaS デプロイをセキュリティで保護する | Microsoft Docs
 description: " 他のクラウド サービス モデルに対する PaaS のセキュリティ上の利点を理解し、Azure PaaS デプロイをセキュリティで保護するための推奨されるプラクティスについて学びます。 "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
 editor: techlake
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 4629e0ab6bbc9554128a923e92b269df79446b18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 11/22/2017
 デプロイの種類に関係なく、常にお客様が責任を持つ項目は次のとおりです。
 
 - データ
-- [エンドポイント]
+- エンドポイント
 - アカウント
 - アクセス管理
 
@@ -87,20 +87,20 @@ PaaS と従来のオンプレミス デプロイにおけるもう 1 つの重�
 
 - **キーや資格情報を紛失しないようにする** キーや資格情報を安全に保管することは、PaaS デプロイをセキュリティ保護する上で不可欠です。 キーや資格情報の紛失は、よくある問題です。 優れたソリューションの 1 つとして、キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用することが挙げられます。 Azure では、[Azure Key Vault](../key-vault/key-vault-whatis.md) によりクラウドで HSM を提供しています。
 - **資格情報やその他のシークレットをソース コードや GitHub に含めないようにする** キーや資格情報を紛失するよりももっと悪いことは、権限のない第三者がキーや資格情報へのアクセスを取得することです。 攻撃者はボット テクノロジを利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを検索することができます。 これらのパブリックなソース コード レポジトリには、キーやシークレットを格納しないようにします。
-- **PaaS と IaaS のハイブリッド サービスで VM 管理インターフェイスをセキュリティ保護する** IaaS と PaaS のサービスは仮想マシン (VM) 上で実行されます。 サービスの種類に応じて、VM を直接リモート管理できる管理インターフェイスが提供されています。 [セキュア シェル プロトコル (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[リモート デスクトップ プロトコル (RDP)](https://support.microsoft.com/kb/186607)、[リモート PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) などのリモート管理プロトコルを使用できます。 通常は、インターネットから VM に直接リモート アクセスできないように設定することをお勧めします。 利用できる場合は、Azure 仮想ネットワークに仮想プライベート ネットワークを使うなどの別の方法を取るようにしてください。 別の方法が利用できない場合は、複雑なパスフレーズを使うようにして、可能であれば 2 要素認証 ([Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) など) を使用するようにします。
+- **PaaS と IaaS のハイブリッド サービスで VM 管理インターフェイスをセキュリティ保護する** IaaS と PaaS のサービスは仮想マシン (VM) 上で実行されます。 サービスの種類に応じて、VM を直接リモート管理できる管理インターフェイスが提供されています。 [セキュア シェル プロトコル (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[リモート デスクトップ プロトコル (RDP)](https://support.microsoft.com/kb/186607)、[リモート PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) などのリモート管理プロトコルを使用できます。 通常は、インターネットから VM に直接リモート アクセスできないように設定することをお勧めします。 利用できる場合は、Azure 仮想ネットワークに仮想プライベート ネットワークを使うなどの別の方法を取るようにしてください。 別の方法が利用できない場合は、複雑なパスフレーズを使うようにして、可能であれば 2 要素認証 ([Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) など) を使用するようにします。
 - **強力な認証と承認のプラットフォームを使用する**
 
   - Azure AD で、カスタム ユーザー ストアではなくフェデレーション ID を使用するようにします。 フェデレーション ID を使用すると、プラットフォームベースのアプローチを活用して、承認された ID の管理をパートナーに委任することができます。 従業員を解雇し、その情報を複数の ID と承認システムに反映する必要があるシナリオでは、フェデレーション ID によるアプローチが特に重要になってきます。
   - カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 その理由は、カスタム認証コードの開発ではエラーが生じやすいためです。 開発者のほとんどはセキュリティ専門家ではなく、細部に留意したり、認証や承認の最新動向を把握している可能性は低くなります。 商用コード (たとえば Microsoft のコード) は、通常徹底的にセキュリティ レビューされています。
-  - 多要素認証を使用します。 多要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理 (ポータル/リモート PowerShell) インターフェイスと、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) を使用するように設計、構成する必要があります。
+  - 多要素認証を使用します。 多要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理 (ポータル/リモート PowerShell) インターフェイスと、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) を使用するように設計、構成する必要があります。
   - OAuth2 や Kerberos などの標準的な認証プロトコルを使用します。 これらのプロトコルは幅広くピア レビューされており、認証と承認用にプラットフォーム ライブラリの一部として実装される可能性があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure PaaS デプロイのセキュリティ上の利点に重点を置いてきました。 次に、PaaS の Web ソリューションとモバイル ソリューションをセキュリティ保護するための推奨されるプラクティスについて説明します。 まず、Azure App Service、Azure SQL Database、Azure SQL Data Warehouse から始めましょう。 他の Azure サービスの推奨されるプラクティスに関する記事が公開されると、次の一覧にリンクが提供されます。
 
 - [Azure App Service](security-paas-applications-using-app-services.md)
 - [Azure SQL Database と Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
-- Azure Storage (Azure Storage)
+- Azure Storage
 - Azure Redis Cache
 - Azure Service Bus
 - Web アプリケーション ファイアウォール

@@ -6,15 +6,15 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.component: design
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e48d0a3028d5ebcb5d1bc0afbfc96a391bf4c076
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 21e1f687e152cf91bd32389e0d5aa0dabd463b2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-warehouse-workload"></a>データ ウェアハウスのワークロード
 データ ウェアハウスのワークロードは、データ ウェアハウスに対して発生するすべての操作を指します。 データ ウェアハウスのワークロードには、ウェアハウスへのデータの読み込み、データ ウェアハウスでの分析の実行とレポート作成、データ ウェアハウスでのデータの管理、およびデータ ウェアハウスからのデータのエクスポートというプロセス全体が含まれます。 これらのコンポーネントの深度や幅は、多くの場合データ ウェアハウスの成熟度レベルと比例します。

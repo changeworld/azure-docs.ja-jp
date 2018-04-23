@@ -3,15 +3,16 @@ title: Azure Search の検索トラフィックの分析 |Microsoft Docs
 description: Azure Search の検索トラフィックの分析 (Microsoft Azure 上のクラウド ホスト検索サービス) を有効にして、ユーザーとデータに関する洞察のロックを解除します。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 04/05/2017
 ms.author: heidist
-ms.openlocfilehash: 10963d1e022fc2aa574c88e994c4d8593b4d4de1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ca0a00d078cd63aa8736ba9f9822fd812823304f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-search-traffic-analytics"></a>検索トラフィックの分析とは
 検索トラフィックの分析は、検索サービスのフィードバック ループの実装パターンです。 このパターンでは、必要なデータと、Application Insights を使用してデータを収集する方法を示します。Application Insights は、複数のプラットフォームでサービスを監視する業界最先端のサービスです。

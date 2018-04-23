@@ -15,10 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.openlocfilehash: 3ce4104040e90a4740442d7692b3bf4a0789bde0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。

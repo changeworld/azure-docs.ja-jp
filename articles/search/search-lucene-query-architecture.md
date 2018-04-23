@@ -3,16 +3,17 @@ title: Azure Search のフルテキスト検索エンジン (Lucene) アーキ�
 description: Azure Search に関して Lucene のフルテキスト検索に使用されるクエリ処理と文書検索の概念について説明します。
 manager: jlembicz
 author: yahnoosh
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.openlocfilehash: 7cc4e19fd23095982d59578f7393e17b7f003757
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d05aade97ea5713b63b921d9e39d4df0c30b8fa0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 

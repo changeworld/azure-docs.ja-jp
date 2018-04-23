@@ -3,15 +3,16 @@ title: インデックスの照会 (ポータル - Azure Search) | Microsoft Doc
 description: Azure Portal の Search エクスプローラーで検索クエリを発行します。
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: heidist
-ms.openlocfilehash: f952587150fa2d49709bdce6cbc5fe1a7aea16b1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a3592bd0c304dfb78374eeba432c0d28203980c9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Azure Portal の Search エクスプローラーを使用して Azure Search インデックスを照会する
 > [!div class="op_single_selector"]

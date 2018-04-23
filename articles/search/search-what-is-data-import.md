@@ -3,15 +3,16 @@ title: Azure Search におけるデータのインポート | Microsoft Docs
 description: Azure Search のインデックスにデータをアップロードする方法について説明します。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: 3f5f6c4ea8ba45d0fefb84e7338ffdc44f852246
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e54b89d31042d43a14379dea6daffd3e7763a64a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexing-in-azure-search"></a>Azure Search でのインデックス作成
 > [!div class="op_single_selector"]

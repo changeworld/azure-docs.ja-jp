@@ -2,17 +2,17 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-network
-author: genli
+author: genlin
 ms.service: virtual-network
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 2c03f650b99dd252f89d08f9baf9da8e74b10e38
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 06591af2115675f531fbd6a85b53b432e011d179
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)

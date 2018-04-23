@@ -4,15 +4,16 @@ description: REST API を使用して Azure Search のインデックスにデ�
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 12/08/2016
-ms.openlocfilehash: 5322faf04d29643bba2d1371cef23ab224675adb
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b622cffad66dc5d09df2d737bf2c1d30543a4252
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>REST API を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]

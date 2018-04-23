@@ -1,9 +1,9 @@
 ---
-title: "2 段階認証のトラブルシューティング |Microsoft Docs"
-description: "このドキュメントでは、Azure Multi-factor Authentication で問題が発生した場合の処置に関する情報をユーザーに提供します。"
+title: 2 段階認証のトラブルシューティング |Microsoft Docs
+description: このドキュメントでは、Azure Multi-factor Authentication で問題が発生した場合の処置に関する情報をユーザーに提供します。
 services: multi-factor-authentication
-keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
-documentationcenter: 
+keywords: 多要素認証のクライアント, 認証の問題, 関連付け ID
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
@@ -16,11 +16,11 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 840f4f9e3616f5a60ebbbb0ad33cee9a67958989
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 995430a5c8a388358fcfb7c8c9bac978450df411
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-help-with-two-step-verification"></a>2 段階認証のサポートを受ける
 この記事では、2 段階認証に関してお客様から寄せられる最も一般的な質問の回答を掲載しています。
@@ -87,7 +87,7 @@ Microsoft の個人用アカウントで 2 段階認証が有効になってお�
 電波状態が悪いために時間がかかる場合は、スマート フォンで[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)を使用することをお勧めします。 サインインするために使用するランダムなセキュリティコードをアプリで生成できます。これらのコードでは、携帯電話の信号もインターネット接続も必要ありません。
 
 ## <a name="app-passwords-are-not-working"></a>アプリ パスワードが機能しない場合
-最初に、アプリ パスワードが正しく入力されていることを確認します。 2 段階認証をサポートしていない古いバージョンのデスクトップ アプリケーションに限り、生成されたアプリ パスワードによって通常のパスワードが置き換えられます。 それでもうまくいかない場合は、サインインして[新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)してみてください。  それでもうまくいかない場合は、社内のサポートに連絡して[既存のアプリ パスワードの削除](../multi-factor-authentication-manage-users-and-devices.md)を依頼します。その後、新しいパスワードを作成できます。
+最初に、アプリ パスワードが正しく入力されていることを確認します。 2 段階認証をサポートしていない古いバージョンのデスクトップ アプリケーションに限り、生成されたアプリ パスワードによって通常のパスワードが置き換えられます。 それでもうまくいかない場合は、サインインして[新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)してみてください。  それでもうまくいかない場合は、社内のサポートに連絡して[既存のアプリ パスワードの削除](../../active-directory/authentication/howto-mfa-userdevicesettings.md)を依頼します。その後、新しいパスワードを作成できます。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>問題に対する回答が見つからなかった場合
 トラブルシューティングのこれらの手順を試してもまだ問題が発生する場合は、社内のサポートに連絡して、 助言を求めてください。

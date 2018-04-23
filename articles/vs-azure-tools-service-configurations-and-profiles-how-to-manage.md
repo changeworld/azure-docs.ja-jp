@@ -2,23 +2,20 @@
 title: サービス構成とプロファイルを管理する方法 | Microsoft Docs
 description: サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 7da8c551-fb06-4057-b5c7-c77f4b39d803
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 8/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 411daa8892bee1858c6930dfd8b2b811f164ec5d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4f2dce7cdbf81718f9ccf0c1b7d52c6678cc847f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>サービス構成とプロファイルを管理する方法
 ## <a name="overview"></a>概要

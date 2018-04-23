@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 9b3ae914774d2d6a66c5732f1d63f09926bb48fc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 42c30a825e44c289c42d0fb0a40a442c4ac950d7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
@@ -88,7 +88,7 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 
 4. 認証およびログインに成功すると、次のスクリーンショットの情報が表示されます。 サブスクリプション ID と サブスクリプション名をメモに取ります。後の手順で使用します。
 
-   ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/Connect-AzureRmAccount.png)
+   ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 5. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力します。 使用する環境に合わせて値を調整する必要がある場合があります。
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
     - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した場所のものに変更できます。)

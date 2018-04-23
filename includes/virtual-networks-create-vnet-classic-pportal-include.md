@@ -2,17 +2,17 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-network
-author: genli
+author: genlin
 ms.service: virtual-network
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: edfcd4d59eceada9e1c6014dad9afa7fe8ab3c8f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 815a217526117325ff80759701141b2b4d148514
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Azure ポータルで従来の VNet を作成する方法
 前述のシナリオに基づいて従来の VNet を作成するには、次の手順に従います。

@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.openlocfilehash: b49b4fecb6be70987e7e6736d78f224c03f719bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 
@@ -33,7 +33,7 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 6. **[ストレージ アカウント キー]** フィールドに新しく生成されたキーを貼り付けて、**[保存]** をクリックします。    
 7. 変更内容を保存すると、接続テストが自動的に開始され、[通知] タブでそれを確認できます。2 つの通知が表示されます。1 つは更新の保存に対応し、もう 1 つは接続のテストに対応します。  
    ![キーを編集した後の通知](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
-8. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
+8. [最終停止時刻からジョブを開始する] (#start-your-job-from-the-last-stopped-time) セクションに進みます。
 
 ### <a name="event-hubs"></a>Event Hubs
 

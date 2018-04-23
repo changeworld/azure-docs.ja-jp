@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20d3eb9a1843e1a223ba7fb060df46a22f9315b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
 現在と将来の Azure の顧客との話し合いで、“Azure で提供する必要のあるすべてのセキュリティ関連のサービスとテクノロジを一覧したリストはありますか?” という質問を受けることがよくあります。
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/16/2018
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
 * [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)
-* [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
+* [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
 * [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)

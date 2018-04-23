@@ -3,15 +3,16 @@ title: Azure Search への SQL VM 接続 | Microsoft Docs
 description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 6f9f429a8a18a6e0722e1cb5e190104665305e06
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
 「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 

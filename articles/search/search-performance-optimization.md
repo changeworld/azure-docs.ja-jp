@@ -3,16 +3,17 @@ title: Azure Search のパフォーマンスと最適化に関する考慮事項
 description: Azure Search のパフォーマンスを調整し、最適なスケールを構成します。
 author: LiamCavanagh
 manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: 14f46e2f76268f4d865d9ea6b16e8eda047ffe31
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 89c0352723f1ed00784250b566902028af853d10
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure Search のパフォーマンスと最適化に関する考慮事項
 優れた検索機能は、多くのモバイル アプリケーションと Web アプリケーションの成功の鍵となります。 不動産から中古車市場、オンライン カタログまで、高速検索と適切な結果はカスタマー エクスペリエンスに影響を及ぼします。 このドキュメントは、特に、スケーラビリティ、複数の言語のサポート、またはカスタム ランキングの非常に複雑な要件がある高度なシナリオで、Azure Search を最大限に活用する方法のベスト プラクティスを示すことを目的としています。  また、内部の概要を説明し、実際の顧客アプリで効果的に機能する方法についても説明します。

@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory B2C を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs"
-description: "API Management で Azure Active Directory B2C を使用してユーザーを承認する方法について説明します。"
+title: Azure Active Directory B2C を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs
+description: API Management で Azure Active Directory B2C を使用してユーザーを承認する方法について説明します。
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: d843757c2ed63c4f8cff09d809c2de382b2aeb59
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 1268905d8a992d0cac65174142f6a3870f38f0d8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 > [!WARNING]
 > Azure Active Directory B2C の統合では、[Developer および Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) レベルのみで使用できます。
@@ -33,7 +33,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
 1. まず、ご利用の API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックします。 API Management パブリッシャー ポータルが表示されます。
 
-   ![パブリッシャー ポータル][api-management-management-console]
+   ![発行者ポータル][api-management-management-console]
 
    > [!NOTE]
    > まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の使用][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
@@ -58,7 +58,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
   ![新しいアプリケーション 3 の登録][api-management-howto-aad-b2c-app-details]
 
-7. **[Create]** ボタンをクリックします。 アプリケーションが作成され、**[アプリケーション]** ブレードに表示されます。 アプリケーション名をクリックすると、その詳細が表示されます。
+7. **[作成]** ボタンをクリックします。 アプリケーションが作成され、**[アプリケーション]** ブレードに表示されます。 アプリケーション名をクリックすると、その詳細が表示されます。
 
   ![新しいアプリケーション 4 の登録][api-management-howto-aad-b2c-app-created]
 
@@ -114,7 +114,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
     ![登録の完了][api-management-registration-complete]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 *  [Azure Active Directory B2C の概要]
 *  [Azure Active Directory B2C: 拡張可能なポリシー フレームワーク]

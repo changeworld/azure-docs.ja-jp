@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 2e4c424bb26a3b268ec893ca40dcdce7d7469217
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0d168c0a127c037c1bca2a6b875e9b3d5707ba70
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ツイートのストリームを受け取るには、Twitter でアプリケーションを作成します。 手順に従って Twitter アプリケーションを作成し、このチュートリアルの完了に必要な値を記録します。
 
-1. Web ブラウザーで [Twitter アプリケーション管理](http://twitter.com/app)に移動して、**[Create New App]\(新しいアプリの作成\)** を選択します。
+1. Web ブラウザーで [Twitter アプリケーション管理](https://apps.twitter.com/)に移動して、**[Create New App]\(新しいアプリの作成\)** を選択します。
 
     ![Twitter アプリケーションを作成する](./media/databricks-stream-from-eventhubs/databricks-create-twitter-app.png "Twitter アプリケーションを作成する")
 

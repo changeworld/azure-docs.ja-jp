@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: 39ee42d41b41cf7c1844a49286746080db71e973
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 665e1914f44d7c5e650a1b632d8b11c6d8a5931a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 
 
@@ -80,5 +80,5 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)
 - [Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../active-directory/authentication/howto-mfa-nps-extension.md)

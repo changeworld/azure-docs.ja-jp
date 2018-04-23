@@ -2,23 +2,20 @@
 title: サーバー エクスプローラーを使用したストレージ リソースの参照と管理 | Microsoft Docs
 description: サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 658dc064-4a4e-414b-ae5a-a977a34c930d
-ms.service: storage
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: 658dc064-4a4e-414b-ae5a-a977a34c930d
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: 59e26082845b5934a5918ccfb3dc8b971bba7d54
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0beeb8fb7f7e46db97e179f3eacf3c68dd92cff3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 

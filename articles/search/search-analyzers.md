@@ -1,17 +1,18 @@
 ---
 title: Azure Search のアナライザー | Microsoft Docs
 description: インデックスの検索可能なテキスト フィールドにアナライザーを割り当てて、既定の標準 Lucene をカスタムの定義済みの代替または言語固有の代替と置換します。
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: ef578d880c832ed5f853275f9194e15eefecfcaa
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e858966fb5a15b84af1952399a5eff3ca50d0d59
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="analyzers-in-azure-search"></a>Azure Search のアナライザー
 

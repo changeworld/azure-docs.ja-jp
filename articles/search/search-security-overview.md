@@ -3,15 +3,16 @@ title: Azure Search におけるデータと操作のセキュリティ保護 | 
 description: Azure Search のセキュリティは、SOC 2 コンプライアンス、暗号化、認証のほか、Azure Search フィルターのユーザーおよびグループ セキュリティ識別子を通じた ID アクセスに基づいています。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 3985e4fff5eb1eb0c80b267dd8983488d10cb4e5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7db1b6c6f72f3cea7446b5f96dac7cd6e9b4252d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Azure Search のセキュリティとアクセス制御
 

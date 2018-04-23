@@ -3,15 +3,16 @@ title: ポータルでの Azure Search サービスの作成 | Microsoft Docs
 description: ポータルでの Azure Search サービスのプロビジョニング
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 11/07/2017
 ms.author: heidist
-ms.openlocfilehash: 9c0b698b68820c2696c95099bc5ff4a466686797
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1837fc6511ac734766c55bd1c2a2a7a40219c31a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: dae93a622bad3ddfb1d9492d17b700d82e9969c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 クラウドにおけるデータ保護で重要なポイントの 1 つは、データが置かれうる状態と、その状態でどのような制御を使用できるのかを把握することです。 Azure のデータ セキュリティと暗号化のベスト プラクティスでは、次のデータの状態に関する推奨事項が定められています。
@@ -50,13 +50,13 @@ ms.lasthandoff: 04/19/2018
 * ファイル レベルのデータ暗号化を適用する
 
 ## <a name="enforce-multi-factor-authentication"></a>多要素認証を適用する
-Microsoft Azure におけるデータ アクセスとデータ制御で最初に行われるのが、ユーザーの認証です。 [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) とは、ユーザー名とパスワード以外の手段も使ってユーザーを認証する方法です。 この認証方法を利用することで、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。
+Microsoft Azure におけるデータ アクセスとデータ制御で最初に行われるのが、ユーザーの認証です。 [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) とは、ユーザー名とパスワード以外の手段も使ってユーザーを認証する方法です。 この認証方法を利用することで、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。
 
 ユーザーに対する Azure MFA を有効にすると、ユーザーのサインインとトランザクションに新しいセキュリティ層が追加されます。 この場合、ファイル サーバーまたは SharePoint Online 上にあるドキュメントにアクセスするトランザクションが発生する可能性があります。 また、Azure MFA は不正に取得された資格情報によって組織データにアクセスされる危険を減らすためにも役立ちます。
 
 たとえば、ユーザーに Azure MFA を適用し、電話やテキスト メッセージを使用して認証するように構成していたとします。攻撃者がユーザーの資格情報を不正に入手したとしても、ユーザーの携帯電話がなければ、リソースにアクセスすることはできません。 この新しい ID 保護層を追加しない場合、資格情報盗用攻撃を受けやすくなり、データの侵害につながる可能性があります。
 
-認証をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) (MFA オンプレミスとも呼ばれます) を利用できます。 この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
+認証をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](../active-directory/authentication/howto-mfaserver-deploy.md) (MFA オンプレミスとも呼ばれます) を利用できます。 この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
 
 Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](../active-directory/authentication/howto-mfa-getstarted.md)」をご覧ください。
 

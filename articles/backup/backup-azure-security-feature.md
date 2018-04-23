@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能 | Microsoft Docs"
-description: "Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します"
+title: Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能 | Microsoft Docs
+description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: 47bc8423-0a08-4191-826d-3f52de0b4cb8
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.openlocfilehash: f856303d4abf05178eb11a242b87390ff1484e1b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 2529d19dbf0ca0fb59f5abe48be3e8b14e862e29
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃を防ぐために、Azure Backup にはハイブリッド バックアップを保護するセキュリティ機能が用意されています。 この記事では、Azure Recovery Services エージェントと Azure Backup Server を使用して、これらの機能を有効にして使用する方法について説明します。 次のような機能が該当します。
@@ -55,7 +55,7 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
     ![Recovery Services コンテナーのプロパティのスクリーンショット](./media/backup-azure-security-feature/security-settings-update.png)
 
     [更新] リンクから **[セキュリティの設定]** ブレードが開きます。ここで機能の概要を確認したり、機能を有効にしたりすることができます。
-5. **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** ドロップダウン リストから値を選択し、[Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) を有効にしたかどうかを確認する値を選択します。 有効にした場合は、Azure Portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
+5. **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** ドロップダウン リストから値を選択し、[Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) を有効にしたかどうかを確認する値を選択します。 有効にした場合は、Azure Portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
 
    Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
 6. セキュリティ設定を保存するには、**[有効]** を選択して、**[保存]** をクリックします。 **[有効]** を選択できるのは、前の手順で **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** リストから値を選択した場合のみです。

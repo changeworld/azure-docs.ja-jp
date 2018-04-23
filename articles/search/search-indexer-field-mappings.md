@@ -3,16 +3,17 @@ title: Azure Search インデクサーのフィールド マッピング
 description: フィールド名とデータ表現の間の違いを調整するよう Azure Search インデクサー フィールド マッピングを構成する
 author: chaosrealm
 manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 6e5148727ab09c56d9af36f7e6fae5e47c85ea59
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 041866cd1c290bc576577771abcae31db747095e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Azure Search インデクサーのフィールド マッピング
 Azure Search インデクサーを使用する際、入力データがターゲット インデックスのスキーマと大きく異なっているのに気づく場合があります。 このような場合に、 **フィールド マッピング** を使用してデータを必要な形式に変換できます。

@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning ワークベンチを使用した [Combine Columns by Example] \\(例による列の結合) 変換"
-description: "[Combine Columns by Example] \\(例による列の結合) 変換の参照ドキュメント"
+title: Azure Machine Learning ワークベンチを使用した 例による列の結合 変換
+description: 例による列の結合 変換の参照ドキュメント
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,12 +12,12 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="combine-columns-by-example-transformation"></a>[Combine Columns by Example] \(例による列の結合) 変換
+# <a name="combine-columns-by-example-transformation"></a>例による列の結合 変換
 ユーザーはこの変換を使用して、複数の列から値を結合して新しい列を追加することができます。 ユーザーは、区切り記号を指定したり、結合された値の例を提示したりして、この変換を実行できます。 ユーザーが結合の例を提供すると、変換は、**[Derive Column by Example] \(例による列の派生)** 変換で使用されているものと同じ **[By Example] \(例による)** エンジンで処理されます。
 
 ## <a name="how-to-perform-this-transformation"></a>この変換を実行する方法

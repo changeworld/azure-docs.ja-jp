@@ -69,6 +69,8 @@
       items:
         - name: JavaScript
           href: app-insights-javascript.md
+    - name: Azure Functions を監視する
+      href: 'https://docs.microsoft.com/azure/azure-functions/functions-monitoring'
     - name: その他のプラットフォームの監視
       items:
         - name: SharePoint サイト

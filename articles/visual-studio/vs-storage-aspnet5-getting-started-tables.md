@@ -2,23 +2,20 @@
 title: テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core) | Microsoft Docs
 description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後で、Visual Studio の ASP.NET Core プロジェクトで Azure テーブル ストレージの使用を開始する方法について説明します。
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: c3c451d1-71ff-4222-a348-c41c98a02b85
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: c20176b33962760560bbdb1cfe0d41377227d720
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e53e8ed27cfc048f24bda4ef92fcd2a50a85ed07
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
 

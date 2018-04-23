@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>バックアップ コンテナーを Recovery Services コンテナーにアップグレードする
 この記事では、Recovery Services コンテナーの機能や、既にあるバックアップ コンテナーを Recovery Services コンテナーにアップグレードすることに関してよく寄せられる質問、アップグレード後の手順について取り上げます。 Recovery Services コンテナーは、バックアップ データを格納するバックアップ コンテナーの Azure Resource Manager 版に相当します。 オンプレミスにあるか、Azure 内にあるかに関係なく、データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。
@@ -60,7 +60,7 @@ Recovery Services コンテナーが Azure の Azure Resource Manager モデル�
 Recovery Services コンテナーでは、バックアップ ポリシーでのタイム ゾーン情報の指定をサポートしています。 コンテナーが正常にアップグレードされたら、コンテナー設定メニューからバックアップ ポリシーに移動し、コンテナーで構成されているポリシーごとにタイム ゾーン情報を更新します。 この画面には、ポリシーの作成時に使用したローカル タイム ゾーンに従って指定されたバックアップのスケジュール時刻が既に表示されています。 
 
 ## <a name="enhanced-security"></a>強化されたセキュリティ
-Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。 強化されたセキュリティを有効にすると、データは、復旧ポイント情報がコンテナーから削除されてから最大 14 日間保持されます。 このセキュリティ データのストレージに対して課金されます。 セキュリティ データのリテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager に対して作成された復旧ポイントに適用されます。 
+Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。 強化されたセキュリティを有効にすると、データは、復旧ポイント情報がコンテナーから削除されてから最大 14 日間保持されます。 このセキュリティ データのストレージに対して課金されます。 セキュリティ データのリテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager に対して作成された復旧ポイントに適用されます。 
 
 ## <a name="gather-data-on-your-vault"></a>コンテナー上のデータの収集
 Recovery Services コンテナーにアップグレードしたら、Azure Backup のレポート (IaaS VM および Microsoft Azure Recovery Services エージェント用) を構成し、Power BI を使用してレポートにアクセスします。 データの収集の詳細については、記事「[Azure Backup のレポートを構成する](backup-azure-configure-reports.md)」を参照してください。

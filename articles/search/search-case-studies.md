@@ -4,16 +4,17 @@ description: Microsoft Azure のホスト型のクラウド検索サービスで
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 6fddec08f23de8f310ad9e675409b80818b1c98d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bc15d214d48978b2f8a6bceb3d1a0e945f10bd67
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Azure Search を使用しているユーザー: ケース スタディとお客様事例
 以下の組織が Azure Search の高度な機能をオンライン アプリケーションに統合することで業務を改善した事例について説明します。

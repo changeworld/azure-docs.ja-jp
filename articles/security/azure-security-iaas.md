@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 501364f24e61c29ac0d5909a7dff1df9e93fe6a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -52,7 +52,7 @@ PAW アプローチは、管理者に個別に割り当てられた管理者ア�
 
 アカウントを保護するための最も有益な手順の 1 つに、2 要素認証があります。 2 要素認証は、パスワードと他の要素を組み合わせて認証する方法です。 2 要素認証を使用すると、他のユーザーのパスワードを不正に入手したユーザーによるアクセスのリスクを軽減できます。
 
-多要素認証を実現する [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話、テキスト メッセージ、モバイル アプリによる通知など、簡単な検証方法を通じて確実な認証を行うことができます。 ユーザーは自分の好きな方法を選べます。
+多要素認証を実現する [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話、テキスト メッセージ、モバイル アプリによる通知など、簡単な検証方法を通じて確実な認証を行うことができます。 ユーザーは自分の好きな方法を選べます。
 
 Microsoft 認証モバイル アプリを使うと、Multi-Factor Authentication を最も簡単に利用できます。このアプリは、Windows、IOS、および Android を実行しているモバイル デバイスで使用できます。 Windows 10 の最新リリースと、Azure Active Directory と統合されたオンプレミスの Active Directory があれば、[Windows Hello for Business](../active-directory/active-directory-azureadjoin-passport-deployment.md) を使用して Azure リソースへのシームレスなシングル サインオンが可能です。 その場合は、Windows 10 デバイスが認証の 2 つ目の要素として使用されます。
 
@@ -118,7 +118,7 @@ Azure では、オンプレミスのネットワークから[サイト間 VPN](.
 >[!NOTE]
 >どちらの VPN オプションでも、インターネットから管理エンドポイントへのアクセスを禁止するように NSG の ACL を再構成できます。
 
-検討する価値のあるもう 1 つのオプションは、[リモート デスクトップ ゲートウェイ](../multi-factor-authentication/multi-factor-authentication-get-started-server-rdg.md)のデプロイメントです。 このデプロイメントを使用すると、リモート デスクトップ サーバーに HTTPS 経由で安全に接続し、きめ細かく接続を制御できます。
+検討する価値のあるもう 1 つのオプションは、[リモート デスクトップ ゲートウェイ](../active-directory/authentication/howto-mfaserver-nps-rdg.md)のデプロイメントです。 このデプロイメントを使用すると、リモート デスクトップ サーバーに HTTPS 経由で安全に接続し、きめ細かく接続を制御できます。
 
 利用できる機能には次のようなものがあります。
 
