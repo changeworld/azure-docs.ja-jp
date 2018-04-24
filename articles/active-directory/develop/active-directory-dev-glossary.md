@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 開発者向け用語集 | Microsoft Docs"
-description: "Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。"
+title: Azure Active Directory 開発者向け用語集 | Microsoft Docs
+description: Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.devlang: na
