@@ -43,6 +43,8 @@
       href: batch-apis-tools.md
     - name: クォータと制限
       href: batch-quota-limit.md
+    - name: サポートされる VM のサイズ
+      href: batch-pool-vm-sizes.md
 - name: ハウツー ガイド
   items:
     - name: Batch アカウントの管理
@@ -108,10 +110,13 @@
           href: batch-rendering-service.md
         - name: Batch と Data Factory を使用したデータ処理
           href: ../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json
-    - name: リソースの監視
+    - name: Batch ソリューションの監視
+      href: monitoring-overview.md
       items:
-        - name: 診断ログの記録
+        - name: メトリックと診断ログの使用
           href: batch-diagnostics.md
+        - name: Application Insights での監視
+          href: monitor-application-insights.md
         - name: 効率的なリスト クエリ
           href: batch-efficient-list-queries.md
     - name: 開発者ツールの使用

@@ -43,6 +43,8 @@
       href: container-instances-environment-variables.md
     - name: デプロイのトラブルシューティング
       href: container-instances-troubleshooting.md
+    - name: ACI 上の Jenkins ビルド エージェント
+      href: container-instances-jenkins.md
     - name: データ ボリュームの構成
       items:
         - name: Azure Files

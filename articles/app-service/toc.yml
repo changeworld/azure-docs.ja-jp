@@ -29,7 +29,7 @@
       href: app-service-web-get-started-html.md
 - name: チュートリアル
   items:
-    - name: 1 - アプリと DB
+    - name: アプリと DB
       items:
         - name: .NET Core と SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
@@ -43,15 +43,17 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python と PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 - RESTful API のホスト
+    - name: SQL DB への安全なアクセス
+      href: app-service-web-tutorial-connect-msi.md
+    - name: RESTful API のホスト
       href: app-service-web-tutorial-rest-api.md
-    - name: 2 - カスタム ドメインのマップ
+    - name: カスタム ドメインのマップ
       href: app-service-web-tutorial-custom-domain.md
-    - name: 3 - SSL 証明書のバインド
+    - name: SSL 証明書のバインド
       href: app-service-web-tutorial-custom-ssl.md
-    - name: 4 - CDN の追加
+    - name: CDN の追加
       href: app-service-web-tutorial-content-delivery-network.md
-    - name: 5 - ユーザーの認証
+    - name: ユーザーを認証する
       href: app-service-web-tutorial-auth-aad.md
 - name: サンプル
   items:
@@ -69,6 +71,8 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: OS 機能
       href: web-sites-available-operating-system-functionality.md
+    - name: 受信 IP と送信 IP
+      href: app-service-ip-addresses.md
     - name: 認証と権限承認
       href: app-service-authentication-overview.md
     - name: Hybrid Connections (ハイブリッド接続)
@@ -143,6 +147,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: 認証のカスタマイズ
           href: app-service-authentication-how-to.md
+        - name: IP の制限
+          href: app-service-ip-restrictions.md
         - name: 管理対象のサービス ID の使用
           href: app-service-managed-service-identity.md
         - name: アプリケーション コードでの SSL 証明書の使用

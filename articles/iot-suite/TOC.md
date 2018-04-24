@@ -33,7 +33,7 @@
 #### シミュレートされたデバイスの接続
 ##### [Windows 上の C](iot-suite-v1-connecting-devices.md)
 ##### [Linux 上の C](iot-suite-v1-connecting-devices-linux.md)
-##### [Node.JS](iot-suite-v1-connecting-devices-node.md)
+##### [Node.js](iot-suite-v1-connecting-devices-node.md)
 #### [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-v1-logic-apps-tutorial.md)
 #### [構成済みソリューションのカスタマイズ](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
 #### [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-v1-dynamic-telemetry.md)
@@ -48,6 +48,7 @@
 ### [予測的なメンテナンス ソリューションのチュートリアル](iot-suite-predictive-walkthrough.md)
 
 ## コネクテッド ファクトリ
+### [コネクテッド ファクトリとは](iot-suite-connected-factory-features.md)
 ### [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ### [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 

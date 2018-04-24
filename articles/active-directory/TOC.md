@@ -17,7 +17,7 @@
 ## [会社のブランドの構成](customize-branding.md)
 ## [Azure AD へのユーザーの追加](add-users-azure-active-directory.md)
 ## [ユーザーへのライセンスの割り当て](license-users-groups.md)
-## [セルフサービスによるパスワードのリセットの構成](active-directory-passwords-getting-started.md)
+## [セルフサービスによるパスワードのリセットの構成](authentication/quickstart-sspr.md)
 
 
 # 方法
@@ -63,6 +63,8 @@
 #### [動的グループと B2B ユーザー](active-directory-b2b-dynamic-groups.md)
 #### [監査とレポート](active-directory-b2b-auditing-and-reporting.md)
 #### [ハイブリッド組織向けの B2B](active-directory-b2b-hybrid-organizations.md)
+##### [B2B ユーザーにローカル アプリへのアクセスを付与する](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+##### [ローカル ユーザーにクラウド アプリへのアクセスを付与する](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 #### [B2B と Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 #### [B2B ライセンス](active-directory-b2b-licensing.md)
 #### [現時点での制限事項](active-directory-b2b-current-limitations.md)
@@ -119,6 +121,7 @@
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
+#### [監査アクティビティのリファレンス](active-directory-reporting-activity-audit-reference.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
 ### トラブルシューティング
@@ -141,7 +144,7 @@
 #### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 ### [SSPR のしくみ](authentication/concept-sspr-howitworks.md)
 ### [SSPR デプロイ ガイド](authentication/howto-sspr-deployment.md)
-### [SSPR と Windows 10](active-directory-passwords-login.md)
+### [SSPR と Windows 10](authentication/tutorial-sspr-windows.md)
 ### [SSPR のポリシー](authentication/concept-sspr-policy.md)
 ### [SSPR のカスタマイズ](authentication/concept-sspr-customization.md)
 ### [SSPR データ要件](authentication/howto-sspr-authenticationdata.md)
@@ -149,7 +152,7 @@
 ### IT 管理者: パスワードのリセット
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 ### [SSPR のライセンス](authentication/concept-sspr-licensing.md)
-### [パスワード ライトバック](active-directory-passwords-writeback.md)
+### [パスワード ライトバック](authentication/howto-sspr-writeback.md)
 ### [トラブルシューティング](authentication/active-directory-passwords-troubleshoot.md)
 ### [FAQ](authentication/active-directory-passwords-faq.md)
 
@@ -312,7 +315,7 @@
 #### [条件](active-directory-conditional-access-conditions.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
@@ -331,7 +334,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [概要](active-directory-certificate-based-authentication-get-started.md)
+#### [作業の開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

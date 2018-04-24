@@ -1,30 +1,28 @@
 # [Key Vault のドキュメント](index.md)
 
 # 概要
-## [Key Vault とは](key-vault-whatis.md)
-## [サービスの概要](https://azure.microsoft.com/services/key-vault/)
+## [Key Vault の概要](key-vault-overview.md)
 
-# 作業開始
+# クイック スタート
+## [キー コンテナーの作成 - CLI](quick-create-cli.md)
+## [キー コンテナーの作成 - PowerShell](quick-create-powershell.md)
+## [キー コンテナーの作成 - ポータル](quick-create-portal.md)
+
+# チュートリアル
+## [キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)
+# サンプル
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# 概念
 ## [Key Vault を使ってみる](key-vault-get-started.md)
 ## [キー ローテーションと監査を設定する](key-vault-key-rotation-log-monitoring.md)
 ## [Web アプリから Key Vault を使用する](key-vault-use-from-web-application.md)
+## [セキュリティ ワールド](key-vault-ovw-security-worlds.md)
+## [論理的な削除](key-vault-ovw-soft-delete.md)
+## [ストレージ アカウント キー](key-vault-ovw-storage-keys.md)
+## [調整](key-vault-ovw-throttling.md)
+## [Key Vault とは](key-vault-whatis.md)
 
-# 方法
-## 開発
-### [開発者クイック スタート ビデオ](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)
-### [Key Vault 開発者ガイド](key-vault-developers-guide.md)
-### [サービスの制限](key-vault-service-limits.md)
-### [HSM で保護されたキー](key-vault-hsm-protected-keys.md)
-### [.NET 2.0 への移行](key-vault-dotnet2api-release-notes.md)
-### [Web アプリ シークレットの保存](vs-secure-secret-appsettings.md)
-### [.NET を使用したサービス認証](service-to-service-authentication.md)
-
-### 概要
-#### [セキュリティ ワールド](key-vault-ovw-security-worlds.md)
-#### [論理的な削除](key-vault-ovw-soft-delete.md)
-#### [ストレージ アカウント キー](key-vault-ovw-storage-keys.md)
-#### [調整](key-vault-ovw-throttling.md)
-
+# ハウツー ガイド
 ## [管理]
 ### [Azure Key Vault のログ記録](key-vault-logging.md)
 ### [ファイアウォールの内側にアクセスする](key-vault-access-behind-firewall.md)
@@ -40,7 +38,6 @@
 ### [Azure Automation](automation-manage-key-vault.md)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
 ## [Azure PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
@@ -49,18 +46,21 @@
 ### [コンテナーの管理](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 ### [コンテナーの内容の管理](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
 ## [REST](/rest/api/keyvault)
-
-# 関連項目
-## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
-## [Azure Rights Management](https://technet.microsoft.com/en-US/dn175750)
-## [Key Vault を使用した拡張キー管理](https://msdn.microsoft.com/en-us/library/azure/dn198405)
-## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+## 開発
+### [開発者クイック スタート ビデオ](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)
+### [Key Vault 開発者ガイド](key-vault-developers-guide.md)
+### [サービスの制限](key-vault-service-limits.md)
+### [HSM で保護されたキー](key-vault-hsm-protected-keys.md)
+### [.NET 2.0 への移行](key-vault-dotnet2api-release-notes.md)
+### [Web アプリ シークレットの保存](vs-secure-secret-appsettings.md)
+### [.NET を使用したサービス認証](service-to-service-authentication.md)
 
 # リソース
+## [サービスの概要](https://azure.microsoft.com/services/key-vault/)
 ## [キー、シークレット、証明書について](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ブログ](http://blogs.technet.com/b/kv/)
 ## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)
-## [フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
+## [フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [料金](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

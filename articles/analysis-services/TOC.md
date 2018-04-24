@@ -31,6 +31,7 @@
 ### [サーバー管理者の管理](analysis-services-server-admins.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
 ### [診断ログのセットアップ](analysis-services-logging.md)
+### [VNET 上のデータソースにゲートウェイを使用する](analysis-services-vnet-gateway.md)
 ## 接続
 ### [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ### [Excel を使用した接続](analysis-services-connect-excel.md)
