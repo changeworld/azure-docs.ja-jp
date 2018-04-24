@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.openlocfilehash: 8c20178e539aeccd9a1d9c41206fc4823fe6f128
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション
 

@@ -9,10 +9,10 @@ ms.date: 03/19/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: c1e57ea28f597293d8bb52207bbbb76892b1d5f5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/24/2018
 ---
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
