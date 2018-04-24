@@ -191,7 +191,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
         New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. 資格情報プロンプトに必要な情報を入力して、 **[OK]**をクリックします。 次の出力が返されます。
+2. 資格情報プロンプトに必要な情報を入力して、 **[OK]** をクリックします。 次の出力が返されます。
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded

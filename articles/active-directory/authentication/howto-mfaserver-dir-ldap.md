@@ -37,7 +37,7 @@ LDAP 認証を構成するには、Azure Multi-Factor Authentication Server を 
 
 3. Azure Multi-Factor Authentication LDAP サービスを、LDAP 要求をリッスンする標準ポート以外のポートにバインドする必要がある場合は、[クライアント] タブで TCP ポートと SSL ポートを変更します。
 4. クライアントから Azure Multi-Factor Authentication Server に対して LDAPS を使用する場合は、MFA サーバーと同じサーバー上に SSL 証明書をインストールする必要があります。 [SSL 証明書] ボックスの隣にある **[参照]** をクリックし、セキュリティで保護された接続で使用する証明書を選択します。
-5. **[追加]**をクリックします。
+5. **[追加]** をクリックします。
 6. [LDAP クライアントの追加] ダイアログ ボックスで、Server に対して認証するアプライアンス、サーバー、またはアプリケーションの IP アドレスを入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 7. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、**[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。 この機能の追加情報については、MFA サーバーのヘルプ ファイルを参照してください。
 

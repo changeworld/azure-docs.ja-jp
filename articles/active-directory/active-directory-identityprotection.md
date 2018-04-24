@@ -268,7 +268,7 @@ Azure Active Directory Identity Protection には、ユーザーのリスク イ
 
 ![アクション](./media/active-directory-identityprotection/2222.png "Actions")
 
-**[Dismiss all events (すべてのイベントを閉じる)]**をクリックすると、すべてのイベントが閉じられ、影響を受けるユーザーは危険な状態ではなくなります。
+**[Dismiss all events (すべてのイベントを閉じる)]** をクリックすると、すべてのイベントが閉じられ、影響を受けるユーザーは危険な状態ではなくなります。
 
 ### <a name="remediating-user-risk-events"></a>ユーザー リスク イベントの修復
 
@@ -299,7 +299,7 @@ Azure Active Directory Identity Protection には、ユーザーのリスク イ
 2. ユーザーの一覧から、少なくとも 1 つのリスク イベントを持つユーザーを選択します。
 
     ![パスワードの手動リセット](./media/active-directory-identityprotection/1007.png "Manual password reset")
-3. ユーザーのブレードで、 **[パスワードのリセット]**をクリックします。
+3. ユーザーのブレードで、 **[パスワードのリセット]** をクリックします。
 
     ![パスワードの手動リセット](./media/active-directory-identityprotection/1008.png "Manual password reset")
 

@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](..
 
 ## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>サインアップ ポリシーを変更して Multi-factor Authentication を有効にする
 1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. **[サインアップ ポリシー]**をクリックします。
+2. **[サインアップ ポリシー]** をクリックします。
 3. クリックしてサインアップ ポリシーを開きます (例: "B2C_1_SiUp")。
 4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。 Click **OK**.
 5. ブレードの上部にある **[保存]** をクリックします。
@@ -43,7 +43,7 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 ## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>サインイン ポリシーを変更して Multi-factor Authentication を有効にする
 1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. **[サインイン ポリシー]**をクリックします。
+2. **[サインイン ポリシー]** をクリックします。
 3. クリックしてサインイン ポリシーを開きます (例: "B2C_1_SiIn")。 ブレードの上部にある **[編集]** をクリックします。
 4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。 Click **OK**.
 5. ブレードの上部にある **[保存]** をクリックします。

@@ -38,7 +38,7 @@ Azure SQL Database の多要素認証の概要については、「[SQL Database
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. ゲスト ユーザーとして接続している場合は、**[オプション]** をクリックし、**[接続プロパティ]** ダイアログ ボックスで **[AD ドメイン名またはテナント ID]** ボックスに入力します。 詳細については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
-4. SQL Database と SQL Data Warehouse では通常どおり、**[オプション]** をクリックし、**[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)]()」(sql-database-ssms-mfa-authentication.md) を参照してください。 次いで **[接続]**をクリックします。  
+4. SQL Database と SQL Data Warehouse では通常どおり、**[オプション]** をクリックし、**[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)]()」(sql-database-ssms-mfa-authentication.md) を参照してください。 次いで **[接続]** をクリックします。  
 5. **[アカウントにサインイン]** ダイアログ ボックスが開いたら、Azure Active Directory ID のアカウントとパスワードを入力します。 ユーザーが Azure AD とフェデレーションされているドメインに属している場合、パスワードは不要です。  
    ![2mfa-sign-in][2]  
 

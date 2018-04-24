@@ -52,7 +52,7 @@ ms.lasthandoff: 04/23/2018
 次のいずれかの方法を使用してサンプルをダウンロードします。
 
 1. [search-node-indexer-demo](https://github.com/Azure-Samples/search-node-indexer-demo) に移動します。
-2. **[Download ZIP]**をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
+2. **[Download ZIP]** をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
 

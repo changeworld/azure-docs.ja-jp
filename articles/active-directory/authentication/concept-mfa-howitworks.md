@@ -15,11 +15,11 @@ ms.date: 06/20/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: ec77d90b4544916242d572ef4f250752ac21f2d1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3df8d4af21fe37a44983da1aae330785b62323db
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-azure-multi-factor-authentication-works"></a>Azure Multi-Factor Authentication のしくみ
 2 段階認証のセキュリティは、レイヤー アプローチによってもたらされます。 攻撃者にとって、多要素認証を侵害することはかなり困難です。 攻撃者にユーザーのパスワードを知られても、信頼できるデバイスを手に入れなければ役に立ちません。 
@@ -48,4 +48,4 @@ Azure Multi-Factor Authentication では、クラウドとサーバーの両方�
 
 - Azure MFA を[クラウドとオンプレミス](concept-mfa-whichversion.md)のどちらにデプロイするかを選択します。
 
-- [よく寄せられる質問](../../multi-factor-authentication/multi-factor-authentication-faq.md)の回答を確認します。
+- [よく寄せられる質問](multi-factor-authentication-faq.md)の回答を確認します。

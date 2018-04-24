@@ -263,7 +263,7 @@ Azure Table Storage は、大量の構造化データを格納します。 こ�
 
    ![Azure のストレージ アカウントの作成](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744166.png)
 
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
 新しいストレージ アカウントがソリューション エクスプローラーの **[Storage]** ボックスの一覧に表示されます。
 

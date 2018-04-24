@@ -490,7 +490,7 @@ WebJobs SDK ダッシュボードで特定の関数呼び出しのページに�
 
 ![関数の呼び出しページのログ](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、 **[Toggle Output (出力切り替え)]**を選択すると、WebJobs SDK ダッシュボードでコンソール出力の最新 100 件が表示されます。
+Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、 **[Toggle Output (出力切り替え)]** を選択すると、WebJobs SDK ダッシュボードでコンソール出力の最新 100 件が表示されます。
 
 ![TextWriter](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
