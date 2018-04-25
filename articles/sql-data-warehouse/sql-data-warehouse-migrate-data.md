@@ -1,25 +1,20 @@
 ---
-title: "SQL Data Warehouse へのデータの移行 | Microsoft Docs"
-description: "ソリューション開発のための Azure SQL Data Warehouse へのデータの移行に関するヒント"
+title: SQL Data Warehouse へのデータの移行 | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse へのデータの移行に関するヒント
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 06/29/2017
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: 3839f02d8e083ed384f0d01fccee6ad951477f3b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-your-data"></a>データの移行
 さまざまなソースのデータを、さまざまなツールを使って SQL Data Warehouse に移動することができます。  この目的を果たすうえで、ADF コピー、SSIS、bcp はすべて使用できます。 ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。 これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。
@@ -106,7 +101,7 @@ PolyBase では、固定行ターミネータとして \n または改行を使�
 
 PolyBase で外部テーブルの一部として、ファイル内のすべての列を定義する必要があります。 エクスポートされたすべての列が必要であり、型が必須の標準に準拠していることを確認します。
 
-サポートされるデータ型の詳細については、前述の「スキーマの移行」に関する記事を参照してください。
+サポートされるデータ型の詳細については、前述の「[スキーマの移行]」に関する記事を参照してください。
 
 ### <a name="location-of-data-files"></a>データ ファイルの場所
 SQL Data Warehouse は、PolyBase を使用して Azure BLOB ストレージのみからデータをロードします。 このため、データは最初に BLOB ストレージに転送されている必要があります。
@@ -178,7 +173,7 @@ PolyBase では、「再帰的なフォルダー トラバーサル」と呼ば�
 
 PolyBase を使用したデータ ロードについて詳しくは、「[PolyBase を使用したデータのロード][Use PolyBase to load data into SQL Data Warehouse]」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 移行について詳しくは、「[SQL Data Warehouse へのソリューションの移行][Migrate your solution to SQL Data Warehouse]」をご覧ください。
 開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
 
@@ -190,10 +185,11 @@ PolyBase を使用したデータ ロードについて詳しくは、「[PolyBa
 [ADF samples]: ../data-factory/v1/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
+[スキーマの移行]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 
 <!--MSDN references-->

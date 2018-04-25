@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -129,8 +129,8 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 - 仮想ネットワーク規則は[従来のデプロイメント モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントをオンにすると、MySQL および PostGres Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントをオンにすると、エンドポイントから MySQL または Postgres のインスタンスへの接続の試行は失敗します。
-    - 根本的な理由は、MySQL と Postgres が現在は ACL 処理をサポートしていないためです。
+- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL のインスタンスへの接続の試行は失敗します。
+    - 根本的な理由は、MySQL と PostgreSQL が現在は ACL 処理をサポートしていないためです。
 
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
@@ -226,6 +226,10 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 このセクションでは、[Azure Portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database に*仮想ネットワーク規則*を作成する方法を説明します。 規則では、*Virtual Network サービス エンドポイント*としてタグ付けされた特定のサブネットからの通信を許可するように、お使いの SQL Database に指示します。
 
+> [!NOTE]
+> サーバーの VNET ファイアウォール ルールに追加する VNET/サブネット用のサービス エンドポイントが有効になっていることを確認してください。
+> VNET/サブネットに対するサービス エンドポイントが有効になっていない場合は、ポータルで有効にすることを求められます。ルールを追加するブレードで [有効] をクリックします。
+
 #### <a name="powershell-alternative"></a>PowerShell による代替
 
 PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzureRmSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の Virtual Network サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
@@ -315,7 +319,7 @@ Azure SQL Database の仮想ネットワーク ルール機能は、2017 年 9 �
 
 [expressroute-indexmd-744v]: ../expressroute/index.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 

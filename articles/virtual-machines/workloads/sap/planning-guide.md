@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c164406b3b988b5848f662d544ffa78bd6955d0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/05/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -479,7 +479,7 @@ SAP システムを Azure に正常にデプロイするには、オンプレミ
 ## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure Virtual Machine Services
 Microsoft Azure Platform は、Microsoft データ センターでホストおよび運営される、インターネット規模のクラウド サービス プラットフォームです。 このプラットフォームには、Microsoft Azure Virtual Machine Services (IaaS :Infrastructure as a Service) と、一連のリッチな PaaS (Platform as a Service ) 機能が含まれています。
 
-Azure プラットフォームを使用することで、お客様はテクノロジとインフラストラクチャの初期費用を軽減できます。 Azure プラットフォームでは、Web アプリケーションと接続型アプリケーションをホスト、拡張、および管理するためのコンピューティング リソースとストレージ をオンデマンドで利用できるので、アプリケーションの保守と運用を簡素化できます。 また、インフラストラクチャの管理も自動化できます。プラットフォームは高可用性に配慮して設計されており、使用ニーズに応じて動的にスケーリングできるよう、従量課金型のオプションも提供されています。
+Azure プラットフォームを使用することで、お客様はテクノロジとインフラストラクチャの初期費用を軽減できます。 Azure プラットフォームでは、Web アプリケーションと接続型アプリケーションをホスト、拡張、および管理するためのコンピューティング リソースとストレージ をオンデマンドで利用できるので、アプリケーションの保守と運用を簡素化できます。 また、インフラストラクチャの管理も自動化できます。プラットフォームは高可用性に配慮して設計されており、使用ニーズに応じて動的にスケーリングできるよう、従量課金制価格モデルのオプションも提供されています。
 
 ![Positioning of Microsoft Azure Virtual Machine Services (Microsoft Azure Virtual Machine Services の配置)][planning-guide-figure-400]
 
@@ -966,7 +966,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 
 **Powershell**
 
-* *Login-AzureRmAccount* を使用してサブスクリプションにログインする
+* *Connect-AzureRmAccount* を使用してサブスクリプションにログインする
 * *Set-AzureRmContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext> を参照
 * *Add-AzureRmVhd* を使用して VHD を Microsoft Azure Storage アカウントにアップロードする - <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd> を参照
 * (省略可能) *New-AzureRMDisk* を使用して VHD から管理ディスクを作成 - <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk> を参照
@@ -993,7 +993,7 @@ Azure Portal では、VM イメージとディスクを Azure にアップロー
 オンプレミス ネットワークから既存の VM または VHD をアップロードし、それを Azure VM イメージとして使用するには、それらの VM や VHD が、このドキュメントの「[SAP 用の顧客固有のイメージを使用する VM のデプロイの準備][planning-guide-5.2.2]」の章に記載されている要件を満たしている必要があります。
 
 * Windows で *sysprep* または Linux で *waagent -deprovision* を使用して VM を汎用化 - Windows の場合:「[Sysprep テクニカル リファレンス](https://technet.microsoft.com/library/cc766049.aspx)」、Linux の場合:「[Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法][capture-image-linux-step-2-create-vm-image]」を参照
-* *Login-AzureRmAccount* を使用してサブスクリプションにログインする
+* *Connect-AzureRmAccount* を使用してサブスクリプションにログインする
 * *Set-AzureRmContext* および SubscriptionId または SubscriptionName パラメーターを使用してコンテキストのサブスクリプションを設定する - <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext> を参照
 * *Add-AzureRmVhd* を使用して VHD を Microsoft Azure Storage アカウントにアップロードする - <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd> を参照
 * (省略可能) *New-AzureRmImage* を使用して VHD から管理ディスクを作成する - <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage> を参照
