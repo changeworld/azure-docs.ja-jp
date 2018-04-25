@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 804bc3f3708a6b5e70c91d68f954ebc10c477831
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bf88e4c702321a7810ec6a3e50eb6cd47a788734
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -41,16 +41,17 @@ Service Fabric のランタイムと SDK を Windows Subsystem for Linux にイ�
 
     * Ubuntu 16.04 (`Xenial Xerus`)
 
-* `apt-transport-https` パッケージがインストールされていることを確認してください。
-
-      ```bash
-      sudo apt-get install apt-transport-https
-      ```
+      * `apt-transport-https` パッケージがインストールされていることを確認してください。
+         
+         ```bash
+         sudo apt-get install apt-transport-https
+         ```
+    * Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
 
 
 ## <a name="installation-methods"></a>インストール方法
 
-### <a name="1-script-installation"></a>1.インストール スクリプト
+### <a name="1-script-installation-ubuntu"></a>1.インストール スクリプト (Ubuntu)
 
 Service Fabric ランタイムと共通 SDK を **sfctl** CLI と共にインストールする場合に備えスクリプトが用意されています。 次のセクションの手動のインストール手順を実行して、何がインストールされているかと、同意しているライセンスを特定します。 スクリプトの実行では、インストールされているすべてのソフトウェアのライセンスに同意することを前提としています。 
 
@@ -63,8 +64,10 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 ### <a name="2-manual-installation"></a>2.手動インストール
 Service Fabric ランタイムと共通 SDK の手動インストールの場合、このガイドの残りの説明に従います。
 
-## <a name="update-your-apt-sources"></a>APT ソースを更新する
+## <a name="update-your-apt-sourcesyum-repositories"></a>APT ソース/Yum リポジトリを更新する
 コマンド ライン ツール apt-get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず APT (Advanced Packaging Tool) ソースを更新する必要があります。
+
+### <a name="ubuntu"></a>Ubuntu
 
 1. ターミナルを開きます。
 2. ソース リストに Service Fabric リポジトリを追加します。
@@ -105,9 +108,46 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
     sudo apt-get update
     ```
 
+
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
+
+1. ターミナルを開きます。
+2. Extra Packages for Enterprise Linux (EPEL) をダウンロードしてインストールします。
+
+    ```bash
+    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo yum install epel-release-latest-7.noarch.rpm
+    ```
+3. EfficiOS RHEL7 パッケージ リポジトリをシステムに追加します。
+
+    ```bash
+    sudo wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
+    ```
+
+4. efficios パッケージの署名キーをローカル GPG キーリングにインポートします。
+
+    ```bash
+    sudo rpmkeys --import https://packages.efficios.com/rhel/repo.key
+    ```
+
+5. Microsoft RHEL リポジトリをシステムに追加します。
+
+    ```bash
+    curl https://packages.microsoft.com/config/rhel/7.4/prod.repo > ./microsoft-prod.repo
+    sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
+    ```
+
+6. dotnet sdk をインストールします。
+
+    ```bash
+    yum install rh-dotnet20 -y
+    ```
+
 ## <a name="install-and-set-up-the-service-fabric-sdk-for-local-cluster-setup"></a>ローカル クラスターのセットアップに使用する Service Fabric SDK をインストールしてセットアップする
 
 ソースを更新したら、SDK をインストールできます。 Service Fabric SDK パッケージをインストールします。インストールを確認して、ライセンス契約に同意してください。
+
+### <a name="ubuntu"></a>Ubuntu
 
 ```bash
 sudo apt-get install servicefabricsdkcommon
@@ -120,11 +160,18 @@ sudo apt-get install servicefabricsdkcommon
 >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
+
+```bash
+sudo yum install servicefabricsdkcommon
+```
+
 前出のインストールに付属する Service Fabric ランタイムには、次の表に示したパッケージが含まれています。 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
 Ubuntu | 2.0.0 | OpenJDK 1.8 | npm から暗黙的に | latest |
+RHEL | - | OpenJDK 1.8 | npm から暗黙的に | latest |
 
 ## <a name="set-up-a-local-cluster"></a>ローカル クラスターをセットアップする
   インストールが完了したら、ローカル クラスターを起動できます。
@@ -135,7 +182,7 @@ Ubuntu | 2.0.0 | OpenJDK 1.8 | npm から暗黙的に | latest |
       sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
       ```
 
-  2. Web ブラウザーを開いて､[Service Fabric Explorer](http://localhost:19080/Explorer) に移動します。 クラスターが起動されている場合は、Service Fabric Explorer ダッシュボードが表示されます。
+  2. Web ブラウザーを開いて､[Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動されている場合は、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
 
       ![Service Fabric Explorer on Linux][sfx-linux]
 
@@ -167,6 +214,11 @@ Ubuntu
   sudo apt install nodejs-legacy
   ```
 
+Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
+  ```bash
+  sudo yum install nodejs
+  sudo yum install npm
+  ```
 2. NPM からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
   ```bash
@@ -189,27 +241,36 @@ Ubuntu
 
 Java を使用して Service Fabric サービスをビルドするには、JDK 1.8 および Gradle をインストールしてビルド タスクを実行します。 次のスニペットで Open JDK 1.8 と Gradle をインストールしてください。 Service Fabric Java ライブラリが Maven から取り込まれます。
 
+
+Ubuntu 
  ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```
 
+Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
+  ```bash
+  sudo yum install java-1.8.0-openjdk-devel
+  curl -s https://get.sdkman.io | bash
+  sdk install gradle
+  ```
+ 
 ## <a name="install-the-eclipse-plug-in-optional"></a>Eclipse プラグインをインストールする (省略可能)
 
-Eclipse IDE for Java Developers 内から Service Fabric 用 Eclipse プラグインをインストールできます。 Eclipse を使用すると、Service Fabric Java アプリケーションのほかに、Service Fabric ゲスト実行可能アプリケーションと Service Fabric コンテナー アプリケーションを作成できます。
+Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内から Service Fabric 用 Eclipse プラグインをインストールできます。 Eclipse を使用すると、Service Fabric Java アプリケーションのほかに、Service Fabric ゲスト実行可能アプリケーションと Service Fabric コンテナー アプリケーションを作成できます。
 
 > [!IMPORTANT]
 > Service Fabric プラグインには、Eclipse Neon またはそれ以降のバージョンが必要です。 Eclipse のバージョンを確認する方法については、この注の後の手順を参照してください。 以前のバージョンの Eclipse がインストールされている場合は、より新しいバージョンを [Eclipse サイト](https://www.eclipse.org)からダウンロードすることができます。 Eclipse の既存のインストールの上にインストールする (上書きする) ことはお勧めしません。 インストーラーを実行する前に削除するか、新しいバージョンを別のディレクトリにインストールすることができます。 
 > 
-> Ubuntu では、パッケージ インストーラー (`apt` または `apt-get`) を使用するのではなく、Eclipse サイトから直接インストールすることをお勧めします。 そうすることで、Eclipse の最新バージョンを確実に入手することができます。 
+> Ubuntu では、パッケージ インストーラー (`apt` または `apt-get`) を使用するのではなく、Eclipse サイトから直接インストールすることをお勧めします。 そうすることで、Eclipse の最新バージョンを確実に入手することができます。 Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers をインストールできます。
 
-1. Eclipse で、Eclipse Neon 以降を入手していることと、最新の Buildship バージョン (1.0.17 以降) がインストールされていることを確認します。 **[Help]\(ヘルプ\)** > **[Installation Details]\(インストールの詳細\)** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。 Buildship は、「[Eclipse Buildship: Eclipse Plug-ins for Gradle (Eclipse Buildship: Gradle 用の Eclipse プラグイン)][buildship-update]」の手順に従って更新できます。
+1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[Help]\(ヘルプ\)** > **[About Eclipse]\(Eclipse について\)** > **[Installation Details]\(インストールの詳細\)** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。 Buildship は、「[Eclipse Buildship: Eclipse Plug-ins for Gradle (Eclipse Buildship: Gradle 用の Eclipse プラグイン)][buildship-update]」の手順に従って更新できます。
 
 2. **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
 3. **[Work with]\(作業対象\)** ボックスに「**http://dl.microsoft.com/eclipse**」と入力します。
 
-4. **[追加]**をクリックします。
+4. **[追加]** をクリックします。
 
     ![[Available Software]\(利用可能なソフトウェア\) ページ][sf-eclipse-plugin]
 
@@ -217,7 +278,7 @@ Eclipse IDE for Java Developers 内から Service Fabric 用 Eclipse プラグ�
 
 6. インストール手順を完了し、使用許諾契約書に同意します。
 
-Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 **[Help]\(ヘルプ\)** > **[Installation Details]\(インストールの詳細\)** を選択し、インストールされているプラグインの一覧で Service Fabric を探すことで確認できます。より新しいバージョンが使用できる場合は **[Update]\(更新\)** を選択します。
+Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 **[Help]\(ヘルプ\)** > **[About Eclipse]\(Eclipse について\)** > **[Installation Details]\(インストールの詳細\)** を選択し、インストールされているプラグインの一覧で Service Fabric を探すことで確認できます。より新しいバージョンが使用できる場合は **[Update]\(更新\)** を選択します。
 
 詳細については、「[Eclipse Java アプリケーション開発用の Service Fabric プラグイン](service-fabric-get-started-eclipse.md)」を参照してください。
 
@@ -237,11 +298,22 @@ Maven からの Java SDK バイナリを更新するには、``build.gradle`` �
 ## <a name="remove-the-sdk"></a>SDK を削除する
 Service Fabric SDK を削除するには、次の手順を実行します。
 
+### <a name="ubuntu"></a>Ubuntu
+
 ```bash
 sudo apt-get remove servicefabric servicefabicsdkcommon
 sudo npm uninstall generator-azuresfcontainer
 sudo npm uninstall generator-azuresfguest
 sudo apt-get install -f
+```
+
+
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
+
+```bash
+sudo yum remote servicefabric servicefabicsdkcommon
+sudo npm uninstall generator-azuresfcontainer
+sudo npm uninstall generator-azuresfguest
 ```
 
 ## <a name="next-steps"></a>次の手順

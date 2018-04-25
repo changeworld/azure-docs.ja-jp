@@ -11,14 +11,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2fb966d92dec713d5bf5ca48e8d15ae489227739
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c0db53a8eadefe661837ab0dbc84fd2eb4bf6057
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>チュートリアル: Azure App Service での .NET Core および SQL Database の Web アプリの作成
 
@@ -46,8 +46,8 @@ ms.lasthandoff: 04/06/2018
 
 このチュートリアルを完了するには、以下が必要です。
 
-1. [Git をインストールする](https://git-scm.com/)
-1. [.NET Core SDK 1.1.2 をインストールする](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.2-download.md)
+* [Git をインストールする](https://git-scm.com/)
+* [.NET Core をインストールする](https://www.microsoft.com/net/core/)
 
 ## <a name="create-local-net-core-app"></a>ローカル .NET Core アプリを作成する
 
@@ -146,7 +146,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 次の文字列を前に使用した "*\<server_name>*"、"*\<db_username>*"、"*\<db_password>*" で置換します。
 
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persist Security Info=False;User ID=<db_username>;Password=<db_password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
 ```
 
 これは .NET Core アプリの接続文字列です。 後で使用するためコピーします。
@@ -201,7 +201,7 @@ if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
             options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
 else
     services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlite("Data Source=MvcMovie.db"));
+            options.UseSqlite("Data Source=localdatabase.db"));
 
 // Automatically perform database migration
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
@@ -214,7 +214,8 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 変更を保存し、それを Git リポジトリにコミットします。 
 
 ```bash
-git commit -am "connect to SQLDB in Azure"
+git add .
+git commit -m "connect to SQLDB in Azure"
 ```
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
@@ -293,7 +294,7 @@ dotnet ef database update
 
 _Controllers\TodosController.cs_ を開きます。
 
-`Create()` メソッドを探し、`Bind` 属性内のプロパティの一覧に `Done` を追加します。 完了すると、`Create()` メソッドのシグネチャは次のコードのようになります。
+`Create([Bind("ID,Description,CreatedDate")] Todo todo)` メソッドを探し、`Bind` 属性内のプロパティの一覧に `Done` を追加します。 完了すると、`Create()` メソッドのシグネチャは次のコードのようになります。
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -346,7 +347,8 @@ dotnet run
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
 ```bash
-git commit -am "added done field"
+git add .
+git commit -m "added done field"
 git push azure master
 ```
 

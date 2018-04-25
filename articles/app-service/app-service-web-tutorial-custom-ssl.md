@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
 
@@ -93,7 +93,7 @@ Web アプリが **Free** レベルまたは **Shared** レベルに含まれて
 
 **Basic**、**Standard**、**Premium** のいずれかのレベルを選択します。
 
-**[選択]**をクリックします。
+**[選択]** をクリックします。
 
 ![価格レベルの選択](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 
@@ -149,17 +149,17 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 ### <a name="upload-your-ssl-certificate"></a>SSL 証明書のアップロード
 
-SSL 証明書をアップロードするには、Web アプリの左側のナビゲーションで **[SSL 証明書]** をクリックします。
+SSL 証明書をアップロードするには、Web アプリの左側のナビゲーションで **[SSL 設定]** をクリックします。
 
 **[証明書のアップロード]** をクリックします。 
 
 **[PFX 証明書ファイル]** で、PFX ファイルを選択します。 **[証明書のパスワード]** で、PFX ファイルのエクスポート時に作成したパスワードを入力します。
 
-**[アップロード]**をクリックします。
+**[アップロード]** をクリックします。
 
 ![証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-App Service による証明書のアップロードが完了すると、**[SSL 証明書]** ページにアップロードした証明書が表示されます。
+App Service による証明書のアップロードが完了すると、**[SSL 設定]** ページにアップロードした証明書が表示されます。
 
 ![アップロードされた証明書](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
@@ -216,7 +216,7 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 
 既定では、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
 
-Web アプリ ページで、左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
+Web アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
 
 ![HTTPS の適用](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -225,6 +225,16 @@ Web アプリ ページで、左側のナビゲーションにある **[カス�
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
+
+## <a name="enforce-tls-1112"></a>TLS 1.1/1.2 の適用
+
+アプリでは既定で [TLS 1.0](https://wikipedia.org/wiki/Transport_Layer_Security) が有効です。これは、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準によって安全であると見なされなくなっています。 より上位の TLS バージョンを適用するには、次の手順に従います。
+
+Web アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 次に、**[TLS version]\(TLS バージョン\)** で、必要な最低限の TLS バージョンを選択します。
+
+![HTTPS の適用](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+
+操作が完了すると、アプリは下位の TLS バージョンでの接続をすべて拒否します。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 

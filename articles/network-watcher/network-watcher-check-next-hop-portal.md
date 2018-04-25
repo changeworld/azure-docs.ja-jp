@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher Next Hop を使用して次ホップを検索する - Azure Portal | Microsoft Docs"
-description: "この記事では、Azure Portal で Next Hop を使用して、次ホップの種類と IP アドレスを確認する方法について説明します。"
+title: Azure Network Watcher Next Hop を使用して次ホップを検索する - Azure Portal | Microsoft Docs
+description: この記事では、Azure Portal で Next Hop を使用して、次ホップの種類と IP アドレスを確認する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 7b459dcf-4077-424e-a774-f7bfa34c5975
 ms.service: network-watcher
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 445ec8c7eeb8dd715d3778b44372d16666da7fb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-the-portal"></a>ポータルで Azure Network Watcher の Next Hop 機能を使用して次ホップの種類を確認する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-check-next-hop-portal.md)
+> - [Azure Portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
@@ -33,11 +33,11 @@ Next Hop は Network Watcher の機能の 1 つであり、指定された仮想
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを使用することも前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。 また、有効な仮想マシンがあるリソース グループを使用することも前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
-この記事で説明するシナリオでは、Next Hop を使用して、リソースの次ホップの種類と IP アドレスを確認します。 Next Hop の詳細については、[Next Hop の概要](network-watcher-next-hop-overview.md)に関する記事をご覧ください。
+この記事で説明するシナリオでは、Next Hop を使用して、リソースの次ホップの種類と IP アドレスを確認します。 Next Hop の詳細については、[Next Hop の概要](network-watcher-next-hop-overview.md)に関するページをご覧ください。
 
 このシナリオでは次のことを行います。
 
@@ -76,7 +76,7 @@ Azure Portal で Network Watcher リソースに移動します。
 
 ![次ホップの結果の取得][2]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Network Watcher での NSG 監査](network-watcher-nsg-auditing-powershell.md)に関する記事を参照して、ネットワーク セキュリティ グループの設定をプログラムで確認する方法を見る
 

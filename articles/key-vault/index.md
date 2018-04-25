@@ -1,11 +1,11 @@
 ---
-title: "Azure Key Vault のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+title: Azure Key Vault のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
 services: key-vault
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: key-vault
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: 86ac748d1c4a253b26cab426a72eb9f29545d86a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="key-vault-documentation"></a>Key Vault のドキュメント
 

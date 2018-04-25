@@ -1,23 +1,28 @@
 ---
-title: SQL Server DB を Azure SQL Database に移行する | Microsoft Docs
-description: SQL Server データベースを Azure SQL Database に移行する方法について説明します。
+title: DMS を使用して SQL Server DB を Azure SQL Database に移行する | Microsoft Docs
+description: DMS を使用して SQL Server データベースを Azure SQL Database に移行する方法について説明します。
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: c4b4354cb1090b9abc388da9d1d1b135f135144d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e9949fe0c292a366fa55e3f16d14d885606f6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server データベースを Azure SQL Database に移行する
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>DMS を使用して SQL Server データベースを Azure SQL Database に移行する
 
-SQL Server データベースから Azure SQL Database への移行は、Azure に空の SQL データベースを作成して、[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) を使って Azure にデータベースをインポートする場合と同じくらい簡単です。 このチュートリアルで学習する内容は次のとおりです。
+SQL Server データベースから Azure SQL Database の単一データベースへの移行は、Azure に空の SQL データベースを作成して、[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) を使って Azure にデータベースをインポートする場合と同じくらい簡単です。 追加の移行オプションについては、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> Azure SQL Database マネージ インスタンスに移行するには、[SQL Server からマネージ インスタンスへの移行](sql-database-managed-instance-migrate.md)に関するページを参照してください
+
+このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure ポータルで空の Azure SQL データベースを作成する (新規または既存の Azure SQL Database サーバーを使用)
@@ -71,7 +76,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
    ![データベース サーバーの作成](./media/sql-database-design-first-database/create-database-server.png)
 
-5. **[選択]**をクリックします。
+5. **[選択]** をクリックします。
 
 6. **[価格レベル]** をクリックして、サービス レベル、DTU 数、ストレージの容量を指定します。 DTU 数とストレージに関して、サービス レベルごとに利用できるオプションを調べます。 
 
@@ -196,7 +201,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
      ![新規データ移行の評価とオブジェクトの選択](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-assessment-results.png)
 
 9. **[SQL スクリプトの生成]** をクリックして、ソース データベースのスキーマ オブジェクトをスクリプト化します。 
-10. 生成されたスクリプトを確認し、**[Next issue\(次の問題)\]**をクリックし、必要に応じて、特定された評価の問題と推奨事項を確認します。 たとえば、フルテキスト検索の場合、アップグレード時の推奨事項は、フルテキストの機能を利用しているアプリケーションをテストすることです。 必要に応じて、スクリプトを保存またはコピーできます。
+10. 生成されたスクリプトを確認し、**[Next issue\(次の問題)\]** をクリックし、必要に応じて、特定された評価の問題と推奨事項を確認します。 たとえば、フルテキスト検索の場合、アップグレード時の推奨事項は、フルテキストの機能を利用しているアプリケーションをテストすることです。 必要に応じて、スクリプトを保存またはコピーできます。
 
      ![新規データ移行の生成されたスクリプト](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-generated-script.png)
 
@@ -235,7 +240,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
    ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. **[接続]**をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
 5. オブジェクト エクスプローラーで、**Databases** フォルダー、**mySampleDatabase** フォルダーの順に展開して、サンプル データベース内のオブジェクトを表示します。
 

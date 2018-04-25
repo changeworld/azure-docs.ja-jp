@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher Next Hop を使用して次ホップを検索する - PowerShell | Microsoft Docs"
-description: "この記事では、PowerShell で Next Hop を使用して、次ホップの種類と IP アドレスを確認する方法について説明します。"
+title: Azure Network Watcher Next Hop を使用して次ホップを検索する - PowerShell | Microsoft Docs
+description: この記事では、PowerShell で Next Hop を使用して、次ホップの種類と IP アドレスを確認する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6a656c55-17bd-40f1-905d-90659087639c
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: ef559fbbd3e8448d64167552cacee04790418343
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>PowerShell で Azure Network Watcher の Next Hop 機能を使用して次ホップの種類を確認する
 

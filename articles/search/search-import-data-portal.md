@@ -1,25 +1,18 @@
 ---
-title: "ポータルで Azure Search にデータをインポート | Microsoft Docs"
-description: "Azure Portal で Azure Search のデータのインポート ウィザードを使用して、NoSQL Azure Cosmos DB、Blob Storage、Table Storage、SQL Database、Azure VM 上の SQL Server から Azure データをクロールします。"
-services: search
-documentationcenter: 
+title: ポータルで Azure Search にデータをインポート | Microsoft Docs
+description: Azure Portal で Azure Search のデータのインポート ウィザードを使用して、NoSQL Azure Cosmos DB、Blob Storage、Table Storage、SQL Database、Azure VM 上の SQL Server から Azure データをクロールします。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: Azure Portal
-ms.assetid: f40fe07a-0536-485d-8dfa-8226eb72e2cd
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b651ccaa59e40b9d8d1c682fc8c266bf95b62a2e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>ポータルを使用した Azure Search へのデータのインポート
 Azure Portal では、データをインデックスに読み込む**データのインポート** ウィザードが Azure Search ダッシュボードに用意されています。 
@@ -40,7 +33,7 @@ Azure Cosmos DB のサンプル データを使用して、このワークフロ
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>データのインポート ウィザードでサポートされるデータ ソース
 データのインポート ウィザードでは、次のデータ ソースがサポートされています。 
 
-* の接続文字列
+* Azure SQL Database
 * Azure VM 上の SQL Server のリレーショナル データ
 * Azure Cosmos DB
 * Azure BLOB ストレージ
@@ -81,7 +74,7 @@ Azure Cosmos DB のサンプル データを使用して、このワークフロ
 5. **[提案者]** をクリックして、選択したフィールドに先行入力クエリによる検索候補を有効にします。
 
 ## <a name="import-your-data"></a>[データのインポート]
-1. **[データのインポート]**で、インデクサーの名前を指定します。 データのインポート ウィザードの成果物がインデクサーであることを思い出してください。 後でインデクサーの確認や編集を行う場合は、ウィザードを再実行するのではなく、ポータルから選択します。 
+1. **[データのインポート]** で、インデクサーの名前を指定します。 データのインポート ウィザードの成果物がインデクサーであることを思い出してください。 後でインデクサーの確認や編集を行う場合は、ウィザードを再実行するのではなく、ポータルから選択します。 
 2. サービスがプロビジョニングされている地域のタイム ゾーンに基づいて、スケジュールを指定します。
 3. 詳細オプションを設定して、ドキュメントが削除された場合にインデックス作成を継続できるかどうかを決めるしきい値を指定します。 また、 **[キー]** フィールドにスペースやスラッシュを含めることができるかどうかも指定できます。  
 4. **[OK]** をクリックしてインデックスを作成し、データをインポートします。
@@ -94,7 +87,7 @@ Azure Cosmos DB のサンプル データを使用して、このワークフロ
 
 ポータルに用意されている **Search エクスプローラー**を使用すると、コードを記述することなくインデックスを照会できます。 任意のインデックスに対して [Search エクスプローラー](search-explorer.md)を使用できます。
 
-検索エクスペリエンスは、既定の設定 ([単純構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)、既定の [searchMode クエリ パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents) など) に基づきます。 
+検索エクスペリエンスは、既定の設定 ([単純構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)、既定の [searchMode クエリ パラメーター](https://docs.microsoft.com/rest/api/searchservice/search-documents))に基づきます。 
 
 結果は JSON で詳細な形式で返されるため、ドキュメント全体を調べることができます。
 

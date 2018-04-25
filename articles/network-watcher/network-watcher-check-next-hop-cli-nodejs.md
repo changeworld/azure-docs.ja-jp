@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher Next Hop で次ホップを探す - Azure CLI 1.0 | Microsoft Docs"
-description: "この記事では、Next Hop で Azure CLI を使用して、次ホップの種類と IP アドレスを検索する方法について説明します。"
+title: Azure Network Watcher Next Hop で次ホップを探す - Azure CLI 1.0 | Microsoft Docs
+description: この記事では、Next Hop で Azure CLI を使用して、次ホップの種類と IP アドレスを検索する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0700c274-3e0d-4dca-acfa-3ceac8990613
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: e849f7952962d177f40ce99307ef1c305e089827
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-10"></a>Azure Network Watcher の Next Hop 機能で Azure CLI 1.0 を使用して次ホップの種類を検索する
 

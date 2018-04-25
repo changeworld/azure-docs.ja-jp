@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher Next Hop を使用して次ホップを検索する - REST | Microsoft Docs"
-description: "この記事では、Azure REST API で Next Hop を使用して、次ホップの種類と IP アドレスを確認する方法について説明します。"
+title: Azure Network Watcher Next Hop を使用して次ホップを検索する - REST | Microsoft Docs
+description: この記事では、Azure REST API で Next Hop を使用して、次ホップの種類と IP アドレスを確認する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2216c059-45ba-4214-8304-e56769b779a6
 ms.service: network-watcher
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: b541cd5cb7e49468af2c522b16c3a3b9fe75fd54
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-aure-network-watcher-using-azure-rest-api"></a>Azure REST API で Azure Network Watcher の Next Hop 機能を使用して次ホップの種類を確認する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-check-next-hop-portal.md)
+> - [Azure Portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
@@ -33,9 +33,9 @@ Next Hop は Network Watcher の機能の 1 つであり、指定された仮想
 
 ## <a name="before-you-begin"></a>開始する前に
 
-PowerShell を使用している REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
+PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順に従って、Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -45,7 +45,7 @@ PowerShell を使用している REST API を呼び出すには、ARMClient を�
 
 * 仮想マシンの次ホップを取得する。
 
-## <a name="log-in-with-armclient"></a>ARMClient でのログイン
+## <a name="log-in-with-armclient"></a>ARMClient でログインする
 
 Azure の資格情報を使用して ARMClient にログインします。
 
@@ -127,7 +127,7 @@ json 形式の結果を次に示します。
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 仮想マシンの次ホップを確認できたら、[セキュリティ ビューの概要](network-watcher-security-group-view-overview.md)に関する記事を参照して、ネットワーク リソースのセキュリティを表示します。
 

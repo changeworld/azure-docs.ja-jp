@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory に関する FAQ | Microsoft Docs"
-description: "Azure Active Directory に関する FAQ では、Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問に答えます。"
+title: Azure Active Directory に関する FAQ | Microsoft Docs
+description: Azure Active Directory に関する FAQ では、Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問に答えます。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 80df81f365ac884bc1f44268e615975407f485f0
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: be5f5a6c39e27ae7fedab32fea12f5cf9b7cd3bd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -112,18 +112,18 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 
 **A:** パスワード ライトバックはリアルタイムで行われます。
 
-詳細については、「[パスワード管理の概要](active-directory-passwords-getting-started.md)」を参照してください。
+詳細については、「[パスワード管理の概要](authentication/quickstart-sspr.md)」を参照してください。
 
 - - -
 **Q: 管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
 
 **A:** はい。パスワード ライトバックが有効な状態であれば、管理者によって実行されるパスワード操作は、オンプレミスの環境に書き戻されます。  
 
-パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](active-directory-passwords-faq.md)」を参照してください。
+パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](authentication/active-directory-passwords-faq.md)」を参照してください。
 - - -
 **Q: パスワードを変更しようとしているときに既存の Office 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
 
-**A:** このような状況では、いくつかの選択肢があります。  セルフサービスによるパスワードのリセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](active-directory-passwords-best-practices.md)」を参照してください。
+**A:** このような状況では、いくつかの選択肢があります。  セルフサービスによるパスワードのリセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](authentication/howto-sspr-deployment.md)」を参照してください。
 
 Office 365 ユーザーの場合は、「[ユーザー パスワードの再設定](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)」で説明されている手順を使用して、パスワードをリセットできます。
 

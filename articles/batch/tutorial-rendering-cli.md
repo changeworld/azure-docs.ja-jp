@@ -1,6 +1,6 @@
 ---
-title: "クラウドでのシーンのレンダリング - Azure Batch"
-description: "チュートリアル - Batch Rendering サービスと Azure コマンド ライン インターフェイスを使用して Arnold で Autodesk 3DS Max シーンをレンダリングする方法"
+title: クラウドでのシーンのレンダリング - Azure Batch
+description: チュートリアル - Batch Rendering サービスと Azure コマンド ライン インターフェイスを使用して Arnold で Autodesk 3DS Max シーンをレンダリングする方法
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0531406ce50cf8cb549965d1f30b327afe52b003
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f8a93e873f79e99777fe2d8675c9426f5fc5ecda
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル: Azure Batch を使用したシーンのレンダリング 
 
@@ -50,7 +50,7 @@ az group create \
     --location eastus2
 ```
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して、リソース グループ内に汎用のストレージ アカウントを作成します。 このチュートリアルでは、ストレージ アカウントを使用して、入力の 3DS Max シーンとレンダリングされた出力を格納します。
+[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して、リソース グループ内に Azure ストレージ アカウントを作成します。 このチュートリアルでは、ストレージ アカウントを使用して、入力の 3DS Max シーンとレンダリングされた出力を格納します。
 
 ```azurecli-interactive
 az storage account create \

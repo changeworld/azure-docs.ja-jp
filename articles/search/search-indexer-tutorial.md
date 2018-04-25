@@ -1,25 +1,19 @@
 ---
-title: "Azure Search で Azure SQL データベースのインデックスを作成するチュートリアル | Microsoft Docs"
-description: "Azure SQL データベースをクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。"
-services: search
-documentationcenter: 
+title: Azure Search で Azure SQL データベースのインデックスを作成するチュートリアル | Microsoft Docs
+description: Azure SQL データベースをクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: abf121ec369d84dd307416d2c08971d9096de4a8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure Search インデクサーを使用して Azure SQL データベースをクロールする方法
 
@@ -95,7 +89,7 @@ Search サービスのエンドポイントとキーは、ポータルから入�
 4. これをコピーし、Visual Studio で **appsettings.json** の 1 つ目のエントリとして貼り付けます。
 
   > [!Note]
-  > サービス名は、search.windows.net を含んだエンドポイントの構成要素となります。 興味がある方は、[概要] ページの **[要点]** で完全な URL を確認できます。 実際の URL は https://your-service-name.search.windows.net のようになります。
+  > サービス名は、search.windows.net を含んだエンドポイントの構成要素となります。 興味がある方は、[概要] ページの **[要点]** で完全な URL を確認できます。 この URL は、https://your-service-name.search.windows.net のようになります。
 
 5. 左側の **[設定]** > **[キー]** で、いずれかの管理者キーをコピーし、**appsettings.json** に 2 つ目のエントリとして貼り付けます。 キーは、プロビジョニング時にサービスに対して生成される英数字の文字列で、サービス操作への承認済みアクセスに必要となります。 
 
@@ -113,7 +107,7 @@ Search サービスのエンドポイントとキーは、ポータルから入�
 
 この手順では、インデクサーがクロールできる外部データ ソースを作成します。 このチュートリアルのデータ ファイルは、\DotNetHowToIndexers ソリューション フォルダーに格納されている *hotels.sql* です。 
 
-### <a name="azure-sql-database"></a>の接続文字列
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure Portal とサンプルの *hotels.sql* ファイルを使用して、Azure SQL Database にデータセットを作成することができます。 Azure Search で使用されるのは、ビューやクエリから生成されるようなフラット化された行セットです。 サンプル ソリューションの SQL ファイルでは、単一のテーブルを作成してデータを投入します。
 
