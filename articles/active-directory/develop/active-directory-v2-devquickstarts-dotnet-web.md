@@ -1,11 +1,11 @@
 ---
-title: "Azure AD v2.0 .NET Web アプリのサインインの概要 | Microsoft Docs"
-description: "サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する .NET MVC Web アプリを構築する方法を説明します。"
+title: Azure AD v2.0 .NET Web アプリのサインインの概要 | Microsoft Docs
+description: サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する .NET MVC Web アプリを構築する方法を説明します。
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c8b97ac6-0a06-4367-81b6-7d1d98152b14
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>.NET MVC Web アプリへのサインインの追加
 v2.0 エンドポイントを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリに認証をすばやく追加できます。  ASP.NET Web アプリでは、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。

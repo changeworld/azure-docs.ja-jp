@@ -1,8 +1,8 @@
 ---
-title: "Windows VM MSI を使用して Azure SQL にアクセスする"
-description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure SQL にアクセスするプロセスについて説明するチュートリアルです。"
+title: Windows VM MSI を使用して Azure SQL にアクセスする
+description: Windows VM 管理対象サービス ID (MSI) を使用して Azure SQL にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 863054ea8c69206d4068a35f09ec946aec67ea1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aaec2fe989c4b0ae1867e629f6b46ab29297cb41
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Windows VM 管理対象サービス ID (MSI) を使用して Azure SQL にアクセスする
 
@@ -55,17 +55,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする 
 
-VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 MSI を有効にすると、VM の管理対象 ID を作成するよう Azure に指示が出されます。 内部的には、MSI を有効にすると、VM に MSI VM 拡張機能がインストールされ、Azure Resource Manager で MSI が有効化されます。
+VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 MSI を有効にすると、VM の管理対象 ID を作成するよう Azure に指示が出されます。 MSI を有効にすると、内部では VM が Azure Active Directory に登録されてその管理対象 ID が作成され、VM 上で ID が構成されます。
 
 1.  MSI を有効にする**仮想マシン**を選択します。  
 2.  左側のナビゲーション バーで、**[構成]** をクリックします。 
 3.  **管理対象のサービス ID** が表示されます。 MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。 
 4.  **[保存]** をクリックして構成を保存します。  
     ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. この VM で有効になっている拡張機能を確認して検証する場合は、**[拡張機能]** をクリックします。 MSI が有効になっている場合、**ManagedIdentityExtensionforWindows** が一覧に表示されます。
-
-    ![イメージ テキスト](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>VM に Azure SQL サーバー内のデータベースへのアクセス権を付与する
 
@@ -100,7 +96,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-次に、VM MSI をグループに追加します。  MSI の **ObjectId** が必要です。これは Azure PowerShell を使用して取得できます。  最初に、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をダウンロードします。 次に、`Login-AzureRmAccount` を使用してサインインし、次のコマンドを実行して以下を行います。
+次に、VM MSI をグループに追加します。  MSI の **ObjectId** が必要です。これは Azure PowerShell を使用して取得できます。  最初に、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をダウンロードします。 次に、`Connect-AzureRmAccount` を使用してサインインし、次のコマンドを実行して以下を行います。
 - セッション コンテキストが目的の Azure サブスクリプションに設定されていることを確認します (複数のサブスクリプションがある場合)。
 - Azure サブスクリプションで使用可能なリソースを一覧表示して、リソース グループと VM の名前が適切であることを確認します。
 - `<RESOURCE-GROUP>` と `<VM-NAME>` の適切な値を使用して、MSI VM のプロパティを取得します。
@@ -156,9 +152,9 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 2.  **[サーバーに接続]** ダイアログで、**[サーバー名]** フィールドに SQL サーバーの名前を入力します。
 3.  **[認証]** フィールドで、**[Active Directory - MFA サポートで汎用]** を選択します。
 4.  **[ユーザー名]** フィールドに、サーバー管理者として設定した Azure AD アカウントの名前を入力します (例: helen@woodgroveonline.com)。
-5.  **[オプション]**をクリックします。
+5.  **[オプション]** をクリックします。
 6.  **[データベースに接続]** フィールドに、構成する非システム データベースの名前を入力します。
-7.  **[接続]**をクリックします。  サインイン プロセスを完了します。
+7.  **[接続]** をクリックします。  サインイン プロセスを完了します。
 8.  **オブジェクト エクスプローラー**で、**[データベース]** フォルダーを展開します。
 9.  ユーザー データベースを右クリックし、**[新しいクエリ]** をクリックします。
 10.  クエリ ウィンドウで、次の行を入力し、ツールバーの **[実行]** をリックします。
@@ -182,7 +178,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 
 Azure SQL は Azure AD 認証をネイティブにサポートするため、MSI を使用して取得されたアクセス トークンを直接受け入れることができます。  SQL への接続を作成する**アクセス トークン** メソッドを使用します。  これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
-アクセス トークンを使用して SQL への接続を開く .Net のコード例を次に示します。  このコードは、VM MSI エンドポイントにアクセスできる VM で実行する必要があります。  アクセス トークン メソッドを使用するには、**.Net Framework 4.6** 以降が必要です。  AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。  Azure SQL のリソース ID は "https://database.windows.net/" であることに注意してください。
+アクセス トークンを使用して SQL への接続を開く .Net のコード例を次に示します。  このコードは、VM MSI エンドポイントにアクセスできる VM で実行する必要があります。  アクセス トークン メソッドを使用するには、**.Net Framework 4.6** 以降が必要です。  AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。  Azure SQL のリソース ID が "https://database.windows.net/" であることにご注意ください。
 
 ```csharp
 using System.Net;
@@ -193,7 +189,7 @@ using System.Web.Script.Serialization;
 //
 // Get an access token for SQL.
 //
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://database.windows.net/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://database.windows.net/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 string accessToken = null;
@@ -234,7 +230,7 @@ if (accessToken != null) {
 4.  Powershell の `Invoke-WebRequest` を使用して、ローカルの MSI エンドポイントに対して Azure SQL のアクセス トークンを取得するよう要求します。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://database.windows.net/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F -Method GET -Headers @{Metadata="true"}
     ```
     
     応答を JSON オブジェクトから PowerShell オブジェクトに変換します。 

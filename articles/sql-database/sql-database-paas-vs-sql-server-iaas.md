@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/09/2018
 ms.author: carlrab
-ms.openlocfilehash: a7fde828c7a88f440cf69e3a4b26bb6c75cdaafb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 38b7749ae83f1c4b037ec1996c84a9ffca1de50e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 Azure には、Microsoft Azure で SQL Server ワークロードをホストするためのオプションが 2 つあります。
@@ -74,7 +74,10 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 #### <a name="billing-and-licensing-basics"></a>課金とライセンスの基礎
 **SQL Database** は、ライセンスではなくサービスとしてお客様に販売されます。  [Azure VM 上の SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) は、分単位で支払いを行う付属のライセンスと共に販売されます。 既存のライセンスをお持ちの場合、それを使用することもできます。  
 
-現在、 **SQL Database** は複数のサービス階層で利用でき、選択したサービス階層とパフォーマンス レベルに基づく固定率で時間単位で課金されます。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 Basic、Standard、および Premium のサービス階層は、アプリケーションのピーク時の要件を満たすために、複数のパフォーマンス レベルで、予測できるパフォーマンスを実現するように設計されています。 サービス階層とパフォーマンス レベルを変更して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 データベースのトランザクション量が膨大で、多数の同時ユーザーをサポートする必要がある場合は、Premium サービス階層をお勧めします。 現在サポートされているサービス階層の最新情報については、 [Azure SQL Database のサービス階層](sql-database-service-tiers.md)に関するページを参照してください。 [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有することもできます。
+現在、 **SQL Database** は複数のサービス階層で利用でき、選択したサービス階層とパフォーマンス レベルに基づく固定率で時間単位で課金されます。 さらに、インターネット トラフィックの送信も通常の [データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。 Basic、Standard、Premium、General Purpose、および Mission Critical の各サービス レベルは、アプリケーションのピーク時の要件を満たすために、複数のパフォーマンス レベルで、予測できるパフォーマンスを実現するように設計されています。 サービス階層とパフォーマンス レベルを変更して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 現在サポートされているサービス階層の最新情報については、 [Azure SQL Database のサービス階層](sql-database-service-tiers.md)に関するページを参照してください。 [エラスティック プール](sql-database-elastic-pool.md)を作成して、データベース インスタンス間でパフォーマンス リソースを共有することもできます。
+
+> [!IMPORTANT]
+> データベースのトランザクション量が膨大で、多数の同時ユーザーをサポートする必要がある場合は、Premium または Mission Critical のサービス階層をお勧めします。 アプリケーションと SQL データベース間の待機時間を最小限にするには、アプリケーションをデータベースと同じリージョン内に配置してからパフォーマンスをテストし、必要に応じてサービス階層とパフォーマンス レベルを高めます。
 
 **SQL Database**では、データベース ソフトウェアの自動的な構成、修正プログラムの適用、およびアップグレードがマイクロソフトによって行われるため、管理コストが軽減されます。 また、 [組み込みのバックアップ](sql-database-automated-backups.md) 機能は、特に、多数のデータベースがある場合の大幅なコスト削減に役立ちます。
 
@@ -112,7 +115,7 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 ### <a name="service-level-agreement-sla"></a>サービス レベル アグリーメント (SLA)
 多くの IT 部門では、サービス レベル アグリーメント (SLA) の稼働時間に関する義務を遂行することは、最優先事項です。 このセクションでは、各データベースのホスト オプションに適用される SLA について説明します。
 
-**SQL Database** では、Basic、Standard、および Premium サービス階層で、可用性 99.99% の SLA が提供されます。 最新情報については、 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/sql-database/)に関するページを参照してください。 SQL Database サービス階層と、サポートされているビジネス継続性計画の最新情報については、 [サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
+**SQL Database** では、Basic、Standard、Premium、General Purpose、および Mission Critical のサービス階層で、可用性 99.99% の SLA が提供されます。 最新情報については、 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/sql-database/)に関するページを参照してください。 SQL Database サービス階層と、サポートされているビジネス継続性計画の最新情報については、 [サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
 
 **Azure VM 上で実行される SQL Server**では、仮想マシンのみを対象に、可用性 99.95% の SLA が提供されます。 この SLA は VM 上で実行される (SQL Server などの) プロセスは対象としておらず、可用性セットに少なくとも 2 つの VM インスタンスをホストしている必要があります。 最新情報については、 [VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)に関するページを参照してください。 VM 内のデータベース高可用性 (HA) を実現するには、 [AlwaysOn 可用性グループ](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)など、SQL Server でサポートされているいずれかの高可用性オプションを構成する必要があります。 サポートされている高可用性オプションを使用した場合、SLA を追加することはできないものの、ほぼ 99.99% のデータベース可用性が実現されます。
 

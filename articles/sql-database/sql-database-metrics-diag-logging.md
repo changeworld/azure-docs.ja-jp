@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -191,11 +191,11 @@ Log Analytics を使用すると、Azure SQL Database フリートを簡単に�
 
 ### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>ギャラリーから Azure SQL Analytics ソリューションをインストールする
 
-1. Log Analytics リソースが作成され、データがそこに取り込まれるようになったら、Azure SQL Analytics ソリューションをインストールします。 Operations Management Suite ホーム ページのサイド メニューで、**[ソリューション ギャラリー]** を選択します。 ギャラリーで **[Azure SQL Analytics]** ソリューションを選択し、**[追加]** をクリックします。
+1. Log Analytics リソースが作成され、データがそこに取り込まれるようになったら、Azure SQL Analytics ソリューションをインストールします。 ホーム ページのサイド メニューで、**[ソリューション ギャラリー]** を選択します。 ギャラリーで **[Azure SQL Analytics]** ソリューションを選択し、**[追加]** をクリックします。
 
    ![ソリューションの監視](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
 
-2. Operations Management Suite のホーム ページで、**[Azure SQL Analytics]** タイルが表示されます。 SQL Analytics のダッシュ ボードを開くには、このタイルを選択します。
+2. ホーム ページで、**[Azure SQL Analytics]** タイルが表示されます。 SQL Analytics のダッシュ ボードを開くには、このタイルを選択します。
 
 ### <a name="use-the-sql-analytics-solution"></a>Azure SQL Analytics ソリューションを使用する
 

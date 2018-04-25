@@ -1,10 +1,10 @@
 ---
-title: "VM (クラシック) のプライベート IP アドレスの構成 - Azure PowerShell | Microsoft Docs"
-description: "PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。"
+title: VM (クラシック) のプライベート IP アドレスの構成 - Azure PowerShell | Microsoft Docs
+description: PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 60c7b489-46ae-48af-a453-2b429a474afd
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da2992fad89a703086b7645c88f6d8e1a39e4b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e2aaecd7cb883841941d494a057ac23239a2a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -128,7 +128,11 @@ IP アドレス *192.168.1.101* が *TestVnet* という VNet で使用可能か
     -------------------- -----------                          ---------------
     Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
+
+VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure VM に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられるパブリック IP アドレスは、手動で割り当てないでください。
+
+## <a name="next-steps"></a>次の手順
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。

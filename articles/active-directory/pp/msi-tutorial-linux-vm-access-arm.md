@@ -15,10 +15,10 @@ ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: c2b6d70e441dc3d300f49adff1c02d7cc65788d2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-resource-manager"></a>Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスする
 

@@ -1,31 +1,26 @@
 ---
-title: "Azure SQL Data Warehouse のエラスティック クエリの概念 | Microsoft Docs"
-description: "Azure SQL Data Warehouse のエラスティック クエリの概念"
+title: エラスティック クエリ - Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスする | Microsoft Docs
+description: エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスするときのベスト プラクティスについて説明します。
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 09/18/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
 ms.author: elbutter
-ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.reviewer: jrj
+ms.openlocfilehash: 909271792b73b5fdc517847db7cfd6c8cf2092bc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>SQL Data Warehouse のエラスティック クエリの使用方法
+# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Azure SQL Database でエラスティック クエリを使用し、Azure SQL Data Warehouse のデータにアクセスするときのベスト プラクティス
+エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスするときのベスト プラクティスについて説明します。 
 
-
-
-Azure SQL Data Warehouse のエラスティック クエリを使用すると、外部テーブルを使用して Azure SQL Data Warehouse インスタンスにリモートで送信される SQL Database の Transact-SQL を記述できます。 シナリオによっては、この機能を使用してコストを節約し、より高パフォーマンスなアーキテクチャを実現することができます。
+## <a name="what-is-an-elastic-query"></a>エラスティック クエリとは
+エラスティック クエリでは、T-SQL と外部テーブルを使用し、Azure SQL Data Warehouse にリモート送信されるクエリを Azure SQL Database で記述できます。 シナリオによっては、この機能を使用してコストを節約し、より高パフォーマンスなアーキテクチャを実現できます。
 
 この機能は 2 つの主なシナリオを可能にします。
 
@@ -46,10 +41,7 @@ Azure SQL Data Warehouse のエラスティック クエリを使用すると、
 
 エラスティック クエリにより、SQL Data Warehouse インスタンスに対するリモート クエリ実行が可能になります。 ホット データとコールド データを SQL Database と SQL Data Warehouse の間で分離することで、2 つのデータベースのそれぞれの長所を利用できます。 ユーザーは、最新のデータを、レポートおよび多数の一般的なビジネス ユーザーにサービスを提供できる SQL Database に保持できます。 しかし、より多くのデータや計算が必要なときには、はるかに高速かつ効率的に大規模な集計を処理できる SQL Data Warehouse インスタンスにクエリの一部をオフロードできます。
 
-
-
-## <a name="elastic-query-overview"></a>エラスティック クエリの概要
-
+## <a name="elastic-query-process"></a>エラスティック クエリのプロセス
 エラスティック クエリを使用すると、SQL Data Warehouse にあるデータを SQL Database インスタンスで利用できるようになります。 エラスティック クエリにより、SQL Database からのクエリがリモート SQL Data Warehouse インスタンス内のテーブルを参照できます。 
 
 最初の手順として、SQL Data Warehouse インスタンスを参照する外部データ ソース定義を作成します。これは SQL Data Warehouse 内の既存のユーザー資格情報を使用します。 リモート SQL Data Warehouse インスタンスに変更を加える必要はありません。 
@@ -58,13 +50,12 @@ Azure SQL Data Warehouse のエラスティック クエリを使用すると、
 > 
 > ユーザーは、ALTER ANY EXTERNAL DATA SOURCE アクセス許可を所有している必要があります。 このアクセス許可は、ALTER DATABASE アクセス許可に含まれています。 ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、リモート データ ソースを参照するために必要です。
 
-次に、SQL Database インスタンスに、SQL Data Warehouse 内のリモート テーブルをポイントするリモート外部テーブル定義を作成します。 外部テーブルを利用するクエリを使用すると、クエリの外部テーブルを参照する部分が SQL Data Warehouse インスタンスに送信されて処理されます。 クエリが完了すると、呼び出し元の SQL Database インスタンスに結果セットが返されます。 SQL Database と SQL Data Warehouse 間のエラスティック クエリを設定する簡単なチュートリアルについては、「[SQL Data Warehouse のエラスティック クエリの構成][Configure Elastic Query with SQL Data Warehouse]」をご覧ください。
+次に、SQL Database インスタンスに、SQL Data Warehouse 内のリモート テーブルをポイントするリモート外部テーブル定義を作成します。 クエリで外部テーブルが利用されると、クエリの外部テーブルを参照する部分が SQL Data Warehouse インスタンスに送信されて処理されます。 クエリが完了すると、呼び出し元の SQL Database インスタンスに結果セットが返されます。 SQL Database と SQL Data Warehouse 間のエラスティック クエリを設定する簡単なチュートリアルについては、「[SQL Data Warehouse のエラスティック クエリの構成][Configure Elastic Query with SQL Data Warehouse]」をご覧ください。
 
 SQL Database のエラスティック クエリの詳細については、「[Azure SQL Database のエラスティック クエリの概要][Azure SQL Database elastic query overview]」をご覧ください。
 
-
-
 ## <a name="best-practices"></a>ベスト プラクティス
+以下のベスト プラクティスを使用し、エラスティック クエリを効果的に使用してください。
 
 ### <a name="general"></a>全般
 
@@ -78,9 +69,9 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 ### <a name="elastic-querying"></a>エラスティック クエリの実行
 
-- テーブルの一部分はパフォーマンスのためにキャッシュ データとして SQL Database 内に格納され、残りのデータは SQL Data Warehouse に格納される、一種のストレッチ テーブルを管理することがよくあります。 この場合、SQL Database に 2 つのオブジェクトを保持する必要があります。1 つは SQL Data Warehouse のベース テーブルを参照する SQL Database 内の外部テーブルであり、もう 1 つは SQL Database 内のテーブルの "キャッシュされた" 部分です。 そして、テーブルのキャッシュされた部分と外部テーブルの上位に両方のテーブルの和集合となるビューを作成し、SQL Database 内で具体化されているデータと、外部テーブルによって公開される SQL Data Warehouse のデータを分離するフィルターを適用することを検討します。
+- テーブルの一部分はパフォーマンスのためにキャッシュ データとして SQL Database 内に格納され、残りのデータは SQL Data Warehouse に格納される、一種のストレッチ テーブルを管理することがよくあります。 この場合、SQL Database に 2 つのオブジェクトが必要になります。1 つは SQL Data Warehouse のベース テーブルを参照する SQL Database 内の外部テーブルであり、もう 1 つは SQL Database 内のテーブルの "キャッシュされた" 部分です。 そして、テーブルのキャッシュされた部分と外部テーブルの上位に両方のテーブルの和集合となるビューを作成し、SQL Database 内で具体化されているデータと、外部テーブルによって公開される SQL Data Warehouse のデータを分離するフィルターを適用することを検討します。
 
-  たとえば、最も新しい年のデータを SQL Database インスタンスに保持する場合について考えてみましょう。 データ ウェアハウスの注文テーブルを参照する **ext.Orders** と、SQL Database インスタンス内の最も新しい年に相当するデータを表す **dbo.Orders** という 2 つのテーブルがあるとします。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
+  たとえば、最も新しい年のデータを SQL Database インスタンスに保持する場合について考えてみましょう。 **ext.Orders** テーブルは、データ ウェアハウスの Orders (注文) テーブルを参照します。 **dbo.Orders** は、SQL Database インスタンス内の最も新しい年のデータを表します。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -119,19 +110,17 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 ### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Azure Analysis Services を選択する場合と SQL Database を選択する場合
 
-#### <a name="azure-analysis-services"></a>Azure Analysis Services
+次の場合に Azure Analysis Services を使用します。
 
 - 大量の小規模なクエリを送信する BI ツールでキャッシュを使用する場合。
 - 待機時間を秒未満にする必要がある場合。
 - Analysis Services の管理/開発モデルに習熟している場合。 
 
-#### <a name="sql-database"></a>SQL Database
+次の場合に Azure SQL Database を使用します。
 
 - SQL を使用してキャッシュ データのクエリを実行する場合。
 - 一部のクエリをリモート実行する必要がある場合。
 - 大規模なキャッシュの要件がある場合。
-
-
 
 ## <a name="faq"></a>FAQ
 
@@ -161,19 +150,11 @@ A: 空間型は、varbinary(max) 値として SQL Data Warehouse に格納でき
 
 ![空間型](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 
-
-
-
-
-<!--Image references-->
-
 <!--Article references-->
 
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
-[Configure Elastic Query with SQL Data Warehouse]: ./tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Configure Elastic Query with SQL Data Warehouse]: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
 [Feedback Page]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Database elastic query overview]: ../sql-database/sql-database-elastic-query-overview.md
 
-<!--MSDN references-->
 
-<!--Other Web references-->

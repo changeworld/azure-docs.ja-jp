@@ -1,13 +1,13 @@
 ---
-title: "SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ | Microsoft Docs"
-description: "SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ"
+title: SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ | Microsoft Docs
+description: SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5654dac7-4204-4387-b312-3d8b2898eb3a
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855fc155bbdef9a3a0ab8415067102e607fab0f9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 596b88d8bfeaa42caaa234b945973b1404a5f1d3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -290,7 +290,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -810,7 +810,7 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 
 [comment]: <> (TODO 古いブログ)
 [comment]: <> ([こちら][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups] で利用できるチュートリアルで Azure で AlwaysOn 構成をインストールするために必要なものの確認と詳細な手順の体験ができます。)
-[comment]: <> (Azure ギャラリーの構成済み AlwaysOn 設定 <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Azure ギャラリーを介した事前構成済みの Always On 設定 <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
 [comment]: <> (可用性グループ リスナーの作成については [このチュートリアル][virtual-machines-windows-classic-ps-sql-int-listener] に詳しい説明があります)
 [comment]: <> (ACL によるネットワーク エンドポイントのセキュリティ強化についてはこちらに詳しい説明があります)
 [comment]: <> (*    <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
@@ -821,7 +821,7 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 SQL Server Always On 可用性グループは、異なる Azure リージョンにもデプロイできます。 この機能は Azure Vnet 間接続を利用します ([詳細][virtual-networks-configure-vnet-to-vnet-connection])。
 
 [comment]: <> (TODO 古いブログ)
-[comment]: <> (このようなシナリオでの SQL Server AlwaysOn 可用性グループの設定については <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx> で説明されています。) 
+[comment]: <> (このようなシナリオの SQL Server AlwaysOn 可用性グループの設定については、こちらを参照してください。 <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
 
 #### <a name="summary-on-sql-server-high-availability-in-azure"></a>Azure での SQL Server 高可用性の概要
 Azure ストレージがコンテンツを保護しているという事実を考えると、ホット スタンバイ イメージを要求する理由はあまりありません。 これは、高可用性シナリオは、次のケースに対してのみ保護する必要があることを意味します。

@@ -1,26 +1,24 @@
 ---
-title: "HDInsight の Hadoop クラスターで空のエッジ ノードを使用する - Azure | Microsoft Docs"
-description: "クライアントとして使用できる空のエッジ ノードを HDInsight クラスターに追加し、その後 HDInsight アプリケーションをテストおよびホストする方法について説明します。"
+title: HDInsight の Hadoop クラスターで空のエッジ ノードを使用する - Azure | Microsoft Docs
+description: クライアントとして使用できる空のエッジ ノードを HDInsight クラスターに追加し、その後 HDInsight アプリケーションをテストおよびホストする方法について説明します。
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: mumian
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: jgao
-ms.openlocfilehash: 7c09b2aefac1248a0bad06b913a8da56e73c0e4d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>HDInsight の Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -67,7 +65,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 > エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、コミュニティ リソースを利用することで、さらなる支援を受けられる場合もあります。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
 >
 > * [HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
-> * [http://stackoverflow.com](http://stackoverflow.com)
+> * [http://stackoverflow.com](http://stackoverflow.com)。
 >
 > Apache テクノロジを使用している場合、[http://apache.org](http://apache.org) にある Apache の各プロジェクト サイト (例: [Hadoop](http://hadoop.apache.org/) サイト) で支援を受けられる可能性があります。
 
@@ -149,7 +147,7 @@ Azure Portal からエッジ ノードを削除できます。
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. エッジ ノードを含む HDInsight クラスターを開きます。
 3. クラスター ブレードで、 **[アプリケーション]** をクリックします。 エッジ ノードの一覧が表示されます。  
-4. 削除するエッジ ノードを右クリックし、 **[削除]**をクリックします。
+4. 削除するエッジ ノードを右クリックし、 **[削除]** をクリックします。
 5. **[はい]** をクリックして確定します。
 
 ## <a name="next-steps"></a>次の手順

@@ -1,32 +1,32 @@
 ---
-title: "Azure デプロイ後タスクの OpenShift | Microsoft Docs"
-description: "OpenShift クラスターがデプロイされた後の追加タスクについて説明します。"
+title: Azure デプロイ後タスクの OpenShift | Microsoft Docs
+description: OpenShift クラスターがデプロイされた後の追加タスクについて説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 77c4719b5cee7f5736d73ee10cf6abf12229ea11
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1fe44f6d18199fe1a37db566f8b30eeaa4fbfab2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
 OpenShift クラスターをデプロイした後に、追加の項目を構成することができます。 この記事では、次のトピックについて説明します。
 
 - Azure Active Directory (Azure AD) を使用してシングル サインオンを構成する方法
-- OpenShift を監視するように Operations Management Suite を構成する方法
+- OpenShift を監視する Log Analytics を構成する方法
 - メトリックとログを構成する方法
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Azure Active Directory を使用してシングル サインオンを構成する
@@ -38,8 +38,8 @@ OpenShift クラスターをデプロイした後に、追加の項目を構成�
 以下の手順では、Azure CLI を使用してアプリの登録を作成し、GUI (Portal) を使用してアクセス許可を設定します。 アプリの登録を作成するには、次の 5 つの情報が必要です。
 
 - 表示名: アプリの登録名 (例: OCPAzureAD)
-- ホーム ページ: OpenShift コンソールの URL (例: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
-- 識別子の URI: OpenShift コンソールの URL (例: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- ホーム ページ: OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- 識別子 URI: OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
 - 応答 URL: マスター パブリック URL とアプリの登録名 (例: https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
 - パスワード: セキュリティで保護されたパスワード (強力なパスワードを使用する)
 
@@ -89,7 +89,7 @@ Azure Portal で次の操作を行います。
 
   ![[アプリの登録] のアクセス](media/openshift-post-deployment/app-registration-access.png)
 
-8.  **[完了]**を選択します。
+8.  **[完了]** を選択します。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD 認証用に OpenShift を構成する
 
@@ -171,11 +171,11 @@ sudo systemctl restart atomic-openshift-master
 
 OpenShift Console に、認証のオプションが 2 つ表示されるようになります (htpasswd_auth と [アプリの登録])。
 
-## <a name="monitor-openshift-with-operations-management-suite"></a>Operations Management Suite による OpenShift の監視
+## <a name="monitor-openshift-with-log-analytics"></a>Log Analytics を使用して OpenShift を監視する
 
-Operations Management Suite を使用して OpenShift を監視するには、OMS Agent を VM ホストにインストールする方法か、OMS Container を使用する方法のいずれかを使用できます。 この記事では、OMS Container のデプロイ手順について説明します。
+Log Analytics を使用して OpenShift を監視するには、OMS Agent を VM ホストにインストールする方法か、OMS Container を使用する方法のいずれかを使用できます。 この記事では、OMS Container のデプロイ手順について説明します。
 
-## <a name="create-an-openshift-project-for-operations-management-suite-and-set-user-access"></a>Operations Management Suite 用 OpenShift プロジェクトの作成とユーザー アクセスの設定
+## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Log Analytics 用の OpenShift プロジェクトを作成してユーザー アクセスを設定する
 
 ```bash
 oadm new-project omslogging --node-selector='zone=default'
@@ -244,7 +244,7 @@ spec:
 
 ## <a name="create-a-secret-yaml-file"></a>シークレット yaml ファイルを作成する
 
-シークレット yaml ファイルを作成するには、OMS ワークスペース ID と OMS ワークスペース共有キーという 2 つの情報が必要です。 
+シークレット yaml ファイルを作成するには、Log Analytics ワークスペース ID と Log Analytics ワークスペース共有キーという 2 つの情報が必要です。 
 
 ocp-secret.yml ファイルの例を次に示します。 
 
@@ -258,7 +258,7 @@ data:
   KEY: key_data
 ```
 
-wsid_data を Base64 でエンコードされた OMS ワークスペース ID で置き換えます。 key_data を Base64 でエンコードされた OMS ワークスペース共有キーで置き換えます。
+wsid_data を、Base64 でエンコードされた Log Analytics ワークスペース ID で置き換えます。 key_data を、Base64 でエンコードされた Log Analytics ワークスペース共有キーで置き換えます。
 
 ```bash
 wsid_data='11111111-abcd-1111-abcd-111111111111'
@@ -347,7 +347,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cl
 -e openshift_logging_install_logging=True 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [OpenShift Container Platform の概要](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
 - [OpenShift Origin の概要](https://docs.openshift.org/latest/getting_started/index.html)

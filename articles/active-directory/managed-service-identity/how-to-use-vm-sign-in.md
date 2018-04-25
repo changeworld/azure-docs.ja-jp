@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4df404bbf56efbc3bb68f006f8aa0c7cdf0e86ac
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ac23d0f9b8f6899df6941791b22ec384ea0f3977
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Azure VM の管理対象サービス ID (MSI) を使用してサインインする方法 
 
@@ -51,7 +51,7 @@ MSI を使用すると、スクリプト クライアントはこのいずれも
 2. Azure Resource Manager を呼び出して VM のサービス プリンシパルの ID を取得します。 CLI がトークンの取得や使用を自動的に管理します。 `<VM-NAME>` を必ずお使いの仮想マシン名に置き換えてください。  
 
    ```azurecli
-   az login --msi
+   az login --identity
    
    spID=$(az resource list -n <VM-NAME> --query [*].identity.principalId --out tsv)
    echo The MSI service principal ID is $spID
@@ -74,7 +74,7 @@ MSI を使用すると、スクリプト クライアントはこのいずれも
    echo "The MSI access token is $access_token"
 
    # Use the access token to sign in under the MSI service principal. -AccountID can be any string to identify the session.
-   Login-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
+   Connect-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
 
    # Call Azure Resource Manager to get the service principal ID for the VM's MSI. 
    $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>

@@ -1,25 +1,17 @@
 ---
-title: "Azure Search のビデオ、サンプル、およびチュートリアル | Microsoft Docs"
-description: "Microsoft Azure でホストされるクラウド サービスである Azure Search のために作成されたすべての動画、サンプル、デモ、チュートリアルを集めた一覧。"
-services: search
-documentationcenter: 
+title: Azure Search のビデオ、サンプル、およびチュートリアル | Microsoft Docs
+description: Microsoft Azure でホストされるクラウド サービスである Azure Search のために作成されたすべての動画、サンプル、デモ、チュートリアルを集めた一覧。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
+manager: cgronlun
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: heidist
-ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dd2e689e3f21877bdbaee83ef48dc9eaf438090
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
 次のビデオ、デモ、チュートリアル、サンプル アプリを使って作業をスピードアップできます。
@@ -28,7 +20,7 @@ ms.lasthandoff: 10/11/2017
 
 Azure Search を初めて使う場合は、ここから開始します。 約 1 時間ですべてのリソースを確認できます。
 
-| タイトル | Description | 日付 |
+| タイトル | [説明] | 日付 |
 |-------|-------------|------|
 | [この概要ビデオを見る](https://channel9.msdn.com/Events/Connect/2016/138) | 9 分 38 秒で、機能、サービスの作成、およびクエリを紹介します。 | 2016 年 11 月 |
 | [サービスを作成する](search-get-started-portal.md) | ポータルで Azure Search を設定するための手順です。 | 2017 年 2 |
@@ -41,7 +33,7 @@ Azure Search を初めて使う場合は、ここから開始します。 約 1 
 
 サンプルとチュートリアルによってコードに基づく調査を行います。
 
-| サンプル コード | Description |
+| サンプル コード | [説明] |
 |-------|-------------|
 | [Get started with .NET client library (.NET クライアント ライブラリの概要) に関するページ](https://github.com/Azure-Samples/search-dotnet-getting-started) | .NET クライアント ライブラリを使う ASP.NET MVC 5 アプリケーションです。 |
 | [Get started with REST API (REST API の概要) に関するページ](https://github.com/Azure-Samples/search-rest-api-getting-started) | REST API のコード サンプルです。 |
@@ -53,7 +45,7 @@ Azure Search を初めて使う場合は、ここから開始します。 約 1 
 ## <a name="online-demos"></a>オンライン デモ
 検索操作に Azure Search を使用する完全に機能する Web アプリケーションです。 これらのリンク先では、Azure Search を使用するアプリの実用的な使用例を紹介しています。
 
-| リンク | Description |
+| リンク | [説明] |
 |-------|-------------|
 |[アナライザーのデモを検索する](http://alice.unearth.ai) | 標準 Lucene アナライザー、Lucene の英語アナライザー、および Microsoft の自然言語プロセッサからのクエリ出力を示すライブ デモ Web サイト。 検索語句を入力すると、横並びに表示される各アナライザーの出力を比較することができます。 |
 |[Azure Search のニューヨーク市 (NYC) ジョブ ポータル デモ](http://aka.ms/azjobsdemo) | NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。 このアプリでは、 [簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。 コードを変更して、 [Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。 |
@@ -64,7 +56,7 @@ Azure Search を初めて使う場合は、ここから開始します。 約 1 
 
 Azure Search に関する複数セッションのデモとラボです。
 
-| リンク | Description | 日付 |
+| リンク | [説明] | 日付 |
 |------|-------------|------|
 [Building Intelligent Cross-Platform Mobile Applications Using Xamarin and Azure Search (Xamarin と Azure Search を使用するインテリジェントなクロスプラットフォーム モバイル アプリケーションの構築 )](https://mva.microsoft.com/en-US/training-courses/building-intelligent-crossplatform-mobile-applications-using-xamarin-and-azure-search-16890) | 先行入力、フル テキスト検索とページ処理、フィルター処理、検索、moreLikeThis、機械学習、スコア付けとチューニング、分析 | 2016 年 12 月 |
 [Using Windows Azure Search (Windows Azure Search の使用)](https://mva.microsoft.com/en-US/training-courses/using-windows-azure-search-10540) | 古いがまだ関連のあるスケールへのドリルダウン、地理空間検索、言語分析、Cortana 音声認識 | 2015 年 5 月 | 
@@ -91,7 +83,7 @@ Azure Search に関する複数セッションのデモとラボです。
 
 ## <a name="tutorial-archive"></a>チュートリアル アーカイブ
 
-| チュートリアル | Description |
+| チュートリアル | [説明] |
 | --- | --- |
 | [Azure Search と D3.js を使用して対話型データの視覚化をビルドする方法](https://azure.microsoft.com/blog/2015/07/14/how-to-use-azure-search-with-d3-js-to-build-interactive-data-visualizations/) |画像検索機能をカスタム アプリに追加する方法を示すブログ投稿とサンプル コードを掲載しています。 |
 | [NodeJS での Azure Search の使用](search-get-started-nodejs.md) |NodeJS で Azure Search を操作する方法について説明します。 |

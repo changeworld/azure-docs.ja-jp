@@ -1,6 +1,6 @@
 ---
-title: クラウド ID 管理 Web およびモバイル アプリ Azure AD B2C | Microsoft Docs
-description: Azure Active Directory B2C によるコンシューマー向けアプリケーションの開発
+title: Azure Active Directory B2C とは | Microsoft Docs
+description: Azure Active Directory B2C を使用してアプリケーションのサインイン エクスペリエンスの作成と管理を行う方法について説明します。
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -9,71 +9,110 @@ editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: 6385a4e4b89cf889b71db6e09010dfe3a674336a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4f2c47f3e2debe0dc2b919858af9c347da00be5b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: アプリに集中し、サインアップとサインインについてはお任せください
+# <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
-Azure AD B2C は、Web およびモバイル アプリケーション用のクラウド ID 管理ソリューションです。 億単位の ID まで拡張可能な高可用性のグローバル サービスです。 エンタープライズ レベルのセキュリティ保護されたプラットフォームに構築された Azure AD B2C は、アプリケーション、ビジネス、および顧客を保護された状態に保ちます。
+Azure Active Directory (Azure AD) B2C は、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、同時に顧客 ID を保護します。
 
-最小構成では、Azure AD B2C によりアプリケーションは次のものを認証できます。
+Azure AD B2C に登録されているアプリケーションを構成し、さまざまな ID 管理操作を実行することができます。 次に例をいくつか示します。
 
-* **ソーシャル アカウント** (Facebook、Google、LinkedIn など)
-* **エンタープライズ アカウント** (オープン スタンダードのプロトコル、OpenID Connect または SAML を使用)
-* **ローカル アカウント** (電子メール アドレスとパスワード、またはユーザー名とパスワード)
+- 顧客がサインアップして、登録されているアプリケーションを使用できるようにする
+- サインアップした顧客がサインインし、アプリケーションの使用を開始できるようにする
+- サインアップした顧客がプロファイルを編集できるようにする
+- アプリケーションで多要素認証を有効にする
+- 顧客が特定の ID プロバイダーを使用してサインアップとサインインを行えるようにする
+- アプリケーションから、ビルドする API へのアクセスを許可する
+- サインアップとサインインのエクスペリエンスの外観をカスタマイズする
+- アプリケーションのシングル サインオン セッションを管理する
 
-## <a name="get-started"></a>作業開始
+## <a name="what-do-i-need-to-think-about-before-using-azure-ad-b2c"></a>Azure AD B2C の使用前に検討する必要のある事項
 
-まず、「[Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)」に概要が示されている手順を使用して、独自のテナントを取得します。
+- 顧客にどのようにアプリケーションを操作させたいか
+- 顧客にどのようなユーザー インターフェイス (UI) エクスペリエンスを提供するか
+- アプリケーション内から顧客にどの ID プロバイダーを選択させたいか
+- サインイン プロセスで追加の API を実行する必要があるか
 
-次に、アプリケーション開発シナリオを選択します。
+### <a name="customer-interaction"></a>顧客の操作
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| <center>![モバイル アプリとデスクトップ アプリ](../active-directory/develop/media/active-directory-developers-guide/NativeApp_Icon.png)<br />モバイル アプリとデスクトップ アプリ</center> | [概要](active-directory-b2c-reference-oauth-code.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><br />[iOS](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)<br /><br />[Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)<br /><br />[Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) |  |
-| <center>![Web Apps](../active-directory/develop/media/active-directory-developers-guide/Web_app.png)<br />Web Apps</center> | [概要](active-directory-b2c-reference-oidc.md)<br /><br />[ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)<br /><br />[ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | [Node.js](active-directory-b2c-devquickstarts-web-node.md) |  |
-| <center>![シングル ページ アプリ](../active-directory/develop/media/active-directory-developers-guide/SPA.png)<br />シングル ページ アプリ</center> | [概要](active-directory-b2c-reference-spa.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)<br /><br /> |  |  |
-| <center>![Web API](../active-directory/develop/media/active-directory-developers-guide/Web_API.png)<br />Web API</center> | [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)<br /><br /> [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)<br /><br /> [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | [.NET Web API の呼び出し](active-directory-b2c-devquickstarts-web-api-dotnet.md) |
+Azure AD B2C は、すべての顧客エクスペリエンスで [OpenID Connect](https://openid.net/connect/) をサポートしています。 Azure AD B2C の OpenID Connect の実装では、アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 要求の結果は `id_token`です。 このセキュリティ トークンは、顧客の ID を表します。
 
-## <a name="whats-new"></a>新機能
+Azure AD B2C を使用しているすべてのアプリケーションは、Azure Portal を使用して Azure AD B2C テナントに登録する必要があります。 登録プロセスでは、値が収集され、対象のアプリケーションに割り当てられます。 これらの値には、アプリケーションとリダイレクト URI を一意に識別するアプリケーション ID が含まれており、これを使用して、応答をアプリケーションに戻す指示を出せます。
 
-今後の Azure Active Directory B2C の変更点については、このページを頻繁に確認してください。 また、@AzureAD でも最新情報をツイートしていきます。
+すべてのアプリケーションによるやり取りは、次のような大まかなパターンに従って行われます。
 
-* "組み込みのポリシー" (一般公開) に加えて、["カスタム ポリシー"](active-directory-b2c-overview-custom.md) 機能がパブリック プレビューで使用できるようになりました。  カスタム ポリシーは、ID エクスペリエンスの構成を制御する必要のある ID の利点を得るためのものです。
-* [アクセス トークン](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview)機能がパブリック プレビューで使用できるようになりました。
-* [ヨーロッパ ベースの Azure AD B2C ディレクトリの一般公開](https://azure.microsoft.com/en-us/blog/azuread-b2c-ga-eu/)が発表されました。
-* 増加し続ける[サンプル コード ライブラリを Github](https://github.com/Azure-Samples?q=b2c) でご覧ください。
+1. アプリケーションが、ポリシーを実行するように顧客に指示します。
+2. 顧客がポリシーの定義に従ってポリシーを完了します。
+3. アプリケーションがセキュリティ トークンを受け取ります。
+4. アプリケーションはセキュリティ トークンを使って、保護されたリソースへのアクセスを試みます。
+5. リソース サーバーは、セキュリティ トークンを検証し、アクセスを許可できることを確認します。
+6. アプリケーションは、セキュリティ トークンを定期的に更新します。
 
-## <a name="how-to-articles"></a>ハウツー記事
+これらの手順は、構築しているアプリケーションの種類によりわずかに異なることがあります。
 
-以下に示す Azure Active Directory B2C の各機能の使用方法について確認してください。
+Azure AD B2C は、ID プロバイダー、顧客、その他のシステムとやり取りし、ローカル ディレクトリを順次操作して ID タスクを完了します。 たとえば、顧客のサインイン、新規顧客の登録、パスワードのリセットなどです。 マルチパーティの信頼を確立してこれらの手順を完了する、基になるこのプラットフォームは、Identity Experience Framework と呼ばれます。 このフレームワークとポリシー (ユーザー体験または信頼フレームワーク ポリシーとも呼ばれます) が、完了するアクター、アクション、プロトコル、および一連の手順を明示的に定義しています。
 
-* コンシューマー向けアプリケーションで使用するアカウント ([Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Microsoft アカウント](active-directory-b2c-setup-msa-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)) を構成する。
-* [カスタム属性を使用してコンシューマーに関する情報を収集する](active-directory-b2c-reference-custom-attr.md)。
-* [コンシューマー向けアプリケーションで Azure Multi-Factor Authentication を有効にする](active-directory-b2c-reference-mfa.md)。
-* [コンシューマー向けにセルフサービス パスワードのリセットをセットアップする](active-directory-b2c-reference-sspr.md)。
-* Azure Active Directory B2C によって提供される[サインアップ、サインイン、その他のコンシューマー向けページの外観をカスタマイズする](active-directory-b2c-reference-ui-customization.md)。
-* [Azure Active Directory Graph API を使用してプログラムによりコンシューマーを作成、読み取り、更新、削除する](active-directory-b2c-devquickstarts-graph-dotnet.md) 。
+Azure AD B2C は、さまざまな方法で、アプリケーションに対するサービス拒否攻撃やパスワード攻撃からの保護を行います。 Azure AD B2C は、SYN Cookie や速度と接続の制限などの検出と軽減策の手法を使用して、サービス拒否攻撃かリソースを保護します。 ブルート フォース パスワード攻撃とディクショナリ パスワード攻撃に対しても、軽減策が用意されています。
+
+#### <a name="built-in-policies"></a>組み込みのポリシー
+
+Azure AD B2C に送信される各要求は、ポリシーを指定します。 ポリシーは、アプリケーションが Azure AD B2C とやり取りする動作を制御します。 サインアップ、サインイン、プロファイルの編集などの最も一般的な ID タスクについては、組み込みのポリシーが事前に定義されています。  たとえば、サインアップのポリシーを使用して次の設定を構成し、動作を制御できます。
+
+- 顧客がアプリケーションのサインアップのために使用できるソーシャル アカウント
+- 名や郵便番号など、顧客から収集されたデータ
+- 多要素認証
+- すべてのサインアップ ページの外観
+- アプリケーションに返される情報
+
+#### <a name="custom-policies"></a>カスタム ポリシー 
+
+カスタム ポリシーは、Azure AD B2C テナント内の Identity Experience Framework の動作を定義する構成ファイルです。 カスタム ポリシーは、多くのタスクを完了するために完全に編集できます。 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 
+
+Azure AD B2C テナントでは必要に応じてさまざまな種類のカスタム ポリシーを複数使用でき、複数のアプリケーションにわたってポリシーを再利用できます。 この柔軟性により、最小限のコード変更で、またはコードをまったく変更せずに、顧客の ID エクスペリエンスを定義および変更できます。 ポリシーは、HTTP 認証要求に特別なクエリ パラメーターを追加すると使用できます。
+
+カスタム ポリシーは、ユーザー体験を制御するために次の方法で使用できます。
+
+- API との相互作用を定義し、追加情報のキャプチャ、顧客が指定した要求の確認、または外部プロセスのトリガーを行う。
+- API からの要求または *migrationStatus* などのディレクトリ内での要求に基づいて動作を変更する。
+- 組み込みポリシーの対象となっていない任意のワークフロー。 たとえば、サインイン エクスペリエンス中に顧客からより多くの情報を収集し、リソースにアクセスするための承認チェックを実行します。
+
+### <a name="identity-providers"></a>ID プロバイダー
+
+ID プロバイダー は、顧客 ID を認証し、セキュリティ トークンを発行するサービスです。 Azure AD B2C では、テナント内で、Microsoft アカウント、Facebook、Amazon などに代表される多数の ID プロバイダーを構成できます。 
+
+Azure AD B2C テナントで ID プロバイダーを構成するには、作成する ID プロバイダー アプリケーションからの、アプリケーション ID またはクライアント ID と、パスワードまたはクライアント シークレットを記録する必要があります。 この ID とパスワードはその後、アプリケーションを構成するのに使用されます。
+
+### <a name="user-interface-experience"></a>ユーザー インターフェイス エクスペリエンス
+
+顧客に表示される HTML および CSS コンテンツのほとんどを制御できます。 ページ UI のカスタマイズ機能を使用して、任意のポリシーの外観をカスタマイズします。 さらに、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することもできます。
+
+Azure AD B2C は、顧客のブラウザーでコードを実行し、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法を使用します。 最初に、カスタマイズした HTML コンテンツを含むポリシーで URL を指定します。 Azure AD B2C により、UI 要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
+
+クエリ文字列で Azure AD B2C にパラメーターを送信できます。 パラメーターを HTML エンドポイントに渡すことで、ページのコンテンツを動的に変更することができます。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。
+
+## <a name="how-do-i-get-started-with-azure-ad-b2c"></a>Azure AD B2C の使用を開始する方法
+
+Azure AD B2C では、テナントは組織を表しており、ユーザーのディレクトリとなっています。 各 Azure AD B2C テナントは、他の Azure AD B2C テナントと区別され分離されています。 テナントには、アプリケーションを使用するためにサインアップした顧客に関する情報が含まれています。 たとえば、パスワード、プロファイル データ、アクセス許可が含まれます。
+
+すべての機能を有効にして使用料を支払うには、Azure AD B2C テナントを Azure サブスクリプションにリンクする必要があります。 Azure AD B2C 顧客がアプリケーションにサインインできるようにするには、Azure AD B2C テナントにアプリケーションを登録する必要があります。
+
+Azure AD B2C を使用するようアプリケーションを構成する前に、まず Azure AD B2C テナントを作成し、アプリケーションを登録する必要があります。 アプリケーションを登録するには、「[チュートリアル: アプリケーションを登録して Azure AD B2C を使用したサインアップとサインインを有効にする](tutorial-register-applications.md)」の手順を完了します。
+  
+ASP.NET Web アプリケーション開発者である場合は、「[チュートリアル: Web アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにする](active-directory-b2c-tutorials-web-app.md)」の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
+
+デスクトップ アプリケーション開発者である場合は、「[チュートリアル: デスクトップ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにする](active-directory-b2c-tutorials-desktop-app.md)の手順を使用して」アカウントを認証するようにアプリケーションを設定します。
+
+Node.js を使用するシングルページ アプリケーションの開発者である場合は、「[チュートリアル: シングルページ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにする](active-directory-b2c-tutorials-spa.md)」の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
 
 ## <a name="next-steps"></a>次の手順
 
-以下のリンクは、サービスの詳細を調べるのに役立ちます。
+次のチュートリアルを続けて、サインアップおよびサインイン エクスペリエンスのためのアプリケーションの構成を開始します。
 
-* 「 [Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
-* Azure Active Directory B2C の[コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c)を確認します。 
-* [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) タグを使用したスタック オーバーフローへの対処法についてのヒントが得られます。
-* [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) を利用して、サービスについての感想をお寄せください。皆様からのご意見をお待ちしております。
-* [Azure AD B2C プロトコル リファレンス](active-directory-b2c-reference-protocols.md)を確認してください。
-* [Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を確認してください。
-* [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)をご覧ください。
-* [Azure Active Directory B2C のサポート要求を提出する方法](active-directory-b2c-support.md)を確認してください。
-
-## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
-
-セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
+> [!div class="nextstepaction"]
+> [チュートリアル: アプリケーションを登録して Azure AD B2C を使用したサインアップとサインインを有効にする](tutorial-register-applications.md)

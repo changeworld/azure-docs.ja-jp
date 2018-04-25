@@ -1,27 +1,23 @@
 ---
 title: Azure SQL Data Warehouse のベスト プラクティス | Microsoft Docs
-description: Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。 これらは、成功に役立ちます。
+description: Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: ''
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 03/15/2018
-ms.author: barbkess
-ms.openlocfilehash: 53ad9f654c498f562d66de461a2a489895d0a46b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 7c5eb4d2176e12874a4fd7be8c29f4ce6ffe17ba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のベスト プラクティス
-この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つさまざまなベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
+この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
 
 Azure SQL Data Warehouse を使ってみるだけの場合でも、この記事は手に負えないと思わないでください。  一連のトピックは、だいたい重要な順に並んでいます。  初めは最初のいくつかの概念に注力するだけでも、効果があります。  SQL Data Warehouse に使い慣れてきたら、戻ってきて、その他の概念もいくつか確認してください。  すべてを理解するまでに時間はかかりません。
 
@@ -52,7 +48,7 @@ SQL Data Warehouse では、Azure Data Factory、PolyBase、BCP など、さま�
 [PolyBase の使い方ガイド][Guide for using PolyBase]もご覧ください。
 
 ## <a name="hash-distribute-large-tables"></a>ハッシュで大規模なテーブルを分散させる
-既定では、テーブルはラウンド ロビン分散です。  そのため、ユーザーはテーブルの分散方法を決定することなくテーブルの作成を簡単に開始できます。  ラウンド ロビン テーブルは一部のワークロードでは十分なパフォーマンスを示しますが、多くの場合、分散列を選択すると、パフォーマンスが大幅に向上します。  列で分散したテーブルのパフォーマンスがラウンド ロビン テーブルをはるかに上回る最も一般的な例としては、2 つの大規模なファクト テーブルが結合されている場合が挙げられます。  たとえば、orders テーブルが order_id で分散されており、transactions テーブルも order_id で分散されている場合に、orders テーブルを transactions テーブルに order_id で結合すると、このクエリはパススルー クエリになり、データの移動処理が行われなくなります。  手順が減るため、クエリは高速になります。  また、データの移動の減少もクエリの高速化に貢献します。  ここでは、大まかにしか説明しません。 分散テーブルを読み込む場合は、受信データを分散キーで並べ替えないでください。読み込みが遅くなります。  分散列を選択するとパフォーマンスがどのように向上するのかや、CREATE TABLES ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、次のリンクを参照してください。
+既定では、テーブルはラウンド ロビン分散です。  そのため、ユーザーはテーブルの分散方法を決定することなくテーブルの作成を簡単に開始できます。  ラウンド ロビン テーブルは一部のワークロードでは十分なパフォーマンスを示しますが、多くの場合、分散列を選択すると、パフォーマンスが大幅に向上します。  列で分散したテーブルのパフォーマンスがラウンド ロビン テーブルをはるかに上回る最も一般的な例としては、2 つの大規模なファクト テーブルが結合されている場合が挙げられます。  たとえば、orders テーブルが order_id で分散されており、transactions テーブルも order_id で分散されている場合に、orders テーブルを transactions テーブルに order_id で結合すると、このクエリはパススルー クエリになり、データの移動処理が行われなくなります。  手順が減るため、クエリは高速になります。  また、データの移動の減少もクエリの高速化に貢献します。  ここでは、大まかにのみ説明します。 分散テーブルを読み込む場合は、受信データを分散キーで並べ替えないでください。読み込みが遅くなります。  分散列を選択するとパフォーマンスがどのように向上するのかや、CREATE TABLES ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、次のリンクを参照してください。
 
 [テーブルの概要][Table overview]、[テーブル分散][Table distribution]、[テーブル分散の選択][Selecting table distribution]、[CREATE TABLE][CREATE TABLE]、[CREATE TABLE AS SELECT][CREATE TABLE AS SELECT] に関するページもご覧ください。
 
@@ -77,7 +73,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 [一時テーブル][Temporary tables]、[CREATE TABLE][CREATE TABLE]、[CREATE TABLE AS SELECT][CREATE TABLE AS SELECT] に関するページもご覧ください。
 
 ## <a name="optimize-clustered-columnstore-tables"></a>クラスター化列ストア テーブルを最適化する
-クラスター化列ストア インデックスは、SQL Data Warehouse にデータを格納する最も効率的な方法の 1 つです。  既定では、SQL Data Warehouse のテーブルは、クラスター化列ストアとして作成されます。  列ストア テーブルに対するクエリのパフォーマンスを最大限に引き出すには、セグメントの質が高いことが重要です。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  セグメントの質は、圧縮後の行グループに含まれる行の数を使って判断できます。  クラスター化列ストア テーブルのセグメントの品質を検出して向上させる詳細な手順については、[テーブル インデックス][Table indexes]に関するページの「[列ストア インデックスの品質の低さの原因][Causes of poor columnstore index quality]」を参照してください。  列ストア セグメントの質を高めることが非常に重要であるため、中規模または大規模リソース クラスのユーザー ID を使用して、データを読み込むことをお勧めします。 低い[サービス レベル](performance-tiers.md#service-levels)を使用すると、大きいリソース クラスを読み込みユーザーに割り当てることになります。
+クラスター化列ストア インデックスは、SQL Data Warehouse にデータを格納する最も効率的な方法の 1 つです。  既定では、SQL Data Warehouse のテーブルは、クラスター化列ストアとして作成されます。  列ストア テーブルに対するクエリのパフォーマンスを最大限に引き出すには、セグメントの質が高いことが重要です。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  セグメントの質は、圧縮後の行グループに含まれる行の数を使って判断できます。  クラスター化列ストア テーブルのセグメントの品質を検出して向上させる詳細な手順については、[テーブル インデックス][Table indexes]に関するページの「[列ストア インデックスの品質の低さの原因][Causes of poor columnstore index quality]」を参照してください。  列ストア セグメントの質を高めることが非常に重要であるため、中規模または大規模リソース クラスのユーザー ID を使用してデータを読み込むことをお勧めします。 低い[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)を使用すると、大きいリソース クラスを読み込みユーザーに割り当てることになります。
 
 通常、テーブルあたりの行数が 100 万を超え、各 SQL Data Warehouse テーブルが 60 個にパーティション分割されるまで、列ストア テーブルは圧縮された列ストア セグメントにデータをプッシュしません。そのため、経験上、テーブルの行数が 6,000 万を超えない限り、列ストア テーブルはクエリにとってメリットがありません。  6,000 万行未満のテーブルについては、列ストア インデックスを作成してもメリットがありません。  また、デメリットもありません。  さらに、データをパーティション分割する場合は、クラスター化列ストア インデックスの恩恵を受けるには、各パーティションに 100 万行が必要なことを考慮に入れる必要があります。  テーブルに 100 個のパーティションがある場合に、クラスター化列ストアの恩恵を受けるには、少なくとも 60 億行必要です (60 個のディストリビューション x 100 個のパーティション x 100 万行)。  この例でテーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。  列ストア テーブルの代わりに、ヒープ テーブルとセカンダリ インデックスを使用してパフォーマンスが向上するかどうかを試してみる価値もあります。
 
@@ -103,7 +99,7 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 ## <a name="other-resources"></a>その他のリソース
 一般的な問題と解決方法については、[トラブルシューティング][Troubleshooting]に関する記事もご覧ください。
 
-この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure SQL Data Warehouse ドキュメントで検索を実行してみてください。  [Azure SQL Data Warehouse の MSDN フォーラム][Azure SQL Data Warehouse MSDN Forum]は、他のユーザーや SQL Data Warehouse 製品グループに質問できる場所として設けられました。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL Data Warehouse Stack Overflow フォーラム][Azure SQL Data Warehouse Stack Overflow Forum]も用意しています。
+この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure SQL Data Warehouse ドキュメントで検索を実行してみてください。  [Azure SQL Data Warehouse フォーラム][Azure SQL Data Warehouse MSDN Forum]は、他のユーザーや SQL Data Warehouse 製品グループに質問できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL Data Warehouse Stack Overflow フォーラム][Azure SQL Data Warehouse Stack Overflow Forum]も用意しています。
 
 最後に、[Azure SQL Data Warehouse のフィードバック][Azure SQL Data Warehouse Feedback] ページを使用して、機能に関するご要望を是非お寄せください。  要望の追加や他の要求への投票は、機能の優先順位を決める際に役立ちます。
 
@@ -124,9 +120,9 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 [Guide for using PolyBase]: ./guidance-for-loading-data.md
 [Load data]: ./design-elt-data-loading.md
 [Move data with Azure Data Factory]: ../data-factory/transform-data-using-machine-learning.md
-[Load data with Azure Data Factory]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
+[Load data with Azure Data Factory]: ../data-factory/load-azure-sql-data-warehouse.md
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
-[Load data with PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
+[Load data with PolyBase]: ./load-data-wideworldimportersdw.md
 [Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
 [Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
 [Resume compute resources]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk

@@ -1,28 +1,26 @@
 ---
-title: "Azure SQL Data Warehouse での監査 | Microsoft Docs"
-description: "Azure SQL Data Warehouse での監査の概要"
+title: Azure SQL Data Warehouse での監査 | Microsoft Docs
+description: 監査と、Azure SQL Data Warehouse で監査を設定する方法について説明します。
 services: sql-data-warehouse
-documentationcenter: 
 author: ronortloff
-manager: jhubbard
-editor: 
-ms.assetid: 0e6af148-b218-4b43-bb5f-907917d20330
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.custom: security
-ms.date: 01/16/2018
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 5400f29d8c7579809ef7b2a084115473df7baa85
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/11/2018
+ms.author: rortloff
+ms.reviewer: jrj
+ms.openlocfilehash: 7bce59114dcfef7f9faa7f112c62dbb88044f2ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
+監査と、Azure SQL Data Warehouse で監査を設定する方法について説明します。
+
+## <a name="what-is-auditing"></a>監査とは
 SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、レポートと分析が容易になります。
 
 監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。 標準準拠をサポートする Azure プログラムの詳細については、 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure セキュリティ センター</a>のページを参照してください。

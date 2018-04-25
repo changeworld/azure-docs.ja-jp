@@ -1,30 +1,26 @@
 ---
-title: SQL Data Warehouse のトランザクションの最適化 | Microsoft Docs
-description: Azure SQL Data Warehouse で効率的なトランザクションの更新を記述するためのベスト プラクティス ガイダンス
+title: Azure SQL Data Warehouse のトランザクションの最適化 | Microsoft Docs
+description: ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: ''
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 03/15/2018
-ms.author: jrj;barbkess
-ms.openlocfilehash: 607c169e3d9e8aa741084392439da383f46cfe0c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 55fc317dc9e7a1401aef8c5431ba04d86822d333
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="optimizing-transactions-for-sql-data-warehouse"></a>SQL Data Warehouse のトランザクションの最適化
-この記事では、ロールバックに長時間かかるリスクを最小限に抑えながら、トランザクション コードのパフォーマンスを最適化する方法について説明します。
+# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのトランザクションの最適化
+ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 
 ## <a name="transactions-and-logging"></a>トランザクションとログ記録
-トランザクションは、リレーショナル データベース エンジンの重要な要素です。 SQL Data Warehouse では、データに変更を加える際にトランザクションを使用します。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 `INSERT` ステートメント、`UPDATE` ステートメント、および `DELETE` ステートメントは、いずれも暗黙的なトランザクションの例です。 明示的なトランザクションは、`BEGIN TRAN`、`COMMIT TRAN`、または`ROLLBACK TRAN` を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。 
+トランザクションは、リレーショナル データベース エンジンの重要な要素です。 SQL Data Warehouse では、データに変更を加える際にトランザクションを使用します。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 INSERT ステートメント、UPDATE ステートメント、および DELETE ステートメントはすべて、暗黙的なトランザクションの例です。 明示的なトランザクションでは、BEGIN TRAN、COMMIT TRAN、または ROLLBACK TRAN を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。 
 
 Azure SQL Data Warehouse では、トランザクション ログを使用してデータベースに変更をコミットします。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスでは書き込みが保証されず、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
 
@@ -33,7 +29,7 @@ Azure SQL Data Warehouse では、トランザクション ログを使用して
 * 特定のパーティションに対する大規模な変更に対しては、パーティション切り替えパターンを使用する
 
 ## <a name="minimal-vs-full-logging"></a>最小ログ記録と完全ログ記録の比較
-完全にログに記録される操作では、トランザクション ログにすべての行の変更が記録されるのに対して、最小限のログが記録される操作ではエクステントの割り当てとメタデータの変更のみが記録されます。 そのため、最小ログ記録では、障害の発生後、または明示的な要求 (`ROLLBACK TRAN`) によってトランザクションをロールバックするために必要な情報のみが記録されます。 最小ログ記録操作では、トランザクション ログに記録される情報がはるかに少なくなるため、同じサイズの完全ログ記録操作よりも処理速度が速くなります。 また、トランザクション ログへの書き込みが少なくなるため、生成されるログ データの量も少なくなり、I/O 効率が高くなります。
+完全にログに記録される操作では、トランザクション ログにすべての行の変更が記録されるのに対して、最小限のログが記録される操作ではエクステントの割り当てとメタデータの変更のみが記録されます。 そのため、最小ログ記録では、障害の発生後、または明示的な要求 (ROLLBACK TRAN) によってトランザクションをロールバックするために必要な情報のみが記録されます。 最小ログ記録操作では、トランザクション ログに記録される情報がはるかに少なくなるため、同じサイズの完全ログ記録操作よりも処理速度が速くなります。 また、トランザクション ログへの書き込みが少なくなるため、生成されるログ データの量も少なくなり、I/O 効率が高くなります。
 
 トランザクションの安全上の制限は、完全ログ記録操作にのみ適用されます。
 
@@ -45,7 +41,7 @@ Azure SQL Data Warehouse では、トランザクション ログを使用して
 ## <a name="minimally-logged-operations"></a>最小ログ記録操作
 次の操作は、最小ログ記録が可能です。
 
-* CREATE TABLE AS SELECT ([CTAS][CTAS])
+* CREATE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -61,12 +57,12 @@ Azure SQL Data Warehouse では、トランザクション ログを使用して
 -->
 
 > [!NOTE]
-> 内部データの移動操作 (`BROADCAST` や `SHUFFLE` など) は、トランザクションの安全上の制限の影響を受けません。
+> 内部データの移動操作 (BROADCAST や SHUFFLE など) は、トランザクションの安全上の制限の影響を受けません。
 > 
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>一括読み込みを使用した最小ログ記録
-`CTAS` と `INSERT...SELECT` はどちらも一括読み込み操作です。 ただし、どちらもターゲットのテーブル定義や読み込みシナリオによる影響を受けます。 次の表で、一括操作が完全に記録される場合と最小で記録される場合について説明します。  
+CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 ただし、どちらもターゲットのテーブル定義や読み込みシナリオによる影響を受けます。 次の表で、一括操作が完全に記録される場合と最小で記録される場合について説明します。  
 
 | プライマリ インデックス | 読み込みシナリオ | ログ モード |
 | --- | --- | --- |
@@ -87,7 +83,7 @@ Azure SQL Data Warehouse では、トランザクション ログを使用して
 クラスター化インデックスを持つ空でないテーブルにデータを読み込むと、完全ログ記録の行と最小ログ記録の行が混在する場合がよくあります。 クラスター化インデックスは、ページのバランス木 (B ツリー) です。 既に書き込みが行われているページに別のトランザクションの行が含まれている場合、この書き込みは完全ログ記録になります。 一方、ページが空の場合は、そのページへの書き込みは最小ログ記録になります。
 
 ## <a name="optimizing-deletes"></a>削除の最適化
-`DELETE` は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS][CTAS] を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME][RENAME] を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
+DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -118,9 +114,9 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>更新の最適化
-`UPDATE` は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS][CTAS] などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
+UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
 
-次の例では、最小ログ記録ができるように、テーブルの完全更新を `CTAS` に変換しています。
+次の例では、最小ログ記録ができるように、テーブルの完全更新を CTAS に変換しています。
 
 この例では、テーブル内の売上に割引金額をさかのぼって追加しています。
 
@@ -184,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>パーティションの切り替えを使用した最適化
-[テーブル パーティション][table partition]内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理すると同じ結果を得られます。
+[テーブル パーティション](sql-data-warehouse-tables-partition.md)内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理すると同じ結果を得られます。
 
 パーティション切り替えを実行する手順は次のとおりです。
 
@@ -416,23 +412,9 @@ Azure SQL Data Warehouse では、データ ウェアハウスの[一時停止�
 
 最善の策としては、実行中のデータ変更トランザクションが完了してから、SQL Data Warehouse の一時停止またはスケールを実行します。 ただし、このシナリオは、常に実用的であるわけではありません。 ロールバックに長時間かかる可能性を軽減するのに役立つ次のオプションを検討してください。
 
-* 長時間かかる操作を [CTAS][CTAS] を使用して書き換える
+* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を使用して書き換える
 * 操作をチャンクに分割し、行のサブセットに対して実行する
 
 ## <a name="next-steps"></a>次の手順
-分離レベルとトランザクションの制限の詳細については、「[SQL Data Warehouse のトランザクション][Transactions in SQL Data Warehouse]」を参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]」を参照してください。
-
-<!--Image references-->
-
-<!--Article references-->
-[Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
-[table partition]: ./sql-data-warehouse-tables-partition.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-[alter index]:https://msdn.microsoft.com/library/ms188388.aspx
-[RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
-
-<!-- Other web references -->
+分離レベルとトランザクションの制限の詳細については、「[SQL Data Warehouse のトランザクション](sql-data-warehouse-develop-transactions.md)」を参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。
 

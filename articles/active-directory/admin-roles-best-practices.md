@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -154,9 +154,9 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 すべてのユーザーが過去 90 日間に少なくとも 1 回管理者アカウントにサインインし、パスワードを変更したことを確認します。 また、複数のユーザーがパスワードを知っている共有アカウントのパスワードが最近変更されたことを確認します。
 
-#### <a name="turn-on-password-synchronization"></a>パスワード同期を有効にする
+#### <a name="turn-on-password-hash-synchronization"></a>パスワード ハッシュ同期をオンにする
 
-パスワード同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure Active Directory インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。 Active Directory フェデレーション サービス (AD FS) または他の ID プロバイダーでフェデレーションを使用する場合でも、AD サーバーや ADFS サーバーなどのオンプレミスのインフラストラクチャがエラーになるか一時的に利用不可になった場合のバックアップとしてパスワード同期を設定することもできます。 これにより、ユーザーは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じパスワードを使用してサービスにサインインできます。 また、ユーザーが Azure AD に接続されていない他のサービスと同じ電子メール アドレスおよびパスワードを利用している場合に、Identity Protection では、これらのパスワード ハッシュを侵害が検知されたパスワードと比較して、侵害された資格情報を検出できます。  詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)」をご覧ください。
+パスワード ハッシュ同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure Active Directory インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。 Active Directory フェデレーション サービス (AD FS) または他の ID プロバイダーでフェデレーションを使用する場合でも、AD サーバーや ADFS サーバーなどのオンプレミスのインフラストラクチャがエラーになるか一時的に利用不可になった場合のバックアップとしてパスワード ハッシュ同期を設定することもできます。 これにより、ユーザーは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じパスワードを使用してサービスにサインインできます。 また、ユーザーが Azure AD に接続されていない他のサービスと同じ電子メール アドレスおよびパスワードを利用している場合に、Identity Protection では、これらのパスワード ハッシュを侵害が検知されたパスワードと比較して、侵害された資格情報を検出できます。  詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)」をご覧ください。
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>すべての特権ロールに属するユーザーおよび露出しているユーザーに多要素認証 (MFA) を要求する
 
@@ -282,11 +282,11 @@ Azure Active Directory がオンプレミスの Active Directory に接続され
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>ホストされる仮想マシン内で、特権アカウントのインベントリを行う
 
-ほとんどの場合、すべての Azure サブスクリプションまたはリソースへの無制限のアクセス許可をユーザーに付与する必要はありません。 Azure AD 管理者ロールを使用して、組織内の職務を分離し、特定のジョブを実行する必要のあるユーザーに必要なアクセス権のみを付与します。 たとえば、Azure AD 管理者ロールを使用して、ある管理者がサブスクリプションで VM のみを管理できるようにし、他の管理者が同じサブスクリプション内で SQL データベースを管理できるようにします。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](role-based-access-control-what-is.md)」を参照してください。
+ほとんどの場合、すべての Azure サブスクリプションまたはリソースへの無制限のアクセス許可をユーザーに付与する必要はありません。 Azure AD 管理者ロールを使用して、組織内の職務を分離し、特定のジョブを実行する必要のあるユーザーに必要なアクセス権のみを付与します。 たとえば、Azure AD 管理者ロールを使用して、ある管理者がサブスクリプションで VM のみを管理できるようにし、他の管理者が同じサブスクリプション内で SQL データベースを管理できるようにします。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Azure AD 管理者ロールに対して PIM を実装する
 
-Azure AD 管理者ロールと共に Privileged Identity Management を使用して、Azure リソースへのアクセスを管理、制御、監視します。 PIM を使用して、特権の露出時間を短縮し、レポートとアラートを通じて使用状況の可視性を高めることで、特権アカウントをサイバー攻撃から保護します。 詳しくは、[Privileged Identity Management での Azure リソースへの RBAC アクセスの管理](pim-azure-resource.md)に関する記事をご覧ください。
+Azure AD 管理者ロールと共に Privileged Identity Management を使用して、Azure リソースへのアクセスを管理、制御、監視します。 PIM を使用して、特権の露出時間を短縮し、レポートとアラートを通じて使用状況の可視性を高めることで、特権アカウントをサイバー攻撃から保護します。 詳しくは、[Privileged Identity Management での Azure リソースへの RBAC アクセスの管理](../role-based-access-control/pim-azure-resource.md)に関する記事をご覧ください。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure ログ統合を使用して、関連する Azure ログを SIEM システムに送信する 
 

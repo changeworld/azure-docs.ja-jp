@@ -1,34 +1,30 @@
 ---
-title: "MPP アーキテクチャ - Azure SQL Data Warehouse とは | Microsoft Docs"
-description: "Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。"
+title: Azure SQL Data Warehouse - MPP アーキテクチャ | Microsoft Docs
+description: Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: architecture
-ms.date: 11/15/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: dd148b8fdf6a816233f7adc0a8a22f87c417a156
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ
 Azure SQL Data Warehouse が超並列処理 (MPP) と Azure ストレージを結合して、高いパフォーマンスとスケーラビリティを実現する方法を説明します。 
 
 ## <a name="mpp-architecture-components"></a>MPP アーキテクチャ コンポーネント
-SQL Data Warehouse では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、データ ウェアハウス ユニットと呼ばれるコンピューティング能力の抽象化です。 SQL Data Warehouse がコンピューティングをストレージから切り離すことで、ユーザーはシステム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
+SQL Data Warehouse では、スケールアウト アーキテクチャを活用して、複数のノードにデータの演算処理を分散します。 スケール単位は、データ ウェアハウス ユニットと呼ばれるコンピューティング能力の抽象化です。 SQL Data Warehouse がコンピューティングをストレージから切り離すことで、システム内のデータとは無関係に、コンピューティングをスケーリングできるようになります。
 
 ![SQL Data Warehouse のアーキテクチャ](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Data Warehouse では、ノード ベースのアーキテクチャを使用します。 アプリケーションは T-SQL コマンドに接続し、これをデータ ウェアハウスの単一のポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。 コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 Data Movement Service (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。 
+SQL Data Warehouse では、ノードベースのアーキテクチャを使用します。 アプリケーションは T-SQL コマンドに接続し、これをデータ ウェアハウスの単一のポイントである制御ノードに発行します。 制御ノードは、並列処理のためにクエリを最適化する MPP エンジンを実行し、操作をコンピューティング ノードに渡して作業を並行して行います。 コンピューティング ノードはすべてのユーザー データを Azure Storage に保存し、並行クエリを実行します。 Data Movement Service (DMS) はシステム レベルの内部サービスで、必要に応じて複数のノードにデータを移動し、クエリを並列に実行して、正確な結果を返します。 
 
 ストレージとコンピューティングを分離することで、SQL Data Warehouse は次のことができます。
 
@@ -91,7 +87,7 @@ SQL Data Warehouse では、ユーザー データを安全に保つために Az
 
 ![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
 
 * [顧客の成功事例]

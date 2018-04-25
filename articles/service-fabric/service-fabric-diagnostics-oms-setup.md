@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric - OMS Log Analytics での監視の設定 | Microsoft Docs
-description: Azure Service Fabric クラスターを監視するために Operations Management Suite を使用したイベントの視覚化と分析を設定する方法について説明します。
+title: Azure Service Fabric - Log Analytics での監視の設定 | Microsoft Docs
+description: Azure Service Fabric クラスターを監視するために Log Analytics を使用したイベントの視覚化と分析を設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/30/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: af09df52fe733b69cfe4470de2fd6e978f126ca0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>クラスターの Operations Management Suite Log Analytics を設定する
+# <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
-Operations Management Suite (OMS) ワークスペースは、Azure Resource Manager、PowerShell、または Azure Marketplace から設定できます。 将来のためにデプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って OMS 環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 OMS をデプロイするアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
+Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、または Azure Marketplace から設定できます。 将来のためにデプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って OMS 環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 OMS をデプロイするアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
 
 > [!NOTE]
-> クラスターを監視するように OMS を設定するには、クラスターまたはプラットフォーム レベルのイベントを確認できるように診断を有効にする必要があります。
+> クラスターを監視するように Log Analytics を設定するには、クラスター レベルまたはプラットフォーム レベルのイベントを確認できるように診断を有効にする必要があります。
 
 ## <a name="deploy-oms-by-using-azure-marketplace"></a>Azure Marketplace を使用して OMS をデプロイする
 
@@ -35,7 +35,7 @@ Operations Management Suite (OMS) ワークスペースは、Azure Resource Mana
 
 2. 「**Service Fabric Analytics**」を検索します。 表示されるリソースを選択します。
 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 
     ![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -200,7 +200,7 @@ $WorkspaceName = "<OMS Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId $SubID 
 
 # Create the resource group if needed

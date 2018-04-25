@@ -9,28 +9,24 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2aacc28a70a5150c1903a60c7a697409e2bbbe7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
 
 > [!NOTE] 
-> 現在、App Service および Azure Functions のための管理対象のサービス ID はプレビュー段階です。
+> 現在、App Service および Azure Functions のための管理対象のサービス ID はプレビュー段階です。 App Service on Linux と Web App for Containers は、現時点ではサポートされていません。
 
 このトピックでは、App Service および Azure Functions アプリケーション用の管理対象アプリ ID を作成し、それを使って他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory の管理対象のサービス ID を使うと、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 管理対象のサービス ID について詳しくは、「[Managed Service Identity overview](../active-directory/managed-service-identity/overview.md)」(管理対象のサービス ID の概要) をご覧ください。
 
 ## <a name="creating-an-app-with-an-identity"></a>ID を持つアプリの作成
 
 ID を持つアプリを作成するには、アプリケーションで追加のプロパティを設定する必要があります。
-
-> [!NOTE] 
-> サイトのプライマリ スロットのみが ID を受信します。 デプロイ スロット用の管理対象サービス ID はまだサポートされていません。
-
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
@@ -48,11 +44,11 @@ ID を持つアプリを作成するには、アプリケーションで追加�
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
-Azure CLI を使用して、管理対象のサービス ID を設定するには、既存のアプリケーションに対して `az webapp assign-identity` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
+Azure CLI を使用して、管理対象のサービス ID を設定するには、既存のアプリケーションに対して `az webapp identity assign` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
 - 以下の各コード ブロックの右上隅にある [試してみる] を利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
-- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.21 以降) をインストールする](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 
 
 次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
 
@@ -65,14 +61,14 @@ Azure CLI を使用して、管理対象のサービス ID を設定するには
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location westus
-    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
-    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    az appservice plan create --name myPlan --resource-group myResourceGroup --sku S1
+    az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. `assign-identity` コマンドを実行してこのアプリケーションの ID を作成します。
+3. `identity assign` コマンドを実行してこのアプリケーションの ID を作成します。
 
     ```azurecli-interactive
-    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用

@@ -1,11 +1,11 @@
 ---
-title: "REST を使用して Azure Media Services コンテンツを発行する"
-description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。"
+title: REST を使用して Azure Media Services コンテンツを発行する
+description: ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: ff332c30-30c6-4ed1-99d0-5fffd25d4f23
 ms.service: media-services
 ms.workload: media
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 9bcd7c099bb46795f6f33c073261c0b949ff536a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ab2da4e372759fb26d50daf519faecd1810c084d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST ()](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > * [ポータル](media-services-portal-publish.md)
 > 
 > 
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/08/2017
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
 >[!NOTE]
->に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
+>https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="create-an-ondemand-streaming-locator"></a>オンデマンド ストリーミング ロケーターを作成する
 オンデマンド ストリーミング ロケーターを作成して URL を取得するには、次の手順に従います。
@@ -72,7 +72,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0;NetFx
     Accept: application/json
     Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstest1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1424263184&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=NWE%2f986Hr5lZTzVGKtC%2ftzHm9n6U%2fxpTFULItxKUGC4%3d
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: 6bcfd511-a561-448d-a022-a319a89ecffa
     Host: media.windows.net
@@ -110,7 +110,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0;NetFx
     Accept: application/json
     Accept-Charset: UTF-8
-    Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstest1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1424263184&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=NWE%2f986Hr5lZTzVGKtC%2ftzHm9n6U%2fxpTFULItxKUGC4%3d
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17
     x-ms-client-request-id: ac159492-9a0c-40c3-aacc-551b1b4c5f62
     Host: media.windows.net

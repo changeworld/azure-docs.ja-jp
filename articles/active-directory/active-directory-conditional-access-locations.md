@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory の条件付きアクセスの場所の条件 | Microsoft Docs"
-description: "ユーザーのネットワークの場所に基づき、場所の条件を使用してクラウド アプリへのアクセスを制御する方法について説明します。"
+title: Azure Active Directory の条件付きアクセスの場所の条件 | Microsoft Docs
+description: ユーザーのネットワークの場所に基づき、場所の条件を使用してクラウド アプリへのアクセスを制御する方法について説明します。
 services: active-directory
-keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
-documentationcenter: 
+keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2018
+ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 687f3c4a5f70154b6335563d65443c12463b0b74
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの場所の条件 
 
@@ -43,7 +43,14 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 名前付きの場所を使用すると、IP アドレス範囲、国、地域の論理グループを作成できます。 
 
- 名前付きの場所には、次のコンポーネントがあります。
+[条件付きアクセス] ページの **[管理]** セクションで、名前付きの場所にアクセスできます。
+
+![場所](./media/active-directory-conditional-access-locations/02.png)
+
+ 
+
+
+名前付きの場所には、次のコンポーネントがあります。
 
 ![場所](./media/active-directory-conditional-access-locations/42.png)
 
@@ -68,13 +75,13 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-[多要素認証サービス設定](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)で組織のローカル イントラネットを表す IP アドレス範囲を構成することもできます。 この機能を使用すると、最大 50 の IP アドレス範囲を設定できます。 IP アドレス範囲は CIDR 形式です。 詳細については、[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) を参照してください。  
+[多要素認証サービス設定](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)で組織のローカル イントラネットを表す IP アドレス範囲を構成することもできます。 この機能を使用すると、最大 50 の IP アドレス範囲を設定できます。 IP アドレス範囲は CIDR 形式です。 詳細については、[信頼できる IP](authentication/howto-mfa-mfasettings.md#trusted-ips) を参照してください。  
 
 信頼できる IP が設定されている場合は、場所の条件の場所一覧に **MFA の信頼できる IP** と表示されます。   
 
 ### <a name="skipping-multi-factor-authentication"></a>多要素認証をスキップする
 
-多要素認証サービス設定ページでは、**[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択して、社内のイントラネット ユーザーを識別できます。 この設定は、AD FS から発行された社内ネットワークの要求を信頼し、社内ネットワーク上にあるユーザーを識別するために使用する必要があることを示します。 詳細については、[条件付きアクセスを使用した信頼できる IP 機能の有効化](../multi-factor-authentication/multi-factor-authentication-whats-next.md#enable-the-trusted-ips-feature-by-using-conditional-access)に関するセクションを参照してください。
+多要素認証サービス設定ページでは、**[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択して、社内のイントラネット ユーザーを識別できます。 この設定は、AD FS から発行された社内ネットワークの要求を信頼し、社内ネットワーク上にあるユーザーを識別するために使用する必要があることを示します。 詳細については、[条件付きアクセスを使用した信頼できる IP 機能の有効化](authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)に関するセクションを参照してください。
 
 このオプションをオンにした後、名前付きの場所の **MFA の信頼できる IP** は、これが選択されているすべてのポリシーに適用されます。
 

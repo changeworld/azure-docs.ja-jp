@@ -1,10 +1,10 @@
 ---
-title: "Azure のインスタンス レベル パブリック IP (クラシック) アドレス | Microsoft Docs"
-description: "インスタンス レベル パブリック IP (ILPIP) アドレスの概要と、PowerShell を使用してこれらを管理する方法について説明します。"
+title: Azure のインスタンス レベル パブリック IP (クラシック) アドレス | Microsoft Docs
+description: インスタンス レベル パブリック IP (ILPIP) アドレスの概要と、PowerShell を使用してこれらを管理する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 631b667b12941781a7e69361a0e731f94b7119f8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>インスタンス レベル パブリック IP (クラシック) の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM または Cloud Services ロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることができるパブリック IP アドレスです。 ILPIP は、クラウド サービスに割り当てられる仮想 IP (VIP) に代わるものではありません。 むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
@@ -144,6 +144,6 @@ Cloud Services ロール インスタンスに ILPIP を追加するには、次
     ```
 3. 「[Cloud Services の構成方法](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg)」に記載された手順を実行して、クラウド サービスの.cscfg ファイルをアップロードします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md) の仕組みを理解します。
 * [予約済み IP](virtual-networks-reserved-public-ip.md)について学習します。

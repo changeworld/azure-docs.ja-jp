@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c0e7f2060f81812cd69ed1af0246287757985243
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory と Multi-Factor Authentication: ID とアクセスの制御による個人のデータの保護
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="company-goal"></a>会社の目標
 
-会社の目標は、個人データへのアクセスが厳しく制御されるようにすることです。 個人データにアクセスできるユーザーの ID を強力な認証によって保護することが重要です。 [最低限の特権] のポリシー (https://en.wikipedia.org/wiki/Principle_of_least_privilege) を適用して、正当なユーザーが必要なレベルのアクセス権だけを持ち、それを超える権限を持たないようにする必要があります。
+会社の目標は、個人データへのアクセスが厳しく制御されるようにすることです。 個人データにアクセスできるユーザーの ID を強力な認証によって保護することが重要です。 [最小限の特権](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のポリシーを適用して、正当なユーザーが必要なレベルのアクセス権だけを持ち、それを超える権限を持たないようにする必要があります。
 
 ## <a name="solutions"></a>解決方法
 
@@ -83,11 +83,11 @@ AAD PIM の詳細と開始手順については、「[Azure AD Privileged Identi
 
 ### <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-[Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) によって、Azure 管理者は、ユーザーの割り当てられたロールに基づくアクセス権の付与を有効にして Azure リソースへのアクセスを管理できます。 チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。
+[Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) によって、Azure 管理者は、ユーザーの割り当てられたロールに基づくアクセス権の付与を有効にして Azure リソースへのアクセスを管理できます。 チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。
 
 ロールベースのアクセス権をユーザーに付与するには、Azure ポータル、Azure コマンドライン ツール、Azure Management API を使用します。
 
-Azure RBAC の基礎について詳しくは、「[Azure Portal でのロールベースの Access Control の基礎を確認する](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)」をご覧ください。
+Azure RBAC の基礎について詳しくは、「[Azure Portal でのロールベースの Access Control の基礎を確認する](https://docs.microsoft.com/azure/role-based-access-control/overview)」をご覧ください。
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>PowerShell を使ってAzure RBAC を管理する方法
 
@@ -111,7 +111,7 @@ PowerShell コマンドレットを使って Azure RBAC を管理できます。
 
 - カスタム ロールの一覧表示
 
-PowerShell で Azure RBAC を管理する手順については、「[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)」をご覧ください。
+PowerShell で Azure RBAC を管理する手順については、「[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)」をご覧ください。
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -125,7 +125,7 @@ Azure クラウドで MFA をデプロイするには、最初にそれを有効
 
 ![MFA が有効になっているユーザー](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-現在ライセンスを持っていない場合は、ご自分のシナリオに合った最適な展開の種類を決定するプロセスを経る必要があります。 最初に「[ニーズに応じた Azure Multi-Factor Autehntication ソリューションを選択する](../multi-factor-authentication/multi-factor-authentication-get-started.md)」というタイトルの記事をご覧ください。 決定したら、Multi-Factor Authentication サーバーを作成する必要があります。 次の手順に従って開始できます。
+現在ライセンスを持っていない場合は、ご自分のシナリオに合った最適な展開の種類を決定するプロセスを経る必要があります。 最初に「[ニーズに応じた Azure Multi-Factor Autehntication ソリューションを選択する](../active-directory/authentication/concept-mfa-whichversion.md)」というタイトルの記事をご覧ください。 決定したら、Multi-Factor Authentication サーバーを作成する必要があります。 次の手順に従って開始できます。
 
 1. Azure Portal (管理者としてログオン) で **[Active Directory]** を選択します。
 
@@ -137,7 +137,7 @@ Azure クラウドで MFA をデプロイするには、最初にそれを有効
 
 4. **[保存]**
 
-このウィンドウには、MFA Server をダウンロードするためのオプションもあります。 「[Azure Multi-Factor Authentication Server の概要](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)」の記事を確認すると、展開のサイズを決めて計画する方法について、さらに詳細な情報を入手できます。
+このウィンドウには、MFA Server をダウンロードするためのオプションもあります。 「[Azure Multi-Factor Authentication Server の概要](../active-directory/authentication/howto-mfaserver-deploy.md)」の記事を確認すると、展開のサイズを決めて計画する方法について、さらに詳細な情報を入手できます。
 
 多要素認証プロバイダーを管理する手順については、「[Azure Multi-Factor Auth プロバイダーの概要](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)」をご覧ください。
 
@@ -184,6 +184,6 @@ Azure MFA 設定を構成して、不正アクセスのアラートの設定、�
 
 - [Azure Multi-Factor Authentication についてよく寄せられる質問](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-faq)
 
-- [ロールベースのアクセス制御のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
+- [ロールベースのアクセス制御のトラブルシューティング](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
 
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

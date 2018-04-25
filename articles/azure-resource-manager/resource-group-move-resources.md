@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40e79ba584843787ad7744f91e14907deb99ccaa
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -193,6 +193,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
 
+仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 たとえば、仮想ネットワークと一緒にゲートウェイを移動する必要があります。
+
 ピアリングされた仮想ネットワークを移動するには、最初に仮想ネットワークのピアリングを無効にする必要があります。 無効にすると、仮想ネットワークを移動できます。 移動後に、仮想ネットワークのピアリングを再度有効にします。
 
 仮想ネットワークにリソース ナビゲーション リンクのあるサブネットが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 たとえば、Redis Cache リソースがサブネットにデプロイされている場合、そのサブネットにはリソース ナビゲーション リンクがあります。
@@ -350,11 +352,11 @@ Standard SKU のパブリック IP は移動できません。
 
 リソースを新しいリソース グループに移動するか新しいサブスクリプションに移動するかを選択します。
 
-移動するリソースを、移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]**を選択します。 前の手順でサブスクリプションの編集アイコンを選択した場合は、移動先のサブスクリプションも選択する必要があります。
+移動するリソースを、移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]** を選択します。 前の手順でサブスクリプションの編集アイコンを選択した場合は、移動先のサブスクリプションも選択する必要があります。
 
 ![移動先の選択](./media/resource-group-move-resources/select-destination.png)
 
-**[通知]**に、移動操作が実行されていることが表示されます。
+**[通知]** に、移動操作が実行されていることが表示されます。
 
 ![移動の状態の表示](./media/resource-group-move-resources/show-status.png)
 

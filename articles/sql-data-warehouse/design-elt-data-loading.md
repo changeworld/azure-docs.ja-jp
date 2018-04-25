@@ -3,18 +3,18 @@ title: ETL の代わりに Azure SQL Data Warehouse 用の ELT を設計する |
 description: ETL の代わりに、データの読み込みまたは Azure SQL Data Warehouse 用に抽出、読み込み、変換 (ELT) プロセスを設計します。
 services: sql-data-warehouse
 author: ckarst
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計
 
@@ -48,15 +48,15 @@ PolyBase を使用してデータを読み込むには、次のいずれかの�
 
 - [T-SQL を使用した PolyBase](load-data-from-azure-blob-storage-using-polybase.md) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。 
 - [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse) - ソース データが SQL Server にある場合に有効です。SQL Server の場所は、オンプレミス、クラウドを問いません。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。 
-- [Azure Data Factory (ADF) を使用した PolyBase](sql-data-warehouse-load-with-data-factory.md) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。 ADF を使用して JSON データを解析し、S​​QL Data Warehouse に読み込むことができます。
-- [Azure DataBricks を使用した PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) は、Azure Data Lake Store から SQL Data Warehouse にデータを転送します。 Azure DataBricks を使用して JSON データを解析し、そのデータを SQL Data Warehouse に読み込むことができます。 
+- [Azure Data Factory (ADF) を使用した PolyBase](sql-data-warehouse-load-with-data-factory.md) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。 
+- [Azure DataBricks を使用した PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) は、SQL Data Warehouse のテーブルから Databricks のデータフレームにデータを転送したり、Databricks のデータフレームから SQL Data Warehouse のテーブルにデータを書き込んだりします。
 
 ### <a name="polybase-external-file-formats"></a>PolyBase の外部ファイル形式
 
 PolyBase は、UTF-8 と UTF-16 でエンコードされた区切りテキスト ファイルからデータを読み込みます。 この区切りテキスト ファイルに加え、Hadoop ファイル形式の RC ファイル、ORC、Parquet からも読み込みます。 PolyBase は、Gzip や Snappy の圧縮ファイルからデータを読み込むことができます。 PolyBase では現在、拡張 ASCII、固定幅形式、および WinZip、JSON、XML などの入れ子形式はサポートされていません。
 
 ### <a name="non-polybase-loading-options"></a>PolyBase 以外の読み込みオプション
-使用するデータが PolyBase と互換性がない場合は、[bcp](sql-data-warehouse-load-with-bcp.md) または [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) を使用できます。 bcp では、Azure Blob Storage を通さずに直接 SQL Data Warehouse に読み込みます。また、小規模の読み込みのみを対象とします。 これらのオプションの読み込みパフォーマンスは、PolyBase と比べてはるかに低速であることに注意してください。 
+使用するデータが PolyBase と互換性がない場合は、[bcp](/sql/tools/bcp-utility) または [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) を使用できます。 bcp では、Azure Blob Storage を通さずに直接 SQL Data Warehouse に読み込みます。また、小規模の読み込みのみを対象とします。 これらのオプションの読み込みパフォーマンスは、PolyBase と比べてはるかに低速であることに注意してください。 
 
 
 ## <a name="extract-source-data"></a>ソース データの抽出
@@ -70,11 +70,8 @@ Azure Storage にデータを配置するには、[Azure Blob Storage](../storag
 Azure Storage へのデータの移動で使用できるツールやサービスは、次のとおりです。
 
 - [Azure ExpressRoute](../expressroute/expressroute-introduction.md) サービス - ネットワークのスループット、パフォーマンス、予測可能性を向上させます。 ExpressRoute は、専用プライベート接続を通してデータを Azure にルーティングするサービスです。 ExpressRoute 接続では、パブリック インターネットを通してデータをルーティングすることはありません。 ExpressRoute 接続は、パブリック インターネットを通る一般的な接続に比べて安全性と信頼性が高く、待機時間も短く、高速です。
-- [AZCopy ユーティリティ](../storage/common/storage-use-azcopy.md) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。
-
-詳細については、「[Azure Storage との間でのデータの移動](../storage/common/storage-moving-data.md)」をご覧ください。
-
+- [AZCopy ユーティリティ](../storage/common/storage-moving-data.md) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。 
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL Data Warehouse での Data Factory の使用については、[SQL Data Warehouse へのデータの読み込み](/azure/data-factory/load-azure-sql-data-warehouse)に関する記事をご覧ください。
 
 ## <a name="prepare-data"></a>データを準備する
 

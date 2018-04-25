@@ -1,10 +1,10 @@
 ---
-title: "VM (クラシック) のプライベート IP アドレスの構成 - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。"
+title: VM (クラシック) のプライベート IP アドレスの構成 - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bde6de3495c2909b63b1f85e420a4ff5e7ac2c1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b81f0fc1d504a0cb3422e003aa4ad7986396652
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -34,50 +34,52 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-次のサンプルの手順では、単純な環境が既に作成されていると想定します。 このドキュメントに表示されている手順を実行する場合は、まず、 [vnet の作成](virtual-networks-create-vnet-classic-pportal.md)に関する記事に示されているテスト環境を構築します。
+後述するサンプルの手順では、単純な環境が既に作成されていると想定しています。 このドキュメントに表示されている手順を実行する場合は、まず、 [vnet の作成](virtual-networks-create-vnet-classic-pportal.md)に関する記事に示されているテスト環境を構築します。
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する方法
-静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
+静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、次の手順を実行します。
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. **[新規]** > **[Compute]** > **[Windows Server 2012 R2 Datacenter]** の順にクリックし、**[デプロイ モデルの選択]** の一覧に既に **[クラシック]** と表示されているのを確認してから **[作成]** をクリックします。
+1. ブラウザーで https://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+2. **[新規]** > **[Compute]** > **[Windows Server 2012 R2 Datacenter]** の順に選択し、**[デプロイ モデルの選択]** の一覧に既に **[クラシック]** と表示されているのを確認してから **[作成]** を選択します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
-3. **[VM の作成]** ブレードで、作成する VM の名前 (ここでは*DNS01* )、ローカル管理者のアカウント、およびパスワードを入力します。
+3. **[VM の作成]** で、作成する VM の名前 (ここでは*DNS01* )、ローカル管理者のアカウント、およびパスワードを入力します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
-4. **[オプションの構成]** > **[ネットワーク]** > **[Virtual Network]** の順にクリックし、**[TestVNet]** をクリックします。 **[TestVNet]** を使用できない場合は、場所として *[米国中央部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
+4. **[オプションの構成]** > **[ネットワーク]** > **[Virtual Network]** の順に選択し、**[TestVNet]** を選択します。 **[TestVNet]** を使用できない場合は、場所として *[米国中央部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
-5. **[ネットワーク]** ブレードで、以下のように、現在選択されているサブネットが *FrontEnd* であることを確認し、**[IP アドレス]** をクリックしてから、**[IP アドレスの割り当て]** の下にある **[静的]** をクリックして、**[IP アドレス]** に 「*192.168.1.101*」と入力します。
+5. **[ネットワーク]** で、以下のように、現在選択されているサブネットが *FrontEnd* であることを確認し、**[IP アドレス]** を選択してから、**[IP アドレスの割り当て]** の下にある **[静的]** を選択して、**[IP アドレス]** に 「*192.168.1.101*」と入力します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
-6. **[IP アドレス]** ブレードで **[OK]** をクリックし、**[ネットワーク]** ブレードで **[OK]** をクリックしてから、**[オプションの構成]** ブレードで **[OK]** をクリックします。
-7. **[VM の作成]** ブレードで、**[作成]** をクリックします。 ダッシュ ボードに以下のタイルが表示されることを確認します。
+6. **[IP アドレス]** で **[OK]** を選択し、**[ネットワーク]** で **[OK]** を選択したら、**[オプションの構成]** で **[OK]** を選択します。
+7. **[VM の作成]** で **[作成]** を選択します。 ダッシュ ボードに以下のタイルが表示されることを確認します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
 上記の手順で作成された VM の静的プライベート IP アドレス情報を表示するには、次の手順を実行します。
 
-1. Azure Portal で、**[すべて参照]** > **[仮想マシン (クラシック)]** > **[DNS01]** > **[すべての設定]** > **[IP アドレス]** の順にクリックし、以下の IP アドレスの割り当てと IP アドレスを確認します。
+1. Azure Portal で、**[すべて参照]** > **[仮想マシン (クラシック)]** > **[DNS01]** > **[すべての設定]** > **[IP アドレス]** の順に選択し、以下の IP アドレスの割り当てと IP アドレスを確認します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する方法
-上記で作成した VM から静的プライベート IP アドレスを削除するには、以下の手順に従います。
 
-1. 上記の **[IP アドレス]** ブレードで、**[IP アドレスの割り当て]** の右にある **[動的]** をクリックしてから、**[保存]**、**[はい]** の順にクリックします。
+次の図に示すように、**[IP アドレス]** で、**[IP アドレスの割り当て]** の右側にある **[動的]** を選択し、**[保存]** を選択したら、**[はい]** を選択します。
    
-    ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する方法
-上記の手順を使用して作成した VM に静的プライベート IP アドレスを追加するには、次の手順に従います。
 
-1. 上記の **[IP アドレス]** ブレードで、**[IP アドレスの割り当て]** の右にある **[静的]** をクリックします。
-2. **[IP アドレス]** に「*192.168.1.101*」と入力してから、**[保存]**、**[はい]** の順にクリックします。
+1. 前に示した **[IP アドレス]** で、**[IP アドレスの割り当て]** の右にある **[静的]** をクリックします。
+2. **[IP アドレス]** に「*192.168.1.101*」と入力し、**[保存]** を選択してから **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
+
+VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure VM に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられるパブリック IP アドレスは、手動で割り当てないでください。
+
+## <a name="next-steps"></a>次の手順
 * [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
 * [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 * [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
