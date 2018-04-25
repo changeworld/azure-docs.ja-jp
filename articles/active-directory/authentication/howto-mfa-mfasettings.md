@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 7efcdd89de56cb80781dc06ebe5f590573f23b5a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f587800d3b1d205107b6c8091ca424b01b9e67e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
 この記事は、現在稼働中の Azure Multi-factor Authentication を管理するのに役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの [Azure Multi-factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need) ですべての機能を使用できるわけではありません。
 
-| 機能 | 説明 | 
+| Feature | [説明] | 
 |:--- |:--- |
 | [ユーザーのブロックおよびブロック解除](#block-and-unblock-users) |ユーザーのブロック/ブロック解除機能は、ユーザーが認証要求を受信できないようにする場合に使用します。 |
 | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、不正アクセスのアラート機能を構成します。 |
@@ -147,7 +147,7 @@ _キャッシュ_機能を使用して、ユーザー認証後の認証の試み
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者常駐型テナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication.md) に関するページを参照してください。
+Azure Multi-Factor Authentication の_信頼できる IP_ 機能は、管理者常駐型テナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
 
 組織がオンプレミスのアプリケーションに MFA を提供するために NPS 拡張機能をデプロイしている場合は、認証が試行されるとき、常にソース IP アドレスが NPS サーバーとして表示されます。
 
@@ -302,7 +302,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 ユーザーが信頼済みデバイスとブラウザーに対する _Multi-Factor Authentication の記憶_機能は、すべての Multi-Factor Authentication ユーザー向けの無料の機能です。 ユーザーは、Multi-Factor Authentication を使用して正常にデバイスにサインインした後、一定の日数の間、後続の確認をバイパスすることができます。 この機能により、ユーザーが同じデバイスで 2 段階認証を実行する必要がある回数を最小限に抑えることができるので、使いやすさを強化できます。
 
 >[!IMPORTANT]
->アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](../../multi-factor-authentication/multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
+>アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
 >
 >復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 >
@@ -346,7 +346,7 @@ _選択可能な検証方法_機能を使用して、ユーザーが使用でき
 
 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
-| 方法 | 説明 |
+| 方法 | [説明] |
 |:--- |:--- |
 | 電話の呼び出し |自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 電話番号は、オンプレミスの Active Directory には同期されません。 |
 | 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は廃止されており、2018 年 11 月 14 日以降はサポートされなくなります。 双方向 SMS 用に構成されているユーザーは、その時点で_電話の呼び出し_認証に自動的に切り替わります。|
@@ -363,4 +363,4 @@ _選択可能な検証方法_機能を使用して、ユーザーが使用でき
 
    ![検証方法を選択する](./media/howto-mfa-mfasettings/authmethods.png)
 
-6. **[保存]** をクリックします。
+6. **[Save]** をクリックします。

@@ -1,8 +1,8 @@
 ---
-title: "Linux VM MSI を使用した Azure Resource Manager へのアクセス"
-description: "Linux VM 管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。"
+title: Linux VM MSI を使用した Azure Resource Manager へのアクセス
+description: Linux VM 管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 842e0b42dee7e03f0ddb3f3a2445007a812ceb7e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 130d4756ff6be6b3a625e71536968c9dcbf92ad0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする
 
@@ -56,7 +56,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
 
-仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 内部的には、MSI を有効にすると、VM に MSI VM 拡張機能がインストールされ、VM の MSI が有効化されます。  
+仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
 
 1. MSI を有効にする**仮想マシン**を選択します。
 2. 左側のナビゲーション バーで、**[構成]** をクリックします。
@@ -64,10 +64,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 4. **[保存]** をクリックして構成を保存します。
 
     ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. この **Linux VM** で有効になっている拡張機能を確認する場合は、**[拡張機能]** をクリックします。 MSI が有効になっている場合、**ManagedIdentityExtensionforLinux** が一覧に表示されます。
-
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager で VM にリソース グループへのアクセスを許可する 
 
@@ -94,7 +90,7 @@ MSI を使用すると、Azure AD 認証をサポートするリソースに対�
     アクセス トークンの CURL 要求を次に示します。  
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
     
     > [!NOTE]

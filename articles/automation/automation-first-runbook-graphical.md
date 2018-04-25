@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d47a8a3d8343aaa17346cd63c055e8687f25f812
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
 
@@ -122,7 +122,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. キャンバスで **Connect-AzureRmAccount** を選択し、[構成コントロール] ウィンドウの **[ラベル]** ボックスに「**Login to Azure**」と入力します。
 1. **[パラメーター]** をクリックすると、[アクティビティ パラメーターの構成] ページが表示されます。
 1. **Connect-AzureRmAccount** には複数のパラメーター セットがあるため、パラメーター値を指定する前に、パラメーター セットを 1 つ選択する必要があります。 **[パラメーター セット]** をクリックして、**ServicePrincipalCertificate** パラメーター セットを選択します。
-1. パラメーター セットを選択すると、[アクティビティ パラメーター構成] ページにパラメーターが表示されます。 **[APPLICATIONID]** をクリックします。<br> ![Azure RM アカウントのパラメーターの追加](media/automation-first-runbook-graphical/Connect-AzureRmAccount-params.png)
+1. パラメーター セットを選択すると、[アクティビティ パラメーター構成] ページにパラメーターが表示されます。 **[APPLICATIONID]** をクリックします。<br> ![Azure RM アカウントのパラメーターの追加](media/automation-first-runbook-graphical/Add-AzureRmAccount-params.png)
 1. [パラメーター値] ページで、**[データ ソース]** に **[アクティビティの出力]** を選択します。一覧から **Get Run As Connection** を選択し、**[フィールド パス]** ボックスに「**ApplicationId**」と入力して、**[OK]** をクリックします。 フィールド パスにプロパティ名を指定するのは、アクティビティによって複数のプロパティを備えたオブジェクトが出力されるためです。
 1. **CERTIFICATETHUMBPRINT** をクリックし、[パラメーター値] ページで、**[データ ソース]** に **[アクティビティの出力]** を選択します。 一覧から **Get Run As Connection** を選択し、**[フィールド パス]** テキストに「**CertificateThumbprint**」と入力して、**[OK]** をクリックします。
 1. **SERVICEPRINCIPAL** をクリックし、[パラメーター値] ページで **[データ ソース]** に **ConstantValue** を選択します。オプションの **[True]** をクリックし、**[OK]** をクリックします。

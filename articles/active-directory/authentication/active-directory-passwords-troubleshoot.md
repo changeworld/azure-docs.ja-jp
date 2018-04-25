@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: d9720cb148af4199ab50a724b17158f9548f35b6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 53afdfd3286a224a824b58287fb835c3b98ede3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>イベントのソースが ADSync の場合
 
-| コード | 名前またはメッセージ | 説明 |
+| コード | 名前またはメッセージ | [説明] |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619: “A restriction prevents the password from being changed to the current one specified” (制限によりパスワードを現在指定されているパスワードに変更することができません) | このイベントは、パスワード ライトバック サービスが、パスワードの有効期間、履歴、複雑さ、またはフィルタリングに関するドメインの要件を満たしていないローカル ディレクトリにパスワードを設定しようとすると発生します。 <br> <br> パスワードの最小有効期間が残っていて、最近その期間内にパスワードを変更した場合は、そのドメインで指定された期限に達するまで、もう一度パスワードを変更することはできません。 テストのために、最小有効期間は 0 に設定する必要があります。 <br> <br> パスワードの履歴の要件が有効になっている場合は、最後の *N* 回で使用されていないパスワードを選択する必要があります。*N* はパスワードの履歴で設定します。 最後の *N* 回で使用されているパスワードを選択した場合は、エラーが表示されます。 テストのために、パスワードの履歴は 0 に設定する必要があります。 <br> <br> パスワードの複雑さの要件を指定する場合は、ユーザーがパスワードを変更またはリセットしようとすると、すべての要件が適用されます。 <br> <br> パスワード フィルターが有効になっている場合に、ユーザーがフィルター条件を満たしていないパスワードを選択すると、リセットまたは変更の操作に失敗します。 |
 | 6329 | MMS(3040): admaexport.cpp(2837): サーバーに LDAP のパスワード ポリシー コントロールが含まれていません。 | この問題は、DC で LDAP_SERVER_POLICY_HINTS_OID コントロール (1.2.840.113556.1.4.2066) が有効になっていない場合に発生します。 パスワード ライトバック機能を使用するのには、コントロールを有効にする必要があります。 これを行うには、DC が (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。 ドメイン コントローラーが 2008 (R2 より前のバージョン) にインストールされている場合は、修正プログラム [KB2386717](http://support.microsoft.com/kb/2386717) も適用する必要があります。 |
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>イベントのソースが PasswordResetService の場合
 
-| コード | 名前またはメッセージ | 説明 |
+| コード | 名前またはメッセージ | [説明] |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | このイベントは、オンプレミスのサービスが、クラウドから送信されたフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーへのパスワードのリセット要求を検出したことを示します。 このイベントは、すべてのパスワード リセットのライトバック操作における最初のイベントです。 |
 | 31002 | PasswordResetSuccess | このイベントは、パスワードのリセット操作中に、ユーザーが新しいパスワードを選択したことを示します。 このパスワードが企業のパスワード要件を満たしていると判断されました。 パスワードがローカルの Active Directory 環境に正常にライトバックされました。 |
@@ -304,7 +304,7 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](../active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

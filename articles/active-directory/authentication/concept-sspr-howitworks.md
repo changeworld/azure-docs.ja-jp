@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 9a19ac74cd8f7ed6ae680b2acb743101bbcaed44
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5933448b40a590b39df5ae4cf07fd858bebcd28f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -207,7 +207,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 ## <a name="on-premises-integration"></a>オンプレミスの統合
 
-Azure AD Connect のインストール、構成、有効化を行う場合、オンプレミス統合に関する次の追加オプションが表示されます。 これらのオプションがグレー表示になっている場合、ライトバックが適切に構成されていません。 詳しくは、「[パスワード ライトバックの構成](../active-directory-passwords-writeback.md#configure-password-writeback)」をご覧ください。
+Azure AD Connect のインストール、構成、有効化を行う場合、オンプレミス統合に関する次の追加オプションが表示されます。 これらのオプションがグレー表示になっている場合、ライトバックが適切に構成されていません。 詳しくは、「[パスワード ライトバックの構成](howto-sspr-writeback.md#configure-password-writeback)」をご覧ください。
 
 ![ライトバック][Writeback]
 
@@ -217,7 +217,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 * Azure AD Connect はオンラインであり、オンプレミスのライトバック クライアントに接続されていますが、 インストールされている Azure AD Connect のバージョンが古いようです。 最新の接続機能と重要なバグ フィックスを確実に入手するため、[Azure AD Connect のアップグレード](./../connect/active-directory-aadconnect-upgrade-previous-version.md)をご検討ください。
 * インストールされている Azure AD Connect のバージョンが古いため、残念ながらオンプレミスのライトバック クライアントの状態を確認できません。 [Azure AD Connect をアップグレードし](./../connect/active-directory-aadconnect-upgrade-previous-version.md)、接続の状態を確認できるようにしてください。
 * 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 [Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
-* パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](../active-directory-passwords-writeback.md#configure-password-writeback)、接続を復元してください。
+* パスワード ライトバックが正しく構成されていないため、残念ながらオンプレミスのライトバック クライアントに接続できません。 [パスワード ライトバックを構成し](howto-sspr-writeback.md#configure-password-writeback)、接続を復元してください。
 * 申し訳ございません。現在オンプレミスのライトバック クライアントに接続できないようです。 これはマイクロソフト側の一時的な問題が原因の可能性があります。 問題が解決しない場合は、[Azure AD Connect のトラブルシューティングを行い](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)、接続を復元してください。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>オンプレミス ディレクトリへのパスワード ライトバック
@@ -257,7 +257,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](../active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)

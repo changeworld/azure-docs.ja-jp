@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: fd0f021d451dbf722fe23da7bc414ceb523af17a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -52,7 +52,7 @@ NPS 拡張機能は、既存のインフラストラクチャで使用します�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](../../multi-factor-authentication/multi-factor-authentication.md) (Azure AD Premium、EMS、または MFA スタンドアロン ライセンスに含まれています) をお持ちのお客様にご利用いただけます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 
+Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](multi-factor-authentication.md) (Azure AD Premium、EMS、または MFA スタンドアロン ライセンスに含まれています) をお持ちのお客様にご利用いただけます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 
 
 ### <a name="software"></a>ソフトウェア
 
@@ -124,7 +124,7 @@ Azure で[サポートされていない認証方法を無効にする](howto-mf
 テスト アカウントを開始するには、次の手順を使用します。
 1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。 
 2. 表示されたメッセージに従って、確認方法を設定します。
-3. 条件付きアクセス ポリシーを作成するか、[ユーザー状態を変更](../../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md)して、テスト アカウントの 2 段階認証を要求します。 
+3. 条件付きアクセス ポリシーを作成するか、[ユーザー状態を変更](howto-mfa-userstates.md)して、テスト アカウントの 2 段階認証を要求します。 
 
 NPS 拡張機能を使って認証するには、この手順に従って登録しておく必要もあります。
 
@@ -176,7 +176,7 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 ### <a name="configuration-limitations"></a>構成の制限
 
 - Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
-- NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID や カスタム Active Directory フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成できます。 詳細については、[Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション](../../multi-factor-authentication/multi-factor-authentication-advanced-vpn-configurations.md)に関するページをご覧ください。
+- NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID や カスタム Active Directory フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成できます。 詳細については、[Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション](howto-mfaserver-nps-vpn.md)に関するページをご覧ください。
 - すべての暗号化プロトコルで、すべての検証メソッドがサポートされるわけではありません。
    - **PAP** は、電話、テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コードをサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
@@ -247,6 +247,6 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 
 - ログインに別の ID を設定するか、「[Advanced configuration options for the NPS extension for Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)」 (Multi-Factor Authentication の NPS 拡張機能の高度な構成オプション) の 2 段階認証を実行しない IP の例外リストを設定する
 
-- NPS 拡張機能を使用して[リモート デスクトップ ゲートウェイ](../../multi-factor-authentication/nps-extension-remote-desktop-gateway.md)と [VPN サーバー](../../multi-factor-authentication/nps-extension-vpn.md)を統合する方法を学習する
+- NPS 拡張機能を使用して[リモート デスクトップ ゲートウェイ](howto-mfa-nps-extension-rdg.md)と [VPN サーバー](howto-mfa-nps-extension-vpn.md)を統合する方法を学習する
 
 - [Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)

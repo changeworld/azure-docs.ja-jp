@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/11/2017
-ms.openlocfilehash: 0a90e97779416db7b7244cce9d6bdad740161051
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2db5398b7f252f723f342c1b978b27dd273321ec
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
 Stream Analytics ジョブに対するデータ接続は、データ ソースからのイベントのデータ ストリームです。これはジョブの "*入力*" と呼ばれます。 Stream Analytics は、Azure データ ストリーム ソース ([Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) など) と高度に統合されています。 分析ジョブと同じ Azure サブスクリプションまたは異なるサブスクリプションの入力ソースを指定できます。
@@ -129,6 +129,8 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 Stream Analytics の Blob Storage イベントの既定のタイムスタンプは BLOB が最後に変更されたときのタイムスタンプです。このタイムスタンプが `BlobLastModifiedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
 CSV 形式の入力についても、データ セットのフィールドを定義するためのヘッダー行が "*必須*" です。 また、ヘッダー行のフィールドはすべて一意であることが必要です。
+
+元のメッセージ (JSON、CSV、または AVRO) が IoT Hub または Event Hub から AVRO 形式で Blob Storage にルーティングされたものである場合、Stream Analytics は Blob Storage からのそのような入力を逆シリアル化できません。
 
 > [!NOTE]
 > Stream Analytics では、既存の BLOB ファイルにコンテンツを追加できません。 Stream Analytics は各ファイルを 1 回だけ表示します。ジョブがデータを読み取った後にファイルで発生した変更は処理されません。 ベスト プラクティスとして、すべての BLOB ファイルのデータを一度にアップロードし、追加の新しいイベントを、別の新しい BLOB ファイルに追加することをお勧めします。

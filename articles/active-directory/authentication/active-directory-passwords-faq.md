@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 34f014c98d9333598c10e85d100251e62685c476
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7500b456296dc69c70cd1b5500d40f7e007569b1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 04/19/2018
 
 * **Q: パスワード ライトバックは、バックグラウンドでどのように動作しますか。**
 
-  > **A:** パスワード ライトバックを有効にした場合の動作とシステム内でデータがオンプレミスの環境に戻る経路について詳しくは、「[パスワード ライトバックのしくみ](../active-directory-passwords-writeback.md)」をご覧ください。
+  > **A:** パスワード ライトバックを有効にした場合の動作とシステム内でデータがオンプレミスの環境に戻る経路について詳しくは、「[パスワード ライトバックのしくみ](howto-sspr-writeback.md)」をご覧ください。
   >
   >
 * **Q: パスワード ライトバックが機能するにはどれくらいの時間がかかりますか。パスワード ハッシュ同期のような同期遅延がありますか。**
@@ -279,7 +279,7 @@ ms.lasthandoff: 04/19/2018
   >
 * **Q: パスワード ライトバックはセキュリティで保護されていますか。ハッキングされないようにするにはどうすればよいですか。**
 
-  > **A:** はい。パスワード ライトバックはセキュリティで保護されています。 パスワード ライトバック サービスによって実装される 4 層のセキュリティについて詳しくは、「[パスワード ライトバックの概要](../active-directory-passwords-writeback.md)」記事の「[パスワード ライトバックのセキュリティ モデル](../active-directory-passwords-writeback.md#password-writeback-security-model)」セクションをご覧ください。
+  > **A:** はい。パスワード ライトバックはセキュリティで保護されています。 パスワード ライトバック サービスによって実装される 4 層のセキュリティについて詳しくは、「[パスワード ライトバックの概要](howto-sspr-writeback.md)」記事の「[パスワード ライトバックのセキュリティ モデル](howto-sspr-writeback.md#password-writeback-security-model)」セクションをご覧ください。
   >
   >
 
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/19/2018
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](../active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)

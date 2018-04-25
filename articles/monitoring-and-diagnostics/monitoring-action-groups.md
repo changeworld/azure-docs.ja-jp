@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/12/2018
 ms.author: dukek
-ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e3185b8d8ce97ffd04188b2b49a457bd14d5c6c8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -26,10 +26,10 @@ ms.lasthandoff: 03/23/2018
 
 アクション グループを使用して、アクションのリストを構成できます。 これらのグループは、定義する各アラートで使用できるため、アラートがトリガーされるときに特定のアクション グループが必ず呼び出されるようにすることができます。
 
-アクション グループには、最大 10 個のアクションの種類を設定できます。 各アクションは次のプロパティで構成されます。
+各アクションは次のプロパティで構成されます。
 
 * **名前**: アクション グループ内の一意識別子。  
-* **アクションの種類**: 音声通話または SMS の送信、電子メールの送信、webhook の呼び出し、ITSM ツールへのデータの送信、Azure アプリの呼び出し、または Automation Runbook の実行。
+* **アクションの種類**: 音声通話または SMS の送信、電子メールの送信、webhook の呼び出し、ITSM ツールへのデータの送信、ロジック アプリの呼び出し、Azure アプリへのプッシュ通知、または Automation Runbook の実行。
 * **詳細**: 対応する電話番号、メール アドレス、webhook の URI、または ITSM 接続の詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](monitoring-create-action-group-with-resource-manager-template.md)」を参照してください。
@@ -56,14 +56,45 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]**: このアクションの一意識別子を入力します。
 
-    b. **[アクションの種類]**: 電子メール/SMS/プッシュ/音声、webhook、ITSM、または Automation Runbook を選択します。
+    b. **[アクションの種類]**: 電子メール/SMS/プッシュ/音声、ロジック アプリ、webhook、ITSM、または Automation Runbook を選択します。
 
     c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、webhook の URI、Azure アプリ、ITSM 接続、Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
 
-   > [!NOTE]
-   > ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../log-analytics/log-analytics-itsmc-overview.md)の作成方法を確認してください。 
-
 8. **[OK]** を選択して、アクション グループを作成します。
+
+## <a name="action-specific-information"></a>アクション固有の情報
+<dl>
+<dt>Azure アプリのプッシュ</dt>
+<dd>アクション グループには、最大 10 個の Azure アプリのアクションがあります。</dd>
+<dd>現時点では Azure アプリのアクションは ServiceHealth アラートのみをサポートします。 その他のアラート日時は無視されます。 [サービスの正常性通知が投稿されるたびにアラートを設定](monitoring-activity-log-alerts-on-service-notifications.md)する方法を見る。</dd>
+
+<dt>電子メール</dt>
+<dd>アクション グループには、最大 50 個の電子メールのアクションがあります。</dd>
+<dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
+
+<dt>ITSM</dt>
+<dd>アクション グループには、最大 10 個の ITSM アクションがあります。</dd>
+<dd>ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../log-analytics/log-analytics-itsmc-overview.md)の作成方法を確認してください。</dd>
+
+<dt>ロジック アプリ</dt>
+<dd>アクション グループには、最大 10 個のロジック アプリのアクションがあります。</dd>
+
+<dt>Runbook</dt>
+<dd>アクション グループには、最大 10 個の Runbook アクションがあります。</dd>
+
+<dt>SMS</dt>
+<dd>アクション グループには、最大 10 個の SMS アクションがあります。</dd>
+<dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
+<dd>[SMS アラート動作](monitoring-sms-alert-behavior.md)の記事を見る</dd>
+
+<dt>音声</dt>
+<dd>アクション グループには、最大 10 個の音声アクションがあります。</dd>
+<dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
+
+<dt>webhook</dt>
+<dd>アクション グループには、最大 10 個の webhook アクションがあります。
+<dd>再試行ロジック - HTTP 状態コードの 408、429、503、504 が返されると、webhook の呼び出しが最大 3 回再試行されます。</dd>
+</dl>
 
 ## <a name="manage-your-action-groups"></a>アクション グループの管理 ##
 アクション グループを作成すると、**[モニター]** ブレードの **[アクション グループ]** セクションに表示されます。 次の操作を行うために管理するアクション グループを選択します。

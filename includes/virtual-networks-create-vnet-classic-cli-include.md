@@ -1,8 +1,24 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-network
+author: genlin
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: 749cc5a5e5b8417abe602b7e37c103a26cc4dc03
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/23/2018
+---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Azure CLI を使用して従来の VNet を作成する方法
-Azure CLI を使用すると、Windows、Linux、または OSX を実行している任意のコンピューターのコマンド プロンプトから Azure のリソースを管理することができます。 Azure CLI を使用して VNet を作成するには、次の手順に従います。
+Azure CLI を使用すると、Windows、Linux、または OSX を実行している任意のコンピューターのコマンド プロンプトから Azure のリソースを管理することができます。
 
 1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../articles/cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、 **azure network vnet create** コマンドを実行し、 VNet とサブネットを作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+2. VNet とサブネットを作成するには、次のように **azure network vnet create** コマンドを実行します。
    
             azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "Central US"
    
@@ -14,18 +30,18 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
             + Setting network configuration
             info:    network vnet create command OK
    
-   * **--vnet**。 作成する VNet の名前です。 ここでは、 *TestVNet*
-   * **-e (または --address-space)**。 VNet のアドレス空間です。 ここでは、 *192.168.0.0*
-   * **-i (または -cidr)**。 CIDR 形式のネットワーク マスクです。 ここでは、 *16*です。
-   * **-n (または --subnet-name**)。 最初のサブネットの名前です。 ここでは、 *FrontEnd*です。
-   * **-p (または --subnet-start-ip)**。 サブネットの開始 IP アドレス、またはサブネット アドレス空間です。 ここでは、 *192.168.1.0*です。
-   * **-r (または --subnet-cidr)**。 サブネットの CIDR 形式のネットワーク マスクです。 ここでは、 *24*です。
-   * **-l (または --location)**。 VNet が作成される Azure リージョンです。 ここでは、 *Central US*です。
-3. 次に示すように、 **azure network vnet subnet create** コマンドを実行してサブネットを作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+   * **--vnet**。 作成する VNet の名前です。 このシナリオでは、*TestVNet* です。
+   * **-e (または --address-space)**。 VNet のアドレス空間です。 このシナリオでは、*192.168.0.0* です。
+   * **-i (または -cidr)**。 CIDR 形式のネットワーク マスクです。 このシナリオでは、*16* です。
+   * **-n (または --subnet-name**)。 最初のサブネットの名前です。 このシナリオでは、*FrontEnd* です。
+   * **-p (または --subnet-start-ip)**。 サブネットの開始 IP アドレス、またはサブネット アドレス空間です。 このシナリオでは、*192.168.1.0* です。
+   * **-r (または --subnet-cidr)**。 サブネットの CIDR 形式のネットワーク マスクです。 このシナリオでは、*24* です。
+   * **-l (または --location)**。 VNet が作成される Azure リージョンです。 このシナリオでは、*Central US (米国中部)* です。
+3. サブネットを作成するには、次のように **azure network vnet subnet create** コマンドを実行します。
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
    
-    上記のコマンドで想定される出力を次に示します。
+    上記のコマンドで想定される出力は次のとおりです。
    
             info:    Executing command network vnet subnet create
             + Looking up network configuration
@@ -37,14 +53,14 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
             data:    Address prefix                  : 192.168.2.0/24
             info:    network vnet subnet create command OK
    
-   * **-t (または --vnet-name)**。 サブネットの作成先となる VNet の名前です。 ここでは、 *TestVNet*です。
-   * **-n (または --name)**。 新しいサブネットの名前です。 ここでは、 *BackEnd*です。
-   * **-a (または --address-prefix)**。 サブネットの CIDR ブロックです。 ここでは、 *192.168.2.0/24*です。
-4. 次に示すように、 **azure network vnet show** コマンドを実行して新しい VNet のプロパティを表示します。
+   * **-t (または --vnet-name)**。 サブネットの作成先となる VNet の名前です。 このシナリオでは、*TestVNet* です。
+   * **-n (または --name)**。 新しいサブネットの名前です。 このシナリオでは、*BackEnd* です。
+   * **-a (または --address-prefix)**。 サブネットの CIDR ブロックです。 このシナリオでは、*192.168.2.0/24* です。
+4. 新しい VNet のプロパティを表示するには、次のように **azure network vnet show** コマンドを実行します。
    
             azure network vnet show
    
-    上記のコマンドで想定される出力を次に示します。
+    上記のコマンドで想定される出力は次のとおりです。
    
             info:    Executing command network vnet show
             Virtual network name: TestVNet

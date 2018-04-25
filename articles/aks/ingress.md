@@ -9,17 +9,21 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0bc6035c3004587ae50f1c331dd3976883e9d34
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure Container Service (AKS) での HTTPS イングレス
 
 イングレス コントローラーは、リバース プロキシ、構成可能なトラフィック ルーティング、および Kubernetes サービスの TLS 終端を提供するソフトウェアです。 個別の Kubernetes サービスのイングレス ルールとルートを構成するには、Kubernetes イングレス リソースが使われます。 イングレス コントローラーとイングレス ルールを使うと、1 つの外部アドレスを使って Kubernetes クラスター内の複数のサービスにトラフィックをルーティングできます。
 
 このドキュメントでは、Azure Container Service (AKS) クラスターへの [NGINX イングレス コントローラー][nginx-ingress]のサンプル展開の手順を説明します。 さらに、[KUBE-LEGO][kube-lego] プロジェクトを使って、[Let's Encrypt][lets-encrypt] 証明書を自動的に生成して構成します。 最後に、単一のアドレスで個々にアクセスできる複数のアプリケーションを AKS クラスターで実行します。
+
+## <a name="prerequisite"></a>前提条件
+
+Helm CLI のインストール - インストール手順については、Helm CLI の[ドキュメント][helm-cli]を参照してください。
 
 ## <a name="install-an-ingress-controller"></a>イングレス コントローラーをインストールする
 
@@ -179,10 +183,12 @@ Kubernetes イングレス コントローラーの FQDN を参照すると、he
 
 このドキュメントで示されているソフトウェアについてさらに学習してください。 
 
+- [Helm CLI][helm-cli]
 - [NGINX イングレス コントローラー][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
+[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

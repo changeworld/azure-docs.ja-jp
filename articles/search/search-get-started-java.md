@@ -1,17 +1,18 @@
 ---
 title: Java での Azure Search の使用 | Microsoft Docs
 description: プログラミング言語として Java を使用して Azure でホスト型クラウド検索アプリケーションを作成する方法を説明します。
+services: search
 author: jj09
 manager: jlembicz
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/14/2016
 ms.author: jjed
-ms.openlocfilehash: 73e18b91412fd93897f9596077948fd7ea459e71
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]

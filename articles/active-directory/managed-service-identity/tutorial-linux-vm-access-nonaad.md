@@ -1,8 +1,8 @@
 ---
-title: "Linux VM の MSI を使用した Azure Key Vault へのアクセス"
-description: "Linux VM 管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。"
+title: Linux VM の MSI を使用した Azure Key Vault へのアクセス
+description: Linux VM 管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 8d962475fc2b40f042e1e746d892442b0275643b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: eb97c6ddf2300677dd1ecc94d149e0171f42e67e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Linux VM 管理対象サービス ID (MSI) を使用した Azure Key Vault へのアクセス 
 
@@ -57,7 +57,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
 
-仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 内部的には、MSI を有効にすると、VM に MSI VM 拡張機能がインストールされ、VM の MSI が有効化されます。  
+仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
 
 1. MSI を有効にする**仮想マシン**を選択します。
 2. 左側のナビゲーション バーで、**[構成]** をクリックします。
@@ -65,11 +65,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 4. **[保存]** をクリックして構成を保存します。
 
     ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. この **Linux VM** で有効になっている拡張機能を確認する場合は、**[拡張機能]** をクリックします。 MSI が有効になっている場合、**ManagedIdentityExtensionforLinux** が一覧に表示されます。
-
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
-
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Key Vault に格納されているシークレットへ VM のアクセスを許可する  
 
@@ -108,7 +103,7 @@ MSI を使用すると、Azure Active Directory 認証をサポートするリ�
     アクセス トークンの CURL 要求を次に示します。  
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
+    curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net -H Metadata:true  
     ```
     応答には、リソース マネージャーへのアクセスに必要なアクセス トークンが含まれています。 
     

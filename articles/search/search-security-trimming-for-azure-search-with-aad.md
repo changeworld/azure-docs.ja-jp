@@ -1,18 +1,17 @@
 ---
-title: "Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs"
-description: "セキュリティ フィルターと Active Directory ID を使用した Azure Search コンテンツに対するアクセス制御。"
-services: search
+title: Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs
+description: セキュリティ フィルターと Active Directory ID を使用した Azure Search コンテンツに対するアクセス制御。
 author: revitalbarletz
 manager: jlembicz
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: d7df9ede1851680fb6327cac7eed0a479928cea0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -97,7 +96,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>ステップ 4: グループ識別子をキャッシュする
-ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 (AAD Batch API)[https://developer.microsoft.com/graph/docs/concepts/json_batching] を使って、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
+ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 (AAD Batch API)[https://developer.microsoft.com/graph/docs/concepts/json_batching] を使用して、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
 
 Microsoft Graph は、大量の要求を処理できるように設計されています。 ただし、処理できないほど多数の要求が発生すると、Microsoft Graph は HTTP 状態コード 429 で要求を失敗させます。 詳しくは、「[Microsoft Graph 調整ガイド](https://developer.microsoft.com/graph/docs/concepts/throttling)」をご覧ください。
 

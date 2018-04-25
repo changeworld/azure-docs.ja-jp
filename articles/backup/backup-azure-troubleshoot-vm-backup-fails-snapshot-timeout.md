@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e2bd041bd5848ceb5f04f06601190fb0508aca1c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -29,7 +29,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM エージェントが Azure Backup と通信できない
 
-エラー メッセージ: "VM Agent unable to communicate with Azure Backup (VM エージェントが Azure Backup と通信できません)"
+エラー メッセージ: "VM Agent unable to communicate with Azure Backup (VM エージェントが Azure Backup と通信できません)"<br>
+エラー コード: "UserErrorGuestAgentStatusUnavailable"
 
 Backup サービスに VM を登録してスケジュール設定すると、Backup サービスは、VM エージェントと通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされずにバックアップが失敗する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。
 
@@ -41,7 +42,8 @@ Backup サービスに VM を登録してスケジュール設定すると、Bac
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>仮想マシンがネットワークに接続されていないためにスナップショット操作に失敗した
 
-エラー メッセージ: "仮想マシンがネットワークに接続していないため、スナップショット操作に失敗しました"
+エラー メッセージ: "仮想マシンがネットワークに接続していないため、スナップショット操作に失敗しました"<br>
+エラー コード: "ExtensionSnapshotFailedNoNetwork"
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。    
 **原因 1:[ VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**  
@@ -50,7 +52,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>VMSnapshot 拡張機能の操作に失敗した
 
-エラー メッセージ: "VMSnapshot の拡張操作に失敗しました"
+エラー メッセージ: "VMSnapshot の拡張操作に失敗しました"<br>
+エラー コード: "ExtentionOperationFailed"
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
 **原因 1:[ スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -60,7 +63,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>VM エージェントが応答しないためにバックアップに失敗する
 
-エラー メッセージ: "VM エージェントが応答していないため、この操作を実行できません"
+エラー メッセージ: "VM エージェントが応答していないため、この操作を実行できません" <br>
+エラー コード: "GuestAgentSnapshotTaskStatusError"
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
 **原因 1:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -69,7 +73,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 ## <a name="backup-fails-with-an-internal-error"></a>内部エラーでバックアップに失敗する
 
-エラー メッセージ: "バックアップ操作は内部エラーのため失敗しました - 数分以内に操作をやり直してください。"
+エラー メッセージ: "バックアップ操作は内部エラーのため失敗しました - 数分以内に操作をやり直してください。" <br>
+エラー コード: "BackUpOperationFailed"/"BackUpOperationFailedV2"
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
 **原因 1:[ VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**  
@@ -173,10 +178,12 @@ VMSnapshot 拡張機能に再読み込みを強制する 拡張機能をアン�
 拡張機能をアンインストールするには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com/) で、バックアップ エラーが発生している VM に移動します。
-2. **[設定]**を選択します。
+2. **[設定]** を選択します。
 3. **[拡張機能]** を選択します。
 4. **[Vmsnapshot 拡張機能]** を選択します。
 5. **[アンインストール]** を選択します。
+
+Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/linux/update-agent.md)してから、バックアップを実行してください。 
 
 この手順を済ませておくと、次回のバックアップ時に拡張機能が再インストールされます。
 

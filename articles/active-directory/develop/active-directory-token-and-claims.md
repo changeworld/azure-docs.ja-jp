@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8f9eb95f49e0d2bd01d9ead7eda7d13288bfd573
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a28811437668488c2207535cef3aa4640f17aa54
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
@@ -59,7 +59,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | 認証のインスタント |認証が行われた日時を記録します。 <br><br> **SAML 値の例**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |認証方法 |トークンのサブジェクトが認証された方法を示します。 <br><br> **SAML 値の例**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT 値の例**: `“amr”: ["pwd"]` |
 | `given_name` |名 |Azure AD ユーザー オブジェクトに設定されたユーザーの名を示します。 <br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **JWT 値の例**: <br> `"given_name": "Frank"` |
-| `groups` |グループ |サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **JWT 値の例**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+| `groups` |グループ |サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br> **注**: <br> 暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。  <br> 他のフローでは、ユーザーが属するグループの数が制限 (SAML の場合は 150、JWT の場合は 200) を超える場合、超過分要求に、ユーザーのグループ リストを含む、Graph エンドポイントを指す要求ソースが追加されます 。 <br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **JWT 値の例**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+|`hasgroups` | JWT の暗黙的なフロー グループ超過分インジケーター| 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。  すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。  クライアントが Graph を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
+| `groups:src1` <br> `http://schemas.microsoft.com/claims/groups.link` | グループ超過分インジケーター | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。  SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.microsoft.com/claims/groups.link”>`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` <br><br> **JWT 値の例**: <br> `"groups":"src1` <br> `_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
 | `idp` |ID プロバイダー |トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、ユーザー アカウントが発行者とは異なるテナントにある場合を除いて、発行者クレームの値と同じです。 <br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **JWT 値の例**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `iat` |IssuedAt |トークンが発行された時刻が格納されます。 このクレームは、トークンの鮮度を測定するためによく使用されます。 <br><br> **SAML 値の例**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **JWT 値の例**: <br> `"iat": 1390234181` |
 | `iss` |発行者 |トークンを構築して返す Security Token Service (STS) を識別します。 Azure AD が返すトークンでは、発行者は sts.windows.net です。 発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。 テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。 <br><br> **SAML 値の例**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **JWT 値の例**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |

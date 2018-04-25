@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights の Analytics のツアー | Microsoft Docs"
-description: "Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。"
+title: Azure Application Insights の Analytics のツアー | Microsoft Docs
+description: Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9727e3b715334837b959f22dd526caba221be62c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
 
 * **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
-* **[SQL ユーザーのチート シート](https://aka.ms/sql-analytics)**では、最も一般的な言語の対応付けを確認できます。
+* **[SQL ユーザーのチート シート](https://aka.ms/sql-analytics)** では、最も一般的な言語の対応付けを確認できます。
 
 作業を開始するための基本的なクエリをいくつか見てみましょう。
 
@@ -170,7 +170,7 @@ ms.lasthandoff: 02/01/2018
 
 ```
 
-[日付と時刻のリファレンス](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html)。
+[日付と時刻のリファレンス](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime)。
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): 列の選択、名前変更、計算を行う
@@ -541,7 +541,7 @@ requests
 ```csharp
 
     var dimensions = new Dictionary<string, string>
-                     {{"p1", "v1"},{"p2", "v2"}};
+                     {{"p1", "v1"},{"p2.d2", "v2"}};
     var measurements = new Dictionary<string, double>
                      {{"m1", 42.0}, {"m2", 43.2}};
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
@@ -554,7 +554,6 @@ Analytics でこれらの値を抽出するには、次のようにします。
     customEvents
     | extend p1 = customDimensions.p1,
       m1 = todouble(customMeasurements.m1) // cast to expected type
-
 ```
 
 カスタム ディメンションが特定の種類であるかどうかを確認するには、次のようにします。
@@ -565,6 +564,18 @@ Analytics でこれらの値を抽出するには、次のようにします。
     | extend p1 = customDimensions.p1,
       iff(notnull(todouble(customMeasurements.m1)), ...
 ```
+
+### <a name="special-characters"></a>特殊文字
+
+名前に特殊文字または言語キーワードを含む識別子の場合、`['` と `']`、または `["` と `"]` を使用してアクセスする必要があります。
+
+```AIQL
+
+    customEvents
+    | extend p2d2 = customDimensions.['p2.d2'], ...
+```
+
+[識別子の名前付け規則に関するリファレンス](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>ダッシュボード
 最も重要なグラフとテーブルをすべてまとめておくために、結果をダッシュボードにピン留めできます。

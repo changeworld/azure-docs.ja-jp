@@ -1,8 +1,8 @@
 ---
-title: "Windows VM MSI を使用して SAS 資格情報で Azure Storage にアクセスする"
-description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする方法を説明するチュートリアル。ストレージ アカウント アクセス キーの代わりに SAS 資格情報を使用します。"
+title: Windows VM MSI を使用して SAS 資格情報で Azure Storage にアクセスする
+description: Windows VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする方法を説明するチュートリアル。ストレージ アカウント アクセス キーの代わりに SAS 資格情報を使用します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: c12cf5e5c8f103434b973ccd7e50ea96b405d541
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f7fd733410ee59307d63de72c650c45d57b88575
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Windows VM 管理対象サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
@@ -58,7 +58,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
 
-仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 内部的には、MSI を有効にすると、仮想マシンに MSI VM 拡張機能がインストールされ、VM の MSI が有効化されます。  
+仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 MSI を有効にすると、内部では VM が Azure Active Directory に登録されてそのマネージド ID が作成され、VM で ID が構成されます。
 
 1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
 2. 左側のパネルで VM の [設定] の下にある **[構成]** をクリックします。
@@ -66,10 +66,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 4. **[保存]** をクリックして構成を保存します。
 
     ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. VM で有効になっている拡張機能を確認する場合は、**[拡張機能]** をクリックします。 MSI が有効になっている場合は、**ManagedIdentityExtensionforWindows** が一覧に表示されます。
-
-    ![イメージ テキスト](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
@@ -121,7 +117,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 4. Powershell の Invoke-WebRequest を使用して、ローカルの MSI エンドポイントに対して Azure Resource Manager のアクセス トークンを取得するよう要求します。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]

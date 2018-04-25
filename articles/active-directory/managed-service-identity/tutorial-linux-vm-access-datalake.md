@@ -1,11 +1,11 @@
 ---
-title: "Linux VM の管理対象サービス ID を使用した Azure Data Lake Store へのアクセス"
-description: "Linux VM の管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。"
+title: Linux VM の管理対象サービス ID を使用した Azure Data Lake Store へのアクセス
+description: Linux VM の管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: bef549a0cb8a876bbf8fbf281a6c2d1d489736af
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8b7e6cbd4bc7cfef349e9cebd9e4db537701a877
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Linux VM の管理対象サービス ID を使用した Azure Data Lake Store へのアクセス
 
@@ -58,16 +58,13 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="enable-msi-on-your-vm"></a>VM で MSI を有効にする
 
-仮想マシンの MSI を使用すると、コードに資格情報を埋め込まなくても、Azure AD からアクセス トークンを取得することができます。 MSI を有効にすると、VM に MSI VM 拡張機能がインストールされ、Azure Resource Manager で MSI が有効化されます。  
+VM MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 VM でマネージド サービス ID を有効にすると、VM が Azure Active Directory に登録されて、そのマネージド ID が作成され、VM で ID が構成されます。
 
 1. **Virtual Machine** の場合、MSI を有効にする仮想マシンを選択します。
 2. 左側のウィンドウで、**[構成]** を選択します。
 3. **管理対象のサービス ID** が表示されます。 MSI を登録して有効にするには、**[はい]** を選択します。 無効にする場合は、**[いいえ]** を選択します。
    ![[Azure Active Directory に登録する] の選択](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. **[保存]** を選択します。
-5. この Linux VM で有効になっている拡張機能を確認する場合は、**[拡張機能]** を選択します。 MSI が有効になっている場合、**ManagedIdentityExtensionforLinux** が一覧に表示されます。
-
-   ![拡張機能の一覧表示](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>VM に Azure Data Lake Store へのアクセスを許可する
 
@@ -78,8 +75,8 @@ Data Lake Store に新しいフォルダーを作成し、MSI にそのフォル
 1. Azure Portal の左側のウィンドウで **[Data Lake Store]** を選択します。
 2. 使用する Data Lake Store インスタンスを選択します。
 3. コマンド バーの **[データ エクスプローラー]** を選択します。
-4. Data Lake Store インスタンスのルート フォルダーが選択されます。 コマンド バーの **[アクセス]**を選択します。
-5. **[追加]**を選択します。  **[選択]** ボックスにお使いの VM の名前 (例: **DevTestVM**) を入力します。 検索結果からお使いの VM を選択し、**[選択]** をクリックします。
+4. Data Lake Store インスタンスのルート フォルダーが選択されます。 コマンド バーの **[アクセス]** を選択します。
+5. **[追加]** を選択します。  **[選択]** ボックスにお使いの VM の名前 (例: **DevTestVM**) を入力します。 検索結果からお使いの VM を選択し、**[選択]** をクリックします。
 6. **[アクセス許可の選択]** をクリックします。  **[読み取り]** と **[実行]** を選択して **[このフォルダー]** に追加し、**[An access permission only]\(アクセス許可のみ\)** として追加します。 **[OK]** を選びます。  アクセス許可が正常に追加されます。
 7. **[アクセス]** ウィンドウを閉じます。
 8. このチュートリアル用に新しいフォルダーを作成します。 コマンド バーの **[新しいフォルダー]** を選択し、この新しいフォルダーに名前 (例: **TestFolder**) を付けます。  **[OK]** を選びます。
@@ -105,7 +102,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 3. ターミナル ウィンドウで、cURL を使用して、ローカルの MSI エンドポイントに対して Data Lake Store ファイルシステムのアクセス トークンを取得するよう要求します。 Data Lake Store のリソース識別子は "https://datalake.azure.net/" です。  リソース識別子の末尾にスラッシュが含まれることが重要です。
     
    ```bash
-   curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   
+   curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
    ```
     
    成功応答では、次のように Data Lake Store への認証に使用するアクセス トークンが返されます。

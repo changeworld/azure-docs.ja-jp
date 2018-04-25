@@ -1,11 +1,11 @@
 ---
-title: "アクセス トークンの取得に Azure VM の管理対象サービス ID を使用する方法"
-description: "Azure VM の MSI を使用して OAuth アクセス トークンを取得するための詳細な手順と例。"
+title: アクセス トークンの取得に Azure VM の管理対象サービス ID を使用する方法
+description: Azure VM の MSI を使用して OAuth アクセス トークンを取得するための詳細な手順と例。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 0aec1ed570ba688288be4e7fcd9b74513234ea3d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 947e26aadd06e1420e95a6d25ff96e631265db3f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。
+この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。 VM 拡張機能エンドポイントは非推奨となるため、マネージド サービス ID と IMDS エンドポイントを一緒に使用することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,6 +33,9 @@ ms.lasthandoff: 03/08/2018
 
 > [!IMPORTANT]
 > - この記事のすべてのサンプル コード/スクリプトでは、クライアントが、MSI 対応の仮想マシンで実行されていることを前提としています。 お使いの VM にリモート接続するには、Azure ポータルで VM への "接続" 機能を使用します。 VM で MSI を有効にする方法の詳細については、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](qs-configure-portal-windows-vm.md)」、または関連する記事 (PowerShell、CLI、テンプレート、または Azure SDK を使用) のいずれかを参照してください。 
+
+> [!IMPORTANT]
+> - マネージド ID のセキュリティ境界は、リソースです。 MSI 対応仮想マシンで実行されているすべてのコード/スクリプトでは、トークンを要求して取得することができます。 
 
 ## <a name="overview"></a>概要
 
@@ -51,9 +54,23 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="get-a-token-using-http"></a>HTTP を使用してトークンを取得する 
 
-アクセス トークンの取得に使用する基本的なインターフェイスは REST に基づいているため、HTTP REST の呼び出しを行える VM 上で実行されている、すべてのクライアント アプリケーションにアクセスできます。 これは、クライアントが仮想マシン上の localhost エンドポイントを使用する点以外は、Azure AD のプログラミング モデルと同じです (Azure AD のプログラミング モデルでは、Azure AD エンドポイントを使用)。
+アクセス トークンの取得に使用する基本的なインターフェイスは REST に基づいているため、HTTP REST の呼び出しを行える VM 上で実行されている、すべてのクライアント アプリケーションにアクセスできます。 これは、クライアントが仮想マシン上のエンドポイントを使用する点以外は、Azure AD のプログラミング モデルと同じです (Azure AD のプログラミング モデルでは、Azure AD エンドポイントを使用)。
 
-要求のサンプル:
+MSI インスタンス メタデータ サービス (IMDS) エンドポイントを使用するサンプル要求 *(推奨)*:
+
+```
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+```
+
+| 要素 | [説明] |
+| ------- | ----------- |
+| `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
+| `http://169.254.169.254/metadata/identity/oauth2/token` | インスタンス メタデータ サービスの MSI エンドポイント。 |
+| `api-version`  | クエリ文字列パラメーター。IMDS エンドポイントの API バージョンです。  |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
+| `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。
+
+MSI VM 拡張機能エンドポイントを使用するサンプル要求 *(今後非推奨になる予定)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -66,6 +83,7 @@ Metadata: true
 | `http://localhost:50342/oauth2/token` | 構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
 | `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。
+
 
 応答のサンプル:
 
@@ -103,7 +121,7 @@ using System.Net;
 using System.Web.Script.Serialization; 
 
 // Build request to acquire MSI token
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://management.azure.com/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create(http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 
@@ -153,7 +171,7 @@ func main() {
     
     // Create HTTP request for MSI token to access Azure Resource Manager
     var msi_endpoint *url.URL
-    msi_endpoint, err := url.Parse("http://localhost:50342/oauth2/token")
+    msi_endpoint, err := url.Parse("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01")
     if err != nil {
       fmt.Println("Error creating URL: ", err)
       return 
@@ -213,8 +231,8 @@ func main() {
 
 ```azurepowershell
 # Get an access token for the MSI
-$response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token `
-                              -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+$response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F `
+                              -Headers @{Metadata="true"}
 $content =$response.Content | ConvertFrom-Json
 $access_token = $content.access_token
 echo "The MSI access token is $access_token"
@@ -229,27 +247,28 @@ echo $vmInfoRest
 ## <a name="get-a-token-using-curl"></a>CURL を使用してトークンを取得する
 
 ```bash
-response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s)
+response=$(curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
 echo The MSI access token is $access_token
 ```
 
-## <a name="handling-token-expiration"></a>トークンの有効期限の処理
+## <a name="token-expiration"></a>トークンの有効期限 
 
-ローカル MSI サブシステムではトークンがキャッシュされます。 したがって、トークンは好きなだけ呼び出すことができます。また、次の場合にのみ、Azure AD の結果に対するネットワーク呼び出しが可能です。
+コードでトークンをキャッシュする場合は、リソースがトークンの期限切れを示した場合のシナリオを処理できるよう準備する必要があります。 
+
+注: IMDS MSI サブシステムでトークンがキャッシュされるため、次の場合にのみ、Azure AD の結果に対するネットワーク呼び出しが可能です。
 - キャッシュにトークンがないため、キャッシュ ミスが発生した
 - トークンの有効期限が切れている
 
-コードでトークンをキャッシュする場合は、リソースがトークンの期限切れ示している場合のシナリオを処理できるよう準備する必要があります。
-
-## <a name="error-handling"></a>エラー処理 
+## <a name="error-handling"></a>エラー処理
 
 MSI エンドポイントは、HTTP 応答メッセージのヘッダーに含まれる状態コード フィールドを通じて、4xx エラーまたは 5xx エラーのいずれかとして、エラーを通知します。
 
 | 状態コード | エラーの理由 | 処理方法 |
 | ----------- | ------------ | ------------- |
+| 429 要求が多すぎます。 |  IMDS スロットルの上限に達しました。 | 指数バックオフを使用して再試行してください。 以下のガイダンスを参照してください。 |
 | 要求の 4xx エラーです。 | 1 つ以上の要求パラメーターが正しくありませんでした。 | 再試行はしないでください。  詳しくは、エラーの詳細を確認します。  4xx エラーは、デザイン時のエラーです。|
-| サービスからの 5xx の一時的なエラーです。 | MSI のサブシステムまたは Azure Active Directory から、一時的なエラーが返されました。 | 少なくとも 1 秒間待機した後に、安全に再試行できます。  再試行が早すぎる場合や再試行の回数が多すぎる場合は、Azure AD からレート制限エラー (429) が返されることがあります。|
+| サービスからの 5xx の一時的なエラーです。 | MSI のサブシステムまたは Azure Active Directory から、一時的なエラーが返されました。 | 少なくとも 1 秒間待機した後に、安全に再試行できます。  再試行が早すぎる場合や再試行の回数が多すぎる場合は、IMDS および Azure AD からレート制限エラー (429) が返されることがあります。|
 
 エラーが発生すると、対応する HTTP 応答本文に、JSON とエラーの詳細が含まれます。
 
@@ -273,6 +292,16 @@ MSI エンドポイントは、HTTP 応答メッセージのヘッダーに含�
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
 | 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、*\<file path\>* のログを参照してください | VM で MSI が有効化されていることを確認します。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](qs-configure-portal-windows-vm.md)」をご覧ください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](overview.md#azure-services-that-support-azure-ad-authentication)」で、サービスの一覧と、そのリソース ID を参照してください。
+
+## <a name="throttling-guidance"></a>スロットル ガイダンス 
+
+スロットル制限は、MSI IMDS エンドポイントの呼び出し回数に適用されます。 スロットルがしきい値を超えた場合、MSI IMDS エンドポイントは、スロットルが有効な状態にあっても、それ以降の要求を制限します。 この期間中は、MSI IMDS エンドポイントから HTTP 状態コード 429 ("要求が多すぎます") が返され、要求は失敗します。 
+
+再試行については、次の方法をお勧めします。 
+
+| **再試行戦略** | **設定** | **値** | **動作のしくみ** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |再試行回数<br />最小バックオフ<br />最大バックオフ<br />差分バックオフ<br />最初の高速再試行 |5<br />0 秒<br />60 秒<br />2 秒<br />false |試行 1 - 0 秒の遅延<br />試行 2 - 最大 2 秒の遅延<br />試行 3 - 最大 6 秒の遅延<br />試行 4 - 最大 14 秒の遅延<br />試行 5 - 最大 30 秒の遅延 |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure サービスのリソース ID
 
