@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f3278c064a01e3dea1d7a629b4a7b2e846a71208
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -31,45 +31,88 @@ Visual Studio C# の開発者は、Azure Functions を [Visual Studio 2017 に�
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
-[Azure Functions Core Tools] は、ローカル バージョンの Azure Functions ランタイムで、ローカルの開発コンピューターで実行できます。 エミュレーターまたはシミュレーターではありません。 Azure で Functions を実行するランタイムと同じです。 Azure Functions Core Tools には 2 つのバージョンがあります。1 つはランタイムのバージョン 1.x 用、もう 1 つはバージョン 2.x 用です。 両方のバージョンは [npm](https://docs.npmjs.com/getting-started/what-is-npm) パッケージとして用意されています。
+[Azure Functions Core Tools] は、ローカル バージョンの Azure Functions ランタイムで、ローカルの開発コンピューターで実行できます。 エミュレーターまたはシミュレーターではありません。 Azure で Functions を実行するランタイムと同じです。 Azure Functions Core Tools には、次の 2 つのバージョンがあります。
 
->[!NOTE]  
-> いずれかのバージョンをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。 
++ [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。 このバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。
++ [バージョン 2.x](#v2): ランタイムのバージョン 2.x をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。 
 
-### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+### <a name="v1"></a>バージョン 1.x
 
-バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、.NET Core 2.x がサポートするすべてのプラットフォームでサポートされています。 クロスプラットフォーム開発時、または Functions ランタイム 2.x が必要なときに、このバージョンを使用します。 
+元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework (4.7.1) を使用し、Windows コンピューターでのみサポートされます。 バージョン 1.x のツールをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。
 
->[!IMPORTANT]   
-> Azure Functions Core Tools をインストールする前に、[.NET Core 2.0](https://www.microsoft.com/net/core) をインストールします。  
->
-> Azure Functions ランタイム 2.0 はプレビュー段階であり、現在のところ、Azure Functions のすべての機能はサポートされていません。 詳細については、「[Azure Functions runtime 2.0 known issues](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)」(Azure Functions ランタイム 2.0 の既知の問題) を参照してください 
-
- 次のコマンドを使用して、バージョン 2.0 ツールをインストールします。
-
-```bash
-npm install -g azure-functions-core-tools@core
-```
-
-Ubuntu にインストールする場合は、次のように `sudo` を使用します。
-
-```bash
-sudo npm install -g azure-functions-core-tools@core
-```
-
-macOS および Linux 上にインストールする場合、次のように `unsafe-perm` フラグを含める必要があります。
-
-```bash
-sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
-```
-
-### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
-
-元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework を使用し、Windows コンピューターでのみサポートされます。 次のコマンドを使用して、バージョン 1.x ツールをインストールします。
+次のコマンドを使用して、バージョン 1.x ツールをインストールします。
 
 ```bash
 npm install -g azure-functions-core-tools
 ```
+
+### <a name="v2"></a>バージョン 2.x
+
+>[!NOTE]
+> Azure Functions ランタイム 2.0 はプレビュー段階であり、現在のところ、Azure Functions のすべての機能はサポートされていません。 詳細については、[Azure Functions のバージョン](functions-versions.md)に関するページを参照してください。 
+
+バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。
+
+#### <a name="windows-npm"></a>Windows
+
+次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
+
+1. [Windows 用 .NET Core 2.0 ](https://www.microsoft.com/net/download/windows)をインストールします。
+
+2. [Node.js]をインストールします。これには、npm が同梱されています。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
+
+3. 次のコマンドを使って、Core Tools のパッケージをインストールします。
+
+  ```bash
+  npm install -g azure-functions-core-tools@core
+  ```
+
+#### <a name="brew"></a>Homebrew による MacOS
+
+次の手順では、Homebrew を使用して macOS 上に Core Tools をインストールします。
+
+1. [macOS 用 .NET Core 2.0 ](https://www.microsoft.com/net/download/macos)をインストールします。
+
+1. まだインストールしていない場合は、[Homebrew](https://brew.sh/) をインストールします。
+
+2. 次のコマンドを使って、Core Tools のパッケージをインストールします。
+
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools 
+    ```
+
+#### <a name="linux"></a>APT による Linux (Ubuntu/Debian)
+
+次の手順では [APT ](https://wiki.debian.org/Apt)を使用して、Ubuntu/Debian Linux ディストリビューションに Core Tools をインストールします。 他の Linux ディストリビューションについては、[Core Tools の readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux) に関するページを参照してください。
+
+1. [Linux 用 .NET Core 2.0 ](https://www.microsoft.com/net/download/linux)をインストールします。
+
+1. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
+
+  ```bash
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  ```
+
+2.  次のコマンドの `<version>` を以下の表の適切なバージョン名に変更して、パッケージ フィードを設定します。
+
+  ```bash
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo apt-get update
+  ```
+
+  | Linux ディストリビューション | `<version>` |
+  | --------------- | ----------- |
+  | Ubuntu 17.10    | `artful`    |
+  | Ubuntu 17.04    | `zesty`     |
+  | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
+
+3. 次のコマンドを使って、Core Tools のパッケージをインストールします。
+
+  ```bash
+  sudo apt-get install azure-functions-core-tools
+  ```
 
 ## <a name="run-azure-functions-core-tools"></a>Azure Functions Core Tools の実行
  
@@ -137,15 +180,19 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 | Setting      | [説明]                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
-| **Values** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 **AzureWebJobsStorage** と **AzureWebJobsDashboard** は例です。完全な一覧については、[アプリの設定リファレンス](functions-app-settings.md)に関するページを参照してください。  |
+| **Values** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 **AzureWebJobsStorage** と **AzureWebJobsDashboard** は例です。完全な一覧については、[アプリの設定リファレンス](functions-app-settings.md)に関するページを参照してください。 多くのトリガーおよびバインドには、BLOB Storage トリガーの **Connection** など、アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 また、このことは、`%AppSettingName%` のようにパーセント記号で値をラッピングしてアプリ設定名に設定される、任意のバインド プロパティにも該当します。 |
 | **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 | 
 | **LocalHttpPort** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
 | **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
 | **ConnectionStrings** | 関数のデータベース接続文字列が含まれています。 このオブジェクト内の接続文字列は、**System.Data.SqlClient** のプロバイダーの種類と共に、環境に追加されます。  | 
 
-トリガーとバインディングのほとんどには、環境変数またはアプリ設定の名前にマップされた **Connection** プロパティが含まれています。 各接続プロパティについては、local.settings.json ファイルに定義されたアプリ設定である必要があります。 
+この設定は、コードの中で環境変数として読み込むこともできます。 詳細については、以下の言語固有のリファレンス トピックの「環境変数」のセクションを参照してください。
 
-この設定は、コードの中で環境変数として読み込むこともできます。 C# の場合は、[System.Environment.GetEnvironmentVariable](https://msdn.microsoft.com/library/system.environment.getenvironmentvariable(v=vs.110).aspx) または[ConfigurationManager.AppSettings](https://msdn.microsoft.com/library/system.configuration.configurationmanager.appsettings%28v=vs.110%29.aspx) を使用します。 JavaScript では、`process.env` を使用します。 システム環境変数として指定されている設定は、local.settings.json ファイル内の値よりも優先されます。 
++ [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
++ [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
++ [F#](functions-reference-fsharp.md#environment-variables)
++ [Java](functions-reference-java.md#environment-variables) 
++ [JavaScript](functions-reference-node.md#environment-variables)
 
 local.settings.json ファイル内の設定は、ローカルで実行されている Functions ツールでのみ使用されます。 既定では、プロジェクトが Azure に発行されても、これらの設定は自動的に移行されません。 [発行する際](#publish)に `--publish-local-settings` スイッチを使用して、これらの設定が Azure 内の関数アプリに追加されていることを確認してください。
 
@@ -275,7 +322,7 @@ curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-ブラウザーから GET 要求を行ってクエリ文字列でデータを渡すことができることに注意してください。 その他すべての HTTP メソッドについては、cURL、Fiddler、Postman、または類似の HTTP テスト ツールを使用する必要があります。  
+ブラウザーから GET 要求を行ってクエリ文字列でデータを渡すことが可能です。 その他すべての HTTP メソッドについては、cURL、Fiddler、Postman、または類似の HTTP テスト ツールを使用する必要があります。  
 
 #### <a name="non-http-triggered-functions"></a>HTTP でトリガーされない関数
 HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 HTTP POST 要求を使ってローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 必要に応じて、POST 要求の本体でテスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。  
@@ -361,3 +408,4 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
+[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

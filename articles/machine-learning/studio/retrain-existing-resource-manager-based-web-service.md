@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 67d75a28ba65dbdc0a3a105f9e41a1c4f02f2615
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f870bf1a282d7a044bb876e0015962b4f520a15f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
 このドキュメントでは、次のシナリオの再トレーニング プロセスについて説明します。
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/23/2018
 * 運用可能な Web サービスとしてデプロイされているトレーニング実験と予測実験があります。
 * 目的の予測 Web サービスのスコア付けに使用する新しいデータがあります。
 
-> [!NOTE] 
-> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 
+> [!NOTE]
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。
 
 既存の Web サービスと実験を開始するには、次の手順に従う必要があります。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/23/2018
 
 実験を実行します。
 
-次に、トレーニング実験を Web サービスとしてデプロイし、トレーニング済みのモデルとモデル評価の結果を生成する必要があります。  
+次に、トレーニング実験を Web サービスとしてデプロイし、トレーニング済みのモデルとモデル評価の結果を生成する必要があります。
 
 実験キャンバスの下部で、**[Web サービスの設定]** をクリックし、**Web サービスのデプロイ [新規]** を選択します。 Azure Machine Learning Web サービスのポータルが **[Web サービスのデプロイ]** ページに表示されます。 Web サービスの名前を入力し、支払プランを選択してから、 **[デプロイ]** をクリックします。 トレーニング済みのモデルの作成に使用できるのはバッチ実行メソッドのみです。
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/23/2018
 1. Visual Studio で C# コンソール アプリケーションを作成します (**[新規作成]** > **[プロジェクト]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** > **[コンソール アプリ (.NET Framework)]**)。
 2. Machine Learning Web サービス ポータルにサインインします。
 3. 使用する Web サービスをクリックします。
-4. **[Consume (使用)]**をクリックします。
+4. **[Consume (使用)]** をクリックします。
 5. **[Consume (使用)]** ページの下部の **[Sample Code (サンプル コード)]** セクションで **[Batch]** をクリックします。
 6. バッチ実行用 C# のサンプル コードをコピーして、Program.cs ファイルに貼り付けます。 名前空間は変更しないように注意します。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/23/2018
 **[Consume (使用)]Consume** ページの **[Basic consumption info (基本的な実行情報)]** セクションで、プライマリ キーを探して **apikey** 宣言にコピーします。
 
 ### <a name="update-the-azure-storage-information"></a>Azure Storage 情報を更新する
-BES サンプル コードは、ファイルをローカル ドライブ ("C:\temp\CensusIpnput.csv" など) から Azure Storage にアップロードして処理し、その結果を Azure Storage に書き込みます。  
+BES サンプル コードは、ファイルをローカル ドライブ ("C:\temp\CensusIpnput.csv" など) から Azure Storage にアップロードして処理し、その結果を Azure Storage に書き込みます。
 
 実験を実行すると、結果として得られるワークフローは次のようになります。
 
@@ -126,7 +126,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 ## <a name="evaluate-the-retraining-results"></a>再トレーニングの結果を評価する
 アプリケーションを実行すると、評価結果へのアクセスに必要な URL と Shared Access Signature トークンが出力に示されます。
 
-再トレーニング済みモデルのパフォーマンス結果を確認するには、*output2* の出力結果 (前の再トレーニング出力の画像を参照) の *BaseLocation*、*RelativeLocation*、*SasBlobToken* を組み合わせて、ブラウザーのアドレス バーに完全な URL を貼り付けます。  
+再トレーニング済みモデルのパフォーマンス結果を確認するには、*output2* の出力結果 (前の再トレーニング出力の画像を参照) の *BaseLocation*、*RelativeLocation*、*SasBlobToken* を組み合わせて、ブラウザーのアドレス バーに完全な URL を貼り付けます。
 
 この結果で、新しくトレーニングされたモデルが、既存のモデルに代わるのに十分なパフォーマンスを発揮しているかどうかを確認します。
 
@@ -136,7 +136,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 新しい Web サービスを再トレーニングする場合は、新しいトレーニング済みのモデルを参照するよう予測 Web サービス定義を更新します。 Web サービス定義は Web サービスのトレーニング済みのモデルの内部的な表現であり、直接変更できるものではありません。 トレーニング実験ではなく、予測実験の Web サービス定義を取得してください。
 
 ## <a name="sign-in-to-azure-resource-manager"></a>Azure Resource Manager にサインインする
-最初に [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。
+最初に [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。
 
 ## <a name="get-the-web-service-definition-object"></a>Web サービス定義オブジェクトを取得する
 [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを呼び出して Web サービス定義オブジェクトを取得します。

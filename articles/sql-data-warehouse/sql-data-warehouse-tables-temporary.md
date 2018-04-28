@@ -1,44 +1,29 @@
 ---
-title: "SQL Data Warehouse の一時テーブル | Microsoft Docs"
-description: "Azure SQL Data Warehouse の一時テーブルの概要です。"
+title: SQL Data Warehouse の一時テーブル | Microsoft Docs
+description: セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a3e06a4074bc7b5cd8612162a624718107a50656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
-> [!div class="op_single_selector"]
-> * [概要][Overview]
-> * [データ型][Data Types]
-> * [分散][Distribute]
-> * [インデックス][Index]
-> * [パーティション][Partition]
-> * [統計][Statistics]
-> * [一時][Temporary]
-> 
-> 
-
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。  Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
-
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。
 
+## <a name="what-are-temporary-tables"></a>一時テーブルとは
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。  Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
+
 ## <a name="create-a-temporary-table"></a>一時テーブルを作成する
-一時テーブルは、テーブル名にプレフィックス `#` を付けることで作成できます。  For example:
+一時テーブルは、テーブル名にプレフィックス `#` を付けることで作成できます。  例: 
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -231,21 +216,6 @@ DROP TABLE #stats_ddl;
 ## <a name="temporary-table-limitations"></a>一時テーブルの制限事項
 SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。  現時点では、セッションを範囲とした一時テーブルのみがサポートされています。  グローバル一時テーブルはサポートされていません。  また、一時テーブルでビューを作成することはできません。
 
-## <a name="next-steps"></a>次のステップ
-詳細については、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]に関する各記事を参照してください。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
+## <a name="next-steps"></a>次の手順
+テーブルの開発に関する詳細については、[テーブルの概要](sql-data-warehouse-tables-overview.md)を参照してください。
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

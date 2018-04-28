@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Linux VM 管理対象サービス ID (MSI) を使用した Azure Data Lake Store へのアクセス
 
@@ -80,13 +80,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 2. このチュートリアルで使用する Data Lake Store をクリックします。
 3. コマンド バーの **[データ エクスプローラー]** をクリックします。
 4. Data Lake Store のルート フォルダーが選択されます。  コマンド バーの **[アクセス]** をクリックします。
-5. **[追加]**をクリックします。  **[選択]** フィールドにお使いの VM の名前 (例: **DevTestVM**) を入力します。  検索結果からお使いの VM をクリックして選択し、**[選択]** をクリックします。
-6. **[アクセス許可の選択]** をクリックします。  **[読み取り]** と **[実行]** を選択して **[このフォルダー]** に追加し、**[An access permission only]\(アクセス許可のみ\)** として追加します。  **[OK]**をクリックします。  アクセス許可が正常に追加されます。
+5. **[追加]** をクリックします。  **[選択]** フィールドにお使いの VM の名前 (例: **DevTestVM**) を入力します。  検索結果からお使いの VM をクリックして選択し、**[選択]** をクリックします。
+6. **[アクセス許可の選択]** をクリックします。  **[読み取り]** と **[実行]** を選択して **[このフォルダー]** に追加し、**[An access permission only]\(アクセス許可のみ\)** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 7. **[アクセス]** ブレードを閉じます。
-8. このチュートリアル用に新しいフォルダーを作成します。  コマンド バーの **[新しいフォルダー]** をクリックし、この新しいフォルダーに名前 (例: **TestFolder**) を付けます。  **[OK]**をクリックします。
+8. このチュートリアル用に新しいフォルダーを作成します。  コマンド バーの **[新しいフォルダー]** をクリックし、この新しいフォルダーに名前 (例: **TestFolder**) を付けます。  **[OK]** をクリックします。
 9. 作成したフォルダーをクリックし、コマンド バーの **[アクセス]** をクリックします。
 10. 手順 5 と同様に **[追加]** をクリックし、**[選択]** フィールドに VM の名前を入力したあと、この VM を選択して **[選択]** をクリックします。
-11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、**[読み取り]**、**[書き込み]** および**[実行]**を選択して **[このフォルダー]** に追加したあと、**[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]**をクリックします。  アクセス許可が正常に追加されます。
+11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、**[読み取り]**、**[書き込み]** および **[実行]** を選択して **[このフォルダー]** に追加したあと、**[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 
 この時点でお使いの VM の MSI は、作成したフォルダーのファイルに対してすべての操作を実行できます。  Data Lake Store のアクセス管理の詳細については、[Data Lake Store のアクセスの制御](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)に関するページの記事をご覧ください。
 
@@ -187,7 +187,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 ## <a name="related-content"></a>関連コンテンツ
 
 - MSI の概要については、[管理対象サービス ID の概要](msi-overview.md)に関する記事をご覧ください。
-- Data Lake Store の管理操作には、Azure Resource Manager を使用します。  VM の MSI を使用して、Resource Manager に認証する方法の詳細については、[Linux VM での管理対象サービス ID を使用した Resource Manager へのアクセス](msi-tutorial-linux-vm-access-arm.md)に関するページをご覧ください。
+- Data Lake Store の管理操作には、Azure Resource Manager を使用します。  VM の MSI を使用して、Resource Manager に認証する方法の詳細については、[Linux VM での管理対象サービス ID を使用した Resource Manager へのアクセス](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md)に関するページをご覧ください。
 - 詳細については、「[Data Lake Store での Azure Active Directory を使用した認証](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)」をご覧ください。
 - 詳細については、「[REST API を使用した Azure Data Lake Store に対するファイルシステム操作](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md)」または「[WebHDFS FileSystem APIs (WebHDFS ファイルシステム API)](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md)」をご覧ください。
 - 詳細については、「[Azure Data Lake Store のアクセス制御](~/articles/data-lake-store/data-lake-store-access-control.md)」をご覧ください。

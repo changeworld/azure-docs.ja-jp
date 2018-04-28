@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services チュートリアルの補足のレッスン: 詳細行 | Microsoft Docs"
-description: "この Azure Analysis Services チュートリアルでは、詳細行の式を作成する方法について説明します。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアルの補足のレッスン: 詳細行 | Microsoft Docs'
+description: この Azure Analysis Services チュートリアルでは、詳細行の式を作成する方法について説明します。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 02e9edd966e64c0bfa32e2b80f4c26f797e58582
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>補足のレッスン - 詳細行
 
@@ -43,7 +36,7 @@ ms.lasthandoff: 01/09/2018
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-ここで表示したいのは、InternetTotalSales メジャーの集計結果に寄与するデータの列と行が含まれたテーブルです。 そのために、メジャーのプロパティとして詳細行の式を追加します。
+ここでの目的は、InternetTotalSales メジャーの集計結果に寄与するデータの列と行が含まれたテーブルです。 そのために、メジャーのプロパティとして詳細行の式を追加します。
 
 ## <a name="add-a-detail-rows-expression"></a>詳細行の式を追加する
 
@@ -80,6 +73,8 @@ ms.lasthandoff: 01/09/2018
 
   
 ## <a name="see-also"></a>関連項目  
-[SELECTCOLUMNS 関数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
-[補足のレッスン - 動的なセキュリティ](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
-[補足のレッスン - 不規則階層](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+
+[SELECTCOLUMNS 関数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[補足のレッスン - 動的なセキュリティ](../tutorials/aas-supplemental-lesson-dynamic-security.md)   
+[補足のレッスン - 不規則階層](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)   
+ 

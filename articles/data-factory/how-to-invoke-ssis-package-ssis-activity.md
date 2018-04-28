@@ -1,0 +1,372 @@
+---
+title: Azure Data Factory で SSIS アクティビティを使用して SSIS パッケージを実行する | Microsoft Docs
+description: この記事では、SSIS アクティビティを使用して SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインから実行する方法について説明します。
+services: data-factory
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
+ms.service: data-factory
+ms.workload: data-services
+ms.tgt_pltfrm: ''
+ms.devlang: powershell
+ms.topic: article
+ms.date: 04/17/2018
+ms.author: douglasl
+ms.openlocfilehash: 6c8bbe7ef7f74638b978cdad5b59a89fd81d12a5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/18/2018
+---
+# <a name="run-an-ssis-package-using-the-ssis-activity-in-azure-data-factory"></a>Azure Data Factory で SSIS アクティビティを使用して SSIS パッケージを実行する
+この記事では、SSIS アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから実行する方法について説明します。 
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 SSIS アクティビティは、一般公開 (GA) されている Data Factory サービスのバージョン 1 では使用できません。 Data Factory サービスのバージョン 1 で SSIS パッケージを実行する代替方法については、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)方法に関するページを参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+### <a name="azure-sql-database"></a>Azure SQL Database 
+この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージ インスタンス (プレビュー) を使うこともできます。
+
+## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
+Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。
+
+## <a name="data-factory-ui-azure-portal"></a>データ ファクトリ UI (Azure Portal)
+このセクションでは、データ ファクトリ UI を使用して、SSIS パッケージを実行する SSIS プロシージャ アクティビティを含む Data Factory パイプラインを作成します。
+
+### <a name="create-a-data-factory"></a>Data Factory を作成する。
+最初の手順として、Azure Portal を使用してデータ ファクトリを作成します。 
+
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com) に移動します。 
+3. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+   
+   ![New->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
+2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+      
+     ![[新しいデータ ファクトリ] ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
+ 
+   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 名前フィールドで次のエラーが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+  
+     ![名前は使用できません - エラー](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
+3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
+4. **[リソース グループ]** について、次の手順のいずれかを行います。
+     
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
+         
+    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+4. **バージョン**として **[V2 (プレビュー)]** を選択します。
+5. データ ファクトリの **場所** を選択します。 Data Factory でサポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他の場所に配置できます。
+6. **[ダッシュボードにピン留めする]** をオンにします。     
+7. **Create** をクリックしてください。
+8. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
+
+    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
+   
+    ![データ ファクトリのホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。 
+
+### <a name="create-a-pipeline-with-an-ssis-activity"></a>SSIS アクティビティを含むパイプラインを作成する
+この手順では、データ ファクトリ UI を使用してパイプラインを作成します。 パイプラインに SSIS アクティビティを追加し、SSIS パッケージを実行するように構成します。 
+
+1. 開始ページで **[Create Pipeline]\(パイプラインの作成\)** をクリックします。 
+
+    ![開始ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+2. **[アクティビティ]** ツールボックスで **[一般]** を展開し、**[SSIS パッケージ]** アクティビティをドラッグしてパイプライン デザイナー画面にドロップします。 
+
+   ![SSIS アクティビティをデザイナー画面にドラッグする](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+
+3. SSIS アクティビティのプロパティの **[一般]** タブで、アクティビティの名前と説明を入力します。 オプションのタイムアウト値と再試行値を設定します。
+
+    ![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+
+4. SSIS アクティビティのプロパティの **[設定]** タブで、パッケージが展開される `SSISDB` データベースに関連付けられている Azure-SSIS Integration Runtime を選択します。 `<folder name>/<project name>/<package name>.dtsx` という形式で `SSISDB` データベースのパッケージ パスを指定します。 必要に応じて、32 ビットの実行と、事前定義されたログ レベルまたはカスタム ログ レベルを指定し、`<folder name>/<environment name>` という形式で環境パスを指定します。
+
+    ![[設定] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+
+5. パイプラインの構成を検証するために、ツール バーの **[検証]** をクリックします。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
+
+6. **[Publish All]\(すべて発行\)** ボタンをクリックして、データ ファクトリにパイプラインを発行します。 
+
+### <a name="run-and-monitor-the-pipeline"></a>パイプラインを実行して監視する
+このセクションでは、パイプラインの実行をトリガーして監視します。 
+
+1. パイプラインの実行をトリガーするために、ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+
+    ![[Trigger Now]\(今すぐトリガー\)](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
+
+2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。 
+3. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、**[Refresh]\(最新の情報に更新\)** をクリックします。
+
+    ![パイプライン実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+
+3. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプラインに 1 つしかアクティビティ (SSIS アクティビティ) がないので、アクティビティの実行が 1 つだけ表示されます。
+
+    ![アクティビティの実行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
+
+4. 次の**クエリ**を Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+
+    ```sql
+    select * from catalog.executions
+    ```
+
+    ![パッケージの実行を確認する](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+
+
+> [!NOTE]
+> また、パイプラインがスケジュール上で実行されるように (時間単位、日次など)、お使いのパイプラインのスケジュールされたトリガーを作成します。 例については、「[Create a data factory - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)」 (データ ファクトリの作成 - データ ファクトリ UI ) リンクをご確認ください。
+
+## <a name="azure-powershell"></a>Azure PowerShell
+このセクションでは、Azure PowerShell を使用して、SSIS パッケージを実行する SSIS プロシージャ アクティビティを含む Data Factory パイプラインを作成します。 
+
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。 
+
+### <a name="create-a-data-factory"></a>Data Factory を作成する。
+Azure-SSIS IR と同じデータ ファクトリを使用することも、別のデータ ファクトリを作成することもできます。 次の手順では、データ ファクトリを作成する方法を説明します。 SSIS アクティビティが含まれたパイプラインをデータ ファクトリに作成します。 この SSIS アクティビティは SSIS パッケージを実行します。 
+
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
+   
+     ```powershell
+    $resourceGroupName = "ADFTutorialResourceGroup";
+    ```
+
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+2. Azure リソース グループを作成するには、次のコマンドを実行します。 
+
+    ```powershell
+    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
+    ``` 
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
+3. データ ファクトリ名の変数を定義します。 
+
+    > [!IMPORTANT]
+    >  データ ファクトリ名は、グローバルに一意となるように更新してください。 
+
+    ```powershell
+    $DataFactoryName = "ADFTutorialFactory";
+    ```
+
+5. データ ファクトリを作成するには、$ResGrp 変数の Location および ResourceGroupName プロパティを使用して、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+    
+    ```powershell       
+    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
+                                            -Location $ResGrp.Location `
+                                            -Name $dataFactoryName 
+    ```
+
+以下の点に注意してください。
+
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
+
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
+* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、西ヨーロッパ、および東南アジアだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+
+### <a name="create-a-pipeline-with-an-ssis-activity"></a>SSIS アクティビティを含むパイプラインを作成する 
+この手順では、SSIS アクティビティのあるパイプラインを作成します。 このアクティビティは SSIS パッケージを実行します。 
+
+1. 次の例のような内容を記述した **RunSSISPackagePipeline.json** という名前の JSON ファイルを **C:\ADF\RunSSISPackage** フォルダーに作成します。
+
+    > [!IMPORTANT]
+    > ファイルを保存する前に、オブジェクトの名前、説明、パス、プロパティ値、パラメーター値、パスワード、およびその他の変数値を置き換えます。 
+
+    ```json
+    {
+        "name": "RunSSISPackagePipeline",
+        "properties": {
+            "activities": [{
+                "name": "mySSISActivity",
+                "description": "My SSIS package/activity description",
+                "type": "ExecuteSSISPackage",
+                "typeProperties": {
+                    "connectVia": {
+                        "referenceName": "myAzureSSISIR",
+                        "type": "IntegrationRuntimeReference"
+                    },
+                    "runtime": "x64",
+                    "loggingLevel": "Basic",
+                    "packageLocation": {
+                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                    },
+                    "environmentPath":   "FolderName/EnvironmentName",
+                    "projectParameters": {
+                        "project_param_1": {
+                            "value": "123"
+                        }
+                    },
+                    "packageParameters": {
+                        "package_param_1": {
+                            "value": "345"
+                        }
+                    },
+                    "projectConnectionManagers": {
+                        "MyAdonetCM": {
+                            "userName": {
+                                "value": "sa"
+                            },
+                            "passWord": {
+                                "value": {
+                                    "type": "SecureString",
+                                    "value": "abc"
+                                }
+                            }
+                        }
+                    },
+                    "packageConnectionManagers": {
+                        "MyOledbCM": {
+                            "userName": {
+                                "value": "sa"
+                            },
+                            "passWord": {
+                                "value": {
+                                    "type": "SecureString",
+                                    "value": "def"
+                                }
+                            }
+                        }
+                    },
+                    "propertyOverrides": {
+                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
+                            "value": 8,
+                            "isSensitive": false
+                        }
+                    }
+                },
+                "policy": {
+                    "timeout": "0.01:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30
+                }
+            }]
+        }
+    }
+    ```
+
+2.  Azure PowerShell で `C:\ADF\RunSSISPackage` フォルダーに切り替えます。
+
+3. パイプライン **RunSSISPackagePipeline** を作成するには、**Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行します。
+
+    ```powershell
+    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+                                                   -ResourceGroupName $ResGrp.ResourceGroupName `
+                                                   -Name "RunSSISPackagePipeline"
+                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
+    ```
+
+    出力例を次に示します。
+
+    ```
+    PipelineName      : Adfv2QuickStartPipeline
+    ResourceGroupName : <resourceGroupName>
+    DataFactoryName   : <dataFactoryName>
+    Activities        : {CopyFromBlobToBlob}
+    Parameters        : {[inputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification], [outputPath, Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]}
+    ```
+
+### <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
+**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使ってパイプラインを実行します。 コマンドレットは、将来の監視のために、パイプラインの実行 ID を返します。
+
+```powershell
+$RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+                                             -ResourceGroupName $ResGrp.ResourceGroupName `
+                                             -PipelineName $DFPipeLine.Name
+```
+
+### <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
+
+次の PowerShell スクリプトを実行し、データのコピーが完了するまで、パイプラインの実行の状態を継続的にチェックします。 次のスクリプトをコピーして PowerShell ウィンドウに貼り付け、Enter キーを押します。 
+
+```powershell
+while ($True) {
+    $Run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
+                                               -DataFactoryName $DataFactory.DataFactoryName `
+                                               -PipelineRunId $RunId
+
+    if ($Run) {
+        if ($run.Status -ne 'InProgress') {
+            Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
+            $Run
+            break
+        }
+        Write-Output  "Pipeline is running...status: InProgress"
+    }
+
+    Start-Sleep -Seconds 10
+}   
+```
+
+### <a name="create-a-trigger"></a>トリガーを作成する
+前の手順ではオンデマンドでパイプラインを実行しました。 スケジュール トリガーを作成して、スケジュール (毎時、毎日など) によってパイプラインをトリガーすることもできます。
+
+1. 以下の内容を記述した **MyTrigger.json** という名前の JSON ファイルを **C:\ADF\RunSSISPackage** フォルダー内に作成します。 
+
+    ```json
+    {
+        "properties": {
+            "name": "MyTrigger",
+            "type": "ScheduleTrigger",
+            "typeProperties": {
+                "recurrence": {
+                    "frequency": "Hour",
+                    "interval": 1,
+                    "startTime": "2017-12-07T00:00:00-08:00",
+                    "endTime": "2017-12-08T00:00:00-08:00"
+                }
+            },
+            "pipelines": [{
+                    "pipelineReference": {
+                        "type": "PipelineReference",
+                        "referenceName": "RunSSISPackagePipeline"
+                    },
+                    "parameters": {}
+                }
+            ]
+        }
+    }    
+    ```
+2. **Azure PowerShell** で **C:\ADF\RunSSISPackage** フォルダーに切り替えます。
+3. **Set-AzureRmDataFactoryV2Trigger** コマンドレットを実行してトリガーを作成します。 
+
+    ```powershell
+    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+                                    -DataFactoryName $DataFactory.DataFactoryName `
+                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
+    ```
+4. 既定ではトリガーは停止状態になっています。 **Start-AzureRmDataFactoryV2Trigger** コマンドレットを実行してトリガーを起動します。 
+
+    ```powershell
+    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+                                      -DataFactoryName $DataFactory.DataFactoryName `
+                                      -Name "MyTrigger" 
+    ```
+5. **Get-AzureRmDataFactoryV2Trigger** コマンドレットを実行して、トリガーの状態が "Started" であることを確認します。 
+
+    ```powershell
+    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
+                                    -DataFactoryName $DataFactoryName `
+                                    -Name "MyTrigger"     
+    ```    
+6. 時刻の時間部分が次の時間になってから、次のコマンドを実行します。 たとえば、現在時刻が午後 3 時 25 分 (UTC) であれば、午後 4 時 (UTC) にコマンドを実行します。 
+    
+    ```powershell
+    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
+                                       -DataFactoryName $DataFactoryName `
+                                       -TriggerName "MyTrigger" `
+                                       -TriggerRunStartedAfter "2017-12-06" `
+                                       -TriggerRunStartedBefore "2017-12-09"
+    ```
+
+    次のクエリを Azure SQL サーバーの SSISDB データベースに対して実行すると、パッケージが実行されたことを確認できます。 
+
+    ```sql
+    select * from catalog.executions
+    ```
+
+
+## <a name="next-steps"></a>次の手順
+Azure Portal を使用してパイプラインを監視することもできます。 具体的な手順については、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」を参照してください。

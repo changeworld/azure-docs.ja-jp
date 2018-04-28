@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store のアクセス制御
 
@@ -150,7 +150,7 @@ Azure では、Data Lake Store アカウントは、次のようないくつか�
 * 共同作成者
 * 閲覧者
 
-Data Lake Store アカウントの **所有者** ロールのすべてのユーザーは、自動的にそのアカウントのスーパー ユーザーになります。 詳細については、[ロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページを参照してください。
+Data Lake Store アカウントの **所有者** ロールのすべてのユーザーは、自動的にそのアカウントのスーパー ユーザーになります。 詳細については、[ロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 スーパー ユーザー アクセス許可を持つ、カスタムのロール ベースのアクセス制御 (RBAC) ロールを作成する場合は、以下のアクセス許可を持っている必要があります。
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -184,7 +184,7 @@ POSIX ACL では、すべてのユーザーが "プライマリ グループ" �
 * 所有ユーザー (所有ユーザーが変更後のグループのメンバーでもある場合)
 
 > [!NOTE]
-> 所有グループが、ファイルやフォルダーの ACL を変更することは "*できません*"。
+> 所有グループが、ファイルやフォルダーの ACL を変更することは "*できません*"。  ルート フォルダーの場合 (上記の**ケース 1**)、所有グループはアカウントを作成したユーザーに設定されますが、所有グループを介したアクセス許可の付与に関して、単一ユーザー アカウントは有効ではありません。  この権限は、有効なユーザー グループに対して、該当する場合に割り当てることができます。
 
 ## <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
 

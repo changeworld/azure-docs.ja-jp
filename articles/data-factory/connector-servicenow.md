@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6926ae6c67e3397006e95595a8dc28bab67256da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 29fb74e49ad3fdca0bc54a431da40b02ef24882b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
 
@@ -45,7 +45,7 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **ServiceNow** に設定する必要があります。 | [はい] |
-| endpoint | ServiceNow サーバーのエンドポイント (`http://ServiceNowData.com`)。  | [はい] |
+| endpoint | ServiceNow サーバーのエンドポイント (`http://<instance>.service-now.com`)。  | [はい] |
 | authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | [はい] |
 | username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | いいえ  |
 | password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
@@ -63,7 +63,7 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "ServiceNow",
         "typeProperties": {
-            "endpoint" : "http://ServiceNowData.com",
+            "endpoint" : "http://<instance>.service-now.com",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

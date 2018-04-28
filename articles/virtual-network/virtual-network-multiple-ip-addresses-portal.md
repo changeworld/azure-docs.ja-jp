@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシンの複数の IP アドレス - Portal | Microsoft Docs"
-description: "Azure Portal を使用して、仮想マシンに複数の IP アドレスを割り当てる方法 | Resource Manager"
+title: Azure 仮想マシンの複数の IP アドレス - Portal | Microsoft Docs
+description: Azure Portal を使用して、仮想マシンに複数の IP アドレスを割り当てる方法 | Resource Manager
 services: virtual-network
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3a8cae97-3bed-430d-91b3-274696d91e34
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff6f3444847d9c78836a44ca95f9b00160c29ef4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 >
 この記事では、Azure ポータルを使用して Azure Resource Manager デプロイメント モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
-[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
+[!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="add"></a>VM に IP アドレスを追加する
 
-プライベート IP アドレスとパブリック IP アドレスを NIC に追加するには、次の手順を実行します。 次のセクションの例では、[シナリオ](#Scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
+プライベート IP アドレスとパブリック IP アドレスを Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 次のセクションの例では、[シナリオ](#Scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
 ### <a name="coreadd"></a>主な手順
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/21/2018
 新しいプライベート IP アドレスを追加するには、次の手順を完了します。
 
 1. この記事の「[主な手順](#coreadd)」で述べた手順を完了します。
-2. **[追加]**をクリックします。 表示された **[IP 構成の追加]** ウィンドウで、"*静的*" プライベート IP アドレスとして「*10.0.0.7*」を持つ「*IPConfig-4*」という名前の IP 構成を作成し、**[OK]** をクリックします。
+2. **[追加]** をクリックします。 表示された **[IP 構成の追加]** ウィンドウで、"*静的*" プライベート IP アドレスとして「*10.0.0.7*」を持つ「*IPConfig-4*」という名前の IP 構成を作成し、**[OK]** をクリックします。
 
     > [!NOTE]
     > 静的 IP アドレスを追加するときは、NIC が接続されているサブネット上に未使用の有効なアドレスを指定する必要があります。 選択したアドレスが利用できない場合はポータルで IP アドレスに X が表示され、別のアドレスを選択する必要があります。
@@ -86,7 +86,7 @@ ms.lasthandoff: 02/21/2018
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>パブリック IP アドレス リソースを新しい IP 構成に関連付ける
 
 1. この記事の「[主な手順](#coreadd)」で述べた手順を完了します。
-2. **[追加]**をクリックします。 表示される **[IP 構成の追加]** ウィンドウで、「*IPConfig-4*」という名前の IP 構成を作成します。 **[パブリック IP アドレス]** を有効にして、表示された **[パブリック IP アドレスの選択]** ウィンドウから利用できる既存のパブリック IP アドレス リソースを選択します。
+2. **[追加]** をクリックします。 表示される **[IP 構成の追加]** ウィンドウで、「*IPConfig-4*」という名前の IP 構成を作成します。 **[パブリック IP アドレス]** を有効にして、表示された **[パブリック IP アドレスの選択]** ウィンドウから利用できる既存のパブリック IP アドレス リソースを選択します。
 
     パブリック IP アドレス リソースを選択したら、**[OK]** をクリックするとウィンドウが閉じます。 既存のパブリック IP アドレスがない場合は、この記事の「[パブリック IP アドレス リソースの作成](#create-public-ip)」セクションの手順を実行して、パブリック IP アドレスを作成できます。 
 

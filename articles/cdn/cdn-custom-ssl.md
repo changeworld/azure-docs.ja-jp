@@ -1,6 +1,6 @@
 ---
-title: Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する | Microsoft Docs
-description: カスタム ドメインを使って Azure CDN エンドポイントの HTTPS を有効または無効にする方法について説明します。
+title: チュートリアル - Azure CDN カスタム ドメインで HTTPS を構成する | Microsoft Docs
+description: このチュートリアルでは、Azure CDN エンドポイント カスタム ドメインで HTTPS を有効および無効にする方法について説明します。
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -11,22 +11,23 @@ ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2018
-ms.author: rli; v-deasim
-ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.topic: tutorial
+ms.date: 04/12/2018
+ms.author: rli
+ms.custom: mvc
+ms.openlocfilehash: a8f2da5a68552c35a55a7bbb764afc7b36af6962
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する
+# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル: Azure CDN カスタム ドメインで HTTPS を構成する
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Microsoft は、Azure Content Delivery Network (CDN) 上のカスタム ドメインについて HTTPS プロトコルをサポートします。 HTTPS カスタム ドメインがサポートされていると、転送中のデータのセキュリティを向上させるために、セキュリティで保護されたコンテンツを、独自のドメイン名を使って SSL 経由で配信することができます。 カスタム ドメインの HTTPS を有効にするワークフローは、ワンクリックでの有効化と完全な証明書の管理によって簡略化され、すべて追加コストなしで使うことができます。
+このチュートリアルでは、Azure Content Delivery Network (CDN) エンドポイントに関連付けられたカスタム ドメインの HTTP プロトコルを有効にする方法について説明します。 カスタム ドメイン (例: https:\//www.contoso.com) で HTTPS プロトコルを使用すると、インターネット経由での送信時、機密データが SSL 暗号化でセキュリティ保護されて配信されます。 HTTPS は信頼と認証を提供し、Web アプリケーションを攻撃から保護します。 HTTPS を有効にするワークフローは、ワンクリックでの有効化と完全な証明書の管理によって簡略化され、すべて追加コストなしで使うことができます。
 
-転送中の Web アプリケーションの機密データのプライバシーおよびデータの整合性を確保することは不可欠です。 HTTPS プロトコルを使うことで、インターネット経由で送信される機密データを確実に暗号化できます。 HTTPS は信頼と認証を提供し、Web アプリケーションを攻撃から保護します。 既定では、Azure CDN は、CDN エンドポイントで HTTPS をサポートしています。 たとえば、Azure CDN (例: https:\//contoso.azureedge.net) から CDN エンドポイントを作成すると、HTTPS が自動的に有効になります。 さらに、カスタム ドメインの HTTPS サポートを使って、カスタム ドメイン (例: \//www.contoso.com) でもセキュリティで保護された配信が可能です。 
+既定では、Azure CDN は、CDN エンドポイント ホスト名で HTTPS をサポートしています。 たとえば、CDN エンドポイント (例: https:\//contoso.azureedge.net) を作成すると、HTTPS が自動的に有効になります。  
 
 HTTPS の機能の主な特性は次のとおりです。
 
@@ -36,36 +37,49 @@ HTTPS の機能の主な特性は次のとおりです。
 
 - 証明書の完全な管理: すべての証明書の調達と管理がユーザーに代わって実施されます。 証明書は自動的にプロビジョニングされ、有効期限になる前に更新されます。これにより、証明書の期限切れによりサービスが中断されるリスクがなくなります。
 
->[!NOTE] 
->HTTPS のサポートを有効にする前に、[Azure CDN のカスタム ドメイン](./cdn-map-content-to-custom-domain.md)をあらかじめ確立する必要があります。
+このチュートリアルで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> - カスタム ドメインで HTTPS プロトコルを有効にする
+> - ドメインを検証する
+> - カスタム ドメインで HTTPS プロトコルを無効にする
 
-## <a name="enabling-https"></a>HTTPS を有効にする
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルの手順を完了するには、最初に CDN プロファイルと少なくとも 1 つの CDN エンドポイントを作成する必要があります。 詳細については、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
+
+さらに、Azure CDN カスタム ドメインを CDN エンドポイントに関連付ける必要があります。 詳細については、「[チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)」を参照してください
+
+## <a name="enable-the-https-feature"></a>HTTPS 機能を有効にする
 
 カスタム ドメインで HTTPS を有効にするには、次の手順のようにします。
 
-### <a name="step-1-enable-the-feature"></a>ステップ 1: 機能を有効にする 
-
 1. [Azure Portal](https://portal.azure.com) で、お使いの **Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** の CDN プロファイルを参照します。
 
-2. エンドポイントの一覧で、カスタム ドメインを含むエンドポイントをクリックします。
+2. CDN エンドポイントの一覧で、カスタム ドメインが含まれているエンドポイントを選択します。
 
-3. HTTPS を有効にするカスタム ドメインをクリックします。
+    ![エンドポイントの一覧](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
+
+    **[エンドポイント]** ページが表示されます。
+
+3. カスタム ドメインの一覧で、HTTPS を有効にするカスタム ドメインを選択します。
 
     ![カスタム ドメイン リスト](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-4. **[オン]** をクリックして HTTPS を有効にした後、**[適用]** をクリックします。
+    **[カスタム ドメイン]** ページが表示されます。
+
+4. **[オン]** を選択して HTTPS を有効にしてから、**[適用]** を選択します。
 
     ![カスタム ドメイン HTTPS ステータス](./media/cdn-custom-ssl/cdn-enable-custom-ssl.png)
 
 
-### <a name="step-2-validate-domain"></a>ステップ 2: ドメインを検証する
+## <a name="validate-the-domain"></a>ドメインを検証する
 
->[!NOTE]
->Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。 CAA レコードの管理については、「[Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/)」(CAA レコードを管理する) をご覧ください。 CAA レコード ツールについては、「[CAA Record Helper](https://sslmate.com/caa/)」(CAA レコード ヘルパー) をご覧ください。
+CNAME レコードでカスタム エンドポイントにマップされた使用中のカスタム ドメインが既にある場合、  
+「[カスタム ドメインが CNAME レコードによって CDN エンドポイントにマップされている](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record)」に進んでください。 そうではなく、エンドポイントの CNAME レコード エントリがもう存在しない場合、または CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、「[カスタム ドメインが CDN エンドポイントにマップされていない](#custom-domain-is-not-mapped-to-your-cdn-endpoint)」に進んでください。
 
-#### <a name="custom-domain-is-mapped-to-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマッピングされている
+### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>カスタム ドメインが CNAME レコードによって CDN エンドポイントにマップされている
 
-カスタム ドメインをエンドポイントに追加するときに、CDN エンドポイントのホスト名にマッピングする、ドメイン レジストラーの DNS テーブルに CNAME レコードを作成しました。 この CNAME レコードがまだ存在し、そこに cdnverify サブドメインが含まれていない場合は、DigiCert 証明機関 (CA) は、この CNAME レコードを使用してカスタム ドメインの所有権を検証します。 
+カスタム ドメインをエンドポイントに追加するときに、CDN エンドポイントのホスト名にマップする、ドメイン レジストラーの DNS テーブルに CNAME レコードを作成しました。 この CNAME レコードがまだ存在し、そこに cdnverify サブドメインが含まれていない場合は、DigiCert 証明機関 (CA) は、この CNAME レコードを使用してカスタム ドメインの所有権を検証します。 
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
@@ -73,11 +87,16 @@ CNAME レコードは、次の形式にする必要があります。ここで *
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azureedge.net |
 
-CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#step-2-create-the-cname-dns-records)に関するセクションを参照してください。
+CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)に関するセクションを参照してください。
 
-CNAME レコードが正しい形式である場合、DigiCert はカスタム ドメイン名を自動的に検証して、サブジェクトの別名 (SAN) 証明書に追加します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[ステップ 3: 伝達を待機する](#step-3-wait-for-propagation)」に進みます。 
+CNAME レコードが正しい形式である場合、DigiCert はカスタム ドメイン名を自動的に検証して、サブジェクトの別名 (SAN) 証明書に追加します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 
-#### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>CNAME レコードが CDN エンドポイントにマッピングされていない
+通常、自動検証には数分かかります。 1 時間以内にドメインが検証されない場合、サポート チケットを開いてください。
+
+>[!NOTE]
+>Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。 CAA レコードの管理については、「[Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/)」(CAA レコードを管理する) をご覧ください。 CAA レコード ツールについては、「[CAA Record Helper](https://sslmate.com/caa/)」(CAA レコード ヘルパー) をご覧ください。
+
+### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマップされていない
 
 エンドポイントの CNAME レコード エントリがもう存在しない場合や、CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
 
@@ -109,7 +128,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加します。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。
 
-### <a name="step-3-wait-for-propagation"></a>ステップ 3: 伝達を待機する
+## <a name="wait-for-propagation"></a>伝達を待機する
 
 ドメイン名の検証後、カスタム ドメインの HTTPS 機能がアクティブになるまでに最大 6 ～ 8 時間がかかります。 プロセスが完了すると、Azure Portal の [カスタム HTTPS] のステータスは **[有効]** に設定され、[カスタム ドメイン] ダイアログの ４つの操作ステップが完了としてマークされます。 カスタム ドメインは、HTTPS を使う準備ができました。
 
@@ -124,7 +143,7 @@ DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加
 | 1 要求の送信 | 要求を送信しています |
 | | HTTPS 要求を送信しています。 |
 | | HTTPS 要求を正常に送信しました。 |
-| 2 ドメインの検証 | ドメインの所有権の検証を求めるメールを送信しました。 確認を待っています。 ** |
+| 2 ドメインの検証 | CNAME で CDN エンドポイントにマップされている場合、ドメインは自動的に検証されます。 そうでない場合、登録レコードに記載されているメール アドレス (WHOIS 登録者) に、検証要求が送信されます。 できるだけ早く、ドメインを検証してください。 |
 | | ドメインの所有権が正常に検証されました。 |
 | | ドメインの所有権の検証要求が期限切れになりました (お客様から 6 日以内に返答がなかったようです)。 ドメインで HTTPS が有効になることはありません。 * |
 | | ドメインの所有権の検証要求が、お客様により拒否されました。 ドメインで HTTPS が有効になることはありません。 * |
@@ -135,19 +154,17 @@ DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加
 
 \* このメッセージは、エラーが発生しない限り表示されません。 
 
-\** CDN エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合、このメッセージは表示されません。
-
 要求送信前にエラーが発生した場合は、次のエラー メッセージが表示されます。
 
 <code>
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
-## <a name="disabling-https"></a>HTTPS を無効にする
+## <a name="clean-up-resources---disable-https"></a>リソースのクリーンアップ - HTTPS を無効にする
 
-カスタムドメインで有効にした HTTPS を、後で無効にすることができます。 HTTPS を無効にするには、次の手順のようにします。
+上記の手順では、カスタム ドメインで HTTPS プロトコルを有効にしました。 カスタム ドメインで HTTPS を使用する必要がなくなった場合、次の手順を実行して HTTPS を無効にできます。
 
-### <a name="step-1-disable-the-feature"></a>ステップ 1: 機能を無効にする 
+### <a name="disable-the-https-feature"></a>HTTPS 機能を無効にする 
 
 1. [Azure Portal](https://portal.azure.com) で、お使いの **Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** の CDN プロファイルを参照します。
 
@@ -161,13 +178,13 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     ![カスタム HTTPS ダイアログ](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
-### <a name="step-2-wait-for-propagation"></a>ステップ 2: 伝達を待機する
+### <a name="wait-for-propagation"></a>伝達を待機する
 
 カスタム ドメインの HTTPS 機能を無効にした後、適用されるまでには最大 6 から 8 時間かかります。 プロセスが完了すると、Azure Portal の [カスタム HTTPS] のステータスは **[無効]** に設定され、[カスタム ドメイン] ダイアログの 3つの操作ステップが完了としてマークされます。 カスタム ドメインは HTTPS を使うことができなくなります。
 
 ![[HTTPS の無効化] ダイアログ](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
 
-### <a name="operation-progress"></a>操作の進行
+#### <a name="operation-progress"></a>操作の進行
 
 次の表は、HTTPS を無効にするときの操作の進行を示したものです。 HTTPS を無効にした後、[カスタム ドメイン] ダイアログには 3 つの操作ステップが表示されます。 各ステップがアクティブになると、ステップの下に詳細が追加表示されます。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
 
@@ -189,7 +206,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. *DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
 
-    24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。 エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合 (かつ、cdnverify サブドメイン名を使用していない場合)、ドメインの検証電子メールは送られてきません。 検証は自動的に行われます。
+    エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合 (かつ、cdnverify サブドメイン名を使用していない場合)、ドメインの検証電子メールは送られてきません。 検証は自動的に行われます。 そうではなく、CNAME エントリがないうえに 24 時間以内にメールが届かなかった場合、Microsoft のサポートに問い合わせてください。
 
 4. *SAN 証明書を使用すると専用証明書の場合よりも安全性が低くなるでしょうか。*
     
@@ -206,6 +223,15 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure CDN エンドポイントでカスタム ドメイン](./cdn-map-content-to-custom-domain.md)を設定する方法を確認してください。
+ここで学習した内容は次のとおりです。
 
+> [!div class="checklist"]
+> - カスタム ドメインで HTTPS プロトコルを有効にしました
+> - ドメインを検証しました
+> - カスタム ドメインで HTTPS プロトコルを無効にしました
+
+次のチュートリアルに進み、CDN エンドポイントでキャッシュを構成する方法を学習してください。
+
+> [!div class="nextstepaction"]
+> [キャッシュ規則で Azure CDN キャッシュの動作を制御する](cdn-caching-rules.md)
 

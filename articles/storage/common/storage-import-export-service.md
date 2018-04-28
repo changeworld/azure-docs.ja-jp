@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 2.  データの合計サイズに応じて、2.5 インチ SSD か、2.5 (または 3.5) インチ SATA II または III ハード ディスク ドライブを必要な数だけ調達します。
 3.  SATA または外部 USB アダプターを使用して、ハード ドライブを Windows コンピューターに直接接続します。
 1.  各ハード ドライブ上に 1 つの NTFS ボリュームを作成し、このボリュームにドライブ文字を割り当てます。 マウントポイントは不要です。
-2.  Windows コンピューターで暗号化を有効にするには、NTFS ボリュームで BitLocker の暗号化を有効にします。 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx の手順を使います。
+2.  Windows コンピューターで暗号化を有効にするには、NTFS ボリュームで BitLocker の暗号化を有効にします。 https://technet.microsoft.com/library/cc731549(v=ws.10).aspx の手順を使います。
 3.  コピーと貼り付けまたはドラッグ アンド ドロップまたは Robocopy または任意のそのようなツールを使用して、ディスク上のこれらの暗号化された 1 つの NTFS ボリュームにデータを完全にコピーします。
 7.  https://www.microsoft.com/en-us/download/details.aspx?id=42659 から WAImportExport V1 をダウンロードします
 8.  既定のフォルダー waimportexportv1 に解凍します。 たとえば、C:\WaImportExportV1 などです。  
@@ -560,7 +560,7 @@ HDD は一度の発送で何個でも送ることができます。ディスク�
 
 Azure Import/Export サービスは、既定では AES 128 bitlocker で暗号化されますが、データをコピーする前に手動で bitlocker による暗号化を実行すれば、AES 256 に高めることができます。 
 
-[WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) を使用している場合のサンプル コマンドは次のとおりです
+[WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) を使用している場合のサンプル コマンドは次のとおりです
 ```
 WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
 ```

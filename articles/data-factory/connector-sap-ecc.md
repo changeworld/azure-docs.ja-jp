@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: abd3ef00148795f4b3e79e2ed64dd35f56946455
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -124,7 +124,7 @@ SAP ECC からデータをコピーするには、コピー アクティビテ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティを **SapEccSource** に設定する必要があります。 | [はい] |
-| クエリ | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | [はい] |
+| クエリ | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |
 
 **例:**
 

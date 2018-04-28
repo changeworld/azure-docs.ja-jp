@@ -1,11 +1,11 @@
 ---
-title: "Media Services リリース ノート | Microsoft Docs"
-description: "Media Services リリース ノート"
+title: Media Services リリース ノート | Microsoft Docs
+description: Media Services リリース ノート
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 20a24aa19989370c6ce82a738193a78f24b0eba9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -47,7 +47,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 ## <a name="october-2017-release"></a>2017 年 10 月のリリース
 > [!IMPORTANT] 
-> Media Services では、Azure Access Control Service 認証キーのサポートが廃止されます。 2018 年 6 月 1 日以降、Access Control Service キーを使用して、コードによる Media Services バックエンドでの認証を行うことができなくなります。 [Azure Active Directory (Azure AD) ベースの認証](media-services-use-aad-auth-to-access-ams-api.md)で Azure AD を使用するようにコードを更新してください。 Azure Portal にも、この変更に関する警告が表示されます。
+> Media Services では、Azure Access Control Service 認証キーのサポートが廃止されます。 2018 年 6 月 22 日以降、Access Control Service キーを使用して、コードによる Media Services バックエンドでの認証を行うことができなくなります。 [Azure Active Directory (Azure AD) ベースの認証](media-services-use-aad-auth-to-access-ams-api.md)で Azure AD を使用するようにコードを更新してください。 Azure Portal にも、この変更に関する警告が表示されます。
 
 ### <a name="updates-for-october-2017"></a>2017 年 10 月の更新
 #### <a name="sdks"></a>SDK

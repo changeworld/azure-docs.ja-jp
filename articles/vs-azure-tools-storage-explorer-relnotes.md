@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート"
-description: "Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート"
+title: Microsoft Azure Storage Explorer のリリース ノート
+description: Microsoft Azure Storage Explorer のリリース ノート
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 0e5523e297979a89ffd4b4ed51c8476fb1354419
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
 この記事には、Azure Storage Explorer 0.9.6 (プレビュー) リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
-[Microsoft Azure ストレージ エクスプローラー (プレビュー)](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
+[Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
 ## <a name="version-096"></a>バージョン 0.9.6
 2018/02/28

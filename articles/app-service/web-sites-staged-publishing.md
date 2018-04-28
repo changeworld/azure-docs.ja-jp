@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: a262ba335256878b03a9a2cce6f7ba6a3dae715c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/16/2018
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。 このワークフロー全体は、スワップ前の検証が必要ない場合、 [自動スワップ](#Auto-Swap) を構成することで自動化できます。
 * スワップ後も、以前のステージング アプリ スロットに元の運用アプリが残っているため、 運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。
 
-サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 使用しているアプリのレベルでサポートされるスロット数を確認するには、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
+サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 使用しているアプリのレベルでサポートされるスロット数を確認するには、「[App Service の制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits)」をご覧ください。
 
 * アプリに複数のスロットがある場合は、レベルを変更することはできません。
 * スケーリングは運用サイト スロットでのみ有効になります。

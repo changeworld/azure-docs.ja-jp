@@ -1,6 +1,6 @@
 ---
-title: サービスを使用する場合やアプリを作成する場合の Azure と Azure Stack の主な違い | Microsoft Docs
-description: Azure Stack でサービスを使用する場合やアプリを作成する場合に知っておくべき内容。
+title: サービスを使用する場合やアプリを作成する場合の Azure と Azure Stack の主な違いについて | Microsoft Docs
+description: Azure Stack のサービスを使用する場合やアプリを作成する場合に知っておく必要があること。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,36 +12,35 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/25/2017
+ms.date: 04/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: eab208175f7eb3b761ec7266483a7cd5268198e8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
-
-Azure Stack でサービスを使用する場合やアプリを作成する場合、Azure Stack と Azure では違いがあることを理解する必要があります。 この記事では、ハイブリッド クラウド開発環境として Azure Stack をターゲットとする場合の主な考慮事項の概要を示します。
+Azure Stack のサービスを使用する場合やアプリを作成する場合、Azure Stack と Azure の違いを理解しておく必要があります。 この記事では、Azure Stack をハイブリッド クラウド開発環境として使用する際の重要な考慮事項について説明します。
 
 ## <a name="overview"></a>概要
 
-Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 開発者は、Azure Stack で実行するアプリを作成できます。 その後、そのアプリを Azure Stack と Azure にデプロイできます。また、Azure Stack クラウドと Azure 間の接続を利用するハイブリッド アプリを実際に作成することもできます。
+Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 Azure Stack でアプリを作成し、Azure Stack、Azure、または Azure ハイブリッド クラウドにデプロイすることができます。
 
 Azure Stack オペレーターは、ユーザーに使用可能なサービスと、サポートを受ける方法を知らせます。 これらのサービスはカスタマイズされたプランやオファーを通じて提供されます。
 
 Azure に関する技術的な内容は、Azure Stack ではなく、Azure サービス用にアプリが開発されていることを前提としています。 アプリを作成して Azure Stack にデプロイする場合は、次のようないくつかの主な違いを理解する必要があります。
 
 * Azure Stack では、Azure で利用可能なサービスと機能のサブセットが提供されます。
-* 会社またはサービス プロバイダーは、提供するサービスを選択できます。 これには、カスタマイズされたサービスやアプリケーションが含まれます。 独自のカスタマイズされたドキュメントが提供される場合もあります。
+* 会社またはサービス プロバイダーは、提供するサービスを選択できます。 使用可能なオプションには、カスタマイズされたサービスまたはアプリケーションが含まれる場合があります。 独自のカスタマイズされたドキュメントが提供される場合もあります。
 * 適切な Azure Stack 固有のエンドポイント (ポータル アドレスや Azure Resource Manager エンドポイントの URL など) を使用する必要があります。
-* Azure Stack でサポートされている PowerShell および API のバージョンを使用する必要があります。 これにより、確実に Azure Stack と Azure の両方でアプリが動作するようになります。
+* Azure Stack でサポートされている PowerShell および API のバージョンを使用する必要があります。 サポートされているバージョンを使用すると、確実に Azure Stack と Azure の両方でアプリが動作するようになります。
 
 ## <a name="cheat-sheet-high-level-differences"></a>チート シート: 違いの概要
 
-次の表では、Azure Stack と Azure の違いの概要を示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の点に注意してください。
+次の表では、Azure Stack と Azure の違いの概要を示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の相違点に注意してください。
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|
@@ -64,15 +63,15 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 | 推奨 | 参照 | 
 | -------- | ------------- | 
 | 開発者用ワークステーションに適切なツールをインストールします。 | - [PowerShell のインストール](azure-stack-powershell-install.md)<br>- [ツールのダウンロード](azure-stack-powershell-download.md)<br>- [PowerShell の構成](azure-stack-powershell-configure-user.md)<br>- [Visual Studio のインストール](azure-stack-install-visual-studio.md) 
-| 以下の情報を確認します。<br>- Azure Resource Manager テンプレートに関する考慮事項<br>- クイックスタート テンプレートを見つける方法<br>- Azure Stack 向けの開発で Azure を使用する場合に役立つポリシー モジュールの使用 | [Azure Stack 向けの開発](azure-stack-developer.md) | 
+| 次の項目に関する情報を確認します。<br>- Azure Resource Manager テンプレートに関する考慮事項<br>- クイックスタート テンプレートを見つける方法<br>- Azure Stack 向けの開発で Azure を使用する場合に役立つポリシー モジュールの使用 | [Azure Stack 向けの開発](azure-stack-developer.md) | 
 | テンプレートのベスト プラクティスを確認して、それに従います。 | [Resource Manager のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
 | | |
 
 ## <a name="version-requirements"></a>バージョンの要件
 
-Azure Stack では、特定のバージョンの Azure PowerShell と Azure サービス API がサポートされます。 アプリが Azure Stack と Azure の両方にデプロイできるように、サポートされるバージョンを使用する必要があります。
+Azure Stack では、特定のバージョンの Azure PowerShell と Azure サービス API がサポートされます。 アプリを Azure Stack と Azure の両方にデプロイできるようにするには、サポートされているバージョンを使用してください。
 
-正しいバージョンの Azure PowerShell を使用していることを確認するには、[API バージョン プロファイル](azure-stack-version-profiles.md)を使用します。 使用可能な最新の API バージョン プロファイルを確認するには、使用している Azure Stack のビルドを知る必要があります。 この情報は、Azure Stack 管理者から取得できます。
+正しいバージョンの Azure PowerShell を使用していることを確認するには、[API バージョン プロファイル](azure-stack-version-profiles.md)を使用します。 使用可能な最新の API バージョン プロファイルを確認するには、使用している Azure Stack のビルドを調べます。 この情報は、Azure Stack 管理者から取得できます。
 
 >[!NOTE]
  Azure Stack Development Kit を使用しており、管理アクセス権がある場合は、[更新の管理](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version)に関するページの "現在のバージョンの確認" セクションを参照して、Azure Stack のビルドを確認してください。

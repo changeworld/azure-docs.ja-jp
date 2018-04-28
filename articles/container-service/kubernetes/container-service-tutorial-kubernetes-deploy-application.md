@@ -3,17 +3,17 @@ title: Azure Container Service チュートリアル - アプリケーション�
 description: Azure Container Service チュートリアル - アプリケーションのデプロイ
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f8f626143e74d65fa9d4e37e1e2bfda37501f102
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
 

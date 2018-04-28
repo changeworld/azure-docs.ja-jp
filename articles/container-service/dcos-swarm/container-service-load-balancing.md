@@ -1,19 +1,19 @@
 ---
-title: "Azure DC/OS クラスターの負荷分散コンテナー"
-description: "Azure Container Service DC/OS クラスターの複数のコンテナーに負荷を分散します。"
+title: Azure DC/OS クラスターの負荷分散コンテナー
+description: Azure Container Service DC/OS クラスターの複数のコンテナーに負荷を分散します。
 services: container-service
 author: rgardler
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 6f5467d0fbcc577a548f1100ed6e4d380fe38759
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 62967636a4d80f72f731a666947d5d4d5e47f7e5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターの負荷分散コンテナー
 
@@ -110,7 +110,7 @@ dcos marathon app add hello-web.json
 
 別のポートを使用する場合は、使用したポート用のラウンド ロビン ルールとプローブをロード バランサーに追加する必要があります。 この操作は、[Azure CLI](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) で `azure network lb rule create` コマンドと `azure network lb probe create` コマンドを使用して行うことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Marathon と Azure のロード バランサーを使用した、次の操作を含む ACS の負荷分散について学習しました。
 

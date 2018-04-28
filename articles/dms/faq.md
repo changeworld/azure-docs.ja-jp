@@ -1,21 +1,21 @@
 ---
-title: "Azure Database Migration Service の使用に関する FAQ | Microsoft Docs"
-description: "Azure Database Migration Service を使用してデータベースを移行する作業に関してよく寄せられる質問に答えます。"
+title: Azure Database Migration Service の使用に関する FAQ | Microsoft Docs
+description: Azure Database Migration Service を使用してデータベースを移行する作業に関してよく寄せられる質問に答えます。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
-manager: 
-ms.reviewer: 
+manager: ''
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ
 この記事では、Azure Database Migration Service の使用に関してよく寄せられる質問とその回答をまとめてあります。
@@ -48,11 +48,11 @@ Azure Migrate サービスは、オンプレミスの仮想マシンから Azure
 ### <a name="q-what-are-the-prerequisites-for-using-the-azure-database-migration-service"></a>Q. Azure Database Migration Service を使用するための前提条件はどのようなものですか。
 データベースを移行するときに Azure Database Migration Service を円滑に動作させるには、いくつかの前提条件があります。 いくつかの前提条件は、サービスでサポートされているすべてのシナリオ (ソースとターゲットのペア) に適用されますが、その他の前提条件は特定のシナリオに固有のものです。
 サポートされているすべての移行シナリオで共通の、Azure Database Migration Service の前提条件は、次のとおりです。
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
-- Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)」を参照してください。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+- Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)」を参照してください。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
  
-Azure Database Migration Service を使用して特定の移行シナリオを試すために必要なすべての前提条件の一覧については、docs.microsoft.com にある Azure Database Migration Service [ドキュメント](https://docs.microsoft.com/en-us/azure/dms/dms-overview)の関連チュートリアルを参照してください。
+Azure Database Migration Service を使用して特定の移行シナリオを試すために必要なすべての前提条件の一覧については、docs.microsoft.com にある Azure Database Migration Service [ドキュメント](https://docs.microsoft.com/azure/dms/dms-overview)の関連チュートリアルを参照してください。
 
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>Q. 移行のソース データベースへのアクセスに使用されるファイアウォール規則の許可リストを作成するために、Azure Database Migration Service の IP アドレスを調べるには、どうすればよいですか。
 Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。 サービスの IP アドレスは動的ですが、ExpressRoute を使用している場合、このアドレスは企業ネットワークによってプライベートに割り当てられます。 適切な IP アドレスを特定する最も簡単な方法は、プロビジョニングされた Azure Database Migration Service リソースと同じリソース グループを検索して、関連付けられているネットワーク インターフェイスを見つけることです。 通常、ネットワーク インターフェイス リソースの名前は、NIC 接頭辞で始まり、一意の文字と数字のシーケンスが続きます (NIC-jj6tnztnmarpsskr82rbndyp など)。 このネットワーク インターフェイス リソースを選択すると、Azure Portal のリソースの概要のページに、許可リストに含める必要がある IP アドレスが表示されます。
@@ -80,7 +80,7 @@ SQL Server エラー ログに対して次のクエリを実行して、SQL Serv
 - データ移行操作中に一時的に Azure SQL Database のターゲット インスタンスを Premium レベル SKU にスケールアップし、より低いレベルの SKU を使用した場合にデータ転送アクティビティに影響する Azure SQL Database の調整を最小限に抑えます。
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>Q. Azure Virtual Network をセットアップするにはどうすればよいですか。
-Azure VNET のセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは「[Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)」という記事に掲載されています。
+Azure VNET のセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは「[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)」という記事に掲載されています。
 
 ### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>Q. Azure Database Migration Service が利用できないか停止しています。なぜですか。
 ユーザーが明示的に Azure Database Migration Service (DMS) を停止した場合、またはサービスが 24 時間非アクティブ状態になった場合、サービスは停止状態または自動一時停止状態になります。 いずれの場合も、サービスは利用できなくなり、停止状態になります。  アクティブな移行を再開するには、サービスを再起動します。

@@ -1,11 +1,11 @@
 ---
-title: "Azure Logic Apps へのアクセスのセキュリティ保護 | Microsoft Docs"
-description: "Azure Logic Apps のワークフローで使用されるトリガー、入出力、アクション パラメーター、サービスへのアクセスを保護するセキュリティを追加します。"
+title: Azure Logic Apps へのアクセスのセキュリティ保護 | Microsoft Docs
+description: Azure Logic Apps のワークフローで使用されるトリガー、入出力、アクション パラメーター、サービスへのアクセスを保護するセキュリティを追加します。
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042fdaa037fe1928fdb81727968a532ddfae0a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-access-to-your-logic-apps"></a>ロジック アプリへのアクセスのセキュリティ保護
 
@@ -77,7 +77,7 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 この設定は、ロジック アプリの設定内で構成できます。
 
 1. Azure Portal で、IP アドレスの制限を追加するロジック アプリを開きます。
-1. **[設定]** の **[Access control configuration] \(アクセス制御の構成)** メニュー項目をクリックします。
+1. **[設定]** の **[ワークフロー設定]** メニュー項目をクリックします
 1. トリガーで受け入れる IP アドレス範囲の一覧を指定します。
 
 有効な IP 範囲の形式は `192.168.1.1/255` です。 ロジック アプリを入れ子になったロジック アプリとしてのみ起動する場合は、**[Only other logic apps] \(他のロジック アプリのみ)** オプションをオンにします。 このオプションによって空の配列がリソースに書き込まれ、サービス自体 (親ロジック アプリ) からの呼び出しのみが正常に起動するようになります。
@@ -119,7 +119,7 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>ロジック アプリを管理または編集するアクセスのセキュリティ保護
 
-ロジック アプリの管理操作へのアクセスを制限して、リソースに対する操作を特定のユーザーまたはグループのみが実行できるようにすることが可能です。 ロジック アプリでは Azure の[役割ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) 機能が使用されており、同じツールでカスタマイズできます。  また、サブスクリプションのメンバーに割り当てることのできる組み込みの役割もいくつかあります。
+ロジック アプリの管理操作へのアクセスを制限して、リソースに対する操作を特定のユーザーまたはグループのみが実行できるようにすることが可能です。 ロジック アプリでは Azure の[役割ベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) 機能が使用されており、同じツールでカスタマイズできます。  また、サブスクリプションのメンバーに割り当てることのできる組み込みの役割もいくつかあります。
 
 * **ロジック アプリの共同作成者** - ロジック アプリを表示、編集、更新できるアクセス権を提供します。  リソースの削除や管理操作は実行できません。
 * **ロジック アプリのオペレーター** - ロジック アプリと実行履歴の表示、および有効と無効の切り替えを行うことができます。  定義の編集や更新はできません。
@@ -268,7 +268,7 @@ HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用�
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間 VPN と ExpressRoute の統合など、オンプレミス接続オプションがあります。 ロジック アプリ デザイナーでは、Azure API Management から公開された API をワークフロー内ですばやく選択して、オンプレミス システムへ迅速にアクセスすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [デプロイ テンプレートを作成する](logic-apps-create-deploy-template.md)  
 [例外処理](logic-apps-exception-handling.md)  
 [ロジック アプリを監視する](logic-apps-monitor-your-logic-apps.md)  

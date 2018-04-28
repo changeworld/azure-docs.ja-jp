@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 1963c4d7b2e895032862fae896c6d9ff7cf80806
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 090629874e75d75223e018b002cf04a02b1d1bb0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
 この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
@@ -116,7 +116,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
     ]
     ```
 
-診断設定のプロパティ BLOB は、 [こちらの記事で説明する形式](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate)に従います。 [リソースが Azure Monitor メトリックをサポートしてる](monitoring-supported-metrics.md)場合、`metrics` プロパティを追加して、リソース メトリックをこれらの同じ出力に送信することもできます。
+診断設定のプロパティ BLOB は、 [こちらの記事で説明する形式](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)に従います。 [リソースが Azure Monitor メトリックをサポートしてる](monitoring-supported-metrics.md)場合、`metrics` プロパティを追加して、リソース メトリックをこれらの同じ出力に送信することもできます。
 
 ロジック アプリを作成し、Event Hubs およびストレージ アカウント内のストレージへのストリーミングを有効にする例を次に示します。
 
@@ -134,7 +134,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+      "defaultValue": "http://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",

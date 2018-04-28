@@ -1,20 +1,20 @@
 ---
-title: Azure SQL Data Warehouse の作成と照会 - Azure Portal | Microsoft Docs
-description: Azure Portal から Azure SQL Data Warehouse を作成してクエリを実行します。
+title: 'クイック スタート: Azure SQL Data Warehouse の作成とクエリ - Azure Portal | Microsoft Docs'
+description: Azure Portal で Azure SQL Data Warehouse を使用してデータ ウェアハウスを作成し、クエリを実行します。
 services: sql-data-warehouse
-author: hirokib
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.topic: quickstart
-ms.component: implement
-ms.date: 03/28/2018
-ms.author: elbutter
-ms.reviewer: jrj
-ms.openlocfilehash: 97738b37f81cac3e7eef263fecc2095c9ef4b7ff
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 284cfd3562a951da928697c91aa8234719056fa4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート: Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する
 
@@ -22,9 +22,14 @@ Azure Portal を使用すると、Azure SQL Data Warehouse を簡単に作成し
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
+> [!NOTE]
+> SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[SQL Data Warehouse の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」を参照してください。
+>
+>
+
 ## <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) をダウンロードしてインストールします。
+最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
@@ -32,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
-Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](performance-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソースリソース](memory-and-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server)内に作成されます。 
 
 以下の手順で AdventureWorksDW サンプル データを含む SQL Data Warehouse を作成します。 
 
@@ -65,7 +70,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
     ![データベース サーバーを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. **[選択]**をクリックします。
+5. **[選択]** をクリックします。
 
 6. **[パフォーマンス層]** をクリックして、データ ウェアハウスのパフォーマンス構成を指定します。
 
@@ -73,7 +78,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
     ![パフォーマンスを構成する](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. **[Apply]**をクリックします。
+8. **[Apply]** をクリックします。
 
 9. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
 
@@ -145,7 +150,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
     ![[サーバーへの接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. **[接続]**をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
 5. オブジェクト エクスプローラーで、**[データベース]** を展開します。 **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
@@ -162,7 +167,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
     SELECT * FROM sys.databases
     ```
 
-3. **[実行]**をクリックします。  クエリ結果には、**master** と **mySampleDataWarehouse** という 2 つのデータベースが表示されます。
+3. **[実行]** をクリックします。  クエリ結果には、**master** と **mySampleDataWarehouse** という 2 つのデータベースが表示されます。
 
     ![データベースのクエリを実行する](media/create-data-warehouse-portal/query-databases.png)
 

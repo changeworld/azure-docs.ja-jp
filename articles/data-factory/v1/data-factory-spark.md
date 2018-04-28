@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory から Spark プログラムを呼び出す | Microsoft Docs"
-description: "MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。"
+title: Azure Data Factory から Spark プログラムを呼び出す | Microsoft Docs
+description: MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -59,7 +59,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 2. [HDInsight での Spark クラスターの作成](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)のチュートリアルの説明に従って、HDInsight で Spark クラスターを作成します。 手順 1. で作成したストレージ アカウントをこのクラスターに関連付けます。
 
-3. [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) にある Python スクリプト ファイル **test.py** をダウンロードして確認します。
+3. [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)にある Python スクリプト ファイル **test.py** をダウンロードして確認してください。
 
 4. Blob Storage の **adfspark** コンテナーにある**pyFiles** フォルダーに **test.py** をアップロードします。 コンテナーとフォルダーを作成します (存在しない場合)。
 
@@ -81,10 +81,10 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 
    > [!IMPORTANT]
-   > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
+   > Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
 
 8. 作成されたデータ ファクトリは、Azure Portal のダッシュボードに表示されます。
 

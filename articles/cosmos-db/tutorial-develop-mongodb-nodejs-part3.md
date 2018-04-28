@@ -1,25 +1,25 @@
 ---
-title: "Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 3 | Microsoft Docs"
-description: "Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 3 です。"
+title: Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 3 | Microsoft Docs
+description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 3 です。
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: ff75b4546a85c1c0bbf5c256977a3d33016c8c44
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: de645f46a889ba05fc54b1c5d2b9da64393d348e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 3: Angular で UI を作成する
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/05/2017
     > John Papa の Angular Essentials 拡張機能とスニペットを Visual Studio Code に使用すると開発効率を高めることができます。 
     > 1. **[拡張機能]** ボタン (![Visual Studio Code の [拡張機能] ボタン](./media/tutorial-develop-mongodb-nodejs-part3/extensions-button.png)) をクリックします。
     > 2. 検索ボックスに「*angular essentials*」と入力します。
-    > 3. **[インストール]**をクリックします。 
+    > 3. **[インストール]** をクリックします。 
     > 4. **[再読み込み]** ボタンをクリックして新しい拡張機能を使用します。
     > または、[http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) からダウンロードします。 
     > ![Angular Essentials 拡張機能](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
@@ -547,7 +547,7 @@ ms.lasthandoff: 12/05/2017
 
      ![ローカルで実行中のヒーロー アプリケーション](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 本チュートリアルのこのパートでは、次の手順を行いました。
 

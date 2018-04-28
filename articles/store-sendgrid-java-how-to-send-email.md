@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9f7d4841846e41eacb66125bcdeeb29466bb0b8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Java から SendGrid を使用して電子メールを送信する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 コード サンプルは Java で記述されています。 紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
@@ -81,7 +81,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
 3. メッセージを作成し、**To**、**From**、**Subject**、およびコンテンツの値を設定します。 このコードは「[方法: 電子メールを作成する](#how-to-create-an-email)」に示しています。
-4. *javax.mail.Transport* オブジェクトを使用してメッセージを送信します。 このコードは、「[方法: 電子メールを送信する][How to: Send an Email]」セクションに示しています。
+4. *javax.mail.Transport* オブジェクトを使用してメッセージを送信します。 このコードは、「[方法: 電子メールを送信する][#how-to-send-an-email]」セクションに示しています。
 
 ## <a name="how-to-create-an-email"></a>方法: 電子メールを作成する
 次のコードは電子メールに関する値を指定する方法を示しています。

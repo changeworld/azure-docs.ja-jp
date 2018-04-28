@@ -1,8 +1,8 @@
 ---
-title: "SCP.NET プログラミング ガイド | Microsoft Docs"
-description: "SCP.NET を使用して、HDInsight 上の Storm で使用するための NET ベースの Storm トポロジを作成する方法について説明します。"
+title: SCP.NET プログラミング ガイド | Microsoft Docs
+description: SCP.NET を使用して、HDInsight 上の Storm で使用するための NET ベースの Storm トポロジを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: raviperi
 manager: jhubbard
 editor: cgronlun
@@ -11,15 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: a0ce92ba58fbcda812a3d4e5e275178b73400d6c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0f4c021bc209c99e1b3f34b34bf5ba0549eb48f9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
 SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 
@@ -155,7 +153,7 @@ Context は、アプリケーションに実行環境を提供します。 各 I
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。 For example:
+`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。 例: 
 
     public class Constants
     {
@@ -351,7 +349,7 @@ ISCPBatchBolt では、`parms` の `StormTxAttempt` を取得し、それを使�
         }
 
 ## <a name="topology-specification-language"></a>トポロジ仕様言語
-SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) を基にし、SCP によって拡張されています。
+SCP Topology Specification は、SCP トポロジを記述して構成するためのドメイン固有の言語です。 これは Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) に基づいており、SCP によって拡張されます。
 
 トポロジの仕様は、***runspec*** コマンドを介して Storm クラスターに直接送信されて実行されます。
 
@@ -646,7 +644,7 @@ ISCPBatchBolt インスタンスが作成されると、入力パラメーター
 ### <a name="scphostdemo"></a>SCPHostDemo
 この例は、基本的に HelloWorld と同じです。 唯一の相違点は、ユーザー コードが DLL としてコンパイルされ、トポロジが SCPHost.exe を使用して送信されることです。 詳細な説明については、「SCP ホスト モード」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SCP を使用して作成された Storm トポロジの例については、次のドキュメントを参照してください。
 
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)

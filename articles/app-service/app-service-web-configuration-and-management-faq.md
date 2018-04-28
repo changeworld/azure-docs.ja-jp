@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6aa0c08fad98eeff7c937f817ca0a8fa20238c4a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -84,7 +84,7 @@ Web アプリの送信 IP アドレスの一覧を取得するには、次の手
 
 送信 IP アドレスの一覧が表示されます。
 
-Web サイトが PowerApps の App Service Environment でホストされている場合、送信 IP アドレスを取得する方法については、「[送信ネットワーク アドレス](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)」を参照してください。
+Web サイトが App Service Environment でホストされている場合、送信 IP アドレスを取得する方法については、「[発信ネットワーク アドレス](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses)」をご覧ください。
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Web アプリ用に着信 IP アドレスを予約または専用にするにはどうすればよいですか?
 
@@ -182,7 +182,7 @@ F12 トレースをキャプチャする方法は 2 つあります。
 
 1. Internet Explorer で、Web サイトに移動します。 次の手順を実行する前にサインインする必要があります。 サインインしないと、F12 トレースは機密性の高いサインイン データをキャプチャします。
 2. F12 キーを押します。
-3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]**ボタンをクリックします。
+3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]** ボタンをクリックします。
 4. 問題を再現する手順を実行します。
 5. 赤の **[停止]** ボタンをクリックします。
 6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Edge)。*または* HAR ファイルを右クリックし、**[HAR 形式ですべて保存]** を選択します (Chrome)。
@@ -268,7 +268,7 @@ App Service 証明書購入のドメインの確認中に、次のメッセー�
 24 時間を過ぎてもこのメッセージを表示されたままの場合、次の PowerShell スクリプトを実行してください。 このスクリプトは[証明書プロバイダー](https://www.godaddy.com/)に直接送信され、問題を解決します。
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"

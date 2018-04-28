@@ -1,6 +1,6 @@
 ---
-title: "Azure Time Series Insights 環境の規模を計画する | Microsoft Docs"
-description: "この記事では、ストレージ容量、データ リテンション期間、イングレス容量、監視など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。"
+title: Azure Time Series Insights 環境の規模を計画する | Microsoft Docs
+description: この記事では、ストレージ容量、データ リテンション期間、イングレス容量、監視など、Azure Time Series Insights 環境を計画する際のベスト プラクティスに従う方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 5fb158ba162dd199f419f9568de08a7a18c833dd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 
@@ -32,6 +32,8 @@ Time Series Insights の 2 つの SKU の容量とリテンション期間の詳
 - ストレージの容量
 - データ保持期間
 - イングレス容量 
+- イベントの整形
+- 参照データの配置確認
 
 ## <a name="understand-storage-capacity"></a>ストレージ容量について
 既定では、Time Series Insight は、プロビジョニング済みのストレージの容量 (ユニットごとのストレージの単位時間あたりの容量) とイングレスに基づいてデータを保持します。
@@ -74,16 +76,27 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 
 プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure Portal で [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) と [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) のデータ テレメトリを確認できます。 このテレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure Portal で、それぞれのイベント ソースの **[メトリック]** ページを使用してテレメトリを表示します。 イベント ソースのメトリックを理解すると、Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
 
-## <a name="calculate-ingress-requirements"></a>イングレス要件の計算
+### <a name="calculate-ingress-requirements"></a>イングレス要件の計算
 
 - イングレス容量が 1 分あたりの平均レートを上回っていることを確認し、環境が、現在の容量の 2 倍に相当する予想されるイングレスを 1 時間未満で十分に処理できる規模であることを確認します。
 
 - 1 時間以上続くイングレス スパイクが発生した場合は、スパイク レートを平均値として使用し、スパイク レートに対応する容量を備えた環境をプロビジョニングします。
  
-## <a name="mitigate-throttling-and-latency"></a>調整と待機時間の緩和
+### <a name="mitigate-throttling-and-latency"></a>調整と待機時間の緩和
 
 調整と待機時間が発生しないようにする方法については、[待機時間と調整の緩和](time-series-insights-environment-mitigate-latency.md)に関する記事をご覧ください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="shaping-your-events"></a>イベントの整形
+イベントを TSI に送信する方法がプロビジョニングする環境のサイズに対応していることを確認することが重要です (逆に言えば、TSI で読み込まれるイベントの数と各イベントのサイズに環境のサイズをマッピングできます)。  同様に、データにクエリを実行するときのスライスとフィルターの基準にする属性について考えることが重要です。  以上の事柄を念頭に置き、Microsoft の*イベント送信*に関する文書https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events)の JSON 整形セクションをご覧になることをお勧めします。  ページの下のほうにあります。  
+
+## <a name="ensuring-you-have-reference-data-in-place"></a>参照データの配置確認
+参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
+
+参照データは遡及的に結合されないことにご注意ください。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。  大量の履歴データを TSI に送信する予定のとき、TSI で最初に参照データをアップロードまたは作成しない場合、作業をやり直す必要があるかもしれません (それは楽しい作業ではないかもしれません)。  
+
+TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ*に関する文書https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set)をご覧ください。
+
+
+## <a name="next-steps"></a>次の手順
 - [イベント ハブ イベント ソースを追加する方法](time-series-insights-how-to-add-an-event-source-eventhub.md)
 - [IoT Hub イベント ソースを追加する方法](time-series-insights-how-to-add-an-event-source-iothub.md)

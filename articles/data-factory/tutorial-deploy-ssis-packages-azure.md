@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: hero-article
-ms.date: 01/29/2018
+ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: aca9f822bf3fd3b26e554240a4fee2474b89143d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cc0c26d83794cfb0b398e668ae89e268901df345
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>SQL Server Integration Services パッケージを Azure にデプロイする
 このチュートリアルでは、Azure Portal を使用して Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイできます。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/23/2018
 
 > [!NOTE]
 > - バージョン 2 のデータ ファクトリは、米国東部、米国東部 2、東南アジア、西ヨーロッパの各リージョンで作成できます。 
-> - Azure-SSIS IR は、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、オーストラリア東部の各リージョンで作成できます。 
+> - Azure-SSIS IR は、米国東部、米国東部 2、米国中部、米国西部 2、北ヨーロッパ、西ヨーロッパ、英国南部、オーストラリア東部の各リージョンで作成できます。 
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -61,13 +61,13 @@ ms.lasthandoff: 03/23/2018
 5. **リソース グループ**について、次の手順のいずれかを行います。
      
    - **[既存のものを使用]** を選択し、一覧から既存のリソース グループを選択します。 
-   - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 6. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 一覧には、データ ファクトリの作成がサポートされている場所のみが表示されます。
 8. **[ダッシュボードにピン留めする]** をオンにします。     
-9. **[作成]**を選択します。
+9. **[作成]** を選択します。
 10. ダッシュボードに、**[Deploying Data Factory]\(データ ファクトリをデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -93,7 +93,7 @@ ms.lasthandoff: 03/23/2018
 
    d. **[Node Number]\(ノード数\)** で、クラスターのノード数を指定します。
    
-   e. **[次へ]**を選択します。 
+   e. **[次へ]** を選択します。 
 3. **[SQL の設定]** ページで、次の手順を完了します。 
 
    ![SQL の設定](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
@@ -108,7 +108,7 @@ ms.lasthandoff: 03/23/2018
 
    e. **[Catalog Database Server Tier]\(カタログ データベース サーバー層\)** で、SSISDB データベースのサービス レベルを選択します。 既定値は **Basic** です。
 
-   f. **[次へ]**を選択します。 
+   f. **[次へ]** を選択します。 
 4. **[詳細設定]** ページで、**[Maximum Parallel Executions Per Node]\(ノードあたりの最大並列実行数\)** の値を選択します。   
 
    ![詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)    
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/23/2018
    >
    > Data Factory サービスは、Azure SQL Database に接続して SSIS カタログ (SSISDB データベース) を準備します。 このスクリプトは、仮想ネットワークのアクセス許可と設定も構成します (指定されている場合)。 さらに、Azure-SSIS 統合ランタイムの新しいインスタンスを仮想ネットワークに結合します。
    > 
-   > Azure-SSIS IR のインスタンスをプロビジョニングすると、ほかにも Azure Feature Pack for SSIS と Access の再頒布可能パッケージがインストールされます。 これらのコンポーネントは、組み込みのコンポーネントでサポートされるデータ ソースに加えて、Excel ファイルと Access ファイルのほか、さまざまな Azure データ ソースに対する接続を実現するものです。 現時点では、SSIS 用のサードパーティ コンポーネントをインストールすることはできません  (この制限には、Attunity による Oracle コンポーネントおよび Teradata コンポーネント、SAP BI コンポーネントなど、Microsoft が提供するサードパーティ コンポーネントが含まれます)。
+   > Azure-SSIS IR のインスタンスをプロビジョニングすると、ほかにも Azure Feature Pack for SSIS と Access の再頒布可能パッケージがインストールされます。 これらのコンポーネントは、組み込みのコンポーネントでサポートされるデータ ソースに加えて、Excel ファイルと Access ファイルのほか、さまざまな Azure データ ソースに対する接続を実現するものです。 追加のコンポーネントをインストールすることもできます。 詳細については、「[Custom setup for the Azure-SSIS integration runtime (Azure SSIS 統合ランタイムのカスタム セットアップ)](how-to-configure-azure-ssis-ir-custom-setup.md)」を参照してください。
 
 7. **[接続]** タブで、必要に応じて **[Integration Runtimes]\(統合ランタイム\)** に切り替えます。 **[最新の情報に更新]** を選択して、状態を更新します。 
 

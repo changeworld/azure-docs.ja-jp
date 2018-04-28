@@ -1,11 +1,11 @@
 ---
-title: "Aspera を使用した Azure Media Services アカウントへのファイルのアップロード | Microsoft Docs"
-description: "このチュートリアルでは、Azure 上の **Aspera Server On Demand** サービスを使って、Media Services アカウントに関連付けられているストレージ アカウントにファイルをアップロードする手順について説明します。"
+title: Aspera を使用した Azure Media Services アカウントへのファイルのアップロード | Microsoft Docs
+description: このチュートリアルでは、Azure 上の **Aspera Server On Demand** サービスを使って、Media Services アカウントに関連付けられているストレージ アカウントにファイルをアップロードする手順について説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: johndeu
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8812623a-b425-4a0f-9e05-0ee6c839b6f9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 58fec9746828863c4d0bff223fb6e9fb122256c3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/08/2018
 
 **Aspera** は高速ファイル転送ソフトウェアです。 Azure 用 **Aspera Server On Demand** を使用すると、大きいファイルを直接 Azure BLOB オブジェクト ストレージに高速でアップロードおよびダウンロードすることができます。 **Aspera On Demand** については、[Aspera Cloud](http://cloud.asperasoft.com/) サイトを参照してください。 
   
-Azure 用 **Aspera Server On Demand** は、[Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/) で購入できます。 Azure 用 **Aspera Server On Demand** の購入を完了するには、Windows Live ID を使って Azure Marketplace にログインしてください。
+Azure 用 **Aspera Server On Demand** は、[Azure Marketplace](https://azure.microsoft.com/marketplace/) で購入できます。 Azure 用 **Aspera Server On Demand** の購入を完了するには、Windows Live ID を使って Azure Marketplace にログインしてください。
 
 このチュートリアルでは、Azure 上の **Aspera Server On Demand** サービスを使って、Media Services アカウントに関連付けられているストレージ アカウントにファイルをアップロードする手順について説明します。 
 

@@ -1,26 +1,26 @@
 ---
-title: "Azure Power BI ワークスペース コレクションでレポートを埋め込む | Microsoft Docs"
-description: "Power BI ワークスペース コレクションでレポートをアプリケーションに埋め込む方法について説明します。"
+title: Azure Power BI ワークスペース コレクションでレポートを埋め込む | Microsoft Docs
+description: Power BI ワークスペース コレクションでレポートをアプリケーションに埋め込む方法について説明します。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 56e7ca90132527c0ef9d4bd478e99b75ca055272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートを埋め込む
 
@@ -116,7 +116,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-using-javascript"></a>JavaScript を使用して埋め込む
 
-アクセス トークンとレポート ID を取得したら、JavaScript を使用してレポートを埋め込むことができます。 そのためには、NuGet [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)をインストールする必要があります。 embedUrl は https://embedded.powerbi.com/appTokenReportEmbed になります。
+アクセス トークンとレポート ID を取得したら、JavaScript を使用してレポートを埋め込むことができます。 そのためには、NuGet [Power BI JavaScript パッケージ](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)をインストールする必要があります。 embedUrl は https://embedded.powerbi.com/appTokenReportEmbed です。
 
 > [!NOTE]
 > [JavaScript によるレポートの埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)を使用して、機能をテストできます。 ここでは、使用可能なさまざまな操作のコード例も紹介されています。

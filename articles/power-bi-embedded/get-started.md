@@ -3,8 +3,8 @@ title: Microsoft Power BI Embedded を使ってみる | Microsoft Docs
 description: Power BI Embedded をビジネス インテリジェンス アプリケーションに埋め込みます
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
-ms.author: asaxton
-ms.openlocfilehash: 3ea302d8cdd9a08d41f863917adeb4505552649d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: maghan
+ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded の概要
 

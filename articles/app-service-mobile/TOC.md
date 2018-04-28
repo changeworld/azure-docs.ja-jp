@@ -171,7 +171,7 @@
 ## [App Service のベスト プラクティス](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
-## [料金](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [料金](https://azure.microsoft.com/pricing/details/app-service/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)

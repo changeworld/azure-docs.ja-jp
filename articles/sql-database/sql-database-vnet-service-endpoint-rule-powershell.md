@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 489d1044de49c63ac7e1423708cc0638355ab1b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>PowerShell を使用して、Azure SQL Database 用の仮想サービス エンドポイントと規則を作成します。
 
@@ -50,6 +50,9 @@ ms.lasthandoff: 03/16/2018
 - [Azure Portal][http-azure-portal-link-ref-477t] を通じて、既に Azure にログインできます。
 - 既に、PowerShell スクリプトを実行できます。
 
+> [!NOTE]
+> サーバーに追加する Vnet/サブネットに対してサービス エンドポイントが有効になっていることを確認してください。そうでない場合、Vnet ファイアウォール規則の作成は失敗します。
+
 #### <a name="one-script-divided-into-four-chunks"></a>1 つのスクリプトが 4 つのチャンクに分割されています。
 
 このデモで使用する PowerShell スクリプトは、小さなスクリプトのシーケンスに分割されています。 この分割が、学習を容易にし、柔軟性を提供します。 示されたシーケンスでスクリプトを実行する必要があります。 すぐにスクリプトを実行する時間がない場合は、スクリプト 4 の後に、実際のテストの出力が表示されます。
@@ -79,7 +82,7 @@ ms.lasthandoff: 03/16/2018
 ###########################################################
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 ###########################################################
 ##  Assignments to variables used by the later scripts.  ##
@@ -519,7 +522,7 @@ PowerShell スクリプトのフェーズは次の通りです。
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 # Assignments to variables used by the later scripts.
 # You can EDIT these values, if necessary.

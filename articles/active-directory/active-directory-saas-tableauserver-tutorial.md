@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>チュートリアル: Azure Active Directory と Tableau Server の統合
 
@@ -158,7 +158,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
   
    b. **[Use SAML for single sign-on]** チェックボックスをオンにします。
    
-   c. [Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。http://tableau_server など。 http://localhost の使用は推奨されません。 末尾にスラッシュが付いている URL (http://tableau_server/ など) はサポートされていません。 **[Tableau Server return URL]\(Tableau Server の戻り先 URL\)** をコピーし、Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
+   c. [Tableau Server return URL]\(Tableau Server の戻り先 URL\): Tableau Server ユーザーがアクセスする URL (http://tableau_server など)。 http://localhost の使用は推奨されません。 末尾にスラッシュが付いている URL (例: http://tableau_server/)) はサポートされていません。 **[Tableau Server return URL]\(Tableau Server の戻り先 URL\)** をコピーし、Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
    
    d. [SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]\(SAML エンティティ ID\)** をコピーし、Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
      
@@ -232,7 +232,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Tableau Server]**を選択します。
+2. アプリケーションの一覧で **[Tableau Server]** を選択します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_app.png) 
 

@@ -1,56 +1,50 @@
 ---
-title: Azure Data Lake Store から SQL Data Warehouse への読み込み | Microsoft Docs
-description: PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込む方法について説明します。
+title: 'チュートリアル: Azure Data Lake Store から Azure SQL Data Warehouse に読み込む | Microsoft Docs'
+description: PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込みます。
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
-manager: barbkess
-editor: ''
-ms.assetid: ''
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 3/14/2018
-ms.author: cakarst;barbkess
-ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: e6bfe2423bfe97f53970283c113cd40b7f3ade25
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
-このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要なすべての手順について説明します。
-外部テーブルを使用すると、ADLS に格納されているデータに対してアドホック クエリを実行できます。ただし、パフォーマンスを最大限高めるには、SQL Data Warehouse にデータをインポートすることをお勧めします。
+# <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
+PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込みます。 ADLS に格納されているデータに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。
 
-このチュートリアルで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Azure Data Lake Store から読み込む必要のあるデータベース オブジェクトを作成する。
+> * Azure Data Lake Store ディレクトリに接続する。
+> * Azure SQL Data Warehouse にデータを読み込む。
 
-1. Azure Data Lake Store から読み込む必要のあるデータベース オブジェクトを作成する。
-2. Azure Data Lake Store ディレクトリに接続する。
-3. Azure SQL Data Warehouse にデータを読み込む。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="before-you-begin"></a>開始する前に
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
+
 このチュートリアルを実行するには、次のものが必要です。
 
-* サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)に関するページを参照してください。
+* サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
 >[!NOTE] 
-> SQL Data Warehouse から Azure Data Lake に接続するには、Active Directory アプリケーションのクライアント ID、キー、OAuth2.0 トークン エンドポイント値が必要です。 これらの値を取得する方法の詳細については、上記のリンクを参照してください。
->Azure Active Directory アプリケーションの登録で "アプリケーション ID" をクライアント ID として使用するようにしてください。
+> SQL Data Warehouse から Azure Data Lake に接続するには、Active Directory アプリケーションのクライアント ID、キー、OAuth2.0 トークン エンドポイント値が必要です。 これらの値を取得する方法の詳細については、上記のリンクを参照してください。 Azure Active Directory アプリの登録では、アプリケーション ID をクライアント ID として使います。
+> 
 
-* SQL Server Management Studio または SQL Server Data Tools。SSMS をダウンロードして接続する方法については、[SSMS に対してクエリを実行する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)方法に関するページを参照してください。
+* Azure SQL Data Warehouse。 [Azure SQL Data Warehouse の作成とクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
 
-* Azure SQL Data Warehouse。作成方法については、次を参照してください。https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* Azure Data Lake Store。 [Azure Data Lake Store の使用開始](../data-lake-store/data-lake-store-get-started-portal.md)に関するページをご覧ください。 
 
-* Azure Data Lake Store。作成方法については、次を参照してください。https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+##  <a name="create-a-credential"></a>資格情報を作成する
+Azure Data Lake Store にアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 次に、AAD のサービス プリンシパルの資格情報設定が格納されたデータベース スコープ資格情報を作成します。 資格情報の構文が異なるため、PolyBase を使用して Microsoft Azure Storage BLOB に接続しているユーザーはこの点に注意してください。
 
-
-###  <a name="create-a-credential"></a>資格情報を作成する
-Azure Data Lake Store にアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。
-次に、AAD のサービス プリンシパルの資格情報設定が格納されたデータベース スコープ資格情報を作成します。 資格情報の構文が異なるため、PolyBase を使用して Microsoft Azure Storage BLOB に接続しているユーザーはこの点に注意してください。
-Azure Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、アプリケーションのアクセス許可を Azure Data Lake のリソースに付与する必要があります。 これらの作業の実行手順については、[こちら](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)をご覧ください。
+Azure Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、アプリケーションのアクセス許可を Azure Data Lake のリソースに付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Store での認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
 
 ```sql
 -- A: Create a Database Master Key.
@@ -80,9 +74,8 @@ WITH
 ;
 ```
 
-
-### <a name="create-the-external-data-source"></a>外部データ ソースを作成する
-データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用します。 
+## <a name="create-the-external-data-source"></a>外部データ ソースを作成する
+データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) コマンドを使用します。 
 
 ```sql
 -- C: Create an external data source
@@ -100,7 +93,7 @@ WITH (
 
 ## <a name="configure-data-format"></a>データ形式の構成
 ADLS からデータをインポートするには、外部ファイル形式を指定する必要があります。 このオブジェクトでは、ADLS にファイルを書き込む方法が定義されます。
-完全な一覧については、T-SQL のドキュメント、[外部ファイル形式の作成][CREATE EXTERNAL FILE FORMAT]に関するページをご覧ください。
+完全な一覧については、[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) に関する T-SQL のドキュメントをご覧ください。
 
 ```sql
 -- D: Create an external file format
@@ -160,7 +153,7 @@ REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブル
  Azure Data Lake Store は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。 
 
 ## <a name="load-the-data"></a>データを読み込む
-Azure Data Lake Store からデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使用します。 
+Azure Data Lake Store からデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ステートメントを使用します。 
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -177,7 +170,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>列ストア圧縮の最適化
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、[列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。
 
@@ -187,41 +180,31 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ```
 
-列ストア インデックスの保守について詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
-
 ## <a name="optimize-statistics"></a>統計の最適化
 読み込みの直後に単一列の統計を作成することをお勧めします。 統計には選択肢がいくつかあります。 たとえば、すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。
 
-すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事][statistics]のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
+すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事](sql-data-warehouse-tables-statistics.md)のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
 
 次の例は、統計の作成の出発点として適しています。 これによりディメンション テーブルの各列と、ファクト テーブルの各結合列に、単一列の統計が作成されます。 他のファクト テーブルの列には、後で単一列または複数列の統計をいつでも追加できます。
-
 
 ## <a name="achievement-unlocked"></a>結果
 データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
 
-## <a name="next-steps"></a>次の手順
-データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 [テーブル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)と [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops) に関する開発リソースを確認してください。
+## <a name="next-steps"></a>次の手順 
+このチュートリアルでは、外部テーブルを作成して Azure Data Lake Store に格納されているデータの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。 
+
+以下のことを行いました。
+> [!div class="checklist"]
+> * Azure Data Lake Store から読み込む必要のあるデータベース オブジェクトを作成しました。
+> * Azure Data Lake Store ディレクトリに接続しました。
+> * Azure SQL Data Warehouse にデータを読み込みました。
+> 
+
+データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 開発リソースを確認してください。
+
+> [!div class="nextstepaction"]
+>[SQL Data Warehouse でテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)
 
 
-<!--Image references-->
 
-<!--Article references-->
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[manage columnstore indexes]: sql-data-warehouse-tables-index.md
-[Statistics]: sql-data-warehouse-tables-statistics.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[label]: sql-data-warehouse-develop-label.md
 
-<!--MSDN references-->
-[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/library/dn935026.aspx
-[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
-
-<!--Other Web references-->
-[Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

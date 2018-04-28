@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 627cb80a055fb4b66fcc428a1de87d754af6991e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -332,8 +332,8 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 
 
 <!-- LINKS - internal -->
-[acr-aks]: https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks
-[acr-create]: https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli
-[aks-quickstart]: https://docs.microsoft.com/en-us/azure/aks/
-[azure-cli]: https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
-[storage-account]: https://docs.microsoft.com/en-us/azure/storage/common/storage-azure-cli
+[acr-aks]: https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks
+[acr-create]: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
+[aks-quickstart]: https://docs.microsoft.com/azure/aks/
+[azure-cli]: https://docs.microsoft.com/cli/azure/?view=azure-cli-latest
+[storage-account]: https://docs.microsoft.com/azure/storage/common/storage-azure-cli

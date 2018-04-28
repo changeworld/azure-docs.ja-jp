@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 713b830717cce7b4b2b0fb1171596659c2275b85
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 13c3c948fbe24d5536b32967c8394060ee898377
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Stream Analytics ジョブへのストリーミング データ入力または参照データの追加
 Event Hubs からのストリーミング データ入力または BLOB ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。
@@ -49,12 +49,12 @@ Stream Analytics ジョブに入力を追加するには:
     ![データ ストリームのデータ入力の追加](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)  
 4. [入力のエイリアス] ボックスに、この入力のわかりやすい名前を入力します。  この名前は、後で入力を参照するためにジョブのクエリで使用されます。
    
-    データ ソースに接続するために必要な他の接続プロパティを入力します。 これらのフィールドは入力の種類とソースの種類によって異なります。詳細は[ここ](stream-analytics-create-a-job.md)に定義されています。  
+    データ ソースに接続するために必要な他の接続プロパティを入力します。 
    
     ![イベント ハブのデータ入力の追加](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)  
 5. 入力データのシリアル化の設定を指定します。
    
-   * クエリを正しく動作させるには、受信データの **[イベントのシリアル化の形式]** を指定します。  サポートされているシリアル化形式は、JSON、CSV、Avro です。
+   * クエリを正しく動作させるには、受信データの **[イベントのシリアル化の形式]** を指定します。  サポートされているシリアル化形式は、JSON、CSV、Avro です。 JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認してください。
    * データの **[エンコード]** を確認します。  現時点でサポートされているエンコード形式は UTF-8 だけです。
      
      ![データ入力のデータ シリアル化の設定](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  

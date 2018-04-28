@@ -1,10 +1,10 @@
 ---
-title: "チュートリアル: Azure Active Directory と Form.com の統合 | Microsoft Docs"
-description: "Azure Active Directory と Form.com の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Form.com の統合 | Microsoft Docs'
+description: Azure Active Directory と Form.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e4de55d99fce1cb1feff18a784eb029d3cb6a404
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0b1d990337c7c5caaee79bc8e3280c2690fc47b0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>チュートリアル: Azure Active Directory と Form.com の統合
 
@@ -101,14 +101,14 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_samlbase.png)
 
 3. **[Form.com のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Form.com のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.wa-form.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.wa-form.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.form.com` の形式で URL を入力します。
 
@@ -118,46 +118,26 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
     | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
     | `https://<subdomain>.form.com/Member/UserAccount/SAML2.action` |
     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL、応答 URL、および識別子で値を更新します。 これらの値を取得するには、[Form.com クライアント サポート チーム](https://form.com/about/company/contact-us/)に問い合わせてください。 
- 
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL、応答 URL、および識別子で値を更新します。 これらの値を取得するには、[Form.com クライアント サポート チーム](https://form.com/about/company/contact-us/)に問い合わせてください。
 
-    ![証明書のダウンロードのリンク](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_certificate.png) 
-
-5. **メタデータ URL** を生成するには、次の手順を実行します。
-
-    a. **[アプリの登録]** をクリックします。
+4. **[SAML 署名証明書]** セクションで、次の手順を実行します。
     
-    ![appreg を構成する](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![Endpointcon を構成する](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_endpointicon.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-formcom-tutorial/tutorial_metadataurl.png)
 
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![エンドポイントを構成する](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_endpoint.png)
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+
+    b. **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
      
-    d. 次に、**Form.com** のプロパティ ページに移動し、**[コピー]** ボタンで**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
- 
-    ![Appid を構成する](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. **[保存]** ボタンをクリックします。
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-formcom-tutorial/tutorial_general_400.png)
 
-7. **[Form.com 構成]** セクションで、**[Form.com を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+6. **[Form.com 構成]** セクションで、**[Form.com を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Form.com 構成](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_configure.png) 
 
-8. **Form.com** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**メタデータ URL**、および **SAML シングル サインオン サービス URL** を [Form.com サポート チーム](https://form.com/about/company/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+7. **Form.com** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**アプリケーション フェデレーション メタデータ URL**、および **SAML シングル サインオン サービス URL** を [Form.com サポート チーム](https://form.com/about/company/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -207,7 +187,7 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Form.com]**を選択します。
+2. アプリケーションの一覧で **[Form.com]** を選択します。
 
     ![アプリケーションの一覧の [Form.com] リンク](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_app.png)  
 

@@ -8,7 +8,7 @@
 1. 次のコマンドを使用して Azure サブスクリプションにログインします。
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. 複数の Azure サブスクリプションがある場合は、Azure にサインインすると、資格情報に関連付けられているすべての Azure サブスクリプションへのアクセスが許可されます。 次のコマンドで、使用できる Azure サブスクリプションの一覧を表示します。
@@ -28,8 +28,8 @@
 3. 次のコマンドを使用して新しい Azure Active Directory アプリケーションを作成します。プレース ホルダーを以下のとおりに置き換えます。
    
    * **{Display name}:** **MySampleApp** など、アプリケーションの表示名。
-   * **{Home page URL}:** **http://mysampleapp/home** など、アプリケーションのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
-   * **{Application identifier}:** **http://mysampleapp** などの一意識別子。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Home page URL}:** アプリのホームページの URL (例: **http://mysampleapp/home**)。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Application identifier}:** 一意識別子 (例: **http://mysampleapp**)。 この URL は実際のアプリケーションを示している必要はありません。
    * **{Password}:** 自分のアプリで認証に使用するパスワード。
      
      ```powershell

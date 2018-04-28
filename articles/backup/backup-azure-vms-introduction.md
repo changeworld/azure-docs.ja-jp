@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: markgal;trinadhk;sogup
+ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Azure における VM バックアップ インフラストラクチャの計画を立てる
 この記事では、パフォーマンスとリソースに関する提案を行い、VM のバックアップ インフラストラクチャを計画するお手伝いをします。 さらに、Backup サービスの主要な側面を定義します。これらの側面は、アーキテクチャの決定、容量計画、スケジューリングの際の重要な要素になることがあります。 [必要な環境の準備](backup-azure-arm-vms-prepare.md)が済んだら、[VM のバックアップ](backup-azure-arm-vms.md)を開始する前に行う次の手順は計画の作成です。 Azure 仮想マシンについて詳しい情報が必要な場合は、「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」を参照してください。
@@ -99,7 +99,8 @@ Azure で VM をバックアップする場合、オンプレミスにデプロ�
 
 * [バックアップ拡張機能のインストールまたは更新](backup-azure-arm-vms.md)の所要時間。
 * スナップショットの時間。スナップショットをトリガーするのにかかった時間です。 スナップショットは、スケジュールされたバックアップ時刻の近くでトリガーされます。
-* キューの待機時間。 Backup サービスは複数の顧客のバックアップを処理するので、スナップショットから Backup コンテナーまたは Recovery Services コンテナーへのバックアップ データのコピーは直ちには開始されない場合があります。 負荷のピーク時には、処理するバックアップ数に応じて、待機時間が最大 8 時間まで延長される可能性があります。 ただし、毎日のバックアップ ポリシーでは、VM バックアップの合計時間は 24 時間未満になります。
+* キューの待機時間。 Backup サービスは複数の顧客のバックアップを処理するので、スナップショットから Backup コンテナーまたは Recovery Services コンテナーへのバックアップ データのコピーは直ちには開始されない場合があります。 負荷のピーク時には、処理するバックアップ数に応じて、待機時間が最大 8 時間まで延長される可能性があります。 ただし、毎日のバックアップ ポリシーでは、VM バックアップの合計時間は 24 時間未満になります。 <br>
+**これは、最初のバックアップではなく、増分バックアップの場合にのみ有効です。最初のバックアップ時間は比例しており、データのサイズとバックアップが取得された時間に応じて、24 時間を超える可能性があります。**
 * データ転送時間。バックアップ サービスが前回のバックアップからの増分変更を計算し、これらの変更をコンテナー ストレージに転送するために必要な時間です。
 
 ### <a name="why-am-i-observing-longer12-hours-backup-time"></a>バックアップ時間が長い (12 時間超) 理由

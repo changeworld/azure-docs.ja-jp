@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>デバイス シミュレーションのチュートリアル
 
@@ -69,22 +69,22 @@ Azure IoT デバイス シミュレーションは、IoT ソリューション�
 
 デバイス シミュレーションでは、3 つの構成済みデバイス モデルが用意されています。 冷却装置用、エレベーター用、トラック用のデバイス モデルを利用できます。
 
-構成済みデバイス モデルには複数のセンサーが含まれ、テレメトリ頻度があらかじめ決められています。 これらのデバイスのテレメトリ頻度をカスタマイズすることはできません。
+構成済みデバイス モデルには、高度な動作が JavaScript ファイルで定義された複数のセンサーが含まれます。 このようなカスタム動作は Web UI ではサポートされていません。 
 
 次の表では、各構成済みデバイス モデルの構成の一覧を示します。
 
-| デバイスのモデル | センサー | 単位 | Telemetry frequency (テレメトリ頻度)
-| -------------| ------ | -----| --------------------|
-| 冷却装置 | 湿度 | % | 5 秒 |
-| | pressure | psig | 5 秒 |
-| | 温度 | F | 5 秒 |
-| エレベーター | 床 | | 5 秒 |
-| | 振動 | MM | 5 秒 |
-| | 気温 | F | 5 秒 |
-| トラック | Latitude | | 3 秒 |
-| | Longitude | | 3 秒 |
-| | 速度 | mph | 5 秒 |
-| | 積み荷の温度 | F | 5 秒 |
+| デバイスのモデル | センサー | 単位 | 
+| -------------| ------ | -----| 
+| 冷却装置 | 湿度 | % |
+| | pressure | psig | 
+| | 温度 | F | 
+| エレベーター | 床 | 
+| | 振動 | MM | 
+| | 気温 | F | 
+| トラック | Latitude | |
+| | Longitude | | 
+| | 速度 | mph | 
+| | 積み荷の温度 | F | 
 
 #### <a name="custom-device-model"></a>カスタム デバイス モデル
 
@@ -106,7 +106,7 @@ Azure IoT デバイス シミュレーションは、IoT ソリューション�
 
 ### <a name="number-of-devices"></a>Number of devices (デバイス数)
 
-現在、デバイス シミュレーションでは最大 1,000 個のデバイスをシミュレートできます。
+現在、デバイス シミュレーションでは最大 20,000 個のデバイスをシミュレートできます。
 
 ![Number of devices (デバイス数)](media/iot-suite-device-simulation-explore/numberofdevices.png)
 

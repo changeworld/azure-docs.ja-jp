@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 7380629344b27d5bb1e7af0aeddcb8f7665c1a5c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8bf1381ad089b9db41a3ef9f6fd3b9521a16da7e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -183,6 +183,8 @@ ExpressRoute をトランジット ルーターとして構成することはで
 | 東日本 | 12076:51012 |
 | 西日本 | 12076:51013 |
 | **オーストラリア** | |
+| オーストラリア中部 | 12076:51032 |
+| オーストラリア中部 2 | 12076:51033 |
 | オーストラリア東部 | 12076:51015 |
 | オーストラリア南東部 | 12076:51016 |
 | **インド** | |

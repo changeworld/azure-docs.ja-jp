@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -37,7 +37,6 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 - **Edge**: Windows 10 Anniversary Edition 以降。 
 - **Chrome**: Windows 7 以降、MacOS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
-- **Internet Explorer 8、9、10、11**: Windows 7 以降 (制限付きサポート)。
 
 ## <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -50,7 +49,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 3.  メッセージが表示されたら、**[今すぐインストール]** を選択します。  
     選択したブラウザーのダウンロード リンクにリダイレクトされます。 
     
-4.  **[追加]**を選択します。
+4.  **[追加]** を選択します。
 
 5.  メッセージが表示されたら、拡張機能を**有効にする**か、**許可**します。
 

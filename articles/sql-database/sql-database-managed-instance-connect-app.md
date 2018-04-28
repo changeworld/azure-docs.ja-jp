@@ -6,14 +6,14 @@ author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: f02311026e3f28d4cf41dfe9b155f928885ae938
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージ インスタンスにアプリケーションを接続する
 
@@ -79,4 +79,4 @@ Azure App Service をマネージ インスタンスに接続する場合の特�
 ## <a name="next-steps"></a>次の手順
 
 - マネージ インスタンスについては、「[What is a Managed Instance? (マネージ インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
-- チュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関する記事をご覧ください。
+- 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、「[マネージド インスタンスを作成する](sql-database-managed-instance-create-tutorial-portal.md)」を参照してください。

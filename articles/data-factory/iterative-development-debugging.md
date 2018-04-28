@@ -4,7 +4,7 @@ description: Azure Portal で Data Factory パイプラインの開発とデバ�
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,11 +12,11 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: adb5ffd65d4b2b591abba5d4b3481b7ca08de579
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 
@@ -48,6 +48,14 @@ Azure Data Factory では、Data Factory パイプラインの開発とデバッ
 Data Factory では、パイプライン キャンバスの特定のアクティビティに到達するまでデバッグすることもできます。 そこまでテストするアクティビティにブレークポイントを設定し、**[デバッグ]** を選択します。 Data Factory は、パイプライン キャンバスでブレークポイント アクティビティに達するまで、テストが実行されることを保証します。 この*特定の場所までデバッグする*機能は、パイプライン全体ではなく、パイプライン内のアクティビティのサブセットのみをテストする場合に便利です。
 
 ![パイプライン キャンバス上のブレークポイント](media/iterative-development-debugging/iterative-development-image4.png)
+
+ブレークポイントを設定するには、パイプライン キャンバス上で要素を選択します。 *[Debug Until]\(特定の場所までデバッグする\)* オプションは、要素の右上隅に空の赤い円として表示されます。
+
+![選択した要素にブレークポイントを設定する前](media/iterative-development-debugging/iterative-development-image5.png)
+
+*[Debug Until]\(特定の場所までデバッグする\)* オプションを選択した後は、赤い円が塗りつぶされ、ブレークポイントが有効になったことが示されます。
+
+![選択した要素にブレークポイントを設定した後](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>次の手順
 [Azure Data Factory における継続的インテグレーションとデプロイ](continuous-integration-deployment.md)

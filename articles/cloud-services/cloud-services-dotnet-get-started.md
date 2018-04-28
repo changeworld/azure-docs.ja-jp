@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services と ASP.NET を使ってみる | Microsoft Docs"
-description: "ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。 ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールと worker ロールと連係して動作します。 Entity Framework、SQL Database、Azure Storage のキューと BLOB を使用しています。"
+title: Azure Cloud Services と ASP.NET を使ってみる | Microsoft Docs
+description: ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。 ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールと worker ロールと連係して動作します。 Entity Framework、SQL Database、Azure Storage のキューと BLOB を使用しています。
 services: cloud-services, storage
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d7aa440d-af4a-4f80-b804-cc46178df4f9
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d092f5f6c59351530941d47565ee2c4905ddd2e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -34,8 +34,8 @@ ms.lasthandoff: 02/21/2018
 
 アプリケーションでは、 [キューを中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
-## <a name="alternative-architecture-websites-and-webjobs"></a>代替アーキテクチャ: Websites および WebJobs
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 自分のシナリオに最適なサービスを選択する方法の詳細については、「 [Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service/choose-web-site-cloud-service-vm.md)」を参照してください。
+## <a name="alternative-architecture-web-apps-and-webjobs"></a>代替アーキテクチャ: Web Apps および WebJobs
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](/azure/app-service/) で実行し、バックエンド用に [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 自分のシナリオに最適なサービスを選択する方法の詳細については、「 [Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service/choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## <a name="what-youll-learn"></a>学習内容
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
@@ -85,8 +85,8 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
     クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。 エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
     ![Contoso Ads architecture](./media/cloud-services-dotnet-get-started/home.png)
-8. **[Create an Ad (広告を作成)]**をクリックします。
-9. 何らかのテスト データを入力し、アップロードする画像 ( *.jpg* ) を選択したら、 **[Create]**をクリックします。
+8. **[Create an Ad (広告を作成)]** をクリックします。
+9. 何らかのテスト データを入力し、アップロードする画像 ( *.jpg* ) を選択したら、 **[Create]** をクリックします。
 
     ![作成ページ](./media/cloud-services-dotnet-get-started/create.png)
 
@@ -325,7 +325,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 ### <a name="create-a-cloud-service-visual-studio-solution"></a>クラウド サービス Visual Studio ソリューションの作成
 1. Visual Studio で、 **新しいプロジェクト** from the **[新しいプロジェクト]** を選択します。
 2. **[新しいプロジェクト]** ダイアログ ボックスの左側のウィンドウで、**[Visual C#]** を展開し、**[クラウド]** テンプレート、**[Azure クラウド サービス]** テンプレートの順に選択します。
-3. プロジェクトおよびソリューションに ContosoAdsCloudService という名前を付けて **[OK]**をクリックします。
+3. プロジェクトおよびソリューションに ContosoAdsCloudService という名前を付けて **[OK]** をクリックします。
 
     ![[新しいプロジェクト]](./media/cloud-services-dotnet-get-started/newproject.png)
 4. **[新しい Azure クラウド サービス]** ダイアログ ボックスで、Web ロールと worker ロールを追加します。 Web ロールに ContosoAdsWeb という名前を付け、worker ロールに ContosoAdsWorker という名前を付けます (右側のウィンドウの鉛筆アイコンを使用して、ロールの既定の名前を変更します)。
@@ -340,17 +340,17 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 7. **[新しい ASP.NET プロジェクト]** ダイアログで **[OK]** をクリックします。
 8. **ソリューション エクスプローラー**で (プロジェクトのソリューション以外の) ソリューションを右クリックし、**[追加] > [新しいプロジェクト]** の順に選択します。
 9. **[新しいプロジェクトの追加]** ダイアログ ボックスで、左側のウィンドウの **[Visual C#]** の下の **[Windows]** を選択し、**[クラス ライブラリ]** テンプレートをクリックします。  
-10. プロジェクトに *ContosoAdsCommon*という名前を付けて **[OK]**をクリックします。
+10. プロジェクトに *ContosoAdsCommon*という名前を付けて **[OK]** をクリックします。
 
     Web ロール プロジェクトと worker ロール プロジェクトの両方から Entity Framework のコンテキストとデータ モデルを参照する必要があります。 代わりの方法として、Entity Framework に関連するクラスを Web ロール プロジェクトで定義し、worker ロール プロジェクトからそのプロジェクトを参照することもできます。 ただしその代替方法では、worker ロール プロジェクトに、必要としない Web アセンブリへの参照が含まれることになります。
 
 ### <a name="update-and-add-nuget-packages"></a>NuGet パッケージの更新および追加
 1. ソリューションの **[NuGet パッケージの管理]** ダイアログ ボックスを開きます。
-2. ウィンドウの上部にある **[更新プログラム]**を選択します。
+2. ウィンドウの上部にある **[更新プログラム]** を選択します。
 3. *WindowsAzure.Storage* パッケージを探し、一覧にある場合はそれを選択します。さらに、更新する Web プロジェクトと worker プロジェクトを選択し、**[更新]** をクリックします。
 
     ストレージ クライアント ライブラリは Visual Studio プロジェクト テンプレートよりも頻繁に更新されるため、新しく作成したプロジェクトのバージョンの更新が必要になることがよくあります。
-4. ウィンドウの上部にある **[参照]**を選択します。
+4. ウィンドウの上部にある **[参照]** を選択します。
 5. *EntityFramework* NuGet パッケージを見つけて、3 つのプロジェクトすべてにインストールします。
 6. *Microsoft.WindowsAzure.ConfigurationManager* NuGet パッケージを見つけ、worker ロール プロジェクトにインストールします。
 
@@ -400,7 +400,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 ### <a name="add-code-files"></a>コード ファイルの追加
 このセクションでは、ダウンロードしたソリューションから新しいソリューションにコード ファイルをコピーします。 以降のセクションでは、このコードの重要な部分について説明します。
 
-プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、 **[追加]** - **[既存の項目]**にデプロイする方法について説明します。 目的のファイルを選択してから **[追加]**をクリックします。 既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、 **[はい]**をクリックします。
+プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、 **[追加]** - **[既存の項目]** にデプロイする方法について説明します。 目的のファイルを選択してから **[追加]** をクリックします。 既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、 **[はい]** をクリックします。
 
 1. ContosoAdsCommon プロジェクトで、*Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから *Ad.cs* ファイルと *ContosoAdscontext.cs* ファイルを追加します。
 2. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
@@ -749,14 +749,14 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 アプリケーションが Azure RoleEnvironment を使用する目的の 1 つに、*.cscfg* ファイルに格納されている接続文字列値を取得することがあります。したがって、この例外の別の原因として、接続文字列が見つからないことが考えられます。 ContosoAdsWeb プロジェクトのクラウド構成とローカル構成の両方に対して StorageConnectionString 設定が作成されていること、および ContosoAdsWorker プロジェクトの両方の構成に対して両方の接続文字列が作成されていることを確認してください。 ソリューション全体を対象に StorageConnectionString の "**すべて検索**" を実行すると、6 つのファイルに 9 件見つかります。
 
 ### <a name="cannot-override-to-port-xxx-new-port-below-minimum-allowed-value-8080-for-protocol-http"></a>ポート xxx にオーバーライドできません。 新しいポートが http プロトコルで許容されている最小値 8080 を下回っています
-Web プロジェクトで使用するポート番号を変更してください。 ContosoAdsWeb プロジェクトを右クリックし、 **[プロパティ]**をクリックします。 **[Web]** タブで、**[プロジェクトの URL]** 設定のポート番号を変更します。
+Web プロジェクトで使用するポート番号を変更してください。 ContosoAdsWeb プロジェクトを右クリックし、 **[プロパティ]** をクリックします。 **[Web]** タブで、**[プロジェクトの URL]** 設定のポート番号を変更します。
 
 ほかに考えられるこの問題の解決方法については、次のセクションを参照してください。
 
 ### <a name="other-errors-when-running-locally"></a>ローカルで実行しているときに発生するその他のエラー
 既定では、新しいクラウド サービス プロジェクトは、Azure コンピューティング エミュレーター Express を使用して Azure 環境をシミュレートします。 これはフル装備のコンピューティング エミュレーターの軽量バージョンです。フル装備のエミュレーターは、Express バージョンが動作しない特定の条件でも動作します。  
 
-フル装備のエミュレーターを使用するようにプロジェクトを変更するには、ContosoAdsCloudService プロジェクトを右クリックし、 **[プロパティ]**をクリックします。 **[プロパティ]** ウィンドウで、**[Web]** タブをクリックし、**[Full Emulator を使用する]** をクリックします。
+フル装備のエミュレーターを使用するようにプロジェクトを変更するには、ContosoAdsCloudService プロジェクトを右クリックし、 **[プロパティ]** をクリックします。 **[プロパティ]** ウィンドウで、**[Web]** タブをクリックし、**[Full Emulator を使用する]** をクリックします。
 
 フル装備のエミュレーターを使用してアプリケーションを実行するには、管理者特権で Visual Studio を開く必要があります。
 

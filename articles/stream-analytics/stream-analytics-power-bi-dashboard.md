@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2017
-ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e84903870110091d527e870600d9a67bdc9cc6e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
+# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>チュートリアル: Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
 Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを作って使う方法についても説明します。
 
 この記事は、Stream Analytics による[リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)に関するチュートリアルに続くものです。 この記事では、前のチュートリアルで作成したワークフローに Power BI の出力を追加し、Streaming Analytics ジョブによって検出された不正な電話を視覚化できるようにします。 
@@ -173,7 +173,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
     ![新しいタイルのタイトルとサブタイトル](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. **[Apply]**をクリックします。
+9. **[Apply]** をクリックします。
 
     不正行為カウンターができました。
 

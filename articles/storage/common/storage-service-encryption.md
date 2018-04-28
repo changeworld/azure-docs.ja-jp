@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
 
@@ -72,7 +72,7 @@ A: Azure Key Vault で[独自の暗号化キーを使用している](storage-se
 
 **Q: Storage Service Encryption は、ストレージ アカウントを作成すると、既定で有効になりますか?**
 
-A: はい、Microsoft 管理キーを使用する Storage Service Encryption は、既定ですべてのストレージ アカウント (Azure Resource Manager とクラシック) に対して有効になります。 これは、すべてのサービス (BLOB ストレージ、キュー ストレージ、テーブル ストレージ、Azure ファイル) で有効になります。
+A: はい。Storage Service Encryption は、既定ですべてのストレージ アカウントとすべての Microsoft Azure Storage サービスに対して有効です。
 
 **Q: この機能は Azure Disk Encryption とどのように違うのですか?**
 

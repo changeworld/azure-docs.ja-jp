@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f97b2541bb755a9b7ab8e3602dfad90f50ada740
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション 
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) が含まれます。
+CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) が含まれます。
 
 
 ## <a name="considerations"></a>考慮事項

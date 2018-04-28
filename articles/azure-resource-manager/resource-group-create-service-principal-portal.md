@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 264befc6c60b87d41658b4da763e477fbb7e3f8c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bbda406633f97d9a6c90bc49374268df28b68f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory のアクセス許可を確認する
 
-1. **[Azure Active Directory]**を選択します。
+1. **[Azure Active Directory]** を選択します。
 
    ![[Azure Active Directory] を選択する](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
@@ -46,13 +46,13 @@ ms.lasthandoff: 03/23/2018
 
    ![[アプリの登録] を表示する](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
 
-1. [アプリの登録] 設定が **[いいえ]** に設定されている場合は、管理者ユーザーだけがアプリを登録できます。 お使いのアカウントが Azure AD テナントの管理者かどうかを確認します。 **[概要]** を選択し、ユーザー情報を確認します。 アカウントがユーザー ロールに割り当てられていても、(前の手順の) アプリの登録設定が管理者ユーザーに制限されている場合は、管理者に連絡して、管理者ロールに割り当ててもらうか、ユーザーがアプリを登録できるようにしてもらいます。
+1. アプリの登録設定が **[いいえ]** に設定されている場合は、[グローバル管理者](../active-directory/active-directory-assign-admin-roles-azure-portal.md)だけがアプリを登録できます。 お使いのアカウントが Azure AD テナントの管理者かどうかを確認します。 **[概要]** を選択し、ユーザー情報を確認します。 アカウントがユーザー ロールに割り当てられていても、(前の手順の) アプリの登録設定が管理者ユーザーに制限されている場合は、管理者に連絡して、グローバル管理者ロールに割り当ててもらうか、ユーザーがアプリを登録できるようにしてもらいます。
 
    ![ユーザーを検索する](./media/resource-group-create-service-principal-portal/view-user-info.png)
 
 ### <a name="check-azure-subscription-permissions"></a>Azure サブスクリプションのアクセス許可を確認する
 
-Azure サブスクリプションで、AD アプリをロールに割り当てるには、アカウントに `Microsoft.Authorization/*/Write` アクセス権が必要です。 このアクションは、[所有者](../active-directory/role-based-access-built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](../active-directory/role-based-access-built-in-roles.md#user-access-administrator)ロールを通じて許可されます。 アカウントが**共同作成者**ロールに割り当てられている場合は、適切なアクセス許可がありません。 この場合、サービス プリンシパルをロールに割り当てようとすると、エラーが発生します。
+Azure サブスクリプションで、AD アプリをロールに割り当てるには、アカウントに `Microsoft.Authorization/*/Write` アクセス権が必要です。 このアクションは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)ロールを通じて許可されます。 アカウントが**共同作成者**ロールに割り当てられている場合は、適切なアクセス許可がありません。 この場合、サービス プリンシパルをロールに割り当てようとすると、エラーが発生します。
 
 サブスクリプションのアクセス許可を確認するには、次の手順に従います。
 
@@ -71,7 +71,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 ## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
 1. [Azure Portal](https://portal.azure.com) で Azure アカウントにログインします。
-1. **[Azure Active Directory]**を選択します。
+1. **[Azure Active Directory]** を選択します。
 
    ![[Azure Active Directory] を選択する](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
@@ -121,7 +121,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 プログラムによってログインするときは、認証要求と共にテナント ID を渡す必要があります。
 
-1. **[Azure Active Directory]**を選択します。
+1. **[Azure Active Directory]** を選択します。
 
    ![[Azure Active Directory] を選択する](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
@@ -135,7 +135,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 ## <a name="assign-application-to-role"></a>アプリケーションをロールに割り当てる
 
-サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、「[RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます。
 
@@ -151,7 +151,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
    ![アクセスの選択](./media/resource-group-create-service-principal-portal/select-access-control.png)
 
-1. **[追加]**を選択します。
+1. **[追加]** を選択します。
 
    ![select add](./media/resource-group-create-service-principal-portal/select-add.png)
 
@@ -167,5 +167,5 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 ## <a name="next-steps"></a>次の手順
 * マルチテナント アプリケーションのセットアップについては、「 [Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
-* セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。  
-* ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md)」を参照してください。
+* セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」を参照してください。  
+* ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md)」を参照してください。

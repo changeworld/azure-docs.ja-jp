@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2328f7e233025d9f9ee9113aa28fb74754dd9193
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store でのデータの暗号化
 
@@ -138,3 +138,6 @@ Data Lake Store アカウントを設定するときに、独自キーの使用�
     ![Data Lake Store ウィンドウのスクリーンショット (メッセージとキーの交換に注目)](./media/data-lake-store-encryption/rotatekey.png)
 
 この処理は 2 分未満で完了します。キーの交換が原因でダウンタイムは発生しないものと思われます。 処理が完了したら、新しいバージョンのキーが使用中の状態になります。
+
+> [!IMPORTANT]
+> キー交換操作の完了後、以前のバージョンのキーは、積極的にはデータの暗号化に使用されなくなります。  ただし、まれなケースではありますが、データの冗長コピーにも影響するような予期しないエラーが発生した場合に、以前のキーが使用されているバックアップからデータを復元できることがあります。 そうしたまれな状況でも確実にデータにアクセスできるよう、以前のバージョンの暗号化キーのコピーは保持してください。 ディザスター リカバリー プランのベスト プラクティスについては、「[Data Lake Store 内のデータに対するディザスター リカバリーのガイダンス](data-lake-store-disaster-recovery-guidance.md)」を参照してください。 

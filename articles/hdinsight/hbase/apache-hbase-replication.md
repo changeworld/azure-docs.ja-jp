@@ -1,24 +1,22 @@
 ---
-title: "Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する | Microsoft Docs"
-description: "負荷分散、高可用性、ダウンタイムなしの移行と更新、およびディザスター リカバリーを実現するために、ある HDInsight バージョンから別のバージョンへの HBase レプリケーションを設定する方法について説明します。"
+title: Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する | Microsoft Docs
+description: 負荷分散、高可用性、ダウンタイムなしの移行と更新、およびディザスター リカバリーを実現するために、ある HDInsight バージョンから別のバージョンへの HBase レプリケーションを設定する方法について説明します。
 services: hdinsight,virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b0a22815dc0bf0ea31e47efe5152498f9aa45de4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -168,7 +166,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 5. 次の情報を選択するか入力します。
 
   1. **名前**: 「**Enable replication**」と入力します。
-  2. **Bash スクリプト URL**: 「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」と入力します。
+  2. **バッシュ スクリプト URI**: 「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」と入力します。
   3.  **ヘッド**: これが選択されていることを確認します。 他のノード タイプをオフにします。
   4. **パラメーター**: 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
@@ -178,11 +176,11 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
     >
     > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
 
-6. **[作成]**を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
+6. **[作成]** を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
 
 必須の引数:
 
-|名前|[説明]|
+|Name|[説明]|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -191,7 +189,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 省略可能な引数:
 
-|名前|[説明]|
+|Name|[説明]|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |

@@ -1,10 +1,10 @@
 ---
-title: "チュートリアル: Azure Active Directory と Bpm’ online の統合 | Microsoft Docs"
-description: "Azure Active Directory と Bpm’online の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Bpm’ online の統合 | Microsoft Docs'
+description: Azure Active Directory と Bpm’online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 052db91d-ccff-4098-8ae3-2f76eca90539
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0214fcbdde886bd14d84917e496568027d417096
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9359fc76d2198cab8e61b151fcd8672cb6b65b6e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>チュートリアル: Azure Active Directory と Bpm’online の統合
 
@@ -101,14 +101,14 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_samlbase.png)
 
 3. **[Bpm’online のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[Bpm’online のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_url.png)
 
-    a. **[識別子]** ボックスに、`https://<client site name>.bpmonline.com/` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<client site name>.bpmonline.com/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<client site name>.bpmonline.com/ServiceModel/AuthService.svc/SsoLogin` のパターンを使用して URL を入力します。
 
@@ -118,37 +118,18 @@ Bpm’online で Azure AD のシングル サインオンを構成してテス�
 
     **[サインオン URL]** ボックスに、`https://<client site name>.bpmonline.com/` のパターンを使用して URL を入力します。
      
-    > [!NOTE] 
+    > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Bpm’online クライアント サポート チーム](mailto:support@bpmonline.com)に問い合わせてください。 
 
-5. **メタデータ** URL を生成するには、次の手順を実行します。
-
-    a. **[アプリの登録]** をクリックします。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_endpoint.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bpmonline-tutorial/tutorial_metadataurl.png)
      
-    d. 次に、**Bpm’online** のプロパティ ページに移動し、**[コピー]** ボタンで**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
- 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_appid.png)
-
-     e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 
-
 6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-bpmonline-tutorial/tutorial_general_400.png)
     
-8. **Bpm’online** 側でシングル サインオンを構成するには、**メタデータ URL** を [Bpm’online サポート チーム](mailto:support@bpmonline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+7. **Bpm’online** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Bpm’online サポート チーム](mailto:support@bpmonline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

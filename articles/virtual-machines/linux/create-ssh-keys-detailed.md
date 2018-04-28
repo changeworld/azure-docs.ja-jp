@@ -1,6 +1,6 @@
 ---
-title: Azure で Linux VM 用の SSH キー ペアを作成する詳細な手順 | Microsoft Docs
-description: Azure で Linux VM 用の SSH 公開キーおよび秘密キーのペアと、各種ユース ケースに応じた証明書を作成する詳細な手順について説明します。
+title: 詳細な手順 - Azure Linux VM 用の SSH キー ペア | Microsoft Docs
+description: Azure の Linux VM 用に SSH の公開キーと秘密キーのペアを作成して管理する詳細な手順について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -13,67 +13,75 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 6/28/2017
+ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 827c80a70047fd0f1ad67e4f19cb2300e45b2c6b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
-# <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Azure で Linux VM 用の SSH キー ペアと追加の証明書を作成する詳細なチュートリアル
-SSH キー ペアを使用すると、既定で認証に SSH キーを使用する仮想マシンを Azure に作成できます。そのため、ログインするためのパスワードが不要になります。 パスワードは推測できる場合もあるため、VM が執拗なブルート フォース攻撃にさらされる危険性が生じかねません。 Azure CLI または Resource Manager テンプレートで作成された VM には、デプロイの一部として SSH 公開キーを含めることができるため、SSH のパスワード ログインを無効にするというデプロイ後の構成手順を省略できます。 この記事では、Linux 仮想マシンなどで使用する証明書を生成する詳細な手順について説明します。 SSH キー ペアを短時間で作成して使用したい場合は、「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](mac-create-ssh-keys.md)」をご覧ください。
+# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する 
+Secure Shell (SSH) のキー ペアを使用すると、既定で認証に SSH キーを使う Linux 仮想マシンを Azure 上に作成でき、ログインするためのパスワードが不要になります。 Azure Portal、Azure CLI、Resource Manager テンプレート、他のツールで作成された VM は、展開の一部として SSH 公開キーを含むことができ、SSH 接続用に SSH キー認証が設定されます。 
 
-## <a name="understanding-ssh-keys"></a>SSH キーについて
+この記事では、SSH クライアント接続用の SSH RSA 公開/秘密キー ファイル ペアの作成と管理について、詳細な背景と手順を説明します。 すぐに使用できるコマンドについては、[Azure での Linux VM 用の SSH 公開/秘密キー ペアの作成方法](mac-create-ssh-keys.md)に関する記事をご覧ください。
 
-Linux サーバーにログインするための最も簡単な方法は、SSH の公開キーと秘密キーを使用する方法です。 [公開キー暗号化](https://en.wikipedia.org/wiki/Public-key_cryptography) を使用した方が安全です。
+Windows コンピューター上で、SSH キーを生成して使用するその他の方法については、「[Azure 上の Windows で SSH キーを使用する方法](ssh-from-windows.md)」を参照してください。
 
-公開キーはだれとでも共有できますが、秘密キーを所有するのは自分 (またはローカル セキュリティ インフラストラクチャ) だけです。  SSH 秘密キーには、それを保護するための、[セキュリティで高度に保護されたパスワード](https://www.xkcd.com/936/) (ソース: [xkcd.com](https://xkcd.com)) が必要です。  このパスワードは、秘密 SSH キー ファイルにアクセスするためだけのものであり、ユーザー アカウント パスワード**ではありません**。  SSH キーにパスワードを追加すると、128 ビット AES を使用して秘密キーが暗号化されるため、暗号化解除するパスワードなしでは秘密キーを使用できなくなります。  攻撃者によって盗まれた秘密キーにパスワードがないと、その秘密キーが使用され、対応する公開キーを持つ任意のサーバーにログインされてしまいます。  秘密キーがパスワードで保護されている場合、攻撃者は秘密キーを使用できないため、Azure 上のインフラストラクチャにセキュリティ レイヤーが追加されたことになります。
+[!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
-この記事では、SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペア ("ssh-rsa" キーとも呼ばれます) を作成します。このファイル ペアは、Azure Resource Manager でのデプロイに推奨されています。 *ssh-rsa* キーは、クラシック デプロイと Resource Manager デプロイの両方の[ポータル](https://portal.azure.com)で必要です。
+### <a name="private-key-passphrase"></a>秘密キーのパスフレーズ
+SSH 秘密キーには、それを保護するためのセキュリティで高度に保護されたパスフレーズが必要です。 このパスフレーズは、秘密 SSH キー ファイルにアクセスするためだけのものであり、ユーザー アカウント パスワードでは "*ありません*"。 SSH キーにパスフレーズを追加すると、128 ビット AES を使用して秘密キーが暗号化されるため、暗号化解除するパスフレーズなしでは秘密キーを使用できなくなります。 攻撃者によって盗まれた秘密キーにパスフレーズがないと、その秘密キーが使用され、対応する公開キーを持つ任意のサーバーにログインされてしまいます。 秘密キーがパスフレーズによって保護されている場合、攻撃者は秘密キーを使用できないため、Azure 上のインフラストラクチャにセキュリティ レイヤーが追加されたことになります。
+
+[!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="ssh-keys-use-and-benefits"></a>SSH キーの使用方法と利点
 
-Azure では、長さ 2,048 ビット以上の SSH プロトコル バージョン 2 RSA 形式の公開キーと秘密キーを必須としています。公開キー ファイルには `.pub` コンテナー形式が含まれています  このキーを作成するには、`ssh-keygen` を使用します。一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 Azure VM が作成されると、公開キーが VM の `~/.ssh/authorized_keys` フォルダーに自動的にコピーされます。 `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。  認証に SSH キーを使用する Azure Linux VM が作成されると、Azure は、パスワード ログインを禁止して SSH キーのみを許可するよう SSHD サーバーを構成します。  そのため、SSH キーで Azure Linux VM を作成すると、VM のデプロイをセキュリティで保護し、一般的なデプロイ後の構成手順である **sshd_config** ファイルでのパスワードの無効化を省略できます。
+公開キーを指定して Azure VM を作成すると、Azure は公開キーを (`.pub` の形式で) VM の `~/.ssh/authorized_keys` フォルダーにコピーします。 `~/.ssh/authorized_keys` の SSH キーは、クライアントが SSH ログイン接続の対応する秘密キーと一致することを確認するために使用されます。 認証に SSH キーを使用する Azure Linux VM では、Azure は、パスワード ログインを禁止して SSH キーのみを許可するよう SSHD サーバーを構成します。 そのため、SSH キーで Azure Linux VM を作成すると、VM の展開をセキュリティで保護し、一般的な展開後の構成手順である `sshd_config` ファイルでのパスワードの無効化を省略できます。
 
-## <a name="using-ssh-keygen"></a>ssh-keygen の使用
+SSH キーを使用したくない場合は、パスワード認証を使うように Linux VM を設定できます。 VM がインターネットに公開されない場合は、パスワードを使用するだけで十分なことがあります。 ただし、Linux VM ごとにパスワードを管理し、パスワードの最小の長さ、定期的な更新など、優良なパスワードのポリシーと運用を維持する必要があります。 SSH キーを使用すると、複数の VM で別個に資格情報を管理する複雑さが軽減されます。
 
-次に示すのは、2,048 ビット RSA を使用してパスワードで保護された (暗号化された) SSH キー ペアを作成するコマンドです。識別しやすいようにコメントを付けています。  
+## <a name="generate-keys-with-ssh-keygen"></a>ssh-keygen でキーを生成する
+
+キーを作成するための推奨されるコマンドは `ssh-keygen` です。このコマンドは、Azure Cloud Shell、macOS、Linux ホスト上の OpenSSH ユーティリティや、[Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about)、および他のツールで利用できます。 `ssh-keygen` では、一連の質問に答えることによって、秘密キーと対応する公開キーが出力されます。 
 
 SSH キーは既定で `~/.ssh` ディレクトリに保持されます。  `~/.ssh` ディレクトリがない場合、`ssh-keygen` コマンドによって、適切なアクセス許可で作成されます。
+
+### <a name="basic-example"></a>基本的な例
+
+次の `ssh-keygen` コマンドは、既定で、2048 ビットの SSH RSA 公開および秘密キー ファイルを `~/.ssh` ディレクトリに生成します。 SSH キー ペアが現在の場所にある場合、それらのファイルは上書きされます。
+
+```bash
+ssh-keygen -t rsa -b 2048
+```
+
+### <a name="detailed-example"></a>詳細な例
+次の例では、SSH RSA キー ペアを作成するためのその他のコマンド オプションを示します。 SSH キー ペアが現在の場所にある場合、それらのファイルは上書きされます。 
 
 ```bash
 ssh-keygen \
     -t rsa \
-    -b 2048 \
+    -b 4096 \
     -C "azureuser@myserver" \
-    -f ~/.ssh/id_rsa \
-    -N mypassword
+    -f ~/.ssh/mykeys/myprivatekey \
+    -N mypassphrase
 ```
 
-*コマンドの説明*
+**コマンドの説明**
 
 `ssh-keygen` = キーの作成に使用するプログラム。
 
-`-t rsa` = [RSA 形式](https://en.wikipedia.org/wiki/RSA_(cryptosystem))で作成するキーの種類
-`-b 2048` = キーのビット数
+`-t rsa` = 作成するキーの種類。この場合は RSA 形式。
 
-`-C "azureuser@myserver"` = 識別しやすいように公開キー ファイルの末尾に追記されたコメント。  通常は電子メール アドレスがコメントとして使用されますが、インフラストラクチャに最適な他の文字列を使用してもかまいません。
+`-b 4096` = キーのビット数。この場合は 4096。
 
-## <a name="classic-deploy-using-asm"></a>`asm` を使用するクラシック デプロイ
+`-C "azureuser@myserver"` = 識別しやすいように公開キー ファイルの末尾に追記されたコメント。 通常はメール アドレスがコメントとして使用されますが、インフラストラクチャに最適な文字列を使用します。
 
-クラシック デプロイメント モデル (CLI の `asm` モード) を使用している場合は、pem コンテナーで SSH-RSA 公開キーまたは RFC4716 形式のキーを使用できます。  SSH-RSA 公開キーは、この記事の前半で `ssh-keygen` を使用して作成したものです。
+`-f ~/.ssh/mykeys/myprivatekey` = 既定の名前を使用しない場合の、秘密キー ファイルのファイル名。 `.pub` を付加された対応する公開キー ファイルが、同じディレクトリに生成されます。 ディレクトリは存在している必要があります。
 
-既存の SSH 公開キーから RFC4716 形式のキーを作成するには、次のようにします。
+`-N mypassphrase` = 秘密キー ファイルへのアクセスに使用される追加のパスフレーズ。 
 
-```bash
-ssh-keygen \
--f ~/.ssh/id_rsa.pub \
--e \
--m RFC4716 > ~/.ssh/id_ssh2.pem
-```
-
-## <a name="example-of-ssh-keygen"></a>ssh-keygen の例
+### <a name="example-of-ssh-keygen"></a>ssh-keygen の例
 
 ```bash
 ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
@@ -99,13 +107,13 @@ The keys randomart image is:
 +-----------------+
 ```
 
-保存するキー ファイル:
+#### <a name="saved-key-files"></a>保存されるキー ファイル
 
 `Enter file in which to save the key (/home/azureuser/.ssh/id_rsa): ~/.ssh/id_rsa`
 
-この記事で使用するキー ペアの名前です。  既定では、キー ペアの名前に **id_rsa** が割り当てられます。秘密キーのファイル名として **id_rsa** を想定しているツールもあるため、そのようにすることをお勧めします。 ディレクトリ `~/.ssh/` は、SSH キー ペアと SSH 構成ファイルの既定の場所です。  完全パスで指定されていない場合、`ssh-keygen` は、既定の `~/.ssh` ではなく、現在の作業ディレクトリにキーを作成します。
+この記事で使用するキー ペアの名前です。 既定では、キー ペアの名前に `id_rsa` が割り当てられます。秘密キーのファイル名として `id_rsa` を想定しているツールもあるため、そのようにすることをお勧めします。 ディレクトリ `~/.ssh/` は、SSH キー ペアと SSH 構成ファイルの既定の場所です。 完全パスで指定されていない場合、`ssh-keygen` は、既定の `~/.ssh` ではなく、現在の作業ディレクトリにキーを作成します。
 
-`~/.ssh` ディレクトリの一覧です。
+#### <a name="list-of-the-ssh-directory"></a>`~/.ssh` ディレクトリのリスト
 
 ```bash
 ls -al ~/.ssh
@@ -113,17 +121,59 @@ ls -al ~/.ssh
 -rw-r--r-- 1 azureuser staff   410 Aug 25 18:04 id_rsa.pub
 ```
 
-キーのパスワード:
+#### <a name="key-passphrase"></a>キーのパスフレーズ
 
 `Enter passphrase (empty for no passphrase):`
 
-`ssh-keygen` では、秘密キー ファイルのパスワードのことを "パスフレーズ" と言います。  秘密キーにはパスワードを追加することを " *強く* " お勧めします。 キー ファイルを保護するパスワードがないと、ファイルを持っている人はだれでも、そのファイルを使用して、対応する公開キーのあるサーバーにログインすることができます。 パスワード (パスフレーズ) を追加すれば、第三者に秘密キー ファイルへのアクセスを許してしまった場合でも、認証用のキーを変更する時間ができるので、保護のレベルが上がります。
+秘密キーにはパスフレーズを追加することを "*強く*" お勧めします。 キー ファイルを保護するパスフレーズがないと、ファイルを持っている人はだれでも、そのファイルを使用して、対応する公開キーのあるサーバーにログインすることができます。 パスフレーズを追加すれば、第三者に秘密キー ファイルへのアクセスを許してしまった場合でも、キーを変更する時間ができるので、保護のレベルが上がります。
 
-## <a name="using-ssh-agent-to-store-your-private-key-password"></a>ssh-agent を使用して秘密キーのパスワードを格納する
+## <a name="generate-keys-automatically-during-deployment"></a>展開の間にキーを自動生成する
 
-SSH ログインのたびに秘密キー ファイルのパスワードを入力しなくて済むように、 `ssh-agent` を使用して秘密キー ファイルのパスワードをキャッシュできます。 Mac を使用している場合、 `ssh-agent`を呼び出すと、秘密キーのパスワードは OSX キーチェーンによって安全に保存されます。
+[Azure CLI 2.0](/cli/azure) を使用して VM を作成する場合は、必要に応じて [az vm create](/cli/azure/vm#az_vm_create) コマンドを `--generate-ssh-keys` オプション付きで実行することで、SSH 公開キー ファイルと秘密キー ファイルを作成できます。 キーは、~/.ssh ディレクトリに格納されます。 このコマンド オプションを指定すると、その場所にキーが既に存在している場合でも、キーが上書きされることはありません。
 
-パスフレーズを対話的に使用しなくてもよいように、キー ファイルに関する情報を SSH システムに伝えるには、ssh-agent および ssh-add を確認して使用します。
+## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>VM の展開時に SSH 公開キーを提供する
+
+認証するために SSH キーを使用する Linux VM を作成するには、Azure Portal、CLI、Resource Manager テンプレート、またはその他の方法を使用して VM を作成するときに SSH 公開キーを提供します。 ポータルを使用するときは、公開キー自体を入力します。 [Azure CLI 2.0](/cli/azure) で既存の公開キーを使用する VM を作成する場合は、[az vm create](/cli/azure/vm#az_vm_create) コマンドを `--ssh-key-value` オプション付きで実行することで、使用する公開キーの値または場所を指定します。 
+
+SSH 公開キーの書式がわからない場合は、次のように `cat` を実行して公開キーを表示できます。`~/.ssh/id_rsa.pub` の部分は実際の公開キー ファイルの場所に置き換えてください。
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+出力は次のようになります (ここで示されている出力は編集されています)。
+
+```
+ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eShZzaXnt75gUmT1I2f75zFn2hlAIDGKWf4g12KWcZxy81TniUOTjUsVlwPymXUXxESL/UfJKfbdstBhTOdy5EG9rYWA0K43SJmwPhH28BpoLfXXXXXG+/ilsXXXXXKgRLiJ2W19MzXHp8z3Lxw7r9wx3HaVlP4XiFv9U4hGcp8RMI1MP1nNesFlOBpG4pV2bJRBTXNXeY4l6F8WZ3C4kuf8XxOo08mXaTpvZ3T1841altmNTZCcPkXuMrBjYSJbA8npoXAXNwiivyoe3X2KMXXXXXdXXXXXXXXXXCXXXXX/ azureuser@myserver
+```
+
+公開キー ファイルの内容をコピーし、Azure Portal または Resource Manager テンプレートに貼り付ける場合は、余分な空白文字をコピーしたり、改行を追加したりしないように注意してください。 たとえば、macOS を使用している場合は、公開キー ファイル (既定では `~/.ssh/id_rsa.pub`) を **pbcopy** にパイプして、内容をコピーできます (**xclip** など、同じ目的を達成できる Linux プログラムが他にもあります)。
+
+複数行形式の公開キーを使う方がよい場合は、前に作成した公開キーから pem コンテナーに RFC4716 形式のキーを生成できます。
+
+既存の SSH 公開キーから RFC4716 形式のキーを作成するには、次のようにします。
+
+```bash
+ssh-keygen \
+-f ~/.ssh/id_rsa.pub \
+-e \
+-m RFC4716 > ~/.ssh/id_ssh2.pem
+```
+
+## <a name="ssh-to-your-vm-with-an-ssh-client"></a>SSH クライアントを使用して VM に SSH 接続する
+公開キーを Azure VM に、秘密キーをローカル システム上に配置した状態で、VM の IP アドレスまたは DNS 名を使用して、VM に SSH 接続します。 次のコマンドの *azureuser* と *myvm.westus.cloudapp.azure.com* を、管理者のユーザー名と完全修飾ドメイン名 (または IP アドレス) に置き換えてください。
+
+```bash
+ssh azureuser@myvm.westus.cloudapp.azure.com
+```
+
+キー ペアを作成する際にパスフレーズを指定した場合は、ログイン プロセス中に入力を求められたら、そのパスフレーズを入力します  (サーバーは `~/.ssh/known_hosts` フォルダーに追加されます。Azure VM にある公開キーが変更されるかサーバー名が `~/.ssh/known_hosts` から削除されるまで、再度接続を求められることはありません)。
+
+## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>ssh-agent を使用して秘密キーのパスフレーズを格納する
+
+SSH ログインのたびに秘密キー ファイルのパスフレーズを入力しなくて済むように、`ssh-agent` を使用して秘密キー ファイルのパスフレーズをキャッシュできます。 Mac を使用している場合、`ssh-agent` を呼び出すと、秘密キーのパスフレーズは macOS キーチェーンによって安全に保存されます。
+
+パスフレーズを対話的に使用する必要がないように、`ssh-agent` と `ssh-add` を確認して使用し、キー ファイルに関する情報を SSH システムに伝えます。
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -135,20 +185,20 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 
-これで、秘密キーのパスワードが `ssh-agent` に格納されました。
+これで、秘密キーのパスフレーズが `ssh-agent` に格納されました。
 
-## <a name="using-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>`ssh-copy-id` を使用して既存の VM にキーをコピーする
-既に VM を作成済みの場合は、次のようにして、Linux VM に新しい SSH 公開キーをインストールできます。
+## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>ssh-copy-id を使用して既存の VM にキーをコピーする
+既に VM を作成済みの場合は、次のようなコマンドを使用して、Linux VM に新しい SSH 公開キーをインストールできます。
 
 ```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub ahmet@myserver
+ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
 ```
 
 ## <a name="create-and-configure-an-ssh-config-file"></a>SSH 構成ファイルの作成と構成
 
-ログインを高速化し、SSH クライアントの動作を最適化するために、`~/.ssh/config` ファイルを作成して構成することをお勧めします。
+SSH 構成ファイル (`~/.ssh/config`) を作成して構成すると、ログインを高速化し、SSH クライアントの動作を最適化することができます。 
 
-標準的な構成の例を次に示します。
+次の例で示す簡単な構成を使うと、既定の SSH 秘密キーを使って、特定の VM にユーザーとしてすばやくログインできます。 
 
 ### <a name="create-the-file"></a>ファイルの作成
 
@@ -162,56 +212,32 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-### <a name="example-sshconfig-file"></a>`~/.ssh/config` ファイルの例:
+### <a name="example-configuration"></a>構成の例
+
+ホスト VM に適した構成設定を追加します。
 
 ```bash
 # Azure Keys
-Host fedora22
+Host myvm
   Hostname 102.160.203.241
-  User ahmet
+  User azureuser
 # ./Azure Keys
-# Default Settings
-Host *
-  PubkeyAuthentication=yes
-  IdentitiesOnly=yes
-  ServerAliveInterval=60
-  ServerAliveCountMax=30
-  ControlMaster auto
-  ControlPath ~/.ssh/SSHConnections/ssh-%r@%h:%p
-  ControlPersist 4h
-  IdentityFile ~/.ssh/id_rsa
 ```
 
-この SSH 構成には、サーバーごとのセクションがあり、各サーバーに専用のキー ペアを割り当てることができます。 既定の設定 (`Host *`) は、構成ファイルで特定のどのホストとも一致しないすべてのホスト用です。
+追加のホストに構成を追加することで、それぞれが独自の専用キー ペアを使用するようにできます。 高度な構成オプションについて詳しくは、「[SSH config file](https://www.ssh.com/ssh/config/)」(SSH 構成ファイル) をご覧ください。
 
-### <a name="config-file-explained"></a>構成ファイルについて
-
-`Host` = 端末で呼び出すホストの名前。  `ssh fedora22` は、`Host fedora22` という名称の設定ブロック内の値を使用するよう `SSH` に伝えています。注: このラベルは、サーバーの実際のホスト名を表すものではありません。実際の用途に合っていれば、どのような名称を使用してもかまいません。
-
-`Hostname 102.160.203.241` = アクセスされるサーバーの IP アドレスまたは DNS 名。
-
-`User ahmet` = サーバーにログインするときに使用するリモート ユーザー アカウント。
-
-`PubKeyAuthentication yes` = SSH キーを使ってログインする意思を SSH に伝えています。
-
-`IdentityFile /home/ahmet/.ssh/id_id_rsa` = 認証に使用する SSH 秘密キーおよび対応する公開キー。
-
-## <a name="ssh-into-linux-without-a-password"></a>パスワードを使わずに SSH で Linux にログインする
-
-SSH キー ペアを作成し、SSH 構成ファイルを構成したので、すばやく安全に Linux VM にログインできるようになりました。 SSH キーを使用して初めてサーバーにログインするとき、キー ファイルのパスフレーズを入力するように求められます。
+SSH キー ペアを作成し、SSH 構成ファイルを構成したので、すばやく安全に Linux VM にログインできるようになりました。 次のコマンドを実行すると、SSH は SSH 構成ファイルを探して、その `Host myvm` ブロックからすべての設定を読み込みます。
 
 ```bash
-ssh fedora22
+ssh myvm
 ```
 
-### <a name="command-explained"></a>コマンドの説明
-
-`ssh fedora22` が実行されると SSH はまず、`Host fedora22` ブロックの設定を見つけて読み込んだ後、最後のブロック `Host *` から残りの設定をすべて読み込みます。
+SSH キーを使用して初めてサーバーにログインするとき、キー ファイルのパスフレーズを入力するように求められます。
 
 ## <a name="next-steps"></a>次の手順
 
-次のステップでは、新しい SSH 公開キーを使用して Azure Linux VM を作成します。  Azure VM は、SSH 公開キーをログインとして作成した方が、既定のログイン方法であるパスワードを使って作成するよりも高いセキュリティが得られます。  SSH キーを使用して作成された Azure VM は、既定ではパスワードが無効にされます。そのため、推測によるブルート フォース攻撃を回避できます。
+次のステップでは、新しい SSH 公開キーを使用して Azure Linux VM を作成します。 Azure VM は、SSH 公開キーをログインとして作成した方が、既定のログイン方法であるパスワードを使って作成するよりも高いセキュリティが得られます。
 
-* [Azure テンプレートを使用して安全な Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure ポータルを使用して安全な Linux VM を作成する](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure CLI を使用して安全な Linux VM を作成する](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Portal で Linux 仮想マシンを作成する](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI で Linux 仮想マシンを作成する](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure テンプレートを使用して Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

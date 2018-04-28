@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 7cd8c61f19e09900267cdc93c1d478f5b0f75afe
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3445551ba259f7cbe794870b8b6475399a274bea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
 
@@ -46,13 +46,19 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 次は、コードを使った作業に移りましょう。 GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
@@ -62,7 +68,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample フォルダーにインストールされている `Program.cs` ファイルのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample フォルダーにインストールされている Program.cs ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。
 
 * Cassandra クラスター エンドポイントに接続することによって、セッションを初期化します。 Azure Cosmos DB の Cassandra API は、TLSv1.2 のみをサポートしています。 
 
@@ -100,7 +106,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
    }
     ```
     
- * 単一ユーザーの情報を取得するクエリを実行します。
+* 単一ユーザーの情報を取得するクエリを実行します。
 
     ```csharp
     mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
@@ -134,7 +140,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
     Program.cs の 15 行目は次のようになります。 
 
-    `private const string CassandraContactPoint = "cosmos-db-quickstarts.documents.azure.com"; //  DnsName`
+    `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
 5. Program.cs ファイルを保存します。
     

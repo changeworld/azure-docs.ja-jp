@@ -4,7 +4,7 @@ description: .NET を使用した Azure Cosmos DB の SQL API による開発方
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -16,17 +16,17 @@ ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 7fca9f184097ed50ace665cde0c5ef8fb180feda
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a6ed74de159593003e8a18daefce2eb9a5945481
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: .NET での SQL API を使用した開発
+# <a name="azure-cosmos-db-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: .NET での SQL API を使用した開発
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
-このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[SQL .NET API](sql-api-introduction.md) を使用して[パーティション キー](sql-api-partition-data.md#partition-keys)でドキュメント データベースおよびコレクションを作成する方法を説明します。 コレクションの作成時にパーティション キーを定義することで、データの増加に合わせて、労力をかけずにアプリケーションのスケールを準備できます。 
+このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[SQL .NET API](sql-api-introduction.md) を使用して[パーティション キー](sql-api-partition-data.md#partition-keys)でドキュメント データベースおよびコレクションを作成する方法を説明します。 コレクションの作成時にパーティション キーを定義することで、データの増加に合わせて、労力をかけずにアプリケーションのスケールを準備できます。
 
 このチュートリアルでは、[SQL .NET API](sql-api-sdk-dotnet.md) を使用して、次のタスクを説明します。
 
@@ -41,25 +41,22 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 > * データベースの削除
 
 ## <a name="prerequisites"></a>前提条件
-以下のものがそろっていることを確認してください。
+始める前に、以下のものを用意してください。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
+* Azure Cosmos DB アカウントへのアクセス
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
+  [無料の Azure アカウント](https://azure.microsoft.com/free/)にサインアップして独自の Azure サブスクリプションを使用することもできます。 そのうえで、[Azure Cosmos DB アカウントを作成](create-sql-api-dotnet.md#create-a-database-account)することができます。
+
 * まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
-## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
-
-まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。
 
 > [!TIP]
-> * 既に Azure Cosmos DB アカウントをお持ちですか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
-> * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
+> * Azure Cosmos DB Emulator を使用することを選んだ場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターを設定してください。
 >
 >
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupVS"></a>Visual Studio ソリューションをセットアップする
 1. コンピューターで **Visual Studio** を開きます。
@@ -68,7 +65,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
    ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-new-project-2.png)
 
 4. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-    
+
     ![プロジェクトの右クリック メニューのスクリーン ショット](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-manage-nuget-pacakges.png)
 5. **[NuGet]** タブの **[参照]** をクリックし、検索ボックスに「**documentdb**」と入力します。
 <!---stopped here--->
@@ -103,11 +100,11 @@ private DocumentClient client;
 
 追加したら、[Azure Portal](https://portal.azure.com) に戻り、エンドポイント URL とプライマリ キーを取得します。 エンドポイント URL とプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。
 
-Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** をクリックしてから **[読み取り/書き込みキー]** をクリックします。
+Azure Portal で Azure Cosmos DB アカウントに移動します。 左側のメニューで **[キー]** を選択し、**[読み取り/書き込みキー]** を選択します。
 
 ポータルから URI をコピーし、program.cs ファイルの上の `<your endpoint URL>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、`<your primary key>` に貼り付けます。 `<` と `>` は削除してください。
 
-![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーンショット。 Azure Cosmos DB アカウント ブレードで KEYS が強調表示された Azure Cosmos DB アカウントと、[キー] ブレードで強調表示された URI と PRIMARY KEY の値を示します](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーンショット。 Azure Cosmos DB アカウント セクションで KEYS が強調表示された Azure Cosmos DB アカウントと、[キー] セクションで強調表示された URI と PRIMARY KEY の値を示します](./media/tutorial-develop-sql-api-dotnet/nosql-tutorial-keys.png)
 
 ## <a id="instantiate"></a>DocumentClient をインスタンス化する
 
@@ -124,24 +121,24 @@ DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 ```csharp
 await client.CreateDatabaseAsync(new Database { Id = "db" });
 ```
-## <a name="decide-on-a-partition-key"></a>パーティション キーを決める 
+## <a name="decide-on-a-partition-key"></a>パーティション キーを決める
 
-コレクションは、ドキュメントを格納するためのコンテナーです。 コレクションは論理リソースであり、[1 つ以上の物理パーティションにまたがる](partition-data.md)ことができます。 [パーティション キー](sql-api-partition-data.md)は、DocumentDB が複数のサーバーまたはパーティション間にデータを分散するために使用されるドキュメント内のプロパティ (またはパス) です。 同じパーティション キーを持つすべてのドキュメントは、同じパーティションに格納されます。 
+コレクションは、ドキュメントを格納するためのコンテナーです。 コレクションは論理リソースであり、[1 つ以上の物理パーティションにまたがる](partition-data.md)ことができます。 [パーティション キー](sql-api-partition-data.md)は、DocumentDB が複数のサーバーまたはパーティション間にデータを分散するために使用されるドキュメント内のプロパティ (またはパス) です。 同じパーティション キーを持つすべてのドキュメントは、同じパーティションに格納されます。
 
-コレクションを作成する前にパーティション キーを指定することは、重要な決定事項の 1 つです。 パーティション キーは、Azure Cosmos DB が複数のサーバーまたはパーティション間にデータを分散するために使用できるドキュメント内のプロパティ (またはパス) です。 Cosmos DB がパーティション キー値をハッシュし、そのハッシュした結果を基にドキュメントを格納するパーティションを決定します。 同じパーティション キーを持つすべてのドキュメントは同じパーティションに格納され、コレクションを一度作成したら、パーティション キーを変更することはできません。 
+コレクションを作成する前にパーティション キーを指定することは、重要な決定事項の 1 つです。 パーティション キーは、Azure Cosmos DB が複数のサーバーまたはパーティション間にデータを分散するために使用できるドキュメント内のプロパティ (またはパス) です。 Cosmos DB がパーティション キー値をハッシュし、そのハッシュした結果を基にドキュメントを格納するパーティションを決定します。 同じパーティション キーを持つすべてのドキュメントは同じパーティションに格納され、コレクションを一度作成したら、パーティション キーを変更することはできません。
 
-このチュートリアルでは、単一のデバイスのすべてのデータが単一のパーティションに格納されるように、パーティション キーを `/deviceId` に設定します。 多数の値を持つパーティション キーを選択した場合、データの増加に合わせて Cosmos DB が確実に負荷分散でき、コレクションの完全なスループットを実現するために、各値がほぼ同じ頻度で使用されます。 
+このチュートリアルでは、単一のデバイスのすべてのデータが単一のパーティションに格納されるように、パーティション キーを `/deviceId` に設定する必要があります。 多数の値を持つパーティション キーを選択した場合、データの増加に合わせて Cosmos DB が確実に負荷分散でき、コレクションの完全なスループットを実現するために、各値がほぼ同じ頻度で使用されます。
 
-パーティション分割について詳しくは、[Azure Cosmos DB でのパーティション分割とスケールの方法](partition-data.md)に関する記事をご覧ください。 
+パーティション分割について詳しくは、[Azure Cosmos DB でのパーティション分割とスケールの方法](partition-data.md)に関する記事をご覧ください。
 
-## <a id="CreateColl"></a>コレクションを作成する 
+## <a id="CreateColl"></a>コレクションを作成する
 
-パーティション キーが `/deviceId` に決まったところで、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドまたは [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) メソッドを使用して[コレクション](sql-api-resources.md#collections)を作成しましょう。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。 
+パーティション キー `/deviceId` を使用し、**DocumentClient** クラスの [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) メソッドまたは [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) メソッドを使用して[コレクション](sql-api-resources.md#collections)を作成することができます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 
 > [!WARNING]
-> コレクションの作成は料金に影響します。これは、Azure Cosmos DB と通信するためにアプリケーションのスループットを予約するためです。 詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
-> 
-> 
+> コレクションの作成は料金に影響します。これは、Azure Cosmos DB と通信するためにアプリケーションのスループットを予約するためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
+>
+>
 
 ```csharp
 // Collection for device telemetry. Here the JSON property deviceId is used  
@@ -186,7 +183,7 @@ public class DeviceReading
     public double MetricValue;
   }
 
-// Create a document. Here the partition key is extracted 
+// Create a document. Here the partition key is extracted
 // as "XMS-0001" based on the collection definition
 await client.CreateDocumentAsync(
     UriFactory.CreateDocumentCollectionUri("db", "coll"),
@@ -207,7 +204,7 @@ ReadDocumentAsync メソッドを使用して、パーティション キーと 
 ```csharp
 // Read document. Needs the partition key and the Id to be specified
 Document result = await client.ReadDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
 DeviceReading reading = (DeviceReading)(dynamic)result;
@@ -223,7 +220,7 @@ reading.MetricValue = 104;
 reading.ReadingTime = DateTime.UtcNow;
 
 await client.ReplaceDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   reading);
 ```
 
@@ -234,7 +231,7 @@ DeleteDocumentAsync メソッドを使用して、パーティション キー�
 ```csharp
 // Delete a document. The partition key is required.
 await client.DeleteDocumentAsync(
-  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
 ## <a name="query-partitioned-collections"></a>パーティション分割コレクションへのクエリの実行
@@ -247,13 +244,13 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     UriFactory.CreateDocumentCollectionUri("db", "coll"))
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
-    
+
 次のクエリにはパーティション キー (DeviceId) にフィルターがなく、パーティションのインデックスに対してこのクエリが実行されるすべてのパーティションにファン アウトされます。 パーティション全体に対して SDK にクエリを実行させるために、EnableCrossPartitionQuery (REST API 内の`x-ms-documentdb-query-enablecrosspartition` ) を指定する必要があることにご注意ください。
 
 ```csharp
 // Query across partition keys
 IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new FeedOptions { EnableCrossPartitionQuery = true })
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
@@ -264,12 +261,12 @@ Azure Cosmos DB SQL SDK 1.9.0 以降では、並列クエリ実行オプショ�
 ```csharp
 // Cross-partition Order By queries
 IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+    UriFactory.CreateDocumentCollectionUri("db", "coll"),
     new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
     .OrderBy(m => m.MetricValue);
 ```
-    
+
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
 * `MaxDegreeOfParallelism`を設定すると、並列処理次数、つまりコレクションのパーティションに同時ネットワーク接続できる数の上限を制御することができます。 このパラメーターを -1 に設定した場合、並列処理次数は SDK によって管理されます。 `MaxDegreeOfParallelism` が指定されていないか、0 (既定値) に設定されている場合、コレクションのパーティションへのネットワーク接続は 1 つのみです。
@@ -283,7 +280,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
     UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+    new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
     "XMS-001-FE24C");
 ```
 
@@ -293,12 +290,12 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 
 このアプリの使用を続けない場合は、以下の手順に従い、このチュートリアルで作成したすべてのリソースを Azure Portal で削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの一意の名前をクリックします。 
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの一意の名前をクリックします。
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、次の手順を行いました。 
+このチュートリアルでは、次の手順を行いました。
 
 > [!div class="checklist"]
 > * Azure Cosmos DB アカウントの作成
@@ -310,7 +307,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 > * ドキュメントの削除
 > * データベースの削除
 
-次のチュートリアルに進んで、Cosmos DB アカウントに追加のデータをインポートできます。 
+次のチュートリアルに進んで、Cosmos DB アカウントに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)

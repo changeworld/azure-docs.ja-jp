@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Java コマンド ラインの概要 | Microsoft Docs"
-description: "API にアクセスするためにユーザーをサインインする Java コマンド ライン アプリを構築する方法。"
+title: Azure AD Java コマンド ラインの概要 | Microsoft Docs
+description: API にアクセスするためにユーザーをサインインする Java コマンド ライン アプリを構築する方法。
 services: active-directory
 documentationcenter: java
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 51e1a8f9-6ff0-4643-a350-0ba794e26fd1
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 895741c6a33434633b8c35df959b3c68d005ba3e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a0e12711e4a7e67861d61ae4575c4956531cf841
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Azure AD を使用して API にアクセスするための Java コマンド ライン アプリを使用する
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -258,7 +258,7 @@ public class PublicClient {
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> 最新の Tomcat サーバーで WAR をデプロイするのは非常に簡単です。 `http://localhost:8080/manager/` に移動し、``adal4jsample.war` ファイルのアップロードに関する指示に従うだけです。 ファイルは適切なエンドポイントに自動的にデプロイされます。
+> 最新の Tomcat サーバーで WAR をデプロイするのは非常に簡単です。 `http://localhost:8080/manager/` に移動し、`adal4jsample.war` ファイルのアップロードに関する指示に従うだけです。 ファイルは適切なエンドポイントに自動的にデプロイされます。
 > 
 > 
 

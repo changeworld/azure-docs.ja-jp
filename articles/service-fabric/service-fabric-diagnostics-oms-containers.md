@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 7a775b6d23c144c81650bb3608ee6a117475a9ba
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1de7e58eecc80e306920ab17884290dfddf8efa8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Log Analytics でコンテナーを監視
  
-この記事では、クラスターを監視するようにコンテナーを設定するために必要な手順について説明します。 詳細については、[Service Fabric でのコンテナーの監視](service-fabric-diagnostics-event-analysis-oms.md#monitoring-containers)に関するセクションをご覧ください。 この手順の詳細なチュートリアルについては、[Service Fabric で Windows コンテナーを監視する](service-fabric-tutorial-monitoring-wincontainers.md)方法に関するページを参照してください。
+この記事では、コンテナーのイベントを表示するための OMS Log Analytics コンテナー監視ソリューションを設定するために必要な手順について説明します。 コンテナー イベントを収集するクラスターを設定するには、こちらの[ステップ バイ ステップ チュートリアル](service-fabric-tutorial-monitoring-wincontainers.md)を参照してください。
 
 ## <a name="set-up-the-container-monitoring-solution"></a>コンテナー監視ソリューションの設定
 
@@ -31,13 +31,26 @@ ms.lasthandoff: 04/06/2018
 
 1. お使いのクラスターを Log Analytics と OMS エージェントを使って設定した後、コンテナーを展開します。 コンテナーが展開されるのを待ってから次の手順に進みます。
 
-2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理 カテゴリの下に表示される **コンテナー監視ソリューション** リソースをクリックします。
+2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理] カテゴリの下に表示される **[コンテナー監視ソリューション]** リソースをクリックします。
 
     ![コンテナー ソリューションの追加](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. 既にクラスターに対して作成したのと同じワークスペース内でソリューションを作成します。 この変更により、コンテナーの Docker データの収集を開始するエージェントが自動的にトリガーされます。 約 15 分位でソリューションが点灯し、ログの受信と統計が表示されるのを確認できます。
+3. 既にクラスターに対して作成したのと同じワークスペース内でソリューションを作成します。 この変更により、コンテナーの Docker データの収集を開始するエージェントが自動的にトリガーされます。 下の図に示すように、約 15 分位でソリューションが点灯し、ログの受信と統計が表示されるのを確認できます。
+
+    ![基本的な OMS のダッシュボード](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+
+エージェントはいくつかのコンテナー固有ログの収集を有効にします。これらは、OMS 内で照会したり、視覚化されたパフォーマンス インジケーターに使用したりできます。 収集されるログの種類は次のとおりです。
+
+* ContainerInventory: コンテナーの場所、名前、およびイメージに関する情報を表示
+* ContainerImageInventory: ID やサイズなど、デプロイ済みのイメージに関する情報
+* ContainerLog: 特定のエラー ログ、Docker ログ (stdout など)、およびその他のエントリ
+* ContainerServiceLog: 実行されている Docker デーモン コマンド
+* Perf: コンテナーの CPU、メモリ、ネットワーク トラフィック、ディスク I/O、およびホスト コンピューターからのカスタム メトリックなどのパフォーマンス カウンター
+
+
 
 ## <a name="next-steps"></a>次の手順
+* [OMS のコンテナー ソリューション](../log-analytics/log-analytics-containers.md)について説明します。
 * Service Fabric のコンテナー オーケストレーションについての詳細 - [Service Fabric とコンテナー](service-fabric-containers-overview.md)
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * Log Analytics を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)規則を設定する

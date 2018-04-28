@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/18/2017
-ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/16/2018
+ms.openlocfilehash: 30fa7e081c24339b7fa9f572d9feb25a0f920a86
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Stream Analytics の出力: ストレージと分析のオプション
 Stream Analytics ジョブを作成するときは、生成されたデータがどのように使用されるかを考慮してください。 Stream Analytics ジョブの結果は、どのような方法で表示して、どの場所に保存できるのでしょうか?
@@ -21,18 +21,19 @@ Stream Analytics ジョブを作成するときは、生成されたデータが
 さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。 そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。 ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。 たとえば、出力として BLOB ストレージを使用する場合、ジョブはストレージ アカウントを自動的に作成しません。 Stream Analytics ジョブが開始される前に、ストレージ アカウントを作成してください。
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 この記憶域を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。 承認と (必要に応じて) Data Lake Store にサインアップする方法の詳細については、[Data Lake 出力の記事](stream-analytics-data-lake-output.md)を参照してください。
+Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。
 
-### <a name="authorize-an-azure-data-lake-store"></a>Azure Data Lake Store の承認
-Data Lake Storage を Azure Portal で出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
+### <a name="authorize-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントの承認
 
-![Data Lake Store の承認](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+1. Data Lake Storage を Azure Portal で出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
 
-その後、以下に示すように、Data Lake Store 出力のプロパティを入力します。
+   ![Data Lake Store の承認](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
-![Data Lake Store の承認](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+2. Data Lake Store へのアクセス権を既に持っている場合、[今すぐ承認] をクリックすると、"承認にリダイレクトしています" というページが表示されます。 承認が成功すると、Data Lake Store の出力を構成できるページが表示されます。  
 
-次の表に、Data Lake Store 出力を作成するためのプロパティ名とその説明を示します。
+3. Data Lake Store アカウントが認証されたら、Data Lake Store 出力のプロパティを構成できます。 次の表は、Data Lake Store 出力を構成するためのプロパティ名とその説明の一覧です。
+
+   ![Data Lake Store の承認](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 <table>
 <tbody>
@@ -46,11 +47,11 @@ Data Lake Storage を Azure Portal で出力として選択すると、既存の
 </tr>
 <tr>
 <td>アカウント名</td>
-<td>出力を送信する Data Lake Storage アカウントの名前。 ポータルにログインしたユーザーがアクセス権を持っている Data Lake Store アカウントのドロップダウン リストが表示されます。</td>
+<td>出力を送信する Data Lake Storage アカウントの名前。 サブスクリプションで利用できる Data Lake Store アカウントのドロップダウン リストが表示されます。</td>
 </tr>
 <tr>
 <td>パスのプレフィックス パターン</td>
-<td>ファイルの名前付けは、次の規則に従います。 <BR>{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR>出力ファイル例:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>また、新しいファイルが作成される状況を次に示します。<BR>1. 出力スキーマの変更 <BR>2. ジョブの外部または内部再起動<BR><BR>また、ファイル パス パターンに末尾の "/" が含まれていない場合、ファイル パスの最後のパターンは、ファイル名のプレフィックスとして扱われます。<BR><BR>例:<BR>パス パターン: folder1/logs/HH の場合、生成されたファイルは folder1/logs/02_134343_gguid_1.csv のようになります</td>
+<td>指定した Data Lake Store アカウント内のファイルを書き込むために使用するファイル パス。 {date} および {time} 変数のインスタンスを 1 つ以上指定できます。<BR> 例 1: folder1/logs/{date}/{time}<BR>例 2: folder1/logs/{date}<BR>また、新しいファイルが作成される状況を次に示します。<BR>1. 出力スキーマの変更 <BR>2. ジョブの外部または内部再起動<BR><BR>また、ファイル パス パターンに末尾の "/" が含まれていない場合、ファイル パスの最後のパターンは、ファイル名のプレフィックスとして扱われます。<BR></td>
 </tr>
 <tr>
 <td>日付形式 [<I>省略可能</I>]</td>
@@ -80,12 +81,14 @@ Data Lake Storage を Azure Portal で出力として選択すると、既存の
 </table>
 
 ### <a name="renew-data-lake-store-authorization"></a>Data Lake Store の承認を更新する
-ジョブが作成されてから、または前回の認証以降に Data Lake Store アカウントのパスワードが変わった場合、そのアカウントを再認証する必要があります。
+ジョブが作成されてから、または前回の認証以降に Data Lake Store アカウントのパスワードが変わった場合、そのアカウントを再認証する必要があります。 再認証しないと、ジョブから結果が出力されず、再認証が必要であることを示すエラーが操作ログに記録されます。 現在、Data Lake Store 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという制限事項があります。 
+
+承認を更新するには、ジョブを **[停止]** し、Data Lake Store の出力に移動し、**[承認の更新]** リンクをクリックします。"承認にリダイレクトしています" というページが短時間表示されます。 処理が成功すると、このページは自動的に閉じられ、"承認が正常に更新されました" と表示されます。 ページの下部にある **[保存]** をクリックする必要があります。**[最後に停止した時刻]** からジョブを再開して継続することで、データの損失を防ぐことができます。
 
 ![Data Lake Store の承認](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型にぴったり一致する必要があります。 また、SQL Database 出力オプションを使用して、 [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます (これはプレビュー機能です)。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型にぴったり一致する必要があります。 また、SQL Database 出力オプションを使用して、[Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
 | プロパティ名 | 説明 |
 | --- | --- |
@@ -110,7 +113,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 <tbody>
 <tr>
 <td>プロパティ名</td>
-<td>説明</td>
+<td>Description</td>
 </tr>
 <tr>
 <td>出力のエイリアス</td>
@@ -287,6 +290,8 @@ DateTime | String | String |  DateTime | String
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 | 形式 |JSON 型のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 |
 
+パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
+
 ## <a name="service-bus-topics"></a>Service Bus トピック
 Service Bus キューには、送信者から受信者への 1 対 1 の通信メソッドが備わっていますが、 [Service Bus トピック](https://msdn.microsoft.com/library/azure/hh367516.aspx) では 1 対多の形式で通信することができます。
 
@@ -303,22 +308,29 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
  | エンコード |CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 
+パーティション数は、[Service Bus SKU とサイズに基づいています](../service-bus-messaging/service-bus-partitioning.md)。 パーティション キーは、各パーティションに固有の整数値です。
+
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は世界各地に分散されているマルチモデル データベース サービスです。世界各地に対応する制限のない柔軟なスケーリング、スキーマに依存しないデータ モデルでの豊富なクエリと自動インデックス作成機能、低待機時間の保証、業界をリードする包括的な SLA を提供しています。
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) は世界各地に分散されているマルチモデル データベース サービスです。世界各地に対応する制限のない柔軟なスケーリング、スキーマに依存しないデータ モデルでの豊富なクエリと自動インデックス作成機能、低待機時間の保証、業界をリードする包括的な SLA を提供しています。 Stream Analytics の Cosmos DB コレクション オプションについては、[Cosmos DB への Stream Analytics の出力](stream-analytics-documentdb-output.md)に関する記事を参照してください。
 
-以下に、Azure Cosmos DB 出力を作成するためのプロパティ名とその説明の詳細を示します。
+> [!Note]
+> 現時点では、Azure Stream Analytics は、**SQL API** を使用した CosmosDB への接続のみをサポートしています。
+> その他の Azure Cosmos DB API は、まだサポートされていません。 Azure Stream Analytics を、その他のAPI で作成した Azure Cosmos DB アカウントへ接続する場合は、データが正しく格納されない可能性があります。 
 
-* **出力のエイリアス** – Stream Analytics クエリ内でこの出力を意味するエイリアス  
-* **アカウント名** – Cosmos DB アカウントの名前またはエンドポイント URI。  
-* **アカウント キー** – Cosmos DB アカウントの共有アクセス キー。  
-* **データベース** – Cosmos DB データベース名。  
-* **コレクション名のパターン** – 使用するコレクションのコレクション名またはそのパターン。 コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。 有効な入力値のサンプルを次に示します。  
-  1\) MyCollection – "MyCollection" という名前のコレクションが 1 つ必要です。  
-  2\) MyCollection{partition} – "MyCollection0"、"MyCollection1"、"MyCollection2" などのコレクションが必要です。  
-* **パーティション キー** – 省略可能。 コレクション名のパターンにパーティション トークンを使用している場合のみ必要です。 コレクション全体で出力をパーティション分割するためのキーを指定するために使用される、出力イベント内のフィールドの名前。 コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
-* **Document ID** – 省略可能です。 挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
+次の表では、Azure Cosmos DB の出力を作成するプロパティについて説明します。
+| プロパティ名 | [説明] |
+| --- | --- |
+| 出力エイリアス | Stream Analytics クエリ内でこの出力を意味するエイリアス。 |
+| シンク | Cosmos DB |
+| インポート オプション | [Select Cosmos DB from your subscription]\(サブスクリプションから Cosmos DB を選択する\) または [Provide Cosmos DB settings manually]\(Cosmos DB 設定を手動で指定する\) を選択します。
+| アカウント ID | Cosmos DB アカウントの名前またはエンドポイント URI。 |
+| アカウント キー | Cosmos DB アカウントの共有アクセス キー。 |
+| データベース | Cosmos DB データベース名。 |
+| コレクション名のパターン | 使用するコレクションのコレクション名またはそのパターン。 <br/>コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。 2 つの例を挙げます。  <br/>1._MyCollection_ – "MyCollection" という名前のコレクションが 1 つ必要です。  <br/>2._MyCollection{partition}_ – パーティション列に基づきます。 <br/>"MyCollection0"、"MyCollection1"、"MyCollection2" などのパーティション列のコレクションが存在する必要があります。 |
+| パーティション キー | 省略可能。 コレクション名のパターンに {partition} トークンを使用している場合のみ必要です。<br/> コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。<br/> コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。 |
+| ドキュメント ID |省略可能。 挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
 
-## <a name="azure-functions-in-preview"></a>Azure Functions (プレビュー)
+## <a name="azure-functions"></a>Azure Functions
 Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。  このトリガーに応答する Azure Functions の機能によって、Azure Stream Analytics の自然な出力になります。 この出力アダプターを使用すると、ユーザーは Stream Analytics を Azure Functions に接続し、さまざまなイベントに応じてスクリプトまたはコードの一部を実行することができます。
 
 Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions を呼び出します。 新しい Azure 関数出力アダプターは、次の構成可能なプロパティで使用できます。
@@ -334,6 +346,23 @@ Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions
 Azure Stream Analytics は、Azure 関数から 413 (http の "要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを削減します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きいバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。 
 
 また、時間枠内に開始するイベントがない場合も、出力は生成されません。 その結果、computeResult 関数は呼び出されません。 この動作は、組み込みのウィンドウ集計関数と一致します。
+
+## <a name="partitioning"></a>パーティション分割
+
+次の表は、出力の種類ごとにパーティションのサポートと出力ライターの数をまとめた一覧です。
+
+| 出力の種類 | パーティション分割のサポート | パーティション キー  | 出力ライターの数 | 
+| --- | --- | --- | --- |
+| Azure Data Lake Store | [はい] | Path プレフィックス パターンに {date} および {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | 入力と同じ。 | 
+| Azure SQL Database | いいえ  | なし | 適用不可。 | 
+| Azure BLOB ストレージ | [はい] | Path パターンに {date} および {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | 入力と同じ。 | 
+| Azure Event Hub | [はい] | [はい] | 出力イベント ハブ パーティションと同じ。 |
+| Power BI | いいえ  | なし | 適用不可。 | 
+| Azure Table Storage | [はい] | 任意の出力列。  | 入力または前の手順と同じ。 | 
+| Azure Service Bus Topic | [はい] | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力と同じ。  |
+| Azure Service Bus キュー | [はい] | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力と同じ。 |
+| Azure Cosmos DB | [はい] | コレクション名パターンに {partition} トークンを使用します。 {partition} 値は、クエリの PARTITION BY 句に基づいています。 | 入力と同じ。 |
+| Azure Functions | いいえ  | なし | 適用不可。 | 
 
 
 ## <a name="get-help"></a>問い合わせ

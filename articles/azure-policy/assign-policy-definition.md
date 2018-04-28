@@ -3,17 +3,17 @@ title: ポリシーの割り当てを作成し、Azure 環境内の準拠して�
 description: この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
+author: DCtheGeek
+ms.author: dacoulte
 ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: e5b27bdc2aef15b619022d1c08fa3e6dccaa5736
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6bb9eddb6a663e1f230c9c46835661ad20c02cfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 価格の詳細については、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy/)」をご覧ください。
 
 7. ポリシーを適用する **[スコープ]** を選択します。  スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。
-8. 以前に登録したサブスクリプション (またはリソース グループ) を選びます。 この例では **Azure Analytics Capacity Dev** サブスクリプションを使用していますが、使用できるオプションはさまざまです。 **[選択]**をクリックします。
+8. 以前に登録したサブスクリプション (またはリソース グループ) を選びます。 この例では **Azure Analytics Capacity Dev** サブスクリプションを使用していますが、使用できるオプションはさまざまです。 **[選択]** をクリックします。
 
    ![適切なポリシー定義を見つける](media/assign-policy-definition/assign-policy.png)
 

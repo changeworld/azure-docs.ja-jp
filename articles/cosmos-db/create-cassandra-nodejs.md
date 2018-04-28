@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: e2f2064de5dc29ef290e6dc6dd7df6ae0a466f92
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cc8fd5ef77407274187411da593be7b68ae114d7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB で Cassandra アプリを構築する
 
@@ -46,13 +46,19 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-nodejs-getting-started.git
@@ -60,7 +66,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 こららのスニペットはすべて、C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started フォルダーの `uprofile.js` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて、C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started フォルダーの uprofile.js ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
 * ユーザー名とパスワードは、Azure Portal の接続文字列ページを使って設定します。 "path\to\cert" では、X509 証明書へのパスを指定します。 
 
@@ -162,7 +168,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
     4 行目は次のようになります。 
 
-    `config.contactPoint = "cosmos-db-quickstarts.documents.azure.com:10350"`
+    `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
 
 4. ポータルの [USERNAME]\(ユーザー名\) の値をコピーし、2 行目の `<FillMEIN>` に貼り付けます。
 

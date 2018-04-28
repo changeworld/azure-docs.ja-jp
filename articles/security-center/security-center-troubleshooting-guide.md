@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center トラブルシューティング ガイド | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center で問題をトラブルシューティングするのに役立ちます。"
+title: Azure Security Center トラブルシューティング ガイド | Microsoft Docs
+description: このドキュメントは、Azure Security Center で問題をトラブルシューティングするのに役立ちます。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
 ms.author: yurid
-ms.openlocfilehash: e2e8b16bf720e2be8b8bc8ae81fc944af79dddab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0c5f7a932cef904abbca25b63cf8e0d96db73c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/03/2018
 監査ログには、リソースで実行されたすべての書き込み操作 (PUT、POST、DELETE) が含まれます。ただし、読み取り操作 (GET) は含まれません。
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-Security Center では、Microsoft Monitoring Agent を使用して、仮想マシンからセキュリティ データを収集します。これは Operations Management Suite と Log Analytics サービスで使用されるものと同じエージェントです。 データ収集が有効になり、ターゲット コンピューターにエージェントが正常にインストールされた後、次のプロセスが実行されます。
+Security Center では、Microsoft Monitoring Agent を使用して、Azure 仮想マシンからセキュリティ データを収集します。これは、Log Analytics サービスで使用されるのと同じエージェントです。 データ収集が有効になり、ターゲット コンピューターにエージェントが正常にインストールされた後、次のプロセスが実行されます。
 
 * HealthService.exe
 
@@ -84,7 +84,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、仮想マ�
 Security Center に接続して登録するエージェントには、ドメイン URL とポート番号を含むネットワーク リソースへのアクセスが必要です。
 
 - プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)に関する記事を参照してください。
-- インターネットへのアクセスを制限するファイアウォールでは、OMS へのアクセスを許可するようにファイアウォールを構成する必要があります。 エージェントの設定で必要な操作はありません。
+- インターネットへのアクセスを制限するファイアウォールでは、Log Analytics へのアクセスを許可するようにファイアウォールを構成する必要があります。 エージェントの設定で必要な操作はありません。
 
 次の表は、通信で必要なリソースを示しています。
 

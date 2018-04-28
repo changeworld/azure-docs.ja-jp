@@ -2,7 +2,7 @@
 
 このセクションでは、新しいプロジェクトの作成方法について順を追って説明し、iOS アプリケーション (Swift) に *"Microsoft でサインイン"* を統合して、トークンを必要とする Web API でクエリを実行できるようにする方法を示します。
 
-> 代わりにこのサンプルの XCode プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)したら[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
+> 代わりにこのサンプルの XCode プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)したら[構成](#register-your-application)手順に進み、実行前にコード サンプルを構成します。
 
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>Carthage をインストールし、MSAL をダウンロードしてビルドする

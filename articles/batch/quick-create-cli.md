@@ -1,6 +1,6 @@
 ---
-title: "Azure クイック スタート - Batch ジョブの実行 - CLI"
-description: "Azure CLI で Batch ジョブを実行する方法を簡単に説明します。"
+title: Azure クイック スタート - Batch ジョブの実行 - CLI
+description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8d0e827dd3658d711de3830453c92af581786ad0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de0ff088b3a61c48ddcbdff01f105884870886e1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート: Azure CLI で最初の Batch ジョブを実行する
 
@@ -40,7 +40,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Azure の汎用ストレージ アカウントを Batch アカウントとリンクできます。 このクイック スタートには必要ありませんが、ストレージ アカウントは、アプリケーションをデプロイしたり、ほとんどの実際のワークロードの入力データと出力データを保存したりする際に役立ちます。 [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して、リソース グループ内にストレージ アカウントを作成します。
+Azure ストレージ アカウントを Batch アカウントとリンクできます。 このクイック スタートには必要ありませんが、ストレージ アカウントは、アプリケーションをデプロイしたり、ほとんどの実際のワークロードの入力データと出力データを保存したりする際に役立ちます。 [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して、リソース グループ内にストレージ アカウントを作成します。
 
 ```azurecli-interactive
 az storage account create \

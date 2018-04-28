@@ -1,6 +1,22 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-network
+author: jimdial
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: 1febadbbf7821988600d6feddc94fce25d15e989
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="os-config"></a>VM オペレーティング システムに IP アドレスを追加する
 
-複数のプライベート IP アドレスを構成して作成した VM に接続し、ログインします。 VM に追加したプライベート IP アドレスは、プライマリも含め、すべて手動で追加する必要があります。 お使いの VM オペレーティング システムに応じて、次の手順を実行します。
+複数のプライベート IP アドレスを構成して作成した VM に接続し、ログインします。 VM に追加したプライベート IP アドレスは、プライマリも含め、すべて手動で追加する必要があります。 お使いの VM オペレーティング システムに応じて手順を実行します。
 
 ### <a name="windows"></a>Windows
 
@@ -13,17 +29,16 @@
     * **IP アドレス**: *プライマリ* のプライベート IP アドレスを入力します。
     * **サブネット マスク**: 自分のサブネットに基づいて設定します。 たとえば、たとえば、サブネットが/24 サブネットであれば、サブネット マスクは 255.255.255.0 になります。
     * **デフォルト ゲートウェイ**: サブネット内の最初の IP アドレスです。 サブネットが 10.0.0.0/24 の場合、ゲートウェイの IP アドレスは 10.0.0.1 になります。
-    * **[次の DNS サーバーのアドレスを使う]** をクリックし、次の値を入力します。
+    * **[次の DNS サーバーのアドレスを使う]** を選択して、次の値を入力します。
         * **[優先 DNS サーバー]**: 独自の DNS サーバーを使用していない場合は、「168.63.129.16」と入力します。  独自の DNS サーバーを使用している場合は、そのサーバーの IP アドレスを入力します。
-    * **[詳細]** ボタンをクリックし、他の IP アドレスを追加します。 手順 8 にある各セカンダリ プライベート IP アドレスを、プライマリ IP アドレスに指定されたのと同じサブネットの NIC に追加します。
-        >[!WARNING] 
-        >上記の手順を正しく実行しない場合は、VM への接続が失われる可能性があります。 先に進む前に、手順 5. で入力した情報を確認してください。
+    * **[詳細]** ボタンを選択して、他の IP アドレスを追加します。 前の手順で Azure ネットワーク インターフェイスに追加した、各セカンダリ プライベート IP アドレスを、Azure ネットワーク インターフェイスに割り当てられたプライマリ IP アドレスが割り当てられている Windows ネットワーク インターフェイスに追加します。
+
+        仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。 オペレーティング システム内で IP アドレスを手動で設定する場合は、Azure [ネットワーク インターフェイス](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであることを確認してください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。 オペレーティング システム内で Azure パブリック IP アドレスを割り当てないでください。
 
     * **[OK]** をクリックして TCP/IP 設定を閉じ、もう一度 **[OK]** をクリックしてアダプター設定を閉じます。 これで RDP 接続が再確立されます。
 
 6. コマンド プロンプトで、「 *ipconfig /all*」と入力します。 追加したすべての IP アドレスが表示され、DHCP が無効になります。
 7. Azure のプライマリ IP 構成のプライベート IP アドレスが、Windows 用プライマリ IP アドレスとして使用されるように Windows を構成します。 詳細については、「[No Internet access from Azure Windows VM that has multiple IP addresses (複数の IP アドレスを持つ Azure Windows VM からインターネット アクセスできない)](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse)」を参照してください。 
-
 
 ### <a name="validation-windows"></a>検証 (Windows)
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric クラスター設定の変更 | Microsoft Docs"
-description: "この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。"
+title: Azure Service Fabric クラスター設定の変更 | Microsoft Docs
+description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: chackdan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
-ms.author: chackdan
-ms.openlocfilehash: e55dbe4bd8fde8293c7fcd681bb18967dc4edad6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: aljo
+ms.openlocfilehash: 7d32ebd54d501a2eb5d6e353d38834546200c813
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/02/2018
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスター設定をカスタマイズする
 次の手順は、*MaxDiskQuotaInMB* という新しい設定を *[診断]* セクションに追加する方法を示しています。
 
-1. https://resources.azure.com へ移動します。
+1. https://resources.azure.com に移動します
 2. **[サブスクリプション]** -> **\<ご使用のサブスクリプション>** -> **[resourceGroups]** -> **\<ご使用のリソース グループ>** -> **[プロバイダー]** -> **[Microsoft.ServiceFabric]** -> **[クラスター]** -> **\<ご使用のクラスター名 >** の順に展開して、サブスクリプションに移動します
 3. 右上隅の **[読み取り/書き込み]** を選択します。
 4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
@@ -451,7 +451,7 @@ ms.lasthandoff: 03/02/2018
 |ServerCertThumbprints|string、既定値は L""|動的|クライアントと対話するために、クラスターによって使用されるサーバー証明書のサムプリント。クライアントはこれを使用して、クラスターを認証します。 コンマ区切りの名前リストです。 |
 |ClientCertThumbprints|string、既定値は L""|動的|クラスターと対話するために、クライアントによって使用される証明書のサムプリント。クラスターはこれを使用して、受診接続を承認します。 コンマ区切りの名前リストです。 |
 |AdminClientCertThumbprints|string、既定値は L""|動的|管理者ロールでクライアントによって使用される証明書のサムプリント。 コンマ区切りの名前リストです。 |
-|CrlCheckingFlag|uint、既定値は 0x40000000|動的|既定の証明書チェーン検証フラグ。コンポーネント固有のフラグに上書きされる場合があります。例: Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください |
+|CrlCheckingFlag|uint、既定値は 0x40000000|動的|既定の証明書チェーン検証フラグ。コンポーネント固有のフラグに上書きされる場合があります。例: Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください。 |
 |IgnoreCrlOfflineError|ブール値、既定値は FALSE|動的|サーバー側が受信クライアント証明書を確認するとき、CRL オフライン エラーを無視するかどうか |
 |IgnoreSvrCrlOfflineError|ブール値、既定値は TRUE|動的|クライアント側が受信サーバー証明書を確認するとき、CRL オフライン エラーを無視するかどうか。既定値は true です。 失効したサーバー証明書で攻撃するには DNS を侵害する必要があります。これは、失効したクライアント証明書による攻撃よりも困難です。 |
 |CrlDisablePeriod|TimeSpan、既定値は Common::TimeSpan::FromMinutes(15)|動的|timespan を秒単位で指定します。 CRL オフライン エラーを無視できる場合、オフライン エラーの発生後、指定されている証明書に対して CRL チェックが無効になっている時間。 |

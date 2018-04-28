@@ -1,11 +1,11 @@
 ---
-title: "VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
+title: VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft Docs
+description: Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -158,6 +158,7 @@ ms.lasthandoff: 03/09/2018
 
    * `--nics`: VM が接続されている NIC の名前。
    
+VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>VM の静的プライベート IP アドレス情報を取得する
 
@@ -267,9 +268,7 @@ Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プ
 
     > [!NOTE]
     > VM が複数の NIC を持つのに十分な大きさである場合、**azure network nic delete** コマンドを実行して、古い NIC を削除します。
-   
-## <a name="next-steps"></a>次の手順
-* [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
-* [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
-* [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
 
+## <a name="next-steps"></a>次の手順
+
+[IP アドレス設定](virtual-network-network-interface-addresses.md)の管理について学習します。

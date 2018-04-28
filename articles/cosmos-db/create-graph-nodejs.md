@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: ed8b76655ff0fc1a0604e59c704646aac95bd744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 66b12b25787fc029b1f20b78cac578b7cc18c9b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
 
@@ -46,9 +46,19 @@ Azure Cosmos DB は、Microsoft が提供するグローバルに分散された
 
 GitHub から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. Git ターミナル ウィンドウ (Git Bash など) を開き、`cd` コマンドで作業ディレクトリに移動します。
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
-2. 次のコマンドを実行して、サンプル リポジトリを複製します。 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -58,7 +68,9 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 `app.js` ファイルを開くと、以下のコード行が表示されます。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+
+次のスニペットはすべて app.js ファイルからのものです。
 
 * Gremlin クライアントが作成されます。
 
@@ -178,11 +190,7 @@ module.exports = config;
 
 ## <a name="clean-up-your-resources"></a>リソースをクリーンアップする
 
-このアプリの使用を続ける予定がない場合は、次の手順を実行して、この記事で作成したすべてのリソースを削除します。 
-
-1. Azure Portal の左側のナビゲーション メニューで、**[リソース グループ]** を選択します。 次に、作成したリソースの名前を選択します。 
-
-2. リソース グループ ページで **[削除]** を選択します。 削除するリソースの名前を入力し、**[削除]** を選択します。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 

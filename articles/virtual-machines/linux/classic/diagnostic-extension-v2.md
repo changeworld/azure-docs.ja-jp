@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
 
@@ -53,7 +53,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 
 この拡張機能は、 [Azure ポータル](https://portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-システムおよびパフォーマンス データを Azure Portal で直接表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)に従ってください。
+システムおよびパフォーマンス データを Azure Portal で直接表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)に従ってください。
 
 この記事では、Azure CLI コマンドを使用して、拡張機能を有効にして構成する方法を説明します。 これにより、ストレージ テーブルからデータを直接読み込んで表示することができます。
 

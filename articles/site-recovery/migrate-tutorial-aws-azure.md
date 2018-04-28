@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery を使用して AWS の VM を Azure に移行する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して、アマゾン ウェブ サービス (AWS) で実行中の Windows VM を Azure に移行する方法を説明します。"
+title: Azure Site Recovery を使用して AWS の VM を Azure に移行する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して、アマゾン ウェブ サービス (AWS) で実行中の Windows VM を Azure に移行する方法を説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,17 +9,18 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59a09b5d67391f2b48d338d721369f14ed6b4ede
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad4f46585be9cf61e3ef8343b5cb05308c972d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
 このチュートリアルでは、Site Recovery を使用してアマゾン ウェブ サービス (AWS) 仮想マシン (VM) を Azure VM に移行する方法について説明します。 EC2 インスタンスを Azure に移行すると、VM はオンプレミスの物理コンピューターのように扱われます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
+> * 前提条件を確認する
 > * Azure リソースを準備する
 > * 移行のために AWS EC2 インスタンスを準備する
 > * 構成サーバーをデプロイする
@@ -29,6 +30,22 @@ ms.lasthandoff: 02/28/2018
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
+## <a name="prerequisites"></a>前提条件
+- 移行する VM で、次のサポートされている OS バージョンが実行されていることを確認します 
+    - Windows Server 2008 R2 SP1 (以降) の 64 ビット バージョン、 
+    - Windows Server 2012、
+    - Windows Server 2012 R2、 
+    - Windows Server 2016
+    - Red Hat Enterprise Linux 6.7 (HVM 仮想化インスタンスのみ)。Citrix PV または AWS PV ドライバーのみが含まれている必要があります。 RedHat PV ドライバーを実行しているインスタンスはサポート**されません**。
+
+- モビリティ サービスは、レプリケートする各 VM にインストールする必要があります。 
+
+> [!IMPORTANT]
+> VM のレプリケーションを有効にすると、Site Recovery が自動的にこのサービスをインストールします。 自動的にインストールする場合は、Site Recovery で VM へのアクセスに使用するアカウントを EC2 インスタンスに準備する必要があります。 ドメイン アカウントまたはローカル アカウントを使用できます。 
+> - Linux VM の場合、アカウントは、ソース Linux サーバーの root である必要があります。 
+> - Windows VM の場合、ドメイン アカウントを使用していないときはローカル コンピューターのリモート ユーザー アクセス制御を無効にします。レジストリで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を 1 に設定します。
+
+- Site Recovery 構成サーバーとして使用できる別の EC2 インスタンスが必要です。 このインスタンスは、Windows Server 2012 R2 を実行している必要があります。
 
 ## <a name="prepare-azure-resources"></a>Azure リソースを準備する
 
@@ -74,19 +91,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 8. **[サブネット]** の **[名前]** と **[IP 範囲]** は既定値のままにします。
 9. **[サービス エンドポイント]** は無効なままにします。
 10. 完了したら、**[作成]** をクリックします。
-
-
-## <a name="prepare-the-ec2-instances"></a>EC2 インスタンスを準備する
-
-移行する VM が 1 つまたは複数必要です。 これらの EC2 インスタンスは、64 ビット バージョンの Windows Server 2008 R2 SP1 以降、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 または Red Hat Enterprise Linux 6.7 (HVM の仮想化されたインスタンスのみ) を実行している必要があります。 サーバーには、Citrix PV または AWS PV ドライバーのみが必要です。 RedHat PV ドライバーを実行しているインスタンスはサポートされません。
-
-モビリティ サービスは、レプリケートする各 VM にインストールする必要があります。 VM のレプリケーションを有効にすると、Site Recovery が自動的にこのサービスをインストールします。 自動的にインストールする場合は、Site Recovery で VM へのアクセスに使用するアカウントを EC2 インスタンスに準備する必要があります。
-
-ドメイン アカウントまたはローカル アカウントを使用できます。 Linux VM の場合、アカウントは、ソース Linux サーバーの root である必要があります。 Windows VM の場合、ドメイン アカウントを使用していなければ、次のようにしてローカル マシンでのリモート ユーザー アクセス制御を無効にします。
-
-  - レジストリで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に、ダブルワード エントリの **LocalAccountTokenFilterPolicy** を追加して値 1 を指定します。
-
-Site Recovery 構成サーバーとして使用できる別の EC2 インスタンスも必要です。 このインスタンスは、Windows Server 2012 R2 を実行している必要があります。
 
 
 ## <a name="prepare-the-infrastructure"></a>インフラストラクチャの準備
@@ -142,7 +146,7 @@ Site Recovery 構成サーバーとして使用できる別の EC2 インスタ�
 1. **[サブスクリプション]** で「[Azure の準備](tutorial-prepare-azure.md)」チュートリアルに使用した Azure サブスクリプションを選択します。
 2. デプロイ モデルとして **[Resource Manager]** を選択します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。 このチュートリアルの「[Azure リソースの準備](#prepare-azure-resources)」セクションで作成したリソースの情報が確認されます。
-4. 完了したら、 **[OK]**をクリックします。
+4. 完了したら、 **[OK]** をクリックします。
 
 
 ### <a name="4-replication-settings-prepare"></a>4 レプリケーション設定の準備
@@ -226,7 +230,7 @@ Portal で次のようにテスト フェールオーバーを実行します。
     - **[カスタム]** : 任意の復旧ポイントを選択します。
 3. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続するターゲット Azure ネットワークを選択します。 「[Azure リソースの準備](#prepare-azure-resources)」セクションで作成したネットワークを選択します。
 4. **[OK]** をクリックすると、フェールオーバーが開始されます。 VM をクリックしてそのプロパティを開くことで、進行状況を追跡できます。 または、**[監視とレポート]** > **[ジョブ]** >
-   **[Site Recovery ジョブ]** のコンテナーのページで **[フェールオーバーのテスト]** ジョブをクリックします。
+    **[Site Recovery ジョブ]** のコンテナーのページで **[フェールオーバーのテスト]** ジョブをクリックします。
 5. フェールオーバーの完了後、レプリカの Azure VM は、Azure Portal の **[仮想マシン]** に表示されます。 VM が適切なサイズであること、適切なネットワークに接続されていること、および実行されていることを確認します。
 6. これで、Azure 内のレプリケートされた VM に接続できるはずです。
 7. テスト フェールオーバー中に作成された VM を削除するには、復旧計画で **[テスト フェールオーバーのクリーンアップ]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。

@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/10/2017
+ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c79d82ddc65b7302552f745ab653109677205aa4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 494f2864f61ed9717dbddd7bf85981dc84bd3aad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成
 
@@ -47,8 +47,8 @@ ms.lasthandoff: 03/16/2018
 
 このチュートリアルを完了するには、以下が必要です。
 
-1. [Git をインストールする](https://git-scm.com/)
-1. [.NET Core SDK 1.1.2 をインストールする](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.2-download.md)
+* [Git をインストールする](https://git-scm.com/)
+* [.NET Core をインストールする](https://www.microsoft.com/net/core/)
 
 ## <a name="create-local-net-core-app"></a>ローカル .NET Core アプリを作成する
 
@@ -147,7 +147,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 次の文字列を前に使用した "*\<server_name>*"、"*\<db_username>*"、"*\<db_password>*" で置換します。
 
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persist Security Info=False;User ID=<db_username>;Password=<db_password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
 ```
 
 これは .NET Core アプリの接続文字列です。 後で使用するためコピーします。
@@ -215,7 +215,8 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 変更を保存し、それを Git リポジトリにコミットします。 
 
 ```bash
-git commit -am "connect to SQLDB in Azure"
+git add .
+git commit -m "connect to SQLDB in Azure"
 ```
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
@@ -347,8 +348,8 @@ dotnet run
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
 ```bash
-
-git commit -am "added done field"
+git add .
+git commit -m "added done field"
 git push azure master
 ```
 

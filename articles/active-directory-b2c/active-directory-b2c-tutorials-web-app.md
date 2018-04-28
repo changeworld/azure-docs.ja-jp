@@ -1,6 +1,6 @@
 ---
-title: ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル
-description: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
+title: チュートリアル - Azure Active Directory B2C を使用して Web アプリケーションのアカウントの認証を有効にする | Microsoft Docs
+description: ASP.NET Web アプリケーションで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
 author: davidmu1
 ms.author: davidmu
@@ -8,13 +8,13 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 59e23344d235bac8f69bba76cfff2922bc41fd0f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>チュートリアル: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザーを認証する
+# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Web アプリケーションのアカウントの認証を有効にする
 
 このチュートリアルでは、ASP.NET Web アプリで Azure Active Directory (Azure AD) B2C を使用してユーザーをサインインおよびサインアップする方法を紹介します。 Azure AD B2C を使用すると、アプリは、オープンな標準プロトコルを使用してソーシャル アカウント、エンタープライズ アカウント、Azure Active Directory アカウントに対して認証することができます。
 
@@ -40,22 +40,22 @@ Azure AD B2C テナントの全体管理者として、[Azure Portal](https://po
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Azure Portal のサービス一覧から **[Azure AD B2C]** を選択します。
+1. Azure Portal のサービス一覧から **[Azure AD B2C]** を選択します。 
 
-2. B2C の設定で、**[アプリケーション]** をクリックし、**[追加]** をクリックします。
+2. B2C の設定で、**[アプリケーション]** をクリックし、**[追加]** をクリックします。 
 
     テナントにサンプル Web アプリを登録するには、以下の設定を使用します。
 
     ![新しいアプリの追加](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
-
+    
     | Setting      | 推奨値  | Description                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **名前** | My Sample Web App | 使用者がアプリの機能を把握できる**名前**を入力します。 | 
     | **Web アプリ/Web API を含める** | [はい] | Web アプリの場合は **[はい]** を選択します。 |
     | **暗黙的フローを許可する** | [はい] | アプリでは [OpenID Connect サインイン](active-directory-b2c-reference-oidc.md)が使用されるため、**[はい]** を選択します。 |
     | **応答 URL** | `https://localhost:44316` | 応答 URL は、アプリが要求したトークンを Azure AD B2C が返すエンドポイントです。 このチュートリアルでは、サンプルはローカル (localhost) で実行され、ポート 44316 でリッスンします。 |
-    | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web アプリのため、[いいえ] を選択します。 |
-
+    | **ネイティブ クライアントを含める** | いいえ  | これはネイティブ クライアントではなく Web アプリのため、[いいえ] を選択します。 |
+    
 3. **[作成]** をクリックしてアプリを登録します。
 
 登録されたアプリは、Azure AD B2C テナントのアプリケーション一覧に表示されます。 一覧から Web アプリを選択します。 Web アプリのプロパティ ウィンドウが表示されます。
@@ -70,7 +70,7 @@ Azure AD B2C では、[クライアント アプリケーション](../active-di
 
 1. 登録されている Web アプリの [キー] ページを選択し、**[キーの生成]** をクリックします。
 
-2. **[保存]** をクリックしてキーを表示します。
+2. **[保存]** をクリックしてアプリ キーを表示します。
 
     ![アプリの [キーの生成] ページ](media/active-directory-b2c-tutorials-web-app/app-general-keys-page.png)
 
@@ -112,7 +112,7 @@ Web アプリにアクセスしてサインインするためにユーザーの�
     | **名前** | SiPe | ポリシーの**名前**を入力します。 ポリシー名の先頭には **b2c_1_** が付きます。 このサンプル コードでは、完全なポリシー名 **b2c_1_SiPe** を使用します。 | 
     | **ID プロバイダー** | ローカル アカウント サインイン | ユーザーを一意に識別するために使用される ID プロバイダー。 |
     | **プロファイル属性** | 表示名、郵便番号 | ユーザーがプロファイルの編集中に変更できる属性を選択します。 |
-    | **アプリケーション要求** | 表示名、郵便番号、新規ユーザー、ユーザーのオブジェクト ID | プロファイル編集が成功した後に[アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)に含める[要求](../active-directory/develop/active-directory-dev-glossary.md#claim)を選択します。 |
+    | **アプリケーション要求** | 表示名、郵便番号、ユーザーのオブジェクト ID | プロファイル編集が成功した後に[アクセス トークン](../active-directory/develop/active-directory-dev-glossary.md#access-token)に含める[要求](../active-directory/develop/active-directory-dev-glossary.md#claim)を選択します。 |
 
 2. **[作成]** をクリックしてポリシーを作成します。 
 
@@ -134,7 +134,7 @@ Web アプリにアクセスしてサインインするためにユーザーの�
 
 ## <a name="update-web-app-code"></a>Web アプリ コードの更新
 
-Web アプリの登録とポリシーの作成が完了したら、Azure AD B2C テナントを使用するようアプリを構成する必要があります。 このチュートリアルでは、サンプル Web アプリを構成します。 
+Web アプリの登録とポリシーの作成が完了したら、Azure AD B2C テナントを使用するようアプリを構成する必要があります。 このチュートリアルでは、GitHub からダウンロードできるサンプル Web アプリを構成します。 
 
 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
@@ -154,7 +154,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 1. Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 
-2. **TaskWebApp** Web アプリ プロジェクトで、**Web.config** ファイルを開き、次の更新を行います。
+2. **TaskWebApp** Web アプリ プロジェクトで、**Web.config** ファイルを開き、既存のキーに次の更新を行います。
 
     ```C#
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
@@ -163,7 +163,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     
     <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
-3. ポリシーの作成時に生成された名前で、ポリシーの設定を更新します。
+3. 前の手順で作成したポリシー名の値で既存のキーを更新します。 必ず *b2c_1_* プレフィックスを含めてください。
 
     ```C#
     <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />

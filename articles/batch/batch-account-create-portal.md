@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal で Batch アカウントを作成する | Microsoft Docs"
-description: "Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します"
+title: Azure Portal で Batch アカウントを作成する | Microsoft Docs
+description: Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -58,7 +58,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     d. **場所**: Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける汎用の Azure Storage アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 詳細については、この記事で後に出てくる「[リンクされた Azure ストレージ アカウント](#linked-azure-storage-account)」を参照してください。
+    e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける Azure ストレージ アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 詳細については、この記事で後に出てくる「[リンクされた Azure ストレージ アカウント](#linked-azure-storage-account)」を参照してください。
 
 4. **[作成]** をクリックしてアカウントを作成します。
 
@@ -85,11 +85,11 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ## <a name="linked-azure-storage-account"></a>リンクされた Azure Storage アカウント
 
-汎用の Azure ストレージ アカウントを Batch アカウントにリンクすることができます。これは、多くのシナリオで役に立ちます。 Batch の[アプリケーション パッケージ](batch-application-packages.md)機能は、[Batch File Conventions .NET](batch-task-output.md) ライブラリと同様に、Azure Blob Storage を使用します。 これらのオプション機能は、Batch タスクで実行するアプリケーションのデプロイや、そのアプリケーションによって生成されるデータの保持に役立ちます。
+Azure ストレージ アカウントを Batch アカウントにリンクできます。これは、多くのシナリオで役に立ちます。 Batch の[アプリケーション パッケージ](batch-application-packages.md)機能は、[Batch File Conventions .NET](batch-task-output.md) ライブラリと同様に、Azure Blob Storage を使用します。 これらのオプション機能は、Batch タスクで実行するアプリケーションのデプロイや、そのアプリケーションによって生成されるデータの保持に役立ちます。
 
-Batch アカウント専用として使用する新しいストレージ アカウントを作成することをお勧めします。 Azure Batch で現在サポートされているのは、汎用的なストレージ アカウントの種類のみです。 このアカウントの種類については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」の手順 5. で説明されています。
+Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。
 
-![汎用ストレージ アカウントの作成][storage_account]
+![ストレージ アカウントの作成][storage_account]
 
 > [!NOTE]
 > リンクされた Storage アカウントのアクセス キーを再生成する際は次の点に注意してください。 Storage アカウントのキーは 1 つだけ再生成し、リンクされた Storage アカウントのページにある **[キーの同期]** をクリックします。 キーがプール内のコンピューティング ノードに反映されるまで 5 分待ってから、必要に応じて他のキーの再生成と同期を行います。 両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、Storage アカウントにアクセスできなくなります。

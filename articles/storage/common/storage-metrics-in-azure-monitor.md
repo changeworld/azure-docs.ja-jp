@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5316013631670ab3612e441e64e2f330f01941b7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Azure Monitor の Azure Storage メトリック (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Monitor には、さまざまな Azure サービスで監視を実施す�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure Portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Log Analytics や Event Hub などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure Portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Operation Management Suite や Event Hubs などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
 
 メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)で構成されます。
 
@@ -139,9 +139,151 @@ BLOB、テーブル、ファイル、またはキューのメトリック定義�
 
 ```
 
-## <a name="billing-for-metrics"></a>メトリックの課金
+### <a name="access-metrics-with-the-net-sdk"></a>.Net SDK でメトリックにアクセスする
 
-Azure Monitor でのメトリックの使用は現在無料です。 ただし、メトリック データを取り込む追加ソリューションを使用する場合は、そのソリューションによって課金される可能性があります。 たとえば、メトリック データを Azure ストレージ アカウントにアーカイブする場合は、Azure Storage によって課金されます。 または、高度な分析のためにメトリック データを Log Analytics にストリーミングする場合は、Log Analytics によっても課金されます。
+Azure Monitor には、メトリックの定義と値を読み取るための [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。 リソース ID は .Net SDK で使用されます。 詳細については、[Azure Storage サービスのリソース ID](#understanding-resource-id-for-services-in-storage) に関するページを参照してください。
+
+次の例では、Azure Monitor .Net SDK を使用してストレージ メトリックスを読み取る方法を示します。
+
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>.Net SDK でアカウント レベルのメトリック定義を一覧表示する
+
+次の例は、アカウント レベルでメトリック定義を一覧表示する方法を示しています。
+
+```csharp
+    public static async Task ListStorageMetricDefinition()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        Using metrics in Azure Monitor is currently free. However, if you use additional solutions ingesting metrics data, you may be billed by these solutions. For example, you are billed by Azure Storage if you archive metrics data to an Azure Storage account. Or you are billed by Operation Management Suite (OMS) if you stream metrics data to OMS for advanced analysis.
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+        IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
+
+        foreach (var metricDefinition in metricDefinitions)
+        {
+            //Enumrate metric definition:
+            //    Id
+            //    ResourceId
+            //    Name
+            //    Unit
+            //    MetricAvailabilities
+            //    PrimaryAggregationType
+            //    Dimensions
+            //    IsDimensionRequired
+        }
+    }
+
+```
+
+BLOB、テーブル、ファイル、またはキューのメトリック定義を一覧表示するには、API でサービスごとに異なるリソース ID を指定する必要があります。
+
+#### <a name="read-metric-values-with-the-net-sdk"></a>.Net SDK を使用してメトリックの値を読み取る
+
+次の例は、アカウント レベルで `UsedCapacity` データを読み取る方法を示しています。
+
+```csharp
+    public static async Task ReadStorageMetricValue()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+
+        Response = await readOnlyClient.Metrics.ListAsync(
+            resourceUri: resourceId,
+            timespan: timeSpan,
+            interval: System.TimeSpan.FromHours(1),
+            metric: "UsedCapacity",
+
+            aggregation: "Average",
+            resultType: ResultType.Data,
+            cancellationToken: CancellationToken.None);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
+
+上の例で、BLOB、テーブル、ファイル、またはキューのメトリック値を読み取るには、API でサービスごとに異なるリソース ID を指定する必要があります。
+
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>.Net SDK を使用して多次元メトリック値を読み取る
+
+多次元メトリックの場合、特定のディメンション値に対するメトリック データを読み取る必要がある場合は、メタ データ フィルターを定義する必要があります。
+
+次の例では、多次元をサポートするメトリックについてのメトリック データを読み取る方法を示します。
+
+```csharp
+    public static async Task ReadStorageMetricValueTest()
+    {
+        // Resource ID for blob storage
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+        // It's applicable to define meta data filter when a metric support dimension
+        // More conditions can be added with the 'or' and 'and' operators, example: BlobType eq 'BlockBlob' or BlobType eq 'PageBlob'
+        ODataQuery<MetadataValue> odataFilterMetrics = new ODataQuery<MetadataValue>(
+            string.Format("BlobType eq '{0}'", "BlockBlob"));
+
+        Response = readOnlyClient.Metrics.List(
+                        resourceUri: resourceId,
+                        timespan: timeSpan,
+                        interval: System.TimeSpan.FromHours(1),
+                        metric: "BlobCapacity",
+                        odataQuery: odataFilterMetrics,
+                        aggregation: "Average",
+                        resultType: ResultType.Data);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>Azure Storage サービスのリソース ID について
 
@@ -187,7 +329,6 @@ GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
 `
 
 ## <a name="capacity-metrics"></a>容量メトリック
-
 容量メトリックの値は 1 時間ごとに Azure Monitor に送信され、 毎日更新されます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべての容量メトリックに対して、1 時間 (PT1H) の時間グレインがサポートされます。
 
 Azure Storage は、Azure Monitor で次の容量メトリックを提供します。
@@ -230,7 +371,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | FileCount   | ストレージ アカウントのファイルの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 | FileShareCount | ストレージ アカウントのファイル共有の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 
-## <a name="transaction-metrics"></a>Transaction Metrics
+## <a name="transaction-metrics"></a>トランザクション メトリック
 
 トランザクション メトリックは、Azure Storage から Azure Monitor に 1 分ごとに送信されます。 すべてのトランザクション メトリックを、アカウント レベルとサービス レベルの両方 (Blob Storage、Table Storage、Azure Files、および Queue ストレージ) で使用することができます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
 
@@ -245,14 +386,14 @@ Azure Storage は、Azure Monitor で次のトランザクション メトリッ
 | SuccessE2ELatency | ストレージ サービスまたは指定された API 操作に対して行われた成功した要求の平均エンド ツー エンド待機時間。 この値には、要求の読み取り、応答の送信、および応答の受信確認の受信のために Azure Storage 内で必要な処理時間が含まれます。 <br/><br/> 単位: ミリ秒 <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 1024 |
 | 可用性 | ストレージ サービスまたは指定された API 操作の可用性の割合。 可用性は、合計課金対象要求数の値を取得し、それを該当する要求の数 (予期しないエラーになった要求を含む) で割ることによって、計算されます。 予期しないエラーすべてが、ストレージ サービスまたは指定された API 操作の可用性の低下をもたらします。 <br/><br/> 単位: パーセント <br/> 集計の種類: 平均 <br/> 適用可能なディメンション: GeoType、ApiName ([定義](#metrics-dimensions)) <br/> 値の例: 99.99 |
 
-## <a name="metrics-dimensions"></a>メトリック ディメンション
+## <a name="metrics-dimensions"></a>メトリックのディメンション
 
 Azure Storage では、Azure Monitor の次のメトリック ディメンションがサポートされます。
 
 | ディメンション名 | [説明] |
 | ------------------- | ----------------- |
 | BlobType | BLOB メトリックの BLOB の種類のみ。 サポートされる値は **BlockBlob** と **PageBlob** です。 BlockBlob には Append Blob が含まれます。 |
-| ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError: 記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError: HTTP 503 ステータス コードを返した認証済み要求  (まだサポートされていません)。 </li> <li> ServerTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> ThrottlingError: クライアント側およびサーバー側の調整エラーの合計 (ServerBusyError と ClientThrottlingError がサポートされたら、削除されます) </li> <li> AuthorizationError: データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError: ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>  ClientThrottlingError: クライアント側の調整エラー (まだサポートされていません) </li> <li> ClientTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError: 記述されていない、その他すべてのクライアント側エラー。 </li> <li> Success: 成功した要求|
+| ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError: 記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError: HTTP 503 ステータス コードを返した認証済み要求  </li> <li> ServerTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> AuthorizationError: データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError: ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>    ClientThrottlingError: クライアント側の調整エラー。 </li> <li> ClientTimeoutError: HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError: 記述されていない、その他すべてのクライアント側エラー。 </li> <li> Success: 成功した要求|
 | GeoType | プライマリ クラスターまたはセカンダリ クラスターからのトランザクション。 使用可能な値は Primary と Secondary です。 セカンダリ テナントからオブジェクトを読み取るときに、読み取りアクセス geo 冗長ストレージ (RA-GRS) に適用されます。 |
 | ApiName | 操作の名前。 例:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> すべての操作名については、こちらの[ドキュメント](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md)を参照してください。 |
 
@@ -260,8 +401,8 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 
 ## <a name="service-continuity-of-legacy-metrics"></a>従来のメトリックのサービス継続性
 
-Azure Monitor 管理メトリックと並行して従来のメトリックを利用できます。 サポートは、Azure Storage が従来のメトリックのサービスを終了するまで引き続き提供されます。 サービス終了の時期については、Azure Monitor 管理メトリックを正式にリリースした後にお知らせします。
+Azure Monitor 管理メトリックと並行して従来のメトリックを利用できます。 サポートは、Azure Storage が従来のメトリックのサービスを終了するまで引き続き提供されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

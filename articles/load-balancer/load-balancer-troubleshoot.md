@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -103,9 +103,7 @@ VM がデータ トラフィックに応答しない場合、その原因とし�
 
 サブネットまたは VM で構成されている 1 つ以上のネットワーク セキュリティ グループが、発信元 IP またはポートをブロックしている場合、VM は応答できません。
 
-* バックエンド VM で構成されているネットワーク セキュリティ グループを一覧表示します。 詳細については、次を参照してください。
-    -  [ポータルを使用したネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [PowerShell を使用したネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* バックエンド VM で構成されているネットワーク セキュリティ グループを一覧表示します。 詳細については、「[Manage network security groups](../virtual-network/manage-network-security-group.md)」(ネットワーク セキュリティ グループの管理) をご覧ください。
 * ネットワーク セキュリティ グループの一覧で、次を確認します。
     - データ ポートの受信または送信トラフィックで干渉が発生していないかどうか。 
     - サブネットまたは VM の NIC で、**すべて拒否**ネットワーク セキュリティ グループ ルールの優先順位が、Load Balancer プローブとトラフィックを許可する既定のルールよりも高くなっていないかどうか (ネットワーク セキュリティ グループでは、プローブ ポートである Load Balancer IP アドレス 168.63.129.16 が許可されている必要があります) 

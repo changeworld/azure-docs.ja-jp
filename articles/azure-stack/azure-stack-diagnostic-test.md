@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c28216ced2a7cd2995c55a9faacb93cf27e60c65
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
  
 Azure Stack の状態を検証できます。 問題が発生している場合は、Microsoft カスタマー サービス サポートに連絡してください。 サポートは、ユーザーに管理ノードから Test-AzureStack を実行するよう依頼します。 この検証テストによって障害が分離されます。 それによりサポートは詳細なログを分析し、エラーが発生した領域に焦点を絞って、問題の解決でユーザーと協力することができます。
 
@@ -33,7 +33,8 @@ Azure Stack の状態を検証できます。 問題が発生している場合�
 2. Microsoft カスタマー サービス サポートに連絡してください。
 3. 特権エンドポイントから **Test-AzureStack** を実行します。
     1. 特権エンドポイントにアクセスします。 手順については、「[Azure Stack での特権エンドポイントの使用](azure-stack-privileged-endpoint.md)」を参照してください。 
-    2. 管理ホスト上で **AzureStack\CloudAdmin** としてログインします。
+    2. ASDK で、**AzureStack\CloudAdmin** として管理ホストにログインします。  
+    統合システムでは、OEM ハードウェア ベンダーから提供された管理の特権エンド ポイントの IP アドレスを使用する必要があります。
     3. PowerShell を管理者として開きます。
     4. 次のコマンドを実行します: `Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
     5. 次のコマンドを実行します: `Test-AzureStack`
@@ -57,7 +58,7 @@ Azure Stack の状態を検証します。 このコマンドレットは、Azur
   Test-AzureStack
 ````
 
-#### <a name="parameters"></a>パラメーター
+#### <a name="parameters"></a>parameters
 
 | パラメーター               | 値           | 必須 | 既定値 |
 | ---                     | ---             | ---      | ---     |
@@ -65,9 +66,9 @@ Azure Stack の状態を検証します。 このコマンドレットは、Azur
 | DoNotDeployTenantVm     | SwitchParameter | いいえ        | FALSE   |
 | AdminCredential         | PSCredential    | いいえ        | 該当なし      |
 <!-- | StorageConnectionString | String          | いいえ        | 該当なし      | 1802 ではサポートされていません -->
-| List                    | SwitchParameter | いいえ        | FALSE   |
-| Ignore                  | String          | いいえ        | 該当なし      |
-| Include                 | String          | いいえ        | 該当なし      |
+| 一覧表示                    | SwitchParameter | いいえ        | FALSE   |
+| 無視                  | String          | いいえ        | 該当なし      |
+| Include (含める)                 | String          | いいえ        | 該当なし      |
 
 Test-AzureStack コマンドレットは、Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable、および OutVariable の一般的なパラメーターをサポートしています。 詳細については、「[About Common Parameters (一般的なパラメーターについて)](http://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。 
 
@@ -148,7 +149,7 @@ PEP セッションで、次を実行します。
 
 次の表は、Test-AzureStack による検証テストの実行をまとめたものです。
 
-| 名前                                                                                                                              |
+| Name                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | Azure Stack クラウド ホスティング インフラストラクチャの概要                                                                                  |
 | Azure Stack ストレージ サービスの概要                                                                                              |

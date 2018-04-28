@@ -1,8 +1,8 @@
 ---
-title: "分散型深層学習用に Azure HDInsight Spark で Caffe を使用する | Microsoft Docs"
-description: "分散型深層学習用に Azure HDInsight Spark で Caffe を使用する"
+title: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する | Microsoft Docs
+description: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: xiaoyongzhu
 manager: asadk
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 71dcd1ad-4cad-47ad-8a9d-dcb7fa3c2ff9
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bccd889ba8a063613f1f3f385b39e4bfe8afcc89
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -35,23 +33,23 @@ ms.lasthandoff: 12/08/2017
 
 この記事では、HDInsight クラスター向けの [Caffe on Spark](https://github.com/yahoo/CaffeOnSpark) をインストールする方法を示します。 この記事では、組み込みの MNIST デモを使用して、CPU で HDInsight Spark を使用する分散型深層学習の使用方法についても示します。
 
-HDInsight での実行に必要な 4 つの主要な手順を次に示します。
+次の 4 つの手順でタスクを実行します。
 
 1. すべてのノードに必要な依存関係をインストールする
 2. ヘッド ノードで HDInsight 用 CaffeOnSpark をビルドする
 3. すべての worker ノードに必要なライブラリを配布する
 4. Caffe モデルを作成し、それを分散して実行する
 
-HDInsight は PaaS ソリューションであるため、優れたプラットフォーム機能が用意されています。したがって、いくつかのタスクを簡単に実行できます。 このブログ記事では、[スクリプト アクション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)と呼ばれる、シェル コマンドを実行してクラスター ノード (ヘッド ノード、worker ノード、またはエッジ ノード) をカスタマイズできる機能を多く使用しています。
+HDInsight は PaaS ソリューションであるため、優れたプラットフォーム機能が用意されています。したがって、いくつかのタスクを簡単に実行できます。 このブログ記事で使用する機能の 1 つは[スクリプト アクション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)と呼ばれ、シェル コマンドを実行してクラスター ノード (ヘッド ノード、worker ノード、またはエッジ ノード) をカスタマイズ可能にします。
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1: すべてのノードに必要な依存関係をインストールする
 
-最初に、必要な依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に、Spark の依存関係を YARN モードでインストールするために役立つ Wiki が用意されています。 HDInsight では、Spark を YARN モードでも使用します。 ただし、HDInsight プラットフォームの依存関係をいくつか追加する必要があります。 これを行うために、スクリプト アクションを使用し、それをすべてのヘッド ノードと worker ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
+最初に、依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に、Spark の依存関係を YARN モードでインストールするために役立つ Wiki が用意されています。 HDInsight では、Spark を YARN モードでも使用します。 ただし、HDInsight プラットフォームの依存関係をいくつか追加する必要があります。 これを行うために、スクリプト アクションを使用し、それをすべてのヘッド ノードと worker ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
     #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
-    #It seems numpy will only needed during compilation time, but for safety purpose we install them on all the nodes
+    #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
@@ -214,7 +212,7 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
    
 ![YARN UI](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
 
-この特定のアプリケーションに割り当てられているリソースの数を確認できます。 [Scheduler (スケジューラ)] リンクをクリックすると、このアプリケーションで 9 つのコンテナーが実行されていることがわかります。 これは、YARN に要求している 8 つの Executor と、ドライバー プロセス用のもう 1 つのコンテナーに該当します。 
+この特定のアプリケーションに割り当てられているリソースの数を確認できます。 [Scheduler (スケジューラ)] リンクをクリックすると、このアプリケーションで 9 個のコンテナーが実行されていることがわかります。 これは、YARN に要求している 8 個の Executor と、ドライバー プロセス用のもう 1 個のコンテナーに該当します。 
 
 ![YARN スケジューラ](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
 

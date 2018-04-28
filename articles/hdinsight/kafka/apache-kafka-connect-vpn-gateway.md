@@ -1,25 +1,25 @@
 ---
-title: "仮想ネットワークを使用して Kafka へ接続する - Azure HDInsight | Microsoft Docs"
-description: "Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。"
+title: 仮想ネットワークを使用して Kafka へ接続する - Azure HDInsight | Microsoft Docs
+description: Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
+ms.devlang: ''
 ms.custom: hdinsightactive
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1ddfbbb5efb73f968c9ef42396be45fce12ff47a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
@@ -92,7 +92,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 2. PowerShell プロンプトを開き、次のコードを使用して Azure サブスクリプションにログインします。
 
     ```powershell
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
     # If you have multiple subscriptions, uncomment to set the subscription
     #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
     ```
@@ -244,7 +244,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 既定では、Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成では、仮想ネットワーク内のエンティティに対して名前解決を使用できないため、VPN ソフトウェア クライアントは使用できません。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用するには、https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 
@@ -256,7 +256,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
     ![Kafka の構成リンク](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
 
-4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__フィールドに「`kafka-env`」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 

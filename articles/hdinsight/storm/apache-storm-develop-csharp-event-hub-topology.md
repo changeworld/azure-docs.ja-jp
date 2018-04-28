@@ -1,26 +1,24 @@
 ---
-title: "Storm を使用して Event Hubs のイベントを処理する - Azure HDInsight | Microsoft Docs"
-description: "Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Azure Event Hubs のデータを処理する方法について説明します。"
+title: Storm を使用して Event Hubs のイベントを処理する - Azure HDInsight | Microsoft Docs
+description: Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Azure Event Hubs のデータを処理する方法について説明します。
 services: hdinsight,notification hubs
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 67f9d08c-eea0-401b-952b-db765655dad0
 ms.service: hdinsight
-ms.custom: 
+ms.custom: ''
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: fe1cf3eab1f0ca930b516e4ab44f1e2439cb3e07
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 475a63937ed09b4ce875465c0eb3488ce92c38be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
 
@@ -51,7 +49,7 @@ C# トポロジは .NET 4.5 も対象にする必要があります。
 
 ## <a name="how-to-work-with-event-hubs"></a>イベント ハブを使用する方法
 
-Microsoft では、Storm トポロジからの Event Hubs との通信に使用できる Java コンポーネントのセットを提供します。 これらのコンポーネントの HDInsight 3.6 互換バージョンが含まれている Java アーカイブ (JAR) ファイルは、[https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) から入手できます。
+Microsoft では、Storm トポロジからの Event Hubs との通信に使用できる Java コンポーネントのセットを提供します。 これらのコンポーネントの中で HDInsight 3.6 に適合するバージョンを含んだ Java アーカイブ (JAR) ファイルは [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) に置かれています。
 
 > [!IMPORTANT]
 > コンポーネントは Java で記述されていますが、C# トポロジから簡単に使用することができます。
@@ -132,7 +130,7 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-event-hubs-components"></a>Event Hubs のコンポーネントをダウンロードする
 
-Event Hubs のスパウトおよびボルト コンポーネントは、[https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) からダウンロードしてください。
+Event Hubs スパウトとボルト コンポーネントは [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) からダウンロードできます。
 
 `eventhubspout` という名前のディレクトリを作成し、そのディレクトリにファイルを保存します。
 
@@ -191,7 +189,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
     ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
 
-2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]**をクリックします。
+2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
     ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
 
@@ -201,7 +199,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、**[HDInsight の Storm に送信]** を選択します。
 
-5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]**をクリックします。
+5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
 6. トポロジが送信されたら、 **[Storm トポロジ ビューアー]** でトポロジ一覧を最新情報に更新し、両方のトポロジがクラスターで実行中であることを確認します。
 

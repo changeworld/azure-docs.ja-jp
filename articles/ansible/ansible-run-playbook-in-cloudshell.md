@@ -1,18 +1,18 @@
 ---
-title: "Azure Cloud Shell での Bash を使用した Ansible の実行"
-description: "Azure Cloud Shell で Bash を使用してさまざまな Ansible タスクを実行する方法について説明します"
+title: Azure Cloud Shell での Bash を使用した Ansible の実行
+description: Azure Cloud Shell で Bash を使用してさまざまな Ansible タスクを実行する方法について説明します
 ms.service: ansible
-keywords: "Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash"
+keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
 ms.date: 02/01/2018
 ms.topic: article
-ms.openlocfilehash: 92ca2950199d638c5f76c0c7aadbae4fda7e9d1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9fe65f4cf10119002bcb7a3855d112d850e20f1a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Azure Cloud Shell での Bash を使用した Ansible の実行
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/08/2018
 
 - **Azure 資格情報** - [Azure 資格情報の作成と Ansible の構成](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-- **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使う場合は、Cloud Shell を起動および構成する方法について、「[Azure Cloud Shell の Bash のクイックスタート](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart)」を参照してください。 以下から Cloud Shell 専用の Web サイトを起動します。
+- **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使う場合は、Cloud Shell を起動および構成する方法について、「[Azure Cloud Shell の Bash のクイックスタート](https://docs.microsoft.com/azure/cloud-shell/quickstart)」を参照してください。 以下から Cloud Shell 専用の Web サイトを起動します。
 
 [![Cloud Shell を起動する](https://shell.azure.com/images/launchcloudshell.png "Cloud Shell を起動する")](https://shell.azure.com)
 

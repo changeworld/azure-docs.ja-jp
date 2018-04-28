@@ -1,12 +1,12 @@
 ---
-title: "Power BI ワークスペース コレクションに関するよくある質問"
-description: "Power BI ワークスペース コレクションに関するよくある質問です。"
+title: Power BI ワークスペース コレクションに関するよくある質問
+description: Power BI ワークスペース コレクションに関するよくある質問です。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
@@ -15,23 +15,23 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 6b33f497a5dbc889945e2147586f79edf1bd9aeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI ワークスペース コレクションに関するよくある質問
 
 > [!IMPORTANT]
-> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、「[How to migrate Power BI Workspace Collection content to Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)」(Power BI Embedded に Power BI ワークスペース コレクション コンテンツを移行する方法) を参照してください。
+> Power BI ワークスペース コレクションは非推奨となっており、2018 年 6 月または契約に定める日までに限り利用できます。 アプリケーションの中断を避けるため、Power BI Embedded への移行をご検討ください。 Power BI Embedded にデータを移行する方法については、[Power BI ワークスペース コレクション コンテンツを Power BI Embedded に移行する方法](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)に関するページを参照してください。
 
 ## <a name="what-is-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションとは何ですか。
-Power BI ワークスペース コレクションは、アプリーション開発者が時間とコストをかけて独自のコントロールをゼロから構築しなくても、完全に対話型の魅力的なレポートや視覚エフェクトを顧客向けアプリケーションに埋め込むことができる Azure サービスです。 世界 9 か所のデータ センターで、SLA が適用された Power BI ワークスペース コレクションが提供されるようになりました。 高度なフィルター処理を実現する Power BI ワークスペース コレクションの行レベルのセキュリティ (RLS) によるデータ セキュリティのサポートなど、サービスの機能も強化されています。 また、Power BI ワークスペース コレクションの価格モデルが簡素化され、更新されました。
+Power BI ワークスペース コレクションは、アプリケーション開発者が時間とコストをかけて独自のコントロールをゼロから構築しなくても、完全に対話型の魅力的なレポートや視覚エフェクトを顧客向けアプリケーションに埋め込むことができる Azure サービスです。 世界 9 か所のデータ センターで、SLA が適用された Power BI ワークスペース コレクションが提供されるようになりました。 高度なフィルター処理を実現する Power BI ワークスペース コレクションの行レベルのセキュリティ (RLS) によるデータ セキュリティのサポートなど、サービスの機能も強化されています。 また、Power BI ワークスペース コレクションの価格モデルが簡素化され、更新されました。
 
 ## <a name="who-would-want-to-use-microsoft-power-bi-workspace-collections-and-why"></a>Microsoft Power BI ワークスペース コレクションの対象ユーザーと、その用途を教えてください。
-Microsoft Power BI ワークスペース コレクションは、視覚エフェクトを独自に構築することなく、あらゆるデバイスで魅力的な対話型のデータ視覚エフェクト エクスペリエンスを提供したいと考えているアプリケーション開発者を対象としています。 Microsoft Power BI ワークスペース コレクションを使用すれば、開発者は DirectQuery を使って常に最新のビューを提供できます。 また、開発者は、Azure Resource Manager API や Power BI API を使用して、Power BI をプログラムによってデプロイ、管理、自動化することもできます。 その他のサービスと同様に、Power BI Embedded サービスは、使用状況とアプリケーションのニーズに応じて、自動的に拡張します。 Power BI ワークスペース コレクション サービスは、従量課金ベースの価格モデルを特徴としています。
+Microsoft Power BI ワークスペース コレクションは、視覚エフェクトを独自に構築することなく、あらゆるデバイスで魅力的な対話型のデータ視覚エフェクト エクスペリエンスを提供したいと考えているアプリケーション開発者を対象としています。 Microsoft Power BI ワークスペース コレクションを使用すれば、開発者は DirectQuery を使って常に最新のビューを提供できます。 また、開発者は、Azure Resource Manager API や Power BI API を使用して、Power BI をプログラムによってデプロイ、管理、自動化することもできます。 その他のサービスと同様に、Power BI Embedded サービスは、使用状況とアプリケーションのニーズに応じて、自動的に拡張します。 Power BI ワークスペース コレクション サービスは、従量課金制の使用量ベースの価格モデルを特徴としています。
 
 ## <a name="how-does-power-bi-workspace-collections-relate-to-the-power-bi-service"></a>Power BI ワークスペース コレクションと Power BI サービスはどのように関連しているのですか。
 Power BI ワークスペース コレクションと Power BI サービスは別個のサービスです。 Power BI ワークスペース コレクションは、Azure Portal を通じてデプロイされる、使用量ベースの課金モデルを特徴としており、ISV がデータの視覚エフェクトを顧客向けのアプリケーションへ埋め込むことを可能にするよう設計されています。 Power BI サービスは O365 ポータルを通して請求およびデプロイが行われ、主に企業による内部使用を対象とするスタンドアロンの汎用 BI サービスです。 Power BI サービスの詳細については、 [https://powerbi.microsoft.com/ja-jp/](https://powerbi.microsoft.com)をご覧ください。

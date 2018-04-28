@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
 
@@ -43,7 +40,7 @@ ms.lasthandoff: 03/28/2018
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
 2. **[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]** の順にクリックします。
-3. **[名前]**に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、適切なものを選択します。
+3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 4. リソース グループを作成するか、既存のリソース グループを選択します。 Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
 5. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]**、**[作成]** の順にクリックします。
 
@@ -77,7 +74,7 @@ Site Recovery が期待どおりに動作するには、レプリケートした
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
-IP ベースのファイアウォール、プロキシ、または NSG ルールを使用して送信接続を制御している場合は、次の IP アドレス範囲をホワイトリストに登録する必要があります。 次のリンクから範囲の一覧をダウンロードしてください。
+URL の代わりに IP アドレスを使用して送信接続を制御する場合は、適切なデータセンターの範囲、Office 365 のアドレス、サービス エンドポイント アドレスを、IP ベースのファイアウォール、プロキシ、または NSG ルールのホワイトリストに登録します。
 
   - [Microsoft Azure データセンターの IP 範囲](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [ドイツの Windows Azure データセンターの IP 範囲](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -85,7 +82,7 @@ IP ベースのファイアウォール、プロキシ、または NSG ルール
   - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery サービス エンドポイントの IP アドレス](https://aka.ms/site-recovery-public-ips)
 
-この一覧を使用して、ご使用のネットワークでネットワーク アクセス制御を構成します。 こちらの[スクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702)を使用して、必要な NSG ルールを作成することができます。
+こちらの[スクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702)を使用して、必要な NSG ルールを作成することができます。
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM の証明書の確認
 
@@ -105,7 +102,7 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 
 - **Site Recovery 閲覧者** - このロールには、すべての Site Recovery 管理操作を見るアクセス許可があります。 このロールは、保護の現在の状態を監視し、サポート チケットを発行できる、IT 監視担当役員に最も適しています。
 
-[Azure RBAC の組み込みのロール](../active-directory/role-based-access-built-in-roles.md)について説明します。
+[Azure RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)について説明します。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 

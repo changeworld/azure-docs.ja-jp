@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 11bb34939e5fa3699973051664e85f9ef2147ff7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 04a6fbc56d3c65cfb53339c4178dfa36e2aeb4ea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -238,8 +238,8 @@ Advance to the next tutorial to learn how to bind a custom SSL certificate to it
 [link-servicefabric-createapp]: service-fabric-create-your-first-application-in-visual-studio.md
 [link-azure-portal]: https://portal.azure.com
 [link-sf-clustertemplate]: https://aka.ms/securepreviewonelineclustertemplate
-[link-azure-pricing-calculator]: https://azure.microsoft.com/en-us/pricing/calculator/
-[link-azure-subscription]: https://azure.microsoft.com/en-us/free/
+[link-azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator/
+[link-azure-subscription]: https://azure.microsoft.com/free/
 [link-vsts-account]: https://www.visualstudio.com/team-services/pricing/
 [link-azure-sql]: /azure/sql-database/
 

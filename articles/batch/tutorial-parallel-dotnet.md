@@ -1,21 +1,21 @@
 ---
-title: "並列ワークロードの実行 - Azure Batch .NET"
-description: "チュートリアル - Batch .NET クライアント ライブラリを使用して、Azure Batch で ffmpeg を使用してメディア ファイルをトランスコードします。"
+title: 並列ワークロードの実行 - Azure Batch .NET
+description: チュートリアル - Batch .NET クライアント ライブラリを使用して、Azure Batch で ffmpeg を使用してメディア ファイルをトランスコードします。
 services: batch
 author: dlepow
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1100f8fddcd2f802b5f38e0b9789bc9ec359e03a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル: .NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -38,7 +38,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 * [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 以降のバージョン)。 
 
-* Batch アカウントおよびリンクされている汎用ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
+* Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
 * [Windows 64 ビット版の ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。 
 

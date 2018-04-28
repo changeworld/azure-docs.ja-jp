@@ -1,11 +1,11 @@
 ---
-title: "Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード | Microsoft Docs"
-description: "スタンドアロン Azure Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします (クラスター アップグレード モードの設定など)。"
+title: Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード | Microsoft Docs
+description: スタンドアロン Azure Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします (クラスター アップグレード モードの設定など)。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: c95c1827d0433dcb61eace34e7a905a5610c7781
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3354fab5f664391520e721586712e5035ff79cb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード 
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
         "fabricClusterAutoupgradeEnabled": false,
 
-使用方法について詳しくは、[Start-ServiceFabricClusterConfigurationUpgrade PowerShell コマンド](https://msdn.microsoft.com/en-us/library/mt788302.aspx)をご覧ください。 構成のアップグレードを開始する前に、JSON の "clusterConfigurationVersion" を必ず更新してください。
+使用方法について詳しくは、[Start-ServiceFabricClusterConfigurationUpgrade PowerShell コマンド](https://msdn.microsoft.com/library/mt788302.aspx)をご覧ください。 構成のアップグレードを開始する前に、JSON の "clusterConfigurationVersion" を必ず更新してください。
 
 ```powershell
 
@@ -226,7 +226,7 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 * 証明書の発行者の拇印のアップグレード: アップグレードのパスは、'証明書 CN = A、発行者の拇印 = IT1 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT1、IT2 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT2 (プライマリ)' です。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 一部の [Service Fabric クラスター設定](service-fabric-cluster-fabric-settings.md)をカスタマイズする方法を学習します。
 * [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)を行う方法を学習します。
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)を行う方法を学習します。

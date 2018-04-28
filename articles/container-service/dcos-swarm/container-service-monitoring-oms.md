@@ -3,17 +3,17 @@ title: Azure DC/OS クラスターの監視 - Operations Management
 description: Log Analytics で Azure Container Service DC/OS クラスターを監視します。
 services: container-service
 author: keikhara
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: ba76f8480dedb37326505f7ed756eb51a41ee0fe
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b326e5b686e14cefac4e6376bd3f26787ea1d10d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
@@ -37,7 +37,7 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 
 ![](media/container-service-monitoring-oms/image2.png)
 
-2. **[インストール]**をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、**[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
+2. **[インストール]** をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、**[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
 
 ![](media/container-service-monitoring-oms/image3.png)
 

@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ec08d617b461240062190ec7fdb919f051675798
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c02835e8712c79ea540d7560da111f54abbeed23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 04/16/2018
 
 - X.509 ベースのデバイスの場合:
     - *.pem* ファイルまたは *.cer* ファイルの形式で[デバイスに発行された X.509 証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムの "*リーフ証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" または同等の "*署名者証明書*" を使用する必要があります。
-    - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 X.509 ベースのデバイスの場合、登録 ID は証明書の共通名 (CN) から派生します。 これらの要件の詳細については、[デバイスの概念](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device)に関するページを参照してください。
+    - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 これは、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 X.509 ベースのデバイスの場合、登録 ID は証明書の共通名 (CN) から派生します。 これらの要件の詳細については、[デバイスの概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)に関するページを参照してください。
 
 デバイスを Device Provisioning Service に登録するには、次の 2 つの方法があります。
 

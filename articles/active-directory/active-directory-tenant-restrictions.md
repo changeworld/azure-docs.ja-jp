@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dae4599db5127ac8fd266d5e0f299e1284fc9b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/05/2018
 
 テナント制限では、組織はユーザーがアクセスを許可されているテナントのリストを指定できます。 Azure AD は、これらの許可されているテナントへのアクセスだけを許可します。
 
-この記事では Office 365 のテナント制限について説明していますが、この機能は Azure AD でのシングル サインオンに最新の認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Office 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/) をご覧ください。
+この記事では Office 365 のテナント制限について説明していますが、この機能は Azure AD でのシングル サインオンに最新の認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Office 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/) をご覧ください。
 
 ## <a name="how-it-works"></a>動作のしくみ
 

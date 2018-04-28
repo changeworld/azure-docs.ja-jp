@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 03/22/2018
+ms.date: 04/10/2018
 ms.author: jroth
-ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c24536d8d5647e4a2c19afa17c35050e1f11c20
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 
@@ -24,27 +24,16 @@ ms.lasthandoff: 03/23/2018
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-このトピックでは、Azure 仮想マシン (VM) で SQL Server を実行するための選択肢を、[ポータル イメージへのリンク](#create)と併せて紹介します。
+Azure 仮想マシン上の SQL Server では、オンプレミスのハードウェアを一切管理することなく全バージョンの SQL Server をクラウドで利用することができます。 また、SQL Server VM によって従量課金制のライセンス料が単純化されます。
 
-> [!NOTE]
-> 既に SQL Server を使い慣れており、SQL Server Linux VM をデプロイする方法を確認するだけの場合は、[Azure での Linux SQL Server VM のプロビジョニング](provision-sql-server-linux-virtual-machine.md)に関するページを参照してください。 SQL Server がインストールされた Windows VM を作成したい場合は、[Azure での Windows SQL Server VM のプロビジョニング](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページを参照してください。
+Azure 仮想マシンは、世界中のさまざまな[リージョン](https://azure.microsoft.com/regions/)で実行されます。 また、[マシンのサイズ](../sizes.md)も各種用意されています。 適切なバージョン、エディション、オペレーティング システムの SQL Server VM を仮想マシン イメージ ギャラリーで作成することができます。 さまざまな SQL Server ワークロードに合った最適な仮想マシンを選ぶことができます。
 
-データベースの管理者または開発者の場合、Azure VM には、オンプレミスの SQL Server ワークロードとアプリケーションをクラウドに移動する方法が用意されています。
+## <a id="create"></a>SQL VM を使ってみる
 
-## <a name="scenarios"></a>シナリオ
-
-データを Azure でホストするにはさまざまな理由があります。 Azure でアプリケーションを開発したり、アプリケーションを Azure に移行したりすると、Azure のバックエンド データの検索パフォーマンスも高まります。 グローバルな展開と障害復旧のために、自動的に複数のデータ センターにアクセスできるようになります。 データは、高度なセキュリティで保護され、耐久性に優れています。
-
-Azure VM で実行されている SQL Server は、リレーショナル データを Azure に格納するための 1 つのオプションです。 Azure SQL Database サービスを使用するオプションもあります。 仮想マシンに SQL Server をインストールするか、Azure SQL Database を使用するかの選択に関する詳細については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)」を参照してください。
-
-## <a id="create"></a> 新しい SQL VM の作成
-
-新しい SQL VM を作成する詳細な手順を示したチュートリアルは、[Azure での Linux SQL Server VM のプロビジョニング](provision-sql-server-linux-virtual-machine.md)に関するページを参照してください。
-
-次の表には、仮想マシン ギャラリーの最新の SQL Server イメージのマトリックスが示されています。 指定したバージョン、エディション、およびオペレーティング システムで新しい SQL VM の作成を開始するには、いずれかのリンクをクリックします。
+まず、必要なバージョン、エディション、オペレーティング システムの SQL Server 仮想マシン イメージを選んでください。 以下のセクションでは、SQL Server 仮想マシン ギャラリー イメージに関する、Azure Portal へのリンクを記載しています。
 
 > [!TIP]
-> これらのイメージの VM と SQL の料金については、[Linux SQL Server VM の料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)を参照してください。
+> SQL イメージの価格の詳細については、[Linux SQL Server VM の価格](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)に関するページを参照してください。
 
 | バージョン | オペレーティング システム | エディション |
 | --- | --- | --- |
@@ -65,6 +54,33 @@ Linux に SQL Server を構成するときには、データベース エンジ�
 | SLES | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | Ubuntu | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
+## <a name="related-products-and-services"></a>関連製品およびサービス
+
+### <a name="linux-virtual-machines"></a>Linux 仮想マシン
+
+* [Virtual Machines の概要](../overview.md)
+
+### <a name="storage"></a>Storage
+
+* [Microsoft Azure Storage の概要](../../../storage/common/storage-introduction.md)
+
+### <a name="networking"></a>ネットワーク
+
+* [仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)
+* [Azure 内の IP アドレス](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Azure Portal での完全修飾ドメイン名の作成](../portal-create-fqdn.md)
+
+### <a name="sql"></a>SQL
+
+* [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux)
+* [Azure SQL Database の比較](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
+
 ## <a name="next-steps"></a>次の手順
 
-Linux で SQL Server を構成および使用する方法の詳細については、[Linux における SQL Server の概要](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)に関するページを参照してください。
+Azure Linux 仮想マシン上の SQL Server の概要:
+
+* [Azure Portal での SQL Server VM の作成](provision-sql-server-linux-virtual-machine.md)
+
+Linux 上の SQL VM についてよく寄せられる質問とその回答:
+
+* [Azure Linux Virtual Machines における SQL Server に関する FAQ](sql-server-linux-faq.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 250c66c3a39519a6eddc1ecb51259ec1944c88a9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -84,12 +84,13 @@ VNet の使用時に Azure Redis Cache インスタンスに接続するには�
 
 * [Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 * [VNET で自分のキャッシュの動作を確認するにはどうすればよいですか](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
+* [VNET で自分の Redis キャッシュへの接続を試行すると、リモート証明書が無効であることを示すエラーが表示されるのはなぜですか](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
 * [Standard キャッシュまたは Basic キャッシュで VNet を使用できますか](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Redis Cache の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
 * [VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
-## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください
+### <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets"></a>Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください
 Azure Redis Cache が VNet でホストされている場合は、次の表にあるポートが使用されます。 
 
 >[!IMPORTANT]
@@ -100,7 +101,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 - [送信ポートの要件](#outbound-port-requirements)
 - [受信ポートの要件](#inbound-port-requirements)
 
-### <a name="outbound-port-requirements"></a>送信ポートの要件
+#### <a name="outbound-port-requirements"></a>送信ポートの要件
 
 送信ポートには 7 個の要件があります。
 
@@ -120,7 +121,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 | 6379-6380 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 
-### <a name="inbound-port-requirements"></a>受信ポートの要件
+#### <a name="inbound-port-requirements"></a>受信ポートの要件
 
 受信ポートの範囲には、8 個の要件があります。 これらの範囲の受信要件は、同じ VNET でホストされている他のサービスからの受信、または Redis サブネット通信への内部の要件です。
 
@@ -135,7 +136,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 | 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
 | 20226 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
-### <a name="additional-vnet-network-connectivity-requirements"></a>その他の VNET ネットワーク接続の要件
+#### <a name="additional-vnet-network-connectivity-requirements"></a>その他の VNET ネットワーク接続の要件
 
 Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。 仮想ネットワーク内で使用したときに正常に動作させるには、Azure Redis Cache に次の項目すべてが必要になります。
 
@@ -164,6 +165,24 @@ Azure Redis Cache のネットワーク接続要件には、仮想ネットワ�
   - キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアント (StackExchange.Redis を使ったシンプルなコンソール アプリケーションにできます) を作成することでテストする方法もあります。 このサンプル クライアント アプリケーションをキャッシュと同じ VNET 内の VM にインストールし、実行してキャッシュへの接続性を確認します。
 
 
+### <a name="when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid"></a>VNET で自分の Redis キャッシュへの接続を試行すると、リモート証明書が無効であることを示すエラーが表示されるのはなぜですか
+
+VNET で自分の Redis キャッシュへの接続を試行すると、次のような証明書の検証エラーが表示されます。
+
+`{"No connection is available to service this operation: SET mykey; The remote certificate is invalid according to the validation procedure.; …"}`
+
+IP アドレスでホストに接続していることが原因になっている可能性があります。 ホスト名を使用することをお勧めします。 つまり、次を使用してください。     
+
+`[mycachename].redis.windows.net:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+次の接続文字列のような IP アドレスは使用しないでください。
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
+
+DNS 名を解決できない場合、StackExchange.Redis クライアントによって指定される `sslHost` のような構成オプションが、クライアント ライブラリに含まれている場合があります。 このオプションによって、証明書の検証に使用されるホスト名を上書きできます。 例: 
+
+`10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
+
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Standard キャッシュまたは Basic キャッシュで VNet を使用できますか
 VNet は Premium キャッシュでのみ使用できます。
 
@@ -182,7 +201,9 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 
 * Redis コンソール - Redis コンソールは、VNET の外部にあるローカル ブラウザーで実行されるため、キャッシュに接続できません。
 
+
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Azure Redis Cache と ExpressRoute の使用
+
 顧客は、 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 
 
 既定では、新たに作成した ExpressRoute 回線では VNET での強制トンネリングは実行されません (既定のルートのアドバタイズ、0.0.0.0/0)。 その結果、発信インターネット接続は VNET から直接行うことができ、クライアント アプリケーションは、Azure Redis Cache を含む他の Azure エンドポイントに接続できます。

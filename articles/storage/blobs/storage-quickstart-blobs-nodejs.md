@@ -1,19 +1,19 @@
 ---
-title: Azure クイック スタート - Node.js を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
-description: このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Node.js 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: Azure クイック スタート - Node.js を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Node.js 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 8783b83a1a94caf4a49f9da7a2dd30c9cb52df22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -82,7 +82,7 @@ const storage = require('azure-storage');
 - *dotenv*: *.env* という名前のファイルで定義された環境変数を現在の実行コンテキストに読み込む
 - *path*: Blob Storage にアップロードするファイルの絶対ファイル パスを決定するのに必要
 - *yargs*: コマンド ライン引数にアクセスするシンプルなインターフェイスを公開
-- *azure-storage*: Node.js 用の [Azure Storage SDK](/nodejs/api/azure-storage) モジュール
+- *azure-storage*: Node.js 用の [Azure Storage SDK](https://docs.microsoft.com/javascript/api/azure-storage) モジュール
 
 次に、一連の変数が初期化されます。
 
@@ -294,4 +294,4 @@ Blob Storage を使用する Node.js 開発については、以下の追加リ�
 > [!div class="nextstepaction"]
 > [Blob Storage の操作方法](storage-nodejs-how-to-use-blob-storage.md)
 
-Azure Storage に関する Node.js のリファレンスについては、「[azure-storage package (azure-storage パッケージ)](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest)」を参照してください。
+Azure Storage に関する Node.js のリファレンスについては、「[azure-storage package (azure-storage パッケージ)](https://docs.microsoft.com/javascript/api/azure-storage)」を参照してください。

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: 7fd25a1181e1a4d69bf8233b34a4c416378e0181
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
 
@@ -42,8 +42,19 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 github から Flask-MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
-1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
@@ -57,7 +68,9 @@ github から Flask-MongoDB API アプリを複製し、接続文字列を設定
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 ルート ディレクトリの下にある **app.py** ファイルを開くと、これらのコード行によって Azure Cosmos DB 接続が作成されることがわかります。 次のコードは、ローカルの Azure Cosmos DB Emulator 用の接続文字列を使用します。 パスワードを次のように分割して、スラッシュに対応する必要があります。そうしないと、スラッシュを解析できません。
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[Web アプリの実行](#run-the-web-app)」に進んでください。 
+
+次のスニペットはすべて app.py ファイルのものであり、ローカル Azure Cosmos DB Emulator の接続文字列を使用しています。 パスワードを次のように分割して、スラッシュに対応する必要があります。そうしないと、スラッシュを解析できません。
 
 * MongoDB クライアントを初期化し、データベースを取得して認証します。
 
@@ -142,10 +155,7 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f4323c4e68c639af9a5959af512c1cdd07cdf0c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid のカスタム トピックに投稿する
 
@@ -73,7 +73,7 @@ PowerShell でカスタム トピックのキーを取得するには、次の�
 ]
 ```
 
-これらのプロパティについては、「[Azure Event Grid イベント スキーマ](event-schema.md)」をご覧ください。
+これらのプロパティについては、「[Azure Event Grid イベント スキーマ](event-schema.md)」をご覧ください。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 64 KB に制限されます。
 
 たとえば、次に示すのは有効なイベント データ スキーマです。
 
@@ -98,9 +98,10 @@ PowerShell でカスタム トピックのキーを取得するには、次の�
 |結果  |Response  |
 |---------|---------|
 |成功  | 200 OK  |
-|エンドポイントが正しくない | 404 見つかりません |
-|無効なアクセス キー | 401 権限がありません |
 |イベント データの形式が正しくない | 400 Bad Request |
+|無効なアクセス キー | 401 権限がありません |
+|エンドポイントが正しくない | 404 見つかりません |
+|配列またはイベントが、サイズ制限を超えています | 413 ペイロードが大きすぎます |
 
 エラーの場合、メッセージ本文は次の形式になります。
 
