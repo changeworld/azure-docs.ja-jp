@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs"
-description: "API Management で Azure Active Directory を使用してユーザーを承認する方法について説明します。"
+title: Azure Active Directory を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs
+description: API Management で Azure Active Directory を使用してユーザーを承認する方法について説明します。
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d89257cba70fb82d56fb1beef8a8efe66a8af02d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/09/2018
 11. [Azure ポータル](https://portal.azure.com)にアクセスします。
 12. elect ![矢印](./media/api-management-howto-aad/arrow.png)が必要です。
 13. 「**active**」と入力します。 **[Azure Active Directory]** ウィンドウが表示されます。
-14. **[Azure Active Directory]**を選択します。
+14. **[Azure Active Directory]** を選択します。
 15. **[管理]** の **[アプリの登録]** を選択します。
 16. **[新しいアプリケーションの登録]** を選択します。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 02/09/2018
     **[作成]** ウィンドウが右側に表示されます。 ここに Azure AD アプリの関連情報を入力します。
 17. アプリケーションの名前を入力します。
 18. アプリケーション タイプとして **[Web アプリ/API]** を選択します。
-19. サインイン URL には、開発者ポータルのサインイン URL を入力します。 この例では、https://apimwithaad.portal.azure-api.net/signin がサインイン URL です。
+19. サインイン URL には、開発者ポータルのサインイン URL を入力します。 この例では、サインイン URL は https://apimwithaad.portal.azure-api.net/signin です。
 20. **[作成]** を選択して、アプリケーションを作成します。
 21. アプリを検索するには、**[アプリの登録]** を選択して名前で検索します。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 02/09/2018
 
     ![[プロパティ] ウィンドウを開く](./media/api-management-howto-aad/api-management-with-aad004.png)
 
-    このアプリケーションで複数の Azure AD インスタンスを使用する場合は、**[マルチテナント]** に対して **[はい]** を選択します。 既定値は **[いいえ]**です。
+    このアプリケーションで複数の Azure AD インスタンスを使用する場合は、**[マルチテナント]** に対して **[はい]** を選択します。 既定値は **[いいえ]** です。
 24. **[必要なアクセス許可]** を選択して、アプリケーションのアクセス許可を設定します。
 25. アプリケーションを選択し、**[ディレクトリ データの読み取り]** と **[サインインとユーザー プロファイルの読み取り]** のチェック ボックスをオンにします。
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 02/09/2018
 
     **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `https://<URL of your developer portal>/aadadminconsent` (たとえば、https://contoso.portal.azure-api.net/aadadminconsent) に移動します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `https://<URL of your developer portal>/aadadminconsent` に移動します (例: https://contoso.portal.azure-api.net/aadadminconsent)。
     
     b. アクセスを許可する Azure AD テナントのドメイン名を入力します。
     

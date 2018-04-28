@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c82380c20c9ec631d9fea338404a25f167277701
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -52,6 +52,14 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
    sudo zypper update
    </code></pre>
 
+1. パッケージの削除
+
+   targetcli および SLES 12 SP3 に関する既知の問題を回避するには、次のパッケージをアンインストールします。 見つからないパッケージに関するエラーは無視できます
+   
+   <pre><code>
+   sudo zypper remove lio-utils python-rtslib python-configshell targetcli
+   </code></pre>
+   
 1. iSCSI ターゲット パッケージをインストールします
 
    <pre><code>
@@ -61,9 +69,7 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
 1. iSCSI ターゲット サービスを有効にします
 
    <pre><code>   
-   sudo systemctl enable target
    sudo systemctl enable targetcli
-   sudo systemctl start target
    sudo systemctl start targetcli
    </code></pre>
 
@@ -99,7 +105,6 @@ sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/acls/ create i
 
 # save the targetcli changes
 sudo targetcli saveconfig
-sudo systemctl restart target
 </code></pre>
 
 ### <a name="set-up-sbd-device"></a>SBD デバイスをセットアップする
@@ -396,7 +401,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell#create-a-custom-role) または [Azure CLI](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli#create-a-custom-role) を使って作成してください
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role) を使って作成してください
 
 入力ファイルには次の内容を使用します。 実際のサブスクリプションに合わせて内容を調整する必要があります。つまり、c276fc76-9cd4-44c9-99a7-4fd71546436e and e91d47c4-76f3-4271-a796-21b4ecfe3624 は、ご利用のサブスクリプションの ID に置き換えます。 ご利用のサブスクリプションが 1 つしかない場合は、AssignableScopes の 2 つ目のエントリは削除してください。
 

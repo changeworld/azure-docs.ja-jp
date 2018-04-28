@@ -1,24 +1,26 @@
 ---
 title: Azure SQL Data Warehouse の最新世代へのアップグレード | Microsoft Docs
-description: Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードする手順について説明します。
+description: Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
-ms.services: sql-data-warehouse
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/02/2018
+ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ea45398b0bf7fca43c75797313b7e683972b1ab
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 673386ad236f596aa4c64fe2e8c885fb86afe170
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
+Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
 
-Azure Portal の [計算用に最適化] パフォーマンス レベルにシームレスにアップグレードできるようになりました。 [エラスティック用に最適化] データ ウェアハウスがある場合は、最新世代の Azure ハードウェアと拡張ストレージ アーキテクチャへのアップグレードをお勧めします。 より高速なパフォーマンス、高いスケーラビリティ、無制限の列指向のストレージを利用することができます。 
+## <a name="why-upgrade"></a>アップグレードする理由
+Azure Portal の [計算用に最適化] パフォーマンス レベルにシームレスにアップグレードできるようになりました。 弾力性のための最適化データ ウェアハウスをお持ちの場合は、アップグレードすることをお勧めします。 アップグレードすると、Azure ハードウェアの最新世代と拡張ストレージ アーキテクチャを使用することができます。 より高速なパフォーマンス、高いスケーラビリティ、および無制限のカラム型ストレージを利用できます。 
 
 ## <a name="applies-to"></a>適用対象
 このアップグレードは、[エラスティック用に最適化] パフォーマンス レベルのデータ ウェアハウスに適用されています。
@@ -28,12 +30,6 @@ Azure Portal の [計算用に最適化] パフォーマンス レベルにシ�
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="before-you-begin"></a>開始する前に
-
-> [!NOTE]
-> 3/30 の時点で、アップグレードを開始する前に[サーバー レベルの監査](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing#subheading-8)がオフになっている必要があります。
-> 
->
-
 > [!NOTE]
 > 既存の [エラスティック用に最適化] データ ウェアハウスが、[計算用に最適化] が使用可能なリージョンにない場合、サポートされるリージョンへの PowerShell を通じて [[計算用に最適化] に geo リストア](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)できます。
 > 
@@ -70,9 +66,9 @@ Azure Portal の [計算用に最適化] パフォーマンス レベルにシ�
    
    アップグレード プロセスの最初の手順では、すべてのセッションが強制終了されるスケール操作 ("アップグレード中 - オフライン") が実行され、接続が切断されます。 
    
-   アップグレード プロセスの 2 番目の手順は、データの移行 ("アップグレード中 - オンライン") です。 データの移行は、少量のオンライン バックグラウンド プロセスです。このプロセスは、列指向のデータを以前の Gen1 ストレージ アーキテクチャから新しい Gen2 ストレージ アーキテクチャにゆっくりと移行して、Gen2 ローカル SSD キャッシュを活用します。 この期間中、データ ウェアハウスはクエリと読み込みを行うためにオンラインになります。 移行されたかどうかに関係なく、すべてのデータをクエリに使用できます。 データの移行速度は、データ サイズ、パフォーマンス レベル、列ストア セグメントの数に応じて変化します。 
+   アップグレード プロセスの 2 番目の手順は、データの移行 ("アップグレード中 - オンライン") です。 データの移行は、少量のオンライン バックグラウンド プロセスです。このプロセスは、列指向のデータを以前のストレージ アーキテクチャから、ローカル SSD キャッシュを活用して、新しいストレージ アーキテクチャにゆっくりと移行します。 この期間中、データ ウェアハウスはクエリと読み込みを行うためにオンラインになります。 移行されたかどうかに関係なく、すべてのデータをクエリに使用できます。 データの移行速度は、データ サイズ、パフォーマンス レベル、列ストア セグメントの数に応じて変化します。 
 
-5. **オプションの推奨事項:** データ移行のバック グラウンド プロセスの時間を短縮するために、大規模な SLO とリソース クラスのすべての列ストア テーブルに対して [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) を実行して、データ移動を即時に強制実行することをお勧めします。 この操作は、少量のバックグラウンド プロセスとは対照的にオフラインですが、データ移行時間は大幅に短縮されるので、高品質の行グループで完了した後に Gen2 ストレージ アーキテクチャを最大限に活用できます。 
+5. **オプションの推奨事項:** データ移行のバック グラウンド プロセスの時間を短縮するために、大規模な SLO とリソース クラスのすべての列ストア テーブルに対して [Alter Index rebuild](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) を実行して、データ移動を即時に強制実行することをお勧めします。 この操作は、少量のバックグラウンド プロセスとは対照的にオフラインですが、データ移行時間は大幅に短縮されるので、高品質の行グループで完了した後に新しい拡張ストレージ アーキテクチャを最大限に活用できます。 
 
 この次のクエリでは、データの移行プロセスを短縮するために必要な Alter Index Rebuild コマンドが生成されます。
 

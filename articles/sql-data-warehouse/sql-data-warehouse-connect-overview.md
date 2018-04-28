@@ -1,31 +1,26 @@
 ---
-title: "Azure SQL Data Warehouse への接続 | Microsoft Docs"
-description: "Azure SQL Data Warehouse に接続するためのサーバー名と接続文字列を検索する方法"
+title: Azure SQL Data Warehouse への接続 | Microsoft Docs
+description: Azure SQL Data Warehouse に接続します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 12/14/2017
-ms.author: anvang;barbkess;kevin
-ms.openlocfilehash: 804d91d309fcce42f0ac50ac98dbad9c5648b4eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: b2aff8379667191017830bf441ee101e773d2dfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への接続
-この記事は、初めて SQL Data Warehouse に接続する際に役立つガイドとして書かれています。
+Azure SQL Data Warehouse に接続します。
 
 ## <a name="find-your-server-name"></a>サーバー名を検索する
-SQL Data Warehouse に接続するには、まず、サーバー名の検索方法を知る必要があります。  たとえば、次の例の場合、サーバー名は samplesvr.database.windows.net です。 完全修飾サーバー名を検索するには、次の手順に従います。
+次の例の場合、サーバー名は samplesvr.database.windows.net です。 完全修飾サーバー名を検索するには、次の手順に従います。
 
 1. [Azure Portal][Azure portal] にアクセスします。
 2. **[SQL Data Warehouse]** をクリックします。
@@ -35,7 +30,7 @@ SQL Data Warehouse に接続するには、まず、サーバー名の検索方�
     ![Full server name][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>サポートされるドライバーと接続文字列
-Azure SQL Data Warehouse では、[ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP]、[JDBC][JDBC] がサポートされています。 最新のバージョンとドキュメントを確認するには、左記のドライバーのいずれかをクリックしてください。 使用しているドライバーの接続文字列を Azure Portal から自動的に生成するには、上の例にある **[データベース接続文字列の表示]** をクリックします。  以下に、各ドライバーの接続文字列の例を示します。
+Azure SQL Data Warehouse では、[ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP]、[JDBC][JDBC] がサポートされています。 最新のバージョンとドキュメントを確認するには、これらドライバーのいずれかをクリックしてください。 使用しているドライバーの接続文字列を Azure Portal から自動的に生成するには、上の例にある **[データベース接続文字列の表示]** をクリックします。 以下に、各ドライバーの接続文字列の例を示します。
 
 > [!NOTE]
 > 断続的に切断された場合でも接続を保持できるように、接続のタイムアウトを 300 秒に設定することを検討してください。

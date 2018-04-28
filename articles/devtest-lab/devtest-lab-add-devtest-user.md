@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: f7f7562f0af4753bc08018227a967f9ca3736021
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 67da209718c3f3436be6ceaae68f61f416da6832
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -66,14 +66,14 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。
-4. ラボのブレードで、 **[構成]**を選択します。 
+4. ラボのブレードで、 **[構成]** を選択します。 
 5. ラボの **[構成]** ブレードで、**[ユーザー]** を選択します。
 6. **[ユーザー]** ブレードで、**[+ 追加]** を選択します。
    
     ![ユーザーの追加](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
 7. **[ロールの選択]** ブレードで、任意のロールを選択します。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
 8. **[ユーザーの追加]** ブレードで、指定したロールに追加するユーザーの電子メール アドレスまたは名前を入力します。 ユーザーが見つからない場合は、問題を示すエラー メッセージが表示されます。 ユーザーが見つかった場合は、ユーザーが表示され、選択されます。 
-9. **[選択]**を選択します。
+9. **[選択]** を選択します。
 10. **[OK]** を選択して、**[Add access (アクセスの追加)]** ブレードを閉じます。
 11. **[ユーザー]** ブレードに戻ると、このユーザーが追加されています。  
 
@@ -88,7 +88,7 @@ Azure Portal にユーザーを追加するだけでなく、PowerShell スク�
 
     # Add an external user in DevTest Labs user role to a lab
     # Ensure that guest users can be added to the Azure Active directory:
-    # https://azure.microsoft.com/en-us/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
+    # https://azure.microsoft.com/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
 
     # Values to change
     $subscriptionId = "<Enter Azure subscription ID here>"
@@ -129,7 +129,7 @@ Azure サブスクリプションに所有者を追加するには、次の手�
 6. **[Select a role (役割の選択)]** ブレードで、**[所有者]** を選択します。
 7. **[ユーザーの追加]** ブレードで、所有者として追加するユーザーの電子メール アドレスまたは名前を入力します。 ユーザーが見つからない場合は、問題を示すエラー メッセージが表示されます。 ユーザーが見つかった場合は、 **[ユーザー]** ボックスの下に表示されます。
 8. 見つかったユーザー名を選択します。
-9. **[選択]**を選択します。
+9. **[選択]** を選択します。
 10. **[OK]** を選択して、**[Add access (アクセスの追加)]** ブレードを閉じます。
 11. **[ユーザー]** ブレードに戻ると、このユーザーが所有者として追加されています。 これで、このユーザーはこのサブスクリプションで作成されたすべてのラボの所有者となり、所有者タスクを実行できるようになります。 
 

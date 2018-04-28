@@ -1,13 +1,13 @@
 ---
-title: "Azure Active Directory での B2B コラボレーションと B2C の比較 | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションと Azure AD B2C の違いは何でしょうか。"
+title: Azure Active Directory での B2B コラボレーションと B2C の比較 | Microsoft Docs
+description: Azure Active Directory B2B コラボレーションと Azure AD B2C の違いは何でしょうか。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: ae3ebdceb65c04b98965f81f52997da457bd7845
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 32d7d135e67a05b59279e647c1fb2aa8c9686cef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
 
@@ -36,7 +36,7 @@ B2B コラボレーション機能 |     Azure AD B2C スタンドアロン製�
 パートナーのライフサイクル: ホスト/招待元の組織によって管理されます。  | お客様のライフサイクル: セルフサービスまたはアプリケーションによって管理されます。
 セキュリティ ポリシーとコンプライアンス: ホスト/招待元の組織によって管理されます。  | セキュリティ ポリシーとコンプライアンス: アプリケーションによって管理されます。
 ブランド化: ホスト/招待元の組織のブランドが使用されます。  |    ブランド化: アプリケーションによって管理されます。 一般的には製品によりブランド化される傾向があり、組織は目立たなくなります。
-詳細情報: [ブログの投稿](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | 詳細情報: [製品ページ](https://azure.microsoft.com/en-us/services/active-directory-b2c/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/)
+詳細情報: [ブログの投稿](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | 詳細情報: [製品ページ](https://azure.microsoft.com/services/active-directory-b2c/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
 ### <a name="next-steps"></a>次の手順

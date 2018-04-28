@@ -4,16 +4,16 @@ description: Azure Automation に含まれる Update Management、Change Trackin
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 8713447386e116b3f1ecb2754d46cc8d88d00b39
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure Virtual Machine から Update Management、Change Tracking、および Inventory ソリューションの使用準備を行う
 

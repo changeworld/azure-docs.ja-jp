@@ -1,19 +1,19 @@
 ---
-title: "Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する |Microsoft Docs"
-description: "Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する方法について説明します。"
+title: Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する |Microsoft Docs
+description: Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7580db2a2fd41c124443b26257f1b946adcc068c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6c86a98dd819b91608be04f1466dc1e6764ee4b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -27,8 +27,8 @@ ms.lasthandoff: 02/28/2018
 
 これは、シリーズの 3 番目のチュートリアルです。 このチュートリアルは、前のチュートリアルで以下のタスクが既に完了していることを前提としています。
 
-* [Azure を準備する](tutorial-prepare-azure.md)
-* [オンプレミスの VMware を準備する](vmware-azure-tutorial-prepare-on-premises.md)
+* [Azure を準備する](tutorial-prepare-azure.md)。 このチュートリアルでは、Azure ストレージ アカウントとネットワークを設定する方法、Azure アカウントに適切なアクセス許可があることを確認する方法、および Recovery Services コンテナーを作成する方法について説明します。
+* [オンプレミスの VMware を準備する](vmware-azure-tutorial-prepare-on-premises.md)。 このチュートリアルでは、アカウントを準備して、Site Recovery が VMware サーバーにアクセスして VM を検出すると共に、VM のレプリケーションを有効にしたときに Site Recovery Mobility サービス コンポーネントのプッシュ インストールをオプションで実行できるようにします。 さらに、VMware サーバーと VM が Site Recovery の要件を満たしていることを確認します。
 
 開始する前に、ディザスター リカバリー シナリオの[アーキテクチャを確認](vmware-azure-architecture.md)しておくことをお勧めします。
 
@@ -43,8 +43,6 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
 
-> [!TIP]
-> VMware 仮想マシンを保護するための構成サーバーをデプロイすることに関して推奨される方法は、この記事でも推奨している OVF ベースのデプロイメント モデルを使用することです。 社内的な制限から OVF テンプレートをデプロイすることが難しい場合は、[UnifiedSetup.exe を使用して構成サーバーをインストール](physical-manage-configuration-server.md)してください。
 
 ソース環境をセットアップするには、オンプレミスの Site Recovery コンポーネントをホストするためのオンプレミスの高可用性マシンが 1 つ必要です。 コンポーネントには、構成サーバー、プロセス サーバー、マスター ターゲット サーバーが含まれます。
 
@@ -54,10 +52,14 @@ ms.lasthandoff: 02/28/2018
 
 構成サーバーを高可用性 VMware VM としてセットアップするには、用意されている Open Virtualization Format (OVF) テンプレートをダウンロードし、そのテンプレートを VMware にインポートして VM を作成します。 構成サーバーをセットアップしたら、それをコンテナーに登録します。 登録すると、Site Recovery によってオンプレミスの VMware VM が検出されます。
 
+> [!TIP]
+> このチュートリアルでは、OVF テンプレートを使用して、構成サーバー VMware VM を作成します。 この操作を行うことができない場合は、代わりに[手動セットアップ](physical-manage-configuration-server.md)を実行できます。 
+
+
 ### <a name="download-the-vm-template"></a>VM テンプレートをダウンロードする
 
 1. コンテナーで、**[インフラストラクチャの準備]** > **[ソース]** の順に移動します。
-2. **[ソースの準備]** で **[+構成サーバー]** を選択します。
+2. **[ソースの準備]** で **[+ 構成サーバー]** を選びます。
 3. **[サーバーの追加]** で、**[サーバーの種類]** に **[VMware の構成サーバー]** が表示されていることを確認します。
 4. 構成サーバー用の OVF テンプレートをダウンロードします。
 
@@ -103,7 +105,7 @@ ms.lasthandoff: 02/28/2018
 7. ツールがいくつかの構成タスクを実行した後、再起動されます。
 8. 再度マシンにサインインします。 構成サーバーの管理ウィザードが自動的に起動されます。
 
-### <a name="configure-settings-and-connect-to-vmware"></a>設定を構成し、VMware に接続する
+### <a name="configure-settings-and-add-the-vmware-server"></a>設定を構成し、VMware サーバーを追加する
 
 1. 構成サーバーの管理ウィザードで **[接続の設定]** を選び、レプリケーション トラフィックを受信する NIC を選びます。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。
 2. **[Recovery Services コンテナーを選択する]** で、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。

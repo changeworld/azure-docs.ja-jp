@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: fd30a8eb5149647a24ff04e099bf5c3e187459ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure Service Bus と Azure Event Grid の統合の例
 
@@ -62,7 +62,7 @@ Service Bus Premium 名前空間を作成し、2 つのサブスクリプショ�
 
 完全なシナリオを実行する前に、少なくとも小さなテスト関数をセットアップします。これを使用して、送信されているイベントのデバッグと観察を行えます。
 
-1. Azure Portal で、新しい Azure Functions アプリケーションを作成します。 Azure Functions の基礎については、[Azure Functions のドキュメント](https://docs.microsoft.com/en-us/azure/azure-functions/)を参照してください。
+1. Azure Portal で、新しい Azure Functions アプリケーションを作成します。 Azure Functions の基礎については、[Azure Functions のドキュメント](https://docs.microsoft.com/azure/azure-functions/)を参照してください。
 
 2. 新たに作成した関数の正符号 (+) を選択して、HTTP トリガー関数を追加します。
 
@@ -139,7 +139,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
 3. ここに示したようにフォームに必要事項を入力します。**[サフィックス フィルター]** ボックスに、関連するフィルターを忘れずに入力してください。
 
-4. **[作成]**を選択します。
+4. **[作成]** を選択します。
 
 5. 「前提条件」セクションで説明したとおりメッセージを Service Bus トピックに送信し、Azure Functions の監視機能を使用して、イベントが送信されていることを確認します。
 

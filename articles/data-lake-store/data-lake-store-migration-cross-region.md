@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store のリージョン間の移行 | Microsoft Docs"
-description: "Azure Data Lake Store のリージョン間の移行について学習します。"
+title: Azure Data Lake Store のリージョン間の移行 | Microsoft Docs
+description: Azure Data Lake Store のリージョン間の移行について学習します。
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: swums
 manager: amitkul
 editor: swums
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>リージョン間で Data Lake Store を移行する
 
@@ -45,11 +45,11 @@ Azure Data Lake Store が新しいリージョンで利用できるようにな�
 
 * **ツール**。 Data Lake Store のファイルをコピーする場合は、[Azure Data Factory のコピー アクティビティ](../data-factory/connector-azure-data-lake-store.md)を使用することをお勧めします。 Data Factory では、パフォーマンスと信頼性に優れたデータ移動がサポートされています。 Data Factory によってコピーされるのは、フォルダー階層とファイルの内容のみであることに注意してください。 古いアカウントで使用しているアクセス制御リスト (ACL) はすべて、新しいアカウントに手動で適用する必要があります。 最良のシナリオのパフォーマンス目標も含めた詳細については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](../data-factory/copy-activity-performance.md)」をご覧ください。 より迅速にデータをコピーしたい場合は、追加のクラウド データ移動単位の使用が必要になることがあります。 他の一部のツール (AdlCopy など) では、リージョン間のデータのコピーがサポートされていません。  
 
-* **帯域幅の料金**。 Azure リージョンからデータが転送されるため、[帯域幅の料金](https://azure.microsoft.com/en-us/pricing/details/bandwidth/)が適用されます。
+* **帯域幅の料金**。 Azure リージョンからデータが転送されるため、[帯域幅の料金](https://azure.microsoft.com/pricing/details/bandwidth/)が適用されます。
 
 * **データの ACL**。 ファイルとフォルダーに ACL を適用して、新しいリージョンのデータをセキュリティで保護します。 詳細については、「[Data Lake Store に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md)」をご覧ください。 移行を ACL の更新と調整に使用することをお勧めします。 現在の設定と同様の設定を使用することもできます。 Azure Portal、[PowerShell コマンドレット](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission)、または SDK を使用して、ファイルに適用されている ACL を表示できます。  
 
 * **分析サービスの場所**。 最良のパフォーマンスを得るには、Azure Data Lake Analytics や Azure HDInsight などの分析サービスをデータと同じリージョンに配置する必要があります。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)

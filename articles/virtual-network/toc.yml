@@ -5,6 +5,7 @@
     - name: Virtual Network について
       href: virtual-networks-overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: 仮想ネットワークの作成 - ポータル
       href: quick-create-portal.md

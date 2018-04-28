@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite 構成済みソリューションの概要 | Microsoft Docs"
-description: "Azure IoT Suite 構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
-services: 
+title: Azure IoT Suite 構成済みソリューションの概要 | Microsoft Docs
+description: Azure IoT Suite 構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: b29c5fe9543c5fe6da9ff52da6549fdcacff868f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b7b9f61a8fb46d5d591b317049cfd60b723a7e77
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT Suite とは
 
@@ -60,9 +60,9 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 
 | 解決策 | データの取り込み | デバイス ID | デバイス管理 | エッジ処理 | コマンドと制御 | ルールとアクション | 予測分析 |
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
-| [リモート監視](iot-suite-remote-monitoring-explore.md)  |[はい] |[はい] |[はい] |-   |[はい] |[はい] |-   |
-| [予測的なメンテナンス](iot-suite-predictive-overview.md)   |[はい] |[はい] |-   |-   |[はい] |[はい] |[はい] |
-| [コネクテッド ファクトリ](iot-suite-connected-factory-overview.md) |[はい] |- |- |[はい] |[はい] |[はい] |-   |
+| [リモート監視](iot-suite-remote-monitoring-explore.md)  |[はい] |はい |はい |-   |はい |[はい] |-   |
+| [予測的なメンテナンス](iot-suite-predictive-overview.md)   |[はい] |はい |-   |-   |はい |はい |[はい] |
+| [コネクテッド ファクトリ](iot-suite-connected-factory-overview.md) |[はい] |- |- |はい |はい |[はい] |-   |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
 * "*デバイス ID*": 一意のデバイス ID を管理し、ソリューションへのデバイス アクセスを制御します。
@@ -80,14 +80,14 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 
 |                      | リモート監視  | 予測的なメンテナンス | コネクテッド ファクトリ |
 | -------------------- | ------------------ | ---------------------- | ----------------- |
-| IoT Hub              | [はい]                | [はい]                    | [はい]               |
+| IoT Hub              | [はい]                | はい                    | [はい]               |
 | Event Hubs           |                    | [はい]                    |                   |
 | Time Series Insights |                    |                        | [はい]               |
 | コンテナー サービス   | [はい]                |                        |                   |
 | Stream Analytics     |                    | [はい]                    |                   |
-| Web Apps             | [はい]                | [はい]                    | [はい]               |
+| Web Apps             | [はい]                | はい                    | [はい]               |
 | Cosmos DB            | [はい]                | [はい]                    |                    |
-| Azure Storage (Azure Storage)         |                    | [はい]                    | [はい]               |
+| Azure Storage         |                    | [はい]                    | [はい]               |
 
 > [!NOTE]
 > リモート監視構成済みソリューションにデプロイされたリソースの詳細については、こちらの GitHub [記事](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments)を参照してください。
@@ -97,7 +97,7 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 * [Azure Time Series Insights](../time-series-insights/index.yml)。 構成済みソリューションは、このサービスを使用して、デバイスの利用統計情報を分析および表示します。
 * [Azure Container Service](../container-service/index.yml)。 このサービスは、構成済みソリューションにおいてマイクロサービスをホストおよび管理します。
 * データ ストレージ用の [Azure Cosmos DB](../cosmos-db/index.yml) および [Azure Storage](../storage/index.yml)。
-* [Azure Stream Analytics](../stream-analytics/index.md)。 予測メンテナンス構成済みソリューションは、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。 また、この構成済みソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。
+* [Azure Stream Analytics](../stream-analytics/index.yml)。 予測メンテナンス構成済みソリューションは、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。 また、この構成済みソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。
 * [Azure Web Apps](../app-service/index.yml)。構成済みソリューションにおいてカスタム アプリケーション コードをホストします。
 
 一般的な IoT ソリューションのアーキテクチャの概要については、[Microsoft Azure とモノのインターネット (IoT)](iot-suite-what-is-azure-iot.md) に関するページをご覧ください。

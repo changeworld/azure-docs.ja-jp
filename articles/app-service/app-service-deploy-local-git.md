@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 4cbe26055bdbf906223a327ab8cf94bebe9e7998
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 | Node.js | _server.js_、_app.js_、または _package.json_ とスタート スクリプト |
 | Python (Windows のみ) | _\*.py_、_requirements.txt_、または _runtime.txt_ |
 | HTML | _default.htm_、_default.html_、_default.asp_、_index.htm_、_index.html_、または _iisstart.htm_ |
-| WebJobs | _App\_Data/jobs/continuous_ の _\<job_name>/run.\<extension>_ (継続的 WebJobs) または _App\_Data/jobs/triggered_ (トリガーされた WebJobs)。 詳細については、[Kudu WebJobs のドキュメント](https://github.com/projectkudu/kudu/wiki/WebJobs)をご覧ください |
+| Web ジョブ | _App\_Data/jobs/continuous_ の _\<job_name>/run.\<extension>_ (継続的 WebJobs) または _App\_Data/jobs/triggered_ (トリガーされた WebJobs)。 詳細については、[Kudu WebJobs のドキュメント](https://github.com/projectkudu/kudu/wiki/WebJobs)をご覧ください |
 | Functions | [Azure Functions の継続的なデプロイ](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements)に関するページをご覧ください。 |
 
 デプロイをカスタマイズするには、_.deployment_ ファイルをリポジトリのルートに配置します。 詳細については、「[Custom Deployment (カスタム デプロイ)](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)」および「[Custom deployment script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
@@ -97,7 +97,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-## <a name="deploy-your-project"></a>プロジェクトをデプロイする
+## <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
 "_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[アプリの Git を有効にする](#enable-git-for-you-app)」で取得した Git リモートの URL に置き換えます。
 
@@ -189,3 +189,5 @@ git config --global http.postBuffer 524288000
 
 * [Project Kudu に関するドキュメント](https://github.com/projectkudu/kudu/wiki)
 * [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)
+* [サンプル: Web アプリを作成してローカル Git リポジトリからコードをデプロイする (Azure CLI)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+* [サンプル: Web アプリを作成してローカル Git リポジトリからコードをデプロイする (PowerShell)](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

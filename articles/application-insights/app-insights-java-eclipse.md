@@ -1,6 +1,6 @@
 ---
-title: "Eclipse で Java 用に Azure Application Insights を使う | Microsoft docs"
-description: "Eclipse プラグインを使用して、Java Web サイトのパフォーマンスと利用状況を Application Insights で監視できるようにします"
+title: Eclipse で Java 用に Azure Application Insights を使う | Microsoft docs
+description: Eclipse プラグインを使用して、Java Web サイトのパフォーマンスと利用状況を Application Insights で監視できるようにします
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Eclipse で Java 用に Application Insights を使う
 Application Insights SDK は、利用状況とパフォーマンスを分析できるようにするために、Java Web アプリケーションからテレメトリを送信します。 Application Insights 用 Eclipse プラグインは、プロジェクトに SDK を自動的にインストールします。これにより、すぐに使用可能なテレメトリに加えて、カスタムのテレメトリの作成に使用できる API が提供されます。   
@@ -28,7 +28,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 
 必要なものは次のとおりです。
 
-* Oracle JRE 1.6 以降。
+* JRE 1.7 または 1.8
 * [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)Indigo 以降。
 * Windows 7 以降または Windows Server 2008 以降。
@@ -39,7 +39,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 1. Eclipse で、[Help]、[Install New Software] の順にクリックします。
 
     ![[Help]、[Install New Software]](./media/app-insights-java-eclipse/0-plugin.png)
-2. SDK は、http://dl.microsoft.com/eclipse の [Azure Toolkit] の下にあります。
+2. SDK は、http://dl.microsoft.com/eclipse の [Azure Toolkit] にあります。
 3. **[Contact all update sites]**
 
     ![Application Insights SDK の場合、[Contact all update sites] チェック ボックスをオフにします](./media/app-insights-java-eclipse/1-plugin.png)
@@ -215,7 +215,7 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
 [カスタム テレメトリの詳細についてはこちら][track]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 #### <a name="detect-and-diagnose-issues"></a>問題の検出と診断
 * [Web クライアントのテレメトリを追加][usage]して、Web クライアントからパフォーマンス テレメトリを取得します。
 * [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。

@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: dcfd37a40ce16a1574c21e3a6e9520cb2e773166
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 03e72c29bedf6a3125a5ae0272e93cdf58632bc6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
@@ -158,7 +158,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
     hdfs dfs -text /example/output/shortestpaths/*
     ```
 
-    出力は次のテキストのようになります。
+    次のテキストのような出力が表示されます。
 
         0    1.0
         4    5.0

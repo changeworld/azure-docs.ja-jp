@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 413485fc764000dadca1a2cccf9ee0de7e9046aa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -32,10 +32,10 @@ ms.lasthandoff: 04/16/2018
 |  | 項目名 | [説明] | 発行元 | [OS Type]\(OS の種類\) |
 | --- | --- | --- | --- | --- |
 |![SQL IaaS 拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ SQL IaaS 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>この拡張機能は、Windows Marketplace アイテムに任意の SQL Server をデプロイするためにダウンロードします (この拡張機能は必須です)。</b> | Microsoft | Windows |
-|![カスタム スクリプト拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ カスタム スクリプト拡張機能 ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| この更新プログラムは、<b>Windows でのカスタムのスクリプト拡張機能のインボックス バージョンにダウンロードします。</b> | Microsoft | Windows |
+|![カスタム スクリプト拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ カスタム スクリプト拡張機能 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| この更新プログラムは、<b>Windows でのカスタムのスクリプト拡張機能のインボックス バージョンにダウンロードします。</b> | Microsoft | Windows |
 |![PowerShell DSC 拡張機能](media/azure-stack-marketplace-azure-items/dsc.png) | [ PowerShell DSC 拡張機能 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>この更新プログラムは、PowerShell DSC 拡張機能のインボックス バージョンにダウンロードします。TLS v1.2 をサポートするために更新されます。</b> | Microsoft | Windows |
-| ![Microsoft マルウェア対策拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ Microsoft マルウェア対策拡張機能 ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Azure 向け Microsoft マルウェア対策は、アプリケーションおよびテナント環境のための単一エージェント ソリューションであり、ユーザーの介入なしにバック グラウンドで実行するように作られています。 | Microsoft | Windows |
-|![カスタム スクリプト拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ カスタム スクリプト拡張機能 ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>この更新プログラムは、Linux 用のカスタム スクリプト拡張機能のインボックス バージョンにダウンロードします。この拡張機能のバージョンは複数存在し、1.5.2.1 と 2.0.x の両方をダウンロードする必要があります。</b> | Microsoft | Linux |
+| ![Microsoft マルウェア対策拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ Microsoft マルウェア対策拡張機能 ](https://docs.microsoft.com/azure/security/azure-security-antimalware)| Azure 向け Microsoft マルウェア対策は、アプリケーションおよびテナント環境のための単一エージェント ソリューションであり、ユーザーの介入なしにバック グラウンドで実行するように作られています。 | Microsoft | Windows |
+|![カスタム スクリプト拡張機能](media/azure-stack-marketplace-azure-items/cse.png) | [ カスタム スクリプト拡張機能 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>この更新プログラムは、Linux 用のカスタム スクリプト拡張機能のインボックス バージョンにダウンロードします。この拡張機能のバージョンは複数存在し、1.5.2.1 と 2.0.x の両方をダウンロードする必要があります。</b> | Microsoft | Linux |
 | ![Docker 拡張機能](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | Linux 仮想マシン用の Docker 拡張機能。 | Microsoft | Linux |
 | ![Linux 用 VM Access](media/azure-stack-marketplace-azure-items/cse.png) | [Linux 用 VM Access](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>この更新プログラムを、Linux 用 VMAccess 拡張機能のインボックス バージョンにダウンロードします。この更新プログラムは、Debian Linux VM を使う予定の場合に重要です。</b> | Microsoft | Linux |
 | ![Linux 用の Acronis Backup 拡張機能](media/azure-stack-marketplace-azure-items/acronis.png) | [ Linux 用の Acronis Backup 拡張機能 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure 用の Acronis Backup 拡張機能は、データ保護製品のAcronis Backup ファミリーの一部です。 | Acronis International GmbH。 | Linux |

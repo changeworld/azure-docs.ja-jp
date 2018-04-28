@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: fbdf4023bc70f1ad05dd52ac1eabe95b12be9be2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ef7ca59647a1f8c15d85c809609060a5945bedde
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/19/2018
 
 ### <a name="powershell"></a>PowerShell
 
-New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 初期登録に使用したアカウントを使用して Azure (`Connect-AzureRmAccount`) にログインします。 テナントの追加方法の例を次に示します。
+New-AzureRmResource コマンドレットを使用して、登録リソースを更新します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にログインします。 テナントの追加方法の例を次に示します。
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -78,7 +78,7 @@ New-AzureRmResource コマンドレットを使用して、登録リソースを
 
 ### <a name="powershell"></a>PowerShell
 
-登録されているすべてのテナントを一覧表示するには、Get-AzureRmResovurce コマンドレットを使用します。 初期登録に使用したアカウントを使用して Azure (`Connect-AzureRmAccount`) にログインします。 テナントの追加方法の例を次に示します。
+登録されているすべてのテナントを一覧表示するには、Get-AzureRmResovurce コマンドレットを使用します。 初期登録に使用したアカウントを使用して Azure (`Add-AzureRmAccount`) にログインします。 テナントの追加方法の例を次に示します。
 
 ```powershell
   Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01

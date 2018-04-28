@@ -8,11 +8,11 @@ ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: b1731a16dd2389f19d25a2594fe25a97b6ddd9f1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 0e9e3074e2cdd9ec3adc814779811d150cd11010
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してシングルページ アプリから ASP.NET Core Web API へのアクセスを許可する
 
@@ -138,7 +138,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 #### <a name="enable-cors"></a>CORS を有効にする
 
-シングルページ アプリに ASP.NET Core Web API の呼び出しを許可するには、[CORS](https://docs.microsoft.com/en-us/aspnet/core/security/cors) を有効にする必要があります。
+シングルページ アプリに ASP.NET Core Web API の呼び出しを許可するには、[CORS](https://docs.microsoft.com/aspnet/core/security/cors) を有効にする必要があります。
 
 1. **Startup.cs** の `ConfigureServices()` メソッドに CORS を追加します。
 

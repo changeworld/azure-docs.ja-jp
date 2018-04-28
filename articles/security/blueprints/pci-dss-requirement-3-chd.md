@@ -1,6 +1,6 @@
 ---
-title: "Azure Payment Processing Blueprint - CHD 要件"
-description: "PCI DSS 要件 3"
+title: Azure Payment Processing Blueprint - CHD 要件
+description: PCI DSS 要件 3
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 356599cbe1e4e1948a5ec16d0d504835fa7dcd43
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境の CHD 要件
 ## <a name="pci-dss-requirement-3"></a>PCI DSS 要件 3
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/16/2017
 **保存されたカード所有者のデータを保護する**
 
 > [!NOTE]
-> これらの要件は、[Payment Card Industry (PCI) セキュリティ スタンダード協議会](https://www.pcisecuritystandards.org/pci_security/) によって、[PCI データ セキュリティ基準 (DSS) バージョン 3.2](https://www.pcisecuritystandards.org/document_library?category=pcidss&document=pci_dss) の一部として定義されています。 各要件のテスト手順およびガイダンスについては、PCI DSS をご覧ください。
+> これらの要件は、[PCI データ セキュリティ基準 (DSS) バージョン 3.2](https://www.pcisecuritystandards.org/document_library?category=pcidss&document=pci_dss)の一部として [Payment Card Industry (PCI) Security Standards Council](https://www.pcisecuritystandards.org/pci_security/) によって定義されています。 各要件のテスト手順およびガイダンスについては、PCI DSS をご覧ください。
 
 暗号化、切り捨て、マスク、ハッシュなどの保護方法は、カード所有者データの保護の重要なコンポーネントです。 侵入者が他のセキュリティ コントロールを回避し、暗号化されたデータにアクセスできても、正しい暗号化キーがなければ、そのデータを読み取り、使用することはできません。 保存されたデータを保護するための効果的な別の方法として考えられるのは、リスクを軽減する方法です。 たとえば、リスクを最小限にする方法として、カード所有者データが絶対に必要でないかぎり保存しない、完全な PAN が不要な場合はカード所有者データを切り捨てる、電子メールやインスタント メッセージングなどのエンド ユーザー メッセージング技術を使用して保護されていない PAN を送信しない、などがあります。
 「強力な暗号化」および他の PCI DSS 用語の定義については、「PCI DSS and PA-DSS Glossary of Terms, Abbreviations, and Acronyms」(PCI DSS と PA-DSS の用語、略語、および頭字語) を参照してください。
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は保存されたすべてのデータを暗号化し、トラフィックを隔離して DevOps 機能の特権昇格を防ぎます。<br /><br />App Service 環境はセキュリティで保護され、ロック ダウンされているため、必要な DevOps の変更やリリースを許可するメカニズム (Kudu を使用して Web アプリを監視する機能など) が必要です。<br /><br />仮想マシンは、次の構成を使用してジャンプボックス (要塞ホスト) として作成されます。<br /><br /><ul><li>[マルウェア対策拡張機能](/azure/security/azure-security-antimalware)</li><li>[OMS 監視拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[VM 診断拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[BitLocker で暗号化されたディスク](/azure/security/azure-security-disk-encryption)</li></ul>Azure Key Vault の使用により、Azure Government、PCI DSS、HIPAA 要件に準拠できます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は保存されたすべてのデータを暗号化し、トラフィックを隔離して DevOps 機能の特権昇格を防ぎます。<br /><br />App Service 環境はセキュリティで保護され、ロック ダウンされているため、必要な DevOps の変更やリリースを許可するメカニズム (Kudu を使用して Web アプリを監視する機能など) が必要です。<br /><br />仮想マシンは、次の構成を使用してジャンプボックス (要塞ホスト) として作成されます。<br /><br /><ul><li>[マルウェア対策拡張機能](/azure/security/azure-security-antimalware)</li><li>[Log Analytics 監視拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[VM 診断拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[BitLocker で暗号化されたディスク](/azure/security/azure-security-disk-encryption)</li></ul>Azure Key Vault の使用により、Azure Government、PCI DSS、HIPAA 要件に準拠できます。|
 
 
 

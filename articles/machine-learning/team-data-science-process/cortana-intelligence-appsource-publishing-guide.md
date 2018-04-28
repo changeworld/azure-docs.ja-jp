@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams
-ms.openlocfilehash: 1a5671eda967c1bba585d31b001bb465526709f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3817d58cd61fb349d7815984420d0deb1ae0edd9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence の AppSource 発行ガイド
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/28/2018
 AppSource では、パートナーが構築し、マイクロソフトが評価したビジネス ソリューション/アプリを、管理職意思決定者 (BDM) が 1 か所で検索してシームレスに試すことができます。 AppSource の機能については、[こちらのビデオ](https://youtu.be/hpq_Y9LuIB8)をご覧ください。 
 
 Microsoft パートナーとして AppSource に発行することで実際に利点が得られるのは次のようなケースです。
-- [Cortana Intelligence Suite](https://azure.microsoft.com/en-us/suites/cortana-intelligence-suite/?cdn=disable) を使用してインテリジェント ソリューション/アプリを構築している。
+- [Cortana Intelligence Suite](https://azure.microsoft.com/suites/cortana-intelligence-suite/?cdn=disable) を使用してインテリジェント ソリューション/アプリを構築している。
 - ソリューションやアプリがビジネスの具体的な問題に対処している。
 - 構築したモジュールや知的財産を、お客様が比較的簡単かつ予測可能な方法で再利用できる。
 

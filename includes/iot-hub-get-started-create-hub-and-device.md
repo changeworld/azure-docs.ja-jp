@@ -19,8 +19,8 @@ IoT Hub を作成したら、その IoT Hub にデバイスとアプリケーシ
 
 1. [Azure Portal](https://portal.azure.com/) で、IoT ハブを開きます。
 
-2. **デバイス エクスプローラー**をクリックします。
-3. デバイス エクスプローラー ウィンドウで **[追加]** をクリックして、デバイスを IoT Hub に追加します。 次に、次を実行します。
+2. **[IoT デバイス]** をクリックします。
+3. [IoT デバイス] ウィンドウで **[追加]** をクリックして、デバイスを IoT ハブに追加します。 次に、次を実行します。
 
    **[デバイス ID]**: 新しいデバイスの ID を入力します。 デバイス ID には大文字と小文字の区別があります。
 
@@ -30,12 +30,15 @@ IoT Hub を作成したら、その IoT Hub にデバイスとアプリケーシ
 
    **[Connect device to IoT Hub (デバイスを IoT Hub に接続する)]**: **[有効]** をクリックします。
 
-   ![IoT ハブの Device Explorer でデバイスを追加する](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![IoT ハブの [IoT デバイス] でデバイスを追加する](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. **[Save]** をクリックします。
-5. デバイスが作成された後、**デバイス エクスプローラー** ウィンドウでデバイスを開きます。
+5. デバイスが作成された後、**[IoT デバイス]** ウィンドウでデバイスを開きます。
+
+   ![IoT ハブの IoT デバイスの一覧](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
+
 6. 接続文字列の主キーをメモします。
 
-   ![デバイスの接続文字列を取得する](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![デバイスの接続文字列を取得する](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 04/18/2018
 * 無効な Windows ファイル名の BLOB を開こうとしたとき、またはダウンロードしようとしたときに、操作が失敗しました。 Storage Explorer によって BLOB 名が無効かどうかが検出され、エンコードするか、BLOB をスキップするかが尋ねられます。 また、Storage Explorer によって、ファイル名がエンコードされている可能性があるかどうかも検出され、アップロードの前にデコードするかどうかを尋ねられます。
 * BLOB アップロード中、ターゲット BLOB コンテナーのエディターが正しく更新されないことがありました。 この問題は修正されています。
 * 接続文字列と SAS URI の形式のいくつかについて、サポートが後退していました。 既知の問題はすべて解決されていますが、さらに問題が発生した場合は、フィードバックをお送りください。
-* 更新の通知が、0.9.0 の一部のユーザーに送信されませんでした。 この問題は修正されました。バグの影響を受けた方は、Storage Explorer の最新バージョンを[こちら](https://azure.microsoft.com/en-us/features/storage-explorer/)からダウンロードしてください。
+* 更新の通知が、0.9.0 の一部のユーザーに送信されませんでした。 この問題は修正されました。バグの影響を受けた方は、Storage Explorer の最新バージョンを[こちら](https://azure.microsoft.com/features/storage-explorer/)からダウンロードしてください。
 
 ### <a name="known-issues"></a>既知の問題
 * Storage Explorer では ADFS アカウントがサポートされません。
@@ -281,7 +281,7 @@ ms.lasthandoff: 04/18/2018
 * 無効な Windows ファイル名の BLOB を開こうとしたとき、またはダウンロードしようとしたときに、操作が失敗しました。 Storage Explorer によって BLOB 名が無効かどうかが検出され、エンコードするか、BLOB をスキップするかが尋ねられます。 また、Storage Explorer によって、ファイル名がエンコードされている可能性があるかどうかも検出され、アップロードの前にデコードするかどうかを尋ねられます。
 * BLOB アップロード中、ターゲット BLOB コンテナーのエディターが正しく更新されないことがありました。 この問題は修正されています。
 * 接続文字列と SAS URI の形式のいくつかについて、サポートが後退していました。 既知の問題はすべて解決されていますが、さらに問題が発生した場合は、フィードバックをお送りください。
-* 更新の通知が、0.9.0 の一部のユーザーに送信されませんでした。 この問題は修正されました。バグの影響を受けた方は、Storage Explorer の最新バージョンを[こちら](https://azure.microsoft.com/en-us/features/storage-explorer/)からダウンロードしてください
+* 更新の通知が、0.9.0 の一部のユーザーに送信されませんでした。 この問題は修正されました。バグの影響を受けた方は、Storage Explorer の最新バージョンを[こちら](https://azure.microsoft.com/features/storage-explorer/)からダウンロードしてください
 
 ### <a name="known-issues"></a>既知の問題
 * Storage Explorer では ADFS アカウントがサポートされません。

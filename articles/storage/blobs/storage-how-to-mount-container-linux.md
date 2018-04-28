@@ -1,6 +1,6 @@
 ---
-title: "Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs"
-description: "Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする"
+title: Linux 上で Azure Blob Storage をファイル システムとしてマウントする方法 | Microsoft Docs
+description: Linux 上で FUSE を使用して Azure Blob Storage コンテナーをマウントする
 services: storage
 documentationcenter: linux
 author: seguler
@@ -10,11 +10,11 @@ ms.devlang: bash
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: seguler
-ms.openlocfilehash: 299b96c783fb3606347bb448d00d44f0071da429
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 44b0c36ad366d50480212adff9cdb8b10a17db05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法 (プレビュー)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 このガイドでは、blobfuse を使用し、Linux 上で Blob Storage コンテナーをマウントしてデータにアクセスする方法を示します。 blobfuse の詳細については、「[the blobfuse repository (blobfuse リポジトリ)](https://github.com/Azure/azure-storage-fuse)」にある詳細を参照してください。
 
 > [!WARNING]
-> blobfuse は、要求を [BLOB REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) に単純に変換するだけであるため、100% の POSIX 準拠は保証されません。 たとえば、名前変更操作は POSIX ではアトミックですが、blobfuse では違います。
+> blobfuse は、要求を [BLOB REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) に単純に変換するだけであるため、100% の POSIX 準拠は保証されません。 たとえば、名前変更操作は POSIX ではアトミックですが、blobfuse では違います。
 > ネイティブなファイル システムと blobfuse の違いの完全な一覧については、[blobfuse ソース コード リポジトリ](https://github.com/azure/azure-storage-fuse)にアクセスしてください。
 > 
 

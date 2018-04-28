@@ -19,7 +19,7 @@
 ### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
 ### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
 ### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
-### [Node.JS](data-lake-analytics-manage-use-nodejs.md)
+### [Node.js](data-lake-analytics-manage-use-nodejs.md)
 ### [診断ログにアクセスする](data-lake-analytics-diagnostic-logs.md)
 ### [クォータ制限を調整する](data-lake-analytics-quota-limits.md)
 
@@ -46,10 +46,10 @@
 ### [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
-## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-analytics)
+## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
 ## [REST](/rest/api/datalakeanalytics/)
 ## [CLI](https://docs.microsoft.com/cli/azure/dla)

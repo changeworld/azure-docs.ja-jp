@@ -1,11 +1,11 @@
 ---
-title: "Azure クラスターとそのリソースの削除 | Microsoft Docs"
-description: "クラスターを含むリソース グループを削除するか、リソースを選択的に削除して、Service Fabric クラスターを完全に削除する方法について学習します。"
+title: Azure クラスターとそのリソースの削除 | Microsoft Docs
+description: クラスターを含むリソース グループを削除するか、リソースを選択的に削除して、Service Fabric クラスターを完全に削除する方法について学習します。
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de422950-2d22-4ddb-ac47-dd663a946a7e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
-ms.author: chackdan
-ms.openlocfilehash: 7672aa12421fbe4ad86e7315d6a7a06c2ff5124d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: aljo
+ms.openlocfilehash: 1255574e6aae930b0e349ec8f36cc66ac2b7e49f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Azure の Service Fabric クラスターとその使用リソースの削除
 Service Fabric クラスターは、クラスター リソース自体に加え、その他の多くの Azure リソースで構成されます。 そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。
@@ -38,7 +38,7 @@ Service Fabric クラスターは、クラスター リソース自体に加え�
 PowerShell ウィンドウを開き、次の PS コマンドレットを実行します。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 ```
@@ -46,11 +46,11 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 *-Force* オプションを使用しなかった場合、削除の確認を求めるメッセージが表示されます。 確認すると、RG とそれに含まれるすべてのリソースが削除されます。
 
 ### <a name="delete-a-resource-group-in-the-azure-portal"></a>Azure ポータルでのリソース グループの削除
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 削除する Service Fabric クラスターに移動します。
 3. クラスターの [要点] ページでリソース グループの名前をクリックします。
 4. これにより、 **リソース グループの [要点]** ページが表示されます。
-5. [ **削除**] をクリックします。
+5. **[削除]** をクリックします。
 6. リソース グループの削除を完了するには、そのページに表示される指示に従います。
 
 ![リソース グループの削除][ResourceGroupDelete]
@@ -60,12 +60,12 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 
 ポータルを使用するか、テンプレート ギャラリーに含まれる Service Fabric の Resource Manager テンプレートのいずれかを使用してクラスターをデプロイした場合は、クラスターで使用するすべてのリソースに次の 2 つのタグが付けられています。 それらを使用して、削除するリソースを決定することができます。
 
-"***タグ 1:***" キー = clusterName、値 = <クラスターの名前>
+***タグ 1:*** キー = clusterName、値 = <クラスターの名前>
 
-"***タグ 2:***" キー = resourceName、値 = ServiceFabric
+***タグ 2:*** キー = resourceName、値 = ServiceFabric
 
 ### <a name="delete-specific-resources-in-the-azure-portal"></a>Azure ポータルでの特定のリソースの削除
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 削除する Service Fabric クラスターに移動します。
 3. [要点] ブレードの **[すべての設定]** に移動します。
 4. [設定] ブレードの **[リソース管理]** で、**[タグ]** をクリックします。
@@ -82,21 +82,21 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 PowerShell ウィンドウを開き、次の PS コマンドレットを実行します。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
-削除するリソースごとに、次を実行します。
+削除するリソースごとに、次のスクリプトを実行します。
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-クラスター リソースを削除するには、次を実行します。
+クラスター リソースを削除するには、次のスクリプトを実行します。
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次を確認して、クラスターのアップグレードとサービスのパーティション分割についても学習してください。
 
 * [クラスターのアップグレードの詳細](service-fabric-cluster-upgrade.md)

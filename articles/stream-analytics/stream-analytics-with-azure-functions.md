@@ -1,19 +1,21 @@
 ---
-title: Azure Stream Analytics ジョブから Azure Functions を実行する
-description: この記事では、ワークロードがイベント ドリブンされるように、Stream Analytics ジョブの出力シンクとして Azure Functions を構成する方法について説明します。
+title: 'チュートリアル: Azure Stream Analytics ジョブを使用した Azure Functions の実行 | Microsoft Docs'
+description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
-ms.reviewer: jasonh
 manager: kfile
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 12/19/2017
-ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: tutorial
+ms.custom: mvc
+ms.workload: data-services
+ms.date: 04/09/2018
+ms.author: jasonh
+ms.reviewer: jasonh
+ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -21,7 +23,14 @@ Azure Stream Analytics から Azure Functions を実行するには、Stream Ana
 
 Stream Analytics では、HTTP トリガーを使用して Functions を呼び出します。 Functions の出力アダプターにより、ユーザーは Functions を Stream Analytics に接続し、Stream Analytics クエリに基づいてイベントをトリガーできるようになります。 
 
-このチュートリアルでは、[Azure Functions](../azure-functions/functions-overview.md) を使用して、Stream Analytics を [Azure Redis Cache](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md) に接続する方法について説明します。 
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Stream Analytics のジョブの作成
+> * Azure 関数の作成
+> * ジョブへの出力としての Azure 関数の構成
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>関数を実行するための Stream Analytics ジョブの構成を行う 
 
@@ -191,3 +200,16 @@ Stream Analytics では、HTTP トリガーを使用して Functions を呼び�
 
 Azure Portal では、最大バッチ サイズ/最大バッチ カウントの値を空 (既定値) にリセットしようとしても、保存時には以前に入力した値に戻ります。 この場合は、それらのフィールドに既定値を手動で入力します。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
+
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。  
+2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+
+## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。Stream Analytics ジョブについてさらに学習するには、次のチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [Stream Analytics ジョブ内で JavaScript ユーザー定義関数を実行する](stream-analytics-javascript-user-defined-functions.md)

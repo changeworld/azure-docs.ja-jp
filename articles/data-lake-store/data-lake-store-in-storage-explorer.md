@@ -16,15 +16,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Azure Storage Explorer を使用して Azure Data Lake Store リソースを管理する
 
-[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer で Data Lake Store を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Store のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
+[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer で Data Lake Store を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Store のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
 
 もう 1 つの利点は、Data Lake Store データを管理するためにサブスクリプションのアクセス許可が不要であることです。 Storage Explorer では、アクセス許可が付与されていれば、**[Local and Attached]\(ローカルで接続済み\)** ノードに Data Lake Store パスをアタッチできます。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/16/2018
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
 *   Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial)に関するページを参照してください。
-*   Azure Data Lake Store アカウント。 このアカウントを作成する手順については、[Azure Data Lake Store の使用開始](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal)に関するページを参照してください。
+*   Azure Data Lake Store アカウント。 このアカウントを作成する手順については、[Azure Data Lake Store の使用開始](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)に関するページを参照してください。
 
 ## <a name="install-storage-explorer"></a>Storage Explorer のインストール
 
@@ -143,14 +143,14 @@ Azure Data Lake Store アカウントの作成後、次の操作を実行でき�
 ### <a name="download-folders-or-files-to-your-local-computer"></a>フォルダーまたはファイルをローカル コンピューターにダウンロードする
 
 1. ダウンロードするフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[ダウンロード]**を選択します。
+2. メイン ウィンドウのツール バーで、 **[ダウンロード]** を選択します。
 3. **[Select a folder to save the downloaded files into]\(ダウンロードしたファイルを保存するフォルダーの選択\)** ダイアログ ボックスで、場所と名前を指定します。
 4. **[保存]** を選択します。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>ローカル コンピューターからフォルダーまたはファイルを開く
 
 1. 開くフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[開く]**を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[開く]** を選択します。
+2. メイン ウィンドウのツール バーで、 **[開く]** を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[開く]** を選択します。
 
 ファイルがダウンロードされ、その基になるファイルの種類に関連付けられているアプリケーションで開かれます。 または、メイン ウィンドウでフォルダーが開きます。
 
@@ -159,7 +159,7 @@ Azure Data Lake Store アカウントの作成後、次の操作を実行でき�
 ### <a name="copy-folders-or-files-to-the-clipboard"></a>フォルダーまたはファイルをクリップボードにコピーする
 
 1. コピーするフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[コピー]**を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[コピー]** を選択します。
+2. メイン ウィンドウのツール バーで、 **[コピー]** を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[コピー]** を選択します。
 3. 左側のウィンドウで別の Data Lake Store アカウントに移動し、それをダブルクリックして、メイン ウィンドウに表示します。
 4. メイン ウィンドウのツール バーで **[貼り付け]** を選択して、コピーを作成します。 または、コピー先のショートカット メニューで **[貼り付け]** を選択します。
 
@@ -173,7 +173,7 @@ Azure Data Lake Store アカウントの作成後、次の操作を実行でき�
 ### <a name="delete-folders-or-files"></a>フォルダーまたはファイルを削除する
 
 1. 削除するフォルダーまたはファイルを選択します。
-2. メイン ウィンドウのツール バーで、 **[削除]**を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[削除]** を選択します。
+2. メイン ウィンドウのツール バーで、 **[削除]** を選択します。 選択したフォルダーまたはファイルを右クリックし、ショートカット メニューの **[削除]** を選択します。
 3. 確認のダイアログ ボックスで **[はい]** を選択します。
 
 ![フォルダーを削除するための選択](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-delete.png)
@@ -197,7 +197,7 @@ URL がある場合は、エクスプローラーまたはブラウザーのア�
 
 ## <a name="next-steps"></a>次の手順
 * [最新の Storage Explorer のリリース ノートとビデオ](http://www.storageexplorer.com)を確認します。
-* [Azure Storage Explorer で Azure Cosmos DB を管理する](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer)方法を学習します。
-* [Storage Explorer の概要](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照します。
-* [Azure Data Lake Store の概要](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview)を参照します。
+* [Azure Storage Explorer で Azure Cosmos DB を管理する](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)方法を学習します。
+* [Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照します。
+* [Azure Data Lake Store の概要](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)を参照します。
 * [Azure Storage Explorer で Azure Cosmos DB を使用する方法に関する YouTube ビデオ](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)を視聴します。

@@ -1,8 +1,8 @@
 ---
-title: "エンドユーザー認証: Azure Active Directory を使用した .NET SDK と Data Lake Store | Microsoft Docs"
-description: ".NET SDK と Azure Active Directory を使用した Data Lake Store でエンドユーザー認証を行う方法について説明します"
+title: 'エンドユーザー認証: Azure Active Directory を使用した .NET SDK と Data Lake Store | Microsoft Docs'
+description: .NET SDK と Azure Active Directory を使用した Data Lake Store でエンドユーザー認証を行う方法について説明します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 524b00c9fac8b874576cb756c1c8ee39e15e9882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Data Lake Store での .NET SDK を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -40,19 +40,19 @@ ms.lasthandoff: 01/12/2018
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
 1. Visual Studio を開き、コンソール アプリケーションを作成します。
 2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-3. **[新しいプロジェクト]**で、次の値を入力するか、選択します。
+3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
 
    | プロパティ | 値 |
    | --- | --- |
    | カテゴリ |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
-   | 名前 |CreateADLApplication |
+   | Name |CreateADLApplication |
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
 5. NuGet パッケージをプロジェクトに追加します。
 
-   1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]**をクリックします。
+   1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
    2. **[NuGet パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
 

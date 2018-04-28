@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Power BI ワークスペース コレクションの概要"
-description: "Power BI ワークスペース コレクションは、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できる Azure サービスです。"
+title: Microsoft Power BI ワークスペース コレクションの概要
+description: Power BI ワークスペース コレクションは、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できる Azure サービスです。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 4ee113ed25142507f381d8c9d49b25ee6553c525
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: ce8638bab55b18ec4f15ed9fc11f3256659bfbd9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションの概要
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 ここでは、Azure Portal を使用して **ワークスペース コレクション** を作成する手順について説明します。
 
-1. **Azure Portal** ([http://portal.azure.com](http://portal.azure.com)) を開き、サインインします。
+1. **Azure Portal** を開き、サインインします ([http://portal.azure.com](http://portal.azure.com))。
 2. 上のパネルの **[+ 新規]** を選択します。
    
    ![Azure Portal の [+ 新規]](media/get-started/create-workspace-1.png)
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 5. **[ワークスペース コレクション]** に、必要な情報を入力します。
    
    ![ワークスペース コレクションの作成](media/get-started/create-workspace-2.png)
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
 **ワークスペース コレクション**のプロビジョニングにはわずかに時間がかかります。 処理が完了すると、**ワークスペース コレクション**が表示されます。
 

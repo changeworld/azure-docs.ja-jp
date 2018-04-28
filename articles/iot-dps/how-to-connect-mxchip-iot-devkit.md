@@ -1,26 +1,26 @@
 ---
-title: MXChip IoT DevKit を使用して Azure IoT Hub Device Provisioning サービスに接続する方法 | Microsoft Docs
-description: MXChip IoT DevKit を使用して Azure IoT Hub Device Provisioning サービスに接続する方法
+title: Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録する方法 | Microsoft Docs
+description: Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録する方法。
 services: iot-dps
 keywords: ''
 author: liydu
 ms.author: liydu
-ms.date: 02/20/2018
+ms.date: 04/04/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 502f22a39622e9a8341e1daca8c9899fd8b7d7d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7fe1cd003bd7e6b681989324a42a076f4fd2f7df
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="connect-the-mxchip-iot-devkit-to-the-azure-iot-hub-device-provisioning-service"></a>MXChip IoT DevKit を Azure IoT Hub Device Provisioning サービスに接続する
+# <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
-この記事では、Azure IoT Device Provisioning サービスを使って Azure IoT Hub に自動的に登録されるように MXChip IoT DevKit を構成する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+この記事では、Azure IoT Hub Device Provisioning Service の[自動プロビジョニング](concepts-auto-provisioning.md)を使用して MXChip IoT DevKit を Azure IoT Hub に登録する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 * デバイスにデバイス プロビジョニング サービスのグローバル エンドポイントを構成する。
 * 一意デバイス シークレット (UDS) を使って X.509 証明書を生成する。
@@ -33,11 +33,11 @@ ms.lasthandoff: 03/28/2018
 
 このチュートリアルを完了するには、最初に次のタスクを行います。
 
-* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)」の手順に従って、DevKit を準備します。
+* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)」の手順に従って、DevKit を準備します。
 * 「[Update DevKit firmware](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)」(DevKit のファームウェアを更新する) チュートリアルで、最新のファームウェア (1.3.0 以降) にアップグレードします。
-* 「[Azure Portal で IoT Hub Device Provisioning Service を設定する](https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision)」の手順に従って、IoT Hub を作成し、デバイス プロビジョニング サービス インスタンスとリンクします。
+* 「[Azure Portal で IoT Hub Device Provisioning Service を設定する](/azure/iot-dps/quick-setup-auto-provision)」の手順に従って、IoT Hub を作成し、デバイス プロビジョニング サービス インスタンスとリンクします。
 
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>デバイスでデバイス プロビジョニング サービスの構成を設定する
+## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>自動プロビジョニング登録ソフトウェアをビルドし、デバイスにデプロイする
 
 DevKit を作成したデバイス プロビジョニング サービス インスタンスに接続するには、次の手順を実行します。
 
@@ -54,7 +54,7 @@ DevKit を作成したデバイス プロビジョニング サービス イン�
 4. Visual Studio Code を開き、DevKit をコンピューターに接続して、複製したコードが含まれているフォルダーを開きます。
 
 5. **DevKitDPS.ino** を開きます。 `[Global Device Endpoint]` と `[ID Scope]` を探して、書き留めた値に置き換えます。
-  ![DPS エンドポイント](./media/how-to-connect-mxchip-iot-devkit/endpoint.png)**registrationId** は空白のままでかまいません。 MAC アドレスとファームウェア バージョンに基づいて、アプリケーションによって自動的に生成されます。 登録 ID をカスタマイズする場合は、最大 128 文字で、英数字、小文字、ハイフンの組み合わせを使う必要があります。 詳細については、[Azure Portal でのデバイス登録の管理](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments)に関する記事をご覧ください。
+  ![DPS エンドポイント](./media/how-to-connect-mxchip-iot-devkit/endpoint.png)**registrationId** は空白のままでかまいません。 MAC アドレスとファームウェア バージョンに基づいて、アプリケーションによって自動的に生成されます。 登録 ID をカスタマイズする場合は、最大 128 文字で、英数字、小文字、ハイフンの組み合わせを使う必要があります。 詳細については、[Azure Portal でのデバイス登録の管理](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)に関する記事をご覧ください。
 
 6. VS Code で Quick Open (Windows: `Ctrl+P`、macOS: `Cmd+P`) を使い、「*task device-upload*」と入力して、コードのビルドと DevKit へのアップロードを実行します。
 
@@ -62,7 +62,7 @@ DevKit を作成したデバイス プロビジョニング サービス イン�
 
 ## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>STSAFE セキュリティ チップに一意のデバイス シークレットを保存する
 
-デバイス プロビジョニング サービスは、[ハードウェア セキュリティ モジュール](https://azure.microsoft.com/en-us/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)に基づいてデバイスで構成できます。 MXChip IoT DevKit では、[Trusted Computing Group](https://trustedcomputinggroup.org) の [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) を使います。 DevKit の STSAFE セキュリティ チップに保存された "*一意のデバイス シークレット*" (UDS) は、デバイス固有の [X.509](https://docs.microsoft.com/en-us/azure/iot-dps/tutorial-set-up-device#select-a-hardware-security-module) 証明書の生成に使われます。 この証明書は、後でデバイス プロビジョニング サービスでの登録プロセスに使用できます。
+自動プロビジョニングは、デバイスの[構成証明メカニズム](concepts-security.md#attestation-mechanism)に基づいてデバイスで構成できます。 MXChip IoT DevKit では、[Trusted Computing Group](https://trustedcomputinggroup.org) の [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) を使います。 DevKit の STSAFE セキュリティ チップに保存された "*一意のデバイス シークレット*" (UDS) は、デバイス固有の [X.509](concepts-security.md#x509-certificates) 証明書の生成に使われます。 この証明書は後でデバイス プロビジョニング サービスでの登録プロセスで使用され、また、実行時の登録中に使用されます。
 
 一般的な一意デバイス シークレットは、次の例のような 64 文字の文字列です。
 
@@ -82,7 +82,7 @@ DevKit を作成したデバイス プロビジョニング サービス イン�
 
 4. シリアル モニター ウィンドウで、「*set_dps_uds <独自の UDS 値>*」と入力し、Enter キーをます。
   > [!NOTE]
-  > たとえば、最後の 2 つの文字を `f` に変更して独自の UDS を設定した場合は、set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff のようなコマンドを入力する必要があります。
+  > たとえば、最後の 2 文字を `f` に変更して独自の UDS を設定する場合、`set_dps_uds 19e25a259d0c2be03a02d416c05c48ccd0cc7d1743458aae1cb488b074993eff` のようなコマンドを入力する必要があります。
 
 5. シリアル モニター ウィンドウを閉じずに、DevKit の**リセット** ボタンを押します。
 
@@ -107,16 +107,17 @@ DevKit を作成したデバイス プロビジョニング サービス イン�
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>デバイス プロビジョニング サービスでのデバイス登録エントリの作成
 
-1. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** を選び、**[個々の登録]** タブを選びます。![個々の登録](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. Azure Portal でデバイス プロビジョニング サービス インスタンスに移動します。 **[登録を管理します]** を選び、**[個々の登録]** タブを選びます。![個々の登録](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
-2. **[追加]**を選択します。
+2. **[追加]** を選択します。
 
-3. **[メカニズム]** で **[X.509]** を選びます。
-  ![証明書のアップロード](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
+3. [Add enrollment]\(登録の追加\) パネルで:
+   - **[メカニズム]** で **[X.509]** を選択します
+   - **[Primary certificate .pem or .cer file]\(プライマリ証明書 .pem または .cer ファイル\)** の [ファイルの選択] をクリックします
+   - [ファイルを開く] ダイアログで、生成した **.pem** 証明書に移動し、アップロードします
+   - 残りを既定値のままにし、**[保存]** をクリックします
 
-4. **[.pem または .cer の証明書ファイルです]** で、先ほど生成された **.pem** 証明書をアップロードします。
-
-5. 残りは既定値のままにして、**[保存]** を選びます。
+   ![証明書のアップロード](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
 ## <a name="start-the-devkit"></a>DevKit を起動する
 

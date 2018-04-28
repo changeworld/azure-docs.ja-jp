@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb7a076ea922b9868bd439d160aec96f044e3b6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/23/2018
 * モニターは、ある条件が満たされたときに終了することも、別のプロセスによって終了することもできます。
 * モニターは、パラメーターを受け取ることができます。 サンプルでは、要求された場所と電話番号に同じ気象監視プロセスを適用する方法を示します。
 * モニターはスケーラブルです。 各モニターはオーケストレーション インスタンスであるため、新しい関数を作成したり、コードをさらに定義したりしなくても、複数のモニターを作成できます。
-* モニターは、より大規模なワークフローと簡単に統合できます。 モニターは、より複雑なオーケストレーション関数の 1 つのセクション、つまり[サブ オーケストレーション](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-sub-orchestrations)にすることができます。
+* モニターは、より大規模なワークフローと簡単に統合できます。 モニターは、より複雑なオーケストレーション関数の 1 つのセクション、つまり[サブ オーケストレーション](https://docs.microsoft.com/azure/azure-functions/durable-functions-sub-orchestrations)にすることができます。
 
 ## <a name="configuring-twilio-integration"></a>Twilio 統合の構成
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシンの暗号化 | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。"
+title: Azure 仮想マシンの暗号化 | Microsoft Docs
+description: このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
 暗号化されていない仮想マシンがある場合には、Azure Security Center からアラートを受け取ります。 これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。
@@ -61,7 +61,7 @@ Azure Disk Encryption の前提条件となる構成スクリプトを使用す�
 
 スクリプトの内容が保存されたので、PowerShell ISE でそのスクリプトを開きます。
 
-1. [スタート] メニューの **[Cortana]**をクリックします。 Cortana の検索ボックスに「**PowerShell**」と入力して、"PowerShell" について **Cortana** に質問します。
+1. [スタート] メニューの **[Cortana]** をクリックします。 Cortana の検索ボックスに「**PowerShell**」と入力して、"PowerShell" について **Cortana** に質問します。
 2. **[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
 3. **[Administrator: Windows PowerShell ISE (管理者: Windows PowerShell ISE)]** ウィンドウで、**[表示]** をクリックし、**[Show Script Pane (スクリプト ウィンドウの表示)]** をクリックします。
 4. ウィンドウの右側に **[コマンド]** ウィンドウが表示される場合は、そのウィンドウの右上隅にある**閉じるボタン**をクリックして閉じます。 表示されるテキストが小さすぎる場合は、 **Ctrl + プラス記号 (+)** キーを押します。 テキストが大きすぎる場合は、 **Ctrl + マイナス記号 (-)** キーを押します。
@@ -92,10 +92,10 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 1. PowerShell ISE を閉じた場合は、PowerShell ISE のインスタンスを管理者特権で開きます。 PowerShell ISE がまだ開いていない場合は、この記事で前に説明した手順に従います。 スクリプトを閉じた場合は、**ADEPrereqScript.ps1** を開きます (これには、**[ファイル]**、**[開く]** の順にクリックし、**C:\AzureADEScript** フォルダーからスクリプトを選択します)。 この記事の手順を最初から実行している場合は、そのまま次の手順に進んでください。
 2. PowerShell ISE のコンソール (PowerShell ISE の下部のウィンドウ) で、「**cd c:\AzureADEScript**」と入力して **Enter** キーを押すことで、スクリプトの場所にフォーカスを移動します。
 3. スクリプトを実行できるようにコンピューター上で実行ポリシーを設定します。 コンソールで「 **Set-ExecutionPolicy Unrestricted** 」と入力し、Enter キーを押します。 変更による実行ポリシーへの影響を示すダイアログ ボックスが表示されたら、**[すべてはい]** または **[はい]** をクリックします (**[すべてはい]** が表示される場合はそれを選択し、**[すべてはい]** が表示されない場合は **[はい]** をクリックします)。
-4. Azure アカウントにログインします。 コンソールで、「**Login-AzureRmAccount**」と入力し、**Enter** キーを押します。 資格情報を入力するダイアログ ボックスが表示されます (仮想マシンを変更する権限を持っていることを確認してください。権限がない場合は、仮想マシンを暗号化することができません。 わからない場合は、サブスクリプションの所有者または管理者に問い合わせてください)。 **環境**、**アカウント**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。 **SubscriptionId** をメモ帳にコピーします。 これは手順 6. で必要になります。
-5. 仮想マシンが属しているサブスクリプションとその仮想マシンの場所を探します。 [https://portal.azure.com](ttps://portal.azure.com) にアクセスしてログインします。  ページの左側にある **[Virtual Machines]**をクリックします。 仮想マシンとそれが属しているサブスクリプションの一覧が表示されます。
+4. Azure アカウントにログインします。 コンソールで、「**Connect-AzureRmAccount**」と入力し、**Enter** キーを押します。 資格情報を入力するダイアログ ボックスが表示されます (仮想マシンを変更する権限を持っていることを確認してください。権限がない場合は、仮想マシンを暗号化することができません。 わからない場合は、サブスクリプションの所有者または管理者に問い合わせてください)。 **環境**、**アカウント**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。 **SubscriptionId** をメモ帳にコピーします。 これは手順 6. で必要になります。
+5. 仮想マシンが属しているサブスクリプションとその仮想マシンの場所を探します。 [https://portal.azure.com](ttps://portal.azure.com) に移動してログインします。  ページの左側にある **[Virtual Machines]** をクリックします。 仮想マシンとそれが属しているサブスクリプションの一覧が表示されます。
 
-   ![[Virtual Machines]](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
+   ![Virtual Machines](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. PowerShell ISE に戻ります。 スクリプトが実行されるサブスクリプションのコンテキストを設定します。 コンソールで、「**Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>**」と入力し、**Enter** キーを押します (**< your_subscription_Id >** は実際のサブスクリプション ID に置き換えてください)。 環境、**アカウント**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。
 7. これで、スクリプトを実行する準備が整いました。 **[スクリプトの実行]** ボタンをクリックするか、**F5** キーを押します。
 
@@ -122,7 +122,7 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 
 **$resourceGroupName**
 
-**Enter**キーを押します。 仮想マシンが存在するリソース グループの名前が表示されます。 次に例を示します。
+**Enter**キーを押します。 仮想マシンが存在するリソース グループの名前が表示されます。 例: 
 
 ![PowerShell の出力](./media/security-center-disk-encryption/security-center-disk-encryption-fig6.png)
 
@@ -137,7 +137,7 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 
 **$vmName**
 
-**Enter**キーを押します。 暗号化する仮想マシンの名前が表示されます。 次に例を示します。
+**Enter**キーを押します。 暗号化する仮想マシンの名前が表示されます。 例: 
 
 ![PowerShell の出力](./media/security-center-disk-encryption/security-center-disk-encryption-fig7.png)
 
@@ -153,7 +153,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 
 ![PowerShell ISE](./media/security-center-disk-encryption/security-center-disk-encryption-fig8.png)
 
-使用する方法にかかわらず、操作が完了するまでに 10 ～ 15 分かかることを示すダイアログ ボックスが表示されます。 **[はい]**をクリックします。
+使用する方法にかかわらず、操作が完了するまでに 10 ～ 15 分かかることを示すダイアログ ボックスが表示されます。 **[はい]** をクリックします。
 
 暗号化処理が行われている間に、Azure Portal に戻って、仮想マシンの状態を確認することができます。 ページの左側にある **[Virtual Machines]** をクリックし、**[Virtual Machines]** ブレードで、暗号化している仮想マシンの名前をクリックします。 表示されたブレードで、**[状態]** に **[更新中]** と表示されていることに気付きます。 これは、暗号化が進行中であることを示します。
 
@@ -171,7 +171,7 @@ PowerShell ISE に戻ります。 スクリプトが完了すると、次の図�
 
 ![Disks properties](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure 仮想マシンを暗号化する方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 – Azure リソースのヘルスを監視する方法についての説明

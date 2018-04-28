@@ -1,27 +1,25 @@
 ---
-title: "Apache Storm Java トポロジの例 - Azure HDInsight | Microsoft Docs"
-description: "ワード カウント トポロジの例を作成して、Java で Apache Storm トポロジを作成する方法について説明します。"
+title: Apache Storm Java トポロジの例 - Azure HDInsight | Microsoft Docs
+description: ワード カウント トポロジの例を作成して、Java で Apache Storm トポロジを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-keywords: "apache storm,apache storm の例,storm java,storm トポロジの例"
+keywords: apache storm,apache storm の例,storm java,storm トポロジの例
 ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -30,7 +28,7 @@ Apache Storm の Java ベース トポロジを作成する方法を説明しま
 このドキュメントの手順を完了したら、HDInsight で Apache Storm にトポロジをデプロイできます。
 
 > [!NOTE]
-> このドキュメントで作成する Storm トポロジの例の完全バージョンは、[https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) で入手できます。
+> このドキュメントで作成した Storm トポロジの例の完成版が [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -169,7 +167,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
 </build>
 ```
 
-このセクションは、プラグインやリソース、他のビルド構成オプションを追加する際に使用します。 **pom.xml** ファイルの詳細については、[http://maven.apache.org/pom.html](http://maven.apache.org/pom.html) をご覧ください。
+このセクションは、プラグインやリソース、他のビルド構成オプションを追加する際に使用します。 **pom.xml** ファイルの完全なリファレンスについては、 [ http://maven.apache.org/pom.html](http://maven.apache.org/pom.html)を参照してください。
 
 ### <a name="add-plug-ins"></a>プラグインの追加
 
@@ -565,10 +563,10 @@ Storm では、Apache Log4j を使用して情報をログに記録します。 
 
 `<Root level="error">` セクションは、エラー情報のみを記録するように、ログ記録 (`com.microsoft.example` にないすべて) のルート レベルを構成します。
 
-Log4j のログの記録を構成する方法の詳細については、 [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html)をご覧ください。
+Log4j のログ記録を構成する方法については、[http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html)を参照してください。
 
 > [!NOTE]
-> Storm バージョン 0.10.0 以降では Log4j 2.x が使用されます。 以前のバージョンの Storm では Log4j 1.x が使用されていました。これには、ログの構成に別の形式が使用されていました。 以前の構成については、[http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat) をご覧ください。
+> Storm バージョン 0.10.0 以降では Log4j 2.x が使用されます。 以前のバージョンの Storm では Log4j 1.x が使用されていました。これには、ログの構成に別の形式が使用されていました。 古い構成については、[http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat)を参照してください。
 
 ## <a name="test-the-topology-locally"></a>ローカルでのトポロジのテスト
 
@@ -598,10 +596,10 @@ Flux は、構成と実装が分離可能な、Storm 0.10.0 以降で使用で�
 
 YAML ファイルは、トポロジと、これらの間のデータ フローに使用するコンポーネントを定義します。 jar ファイルの一部として YAML ファイルを含めることも、外部 YAML ファイルを使用することもできます。
 
-Flux について詳しくは、[Flux フレームワーク (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html) に関するページをご覧ください。
+Flux の詳細については、「[Flux フレームワーク (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)」に関するセクションを参照してください。
 
 > [!WARNING]
-> Storm 1.0.1 での[バグ (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) のため、Flux トポロジをローカルに実行するには [Storm 開発環境](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)のインストールが必要になる場合があります。
+> Storm 1.0.1 での[バグ (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) のため、Flux トポロジをローカルに実行するには [Storm 開発環境のインストール](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html)が必要になる場合があります。
 
 1. `WordCountTopology.java` ファイルをプロジェクトの外部に移動します。 以前は、このファイルでトポロジを定義していましたが、Flux では不要です。
 
@@ -720,7 +718,7 @@ Flux について詳しくは、[Flux フレームワーク (https://storm.apach
     ```
 
     > [!WARNING]
-    > トポロジが Storm 1.0.1 ビットを使っている場合、このコマンドは失敗します。 この失敗は、[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) によるものです。 代わりに、[開発環境に Storm をインストール](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)し、次の手順を使ってください。
+    > トポロジが Storm 1.0.1 ビットを使っている場合、このコマンドは失敗します。 このエラーは[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)が原因です。 代わりに、[開発環境に Storm をインストール](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)し、次の手順を使ってください。
     >
     > [開発環境に Storm がインストールされている](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html)場合、代わりに次のコマンドを使うことができます。
     >
@@ -768,7 +766,7 @@ Flux について詳しくは、[Flux フレームワーク (https://storm.apach
 
     トポロジが開始されると、バッチが出力される時間間隔が変更され、newtopology.yaml の値が反映されていることがわかります。 このように、トポロジを再コンパイルしなくても YAML ファイルから構成を変更できることがわかります。
 
-Flux フレームワークのその他の機能の詳細については、 [Flux (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)に関するページをご覧ください。
+Flux フレームワークのその他の機能の詳細については、 [Flux(https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html)に関するページをご覧ください。
 
 ## <a name="trident"></a>Trident
 

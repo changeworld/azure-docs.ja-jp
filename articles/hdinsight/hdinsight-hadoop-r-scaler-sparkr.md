@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight で ScaleR と SparkR を使用する | Microsoft Docs"
-description: "R Server と HDInsight で ScaleR と SparkR を使用する"
+title: Azure HDInsight で ScaleR と SparkR を使用する | Microsoft Docs
+description: R Server と HDInsight で ScaleR と SparkR を使用する
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -10,37 +10,37 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
-この記事では、**SparkR** で結合したフライト遅延データと気象データから、**ScaleR** のロジスティック回帰モデルを使って、フライトの到着遅延を予測する方法について説明します。 このシナリオでは、ScaleR を使った Spark 上のデータ操作と Microsoft R Server を使った分析とを連携させる機能を具体的に紹介します。 これらのテクノロジを組み合わせることによって、分散処理に最新の機能を適用することができます。
+このドキュメントは、**ScaleR** ロジスティック回帰モデルを使用して、フライト到着遅延の予測方法を示しています。 例では **SparkR** を使用してフライト遅延や気象データを組合せて使用しています。。
 
 どちらのパッケージも Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 R Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
 
-ここでは、Strata 2016 で Mario Inchiosa と Roni Burd が最初に紹介した例を取り上げます。「[Building a Scalable Data Science Platform with R (スケーラブルなデータ サイエンス プラットフォームを R で構築する)](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)」のウェビナーでもご覧いただけます。この例では、大手航空会社の到着遅延データセットと発着空港における気象データを SparkR を使って結合し、 ScaleR ロジスティック回帰モデルの入力とすることで、フライトの到着遅延を予測します。
+この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) にあります。
 
-これから紹介するコードは、本来は Azure HDInsight クラスターの Spark で動作する R Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。 以降の説明は、R と R Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象にしています。 このシナリオを説明する過程で、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も紹介します。
+これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する R Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。 
+
+本ドキュメントの以降の説明は、R と R Server の [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ライブラリについて、ある程度理解している読者を対象にしています。 このシナリオを説明する過程で、[SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) の使い方も紹介します。
 
 ## <a name="the-airline-and-weather-datasets"></a>航空データセットと気象データセット
 
-**AirOnTime08to12CSV** は、一般公開されている航空データセットです。米国内の全民間飛行便を対象に 1987 年 10 月から 2012 年 12 月までの発着情報が記録されています。 この大規模なデータセットのレコード数は、およそ 1 億 5,000 万件にも上ります。 サイズは未圧縮状態で 4 GB 弱です。 このデータを[米国政府のアーカイブ](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードすることができます。 また、より便利な zip ファイル (AirOnTimeCSV.zip) として入手することもできます。zip ファイルは、月ごとに分かれた 303 個の CSV ファイルを含んでおり、[Revolution Analytics のデータセット リポジトリ](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)に置かれています。
+フライト データは[米国政府のアーカイブ](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードできます。 [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) から、zip ファイルとしても入手可能です。
 
-フライト遅延に気象が及ぼす影響を把握するためには、各空港の気象データも必要です。 気象データについては、[米国海洋大気庁のリポジトリ](http://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、その目的上、2007 年 5 月から 2012 年 12 月の気象データをダウンロードしました。この 68 か月分の各 zip ファイルに含まれる毎時のデータ ファイルを使っています。 月ごとの zip ファイルには、他にも測候所 ID (WBAN) とそれが関連付けられている空港 (CallSign)、UTC (TimeZone) を基準とする空港のタイム ゾーン オフセットという 3 つの情報のマッピング (YYYYMMstation.txt) が含まれており、 航空会社の遅延データを結合する際にこれらの情報がすべて必要になります。
+気象データについては、[米国海洋大気庁のリポジトリ](http://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。 
 
 ## <a name="setting-up-the-spark-environment"></a>Spark 環境のセットアップ
 
-最初の手順は、Spark 環境のセットアップです。 最初に、必要な入力データ ディレクトリが格納されているディレクトリを指定し、Spark のコンピューティング コンテキストを作成した後、コンソールへの情報出力に必要なログ記録関数を作成します。
+Spark 環境を設定するには、次のコードを使用します。
 
 ```
 workDir        <- '~'  
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-次に、R パッケージの検索パスに "Spark_Home" を追加して SparkR を使用できる状態にし、SparkR セッションを初期化します。
+次に、`Spark_Home` を R パッケージの検索パスに追加します。 検索パスに追加すると、SparkR を使用でき、SparkR セッションを初期化できます。
 
 ```
 #..setup for use of SparkR  
@@ -119,15 +119,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 その後、測候所に関連付けられている空港コードを追加して、測定値をローカル時間から UTC に変換します。
 
-まず、測候所 (WBAN) を空港コードにマッピングするためのファイルを作成します。 このファイルは、気象データに含まれているマッピング ファイルから得ることもできます。 その場合は、気象データ ファイル内の *CallSign* (LAX など) フィールドと航空データの *Origin* とを対応付けます。 ただし、*WBAN* を *AirportID* (LAX の場合は 12892) に対応付け、*TimeZone* を追加して CSV ファイル ("wban-to-airport-id-tz.CSV") に保存したマッピングがちょうど手元にありましたので、それを使うことにしました。以下は、そのマッピングの例です。 For example:
-
-| AirportID | WBAN | TimeZone
-|-----------|------|---------
-| 10685 | 54831 | -6
-| 14871 | 24232 | -8
-| .. | .. | ..
-
-次のコードは、1 時間ごとの生の気象データ ファイルを 1 つずつ読み取って必要な列を抽出し、測候所のマッピング ファイルをマージして、測定日時を UTC に調整した後、新しいバージョンのファイルとして出力しています。
+まず、測候所 (WBAN) を空港コードにマッピングするためのファイルを作成します。 次のコードは、1 時間ごとの生の気象データ ファイルを 1 つずつ読み取って必要な列を抽出し、測候所のマッピング ファイルをマージして、測定日時を UTC に調整した後、新しいバージョンのファイルとして出力しています。
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -542,7 +534,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 この記事では、Hadoop Spark で SparkR を使ったデータ操作と ScaleR を使ったモデル開発を組み合わせて使う方法を紹介しました。 このシナリオでは、Spark セッションが互いにかち合わないよう、一度に 1 セッションずつ実行して、CSV ファイルを介してデータを交換する必要があります。 単純な方法ではありますが、このプロセスによって、新しい R Server が今後リリースされ、SparkR と ScaleR とで Spark セッション (ひいては Spark DataFrames) を共有できるようになったときの移行作業がはるかに楽になります。
 

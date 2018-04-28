@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: saveenr
-ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 332b6c90ea51d16a439bfb21222bb753e93a02b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,13 +39,13 @@ Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成
 サブスクリプション名でログインするには:
 
 ```
-Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+Connect-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
 サブスクリプション名の代わりに、サブスクリプション ID を使用してログインすることもできます。
 
 ```
-Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Connect-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 成功した場合、このコマンドの出力は、次のテキストのようになります。
@@ -96,13 +96,13 @@ OUTPUT @a
 "@
 ```
 
-このスクリプトを送信します。
+`Submit-AdlJob` コマンドレットと `-Script` パラメーターでスクリプト テキストを送信します。
 
 ```
 $job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
 ```
 
-または、スクリプトをファイルとして保存し、次のコマンドで送信できます。
+別の方法として、`-ScriptPath` パラメーターを使用してスクリプト ファイルを送信することもできます。
 
 ```
 $filename = "d:\test.usql"
@@ -110,20 +110,19 @@ $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
 ```
 
-
-特定のジョブの状態を取得します。 ジョブが完了するまで、このコマンドレットを使い続けます。
+`Get-AdlJob` でジョブの状態を取得します。 
 
 ```
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-ジョブが完了するまで Get-AdlAnalyticsJob を何度も呼び出す代わりに、Wait-AdlJob コマンドレットを使用することができます。
+ジョブが完了するまで Get-AdlJob を何度も呼び出すのではなく、`Wait-AdlJob` コマンドレットを使用します。
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-出力ファイルをダウンロードします。
+`Export-AdlStoreItem` を使用して出力ファイルをダウンロードします。
 
 ```
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"

@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway を作成する - テンプレート | Microsoft Docs"
-description: "このページでは、Azure リソース マネージャー テンプレートを使用して、Azure Application Gateway を作成する方法について説明します。"
+title: Azure Application Gateway を作成する - テンプレート | Microsoft Docs
+description: このページでは、Azure リソース マネージャー テンプレートを使用して、Azure Application Gateway を作成する方法について説明します。
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
@@ -59,7 +59,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 1. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。
 1. Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
 
-  | パラメーター | Description |
+  | パラメーター | [説明] |
   | --- | --- |
   | **subnetPrefix** |Application Gateway サブネットの CIDR ブロック。 |
   | **applicationGatewaySize** | Application Gateway のサイズ。  WAF では、中および大だけを使用できます。 |
@@ -129,7 +129,7 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 1. PowerShell にログイン
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. アカウントのサブスクリプションを確認します。
@@ -189,15 +189,15 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 1. **[Azure へのデプロイ]** をクリックします。
 
-    ![Azure へのデプロイ](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
+    ![[Deploy to Azure (Azure へのデプロイ)]](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
-1. ポータルでのデプロイ テンプレートのパラメーターを入力し、 **[OK]**をクリックします。
+1. ポータルでのデプロイ テンプレートのパラメーターを入力し、 **[OK]** をクリックします。
 
     ![parameters](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
 1. **[上記の使用条件に同意する]** を選択し、**[購入]** をクリックします。
 
-1. [カスタム デプロイ] ブレードで、 **[作成]**をクリックします。
+1. [カスタム デプロイ] ブレードで、 **[作成]** をクリックします。
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>証明書データを Resource Manager テンプレートに提供する
 
@@ -230,7 +230,7 @@ Remove-AzureRmResourceGroup -Name appgatewayRG
 az group delete --name appgatewayRG
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect Health の操作"
-description: "この記事では、Azure AD Connect Health のデプロイ後に実行できる追加操作について説明しています。"
+title: Azure Active Directory Connect Health の操作
+description: この記事では、Azure AD Connect Health のデプロイ後に実行できる追加操作について説明しています。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -91,9 +91,9 @@ Azure Active Directory Domain Services の Azure AD Connect Health の場合は�
 4. **[削除]** をクリックします。
    <br><br>
 
-[//]: # (Start of RBAC section)
+[//]: # (RBAC セクションの開始)
 ## <a name="manage-access-with-role-based-access-control"></a>ロールベースのアクセス制御を使用してアクセスを管理する
-Azure AD Connect Health の [ロールベースのアクセス制御 (RBAC)](../role-based-access-control-configure.md) では、グローバル管理者以外のユーザーおよびグループにアクセスを提供します。 RBAC では、目的のユーザーおよびグループにロールを割り当て、ディレクトリ内のグローバル管理者を制限するメカニズムが用意されています。
+Azure AD Connect Health の [ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) では、グローバル管理者以外のユーザーおよびグループにアクセスを提供します。 RBAC では、目的のユーザーおよびグループにロールを割り当て、ディレクトリ内のグローバル管理者を制限するメカニズムが用意されています。
 
 ### <a name="roles"></a>ロール
 Azure AD Connect Health では、次の組み込みのロールがサポートされています。
@@ -122,12 +122,12 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>手順 2: ユーザーおよびグループを追加し、ロールを割り当てる
 1. **[構成]** セクションで、**[ユーザー]** をクリックします。<br>
    ![ユーザーが強調表示されている Azure AD Connect Health RBAC のメイン ブレードのスクリーンショット](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
-2. **[追加]**を選択します。
+2. **[追加]** を選択します。
 3. **[役割の選択]** ウィンドウで、ロール (たとえば、**[所有者]**) を選択します。<br>
    ![Azure AD Connect Health RBAC のユーザー ウィンドウのスクリーンショット](./media/active-directory-aadconnect-health/RBAC_add.png)
-4. 対象となるユーザー/グループの名前または識別子を入力します。 1 つまたは複数のユーザー/グループを同時に選択できます。 **[選択]**をクリックします。
+4. 対象となるユーザー/グループの名前または識別子を入力します。 1 つまたは複数のユーザー/グループを同時に選択できます。 **[選択]** をクリックします。
    ![Azure AD Connect Health RBAC のユーザー ウィンドウのスクリーンショット](./media/active-directory-aadconnect-health/RBAC_select_users.png)
-5. **[OK]**を選択します。<br>
+5. **[OK]** を選択します。<br>
 6. ロールの割り当てが完了した後に、ユーザーとグループが一覧に表示されます。<br>
    ![新しいユーザーが強調表示されている Azure AD Connect Health RBAC のユーザー ウィンドウのスクリーンショット](./media/active-directory-aadconnect-health/RBAC_user_list.png)
 
@@ -153,7 +153,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 Azure AD Connect Health RBAC に追加されたユーザーまたはグループを削除することができます。 ユーザーまたはグループを右クリックして **[削除]** を選択するだけです。<br>
 ![[削除] が強調表示されている Azure AD Connect Health RBAC のユーザー ウィンドウのスクリーンショット](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
-[//]: # (End of RBAC section)
+[//]: # (RBAC セクションの終了)
 
 ## <a name="next-steps"></a>次の手順
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

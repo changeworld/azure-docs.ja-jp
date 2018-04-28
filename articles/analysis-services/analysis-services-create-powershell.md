@@ -1,31 +1,24 @@
 ---
-title: "PowerShell を使って Azure Analysis Services サーバーを作成する | Microsoft Docs"
-description: "PowerShell を使って Azure Analysis Services サーバーを作成する方法について説明します。"
-services: analysis-services
-documentationcenter: 
+title: PowerShell を使って Azure Analysis Services サーバーを作成する | Microsoft Docs
+description: PowerShell を使って Azure Analysis Services サーバーを作成する方法について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.custom: mvc
-ms.openlocfilehash: 083c5a9bb5c57f3287c259900e6a23d6f0a886de
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3f0d3ae6786e9f63f0e4eb025118d0d217eced64
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>PowerShell を使って Azure Analysis Services サーバーを作成する
 
 このクイック スタートでは、コマンド ラインから PowerShell を使って、Azure サブスクリプション内の [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)に Azure Analysis Services サーバーを作成する方法について説明します。
 
-この作業には、Azure PowerShell モジュール バージョン 4.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
+この作業には、Azure PowerShell モジュール バージョン 4.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 > [!NOTE]
 > サーバーを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
@@ -45,14 +38,14 @@ Import-Module AzureRM.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) コマンドを使用して Azure サブスクリプションにサインインします。 画面の指示に従います。
+[Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドを使用して Azure サブスクリプションにサインインします。 画面の指示に従います。
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
- 
+
 [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)とは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 サーバーを作成するときは、自分のサブスクリプション内のリソース グループを指定する必要があります。 リソース グループがまだない場合は、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドを使って新しく作成してください。 次の例は、米国西部リージョンに `myResourceGroup` という名前のリソース グループを作成します。
 
 ```powershell
@@ -77,6 +70,6 @@ Remove-AzureRmAnalysisServicesServer -Name "myServer" -ResourceGroupName "myReso
 ```
 
 ## <a name="next-steps"></a>次の手順
-[PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)   
-[SSDT からのモデルのデプロイ](analysis-services-deploy.md)   
+[PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)
+[SSDT からのモデルのデプロイ](analysis-services-deploy.md)
 [Azure Portal でモデルを作成する](analysis-services-create-model-portal.md)

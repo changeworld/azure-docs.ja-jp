@@ -1,23 +1,23 @@
 ---
-title: "Azure Service Fabric スタンドアロン クラスターのデプロイの準備 | Microsoft Docs"
-description: "運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。"
+title: Azure Service Fabric スタンドアロン クラスターのデプロイの準備 | Microsoft Docs
+description: 運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;maburlik;aljo
+ms.openlocfilehash: 62673025f5c597f6ed958ad523190d937a52c912
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 <a id="preparemachines"></a>
 
@@ -99,7 +99,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 * Service Fabric SDK をアンインストールします。
 * Service Fabric ランタイムをアンインストールにします。 
 * Windows Firewall サービス (mpssvc) を有効にします。
-* リモート レジストリ サービス (remoteregistry) を有効にします。
+* リモート レジストリ サービス (リモート レジストリ) を有効にします。
 * ファイル共有 (SMB) を有効化にします。
 * クラスター構成のポートに基づいて必要なポートを開放します。
 * Windows SMB とリモート レジストリ サービスに必要なポート 135、137、138、139、445 を開放します。
@@ -165,5 +165,5 @@ Passed                     : True
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Windows Server で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)

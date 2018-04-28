@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 01de1020cd485b3cf91e5d5bc2e175df2bcad111
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -168,7 +168,6 @@ Azure Cosmos DB へデータをコピーするには、コピー アクティビ
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのシンクの type プロパティは **DocumentDbCollectionSink** に設定する必要があります |[はい] |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、nestedSeparator がドットの場合は、次の JSON 構造を Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}` |いいえ (既定値はドット `.`) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。<br/><br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
 
 **例:**
 

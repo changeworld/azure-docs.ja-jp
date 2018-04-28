@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 502e3cefca5e2e60efe6a9875de0b63413bc4578
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5c37a693e1594f9afe40effba45d7b05a68fd49c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
 この記事では、[Azure App Service](../app-service/app-service-web-overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
-- [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-- [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql)
-- [Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/services/postgres)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgres)
 - [アプリ内 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 バックアップからの復元は、**Standard** レベルか **Premium** レベルで実行されているアプリでのみ利用できます。 アプリのスケーリングについて詳しくは、「 [Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」をご覧ください。 **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
@@ -42,12 +42,12 @@ ms.lasthandoff: 04/06/2018
     **[アプリのバックアップ]** オプションには、現在のアプリの既存のバックアップがすべて表示されるので、バックアップを簡単に選択することができます。
     **[ストレージ]** オプションを使用すると、サブスクリプションに含まれる既存の Azure Storage アカウントとコンテナーから、任意のバックアップ ZIP ファイルを選択できます。
     別のアプリのバックアップを復元する場合は、 **[ストレージ]** オプションを使用します。
-3. 次に、 **[復元先]**でアプリの復元先を指定します。
+3. 次に、 **[復元先]** でアプリの復元先を指定します。
    
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > **[上書き]**を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]**をクリックする前に、実行する操作内容が正しいことを確認します。
+   > **[上書き]** を選択した場合、現在のアプリの既存のデータはすべて消去され上書きされます。 **[OK]** をクリックする前に、実行する操作内容が正しいことを確認します。
    > 
    > 
    

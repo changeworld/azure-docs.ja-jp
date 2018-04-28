@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services を管理する | Microsoft Docs"
-description: "Azure で Analysis Services サーバーを管理する方法について説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services を管理する | Microsoft Docs
+description: Azure で Analysis Services サーバーを管理する方法について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 79491d0b-b00d-4e02-9ca7-adc99bc02fdb
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 11aa42fbe15dd68dfac128b707fd6bdbfd0b24d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 0cad50788eeb4a31d1e3f6f7e6c038ba2a8d4d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
@@ -47,13 +40,18 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
    
     ![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. SSMS の**オブジェクト エクスプローラー**で、**[接続]** > **[Analysis Services]** の順にクリックします。
-3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、**[認証]** で次のいずれかの認証の種類を選びます。
-   
+3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、**[認証]** で次のいずれかの認証の種類を選びます。   
+    > [!NOTE]
+    > 認証の種類として、**[Active Directory - MFA サポートで汎用]** が推奨されます。
+
+    > [!NOTE]
+    > Microsoft アカウント、Live ID、Yahoo、Gmail などでサインインする場合は、パスワード フィールドを空白のままにしておきます。 [接続] をクリックすると、パスワードの入力を求められます。
+
     **[Windows 認証]**: <Windows ドメイン>\<ユーザー名> とパスワードを資格情報として使います。
 
     **[Active Directory パスワード認証]**: 組織アカウントを使います。 たとえば、ドメイン参加非コンピューターから接続するときです。
 
-    **[Active Directory のユニバーサル認証]**: [非対話型認証や多要素認証](../sql-database/sql-database-ssms-mfa-authentication.md)を使います。 
+    **[Active Directory - MFA サポートで汎用]**: [非対話型認証または多要素認証](../sql-database/sql-database-ssms-mfa-authentication.md)を使います。 
    
     ![SSMS で接続する](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

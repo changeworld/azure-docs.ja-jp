@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: ac9c762327dd8d2eb9e4dd9a79fc2bfa87241f14
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52c910609930bbeecd21b75549c71ee9ed4e1e3b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/03/2018
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使う場合は、https://portal.azure.com を開き、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.5.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、Azure との接続を作成するには、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントで `Login-AzureRmAccount` を実行する必要もあります。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.5.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、Azure との接続を作成するには、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントで `Connect-AzureRmAccount` を実行する必要もあります。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.29 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、Azure との接続を作成するには、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントで `az login` を実行する必要もあります。
 
 ## <a name="create-a-peering"></a>ピアリングの作成
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/03/2018
 2. ピアリングを作成する仮想ネットワークを一覧から選択します。
 3. 仮想ネットワークの一覧から、ピアリングを作成する仮想ネットワークを選択します。
 4. **[設定]** で **[ピアリング]** を選択します。
-5. **[+ 追加]**を選択します。 
+5. **[+ 追加]** を選択します。 
 6. <a name="add-peering"></a>次の設定の値を入力または選択します。
     - **[名前]:** ピアリングの名前は、仮想ネットワーク内で一意である必要があります。
     - **[仮想ネットワークのデプロイ モデル]:** ピアリングする仮想ネットワークのデプロイに使用されたデプロイ モデルを選択します。
@@ -129,8 +129,8 @@ ms.lasthandoff: 04/03/2018
 - ピアリングする両方の仮想ネットワークが存在するサブスクリプションは、同じ Azure Active Directory テナントに関連付けられている必要があります。 AD テナントをまだ持っていない場合は、簡単に[作成](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 別々の Active Directory テナントに関連付けられた異なるサブスクリプション内の 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使って接続することができます。
 - 仮想ネットワークは、別の仮想ネットワークとピアリングすることができ、Azure 仮想ネットワーク ゲートウェイを使用して別の仮想ネットワークに接続することもできます。 ピアリングとゲートウェイの両方を使用して仮想ネットワークが接続されている場合、仮想ネットワーク間のトラフィックは、ゲートウェイではなく、ピアリング構成を介して流れます。
 - 仮想ネットワーク ピアリングを利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
-* <a name="cross-region"></a>同じリージョンまたは異なるリージョンの仮想ネットワークをピアリングできます。 次の制約は、両方の仮想ネットワークが "*同じ*" リージョンにあるときは適用されませんが、"*異なる*" リージョンにあるときは適用されます。 
-    - 仮想ネットワークは、韓国南部、英国南部、英国西部、カナダ東部、インド南部、インド中部、インド西部、米国中西部、カナダ中部、米国西部 2 にのみ存在することができます。
+* <a name="cross-region"></a>同じリージョンまたは異なるリージョンの仮想ネットワークをピアリングできます。 次の制約は、両方の仮想ネットワークが "*同じ*" リージョンにあるときは適用されませんが、仮想ネットワークがグローバルにピアリングされているときは適用されます。 
+    - 仮想ネットワークは、次のリージョンにのみ存在できます。米国中西部 (ワイオミング)、米国西部 2 (ワシントン)、米国中部 (アイオワ)、米国東部 2 (バージニア)、カナダ中部 (トロント)、カナダ東部 (ケベックシティ)、東南アジア (シンガポール)、韓国南部 (釜山)、インド南部 (チェンナイ)、インド中部 (プネ)、インド西部 (ムンバイ)、英国南部 (ロンドン)、英国西部 (カーディフ)、西ヨーロッパ (オランダ)
     - ある仮想ネットワーク内のリソースは、ピアリングされた仮想ネットワークの Azure 内部ロード バランサーの IP アドレスと通信することはできません。 ロード バランサーおよびそれと通信するリソースは、同じ仮想ネットワーク内に存在する必要があります。
     - リモート ゲートウェイを使うこと、またはゲートウェイの通過を許可することはできません。 リモート ゲートウェイを使う場合、またはゲートウェイの通過を許可する場合は、ピアリングの両方の仮想ネットワークが同じリージョンに存在する必要があります。 
 
@@ -140,12 +140,12 @@ ms.lasthandoff: 04/03/2018
     
 |Virtual Network|デプロイメント モデル|役割|アクセス許可|
 |---|---|---|---|
-|myVnetA|リソース マネージャー|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |クラシック|[Classic Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
-|myVnetB|リソース マネージャー|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-||クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
+|myVnetA|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+| |クラシック|[Classic Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
+|myVnetB|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+||クラシック|[従来のネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
-[組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
+[組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

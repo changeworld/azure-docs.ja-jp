@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dbd96187ad73a9c7e27b28f137e25fe66e2944ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
 
@@ -40,12 +40,8 @@ ms.lasthandoff: 04/03/2018
 ### <a name="accounts"></a>アカウント
 * **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成][azure_free_account]します。
 * **Batch アカウント**: Azure サブスクリプションの用意ができたら、 [Azure Batch アカウントを作成](batch-account-create-portal.md)します。
-* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **ストレージ アカウント**: Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。
 
-> [!IMPORTANT]
-> 「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順 5. 「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類 "*のみ*" がサポートされています。
->
->
 
 ### <a name="visual-studio"></a>Visual Studio
 サンプル プロジェクトをビルドするには、**Visual Studio 2015 以降**が必要です。 Visual Studio の無料試用版については、[Visual Studio 製品の概要][visual_studio]に関するページを参照してください。
@@ -102,17 +98,12 @@ private const string StorageAccountName = "";
 private const string StorageAccountKey  = "";
 ```
 
-> [!IMPORTANT]
-> 既に述べたとおり、現時点では、Azure Storage では **汎用**ストレージ アカウントの資格情報を指定する必要があります。 Batch アプリケーションでは、**汎用**ストレージ アカウント内で Blob Storage が使用されます。 アカウントの種類として *[Blob Storage]* を選択して作成されたストレージ アカウントの資格情報を指定しないでください。
->
->
-
 [Azure Portal][azure_portal] の各サービスのアカウント ブレード内に Batch および Storage アカウント資格情報があります。
 
 ![ポータルの Batch の資格情報][9]
 ![ポータルの Storage の資格情報][10]<br/>
 
-資格情報を使用してプロジェクトを更新したら、ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションのビルド]**をクリックします。 メッセージに従って NuGet パッケージの復元を確認します。
+資格情報を使用してプロジェクトを更新したら、ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションのビルド]** をクリックします。 メッセージに従って NuGet パッケージの復元を確認します。
 
 > [!TIP]
 > NuGet パッケージが自動的に復元されない場合、またはパッケージの復元失敗に関するエラーが表示される場合は、[NuGet パッケージ マネージャー][nuget_packagemgr]がインストールされていることを確認します。 不足しているパッケージのダウンロードを有効にします。 パッケージのダウンロードを有効にするには、[ビルド中のパッケージ復元の有効化][nuget_restore]に関するページを参照してください。

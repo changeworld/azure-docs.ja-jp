@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7800c2e72b1bfd78f83bf7b90a35e47f6109a014
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -32,22 +32,13 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 | 言語 | サポートされているバージョン |
 |---|---|
-| Node.js | 4.4、4.5、6.2、6.6、6.9 ～ 6.11、8.0、8.1 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、9.4 |
 | Java * | 8.0 |
-| PHP | 5.6、7.0 |
+| PHP | 5.6、7.0、7.2 |
 | .NET Core | 1.0、1.1、2.0 |
 | Ruby | 2.3 |
-
-* プレビュー機能のサポート
-
-### <a name="preview-supported-java-runtimes"></a>プレビュー: サポートされている Java ランタイム
-
-Linux 上の App Service で使用できる Java ランタイムは次のとおりです。
-
-| ランタイム | バージョン |
-|---|---|
-| Apache Tomcat | 8.5 |
-| Apache Tomcat | 9.0 |
+| Go | 1.0 |
+| Apache Tomcat | 8.5、9.0 |
 
 詳細については、「[App Service on Linux で Java Web アプリを作成する](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java)」を参照してください。
 
@@ -84,10 +75,7 @@ Azure Portal では、Web App for Containers で現在使用できる機能の�
 
 仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの機能は、まだ利用できません。 これらの機能が利用可能になったら、ドキュメントとブログを更新し、変更についてお知らせします。
 
-App Service on Linux は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 App Service on Linux には、次の重要な制限もあります。
-
-* Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
-* Web App for Containers を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリソース グループに App Service プランを作成する必要があります。
+App Service on Linux は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

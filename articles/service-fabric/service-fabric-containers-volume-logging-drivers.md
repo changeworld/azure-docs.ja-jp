@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric Docker Compose (プレビュー) | Microsoft Docs"
-description: "Azure Service Fabric は、Service Fabric を使うことにより既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 Docker Compose のサポートは現在プレビュー段階です。"
+title: Azure Service Fabric Docker Compose (プレビュー) | Microsoft Docs
+description: Azure Service Fabric は、Service Fabric を使うことにより既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 Docker Compose のサポートは現在プレビュー段階です。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 79b4700b0b0b6897c19117044d37623a2f6ea8df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 72ff8e99453d3067492d50c3e35396dba9f23c12
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>コンテナーで Docker ボリューム プラグインとログ ドライバーを使用する
 Azure Service Fabric では、コンテナー サービスへの [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)および [Docker ログ ドライバー](https://docs.docker.com/engine/admin/logging/overview/)の指定がサポートされています。 コンテナーが別のホストに移動または再開された場合でも、[Azure Files](https://azure.microsoft.com/services/storage/files/) にデータを維持できます。
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage))。 この制約があるため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。 
+> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage))。 この制約があるため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。 
 >   
 
 

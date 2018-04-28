@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI- sfctl choas| Microsoft Docs
-description: "Service Fabric CLI sfctl chaos のコマンドについて説明します。"
+description: Service Fabric CLI sfctl chaos のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 34e4d47b1de509c2053996d9d1078733d7055447
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -53,7 +53,7 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
@@ -86,7 +86,7 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 | --debug                    | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                  | このヘルプ メッセージを表示して終了します。|
 | --output -o                | 出力形式。  使用できる値は、json、jsonc、table、tsv です。           既定値は json です。|
-| --query                    | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query                    | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose                  | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-chaos-stop"></a>sfctl chaos stop
@@ -107,7 +107,7 @@ Chaos がこれ以降の障害のスケジュールを行うのを停止しま�
 | --debug  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h| このヘルプ メッセージを表示して終了します。|
 | --output -o | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose| ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="next-steps"></a>次の手順

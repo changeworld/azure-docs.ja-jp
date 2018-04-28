@@ -84,7 +84,7 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 4. **[概要]** ページの **[出力]** に、いくつかのクラスター リンクが用意されています。 **SSHMaster0** は、コンテナー サービス クラスター内の 1 つ目のマスターに対する SSH 接続文字列です。 
 
-前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 次に例を示します。
+前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 例: 
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -92,7 +92,17 @@ ssh userName@masterFQDN –A –p 22
 
 詳細については、「[Azure Container Service クラスターに接続する](../articles/container-service/kubernetes/container-service-connect.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Windows で DNS 名前解決が機能しません。 どうすればよいですか。
+
+Windows には、DNS に関して、修正プログラムが今も積極的にフェーズ アウトされているいくつかの問題が確認されています。ご使用の ACS エンジンと Windows バージョンが最新であること ([KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) と [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) がインストールされていること) を確認し、その改善策がお使いの環境で適用されるようにしてください。 その他の軽減策 (手順) については、以下の表を参照してください。
+
+| DNS の症状 | 対処法  |
+|-------------|-------------|
+|ワークロード コンテナーが不安定でクラッシュすると、ネットワーク名前空間がクリーンアップされる | 該当するサービスを再デプロイします。 |
+| サービスの VIP アクセスが切断される | 通常の (非特権) ポッドが常に 1 つ実行状態となるように [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) を構成してください。 |
+|コンテナーを実行しているノードが利用不可状態になると、DNS クエリが失敗して "negative cache entry" が発生することがある | 該当するコンテナー内で次のコマンドを実行してください。 <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> それでも問題が解決されない場合は、DNS キャッシュを完全に無効にしてみてください。 <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
+
+## <a name="next-steps"></a>次の手順
 
 * Azure Container Service の[概要を確認する](../articles/container-service/kubernetes/container-service-intro-kubernetes.md)。
 * [ポータル](../articles/container-service/dcos-swarm/container-service-deployment.md)または [Azure CLI 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。

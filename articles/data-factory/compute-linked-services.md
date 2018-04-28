@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: fe4a4962acce06a6448cef8d5c1af398e3965a33
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 806d0db3536a00dea4e421f847cf0f75bcfc218c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -426,6 +426,65 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 | テナント               | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]                                      |
 | connectVia           | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                        |
 
+
+
+## <a name="azure-databricks-linked-service"></a>Azure Databricks のリンクされたサービス
+**Azure Databricks のリンクされたサービス**を作成して、Databricks ワークロード (ノートブック) の実行に使用する Databricks ワークスペースを登録できます。
+
+### <a name="example---using-new-job-cluster-in-databricks"></a>例 - Databricks で新しいジョブ クラスターの使用
+
+```json
+{
+    "name": "AzureDatabricks_LS",
+    "properties": {
+        "type": "AzureDatabricks",
+        "typeProperties": {
+            "domain": "eastus.azuredatabricks.net",
+            "newClusterNodeType": "Standard_D3_v2",
+            "newClusterNumOfWorker": "1:10",
+            "newClusterVersion": "4.0.x-scala2.11",
+            "accessToken": {
+                "type": "SecureString",
+                "value": "dapif33c9c721144c3a790b35000b57f7124f"
+            }
+        }
+    }
+}
+
+```
+
+### <a name="example---using-existing-interactive-cluster-in-databricks"></a>例 - Databricks で対話型の既存クラスターの使用
+
+```json
+{
+    "name": " AzureDataBricksLinedService",
+    "properties": {
+      "type": " AzureDatabricks",
+      "typeProperties": {
+        "domain": "https://westeurope.azuredatabricks.net",
+        "accessToken": {
+            "type": "SecureString", 
+            "value": "dapif33c9c72344c3a790b35000b57f7124f"
+          },
+        "existingClusterId": "{clusterId}"
+        }
+}
+
+```
+
+### <a name="properties"></a>[プロパティ]
+
+| プロパティ             | [説明]                              | 必須                                 |
+| -------------------- | ---------------------------------------- | ---------------------------------------- |
+| name                 | リンクされたサービスの名前               | [はい]   |
+| 型                 | type プロパティは **AzureDatabricks** に設定されます。 | [はい]                                      |
+| ドメイン               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | [はい]                                 |
+| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | [はい]                                       |
+| existingClusterId    | このすべてのジョブを実行する既存のクラスターのクラスター ID。 これは作成済みの対話型クラスターでなければなりません。 応答が停止した場合は、クラスターの手動再起動が必要になることがあります。 Databricks では、信頼性を高めるために新しいクラスターでジョブを実行することをお勧めします。 対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細](https://docs.databricks.com/user-guide/clusters/tags.html) | いいえ  
+| newClusterVersion    | クラスターの Spark バージョン。 Databricks にジョブ クラスターを作成します。 | いいえ   |
+| newClusterNumOfWorker| このクラスターに属する worker ノードの数。 1 つのクラスターには 1 つの Spark ドライバーと num_workers Executor、全体では num_workers + 1 Spark ノードになります。 文字列は Int32 で設定されます。たとえば、“1” は、numOfWorker が 1 であること、“1:10” は、最小が 1 で最大が 10 の auto-scale を意味します。  | いいえ                 |
+| newClusterNodeType   | このフィールドは、単一の値を通じて使用されるリソースをこのクラスターのそれぞれの Spark ノードにエンコードします。 たとえば、Spark ノードはメモリまたはコンピューティング集約型ワークロード用にプロビジョニングされ、最適化されます。このフィールドは、新しいクラスターに必要です                | いいえ                |
+| newClusterSparkConf  | 省略可能なユーザー指定の Spark 構成キーと値のペアのセット。 ユーザーは、余分な JVM オプションの文字列をドライバーと Executor にそれぞれ spark.driver.extraJavaOptions および spark.executor.extraJavaOptions を介して渡すこともできます。 | いいえ   |
 
 
 ## <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス

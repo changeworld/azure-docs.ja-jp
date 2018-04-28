@@ -1,28 +1,28 @@
 ---
-title: "Azure Stack の開始および停止 | Microsoft Docs"
-description: "Azure Stack を開始およびシャットダウンする方法を説明します。"
+title: Azure Stack の開始および停止 | Microsoft Docs
+description: Azure Stack を開始およびシャットダウンする方法を説明します。
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 43BF9DCF-F1B7-49B5-ADC5-1DA3AF9668CA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
-ms.author: mabrigg
-ms.openlocfilehash: 98bf75f5883b734c785ed1a3ed924afca1737c56
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 04/09/2018
+ms.author: jeffgilb
+ms.reviewer: misainat
+ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>Azure Stack の開始および停止
-
-*適用対象: Azure Stack 統合システム (バージョン 1712 以降)*
+この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 
 
 ## <a name="stop-azure-stack"></a>Azure Stack の停止 
 
@@ -86,4 +86,4 @@ Azure Stack 環境の電源投入後 2 時間経ってもインフラストラ�
 
 ## <a name="next-steps"></a>次の手順 
 
-Azure Stack 診断ツールと問題のログ記録について説明します。「Azure Stack diagnostics tools (Azure Stack の診断ツール)」をご覧ください。 Azure Stack の診断ツール。 Azure Stack の診断ツール。 Azure Stack の診断ツール。
+Azure Stack 診断ツールと問題のログ記録については、「[Azure Stack の診断ツール](azure-stack-diagnostics.md)」をご覧ください。

@@ -1,46 +1,84 @@
 ---
-title: Azure Stream Analytics で間違った形式の入力イベントのトラブルシューティングを行う
-description: Stream Analytics ジョブで入力データのどのイベントが問題を引き起こしているかを知る方法
+title: Azure Stream Analytics での一般的な問題のトラブルシューティング
+description: この記事では、Azure Stream Analytics におけるいくつかの一般的な問題と、問題をトラブルシューティングするための手順について説明します。
 services: stream-analytics
 author: jasonwhowell
-manager: Kfile
+manager: kfile
 ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/05/2018
-ms.openlocfilehash: fcbb03b4d9aed797cf99c374661c743d39f81276
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/12/2018
+ms.openlocfilehash: e04d1072acee635235b0a5bd8465ca38c861017b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Stream Analytics での一般的な問題とトラブルシューティングの手順
 
-## <a name="troubleshoot-for-malformed-input-events"></a>間違った形式の入力イベントのトラブルシューティング
+## <a name="troubleshoot-malformed-input-events"></a>間違った形式の入力イベントをトラブルシューティングする
 
-Stream Analytics ジョブの入力ストリームに間違った形式のメッセージが含まれている場合は、シリアル化の問題が発生します。 間違った形式のメッセージには、JSON オブジェクトのかっこの欠落や不適切なタイム スタンプ形式などの不適切なシリアル化が含まれます。 Stream Analytics ジョブは、間違った形式のメッセージを受信すると、メッセージを削除し、ユーザーに警告で通知します。 警告の記号は、Stream Analytics ジョブの **[入力]** タイルに表示されます (この警告記号は、ジョブが実行中の状態である間、表示され続けます)。
+ Stream Analytics ジョブの入力ストリームに間違った形式のメッセージが含まれている場合は、シリアル化の問題が発生します。 たとえば、間違った形式のメッセ―ジは、JSON オブジェクト内でのかっこの不足や中かっこの不足、または時間フィールドでの不正なタイム スタンプ形式によって発生する可能性があります。 
+ 
+ Stream Analytics ジョブは、入力から間違った形式のメッセージを受信すると、メッセージを削除し、ユーザーに警告で通知します。 警告の記号は、Stream Analytics ジョブの **[入力]** タイルに表示されます (この警告記号は、ジョブが実行中の状態である間、表示され続けます)。
 
 ![[入力] タイル](media/stream-analytics-malformed-events/inputs_tile.png)
 
-診断ログを有効にすると、警告の詳細を参照することができます。 不正な形式の入力イベントがある場合は、実行ログに次のようなメッセージのエントリが記録されます: "メッセージ: リソース <blob URI> からの入力イベントを json とし逆シリアル化できませんでした)"。 
+詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントがある場合は、実行ログに "メッセージ: リソース <blob URI> からの入力イベントを json とし逆シリアル化できませんでした" というメッセージのエントリが記録されます。 
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
 1. [入力] タイルに移動し、クリックして警告を表示します。
+
 2. [入力の詳細] タイルに、一連の警告が問題に関する詳細と共に表示されます。 警告メッセージの例を次に示します、警告メッセージは、間違った形式の JSON データが存在するパーティション、オフセット、シーケンス番号を示します。 
 
    ![オフセットを含む警告メッセージ](media/stream-analytics-malformed-events/warning_message_with_offset.png)
 
-3. 不正な形式の JSON データを取得するには、CheckMalformedEvents.cs コードを実行します。これは [GitHub サンプル リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)から取得できます。 このコードは、パーティション ID とオフセットを読み取り、そのオフセットにあるデータを出力します。 
+3. 不適切な形式の JSON データを取得するには、CheckMalformedEvents.cs コードを実行します。 この例は、[GitHub サンプル リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)で使用可能です。 このコードは、パーティション ID とオフセットを読み取り、そのオフセットにあるデータを出力します。 
 
 4. データの読み取り後、シリアル化形式を分析し、修正できます。 
 
-## <a name="handling-duplicate-records-when-using-azure-sql-database-as-output-for-a-stream-analytics-job"></a>Azure SQL Database を Stream Analytics ジョブの出力として使用している場合の重複レコードの処理
+## <a name="delayed-output"></a>出力の遅延
+
+### <a name="first-output-is-delayed"></a>最初の出力が遅延される
+Stream Analytics ジョブが開始されると、入力イベントが読み取られますが、特定の状況で生成された出力に遅延が発生する場合があります。
+
+テンポラル クエリ要素の時刻の値が大きい場合、出力の遅延が引き起こされる場合があります。 大きい時間枠で正しい出力を生成するために、ストリーミング ジョブは使用可能な最新時刻 (最大 7 日前まで) からデータを読み取って時間枠を設定することによって起動します。 その間、未処理の入力イベントのキャッチアップの読み取りが完了するまで、出力は生成されません。 この問題は、システムがストリーミング ジョブをアップグレードし、それに伴ってジョブが再起動されるときに発生する可能性があります。 このようなアップグレードは通常、2 か月に 1 度行われます。 
+
+そのため、Stream Analytics クエリを設計するときは慎重に行ってください。 ジョブのクエリ構文に大きな時間枠 (数時間以上、最大 7 日間) を使用する場合は、ジョブが起動または再起動されるときの最初の出力で遅延が発生する可能性があります。  
+
+最初の出力におけるこの種の遅延を軽減する 1 つの方策は、クエリ並列処理の技術 (データのパーティション化) を使用するか、またはより多くのストリーミング ユニットを追加して、ジョブが遅れなくなるまでスループットを改善することです。  詳細については、[Stream Analytics ジョブを作成する場合の考慮事項](stream-analytics-concepts-checkpoint-replay.md)に関するページをご覧ください。
+
+以下の要因は、生成された最初の出力のタイムラインに影響を及ぼします。
+
+1. ウィンドウ集計 (タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウの GROUP BY) の使用
+   - タンブリング ウィンドウまたはホッピング ウィンドウ集計の場合、ウィンドウ時間枠の最後に結果が生成されます。 
+   - スライディング ウィンドウの場合、イベントがスライディング ウィンドウに出入りするときに、結果が生成されます。 
+   - 大きなウィンドウ サイズ (1 時間を超える) を使用することを計画している場合は、より頻繁に出力を確認できるように、ホッピング ウィンドウまたはスライディング ウィンドウを選択することをお勧めします。
+
+2. テンポラル結合 (DATEDIFF を使用した JOIN) の使用
+   - 一致するイベントの両端を受け取ると、すぐに一致が生成されます。
+   - 一致 (LEFT OUTER JOIN) が欠如しているデータは、左側の各イベントに関する DATEDIFF ウィンドウの最後に生成されます。
+
+3. テンポラル分析関数 (LIMIT DURATION を使用した ISFIRST、LAST、および LAG) の使用
+   - 分析関数の場合、イベントごとに出力が生成され、遅延はありません。
+
+### <a name="output-falls-behind"></a>出力が遅れる
+ジョブの通常操作中に、ジョブの出力が遅れている (待機時間がより長くなる) ことに気付いた場合は、以下の要因を検証することで、根本原因を特定できます。
+- ダウンストリーム シンクが調整されているか
+- アップストリーム ソースが調整されているか
+- クエリの処理ロジックがコンピューティング集約型かどうか
+
+これらの詳細を確認するには、Azure Portal で、ストリーミング ジョブを選択して、**[ジョブ ダイアグラム]** を選択します。 各入力には、パーティションごとのバックログ イベント メトリックがあります。 バックログ イベント メトリックが継続的に増加している場合、システム リソースが制約を受けていることを示す指標になります。 出力のシンク調整または高使用率の CPU が原因になっている可能性があります。 ジョブ ダイアグラムの使用に関する詳細については、「[ジョブ ダイアグラムを使用したデータ主導型デバッグ](stream-analytics-job-diagram-with-metrics.md)」をご覧ください。
+
+## <a name="handle-duplicate-records-in-azure-sql-database-output"></a>Azure SQL Database 出力での重複レコードの処理
 
 Azure SQL Database を Stream Analytics ジョブへの出力として構成すると、宛先テーブルにレコードが一括挿入されます。 通常、Azure Stream Analytics では、出力シンクに対して[最低 1 回の配信]( https://msdn.microsoft.com/azure/stream-analytics/reference/event-delivery-guarantees-azure-stream-analytics)が保証されますが、SQL テーブルで一意制約が定義されている場合は、[厳密に 1 回だけの配信を保証]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/)することもできます。 
 
-SQL テーブルで一意キー制約がセットアップされた場合、SQL テーブルに重複レコードが挿入されると、Azure Stream Analytics はデータを複数のバッチに分割し、重複レコードが 1 つになるまでそれらのバッチを再帰的に挿入することで、重複レコードを削除します。 パイプライン内にかなりの数の重複行がある場合、データを分割して再帰的に挿入し、重複を 1 つずつ無視していくことは、時間のかかるプロセスになります。 過去 1 時間以内のアクティビティ ログにキー違反の警告メッセージが複数ある場合は、SQL 出力によってジョブ全体の速度が低下している可能性があります。 この問題を解決するには、IGNORE_DUP_KEY オプションを有効にして、キー違反の原因となっている[インデックスを構成する]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)必要があります。 このオプションを有効にすると、一括挿入時の重複値は SQL によって無視され、SQL Azure ではエラーの代わりに警告メッセージが生成されます。 Azure Stream Analytics では、主キー違反エラーが生成されなくなります。
+SQL テーブルに一意キー制約が設定された後に、SQL テーブルに挿入される重複したレコードがあると、Azure Stream Analytics によって重複したレコードは削除されます。 データはバッチに分割され、単一の重複レコードが見つかるでバッチの再帰的な挿入が行われます。 ストリーミング ジョブに多数の重複行が含まれる場合は、この分割と挿入の処理で重複を 1 つずつ無視する必要があり、効率が低下して時間がかかってしまいます。 過去 1 時間以内のアクティビティ ログにキー違反の警告メッセージが複数ある場合は、SQL 出力によってジョブ全体の速度が低下している可能性があります。 
+
+この問題を解決するには、IGNORE_DUP_KEY オプションを有効にして、キー違反の原因となっている[インデックスを構成する]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)必要があります。 このオプションを有効にすると、一括挿入時の重複値は SQL によって無視され、SQL Azure ではエラーの代わりに警告メッセージが生成されます。 Azure Stream Analytics では、主キー違反エラーが生成されなくなります。
 
 IGNORE_DUP_KEY を構成する際には、一部のインデックスに関する次の考慮事項に注意してください。
 
@@ -49,7 +87,5 @@ IGNORE_DUP_KEY を構成する際には、一部のインデックスに関す�
 * IGNORE_DUP_KEY は、列ストア インデックスには適用されません (このようなインデックスに対して一意性を強制することはできないため)。  
 
 ## <a name="next-steps"></a>次の手順
-
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-

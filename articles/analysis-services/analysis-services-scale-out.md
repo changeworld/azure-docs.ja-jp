@@ -1,24 +1,18 @@
 ---
-title: "Azure Analysis Services のスケールアウト | Microsoft Docs"
-description: "Azure Analysis Services サーバーをスケールアウトによってレプリケートします"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services のスケールアウト | Microsoft Docs
+description: Azure Analysis Services サーバーをスケールアウトによってレプリケートします
 author: minewiskan
-manager: erikre
-editor: 
-ms.assetid: 
+manager: kfile
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/16/2018
 ms.author: owend
-ms.openlocfilehash: d00f6bbc285cca028f22ced69ad03d8a2814d76a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -28,7 +22,7 @@ ms.lasthandoff: 02/21/2018
 
 一般的なサーバーのデプロイでは、1 つのサーバーで、処理サーバーとクエリ サーバーの両方の役割を果たします。 サーバー上のモデルに対するクライアント クエリの数が、加入しているサーバー プランのクエリ プロセッシング ユニット (QPU) を超過した場合、またはモデル処理が負荷の高いクエリのワークロードと同時に発生した場合、パフォーマンスが低下することがあります。 
 
-スケールアウトすることで、クエリ プールを 1 つと、クエリ レプリカを追加で最大 7 つ (サーバーを入れて合計 8 つ) まで作成可能です。 重要な場面では、QPU の需要を満たせるようにクエリ レプリカの数をスケーリングできます。また、処理サーバーはいつでもクエリ プールから分離できます。 
+スケールアウトすることで、クエリ プールを 1 つと、クエリ レプリカを追加で最大 7 つ (サーバーを入れて合計 8 つ) まで作成可能です。 重要な場面では、QPU の需要を満たせるようにクエリ レプリカの数をスケーリングできます。また、処理サーバーはいつでもクエリ プールから分離できます。 すべてのクエリ レプリカは、サーバーと同じリージョンに作成されます。
 
 クエリ プール内にあるクエリ レプリカの数に関わらず、ワークロードの処理はクエリ レプリカ間で分散されません。 単一のサーバーが処理サーバーとして機能します。 クエリ レプリカは、クエリ プール内の各レプリカ間で同期されているモデルに対するクエリにのみ機能します。 
 
@@ -79,7 +73,13 @@ ms.lasthandoff: 02/21/2018
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-PowerShell から sync を実行するため、最新の 5.01 以上の AzureRM モジュールに[更新](https://github.com/Azure/azure-powershell/releases)します。 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance) を使用します。
+PowerShell を使用する前に、[最新の AzureRM モジュールをインストールまたは更新します](https://github.com/Azure/azure-powershell/releases)。 
+
+クエリ レプリカの数を設定するには、[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)を使用します。 省略可能な `-ReadonlyReplicaCount` パラメーターを指定します。
+
+同期を実行するには、[Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance) を使用します。
+
+
 
 ## <a name="connections"></a>接続
 

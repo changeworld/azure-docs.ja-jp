@@ -1,36 +1,22 @@
 ---
-title: "SQL Data Warehouse のデータを Power BI で視覚化する | Microsoft Azure"
-description: "SQL Data Warehouse のデータを Power BI で視覚化します。"
+title: SQL Data Warehouse のデータを Power BI で視覚化する | Microsoft Azure
+description: SQL Data Warehouse のデータを Power BI で視覚化します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: mlee3gsd
-manager: jhubbard
-editor: 
-ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 10/31/2016
-ms.author: martinle;barbkess
-ms.openlocfilehash: a41393730143b14e91318a61858d989fff3786c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 52581a87caac419a79caab647cc9c5a4ee7453ba
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
-> [!div class="op_single_selector"]
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-> * [SSMS](sql-data-warehouse-query-ssms.md)
-> 
-> 
-
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
@@ -40,80 +26,70 @@ ms.lasthandoff: 12/18/2017
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを進めるには、次が必要です。
 
-* AdventureWorksDW データベースが事前に読み込まれている SQL Data Warehouse。 これをプロビジョニングするには、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照し、サンプル データを読み込んでください。 データ ウェアハウスは既にあるもののサンプル データがない場合は、[サンプル データを手動で読み込む][load sample data manually]ことができます。
+* AdventureWorksDW データベースが事前に読み込まれている SQL Data Warehouse。 データ ウェアハウスをプロビジョニングするには、[SQL Data Warehouse の作成](create-data-warehouse-portal.md)に関するページを参照し、サンプル データを読み込んでください。 データ ウェアハウスは既にあるもののサンプル データがない場合は、[WideWorldImportersDW を読み込む](load-data-wideworldimportersdw.md)ことができます。
 
 ## <a name="1-connect-to-your-database"></a>1.データベースに接続する
 Power BI を開き、AdventureWorksDW データベースに接続するには:
 
-1. [Azure Portal][Azure portal] にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[SQL Database]** をクリックし、AdventureWorks SQL Data Warehouse データベースを選択します。
    
-    ![データベースの検索][1]
+    ![データベースの検索](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
 3. [Power BI で開く] ボタンをクリックします。
    
-    ![Power BI ボタン][2]
+    ![Power BI ボタン](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png)
 4. SQL Data Warehouse の接続ページにデータベースの Web アドレスが表示されます。 [次へ] をクリックします。
    
-    ![Power BI connection][3]
-5. Azure SQL Server のユーザー名とパスワードを入力すると、SQL Data Warehouse データベースに完全に接続されます。
+    ![Power BI connection](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png)
+5. Azure SQL Server のユーザー名とパスワードを入力します。
    
-    ![Power BI sign in][4]
-6. Power BI にサインインしたら、左側のブレードの AdventureWorksDW データセットをクリックします。 これでデータベースが開きます。
+    ![Power BI のサインイン](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png)
+6. データベースを開くには、左側のブレードの AdventureWorksDW データセットをクリックします。
    
-    ![Power BI open AdventureWorksDW][5]
+    ![Power BI open AdventureWorksDW](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png)
 
 ## <a name="2-create-a-report"></a>2.レポートの作成
 Power BI を使用して AdventureWorksDW サンプル データを分析する準備が整いました。 分析を実行するため、AdventureWorksDW には AggregateSales という名前のビューがあります。 このビューには、会社の売上高を分析するための重要なメトリックがいくつか含まれています。
 
 1. 郵便番号に基づく売上高の地図を作成するには、右側のフィールド ペインにある [AggregateSales] ビューをクリックして展開します。 [PostalCode] 列と [SalesAmount] 列をクリックして選択します。
    
-    ![Power BI select AggregateSales][6]
+    ![Power BI が AggregateSales を選択する](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png)
    
-    Power BI はこのデータを地理データとして自動的に認識し、マップに配置します。
+    Power BI は地理データを自動的に認識し、マップに配置します。
    
-    ![Power BI マップ][7]
-2. この手順では、顧客の所得ごとの売上高を表示する棒グラフを作成します。 これを作成するには、展開した AggregateSales ビューにアクセスします。 [SalesAmount] フィールドをクリックします。 [Customer Income] フィールドを左方向へドラッグし、[軸] にドロップします。
+    ![Power BI マップ](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png)
+
+2. この手順では、顧客の所得ごとの売上高を表示する棒グラフを作成します。 棒グラフを作成するには、展開した AggregateSales ビューにアクセスします。 [SalesAmount] フィールドをクリックします。 [Customer Income] フィールドを左方向へドラッグし、[軸] にドロップします。
    
-    ![Power BI select axis][8]
+    ![Power BI が軸を選択する](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png)
    
-    棒グラフは左側に移動しました。
+    左側の棒グラフ。
    
-    ![Power BI バー][9]
-3. この手順では、発注日ごとの売上高を表示する折れ線グラフを作成します。 これを作成するには、展開した AggregateSales ビューにアクセスします。 [SalesAmount] と [OrderDate] をクリックします。 [視覚化] 列で、折れ線グラフのアイコンをクリックします。"視覚化" の下の 2 行目先頭にあるアイコンです。
+    ![Power BI バー](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png)
+3. この手順では、発注日ごとの売上高を表示する折れ線グラフを作成します。 折れ線グラフを作成するには、展開した AggregateSales ビューにアクセスします。 [SalesAmount] と [OrderDate] をクリックします。 [視覚化] 列で、折れ線グラフのアイコンをクリックします。視覚化の下の 2 行目先頭にあるアイコンです。
    
-    ![Power BI select line chart][10]
+    ![Power BI が折れ線グラフを選択する](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png)
    
     これで、同じデータを 3 とおりの方法で視覚化したレポートが完成しました。
    
-    ![Power BI ライン][11]
+    ![Power BI ライン](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png)
 
 **[ファイル]** をクリックして **[保存]** を選択すると、作業をいつでも保存できます。
 
-## <a name="next-steps"></a>次のステップ
-いくつかサンプル データを挙げて、どのようにして[開発][develop]、[ロード][load]、[移行][migrate]するかを確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト][Power BI website]を参照してください。
+## <a name="using-direct-connnect"></a>直接接続の使用
+Azure SQL Database の場合と同様、SQL Data Warehouse の直接接続を使用すると、論理プッシュダウンと共に Power BI の分析機能を利用できます。 直接接続では、データを検索する際に、クエリがリアルタイムで Azure SQL Data Warehouse に送信されます。  この機能を SQL Data Warehouse のスケールと組み合わせることにより、テラバイト単位のデータに対して動的レポートを数分で作成できます。 さらに、[Power BI で開く] ボタンが導入されたため、Azure の他の部分から情報を収集しなくても、Power BI を直接 SQL Data Warehouse に接続できるようになりました。
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
-[2]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png
-[3]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png
-[4]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png
-[5]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png
-[6]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png
-[7]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png
-[8]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png
-[9]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png
-[10]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png
-[11]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png
-[12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
+直接接続を使用するときは、次の点に注意してください。
 
-<!--Article references-->
-[migrate]: sql-data-warehouse-overview-migrate.md
-[develop]: sql-data-warehouse-overview-develop.md
-[load]: sql-data-warehouse-overview-load.md
-[load sample data manually]: sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+* 接続するときに、サーバーの完全修飾名を指定します。
+* データベースのファイアウォール ルールでは、必ず Azure サービスへのアクセスを許可するように構成します。
+* 列の選択やフィルターの追加などの操作を行うたびに、データ ウェアハウスに対して直接クエリが実行されます。
+* タイルは約 15 分ごとに自動的に更新されます。
+* Q&A は、直接接続データセットでは使用できません。
+* スキーマの変更は自動的に組み込まれます。
+* 直接接続のクエリはすべて 2 分後にタイムアウトになります。
 
-<!--Other-->
-[Azure portal]: https://portal.azure.com/
-[Power BI website]: http://www.powerbi.com/
+これらの制限および注意事項は、エクスペリエンスの改善に伴って変更される場合があります。
+
+## <a name="next-steps"></a>次の手順
+いくつかサンプル データを挙げて、どのようにして[開発](sql-data-warehouse-overview-develop.md)、[読み込み](design-elt-data-loading.md)、[移行](sql-data-warehouse-overview-migrate.md)するかを確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト](http://www.powerbi.com/)を参照してください。

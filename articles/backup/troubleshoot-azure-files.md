@@ -9,11 +9,11 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 225d11c8609c81ed7877283e8dc0fd920b14d838
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>Azure Files のバックアップに関する問題のトラブルシューティング
 次の表に示す情報を使って、Azure Files のバックアップを使用中に発生した問題やエラーのトラブルシューティングを行うことができます。
@@ -59,6 +59,7 @@ Azure Files のバックアップはプレビュー段階にあります。 次�
 | Restore fails because one of the files in the source does not exist. (ソース内のファイルの 1 つが存在しないため、復元に失敗します。) | <ul><li> 選択した項目は復旧ポイントのデータに存在しません。 ファイルを復旧するには、正しいファイル リストを指定してください。 <li> 復旧ポイントに対応するファイル共有スナップショットは手動で削除されます。 別の復旧ポイントを選択し、復元操作を再試行してください。 |
 | 同じ宛先への回復ジョブが処理中です。 | <ul><li>ファイル共有のバックアップでは、同じターゲット ファイル共有への並列復旧がサポートされていません。 <li>既存の回復が完了するのを待ってから、もう一度試してください。 Recovery Services コンテナーに回復ジョブが見つからない場合は、同じサブスクリプション内の他の Recovery Services コンテナーを確認してください。 |
 | ターゲット ファイルの共有がいっぱいのため、復元操作に失敗しました。 | 復元データに対応できるようにターゲット ファイル共有のサイズ クォータを引き上げ、操作を再試行してください。 |
+| Restore operation failed as an error occurred while performing pre restore operations on File Sync Service resources associated with the target file share. (ターゲット ファイル共有に関連付けられている File Sync Service リソースで復元前の操作を実行しているときにエラーが発生したため復元操作に失敗しました。) | しばらくしてからやり直してください。問題が解消されない場合は、Microsoft サポートにお問い合わせください。 |
 | いくつかのファイルを正常に回復できませんでした。 詳しくは、上記のパスにある失敗したファイルの一覧を確認してください。 | <ul> <li> 回復に失敗した理由はファイル (ジョブの詳細で指定されたパス) に示されるため、その理由を解決し、失敗したファイルに対してのみ復元操作を再試行してください。 <li> ファイル復元が失敗する一般的な理由は次のとおりです。 <br/> - 失敗したファイルが現在使用されていないことを確認します。 <br/> - 失敗したファイルと同じ名前のディレクトリが親ディレクトリに存在します。 |
 
 ## <a name="see-also"></a>関連項目

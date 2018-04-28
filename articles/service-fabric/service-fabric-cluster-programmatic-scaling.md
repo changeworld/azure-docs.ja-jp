@@ -1,12 +1,12 @@
 ---
-title: "プログラムによる Azure Service Fabric のスケーリング | Microsoft Docs"
-description: "カスタムのトリガーに従って、Azure Service Fabric クラスターをプログラムでスケールインまたはスケールアウトします。"
+title: プログラムによる Azure Service Fabric のスケーリング | Microsoft Docs
+description: カスタムのトリガーに従って、Azure Service Fabric クラスターをプログラムでスケールインまたはスケールアウトします。
 services: service-fabric
 documentationcenter: .net
 author: mjrousos
 manager: jonjung
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,38 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b875351ef80050687fcf85e35da132cf37bab83b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
-Azure での Service Fabric クラスターのスケーリングの基礎については、[クラスター スケーリング](./service-fabric-cluster-scale-up-down.md)に関する記事で説明されています。 その記事では、Service Fabric クラスターを仮想マシン スケール セット上に構築する方法のほか、手動か、自動スケール ルールを利用して Service Fabric クラスターをスケーリングする方法が示されています。 このドキュメントでは、より高度なシナリオで Azure のスケーリング操作をプログラムで調整する方法を説明します。 
+Azure で実行される Service Fabric クラスターは仮想マシン スケール セットの上に構築されます。  [クラスター スケーリング](./service-fabric-cluster-scale-up-down.md)では、Service Fabric クラスターが手動または自動スケール ルールでスケーリングする方法について説明します。 この記事では、資格情報を管理し、fluent Azure コンピューティング SDK を使用してクラスターをスケールインまたはスケールアウトする方法について説明します。これはより高度なシナリオになります。 概要については、[Azure のスケーリング操作をプログラムで調整する方法](service-fabric-cluster-scaling.md#programmatic-scaling)を読んでください。 
 
-## <a name="reasons-for-programmatic-scaling"></a>プログラムでスケーリングを行う理由
-多くのシナリオでは、手動でのスケーリングまたは自動スケール ルールを使用したスケーリングが適しています。 しかし、シナリオによっては、この方法が適していない場合もあります。 このアプローチの潜在的な欠点は次のとおりです。
-
-- 手動でスケーリングを行うには、ログインし、スケーリング操作を明示的に要求する必要があります。 スケーリング操作が頻繁に必要になる場合または予期せず発生する場合は、このアプローチは適さない可能性があります。
-- 自動スケール ルールによって仮想マシン スケール セットからインスタンスが削除されても、そのノードのナレッジは、そのノードが Silver または Gold の耐久性レベルを持つ種類でない限り、関連付けられた Service Fabric クラスターからは自動的に削除されません。 自動スケール ルールは (Service Fabric レベルではなく) スケール セット レベルで適用されるため、自動スケール ルールを使用すると、Service Fabric ノードを整然とシャットダウンせずに、削除してしまうことがあります。 このような方法でノードの削除を行うと、スケールイン操作の後で、Service Fabric ノードが "ゴースト" 状態で背後に残ります。 ユーザー (またはサービス) は、Service Fabric クラスターから削除したノードの状態を定期的にクリーンアップする必要があります。
-  - Gold または Silver の耐久性レベルを持つノード型では、削除したノードが自動的にクリーンアップされるため、追加のクリーンアップは必要ありません。
-- 自動スケール ルールでは[多くのメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)がサポートされていますが、これらは限定されたセットに過ぎません。 このセットでカバーされていないメトリックに基づくスケーリングが必要なシナリオでは、自動スケール ルールは適さない可能性があります。
-
-これらの制限に基づいて、さらにカスタマイズされた自動スケール モデルの実装が必要になる可能性があります。 
-
-## <a name="scaling-apis"></a>API のスケーリング
-Azure API を使用すると、アプリケーションがプログラムで仮想マシン スケール セットと Service Fabric クラスターを使用できるようになります。 既存の自動スケール オプションが使用できないシナリオでは、これらの API を使用してカスタム スケーリング ロジックを実装できます。 
-
-この "自作" の自動スケール機能を実装する 1 つの方法は、新しいステートレス サービスを Service Fabric アプリケーションに追加して、スケーリング操作を管理することです。 サービスの `RunAsync` メソッド内で、スケーリングが必要かどうかを一連のトリガーで判断できます (最大クラスター サイズやスケーリングのクールダウンなどのパラメーターのチェックを含みます)。   
-
-仮想マシン スケール セットの操作に使用する API (現在の仮想マシン インスタンスの数の確認と変更の両方) は、[fluent Azure Management Compute ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)です。 fluent コンピューティング ライブラリは、仮想マシン スケール セットを操作するための使いやすい API です。
-
-Service Fabric クラスター自体を操作するには、[System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) を使用します。
-
-もちろん、スケーリングのコードは、スケーリング対象クラスターのサービスとして実行する必要はありません。 `IAzure` と `FabricClient` は両方とも、関連する Azure リソースにリモートで接続できるので、スケーリング サービスは Service Fabric アプリケーション外で動作するコンソール アプリケーションまたは Windows サービスとして簡単に使用することができます。 
-
-## <a name="credential-management"></a>資格情報の管理
+## <a name="manage-credentials"></a>資格情報を管理する
 スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 ログインには、[Azure CLI 2.0](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
 
 サービス プリンシパルは、次の手順で作成できます。
@@ -140,12 +119,6 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
-
-## <a name="potential-drawbacks"></a>潜在的な欠点
-
-上記のコード スニペットで示したように、独自のスケーリング サービスを作成すると、アプリケーションのスケーリング動作において最高レベルの制御とカスタマイズ性を得ることができます。 これは、アプリケーションをいつ、どのようにスケールインまたはスケールアウトするかについて、細かい制御が必要なシナリオに役立てることができます。ただし、制御を細かくすると、代わりにコードが複雑になります。 このアプローチでは、スケーリング コードに責任を持つことを意味し、これは簡単なことではありません。
-
-Service Fabric のスケーリングの方法は、シナリオによって異なります。 スケーリングが頻繁でなければ、ノードを手動で追加または削除する機能だけでおそらく十分です。 さらに複雑なシナリオの場合は、自動スケール ルールと、プログラムでスケーリングを行う機能を公開している SDK が強力な代替手段となります。
 
 ## <a name="next-steps"></a>次の手順
 

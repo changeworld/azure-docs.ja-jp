@@ -1,26 +1,24 @@
 ---
-title: "Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行 | Microsoft Docs"
-description: "コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。"
+title: Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行 | Microsoft Docs
+description: コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e72585906b972c3d7ffb2513fceb27e3e8bc1c5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -62,7 +60,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 このチュートリアルでは、これら 2 つのデータセットを使用して Sqoop のインポートとエクスポートをテストします。
 
 ## <a name="create-cluster-and-sql-database"></a>クラスターと SQL Database を作成します。
-ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージはパブリック BLOB コンテナー内にあります (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac)。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
    
 ```json
 "storageKeyType": "Primary",
@@ -308,7 +306,7 @@ $ErrorActionPreference = "Stop"
 #region - Connect to Azure subscription
 Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
 try{Get-AzureRmContext}
-catch{Login-AzureRmAccount}
+catch{Connect-AzureRmAccount}
 #endregion
 
 #region - Create Azure resouce group

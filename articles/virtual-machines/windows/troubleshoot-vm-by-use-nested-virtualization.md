@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/06/2018
 ms.author: genli
-ms.openlocfilehash: 2743a00404a2ee990147dfb6e73e9c2369eb4753
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9026b702e6e0d27817955c70c733bf372005dd4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
 この記事では、入れ子になった仮想化環境を Microsoft Azure に作成し、問題のある VM のディスクを Hyper-V ホスト (復旧 VM) にマウントしてトラブルシューティングを行う方法について説明します。
 
-## <a name="prerequisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 問題のある VM をマウントするには、復旧 VM が次の前提条件を満たしている必要があります。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/06/2018
 
 -   問題のある VM と同じタイプのストレージ アカウント (Standard または Premium) が復旧 VM に使用されている必要があります。
 
-## <a name="step-1-create-a-recovery-vm-and-install-hyper-v-role"></a>手順 1: 復旧 VM を作成して Hyper-V ロールをインストールする
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>手順 1: 復旧 VM を作成して Hyper-V ロールをインストールする
 
 1.  新しい復旧 VM を作成します。
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 04/06/2018
 
 13. サーバーに Hyper-V ロールのインストールを許可します。 これには数分かかります。サーバーは自動的に再起動します。
 
-## <a name="step-2-create-the-problem-vm-on-the-recovery-vms-hyper-v-server"></a>手順 2: 問題のある VM を復旧 VM の Hyper-V サーバーに作成する
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>手順 2: 問題のある VM を復旧 VM の Hyper-V サーバーに作成する
 
 1.  問題のある VM のディスクの名前を記録しておき、問題のある VM を削除します。 アタッチされているディスクはすべて維持してください。 
 

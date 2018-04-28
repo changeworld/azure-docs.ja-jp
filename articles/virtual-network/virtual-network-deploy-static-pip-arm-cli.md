@@ -1,11 +1,11 @@
 ---
-title: "静的パブリック IP アドレスを持つ VM を作成する - Azure CLI | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイス (CLI) を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。"
+title: 静的パブリック IP アドレスを持つ VM を作成する - Azure CLI | Microsoft Docs
+description: Azure コマンド ライン インターフェイス (CLI) を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
 ms.service: virtual-network
@@ -16,19 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c50f685745a645b5fbe383a5fe4726faa0e36345
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bd44971162a79e53b731c5c89316f14e8bb0a1a6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的パブリック IP アドレスを持つ VM を作成する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
+> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 > * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-> * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
@@ -145,7 +144,11 @@ az vm create \
 1. リソース グループ内にあるリソースを確認するには、`az resource list --resource-group IaaSStory` コマンドを実行します。
 2. この記事のスクリプトにより作成されたもの以外のリソースがリソース グループ内に存在しないことを確認してください。 
 3. この演習で作成されたすべてのリソースを削除するには、`az group delete -n IaaSStory` コマンドを実行します。 コマンドによって、リソース グループと含まれるすべてのリソースが削除されます。
+ 
+## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
 
-## <a name="next-steps"></a>次のステップ
+仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられるパブリック IP アドレスは、手動で割り当てないでください。 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
 
-この記事で作成した VM では、すべてのネットワーク トラフィックを送受信できます。 NSG 内に受信規則と送信規則を定義して、ネットワーク インターフェイスかサブネット、またはその両方で送受信可能なトラフィックを制限できます。 NSG の詳細については、[NSG の概要](virtual-networks-nsg.md)に関する記事を参照してください。
+## <a name="next-steps"></a>次の手順
+
+この記事で作成した VM では、すべてのネットワーク トラフィックを送受信できます。 ネットワーク セキュリティ グループ内に受信と送信のセキュリティ規則を定義して、ネットワーク インターフェイスかサブネット、またはその両方で送受信可能なトラフィックを制限できます。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](security-overview.md)に関するページを参照してください。

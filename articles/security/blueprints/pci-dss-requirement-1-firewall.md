@@ -1,6 +1,6 @@
 ---
-title: "Azure Payment Processing Blueprint - ファイアウォールの要件"
-description: "PCI DSS 要件 1"
+title: Azure Payment Processing Blueprint - ファイアウォールの要件
+description: PCI DSS 要件 1
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 995ecd5ef876695145fc6313aba2a46d2cc085cc
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のファイアウォール要件 
 ## <a name="pci-dss-requirement-1"></a>PCI DSS 要件 1
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は PaaS 分離を使用した CDE のファイアウォール機能を提供し、App Service Environment を実装することによりデータの CDE イングレスおよびエグレスが保護されます。<br /><br />[App Service Environment (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) は、コンプライアンス上の理由で使用される Premium サービス プランです。 ASE コントロールと構成の詳細については、[PCI ガイダンス - App Service Environment](payment-processing-blueprint.md#app-service-environment) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は PaaS 分離を使用した CDE のファイアウォール機能を提供し、App Service Environment を実装することによりデータの CDE イングレスおよびエグレスが保護されます。<br /><br />[App Service Environment (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) は、コンプライアンス上の理由で使用される Premium サービス プランです。 ASE コントロールと構成の詳細については、[PCI ガイダンス - App Service Environment](payment-processing-blueprint.md#app-service-environment) を参照してください。|
 
 
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore インスタンスが、すべての変更を正しく管理するための CI/CD DevOps モデルを確立します。 [Operations Management Suite (OMS)](/azure/operations-management-suite/) は、変更の詳細なログ記録を提供します。 変更をレビュー、検証して正確性を確認できます。 具体的なガイダンスについては、[PCI ガイダンス - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing) を参照してください。<br /><br />[Azure Security Center](https://azure.microsoft.com/services/security-center/) は、すべての Azure リソースのセキュリティ状態を一元的に提供します。 セキュリティ制御が適切かつ正しく構成されているかを一目で確認し、注意が必要なリソースを素早く特定できます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore インスタンスが、すべての変更を正しく管理するための CI/CD DevOps モデルを確立します。 Log Analytics は、広範にわたる変更のログ記録を提供します。 正確性を確保するために、変更内容を確認および検証できます。 具体的なガイダンスについては、[PCI ガイダンス - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing) を参照してください。<br /><br />[Azure Security Center](https://azure.microsoft.com/services/security-center/) は、すべての Azure リソースのセキュリティ状態を一元的に提供します。 セキュリティ制御が適切かつ正しく構成されているかを一目で確認し、注意が必要なリソースを素早く特定できます。|
 
 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションのインストール パターンの一部として提供される Contoso Webstore 参照アーキテクチャとデザイン ドキュメントを参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションのインストール パターンの一部として提供される Contoso Webstore 参照アーキテクチャとデザイン ドキュメントを参照してください。|
 
 
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore DFD と脅威モデルを参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore DFD と脅威モデルを参照してください。|
 
 
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure では、ゲートウェイ、ネットワーク ACL などの境界保護デバイスと、アプリケーション ファイアウォールを使用して、外部および内部境界の通信をプラットフォーム レベルで制御しています。 お客様は、これらの仕様と要件を構成します。 Microsoft Azure は、プラットフォームに入ってくる通信をフィルター処理します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は PaaS 分離を使用して DMZ を提供し、App Service Environment を実装することによりデータの CDE イングレスおよびエグレスが保護されます。<br /><br />[App Service Environment (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) は、コンプライアンス上の理由で使用される Premium サービス プランです。 ASE コントロールと構成の詳細については、[PCI ガイダンス - App Service Environment](payment-processing-blueprint.md#app-service-environment) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は PaaS 分離を使用して DMZ を提供し、App Service Environment を実装することによりデータの CDE イングレスおよびエグレスが保護されます。<br /><br />[App Service Environment (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) は、コンプライアンス上の理由で使用される Premium サービス プランです。 ASE コントロールと構成の詳細については、[PCI ガイダンス - App Service Environment](payment-processing-blueprint.md#app-service-environment) を参照してください。|
 
 
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、[Azure Role-Based Access Control (RBAC)](/azure/active-directory/role-based-access-control-configure) を使用してユーザー ロールを分離します。 RBAC は、Azure に正確に対象を絞ったアクセス管理を可能にします。 サブスクリプション アクセスおよび Azure Key Vault のアクセスのための特定の構成が存在する必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、[Azure Role-Based Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal) を使用してユーザー ロールを分離します。 RBAC は、Azure に正確に対象を絞ったアクセス管理を可能にします。 サブスクリプション アクセスおよび Azure Key Vault のアクセスのための特定の構成が存在する必要があります。|
 
 
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、RA 設計全体で必要なポートとプロトコルのみを開きます。 データ フローの詳細については、DFD と脅威のモデルを参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、RA 設計全体で必要なポートとプロトコルのみを開きます。 データ フローの詳細については、DFD と脅威のモデルを参照してください。|
 
 
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ファイアウォール ルール セットに、不要な、または使用されていないルールが含まれていないかレビューします。 デモは、仕様として、最低限の特権とパス フットプリントで展開されています。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ファイアウォール ルール セットに、不要な、または使用されていないルールが含まれていないかレビューします。 デモは、仕様として、最低限の特権とパス フットプリントで展開されています。|
 
 
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の CDE は、RA およびデプロイ ドキュメントに定義されています。 仕様として、信頼されていないネットワークは拒否されます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の CDE は、RA およびデプロイ ドキュメントに定義されています。 仕様として、信頼されていないネットワークは拒否されます。|
 
 
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の CDE は、RA およびデプロイ ドキュメントに定義されています。 仕様として、信頼されていないネットワークは拒否されます。 Contoso Webstore デモでは、IP アドレスの指定した範囲のみが Microsoft Azure サービスへのアクセスを許可される Microsoft Azure アプリケーション ファイアウォールを構成します。 Contoso Webstore がすべての CED 境界でファイアウォールをすべて拒否する。 すべての構成は、デプロイの初期セットアップ時に実行されます。
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の CDE は、RA およびデプロイ ドキュメントに定義されています。 仕様として、信頼されていないネットワークは拒否されます。 Contoso Webstore デモでは、IP アドレスの指定した範囲のみが Microsoft Azure サービスへのアクセスを許可される Microsoft Azure アプリケーション ファイアウォールを構成します。 Contoso Webstore がすべての CED 境界でファイアウォールをすべて拒否する。 すべての構成は、デプロイの初期セットアップ時に実行されます。
 
 > [!NOTE]
 > このソリューションでは、CDE を分離するために App Service Environment (ASE) が使用されてきますが、ASE の送信接続を許可する DMZ 分離を実装するのは ASE であるため、資格のあるセキュリティ査定機関 (QSA) がこのソリューションを評価することが不可欠となります。 PCI DSS では、必要のないすべての送受信接続をブロックすることが要件です。 ASE が正しく動作するために、ASE は必要に応じて「[App Service Environment でのネットワークの考慮事項](/azure/app-service/app-service-environment/network-info)」に定義されているように送信接続を確立します。 お客様は、ソリューションを運用環境にデプロイする前に、QSA と共に送信接続を評価して要件に適合していることを確認する必要があります。 |
@@ -180,7 +180,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Microsoft Azure のネイティブ ネットワーク コントロールに同期された構成を提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Microsoft Azure のネイティブ ネットワーク コントロールに同期された構成を提供します。|
 
 
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore に、ワイヤレス ソリューションがインストールされておらず、有効になっている機能もない必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore に、ワイヤレス ソリューションがインストールされておらず、有効になっている機能もない必要があります。|
 
 
 
@@ -206,7 +206,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure では、ファイアウォール、ロード バランサー、ACL などのネットワークベースおよびホスト ベースの境界保護デバイスを採用しています。 これらのデバイスでは、VLAN 分離、NAT、およびインターネットから顧客トラフィックや管理トラフィックを分離するためのパケット フィルタ リングなどのメカニズムを使用します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | デプロイ時に、Contoso Webstore で、CDE 内の要塞 Azure VM を含むサイトへのアクセスに、指定された IP アドレス範囲のみが使用されるよう、Azure アプリケーション ファイアウォールを構成します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | デプロイ時に、Contoso Webstore で、CDE 内の要塞 Azure VM を含むサイトへのアクセスに、指定された IP アドレス範囲のみが使用されるよう、Azure アプリケーション ファイアウォールを構成します。|
 
 
 
@@ -220,7 +220,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 権限を持つサービスだけが、CDE に接続できるよう Contoso Webstore の DMZ が実装されている必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 権限を持つサービスだけが、CDE に接続できるよう Contoso Webstore の DMZ が実装されている必要があります。|
 
 
 
@@ -233,7 +233,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 権限を持つサービスだけが、CDE に接続できるよう Contoso Webstore の DMZ が実装されている必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 権限を持つサービスだけが、CDE に接続できるよう Contoso Webstore の DMZ が実装されている必要があります。|
 
 
 
@@ -246,7 +246,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure で、信頼されているプラットフォーム コンポーネントへの送受信トラフィックの制限と、なりすましトラフィックを防止するネットワーク フィルター処理が実装されている必要があります。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -260,7 +260,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore アーキテクチャは、スコープ内の環境からインターネットへの承認されていない送信トラフィックをブロックします。 これは、Microsoft Azure で承認されているポートとプロトコルの送信トラフィックの ACL を構成することによって行います。 これらのコントロールには、SQL Server データベースの CDE へのアクセスが含まれます。 <br /><br />PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore アーキテクチャは、スコープ内の環境からインターネットへの承認されていない送信トラフィックをブロックします。 これは、Microsoft Azure で承認されているポートとプロトコルの送信トラフィックの ACL を構成することによって行います。 これらのコントロールには、SQL Server データベースの CDE へのアクセスが含まれます。 <br /><br />PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -274,7 +274,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure で、信頼されているプラットフォーム コンポーネントへの送受信トラフィックの制限と、なりすましトラフィックを防止するネットワーク フィルター処理が実装されている必要があります。 Microsoft Azure ネットワークは、管理トラフィックとお客様のトラフィックを隔離するよう分離されています。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -288,7 +288,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure ネットワークは、顧客トラフィックと管理トラフィックを隔離するためにネットワーク分離および NAT を使用しています。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore アーキテクチャは、スコープ内の環境からインターネットへの承認されていない送信トラフィックをブロックします。 これは、Microsoft Azure で承認されているポートとプロトコルの送信トラフィックの ACL を構成することによって行います。 これらのコントロールには、SQL Server データベースの CDE へのアクセスが含まれます。 <br /><br />PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore アーキテクチャは、スコープ内の環境からインターネットへの承認されていない送信トラフィックをブロックします。 これは、Microsoft Azure で承認されているポートとプロトコルの送信トラフィックの ACL を構成することによって行います。 これらのコントロールには、SQL Server データベースの CDE へのアクセスが含まれます。 <br /><br />PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -309,7 +309,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure ネットワークでは、顧客トラフィックと管理トラフィックを隔離するためにネットワーク分離およびネットワーク アドレス変換 (NAT) を使用しています。 Azure デバイスは、一意な UUID で識別され、Kerberos を使用して特定されています。 Azure マネージ ネットワーク デバイスは RFC 1918 の IP アドレスによって特定されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、すべてのカード会員データはファイアウォール/プロキシ サーバーの背後に配置され、RFC1918 アドレス空間が内部的に使用されています。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、すべてのカード会員データはファイアウォール/プロキシ サーバーの背後に配置され、RFC1918 アドレス空間が内部的に使用されています。|
 
 
 
@@ -324,7 +324,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore はエンド ユーザー デバイスの保護は提供しません。 [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) を使用して、従業員による会社のデータへのアクセスを管理できます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore はエンド ユーザー デバイスの保護は提供しません。 [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) を使用して、従業員による会社のデータへのアクセスを管理できます。|
 
 
 
@@ -337,7 +337,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | デプロイ時に、Contoso Webstore で、CDE 内の要塞 Azure VM を含むサイトへのアクセスに、指定された IP アドレス範囲のみが使用されるよう、Azure アプリケーション ファイアウォールを構成します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | デプロイ時に、Contoso Webstore で、CDE 内の要塞 Azure VM を含むサイトへのアクセスに、指定された IP アドレス範囲のみが使用されるよう、Azure アプリケーション ファイアウォールを構成します。|
 
 
 

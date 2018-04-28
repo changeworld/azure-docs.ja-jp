@@ -1,24 +1,24 @@
 ---
-title: "Security Center のプラットフォーム移行についてよく寄せられる質問 | Microsoft Docs"
-description: "ここでは、Azure Security Center プラットフォームの移行についてよく寄せられる質問に答えます。"
+title: Security Center のプラットフォーム移行についてよく寄せられる質問 | Microsoft Docs
+description: ここでは、Azure Security Center プラットフォームの移行についてよく寄せられる質問に答えます。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 04/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 6a88fbadd8fbf05a4942e42b535770f6f068af28
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>Security Center プラットフォームの移行についてよく寄せられる質問
 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 ここでは、プラットフォームの移行についてよく寄せられる質問に答えます。
@@ -34,7 +34,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、ユーザ�
 エージェントで収集されたデータは、VM に接続されている既存の Log Analytics ワークスペース、または Security Center で作成された新しいワークスペースに保存されます。 Security Center で新しいワークスペースを作成するときには、VM の位置情報が考慮されます。
 
 > [!NOTE]
-> Microsoft Monitoring Agent は、Operations Management Suite (OMS)、Log Analytics サービス、および System Center Operations Manager (SCOM) で使用されるものと同じエージェントです。
+> Microsoft Monitoring Agent は、Log Analytics サービスと System Center Operations Manager (SCOM) で使用されるものと同じエージェントです。
 >
 >
 
@@ -64,9 +64,8 @@ Security Center では、Microsoft Monitoring Agent を使用して、ユーザ�
 >
 >
 
-### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>Security Center で作成されたワークスペース上の Log Analytics または OMS には課金されますか?
-
-いいえ。 ノードごとの OMS の課金が構成されている場合でも、Security Center で作成されるワークスペースに OMS の料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
+### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Security Center で作成されたワークスペース上の Log Analytics には課金されますか?
+いいえ。 ノードごとの Log Analytics の課金が構成されている場合でも、Security Center で作成されるワークスペースに Log Analytics の料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
 
 - **Free レベル** - Security Center によって既定のワークスペースに 'SecurityCenterFree' ソリューションが有効化されます。 Free レベルの料金はかかりません。
 - **Standard レベル** - Security Center によって既定のワークスペースに 'Security' ソリューションが有効化されます。
@@ -74,7 +73,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、ユーザ�
 価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。 この価格ページでは、2017 年 6 月からのセキュリティ データ ストレージと日割り課金の変更が反映されています。
 
 > [!NOTE]
-> Security Center で作成されたワークスペースの OMS 価格レベルは、Security Center の課金に影響しません。
+> Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。
 >
 >
 
@@ -123,8 +122,6 @@ Security Center によって収集されたデータを保存する既存の Log
    >
 
    - 操作を取り消すには、**[キャンセル]** をクリックします。
-
-      ![監視対象の VM を再構成する][6]
 
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>VM の拡張機能として既に Microsoft Monitoring Agent がインストールされている場合はどうなりますか?
 Security Center は、ユーザー ワークスペースへの既存の接続を上書きしません。 Security Center は、VM のセキュリティ データを既に接続されているワークスペースに保存します。 Security Center では、Security Center の使用をサポートするために、VM の Azure リソース ID を含むように拡張機能のバージョンを更新します。
@@ -205,12 +202,12 @@ Microsoft Monitoring Agent は手動で削除することができます。 た�
 >
 >
 
-## <a name="existing-oms-customers"></a>既存の OMS ユーザー
+## <a name="existing-log-analytics-customers"></a>既に Log Analytics をご利用のお客様
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Security Center は VM とワークスペース間の既存の接続を上書きしますか?
 VM に Azure 拡張機能としてインストールされている Microsoft Monitoring Agent が既にある場合、Security Center は既存のワークスペース接続を上書きしません。 代わりに、Security Center は既存のワークスペースを使用します。
 
-Security Center ソリューションがワークスペースにまだ存在しない場合は、インストールされます。また、ソリューションは関連する VM にのみ適用されます。 ソリューションを追加すると、既定では、そのソリューションは、Log Analytics ワークスペースに接続されているすべての Windows エージェントおよび Linux エージェントに自動的にデプロイされます。 OMS 機能である[ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用することができます。
+Security Center ソリューションがワークスペースにまだ存在しない場合は、インストールされます。また、ソリューションは関連する VM にのみ適用されます。 ソリューションを追加すると、既定では、そのソリューションは、Log Analytics ワークスペースに接続されているすべての Windows エージェントおよび Linux エージェントに自動的にデプロイされます。 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用することができます。
 
 Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center によって Microsoft Monitoring Agent がインストールされず、セキュリティの監視は制限されます。
 
@@ -221,18 +218,13 @@ Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 
 - 接続が切断する前の、拡張機能に構成されていたワークスペースの Azure リソース ID
 - 以前にインストールされていたエージェントとバージョン
 
-### <a name="does-security-center-install-solutions-on-my-existing-oms-workspaces-what-are-the-billing-implications"></a>Security Center は既存の OMS ワークスペースにソリューションをインストールしますか? 課金にどのような影響がありますか?
+### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Security Center は既存の Log Analytics ワークスペースにソリューションをインストールしますか? 課金にどのような影響がありますか?
 その VM が、作成したワークスペースに既に接続されていることを Security Center が特定すると、Security Center はご利用の価格レベルに従ってそのワークスペースでソリューションを有効にします。 ソリューションは、[ソリューションのターゲット設定](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting)に従って関連する Azure VM にのみ適用されるため、課金額は同じままです。
 
 - **Free レベル** - Security Center によってワークスペースに 'SecurityCenterFree' ソリューションがインストールされます。 Free レベルの料金はかかりません。
 - **Standard レベル** - Security Center によってワークスペースに 'Security' ソリューションがインストールされます。
 
    ![既定のワークスペースのソリューション][4]
-
-> [!NOTE]
-> Log Analytics の 'Security' ソリューションは、OMS の Security & Audit ソリューションです。
->
->
 
 ### <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>環境内に既にワークスペースがありますが、それらを使用してセキュリティ データを収集できますか?
 VM に Azure 拡張機能としてインストールされている Microsoft Monitoring Agent が既にある場合、Security Center は既存の接続済みワークスペースを使用します。 Security Center ソリューションがワークスペースにまだ存在しない場合は、インストールされます。また、[ソリューションのターゲット設定](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting)に従って、ソリューションは関連する VM にのみ適用されます。
@@ -242,7 +234,7 @@ Security Center で VM に Microsoft Monitoring Agent がインストールさ�
 ### <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>ワークスペースにはセキュリティ ソリューションが既にあります。 課金にどのような影響がありますか?
 Security & Audit ソリューションは、Azure VM で Security Center Standard レベルの機能を有効にするために使用されます。 Security & Audit ソリューションがワークスペースに既にインストールされている場合、Security Center は既存のソリューションを使用します。 課金額の変更はありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Security Center プラットフォームの移行の詳細については、以下を参照してください。
 
 - [Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)
@@ -254,4 +246,3 @@ Security Center プラットフォームの移行の詳細については、以�
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
 [5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
-[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png

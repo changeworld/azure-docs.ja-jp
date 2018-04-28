@@ -92,7 +92,7 @@
 #### [デプロイに関するよくあるご質問](cloud-services-deployment-faq.md)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=cloud-services)
 ## [.csdef XML スキーマ](schema-csdef-file.md)
 ### [LoadBalancerProbe スキーマ](schema-csdef-loadbalancerprobe.md)
 ### [WebRole スキーマ](schema-csdef-webrole.md)

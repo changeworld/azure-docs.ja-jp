@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 0ebf71a68f00b9766e14ea775fa2b1e9f15a201b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0d325e71125e875590b54b84700b6ec9e0fe7dd7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/16/2018
 
 1. マシンに `git` がインストールされ、コマンド ウィンドウからアクセスできる環境変数に追加されていることを確認します。 **Git Bash** (ローカル Git リポジトリと対話する際に使用するコマンドライン アプリ) など、インストールする各種 `git` ツールの最新バージョンについては、[Software Freedom Conservancy の Git クライアント ツール](https://git-scm.com/download/)に関するページを参照してください。 
 
-1. [こちらの証明書の概要](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)に従ってテスト証明書を作成します。 さらに詳しい証明書の作成方法については、「[CA が署名した X.509 証明書を管理する PowerShell スクリプト](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates)」を参照してください。
+1. [こちらの証明書の概要](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)に従ってテスト証明書を作成します。 さらに詳しい証明書の作成方法については、「[CA が署名した X.509 証明書を管理する PowerShell スクリプト](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates)」を参照してください。
 
     > [!NOTE]
     > この手順には [OpenSSL](https://www.openssl.org/) が必要です。OpenSSL をソースからビルドしてインストールするか、または[サード パーティ](https://wiki.openssl.org/index.php/Binaries) ([例](https://sourceforge.net/projects/openssl/)) からダウンロードしてインストールしてください。 "_ルート証明書_"、"_中間証明機関の証明書_"、"_デバイス証明書_" が既にある場合は、この手順を省略してかまいません。

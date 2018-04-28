@@ -12,15 +12,13 @@ ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -31,7 +29,7 @@ Azure HDInsight Tools for Visual Studio Code (VS Code) を使用して、Hive �
 
 この記事の手順を実行するには、次のものが必要です。
 
-- HDInsight クラスター。  クラスターを作成するには、[HDInsight での Hadoop の使用]( hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
+- HDInsight クラスター。 クラスターを作成するには、[HDInsight での Hadoop の使用]( hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
 - [Mono](http://www.mono-project.com/docs/getting-started/install/)。 Mono は Linux と macOS にのみ必要です。
 
@@ -102,7 +100,7 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
     - PySpark バッチ スクリプトの送信
     - 構成の設定
 
-**クラスターにリンクするには**
+<a id="linkcluster"></a>**クラスターにリンクするには**
 
 Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。
 1. **Ctrl+Shift+P** を押してコマンド パレットを開き、「**HDInsight: Link a cluster**」と入力します。
@@ -114,7 +112,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    ![リンク クラスターのダイアログ](./media/hdinsight-for-vscode/link-cluster-process.png)
 
    > [!NOTE]
-   > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたユーザー名とパスワードを使用します。 
+   > リンクされたユーザー名とパスワードは、クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合に使用されます。 
    
 3. **List cluster** コマンドを使用すると、リンクされたクラスターを確認できます。 これでリンクされたクラスターにスクリプトを送信できるようになりました。
 
@@ -277,8 +275,50 @@ HDInsight Tools for VS Code を使用すると、対話型 PySpark クエリを 
 
 Python ジョブを送信したら、VS Code の **[出力]** ウィンドウに送信ログが表示されます。 **Spark UI URL** と **Yarn UI URL** も表示されます。 URL を Web ブラウザーで開くと、ジョブの状態を追跡できます。
 
-
+>[!NOTE]
+>PySpark3 は Livy 0.4 (これは HDI Spark 2.2 クラスターです) ではサポートされなくなりました。 "PySpark" だけが Python に対してサポートされます。 Python3 では Spark 2.2 への送信が失敗することは既知の問題です。
    
+## <a name="livy-configuration"></a>Livy の構成
+Livy の構成がサポートされます。ワークスペース フォルダーでのプロジェクトの設定で設定できます。 詳しくは、[Livy の README](https://github.com/cloudera/livy/blob/master/README.rst ) をご覧ください。
+
++ プロジェクトの設定:
+
+    ![Livy の構成](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
++ サポートされている Livy の構成:   
+
+    **POST/バッチ**   
+    要求本文
+
+    | name | 説明 | 型 | 
+    | :- | :- | :- | 
+    | file | 実行するアプリケーションを含むファイル | パス (必須) | 
+    | proxyUser | ジョブを実行するときに偽装するユーザー | 文字列 | 
+    | className | アプリケーションの Java/Spark のメイン クラス | 文字列 |
+    | args | アプリケーションのコマンド ライン引数 | string のリスト | 
+    | jars | このセッションで使用される Jar | 文字列のリスト | 
+    | pyFiles | このセッションで使用される Python ファイル | 文字列のリスト |
+    | ファイルのアップロード | このセッションで使用されるファイル | 文字列のリスト |
+    | driverMemory | ドライバーのプロセスに使用するメモリの量 | 文字列 |
+    | driverCores | ドライバーのプロセスに使用するコアの数 | int |
+    | executorMemory | Executor プロセスごとに使用するメモリの量 | 文字列 |
+    | executorCores | Executor ごとに使用するコアの数 | int |
+    | numExecutors | このセッションに対して起動する Executor の数 | int |
+    | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
+    | キュー | 送信対象の YARN キューの名前 | 文字列 |
+    | name | このセッションの名前 | 文字列 |
+    | conf | Spark の構成のプロパティ | キーと値のマップ |
+
+    応答本文   
+    作成された Batch オブジェクト
+
+    | name | 説明 | 型 | 
+    | :- | :- | :- | 
+    | id | セッション ID | int | 
+    | appId | このセッションのアプリケーション ID |  String |
+    | appInfo | アプリケーションの詳細情報 | キーと値のマップ |
+    | log | ログの行 | string のリスト |
+    | state |   バッチの状態 | 文字列 |
 
 
 ## <a name="additional-features"></a>その他の機能

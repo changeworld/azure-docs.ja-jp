@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: davidmu
-ms.openlocfilehash: 80889ac29b6d92f17fb9c9c693fa733085ce7f1c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a150d8255171c83334ac4c1f81cbcee39c1df70a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: ソーシャル ID を持つユーザーの移行
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/06/2018
 * ID プロバイダーによっては、**ソーシャル ユーザー ID** は、アプリケーションごとの特定のユーザーまたは開発アカウントの一意の値です。 ソーシャル プロバイダーによって割り当てられたのと同じアプリケーション ID で Azure AD B2C ポリシーを構成します。 または、同じ開発アカウント内の別のアプリケーションです。
 
 ## <a name="use-graph-api-to-migrate-users"></a>Graph API を使ってユーザーを移行する
-[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) で Azure AD B2C ユーザー アカウントを作成します。 Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、アプリケーション ID とアプリケーション シークレットです。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。 [ユーザー移行](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users)に関する記事の手順 1. の指示に従います。
+[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) で Azure AD B2C ユーザー アカウントを作成します。 Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、アプリケーション ID とアプリケーション シークレットです。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。 [ユーザー移行](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users)に関する記事の手順 1. の指示に従います。
 
 ## <a name="required-properties"></a>必須プロパティ
 次の一覧は、ユーザーを作成するときに必要なプロパティを示しています。

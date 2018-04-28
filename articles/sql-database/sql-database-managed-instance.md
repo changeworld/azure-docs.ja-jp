@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージ インスタンス (プレビュー) とは?
 
@@ -42,8 +42,6 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 |Azure SQL Database (単一またはプール) |**エラスティック プール**: 新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>**単一のデータベース**: ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
 |SQL IaaS 仮想マシン|オペレーティング システムまたはデータベース サーバーをカスタマイズする必要があると共に、SQL Server とサード パーティ アプリの並列実行 (同じ VM 上で) に関して特定の要件を持つ顧客については、最適なソリューションとして SQL VM / IaaS をご提案します。|
 |||
-
-<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>マネージ インスタンスをプログラムで識別する方法
 
@@ -131,7 +129,7 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 マネージ インスタンスでは、Azure のクラウド内での他のテナントからのセキュリティ分離が追加されています。 セキュリティ分離: 
 
-- Azure Express Route または VPN Gateway を使った、オンプレミス環境へのネイティブ仮想ネットの実装と接続 
+- Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットの実装](sql-database-managed-instance-vnet-configuration.md)と接続 
 - SQL エンドポイントはプライベート IP アドレスでのみ公開されるため、Azure またはハイブリッド ネットワークから安全に接続できます。
 - 専用の基になるインフラストラクチャ (コンピューティング、ストレージ) を備えたシングル テナント
 
@@ -185,7 +183,13 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 
 ### <a name="backup-and-restore"></a>バックアップと復元  
 
-移行方法では、Azure BLOB ストレージへの SQL バックアップが活用されます。 Azure BLOB ストレージに格納されたバックアップは、マネージ インスタンスに直接復元できます。 
+移行方法では、Azure BLOB ストレージへの SQL バックアップが活用されます。 Azure BLOB ストレージに格納されたバックアップは、マネージ インスタンスに直接復元できます。 既存の SQL データベースをマネージド インスタンスに復元するには、次の方法があります。
+
+- [Database Migration Service (DMS)](/sql/dma/dma-overview) を使用します。 データベースのバックアップ ファイルから復元するチュートリアルについては、[Azure Database Migration Service (DMS) を使用してマネージド インスタンスに移行する](../dms/tutorial-sql-server-to-managed-instance.md)方法に関するページを参照してください。
+- [T-SQL RESTORE コマンド](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql)を使用します。 
+  - Wide World Importers - Standard データベース のバックアップ ファイルを復元する方法を説明したチュートリアルについては、[バックアップ ファイルをマネージド インスタンスに復元する](sql-database-managed-instance-restore-from-backup-tutorial.md)方法に関するページを参照してください。 このチュートリアルでは、バックアップ ファイルを Azure ブログ ストレージにアップロードし、Secure Access Signature (SAS) キーを使用してセキュリティで保護する必要があることが説明されています。
+  - URL からの復元については、「[URL からのネイティブ復元](sql-database-managed-instance-migrate.md#native-restore-from-url)」を参照してください。
+- [BACPAC ファイルからインポートします](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>サポートされている SQL 機能 
 
@@ -217,5 +221,6 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 ## <a name="next-steps"></a>次の手順
 
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。
-- マネージ インスタンスを作成し、バックアップ ファイルからデータベースを復元するためのチュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関するページを参照してください。
+- VNet の構成の詳細については、[マネージ インスタンス VNet の構成](sql-database-managed-instance-vnet-configuration.md)に関するページを参照してください。
+- マネージ インスタンスを作成し、バックアップ ファイルからデータベースを復元するためのチュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するページを参照してください。
 - Azure Database Migration Service (DMS) を使用して移行する方法のチュートリアルについては、[DMS を使用したマネージ インスタンスの移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。

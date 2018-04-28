@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 3bbcf7b637a0f32751dc15664a1b7479e65503eb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 909b53e65fd893575a944d714f99698c7e45387d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/23/2018
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、SQL Data Warehouse はエラーを生成します。
 
-一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index)」セクションを参照してください。
+一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index)」セクションを参照してください。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 

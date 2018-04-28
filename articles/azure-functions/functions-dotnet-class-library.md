@@ -1,9 +1,9 @@
-﻿---
+---
 title: Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 description: C# を使用して Azure Functions を開発する方法について説明します。
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,12 +14,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: 70c4d6276970a781517fe49ec47e9b2ddb884c78
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: tdykstra
+ms.openlocfilehash: e5310c59cbfe4080911768f29e1b8f635a611e63
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -235,7 +235,7 @@ public static class SimpleExample
 
 ## <a name="async"></a>非同期
 
-関数を非同期にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
+関数を[非同期](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
 
 ```csharp
 public static class AsyncExample
@@ -364,8 +364,8 @@ public static class IBinderExampleMultipleAttributes
         log.Info($"CreateBlobInDifferentStorageAccount function processed: {myQueueItem}");
         var attributes = new Attribute[]
         {
-            new BlobAttribute($"samples-output/{myQueueItem}", FileAccess.Write),
-            new StorageAccountAttribute("MyStorageAccount")
+        new BlobAttribute($"samples-output/{myQueueItem}", FileAccess.Write),
+        new StorageAccountAttribute("MyStorageAccount")
         };
         using (var writer = await binder.BindAsync<TextWriter>(attributes))
         {

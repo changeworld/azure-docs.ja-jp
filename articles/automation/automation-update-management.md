@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -51,7 +51,7 @@ Update Management で管理されるコンピューターでは、評価と更�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします         |
-|Windows Server 2008 R2 SP1 以上     |Windows Server 2008 R2 SP1 については、.NET Framework 4.5 および WMF 5.0 以降が必要です        |
+|Windows Server 2008 R2 SP1 以上     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 をダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br> 確実な Windows PowerShell 5.1 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616)) をお勧めします。         |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -252,7 +252,7 @@ Red Hat Enterprise Linux で、除外するパッケージ名は redhat-release-
 | Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---><br>System.Net.WebException: 基になる接続が<br>閉じられました。受信時に予期しないエラーが<br>発生しました。 ---> System.ComponentModel.Win32Exception:<br>クライアントとサーバーは共通のアルゴリズムを保持していないため<br>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
 | Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
 | サービス <wsid>.oms.opinsights.azure.com によって提示された証明書は、<br>Microsoft サービスで使用する証明機関が<br>発行したものではありませんでした。 連絡先<br>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを<br>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>AgentService.HybridRegistration。<br>PowerShell.Certificates.CertificateCreationException:<br>自己署名証明書を作成できませんでした。 ---><br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br>読み取りアクセスを持っていることを確認します。<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>AgentService.HybridRegistration。<br>PowerShell.Certificates.CertificateCreationException:<br>自己署名証明書を作成できませんでした。 ---><br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br>読み取りアクセスを持っていることを確認します。<br>**C:\ProgramData\Microsoft\**<br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>次の手順
 

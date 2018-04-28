@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal の Azure Scheduler の概要 | Microsoft Docs"
-description: "Azure ポータルの Azure Scheduler の概要"
+title: Azure Portal の Azure Scheduler の概要 | Microsoft Docs
+description: Azure ポータルの Azure Scheduler の概要
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure ポータルの Azure Scheduler の概要
 Azure Scheduler では、スケジュールされたジョブを簡単に作成できます。 このチュートリアルでは、ジョブの作成方法について説明します。 また、Scheduler の監視機能と管理機能についても説明します。
@@ -33,7 +33,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
    1. **[名前]:** `getmicrosoft`  
    2. **[サブスクリプション]:** Azure のサブスクリプション   
    3. **[ジョブ コレクション]:** 既存のジョブ コレクションを選択するか、**[新規作成]** をクリックして名前を入力します。
-4. 次に、 **[アクションの設定]**で次の値を定義します。
+4. 次に、 **[アクションの設定]** で次の値を定義します。
    
    1. **[アクションの種類]:** ` HTTP`  
    2. **[メソッド]:** `GET`  
@@ -53,15 +53,15 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 ## <a name="manage-and-monitor-jobs"></a>ジョブの管理と監視
 ジョブが作成されると、メインの Azure ダッシュボードに表示されます。 ジョブをクリックすると、次のタブが表示された状態で新しいウィンドウが開きます。
 
-1. プロパティ  
+1. [プロパティ]  
 2. [アクションの設定]  
 3. スケジュール  
 4. 履歴
-5. Users
+5. ユーザー
    
    ![][job-overview]
 
-### <a name="properties"></a>プロパティ
+### <a name="properties"></a>[プロパティ]
 これらの読み取り専用のプロパティには、Scheduler ジョブの管理メタデータを記述します。
 
    ![][job-properties]
@@ -100,12 +100,12 @@ HTTP および HTTPS のジョブのアクションの種類では、方法を�
    
    ![][job-history]
 
-[実行] をクリックして、各実行の全体の応答など、 **[履歴の詳細]**を表示できます。 このダイアログ ボックスでは、応答をクリップボードにコピーすることもできます。
+[実行] をクリックして、各実行の全体の応答など、 **[履歴の詳細]** を表示できます。 このダイアログ ボックスでは、応答をクリップボードにコピーすることもできます。
 
    ![][job-history-details]
 
-### <a name="users"></a>Users
-Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler のアクセス権を詳細に管理できます。 [ユーザー] タブの使用方法については、 [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
+### <a name="users"></a>ユーザー
+Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler のアクセス権を詳細に管理できます。 [ユーザー] タブの使用方法については、 [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="see-also"></a>関連項目
  [What is Scheduler? (Scheduler とは)](scheduler-intro.md)

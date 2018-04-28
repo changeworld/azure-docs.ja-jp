@@ -1,13 +1,13 @@
 ---
-title: "Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法 | Microsoft Docs"
-description: "グループベースのライセンスを使用して異なる製品ライセンス (Office 365 Enterprise E1 と E3 など) 間でユーザーを移行するために推奨されるプロセスについて説明します"
+title: Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法 | Microsoft Docs
+description: グループベースのライセンスを使用して異なる製品ライセンス (Office 365 Enterprise E1 と E3 など) 間でユーザーを移行するために推奨されるプロセスについて説明します
 services: active-directory
-keywords: "Azure AD のライセンス"
-documentationcenter: 
+keywords: Azure AD のライセンス
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/07/2018
 ms.author: piotrci
-ms.openlocfilehash: bb27b3fb739bbcea56026733b41e6cadf21b8953
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 068457044af7af7a55bdbcc4043da3028a68b2d0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>グループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/24/2018
 
 -   競合するサービス プランが含まれていない製品ライセンス間の単純な移行 (例: Office 365 Enterprise E3 と Office 365 Enterprise E5 間の移行)。
 
--   競合するサービス プランが一部含まれている製品間の複雑な移行 (例: Office 365 Enterprise E1 と Office 365 Enterprise E3 間の移行)。 競合の詳細については、[競合するサービス プラン](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)と[同時に割り当てることができないサービス プラン](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time)についての記事を参照してください。
+-   競合するサービス プランが一部含まれている製品間の複雑な移行 (例: Office 365 Enterprise E1 と Office 365 Enterprise E3 間の移行)。 競合の詳細については、[競合するサービス プラン](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)と[同時に割り当てることができないサービス プラン](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time)についての記事を参照してください。
 
 この記事には、移行と検証の手順を実行するために使用できる PowerShell のサンプル コードを紹介します。 このコードは、手動でこの手順を実行することが難しい大規模な運用の場合に特に役立ちます。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/24/2018
 -   ユーザーには、グループベースのライセンスを使用して*ソース ライセンス*が割り当てられている。 移行元となる製品のライセンスは、1 つのソース グループから継承されており、直接割り当てられていません。
 
     >[!NOTE]
-    >ライセンスが直接的にも割り当てられている場合、*ターゲット ライセンス*の適用が妨げられる可能性があります。 [直接ライセンス割り当てとグループ ライセンス割り当て](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses)の詳細について学習してください。 [PowerShell スクリプト](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)を使用して、ユーザーに直接ライセンスが割り当てられているかどうかを確認することができます。
+    >ライセンスが直接的にも割り当てられている場合、*ターゲット ライセンス*の適用が妨げられる可能性があります。 [直接ライセンス割り当てとグループ ライセンス割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses)の詳細について学習してください。 [PowerShell スクリプト](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)を使用して、ユーザーに直接ライセンスが割り当てられているかどうかを確認することができます。
 
 -   対象製品について使用可能なライセンスが十分にある。 十分なライセンスがない場合、一部のユーザーが*ターゲット ライセンス*を取得できないこともあります。 [使用可能なライセンス数を確認する](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)ことができます。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/24/2018
 
 3.  ユーザーのバッチをターゲット グループに追加します。 グループベースのライセンスは変更を取得して*ターゲット ライセンス*を割り当てます。 このプロセスには、バッチのサイズとテナント内での他の活動に応じて非常に長い時間がかかる場合があります。
 
-4.  ユーザーのバッチがグループベースのライセンスによって完全に処理されたことを検証します。 *ターゲット ライセンス*が各ユーザーに割り当てられていることを確認します。 他の製品との競合やライセンスの不足など、ユーザーが最終的にエラー状態になっていないことを確認します。 エラーの詳細については、[Active Directory のライセンス グループの問題の解決](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)についての記事を参照してください。
+4.  ユーザーのバッチがグループベースのライセンスによって完全に処理されたことを検証します。 *ターゲット ライセンス*が各ユーザーに割り当てられていることを確認します。 他の製品との競合やライセンスの不足など、ユーザーが最終的にエラー状態になっていないことを確認します。 エラーの詳細については、[Active Directory のライセンス グループの問題の解決](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)についての記事を参照してください。
 
 5.  この時点で、ユーザーには*ソース ライセンス*と *ターゲット ライセンス*の両方が割り当てられています。
 
@@ -175,7 +175,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>競合するサービス プランがある製品間のユーザーの移行
-移行の目的は、グループベースのライセンスを使用して、ユーザー ライセンスを *ソース ライセンス* (この例では Office 365 Enterprise E1) から*ターゲット ライセンス* (この例では Office 365 Enterprise E3) に変更することです。 このシナリオの 2 つの製品には競合するサービス プランが含まれているため、ユーザーをシームレスに移行するには競合を回避する必要があります。 これらの競合に関する詳細については、 [Active Directory のライセンス グループの問題の解決: サービス プランの競合](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)についての記事を参照してください。 移行中は常に、ユーザーがサービスまたはデータへのアクセスを失うことのないようにします。 移行は小規模な「バッチ」で行います。 各バッチの結果を検証し、処理中に発生するおそれのある問題の範囲を最小限に抑えることができます。 全体として、プロセスは次のとおりです。
+移行の目的は、グループベースのライセンスを使用して、ユーザー ライセンスを *ソース ライセンス* (この例では Office 365 Enterprise E1) から*ターゲット ライセンス* (この例では Office 365 Enterprise E3) に変更することです。 このシナリオの 2 つの製品には競合するサービス プランが含まれているため、ユーザーをシームレスに移行するには競合を回避する必要があります。 これらの競合に関する詳細については、 [Active Directory のライセンス グループの問題の解決: サービス プランの競合](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)についての記事を参照してください。 移行中は常に、ユーザーがサービスまたはデータへのアクセスを失うことのないようにします。 移行は小規模な「バッチ」で行います。 各バッチの結果を検証し、処理中に発生するおそれのある問題の範囲を最小限に抑えることができます。 全体として、プロセスは次のとおりです。
 
 1.  ユーザーはソース グループのメンバーであり、そのグループから*ソース ライセンス*を継承しています。
 
@@ -183,7 +183,7 @@ Check passed for all users. Exiting check loop.
 
 3.  ユーザーのバッチをターゲット グループに追加します。 グループベースのライセンスは変更を取得して*ターゲット ライセンス*を割り当てようとします。 割り当ては、2 つの製品内のサービス間の競合が原因で失敗します。 グループ ベースのライセンスは、失敗を各ユーザーのエラーとして記録します。 このプロセスには、バッチのサイズとテナント内での他の活動に応じて非常に長い時間がかかる場合があります。
 
-4.  ユーザーのバッチがグループベースのライセンスによって完全に処理されたことを検証します。 各ユーザーに競合エラーが記録されていることを確認します。 一部のユーザーが最終的に予期しないエラー状態にならなかったことを確認します。 エラーの詳細については、[Active Directory のライセンス グループの問題の解決](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)についての記事を参照してください。
+4.  ユーザーのバッチがグループベースのライセンスによって完全に処理されたことを検証します。 各ユーザーに競合エラーが記録されていることを確認します。 一部のユーザーが最終的に予期しないエラー状態にならなかったことを確認します。 エラーの詳細については、[Active Directory のライセンス グループの問題の解決](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)についての記事を参照してください。
 
 5.  この時点で、ユーザーにはまだ*ソース ライセンス*があり、*ターゲット ライセンス*の競合エラーが発生しています。 ユーザーには*ターゲット ライセンス*がまだ割り当てられていません。
 
@@ -317,7 +317,7 @@ Check passed for all users. Exiting check loop.
 >[!WARNING]
 >このコードは、デモンストレーション用のサンプルとして提供されています。 ご利用の環境で使用する場合は、コードをまず小規模にテストするか別のテスト テナントでテストすることを検討してください。 お使いの環境の具体的なニーズに合わせてコードの調整が必要になる場合があります。
 
-コードを実行するには、[Azure AD PowerShell v1.0 ライブラリ](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)の説明を使用してください。 スクリプトを実行する前に、`connect-msolservice`コマンドレットを実行してテナントにサインインします。
+コードを実行するには、[Azure AD PowerShell v1.0 ライブラリ](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)の説明を使用してください。 スクリプトを実行する前に、`connect-msolservice`コマンドレットを実行してテナントにサインインします。
 
 ```
 # BEGIN: Helper functions that are used in the scripts.

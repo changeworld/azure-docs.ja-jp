@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure Cloud Services のデプロイの問題についてよくあるご質問 | Microsoft Docs"
-description: "この記事では、Microsoft Azure Cloud Services のデプロイについてよくあるご質問を紹介します。"
+title: Microsoft Azure Cloud Services のデプロイの問題についてよくあるご質問 | Microsoft Docs
+description: この記事では、Microsoft Azure Cloud Services のデプロイについてよくあるご質問を紹介します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題: よくあるご質問 (FAQ)
 
@@ -79,4 +79,4 @@ Cloud Services はクラシック リソースです。クラシック リソー
 
 クラシック ポータルでは、パッケージは管理 API レイヤーに直接アップロードされてから、API レイヤーがパッケージを内部ストレージ アカウントに一時的に格納しました。  API レイヤーはファイル アップロード サービスとして設計されていないため、このプロセスはパフォーマンスとスケーラビリティの問題の原因となります。  Azure Portal (Resource Manager デプロイメント モデル) では、 API レイヤーへの最初のアップロードの中間手順をバイパスしているため、デプロイの速度と信頼性が向上しています。 
 
-コストはとても低く、すべてのデプロイに同じストレージ アカウントを再利用できます。 [ストレージのコスト計算ツール](https://azure.microsoft.com/en-us/pricing/calculator/#storage1)を使用して、サービス パッケージ (CSPKG) のアップロード、CSPKG のダウンロード、CSPKG の削除にかかるコストを判断できます。 
+コストはとても低く、すべてのデプロイに同じストレージ アカウントを再利用できます。 [ストレージのコスト計算ツール](https://azure.microsoft.com/pricing/calculator/#storage1)を使用して、サービス パッケージ (CSPKG) のアップロード、CSPKG のダウンロード、CSPKG の削除にかかるコストを判断できます。 

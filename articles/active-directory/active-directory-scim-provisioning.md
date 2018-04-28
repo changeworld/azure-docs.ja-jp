@@ -17,10 +17,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -114,7 +114,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 
 **サンプルの SCIM エンドポイントを作成するには:**
 
-1. [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
+1. [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) で、コード サンプル パッケージをダウンロードします。
 2. パッケージを解凍し、Windows コンピューターの C:\AzureAD-BYOA-Provisioning-Samples\ などの場所に配置します。
 3. このフォルダーから、Visual Studio で FileProvisioningAgent ソリューションを起動します。
 4. **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択し、FileProvisioningAgent プロジェクトに対して下記のコマンドを実行して、ソリューションの参照を解決します。
@@ -168,7 +168,7 @@ SCIM 仕様に準拠する独自の Web サービスを開発するにあたっ�
 2. [Express ルート ハンドラー](http://expressjs.com/guide/routing.html)は、node.js Web サービスに対する (SCIM 仕様で定義された) 呼び出しを表す node.js 要求オブジェクトの解析に使用できます。   
 
 ### <a name="building-a-custom-scim-endpoint"></a>カスタム SCIM エンドポイントの構築
-開発者は、CLI ライブラリを使用して、共通言語基盤の実行可能アセンブリ内、またはインターネット インフォメーション サービス内にサービスをホストできます。 次に示すのは、http://localhost:9000 のアドレスにある実行可能アセンブリ内にサービスをホストするためのサンプル コードです。 
+開発者は、CLI ライブラリを使用して、共通言語基盤の実行可能アセンブリ内、またはインターネット インフォメーション サービス内にサービスをホストできます。 アドレス http://localhost:9000: にある実行可能アセンブリ内にサービスをホストするためのサンプル コードを次に示します。 
 
     private static void Main(string[] arguments)
     {
@@ -349,7 +349,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 
 ユーザー リソースは、スキーマ識別子 urn:ietf:params:scim:schemas:extension:enterprise:2.0:User で識別されます。この識別子については、このプロトコル仕様 (http://tools.ietf.org/html/draft-ietf-scim-core-schema) に記載されています。  Azure Active Directory 内のユーザーの属性を urn:ietf:params:scim:schemas:extension:enterprise:2.0:User リソースの属性に対応付ける既定のマッピングを下の表 1 に示します。  
 
-グループ リソースは、スキーマ識別子 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group で識別されます。  Azure Active Directory 内のグループの属性を http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group リソースの属性に対応付ける既定のマッピングを下の表 2 に示します。  
+グループ リソースは、スキーマ識別子 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group で識別されます。  Azure Active Directory 内のグループの属性を http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group リソースの属性に対応付ける既定のマッピングを下記の表 2 に示します。  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>表 1: 既定のユーザー属性マッピング
 | Azure Active Directory ユーザー | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |

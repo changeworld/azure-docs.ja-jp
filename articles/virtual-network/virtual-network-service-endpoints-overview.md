@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dbcb1d87fafe085d6232fa621fbd9e211fa4174d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc95077ada75ef5447e80a5252bebe3ed95dc167
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービスのエンドポイント
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 
 - **Azure Storage**: 一般公開。 Azure パブリック クラウドと Azure Government のすべてのリージョン。
 - **Azure SQL Database**: 一般公開 (全 Azure リージョン)。 
-- **Azure SQL Datawarehouse**: プレビュー。 Azure パブリック クラウド内のすべてのリージョン。
+- **Azure SQL Data Warehouse**: プレビュー。 Azure パブリック クラウド内のすべてのリージョン。
 
 このプレビュー機能に関する最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -87,6 +87,7 @@ ms.lasthandoff: 03/23/2018
 - **ピアリングされた仮想ネットワーク、接続された仮想ネットワーク、または複数の仮想ネットワーク**: Azure サービスへのアクセスを 1 つの仮想ネットワーク内または複数の仮想ネットワークにまたがる複数のサブネットに限定するには、サブネットごとに個別にサービス エンドポイントを有効にして、Azure サービス リソースへのアクセスをこれらのサブネットに限定します。
 - **仮想ネットワークから Azure サービスへの送信トラフィックのフィルタリング**: 仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、このサブネットのみに Azure サービス リソースへのアクセスを限定します。 このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 - **Azure リソースへのアクセスを仮想ネットワークに直接デプロイされたサービスに限定する**: さまざまな Azure サービスを仮想ネットワーク内の特定のサブネットに直接デプロイできます。 管理されたサービスのサブネット上にサービス エンドポイントを設定することで、Azure サービス リソースへのアクセスを[管理されたサービス](virtual-network-for-azure-services.md)のサブネットに限定することができます。
+- **Azure の仮想マシンからのディスク トラフィック**: マネージド/アンマネージド ディスクの仮想マシン ディスク トラフィック (マウント、マウント解除、diskIO を含みます) は、Azure Storage のサービス エンドポイントのルーティング変更の影響を受けません。 サービス エンドポイントと [Azure Storage ネットワーク ルール](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を介して、ページ BLOB への REST アクセスを選択したネットワークに制限することができます。 
 
 ### <a name="logging-and-troubleshooting"></a>ロギングおよびトラブルシューティング
 
@@ -105,7 +106,7 @@ ms.lasthandoff: 03/23/2018
 
 サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの *Microsoft.Network/JoinServicetoaSubnet* へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
 
-[組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
+[組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)と、特定のアクセス許可を[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
 
 仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 仮想ネットワークと Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントの下に置かれている必要があります。 
 
@@ -123,5 +124,5 @@ Azure サービス リソース (Azure Storage アカウントなど) の場合�
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)について学習する
--  クイック スタート: VNet のサブネットにサービス エンドポイントを設定し、そのサブネットの Azure Storage アカウントにセキュリティを確保する [Azure Resource Manager テンプレート](https://azure.microsoft.com/en-us/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+-  クイック スタート: VNet のサブネットにサービス エンドポイントを設定し、そのサブネットの Azure Storage アカウントにセキュリティを確保する [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

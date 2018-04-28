@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: cd11ea68f298395236abf83295b939462ba00964
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて]()」をご覧ください。
@@ -83,14 +83,12 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 - ユーザー
 - サブスクリプション
 - ライセンスの割り当て
- 
-ドメイン名の外部管理者の引き継ぎに対する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)は、Power BI および Azure RMS の 2 つのサービスのみでサポートされています。
 
 ### <a name="support-for-external-admin-takeover"></a>外部管理者の引き継ぎのサポート
 外部管理者の引き継ぎは、次のオンライン サービスによってサポートされています。
 
 - Power BI
-- Azure Rights Management Service (RMS)
+- Azure Rights Management
 - Exchange Online
 
 サポートされているサービス プランは次のとおりです。
@@ -99,12 +97,19 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 - Power BI Pro
 - PowerApps Free
 - PowerFlow Free
-- Azure Rights Management Service Basic (RMS)
-- Azure Rights Management Service Enterprise (RMS)
+- 個人向け RMS
 - Microsoft Stream
 - Dynamics 365 無料試用版
 
-外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプションや Office Basic SKU 経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。
+外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプションや Office Basic SKU 経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 この ForceTakeover オプションでユーザーが移動することはありません。サブスクリプションへのアクセスが保持されます。 そうではなく、このオプションではドメイン名のみが移動します。 
+
+#### <a name="more-information-about-rms-for-individuals"></a>個人向け RMS の詳細
+
+[個人向け RMS](/information-protection/understand-explore/rms-for-individuals) の場合、所有しているテナントと同じリージョンにアンマネージド テナントがあるとき、自動的に作成された [Azure Information Protection テナント キー](/information-protection/plan-design/plan-implement-tenant-key)と[既定の保護テンプレート](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates)もドメイン名と共に移動します。 
+
+アンマネージド テナントが異なるリージョンにあるときは、キーとテンプレートは移動しません。 たとえば、アンマネージド テナントがヨーロッパにあり、所有しているテナントが北米にあるとします。 
+
+個人向け RMS は保護コンテンツを開くために Azure AD 対応として設計されていますが、ユーザーがコンテンツ保護もすることを防ぎません。 ユーザーが個人向け RMS サブスクリプションでコンテンツを保護したとき、キーとテンプレートが移動していなければ、ドメイン引き継ぎ後、そのコンテンツにアクセスできなくなります。    
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover オプションの Azure AD PowerShell コマンドレット
 「[PowerShell の例](#powershell-example)」で使用されているコマンドレットを以下に示します。

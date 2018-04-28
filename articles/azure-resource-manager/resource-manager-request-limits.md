@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager の要求の制限 | Microsoft Docs"
-description: "サブスクリプションの上限に達したときに、Azure Resource Manager の要求をスロットルする方法について説明します。"
+title: Azure Resource Manager の要求の制限 | Microsoft Docs
+description: サブスクリプションの上限に達したときに、Azure Resource Manager の要求をスロットルする方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 04/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc109cdaeade900e239624f408cea2a1f448ae5a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1d670fd7a9a165977fa5c8d3ce4caf5ff1b1df1e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 Resource Manager では、サブスクリプションおよびテナントごとに、読み取り要求が 1 時間あたり 15,000 に制限され、書き込み要求が 1 時間あたり 1,200 に制限されています。 これらの制限は、各 Azure Resource Manager インスタンスに適用されます。 すべての Azure リージョンに複数のインスタンスがあり、Azure Resource Manager はすべての Azure リージョンにデプロイされます。  このため、ユーザーの要求は、通常は多数の異なるインスタンスによって処理されるため、実際の上限はこれらの制限よりも大幅に高くなります。
@@ -36,8 +36,8 @@ Resource Manager では、サブスクリプションおよびテナントごと
 
 | 応答ヘッダー | [説明] |
 | --- | --- |
-| x-ms-ratelimit-remaining-subscription-reads |サブスクリプション スコープの残りの読み取り要求数。 |
-| x-ms-ratelimit-remaining-subscription-writes |サブスクリプション スコープの残りの書き込み要求数。 |
+| x-ms-ratelimit-remaining-subscription-reads |サブスクリプション スコープの残りの読み取り要求数。 この値は読み取り操作で返されます。 |
+| x-ms-ratelimit-remaining-subscription-writes |サブスクリプション スコープの残りの書き込み要求数。 この値は書き込み操作で返されます。 |
 | x-ms-ratelimit-remaining-tenant-reads |テナント スコープの残りの読み取り要求数。 |
 | x-ms-ratelimit-remaining-tenant-writes |テナント スコープの残りの書き込み要求数。 |
 | x-ms-ratelimit-remaining-subscription-resource-requests |サブスクリプション スコープの残りのリソースの種類の要求数。<br /><br />このヘッダー値は、サービスが既定の上限を無効にした場合にのみ返されます。 Resource Manager は、サブスクリプションの読み取り要求数または書き込み要求数の代わりにこの値を追加します。 |
@@ -70,7 +70,6 @@ Get-AzureRmResourceGroup -Debug
 次の応答値を含む多くの値が返されます。
 
 ```powershell
-...
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:
@@ -79,7 +78,25 @@ OK
 Headers:
 Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 14999
-...
+```
+
+書き込み制限数を取得するには、書き込み操作を使用します。 
+
+```powershell
+New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+```
+
+次の値を含む多くの値が返されます。
+
+```powershell
+DEBUG: ============================ HTTP RESPONSE ============================
+
+Status Code:
+Created
+
+Headers:
+Pragma                        : no-cache
+x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
 **Azure CLI** では、より詳細なオプションを使用してヘッダー値を取得します。
@@ -88,20 +105,37 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 az group list --verbose --debug
 ```
 
-次のオブジェクトを含む多くの値が返されます。
+次の値を含む多くの値が返されます。
 
 ```azurecli
-...
-silly: returnObject
-{
-  "statusCode": 200,
-  "header": {
-    "cache-control": "no-cache",
-    "pragma": "no-cache",
-    "content-type": "application/json; charset=utf-8",
-    "expires": "-1",
-    "x-ms-ratelimit-remaining-subscription-reads": "14998",
-    ...
+msrest.http_logger : Response status: 200
+msrest.http_logger : Response headers:
+msrest.http_logger :     'Cache-Control': 'no-cache'
+msrest.http_logger :     'Pragma': 'no-cache'
+msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
+msrest.http_logger :     'Content-Encoding': 'gzip'
+msrest.http_logger :     'Expires': '-1'
+msrest.http_logger :     'Vary': 'Accept-Encoding'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '14998'
+```
+
+書き込み制限数を取得するには、書き込み操作を使用します。 
+
+```azurecli
+az group create -n myresourcegroup --location westus --verbose --debug
+```
+
+次の値を含む多くの値が返されます。
+
+```azurecli
+msrest.http_logger : Response status: 201
+msrest.http_logger : Response headers:
+msrest.http_logger :     'Cache-Control': 'no-cache'
+msrest.http_logger :     'Pragma': 'no-cache'
+msrest.http_logger :     'Content-Length': '163'
+msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
+msrest.http_logger :     'Expires': '-1'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
 ## <a name="waiting-before-sending-next-request"></a>次の要求を送信するまでの待機

@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: e871fa8cd2228067b3a1511b74ff7a425d1dc9fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -83,12 +83,12 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドに言語アナライザーを使用しています。 言語アナライザーの詳細については、[言語サポートのトピック](https://docs.microsoft.com/rest/api/searchservice/Language-support)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
 
 ## <a name="issue-the-http-request"></a>HTTP 要求の発行
-1. インデックス定義を要求本文として使用して、Azure Search サービス エンドポイントの URL に HTTP POST 要求を発行します。 URL では、ホスト名としてサービス名を使用し、クエリ文字列パラメーターとして適切な `api-version` を配置するようにしてください (このドキュメントが書かれた時点で最新の API バージョンは `2016-09-01` です)。
+1. インデックス定義を要求本文として使用して、Azure Search サービス エンドポイントの URL に HTTP POST 要求を発行します。 URL では、ホスト名としてサービス名を使用し、クエリ文字列パラメーターとして適切な `api-version` を配置するようにしてください (このドキュメントが書かれた時点で最新の API バージョンは `2017-11-11` です)。
 2. 要求ヘッダーで、`Content-Type` を `application/json` として指定します。 また、 `api-key` ヘッダーでは、ステップ I で特定したサービスの管理者キーを指定する必要があります。
 
 独自のサービス名と API キーを指定して以下の要求を発行する必要があります。
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [api-key]
 
@@ -97,7 +97,7 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 
 インデックスが不要になり、それを削除する場合は、HTTP DELETE 要求を発行するだけです。 たとえば、"hotels" を削除する方法を次に示します。
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
+    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
     api-key: [api-key]
 
 

@@ -1,9 +1,9 @@
 ---
 title: SQL Server Business Intelligence | Microsoft Docs
-description: "このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行される SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
+description: このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行される SQL Server で使用できる Business Intelligence (BI) 機能について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
-ms.author: asaxton
-ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: maghan
+ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -144,7 +144,7 @@ SQL Server の仮想マシン ギャラリー イメージには、Reporting Ser
 ### <a name="connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager"></a>仮想マシンへの接続と Reporting Services 構成マネージャーの起動
 Azure 仮想マシンに接続するための 2 つの一般的なワークフローがあります。
 
-* で接続するには、仮想マシンの名前をクリックし、 **[接続]**をクリックします。 リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
+* で接続するには、仮想マシンの名前をクリックし、 **[接続]** をクリックします。 リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
   
     ![Azure 仮想マシンに接続](./media/virtual-machines-windows-classic-ps-sql-bi/IC650112.gif)
 * Windows リモート デスクトップ接続を使用して、仮想マシンに接続します。 リモート デスクトップのユーザー インターフェイスで、次の手順を実行します。
@@ -167,13 +167,13 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 **Windows Server 2008 R2**では、次の手順を実行します。
 
 1. **[スタート]** ボタンをクリックし、**[すべてのプログラム]** をクリックします。
-2. **[Microsoft SQL Server 2016]**をクリックします。
-3. **[構成ツール]**をクリックします。
+2. **[Microsoft SQL Server 2016]** をクリックします。
+3. **[構成ツール]** をクリックします。
 4. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
 
 または
 
-1. **[開始]**をクリックします。
+1. **[開始]** をクリックします。
 2. **[プログラムとファイルの検索]** ダイアログで、「**reporting services**」と入力します。 VM で Windows Server 2012 が実行されている場合は、Windows Server 2012 のスタート画面で「 **reporting services** 」と入力します。
 3. **[Reporting Services 構成マネージャー]** を右クリックし、**[管理者として実行]** をクリックします。
    
@@ -183,18 +183,18 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 **サービス アカウントと Web サービス URL:**
 
 1. **[サーバー名]** がローカル サーバー名であることを確認し、**[接続]** をクリックします。
-2. **[レポート サーバー データベース名]**は空白になっています。 データベースは構成の完了時に作成されます。
+2. **[レポート サーバー データベース名]** は空白になっています。 データベースは構成の完了時に作成されます。
 3. **[レポート サーバーの状態]** が **[開始]** になっていることを確認します。 Windows サーバー マネージャーでサービスを確認する場合、サービスは **[SQL Server Reporting Services]** Windows サービスです。
 4. **[サービス アカウント]** をクリックし、必要に応じてアカウントを変更します。 ドメインに参加していない環境で仮想マシンを使用する場合は、組み込みの **ReportServer** アカウントで十分です。 サービス アカウントの詳細については、「 [サービス アカウント (SSRS ネイティブ モード)](https://msdn.microsoft.com/library/ms189964.aspx)」をご覧ください。
 5. 左側のウィンドウで、 **[Web サービス URL]** をクリックします。
 6. **[適用]** をクリックして、既定値を構成します。
-7. **[レポート サーバー Web サービスの URL]**を確認します。 既定の TCP ポートが 80 であり、URL に含まれていることを確認します。 後の手順で、このポートの Microsoft Azure 仮想マシン エンドポイントを作成します。
+7. **[レポート サーバー Web サービスの URL]** を確認します。 既定の TCP ポートが 80 であり、URL に含まれていることを確認します。 後の手順で、このポートの Microsoft Azure 仮想マシン エンドポイントを作成します。
 8. **[結果]** ウィンドウで、操作が正常に完了したことを確認します。
 
 **データベース:**
 
 1. 左側のウィンドウで、 **[データベース]** をクリックします。
-2. **[データベースの変更]**をクリックします。
+2. **[データベースの変更]** をクリックします。
 3. **[新しいレポート サーバー データベースを作成する]** が選択されていることを確認し、[次へ] をクリックします。
 4. **[サーバー名]** を確認し、**[接続テスト]** をクリックします。
 5. **"接続テストに成功しました"** というメッセージが表示されたら、**[OK]** をクリックし、**[次へ]** をクリックします。
@@ -206,9 +206,9 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 **Web ポータル URL または 2012 および 2014 用のレポート マネージャ URL:**
 
 1. 左側のウィンドウで、**[Web ポータル URL]** または2014 および 2012 用の **[レポート manager URL]** をクリックします。
-2. **[Apply]**をクリックします。
+2. **[Apply]** をクリックします。
 3. **[結果]** ウィンドウで、操作が正常に完了したことを確認します。
-4. **[終了]**をクリックします。
+4. **[終了]** をクリックします。
 
 レポート サーバーのアクセス許可については、「 [ネイティブ モードのレポート サーバーに対する権限の許可](https://msdn.microsoft.com/library/ms156014.aspx)」をご覧ください。
 
@@ -216,7 +216,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 構成を確認するには、VM 上でレポート マネージャーを参照します。
 
 1. VM で、管理者特権を使用して Internet Explorer を起動します。
-2. VM 上の http://localhost/reports を参照します。
+2. VM の http://localhost/reports を参照します。
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>リモート Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続するには
 リモート コンピューターから仮想マシン上の Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続する場合は、新しい仮想マシン TCP エンドポイントを作成します。 既定では、レポート サーバーは **ポート 80**で HTTP 要求をリッスンします。 別のポートを使用するようにレポート サーバーの URL を構成した場合は、次の手順でそのポート番号を指定する必要があります。
@@ -236,7 +236,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
   
   1. 管理者特権でブラウザーを起動します。
   2. 仮想マシン上で Web ポータルを参照し、右上の **[ダウンロード]** アイコンを選択します。
-  3. **[レポート ビルダー]**を選択します。
+  3. **[レポート ビルダー]** を選択します。
      
      詳細については、「 [レポート ビルダーの起動](https://msdn.microsoft.com/library/ms159221.aspx)」を参照してください。
 * **SQL Server Data Tools**: VM: SQL Server Data Tools は仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。 SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
@@ -255,7 +255,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 1. **[スタート]** ボタンをクリックし、**[すべてのプログラム]** をクリックします。
 2. **[Microsoft SQL Server 2016]**、**[Microsoft SQL Server 2014]**、または **[Microsoft SQL Server 2012]** をクリックし、**[構成ツール]** をクリックします。
-3. **[SQL Server インストール センター]**をクリックします。
+3. **[SQL Server インストール センター]** をクリックします。
 
 または、C:\SQLServer_13.0_full\setup.exe、C:\SQLServer_12.0_full\setup.exe、または C:\SQLServer_11.0_full\setup.exe を実行します。
 
@@ -316,7 +316,7 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
   * アスタリスク (*) が付いているポートの仮想マシン エンドポイントを作成します。
 * 仮想マシンが Azure Virtual Networking などの VPN トンネルを使用してドメインに参加している場合、エンドポイントは不要です。 ただし、VM 上のファイアウォールでポートを開いてください。
   
-  | Port | type | [説明] |
+  | ポート | type | [説明] |
   | --- | --- | --- |
   | **80** |TCP |レポート サーバー リモート アクセス (*)。 |
   | **1433** |TCP |SQL Server Management Studio (*)。 |

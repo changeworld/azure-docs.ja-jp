@@ -1,11 +1,11 @@
 ---
-title: "HTTP 経由での任意のエンドポイントとの通信 - Azure Logic Apps |Microsoft Docs"
-description: "HTTP 経由で任意のエンドポイントと通信できるロジック アプリを作成する"
+title: HTTP 経由での任意のエンドポイントとの通信 - Azure Logic Apps |Microsoft Docs
+description: HTTP 経由で任意のエンドポイントと通信できるロジック アプリを作成する
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP アクションの概要
 
@@ -150,7 +150,7 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 
 > [!TIP]
 > 定義から取得できないパスワードを使用する場合は、`securestring` パラメーターと `@parameters()` 
-> [ ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+> [ ワークフロー定義関数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)を使用します。
 
 例: 
 
@@ -174,7 +174,7 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 
 > [!TIP]
 > ロジック アプリの保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` 
-> [ ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+> [ ワークフロー定義関数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)を使用します。
 
 例: 
 
@@ -198,7 +198,7 @@ Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 \
 | Secret* |secret |トークンを要求しているクライアントのシークレット |
 
 > [!TIP]
-> 保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+> 保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)を使用します。
 > 
 > 
 

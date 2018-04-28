@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 アプリケーションのライフサイクルを通して、仮想マシン スケール セットを変更したり更新したりすることが必要になる場合があります。 スケール セットの構成を更新したりアプリケーションの構成を変更したりする際の方法が、こうした更新の対象になることもあります。 この記事では、REST API、Azure PowerShell、Azure CLI 2.0 を使って、既存のスケール セットに変更を加える方法を説明します。
@@ -347,6 +347,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 可用性ゾーン
 - イメージ参照発行元
 - イメージ参照プラン
+- 管理対象 OS ディスク ストレージ アカウントの種類
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>現在の値に基づいてのみ変更できるプロパティ
 一部のプロパティは、現在の値に基づく例外付きで変更できます。 これには次のようなプロパティがあります。
@@ -372,12 +373,12 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 カスタム イメージを使用してアプリケーションをデプロイするのも一般的です。 このシナリオについては、次のセクションで説明します。
 
 ### <a name="os-updates"></a>OS の更新
-Azure プラットフォーム イメージを使用している場合は、*imageReference* を変更してイメージを更新することができます (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
+Azure プラットフォーム イメージを使用している場合は、*imageReference* を変更してイメージを更新することができます (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 >[!NOTE]
 > プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味**しません**。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
 
-カスタム イメージを使用している場合は、*imageReference* ID を更新してイメージを更新することができます (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
+カスタム イメージを使用している場合は、*imageReference* ID を更新してイメージを更新することができます (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 ## <a name="examples"></a>例
 

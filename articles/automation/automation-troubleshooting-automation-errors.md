@@ -10,18 +10,18 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Automation のエラー, トラブルシューティング, 問題
-ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Automation Runbook の使用時に発生する認証エラー
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>シナリオ: Azure アカウントにサインインできない
-**エラー:** Add-AzureAccount コマンドレットまたは Login-AzureRmAccount コマンドレットの使用時に「Unknown_user_type: Unknown User Type (未知のユーザー タイプ)」というエラーが発生します。
+**エラー:** Add-AzureAccount コマンドレットまたは Connect-AzureRmAccount コマンドレットの使用時に「Unknown_user_type: Unknown User Type (未知のユーザー タイプ)」というエラーが発生します。
 
 **エラーの理由:** このエラーは、資格情報アセット名が無効な場合、または Automation 資格情報アセットのセットアップに使用したユーザー名とパスワードが無効な場合に発生します。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/23/2018
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount –Credential $Cred
+        Connect-AzureRmAccount –Credential $Cred
 3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。 Azure Active Directory アカウントを正しく設定する方法については、「 [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) 」 (Azure Active Directory を使用して Azure を認証する) というブログ投稿を参照してください。  
 
 ### <a name="scenario-unable-to-find-the-azure-subscription"></a>シナリオ: Azure サブスクリプションが見つかりません

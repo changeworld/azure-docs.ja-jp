@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Azure SQL Database のパフォーマンスのチューニング
 
@@ -28,7 +28,7 @@ Azure SQL Database には、データベースのパフォーマンス向上に�
 
 ## <a name="increasing-performance-tier-of-your-database"></a>データベースのパフォーマンス レベルを引き上げる
 
-Azure SQL Database には、4 つの[サービス レベル](sql-database-service-tiers.md)が用意されており、Basic、Standard、Premium から選択できます (パフォーマンスはデータベース スループット単位 ([DTU](sql-database-what-is-a-dtu.md)) で測定されます)。 各サービス レベルでは、SQL データベースで使用できるリソースが厳密に分離されており、そのサービス レベルの予測可能なパフォーマンスが保証されています。 この記事では、アプリケーションに適したサービス レベルを選択する際に役立つガイダンスを提供します。 さらに、Azure SQL Database を最大限活用できるようにアプリケーションを調整する方法について説明します。
+Azure SQL Database には、2 つの購入モデルが用意されています。1 つは DTU ベースの購入モデルで、もう 1 つは仮想コアベースの購入モデルです。 各モデルには複数の[サービス プラン](sql-database-service-tiers.md)が用意されています。 各サービス レベルでは、SQL データベースで使用できるリソースが厳密に分離されており、そのサービス レベルの予測可能なパフォーマンスが保証されています。 この記事では、アプリケーションに適したサービス レベルを選択する際に役立つガイダンスを提供します。 さらに、Azure SQL Database を最大限活用できるようにアプリケーションを調整する方法について説明します。
 
 > [!NOTE]
 > この記事では、Azure SQL Database のデータベースが 1 つの場合のパフォーマンス ガイダンスについて説明しています。 エラスティック プールに関連するパフォーマンス ガイダンスについては、[エラスティック プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)に関するトピックを参照してください。 ただし、この記事に記載されている調整の推奨事項の多くは、エラスティック プールのデータベースにも当てはまり、パフォーマンスに関して同様のメリットが得られることに注意してください。

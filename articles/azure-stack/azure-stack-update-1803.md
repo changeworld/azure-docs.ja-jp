@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac7fa42c93e42e93800c3b26154cdabb85756698
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新プログラム
 
@@ -44,10 +44,11 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
 
 ### <a name="post-update-steps"></a>更新後の手順
-1803 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。
+- 1803 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。
 
-- [KB 4103348 - Azure Stack 更新プログラムをインストールしようとするとネットワーク コントローラー API サービスがクラッシュする](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4103348 - Azure Stack 更新プログラムをインストールしようとするとネットワーク コントローラー API サービスがクラッシュする](https://support.microsoft.com/en-us/help/4103348)
 
+- この更新プログラムをインストールしたら、ファイアウォールの設定で[必要なポート](azure-stack-integrate-endpoints.md)が開いていることを確認します。 たとえば、この更新プログラムには、監査ログをアクティビティ ログに変更することを含む Azure Monitor が入っています。 この変更によりポート 13012 が使用されるようになったため、開いている必要があります。  
 
 ### <a name="new-features"></a>新機能 
 この更新プログラムには、Azure Stack に対する次の機能強化と修正が含まれています。
@@ -169,7 +170,7 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
     - "*許可:*"
  
       ```powershell    
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
       
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
       
@@ -199,7 +200,7 @@ Azure Stack 1803 更新プログラムのビルド番号は **20180329.1** で�
 
         ```powershell
         
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
         
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
         

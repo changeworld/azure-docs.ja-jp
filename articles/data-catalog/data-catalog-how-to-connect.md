@@ -1,12 +1,12 @@
 ---
-title: "データ ソースへの接続方法 | Microsoft Docs"
-description: "Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事"
+title: データ ソースへの接続方法 | Microsoft Docs
+description: Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: b5bed534d9fa1a64b0e90c268407281724185ce8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4dfc7a900e42b348c416d2d8c05b73fb15847ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
 ## <a name="introduction"></a>はじめに
@@ -48,7 +48,7 @@ Azure Data Catalog ポータルでデータ ソースの "開く" メニュー�
 | Power Query |.xlsx |Excel 2016、Power Query for Excel アドインがインストールされている Excel 2010 または Excel 2013 |
 | Power BI Desktop |.pbix |Power BI Desktop (2016 年 7 月以降) |
 | SQL Server Data Tools |vsweb:// |SQL Server ツールがインストールされている Visual Studio 2013 Update 4 以降 |
-| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/en-us/library/ms156511.aspx)に関するページをご覧ください |
+| レポート マネージャー |http:// |[SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/library/ms156511.aspx)に関するページをご覧ください |
 
 ## <a name="your-data-your-tools"></a>データ、ツール
 メニューで使用できるオプションは、現在選択されているデータ資産の種類によって異なります。 もちろん、使用可能なツールがすべて "開く" メニューに表示されるわけではありませんが、 それでも任意のクライアント ツールを使用してデータ ソースに簡単に接続できます。 **Azure Data Catalog** ポータルでデータ資産を選択すると、プロパティ ペインに完全な場所が表示されます。

@@ -8,17 +8,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 36e25d7e5f1e5c6e1cf72442b73ac081810d216a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Azure ディスクを含む永続ボリューム
 
 永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
 
 このドキュメントでは、Azure ディスクの永続ボリュームを Azure Container Service (AKS) クラスターで使用することの詳細を説明します。
+
+> [!NOTE]
+> Azure ディスクは、アクセス モードの種類を ReadWriteOnce としてのみマウントでき、この場合、ディスクの利用は、単一の AKS ノードに限られます。 複数のノード間で固定ボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] の使用を検討してください。
 
 ## <a name="built-in-storage-classes"></a>組み込みストレージ クラス
 
@@ -40,7 +43,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 `azure-premimum.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
-注釈に `managed-premium` ストレージ クラスが指定されていることと、要求ではサイズ `5GB` のディスクを `ReadWriteOnce` アクセスで要求していることを書き留めておきます。 
+注釈に `managed-premium` ストレージ クラスが指定されていることと、要求ではサイズ `5GB` のディスクを `ReadWriteOnce` アクセスで要求していることを書き留めておきます。
 
 ```yaml
 apiVersion: v1
@@ -63,12 +66,9 @@ spec:
 kubectl create -f azure-premimum.yaml
 ```
 
-> [!NOTE]
-> Azure ディスクは、アクセス モードの種類を ReadWriteOnce としてのみマウントでき、この場合、ディスクの利用は、単一の AKS ノードに限られます。 複数のノード間で固定ボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] の使用を検討してください。
-
 ## <a name="using-the-persistent-volume"></a>永続ボリュームの使用
 
-永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストでは、永続ボリューム要求 `azure-managed-disk` を使って、`/mnt/azure` パスに Azure ディスクをマウントするポッドが作成されます。 
+永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストでは、永続ボリューム要求 `azure-managed-disk` を使って、`/mnt/azure` パスに Azure ディスクをマウントするポッドが作成されます。
 
 `azure-pvc-disk.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
@@ -96,7 +96,7 @@ spec:
 kubectl create -f azure-pvc-disk.yaml
 ```
 
-これで Azure ディスクが `/mnt/azure` ディレクトリにマウントされ、ポッドが稼働状態となりました。 このボリュームのマウントは、`kubectl describe pod mypod` でポッドを調べることにより確認できます。
+これで Azure ディスクが `/mnt/azure` ディレクトリにマウントされ、ポッドが稼働状態となりました。 この構成は、`kubectl describe pod mypod` 経由でポッドを調べるときに表示できます。
 
 ## <a name="next-steps"></a>次の手順
 

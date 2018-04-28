@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 72e0ed535139c088c4235b43a12ea96da080dc8a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) をセットアップする
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
@@ -151,7 +151,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
         ![エージェント キーとサーバー資格情報の入力](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         >   [!NOTE] 
-        >   この時点でファイアウォールのエラーが発生する場合は、SQL Server コンピューターからの受信トラフィックを許可するように、Azure 上でファイアウォール規則を作成する必要があります。 ポータルで規則を手動で作成することもできますが、SQL Server Management Studio (SSMS) で作成する方が簡単でしょう。 SSMS で、Azure 上のハブ データベースに接続してみてください。 名前として、「\<hub_database_name\>.database.windows.net」を入力します。 Azure ファイアウォール規則を構成するには、ダイアログ ボックスに表示される手順に従います。 クライアント同期エージェント アプリに戻ります。
+        >   この時点でファイアウォールのエラーが発生する場合は、SQL Server コンピューターからの受信トラフィックを許可するように、Azure 上でファイアウォール規則を作成する必要があります。 ポータルで規則を手動で作成することもできますが、SQL Server Management Studio (SSMS) で作成する方が簡単でしょう。 SSMS で、Azure 上のハブ データベースに接続してみてください。 名前として、「<hub_database_name>.database.windows.net」を入力します。 Azure ファイアウォール規則を構成するには、ダイアログ ボックスに表示される手順に従います。 クライアント同期エージェント アプリに戻ります。
 
     9.  クライアント同期エージェント アプリで **[登録]** をクリックして、SQL Server データベースをエージェントに登録します。 **[SQL Server の構成]** ダイアログ ボックスが開きます。
 
@@ -225,7 +225,16 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
 ### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>スキーマの変更を同期グループに反映するにはどうすればよいですか?
 
-スキーマの変更を手動で実行する必要があります。
+すべてのスキーマ変更を手動で行い、反映する必要があります。
+1. ハブおよびすべての同期メンバーに対してスキーマ変更を手動でレプリケートします。
+2. 同期スキーマを更新します。
+
+**新しいテーブルと列の追加**。 新しいテーブルと列は、現在の同期に影響しません。データ同期は新しいテーブルと列が同期スキーマに追加されるまで、新しいテーブルと列を無視します。 新しいデータベース オブジェクトを追加するときに従うべき最善の手順は次のとおりです。
+1. 新しいテーブルまたは列をハブおよびすべての同期メンバーに追加します。
+2. 新しいテーブルまたは列を同期スキーマに追加します。
+3. 新しいテーブルと列への値の挿入を開始します。
+
+**列のデータ型の変更**。 既存の列のデータ型を変更した場合、データ同期は新しい値が同期スキーマで定義された元のデータ型に一致する限り動作を続行します。 たとえば、ソース データベース内の型を **int** から **bigint** に変更した場合、データ同期は **int** データ型にしては大きすぎる値を挿入するまで動作を続行します。 変更を完了するには、ハブおよびすべての同期メンバーに対してスキーマの変更を手動でレプリケートし、同期スキーマを更新します。
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>データ同期でデータベースをエクスポートおよびインポートするにはどうすればよいですか?
 データベースを `.bacpac` ファイルとしてエクスポートし、そのファイルをインポートして新しいデータベースを作成した後、新しいデータベースでデータ同期を使うには、次の 2 つのことを行う必要があります。

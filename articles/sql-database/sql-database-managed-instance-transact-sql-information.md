@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database マネージ インスタンスと SQL Server の T-SQL の相違点 
 
@@ -239,7 +239,7 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 ### <a name="linked-servers"></a>リンク サーバー
  
 マネージ インスタンスのリンク サーバーがサポートするターゲットの数は限られています。 
-- サポートされているターゲット: SQL Server、SQL Database、マネージ インスタンス、仮想マシンの SQL Server
+- サポートされるターゲット: SQL Server と SQL Database
 - サポートされていないターゲット: Analysis Services、他の RDBMS
 
 [操作]
@@ -393,7 +393,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
 
-それぞれのマネージ インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージ インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。 
+それぞれのマネージ インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージド インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。 
 
 たとえば、4 TB のディスクを使用するマネージ インスタンスに、サイズが 1.2 TB のファイルが 1 つあり、サイズが 128 GB の 248 個のディスクに、それぞれが 1 GB の 248 個のファイルが配置される可能性があります。 この例では、ディスク記憶域の合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。 ただし、データベースのために予約される合計インスタンス サイズは、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。 これは、特定の状況下では、非常に特殊なファイルの配分のために、マネージ インスタンスが、想定していなかった Azure Premium ディスクの記憶域の上限に到達する可能性があることを示しています。 
 
@@ -419,4 +419,4 @@ SQL Server Management Studio と SQL Server Data Tools には、マネージ イ
 
 - マネージ インスタンスの詳細については、[マネージ インスタンスの概要](sql-database-managed-instance.md)に関する記事をご覧ください。
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。
-- チュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関する記事をご覧ください。
+- 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、[マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するページを参照してください。

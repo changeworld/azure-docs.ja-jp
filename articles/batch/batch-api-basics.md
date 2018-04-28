@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -79,10 +79,15 @@ Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) 
 
 ## <a name="azure-storage-account"></a>Azure ストレージ アカウント
 
-ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。  
+ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。 たとえば、Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では通常、ストレージ アカウントに存在するリソース ファイルを指定します。
 
-「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で汎用のストレージ アカウントの種類のみがサポートされています。 Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では、汎用のストレージ アカウントに存在するリソース ファイルを指定する必要があります。
+Batch では、次の Azure ストレージ [アカウント オプション](../storage/common/storage-account-options.md)がサポートされます。
 
+* 汎用 v2 (GPv2) アカウント 
+* 汎用 v1 (GPv1) アカウント
+* BLOB ストレージ アカウント
+
+ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています  (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
 
 ## <a name="compute-node"></a>コンピューティング ノード
 コンピューティング ノードは、アプリケーションの一部のワークロードの処理に特化した Azure 仮想マシン (VM) またはクラウド サービス VM です。 ノードのサイズによって、CPU コアの数、メモリ容量、およびノードに割り当てられるローカル ファイル システムのサイズが決まります。 Azure Cloud Services か、[Azure Virtual Machines Marketplace][vm_marketplace] のイメージを使用して Windows ノードまたは Linux ノードのプールを作成することができます。 これらの各オプションの詳細については、以下の「 [プール](#pool) 」セクションを参照してください。
@@ -252,7 +257,7 @@ Batch で作成するジョブには、優先順位を割り当てることが�
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     ノードの `PATH` や参照用の環境変数に存在しないアプリケーションまたはスクリプトをタスクで実行する必要がある場合は、タスクのコマンド ラインからシェルを明示的に呼び出してください。
-* **リソース ファイル** 。 これらのファイルは、タスクのコマンド ラインが実行される前に、汎用の Azure Storage アカウントの Blob Storage からノードに自動的にコピーされます。 詳細については、「[開始タスク](#start-task)」と「[ファイルとディレクトリ](#files-and-directories)」の各セクションを参照してください。
+* **リソース ファイル** 。 これらのファイルは、タスクのコマンド ラインが実行される前に、Azure ストレージ アカウントの BLOB ストレージからノードに自動的にコピーされます。 詳細については、「[開始タスク](#start-task)」と「[ファイルとディレクトリ](#files-and-directories)」の各セクションを参照してください。
 * アプリケーションで必要な **環境変数** 。 詳細については、「 [タスクの環境設定](#environment-settings-for-tasks) 」セクションを参照してください。
 * タスクを実行する際の **制約** 。 この制約には、タスクの実行が許可される最大時間、タスクが失敗した場合に再試行する最大回数、タスクの作業ディレクトリにファイルを保持する最大時間などがあります。
 * タスクの実行がスケジュールされているコンピューティング ノードにデプロイする**アプリケーション パッケージ**。 [アプリケーション パッケージ](#application-packages)により、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。 タスクレベルのアプリケーション パッケージは共有プール環境では特に便利です。この環境では、さまざまなジョブが 1 つのプールで実行され、ジョブが完了してもプールは削除されません。 ジョブ内のタスクがプール内のノードよりも少ない場合は、タスクのアプリケーション パッケージによりデータ転送を最小限に抑えることができます。アプリケーションはタスクが実行されるノードにのみデプロイされるためです。

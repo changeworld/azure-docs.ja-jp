@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/15/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -25,9 +25,12 @@ ms.lasthandoff: 03/16/2018
 > * VMware サーバーの要件を確認する
 > * VMware VM の要件を確認する
 
-このチュートリアル シリーズでは、Azure Site Recovery を使用して、単一の VM をバックアップする方法を説明します。 複数の VMware VM を保護する場合は、VMware レプリケーションの [Deployment Planner ツール](https://aka.ms/asr-deployment-planner) をダウンロードする必要があります。 このツールを使用して、VM の互換性、VM あたりのディスク数、ディスクあたりのデータ チャーンに関する情報を収集します。 また、このツールでは、ネットワーク帯域幅の要件に加えて、レプリケーションとテスト フェールオーバーを正常に実行するために必要な Azure インフラストラクチャに関する情報も収集されます。 このツールの実行については、[こちら](site-recovery-deployment-planner.md)をご覧ください。
+このチュートリアル シリーズでは、Azure Site Recovery を使用して、単一の VM をレプリケートする方法を説明します。 
 
 これは、このシリーズの 2 番目のチュートリアルです。 前のチュートリアルで説明されているように、[Azure コンポーネントを設定](tutorial-prepare-azure.md)しておいてください。
+
+複数の VM をレプリケートする場合は、VMware レプリケーションのための [Deployment Planner ツール](https://aka.ms/asr-deployment-planner)をダウンロードしてください。 [詳細情報](site-recovery-deployment-planner.md)。
+
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>自動検出用のアカウントを準備する
 
@@ -67,7 +70,7 @@ VMware サーバーと VM が要件に準拠していることを確認します
 2. Linux の場合は、ファイル システムとストレージの要件を[チェック](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)します。 
 3. オンプレミスの[ネットワーク](vmware-physical-azure-support-matrix.md#network)と[ストレージ](vmware-physical-azure-support-matrix.md#storage)のサポートをチェックします。 
 4. [Azure のネットワーク](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](vmware-physical-azure-support-matrix.md#azure-compute)に関して、フェールオーバー後のサポートをチェックします。
-5. Azure にレプリケートするオンプレミスの VM は、「[Azure VM requirements (Azure VM の要件)](vmware-physical-azure-support-matrix.md#azure-vm-requirements)」に準拠している必要があります。
+5. Azure にレプリケートするオンプレミスの VM は、「[Azure VM の要件](vmware-physical-azure-support-matrix.md#azure-vm-requirements)」に準拠している必要があります。
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする

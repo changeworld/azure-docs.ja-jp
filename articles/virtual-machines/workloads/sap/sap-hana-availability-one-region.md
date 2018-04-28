@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b397d03cbb8fc539eb5f79e183233515bf173a99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 47dba73a6c22d11953485a69435000d3d2fe6f55
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性
 この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)内にデプロイできます。 
@@ -118,5 +118,5 @@ Azure でのこれらの構成の設定手順については、以下をご覧�
 
 複数の Azure リージョン間での SAP HANA の可用性の詳細については、以下をご覧ください。
 
-- [Azure リージョンの枠を越えた SAP HANA の可用性](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
+- [Azure リージョンの枠を越えた SAP HANA の可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
 

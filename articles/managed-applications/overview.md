@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの概要 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの概念について説明します"
+title: Azure マネージ アプリケーションの概要 | Microsoft Docs
+description: Azure マネージ アプリケーションの概念について説明します
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージ アプリケーションの概要
 
@@ -44,7 +44,7 @@ IT チームは、マネージ アプリケーションを使用して、組織�
 
 サービス カタログ マネージ アプリケーションの発行については、[サービス カタログ向けアプリケーションの作成](publish-service-catalog-app.md)に関するページを参照してください。
 
-### <a name="marketplace"></a>Marketplace
+### <a name="marketplace"></a>マーケットプレース
 
 サービスへの課金を望んでいるベンダーは、Azure Marketplace を介してマネージ アプリケーションを利用できるようにすることができます。 ベンダーがアプリケーションを発行すると、組織外のユーザーがそのアプリケーションを使用できるようになります。 この方法によって、マネージ サービス プロバイダー (MSP)、独立系ソフトウェア ベンダー (ISV)、およびシステム インテグレーター (SI) は、自社のソリューションをすべての Azure ユーザーに提供できます。
 
@@ -52,7 +52,7 @@ IT チームは、マネージ アプリケーションを使用して、組織�
 
 ## <a name="resource-groups-for-managed-applications"></a>マネージ アプリケーションのリソース グループ
 
-通常、マネージ アプリケーションのリソースは、2 つのリソース グループ内に存在します。 ユーザーが 1 つのリソース グループを管理し、発行元がもう 1 つのリソース グループを管理します。 発行元は、マネージ アプリケーションを定義するときに、アクセス レベルを指定します。 次の図は、発行元がマネージ リソース グループの所有者ロールを要求しているシナリオを示しています。 発行元は、ユーザー用のリソース グループに対して、読み取り専用ロックを設定しています。
+通常、マネージ アプリケーションのリソースは、2 つのリソース グループ内に存在します。 ユーザーが 1 つのリソース グループを管理し、発行元がもう 1 つのリソース グループを管理します。 発行元は、マネージ アプリケーションを定義するときに、アクセス レベルを指定します。 次の図は、発行元がマネージ リソース グループの所有者ロールを要求しているシナリオを示しています。 発行元は、ユーザー用のリソース グループに対して、読み取り専用ロックを設定しています。 マネージド リソース グループへのアクセス権が付与されている発行元 ID は、ロックの対象外となります。
 
 ![リソース グループへのアクセス](./media/overview/access.png)
 

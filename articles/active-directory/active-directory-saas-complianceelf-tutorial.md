@@ -1,10 +1,10 @@
 ---
-title: "チュートリアル: Azure Active Directory と Compliance ELF の統合 | Microsoft Docs"
-description: "Azure Active Directory と Compliance ELF の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Compliance ELF の統合 | Microsoft Docs'
+description: Azure Active Directory と Compliance ELF の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f05c43e2d8f6e777ae128e90040d8d5c270c212b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 32cb676393558079baad9bb0fc26d2c4daaa3519
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>チュートリアル: Azure Active Directory と Compliance ELF の統合
 
@@ -101,7 +101,7 @@ Compliance ELF で Azure AD のシングル サインオンを構成してテス
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
 3. **[Compliance ELF のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
@@ -119,34 +119,15 @@ Compliance ELF で Azure AD のシングル サインオンを構成してテス
     > [!NOTE] 
     > これは実際の値ではありません。 この値は実際のサインオン URL に変更します。 この値を取得するには、[Compliance ELF サポート チーム](mailto:support@complianceelf.com)に問い合わせてください。
 
-5. **[保存]** ボタンをクリックします。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+    
+    ![[Configure Single Sign-On]](./media/active-directory-saas-complianceelf-tutorial/tutorial_metadataurl.png)
+     
+6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-complianceelf-tutorial/tutorial_general_400.png)
 
-6. **メタデータ** URL を生成するには、次の手順を実行します。
-
-    a. **[アプリの登録]** をクリックします。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_endpoint.png)
-     
-    d. 次に、**Compliance ELF** のプロパティ ページに移動し、**[コピー]** ボタンで**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
- 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. **Compliance ELF** 側でシングル サインオンを構成するには、**メタデータ URL** を [Compliance ELF サポート チーム](mailto:support@complianceelf.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+7. **Compliance ELF** 側でシングル サインオンを構成するには、**[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** を [Compliance ELF サポート チーム](mailto:support@complianceelf.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -196,7 +177,7 @@ Compliance ELF で Britta Simon というユーザーを作成します。 [Comp
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Compliance ELF]**を選択します。
+2. アプリケーションの一覧で **[Compliance ELF]** を選択します。
 
     ![アプリケーションの一覧の [Compliance ELF] リンク](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_app.png)  
 

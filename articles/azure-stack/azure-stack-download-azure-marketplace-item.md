@@ -1,12 +1,12 @@
 ---
-title: "Azure から Marketplace の項目をダウンロードする | Microsoft Docs"
-description: "Azure から Azure Stack のデプロイに Marketplace の項目をダウンロードすることができます。"
+title: Azure から Marketplace の項目をダウンロードする | Microsoft Docs
+description: Azure から Azure Stack のデプロイに Marketplace の項目をダウンロードすることができます。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c7d28831edf028657b7dd2a6a404a692a4a3bcb0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 
 Azure Stack Marketplace に含めるコンテンツを決定するときは、Azure Marketplace から利用可能なコンテンツを検討する必要があります。 Azure Stack 上で動くことがテスト済みの Azure Marketplace の項目の精選された一覧からダウンロードすることができます。 一覧には新しいアイテムが頻繁に追加されるので、ときどき新しいコンテンツを確認してください。
@@ -31,7 +31,7 @@ Azure Stack Marketplace に含めるコンテンツを決定するときは、Az
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>接続されているシナリオでの Marketplace アイテムのダウンロード (インターネット接続を使用)
 
 1. Marketplace の項目をダウンロードするには、最初に [Azure Stack を Azure に登録](azure-stack-register.md)します。
-2. Azure Stack 管理ポータル (https://portal.local.azurestack.external) にサインインします。
+2. Azure Stack 管理者ポータル (https://portal.local.azurestack.external) にサインインします。
 3. Marketplace アイテムの中には大きいものがあります。 **[リソース プロバイダー]** > **[ストレージ]** をクリックして、システムに十分な領域があることを確認してください。
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
@@ -62,7 +62,7 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
 
 1. PowerShell コンソールを管理者として開き、[Azure Stack 固有の PowerShell モジュールをインストール](azure-stack-powershell-install.md)します。 必ず、**PowerShell バージョン 1.2.11 以上**をインストールしてください。  
 
-2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
+2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、**Connect-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したサブスクリプションを選択します。  
 

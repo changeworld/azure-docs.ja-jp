@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: carolz
-ms.openlocfilehash: 50c80e95d81e67e1e176152cfbecabb09ecda80d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9d995f43d1c82530675bb03c348318816ecac1f5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -29,7 +29,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img alt="" src="https://docs.microsoft.com/en-us/media/common/i_overview.svg" data-linktype="external" data-hoverimage="">
+                            <img alt="" src="https://docs.microsoft.com/media/common/i_overview.svg" data-linktype="external" data-hoverimage="">
                         </div>
                     </div>
                     <div class="cardText">
@@ -167,7 +167,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <div class="ico64Link"><img src="https://docs.microsoft.com/en-us/media/common/i_article.svg" alt="" /></div>
+                        <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_article.svg" alt="" /></div>
                         <h3>ホワイト ペーパー</h3>
                         <ul class="noBullet">
                             <li style="list-style: none;">
@@ -190,7 +190,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <div class="ico64Link"><img src="https://docs.microsoft.com/en-us/media/common/i_guidelines.svg" alt="" /></div>
+                        <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_guidelines.svg" alt="" /></div>
                         <h3>ベスト プラクティス</h3>
                         <ul class="noBullet">
                             <li style="list-style: none;">
@@ -225,7 +225,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
         <div class="cardPadding">
             <div class="card">
                 <div class="cardText">
-                     <div class="ico64Link"><img src="https://docs.microsoft.com/en-us/media/common/i_tasks.svg" alt="" /></div>
+                     <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_tasks.svg" alt="" /></div>
                      <h3>Checklists</h3>
                      <ul class="noBullet">
                         <li style="list-style: none;">
@@ -252,7 +252,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img alt="" src="https://docs.microsoft.com/en-us/media/common/i_cloud-security.svg" data-linktype="external" data-hoverimage="">
+                            <img alt="" src="https://docs.microsoft.com/media/common/i_cloud-security.svg" data-linktype="external" data-hoverimage="">
                         </div>
                     </div>
                     <div class="cardText">
@@ -352,7 +352,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img alt="" src="https://docs.microsoft.com/en-us/media/common/i_best-practices.svg" data-linktype="external" data-hoverimage="">
+                            <img alt="" src="https://docs.microsoft.com/media/common/i_best-practices.svg" data-linktype="external" data-hoverimage="">
                         </div>
                     </div>
                     <div class="cardText">

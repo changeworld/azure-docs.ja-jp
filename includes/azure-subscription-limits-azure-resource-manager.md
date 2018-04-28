@@ -5,7 +5,7 @@
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |無制限 |無制限 |
 | [Storage アカウント](../articles/storage/common/storage-create-storage-account.md) 数 |200 |200<sup>2</sup> |
-| サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |800 |800 |
+| サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |
 | [可用性セット](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 数 |リージョンあたり 2,000 |リージョンあたり 2,000 |
 | リソース マネージャー API 読み取り数 |1 時間あたり 15,000 |1 時間あたり 15,000 |
 | リソース マネージャー API 書き込み数 |1 時間あたり 1,200 |1 時間あたり 1,200 |

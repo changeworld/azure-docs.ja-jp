@@ -11,15 +11,15 @@ ms.topic: article
 ms.service: iot-edge
 ms.custom: ''
 ms.reviewer: kgremban
-ms.openlocfilehash: 1f71fdfb7090dce24ba73f1fa01e287c52b065f8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7bc0d0706385f2f3e101d06be3a2837341c331b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Azure CLI 2.0 の IoT 拡張機能を使用して、IoT Edge デバイスにモジュールをデプロイする
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 Azure CLI 2.0 は、Windows、Linux、および MacOS で使用できます。
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 Azure CLI 2.0 は、Windows、Linux、および MacOS で使用できます。
 
 Azure CLI 2.0 を使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI 2.0 には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 

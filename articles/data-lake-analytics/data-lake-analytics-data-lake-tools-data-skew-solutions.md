@@ -1,12 +1,12 @@
 ---
-title: "Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio を使用して、データ スキュー問題の解決策をトラブルシューティングします。"
+title: Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する | Microsoft Docs
+description: Azure Data Lake Tools for Visual Studio を使用して、データ スキュー問題の解決策をトラブルシューティングします。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
 
@@ -49,13 +49,13 @@ _州_ のみをパーティション キーとして使用する代わりに、�
 
 ### <a name="option-4-use-round-robin-distribution"></a>オプション 4: ラウンドロビン分散を使用する
 
-パーティションとディストリビューションに適切なキーが見つからない場合は、ラウンドロビン分散を使用することができます。 ラウンドロビン分散はすべての行を均等に処理し、対応するバケットにランダムに配置します。 データは均等に分散されますが、地域情報を失い、一部の操作においてジョブのパフォーマンスが削減されるという欠点もあります。 さらに、いずれにしても傾斜キーの集計を行うという場合は、データ スキュー問題はなくなりません。 ラウンドロビン分散の詳細については、「[CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch)」 (CREATE TABLE (U-SQL): スキーマを使用してテーブルを作成する) の U-SQL Table Distributions セクションを参照してください。
+パーティションとディストリビューションに適切なキーが見つからない場合は、ラウンドロビン分散を使用することができます。 ラウンドロビン分散はすべての行を均等に処理し、対応するバケットにランダムに配置します。 データは均等に分散されますが、地域情報を失い、一部の操作においてジョブのパフォーマンスが削減されるという欠点もあります。 さらに、いずれにしても傾斜キーの集計を行うという場合は、データ スキュー問題はなくなりません。 ラウンドロビン分散の詳細については、「[CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch)」 (CREATE TABLE (U-SQL): スキーマを使用してテーブルを作成する) の U-SQL Table Distributions セクションを参照してください。
 
 ## <a name="solution-2-improve-the-query-plan"></a>解決策 2: クエリ プランを改善する
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>オプション 1: CREATE STATISTICS ステートメントを使用する
 
-U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供します。 このステートメントは、テーブルに格納された値分布などのデータの特性に関する詳細情報を、クエリ オプティマイザーに提供します。 ほとんどのクエリでは、クエリ オプティマイザーは高品質のクエリ プランに必要な統計情報を既に生成しています。 場合によっては、CREATE STATISTICS で追加の統計情報を作成したり、またはクエリ デザインを変更したりすることで、クエリのパフォーマンスを向上させる必要があるでしょう。 詳細については、「[CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx)」ページを参照してください。
+U-SQL では、CREATE STATISTICS ステートメントをテーブルで提供します。 このステートメントは、テーブルに格納された値分布などのデータの特性に関する詳細情報を、クエリ オプティマイザーに提供します。 ほとんどのクエリでは、クエリ オプティマイザーは高品質のクエリ プランに必要な統計情報を既に生成しています。 場合によっては、CREATE STATISTICS で追加の統計情報を作成したり、またはクエリ デザインを変更したりすることで、クエリのパフォーマンスを向上させる必要があるでしょう。 詳細については、「[CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx)」ページを参照してください。
 
 コード例:
 

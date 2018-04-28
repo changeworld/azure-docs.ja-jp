@@ -1,24 +1,18 @@
 ---
-title: "Azure Analysis Services サーバー名のエイリアス | Microsoft Docs"
-description: "サーバー名のエイリアス (別名) の作成方法と使用方法について説明します。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services サーバー名のエイリアス | Microsoft Docs
+description: サーバー名のエイリアス (別名) の作成方法と使用方法について説明します。
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: e0119580c4128ffd237127a62e29dac34297da5d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: e55438c629b861e8dc095892c6c519855cd5e632
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="alias-server-names"></a>サーバー名のエイリアス
 
@@ -31,7 +25,7 @@ ms.lasthandoff: 02/21/2018
 - 1 日のうちの時間帯ごとに異なるサーバーにユーザーを転送できます。 
 - Azure Traffic Manager を使用する場合のように、異なるリージョンのユーザーを地理的に近いインスタンスに転送できます。 
 
-有効な Azure Analysis Services サーバー名を返す任意の HTTP エンドポイントをエイリアスとして使用できます。
+有効な Azure Analysis Services サーバー名を返す任意の HTTP エンドポイントをエイリアスとして使用できます。 エンドポイントはポート 443 上で HTTPS をサポートする必要があり、このポートは URI で指定されていない必要があります。
 
 ![リンク形式を使用するエイリアス](media/analysis-services-alias/aas-alias-browser.png)
 

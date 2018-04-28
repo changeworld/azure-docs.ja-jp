@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 6b53e46253edc063b1b7ae94bf2fac2781a0613a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0517c85c62aaffd1055206120281c7b7de31ad82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -105,7 +105,7 @@ $servicePrincipal = New-AzSADGraphServicePrincipal `
 ロールを割り当てたら、次のコマンドでサービス プリンシパルを使用して Azure Stack にサインインできます。
 
 ```powershell
-Connect-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
+Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
  -ServicePrincipal `
  -CertificateThumbprint $servicePrincipal.Thumbprint `
  -ApplicationId $servicePrincipal.ApplicationId ` 
@@ -127,7 +127,7 @@ Connect-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 
      ![アクセスの選択](./media/azure-stack-create-service-principal/image17.png)
 
-4. **[追加]**を選択します。
+4. **[追加]** を選択します。
 
 5. アプリケーションに割り当てるロールを選択します。
 

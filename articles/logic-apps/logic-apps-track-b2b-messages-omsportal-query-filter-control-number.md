@@ -1,11 +1,11 @@
 ---
-title: "Operations Management Suite で B2B メッセージのクエリを行う - Azure Logic Apps  | Microsoft Docs"
-description: "Operations Management Suiteで AS2、X12、および EDIFACT メッセージを追跡するクエリを作成する"
+title: Azure Log Analytics - Azure Logic Apps で B2B メッセージのクエリを行う | Microsoft Docs
+description: Log Analytics で AS2、X12、および EDIFACT メッセージを追跡するクエリを作成する
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で AS2、X12、および EDIFACT メッセージのクエリを実行する
+# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Log Analytics で AS2、X12、および EDIFACT メッセージのクエリを行う
 
-[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを見つけるには、特定の条件に基づいてアクションをフィルター処理するクエリを作成します。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを見つけるには、特定の条件に基づいてアクションをフィルター処理するクエリを作成します。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
 
 ## <a name="requirements"></a>必要条件
 
 * 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
-* 監視とログが設定されている統合アカウント。 [統合アカウントの作成方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に関する記事と[ロジック アプリのログの設定方法](../logic-apps/logic-apps-monitor-b2b-message.md)に関する記事を参照してください。
+* 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
-* [診断データの Log Analytics への発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)と[OMS でのメッセージ追跡の設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)をまだ行っていない場合は、これらの操作を実行します。
+* [診断データの Log Analytics への発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)と [Log Analytics でのメッセージ追跡の設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)をまだ行っていない場合は、これらの操作を実行します。
 
 > [!NOTE]
-> 上の要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 OMS で B2B 通信を追跡するための同じ OMS ワークスペースを使用する必要があります。 
+> 上記の要件を満たした後、Log Analytics 内にワークスペースを用意する必要があります。 Log Analytics 内で B2B 通信を追跡するための同じワークスペースを使用する必要があります。 
 >  
-> OMS ワークスペースがない場合は、[OMS ワークスペースを作成する方法](../log-analytics/log-analytics-get-started.md)を参照してください。
+> Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
-## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルでフィルター付きのメッセージ クエリを作成する
+## <a name="create-message-queries-with-filters-in-log-analytics"></a>Log Analytics でフィルターを適用してメッセージ クエリを作成する
 
 ここでは、インターチェンジ制御番号に基づいてメッセージを検索する方法の例を示します。
 
 > [!TIP] 
-> OMS ワークスペースの名前がわかっている場合は、ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`)に移動して、手順 4 から始めてください。 それ以外の場合は、手順 1 から始めてください。
+> Log Analytics ワークスペースの名前がわかっている場合は、ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`) に移動して、手順 4 から始めてください。 それ以外の場合は、手順 1 から始めてください。
 
 1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
    ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. **[Log Analytics]** で、OMS ワークスペースを見つけて選択します。
+2. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。
 
-   ![OMS ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
 3. **[管理]** で、**[OMS ポータル]** を選択します。
 
    ![OMS ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
 
-4. OMS ホーム ページで、**[ログ検索]** を選択します。
+4. ホーム ページで **[ログ検索]** を選択します。
 
-   ![OMS ホーム ページで [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![ホーム ページで [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    または
 
-   ![[OMS] メニューの [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![メニューの [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. 検索ボックスに、検索するフィールドを入力し、**Enter**キーを押します。 入力を開始すると、OMS によって、一致候補と使用できる操作が表示されます。 詳細については、[Log Analytics のデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+5. 検索ボックスに、検索するフィールドを入力し、**Enter**キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
    この例では、**Type=AzureDiagnostics** のイベントを検索します。
 
@@ -106,15 +106,15 @@ ms.lasthandoff: 02/21/2018
 
    ![クエリを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="find-and-run-saved-queries-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルで保存されているクエリを検索して実行する
+## <a name="find-and-run-saved-queries-in-log-analytics"></a>Log Analytics で保存されたクエリを検索して実行する
 
-1. OMS ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`) を開き、**[ログ検索]** を選択します。
+1. Log Analytics ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`) を開き、**[ログ検索]** を選択します。
 
-   ![OMS ホーム ページで [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Log Analytics ホーム ページで [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    または
 
-   ![[OMS] メニューの [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![メニューの [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
 2. **[ログ検索]** ホーム ページで、**[お気に入り]** を選択します。
 

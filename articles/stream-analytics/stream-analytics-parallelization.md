@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/22/2017
-ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.date: 04/27/2018
+ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -29,21 +29,13 @@ Stream Analytics ジョブのスケーリングでは、入力または出力で
 
 ### <a name="inputs"></a>入力
 Azure Stream Analytics のすべての入力では、パーティション分割を利用できます。
--   EventHub (パーティション キーを明示的に設定する必要があります)
--   IoT Hub (パーティション キーを明示的に設定する必要があります)
+-   EventHub (PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
+-   IoT Hub (PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
 -   BLOB ストレージ
 
 ### <a name="outputs"></a>出力
 
-Azure Stream Analytics を使用するときは、出力でパーティション分割を利用できます。
--   Azure Data Lake Storage
--   Azure Functions
--   Azure テーブル
--   BLOB ストレージ
--   CosmosDB (パーティション キーを明示的に設定する必要があります)
--   EventHub (パーティション キーを明示的に設定する必要があります)
--   IoT Hub (パーティション キーを明示的に設定する必要があります)
--   Service Bus
+Azure Stream Analytics を使用するときは、ほとんどの出力シンクのパーティション分割を利用できます。 出力のパーティション分割の詳細については、[出力ページのパーティション分割セクション](stream-analytics-define-outputs.md#partitioning)を参照してください。
 
 PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割はサポートされません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
 
@@ -56,7 +48,7 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 ## <a name="embarrassingly-parallel-jobs"></a>驚異的並列ジョブ
 *驚異的並列*ジョブは、Azure Stream Analytics において最もスケーラブルなシナリオです。 入力の 1 つのパーティションを、出力の 1 つのパーティションに対するクエリの 1 つのインスタンスに接続します。 この並列処理には次の要件があります。
 
-1. クエリ ロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送信されるようにする必要があります。 イベント ハブの場合、イベント データに **PartitionKey** 値が設定されている必要があります。 代わりに、パーティション分割された送信元を使用することもできます。 Blob Storage の場合、イベントが同じパーティション フォルダーに送信される必要があります。 クエリ ロジックで、同じクエリ インスタンスによって処理される同じキーが不要の場合は、この要件を無視してかまいません。 このロジックの例として、単純な select-project-filter クエリがあります。  
+1. クエリ ロジックが同じクエリ インスタンスによって処理される同じキーに依存する場合、イベントが入力の同じパーティションに送信されるようにする必要があります。 Event Hubs または IoT Hub の場合、イベント データに **PartitionKey** 値が設定されている必要があります。 代わりに、パーティション分割された送信元を使用することもできます。 Blob Storage の場合、イベントが同じパーティション フォルダーに送信される必要があります。 クエリ ロジックで、同じクエリ インスタンスによって処理される同じキーが不要の場合は、この要件を無視してかまいません。 このロジックの例として、単純な select-project-filter クエリがあります。  
 
 2. データが入力側でレイアウトされている場合、クエリがパーティション分割されている必要があります。 そのためには、すべてのステップで **PARTITION BY** を使用する必要があります。 複数のステップが許可されますが、すべてのステップが同じキーでパーティション分割されている必要があります。 現時点では、完全な並列ジョブにするために、パーティション キーを **PartitionId** に設定する必要があります。  
 
@@ -66,6 +58,7 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 
    * 8 個のイベント ハブ入力パーティションと 8 個のイベント ハブ出力パーティション
    * 8 個のイベント ハブ入力パーティションと Blob Storage 出力  
+   * 8 個の IoT ハブ入力パーティションと 8 個のイベント ハブ出力パーティション
    * 8 個の Blob Storage 入力パーティションと Blob Storage 出力  
    * 8 個の Blob Storage 入力パーティションと 8 個のイベント ハブ出力パーティション  
 

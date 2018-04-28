@@ -1,8 +1,8 @@
 ---
 title: Azure サービス正常性通知とは | Microsoft Docs
 description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
-ms.author: ancav
-ms.openlocfilehash: 4a95e9882515e6a2861292829a44847e11f39063
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 4/12/2017
+ms.author: dukek
+ms.openlocfilehash: 6821828d3e39a87b8c93f74e7e0583bf9fe1fe4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 
@@ -41,7 +41,7 @@ channels | **Admin** または **Operation** のいずれかの値。
 correlationId | 通常は文字列形式の GUID。 同じアクションに属するイベントは、通常、同じ correlationId を共有します。
 eventDataId | イベントの一意識別子。
 eventName | イベントのタイトル。
-level | イベントのレベル。 **Critical**、**Error**、**Warning**、または **Informational** のいずれかの値。
+level | イベントのレベル
 resourceProviderName | 影響を受けるリソースのリソース プロバイダーの名前。
 resourceType| 影響を受けるリソースの種類。
 subStatus | 通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列が含まれる場合もあります。 例: OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504)。
@@ -54,14 +54,52 @@ operationName | 操作の名前。
 ResourceId | 影響を受けるリソースのリソース ID。
 Properties.title | この通信のローカライズされたタイトル。 既定は英語です。
 Properties.communication | HTML マークアップによる通信のローカライズされた詳細。 既定は英語です。
-Properties.incidentType | **AssistedRecovery**、**ActionRequired**、**Information**、**Incident**、**Maintenance**、**Security** のいずれかの値。
+Properties.incidentType | **ActionRequired**、**Information**、**Incident**、**Maintenance**、**Security** のいずれかの値。
 Properties.trackingId | このイベントに関連付けられているインシデント。 インシデントに関連するイベントを関連付けるために使用します。
 Properties.impactedServices | インシデントの影響を受けるサービスやリージョンが記述された、エスケープされた JSON BLOB。 このプロパティには、(それぞれ **ServiceName** を持つ) サービスのリストと、(それぞれ **RegionName** を持つ) 影響を受けたリージョンのリストが含まれます。
 Properties.defaultLanguageTitle | 英語で行われる通信。
 Properties.defaultLanguageContent | HTML マークアップまたはプレーン テキストとして英語で行われる通信。
-Properties.stage | **AssistedRecovery**、**ActionRequired**、**Information**、**Incident**、**Security** で使用可能な値: **Active**、**Resolved**。 **Maintenance** で使用可能な値: **Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved**、**Complete**。
+Properties.stage | **Incident** および **Security** で使用可能な値は **Active**、**Resolved** または **RCA** です。 **ActionRequired** または **Information** で使用可能な値は **Active** のみです。 **Maintenance** で使用可能な値: **Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved**、**Complete**。
 Properties.communicationId | このイベントが関連付けられている通信。
 
+### <a name="details-on-service-health-level-information"></a>サービス正常性レベルの詳細情報
+  <ul>
+    <li><b>操作が必要</b> (properties.incidentType == ActionRequired) <dl>
+            <dt>情報</dt>
+            <dd>既存のサービスへの影響を防ぐために管理者の操作が必要です</dd>
+        </dl>
+    </li>
+    <li><b>メンテナンス</b> (properties.incidentType == Maintenance) <dl>
+            <dt>警告</dt>
+            <dd>緊急のメンテナンス<dd>
+            <dt>情報</dt>
+            <dd>標準的な計画済みメンテナンス</dd>
+        </dl>
+    </li>
+    <li><b>情報</b> (properties.incidentType == Information) <dl>
+            <dt>情報</dt>
+            <dd>既存のサービスへの影響を防ぐために管理者の操作が必要です</dd>
+        </dl>
+    </li>
+    <li><b>セキュリティ</b> (properties.incidentType == Security) <dl>
+            <dt>エラー</dt>
+            <dd>複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。</dd>
+            <dt>警告</dt>
+            <dd>特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。</dd>
+            <dt>情報</dt>
+            <dd>管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。</dd>
+        </dl>
+    </li>
+    <li><b>サービスに関する問題</b> (properties.incidentType == Incident) <dl>
+            <dt>エラー</dt>
+            <dd>複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。</dd>
+            <dt>警告</dt>
+            <dd>特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。</dd>
+            <dt>情報</dt>
+            <dd>管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。</dd>
+        </dl>
+    </li>
+  </ul>
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Azure Portal でのサービス正常性通知の表示
 1.  [Azure Portal](https://portal.azure.com) で、**[モニター]** を選択します。

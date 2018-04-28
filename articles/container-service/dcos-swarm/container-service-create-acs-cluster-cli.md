@@ -1,25 +1,25 @@
 ---
-title: "Docker コンテナー クラスターのデプロイ - Azure CLI"
-description: "Azure CLI 2.0 を使用して Kubernetes、DC/OS、または Docker Swarm ソリューションを Azure Container Service にデプロイします"
+title: Docker コンテナー クラスターのデプロイ - Azure CLI
+description: Azure CLI 2.0 を使用して Kubernetes、DC/OS、または Docker Swarm ソリューションを Azure Container Service にデプロイします
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 40d5ea0e7abce165659219db8842ab64ac75fda7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 037834fa94a4ef6ecf6ab87055ed1369a3c8f1fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Docker コンテナーのホスティング ソリューションをデプロイする
 
 Azure CLI 2.0 の `az acs` コマンドを使用すると、Azure Container Service のクラスターを作成および管理できます。 [Azure Portal](container-service-deployment.md) または Azure Container Service API を使用して、Azure Container Service クラスターをデプロイすることもできます。
 
-`az acs` の各コマンドのヘルプについては、任意のコマンドで `-h` パラメーターを指定してください。 (例: `az acs create -h`)。
+`az acs` の各コマンドのヘルプについては、任意のコマンドで `-h` パラメーターを指定してください。 たとえば、「 `az acs create -h`」のように入力します。
 
 
 
@@ -38,7 +38,7 @@ az login
 
 ### <a name="set-your-azure-subscription"></a>Azure サブスクリプションの設定
 
-複数の Azure サブスクリプションがある場合は、既定のサブスクリプションを設定します。 次に例を示します。
+複数の Azure サブスクリプションがある場合は、既定のサブスクリプションを設定します。 例: 
 
 ```
 az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
@@ -46,7 +46,7 @@ az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
 
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
-クラスターごとにリソース グループを作成することをお勧めします。 Azure Container Service を[使用可能](https://azure.microsoft.com/en-us/regions/services/)にする Azure リージョンを指定します。 For example:
+クラスターごとにリソース グループを作成することをお勧めします。 Azure Container Service を[使用可能](https://azure.microsoft.com/regions/services/)にする Azure リージョンを指定します。 例: 
 
 ```azurecli
 az group create -n acsrg1 -l "westus"
@@ -129,7 +129,7 @@ az acs delete -g acsrg1 -n acs-cluster
 ```
 このコマンドによって、コンテナー サービスの作成中に作成されたすべてのリソース (ネットワークおよびストレージ) が削除されるわけではありません。 すべてのリソースを簡単に削除するには、個別のリソース グループに各クラスターをデプロイすることをお勧めします。 その後、クラスターが不要になったら、リソース グループを削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでクラスターが機能します。接続と管理の詳細については、次のドキュメントを参照してください。
 
 * [Azure コンテナー サービス クラスターに接続する](../container-service-connect.md)

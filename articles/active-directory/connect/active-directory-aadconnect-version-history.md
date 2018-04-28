@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2018
+ms.date: 04/17/2018
 ms.author: billmath
-ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
+
 この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
 
 以下は、関連トピックの一覧です。
-
-
 
 トピック |  詳細
 --------- | --------- |
@@ -35,6 +34,21 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
 ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+## <a name="117510"></a>1.1.751.0
+状況 4/12/2018: ダウンロード用のみにリリース済み
+
+>[!NOTE]
+>これは Azure AD Connect の修正プログラムです
+
+### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
+#### <a name="fixed-issues"></a>修正された問題
+場合によっては中国のテナント用の Azure 自動インスタンス検出が失敗するという問題が修正されました。  
+
+### <a name="ad-fs-management"></a>AD FS の管理
+#### <a name="fixed-issues"></a>修正された問題
+
+構成再試行ロジックに問題があり、"同一のキーを含む項目が既に追加されています" を示す ArgumentException が発生していました。  これにより、再試行操作がすべて失敗します。
 
 ## <a name="117500"></a>1.1.750.0
 状況 3/22/2018: 自動アップグレードとダウンロード向けにリリース済み。
@@ -99,8 +113,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 変更により、次に対応します。
 1. 高速インストール
 2. 自動作成アカウントでのカスタム インストール
-
-* Azure AD Connect のクリーン インストールで SA 特権が求められないようにインストーラーを変更しました
+3. Azure AD Connect のクリーン インストールで SA 特権が求められないようにインストーラーを変更しました
 
 * 特定のオブジェクトの同期に関する問題のトラブルシューティングを行う新しいユーティリティを追加しました。 これは、Azure AD Connect ウィザードのトラブルシューティングの追加タスクにある "オブジェクトの同期のトラブルシューティング" オプションで使用できます。 現時点では、このユーティリティは以下を確認します。
 
@@ -316,7 +329,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * 既定の同期規則 “AD への送信 – ユーザー ImmutableId” の削除を招く問題を修正しました。
 
-  * この問題は、Azure AD Connect をアップグレードする際か、Azure AD Connect ウィザード内のタスク オプション*[Update Synchronization Configuration] \(同期構成の更新)* を使用して Azure AD Connect 同期構成を更新する際に発生します。
+  * この問題は、Azure AD Connect をアップグレードする際か、Azure AD Connect ウィザード内のタスク オプション *[Update Synchronization Configuration] \(同期構成の更新)* を使用して Azure AD Connect 同期構成を更新する際に発生します。
   
   * この同期規則は、[ソース アンカーとしての msDS-ConsistencyGuid 機能](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)を有効にしているお客様に適用されます。 この機能は、バージョン 1.1.524.0 以降で導入されました。 この同期規則が削除されると、Azure AD Connect でオンプレミスの AD ms-DS-ConsistencyGuid 属性に ObjectGuid 属性値を設定することができなくなります。 これによって新しいユーザーが Azure AD にプロビジョニングされなくなることはありません。
   

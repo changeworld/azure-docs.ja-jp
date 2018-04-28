@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell を使用して SQL Server VM をプロビジョニングするためのガイド | Microsoft Docs"
-description: "SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell コマンドを提供します。"
+title: Azure PowerShell を使用して SQL Server VM をプロビジョニングするためのガイド | Microsoft Docs
+description: SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell コマンドを提供します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -31,10 +31,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-your-subscription"></a>サブスクリプションの構成
 
-1. PowerShell を開いて **Add-AzureRmAccount** コマンドを実行し、Azure アカウントにアクセスできる状態にします。
+1. PowerShell を開いて **Connect-AzureRmAccount** コマンドを実行し、Azure アカウントへのアクセスを確立します。
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. 資格情報を入力するためのサインイン画面が表示されます。 Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
@@ -62,7 +62,7 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Network properties
+### <a name="network-properties"></a>ネットワークのプロパティ
 ネットワーク インターフェイス、TCP/IP 割り当て方式、仮想ネットワーク名、仮想サブネット名、仮想ネットワークの IP アドレス範囲、サブネットの IP アドレス範囲、仮想マシン内のネットワークに使用するパブリック ドメイン名ラベルは、以下の変数を使用して定義します。
 
 適宜変更を加えたうえで次のコマンドレットを実行し、これらの変数を初期化します。
@@ -327,7 +327,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 仮想マシンに関連付けらているすべてのリソースは、**Remove-AzureRmResourceGroup** コマンドを使用して完全に削除することもできます。 これを行うと仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
 
 ## <a name="example-script"></a>サンプル スクリプト
-このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 Azure サブスクリプションについては、既に **Add-AzureRmAccount** コマンドと **Select-AzureRmSubscription** コマンドでセットアップ済みであることを想定しています。
+このチュートリアルで使用した PowerShell スクリプト全体は、次のようになっています。 Azure サブスクリプションについては、既に **Connect-AzureRmAccount** コマンドと **Select-AzureRmSubscription** コマンドでセットアップ済みであることを想定しています。
 
 ```PowerShell
 # Variables

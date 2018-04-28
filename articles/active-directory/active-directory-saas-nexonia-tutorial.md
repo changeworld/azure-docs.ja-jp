@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Nexonia の統合 | Microsoft Docs"
-description: "Azure Active Directory と Nexonia の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Nexonia の統合 | Microsoft Docs'
+description: Azure Active Directory と Nexonia の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a71eb4de1723be1fd32a35bee848885738b029
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 027b7ae5b87cc8349670b2270124c18d68242a9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>チュートリアル: Azure Active Directory と Nexonia の統合
 
@@ -95,7 +95,7 @@ Nexonia で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Nexonia アプリケーションでシングル サインオンを構成します。
 
   > [!Note]
-   > 統合に問題がある場合、トラブルシューティング ガイドについては、この[リンク](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery)を参照してください。 トラブルシューティング ガイドで解決策が見つからない場合は、Azure ポータルからサポート要求を送信してください。
+   > 統合に問題がある場合、トラブルシューティング ガイドについては、この[リンク](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery)を参照してください。 トラブルシューティング ガイドで解決策が見つからない場合は、Azure ポータルからサポート要求を送信してください。
 
 **Nexonia で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 

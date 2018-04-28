@@ -1,11 +1,11 @@
 ---
-title: "ストレージ エクスプローラー (プレビュー) の概要 | Microsoft Docs"
-description: "ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理"
+title: Storage Explorer の概要 | Microsoft Docs
+description: Storage Explorer を使用して Azure Storage リソースを管理する
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
@@ -14,33 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 27b3775d81ec6dc093dae4ee46167c5d5a9c9e19
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e8ebbd1a0ac2153913a2e5f506505ffb481b3822
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="get-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
+# <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 ## <a name="overview"></a>概要
-Azure ストレージ エクスプローラー (プレビュー) は、Windows、macOS、Linux で Azure Storage のデータを簡単に操作できるスタンドアロン アプリです。 この記事では、Azure Storage アカウントへの接続と管理に関するさまざまな方法を紹介します。
+Azure Storage Explorer は、Windows、macOS、および Linux で Azure Storage のデータを簡単に操作できるスタンドアロン アプリです。 この記事では、Azure Storage アカウントへの接続と管理に関するさまざまな方法を紹介します。
 
-![Microsoft Azure ストレージ エクスプローラー (プレビュー)][0]
+![Microsoft Azure ストレージ エクスプローラー][0]
 
 ## <a name="prerequisites"></a>前提条件
-* [ストレージ エクスプローラー (プレビュー) をダウンロードしてインストールする](http://www.storageexplorer.com)
 
-> [!NOTE]
-> Ubuntu 16.04 以外の Linux ディストリビューションの場合、いくつかの依存関係を手動でインストールすることが必要な場合があります。 一般に、次のパッケージが必要です。
-> * libgconf-2-4
-> * libsecret
-> * 最新の GCC
->
-> ディストリビューションによっては、他のパッケージのインストールも必要な場合があります。 Storage Explorer の[リリース ノート](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)には、一部のディストリビューションでの具体的な手順が掲載されています。
->
->
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+Azure Storage Explorer は次のバージョンの Windows でサポートされています。
+
+* Windows 10 (推奨)
+* Windows 8
+* Windows 7
+
+[Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+Azure Storage Explorer は次のバージョンの macOS でサポートされています。
+
+* macOS 10.12 "Sierra" 以降のバージョン
+
+[Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+Azure Storage Explorer は次のディストリビューションの Linux でサポートされています。
+
+* Ubuntu 16.04 x64 (推奨)
+* Ubuntu 17.10 x64
+* Ubuntu 14.04 x64
+
+Azure Storage Explorer は他のディストリビューションでも動作する可能性がありますが、正式にサポートされているのは上記のディストリビューションのみです。
+
+Azure Storage Exploer を Linux 上で実行するには、以下の依存関係/ライブラリもインストールする必要があります。
+
+* [.NET Core 2.x](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* libsecret (注: コンピューター上で libsecret-1.so.0 を使用できる必要があります。 異なるバージョンの libsecret がインストールされている場合、.so ファイルを libsecret-1.so.0 にソフト リンクすることができます)
+* libgconf-2-4
+* 最新の GCC
+
+Azure Storage Explorer の[リリース ノート](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)には、一部のディストリビューションでの具体的な手順が掲載されています。
+
+[Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+
+---
 
 ## <a name="connect-to-a-storage-account-or-service"></a>ストレージ アカウントまたはサービスに接続する
-ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントに対する接続方法がいくつか用意されています。 たとえば、次のようなことができます。
+Storage Explorer には、ストレージ アカウントに対する接続方法がいくつか用意されています。 たとえば、次のようなことができます。
 * 自分の Azure サブスクリプションに関連付けられているストレージ アカウントに接続する。
 * 他の Azure サブスクリプションから共有されているストレージ アカウントとサービスに接続する。
 * Azure ストレージ エミュレーターを使ってローカル ストレージに接続し、そのローカル ストレージを管理する。 
@@ -60,7 +87,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 >
 >
 
-1. Storage Explorer (プレビュー) で、**[アカウントの管理]** を選択して **[Account Management Panel]\(アカウント管理パネル\)** に移動します。
+1. Storage Explorer で、**[アカウントの管理]** を選択して **[アカウント管理] パネル**に移動します。
 
     ![アカウントの管理][1]
 
@@ -79,7 +106,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
     ![Selected Azure subscriptions][4]
 
 ## <a name="work-with-local-development-storage"></a>ローカル開発ストレージを操作する
-ストレージ エクスプローラー (プレビュー) では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。 この方法を使えば、Azure ストレージ エミュレーターによってストレージ アカウントがエミュレートされるため、Azure にデプロイされたストレージ アカウントがなくても、Azure Storage の操作をシミュレートすることができます。
+Storage Explorer では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。 この方法を使えば、Azure ストレージ エミュレーターによってストレージ アカウントがエミュレートされるため、Azure にデプロイされたストレージ アカウントがなくても、Azure Storage の操作をシミュレートすることができます。
 
 > [!NOTE]
 > 現時点では、Azure ストレージ エミュレーターは Windows に対してのみサポートされています。
@@ -91,7 +118,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 >
 >
 
-1. Storage Explorer (プレビュー) の左側のウィンドウで、**[(Local and Attached)]\((ローカルおよびアタッチ済み)\)** > **[ストレージ アカウント]** > **[(開発)]** > **[BLOB コンテナー]** ノードの順に展開します。
+1. Storage Explorer の左側のウィンドウで、**[(Local and Attached)]\((ローカルおよびアタッチ済み)\)** > **[ストレージ アカウント]** > **[(開発)]** > **[BLOB コンテナー]** ノードの順に展開します。
 
     ![Local development node][5]
 
@@ -102,21 +129,18 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 3. エミュレーターがインストールされたら、ローカルの BLOB、キュー、テーブルを作成および操作できるようになります。 それぞれの種類のストレージ アカウントを操作する方法については、次のガイドを参照してください。
 
     * [Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
-    * Azure ファイル共有ストレージ リソースの管理: "*近日公開予定*"
-    * Azure Queue Storage リソースの管理: "*近日公開予定*"
-    * Azure Table Storage リソースの管理: "*近日公開予定*"
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>外部ストレージ アカウントをアタッチまたはデタッチする
-ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントを簡単に共有できるように、外部ストレージ アカウントにアタッチする機能が用意されています。 このセクションでは、外部ストレージ アカウントにアタッチ (または外部ストレージ アカウントからデタッチ) する方法について説明します。
+Storage Explorer には、ストレージ アカウントを簡単に共有できるように、外部ストレージ アカウントにアタッチする機能が用意されています。 このセクションでは、外部ストレージ アカウントにアタッチ (または外部ストレージ アカウントからデタッチ) する方法について説明します。
 
 ### <a name="get-the-storage-account-credentials"></a>ストレージ アカウントの資格情報を取得する
 外部ストレージ アカウントを共有するには、まずそのアカウントの所有者がアカウントの資格情報 (アカウント名とキー) を取得し、その情報を、そのアカウントへのアタッチを望んでいるユーザーと共有する必要があります。 Azure Portal からストレージ アカウントの資格情報を取得する手順は、以下のとおりです。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[参照]**を選択します。
+2. **[参照]** を選択します。
 
-3. **[ストレージ アカウント]**を選択します。
+3. **[ストレージ アカウント]** を選択します。
 
 4. **[ストレージ アカウント]** の一覧で目的のストレージ アカウントを選択します。
 
@@ -129,9 +153,9 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
     ![[アクセス キー]][8]
 
 ### <a name="attach-to-an-external-storage-account"></a>外部ストレージ アカウントにアタッチする
-外部ストレージ アカウントにアタッチするには、アカウントの名前とキーが必要になります。 「ストレージ アカウントの資格情報を取得する」セクションでは、Azure Portal からこれらの値を取得する方法を説明しました。 ただし、ポータルでは、アカウント キーが **key1** という名前になっています。 このため、Storage Explorer (プレビュー) でアカウント キーの入力が必要な局面があれば、**key1** の値を入力してください。
+外部ストレージ アカウントにアタッチするには、アカウントの名前とキーが必要になります。 「ストレージ アカウントの資格情報を取得する」セクションでは、Azure Portal からこれらの値を取得する方法を説明しました。 ただし、ポータルでは、アカウント キーが **key1** という名前になっています。 このため、Storage Explorer でアカウント キーの入力が必要な局面があれば、**key1** の値を入力してください。
 
-1. Storage Explorer (プレビュー) で、**接続**ダイアログを開きます。
+1. Storage Explorer で、**接続ダイアログ**を開きます。
 
     ![Connect to Azure storage option][9]
 
@@ -150,7 +174,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 
 4. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 設定を変更する場合は、**[戻る]** を選択し、必要な設定をもう一度入力します。 
 
-5. **[接続]**を選択します。
+5. **[接続]** を選択します。
 
 6. ストレージ アカウントが正常にアタッチされると、そのストレージ アカウントが、名前の後に "**(外部)**" を伴って表示されます。
 
@@ -172,10 +196,10 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
 2. UserA は、ストレージ アカウントへのアクセスを希望しているユーザー (この例では UserB) と SAS を共有します。  
 
-3. UserB はストレージ エクスプローラー (プレビュー) からその SAS を使用し、UserA に属するアカウントにアタッチします。
+3. UserB は Storage Explorer からその SAS を使用し、UserA に属するアカウントにアタッチします。
 
 ### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>共有するアカウントの SAS 接続文字列を生成する
-1. Storage Explorer (プレビュー) で、共有するストレージ アカウントを右クリックし、**[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
+1. Storage Explorer で、共有するストレージ アカウントを右クリックし、**[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
     ![Get SAS context menu option][14]
 
@@ -186,7 +210,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 3. **[接続文字列]** ボックスの横にある **[コピー]** を選択してクリップボードにコピーし、**[閉じる]** をクリックします。
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>SAS 接続文字列を使用してストレージ アカウントにアタッチする
-1. Storage Explorer (プレビュー) で、**接続**ダイアログを開きます。
+1. Storage Explorer で、**接続ダイアログ**を開きます。
 
     ![Connect to Azure storage option][9]
 
@@ -200,7 +224,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
 4. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 変更する場合は、**[戻る]** を選択して、必要な設定を入力します。 
 
-5. **[接続]**を選択します。
+5. **[接続]** を選択します。
 
 6. ストレージ アカウントが正常にアタッチされると、そのストレージ アカウントが、名前の後に "**(SAS)**" を伴って表示されます。
 
@@ -213,12 +237,9 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 この場合のサービスは、BLOB、コンテナー、キュー、テーブル、またはファイル共有です。 表示されているサービスの SAS を生成するには、以下のいずれかを参照してください。
 
 * [BLOB コンテナーの SAS を取得する](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* ファイル共有の SAS を取得する: "*近日公開予定*"
-* キューの SAS を取得する: "*近日公開予定*"
-* テーブルの SAS を取得する: "*近日公開予定*"
 
 ### <a name="attach-to-the-shared-account-service-by-using-a-sas-uri"></a>SAS URI を使って共有アカウント サービスにアタッチする
-1. Storage Explorer (プレビュー) で、**接続**ダイアログを開きます。
+1. Storage Explorer で、**接続ダイアログ**を開きます。
 
     ![Connect to Azure storage option][9]
 
@@ -232,7 +253,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
 3. **[接続の概要]** ダイアログ ボックスで、情報を確認します。 変更する場合は、**[戻る]** を選択して、必要な設定を入力します。 
 
-4. **[接続]**を選択します。
+4. **[接続]** を選択します。
 
 5. サービスが正常にアタッチされると、そのサービスが **[(SAS-Attached Services)]\((SAS アタッチ サービス)\)** ノードに表示されます。
 
@@ -251,7 +272,7 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
  ## <a name="connect-to-azure-data-lake-store-by-uri"></a>Azure Data Lake Store に URI で接続する
 リソースにアクセスしたいのですが、このリソースがサブスクリプションに存在しません。 ただし、他のユーザーはそのリソースの URI の取得を許可しています。 この場合、サインイン後に URI を使用して Data Lake Store に接続できます。 以下の手順を参照してください。
-1. ストレージ エクスプローラー (プレビュー) を起動します。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで **[Local and Attached]\(ローカルで接続済み\)** を展開します。
 3. **[Data Lake Store]** を右クリックし、コンテキスト メニューから **[Connect to Data Lake Store]\(Data Lake Store に接続する\)** を選択します。
 
@@ -276,9 +297,9 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 >
 
 ## <a name="next-steps"></a>次の手順
-* [ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
+* [Storage Explorer を使用して Azure Blob Storage リソースを管理する](vs-azure-tools-storage-explorer-blobs.md)
 * [Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)](./cosmos-db/storage-explorer.md)
-* [Storage Explorer (プレビュー) を使用して Azure Data Lake Store リソースを管理する](./data-lake-store/data-lake-store-in-storage-explorer.md)
+* [Storage Explorer を使用して Azure Data Lake Store リソースを管理する](./data-lake-store/data-lake-store-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Overview.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageAccounts.png

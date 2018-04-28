@@ -1,25 +1,23 @@
 ---
-title: "ディープ ラーニング用の Microsoft Cognitive Toolkit と Azure HDInsight Spark | Microsoft Docs"
-description: "Azure HDInsight Spark クラスターで Spark Python API を使用して、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルをデータセットに適用する方法について説明します。"
+title: ディープ ラーニング用の Microsoft Cognitive Toolkit と Azure HDInsight Spark | Microsoft Docs
+description: Azure HDInsight Spark クラスターで Spark Python API を使用して、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルをデータセットに適用する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: jgao
-ms.openlocfilehash: ebbbcd7a1d61ba0eac13a184aa48cacb800524e8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7afb891642e3e53da5eb1e17ee654fb5fb42c313
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
 
@@ -75,7 +73,7 @@ Azure Portal を使用してスクリプト アクションを実行する方法
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする
 
-Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用するには、Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough.ipynb** を Azure HDInsight Spark クラスターに読み込む必要があります。 このノートブックは GitHub の [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) で入手できます。
+Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用するには、Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough.ipynb** を Azure HDInsight Spark クラスターに読み込む必要があります。 このノートブックは [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) の GitHub から入手できます。
 
 1. GitHub リポジトリ [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) を複製します。 複製の手順については、「[Cloning a repository (リポジトリの複製)](https://help.github.com/articles/cloning-a-repository/)」を参照してください。
 

@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate のグループの依存関係マッピングを使用してアセスメント グループを絞り込む | Microsoft Docs"
-description: "Azure Migrate サービスのグループの依存関係マッピングを使用して、アセスメントを絞り込む方法について説明します。"
+title: Azure Migrate のグループの依存関係マッピングを使用してアセスメント グループを絞り込む | Microsoft Docs
+description: Azure Migrate サービスのグループの依存関係マッピングを使用して、アセスメントを絞り込む方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
-ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -37,8 +37,8 @@ Windows マシンにエージェントをインストールするには、次の
 1. ダウンロードしたエージェントをダブルクリックします。
 2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
 3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、**[次へ]** をクリックします。 
-4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics (OMS)]** > **[次へ]** の順にクリックします。 
-5. **[追加]** をクリックして、新しい OMS ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
+4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]**、**[次へ]** の順にクリックします。 
+5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。

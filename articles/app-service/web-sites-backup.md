@@ -1,8 +1,8 @@
 ---
-title: "Azure でのアプリのバックアップ"
-description: "Azure App Service でアプリのバックアップを作成する方法を説明します。"
+title: Azure でのアプリのバックアップ
+description: Azure App Service でアプリのバックアップを作成する方法を説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 435370a8758d439a5fcce2e04efd11b4aaaf0357
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](app-service-web-overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
@@ -35,9 +35,9 @@ App Service によって、アプリで使用するようにユーザーが構�
 * アプリに接続されているデータベース
 
 次のデータベース ソリューションがバックアップ機能でサポートされています。 
-   - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-   - [Azure Database for MySQL (プレビュー)](https://azure.microsoft.com/en-us/services/mysql)
-   - [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/en-us/services/postgres)
+   - [SQL Database](https://azure.microsoft.com/services/sql-database/)
+   - [Azure Database for MySQL (プレビュー)](https://azure.microsoft.com/services/mysql)
+   - [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/services/postgres)
    - [アプリ内 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 
@@ -72,7 +72,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 3. **[バックアップ構成]** ページで、**[ストレージ: 未構成]** をクリックして、ストレージ アカウントを構成します。
    
     ![ストレージ アカウントの選択][ChooseStorageAccount]
-4. **[ストレージ アカウント]** と **[コンテナー]** を選択して、バックアップ先を選択します。 ストレージ アカウントは、バックアップするアプリと同じサブスクリプションに属する必要があります。 必要に応じて、各ページで新しいストレージ アカウントまたは新しいコンテナーを作成できます。 完了したら、 **[選択]**をクリックします。
+4. **[ストレージ アカウント]** と **[コンテナー]** を選択して、バックアップ先を選択します。 ストレージ アカウントは、バックアップするアプリと同じサブスクリプションに属する必要があります。 必要に応じて、各ページで新しいストレージ アカウントまたは新しいコンテナーを作成できます。 完了したら、 **[選択]** をクリックします。
    
     ![ストレージ アカウントの選択](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
 5. 開いたままになっている **[バックアップ構成]** ページで、**[データベースをバックアップする]** を構成し、バックアップに含めるデータベース (SQL データベースまたは MySQL) を選択してから、**[OK]** をクリックします。  
@@ -165,7 +165,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 <a name="nextsteps"></a>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アプリをバックアップから復元する方法については、 [Azure でのアプリの復元](web-sites-restore.md)に関するページを参照してください。 
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management を使用して API の複数のバージョンを公開する | Microsoft Docs"
-description: "このチュートリアルの手順に従って、API Management で複数のバージョンを公開する方法を学びます。"
+title: Azure API Management を使用して API の複数のバージョンを公開する | Microsoft Docs
+description: このチュートリアルの手順に従って、API Management で複数のバージョンを公開する方法を学びます。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: d63bdd3110f5c5db3e7bfec424644fdbc8d8d90c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7d61fa25f29f1380fe58069dbc25ed9ce1fff53c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>API の複数のバージョンを発行する 
 
-API のすべての呼び出し元がまったく同じバージョンを使用するのは実用的ではない場合があります。 新しい API 機能や異なる API 機能を一部のユーザーに公開し、他のユーザーは現在役立っている API を引き続き使用することを望む場合があります。 呼び出し元は、新しいバージョンにアップグレードするときに、わかりやすい方法でアップグレードできることを求めています。  これは、Azure API Management で**複数のバージョン**を使用することで実現できます。 詳細については、「[Versions & Revisions (バージョンとリビジョン)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)」を参照してください。
+API のすべての呼び出し元がまったく同じバージョンを使用するのは実用的ではない場合があります。 呼び出し元は、新しいバージョンにアップグレードするときに、わかりやすい方法でアップグレードできることを求めています。 これは、Azure API Management で**複数のバージョン**を使用することで実現できます。 詳細については、「[Versions & Revisions (バージョンとリビジョン)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)」を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -36,10 +36,8 @@ API のすべての呼び出し元がまったく同じバージョンを使用�
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
-
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+* [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
+* また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 ## <a name="add-a-new-version"></a>新しいバージョンを追加する
 
@@ -54,7 +52,7 @@ API のすべての呼び出し元がまったく同じバージョンを使用�
 
 ## <a name="choose-a-versioning-scheme"></a>バージョン管理スキームを選択する
 
-Azure API Management では、呼び出し元が API の必要なバージョンを指定できるようにするための方法を選択できます。 これを行うには、**バージョン管理スキーム**を選択します。 このスキームには、**パス、ヘッダー、クエリ文字列**のいずれかを使用できます。 この例ではパスを使用します。
+Azure API Management では、呼び出し元が API の必要なバージョンを指定できるようにするための方法を選択できます。 使用する API バージョンは、**バージョン管理スキーム**を選択することで指定します。 このスキームには、**パス、ヘッダー、クエリ文字列**のいずれかを使用できます。 次の例では、パスを使用してバージョン管理スキームを選択します。
 
 ![[バージョンの追加] 画面](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
@@ -71,20 +69,20 @@ Azure API Management では、呼び出し元が API の必要なバージョン
     ![Azure Portal の API の下に表示された複数のバージョン](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
-    > バージョンのない API にバージョンを追加すると、既定の URL で応答する**オリジナル**が常に作成されます。 これにより、バージョンを追加するプロセスによって、既存の呼び出し元が切断されないようにすることができます。 最初に複数のバージョンを有効にして新しい API を作成した場合には、オリジナルは作成されません。
+    > バージョンのない API にバージョンを追加すると、既定の URL で応答する**オリジナル**が自動的に作成されます。 これにより、バージョンを追加するプロセスによって、既存の呼び出し元が切断されないようにすることができます。 最初に複数のバージョンを有効にして新しい API を作成した場合には、オリジナルは作成されません。
 
 6. **オリジナル**とは別の API として **v1** を編集し、構成することができます。 あるバージョンの変更が別のバージョンに影響することはありません。
 
 ## <a name="add-the-version-to-a-product"></a>バージョンを製品に追加する
 
-呼び出し元に新しいバージョンを表示するには、新しいバージョンを**製品**に追加する必要があります (製品は親バージョンから継承されません)。
+呼び出し元が新しいバージョンを表示するためには、それが**製品**に追加されている必要があります。
 
-1. サービス管理ページで **[製品]** を選択します。
+1. クラシック デプロイ モデル ページから **[製品]** を選択します。
 2. **[無制限]** を選択します。
 3. **[API]** を選択します。
-4. **[追加]**を選択します。
+4. **[追加]** を選択します。
 5. **[Conference API, Version v1]\(Conference API バージョン v1\)** を選択します。
-6. サービス管理ページに戻り、**[API]** を選択します。
+6. サービス管理ページに移動し、**[API]** を選択します。
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>開発者ポータルを参照してバージョンを確認する
 
@@ -95,7 +93,7 @@ Azure API Management では、呼び出し元が API の必要なバージョン
 
     ![API コンテキスト メニュー - バージョンの追加](media/api-management-getstarted-publish-versions/developer_portal.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習する内容は次のとおりです。
 

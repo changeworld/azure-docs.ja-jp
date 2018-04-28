@@ -16,11 +16,11 @@ ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 863c1ec562cd71af0df69ccc0547e16d02c7ee82
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d54f392eddfcca99e7fe0b037b9efd0a4e90433c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-stack"></a>Azure Stack とは
 
@@ -40,5 +40,5 @@ ASDK には次の制限事項があります。
 ## <a name="next-steps"></a>次の手順
 [主要機能および概念](azure-stack-key-features.md)
 
-[Azure Stack: Azure の拡張機能 (pdf)](https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/)
+[Azure Stack: Azure の拡張機能 (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)
 

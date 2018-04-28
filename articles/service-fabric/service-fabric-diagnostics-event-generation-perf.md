@@ -3,7 +3,7 @@ title: Azure Service Fabric のパフォーマンスの監視 | Microsoft Docs
 description: Azure Service Fabric クラスターの監視と診断に使うパフォーマンス カウンターについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/16/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 54837b2a43f93f43d089a2fdf35d8b74ecacfc3e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 
@@ -83,4 +83,4 @@ Reliable Collections を使っている場合は、`Service Fabric Transactional
 ## <a name="next-steps"></a>次の手順
 
 * Service Fabric における[プラットフォーム レベルでのイベント生成](service-fabric-diagnostics-event-generation-infra.md)についてさらに学習します
-* [Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)を使ってパフォーマンス メトリックを収集してください
+* [OMS エージェント](service-fabric-diagnostics-oms-agent.md)経由でパフォーマンス メトリックを収集してください

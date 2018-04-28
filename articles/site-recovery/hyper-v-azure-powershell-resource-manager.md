@@ -1,6 +1,6 @@
 ---
-title: "PowerShell と Azure Resource Manager を使用して Hyper-V VM をレプリケートする | Microsoft Docs"
-description: "PowerShell とAzure Resource Manager を使用して、Azure に対する Hyper-V VM レプリケーションを Azure Site Recovery で自動化します。"
+title: PowerShell と Azure Resource Manager を使用して Hyper-V VM をレプリケートする | Microsoft Docs
+description: PowerShell とAzure Resource Manager を使用して、Azure に対する Hyper-V VM レプリケーションを Azure Site Recovery で自動化します。
 services: site-recovery
 author: bsiva
 manager: abhiag
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: bsiva
-ms.openlocfilehash: 4304cad9dc6aab7eb95885815a3ceb636ca6ff52
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 18ed9566cd265ef851f914a59e10f6973bdc0d86
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -45,9 +45,9 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
 
-1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると Web ページが表示され、次のアカウントの資格情報 **Login-AzureRmAccount** を入力するように求められます。
-    - また、アカウントの資格情報を、**Login-AzureRmAccount** コマンドレットに、パラメーター (**-Credential** パラメーターを使用) として含めることもできます。
-    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、**Login-AzureRmAccount -Tenant "fabrikam.com"** を指定します
+1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると Web ページが表示され、次のアカウントの資格情報 **Connect-AzureRmAccount** を入力するように求められます。
+    - また、アカウントの資格情報を、**Connect-AzureRmAccount** コマンドレットに、パラメーター (**-Credential** パラメーターを使用) として含めることもできます。
+    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、「**Connect-AzureRmAccount -Tenant "fabrikam.com"**」と入力します。
 2. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`

@@ -12,18 +12,18 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 51fd3e12344fb20056012c00d6b38edf0355b0a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef00191e524e93d1ed578193d37fb6002c15a0b8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>C# サービス SDK を使用して X.509 デバイスを IoT Hub Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
 
-これらの手順では、[C# サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp) と C# .NET Core アプリケーションのサンプルを使用して、中間またはルート CA X.509 証明書の登録グループをプログラムで作成する方法について説明します。 登録グループでは、証明書チェーン内の共通の署名証明書を共有するデバイスに関してプロビジョニング サービスへのアクセスを制御します。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。 Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。 この記事の手順は Windows マシンと Linux マシンの両方に利用できますが、この記事では Windows 開発マシンを使用します。
+これらの手順では、[C# サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp) と C# .NET Core アプリケーションのサンプルを使用して、中間またはルート CA X.509 証明書の登録グループをプログラムで作成する方法について説明します。 登録グループでは、証明書チェーン内の共通の署名証明書を共有するデバイスに関してプロビジョニング サービスへのアクセスを制御します。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。 Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。 この記事の手順は Windows マシンと Linux マシンの両方に利用できますが、この記事では Windows 開発マシンを使用します。
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/16/2018
 4. プロビジョニング サービスにアップロードされ検証された中間またはルート CA X.509 証明書の公開部分を含む .pem ファイルまたは .cer ファイルが必要です。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つツールが含まれています。 このツールを使用するには、[azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) フォルダーの内容をマシンの作業フォルダーにダウンロードし、[azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) の手順に従います。 C SDK のツールに加えて、**C# サービス SDK** に含まれている[グループ証明書の検証のサンプル](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample)では、既存の X.509 中間またはルート CA 証明書で所有証明を実行する方法について説明されています。 
 
   > [!IMPORTANT]
-  > SDK ツールで作成される証明書は、開発にのみ使用するよう設計されています。 運用コードに適した証明書の取得については、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)」を参照してください。
+  > SDK ツールで作成される証明書は、開発にのみ使用するよう設計されています。 運用コードに適した証明書の取得については、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)」を参照してください。
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>プロビジョニング サービスの接続文字列を取得する
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="create-the-enrollment-group-sample"></a>登録グループのサンプルを作成する 
 
-このセクションの手順では、登録グループをプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、登録グループを追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発について詳しくは、[Windows IoT Core の開発者ドキュメント](https://docs.microsoft.com/en-us/windows/iot-core/)に関するページを参照してください。
+このセクションの手順では、登録グループをプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、登録グループを追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発について詳しくは、[Windows IoT Core の開発者ドキュメント](https://docs.microsoft.com/windows/iot-core/)に関するページを参照してください。
 1. Visual Studio で、**コンソール アプリ (.NET Core)** プロジェクト テンプレートを使用して、Visual C# .NET Core コンソール アプリ プロジェクトを新しいソリューションに追加します。 .NET Framework のバージョンが 4.5.1 以降であることを確認します。 プロジェクトに **CreateEnrollmentGroup** という名前を付けます。
 
     ![New Visual C# Windows Classic Desktop project](media//quick-enroll-device-x509-csharp/create-app.png)
