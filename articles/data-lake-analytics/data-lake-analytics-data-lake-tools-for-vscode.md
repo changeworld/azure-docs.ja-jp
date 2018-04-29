@@ -1,10 +1,10 @@
 ---
-title: "Azure Data Lake Tools: Azure Data Lake Tools for Visual Studio Code の使用 | Microsoft Docs"
-description: "Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。 "
+title: 'Azure Data Lake Tools: Azure Data Lake Tools for Visual Studio Code の使用 | Microsoft Docs'
+description: 'Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。 '
 Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
+documentationcenter: ''
+author: Jejiang
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
@@ -224,7 +224,7 @@ Data Lake Analytics で U-SQL スクリプトをコンパイルして実行す�
 
     ![Data Lake Tools for Visual Studio Code のコマンド パレット](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
     ![Data Lake Tools for Visual Studio Code デバイス ログイン情報](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
-3.  **[Copy & Open]\(コピーして開く\)** をクリックして、URL として https://aka.ms/devicelogin を指定してログイン Web ページを開きます。 テキスト ボックスにコード **G567LX42V** を貼り付けて、**[続行]** を選択します。
+3.  **[Copy & Open]\(コピーして開く\)** をクリックし、URL として https://aka.ms/devicelogin を指定してログイン Web ページを開きます。 テキスト ボックスにコード **G567LX42V** を貼り付けて、**[続行]** を選択します。
 
    ![Data Lake Tools for Visual Studio Code のログイン時に貼り付けるコード](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
 4.  手順に従って Web ページからサインインします。 接続すると、**VS Code** ウィンドウの左下隅のステータス バーに Azure アカウント名が表示されます。 
@@ -356,13 +356,13 @@ Azure Data Lake Storage 関連コマンドを使用して次のことを実行�
 
 **Azure の統合** 
 
-- Azure にログインしていない場合はいつでも、**[DATALAKE EXPLORER]** を展開して **[Azure にサインイン]** をクリックすることで、Azure に ログインできます。 ログインすると、**DataLake エクスプローラー**の左側のパネルに、現在の Azure アカウントに含まれるサブスクリプションがすべて一覧表示されます。 
+- Azure にログインしていない場合はいつでも、**[AZURE DATALAKE]** を展開して **[Azure にサインイン]** をクリックすることで、Azure に ログインできます。 ログインすると、**[AZURE DATALAKE]** の左側のパネルに、現在の Azure アカウントに含まれるサブスクリプションがすべて一覧表示されます。 
 
    ![DataLake エクスプローラー](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![DataLake エクスプローラー](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**ADLA メタデータ ナビゲーション** 
+**ADLA メタデータ ナビゲーション**
 
 - Azure サブスクリプションを展開すると、U-SQL データベース ノードで U-SQL データベースに移動し、**スキーマ**、**資格情報**、**アセンブリ**、**テーブル**、**インデックス**などを確認することができます。
 
@@ -382,11 +382,31 @@ Azure Data Lake Storage 関連コマンドを使用して次のことを実行�
 
 **ADLS 統合** 
 
- - **[ストレージ アカウント]** に移動すると、各ファイル ノードのコンテキスト メニューから、**プレビュー**、**ダウンロード**、**削除**、**相対パスのコピー**、**完全なパスのコピー**を行うことができます。 フォルダー ノードで右クリックしてコンテキスト メニューから、**更新**、**アップロード**、**フォルダーのアップロード**、**削除**を行うことができます。
+**[Data Lake Store]** に移動します
+
+ - フォルダー ノードの右クリック コンテキスト メニューでは、**[更新]**、**[削除]**、**[アップロード]**、**[Upload Folder]\(フォルダーのアップロード\)**、**[相対パスのコピー]**、**[完全パスのコピー]** を行うことができます。
 
    ![DataLake エクスプローラー](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
+ - ファイル ノードの右クリック コンテキスト メニューでは、**[ダウンロード]**、**[プレビュー]**、**[削除]**、**[相対パスのコピー]**、**[完全パスのコピー]** を行うことができます。 
+
    ![DataLake エクスプローラー](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+**WASB の統合**
+
+**[Blob ストレージ]** に移動します
+
+- BLOB コンテナー ノードの右クリック コンテキスト メニューでは、**[更新]**、**[BLOB コンテナーの削除]**、**[BLOB のアップロード]** を行うことができます。
+
+    ![[Blob ストレージ] の BLOB コンテナー ノード](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+
+- フォルダー ノードの右クリック コンテキスト メニューでは、**[更新]**、**[BLOB のアップロード]** を行うことができます。
+
+    ![[Blob ストレージ] のフォルダー ノード](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+
+- ファイル ノードの右クリック コンテキスト メニューでは、**[Preview/Edit]\(プレビュー/編集\)**、**[ダウンロード]**、**[削除]**、**[相対パスのコピー]**、**[完全パスのコピー]** を行うことができます。
+
+    ![[Blob ストレージ] のファイル ノード](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>ポータルで ADL ストレージ エクスプローラーを開く
 1. Ctrl + Shift + P キーを押してコマンド パレットを開きます。

@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub の device-to-cloud メッセージの理解 | Microsoft Docs"
-description: "開発者ガイド - IoT Hub での device-to-cloud メッセージの使用方法。 テレメトリとそれ以外の情報の両方のデータ送信およびルーティングを使用したメッセージの配信について説明します。"
+title: Azure IoT Hub の device-to-cloud メッセージの理解 | Microsoft Docs
+description: 開発者ガイド - IoT Hub での device-to-cloud メッセージの使用方法。 テレメトリとそれ以外の情報の両方のデータ送信およびルーティングを使用したメッセージの配信について説明します。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>device-to-cloud メッセージを IoT Hub に送信する
 
@@ -32,7 +32,7 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 * device-to-cloud メッセージには持続性があり、最長で 7 日間、IoT hub の既定の **messages/events** エンドポイントに保持されます。
 * device-to-cloud メッセージは最大 256 KB で、バッチとしてグループ化して送信を最適化できます。 バッチは最大で 256 KB です。
 * 「[IoT Hub へのアクセスの制御][lnk-devguide-security]」のセクションで説明されているように、IoT Hub ではデバイスごとに認証とアクセス制御を行うことができます。
-* IoT Hub では、最大 10 個のカスタム エンドポイントを作成できます。 IoT Hub で構成されているルートに基づいて、エンドポイントにメッセージが配信されます。 詳細については、[ルーティング ルール](#routing-rules)に関するセクションをご覧ください。
+* IoT Hub では、最大 10 個のカスタム エンドポイントを作成できます。 IoT Hub で構成されているルートに基づいて、エンドポイントにメッセージが配信されます。 詳細については、[ルーティング ルール](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions)に関するセクションをご覧ください。
 * IoT Hub により、何百万もの接続されているデバイスを同時に有効にできます (「[クォータと調整][lnk-quotas]」をご覧ください)。
 * IoT Hub では、任意のパーティション分割は許可されていません。 D2C メッセージは、発信元の **deviceId**に基づいてパーティション分割されます。
 

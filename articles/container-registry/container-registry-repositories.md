@@ -1,18 +1,18 @@
 ---
-title: "Azure Portal の Azure Container Registry リポジトリ"
-description: "Azure Portal で Azure Container Registry リポジトリを表示する方法"
+title: Azure Portal の Azure Container Registry リポジトリ
+description: Azure Portal で Azure Container Registry リポジトリを表示する方法
 services: container-registry
 author: cristy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 593972e972207a27d1232fcb0c1bf220ac3a8def
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 4479c78eb2eb4138dbacfa3619616a3b16d51121
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure Portal でコンテナー レジストリ リポジトリを表示する
 

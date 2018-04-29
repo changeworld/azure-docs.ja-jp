@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c4f6ef9d934a414ef805ddba6d2602b03bcbf16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可
 
-Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロール メンバーシップ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-assign-role-azure-portal)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。
+Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロール メンバーシップ](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。
 
 ## <a name="member-and-guest-users"></a>メンバーとゲスト ユーザー
 受け取る既定のアクセス許可のセットは、ユーザーがテナントのネイティブ メンバー (メンバー ユーザー) かどうか、またはユーザーが B2B コラボレーション ゲスト (ゲスト ユーザー) かどうかによって異なります。 B2B コラボレーションのゲスト ユーザーについて詳しくは、「[Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)」をご覧ください。 

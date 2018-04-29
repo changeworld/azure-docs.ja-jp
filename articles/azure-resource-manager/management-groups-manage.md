@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ba51c2f8eb8db1f74c4501b045234c222b00da5c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する 
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを変更、削除、管理して、[Azure Policy](../azure-policy/azure-policy-introduction.md) と [Azure ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) で使用できる階層を作成できます。 管理グループについて詳しくは、「[Organize your resources with Azure management groups](management-groups-overview.md)」(Azure 管理グループでリソースを整理する) をご覧ください。
 
-管理グループ機能は、パブリック プレビューで使用できます。 管理グループの使用を開始するには、[Azure Portal](https://portal.azure.com) にログインするか、[Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)、または [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) を使用して管理グループを管理できます。
+管理グループ機能は、パブリック プレビューで使用できます。 管理グループの使用を開始するには、[Azure Portal](https://portal.azure.com) にログインするか、[Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)、[Azure CLI](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)、または [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) を使用して管理グループを管理できます。
 
 管理グループに変更を加えるには、管理グループに対する所有者または共同作成者ロールが必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../role-based-access-control/overview.md)に関する記事をご覧ください。
 
@@ -73,7 +73,7 @@ C:\> az account management-group update --group-name Contoso --display-name "Con
 3. 削除する管理グループを選択します。 
     
     ![グループの削除](media/management-groups/delete.png)
-4. **[削除]**を選択します。 
+4. **[削除]** を選択します。 
     - アイコンが無効になっている場合は、アイコンの上にマウス セレクターを置くと理由が表示されます。 
 5. 管理グループを削除することを確認するウィンドウが開きます。 
 
@@ -231,4 +231,4 @@ C:/> az account management-group udpate --group-name Contoso --parent-id "Contos
 - [管理グループを作成して Azure リソースを整理する](management-groups-create.md)
 - [Azure PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [REST API 仕様の確認](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview)
-- [Azure CLI 拡張機能のインストール](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [Azure CLI 拡張機能のインストール](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)

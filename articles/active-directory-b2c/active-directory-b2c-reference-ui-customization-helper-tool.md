@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール
 この記事は、Azure Active Directory (Azure AD) B2C での [UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md) に付随するものです。 以下の手順では、用意されているサンプルの HTML および CSS の内容を使用して、ページの UI カスタマイズ機能を試してみる方法について説明します。
@@ -29,7 +29,7 @@ Azure AD B2C テナントがまだない場合は、カスタマイズを始め�
 ## <a name="register-an-application"></a>アプリケーションを登録する
 B2C テナントに、ポリシーを実行するために使用できる [アプリケーションを登録する](active-directory-b2c-app-registration.md) 必要があります。 アプリケーションを登録した後、サインアップ ポリシーを実際に実行するにはいくつかのオプションを使用できます。
 
-* 「 [アプリケーションにコンシューマーをサインアップおよびサインインする](active-directory-b2c-overview.md#get-started)」の「作業開始」セクションの一覧にある Azure AD B2C クイック スタート アプリケーションのいずれかをビルドします。
+* 「 [アプリケーションにコンシューマーをサインアップおよびサインインする](active-directory-b2c-overview.md)」の「作業開始」セクションの一覧にある Azure AD B2C クイック スタート アプリケーションのいずれかをビルドします。
 * ビルド済みの [Azure AD B2C プレイグラウンド](https://aadb2cplayground.azurewebsites.net) アプリケーションを使用します。 プレイグラウンドを使用する場合は、**リダイレクト URI** `https://aadb2cplayground.azurewebsites.net/` を使用して B2C テナントにアプリケーションを登録する必要があります。
 * **Azure Portal** で、ポリシーの [[今すぐ実行]](https://portal.azure.com/)ボタンを使用します。
 
@@ -39,11 +39,11 @@ B2C テナントに、ポリシーを実行するために使用できる [ア�
 このチュートリアルでは、既にいくつかのサンプル コンテンツを作成し、Azure BLOB ストレージでホストしてあります。 サンプル コンテンツは、架空の会社 "Wingtip Toys" のテーマでの非常に基本的なカスタマイズです。 独自のポリシーで試してみるには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com/) でテナントにサインインし、B2C 機能ブレードに移動します。
-2. **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]** をクリックし、自分のポリシー ("b2c\_1\_sign\_up\_sign\_in" など) をクリックします。
+2. **[サインアップまたはサインイン ポリシー]**、自分のポリシー、[編集] の順にクリックします (例: "b2c\_1\_sign\_up\_sign\_in")。
 3. **[Page UI customization (ページ UI のカスタマイズ)]**、**[Unified sign-up or sign-in page (統合されたサインアップまたはサインイン ページ)]** の順にクリックします。
 4. **[Use custom page (カスタム ページを使用する)]** を **[はい]** に切り替えます。 **[カスタム ページの URI]** フィールドに、「`https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/unified.html`」と入力します。 Click **OK**.
-5. **[ローカル アカウントのサインアップ ページ]**をクリックします。 **[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。 **[カスタム ページの URI]** フィールドに、「`https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html`」と入力します。
-6. **[Social account sign-up page (ソーシャル アカウントのサインアップ ページ)]**についても同じ手順を繰り返します。
+5. **[ローカル アカウントのサインアップ ページ]** をクリックします。 **[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。 **[カスタム ページの URI]** フィールドに、「`https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html`」と入力します。
+6. **[Social account sign-up page (ソーシャル アカウントのサインアップ ページ)]** についても同じ手順を繰り返します。
    **[OK]** を 2 回クリックして、UI カスタマイズ ブレードを閉じます。
 7. **[Save]** をクリックします。
 
@@ -77,7 +77,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 このリポジトリには `sample_templates\wingtip` ディレクトリが含まれており、そこには HTML、CSS、イメージのサンプルが含まれています。 これらのテンプレートで独自の Azure BLOB ストレージ アカウントを参照するには、HTML ファイルを編集する必要があります。 `unified.html` および `selfasserted.html` を開き、`https://localhost` のすべてのインスタンスを、前の手順でメモした独自のコンテナーの URL に置き換えます。 この場合、HTML は Azure AD によってドメイン `https://login.microsoftonline.com`で提供されるので、HTML ファイルの絶対パスを使用する必要があります。
 
 ### <a name="upload-the-sample-files"></a>サンプル ファイルをダウンロードする
-同じリポジトリで、`B2CAzureStorageClient.zip` を解凍し、その中にある `B2CAzureStorageClient.exe` ファイルを実行します。 このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。 上記の手順を実行した場合、HTML および CSS ファイルはストレージ アカウントを指すようになります。 ストレージ アカウントの名前は、`blob.core.windows.net` の前の部分 (`contoso` など) です。 ブラウザーで `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` にアクセスしてみることで、コンテンツが正常にアップロードされていることを確認できます。 また、[http://test-cors.org/](http://test-cors.org/) を使用して、コンテンツが CORS に対応していることを確認します  (結果で "XHR status: 200" を探します)。
+同じリポジトリで、`B2CAzureStorageClient.zip` を解凍し、その中にある `B2CAzureStorageClient.exe` ファイルを実行します。 このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。 上記の手順を実行した場合、HTML および CSS ファイルはストレージ アカウントを指すようになります。 ストレージ アカウントの名前は、`blob.core.windows.net` の前の部分 (`contoso` など) です。 ブラウザーで `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` にアクセスしてみることで、コンテンツが正常にアップロードされていることを確認できます。 また、[http://test-cors.org/](http://test-cors.org/) を使用して、コンテンツが CORS に対応していることを確認します  )
 
 ### <a name="customize-your-policy-again"></a>再びポリシーをカスタマイズする
 独自のストレージ アカウントにサンプル コンテンツをアップロードしたので、それを参照するようにサインアップ ポリシーを編集する必要があります。 前述の「[ポリシーをカスタマイズする](#customize-your-policy)」の手順を繰り返します。ただし、今回は独自のストレージ アカウントの URL を使用します。 たとえば、`unified.html` ファイルの場所は `<url-of-your-container>/wingtip/unified.html` になります。

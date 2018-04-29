@@ -1,12 +1,12 @@
 ---
-title: "Azure Resource Manager テンプレートの関数 - リソース | Microsoft Docs"
-description: "Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。"
+title: Azure Resource Manager テンプレートの関数 - リソース | Microsoft Docs
+description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f2ff44fc6644f3a4294f7b2c752a7f3ab05f351d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
 リソース マネージャーには、リソース値を取得する次の関数が用意されています。
 
-* [listKeys と list{Value}](#listkeys)
+* [listKeys](#listkeys)
+* [listSecrets](#list)
+* [list*](#list)
 * [providers](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
@@ -36,12 +38,14 @@ ms.lasthandoff: 01/23/2018
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-and-listvalue"></a>listKeys と list{Value}
+## <a name="listkeys-listsecrets-and-list"></a>listKeys、listSecrets、list*
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
+
+`listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-list 操作をサポートする任意の種類のリソースの値を返します。 最も一般的に使用されるのは、`listKeys` です。 
+list 操作をサポートする任意の種類のリソースの値を返します。 最も一般的に使用されるのは、`listKeys` と `listSecrets` です。 
 
 ### <a name="parameters"></a>parameters
 

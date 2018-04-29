@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 16ce5aac26abcf2ef2cf7664fb0b9aae600708d4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 00b0635d894ff8a41c810345cfa94363029e78e8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/23/2018
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.26 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="add-a-subnet"></a>サブネットの追加
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/23/2018
 5. 次のパラメーターの値を入力します。
     - **[名前]**: 名前は仮想ネットワーク内で一意である必要があります。
     - **[アドレス範囲]**: 範囲は仮想ネットワークのアドレス空間内で一意である必要があります。 仮想ネットワーク内の他のサブネット アドレス範囲と重複することはできません。 アドレス空間は、Classless Inter-Domain Routing (CIDR) 表記で指定する必要があります。 たとえば、アドレス空間が 10.0.0.0/16 の仮想ネットワークでは、10.0.0.0/24 のサブネット アドレス空間を定義できます。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のアドレス範囲が設定されたサブネットでは、使用できる IP アドレスが 3 つになります。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)に関する記事を参照してください。 特定の条件下でのみ、サブネットの追加後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、「[サブネット設定の変更](#change-subnet-settings)」をご覧ください。
-    - **[ネットワーク セキュリティ グループ]**: 0 個か 1 個の既存のネットワーク セキュリティ グループをサブネットに関連付けることで、そのサブネットの受信および送信ネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [ネットワーク セキュリティ グループ](security-overview.md)と[ネットワーク セキュリティ グループを作成する方法](virtual-networks-create-nsg-arm-pportal.md)に関するページを参照してください。
+    - **[ネットワーク セキュリティ グループ]**: 0 個か 1 個の既存のネットワーク セキュリティ グループをサブネットに関連付けることで、そのサブネットの受信および送信ネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [ネットワーク セキュリティ グループ](security-overview.md)と[ネットワーク セキュリティ グループを作成する方法](tutorial-filter-network-traffic.md)に関するページを参照してください。
     - **[ルート テーブル]:** 0 個または 1 個の既存のルート テーブルをサブネットに関連付けることで、他のネットワークへのネットワーク トラフィック ルーティングを制御できます。 ルート テーブルは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [Azure のルーティング](virtual-networks-udr-overview.md)と[ルート テーブルを作成する方法](tutorial-create-route-table-portal.md)に関するページを参照してください。
     - **[サービス エンドポイント]:** サブネットは、そのサブネットに対して 0 個または複数のサービス エンドポイントを有効にできます。 サービスのサービス エンドポイントを有効にするには、サービス エンドポイントを有効にするサービス (複数可) を **[サービス]** 一覧から選択します。 サービス エンドポイントを削除するには、サービス エンドポイントを削除するサービスを選択解除します。 サービス エンドポイントの詳細については、[仮想ネットワーク サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)に関するページを参照してください。 サービスのサービス エンドポイントを有効にしたら、そのサービスで作成されたリソースのサブネットへのネットワーク アクセスも有効にする必要があります。 たとえば、*Microsoft.Storage* のサービス エンドポイントを有効にする場合は、ネットワーク アクセスを許可するすべての Azure ストレージ アカウントへのネットワーク アクセスも有効にする必要があります。 サービス エンドポイントが有効になっているサブネットへのネットワーク アクセスを有効にする方法の詳細については、サービス エンドポイントを有効にした個々のサービスのドキュメントを参照してください。
 6. 選択した仮想ネットワークにサブネットを追加するには、**[OK]** を選択します。
@@ -61,7 +61,7 @@ ms.lasthandoff: 03/23/2018
 4. サブネットの一覧から、設定を変更するサブネットを選択します。 次の設定を変更できます。
 
     - **[アドレス範囲]:** サブネット内にリソースがデプロイされていない場合は、アドレス範囲を変更できます。 サブネット内にリソースが存在する場合は、まず、そのリソースを別のサブネットに移動するか、サブネットから削除する必要があります。 リソースを移動または削除する手順は、リソースによって異なります。 サブネット内のリソースを移動または削除する方法については、移動または削除するリソースの種類に応じたドキュメントをご覧ください。 「[サブネットの追加](#add-a-subnet)」の手順 5. の **[アドレス範囲]** の制約について確認してください。
-    - **[ユーザー]**: 組み込みロールまたは独自のカスタム ロールを使用して、サブネットへのアクセス権を制御できます。 サブネットにアクセスするロールとユーザーの割り当ての詳細については、[ロールの割り当てを使用した Azure リソースへのアクセス権の管理](../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-access)に関するページをご覧ください。
+    - **[ユーザー]**: 組み込みロールまたは独自のカスタム ロールを使用して、サブネットへのアクセス権を制御できます。 サブネットにアクセスするロールとユーザーの割り当ての詳細については、[ロールの割り当てを使用した Azure リソースへのアクセス権の管理](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-access)に関するページをご覧ください。
     - **ネットワーク セキュリティ グループ**、**ルート テーブル**、**ユーザー**、および**サービス エンドポイント**を変更する方法については、「[サブネットの追加](#add-a-subnet)」の手順 5. を参照してください。
 5. **[保存]** を選択します。
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="permissions"></a>アクセス許可
 
-サブネットでタスクを実行するには、自分のアカウントを[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に表示されている適切なアクセス許可が割り当てられている[カスタム](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに割り当てる必要があります。
+サブネットでタスクを実行するには、自分のアカウントを[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に表示されている適切なアクセス許可が割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに割り当てる必要があります。
 
 |操作                                                                |   操作の名前                               |
 |-----------------------------------------------------------------------  |   -------------------------------------------  |

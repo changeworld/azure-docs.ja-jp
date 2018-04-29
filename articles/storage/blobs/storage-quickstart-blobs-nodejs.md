@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07ac5195d9653affdbb0f305ac1697cecd379319
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -143,7 +143,7 @@ const upload = () => {
 ```
 このサンプル アプリケーションのコンテキストでは、*test-container* コンテナー内の *example* という名前の BLOB に *example.txt* というファイルがアップロードされます。 BLOB へのコンテンツのアップロードに使用できる他のアプローチとしては、[text](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) や [streams](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream) の操作があります。
 
-ファイルが Blob Storage にアップロードされたことを確認するには、[Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) を使用して、自分のアカウントでデータを表示します。
+ファイルが Blob Storage にアップロードされたことを確認するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、自分のアカウントでデータを表示します。
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
@@ -284,7 +284,7 @@ Blob Storage を使用する Node.js 開発については、以下の追加リ�
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
 
-- Node.js クライアント ライブラリの詳細については、[Node.js API リファレンス](https://docs.microsoft.com/en-us/javascript/api/overview/azure/storage)を参照してください。
+- Node.js クライアント ライブラリの詳細については、[Node.js API リファレンス](https://docs.microsoft.com/javascript/api/overview/azure/storage)を参照してください。
 - Node.js クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次の手順

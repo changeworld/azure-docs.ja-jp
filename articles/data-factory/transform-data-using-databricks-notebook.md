@@ -13,11 +13,11 @@ ms.topic: get-started-article
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: edd3bbb5d47753890328ae86b15dc938dfcf7eb7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6c3eb1e86d2dd98590d3a17dedf76c2a694f1a6d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3.  **[新しいデータ ファクトリ]** ウィンドウで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
-    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください  (**\<yourname\>ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](https://docs.microsoft.com/en-us/azure/data-factory/naming-rules)に関する記事を参照してください。
+    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください  (**\<yourname\>ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](https://docs.microsoft.com/azure/data-factory/naming-rules)に関する記事を参照してください。
 
     ![新しいデータ ファクトリの名前を指定する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image2.png)
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     - **[新規作成]** を選択し、リソース グループの名前を入力します。
 
-    このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)に関するページを参照してください。
+    このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)に関するページを参照してください。
 
 1.  **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3.  **[ダッシュボードにピン留めする]** をオンにします。
 
-4.  **[作成]**を選択します。
+4.  **[作成]** を選択します。
 
 5.  ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。
 

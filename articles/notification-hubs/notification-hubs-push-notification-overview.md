@@ -1,11 +1,11 @@
 ---
-title: "Azure 通知ハブ"
-description: "Azure Notification Hubs を使用してプッシュ通知機能を追加する方法を説明します。"
+title: Azure 通知ハブ
+description: Azure Notification Hubs を使用してプッシュ通知機能を追加する方法を説明します。
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 services: notification-hubs
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: fcfb0ce8-0e19-4fa8-b777-6b9f9cdda178
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 1/17/2017
 ms.author: yuaxu
-ms.openlocfilehash: a1be0b13cd1feb582a23965df142e44d90ac6851
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea8d569a8d51afee352860ab60a1fe311496b83c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-notification-hubs"></a>Azure 通知ハブ
 ## <a name="overview"></a>概要
@@ -130,7 +130,7 @@ Mobile Apps の開発者は、次のワークフローで Notification Hubs を�
 * **柔軟性**: 開発者は統合中でも常に Notification Hubs を直接操作することを選択できます。
 * **[Azure Portal] の統合されたエクスペリエンス**: 機能としてのプッシュが Mobile Apps に視覚的に表示され、開発者は Mobile Apps を通じて関連付けられた通知ハブを簡単に操作できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Notification Hubs の詳細については、次のトピックを参照してください。
 
 * **[Notification Hubs の機能と特徴]**
@@ -150,7 +150,7 @@ Notification Hubs の詳細については、次のトピックを参照して�
 [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
 [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
 [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-[App Service Mobile Apps]: https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/
+[App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
 [templates]: notification-hubs-templates-cross-platform-push-messages.md
 [Azure Portal]: https://portal.azure.com
 [tags]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)

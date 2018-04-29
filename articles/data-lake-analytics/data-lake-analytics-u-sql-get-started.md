@@ -1,8 +1,8 @@
 ---
-title: "U-SQL 言語を使ってみる | Microsoft Docs"
-description: "U-SQL 言語の基本について説明します。"
+title: U-SQL 言語を使ってみる | Microsoft Docs
+description: U-SQL 言語の基本について説明します。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7efdac8b032055b5344f34f5f9ad2679bddb107
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-u-sql"></a>U-SQL を使ってみる
 U-SQL は、あらゆる規模のデータの処理を可能にするために、宣言型の SQL と命令型の C# を組み合わせた言語です。 U-SQL のスケーラブルな分散クエリ機能を使用することで、Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。 U-SQL では、読み取り時にスキーマを適用し、カスタム ロジックと UDF を挿入することで、非構造化データを処理できます。 また、U-SQL には、スケールを実行する方法をきめ細かく制御する拡張性があります。 
@@ -226,8 +226,8 @@ U-SQL の ORDER BY 句では、SELECT 式で FETCH 句と組み合わせる必�
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx)をご確認ください。
+高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](https://msdn.microsoft.com/library/azure/mt621335.aspx)をご確認ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)

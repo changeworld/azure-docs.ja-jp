@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/09/2018
+ms.date: 04/26/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: db5cdecc57cf07876ca8d4e981860615643cfd79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: ''
+manager: dougeby
+ms.openlocfilehash: c1be4d649bf4b69a9f749003b5c66142006b78e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>チュートリアル: コスト管理データへのアクセスを割り当てる
 

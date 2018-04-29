@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="traffic-analytics"></a>トラフィック分析
 
@@ -42,7 +42,7 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 - **ネットワーク セキュリティ グループ (NSG) フロー ログ**: ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
 - **Log Analytics**: 監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Log Analytics を基盤として構築されています。 詳細については、[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) に関する記事をご覧ください。
 - **ログ分析ワークスペース**: Azure アカウントに関するデータが格納される、ログ分析のインスタンス。 ログ分析ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
-- **Network Watcher**: ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md#network-watcher)」をご覧ください。
+- **Network Watcher**: ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
 
 ## <a name="how-traffic-analytics-works"></a>トラフィック分析のしくみ 
 

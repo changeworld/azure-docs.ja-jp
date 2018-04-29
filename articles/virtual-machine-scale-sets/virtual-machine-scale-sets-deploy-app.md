@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
@@ -42,7 +42,7 @@ Azure プラットフォーム イメージの 1 つを使用してスケール 
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>PowerShell DSC を使用して Windows VM にアプリをインストールする
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。
+[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。
 
 PowerShell DSC 拡張機能を使用すると、PowerShell を使用してスケール セット内の VM インスタンスをカスタマイズできます。 次の例をご覧ください。
 

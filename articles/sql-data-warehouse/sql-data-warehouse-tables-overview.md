@@ -1,30 +1,26 @@
 ---
-title: "テーブル設計の概要 - Azure SQL Data Warehouse | Microsoft Docs"
-description: "Azure SQL Data Warehouse でのテーブル設計の概要。"
+title: テーブルの設計 - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse でのテーブル設計の概要。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 5c163880a7508d69bce0019cc5379bca8c704d59
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d299ff0d8e719040d503852af6056d9d87738b7d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="introduction-to-designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブル設計の概要
+# <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
 Azure SQL Data Warehouse でのテーブル設計について重要な概念を説明します。 
 
-## <a name="determining-table-category"></a>テーブル カテゴリの決定 
+## <a name="determine-table-category"></a>テーブル カテゴリを決定する 
 
 [スター スキーマ](https://en.wikipedia.org/wiki/Star_schema)は、データをファクト テーブルとディメンション テーブルに編成します。 一部のテーブルは、ファクト テーブルまたはディメンション テーブルに移動する前に統合またはステージング データに使用されます。 テーブルを設計する際には、テーブルのデータがファクト、ディメンション、統合のいずれのテーブルに属するかを決定します。 この決定は、適切なテーブル構造体および配布を通知します。 
 
@@ -46,7 +42,7 @@ CREATE SCHEMA wwi;
 SQL Data Warehouse 内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。 ここでは、SQL Server 内の名前を SQL Data Warehouse 内の名前と比較しています。 
 
 | WideWorldImportersDW テーブル  | テーブルの種類 | SQL Server | SQL Data Warehouse |
-|:-----|:-----|:------|
+|:-----|:-----|:------|:-----|
 | City | Dimension | Dimension.City | wwi.DimCity |
 | 順序 | ファクト | Fact.Order | wwi.FactOrder |
 
@@ -70,7 +66,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL Data Warehouse にインポートされます。 このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」をご覧ください。
 
 ## <a name="data-types"></a>データの種類
-SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)」を参照してください。 データ型のサイズを最小限に抑えることは、クエリのパフォーマンス向上に役立ちます。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)」を参照してください。 データ型のサイズを最小限に抑えることは、クエリのパフォーマンス向上に役立ちます。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
 
 ## <a name="distributed-tables"></a>分散テーブル
 SQL Data Warehouse の基本的な機能は、60 の[ディストリビューション](massively-parallel-processing-mpp-architecture.md#distributions)にわたるテーブルを格納し、それらに対して動作できる方法にあります。  これらのテーブルは、ラウンドロビン、ハッシュ、またはレプリケーションの方法を使用して分散されます。
@@ -106,7 +102,7 @@ SQL Data Warehouse の基本的な機能は、60 の[ディストリビューシ
 ## <a name="columnstore-indexes"></a>列ストア インデックス
 既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 この形式のデータ ストレージでは、大きなテーブルに対する高いデータ圧縮およびクエリ パフォーマンスが実現されます。  クラスター化列ストア インデックスは、通常は最適な選択肢ですが、場合によっては、クラスター化インデックスまたはヒープが適切なストレージ構造体の場合もあります。
 
-列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
+列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-whats-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
 
 ## <a name="statistics"></a>統計
 クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列の統計を作成することが重要です。クエリの結合で使用される列では特に重要です。 統計の作成と更新は自動的には行われません。 テーブルの作成後に[統計を作成](/sql/t-sql/statements/create-statistics-transact-sql)します。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
@@ -143,7 +139,7 @@ SQL Data Warehouse では他のデータベースで提供されるテーブル�
 - [ユーザー定義型](/sql/relational-databases/native-client/features/using-user-defined-types)
 
 ## <a name="table-size-queries"></a>テーブル サイズのクエリ
-60 個のディストリビューションのそれぞれで各テーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED] です。
+60 個の各ディストリビューションでテーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) です。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -342,4 +338,4 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>次の手順
-データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage からのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事をご覧ください。
+データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、「[Azure SQL Data Warehouse へのデータの読み込み](load-data-wideworldimportersdw.md)」を参照してください。

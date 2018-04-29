@@ -1,11 +1,11 @@
 ---
-title: "Azure Storage キューと Service Bus キューの比較 | Microsoft Docs"
-description: "Azure によって提供される 2 種類のキューの相違点と共通点について説明します。"
+title: Azure Storage キューと Service Bus キューの比較 | Microsoft Docs
+description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: d564f3974b2bc6355bb5dc5320a5193fe3c196af
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -39,7 +39,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 ソリューション設計者または開発者として、次の場合に **Storage キューの使用を検討してください**。
 
-* アプリケーションでキューに格納する必要があるメッセージの量が 80 GB を超えており、メッセージの有効期間が 7 日未満の場合。
+* アプリケーションは 80 GB を超えるメッセージをキューに格納する必要があります。
 * アプリケーションでキュー内のメッセージ処理の進行状況を追跡する必要がある場合。 これは、メッセージを処理している worker がクラッシュした場合に役に立ちます。 後続の worker でその情報を使用して、前の worker が中断した時点から処理を再開できます。
 * キューに対して実行されたすべてのトランザクションのサーバー側のログが必要な場合。
 
@@ -51,7 +51,6 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 * 自動重複検出をサポートする必要がある場合。
 * アプリケーションでメッセージを実行時間の長い並列ストリームとして処理する必要がある場合 (メッセージは、自身の [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) プロパティを使用してストリームに関連付けられます)。 このモデルでは、処理を行うアプリケーションの各ノードは、メッセージではなくストリームに対して競合します。 処理を行うノードにストリームが渡されると、そのノードはトランザクションを使用してアプリケーション ストリームの状態を確認できます。
 * 複数のメッセージをキューに送信したりキューから受信したりする際にトランザクション動作と原子性が必要な場合。
-* アプリケーション固有のワークロードの TTL (time-to-live) が 7 日間を超える場合。
 * アプリケーションで処理するメッセージのサイズが 64 KB を超えることはあっても 256 KB の制限に到達することはないと考えられる場合。
 * ロールベースのアクセス モデルを提供して、キューの送信側と受信側に異なる権限/アクセス許可を与える必要がある場合。
 * キューのサイズが 80 GB を超えることはない場合。
@@ -133,7 +132,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | --- | --- | --- |
 | 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/common/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
 | 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
-| メッセージの最大 TTL |**7 日** |**TimeSpan.Max** |
+| メッセージの最大 TTL |**無限** (api-version 2017-07-27 の時点) |**TimeSpan.Max** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり) |
 | 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 の同時接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |
 

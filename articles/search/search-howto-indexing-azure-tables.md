@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/10/2017
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 6a065454e274abc9c032b0ac69f42dd72f059443
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a171bdd11cd2de030937927eef34d5ad9e0507af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/23/2018
 
 データ ソースを作成するには:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 04/23/2018
 
 インデックスを作成するには:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 04/23/2018
 
 インデックスとデータ ソースを作成した後、インデクサーを作成できます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -131,7 +131,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 一部のドキュメントをインデックスを削除する必要があることを示すには、論理的な削除を使用できます。 行を削除する代わりに、プロパティを追加してそれが削除されていることを示し、データソースに論理的な削除のポリシーを設定します。 たとえば、次のポリシーは値 `"true"` が指定されたプロパティ `IsDeleted` がある行を削除されているものと見なします。
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

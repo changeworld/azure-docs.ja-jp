@@ -3,17 +3,17 @@ title: Azure Container Instances に複数コンテナー グループをデプ�
 description: 複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
 services: container-instances
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5447598286e6f0dd8578af11f1789a8c5f477d5a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
 
@@ -108,7 +108,7 @@ Azure Container Instances では、[コンテナー グループ](container-inst
 }
 ```
 
-プライベート コンテナー イメージ レジストリを使用するには、次の形式でオブジェクトを JSON ドキュメントに追加します。
+プライベート コンテナー イメージ レジストリを使用するには、次の形式でオブジェクトを JSON ドキュメントに追加します。 この構成の実装例については、[ACI Resource Manager テンプレートのリファレンス][template-reference]に関するドキュメントを参照してください。
 
 ```json
 "imageRegistryCredentials": [
@@ -210,3 +210,4 @@ Connection: keep-alive
 [az-container-show]: /cli/azure/container#az_container_show
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
+[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

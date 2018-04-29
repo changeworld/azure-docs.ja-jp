@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 4593f6f01759e41ee3cf4262b2eeb5295546e955
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1012cdc73e721c65502d749ce27eb6e9cbda6bf4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -84,6 +84,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 * [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
 * [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [サービスのフレームワークを選択する](service-fabric-choose-framework.md)
+* [Azure Service Fabric での定期的なバックアップと復元](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 * [Service Fabric のラーニング パスに沿ってプラットフォームの広範な概要を理解する](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)

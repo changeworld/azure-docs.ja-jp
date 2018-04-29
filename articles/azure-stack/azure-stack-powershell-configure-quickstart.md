@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8b3cb48f3df9d92ca41914ae24f460859fff9b55
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6846791b50140f849217fe7071cfde58159e0bf8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Azure Stack での PowerShell を使用した準備と実行
 
@@ -92,7 +92,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
     -EnvironmentName "AzureStackAdmin"
 
 # Sign in to your environment
-  Connect-AzureRmAccount `
+  Add-AzureRmAccount `
     -EnvironmentName "AzureStackAdmin" `
     -TenantId $TenantID 
 ```
@@ -158,7 +158,7 @@ $TenantID = Get-AzsDirectoryTenantId `
     -EnvironmentName "AzureStackAdmin"
 
 # Sign in to your environment
-Connect-AzureRmAccount `
+Add-AzureRmAccount `
     -EnvironmentName "AzureStackAdmin" `
     -TenantId $TenantID
 ```

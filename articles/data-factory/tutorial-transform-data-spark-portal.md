@@ -3,21 +3,20 @@ title: Azure Data Factory で Spark を使用してデータを変換する | Mi
 description: このチュートリアルでは、Azure Data Factory で Spark アクティビティを使用してデータを変換するための詳細な手順を説明します。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
-ms.author: shengc
-ms.openlocfilehash: af8045a6681443cfc9cfa681cedce5d290aac0f1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: e32fa771595fdc4bf5fe54ec14630961d467d40f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -94,8 +93,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
-   - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-   - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+   - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
    このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 5. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。
@@ -103,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 7. **[ダッシュボードにピン留めする]** をオンにします。     
-8. **[作成]**を選択します。
+8. **[作成]** を選択します。
 9. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)

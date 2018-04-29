@@ -1,11 +1,11 @@
 ---
-title: "ハイブリッド ID 設計 - 導入戦略 - Azure | Microsoft Docs"
-description: "条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
-documentationcenter: 
+title: ハイブリッド ID 設計 - 導入戦略 - Azure | Microsoft Docs
+description: 条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -90,7 +90,7 @@ ms.lasthandoff: 02/22/2018
 * Office からパッシブ認証に移行することで、これらのクライアントで純正の SAML 2.0 IdP をサポートできますが、あくまでもクライアント間ベースでのサポートになります
 
 > [!NOTE]
-> 最新の一覧については、こちらの記事 (https://aka.ms/ssoproviders) を参照してください。
+> 最新の一覧については、こちらの記事 (https://aka.ms/ssoproviders) をご覧ください。
 > 
 > 
 
@@ -196,7 +196,7 @@ ms.lasthandoff: 02/22/2018
 | オンプレミスの AD |Multi-Factor Authentication Server |
 
 > [!NOTE]
-> また、選択した多要素認証の設計オプションで、設計に必要な機能がサポートされていることを確認する必要があります。  詳細については、「 [ユーザーに適した多要素のセキュリティ ソリューションの選択](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure)」をお読みください。
+> また、選択した多要素認証の設計オプションで、設計に必要な機能がサポートされていることを確認する必要があります。  詳細については、「 [ユーザーに適した多要素のセキュリティ ソリューションの選択](authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure)」をお読みください。
 > 
 > 
 

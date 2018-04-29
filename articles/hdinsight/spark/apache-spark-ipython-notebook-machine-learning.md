@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight で Apache Spark Machine Learning アプリケーションを作成する | Microsoft Docs"
-description: "Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター上で Jupyter Notebook を使用して作成するための詳細な手順"
+title: Azure HDInsight で Apache Spark Machine Learning アプリケーションを作成する | Microsoft Docs
+description: Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター上で Jupyter Notebook を使用して作成するための詳細な手順
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: f584ca5e-abee-4b7c-ae58-2e45dfc56bf4
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 2f7dcb9bea05a79a6647b549896c8107f9e830af
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 95daab2bd7bc57d01bc9e3c05404958edd71eecc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Azure HDInsight で Apache Spark Machine Learning アプリケーションを作成する
 
@@ -185,7 +183,7 @@ HDInsight で Spark クラスターを使用して Apache Spark Machine Learning
 10. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 ## <a name="anaconda"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
-HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
+HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、「[ http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)」を参照してください。
 
 ## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)

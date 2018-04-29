@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境の計画
 
@@ -87,14 +87,14 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 調整と待機時間が発生しないようにする方法については、[待機時間と調整の緩和](time-series-insights-environment-mitigate-latency.md)に関する記事をご覧ください。 
 
 ## <a name="shaping-your-events"></a>イベントの整形
-イベントを TSI に送信する方法がプロビジョニングする環境のサイズに対応していることを確認することが重要です (逆に言えば、TSI で読み込まれるイベントの数と各イベントのサイズに環境のサイズをマッピングできます)。  同様に、データにクエリを実行するときのスライスとフィルターの基準にする属性について考えることが重要です。  以上の事柄を念頭に置き、Microsoft の*イベント送信*に関する文書https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events)の JSON 整形セクションをご覧になることをお勧めします。  ページの下のほうにあります。  
+イベントを TSI に送信する方法がプロビジョニングする環境のサイズに対応していることを確認することが重要です (逆に言えば、TSI で読み込まれるイベントの数と各イベントのサイズに環境のサイズをマッピングできます)。  同様に、データにクエリを実行するときのスライスとフィルターの基準にする属性について考えることが重要です。  以上の事柄を念頭に置き、Microsoft の*イベント送信*に関する文書https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)の JSON 整形セクションをご覧になることをお勧めします。  ページの下のほうにあります。  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>参照データの配置確認
 参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
 
 参照データは遡及的に結合されないことにご注意ください。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。  大量の履歴データを TSI に送信する予定のとき、TSI で最初に参照データをアップロードまたは作成しない場合、作業をやり直す必要があるかもしれません (それは楽しい作業ではないかもしれません)。  
 
-TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ*に関する文書https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set)をご覧ください。
+TSI で参照データを作成、アップロード、管理する方法の詳細については、Microsoft の*参照データ*に関する文書https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

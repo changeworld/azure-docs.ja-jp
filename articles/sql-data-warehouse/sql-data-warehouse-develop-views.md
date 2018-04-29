@@ -1,31 +1,29 @@
 ---
-title: "Azure SQL Data Warehouse で T-SQL ビューを使う | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL ビューの使用に関するヒント。"
+title: Azure SQL Data Warehouse で T-SQL ビューを使う | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での T-SQL ビューの使用に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: b5208f32-8f4a-4056-8788-2adbb253d9fd
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: d2a03be810bd7f792876607ec735eb578b65a3b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 28280a067e7008c20361e0a0041c81ba84e7f74c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="views-in-sql-data-warehouse"></a>SQL Data Warehouse のビュー
-SQL Data Warehouse では、ビューが特に役立ちます。 ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。  この記事では、ビューによってソリューションを強化する方法の例をいくつか取り上げます。また、考慮する必要がある制限事項についても説明します。
+# <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のビュー
+ソリューション開発のための、Azure SQL Data Warehouse での T-SQL ビューの使用に関するヒント。 
+
+## <a name="why-use-views"></a>ビューを使用する理由
+ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。  この記事では、ビューによってソリューションを強化する方法の例をいくつか取り上げます。また、考慮する必要がある制限事項についても説明します。
 
 > [!NOTE]
-> この記事では `CREATE VIEW` の構文は説明していません。 参考情報については、MSDN の [CREATE VIEW に関する記事][CREATE VIEW]をご覧ください。
+> この記事では CREATE VIEW の構文は説明していません。 詳細については、[CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql)のドキュメントを参照してください。
 > 
 > 
 
@@ -52,13 +50,13 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-ただし、この方法により、ユーザーのビューに、テーブルが表示または表示されなかったり、[テーブルが存在しません] というエラーメッセージが表示されたりすることがあります。 ビューを使用すると、基になるオブジェクトの名前は変更されますが、ユーザーに一貫性のあるプレゼンテーション レイヤーを提供できます。 ビューからデータにアクセスできるようになったユーザーは、基になるテーブルを表示する必要はありません。 これにより、一貫性のあるユーザー エクスペリエンスを提供しながら、データ ウェアハウスの設計者は、データ モデルを進化させ、データの読み込みプロセスで CTAS を使用してパフォーマンスを最大限に高めることができます。    
+ただし、この方法により、ユーザーのビューに、テーブルが表示または表示されなかったり、[テーブルが存在しません] というエラーメッセージが表示されたりすることがあります。 ビューを使用すると、基になるオブジェクトの名前は変更されますが、ユーザーに一貫性のあるプレゼンテーション レイヤーを提供できます。 ビュー経由でのデータへのアクセスを提供することで、ユーザーが基になるテーブルを表示可能である必要はなくなります。 このレイヤーでは、データ ウェアハウスの設計者がデータ モデルを発展させることが可能な状況を確保したうえで、一貫性のあるユーザー エクスペリエンスを提供します。 基になるテーブルを発展させることで、設計者は CTAS を使用して、データの読み込みプロセスにおけるパフォーマンスを最大限に活かすことが可能になります。   
 
 ## <a name="performance-optimization"></a>パフォーマンスの最適化
-ビューを利用して、パフォーマンスに最適化された結合をテーブル間に適用することもできます。 たとえば、ビューで結合条件の一部として冗長分散キーを組み込むことで、データの移動を最小限に抑えることができます。  ビューの利点として、特定のクエリ ヒントや結合ヒントを強制できることも挙げられます。 この方法でビューを使用すると、結合が常に最適な方法で実行されることが保証され、ユーザーに依存せずに結合を適切に作成できます。
+ビューを利用して、パフォーマンスに最適化された結合をテーブル間に適用することもできます。 たとえば、ビューで結合条件の一部として冗長分散キーを組み込むことで、データの移動を最小限に抑えることができます。 ビューの利点として、特定のクエリ ヒントや結合ヒントを強制できることも挙げられます。 この方法でビューを使用すると、結合が常に最適な方法で実行されることが保証され、ユーザーに依存せずに結合を適切に作成できます。
 
 ## <a name="limitations"></a>制限事項
-SQL Data Warehouse のビューはメタデータ専用です。  そのため、次のオプションは使用できません。
+SQL Data Warehouse のビューはメタデータ専用として保管されます。 そのため、次のオプションは使用できません。
 
 * スキーマ バインド オプションはありません
 * ビューでベース テーブルを更新することはできません
@@ -66,16 +64,7 @@ SQL Data Warehouse のビューはメタデータ専用です。  そのため�
 * EXPAND / NOEXPAND ヒントはサポートされていません
 * SQL Data Warehouse のインデックス付きビューはありません
 
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
-`CREATE VIEW` の構文については、[CREATE VIEW に関する記事][CREATE VIEW]をご覧ください。
+## <a name="next-steps"></a>次の手順
+開発に関するその他のヒントについては、「 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)](sql-data-warehouse-overview-develop.md)」をご覧ください。
 
-<!--Image references-->
 
-<!--Article references-->
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
-
-<!--Other Web references-->

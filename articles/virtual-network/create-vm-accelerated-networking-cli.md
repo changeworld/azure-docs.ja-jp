@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: aa74596906206ba4460e80af9015955c0b848cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -66,7 +66,7 @@ VM インスタンスの詳細については、「[Linux 仮想マシンのサ�
 * **VM の作成:** 高速ネットワークを有効にした NIC は、VM の作成時にのみ VM に接続できます。 既存の VM に NIC を接続することはできません。 VM を既存の可用性セットに追加する場合は、可用性セット内のすべての VM でも高速ネットワークが有効になっている必要があります。
 * **Azure Resource Manager でのデプロイのみ:** 仮想マシン (クラシック) は高速ネットワークを使用してデプロイできません。
 
-この記事では、高速ネットワークを使用した仮想マシンを、Azure CLI を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで、サポートされているオペレーティング システムと VM サイズで仮想マシンを作成する際に、**[設定]** の **[高速ネットワーク]** で **[有効]** を選択します。 仮想マシンが作成されたら、「[オペレーティング システムで高速ネットワークが有効化されていることを確認する](#confirm-that-accelerated-networking-is-enabled)」の手順を実行する必要があります。
+この記事では、高速ネットワークを使用した仮想マシンを、Azure CLI を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成する際に、**[設定]** の **[高速ネットワーク]** で **[有効]** を選択します。 高速ネットワークを有効にするオプションは、[サポートされるオペレーティング システム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択しない限り、ポータルには表示されません。 仮想マシンが作成されたら、「[オペレーティング システムで高速ネットワークが有効化されていることを確認する](#confirm-that-accelerated-networking-is-enabled)」の手順を実行する必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

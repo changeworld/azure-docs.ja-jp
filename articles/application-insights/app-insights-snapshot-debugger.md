@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/16/2018
 
 1. まだ有効にしていない場合は、[Web アプリで Application Insights を有効](app-insights-asp-net.md)にします。
 
-2. [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。 
+2. [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。
 
 3. パッケージが [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) に追加した既定のオプションを確認します。
 
@@ -92,10 +92,18 @@ ms.lasthandoff: 03/16/2018
 
 3. アプリケーションの `Startup` クラスを変更し、スナップショット コレクターのテレメトリ プロセッサを追加および構成します。
 
+    次の using ステートメントを `Startup.cs` に追加します。
+
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;
    using Microsoft.Extensions.Options;
-   ...
+   using Microsoft.ApplicationInsights.AspNetCore;
+   using Microsoft.ApplicationInsights.Extensibility;
+   ```
+
+   次の `SnapshotCollectorTelemetryProcessorFactory`クラスを `Startup` クラスに追加します。
+
+   ```csharp
    class Startup
    {
        private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
@@ -111,11 +119,11 @@ ms.lasthandoff: 03/16/2018
                return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
            }
        }
+       ...
+    ```
+    `SnapshotCollectorConfiguration` と `SnapshotCollectorTelemetryProcessorFactory` サービスをスタートアップ パイプラインに追加します。
 
-       public Startup(IConfiguration configuration) => Configuration = configuration;
-
-       public IConfiguration Configuration { get; }
-
+    ```csharp
        // This method gets called by the runtime. Use this method to add services to the container.
        public void ConfigureServices(IServiceCollection services)
        {
@@ -178,7 +186,7 @@ ms.lasthandoff: 03/16/2018
         }
    }
     ```
-    
+
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
 Azure サブスクリプションの所有者は、スナップショットを検査できます。 他のユーザーは、所有者から権限を付与してもらう必要があります。
@@ -208,7 +216,7 @@ Azure サブスクリプションの所有者は、スナップショットを�
 スナップショットには機密情報が含まれている可能性があるため、既定では非表示になっています。 スナップショットを表示するには、`Application Insights Snapshot Debugger` のロールを割り当てられている必要があります。
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Visual Studio 2017 Enterprise でのデバッグ スナップショット
-1. **[Download Snapshot]\(スナップショットのダウンロード\)** をクリックして `.diagsession` ファイルをダウンロードします。このファイルは Visual Studio 2017 Enterprise で開くことができます。 
+1. **[Download Snapshot]\(スナップショットのダウンロード\)** をクリックして `.diagsession` ファイルをダウンロードします。このファイルは Visual Studio 2017 Enterprise で開くことができます。
 
 2. `.diagsession` ファイルを開くには、まず [Visual Studio 用のスナップショット デバッガー拡張機能をダウンロードしてインストール](https://aka.ms/snapshotdebugger)する必要があります。
 
@@ -312,7 +320,7 @@ App Service にホストされて_いない_アプリケーションでは、ア
 たとえば、アプリケーションが 1 GB の合計ワーキング セットを使用する場合は、スナップショットを格納するために少なくとも 2 GB のディスク領域があることを確認する必要があります。
 次の手順に従って、スナップショット専用のローカル リソースを持つクラウド サービス ロールを構成します。
 
-1. クラウド サービス定義ファイル (.csdf) を編集して、新しいローカル リソースをクラウド サービスに追加します。 次の例では、サイズが 5 GB の `SnapshotStore` というリソースを定義します。
+1. クラウド サービス定義 (.csdef) ファイルを編集して、新しいローカル リソースをクラウド サービスに追加します。 次の例では、サイズが 5 GB の `SnapshotStore` というリソースを定義します。
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
@@ -361,7 +369,7 @@ App Service にホストされて_いない_アプリケーションでは、ア
 スナップショットが作成されている場合、例外がスローされるとスナップショット ID がタグ付けされます。 Application Insights に例外テレメトリがレポートされると、そのスナップショット ID はカスタム プロパティとして含まれます。 Application Insights の [検索] ブレードを使用すると、`ai.snapshot.id` カスタム プロパティを使用してすべてのテレメトリを見つけることができます。
 
 1. Azure Portal の Application Insights のリソースを参照します。
-2. **[Search (検索)]**をクリックします。
+2. **[Search (検索)]** をクリックします。
 3. [検索] テキスト ボックスに `ai.snapshot.id` と入力し、Enter キーを押します。
 
 ![ポータルでスナップショット ID を使用してテレメトリを検索](./media/app-insights-snapshot-debugger/search-snapshot-portal.png)
@@ -379,5 +387,5 @@ App Service にホストされて_いない_アプリケーションでは、ア
 ## <a name="next-steps"></a>次の手順
 
 * [コードでスナップポイントを設定](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
-* [Web アプリの例外の診断](app-insights-asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。 
+* [Web アプリの例外の診断](app-insights-asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。
 * [スマート検出](app-insights-proactive-diagnostics.md)は、パフォーマンスの異常を自動的に検出します。

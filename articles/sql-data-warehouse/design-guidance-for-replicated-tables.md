@@ -1,24 +1,20 @@
 ---
-title: "レプリケート テーブルの設計ガイダンス - Azure SQL Data Warehouse | Microsoft Docs"
-description: "Azure SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項。"
+title: レプリケート テーブルの設計ガイダンス - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項。
 services: sql-data-warehouse
-documentationcenter: NA
 author: ronortloff
-manager: jhubbard
-editor: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 10/23/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 575b3c5710d744e99c6e02439577a362eb17c67e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: b1d60cc0a83c95c5e33fbaae6083572af3e183ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でレプリケート テーブルを使用するための設計ガイダンス
 この記事では、SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
@@ -84,7 +80,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>既存のラウンド ロビン テーブルをレプリケート テーブルに変換する
 既にラウンド ロビン テーブルがある場合、この記事に記載されている条件を満たしているのであれば、レプリケート テーブルに変換することをお勧めします。 レプリケート テーブルは、データ移動の必要がなくなるため、ラウンド ロビン テーブルよりもパフォーマンスが高くなります。  ラウンド ロビン テーブルでは、常に、結合のためにデータ移動が必要になります。 
 
-この例では [CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を使用して、DimSalesTerritory テーブルをレプリケート テーブルに変更します。 この例は、DimSalesTerritory がハッシュ分散かラウンド ロビンかに関係なく動作します。
+この例では [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を使用して、DimSalesTerritory テーブルをレプリケート テーブルに変更します。 この例は、DimSalesTerritory がハッシュ分散かラウンド ロビンかに関係なく動作します。
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -112,7 +108,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>ラウンド ロビンとレプリケートのクエリ パフォーマンスの例 
 
-レプリケート テーブルでは、結合のためのデータ移動は必要ありません。これは、テーブル全体が既に各コンピューティング ノード上に存在するためです。 ディメンション テーブルがラウンド ロビン分散の場合、結合によって、ディメンション テーブル全体が各コンピューティング ノードにコピーされます。 データを移動するために、クエリ プランには BroadcastMoveOperation と呼ばれる操作が含まれています。 この種類のデータ移動操作では、クエリのパフォーマンスが低下します。レプリケート テーブルを使用すると、この操作は使用されなくなります。 クエリ プランのステップを表示するには、[sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) システム カタログ ビューを使用します。 
+レプリケート テーブルでは、結合のためのデータ移動は必要ありません。これは、テーブル全体が既に各コンピューティング ノード上に存在するためです。 ディメンション テーブルがラウンド ロビン分散の場合、結合によって、ディメンション テーブル全体が各コンピューティング ノードにコピーされます。 データを移動するために、クエリ プランには BroadcastMoveOperation と呼ばれる操作が含まれています。 この種類のデータ移動操作では、クエリのパフォーマンスが低下します。レプリケート テーブルを使用すると、この操作は使用されなくなります。 クエリ プランのステップを表示するには、[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) システム カタログ ビューを使用します。 
 
 たとえば、AdventureWorks スキーマに対する次のクエリでは、` FactInternetSales` テーブルがハッシュ分散です。 `DimDate` テーブルと `DimSalesTerritory` テーブルは、小さいディメンション テーブルです。 このクエリでは、会計年度 2004 年の北米における売上合計が返されます。
  
@@ -140,7 +136,7 @@ SQL Data Warehouse は、テーブルのマスター バージョンを保持す
 
 再構築が必要になるのは、次の操作の後です。
 - データが読み込まれるまたは変更される
-- データ ウェアハウスが別の [サービス レベル](performance-tiers.md#service-levels)にスケーリングされる
+- データ ウェアハウスが別のレベルにスケーリングされる
 - テーブル定義が更新される
 
 次の操作の後は、再構築は不要です。
@@ -178,7 +174,7 @@ SQL Data Warehouse は、テーブルのマスター バージョンを保持す
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>バッチ読み込み後にレプリケート テーブルを再構築する
 クエリの実行時間に一貫性を持たせるため、バッチ読み込み後は強制的にレプリケート テーブルを更新することをお勧めします。 そうしないと、最初のクエリはテーブルが更新されるまで待たなければなりませんが、更新にはインデックスの再構築も含まれます。 対象となるレプリケート テーブルのサイズと数によっては、パフォーマンスへの影響が非常に大きくなります。  
 
-次のクエリでは、[sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV を使用して、変更されたものの再構築されていないレプリケート テーブルの一覧を表示します。
+次のクエリでは、[sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV を使用して、変更されたものの再構築されていないレプリケート テーブルの一覧を表示します。
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -197,11 +193,11 @@ SELECT [ReplicatedTable] = t.[name]
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 レプリケート テーブルを作成するには、次のいずれかのステートメントを使用します。
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 分散テーブルの概要については、[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページを参照してください。
 

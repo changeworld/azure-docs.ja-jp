@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>トラフィック分析についてよく寄せられる質問
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/28/2018
 12.  1) Analyzing your NSG flow logs for the first time. This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information\(1) NSG フロー ログを初めて分析しています。このプロセスが完了するまで 20 -30 分かかることがあります。しばらくしてから確認してください。2) 上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください\) というメッセージを受け取った場合、どのように解決すればよいですか?
 
         このエラーは次の理由で生成される可能性があります。
-        - トラフィック分析が最近有効化され、意味のある分析情報を導出できる十分なデータを集計していたために、レポートを生成できませんでした。 この場合は、30 分後に再試行してください。
+        - トラフィック分析が最近有効化され、意味のある分析情報を導出できる十分なデータをまだ集計していない可能性があります。
         - OMS ワークスペースが無料 SKU にあり、クォータ制限に違反しました。 この場合は、容量が大きな SKU でワークスペースを使用する必要があります。
     
         解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
@@ -104,11 +104,15 @@ ms.lasthandoff: 03/28/2018
 
         ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
-14.  トラフィック分析はどのように課金されますか?
+14. PowerShell または Azure Resource Manager テンプレートを使用してトラフィック分析を構成できますか?
+
+    いいえ、トラフィック分析は Azure Portal を使用して構成することしかできません。
+
+15.  トラフィック分析はどのように課金されますか?
 
         トラフィック分析は、削減されたログを拡張することと、拡張ログを Log Analytics ワークスペースに格納することについて測定されます。 プレビュー中、トラフィック分析は削減されたログの拡張については課金されませんが、ワークスペースでのデータの保持は、通常料金での課金の対象となります。 この回答は、トラフィック分析の価格が発表されたときに更新されます。
 
-15.  geo マップ ビューでキーボードを使用してどのようにナビゲートできますか?
+16.  geo マップ ビューでキーボードを使用してどのようにナビゲートできますか?
 
         geo マップ ページには主に次の 2 つのセクションがあります。
     

@@ -1,11 +1,10 @@
 ---
-title: "VM で多くの計算処理を要する Java アプリケーションを実行する | Microsoft Docs"
-description: "Azure の仮想マシンを作成し、多くのコンピューティング処理を要する Java アプリケーションを実行して、別の Java アプリケーションで監視する方法について説明します。"
+title: VM 上で多くのコンピューティング処理を要する Java アプリケーションを実行する
+description: Azure の仮想マシンを作成し、多くのコンピューティング処理を要する Java アプリケーションを実行して、別の Java アプリケーションで監視する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: erikre
-editor: 
+manager: mbaldwin
 tags: azure-service-management,azure-resource-manager
 ms.assetid: ae6f2737-94c7-4569-9913-d871450c2827
 ms.service: virtual-machines-windows
@@ -13,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
-ms.openlocfilehash: ccccdf58fbb84605bc5dff29d870b373134f1f97
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e8da296c30f1d2be3c637e456e90d2f93da67548
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 > [!IMPORTANT] 
@@ -65,19 +64,19 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 6. 次の **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
    1. **[クラウド サービス]** には、既定の **[新しいクラウド サービスの作成]** を使用します。
    2. **[クラウド サービス DNS 名]** の値は cloudapp.net 全体で一意であることが必要です。 一意であることを示す表示になるように、必要に応じてこの値を修正してください。
-   3. リージョン、アフィニティ グループ、または仮想ネットワークを指定します。 このチュートリアルでは、 **[米国西部]**などのリージョンを指定します。
+   3. リージョン、アフィニティ グループ、または仮想ネットワークを指定します。 このチュートリアルでは、 **[米国西部]** などのリージョンを指定します。
    4. **[ストレージ アカウント]** で、**[自動的に生成されたストレージ アカウントを使用]** を選択します。
    5. **[可用性セット]** は、**[(なし)]** を選択します。
    6. **[次へ]** をクリックします。
 7. 最後の **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
    1. 既定のエンドポイント エントリをそのまま使用します。
-   2. **[完了]**をクリックします。
+   2. **[完了]** をクリックします。
 
 ## <a name="to-remotely-log-in-to-your-virtual-machine"></a>仮想マシンにリモート ログインするには
 1. [Azure Portal](https://portal.azure.com) にログオンします。
-2. **[仮想マシン]**をクリックします。
+2. **[仮想マシン]** をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
-4. **[接続]**をクリックします。
+4. **[接続]** をクリックします。
 5. 表示される画面で必要に応じて入力して、仮想マシンに接続します。 管理者名とパスワードの入力画面が表示されたら、仮想マシンの作成時に指定した値を使用します。
 
 Azure の Service Bus 機能により、JRE の **cacerts** ストアの一部として Baltimore CyberTrust Root 証明書をインストールすることが求められます。 このチュートリアルで使用する Java ランタイム環境 (JRE) には、この証明書が自動的に含められます。 JRE **cacerts** ストアにこの証明書がない場合は、その追加方法 (および cacerts ストアの証明書を表示する方法) を「[証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]」で確認してください。

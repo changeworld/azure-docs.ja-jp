@@ -1,6 +1,6 @@
 ---
-title: "URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs"
-description: "Azure PowerShell を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。"
+title: URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
+description: Azure PowerShell を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 70973684445416d715c5b26d06613b31e0001395
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6e4e681c9a45e31b13165a2e2e8491fef9bf2fc8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Azure PowerShell を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -344,7 +344,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、アプリケーション ゲートウェイのパブリック IP アドレスを取得できます。 パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、*http://52.168.55.24*、*http://52.168.55.24:8080/images/test.htm*、*http://52.168.55.24:8080/video/test.htm* です。
+[Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、アプリケーション ゲートウェイのパブリック IP アドレスを取得できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、*http://52.168.55.24*、*http://52.168.55.24:8080/images/test.htm*、*http://52.168.55.24:8080/video/test.htm* などです。
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

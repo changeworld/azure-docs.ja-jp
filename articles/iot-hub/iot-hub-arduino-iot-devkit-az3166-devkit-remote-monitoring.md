@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 92efd0970bcf516c4210f831a0c2f23b3ee7b5d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>リモート監視のために MXChip IoT DevKit を Azure IoT Suite に接続する
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/23/2018
 
 有効な Azure サブスクリプション 持っていない場合は、次の 2 つの方法のいずれかを使用して登録できます。
 
-* [30 日間の無料試用版 Microsoft Azure アカウント](https://azureinfo.microsoft.com/us-freetrial.html)をアクティブにする
+* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/free/)をアクティブにする
 * MSDN または Visual Studio サブスクライバーの場合、[Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を要求する
 
 ## <a name="create-an-azure-iot-suite"></a>Azure IoT Suite を作成する
@@ -124,4 +124,4 @@ IoT Hub でデバイス ID を変更するには、[このガイド](https://mic
 ここでは、DevKit デバイスを Azure IoT Suite に接続して、センサー デバイスを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
 * [Azure IoT Suite の概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

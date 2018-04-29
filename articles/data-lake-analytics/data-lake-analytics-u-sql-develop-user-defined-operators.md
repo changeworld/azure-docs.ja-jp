@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c0164d9f1e40778d3ce0dc7e947f6d2807234468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
 U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。
@@ -121,7 +121,7 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
 9. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
 10. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
-11. **[送信]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
+11. **[送信]** をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
 12. 最新のジョブの状態を表示して、画面を更新するには、**[更新]** ボタンをクリックします。
 
 **出力を表示するには**
@@ -130,5 +130,5 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv**をダブルクリックします。
 
 ## <a name="see-also"></a>関連項目
-* [ユーザー コードによる U-SQL 式の拡張](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
+* [ユーザー コードによる U-SQL 式の拡張](https://msdn.microsoft.com/library/azure/mt621316.aspx)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)

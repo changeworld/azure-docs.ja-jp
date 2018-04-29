@@ -1,8 +1,8 @@
 ---
-title: "Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理 | Microsoft Docs"
-description: "Linux ベースの HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。"
+title: Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理 | Microsoft Docs
+description: Linux ベースの HDInsight で Storm ダッシュボードを使用して Apache Storm トポロジをデプロイ、監視、管理する方法について説明します。 Hadoop Tools for Visual Studio を使用します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
 
@@ -63,7 +61,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
 
-3. **[新しいプロジェクト]** ダイアログで、**[インストール済]** > **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]**を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
+3. **[新しいプロジェクト]** ダイアログで、**[インストール済]** > **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]** を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
 
     ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 

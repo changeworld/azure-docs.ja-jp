@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 4/11/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 39e7c95f236f53d7b7c4de0e5b792debe5c0c6f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Azure Backup サービスについての質問
 この記事では、Azure Backup のコンポーネントについてよくある質問の回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 コメントするには、Livefyre アカウントが必要です。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -30,10 +30,10 @@ ms.lasthandoff: 03/16/2018
 ## <a name="recovery-services-vault"></a>Recovery Services コンテナー
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>各 Azure サブスクリプションで作成できるコンテナーの数に制限はありますか。 <br/>
-はい。 2018 年 1 月時点で、各サブスクリプションでサポートされている Azure Backup のリージョンごとに、最大 25 個の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
+はい。 各サブスクリプションでサポートされている Azure Backup のリージョンあたり最大 500 個の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>各コンテナーに登録できるサーバーやマシンの数に制限はありますか。 <br/>
-コンテナーあたり最大 200 の Azure 仮想マシンを登録できます。 MAB エージェントを使用している場合は、コンテナーあたり、最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
+コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 MAB エージェントを使用している場合は、コンテナーあたり、最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
 同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
@@ -87,7 +87,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
  Azure Backup エージェント、SCDPM、または Azure Backup Server からバックアップしたすべてのデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、Recovery Services コンテナー内のデータは 30 ～ 40% 小さくなります。
 
 ## <a name="what-can-i-back-up"></a>バックアップできるデータについて
-### <a name="which-operating-systems-do-azure-backup-support-br"></a>Azure Backup でサポートされるオペレーティング システムを教えてください。 <br/>
+### <a name="which-operating-systems-does-azure-backup-support-br"></a>Azure Backup でサポートされるオペレーティング システムを教えてください。 <br/>
 Azure Backup では、ファイルとフォルダーのほか、Azure Backup Server と System Center Data Protection Manager (DPM) を使用して保護されたワークロード アプリケーションのバックアップについて、次の一覧のオペレーティング システムがサポートされています。
 
 | オペレーティング システム | プラットフォーム | SKU |
@@ -112,7 +112,7 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 
 
 ### <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>バックアップされる各データ ソースのサイズに制限はありますか。 <br/>
-コンテナーにバックアップできるデータ量に制限はありません。 Azure Backup ではデータ ソースの最大サイズに制限がありますが、これらの上限は大きくなっています。 2015 年 8 月時点における、サポートされているオペレーティング システム別のデータ ソースの最大サイズは次のとおりです。
+Azure Backup には、データ ソースの最大サイズが適用されますが、ソースの制限サイズは小さくありません。 2015 年 8 月時点における、サポートされているオペレーティング システム別のデータ ソースの最大サイズは次のとおりです。
 
 | No. | オペレーティング システム | データ ソースの最大サイズ |
 |:---:|:--- |:--- |
@@ -132,13 +132,16 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 | Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計 |
 | BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー |
 
-Azure VM バックアップでは、各データ ディスクのサイズを 4,095 GB 未満として、最大 16 台のデータ ディスクを個々の VM に割り当てることができます。 <br>
+Azure IaaS 仮想マシンのバックアップあたり、VM では最大 16 個のデータ ディスクを使用でき、各データ ディスクの最大容量は 4095 GB です。
+
+### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>Recovery Services コンテナーに保持できるデータ量に制限はありますか。
+Recovery Services コンテナーにバックアップできるデータ量に制限はありません。
 
 ## <a name="retention-policy-and-recovery-points"></a>保持ポリシーと復旧ポイント
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>DPM と Windows Server/クライアント (DPM がインストールされていない Windows Server) の保持ポリシーには違いがありますか。<br/>
 いいえ。DPM と Windows Server/クライアントのどちらの場合でも、リテンション期間ポリシーに毎日、毎週、毎月、毎年を指定できます。
 
-### <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>週単位と日単位を指定し、年単位と月単位を指定しないなど、保持ポリシーを選択的に構成することはできますか。<br/>
+### <a name="can-i-configure-my-retention-policies-selectively--that-is-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>週単位と日単位を指定し、年単位と月単位を指定しないなど、保持ポリシーを選択的に構成することはできますか。<br/>
 はい。Azure Backup の保有構造では、要件に合わせて保有ポリシーを柔軟に定義できます。
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>午後 6 時に "バックアップのスケジュールを設定" し、別の時刻に保持ポリシーを指定することはできますか。<br/>

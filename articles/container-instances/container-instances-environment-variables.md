@@ -3,16 +3,16 @@ title: Azure Container Instances で環境変数を設定する
 description: Azure Container Instances で環境変数を設定する方法を説明します
 services: container-instances
 author: david-stanford
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: dastanfo
-ms.openlocfilehash: f845e96a3e05be3f9109446d0d9e88934c4794cc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 37fde41b6dc2ea0a4d3b4b38a0e3df81a297c125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-environment-variables"></a>環境変数の設定
 

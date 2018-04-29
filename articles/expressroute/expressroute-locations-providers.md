@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 04/13/2018
 ms.author: pareshmu
-ms.openlocfilehash: 4750898b138a726cac15aa7a0e2b8863c46d4ee8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6ea9c64f8363821eb3e61c2979f249816675bf7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -46,7 +46,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ヨーロッパ** |フランス中部、フランス南部、北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)、パリ |
 | **アジア** |東アジア、東南アジア |香港特別行政区、シンガポール、シンガポール 2 |
 | **日本** |西日本、東日本 |大阪、東京 |
-| **オーストラリア** |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー |
+| **オーストラリア** |オーストラリア南東部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2 |メルボルン、シドニー |
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
 | **韓国** |韓国中部、韓国南部 |釜山、ソウル |
 
@@ -150,9 +150,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
-| **アムステルダム** | Equinix、Telecity | BICS、Eurofiber、Fastweb S.p.A、MainOne、Nianet、Telia |
+| **アムステルダム** | Equinix、Telecity | BICS、Eurofiber、Fastweb S.p.A、MainOne、Nianet、Post、Proximus、Telia |
 | **シカゴ** | Equinix | Lightower、Windstream |
-| **ダラス** | Equinix、Megaport | C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
+| **ダラス** | Equinix、Megaport | Axtel、C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
 | **フランクフルト** | Telecity | BICS、Nianet、QSC AG |
 | **香港特別行政区** | Equinix | Macroview Telecom |
 | **ロンドン** | Equinix、euNetworks、Telecity | Bezeq International Ltd.、Epsilon、Exponential E、HSO、NexGen Networks、Tamares Telecom、Zain |

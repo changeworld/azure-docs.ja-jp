@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: e615cf4760ef3c75bdb398744a1454cd4d5121a4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 06dc8075318e3de10a75e7fc1c22e2bdf61afffc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシンのサイズ
 この記事では、Linux アプリとワークロードの実行に使用できる Azure 仮想マシンに利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。 この記事は、 [Windows 仮想マシン](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/06/2018
 - [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
 
-## <a name="rest-api"></a>Rest API
+## <a name="rest-api"></a>REST API
 
 VM サイズを照会するための REST API の使用については、以下を参照してください。
 
@@ -54,6 +54,10 @@ https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list
 ## <a name="acu"></a>ACU
 
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+
+## <a name="benchmark-scores"></a>ベンチマーク スコア
+
+[CoreMark ベンチマーク スコア](compute-benchmark-scores.md)を使用して、Linux VM の処理性能について学習します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートでの Key Vault シークレット | Microsoft Docs"
-description: "デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。"
+title: Azure Resource Manager テンプレートでの Key Vault シークレット | Microsoft Docs
+description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
 services: azure-resource-manager,key-vault
 documentationcenter: na
 author: tfitzmac
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2017
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e02bd9c6130ef8b120282fafa9f0ee517890d0d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2643f79bb1e5e2603b1bd50b04c8ee3e7496f1f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
 デプロイ時に、セキュリティで保護された値 (パスワードなど) をパラメーターとして渡す必要がある場合は、[Azure Key Vault](../key-vault/key-vault-whatis.md) からその値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 リソースをデプロイするたびに、シークレットの値を手動で入力する必要はありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションに存在していてもかまいません。 キー コンテナーを参照するときに、サブスクリプション ID を含めます。
 
-キー コンテナーを作成するときには、*enabledForTemplateDeployment* プロパティを *true* に設定します。 この値を true に設定することで、デプロイ時に Resource Manager テンプレートにアクセスを許可します。
+キー コンテナーを作成するときには、*enabledForTemplateDeployment* プロパティを *true* に設定します。 この値を true に設定することで、デプロイ時に Resource Manager テンプレートからのアクセスを許可します。
 
 ## <a name="deploy-a-key-vault-and-secret"></a>Key Vault とシークレットのデプロイ
 
@@ -62,7 +62,7 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 
 ## <a name="enable-access-to-the-secret"></a>シークレットへのアクセスの有効化
 
-新しいキー コンテナーと既存のキー コンテナーのどちらを使用する場合も、テンプレートをデプロイするユーザーがシークレットにアクセスできることを確認してください。 シークレットを参照するテンプレートをデプロイするユーザーには、キー コンテナーに対する `Microsoft.KeyVault/vaults/deploy/action` アクセス許可が必要です。 このアクセスは、[所有者](../active-directory/role-based-access-built-in-roles.md#owner)ロールと[共同作成者](../active-directory/role-based-access-built-in-roles.md#contributor)ロールが許可します。
+新しいキー コンテナーと既存のキー コンテナーのどちらを使用する場合も、テンプレートをデプロイするユーザーがシークレットにアクセスできることを確認してください。 シークレットを参照するテンプレートをデプロイするユーザーには、キー コンテナーに対する `Microsoft.KeyVault/vaults/deploy/action` アクセス許可が必要です。 このアクセスは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。
 
 ## <a name="reference-a-secret-with-static-id"></a>固定 ID でのシークレットの参照
 
@@ -131,6 +131,13 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 }
 ```
 
+現在のバージョン以外のバージョンのシークレットを使用する必要がある場合は、`secretVersion` プロパティを使用します。
+
+```json
+"secretName": "examplesecret",
+"secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
+```
+
 ここで、テンプレートをデプロイし、パラメーター ファイルを渡します。 GitHub のサンプル テンプレートを使用できますが、環境に合わせて値が設定されているローカル パラメーター ファイルを使用する必要があります。
 
 Azure CLI では、次を使用します。
@@ -157,7 +164,7 @@ New-AzureRmResourceGroupDeployment `
 
 ## <a name="reference-a-secret-with-dynamic-id"></a>動的 ID でのシークレットの参照
 
-前のセクションでは、Key Vault シークレットの静的リソース ID を渡す方法を紹介しました。 しかし参照すべき Key Vault シークレットがデプロイごとに変わる状況も考えられます。 その場合、パラメーター ファイルでリソース ID をハードコーディングすることはできません。 パラメーター ファイルではテンプレート式が使用できないので、パラメーター ファイルでリソース ID を動的に生成することはできません。
+前のセクションでは、Key Vault シークレットの静的リソース ID を渡す方法を紹介しました。 しかし参照すべき Key Vault シークレットがデプロイごとに変わる状況も考えられます。 その場合、パラメーター ファイルにリソース ID をハードコードすることはできません。 パラメーター ファイルではテンプレート式が使用できないので、パラメーター ファイルでリソース ID を動的に生成することはできません。
 
 Key Vault シークレットのリソース ID を動的に生成するには、そのシークレットを必要とするリソースを、リンクされたテンプレートに移す必要があります。 親テンプレートに、そのリンクされたテンプレートを追加し、動的に生成されたリソース ID をパラメーターに格納して渡します。 次の図は、リンクされたテンプレート内のパラメーターがシークレットを参照するしくみを示しています。
 
@@ -241,6 +248,6 @@ New-AzureRmResourceGroupDeployment `
   -vaultName <your-vault> -vaultResourceGroup examplegroup -secretName examplesecret -adminLogin exampleadmin -sqlServerName <server-name>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Key Vault の全般的な情報については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
 * キー シークレットの詳細な参照例については、 [Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。

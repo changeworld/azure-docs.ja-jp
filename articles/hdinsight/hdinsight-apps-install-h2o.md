@@ -12,15 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8734daa5303aa76e9f8a074b5f709727cabb58b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9a03588b3327c3ab231f5c2cae17488f4d63bde7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>発行済みアプリケーションのインストール - H2O Sparkling Water
 
@@ -84,9 +82,9 @@ H2O Sparkling Water の提供内容:
 
     ![Million_Songs.flow の選択](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. **milsongs-cls-train.csv.gz** が含まれているパスを見つけ、パス全体を **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** に置き換えます。
+7. **milsongs-cls-train.csv.gz** が含まれるパスを見つけ、パス全体を **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** で置換します。
 
-8. **milsongs-cls-test.csv.gz** が含まれているパスを見つけ、それを **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz** に置き換えます。
+8. **milsongs-cls-test.csv.gz** が含まれるパスを見つけ、それを **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz** で置換します。
 
 9. Notebook セル内のすべてのステートメントを実行するには、ツール バーにある **[Run All]\(すべて実行\)** ボタンを選択します。
 

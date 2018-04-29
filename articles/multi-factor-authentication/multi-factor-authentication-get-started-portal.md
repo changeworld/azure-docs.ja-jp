@@ -1,8 +1,8 @@
 ---
-title: "Azure MFA Server のユーザー ポータル | Microsoft Docs"
-description: "Azure MFA およびユーザー ポータルを開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+title: Azure MFA Server のユーザー ポータル | Microsoft Docs
+description: Azure MFA およびユーザー ポータルを開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -69,7 +69,7 @@ Azure Multi-Factor Authentication Server と**同じサーバー**にユーザ�
    > [!NOTE]
    > 通常この SSL 証明書は、公的に署名された SSL 証明書です。
 
-4. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (例: https://mfa.contoso.com/MultiFactorAuth)。 証明書の警告およびエラーが表示されないことを確認してください。
+4. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (https://mfa.contoso.com/MultiFactorAuth) など)。 証明書の警告およびエラーが表示されないことを確認してください。
 
 ![MFA Server ユーザー ポータルのインストール](./media/multi-factor-authentication-get-started-portal/install.png)
 
@@ -105,10 +105,10 @@ Azure Multi-Factor Authentication Server 以外のサーバーにユーザー �
     * **"USE_WEB_SERVICE_SDK"** というキーを探して **value="false"** を **value="true"** に変更します。
     * **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** というキーを探して **value=""** を **value="DOMAIN\User"** に変更します。DOMAIN\User には、"PhoneFactor Admins" グループに属しているサービス アカウントを指定してください。
     * **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** というキーを探して **value=""** を **value="Password"** に変更します。Password には、前の行で入力したサービス アカウントのパスワードを指定してください。
-    * **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** という値を探します。このプレースホルダー URL は、手順 2. でインストールした Web サービス SDK の URL に変更してください。
+    * **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** という値を探して、このプレースホルダー URL を手順 2. でインストールした Web サービス SDK の URL に変更します。
     * Web.Config ファイルを保存してメモ帳を閉じます。
 
-6. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (例: https://mfa.contoso.com/MultiFactorAuth)。 証明書の警告およびエラーが表示されないことを確認してください。
+6. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (https://mfa.contoso.com/MultiFactorAuth) など)。 証明書の警告およびエラーが表示されないことを確認してください。
 
 IIS サーバーに SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 

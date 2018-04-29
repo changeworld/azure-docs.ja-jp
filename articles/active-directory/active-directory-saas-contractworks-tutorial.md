@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 97e5ad805bbb25d2431944e2ede1f22630956356
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3c986810f3d994b956d4c81fd80b38d9dfee4f50
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>チュートリアル: Azure Active Directory と ContractWorks の統合
 
@@ -99,7 +99,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_samlbase.png)
 
 3. **[ContractWorks のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
@@ -121,7 +121,7 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
-    | ---------------| --------------- |    
+    | ---------------| --------------- |
     | mail | User.mail |
     | displayName | user.displayname |
 
@@ -135,38 +135,19 @@ ContractWorks で Azure AD のシングル サインオンを構成してテス�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]**は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
     
     d. **[OK]** をクリックします。
 
-7. **[保存]** ボタンをクリックします。
+7. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+    
+    ![[Configure Single Sign-On]](./media/active-directory-saas-contractworks-tutorial/tutorial_metadataurl.png)
+     
+8. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-contractworks-tutorial/tutorial_general_400.png)
 
-8. **メタデータ URL** を生成するには、次の手順を実行します。
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_endpoint.png)
-     
-    d. 次に、**ContractWorks** のプロパティ ページに移動し、**[コピー]** ボタンで**アプリケーション ID** をコピーしてメモ帳に貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-contractworks-tutorial/tutorial_contractworks_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. **ContractWorks** 側でシングル サインオンを構成するには、生成された**メタデータ URL** を [ContractWorks サポート チーム](mailto:support@contractworks.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+9. **ContractWorks** 側でシングル サインオンを構成するには、生成された**アプリケーション フェデレーション メタデータ URL** を [ContractWorks サポート チーム](mailto:support@contractworks.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

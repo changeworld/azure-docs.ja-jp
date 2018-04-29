@@ -10,11 +10,11 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 131424b4a09beeca7c2e318a04e454bea7dab6a7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>チュートリアル: Azure App Service に Content Delivery Network (CDN) を追加する
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="have-a-custom-domain-ready"></a>カスタム ドメインの準備
 
-このチュートリアルのカスタム ドメインに関する手順を実行するには、カスタム ドメインを所有し、ドメイン プロバイダー (GoDaddy など) の DNS レジストリへのアクセス権を持っている必要があります。 たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成するためのアクセス権が必要です。
+このチュートリアルのカスタム ドメインに関する手順を実行するには、カスタム ドメインを所有し、ドメイン プロバイダーの DNS レジストリへのアクセス権を持っている必要があります。 たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成するためのアクセス権が必要です。
 
 既存のドメイン名がない場合は、[App Service ドメインのチュートリアル](custom-dns-web-site-buydomains-web-app.md)に従って、Azure Portal を使用してドメインを購入することを検討してください。 
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 04/06/2018
 | **[価格レベル]** | Standard Akamai | プロバイダーと使用可能な機能は、[価格レベル](../cdn/cdn-overview.md#azure-cdn-features)によって規定されます。 このチュートリアルでは、Standard Akamai を使用します。 |
 | **[CDN エンドポイント名]** | azureedge.net ドメイン内で一意となる任意の名前 | キャッシュされたリソースには、*\<エンドポイント名>.azureedge.net* ドメインでアクセスします。
 
-**[作成]**を選択します。
+**[作成]** を選択します。
 
 Azure によってプロファイルとエンドポイントが作成されます。 同じページにある **[エンドポイント]** の一覧に新しいエンドポイントが表示され、プロビジョニングされた時点で **[実行中]** 状態になります。
 

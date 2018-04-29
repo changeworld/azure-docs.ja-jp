@@ -14,13 +14,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: a381697e27a2d85d99fcbb1eb54bd7c0ab7d743a
-  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+  ms.openlocfilehash: 7b18da63a74059e48d41f9e0a068a4f7618aa97a
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2018
+  ms.lasthandoff: 04/18/2018
 abstract:
-  description: Azure Container Service (AKS) は、ホストされている Kubernetes 環境を管理するため、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
+  description: Azure Container Service (AKS) は、ホストされている Kubernetes 環境を管理するため、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。<div class="IMPORTANT alert"><p>重要:</p><p>Azure Container Service (AKS) は現在、<strong>プレビュー</strong>の段階です。 プレビュー版は、<a href="https://azure.microsoft.com/support/legal/preview-supplemental-terms/">追加使用条件</a>に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。</p></div>
 sections:
 - title: 5 分間のクイック スタート
   items:

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 3f601fbbbb9aab0f942b26da9ad1c8c0a0dc9b16
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 052d81f8170273bb0e40572322349550e7219363
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Azure Active Directory B2C のサインアップ、サインイン、プロファイル編集、パスワード リセットを使用する ASP.NET Web アプリケーションの構築
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-- B2C テナントを Azure アカウントに接続する必要があります。 無料の Azure アカウントが[ここで](https://azure.microsoft.com/en-us/)作成できます。
+- B2C テナントを Azure アカウントに接続する必要があります。 無料の Azure アカウントが[ここで](https://azure.microsoft.com/)作成できます。
 - サンプル コードを表示および変更するには、[Microsoft Visual Studio](https://www.visualstudio.com/) かそれに類似したプログラムが必要です。
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>Azure AD B2C ディレクトリの作成

@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9fad9627be453fb00508d1f6ec9594bd2bde6fad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 79fc716f70fe0fb3273badd485e4c01ea5d04e1d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-run-applications-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションの実行
 
@@ -115,7 +115,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 
 アプリケーションが読み込まれなかった場合、イメージ レジストリに関する承認の問題が原因になっている可能性があります。
 
-[これら](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)の手順に従って、Kubernetes シークレットによるアクセスを許可してください。
+[これら](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)の手順に従って、Kubernetes シークレットによるアクセスを許可してください。
 
 ## <a name="next-steps"></a>次の手順
 

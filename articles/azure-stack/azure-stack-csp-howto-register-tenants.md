@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e5a67d7cd5caf6bd4d2625969b139411d62696
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e982fa2bec3cbc4845ecebb45db76f019e2178ff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Azure Stack に使用量と課金のためのテナントを追加する
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/12/2018
 > この手順を実行するためには、[Azure Stack に登録](azure-stack-register.md)済みである必要があります。
 
 1. 管理者特権のプロンプトで Windows PowerShell を開き、次のコマンドを実行します。  
-    `Login-AzureRmAccount`
+    `Add-AzureRmAccount`
 2. Azure の資格情報を入力します。
 3. PowerShell セッションで、次のコマンドを実行します。
 

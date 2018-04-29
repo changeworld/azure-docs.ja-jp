@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 04a8a8970df26638f2c19171864a3c4095ac7769
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b085a75acc4d7744587f0c93482435b5b8c28fc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC での構成のコンパイル
 
@@ -39,9 +39,9 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Azure プレビューを使用した DSC 構成のコンパイル
 
-1. Automation アカウントから、**[DSC 構成]**をクリックします。
+1. Automation アカウントから、**[DSC 構成]** をクリックします。
 2. 構成をクリックし、ブレードを開きます。
-3. **[コンパイル]**をクリックします。
+3. **[コンパイル]** をクリックします。
 4. 構成にパラメーターが含まれていない場合、コンパイルの実行を確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開き、パラメーター値を入力できます。 パラメーターの詳細については、次の「[**基本パラメーター**](#basic-parameters)」セクションを参照してください。
 5. **[コンパイル ジョブ]** ブレードが開き、コンパイル ジョブの状態を追跡できます。また、Azure Automation DSC プル サーバーにノード構成 (MOF 構成ドキュメント) が配置されます。
 
@@ -105,7 +105,7 @@ Azure Automation DSC ポータルまたは Azure PowerShell で、基本パラ�
 
 ### <a name="portal"></a>ポータル
 
-ポータルで、 **[コンパイル]**をクリックすると、パラメーター値を入力できます。
+ポータルで、 **[コンパイル]** をクリックすると、パラメーター値を入力できます。
 
 ![alt text](./media/automation-dsc-compile/DSC_compiling_1.png)
 
@@ -294,7 +294,7 @@ Azure の外部でコンパイルしたノード構成 (MOF) をインポート�
 > [!NOTE]
 > ノード構成ファイルを Azure Automation にインポートするには、ファイル サイズを 1 MB 以下にする必要があります。
 
-https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-moduleで、ノード構成に署名する方法を確認できます。
+https://msdn.microsoft.com/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-moduleで、ノード構成に署名する方法を確認できます。
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Azure Portal でのノード構成のインポート
 

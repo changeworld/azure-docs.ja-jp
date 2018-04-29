@@ -1,11 +1,11 @@
 ---
-title: "静的パブリック IP アドレスを持つ VM を作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。"
+title: 静的パブリック IP アドレスを持つ VM を作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e9546bcc-f300-428f-b94a-056c5bd29035
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 53e9b55a82e7750393dfb6c4818681028c5c4d2f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 50ae4d6e8c275db16f811a2a1a063eda441f150b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure Portal を使用して静的パブリック IP アドレスを持つ VM を作成する
 
@@ -28,13 +28,12 @@ ms.lasthandoff: 02/21/2018
 > * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 > * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
-> * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
@@ -65,3 +64,10 @@ Azure Portal で静的パブリック IP アドレスを持つ VM を作成す�
     
     ![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 
+## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
+
+仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられるパブリック IP アドレスは、手動で割り当てないでください。 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、[Windows VM に複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)場合など、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure [ネットワーク インターフェイス](virtual-network-network-interface-addresses.md#change-ip-address-settings)に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 詳細については、[プライベート IP アドレス](virtual-network-network-interface-addresses.md#private)設定に関するページを参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+この記事で作成した VM では、すべてのネットワーク トラフィックを送受信できます。 ネットワーク セキュリティ グループ内に受信と送信のセキュリティ規則を定義して、ネットワーク インターフェイスかサブネット、またはその両方で送受信可能なトラフィックを制限できます。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](security-overview.md)に関するページを参照してください。

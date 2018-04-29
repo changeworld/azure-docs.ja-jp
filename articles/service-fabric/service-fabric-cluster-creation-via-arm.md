@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: 68894ec209171e210a36ade3cdb703a48e28bc75
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e3e9e0c13368dbf7dd32c8483f8e6783afc1bdbb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
@@ -462,7 +462,7 @@ Azure AD テナント用の管理特権を持っているアカウントにサ�
               "settings": {
                 ...
                 "certificate": {
-                  "thumbprint": "[parameters('clusterCertificateThumbprint')]",
+                  "commonNames": ["[parameters('certificateCommonName')]"],
                   "x509StoreName": "[parameters('clusterCertificateStoreValue')]"
                 },
                 ...
@@ -479,7 +479,7 @@ Azure AD テナント用の管理特権を持っているアカウントにサ�
 ##### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Service Fabric クラスター リソースの証明書情報を追加します。
 ```json
 {
-  "apiVersion": "[variables('sfrpApiVersion')]",
+  "apiVersion": "2018-02-01",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   "location": "[parameters('clusterLocation')]",
@@ -487,9 +487,14 @@ Azure AD テナント用の管理特権を持っているアカウントにサ�
     "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
   ],
   "properties": {
-    "certificate": {
-      "thumbprint": "[parameters('clusterCertificateThumbprint')]",
-      "x509StoreName": "[parameters('clusterCertificateStoreValue')]"
+    "certificateCommonNames": {
+        "commonNames": [
+        {
+            "certificateCommonName": "[parameters('certificateCommonName')]",
+            "certificateIssuerThumbprint": ""
+        }
+        ],
+        "x509StoreName": "[parameters('certificateStoreValue')]"
     },
     ...
   }
@@ -502,14 +507,19 @@ Azure AD 構成は、証明書キーを含む Key Vault を参照することに
 
 ```json
 {
-  "apiVersion": "[variables('sfrpApiVersion')]",
+  "apiVersion": "2018-02-01",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   ...
   "properties": {
-    "certificate": {
-      "thumbprint": "[parameters('clusterCertificateThumbprint')]",
-      "x509StoreName": "[parameters('clusterCertificateStorevalue')]"
+    "certificateCommonNames": {
+        "commonNames": [
+        {
+            "certificateCommonName": "[parameters('certificateCommonName')]",
+            "certificateIssuerThumbprint": ""
+        }
+        ],
+        "x509StoreName": "[parameters('certificateStoreValue')]"
     },
     ...
     "azureActiveDirectory": {
@@ -533,6 +543,9 @@ Azure Service Fabric RM PowerShell モジュールを使用する予定の場合
 
 ```json
         "clusterCertificateThumbprint": {
+            "value": ""
+        },
+        "certificateCommonName": {
             "value": ""
         },
         "clusterCertificateUrlValue": {

@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Hub X.509 CA セキュリティの概要 | Microsoft Docs"
-description: "概要 - X.509 証明機関を使用して IoT Hub に対してデバイスを認証する方法。"
+title: Azure IoT Hub X.509 CA セキュリティの概要 | Microsoft Docs
+description: 概要 - X.509 証明機関を使用して IoT Hub に対してデバイスを認証する方法。
 services: iot-hub
 documentationcenter: .net
 author: eustacea
 manager: arjmands
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 11f340ebe1719c680cce5f6ad34150d3717c57d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 
@@ -69,7 +69,7 @@ CA 証明書の登録方法については、[ここ](iot-hub-security-x509-get-
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>IoT Hub 上にデバイスを作成する方法
 
-デバイス偽装を防ぐために、IoT Hub は、どのようなデバイスが必要であるかを指定するようユーザーに要求します。  これは、IoT Hub のデバイス レジストリにデバイス エントリを作成することによって行います。  このプロセスは、IoT Hub [Device Provisioning Service](https://azure.microsoft.com/en-us/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS) を使用している場合は自動化されます。 
+デバイス偽装を防ぐために、IoT Hub は、どのようなデバイスが必要であるかを指定するようユーザーに要求します。  これは、IoT Hub のデバイス レジストリにデバイス エントリを作成することによって行います。  このプロセスは、IoT Hub [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS) を使用している場合は自動化されます。 
 
 手動で IoT Hub にデバイスを作成する方法については、[ここ](iot-hub-security-x509-get-started.md#createdevice)を参照してください。
 
@@ -81,7 +81,7 @@ IoT Hub へのデバイス接続が正常に行われると、認証プロセス
 
 このデバイス接続手順を完了する方法については、[ここ](iot-hub-security-x509-get-started.md#authenticatedevice)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT での [X.509 CA 認証の価値](iot-hub-x509ca-concept.md)について学習します。
 

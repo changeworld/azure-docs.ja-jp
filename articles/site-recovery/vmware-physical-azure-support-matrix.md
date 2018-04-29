@@ -5,37 +5,57 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、VMware VM の Azure へのディザスター リカバリーを行う場合にサポートされるコンポーネントと設定の概要について説明します。
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="replication-scenario"></a>レプリケーション シナリオ
 
 **シナリオ** | **詳細**
 --- | ---
-VMware VM | Azure にオンプレミス VMware VM のディザスター リカバリーを実行できます。 このシナリオは、Azure Portal または PowerShell を使用して展開できます。
-物理サーバー | Azure にオンプレミス Windows/Linux 物理サーバーのディザスター リカバリーを実行できます。 このシナリオは、Azure Portal で展開できます。
+VMware VM | オンプレミス VMware VM の Azure へのレプリケーション。 このシナリオは、Azure Portal または PowerShell を使用して展開できます。
+物理サーバー | オンプレミスの Windows または Linux の物理サーバーから Azure へのレプリケーション。 このシナリオは、Azure Portal で展開できます。
 
 ## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
 **サーバー** | **要件** | **詳細**
 --- | --- | ---
-VMware | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。
+VMware | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。<br/><br/> vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバー コンポーネントは構成サーバーで実行されるため、専用のプロセス サーバーを設定していなければ、これがその中に構成サーバーを設定するネットワークになります。 
 物理 | 該当なし
 
+## <a name="site-recovery-configuration-server"></a>Site Recovery 構成サーバー
+
+構成サーバーはオンプレミスのマシンで、構成サーバー、プロセス サーバー、マスター ターゲット サーバーを含む Site Recovery のコンポーネントを実行します。 VMware のレプリケーションの場合は、VMware VM を作成する OVF テンプレートを使用して、すべての要件を含む構成サーバーを設定します。 物理サーバーのレプリケーションの場合は、構成サーバーのマシンを手動で設定します。
+
+**コンポーネント** | **要件**
+--- |---
+CPU コア数 | 8 
+RAM | 12 GB
+ディスクの数 | ディスク 3 台<br/><br/> ディスクには、OS ディスク、プロセス サーバーのキャッシュ ディスク、フェールバック用リテンション ドライブが含まれます。
+ディスクの空き領域 | プロセス サーバーのキャッシュのために必要な 600 GB の領域。
+ディスクの空き領域 | リテンション ドライブのために必要な 600 GB の領域。
+オペレーティング システム  | Windows Server 2012 R2 または Windows Server 2016 | 
+オペレーティング システムのロケール | 英語 (en-us) 
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") をインストールする必要があります。
+Windows Server の役割 | 以下は有効にしません: <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |
+グループ ポリシー| 以下は有効にしません: <br> - コマンド プロンプトへのアクセス禁止。 <br> - レジストリ編集ツールへのアクセス禁止。 <br> - ファイル添付の信頼ロジック。 <br> - スクリプト実行の有効化。 <br> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | 以下を実行します。<br/><br/> - 既定の Web サイトが事前に存在しないようにする <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリがないようにする<br>
+NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) 
+IP アドレスの種類 | 静的 
+ポート | コントロール チャネルのオーケストレーションに使用される 443<br>データ転送に使用される 9443
 
 ## <a name="replicated-machines"></a>レプリケートされるマシン
 
-次の表は、VMware VM および物理サーバーのレプリケーション サポートをまとめたものです。 Site Recovery は、サポートされているオペレーティング システムのマシンで実行されているすべてのワークロードのレプリケーションをサポートします。
+Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。
 
 **コンポーネント** | **詳細**
 --- | ---

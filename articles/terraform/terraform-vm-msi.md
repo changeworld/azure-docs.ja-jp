@@ -7,11 +7,11 @@ manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Azure Marketplace イメージを使用して管理対象サービス ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -88,7 +88,7 @@ SSH を使用して仮想マシンに接続したら、仮想マシンの管理�
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- リモート状態管理の詳細については、[Terraform のリモート状態に関するこちらのページ](https://www.terraform.io/docs/state/remote.html)をご覧ください。 このファイルで公開されているストレージ アクセス キーを、ソース管理に慎重にチェックインする必要があります。  
+ リモート状態管理の詳細については、[Terraform のリモート状態に関するこちらのページ](https://www.terraform.io/docs/state/remote.html)をご覧ください。 ストレージ アクセス キーはこのファイルで公開され、Terraform 構成ファイルをソース管理にコミットする前に除外する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Azure で Terraform Linux 仮想マシンをセットアップする方法について説明しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。 

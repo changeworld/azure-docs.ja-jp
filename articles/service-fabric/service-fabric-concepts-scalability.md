@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: aeda1184610398c0445238ea2e7ccbea866ed418
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d8484a4c30fdd17cbb4773e6ff822b73efd5c4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric での拡大縮小
 Azure Service Fabric では、クラスター内のノードでサービス、パーティション、およびレプリカを管理することにより、スケーラブルなアプリケーションを簡単に構築できます。 同じハードウェアで多くのワークロードを実行することで、リソースを最大限に活用すると同時に、ワークロードを拡大縮小する方法も柔軟に選択できます。 この Channel 9 ビデオでは、スケーラブルなマイクロサービス アプリケーションを構築する方法について説明します。
@@ -117,12 +117,7 @@ Service Fabric はパーティション分割をサポートしています。 �
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>クラスターのノードの追加または削除による拡大縮小 
 Service Fabric には、クラスターのサイズを変更して拡大縮小するオプションも用意されています。 クラスターのサイズを変更するということは、クラスターにある 1 つ以上のノード タイプのノードを追加または削除することです。 たとえば、クラスターのすべてのノードがホットである場合を考えます。 つまり、クラスターのリソースのほぼすべてが使用されています。 この場合は、最善の方法として、クラスターにノードを追加して拡大することをお勧めします。 新しいノードがクラスターに参加すると、Service Fabric Cluster Resource Manager は、サービスをそのノードに移動するため、既存のノードの合計負荷が軽減されます。 インスタンス数が -1 に設定されているステートレス サービスについては、サービス インスタンスが自動的に作成されます。 これにより、一部の呼び出しが、既存のノードから新しいノードに移動できます。 
 
-クラスターのノードを追加および削除するには、Service Fabric Azure Resource Manager PowerShell モジュールを使用します。
-
-```posh
-Add-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName  -NumberOfNodesToAdd 5 
-Remove-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName -NumberOfNodesToRemove 5
-```
+詳細については、 [クラスター スケーリング](service-fabric-cluster-scaling.md)に関するセクションを参照してください。
 
 ## <a name="putting-it-all-together"></a>まとめ
 それでは、ここまでに説明した内容を、例を挙げながらまとめてみてみましょう。 次のサービスについて考えてみてください。あなたは、名前情報や連絡先情報を保持できる、アドレス帳のサービスを構築しようとしています。 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>テンプレートを使用してユーザー定義のルート (UDR) を作成する
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 03/08/2018
     }
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>[クリックしてデプロイ] を使用してテンプレートをデプロイする
-パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。 "クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、 [このリンク](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)に従って、 **[Azure へのデプロイ]**をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
+パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。 "クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、 [このリンク](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)に従って、 **[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
 
 1. Azure PowerShell を初めて使用する場合は、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 2. 次のコマンドを実行して、リソース グループを作成します。
@@ -186,7 +186,7 @@ Azure CLI を使用して Azure Resource Manager テンプレートをデプロ�
 
         info:    New mode is arm
 
-3. ブラウザから **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json** に移動し、json ファイルの内容をコピーして使用しているコンピューター上の新しいファイルにコピーします。 このシナリオでは、次の値を **c:\udr\azuredeploy.parameters.json** という名前のファイルにコピーします。
+3. ブラウザーで **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json** に移動し、json ファイルの内容をコピーして、コンピューター内の新しいファイルに貼り付けます。 このシナリオでは、次の値を **c:\udr\azuredeploy.parameters.json** という名前のファイルにコピーします。
 
     ```json
         {

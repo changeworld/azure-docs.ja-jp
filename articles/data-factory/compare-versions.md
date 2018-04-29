@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2018
+ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Azure Data Factory の V1 と V2 の比較
 この記事では、Azure Data Factory の V2 を V1 と比較します。 V1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 V2 の概要については、[Data Factory (V2 - プレビュー) の概要](introduction.md)に関するページを参照してください。
@@ -139,11 +139,7 @@ V2 で更新された SDK は、V1 クライアントと下位互換性があり
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 
-v2 Data Factory の子リソースを作成したり管理したりするには:
-
--   v2 リソースの作成と管理に、バージョン 1 の Data Factory 共同作成者ロールを使うことはできません。
--   PowerShell または SDK でデプロイされた v2 Data Factory については、対象の Data Factory リソースに対して作成された標準の ARM 共同作成者ロールで子リソースの作成と管理を行うことができます。 Azure Portal から (または ARM Template deployment を使って) デプロイされた v2 Data Factory の子リソースをこのロールで作成したり管理したりすることはできません。
--   Azure Portal から (または ARM Template deployment を使って) デプロイされた v2 Data Factory の子リソースを作成したり管理したりするには、リソース グループ レベルまたはサブスクリプション レベルの "Automation ジョブ オペレーター" ロールのメンバーである必要があります。 "Actions" リストに "Microsoft.Resources/deployments/*" を含んだカスタム ロールを組織で作成することもできます (「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md)」を参照)。
+Data Factory バージョン 1 の共同作成者ロールを使って、Data Factory v2 リソースの作成と管理を行うことができます。
 
 ## <a name="monitoring-experience"></a>監視のエクスペリエンス
 V2 では、[Azure Monitor](monitor-using-azure-monitor.md) を使用してデータ ファクトリを監視することもできます。 新しい PowerShell コマンドレットでは、[統合ランタイム](monitor-integration-runtime.md)の監視がサポートされています。 V1 と V2 のどちらでも、Azure Portal から起動できる監視アプリケーションによる視覚的な監視がサポートされています。

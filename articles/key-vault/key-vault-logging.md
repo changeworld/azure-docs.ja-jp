@@ -1,8 +1,8 @@
 ---
-title: "Azure Key Vault のログ記録 | Microsoft Docs"
-description: "このチュートリアルを使用すれば、Azure Key Vault のログ記録を容易に開始できます。"
+title: Azure Key Vault のログ記録 | Microsoft Docs
+description: このチュートリアルを使用すれば、Azure Key Vault のログ記録を容易に開始できます。
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 2faf45c7329f1c98a26bcf7ec5d569dfa16cbbda
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
@@ -52,7 +52,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 ## <a id="connect"></a>サブスクリプションへの接続
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。
 
@@ -133,7 +133,7 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
     Get-AzureStorageBlob -Container $container -Context $sa.Context
 出力は次のようになります。
 
-**Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
+**コンテナー URI: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
 **名前**
 
@@ -150,7 +150,7 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
 
 同じストレージ アカウントを使用して複数のリソースのログを収集することができるので、必要な BLOB のみにアクセスしたり、ダウンロードしたりする場合には、BLOB 名の完全なリソース ID を使用すると便利です。 その前に、すべての BLOB をダウンロードする方法を説明します。
 
-まず、フォルダーを作成して BLOB をダウンロードします。 For example:
+まず、フォルダーを作成して BLOB をダウンロードします。 例: 
 
     New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
@@ -164,7 +164,7 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
 
 この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
-BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 For example:
+BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 例: 
 
 * 複数の Key Vault を持っている場合に、CONTOSOKEYVAULT3 という名前の Key Vault のみについてログをダウンロードするには、次のようにします。
 
@@ -208,10 +208,10 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 次の表にフィールド名と説明を示します。
 
-| フィールド名 | Description |
+| フィールド名 | [説明] |
 | --- | --- |
 | time |日付と時刻 (UTC)。 |
-| resourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、常に Key Vault リソース ID となります。 |
+| ResourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、常に Key Vault リソース ID となります。 |
 | operationName |次の表に示すような操作の名前です。 |
 | operationVersion |クライアントによって要求される REST API バージョンです。 |
 | カテゴリ |Key Vault のログの場合、AuditEvent は使用可能な単一の値です。 |
@@ -224,7 +224,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | ID |REST API 要求を行う場合に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
 | プロパティ |このフィールドには、操作に基づくさまざまな情報が含まれます (operationName)。 ほとんどの場合は、クライアント情報 (クライアントから渡された useragent 文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (KeyCreate または VaultGet など) を行った結果としてオブジェクトが返される場合は、キーの URI ("id" として)、資格情報コンテナーの URI、またはシークレットの URI も含まれます。 |
 
-**operationName** フィールドの値は、ObjectVerb 形式となります。 次に例を示します。
+**operationName** フィールドの値は、ObjectVerb 形式となります。 例: 
 
 * Key Vault に関するすべての操作は、"Vault`<action>`" 形式となります (`VaultGet` や `VaultCreate` など)。
 * キーに関するすべての操作は、"Key`<action>`" 形式となります (`KeySign` や `KeyList` など)。

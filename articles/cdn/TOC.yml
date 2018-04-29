@@ -14,6 +14,8 @@
   items:
     - name: カスタム ドメインの追加
       href: cdn-map-content-to-custom-domain.md
+    - name: カスタム ドメインで HTTPS を構成する
+      href: cdn-custom-ssl.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -38,10 +40,6 @@
               href: cdn-sas-storage-support.md
         - name: クロス オリジン リソース共有
           href: cdn-cors.md
-        - name: カスタム ドメインを CDN エンドポイントに追加する
-          href: cdn-map-content-to-custom-domain.md
-        - name: カスタム ドメインで HTTPS を構成する
-          href: cdn-custom-ssl.md
     - name: コンテンツの最適化
       items:
         - name: 最適化の概要
@@ -137,6 +135,11 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: ルール エンジンの機能
           href: cdn-rules-engine-reference-features.md
+    - name: Verizon 固有 HTTP ヘッダー
+      href: cdn-verizon-http-headers.md
+      items:
+        - name: X-EC-Debug ヘッダー
+          href: cdn-http-debug-headers.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

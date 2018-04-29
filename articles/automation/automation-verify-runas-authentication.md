@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 5359a12d5b241eff80203c9e9bf04107ce4d3159
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6b8e1f2923657965f4bab89e7a0f5f08faa1d27e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Azure Automation 実行アカウントの認証をテストする
 Automation アカウントが正常に作成されたら、新しく作成または更新された Automation 実行アカウントを使用して Azure Resource Manager または Azure クラシック デプロイメントで正常に認証できることを確認する簡単なテストを実行できます。    
@@ -27,7 +27,7 @@ Automation アカウントが正常に作成されたら、新しく作成また
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
            -ServicePrincipal `
            -TenantId $servicePrincipalConnection.TenantId `
            -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -58,7 +58,7 @@ Automation アカウントが正常に作成されたら、新しく作成また
        Write-Output ("")
     } 
 
-Runbook での認証に使用されるコマンドレット ( **Add-AzureRmAccount**) は、 *ServicePrincipalCertificate* パラメーター セットを使用することに注意してください。  認証に使用するのはサービス プリンシパル証明書であり、資格情報ではありません。  
+Runbook での認証に使用されるコマンドレット (**Connect-AzureRmAccount**) は、*ServicePrincipalCertificate* パラメーター セットを使用することにご注意ください。  認証に使用するのはサービス プリンシパル証明書であり、資格情報ではありません。  
 
 [この Runbook を実行](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)して実行アカウントを検証すると、[Runbook ジョブ](automation-runbook-execution.md)が作成され、[ジョブ] ページが表示されて、ジョブの状態が **[ジョブの概要]** タイルに表示されます。 最初のジョブの状態は " *キュー登録済み* " であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。 その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  Runbook ジョブが完了すると、状態は **[完了]** と表示されます。
 

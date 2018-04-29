@@ -1,11 +1,11 @@
 ---
-title: "ロールに対する既定の TEMP フォルダーのサイズが小さすぎる | Microsoft Docs"
-description: "クラウド サービス ロールでは、TEMP フォルダー用の領域量が限られています。 この記事では、領域不足の回避方法に関する推奨事項をいくつか示します。"
+title: ロールに対する既定の TEMP フォルダーのサイズが小さすぎる | Microsoft Docs
+description: クラウド サービス ロールでは、TEMP フォルダー用の領域量が限られています。 この記事では、領域不足の回避方法に関する推奨事項をいくつか示します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: ab0a7c43393aab10abbce095f801afc4ebaf6b87
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 177438c4d6b416584f1797ec1ce744fc484ef688
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>クラウド サービスの Web/worker ロールに対する既定の一時フォルダーのサイズが小さすぎる
 クラウド サービスの worker または Web ロールの既定の一時ディレクトリの最大サイズは 100 MB ですが、ある時点でいっぱいになる可能性があります。 この記事では、一時ディレクトリの領域不足を回避する方法について説明します。
@@ -69,9 +69,9 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ブログ「 [How to increase the size of the Azure Web Role ASP.NET Temporary Folder (Azure Web ロール ASP.NET の一時フォルダーのサイズを増やす方法)](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)」の説明をご覧ください。
 
-クラウド サービスの他の [トラブルシューティングに関する記事](/?tag=top-support-issue&product=cloud-services) を参照します。
+クラウド サービスの他の [トラブルシューティングに関する記事](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。

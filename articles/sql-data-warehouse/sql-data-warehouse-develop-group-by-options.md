@@ -1,28 +1,27 @@
 ---
-title: "SQL Data Warehouse の Group By オプション | Microsoft Docs"
-description: "ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。"
+title: Azure SQL Data Warehouse での Group By オプションの使用 | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: f95a1e43-768f-4b7b-8a10-8a0509d0c871
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 0548983df23b158385783ac777b23268b5ac7d01
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL Data Warehouse の Group By オプション
-[GROUP BY][GROUP BY] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。
+ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
+
+## <a name="what-does-group-by-do"></a>GROUP BY で行われる操作
+
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL 句は、行のサマリー セットにデータを集計します。 GROUP BY には、SQL Data Warehouse ではサポートされていないオプションがいくつかあります。 サポートされないオプションには、対処法があります。
 
 オプションは次のとおりです。
 
@@ -31,10 +30,9 @@ ms.lasthandoff: 10/11/2017
 * GROUP BY with CUBE
 
 ## <a name="rollup-and-grouping-sets-options"></a>Rollup および Grouping Sets オプション
-ここで最も簡単なオプションは、 `UNION ALL` を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。 結果はまったく同じです。
+ここで最も簡単な選択肢は、UNION ALL を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。 結果はまったく同じです。
 
-`ROLLUP` オプションを使用した Group By ステートメントの例は、以下のとおりです。
-
+次の例では、ROLLUP オプションと共に GROUP BY ステートメントを使用しています。
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -48,13 +46,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-ROLLUP を使用して、次の集計を要求しました。
+上の例では、ROLLUP を使用することで、次の項目の集計を要求しています。
 
 * 国とリージョン
-* 国
+* Country
 * 総計
 
-これを置き換えるには、 `UNION ALL`を使用して、同じ結果を返すために明示的に必要な集計を指定します。
+ROLLUP を置き換えて同じ結果が戻るようにするには、次のように UNION ALL を使用して必要な集計を明示的に指定できます。
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -81,7 +79,7 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-GROUPING SETS の場合、同一のプリンシパルを採用し、見たい集計レベルの UNION ALL セクションのみ作成する必要があります。
+GROUPING SETS を置き換えるには、サンプルの原則が適用されます。 表示する集計レベルの UNION ALL セクションを作成するだけでかまいません。
 
 ## <a name="cube-options"></a>Cube オプション
 UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成することができます。 問題は、コードがすぐに複雑で扱いにくくなることです。 これを防ぐために、次のより高度なアプローチを使用することができます。
@@ -119,9 +117,9 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-CTAS の結果が、以下のように表示されます。
+CTAS の結果を次に示します。
 
-![][1]
+![Cube によるグループ化](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
 2 番目に、中間結果を格納するターゲット テーブルを指定します。
 
@@ -181,17 +179,6 @@ ORDER BY 1,2,3
 
 コードをセクションに分割し、ループ構造を生成することによって、コードの管理と保守が容易になります。
 
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
+## <a name="next-steps"></a>次の手順
+開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)のページを参照してください。
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
-
-
-<!--Other Web references-->

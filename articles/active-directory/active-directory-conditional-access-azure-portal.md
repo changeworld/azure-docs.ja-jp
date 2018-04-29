@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 74a87065416b397b4eebbcaa54c769711176708d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 94d34df771334319db36009053a7264f0aeacf46
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
@@ -108,7 +108,7 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 
 ### <a name="license-requirements-for-using-conditional-access"></a>条件付きアクセスを使用するためのライセンス要件
 
-条件付きアクセスを使用するには、Azure AD Premium ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)」をご覧ください。
+条件付きアクセスを使用するには、Azure AD Premium ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

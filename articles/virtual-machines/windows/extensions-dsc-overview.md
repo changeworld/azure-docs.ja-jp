@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: e23d0a70cdfcc1b37f02d86dd6418aa28c5bbf2c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6bfe48df685952d2b465d9549e2f1c086c1c490
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 Azure VM エージェントとそれに関連付けられた拡張機能は、Microsoft Azure インフラストラクチャ サービスの一部です。 VM 拡張機能は、VM の機能を拡張し、さまざまな VM の管理操作を簡略化するソフトウェア コンポーネントです。
 
-Azure Desired State Configuration (DSC) の拡張機能の主な用途は、 [Azure Automation DSC サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。 VM のブートストラップには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#pull-service)があります。
+Azure Desired State Configuration (DSC) の拡張機能の主な用途は、 [Azure Automation DSC サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。 VM のブートストラップには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](https://docs.microsoft.com/powershell/dsc/metaconfig#pull-service)があります。
 
 DSC 拡張機能を Automation DSC サービスから独立して使用することができます。 ただし、デプロイ中に単一の処理を行うことが必要になります。 VM 内でローカルに行う場合を除き、継続的なレポート管理や構成管理が利用できなくなります。
 
@@ -49,7 +49,7 @@ DSC 拡張機能を Automation DSC サービスから独立して使用するこ
 
 ## <a name="architecture"></a>アーキテクチャ
 
-Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 DSC 拡張機能は、構成ドキュメントと一連のパラメーターを受け取ります。 ファイルが指定されていない場合、[既定の構成スクリプト](#default-configuration-script)が拡張機能に埋め込まれています。 既定の構成スクリプトは、[ローカル構成マネージャー](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig)にメタデータを設定するためにのみ使用されます。
+Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 DSC 拡張機能は、構成ドキュメントと一連のパラメーターを受け取ります。 ファイルが指定されていない場合、[既定の構成スクリプト](#default-configuration-script)が拡張機能に埋め込まれています。 既定の構成スクリプトは、[ローカル構成マネージャー](https://docs.microsoft.com/powershell/dsc/metaconfig)にメタデータを設定するためにのみ使用されます。
 
 拡張機能が初めて呼び出されると、次のロジックに従って、あるバージョンの WMF がインストールされます。
 
@@ -61,7 +61,7 @@ WMF をインストールするには、再起動が必要です。 再起動後
 
 ### <a name="default-configuration-script"></a>既定の構成スクリプト
 
-Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](extensions-dsc-template.md)に関するページの[既定の構成スクリプト](extensions-dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)に関するページを参照してください。
+Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](https://docs.microsoft.com/powershell/dsc/metaconfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](extensions-dsc-template.md)に関するページの[既定の構成スクリプト](extensions-dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)に関するページを参照してください。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager テンプレートの DSC 拡張機能
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management のポリシー | Microsoft Docs"
-description: "Azure API Management で使用できるポリシーについて説明します。"
+title: Azure API Management のポリシー | Microsoft Docs
+description: Azure API Management で使用できるポリシーについて説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: cb0304cae1b92578eb3c9230ae9faeecdf13d750
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 7304ade9c47034b6cb76eb87126f09fb5af65c8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。  
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/28/2018
     -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付きコンテキスト変数の値を、後でアクセスできるように保持します。  
     -   [要求メソッドを設定する](api-management-advanced-policies.md#SetRequestMethod) - 要求の HTTP メソッドを変更できます。  
     -   [状態コードを設定する](api-management-advanced-policies.md#SetStatus) - HTTP 状態コードを指定された値に変更します。  
-    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。  
+    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。  
     -   [待機](api-management-advanced-policies.md#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
 -   [認証ポリシー](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [基本認証](api-management-authentication-policies.md#Basic) -基本認証を使用してバックエンド サービスで認証します。  

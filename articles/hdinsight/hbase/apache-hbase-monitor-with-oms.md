@@ -10,17 +10,15 @@ editor: cgronlun
 ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 78190576fb17409fac929b5afa50b71046f4d0e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-hbase-with-log-analytics"></a>Log Analytics による HBase の監視
 
@@ -53,7 +51,7 @@ HDInsight HBase Monitoring ソリューションをプロビジョニングす�
 7. "*管理ソリューション名*" のウィンドウで、管理ソリューションに関連付ける既存のワークスペースを選択するか、新しい Log Analytics ワークスペースを作成して選択します。
 8. 必要に応じて、Azure サブスクリプション、リソース グループ、場所に関するワークスペースの設定を変更します。 
     ![ソリューションのワークスペース](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
-9. **[作成]**を選択します。  
+9. **[作成]** を選択します。  
 10. この新しい管理ソリューションをそのワークスペースで使用するには、**[Log Analytics]** > "***ワークスペース名***" > **[ソリューション]** の順に移動します。 管理ソリューションのエントリが一覧に表示されます。 エントリを選択してソリューションに移動します。
 
     ![Log Analytics のソリューション](./media/apache-hbase-monitor-with-oms/log-analytics-solutions.png)  
@@ -118,7 +116,7 @@ HDInsight HBase クラスターからのデータ収集を有効にするには�
 
     ![スクリプト操作の設定](./media/apache-hbase-monitor-with-oms/submit-script-action.png)  
 
-10. **[作成]**を選択します。
+10. **[作成]** を選択します。
 11. スクリプト操作の実行には数分かかります。 [スクリプト操作] ウィンドウで、その状況を監視できます。
 
     ![実行されているスクリプト操作](./media/apache-hbase-monitor-with-oms/script-action-running.png)  

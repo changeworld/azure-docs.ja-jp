@@ -1,11 +1,11 @@
 ---
-title: "H264 Single Bitrate 4K Media Encoder Standard プリセット - Azure | Microsoft Docs"
-description: "このトピックでは、**H264 Single Bitrate 4K** タスク プリセットの概要を説明します。"
+title: H264 Single Bitrate 4K Media Encoder Standard プリセット - Azure | Microsoft Docs
+description: このトピックでは、**H264 Single Bitrate 4K** タスク プリセットの概要について説明します。
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8e437aea-8193-49a0-9ff2-4fd391c80972
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 64c68363d4ba89e9ebbcaca8ff45d12f771e3a8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a3c733649ed8f4a50738ea54539bdb938602cc8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
  このプリセットにより、ビットレートが 18,000 kbps、音声が AAC ステレオである単一の MP4 ファイルが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
+>  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
   
  XML  
   

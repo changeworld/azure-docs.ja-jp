@@ -3,16 +3,16 @@ title: Classic Azure コンテナー レジストリのアップグレード
 description: 管理対象外の Classic コンテナー レジストリをアップグレードして、Basic、Standard、Premium の管理対象コンテナー レジストリの拡張機能セットを利用しましょう。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 084dfc8f87aaea4b5bbad7cb5fdb9d445d566206
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Classic コンテナー レジストリのアップグレード
 

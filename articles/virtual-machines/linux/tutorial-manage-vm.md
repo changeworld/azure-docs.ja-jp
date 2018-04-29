@@ -6,7 +6,7 @@ documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1f0166f44661483c1c8118ddf85263166a248118
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a3826db21d2e4ed447e1ef8d4016ff1dbbf75b1c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
@@ -54,10 +54,15 @@ az group create --name myResourceGroupVM --location eastus
 
 仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
-仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 
+仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 次の例では、Ubuntu Server を実行する *myVM* という名前の VM を作成します。 VM には、*azureuser* という名前のユーザー アカウントが作成されます。また、既定のキーの場所 (*~/.ssh*) に SSH キーが存在しない場合は、SSH キーが生成されます。
 
-```azurecli-interactive 
-az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroupVM \
+    --name myVM \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys
 ```
 
 VM の作成には数分かかることがあります。 VM が作成されると、Azure CLI で VM に関する以下の情報が出力されます。 `publicIpAddress` を記録します。このアドレスは仮想マシンへのアクセスに使用します。 

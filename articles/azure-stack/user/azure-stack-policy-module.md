@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack ポリシー モジュールの使用 | Microsoft Docs"
-description: "Azure Stack サブスクリプションと同様に動作するように、Azure サブスクリプションを制限する方法を説明します。"
+title: Azure Stack ポリシー モジュールの使用 | Microsoft Docs
+description: Azure Stack サブスクリプションと同様に動作するように、Azure サブスクリプションを制限する方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 937ef34f-14d4-4ea9-960b-362ba986f000
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: mabrigg
-ms.openlocfilehash: 71f17a460f4a81a98e2cdef183acb29f721d584e
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7a909a36597d9ceb31b6dc9f142c4a9d9d37b464
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack ポリシー モジュールを使用して Azure ポリシー管理する
 
@@ -41,7 +41,7 @@ Azure Stack ポリシー モジュールにより、Azure Stack と同じバー�
 次のコマンドを使用して、Azure サブスクリプションに対して既定のAzure Stack ポリシーを適用できます。 実行する前に、*Azure サブスクリプション名* を自分の Azure サブスクリプションに置き換えます。
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -53,7 +53,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 さらに詳細な方法でポリシーを適用する必要がある場合があります。  たとえば、同じサブスクリプションで他のリソースが実行されている場合があります。  ポリシー適用のスコープを特定のリソース グループに設定することで、Azure リソースを使用して Azure Stack のアプリをテストできます。 実行する前に、*Azure サブスクリプション名* を自分の Azure サブスクリプション名に置き換えます。
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
@@ -66,7 +66,7 @@ Azure ポリシーをデプロイしたら、ポリシーで禁止されてい�
 
 ![ポリシーの制約によるリソースのデプロイの失敗の結果](./media/azure-stack-policy-module/image1.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
 
 [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)

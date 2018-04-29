@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage イベントへの対応 | Microsoft Docs
-description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使います。
+description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
 services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -92,7 +92,7 @@ BLOB イベントのサブスクリプションは、イベントの種類に基
 
 Blob Storage イベントのサブジェクトには次の形式が使われます。
 
-```json
+```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
@@ -100,19 +100,19 @@ Blob Storage イベントのサブジェクトには次の形式が使われま�
 
 プレフィックスを共有する一連のコンテナーで作成された BLOB からのイベントと一致させるには、次のような `subjectBeginsWith` フィルターを使います。
 
-```json
+```
 /blobServices/default/containers/containerprefix
 ```
 
 特定のコンテナーで作成された BLOB からのイベントと一致させるには、次のような `subjectBeginsWith` フィルターを使います。
 
-```json
+```
 /blobServices/default/containers/containername/
 ```
 
 BLOB 名プレフィックスを共有する特定のコンテナーで作成された BLOB からのイベントと一致させるには、次のような `subjectBeginsWith` フィルターを使います。
 
-```json
+```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 

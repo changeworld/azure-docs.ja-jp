@@ -1,38 +1,33 @@
 ---
-title: SQL Data Warehouse の容量制限 | Microsoft Docs
-description: SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。
+title: 容量制限 - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
+author: antvgski
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 03/27/2018
-ms.author: kevin;barbkess
-ms.openlocfilehash: fa7d8a9880ff97f30dc583d792e39aa914ea5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: anvang
+ms.reviewer: igorstan
+ms.openlocfilehash: a0646bad9f440fc1e7d0bbdfae5bd2a23156c52f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
-以下の表に、Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
+Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
 
 ## <a name="workload-management"></a>ワークロード管理
 | カテゴリ | [説明] | 最大値 |
 |:--- |:--- |:--- |
-| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |1 つの SQL Data Warehouse に対する 最大 DWU | 弾力性[パフォーマンス レベル](performance-tiers.md)のための最適化: DW6000<br></br>コンピューティング [パフォーマンス レベル](performance-tiers.md)のための最適化: DW30000c |
-| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 [サポート チケットを作成][creating a support ticket]し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 例: <br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW600c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL Data Warehouse に対する 最大 DWU | 弾力性[パフォーマンス レベル](memory-and-concurrency-limits.md#performance-tiers)のための最適化: DW6000<br></br>コンピューティング [パフォーマンス レベル](memory-and-concurrency-limits.md#performance-tiers)のための最適化: DW30000c |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 例: <br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW600c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
 | データベース接続 |同時に開かれるセッション数 |1024<br/><br/>1024 個のアクティブな各セッションが同時に、SQL Data Warehouse データベースに要求を送信できます。 同時に実行できるクエリ数については、制限があるので注意してください。 同時実行の制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
-| [ワークロード管理][Workload management] |同時クエリの最大数 |32<br/><br/> 既定では、SQL Data Warehouse は、最大 32 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが割り当てられているリソース クラスが高いほど、または SQL Data Warehouse の[サービス レベル](performance-tiers.md#service-levels)が低いほど、同時実行クエリの数が減る可能性があります。 DMV クエリなど、クエリの中には必ず実行が許可されるものがあります。 |
-| [tempdb][Tempdb] |最大 GB |DW100 あたり 399 GB です。 そのため、DWU1000 では、tempdb のサイズは 3.99 TB になります。 |
+| [ワークロード管理](resource-classes-for-workload-management.md) |同時クエリの最大数 |32<br/><br/> 既定では、SQL Data Warehouse は、最大 32 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが割り当てられているリソース クラスが高いほど、または SQL Data Warehouse の [Data Warehouse ユニット](memory-and-concurrency-limits.md)の設定が低いほど、同時実行クエリの数が減る可能性があります。 DMV クエリなど、クエリの中には必ず実行が許可されるものがあります。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |DW100 あたり 399 GB です。 そのため、DWU1000 では、tempdb のサイズは 3.99 TB になります。 |
 
 ## <a name="database-objects"></a>データベース オブジェクト
 | カテゴリ | [説明] | 最大値 |
@@ -41,8 +36,8 @@ ms.lasthandoff: 03/28/2018
 | テーブル |最大サイズ |60 TB (ディスク上の圧縮) |
 | テーブル |データベースあたりのテーブル数 |10,000 |
 | テーブル |テーブルあたりの列数 |1,024 列 |
-| テーブル |列あたりのバイト数 |列の[データ型][data type]によって決まります。  上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
-| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Data Warehouse では SQL Server と同様に行オーバーフロー ストレージがサポートされており、**可変長列**を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳しくは、「[8 KB を超える場合の行オーバーフロー データ][Row-Overflow Data Exceeding 8 KB]」をご覧ください。 |
+| テーブル |列あたりのバイト数 |列の[データ型](sql-data-warehouse-tables-data-types.md)によって決まります。 上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
+| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Data Warehouse では SQL Server と同様に行オーバーフロー ストレージがサポートされており、**可変長列**を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、「[8 KB を超える場合の行オーバーフロー データ](https://msdn.microsoft.com/library/ms186981.aspx)」を参照してください。 |
 | テーブル |テーブルあたりのパーティション数 |15,000<br/><br/>高パフォーマンスを実現するには、ビジネス要件を満たしながら、必要なパーティション数を最小限に抑えることをお勧めします。 パーティションの数が増えるに従い、データ定義言語 (DDL) およびデータ操作言語 (DML) の操作のオーバーヘッドが拡大し、パフォーマンスの低下を引き起こします。 |
 | テーブル |パーティション境界値あたりの文字数 |4000 |
 | Index |テーブルあたりの非クラスター化インデックス数 |50<br/><br/>行ストア テーブルのみに適用されます。 |
@@ -73,8 +68,8 @@ ms.lasthandoff: 03/28/2018
 | SELECT |JOIN あたりの列数 |1,024 列<br/><br/>JOIN で許容される列数は 1,024 個までです。 常に 1024 列が保証されるわけではありません。 JOIN プランで、列数が JOIN の結果を上回る一時テーブルが必要な場合、一時テーブルには 1024 の制限が適用されます。 |
 | SELECT |GROUP BY の列あたりのバイト数 |8060バイト<br/><br/>GROUP BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
 | SELECT |ORDER BY 列あたりのバイト数 |8060 バイト<br/><br/>ORDER BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
-| ステートメントあたりの識別子 |参照される識別子の数 |65,535<br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる識別子の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: 式サービスの制限値に達しています][Internal error: An expression services limit has been reached]に関するページをご覧ください。 |
-| 文字列リテラル | ステートメントの文字列リテラルの数 | 20,000 <br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる文字列定数の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: 式サービスの制限値に達しています][Internal error: An expression services limit has been reached]に関するページをご覧ください。 |
+| ステートメントあたりの識別子 |参照される識別子の数 |65,535<br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる識別子の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: Expression Service の制限に達しました][Internal error: An expression services limit has been reached] を参照してください。 |
+| 文字列リテラル | ステートメントの文字列リテラルの数 | 20,000 <br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる文字列定数の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。|
 
 ## <a name="metadata"></a>Metadata
 | システム ビュー | 最大行数 |
@@ -90,18 +85,4 @@ ms.lasthandoff: 03/28/2018
 | sys.dm_pdw_sql_requests |sys.dm_pdw_exec_requests に格納された最新の 1000 個の SQL 要求 |
 
 ## <a name="next-steps"></a>次の手順
-詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse reference overview]に関するページをご覧ください。
-
-<!--Image references-->
-
-<!--Article references-->
-[Data Warehouse Units (DWU)]: ./sql-data-warehouse-overview-what-is.md
-[SQL Data Warehouse reference overview]: ./sql-data-warehouse-overview-reference.md
-[Workload management]: ./resource-classes-for-workload-management.md
-[Tempdb]: ./sql-data-warehouse-tables-temporary.md
-[data type]: ./sql-data-warehouse-tables-data-types.md
-[creating a support ticket]: /sql-data-warehouse-get-started-create-support-ticket.md
-
-<!--MSDN references-->
-[Row-Overflow Data Exceeding 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
-[Internal error: An expression services limit has been reached]: https://support.microsoft.com/kb/913050
+SQL Data Warehouse の使用に関する推奨事項については、[チート シート](cheat-sheet.md)に関するページを参照してください。

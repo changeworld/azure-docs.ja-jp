@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4c7046c335039f5bc689790aaf53f5dff65991d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを PHP と Azure Portal で作成する
 
@@ -42,24 +42,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="add-a-graph"></a>グラフの追加
 
-Azure Portal でデータ エクスプローラー ツールを使用してグラフ データベースを作成できるようになりました。 
-
-1. **[データ エクスプローラー]** > **[New Graph]\(新しいグラフ\)** をクリックします。
-
-    **[グラフの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
-
-    ![Azure Portal データ エクスプローラーの [グラフの追加] ページ](./media/create-graph-php/azure-cosmosdb-data-explorer-graph.png)
-
-2. **[グラフの追加]** ページで、新しいグラフの設定を入力します。
-
-    Setting|推奨値|[説明]
-    ---|---|---
-    データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
-    グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。
-    ストレージの容量|固定 (10 GB)|既定値の**固定 (10 GB)** のままにします。 この値は、データベースの記憶域容量です。
-    Throughput|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
-
-3. フォームに入力したら、**[OK]** をクリックします。
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -85,7 +68,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、C:\git-samples\azure-cosmos-db-graph-php-getting-started\ フォルダーの `connect.php` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、C:\git-samples\azure-cosmos-db-graph-php-getting-started\ フォルダーの connect.php ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
 
 * Gremlin `connection` は、`connect.php` ファイルの先頭で `$db` オブジェクトを使って初期化されます。
 
@@ -122,7 +105,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-php/keys.png)
 2. `connect.php` ファイルを開き、8 行目の `your_server_address` に URI の値を貼り付けます。
 
-    接続オブジェクトの初期化は次のようになります。
+    接続オブジェクトの初期化は、次のコードのようになります。
 
     ```php
     $db = new Connection([
@@ -138,11 +121,11 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 3. 2017 年 12 月 20 日以降に作成したグラフ データベース アカウントの場合は、ホスト名の `graphs.azure.com` を `gremlin.cosmosdb.azure.com` に変更します。
 
-4. 接続オブジェクトの `username` パラメーターを、お使いのデータベースとグラフの名前で変更します。 `sample-database` と `sample-graph` の推奨値を使った場合は、次のようになります。
+4. 接続オブジェクトの `username` パラメーターを、お使いのデータベースとグラフの名前で変更します。 `sample-database` と `sample-graph` の推奨値を使った場合は、次のコードのようになります。
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
-    この段階で、Connection オブジェクト全体は次のようになります。
+    この段階で、接続オブジェクト全体は、次のコード スニペットのようになります。
 
     ```php
     $db = new Connection([
@@ -158,7 +141,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 5. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、パスワード パラメーターの `your_primary_key` に貼り付けます。
 
-    Connection オブジェクトの初期化は次のようになります。
+    接続オブジェクトの初期化は、次のコードのようになります。
 
     ```php
     $db = new Connection([
@@ -228,7 +211,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     tech | java | 
 
     > [!NOTE]
-    > このクイックスタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
+    > このクイック スタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
 6. Click **OK**. 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
@@ -262,7 +245,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   以上で、このチュートリアルのリソース作成部分は完了です。引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
+   以上で、このクイック スタートのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

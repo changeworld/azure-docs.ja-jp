@@ -1,12 +1,12 @@
 ---
-title: "Jenkins プラグインを使用して Azure App Service にデプロイする | Microsoft Docs"
-description: "Azure App Service Jenkins プラグインを使用して、Jenkins で Java Web アプリを Azure にデプロイする方法について説明します。"
+title: Jenkins プラグインを使用して Azure App Service にデプロイする | Microsoft Docs
+description: Azure App Service Jenkins プラグインを使用して、Jenkins で Java Web アプリを Azure にデプロイする方法について説明します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -39,7 +39,7 @@ Jenkins マスターがまだない場合は、[ソリューション テンプ�
 * [Jenkins Git クライアント プラグイン](https://plugins.jenkins.io/git-client) バージョン 2.4.6 
 * [Docker Commons プラグイン](https://plugins.jenkins.io/docker-commons) バージョン 1.4.0
 * [Azure Credentials](https://plugins.jenkins.io/azure-credentials) バージョン 1.2
-* [Azure App Service](https://plugins.jenkins.io/azure-app-server) バージョン 0.1
+* [Azure App Service](https://plugins.jenkins.io/azure-app-service) バージョン 0.1
 
 Jenkins プラグインを使用して、Web Apps でサポートされている言語 (C#、PHP、Java、Node.js など) の Web アプリをデプロイできます。 このチュートリアルでは、[Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)を使用します。 自分の GitHub アカウントにリポジトリをフォークするには、GitHub インターフェイスの右上隅にある **[Fork]** ボタンをクリックします。  
 > [!NOTE]
@@ -90,7 +90,7 @@ Jenkins でジョブを設定する前に、Java アプリを実行するため�
 ### <a name="set-up-the-jenkins-job"></a>Jenkins ジョブを設定する
 
 1. Jenkins ダッシュボードで新しい**フリースタイル** プロジェクトを作成します。
-2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  (例: http://github.com/&lt;使用する ID>/javawebappsample)。
+2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  例: http://github.com/&lt;your_ID>/javawebappsample。
 3. **[Execute shell]\(シェルの実行\)** コマンドを追加することで、Maven を使用してプロジェクトをビルドするステップを追加します。 この例では、ターゲット フォルダー内の \*.war ファイルの名前を **ROOT.war** に変更する追加のコマンドが必要です。   
     ```bash
     mvn clean package
@@ -122,7 +122,7 @@ Azure App Service Jenkins プラグインは、パイプラインに対応して
 ### <a name="create-a-jenkins-pipeline"></a>Jenkins パイプラインを作成する
 
 1. Web ブラウザーで Jenkins を開きます。 **[New Item (新しい項目)]** を選択します。
-2. ジョブの名前を指定し、**[パイプライン]** を選択します。 **[OK]**を選択します。
+2. ジョブの名前を指定し、**[パイプライン]** を選択します。 **[OK]** を選択します。
 3. **[Pipeline]\(パイプライン\)** タブを選択します。
 4. **[Definition]\(定義\)** で、**[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
 5. **[SCM]** で **[Git]** を選択します。 フォークしたリポジトリの GitHub URL を入力します  (例: https://&lt;フォークしたリポジトリ>.git)。
@@ -143,7 +143,7 @@ Jenkins でジョブを設定するには、Linux 上の Web アプリが必要�
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Docker の Jenkins ジョブを設定する
 
 1. Jenkins ダッシュボードで新しい**フリースタイル** プロジェクトを作成します。
-2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  (例: http://github.com/&lt;使用する ID>/javawebappsample)。
+2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  例: http://github.com/&lt;your_ID>/javawebappsample。
 3. **[Execute shell]\(シェルの実行\)** コマンドを追加することで、Maven を使用してプロジェクトをビルドするステップを追加します。 コマンドに次の行を含めます。
     ```bash
     mvn clean package
@@ -190,7 +190,7 @@ Azure Container Registry を使用している場合は、**[Docker registry URL
 ### <a name="create-a-jenkins-pipeline"></a>Jenkins パイプラインを作成する    
 
 1. Web ブラウザーで Jenkins を開きます。 **[New Item (新しい項目)]** を選択します。
-2. ジョブの名前を指定し、**[パイプライン]** を選択します。 **[OK]**を選択します。
+2. ジョブの名前を指定し、**[パイプライン]** を選択します。 **[OK]** を選択します。
 3. **[Pipeline]\(パイプライン\)** タブを選択します。
 4. **[Definition]\(定義\)** で、**[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
 5. **[SCM]** で **[Git]** を選択します。 フォークしたリポジトリの GitHub URL を入力します  (例: https://&lt;フォークしたリポジトリ>.git)。

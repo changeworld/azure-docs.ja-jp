@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e47141d31d3876264eaf2bcb7dc562a4711048cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4188d114aa86086821b2c640d7f2d98a78bcbf4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Azure Stack と外部の監視ソリューションとの統合
 
@@ -99,7 +99,7 @@ Operations Manager、Nagios、または Nagios ベースのソリューション
    ```PowerShell
    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
-   Connect-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+   Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 3. PowerShell のインストールの一環として [Azure Stack ツール](https://github.com/Azure/AzureStack-Tools)をインストールしたディレクトリ (例: c:\azurestack-tools-master) に移動します。 次に、インフラストラクチャのディレクトリに移動し、次のコマンドを実行してインフラストラクチャ モジュールをインポートします。
 

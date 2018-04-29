@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用して Azure の Traffic Manager を管理する | Microsoft Docs"
-description: "Azure Resource Manager での Traffic Manager に対する Powershell の使用"
+title: PowerShell を使用して Azure の Traffic Manager を管理する | Microsoft Docs
+description: Azure Resource Manager での Traffic Manager に対する Powershell の使用
 services: traffic-manager
 documentationcenter: na
 author: kumudd
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 951e845e23a1ed0cbdc83fc24a97a545f00c52ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -35,7 +35,7 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 以下の手順では、Microsoft Azure PowerShell を使用します。 次の記事では、Azure PowerShell をインストールして構成する方法について説明します。
 
-* [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 
 この記事の例では、既存のリソース グループがあることを前提としています。 リソース グループを作成するには、次のコマンドを使用します。
 
@@ -56,9 +56,9 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 次の表で、パラメーターについて説明します。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
-| 名前 |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
+| Name |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
 | ResourceGroupName |プロファイル リソースを含むリソース グループの名前。 |
 | TrafficRoutingMethod |DNS クエリへの応答で返されるエンドポイントを特定するために使用する、トラフィック ルーティング方法を指定します。 指定できる値は、'Performance'、'Weighted' または 'Priority' です。 |
 | RelativeDnsName |この Traffic Manager プロファイルで提供される DNS 名のホスト名の部分を指定します。 Azure Traffic Manager が使用する DNS ドメイン名とこの値を組み合わせて、プロファイルの完全修飾ドメイン名 (FQDN) が形成されます。 たとえば、'contoso' と値を設定すると 'contoso.trafficmanager.net' になります。 |
@@ -205,6 +205,18 @@ $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
 ```
 
+## <a name="adding-endpoints-from-another-subscription"></a>別のサブスクリプションからのエンドポイントの追加
+
+Traffic Manager では、別のサブスクリプションからのエンドポイントを操作できます。 追加するエンドポイントがあるサブスクリプションに切り替えて、Traffic Manager に必要な入力を取得する必要があります。 その後、Traffic Manager プロファイルがあるサブスクリプションに切り替えて、そのサブスクリプションにエンドポイントを追加する必要があります。 次の例は、パブリック IP アドレスを使ってこれを行う方法を示しています。
+
+```powershell
+Set-AzureRmContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+
+Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
+New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
+```
+
 ## <a name="update-a-traffic-manager-endpoint"></a>Traffic Manager エンドポイントの更新
 
 既存の Traffic Manager エンドポイントを更新する方法は 2 通りあります。
@@ -306,7 +318,7 @@ Remove-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile [-Force]
 Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzureRmTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager の監視](traffic-manager-monitoring.md)
 

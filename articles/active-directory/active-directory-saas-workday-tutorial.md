@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Workday の統合 | Microsoft Docs"
-description: "Azure Active Directory と Workday の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Workday の統合 | Microsoft Docs'
+description: Azure Active Directory と Workday の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル: Azure Active Directory と Workday の統合
 
@@ -119,7 +119,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
     **[応答 URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml.htmld` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。 " *http://www.myworkday.com* " のようなものは動作しますが、" *http://myworkday.com* " は動作しません。 これらの値を取得するには、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせてください。  
+    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。 "*http://www.myworkday.com*" のような URL は動作しますが、"*http://myworkday.com*" は動作しません。 これらの値を取得するには、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせてください。  
 
 5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -160,7 +160,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![SAML のセットアップ](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Enable SAML Authentication]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Enable SAML Authentication]** を選択します。
    
     b.  **[行の追加]** をクリックします。
 
@@ -172,9 +172,9 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     b. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML エンティティ ID]** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
 
-    ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "SAML Identity Providers")
+    ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML Identity Providers")
    
-    c. **[Enable Workday Initiated Logout]\(Workday 始動ログアウトを有効にする\)** をオンにします。
+    c. **[Enable idp Initiated Logout]\(idp によって開始されたログアウトを有効にする\)** をオンにします。
    
     d. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** の値をコピーし、**[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに貼り付けます。
 
@@ -215,7 +215,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     ![SSO 構成](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguratio.png "SSO configuration")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[サービス プロバイダー ID]** テキスト ボックスに「**http://www.workday.com**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[サービス プロバイダー ID]** ボックスに、「**http://www.workday.com**」と入力します。
    
     b. **[SP によって開始された認証要求を圧縮しない]** を選択します。
    
@@ -226,9 +226,6 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
     d. Click **OK**. 
    
     ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -278,7 +275,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Workday]**を選択します。
+2. アプリケーションの一覧で **[Workday]** を選択します。
 
     ![アプリケーションの一覧の Workday のリンク](./media/active-directory-saas-workday-tutorial/tutorial_workday_app.png)  
 
@@ -309,7 +306,6 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-workday-tutorial/tutorial_general_01.png
@@ -323,4 +319,3 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-workday-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workday-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workday-tutorial/tutorial_general_203.png
-

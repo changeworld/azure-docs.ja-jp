@@ -5,20 +5,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b517e4c8cc57f833037f4c67deb318f2756e7b24
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 66994dfcd84db1de0ba072e9e3a45e7ec11fcec0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンの使用
 
@@ -35,9 +35,12 @@ AI 用の ディープ ラーニング VM で提供されるツールはたく�
 
 - [イメージ内で製品を検出するためのエンド ツー エンドのソリューションのビルドのハウツー ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images): イメージの検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの実際のビジネス ドメインに大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
 
+- [PubMed アブストラクトからの名前付きエンティティ抽出](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) このチュートリアルでは、非構造化テキストから薬品名や病名などの名前付きエンティティを抽出する方法について学びます。 1,800 万個の PubMed アブストラクトのテキスト コーパスにカスタマイズした単語を埋め込むようモデルを教育し、そのモデルを使用して、エンティティ抽出のための Long Short-Term Memory (LSTM) 再起型ニュートラル ネットワーク モデルを構築することにより、汎用単語を埋め込んでエンティティを抽出する方法よりも、ドメイン固有の単語を埋め込むモデルの方がパフォーマンスが高いことを証明します。
+
+- [音声の深層学習](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するための深層学習モデルの教育方法と、音声データの操作方法の概要について説明します。
+
 - [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルは、2 つの異なるニューラル ネットワーク アーキテクチャ (Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワーク) を構築してトレーニングする方法を示します。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、および Theano) のフロントエンドです。
 
 ## <a name="next-steps"></a>次の手順
 
 [サンプル ページ](dsvm-samples-and-walkthroughs.md)では、すぐに開始できるように各フレームワークの VM にあらかじめ読み込まれたコード例へのポインターが提供されます。 
-
