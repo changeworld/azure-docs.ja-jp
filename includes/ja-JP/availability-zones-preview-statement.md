@@ -1,0 +1,3 @@
+> [!NOTE]
+> Azure 可用性ゾーンはプレビュー段階であり、開発とテストのシナリオで使用できます。 一部の Azure リソース、リージョン、サイズ ファミリについては、サポートを利用できます。 利用を開始する方法、および Azure 可用性ゾーンを試すことができる Azure リソース、リージョン、サイズ ファミリの詳細については、「[Azure の可用性ゾーン (プレビュー) の概要](../articles/availability-zones/az-overview.md)」を参照してください。 Azure Web サイトから[フィードバックをお送りいただけます](https://feedback.azure.com/forums/905206-global-infrastructure/category/319507-availability-zones)。 サポートについては、[StackOverflow]( https://stackoverflow.com/questions/tagged/azure-availability-zones) にアクセスするか、[Azure サポート チケットを開く](../articles/azure-supportability/how-to-create-azure-support-request.md)ことができます。
+>
