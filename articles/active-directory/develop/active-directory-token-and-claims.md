@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d8a4ddd98086252f36eeb7034248e909fec1ac0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
-Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
+Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。 
 
 ## <a name="types-of-tokens"></a>トークンの種類
 Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-code.md)をサポートしており、access_token と refresh_token の両方を利用します。  また、[OpenID Connect](active-directory-protocols-openid-connect-code.md) による認証とサインインもサポートしており、これによって 3 種類目のトークンである id_token が導入されます。  これらの各トークンは、「ベアラー トークン」として表されます。
@@ -52,7 +52,6 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 > [!div class="mx-codeBreakAll"]
 | JWT の要求 | Name | [説明] |
 | --- | --- | --- |
-| `appid` |アプリケーション ID |トークンを使用してリソースにアクセスするアプリケーションを識別します。 アプリケーションとして識別することもできますが、アプリケーションを使用しているユーザーとして識別することもできます。 アプリケーション ID は通常、アプリケーション オブジェクトを表しますが、Azure AD 内のサービス プリンシパル オブジェクトを表すこともできます。 <br><br> **JWT 値の例**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |対象ユーザー |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 <br><br> **SAML 値の例**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 値の例**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |アプリケーションの認証コンテキスト クラスの参照 |クライアントが認証された方法を示します。 パブリック クライアントの場合、値は 0 です。 クライアント ID とクライアント シークレットが使用されている場合、値は 1 です。 <br><br> **JWT 値の例**: <br> `"appidacr": "0"` |
 | `acr` |認証コンテキスト クラスの参照 |アプリケーションの認証コンテキスト クラスの参照要求のクライアントとは異なり、サブジェクトが認証された方法を示します。 値 「0」 は、エンドユーザーの認証が ISO/IEC 29115 の要件を満たしていないことを示します。 <br><br> **JWT 値の例**: <br> `"acr": "0"` |
@@ -163,9 +162,8 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
   * 不本意なパスワードの変更: 管理者がユーザーのパスワード変更を強制した場合、またはパスワードをリセットした場合、そのパスワードを使用して取得されたユーザーのトークンは無効になります。  例外については下の「注意」をご覧ください。 
   * セキュリティ違反: セキュリティ違反 (たとえば、パスワードのオンプレミス ストアの侵害) が発生した場合、管理者は現在発行されている更新トークンすべてを無効化できます。  これによりすべてのユーザーが強制的に再認証することになります。 
 
-注: 
-
-トークンの取得にパスワード以外の認証方法 (Windows Hello、認証アプリ、顔や指紋などの生体認証) が使用された場合、ユーザーのパスワードを変更しても、ユーザーの再認証は強制されません (ただし、認証アプリの再認証は強制されます)。  これは、選択した認証入力 (顔など) が変わっておらず、再認証のために再び使用できるためです。
+> [!NOTE]
+>トークンの取得にパスワード以外の認証方法 (Windows Hello、認証アプリ、顔や指紋などの生体認証) が使用された場合、ユーザーのパスワードを変更しても、ユーザーの再認証は強制されません (ただし、認証アプリの再認証は強制されます)。  これは、選択した認証入力 (顔など) が変わっておらず、再認証のために再び使用できるためです。
 
 ## <a name="sample-tokens"></a>トークンのサンプル
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 Azure Cosmos DB コネクタ経由で Azure Cosmos DB アカウントに接続できるようになりました。   
@@ -103,9 +103,9 @@ Azure Cosmos DB アカウントから火山データを取得し、次のレポ�
     > [!NOTE] 
     > "The specified database was not found. (指定されたデータベースが見つかりませんでした。)" というエラーが表示された場合は、 この [Power BI の問題](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200)にある回避手順を参照してください。
     
-9. アカウントが正常に接続されると、 **ナビゲーター** が表示されます。  **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
+9. アカウントが正常に接続されると、 **ナビゲーター** ウィンドウが表示されます。  **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
 10. レポート用のデータを取得するデータベースをクリックして展開します。デモ アカウントを使用する場合は、**[volcanodb]** を選択します。   
-11. 次に、データを取得するコレクションを選択します。 デモ アカウントを使用する場合は、 **[volcano1]**を選択します。
+11. 次に、取得するデータを含むコレクションを選択します。 デモ アカウントを使用する場合は、 **[volcano1]** を選択します。
     
     プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record**として表されます。
     
@@ -115,28 +115,29 @@ Azure Cosmos DB アカウントから火山データを取得し、次のレポ�
 ## <a name="flattening-and-transforming-json-documents"></a>JSON ドキュメントをフラット化して変換する
 1. [Power BI Query Editor] \(Power BI クエリ エディター) ウィンドウに切り替えます。中央のウィンドウに **[ドキュメント]** 列が表示されます。
    ![Power BI Desktop クエリ エディター](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択し、**[OK]** をクリックします。
+2. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択します。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** チェックボックスをオフにし、**[OK]** をクリックします。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ドキュメントの展開](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
 3. 中央のウィンドウに、選択したフィールドを含む結果のプレビューが表示されます。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - フラット化された結果](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
 4. この例では、Location プロパティは、ドキュメント内の GeoJSON ブロックです。  ご覧のように、Power BI Desktop では Location は **Record** タイプとして表されます。  
-5. [Location] 列ヘッダーの右側にある展開コントロールをクリックします。  type フィールドと coordinates フィールドを含むコンテキスト メニューが表示されます。  coordinates フィールドを選択して **[OK]**をクリックします。
+5. [Document.Location] 列ヘッダーの右側にある展開コントロールをクリックします。  type フィールドと coordinates フィールドを含むコンテキスト メニューが表示されます。  coordinates フィールドを選択してみましょう。**[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** が選択されていないことを確認し、**[OK]** をクリックします。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 場所レコード](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
 6. 中央のウィンドウに、 **List** タイプの [coordinates] 列が表示されます。  このチュートリアルの冒頭に示されているように、ここで使用する GeoJSON データは、Latitude 値と Longitude 値が coordinates 配列に記録された Point タイプです。
    
     coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、**[カスタム列の追加]** をクリックします。  **[カスタム列の追加]** ウィンドウが表示されます。
+7. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、**[カスタム列]** をクリックします。  **[カスタム列]** ウィンドウが表示されます。
 8. "LatLong" など、新しい列の名前を入力します。
 9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 Click **OK**.
    
     DAX 関数など Data Analysis Expressions(DAX) の詳細については、「 [Power BI Desktop における DAX の基本事項](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)」を参照してください。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - カスタム列の追加](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
-10. これで、中央のウィンドウには Latitude と Longitude の値がコンマ区切りで設定された新しい [LatLong] 列が表示されます。
+
+10. これで、中央のウィンドウに、値が入力された新しい LatLong 列が表示されます。
     
     ![Azure Cosmos DB コネクタの Power BI チュートリアル - カスタム LatLong 列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
     
@@ -145,10 +146,8 @@ Azure Cosmos DB アカウントから火山データを取得し、次のレポ�
     ![適用された手順は、Source、Navigation、Expanded Document、Expanded Document.Location、Added Custom である必要がある](./media/powerbi-visualize/power-bi-applied-steps.png)
     
     手順が異なる場合は、余分な手順を削除し、カスタム列をもう一度追加してみてください。 
-11. このように、データをフラット化して表形式に変換することができました。  クエリ エディターのすべての機能を活用して、Cosmos DB のデータを整形および変換することができます。  サンプルを使用する場合は、**[ホーム]** リボンの **[データ型]** を変更することで、Elevation のデータ型を **[整数]** に変更します。
-    
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 列の型の変更](./media/powerbi-visualize/power_bi_connector_pbichangetype.png)
-12. **[終了して適用]** をクリックしてデータ モデルを保存します。
+
+11. **[終了して適用]** をクリックしてデータ モデルを保存します。
     
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 閉じて適用](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
 
@@ -160,27 +159,28 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 レポート ビューには以下が表示されます。
 
-1. **[フィールド]** ウィンドウ。ここには、レポートに使用できるフィールドと共にデータ モデルの一覧が表示されます。
-2. **[視覚エフェクト]** ウィンドウ。 レポートに 1 つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
-3. **[レポート]** キャンバス。ここでは、レポート用の視覚エフェクトを作成します。
+1. **[フィールド]** ウィンドウ。ここで、レポートに使用できるデータ モデルとフィールドの一覧を確認できます。
+2. **[視覚化]** ウィンドウ。 レポートに 1 つまたは複数のビジュアルを含めることができます。  **[視覚化]** ウィンドウで、ニーズに合ったビジュアルの種類を指定します。
+3. **[レポート]** キャンバス。ここで、レポート用のビジュアルを作成します。
 4. **[レポート]** ページ。 Power BI Desktop では、複数のレポート ページを追加できます。
 
 単純な対話型マップ ビュー レポートを作成する基本的な手順を次に示します。
 
-1. 例として、個々の火山の場所を示すマップ ビューを作成します。  **[視覚エフェクト]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されているマップをクリックします。  **[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。  **[視覚化エフェクト]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
-2. ここで、**[フィールド]** ウィンドウの LatLong フィールドを **[視覚エフェクト]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
+1. 例として、個々の火山の場所を示すマップ ビューを作成します。  **[視覚化]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されているマップをクリックします。  **[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。  **[視覚化]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
+2. ここで、**[フィールド]** ウィンドウの LatLong フィールドを **[視覚化]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
 3. 次に、Volcano Name フィールドを **Legend** プロパティにドラッグ アンド ドロップします。  
 4. さらに、Elevation フィールドを **Size** プロパティにドラッグ アンド ドロップします。  
 5. ここで、マップ ビジュアルに複数のバブルが表示されます。バブルは個々の火山の場所を示し、バブルのサイズは火山の高度と相関性があります。
-6. これで、基本的なレポートを作成できました。  別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
+6. これで、基本的なレポートを作成できました。  別のビジュアルを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
    
     ![Azure Cosmos DB の Power BI チュートリアルの完了時の最終的な Power BI Desktop レポートのスクリーンショット](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
+7. [ファイル] メニューの **[保存]** をクリックして、ファイルを PowerBITutorial.pbix として保存します。
 
 ## <a name="publish-and-share-your-report"></a>レポートを発行して共有する
 レポートを共有するには、PowerBI.com のアカウントが必要です。
 
 1. Power BI Desktop で、 **[ホーム]** リボンをクリックします。
-2. **[発行]**をクリックします。  PowerBI.com アカウントのユーザー名とパスワードの入力が求められます。
+2. **[発行]** をクリックします。  PowerBI.com アカウントのユーザー名とパスワードの入力が求められます。
 3. 資格情報が認証されると、選択済みの宛先にレポートが発行されます。
 4. レポートを PowerBI.com に表示して共有するには、 **['PowerBITutorial.pbix' を Power BI で開く]** をクリックします。
    
@@ -201,26 +201,26 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 ダッシュボードを作成する前に、レポートをその場で変更することもできます。 ただし、変更は Power BI Desktop で実行し、変更後のレポートを PowerBI.com にもう一度発行することをお勧めします。
 
-## <a name="refresh-data-in-powerbicom"></a>PowerBI.com でのデータの更新
-データの更新方法には、アドホック更新とスケジュールされている更新の 2 つの方法があります。
+<!-- ## Refresh data in PowerBI.com
+There are two ways to refresh data, ad hoc and scheduled.
 
-アドホック更新を実行するには、**[データセット]** (PowerBITutorial など) の近くの省略記号 (...) をクリックします。 **[Refresh Now (今すぐ更新)]** を含む操作の一覧が表示されます。 データを更新するには、**[Refresh Now (今すぐ更新)]** をクリックします。
+For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![PowerBI.com の [Refresh Now (今すぐ更新)] のスクリーンショット](./media/powerbi-visualize/power-bi-refresh-now.png)
+![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
 
-スケジュールされた更新を実行するには、次の操作を行います。
+For a scheduled refresh, do the following.
 
-1. 操作一覧の **[更新のスケジュール設定]** をクリックします。 
+1. Click **Schedule Refresh** in the action list. 
 
-    ![PowerBI.com の [更新のスケジュール設定] のスクリーンショット](./media/powerbi-visualize/power-bi-schedule-refresh.png)
-2. **[設定]** ページで、**[データ ソースの資格情報]** を展開します。 
-3. **[資格情報の編集]**をクリックします。 
+    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+2. In the **Settings** page, expand **Data source credentials**. 
+3. Click on **Edit credentials**. 
    
-    [構成] ポップアップが表示されます。 
-4. データセットの Azure Cosmos DB アカウントに接続するためのキーを入力し、**[サインイン]** をクリックします。 
-5. **[更新のスケジュール設定]** を展開し、データセットを更新するためのスケジュールを設定します。 
-6. **[適用]** をクリックします。これで、スケジュールされた更新が設定されます。
-
+    The Configure popup appears. 
+4. Enter the key to connect to the Azure Cosmos DB account for that data set, then click **Sign in**. 
+5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
+6. Click **Apply** and you are done setting up the scheduled refresh.
+-->
 ## <a name="next-steps"></a>次の手順
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * Azure Cosmos DB について詳しくは、[Azure Cosmos DB ドキュメントのランディング ページ](https://azure.microsoft.com/documentation/services/cosmos-db/)をご覧ください。

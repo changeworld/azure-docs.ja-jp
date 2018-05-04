@@ -1,4 +1,4 @@
-# [Key Vault のドキュメント](index.md)
+# [Key Vault のドキュメント](index.yml)
 
 # 概要
 ## [Key Vault の概要](key-vault-overview.md)
@@ -9,13 +9,13 @@
 ## [キー コンテナーの作成 - ポータル](quick-create-portal.md)
 
 # チュートリアル
-## [キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)
-# サンプル
-## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault)
-# 概念
+## [Key Vault からシークレットを読み取る](tutorial-web-application-keyvault.md)
 ## [Key Vault を使ってみる](key-vault-get-started.md)
 ## [キー ローテーションと監査を設定する](key-vault-key-rotation-log-monitoring.md)
 ## [Web アプリから Key Vault を使用する](key-vault-use-from-web-application.md)
+# サンプル
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# 概念
 ## [セキュリティ ワールド](key-vault-ovw-security-worlds.md)
 ## [論理的な削除](key-vault-ovw-soft-delete.md)
 ## [ストレージ アカウント キー](key-vault-ovw-storage-keys.md)

@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight へのカスタム Hadoop アプリケーションのインストール | Microsoft Docs"
-description: "HDInsight アプリケーションに HDInsight アプリケーションをインストールする方法について説明します。"
+title: Azure HDInsight へのカスタム Hadoop アプリケーションのインストール | Microsoft Docs
+description: HDInsight アプリケーションに HDInsight アプリケーションをインストールする方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: e556b29c-8176-4bc5-a90b-aa01abfd3aee
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 4065c08e647ff708e1d8c4fa52563da7f83ef0c1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 746214dbb38bf5b5cfe083bc97f439e7b28ccb7e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのカスタム Hadoop アプリケーションのインストール
 
@@ -54,7 +52,7 @@ HDInsight アプリケーションは、クラスターを作成するときに�
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  この Resource Manager テンプレートは、 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
+    このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  Resource Manager テンプレートは、[https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue) にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
    * **ClusterName**: アプリケーションのインストール先となるクラスターの名前を入力します。 このクラスターは既に存在していることが必要です。
@@ -69,7 +67,7 @@ HDInsight アプリケーションは、クラスターを作成するときに�
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  この Resource Manager テンプレートは [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json)にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
+    このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  Resource Manager テンプレートは、[https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
 2. 手順に従ってクラスターを作成し、Hue をインストールします。 HDInsight クラスターの作成の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 Azure ポータルのほか、[Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) や [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli) を使用して Resource Manager テンプレートを呼び出すこともできます。
@@ -115,7 +113,7 @@ HDInsight アプリケーションを削除する方法は複数あります。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
 3. アプリケーションをインストールしたクラスターをクリックします。
 4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 このチュートリアルでは、**[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
-5. 削除するアプリケーションを右クリックし、 **[削除]**をクリックします。
+5. 削除するアプリケーションを右クリックし、 **[削除]** をクリックします。
 6. **[はい]** をクリックして確定します。
 
 ポータルからは、クラスターを削除したり、アプリケーションが含まれているリソース グループを削除したりすることもできます。

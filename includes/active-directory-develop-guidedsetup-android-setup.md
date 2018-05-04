@@ -1,7 +1,29 @@
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 0ed42e4ace17db1e681152589cc46d82c26dddff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
-代わりに、このサンプルの Android Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら、[構成手順](#create-an-application-express)に進んでサンプル コードを構成してから実行してください。
+代わりに、このサンプルの Android Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら、[構成手順](#register-your-application)に進んでサンプル コードを構成してから実行してください。
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する 
 1.  Android Studio を開き、**[File]\(ファイル\)** > **[New]\(新規\)** > **[New Project]\(新しいプロジェクト\)** を選択します。

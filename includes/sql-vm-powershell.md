@@ -7,9 +7,9 @@
 > 
 > 
 
-[**Add-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを実行すると、資格情報を入力するサインイン画面が表示されます。 Azure ポータルにサインインするときと同じ資格情報を使用してください。
+[**Connect-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを実行すると、資格情報を入力するサインイン画面が表示されます。 Azure ポータルにサインインするときと同じ資格情報を使用してください。
 
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
 
 複数のサブスクリプションがある場合は、[**Set-AzureRmContext**](http://msdn.microsoft.com/library/mt619263.aspx) コマンドレットを使用して、PowerShell セッションで使用するサブスクリプションを選択します。 PowerShell セッションが現在使用しているサブスクリプションを確認するには、[**Get-AzureRmContext**](http://msdn.microsoft.com/library/mt619265.aspx) を実行します。 すべてのサブスクリプションを表示するには、[**Get-AzureRmSubscription**](http://msdn.microsoft.com/library/mt619284.aspx) を実行します。
 

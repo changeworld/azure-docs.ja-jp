@@ -8,4 +8,4 @@ Azure App Service の Mobile Apps 機能は [Azure Notification Hubs] を使用�
 これで、通知ハブが Mobile Apps のバックエンド プロジェクトに接続されました。 後でこの通知ハブを構成して、デバイスにプッシュ通知を送信するプラットフォーム通知システム (PNS) に接続します。
 
 [Azure Portal]: https://portal.azure.com/
-[Azure Notification Hubs]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/
+[Azure Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-push-notification-overview/

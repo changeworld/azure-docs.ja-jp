@@ -2,23 +2,9 @@
   href: index.md
 - name: 概要
   items:
-    - name: Redis Cache を使用する理由
-      href: 'https://azure.microsoft.com/services/cache/'
-    - name: Premium レベルの機能を探索する
-      href: cache-premium-tier-intro.md
-    - name: シナリオ
-      items:
-        - name: キャッシュ内の項目にアクセスする
-          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#add-and-retrieve-objects-from-the-cache'
-        - name: 高可用性の構成
-          href: 'https://azure.microsoft.com/pricing/details/cache/'
-        - name: SSL を使用して安全に接続する
-          href: 'cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache'
-        - name: Managed Cache Service から移行する
-          href: cache-migrate-to-redis.md
-        - name: パターンおよびプラクティス キャッシュのガイダンス
-          href: ../best-practices-caching.md?toc=%2fazure%2fredis-cache%2ftoc.json
-- name: 作業開始
+    - name: Azure Redis Cache について
+      href: cache-overview.md
+- name: クイック スタート
   items:
     - name: ASP.NET
       href: cache-web-app-howto.md
@@ -30,9 +16,27 @@
       href: cache-java-get-started.md
     - name: Python
       href: cache-python-get-started.md
-    - name: Redis Cache の FAQ
-      href: cache-faq.md
-- name: 方法
+- name: チュートリアル
+  items:
+    - name: キャッシュ ランキング
+      href: cache-web-app-cache-aside-leaderboard.md
+- name: サンプル
+  items:
+    - name: Redis Cache のサンプル
+      href: cache-redis-samples.md
+    - name: Azure PowerShell
+      href: cache-howto-manage-redis-cache-powershell.md
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  items:
+    - name: ベスト プラクティス
+      items:
+        - name: Azure Redis Cache のベスト プラクティス
+          href: 'https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f'
+        - name: キャッシュに関する Azure アーキテクチャのベスト プラクティス
+          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+- name: ハウツー ガイド
   items:
     - name: プラン
       items:
@@ -72,6 +76,8 @@
           href: 'cache-administration.md#reboot'
         - name: 更新のスケジュール
           href: 'cache-administration.md#schedule-updates'
+        - name: redis-cli.exe アクセスの構成
+          href: cache-how-to-redis-cli-tool.md
     - name: 監視とトラブルシューティング
       items:
         - name: Azure Portal での監視
@@ -114,5 +120,9 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cache/'
-    - name: Redis Cache のサンプル
-      href: cache-redis-samples.md
+    - name: Redis Cache の FAQ
+      href: cache-faq.md
+    - name: ビデオ
+      href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc'

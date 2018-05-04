@@ -9,13 +9,13 @@ ms.service: virtual-network
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 仮想データセンター: ネットワークの観点
 **Microsoft Azure**: 移行の高速化、コストの削減、オンプレミスのアプリとデータの統合
@@ -97,7 +97,7 @@ vDC は、お客様、パートナー、社内ユーザーにサービスを提�
 ExpressRoute 接続のデプロイでは、ExpressRoute サービス プロバイダーと連携する必要があります。 短時間で使い始める必要がある場合は、通常、最初にサイト間 VPN を使って vDC とオンプレミスのリソースの間の接続を確立した後、ExpressRoute 接続に移行します。
 
 ##### <a name="connectivity-within-the-cloud"></a>*クラウド内の接続*
-[VNet][VNet] と [VNet ピアリング][VNetPeering] は、vDC 内の基本的なネットワーク接続サービスです。 VNet は vDC リソースの分離の自然な境界を保証し、VNet ピアリングは同じ Azure リージョン内の異なる VNet 間の相互通信を可能にします。 VNet 内および VNet 間のトラフィック制御では、アクセス制御リスト ([ネットワーク セキュリティ グループ][NSG])、[ネットワーク仮想アプライアンス][NVA]、およびカスタム ルーティング テーブル ([UDR][UDR]) によって指定されたセキュリティ ルールのセットを一致させる必要があります。
+[VNet][VNet] と [VNet ピアリング][VNetPeering] は、vDC 内の基本的なネットワーク接続サービスです。 VNet は vDC リソースの分離の自然な境界を保証し、VNet ピアリングは同じ Azure リージョン内あるいはリージョンをまたがる異なる VNet 間の相互通信を可能にします。 VNet 内および VNet 間のトラフィック制御では、アクセス制御リスト ([ネットワーク セキュリティ グループ][NSG])、[ネットワーク仮想アプライアンス][NVA]、およびカスタム ルーティング テーブル ([UDR][UDR]) によって指定されたセキュリティ ルールのセットを一致させる必要があります。
 
 ## <a name="virtual-data-center-overview"></a>仮想データ センターの概要
 
@@ -124,7 +124,7 @@ vDC は、複数のスポーク間で共有ハブ インフラストラクチャ
 ##### <a name="subscription-limits-and-multiple-hubs"></a>サブスクリプションの制限と複数のハブ
 Azure では、種類に関係なくすべてのコンポーネントが、Azure サブスクリプションにデプロイされます。 異なる Azure サブスクリプションに Azure コンポーネントを分離することで、差別化されたレベルのアクセスと承認の設定など、異なる LOB の要件を満たすことができます。
 
-1 つの vDC のスポークの数を増やすことができますが、他の IT システムと同様に、プラットフォームの制限があります。 ハブのデプロイは特定の Azure サブスクリプションにバインドされ、サブスクリプションには制限事項と上限があります (たとえば、VNet ピアリングの最大数、詳しくは「[Azure サブスクリプションとサービスの制限、クォータ、制約][Limits]」を参照)。 制限が問題になる可能性がある場合は、単一のハブとスポークからハブとスポークのクラスターにモデルを拡張することによって、アーキテクチャをさらに拡張できます。 1 つまたは複数の Azure リージョン内の複数のハブを、ExpressRoute またはサイト間 VPN を使って相互に接続できます。
+1 つの vDC のスポークの数を増やすことができますが、他の IT システムと同様に、プラットフォームの制限があります。 ハブのデプロイは特定の Azure サブスクリプションにバインドされ、サブスクリプションには制限事項と上限があります (たとえば、VNet ピアリングの最大数、詳しくは「[Azure サブスクリプションとサービスの制限、クォータ、制約][Limits]」を参照)。 制限が問題になる可能性がある場合は、単一のハブとスポークからハブとスポークのクラスターにモデルを拡張することによって、アーキテクチャをさらに拡張できます。 1 つまたは複数の Azure リージョン内の複数のハブを、VNet ピアリング、ExpressRoute またはサイト間 VPN を使って相互に接続できます。
 
 [![2]][2]
 
@@ -191,10 +191,10 @@ IT インフラストラクチャ チームの主要なタスクの 1 つは、�
 -   [**Virtual Network**][VPN]。 Virtual Network は、vDC の主要なコンポーネントの 1 つであり、Azure プラットフォーム上にトラフィックの分離境界を作成できるようにします。 Virtual Network は、1 つまたは複数の仮想ネットワーク セグメントで構成され、それぞれが特定の IP ネットワーク プレフィックス (サブネット) を持ちます。 Virtual Network では、IaaS 仮想マシンと PaaS サービスがプライベート通信を確立できる、内部の境界領域が定義されています。 ある仮想ネットワーク内のVM (および PaaS サービス) と異なる仮想ネットワーク内の VM (および PaaS サービス) は、両方の仮想ネットワークが同じ顧客によって同じサブスクリプション下で作成された場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
 -   [**UDR**][UDR]。 Virtual Network 内のトラフィックは、システム ルーティング テーブルに基づいて既定でルーティングされます。 ユーザー定義ルートはカスタム ルーティング テーブルであり、ネットワーク管理者はそれを 1 つまたは複数のサブネットに関連付けることで、システム ルーティング テーブルの動作を上書きし、仮想ネットワーク内の通信パスを定義することができます。 UDR が存在すると、スポークからのエグレス トラフィックが特定のカスタム VM を通過し、ネットワーク仮想アプライアンスとロード バランサーがハブとスポークに存在することが保証されます。
 -   [**NSG**][NSG]。 ネットワーク セキュリティ グループは、IP 送信元、IP 送信先、プロトコル、IP 送信元ポート、および IP 送信先ポートのフィルタリングとして動作するセキュリティ規則のリストです。 NSG は、サブネットと、Azure VM に関連付けられた仮想 NIC カードの、どちらか一方または両方に適用できます。 NSG は、ハブとスポークに正しいフロー制御を実装するうえで不可欠です。 NSG によって提供されるセキュリティのレベルは、どのポートをどのような目的で開くかによって決まります。 お客様は、IPtables や Windows ファイアウォールなどのホストベースのファイアウォールで、VM ごとの追加フィルターを適用する必要があります。
--   **DNS**。 vDC の VNet 内のリソースの名前解決は、DNS によって提供されます。 既定の DNS の名前解決の範囲は、VNet に制限されます。 通常、共通サービスの一部としてハブにカスタム DNS サービスをデプロイする必要がありますが、DNS サービスの主なコンシューマーはスポークに存在します。 必要に応じて、お客様はスポークへの DNS ゾーンの委任で階層的な DNS 構造を作成できます。
+-   [**DNS**][DNS]。 vDC の VNet 内のリソースの名前解決は、DNS によって提供されます。 Azure は、 [パブリック][DNS]と[プライベート][PrivateDNS]の両方の名前解決に DNS サービスを提供します。 プライベート ゾーンは、仮想ネットワーク内での名前解決と仮想ネットワーク間での名前解決を両方提供します。 プライベート ゾーンは、同じリージョンの複数の仮想ネットワークをまたぐだけでなく、複数のリージョンおよびサブスクリプションをまたぐことができます。 パブリック解決の場合、Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 -   [**サブスクリプション][SubMgmt]と[リソース グループ管理][RGMgmt]**。 サブスクリプションでは、Azure にリソースの複数のグループを作成する自然な境界が定義されています。 サブスクリプション内のリソースは、リソース グループと呼ばれる論理コンテナーにまとめられています。 リソース グループは、vDC のリソースを整理するための論理グループを表します。
 -   [**RBAC**][RBAC]。 RBAC を使うと、組織のロールと特定の Azure リソースにアクセスするための権限をマップすることができ、ユーザーをアクションの特定のサブセットのみに制限することができます。 RBAC では、関連するスコープ内のユーザー、グループ、アプリケーションに適切なロールを割り当てることで、アクセス権を付与できます。 ロール割り当てのスコープには、Azure サブスクリプション、リソース グループ、または単独のリソースを指定できます。 RBAC では、アクセス許可を継承できます。 親スコープでロールが割り当てられると、その親に含まれる子へのアクセス権も付与されます。 RBAC を使って、職務を分離し、職務に必要なアクセス許可のみをユーザーに付与することができます。 たとえば、RBAC を使って、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL DB を管理できるようにします。
--   [**VNet ピアリング**][VNetPeering]。 vDC のインフラストラクチャの作成に使われる基本的な機能は、VNet ピアリングです。これは、Azure データ センターのネットワークを介して同じリージョンの 2 つの仮想ネットワーク (VNet) を接続するメカニズムです。
+-   [**VNet ピアリング**][VNetPeering]。 vDC のインフラストラクチャの作成に使われる基本的な機能は、VNet ピアリングです。これは、Azure データ センターのネットワークを介して、あるいはリージョンをまたがる Azure の世界規模のバックボーンを使用して、同じリージョンの 2 つの仮想ネットワーク (VNet) を接続するメカニズムです。
 
 #### <a name="component-type-perimeter-networks"></a>コンポーネントの種類: 境界ネットワーク
 [境界ネットワーク][DMZ] コンポーネント (DMZ ネットワークとも呼ばれます) を使うと、オンプレミス ネットワークまたは物理データ センター ネットワークとのネットワーク接続、およびインターネットとの間の双方向の接続を提供できます。 このコンポーネントは、ネットワークおよびセキュリティ チームが最も多くの時間を費やす場所でもあります。
@@ -244,6 +244,8 @@ Azure Load Balancer は、さまざまなサーバー インスタンスの正�
 
 Azure では、Azure がホストするリソースの動作を追跡するために、さまざまな種類のログ サービスと監視サービスが提供されています。 Azure でのワークロードのガバナンスと制御は、ログ データの収集だけでなく、報告された特定のイベントに基づいてアクションをトリガーする機能も基になっています。
 
+[**Azure Monitor**][Monitor] - Azure には、監視領域において特定の役割やタスクを個別に実行するサービスが複数用意されています。 また、これらのサービスが組み合わされた包括的なソリューションを使用すれば、アプリケーションやそれらのサービスを支える Azure リソースからテレメトリを収集、分析し、それに基づいて対処できます。 また、オンプレミスの重要なリソースを監視して、ハイブリッド監視環境を構築することもできます。 アプリケーションの包括的な監視戦略を策定するための最初のステップは、利用可能なツールとデータの把握です。
+
 Azure の主要なログの種類は次の 2 つです。
 
 -   [**アクティビティ ログ**][ActLog] ("操作ログ" とも呼ばれます) では、Azure サブスクリプションのリソースに対して実行された操作を調査できます。 これらのログは、サブスクリプションのコントロールプレーン イベントを報告します。 すべての Azure リソースで監査ログが生成されます。
@@ -259,9 +261,11 @@ vDC では、NSG ログの特に次の情報を追跡することが非常に重
 
 監査、スタティック分析、またはバックアップのために、すべてのログを Azure Storage アカウントに格納できます。 Azure Storage アカウントにログが保存されていると、ユーザーはさまざまな種類のフレームワークを使ってこのデータを取得、準備、分析、視覚化し、クラウド リソースの状態と正常性を報告できます。
 
-大規模な企業は、オンプレミス システムの監視用に標準的なフレームワークを既に利用しているはずであり、そのフレームワークを拡張してクラウドのデプロイによって生成されたログを統合することができます。 すべてのログ記録をクラウド内の保持したい場合は、[Log Analytics][LogAnalytics] が最適です。 Log Analytics はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 Log Analytics は、System Center Operations Manager などの System Center のコンポーネントと統合して、管理のための既存の投資をクラウドに拡張することもできます。
+大規模な企業は、オンプレミス システムの監視用に標準的なフレームワークを既に利用しているはずであり、そのフレームワークを拡張してクラウドのデプロイによって生成されたログを統合することができます。 すべてのログ記録をクラウド内の保持したい場合は、[LogAnalytics] が最適です。 Log Analytics はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 Log Analytics は、System Center Operations Manager などの System Center のコンポーネントと統合して、管理のための既存の投資をクラウドに拡張することもできます。
 
 Log Analytics は、オペレーティング システム、アプリケーション、インフラストラクチャ クラウド コンポーネントによって生成されたログおよびパフォーマンス データを収集、関連付け、検索、操作するための、Azure のサービスです。 統合された検索およびカスタム ダッシュ ボードを使って、vDC のすべてのワークロードのすべてのレコードを分析するためのリアルタイムの運用インサイトを提供します。
+
+OMS 内の[ネットワーク パフォーマンス モニター (NPM)][NPM] ソリューションは、Azure ネットワークとオンプレミスのネットワークの 1 つのビューを含む、ネットワークの詳細情報をエンド ツー エンドで提供できます。 ExpressRoute および公開サービス用の特定のモニター。
 
 #### <a name="component-type-workloads"></a>コンポーネントの種類: ワークロード
 ワークロード コンポーネントは、実際のアプリケーションとサービスが存在する場所です。 アプリケーション開発チームはここで最も多くの時間を費やします。
@@ -276,7 +280,7 @@ Log Analytics は、オペレーティング システム、アプリケーシ�
 -   **データ駆動**。 LOB アプリケーションは、データベースまたは他の記憶域に頻繁にアクセスするデータ集中的なアプリケーションです。
 -   **統合**。 LOB アプリケーションは組織の内外の他のシステムとの統合を提供します。
 
-**顧客向け Web サイト (インターネットまたは内部接続)** インターネットと対話するほとんどのアプリケーションは Web サイトです。 Azure は、IaaS VM 上または [Azure Web Apps][WebApps] サイト (PaaS) から Web サイトを実行する機能を提供します。 Azure Web Apps は VNet との統合をサポートし、vDC のスポークに Web アプリをデプロイできます。 VNet 統合では、アプリケーション用にインターネット エンドポイントを公開する必要はありませんが、代わりにプライベート VNet からリソースのプライベートなインターネットではないルーティング可能アドレスを使うことができます。
+**顧客向け Web サイト (インターネットまたは内部接続)** インターネットと対話するほとんどのアプリケーションは Web サイトです。 Azure は、IaaS VM 上または [Azure Web Apps][WebApps] サイト (PaaS) から Web サイトを実行する機能を提供します。 Azure Web Apps は VNet との統合をサポートし、vDC のスポークに Web アプリをデプロイできます。 社内向け Web サイトの場合、VNet 統合では、アプリケーション用にインターネット エンドポイントを公開する必要はありませんが、代わりにプライベート VNet からリソースのプライベートなインターネットではないルーティング可能アドレス経由でリソースを使うことができます。
 
 **ビッグ データ/分析** データを膨大な量に拡張する必要がある場合、データベースが正しくスケールアップしないことがあります。 Hadoop テクノロジは、多数のノードで分散クエリを並列に実行するシステムを提供します。 ユーザーは、データ ワークロードを IaaS VM または PaaS ([HDInsight][HDI]) で実行することを選択できます。 HDInsight は、場所ベースの VNet へのデプロイをサポートし、vDC のスポーク内のクラスターにデプロイできます。
 
@@ -308,11 +312,12 @@ vDC がホストされている Azure リージョンは、組織が運営され
 
 異なる vDC 内のアプリケーションの同期またはハートビート監視には、それらの間での通信が必要です。 異なるリージョン内の 2 つの vDC は、次の方法で接続できます。
 
+-   VNet ピアリング - VNet ピアリングはリージョンをまたいでハブを接続できます
 -   vDC ハブが同じ ExpressRoute 回線に接続されている場合、ExpressRoute のプライベート ピアリング
 -   企業バックボーン経由で接続されている複数の ExpressRoute 回線と、ExpressRoute 回線に接続された vDC メッシュ
 -   各 Azure リージョン内の vDC ハブ間のサイト間 VPN 接続
 
-通常は、Microsoft バックボーンを介して送信されるときの高い帯域幅と一貫した待機時間のため、ExpressRoute 接続が推奨されるメカニズムです。
+Microsoft バックボーン経由の通過では、高い帯域幅と一貫性のある待ち時間のため、VNet ピアリングまたは ExpressRoute の接続が通常は好ましいメカニズムです。
 
 異なるリージョンに存在する 2 つ (またはそれ以上) の異なる vDC 間に分散されたアプリケーションを検証する簡単な方法はありません。 ユーザーは、ネットワーク認定テストを実行し、接続の待機時間と帯域幅を検証して、同期または非同期どちらのデータ レプリケーションが適切か、およびワークロードに対して最適な目標復旧時間 (RTO) を決定する必要があります。
 
@@ -330,9 +335,9 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 | | | |
 |-|-|-|
 |ネットワーク機能|負荷分散|接続|
-|[Azure Virtual Network][VNet]</br>[ネットワーク セキュリティ グループ][NSG]</br>[NSG ログ][NSGLog]</br>[ユーザー定義ルーティング][UDR]</br>[ネットワーク仮想アプライアンス][NVA]</br>[Public IP Addresses][PIP]|[Azure Load Balancer (L3) ][ALB]</br>[Application Gateway (L7) ][AppGW]</br>[Web アプリケーション ファイアウォール][WAF]</br>[Azure Traffic Manager][TM] |[VNet ピアリング][VNetPeering]</br>[仮想プライベート ネットワーク][VPN]</br>[ExpressRoute][ExR]
+|[Azure Virtual Network][VNet]</br>[ネットワーク セキュリティ グループ][NSG]</br>[NSG ログ][NSGLog]</br>[ユーザー定義ルーティング][UDR]</br>[ネットワーク仮想アプライアンス][NVA]</br>[Public IP Addresses][PIP]</br>[DNS]|[Azure Load Balancer (L3) ][ALB]</br>[Application Gateway (L7) ][AppGW]</br>[Web アプリケーション ファイアウォール][WAF]</br>[Azure Traffic Manager][TM] |[VNet ピアリング][VNetPeering]</br>[仮想プライベート ネットワーク][VPN]</br>[ExpressRoute][ExR]
 |ID</br>|監視</br>|ベスト プラクティス</br>|
-|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[ロールベースのアクセス制御][RBAC]</br>[既定の AAD ロール][Roles] |[アクティビティ ログ][ActLog]</br>[診断ログ][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[境界ネットワークのベスト プラクティス][DMZ]</br>[サブスクリプション管理][SubMgmt]</br>[リソース グループの管理][RGMgmt]</br>[Azure サブスクリプションの制限][Limits] |
+|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[ロールベースのアクセス制御][RBAC]</br>[既定の AAD ロール][Roles] |[Azure Monitor][Monitor]</br>[アクティビティ ログ][ActLog]</br>[診断ログ][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br>[Network Performance Monitor][NPM]|[境界ネットワークのベスト プラクティス][DMZ]</br>[サブスクリプション管理][SubMgmt]</br>[リソース グループの管理][RGMgmt]</br>[Azure サブスクリプションの制限][Limits] |
 |その他の Azure サービス|
 |[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
@@ -358,12 +363,14 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits
-[Roles]: https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles
+[Roles]: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 [VNet]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview
-[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg 
+[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg
+[DNS]: https://docs.microsoft.com/azure/dns/dns-overview
+[PrivateDNS]: https://docs.microsoft.com/azure/dns/private-dns-overview
 [VNetPeering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview 
 [UDR]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview 
-[RBAC]: https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is
+[RBAC]: https://docs.microsoft.com/azure/role-based-access-control/overview
 [MFA]: https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication
 [AAD]: https://docs.microsoft.com/azure/active-directory/active-directory-whatis
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways 
@@ -376,10 +383,12 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 [PIP]: https://docs.microsoft.com/azure/virtual-network/resource-groups-networking#public-ip-address
 [AppGW]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [WAF]: https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview
+[Monitor]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
+[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[NPM]: https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

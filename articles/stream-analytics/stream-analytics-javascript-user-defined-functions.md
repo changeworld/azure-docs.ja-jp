@@ -1,22 +1,36 @@
 ---
-title: Azure Stream Analytics での JavaScript ユーザー定義関数
-description: この記事では、Azure Stream Analytics で JavaScript ユーザー定義関数を使って高度なクエリ機構を実行する方法を説明します。
+title: 'チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数 | Microsoft Docs '
+description: このチュートリアルでは、JavaScript ユーザー定義関数を使用して高度なクエリ機構を実行します
+keywords: JavaScript、ユーザー定義関数、UDF
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: SnehaGunda
 manager: kfile
-ms.reviewer: jasonh
+ms.assetid: ''
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 462bd55dfae3a2c471d1111637a6de0bc95e6bfa
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: tutorial
+ms.reviewer: jasonh
+ms.custom: mvc
+ms.date: 04/01/2018
+ms.workload: data-services
+ms.author: sngun
+ms.openlocfilehash: f3a94017b95eb614669fa42594fe3a3499c74be7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Azure Stream Analytics の JavaScript ユーザー定義関数
+# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数
+
 Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String**、**RegExp**、**Math**、**Array**、**Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
+
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * JavaScript ユーザー定義関数を定義する
+> * ポータルに関数を追加する
+> * 関数を実行するクエリを定義する
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="javascript-user-defined-functions"></a>JavaScript ユーザー定義関数
 JavaScript ユーザー定義関数は、外部との接続を必要としない、ステートレスの計算のみのスカラー関数をサポートします。 関数の戻り値には、スカラー (単一) 値のみを指定できます。 ジョブに JavaScript ユーザー定義関数を追加した後は、組み込みのスカラー関数と同様に、クエリ内の任意の場所で関数を使用できます。
@@ -133,12 +147,19 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
+
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。  
+2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
+このチュートリアルでは、単純な JavaScript ユーザー定義関数を実行する Stream Analytics ジョブを作成しました。 Stream Analytics についてさらに学習するには、以下のリアルタイム シナリオの記事に進んでください。
+
+> [!div class="nextstepaction"]
+> [Azure Stream Analytics でのリアルタイム Twitter 感情分析](stream-analytics-twitter-sentiment-analysis-trends.md)

@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate の依存関係の視覚化 | Microsoft Docs"
-description: "Azure Migrate サービスにおけるアセスメントの計算の概要を説明します。"
+title: Azure Migrate の依存関係の視覚化 | Microsoft Docs
+description: Azure Migrate サービスにおけるアセスメントの計算の概要を説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d075ce9ee124d373a1284577324a50338245a03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -24,7 +24,7 @@ Azure Migrate の依存関係の視覚化を使用すると、自信を持って
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
 Azure Migrate は、依存関係の視覚化のために [Log Analytics](../log-analytics/log-analytics-overview.md) の [Service Map](../operations-management-suite/operations-management-suite-service-map.md) ソリューションを使用します。
-- Azure Migrate プロジェクトを作成すると、サブスクリプションに OMS Log Analytics ワークスペースが作成されます。
+- Azure Migrate プロジェクトを作成すると、サブスクリプションに Log Analytics ワークスペースが作成されます。
 - ワークスペース名は、移行プロジェクト用に指定した名前です。先頭に **migrate-** と、状況に応じて末尾に番号が付きます。 
 - プロジェクトの **[概要]** ページの **[基本]** セクションから Log Analytics ワークスペースに移動します。
 - 作成されるワークスペースには、**MigrateProject** というキーと、**プロジェクト名**の値がタグに設定されます。 Azure Portal での検索にこれらの情報を使用できます。  

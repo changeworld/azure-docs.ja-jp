@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ea48300e83e1faa1250d2fba7c37a82825c820f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -310,7 +310,7 @@ Machine Learning Center には継続的に新しい資料が追加されます�
 
 **どのようにして Azure Machine Learning のサポートを受けることができますか。**
 
-Azure Machine Learning のテクニカル サポートを受けるには、[Azure のサポート](/support/options/) ページにアクセスし、**[Machine Learning]**を選択します。
+Azure Machine Learning のテクニカル サポートを受けるには、[Azure のサポート](/support/options/) ページにアクセスし、**[Machine Learning]** を選択します。
 
 MSDN にも、Azure Machine Learning に関するコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。 このフォーラムは Azure Machine Learning チームが監視しています。 Azure フォーラムには[こちら](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)からアクセスできます。
 
@@ -372,7 +372,7 @@ Machine Learning の Free レベルでは、別個のストレージは必要あ
 
 **Machine Learning では高可用性がサポートされますか?**
 
-はい。 詳細については、「[Machine Learning の価格](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)」のサービス レベル アグリーメント (SLA) に関する説明をご覧ください。
+はい。 詳細については、「[Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」のサービス レベル アグリーメント (SLA) に関する説明をご覧ください。
 
 **実稼働 API 呼び出しの実行には、どのような種類のコンピューティング リソースが使用されますか?**
 

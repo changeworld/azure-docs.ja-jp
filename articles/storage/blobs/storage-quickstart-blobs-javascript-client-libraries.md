@@ -1,5 +1,5 @@
 ---
-title: ブラウザーで JavaScript と HTML を使用して Azure Storage で BLOB をアップロード、一覧表示、および削除する
+title: Azure クイック スタート - ブラウザーで JavaScript と HTML を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
 description: BlobService のインスタンスを使用し、HTML ページで JavaScript を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
 keywords: ストレージ, JavaScript, HTML
@@ -10,23 +10,18 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 83db6539e6ad8ec8e18d99bf7eedbc037d95509e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-with-azure-storage-using-javascripthtml-in-the-browser"></a>クイック スタート: ブラウザーで JavaScript/HTML を使用して Azure Storage で BLOB をアップロード、一覧表示、および削除する
-このクイック スタートでは、ブラウザーで全体を実行されるコードで BLOB を管理する方法と、BLOB ストレージ アカウントへのアクセスを保護するために必要なセキュリティ対策を示します。 このクイック スタートを完了するには、[Azure サブスクリプション](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)が必要です。
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>クイック スタート: ブラウザーで JavaScript と HTML を使用して BLOB をアップロード、一覧表示、および削除する
+このクイック スタートでは、すべてブラウザー内で実行されるコードを使用して BLOB を管理する方法を示します。 ここで使用されている方法は、必要なセキュリティ対策を使用して BLOB ストレージ アカウントへの保護されたアクセスを確保する方法を示しています。 このクイック スタートを完了するには、[Azure サブスクリプション](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)が必要です。
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
-### <a name="copy-security-settings"></a>セキュリティ設定をコピーする
-このクイック スタートでは、セキュリティ トークンを作成するために、セキュリティ関連のいくつかの値が必要です。 後で使用するために、ポータルで値をテキスト エディターにコピーしておくことができます。 
-
-ポータルでストレージ アカウントを選択し、**[設定]** セクションを探します。 [設定] で **[アクセス キー]** を選択し、**[key1]** 見出しの下の **[ストレージ アカウント名]** と **[キー]** の値を控えておきます  (入力ボックスの右側の [コピー] ボタンを使用すると、値をクリップボードにコピーすることができます)。
 
 ## <a name="setting-up-storage-account-cors-rules"></a>ストレージ アカウントの CORS ルールの設定 
 Web アプリケーションがクライアントから BLOB ストレージにアクセスできるようにするには、[クロス オリジン リソース共有](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にするようにアカウントを構成する必要があります。 
@@ -55,7 +50,7 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 ## <a name="create-a-shared-access-signature"></a>Shared Access Signature を作成する
 Shared Access Signature (SAS) は、ブラウザーで実行されているコードによって、BLOB ストレージへの要求を認証するために使用されます。 SAS を使用すると、クライアントはアカウント アクセス キーまたは接続文字列がなくても、認証を受けることができます。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-Azure Cloud Shell を介して Azure CLI を使用して、SAS を作成することができます。 次の表は、SAS を生成するために値を指定する必要があるパラメーターを示しています。
+Azure Cloud Shell を介して Azure CLI を使用するか、Azure Storage Explorer を使用して、SAS を作成することができます。 次の表は、CLI を使用して SAS を生成するために値を指定する必要があるパラメーターを示しています。
 
 | パラメーター      |[説明]  | Placeholder |
 |----------------|-------------|-------------|
@@ -121,7 +116,7 @@ npm i http-server
 npm start
 ```
 
-### <a name="get-the-blob-storage-client-scripts"></a>BLOB ストレージ クライアント スクリプトを取得する
+### <a name="get-the-blob-storage-client-library"></a>BLOB ストレージ クライアント ライブラリを取得する
 [JavaScript クライアント ライブラリをダウンロード](https://aka.ms/downloadazurestoragejs)し、zip の内容を展開して、*bundle* フォルダー内のスクリプト ファイルを *scripts* という名前のフォルダーに配置します。
 
 ### <a name="add-the-client-script-reference-to-the-page"></a>クライアント スクリプト参照をページに追加する
@@ -153,7 +148,7 @@ npm start
 - ファイルをアップロードするために使用される *INPUT* 要素
 - ストレージ固有のコードのためのプレースホルダー
 
-### <a name="create-a-blob-service"></a>BLOB サービスを作成する 
+### <a name="create-an-instance-of-blobservice"></a>BlobService のインスタンスを作成する 
 [BlobService](https://azure.github.io/azure-storage-node/BlobService.html) は、Azure Blob Storage へのインターフェイスを提供します。 サービスのインスタンスを作成するには、ストレージ アカウント名と、前の手順で生成された SAS を指定する必要があります。
 
 ```javascript
@@ -184,7 +179,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>BLOB をアップロードする
-HTML フォームから BLOB をアップロードするには、まず、*type* が *file* に設定されている *INPUT* 要素の `files` 配列を通じて、選択したファイルへの参照を取得します。
+HTML フォームから BLOB をアップロードするには、選択されたファイルへの参照を *INPUT* 要素から取得します。 選択されたファイルは、要素の *type* が *file* に設定されているときに `files` 配列を介して取得できます。
 
 スクリプトから HTML 要素を参照し、選択したファイルを BLOB サービスに渡すことができます。
 
@@ -227,6 +222,9 @@ document.getElementById('list-button').addEventListener('click', () => {
     
 });
 ```
+
+*listBlobsSegmented* メソッドは、BLOB のコレクションを返します。 既定のコレクションの数量は 5,000 BLOB ですが、必要に応じてこの値を調整することができます。 [継続のサンプル](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132)に、多数の BLOB を処理する方法と、クライアント ライブラリでページングがサポートされる方法が示されています。 
+
 
 ### <a name="delete-blobs"></a>BLOB を削除する
 [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor) を呼び出して、アップロードした BLOB を削除できます。

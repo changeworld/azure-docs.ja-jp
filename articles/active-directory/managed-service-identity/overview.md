@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6b62baf1fdad6e08535b13f2ca461b00156a7f14
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
@@ -32,14 +32,14 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 
 管理対象サービス ID が Azure Virtual Machines で動作する方法の例を次に示します。
 
-![仮想マシン MSI の例](../media/msi-vm-example.png)
+![仮想マシン MSI の例](../media/msi-vm-imds-example.png)
 
-1. Azure Resource Manager は、VM で MSI を有効にするメッセージを受け取ります。
+1. Azure Resource Manager は、VM で管理対象サービス ID (MSI) を有効にするためのメッセージを受け取ります。
 2. Azure Resource Manager は、Azure AD で VM の ID を表すサービス プリンシパルを作成します。 このサブスクリプションによって信頼されている Azure AD テナントで、サービス プリンシパルが作成されます。
-3. Azure Resource Manager は、VM の MSI VM 拡張機能でサービス プリンシパルの詳細を構成します。  この手順には、拡張機能で使用されるクライアント ID と証明書を構成して、Azure AD からアクセス トークンを取得することが含まれます。
-4. これで、VM のサービス プリンシパル ID が認識され、Azure リソースへのアクセスを付与することができます。  たとえば、コードが Azure Resource Manager を呼び出す必要がある場合、Azure AD でロールベースのアクセス制御 (RBAC) を使用して、VM のサービス プリンシパルに適切な役割を割り当てることができます。  コードが Key Vault を呼び出す必要がある場合、Key Vault 内の特定のシークレットまたはキーへのアクセスをコードに付与します。
-5. VM で実行されているコードは、次のように MSI VM 拡張機能によってホストされているローカル エンドポイントからトークンを要求します: http://localhost:50342/oauth2/token。  リソース パラメーターは、トークンの送信先のサービスを指定します。 たとえば、Azure Resource Manager に認証するようにコードを設定する場合は、resource=https://management.azure.com/ を使用します。
-6. MSI VM 拡張機能は、構成したクライアント ID と証明書を使用して Azure AD からアクセス トークンを要求します。  Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
+3. Azure Resource Manager は、VM の Azure Instance Metadata Service で VM のサービス プリンシパルの詳細を構成します。 この手順には、Azure AD からアクセス トークンを取得するために使用されるクライアント ID と証明書の構成が含まれます。 *注: MSI IMDS エンドポイントで、現在の MSI VM 拡張機能エンドポイントが置き換えられます。この変更の詳細については、FAQ と既知の問題のページを参照してください。*
+4. これで、VM のサービス プリンシパル ID が認識され、Azure リソースへのアクセスを付与することができます。 たとえば、コードが Azure Resource Manager を呼び出す必要がある場合、Azure AD でロールベースのアクセス制御 (RBAC) を使用して、VM のサービス プリンシパルに適切な役割を割り当てることができます。  コードが Key Vault を呼び出す必要がある場合、Key Vault 内の特定のシークレットまたはキーへのアクセスをコードに付与します。
+5. VM で実行されているコードでは、http://169.254.169.254/metadata/identity/oauth2/token のように、VM 内からのみアクセス可能な、Azure Instance Metadata Service (IMDS) MSI エンドポイントからトークンを要求します。 リソース パラメーターは、トークンの送信先のサービスを指定します。 たとえば、Azure Resource Manager に認証するようにコードを設定する場合は、resource=https://management.azure.com/ を使用します。
+6. Azure Instance Metadata は、VM のクライアント ID と証明書を使用して、Azure AD からアクセス トークンを要求します。 Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
 7. コードは、Azure AD 認証をサポートするサービスへの呼び出しでアクセス トークンを送信します。
 
 管理対象サービス ID をサポートする各 Azure サービスには、アクセス トークンを取得するためのコードの独自のメソッドがあります。 トークンを取得する特定のメソッドを検索するには、各サービスのチュートリアルをご覧ください。

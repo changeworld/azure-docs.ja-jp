@@ -1,19 +1,19 @@
 ---
-title: Azure クイック スタート - Azure Storage Explorer を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
-description: このクイック スタートでは、Azure Storage Explorer を使用して、ストレージ アカウントおよびコンテナーを作成します。 その後、Storage Explorer を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: Azure クイック スタート - Azure Storage Explorer を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+description: このクイック スタートでは、オブジェクト (BLOB) ストレージで Azure Storage Explorer を使用します。 その後、Storage Explorer を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 176d2fffa9f9e3c43a4e5c922aed58cebdbe2b1d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>クイック スタート: Azure Storage Explorer を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

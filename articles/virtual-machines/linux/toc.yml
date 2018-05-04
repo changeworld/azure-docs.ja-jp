@@ -110,6 +110,8 @@
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: 書き込みアクセラレータを有効にする方法
+          href: how-to-enable-write-accelerator.md
         - name: アタッチされた VHD のトラブルシューティング
           href: troubleshoot-vhds.md
     - name: ネットワーク
@@ -183,6 +185,8 @@
           href: move-vm.md
         - name: VM サイズの変更
           href: change-vm-size.md
+        - name: OS ディスクの交換
+          href: os-disk-swap.md
         - name: VM にタグを付ける
           href: tag.md
         - name: VM でのスクリプトの実行

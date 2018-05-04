@@ -10,23 +10,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 3121de4fdcd9814bae2956e6bdfa580d54ffca92
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9336de3e244f7a7373f7c1ca3ac8eedd06473d3c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>.NET Core (C#) を使用して Azure SQL データベースに照会する
 
-このクイック スタート チュートリアルでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータを照会する C# プログラムを Windows/Linux/macOS 上の [.NET Core](https://www.microsoft.com/net/) で作成する方法について説明します。
+このクイック スタートでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータを照会する C# プログラムを Windows/Linux/macOS 上の [.NET Core](https://www.microsoft.com/net/) を使って作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタート チュートリアルを完了するには、以下のものが必要です。
+このクイック スタートを完了するには、以下のものが必要です。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
 - [ご使用のオペレーティング システムの .NET Core](https://www.microsoft.com/net/core) をインストール済みであること。 
 

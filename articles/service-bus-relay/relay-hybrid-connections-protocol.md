@@ -1,11 +1,11 @@
 ---
-title: "Azure Relay ハイブリッド接続プロトコル ガイド | Microsoft Docs"
-description: "Azure Relay ハイブリッド接続プロトコル ガイド。"
+title: Azure Relay ハイブリッド接続プロトコル ガイド | Microsoft Docs
+description: Azure Relay ハイブリッド接続プロトコル ガイド。
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 43c40baa74b3f7c1f5c9d6626b25bcd45c2f9a10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1979746d143dbf8c3f4bca3f9a3a7925fe8e3f0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay ハイブリッド接続プロトコル
-Azure Relay は、Azure Service Bus プラットフォームの柱となる重要な機能の 1 つです。 Relay の新しい*ハイブリッド接続*は、HTTP と WebSocket をベースにして進化を遂げた、安全でオープンなプロトコルです。 従来の *BizTalk Services* には、独自技術のプロトコル基盤をベースに構築された同じ名前の機能がありますが、その機能の後継となります。 Azure App Services に統合されたハイブリッド接続は、引き続き現状のままご利用いただけます。
+Azure Relay は、Azure Service Bus プラットフォームの柱となる重要な機能の 1 つです。 Relay の新しい*ハイブリッド接続*は、HTTP と WebSocket をベースにして進化を遂げた、安全でオープンなプロトコルです。 従来の *BizTalk Services* には、独自技術のプロトコル基盤をベースに構築された同様の名前の機能がありますが、その機能の後継となります。 Azure App Services に統合されたハイブリッド接続は、引き続き現状のままご利用いただけます。
 
 ハイブリッド接続を使用すると、ネットワークで結ばれた 2 つのアプリケーション間に双方向のバイナリ ストリーム通信を確立できます。アプリケーションは、自分側または相手側にある NAT やファイアウォールを越えて相手に接続することができます。 この記事では、リスナーのクライアントとセンダーのロールを接続するためのハイブリッド接続リレーでのクライアント側の対話と、リスナーが新しい接続を受け入れる方法について説明します。
 
@@ -43,7 +43,7 @@ Azure Relay は、Azure Service Bus プラットフォームの柱となる重�
 この WebSocket がサービスによって許可されると、登録が完了し、確立された WebSocket が "コントロール チャネル" として待機状態になり、以後すべての対話処理が可能となります。 このサービスでは、1 つのハイブリッド接続に対して最大 25 のリスナーを同時に設定することができます。 アクティブなリスナーが複数存在する場合、それらのリスナー間で受信接続が負荷分散されます。使用されるリスナーの順序は無作為に決まり、必ずしも均等に負荷分散されるわけではありません。
 
 #### <a name="accept"></a>Accept
-センダーがサービスに対して新しい接続を開くと、サービスは、ハイブリッド接続上のいずれかのアクティブなリスナーを選んで通知を送ります。 この通知は、開いているコントロール チャネルを介し、JSON メッセージとしてリスナーに送信されます。JSON メッセージには、接続を受け入れる場合にリスナーが接続すべき WebSocket エンドポイントの URL が格納されます。
+センダーがサービスに対して新しい接続を開くと、サービスは、ハイブリッド接続上のいずれかのアクティブなリスナーを選んで通知を送ります。 この通知は、開いているコントロール チャネルを介し、JSON メッセージとしてリスナーに送信されます。JSON メッセージには、接続を受け入れるためにリスナーが接続すべき WebSocket エンドポイントの URL が格納されます。
 
 この URL は、特別な処理を施さずに直接リスナーが使用できます。つまり、リスナーはその URL をそのまま使用する必要があります。
 エンコードされた情報の有効期間は限られています。基本的には、エンド ツー エンドで接続が確立されるまでにセンダー側で許容される待機時間に依存しますが、30 秒が上限です。 この URL を使って接続を確立できるのは 1 回のみです。 ランデブー URL との間で WebSocket 接続が確立されると、以後センダーとの間でやり取りされるすべてのアクティビティがその WebSocket で中継されます。サービスによる介入や中間処理は一切不要です。

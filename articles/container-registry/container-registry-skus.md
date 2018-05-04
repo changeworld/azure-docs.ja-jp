@@ -3,16 +3,16 @@ title: Azure Container Registry SKU
 description: Azure Container Registry で使用可能なさまざまなサービス階層の比較
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: c9b8e072b5ccd89c27d9c46407e472d6bf1e1e84
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a8dcc6fc60b80a19c4edebd57fdad5bb10cfdd0b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
 

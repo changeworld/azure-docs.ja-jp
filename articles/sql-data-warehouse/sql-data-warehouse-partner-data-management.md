@@ -1,40 +1,35 @@
 ---
-title: "SQL Data Warehouse データ管理パートナー | Microsoft Docs"
-description: "SQL Data Warehouse をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。"
+title: SQL Data Warehouse データ管理パートナー | Microsoft Docs
+description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: c3d96b41-f049-49e8-af32-408f4a893477
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: partners
-ms.date: 12/27/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: 2fc8d1876e8a26252e83928857f5e7e9bf6ad47f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: d29ccd2d4dce1d1550bac5b5ab97bb44c9960ed6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>SQL Data Warehouse データ管理パートナー
-エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
+データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ管理ツールおよびソリューションを提供している Microsoft パートナー企業について説明しています。
 
-## <a name="our-data-management-partners"></a>データ管理パートナー
-| パートナー | Description | リンク | ビデオ |
+## <a name="data-management-partners"></a>データ管理パートナー
+| パートナー | [説明] | リンク | ビデオ |
 | --- | --- | --- | --- |
 | ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing は、クエリ実行システムに特化された設計で、10 年の実績があるツール、Nexus Chameleon を提供しています。 Nexus は SQL Data Warehouse のクエリ ツールとして使用できます。 Nexus を使用することで、社内およびクラウド コンピューターにクエリを実行し、異種プラットフォーム間でデータを結合できます。 ポイントしてクリックするだけでレポートが生成されます。 |[Marketplace][coffing_marketplace]<br>[Web サイト][coffing_website]<br>[プレス リリース][coffing_press]<br>[Twitter][coffing_twitter]<br>[YouTube][coffing_youtube] |[![coffing ビデオ](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc) |
 | ![Inbrein][2] |**MicroERD**<br>Inbrein MicroERD は、精密なデータ モデルの作成、データの冗長性の削減、生産性向上、および標準の遵守に必要なツールを提供します。 広範なユーザー エクスペリエンスに基づいて開発されたこのツールの UI を使用することで、モデル作成者は容易かつ使い勝手よく DB モデルに取り組むことができます。 プロンプト機能の向上と更新により、MicroERD の強化された新機能を途切れることなく利用できます。 |[Web サイト][inbrein_website]<br>[データシート][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![inbrein ビデオ](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
-| ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian は、メタデータをカタログ化、格納、および管理することにより、データ管理に関する重要課題の解決を支援します。 また、メタデータ管理、データ ガバナンス、および資産管理のソフトウェア ソリューションを提供することで、多種多様なツールとテクノロジの組み合わせにおいてメタデータを管理したり公開したりできるようにします。 |[Marketplace][infolibrarian_marketplace]<br>[Web サイト][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![infolibrarian ビデオ](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
-| ![Redpoint Global][4] |**RedPoint Interaction**<br>RedPoint Interaction は、すべての通信チャネルと接点にわたって、継続的な対話を通じた顧客エンゲージメントをサポートします。 単一型の運用管理ポイントから、オムニチャネル マーケティングのライフサイクル全体を容易に管理します。 |[Marketplace][redpoint_it_marketplace]<br>[Web サイト][redpoint_it_website]<br>[プレス リリース][redpoint_press]<br>[データシート][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![redpoint dm ビデオ](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
+| ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian は、メタデータをカタログ化、格納、および管理することにより、データ管理に関する重要課題の解決を支援します。 また、Infolibrarian では、メタデータ管理、データ ガバナンス、および資産管理のソフトウェア ソリューションを提供することで、多種多様なツールとテクノロジの組み合わせにおいてメタデータを管理したり公開したりできるようにしています。 |[Marketplace][infolibrarian_marketplace]<br>[Web サイト][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![infolibrarian ビデオ](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
+| ![Redpoint Global][4] |**RedPoint Interaction**<br>RedPoint Interaction は、すべての通信チャネルと接点にわたって、継続的な対話を通じた顧客エンゲージメントを可能にします。 単一型の運用管理ポイントから、オムニチャネル マーケティングのライフサイクル全体を容易に管理します。 |[Marketplace][redpoint_it_marketplace]<br>[Web サイト][redpoint_it_website]<br>[プレス リリース][redpoint_press]<br>[データシート][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![redpoint dm ビデオ](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
 | ![Redpoint Global][4] |**RedPoint Data Management**<br>RedPoint Data Management を使用することで、マーケティング担当者はすべてのデータを適用してクロス チャネルでの顧客とのつながりを促進しながら、構造化および非構造化データの管理を実行できます。 Azure SQL Data Warehouse と RedPoint を活用して構造化データと非構造化データの価値を最大化することで、今日のオムニ チャネルの顧客を引き込むために必要な高度にパーソナライズされ、状況に応じたやりとりを実現できます。 ドラッグ アンド ドロップ インターフェイスにより、データ管理プロセスを容易に設計および実行できます。 |[Marketplace][redpoint_dm_marketplace]<br>[Web サイト][redpoint_dm_website]<br>[プレス リリース][redpoint_press]<br>[データシート][redpoint_dm_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![redpoint dm ビデオ](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0) |
 | ![Sentry One][5] |**DW Sentry**<br>インテリジェントなデータ移動ダッシュボードやイベント カレンダーを使用して、ワークロードに影響を与えている原因を常時正確に把握できます。 データの読み込み、バックアップ、復元のために実行されているクエリやジョブを可視化できるように設計されているので、Azure リソースが最大限に活用されているかどうかについて心配する必要がなくなります。 |[Marketplace][sql_sentry_marketplace]<br>[Web サイト][sql_sentry_website]<br>[プレス リリース][sql_sentry_press]<br>[Twitter][sql_sentry_twitter]<br>[YouTube][sql_sentry_youtube] | |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー][bi_partners]に関するページと[データ統合パートナー][di_partners]に関するページをご覧ください。
 
 <!--Image references-->

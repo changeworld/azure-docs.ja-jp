@@ -36,7 +36,7 @@
 ##### [それはどのように機能しますか?](active-directory-aadconnect-sso-how-it-works.md)
 ##### [よく寄せられる質問](active-directory-aadconnect-sso-faq.md)
 ##### [トラブルシューティング](active-directory-aadconnect-troubleshoot-sso.md)
-##### [GDPR](active-directory-aadconnect-sso-gdpr.md)
+##### [ユーザー プライバシーと Azure AD シームレス シングル サインオン](active-directory-aadconnect-sso-gdpr.md)
 #### [パススルー認証](active-directory-aadconnect-pass-through-authentication.md)
 ##### [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [現時点での制限事項](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
@@ -46,7 +46,7 @@
 ##### [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
-##### [GDPR](active-directory-aadconnect-pass-through-authentication-gdpr.md)
+##### [ユーザー プライバシーと Azure Active Directory パススルー認証](active-directory-aadconnect-pass-through-authentication-gdpr.md)
 ### [フェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)
 ### [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](active-directory-aadconnect-federation-saml-idp.md)
@@ -54,7 +54,8 @@
 
 
 ## Azure AD Connect 同期を管理する
-### [GDPR コンプライアンスと Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [ユーザー プライバシーと Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [O365 リソースの優先されるデータの場所](active-directory-aadconnectsync-feature-preferreddatalocation.md)
 ### [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Azure AD サービス アカウント](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -91,7 +92,7 @@
 ### [LocalDB の 10 GB 制限からの回復方法](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [ハイブリッド ID で必要なポートとプロトコル](active-directory-aadconnect-ports.md)
 ## [プレビュー段階の機能](active-directory-aadconnect-feature-preview.md)

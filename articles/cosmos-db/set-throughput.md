@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0e89b93764f51873d991524a5e226464c224b649
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="set-throughput-for-azure-cosmos-db-containers"></a>Azure Cosmos DB コンテナーのスループットの設定
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Azure Cosmos DB コンテナーのスループットの設定および取得
 
 Azure Portal またはクライアントの SDK を使用して、Azure Cosmos DB コンテナーのスループットを設定できます。 
 
@@ -96,6 +96,43 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
+## <a id="GetLastRequestStatistics"></a>MongoDB API の GetLastRequestStatistics コマンドの使用によるスループットの取得
+
+MongoDB API は、指定した操作の要求の使用量を取得するためのカスタム コマンド *getLastRequestStatistics* をサポートしています。
+
+たとえば、Mongo シェルで、要求の使用量を確認する操作を実行します。
+```
+> db.sample.find()
+```
+
+次に、*getLastRequestStatistics* コマンドを実行します。
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+これを踏まえて、アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット使用量を記録し、アプリケーションが使用する代表的なアイテムに基づいて、1 秒ごとに実行される操作数を推定します。
+
+> [!NOTE]
+> アイテムの種類によって、サイズとインデックス付きプロパティの数が大きく異なる場合は、典型的なアイテムの "*種類*" ごとに、適用可能な操作の要求ユニット使用量を記録してください。
+> 
+> 
+
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>MongoDB API ポータルのメトリックを使用したスループットの取得
+
+MongoDB API データベースの要求ユニットの適切な推定使用量を取得する簡単な方法は、[Azure Portal](https://portal.azure.com) のメトリックを使用することです。 "*要求数*" のグラフと "*要求の使用量*" のグラフから、各操作が使用している要求単位の数と、互いに使用する要求単位の数を推定できます。
+
+![MongoDB API ポータルのメトリック][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB API での予約されたスループット上限の超過
+コンテナーのプロビジョニング済みスループットを超えたアプリケーションは、使用量レートがプロビジョニング済みスループット レートを下回るまでレート制限されます。 レート制限が発生すると、バックエンドは、`16500`エラー コード - `Too Many Requests` で機先を制して要求を終了します。 既定では、MongoDB API は、`Too Many Requests`エラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 `Too Many Requests`エラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行ロジックを追加するか、[コンテナーのプロビジョニング済みスループットを増やすことを検討した方がよいことがあります](set-throughput.md)。
+
 ## <a name="throughput-faq"></a>スループットについてよく寄せられる質問
 
 **スループットを 400 RU/秒未満に設定することはできますか?**
@@ -109,3 +146,5 @@ Cosmos DB のシングル パーティション コンテナーで使用でき�
 ## <a name="next-steps"></a>次の手順
 
 Cosmos DB を使用したプロビジョニングと地球規模での使用の詳細については、[Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関するページをご覧ください。
+
+[1]: ./media/set-throughput/api-for-mongodb-metrics.png

@@ -1,13 +1,13 @@
 ---
-title: "Azure での Oracle データベースの設計と実装 | Microsoft Docs"
-description: "ご利用の Azure 環境で Oracle データベースを設計および実装します。"
+title: Azure での Oracle データベースの設計と実装 | Microsoft Docs
+description: ご利用の Azure 環境で Oracle データベースを設計および実装します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b291066137df004625029aef12c3db4d5441a89c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -117,7 +117,7 @@ AWR レポートから取得できるメトリックを次に示します。
 
 AWR レポートから収集した情報に基づき、次のステップでは要件を満たすサイズの VM を選択します。 [メモリの最適化](../../linux/sizes-memory.md)に関する記事で、使用可能な仮想マシンの一覧を見つけることができます。
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3.ACU に基づき、同様の VM シリーズで VM のサイズを細かく調整する
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>手順 3.ACU に基づき、同様の VM シリーズで VM のサイズを細かく調整する
 
 VM を選択した後に、仮想マシンの ACU に注意を向けてください。 お客様の要件に合うように、ACU の値に基づいて別の VM を選択することもできます。 詳細については、「[Azure コンピューティング ユニット](https://docs.microsoft.com/azure/virtual-machines/windows/acu)」をご覧ください。
 
@@ -136,7 +136,7 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 
 ![SQL*Net スループットのスクリーンショット](./media/oracle-design/sqlnet_info.png)
 
-ご利用のネットワーク帯域幅の要件に基づいて、多彩な種類からゲートウェイを選択できます。 Basic、VpnGw、および Azure ExpressRoute などもその対象に含まれます。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/?v=17.23h)」のページを参照してください。
+ご利用のネットワーク帯域幅の要件に基づいて、多彩な種類からゲートウェイを選択できます。 Basic、VpnGw、および Azure ExpressRoute などもその対象に含まれます。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h)」のページを参照してください。
 
 **Recommendations (推奨事項)**
 
@@ -231,7 +231,7 @@ Azure 環境のセットアップと構成が完了した後に、今度はネ�
 - [Oracle Golden Gate の構成](configure-oracle-golden-gate.md)
 - [Oracle のバックアップと回復](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 - [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)

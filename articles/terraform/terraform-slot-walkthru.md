@@ -1,33 +1,35 @@
 ---
 title: Terraform と Azure プロバイダーのデプロイ スロットの使用
-description: Terraform と Azure プロバイダーのデプロイ スロットを使用したチュートリアル
+description: Terraform と Azure プロバイダーのデプロイ スロットの使用に関するチュートリアル
 keywords: terraform, devops, 仮想マシン, Azure, デプロイ スロット
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 4/05/2018
 ms.topic: article
-ms.openlocfilehash: 34b16b5fb2b5b574d166693db346ebba15eaa1f9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="using-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform と Azure デプロイ スロットを使用してインフラストラクチャをプロビジョニングする
+# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform を使用し、Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 
-[Azure デプロイ スロット](/azure/app-service/web-sites-staged-publishing)を使用すると、運用環境やステージングなどのさまざまなバージョンのアプリケーションをスワップし、破損したデプロイの影響を最小限に抑えることができます。 この記事では、GitHub と Azure を使用して 2 つのアプリをデプロイする方法を説明しながら、デプロイ スロットの使用例を紹介します。 一方のアプリは "production" スロットでホストされ、2 つ目のアプリは "staging" スロットでホストされます ("production" と "staging" という名前は任意であり、シナリオを表す任意の名前を付けることができます)。デプロイ スロットが構成されたら、必要に応じて Terraform を使用して 2 つのスロット間をスワップすることができます。
+[Azure デプロイ スロット](/azure/app-service/web-sites-staged-publishing)を使用し、アプリの異なるバージョン間をスワップできます。 この機能によって、デプロイ分断の影響が最小限に抑えられます。 
+
+この記事では、GitHub と Azure を使用して 2 つのアプリをデプロイする方法を説明しながら、デプロイ スロットの使用例を紹介します。 1 つのアプリが運用スロットでホストされています。 2 番目のアプリはステージング スロットでホストされています。 ("production" と "staging" という名前は任意であり、シナリオを表す任意の名前を付けることができます)。デプロイ スロットを構成すると、必要に応じて Terraform を使用して 2 つのスロット間をスワップできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
-- **GitHub アカウント** - テスト GitHub リポジトリをフォークして使用するには、[GitHub](http://www.github.com) アカウントが必要です。
+- **GitHub アカウント**: テスト GitHub リポジトリをフォークして使用するには、[GitHub](http://www.github.com) アカウントが必要です。
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Terraform プランの作成と適用
 
-1. [Azure Portal](http://portal.azure.com) にアクセスします。
+1. [Azure ポータル](http://portal.azure.com)にアクセスします。
 
-1. [Azure Cloud Shell](/azure/cloud-shell/overview) を開き、(以前に実行していない場合) 環境として **[Bash]** を選択します。
+1. [Azure Cloud Shell](/azure/cloud-shell/overview) を開きます。 前に環境を選択しなかった場合、環境として **Bash** を選択します。
 
     ![Cloud Shell のプロンプト](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
 
@@ -49,7 +51,7 @@ ms.lasthandoff: 04/06/2018
     mkdir swap
     ```
 
-1. `ls` bash コマンドを使用して、両方のディレクトリが正常に作成されたことを確認します。
+1. `ls` bash コマンドを使用し、両方のディレクトリが正常に作成されたことを確認します。
 
     ![ディレクトリを作成した後のクラウド シェル](./media/terraform-slot-walkthru/cloud-shell-after-creating-dirs.png)
 
@@ -59,18 +61,18 @@ ms.lasthandoff: 04/06/2018
     cd deploy
     ```
 
-1. [vi エディター](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html)を使用して、`deploy.tf` という名前のファイルを作成します。このファイルには、[Terraform の構成](https://www.terraform.io/docs/configuration/index.html)が含まれます。
+1. [vi エディター](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html)を使用して、`deploy.tf` という名前のファイルを作成します。 このファイルには、[Terraform 構成](https://www.terraform.io/docs/configuration/index.html)が含まれます。
 
     ```bash
     vi deploy.tf
     ```
 
-1. 文字 `i` キーを押して挿入モードを開始します。
+1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
     ```JSON
-    # Configure the Azure Provider
+    # Configure the Azure provider
     provider "azurerm" { }
 
     resource "azurerm_resource_group" "slotDemo" {
@@ -104,15 +106,15 @@ ms.lasthandoff: 04/06/2018
     }
     ```
 
-1. **&lt;Esc>** キーを押して挿入モードを終了します。
+1. Esc キーを選択して挿入モードを終了します。
 
-1. ファイルを保存し、次のコマンドを入力し、**&lt;Enter>** キーを押して vi エディターを終了します。
+1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
 
     ```bash
     :wq
     ```
 
-1. ファイルが作成されると、その内容を確認することができます。
+1. これでファイルが作成されたので、その内容を確認してください。
 
     ```bash
     cat deploy.tf
@@ -130,7 +132,7 @@ ms.lasthandoff: 04/06/2018
     terraform plan
     ```
 
-1. `deploy.tf` 構成ファイルに定義されているリソースをプロビジョニングします (プロンプトに `yes` と入力してアクションを確認します)。
+1. `deploy.tf` 構成ファイルに定義されているリソースをプロビジョニングします。 (プロンプトに `yes` と入力してアクションを確認します)。
 
     ```bash
     terraform apply
@@ -140,13 +142,13 @@ ms.lasthandoff: 04/06/2018
 
 1. Azure Portal のメイン メニューで、**[リソース グループ]** を選択します。
 
-    ![Azure Portal のリソース グループ](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
+    ![ポータルの "リソース グループ"](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
 
 1. **[リソース グループ]** タブで、**[slotDemoResourceGroup]** を選択します。
 
     ![Terraform によって作成されたリソース グループ](./media/terraform-slot-walkthru/resource-group.png)
 
-完了すると、Terraform によって作成されたすべてのリソースが表示されます。
+Terraform によって作成されたすべてのリソースが表示されます。
 
 ![Terraform によって作成されたリソース](./media/terraform-slot-walkthru/resources.png)
 
@@ -156,7 +158,7 @@ ms.lasthandoff: 04/06/2018
 
 1. [GitHub 上にある awesome-terraform リポジトリ](https://github.com/Azure/awesome-terraform)にアクセスします。
 
-1. **awesome-terraform リポジトリ**をフォークします。
+1. **awesome-terraform** リポジトリをフォークします。
 
     ![GitHub の awesome-terraform リポジトリをフォークする](./media/terraform-slot-walkthru/fork-repo.png)
 
@@ -204,9 +206,9 @@ ms.lasthandoff: 04/06/2018
 
 この時点で、production スロットのデプロイが完了しました。 staging スロットをデプロイするには、次の変更のみを加えて、このセクションの前の手順をすべて実行します。
 
-- 手順 3 の **slotAppServiceSlotOne** リソース。
+- 手順 3 で、**slotAppServiceSlotOne** リソースを選択します。
 
-- 手順 13 で、master ブランチではなく "working" ブランチを選択します。
+- 手順 13 で、master ブランチではなく working ブランチを選択します。
 
     ![working ブランチを選択する](./media/terraform-slot-walkthru/choose-branch-working.png)
 
@@ -214,7 +216,7 @@ ms.lasthandoff: 04/06/2018
 
 前のセクションでは、GitHub の異なるブランチからデプロイするように **slotAppService** と **slotAppServiceSlotOne** の 2 つのスロットを設定しました。 Web アプリケーションをプレビューして、正常にデプロイされたことを確認しましょう。
 
-次の手順を 2 回実行します。手順 3 では 1 回目に **slotAppService** を選択し、2 回目に **slotAppServiceSlotOne** を選択します。
+次の手順を 2 回実行します。 手順 3 では 1 回目に **slotAppService** を選択し、2 回目に **slotAppServiceSlotOne** を選択します。
 
 1. Azure Portal のメイン メニューで、**[リソース グループ]** を選択します。
 
@@ -251,18 +253,18 @@ ms.lasthandoff: 04/06/2018
     cd clouddrive/swap
     ```
 
-1. vi エディターを使用して、`swap.tf` という名前のファイルを作成します。
+1. vi エディターを使用し、`swap.tf` という名前のファイルを作成します。
 
     ```bash
     vi swap.tf
     ```
 
-1. 文字 `i` キーを押して挿入モードを開始します。
+1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
     ```JSON
-    # Configure the Azure Provider
+    # Configure the Azure provider
     provider "azurerm" { }
 
     # Swap the production slot and the staging slot
@@ -273,9 +275,9 @@ ms.lasthandoff: 04/06/2018
     }
     ```
 
-1. **&lt;Esc>** キーを押して挿入モードを終了します。
+1. Esc キーを選択して挿入モードを終了します。
 
-1. ファイルを保存し、次のコマンドを入力し、**&lt;Enter>** キーを押して vi エディターを終了します。
+1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
 
     ```bash
     :wq
@@ -293,7 +295,7 @@ ms.lasthandoff: 04/06/2018
     terraform plan
     ```
 
-1. `swap.tf` 構成ファイルに定義されているリソースをプロビジョニングします (プロンプトに `yes` と入力してアクションを確認します)。
+1. `swap.tf` 構成ファイルに定義されているリソースをプロビジョニングします。 (プロンプトに `yes` と入力してアクションを確認します)。
 
     ```bash
     terraform apply
@@ -311,4 +313,4 @@ ms.lasthandoff: 04/06/2018
 terraform apply
 ```
 
-スワップが完了すると、元の構成が表示されます。
+アプリがスワップされると、元の構成が表示されます。

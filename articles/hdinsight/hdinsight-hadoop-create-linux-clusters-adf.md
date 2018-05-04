@@ -1,8 +1,8 @@
 ---
-title: "Data Factory を使用して オンデマンドの Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
-description: "Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する方法について説明します。"
+title: Data Factory を使用して オンデマンドの Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs
+description: Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: spelluru
 manager: jhubbard
@@ -11,16 +11,14 @@ ms.assetid: 1f3b3a78-4d16-4d99-ba6e-06f7bb185d6a
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: b9b73f6691af957e42236ef9a223411a0296f96f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6344b9a50f182a2b9ab05562c29099c9d6976f0b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -117,7 +115,7 @@ $destContainerName = "adfgetstarted" # don't change this value.
 #region - Connect to Azure subscription
 Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
 try{Get-AzureRmContext}
-catch{Login-AzureRmAccount}
+catch{Connect-AzureRmAccount}
 #endregion
 
 ####################################
@@ -178,7 +176,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 **ストレージ アカウントとその内容を確認するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. 左側のウィンドウの **[リソース グループ]** をクリックします。
 3. PowerShell スクリプトで作成したリソース グループの名前をダブルクリックします。 一覧表示されるリソース グループが多すぎる場合は、フィルターを使用します。
 4. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、リソースが 1 つだけ表示されています。 このリソースが、前の手順で指定した名前のストレージ アカウントです。 このストレージ アカウント名をクリックします。
@@ -205,8 +203,8 @@ Write-host "`nScript completed" -ForegroundColor Green
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline diagram](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-pipeline-diagram.png)
 
     名前は Resource Manager テンプレートで定義されます。
-9. **[AzureBlobOutput]**をダブルクリックします。
-10. **[最近更新されたスライス]**に、1 つのスライスが表示されます。 状態が **[処理中]** の場合は、**[準備完了]** に変わるまで待ちます。 通常、HDInsight クラスターの作成には約 **20 分**かかります。
+9. **[AzureBlobOutput]** をダブルクリックします。
+10. **[最近更新されたスライス]** に、1 つのスライスが表示されます。 状態が **[処理中]** の場合は、**[準備完了]** に変わるまで待ちます。 通常、HDInsight クラスターの作成には約 **20 分**かかります。
 
 ### <a name="check-the-data-factory-output"></a>データ ファクトリの出力を確認する
 
@@ -216,7 +214,7 @@ Write-host "`nScript completed" -ForegroundColor Green
    * adfjobs: このコンテナーは、ADF ジョブ ログのコンテナーです。
 
      データ ファクトリの出力は、Resource Manager テンプレートに構成されている **afgetstarted** に格納されます。
-2. **[adfgetstarted]**をクリックします。
+2. **[adfgetstarted]** をクリックします。
 3. **[partitioneddata]** をダブルクリックします。 **year=2014** フォルダーが表示されます。これは、すべての Web ログの日付が 2014 年のものであるためです。
 
     ![Azure Data Factory HDInsight on-demand Hive activity pipeline output](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-output-year.png)
@@ -277,7 +275,7 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
 * [コピー アクティビティを含むデータ パイプライン](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-Azure Storage のリンクされたサービスでは、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じストレージ アカウントが、既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されます。 そのため、Azure Storage のリンクされたサービスを 1 つだけ定義します。 リンクされたサービスの定義では、Azure ストレージ アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](../data-factory/connector-azure-blob-storage.md)」をご覧ください。
+Azure Storage のリンクされたサービスでは、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じストレージ アカウントが、既定の HDInsight ストレージ アカウント、入力データ ストレージ、出力データ ストレージとして使用されます。 そのため、Azure Storage のリンクされたサービスを 1 つだけ定義します。 リンクされたサービスの定義では、Azure ストレージ アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](../data-factory/connector-azure-blob-storage.md)」を参照してください。
 
 ```json
 {
@@ -561,7 +559,7 @@ Azure Data Factory では、出力データセットの可用性によってパ�
         }
     },            
     ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure Data Factory を使用して Hive ジョブを処理するオンデマンドの HDInsight クラスターを作成する方法について説明しました。 詳細については、以下のリンク先を参照してください。
 
 * [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hadoop/apache-hadoop-linux-tutorial-get-started.md)

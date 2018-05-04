@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
-1.  Microsoft アカウント資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にログオンします。 Government ポータルにデバイスをデプロイする場合は、<https://portal.azure.us/> にログインします。
+1.  Microsoft アカウントの資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にログオンします。 Government ポータルにデバイスをデプロイする場合は、<https://portal.azure.us/> にログインします
 
 2.  Azure Portal で、**[+ リソースの作成]** &gt; **[ストレージ]** &gt; **[StorSimple 仮想シリーズ]** の順にクリックします。
 
@@ -18,7 +18,7 @@
 
         -   Azure 内の既存のワークロードも StorSimple デバイスと一緒にデプロイする場合、そのデータセンターを使用する必要があります。
 
-        -   StorSimple デバイス マネージャーと Azure Storage は別々の場所に置くことができます。 その場合、StorSimple デバイス マネージャーと Azure ストレージ アカウントを別々に作成する必要があります。 Azure ストレージ アカウントを作成するには、Azure Portal で Azure Storage サービスに移動し、「[ストレージ アカウントの作成](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)」に記載されている手順に従います。 このアカウントを作成したら、「[サービスの新しいストレージ アカウントを構成する](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)」に記載されている手順に従って、StorSimple デバイス マネージャー サービスにアカウントを追加します。
+        -   StorSimple デバイス マネージャーと Azure Storage は別々の場所に置くことができます。 その場合、StorSimple デバイス マネージャーと Azure ストレージ アカウントを別々に作成する必要があります。 Azure ストレージ アカウントを作成するには、Azure Portal で Azure Storage サービスに移動し、「[ストレージ アカウントの作成](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)」に記載されている手順に従います。 このアカウントを作成したら、「[サービスの新しいストレージ アカウントを構成する](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)」に記載されている手順に従って、StorSimple デバイス マネージャー サービスにアカウントを追加します。
 
         -   Government ポータルに仮想デバイスをデプロイする場合、米国アイオワ州と米国バージニア州で StorSimple デバイス マネージャー サービスを使用できます。
 
@@ -30,6 +30,6 @@
 
         ![新しいサービスの作成](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
-**[サービス]** ランディング ページが表示されます。 サービスの作成には数分かかります。 サービスが正常に作成されると、適宜、通知が表示され、サービスの状態が **"アクティブ"**に変わります。
+**[サービス]** ランディング ページが表示されます。 サービスの作成には数分かかります。 サービスが正常に作成されると、適宜、通知が表示され、サービスの状態が **"アクティブ"** に変わります。
 
 

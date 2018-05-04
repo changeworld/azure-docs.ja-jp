@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48a8f6d35c3ea1266880f05d12ebf4efd855df41
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用してディザスター リカバリーの多層 SharePoint アプリケーションをレプリケートする
 
@@ -53,7 +53,7 @@ Microsoft SharePoint は、グループあるいは部署が情報を整理、�
 
 ## <a name="sharepoint-architecture"></a>SharePoint のアーキテクチャ
 
-SharePoint は階層型トポロジーとサーバー ロールを使用して 1 つまたは複数のサーバーにデプロイすることで、特定の目標や目的に合ったファーム デザインを実現できます。 多数の同時ユーザー、大量のコンテンツ項目をサポートしている通常の大規模で高デマンドの SharePoint サーバー ファームは、そのスケーラビービリティ戦略の一環としてサービスのグループ化を利用します。 このアプローチでは、サービスを専用のサーバー上で実行します。それらサービスはグループにまとめられ、専用のサーバーが 1 つのグループとしてスケールアウトされます。 下記のトポロジは、3 層 SharePoint サーバー ファームに対するサービスとサーバーのグループ化を表しています。 さまざまな SharePoint トポロジについての詳細な指針については、SharePoint のマニュアルおよび製品系列のアーキテクチャを参照してください。 [本書](https://technet.microsoft.com/en-us/library/cc303422.aspx)でも、SharePoint 2013 のデプロイに関する詳細を説明しています。
+SharePoint は階層型トポロジーとサーバー ロールを使用して 1 つまたは複数のサーバーにデプロイすることで、特定の目標や目的に合ったファーム デザインを実現できます。 多数の同時ユーザー、大量のコンテンツ項目をサポートしている通常の大規模で高デマンドの SharePoint サーバー ファームは、そのスケーラビービリティ戦略の一環としてサービスのグループ化を利用します。 このアプローチでは、サービスを専用のサーバー上で実行します。それらサービスはグループにまとめられ、専用のサーバーが 1 つのグループとしてスケールアウトされます。 下記のトポロジは、3 層 SharePoint サーバー ファームに対するサービスとサーバーのグループ化を表しています。 さまざまな SharePoint トポロジについての詳細な指針については、SharePoint のマニュアルおよび製品系列のアーキテクチャを参照してください。 [本書](https://technet.microsoft.com/library/cc303422.aspx)でも、SharePoint 2013 のデプロイに関する詳細を説明しています。
 
 
 

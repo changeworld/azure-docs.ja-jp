@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 04/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 56559adbc2ebd4e4379326607a28333d538504da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8cc6fa994c750f4718e6cc065819763d8be4f18c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Azure Data Factory を使用して Phoenix からデータをコピーする 
 
@@ -42,13 +42,13 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Phoenix のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **Phoenix** に設定する必要があります | [はい] |
-| host | Phoenix サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160)  | [はい] |
-| ポート | Phoenix サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8765 です。  | いいえ  |
+| type | type プロパティは **Phoenix** に設定する必要があります | はい |
+| host | Phoenix サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160)  | はい |
+| port | Phoenix サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8765 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
 | httpPath | Phoenix サーバーに対応する部分的な URL。 (つまり、/gateway/sandbox/phoenix/version)。 WindowsAzureHDInsightService を使う場合の既定値は `hbasephoenix` です。  | いいえ  |
-| authenticationType | Phoenix サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
+| authenticationType | Phoenix サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | はい |
 | username | Phoenix サーバーへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
@@ -67,7 +67,7 @@ Phoenix のリンクされたサービスでは、次のプロパティがサポ
         "type": "Phoenix",
         "typeProperties": {
             "host" : "<cluster>.azurehdinsight.net",
-            "port" : "<port>",
+            "port" : "443",
             "httpPath" : "hbasephoenix",
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",
@@ -109,10 +109,10 @@ Phoenix からデータをコピーするには、データセットの type プ
 
 Phoenix からデータをコピーするには、コピー アクティビティのソース タイプを **PhoenixSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **PhoenixSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティを **PhoenixSource** に設定する必要があります。 | はい |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | はい |
 
 **例:**
 

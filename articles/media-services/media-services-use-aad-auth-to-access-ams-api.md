@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 認証を使用した Azure Media Services API へのアクセス | Microsoft Docs"
-description: "Azure Active Directory (Azure AD) を使用して Azure Media Services API へのアクセスを認証するための手順と概念を説明します。"
+title: Azure Active Directory 認証を使用した Azure Media Services API へのアクセス | Microsoft Docs
+description: Azure Active Directory (Azure AD) を使用して Azure Media Services API へのアクセスを認証するための手順と概念を説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 0e1217afb0a37353793c64ae927b741d9fee4954
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57f2680d6b3f06a88a13a09018e7d72afcb710a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス
  
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
-Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../active-directory/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。  
+Media Services では、[Azure Active Directory (Azure AD) ベースの認証](../active-directory/active-directory-whatis.md)がサポートされています。 Azure Media REST サービスでは、REST API 要求を行うユーザーまたはアプリケーションに、リソースにアクセスするための**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。  
 
 > [!IMPORTANT]
 > 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
@@ -75,13 +75,13 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
         テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
     * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net )。
+        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
 
     * Media Services (ネイティブ) アプリケーション クライアント ID。
     * Media Services (ネイティブ) アプリケーション リダイレクト URI。
     * REST Media Services のリソース URI。
         
-        この URI は、REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
+        この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
 
     これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、ユーザー認証オプションの使用について参照してください。
 
@@ -117,11 +117,11 @@ Azure AD アプリケーションを作成した後、次の設定の値を取�
         テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
     * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例: https://rest.media.azure.net )。
+        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
 
     * REST Media Services のリソース URI。
 
-        この URI は、REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
+        この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
 
     * Azure AD アプリケーションの値 (クライアント ID と クライアント シークレット)。
     
@@ -147,9 +147,9 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 - [Azure AD で対応できる認証シナリオ](../active-directory/develop/active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
 - [Azure AD でのアプリケーションの追加、更新、または削除](../active-directory/develop/active-directory-integrating-applications.md)
-- [PowerShell を使用したロールベースのアクセス制御の構成と管理](../active-directory/role-based-access-control-manage-access-powershell.md)
+- [PowerShell を使用したロールベースのアクセス制御の構成と管理](../role-based-access-control/role-assignments-powershell.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Portal を使って [Azure AD 認証にアクセスし、Azure Media Services API を利用する](media-services-portal-get-started-with-aad.md)。
 * [.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)。

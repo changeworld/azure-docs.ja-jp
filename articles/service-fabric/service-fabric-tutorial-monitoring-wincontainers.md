@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric での Windows コンテナーの監視と診断 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Service Fabric で調整された Windows コンテナーの監視と診断をセットアップします。"
+title: Azure Service Fabric での Windows コンテナーの監視と診断 | Microsoft Docs
+description: このチュートリアルでは、Azure Service Fabric で調整された Windows コンテナーの監視と診断をセットアップします。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,21 +15,21 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 087dafe426b835d447c69a44f6842c41a48cec8c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>チュートリアル: OMS を使用して Service Fabric で Windows コンテナーを監視する
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric で Windows コンテナーを監視する
 
-これはチュートリアルの第 3 部です。Service Fabric で調整された Windows コンテナーを監視するように OMS を設定する手順について説明します。
+これはチュートリアルの第 3 部です。Service Fabric で調整された Windows コンテナーを監視するように Log Analytics を設定する手順について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Service Fabric クラスターの OMS を構成する
-> * コンテナーとノードのログの表示とクエリに OMS ワークスペースを使用する
+> * Service Fabric クラスターの Log Analytics を構成する
+> * コンテナーとノードのログの表示とクエリに Log Analytics ワークスペースを使用する
 > * OMS エージェントを構成してコンテナーとノード メトリックを選択する
 
 ## <a name="prerequisites"></a>前提条件
@@ -37,24 +37,24 @@ ms.lasthandoff: 02/24/2018
 - Azure にクラスターを用意する、または[このチュートリアルを参照して作成する](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [コンテナー化されたアプリケーションをクラスターにデプロイする](service-fabric-host-app-in-a-container.md)
 
-## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>Resource Manager テンプレートでクラスターを使用して OMS を設定する
+## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Resource Manager テンプレートでクラスターを使用して Log Analytics を設定する
 
-このチュートリアルの第 1 部で[提供されたテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)を使用した場合、汎用の Service Fabric Azure Resource Manager テンプレートに次の追加を行う必要があります。 OMS でコンテナーの監視を設定するために独自のクラスターを用意した場合:
+このチュートリアルの第 1 部で[提供されたテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)を使用した場合、汎用の Service Fabric Azure Resource Manager テンプレートに次の追加を行う必要があります。 Log Analytics を使用したコンテナーの監視を設定するために独自のクラスターを用意した場合:
 * Resource Manager テンプレートに次の変更を加えます。
 * PowerShell を使用してデプロイし、[テンプレートをデプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)してクラスターをアップグレードします。 Azure Resource Manager はリソースが存在することを認識しているので、アップグレードとして展開されます。
 
-### <a name="adding-oms-to-your-cluster-template"></a>クラスター テンプレートに OMS を追加する
+### <a name="adding-log-analytics-to-your-cluster-template"></a>クラスター テンプレートに Log Analytics を追加する
 
 *template.json* に次の変更を加えます。
 
-1. OMS ワークスペースの場所と名前を *parameters* セクションに追加します。
+1. Log Analytics ワークスペースの場所と名前を *parameters* セクションに追加します。
     
     ```json
     "omsWorkspacename": {
       "type": "string",
       "defaultValue": "[toLower(concat('sf',uniqueString(resourceGroup().id)))]",
       "metadata": {
-        "description": "Name of your OMS Log Analytics Workspace"
+        "description": "Name of your Log Analytics Workspace"
       }
     },
     "omsRegion": {
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/24/2018
         "Southeast Asia"
       ],
       "metadata": {
-        "description": "Specify the Azure Region for your OMS workspace"
+        "description": "Specify the Azure Region for your Log Analytics workspace"
       }
     }
     ```
@@ -100,7 +100,7 @@ ms.lasthandoff: 02/24/2018
     },
     ```
 
-4. OMS ワークスペースを個別のリソースとして追加します。 *resources* で、仮想マシン スケール セット リソースの後に次を追加します。
+4. Log Analytics ワークスペースを個別のリソースとして追加します。 *resources* で、仮想マシン スケール セット リソースの後に次を追加します。
     
     ```json
     {
@@ -180,17 +180,17 @@ ms.lasthandoff: 02/24/2018
     },
     ```
 
-サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、OMS Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 OMS エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
+サンプル テンプレートは[こちら](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)です (このチュートリアルの第 1 部で使用されました)。これらの変更がすべて加えられており、必要に応じて参照できます。 これらの変更で、Log Analytics ワークスペースがリソース グループに追加されます。 [Microsoft Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)エージェントで構成されたストレージ テーブルから、Service Fabric プラットフォーム イベントを選択するようにワークスペースが構成されます。 OMS エージェント (Microsoft Monitoring Agent) も、仮想マシン拡張機能としてクラスターの各ノードに追加されます。つまり、クラスターを拡大縮小すると、各マシンのエージェントは自動的に構成され、同じワークスペースに接続されます。
 
-新しい変更を加えたテンプレートをデプロイして、現在のクラスターをアップグレードします。 アップグレードが完了すると、リソース グループに OMS リソースが表示されます。 クラスターの準備ができたら、コンテナー化されたアプリケーションをデプロイします。 次の手順では、コンテナーの監視を設定します。
+新しい変更を加えたテンプレートをデプロイして、現在のクラスターをアップグレードします。 処理が完了すると、リソース グループに Log Analytics リソースが表示されます。 クラスターの準備ができたら、コンテナー化されたアプリケーションをデプロイします。 次の手順では、コンテナーの監視を設定します。
 
-## <a name="add-the-container-monitoring-solution-to-your-oms-workspace"></a>OMS ワークスペースにコンテナー監視ソリューションを追加する
+## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>Log Analytics ワークスペースにコンテナー監視ソリューションを追加する
 
 ワークスペースでコンテナー ソリューションを設定するには、*コンテナー監視ソリューション*を検索し、([監視 + 管理] カテゴリの下に) コンテナー リソースを作成します。
 
 ![コンテナー ソリューションの追加](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-*OMS ワークスペース*の設定を求められたら、リソース グループで作成したワークスペースを選択し、**[作成]** をクリックします。 *コンテナー監視ソリューション*がワークスペースに追加され、テンプレートによって OMS エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
+"*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、**[作成]** をクリックします。 *コンテナー監視ソリューション*がワークスペースに追加され、テンプレートによって OMS エージェントがデプロイされ、Docker ログと統計情報の収集が開始されます。 
 
 *リソース グループ*に戻ると、新しく追加された監視ソリューションが表示されます。 ソリューションをクリックすると、ランディング ページに実行中のコンテナー イメージ数が表示されます。 
 
@@ -219,7 +219,7 @@ OMS エージェントを使用するもう 1 つの利点として、Azure 診�
 OMS ポータルにワークスペースが表示されます。ここでは、ソリューションの作成、カスタム ダッシュボードの作成、OMS エージェントの構成を行うことができます。 
 * 画面の右上にある**歯車**をクリックし、*[設定]* メニューを開きます。
 * **[接続されたソース]** > **[Windows Server]** の順にクリックし、*"5 台の Windows コンピューターが接続されています"* と表示されることを確認します。
-* **[データ]** > **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの OMS の推奨される一覧と、他のカウンターを検索するオプションが表示されます。 **[選択したパフォーマンス カウンターを追加する]** をクリックして、提案されたメトリックの収集を開始します。
+* **[データ]** > **[Windows パフォーマンス カウンター]** の順にクリックし、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Log Analytics の推奨される一覧と、他のカウンターを検索するオプションが表示されます。 **[選択したパフォーマンス カウンターを追加する]** をクリックして、提案されたメトリックの収集を開始します。
 
     ![Perf counters](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
 
@@ -235,13 +235,13 @@ Azure Portal に戻り、数分後にコンテナー監視ソリューション�
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Service Fabric クラスターの OMS を構成する
-> * コンテナーとノードのログの表示とクエリに OMS ワークスペースを使用する
-> * OMS エージェントを構成してコンテナーとノード メトリックを選択する
+> * Service Fabric クラスターの Log Analytics を構成する
+> * コンテナーとノードのログの表示とクエリに Log Analytics ワークスペースを使用する
+> * Log Analytics エージェントを構成してコンテナーとノード メトリックを選択する
 
 コンテナー化されたアプリケーションの監視を設定したので、以下を試してみましょう。
 
-* 上記と同様の手順で、Linux クラスター用に OMS を設定する。 [このテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)を参照して、Resource Manager テンプレートを変更してみましょう。
-* OMS を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する。
+* 上記と同様の手順で、Linux クラスター用に Log Analytics を設定する。 [このテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)を参照して、Resource Manager テンプレートを変更してみましょう。
+* Log Analytics を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する。
 * Service Fabric の[推奨されるパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)の一覧を参照して、実際のクラスターに合わせて構成する。
 * Log Analytics の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる。

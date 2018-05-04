@@ -1,33 +1,32 @@
 ---
-title: "SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) | Microsoft Docs"
-description: "ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。"
+title: Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) | Microsoft Docs
+description: ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 68ac9a94-09f9-424b-b536-06a125a653bd
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: a885ba4f455fecd158696faaee38c83c1e4ec0bf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 9bff6b1216ae826203b24a2cdf8a3d7fd0fd586f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
-Create table as select ( `CTAS` ) は利用可能な最重要 T-SQL 機能のうちの 1 つです。 これは SELECT ステートメントの出力に基づいて新しいテーブルを作成する完全に並列化された操作です。 `CTAS` はテーブルのコピーを最も簡単かつすばやく作成する方法です。 このドキュメントには `CTAS`の例とベスト プラクティスの両方が記載されています。
+# <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) の使用
+ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントでコーディングする際のヒントです。
+
+## <a name="what-is-create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS) とは
+
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) ステートメントは、利用可能な最重要 T-SQL 機能のうちの 1 つです。 これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成する並列操作です。 CTASD はテーブルのコピーを最も簡単かつすばやく作成する方法です。 
 
 ## <a name="selectinto-vs-ctas"></a>SELECT..INTO とCTAS
-`CTAS` を `SELECT..INTO` の高機能バージョンであると見なすことができます。
+CTAS は、[SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql) ステートメントの強化されたバージョンと考えることができます。
 
-`SELECT..INTO` ステートメントの簡単な例を次に示します。
+SELECT..INTO の簡単な例を次に示します。
 
 ```sql
 SELECT *
@@ -37,9 +36,9 @@ FROM    [dbo].[FactInternetSales]
 
 上記の例では、Azure SQL Data Warehouse にテーブルの規定値があるため、`[dbo].[FactInternetSales_new]` は CLUSTERED COLUMNSTORE INDEX を伴う ROUND_ROBIN 分散テーブルとして作成されます。
 
-しかし `SELECT..INTO` では、操作の一部として分散方法とインデックスの種類のいずれも変更することはできません。 ここで、`CTAS` の出番です。
+しかし SELECT..INTO では、操作の一部として分散方法とインデックスの種類のいずれも変更することはできません。 ここで、CTAS の出番です。
 
-上記のステートメントを `CTAS` に変換するのはとても簡単です。
+前の例を CTAS に変換するのは非常に簡単です。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,7 +53,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-`CTAS` を使用することで、テーブル データの分散とテーブル タイプの両方を変更できます。 
+CTAS を使用することで、テーブル データの分散とテーブル タイプの両方を変更できます。 
 
 > [!NOTE]
 > `CTAS` 操作でインデックスを変更しようとしており、ソース テーブルがハッシュ分散されている場合、同じ分散列とデータ タイプを維持すると、`CTAS` 操作が最も適切に実行されます。 これにより、操作中に分散をまたがるデータ移動が回避されるため、効率が上がります。
@@ -131,7 +130,7 @@ DROP TABLE FactInternetSales_old;
 > 
 
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>CTAS を使用したサポートされていない機能の回避
-`CTAS` を使用して、下記のサポートされていない多くの機能を回避することもできます。 この機能は、ユーザーのコードに準拠するというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。 これは、完全に並列化された設計により可能になりました。 CTAS で対処できるシナリオは次のとおりです。
+CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この機能は、ユーザーのコードに準拠するというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。 これは、完全に並列化された設計により可能になりました。 CTAS で対処できるシナリオは次のとおりです。
 
 * ANSI JOINS を使用した UPDATE    
 * ANSI JOIN を使用した DELETE
@@ -246,9 +245,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>MERGE ステートメントの代わりに使用
-少なくとも部分的に `CTAS`を使用することにより、MERGE ステートメントを置き換えることができます。 `INSERT` および `UPDATE` を 1 つのステートメントに統合できます。 削除されたレコードはすべて、2 つ目のステートメントで閉じる必要があります。
+少なくとも部分的に CTASを使用することにより、MERGE ステートメントを置き換えることができます。 INSERT および UPDATE を 1 つのステートメントに統合できます。 削除されたレコードはすべて、2 つ目のステートメントで閉じる必要があります。
 
-`UPSERT` の例を次に示します。
+UPSERT の例を次に示します。
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -329,13 +328,13 @@ from ctas_r
 
 結果 (result) に格納される値が異なります。 result 列の永続化された値が他の式で使用されるため、エラーの深刻度が増します。
 
-![][1]
+![CTAS の結果](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
 これは、データを移行する場合に特に重要になります。 2 番目のクエリのほうが正確ではありますが、問題があります。 ソース システムと比較するとデータが異なるため、移行中の整合性に疑問が出てきます。 これは、「正しくない」結果が実は正しいという珍しいケースなのです。
 
 この 2 つの結果に差異があるのは、暗黙の型変換が原因です。 1 つ目の例の場合、テーブルで列が定義されています。 行が挿入されると、暗黙の型変換が実行されます。 2 つ目の例では、列のデータ型が式で定義されているため、暗黙の型変換は実行されません。 2 つ目の例の列が null 許容の列として定義されている一方で、1 つ目の例の列はそのように定義されていないことにも注意してください。 1 つ目の例でテーブルが作成されるとき、列の null 値の許容は明示的に定義されました。 2 つ目の例では、列の null 値の許容は定義されていないため、既定で null 定義になります。  
 
-これらの問題を解決するには、`CTAS` ステートメントの `SELECT` 部分に、型の変換と null 値の許容を明示的に設定する必要があります。 これらのプロパティは、CREATE TABLE  部分で設定することはできません。
+これらの問題を解決するには、CTAS ステートメントの SELECT 部分に、型の変換と null 値の許容を明示的に設定する必要があります。 これらのプロパティは、CREATE TABLE  部分で設定することはできません。
 
 次の例で、このコードの修正方法を示しています。
 
@@ -357,7 +356,7 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 * ISNULL の 2 つ目の部分は定数 (つまり 0) です
 
 > [!NOTE]
-> null 値の許容を正しく設定するために、`COALESCE` ではなく `ISNULL` を使用することは重要です。 `COALESCE` は決定的関数ではありませんので、式の結果は必ず null を許容します。 `ISNULL` は異なります。 ISNULL は確定的な関数です。 そのため、 `ISNULL` 関数の 2 番目の部分が定数またはリテラルの場合、結果の値は NOT NULL になります。
+> null 値の許容を正しく設定するために、COALESCE ではなく ISNULL を使用することは重要です。 COALESCE は決定的関数ではありませんので、式の結果は必ず null を許容します。 ISNULL の場合は異なります。 ISNULL は確定的な関数です。 そのため、ISNULL 関数の 2 番目の部分が定数またはリテラルの場合、結果の値は NOT NULL になります。
 > 
 > 
 
@@ -435,19 +434,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 そのため、CTAS では、型の一貫性と null 値の許容プロパティを保持することが、エンジニアリング上のベスト プラクティスだということがわかります。 計算の整合性を維持するのに役立つほか、パーティションの切り替えも確実に実行できるからです。
 
-[CTAS][CTAS] の使用方法に関する詳細については、MSDN を参照してください。 これは、Azure SQL Data Warehouse で最も重要なステートメントの 1 つです。 よく理解しておいてください。
+[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) のドキュメントをご覧ください。 これは、Azure SQL Data Warehouse で最も重要なステートメントの 1 つです。 よく理解しておいてください。
 
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
+## <a name="next-steps"></a>次の手順
+開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)のページをご覧ください。
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-
-<!--MSDN references-->
-[CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
-
-<!--Other Web references-->

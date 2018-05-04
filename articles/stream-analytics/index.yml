@@ -1,0 +1,83 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Stream Analytics のドキュメント
+metadata:
+  title: Azure Stream Analytics のドキュメント - チュートリアル、API リファレンス
+  meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
+  services: stream-analytics
+  author: jasonwhowell
+  ms.author: jasonh
+  manager: kfile
+  ms.service: stream-analytics
+  ms.topic: landing-page
+  ms.date: 04/25/2018
+  ms.openlocfilehash: aad76cc87130e66908779c07b03d5db326f726ea
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: 完全管理型のイベント処理エンジンである Stream Analytics を使用してクラウド内で IoT (モノのインターネット) 分析を実行する方法について説明します。 チュートリアルなどのドキュメントでは、アプリケーション、センサー、デバイス、ソーシャル メディアなどからリアルタイムでデータを分析する方法を紹介します。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: https://sec.ch9.ms/sessions/connect/T157.png
+      width: 250
+    title: Azure Stream Analytics による IoT Edge でのリアルタイム分析。 (8:51)
+    href: https://azure.microsoft.com/en-us/resources/videos/connect-2017-real-time-analytics-on-iot-edge-with-azure-stream-analytics/
+    width: 250
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: 初めての Azure Stream Analytics ジョブをデプロイする方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/stream-analytics.svg
+      text: Azure ポータル
+      href: https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
+      text: PowerShell
+      href: https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-powershell
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure Stream Analytics ジョブをデプロイ、管理、監視する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="stream-analytics-manage-job">Stream Analytics ジョブを作成し、通話データを分析して結果を Power BI ダッシュボードで視覚化する</a>
+    - html: <a href="stream-analytics-with-azure-functions">Azure Stream Analytics ジョブから Azure Functions を実行する</a>
+    - html: <a href="stream-analytics-javascript-user-defined-functions">Azure Stream Analytics ジョブで JavaScript ユーザー定義関数を実行する</a>
+- title: 無料の Pluralsight ビデオ トレーニング
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Stream Analytics について
+      href: https://www.pluralsight.com/courses/azure-stream-analytics-understanding
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/azure-stream-analytics-understanding
+    - title: Azure と Power BI ストリーミングによるリアルタイム データの配信
+      href: https://www.pluralsight.com/courses/azure-power-bi-streaming
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/resourcemanager/azurerm.streamanalytics/v2.3.0/azurerm.streamanalytic">Azure PowerShell</a></p>
+    - title: 言語
+      html: <p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference">Stream Analytics クエリ言語</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/streamanalytics">REST API リファレンスに関するページ</a></p>

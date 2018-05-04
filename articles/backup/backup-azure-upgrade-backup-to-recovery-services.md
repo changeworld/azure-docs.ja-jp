@@ -1,6 +1,6 @@
 ---
-title: "Backup コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs"
-description: "Azure Backup コンテナーを Recovery Services コンテナーにアップグレードするための手順とサポート情報です。"
+title: Backup コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs
+description: Azure Backup コンテナーを Recovery Services コンテナーにアップグレードするための手順とサポート情報です。
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -84,7 +84,7 @@ PowerShell スクリプトによって、資格情報を入力することを求
 ### <a name="pre-requisites-checking"></a>前提条件のチェック
 Azure の資格情報を入力すると、Azure によって、環境が次の前提条件を満たしていることがチェックされます。
 
-- **エージェントの最小バージョン** - バックアップ コンテナーを Recovery Services コンテナーにアップグレードするには、MARS エージェントのバージョンが少なくとも 2.0.9083.0 である必要があります。 2.0.9083.0 より前のエージェントを使用してバックアップ コンテナーに登録した項目がある場合、前提条件のチェックは失敗します。 前提条件のチェックが失敗した場合は、エージェントを更新し、コンテナーのアップグレードをやり直してください。 エージェントの最新バージョンは、[http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) からダウンロードできます。
+- **エージェントの最小バージョン** - バックアップ コンテナーを Recovery Services コンテナーにアップグレードするには、MARS エージェントのバージョンが少なくとも 2.0.9083.0 である必要があります。 2.0.9083.0 より前のエージェントを使用してバックアップ コンテナーに登録した項目がある場合、前提条件のチェックは失敗します。 前提条件のチェックが失敗した場合は、エージェントを更新し、コンテナーのアップグレードをやり直してください。 最新バージョンのエージェントは、[http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) からダウンロードできます。
 - **進行中の構成ジョブ**: アップグレードするように設定した Backup コンテナーに対するジョブの構成または項目の登録が進行中の場合、前提条件のチェックは失敗します。 構成を完了するか、項目の登録を終了した後、コンテナーのアップグレード プロセスを開始してください。
 - **ストレージ ベースの課金モデル**: Recovery Services コンテナーは、インスタンス ベースの課金モデルをサポートします。 ストレージ ベースの課金モデルを使用している Backup コンテナーでコンテナーのアップグレードを実行した場合、コンテナーと共に課金モデルもアップグレードするよう求められます。 または、課金モデルを更新した後でコンテナーのアップグレードを実行できます。
 - Recovery Services コンテナーのリソース グループを識別します。 Resource Manager デプロイ機能を活用するには、Recovery Services コンテナーをリソース グループ内に配置する必要があります。 使用するリソース グループがわからない場合は、名前を指定すると、アップグレード プロセスによってリソース グループが作成されます。 さらに、アップグレード プロセスは、新しいリソース グループにコンテナーを関連付けます。
@@ -106,7 +106,7 @@ Recovery Services コンテナーでは、バックアップ ポリシーでの�
 
 ## <a name="enhanced-security"></a>強化されたセキュリティ
 
-Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。 
+Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。 
 
 強化されたセキュリティを有効にすると、データは、復旧ポイント情報がコンテナーから削除されてから最大 14 日間保持されます。 このセキュリティ データのストレージに対して課金されます。 セキュリティ データのリテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager に対して作成された復旧ポイントに適用されます。 
 
@@ -117,7 +117,6 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **アップグレード プランは進行中のバックアップに影響を与えますか?**</br>
-
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
 **近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?**</br>
@@ -130,18 +129,15 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 アップグレードされるリソースの数によって異なります。 小規模なデプロイ (保護されたインスタンスが数十) では、アップグレード全体は 20 分未満で実行されます。 大規模なデプロイでは、最大 1 時間かかります。
 
 **アップグレード後にロールバックすることはできますか?**</br>
-
 いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
 
 **サブスクリプションまたはリソースがアップグレードが可能かどうかを確認できますか?**</br>
 はい。 アップグレードの最初の手順は、リソースがアップグレード可能であることを検証することです。 前提条件の検証が失敗した場合は、アップグレードを完了できない理由をすべて通知するメッセージが表示されます。
 
 **CSP ベースの Backup コンテナーはアップグレードできますか?**</br>
-
 いいえ。 現時点では、CSP ベースのバックアップ コンテナーはアップグレードできません。 次のリリースで、CSP ベースのバックアップ コンテナーのアップグレードのサポートが追加される予定です。
 
 **アップグレード後に、従来のコンテナーを表示できますか?**</br>
-
 いいえ。 アップグレード後は、従来のコンテナーは、表示することも管理することもできません。 コンテナーのすべての管理操作は、新しい Azure ポータルを使用してのみ実行できます。
 
 **アップグレードに失敗しましたが、更新する必要があるエージェントを保持するコンピューターがもう存在しません。このような場合はどうすればよいでしょうか?**</br>

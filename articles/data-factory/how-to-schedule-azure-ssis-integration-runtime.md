@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 04/17/2018
 ms.author: douglasl
-ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法 
 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には料金が設定されています。 このため、SSIS パッケージを Azure で実行する必要がある場合のみ IR を実行し、必要ないときには停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 この記事で説明する手順の概要を次に示します。
@@ -55,9 +55,9 @@ Azure Automation アカウントを持っていない場合は、この手順の
     2. Azure SSIS IR があるデータ ファクトリを含む**サブスクリプション**を選択します。 
     3. **[リソース グループ]** では、**[新規作成]** を選択して新しいリソース グループを作成するか、**[既存のものを使用]** を選択して既存のリソース グループを選択します。 
     4. Automation アカウントの**場所**を選択します。 
-    5. **[実行アカウントの作成]** が **[はい]**に設定されていることを確認します。 サービス プリンシパルが Azure Active Directory に作成されます。 これは Azure サブスクリプションの**共同作成者**ロールに追加されます。
+    5. **[実行アカウントの作成]** が **[はい]** に設定されていることを確認します。 サービス プリンシパルが Azure Active Directory に作成されます。 これは Azure サブスクリプションの**共同作成者**ロールに追加されます。
     6. **[ダッシュボードにピン留めする]** を選択すると、ポータルのダッシュボードに表示されます。 
-    7. **[作成]**を選択します。 
+    7. **[作成]** を選択します。 
 
         ![[新規] -> [監視 + 管理] -> [Automation]](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
 3. ダッシュボードと通知に**展開ステータス**が表示されます。 
@@ -95,7 +95,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
 
     1. **[名前]** に、「**StartStopAzureSsisRuntime**」と入力します。
     2. **[Runbook の種類]** で、**[PowerShell]** を選びます。
-    3. **[作成]**を選択します。
+    3. **[作成]** を選択します。
     
         ![[Runbook の追加] ボタン](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
 3. Runbook のスクリプト ウィンドウに次のスクリプトをコピーして貼り付けます。 ツールバーの **[保存]** ボタンと **[公開]** ボタンを使用して、Runbook を保存してから公開します。 
@@ -123,7 +123,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -163,7 +163,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
     2. **[DATAFACTORYNAME]** には、Azure SSIS IR があるデータ ファクトリの名前を入力します。 
     3. **[AZURESSISNAME]** には、Azure SSIS IR の名前を入力します。 
     4. **[OPERATION]** には、「**START**」を入力します。 
-    5. **[OK]**を選択します。  
+    5. **[OK]** を選択します。  
 
         ![[Runbook の開始] ウィンドウ](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
 7. [ジョブ] ウィンドウで、**[出力]** タイルを選択します。 ジョブの出力ウィンドウで、メッセージ "**##### Completed #####**" が "**##### Starting #####**" の後に表示されるまで待機します。 Azure SSIS IR を開始するには約 20 分かかります。 **[ジョブ]** ウィンドウを閉じて、**[Runbook]** ウィンドウに戻ります。
@@ -187,10 +187,10 @@ Azure Automation アカウントを持っていない場合は、この手順の
     4. **[開始]** セクションでは、時刻について、現在の時刻から数分後の時刻を指定します。 
     5. **[繰り返し]** では **[定期的]** を選択します。 
     6. **[繰り返し間隔]** セクションでは、**[日]** を選択します。 
-    7. **[作成]**を選択します。 
+    7. **[作成]** を選択します。 
 
         ![Azure SSIS IR 開始のスケジュール](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
-3. **[パラメーターと実行設定]** タブに切り替えます。リソース グループ名、データ ファクトリ名、Azure SSIS IR 名を指定します。 **[OPERATION]** には、「**START**」を入力します。 **[OK]**を選択します。 **[OK]** を再び選択すると、Runbook の **[スケジュール]** ページにスケジュールが表示されます。 
+3. **[パラメーターと実行設定]** タブに切り替えます。リソース グループ名、データ ファクトリ名、Azure SSIS IR 名を指定します。 **[OPERATION]** には、「**START**」を入力します。 **[OK]** を選択します。 **[OK]** を再び選択すると、Runbook の **[スケジュール]** ページにスケジュールが表示されます。 
 
     ![Azure SSIS IR を開始するスケジュール](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
 4. 前の 2 つの手順を繰り返して、「**毎日 IR を停止**」という名前のスケジュールを作成します。 ここでは、「**毎日 IR を開始**」スケジュールで指定した時刻から 30 分以上後の時刻を指定します。 **[OPERATION]** には「**STOP**」を指定します。 
@@ -210,10 +210,10 @@ Azure Automation アカウントを持っていない場合は、この手順の
     1. **[名前]** に「**StartAzureSsisIR**」を入力します。 
     2. **[有効]** が **[はい]** に設定されていることを確認します。 
     3. **[URL]** をコピーして、任意の場所に保存します。 この手順は重要です。 後から URL を確認できません。 
-    4. **[OK]**を選択します。 
+    4. **[OK]** を選択します。 
 
         ![新しい Webhook のウィンドウ](./media/how-to-schedule-azure-ssis-integration-runtime/new-web-hook-window.png)
-3. **[パラメーターと実行設定]** タブに切り替えます。リソース グループ名、データ ファクトリ名、Azure SSIS IR 名を指定します。 **[OPERATION]** には、「**START**」を入力します。 Click **OK**. **[作成]**をクリックします。 
+3. **[パラメーターと実行設定]** タブに切り替えます。リソース グループ名、データ ファクトリ名、Azure SSIS IR 名を指定します。 **[OPERATION]** には、「**START**」を入力します。 Click **OK**. **[作成]** をクリックします。 
 
     ![webhook - パラメーターと実行設定](./media/how-to-schedule-azure-ssis-integration-runtime/webhook-parameters.png)
 4. 前の 3 つの手順を繰り返して、「**StopAzureSsisIR**」という名前でもう 1 つの webhook を作成します。 必ず URL をコピーしてください。 パラメーターと実行設定を指定するとき、**[OPERATION]** には「**STOP**」を指定します。 
@@ -226,7 +226,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
 作成するパイプラインは、3 つのアクティビティで構成されます。 
 
 1. 最初の **Web** アクティビティは、最初の webhook を呼び出して Azure SSIS IR を開始します。 
-2. **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 
+2. **[SSIS パッケージの実行]** アクティビティまたは **[ストアド プロシージャ]** アクティビティによって SSIS パッケージが実行されます。
 3. 2 つ目の **Web** アクティビティは、Azure SSIS IR を停止する webhook を呼び出します。 
 
 パイプラインを作成してテストしたら、スケジュール トリガーを作成して、パイプラインに関連付けます。 スケジュール トリガーによってパイプラインのスケジュールが定義されます。 たとえば、毎日午後 11 時に実行するようにスケジュール設定されたトリガーを作成します。 このトリガーは、毎日午後 11 時にパイプラインを実行します。 パイプラインが、Azure SSIS IR を開始し、SSIS パッケージを実行し、その後 Azure SSIS IR を停止します。 
@@ -247,8 +247,8 @@ Azure Automation アカウントを持っていない場合は、この手順の
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2 (プレビュー)]** を選択します。
@@ -278,69 +278,55 @@ Azure Automation アカウントを持っていない場合は、この手順の
     3. **[本文]** には、「`{"message":"hello world"}`」を入力します。 
    
         ![最初の Web アクティビティ - [設定] タブ](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-5. **[アクティビティ]** ツールボックスの **[全般]** セクションから、[ストアド プロシージャ] アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**RunSSISPackage**」に設定します。 
-6. **プロパティ** ウィンドウの **[SQL アカウント]** タブに切り替えます。 
-7. **[リンクされたサービス]** では、**[+ 新規]** をクリックします。
-8. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の操作を行います。 
 
-    1. **[種類]**で **[Azure SQL Database]** を選択します。
-    2. **[サーバー名]** フィールドで **SSISDB** データベースをホストするお使いの Azure SQL サーバーを選択します。 Azure SSIS IR プロビジョニング プロセスによって、SSIS カタログ (SSISDB データベース) が、指定の Azure SQL Server に作成されます。
-    3. **[データベース名]**で **[SSISDB]** を選択します。
-    4. **[ユーザー名]** に、データベースにアクセスするユーザーの名前を入力します。
-    5. **[パスワード]** に、ユーザーのパスワードを入力します。 
-    6. **[テスト接続]** ボタンをクリックして、データベースへの接続をテストします。
-    7. **[保存]** ボタンをクリックして、リンクされたサービスを保存します。
-9. **プロパティ**ウィンドウで **[SQL アカウント]** タブから **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
+4. **[アクティビティ]** ツールボックスの **[全般]** セクションから、[SSIS パッケージの実行] アクティビティ、または [ストアド プロシージャ] アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**RunSSISPackage**」に設定します。 
 
-    1. **[ストアド プロシージャ名]** では、**[編集]** オプションを選択し、「**sp_executesql**」を入力します。 
-    2. **[ストアド プロシージャ パラメーター]** セクションで **[+ 新規]** を選択します。 
-    3. パラメーターの **[名前]** に、「**stmt**」と入力します。 
-    4. パラメーターの **[型]** に、「**String**」と入力します。 
-    5. パラメーターの **[値]** に、次の SQL クエリを入力します。
+5. [SSIS パッケージの実行] アクティビティを選択した場合は、[Azure Data Factory での SSIS アクティビティを使用した SSIS パッケージの実行](how-to-invoke-ssis-package-ssis-activity.md)に関する記事に記載されている指示に従って、アクティビティの作成を完了します。  起動するまで最大 30 分間かかるため、Azure SSIS IR が使用可能になるまで待つための、十分な頻度の再試行回数を指定することを確認します。 
 
-        SQL クエリで、**folder_name**、**project_name**、および **package_name** パラメーターに適切な値を指定します。 
+    ![再試行の設定](media/how-to-schedule-azure-ssis-integration-runtime/retry-settings.png)
 
-        ```sql
-        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
+6. [ストアド プロシージャ] アクティビティを選択した場合は、「[Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す](how-to-invoke-ssis-package-stored-procedure-activity.md)」に記載されている指示に従って、アクティビティの作成を完了します。 起動に最大 30 分かかるため、Azure SSIS IR が使用できるようになるまで待つための TRANSACT-SQL スクリプトを挿入してください。
+    ```sql
+    DECLARE @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-        -- Wait until Azure-SSIS IR is started
-        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
-        BEGIN
-            WAITFOR DELAY '00:00:01';
-        END
+    -- Wait until Azure-SSIS IR is started
+    WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+    BEGIN
+        WAITFOR DELAY '00:00:01';
+    END
 
-        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
-            @project_name=N'YourProject', @package_name=N'YourPackage',
-            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
-            @execution_id=@exe_id OUTPUT 
+    EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+        @project_name=N'YourProject', @package_name=N'YourPackage',
+        @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+        @execution_id=@exe_id OUTPUT 
 
-        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
 
-        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+    EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
 
-        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
-        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
-        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
-        BEGIN
-            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
-            RAISERROR(@err_msg, 15, 1)
-        END
+    -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/
+    -- failed (4)/pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+    IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+    BEGIN
+        SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+        RAISERROR(@err_msg, 15, 1)
+    END
+    ```
 
-        ```
-10. **[Web]** アクティビティを **[ストアド プロシージャ]** アクティビティに接続します。 
+7. **[Web]** アクティビティを **[SSIS パッケージの実行]** または **[ストアド プロシージャ]** アクティビティに接続します。 
 
     ![[Web] アクティビティと [ストアド プロシージャ] アクティビティを接続する](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
 
-11. 別の **[Web]** アクティビティを **[ストアド プロシージャ]** アクティビティの右側にドラッグ アンド ドロップします。 アクティビティの名前を「**StopIR**」に設定します。 
-12. **プロパティ** ウィンドウで **[設定]** タブに切り替え、以下の操作を行います。 
+8. 別の **[Web]** アクティビティを **[SSIS パッケージの実行]** または **[ストアド プロシージャ]** アクティビティの右側にドラッグ アンド ドロップします。 アクティビティの名前を「**StopIR**」に設定します。 
+9. **プロパティ** ウィンドウで **[設定]** タブに切り替え、以下の操作を行います。 
 
     1. **[URL]** には、Azure SSIS IR を停止する webhook の URL を貼り付けます。 
     2. **[メソッド]** では、**[POST]** を選択します。 
     3. **[本文]** には、「`{"message":"hello world"}`」を入力します。  
-4. **[ストアド プロシージャ]** アクティビティを最後の **[Web]** アクティビティに接続します。
+10. **[SSIS パッケージの実行]** アクティビティまたは **[ストアド プロシージャ]** アクティビティを最後の **[Web]** アクティビティに接続します。
 
     ![完全なパイプライン](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-5. ツール バーの **[検証]** をクリックしてパイプライン設定を検証します。 **[>>]** ボタンをクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。 
+11. ツール バーの **[検証]** をクリックしてパイプライン設定を検証します。 **[>>]** ボタンをクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。 
 
     ![パイプラインの検証](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 
@@ -357,7 +343,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
     1. **[サーバー名]** には、**&lt;ご使用の Azure SQL Database&gt;.database.windows.net** を指定します。
     2. **[オプション >>]** を選択します。
     3. **[データベースの接続]** では **[SSISDB]** を選択します。
-    4. **[接続]**を選択します。 
+    4. **[接続]** を選択します。 
     5. **[Integration Services カタログ]** -> **[SSISDB]** -> ご使用のフォルダー -> **[プロジェクト]** -> ご使用の SSIS プロジェクト -> **[パッケージ]** を展開します。 
     6. SSIS パッケージを右クリックし、**[レポート]** -> **[標準レポート]** -> **[すべての実行]** を選択します。 
     7. SSIS パッケージが実行されたことを確認します。 
@@ -381,7 +367,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
     4. **[繰り返し]** では、トリガーの間隔を指定します。 次の例では毎日 1 回です。 
     5. **[終了]** では、**[指定日]** オプションを選択して日付と時刻を指定できます。 
     6. **[アクティブ化]** を選択します。 トリガーは、ソリューションをデータ ファクトリに公開するとすぐにアクティブ化されます。 
-    7. **[次へ]**を選択します。
+    7. **[次へ]** を選択します。
 
         ![[トリガー] -> [新規作成/編集]](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
 4. **[Trigger Run Parameters]\(トリガー実行のパラメーター\)** ページで、警告を確認し、**[完了]** を選択します。 

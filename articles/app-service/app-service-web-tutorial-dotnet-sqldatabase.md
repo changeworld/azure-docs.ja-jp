@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -146,6 +146,9 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 このユーザー名とパスワードを覚えておいてください。 後で、論理サーバー インスタンスを管理するために使用します。
 
+> [!IMPORTANT]
+> (Visual Studio および App Service で) 接続文字列のパスワードがマスクされていても、それがどこかに保持されているのは事実であり、アプリの攻撃対象領域が増えることになります。 App Service では、[マネージド サービス ID](app-service-managed-service-identity.md) を使用して、コードやアプリの構成にシークレットを保持する必要性をなくすことで、このリスクを排除できます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
+
 ![SQL Server インスタンスを作成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 Click **OK**. **[SQL Database の構成]** ダイアログはまだ閉じないでください。
@@ -156,7 +159,7 @@ Click **OK**. **[SQL Database の構成]** ダイアログはまだ閉じない�
 
 * 生成された既定の **[データベース名]** をそのまま使用します。
 * **[接続文字列名]** に「*MyDbConnection*」と入力します。 この名前は、*Models/MyDatabaseContext.cs* で参照されている接続文字列と一致する必要があります。
-* **[OK]**を選択します。
+* **[OK]** を選択します。
 
 ![SQL Database を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
@@ -413,8 +416,6 @@ Web アプリのページが表示されます。
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-<a name="next"></a>
-
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
@@ -427,7 +428,7 @@ Web アプリのページが表示されます。
 > * Azure からターミナルにログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進んで、接続 Azure SQL Database のセキュリティを簡単に改善する方法を学んでください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
+> [マネージド サービス ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)

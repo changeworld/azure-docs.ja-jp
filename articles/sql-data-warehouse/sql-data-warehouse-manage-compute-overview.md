@@ -2,24 +2,19 @@
 title: Azure SQL Data Warehouse でのコンピューティング リソースの管理 | Microsoft Docs
 description: Azure SQL Data Warehouse のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、データ ウェアハウスを一時停止してコストを削減したりします。
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: ''
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
-ms.author: elbutter
-ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ca6d34d3b670bfd05a9b65fe9e6b260120e3a5b8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのコンピューティングの管理
 Azure SQL Data Warehouse でコンピューティング リソースを管理する方法について説明します。 また、データ ウェアハウスを一時停止してコストを削減したり、データ ウェアハウスをパフォーマンス需要に応じてスケーリングしたりする方法についても説明します。 
@@ -28,7 +23,7 @@ Azure SQL Data Warehouse でコンピューティング リソースを管理す
 SQL Data Warehouse のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。 その結果、データ ストレージとは無関係に、パフォーマンス需要に応じてコンピューティングをスケーリングできます。 コンピューティング リソースは、一時停止して再開することもできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)は別々に行われます。 データ ウェアハウスをしばらく使用する必要がない場合は、コンピューティングを一時停止して、コンピューティング コストを節約できます。 
 
 ## <a name="scaling-compute"></a>コンピューティングのスケーリング
-コンピューティングをスケールアウトまたはスケールバックするには、データ ウェアハウスの[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)設定を調整します。 データ ウェアハウス ユニットを追加していくと、読み込みとクエリのパフォーマンスが直線的に増加していきます。 SQL Data Warehouse は、データ ウェアハウス ユニットの[サービス レベル](performance-tiers.md#service-levels)を提供しており、スケールアウトまたはスケールバックを実行したときにパフォーマンスが顕著に変化します。 
+コンピューティングをスケールアウトまたはスケールバックするには、データ ウェアハウスの[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)設定を調整します。 データ ウェアハウス ユニットを追加していくと、読み込みとクエリのパフォーマンスが直線的に増加していきます。 
 
 スケールアウトの手順については、[Azure Portal](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md)、または [T-SQL](quickstart-scale-compute-tsql.md) のクイックスタートに関する記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用して、スケールアウト操作を実行することもできます。
 
@@ -103,19 +98,19 @@ SQL Data Warehouse のアーキテクチャではストレージとコンピュ�
 
 SQL Data Warehouse を一時停止またはスケールすると、要求の一時停止またはスケールを開始したときに、バックグラウンドでクエリが取り消されます。  単純な SELECT クエリの取り消しは、短時間で終わる処理であるため、インスタンスを一時停止またはスケールするのにかかる時間にほとんど影響しません。  ただし、データやデータ構造を変更するトランザクション クエリは、すぐに停止できない場合があります。  **トランザクション クエリについては、当然、すべてが完了するか、変更をロールバックする必要があります。**  トランザクション クエリが完了した作業をロールバックするには、クエリが元の変更の適用にかかった時間と同じか、それよりも長くかかる場合があります。  たとえば、行の削除を既に 1 時間実行しているクエリを取り消した場合、削除された行を挿入し直すのに 1 時間かかる可能性があります。  トランザクションの実行中に一時停止またはスケールを実行した場合、一時停止またはスケールするには、ロールバックが完了するのを待機する必要があるため、時間がかかることがあります。
 
-[トランザクションの理解に関する記事](sql-data-warehouse-develop-transactions.md)、および [トランザクションの最適化][トランザクションの最適化に関する記事](sql-data-warehouse-develop-best-practices-transactions.md)も参照してください。
+[トランザクションの概要](sql-data-warehouse-develop-transactions.md)と[トランザクションの最適化](sql-data-warehouse-develop-best-practices-transactions.md)に関するページも参照してください。
 
 ## <a name="automating-compute-management"></a>コンピューティングの管理の自動化
 コンピューティングの管理操作を自動化するには、[Azure の機能を使用したコンピューティングの管理に関する記事](manage-compute-with-azure-functions.md)を参照してください。
 
 スケール アウト、一時停止、再開の各操作は、完了するのに数分かかる場合があります。 スケーリング、一時停止、または再開を自動化する場合は、別のアクションに進む前に特定の操作を確実に完了させるロジックを実装することをお勧めします。 さまざまなエンドポイントを通じてデータ ウェアハウスの状態を確認することで、このような操作の自動化を適切に実装できます。 
 
-データ ウェアハウスの状態を確認するには、[PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) または [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) のクイックスタート記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) を使用して、データ ウェアハウスの状態を確認することもできます。
+データ ウェアハウスの状態を確認するには、 [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) または [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) のクイックスタートに関する記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) を使用して、データ ウェアハウスの状態を確認することもできます。
 
 
 ## <a name="permissions"></a>アクセス許可
 
-データ ウェアハウスをスケーリングするには、[「ALTER DATABASE」(データベースの変更)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md) で説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB Contributor](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
+データ ウェアハウスをスケーリングするには、[「ALTER DATABASE」(データベースの変更)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) で説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB Contributor](../role-based-access-control/built-in-roles.md#sql-db-contributor) のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
 
 
 ## <a name="next-steps"></a>次の手順

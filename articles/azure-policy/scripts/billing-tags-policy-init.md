@@ -1,25 +1,25 @@
 ---
-title: "Azure Policy の JSON サンプル - 課金タグ ポリシーのイニシアティブ | Microsoft Docs"
-description: "この JSON サンプル ポリシーは、コスト センターと製品名に対して指定したタグの値を使用することが要件です。"
+title: Azure Policy の JSON サンプル - 課金タグ ポリシーのイニシアティブ | Microsoft Docs
+description: この JSON サンプル ポリシーは、コスト センターと製品名に対して指定したタグの値を使用することが要件です。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: d9f964ed6d2f04898b649194d0824cb7f3c31e2d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 45dea9bb8ed6826d0c95a8a89e4270b82503a262
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="billing-tags-policy-initiative"></a>課金タグ ポリシーのイニシアティブ
 

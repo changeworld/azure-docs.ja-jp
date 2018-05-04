@@ -1,28 +1,27 @@
 ---
-title: "SQL Data Warehouse での動的 SQL | Microsoft Docs"
-description: "ソリューション開発のための Azure SQL Data Warehouse での動的 SQL  の使用に関するヒント。"
+title: Azure SQL Data Warehouse での動的 SQL の使用 | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse での動的 SQL  の使用に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: a948c2c3-3cd1-4373-90a9-79e59414b778
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 29228676373aee8dbc7b1b2a7d92ffc978333804
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 604074e0a645918f7033360b79a1b7cad050c9e4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>SQL Data Warehouse での動的 SQL
-SQL Data Warehouse のアプリケーション コードを開発する際に、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要のある場合があります。 現時点では、SQL Data Warehouse は BLOB データ型をサポートしていません。 これにより、blob 型には varchar (max) と nvarchar (max) の両方の型が含まれるので、文字列のサイズが制限される場合があります。 大量の文字列を構築するときにアプリケーション コードでこれらの型を使用した場合、コードをチャンクに分割し、代わりに EXEC ステートメントを使用する必要があります。
+ソリューション開発のための Azure SQL Data Warehouse での動的 SQL  の使用に関するヒント。
+
+## <a name="dynamic-sql-example"></a>動的 SQL の例
+
+SQL Data Warehouse のアプリケーション コードを開発する際に、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要が生じる場合があります。 現時点では、SQL Data Warehouse は BLOB データ型をサポートしていません。 BLOB データ型には varchar(max) および nvarchar(max) が含まれるため、BLOB データ型がサポートされないと、使用する文字列のサイズが制限される場合があります。 大量の文字列を構築するために、アプリケーション コードでこれらの型を使用した場合、コードをチャンクに分割し、代わりに EXEC ステートメントを使用する必要があります。
 
 単純な例を次に示します。
 
@@ -34,22 +33,13 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-文字列が短い場合は、通常どおり [sp_executesql][sp_executesql] を使用することができます。
+文字列が短い場合は、通常どおり [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql) を使用できます。
 
 > [!NOTE]
 > 動的 SQL として実行されるステートメントには、すべての TSQL 検証規則が適用されます。
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
+## <a name="next-steps"></a>次の手順
+開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページを参照してください。
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[sp_executesql]: https://msdn.microsoft.com/library/ms188001.aspx
-
-<!--Other Web references-->

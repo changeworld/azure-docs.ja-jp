@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1e85d5f48ce998ebaf4ccaa231bb75449e2bab16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0b8f56266f77724a60253991556b15a923e537f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
-> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)を参照してください。
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/resources/samples/?service=data-factory)を参照してください。
 
 
 ## <a name="samples-on-github"></a>GitHub のサンプル
@@ -100,7 +100,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
     ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. **[Data Factory Configuration]** (Data Factory の構成) ダイアログの **[Data Factory Basics]** (Data Factory の基本) ページで **[次へ]** をクリックします。
 5. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
-   1. **[Create New Data Factory]** (Data Factory の新規作成) を選択します。 **[既存のデータ ファクトリを使用する]**を選択することもできます。
+   1. **[Create New Data Factory]** (Data Factory の新規作成) を選択します。 **[既存のデータ ファクトリを使用する]** を選択することもできます。
    2. データ ファクトリの **名前** を入力します。
    3. データ ファクトリを作成する **Azure サブスクリプション** を選択します。
    4. データ ファクトリの **リソース グループ** を選択します。
@@ -110,7 +110,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 7. **[コンピューティングの構成]** ページで、既定値を選択し、**[次へ]** をクリックします。
 8. **[概要]** ページで、すべての設定を確認し、**[次へ]** をクリックします。
 9. **[Deployment Status]** (デプロイ ステータス) ページで、デプロイが完了するまで待ってから **[完了]** をクリックします。
-10. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]**をクリックします。
+10. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** をクリックします。
 11. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
 12. 次のダイアログ ボックスが表示されます。
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード"
-description: "Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード"
+title: 'Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード'
+description: 'Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード'
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード
 
@@ -122,7 +122,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 >- Application Gateway
 >- Azure Active Directory
 >- App Service Environment v2
->- OMS Log Analytics
+>- Log Analytics
 >- Azure Key Vault
 >- ネットワーク セキュリティ グループ
 >- Azure SQL DB
@@ -177,7 +177,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 さらに、各 NSG で次の構成を使用できます。
 
 - [診断ログとイベント](/azure/virtual-network/virtual-network-nsg-manage-log)の有効化 (ストレージ アカウントに格納されます) 
-- OMS Log Analytics の [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)への接続
+- Log Analytics の [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)への接続
 
  
 #### <a name="subnets"></a>サブネット
@@ -190,11 +190,11 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 
 このアーキテクチャは、暗号化、データベース監査などの手段を使用して保存データを保護します。
 
-#### <a name="azure-storage"></a>Azure Storage (Azure Storage)
+#### <a name="azure-storage"></a>Azure Storage
 
 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage サービスの暗号化](/azure/storage/storage-service-encryption)が使用されます。
 
-#### <a name="azure-sql-database"></a>の接続文字列
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database インスタンスは、次のデータベース セキュリティ対策を使用します。
 
@@ -208,12 +208,12 @@ Azure SQL Database インスタンスは、次のデータベース セキュリ
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
-[Operations Management Suite (OMS)](/azure/operations-management-suite/) は Contoso Webstore に、すべてのシステムおよびユーザー アクティビティの広範なログ記録 (金融データのログ記録を含みます) を提供できます。 正確性を確保するために、変更内容を確認および検証できます。 
+[Log Analytics](https://azure.microsoft.com/services/log-analytics) は Contoso Webstore に、すべてのシステムおよびユーザー アクティビティの広範なログ記録 (財務データのログ記録を含む) を提供できます。 正確性を確保するために、変更内容を確認および検証できます。 
 
 - **アクティビティ ログ。**  [アクティビティ ログ](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプション内のリソースに対して実行された操作に関する情報を提供します。
 - **診断ログ。**  [診断ログ](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、Azure Blob Storage ログ、テーブル、キューのログが含まれます。
 - **ファイアウォール ログ。**  Application Gateway は、完全な診断ログとアクセス ログを提供します。 ファイアウォール ログは、WAF が有効になっている Application Gateway リソースで使用できます。
-- **ログのアーカイブ。**  すべての診断ログは、一元化され暗号化された Azure Storage アカウントに書き込まれ、定義済みのリテンション期間 (2 日間) にわたってアーカイブされるように構成されます。 その後、ログは Azure Log Analytics に接続されて処理、格納、ダッシュボード化されます。 [Log Analytics](https://azure.microsoft.com/services/log-analytics) は、クラウドおよびオンプレミス環境内のリソースで生成されたデータの収集と分析に役立つ OMS サービスです。
+- **ログのアーカイブ。**  すべての診断ログは、一元化され暗号化された Azure Storage アカウントに書き込まれ、定義済みのリテンション期間 (2 日間) にわたってアーカイブされるように構成されます。 その後、ログは Azure Log Analytics に接続されて処理、格納、ダッシュボード化されます。 [Log Analytics](https://azure.microsoft.com/services/log-analytics) は、クラウドおよびオンプレミス環境内のリソースで生成されたデータの収集と分析に役立つサービスです。
 
 ### <a name="encryption-and-secrets-management"></a>暗号化とシークレットの管理
 
@@ -230,7 +230,7 @@ Contoso Webstore は、すべての機微なデータを暗号化し、Azure Key
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 ソリューションのすべてのユーザー (SQL Database にアクセスするユーザーを含む) は、Azure Active Directory で作成されています。
 - アプリケーションに対する認証は Azure AD を使用して行われます。 詳細については、「[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/active-directory-integrating-applications)」をご覧ください。 さらに、データベース列の暗号化でも、Azure AD を使用して、アプリケーションが Azure SQL Database に対して認証されます。 詳細については、「[Always Encrypted: Protect sensitive data in SQL Database](/azure/sql-database/sql-database-always-encrypted-azure-key-vault)」(Always Encrypted: SQL Database で機密データを保護する) をご覧ください。 
 - [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) は、組織の ID に影響する可能性がある潜在的な脆弱性を検出し、組織の ID に関連する検出された疑わしいアクションに対する自動応答を構成し、疑わしいインシデントを調査して適切なアクションを実行して解決します。
-- [Azure のロールベースのアクセス制御 (RBAC)](/azure/active-directory/role-based-access-control-configure) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスはすべてのユーザーに制限されます。
+- [Azure のロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/role-assignments-portal) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスはすべてのユーザーに制限されます。
 
 Azure SQL Database のセキュリティ機能の使用方法の詳細については、「[Contoso Clinic デモ アプリケーション](https://github.com/Microsoft/azure-sql-security-sample)」サンプルをご覧ください。
    
@@ -263,7 +263,7 @@ App Service 環境はセキュリティで保護され、ロック ダウンさ�
 仮想マシンは、次の構成を使用してジャンプボックス (要塞ホスト) として作成されています。
 
 -   [マルウェア対策拡張機能](/azure/security/azure-security-antimalware)
--   [OMS 拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Log Analytics 拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Azure 診断拡張機能](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure ディスクの暗号化](/azure/security/azure-security-disk-encryption) 
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)
@@ -284,11 +284,11 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) は、Operations Management Suite (OMS) のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) は、クラウドおよびオンプレミス環境内のリソースで生成されたデータの収集と分析に役立つサービスです。
 
-#### <a name="oms-solutions"></a>OMS ソリューション
+#### <a name="managment-solutions"></a>管理ソリューション
 
-これらの追加の OMS ソリューションが検討され、構成される必要があります。 
+以下の追加の管理ソリューションについて検討と構成を行ってください。 
 - [アクティビティ ログ分析](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Azure Networking Analytics](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -344,9 +344,9 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
     
     詳細な使用手順については、「[Script Instructions - Deploy and Configure Azure Resources](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)」(スクリプトの手順 - Azure リソースのデプロイと構成) をご覧ください。
     
-3. OMS のログ記録および監視。 ソリューションのデプロイ時に、[Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) ワークスペースを開くことができ、ソリューションのリポジトリで提供されているサンプル テンプレートを使用して、監視ダッシュボードをどのように構成できるかを示すことができます。 サンプル OMS テンプレートについては、[omsDashboards フォルダー](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)を参照してください。 テンプレートが正しくデプロイされるために、データが OMS に収集される必要があります。 これには、サイトの活動によっては、最大 1 時間かそれ以上かかる場合があります。
+3. Log Analytics のログ記録および監視。 ソリューションがデプロイされると、Log Analytics ワークスペースを開くことができ、ソリューションのリポジトリで提供されているサンプル テンプレートを使用して、監視ダッシュボードをどのように構成できるかを示すことができます。 サンプル テンプレートについては、[omsDashboards フォルダー](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md)を参照してください。 テンプレートが正しくデプロイされるために、データが Log Analytics に収集される必要があります。 これには、サイトの活動によっては、最大 1 時間かそれ以上かかる場合があります。
  
-    OMS のログ記録を設定する際は、以下のリソースを含めることを検討してください。
+    Log Analytics のログ記録を設定する際は、以下のリソースを含めることを検討してください。
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups
@@ -361,7 +361,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
     
 ## <a name="threat-model"></a>脅威モデル
 
-Contoso Webstore [Blueprint 脅威モデル](https://aka.ms/pciblueprintthreatmodel)のためのデータ フロー ダイアグラム (DFD) と脅威モデルの例です。
+Contoso Webstore [ブループリントの脅威モデル](https://aka.ms/pciblueprintthreatmodel)のためのデータ フロー ダイアグラム (DFD) と脅威モデルの例です。
 
 ![](images/pci-threat-model.png)
 

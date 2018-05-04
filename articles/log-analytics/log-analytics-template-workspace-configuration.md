@@ -1,29 +1,29 @@
 ---
-title: "Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。"
+title: Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/16/2018
 ms.author: richrund
-ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0d9848a6477dbf1b93a7f640bc44adf627b40a45
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
 
-* ワークスペースの作成
+* 価格レベルの設定を含むワークスペースの作成 
 * ソリューションの追加
 * 保存された検索の作成
 * コンピューター グループの作成
@@ -34,32 +34,108 @@ ms.lasthandoff: 03/08/2018
 * Azure 仮想マシンへの Log Analytics エージェントの追加
 * Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
 
-この記事のコード サンプルで紹介しているのは、テンプレートから実行できる構成の一部です。
+この記事では、テンプレートで実行できる構成の一部を示すテンプレート サンプルを紹介しています。
 
-## <a name="api-versions"></a>API のバージョン
-この記事の例は、[アップグレードされた Log Analytics ワークスペース](log-analytics-log-search-upgrade.md)を対象としています。  レガシ ワークスペースを使用するには、クエリの構文をレガシ言語に変更し、リソースごとに API バージョンを変更する必要があります。  次の表は、この例で使用されているリソースの API バージョンの一覧です。
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
+次の例では、ローカル マシンからテンプレートを使用してワークスペースを作成します。 JSON テンプレートは、ワークスペースの名前の入力だけをユーザーに求め、環境の標準構成として使用される可能性のある他のパラメーターには既定値を指定するように構成されています。  
 
-| リソース | リソースの種類 | レガシ API バージョン | アップグレードされた API バージョン |
-|:---|:---|:---|:---|
-| ワークスペース   | workspaces    | 2015-11-01-preview | 2017-03-15-preview |
-| Search      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
-| データ ソース | datasources   | 2015-11-01-preview | 2015-11-01-preview |
-| 解決策    | solutions     | 2015-11-01-preview | 2015-11-01-preview |
+以下のパラメーターには、既定値が設定されます。
 
+* 場所 - 既定値は米国東部
+* SKU - 既定値は、2018 年 4 月の価格モデルでリリースされた新しい 1 GB あたりの価格レベル
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成と構成
+>[!WARNING]
+>新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。 
+>
+
+### <a name="create-and-deploy-template"></a>テンプレートの作成とデプロイ
+
+1. 以下の JSON 構文をコピーして、ファイルに貼り付けます。
+
+    ```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "eastus",
+              "westus"
+            ],
+            "defaultValue": "eastus",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        },
+        "sku": {
+            "type": "String",
+            "allowedValues": [
+              "Standalone",
+              "PerNode",
+              "PerGB2018"
+            ],
+            "defaultValue": "PerGB2018",
+            "metadata": {
+            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
+        }
+          },
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2017-03-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "Name": "[parameters('sku')]"
+                },
+                "features": {
+                    "searchVersion": 1
+                }
+            }
+          }
+       ]
+    }
+    ```
+2. 要件に合わせてテンプレートを編集します。  どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
+3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。
+4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell またはコマンド ラインを使用して、ワークスペースを作成します。
+
+   * PowerShell の場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
+   
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        ```
+
+   * コマンド ラインの場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
+
+        ```cmd
+        azure config mode arm
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        ```
+
+デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。<br><br> ![デプロイ完了時の結果の例](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+
+## <a name="configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの構成
 次のサンプル テンプレートは、以下のタスクの実行方法を示しています。
 
-1. データ リテンション期間の設定を含め、ワークスペースを作成する
-2. ソリューションをワークスペースに追加する
-3. 保存された検索の作成
-4. コンピューター グループの作成
-5. Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
-6. Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
-7. Linux コンピューターからの syslog イベントの収集
-8. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
-9. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
-11. Azure 診断によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
+1. ソリューションをワークスペースに追加する
+2. 保存された検索の作成
+3. コンピューター グループの作成
+4. Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
+5. Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
+6. Linux コンピューターからの syslog イベントの収集
+7. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
+8. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
+9. Azure 診断によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
 
 ```json
 {
@@ -77,10 +153,11 @@ ms.lasthandoff: 03/08/2018
       "allowedValues": [
         "Free",
         "Standalone",
-        "PerNode"
+        "PerNode",
+        "PerGB2018"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standalone, or PerNode"
+        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
     }
       },
     "dataRetention": {
@@ -421,7 +498,6 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
-
 
 ## <a name="example-resource-manager-templates"></a>Azure Resource Manager のサンプル テンプレート
 Azure クイックスタート テンプレート ギャラリーに、Log Analytics 用のさまざまなテンプレートが用意されています。

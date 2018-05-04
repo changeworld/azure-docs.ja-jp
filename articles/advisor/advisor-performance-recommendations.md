@@ -1,12 +1,12 @@
 ---
-title: "Azure Advisor のパフォーマンスに関する推奨事項 | Microsoft Docs"
-description: "Advisor を使用して、Azure のデプロイのパフォーマンスを最適化します。"
+title: Azure Advisor のパフォーマンスに関する推奨事項 | Microsoft Docs
+description: Advisor を使用して、Azure のデプロイのパフォーマンスを最適化します。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: e32723cd3ef13829890a630f4bff308164e17674
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 00abb5aafc6f3aec2e2dd7326a307bee74d97cc1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor のパフォーマンスに関する推奨事項
 
@@ -31,11 +31,11 @@ Advisor は、すべての Azure リソースに関する推奨事項を、一�
 > [!NOTE]
 > 推奨事項を取得するには、データベースを約 1 週間使用し、その週の間に、何らかの一貫性のあるアクティビティが行われている必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
 
-SQL Database Advisor の詳細については「[SQL Database Advisor](https://azure.microsoft.com/en-us/documentation/articles/sql-database-advisor/)」を参照してください。
+SQL Database Advisor の詳細については「[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)」を参照してください。
 
 ## <a name="improve-redis-cache-performance-and-reliability"></a>Redis Cache のパフォーマンスと信頼性の向上
 
-Advisor は、メモリの高使用率、サーバーの負荷、ネットワークの帯域幅、または大量のクライアント接続がパフォーマンスに悪影響を与える可能性がある Redis Cache インスタンスを識別します。 Advisor は、潜在的な問題を回避するためのベスト プラクティスの推奨事項も提示します。 Redis Cache に関する推奨事項の詳細については、「[Redis Cache Advisor](https://azure.microsoft.com/en-us/documentation/articles/cache-configure/#redis-cache-advisor)」を参照してください。
+Advisor は、メモリの高使用率、サーバーの負荷、ネットワークの帯域幅、または大量のクライアント接続がパフォーマンスに悪影響を与える可能性がある Redis Cache インスタンスを識別します。 Advisor は、潜在的な問題を回避するためのベスト プラクティスの推奨事項も提示します。 Redis Cache に関する推奨事項の詳細については、「[Redis Cache Advisor](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)」を参照してください。
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>App Service のパフォーマンスと信頼性の向上
@@ -44,7 +44,7 @@ Azure Advisor は、App Services のエクスペリエンスを向上させ、�
 * アプリの実行時にメモリや CPU のリソースが使い尽くされるインスタンスの検出と軽減オプションの提供。
 * Web アプリやデータベースなどのリソースの配置によってパフォーマンスの向上とコストの削減を実現できるインスタンスの検出。 
 
-App Services に関する推奨事項の詳細については、「[Azure App Service のベスト プラクティス](https://azure.microsoft.com/en-us/documentation/articles/app-service-best-practices/)を参照してください。
+App Services に関する推奨事項の詳細については、「[Azure App Service のベスト プラクティス](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)を参照してください。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
@@ -52,7 +52,7 @@ App Services に関する推奨事項の詳細については、「[Azure App Se
 
 2.  Advisor ダッシュボードで、**[パフォーマンス]** タブをクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 

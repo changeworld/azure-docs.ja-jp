@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 77729ad52f101f0d57fe24115525795c6b4f2db2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51ed7dbead7f9085de563d2fb20c4e4a08f90bb2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>チュートリアル: Azure Machine Learning Workbench を使用した高度なデータ準備 (自転車シェア データ)
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning Workbench のローカル インストール。 詳細については、[インストールのクイック スタート](../service/quickstart-installation.md)に関する記事をご覧ください。
-* Azure CLI をインストールしていない場合は、指示に従って、[Azure CLI の最新バージョンをインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)してください。
+* Azure CLI をインストールしていない場合は、指示に従って、[Azure CLI の最新バージョンをインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)してください。
 * Azure に作成された [HDInsights Spark クラスター](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
 * Azure ストレージ アカウント。
 * Workbench で新しいプロジェクトを作成する方法についての知識。
@@ -112,7 +112,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 1. スタート メニューまたは起動プログラムから、**Machine Learning Workbench** を起動します。
 
-2. 新しい Machine Learning プロジェクトを作成します。 **[プロジェクト]**ページの **+** ボタンを選択するか、または **[ファイル]** > **[新規]** の順に選択します。
+2. 新しい Machine Learning プロジェクトを作成します。 **[プロジェクト]** ページの **+** ボタンを選択するか、または **[ファイル]** > **[新規]** の順に選択します。
 
    * **[Bike Share]\(自転車共有\)** テンプレートを使用します。
 
@@ -130,11 +130,11 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
 ## <a name="add-weather-data"></a>気象データの追加
 
-1. **[データ ストア]**: データを含むデータ ストアを選択します。 ファイルを使用しているため、**[File(s)/Directory]\(ファイル/ディレクトリ\)**を選択します。 **[次へ]** をクリックして続行します。
+1. **[データ ストア]**: データを含むデータ ストアを選択します。 ファイルを使用しているため、**[File(s)/Directory]\(ファイル/ディレクトリ\)** を選択します。 **[次へ]** をクリックして続行します。
 
    ![ファイル/ディレクトリ エントリ](media/tutorial-bikeshare-dataprep/datasources.png)
 
-2. **[ファイルの選択]**: 気象データを追加します。 先ほど Blob Storage にアップロードした `BostonWeather.csv` ファイルを参照して選択します。 **[次へ]**を選択します。
+2. **[ファイルの選択]**: 気象データを追加します。 先ほど Blob Storage にアップロードした `BostonWeather.csv` ファイルを参照して選択します。 **[次へ]** を選択します。
 
    ![BostonWeather.csv が選択されているファイル選択](media/tutorial-bikeshare-dataprep/azureblobpickweatherdatafile.png)
 
@@ -179,7 +179,7 @@ Azure Blob Storage を使用してデータ ファイルをホストできます
 
    b. __[次へ]__ を選択して、続行します。 
 
-5. **[サンプリング]**: サンプリング スキームを作成するには、**[編集]** を選択します。 追加された新しい__上位 10000__ 行を選択して、__[編集]__を選択します。 __[Sample Strategy]\(サンプル戦略\)__ を **[Full File]\(完全ファイル\)** に設定してから、**[適用]** を選択します。
+5. **[サンプリング]**: サンプリング スキームを作成するには、**[編集]** を選択します。 追加された新しい__上位 10000__ 行を選択して、__[編集]__ を選択します。 __[Sample Strategy]\(サンプル戦略\)__ を **[Full File]\(完全ファイル\)** に設定してから、**[適用]** を選択します。
 
    ![新しいサンプル戦略の追加](media/tutorial-bikeshare-dataprep/weatherdatasamplingfullfile.png)
 
@@ -501,7 +501,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
    ![[列の追加 (スクリプト)] ダイアログ ボックス](media/tutorial-bikeshare-dataprep/computecolscriptdialog.png)
 
-3. __[OK]__を選択して **logtripduration** 列を追加します。
+3. __[OK]__ を選択して **logtripduration** 列を追加します。
 
 4. 列を右クリックして、**[ヒストグラム]** を選択します。
 
@@ -548,7 +548,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
     > [!NOTE]
     > 青いヒストグラムが、処理前に比べて短く表示されていることに気が付きます。 この違いは、データが新しい範囲に自動的に再調整されたためです。
 
-2. ハローを削除するには、__[編集]__ を選択して__[Show halo]\(ハローの表示\)__ をオフにします。
+2. ハローを削除するには、__[編集]__ を選択して __[Show halo]\(ハローの表示\)__ をオフにします。
 
     ![ヒストグラムのオプション](media/tutorial-bikeshare-dataprep/uncheckhalo.png)
 
@@ -619,7 +619,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 
     ![キー列の選択](media/tutorial-bikeshare-dataprep/joinkeyselection.png)
 
-4. __[結合の種類]__: 結合の種類として__[Matching rows]\(一致する行\)__ を選択し、__[完了]__ を選択します。
+4. __[結合の種類]__: 結合の種類として __[Matching rows]\(一致する行\)__ を選択し、__[完了]__ を選択します。
 
     ![結合の種類が [一致する行] になっている](media/tutorial-bikeshare-dataprep/joinscreen.png)
 

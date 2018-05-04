@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric クラスターでの混乱の誘発 |Microsoft ドキュメント"
-description: "フォールト挿入とクラスター分析サービス API を使用して、クラスター内の混乱を管理します。"
+title: Service Fabric クラスターでの混乱の誘発 |Microsoft ドキュメント
+description: フォールト挿入とクラスター分析サービス API を使用して、クラスター内の混乱を管理します。
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 81206257cb2c7157bbb1ffcf3a79ced7c896ef80
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 40ceb62e544d2aa71296e24da957cb062029da9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/09/2018
 > 最新の形式では、混乱は、安全な障害のみを発生させ、外部障害がなければ、クォーラム損失またはデータの損失は起こりません。
 >
 
-混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[信頼性の高いディクショナリ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections)で永続化され、**MaxStoredChaosEventCount** (既定値は 25000) と**StoredActionCleanupIntervalInSeconds** (既定値は 3600) という 2 つの構成で既定される切り捨てポリシーが適用されます。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
+混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[信頼性の高いディクショナリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)で永続化され、**MaxStoredChaosEventCount** (既定値は 25000) と**StoredActionCleanupIntervalInSeconds** (既定値は 3600) という 2 つの構成で既定される切り捨てポリシーが適用されます。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
 
 ## <a name="faults-induced-in-chaos"></a>混乱で誘発される障害
 混乱により、Service Fabric クラスター全体で数か月または数年の間に発生する障害が、数時間に圧縮され生成されます。 障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。 この混乱を実施することで、サービスのコードの品質が大幅に向上します。

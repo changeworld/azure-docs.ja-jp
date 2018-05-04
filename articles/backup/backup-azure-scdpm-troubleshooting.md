@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup での System Center Data Protection Manager のトラブルシューティング | Microsoft Docs"
-description: "System Center Data Protection Manager での問題のトラブルシューティングを行います。"
+title: Azure Backup での System Center Data Protection Manager のトラブルシューティング | Microsoft Docs
+description: System Center Data Protection Manager での問題のトラブルシューティングを行います。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: adigan
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: 2d73c349-0fc8-4ca8-afd8-8c9029cb8524
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: pullabhk;markgal;adigan
-ms.openlocfilehash: bf4ea676c5309bb732f6a4ce71849606b4d2e4df
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 8f8117b216dcbda217bc433e643090e8eb47cf57
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager のトラブルシューティング
 
 この記事では、Data Protection Manager を使用しているときに発生する可能性がある問題の解決方法について説明します。
 
-System Center Data Protection Manager の最新リリース ノートについては、[System Center のドキュメント](https://docs.microsoft.com/en-us/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)を参照してください。 Data Protection Manager のサポートの詳細については、[この一覧](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)を参照してください。
+System Center Data Protection Manager の最新リリース ノートについては、[System Center のドキュメント](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)を参照してください。 Data Protection Manager のサポートの詳細については、[この一覧](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)を参照してください。
 
 
 ## <a name="error-replica-is-inconsistent"></a>エラー: レプリカに整合性がありません

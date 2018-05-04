@@ -1,11 +1,11 @@
 ---
-title: "Azure サービス管理証明書のアップロード | Microsoft Docs"
-description: "Azure Portal のサービス管理証明書をアップロードする方法について説明します。"
+title: Azure サービス管理証明書のアップロード | Microsoft Docs
+description: Azure Portal のサービス管理証明書をアップロードする方法について説明します。
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: na
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: a865290602f64335e8b7cbfadf00d83234ae812d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: be548a8e823d4c7109951183886764738a66ecea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイメント モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/21/2018
 
 Azure の証明書の詳細 (自己署名証明書の作成など) については、[「Azure Cloud Services の証明書の概要」](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)を参照してください。
 
-クライアント コードの認証に [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) を使用することで自動化を図ることもできます。
+クライアント コードの認証に [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用することで自動化を図ることもできます。
 
 **注:** 管理証明書で操作を実行するには、サブスクリプションの共同管理者である必要があります。 新しい Azure Portal で共同管理者を追加または削除する方法の詳細については、[こちら](https://go.microsoft.com/fwlink/?linkid=849300)を参照してください 
 

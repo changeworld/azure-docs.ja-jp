@@ -1,11 +1,11 @@
 ---
-title: "SharePoint 用 StorSimple アダプターのインストール | Microsoft Docs"
-description: "SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成または削除する方法について説明します。"
+title: SharePoint 用 StorSimple アダプターのインストール | Microsoft Docs
+description: SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成または削除する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
 ms.devlang: NA
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールして構成する
 ## <a name="overview"></a>概要
@@ -45,7 +45,7 @@ RBS の Microsoft Azure StorSimple 実装には、次の利点があります。
 * BLOB コンテンツを別のサーバーに移動すると、SQL Server にかかるクエリの負荷が軽減され、SQL Server の応答性が改善されます。 
 * Azure StorSimple は、重複除去と圧縮を使用してデータ サイズを削減します。
 * Azure StorSimple は、ローカル スナップショットとクラウド スナップショットの形式でデータ保護を提供しています。 また、データベース自体を StorSimple デバイスに配置すると、クラッシュ整合方式でコンテンツ データベースと BLOB の両方をバックアップできます  (デバイスへのコンテンツ データベースの移動は、StorSimple 8000 シリーズ デバイスについてのみサポートされます。 5000 または 7000 シリーズについてはこの機能はサポートされません)。
-* Azure StorSimple には、フェールオーバー、ファイルとボリュームの回復 (テスト回復を含む)、データの迅速な復元などの災害復旧機能が含まれています。
+* Azure StorSimple には、フェールオーバー、ファイルとボリュームの回復 (テスト回復を含む)、データの迅速な復元などのディザスター リカバリー機能が含まれています。
 * Kroll Ontrack PowerControls などのデータ復旧ソフトウェアと BLOB データの StorSimple スナップショットを使用することで、SharePoint コンテンツをアイテムレベルで復旧できます  (このデータ復旧ソフトウェアは別途購入します)。
 * SharePoint 用 StorSimple アダプターは SharePoint サーバーの全体管理ポータルに接続されるため、1 か所で SharePoint ソリューション全体を管理できます。
 
@@ -136,10 +136,10 @@ SharePoint サーバー ファームが次のように正しく構成されて�
   
   1. Internet Explorer のすべてのインスタンスを閉じます。
   2. サーバー マネージャーを開きます。
-  3. 左側のウィンドウにある **[ローカル サーバー]**をクリックします。
+  3. 左側のウィンドウにある **[ローカル サーバー]** をクリックします。
   4. 右側のウィンドウの **[IE セキュリティ強化の構成]** の横にある **[オン]** をクリックします。
   5. **[管理者]** の **[オフ]** をクリックします。
-  6. **[OK]**をクリックします。
+  6. Click **OK**.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>リモート BLOB ストレージ (RBS) の前提条件
 サポート対象バージョンの SQL Server を使用していることを確認します。 次のバージョンのみがサポート対象であり、RBS を使用できます。
@@ -249,10 +249,10 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 6. 削除が完了すると、完了ページが表示されます。 **[完了]** をクリックしてセットアップ ウィザードを閉じます。
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>コントロール パネルを使用してアダプターをアンインストールするには
-1. コントロール パネルを開き、 **[プログラムと機能]**をクリックします。
+1. コントロール パネルを開き、 **[プログラムと機能]** をクリックします。
 2. **[SharePoint 用 StorSimple アダプター]** を選択してから、**[アンインストール]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [StorSimple の詳細](storsimple-overview.md)
 
 <!--Reference links-->
@@ -261,4 +261,4 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+[8]: https://technet.microsoft.com/library/ff943565.aspx

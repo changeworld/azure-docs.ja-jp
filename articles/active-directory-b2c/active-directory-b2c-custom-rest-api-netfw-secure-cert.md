@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fb5c8a48a676a2909cce3c4d126218e48a4c8ce2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 関連する記事では、Azure Active Directory B2C (Azure AD B2C) と対話する [RESTful サービスを作成](active-directory-b2c-custom-rest-api-netfw.md)します。
 
 この記事では、クライアント証明書を使用して Azure Web アプリ (RESTful API) へのアクセスを制限する方法について説明します。 このメカニズムは TLS 相互認証または*クライアント証明書認証*と呼ばれ、 適切な証明書を持つサービス (Azure AD B2C など) のみが、RESTful サービスにアクセスできます。
@@ -57,7 +60,7 @@ ms.lasthandoff: 03/23/2018
 
 2. テナント内で使用できるキーを表示するには、**[ポリシー キー]** を選択します。
 
-3. **[追加]**を選択します。  
+3. **[追加]** を選択します。  
     **[キーの作成]** ウィンドウが開きます。
 
 4. **[オプション]** ボックスで、**[アップロード]** を選択します。
@@ -71,7 +74,7 @@ ms.lasthandoff: 03/23/2018
 
     ![ポリシー キーのアップロード](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 
 8. テナント内で利用できるキーを表示して、作成したキー `B2C_1A_B2cRestClientCertificate` を確認するには、**[ポリシー キー]** を選択します。
 

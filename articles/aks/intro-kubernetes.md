@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 5bfa445eb11ed8be608278d0b95249372f9976ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f418e70c6da46443b95e5fd4056ca26d46d95505
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-container-service-aks-preview"></a>Azure Container Service (AKS) プレビューの概要
 
@@ -41,7 +41,7 @@ AKS クラスター内のノードの管理は Azure が処理するので、管
 AKS は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 この目的のために、標準の Kubernetes API エンドポイントを公開します。 これらの標準のエンドポイントを使用することにより、Kubernetes クラスターと通信できる任意のソフトウェアを活用できます。 たとえば、[kubectl][kubectl-overview]、[helm][helm]、[draft][draft] を選択できます。
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service-aks"></a>Azure Container Service (AKS) を使用した Kubernetes クラスターの作成
-AKS の使用を開始するには、[Azure CLI][aks-quickstart] を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、AKS クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある詳しい知識のあるユーザーの場合は、オープン ソースの [acs-engine][acs-engine] プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
+AKS の使用を開始するには、[Azure CLI][aks-quickstart] を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、AKS クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある詳しい知識のあるユーザーの場合は、オープン ソースの [acs-engine][acs-engine] プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイしてください。
 
 ### <a name="using-kubernetes"></a>Kubernetes の使用
 この Kubernetes により、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理が自動化されます。 Kubernetes には、次に示す豊富な機能セットが用意されています。

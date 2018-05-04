@@ -1,25 +1,23 @@
 ---
-title: "HDInsight の Hadoop を使用してフライト遅延データを分析する | Microsoft Docs"
-description: "1 つの Windows PowerShell スクリプトを使用して、HDInsight クラスターの作成、Hive ジョブの実行、Sqoop ジョブの実行、クラスターの削除を行う方法について説明します。"
+title: HDInsight の Hadoop を使用してフライト遅延データを分析する | Microsoft Docs
+description: 1 つの Windows PowerShell スクリプトを使用して、HDInsight クラスターの作成、Hive ジョブの実行、Sqoop ジョブの実行、クラスターの削除を行う方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5da745901ec2fe57530e4d7fe38a055e0b8691ac
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
@@ -72,7 +70,7 @@ PowerShell スクリプトの一部は、パブリック BLOB コンテナーか
 このチュートリアルで使用するファイルを次の表に示します。
 
 <table border="1">
-<tr><th>ファイル</th><th>説明</th></tr>
+<tr><th>ファイル</th><th>[説明]</th></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Hive ジョブで使用する HiveQL スクリプト ファイル。 このスクリプトは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このファイルの準備と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-b">付録 B</a> を参照してください。</td></tr>
 <tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Hive ジョブの入力データ。 このデータは、パブリック アクセス権限の設定された Azure BLOB ストレージ アカウントにアップロード済みです。 このデータの取得と Azure BLOB ストレージ アカウントへのアップロードの手順については、<a href="#appendix-a">付録 A</a> を参照してください。</td></tr>
 <tr><td>\tutorials\flightdelays\output</td><td>Hive ジョブの出力パス。 出力データの保存には、既定のコンテナーを使用します。</td></tr>
@@ -134,7 +132,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
         $acct = Get-AzureRmSubscription
     }
     catch{
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     }
     Select-AzureRmSubscription -SubscriptionID $subscriptionID
 
@@ -256,7 +254,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
 2. このページで、次の値を選択します。
 
     <table border="1">
-    <tr><th>名前</th><th>値</th></tr>
+    <tr><th>Name</th><th>値</th></tr>
     <tr><td>Filter Year</td><td>2013 </td></tr>
     <tr><td>Filter Period</td><td>January</td></tr>
     <tr><td>フィールド</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)</td></tr>
@@ -276,7 +274,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
     <tr><td>$blobContainerName</td><td>データのアップロード先となる BLOB コンテナー。</td></tr>
     </table>
 2. Azure PowerShell ISE を開きます。
-3. 次のスクリプトをスクリプト ウィンドウに貼り付けます。
+手順 3. 次のスクリプトをスクリプト ウィンドウに貼り付けます。
 
     ```powershell
     [CmdletBinding()]
@@ -299,7 +297,7 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
     #Region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #EndRegion
 
     #Region - Validate user input
@@ -383,8 +381,10 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
     <tr><td>$storageAccountName</td><td>HiveQL スクリプトのアップロード先となる Azure ストレージ アカウント。</td></tr>
     <tr><td>$blobContainerName</td><td>HiveQL スクリプトのアップロード先となる BLOB コンテナー。</td></tr>
     </table>
-2. Azure PowerShell ISE を開きます。
-3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。
+    
+2. Azure PowerShell ISE を開きます。  
+
+3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。  
 
     ```powershell
     [CmdletBinding()]
@@ -418,7 +418,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
     #Region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #EndRegion
 
     #Region - Validate user input
@@ -573,8 +573,10 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
     <tr><td>$sqlDatabaseLocation</td><td>この値は、新しい Azure データベース サーバーを作成するときにのみ使用されます。</td></tr>
     <tr><td>$sqlDatabaseName</td><td>Sqoop ジョブ用の AvgDelays テーブルの作成に使用する SQL Database。 空白のままにすると、"HDISqoop" というデータベースが作成されます。 Sqoop ジョブ出力用のテーブル名は AvgDelays です。 </td></tr>
     </table>
+    
 2. Azure PowerShell ISE を開きます。
-3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。
+
+3. 次のスクリプトをスクリプト ウィンドウにコピーして貼り付けます。  
 
     ```powershell
     [CmdletBinding()]
@@ -635,7 +637,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
     #Region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
-    catch{Login-AzureRmAccount}
+    catch{Connect-AzureRmAccount}
     #EndRegion
 
     #region - Create and validate Azure resouce group

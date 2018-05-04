@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI を使用した Azure マネージ アプリケーションの作成 | Microsoft Docs"
-description: "組織のメンバーを対象とする Azure マネージ アプリケーションを作成する方法について説明します。"
+title: Azure CLI を使用した Azure マネージ アプリケーションの作成 | Microsoft Docs
+description: 組織のメンバーを対象とする Azure マネージ アプリケーションを作成する方法について説明します。
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Azure CLI を使用した Azure マネージ アプリケーションの作成とデプロイ
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 12/18/2017
 
 作業が完了すると、マネージ アプリケーションのさまざまな部分を含む 3 つのリソース グループが作成されます。
 
-| リソース グループ | 指定値を含む | 説明 |
+| リソース グループ | 指定値を含む | [説明] |
 | -------------- | -------- | ----------- |
 | appDefinitionGroup | マネージ アプリケーション定義。 | 発行元が、このリソース グループとマネージ アプリケーション定義を作成します。 マネージ アプリケーション定義へのアクセス権を持つすべてのユーザーがデプロイできます。 |
 | applicationGroup | マネージ アプリケーション インスタンス。 | コンシューマーが、このリソース グループとマネージ アプリケーション インスタンスを作成します。 コンシューマーは、このインスタンスを使用してマネージ アプリケーションを更新できます。 |
@@ -75,7 +75,7 @@ az managedapp definition create \
 前の例で使用されているパラメーターは次のとおりです。
 
 * **resource-group**: マネージ アプリケーション定義が作成されるリソース グループの名前。
-* **lock-level**: マネージ リソース グループに対して設定されるロックの種類。 これによって、このリソース グループに対して問題となるような操作を顧客が実行できないようにします。 現在サポートされているロック レベルは ReadOnly だけです。 ReadOnly が指定されている場合、マネージ リソース グループに存在するリソースの読み取りしか顧客は実行できません。
+* **lock-level**: マネージ リソース グループに対して設定されるロックの種類。 これによって、このリソース グループに対して問題となるような操作を顧客が実行できないようにします。 現在サポートされているロック レベルは ReadOnly だけです。 ReadOnly が指定されている場合、マネージ リソース グループに存在するリソースの読み取りしか顧客は実行できません。 マネージド リソース グループへのアクセス権が付与されている発行元 ID は、ロックの対象外となります。
 * **authorizations**: マネージ リソース グループへのアクセス許可を付与する際に使うプリンシパル ID とロール定義 ID を記述します。 `<principalId>:<roleDefinitionId>` の形式で指定します。 このプロパティには複数の値を指定することができます。 複数の値が必要である場合は、`<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` という形式で指定してください。 このとき値は、スペースで区切って指定します。
 * **package-file-uri**: 必要なファイルが含まれた .zip パッケージの場所。 このパッケージには、少なくとも **mainTemplate.json** ファイルと **createUiDefinition.json** ファイルが含まれています。 **mainTemplate.json** には、マネージ アプリケーションの一部としてプロビジョニングされる Azure リソースが定義されます。 テンプレートは、通常の Resource Manager テンプレートと違いはありません。 **createUiDefinition.json** では、ポータルを使用してマネージ アプリケーションを作成するユーザー向けのユーザー インターフェイスを生成します。
 
@@ -117,7 +117,7 @@ az managedapp create \
 
 デプロイが正常に完了すると、applicationGroup にマネージ アプリケーションが作成されます。 storageAccount リソースは、infrastructureGroup に作成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * マネージ アプリケーションの概要については、[マネージ アプリケーションの概要](overview.md)に関するページをご覧ください。
 * サンプル ファイルについては、[マネージ アプリケーションのサンプル](https://github.com/Azure/azure-managedapp-samples/tree/master/samples)に関するページを参照してください。

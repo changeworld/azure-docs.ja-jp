@@ -36,6 +36,7 @@
 ## [アプリケーションの登録](active-directory-integrating-applications.md)
 ## [マルチテナント アプリ](active-directory-devhowto-multi-tenant-overview.md)
 ## [条件付きアクセス](active-directory-conditional-access-developer.md)
+## [アクセス許可](active-directory-permissions.md)
 ## OAuth と OpenID Connect
 ### [OpenID Connect プロトコル](active-directory-protocols-openid-connect-code.md)
 ### [OAuth 2.0 認証コード付与](active-directory-protocols-oauth-code.md)
@@ -69,9 +70,9 @@
 ## [ACS 移行](active-directory-acs-migration.md)
 ## [ADAL のエラー処理のベスト プラクティス](active-directory-devhowto-adal-error-handling.md)
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)
-## [コード サンプルの記事](active-directory-code-samples.md)
+## [シナリオ別のコード サンプル](active-directory-code-samples.md)
 ## [用語集](active-directory-dev-glossary.md)
 ## [認証プロトコル](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -97,7 +98,8 @@
 ### モバイル アプリとデスクトップ アプリ
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [.NET (Windows デスクトップ)](guidedsetups/active-directory-windesktop.md)
+#### [Windows デスクトップ .NET](guidedsetups/active-directory-windesktop.md)
+#### [ユニバーサル Windows プラットフォーム](guidedsetups/active-directory-uwp-v2.md)
 ### Web Apps
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
@@ -109,8 +111,10 @@
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## ガイド
 ### [アプリを登録する](active-directory-v2-app-registration.md)
+### [アプリ登録のリファレンス](active-directory-v2-registration-portal.md)
 ## リファレンス
 ### [認証ライブラリ](active-directory-v2-libraries.md)
+### [シナリオ別の v2.0 コード サンプル](active-directory-v2-code-samples.md)
 ### [v2.0 認証プロトコル](active-directory-v2-protocols.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [OAuth 2.0 承認コード付与](active-directory-v2-protocols-oauth-code.md)

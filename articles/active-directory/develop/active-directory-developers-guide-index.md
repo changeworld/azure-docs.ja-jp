@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fe5d344eaaecc40f6d1937943603eda0404a1ca9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Azure AD 開発者ガイドの記事
 次に示すのは、Azure Active Directory 開発者ガイドで扱っているすべてのトピックの一覧です。
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/09/2018
 | [Office 365 販売者ダッシュボード](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | O365 販売者ダッシュ ボードにアプリケーションを発行する方法 |
 | [Visual Studio 接続済みサービス](vs-active-directory-dotnet-getting-started.md)                                               | Visual Studio の MVC プロジェクトとの Azure AD 統合を使用する方法 |
 | [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | ADFS を使用してオンプレミスの Active Directory と統合する方法 |
-| [ADAL のエラー処理のベスト プラクティス](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | 耐障害性のあるエラー処理を構築し、ログ記録を有効にする方法 |
+| [ADAL のエラー処理のベスト プラクティス](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | 耐障害性のあるエラー処理を構築し、ログ記録を有効にする方法 |
 
 ## <a name="reference"></a>リファレンス
 以下の記事は、REST と認証ライブラリ API、プロトコル、エラー、コード サンプル、エンドポイントの基礎を説明します。

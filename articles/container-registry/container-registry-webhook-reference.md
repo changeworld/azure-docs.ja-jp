@@ -1,18 +1,18 @@
 ---
-title: "Azure Container Registry webhook スキーマ リファレンス"
-description: "Azure Container Registry の webhook 要求 JSON ペイロードのリファレンスです。"
+title: Azure Container Registry webhook スキーマ リファレンス
+description: Azure Container Registry の webhook 要求 JSON ペイロードのリファレンスです。
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: 84f0277a7b1a5bd7dfe2178f78f34140b1dd2642
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry webhook リファレンス
 
@@ -40,17 +40,17 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="push-event-payload"></a>push イベントのペイロード
 
-|要素|種類|説明|
+|要素|type|[説明]|
 |-------------|----------|-----------|
 |`id`|String|webhook イベントの ID。|
-|`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
+|`timestamp`|Datetime|webhook イベントがトリガーされた日時。|
 |`action`|String|webhook イベントをトリガーしたアクション。|
 |[target](#target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 |[request](#request)|複合型|webhook イベントを生成した要求。|
 
 ### <a name="target"></a>target
 
-|要素|種類|説明|
+|要素|type|[説明]|
 |------------------|----------|-----------|
 |`mediaType`|String|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。 length フィールドと同じです。|
@@ -61,7 +61,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="request"></a>request
 
-|要素|種類|説明|
+|要素|type|[説明]|
 |------------------|----------|-----------|
 |`id`|String|イベントを開始した要求の ID。|
 |`host`|String|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
@@ -104,17 +104,17 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete-event-payload"></a>delete イベントのペイロード
 
-|要素|種類|説明|
+|要素|type|[説明]|
 |-------------|----------|-----------|
 |`id`|String|webhook イベントの ID。|
-|`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
+|`timestamp`|Datetime|webhook イベントがトリガーされた日時。|
 |`action`|String|webhook イベントをトリガーしたアクション。|
 |[target](#delete_target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 |[request](#delete_request)|複合型|webhook イベントを生成した要求。|
 
 ### <a name="delete_target"></a> target
 
-|要素|種類|説明|
+|要素|type|[説明]|
 |------------------|----------|-----------|
 |`mediaType`|String|参照されているオブジェクトの MIME の種類。|
 |`digest`|String|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
@@ -122,7 +122,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_request"></a> request
 
-|要素|種類|説明|
+|要素|type|[説明]|
 |------------------|----------|-----------|
 |`id`|String|イベントを開始した要求の ID。|
 |`host`|String|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
@@ -160,6 +160,6 @@ az acr repository delete -n MyRegistry --repository MyRepository
 az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Container Registry webhook の使用](container-registry-webhook.md)

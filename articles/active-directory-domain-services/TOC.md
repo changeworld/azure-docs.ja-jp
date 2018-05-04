@@ -16,7 +16,7 @@
 ## [タスク 2: ネットワーク設定を構成する](active-directory-ds-getting-started-network.md)
 ## [タスク 3: 管理者グループを構成して Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
 ## [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
-## [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
+## [タスク 5: パスワード ハッシュ同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
 ## [管理対象ドメインの正常性のチェック](active-directory-ds-check-health.md)
@@ -56,7 +56,7 @@
 
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

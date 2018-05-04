@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights Telemetry の相関付け | Microsoft Docs"
-description: "Application Insights におけるテレメトリの相関付け"
+title: Azure Application Insights Telemetry の相関付け | Microsoft Docs
+description: Application Insights におけるテレメトリの相関付け
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9adecca35524962402d46169c531d135d0772bbd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -103,6 +103,31 @@ ASP.NET Core 2.0 は、HTTP ヘッダーの抽出と新しいアクティビテ�
 ASP.NET Classic 用の新しい HTTP モジュール [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) があります。 このモジュールは、DiagnosticsSource を使用して、テレメトリの相関付けを実装します。 それは、受信要求ヘッダーに基づいてアクティビティを開始します。 さらに、要求処理のさまざまな段階のテレメトリを相関付けます。 IIS 処理のすべての段階が異なる管理スレッドで実行されている場合でも、これを行います。
 
 Application Insights SDK は、バージョン `2.4.0-beta1` から DiagnosticsSource とアクティビティを使用してテレメトリを収集し、それを現在のアクティビティに関連付けます。 
+
+<a name="java-correlation"></a>
+## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK におけるテレメトリの相関付け
+[Application Insights Java SDK](app-insights-java-get-started.md) のバージョン `2.0.0` 以降では、テレメトリの自動相関付けをサポートしています。 要求の範囲内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) の `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](app-insights-java-agent.md)が構成されている場合は、HTTP を介して、サービスの相関付けヘッダー (前述) がサービス呼び出しに伝達されます。 相関付け機能では、Apache HTTP クライアントによる呼び出しだけがサポートされます。 Spring Rest Template または Feign を使用している場合、どちらも Apache HTTP クライアントで内部的に使用できます。
+
+現時点では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 ただし、`trackDependency` および `trackRequest` API を使用して、このようなシナリオを手動でコーディングすることは可能です。依存関係テレメトリはプロデューサーによってエンキューされるメッセージを表し、要求はコンシューマーによって処理されるメッセージを表します。 この場合、`operation_id` と `operation_parentId` の両方を、メッセージのプロパティで伝達する必要があります。
+
+<a name="java-role-name"></a>
+### <a name="role-name"></a>ロール名
+[アプリケーション マップ](app-insights-app-map.md)にコンポーネント名を表示する方法をカスタマイズすることが必要な場合があります。 そのためには、次のいずれかを実行して `cloud_roleName` を手動で設定します。
+
+テレメトリ初期化子を使用 (すべてのテレメトリ項目がタグ付けされます)
+```Java
+public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
+
+    @Override
+    protected void onInitializeTelemetry(Telemetry telemetry) {
+        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
+    }
+  }
+```
+[デバイス コンテキスト クラス](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)を使用 (このテレメトリ項目だけがタグ付けされます)
+```Java
+telemetry.getContext().getDevice().setRoleName("My Component Name");
+```
 
 ## <a name="next-steps"></a>次の手順
 

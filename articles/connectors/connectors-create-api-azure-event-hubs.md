@@ -1,14 +1,14 @@
 ---
-title: "Azure Event Hubs で Azure Logic Apps 用イベント監視を設定する | Microsoft Docs"
-description: "データ ストリームを監視し、Azure Event Hubs を使用してロジック アプリのイベントを送受信します"
+title: Azure Event Hubs で Azure Logic Apps 用イベント監視を設定する | Microsoft Docs
+description: データ ストリームを監視し、Azure Event Hubs を使用してロジック アプリのイベントを送受信します
 services: logic-apps
-keywords: "データ ストリーム, イベント モニター, イベント ハブ"
+keywords: データ ストリーム, イベント モニター, イベント ハブ
 author: ecfan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 076f7dd11ca8c153046727861ecb755e88f32b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8de56cd64f38791fb27d9bcce1e16641fb162c2f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Event Hubs コネクタでのイベントの監視および送受信
 
@@ -76,11 +76,28 @@ Event Hubs コネクタを使用するには、以下のものが必要です。
 3. 監視するイベント ハブを選択し、イベント ハブを確認する間隔と頻度を設定します。
 
     ![イベント ハブまたはコンシューマー グループを指定する](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
+    
+    > [!NOTE]
+    > Event Hub トリガーはすべて "*長いポーリング*" のトリガーです。起動するときにすべてのイベントを処理し、Event Hub にさらにイベントが表示されるまで 30 秒間待機します。
+    > 30 秒以内にイベントを受信しなかった場合、トリガーの実行はスキップされます。 そうでない場合、トリガーは Event Hub が空になるまでイベントの読み取りを続けます。
+    > 次のトリガーのポーリングは、トリガーのプロパティで指定された繰り返し間隔に基づいています。
 
-    > [!TIP]
-    > オプションでイベントを読み取るためのコンシューマー グループを選択するには、**[詳細オプションのの表示]** を選択します。
 
-4. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
+4. 必要に応じていくつかの高度なトリガー オプションを選択するには、**[詳細オプションを表示する]** を選択します。
+
+    ![トリガーの詳細オプション](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
+
+    | プロパティ | 詳細 |
+    | --- | --- |
+    | コンテンツの種類  |ドロップダウン リストからイベントのコンテンツの種類を選択します。 既定では、application/octet-stream が選択されます。 |
+    | コンテンツ スキーマ |Event Hub から読み取られるイベントのコンテンツ スキーマを JSON で入力します。 |
+    | コンシューマー グループ名 |イベントを読み取るために、Event Hub の[コンシューマー グループ名](../event-hubs/event-hubs-features.md#consumer-groups)を入力します。 コンシューマー グループ名を指定しないと、既定のコンシューマー グループが使用されます。 |
+    | 最小パーティション キー |読み取る最小の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
+    | 最大パーティション キー |読み取る最大の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
+    | 最大イベント数 |イベントの最大数の値を入力します。 トリガーは、1 からこのプロパティによって指定されたイベントの数までの値を返します。 |
+    |||
+
+5. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
 
 ロジック アプリが選択されたイベント ハブを確認して新しいイベントを検出すると、トリガーによって、検出されたイベントに対してロジック アプリ内でアクションが実行されます。
 

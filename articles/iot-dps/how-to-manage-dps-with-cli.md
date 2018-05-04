@@ -1,26 +1,26 @@
 ---
-title: "Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法 | Microsoft Docs"
-description: "Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法を説明します"
+title: Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法 | Microsoft Docs
+description: Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法を説明します
 services: iot-dps
-keywords: 
+keywords: ''
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a1224c48537441726c0e01134f6a9256cf3b71c6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8e8bbf5808c11709a49f1cb6ebeba410837e5810
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Azure CLI 2.0 と IoT 拡張機能を使用してデバイス プロビジョニング サービスを管理する方法について説明します
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 Azure CLI 2.0 は、Windows、Linux、および MacOS で使用できます。 Azure CLI 2.0 を使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。
+[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 Azure CLI 2.0 は、Windows、Linux、および MacOS で使用できます。 Azure CLI 2.0 を使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。
 
 IoT 拡張機能によって、Azure CLI 2.0 には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 
@@ -34,7 +34,7 @@ IoT 拡張機能によって、Azure CLI 2.0 には、デバイス管理、完�
 
 ### <a name="step-2---install-azure-cli-20"></a>手順 2 - Azure CLI 2.0 をインストールする
 
-[インストール手順](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)に従って、環境に Azure CLI 2.0 をセットアップします。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 簡単に Windows にインストールする方法の 1 つは、[MSI](https://aka.ms/InstallAzureCliWindows) をダウンロードしてインストールすることです。
+[インストール手順](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に従って、環境に Azure CLI 2.0 をセットアップします。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 簡単に Windows にインストールする方法の 1 つは、[MSI](https://aka.ms/InstallAzureCliWindows) をダウンロードしてインストールすることです。
 
 ### <a name="step-3---install-iot-extension"></a>手順 3 - IoT 拡張機能をインストールする
 

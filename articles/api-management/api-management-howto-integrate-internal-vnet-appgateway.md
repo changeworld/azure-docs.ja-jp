@@ -298,7 +298,7 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-パスが API Management から使用可能にするパス ルールと一致しない場合、ルール パス マップ構成では、**dummyBackendPool** という名前の既定のバックエンド アドレス プールも構成されます。 たとえば、http://api.contoso.net/calc/* は、一致しないトラフィックの既定のプールとして定義されているので、**dummyBackendPool** に移動します。
+パスが API Management から使用可能にするパス ルールと一致しない場合、ルール パス マップ構成では、**dummyBackendPool** という名前の既定のバックエンド アドレス プールも構成されます。 たとえば、 http://api.contoso.net/calc/* は、一致しないトラフィックの既定のプールとして定義されているので、**dummyBackendPool** に移動します。
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting

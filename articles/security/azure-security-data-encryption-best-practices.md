@@ -3,8 +3,8 @@ title: データ セキュリティと暗号化のベスト プラクティス |
 description: この記事では、 Azure の組み込み機能を利用した、データ セキュリティと暗号化に関する一連のベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbalwin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
+
 クラウドにおけるデータ保護で重要なポイントの 1 つは、データが置かれうる状態と、その状態でどのような制御を使用できるのかを把握することです。 Azure のデータ セキュリティと暗号化のベスト プラクティスでは、次のデータの状態に関する推奨事項が定められています。
 
 * 保存: ストレージ オブジェクト、コンテナー、データ型など、物理メディア (磁気ディスクまたは光学ディスク) に静的な状態で存在しているすべての情報が該当します。
@@ -50,6 +51,7 @@ ms.lasthandoff: 04/23/2018
 * ファイル レベルのデータ暗号化を適用する
 
 ## <a name="enforce-multi-factor-authentication"></a>多要素認証を適用する
+
 Microsoft Azure におけるデータ アクセスとデータ制御で最初に行われるのが、ユーザーの認証です。 [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) とは、ユーザー名とパスワード以外の手段も使ってユーザーを認証する方法です。 この認証方法を利用することで、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。
 
 ユーザーに対する Azure MFA を有効にすると、ユーザーのサインインとトランザクションに新しいセキュリティ層が追加されます。 この場合、ファイル サーバーまたは SharePoint Online 上にあるドキュメントにアクセスするトランザクションが発生する可能性があります。 また、Azure MFA は不正に取得された資格情報によって組織データにアクセスされる危険を減らすためにも役立ちます。
@@ -61,6 +63,7 @@ Microsoft Azure におけるデータ アクセスとデータ制御で最初に
 Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](../active-directory/authentication/howto-mfa-getstarted.md)」をご覧ください。
 
 ## <a name="use-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用する
+
 [知る必要性](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)という 2 つのセキュリティ原則に基づいて、アクセスを制限します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 Azure のロールベースのアクセス制御 (RBAC) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。 ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。
 
 Azure の[組み込み RBAC ロール](../role-based-access-control/built-in-roles.md)を利用して、ユーザーに権限を割り当てることができます。 クラウド事業者は、ストレージ アカウントを管理する必要がある場合は*ストレージ アカウント作成協力者*ロール、従来のストレージ アカウントを管理する場合は*従来のストレージ アカウント作成協力者*ロールの使用を検討してください。 VM とストレージ アカウントを管理する必要があるクラウド事業者は、それを*仮想マシン作成協力者*ロールに追加することを検討してください。
@@ -70,6 +73,7 @@ RBAC などの機能を利用したデータ アクセス制御を適用しな�
 Azure RBAC の詳細については、「[Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)」をご覧ください。
 
 ## <a name="encrypt-azure-virtual-machines"></a>Azure 仮想マシンを暗号化する
+
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。 Azure Disk Encryption を利用して、Windows および Linux の IaaS 仮想マシン (VM) ディスクを暗号化できます。 Azure Disk Encryption では、業界標準である Windows の BitLocker 機能と Linux の DM-Crypt 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
 
 Azure Disk Encryption を利用してデータを保護し、組織のセキュリティ要件とコンプライアンス要件を達成することができます。 暗号化を使用して、不正なデータ アクセスに関連するリスクを減らすことも検討してください。 また、機密データをドライブに書き込む前にドライブを暗号化することもお勧めします。
@@ -125,6 +129,7 @@ Privileged Access Workstations の詳細については、[特権アクセスの
 SQL TDE 暗号化の詳細については、「[Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx)」を参照してください。
 
 ## <a name="protect-data-in-transit"></a>転送中のデータを保護する
+
 転送中のデータの保護は、データ保護戦略に欠かせない要素です。 データはさまざまな場所を経由して転送されるため、一般的には常時 SSL/TLS プロトコルを使用してデータをやり取りすることが推奨されています。 状況によっては、オンプレミスとクラウド インフラストラクチャ間の通信チャネル全体を、仮想プライベート ネットワーク (VPN) を使用して隔離する必要があります。
 
 オンプレミス インフラストラクチャと Azure 間のデータ移動については、HTTPS や VPN などの適切なセキュリティ対策を検討してください。
@@ -142,6 +147,7 @@ Azure Portal で Azure Storage を操作する場合、すべてのトランザ�
 Azure VPN オプションの詳細については、「[VPN Gateway の計画と設計](../vpn-gateway/vpn-gateway-plan-design.md)」を参照してください。
 
 ## <a name="enforce-file-level-data-encryption"></a>ファイル レベルのデータ暗号化を適用する
+
 データのセキュリティ レベルをさらに高めるには、ファイルの場所に関係なくファイル自体を暗号化します。
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) は、暗号化、ID、承認ポリシーを使用してファイルとメールを保護します。 Azure RMS は組織内と組織外の両方でデータを保護できるため、携帯電話、タブレット、PC などの複数のデバイスに適用できます。 これが可能なのは、データが組織外に出たとしても Azure RMS による保護がデータに残るためです。

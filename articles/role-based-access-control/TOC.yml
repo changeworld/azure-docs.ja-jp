@@ -1,0 +1,37 @@
+- name: アクセスの管理の概要
+  href: manage-access-to-azure-resources.md
+- name: Azure でのリソース アクセス
+  href: rbac-and-directory-admin-roles.md
+- name: ロール ベースのアクセス制御 (RBAC)
+  href: overview.md
+  items:
+    - name: ロールの割り当てを管理する
+      items:
+        - name: User
+          href: role-assignments-users.md
+        - name: リソース
+          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST ()
+          href: role-assignments-rest.md
+    - name: 組み込みのロール
+      href: built-in-roles.md
+    - name: カスタム ロール
+      href: custom-roles.md
+    - name: 内部ユーザーと外部ユーザーのカスタム ロールの割り当て
+      href: role-assignments-external-users.md
+    - name: アクティビティ ログ
+      href: change-history-report.md
+    - name: テナント管理者のアクセス権の昇格
+      href: elevate-access-global-admin.md
+    - name: トラブルシューティング
+      href: troubleshooting.md
+    - name: リソース プロバイダー操作
+      href: resource-provider-operations.md
+- name: RBAC のための Privileged Identity Management (PIM)
+  href: pim-azure-resource.md
+- name: Azure 管理の条件付きアクセス
+  href: conditional-access-azure-management.md

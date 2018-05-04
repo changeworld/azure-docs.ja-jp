@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 501364f24e61c29ac0d5909a7dff1df9e93fe6a5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -166,7 +166,7 @@ Azure IaaS のすべての仮想マシンを強化して、インストールさ
 
 Security Compliance Manager は無料のツールです。 このツールでは、グループ ポリシーと System Center Configuration Manager を使用して、デスクトップ、従来のデータセンター、プライベート クラウド/パブリック クラウドを短時間で構成および管理できます。
 
-Security Compliance Manager には、テスト済みのデプロイの準備完了ポリシーと Desired Configuration Management 構成パックが用意されています。 これらのベースラインは、[Microsoft のセキュリティ ガイド](https://technet.microsoft.com/en-us/library/cc184906.aspx)の推奨事項と業界のベスト プラクティスに基づいています。 構成のずれを管理し、コンプライアンス要件に対応して、セキュリティ上の脅威を削減することができます。
+Security Compliance Manager には、テスト済みのデプロイの準備完了ポリシーと Desired Configuration Management 構成パックが用意されています。 これらのベースラインは、[Microsoft のセキュリティ ガイド](https://technet.microsoft.com/library/cc184906.aspx)の推奨事項と業界のベスト プラクティスに基づいています。 構成のずれを管理し、コンプライアンス要件に対応して、セキュリティ上の脅威を削減することができます。
 
 Security Compliance Manager を使用すると、2 つの方法でコンピューターの現在の構成をインポートできます。 1 つは、Active Directory ベースのグループ ポリシーをインポートする方法です。 もう 1 つは、"ゴールデン マスター" 参照コンピューターの構成をインポートする方法です。この方法では、[LocalGPO ツール](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/)を使用してローカル グループ ポリシーをバックアップし、 そのローカル グループ ポリシーを Security Compliance Manager にインポートします。
 
