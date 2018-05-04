@@ -1,11 +1,11 @@
 ---
-title: "ポータルを使用した Azure AD v2.0 エンドポイントへのアプリケーション登録 | Microsoft Docs"
-description: "v2.0 エンドポイントを使用し、アプリケーションを Microsoft に登録して Microsoft サービスへのサインインとアクセスを有効にする方法"
+title: ポータルを使用した Azure AD v2.0 エンドポイントへのアプリケーション登録 | Microsoft Docs
+description: v2.0 エンドポイントを使用し、アプリケーションを Microsoft に登録して Microsoft サービスへのサインインとアクセスを有効にする方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: lnalepa
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bb2f701f-3bc3-4759-94a5-8b9d53a8a0b6
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: eba8ecd27542b23676c08b8ce072c91134d27fa5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da9dd5099d8175f1f7347cb022f149979b618909
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>v2.0 エンドポイントを使用してアプリケーションを登録する方法
 MSA および Azure AD サインインの両方を受け付けるアプリを構築するには、最初に、アプリを Microsoft に登録する必要があります。  現時点では、Azure AD または MSA で利用している既存のアプリは使用できません。新しいアプリを作成してください。
@@ -30,7 +30,7 @@ MSA および Azure AD サインインの両方を受け付けるアプリを構
 > 
 
 ## <a name="visit-the-microsoft-app-registration-portal"></a>Microsoft アプリ登録ポータルにアクセスする
-まず、[https://apps.dev.microsoft.com/?deeplink=/appList](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) に移動します。  これは、マイクロソフトのアプリに関するあらゆることを管理できる新しいアプリ登録ポータルです。
+最初に、[https://apps.dev.microsoft.com/?deeplink=/appList](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) に移動します。  これは、マイクロソフトのアプリに関するあらゆることを管理できる新しいアプリ登録ポータルです。
 
 Microsoft の個人または職場/学校アカウントのいずれかでサインインします。  いずれのアカウントもをお持ちでない場合は、新しい個人アカウントを新規登録します。 簡単に登録できますので、今すぐサインアップしましょう。
 
@@ -42,6 +42,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 * Web ベースのアプリの場合、サインイン メッセージを送信できる **リダイレクト URI** を指定します。
 * モバイル アプリの場合、自動的に作成される既定のリダイレクト URI をメモしておきます。
+* Web API の場合、Web API にアクセスするための既定のスコープが自動的に作成されます。 **[スコープの追加]** ボタンを使用して、スコープを追加することもできます。 **事前承認済みアプリケーション** フォームを使って、Web API を使用するように事前承認されたアプリケーションを追加することもできます。 
+
 
 必要に応じて、[プロファイル] セクションでサインイン ページの外観をカスタマイズできます。  続行する前に、忘れずに **[保存]** をクリックします。
 
@@ -50,8 +52,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 > 
 > 
 
-## <a name="build-a-quick-start-app"></a>クイック スタート アプリケーションを構築する
-Microsoft アプリを構築したら、いずれかの v2.0 クイック スタート チュートリアルを実行します。  以下に、推奨事項をいくつか示します。
+## <a name="build-a-quickstart-app"></a>クイックスタート アプリの構築
+Microsoft アプリを構築したら、いずれかの v2.0 クイックスタート チュートリアルを実行します。  以下に、推奨事項をいくつか示します。
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
 

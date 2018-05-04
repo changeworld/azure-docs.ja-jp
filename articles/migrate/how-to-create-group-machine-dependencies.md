@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate でマシンの依存関係を使用してマシンをグループ化する | Microsoft Docs"
-description: "Azure Migrate サービスでマシンの依存関係を使用してアセスメントを作成する方法について説明します。"
+title: Azure Migrate でマシンの依存関係を使用してマシンをグループ化する | Microsoft Docs
+description: Azure Migrate サービスでマシンの依存関係を使用してアセスメントを作成する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>マシンの依存関係マッピングを使用したマシンのグループ化
 
@@ -33,8 +33,8 @@ Windows マシンにエージェントをインストールするには、次の
 1. ダウンロードしたエージェントをダブルクリックします。
 2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
 3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、**[次へ]** をクリックします。 
-4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics (OMS)]** > **[次へ]** の順にクリックします。 
-5. **[追加]** をクリックして、新しい OMS ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
+4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。 
+5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。

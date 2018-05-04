@@ -1,6 +1,6 @@
 ---
-title: "Azure Time Series Insights 環境にイベントを送信する方法 | Microsoft Docs"
-description: "このチュートリアルでは、イベント ハブを作成および構成し、サンプル アプリケーションを実行して Azure Time Series Insights に表示されるイベントをプッシュする方法について説明します。"
+title: Azure Time Series Insights 環境にイベントを送信する方法 | Microsoft Docs
+description: このチュートリアルでは、イベント ハブを作成および構成し、サンプル アプリケーションを実行して Azure Time Series Insights に表示されるイベントをプッシュする方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 04/09/2018
+ms.openlocfilehash: b418d1114cf6b906dcdee46bbf7e094cbc4a0521
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 この記事では、イベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Time Series Insights](https://insights.timeseries.azure.com) で環境を表示してください。
@@ -48,6 +48,18 @@ ms.lasthandoff: 11/16/2017
   ![[共有アクセス ポリシー] を選択して [追加] ボタンをクリックする](media/send-events/shared-access-policy.png)  
 
   ![[新しい共有アクセス ポリシーの追加]](media/send-events/shared-access-policy-2.png)  
+
+## <a name="add-time-series-insights-reference-data-set"></a>Time Series Insights の参照データ セットの追加 
+TSI で参照データを使用すると、利用統計情報データにコンテキストが与えられます。  そのコンテキストによってデータに意味が加わり、フィルターや集計が容易になります。  TSI は参照データをイングレス時に結合し、このデータをさかのぼって結合することはできません。  したがって、データを持つイベント ソースを追加する前に参照データを追加することが重要です。  場所またはセンサーのタイプなどのデータは、スライスやフィルターを容易にするためにデバイス/タグ/センサー ID に結合する場合がある有用なディメンションです。  
+
+> [!IMPORTANT]
+> 履歴データをアップロードする場合は、参照データ セットを構成しておくことが重要です。
+
+履歴データを TSI に一括アップロードするとき、参照データがあることを確認します。  TSI は、結合されたイベント ソースにデータがある場合は、そのイベント ソースからすぐに読み取りを開始することに注意してください。  特にイベント ソース内にデータが存在する場合は、参照データが準備できるまで、イベント ソースを TSI に結合するのを待った方が有益です。 あるいは、参照データ セットが準備できるまで待ってから、データをそのイベント ソースにプッシュすることもできます。
+
+参照データを管理するために、TSI エクスプローラーには Web ベースのユーザー インターフェイスが存在し、プログラムによる C# API が存在します。 TSI エクスプローラーには、ファイルをアップロードしたり既存の参照データ セットを JSON または CSV 形式で貼り付けるためのビジュアル ユーザー エクスペリエンスが備わっています。 API を使用して、必要なときにカスタム アプリを構築できます。
+
+Time Series Insights での参照データの管理の詳細については、[参照データの関連記事](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)に関するセクションを参照してください。
 
 ## <a name="create-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
 1. イベント ソースを作成していない場合は、[こちらの手順](time-series-insights-how-to-add-an-event-source-eventhub.md)に従って、イベント ソースを作成します。
@@ -143,7 +155,7 @@ namespace Microsoft.Rdx.DataGenerator
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---1-event"></a>出力 - 1 件のイベント
+#### <a name="output---one-event"></a>出力 - 1 つのイベント
 
 |id|timestamp|
 |--------|---------------|
@@ -165,7 +177,7 @@ namespace Microsoft.Rdx.DataGenerator
     }
 ]
 ```
-#### <a name="output---2-events"></a>出力 - 2 件のイベント
+#### <a name="output---two-events"></a>出力 - 2 つのイベント
 
 |id|timestamp|
 |--------|---------------|
@@ -193,7 +205,7 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-#### <a name="output---2-events"></a>出力 - 2 件のイベント
+#### <a name="output---two-events"></a>出力 - 2 つのイベント
 "location" プロパティは各イベントにコピーされます。
 
 |location|events.id|events.timestamp|
@@ -236,13 +248,186 @@ namespace Microsoft.Rdx.DataGenerator
     ]
 }
 ```
-#### <a name="output---2-events"></a>出力 - 2 件のイベント
+#### <a name="output---two-events"></a>出力 - 2 つのイベント
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>次のステップ
+### <a name="json-shaping-strategies"></a>JSON の整形方法
+次のイベントの例を出発点として利用し、このイベントに関する問題およびこの問題を緩和するための戦略について説明します。
+
+#### <a name="payload-1"></a>ペイロード 1:
+```json
+[{
+            "messageId": "LINE_DATA",
+            "deviceId": "FXXX",
+            "timestamp": 1522355650620,
+            "series": [{
+                        "chId": 3,
+                        "value": -3750.0
+                  }, {
+                        "chId": 13,
+                        "value": 0.58015072345733643
+                  }, {
+                        "chId": 11,
+                        "value": 800.0
+                  }, {
+                        "chId": 21,
+                        "value": 0.0
+                  }, {
+                        "chId": 14,
+                        "value": -999.0
+                  }, {
+                        "chId": 37,
+                        "value": 2.445906400680542
+                  }, {
+                        "chId": 39,
+                        "value": 0.0
+                  }, {
+                        "chId": 40,
+                        "value": 1.0
+                  }, {
+                        "chId": 1,
+                        "value": 1.0172575712203979
+                  }
+            ],
+            "EventProcessedUtcTime": "2018-03-29T20:36:21.3245900Z",
+            "PartitionId": 2,
+            "EventEnqueuedUtcTime": "2018-03-29T20:34:11.0830000Z",
+            "IoTHub": {
+                  "MessageId": "<17xxx2xx-36x0-4875-9x1x-x428x41x1x68>",
+                  "CorrelationId": "<x253x5xx-7xxx-4xx3-91x4-xxx3bx2xx0x3>",
+                  "ConnectionDeviceId": "AAAA-ZZ-001",
+                  "ConnectionDeviceGenerationId": "<123456789012345678>",
+                  "EnqueuedTime": "2018-03-29T20:34:10.7990000Z",
+                  "StreamId": null
+            }
+      }
+]
+ ```
+
+このイベントの配列をペイロードとして TSI にプッシュする場合、測定値ごとに 1 つのイベントとして格納されます。 これによって余分なイベントが作成され、理想的ではない場合があります。 TSI では参照データを使用して、わかりやすい名前をプロパティとして追加できます。  たとえば、次のようにキー プロパティ = chId を使用して参照データセットを作成できます。  
+
+chId  Measure               Unit 24    Engine Oil Pressure   PSI 25    CALC Pump Rate        bbl/min
+
+Time Series Insights での参照データの管理の詳細については、[参照データの関連記事](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)に関するセクションを参照してください。
+
+最初のペイロードについての別の問題は、タイムスタンプがミリ秒単位だということです。 TSI は ISO 形式のタイムスタンプだけを受け入れます。 1 つのソリューションは、TSI の既定のタイムスタンプの動作のままにして、エンキューされたタイムスタンプを使用することです。
+
+上記のペイロードの代わりとなる別の例を見てみましょう。  
+
+#### <a name="payload-2"></a>ペイロード 2:
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "STATE Engine State": 1,
+      "unit": "NONE"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "MPC_AAAA-ZZ-001",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Well Head Px 1": -494162.8515625,
+      "unit": "psi"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate": 0,
+      "unit": "bbl/min"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Engine Fuel Pressure": 0,
+      "unit": "psi"
+}, {
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "Engine Oil Pressure": 0.58015072345733643,
+      "unit": "psi"
+}
+```
+
+ペイロード 1 と同じように、TSI は測定されたすべての値を固有のイベントとして格納します。  主な違いは、ここでは TSI が*タイムスタンプ*を ISO として正しく読み取ることです。  
+
+送信されるイベントの数を減らす必要がある場合は、次のような情報を送信することができます。  
+
+#### <a name="payload-3"></a>ペイロード 3:
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate": 0,
+      "CALC Pump Rate.unit": "bbl/min"
+      "Engine Oil Pressure": 0.58015072345733643,
+      "Engine Oil Pressure.unit": "psi"
+      "Engine Fuel Pressure": 0,
+      "Engine Fuel Pressure.unit": "psi"
+}
+```
+最終的には次のものが提案されます。
+
+#### <a name="payload-4"></a>ペイロード 4:
+```json
+{
+              "line": "Line01",
+              "station": "Station 11",
+              "gatewayid": "AAAA-ZZ-001",
+              "deviceid": "F12XX",
+              "timestamp": "2018-03-29T20:34:15.0000000Z",
+              "CALC Pump Rate": {
+                           "value": 0,
+                           "unit": "bbl/min"
+              },
+              "Engine Oil Pressure": {
+                           "value": 0.58015072345733643,
+                           "unit": "psi"
+              },
+              "Engine Fuel Pressure": {
+                           "value": 0,
+                           "unit": "psi"
+              }
+}
+```
+
+この例は、JSON をフラット化した後の出力を示しています。
+
+```json
+{
+      "line": "Line01",
+      "station": "Station 11",,
+      "gatewayid": "AAAA-ZZ-001",
+      "deviceid": "F12XX",
+      "timestamp": "2018-03-29T20:34:15.0000000Z",
+      "CALC Pump Rate.value": 0,
+      "CALC Pump Rate.unit": "bbl/min"
+      "Engine Oil Pressure.value": 0.58015072345733643,
+      "Engine Oil Pressure.unit": "psi"
+      "Engine Fuel Pressure.value": 0,
+      "Engine Fuel Pressure.unit": "psi"
+}
+```
+
+独自の json オブジェクト内の各チャネルのさまざまなプロパティを自由に定義しながら、イベント数を少なく維持することができます。 このフラット化の手法は占有スペースを増やすということを考慮しておくことが重要です。 TSI の容量はイベント数とサイズのうち、どちらか早い方に基づきます。
+
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。

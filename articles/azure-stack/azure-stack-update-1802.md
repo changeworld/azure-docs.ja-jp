@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 04/19/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新プログラム
 
@@ -56,9 +56,10 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 
 ### <a name="post-update-steps"></a>更新後の手順
-1802 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。  
-- [KB 4103348 - Azure Stack 更新プログラムをインストールしようとするとネットワーク コントローラー API サービスがクラッシュする](https://support.microsoft.com/help/4103348)
+1802 のインストール後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。 
+- Azure Stack 修正プログラム **1.0.180302.4**。 [KB 4131152 - 既存の Virtual Machine Scale Sets を使用できなくなることがある]( https://support.microsoft.com/help/4131152) 
 
+  この修正プログラムは、「[KB 4103348 - Azure Stack 更新プログラムをインストールしようとするとネットワーク コントローラー API サービスがクラッシュする](https://support.microsoft.com/help/4103348)」に詳細が説明されている問題も解決します。
 
 
 ### <a name="new-features-and-fixes"></a>新機能と修正

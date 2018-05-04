@@ -68,7 +68,7 @@ run_logger = get_azureml_logger()
 開発が完了したら、コマンド ラインで値を渡せるように、スクリプトをパラメーター化すると便利です。
 次の例は、標準の Python ライブラリを使用してコマンド ライン パラメーター (存在する場合) を受け入れる方法を示しています。
 このスクリプトは、オーバーフィットを発生させずに*精度*を上げる作業に分類モデルを適合させるために使用される [Regularization Rate]\(正則化率)\ (*reg*) の 1 つのパラメーターを受け取ります。
-これらの変数は*[Regularization Rate]\(正則化率)\*および*[Accuracy] \(精度)\* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
+これらの変数は *[Regularization Rate]\(正則化率)* および *[Accuracy]\(精度)* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -97,12 +97,12 @@ run_logger.log("Accuracy", accuracy)
 スクリプトでこれらの手順を実行することで、**実行履歴**を最大限に活用できます。
 
 ## <a name="launch-runs-from-project-dashboard"></a>プロジェクト ダッシュボードから実行を起動する
-**プロジェクト ダッシュボード**に戻り、**iris_sklearn.py** スクリプトを選択した後で **[引数]** 編集ボックスに**[Regularization Rate]\(正則化率)\** のパラメーターを入力して、**追跡対象の実行**を起動します。
+**プロジェクト ダッシュボード**に戻り、**iris_sklearn.py** スクリプトを選択した後で **[引数]** 編集ボックスに **[Regularization Rate]\(正則化率)\** のパラメーターを入力して、**追跡対象の実行**を起動します。
 
 ![パラメーターの入力と実行の起動](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
 
 追跡対象の実行を起動しても Azure ML Workbench はブロックされないので、複数の実行を並列で起動できます。
-それぞれの追跡対象の実行の状態が、図に示すように**[ジョブ] パネル**に表示されます。
+それぞれの追跡対象の実行の状態が、図に示すように **[ジョブ] パネル**に表示されます。
 
 ![[ジョブ] パネルでの実行の追跡](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
 
@@ -118,11 +118,11 @@ run_logger.log("Accuracy", accuracy)
 **[ダッシュボード]** ビューには、指定されたスクリプトのすべての実行全体のデータが、グラフィック形式と表形式の両方で表示されます。
 **[詳細]** ビューには、指定されたスクリプトの特定の実行で生成されたすべてのデータが表示され、ログ記録されたメトリックと出力ファイル (レンダリングされたプロットなど) も含まれます。**[比較]** ビューでは、2 つまたは 3 つの実行を並べて表示できます。このビューにも、ログ記録されたメトリックと出力ファイルが含まれます。
 
-[実行履歴] ビューの使用方法を示すために、**iris_sklearn.py** の 8 つの追跡された実行の**[Regularization Rate]\(正則化率)\** パラメーターと**[Accuracy]\(精度)\** の結果がログ記録されています。
+[実行履歴] ビューの使用方法を示すために、**iris_sklearn.py** の 8 つの追跡された実行の **[Regularization Rate]\(正則化率)\** パラメーターと **[Accuracy]\(精度)\** の結果がログ記録されています。
 
 ### <a name="run-history-dashboard"></a>実行履歴ダッシュボード
 8 つの実行すべての結果が、**実行履歴ダッシュボード**に表示されます。
-**iris_sklearn.py** では *[Regularization Rate]\(正則化率)\*と*[Accuracy]\(精度)\*がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
+**iris_sklearn.py** では *[Regularization Rate]\(正則化率)* と *[Accuracy]\(精度)* がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
 
 ![実行履歴ダッシュボード](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
@@ -130,7 +130,7 @@ run_logger.log("Accuracy", accuracy)
 
 ![実行履歴ダッシュボードのグリッドのカスタマイズ](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
 
-追跡対象の実行でログ記録された任意の値を表示に使用できます。**[Regularization Rate]\(正則化率)\**と**[Accuracy]\(精度)\** をクリックすると、これらの値がグリッドに追加されます。
+追跡対象の実行でログ記録された任意の値を表示に使用できます。**[Regularization Rate]\(正則化率)\** と **[Accuracy]\(精度)\** をクリックすると、これらの値がグリッドに追加されます。
 
 ![カスタマイズしたグリッドに表示されたログ記録された値](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
 

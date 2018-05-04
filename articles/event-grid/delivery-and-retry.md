@@ -1,24 +1,26 @@
 ---
-title: "Azure Event Grid による配信と再試行"
-description: "Azure Event Grid がイベントをどのように配信し、未配信メッセージをどのように処理するかについて説明します。"
+title: Azure Event Grid による配信と再試行
+description: Azure Event Grid がイベントをどのように配信し、未配信メッセージをどのように処理するかについて説明します。
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdf6a4e999d55196e8f4eac5695163a7e5a933de
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行 
 
 この記事では、配信が確認されないときに Azure Event Grid がイベントをどのように処理するかについて説明します。
 
-Event Grid は、持続性のある配信を提供します。 各サブスクリプションに対して、最低 1 回は各メッセージを配信します。 イベントは、各サブスクリプションの登録済みの Webhook にすぐに送信されます。 1 回目の配信で、Webhook がイベントの受信を 60 秒以内に確認しなかった場合、Event Grid はそのイベントの配信を再試行します。
+Event Grid は、持続性のある配信を提供します。 各サブスクリプションに対して、最低 1 回は各メッセージを配信します。 イベントは、各サブスクリプションの登録済みの Webhook にすぐに送信されます。 1 回目の配信で、Webhook がイベントの受信を 60 秒以内に確認しなかった場合、Event Grid はそのイベントの配信を再試行します。 
+
+現時点では、Event Grid はサブスクライバーへ各イベントを個別に送信します。 サブスクライバーは、イベント 1 つが格納された配列を受け取ります。
 
 ## <a name="message-delivery-status"></a>メッセージの配信状態
 

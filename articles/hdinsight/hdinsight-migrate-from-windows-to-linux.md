@@ -1,8 +1,8 @@
 ---
-title: "Windows ベースの HDInsight から Linux ベースの HDInsight への移行 - Azure | Microsoft Docs"
-description: "Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。"
+title: Windows ベースの HDInsight から Linux ベースの HDInsight への移行 - Azure | Microsoft Docs
+description: Windows ベースの HDInsight クラスターから Linux ベースの HDInsight クラスターへの移行方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6d4b537834b8a70f0015fc9c6316dae20af5dd5a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -73,7 +71,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
 
-2. HDInsight ドキュメントに記載された Linux ベース クラスターの作成手順に従ってテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]**を選択します。
+2. HDInsight ドキュメントに記載された Linux ベース クラスターの作成手順に従ってテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]** を選択します。
 
 3. [オプションの構成] セクションで、**[リンクされたストレージ アカウント]** を選択します。
 
@@ -148,7 +146,7 @@ Windows ベースの HDInsight クラスターは従来の仮想ネットワー�
 
 ## <a name="management-and-monitoring"></a>管理と監視
 
-ジョブ履歴 UI や Yarn UI など、Windows ベースの HDInsight で使用した可能性のある Web UI の多くは、Ambari で使用できます。 また、Ambari Hive View で、Web ブラウザーを使用して Hive クエリを実行することができます。 Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net の Linux ベースの HDInsight クラスターで利用できます。
+ジョブ履歴 UI や Yarn UI など、Windows ベースの HDInsight で使用した可能性のある Web UI の多くは、Ambari で使用できます。 また、Ambari Hive View で、Web ブラウザーを使用して Hive クエリを実行することができます。 Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net の Linux ベースのクラスターで利用できます。
 
 Ambari の操作の詳細については、次のドキュメントを参照してください。
 
@@ -234,7 +232,7 @@ C# アプリケーションを使用するワークフローを使用してい�
 | Windows ベースの場合 | Linux ベースの場合 |
 | --- | --- |
 | Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
-| Storm UI |Storm UI は https://CLUSTERNAME.azurehdinsight.net/stormui で利用できます。 |
+| Storm UI |Storm UI は、https://CLUSTERNAME.azurehdinsight.net/stormui は利用できます。 |
 | Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |HDInsight 上の Linux ベースの Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイおよび管理に Visual Studio を使用できます。 2016年 10 月 28 日より後に作成されたクラスターでのみ使用できます。 |
 
 ## <a name="hbase"></a>hbase

@@ -1,10 +1,10 @@
 ---
-title: "チュートリアル: Azure Active Directory と Springer Link の統合 | Microsoft Docs"
-description: "Azure Active Directory と Springer Link の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Springer Link の統合 | Microsoft Docs'
+description: Azure Active Directory と Springer Link の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 58cdf029-bdc0-43c4-a469-b921c2a669bd
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e532659be9b8aef303a20900465d16a7641d8cfe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b004bec7c022662a1c90f54079af4fd25c84fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
 
@@ -115,37 +115,17 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     ![[Springer Link のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url.png)
 
-    **[サインオン URL]** テキストボックスに、URL として「`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。    
+    **[サインオン URL]** テキストボックスに、URL として「`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。
 
-5. **[保存]** ボタンをクリックします。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。 
+
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_certificate.png)    
+
+6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-springerlink-tutorial/tutorial_general_400.png)
 
-6. **メタデータ** URL を生成するには、次の手順を実行します。
-
-    a. **[アプリの登録]** をクリックします。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpoint.png)
-     
-    d. 次に、**Springer Link** のプロパティ ページに移動し、**コピー** ボタンで**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
- 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. **Springer Link** 側でシングル サインオンを構成するには、生成された**メタデータ URL** を [Springer Link サポート チーム](mailto:identity@springernature.com)に送る必要があります。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-
+7. **Springer Link** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Springer Link サポート チーム](mailto:identity@springernature.com)に送る必要があります。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

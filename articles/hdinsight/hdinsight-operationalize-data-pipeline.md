@@ -1,25 +1,23 @@
 ---
-title: "データ分析パイプラインを運用化する - Azure | Microsoft Docs"
-description: "新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。"
+title: データ分析パイプラインを運用化する - Azure | Microsoft Docs
+description: 新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7a439c9d25a470a2474b427f6b20addb6ff3b0c7
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -103,7 +101,7 @@ Azure SQL Database の準備ができました。
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>HDInsight Hadoop クラスターをプロビジョニングする
 
 1. Azure Portal で **[+ 新規]** を選んで、HDInsight を検索します。
-2. **[作成]**を選択します。
+2. **[作成]** を選択します。
 3. [基本] ウィンドウで、クラスターの一意名を指定し、Azure サブスクリプションを選びます。
 
     ![HDInsight クラスターの名前とサブスクリプション](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
@@ -137,7 +135,7 @@ Azure SQL Database の準備ができました。
 
        ![HDInsight のメタストアの設定](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
-12. **[次へ]**を選択します。
+12. **[次へ]** を選択します。
 13. **[概要]** ウィンドウで、**[作成]** を選んでクラスターを展開します。
 
 ### <a name="verify-ssh-tunneling-setup"></a>SSH トンネリングの設定を確認する

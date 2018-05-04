@@ -1,40 +1,33 @@
 ---
-title: "SQL Data Warehouse の変数の代入 | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL 変数の代入に関するヒント。"
+title: Azure SQL Data Warehouse での変数の代入 | Microsoft Docs
+description: ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 81ddc7cf-a6ba-4585-91a3-b6ea50f49227
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 09b0ee336ce00eb20ea501cd97833dfdd6540b30
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="assign-variables-in-sql-data-warehouse"></a>SQL Data Warehouse の変数の代入
-SQL Data Warehouse の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。
-
-以下に示す方法は、いずれも変数値を設定する有効な方法です。
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での変数の代入
+ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
 
 ## <a name="setting-variables-with-declare"></a>DECLARE を使用した変数の設定
-DECLARE を使用した変数の初期化は、SQL Data Warehouse で変数値を設定する最も柔軟性の高い方法の 1 つです。
+SQL Data Warehouse の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。 DECLARE を使用した変数の初期化は、SQL Data Warehouse で変数値を設定する最も柔軟性の高い方法の 1 つです。
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-DECLARE を使用して、一度に複数の変数を設定することもできます。 `SELECT` または `UPDATE` を使用して、これを行うことはできません。
+DECLARE を使用して、一度に複数の変数を設定することもできます。 SELECT または UPDATE を使用して次を行うことはできません。
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +35,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-同じ DECLARE ステートメントで変数を初期化し、使用することはできません。 要点を示すために、次の例では、同じ DECLARE ステートメントで @p1 を初期化し、使用しています。このようなステートメントは使用 "**できません**"。 これはエラーになります。
+同じ DECLARE ステートメントで変数を初期化し、使用することはできません。 要点を示すために、次の例では、同じ DECLARE ステートメントで @p1 を初期化し、使用しています。このようなステートメントは使用**できません**。 次の例は、エラーが発生します。
 
 ```sql
 DECLARE @p1 int = 0
@@ -53,7 +46,7 @@ DECLARE @p1 int = 0
 ## <a name="setting-values-with-set"></a>SET を使用した値の設定
 SET は、1 つの変数を設定する際によく使用されるメソッドです。
 
-次の例はすべて、SET を使用して変数を設定する有効な方法です。
+次のステートメントはすべて、SET を使用して変数を設定する有効な方法です。
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -62,19 +55,11 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-SET を使用して設定できる変数は、一度に 1 つに限られます。 ただし、上記のように複合演算子を使用できます。
+SET を使用して設定できる変数は、一度に 1 つに限られます。 ただし、複合演算子は許容されます。
 
 ## <a name="limitations"></a>制限事項
 SELECT および UPDATE は変数代入には使用できません。
 
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
+## <a name="next-steps"></a>次の手順
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

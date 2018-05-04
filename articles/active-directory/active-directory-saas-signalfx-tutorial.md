@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 50a86a01c22450ae2d92e6743fb6de7e652d4017
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9db01b4ea9a4f0d307db8bb9f8b6d6437a06815d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>チュートリアル: Azure Active Directory と SignalFx の統合
 
@@ -106,7 +106,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     ![[SignalFx のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://api.signalfx.com/v1/saml/metadata`
+    a. **[識別子]** ボックスに次の URL を入力します。`https://api.signalfx.com/v1/saml/metadata`
 
     b. **[応答 URL]** ボックスに、`https://api.signalfx.com/v1/saml/acs/<integration ID>` のパターンを使用して URL を入力します。
 
@@ -126,7 +126,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | User.surname    |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/active-directory-saas-signalfx-tutorial/tutorial_attribute_04.png)
 
@@ -136,57 +136,41 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]**は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
     
-    e. **[OK]**をクリックします。
+    e. **[OK]** をクリックします。
  
-6. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+6. **[SAML 署名証明書]** セクションで、次の手順を実行します。 
 
-    ![証明書のダウンロードのリンク](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png)
+
+    a. コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+
+    b. **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
 7. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-signalfx-tutorial/tutorial_general_400.png)
 
-8. **メタデータ URL** を生成するには、次の手順を実行します。
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpoint.png)
-     
-    d. 次に、**SignalFx** のプロパティ ページに移動し、**[コピー]** ボタンを使用して **[アプリケーション ID]** をコピーし、メモ帳に貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. **[SignalFx 構成]** セクションで、**[SignalFx の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
+8. **[SignalFx 構成]** セクションで、**[SignalFx の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
 
     ![SignalFx 構成](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-10. SignalFx 企業サイトに管理者としてサインオンします。
+9. SignalFx 企業サイトに管理者としてサインオンします。
 
-11. SignalFx で一番上に表示されている **[統合]** をクリックし、統合ページを開きます。
+10. SignalFx で一番上に表示されている **[統合]** をクリックし、統合ページを開きます。
 
     ![SignalFx 統合](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_intg.png)
 
-12. **[ログイン サービス]** セクションの **[Azure Active Directory]** タイルをクリックします。
+11. **[ログイン サービス]** セクションの **[Azure Active Directory]** タイルをクリックします。
  
     ![SignalFx saml](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_saml.png)
 
-13. **[NEW INTEGRATION]\(新規統合\)** をクリックし、**[インストール]** タブで次の手順を実行します。
+12. **[NEW INTEGRATION]\(新規統合\)** をクリックし、**[インストール]** タブで次の手順を実行します。
  
     ![SignalFx samlintgpage](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_azure.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキストボックスに新しい統合名を入力します。たとえば、「**OurOrgName SAML SSO**」にします。
+    a. **[名前]** テキストボックスに新しい統合名を入力します。たとえば、「**OurOrgName SAML SSO**」にします。
 
     b. **[統合 ID]** 値をコピーし、Azure Portal の **[SignalFx Domain and URLs]\(SignalFx のドメインと URL\)** セクションの **[応答 URL]** テキストボックスの**応答 URL** の末尾に追加します。たとえば、`https://api.signalfx.com/v1/saml/acs/<integration ID>` のようになります。
 
@@ -194,12 +178,9 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     d. **[発行者の URL]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    e. **[メタデータ URL]** テキスト ボックスに、Azure Portal から生成した**メタデータ URL** パターンを貼り付けます。
+    e. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** を貼り付けます。
 
     f. **[Save]** をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

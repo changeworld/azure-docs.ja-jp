@@ -1,23 +1,23 @@
 ---
 title: Azure SQL Data Warehouse のバックアップと復元 - スナップショット、geo 冗長 | Microsoft Docs
-description: Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。別のリージョンに復元するには、geo 冗長バックアップを使用します。
+description: Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。 異なる地理的リージョンに復元するには、Geo 冗長バックアップを使用します。
 services: sql-data-warehouse
-author: ronortloff
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-ms.date: 03/28/2018
-ms.author: rortloff
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f540bca0d2eb2c9009a386bd14a5beda2912014
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 535c16da137b114704aa9a2e97576ced5e9eba44
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
-Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。別のリージョンに復元するには、geo 冗長バックアップを使用します。 
+Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。 異なる地理的リージョンに復元するには、Geo 冗長バックアップを使用します。 
 
 ## <a name="what-is-backup-and-restore"></a>バックアップと復元とは何か
 *データ ウェアハウスのバックアップ*は、データ ウェアハウスを復元するために使用できるデータベースのコピーです。  SQL Data Warehouse は分散システムなので、データ ウェアハウスのバックアップは Azure Storage に配置されている多くのファイルで構成されます。 データ ウェアハウスのバックアップには、データ ウェアハウスに関連付けられているすべてのデータベースおよびファイルのローカル データベース スナップショットと geo バックアップの両方が含まれています。 

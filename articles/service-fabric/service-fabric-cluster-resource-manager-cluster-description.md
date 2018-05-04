@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 396f1d3d8c69ba3204d16f06d49656fd138a1126
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 07ddf1c2b76230c8d753426d70098603ff14ec4d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Service Fabric クラスターの記述
 Service Fabric クラスター リソース マネージャーには、クラスターを記述するためのメカニズムが複数用意されています。 クラスター リソース マネージャーは、実行時にこの情報を利用することで、クラスターで実行されているサービスの高可用性を確保します。 クラスター リソース マネージャーはこれらの重要なルールを適用すると同時に、クラスター内のリソース消費量の最適化も試みます。
@@ -39,7 +39,7 @@ Service Fabric クラスター リソース マネージャーには、クラス
 > [!WARNING]
 > Service Fabric に提供される障害ドメイン情報が正確であることが重要です。 たとえば、Service Fabric クラスターのノードが 10 個の仮想マシン内で実行され、5 個の物理ホストで実行されているとします。 この場合、仮想マシンが 10 個ある場合でも、(最上位の) 障害ドメインは 5 個のみです。 物理ホストで障害が発生すると、VM では調整による障害が発生するため、同じ物理ホストを共有すると、VM は同じルート障害ドメインを共有することになります。  
 >
-> Service Fabric は、ノードの障害ドメインが変わらないことを想定しています。 VM の高可用性を確保する他のメカニズム ([HA-VM](https://technet.microsoft.com/en-us/library/cc967323.aspx) など) では、あるホストから別のホストへと VM の透過的な移行を使用するため、Service Fabric との競合が発生する場合があります。 このようなメカニズムは、VM 内で実行されているコードの再構成または通知を行いません。 そのため、Service Fabric クラスターを実行する環境としては**サポートされません**。 採用する高可用性テクノロジは、Service Fabric のみにすることをお勧めします。 VM のライブ移行、SAN などメカニズムは必要ありません。 これらのメカニズムと Service Fabric と組み合わせて使用すると、アプリケーションの可用性と信頼性は_低くなります_。これは、新たな複雑さが増え、障害の集中する場所が増え、Service Fabric と競合する信頼性と可用性の戦略が利用されるためです。 
+> Service Fabric は、ノードの障害ドメインが変わらないことを想定しています。 VM の高可用性を確保する他のメカニズム ([HA-VM](https://technet.microsoft.com/library/cc967323.aspx) など) では、あるホストから別のホストへと VM の透過的な移行を使用するため、Service Fabric との競合が発生する場合があります。 このようなメカニズムは、VM 内で実行されているコードの再構成または通知を行いません。 そのため、Service Fabric クラスターを実行する環境としては**サポートされません**。 採用する高可用性テクノロジは、Service Fabric のみにすることをお勧めします。 VM のライブ移行、SAN などメカニズムは必要ありません。 これらのメカニズムと Service Fabric と組み合わせて使用すると、アプリケーションの可用性と信頼性は_低くなります_。これは、新たな複雑さが増え、障害の集中する場所が増え、Service Fabric と競合する信頼性と可用性の戦略が利用されるためです。 
 >
 >
 

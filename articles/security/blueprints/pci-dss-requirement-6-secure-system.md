@@ -1,6 +1,6 @@
 ---
-title: "Azure Payment Processing Blueprint - セキュリティ保護されたシステムの要件"
-description: "PCI DSS 要件 6"
+title: Azure Payment Processing Blueprint - セキュリティ保護されたシステムの要件
+description: PCI DSS 要件 6
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 24c8d90d3fec27258165472e99ba3d36ffcba733
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: cd9054afc359d7568fcd08f983f374e0b2bc3792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のセキュリティ保護されたシステムの要件 
 ## <a name="pci-dss-requirement-6"></a>PCI DSS 要件 6
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | スコープ境界内のハイパーバイザー ホスト上の脆弱性をスキャンするための手順が規定され実行されている必要があります。 脆弱性のスキャンは、適切な脆弱性スキャン ツールを使用して、サーバー オペレーティング システム、データベース、ネットワーク デバイス上で実行します。 脆弱性スキャンは、四半期に 1 回以上実行します。 Microsoft Azure は、独立した監査機関と契約して、Microsoft Azure 境界の侵入テストを実行します。 レッド チームの演習も定期的に実行され、結果はセキュリティの向上のために使用されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、WAF および OWASP ルールセットに対応した Application Gateway を使用することで、セキュリティの脆弱性のリスクを軽減します。 詳細については、[PCI ガイド - セキュリティの脆弱性のリスク軽減](payment-processing-blueprint.md#application-gateway)を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、WAF および OWASP ルールセットに対応した Application Gateway を使用することで、セキュリティの脆弱性のリスクを軽減します。 詳細については、[PCI ガイド - セキュリティの脆弱性のリスク軽減](payment-processing-blueprint.md#application-gateway)を参照してください。|
 
 
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、ベンダーから提供された該当するセキュリティ更新プログラムをインストールすることによって、すべてのネットワークおよびハイパーバイザー OS ソフトウェアを既知の脆弱性から守ります。 お客様がサービスを使用しないことを要求しない限り、オペレーティング システム レベルの脆弱性を回避し、適切なタイミングで修復するためのセキュリティ更新プログラムの管理プロセスが存在します。 運用環境のサーバーは、セキュリティ更新プログラムが適用されていることを確認するために月 1 回スキャンされます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、PaaS サービス ソリューションです。 Azure は、すべてのサービス更新プログラムのメンテナンスを提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、PaaS サービス ソリューションです。 Azure は、すべてのサービス更新プログラムのメンテナンスを提供します。|
 
 
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure アプリケーションとエンドポイントは、DSS 要件に従った Microsoft セキュリティ開発ライフサイクル (SDL) 手法により開発されています。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は CHD を保護するための業界のベスト プラクティスに従って設計されています。 セキュリティ対策の詳細について展開ガイドで説明し、ログ記録機能は有効に設定する必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は CHD を保護するための業界のベスト プラクティスに従って設計されています。 セキュリティ対策の詳細について展開ガイドで説明し、ログ記録機能は有効に設定する必要があります。|
 
 
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 運用環境にリリースする準備ができているアプリケーションのみがリリースされるよう、運用環境へ主要なリリースを展開する前に、Azure の開発チーム外の指定されたセキュリティ アドバイザーによる最終セキュリティ レビュー (FSR) が実行されます。 この最終レビューの中で、すべてのテスト アカウントとテスト データが削除されたことが確認されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
 
 
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure アプリケーションとエンドポイントは、Microsoft セキュリティ開発ライフサイクル (SDL) 手法により開発されています。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
 
 
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft では、システム開発の最初から SDLC に統合する必要がある情報セキュリティを含む、NIST ガイダンスのソフトウェア開発におけるセキュリティ考慮事項に従っています。 Microsoft SDL のセキュリティ プラクティスを継続的に統合することにより、以下が可能になります。<ul><li>セキュリティの脆弱性と構成不備の早期検出とその軽減</li><li>必要なセキュリティ制御によって起こった潜在的なソフトウェア コーディングの問題の認識</li><li>共有のセキュリティ サービスの特定と、実証済みの方法および手法を通じてセキュリティ対策の全体を向上するベスト プラクティスのセキュリティ ツールの再利用</li><li>Microsoft のすでに包括的なリスク管理プログラムの適用</li></ul>Microsoft Azure では、以下を含む主な変更の実装を制御するための変更管理およびリリース管理プロセスが規定されています。<ul><li>計画的な変更の特定と文書化</li><li>製品計画段階でのビジネス目標、優先順位およびシナリオの特定</li><li>機能の仕様またはコンポーネント設計</li><li>全体的なリスクまたは影響を評価するための、定義済み条件/チェックリストによる運用対応性のレビュー</li><li>適切な DEV (開発)、INT (統合テスト)、STAGE (運用前)、および PROD (運用) 環境の入口/出口条件に基づくテスト、承認および変更管理。 お客様は、Microsoft Azure でホストされるお客様のアプリケーションに対する責任があります。</li></ul> |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore のデモは、ログに記録され、分離されたステージング サービスを提供します。 <br /><br />各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。<br /><br />変更は Operations Management Suite を使用して記録し、Runbook を使用してログを収集します。 [Operations Management Suite (OMS)](/azure/operations-management-suite/) は、変更の詳細なログ記録を提供します。 変更をレビュー、検証して正確性を確認できます。 具体的なガイダンスについては、[PCI ガイダンス - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore のデモは、ログに記録され、分離されたステージング サービスを提供します。 <br /><br />各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。<br /><br />変更は Operations Management Suite を使用して記録し、Runbook を使用してログを収集します。 Log Analytics は、広範にわたる変更のログ記録を提供します。 正確性を確保するために、変更内容を確認および検証できます。 具体的なガイダンスについては、[PCI ガイダンス - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing) を参照してください。|
 
 
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
 
 
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、ログに記録され、分離されたステージング サービスを提供します。 各ネットワーク階層には、専用のネットワーク セキュリティ グループ (NSG) があります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](payment-processing-blueprint.md#network-security-groups)に関する説明をご覧ください。|
 
 
 
@@ -169,7 +169,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore に、ライブのプライマリ アカウント番号 (PAN) データがない状態にする必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore に、ライブのプライマリ アカウント番号 (PAN) データがない状態にする必要があります。|
 
 
 
@@ -182,7 +182,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore には、テスト アカウントがない状態にする必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore には、テスト アカウントがない状態にする必要があります。|
 
 
 
@@ -199,7 +199,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、PaaS サービス ソリューションです。 Azure は、すべてのサービス更新プログラムのメンテナンスを提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、PaaS サービス ソリューションです。 Azure は、すべてのサービス更新プログラムのメンテナンスを提供します。|
 
 
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 11/16/2017
 **6.4.6** 重大な変更が完了したら、関連するすべての PCI DSS 要件を、新しいまたは変更されたシステムおよびネットワークに実装し、適切にドキュメントを更新する必要があります。
 
 > [!NOTE]
-> この要件は、2018 年 1 月 31 日まではベスト プラクティスに指定され、その後は要件になります。
+> この要件は、2018 年 1 月 31 日まではベスト プラクティスであり、その後は要件になります。
 
 
 **責任:&nbsp;&nbsp;`Shared`**
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、PaaS サービス ソリューションです。 Azure は、すべてのサービス更新プログラムのメンテナンスを提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、PaaS サービス ソリューションです。 Azure は、すべてのサービス更新プログラムのメンテナンスを提供します。|
 
 
 
@@ -248,7 +248,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | [要件 6.4](#pci-dss-requirement-6-4) の "Microsoft Azure" のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore デモでは、セキュリティ保護された開発を行う方法についてのガイダンスと、セキュリティ上安全な開発プラクティスの DFD および脅威モデルを示します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore デモでは、セキュリティ保護された開発を行う方法についてのガイダンスと、セキュリティ上安全な開発プラクティスの DFD および脅威モデルを示します。|
 
 
 
@@ -268,7 +268,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure では、アプリケーションが運用環境に展開される前に、その SDL プロセスの一環として公開 Web アプリケーションをテストします。 さらに、Microsoft は、潜在的な脆弱性を検出するために、運用環境にあるすべての公開 Web アプリケーションを定期的にスキャンします。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 参照ソリューションは、WAF および OWASP ルールセットに対応した Application Gateway を使用することで、セキュリティの脆弱性のリスクを軽減します。 詳細については、[PCI ガイド - セキュリティの脆弱性のリスク軽減](payment-processing-blueprint.md#application-gateway)を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 参照ソリューションは、WAF および OWASP ルールセットに対応した Application Gateway を使用することで、セキュリティの脆弱性のリスクを軽減します。 詳細については、[PCI ガイド - セキュリティの脆弱性のリスク軽減](payment-processing-blueprint.md#application-gateway)を参照してください。|
 
 
 
@@ -281,7 +281,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 参照ソリューションは、WAF および OWASP ルールセットに対応した Application Gateway を使用することで、セキュリティの脆弱性のリスクを軽減します。 詳細については、[PCI ガイド - セキュリティの脆弱性のリスク軽減](payment-processing-blueprint.md#application-gateway)を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 参照ソリューションは、WAF および OWASP ルールセットに対応した Application Gateway を使用することで、セキュリティの脆弱性のリスクを軽減します。 詳細については、[PCI ガイド - セキュリティの脆弱性のリスク軽減](payment-processing-blueprint.md#application-gateway)を参照してください。|
 
 
 

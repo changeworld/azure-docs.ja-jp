@@ -1,27 +1,26 @@
 ---
-title: "SQL Data Warehouse のユーザー定義のスキーマ | Microsoft Docs"
-description: "ソリューション開発のための、Azure SQL Data Warehouse での Transact-SQL スキーマの使用に関するヒント。"
+title: SQL Data Warehouse でのユーザー定義スキーマの使用 |Microsoft Docs
+description: Azure SQL Data Warehouse でソリューションを開発するための T-SQL ユーザー定義スキーマの使用に関するヒント。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: c18e6d34416390ae7e93b69b28d508a540f7b1ab
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="user-defined-schemas-in-sql-data-warehouse"></a>SQL Data Warehouse のユーザー定義のスキーマ
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>SQL Data Warehouse でのユーザー定義スキーマの使用
+Azure SQL Data Warehouse でソリューションを開発するための T-SQL ユーザー定義スキーマの使用に関するヒント。
+
+## <a name="schemas-for-application-boundaries"></a>アプリケーション境界のスキーマ
+
 従来のデータ ウェアハウスでは、多くの場合、個別のデータベースを使用して、ワークロード、ドメイン、またはセキュリティに基づくアプリケーション境界を作成しています。 たとえば、従来の SQL Server データ ウェアハウスは、ステージング データベース、データ ウェアハウス データベース、複数のデータ マート データベースで構成されていることがあります。 このトポロジでは、各データベースがアーキテクチャでワークロードとセキュリティの境界として機能します。
 
 これに対して、SQL Data Warehouse では、データ ウェアハウスの全ワークロードを 1 つのデータベース内で実行します。 データベース間の結合は許可されていません。 そのため、SQL Data Warehouse では、ウェアハウスで使用されるすべてのテーブルが 1 つのデータベースに格納されていることが求められます。
@@ -31,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 ユーザー定義のスキーマを使用して、ワークロード、セキュリティ、ドメイン、機能の境界を統合する際の推奨事項を以下に示します。
 
 1. 1 つの SQL Data Warehouse データベースを使用して、データ ウェアハウスの全ワークロードを実行します。
@@ -120,14 +119,6 @@ FROM    [edw].customer
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、[開発の概要][development overview]のページをご覧ください。
+## <a name="next-steps"></a>次の手順
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

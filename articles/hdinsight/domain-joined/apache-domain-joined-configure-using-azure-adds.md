@@ -1,24 +1,19 @@
 ---
-title: Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する - Azure | Microsoft Docs
+title: AAD-DS を使用した、ドメイン参加済み HDInsight クラスターの構成
 description: Azure Active Directory Domain Services を使ったドメイン参加済み HDInsight クラスターの設定と構成の方法について説明します。
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bhanupr
-ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 060ca8040f514ec1df48c2ca4568cbbb2a529267
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する
 
@@ -36,7 +31,10 @@ HDInsight クラスターを作成する前に、Azure AD DS を作成してお�
 > [!NOTE]
 > ドメイン サービスを作成する権限が与えられているのはテナント管理者だけです。 HDInsight の既定のストレージとして Azure Data Lake Storage (ADLS) を使用する場合は、ADLS の既定の Azure AD テナントが HDInsight クラスターのドメインと同じであることを確認します。 この設定が Azure Data Lake Store で動作するためには、クラスターへのアクセスを許可するユーザーに対して多要素認証を無効にする必要があります。
 
-ドメイン サービスのプロビジョニング後、HDInsight クラスターを作成するためのサービス アカウントを **Azure AD DC 管理者**グループに作成する必要があります。 サービス アカウントは、Azure AD のグローバル管理者であることが必要です。
+AAD ドメイン サービスをプロビジョニングしたら、HDInsight クラスターを作成するために適切な権限が付与されたサービス アカウントを (AAD-DS と同期される) AAD 内に作成する必要があります。 このサービス アカウントが既に存在する場合は、パスワードをリセットし、AAD-DS と同期されるまで待ってください (このリセットのためには、Kerberos パスワード ハッシュを作成する必要があり、最大 30 分かかることがあります)。 このサービス アカウントには、次の特権を付与します。
+
+- コンピューターをドメインに参加させ、クラスターの作成時に指定する OU 内にマシン プリンシパルを配置します。
+- クラスターの作成中に指定する OU 内にサービス プリンシパルを作成します。
 
 Azure AD Domain Services の管理対象ドメインに対して Secure LDAP を有効にする必要があります。 Secure LDAP を有効にするには、「[Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)」をご覧ください。
 
@@ -49,7 +47,7 @@ Azure AD ドメイン サービスと HDInsight クラスターは、どちら�
 ドメイン参加済み HDInsight クラスターを作成するときは、次のパラメーターを指定する必要があります。
 
 - **ドメイン名**: Azure AD DS に関連付けるドメイン名  (例: contoso.onmicrosoft.com)。
-- **ドメイン ユーザー名**: 前のセクションで作成した Azure AD DC 管理者グループ内のサービス アカウント。 たとえば、「hdiadmin@contoso.onmicrosoft.com」のように入力します。このドメイン ユーザーは、このドメイン参加済み HDInsight クラスターの管理者になります。
+- **ドメイン ユーザー名**: 前のセクションで作成した Azure AD DC 内のサービス アカウント。 たとえば、「hdiadmin@contoso.onmicrosoft.com」のように入力します。このドメイン ユーザーは、このドメイン参加済み HDInsight クラスターの管理者になります。
 - **ドメイン パスワード**: サービス アカウントのパスワード。
 - **組織単位**: HDInsight クラスターで使用する OU の識別名。 たとえば「OU=HDInsightOU,DC=contoso,DC=onmicrosohift,DC=com」と入力します。この OU が存在しない場合、HDInsight クラスターがこの OU の作成を試みます。 
 - **LDAPS URL**: たとえば、ldaps://contoso.onmicrosoft.com:636 です。

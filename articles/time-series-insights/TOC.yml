@@ -1,3 +1,5 @@
+- name: Azure IoT の基礎
+  href: ../iot-fundamentals/index.yml
 - name: Azure Time Series Insights のドキュメント
   href: index.yml
 - name: 概要
@@ -57,16 +59,36 @@
       href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
     - name: クエリ構文
       href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+- name: 関連項目
+  items:
+    - name: 解決方法
+      items:
+        - name: IoT Suite の構成済みソリューション
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: サービス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: Azure Stream Analytics
+      href: /azure/stream-analytics/
 - name: リソース
   items:
-    - name: 関連サービス
-      items:
-        - name: Azure IoT Suite
-          href: /azure/iot-suite/
-        - name: Azure Event Hubs
-          href: /azure/event-hubs/
-        - name: Azure Stream Analytics
-          href: /azure/stream-analytics/
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: 価格

@@ -16,6 +16,8 @@
       href: cdn-map-content-to-custom-domain.md
     - name: カスタム ドメインで HTTPS を構成する
       href: cdn-custom-ssl.md
+    - name: キャッシュ規則の設定
+      href: cdn-caching-rules-tutorial.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -156,6 +158,8 @@
           href: cdn-pop-locations.md
         - name: 略称別の POP の場所
           href: cdn-pop-abbreviations.md
+    - name: Azure CDN での課金について
+      href: cdn-billing.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN フォーラム

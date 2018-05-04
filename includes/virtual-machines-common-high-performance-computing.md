@@ -154,7 +154,7 @@ Azure の仮想マシン、仮想マシン スケール セット、Batch、お�
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>コンテナー
+### <a name="containers"></a>Containers
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
 * [コンテナー レジストリ](../articles/container-registry/container-registry-intro.md)
 
@@ -181,7 +181,7 @@ Azure HPC ソリューションを使ってビジネスの問題を解決した�
 * [エンジニアリング シミュレーション](https://simulation.azure.com/)、[レンダリング](https://simulation.azure.com/)、[銀行業および資本市場](https://finance.azure.com/)、および[ゲノミクス](https://enterprise.microsoft.com/en-us/industries/health/genomics/)向けの大規模コンピューティング ソリューションの詳細については、それぞれのトピックを参照してください。
 * 最新情報については、[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)と[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)をご覧ください。
 
-* 管理されたスケーラブルな Azure [Batch](https://azure.microsoft.com/services/batch/) サービスを使用して、基礎となるインフラストラクチャを管理することなく、コンピューティングが大量に発生するワークロードを実行する ([詳細](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/))
+* 管理されたスケーラブルな Azure [Batch](https://azure.microsoft.com/services/batch/) サービスを使用して、基礎となるインフラストラクチャを管理することなく、コンピューティングが大量に発生するワークロードを実行する ([詳細](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/))
 
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -64,7 +64,7 @@ SSL 証明書の購入が完了したら、[[App Service 証明書]](https://por
 
 > [!NOTE]
 > 最小限の料金でこの証明書を Azure Key Vault に格納できます。
-> 詳細については、**[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)**に関するページをご覧ください。
+> 詳細については、**[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)** に関するページをご覧ください。
 >
 
 この証明書を格納する Key Vault リポジトリを選択すると、**[格納]** オプションに、成功したことが示されます。
@@ -101,13 +101,13 @@ App Service 証明書では、App Service、ドメイン、メールおよび手
 
 この証明書を割り当てるアプリの名前をクリックします。
 
-**[設定]**で、**[SSL 証明書]** をクリックします。
+**[設定]** で、**[SSL 設定]** をクリックします。
 
 **[App Service 証明書のインポート]** をクリックして、購入した証明書を選択します。
 
 ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-**[SSL のバインディング]** セクションで **[バインディングの追加]** をクリックし、ドロップダウン リストから、SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。 また、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)**または IP ベースの SSL のどちらを使用するかを選択できます。
+**[SSL のバインディング]** セクションで **[バインディングの追加]** をクリックし、ドロップダウン リストから、SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。 また、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** または IP ベースの SSL のどちらを使用するかを選択できます。
 
 ![SSL バインドのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
@@ -206,5 +206,7 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 
 ## <a name="more-resources"></a>その他のリソース
 
+* [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
+* [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
 * [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

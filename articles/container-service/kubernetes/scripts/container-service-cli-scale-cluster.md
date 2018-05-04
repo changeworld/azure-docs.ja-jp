@@ -1,14 +1,14 @@
 ---
-title: "Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング"
+title: Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - ACS クラスターのスケーリング
 services: container-service
-documentationcenter: 
+documentationcenter: ''
 author: neilpeterson
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: acs, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure"
-ms.assetid: 
+keywords: Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure
+ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 7d3997f28dd07d5eb31fc811fbb7ffa1f8d2c7c4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2daff49e90213b2fadc0f75e0209f668a94d3dea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>Azure Container Service クラスターのスケーリング
 

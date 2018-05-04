@@ -1,0 +1,127 @@
+- name: Application Gateway のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: アプリケーション ゲートウェイについて
+      href: overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Web トラフィックを転送する - ポータル
+      href: quick-create-portal.md
+    - name: Web トラフィックを転送する - PowerShell
+      href: quick-create-powershell.md
+    - name: Web トラフィックを転送する - Azure CLI
+      href: quick-create-cli.md
+- name: チュートリアル
+  items:
+    - name: Web トラフィックを管理する
+      href: tutorial-manage-web-traffic-cli.md
+    - name: Web トラフィックを制限する
+      href: tutorial-restrict-web-traffic-cli.md
+    - name: SSL でセキュリティ保護する
+      href: tutorial-ssl-cli.md
+    - name: 複数のサイトをホストする
+      href: tutorial-multiple-sites-cli.md
+    - name: URL に基づいてルーティングする
+      href: tutorial-url-route-cli.md
+    - name: Web トラフィックをリダイレクトする
+      href: tutorial-url-redirect-cli.md
+- name: サンプル
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  items:
+    - name: Web アプリケーション ファイアウォール
+      href: waf-overview.md
+    - name: URL ルーティング
+      href: url-route-overview.md
+    - name: 複数サイトのホスティング
+      href: multiple-site-overview.md
+    - name: SSL 終了
+      href: ssl-overview.md
+    - name: URL リダイレクト
+      href: redirect-overview.md
+- name: ハウツー ガイド
+  items:
+    - name: アプリケーション ゲートウェイの作成
+      items:
+        - name: テンプレート
+          href: create-vmss-template.md
+        - name: Web アプリ - PowerShell
+          href: create-web-app.md
+    - name: SSL 終了を有効にする - ポータル
+      href: create-ssl-portal.md
+    - name: 複数のサイトをホストする - ポータル
+      href: create-multiple-sites-portal.md
+    - name: 外部トラフィックをリダイレクトする
+      items:
+        - name: Azure PowerShell
+          href: redirect-external-site-powershell.md
+        - name: Azure CLI
+          href: redirect-external-site-cli.md
+    - name: HTTP を HTTPS にリダイレクトする
+      items:
+        - name: Azure PowerShell
+          href: redirect-http-to-https-powershell.md
+        - name: Azure CLI
+          href: redirect-http-to-https-cli.md
+    - name: 内部トラフィックをリダイレクトする
+      items:
+        - name: Azure PowerShell
+          href: redirect-internal-site-powershell.md
+        - name: Azure CLI
+          href: redirect-internal-site-cli.md
+    - name: Web トラフィックを制限する - ポータル
+      href: create-waf-portal.md
+    - name: URL に基づいてルーティングする - ポータル
+      href: create-url-route-portal.md
+    - name: Azure PowerShell を使用して Web トラフィックを管理する
+      href: tutorial-manage-web-traffic-powershell.md
+    - name: Azure PowerShell を使用して Web トラフィックを制限する
+      href: tutorial-restrict-web-traffic-powershell.md
+    - name: Azure PowerShell を使用した SSL 終了
+      href: tutorial-ssl-powershell.md
+    - name: Azure PowerShell を使用して複数のサイトをホストする
+      href: tutorial-multiple-sites-powershell.md
+    - name: Azure PowerShell を使用して Web トラフィックをルーティングする
+      href: tutorial-url-route-powershell.md
+    - name: Azure PowerShell を使用して Web トラフィックをリダイレクトする
+      href: tutorial-url-redirect-powershell.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network/application-gateway
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST ()
+      href: /rest/api/applicationgateway
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: リソース
+  items:
+    - name: テンプレートの作成
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
+    - name: FAQ
+      href: application-gateway-faq.md

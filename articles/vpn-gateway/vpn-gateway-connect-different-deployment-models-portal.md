@@ -89,7 +89,7 @@ Connection name = RMtoClassic
 
 このセクションでは、クラシック VNet、ローカル ネットワーク (ローカル サイト)、および仮想ネットワーク ゲートウェイを作成します。 スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
 
-### 1.<a name="classicvnet">クラシック VNet の作成</a>
+### 1.<a name="classicvnet"></a>クラシック VNet の作成
 
 クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
 

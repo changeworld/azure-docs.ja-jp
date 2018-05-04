@@ -97,6 +97,8 @@
           href: durable-functions-bindings.md
         - name: チェックポイントと再生
           href: durable-functions-checkpointing-and-replay.md
+        - name: カスタム オーケストレーションの状態
+          href: durable-functions-custom-orchestration-status.md
         - name: インスタンス管理
           href: durable-functions-instance-management.md
         - name: HTTP API
@@ -181,6 +183,8 @@
           href: durable-functions-phone-verification.md
         - name: 単体テスト
           href: durable-functions-unit-testing.md
+        - name: イベントの発行
+          href: durable-functions-event-publishing.md
 - name: リファレンス
   items:
     - name: バインド

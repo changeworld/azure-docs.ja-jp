@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 865b0e485480f5ee7d676d3a6c90cb51fd50d19c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する
 Log Analytics は、企業内のソースまたは Azure に展開されたソースから毎日大量のデータを収集し、インデックスを付けて、保存する処理をスケーリングおよびサポートするように設計されています。  これは組織の主要な原動力になる場合がありますが、最終的に基になる原動力はコスト効率です。 そのためには、Log Analytisc ワークスペースのコストは、収集されるデータのボリュームだけでなく、選択されているプラン、および接続されたソースから生成されたデータの保持期間にも依存することを、理解しておくことが重要です。  
@@ -33,15 +33,14 @@ Log Analytics は、企業内のソースまたは Azure に展開されたソ�
 - データがワークスペースに保持される期間  
 - 有効な管理ソリューションの数、データ ソース、および収集の頻度 
 
+各ソリューションが収集するデータ量を見積もる際には、各ソリューションのドキュメントをご覧ください。   
+
+価格レベル "Free" を利用している場合、データのリテンション期間は 7 日間に制限されます。 価格レベルが "GB あたり (スタンドアロン)" または "ノードあたり (OMS)" の場合、過去 31 日間の収集データを利用できます。リテンション期間は最大 2 年まで延期できます。 長いリテンション期間を選択する場合は、料金がかかります。 Free プランには 1 日あたり 500 MB のインジェスト制限があり、許可されているボリュームを常に超えることが確実な場合は、ワークスペースを GB あたりまたはノードあたりの価格レベルに変更し、この制限を超えてデータを収集できます。 プランの種類はいつでも変更できます。価格について詳しくは、[価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページをご覧ください。 
+
 > [!NOTE]
-> 各ソリューションが収集するデータ量を見積もる際には、各ソリューションのドキュメントをご覧ください。   
+> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/en-us/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)をご確認ください。 
 
-*Free* プランを使っている場合は、データのリテンション期間は 7 日間に制限されます。 "*スタンドアロン*" レベルまたは "*有料*" レベルの場合は、収集されたデータは 31 日間利用できます。 *Free* プランには 1 日当たり 500 MB のインジェスト制限があり、許可されているボリュームを常に超えることが確実な場合は、ワークスペースを有料プランに変更し、この制限を超えてデータを収集できます。 
-
-> [!NOTE]
-> 有料プランで長い保持期間を選択する場合は、料金がかかります。 プランの種類はいつでも変更できます。価格について詳しくは、[価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページをご覧ください。 
-
-データ ボリュームを制限してコストを管理するには、日次上限とデータ リテンション期間の 2 つの方法があります。  
+価格モデルや価格レベルに関係なく、データ量の管理はコスト管理の基本です。 特定のソリューションの選択と構成以外に、Log Analytics では、日次上限とデータ リテンション期間という 2 つの方法でデータ量を制限し、コストを管理できます。  
 
 ## <a name="review-estimated-cost"></a>推定コストを確認する
 Log Analytics では、最近の使用パターンに基づいてコストを簡単に理解できます。  このためには、次の手順を実行します。  

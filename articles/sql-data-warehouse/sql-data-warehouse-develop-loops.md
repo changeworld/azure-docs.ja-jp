@@ -1,33 +1,32 @@
 ---
-title: "Azure SQL Data Warehouse で T-SQL のループを使う | Microsoft Docs"
-description: "ソリューションを開発するための  Azure SQL Data Warehouse  でのTRANSACT-SQL のループと、カーソルの置換に関するヒント。"
+title: Azure SQL Data Warehouse で T-SQL のループを使う | Microsoft Docs
+description: ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: f3384b81-b943-431b-bc73-90e47e4c195f
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 40a872ff310f48bfd543ac184fe7301b85b50258
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 8d51c8f18d7c00d21fcc057efcda73e2a6b46cc7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="loops-in-sql-data-warehouse"></a>SDL Data Warehouse でのループ
-SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE][WHILE] ループをサポートします。 これは、指定された条件が true の場合に限り、またはコードが `BREAK` キーワードを使用してループを終了するまで実行されます。 ループは、SQL コードで定義されているカーソルを置き換えるために特に便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、カーソルを置き換える必要がある場合、 [WHILE] ループは多くの選択肢があります。
+# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>SDL Data Warehouse での T-SQL のループの使用
+ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
 
-## <a name="leveraging-loops-and-replacing-cursors-in-sql-data-warehouse"></a>SQL Data Warehouse でのループの活用とカーソルの置換
-ただし、始める前に、まず、自分で「このカーソルは、セット ベースの操作を使用して再作成できるか」と問いかけてください。 多くの場合、答えは「はい」であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも非常に速く実行されます。
+## <a name="purpose-of-while-loops"></a>WHILE ループの目的
 
-高速順方向の読み取り専用カーソルは、ループ構造で簡単に置き換えることができます。 単純な例を次に示します。 このコード例は、データベース内のすべてのテーブルの統計を更新します。 ループ内のテーブルを反復処理することで、シーケンス内の各コマンドを実行できます。
+SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE](/sql/t-sql/language-elements/while-transact-sql) ループをサポートします。 この WHILE ループは、指定された条件が true の場合に限り、またはコードが BREAK キーワードを使用してループを終了するまで実行されます。 ループは、SQL コードで定義されているカーソルを置き換えるために便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、[WHILE] ループはカーソルの置換に対する優れた代替手段です。
+
+## <a name="replacing-cursors-in-sql-data-warehouse"></a>SQL Data Warehouse でのカーソルの置換
+ただし、始める前に、まず、自分で "このカーソルは、セット ベースの操作を使用して再作成できるか" と問いかけてください。 多くの場合、答えは "はい" であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも速く実行されます。
+
+高速順方向の読み取り専用カーソルは、ループ構造で簡単に置き換えることができます。 単純な例を次に示します。 このコード例は、データベース内のすべてのテーブルの統計を更新します。 ループ内のテーブルを反復処理することで、各コマンドは順番に実行されます。
 
 最初に、個々のステートメントを識別するための一意の行番号が含まれている、一時テーブルを作成します。
 
@@ -69,19 +68,6 @@ END
 DROP TABLE #tbl;
 ```
 
+## <a name="next-steps"></a>次の手順
+開発に関するその他のヒントについては、[開発の概要](sql-data-warehouse-overview-develop.md)のページをご覧ください。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-
-## <a name="next-steps"></a>次のステップ
-開発に関するその他のヒントについては、「[開発の概要][development overview]」をご覧ください。
-
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[WHILE]: https://msdn.microsoft.com/library/ms178642.aspx
-
-
-<!--Other Web references-->

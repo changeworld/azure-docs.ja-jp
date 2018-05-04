@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: c733f919189dadcf1181ddbe2a1057b2bcf66fc4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: 組み込みのポリシー
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>サインアップまたはサインイン ポリシーを作成する
 
-このポリシーは、1 つの構成でコンシューマーのサインアップ エクスペリエンスとサインイン エクスペリエンスの両方を処理します。 コンシューマーは、状況に応じて正しいパス (サインアップまたはサインイン) に誘導されます。 このポリシーはまた、サインアップまたはサインインが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。サインアップまたはサインイン ポリシーのサンプル コードは、 [こちらで入手できます](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  サインアップ ポリシーとサインイン ポリシーには、このポリシーを使用することをお勧めします。  
+このポリシーは、1 つの構成でコンシューマーのサインアップ エクスペリエンスとサインイン エクスペリエンスの両方を処理します。 コンシューマーは、状況に応じて正しいパス (サインアップまたはサインイン) に誘導されます。 このポリシーはまた、サインアップまたはサインインが成功したときにアプリケーションが受け取るトークンのコンテンツを記述します。**サインアップまたはサインイン** ポリシーのサンプル コードは、[こちらで入手できます](active-directory-b2c-devquickstarts-web-dotnet-susi.md)。  **サインアップ** ポリシーまたは**サインイン** ポリシーには、このポリシーを使用することをお勧めします。  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -85,16 +85,16 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>サインアップまたはサインイン ポリシーをパスワード リセット ポリシーにリンクするにはどうすればよいですか?
-サインアップまたはサインイン ポリシーを (ローカル アカウントで) 作成すると、エクスペリエンスの最初のページに **[Forgot password?] \(パスワードを忘れた場合)** リンクが表示されます。 このリンクをクリックしても、パスワード リセット ポリシーは自動的にはトリガーされません。 
+**サインアップまたはサインイン** ポリシーを (ローカル アカウントで) 作成すると、エクスペリエンスの最初のページに **[パスワードを忘れた場合]** リンクが表示されます。 このリンクをクリックしても、パスワード リセット ポリシーは自動的にはトリガーされません。 
 
 代わりに、エラー コード **`AADB2C90118`** がアプリに返されます。 アプリは、特定のパスワード リセット ポリシーを呼び出すことによって、このエラー コードを処理する必要があります。 詳細については、[ポリシーをリンクする方法を示すサンプル](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)を参照してください。
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>サインアップまたはサインイン ポリシーと、サインアップ ポリシーおよびサインイン ポリシーのどちらを使用すればよいですか?
-サインアップ ポリシーおよびサインイン ポリシーより、サインアップまたはサインイン ポリシーを使用することをお勧めします。  
+**サインアップ ポリシー**および**サインイン ポリシー**より、**サインアップまたはサインイン** ポリシーを使用することをお勧めします。  
 
-サインアップまたはサインイン ポリシーは、サインイン ポリシーより多くの機能を備えています。 また、ページ UI のカスタマイズを使用したり、ローカライズのより適切なサポートを受けたりすることもできます。 
+**サインアップまたはサインイン** ポリシーは、**サインイン** ポリシーより多くの機能を備えています。 また、ページ UI のカスタマイズを使用したり、ローカライズのより適切なサポートを受けたりすることもできます。 
 
-ポリシーをローカライズする必要がなく、必要なのはブランドのマイナーなカスタマイズ機能だけであり、それにパスワード リセットを組み込みたい場合は、サインイン ポリシーをお勧めします。
+ポリシーをローカライズする必要がなく、必要なのはブランドのマイナーなカスタマイズ機能だけであり、それにパスワード リセットを組み込みたい場合は、**サインイン** ポリシーをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 * [トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)

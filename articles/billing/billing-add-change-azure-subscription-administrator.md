@@ -1,11 +1,11 @@
 ---
-title: "Azure 管理者サブスクリプション ロールを追加または変更する | Microsoft Docs"
-description: "Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法について説明します"
-services: 
-documentationcenter: 
+title: Azure 管理者サブスクリプション ロールを追加または変更する | Microsoft Docs
+description: Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法について説明します
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ecee98e9b74613a4176d20d231b32e4cb99a721e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
-従来の Azure サブスクリプション管理と Azure [ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) が、Azure リソースへのアクセスを管理する 2 つのシステムです。
+従来の Azure サブスクリプション管理と Azure [ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) が、Azure リソースへのアクセスを管理する 2 つのシステムです。
 
 * 従来のサブスクリプション管理者ロールは、基本的なアクセス管理を提供しており、アカウント管理者、サービス管理者、および共同管理者が含まれます。
     * 新しい Azure サブスクリプションにサインアップすると、既定では、アカウント管理者およびサービス管理者の両方としてアカウントが設定されます。
@@ -41,10 +41,12 @@ Azure サブスクリプション サービス管理の管理者としてユー�
 
 1. [Azure Portal の**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 2. アクセス権を付与するサブスクリプションを選択します。
-3. メニューから **[アクセス制御 (IAM)]** を選択します。
-4. **[ロール]** ボックスで、**[所有者]** を選択します。 
-5. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。 
-6. **[選択]** ボックスに、所有者として追加するユーザーのメール アドレスを入力します。 ユーザーを選択し、**[保存]** を選択します。
+3. **[追加]** を選択します。  
+   ([追加] ボタンがない場合は、アクセス許可を追加する権限がありません。)
+4. メニューから **[アクセス制御 (IAM)]** を選択します。
+5. **[ロール]** ボックスで、**[所有者]** を選択します。 
+6. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。 
+7. **[選択]** ボックスに、所有者として追加するユーザーのメール アドレスを入力します。 ユーザーを選択し、**[保存]** を選択します。
 
     ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -104,14 +106,14 @@ Azure サブスクリプション サービス管理の管理者としてユー�
 
 1. [Azure Portal の**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 1. 確認するサブスクリプションを選択し、**[設定]** を調べます。
-1. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、**[アカウント管理者]** ボックスに表示されます。  
+1. **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、**[アカウント管理者]** ボックスに表示されます。  
 
 ## <a name="types-of-classic-subscription-admins"></a>従来のサブスクリプション管理者の種類
 
  Azure の従来のサブスクリプション管理者ロールには、アカウント管理者、サービス管理者、共同管理者の 3 種類があります。 Azure へのサインアップに使用されたアカウントは、自動的にアカウント管理者とサービス管理者の両方として設定されます。 その後、共同管理者を追加できます。 次の表では、この 3 つの管理ロールの厳密な違いについて説明します。 
 
 > [!TIP]
-> 制御を強化し、きめ細かなアクセス管理を実現するために、Azure ロールベースのアクセス制御 (RBAC) を使用することをお勧めします。これにより、ユーザーを複数のロールに追加することができます。 詳細については、[Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)に関するページをご覧ください。
+> 制御を強化し、きめ細かなアクセス管理を実現するために、Azure ロールベースのアクセス制御 (RBAC) を使用することをお勧めします。これにより、ユーザーを複数のロールに追加することができます。 詳細については、[Azure Active Directory のロールベースのアクセス制御](../role-based-access-control/overview.md)に関するページをご覧ください。
 
 | 従来のサブスクリプション管理者 | 制限 | [説明] |
 | --- | --- | --- |
@@ -121,7 +123,7 @@ Azure サブスクリプション サービス管理の管理者としてユー�
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>リソースのアクセス制御と Active Directory の詳細
 
-* Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](../active-directory/active-directory-understanding-resource-access.md)」を参照してください。
+* Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 * Azure Active Directory について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」および「[Azure Active Directory での管理者ロールの割り当て](../active-directory/active-directory-assign-admin-roles-azure-portal.md)」をご覧ください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。

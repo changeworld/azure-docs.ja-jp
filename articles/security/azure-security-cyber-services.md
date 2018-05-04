@@ -1,6 +1,6 @@
 ---
-title: "サイバーセキュリティの Microsoft サービス | Microsoft Docs"
-description: "この記事では、サイバーセキュリティに関連する Microsoft サービスの概要と、これらのサービスに関する詳細情報を取得する方法を示します。"
+title: サイバーセキュリティの Microsoft サービス | Microsoft Docs
+description: この記事では、サイバーセキュリティに関連する Microsoft サービスの概要と、これらのサービスに関する詳細情報を取得する方法を示します。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 058cda5dd2e7e8026410a14d08d5714ce92822cd
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 5502f315a29e6bcc31038c7c05e779925fe295f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>サイバーセキュリティの Microsoft サービス
+
 Microsoft サービスでは、セキュリティ、ID およびサイバー セキュリティに対して包括的なアプローチを提供します。 Microsoft サービスは、戦略、計画、実装、および継続的なサポートに及ぶ、さまざまなセキュリティと ID サービスを提供しています。 これらのサービスは、エンタープライズのお客様が戦略的な目標に合致する包括的なセキュリティ ソリューションを実装するのに役立ちます。
 
 製品開発チームに直接アクセスすることで、Microsoft は、お客様のビジネスを保護し、革新を推進できるように、製品の最新のセキュリティと ID 機能を統合および強化するソリューションを作成できます。

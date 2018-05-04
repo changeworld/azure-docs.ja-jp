@@ -1,37 +1,37 @@
 ---
-title: "Azure Service Fabric コンテナー アプリケーションを作成する | Microsoft Docs"
-description: "Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。  Python アプリケーションで Docker イメージを作成して、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。"
+title: Azure Service Fabric コンテナー アプリケーションを作成する | Microsoft Docs
+description: Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。 Python アプリケーションで Docker イメージを作成して、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
 editor: vturecek
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/19/2018
+ms.date: 4/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 20f9be1a0274b40a684fe12207cf9fe1f33969c8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 679fb066441fd75d5e12f9374d012f50c6f65966
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。  また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。  この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
+既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
 
 ## <a name="prerequisites"></a>前提条件
 次のものを実行している開発コンピューター。
 * Visual Studio 2015 または Visual Studio 2017。
 * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
-*  Docker for Windows。  [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 これは、Windows に基づいて Docker イメージを実行するために必要です。
+*  Docker for Windows。 [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
 
 Windows Server 2016 上で実行されている 3 つ以上のノードがあり、コンテナーを含む Windows クラスター。[クラスターを作成する](service-fabric-cluster-creation-via-portal.md)か、[無料で Service Fabric を試してください](https://aka.ms/tryservicefabric)。
 
@@ -48,7 +48,7 @@ Azure Container Registry のレジストリ。Azure サブスクリプション�
 ## <a name="define-the-docker-container"></a>Docker コンテナーを定義する
 Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を基にしてイメージをビルドします。
 
-Dockerfile で Docker コンテナーを定義します。 Dockerfile には、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順が含まれています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。
+Dockerfile で Docker コンテナーを指定します。 Dockerfile は、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順で構成されています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。
 
 空のディレクトリを作成し、*Dockerfile* というファイル (ファイル拡張子なし) を作成します。 *Dockerfile* に次のコードを追加して変更を保存します。
 
@@ -77,13 +77,13 @@ CMD ["python", "app.py"]
 
 詳細については、[Dockerfile のリファレンス](https://docs.docker.com/engine/reference/builder/)を参照してください。
 
-## <a name="create-a-simple-web-application"></a>単純な Web アプリケーションを作成する
-ポート 80 でリッスンして "Hello World!" を返す Flask Web アプリケーションを作成します。  同じディレクトリに *requirements.txt* というファイルを作成します。  次のコードを追加して変更を保存します。
+## <a name="create-a-basic-web-application"></a>基本的な Web アプリケーションの作成
+ポート 80 でリッスンして `Hello World!` を返す Flask Web アプリケーションを作成します。 同じディレクトリに *requirements.txt* というファイルを作成します。 次のコードを追加して変更を保存します。
 ```
 Flask
 ```
 
-さらに、*app.py* ファイルを作成して次のコードを追加します。
+さらに、*app.py* ファイルを作成して次のスニペットを追加します。
 
 ```python
 from flask import Flask
@@ -107,7 +107,7 @@ if __name__ == "__main__":
 docker build -t helloworldapp .
 ```
 
-このコマンドでは、Dockerfile の手順を使用して新しいイメージを構築し、"helloworldapp" と名前を付けます (-t というタグを付けます)。 イメージをビルドすると、基本イメージが Docker Hub から取得され、基本イメージ上にアプリケーションを追加する新しいイメージが作成されます。  
+このコマンドでは、Dockerfile の手順を使用して新しいイメージを構築し、`helloworldapp` と名前を付けます (-t というタグを付けます)。 コンテナー イメージを構築するには、まず、アプリケーションの追加先となる Docker Hub から基本イメージをダウンロードします。 
 
 ビルド コマンドが完了したら、`docker images` コマンドを実行して、新しいイメージの情報を確認します。
 
@@ -119,7 +119,7 @@ helloworldapp                 latest              8ce25f5d6a79        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
-コンテナー レジストリにプッシュする前に、ローカルでイメージを確認します。  
+コンテナー レジストリにプッシュする前に、ローカルでイメージを確認します。 
 
 アプリケーションを実行します。
 
@@ -134,7 +134,7 @@ docker run -d --name my-web-site helloworldapp
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-実行中のコンテナーに接続します。  Web ブラウザーでその IP アドレスを開きます ("http://172.31.194.61" など)。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーでその IP アドレスを開きます ("http://172.31.194.61" など)。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 コンテナーを停止するには、次を実行します。
 
@@ -175,14 +175,14 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>コンテナー化されたサービスを Visual Studio で作成する
 Service Fabric SDK およびツールには、コンテナー化されたアプリケーションを作成するときに役立つサービスのテンプレートが用意されています。
 
-1. Visual Studio を起動します。  **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio を起動します。 **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
 2. **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、**[OK]** をクリックします。
 3. **[サービス テンプレート]** の一覧から **[コンテナー]** を選択します。
 4. **[Image Name]\(イメージ名\)** に、コンテナー リポジトリにプッシュされたイメージである "myregistry.azurecr.io/samples/helloworldapp" を入力します。
 5. サービスに名前を付けて、**[OK]** をクリックします。
 
 ## <a name="configure-communication"></a>通信を構成する
-コンテナー化されたサービスには、通信のエンドポイントが必要です。 `Endpoint` 要素にプロトコル、ポート、タイプを指定して ServiceManifest.xml ファイルに追加してください。 この記事では、コンテナー化されたサービスがポート 8081 でリッスンします。  この例では、固定ポート 8081 を使用します。  ポートを指定しなかった場合は、アプリケーション ポートの範囲から無作為に選択されます。  
+コンテナー化されたサービスには、通信のエンドポイントが必要です。 `Endpoint` 要素にプロトコル、ポート、タイプを指定して ServiceManifest.xml ファイルに追加してください。 この例では、固定ポート 8081 を使用します。 ポートを指定しなかった場合は、アプリケーション ポートの範囲から無作為に選択されます。 
 
 ```xml
 <Resources>
@@ -192,7 +192,7 @@ Service Fabric SDK およびツールには、コンテナー化されたアプ�
 </Resources>
 ```
 
-Service Fabric は、エンドポイントを定義することによって、ネーム サービスにそのエンドポイントを発行します。  同じクラスターで実行されている他のサービスは、このコンテナーを名前解決することができます。  コンテナー対コンテナーの通信は、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して実行することもできます。  通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。
+Service Fabric は、エンドポイントを定義することによって、ネーム サービスにそのエンドポイントを発行します。 同じクラスターで実行されている他のサービスは、このコンテナーを名前解決することができます。 コンテナー対コンテナーの通信は、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して実行することもできます。 通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。
 
 ## <a name="configure-and-set-environment-variables"></a>環境変数の構成と設定
 環境変数は、サービス マニフェストのコード パッケージごとに指定できます。 この機能は、コンテナー、プロセス、またはゲスト実行可能ファイルとしてデプロイされているかどうかに関係なく、すべてのサービスで使用できます。 環境変数の値は、アプリケーション マニフェスト内で上書きすることも、デプロイ中にアプリケーションのパラメーターとして指定することもできます。
@@ -219,7 +219,7 @@ Service Fabric は、エンドポイントを定義することによって、�
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>コンテナー ポート対ホスト ポートのマッピングおよびコンテナー対コンテナーの検出を構成する
-コンテナーとの通信に使用するホスト ポートを構成します。 このポートのバインドでは、サービスがコンテナー内部でリッスンしているポートをホスト上のポートにマップします。 `PortBinding` 要素は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` 要素に追加します。  この記事では、`ContainerPort` は 80 で (コンテナーは Dockerfile で指定されたとおりにポート 80 を公開します)、`EndpointRef` は "Guest1TypeEndpoint" です (あらかじめサービス マニフェストで定義したエンドポイントです)。  ポート 8081 のサービスへの受信要求は、コンテナーのポート 80 にマッピングされています。
+コンテナーとの通信に使用するホスト ポートを構成します。 このポートのバインドでは、サービスがコンテナー内部でリッスンしているポートをホスト上のポートにマップします。 `PortBinding` 要素は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` 要素に追加します。 この記事では、`ContainerPort` は 80 で (コンテナーは Dockerfile で指定されたとおりにポート 80 を公開します)、`EndpointRef` は "Guest1TypeEndpoint" です (あらかじめサービス マニフェストで定義したエンドポイントです)。 ポート 8081 のサービスへの受信要求は、コンテナーのポート 80 にマッピングされています。
 
 ```xml
 <ServiceManifestImport>
@@ -249,9 +249,9 @@ Service Fabric は、エンドポイントを定義することによって、�
 </ServiceManifestImport>
 ```
 
-リポジトリのパスワードは、クラスターのすべてのノードにデプロイされる暗号化証明書を使用して暗号化することをお勧めします。 Service Fabric がサービス パッケージをクラスターにデプロイするときに、その暗号化証明書を使って暗号テキストが解読されます。  Invoke-ServiceFabricEncryptText コマンドレットを使ってパスワードの暗号テキストを作成し、ApplicationManifest.xml ファイルに追加してください。
+リポジトリのパスワードは、クラスターのすべてのノードにデプロイされる暗号化証明書を使用して暗号化することをお勧めします。 Service Fabric がサービス パッケージをクラスターにデプロイするときに、その暗号化証明書を使って暗号テキストが解読されます。 Invoke-ServiceFabricEncryptText コマンドレットを使ってパスワードの暗号テキストを作成し、ApplicationManifest.xml ファイルに追加してください。
 
-次のスクリプトでは、新しい自己署名証明書を作成して、PFX ファイルにエクスポートしています。  その証明書は既存の Key Vault にインポートされた後、Service Fabric クラスターにデプロイされます。
+次のスクリプトでは、新しい自己署名証明書を作成して、PFX ファイルにエクスポートしています。 その証明書は既存の Key Vault にインポートされた後、Service Fabric クラスターにデプロイされます。
 
 ```powershell
 # Variables.
@@ -273,7 +273,7 @@ Select-AzureRmSubscription -SubscriptionId $subscriptionId
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
 | Export-PfxCertificate -FilePath $filepath -Password $certpwd
 
-# Import the certificate to an existing key vault.  The key vault must be enabled for deployment.
+# Import the certificate to an existing key vault. The key vault must be enabled for deployment.
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
 Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
@@ -319,7 +319,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
    >
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
-[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。  この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。  Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
 
 ```xml
 <ServiceManifestImport>
@@ -332,7 +332,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される **dockerfile** に存在する必要があります。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。 
 
 ![HealthCheckHealthy][3]
 
@@ -359,18 +359,18 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 ## <a name="deploy-the-container-application"></a>コンテナー アプリケーションをデプロイする
 変更をすべて保存し、アプリケーションをビルドします。 アプリケーションを発行するために、ソリューション エクスプローラーの **[MyFirstContainer]** を右クリックし、**[発行]** を選択します。
 
-**[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します   (例: "containercluster.westus2.cloudapp.azure.com:19000")。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] ブレードで、クライアントの接続エンドポイントを探すことができます。
+**[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します  (例: "containercluster.westus2.cloudapp.azure.com:19000")。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] タブで、クライアントの接続エンドポイントを探すことができます。
 
-**[発行]**をクリックします。
+**[発行]** をクリックします。
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。  アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![エラー][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![エラー][1]
 
 ```Ready``` 状態になったら、アプリケーションの準備は完了しています。![準備完了][2]
 
 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。  [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。 [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 
@@ -379,9 +379,9 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="specify-os-build-version-specific-container-images"></a>OS ビルド バージョン固有のコンテナー イメージを指定する 
+## <a name="specify-os-build-specific-container-images"></a>OS ビルド固有のコンテナー イメージを指定する 
 
-Windows Server コンテナー (プロセス分離モード) は、新しいバージョンの OS と互換性がない可能性があります。 たとえば、Windows Server 2016 を使用して構築した Windows Server コンテナーは、Windows Server バージョン 1709 では機能しません。 そのため、クラスター ノードが最新バージョンに更新されていると、以前のバージョンの OS を使用して構築したコンテナー サービスは失敗します。 ランタイムのバージョン 6.1 以降でこれを回避するには、Service Fabric で、コンテナーごとに複数の OS イメージを指定できるようにして、(Windows コマンド プロンプトで `winver` を実行して取得した) OS のビルド バージョンでこれらにタグを付けます。  ノードの OS を更新する前に、まずアプリケーション マニフェストを更新し、OS のバージョンごとにイメージの上書きを指定することをお勧めします。 次のスニペットは、アプリケーション マニフェスト **ApplicationManifest.xml** で複数のコンテナー イメージを指定する方法を示しています。
+Windows Server コンテナー (プロセス分離モード) は、新しいバージョンの OS と互換性がない可能性があります。 たとえば、Windows Server 2016 を使用して構築した Windows Server コンテナーは、Windows Server バージョン 1709 では機能しません。 そのため、クラスター ノードが最新バージョンに更新されていると、以前のバージョンの OS を使用して構築したコンテナー サービスは失敗します。 ランタイムのバージョン 6.1 以降でこれを回避するには、Service Fabric で、コンテナーごとに複数の OS イメージを指定できるようにして、(Windows コマンド プロンプトで `winver` を実行して取得した) OS のビルド バージョンでこれらにタグを付けます。 ノードの OS を更新する前に、アプリケーション マニフェストを更新し、OS のバージョンごとにイメージの上書きを指定してください。 次のスニペットは、アプリケーション マニフェスト **ApplicationManifest.xml** で複数のコンテナー イメージを指定する方法を示しています。
 
 
 ```xml
@@ -405,7 +405,7 @@ WIndows Server 2016 のビルド バージョンは 14393 であり、Windows Se
    > OS ビルド バージョンのタグ付け機能は、Windows 上の Service Fabric のみで使用可能です。
    >
 
-VM 上の基になる OS がビルド 16299 (バージョン 1709) である場合、Service Fabric はその Windows Server バージョンに対応するコンテナー イメージを取得します。  アプリケーション マニフェストで、タグが付けられたコンテナー イメージと共にタグなしのコンテナー イメージも指定されている場合、Service Fabric は、タグなしのイメージを複数のバージョン間で動作するものとして扱います。 コンテナー イメージを明示的にタグ付けすることをお勧めします。
+VM 上の基になる OS がビルド 16299 (バージョン 1709) である場合、Service Fabric はその Windows Server バージョンに対応するコンテナー イメージを取得します。 アプリケーション マニフェストで、タグが付けられたコンテナー イメージと共にタグなしのコンテナー イメージも指定されている場合、Service Fabric は、タグなしのイメージを複数のバージョン間で動作するものとして扱います。 アップグレード中に問題が発生しないよう、コンテナー イメージには明示的にタグ付けしてください。
 
 タグなしのコンテナー イメージは、ServiceManifest に指定されているイメージのオーバーライドとして機能します。 つまり "myregistry.azurecr.io/samples/helloworldappDefault" イメージは、ServiceManifest の ImageName に指定されている "myregistry.azurecr.io/samples/helloworldapp" よりも優先されます。
 
@@ -509,7 +509,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>コンテナーを強制終了するまでの期間を構成する
 
-サービスの削除 (または別のノードへの移動) が開始された後でコンテナーが削除されるまでにランタイムが待機する期間を構成できます。 期間を構成すると、`docker stop <time in seconds>` コマンドがコンテナーに送信されます。   詳細については、[docker stop](https://docs.docker.com/engine/reference/commandline/stop/) の説明を参照してください。 待機する期間は `Hosting` セクションで指定します。 次のクラスター マニフェストのスニペットは、待機間隔を設定する方法を示しています。
+サービスの削除 (または別のノードへの移動) が開始された後でコンテナーが削除されるまでにランタイムが待機する期間を構成できます。 期間を構成すると、`docker stop <time in seconds>` コマンドがコンテナーに送信されます。  詳細については、[docker stop](https://docs.docker.com/engine/reference/commandline/stop/) の説明を参照してください。 待機する期間は `Hosting` セクションで指定します。 次のクラスター マニフェストのスニペットは、待機間隔を設定する方法を示しています。
 
 ```json
 {
@@ -528,7 +528,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>使用していないコンテナー イメージを削除するようにランタイムを構成する
 
-使用していないコンテナー イメージをノードから削除するように Service Fabric クラスターを構成できます。 この構成により、ノード上に存在するコンテナー イメージが多すぎる場合にディスク領域を再取得できます。  この機能を有効にするには、次のスニペットに示すように、クラスター マニフェストの `Hosting` セクションを更新します。 
+使用していないコンテナー イメージをノードから削除するように Service Fabric クラスターを構成できます。 この構成により、ノード上に存在するコンテナー イメージが多すぎる場合にディスク領域を再取得できます。 この機能を有効にするには、次のスニペットに示すように、クラスター マニフェストの `Hosting` セクションを更新します。 
 
 
 ```json
@@ -554,7 +554,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-container-image-download-time"></a>コンテナー イメージのダウンロード時間を構成する
 
-既定では、Service Fabric ランタイムはコンテナー イメージのダウンロードと抽出に 20 分を割り当てており、これは大部分のコンテナー イメージにとって十分な時間です。 大きなイメージの場合、またはネットワーク接続の速度が遅い場合、イメージのダウンロードおよび抽出が中止されるまでの待機時間を長くすることが必要になる場合があります。 これは、次のスニペットに示すように、クラスター マニフェストの **Hosting** セクションの **ContainerImageDownloadTimeout** 属性を使用して設定できます。
+Service Fabric ランタイムはコンテナー イメージのダウンロードと抽出に 20 分を割り当てており、これは大部分のコンテナー イメージにとって十分な時間です。 大きなイメージの場合、またはネットワーク接続の速度が遅い場合、イメージのダウンロードおよび抽出が中止されるまでの待機時間を長くすることが必要になる場合があります。 このタイムアウトは、次のスニペットに示すように、クラスター マニフェストの **Hosting** セクションの **ContainerImageDownloadTimeout** 属性を使用して設定できます。
 
 ```json
 {
@@ -577,8 +577,25 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-**ContainersRetentionCount** の設定で、エラーが発生したときに保持するコンテナーの数を指定します。 負の値が指定されている場合は、エラーが発生したすべてのコンテナーが保持されます。 **ContainersRetentionCount** 属性が指定されていない場合、コンテナーは保持されません。 **ContainersRetentionCount** 属性はアプリケーション パラメーターもサポートしているため、ユーザーはテスト クラスターと運用環境クラスターで別の値を指定できます。 コンテナー サービスが他のノードに移動することを防ぐためにこの機能を使用する場合は、配置の制約を使用して、コンテナー サービスの対象を特定のノードに制約することをお勧めします。 この機能を使用して保持されるコンテナーは、手動で削除する必要があります。
+**ContainersRetentionCount** の設定で、エラーが発生したときに保持するコンテナーの数を指定します。 負の値が指定されている場合は、エラーが発生したすべてのコンテナーが保持されます。 **ContainersRetentionCount** 属性が指定されていない場合、コンテナーは保持されません。 **ContainersRetentionCount** 属性はアプリケーション パラメーターもサポートしているため、ユーザーはテスト クラスターと運用環境クラスターで別の値を指定できます。 コンテナー サービスが他のノードに移動することを防ぐためにこの機能を使用する場合は、配置の制約を使用して、コンテナー サービスの対象を特定のノードに制約してください。 この機能を使用して保持されるコンテナーは、手動で削除する必要があります。
 
+## <a name="start-the-docker-daemon-with-custom-arguments"></a>カスタム引数で Docker デーモンを起動する
+
+Service Fabric ランタイムの 6.2 バージョン以降では、カスタム引数を使って Docker デーモンを起動することができます。 カスタム引数が指定された場合、Service Fabric は、他の引数を一切 Docker エンジンに渡しませんが、`--pidfile` 引数は例外です。 したがって、`--pidfile` を引数として渡すことは避けてください。 また、Service Fabric が Docker デーモンと通信できるようにするために、Docker デーモンに引き続き既定の名前付きパイプ (Windows の場合) または UNIX ドメイン ソケット (Linux の場合) でリッスンさせるよう引数で指定する必要があります。 カスタム引数は、クラスター マニフェストの **Hosting** セクションの **ContainerServiceArguments** で渡します。その例を次のスニペットに示します。 
+ 
+
+```json
+{ 
+   "name": "Hosting", 
+        "parameters": [ 
+          { 
+            "name": "ContainerServiceArguments", 
+            "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
+          } 
+        ] 
+} 
+
+```
 
 ## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。

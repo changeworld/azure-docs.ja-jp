@@ -1,8 +1,8 @@
 ---
-title: "Event Hubs のデータを Azure Data Lake Store にキャプチャする | Microsoft Docs"
-description: "Azure Data Lake Store を使用して Event Hubs からデータをキャプチャします"
+title: Event Hubs のデータを Azure Data Lake Store にキャプチャする | Microsoft Docs
+description: Azure Data Lake Store を使用して Event Hubs からデータをキャプチャします
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9f91acf8c26fdec0c8d128f598f218cff091c7aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Azure Data Lake Store を使用して Event Hubs からデータをキャプチャする
 
@@ -54,11 +54,14 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![Data Lake Store のルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Store のルートにアクセス許可を割り当てる")
     
-    **[選択]**をクリックします。
+    **[選択]** をクリックします。
 
     c. **[アクセス許可の割り当て]** で **[アクセス許可の選択]** をクリックします。 **[アクセス許可]** を **[実行]** に設定します。 **[追加先]** を **[このフォルダーとすべての子]** に設定します。 **[追加ユーザー]** を **[アクセス許可エントリと既定のアクセス許可エントリ]** に設定します。
 
-    ![Data Lake Store のルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Store のルートにアクセス許可を割り当てる")
+> [!IMPORTANT]
+> Azure Event Hubs で受信したデータをキャプチャするための新しいフォルダー階層を作成する際、これは宛先フォルダーに確実にアクセスする簡単な方法です。  ただし、子ファイルとフォルダーが多数含まれる最上位フォルダーのすべての子にアクセス許可を追加すると、長い時間がかかる可能性があります。  ルート フォルダーに多数のファイルとフォルダーが含まれている場合、最終的な宛先フォルダーへのパスに `Microsoft.EventHubs` の **実行**権限を各フォルダーに個別に追加した方が速いことがあります。 
+
+    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
 
     Click **OK**.
 
@@ -72,7 +75,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![Data Lake Store のフォルダーにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Store のフォルダーにアクセス許可を割り当てる")
     
-    **[選択]**をクリックします。
+    **[選択]** をクリックします。
 
     c. **[アクセス許可の割り当て]** で **[アクセス許可の選択]** をクリックします。 **[アクセス許可]** を **[読み取り、書き込み]** と **[実行]** に設定します。 **[追加先]** を **[このフォルダーとすべての子]** に設定します。 最後に、**[追加ユーザー]** を **[アクセス許可エントリと既定のアクセス許可エントリ]** に設定します。
 

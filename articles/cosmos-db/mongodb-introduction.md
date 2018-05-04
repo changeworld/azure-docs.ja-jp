@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: 4baf691268fdb11f769a39144c2b5461ee9c2362
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bebf8b8830255277b5ea492f06e130ee667affa5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB の概要: MongoDB API
 
@@ -73,5 +73,5 @@ Azure Cosmos DB の MongoDB API に関する情報は、Azure Cosmos DB ドキ�
 * 「[Azure Cosmos DB での Studio 3T (MongoChef) の使用](mongodb-mongochef.md)」のチュートリアルに従って、Studio 3T で Azure Cosmos DB データベースと MongoDB アプリの間の接続を作成する方法を学習します。
 * [MongoDB のプロトコル対応 Azure Cosmos DB へのデータ移行](mongodb-migrate.md) に関するチュートリアルに従って、データを MongoDB データベース用 API にインポートします。
 * [Robomongo](mongodb-robomongo.md) を使用して、MongoDB 用 API アカウントに接続します。
-* [GetLastRequestStatistics コマンドと Azure Portal のメトリック](request-units.md#GetLastRequestStatistics)を使用して、操作で使用している RU の数を確認する方法について学習します。
+* [GetLastRequestStatistics コマンドと Azure Portal のメトリック](set-throughput.md#GetLastRequestStatistics)を使用して、操作で使用している RU の数を確認する方法について学習します。
 * [グローバル分散アプリの読み取り設定を構成する](../cosmos-db/tutorial-global-distribution-mongodb.md)方法について学習します。

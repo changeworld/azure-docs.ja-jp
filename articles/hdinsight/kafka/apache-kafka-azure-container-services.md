@@ -1,24 +1,24 @@
 ---
-title: "Azure Container Service で Kafka on HDInsight を使用する | Microsoft Docs"
-description: "Azure Container Service (AKS) でホストされているコンテナー イメージから、Kafka on HDInsight を使用する方法について説明します。"
+title: Azure Container Service で Kafka on HDInsight を使用する | Microsoft Docs
+description: Azure Container Service (AKS) でホストされているコンテナー イメージから、Kafka on HDInsight を使用する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 53342e11476a307bb6af356eb40fe51928041822
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Azure Container Service で Kafka on HDInsight を使用する
 
@@ -108,7 +108,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 次の手順を使用して、ドメイン名の代わりに IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 
@@ -120,7 +120,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
     ![Kafka の構成リンク](./media/apache-kafka-azure-container-services/select-kafka-config.png)
 
-4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__フィールドに「`kafka-env`」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
@@ -158,7 +158,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 1. テスト アプリケーションによって使用される Kafka トピックを作成します。 Kafka クラスターを作成する方法については、[Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
 
-2. [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) からサンプル アプリケーションをダウンロードします。 
+2. サンプル アプリケーションは [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) からダウンロードできます。 
 
 3. `index.js` ファイルを編集し、次の行を変更します。
 

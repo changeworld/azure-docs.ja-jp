@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bd4ebbec4506824f00d09a09369ebbeaf9458c19
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -68,14 +68,14 @@ az extension update --name rdbms
 
 `az mysql server create` コマンドでサーバーを作成するときに、`--geo-redundant-backup` パラメーターでバックアップの冗長オプションを指定します。 `Enabled` を指定すると、地理冗長バックアップが取得されます。 `Disabled` を指定すると、ローカル冗長バックアップが取得されます。 
 
-バックアップのリテンション期間は、`--backup-retention-days` パラメーターで設定します。 
+バックアップのリテンション期間は、`--backup-retention` パラメーターで設定します。 
 
 作成中のこれらの値の設定について詳しくは、[Azure Database for MySQL サーバーの CLI のクイック スタート](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
 
 サーバーのバックアップのリテンション期間は、次のようにして変更できます。
 
 ```azurecli-interactive
-az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 上記の例では、mydemoserver のバックアップ リテンション期間が 10 日に変更されます。
@@ -113,6 +113,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MySQL を使用できる任意のリージョンに作成できます。  
 
 地理冗長バックアップを使ってサーバーを作成するには、Azure CLI の `az mysql server georestore` コマンドを使います。
+
+> [!NOTE]
+> サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
+>
 
 サーバーを geo リストアするには、Azure CLI コマンド プロンプトで、次のコマンドを入力します。
 

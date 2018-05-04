@@ -1,18 +1,22 @@
 # [Analysis Services のドキュメント](index.md)
 
 # 概要
-## [Analysis Services について](analysis-services-overview.md)
-## [サポートされるデータ ソース](analysis-services-datasource.md)
-## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
-## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)
-## [互換性レベル](analysis-services-compat-level.md)
-## [高可用性](analysis-services-bcdr.md)
+## [Azure Analysis Services とは](analysis-services-overview.md)
+
 
 # 作業開始
 ## [Azure Portal でサーバーを作成する](analysis-services-create-server.md)
 ## [Azure PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
 ## [Visual Studio からモデルをデプロイする](analysis-services-deploy.md)
 ## [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
+
+# 概念
+## [サポートされるデータ ソース](analysis-services-datasource.md)
+## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)
+## [サーバーへの接続](analysis-services-connect.md)
+## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
+## [互換性レベル](analysis-services-compat-level.md)
+## [高可用性](analysis-services-bcdr.md)
 
 # 操作方法 
 ## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
@@ -21,9 +25,9 @@
 ## [REST API を使用した更新](analysis-services-async-refresh.md)
 ## [スケールアウトの構成](analysis-services-scale-out.md)
 ## 管理タスクの自動化
-### [サービス プリンシパルの作成 - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [サービス プリンシパルの作成 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-### [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)
+### [サービス プリンシパルを作成する - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [サービス プリンシパルを作成する - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [サーバー管理者ロールにサービス プリンシパルを追加する](analysis-services-addservprinc-admins.md)
 ## サーバー管理
 ### [サーバー名の別名の構成](analysis-services-server-alias.md)
 ### [サーバーの管理](analysis-services-manage.md)
@@ -31,7 +35,7 @@
 ### [サーバー管理者の管理](analysis-services-server-admins.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
 ### [診断ログのセットアップ](analysis-services-logging.md)
-### [VNET 上のデータソースにゲートウェイを使用する](analysis-services-vnet-gateway.md)
+### [VNet 上のデータ ソースにゲートウェイを使用する](analysis-services-vnet-gateway.md)
 ## 接続
 ### [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ### [Excel を使用した接続](analysis-services-connect-excel.md)

@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 Azure SQL Database 監査では、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
@@ -72,7 +72,7 @@ SQL Database 監査を使用して、以下を行うことができます。
     サーバーの BLOB 監査が有効になっている場合、データベース構成監査とサーバー BLOB 監査が並行して存在します。
 
     ![ナビゲーション ウィンドウ][3]
-5. **[監査ログの容量]** ブレードを開くには、**[容量の詳細]** を選択します。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]**をクリックします
+5. **[監査ログの容量]** ブレードを開くには、**[容量の詳細]** を選択します。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]** をクリックします
    >[!TIP]
    >監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
 
@@ -108,7 +108,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 * システム関数 **sys.fn_get_audit_file** (T-SQL) を使用して、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
 
 
-* SQL Server Management Studio (SSMS 17 以降) で**[監査ファイルの統合]** を使用します。
+* SQL Server Management Studio (SSMS 17 以降) で **[監査ファイルの統合]** を使用します。
     1. SSMS のメニューから、**[ファイル]** > **[開く]** > **[監査ファイルの統合]** を選択します。
 
         ![ナビゲーション ウィンドウ][9]
@@ -165,8 +165,18 @@ Geo レプリケーション データベースでは、プライマリ デー�
 3. 監査構成ブレードに戻り、[ストレージ アクセス キー] を [セカンダリ] から [プライマリ] に切り替え、**[OK]** をクリックします。 監査構成ブレードの上部にある **[保存]** をクリックします。
 4. ストレージ構成ブレードに戻り、セカンダリ アクセス キーを再生成 (次のキー更新サイクルの準備として) します。
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Azure PowerShell を使用して SQL Database の監査を管理する
+## <a name="additional-information"></a>追加情報
 
+* ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)に関するドキュメントを参照してください。
+
+   > [!IMPORTANT]
+   > Azure SQL Database Audit では、監査レコードの文字列フィールドに 4,000 文字のデータを格納します。 監査可能なアクションから返された、**statement** または **data_sensitivity_information** 値に 4,000 を超える文字が含まれる場合、最初の 4,000 文字以降のすべてのデータは、**切り捨てられ、監査されません**。
+
+* 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
+   * **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
+   * **VNet 内の Storage** は現在**サポートされていません**。
+
+## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Azure PowerShell を使用して SQL Database の監査を管理する
 
 * **PowerShell コマンドレット**:
 

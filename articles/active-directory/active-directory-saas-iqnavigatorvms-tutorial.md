@@ -1,23 +1,23 @@
 ---
-title: "チュートリアル: Azure Active Directory と IQNavigator VMS の統合 | Microsoft Docs"
-description: "Azure Active Directory と IQNavigator VMS の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と IQNavigator VMS の統合 | Microsoft Docs'
+description: Azure Active Directory と IQNavigator VMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: a8a09b25-dfa5-4c31-aea2-53bf1853b365
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 82c91ba8fa340fb2b179d61200a69e94ab85b6d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddb2883c0b90aaffa82bbc701cdc20de1feb7e19
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>チュートリアル: Azure Active Directory と IQNavigator VMS の統合
 
@@ -63,11 +63,11 @@ Azure AD への IQNavigator VMS の統合を構成するには、ギャラリー
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに入力「**IQNavigator VMS**」と入力します。
 
@@ -86,11 +86,11 @@ IQNavigator VMS で、Azure AD の **[ユーザー名]** の値を **[Username]\
 
 IQNavigator VMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[IQNavigator VMS テスト ユーザーの作成](#creating-a-iqnavigator-vms-test-user)** - IQNavigator VMS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,15 +100,15 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **IQNavigator VMS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
+
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_samlbase.png)
 
 3. **[IQNavigator VMS のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url.png)
 
     a. **[識別子]** ボックスに、URL として「`iqn.com`」と入力します。
 
@@ -116,50 +116,30 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 4. **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_url1.png)
 
     **[リレー状態]** ボックスに、`https://<subdomain>.iqnavigator.com` のパターンで URL を入力します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 これらの値を実際の応答 URL とリレー状態で更新してください。 これらの値を取得するには、[IQNavigator VMS クライアント サポート チーム](https://www.beeline.com/iqn-product-support/)に問い合わせてください。 
+    > [!NOTE]
+    > これらは実際の値ではありません。 これらの値を実際の応答 URL とリレー状態で更新してください。 これらの値を取得するには、[IQNavigator VMS クライアント サポート チーム](https://www.beeline.com/iqn-product-support/)に問い合わせてください。
 
-5. **[保存]** ボタンをクリックします。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
-
-6. **メタデータ** URL を生成するには、次の手順を実行します。
-
-    a. **[アプリの登録]** をクリックします。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpointicon.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_metadataurl.png)
 
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_endpoint.png)
-     
-    d. 次に、**IQNavigator VMS** のプロパティ ページに移動し、**[コピー]** ボタンで **[アプリケーション ID]** をコピーしてノートパッドに貼り付けます。
- 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_appid.png)
+6. IQNavigator アプリケーションでは、名前識別子の要求で一意のユーザー識別子の値が必要です。 顧客は、名前識別子要求の適切な値をマップできます。 ここでは、デモのために user.UserPrincipalName をマップしました。 ただし、組織の設定に従って、正しい値をマップする必要があります。
 
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
 
-7. IQNavigator アプリケーションでは、名前識別子の要求で一意のユーザー識別子の値が必要です。 顧客は、名前識別子要求の適切な値をマップできます。 ここでは、デモのために user.UserPrincipalName をマップしました。 ただし、組織の設定に従って、正しい値をマップする必要があります。   
+7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_general_400.png)
 
 8. **[IQNavigator VMS 構成]** セクションで、**[IQNavigator VMS の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_configure.png)
 
-9. **IQNavigator VMS** 側でシングル サインオンを構成するには、**メタデータ URL**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/iqn-product-support/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+9. **IQNavigator VMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/iqn-product-support/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -174,11 +154,11 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_02.png)
 
 3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png) 
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-iqnavigatorvms-tutorial/create_aaduser_03.png)
 
 4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
@@ -191,7 +171,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
     d. **Create** をクリックしてください。
- 
+
 ### <a name="creating-a-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
 
 このセクションの目的は、IQNavigator VMS で Britta Simon というユーザーを作成することです。 [IQNavigator VMS サポート チーム](https://www.beeline.com/iqn-product-support/)と協力して、IQNavigator VMS アカウントにユーザーを追加します。
@@ -200,21 +180,21 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 このセクションでは、Britta Simon に IQNavigator VMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+![ユーザーの割り当て][200]
 
 **Britta Simon を IQNavigator VMS に割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
-    ![ユーザーの割り当て][201] 
+    ![ユーザーの割り当て][201]
 
 2. アプリケーションの一覧で **[IQNavigator VMS]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqnavigatorvms-tutorial/tutorial_iqnavigatorvms_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202] 
+    ![ユーザーの割り当て][202]
 
 4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
@@ -237,8 +217,6 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

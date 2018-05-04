@@ -1,0 +1,237 @@
+---
+title: Azure ネットワーク セキュリティ グループの作成、変更、削除 | Microsoft Docs
+description: ネットワーク セキュリティ グループの作成、変更、削除の方法について説明します。
+services: virtual-network
+documentationcenter: na
+author: jimdial
+manager: jeconnoc
+editor: ''
+tags: azure-resource-manager
+ms.assetid: ''
+ms.service: virtual-network
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 04/05/2018
+ms.author: jdial
+ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/19/2018
+---
+# <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
+
+ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。 ネットワーク セキュリティ グループに慣れていない場合は、[ネットワーク セキュリティ グループの概要](security-overview.md)に関する記事で詳細を確認し、[ネットワーク トラフィックをフィルター処理する](tutorial-filter-network-traffic.md)チュートリアルを完了してネットワークセキュリティ グループの機能を体験してください。
+
+## <a name="before-you-begin"></a>開始する前に
+
+この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
+
+- まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
+- ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.28 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+
+## <a name="work-with-network-security-groups"></a>ネットワーク セキュリティ グループを操作する
+
+ネットワーク セキュリティ グループは、作成、[すべて表示](#view-all-network-security-groups)、[詳細の表示](#view-details-of-a-network-security-group)、[変更](#change-a-network-security-group)、および[削除](#delete-a-network-security-group)できます。 ネットワーク インターフェイスまたはサブネットに対して、ネットワーク セキュリティ グループを[関連付けるか、関連付けを解除する](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)こともできます。
+
+### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+
+Azure の場所およびサブスクリプションごとに作成できるネットワーク セキュリティ グループの数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
+
+1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
+2. **[ネットワーク]** を選択した後、**[ネットワーク セキュリティ グループ]** を選択します。
+3. ネットワーク セキュリティ グループの **[名前]** を入力し、**サブスクリプション**を選択します。新しい**リソース グループ**を作成するか、既存のリソース グループを選択し、**場所**を選択してから、**[作成]** を選択します。 
+
+**コマンド**
+
+- Azure CLI: [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create)
+- PowerShell: [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+
+### <a name="view-all-network-security-groups"></a>すべてのネットワーク セキュリティ グループを表示する
+
+ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ」*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。 サブスクリプション内に存在するネットワーク セキュリティ グループが一覧表示されます。
+
+**コマンド**
+
+- Azure CLI: [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list)
+- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+
+### <a name="view-details-of-a-network-security-group"></a>ネットワーク セキュリティ グループの詳細を表示する
+
+1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ」*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
+2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](virtual-network-nsg-troubleshoot-portal.md)に関する記事を参照してください。
+3. Azure の一般的な設定の詳細については、次の記事を参照してください。
+    *   [アクティビティ ログ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+    *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
+
+**コマンド**
+
+- Azure CLI: [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)
+- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+
+### <a name="change-a-network-security-group"></a>ネットワーク セキュリティ グループを変更する
+
+1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
+2. 変更するネットワーク セキュリティ グループを選択します。 最も一般的な変更は、セキュリティ規則の[追加](#create-a-security-rule)または[削除](#delete-a-security-rule)、[サブネットまたはネットワーク インターフェイスに対するネットワーク セキュリティ グループの関連付けまたは関連付けの解除](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)です。
+
+**コマンド**
+
+- Azure CLI: [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update)
+- PowerShell: [Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)
+
+### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>ネットワーク インターフェイスまたはサブネットに対してネットワーク セキュリティ グループを関連付けるか関連付けを解除する
+
+ネットワーク インターフェイスに対してネットワーク セキュリティ グループを関連付けるか関連付けを解除するには、「[ネットワーク セキュリティ グループの関連付けまたは関連付けの解除を行う](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group)」を参照してください。 サブネットに対してネットワーク セキュリティ グループを関連付けるか関連付けを解除するには、「[サブネットの設定を変更する](virtual-network-manage-subnet.md#change-subnet-settings)」を参照してください。
+
+### <a name="delete-a-network-security-group"></a>ネットワーク セキュリティ グループを削除する
+
+ネットワーク セキュリティ グループは、いずれかのサブネットまたはネットワーク インターフェイスに関連付けられている場合は削除できません。 ネットワーク セキュリティ グループを削除する前に、すべてのサブネットとネットワーク インターフェイスからネットワーク セキュリティ グループの[関連付けを解除](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)してください。
+
+1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
+2. 削除するネットワーク セキュリティ グループを一覧から選択します。
+3. **[削除]** を選択してから、**[はい]** を選択します。
+
+**コマンド**
+
+- Azure CLI: [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete)
+- PowerShell: [Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroupp) 
+
+## <a name="work-with-security-rules"></a>セキュリティ規則を操作する
+
+ネットワーク セキュリティ グループには、0 個または 1 つ以上のセキュリティ規則が含まれています。 セキュリティ規則は、作成、[すべて表示](#view-all-security-rules)、[詳細の表示](#view-details-of-a-security-rule)、[変更](#change-a-security-rule)、および[削除](#delete-a-security-rule)できます。
+
+### <a name="create-a-security-rule"></a>セキュリティ規則を作成する
+
+Azure の場所、サブスクリプション、ネットワーク セキュリティ グループごとに作成できるセキュリティ 規則の数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
+
+1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
+2. セキュリティ規則を追加するネットワーク セキュリティ グループを一覧から選択します。
+3. **[設定]** で **[受信セキュリティ規則]** を選びます。 さまざまな既存のルールが一覧表示されます。 自分で追加していない規則が表示されることがあります。 ネットワーク セキュリティ グループが作成されると、既定のセキュリティ規則がいくつかその中に作成されます。 詳しくは、「[既定セキュリティ規則](security-overview.md#default-security-rules)」をご覧ください。  既定の規則は削除できませんが、優先順位の高い規則を使用してオーバーライドできます。
+4. <a name = "security-rule-settings"></a>**[+ 追加]** を選択します。  次の設定の値を選択するか入力し、**[OK]** を選択します。
+    
+    |設定  |値  |詳細  |
+    |---------|---------|---------|
+    |ソース     | **[任意]**、**[IP アドレス]**、または **[サービス タグ]** を選択します。        | **[IP アドレス]** 選択した場合は、**[発信元 IP アドレス/CIDR 範囲]** を指定する必要があります。 単一の値またはコンマで区切った複数の値の一覧を指定できます。 複数の値の例は、10.0.0.0/16, 192.188.1.1 です。 指定できる値の数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。 **[サービス タグ]** を選択した場合は、1 つのサービス タグを選択する必要があります。 サービス タグは、IP アドレスのカテゴリに対する定義済みの識別子です。 利用可能なサービス タグと各タグが表していることの詳細については、「[サービス タグ](security-overview.md#service-tags)」を参照してください。        |
+    |ソース ポート範囲     | 単一のポート (例: 80)、ポートの範囲 (例: 1024-65535)、コンマで区切った単一のポートとポートの範囲の一覧 (例: 80, 1024-65535) を指定します。 任意のポートでトラフィックを許可する場合は、アスタリスクを入力します。 | ポートと範囲は、規則によってトラフィックが許可または拒否されるポートを指定します。 指定できるポートの数には制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。  |
+    |変換先     | **[任意]**、**[IP アドレス]**、または **[仮想ネットワーク]** を選択します。        | **[IP アドレス]** 選択した場合は、**[宛先 IP アドレス/CIDR 範囲]** を指定する必要があります。 **[ソース]** と **[送信元 IP アドレス/CIDR 範囲]** と同じように、単一のアドレス、複数のアドレス、または範囲を指定できます。指定できる数には制限があります。 サービス タグである **[仮想ネットワーク]** の選択は、トラフィックが仮想ネットワークのアドレス空間内のすべての IP アドレスで許可されることを意味します。        |
+    |宛先ポート範囲     | 単一の値またはコンマで区切った値の一覧を指定します。 | **[ソース ポート範囲]** と同じように、単一のポート、複数のポート、または範囲を指定できます。指定できる数には制限があります。 |
+    |プロトコル     | **[任意]**、**[TCP]**、または **[UDP]** を選択します。        |         |
+    |アクション     | **[許可]** または **[拒否]** を選択します。        |         |
+    |優先順位     | ネットワーク セキュリティ グループ内のすべてのセキュリティ規則に対して一意である 100 ～ 4096 の範囲の値を入力します。 |規則は、優先順位に従って処理されます。 数値が小さいほど、優先度は高くなります。 規則を作成するときに、間を空けて優先順位を指定することをお勧めします (100、200、300 など)。 間を空けることで、既存の規則よりも優先順位が高いまたは低い規則が必要になった場合に、そのような規則を簡単に追加できます。         |
+    |名前     | ネットワーク セキュリティ グループ内の一意の名前。        |  名前の最大長は 80 文字です。 先頭にはアルファベットまたは数字、末尾にはアルファベット、数字、またはアンダースコアを使用する必要があります。また、使用できるのは、アルファベット、数字、アンダースコア、ピリオド、ハイフンのみです。       |
+    |説明     | 任意の説明です。        |         |
+
+    **[ソース]** または **[宛先]** に対する[アプリケーション セキュリティ グループ](#work-with-application-security-groups)の指定は、ポータルでは実行できません。 ただし、Azure CLI または PowerShell による指定は可能です。 **送信セキュリティ規則**も同じような方法で設定できるため、特に説明しません。
+
+**コマンド**
+
+- Azure CLI: [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
+- PowerShell: [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+
+### <a name="view-all-security-rules"></a>すべてのセキュリティ規則を表示する
+
+ネットワーク セキュリティ グループには、0 個または複数個のセキュリティ規則が含まれます。 規則を表示したときに一覧に表示される情報の詳細については、[ネットワーク セキュリティ グループの概要](security-overview.md)に関する記事を参照してください。
+
+1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ」*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
+2. 規則を表示するネットワーク セキュリティ グループを一覧から選択します。
+3. **[設定]** で **[受信セキュリティ規則]** または **[送信セキュリティ規則]** を選択します。
+
+一覧には、作成したすべての規則と、ネットワーク セキュリティ グループの[既定のセキュリティ規則](security-overview.md#default-security-rules)が含まれます。
+
+**コマンド**
+
+- Azure CLI: [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
+- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+
+### <a name="view-details-of-a-security-rule"></a>セキュリティ規則の詳細を表示する
+
+1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ」*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
+2. 規則の詳細を表示するネットワーク セキュリティ グループを一覧から選択します。
+3. **[設定]** で **[受信セキュリティ規則]** または **[送信セキュリティ規則]** を選択します。
+4. 詳細を表示する規則を選択します。 すべての設定の詳細については、[セキュリティ ルールの設定](#security-rule-settings)に関する説明を参照してください。
+
+**コマンド**
+
+- Azure CLI: [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
+- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+
+### <a name="change-a-security-rule"></a>セキュリティ規則を変更する
+
+1. 「[セキュリティ規則の詳細を表示する](#view-details-of-a-security-rule)」の手順を完了します。
+2. 必要に応じて設定を変更し、**[保存]** を選択します。 すべての設定の詳細については、[セキュリティ ルールの設定](#security-rule-settings)に関する説明を参照してください。
+
+**コマンド**
+
+- Azure CLI: [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
+- PowerShell: [Set-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
+
+### <a name="delete-a-security-rule"></a>セキュリティ規則を削除する
+
+1. 「[セキュリティ規則の詳細を表示する](#view-details-of-a-security-rule)」の手順を完了します。
+2. **[削除]** を選択してから、**[はい]** を選択します。
+
+**コマンド**
+
+- Azure CLI: [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
+- PowerShell: [Remove-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
+
+
+## <a name="work-with-application-security-groups"></a>アプリケーション セキュリティ グループを操作する
+
+アプリケーション セキュリティ グループには、0 個または複数個のネットワーク インターフェイスが含まれます。 詳細については、「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」を参照してください。 アプリケーション セキュリティ グループはポータルでは操作できませんが、PowerShell または Azure CLI を使用して操作できます。 アプリケーション セキュリティ グループ内のすべてのネットワーク インターフェイスは、同じ仮想ネットワークに存在している必要があります。 アプリケーション セキュリティ グループに追加された最初のネットワーク インターフェイスによって、後続のネットワーク インターフェイスが存在する必要がある仮想ネットワークが決まります。 アプリケーション セキュリティ グループにネットワーク インターフェイスを追加する方法については、「[アプリケーション セキュリティ グループにネットワーク インターフェイスを追加する](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)」を参照してください。
+
+### <a name="create-an-application-security-group"></a>アプリケーション セキュリティ グループを作成する
+
+- Azure CLI: [az network asg create](/cli/azure/network/asg#az-network-asg-create)
+- PowerShell: [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
+
+### <a name="view-all-application-security-groups"></a>すべてのアプリケーション セキュリティ グループを表示する
+
+- Azure CLI: [az network asg list](/cli/azure/network/asg#az-network-asg-list)
+- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+
+### <a name="view-details-of-a-specific-application-security-group"></a>特定のアプリケーション セキュリティ グループの詳細を表示する
+
+- Azure CLI: [az network asg show](/cli/azure/network/asg#az-network-asg-show)
+- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+
+### <a name="change-an-application-security-group"></a>アプリケーション セキュリティ グループを変更する
+
+既存のアプリケーション セキュリティ グループの設定は、その一部 (タグやアクセス許可など) を変更できますが、名前と場所を変更することはできません。
+
+- Azure CLI: [az network asg update](/cli/azure/network/asg#az-network-asg-update)
+- PowerShell: PowerShell コマンドレットはありません。
+
+### <a name="delete-an-application-security-group"></a>アプリケーション セキュリティ グループを削除する
+
+アプリケーション セキュリティ グループ内にネットワーク インターフェイスがある場合、アプリケーション セキュリティ グループを削除することはできません。 ネットワーク インターフェイスの設定を変更するかネットワーク インターフェイスを削除することで、アプリケーション セキュリティ グループからすべてのネットワーク インターフェイスを削除する必要があります。 詳細については、[アプリケーション セキュリティ グループに対するネットワークインターフェイスの追加または削除](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)に関する記事または「[ネットワーク インターフェイスの削除](virtual-network-network-interface.md#delete-a-network-interface)」を参照してください。
+
+**コマンド**
+
+- Azure CLI: [az network asg delete](/cli/azure/network/asg#az-network-asg-delete)
+- PowerShell: [Remove-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
+
+## <a name="permissions"></a>アクセス許可
+
+ネットワーク セキュリティ グループ、セキュリティ規則、およびアプリケーション セキュリティ グループのタスクを実行するには、自分のアカウントが[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に示す適切なアクセス許可が割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに割り当てられている必要があります。
+
+|操作                                                       |   操作の名前                               |
+|--------------------------------------------------------------  |   -------------------------------------------  |
+|Microsoft.Network/ruleTables/read                              |   ネットワーク セキュリティ グループの取得                              |
+|Microsoft.Network/ruleTables/write                             |   ネットワーク セキュリティ グループの作成または更新                 |
+|Microsoft.Network/ruleTables/delete                            |   ネットワーク セキュリティ グループの削除                           |
+|Microsoft.Network/ruleTables/join/action                       |   ネットワーク セキュリティ グループの結合                             |
+|Microsoft.Network/ruleTables/rules/read                       |   規則の取得                                    |
+|Microsoft.Network/ruleTables/rules/write                      |   規則の作成または更新                       |
+|Microsoft.Network/ruleTables/rules/delete                     |   規則の削除                                 |
+|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   ネットワーク インターフェイスの有効なネットワーク セキュリティ グループの取得  | 
+|Microsoft.Network/networkWatchers/nextHop/action                |   VM からの次ホップの取得                  |
+
+ネットワーク セキュリティ グループをサブネットに関連付けるには、*ネットワーク セキュリティ グループの結合*操作が必要です。

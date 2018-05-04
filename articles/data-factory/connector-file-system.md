@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: e765c5b0240eb1b0311210dc466d1bc0a43ae58f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cac7ba6f538a8efbd09b27888bd5f1059c2290bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してファイル システムをコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,8 +65,11 @@ ms.lasthandoff: 03/23/2018
 
 | シナリオ | リンクされたサービス定義の "host" | データセット定義の "folderPath" |
 |:--- |:--- |:--- |
-| 統合ランタイム コンピューター上のローカル フォルダー: <br/><br/>例: D:\\\* または D:\folder\subfolder\\\* |D:\\\\ |.\\\\ またはフォルダー\\\\サブフォルダー |
-| リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
+| 統合ランタイム コンピューター上のローカル フォルダー: <br/><br/>例: D:\\\* または D:\folder\subfolder\\\* |JSON の場合: `D:\\`<br/>UI の場合: `D:\` |JSON の場合: `.\\` または `folder\\subfolder`<br>UI の場合: `.\` または `folder\subfolder` |
+| リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\\* |JSON の場合: `\\\\myserver\\share`<br/>UI の場合: `\\myserver\share` |JSON の場合: `.\\` または `folder\\subfolder`<br/>UI の場合: `.\` または `folder\subfolder` |
+
+>[!NOTE]
+>UI を使用して作成する場合、JSON のように、エスケープするために二重バックスラッシュ (`\\`) を入力する必要はなく、単一のバックスラッシュを指定します。
 
 **例:**
 

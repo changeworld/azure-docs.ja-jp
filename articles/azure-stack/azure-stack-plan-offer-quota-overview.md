@@ -1,29 +1,29 @@
 ---
-title: "Azure Stack のプラン、オファー、クォータ、サブスクリプションの概要 | Microsoft Docs"
-description: "クラウド オペレーターとして Azure Stack のプラン、オファー、クォータ、およびサブスクリプションを理解したいと思っています。"
+title: Azure Stack のプラン、オファー、クォータ、サブスクリプションの概要 | Microsoft Docs
+description: クラウド オペレーターとして Azure Stack のプラン、オファー、クォータ、およびサブスクリプションを理解したいと思っています。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/22/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: fcf19f486ebdc739f3d5c7b25215ba8726462a56
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 [Azure Stack](azure-stack-poc.md) を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 Azure Stack オペレーターは、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
 
@@ -52,13 +52,15 @@ ms.lasthandoff: 02/21/2018
 
 クォータはリージョンごとに構成できます。 たとえば、リージョン A のコンピューティング サービスを含むプランには、2 台の仮想マシン、4 GB の RAM、10 個の CPU コアで構成されるクォータを設定できます。 Azure Stack Development Kit では、(*ローカル*という名前の) 1 つのリージョンだけが使用できます。
 
+[Azure Stack のクォータの種類](azure-stack-quota-types.md)に関する詳細を参照してください。 
+
 ### <a name="base-plan"></a>基本プラン
 
 オファーを作成するときに、サービス管理者は基本プランを含めることができます。 この基本プランは、ユーザーがそのオファーをサブスクライブすると、既定で含まれます。 ユーザーはサブスクライブすると、この基本プランで指定されたすべてのリソース プロバイダーにアクセスできます (対応するクォータが適用されます)。
 
 ### <a name="add-on-plans"></a>アドオン プラン
 
-オファーにはオプションのアドオン プランを含めることもできます。 既定では、サブスクリプションにアドオン プランは含まれません。 アドオン プランは、サブスクライバーが自身のサブスクリプションに追加できるオファーで使用可能な (クォータが適用された) 追加プランです。 たとえば、基本プランと制限されたリソースを試用版として提供し、サービスの導入を決めたお客様にアドオン プランでより多くのリソースを提供することができます。
+アドオン プランは、プランに追加するオプションのプランです。 既定では、サブスクリプションにアドオン プランは含まれません。 アドオン プランは、サブスクライバーが自身のサブスクリプションに追加できるオファーで使用可能な (クォータが適用された) 追加プランです。 たとえば、基本プランと制限されたリソースを試用版として提供し、サービスの導入を決めたお客様にアドオン プランでより多くのリソースを提供することができます。
 
 ## <a name="offers"></a>オファー
 

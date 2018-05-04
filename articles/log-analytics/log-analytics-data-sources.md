@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics でのデータ ソースの構成 | Microsoft Docs"
-description: "データ ソースは、Log Analytics がエージェントや接続されている他のソースから収集するデータを定義します。  この記事では、Log Analytics でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。"
+title: Azure Log Analytics でのデータ ソースの構成 | Microsoft Docs
+description: データ ソースは、Log Analytics がエージェントや接続されている他のソースから収集するデータを定義します。  この記事では、Log Analytics でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 04/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4237df0934d6191b77ff82c86a66585e72191ac9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、接続されたソースからデータを収集して Log Analytics ワークスペースに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  Log Analytics のデータは、レコード セットとして格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -29,16 +29,19 @@ Log Analytics は、接続されたソースからデータを収集して Log A
 
 
 ## <a name="summary-of-data-sources"></a>データ ソースの概要
-次の表に、現在 Log Analytics で使用できるデータ ソースを示します。  各データ ソースのリンクをクリックすると、それぞれのデータ ソースについて詳しく説明する記事に移動します。
+次の表に、現在 Log Analytics で使用できるデータ ソースを示します。  各データ ソースのリンクをクリックすると、それぞれのデータ ソースについて詳しく説明する記事に移動します。   また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を把握できます。 列の詳細については、「[Azure での管理ソリューションのデータ収集の詳細](../monitoring/monitoring-solutions-inventory.md)」を参照してください。
 
-| データ ソース | イベントの種類 | 説明 |
-|:--- |:--- |:--- |
-| [カスタム ログ](log-analytics-data-sources-custom-logs.md) |\<LogName\>_CL |Windows エージェントまたは Linux エージェント上の、ログ情報を含んだテキスト ファイル。 |
-| [Windows イベント ログ](log-analytics-data-sources-windows-events.md) |イベント |Windows コンピューター上のイベント ログから収集されたイベント。 |
-| [Windows パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) |Perf |Windows コンピューターから収集されたパフォーマンス カウンター。 |
-| [Linux パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) |Perf |Linux コンピューターから収集されたパフォーマンス カウンター。 |
-| [IIS ログ](log-analytics-data-sources-iis-logs.md) |W3CIISLog |インターネット インフォメーション サービス ログ (W3C 形式)。 |
-| [Syslog](log-analytics-data-sources-syslog.md) |syslog |Windows コンピューターまたは Linux コンピューターの Syslog イベント。 |
+
+| データ ソース | プラットフォーム | Microsoft Monitoring Agent | Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [カスタム ログ](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | 着信時 |
+| [カスタム ログ](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | 着信時 |
+| [IIS ログ](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 分 |
+| [パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |スケジュールに基づく頻度 (間隔は 10 秒以上) |
+| [パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |スケジュールに基づく頻度 (間隔は 10 秒以上) |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |10 分 (Azure Storage からデータを収集する場合) または着信時 (エージェントからデータを収集する場合) |
+| [Windows イベント ログ](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | 着信時 |
+
 
 ## <a name="configuring-data-sources"></a>データ ソースの構成
 データ ソースは、Log Analytics の **[詳細設定]** の **[データ]** メニューから構成します。  すべての構成は、ワークスペース内の接続されているすべてのソースに配信されます。  現時点では、この構成からエージェントを除外することはできません。
@@ -46,7 +49,7 @@ Log Analytics は、接続されたソースからデータを収集して Log A
 ![Windows イベントの構成](./media/log-analytics-data-sources/configure-events.png)
 
 1. Azure Portal で、**[Log Analytics]**、目的のワークスペース、**[詳細設定]** の順に選択します。
-2. **[データ]**を選択します。
+2. **[データ]** を選択します。
 3. 構成するデータ ソースをクリックします。
 4. 構成の詳細については、上記の表のデータ ソース名をクリックして、リンク先のドキュメントを参照してください。
 

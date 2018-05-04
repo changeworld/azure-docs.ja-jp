@@ -1,9 +1,9 @@
 ---
-title: "Azure 診断ログでサポートされているサービスとスキーマ | Microsoft Docs"
-description: "Azure 診断ログでサポートされているサービスとイベント スキーマについて説明します。"
+title: Azure 診断ログでサポートされているサービスとスキーマ | Microsoft Docs
+description: Azure 診断ログでサポートされているサービスとイベント スキーマについて説明します。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/24/2018
+ms.date: 4/12/2018
 ms.author: johnkem
-ms.openlocfilehash: 3e2b5305b969c96e6b14122af03da9249373094a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/25/2018
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Protection | スキーマは使用できません。 |
 | 復旧サービス | [Azure Backup のデータ モデル](../backup/backup-azure-reports-data-model.md)|
-| 検索 |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
+| Search |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
 | Server Management | スキーマは使用できません。 |
 | Service Bus |[Azure Service Bus の診断ログ](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database 診断ログ](../sql-database/sql-database-metrics-diag-logging.md) |
@@ -73,6 +73,7 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
 |Microsoft.Devices/IotHubs|接続|接続|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
@@ -84,6 +85,7 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Devices/IotHubs|TwinQueries|ツイン クエリ|
 |Microsoft.Devices/IotHubs|JobsOperations|ジョブ操作|
 |Microsoft.Devices/IotHubs|DirectMethods|ダイレクト メソッド|
+|Microsoft.Devices/IotHubs|E2EDiagnostics|E2E 診断 (プレビュー)|
 |Microsoft.Devices/provisioningServices|DeviceOperations|デバイス操作|
 |Microsoft.Devices/provisioningServices|ServiceOperations|サービス操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -96,7 +98,6 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保護通知|
@@ -107,6 +108,8 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|ゲートウェイ診断ログ|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|トンネル診断ログ|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|ルート診断ログ|
+|Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|IKE 診断ログ|
+|Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 診断ログ|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
@@ -127,6 +130,7 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Sql/servers/databases|ブロック|ブロック|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|Audit|Audit Logs|
+|Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
 |Microsoft.StreamAnalytics/streamingjobs|実行|実行|
 |Microsoft.StreamAnalytics/streamingjobs|作成|作成|
 

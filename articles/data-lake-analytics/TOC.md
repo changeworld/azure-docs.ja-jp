@@ -24,26 +24,30 @@
 ### [クォータ制限を調整する](data-lake-analytics-quota-limits.md)
 
 ## U-SQL プログラムの開発
-### [U-SQL の基本](data-lake-analytics-u-sql-get-started.md)
-### [U-SQL 言語のリファレンス](https://msdn.microsoft.com/library/azure/mt591959)
-### [U-SQL カタログ](data-lake-analytics-u-sql-catalog.md)
-### [U-SQL ユーザー定義演算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-### [U-SQL Python 拡張機能](data-lake-analytics-u-sql-python-extensions.md)
-### [U-SQL R 拡張機能](data-lake-analytics-u-sql-r-extensions.md)
-### [U-SQL Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
-### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
-### [Visual Studio Code 用の U-SQL カスタム コード](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-### [Visual Studio Code での U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
-### [U-SQL データベースのエクスポート](data-lake-analytics-data-lake-tools-export-database.md)
 
-## U-SQL プログラムのデバッグ
-### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-### [異常な定期的ジョブのトラブルシューティング](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
-### [U-SQL で C# コードをデバッグする](data-lake-analytics-debug-u-sql-jobs.md)
-### [ジョブ ブラウザーとジョブ ビューを使用する](data-lake-analytics-data-lake-tools-view-jobs.md)
-### [頂点実行ビューを使用する](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
-### [VSCode でのローカル実行とローカル デバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)
-### [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
+### U-SQL 言語
+#### [U-SQL の基本](data-lake-analytics-u-sql-get-started.md)
+#### [U-SQL 言語のリファレンス](https://msdn.microsoft.com/library/azure/mt591959)
+#### [U-SQL カタログ](data-lake-analytics-u-sql-catalog.md)
+#### [U-SQL ユーザー定義演算子](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+#### [U-SQL Python 拡張機能](data-lake-analytics-u-sql-python-extensions.md)
+#### [U-SQL R 拡張機能](data-lake-analytics-u-sql-r-extensions.md)
+#### [U-SQL Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
+#### [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
+#### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
+#### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+### Visual Studio
+#### [ジョブ ブラウザーとジョブ ビューを使用する](data-lake-analytics-data-lake-tools-view-jobs.md)
+#### [U-SQL で C# コードをデバッグする](data-lake-analytics-debug-u-sql-jobs.md)
+#### [異常な定期的ジョブのトラブルシューティング](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
+#### [頂点実行ビューを使用する](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+#### [U-SQL データベースのエクスポート](data-lake-analytics-data-lake-tools-export-database.md)
+
+### Visual Studio Code
+#### [Visual Studio Code での U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
+#### [Visual Studio Code 用の U-SQL カスタム コード](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+#### [VSCode でのローカル実行とローカル デバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

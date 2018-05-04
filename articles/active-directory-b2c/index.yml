@@ -11,11 +11,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: 5ca78abe01132ec557b4722d457f7b76684ce3c0
-  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+  ms.openlocfilehash: 000874bd089583cfc75dfa0a4d28769b91808a11
+  ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/18/2018
+  ms.lasthandoff: 04/30/2018
 abstract:
   description: Azure Active Directory (Azure AD) B2C は、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、同時に顧客の ID を保護します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure AD B2C の使用方法を確認してください。
   aside:
@@ -61,30 +61,6 @@ sections:
       html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">アプリケーションを登録する</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API アクセスを許可する</a></p>
     - title: シングルページ
       html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">アプリケーションを登録する</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">ユーザーを認証する</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API アクセスを許可する</a></p>
-- title: 無料の Pluralsight ビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsF
-    items:
-    - title: ID、アプリケーション、ネットワーク サービスを管理する
-      href: https://www.pluralsight.com/courses/microsoft-azure-identity-application-network-services
-      html: <p>モジュール 6 で、テナントの作成、アプリの登録、ポリシーの作成についてご覧ください。</p>
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/microsoft-azure-identity-application-network-services
-    - title: サーバーレス アプリケーションをセキュリティ保護する
-      href: https://www.pluralsight.com/courses/azure-serverless-applications
-      html: <p>モジュール 6 で、サーバーレス アプリケーションのセキュリティ保護に Azure AD B2C の使用が推奨される理由をお聞きください。</p>
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/azure-serverless-applications
-    - title: ASP.NET Core 2 と Azure AD B2C
-      href: https://www.pluralsight.com/courses/aspnet-core-identity-management-playbook
-      html: <p>モジュール 8 で、サインアップ、サインイン、プロファイル編集を ASP.NET Core 2 アプリに追加する方法についてご覧ください。</p>
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/aspnet-core-identity-management-playbook
 - title: サンプル
   items:
   - type: paragraph

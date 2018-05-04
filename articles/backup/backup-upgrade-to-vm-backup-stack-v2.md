@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>VM バックアップ スタック V2 へのアップグレード
 仮想マシン (VM) バックアップ スタック V2 にアップグレードすると、次の機能強化が提供されます。
@@ -49,7 +49,9 @@ ms.lasthandoff: 03/23/2018
 * これは、VM バックアップ スタックの一方向のアップグレードです。 そのため、将来のバックアップはすべて、このフローになります。 **これはサブスクリプション レベルで有効にされるので、すべての VM がこのフローになります**。 新しい機能の追加はすべて、同じスタックに基づきます。 ポリシー レベルでこれを制御する機能は、将来のリリースで予定されています。 
 * Premium ディスクを使う VM では、最初のバックアップの間に、最初のバックアップが完了するまで、VM のサイズと等しい記憶域スペースがストレージ アカウントで利用できることを確認します。 
 * 復旧ポイントの作成と復元を高速化するため、スナップショットはローカルに格納されるので、7 日の期間中、スナップショットに対応するストレージ コストが発生します。
+* 増分スナップショットは、ページ BLOB として格納されます。 アンマネージド ディスクを使用しているすべてのユーザーは、自分のローカル ストレージ アカウントに格納されている 7 日間のスナップショットに対して課金されます。 現在の価格モデルでは、マネージド ディスクのユーザーにはコストがかかりません。
 * Premium VM のスナップショット復旧ポイントから復元を行う場合、復元の一部として VM が作成されている間、一時的な保存場所が使われます。 
+* Premium Storage アカウントの場合、インスタント回復用に作成されたスナップショットは、Premium Storage アカウントに割り当てられている 10 TB の領域を占有します。
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法
 ### <a name="the-azure-portal"></a>Azure ポータル
@@ -66,7 +68,7 @@ Azure Portal を使っている場合、大容量ディスクのサポートお�
 1.  Azure アカウントにサインインします。 
 
 ```
-PS C:> Login-AzureRmAccount
+PS C:> Connect-AzureRmAccount
 ```
 
 2.  プレビュー用に登録するサブスクリプションを選びます。
@@ -78,14 +80,14 @@ PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select
 3.  プライベート プレビュー用にこのサブスクリプションを登録します。
 
 ```
-PS C:>  Register-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ## <a name="verify-whether-the-upgrade-is-complete"></a>アップグレードが完了したかどうかを確認します。
 管理者特権の PowerShell ターミナルから、次のコマンドレットを実行します。
 
 ```
-Get-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 登録済みと表示されたら、サブスクリプションは VM バックアップ スタック V2 にアップグレードされています。 

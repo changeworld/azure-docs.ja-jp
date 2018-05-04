@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b0bc6035c3004587ae50f1c331dd3976883e9d34
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure Container Service (AKS) での HTTPS イングレス
 
@@ -27,7 +27,7 @@ Helm CLI のインストール - インストール手順については、Helm 
 
 ## <a name="install-an-ingress-controller"></a>イングレス コントローラーをインストールする
 
-Helm を使って NGINX イングレス コントローラーをインストールします。 展開の詳細については、NGINX イングレス コントローラーの[ドキュメント][nginx-ingress]をご覧ください。 
+Helm を使って NGINX イングレス コントローラーをインストールします。 展開の詳細については、NGINX イングレス コントローラーの[ドキュメント][nginx-ingress]をご覧ください。
 
 グラフのリポジトリを更新します。
 
@@ -74,12 +74,6 @@ PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAdd
 
 # Update public ip address with dns name
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
-```
-
-必要な場合は、次のコマンドを実行して FQDN を取得します。 IP アドレスの値を、お使いのイングレス コントローラーの IP アドレスで更新します。
-
-```azurecli
-az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
 ```
 
 FQDN 経由でイングレス コントローラーにアクセスできるようになります。
@@ -181,14 +175,14 @@ Kubernetes イングレス コントローラーの FQDN を参照すると、he
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントで示されているソフトウェアについてさらに学習してください。 
+このドキュメントで示されているソフトウェアについてさらに学習してください。
 
 - [Helm CLI][helm-cli]
 - [NGINX イングレス コントローラー][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

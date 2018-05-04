@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/19/2018
 ms.author: tomsh
-ms.openlocfilehash: dfc0128247ad86e9fa6932f8b05c91ae7da0d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29a479ffee3488768f1882c0938b0ecfdd55218b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-white-papers"></a>Azure セキュリティ ホワイト ペーパー
 | | |
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/05/2018
 |[Azure のネットワーク セキュリティ](azure-network-security.md)|Azure にデプロイするソリューションのセキュリティを強化するために構成できる幅広いネットワーク コントロールを紹介します。 焦点は、顧客向けのネットワーク セキュリティ コントロールです。|
 |[Azure の運用上のセキュリティ](azure-operational-security.md)|Azure で利用できる顧客向けの運用上のセキュリティ テクノロジとサービスについて、包括的に説明します。|
 |[Azure セキュリティの技術的な機能](azure-security-technical-capabilities.md)|Azure Storage、Azure SQL Database、Azure 仮想マシン モデルをサポートするセキュリティ機能と、そのすべてを管理するツールとインフラストラクチャに注目します。|
-|[Azure Storage セキュリティ ガイド](https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Azure Storage で使用できる各セキュリティ機能の概要について説明します。 管理面のセキュリティ、データ面のセキュリティ、保存時の暗号化、送信時の暗号化、およびストレージの分析について説明します。|
+|[Azure Storage セキュリティ ガイド](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Azure Storage で使用できる各セキュリティ機能の概要について説明します。 管理面のセキュリティ、データ面のセキュリティ、保存時の暗号化、送信時の暗号化、およびストレージの分析について説明します。|
 |[クラウドに備えたデータの分類](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03) |このダウンロード可能なホワイト ペーパーでは、データ分類の基本とクラウド コンピューティングのコンテキストにおけるその価値を紹介します。 将来の使用のためにクラウド コンピューティングを評価している組織や、現在クラウド サービスを使用している組織で、データ管理を最適化する方法を探している組織は、このホワイト ペーパーが最も役に立ちます。|
 |[Azure でのガバナンス](governance-in-azure.md)|Azure に組み込まれているセキュリティと管理の機能について説明します。 説明されている主な管理問題は、次のとおりです。組織の目標に適したポリシー、プロセス、およびプロシージャの実装、組織の標準に適合するセキュリティと継続的なコンプライアンス、アラートと監視。
 |[Azure パブリック クラウドでの分離](azure-isolation.md)|Azure が悪意のあるユーザーと悪意のないユーザーの両方を分離する方法の概要を説明します。 アーキテクトにさまざまな分離の選択肢を提供することで、クラウド ソリューションを設計するためのガイドとして機能します。 主な焦点は顧客向けのセキュリティ コントロールであり、SLA、価格モデル、および DevOps プラクティスに関する考慮事項には言及しません。|

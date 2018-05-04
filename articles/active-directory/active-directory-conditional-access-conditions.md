@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory の条件付きアクセスの条件 | Microsoft Docs"
-description: "Azure Active Directory の条件付きアクセスで割り当てを使用してポリシーをトリガーする方法について学習します。"
+title: Azure Active Directory の条件付きアクセスの条件 | Microsoft Docs
+description: Azure Active Directory の条件付きアクセスで割り当てを使用してポリシーをトリガーする方法について学習します。
 services: active-directory
-keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
-documentationcenter: 
+keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 168301bbd0e7a59330ee6c87d1821db3fca39f67
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの条件 
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/13/2018
 
 選択できるオプションは次のとおりです。
 
-- **すべてのクラウド アプリ**: ベースライン ポリシーを組織全体に適用できます。 このオプションの一般的なユース ケースとしては、いずれかのクラウド アプリへのサインインにリスクが検出されたときに多要素認証を要求するポリシーが挙げられます。
+- **すべてのクラウド アプリ**: ベースライン ポリシーを組織全体に適用できます。 このオプションの一般的なユース ケースとしては、いずれかのクラウド アプリへのサインインにリスクが検出されたときに多要素認証を要求するポリシーが挙げられます。 **[すべてのクラウド アプリ]** に適用されるポリシーは、すべての Web サイトおよびサービスへのアクセスに適用されます。 この設定は、**[アプリを選択]** リストに表示されるクラウド アプリに限定されません。
 
 - 個々のクラウド アプリ: ポリシーで特定のサービスをターゲットにすることができます。 たとえば、SharePoint Online にアクセスするには[準拠デバイス](active-directory-conditional-access-policy-connected-applications.md)を使用するようユーザーに要求できます。 このポリシーは、他のサービスが Microsoft Teams などの SharePoint コンテンツにアクセスする際にも適用されます。 
 

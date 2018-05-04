@@ -1,6 +1,6 @@
 ---
-title: "Azure Time Series Insights で調整を監視し軽減する方法 | Microsoft Docs"
-description: "この記事では、Azure Time Series Insights の待機時間と調整の原因になるパフォーマンスの問題を監視、診断、および緩和する方法について説明します。"
+title: Azure Time Series Insights で調整を監視し軽減する方法 | Microsoft Docs
+description: この記事では、Azure Time Series Insights の待機時間と調整の原因になるパフォーマンスの問題を監視、診断、および緩和する方法について説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ec16f20723e4a613c953363da6cf6b463de829a9
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 着信データの量が環境の構成を超えると、Azure Time Series Insights で待機時間や調整が発生する可能性があります。
@@ -45,17 +45,24 @@ ms.lasthandoff: 11/28/2017
 
 そこから、次のメトリックを使用してアラートを構成できます。
 
-|メトリック  |説明  |
+|メトリック  |[説明]  |
 |---------|---------|
 |**受信バイトの受信**     | イベント ソースから読み取られた生バイト数。 通常、生バイト数にはプロパティの名前と値が含まれます。  |  
 |**無効な受信メッセージの受信**     | すべての Azure Event Hubs または Azure IoT Hub イベント ソースから読み取られた無効なメッセージの数。      |
 |**受信メッセージの受信**   | すべての Event Hubs または IoT Hub イベント ソースから読み取られたメッセージの数。        |
 |**保存済みバイトの受信**     | クエリ用に保存済みで利用できるイベントの合計サイズ。 サイズはプロパティ値のみに基づいて計算されます。        |
 |**保存済みイベントの受信**     |   クエリ用に保存済みで利用できるフラット化されたイベントの数。      |
+|**Ingress Recieved Message Time Lag (受信メッセージの受信のタイム ラグ)**    |  メッセージがイベント ソースの待ち行列に入った時刻とそれがイングレスで処理された時刻の間の差。      |
+|**Ingress Recieved Message Count Lag (受信メッセージの受信のカウント ラグ)**    |  イベント ソース パーティションで待ち行列の最後に入っているメッセージのシーケンス番号とイングレスで処理されているメッセージのシーケンス番号の間の差。      |
 
-![待機時間](media/environment-mitigate-latency/latency.png)
 
-1 つの方法は、2 時間の環境の合計容量より若干低いしきい値以上に**保存済みイベントの受信**アラートを 設定することです。  このアラートは、頻繁に容量に達しているかどうかを理解するのに役立ちます。そのような状況は、待機時間が発生する可能性が高いことを示しています。  
+![Latency](media/environment-mitigate-latency/latency.png)
+
+調整中、*Ingress Recieved Message Time Lag (受信メッセージの受信のタイム ラグ)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何分遅れているのかが通知されます (約  30 ～ 60 秒のインデックス作成時間を除きます)。  *Ingress Recieved Message Count Lag (受信メッセージの受信のカウント ラグ)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
+
+たとえば、シングル ユニット S1 の環境で 500 万メッセージの遅れがある場合、環境のサイズを 6 ユニットまで増やせば 1 日がかりで追いつける可能性があります。  さらに増やせば、それだけ短時間で追いつくことができます。  これは、環境に初めてプロビジョニングするときに一般的に発生します。特に、イベントが既に入っているイベント ソースに接続するときや、大量の履歴データを一括アップロードするときに発生します。
+
+別の方法としては、2 時間の環境の合計容量より若干低いしきい値以上に**保存済みイベントの受信**アラートを設定することです。  このアラートは、頻繁に容量に達しているかどうかを理解するのに役立ちます。そのような状況は、待機時間が発生する可能性が高いことを示しています。  
 
 たとえば、3 つの S1 ユニットをプロビジョニング済み (または 1 分間の受信容量あたり 2100 イベント) の場合、**保存済みイベントの受信**アラートを 2 時間に対して 1900 イベント以上に設定できます。 このしきい値を頻繁に超えてアラートがトリガーされる場合、プロビジョニング不足である可能性が高いです。  
 
@@ -66,6 +73,6 @@ ms.lasthandoff: 11/28/2017
 
 分析するデータ量に合わせて環境を正しく構成することによって待機時間と調整を回避できます。 環境内に容量を追加する方法の詳細については、「[環境のスケーリング](time-series-insights-how-to-scale-your-environment.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 追加のトラブルシューティング手順は、「[Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)」を参照してください。
 - 追加の支援については、[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) でメッセージの交換を始めてください。 サポート オプションについては、[Azure サポート](https://azure.microsoft.com/support/options/)までお問い合わせいただくこともできます。

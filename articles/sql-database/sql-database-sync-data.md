@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: e66adb8b0485e30fded487e18af6b2030f9c7f5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
 
@@ -138,6 +138,11 @@ SQL データ同期 (プレビュー) は、すべてのパブリック クラ�
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>データ同期を使用してオンプレミスの SQL Server データのみの間で同期できますか? 
 直接無効にすることはできません。 しかし、Azure でハブ データベースを作成し、オンプレミスデータベースを同期グループに追加することで、オンプレミスの SQL Server データベース間で間接的に同期できます。
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>データ同期を使用して、異なるサブスクリプションに属している SQL データベース間で同期できますか?
+はい。 異なるサブスクリプションが所有するリソース グループに属している SQL データベース間で同期できます。
+-   サブスクリプションが同じテナントに属していて、すべてのサブスクリプションへのアクセス許可がある場合、Azure Portal 上で同期グループを構成できます。
+-   それ以外の場合、PowerShell を使用して、異なるサブスクリプションに属している同期メンバーを追加する必要があります。
    
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>データ同期を使用して、実稼働データベースからデータを空のデータベースにデータを挿入し、それらの同期を維持することはできますか? 
 はい。 元のデータベースからスクリプトを作成することで、新しいデータベース内にスキーマを手動で作成します。 スキーマを作成した後で、同期グループにテーブルを追加し、データをコピーして同期を維持します。
@@ -147,6 +152,12 @@ SQL データ同期 (プレビュー) は、すべてのパブリック クラ�
 SQL データ同期 (プレビュー) を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期 (プレビュー) の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期 (プレビュー) では、ストアド プロシージャなどの他の SQL オブジェクトはバックアップされず、復元操作に相当する処理は迅速に行われません。
 
 お勧めするバックアップ方法の 1 つについては、「[Azure SQL Database のコピー](sql-database-copy.md)」をご覧ください。
+
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>データ同期によって、暗号化されたテーブルと列を同期できますか?
+
+-   データベースが [Always Encrypted (常に暗号化)] を使用する場合、暗号化*されていない*テーブルおよび列のみを同期できます。 データ同期はデータを暗号化解除できないため、暗号化された列を同期することはできません。
+
+-   列が列レベルの暗号化 (CLE) を使用している場合、行サイズが 24 Mb の最大サイズより小さい場合に限り、列を同期できます。 データ同期は、鍵によって暗号化された列 (CLE) を通常のバイナリ データとして処理します。 他の同期メンバーのデータを暗号化解除するには、同じ証明書を持っている必要があります。
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL データ同期では照合順序はサポートされていますか?
 

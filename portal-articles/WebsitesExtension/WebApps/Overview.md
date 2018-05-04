@@ -1,6 +1,6 @@
 ---
-title: "Web Apps の概要 | Microsoft Docs"
-description: "Azure Portal 内にある Web Apps の概要に関するヘルプ コンテンツ"
+title: App Service の概要 | Microsoft Docs
+description: Azure Portal 内にある App Service の概要に関するヘルプ コンテンツ
 services: app-service
 author: sewatson
 manager: lwelicki
@@ -8,22 +8,24 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 13709876752dd5df356765ed636c5a7e4a665d4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e795a6c5f76fb8d40c7e6778555de619d00b3a41
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="web-apps-documentation"></a>Web Apps のドキュメント
+# <a name="app-service-documentation"></a>App Service のドキュメント
+Azure App Service を使用すると、インフラストラクチャ、言語、または Web フレームワーク ランタイムを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 クイック スタート、チュートリアル、およびサンプルを使用して、Azure App Service の使用方法を学習してください。
 
-Azure Web Apps を使用すると、インフラストラクチャを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Web Apps の使用方法を確認してください。
+## <a name="windows-linux-and-docker"></a>Windows、Linux、および Docker
+[Web Apps](/app-service/app-service-web-overview) は、Windows 環境を使用する Web アプリケーションを構築およびホスティングするための、App Service の主要なサービスです。 Linux 環境を使用する開発者は、[Linux 用 App Service](/app-service/containers/app-service-linux-intro) を選択することができます。 また、開発者は、Docker イメージを Linux 用 App Service に直接デプロイして、カスタム ランタイム/フレームワークをデプロイすることもできます。
 
 ## <a name="5-minute-quickstarts"></a>5 分間のクイック スタート
 
-Web Apps を使用してクラウドに最初のアプリケーションをデプロイする方法について説明します。
+Web Apps 用 App Service を使用してクラウドに最初のアプリケーションをデプロイする方法について説明します。
 
 - [.NET](/azure/app-service/app-service-web-get-started-dotnet)
-- [Node.JS](/azure/app-service/app-service-web-get-started-nodejs)
+- [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
 - [Python](/azure/app-service/app-service-web-get-started-python)
@@ -33,7 +35,11 @@ Web Apps を使用してクラウドに最初のアプリケーションをデ�
 
 Azure でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します。
 
-- [.NET と Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase) または [Node.js と MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app) を使用してアプリケーションを作成する
+- 以下のものを使用してアプリケーションを作成します。
+  - [.NET と Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
+  - [Node.js と MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+  - [Java と MySQL](/app-service/app-service-web-tutorial-java-mysql)
+  - [Python と PostgreSQL](/app-service/app-service-web-tutorial-python-postgresql)
 - [既存のカスタム ドメインをアプリケーションにマップする](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [既存の SSL 証明書をアプリケーションにバインドする](/azure/app-service/app-service-web-tutorial-custom-SSL)
 
@@ -51,5 +57,4 @@ Azure でセキュリティ保護された Web アプリケーションをデプ
 
 ## <a name="more"></a>詳細
 
-- [ドキュメントを参照して詳細を確認する](/azure/app-service-web/index)
 - [すべての Azure サービスを確認する](https://aka.ms/j3wr7y)

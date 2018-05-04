@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 242da9a3ce52d9c7d801215cde7b72b7f8fe9a91
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用して Azure Network Watcher とのネットワーク接続を監視する
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/05/2018
 1. ポータルの左側にある **[その他のサービス]** を選びます。
 2. **[フィルター]** ボックスに「*network watcher*」の入力を始めます。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 3. **[監視]** の **[接続モニター]** を選択します。
-4. **[+ 追加]**を選択します。
+4. **[+ 追加]** を選択します。
 5. 監視する接続の情報を入力するか選択して、**[追加]** を選択します。 次の図に示す例では、*MultiTierApp0* VM から *Database0* VM へのポート 80 経由の接続が監視されます。
 
     ![接続モニターを追加する](./media/connection-monitor/add-connection-monitor.png)
@@ -69,4 +69,4 @@ ms.lasthandoff: 04/05/2018
 ## <a name="next-steps"></a>次の手順
 
 - [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、VM のアラートを使用してパケット キャプチャを自動化する方法を確認します。
-- [IP フローの検証](network-watcher-check-ip-flow-verify-portal.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを判断します。
+- [IP フローの検証](diagnose-vm-network-traffic-filtering-problem.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを判断します。

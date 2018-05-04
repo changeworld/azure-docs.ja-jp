@@ -1,8 +1,8 @@
 ---
-title: "ネイティブ クライアント アプリの発行 - Azure AD | Microsoft Docs"
-description: "ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。"
+title: ネイティブ クライアント アプリの発行 - Azure AD | Microsoft Docs
+description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0753db5c5accf67411a9968f56aa9ad2158bad89
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 823939e76bcf982d37b58595795dca84c1830e19
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 
@@ -45,7 +45,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 4. アプリケーションの名前を指定し、アプリケーションの種類として **[ネイティブ]** を選択し、アプリケーションのリダイレクト URI を指定します。 
 
    ![新しいアプリ登録の作成](./media/active-directory-application-proxy-native-client/create.png)
-5. **[作成]**を選択します。
+5. **[作成]** を選択します。
 
 新しいアプリ登録の作成について詳しくは、「[Azure Active Directory とアプリケーションの統合](.//develop/active-directory-integrating-applications.md)」をご覧ください。
 
@@ -55,7 +55,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 1. 引き続き、**[アプリ登録]** で、作成したばかりの新しいネイティブ アプリケーションを選択します。
 2. **[必要なアクセス許可]** を選択します。
-3. **[追加]**を選択します。
+3. **[追加]** を選択します。
 4. 最初の手順 **[API を選択します]** を開きます。
 5. 検索バーを使用して、最初のセクションで発行したアプリケーション プロキシ アプリを探します。 アプリを選択して、**[選択]** をクリックします。 
 
@@ -64,7 +64,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 7. チェック ボックスを使用して、ネイティブ アプリケーションのアクセスをプロキシ アプリケーションに許可し、**[選択]** をクリックします。
 
    ![プロキシ アプリにアクセスを許可](./media/active-directory-application-proxy-native-client/select_perms.png)
-8. **[完了]**を選択します。
+8. **[完了]** を選択します。
 
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>手順 4: Active Directory 認証ライブラリの編集
@@ -73,7 +73,7 @@ Active Directory Authentication Library (ADAL) の認証コンテキストのネ
 ```
 // Acquire Access Token from AAD for Proxy Application
 AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<Tenant ID>");
-AuthenticationResult result = authContext.AcquireToken("< External Url of Proxy App >",
+AuthenticationResult result = await authContext.AcquireTokenAsync("< External Url of Proxy App >",
         "<App ID of the Native app>",
         new Uri("<Redirect Uri of the Native App>"),
         PromptBehavior.Never);

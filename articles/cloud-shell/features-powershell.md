@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: 5c4cb6230d8509830d25caaf497e4e63ac7e5806
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cd1582697307219bf3710139c6b44b5957b176e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) での PowerShell の機能とツール
 
@@ -77,7 +77,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 インストール後、モジュールは自動的に Cloud Shell セッション間で永続化されます。
 
 > [!TIP]
-> ユーザーがインストールしたモジュールは、`$Home\CloudDrive\.pscloudshell\WindowsPowerShell` フォルダーに保存されます。 このフォルダーへのシンボリック リンクが、ユーザーのドキュメント フォルダーに作成されます (`$home\Documents\WindowsPowerShell`)。
+> ユーザーがインストールしたモジュールは、`$Home\clouddrive\.pscloudshell\WindowsPowerShell` フォルダーに保存されます。 このフォルダーへのシンボリック リンクが、ユーザーのドキュメント フォルダーに作成されます (`$home\Documents\WindowsPowerShell`)。
 
 ![](media/features-powershell/powershellget-module.png)
 
@@ -90,7 +90,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 
 |**カテゴリ**    |**名前**                                 |
 |----------------|-----------------------------------------|
-|Azure ツール     |[Azure PowerShell (5.6.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.30)](https://docs.microsoft.com/cli/azure)|
+|Azure ツール     |[Azure PowerShell (5.7.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.31)](https://docs.microsoft.com/cli/azure)|
 |テキスト エディター    |vim<br> nano                             |
 |パッケージ マネージャー |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |ソース管理  |git                                      |
@@ -102,8 +102,8 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 |**言語**|**バージョン**|
 |------------|-----------|
 |.NET        |4.6        |
-|Node.js     |6.10       |
-|PowerShell  |5.1 および [6.0.2](https://github.com/PowerShell/powershell/releases)       |
+|Node.js     |8.9.4       |
+|PowerShell  |5.1 および [6.1.0-preview.1](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>次の手順

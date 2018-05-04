@@ -27,7 +27,7 @@
   items:
     - name: Azure Stack ポータルの使用
       href: azure-stack-use-portal.md
-    - name: Azure Stack API の使用
+    - name: Azure Stack API を使用する
       href: azure-stack-rest-api-use.md
     - name: セキュリティとコンプライアンス
       items:
@@ -110,6 +110,10 @@
                   href: azure-stack-version-profiles-azurecli2.md
                 - name: GO
                   href: azure-stack-version-profiles-go.md
+                - name: Ruby
+                  href: azure-stack-version-profiles-ruby.md
+                - name: Python
+                  href: azure-stack-version-profiles-python.md
                 - name: プロファイルでサポートされているリソース プロバイダー API
                   href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: ポリシー モジュールの使用

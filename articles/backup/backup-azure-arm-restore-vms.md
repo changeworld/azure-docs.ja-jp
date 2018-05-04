@@ -1,12 +1,12 @@
 ---
-title: "Azure Backup: Azure Portal を使用して仮想マシンを復元する | Microsoft Docs"
-description: "Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します"
+title: 'Azure Backup: Azure Portal を使用して仮想マシンを復元する | Microsoft Docs'
+description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "バックアップの復元, 復元する方法, 回復ポイント"
+editor: ''
+keywords: バックアップの復元, 復元する方法, 回復ポイント
 ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Poral を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。
@@ -42,9 +42,9 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * 復元の種類を選択し、新しい VM を作成するかディスクを復元して、必要なパラメーターを指定します。 
 
 ## <a name="select-a-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
-1. [Azure ポータル](http://portal.azure.com/)にサインインします。
+1. [Azure Portal](http://portal.azure.com/) にサインインします。
 
-2. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
+2. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
     ![Recovery Services コンテナー](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
@@ -154,7 +154,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
 操作を処理中に表示するか、処理の完了後に表示するには、**[バックアップ ジョブ]** の一覧を開きます。
 
-1. Azure メニューで **[参照]** を選択し、サービスの一覧で「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
+1. Azure メニューで **[参照]** を選択し、サービスの一覧で「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
     ![Open Recovery Services vault](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
@@ -211,7 +211,7 @@ VM が稼働しているプライマリ データ センターが被災した場
 ## <a name="restore-domain-controller-vms"></a>ドメイン コントローラー VM を復元する
 ドメイン コントローラー (DC) VMのバックアップは、Backup でサポートされているシナリオです。 ただし、この復元プロセスでは注意が必要です。 適切な復元プロセスは、ドメインの構造によって異なります。 最も単純なのは、1 つのドメインに 1 つの DC があるケースです。 運用環境の負荷としてより一般的なのは、1 つのドメインに複数の DC があるケースです。オンプレミスに DC がいくつかあるケースも考えられます。 そして、1 つのフォレストに複数のドメインがあるケースもあります。 
 
-Active Directory の観点からは、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、バックアップ コンテナーからの VM の復元が、BMR の代わりとなります。 ディレクトリ サービス復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 詳細については、[仮想化されたドメイン コントローラーのバックアップと復元の考慮事項](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)に関するページおよび[Active Directory フォレストの回復の計画](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)に関するページをご覧ください。
+Active Directory の観点からは、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、バックアップ コンテナーからの VM の復元が、BMR の代わりとなります。 ディレクトリ サービス復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 詳細については、[仮想化されたドメイン コントローラーのバックアップと復元の考慮事項](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)に関するページおよび[Active Directory フォレストの回復の計画](https://technet.microsoft.com/library/planning-active-directory-forest-recovery(v=ws.10).aspx)に関するページをご覧ください。
 
 ### <a name="single-dc-in-a-single-domain"></a>1 つのドメインに 1 つの DC がある
 VM は (他の VM と同様に) Azure Portal または PowerShell を使用して復元できます。
@@ -242,7 +242,7 @@ VM は (他の VM と同様に) Azure Portal または PowerShell を使用し�
 
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用して、クラウド サービスで VM を作成します。
 
-   b. [インターネットに接続されているロード バランサー](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成します。
+   b. [インターネットに接続されているロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成します。
 
    c. [複数 NIC](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/) を持つ VM を作成します。
 

@@ -129,6 +129,8 @@
           items:
             - name: Azure への移行後の Azure VM のディザスター リカバリー
               href: azure-to-azure-replicate-after-migration.md
+            - name: PowerShell を使用した Azure VM のディザスター リカバリー
+              href: azure-to-azure-powershell.md
         - name: レプリケーション、フェールオーバー、フェールバック
           items:
             - name: Azure から Azure へのレプリケーションを有効にする

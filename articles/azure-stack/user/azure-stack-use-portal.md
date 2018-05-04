@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/18/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2e66a65665fe2021d1154990ed1156f8d168b5c3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 279722cc53889cb0a261fcffde0c7e0f86be6dc5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
@@ -68,7 +68,7 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 
 追加のサポートが必要な場合は、所属組織またはサービス プロバイダーにお問い合わせください。
 
-Azure Stack Development Kit を使用している場合、[Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)が唯一のサポート方法です。
+Azure Stack Development Kit を使用している場合、[Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)が唯一のサポート情報源です。
 
 ## <a name="next-steps"></a>次の手順
 

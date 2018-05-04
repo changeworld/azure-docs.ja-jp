@@ -1,19 +1,19 @@
 ---
-title: "Azure Container Service のサンプル スクリプト"
-description: "Azure Container Service のサンプル スクリプト"
+title: Azure Container Service のサンプル スクリプト
+description: Azure Container Service のサンプル スクリプト
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: sample
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b3b600323ef678d3d5694f03bcbfe15b15acd212
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 704a9ddfc6cb880c3e2edc887d08c489c0b3fd95
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cli-samples-for-azure-container-service"></a>Azure Container Service の Azure CLI サンプル
 

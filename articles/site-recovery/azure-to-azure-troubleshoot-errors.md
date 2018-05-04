@@ -1,6 +1,6 @@
 ---
-title: "Azure 間レプリケーションの問題とエラーに関する Azure Site Recovery トラブルシューティング | Microsoft Docs"
-description: "ディザスター リカバリーのために Azure 仮想マシンをレプリケートするとき発生するエラーや問題に関するトラブルシューティング"
+title: Azure 間レプリケーションの問題とエラーに関する Azure Site Recovery トラブルシューティング | Microsoft Docs
+description: ディザスター リカバリーのために Azure 仮想マシンをレプリケートするとき発生するエラーや問題に関するトラブルシューティング
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ad0281df19ac1696ebb7cc913045d49c652be84a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -187,7 +187,7 @@ VM に接続された新しいディスクを初期化する必要がありま�
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM のプロビジョニングの状態が正しくありません (エラー コード 150019)
 
-VM でレプリケーションを有効にするには、プロビジョニングの状態が **[成功]**になっている必要があります。 次の手順に従って、VM の状態を確認できます。
+VM でレプリケーションを有効にするには、プロビジョニングの状態が **[成功]** になっている必要があります。 次の手順に従って、VM の状態を確認できます。
 
 1.  Azure Portal の **[All Services]\(すべてのサービス\)** から **[リソース エクスプローラー]** を選択します。
 2.  **[サブスクリプション]** 一覧を展開して、自分のサブスクリプションを選択します。
@@ -199,6 +199,17 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 - **[provisioningState]** が **[失敗]** になっている場合は、サポートに詳細を問い合わせてトラブルシューティングします。
 - **[provisioningState]** が **[更新中]** になっている場合は、別の拡張機能がデプロイされている可能性があります。 VM 上に何らかの進行中の操作があるかを確認し、それらの操作が完了するまで待機してから、失敗した Site Recovery の **[レプリケーションを有効にする]** ジョブを再試行します。
+
+
+## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/ボリューム シャドウ コピー サービス エラー (エラー コード 151025)
+**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
+--- | --- | ---
+151025<br></br>**メッセージ**: サイト回復拡張機能をインストールできませんでした | - COM+ システム アプリケーション サービスが無効になっています。</br></br>- ボリューム シャドウ コピー サービスが無効になっています。| COM+ システム アプリケーション サービスとボリューム シャドウ コピー サービスを、自動または手動スタートアップ モードに設定します。
+
+### <a name="fix-the-problem"></a>問題の解決
+
+[サービス] コンソールを開いて、COM+ システム アプリケーションとボリューム シャドウ コピーの [スタートアップの種類] が [無効] に設定されていないことを確認します。
+  ![com-error](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="next-steps"></a>次の手順
 [Azure 仮想マシンのレプリケート](site-recovery-replicate-azure-to-azure.md)

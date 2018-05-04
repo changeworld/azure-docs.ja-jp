@@ -49,11 +49,11 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 | 発行元 | プラン | SKU | バージョン | cloud-init 対応
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |最新 |はい | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |はい |
-|CoreOS |CoreOS |安定版 |最新 |はい |
-|OpenLogic |CentOS |7-CI |最新 |プレビュー |
-|RedHat |RHEL |7-RAW-CI |最新 |プレビュー |
+|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
+|CoreOS |CoreOS |安定版 |latest |はい |
+|OpenLogic |CentOS |7-CI |latest |preview |
+|RedHat |RHEL |7-RAW-CI |latest |preview |
 
 Azure の cloud-init について詳しくは、次のページをご覧ください。
 
@@ -62,7 +62,7 @@ Azure の cloud-init について詳しくは、次のページをご覧くだ�
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC は、[Open Management Infrastructure (OMI) サーバー](https://collaboration.opengroup.org/omi/)を介して Linux で使用することもできます。
+[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC は、[Open Management Infrastructure (OMI) サーバー](https://collaboration.opengroup.org/omi/)を介して Linux で使用することもできます。
 
 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。 プル サーバーは、中央ホストで実行され、DSC 構成と関連リソースを格納する Web サービスです。 プル サーバーは、各ターゲット ホスト上の LCM エンジンと通信して、必要な構成を提供し、コンプライアンスについて報告します。
 

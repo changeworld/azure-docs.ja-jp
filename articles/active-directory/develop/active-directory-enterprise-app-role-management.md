@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 88a9f5988d1fe3f4de4fe10da23a5f713e3f3370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5520781c9f687e5e32ad1d8c38922a456bb5e3ce
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行されたロール要求の構成
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/23/2018
 
 4. 検索ボックスにアプリケーションの名前を入力し、結果ウィンドウからアプリケーションを選択して、**[追加]** をクリックしてアプリケーションを追加します。
 
-    ![結果リスト内のアプリケーション](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
+    ![結果リストのアプリケーション](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
 5. アプリケーションが追加されたら、**[プロパティ]** ページに移動して、**オブジェクト ID** をコピーします
 
@@ -64,11 +64,11 @@ ms.lasthandoff: 03/23/2018
     
      `https://graph.microsoft.com/beta/servicePrincipals`
         
-    複数のディレクトリを使用している場合は、このパターンに従う必要があります: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    複数のディレクトリを使用している場合は、次のパターンに従う必要があります。`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
     ![Graph Explorer のダイアログ ボックス](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
     
-    c. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl + F キーを使用して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 プロパティ ページからコピーした **オブジェクト id** を検索し、次のクエリを使用して対応するサービス プリンシパルを取得します。
+    c. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 プロパティ ページからコピーした **オブジェクト ID** を検索し、次のクエリを使用して対応するサービス プリンシパルを取得します。
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 03/23/2018
     **[コンテンツのコピー]** をクリックしてコンテンツをコピーします
 
     > [!NOTE] 
-    > 生成されたロール内で、**msiam_access** ユーザー ロールがあることと、id が一致していることを確認してください。
+    > 生成されたロール内で、**msiam_access** ユーザー ロールがあることと、ID が一致していることを確認してください。
 
     g. Graph Explorer に戻ります。 メソッドを **GET** から **PATCH** に変更します。 コピーした値で appRoles プロパティを更新して、必要な appRoles を持つようにサービス プリンシパル オブジェクトを修正します。 **[クエリの実行]** をクリックします。
 
@@ -158,9 +158,9 @@ ms.lasthandoff: 03/23/2018
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]**は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
     
-    e. **[OK]**をクリックします。
+    e. **[OK]** をクリックします。
 
 10. IDP で開始したシングル サインオンでアプリケーションをテストするには、アクセス パネル (https://myapps.microsoft.com) にログインし、アプリケーション タイルをクリックします。 SAML トークンには、指定した要求の名前を持つ、そのユーザーに割り当てられているすべてのロールが表示されるはずです。
 
@@ -176,11 +176,11 @@ ms.lasthandoff: 03/23/2018
     
     `https://graph.microsoft.com/beta/servicePrincipals`
         
-    複数のディレクトリを使用している場合は、このパターンに従う必要があります: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    複数のディレクトリを使用している場合は、次のパターンに従う必要があります。`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
     ![Graph Explorer のダイアログ ボックス](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
     
-    d. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl + F キーを使用して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 プロパティ ページからコピーした **オブジェクト id** を検索し、次のクエリを使用して対応するサービス プリンシパルを取得します。
+    d. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 プロパティ ページからコピーした **オブジェクト ID** を検索し、次のクエリを使用して対応するサービス プリンシパルを取得します。
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
     
@@ -212,11 +212,11 @@ ms.lasthandoff: 03/23/2018
     
     `https://graph.microsoft.com/beta/servicePrincipals`
     
-    複数のディレクトリを使用している場合は、このパターンに従う必要があります: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    複数のディレクトリを使用している場合は、次のパターンに従う必要があります。`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
     ![Graph Explorer のダイアログ ボックス](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
     
-    d. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl + F キーを使用して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 プロパティ ページからコピーした **オブジェクト id** を検索し、次のクエリを使用して対応するサービス プリンシパルを取得します。
+    d. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 プロパティ ページからコピーした **オブジェクト ID** を検索し、次のクエリを使用して対応するサービス プリンシパルを取得します。
      
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
     
@@ -237,7 +237,7 @@ ms.lasthandoff: 03/23/2018
     **[クエリの実行]** をクリックします。
     
     > [!NOTE] 
-    > 生成されたロール内で、**msiam_access** ユーザー ロールがあることと、id が一致していることを確認してください。
+    > 生成されたロール内で、**msiam_access** ユーザー ロールがあることと、ID が一致していることを確認してください。
     
     g. 上記のプロセスを行った後は、メソッドを **PATCH** として維持し、残っているロールのコンテンツを**要求本文**内に貼り付けて、**[クエリの実行]** をクリックします。
     
@@ -250,7 +250,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>次の手順
 
-追加の手順については、[アプリのマニュアル](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-tutorial-list)を参照してください。
+追加の手順については、[アプリのマニュアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照してください。
 
 <!--Image references-->
 <!--Image references-->

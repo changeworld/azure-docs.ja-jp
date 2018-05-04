@@ -1,11 +1,11 @@
 ---
-title: "統合アカウント アーティファクト メタデータの管理 - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps の統合アカウントからアーティファクト メタデータを追加または取得する"
+title: 統合アカウント アーティファクト メタデータの管理 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps の統合アカウントからアーティファクト メタデータを追加または取得する
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 02/23/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 59cebb6c0b86f4e3c4e16a5b6d2ada7b3e7a44a2
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 8ebca60c21366cddadccfd0456880696457d7777
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>ロジック アプリの統合アカウントでアーティファクト メタデータを管理する
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/27/2018
 
 1. Azure Portal で、[ロジック アプリ](quickstart-create-first-logic-app-workflow.md)を作成します。
 
-2. [ロジック アプリから統合アカウントへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app)を作成します。 
+2. [ロジック アプリから統合アカウントへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)を作成します。 
 
 3. ロジック アプリ デザイナーで、ロジック アプリに**要求**や **HTTP** などのトリガーを追加します。
 

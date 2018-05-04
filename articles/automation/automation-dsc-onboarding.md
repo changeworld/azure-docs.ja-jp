@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0da6bd56a684657d8275ca8c781847f31f8e05c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC による管理のためのマシンのオンボード
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/23/2018
 また、クラウドからコンピューター構成を管理する準備ができていない場合は、Azure Automation DSC をレポートのみのエンドポイントとして使用することもできます。 この場合、オンプレミスの DSC で目的の構成を設定 (プッシュ) し、Azure Automation の目的の状態へのノード コンプライアンスに関する詳細なレポートを表示できます。
 
 > [!NOTE]
-> インストールされている仮想マシン DSC 拡張機能が 2.70 より新しい場合は、追加料金なしでこの DSC で Azure VM を管理できるようになっています。 詳細については、「[**Automation の価格**](https://azure.microsoft.com/en-us/pricing/details/automation/)」を参照してください。
+> インストールされている仮想マシン DSC 拡張機能が 2.70 より新しい場合は、追加料金なしでこの DSC で Azure VM を管理できるようになっています。 詳細については、「[**Automation の価格**](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
 
 次のセクションでは、各種類のマシンを Azure Automation DSC にオンボードできる方法の概要を示します。
@@ -53,7 +53,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
 Add-AzureAccount
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # fill in correct values for your VM/Automation account here
 $VMName = ""
@@ -195,7 +195,7 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
 
 ## <a name="generating-dsc-metaconfigurations"></a>DSC メタ構成の生成
 
-マシンを包括的に Azure Automation DSC にオンボードするために、[DSC メタ構成](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig)を生成できます。これを適用すると、Azure Automation DSC とデータをやり取りするようにマシン上の DSC エージェントに指示します。 Azure Automation DSC の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
+マシンを包括的に Azure Automation DSC にオンボードするために、[DSC メタ構成](https://msdn.microsoft.com/powershell/dsc/metaconfig)を生成できます。これを適用すると、Azure Automation DSC とデータをやり取りするようにマシン上の DSC エージェントに指示します。 Azure Automation DSC の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
 
 > [!NOTE]
 > DSC メタ構成には Automation アカウントにマシンをオンボードするために必要な管理用の機密データが含まれています。 作成した DSC メタ構成は適切に保護し、使用後は削除してください。
@@ -329,7 +329,7 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
 PowerShell DSC Local Configuration Manager の既定値がユース ケースに適しており、Azure Automation DSC とデータをやり取りするマシンをオンボードする場合、Azure Automation コマンドレットが必要な DSC メタ構成を生成するための簡略化された手法を提供します。
 
 1. ローカル環境のマシンで、管理者として PowerShell コンソールまたは PowerShell ISE を開きます。
-2. **Add-AzureRmAccount**
+2. **Connect-AzureRmAccount** を使用して、Azure Resource Manager に接続します。
 3. ノードをオンボードする Automation アカウントから、オンボードするマシンの PowerShell DSC メタ構成をダウンロードします。
 
     ```powershell
@@ -372,7 +372,7 @@ Azure Automation DSC を使用すると、構成管理のための Azure Windows
 > [!NOTE]
 > Azure VM Desired State Configuration 拡張機能を使用する Azure Automation DSC への Azure Windows VM のオンボード方法では、ノードが Azure Automation に登録済みと表示されるまでに最大で 1 時間かかる場合があります。 これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 
-トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure Portal でオンボードされている VM に移動し、**[設定]** の **[拡張機能]** をクリックします。 次に、お使いのオペレーティング システムに応じて **[DSC]** または **[DSCForLinux]** をクリックします。 詳細は、 **[詳細な状態の表示]**をクリックして表示できます。
+トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure Portal でオンボードされている VM に移動し、**[設定]** の **[拡張機能]** をクリックします。 次に、お使いのオペレーティング システムに応じて **[DSC]** または **[DSCForLinux]** をクリックします。 詳細は、 **[詳細な状態の表示]** をクリックして表示できます。
 
 ## <a name="certificate-expiration-and-reregistration"></a>証明書の有効期限と再登録
 

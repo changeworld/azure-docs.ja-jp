@@ -26,7 +26,7 @@
 ## [関連のデータ資産の表示](data-catalog-how-to-view-related-data-assets.md) 
 
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
 ## [検索構文リファレンス](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [開発者の概念](data-catalog-developer-concepts.md)

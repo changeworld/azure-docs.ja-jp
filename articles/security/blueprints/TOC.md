@@ -6,7 +6,7 @@
 ## [運用上のセキュリティの有効化](../azure-operational-security.md)
 ## [Azure でのガバナンス](../governance-in-azure.md)
 ## [Azure クラウドでの分離](../azure-isolation.md)
-## [セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
+## [セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
 ## [セキュリティの技術的な機能](../azure-security-technical-capabilities.md)
 
 # [データ セキュリティと暗号化](../security-azure-encryption-overview.md)

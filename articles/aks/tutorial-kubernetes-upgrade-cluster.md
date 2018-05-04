@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a293ebbd2ec07d9de53d168f79b8546576499bcb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8340ca9d95e7600e2500755de252e7f6c6de9343
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) での Kubernetes のアップグレード
 
@@ -41,7 +41,7 @@ Azure Container Service (AKS) クラスターは、Azure CLI を使用してア�
 az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
-ここでは、ノードの現在のバージョンが `1.7.9` であることがわかります。また、[Upgrades] 列からは利用可能なアップグレードのバージョンがわかります。
+この例では、ノードの現在のバージョンが `1.7.9` であることがわかります。また、[Upgrades] 列からは利用可能なアップグレードのバージョンがわかります。
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
@@ -115,7 +115,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 ## <a name="validate-upgrade"></a>アップグレードを検証する
 
-ここで、`az aks show` コマンドを使用して、アップグレードが成功したことを確認できます。
+`az aks show` コマンドを使用して、アップグレードが成功したことを確認します。
 
 ```azurecli
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table

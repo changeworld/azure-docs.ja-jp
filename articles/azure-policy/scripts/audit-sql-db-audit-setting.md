@@ -1,25 +1,25 @@
 ---
-title: "Azure Policy の JSON サンプル - SQL DB レベルの監査設定の監査 | Microsoft Docs"
-description: "この JSON サンプル ポリシーは、SQL データベースの監査設定が指定された設定と一致しない場合に、この設定の監査を行います。"
+title: Azure Policy の JSON サンプル - SQL DB レベルの監査設定の監査 | Microsoft Docs
+description: この JSON サンプル ポリシーは、SQL データベースの監査設定が指定された設定と一致しない場合に、この設定の監査を行います。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: a2aeaae3aeabe0c7c3fcbc975919d4436ae5eadc
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 02114ea454c50313a184e605594afb1c56bc3469
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="audit-sql-db-level-audit-setting"></a>SQL DB レベルの監査設定の監査
 
@@ -74,6 +74,6 @@ az policy assignment create --name <assignmentname> --scope <scope> --policy "au
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。

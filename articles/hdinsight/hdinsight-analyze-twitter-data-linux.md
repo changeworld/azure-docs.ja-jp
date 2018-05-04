@@ -1,26 +1,24 @@
 ---
-title: "Apache Hive を使用した Twitter データの分析 - Azure HDInsight | Microsoft Docs"
-description: "Hive と Hadoop を HDInsight で使用して、生の TWitter データを検索可能な Hive テーブルに変換する方法を学びます。"
+title: Apache Hive を使用した Twitter データの分析 - Azure HDInsight | Microsoft Docs
+description: Hive と Hadoop を HDInsight で使用して、生の TWitter データを検索可能な Hive テーブルに変換する方法を学びます。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/22/2018
+ms.topic: conceptual
+ms.date: 04/23/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 89c5ff86b6c59223e0580860e14fdffdaef2472c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
 
@@ -37,9 +35,9 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 ### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
-1. Web ブラウザーから [https://apps.twitter.com/](https://apps.twitter.com/)にサインインします。 Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
+1. Web ブラウザーで、[https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
 
-2. **[Create New App]**をクリックします。
+2. **[Create New App]** をクリックします。
 
 3. **名前**、**説明**、**Web サイト**を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
@@ -55,7 +53,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 6. **[Keys and Access Tokens]** タブをクリックします。
 
-7. **[Create my access token]**をクリックします。
+7. **[Create my access token]** をクリックします。
 
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
 
@@ -179,9 +177,9 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 HDInsight のストレージにデータをアップロードするには、次のコマンドを使用します。
 
-   ```bash
-   hdfs dfs -mkdir -p /tutorials/twitter/data
-   hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
+```bash
+hdfs dfs -mkdir -p /tutorials/twitter/data
+hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ```
 
 クラスター内のすべてのノードがアクセスできる場所にデータが保存されます。

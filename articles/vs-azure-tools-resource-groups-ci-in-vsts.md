@@ -1,11 +1,11 @@
 ---
-title: "Azure リソース グループのプロジェクトを使用した VS Team Services での継続的インテグレーション | Microsoft Docs"
-description: "Visual Studio で Azure リソース グループのデプロイメント プロジェクトを使用して、Visual Studio Team Services での継続的インテグレーションを設定する方法を説明します。"
+title: Azure リソース グループのプロジェクトを使用した VS Team Services での継続的インテグレーション | Microsoft Docs
+description: Visual Studio で Azure リソース グループのデプロイメント プロジェクトを使用して、Visual Studio Team Services での継続的インテグレーションを設定する方法を説明します。
 services: visual-studio-online
 documentationcenter: na
 author: mlearned
 manager: erickson-doug
-editor: 
+editor: ''
 ms.assetid: b81c172a-be87-4adc-861e-d20b94be9e38
 ms.service: azure-resource-manager
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc5a45c899cd72c051dd08f7db039565a57381a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Visual Studio Team Services (VS Team Services) にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
@@ -104,9 +104,9 @@ VS Team Services で PowerShell スクリプトを呼び出すには、ビルド
     ![スクリプトのパスの編集][10]
 8. **[スクリプトの引数]** ボックスに、次のパラメーター (1 行) を入力します。 Visual Studio でスクリプトを実行すると、 **[出力]** ウィンドウで　VS がパラメーターを使用する方法を確認することができます。 ビルド ステップでパラメーター値を設定するための出発点として、この方法を使用できます。
    
-   | パラメーター | 説明 |
+   | パラメーター | [説明] |
    | --- | --- |
-   | -ResourceGroupLocation |**eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。 (名前にスペースが含まれる場合は、一重引用符を追加します)。詳細については、「[Azure Regions (Azure リージョン)](https://azure.microsoft.com/en-us/regions/)」を参照してください。 |
+   | -ResourceGroupLocation |**eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。 (名前にスペースが含まれる場合は、一重引用符を追加します)。詳細については、「[Azure Regions (Azure リージョン)](https://azure.microsoft.com/regions/)」を参照してください。 |
    | -ResourceGroupName |このデプロイメントに使用するリソース グループの名前。 |
    | -UploadArtifacts |このパラメーターは、存在する場合、ローカル システムから Azure にアップロードする必要があるアーティファクトを指定します。 テンプレート デプロイメントに、PowerShell スクリプト (構成スクリプトや入れ子になったテンプレートなど) を使用してステージングする追加のアーティファクトが必要な場合にのみ、このスイッチを設定する必要があります。 |
    | -StorageAccountName |このデプロイメントのアーティファクトをステージングするためのストレージ アカウントの名前。 このパラメーターは、デプロイメントのアーティファクトをステージングする場合にのみ使用します。 このパラメーターを指定すると、以前のデプロイメントの際にスクリプトによってストレージ アカウントが作成されていない場合に、新しいストレージ アカウントが作成されます。 このパラメーターが指定される場合は、ストレージ アカウントが既に存在している必要があります。 |
@@ -177,7 +177,7 @@ VS Team Services で PowerShell スクリプトを呼び出すには、ビルド
      ![[Azure リソース グループの配置] タスクの構成][17]
 7. 必要な項目をすべて追加したら、ビルド定義を保存して、上部の **[新しいビルドをキューに配置]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Resource Manager と Azure リソース グループの詳細については、「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png

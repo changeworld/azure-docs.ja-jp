@@ -1,19 +1,19 @@
 ---
-title: "Kubernetes 向け Azure Container Service の概要"
-description: "Kubernetes 向けの Azure Container Service では、Azure でコンテナー ベースのアプリケーションを簡単にデプロイして管理できます。"
+title: Kubernetes 向け Azure Container Service の概要
+description: Kubernetes 向けの Azure Container Service では、Azure でコンテナー ベースのアプリケーションを簡単にデプロイして管理できます。
 services: container-service
 author: gabrtv
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 1a877204e91098191c218bf1c991cc5d8e53ee7a
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: f12fc0baa055e62d4f15c0e42eb7add3661ea6fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-container-service-for-kubernetes"></a>Kubernetes 向け Azure Container Service の概要
 
@@ -58,6 +58,6 @@ Kubernetes でのアプリケーションの開発およびデプロイに使用
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Kubernetes クイックスタート](container-service-kubernetes-walkthrough.md)を確認し、Azure Container Service を今すぐ開始します。

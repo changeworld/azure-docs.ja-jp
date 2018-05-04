@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -186,7 +186,7 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
 前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で AzureML の変数を初期化するには、次を実行します。
 
-左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]**の値をメモします。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
+左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
 上部にあるメニューの **[Authorization Tokens (認証トークン)]** を選択し、**[Primary Authorization Token (プライマリ認証トークン)]** の値をメモします。![3](./media/linux-dsvm-walkthrough/workspace-token.png)
 
@@ -264,7 +264,7 @@ python またはコマンド ラインから呼び出すこともできます。
 Python を使用して開発するために、DSVM には Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。
 
 > [!NOTE]
-> Anaconda ディストリビューションには、[Condas](http://conda.pydata.org/docs/index.html) が含まれています。これを使うと、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
+> Anaconda ディストリビューションには、[Conda](http://conda.pydata.org/docs/index.html) が含まれています。これを使用して、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
 >
 >
 
@@ -317,6 +317,24 @@ AzureML エンドポイントを発行する方法を示すために、前に R 
 ## <a name="jupyterhub"></a>Jupyterhub
 DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Python、R、または Julia のコードと分析を共有するためのクロスプラットフォーム環境) が付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用して、***https://\<VM の DNS 名または IP アドレス\>:8000/*** にサインインします。 JupyterHub のすべての構成ファイルは、 **/etc/jupyterhub**ディレクトリにあります。
 
+> [!NOTE]
+> 現在のカーネルの Jupyter Notebook から (`pip` コマンドを通して) Python Package Manager を使用するには、コード セルで、次のコマンドを次の例のように使用できます。
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> 現在のカーネルの Jupyter Notebook から (`conda` コマンドを通して) Conda インストーラーを使用するには、コード セルで、次のコマンドを次の例のように使用できます。
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
+
 いくつかのサンプル Notebook は、VM に既にインストールされています。
 
 * サンプル Python Notebook については、 [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb) をご覧ください。
@@ -359,14 +377,14 @@ Rattle では、タブベースのインターフェイスを使用します。 
 
 **[Explore (探索)]** タブでは、洞察力に富んださまざまなプロットを生成することもできます。 データのヒストグラムをプロットするには:
 
-* **[Distributions (ディストリビューション)]**を選択します。
+* **[Distributions (ディストリビューション)]** を選択します。
 * **word_freq_remove** と **word_freq_you** の **[Histogram (ヒストグラム)]** チェック ボックスをオンにします。
-* **[Execute (実行)]**を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには "you" という単語が "remove" よりも頻繁に出現することが明確に示されます。
+* **[Execute (実行)]** を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには "you" という単語が "remove" よりも頻繁に出現することが明確に示されます。
 
 相関関係プロットも興味深いものです。 相関関係プロットを作成するには:
 
 * **[Type (種類)]** として **[Correlation (相関関係)]** を選択します。
-* **[Execute (実行)]**を選択します。
+* **[Execute (実行)]** を選択します。
 * 推奨される変数の最大数が 40 である旨の警告が表示されます。 **[Yes (はい)]** を選択して、プロットを表示します。
 
 興味深い相関関係が表示されます。たとえば、"technology" が "HP" および "labs" と強力に相関しています。 また、"650" とも強力に相関しています。これは、データセットの提供者の市外局番が 650 であるためです。
@@ -388,7 +406,7 @@ Rattle では、クラスター分析を実行することもできます。 出
 * word_freq_business
 * spam
 
-次に、**[Cluster (クラスター)]** タブに移動し、**[KMeans]** を選択して、*[Number of clusters (クラスター数)]* を 4 に設定します。 **[Execute (実行)]**を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で "george" と "hp" が含まれているため、おそらく本物の仕事のメールでしょう。
+次に、**[Cluster (クラスター)]** タブに移動し、**[KMeans]** を選択して、*[Number of clusters (クラスター数)]* を 4 に設定します。 **[Execute (実行)]** を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で "george" と "hp" が含まれているため、おそらく本物の仕事のメールでしょう。
 
 単純なデシジョン ツリーの機械学習モデルを作成するには:
 
@@ -400,7 +418,7 @@ Rattle では、クラスター分析を実行することもできます。 出
 Rattle の便利な機能の 1 つに、複数の機械学習メソッドを実行し、それらをすばやく評価する機能があります。 手順は次のとおりです。
 
 * **[Type (種類)]** として **[All (すべて)]** を選択します。
-* **[Execute (実行)]**を選択します。
+* **[Execute (実行)]** を選択します。
 * その後で、**[Type (種類)]** で **[SVM]** などのいずれか 1 つをクリックして、結果を表示できます。
 * また、 **[Evaluate (評価)]** タブを使用して、検証セットに対するモデルのパフォーマンスを比較することもできます。たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。
 * また、ROC 曲線のプロット、感度解析の実行、および他の種類のモデル評価を行うこともできます。
@@ -468,7 +486,7 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
 * **[PostgreSQL]** を右クリックし、**[Modify Driver (ドライバーの変更)]** を選択します。
 * **[Extra Class Path (その他のクラス パス)]**、**[Add (追加)]** の順に選択します。
 * **[File Name (ファイル名)]** に「***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar***」と入力します。
-* **[Open (開く)]**を選択します。
+* **[Open (開く)]** を選択します。
 * [List Drivers (ドライバーの一覧)] を選択し、**[Class Name (クラス名)]** で **[org.postgresql.Driver]** を選択して、**[OK]** を選択します。
 
 ローカル サーバーへの接続を設定するには:
@@ -480,7 +498,7 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
 * "*ユーザー名*" と "*パスワード*" を入力します。
 * Click **OK**.
 * **[Connection (接続)]** ウィンドウを開くには、***Spam database*** エイリアスをダブルクリックします。
-* **[接続]**を選択します。
+* **[接続]** を選択します。
 
 クエリを実行するには:
 

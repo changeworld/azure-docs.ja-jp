@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 8cc4d8110db0a650b8355f96fee490093826ac30
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -159,6 +159,11 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
             }
     }
     ```
+
+> [!NOTE]
+> `ChangeFeedOptions.PartitionKeyRangeId` の代わりに `ChangeFeedOptions.PartitionKey` を使用して、変更フィードを取得するパーティション キーを 1 つ指定できます。 たとえば、「`PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`」のように入力します。
+> 
+>
 
 複数の閲覧者がいる場合、**ChangeFeedOptions** を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。
 

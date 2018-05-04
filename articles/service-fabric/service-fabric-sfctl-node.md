@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI- sfctl node | Microsoft Docs
-description: "Service Fabric CLI sfctl node のコマンドについて説明します。"
+description: Service Fabric CLI sfctl node のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 クラスターを形成するノードを管理します。
@@ -60,7 +60,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-enable"></a>sfctl node enable
@@ -82,7 +82,7 @@ ms.lasthandoff: 02/27/2018
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-health"></a>sfctl node health
@@ -105,7 +105,7 @@ Service Fabric ノードの正常性を取得します。 正常性状態に基�
 | --debug                  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                | このヘルプ メッセージを表示して終了します。|
 | --output -o              | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query                  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query                  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose                | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
@@ -127,7 +127,7 @@ Service Fabric クラスター内の特定のノードに関する情報を取�
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-list"></a>sfctl node list
@@ -150,7 +150,7 @@ Service Fabric クラスター内のノードの一覧を取得します。 応�
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-load"></a>sfctl node load
@@ -172,7 +172,7 @@ Service Fabric ノードの読み込み情報を取得します。
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-restart"></a>sfctl node restart
@@ -196,7 +196,7 @@ Service Fabric クラスター ノードを再起動します。
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-transition"></a>sfctl node transition
@@ -223,7 +223,7 @@ Service Fabric クラスター ノードを再起動します。
 | --debug                           | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                         | このヘルプ メッセージを表示して終了します。|
 | --output -o                       | 出力形式。  使用できる値は、json、jsonc、table、tsv です。                       既定値は json です。|
-| --query                           | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query                           | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose                         | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
 
 ## <a name="next-steps"></a>次の手順

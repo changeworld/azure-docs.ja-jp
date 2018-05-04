@@ -1,8 +1,8 @@
 ---
-title: "Azure テンプレートを使用して Azure HDInsight と Data Lake Store を作成する | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使って Azure Data Lake Store で HDInsight クラスターを作成し使用する"
+title: Azure テンプレートを使用して Azure HDInsight と Data Lake Store を作成する | Microsoft Docs
+description: Azure Resource Manager テンプレートを使って Azure Data Lake Store で HDInsight クラスターを作成し使用する
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c5afc96cc8101345f00b5d435e9f393d22672de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bc20504865fa59cafc199305f9810fb4c3d99524
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Resource Manager テンプレートおよびテンプレート使用の前提条
 
 ```
 # Log in to your Azure account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List all the subscriptions associated to your account
 Get-AzureRmSubscription
@@ -69,7 +69,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 ```
 
 ## <a name="upload-sample-data-to-the-azure-data-lake-store"></a>サンプル データを Azure Data Lake Store にアップロードする
-Resource Manager テンプレートでは、新しい Data Lake Store アカウントが作成され、HDInsight クラスターに関連付けられます。 この時点で、いくつかのサンプル データを Azure Data Lake Store にアップロードする必要があります。 このデータは、チュートリアルの後半で Data Lake Store 内のデータにアクセスする HDInsight クラスターからジョブを実行するために必要です。 データをアップロードする方法の詳細については、[Data Lake Store へのファイルのアップロード](data-lake-store-get-started-portal.md#uploaddata)に関するセクションを参照してください。 アップロードするサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
+Resource Manager テンプレートでは、新しい Data Lake Store アカウントが作成され、HDInsight クラスターに関連付けられます。 この時点で、いくつかのサンプル データを Azure Data Lake Store にアップロードする必要があります。 このデータは、チュートリアルの後半で Data Lake Store 内のデータにアクセスする HDInsight クラスターからジョブを実行するために必要です。 データをアップロードする方法の詳細については、[Data Lake Store へのファイルのアップロード](data-lake-store-get-started-portal.md#uploaddata)に関するセクションを参照してください。 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
 
 ## <a name="set-relevant-acls-on-the-sample-data"></a>サンプル データに関連 ACL を設定する
 アップロードしたサンプル データに HDInsight クラスターからアクセスできるようにするには、HDInsight クラスターと Data Lake Store との間に ID を確立するのに使用した Azure AD アプリケーションに、アクセスしようとしているファイルやフォルダーへのアクセスを持たせる必要があります。 このためには、次の手順を実行します。
@@ -137,6 +137,6 @@ Found 1 items
 `hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-wasb-distcp.md)
 * [Azure HDInsight クラスターで Data Lake Store を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

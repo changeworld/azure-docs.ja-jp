@@ -1,24 +1,24 @@
 ---
-title: "Azure Functions を使用した HDInsight 上の Kafka へのデータの送信 | Microsoft Docs"
-description: "Azure 関数を使用して HDInsight 上の Kafka にデータを書き込む方法を説明します。"
+title: Azure Functions を使用した HDInsight 上の Kafka へのデータの送信 | Microsoft Docs
+description: Azure 関数を使用して HDInsight 上の Kafka にデータを書き込む方法を説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: larryfr
-ms.openlocfilehash: c1c03cfcbcb7e0bfdb4a631b9e2ae568f0684069
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6c462f9fe5e152c82be1a2b8643ee35d260a90f6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-kafka-on-hdinsight-from-an-azure-function-app"></a>Azure 関数アプリから HDInsight 上の Kafka を使用する
 
@@ -70,7 +70,7 @@ HDInsight 上の Kafka は、Azure Virtual Network に含まれます。 ポイ�
 
 既定では、Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成はDNS サーバーがないと機能しません。これは、クライアント (Azure Functions) が仮想ネットワークの名前を解決できないためです。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーで、https://CLUSTERNAME.azurehdinsight.net に移動します。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 
@@ -82,7 +82,7 @@ HDInsight 上の Kafka は、Azure Virtual Network に含まれます。 ポイ�
 
     ![Kafka の構成リンク](./media/apache-kafka-azure-functions/select-kafka-config.png)
 
-4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__フィールドに「`kafka-env`」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-azure-functions/search-for-kafka-env.png)
 

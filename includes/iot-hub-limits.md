@@ -42,7 +42,7 @@
 
 
 > [!NOTE]
-> 現時点では、1 つの IoT Hub に接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/en-us/support/options/)にお問い合わせください。
+> 現時点では、1 つの IoT Hub に接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 IoT Hub サービスは、次のクォータを超えた場合に、要求を調整します。
 

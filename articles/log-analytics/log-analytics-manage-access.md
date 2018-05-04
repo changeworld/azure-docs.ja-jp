@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -77,14 +77,14 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 Log Analytics ワークスペースへのアクセスを制御するアクセス許可モデルは 2 種類あります。
 
 1. 従来の Log Analytics ユーザー ロール
-2. [Azure のロールベースのアクセス](../active-directory/role-based-access-control-configure.md)
+2. [Azure のロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)
 
 次の表には、各アクセス許可モデルを使用して設定できるアクセス権がまとめてあります。
 
 |                          | Log Analytics ポータル | Azure ポータル | API (PowerShell を含む) |
 |--------------------------|----------------------|--------------|----------------------------|
 | Log Analytics ユーザー ロール | [はい]                  | いいえ            | いいえ                          |
-| Azure のロールベースのアクセス  | [はい]                  | [はい]          | [はい]                        |
+| Azure のロールベースのアクセス  | [はい]                  | はい          | [はい]                        |
 
 > [!NOTE]
 > Log Analytics で使用されるアクセス許可モデルは、Log Analytics ユーザー ロールから Azure のロールベースのアクセスに移行しつつあります。
@@ -104,7 +104,7 @@ Log Analytics ワークスペースへのアクセスを制御するアクセス
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics へのアクセスの管理
-Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」の手順に従ってください。
+Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」の手順に従ってください。
 
 Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー ロールがあります。
 - Log Analytics 閲覧者
@@ -156,7 +156,7 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 - リソース グループ - リソース グループ内のすべてのワークスペースへのアクセス
 - リソース - 指定されたワークスペースのみへのアクセス
 
-必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md)を使用します。
+必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../role-based-access-control/custom-roles.md)を使用します。
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure のユーザー ロールと Log Analytics ポータルのユーザー ロール
 少なくとも Log Analytics ワークスペースに対する Azure の読み取りアクセス許可があれば、Log Analytics ワークスペースを表示する際に **[OMS ポータル]** タスクをクリックして、OMS ポータルを開くことができます。
@@ -174,11 +174,11 @@ OMS ポータルのロールの割り当ては、次のように決まります�
 | クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にある | 管理者 | 通常は CSP の顧客 |
 | クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にない | Contributor | 通常は CSP |
 
-<sup>1</sup> ロール定義の詳細については、[Azure のアクセス許可](../active-directory/role-based-access-control-custom-roles.md)に関するページを参照してください。 ロールの評価時に `*` の操作は `Microsoft.OperationalInsights/workspaces/*` と同等ではありません。
+<sup>1</sup> ロール定義の詳細については、[Azure のアクセス許可](../role-based-access-control/custom-roles.md)に関するページを参照してください。 ロールの評価時に `*` の操作は `Microsoft.OperationalInsights/workspaces/*` と同等ではありません。
 
 Azure Portal に関して留意が必要ないくつかの点:
 
-* http://mms.microsoft.com を使用して OMS ポータルにサインインした場合、**[ワークスペースの選択]** 一覧が表示されます。 この一覧には、Log Analytics ユーザー ロールを付与されているワークスペースのみが表示されます。 Azure サブスクリプションを使用してアクセスするワークスペースを表示するには、URL の一部としてテナントを指定する必要があります。 たとえば、「`mms.microsoft.com/?tenant=contoso.com`」のように入力します。 テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
+* http://mms.microsoft.com を使用して OMS ポータルにサインインすると、**[ワークスペースを選択します]** 一覧が表示されます。 この一覧には、Log Analytics ユーザー ロールを付与されているワークスペースのみが表示されます。 Azure サブスクリプションを使用してアクセスするワークスペースを表示するには、URL の一部としてテナントを指定する必要があります。 たとえば、「`mms.microsoft.com/?tenant=contoso.com`」のように入力します。 テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
 * Azure のアクセス許可を使用してアクセスできるポータルに直接移動する場合は、URL の一部としてリソースを指定する必要があります。 この URL は PowerShell を使用して取得できます。
 
   たとえば、「`(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`」のように入力します。
@@ -207,7 +207,7 @@ Azure Portal に関して留意が必要ないくつかの点:
      >
      >
 4. 追加するユーザーまたはグループの種類を **[管理者]**、**[共同作成者]**、**[読み取り専用ユーザー]** の中から選択します。  
-5. **[追加]**をクリックします。
+5. **[追加]** をクリックします。
 
    Microsoft アカウントを追加する場合は、指定したメールに、ワークスペースへの招待が送信されます。 ユーザーは招待に記載されている手順に従って OMS に参加すると、そのワークスペースにアクセスできるようになります。
    組織のアカウントを追加すると、ユーザーは Log Analytics にすぐにアクセスできます。  
@@ -243,7 +243,7 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 2. **[ユーザー/グループの選択]** で **[グループ]** を選択します。  
    ![add a group to an existing workspace](./media/log-analytics-manage-access/add-group.png)
 3. 追加するグループの表示名または電子メール アドレスを入力します。
-4. 一覧結果でグループを選択し、 **[追加]**をクリックします。
+4. 一覧結果でグループを選択し、 **[追加]** をクリックします。
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>既存のワークスペースを Azure サブスクリプションへリンクする
 2016 年 9 月 26 日より後に作成されたすべてのワークスペースは、作成時に Azure サブスクリプションにリンクする必要があります。 この日付より前に作成されたワークスペースは、サインインするときにサブスクリプションにリンクする必要があります。 Azure Portal からワークスペースを作成するか、Azure サブスクリプションにワークスペースをリンクすると、Azure Active Directory は組織のアカウントとしてリンクされます。
@@ -259,11 +259,11 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Azure Portal でワークスペースを Azure サブスクリプションにリンクするには
 1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. **[Log Analytics]** を探して選択します。
-3. 既存のワークスペースの一覧が表示されます。 **[追加]**をクリックします。  
+3. 既存のワークスペースの一覧が表示されます。 **[追加]** をクリックします。  
    ![ワークスペースの一覧](./media/log-analytics-manage-access/manage-access-link-azure01.png)
 4. **[OMS Workspace (OMS ワークスペース)]** で、**[Or link existing (または既存のリンク)]** をクリックします。  
    ![既存をリンクする](./media/log-analytics-manage-access/manage-access-link-azure02.png)
-5. **[必要な設定の構成]**をクリックします。  
+5. **[必要な設定の構成]** をクリックします。  
    ![configure required settings](./media/log-analytics-manage-access/manage-access-link-azure03.png)
 6. ユーザーの Azure アカウントにまだリンクされていないワークスペースの一覧が表示されます。 ワークスペースを選択します。  
    ![ワークスペースを選択する](./media/log-analytics-manage-access/manage-access-link-azure04.png)

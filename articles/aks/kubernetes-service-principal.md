@@ -1,23 +1,23 @@
 ---
-title: "Azure Kubernetes クラスターのサービス プリンシパル"
-description: "AKS で Kubernetes クラスターの Azure Active Directory サービス プリンシパルを作成および管理します"
+title: Azure Kubernetes クラスターのサービス プリンシパル
+description: AKS で Kubernetes クラスターの Azure Active Directory サービス プリンシパルを作成および管理します
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: get-started-article
-ms.date: 02/24/2018
+ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7c80b64a33f4f71c694f80bf3e68f39ecd01828
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Azure Container Service (AKS) でのサービス プリンシパル
 
-AKS クラスターには、Azure API と対話するための [Azure Active Directory サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、[ユーザー定義のルート][user-defined-routes]や[レイヤー 4 の Azure Load Balancer][azure-load-balancer-overview] などのリソースを動的に管理するために必要です。
+AKS クラスターには、Azure API と対話するための [Azure Active Directory サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、[Azure Load Balancer][azure-load-balancer-overview] などのリソースを動的に作成および管理するために必要です。
 
 この記事では、AKS で Kubernetes クラスターのサービス プリンシパルを設定するためのさまざまなオプションを紹介します。
 
@@ -80,9 +80,9 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 
 * Kubernetes のサービス プリンシパルは、クラスター構成の一部です。 ただし、クラスターのデプロイに ID を使用しないでください。
 * すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば `https://www.contoso.org/example`) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
-* サービス プリンシパルの**クライアント ID** を指定する場合、この記事で示したように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用することができます。
+* サービス プリンシパルの**クライアント ID** を指定する場合は、この記事で示すように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用してください。
 * Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます。
-* `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/acsServicePrincipal.json` ファイルに書き込まれます。
+* `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
 * `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 `az ad sp delete --id $clientID` を使用して削除してください。
 
 ## <a name="next-steps"></a>次の手順

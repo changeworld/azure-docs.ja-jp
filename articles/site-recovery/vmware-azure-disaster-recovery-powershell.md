@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: bsiva
-ms.openlocfilehash: cbb76aafe97e9e9b45c48a2b13bd1a6566b51fa5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2a0f183770a07cd05963e88c672452cfeb80e567
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM を Azure にレプリケートおよびフェールオーバーする
 
@@ -42,10 +42,10 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure サブスクリプションにログインする
 
-Login-AzureRmAccount コマンドレットを使って、Azure サブスクリプションにログインします
+Connect-AzureRmAccount コマンドレットを使って、Azure サブスクリプションにログインする
 
 ```azurepowershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 VMware 仮想マシンをレプリケートする先の Azure サブスクリプションを選びます。 Get-AzureRmSubscription コマンドレットを使って、アクセスできる Azure サブスクリプションの一覧を取得します。 Select-AzureRmSubscription コマンドレットを使って、利用する Azure サブスクリプションを選びます。
 

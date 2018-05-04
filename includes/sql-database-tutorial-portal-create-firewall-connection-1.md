@@ -4,7 +4,7 @@
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
-Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](../articles/sql-database/sql-database-service-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](../articles/sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](../articles/sql-database/sql-database-service-tiers-dtu.md)を使って作成されます。 データベースは、[Azure リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](../articles/sql-database/sql-database-features.md)内に作成されます。 
 
 空の SQL Database を作成するには、次の手順に従います。 
 
@@ -34,7 +34,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
    ![データベース サーバーの作成](../articles/sql-database/media/sql-database-design-first-database/create-database-server.png)
 
-5. **[選択]**をクリックします。
+5. **[選択]** をクリックします。
 
 6. **[価格レベル]** をクリックして、サービス レベル、DTU 数、ストレージの容量を指定します。 DTU の量とストレージの容量に関して、サービス レベルごとに利用できるオプションを調べます。 
 

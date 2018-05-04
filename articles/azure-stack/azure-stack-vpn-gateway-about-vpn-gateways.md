@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack の VPN ゲートウェイについて | Microsoft Docs"
-description: "Azure Stack で使用する VPN ゲートウェイと、その構成について説明します。"
+title: Azure Stack の VPN ゲートウェイについて | Microsoft Docs
+description: Azure Stack で使用する VPN ゲートウェイと、その構成について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ba9642d8c51f57623aded44b84d7127334806bc1
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 9c821f20ce5826666a05121e1a39882fae0930d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack の VPN ゲートウェイについて
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
@@ -42,7 +42,7 @@ VPN ゲートウェイは、パブリック接続で暗号化されたトラフ�
 ## <a name="configuring-a-vpn-gateway"></a>VPN ゲートウェイの構成
 VPN ゲートウェイ接続は、特定の設定で構成された複数のリソースに依存します。 ほとんどのリソースは個別に構成できますが、場合によってはある一定の順序で構成を行う必要があります。
 
-### <a name="settings"></a>[設定]
+### <a name="settings"></a>設定
 リソースごとに選択した設定は、適切な接続を作成するうえで非常に重要です。 VPN Gateway の個々のリソースと設定については、[Azure Stack の VPN ゲートウェイ設定](azure-stack-vpn-gateway-settings.md)に関するページを参照してください。 ゲートウェイの種類、VPN の種類、接続の種類、ゲートウェイ サブネット、ローカル ネットワーク ゲートウェイ、検討が必要なその他のさまざまなリソース設定を把握するために役立つ情報が記載されています。
 
 ### <a name="deployment-tools"></a>デプロイ ツール
@@ -70,8 +70,8 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ## <a name="gateway-skus"></a>ゲートウェイの SKU
 Azure Stack の仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイ SKU を指定する必要があります。 以下の VPN ゲートウェイ SKU がサポートされています。
-- 基本
-- Standard
+- Basic
+- 標準
 - HighPerformance
 
 Basic より Standard、Standard または Basic より HighPerformance というように、より上位のゲートウェイ SKU を選択すると、より多くの CPU とネットワーク帯域幅がゲートウェイに割り当てられます。 その結果、ゲートウェイは、仮想ネットワークに対してより高いネットワーク スループットをサポートできます。
@@ -87,13 +87,14 @@ SKU の選択にあたっては、以下の事項を考慮してください。
 ## <a name="estimated-aggregate-throughput-by-sku"></a>SKU の予測される合計スループット
 次の表は、ゲートウェイの種類と、ゲートウェイ SKU によって予測される合計スループットを示したものです。
 
-|   | VPN Gateway のスループット *(1)* |VPN Gateway の IPsec トンネルの最大数 |
+|   | VPN Gateway のスループット *(1)* | VPN Gateway の IPsec トンネルの最大数 *(2)* |
 |-------|-------|-------|
-|**Basic SKU** ***(2)***    | 100 Mbps  | 10    |
+|**Basic SKU** ***(3)***    | 100 Mbps  | 10    |
 |**Standard SKU**       | 100 Mbps  | 10    |
-|**高性能 SKU** | 200 Mbps    | 30    |
+|**高性能 SKU** | 200 Mbps    | 5 |
 ***(1)*** インターネット経由でのクロスプレミス接続では、VPN スループットが保証されるわけではありません。 この値は、達成可能な最大スループットです。  
-***(2)*** BGP は、Basic SKU ではサポートされていません。
+***(2)*** トンネルの最大数は、すべてのサブスクリプションの Azure Stack デプロイの合計です。
+***(3)*** BGP は、Basic SKU ではサポートされていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Stack 用の [VPN ゲートウェイの設定](azure-stack-vpn-gateway-settings.md)について学習します。

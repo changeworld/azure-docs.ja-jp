@@ -187,6 +187,10 @@
           href: web-sites-create-web-jobs.md
         - name: VS を使用した Web ジョブの開発
           href: websites-dotnet-deploy-webjobs.md
+        - name: WebJobs SDK の概要
+          href: webjobs-sdk-get-started.md
+        - name: WebJobs SDK の使用
+          href: webjobs-sdk-how-to.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -253,6 +257,8 @@
           href: app-service-web-troubleshoot-http-502-http-503.md
         - name: パフォーマンスに関する問題のトラブルシューティング
           href: app-service-web-troubleshoot-performance-degradation.md
+        - name: ドメインと証明書に関する問題のトラブルシューティング
+          href: app-service-web-troubleshoot-domain-ssl-certificates.md
         - name: FAQ
           items:
             - name: 可用性、パフォーマンス、アプリケーションに関する FAQ

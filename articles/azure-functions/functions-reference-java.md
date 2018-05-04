@@ -23,7 +23,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="programming-model"></a>プログラミング モデル 
 
-開発する Azure 関数は、入力を処理し出力を生成するステートレスなクラス メソッドである必要があります。 インスタンス メソッドを記述できますが、開発する関数は、クラスのインスタンス フィールドに依存することはできません。 すべての関数のメソッドには、`public` アクセス修飾子が必要です。
+開発する Azure 関数は、入力を処理し出力を生成するステートレスなクラス メソッドである必要があります。 インスタンスのメソッドを記述できますが、開発する関数は、クラスのインスタンス フィールドに依存することはできません。 すべての関数のメソッドには、`public` アクセス修飾子が必要です。
 
 ## <a name="triggers-and-annotations"></a>トリガーと注釈
 
@@ -118,9 +118,9 @@ public class MyData {
 }
 ```
 
-### <a name="binary-data"></a>バイナリデータ
+### <a name="binary-data"></a>バイナリ データ
 
-バイナリデータは、Azure 関数コードでは `byte[]` と表わされます。 バイナリの入力または出力を関数にバインドするには、function.json の `dataType` フィールドを `binary` に設定します。
+バイナリ データは、Azure 関数コードでは `byte[]` と表わされます。 バイナリの入力または出力を関数にバインドするには、function.json の `dataType` フィールドを `binary` に設定します。
 
 ```json
  {
@@ -150,13 +150,13 @@ public static String echoLength(byte[] content) {
 バイナリ出力をバインドするには、`OutputBinding<byte[]>` 型を使用します。
 
 
-## <a name="function-method-overloading"></a>関数のメソッドのオーバーロード
+## <a name="function-method-overloading"></a>関数のメソッドのオーバー ロード
 
 関数のメソッドは、名前は同じだが型は異なるものでオーバーロードできます。 たとえば、1 つのクラスに `String echo(String s)` と `String echo(MyType s)` を設定でき、どちらを呼び出すかは、実際の入力の型を調べることで Azure Functions ランタイムが決定します (HTTP 入力では MIME の種類 `text/plain` は `String` になり、`application/json` は `MyType` を表します)。
 
 ## <a name="inputs"></a>入力
 
-Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 `function.json` ではこれらは同じではありませんが、Java コードでは同じように使用されます。 次のコードスニペットを例として使用します。
+Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 `function.json` ではこれらは同じではありませんが、Java コードでは同じように使用されます。 次のコード スニペットを例として使用します。
 
 ```java
 package com.example;
@@ -305,7 +305,7 @@ Azure Functions 実行環境との対話は、`azure-functions-java-core` パッ
 
 ### <a name="logging"></a>ログの記録
 
-`ExecutionContext` オブジェクトを介して Functions ランタイムロガーにアクセスできます。 このロガーは、Azure モニターに関連付けられているため、関数の実行中に発生した警告とエラーのフラグを設定できます。
+`ExecutionContext` オブジェクトを介して Functions ランタイム ロガーにアクセスできます。 このロガーは、Azure モニターに関連付けられているため、関数の実行中に発生した警告とエラーのフラグを設定できます。
 
 次のコード例は、受信した要求の本文が空の場合に警告メッセージをログに記録します。
 
@@ -327,7 +327,7 @@ public class Function {
 
 セキュリティ上の理由で、ソースコードから機密な情報を取り除くことがしばしば求められます。 これにより、資格情報を他の開発者に誤って露出することなく、コードをソースコードリポジトリに発行できます。 これは、Azure Functions をローカルで実行する場合と、Azure に関数をデプロイする場合の両方で環境変数を使用することによって簡単に実現できます。
 
-Azure Functions をローカルに実行する場合に環境変数を手早く設定するには、これらの変数を local.settings.json ファイルに追加することができます。 このファイルが関数プロジェクトのルートディレクトリに存在しない場合は、自由に作成することができます。 このファイルは次のようになります。
+Azure Functions をローカルに実行する場合に環境変数を容易に設定するには、これらの変数を local.settings.json ファイルに追加することを選択できます。 このファイルが関数プロジェクトのルート ディレクトリに存在しない場合は、これを自由に作成できます。 このファイルは次のようになります。
 
 ```xml
 {
@@ -339,7 +339,7 @@ Azure Functions をローカルに実行する場合に環境変数を手早く�
 }
 ```
 
-`values` マップ内の各キー/値のマッピングは、`System.getenv("<keyname>")` を呼び出すことによってアクセスできる環境変数として実行時に使用可能になります (たとえば、`System.getenv("AzureWebJobsStorage")`)。 キー/値のペアの追加は認められており、そのような手法が推奨されています。
+`values` マップ内の各キー/値のマッピングは、`System.getenv("<keyname>")` を呼び出すことによってアクセスできる環境変数として実行時に使用可能になります (たとえば、`System.getenv("AzureWebJobsStorage")`)。 キー/値のペアの追加は許容され、それが推奨される手法です。
 
 > [!NOTE]
 > この方法を実行する場合は、local.settings.json ファイルをリポジトリの無視ファイルに追加して、それがコミットされないように考慮してください。

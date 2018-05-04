@@ -1,8 +1,8 @@
 ---
-title: "OMS Log Analytics での Nagios と Zabbix のアラートの収集 | Microsoft Docs"
-description: "Nagios と Zabbix は、オープン ソースの監視ツールです。 他のソースからのアラートと共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。"
+title: OMS Log Analytics での Nagios と Zabbix のアラートの収集 | Microsoft Docs
+description: Nagios と Zabbix は、オープン ソースの監視ツールです。 他のソースからのアラートと共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -12,27 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>OMS Agent for Linux の Log Analytics で Nagios と Zabbix からのアラートを収集する 
-[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。  [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
+[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
  
+## <a name="prerequisites"></a>前提条件
+OMS エージェント for Linux は、Nagios バージョン 4.2.x までと Zabbix バージョン 2.x までのアラートの収集をサポートします。
+
 ## <a name="configure-alert-collection"></a>アラート収集を構成する
 
 ### <a name="configuring-nagios-alert-collection"></a>Nagios のアラート収集の構成
 アラートを収集するには、Nagios サーバー上で次の手順を実行します。
 
-1. ユーザー **omsagent** に Nagios ログ ファイル (つまり、`/var/log/nagios/nagios.log`) への読み取りアクセス権を付与します。 nagios.log ファイルがグループ `nagios` によって所有されていると仮定すると、ユーザー **omsagent** を **nagios** グループに追加できます。 
+1. ユーザー **omsagent** に Nagios ログ ファイル (`/var/log/nagios/nagios.log`) への読み取りアクセス権を付与します。 nagios.log ファイルがグループ `nagios` によって所有されていると仮定すると、ユーザー **omsagent** を **nagios** グループに追加できます。 
 
     sudo usermod -a -G nagios omsagent
 
-2.  (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) にある構成ファイルを変更します。 次のエントリが存在し、コメント アウトされていないことを確認します。  
+2.  `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある構成ファイルを変更します。 次のエントリが存在し、コメント アウトされていないことを確認します。  
 
         <source>  
           type tail  
@@ -53,11 +56,11 @@ ms.lasthandoff: 10/11/2017
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Zabbix のアラート収集の構成
-Zabbix サーバーからのアラートを収集するには、ユーザーとパスワードを*クリア テキスト*で指定する必要があります。 これは最適ではありませんが、ユーザーを作成し、監視のみのアクセス許可を付与することをお勧めします。
+Zabbix サーバーからのアラートを収集するには、ユーザーとパスワードを*クリア テキスト*で指定する必要があります。  これは最適ではありませんが、ユーザーを作成し、監視のみのアクセス許可を付与することをお勧めします。
 
 アラートを収集するには、Nagios サーバー上で次の手順を実行します。
 
-1. (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`) にある構成ファイルを変更します。 次のエントリが存在し、コメント アウトされていないことを確認します。ユーザー名とパスワードを Zabbix 環境の値に変更します。
+1. `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` にある構成ファイルを変更します。 次のエントリが存在し、コメント アウトされていないことを確認します。ユーザー名とパスワードを Zabbix 環境の値に変更します。
 
         <source>
          type zabbix_alerts
@@ -80,9 +83,9 @@ Log Analytics で[ログ検索](log-analytics-log-searches.md)を使用して、
 
 Nagios によって収集されたアラート レコードには、**アラート**の**種類**と **Nagios** の **SourceSystem** があります。  これらのレコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |*アラート:* |
+| type |*アラート:* |
 | SourceSystem |*Nagios* |
 | AlertName |アラートの名前。 |
 | AlertDescription | アラートの説明。 |
@@ -96,9 +99,9 @@ Nagios によって収集されたアラート レコードには、**アラー�
 ### <a name="zabbix-alert-records"></a>Zabbix のアラート レコード
 Zabbix によって収集されたアラート レコードには、**アラート**の**種類**と **Zabbix** の **SourceSystem** があります。  これらのレコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |*アラート:* |
+| type |*アラート:* |
 | SourceSystem |*Zabbix* |
 | AlertName | アラートの名前。 |
 | AlertPriority | アラートの重大度。<br><br>未分類<br>情報<br>警告<br>average<br>高<br>障害  |
@@ -111,6 +114,6 @@ Zabbix によって収集されたアラート レコードには、**アラー�
 | TimeLastModified |アラートの状態が最後に変更された日付と時刻。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Log Analytics での[アラート](log-analytics-alerts.md)について学習します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 

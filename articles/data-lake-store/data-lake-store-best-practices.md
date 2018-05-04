@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store を使用するためのベスト プラクティス
 この記事では、Azure Data Lake Store の操作に関するベスト プラクティスと考慮事項について説明します。 この記事では、Data Lake Store のセキュリティ、パフォーマンス、回復性、監視に関連する情報を取り上げます。 Data Lake Store が登場するまで、Azure HDInsight などのサービスで大規模なビッグデータを取り扱うことは大変な作業でした。 ペタバイト クラスのストレージとそのスケールでの最適なパフォーマンスを達成できるように、複数の Blob Storage アカウント間でデータをシャードする必要がありました。 Data Lake Store では、サイズやパフォーマンスに関するほとんどのハード制限が取り除かれています。 ただし、Data Lake Store で最適なパフォーマンスを得るための考慮事項がまだいくつか残っています。この記事ではそれについて取り上げます。 
@@ -26,11 +26,13 @@ ms.lasthandoff: 04/05/2018
 
 Azure Data Lake Store には、POSIX アクセス制御と Azure Active Directory (Azure AD) のユーザー、グループ、およびサービス プリンシパルの詳細な監査が用意されています。 これらのアクセス制御は既存のファイルやフォルダーに設定できます。 アクセス制御は、新しいファイルやフォルダーに適用できる既定値を作成するためにも使用できます。 既存のフォルダーや子オブジェクトにアクセス許可が設定されると、そのアクセス許可は各オブジェクトに再帰的に伝達される必要があります。 ファイルの数が多い場合、アクセス許可の伝達に時間がかかることがあります。 1 秒に 30 ～ 50 オブジェクトが処理されます。 このため、フォルダー構造とユーザー グループは適切に計画する必要があります。 計画しないと、データを操作するときに予期しない遅延や問題が発生することがあります。 
 
-あるフォルダーに 100,000 の子オブジェクトがあるとします。 1 秒に下限の 30 オブジェクトが処理されると仮定すると、全フォルダーのアクセス許可の更新には 1 時間かかります。 Data Lake Store の ACL の詳細は、「[Azure Data Lake Store のアクセス制御](data-lake-store-access-control.md)」で確認できます。 ACL を再帰的に割り当てるパフォーマンスを改善するには、Azure Data Lake のコマンドライン ツールを使用します。 ツールは複数のスレッドと再帰的なナビゲーション ロジックを作成し、数百万のファイルに ACL を短時間で適用します。 ツールは Linux と Windows で使用できます。このツールの[ドキュメント](https://github.com/Azure/data-lake-adlstool)や[ダウンロード](http://aka.ms/adlstool-download)は GitHub に用意されています。
+あるフォルダーに 100,000 の子オブジェクトがあるとします。 1 秒に下限の 30 オブジェクトが処理されると仮定すると、全フォルダーのアクセス許可の更新には 1 時間かかります。 Data Lake Store の ACL の詳細は、「[Azure Data Lake Store のアクセス制御](data-lake-store-access-control.md)」で確認できます。 ACL を再帰的に割り当てるパフォーマンスを改善するには、Azure Data Lake のコマンドライン ツールを使用します。 ツールは複数のスレッドと再帰的なナビゲーション ロジックを作成し、数百万のファイルに ACL を短時間で適用します。 ツールは Linux と Windows で使用できます。このツールの[ドキュメント](https://github.com/Azure/data-lake-adlstool)や[ダウンロード](http://aka.ms/adlstool-download)は GitHub に用意されています。 以上と同じパフォーマンス改善が、Data Lake Store [.NET](data-lake-store-data-operations-net-sdk.md) と [Java](data-lake-store-get-started-java-sdk.md) SDK で記述された独自のツールで可能です。
 
 ### <a name="use-security-groups-versus-individual-users"></a>セキュリティ グループの使用と個々のユーザーの違い 
 
-Data Lake Store でビッグデータを取り扱うときは、サービス プリンシパルを使用して、Azure HDInsight などのデータを操作するサービスを許可することがほとんどです。 ただし、個々のユーザーがデータにアクセスする必要がある場合もあります。 このようなケースでは、個々のユーザーをフォルダーやファイルに割り当てる代わりに、Azure Active Directory のセキュリティ グループを使用する必要があります。 一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Store を更新することなくグループへのユーザーの追加と削除を行うことができます。 
+Data Lake Store でビッグデータを取り扱うときは、サービス プリンシパルを使用して、Azure HDInsight などのデータを操作するサービスを許可することがほとんどです。 ただし、個々のユーザーがデータにアクセスする必要がある場合もあります。 このようなケースでは、個々のユーザーをフォルダーやファイルに割り当てる代わりに、Azure Active Directory の[セキュリティ グループ](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)を使用する必要があります。 
+
+一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Store を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-subscription-service-limits.md#data-lake-store-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask-and-effective-permissions)、その他) が含まれます。
 
 ### <a name="security-for-groups"></a>グループのセキュリティ 
 

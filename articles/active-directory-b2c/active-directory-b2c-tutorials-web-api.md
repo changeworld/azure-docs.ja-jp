@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory B2C を使用した ASP.NET Web API の保護に関するチュートリアル
+title: チュートリアル - Azure Active Directory B2C を使用して Web アプリから ASP.NET Web API へのアクセスを許可する | Microsoft Docs
 description: Active Directory B2C を使用して ASP.NET Web API を保護し、ASP.NET Web アプリからそれを呼び出す方法に関するチュートリアル
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 editor: ''
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>チュートリアル: Azure Active Directory B2C を使用して ASP.NET Web API を保護する
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Web アプリから ASP.NET Web API へのアクセスを許可する
 
 このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された Web API リソースを ASP.NET Web アプリから呼び出す方法について説明します。
 
@@ -45,7 +45,7 @@ Azure AD B2C テナントの全体管理者として、[Azure Portal](https://po
 
 1. Azure Portal のサービス一覧から **[Azure AD B2C]** を選択します。
 
-2. B2C の設定で **[アプリケーション]** をクリックし、**[+ 追加]** をクリックします。
+2. B2C の設定で、**[アプリケーション]** をクリックし、**[追加]** をクリックします。
 
     テナントにサンプル Web API を登録するには、以下の設定を使用します。
     
@@ -89,11 +89,13 @@ API のスコープを構成するには、次のエントリを追加します�
 | **スコープ** | Hello.Read | Hello への読み取りアクセス |
 | **スコープ** | Hello.Write | Hello への書き込みアクセス |
 
+**[Save]** をクリックします。
+
 公開済みスコープを使用すると、クライアント アプリに Web API へのアクセス許可を付与することができます。
 
 ### <a name="grant-app-permissions-to-web-api"></a>Web API へのアクセス許可をアプリに付与する
 
-保護された Web API をアプリから呼び出すには、その API へのアクセス許可をアプリに付与する必要があります。 
+保護された Web API をアプリから呼び出すには、その API へのアクセス許可をアプリに付与する必要があります。 このチュートリアルでは、[ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成した Web アプリを使用します。 
 
 1. Azure Portal で、サービスの一覧から **[Azure AD B2C]** を選択し、**[アプリケーション]** をクリックして登録済みアプリの一覧を表示します。
 
@@ -109,7 +111,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 **My Sample Web App** は、保護された **My Sample Web API** を呼び出すために登録されています。 ユーザーは、この Web アプリを使用するために Azure AD B2C で[認証](../active-directory/develop/active-directory-dev-glossary.md#authentication)を行います。 Web アプリは、保護された Web API にアクセスするために、Azure AD B2C から[承認付与](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant)を取得します。
 
-## <a name="update-web-api-code"></a>Web API コードの更新
+## <a name="update-code"></a>コードの更新
 
 Web API が登録され、スコープを定義したら、Azure AD B2C テナントを使用するように Web API コードを構成する必要があります。 このチュートリアルでは、サンプル Web API を構成します。 
 
@@ -137,11 +139,11 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 
 3. API の URI を構成します。 これは、Web アプリが API 要求を行うために使用する URI です。 また、要求されたアクセス許可を構成します。
 
-```C#
-<add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
-<add key="api:ReadScope" value="Hello.Read" />
-<add key="api:WriteScope" value="Hello.Write" />
-```
+    ```C#
+    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
+    <add key="api:ReadScope" value="Hello.Read" />
+    <add key="api:WriteScope" value="Hello.Write" />
+    ```
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
@@ -162,7 +164,7 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 4. サインアップおよびサインイン ポリシーの作成時に生成された名前で、ポリシーの設定を更新します。
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
     ```
 
 5. ポータルで作成したものと一致するようにスコープの設定を構成します。
@@ -172,7 +174,7 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
     <add key="api:WriteScope" value="Hello.Write" />
     ```
 
-## <a name="run-the-sample-web-app-and-web-api"></a>サンプル Web アプリと Web API の実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 **TaskWebApp** プロジェクトと **TaskService** プロジェクトの両方を実行する必要があります。 
 

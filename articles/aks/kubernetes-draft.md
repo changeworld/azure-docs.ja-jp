@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Draft の使用
 
@@ -33,10 +33,10 @@ Helm も AKS クラスターにインストールする必要があります。 
 
 ## <a name="install-draft"></a>Draft のインストール
 
-Draft CLI は、開発システムで実行され、Kubernetes クラスターへのコードの迅速なデプロイを可能にするクライアントです。 
+Draft CLI は、開発システムで実行され、Kubernetes クラスターへのコードの迅速なデプロイを可能にするクライアントです。
 
-> [!NOTE] 
-> バージョン 0.12 以前の Draft をインストールしている場合、`helm delete --purge draft` を使ってクラスターから Draft を削除してから、`rm -rf ~/.draft` を実行してローカルの構成を削除してください。 MacOS の場合は、`brew upgrade draft` を実行できます。
+> [!NOTE]
+> バージョン 0.12 以前の Draft をインストールしている場合、`helm delete --purge draft` を使ってクラスターから Draft を削除してから、`rm -rf ~/.draft` を実行してローカルの構成を削除してください。 MacOS の場合は、`brew upgrade draft` を実行します。
 
 Draft CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、[Draft のインストール ガイド][install-draft]をご覧ください。
 
@@ -70,10 +70,10 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 ### <a name="configure-draft-to-push-to-and-deploy-from-acr"></a>ACR にプッシュされ ACR からデプロイされるように Draft を構成する
 
 AKS と ACR 間の信頼関係を確立したら、次の手順に従って AKS クラスターからの ACR の使用を有効にします。
-1. Draft 構成 `registry` の値を `draft config set registry <registry name>.azurecr.io` を実行して設定します。ここで、_&lt;レジストリ名前&lt;_は ACR レジストリの名前です。
-2. `az acr login -n <registry name>` を実行して ACR レジストリにログオンします。 
+1. Draft 構成 `registry` の値を `draft config set registry <registry name>.azurecr.io` を実行して設定します。ここで、_&lt;レジストリ名前&lt;_ は ACR レジストリの名前です。
+2. `az acr login -n <registry name>` を実行して ACR レジストリにログオンします。
 
-ACR に現在ローカルにログオンし、AKS と ACR に信頼関係を作成したため、ACR から AKS へのプッシュまたはプルにはパスワードまたはシークレットは必要ありません。 認証は、Azure Active Directory を使用して Azure Resource Manager レベルで実行されます。 
+ACR に現在ローカルにログオンし、AKS と ACR に信頼関係を作成したため、ACR から AKS へのプッシュまたはプルにはパスワードまたはシークレットは必要ありません。 認証は、Azure Active Directory を使用して Azure Resource Manager レベルで実行されます。
 
 ## <a name="run-an-application"></a>アプリケーションの実行
 
@@ -143,7 +143,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-次に、http://localhost:46143 を参照してアプリケーションをテストできます (前の例の場合。ポートが異なる場合もあります)。 アプリケーションのテストが完了したら、`Control+C` を使用してプロキシ接続を停止します。
+次に、http://localhost:46143 を参照してアプリケーションをテストします (前の例の場合。ポートが異なる場合もあります)。 アプリケーションのテストが完了したら、`Control+C` を使用してプロキシ接続を停止します。
 
 > [!NOTE]
 > `draft up --auto-connect` コマンドを使用して、アプリケーションをビルドしてデプロイし、最初に実行されるコンテナーに直ちに接続して反復サイクルを高速化することもできます。

@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/09/2018
+ms.date: 04/06/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: de04253a51d30885e936cb65a1925df4e5e96eaf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dad9866a3d61421987bc4a62057498e004f65e7f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する
-このチュートリアルでは、カスタム ドメインを Azure CDN エンドポイントに追加する方法について説明します。 CDN エンドポイントを使用してコンテンツを配信するときに独自のドメイン名を CDN URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。 
+このチュートリアルでは、カスタム ドメインを Azure Content Delivery Network (CDN) エンドポイントに追加する方法について説明します。 CDN エンドポイントを使用してコンテンツを配信するときに独自のドメイン名を CDN URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。 
 
 プロファイルに CDN エンドポイントを作成すると、azureedge.net のサブドメインであるエンドポイント名が、CDN コンテンツを配信するための URL に既定で含まれます (たとえば、https:\//contoso.azureedge.net/photo.png)。 便宜を図るため、Azure CDN には、カスタム ドメインを CDN エンドポイントと関連付けるオプションが用意されています。 このオプションを使用すると、URL にエンドポイント名の代わりにカスタム ドメインを使用してコンテンツを配信できます (たとえば、https:\//www.contoso.com/photo.png)。 
 
@@ -49,7 +49,8 @@ Azure を使用して [DNS ドメイン](https://docs.microsoft.com/azure/dns/dn
 
 カスタム ドメインとそのサブドメインは、一度に 1 つのエンドポイントにのみ関連付けることができます。 ただし、複数の CNAME レコードを使用して、異なる Azure サービス エンドポイントに対して同じカスタム ドメインの異なるサブドメインを使用することができます。 また、異なるサブドメインがあるカスタム ドメインを同じ CDN エンドポイントにマップすることもできます。
 
-## <a name="map-temporary-cdnverify-subdomain"></a>一時 cdnverify サブドメインをマップする
+
+## <a name="map-the-temporary-cdnverify-subdomain"></a>一時 cdnverify サブドメインをマップする
 
 運用環境にある既存のドメインをマップする場合、特別な考慮事項があります。 Azure Portal にカスタム ドメインを登録している間、ドメインが短時間ダウンする場合があります。 Web トラフィックの中断を避けるには、Azure cdnverify サブドメインを含む CDN エンドポイント ホスト名にカスタム ドメインをマップして、一時的な CNAME マッピングを作成します。 この方法を使用すると、ユーザーは、DNS マッピングの実行中に中断することなくドメインにアクセスできます。 
 
@@ -122,7 +123,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
    ![CDN カスタム ドメイン ダイアログ](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-5. **[追加]**を選択します。
+5. **[追加]** を選択します。
 
    入力したカスタム ドメイン名に対する CNAME レコードが存在するかどうかが Azure によって確認されます。 CNAME が正しければ、カスタム ドメインが検証されます。 CNAME レコードがネーム サーバーに伝播するまでしばらく時間がかかる場合があります。 ドメインがすぐに認証されない場合は、CNAME レコードが正しいことを確認して、数分間待ってからやり直してください。 **Azure CDN from Verizon** エンドポイントの場合、カスタム ドメインの設定がすべての CDN エッジ ノードに反映されるまでに最大 90 分かかることがあります。  
 
@@ -135,7 +136,8 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
 2. ブラウザーで、カスタム ドメインを使用してファイルのアドレスに移動します。 たとえば、カスタム ドメインが cdn.contoso.com の場合、キャッシュされたファイルの URL は http:\//cdn.contoso.com/my-public-container/my-file.jpg のようになります。
 
-## <a name="map-permanent-custom-domain"></a>永続的なカスタム ドメインをマップする
+
+## <a name="map-the-permanent-custom-domain"></a>永続的なカスタム ドメインをマップする
 
 cdnverify サブドメインがエンドポイントに正常にマップされていることを確認できた場合 (または運用環境にない新しいカスタム ドメインを使用している場合) は、カスタム ドメインを CDN エンドポイント ホスト名に直接マップできます。
 
@@ -143,7 +145,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
 1. カスタム ドメインのドメイン プロバイダーの Web サイトにログインします。
 
-2. プロバイダーの資料を調べるか、**[ドメイン名]**、**[DNS]**、または**[ネームサーバー管理]** という名前のつけられた Web サイトの領域を探して、DNS レコードを管理するためのページを見つけます。 
+2. プロバイダーの資料を調べるか、**[ドメイン名]**、**[DNS]**、または **[ネームサーバー管理]** という名前のつけられた Web サイトの領域を探して、DNS レコードを管理するためのページを見つけます。 
 
 3. カスタム ドメインの CNAME レコード エントリを作成し、次の表に示すようにフィールドを入力します (フィールド名は異なる場合があります)。
 
@@ -160,6 +162,8 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 4. 変更を保存します。
 
 5. 以前に一時 cdnverify サブドメイン CNAME レコードを作成している場合は、それを削除します。 
+
+6. このカスタム ドメインを運用環境で初めて使用する場合は、「[カスタム ドメインを CDN エンドポイントに関連付ける](#associate-the-custom-domain-with-your-cdn-endpoint)」と「[カスタム ドメインを確認する](#verify-the-custom-domain)」の手順に従います。
 
 たとえば、GoDaddy ドメイン レジストラーの場合の手順は次のとおりです。
 
@@ -192,8 +196,6 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 7. cdnverify CNAME レコードがある場合は、その横の鉛筆アイコンを選択し、ごみ箱アイコンを選択します。
 
 8. **[Delete]\(削除\)** を選択して CNAME レコードを削除します。
-
-このカスタム ドメインを運用環境で初めて使用する場合は、「[カスタム ドメインを CDN エンドポイントに関連付ける](#associate-the-custom-domain-with-your-cdn-endpoint)」と「[カスタム ドメインを確認する](#verify-the-custom-domain)」の手順に従います。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

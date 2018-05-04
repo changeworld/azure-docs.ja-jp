@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB を Azure Storage Explorer で管理する
 
@@ -76,7 +76,7 @@ Azure Cosmos DB に接続する別の方法では、接続文字列を使用し�
 
 Azure Cosmos DB にエミュレーターで接続するには次の手順を使用します。現在は、SQL アカウントのみサポートします。
 
-1. エミュレーターをインストールして、起動します。 エミュレーターのインストール方法については、[Cosmos DB エミュレーター](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)に関するページを参照してください。
+1. エミュレーターをインストールして、起動します。 エミュレーターのインストール方法については、[Cosmos DB エミュレーター](https://docs.microsoft.com/azure/cosmos-db/local-emulator)に関するページを参照してください。
 
 2. 左側のツリーで **[Local and Attached]\(ローカルおよびアタッチ済み\)** を見つけ、**[Connect to Cosmos DB Emulator]\(Cosmos DB エミュレーターに接続\)** を右クリックして、**[Connect to Cosmos DB]\(Cosmos DB に接続\)** を選択します。
 
@@ -210,7 +210,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-[Azure Storage Explorer の Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) は、Windows、macOS、または Linux から、Azure およびソブリン クラウドでホストされている Azure Cosmos DB アカウントに接続できるスタンドアロン アプリです。 これを使用すると、ストレージ BLOB やキューなど、他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。
+[Azure Storage Explorer の Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) は、Windows、macOS、または Linux から、Azure およびソブリン クラウドでホストされている Azure Cosmos DB アカウントに接続できるスタンドアロン アプリです。 これを使用すると、ストレージ BLOB やキューなど、他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。
 
 これらは、Storage Explorer の Azure Cosmos DB でよく見られる問題の解決策です。
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b304a198ce1791a14094eea4cad3b6de870c80ce
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: df0b578448e1f943d45233f7d36ebf4b9cb09fad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>チュートリアル: Azure Active Directory と SafetyNet の統合
 
@@ -117,33 +117,17 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
     **[サインオン URL]** ボックスに、`https://<subdomain>.predictivesolutions.com` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SafetyNet クライアント サポート チーム](mailto:dev@predictivesolutions.com)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SafetyNet クライアント サポート チーム](mailto:dev@predictivesolutions.com)に問い合わせてください。
 
-5. **[保存]** ボタンをクリックします。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_certificate.png)
+
+6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-safetynet-tutorial/tutorial_general_400.png)
 
-6. **メタデータ URL** を生成するには、次の手順を実行します。
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpoint.png)
-     
-    d. 次に、**SafetyNet** のプロパティ ページに移動し、**[コピー]** ボタンを使用して **[アプリケーション ID]** をコピーし、メモ帳に貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-    
-7. **SafetyNet** 側でシングル サインオンを構成するには、生成された**メタデータ URL** を [SafetyNet サポート チーム](mailto:dev@predictivesolutions.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **SafetyNet** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [SafetyNet サポート チーム](mailto:dev@predictivesolutions.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -193,7 +177,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SafetyNet]**を選択します。
+2. アプリケーションの一覧で **[SafetyNet]** を選択します。
 
     ![アプリケーションの一覧の SafetyNet のリンク](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_app.png)  
 

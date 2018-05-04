@@ -16,11 +16,11 @@ ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 25b3e47b013cbcd99a39d128cca733709b7a1bb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
 Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
@@ -168,7 +168,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | mail |任意の文字列値または *null* (ユーザーの SMTP アドレス) |(user.mail -eq "value") |
 | mailNickName |任意の文字列値 (ユーザーのメール エイリアス) |(user.mailNickName -eq "value") |
 | mobile |任意の文字列値または *null* |(user.mobile -eq "value") |
-| objectId |ユーザー オブジェクトの GUID |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| objectId |ユーザー オブジェクトの GUID |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | オンプレミスからクラウドに同期されたユーザーのオンプレミスのセキュリティ識別子 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |任意の文字列値または *null* |(user.physicalDeliveryOfficeName -eq "value") |
@@ -304,7 +304,7 @@ Azure AD 管理センターが更新されて、この機能のサポートが�
 1. グローバル管理者またはテナントのユーザー アカウントの管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 2. **[グループ]** を選びます。
 3. **[すべてのグループ]** の一覧から、変更するグループを開きます。
-4. **[プロパティ]**を選択します。
+4. **[プロパティ]** を選択します。
 5. グループの **[プロパティ]** ページで、目的のメンバーシップの種類に応じて、[割り当て済み] (静的)、[動的ユーザー]、または [動的なデバイス] の **[メンバーシップの種類]** を選びますす。 動的メンバーシップの場合は、ルール ビルダーを使って簡単なルールのオプションを選んだり、高度なルールを自分で作成したりすることができます。 
 
 次の手順は、ユーザーのグループを静的メンバーシップから動的メンバーシップに変更する例です。 

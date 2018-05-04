@@ -1,11 +1,11 @@
 ---
-title: "Mobile Services から Azure App Service (Node.js) へのアップグレード"
-description: "簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
+title: Mobile Services から Azure App Service (Node.js) へのアップグレード
+description: 簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>App Service への既存の Node.js Azure Mobile Service のアップグレード
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。
@@ -95,12 +95,12 @@ scripts ディレクトリが格納されているディレクトリから次の
 ### <a name="create-a-new-mobile-app"></a>新しい Mobile App を作成する
 1. [Azure Portal] にログインします。
 2. **[+ 新規]** > **[Web + モバイル]** > **[モバイル アプリ]** の順にクリックし、モバイル アプリ バックエンドの名前を入力します。
-3. **[リソース グループ]**で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
+3. **[リソース グループ]** で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
 
     別の App Service プランを選択するか、または新しいプランを作成することもできます。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「 [Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
-4. **[App Service プラン]**には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/app-service-plan-manage.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。
+4. **[App Service プラン]** には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/app-service-plan-manage.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。
 
-    プランを決定したら、 **[作成]**をクリックします。 モバイル アプリ バックエンドが作成されます。
+    プランを決定したら、 **[作成]** をクリックします。 モバイル アプリ バックエンドが作成されます。
 
 ### <a name="run-createviewssql"></a>CreateViews.SQL の実行
 スキャフォールディング済みのアプリには、 `createViews.sql`というファイルが存在します。  ターゲット データベースに対してこのスクリプトを実行する必要があります。  ターゲット データベースの接続文字列は、移行済みのモバイル サービスから取得できます (**[設定]** ページの **[接続文字列]**)。  名前は `MS_TableConnectionString`です。
@@ -112,7 +112,7 @@ App Service に既存のデータベースを関連付けるには、次の作�
 
 * [Azure Portal] で、App Service を開きます。
 * **[すべての設定]** -> **[データ接続]** の順に選択します。
-* **[+ 追加]**をクリックします。
+* **[+ 追加]** をクリックします。
 * ボックスの一覧から **[SQL Database]**
 * **[SQL Database]** で既存のデータベースを選択し、**[選択]** をクリックします。
 * **[接続文字列]** にデータベースのユーザー名とパスワードを入力し、**[OK]** をクリックします。
@@ -146,7 +146,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 
 <!-- URLs. -->
 
-[Azure portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure classic portal]: https://manage.windowsazure.com/
 [Mobile Apps とは]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
@@ -159,7 +159,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service の価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [認証の概念]: ../app-service/app-service-authentication-overview.md
 [認証のクイック スタート]: app-service-mobile-auth.md

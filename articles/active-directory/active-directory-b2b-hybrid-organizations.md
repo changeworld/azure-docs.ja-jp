@@ -1,47 +1,53 @@
 ---
-title: "ハイブリッド組織向けの Azure Active Directory B2B コラボレーション | Microsoft Docs"
-description: "Azure AD B2B コラボレーションによって、パートナーがローカル リソースとクラウド リソースの両方にアクセスできるようにします"
+title: ハイブリッド組織向けの B2B コラボレーション - Azure Active Directory | Microsoft Docs
+description: Azure AD B2B コラボレーションによって、パートナーがオンプレミスのリソースとクラウド リソースの両方にアクセスできるようにします。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.date: 12/15/2017
+ms.date: 04/20/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2e690eeea6a9f7e1cc10830a913774daa3c66689
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>ハイブリッド組織向けの Azure Active Directory B2B コラボレーション
 
-オンプレミス リソースとクラウド リソースの両方を使用しているハイブリッド組織では、外部パートナーが、ローカル リソースとクラウド リソースの両方にアクセスできるようにするとよいでしょう。 ローカル リソースへのアクセスについては、オンプレミスの Active Directory 環境でパートナー アカウントをローカルで管理できます。 パートナーはパートナー アカウントの資格情報でサインインして、組織のリソースにアクセスします。 パートナーが同じ資格情報を使ってクラウド リソースにアクセスできるようにするために、Azure Active Directory (Azure AD) Connect を使用し、Azure AD B2B ユーザー (UserType がゲストのユーザー) として、パートナー アカウントをクラウドと同期させることができます。
+Azure Active Directory (Azure AD) の B2B コラボレーションにより、外部パートナーが組織内のアプリやリソースに簡単にアクセスできるようにすることができます。 これは、オンプレミスとクラウドベースの両方のリソースがあるハイブリッド構成であっても同様です。 現在、外部パートナーのアカウントをオンプレミスの ID システムでローカルに管理していても、または Azure AD B2B ユーザーとしてクラウド内で管理していても構いません。 いずれの場所のリソースに対しても、両方の環境に同じサインイン資格情報を使用して、ユーザーにアクセス権を付与できるようになりました。
 
-## <a name="identify-unique-attributes-for-usertype"></a>UserType の一意の属性を識別する
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>Azure AD の B2B ユーザーにオンプレミスのアプリへのアクセス許可する
 
-UserType 属性の同期を有効にする前に、まず、UserType 属性をオンプレミス Active Directory から派生させる方法を決める必要があります。 つまり、オンプレミス環境内で、外部コラボレーターに対して一意のパラメーターはどれでしょうか。 こうした外部コラボレーターと、組織のメンバーを区別するパラメーターを特定してください。
+組織が Azure AD B2B コラボレーション機能を使用して、パートナー組織のゲスト ユーザーを Azure AD に招待する場合、これらの B2B ユーザーにオンプレミスのアプリへのアクセスを提供できるようになりました。
 
-これには一般的なアプローチが 2 つあります。
+SAML ベースの認証を使用するアプリの場合、Azure Portal を通じて、認証用に Azure AD アプリケーション プロキシを使用して B2B ユーザーがこれらのアプリを入手できるようにすることができます。
 
-- ソース属性として使用する未使用のオンプレミス Active Directory 属性 (extensionAttribute1 など) を指定する。 
-- または、UserType 属性の値を他のプロパティから派生させる。 たとえば、オンプレミス Active Directory UserPrincipalName 属性の末尾がドメイン *@partners.fabrikam123.org* である場合、すべてのユーザーを "ゲスト" として同期する必要があるとします。
+統合 Windows 認証 (IWA) を Kerberos の制約付き委任 (KCD) と共に使用するアプリの場合、認証に Azure AD プロキシを使用することもできます。 ただし、承認を機能させるには、オンプレミスの Windows Server Active Directory にユーザー オブジェクトが必要です。 B2B ゲスト ユーザーを表すローカル ユーザー オブジェクトの作成に使用できる方法は 2 つあります。
+
+- Microsoft Identity Manager (MIM) 2016 SP1 と、Microsoft Graph 用 MIM 管理エージェントです。 (Azure AD Premium 1 サブスクリプションが必要。)
+- PowerShell スクリプトを使用できます。 (このソリューションでは、MIM または AD Premium は不要です。)
+
+これらのソリューションを実装する方法について詳しくは、「[Grant B2B users in Azure AD access to your on-premises applications](active-directory-b2b-hybrid-cloud-to-on-premises.md)」(Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する) をご覧ください。
+
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>ローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
+
+Azure AD 以前は、オンプレミスの ID システムを持つ組織は、パートナーのアカウントを従来、オンプレミスのディレクトリで管理してきました。 このような組織では、アプリとその他のリソースをクラウドに移動した場合に、パートナーが引き続きアクセスできることを確認する必要があります。 これらのユーザーが同じ資格情報セットを使用して、クラウドとオンプレミスの両方のリソースにアクセスできるようにするのが理想的です。 
+
+Azure AD Connect を使用して "ゲスト ユーザー" としてこれらのローカル アカウントをクラウドと同期したり、アカウントを Azure AD B2B ユーザーと同じように動作させたりすることができるようになりました。 このソリューションは、パートナーにサインイン名として独自の外部電子メール アドレスを使用させるオンプレミスの ID システムがある場合でも機能します。
+
+会社のデータを保護するために、適切なリソースのみへのアクセスを制御し、これらのゲスト ユーザーを自社の従業員と区別して処理する承認ポリシーを構成できます。
+
+実装について詳しくは、「[Grant locally-managed partner accounts access to cloud resources using Azure AD B2B collaboration](active-directory-b2b-hybrid-on-premises-to-cloud.md)」(Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する) をご覧ください。
  
-詳細な属性要件については、[UserType の同期の有効化](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。 
-
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>クラウドに対してユーザーが同期するように Azure AD Connect を構成する
-
-一意の属性を識別したら、そのユーザーが Azure AD B2B ユーザー (UserType がゲストのユーザー) としてクラウドと同期するように、Azure AD Connect を構成できます。 承認の観点から、これらのユーザーと、Azure AD B2B コラボレーション招待プロセスによって作成された B2B ユーザーを区別することはできません。
-
-実装手順については、[UserType の同期の有効化](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。
-
 ## <a name="next-steps"></a>次の手順
 
-- Azure AD B2B コラボレーションの概要については、「[Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)」を参照してください。
-- Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](connect/active-directory-aadconnect.md)」を参照してください。
+- [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+- [Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 

@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/12/2018
-ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -65,6 +65,8 @@ AnomalyDetection 演算子は、3 つのスコアをすべて含むレコード�
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 ある種類の異常は、異常スコアのいずれかがしきい値を超えると検出されます。 しきい値は、0 以上の任意の浮動小数点数です。 しきい値は、感度と信頼性のトレードオフになります。 たとえば、しきい値を低くすると、変化の検出感度が高くなり、生成されるアラートの数が増えます。しきい値を高くすると、検出の感度は低くなり、信頼性は高くなりますが、一部の異常が見落とされる可能性があります。 使うしきい値の正確な値は、シナリオによって異なります。 上限はありませんが、推奨される範囲は 3.25 から 5 です。 
+
+値の例に示す 3.25 は、推奨される開始点にすぎません。 独自のデータ セットについて操作を実行して値を微調整し、許容可能なしきい値に到達するまで出力値を観察します。
 
 ## <a name="anomaly-detection-algorithm"></a>異常検出アルゴリズム
 
@@ -118,12 +120,12 @@ Machine Learning レベルでは、異常検出アルゴリズムは各受信イ
    - event_value/90th_percentile (event_value > 90th_percentile の場合)  
    - 10th_percentile/event_value (event_value < 10th_percentile の場合)  
 
-2. **ゆっくりした増加傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、線の中の増加傾向を探します。 異常度の値は次のように計算されます。  
+2. **ゆっくりした増加傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、操作によって線の中の増加傾向を探します。 異常度の値は次のように計算されます。  
 
    - 傾き (傾きが正の場合)  
    - 0 (それ以外の場合) 
 
-1. **ゆっくりした減少傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、線の中の減少傾向を探します。 異常度の値は次のように計算されます。 
+3. **ゆっくりした減少傾向:** 履歴ウィンドウのイベント値の傾向線を計算し、操作によって線の中の減少傾向を探します。 異常度の値は次のように計算されます。 
 
    - 傾き (傾きが負の場合)  
    - 0 (それ以外の場合)  

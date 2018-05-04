@@ -1,4 +1,4 @@
-アプリケーションで詳細なパスワード リセットを有効にするには、パスワードのリセット ポリシーを作成する必要があります。 [ここ](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md)に示されているテナント全体のパスワード リセット オプションに注意してください。 このポリシーは、パスワード リセット中のコンシューマーのエクスペリエンスと、正常に完了したときにアプリケーションが受け取るトークンのコンテンツを記述します。
+アプリケーションできめ細かなパスワード リセットを有効にするには、**パスワード リセット** ポリシーを使用します。 [ここ](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md)に示されているテナント全体のパスワード リセット オプションに注意してください。 このポリシーは、パスワード リセット中の顧客のエクスペリエンスと、正常に完了したときにアプリケーションが受け取るトークンのコンテンツを記述します。
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
@@ -8,7 +8,7 @@
 
 参照するアプリケーションのポリシーの**名前**を入力します。 たとえば、「 `SSPR`」のように入力します。
 
-**[Identity providers]\(ID プロバイダー\)** を選択し、**[Reset password using email address]\(電子メール アドレスを使用してパスワードをリセットする\)** チェック ボックスをオンにします。 **[OK]**をクリックします。
+**[Identity providers]\(ID プロバイダー\)** を選択し、**[Reset password using email address]\(電子メール アドレスを使用してパスワードをリセットする\)** チェック ボックスをオンにします。 Click **OK**.
 
 ![ID プロバイダーとして [Reset password using email address]\(電子メール アドレスを使用してパスワードをリセットする\) を選択して [OK] をクリック](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
 
@@ -22,7 +22,7 @@
 
 ![ポリシーを選択して実行](media/active-directory-b2c-create-password-reset-policy/run-b2c-password-reset-policy.png)
 
-| 設定      | 値  |
+| Setting      | 値  |
 | ------------ | ------ |
 | **アプリケーション** | Contoso B2C アプリ |
 | **応答 URL の選択** | `https://localhost:44316/` |

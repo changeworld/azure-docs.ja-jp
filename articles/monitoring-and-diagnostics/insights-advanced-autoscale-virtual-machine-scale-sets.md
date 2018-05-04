@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
-ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1ac5c4c44386fc05e3ee87ccdbbc4f652a94a1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
@@ -200,7 +200,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
             }
           }
     ```
-    サポートされているフィールドとその値については、[自動スケールの REST API](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx) に関するドキュメントを参照してください。 これで、自動スケール設定に、前述の 3 つのプロファイルを含めることができました。
+    サポートされているフィールドとその値については、[自動スケールの REST API](https://msdn.microsoft.com/library/azure/dn931928.aspx) に関するドキュメントを参照してください。 これで、自動スケール設定に、前述の 3 つのプロファイルを含めることができました。
 
 7. 最後に、自動スケールの**通知**セクションを見てみます。 自動スケールの通知を使用すると、スケールアウトまたはスケールインのアクションが正常にトリガーされたときに、3 つのことを実行できます。
    - サブスクリプションの管理者と共同管理者に通知する。

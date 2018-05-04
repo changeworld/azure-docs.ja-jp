@@ -246,11 +246,13 @@
       items:
         - name: 監視の概要
           href: service-fabric-diagnostics-overview.md
-        - name: クラスター イベント
+        - name: クラスターの監視
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
-            - name: 稼動チャネル
-              href: service-fabric-diagnostics-event-generation-operational.md
+            - name: Service Fabric イベント
+              href: service-fabric-diagnostics-events.md
+            - name: EventStore の概要
+              href: service-fabric-diagnostics-eventstore.md
             - name: Reliable Services のイベント
               href: service-fabric-reliable-services-diagnostics.md
             - name: Reliable Actors のイベント
@@ -507,6 +509,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure Resource Manager
                   href: service-fabric-cluster-creation-via-arm.md
+                - name: 証明書共通名を使用したクラスター
+                  href: service-fabric-create-cluster-using-cert-cn.md
             - name: スケール
               items:
                 - name: 手動
@@ -519,6 +523,10 @@
               href: service-fabric-cluster-security-roles.md
             - name: ロード バランサーでポートを開く
               href: create-load-balancer-rule.md
+            - name: クラスター証明書を共通名に変更する
+              href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+            - name: クラスター証明書を手動でロールオーバーする
+              href: service-fabric-cluster-rollover-cert-cn.md
             - name: クラスター証明書の管理
               href: service-fabric-cluster-security-update-certs-azure.md
             - name: 削除
@@ -567,6 +575,8 @@
               href: service-fabric-diagnostics-oms-containers.md
         - name: クラスターの監視
           items:
+            - name: EventStore API の照会
+              href: service-fabric-diagnostics-eventstore-query.md
             - name: Windows の Azure 診断
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Linux の Azure 診断
@@ -630,6 +640,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST ()
       href: /rest/api/servicefabric
+    - name: Service Fabric イベント
+      href: service-fabric-diagnostics-event-generation-operational.md
     - name: クラスターの設定と Fabric アップグレード ポリシーの構成
       href: service-fabric-cluster-fabric-settings.md
     - name: サービス モデルの XML スキーマ

@@ -69,16 +69,18 @@
               href: backup-mabs-unattended-install.md
         - name: ワークロードの保護
           items:
-            - name: Azure Backup Server を使用した VMware サーバーのバックアップ
+            - name: VMware サーバー
               href: backup-azure-backup-server-vmware.md
-            - name: Azure Backup Server を使用した Exchange のバックアップ
+            - name: Exchange
               href: backup-azure-exchange-mabs.md
-            - name: Azure Backup Server を使用した SharePoint ファームのバックアップ
+            - name: SharePoint ファーム
               href: backup-azure-backup-sharepoint-mabs.md
-            - name: Azure Backup Server を使用した SQL のバックアップ
+            - name: SQL Server
               href: backup-azure-sql-mabs.md
             - name: システムの状態とベア メタル回復の保護
               href: backup-mabs-system-state-and-bmr.md
+            - name: Azure Stack 上のファイルとアプリケーション
+              href: backup-mabs-files-applications-azure-stack.md
         - name: Azure Backup Server からデータを回復する
           href: backup-azure-alternate-dpm-server.md
     - name: Azure ファイル共有

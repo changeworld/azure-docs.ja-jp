@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: e8ebbd1a0ac2153913a2e5f506505ffb481b3822
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c4cd3c79b64ef6ba86c7764f0ae27e29418e9ee5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 ## <a name="overview"></a>概要
@@ -55,7 +55,7 @@ Azure Storage Explorer は他のディストリビューションでも動作す
 
 Azure Storage Exploer を Linux 上で実行するには、以下の依存関係/ライブラリもインストールする必要があります。
 
-* [.NET Core 2.x](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * libsecret (注: コンピューター上で libsecret-1.so.0 を使用できる必要があります。 異なるバージョンの libsecret がインストールされている場合、.so ファイルを libsecret-1.so.0 にソフト リンクすることができます)
 * libgconf-2-4
 * 最新の GCC

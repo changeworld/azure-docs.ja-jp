@@ -1,29 +1,29 @@
 ---
-title: "Azure Stack のクォータの種類 | Microsoft Docs"
-description: "Azure Stack のサービスとリソースで使用可能なさまざまなクォータの種類を確認します。"
+title: Azure Stack のクォータの種類 | Microsoft Docs
+description: Azure Stack のサービスとリソースで使用可能なさまざまなクォータの種類を確認します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/23/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: xiaofmao
+ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 [クォータ](azure-stack-plan-offer-quota-overview.md#plans)は、ユーザー サブスクリプションがプロビジョニングまたは使用できるリソースの制限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 各リソースは、独自のクォータの種類を持つことが可能です。
 
@@ -35,16 +35,18 @@ ms.lasthandoff: 02/21/2018
 | [Max number of availability sets]\(可用性セットの最大数\) | 10 | この場所に作成できる可用性セットの最大数です。 |
 | [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) | 20 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
 
-> [!NOTE]
-> このテクニカル プレビューでは、Compute クォータは強制されていません。
-> 
-> 
+
 
 ## <a name="storage-quota-types"></a>Storage クォータの種類
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
 | 最大容量 (GB) |500 |1 つのサブスクリプションがこの場所で使用できる記憶域の最大容量です。 |
 | [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
+
+> [!NOTE]  
+> 新しいストレージ クォータが適用されるまでに最大 2 時間かかることがあります。 
+> 
+> 
 
 ## <a name="network-quota-types"></a>Network クォータの種類
 | **項目** | **既定値** | **説明** |

@@ -45,6 +45,8 @@
       href: container-instances-troubleshooting.md
     - name: ACI 上の Jenkins ビルド エージェント
       href: container-instances-jenkins.md
+    - name: CPU とメモリの使用率の監視
+      href: container-instances-monitor.md
     - name: データ ボリュームの構成
       items:
         - name: Azure Files

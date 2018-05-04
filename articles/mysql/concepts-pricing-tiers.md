@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 24f352d8743ba8ef72e141498589e1c6c14ff85e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 376e153f7efcf78f824c42cc2f957bc97286f389
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -61,8 +61,10 @@ Azure Database for MySQL サーバーは、Basic、汎用、およびメモリ�
 | 東アジア | ○ |  |
 | 東南アジア | ○ | ○ |
 | オーストラリア東部 |  | ○ |
+| オーストラリア南東部 |  | ○ |
 | インド中部 | ○ |  |
 | インド西部 | ○ |  |
+| インド南部 |  | ○ |
 | 東日本 | ○ | ○ |
 | 西日本 | ○ | ○ |
 | 韓国南部 |  | ○ |

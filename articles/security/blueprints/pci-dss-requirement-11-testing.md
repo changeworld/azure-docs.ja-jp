@@ -1,6 +1,6 @@
 ---
-title: "Azure Payment Processing Blueprint - テスト要件"
-description: "PCI DSS 要件 11"
+title: Azure Payment Processing Blueprint - テスト要件
+description: PCI DSS 要件 11
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 57429741afd2ffd16c09a0f1485cb1cfbdda5571
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のテスト要件 
 ## <a name="pci-dss-requirement-11"></a>PCI DSS 要件 11
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Azure は、Azure ネットワーク環境でのワイヤレス接続を許可または許容しません。 社内のセキュリティ チームは、悪意のあるワイヤレス信号を四半期ごとにスキャンし、悪意のある信号を調査して削除します。 お客様は、Azure 環境でのワイヤレス テクノロジのデプロイを許可されていません。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスと SNMP は実装されていません。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスと SNMP は実装されていません。|
 
 
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 「[要件 11.1](#pci-dss-requirement-11-1)」の「Microsoft Azure」のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスと SNMP は実装されていません。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスおよび SNMP は実装されていません。|
 
 
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 「[要件 11.1](#pci-dss-requirement-11-1)」の「Microsoft Azure」のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスと SNMP は実装されていません。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスおよび SNMP は実装されていません。|
 
 
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Azure は、四半期ごとに内部および外部脆弱性スキャンを実行します。 スキャンは、資格のある担当者によって実行されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
 
 
 
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、スコープ内の基になるインフラストラクチャで脆弱性のスキャンを実行します。 Microsoft Azure は、適切な脆弱性スキャン ツールを使用して、サーバー オペレーティング システム、データベース、ネットワーク デバイスで脆弱性スキャンを実装します。 Azure Web アプリは、適切な産業用スキャン ソリューションを使用してスキャンされます。 脆弱性スキャンは、四半期ごとに実行されます。<br /><br />すべての "リスクの高い" 脆弱性 (要件 6.1 で識別される) が解決されるまで、必要に応じてすべてのシステムに対して再スキャンが実行されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
 
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、外部からアクセスできるスコープ内の基になるインフラストラクチャで脆弱性の外部スキャンを実行します。 スキャンは、認定スキャン ベンダー (ASV) によって実行されます。<br /><br />Microsoft Azure は、MSRC/OSSC 月次修正プログラムの通知をサブスクライブし、脆弱性を少なくとも四半期に 1 回スキャンします。 識別された脆弱性が評価され、リスクのレベルに基づいて確立されたタイムラインに従って修復されます。<br /><br />Microsoft Azure 環境の優先度の高いコンポーネントに対して、対象となる包括的なセキュリティ脆弱性スキャンが四半期ごとに実行されて、セキュリティの脆弱性が識別されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore をデプロイする場合、デモのお客様は、Payment Card Industry Security Standards Council によって承認された認定スキャン ベンダー (ASV) を使用して、カード所有者データ環境 (CDE) 内のすべての PaaS インスタンスに対して外部脆弱性スキャンの実行を四半期ごとに実行し、必要に応じて再スキャンを実行する責任を負います。<br /><br />|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore をデプロイする場合、デモのお客様は、Payment Card Industry Security Standards Council によって承認された認定スキャン ベンダー (ASV) を使用して、カード所有者データ環境 (CDE) 内のすべての PaaS インスタンスに対して外部脆弱性スキャンの実行を四半期ごとに実行し、必要に応じて再スキャンを実行する責任を負います。<br /><br />|
 
 
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 結果は関係者にレポートされ、修復は開示を通じて Azure Security Team によって追跡されます。 Azure のテスト結果は、NDA のもとでお客様と共有できます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、CDE 内のすべての PaaS インスタンスに対して四半期ごとに内部および外部脆弱性スキャンを実行し、必要に応じて再スキャンを実行する責任を負います。 スコープ内の環境が大幅に変更された後は、スキャンを実行する必要があります。<br /><br />スキャンは、ASV または組織から独立した人員が実行する必要があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、CDE 内のすべての PaaS インスタンスに対して四半期ごとに内部および外部脆弱性スキャンを実行し、必要に応じて再スキャンを実行する責任を負います。 スコープ内の環境が大幅に変更された後は、スキャンを実行する必要があります。<br /><br />スキャンは、ASV または組織から独立した人員が実行する必要があります。|
 
 
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、CREST 認定テスターを使用した OWASP (Open Web Application Security Project) Top 10 に基づいて、サード パーティ製侵入テストを使用してサービスを検証します。 テストの結果は、セキュリティに関する慣例へのコンプライアンスを確保するために定期的に監査およびレビューされるリスク レジスタによって追跡されます。 <br /><br />マイクロソフトは、マイクロソフトが管理するインフラストラクチャ、サービス、アプリケーションに対して Red Teaming も使用します。 Red Teaming およびライブ サイト侵入テストでは、エンド ユーザーのお客様のデータは意図的に対象から外されています。 テストの対象は、Microsoft Azure のインフラストラクチャおよびプラットフォームと、マイクロソフト自身のアプリケーションとデータです。 Azure でホストされているお客様のテナント、アプリケーション、データが対象になることはありません。<br /><br />Microsoft Azure は、システム アセスメント プランを作成し、コントロール アセスメントを実施するために、独立監査機関を採用しています。 コントロール アセスメントは年 1 回実行され、結果は関係者にレポートされます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
 
 
 
@@ -166,7 +166,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 「[要件 11.3](#pci-dss-requirement-11-3)」の「Microsoft Azure」のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
 
 
 
@@ -178,8 +178,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、独立監査機関と契約して、Microsoft Azure 境界の侵入テストを実行します。 Red-Team 演習も定期的に実行され、結果がセキュリティの向上に使用されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
+| **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、独立監査機関と契約して、Microsoft Azure 境界の侵入テストを実行します。 レッド チームの演習も定期的に実行され、結果はセキュリティの向上のために使用されます。 |
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は侵入テストされ、脆弱性が "現状のまま" でスキャンされます。 侵入テスト結果は、nmap や pentest-tools.com などの一般的なツールを使用して複製できます。侵入テストの結果では、利用可能な項目のない、不確定の攻撃対象領域が示されます。 さらに、[Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は脆弱性情報と修復を提供します。|
 
 
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure プラットフォーム コンポーネントで既知のセキュリティ脆弱性を監視するための手順が確立されています。 <br /><br /><br /><br />Azure 運用環境の優先度の高いコンポーネントに対して、対象となる包括的なセキュリティ脆弱性スキャンが四半期ごとに実行されて、セキュリティの脆弱性を識別します。 結果は関係者にレポートされ、修復は開示を通じてチームによって追跡されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 脆弱性の情報と修復を提供する [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) を使用して、Contoso Webstore デモ CDE のすべての未解決の問題が修復されたことを確認します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 脆弱性の情報と修復を提供する [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) を使用して、Contoso Webstore デモ CDE のすべての未解決の問題が修復されたことを確認します。|
 
 
 
@@ -205,7 +205,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure プラットフォーム コンポーネントで既知のセキュリティ脆弱性を監視するための手順が確立されています。 <br /><br /><br /><br />Azure 運用環境の優先度の高いコンポーネントに対して、対象となる包括的なセキュリティ脆弱性スキャンが四半期ごとに実行されて、セキュリティの脆弱性を識別します。 結果は関係者にレポートされ、修復は開示を通じてチームによって追跡されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 脆弱性の情報と修復を提供する [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) を使用して、Contoso Webstore デモ CDE のすべての未解決の問題が修復されたことを確認します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 脆弱性の情報と修復を提供する [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) を使用して、Contoso Webstore デモ CDE のすべての未解決の問題が修復されたことを確認します。|
 
 
 
@@ -222,7 +222,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 「[要件 11.3.4](#pci-dss-requirement-11-3-4)」の「Microsoft Azure」のセクションをご覧ください。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 脆弱性の情報と修復を提供する [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) を使用して、Contoso Webstore デモ CDE のすべての未解決の問題が修復されたことを確認します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 脆弱性の情報と修復を提供する [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) を使用して、Contoso Webstore デモ CDE のすべての未解決の問題が修復されたことを確認します。|
 
 
 
@@ -236,7 +236,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は運用環境内のイベントのリアルタイム解析を実施し、IDS システムはシステムを侵害する可能性のあるイベントについてほぼリアルタイムでアラートを生成します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は PaaS サービスであり、ネットワーク侵入の検出と防止は Azure の責任です。 [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は、侵入アラートと修復を提供します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は PaaS サービスであり、ネットワーク侵入の検出と防止は Azure の責任です。 [Azure Security Center](https://azure.microsoft.com/services/security-center/) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) は、侵入アラートと修復を提供します。|
 
 
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、オンライン サービス ダッシュボードを通じて、サービスのセキュリティや可用性に影響する可能性のある潜在的な変更とイベントを保守し、お客様に通知します。 Microsoft Azure のお客様のセキュリティに関するコミットメントとセキュリティに関する義務に対する変更は、適切なタイミングで Microsoft Azure Web サイトで更新されます。<br /><br />Microsoft Azure 運用環境上のソフトウェアのインストールまたは変更は承認された管理担当者に制限され、変更管理手順に従います。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore デモは PaaS サービスであり、変更検出は OMS を使用して実装されています。 詳しくは、[PCI ガイダンス - インストール済み OMS ソリューション](payment-processing-blueprint.md#oms-solutions)に関するページをご覧ください。<br /><br />|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore デモは PaaS サービスであり、変更検出は Log Analytics を使用して実装されています。 詳しくは、[PCI ガイダンス - インストール済み管理ソリューション](payment-processing-blueprint.md#management-solutions)に関するページをご覧ください。<br /><br />|
 
 
 
@@ -265,7 +265,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Azure 監視イベント ルールは、リスクの高い操作とアセットに対し、より高いレベルの監視を提供します。 確立されたセキュリティ標準へのコンプライアンスのために、Azure が管理するネットワーク デバイスが監視されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の変更アラートは、OMS の実装によって提供されます。 詳しくは、[PCI ガイダンス - インストール済み OMS ソリューション](payment-processing-blueprint.md#oms-solutions)に関するページをご覧ください。<br /><br /><br /><br />|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の変更アラートは、Log Analytics の実装によって提供されます。 詳しくは、[PCI ガイダンス - インストール済み管理ソリューション](payment-processing-blueprint.md#management-solutions)に関するページをご覧ください。<br /><br /><br /><br />|
 
 
 
@@ -278,7 +278,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の変更アラートは、OMS の実装によって提供されます。 詳しくは、[PCI ガイダンス - インストール済み OMS ソリューション](payment-processing-blueprint.md#oms-solutions)に関するページをご覧ください。<br /><br /><br /><br />|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore の変更アラートは、Log Analytics の実装によって提供されます。 詳しくは、[PCI ガイダンス - インストール済み管理ソリューション](payment-processing-blueprint.md#management-solutions)に関するページをご覧ください。<br /><br /><br /><br />|
 
 
 

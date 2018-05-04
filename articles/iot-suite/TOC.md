@@ -1,3 +1,4 @@
+# [Azure IoT の基礎](../iot-fundamentals/index.yml)
 # [IoT Suite のドキュメント](index.md)
 
 # 概要
@@ -94,10 +95,20 @@
 ## [徹底的なセキュリティ](securing-iot-ground-up.md)
 
 # 関連項目
+## 解決方法 
+### [IoT Suite の構成済みソリューション](/azure/iot-suite) 
+### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+## プラットフォーム サービス 
+### [IoT Hub](/azure/iot-hub) 
+### [IoT Hub Device Provisioning Service](/azure/iot-dps)
+### [IoT サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [Time Series Insights](/azure/time-series-insights) 
+## Microsoft Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [IoT デバイス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
-## [IoT Hub](/azure/iot-hub/)
-## [Microsoft IoT Central](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
 # リソース

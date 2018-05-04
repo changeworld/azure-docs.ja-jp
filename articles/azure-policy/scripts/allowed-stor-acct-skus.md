@@ -1,25 +1,25 @@
 ---
-title: "Azure Policy の JSON サンプル - 許可されているストレージ アカウント SKU | Microsoft Docs"
-description: "この JSON サンプル ポリシーでは、ストレージ アカウントが適切な SKU を使用することを必須にします。"
+title: Azure Policy の JSON サンプル - 許可されているストレージ アカウント SKU | Microsoft Docs
+description: この JSON サンプル ポリシーでは、ストレージ アカウントが適切な SKU を使用することを必須にします。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: df1edf3c0e9e2b4738ae4f5d0038869eca9c8ca5
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 13670ea2a9df37420beca95706ebc2b85d914f3b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="allowed-storage-account-skus"></a>許可されるストレージ アカウントの SKU
 
@@ -74,6 +74,6 @@ az policy assignment create --name <assignmentname> --scope <scope> --policy "al
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。

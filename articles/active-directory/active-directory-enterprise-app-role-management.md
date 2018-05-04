@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3acfa51351ac49456f5f9fcac8aa4f4f339b9ea3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d869a21230661e473ffff6bbdb1ea29b1ea336d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行されたロール要求の構成
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/18/2018
 
 5. アプリケーションが追加されたら、**[プロパティ]** ページに移動して、**オブジェクト ID** をコピーします
 
-    ![[プロパティ] ページ](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
+    ![[プロパティ] ページ](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.PNG)
 
 6. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
@@ -253,7 +253,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="next-steps"></a>次の手順
 
-追加の手順については、[アプリのマニュアル](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-tutorial-list)を参照してください。
+追加の手順については、[アプリのマニュアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照してください。
 
 <!--Image references-->
 <!--Image references-->

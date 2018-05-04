@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: 4f2c47f3e2debe0dc2b919858af9c347da00be5b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ca9e45a214639da86cf8e0c4a39b3e3d6b6d6491
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -72,7 +72,7 @@ Azure AD B2C に送信される各要求は、ポリシーを指定します。 
 
 #### <a name="custom-policies"></a>カスタム ポリシー 
 
-カスタム ポリシーは、Azure AD B2C テナント内の Identity Experience Framework の動作を定義する構成ファイルです。 カスタム ポリシーは、多くのタスクを完了するために完全に編集できます。 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 
+[カスタム ポリシー](active-directory-b2c-overview-custom.md)は、Azure AD B2C テナント内の Identity Experience Framework の動作を定義する構成ファイルです。 カスタム ポリシーは、多くのタスクを完了するために完全に編集できます。 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 
 
 Azure AD B2C テナントでは必要に応じてさまざまな種類のカスタム ポリシーを複数使用でき、複数のアプリケーションにわたってポリシーを再利用できます。 この柔軟性により、最小限のコード変更で、またはコードをまったく変更せずに、顧客の ID エクスペリエンスを定義および変更できます。 ポリシーは、HTTP 認証要求に特別なクエリ パラメーターを追加すると使用できます。
 

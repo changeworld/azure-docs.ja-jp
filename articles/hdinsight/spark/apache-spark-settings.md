@@ -1,30 +1,28 @@
 ---
-title: "Spark の設定を構成する - Azure HDInsight | Microsoft Docs"
-description: "HDInsight クラスター用に Spark を構成する方法。"
+title: Spark の設定を構成する - Azure HDInsight | Microsoft Docs
+description: HDInsight クラスター用に Spark を構成する方法。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: maxluk
-ms.openlocfilehash: 1dd0ff26cdb39feacec697d7900ad7abaa5f1996
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2ee496eae0767de22d070a0c5689692f0200515b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-spark-settings"></a>Spark の設定を構成する
 
-HDInsight Spark クラスターには、Apache Spark ライブラリのインストールが含まれています。  各 HDInsight クラスターには、Spark も含め、インストールされるすべてのサービスの既定の構成パラメーターが含まれています。  HDInsight Hadoop クラスターの管理において重要なことは、Spark ジョブなどのワークロードを監視し、予測可能な方法で実行していることを確認することです。 Spark ジョブを最高の状態で実行するには、クラスターの論理構成を最適化する方法を決定するときに、物理クラスターの構成を検討します。
+HDInsight Spark クラスターには、Apache Spark ライブラリのインストールが含まれています。  各 HDInsight クラスターには、Spark も含め、インストールされるすべてのサービスの既定の構成パラメーターが含まれています。  HDInsight Hadoop クラスターの管理において重要なことは、Spark ジョブなどのワークロードを監視し、予測可能な方法でジョブが実行されていることを確認することです。 Spark ジョブを最高の状態で実行するには、クラスターの論理構成を最適化する方法を決定するときに、物理クラスターの構成を検討します。
 
 既定の HDInsight Apache Spark クラスターには、3 つの ZooKeeper ノード、2 つのヘッド ノード、1 つまたは複数のワーカー ノードが含まれています。
 
@@ -34,9 +32,13 @@ HDInsight クラスター内のノードの VM の数と VM のサイズも、Sp
 
 ## <a name="spark-versions"></a>Spark のバージョン
 
-クラスターに最適な Spark のバージョンを考慮する必要もあります。  Spark 2.x の方が Spark 1.x よりはるかに優れています。 Spark 2.x には、Tungsten、Catalyst Query Optimization、その他多くのパフォーマンス最適化が含まれます。  HDInsight サービスには、複数のバージョンの Spark および HDInsight 自体が含まれます。  Spark の各バージョンには、既定のクラスター設定のセットが含まれます。  現在、新しいクラスターを作成するときは、次の Spark のバージョンを選ぶことができます。
+クラスターに最適な Spark バージョンを使用します。  HDInsight サービスには、複数のバージョンの Spark および HDInsight 自体の両方が含まれます。  Spark の各バージョンには、既定のクラスター設定のセットが含まれます。  
+
+現在、新しいクラスターを作成するときは、次の Spark のバージョンを選ぶことができます。
 
 ![Spark のバージョン](./media/apache-spark-settings/spark-version.png)
+
+Spark 2.x の方が Spark 1.x よりはるかに優れています。 Spark 2.x には、Tungsten、Catalyst Query Optimization、その他多くのパフォーマンス最適化が含まれます。  
 
 > [!NOTE]
 > HDInsight サービスに含まれる Apache Spark の既定のバージョンは、予告なく変更される場合があります。 バージョンの依存関係がある場合は、.NET SDK/Azure PowerShell や Azure CLI を使ってクラスターを作成するときに、特定のバージョンを指定することをお勧めします。
@@ -47,7 +49,7 @@ Apache Spark のシステム構成には 3 つの場所があります。
 * 環境変数は、IP アドレスなどのコンピューターごとの設定を設定するために使うことができ、各ノードで `conf/spark-env.sh` スクリプトを使って設定します。
 * ログは、`log4j.properties` を使って構成できます。
 
-特定のバージョンの Spark を選ぶと、クラスターにはその既定の構成設定が含まれます。  カスタム Spark 構成ファイルを提供することで、既定の Spark 構成値を変更できます。  次に例を示します。
+特定のバージョンの Spark を選ぶと、クラスターにはその既定の構成設定が含まれます。  カスタム Spark 構成ファイルを使用することで、既定の Spark 構成値を変更できます。  次に例を示します。
 
 ```
     spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
@@ -57,7 +59,7 @@ Apache Spark のシステム構成には 3 つの場所があります。
     spark.sql.files.openCostInBytes 1099511627776
 ```
 
-上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値が上書きされます。  上書きされるのは、圧縮コーデック、Hadoop の mapreduce の分割最小サイズと parquet のブロック サイズ、および Spar SQL のパーティション サイズと開くファイル サイズの既定値です。  これらの構成変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、これらのカスタム構成設定を使うとパフォーマンスが向上する特定の特性があるためです。
+上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値が上書きされます。  上書きされるのは、圧縮コーデック、Hadoop の MaPreduce の分割最小サイズと parquet のブロック サイズ、および Spar SQL のパーティション サイズと開くファイル サイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、これらのカスタム構成設定を使うとパフォーマンスが向上する特定の特性があるためです。
 
 ---
 

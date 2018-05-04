@@ -13,22 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 04/19/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21862bb110801a43f13e3e65811e10726c188614
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24723f268e59103c712b98b4bd895472b034afc0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
 B2B ユーザーに対する特定組織からの招待を許可またはブロックする、許可リストまたは拒否リストを使用できます。 たとえば、個人の電子メール アドレス ドメインをブロックする場合は、gmail.com や Outlook.com などのドメインを含む拒否リストを設定できます。または、企業が Contoso.com、Fabrikam.com、Litware.com などの他の企業と協力していて、招待をこれらの組織のみに制限する場合は、許可リストに Contoso.com、Fabrikam.com、および Litware.com を追加することができます。
   
-> [!NOTE]
-> 現時点は、拒否リストのみを使用できます。 許可リストを使用する機能は、もう間もなく利用できるようになります。
-
 ## <a name="important-considerations"></a>重要な考慮事項
 
 - 許可リストまたは拒否リストのいずれかを作成できます。 両方の種類のリストを設定することはできません。 既定では、許可リストに含まれないドメインはすべて拒否リストに含まれます。また、その逆も言えます。 
@@ -50,22 +47,34 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 2. **[Azure Active Directory]** > **[ユーザー]** > **[ユーザー設定]** の順に選択します。
 3. **[外部ユーザー]** で、**[Manage external collaboration settings (外部コラボレーション設定の管理)]** を選択します。
 4. **[Collaboration restrictions (コラボレーション制限)]** で、**[Deny invitations to the specified domains (指定したドメインへの招待を拒否)]** を選択します。
-5. **[TARGET DOMAINS (ターゲット ドメイン)]** で、ブロックするドメインの 1 つの名前を入力します。 複数ドメインの場合は、それぞれのドメインを新しい行に入力します。
+5. **[TARGET DOMAINS (ターゲット ドメイン)]** で、ブロックするドメインの 1 つの名前を入力します。 複数ドメインの場合は、それぞれのドメインを新しい行に入力します。 例: 
 
    ![追加したドメインと共に拒否オプションを表示する](./media/active-directory-b2b-allow-deny-list/DenyListSettings.png)
  
 6. 終了したら **[保存]** をクリックします。
 
-ポリシーの設定後、ブロックしたドメインからユーザーを招待しようとすると、ユーザーは現在、招待ポリシーによってブロックされていることを示すメッセージが表示されます。
+ポリシーの設定後、ブロックしたドメインからユーザーを招待しようとすると、ユーザーのドメインは現在、招待ポリシーによってブロックされていることを示すメッセージが表示されます。
  
 ### <a name="add-an-allow-list"></a>許可リストを追加する
-
-> [!NOTE]
-> 現時点では、**Allow invitations only to the specified domains (most restrictive)指定したドメインに対してのみ招待を許可する (最も制限的)** の設定は使用できません。 許可リストを使用する機能は、もう間もなく利用できるようになります。
 
 これは、より制限の厳しい構成で、許可リストに特定のドメインを設定し、その他すべての組織や記載されていないドメインに対する招待を制限することができます。 
 
 許可リストを使用する場合は、どのようなビジネス ニーズであるかを十分に評価するために時間をかけるようにしてください。 このポリシーを厳しくしすぎると、ユーザーはドキュメントを電子メールで送信したり、IT による認可を伴わないコラボレーションの方法を別に見つけたりするようになります。
+
+
+許可リストを追加するには、次の手順を実行します。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[Azure Active Directory]** > **[ユーザー]** > **[ユーザー設定]** の順に選択します。
+3. **[外部ユーザー]** で、**[Manage external collaboration settings (外部コラボレーション設定の管理)]** を選択します。
+4. **[Collaboration restrictions]\(コラボレーション制限\)** の **[Allow invitations only to the specified domains (most restrictive)]\(指定したドメインへの招待を許可 (制限が最も厳しい)\)** を選択します。
+5. **[TARGET DOMAINS]\(ターゲット ドメイン\)** で、許可するドメインの 1 つの名前を入力します。 複数ドメインの場合は、それぞれのドメインを新しい行に入力します。 例: 
+
+   ![追加したドメインと共に許可オプションを表示する](./media/active-directory-b2b-allow-deny-list/AllowListSettings.png)
+ 
+6. 終了したら **[保存]** をクリックします。
+
+ポリシーの設定後、許可リストにないドメインからユーザーを招待しようとすると、ユーザーのドメインは現在、招待ポリシーによってブロックされていることを示すメッセージが表示されます。
 
 ### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>許可リストと拒否リストの切り替え 
 
@@ -115,9 +124,6 @@ PowerShell を使用して許可リストまたは拒否リストを設定する
     ````
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>AzureADPolicy コマンドレットを使用してポリシーを構成する
-
-> [!NOTE]
-> 現時点は、拒否リストのみを構成できます。 許可リストを使用する機能は、もう間もなく利用できるようになります。
 
 許可リストまたは拒否リストを作成するには、[New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次の例は、"live.com" ドメインをブロックする拒否リストの設定方法を示しています。
 

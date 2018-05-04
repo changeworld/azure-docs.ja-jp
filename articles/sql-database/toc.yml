@@ -74,8 +74,10 @@
       href: sql-database-servers-databases.md
     - name: マネージ インスタンス
       href: sql-database-managed-instance.md
-    - name: サービス階層
-      href: sql-database-service-tiers.md
+    - name: DTU ベースのサービス レベル
+      href: sql-database-service-tiers-dtu.md
+    - name: 仮想コアベースのサービス レベル
+      href: sql-database-service-tiers-vcore.md
     - name: 読み取りスケールアウト
       href: sql-database-read-scale-out.md
     - name: DTU ベースのリソース制限
@@ -412,8 +414,12 @@
               href: saas-tenancy-schema-management.md
             - name: テナント間のレポート
               href: saas-tenancy-cross-tenant-reporting.md
-            - name: 分析用の ETL
-              href: saas-tenancy-tenant-analytics.md
+            - name: テナント分析
+              items:
+                - name: SQL DB の場合
+                  href: saas-tenancy-tenant-analytics.md
+                - name: SQL DW の場合
+                  href: saas-tenancy-tenant-analytics-adf.md
             - name: geo 復元を使用したディザスター リカバリー
               href: saas-dbpertenant-dr-geo-restore.md
             - name: データベースの geo レプリケーションを使用したディザスター リカバリー

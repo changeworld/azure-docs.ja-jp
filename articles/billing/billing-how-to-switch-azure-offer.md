@@ -1,11 +1,11 @@
 ---
-title: "Azure サブスクリプションのプランの変更 | Microsoft Docs"
-description: "Azure アカウント センターを使用して Azure サブスクリプションを変更し、別のプランに切り替える方法について説明します。"
-services: 
-documentationcenter: 
+title: Azure サブスクリプションのプランの変更 | Microsoft Docs
+description: Azure アカウント センターを使用して Azure サブスクリプションを変更し、別のプランに切り替える方法について説明します。
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: aae227b3-6d64-4550-a5b6-d359f53f0a59
 ms.service: billing
@@ -15,21 +15,22 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 381994079b7bcaeff08802b06573b977bf631e9d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 12e5641093dd1bdc1546cc115283f48d5c134121
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Azure の従量課金制サブスクリプションを別のプランに変更する
 
-[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)のお客様は、[アカウント センター](https://account.windowsazure.com/Subscriptions)で Azure サブスクリプションを別のプランに切り替えることができます。 たとえば、この機能を使えば、[Visual Studio サブスクライバー向けの月単位のクレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効活用できます。 
+
+  [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)のお客様は、[アカウント センター](https://account.windowsazure.com/Subscriptions)で Azure サブスクリプションを別のプランに切り替えることができます。 たとえば、この機能を使えば、[Visual Studio サブスクライバー向けの月単位のクレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効活用できます。 
 
 **無料試用版からアップグレードしたいだけの場合:**  [従量課金制へのアップグレード](billing-upgrade-azure-subscription.md)に関する記事をご覧ください。
 
 ## <a name="whats-supported"></a>サポート対象:
 
-| ファイル | ターゲット |
+| ソース | ターゲット |
 | --- | --- |
 | 従量課金制 |[開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | 従量課金制 |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
@@ -50,8 +51,8 @@ ms.lasthandoff: 12/08/2017
 >
 
 1. [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-1. 自分の従量課金のサブスクリプションを選択します。
-1. **[別のプランに切り替える]**をクリックします。 このボタンは、従量課金制を利用しており、最初の請求期間が終了している場合にのみクリックできます。
+1. 自分の従量課金制サブスクリプションを選択します。
+1. **[別のプランに切り替える]** をクリックします。 このボタンは、従量課金制を利用しており、最初の請求期間が終了している場合にのみクリックできます。
 
    ![ページの右側にあるプランの切り替えボタンに注目](./media/billing-how-to-switch-azure-offer/switchbutton.png)
 1. 現在のサブスクリプションから移行可能なプランの一覧から、**目的のプランを選択します**。 この一覧の内容はアカウントが関連付けられているメンバーシップに基づいて決まります。 何も表示されない場合は、[移行可能なプランの一覧](#whats-supported)をチェックして、適切なメンバーシップを持っていることを確認してください。 
@@ -77,7 +78,7 @@ Azure プランとは、ご利用の Azure サブスクリプションの*種類
 
 次の場合、**[別のプランに切り替える]** ボタンは表示されません。
 
-* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)を利用していない。 現時点では、別のプランに切り替えられるのは従量課金のサブスクリプションのみです。
+* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)を利用していない。 現時点では、別のプランに切り替えられるのは従量課金制サブスクリプションのみです。
   * [無料試用版](https://azure.microsoft.com/free/)をご利用の場合は、[従量課金制にアップグレードする](billing-upgrade-azure-subscription.md)方法を確認してください。
   * 別のサブスクリプションからプランを切り替えるには、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 * 最初の請求期間中である場合。プランを切り替えるには、最初の請求期間が終わるまで待つ必要があります。
@@ -105,7 +106,7 @@ Azure プランとは、ご利用の Azure サブスクリプションの*種類
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>従量課金制から [Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) または [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) に移行することはできますか?
 
-* CSP に移行するには、「[Azure Pas-As-You-Go Subscription Migration to CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp)」 (Azure 従量課金制サブスクリプションを CSP に移行する) を参照してください。
+* CSP に移行するには、[Azure の従量課金制サブスクリプションから CSP への移行](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp)に関する記事をご覧ください。
 * EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 登録案内メールの指示に従って、サブスクリプションを EA 加入契約に移行します。 詳細については、EA ポータルの「[既存のアカウントの関連付け](https://ea.azure.com/helpdocs/associateExistingAccount)」を参照してください。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>データとサービスを新しいサブスクリプションに移行できますか?

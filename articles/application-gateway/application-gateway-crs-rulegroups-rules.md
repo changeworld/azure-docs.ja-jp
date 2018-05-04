@@ -1,25 +1,22 @@
 ---
-title: "Azure Application Gateway Web アプリケーション ファイアウォールの CRS 規則グループと規則 | Microsoft Docs"
-description: "このページでは、Web アプリケーション ファイアウォールの CRS 規則グループと規則について説明します。"
+title: Azure Application Gateway Web アプリケーション ファイアウォールの CRS 規則グループと規則
+description: このページでは、Web アプリケーション ファイアウォールの CRS 規則グループと規則について説明します。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
+author: vhorne
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/16/2018
+ms.author: victorh
+ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供されている Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧
 
@@ -27,32 +24,12 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 以下の表では、Application Gateway と Web アプリケーション ファイアウォールの使用時に利用できる規則グループと規則を示しています。  各表は、特定の CRS バージョンの規則グループに含まれている規則を表します。
 
-##<a name="owasp30"></a> OWASP_3.0
+## <a name="owasp30"></a> OWASP_3.0
 
-### <a name="crs910"></a>  <p x-ms-format-detection="none">REQUEST-910-IP-REPUTATION</p>
-
-|RuleId|Description|
-|---|---|
-|910011|規則 910011|
-|910012|規則 910012|
-|910000|既知の悪意のあるクライアントからの (以前のトラフィック違反に基づく) 要求。|
-|910100|クライアント IP が、危険度の高い国のものです。|
-|910120|規則 910120|
-|910130|規則 910130|
-|910150|HTTP ブラックリストの検索エンジン IP との一致|
-|910160|HTTP ブラックリストのスパム送信者 IP との一致|
-|910170|HTTP ブラックリストの疑わしい IP との一致|
-|910180|HTTP ブラックリストのハーベスター IP との一致|
-|910013|規則 910013|
-|910014|規則 910014|
-|910015|規則 910015|
-|910016|規則 910016|
-|910017|規則 910017|
-|910018|規則 910018|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |911011|規則 911011|
 |911012|規則 911012|
@@ -64,30 +41,10 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |911017|規則 911017|
 |911018|規則 911018|
 
-### <a name="crs912"></a> <p x-ms-format-detection="none">REQUEST-912-DOS-PROTECTION</p>
-
-|RuleId|Description|
-|---|---|
-|912100|規則 912100|
-|912012|規則 912012|
-|912120|%@{tx.real_ip} からと特定されたサービス拒否 (DoS) 攻撃 (前回のアラート以降 %@{tx.dos_block_counter} 回のヒット)|
-|912130|規則 912130|
-|912140|規則 912140|
-|912150|規則 912150|
-|912160|規則 912160|
-|912170|%@{tx.real_ip} からの潜在的なサービス拒否 (DoS) 攻撃 - 要求バースト数 = %@{ip.dos_burst_counter}|
-|912013|規則 912013|
-|912014|規則 912014|
-|912019|規則 912019|
-|912171|%@{tx.real_ip} からの潜在的なサービス拒否 (DoS) 攻撃 - 要求バースト数 = %@{ip.dos_burst_counter}|
-|912015|規則 912015|
-|912016|規則 912016|
-|912017|規則 912017|
-|912018|規則 912018|
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |913011|規則 913011|
 |913012|規則 913012|
@@ -105,7 +62,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |920011|規則 920011|
 |920012|規則 920012|
@@ -159,7 +116,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|説明|
+|RuleId|[説明]|
 |---|---|
 |921011|規則 921011|
 |921012|規則 921012|
@@ -182,7 +139,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |930011|規則 930011|
 |930012|規則 930012|
@@ -199,7 +156,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |931011|規則 931011|
 |931012|規則 931012|
@@ -216,7 +173,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|説明|
+|RuleId|[説明]|
 |---|---|
 |932011|規則 932011|
 |932012|規則 932012|
@@ -235,7 +192,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |933011|規則 933011|
 |933012|規則 933012|
@@ -259,7 +216,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |941011|規則 941011|
 |941012|規則 941012|
@@ -292,7 +249,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |942011|規則 942011|
 |942012|規則 942012|
@@ -320,7 +277,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|説明|
+|RuleId|[説明]|
 |---|---|
 |943011|規則 943011|
 |943012|規則 943012|
@@ -338,7 +295,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |960911|無効な HTTP 要求行|
 |981227|Apache エラー = 要求に無効な URI が含まれています。|
@@ -364,7 +321,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs21"></a> crs_21_protocol_anomalies
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |960008|要求にホスト ヘッダーがありません|
 |960007|ホスト ヘッダーが空です|
@@ -377,7 +334,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs23"></a> crs_23_request_limits
 
-|RuleId|説明|
+|RuleId|[説明]|
 |---|---|
 |960209|引数名が長すぎます|
 |960208|引数値が長すぎます|
@@ -388,7 +345,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs30"></a> crs_30_http_policy
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |960032|メソッドがポリシーによって許可されていません|
 |960010|要求のコンテンツの種類がポリシーによって許可されていません|
@@ -398,7 +355,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs35"></a> crs_35_bad_robots
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |990002|要求が、サイトをスキャンしたセキュリティ スキャナーを示しています|
 |990901|要求が、サイトをスキャンしたセキュリティ スキャナーを示しています|
@@ -407,7 +364,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs40"></a> crs_40_generic_attacks
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |960024|メタ文字の異常検出アラート - 反復する非単語文字|
 |950008|文書化されていない ColdFusion タグの挿入|
@@ -436,7 +393,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|説明|
+|RuleId|[説明]|
 |---|---|
 |981231|SQL コメント シーケンスが検出されました。|
 |981260|SQL 16 進数エンコードが識別されました|
@@ -473,7 +430,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs41xss"></a> crs_41_xss_attacks
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |973336|XSS フィルター - カテゴリ 1 = スクリプト タグ ベクター|
 |973338|XSS フィルター - カテゴリ 3 = Javascript URI ベクター|
@@ -578,19 +535,19 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ### <a name="crs42"></a> crs_42_tight_security
 
-|RuleId|Description|
+|RuleId|[説明]|
 |---|---|
 |950103|パス トラバーサル攻撃|
 
 ### <a name="crs45"></a> crs_45_trojans
 
-|RuleId|説明|
+|RuleId|[説明]|
 |---|---|
 |950110|バックドア アクセス|
 |950921|バックドア アクセス|
 |950922|バックドア アクセス|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 WAF 規則を無効にする方法については、[WAF 規則のカスタマイズ](application-gateway-customize-waf-rules-portal.md)に関するページを参照してください。
 

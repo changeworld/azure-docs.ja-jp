@@ -1,27 +1,20 @@
 ---
-title: "Azure Analysis Services チュートリアルのレッスン 4: リレーションシップを作成する | Microsoft Docs"
-description: "この Azure Analysis Services チュートリアル プロジェクトでは、リレーションショップを作成する方法について説明します。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Azure Analysis Services チュートリアルのレッスン 4: リレーションシップを作成する | Microsoft Docs'
+description: この Azure Analysis Services チュートリアル プロジェクトでは、リレーションショップを作成する方法について説明します。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 694043454ba2564900416135e1f143bdeb63c202
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-relationships"></a>リレーションシップの作成
+# <a name="create-relationships"></a>リレーションシップを作成する
 
 このレッスンでは、データをインポートしたときに自動的に作成されるリレーションシップを確認し、別のテーブル間に新しいリレーションシップを追加します。 リレーションシップは、テーブル内のデータの関連付け方法を確立する 2 つのテーブル間の接続です。 たとえば、DimProduct テーブルと DimProductSubcategory テーブルは、各製品がサブカテゴリに属しているという事実に基づいてリレーションシップを持っています。 詳細については、[リレーションシップ](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular)を参照してください。
   
@@ -54,7 +47,7 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
     **DimCustomer** テーブル内の **GeographyKey** 列と **DimGeography** テーブル内の **GeographyKey** 列の両方が、それぞれボックス内に表示されています。 これらの列はリレーションシップで使用されます。 リレーションシップのプロパティも **[プロパティ]** ウィンドウに表示されるようになります。  
   
     > [!TIP]  
-    > ダイアグラム ビューでモデル デザイナーを使用するだけでなく、[リレーションシップの管理] ダイアログ ボックスを使用して、テーブル形式ですべてのテーブル間のリレーションシップを表示することもできます。 表形式モデル エクスプローラーで **[リレーションシップ]** > **[リレーションシップの管理]**を右クリックします。
+    > ダイアグラム ビューでモデル デザイナーを使用するだけでなく、[リレーションシップの管理] ダイアログ ボックスを使用して、テーブル形式ですべてのテーブル間のリレーションシップを表示することもできます。 表形式モデル エクスプローラーで **[リレーションシップ]** > **[リレーションシップの管理]** を右クリックします。
   
 3.  AdventureWorksDW データベースから各テーブルがインポートされたときに、次のリレーションシップが作成されたことを確認します。  
   

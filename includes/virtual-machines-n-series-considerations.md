@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/19/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: c1e57ea28f597293d8bb52207bbbb76892b1d5f5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3267f649e360c512a5523ce1d5948719a1969934
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-* N シリーズ VM を利用できるリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/regions/services/)」を参照してください。
+* N シリーズ VM を利用できるリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
 
 * N シリーズ VM をデプロイするには、Resource Manager デプロイメント モデルを使用する必要があります。
 

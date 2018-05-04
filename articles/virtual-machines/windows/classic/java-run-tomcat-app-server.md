@@ -1,11 +1,10 @@
 ---
-title: "クラシック Azure VM で Java アプリケーション サーバーを実行する | Microsoft Docs"
-description: "このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用して、Windows 仮想マシンを作成して Apache Tomcat アプリケーション サーバーを実行するように構成する方法を説明します。"
+title: クラシック Azure VM で Java アプリケーション サーバーを実行する
+description: このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用して、Windows 仮想マシンを作成して Apache Tomcat アプリケーション サーバーを実行するように構成する方法を説明します。
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: erikre
-editor: 
+manager: mbaldwin
 tags: azure-service-management
 ms.assetid: d627aa09-f7d6-4239-8110-f8fc5111b939
 ms.service: virtual-machines-windows
@@ -13,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 04/11/2018
 ms.author: robmcm
-ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e13228a707e7dae4a4c2505154d01215c40b4716
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
 > [!IMPORTANT]
@@ -57,7 +56,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
    6. 仮想マシンが存在する場所 (**[米国中南部]** など) を選択します。
 6. **[次へ]** をクリックします。
 7. **[Virtual machine image size (仮想マシン イメージのサイズ)]** ブレードで、**[A1 Standard]** または別の適切なイメージを選択します。
-8. **[選択]**をクリックします。
+8. **[選択]** をクリックします。
 
 9. **[設定]** ブレードで **[OK]** をクリックします。 Azure で提供される既定値を使用できます。  
 10. **[概要]** ブレードで、**[OK]** をクリックします。
@@ -67,7 +66,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 2. **[仮想マシン (クラシック)]** をクリックします。 必要に応じて、サービス カテゴリの左下隅にある **[その他のサービス]** をクリックします。 **[仮想マシン (クラシック)]** エントリは、**[Compute]** グループに表示されます。
 3. ログインする仮想マシンの名前をクリックします。
 4. 仮想マシンが起動したら、ウィンドウの上部のメニューを使用して接続できます。
-5. **[接続]**をクリックします。
+5. **[接続]** をクリックします。
 6. 表示される画面で必要に応じて入力して、仮想マシンに接続します。 通常は、接続の詳細が含まれた .rdp ファイルを保存するか開きます。 .rdp ファイルの最初の行の最後の部分として、url: ポートをコピーし、それをリモートのログイン アプリケーション内に貼り付けなければならない場合があります。
 
 ## <a name="to-install-a-java-application-server-on-your-virtual-machine"></a>仮想マシンに Java アプリケーション サーバーをインストールするには
@@ -92,8 +91,8 @@ Tomcat が実行されていることを外部コンピューターから確認�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[仮想マシン (クラシック)]** をクリックします。
 3. Java アプリケーション サーバーを実行している仮想マシンの名前をクリックします。
-4. **[エンドポイント]**をクリックします。
-5. **[追加]**をクリックします。
+4. **[エンドポイント]** をクリックします。
+5. **[追加]** をクリックします。
 6. **[エンドポイントの追加]** ダイアログ ボックスで、次の操作を行います。
    1. エンドポイントの [名前] \(**HttpIn**など) を指定します。
    2. プロトコルとして **[TCP]** を選択します。
@@ -105,8 +104,8 @@ Tomcat が実行されていることを外部コンピューターから確認�
 
 ## <a name="to-open-a-port-in-the-firewall-for-your-virtual-machine"></a>ファイアウォールで仮想マシン用にポートを開くには
 1. 仮想マシンにログインします。
-2. **Windows の [スタート]**をクリックします。
-3. **[コントロール パネル]**をクリックします。
+2. **Windows の [スタート]** をクリックします。
+3. **[コントロール パネル]** をクリックします。
 4. **[システムとセキュリティ]**、**[Windows ファイアウォール]**、**[詳細設定]** の順にクリックします。
 5. **[受信の規則]**、**[新しい規則]** の順にクリックします。  
    ![新しい受信の規則][NewIBRule]

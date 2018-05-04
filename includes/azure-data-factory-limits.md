@@ -5,14 +5,14 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 03/27/2018
+ms.date: 04/27/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: e68e87bb19b8c64cf06c03831b22cf43d773efde
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 03b7ce49f935c36b0e0652925c41deea987a2a26
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 制限のほとんどは、サポートに問い合わせることでサブスクリプションの上限まで引き上げることができます。
 
@@ -26,12 +26,13 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 | 1 つの Data Factory 内のトリガー数 | 2500 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 1 つの Data Factory 内のリンクされたサービスの数 | 2500 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Data Factory 内の統合ランタイム<sup>4</sup> | 2500 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 1 つのサブスクリプションでの Azure-SSIS Integration Runtime の CPU コアの合計 | 100 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインあたりの同時実行パイプラインの実行数 | 20 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインあたりの最大アクティビティ数 | 20 | 30 |
 | パイプラインあたりの最大パラメーター数 | 20 | 30 |
 | パイプライン オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> | 200 KB | 200 KB |
 | データセットとリンクされたサービス オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> | 100 KB | 2,000 KB |
-| クラウド データ移動単位<sup>3</sup> | 256 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| アクティビティ実行 1 回あたりのクラウド データ移動単位<sup>3</sup> | 256 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインのアクティビティ実行の再試行カウント | 1 日 (タイムアウト) | 1 日 (タイムアウト) |
 | API 呼び出しの書き込み | 2,500/時<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | API 呼び出しの読み取り | 12,500/時<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -48,7 +49,7 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 | パイプライン オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> |200 KB |200 KB |
 | データセットとリンクされたサービス オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> |100 KB |2,000 KB |
 | サブスクリプション内 HDInsight オンデマンドのクラスター コア数<sup>2</sup> |60 |[サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| クラウド データ移動単位<sup>3</sup> |32 |[サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| アクティビティ実行 1 回あたりのクラウド データ移動単位<sup>3</sup> |32 |[サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | パイプラインのアクティビティ実行の再試行カウント |1,000 |MaxInt (32 ビット) |
 
 <sup>1</sup> パイプライン、データセット、リンクされたサービス オブジェクトは、ワークロードの論理グループを表します。 これらのオブジェクトの制限は、Azure Data Factory サービスで移動したり処理したりできるデータ量には関係ありません。 Data Factory はペタバイトのデータ処理まで拡張できるようになっています。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>仮想マシンのシリアル コンソール (プレビュー) 
 
@@ -109,7 +109,7 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
 このセクションには、VM にアクセスするために SAC の使用が必要になる可能性があるシナリオにおいて、一般的なタスクを実行するためのコマンド例が含まれています。たとえば、RDP 接続のエラーをトラブルシューティングする必要がある場合などです。
 
-SAC は Windows Server 2003 以降のすべてのバージョンの Windows に含まれていますが、既定では無効になっています。 SAC は、`sacdrv.sys` カーネル ドライバー、`Special Administration Console Helper` サービス (`sacsvr`)、`sacsess.exe` プロセスに依存しています。 詳しくは、[緊急管理サービスのツールと設定](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))に関する記事をご覧ください。
+SAC は Windows Server 2003 以降のすべてのバージョンの Windows に含まれていますが、既定では無効になっています。 SAC は、`sacdrv.sys` カーネル ドライバー、`Special Administration Console Helper` サービス (`sacsvr`)、`sacsess.exe` プロセスに依存しています。 詳しくは、[緊急管理サービスのツールと設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))に関する記事をご覧ください。
 
 SAC を使用すると、シリアル ポート経由で実行中の OS に接続できます。 SAC から CMD を起動すると、実行中の OS 内で、`sacsess.exe` によって `cmd.exe` が起動されます。 シリアル コンソール機能を使用して SAC に接続するのと同時に、VM に RDP で接続すると、タスク マネージャーでこのことを確認できます。 SAC 経由でアクセスする CMD は、RDP 接続の際に使用する `cmd.exe` と同じものです。 まったく同じコマンドとツールが利用可能です。CMD インスタンスから PowerShell を起動することもできます。 SAC と Windows 回復環境 (WinRE) の主な違いは、SAC では実行中の 0S を管理できるのに対し、WinRE では別の最小限の OS が起動されるということです。 Azure VM では WinRE へのアクセスはサポートされていませんが、シリアル コンソール機能を使用すると、SAC 経由で Azure VM を管理できます。
 
@@ -266,11 +266,11 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 #### <a name="scan-for-system-file-corruption"></a>システム ファイルの破損のスキャン
 `sfc /scannow`
 
-「[Repair a Windows Image](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image)」(Windows イメージの修復) もご覧ください。
+「[Repair a Windows Image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)」(Windows イメージの修復) もご覧ください。
 #### <a name="scan-for-system-file-corruption"></a>システム ファイルの破損のスキャン
 `dism /online /cleanup-image /scanhealth`
 
-「[Repair a Windows Image](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image)」(Windows イメージの修復) もご覧ください。
+「[Repair a Windows Image](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)」(Windows イメージの修復) もご覧ください。
 #### <a name="export-file-permissions-to-text-file"></a>ファイルのアクセス許可をテキスト ファイルにエクスポートする
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 #### <a name="save-file-permissions-to-acl-file"></a>ファイルのアクセス許可を ACL ファイルに保存する
@@ -516,7 +516,7 @@ Azure VM 内から Azure インスタンス メタデータを照会して、osT
 
 インスタンス メタデータを照会するには、ゲストのネットワーク接続が正常である必要があります。Azure ホストを通じてインスタンス メタデータ サービスに REST 呼び出しを実行する必要があるためです。 したがって、インスタンス メタデータの照会が可能であることは、ゲストがネットワーク経由で Azure でホストされるサービスに通信できることを意味します。
 
-詳細については、「[Azure Instance Metadata Service](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)」をご覧ください。
+詳細については、「[Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)」をご覧ください。
 
 #### <a name="instance-metadata"></a>インスタンス メタデータ
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

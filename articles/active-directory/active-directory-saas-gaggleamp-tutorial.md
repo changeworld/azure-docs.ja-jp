@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と GaggleAMP の統合 | Microsoft Docs"
-description: "Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と GaggleAMP の統合 | Microsoft Docs'
+description: Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ffa6a3d6cc1377277591de63c7224b23796b53d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f68fdd84acd95ccd2a400e02303247f246d876b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル: Azure Active Directory と GaggleAMP の統合
 
@@ -44,7 +44,7 @@ GaggleAMP と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -63,11 +63,11 @@ Azure AD への GaggleAMP の統合を構成するには、ギャラリーから
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **GaggleAMP**」と入力します。
 
@@ -90,7 +90,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[GaggleAMP テスト ユーザーの作成](#creating-a-gaggleamp-test-user)** - GaggleAMP で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,50 +100,54 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **GaggleAMP** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_samlbase.png)
 
-3. **[GaggleAMP のドメインと URL]** セクションで、次の手順を実行します。
+3. **[GaggleAMP のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url.png)
 
-     **[サインオン URL]** ボックスに、`https://<subdomain>.gaggleamp.com` のパターンを使用して URL を入力します。
+     **[識別子]** ボックスに次の URL を入力します。`https://accounts.gaggleamp.com/auth/saml/callback`
 
-    > [!NOTE] 
-    > この値は実際のものではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[GaggleAMP クライアント サポート チーム](mailto:sales@gaggleamp.com)に問い合わせてください。 
+4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url1.png)
+
+     **[サインオン URL]** ボックスに、`https://gaggleamp.com/i/<customerid>` のパターンを使用して URL を入力します。
+
+    > [!NOTE]
+    > サインオン URL は実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[GaggleAMP クライアント サポート チーム](mailto:sales@gaggleamp.com)に連絡してください。
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_400.png)
 
-6. **[GaggleAMP 構成]** セクションで、**[GaggleAMP の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+7. **[GaggleAMP 構成]** セクションで、**[GaggleAMP の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_configure.png) 
 
-7. 別のブラウザー インスタンスで、Gaggle サポート チームによって作成された SAML SSO ページ (例: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*) に移動します。
+8. 別のブラウザー インスタンスで、Gaggle サポート チームによって作成された SAML SSO ページ (例: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*) に移動します。
 
-8. **[SAML SSO]** ページで、次の手順を実行します。  
+9. **[SAML SSO]** ページで、次の手順を実行します。  
    
-    ![GaggleAMP シングル サインオン](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png) 
- 
-    a. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure Portal からコピーした**発行者の URL** の値を貼り付けます。 
- 
-    b. **[Identity Provider Single Sign-On URL]\(ID プロバイダー シングル サインオン URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。 
+    ![GaggleAMP シングル サインオン](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
-    c. **[保存]**      
-
-    d. **[Certificate (Base64)]\(証明書 (Base64)\)** の証明書を、[GaggleAMP サポート チーム](mailto:sales@gaggleamp.com)に送ります。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity provider]\(ID プロバイダー\)** ドロップダウン メニューから **[Other]\(その他\)** を選択します。
+    
+    b. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure Portal からコピーした**発行者の URL** の値を貼り付けます。
+    
+    c. **[Identity Provider Single Sign-On URL]\(ID プロバイダー シングル サインオン URL\)** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    
+    d. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    
+    e. **[Save]** をクリックします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -168,7 +172,7 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-gaggleamp-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -194,9 +198,9 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[GaggleAMP]**を選択します。
+2. アプリケーションの一覧で **[GaggleAMP]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -223,8 +227,6 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_01.png
@@ -238,4 +240,3 @@ GaggleAMP で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_203.png
-

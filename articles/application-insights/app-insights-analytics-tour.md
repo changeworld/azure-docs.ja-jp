@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2017
+ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9727e3b715334837b959f22dd526caba221be62c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 81c5b6051b8e1b1812e47cfcb64538c25ee8bfe5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/18/2018
 
 ![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[take](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): n 個の行を表示する
+## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[take](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): n 個の行を表示する
 ユーザーの操作 (通常、Web アプリが受信する HTTP 要求) を記録するデータ ポイントは、 `requests`という名前のテーブルに格納されます。 各行は、アプリの Application Insights SDK から受信したテレメトリ データ ポイントです。
 
 テーブルのいくつかのサンプル行を調べることから始めましょう。
@@ -68,7 +68,7 @@ ms.lasthandoff: 04/18/2018
     
 ```
 
-## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) と [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
+## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[top](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) と [sort](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
 `take` は結果の簡単なサンプルを取得するのに便利ですが、テーブルの行は任意の順序で表示されます。 指定した順序で表示するには、(サンプルに対して) `top` を使用するか、(テーブル全体に対して) `sort` を使用します。
 
 特定の列で並べ替えた最初の n 個の行を表示する場合は、以下のように指定します。
@@ -94,7 +94,7 @@ ms.lasthandoff: 04/18/2018
 
 テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。 ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合、列見出しをクリックすると、取得したレコードのみが並べ替えられます。
 
-## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): 条件に基づいてフィルター処理する
+## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[where](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): 条件に基づいてフィルター処理する
 
 特定の結果コードを返した要求だけを見てみましょう。
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 04/18/2018
 [日付と時刻のリファレンス](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime)。
 
 
-## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): 列の選択、名前変更、計算を行う
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[project](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): 列の選択、名前変更、計算を行う
 必要な列だけを選択する場合は、次のように [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) を使用します。
 
 ```AIQL
@@ -207,7 +207,7 @@ ms.lasthandoff: 04/18/2018
 式には、一般的な演算子 (`+`、`-` など) をすべて含めることができ、各種の便利な関数があります。
 
 ## <a name="extend"></a>Extend
-単に列を既存の列に追加する場合は、以下のように [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html)を使用します。
+単に列を既存の列に追加する場合は、以下のように [`extend`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator)を使用します。
 
 ```AIQL
 
@@ -216,7 +216,7 @@ ms.lasthandoff: 04/18/2018
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-既存の列をすべて保持する場合に、[`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) を使用すると [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) よりも詳細度が低くなります。
+既存の列をすべて保持する場合に、[`extend`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) を使用すると [`project`](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) よりも詳細度が低くなります。
 
 ### <a name="convert-to-local-time"></a>現地時刻への変換
 
@@ -229,8 +229,7 @@ ms.lasthandoff: 04/18/2018
     | extend localTime = timestamp - 8h
 ```
 
-
-## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): 行のグループをまとめる
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): 行のグループをまとめる
 `Summarize` を使用すると、行のグループに対して指定の *集計関数* が適用されます。
 
 たとえば、Web アプリが要求に対して応答するのにかかった時間が `duration`フィールドでレポートされます。 すべての要求に対する平均応答時間を見てみましょう。
@@ -268,7 +267,7 @@ ms.lasthandoff: 04/18/2018
 
 また、あるグループ内の行数を実際にカウントする必要がある場合のために、 `count()` 集計 (およびカウント操作) もあります。
 
-さまざまな [集計関数](https://docs.loganalytics.io/learn/tutorials/aggregations.html)が用意されています。
+さまざまな [集計関数](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions)が用意されています。
 
 ## <a name="charting-the-results"></a>結果のグラフ表示
 ```AIQL
@@ -409,7 +408,7 @@ ms.lasthandoff: 04/18/2018
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[パーセンタイル](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[パーセンタイル](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
 ここでは、セッションのパーセンタイルごとの期間範囲を見てみます。
 
 上記のクエリを使用しますが、最後の行は次のように置き換えます。
@@ -470,7 +469,7 @@ ms.lasthandoff: 04/18/2018
 結合を実行する前に必要な列のみを選択する場合は、 `project` を使用することをお勧めします。
 その場合、同じ句で、タイムスタンプ列の名前を変更します。
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): 結果を変数に代入する
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[let](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): 結果を変数に代入する
 
 上記の式の部分を分割する場合は、`let` を使用します。 結果は変わりません。
 

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bc6c98784195aaf80cb6ca32ef29f75666099b06
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のデプロイ方法
 
@@ -36,7 +36,7 @@ Linux コンピューターに Hybrid Runbook Worker をインストールして
 
 1.  Azure で "Automation Hybrid Worker" ソリューションを有効にします。 これは以下のいずれかの方法で実行できます。
 
-   1. 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions)」の手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
+   1. 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)」の手順を使用して、**Automation Hybrid Worker** ソリューションをサブスクリプションに追加します。
    2. 次のコマンドレットを実行します。
 
         ```powershell

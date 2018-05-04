@@ -1,8 +1,8 @@
 ---
-title: "アプリを Azure Virtual Network に統合する"
-description: "Azure App Service のアプリを新規または既存の Azure 仮想ネットワークに接続する方法を説明します。"
+title: アプリを Azure Virtual Network に統合する
+description: Azure App Service のアプリを新規または既存の Azure 仮想ネットワークに接続する方法を説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
 editor: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83f5c64926eb9b718463c415a5478af374245f31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能について説明し、この機能を [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) でアプリと共にセットアップする方法を示します。 Azure 仮想ネットワーク (VNet) とは、Azure リソースの多くをインターネット以外のルーティング可能なネットワークに配置できる機能です。配置先のネットワークへのアクセスは制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要][VNETOverview]に関するページに記載されている情報をご覧ください。 
@@ -57,7 +57,8 @@ VNet 統合を使用する一般的なシナリオは、Azure 仮想ネットワ
 
 * VNet 統合は、**Standard**、**Premium** または **Isolated**価格プランでのみ、アプリで使用できます。 この機能を有効にした後で、App Service プランをサポートされていない価格プランに変更すると、使用している VNet にアプリから接続できなくなります。 
 * ターゲットの仮想ネットワークが既に存在している場合は、そのネットワークで動的ルーティング ゲートウェイによるポイント対サイト VPN が有効になっていないと、アプリに接続できません。 静的ルーティング ゲートウェイが構成されている場合は、ポイント対サイト仮想プライベート ネットワーク (VPN) を有効にすることはできません。
-* VNet は、App Service プラン (ASP) と同じサブスクリプションにする必要があります。 
+* VNet は、App Service プラン (ASP) と同じサブスクリプションにする必要があります。
+* ポイント対サイトが有効なゲートウェイは既に存在しているが、基本的な SKU に含まれていない場合は、ポイント対サイト構成で IKEV2 を無効にする必要があります。
 * VNet と統合されるアプリケーションでは、その VNet に対して指定されている DNS を使用します。
 * 既定では、統合されるアプリは、VNet で定義されているルートに基づいて、その VNet にのみトラフィックをルーティングします。 
 

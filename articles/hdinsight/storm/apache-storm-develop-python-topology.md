@@ -1,8 +1,8 @@
 ---
-title: "Python コンポーネントを使用した Apache Storm - Azure HDInsight | Microsoft Docs"
-description: "Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。"
+title: Python コンポーネントを使用した Apache Storm - Azure HDInsight | Microsoft Docs
+description: Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ebfc9d5aa1c3a650a938c0a9f5fc3d047f90458d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 
@@ -29,7 +27,7 @@ Python コンポーネントを使用する Apache Storm トポロジを作成�
 > [!IMPORTANT]
 > このドキュメントの情報は、HDInsight 3.6 で Storm を使用してテストされました。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-このプロジェクトのコードは、[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) で入手できます。
+このプロジェクトのコードは [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) で利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +41,7 @@ Python コンポーネントを使用する Apache Storm トポロジを作成�
 
 ## <a name="storm-multi-language-support"></a>Storm の複数言語サポート
 
-Apache Storm は、任意のプログラミング言語で記述されたコンポーネントで動作するように設計されました。 コンポーネントは、[ Storm の Thrift 定義](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)の操作方法を理解する必要があります。 Python では、Storm と簡単に連動できるようにするための Apache Storm プロジェクトの一部として、モジュールが提供されます。 このモジュールは [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)にあります。
+Apache Storm は、任意のプログラミング言語で記述されたコンポーネントで動作するように設計されました。 コンポーネントは、[ Storm の Thrift 定義](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)の操作方法を理解する必要があります。 Python では、Storm と簡単に連動できるようにするための Apache Storm プロジェクトの一部として、モジュールが提供されます。 このモジュールは [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) にあります。
 
 Storm は、Java 仮想マシン (JVM) で実行される Java プロセスです。 他の言語で書かれたコンポーネントは、サブプロセスとして実行されます。 Storm は、stdin/stdout 経由で送信される JSON メッセージを使用して、これらのサブプロセスと通信します。 コンポーネント間の通信の詳細については、 [多言語プロトコル](https://storm.apache.org/documentation/Multilang-protocol.html) に関するドキュメントを参照してください。
 

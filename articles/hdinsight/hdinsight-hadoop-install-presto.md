@@ -1,28 +1,26 @@
 ---
-title: "Azure HDInsight Linux クラスターに Presto をインストールする | Microsoft Docs"
-description: "スクリプト アクションを使用して Linux ベースの HDInsight Hadoop クラスターに Presto と Airpal をインストールする方法について説明します。"
+title: Azure HDInsight Linux クラスターに Presto をインストールする | Microsoft Docs
+description: スクリプト アクションを使用して Linux ベースの HDInsight Hadoop クラスターに Presto と Airpal をインストールする方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e6f1e1ee37592d974cab01ca229995c4ff6b70e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 32b7925b7414f00dfdd7d5c8a45b3601bf58942e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
-このトピックでは、スクリプト アクションを使用して HDInsight Hadoop クラスターに Presto をインストールする方法について説明します。 既存の Presto HDInsight クラスターに Airpal をインストールする方法についても説明します。
+このドキュメントでは、スクリプト アクションを使用して HDInsight Hadoop クラスターに Presto をインストールする方法について説明します。 既存の Presto HDInsight クラスターに Airpal をインストールする方法についても説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する **HDInsight 3.5 Hadoop クラスター**が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。
@@ -42,15 +40,15 @@ ms.lasthandoff: 02/24/2018
 
 このセクションでは、Azure ポータルを使用して新しいクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。 
 
-1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。 このとき、**カスタム** クラスター作成フローを使用してクラスターを作成します。 作成したクラスターが次の要件を満たしていることを確認する必要があります。
+1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。 このとき、**カスタム** クラスター作成フローを使用してクラスターを作成します。 このクラスターは次の要件を満たしている必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 HDInsight Version 3.5 を使用する Hadoop クラスターである必要があります。
+    * HDInsight Version 3.5 を使用する Hadoop クラスターである必要があります。
 
-    b. データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターでの Presto の使用はまだサポートされていません。 
+    * データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターでの Presto の使用はまだサポートされていません。 
 
     ![カスタム オプションを使用した HDInsight クラスターの作成](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. **[詳細設定]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
+2. **[詳細設定]** 領域で **[スクリプト アクション]** を選択し、以下の情報を指定します。
    
    * **[名前]**: スクリプト アクションの表示名を入力します。
    * **[バッシュ スクリプト URI]**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
@@ -60,7 +58,7 @@ ms.lasthandoff: 02/24/2018
    * **[パラメーター]**: このフィールドは空のままにします。
 
 
-3. **[スクリプト アクション]** ブレードの下部で、**[選択]** をクリックして構成を保存します。 最後に、**[詳細設定]** ブレードの下部にある **[選択]** をクリックして構成情報を保存します。
+3. **[スクリプト アクション]** 領域の下部で、**[選択]** をクリックして構成を保存します。 最後に、**[詳細設定]** 領域の下部にある **[選択]** をクリックして構成情報を保存します。
 
 4. 「 [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
@@ -71,7 +69,7 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="use-presto-with-hdinsight"></a>HDInsight での Presto の使用
 
-前述の手順を使用して Presto をインストールした後、HDInsight クラスターで Presto を使用するために次の手順を実行します。
+HDInsight クラスターで Presto を使用するには、次の手順を実行します。
 
 1. SSH を使用して HDInsight クラスターに接続します。
    
@@ -90,13 +88,13 @@ ms.lasthandoff: 02/24/2018
    
     既定では、Presto 用に [Hive](https://prestodb.io/docs/current/connector/hive.html) コネクタと [TPCH](https://prestodb.io/docs/current/connector/tpch.html) コネクタが既に構成されています。 Hive コネクタは既定のインストール済みの Hive を使用するように構成されているため、Hive からのすべてのテーブルが Presto に自動的に表示されます。
 
-    Presto の使用方法の詳細については、[Presto のドキュメント](https://prestodb.io/docs/current/index.html)を参照してください。
+    詳細については、[Presto のドキュメンテーション](https://prestodb.io/docs/current/index.html)を参照してください。
 
 ## <a name="use-airpal-with-presto"></a>Presto での Airpal の使用
 
 [Airpal](https://github.com/airbnb/airpal#airpal) は、Presto のオープンソースの Web ベースのクエリ インターフェイスです。 Airpal の詳細については、[Airpal のドキュメント](https://github.com/airbnb/airpal#airpal)を参照してください。
 
-このセクションでは、Presto が既にインストールされている HDInsight Hadoop クラスターの**エッジ ノードに Airpal をインストールする**手順について説明します。 これにより、Airpal の Web クエリ インターフェイスがインターネット経由で利用できるようになります。
+エッジ ノードに Airpal をインストールするには、次の手順を実行します。
 
 1. SSH を使用して、Presto がインストールされている HDInsight クラスターのヘッド ノードに接続します。
    
@@ -108,7 +106,7 @@ ms.lasthandoff: 02/24/2018
 
         sudo slider registry  --name presto1 --getexp presto 
    
-    出力は次のように表示されます。
+    次の JSON のような出力が表示されます。
 
         {
             "coordinator_address" : [ {
@@ -119,7 +117,7 @@ ms.lasthandoff: 02/24/2018
 
 3. 出力の **value** プロパティの値をメモに記録します。 この値は、Airpal をクラスターのエッジ ノードにインストールするときに必要になります。 上記の出力の場合、必要な値は **10.0.0.12:9090** です。
 
-4. **[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2Fpresto-hdinsight%2Fmaster%2Fairpal-deploy.json)**に用意されているテンプレートを使用して、HDInsight クラスターのエッジ ノードを作成し、次のスクリーンショットに示すように値を指定します。
+4. **[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2Fpresto-hdinsight%2Fmaster%2Fairpal-deploy.json)** に用意されているテンプレートを使用して、HDInsight クラスターのエッジ ノードを作成し、次のスクリーンショットに示すように値を指定します。
 
     ![HDInsight クラスター上の Presto 用の Airpal のインストール](./media/hdinsight-hadoop-install-presto/hdinsight-install-airpal.png)
 
@@ -127,19 +125,19 @@ ms.lasthandoff: 02/24/2018
 
 6. 変更がクラスター構成に適用されると、次の手順を使用して Airpal Web インターフェイスにアクセスできます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クラスター ブレードで、**[アプリケーション]** をクリックします。
+    1. クラスター ダイアログで、**[アプリケーション]** をクリックします。
 
-    ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
+        ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    b. **[インストール済みアプリ]** ブレードで、airpal に対して **[ポータル]** をクリックします。
+    2. **[インストール済みアプリ]** 領域で、airpal に対して **[ポータル]** をクリックします。
 
-    ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
+        ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    c. 入力を求められたら、HDInsight Hadoop クラスターの作成中に指定した管理者資格情報を入力します。
+    3. 入力を求められたら、HDInsight Hadoop クラスターの作成中に指定した管理者資格情報を入力します。
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>HDInsight クラスター上の Presto インストールのカスタマイズ
 
-Presto を HDInsight Hadoop クラスターにインストールした後、メモリ設定の更新、コネクタの変更などの変更を行ってインストールをカスタマイズできます。そのためには、次の手順を実行します。
+インストールをカスタマイズするには、次の手順を実行します。
 
 1. SSH を使用して、Presto がインストールされている HDInsight クラスターのヘッド ノードに接続します。
    
@@ -165,12 +163,12 @@ Presto を HDInsight Hadoop クラスターにインストールした後、メ�
 
 ## <a name="generate-benchmark-data-for-hdinsight-clusters-that-run-presto"></a>Presto を実行する HDInsight クラスターのベンチマーク データの生成
 
-TPC-DS は、ビッグ データ システムを含む多くの意思決定支援システムのパフォーマンスを測定するための業界標準です。 HDInsight クラスターで Presto を使用してデータを生成し、独自の HDInsight ベンチマーク データと比較して評価することができます。 詳細については、[このページ](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md)を参照してください。
+TPC-DS は、ビッグ データ システムを含む多くの意思決定支援システムのパフォーマンスを測定するための業界標準です。 Presto を使用してデータを生成し、独自の HDInsight ベンチマーク データと比較して評価することができます。 詳細については、[このページ](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md)を参照してください。
 
 
 
 ## <a name="see-also"></a>関連項目
-* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。 Hue は、Pig ジョブや Hive ジョブの作成、実行、保存や、HDInsight クラスターの既定のストレージの参照を容易にする Web UI です。
+* [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。 色合いは、Pig ジョブと Hive ジョブを作成、実行、保存し易くする Web の UI です。
 
 * [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md) クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 

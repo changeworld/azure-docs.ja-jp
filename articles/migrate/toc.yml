@@ -24,6 +24,8 @@
           href: migrate-scenarios-overview.md
         - name: シナリオ 1 - Azure への移行についてオンプレミスのリソースを評価する
           href: migrate-scenarios-assessment.md
+        - name: シナリオ 2 - リフト アンド シフト方式による Azure への移行
+          href: migrate-scenarios-lift-and-shift.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md
     - name: マシンのグループ化

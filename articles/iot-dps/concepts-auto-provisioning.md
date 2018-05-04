@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: ''
-ms.openlocfilehash: cd458b1f6d26fbd5f5821a04cd01be5c3a4e4514
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auto-provisioning-concepts"></a>自動プロビジョニングの概念
 
@@ -31,7 +31,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
    > [!NOTE]
    > IoT ソリューションのサイズに関係なく、何百万ものデバイスのサポートを計画している場合でも、これは **1 回限りの構成**です。
 
-2. **デバイスの加入** - 後で登録するデバイスを Device Provisioning Service インスタンスに知らせるプロセス。 加入するには、プロビジョニング サービスでデバイス ID 情報を構成します。単一デバイスの場合は "個別加入"、複数デバイスの場合は "グループ加入" にします。 ID は、デバイスが使用するように設計されている、以下の[構成証明メカニズム](concepts-security.md#attestation-mechanism)に基づきます。このメカニズムにより、プロビジョニング サービスは登録時にデバイスの信頼性を証明できます。
+2. **デバイスの加入** - 後で登録するデバイスを Device Provisioning Service インスタンスに知らせるプロセス。 [加入](concepts-service.md#enrollment)するには、プロビジョニング サービスでデバイス ID 情報を構成します。単一デバイスの場合は "個別加入"、複数デバイスの場合は "グループ加入" にします。 ID は、デバイスが使用するように設計されている、以下の[構成証明メカニズム](concepts-security.md#attestation-mechanism)に基づきます。このメカニズムにより、プロビジョニング サービスは登録時にデバイスの信頼性を証明できます。
 
    - **TPM**: "個別加入" として構成されます。デバイス ID は、TPM 登録 ID と公開保証キーに基づきます。 TPM が[仕様]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/))である場合、サービスは TPM の実装 (ハードウェアまたはソフトウェア) に関係なく、仕様ごとの証明だけを想定します。 TPM ベースの証明の詳細については、「[Device provisioning: Identity attestation with TPM (デバイス プロビジョニング: TPM による ID 証明)](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/)」を参照してください。 
 
@@ -82,7 +82,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 |  | シミュレートされたデバイスの構成証明メカニズム | クイック スタート SDK/言語 |  |
 |--|--|--|--|
 |  | トラステッド プラットフォーム モジュール (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.JS](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

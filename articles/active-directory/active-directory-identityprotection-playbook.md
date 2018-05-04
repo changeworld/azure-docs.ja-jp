@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Identity Protection プレイブック | Microsoft Docs"
-description: "Azure AD Identity Protection を使用して、侵害された ID またはデバイスを攻撃者が悪用する能力を制限する方法、および以前に疑われた、または侵害を確認された ID またはデバイスを保護する方法について説明します。"
+title: Azure Active Directory Identity Protection プレイブック | Microsoft Docs
+description: Azure AD Identity Protection を使用して、侵害された ID またはデバイスを攻撃者が悪用する能力を制限する方法、および以前に疑われた、または侵害を確認された ID またはデバイスを保護する方法について説明します。
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/21/2018
 
 **匿名 IP からサインインをシミュレートするには、次の手順を実行します**。
 
-1. [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) を使用し、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。   
+1. [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) を使用して [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。   
 2. **匿名 IP アドレスからのサインイン** レポートに表示するアカウントの資格情報を入力します。
 
 10 ～ 15 分以内に Identity Protection ダッシュボードにサインインが表示されます。 
@@ -90,18 +90,18 @@ ms.lasthandoff: 02/21/2018
 
 **特殊な場所へのあり得ない移動をシミュレートするには、次の手順を実行します**。
 
-1. 標準的なブラウザーを使用して、 [https://myapps.microsoft.com](https://myapps.microsoft.com)に移動します。  
+1. 標準的なブラウザーを使用して、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。  
 2. あり得ない移動のリスク イベントを生成するアカウントの資格情報を入力します。
 3. ユーザー エージェントを変更します。 ユーザー エージェントの変更は、Internet Explorer の開発者ツールから、あるいは Firefox または Chrome のユーザー エージェント切り替えアドオンを使用して、行うことができます。
 4. IP アドレスを変更します。 IP アドレスの変更は、VPN または Tor アドオンを使用して、または別のデータセンターの Azure で新しいマシンを起動して、行うことができます。
-5. 前と同じ資格情報を使用し、前のサインインから数分以内に、 [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
+5. 前と同じ資格情報を使用し、前のサインインから数分以内に、[https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 
 2 ～ 4 時間以内に Identity Protection ダッシュボードにサインインが表示されます。
 
 ## <a name="simulating-vulnerabilities"></a>脆弱性のシミュレーション
 脆弱性は、悪意のあるユーザーによって悪用される可能性のある Azure AD 環境内の弱点です。 現在、Azure AD Identity Protection では、Azure AD の他の機能を利用する 3 種類の脆弱性が明らかになっています。 これらの脆弱性は、以下の機能がセットアップされると Identity Protection ダッシュボードに自動的に表示されます。
 
-* Azure AD [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
+* Azure AD [Multi-Factor Authentication](authentication/multi-factor-authentication.md)
 * Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
 
@@ -145,7 +145,7 @@ ms.lasthandoff: 02/21/2018
 
 **サインインのリスク ポリシーをテストするには、次の手順に従います。**
 
-1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com ](https://portal.azure.com) にサインインします。
+1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 2. **Azure AD Identity Protection** に移動します。
 

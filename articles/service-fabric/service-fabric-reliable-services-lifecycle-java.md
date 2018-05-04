@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.openlocfilehash: 4270bf0b8002b5328241c6d31f399511fc38274e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9c2ce75b2bfb4b8ddab11ac94e5a8e50c2fad6ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services のライフサイクル
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Service Fabric は、複数の理由でステートフル サービスのプラ�
 
 サービスがステートフルなため、サービスが [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) を使う可能性も高くなります。 Service Fabric では、プライマリが降格されたときに最初に発生することの 1 つは、基になる状態への書き込みアクセスの取り消しです。 これは、サービスのライフサイクルに影響を与える第 2 の一連の問題につながります。 レプリカが移動中なのかあるいはシャットダウンされているのかと、そのタイミングに基づいて、コレクションが例外を返します。 これらの例外を正しく処理することが重要です。 
 
-Service Fabric によってスローされる例外には、永続的なもの [(`FabricException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception) と一時的なもの [(`FabricTransientException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception._fabric_transient_exception) があります。 永続的な例外は、ログに記録されてスローされる必要があります。 一時的な例外は、再試行ロジックに基づいて再試行できます。
+Service Fabric によってスローされる例外には、永続的なもの [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) と一時的なもの [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception._fabric_transient_exception) があります。 永続的な例外は、ログに記録されてスローされる必要があります。 一時的な例外は、再試行ロジックに基づいて再試行できます。
 
 Reliable Services のテストと検証の重要な部分は、`ReliableCollections` とサービスのライフサイクル イベントを組み合わせて使ったことによる例外を処理することです。 負荷がかかった状態で常にサービスを実行することをお勧めします。 また、運用環境にデプロイする前に、アップグレードと[混乱テスト](service-fabric-controlled-chaos.md)を実行する必要もあります。 これらの基本手順を行うことで、サービスが正しく実装され、ライフサイクル イベントが正しく処理されるようになります。
 

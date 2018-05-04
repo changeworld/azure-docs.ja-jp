@@ -1,30 +1,28 @@
 ---
-title: "Linux ベースの HDInsight での Hadoop MapReduce と .NET の使用 - Azure | Microsoft Docs"
-description: "Linux ベースの HDInsight で MapReduce をストリーミングするために .NET アプリケーションを使用する方法について説明します。"
+title: Linux ベースの HDInsight での Hadoop MapReduce と .NET の使用 - Azure | Microsoft Docs
+description: Linux ベースの HDInsight で MapReduce をストリーミングするために .NET アプリケーションを使用する方法について説明します。
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: bff53af8f5c0b74cf0f69ba474d62ecdb7e20ce1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 36b8f51122bad6614e63dfc58e09e5c1ca08f83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
-Linux ベースの HDInsight クラスターは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono では、Linux ベースの HDInsight で MapReduce アプリケーションなどの .NET コンポーネントを使用することができます。 このドキュメントでは、Linux ベースの HDInsight 上で Mono を使用するために、Windows ベースの HDInsight クラスター用に作成された .NET ソリューションを移行する方法について学習します。
+Linux ベースの HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono では、Linux ベースの HDInsight で MapReduce アプリケーションなどの .NET コンポーネントを使用することができます。 このドキュメントでは、Linux ベースの HDInsight 上で Mono を使用するために、Windows ベースの HDInsight クラスター用に作成された .NET ソリューションを移行する方法について学習します。
 
 ## <a name="mono-compatibility-with-net"></a>Mono と .NET の互換性
 
@@ -41,15 +39,15 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
 1. [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) をインストールします。 インストール時に、使用する Visual Studio のバージョンを選択します。
 
-2. Visual Studio 2015 以降では、__[Analyze] \(分析)__ > __[Portability Analyzer Settings] \(移植性アナライザー設定)__を選択し、__[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
+2. Visual Studio 2015 以降では、__[Analyze] \(分析)__ > __[Portability Analyzer Settings] \(移植性アナライザー設定)__ を選択し、__[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
 
     ![Analyzer 設定の [Mono] セクションで [4.5] がチェックされた状態](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     __[OK]__ をクリックして構成を保存します。
 
-3. __[Analyze] \(分析)__ > __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__を選択します。 ソリューションを含むアセンブリを選択して、__[開く] \(Open)__を選択して分析を開始します。
+3. __[Analyze] \(分析)__ > __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__ を選択します。 ソリューションを含むアセンブリを選択して、__[開く] \(Open)__ を選択して分析を開始します。
 
-4. 分析が完了したら、__[Analyze] \(分析)__ > __[View analysis reports] \(分析レポートを表示)__を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__で、__[Open report] \(レポートを開く)__を選択してレポートを開きます。
+4. 分析が完了したら、__[Analyze] \(分析)__ > __[View analysis reports] \(分析レポートを表示)__ を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__ で、__[Open report] \(レポートを開く)__ を選択してレポートを開きます。
 
     ![移植性アナライザーの結果ダイアログ](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
@@ -58,7 +56,7 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
 ## <a name="manual-portability-analysis"></a>手動の移植性分析
 
-[Application Portability (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) ドキュメントにある情報を使用して、手動によるコードの監査を実行します。
+[アプリケーションの移植性に関するドキュメント (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) の情報を使用して、コードの手動監査を実行します。
 
 ## <a name="modify-and-build"></a>変更およびビルド
 

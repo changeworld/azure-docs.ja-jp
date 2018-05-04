@@ -1,6 +1,6 @@
 ---
-title: "Azure Payment Processing Blueprint - 物理アクセス要件"
-description: "PCI DSS 要件 9"
+title: Azure Payment Processing Blueprint - 物理アクセス要件
+description: PCI DSS 要件 9
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 89f7b20a130e988bfe4964d50ae97de788ca4623
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境の物理アクセス要件 
 ## <a name="pci-dss-requirement-9"></a>PCI DSS 要件 9
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、データ センターへの物理アクセス セキュリティを実装、適用および監視します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、データ センターの生体認証アクセス 制御メカニズムおよび CCTV を実装、適用および監視します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure プラットフォーム内でパブリックにアクセスできるネットワーク ジャックがないことを確認します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure ネットワーク ハードウェアへの物理アクセスは、アクセス リスト、複数の形式の認証、入口の物理的な制限、および機器にアクセスするためにビジネス ニーズが承認されることを要件とするなど、厳重に管理する必要があります。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、データ センターを訪問する従業員または下請け業者の物理アクセス セキュリティを実装、適用および監視します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft データ センターへのアクセスの承認は、最小特権の原則に基づいて、データ センター チームによって承認されたアクセス リストを使用して制御されます。 アクセス制御リストは、四半期に 1 回、レビューおよび確認、更新されます。<br /><br />Microsoft Azure データ センターでは、境界ゲート、電子アクセス バッジ リーダー、生体認証リーダー、マントラップ/ポータル、およびアンチパスバック デバイスなどの物理アクセス デバイスを使用します。 アクセス バッジ デバイスは、継続的に監視されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure では、情報処理施設から物理的に分離され、認証された従業員が監視する、セキュリティ保護された搬入口に事前に承認された納品物が納品されることを確認します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -141,7 +141,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure では、情報処理施設から物理的に分離され、認証された従業員が監視する、セキュリティ保護された搬入口に事前に承認された納品物が納品されることを確認します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -154,7 +154,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | マイクロソフトのデータ センターにアクセスする際は、事前に承認を受ける必要があり、許可された訪問者は到着時に物理的なセキュリティ チェックを受け、施設に入る前に有効な ID 証明を提示する必要があります。 バッジは、従業員を明確に区別できるものを使用します。 請負業者および訪問者は、臨時バッジを受け取り、施設を退出する際に返却する必要があります。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 訪問者は、マイクロソフトの施設を退出する前に、バッジを返却するよう求められます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -182,7 +182,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure は、コンピューター室およびカード所有者データが格納または送信されるデータ センターなどの施設での訪問者のアクティビティの物理的な監査証跡として、訪問者ログを管理します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -195,7 +195,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -234,7 +234,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -260,7 +260,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -300,7 +300,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
 
 
 
@@ -313,7 +313,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure SQL Database にすべてのデータを格納します。 PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。|
 
 
 
@@ -326,7 +326,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | データの破壊手法は、サブスクリプション、ストレージ、仮想マシン、データベースなどの破壊されるデータ物体の種類によって異なります。 Microsoft Azure のマルチ テナント環境では、顧客のデータが他の顧客データに "流れ込ん" だり、顧客がデータを削除したときに、他の顧客 (多くの場合はデータを以前に所有していた顧客) がその削除されたデータにアクセスできないように注意する必要があります。<br /><br />Microsoft Azure は、意図しないデータ漏洩に対処するための原則が記載されたメディアのサニタイズに関する NIST 800-88 ガイドラインに従っています。 これらのガイドラインは、電子的および物理的サニタイズについて規定しています。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、配置時に、使用されるリソース グループを削除することによって完全削除できます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、配置時に、使用されるリソース グループを削除することによって完全削除できます。|
 
 
 
@@ -342,7 +342,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、OMS を使用して、すべてのシステム変更をログに記録します。<br /><br />[Operations Management Suite (OMS)](/azure/operations-management-suite/) は、変更の詳細なログ記録を提供します。 変更をレビュー、検証して正確性を確認できます。 具体的なガイダンスについては、[PCI ガイダンス - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing) を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore は、Azure を使用して、すべてのシステム変更をログに記録します。<br /><br />Log Analytics は、広範にわたる変更のログ記録を提供します。 正確性を確保するために、変更内容を確認および検証できます。 具体的なガイダンスについては、「[PCI ガイダンス - ログ記録と監査](payment-processing-blueprint.md#logging-and-auditing)」を参照してください。|
 
 
 
@@ -358,7 +358,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、参照アーキテクチャおよび使用されるすべてのサービスの一覧が展開ドキュメントに記載されています。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、参照アーキテクチャおよび使用されるすべてのサービスの一覧が展開ドキュメントに記載されています。|
 
 
 
@@ -374,7 +374,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -391,7 +391,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 
@@ -404,7 +404,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | 適用不可。|
 
 
 

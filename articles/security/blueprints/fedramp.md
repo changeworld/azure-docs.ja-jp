@@ -1,6 +1,6 @@
 ---
-title: "Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化"
-description: "Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化"
+title: Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化
+description: Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 10ed297180f68fcaf006f2778990879be02f994d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化
 
@@ -76,10 +76,9 @@ ms.lasthandoff: 02/11/2018
 * **Azure Active Directory**
 * **Azure Resource Manager**
 * **Azure Log Analytics**
+    - (1) Log Analytics ワークスペース
 * **Azure Automation**
     - (1) Automation アカウント
-* **Operations Management Suite**
-    - (1) OMS ワークスペース
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 
@@ -122,7 +121,7 @@ ms.lasthandoff: 02/11/2018
 
 このアーキテクチャは、さまざまな暗号化手段を使用して、保存データを保護します。
 
-#### <a name="azure-storage"></a>Azure Storage (Azure Storage)
+#### <a name="azure-storage"></a>Azure Storage
 
 保存データの暗号化要件を満たすために、すべてのストレージ アカウントは、[ストレージ サービスの暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)を使用します。
 
@@ -136,7 +135,7 @@ SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.co
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 
 
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する知見を提供します。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、Azure ストレージ ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
@@ -154,7 +153,7 @@ SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.co
 次のテクノロジによって、Azure 環境に ID 管理機能が提供されます。
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。
 - Azure AD を使用して、お客様がデプロイした Web アプリケーションを認証できます。 詳細については、「[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)」をご覧ください。  
-- [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションのアクセスはサブスクリプション管理者に制限され、リソースへのアクセスはユーザー ロールに基づいて制限できます。
+- [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションのアクセスはサブスクリプション管理者に制限され、リソースへのアクセスはユーザー ロールに基づいて制限できます。
 - デプロイされた IaaS Active Directory インスタンスは、デプロイされた IaaS 仮想マシンの ID を OS レベルで管理します。
    
 ### <a name="compute-resources"></a>コンピューティング リソース
@@ -182,17 +181,17 @@ SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.co
 
 ### <a name="patch-management"></a>更新プログラムの管理
 
-この Azure のセキュリティとコンプライアンスのブループリント自動化によってデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションによってデプロイされる OMS Azure Automation ソリューションにより、更新プログラムのデプロイを作成し、必要に応じて Windows サーバーに修正プログラムをデプロイできます。
+この Azure のセキュリティとコンプライアンスのブループリント自動化によってデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションによってデプロイされる Azure Automation ソリューションにより、更新プログラムのデプロイを作成し、必要に応じて Windows サーバーに修正プログラムをデプロイできます。
 
 ### <a name="operations-management"></a>運用管理
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) は、Operations Management Suite (OMS) のサービスであり、Azure およびオンプレミス環境内のリソースで生成されたデータを収集して分析できるようにします。
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) は、Azure やオンプレミス環境のリソースによって生成されるデータの収集と分析を可能にするサービスです。
 
-#### <a name="oms-solutions"></a>OMS ソリューション
+#### <a name="management-solutions"></a>管理ソリューション
 
-このソリューションの一部として、次の OMS ソリューションが事前インストールされています。
+このソリューションの一部として、次の管理ソリューションがあらかじめインストールされています。
 - [AD 評価](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)
 - [マルウェア対策評価](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)
 - [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)

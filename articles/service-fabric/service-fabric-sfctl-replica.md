@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI- sfctl replica| Microsoft Docs
-description: "Service Fabric CLI sfctl replica のコマンドについて説明します。"
+description: Service Fabric CLI sfctl replica のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
 ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 サービス パーティションに属しているレプリカを管理します。
@@ -58,7 +58,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-replica-health"></a>sfctl replica health
@@ -130,7 +130,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-replica-remove"></a>sfctl replica remove
@@ -155,7 +155,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-replica-restart"></a>sfctl replica restart
@@ -179,7 +179,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="next-steps"></a>次の手順

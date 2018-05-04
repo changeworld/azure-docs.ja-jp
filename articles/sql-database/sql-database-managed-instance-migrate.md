@@ -9,26 +9,32 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 4546f03294ea8ab01ecb2b2777c5b92dbc5a7f4a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5b8a2ec7e0401ac239acdefdd77a13b522f73960
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージ インスタンスへの SQL Server インスタンスの移行
 
 この記事では、SQL Server 2005 以降のバージョンのインスタンスを Azure SQL Database マネージ インスタンス (プレビュー) に移行する方法について説明します。 
-
-> [!NOTE]
-> 単一のデータベースを単一のデータベースまたはエラスティック プールに移行するには、[Azure SQL データベースへの SQL Server データベースの移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 
 SQL Database マネージ インスタンスは、既存の SQL Database サービスの拡張版で、単一のデータベース、エラスティック プールと同時に 3 つ目のデプロイ オプションを提供します。  アプリケーションを再設計せずに、データベースを完全に管理された PaaS にリフトアンドシフトできるように設計されています。 SQL Database マネージ インスタンスは、オンプレミスの SQL Server プログラミング モデルとの高い互換性を備えています。また、追加設定をすることなく SQL Server の機能や SQL Server に付随するツールとサービスの大多数を利用できます。
 
 概要レベルでは、アプリケーションの移行プロセスは次の図のようになります。
 
 ![移行プロセス](./media/sql-database-managed-instance-migration/migration-process.png)
+
+- [マネージ インスタンスの互換性の評価](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
+- [アプリの接続性オプションの選択](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
+- [最適なサイズに設定されたマネージ インスタンスへのデプロイ](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
+- [移行方法の選択と移行](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
+- [アプリケーションの監視](sql-database-managed-instance-migrate.md#monitor-applications)
+
+> [!NOTE]
+> 単一のデータベースを単一のデータベースまたはエラスティック プールに移行するには、[Azure SQL データベースへの SQL Server データベースの移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 
 ## <a name="assess-managed-instance-compatibility"></a>マネージ インスタンスの互換性の評価
 
@@ -43,14 +49,6 @@ SQL Database マネージ インスタンスは、既存の SQL Database サー�
 - 特定バージョンの SQL Server (たとえば 2012 など) を確実に維持する必要がある場合。
 - コンピューティング要件が、マネージ インスタンスがパブリック プレビューで提供する能力よりもはるかに低く (たとえば、1 つの仮想コアなど)、データベースの統合が許容可能なオプションではない場合。
 
-## <a name="choose-app-connectivity-option"></a>アプリの接続性オプションの選択
-
-マネージ インスタンスは仮想ネットワークに完全に含まれるため、データに究極のレベルの分離性とセキュリティが提供されます。 次の図は、完全管理型のサービスを選択するか、フロントエンド アプリケーションのホステッド モデルを選択するかにかかわらず、Azure またはハイブリッド環境でさまざまなアプリケーション トポロジを完全にデプロイするための複数のオプションを示しています。
-
-![アプリケーション デプロイ トポロジ](./media/sql-database-managed-instance-migration/application-deployment-topologies.png)
-
-選択したオプションのいずれでも、データの分離性の最適なレベルを保証するプライベート IP アドレスによってのみ SQL エンドポイントに接続できます。 <!--- For more information, see How to connect your application to Managed Instance.--->
-
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>最適なサイズに設定されたマネージ インスタンスへのデプロイ
 
 マネージ インスタンスは、クラウドに移行する予定のオンプレミスのワークロード向けに調整されます。 ワークロードのリソースの適切なレベルの選択において高い柔軟性を発揮する新しい購入モデルが導入されます。 オンプレミスの世界では、物理コアを使用して、これらのワークロードのサイズを設定することがおそらく一般的です。 マネージ インスタンスの新しい購入モデルは仮想コア数 "vCores" に基づき、追加のストレージと IO を個別に利用できます。 仮想コア モデルは、クラウドのコンピューティング要件と現在オンプレミスで使用しているものを把握するためのシンプルな方法です。 この新しいモデルにより、クラウド内の移行先環境を適切にサイズ設定することができます。
@@ -59,7 +57,7 @@ SQL Database マネージ インスタンスは、既存の SQL Database サー�
 
 ![マネージ インスタンスのサイズ設定](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-VNet インフラストラクチャとマネージ インスタンスを作成する方法と、バックアップ ファイルからデータベースを復元する方法については、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関する記事をご覧ください。
+VNet インフラストラクチャとマネージ インスタンスを作成する方法については、[マネージ インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > 移行先の VNet とサブネットが常に[マネージ インスタンス VNET 要件](sql-database-managed-instance-vnet-configuration.md#requirements)に従っているようにすることが重要です。 非互換性があると、新しいインスタンスの作成や、既に作成したインスタンスの使用ができなくなることがあります。
@@ -77,11 +75,13 @@ SQL インスタンスを移行するには、以下を慎重に計画する必�
 
 マネージ インスタンスでは、次のデータベース移行オプションがサポートされます (現在は、これらの移行方法のみがサポートされます)。
 
+- Azure Database Migration Service - ほぼダウンタイムがない移行
+- URL からのネイティブ復元 - SQL Server のネイティブ バックアップを使用し、ある程度のダウンタイムが必要
+- BACPAC ファイルを使用した移行 - SQL Server または SQL Database の BACPAC ファイルを使用し、ある程度のダウンタイムが必要
+
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、Azure に既存のサード パーティ製データベースと SQL Server データベースを移行するために必要なタスクを合理化します。 パブリック プレビューのデプロイ オプションには、Azure Virtual Machine に Azure SQL Database、マネージ インスタンス、SQL Server が含まれます。 DMS は、エンタープライズ ワークロードの移行に推奨される方法です。 
-
-![DMS](./media/sql-database-managed-instance-migration/dms.png)
 
 このシナリオと DMS での構成手順について詳しくは、[DMS を使用したオンプレミスのデータベースのマネージ インスタンスへの移行](../dms/tutorial-sql-server-to-managed-instance.md)に関する記事をご覧ください。  
 
@@ -100,12 +100,12 @@ SQL インスタンスを移行するには、以下を慎重に計画する必�
 |Azure Storage へのバックアップの格納|SQL 2012 SP1 CU2 より前|Azure Storage に .bak ファイルを直接アップロードする|
 ||2012 SP1 CU2 - 2016|非推奨の [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) 構文を使用して直接バックアップする|
 ||2016 以上|[WITH SAS CREDENTIAL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) を使用して直接バックアップする|
-|Azure Storage からマネージ インスタンスへの復元|[SAS 資格情報での URL からの復元](sql-database-managed-instance-tutorial-portal.md#restore-the-wide-world-importers-database-from-a-backup-file)|
+|Azure Storage からマネージ インスタンスへの復元|[SAS 資格情報での URL からの復元](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
 > システム データベースの復元はサポートされていません。 (マスターまたは msdb データベースに格納されている) インスタンス レベルのオブジェクトを移行するには、それらのスクリプトを作成し、移行先のインスタンスで T-SQL スクリプトを実行することをお勧めします。
 
-SAS 資格情報を使用したマネージ インスタンスへのデータベース バックアップの復元を含む詳しいチュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関する記事をご覧ください。
+SAS 資格情報を使用したマネージ インスタンスへのデータベース バックアップの復元を含む詳しいチュートリアルについては、[バックアップからマネージ インスタンスへの復元](sql-database-managed-instance-restore-from-backup-tutorial.md)に関する記事をご覧ください。
 
 ### <a name="migrate-using-bacpac-file"></a>BACPAC ファイルを使用した移行
 
@@ -127,6 +127,6 @@ Azure SQL Database とマネージ インスタンスは、BACPAC ファイル�
 
 ## <a name="next-steps"></a>次の手順
 
-- マネージ インスタンスについては、「[What is a Managed Instance? (マネージ インスタンスとは)](sql-database-managed-instance.md)」をご覧ください
-- バックアップからの復元を含むチュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関する記事をご覧ください。
+- マネージ インスタンスについては、「[What is a Managed Instance? (マネージ インスタンスとは)](sql-database-managed-instance.md)」をご覧ください。
+- バックアップからの復元を含むチュートリアルについては、[マネージ インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関する記事をご覧ください。
 - DMS を使用した移行を示すチュートリアルについては、[DMS を使用したオンプレミスのデータベースのマネージ インスタンスへの移行](../dms/tutorial-sql-server-to-managed-instance.md)に関する記事をご覧ください。  

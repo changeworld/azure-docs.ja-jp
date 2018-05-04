@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf54c789d766c4bd3d353028e75e34c961470070
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 
@@ -24,7 +24,7 @@ Wingtip SaaS アプリケーションは、サンプルのマルチテナント 
 
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 
-Wingtip SaaS アプリでは、テナントごとのデータベース モデルを使用します。 SQL エラスティック プールを使用して効率を最大化します。 テナントをプロビジョニングしてデータにマッピングするために、カタログ データベースが使用されます。 主要な Wingtip SaaS アプリケーションは、3 つのサンプル テナントと 1 つのカタログ データベースを備えたプールを使用します。 Wingtip SaaS チュートリアルの多くを完了すると、初期デプロイにアドオンが追加されます。 分析データベースやデータベース間のスキーマ管理などのアドオンが導入されます。
+Wingtip SaaS アプリでは、テナントごとのデータベース モデルを使用します。 SQL エラスティック プールを使用して効率を最大化します。 テナントをプロビジョニングしてデータにマッピングするために、カタログ データベースが使用されます。 主要な Wingtip SaaS アプリケーションは、3 つのサンプル テナントと 1 つのカタログ データベースを備えたプールを使用します。 カタログとテナントのサーバーが DNS エイリアスでプロビジョニングされています。 これらの別名は、Wingtip アプリケーションによって使用されているアクティブなリソースへの参照を維持するために使用されます。 これらの別名は、災害復旧のチュートリアルで回復のリソースへのポイントに更新されます。 Wingtip SaaS チュートリアルの多くを完了すると、初期デプロイにアドオンが追加されます。 分析データベースやデータベース間のスキーマ管理などのアドオンが導入されます。
 
 
 ![Wingtip SaaS のアーキテクチャ](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)

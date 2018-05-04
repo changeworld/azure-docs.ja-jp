@@ -1,25 +1,23 @@
 ---
-title: "HDInsight に Azure ストレージ アカウントを追加する | Microsoft Docs"
-description: "既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。"
+title: HDInsight に Azure ストレージ アカウントを追加する | Microsoft Docs
+description: 既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 569a41dfdbf2f9d911e67f283f413130ba7e1f79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -100,7 +98,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > `$PASSWORD` には、クラスター ログイン (管理者) アカウントのパスワードを設定します。 `$CLUSTERNAME` には、HDInsight クラスターの名前を設定します。 `$STORAGEACCOUNTNAME` には、ストレージ アカウントの名前を設定します。
 >
-> この例では、[curl (http://curl.haxx.se/)](http://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) を使用して、JSON データを取得して解析します。
+> この例では、[curl (http://curl.haxx.se/) ](http://curl.haxx.se/) と [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/)を使用して、JSON データを取得して解析します。
 
 このコマンドを使用するときは、__CLUSTERNAME__ を HDInsight クラスターの名前に置き換えます。 __PASSWORD__ は、クラスターの HTTP ログイン パスワードに置き換えます。 __STORAGEACCOUNT__ は、スクリプト アクションを使って追加されたストレージ アカウントの名前に置き換えます。 このコマンドから返される情報は、次のテキストに似たものとなります。
 

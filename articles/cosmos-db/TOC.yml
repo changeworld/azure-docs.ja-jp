@@ -1,6 +1,5 @@
-metadata: {}
 items:
-  - name: Cosmos DB のドキュメント
+  - name: Azure Cosmos DB のドキュメント
     href: index.yml
   - name: 概要
     items:
@@ -67,100 +66,27 @@ items:
             href: create-cassandra-dotnet.md
           - name: Python
             href: create-cassandra-python.md
-  - name: チュートリアル
-    items:
-      - name: 1 - 作成
-        items:
-          - name: SQL
-            href: tutorial-develop-sql-api-dotnet.md
-          - name: .NET での MongoDB
-            href: tutorial-develop-mongodb.md
-          - name: Angular での MongoDB
-            href: tutorial-develop-mongodb-nodejs.md
-          - name: React での MongoDB
-            href: tutorial-develop-mongodb-react.md
-          - name: テーブル
-            href: tutorial-develop-table-dotnet.md
-          - name: Graph
-            href: tutorial-develop-graph-dotnet.md
-          - name: Cassandra
-            href: tutorial-develop-cassandra-java.md
-      - name: 2 - インポート
-        items:
-          - name: SQL
-            href: import-data.md
-          - name: MongoDB
-            href: mongodb-migrate.md
-          - name: テーブル
-            href: table-import.md
-          - name: Cassandra
-            href: cassandra-import-data.md
-      - name: 3 - クエリ
-        items:
-          - name: SQL
-            href: tutorial-query-sql-api.md
-          - name: MongoDB
-            href: tutorial-query-mongodb.md
-          - name: テーブル
-            href: tutorial-query-table.md
-          - name: Graph
-            href: tutorial-query-graph.md
-      - name: 4 - グローバル分散
-        items:
-          - name: SQL
-            href: tutorial-global-distribution-sql-api.md
-          - name: MongoDB
-            href: tutorial-global-distribution-mongodb.md
-          - name: テーブル
-            href: tutorial-global-distribution-table.md
-          - name: Graph
-            href: tutorial-global-distribution-graph.md
-      - name: 5 - ローカルでの開発
-        items:
-          - name: エミュレーターの使用
-            href: local-emulator.md
-          - name: 証明書のエクスポート
-            href: local-emulator-export-ssl-certificates.md
-      - name: 6 - Functions との統合
-        items:
-          - name: HTTP トリガー
-            href: tutorial-functions-http-trigger.md
-  - name: サンプル
-    items:
-      - name: Azure CLI
-        href: cli-samples.md
-      - name: PowerShell
-        href: powershell-samples.md
-      - name: Azure Resource Manager のテンプレート
-        href: 'https://azure.microsoft.com/resources/templates/?term=cosmos+db&pageNumber=1'
   - name: 概念
     items:
-      - name: サーバーレス データベース
-        href: serverless-computing-database.md
       - name: グローバル配信
         href: distribute-data-globally.md
       - name: パーティション分割
         href: partition-data.md
-      - name: 一意のキー
-        href: unique-keys.md
-      - name: 整合性
-        href: consistency-levels.md
       - name: Throughput
         href: request-units.md
-      - name: マルチモデルの API
-        items:
-          - name: SQL
-            href: sql-api-introduction.md
-          - name: MongoDB
-            href: mongodb-introduction.md
-          - name: テーブル
-            href: table-introduction.md
-          - name: Graph
-            href: graph-introduction.md
-          - name: Cassandra
-            href: cassandra-introduction.md
+      - name: 整合性
+        href: consistency-levels.md
+      - name: 一意のキー
+        href: unique-keys.md
+      - name: サーバーレス データベース
+        href: serverless-computing-database.md
       - name: セキュリティ
         href: database-security.md
+        items:
+          - name: 保存時の暗号化
+            href: database-encryption-at-rest.md
+          - name: データへのアクセスのセキュリティ保護
+            href: secure-access-to-data.md
       - name: TCO
         href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: ユース ケース
@@ -168,40 +94,18 @@ items:
         items:
           - name: ソーシャル メディア アプリ
             href: social-media-apps.md
-  - name: ハウツー ガイド
+  - name: マルチモデル
+    expanded: true
     items:
-      - name: 開発
+      - name: SQL API ドキュメント
         items:
-          - name: SQL API
-            href: sql-api-index.md
+          - name: 概要
             items:
-              - name: リソース
-                href: sql-api-resources.md
-              - name: SQL クエリ
-                href: sql-api-sql-query.md
-              - name: SQL クエリのパフォーマンス
-                href: sql-api-sql-query-metrics.md
-              - name: SQL のプレイグラウンド
-                href: 'https://aka.ms/cosmos-db-playground'
-              - name: SQL データのパーティション分割
-                href: sql-api-partition-data.md
-              - name: ストアド プロシージャ、トリガー、UDF
-                href: programming.md
-              - name: パフォーマンス テスト
-                href: performance-testing.md
-              - name: Async Java のパフォーマンスに関するヒント
-                href: performance-tips-async-java.md
-              - name: .NET のパフォーマンスに関するヒント
-                href: performance-tips.md
-              - name: Java のパフォーマンスに関するヒント
-                href: performance-tips-java.md
-              - name: 複数のマスターのセットアップ
-                href: multi-region-writers.md
-              - name: DateTime
-                href: working-with-dates.md
-              - name: ドキュメント データのモデリング
-                href: modeling-data.md
-              - name: チュートリアル
+              - name: SQL API について
+                href: sql-api-introduction.md
+          - name: チュートリアル
+            items:
+              - name: 1 - 作成
                 items:
                   - name: 最初のアプリを記述する
                     items:
@@ -227,30 +131,179 @@ items:
                         href: sql-api-java-application.md
                       - name: Python Flask
                         href: sql-api-python-application.md
-              - name: サンプル
+              - name: 2 - インポート
+                href: import-data.md
+              - name: 3 - クエリ
+                href: tutorial-query-sql-api.md
+              - name: 4 - グローバル分散
+                href: tutorial-global-distribution-sql-api.md
+              - name: 5 - ローカルでの開発
                 items:
-                  - name: .NET のサンプル
-                    href: sql-api-dotnet-samples.md
-                  - name: Java のサンプル
-                    href: sql-api-java-samples.md
-                  - name: Node.js のサンプル
-                    href: sql-api-nodejs-samples.md
-                  - name: Python のサンプル
-                    href: sql-api-python-samples.md
+                  - name: エミュレーターの使用
+                    href: local-emulator.md
+                  - name: 証明書のエクスポート
+                    href: local-emulator-export-ssl-certificates.md
+              - name: 6 - Functions との統合
+                items:
+                  - name: HTTP トリガー
+                    href: tutorial-functions-http-trigger.md
+          - name: サンプル
+            items:
+              - name: Azure CLI
+                href: cli-samples.md
+              - name: PowerShell
+                href: powershell-samples.md
+              - name: .NET のサンプル
+                href: sql-api-dotnet-samples.md
+              - name: Node.js のサンプル
+                href: sql-api-nodejs-samples.md
+              - name: Python のサンプル
+                href: sql-api-python-samples.md
+              - name: Java のサンプル
+                href: sql-api-java-samples.md
+          - name: 概念
+            items:
               - name: リソース
+                href: sql-api-resources.md
+              - name: モデル ドキュメント データ
+                href: modeling-data.md
+              - name: 複数のマスターのセットアップ
+                href: multi-region-writers.md
+          - name: ハウツー ガイド
+            items:
+              - name: クエリ
                 items:
-                  - name: SQL の文法チート シート
-                    href: sql-api-sql-query-cheat-sheet.md
-                  - name: ビデオ
-                    href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
-                  - name: サービスの更新情報
-                    href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
-                  - name: スキーマ独立型インデックス作成資料
-                    href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
-                  - name: S1、S2、S3 の廃止
-                    href: performance-levels.md
-          - name: MongoDB API
-            href: mongodb-index.md
+                  - name: SQL クエリの実行
+                    href: sql-api-sql-query.md
+                  - name: クエリ パフォーマンスの調整
+                    href: sql-api-sql-query-metrics.md
+              - name: Index
+                href: indexing-policies.md
+              - name: SQL データのパーティション分割
+                href: sql-api-partition-data.md
+              - name: ストアド プロシージャ、トリガー、UDF
+                href: programming.md
+              - name: Change Feed
+                href: change-feed.md
+              - name: データの種類
+                items:
+                  - name: DateTime
+                    href: working-with-dates.md
+                  - name: GeoSpatial
+                    href: geospatial.md
+              - name: パフォーマンスの調整
+                items:
+                  - name: パフォーマンス テスト
+                    href: performance-testing.md
+                  - name: Async Java のパフォーマンスに関するヒント
+                    href: performance-tips-async-java.md
+                  - name: .NET のパフォーマンスに関するヒント
+                    href: performance-tips.md
+                  - name: Java のパフォーマンスに関するヒント
+                    href: performance-tips-java.md
+              - name: 他の Azure サービスとの統合
+                items:
+                  - name: HDInsight でラムダ アーキテクチャを実装する
+                    href: lambda-architecture.md
+                  - name: Spark に接続する
+                    href: spark-connector.md
+                  - name: HDInsight での Kafka と Spark を使用したストリーミング
+                    href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+                  - name: Azure App Service で Web アプリをデプロイする
+                    href: create-website.md
+                  - name: Logic Apps を使用したアプリケーション ログ記録
+                    href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+                  - name: Azure Functions にバインドする
+                    href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+                  - name: Azure Search と統合する
+                    href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+                  - name: Azure Data Factory を使用してデータを移動する
+                    href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+                  - name: Azure Stream Analytics でリアルタイム データを分析する
+                    href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+                  - name: Logic Apps を使用して変更された HL7 FHIR レコードを取得する
+                    href: change-feed-hl7-fhir-logic-apps.md
+                  - name: センサー データをリアルタイムで処理する
+                    href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
+                  - name: Power BI でデータを視覚化する
+                    href: powerbi-visualize.md
+                  - name: ODBC ドライバーを利用してデータを視覚化する
+                    href: odbc-driver.md
+                  - name: SQL API で Spring Boot Starter を使用する
+                    href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
+          - name: リファレンス
+            items:
+              - name: Async Java
+                href: sql-api-sdk-async-java.md
+              - name: Java
+                href: sql-api-sdk-java.md
+              - name: .NET
+                href: sql-api-sdk-dotnet.md
+              - name: .NET Change Feed
+                href: sql-api-sdk-dotnet-changefeed.md
+              - name: .NET Core
+                href: sql-api-sdk-dotnet-core.md
+              - name: Node.js
+                href: sql-api-sdk-node.md
+              - name: Python
+                href: sql-api-sdk-python.md
+              - name: REST ()
+                href: /rest/api/cosmos-db/
+              - name: REST リソース プロバイダー
+                href: /rest/api/cosmos-db-resource-provider/
+              - name: SQL
+                href: sql-api-sql-query-reference.md
+          - name: リソース
+            items:
+              - name: Visual Studio Code 拡張機能
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+              - name: スキーマ独立型インデックス作成資料
+                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
+              - name: SQL のプレイグラウンド
+                href: 'https://aka.ms/cosmos-db-playground'
+      - name: MongoDB API ドキュメント
+        items:
+          - name: 概要
+            items:
+              - name: MongoDB API について
+                href: mongodb-introduction.md
+              - name: MongoDB のサポート
+                href: mongodb-feature-support.md
+          - name: チュートリアル
+            items:
+              - name: 1 - 作成
+                items:
+                  - name: Node.js
+                    href: mongodb-samples.md
+                  - name: Node.js と角度
+                    items:
+                      - name: パート 1 - はじめに
+                        href: tutorial-develop-mongodb-nodejs.md
+                      - name: パート 2 - Node アプリの作成
+                        href: tutorial-develop-mongodb-nodejs-part2.md
+                      - name: パート 3 - Angular UI の追加
+                        href: tutorial-develop-mongodb-nodejs-part3.md
+                      - name: パート 4 - Cosmos DB の作成
+                        href: tutorial-develop-mongodb-nodejs-part4.md
+                      - name: パート 5 - Cosmos DB への接続
+                        href: tutorial-develop-mongodb-nodejs-part5.md
+                      - name: パート 6 - アプリへの書き込み
+                        href: tutorial-develop-mongodb-nodejs-part6.md
+                  - name: Node.js と反応
+                    href: tutorial-develop-mongodb-react.md
+              - name: 2 - インポート
+                href: mongodb-migrate.md
+              - name: 3 - クエリ
+                href: tutorial-query-mongodb.md
+              - name: 4 - グローバル分散
+                href: tutorial-global-distribution-mongodb.md
+              - name: 5 - ローカルでの開発
+                items:
+                  - name: エミュレーターの使用
+                    href: local-emulator.md
+                  - name: 証明書のエクスポート
+                    href: local-emulator-export-ssl-certificates.md
+          - name: ハウツー ガイド
             items:
               - name: MongoDB アカウントへの接続
                 href: connect-mongodb-account.md
@@ -264,182 +317,144 @@ items:
                 href: mongodb-readpreference.md
               - name: インデックス作成
                 href: mongodb-indexing.md
-              - name: MongoDB 機能のサポート
-                href: mongodb-feature-support.md
-              - name: Angular チュートリアル シリーズ
-                items:
-                  - name: パート 2 - Node アプリの作成
-                    href: tutorial-develop-mongodb-nodejs-part2.md
-                  - name: パート 3 - Angular UI の追加
-                    href: tutorial-develop-mongodb-nodejs-part3.md
-                  - name: パート 4 - Cosmos DB の作成
-                    href: tutorial-develop-mongodb-nodejs-part4.md
-                  - name: パート 5 - Cosmos DB への接続
-                    href: tutorial-develop-mongodb-nodejs-part5.md
-                  - name: パート 6 - アプリへの書き込み
-                    href: tutorial-develop-mongodb-nodejs-part6.md
-              - name: その他のチュートリアル
-                items:
-                  - name: Node.js コンソール アプリ
-                    href: mongodb-samples.md
-          - name: Graph API
+              - name: Power BI でデータを視覚化する
+                href: powerbi-visualize.md
+          - name: リソース
             items:
+              - name: Visual Studio Code 拡張機能
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+      - name: Graph API ドキュメント
+        items:
+          - name: 概要
+            items:
+              - name: Graph API について
+                href: graph-introduction.md
               - name: Gremlin サポート
                 href: gremlin-support.md
+          - name: チュートリアル
+            items:
+              - name: 1 - 作成
+                href: tutorial-develop-graph-dotnet.md
+              - name: 2 - クエリ
+                href: tutorial-query-graph.md
+              - name: 3 - グローバル分散
+                href: tutorial-global-distribution-graph.md
+          - name: ハウツー ガイド
+            items:
               - name: グラフのパーティション分割
                 href: graph-partitioning.md
-          - name: テーブル API
+              - name: 統合
+                items:
+                  - name: Spark GraphX に接続する
+                    href: spark-connector-graph.md
+          - name: リファレンス
             items:
+              - name: .NET
+                href: graph-sdk-dotnet.md
+          - name: リソース
+            items:
+              - name: Visual Studio Code 拡張機能
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+      - name: テーブル API ドキュメント
+        items:
+          - name: 概要
+            items:
+              - name: テーブル API について
+                href: table-introduction.md
               - name: テーブルの開発
                 href: table-support.md
-              - name: PowerShell を使用したテーブル API 操作
-                href: table-powershell.md
-              - name: Azure Table Storage
-                items:
-                  - name: Table Storage の概要
-                    href: table-storage-overview.md
-                  - name: Table Storage の設計ガイド
-                    href: table-storage-design-guide.md
-                  - name: Table Storage REST API
-                    href: /rest/api/storageservices/Table-Service-Concepts
-                  - name: 開発
-                    items:
-                      - name: .NET
-                        href: table-storage-how-to-use-dotnet.md
-                      - name: 'F#'
-                        href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-                      - name: Node.js
-                        href: table-storage-cloud-service-nodejs.md
-                      - name: Java
-                        href: table-storage-how-to-use-java.md
-                      - name: Node.js
-                        href: table-storage-how-to-use-nodejs.md
-                      - name: C++
-                        href: table-storage-how-to-use-c-plus.md
-                      - name: PHP
-                        href: table-storage-how-to-use-php.md
-                      - name: Python
-                        href: table-storage-how-to-use-python.md
-                      - name: Ruby
-                        href: table-storage-how-to-use-ruby.md
-                      - name: PowerShell
-                        href: table-storage-how-to-use-powershell.md
-          - name: Change Feed
-            href: change-feed.md
-          - name: GeoSpatial
-            href: geospatial.md
-          - name: インデックス作成
-            href: indexing-policies.md
-      - name: '[管理]'
-        items:
-          - name: コスト効率の優れた読み取りと書き込み
-            href: key-value-store-cost.md
-          - name: データを自動的に期限切れにする
-            href: time-to-live.md
-          - name: バックアップおよび復元
-            href: online-backup-and-restore.md
-          - name: リージョン内フェールオーバー
-            href: regional-failover.md
-          - name: スループットの設定
-            href: set-throughput.md
-          - name: SLA の監視
-            href: monitor-accounts.md
-          - name: メトリックの使用
-            href: use-metrics.md
-          - name: 診断ログの記録
-            href: logging.md
-          - name: キーと整合性の管理
-            href: manage-account.md
-          - name: アクセス制御
-            href: access-control.md
-          - name: Azure ストレージ エクスプローラー
-            href: storage-explorer.md
-          - name: セキュリティ
+          - name: チュートリアル
             items:
-              - name: 保存時の暗号化
-                href: database-encryption-at-rest.md
-              - name: ファイアウォールのサポート
-                href: firewall-support.md
-              - name: データへのアクセスのセキュリティ保護
-                href: secure-access-to-data.md
-      - name: 統合
+              - name: 1 - 作成
+                href: tutorial-develop-table-dotnet.md
+              - name: 2 - インポート
+                href: table-import.md
+              - name: 3 - クエリ
+                href: tutorial-query-table.md
+              - name: 4 - グローバル分散
+                href: tutorial-global-distribution-table.md
+          - name: サンプル
+            items:
+              - name: .NET
+                href: table-storage-how-to-use-dotnet.md
+              - name: 'F#'
+                href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              - name: Node.js
+                href: table-storage-cloud-service-nodejs.md
+              - name: Java
+                href: table-storage-how-to-use-java.md
+              - name: Node.js
+                href: table-storage-how-to-use-nodejs.md
+              - name: C++
+                href: table-storage-how-to-use-c-plus.md
+              - name: PHP
+                href: table-storage-how-to-use-php.md
+              - name: Python
+                href: table-storage-how-to-use-python.md
+              - name: Ruby
+                href: table-storage-how-to-use-ruby.md
+              - name: PowerShell
+                href: table-storage-how-to-use-powershell.md
+          - name: リファレンス
+            items:
+              - name: .NET
+                href: table-sdk-dotnet.md
+              - name: Java
+                href: table-sdk-java.md
+              - name: Node.js
+                href: table-sdk-nodejs.md
+              - name: Python
+                href: table-sdk-python.md
+          - name: リソース
+            items:
+              - name: Table Storage の概要
+                href: table-storage-overview.md
+              - name: Table Storage の設計ガイド
+                href: table-storage-design-guide.md
+              - name: Table Storage REST API
+                href: /rest/api/storageservices/Table-Service-Concepts
+      - name: Cassandra API ドキュメント
         items:
-          - name: HDInsight でラムダ アーキテクチャを実装する
-            href: lambda-architecture.md
-          - name: Spark に接続する
-            href: spark-connector.md
-          - name: Spark GraphX に接続する
-            href: spark-connector-graph.md
-          - name: HDInsight での Kafka と Spark を使用したストリーミング
-            href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
-          - name: Azure App Service で Web アプリをデプロイする
-            href: create-website.md
-          - name: Logic Apps を使用したアプリケーション ログ記録
-            href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
-          - name: Azure Functions にバインドする
-            href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
-          - name: Azure Search と統合する
-            href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
-          - name: Azure Data Factory を使用してデータを移動する
-            href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
-          - name: Azure Stream Analytics でリアルタイム データを分析する
-            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
-          - name: Logic Apps を使用して変更された HL7 FHIR レコードを取得する
-            href: change-feed-hl7-fhir-logic-apps.md
-          - name: センサー データをリアルタイムで処理する
-            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
-          - name: Power BI でデータを視覚化する
-            href: powerbi-visualize.md
-          - name: ODBC ドライバーを利用してデータを視覚化する
-            href: odbc-driver.md
-          - name: SQL API で Spring Boot Starter を使用する
-            href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
-  - name: リファレンス
+          - name: 概要
+            items:
+              - name: Cassandra API について
+                href: cassandra-introduction.md
+          - name: チュートリアル
+            items:
+              - name: 1 - 作成
+                href: tutorial-develop-cassandra-java.md
+              - name: 2 - インポート
+                href: cassandra-import-data.md
+  - name: ハウツー ガイド
     items:
-      - name: コード サンプル
-        href: 'https://azure.microsoft.com/resources/samples/?service=cosmos-db'
-      - name: SQL API
-        items:
-          - name: Async Java
-            href: sql-api-sdk-async-java.md
-          - name: Java
-            href: sql-api-sdk-java.md
-          - name: .NET
-            href: sql-api-sdk-dotnet.md
-          - name: .NET Change Feed
-            href: sql-api-sdk-dotnet-changefeed.md
-          - name: .NET Core
-            href: sql-api-sdk-dotnet-core.md
-          - name: Node.js
-            href: sql-api-sdk-node.md
-          - name: Python
-            href: sql-api-sdk-python.md
-          - name: REST ()
-            href: /rest/api/cosmos-db/
-          - name: REST リソース プロバイダー
-            href: /rest/api/cosmos-db-resource-provider/
-          - name: SQL
-            href: sql-api-sql-query-reference.md
-      - name: テーブル API
-        items:
-          - name: .NET
-            href: table-sdk-dotnet.md
-          - name: Java
-            href: table-sdk-java.md
-          - name: Node.js
-            href: table-sdk-nodejs.md
-          - name: Python
-            href: table-sdk-python.md
-      - name: Graph API
-        items:
-          - name: .NET
-            href: graph-sdk-dotnet.md
+      - name: キーと整合性
+        href: manage-account.md
+      - name: Throughput
+        href: set-throughput.md
+      - name: ファイアウォールのサポート
+        href: firewall-support.md
+      - name: メトリック
+        href: use-metrics.md
+      - name: SLA の監視
+        href: monitor-accounts.md
+      - name: バックアップおよび復元
+        href: online-backup-and-restore.md
+      - name: リージョン内フェールオーバー
+        href: regional-failover.md
+      - name: 診断ログの記録
+        href: logging.md
+      - name: コスト効率の優れた読み取りと書き込み
+        href: key-value-store-cost.md
+      - name: データを自動的に期限切れにする
+        href: time-to-live.md
   - name: リソース
     items:
       - name: クエリ チート シート
         href: query-cheat-sheet.md
       - name: 20 日のヒント
         href: 20-days-of-tips.md
+      - name: ビデオ
+        href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
       - name: Azure のロードマップ
         href: 'https://azure.microsoft.com/roadmap/'
       - name: Azure Cosmos DB を無料で試す
@@ -450,5 +465,3 @@ items:
         href: faq.md
       - name: 野球で説明するデータ整合性
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
-      - name: Azure Cosmos DB のトラブルシューティング
-        href: troubleshoot-azure-cosmosdb.md

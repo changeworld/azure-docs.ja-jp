@@ -1,33 +1,114 @@
 ---
-title: "Azure Container Registry から Azure Container Instances へのデプロイ"
-description: "Azure Container Registry のコンテナー イメージを使用して、Azure Container Instances のコンテナーをデプロイする方法をご紹介します。"
+title: Azure Container Registry から Azure Container Instances へのデプロイ
+description: Azure Container Registry のコンテナー イメージを使用して、Azure Container Instances のコンテナーをデプロイする方法を紹介します。
 services: container-instances
-author: seanmck
-manager: timlt
+author: mmacy
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/24/2018
-ms.author: seanmck
+ms.date: 03/30/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: c69b95f66bf2eaf4975961da5b25f5ac6172798c
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 7a7d2aa61f25bc4782c6a1a6744e329935477f8c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
 Azure Container Registry は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 この記事では、Azure Container Registry に格納されているコンテナー イメージを Azure Container Instances にデプロイする方法について説明します。
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
+## <a name="prerequisites"></a>前提条件
 
-Azure CLI には、Azure Container Instances でコンテナーを作成および管理するためのコマンドが含まれています。 [az container create][az-container-create] コマンドでプライベート イメージを指定する場合は、コンテナー レジストリでの認証に必要なイメージ レジストリ パスワードも指定できます。
+**Azure Container Registry**: この記事の手順を完了するには、Azure コンテナー レジストリのほかにレジストリ内に 1 つ以上のコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
 
-```azurecli-interactive
-az container create --resource-group myResourceGroup --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --registry-password myRegistryPassword
+**Azure CLI**: この記事のコマンドラインの例では、[Azure CLI](/cli/azure/) を使用して Bash シェルに合わせた形式に設定されます。 ローカルに [Azure CLI をインストール](/cli/azure/install-azure-cli)するほかに、[Azure Cloud Shell][cloud-shell-bash] を使用することもできます。
+
+## <a name="configure-registry-authentication"></a>レジストリの認証を構成する
+
+本番環境シナリオでは、Azure コンテナー レジストリへのアクセス権を[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して提供する必要があります。 サービス プリンシパルを使用すると、コンテナー イメージへのロールベースのアクセス制御を提供できます。 たとえば、レジストリへのプルのみのアクセス権を持つサービス プリンシパルを設定できます。
+
+このセクションでは、Azure Key Vault とサービス プリンシパルを作成し、サービス プリンシパルの資格情報を資格情報コンテナーに格納します。
+
+### <a name="create-key-vault"></a>キー コンテナーの作成
+
+[Azure Key Vault](/azure/key-vault/) に資格情報コンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
+
+`RES_GROUP` 変数を、キー コンテナーを作成するリソース グループの名前で、`ACR_NAME` をコンテナー レジストリの名前でそれぞれ更新します。 `AKV_NAME` で新しいキー コンテナーの名前を指定します。 資格情報コンテナー名は、3 ～ 24 文字の英数字で、Azure 内で一意である必要があります。名前の先頭には英字、末尾には英字または数字を使用する必要があります。また、ハイフンを連続させることはできません。
+
+```azurecli
+RES_GROUP=myresourcegroup # Resource Group name
+ACR_NAME=myregistry       # Azure Container Registry registry name
+AKV_NAME=mykeyvault       # Azure Key Vault vault name
+
+az keyvault create -g $RES_GROUP -n $AKV_NAME
 ```
 
-[az container create][az-container-create] コマンドで、`--registry-login-server` と `--registry-username` を指定することもできます。 ただし、Azure Container Registry のログイン サーバーは常に *registryname*.azurecr.io であり、既定のユーザー名は *registryname* であるため、これらの値が明示的に指定されていない場合はイメージ名から推測されます。
+### <a name="create-service-principal-and-store-credentials"></a>サービス プリンシパルを作成し、資格情報を格納する
+
+これで、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納する必要があります。
+
+次のコマンドは、[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用して資格情報コンテナーにサービス プリンシパルの**パスワード**を格納します。
+
+```azurecli
+# Create service principal, store its password in AKV (the registry *password*)
+az keyvault secret set \
+  --vault-name $AKV_NAME \
+  --name $ACR_NAME-pull-pwd \
+  --value $(az ad sp create-for-rbac \
+                --name $ACR_NAME-pull \
+                --scopes $(az acr show --name $ACR_NAME --query id --output tsv) \
+                --role reader \
+                --query password \
+                --output tsv)
+```
+
+上記のコマンドの `--role` 引数により、*reader* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリへのプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *contributor* に変更します。
+
+次にサービス プリンシパルの *appId* を資格情報コンテナーに格納します。appId は、認証のために Azure Container Registry に渡す**ユーザー名**です。
+
+```azurecli
+# Store service principal ID in AKV (the registry *username*)
+az keyvault secret set \
+    --vault-name $AKV_NAME \
+    --name $ACR_NAME-pull-usr \
+    --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
+```
+
+Azure Key Vault を作成してに 2 つのシークレットを格納します。
+
+* `$ACR_NAME-pull-usr`: サービス プリンシパルID。コンテナー レジストリの**ユーザー名**として使用します。
+* `$ACR_NAME-pull-pwd`: サービス プリンシパルのパスワード。コンテナー レジストリの**パスワード**として使用します。
+
+これらのシークレットは、アプリケーションおよびサービスがレジストリからイメージをプルしたときの名前で参照できます。
+
+## <a name="deploy-container-with-azure-cli"></a>Azure CLI でコンテナーをデプロイする
+
+これでサービス プリンシパルの資格情報を Azure Key Vault シークレットに格納し、格納した資格情報をアプリケーションとサービスで使用してプライベート レジストリにアクセスできます。
+
+次の [az container create][az-container-create] コマンドを実行して、コンテナー インスタンスをデプロイします。 このコマンドは、Azure Key Vault に格納されたサービス プリンシパルの資格情報を使用して、コンテナー レジストリに対する認証を行います。事前に [aci-helloworld](container-instances-quickstart.md) イメージをレジストリにプッシュしていることが前提です。 レジストリにある別のイメージを使用する場合、`--image` の値を更新します。
+
+```azurecli
+az container create \
+    --name aci-demo \
+    --resource-group $RES_GROUP \
+    --image $ACR_NAME.azurecr.io/aci-helloworld:v1 \
+    --registry-login-server $ACR_NAME.azurecr.io \
+    --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) \
+    --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) \
+    --dns-name-label aci-demo-$RANDOM \
+    --query ipAddress.fqdn
+```
+
+前のコマンドが、コンテナーの DNS 名のラベルに乱数を追加するため、`--dns-name-label` の値は Azure 内で一意でなければなりません。 コマンドの出力には、次のようにコンテナーの完全修飾ドメイン名 (FQDN) が表示されます。
+
+```console
+$ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_NAME.azurecr.io/aci-helloworld:v1 --registry-login-server $ACR_NAME.azurecr.io --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
+"aci-demo-25007.eastus.azurecontainer.io"
+```
+
+コンテナーが正常に開始されると、ブラウザーでその FQDN に移動して、アプリケーションが正常に実行されていることを確認できます。
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したデプロイ
 
@@ -43,7 +124,7 @@ az container create --resource-group myResourceGroup --name myprivatecontainer -
 ]
 ```
 
-コンテナー レジストリのパスワードをテンプレートに直接保存することを避けるため、パスワードを [Azure Key Vault](../key-vault/key-vault-manage-with-cli2.md) にシークレットとして保存し、[Azure Resource Manager と Key Vault のネイティブ統合](../azure-resource-manager/resource-manager-keyvault-parameter.md)を使用してテンプレート内で参照することをお勧めします。
+Resource Manager テンプレートでの Azure Key Vault シークレットの参照については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)」を参照してください。
 
 ## <a name="deploy-with-azure-portal"></a>Azure Portal でのデプロイ
 
@@ -63,20 +144,20 @@ Azure Container Registry にコンテナー イメージを保持している場
 
     ![Azure Container Instances のコンテナー グループの詳細ビュー][aci-detailsview]
 
-## <a name="service-principal-authentication"></a>サービス プリンシパルの認証
-
-Azure コンテナー レジストリの管理者ユーザーが無効になっている場合は、コンテナー インスタンス作成時に、Azure Active Directory の[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して、レジストリへの認証を行うことができます。 サービス プリンシパルを用いた認証は、無人でコンテナー インスタンスを作成するスクリプトやアプリケーションといった、ヘッドレス シナリオでも推奨されています。
-
-詳細については、「[Authenticate with Azure Container Registry from Azure Container Instances (Azure Container Registry による Azure Container Instances からの認証)](../container-registry/container-registry-auth-aci.md)」をご覧ください。
-
 ## <a name="next-steps"></a>次の手順
 
-[チュートリアルを完了](container-instances-tutorial-prepare-app.md)することで、コンテナーを作成し、そのコンテナーをプライベート コンテナー レジストリにプッシュして、Azure Container Instances にデプロイします。
+Azure Container Registry の認証について詳しくは、「[Azure コンテナー レジストリによる認証](../container-registry/container-registry-authentication.md)」をご覧ください。
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
 [aci-detailsview]: ./media/container-instances-using-azure-container-registry/aci-detailsview.png
 [acr-runinstance-contextmenu]: ./media/container-instances-using-azure-container-registry/acr-runinstance-contextmenu.png
 
+<!-- LINKS - External -->
+[cloud-shell-bash]: https://shell.azure.com/bash
+[cloud-shell-powershell]: https://shell.azure.com/powershell
+
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-container-create]: /cli/azure/container#az_container_create
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set

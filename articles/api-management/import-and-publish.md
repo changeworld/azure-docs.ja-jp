@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: 26a5ab93c82b523063632c4899daadbde70dd7d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a72e870b1c98ec363b217030cf1e2f61ceaad5d9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 03/23/2018
     >[!NOTE]
     > API を発行するには、API を成果物に関連付ける必要があります。 この作業は **[設定] ページ**から行うことができます。
     
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 

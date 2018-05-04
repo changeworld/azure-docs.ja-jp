@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d57c80e8e965e15d92736ec482247f02064f6009
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
 
@@ -112,33 +112,17 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 
     **[サインオン URL]** ボックスに、URL として「`https://app.opsgenie.com/auth/login`」を入力します。
 
-4. **[保存]** ボタンをクリックします。
+4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png)
+
+5. **[保存]** ボタンをクリックします。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-5. **[OpsGenie Configuration (OpsGenie 構成)]** セクションで、**[Configure OpsGenie (OpsGenie を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 [クイック リファレンス] セクションから、**SAML シングル サインオン サービス URL** をコピーします。
+6. **[OpsGenie Configuration (OpsGenie 構成)]** セクションで、**[Configure OpsGenie (OpsGenie を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 [クイック リファレンス] セクションから、**SAML シングル サインオン サービス URL** をコピーします。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
-
-6. **メタデータ URL** を生成するには、次の手順を実行します。
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
-     
-    d. 次に、**OpsGenie** のプロパティ ページに移動し、**[コピー]** ボタンを使用して**アプリケーション ID** をコピーし、それをメモ帳に貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. 別のブラウザー インスタンスを開き、管理者として OpsGenie にログインします。
 
@@ -146,7 +130,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
     ![OpsGenie シングル サインオン](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_06.png)
 
-9. SSO を有効にするには、 **[有効]**を選択します。
+9. SSO を有効にするには、 **[有効]** を選択します。
    
     ![OpsGenie 設定](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
@@ -158,15 +142,11 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
     ![OpsGenie 設定](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 2.0 エンドポイント]** テキストボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** を貼り付けます。
+    a. **[SAML 2.0 エンドポイント]** テキストボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** を貼り付けます。
     
-    b. **[メタデータ URL:]** テキスト ボックスに、Azure Portal からコピーした**メタデータ URL** 値を貼り付けます。
+    b. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付けます。
     
-    c. **[変更を保存]**をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+    c. **[変更を保存]** をクリックします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -191,7 +171,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -209,13 +189,13 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
    ![OpsGenie 設定](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
-3. **[ユーザーの追加]**をクリックします。
+3. **[ユーザーの追加]** をクリックします。
 
 4. **[Add User]** ダイアログで、次の手順を実行します。
    
    ![OpsGenie 設定](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[電子メール]** テキストボックスに、Azure Active Directory の BrittaSimon の電子メール アドレスを入力します。
+   a. **[電子メール]** テキストボックスに、Azure Active Directory の BrittaSimon の電子メール アドレスを入力します。
    
    b. **[フル ネーム]** ボックスに「**Britta Simon**」と入力します。
    
@@ -236,7 +216,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[OpsGenie]**を選択します。
+2. アプリケーションの一覧で **[OpsGenie]** を選択します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_app.png) 
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: ''
-ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>新しいアラート (プレビュー) のエクスペリエンスを使用してアクティビティ ログ アラートを作成する
 
@@ -103,13 +103,13 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 
     **[アラート ロジック]**:
 
-        - **Event Level**- The severity level of the event.**Verbose,Informational, Warning, Error**, or **Critical**.
-        - **Status**: The status of the event.**Started, Failed**, or **Succeeded**.
-        - **Event initiated by**: Also known as the caller; The email address or Azure Active Directory identifier of the user who performed the operation.
+     - **[イベント レベル]**: イベントの重大度レベル。**[詳細]、[情報]、[警告]、[エラー]**、**[重大]**。
+     - **[状態]**: イベントの状態。**[開始]、[失敗]**、または **[成功]**。
+     - **[イベント開始者]**: 呼び出し元とも呼ばれます。操作を実行するユーザーのメール アドレスまたは Azure Active Directory 識別子です。
 
-        **Sample signal graph with alert logic applied** :
+        **アラート ロジックが適用されたシグナル グラフのサンプル**:
 
-        ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ 選択済み条件](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
 4. **[アラートの詳細を定義します]** で、以下の詳細を入力します。
 

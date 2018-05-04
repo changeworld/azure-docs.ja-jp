@@ -1,0 +1,102 @@
+---
+title: Azure クイック スタート - CLI を使用した Key Vault の作成 | Microsoft Docs
+description: CLI を使用して Azure Key Vault を作成する方法を示すクイック スタート
+services: key-vault
+author: barclayn
+manager: mbaldwin
+tags: azure-resource-manager
+ms.assetid: ''
+ms.service: key-vault
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 04/16/2018
+ms.author: barclayn
+ms.openlocfilehash: aaf8b93a41399b7754fb458d7d1d278a64f82139
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/23/2018
+---
+# <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>クイック スタート: CLI を使用した Azure Key Vault の作成
+
+Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Key Vault の詳細については、[概要](key-vault-overview.md)に関するページを参照してください。 Azure CLI は、コマンドまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 この記事では、Key Vault を作成します。 このクイック スタートでは、キー コンテナーを作成します。 この作業を完了したら、シークレットを格納します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+
+CLI を使用して Azure にログインするには、次のように入力します。
+
+```azurecli
+az login
+```
+
+CLI を使用したログイン オプションの詳細については、「[Azure CLI 2.0 を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください
+
+## <a name="create-a-resource-group"></a>リソース グループの作成
+
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
+
+```azurecli
+az group create --name 'ContosoResourceGroup' --location eastus
+```
+
+## <a name="create-a-key-vault"></a>Key Vault の作成
+
+次に、前の手順で作成したリソース グループに Key Vault を作成します。 いくつかの情報を指定する必要があります。
+
+- このクイック スタートでは、**Contoso-vault2** を使用します。 テストでは一意の名前を指定する必要があります。
+- リソース グループ名: **ContosoResourceGroup**。
+- 場所: **米国東部**。
+
+```azurecli
+az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGroup' --location eastus
+```
+
+このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
+
+- **コンテナーの名前**: この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドに使用できます。
+- **Vault URI (コンテナー URI)**: この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+
+この時点で、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
+
+## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
+
+シークレットをコンテナーに追加するには、いくつかの追加の手順を実行する必要があります。 このパスワードは、アプリケーションによって使用される可能性があります。 パスワードは **ExamplePassword** と呼ばれ、値 **Pa$$w0rd** がその中に格納されます。
+
+次のコマンドを入力して、値 **Pa$$w0rd** を保存する **ExamplePassword** というキー コンテナーにシークレットを作成します。
+
+```azurecli
+az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --value 'Pa$$w0rd'
+```
+
+これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** を使用して、現在のバージョンを取得します。 
+
+シークレットに格納されている値をプレーンテキストとして表示するには:
+
+```azurecli
+az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
+```
+
+これで、キー コンテナーを作成し、シークレットを格納した後、取得しました。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
+必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループおよびすべての関連リソースを削除できます。 次のように、リソースを削除できます。
+
+```azurecli
+az group delete --name ContosoResourceGroup
+```
+
+## <a name="next-steps"></a>次の手順
+
+このクイック スタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [Web アプリケーションから Azure Key Vault を使用する](key-vault-use-from-web-application.md) [マネージド サービス ID](/active-directory/managed-service-identity/overview.md) を使用する Web アプリケーションを使用して Key Vault からシークレットを読み取る方法を学習するには、「[Configure an Azure web application to read a secret from Key vault (キー コンテナーからシークレットを読み取るための Web アプリケーションの構成)](tutorial-web-application-keyvault.md)」チュートリアルに進んでください

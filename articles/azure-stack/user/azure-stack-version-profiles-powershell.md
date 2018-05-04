@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/12/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 890237ff40f9c9893c57f49c96e6ddc99849c2bd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b09799fe102522e1ad91f4983cf4f5fa8122b2c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Azure Stack での PowerShell による API バージョンのプロファイルの使用
 
@@ -34,15 +34,10 @@ PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジ�
 ```PowerShell
 Install-Module -Name AzureRm.BootStrapper
 ```
-AzureRM.Bootstrapper モジュールはプレビュー段階にあります。詳細事項や機能は変更されることがあります。 このモジュールの最新バージョンを PowerShell ギャラリーからダウンロードしてインストールするには、次のコマンドレットを実行します。
-
-```PowerShell
-Update-Module -Name "AzureRm.BootStrapper"
-```
 
 ## <a name="install-a-profile"></a>プロファイルのインストール
 
-Azure Stack に必要な AzureRM モジュールをインストールするには、**Install-AzureRmProfile** コマンドレットを **2017-03-09-profile** という API バージョンのプロファイルと共に使用します。 Azure Stack の operator モジュールは、この API バージョンのプロファイルではインストールされず、「[Install PowerShell for Azure Stack (Azure Stack 用の PowerShell のインストール)](azure-stack-powershell-install.md)」の記事の手順 3. で指定されているように個別にインストールする必要があることに注意してください。
+Azure Stack に必要な AzureRM モジュールをインストールするには、**Install-AzureRmProfile** コマンドレットを **2017-03-09-profile** という API バージョンのプロファイルと共に使用します。 Azure Stack のオペレーター モジュールは、この API のバージョン プロファイルと一緒にインストールされません。 「[PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)」の手順 3 で指定されているとおりに、個別にインストールする必要があります。
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

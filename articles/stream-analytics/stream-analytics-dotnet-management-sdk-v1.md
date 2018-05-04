@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: 79e807a1ee52c4b6b18671e25785ed14bd79624a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a8f272403a0c6903521acc7cc45935c4e5bc419c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK v1.x: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -45,7 +45,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* 使用する入力ソースと出力ターゲットを設定します。 詳しい手順については、サンプル入力を設定する場合は「[入力を追加する](stream-analytics-add-inputs.md)」、サンプル出力を設定する場合は「[出力を追加する](stream-analytics-add-outputs.md)」を参照してください。
+* 接続する入力ソースと出力ターゲットをジョブ用に設定します。
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 .NET 用 Stream Analytics API を使用して分析ジョブを作成するには、まずプロジェクトを設定します。

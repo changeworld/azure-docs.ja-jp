@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 04/20/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 477056581b847693ae115f94c2f6466036add765
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web アプリの概要
 ここでは、Passport を使用して次の操作を行います。
@@ -331,7 +331,7 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
 
 2. ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
 
-                ```JavaScript
+    ```JavaScript
                 /*
                  * GET users listing.
                  */
@@ -339,7 +339,7 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
                 exports.list = function(req, res){
                   res.send("respond with a resource");
                 };
-                ```
+    ```
 
  これらのルートは、要求とユーザー (存在する場合) をビューに渡します。
 
@@ -356,7 +356,7 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
     <% } %>
     ```
 
-4. ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` がユーザー要求の中に配置された追加情報を表示できるようにします。
+4. ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azure-ad` がユーザー要求の中に配置された追加情報を表示できるようにします。
 
     ```Javascript
     <% if (!user) { %>

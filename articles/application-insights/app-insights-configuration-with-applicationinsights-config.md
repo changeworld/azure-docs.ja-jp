@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: a35da5c84e4e79d7bc6f2167ec7e172970992612
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかのモジュールのパラメーターを設定したりできます。
@@ -263,6 +263,91 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 ```
 
 新しいキーを取得するには、[Application Insights ポータルで新しいリソースを作成][new]します。
+
+
+
+## <a name="applicationid-provider"></a>ApplicationId プロバイダー
+
+_v2.6.0 以降で利用可能_
+
+このプロバイダーの目的は、インストルメンテーション キーに基づいてアプリケーション ID を参照することです。 アプリケーション ID は RequestTelemetry と DependencyTelemetry に含まれ、ポータルでの相関関係を決定するために使用されます。
+
+これは、`TelemetryConfiguration.ApplicationIdProvider` をコード内または構成内に設定することで有効にできます。
+
+### <a name="interface-iapplicationidprovider"></a>インターフェイス: IApplicationIdProvider
+
+```csharp
+public interface IApplicationIdProvider
+{
+    bool TryGetApplicationId(string instrumentationKey, out string applicationId);
+}
+```
+
+
+[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK 内に次の 2 つの実装が用意されています。`ApplicationInsightsApplicationIdProvider` と `DictionaryApplicationIdProvider`。
+
+### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
+
+これは、プロファイル API のラッパーです。 要求とキャッシュの結果を調整します。
+
+このプロバイダーは、[Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) または [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) のいずれかをインストールしたときに、構成ファイルに追加されます。
+
+このクラスには、省略可能なプロパティ `ProfileQueryEndpoint` があります。
+既定では、これは `https://dc.services.visualstudio.com/api/profiles/{0}/appId` に設定されます。
+この構成のプロキシを構成する必要がある場合は、ベース アドレスのプロキシ化と "/api/profiles/{0}/appId" を含めることをお勧めします。 '{0}' は実行時に要求ごとにインストルメンテーション キーに置き換わることに注意してください。
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights.config による構成の例:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>コードによる構成の例:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApplicationIdProvider();
+```
+
+### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
+
+これは、構成済みのインストルメンテーション キーとアプリケーション ID のペアに依存する静的プロバイダーです。
+
+このクラスには、`Defined` プロパティがあります。これは、インストルメンテーション キーとアプリケーション ID のペアである Dictionary<string,string> です。
+
+このクラスには、省略可能なプロパティ `Next` があります。これを使用して、構成に存在しないインストルメンテーション キーが要求されたときに使用する別のプロバイダーを構成できます。
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>ApplicationInsights.config による構成の例:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.DictionaryApplicationIdProvider, Microsoft.ApplicationInsights">
+        <Defined>
+            <Type key="InstrumentationKey_1" value="ApplicationId_1"/>
+            <Type key="InstrumentationKey_2" value="ApplicationId_2"/>
+        </Defined>
+        <Next Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>コードによる構成の例:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationIdProvider{
+ Defined = new Dictionary<string, string>
+    {
+        {"InstrumentationKey_1", "ApplicationId_1"},
+        {"InstrumentationKey_2", "ApplicationId_2"}
+    }
+};
+```
+
+
+
 
 ## <a name="next-steps"></a>次の手順
 API の詳細については、[こちら][api]をご覧ください。

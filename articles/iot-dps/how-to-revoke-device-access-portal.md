@@ -1,28 +1,28 @@
 ---
-title: "Azure IoT Hub Device Provisioning Service へのデバイスのアクセスの管理 | Microsoft Docs"
-description: "Azure Portal で DPS サービスへのデバイスのアクセスを取り消す方法"
+title: Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
+description: Azure IoT Hub Device Provisioning サービスでデバイスの登録を抹消してプロビジョニングを防ぐ方法
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 12/22/2017
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/05/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 12aebf3a56aa7469a765ab6fc67aa65b254db71a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="revoke-device-access-to-your-provisioning-service-in-the-azure-portal"></a>Azure Portal でプロビジョニング サービスへのデバイスのアクセスの取り消し
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
 
-IoT ソリューションなどの重要なシステムでは、デバイスの資格情報を適切に管理することが極めて重要です。 このようなシステムでは、デバイスの資格情報 (Shared Access Aignatures (SAS) トークンと X.509 証明書のいずれでも) が侵害された場合にデバイスのアクセスを取り消す方法について明確なプランを立てることが最善の方法です。 この記事では、プロビジョニングの段階でデバイスのアクセスを取り消す方法について説明します。
+IoT ソリューションなどの重要なシステムでは、デバイスの資格情報を適切に管理することが極めて重要です。 このようなシステムでは、デバイスの資格情報 (Shared Access Aignatures (SAS) トークンと X.509 証明書のいずれでも) が侵害された場合にデバイスのアクセスを取り消す方法について明確なプランを立てることが最善の方法です。 
 
-デバイスをプロビジョニングした後に IoT ハブへのデバイスのアクセスを取り消す方法については、「[デバイスの無効化](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices)」を参照してください。
+デバイス プロビジョニング サービスに登録すると、デバイスを[自動プロビジョニング](concepts-auto-provisioning.md)できます。 プロビジョニングされたデバイスは、IoT Hub で登録されているデバイスで、最初の[デバイス ツイン](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状態を受け取り、利用統計情報の報告を開始できます。 この記事では、プロビジョニング サービス インスタンスからデバイスの登録を抹消して、今後プロビジョニングが行われないようにする方法について説明します。
 
 > [!NOTE] 
 > アクセスを取り消すデバイスの再試行ポリシーに注意してください。 たとえば、無限に再試行するポリシーを持つデバイスでは、プロビジョニング サービスへの登録が継続的に試行される場合があります。 その状況では、サービス リソースが消費され、パフォーマンスに影響を及ぼす可能性があります。
@@ -37,10 +37,10 @@ IoT ソリューションなどの重要なシステムでは、デバイスの�
 2. リソースの一覧から、デバイスをブラックリストに追加するプロビジョニング サービスを選択します。
 3. 目的のプロビジョニング サービスで、**[登録の管理]** を選択し、**[個々の登録]** タブを選択します。
 4. ブラックリストに追加するデバイスの登録エントリを選択します。 
-5. **[エントリの有効化]** スイッチを **[無効にする]** を選択し、**[保存]** を選択します。  
+5. 下方にスクロールして、**[エントリの有効化]** スイッチで **[無効にする]** を選択し、**[保存]** を選択します。  
 
-   ![ポータルで個別登録エントリを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
-    
+   [![ポータルで個別登録エントリを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+
 デバイスをブラックリストに永続的に追加するには、デバイスの登録エントリを削除します。
 
 1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** を選択します。
@@ -64,9 +64,8 @@ X.509 証明書は通常、信頼する証明書チェーンに配置されま�
 1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** を選択します。
 2. リソースの一覧から、署名証明書をブラックリストに追加するプロビジョニング サービスをクリックします。
 3. 目的のプロビジョニング サービスで、**[登録の管理]** を選択し、**[登録グループ]** タブを選択します。
-4. ブラックリストに追加する証明書の登録グループを選択します。
-5. 登録グループのエントリで、**[グループの編集]** を選択します。
-6. **[エントリの有効化]** スイッチを **[無効にする]** を選択し、**[保存]** を選択します。  
+4. ブラックリストに追加する証明書を使用して登録グループを選択します。
+5. **[エントリの有効化]** スイッチを **[無効にする]** を選択し、**[保存]** を選択します。  
 
    ![ポータルで登録グループ エントリを無効にする](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
@@ -96,12 +95,15 @@ X.509 構成証明メカニズムを実装するデバイスでは、デバイ�
 2. リソースの一覧から、ブラックリストに追加するデバイスの登録グループを含むプロビジョニング サービスを選択します。
 3. 目的のプロビジョニング サービスで、**[登録の管理]** を選択し、**[個々の登録]** タブを選択します。
 4. 上部にある **[追加]** を選択します。 
-5. デバイスのセキュリティ メカニズムとして **[X.509]** を選択し、デバイスの証明書をアップロードします。 これは、デバイスにインストールされる署名付きのエンド エンティティ証明書です。 デバイスは、これを使用して、認証用の証明書を生成します。
+5. デバイスの構成証明メカニズムとして **X.509** を選択し、デバイスの証明書をアップロードします。 これは、デバイスにインストールされる署名付きのエンド エンティティ証明書です。 デバイスは、これを使用して、認証用の証明書を生成します。
 6. **[IoT Hub デバイス ID]** にデバイスの ID を入力します。 
 7. **[エントリの有効化]** スイッチを **[無効にする]** を選択し、**[保存]** を選択します。 
 
-   ![ポータルで個別登録エントリを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+    [![ポータルで無効にした個々の登録エントリを使用して、グループ登録のデバイスを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
 登録の作成に成功すると、**[個々の登録]** タブにデバイスが表示されます。
 
+## <a name="next-steps"></a>次の手順
+
+登録解除も広範なプロビジョニング解除プロセスの一部です。 デバイスのプロビジョニング解除には、プロビジョニング サービスの登録抹消と IoT hub からの登録解除の両方が含まれます。 このプロセスの詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください。 
 

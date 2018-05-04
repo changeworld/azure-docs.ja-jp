@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 604249151f3c1ca206f64a178b25ea1dae5b5023
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c6d1588aaf069d6c3ae175e9b554c0da6c86290
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>チュートリアル: Azure Active Directory と Spacio の統合
 
@@ -117,31 +117,11 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-spacio-tutorial/tutorial_general_400.png)
 
-5. **メタデータ URL** を生成するには、次の手順を実行します。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpointicon.png)
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_certificate.png)
 
-    c. **[コピー]** ボタンを選択して、**フェデレーション メタデータ ドキュメント**の URL をコピーして、メモ帳に貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpoint.png)
-     
-    d. 次に、**Spacio** のプロパティ ページに移動し、**[コピー]** ボタンを使用して **[アプリケーション ID]** をコピーし、メモ帳に貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. **Spacio** 側にシングル サインオンを構成するには、作成された**メタデータ URL** を [Spacio サポート チーム](mailto:support@spac.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+6. **Spacio** 側にシングル サインオンを構成するには、作成された**アプリケーション フェデレーション メタデータ URL** を [Spacio サポート チーム](mailto:support@spac.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -191,7 +171,7 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Spacio]**を選択します。
+2. アプリケーションの一覧で **[Spacio]** を選択します。
 
     ![アプリケーションの一覧の Spacio のリンク](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_app.png)  
 

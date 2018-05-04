@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell のトラブルシューティング | Microsoft Docs"
-description: "Azure Cloud Shell のトラブルシューティング"
+title: Azure Cloud Shell のトラブルシューティング | Microsoft Docs
+description: Azure Cloud Shell のトラブルシューティング
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendMSFT
 manager: angelc
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 52ee832b643af573d8236b266df17d36e485ead2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3c01a31eae2b90ecb54cbfba7f565fd140db3773
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -147,4 +147,30 @@ Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間�
 
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
-Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Login-AzureRMAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
+Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Connect-AzureRmAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
+
+## <a name="gdpr-compliance-for-cloud-shell"></a>Cloud Shell の GDPR コンプライアンス
+
+Azure Cloud Shell では、お客様の個人情報を慎重に取り扱っています。Azure Cloud Shell サービスによって取得および保存されたデータは、最近使用したシェル、選択されたフォント サイズ、選択されたフォントの種類、clouddrive の基盤となるファイル共有の詳細など、エクスペリエンスの既定値を設定するために使用されます。 このデータをエクスポートまたは削除したい場合は、以下の手順に従ってください。
+
+### <a name="export"></a>エクスポート
+選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
+
+1. Cloud Shell で Bash を起動する
+2. 次のコマンドを実行します。
+```
+user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
+```
+
+### <a name="delete"></a>削除
+選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**削除**するには、次のコマンドを実行します。 次回、Cloud Shell を起動すると、再びファイル共有にオンボードするように求めるメッセージが表示されます。 
+
+ユーザー設定を削除しても、実際の Azure Files 共有は削除されません。Azure Files に移動して、その操作を完了します。
+
+1. Cloud Shell で Bash を起動する
+2. 次のコマンドを実行します。
+```
+user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+user@Azure:~$ curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
+```

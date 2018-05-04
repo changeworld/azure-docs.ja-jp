@@ -1,4 +1,19 @@
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/24/2018
+---
 ## <a name="about-vhds"></a>VHD について
 
 Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)」をご覧ください。 Premium Storage の詳細については、[高パフォーマンスの Premium Storage と Azure VM](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
@@ -10,10 +25,10 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 ユーザーがイメージから仮想マシンを作成するときに、Azure はソースの .vhd ファイルのコピーである仮想マシンのディスクを作成します。 Azure では、誤って削除されるのを防ぐために、イメージ、オペレーティング システム ディスク、またはデータ ディスクを作成する際に使用されるソースの .vhd ファイルにリースを設定します。
 
 ディスクやイメージを削除してリースを解除しなければ、ソースの .vhd ファイルを削除できません。 仮想マシンがオペレーティング システム ディスクとして使用中の .vhd ファイルを削除する場合、仮想マシンを削除し、関連付けられたすべてのディスクを削除することで、ユーザーは仮想マシン、オペレーティング システム ディスク、およびソースの .vhd ファイルをすべて一度に削除することができます。 ただし、データ ディスクのソースである .vhd ファイルを削除するには、いくつかの手順を決められた順序で行う必要があります。 まず、仮想マシンからディスクを取り外し、ディスクを削除し、続いて .vhd ファイルを削除します。
-
 > [!WARNING]
 > ユーザーがストレージからソースの .vhd ファイルを削除する場合、またはストレージ アカウントを削除する場合、Microsoft はそのデータを回復することはできません。
 > 
+> Premium Storage のページ BLOB は、VHD としてのみ使用するように設計されています。 コストが大幅に高くなる可能性があるため、Premium Storage のページ BLOB に他の種類のデータを格納することはお勧めしません。 VHD 内にないデータを格納するためには、ブロック BLOB を使用します。
 
 ## <a name="types-of-disks"></a>ディスクの種類 
 
@@ -30,7 +45,7 @@ VM ディスクを利用した Standard Storage の使用の詳細について�
 
 ### <a name="premium-storage"></a>Premium Storage 
 
-Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、または FS シリーズの Azure VM で使用できます。 詳細については、[Premium Storage](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
+Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 通常、シリーズ名に「s」が含まれているサイズで Premium Storage を使用できます。 たとえば、Dv3 シリーズと Dsv3 シリーズがある場合、Dsv3 シリーズで Premium Storage を使用できます。  詳細については、[Premium Storage](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
 
 ### <a name="unmanaged-disks"></a>非管理対象ディスク
 

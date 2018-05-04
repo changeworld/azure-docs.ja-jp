@@ -67,6 +67,8 @@
           href: insights-alerts-powershell.md
         - name: ログ アラートの webhook アクション
           href: monitor-alerts-unified-log-webhook.md
+        - name: Resource Manager テンプレートを使用して新しいメトリック アラートを作成する
+          href: monitoring-create-metric-alerts-with-templates.md
         - name: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
           href: monitoring-enable-alerts-using-template.md
         - name: OMS ポータルから Azure Portal にアラートをコピーする

@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: cbf9014f9a2776cb6dcffabacc5a8a270419a534
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 197777971b92ad9cd53e91602b88858a371ce1d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>クイック スタート: Java を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -214,7 +214,7 @@ Blob Storage を使用する Java 開発については、以下の追加リソ�
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
 
-- Java クライアント ライブラリの詳細については、[Java API リファレンス](https://docs.microsoft.com/en-us/java/api/overview/azure/storage)を参照してください。
+- Java クライアント ライブラリの詳細については、[Java API リファレンス](https://docs.microsoft.com/java/api/overview/azure/storage)を参照してください。
 - Java クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次の手順

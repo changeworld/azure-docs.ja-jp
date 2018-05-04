@@ -1,8 +1,8 @@
 ---
-title: "Apache Kafka Producer および Consumer API の使用 - Azure HDInsight | Microsoft Docs"
-description: "HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法を説明します。 これらの API を使用すると、Apache Kafka に対して書き込みおよび読み取りを行うアプリケーションを開発できます。"
+title: Apache Kafka Producer および Consumer API の使用 - Azure HDInsight | Microsoft Docs
+description: HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法を説明します。 これらの API を使用すると、Apache Kafka に対して書き込みおよび読み取りを行うアプリケーションを開発できます。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: b57745d6bd993a993e923c964327d9071e745413
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 01592401c4c88adeed49b11df4e7963e27b1bcee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-producer-and-consumer-apis"></a>Apache Kafka Producer および Consumer API
 
@@ -43,7 +43,7 @@ API のドキュメントについては、「[Producer API](https://kafka.apach
 
 ## <a name="build-and-deploy-the-example"></a>例を構築してデプロイする
 
-1. [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) からサンプルをダウンロードします。
+1. 例を [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) からダウンロードします。
 
 2. `Producer-Consumer` ディレクトリの場所に移動し、次のコマンドを使用します。
 

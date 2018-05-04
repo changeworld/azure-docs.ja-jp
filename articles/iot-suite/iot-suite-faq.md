@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite に関する FAQ | Microsoft Docs"
-description: "IoT スイートに関してよく寄せられる質問"
+title: Azure IoT Suite に関する FAQ | Microsoft Docs
+description: IoT スイートに関してよく寄せられる質問
 services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c79c90c4f6c28153d4d299015a06a6bc37145081
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 49e94e771deb4582b922400d81e8388faf164f40
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
 
@@ -33,6 +33,12 @@ ms.lasthandoff: 02/21/2018
 * [リモート監視の事前構成済みソリューション (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 * [予測メンテナンスの構成済みソリューション](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [コネクテッド ファクトリの事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)
+
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-preconfigured-solutions"></a>構成済みのソリューション用のデバイス クライアントの開発では、どの SDK を使用できますか?
+
+[Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリで、異なる言語 (C、.NET、Java、Node.js、Python) IoT デバイス SDK へのリンクを見つけることができます。
+
+DevKit デバイスを使用する場合は、[IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub リポジトリで、リソースとサンプルを見つけることができます。
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-preconfigured-solutions"></a>3 つの事前構成済みソリューションのすべてに対して利用可能な新しいマイクロサービス アーキテクチャがありますか?
 

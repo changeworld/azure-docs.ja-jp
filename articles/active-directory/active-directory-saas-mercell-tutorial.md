@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d009e8bdf513b10198aac826236ff44376ed630
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 60432e18c9496ff6fc5431fcd7b73aa5f4c9696c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>チュートリアル: Azure Active Directory と Mercell の統合
 
@@ -99,7 +99,7 @@ Mercell で Azure AD のシングル サインオンを構成してテストす�
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_samlbase.png)
 
 3. **[Mercell のドメインと URL]** セクションで、次の手順を実行します。
@@ -107,36 +107,16 @@ Mercell で Azure AD のシングル サインオンを構成してテストす�
     ![[Mercell のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_url.png)
 
     **[識別子]** ボックスに次の URL を入力します。`https://my.mercell.com/`
- 
-4. **[保存]** ボタンをクリックします。
+
+4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+    
+    ![[Configure Single Sign-On]](./media/active-directory-saas-mercell-tutorial/tutorial_metadataurl.png)
+     
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-mercell-tutorial/tutorial_general_400.png)
 
-5. **メタデータ URL** を生成するには、次の手順を実行します。
-
-    a. **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpointicon.png)
-
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpoint.png)
-     
-    d. 次に、**Mercell** のプロパティ ページに移動し、**[コピー]** ボタンを使用して **[アプリケーション ID]** をコピーし、メモ帳に貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. **Mercell** 側でシングル サインオンを構成するには、生成された**メタデータ URL** を [Mercell サポート チーム](mailto:webmaster@mercell.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+6. **Mercell** 側でシングル サインオンを構成するには、生成された**アプリのフェデレーション メタデータ URL** を [Mercell サポート チーム](mailto:webmaster@mercell.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -188,7 +168,7 @@ Mercell で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Mercell]**を選択します。
+2. アプリケーションの一覧で **[Mercell]** を選択します。
 
     ![アプリケーションの一覧の [Mercell] リンク](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_app.png)  
 

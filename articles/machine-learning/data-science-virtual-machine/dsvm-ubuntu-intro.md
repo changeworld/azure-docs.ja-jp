@@ -5,24 +5,24 @@ services: machine-learning
 documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
-Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マシン イメージであり、Azure で簡単にディープ ラーニングを開始できます。 ディープ ラーニング ツールには以下が含まれます。
+Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マシン イメージであり、Azure 上でディープ ラーニングなどの機械学習を簡単に開始できます。 ディープ ラーニング ツールには以下が含まれます。
 
   * [Caffe](http://caffe.berkeleyvision.org/): 速度、表現、モジュール性を念頭に置いて構築されたディープ ラーニング フレームワーク
   * [Caffe2](https://github.com/caffe2/caffe2): Caffe のクロス プラットフォーム バージョン
@@ -31,6 +31,7 @@ Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マ�
   * [Keras](https://keras.io/): Python で書かれた Theano と TensorFlow 用の高度なニュートラル ネットワーク API
   * [MXNet](http://mxnet.io/): 多くの言語バインディングを含む、柔軟で効率的なディープ ラーニング ライブラリ
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): 一般的なディープ ラーニング タスクを簡略化するグラフィカル システム
+  * [PyTorch](http://pytorch.org/): 動的ネットワークをサポートする高度な Python ライブラリ
   * [TensorFlow](https://www.tensorflow.org/): Google が提供する、マシン インテリジェンス用のオープンソース ライブラリ
   * [Theano](http://deeplearning.net/software/theano/): 多次元配列を含む数式の定義、最適化、効率的な評価ができる Python 用ライブラリ
   * [Torch](http://torch.ch/): 機械学習アルゴリズムを幅広くサポートする科学コンピューティング フレームワーク
@@ -98,7 +99,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    c. **設定**:
    
-   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]**を選択します。 GPU VM では、Standard ディスクが必要です。
+   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]** を選択します。 GPU VM では、Standard ディスクが必要です。
    * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択した場所にある既存のストレージ アカウントを使用することもできます。
    * **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
@@ -108,11 +109,19 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    e. **[購入]**:
    
-   * プロビジョニングを開始するには、 **[購入]**をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。
+   * プロビジョニングを開始するには、 **[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。
 
 プロビジョニングには、5 ～ 10 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンにアクセスする方法
+
+3 つの方法を使って、Ubuntu DSVM にアクセスすることができます。
+1. ターミナル セッションの場合の SSH
+2. グラフィカル セッションの場合の X2Go
+3. Jupyter Notebook の場合の JupyterHub と JupyterLab
+
+### <a name="ssh"></a>SSH
+
 VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](http://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
 
 > [!NOTE]
@@ -120,11 +129,11 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>X2Go クライアントのインストールと構成
+### <a name="x2go"></a>X2Go
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
-2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
+2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
@@ -134,6 +143,14 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
    * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub と JupyterLab
+
+Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [JupyterHub](https://github.com/jupyterhub/jupyterhub) を実行します。 接続するには、ノート PC またはデスクトップで https://your-vm-ip:8000 を参照し、VM を作成するときに使ったユーザー名とパスワードを入力して、ログインします。 多くのサンプル ノートブックを参照して試してみることができます。
+
+次世代の Jupyter Notebook と JupyterHub である JupyterLab も利用できます。 JupyterLab にアクセスするには、JupyterHub にログインし、URL https://your-vm-ip:8000/lab を参照します。 次の行を /etc/jupyterhub/jupyterhub_config.py に追加することにより、JupyterLab を既定のノートブック サーバーとして設定できます。
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンにインストールされているツール
 ### <a name="deep-learning-libraries"></a>ディープ ラーニング ライブラリ
@@ -170,7 +187,7 @@ MXNet は、効率性と柔軟性の両方のために設計されたディー�
 #### <a name="nvidia-digits"></a>NVIDIA DIGITS
 DIGITS として知られる NVIDIA ディープ ラーニング GPU トレーニング システムは、高度な視覚化により、一般的なディープ ラーニング タスク (データの管理、GPU システム上でのニュートラル ネットワークの設計とトレーニング、リアル タイムでのパフォーマンスの監視など) を簡略化するシステムです。 
 
-DIGITS は、"digits (ディジッツ)" というサービスとして利用できます。 サービスを開始するには、http://localhost:5000 を参照してください。
+DIGITS は、"digits (ディジッツ)" というサービスとして利用できます。 サービスを開始するには、http://localhost:5000 を参照します。
 
 また DIGITS は、Conda root 環境に Python モジュールとしてインストールされます。
 
@@ -193,30 +210,32 @@ R コンソールを起動するには、シェルで「**R**」と入力しま�
 必要な場合に備えて、 [上位 20 の R パッケージ](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
 
 ### <a name="python"></a>Python
-Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 Spyder へのショートカットは、グラフィカル デスクトップに用意されています。
+Anaconda Python は、Python 2.7 および 3.5 の環境でインストールされます。 2.7 環境は _root_ と呼ばれ、3.5 環境は _py35_ と呼ばれます。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 
 
-Python 2.7 と 3.5 の両方が用意されているため、現在のセッションで利用する目的の Python バージョン (conda 環境) を明示的にアクティブ化する必要があります。 アクティブ化プロセスにより、PATH 変数は Python の目的のバージョンに設定されます。
+Py35 が既定の環境です。 root (2.7) 環境をアクティブ化するには:
 
-Python 2.7 conda 環境をアクティブにするには、シェルで次のコマンドを実行します。
+    source activate root
 
-    source /anaconda/bin/activate root
+py35 環境を再度アクティブ化するには:
 
-Python 2.7 は、 */anaconda/bin*にインストールされています。
+    source activate py35
 
-Python 3.5 conda 環境をアクティブ化するには、シェルで次のコマンドを実行します。
+シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 
 
-    source /anaconda/bin/activate py35
+```conda``` または ````pip```` を使って追加の Python ライブラリをインストールします。 PIP の場合、既定値が必要ないときは、最初に正しい環境をアクティブ化します。
 
+    source activate root
+    pip install <package>
 
-Python 3.5 は、 */anaconda/envs/py35/bin*にインストールされています。
+または PIP への完全なパスを指定します。
 
-シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。
+    /anaconda/bin/pip install <package>
+    
+Conda の場合は、常に環境名 (_py35_ または _root_) を指定する必要があります。
 
-追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 Spyder へのショートカットは、グラフィカル デスクトップに用意されています。
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 ローカルの Linux ユーザー名とパスワードを使用してサインインします。
@@ -395,7 +414,7 @@ Rattle を実行するには、グラフィカル デスクトップのサイン
 > 
 > 
 
-1. **[実行]**をクリックします。
+1. **[実行]** をクリックします。
 2. サンプルの天候データセットを使用するかどうかをたずねるダイアログが表示されます。 **[Yes (はい)]** をクリックして、サンプルを読み込みます。
 3. **[Model (モデル)]** タブをクリックします。
 4. **[Execute (実行)]** をクリックして、デシジョン ツリーを作成します。

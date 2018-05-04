@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a50854b2e12db9a202d769f9e5feebee8e5f9395
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 
-### <a name="is-there-a-private-preview-available-for-additional-features"></a>追加の機能では、プライベート プレビューは使用可能ですか。
+### <a name="is-there-a-private-preview-program-available-for-upcoming-msi-features-and-integrations"></a>今後の MSI 機能や統合のために使用できるプライベート プレビュー プログラムはありますか?
 
-はい。 プライベート プレビューへの登録をご希望の場合は、[サインアップ ページにアクセス](https://aka.ms/azuremsiprivatepreview)してください。
+はい。 プライベート プレビュー プログラムへの登録をご希望の場合は、[サインアップ ページにアクセス](https://aka.ms/azuremsiprivatepreview)してください。
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI は Azure Cloud Services で動作しますか。
 
@@ -42,10 +42,24 @@ ms.lasthandoff: 03/16/2018
 
 ID のセキュリティ境界は、ID のアタッチ先リソースです。 たとえば、仮想マシン MSI のセキュリティ境界は仮想マシンです。 その VM で実行しているすべてのコードは、MSI エンドポイントを呼び出して、トークンを要求できます。 MSI をサポートする他のリソースでも同じように作動します。
 
+### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>MSI VM IMDS エンドポイントまたは MSI VM 拡張機能エンドポイントを使用する必要がありますか?
+
+VM で MSI を使用する場合は、MSI IMDS エンドポイントの使用をお勧めします。 Azure Instance Metadata Service は、Azure Resource Manager を使用して作成されたすべての IaaS VM にアクセスできる REST エンドポイントです。 IMDS 経由で MSI を使用すると、次のような利点があります。
+
+1. Azure IaaS でサポートされているすべてのオペレーティング システムが、IMDS 経由で MSI を使用することができます。 
+2. MSI を有効にするために VM に拡張機能をインストールする必要がなくなります。 
+3. MSI によって使用される証明書が、VM に存在しなくなります。 
+4. IMDS エンドポイントは、既知のルーティング不可能な IP アドレスです。VM 内でのみ使用できます。 
+
+MSI VM 拡張機能は、現在でも使用可能です。ただし、今後は IMDS エンドポイントの使用が既定になります。 MSI VM 拡張機能は、間もなく廃止計画が開始されます。 
+
+Azure Instance Metada Service の詳細については、[IMDS のドキュメント](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)を参照してください。
+
 ### <a name="what-are-the-supported-linux-distributions"></a>どのような Linux ディストリビューションがサポートされていますか。
 
-次の Linux ディストリビューションが MSI をサポートしています。 
+Azure IaaS でサポートされているすべての Linux ディストリビューションを、IMDS エンドポイント経由の MSI で使用することができます。 
 
+メモ: MSI VM 拡張機能では、次の Linux ディストリビューションだけがサポートされています。
 - CoreOS Stable
 - CentOS 7.1
 - RedHat 7.2

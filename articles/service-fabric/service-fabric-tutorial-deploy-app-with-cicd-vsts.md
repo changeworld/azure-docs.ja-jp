@@ -1,12 +1,12 @@
 ---
-title: "継続的インテグレーションを使用して Azure Service Fabric アプリケーションをデプロイする (Team Services) | Microsoft Docs"
-description: "このチュートリアルでは、Visual Studio Team Services を使用して、継続的インテグレーションと Service Fabric アプリケーションのデプロイをセットアップする方法について説明します。  Azure の Service Fabric クラスターにアプリケーションをデプロイします。"
+title: 継続的インテグレーションを使用して Azure Service Fabric アプリケーションをデプロイする (Team Services) | Microsoft Docs
+description: このチュートリアルでは、Visual Studio Team Services を使用して、継続的インテグレーションと Service Fabric アプリケーションのデプロイをセットアップする方法について説明します。  Azure の Service Fabric クラスターにアプリケーションをデプロイします。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
-このチュートリアルはシリーズの第 3 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
+このチュートリアルはシリーズの第 4 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
 シリーズの第 3 部で学習する内容は次のとおりです。
 
@@ -36,6 +36,7 @@ ms.lasthandoff: 02/24/2018
 > [!div class="checklist"]
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
 > * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [ASP.NET Core フロントエンド サービスに HTTPS エンドポイントを追加する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * Visual Studio Team Services を使用して CI/CD を構成する
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -124,7 +125,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 ![トリガーを有効にする][enable-trigger]
 
-**[+ リリース]** -> **[リリースの作成]** -> **[作成]** を選択してリリースを手動で作成します。  デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) に移動します。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。 
+**[+ リリース]** -> **[リリースの作成]** -> **[作成]** を選択してリリースを手動で作成します。  デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。 
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>変更のコミットとプッシュ、リリースのトリガー
 Team Services へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。    
@@ -143,7 +144,7 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 
 ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース定義を定義します。
 
-デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) に移動します。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
+デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
 
 ![Service Fabric Explorer][sfx1]
 

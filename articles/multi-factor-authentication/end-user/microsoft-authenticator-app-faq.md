@@ -15,15 +15,15 @@ ms.date: 03/08/2018
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e9c152fddbfcd603a84caf2c168ec4f12368dcfa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
 
-この記事では、Microsoft Authenticator アプリに関する一般的な質問にお答えします。 質問に対する回答がここで見つからない場合は、[Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)をご覧ください。 アプリの特定の機能については、[携帯電話でのサインインに関する FAQ](microsoft-authenticator-app-phone-signin-faq.md) もご覧ください。
+この記事では、Microsoft Authenticator アプリに関する一般的な質問にお答えします。 質問に対する回答がここで見つからない場合は、[Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)をご覧ください。 アプリの特定の機能については、[携帯電話でのサインインに関する FAQ](microsoft-authenticator-app-phone-signin-faq.md) も参照できます。
 
 Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。 Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
 
@@ -33,7 +33,7 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 
 Microsoft Authenticator には、アカウントの追加時に作成するアカウント情報が格納されます。 Authenticator を使用すると、診断ログがデバッグ目的で作成されます。これには、予期しない問題をマイクロソフトが診断するときに役立つ情報が格納されます。 ログ データにアクセスするには、**[ヘルプ]** > **[ログの送信]** > **[ログの表示]** の順に開きます。
 
-データを削除するには、アカウント タイルを削除します。 これにより、ログを含め、アプリケーションによって使用されているすべてのアカウント情報が削除されます。 
+データを削除するには、アカウント タイルを削除します。 アカウント タイルを削除すると、ログを含め、アプリケーションによって使用されているすべてのアカウント情報が削除されます。 
 
 マイクロソフトがユーザー データをどのように使用するかについて詳しくは、https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted をご覧ください。
 
@@ -57,7 +57,7 @@ Microsoft Authenticator アプリを開くと、追加したアカウントが�
 - 他のアプリから通知を受け取ることができますか。 受け取らない場合は、電話のネットワーク接続、または Android や Apple からの通知チャネルに問題がある可能性があります。 前者の場合は、電話の設定で対応できますが、後者の場合は、サービス プロバイダーに問い合わせて、サポートを依頼する必要があります。
 - アプリケーションの一部のアカウントでは通知を受け取るが、他では受け取れない状態ですか。 その場合は、アプリから問題のあるアカウントを削除し、そのアカウントを再び追加して、プッシュ通知を再有効化します。
 
-これらのトラブルシューティング案を試しても問題が解決しない場合は、診断のためにログを送信してください。 アプリ設定に移動し、**[ヘルプとフィードバック]**、**[ログの送信]** の順に選択します。 次に [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に移動し、発生している問題の内容とこれまでに試した手順をお知らせください。
+これらのトラブルシューティング案を試しても問題が解決しない場合は、診断のためにログを送信できます。 アプリ設定に移動し、**[ヘルプとフィードバック]**、**[ログの送信]** の順に選択します。 次に [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に移動し、発生している問題の内容とこれまでに試した手順をお知らせください。
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>検証コードで Microsoft Authenticator アプリケーションを既に使用しています。 ワンクリック プッシュ通知に切り替えるにはどうすればよいですか。
 プッシュ通知によるサインインの承認は、個人の Microsoft アカウントと職場または学校の Microsoft アカウントでのみ可能であり、Google や Facebook などのサード パーティのアカウントでは使用できません。 職場または学校の Microsoft アカウントを使用している場合、所属している組織がこのオプションを無効にすることを選択している可能性があります。
@@ -69,28 +69,30 @@ Microsoft Authenticator を職場または学校のアカウントで使用し�
 ### <a name="do-one-click-push-notifications-work-for-non-microsoft-accounts"></a>ワンクリック プッシュ通知は Microsoft 以外のアカウントでも機能しますか。
 残念ですが、プッシュ通知は、Microsoft アカウントと Azure Active Directory アカウントでのみ機能します。 職場または学校で Azure AD アカウントを使用している場合は、この機能を無効にしている可能性があります。  
 
-### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>デバイスをバックアップから復元しましたが、アカウント コードが見つからないか、機能していません。 なぜでしょうか?
-セキュリティのため、アプリのバックアップからアカウントは復元されません。  アプリケーションを復元したら、アカウントを削除し、もう一度追加してください。
+### <a name="i-got-a-new-device-or-restored-my-device-from-a-backup-how-do-i-set-up-my-accounts-in-the-microsoft-authenticator-app-again"></a>新しいデバイスを取得しました。または自分のデバイスをバックアップから復元しました。 Microsoft Authenticator アプリで自分のアカウントをもう一度設定するにはどうすればよいですか。
+IOS デバイスを実行している場合は、**[自動バックアップ]** をオンにして、アカウントのバックアップを古いデバイス 上に作成します。そのバックアップを使用して、新しいデバイス上に自分のアカウントの資格情報を回復できます。 詳細については、「[Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する](microsoft-authenticator-app-backup-and-recovery.md)」を参照してください。 
 
-### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>新しいデバイスを取得しました。 古いデバイスから Microsoft Authenticator アプリを削除して新しいデバイスに移すにはどうすればよいですか。
-新しいデバイスに Microsoft Authenticator アプリを追加しても、他のデバイスからそのアプリが自動的に削除されることはありません。 アカウントで構成されるデバイスを管理するには、2 段階認証を管理するために使用するのと同じ Web サイトにアクセスして、古いアプリの削除を選択してください。
+### <a name="i-lost-my-device-or-moved-on-to-a-new-device-how-do-i-make-sure-notifications-dont-continue-to-go-to-my-old-device"></a>デバイスを紛失しました。または新しいデバイスに移行しました。 通知が古いデバイスに引き続き送信されないようにするにはどうすればよいですか。  
+新しい iOS デバイスに Microsoft Authenticator アプリを追加しても、古いデバイスからアプリが自動的に削除されることはありません。 古いデバイスからのアプリの削除でも十分ではありません。 古いデバイスからアプリを削除することと、古いデバイスを置き忘れたため、アカウントから登録を解除するように Microsoft または組織に通知することの両方を行う必要があります。
+- **個人の Microsoft アカウントを使用してデバイスからアプリを削除するには:**  [[アカウント セキュリティ]](https://account.microsoft.com/security)  ページの 2 段階認証領域に移動し、古いデバイスの検証をオフにすることを選択します。  
+- **職場または学校の Microsoft アカウントを使用してデバイスからアプリを削除するには:**  [[MyApps]](https://myapps.microsoft.com/) ページの 2 段階認証領域または組織のカスタム ポータルに移動し、古いデバイスの検証をオフにすることを選択します。 
 
-個人の Microsoft アカウントでは、この Web サイトは、[アカウント セキュリティ](https://account.microsoft.com/security) ページです。 職場または学校の Microsoft アカウントでは、この Web サイトは、[MyApps](https://myapps.microsoft.com) または所属する組織がセットアップしたカスタム ポータルのいずれかです。
+
 
 ### <a name="how-do-i-remove-an-account-from-the-app"></a>アプリからアカウントを削除するにはどうすればよいですか。
-* iOS: メイン画面で、アカウント タイルを左にスワイプします。 **[削除]**を選択します。
+* iOS: メイン画面で、アカウント タイルを左にスワイプします。 **[削除]** を選択します。
 * Windows Phone: メイン画面で、メニュー ボタンを選択し、**[アカウントの編集]** を選択します。 アカウント名の横にある **[X]** をタップします。
 * Android: メイン画面で、メニュー ボタンを選択し、**[アカウントの編集]** を選択します。 アカウント名の横にある **[X]** をタップします。
 
 所属している組織に登録されているデバイスの場合、自分のアカウントを削除するには、追加手順の完了が必要な可能性があります。 これらのデバイスでは、Microsoft Authenticator アプリがデバイスの管理者として自動的に登録されます。 アプリを完全にアンインストールする場合は、その前にアプリ設定でアプリの登録を解除する必要があります。
 
 ### <a name="why-does-the-app-request-so-many-permissions"></a>アプリで多くのアクセス許可が要求されるのはなぜですか。
-要求されるアクセス許可の完全な一覧と、アプリでの用途を次に示します。 表示される具体的なアクセス許可は、電話の種類によって異なります。
+要求される可能性があるアクセス許可の完全な一覧と、アプリでの用途を次に示します。 表示される具体的なアクセス許可は、電話の種類によって異なります。
 
-* **カメラ**: 職場のアカウント、学校のアカウント、または Microsoft 以外のアカウントを追加すると、カメラを使用して QR コードがスキャンされます。
-* **連絡先と電話番号**: 個人の Microsoft アカウントでサインインすると、電話で使用されている既存のアカウントを検索することでプロセスの簡略化が図られます。
-* **SMS**: 個人の Microsoft アカウントで初めてサインインすると、電話番号が記録されているものと一致することの確認が必要になります。 アプリをダウンロードした電話にテキスト メッセージが送信されます。 このメッセージには、6 ～ 8 桁の検証コードが含まれています。 このコードを見つけてアプリに入力する代わりに、テキスト メッセージ内のテキストが自動的に検索されます。
-* **他のアプリの上に表示**: 本人確認通知を受信すると、他のアプリが実行されていれば、その上に通知が表示されます。
+* **カメラ**: 職場のアカウント、学校のアカウント、または Microsoft 以外のアカウントを追加する際に、QR コードをスキャンするために使用されます。
+* **連絡先と電話番号**: 個人の Microsoft アカウントでサインインする際に、電話で使用されている既存のアカウントを検索することでプロセスを簡略化するために使用されます。
+* **SMS**: 電話番号が、記録された番号と一致することを確認するために使用されます。 これは、個人の Microsoft アカウントで初めてサインインする際に使用されます。  アプリをダウンロードした電話に、6 ～ 8 桁の検証コードを含むテキスト メッセージが送信されます。 このコードを見つけてアプリに入力する代わりに、テキスト メッセージ内のテキストが自動的に検索されます。
+* **他のアプリの上に描画**: 本人確認通知が、実行されている場合がある他のアプリの上にも表示されます。
 * **インターネットからのデータの受信**: このアクセス許可は、通知を送信するために必要です。
 * **電話がスリープしないようにする**: 所属する組織にデバイスを登録している場合は、組織が電話に関するこのポリシーを変更している可能性があります。
 * **振動の制御**: 本人確認通知を受信したときに、振動させるかどうかを選択できます。

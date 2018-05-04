@@ -1,19 +1,19 @@
 ---
-title: "Azure Policy を使用して組織のコンプライアンスを強制するポリシーを作成して管理する | Microsoft Docs"
-description: "Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。"
+title: Azure Policy を使用して組織のコンプライアンスを強制するポリシーを作成して管理する | Microsoft Docs
+description: Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。
 services: azure-policy
-keywords: 
-author: bandersmsft
-ms.author: banders
-ms.date: 01/18/2018
+keywords: ''
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/19/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0b6e77d080ce4e4483709b9a5e47dca21c22e1d9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -372,7 +372,7 @@ az policy definition list
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>準拠していないリソースまたは拒否されたリソースを免除する
 
-上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、別バージョンで作成された SQL サーバーは拒否されます。 このセクションでは、別バージョンで SQL サーバーを作成しようとして拒否された場合に、除外を要求して解決する手順について説明します。 除外は、基本的にはポリシーの強制を行わないようにします。 除外をリソース グループに適用することも、個々のリソースだけに絞り込むこともできます。
+上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、12.0 以外のバージョンで作成された SQL サーバーは拒否されます。 このセクションでは、SQL サーバーを作成しようとして拒否された場合に、特定のリソースの除外を要求して解決する手順について説明します。 除外は、基本的にはポリシーの強制を行わないようにします。 次の例では、あらゆる SQL Server バージョンが許可されます。 除外をリソース グループに適用することも、個々のリソースだけに絞り込むこともできます。
 
 1. 左側のウィンドウの **[割り当て]** を選択します。
 2. すべてのポリシー割り当て一覧から、*[Require SQL Server version 12.0]\(SQL Server バージョン 12.0 が必要\)* 割り当てを開きます。
@@ -384,7 +384,7 @@ az policy definition list
 
 4. **[割り当て]** をクリックします。
 
-このセクションでは、バージョン 12.0 で SQL サーバーを作成しようとして拒否された場合に、リソースの除外を要求して解決しました。
+このセクションでは、SQL サーバーを作成しようとして拒否された場合に、リソースの除外を要求して解決しました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -392,7 +392,7 @@ az policy definition list
 
 1. 左側のウィンドウから **[Definitions]\(定義\)** (割り当てを削除する場合は **[Assignments]\(割り当て\)**) を選択します。
 2. 作成した新しいイニシアチブまたはポリシー定義 (または割り当て) を検索します。
-3. 定義または割り当ての末尾に表示される省略記号 ([...]) を選択し、**[Delete Definition]\(定義の削除\)** (または**[Delete Assignment]\(割り当ての削除\)**) を選択します。
+3. 定義または割り当ての末尾に表示される省略記号 ([...]) を選択し、**[Delete Definition]\(定義の削除\)** (または **[Delete Assignment]\(割り当ての削除\)**) を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

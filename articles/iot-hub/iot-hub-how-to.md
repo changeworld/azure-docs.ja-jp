@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub のハウツー | Microsoft Docs"
-description: "開発者による IoT Hub のさまざまな機能の使用方法"
+title: Azure IoT Hub のハウツー | Microsoft Docs
+description: 開発者による IoT Hub のさまざまな機能の使用方法
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24376318-5344-4a81-a1e6-0003ed587d53
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: b451ea2d42f0ff2f64746bcb296fb9128472fea8
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 9b112d2d7fc1756b74e98335831175f5d4c13320
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-use-azure-iot-hub"></a>Azure IoT Hub の使用方法
 
@@ -52,11 +52,11 @@ IoT Hub サービス向けの開発方法を学ぶ手段については、さま
 
 - [必要なプロパティを使用してデバイスを構成する][lnk-properties-tutorial]。 このチュートリアルでは、デバイス ツインの必要なプロパティと報告されるプロパティを使用して、デバイスをリモートで構成する方法について説明します。
 
-- [デバイス ジョブを使用してデバイス ファームウェアの更新を開始する][lnk-jobs-tutorial]。 このチュートリアルでは、ツインやダイレクト メソッドなどの主要なデバイス管理機能を使用する方法について説明します。 これらの機能を使用して、デバイスのファームウェアをリモートから更新する方法を紹介します。
+- [デバイス管理を使用してデバイスのファームウェアを更新する][lnk-jobs-tutorial]。 このチュートリアルでは、ツインやダイレクト メソッドなどの主要なデバイス管理機能を使用する方法について説明します。 これらの機能を使用して、デバイスのファームウェアをリモートから更新する方法を紹介します。
 
 - [ジョブのスケジュールとブロードキャスト][lnk-schedule-tutorial]。 このチュートリアルでは、必要なプロパティとダイレクト メソッドを使用して、スケジュールされた時刻に複数のデバイスとやり取りする方法について説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub サービスの詳細については、[開発者ガイド][lnk-devguide]を参照してください。
 

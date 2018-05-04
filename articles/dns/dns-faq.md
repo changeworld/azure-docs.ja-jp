@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -46,6 +46,7 @@ DNS 要求が有効な場合、Azure は 99.99% 以上の時間において Azur
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>"DNS ゾーン" とは何ですか。 DNS ドメインと同じですか。 
 
 ドメインとは、"contoso.com" など、ドメイン ネーム システム内で一意の名前です。
+
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 たとえば、ドメイン "contoso.com" に、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、複数の DNS レコードを含めることができます。 これらのレコードは DNS ゾーン "contoso.com" でホストされます。
 
@@ -90,6 +91,14 @@ DNSSEC は Azure DNS のバックログで追跡される機能です。 フィ�
 いいえ。 URL リダイレクト サービスは実際には DNS サービスではありません。DNS レベルではなく HTTP レベルで処理されます。 DNS プロバイダーによって、製品全体に含めて URL リダイレクト サービスをバンドルします。 これは現在、Azure DNS ではサポートされていません。
 
 URL リダイレクト機能は Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)できます。
+
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Azure DNS では、TXT レコードセットの拡張 ASCII エンコード (8 ビット) セットはサポートされますか。
+
+はい。 最新バージョンの Azure REST API、SDK、PowerShell、CLI (2017-10-01 または SDK 2.1 より前のバージョンでは、拡張 ASCII セットはサポートされません) を使用している場合は、Azure DNS で TXT レコードセットの拡張 ASCII エンコード セットがサポートされます。 たとえば、ユーザーが TXT レコードの値として拡張 ASCII 文字\128 (例: "abcd\128efgh") を含む文字列を指定した場合、Azure DNS ではこの文字のバイト値 (128) を内部表現で使用します。 DNS 解決時にも、応答でこのバイト値が返されます。 また、解決に関する限り、"abc" と "\097\098\099" は代替可能です。 
+
+TXT レコードについては、[RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) のゾーン ファイルのマスター形式のエスケープ規則に従います。 たとえば、RFC に従い、"\" は実際にはあらゆるものをエスケープします。 TXT レコード値として "A\B" を指定した場合、これは "AB" として表され、解決されます。 解決時に TXT レコードに "A\B" を含める必要がある場合は、"\" を再度エスケープする必要があります。 つまり、"A\\B" と指定します。 
+
+現在、このサポートは、Azure Portal から作成された TXT レコードでは使用できません。 
 
 ## <a name="using-azure-dns"></a>Azure DNS の使用
 
@@ -169,7 +178,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 はい。 1 つのプライベート ゾーンに最大で 10 の解決仮想ネットワークを関連付けることができます。
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>別のサブスクリプションに属している仮想ネットワークを、あるプライベート ゾーンの解決仮想ネットワークとして追加できますか? 
-はい、ユーザーに仮想ネットワークとプライベート DNS ゾーンの両方の書き込み操作のアクセス許可が付与されていれば追加できます。 書き込みアクセス許可は複数の RBAC ロールに割り当てることができます。 たとえば、従来のネットワーク共同作成者の RBAC ロールには仮想ネットワークに対する書き込みアクセス許可が付与されています。 RBAC ロールについて詳しくは、[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)に関するページをご覧ください。
+はい、ユーザーに仮想ネットワークとプライベート DNS ゾーンの両方の書き込み操作のアクセス許可が付与されていれば追加できます。 書き込みアクセス許可は複数の RBAC ロールに割り当てることができます。 たとえば、従来のネットワーク共同作成者の RBAC ロールには仮想ネットワークに対する書き込みアクセス許可が付与されています。 RBAC ロールについて詳しくは、[ロールベースのアクセス制御](../role-based-access-control/overview.md)に関するページをご覧ください。
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>プライベート ゾーンに自動的に登録された仮想マシンがお客様によって削除されると、その仮想マシンの DNS レコードは自動的に削除されますか。
 はい。 登録仮想ネットワーク内にある仮想マシンを削除すると、これが登録仮想ネットワークであるため、そのゾーンに登録されていた DNS レコードも自動的に削除されます。 

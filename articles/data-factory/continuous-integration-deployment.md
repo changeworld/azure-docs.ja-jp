@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: douglasl
-ms.openlocfilehash: e021403cd5544f0570e8ea3c73a17a57b241a65f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6ad0f554161937a4fdb10179e2b310facbb91945
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
 
@@ -62,6 +62,8 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 データ ファクトリの複数の環境へのデプロイを自動化できるように VSTS リリースを設定する手順を次に示します。
 
+![VSTS を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
+
 ### <a name="requirements"></a>必要条件
 
 -   [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または VSTS にリンクされた Azure サブスクリプション。
@@ -88,9 +90,9 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 6.  Azure Key Vault からシークレットを取得します。 シークレットを処理する方法は 2 つあります。
 
-    a.  シークレットをパラメーター ファイルに追加する:
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  シークレットをパラメーター ファイルに追加する:
 
-        -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
+       -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
 
         ```json
         {
@@ -100,28 +102,28 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
                         "keyVault": {
                             "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
                         },
-                        "secretName": " &lt secret - name &gt "
+                        "secretName": " < secret - name > "
                     }
-                }        
+                }
             }
         }
         ```
 
-        -   このメソッドを使用すると、シークレットはキー コンテナーから自動的にプルされます。
+       -   このメソッドを使用すると、シークレットはキー コンテナーから自動的にプルされます。
 
-        -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
+       -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
 
     b.  [Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加する:
 
-        -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
+       -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
 
-        -   Key Vault タスクでは、キー コンテナーを作成したサブスクリプションを選択し、必要に応じて資格情報を指定した後、そのキー コンテナーを選択します。
+       -   Key Vault タスクでは、キー コンテナーを作成したサブスクリプションを選択し、必要に応じて資格情報を指定した後、そのキー コンテナーを選択します。
 
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Azure Resource Manager デプロイ タスクを追加します。
 
-    a.  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
 
     b.  デプロイ タスクでは、サブスクリプション、リソース グループ、およびターゲットの Data Factory の場所を選択し、必要に応じて資格情報を指定します。
 

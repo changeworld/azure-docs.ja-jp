@@ -2,17 +2,17 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cdn
-author: dksimpson
+author: SyntaxC4
 ms.service: cdn
 ms.topic: include
-ms.date: 04/04/2018
-ms.author: rli; v-deasim
+ms.date: 04/13/2018
+ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 692364e9b2e78b3bd1f63137148dfbc680364737
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0db5f571324694f0518ffc4e92af985e5125d755
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 ## <a name="create-a-new-cdn-profile"></a>新しい CDN プロファイルを作成する
 

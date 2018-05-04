@@ -112,6 +112,10 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: WeChat
               href: active-directory-b2c-setup-wechat-app.md
+            - name: Azure AD (シングル テナント)
+              href: active-directory-b2c-setup-oidc-azure-active-directory.md
+            - name: カスタム OpenID Connect
+              href: active-directory-b2c-setup-oidc-idp.md
         - name: セルフサービスパスワードのリセットの設定
           href: active-directory-b2c-reference-sspr.md
         - name: UI のカスタマイズ
@@ -159,6 +163,8 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
+                - name: マルチテナント
+                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: SAML プロバイダーの構成
               items:
                 - name: ADFS
@@ -195,12 +201,12 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: '[サインインしたままにする] の有効化'
                   href: active-directory-b2c-reference-kmsi-custom.md
-            - name: ユーザー動作の追跡
-              href: active-directory-b2c-custom-guide-eventlogger-appins.md
             - name: トラブルシューティング
               items:
                 - name: Application Insights を使用したログの収集
                   href: active-directory-b2c-troubleshoot-custom.md
+                - name: ユーザー動作の追跡
+                  href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: リファレンス
           items:
             - name: リリース ノート

@@ -1,25 +1,25 @@
 ---
-title: "IoT Hub メッセージを Azure データ ストレージに保存する | Microsoft Docs"
-description: "IoT Hub のメッセージ ルーティング機能を使用して、IoT ハブ メッセージを Azure Blob Storage に保存します。 IoT Hub メッセージには、IoT デバイスから送信されたセンサー データなどの情報が含まれます。"
+title: IoT Hub メッセージを Azure データ ストレージに保存する | Microsoft Docs
+description: IoT Hub のメッセージ ルーティング機能を使用して、IoT ハブ メッセージを Azure Blob Storage に保存します。 IoT Hub メッセージには、IoT デバイスから送信されたセンサー データなどの情報が含まれます。
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "IoT データ ストレージ, IoT センサー データ ストレージ"
+tags: ''
+keywords: IoT データ ストレージ, IoT センサー データ ストレージ
 ms.assetid: 62fd14fd-aaaa-4b3d-8367-75c1111b6269
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
-ms.author: xshi
-ms.openlocfilehash: f6b334dbc9903d0080b74052062de7564aa4a993
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 03111cd07364aa30f15ddcfdc196107d92d02e0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>センサー データを含む IoT ハブ メッセージを Azure Blob Storage に保存する
 
@@ -61,7 +61,7 @@ Azure ストレージ アカウントと Azure 関数アプリを作成し、IoT
 
 ## <a name="prepare-your-iot-hub-to-route-messages-to-storage"></a>ストレージにメッセージをルーティングするための IoT ハブの準備
 
-IoT Hub は、BLOB としての Azure Storage へのメッセージのルーティングをネイティブにサポートします。
+IoT Hub は、BLOB としての Azure Storage へのメッセージのルーティングをネイティブにサポートします。 Azure IoT Hub カスタム エンドポイントの詳細については、「[IoT Hub の組み込みエンドポイントの一覧](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints)」を参照してください。
 
 ### <a name="add-storage-as-a-custom-endpoint"></a>ストレージをカスタム エンドポイントとして追加する
 

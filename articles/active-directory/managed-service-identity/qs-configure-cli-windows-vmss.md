@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI を使用して Azure 仮想マシン スケール セットの MSI を構成する"
-description: "Azure CLI を使用して、Azure 仮想マシン スケール セット上の管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。"
+title: Azure CLI を使用して Azure 仮想マシン スケール セットの MSI を構成する
+description: Azure CLI を使用して、Azure 仮想マシン スケール セット上の管理対象サービス ID (MSI) を構成する方法をステップ バイ ステップで説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: d7a7b0c8b3f9bf0279282dbf1fed4fc8163d9170
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9cdf5225f2d87fffa2290e3edd09d4ae829aee21
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Azure CLI を使用して、Azure 仮想マシン スケール セットの管理対象サービス ID (MSI) を構成する
 
@@ -71,10 +71,10 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
    az login
    ```
 
-2. `--assign-identity` パラメーターを指定して [az vmss assign-identity](/cli/azure/vm/#az_vmss_assign_identity) を使用し、MSI を既存の VM に追加します。
+2. [az vmss identity assign](/cli/azure/vmss/identity/#az_vmss_identity_assign) コマンドを使用して、次のように MSI を既存 VM に追加します。
 
    ```azurecli-interactive
-   az vmss assign-identity -g myResourceGroup -n myVMSS
+   az vmss identity assign -g myResourceGroup -n myVMSS
    ```
 
 ## <a name="remove-msi-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットから MSI を削除する
@@ -87,10 +87,10 @@ MSI が不要になった仮想マシン スケール セットがある場合�
    az login
    ```
 
-2. 次のように [az vmss remove-identity](/cli/azure/vmss/#az_vmss_remove_identity) を指定した `--identities` スイッチを使用して MSI を削除します。
+2. [az vmss identity remove](/cli/azure/vmss/identity/#az_vmss_remove_identity) コマンドを使用して、次のように MSI を削除します。
 
    ```azurecli-interactive
-   az vmss remove-identity -g myResourceGroup -n myVMSS --identities readerID writerID
+   az vmss identity remove -g myResourceGroup -n myVMSS --identities readerID writerID
    ```
 
 ## <a name="next-steps"></a>次の手順

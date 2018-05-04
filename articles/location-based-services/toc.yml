@@ -1,3 +1,5 @@
+- name: Azure IoT の基礎
+  href: ../iot-fundamentals/index.yml
 - name: Azure Location Based Services のドキュメント
   href: index.yml
 - name: 概要
@@ -47,6 +49,32 @@
       href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: マップ コントロール API - Javascript
       href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
+- name: 関連項目
+  items:
+    - name: 解決方法
+      items:
+        - name: IoT Suite の構成済みソリューション
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: サービス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
     - name: Azure IoT デベロッパー センター

@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
-ms.openlocfilehash: bb7a0e61b6d29c292642fd950aed7617de9b340d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 62265947e35636bf17492b6600c915e06a7ac1fd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-web-apps"></a>Web Apps 用 Azure Mobile Engagement の使用
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/30/2018
 このトピックでは、Azure Mobile Engagement を使用して Web アプリの使用状況を把握する方法について説明します。
 
 > [!NOTE]
-> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
+> Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/)」を参照してください。
 
 このチュートリアルには、次のものが必要です。
 

@@ -9,15 +9,22 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
 
-SQL Database では、ファイアウォール規則、ユーザーに ID の入力を求める認証メカニズム、データに対する承認 (ロール ベースのメンバーシップとアクセス許可のほか、行レベルのセキュリティと動的データ マスクを使用) を使用して、データベースへのアクセスを制限することで、データを保護します。
+SQL Database は、次の方法でデータを保護します。 
+- ファイアウォール規則を使用したデータベースへのアクセスの制限 
+- ユーザーに ID の入力を求める認証メカニズムの使用
+- ロールベースのメンバーシップとアクセス許可による、データに対する認可 
+- 行レベルのセキュリティ
+- 動的データ マスク
+
+さらに、SQL Database は、高度な監視、監査、および脅威検出機能も備えています。 
 
 いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護できるようになります。 このチュートリアルで学習する内容は次のとおりです。 
 
@@ -155,7 +162,7 @@ Azure SQL Database の Transparent Data Encryption (TDE) では、保存デー�
 
 3. 必要に応じて、**[データの暗号化]** をオンにし、**[保存]** をクリックします。
 
-暗号化プロセスは、バックグラウンドで開始されます。 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) を使用して SQL Database に接続し、`sys.dm_database_encryption_keys` ビューの encryption_state 列に対してクエリを実行すると、進行状況を監視できます。
+暗号化プロセスは、バックグラウンドで開始されます。 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) を使用して SQL Database に接続し、[sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) ビューの encryption_state 列に対してクエリを実行することで、進行状況を監視できます。 状態 3 は、データベースが暗号化されていることを示します。 
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>必要に応じて、SQL Database の監査を有効にする
 
@@ -167,7 +174,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 
     ![監査ブレード](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
 
-3. サーバー レベルで指定されたものと異なる種類 (または場所) の監査を有効にする必要がある場合には、[監査] を**オン**にして、**BLOB** 監査タイプを選択します。 サーバーの BLOB 監査が有効になっている場合、データベース構成監査とサーバー BLOB 監査が横並びで存在します。
+3. サーバー レベルで指定されたものと異なる種類 (または場所) の監査を有効にする必要がある場合には、[監査] を**オン**にして、**BLOB** 監査タイプを選択します。 サーバーの BLOB 監査が有効になっている場合、データベース構成監査とサーバー BLOB 監査が並行して存在します。
 
     ![監査を有効化](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
 
@@ -177,7 +184,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
    > 監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
    > 
 
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 
 > [!IMPORTANT]
 > 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[SQL データベースの監査](sql-database-auditing.md)」をご覧ください。

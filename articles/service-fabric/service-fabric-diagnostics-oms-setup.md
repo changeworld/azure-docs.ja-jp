@@ -12,24 +12,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/30/2018
+ms.date: 4/03/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: af09df52fe733b69cfe4470de2fd6e978f126ca0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3d6a47ba184b4bbbd290a61c581ae8b83b9361af
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
-Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、または Azure Marketplace から設定できます。 将来のためにデプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って OMS 環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 OMS をデプロイするアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
+クラスター レベルのイベントを監視する手段として、Microsoft は Log Analytics を推奨しています。 Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、Azure Marketplace のいずれかを使用して設定できます。 将来のためにデプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って Log Analytics 環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 デプロイ先のアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
 
 > [!NOTE]
-> クラスターを監視するように Log Analytics を設定するには、クラスター レベルまたはプラットフォーム レベルのイベントを確認できるように診断を有効にする必要があります。
+> クラスターを監視するように Log Analytics を設定するには、クラスター レベルまたはプラットフォーム レベルのイベントを確認できるように診断を有効にする必要があります。 詳細については、[Windows クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-wad.md)に関するページおよび [Linux クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-lad.md)に関するページを参照してください。
 
-## <a name="deploy-oms-by-using-azure-marketplace"></a>Azure Marketplace を使用して OMS をデプロイする
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Azure Marketplace を使用して Log Analytics ワークスペースをデプロイする
 
-クラスターをデプロイした後で OMS ワークスペースを追加する場合は、Portal で Azure Marketplace に移動して、"**Service Fabric Analytics**" を探します。
+クラスターをデプロイした後で Log Analytics ワークスペースを追加する場合は、Portal で Azure Marketplace に移動して、**Service Fabric Analytics** を探します。 これは、Service Fabric に固有のデータを含んだ、Service Fabric デプロイのカスタム ソリューションです。 このプロセスでは、ソリューション (分析情報を表示するためのダッシュボード) とワークスペース (基になるクラスター データの集計) の両方を作成します。
 
 1. 左側のナビゲーション メニューで **[新規]** を選択します。 
 
@@ -39,7 +39,7 @@ Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、�
 
     ![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. Service Fabric Analytics 作成ウィンドウで **[OMS ワークスペース]** フィールドの **[ワークスペースを選択します]** と **[新しいワークスペースの作成]** を順に選択します。 必須項目を入力します。 ここでの要件は、Service Fabric クラスターと OMS ワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、OMS ワークスペースはデプロイを開始します。 デプロイは数分しかかかりません。
+4. Service Fabric Analytics 作成ウィンドウで **[OMS ワークスペース]** フィールドの **[ワークスペースを選択します]** と **[新しいワークスペースの作成]** を順に選択します。 必須項目を入力します。 ここでの要件は、Service Fabric クラスターとワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、ワークスペースはデプロイを開始します。 デプロイは数分しかかかりません。
 
 5. 完了したら、Service Fabric Analytics 作成ウィンドウの下部にある **[作成]** をもう一度選択します。 新しいワークスペースが **[OMS ワークスペース]** に表示されていることを確認します。 この操作では、作成したワークスペースにソリューションが追加されます。
 
@@ -48,9 +48,9 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 >[!NOTE]
 >Linux クラスターではこのエクスペリエンスを有効にすることはまだできません。 
 
-### <a name="connect-the-oms-workspace-to-your-cluster"></a>OMS ワークスペースをクラスターに接続する 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Log Analytics ワークスペースをクラスターに接続する 
 
-1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfOMSWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、OMS ポータルへのアクセスを変更できます。
+1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、OMS ポータルへのアクセスを変更できます。
 
 2. 左側のナビゲーション メニューの **[ワークスペースのデータ ソース]** の下にある **[ストレージ アカウント ログ]** を選択します。
 

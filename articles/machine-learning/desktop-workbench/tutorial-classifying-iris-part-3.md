@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 0b56b15af7c573304db9a1b6e6e9f37453a63458
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3: あやめの分類: モデルをデプロイする
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -120,7 +120,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 これで、モデルを運用するための環境を準備する用意が整いました。
 
-## <a name="prepare-to-operationalize-locally"></a>ローカルで運用できるように準備する
+## <a name="prepare-to-operationalize-locally-for-development-and-testing-your-service"></a>ローカルで運用できるように準備する [サービスの開発とテスト用]
 ローカル コンピューター上の Docker コンテナーで実行するには、"_ローカル モード_" デプロイを使います。
 
 "_ローカル モード_" は、開発とテストに使うことができます。 以降の手順でモデルを運用可能な状態にするためには、Docker エンジンがローカルで実行されている必要があります。 各コマンドの末尾で `-h` フラグを使用すると、対応するヘルプ メッセージを表示することができます。
@@ -257,7 +257,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    docker ps
    ```
 
-## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>個別のコマンドを使用してリアルタイム Web サービスを作成する
+## <a name="optional-alternative-create-a-real-time-web-service-by-using-separate-commands"></a>[その他の方法 (省略可)] 個別のコマンドを使用してリアルタイム Web サービスを作成する
 前述の **az ml service create realtime** コマンドの代わりに、手順を個別に実行することもできます。 
 
 まずモデルを登録します。 次にマニフェストを生成し、Docker イメージを作成して、Web サービスを作成します。 この段階的なアプローチにより、各手順での柔軟性が高まります。 また、前の手順で生成されたエンティティを再利用したり、必要な場合にのみエンティティを再構築したりすることができます。

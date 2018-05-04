@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 65e5e45300e66cd8c3acc44a91335de45a919eb5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 2682054dd132e33897602b60f0799b7cc10ea5f1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -32,44 +32,46 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ログをアップロードして収集する 1 つの方法として、Windows Azure 診断 (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 ## <a name="prerequisites"></a>前提条件
-このドキュメントの一部の操作は、次のツールを使用して実行されます。
+この記事では、次のツールが使用されます。
 
-* [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) (Azure Cloud Services と関連性はありますが、お勧めの情報と例が掲載されています)
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager クライアント](https://github.com/projectkudu/ARMClient)
 * [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="log-and-event-sources"></a>ログとイベントのソース
-
-### <a name="service-fabric-platform-events"></a>Service Fabric プラットフォームのイベント
-[こちらの記事](service-fabric-diagnostics-event-generation-infra.md)で説明するように、Service Fabric にはすぐに使用できるログ チャネルがいくつか用意されています。そのうち、次のチャネルは、監視および診断データをストレージ テーブルや他の場所に送信するように WAD で簡単に構成できます。
-  * 操作イベント: Service Fabric プラットフォームで実行される高度な操作です。 たとえば、アプリケーションとサービスの作成、ノードの状態変化、アップグレード情報などです。 これらは Event Tracing for Windows (ETW) ログとして出力されます。
+## <a name="service-fabric-platform-events"></a>Service Fabric プラットフォームのイベント
+Service Fabric には[すぐに使用できるログ チャネル](service-fabric-diagnostics-event-generation-infra.md)がいくつか用意されています。そのうち、次のチャネルは、監視および診断データをストレージ テーブルや他の場所に送信する拡張機能が事前に構成されています。
+  * [操作イベント](service-fabric-diagnostics-event-generation-operational.md): Service Fabric プラットフォームが実行する高度なレベルの操作です。 たとえば、アプリケーションとサービスの作成、ノードの状態変化、アップグレード情報などです。 これらは Event Tracing for Windows (ETW) ログとして出力されます。
   * [Reliable Actors プログラミング モデル イベント](service-fabric-reliable-actors-diagnostics.md)
   * [Reliable Services プログラミング モデル イベント](service-fabric-reliable-services-diagnostics.md)
 
-### <a name="application-events"></a>アプリケーション イベント
- アプリケーションやサービスのコードから生成され、Visual Studio テンプレートで指定された EventSource ヘルパー クラスを使用して出力されるイベントです。 アプリケーションから EventSource ログを出力する方法の詳細については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」をご覧ください。
-
-## <a name="deploy-the-diagnostics-extension"></a>診断拡張機能のデプロイ
-ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 手順は、Azure Portal と Azure Resource Manager のどちらを使用するかに応じて少し変わります。 手順は、デプロイがクラスター作成の一環であるか、または既に存在しているクラスターに関するものであるかによっても変わります。 各シナリオの手順を見てみましょう。
+## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>ポータルを使用して診断拡張機能をデプロイする
+ログ収集の最初の手順は、Service Fabric クラスター内の仮想マシン スケール セット ノード上に診断拡張機能をデプロイすることです。 診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。 以下の手順は、Azure Portal と Azure Resource Manager テンプレートを使用して、新規と既存のクラスターでこれを行う方法を示しています。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Azure Portal を使用してクラスター作成の一環として診断拡張機能をデプロイする
-クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、次の図に示す [診断設定] パネルを使用します。[診断] が **[オン]** (既定の設定) に設定されていることを確認してください。 クラスターを作成した後、ポータルを使用してこれらの設定を変更することはできません。
+クラスター構成手順の中でクラスターを作成する場合は、省略可能な設定を展開し、診断が **[オン]** (既定の設定) に設定されていることを確認します。
 
-![ポータルでのクラスター作成のための Azure 診断設定](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics.png)
+![ポータルでのクラスター作成のための Azure 診断設定](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
-ポータルを使ってクラスターを作成する場合、**[OK] をクリックしてクラスターを作成する前に**テンプレートをダウンロードすることを強くお勧めします。 詳細については、[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。 いくつかの変更はポータルを使用して行うことができないため、後で変更を行うためにこのテンプレートが必要になります。
+最後の手順で **[作成] をクリックする前に**テンプレートをダウンロードしておくことを強くお勧めします。 詳細については、[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。 データを収集するチャンネル (上記) を変更するためにテンプレートが必要です。
 
-### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Azure リソース マネージャー を使用してクラスター作成の一環で診断拡張機能をデプロイする
-Resource Manager を使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターの Resource Manager テンプレートに追加してから、クラスターを作成します。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)」で参照できます。
+![クラスター テンプレート](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
+
+Azure Storage にイベントを集計するため、Log Analytics ポータルで、分析情報の取得とクエリを実行するように [Log Analytics を設定](service-fabric-diagnostics-oms-setup.md)します。
+
+>[!NOTE]
+>現在のところ、テーブルに送信されるイベントをフィルター処理したり調整したりする方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加し続けます (既定の上限は 50 GB です)。 これを変更する方法については、[この記事の中で後で説明します](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota)。 さらに、[ウォッチドッグ サンプル](https://github.com/Azure-Samples/service-fabric-watchdog-service)で実行されるデータ グルーミング サービスの例があります。30 日または 90 日の期間を超えてログを保存する正当な理由がない限り、データ グルーミング サービスを自分で作成することをお勧めします。
+
+## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Azure Resource Manager を使用して診断拡張機能をデプロイする
+
+### <a name="create-a-cluster-with-the-diagnostics-extension"></a>診断拡張機能付きのクラスターを作成する
+Resource Manager を使用してクラスターを作成するには、クラスターを作成する前に、診断構成 JSON を完全なクラスターの Resource Manager テンプレートに追加する必要があります。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)」で参照できます。
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
 または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事を参照してください。
 
-### <a name="deploy-the-diagnostics-extension-to-an-existing-cluster"></a>既存のクラスターに診断拡張機能をデプロイする
-まだ診断がデプロイされていない既存のクラスターがある場合、または既存の構成を変更する場合、診断を追加または更新できます。 既存クラスターの作成に使用された Resource Manager テンプレートを変更するか、前の説明に基づき、ポータルからテンプレートをダウンロードします。 次のタスクを実行し、template.json ファイルを変更します。
+### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>既存のクラスターに診断拡張機能を追加する
+まだ診断がデプロイされていない既存のクラスターがある場合は、クラスター テンプレートを使用して追加または更新を実行できます。 既存クラスターの作成に使用された Resource Manager テンプレートを変更するか、前の説明に基づき、ポータルからテンプレートをダウンロードします。 次のタスクを実行して、template.json ファイルを変更します。
 
 リソース セクションを増やすことで新しいストレージ リソースをテンプレートに追加します。
 
@@ -79,7 +81,7 @@ Resource Manager テンプレートの診断設定を確認するには、azured
   "type": "Microsoft.Storage/storageAccounts",
   "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
   "location": "[parameters('computeLocation')]",
-  "properties": {
+  "sku": {
     "accountType": "[parameters('applicationDiagnosticsStorageAccountType')]"
   },
   "tags": {
@@ -89,7 +91,7 @@ Resource Manager テンプレートの診断設定を確認するには、azured
 },
 ```
 
- 次に、ストレージ アカウント定義の直後の、`supportLogStorageAccountName` と `vmNodeType0Name` の間でパラメーター セクションを増やします。 プレースホルダー テキストの *storage account name goes here* をストレージ アカウントの名前に置き換えます。
+ 次に、ストレージ アカウント定義の直後の `supportLogStorageAccountName` との間に、パラメーター セクションを追加します。 プレースホルダー テキストの *storage account name goes here* をストレージ アカウントの名前に置き換えます。
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -105,7 +107,7 @@ Resource Manager テンプレートの診断設定を確認するには、azured
     },
     "applicationDiagnosticsStorageAccountName": {
       "type": "string",
-      "defaultValue": "storage account name goes here",
+      "defaultValue": "**STORAGE ACCOUNT NAME GOES HERE**",
       "metadata": {
         "description": "Name for the storage account that contains application diagnostics data from the cluster"
       }
@@ -182,6 +184,14 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 >},
 >```
 
+### <a name="update-storage-quota"></a>ストレージ クォータを更新する
+
+拡張機能によってデータが入力されるテーブルは、クォータに達するまで大きくなり続けるため、クォータ サイズの縮小を検討できます。 既定値は 50 GB です。この値は、テンプレートの `DiagnosticMonitorConfiguration` の下の `overallQuotainMB` フィールドで構成可能です。
+
+```json
+"overallQuotaInMB": "50000",
+```
+
 ## <a name="log-collection-configurations"></a>ログ収集の構成
 追加チャネルのログも収集できます。Azure で実行されているクラスターを対象とした、テンプレートで作成できる最も一般的な構成をいくつか次に示します。
 
@@ -196,7 +206,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* データおよびメッセージング チャネル - 基本: 詳細な稼働チャネル ログに加えて、メッセージング (現時点では ReverseProxy のみ) とデータ パスで生成された重要なログおよびイベント。 これらのイベントには、処理された ReverseProxy および要求で発生した要求の処理エラーや他の重要な問題があります。 **包括的なログ記録のための推奨構成です**。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000010" を追加します。
+* データおよびメッセージング チャネル - 基本: 詳細な稼働チャネル ログに加えて、メッセージング (現時点では ReverseProxy のみ) とデータ パスで生成された重要なログおよびイベント。 これらのイベントには、ReverseProxy で発生した要求処理エラーや他の重要な問題に加え、処理された要求も含まれます。 **包括的なログ記録のための推奨構成です**。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000010" を追加します。
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
@@ -281,7 +291,7 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
 
 ## <a name="send-logs-to-application-insights"></a>ログを Application Insights に送信する
 
-Application Insights (AI) への監視および診断データの送信は、WAD の構成の一部として実行できます。 イベントの分析と視覚化に AI を使用する場合は、「[Event Analysis and Visualization with Application Insights (Application Insights を使用したイベントの分析と視覚化)](service-fabric-diagnostics-event-analysis-appinsights.md)」を参照して、"WadCfg" の一部として AI のシンクを設定してください。
+Application Insights (AI) への監視および診断データの送信は、WAD の構成の一部として実行できます。 イベントの分析と視覚化に AI を使用する場合は、"WadCfg" の一部として [AI シンクの設定方法](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)に関する説明を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

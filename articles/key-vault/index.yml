@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Key Vault のドキュメント
+metadata:
+  title: Azure Key Vault のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  services: key-vault
+  author: czeumault
+  manager: carolz
+  layout: LandingPage
+  ms.assetid: 
+  ms.service: key-vault
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/23/2017
+  ms.author: carolz
+  ms.openlocfilehash: 1dd00a68510ef5d1dbb726a3aea4a85897256a5b
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: Key Vault を使用して、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護して管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソースやソリューションにアクセスして暗号化するキーを作成および管理する方法を紹介します。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: ''
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/cli.svg
+      text: Azure CLI
+      href: /azure/key-vault/quick-create-cli
+    - image:
+        src: media/index/logo_powershell.svg
+      text: PowerShell
+      href: /azure/key-vault/quick-create-powershell
+    - image:
+        src: media/index/portal.svg
+      text: Azure Portal
+      href: /azure/key-vault/quick-create-portal
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Web アプリケーションから Key Vault を使ってみる
+      href: /azure/key-vault/key-vault-use-from-web-application
+      image:
+        src: media/index/get-started.svg
+        href: /azure/key-vault/key-vault-use-from-web-application
+    - title: エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する
+      href: /azure/key-vault/key-vault-key-rotation-log-monitoring
+      image:
+        src: media/index/tutorial.svg
+        href: /azure/key-vault/key-vault-key-rotation-log-monitoring
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/resourcemanager/azurerm.keyvault/v2.3.0/azurerm.keyvault">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>
+    - title: 言語
+      html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/keyvault">REST API</a></p>

@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード | Microsoft Docs"
-description: "サインイン アクティビティ レポートのエラー コードのリファレンス。"
+title: Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード | Microsoft Docs
+description: サインイン アクティビティ レポートのエラー コードのリファレンス。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード
 
@@ -65,6 +65,7 @@ ms.lasthandoff: 02/11/2018
 |50055|パスワードが無効です。期限切れのパスワードが入力されました。|
 |50057|ユーザー アカウントが無効にされています。|
 |50058|入力された資格情報にユーザーの ID に関する情報が見つからないか、テナントにユーザーが見つかりません。またはサイレント サインイン要求が送信されたものの、いずれのユーザーもサインインしていないか、サービスがユーザーを認証できませんでした。|
+|50072|ユーザーは、第 2 要素認証 (対話型) に登録する必要があります|
 |50074|ユーザーが MFA チャレンジに合格しませんでした。|
 |50079|第 2 要素認証を行うにはユーザーの登録が必要です。|
 |50089|フロー トークンの有効期限が切れているために、フロー トークンの検証に失敗しました。|
@@ -97,7 +98,6 @@ ms.lasthandoff: 02/11/2018
 |81013|ユーザーの Kerberos チケット内の情報では、ユーザー オブジェクトが見つかりません。|
 |90014|さまざまなケースで、資格情報に想定されているフィールドが存在しないときに使用されます。|
 |90093|要求に対して Forbidden エラー コードが Graph から返されました。|
-
 
 
 ## <a name="next-steps"></a>次の手順

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 993ff518a1987581ad7de4797611f104080c2c2f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3175b99c0e41cedf313115043b09608496adfdca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Azure SQL Database マネージ インスタンスのカスタム DNS の構成
 
@@ -37,7 +37,7 @@ Windows Server 2016 で DNS 転送を構成するには、次の手順を使用�
 
    ![[フォワーダー]](./media/sql-database-managed-instance-custom-dns/forwarders.png) 
 
-3. **[編集]**をクリックします。 
+3. **[編集]** をクリックします。 
 
    ![フォワーダーの一覧](./media/sql-database-managed-instance-custom-dns/forwarders-list.png) 
 
@@ -79,5 +79,5 @@ Azure VNet 上の DNS 構成では IP アドレスを入力する必要がある
 ## <a name="next-steps"></a>次の手順
 
 - 概要については、[マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
-- VNet を作成してからマネージ インスタンスを作成する例については、[マネージ インスタンスの作成](sql-database-managed-instance-tutorial-portal.md)に関するページを参照してください。
-- VNet の構成については、[マネージ インスタンスのための VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関するページを参照してください。
+- 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、[マネージド インスタンスの作成](sql-database-managed-instance-create-tutorial-portal.md)に関するページを参照してください。
+- マネージド インスタンスの VNet を構成する方法については、[マネージド インスタンスの VNet 構成](sql-database-managed-instance-vnet-configuration.md)に関するページを参照してください。

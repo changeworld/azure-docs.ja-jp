@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: f7865ab165f1ef9377817b8110e35d516e01c0e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1844abbff660b175ea78d09bd2256aa5ba83ed83
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-access-control"></a>Azure SQL Database のアクセス制御
 SQL Database では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、およびユーザーを特定の操作とデータに限定する承認メカニズムによって、アクセスを制御します。 
@@ -37,7 +37,7 @@ SQL Database は、2 種類の認証をサポートしています。
 
 データベース エンジンは、30 分以上アイドル状態が続くと接続を閉じます。 接続する前に、もう一度ログインする必要があります。 SQL Database への継続したアクティブな接続では、少なくとも 10 時間ごとに再認証が必要になります (データベース エンジンによって実行されます)。 データベース エンジンは最初に送信されたパスワードを使用して再認証を試みるため、ユーザー入力は必要ありません。 パフォーマンス上の理由により、パスワードが SQL Database でリセットされると、接続プールが原因で接続がリセットされた場合でも、接続は再認証されません。 これは、オンプレミスの SQL Server とは異なる動作です。 接続が最初に承認されて以来パスワードが変更されている場合は、その接続を終了し、新しいパスワードを使用して新しい接続を作成する必要があります。 `KILL DATABASE CONNECTION` アクセス許可を持つユーザーは、[KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) コマンドを使用して SQL Database への接続を明示的に終了できます。
 
-ユーザー アカウントを master データベースに作成し、サーバーのすべてのデータベースでアクセス許可を付与することができます。または、ユーザー アカウントをデータベース自体に作成することができます (包含ユーザーと呼ばれます)。 ログインの作成と管理については、[ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。 移植性とスケーラビリティを高める場合は、包含データベース ユーザーを使用してスケーラビリティを高めます。 包含ユーザーの詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)」、「[CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)」、「[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)」を参照してください。
+ユーザー アカウントを master データベースに作成し、サーバーのすべてのデータベースでアクセス許可を付与することができます。または、ユーザー アカウントをデータベース自体に作成することができます (包含ユーザーと呼ばれます)。 ログインの作成と管理については、[ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。 包含データベースを使用して、移植性とスケーラビリティを高めます。 包含ユーザーの詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)」、「[CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)」、「[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)」を参照してください。
 
 ベスト プラクティスとしては、アプリケーションで専用アカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。 [包含データベース ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を作成する方法をお勧めします。この方法により、アプリがデータベースから直接認証を受けることができます。 
 

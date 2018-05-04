@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI- sfctl cluster | Microsoft Docs
-description: "Service Fabric CLI sfctl cluster のコマンドについて説明します。"
+description: Service Fabric CLI sfctl cluster のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: c83dc3eeb6ca0d66b0c70236354fd7bab80f355f
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric クラスターの選択、管理、および操作を行います。
@@ -68,7 +68,7 @@ Service Fabric クラスターの正常性を取得します。 正常性状態�
 | --debug                        | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                      | このヘルプ メッセージを表示して終了します。|
 | --output -o                    | 出力形式。  使用できる値は、json、jsonc、table、tsv です。                    既定値は json です。|
-| --query                        | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query                        | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose                      | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-manifest"></a>sfctl cluster manifest
@@ -89,7 +89,7 @@ Service Fabric クラスター マニフェストを取得します。 クラス
 | --debug  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h| このヘルプ メッセージを表示して終了します。|
 | --output -o | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose| ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-provision"></a>sfctl cluster provision
@@ -111,7 +111,7 @@ Service Fabric クラスターのコードまたは構成パッケージを評�
 | --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h  | このヘルプ メッセージを表示して終了します。|
 | --output -o| 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose  | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
@@ -138,7 +138,7 @@ Service Fabric クラスターのエンドポイントに接続します。
 | --debug           | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h         | このヘルプ メッセージを表示して終了します。|
 | --output -o       | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query           | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query           | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 | --verbose         | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
@@ -159,7 +159,7 @@ Service Fabric クラスターのコードまたは構成パッケージをプ�
 |--debug         | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
  |   --help -h       | このヘルプ メッセージを表示して終了します。|
  |   --output -o     | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
- |   --query         | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+ |   --query         | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
  |   --verbose       | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 
@@ -197,7 +197,7 @@ Service Fabric クラスターのコードまたは構成バージョンのア�
 |--debug                               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 |    --help -h                             | このヘルプ メッセージを表示して終了します。|
 |    --output -o                           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。 既定値は json です。|
-|    --query                               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+|    --query                               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ をご覧ください。|
 |    --verbose                             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="next-steps"></a>次の手順

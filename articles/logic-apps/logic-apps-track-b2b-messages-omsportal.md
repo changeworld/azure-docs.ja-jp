@@ -1,11 +1,11 @@
 ---
-title: "Operations Management Suite で B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs"
-description: "Azure Log Analytics を使用して Operations Management Suite (OMS) で統合アカウントおよびロジック アプリの B2B 通信を追跡する"
+title: Azure Log Analytics - Azure Logic Apps を使用して B2B メッセージを追跡する | Microsoft Docs
+description: Azure Log Analytics を使用して統合アカウントおよびロジック アプリの B2B 通信を追跡する
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で B2B 通信を追跡する
+# <a name="track-b2b-communication-with-azure-log-analytics"></a>Azure Log Analytics で B2B 通信を追跡する
 
-統合アカウント経由で 2 つの実行中のビジネス プロセスまたはアプリケーション間で B2B 通信を設定した後、これらのエンティティは互いにメッセージを交換できます。 これらのメッセージが正しく処理されているかどうかを確認するには、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して AS2、X12、および EDIFACT メッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
+統合アカウント経由で 2 つの実行中のビジネス プロセスまたはアプリケーション間で B2B 通信を設定した後、これらのエンティティは互いにメッセージを交換できます。 これらのメッセージが正しく処理されているかどうかを確認するには、 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して AS2、X12、および EDIFACT メッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
 
 * メッセージの数と状態
 * 受信確認の状態
@@ -36,30 +36,30 @@ ms.lasthandoff: 02/21/2018
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
-* まだ実行していない場合は、OMS で [Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
+* まだ実行していない場合は、[Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
 
 > [!NOTE]
-> 前の要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 OMS で B2B 通信を追跡するための同じ OMS ワークスペースを使用する必要があります。 
+> 上記の要件を満たした後、Log Analytics 内にワークスペースを用意する必要があります。 Log Analytics 内で B2B 通信を追跡するための同じワークスペースを使用する必要があります。 
 >  
-> OMS ワークスペースがない場合は、[OMS ワークスペースを作成する方法](../log-analytics/log-analytics-get-started.md)を参照してください。
+> Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
-## <a name="add-the-logic-apps-b2b-solution-to-the-operations-management-suite-oms"></a>Logic Apps B2B ソリューションを Operations Management Suite (OMS) に追加する
+## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Log Analytics への Logic Apps B2B ソリューションの追加
 
-OMS でロジック アプリの B2B メッセージを追跡するには、OMS ポータルに **Logic Apps B2B** ソリューションを追加する必要があります。 [OMS へのソリューションの追加](../log-analytics/log-analytics-get-started.md)に関する詳細を参照してください。
+Log Analytics でロジック アプリの B2B メッセージを追跡するには、OMS ポータルに **Logic Apps B2B** ソリューションを追加する必要があります。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
 
 1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
    ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. **[Log Analytics]** で、OMS ワークスペースを見つけて選択します。 
+2. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
 
-   ![OMS ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
 3. **[管理]** で、**[OMS ポータル]** を選択します。
 
    ![OMS ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. OMS ホーム ページが開いた後、**[ソリューション ギャラリー]** を選択します。    
+4. ホーム ページが開いた後、**[ソリューション ギャラリー]** を選択します。    
 
    ![[ソリューション ギャラリー] を選択する](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
@@ -71,21 +71,21 @@ OMS でロジック アプリの B2B メッセージを追跡するには、OMS 
 
    ![[追加] の選択](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-   OMS ホーム ページに、**[Logic Apps B2B メッセージ]** のタイルが表示されるようになります。 
+   ホーム ページに、**[Logic Apps B2B メッセージ]** のタイルが表示されるようになります。 
    このタイルは、B2B メッセージが処理されたらメッセージ カウントを更新します。
 
-   ![OMS ホーム ページの [Logic Apps B2B メッセージ] タイル](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
+   ![ホーム ページの [Logic Apps B2B メッセージ] タイル](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-the-operations-management-suite"></a>Operations Management Suite でメッセージの状態と詳細を追跡する
+## <a name="track-message-status-and-details-in-log-analytics"></a>Log Analytics でのメッセージの状態と詳細の追跡
 
-1. B2B メッセージが処理された後、それらのメッセージの状態と詳細を表示できます。 OMS ホーム ページで、**[Logic Apps B2B メッセージ]** タイルを選択します。
+1. B2B メッセージが処理された後、それらのメッセージの状態と詳細を表示できます。 ホーム ページで、**[Logic Apps B2B メッセージ]** タイルを選択します。
 
    ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
    > [!NOTE]
-   > 既定では、**[Logic Apps B2B メッセージ]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、OMS ページの上部にある範囲コントロールを選択します。
+   > 既定では、**[Logic Apps B2B メッセージ]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
    > 
    > ![データの範囲を変更する](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
    >
@@ -240,7 +240,7 @@ EDIFACT メッセージごとのプロパティの説明を次に示します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Operations Management Suite で B2B メッセージのクエリを行う](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Log Analytics での B2B メッセージのクエリ](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
