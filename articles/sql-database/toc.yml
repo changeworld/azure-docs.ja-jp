@@ -30,6 +30,8 @@
           href: sql-database-connect-query-dotnet-visual-studio.md
         - name: .NET Core
           href: sql-database-connect-query-dotnet-core.md
+        - name: Active Directory MFA での .NET
+          href: active-directory-interactive-connect-azure-sql-db.md
         - name: Go
           href: sql-database-connect-query-go.md
         - name: Java

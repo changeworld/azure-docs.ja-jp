@@ -73,6 +73,8 @@
           href: monitoring-enable-alerts-using-template.md
         - name: OMS ポータルから Azure Portal にアラートをコピーする
           href: monitoring-alerts-extend-tool.md
+        - name: 動的なしきい値によるアラート
+          href: monitoring-alerts-dynamic-thresholds.md
     - name: アラートでのアクション グループの使用
       items:
         - name: webhook スキーマの詳細情報

@@ -111,6 +111,8 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: Azure Traffic Manager と Site Recovery について
       href: concepts-traffic-manager-with-site-recovery.md
+    - name: ExpressRoute と Site Recovery の併用について
+      href: concepts-expressroute-with-site-recovery.md
     - name: FAQ
       href: site-recovery-faq.md
 - name: ハウツー ガイド
@@ -119,12 +121,14 @@
       items:
         - name: ネットワーク
           items:
-            - name: Azure VM ディザスター リカバリーのネットワークを管理する (プレビュー)
+            - name: Azure VM ディザスター リカバリーのネットワークを管理する
               href: azure-to-azure-about-networking.md
             - name: Azure VM ディザスター リカバリーにおけるネットワーク マッピングを準備する
               href: azure-to-azure-network-mapping.md
             - name: フェールオーバーの IP アドレス指定を設定する
               href: site-recovery-retain-ip-azure-vm-failover.md
+            - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する
+              href: azure-vm-disaster-recovery-with-expressroute.md
         - name: ディザスター リカバリー
           items:
             - name: Azure への移行後の Azure VM のディザスター リカバリー
@@ -141,6 +145,12 @@
           items:
             - name: Azure から Azure へのレプリケーションに関するトラブルシューティング
               href: azure-to-azure-troubleshoot-errors.md
+            - name: Azure Site Recovery 拡張機能のトラブルシューティング
+              href: site-recovery-extension-troubleshoot.md
+        - name: '[管理]'
+          items:
+            - name: モビリティ サービス拡張機能の自動更新
+              href: azure-to-azure-autoupdate.md
     - name: VMware/物理から Azure
       items:
         - name: ネットワーク

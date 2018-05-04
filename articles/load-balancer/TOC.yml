@@ -22,6 +22,8 @@
       href: powershell-samples.md
 - name: チュートリアル
   items:
+    - name: VM への内部トラフィックの負荷分散を行う
+      href: tutorial-load-balancer-basic-internal-portal.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う

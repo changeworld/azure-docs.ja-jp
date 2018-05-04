@@ -23,6 +23,10 @@
   items:
     - name: Azure と Azure Stack へのアプリのデプロイ
       href: azure-stack-solution-pipeline.md
+    - name: ハイブリッド クラウド ID の構成
+      href: azure-stack-solution-hybrid-identity.md
+    - name: ハイブリッド クラウド接続の構成
+      href: azure-stack-solution-hybrid-connectivity.md
 - name: ハウツー ガイド
   items:
     - name: Azure Stack ポータルの使用

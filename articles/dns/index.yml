@@ -1,0 +1,95 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure DNS のドキュメント
+metadata:
+  title: Azure DNS のドキュメント
+  meta.description: Learn how to manage your DNS records using Azure Domain Name System. Documentation shows how to set up and manage DNS zones and records for domain names.
+  services: dns
+  author: KumudD
+  manager: jeconnoc
+  layout: LandingPage
+  ms.assetid: na
+  ms.service: dns
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/26/2018
+  ms.author: kumud
+  ms.openlocfilehash: bb18530a0925b88475d2c0979e4e83b46bb777ca
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/03/2018
+abstract:
+  description: Azure DNS の使用方法。 ドメイン名の DNS ゾーンとレコードを設定して管理する方法について、クイック スタートやチュートリアル、サンプルなどで説明します。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: ドメイン名の DNS ゾーンとレコードを作成する方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+      text: Azure ポータル
+      href: /azure/dns/dns-getstarted-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/dns/dns-getstarted-powershell
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure CLI
+      href: /azure/dns/dns-getstarted-cli
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: ドメイン名を Azure DNS に委任し、Azure DNS を使用して Web アプリのカスタム DNS レコードを作成する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Azure DNS にドメインを委任する</a>
+    - html: <a href="/azure/dns/dns-web-sites-custom-domain">Web アプリのカスタム DNS レコードの作成</a>
+- title: 無料の Pluralsight ビデオ トレーニング
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Microsoft Azure ネットワークの実装
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Microsoft Azure ネットワーク ソリューションの計画と設計
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+    - title: AWS 管理者向け Microsoft Azure 管理
+      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+- title: サンプル
+  items:
+  - type: paragraph
+    text: 一般的なタスクのサンプル スクリプトです。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dns/cli-samples">Azure CLI</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/resourcemanager/azurerm.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
+    - title: 言語
+      html: <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html">Python</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/dns/">REST API リファレンスに関するページ</a></p>

@@ -113,7 +113,11 @@
         - name: 書き込みアクセラレータを有効にする方法
           href: how-to-enable-write-accelerator.md
         - name: アタッチされた VHD のトラブルシューティング
-          href: troubleshoot-vhds.md
+          items:
+            - name: ストレージ リソースの削除エラー
+              href: storage-resource-deletion-errors.md
+            - name: 接続された VHD による VM の予期しない再起動
+              href: unexpected-reboots-attached-vhds.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション

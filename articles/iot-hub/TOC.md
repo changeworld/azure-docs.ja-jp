@@ -71,6 +71,7 @@
 #### [デバイス ID を管理する](iot-hub-devguide-identity-registry.md)
 #### [IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)
 #### [デバイス ツインを理解する](iot-hub-devguide-device-twins.md)
+#### [モジュール ツインを理解する](iot-hub-devguide-module-twins.md)
 #### [デバイスでダイレクト メソッドを呼び出す](iot-hub-devguide-direct-methods.md)
 #### [複数デバイスでのジョブをスケジュール設定する](iot-hub-devguide-jobs.md)
 #### [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)
@@ -78,6 +79,7 @@
 #### [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
 #### [価格の例](iot-hub-devguide-pricing.md)
 #### [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
+#### [モバイル デバイスの場合の開発](iot-hub-how-to-develop-for-mobile-devices.md)
 #### [MQTT サポート](iot-hub-mqtt-support.md)
 #### [用語集](iot-hub-devguide-glossary.md)
 ### [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
@@ -105,6 +107,9 @@
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
 #### [Python バックエンド/Python デバイス](iot-hub-python-twin-getstarted.md)
+### モジュール ツインを使ってみる
+#### [ポータル バックエンド/.NET デバイス](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-module-twin-getstarted.md)
 ### ダイレクト メソッドの使用
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-direct-methods.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-direct-methods.md)

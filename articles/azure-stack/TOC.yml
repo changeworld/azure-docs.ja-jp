@@ -190,18 +190,25 @@
               href: azure-stack-delegated-provider.md
             - name: クォータの種類
               href: azure-stack-quota-types.md
-        - name: SQL または MySQL を PaaS として提供する
+        - name: PaaS サービスの概要
+          href: azure-stack-tools-paas-services.md
+        - name: SQL を PaaS として提供する
+          href: azure-stack-sql-resource-provider.md
           items:
-            - name: PaaS サービスの概要
-              href: azure-stack-tools-paas-services.md
-            - name: MySQL リソース プロバイダーのデプロイ
-              href: azure-stack-mysql-resource-provider-deploy.md
-            - name: SQL リソース プロバイダーのデプロイ
+            - name: SQL Server リソース プロバイダーのデプロイ
               href: azure-stack-sql-resource-provider-deploy.md
             - name: ホスティング サーバーの追加
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: SQL データベースの作成
               href: azure-stack-sql-resource-provider-databases.md
+            - name: SQL Server リソース プロバイダーの更新
+              href: azure-stack-sql-resource-provider-update.md
+            - name: SQL Server リソース プロバイダーの維持
+              href: azure-stack-sql-resource-provider-maintain.md
+            - name: SQL Server リソース プロバイダーの削除
+              href: azure-stack-sql-resource-provider-remove.md
+        - name: MySQL を PaaS として提供する
+          href: azure-stack-mysql-resource-provider-deploy.md
         - name: App Service を PaaS として提供する
           items:
             - name: Azure Stack 上の App Service の概要

@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure VPN Gateway のドキュメント
+metadata:
+  document_id: 
+  title: VPN Gateway のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: Learn how to configure, create, and manage an Azure VPN gateway. Create encrypted cross-premises connections to your virtual network from on-premises locations, or create encrypted connections between VNets.
+  services: vpn-gateway
+  author: cherylmc
+  manager: jeconnoc
+  ms.service: vpn-gateway
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/26/2018
+  ms.author: cherylmc
+  ms.openlocfilehash: c5bfd0789a2fdc2effe3e750404c3fa1c3f1b045
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/03/2018
+abstract:
+  description: Azure VPN ゲートウェイを構成、作成、管理する方法について説明します。 オンプレミスの場所から仮想ネットワークへの暗号化されたクロスプレミス接続を作成します。または、暗号化された接続を VNet 間に作成します。
+sections:
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure VPN ゲートウェイを作成、構成、管理する方法について説明します。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/vpn-gateway/vpn-gateway-tutorial-create-gateway-powershell">VPN ゲートウェイを作成して管理する</a>
+- title: 無料の Pluralsight ビデオ トレーニング
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Microsoft Azure ネットワークの実装
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Microsoft Azure ネットワーク ソリューションの計画と設計
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+- title: サンプル
+  items:
+  - type: paragraph
+    text: 一般的なタスクのサンプル スクリプトです。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/vpn-gateway/powershell-samples">PowerShell</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/module/azurerm.network#vpn">PowerShell</a></p><p><a href="/cli/azure/network/vnet-gateway">Azure CLI</a></p>
+    - title: 言語
+      html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/network-gateway/">REST API リファレンスに関するページ</a></p>

@@ -76,6 +76,8 @@
           href: stream-analytics-high-frequency-trading.md
         - name: IoT ストリーミング データを処理する
           href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+        - name: しきい値に基づく規則
+          href: stream-analytics-threshold-based-rules.md
     - name: 監視
       items:
         - name: ジョブの監視 - Azure Portal

@@ -108,34 +108,51 @@
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: ページ BLOB の機能
           href: storage-blob-pageblob-overview.md
-        - name: Premium Storage
+        - name: Azure ディスク
           items:
-            - name: Linux
+            - name: Premium Storage
               items:
-                - name: VM ディスク向けの高パフォーマンス Premium Storage
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage'
-                - name: Azure Site Recovery を使用した Premium Storage への移行
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: 高パフォーマンス用の設計
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage-performance'
-            - name: Windows
+                - name: Linux
+                  items:
+                    - name: VM ディスク向けの高パフォーマンス Premium Storage
+                      href: ../../virtual-machines/linux/premium-storage.md
+                    - name: Azure Site Recovery を使用した Premium Storage への移行
+                      href: ../../virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: 高パフォーマンス用の設計
+                      href: ../../virtual-machines/linux/premium-storage-performance.md
+                - name: Windows
+                  items:
+                    - name: VM ディスク向けの高パフォーマンス Premium Storage
+                      href: ../../virtual-machines/windows/premium-storage.md
+                    - name: Azure Site Recovery を使用した Premium Storage への移行
+                      href: ../../virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: 高パフォーマンス用の設計
+                      href: ../../virtual-machines/windows/premium-storage-performance.md
+            - name: Standard Storage
               items:
-                - name: VM ディスク向けの高パフォーマンス Premium Storage
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage'
-                - name: Azure Site Recovery を使用した Premium Storage への移行
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: 高パフォーマンス用の設計
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance'
-        - name: Standard Storage
-          items:
-            - name: Linux
+                - name: Linux
+                  items:
+                    - name: VM ディスク用の Standard Storage
+                      href: ../../virtual-machines/linux/standard-storage.md
+                - name: Windows
+                  items:
+                    - name: VM ディスク用の Standard Storage
+                      href: ../../virtual-machines/windows/standard-storage.md
+            - name: アタッチされた VHD のトラブルシューティング
+              href: storage-troubleshoot-vhds.md
               items:
-                - name: VM ディスク用の Standard Storage
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/standard-storage'
-            - name: Windows
-              items:
-                - name: VM ディスク用の Standard Storage
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage'
+                - name: Linux
+                  items:
+                    - name: ストレージ リソースの削除エラー
+                      href: ../../virtual-machines/linux/storage-resource-deletion-errors.md
+                    - name: 接続された VHD による VM の予期しない再起動
+                      href: ../../virtual-machines/linux/unexpected-reboots-attached-vhds.md
+                - name: Windows
+                  items:
+                    - name: ストレージ リソースの削除エラー
+                      href: ../../virtual-machines/windows/storage-resource-deletion-errors.md
+                    - name: 接続された VHD による VM の予期しない再起動
+                      href: ../../virtual-machines/windows/unexpected-reboots-attached-vhds.md
     - name: セキュリティ保護
       items:
         - name: セキュリティ ガイド

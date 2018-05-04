@@ -59,6 +59,8 @@
       href: monitor-event-delivery.md
     - name: イベント サブスクリプションの照会
       href: query-event-subscriptions.md
+    - name: CloudEvents スキーマの使用
+      href: cloudevents-schema.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -123,6 +123,8 @@
           href: durable-functions-versioning.md
         - name: パフォーマンスとスケール
           href: durable-functions-perf-and-scale.md
+        - name: ディザスター リカバリーと地理的分散
+          href: durable-functions-disaster-recovery-geo-distribution.md
 - name: ハウツー ガイド
   items:
     - name: 開発

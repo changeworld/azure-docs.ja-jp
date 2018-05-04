@@ -53,6 +53,7 @@
 #### [招待メール](active-directory-b2b-invitation-email.md)
 #### [招待の利用](active-directory-b2b-redemption-experience.md)
 #### [招待を使用せずに B2B ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
+#### [招待を許可またはブロックする](active-directory-b2b-allow-deny-list.md)
 #### [B2B 向けの条件付きアクセス](active-directory-b2b-mfa-instructions.md)
 #### [B2B の共有ポリシー](active-directory-b2b-delegate-invitations.md)
 #### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
@@ -273,6 +274,7 @@
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 ### [緊急アクセス用管理者アカウントを管理する](active-directory-admin-manage-emergency-access-accounts.md)
+### [特権ロールのセキュリティ保護](admin-roles-best-practices.md)
 
 ## アクセス レビュー
 ### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)
