@@ -1,8 +1,8 @@
 ---
-title: "Linux VM MSI を使用して SAS 資格情報で Azure Storage にアクセスする"
-description: "Linux VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする方法を説明するチュートリアル。ストレージ アカウント アクセス キーの代わりに SAS 資格情報を使用します。"
+title: Linux VM MSI を使用して SAS 資格情報で Azure Storage にアクセスする
+description: Linux VM 管理対象サービス ID (MSI) を使用して Azure Storage にアクセスする方法を説明するチュートリアル。ストレージ アカウント アクセス キーの代わりに SAS 資格情報を使用します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba

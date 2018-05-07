@@ -75,7 +75,7 @@ ms.lasthandoff: 04/16/2018
 
 1. これで、アカウント管理者になりました。サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
-   1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Create and upload a management certificate for Azure](../cloud-services/cloud-services-certs-create.md)
+   1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../cloud-services/cloud-services-certs-create.md)
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
    1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。 
 1. [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で、[このサブスクリプション用の課金アラートを更新します](billing-set-up-alerts.md)。 
@@ -111,7 +111,7 @@ ms.lasthandoff: 04/16/2018
 
 1. [Azure Portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 1. 確認するサブスクリプションを選択し、**[設定]** を調べます。
-1. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
+1. **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>あらゆるものが譲渡されるのでしょうか。 リソース グループ、VM、ディスク、他の実行中のサービスは含まれますか?
 
@@ -142,7 +142,7 @@ Azure サブスクリプションは、アカウント管理者が属するデ�
   1. [Azure ポータル](https://portal.azure.com)にアクセスします。
   2. ハブ メニューで、**[すべてのリソース]** を選択します。
   3. リソースを選択します。
-  4. リソースのブレードで **[設定]**をクリックします。 ここで、既存のシークレットを表示して更新できます。
+  4. リソースのブレードで **[設定]** をクリックします。 ここで、既存のシークレットを表示して更新できます。
 
 ### <a name="if-i-transfer-the-subscription-in-the-middle-of-the-billing-cycle-does-the-recipient-pay-for-the-entire-billing-cycle"></a>請求サイクルの途中でサブスクリプションを譲渡した場合、譲渡先が請求サイクル全体の料金を支払うことになりますか。
 

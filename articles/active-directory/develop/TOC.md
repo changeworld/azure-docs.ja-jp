@@ -8,7 +8,6 @@
 ### [iOS](active-directory-devquickstarts-ios.md)
 ### [Android](active-directory-devquickstarts-android.md)
 ### [.NET (Windows デスクトップ)](active-directory-devquickstarts-dotnet.md)
-### [.NET (Windows ユニバーサル)](active-directory-devquickstarts-windowsstore.md)
 ### [.NET (Xamarin)](active-directory-devquickstarts-xamarin.md)
 ### [Cordova](active-directory-devquickstarts-cordova.md)
 ### [OAuth 2.0](active-directory-protocols-oauth-code.md)
@@ -16,7 +15,7 @@
 ### [概要](active-directory-authentication-scenarios.md#web-browser-to-web-application)
 ### [ASP.NET](GuidedSetups/active-directory-aspnetwebapp-v1.md)
 ### [ASP.NET Core](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore)
-### [Java](active-directory-devquickstarts-webapp-java.md)
+### [Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect)
 ### [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)
 ### [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -102,7 +101,11 @@
 #### [ユニバーサル Windows プラットフォーム](guidedsetups/active-directory-uwp-v2.md)
 ### Web Apps
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
+#### [ASP.NET Core](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2)
 #### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
+### Web API
+#### [ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+#### [ASP.NET Core](https://azure.microsoft.com/en-us/resources/samples/active-directory-dotnet-native-aspnetcore-v2)
 ### シングル ページ アプリ
 #### [JavaScript](guidedsetups/active-directory-javascriptspa.md)
 ### Web API

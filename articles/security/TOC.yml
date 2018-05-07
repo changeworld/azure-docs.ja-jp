@@ -162,44 +162,13 @@
         - name: Azure のレポート作成ツールを使用して個人データを保護する
           href: protection-personal-data-azure-reporting-tools.md
     - name: FEDRAMP
-      href: ./blueprints/fedramp.md
       items:
-        - name: セキュリティ コントロールの概要
-          href: ./blueprints/fedramp-controls-overview.md
-        - name: アクセス制御
-          href: ./blueprints/fedramp-access-controls.md
-        - name: 監査とアカウンタビリティ
-          href: ./blueprints/fedramp-audit-accountability-controls.md
-        - name: 認識とトレーニング
-          href: ./blueprints/fedramp-awareness-training-controls.md
-        - name: 構成管理
-          href: ./blueprints/fedramp-configuration-manager-controls.md
-        - name: 代替計画
-          href: ./blueprints/fedramp-contingency-planning-controls.md
-        - name: 識別と認証
-          href: ./blueprints/fedramp-identification-authentication-controls.md
-        - name: インシデント対応
-          href: ./blueprints/fedramp-incident-response-controls.md
-        - name: 'メンテナンス '
-          href: ./blueprints/fedramp-maintenance-controls.md
-        - name: メディア保護
-          href: ./blueprints/fedramp-media-protection-controls.md
-        - name: 人的セキュリティ
-          href: ./blueprints/fedramp-personnel-security-controls.md
-        - name: 物理的および環境的な保護
-          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
-        - name: 計画
-          href: ./blueprints/fedramp-planning-controls.md
-        - name: リスク評価
-          href: ./blueprints/fedramp-risk-assessment-controls.md
-        - name: セキュリティの評価と承認
-          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
-        - name: システムと通信の保護
-          href: ./blueprints/fedramp-system-communications-protection-controls.md
-        - name: システムと情報の整合性
-          href: ./blueprints/fedramp-system-information-integrity-controls.md
-        - name: システムとサービスの取得
-          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+        - name: データ分析
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/fedramp-iaaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:

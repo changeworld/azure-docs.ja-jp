@@ -141,8 +141,14 @@
           href: active-directory-b2c-reference-language-customization.md
         - name: レポート API を使用する
           href: active-directory-b2c-reference-usage-reporting-api.md
+        - name: 監査ログにアクセスする
+          href: active-directory-b2c-reference-audit-logs.md
         - name: ユーザーを移行する
           href: active-directory-b2c-user-migration.md
+        - name: b2clogin.com の使用
+          href: b2clogin.md
+        - name: 年齢制限の使用
+          href: basic-age-gating.md
     - name: Identity Experience Framework
       items:
         - name: カスタム ポリシー
@@ -153,8 +159,10 @@
               href: active-directory-b2c-get-started-custom.md
             - name: OIDC/OAUTH プロバイダーの構成
               items:
-                - name: Azure AD
+                - name: Azure AD (シングルテナント)
                   href: active-directory-b2c-setup-aad-custom.md
+                - name: Azure AD (マルチテナント)
+                  href: active-directory-b2c-setup-commonaad-custom.md
                 - name: Microsoft アカウント
                   href: active-directory-b2c-custom-setup-msa-idp.md
                 - name: Google+
@@ -163,8 +171,6 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
-                - name: マルチテナント
-                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: SAML プロバイダーの構成
               items:
                 - name: ADFS

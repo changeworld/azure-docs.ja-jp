@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: a9da65ec8634f0e8905d44ef690eb7885fbf6a80
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+  ms.openlocfilehash: 4b258290b197ff4fdee9490012a36519b041622c
+  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/23/2018
+  ms.lasthandoff: 05/04/2018
 abstract:
   description: Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 開発者は Azure Stack でアプリを作成できます。 その後、そのアプリを Azure Stack と Azure にデプロイできます。また、Azure Stack クラウドと Azure 間の接続を利用するハイブリッド アプリを作成することもできます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、リソースを作成し、アプリをデプロイする方法を確認してください。<br/><br/>インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、<a href="/azure/azure-stack/">オペレーター ドキュメント</a>を参照してください。<br/><br/>Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイであり、無料でダウンロードして使用できます。この ASDK に興味をお持ちの Azure Stack オペレーターの方は、<a href="/azure/azure-stack/asdk">ASDK のドキュメント</a>をご覧ください。
 sections:
@@ -66,6 +66,8 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Azure Stack と Azure にアプリをデプロイする</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">Azure と Azure Stack アプリケーションでハイブリッド クラウド ID を構成する</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Azure と Azure Stack でハイブリッド クラウド接続を構成する</a>
 - title: リファレンス
   items:
   - type: list
