@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: e342a10c2f3b6c32d8d0bc727bf3325c26fb53d6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 49ec67d06446d6c48e45aef90e2bd528a1b541a9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>チュートリアル: Azure で Python と PostgreSQL Web アプリを構築する
 
@@ -137,20 +137,15 @@ Flask サーバーを任意のタイミングで停止するには、ターミ�
 次のコマンドの *\<postgresql_name>* プレースホルダーを一意のサーバー名に、*\<admin_username>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、PostgreSQL エンドポイント (`https://<postgresql_name>.postgres.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_username> --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
+az postgres server create --resource-group myResourceGroup --name <postgresql_name> --location "West Europe" --admin-user <admin_username> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 Azure Database for PostgreSQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
 ```json
 {
-  "additionalProperties": {},
-  "administratorLogin": "<my_admin_username>",
-  "earliestRestoreDate": "2018-04-19T22:51:05.340000+00:00",
-  "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
   "location": "westeurope",
-  "name": "<postgresql_name>",
+  "name": "<postgresql_server_name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "additionalProperties": {},
@@ -161,16 +156,8 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  "storageProfile": {
-    "additionalProperties": {},
-    "backupRetentionDays": 7,
-    "geoRedundantBackup": "Disabled",
-    "storageMb": 5120
-  },
-  "tags": null,
-  "type": "Microsoft.DBforPostgreSQL/servers",
-  "userVisibleState": "Ready",
-  "version": "9.6"
+  ...   +  
+  -  < Output has been truncated for readability >
 }
 ```
 

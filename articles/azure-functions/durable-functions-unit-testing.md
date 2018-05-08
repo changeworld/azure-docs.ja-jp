@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: kadimitr
-ms.openlocfilehash: a8d2a2281dcaf6e5e308ad4a2aafb167f9ba9121
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7de9a6f0d4dfcb45932b89504c0d38c3c70283e9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="unit-testing-orchestrator-functions"></a>オーケストレーター関数の単体テスト
 
-オーケストレーターの関数は多くの場合、より多くのビジネス ロジックを含んでいるため、単体テストはより興味深いものになります。 現時点では、オーケストレーター関数は C# のみで実装できます。
+オーケストレーターの関数は多くの場合、より多くのビジネス ロジックを含んでいるため、単体テストはより興味深いものになります。
 
 このセクションでは、単体テストで `E1_HelloSequence` オーケストレーター関数の出力を検証します。
 
