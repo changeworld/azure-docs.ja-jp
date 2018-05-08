@@ -265,7 +265,7 @@
               href: connector-spark.md
             - name: SQL Server
               href: connector-sql-server.md
-            - name: 正方形
+            - name: Square
               href: connector-square.md
             - name: Sybase
               href: connector-sybase.md
