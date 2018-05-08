@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory で Cloud App Discovery のスナップショット レポートを作成する | Microsoft Docs"
-description: "Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。"
+title: Azure Active Directory で Cloud App Discovery のスナップショット レポートを作成する | Microsoft Docs
+description: Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。
 services: active-directory
-keywords: "Cloud App Discovery, アプリケーションの管理"
-documentationcenter: 
+keywords: Cloud App Discovery, アプリケーションの管理
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: 69a633b39e68596c536700dbb2c7c8d35f3b44bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ad4591223c72893a4488f5515d8ceb83e0d7f8cf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>Cloud App Discovery のスナップショット レポートの作成
 
@@ -49,7 +47,7 @@ ms.lasthandoff: 12/11/2017
   
   ![スナップショット レポートの管理](./media/cloudappdiscovery-set-up-snapshots/create-snapshot-manage.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure AD の Cloud App Discovery の使用を開始する](cloudappdiscovery-get-started.md)
 * [継続的なレポートのために自動ログ アップロードを構成する](https://docs.microsoft.com/cloud-app-security/discovery-docker)

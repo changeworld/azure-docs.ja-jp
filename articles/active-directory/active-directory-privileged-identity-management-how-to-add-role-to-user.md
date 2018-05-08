@@ -1,23 +1,22 @@
 ---
-title: "ユーザー ロールを追加または削除する方法 | Microsoft Docs"
-description: "Azure Active Directory Privileged Identity Management アプリケーションで特権 ID にロールを追加する方法について説明します。"
+title: ユーザー ロールを追加または削除する方法 | Microsoft Docs
+description: Azure Active Directory Privileged Identity Management アプリケーションで特権 ID にロールを追加する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 01/03/2018
-ms.author: billmath
-ms.openlocfilehash: 53deb04a33a5f878c5e3f765099c54d30e6ac005
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.author: curtand
+ms.openlocfilehash: 6024016d7c59551e5678069cb6a6e1e7ab45ad6e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法
 Azure Active Directory (AD) では、全体管理者 (または会社の管理者) は、Azure AD でどのユーザーにロールを**永続的に**割り当てるかを変更できます。 これを行うには、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用するか、 「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」に記載されているように、Azure Portal を使うことができます。
@@ -36,11 +35,11 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 
 ## <a name="add-a-user-to-a-role"></a>ユーザーをロールに追加する
 1. [Azure Portal](https://portal.azure.com/) にサインインし、ダッシュボードの **[Azure AD Privileged Identity Management]** タイルをクリックします。
-2. **[特権ロールの管理]**をクリックします。
+2. **[特権ロールの管理]** をクリックします。
 3. **[ロールの概要]** テーブルから管理するロールを選択します。
-4. [ロール] ブレードで **[追加]**をクリックします。
+4. [ロール] ブレードで **[追加]** をクリックします。
 5. **[ユーザーの選択]** をクリックして、**[ユーザーの選択]** ブレードでユーザーを検索します。  
-6. 検索結果の一覧からユーザーを選択し、 **[完了]**をクリックします。
+6. 検索結果の一覧からユーザーを選択し、 **[完了]** をクリックします。
 7. **[OK]** をクリックして選択を保存します。 選択したユーザーが、ロールの候補として一覧に表示されます。
 
 > [!NOTE]
@@ -56,7 +55,7 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 
 1. Azure AD PIM ダッシュボードでロールを選択するか、 **[管理者ロールのユーザー]** をクリックして、ロールの一覧内の対象のロールに移動します。
 2. ユーザーの一覧でユーザーをクリックします。
-3. **[削除]**をクリックします。 確認を求めるメッセージが表示されます。
+3. **[削除]** をクリックします。 確認を求めるメッセージが表示されます。
 4. **[はい]** をクリックすると、ユーザーからロールが削除されます。
 
 どのユーザーに引き続きロールの割り当てが必要であるかわからない場合は、 [ロールのアクセス レビューを開始](active-directory-privileged-identity-management-how-to-start-security-review.md)してください。

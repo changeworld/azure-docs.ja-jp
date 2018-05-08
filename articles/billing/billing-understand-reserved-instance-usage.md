@@ -1,26 +1,26 @@
 ---
-title: "従量課金サブスクリプションの Azure 予約インスタンス使用量について | Microsoft Docs"
-description: "従量課金サブスクリプションに予約インスタンスがどのように適用されているかを把握するための使用状況の読み方について説明します。"
+title: 従量課金制サブスクリプションの Azure 予約インスタンス使用量について | Microsoft Docs
+description: 従量課金制サブスクリプションに予約インスタンスがどのように適用されているかを把握するための使用状況の読み方について説明します。
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: manish-shukla01
 manager: manshuk
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 29f153803d5eb74e2d287d97cf9436e81b2a3e20
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 142e172b3f4ab4b88bb3733f70d5e0fb252854ca
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>従量課金サブスクリプションの予約インスタンス使用量について
+# <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションの予約インスタンス使用量について
 
 予約インスタンスの使用状況は、[予約ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade )から ReservationId を使用するか、[Azure アカウント ポータル](https://account.azure.com)から使用状況ファイルを使用して把握することができます。
 

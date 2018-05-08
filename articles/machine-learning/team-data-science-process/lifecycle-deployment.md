@@ -3,7 +3,7 @@ title: Team Data Science Process ライフサイクルのデプロイ ステー�
 description: データ サイエンス プロジェクトのデプロイ ステージの目標、タスク、成果物
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 5cb6361ed674ffaaf776adafd6f3ff87272c73eb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: a56aa9c317703186e1ba2ab6bed9aa1875d318c2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="deployment"></a>デプロイ
 

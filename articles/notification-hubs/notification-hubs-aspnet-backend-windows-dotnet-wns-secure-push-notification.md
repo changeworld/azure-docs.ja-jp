@@ -1,10 +1,10 @@
 ---
-title: "Azure Notification Hubs の安全なプッシュ"
-description: "Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。 コード サンプルは .NET API を使用して C# で記述されています。"
+title: Azure Notification Hubs の安全なプッシュ
+description: Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。 コード サンプルは .NET API を使用して C# で記述されています。
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 9c626ec1534c4899588150a58c0da57b9d963f6f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 8d051107a5e114ed8aa5f4b5a629a439519157b3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs の安全なプッシュ
 > [!div class="op_single_selector"]
@@ -132,7 +132,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
                 }
             }
 5. ソリューション エクスプローラーで **PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-6. 左側で、 **[オンライン]**をクリックします。
+6. 左側で、 **[オンライン]** をクリックします。
 7. **[検索]** ボックスに、「**Http Client**」と入力します。
 8. 結果の一覧で、**[Microsoft HTTP Client Libraries]**、**[インストール]** の順にクリックします。 インストールを完了します。
 9. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。 **Json.NET** パッケージをインストールし、NuGet パッケージ マネージャーのウィンドウを閉じます。
@@ -163,7 +163,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 1. Visual Studio で、 **AppBackend** Web API アプリケーションを実行します。 ASP.NET Web ページが表示されます。
 2. Visual Studio で、 **NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone アプリケーションを実行します。 Windows Phone エミュレーターが自動的に起動し、アプリケーションを読み込みます。
 3. **NotifyUserWindowsPhone** アプリケーションの UI で、ユーザー名とパスワードを入力します。 文字列は任意ですが、値は同じである必要があります。
-4. **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。 次に、 **[プッシュを送信する]**をクリックします。
+4. **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。 次に、 **[プッシュを送信する]** をクリックします。
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png

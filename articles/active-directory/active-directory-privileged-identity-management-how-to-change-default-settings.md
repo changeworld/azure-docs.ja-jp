@@ -1,25 +1,23 @@
 ---
-title: "ロールのアクティブ化の設定を管理する方法 |Microsoft Docs"
-description: "Azure Active Directory Privileged Identity Management 拡張機能で特権 ID の既定の設定を変更する方法について説明します。"
+title: ロールのアクティブ化の設定を管理する方法 |Microsoft Docs
+description: Azure Active Directory Privileged Identity Management 拡張機能で特権 ID の既定の設定を変更する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: f6cbcb6a-8a89-4077-afd8-06c94a64f4aa
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 2cf361dc879915c316e7ee907b5c70b5907459c2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 972fd1e322e578516073307d01548132473bc52c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-manage-role-activation-settings-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management のロールのアクティブ化設定を管理する方法
 特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure AD Privileged Identity Management (PIM) をカスタマイズできます。
@@ -50,7 +48,7 @@ ms.lasthandoff: 12/11/2017
   * カスタマー ロックボックスのアクセス承認者
   * ディレクトリ ライター  
   * Exchange 管理者  
-  * グローバル管理者
+  * 全体管理者
   * Intune サービス管理者
   * メールボックス管理者  
   * パートナー レベル 1 のサポート  
@@ -66,6 +64,6 @@ PIM での MFA の使用に関する詳細は、「 [MFA を要求する方法](
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

@@ -1,11 +1,11 @@
 ---
-title: "REST で Azure AD 認証を使用して Azure Media Services API にアクセスする | Microsoft Docs"
-description: "REST で Azure Active Directory 認証を使用して Azure Media Services API にアクセスする方法を説明します。"
+title: REST で Azure AD 認証を使用して Azure Media Services API にアクセスする | Microsoft Docs
+description: REST で Azure Active Directory 認証を使用して Azure Media Services API にアクセスする方法を説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: willzhan
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
@@ -85,7 +85,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
     1. **[新規作成]** をクリックします。
     2. 名前を入力します。
     3. **[新規作成]** をもう一度クリックします。
-    4. **[保存]**をクリックします。
+    4. **[保存]** をクリックします。
 
     ![API アクセス](./media/connect-with-rest/new-app.png)
 
@@ -120,7 +120,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 このセクションでは、**Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token*" という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
 
 1. **Postman** を開きます。
-2. **[POST]**を選択します。
+2. **[POST]** を選択します。
 3. 次のようにテナント名の末尾に **.onmicrosoft.com** を指定し、URL の末尾に **oauth2/token** を指定して、テナント名を含む URL を入力します。 
 
     https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
@@ -158,7 +158,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 このセクションでは、**Postman** を使用して **Assets** API にアクセスする方法について説明します。
 
 1. **Postman** を開きます。
-2. **[GET]**を選択します。
+2. **[GET]** を選択します。
 3. REST API エンドポイントを貼り付けます (例: https://amshelloworld.restv2.westus.media.azure.net/api/Assets)。
 4. **[Authorization]\(承認\)** タブを選択します。 
 5. **[Bearer Token]\(ベアラー トークン\)** を選択します。

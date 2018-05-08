@@ -9,13 +9,14 @@ ms.date: 03/09/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
+ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 45a0cf104df6d29515ed1a94c78c8cc1e42a2223
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -118,7 +119,7 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>多要素認証を有効にし、その他のすべての高度な特権を持つシングル ユーザー非フェデレーション管理者アカウントを登録する 
 
-1 つまたは複数の Azure AD 管理者ロール (グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者) に永続的に割り当てられているすべての個々のユーザーのサインイン時に Azure Multi-factor Authentication (MFA) が必要です。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 2. と手順 3. をご覧ください。 
+1 つまたは複数の Azure AD 管理者ロール (グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者) に永続的に割り当てられているすべての個々のユーザーのサインイン時に Azure Multi-factor Authentication (MFA) が必要です。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 2. と手順 3. をご覧ください。 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>ステージ 2: 最もよく使用される攻撃手法の緩和
 
@@ -164,8 +165,8 @@ Azure AD では、管理者や、アカウントが侵害された場合に大�
 
 以下を有効にします。
 
-* 組織の経営責任者のアカウントなど、[露出度の高いアカウントの MFA](../multi-factor-authentication/multi-factor-authentication-security-best-practices.md) 
-* 接続されている他の SaaS アプリについて、[個々のユーザーに関連付けられているすべての管理者アカウントの MFA](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) 
+* 組織の経営責任者のアカウントなど、[露出度の高いアカウントの MFA](authentication/multi-factor-authentication-security-best-practices.md) 
+* 接続されている他の SaaS アプリについて、[個々のユーザーに関連付けられているすべての管理者アカウントの MFA](authentication/howto-mfa-userstates.md) 
 * Exchange Online と Office ポータルで管理されているロールに属する管理者など、Microsoft SaaS アプリのすべての管理者の MFA
 
 Windows Hello for Business を使用する場合は、Windows Hello サインイン エクスペリエンスを使用して MFA 要件を満たすことができます。 詳しくは、「[Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)」をご覧ください。 
@@ -240,7 +241,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Azure AD の管理に専用のワークステーションを使用する
 
-攻撃者は、特権アカウントをターゲットとして組織のデータやシステムにアクセスして、プログラム ロジックを変更したり、資格情報を入力する管理者の情報を探ってデータの整合性と信頼性を破壊しようとする場合があります。 Privileged Access Workstation (PAW) には、機密性の高いタスクに専用のオペレーティング システムが用意されており、インターネット上の攻撃や脅威ベクトルから保護されます。 このような機密性の高いタスクとアカウントを日常的に使用するワークステーションやデバイスから切り離すことで、フィッシング攻撃、アプリケーションと OS の脆弱性、さまざまな偽装攻撃、資格情報の盗難 (キーロガー、pass-the-hash、pass-the-ticket など) から強力に保護されます。 Privileged Access Workstations をデプロイすることで、管理者が強化されたデスクトップ環境以外で管理者の資格情報を入力するリスクを軽減できます。 詳しくは、[Privileged Access Workstations](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations) に関するページをご覧ください。
+攻撃者は、特権アカウントをターゲットとして組織のデータやシステムにアクセスして、プログラム ロジックを変更したり、資格情報を入力する管理者の情報を探ってデータの整合性と信頼性を破壊しようとする場合があります。 Privileged Access Workstation (PAW) には、機密性の高いタスクに専用のオペレーティング システムが用意されており、インターネット上の攻撃や脅威ベクトルから保護されます。 このような機密性の高いタスクとアカウントを日常的に使用するワークステーションやデバイスから切り離すことで、フィッシング攻撃、アプリケーションと OS の脆弱性、さまざまな偽装攻撃、資格情報の盗難 (キーロガー、pass-the-hash、pass-the-ticket など) から強力に保護されます。 Privileged Access Workstations をデプロイすることで、管理者が強化されたデスクトップ環境以外で管理者の資格情報を入力するリスクを軽減できます。 詳しくは、[Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) に関するページをご覧ください。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>インシデントの処理に関する米国国立標準技術研究所の推奨事項を確認する 
 

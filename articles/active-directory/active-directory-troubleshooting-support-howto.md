@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory のサポートを受ける方法 | Microsoft Docs"
-description: "Azure Active Directory のサポートを受ける方法"
+title: Azure Active Directory のサポートを受ける方法 | Microsoft Docs
+description: Azure Active Directory のサポートを受ける方法
 services: active-directory
 documentationcenter: na
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.component: users-groups-roles
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 6e856ed740849a072f183d1e566d46d6132f5ffc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 26bf0bcaf2b5da938bcbed0336b742908d13474a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-get-support-for-azure-active-directory"></a>Azure Active Directory のサポートを受ける方法
 
@@ -90,7 +88,7 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 
 サポートの電話番号については、[Microsoft のサポートの連絡先](https://portal.office.com/Support/ContactUs.aspx)に関するページを参照してください。
 
-##  <a name="next-steps"></a>次のステップ
+##  <a name="next-steps"></a>次の手順
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 

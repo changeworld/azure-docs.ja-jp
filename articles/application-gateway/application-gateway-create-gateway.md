@@ -1,10 +1,10 @@
 ---
-title: "Application Gateway の作成、起動、または削除 | Microsoft Docs"
-description: "このページでは、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。"
+title: Application Gateway の作成、起動、または削除 | Microsoft Docs
+description: このページでは、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
 ms.service: application-gateway
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: davidmu
-ms.openlocfilehash: 7fb54e96d20d34f453b7b016094b84504348335b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: victorh
+ms.openlocfilehash: a1cfd42f5b1c31b911005b2539047630c6d320dd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>PowerShell を使用した Application Gateway の作成、起動、または削除 
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
@@ -433,7 +433,7 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 .....
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 SSL オフロードを構成する場合は、 [SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 

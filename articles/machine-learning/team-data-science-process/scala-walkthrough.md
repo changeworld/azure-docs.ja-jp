@@ -3,7 +3,7 @@ title: Scala および Azure 上の Spark を使用したデータ サイエン�
 description: Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: a7c97153-583e-48fe-b301-365123db3780
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 8f8b252d8771dff23d0a8c89e057fc17ba321a65
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
 この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
@@ -64,7 +64,7 @@ Jupyter Notebook には、https://&lt;クラスター名&gt;.azurehdinsight.net/
 
 **[Scala]** を選択すると、PySpark API を使用したいくつかのパッケージ済みノートブックのサンプルが含まれるディレクトリが表示されます。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)で、この記事の Spark に関する一連のトピックのコード サンプルが含まれる Exploration-Modeling-and-Scoring-using-Scala.ipynb ノートブックを入手できます。
 
-Github から Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、 **[Upload]** ボタンをクリックします。 エクスプローラーで Scala Notebook の GitHub (raw コンテンツ) URL を貼り付け、 **[開く]**をクリックします。 Scala Notebook は次の URL で入手できます。
+Github から Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、 **[Upload]** ボタンをクリックします。 エクスプローラーで Scala Notebook の GitHub (raw コンテンツ) URL を貼り付け、 **[開く]** をクリックします。 Scala Notebook は次の URL で入手できます。
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 

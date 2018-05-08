@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory で自分のグループが属するグループを管理する | Microsoft Docs"
-description: "Azure Active Directory でグループに他のグループを含めることができます。 ここでは、これらのメンバーシップを管理する方法について説明します。"
+title: Azure Active Directory で自分のグループが属するグループを管理する | Microsoft Docs
+description: Azure Active Directory でグループに他のグループを含めることができます。 ここでは、これらのメンバーシップを管理する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: e785c2d0-7724-47d4-a56e-c58280c08a14
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 251289d2a70f824714789fdf2fb484949745d6d7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c3d5b4382ae107bc9992b11a8ed2975e4ef9caca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでグループが属するグループを管理する
 Azure Active Directory でグループに他のグループを含めることができます。 ここでは、これらのメンバーシップを管理する方法について説明します。
@@ -45,7 +43,7 @@ Azure Active Directory でグループに他のグループを含めることが
 9. **[削除]** コマンドを選び、表示されたメッセージで削除を確定します。
 
    ![メンバーシップの [削除] コマンド](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
-10. グループのグループ メンバーシップの変更が完了したら、 **[保存]**をクリックします。
+10. グループのグループ メンバーシップの変更が完了したら、 **[保存]** をクリックします。
 
 ## <a name="additional-information"></a>追加情報
 次の記事は、Azure Active Directory に関する追加情報を示します。

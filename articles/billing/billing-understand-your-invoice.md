@@ -1,24 +1,24 @@
 ---
-title: "Azure 請求書の確認"
-description: "Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法について説明します。"
-services: 
-documentationcenter: 
+title: Azure 請求書の確認
+description: Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法について説明します。
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 54de5e123dbb51948eb62d90b444ebd78f9879cb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 38126e4539719ba56e6e5eac5e860cea9b49d446
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/09/2018
 | 請求日 |請求書が生成された日付。通常は、請求サイクルの終了の翌日 |
 | 支払い方法 |アカウントで使用される支払いの種類 (請求書またはクレジット カード) |
 | 請求先 |一覧表示される、アカウントに対応した請求先住所 |
-| サブスクリプション オファー (従量課金) |購入したサブスクリプション プランの種類 (従量課金制、BizSpark Plus、Azure Pass など)。 詳細については、[Azure のオファーの種類](https://azure.microsoft.com/support/legal/offer-details/)に関する記事をご覧ください。 |
+| サブスクリプション オファー (従量課金制) |購入したサブスクリプション プランの種類 (従量課金制、BizSpark Plus、Azure Pass など)。 詳細については、[Azure のオファーの種類](https://azure.microsoft.com/support/legal/offer-details/)に関する記事をご覧ください。 |
 | アカウント所有者メール アドレス | Microsoft Azure アカウントが登録されたアカウントのメール アドレス。 <br /><br />メール アドレスを変更するには、「[Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法](billing-how-to-change-azure-account-profile.md)」を参照してください。 |
 
 ### <a name="understand-the-invoice-summary"></a>請求書の要約について
@@ -98,7 +98,7 @@ ms.lasthandoff: 01/09/2018
 
 | 用語 |[説明] |
 | --- | --- |
-| 名前 |使用状況の最上位レベルのサービスを示します。 |
+| Name |使用状況の最上位レベルのサービスを示します。 |
 | type |料金に影響する Azure サービスの種類を定義します。 |
 | リソース |消費しているメーターの測定単位を示します。 |
 | リージョン |データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |

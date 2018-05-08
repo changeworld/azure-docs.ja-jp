@@ -3,7 +3,7 @@ title: Azure BLOB ストレージのデータをサンプリングする | Micro
 description: Azure BLOB ストレージのデータをサンプリングする
 services: machine-learning,storage
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e8d9ad2c-86c5-43d6-80b8-d355b5c0dccf
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: fecff09b67f019a0d2b95d8ca33d16011b17b9ce
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 48cc74a8fdef0103f79033ac2484f658303f405c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
 このドキュメントでは、Azure Blob Storage に格納されたデータのサンプリングについて説明します。プログラムからデータをダウンロードし、Python で記述されたプロシージャを使ってそのデータをサンプリングします。

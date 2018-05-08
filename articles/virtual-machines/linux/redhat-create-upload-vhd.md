@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: e0e0fdbb3702ec16e9d5a33659c1ddbee589b989
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9893ab83584e2fc93ea9cf29c0b74b957080d5ad
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
@@ -159,7 +159,7 @@ ms.lasthandoff: 04/06/2018
 
 5. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 6. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
@@ -411,7 +411,7 @@ ms.lasthandoff: 04/06/2018
 
 6. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-        # chkconfig network on
+        # sudo systemctl enable network
 
 7. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 
@@ -525,7 +525,7 @@ ms.lasthandoff: 04/06/2018
 
 * Linux オペレーティング システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
 * オペレーティング システム ディスクでスワップ パーティションを構成しないでください。 一時的なリソース ディスク上にスワップ ファイルを作成するよう Linux エージェントを構成できます。 この詳細については、次の手順を参照してください。
-* 仮想ハード ディスクを作成する場合は、 **[Store virtual disk as a single file (仮想ディスクを 1 つのファイルとして格納する)]**を選択します。
+* 仮想ハード ディスクを作成する場合は、 **[Store virtual disk as a single file (仮想ディスクを 1 つのファイルとして格納する)]** を選択します。
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>VMware からの RHEL 6 仮想マシンの準備
 1. RHEL 6 では、NetworkManager が Azure Linux エージェントと干渉する可能性があります。 次のコマンドを実行して、このパッケージをアンインストールします。
@@ -665,7 +665,7 @@ ms.lasthandoff: 04/06/2018
 
 3. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 4. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
 

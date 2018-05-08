@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ce4497a8bebf9078363509c1f962728ab4189f8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -86,7 +86,7 @@ Azure Active Directory デバイス登録サービスを Azure Active Directory 
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>パート 3: Azure AD でのデバイスの書き戻しを有効にする
 | タスク | リファレンス |
 | --- | --- |
-| 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。 それが終了したら、このガイドに戻ります。 |[Azure AD Connect でのデバイスの書き戻しの有効化](#upgrade-your-active-directory-domain-services-schema) |
+| 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。 それが終了したら、このガイドに戻ります。 |[Azure AD Connect でのデバイスの書き戻しの有効化](./connect/active-directory-aadconnect-feature-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[省略可能] パート 4: Multi-Factor Authentication を有効にする
 Multi-Factor Authentication に関するいくつかのオプションのいずれかを構成することを強くお勧めします。 Multi-Factor Authentication を必要とする場合は、「[ユーザーに適した Multi-factor Authentication セキュリティ ソリューションの選択](authentication/concept-mfa-whichversion.md)」を参照してください。 これには、各ソリューションの説明と、選択したソリューションの構成に役立つリンクが含まれています。
@@ -157,7 +157,7 @@ Azure Active Directory デバイス登録では、iOS デバイスに対して�
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用して Windows 8.1 デバイスを参加させる
 1. Windows 8.1 デバイスで、**[PC 設定]**  >  **[ネットワーク]**  >  **[社内]** の順に選択します。
 2. ユーザー名を UPN 形式で入力します。たとえば、**dan@contoso.com** です。
-3. **[参加]**を選択します。
+3. **[参加]** を選択します。
 4. メッセージが表示されたら、ユーザーの資格情報でサインインします。 これでデバイスが参加します。
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用して Windows 7 デバイスを参加させる
@@ -188,7 +188,7 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 3. **[発行承認規則]** タブを選択し、**[規則の追加]** を選択します。
 4. **[要求規則テンプレート]** ボックスの一覧から、**[入力方向の要求に基づいてユーザーを許可または拒否]** を選択します。 次に、**[次へ]** を選択します。
 5. **[要求規則名]** フィールドに、**「登録されたデバイスからのアクセスを許可する**」と入力します。
-6. **[着信要求の種類]** ドロップダウン リストで **[登録ユーザー]**を選択します。
+6. **[着信要求の種類]** ドロップダウン リストで **[登録ユーザー]** を選択します。
 7. **[着信要求の値]** フィールドに「**true**」と入力します。
 8. **[この着信要求でユーザーにアクセスを許可する]** オプション ボタンを選択します。
 9. **[完了]** を選択し、**[適用]** を選択します。

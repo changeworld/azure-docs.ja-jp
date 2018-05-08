@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 6749ad50cd1ea1cd4ec6ca2f86fef43a9f1515d9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>システムと通信の保護 (SC)
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様のエンタープライズ レベルのシステムと通信の保護のポリシーと手順で、このコントロールに対処できます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-2"></a>NIST 800-53 Control SC-2
@@ -92,7 +92,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、Web アプリケーション ファイアウォールと負荷分散機能を備えた Application Gateway をデプロイします。 Web 層、データベース層、および Active Directory をサポートするデプロイ対象の仮想マシンは、スケーラブルな可用性セットにデプロイされます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-6"></a>NIST 800-53 Control SC-6
@@ -106,7 +106,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントによってデプロイされる仮想マシンは、Windows オペレーティング システム上で実行されます。 各 Windows プロセスは、プログラムを実行するために必要なリソースを提供します。 リソースの優先度は、オペレーティング システムによって管理されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-7a"></a>NIST 800-53 Control SC-7.a
@@ -120,7 +120,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、Application Gateway とロード バランサーをデプロイし、外部境界および内部サブネット間の通信を制御するネットワーク セキュリティ グループの規則を構成します。 監視を可能にするために、Application Gateway、ロード バランサー、ネットワーク セキュリティ グループのイベント ログと診断ログが Log Analytics によって収集されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-7b"></a>NIST 800-53 Control SC-7.b
@@ -148,7 +148,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、Application Gateway をデプロイして、お客様がデプロイした Web アプリケーションへの外部接続を管理します。 管理アクセス用の外部接続は、外部接続を承認済みの IP アドレスに制限するためにネットワーク セキュリティの規則が適用された管理サブネットにデプロイされている要塞ホスト/ジャンプボックスに制限されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-3"></a>NIST 800-53 Control SC-7 (3)
@@ -162,7 +162,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、2 つのパブリック IP アドレスをデプロイします。1 つは Application Gateway に関連付けられており、もう 1 つは管理要塞ホスト/ジャンプボックスに関連付けられています。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-4a"></a>NIST 800-53 Control SC-7 (4).a
@@ -176,7 +176,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、2 つのパブリック IP アドレスをデプロイします。1 つは Application Gateway に関連付けられており、もう 1 つは管理要塞ホスト/ジャンプボックスに関連付けられています。 これらのインタフェースの管理は、ソフトウェアによるネットワーク制御によって実現されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-4b"></a>NIST 800-53 Control SC-7 (4).b
@@ -204,7 +204,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントによってデプロイされる Web アプリケーション ゲートウェイは HTTPS リスナーで構成され、通信セッションの機密性と整合性が確保されます。 また、機密性と整合性を実現するために、ジャンプボックスへのリモート デスクトップ接続も暗号化されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-4d"></a>NIST 800-53 Control SC-7 (4).d
@@ -232,7 +232,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、データセンター業務 (通信サービスを含む) に対して責任を負いません。 すべての通信サービスは、Microsoft Azure によって提供され、管理されます。 このコントロールは Azure から継承されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-5"></a>NIST 800-53 Control SC-7 (5)
@@ -246,7 +246,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントによってデプロイされるネットワーク セキュリティ グループに適用されるルール セットは、既定で拒否スキームを使用して構成されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-7"></a>NIST 800-53 Control SC-7 (7)
@@ -274,7 +274,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、お客様が定義した情報を、認証済みプロキシを介して外部ネットワークにルーティングする責任を負います。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-10"></a>NIST 800-53 Control SC-7 (10)
@@ -288,7 +288,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、管理インターフェイスでの情報の不正流出を防ぐ責任を負います。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-12"></a>NIST 800-53 Control SC-7 (12)
@@ -302,7 +302,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントによってデプロイされる仮想マシンは、ホストベースのファイアウォールを有効にして構成されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-13"></a>NIST 800-53 Control SC-7 (13)
@@ -344,7 +344,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、お客様がデプロイしたリソースを動的に分離する機能をシステムが備えていることを保証する責任を負います。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-7-21"></a>NIST 800-53 Control SC-7 (21)
@@ -358,7 +358,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、分離された Web サブネット、データベース サブネット、Active Directory サブネット、管理サブネットを使用するアーキテクチャにリソースをデプロイします。 サブネット間のトラフィックをシステムと管理機能に必要なものだけに制限するために、個々のサブネットに適用されるネットワーク セキュリティ グループの規則に従って、サブネットが論理的に分離されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-8"></a>NIST 800-53 Control SC-8
@@ -400,7 +400,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | リモート デスクトップ セッションの認証は、Active Directory によって管理されます。 Active Directory 内のユーザーのアクセスが無効になると、リモート セッションは直ちに終了します。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-12"></a>NIST 800-53 Control SC-12
@@ -414,7 +414,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、Azure Key Vault をデプロイします。 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Azure Key Vault では、FIPS 140-2 レベル 2 ハードウェア セキュリティ モジュール (HSM) キー生成機能を使用してキーを生成できます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-12-1"></a>NIST 800-53 Control SC-12 (1)
@@ -428,7 +428,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | Azure Key Vault を使用して、このブループリントで使用される暗号化キーとシークレットを格納します。 Key Vault により、データにアクセスして暗号化するキーのキー管理プロセスが効率化されます。 Key Vault には、アカウントをデプロイする際の Azure パスワード、仮想マシン管理者パスワード、SQL Server サービス アカウントのパスワードの各認証子が格納されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-12-2"></a>NIST 800-53 Control SC-12 (2)
@@ -470,7 +470,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでは、Windows 認証、リモート デスクトップ、BitLocker が使用されます。 これらのコンポーネントは、FIPS 140 検証済み暗号化モジュールを利用するように構成できます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-15a"></a>NIST 800-53 Control SC-15.a
@@ -484,7 +484,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントの一部としてデプロイされるコラボレーション コンピューティング デバイスはありません。 注: Azure にデプロイされたシステムのスコープ内には、物理的なコラボレーション コンピューティング デバイスがあります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-15b"></a>NIST 800-53 Control SC-15.b
@@ -512,7 +512,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、エンタープライズ レベルの公開キー基盤を利用して証明書を発行できます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-18a"></a>NIST 800-53 Control SC-18.a
@@ -526,7 +526,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様のエンタープライズ レベルのシステムと通信の保護手順で、許容可能および許容不可能なモバイル コードを定義できます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-18b"></a>NIST 800-53 Control SC-18.b
@@ -568,7 +568,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントの一部としてデプロイされる VoIP 技術はありません。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-19b"></a>NIST 800-53 Control SC-19.b
@@ -624,7 +624,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、権限のあるソースから受け取る名前/アドレス解決応答に対するデータ送信元認証とデータ整合性検証を要求および実行するように、お客様がデプロイしたリソースを構成する責任を負います。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-22"></a>NIST 800-53 Control SC-22
@@ -680,7 +680,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | お客様は、お客様がデプロイしたリソースが既知の状態で機能を停止することを保証する責任を負います。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-28"></a>NIST 800-53 Control SC-28
@@ -694,7 +694,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | SC-28 (1) の実装によって、このコントロールの要件が満たされます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-sc-28-1"></a>NIST 800-53 Control SC-28 (1)
@@ -708,7 +708,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントによってデプロイされる仮想マシンは、ディスク暗号化を実装して保存情報の機密性と整合性を保護します。 Windows の BitLocker 機能を使用して、Windows 用の Azure Disk Encryption が実装されます。 SQL Server は、Transparent Data Encryption (TDE) を使用するように構成されます。TDE は、データとログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 TDE は、保存されているデータが未承認のアクセスの対象になっていないことを保証します。 お客様は、保存された情報の整合性を保護するために、アプリケーション レベルの追加のコントロールを実装することもできます。 このブループリントによってデプロイされるすべてのストレージ BLOB の機密性と整合性は、Azure Storage Service Encryption (SSE) を使用して保護されます。 SSE は、256 ビット AES 暗号化を使用して Azure ストレージ アカウント内の保存データを保護します。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-sc-39"></a>NIST 800-53 Control SC-39

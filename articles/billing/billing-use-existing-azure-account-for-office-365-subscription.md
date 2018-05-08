@@ -1,25 +1,25 @@
 ---
-title: "Azure アカウントで Office 365 にサインアップする | Microsoft Docs"
-description: "Azure アカウントを使用して、Office 365 サブスクリプションを作成する方法を説明します"
-services: 
-documentationcenter: 
+title: Azure アカウントで Office 365 にサインアップする | Microsoft Docs
+description: Azure アカウントを使用して、Office 365 サブスクリプションを作成する方法を説明します
+services: ''
+documentationcenter: ''
 author: JiangChen79
 manager: adpick
-editor: 
+editor: ''
 tags: billing,top-support-issue
-ms.assetid: 
+ms.assetid: ''
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: cjiang
-ms.openlocfilehash: 8279bc2ba2032ee40d24ddb1f7f23e2725e56e7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bce4b58d4197eee34be43a4dc852c6f43e0e18b4
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
 Azure サブスクライバ―は、Azure アカウントを使用して、Office 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Office 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Office 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../active-directory/active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
@@ -35,10 +35,10 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 3. Azure アカウントの資格情報でサインインします。 組織のサブスクリプションを作成する場合は、Azure Active Directory テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーである Azure アカウントを使用します。
 
     ![Office 365 のサインインのスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/13-office-365-sign-in.png)
-4. **[今すぐ試す]**をクリックします。
+4. **[今すぐ試す]** をクリックします。
 
     ![Office 365 の注文確認のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/14-office-365-confirm-your-order.png)
-5. 注文の受領書ページで、 **[続行]**をクリックします。
+5. 注文の受領書ページで、 **[続行]** をクリックします。
 
     ![Office 365 の注文受付のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 

@@ -1,24 +1,24 @@
 ---
-title: "Notification Hubs のセキュリティ"
-description: "このトピックでは、Azure Notification Hubs のセキュリティについて説明します。"
+title: Notification Hubs のセキュリティ
+description: このトピックでは、Azure Notification Hubs のセキュリティについて説明します。
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 7c3283799806135060bb8ca57ea398c93d1106bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 9f197a85dfad31ce32d0f9c93127b69d8e33c9ee
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security"></a>セキュリティ
 ## <a name="overview"></a>概要
@@ -38,11 +38,11 @@ Listen アクセス権を持つキーを使用するとクライアント アプ
 ## <a name="security-claims"></a>セキュリティ要求
 他のエンティティと同様に、Notification Hub の操作は 3 つのセキュリティ要求 Listen、Send、Manage に対して許可されます。
 
-| 要求 | 説明 | 許可される操作 |
+| 要求 | [説明] | 許可される操作 |
 | --- | --- | --- |
 | Listen |単一の登録の作成/更新、読み取り、削除を行います |登録を作成/更新する<br><br>登録を読み取る<br><br>ハンドルのすべての登録を読み取る<br><br>登録を削除する |
 | Send |Notification Hubs にメッセージを送信します |メッセージを送信する |
-| Manage |Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |Notification Hubs を作成/更新/読み取り/削除する<br><br>タグで登録を読み取る |
+| [管理] |Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |Notification Hubs を作成/更新/読み取り/削除する<br><br>タグで登録を読み取る |
 
 Notification Hubs は、Microsoft Azure Access Control トークンによって許可された要求、および Notification Hubs に直接構成された共有キーを使用して生成された署名トークンによって許可された要求を受け付けます。
 

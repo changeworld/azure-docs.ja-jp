@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でのインシデントとアラートの調査 | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。"
+title: Azure Security Center でのインシデントとアラートの調査 | Microsoft Docs
+description: このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: yurid
-ms.openlocfilehash: 818c257d1959936f0dc326486e372677aacb065a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Azure Security Center でのインシデントとアラートの調査 (プレビュー)
 このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
@@ -56,11 +56,11 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 
 ![エンティティ](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>検索
+### <a name="search"></a>Search
 
 **[検索]** タブでは、エンティティで利用できるすべてのログの種類が表示されます。 ログの種類ごとに、利用できる記録の数を確認できます。 それぞれのログの種類をクリックすると、検索画面に移動します。 検索画面では、検索を絞り込んだり、さまざまな検索機能 (アラート設定など) を使用したりできます。 現在のリリースでは、[検索] タブはユーザーとコンピューターのエンティティにのみ使用できます。
 
-![検索](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>探索
 

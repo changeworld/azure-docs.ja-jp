@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -85,7 +85,7 @@ Azure サブスクリプションを管理できるアカウントの保護は�
 
 [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) サービスでは、[Azure のロール ベースのアクセス制御 ](../role-based-access-control/overview.md) (RBAC) を使用します。 RBAC を使用すると、チーム内での職務を複数のロールに分けて、業務を行うために必要なレベルのアクセス権だけをユーザーに付与することができます。 RBAC には、あらかじめ定義されたロール (所有者、ラボ ユーザー、共同作成者) があります。 これらのロールを使用して、外部のパートナーに権限を割り当て、コラボレーションを大幅に簡略化することもできます。
 
-RBAC を使用しているため、追加の[カスタム ロール](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md)も作成できます。 DevTest Labs は、アクセス許可の管理だけでなく、環境のプロビジョニング プロセスも簡略化されています。 開発環境やテスト環境を利用するチームが直面する他の一般的な課題に対処するようにも設計されています。 DevTest Labs を使用するには多少の準備が必要ですが、長期的に見ると、チームの業務の効率化につながります。
+RBAC を使用しているため、追加の[カスタム ロール](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md)も作成できます。 DevTest Labs は、アクセス許可の管理だけでなく、環境のプロビジョニング プロセスも簡略化されています。 開発環境やテスト環境を利用するチームが直面する他の一般的な課題に対処するようにも設計されています。 DevTest Labs を使用するには多少の準備が必要ですが、長期的に見ると、チームの業務の効率化につながります。
 
 Azure DevTest Labs の機能には次のようなものがあります。
 

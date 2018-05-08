@@ -1,24 +1,24 @@
 ---
-title: "Azure 使用制限を理解する | Microsoft Docs"
-description: "Azure の使用制限のしくみと削除方法を説明します。"
-services: 
-documentationcenter: 
+title: Azure 使用制限を理解する | Microsoft Docs
+description: Azure の使用制限のしくみと削除方法を説明します。
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: d222300a591bcba556be5813ada2de555d25a1f0
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: fa7ed4ff1cb7d686dd4459a0be89a8dd9f513e70
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 

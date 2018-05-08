@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -56,14 +56,6 @@ Azure Portal でログ検索からコンピューター グループを作成す
 2. **[ログ検索]** を開いて、画面の上部の **[保存された検索]** をクリックします。
 3. **[追加]** をクリックして、コンピューター グループの各プロパティの値を指定します。
 4. **[このクエリを次のコンピューター グループとして保存します]** を選択して **[OK]** をクリックします。
-
-
-OMS Portal でログ検索からコンピューター グループを作成するには、次の手順に従います。
-
-1. **[ログ検索]** を開いて、コンピューター グループのログ検索を作成します。  
-2. 画面上部にある **[保存]** ボタンをクリックします。
-3. **[このクエリを次のコンピューター グループとして保存します]** で **[はい]** を選択します。
-5. コンピューター グループの各プロパティの値を指定します。 
 
 
 

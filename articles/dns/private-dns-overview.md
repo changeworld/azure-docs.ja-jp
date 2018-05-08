@@ -4,7 +4,7 @@ description: Microsoft Azure のプライベート DNS ホスティング サー
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 ドメイン ネーム システム (DNS) は、サービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。  Azure DNS では、インターネットに接続する DNS ドメインだけでなく、プライベート DNS ドメインもプレビュー機能としてサポートするようになりました。  
@@ -61,7 +61,7 @@ Azure DNS は、信頼性が高くセキュリティで保護された DNS サ�
 * 逆引き DNS は登録仮想ネットワーク内のプライベート IP 空間に対してのみ機能する
 * プライベート ゾーンに登録されていないプライベート IP (例: プライベート ゾーンに解決仮想ネットワークとしてリンクされている仮想ネットワーク内の仮想マシンのプライベート IP) の逆引き DNS では、DNS サフィックスとして "internal.cloudapp.net" を返しますが、このサフィックスは解決できません。   
 * 仮想ネットワークは、次の時点では空の  (VM レコードがない) 状態である必要があります。 プライベート ゾーンに登録または解決仮想ネットワークとして初めてリンクされるとき。 ただし、その他のプライベート ゾーンに登録または解決仮想ネットワークとしてさらにリンクする場合、仮想ネットワークは空でなくてもかまいません。 
-* 現時点では、条件付きの転送 (例: Azure とオンプレミス ネットワーク間の解決を有効にする) はサポートされていません。 他のメカニズムを介してこのシナリオを実現する方法については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+* 現時点では、条件付きの転送 (例: Azure とオンプレミス ネットワーク間の解決を有効にする) はサポートされていない。 他のメカニズムを介してこのシナリオを実現する方法については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 Azure DNS のプライベート ゾーンに関する一般的な質問と回答について、[FAQ](./dns-faq.md#private-dns) で確認することをお勧めします。特定の種類の操作で期待できる DNS の登録と解決の動作に関する説明も含まれています。 
 

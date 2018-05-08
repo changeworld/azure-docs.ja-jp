@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ | Microsoft Docs"
-description: "Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ"
+title: Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ | Microsoft Docs
+description: Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ
 services: active-directory
-keywords: "Azure AD のライセンス"
-documentationcenter: 
+keywords: Azure AD のライセンス
+documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: piotrci
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf18076c81ecf7471771674fe40d36dba3b9866d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb8bd727618eda2a887cc9e1b739889204eb87fa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -157,7 +155,7 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
 ### <a name="find-out-who-modified-a-group-license"></a>グループ ライセンスの変更者を検出する
 
-1. **[アクティビティ]** フィルターを*[グループ ライセンスの設定]* に設定し、**[適用]** をクリックします。
+1. **[アクティビティ]** フィルターを *[グループ ライセンスの設定]* に設定し、**[適用]** をクリックします。
 2. 結果には、グループで設定または変更されているライセンスの事例がすべて含まれます。
 >[!TIP]
 > *[ターゲット]* フィルターにグループの名前を入力して、結果の範囲を指定することもできます。
@@ -230,7 +228,7 @@ PowerShell または Graph API でグループを削除しようとした場合�
 
 - グループベースのライセンスでは、Exchange Online でプロキシ アドレス構成が重複しているためにユーザーにライセンスを割り当てることができなかった場合、エラーは記録されません。ライセンス割り当ての際に、このようなユーザーはスキップされます。 この問題を特定して解決する方法の詳細については、[このセクション](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 

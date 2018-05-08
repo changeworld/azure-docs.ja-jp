@@ -1,24 +1,24 @@
 ---
-title: "Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル | Microsoft Docs"
-description: "Azure HDInsight Hadoop で Hive を使用して予測分析を行う Team Data Science Process の例を紹介します。"
+title: Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル | Microsoft Docs
+description: Azure HDInsight Hadoop で Hive を使用して予測分析を行う Team Data Science Process の例を紹介します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: cef2dac8651933765c83410579eafb23460960f9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 00a7c197223dcdd45181afbba98f66178b944c46
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル 
 
@@ -41,7 +41,7 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 [1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)に関するチュートリアルでは、公開されている [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) のクリック データセットを使用して、チップが支払われるかどうかと、想定される金額の範囲を予測します。 このシナリオでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)と Hive を使って、データの格納、調査、特徴エンジニアリング、ダウン サンプリングが実行されています。 ユーザーが広告をクリックするかどうかを予測する二項分類モデルの構築、トレーニング、スコア付けを、Azure Machine Learning を使って行います。 そのモデルの 1 つを Web サービスとして公開する方法が、チュートリアルの最後に紹介されています。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

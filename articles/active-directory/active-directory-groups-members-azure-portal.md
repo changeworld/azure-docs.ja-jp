@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory でグループのメンバーを管理する | Microsoft Docs"
-description: "Azure Active Directory でグループのユーザーとデバイスを追加または削除する方法"
+title: Azure Active Directory でグループのメンバーを管理する | Microsoft Docs
+description: Azure Active Directory でグループのユーザーとデバイスを追加または削除する方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: d399a97d-fd2a-4b2d-b73d-0975db83f41b
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 31ab2ae51174061fc4b4a232ebbc7acab86e1ab8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a35e85feb10997f458c7f3764920891e7932de59
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでユーザーのグループ メンバーシップを管理する
 この記事では、Azure Active Directory (Azure AD) でグループのメンバーを管理する方法について説明します。
@@ -45,7 +43,7 @@ ms.lasthandoff: 02/21/2018
 9. ***[メンバー名]*** ブレードで **[削除]** をクリックし、表示されたメッセージで削除を確定します。
 
    ![メンバーの [削除] コマンド](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
-10. グループのメンバーの変更が完了したら、 **[保存]**をクリックします。
+10. グループのメンバーの変更が完了したら、 **[保存]** をクリックします。
 
 ## <a name="additional-information"></a>追加情報
 次の記事は、Azure Active Directory に関する追加情報を示します。

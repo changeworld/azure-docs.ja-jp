@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>物理的および環境的保護 (PE)
 
@@ -610,7 +610,7 @@ ms.lasthandoff: 02/13/2018
 |||
 |---|---|
 | **お客様** | 顧客によるエンタープライズ レベルの代替作業サイトの提供は、このコントロールに対処するために十分である可能性があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用外 |
+| **プロバイダー (Microsoft Azure)** | 適用されません |
 
 
  ## <a name="nist-800-53-control-pe-17c"></a>NIST 800-53 Control PE-17.c
@@ -624,7 +624,7 @@ ms.lasthandoff: 02/13/2018
 |||
 |---|---|
 | **お客様** | 顧客によるエンタープライズ レベルの代替作業サイトの提供は、このコントロールに対処するために十分である可能性があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用なし |
+| **プロバイダー (Microsoft Azure)** | 適用されません |
 
 
  ## <a name="nist-800-53-control-pe-18"></a>NIST 800-53 Control PE-18

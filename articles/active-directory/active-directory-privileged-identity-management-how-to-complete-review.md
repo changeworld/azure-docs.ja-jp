@@ -1,25 +1,23 @@
 ---
-title: "アクセス レビューを完了する方法 | Microsoft Docs"
-description: "Azure AD Privileged Identity Management でのアクセス レビューの開始後に、レビューを完了して結果を確認する方法について説明します"
+title: アクセス レビューを完了する方法 | Microsoft Docs
+description: Azure AD Privileged Identity Management でのアクセス レビューの開始後に、レビューを完了して結果を確認する方法について説明します
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: abc2d3dd-afd5-42cf-8a17-6c11f5674c35
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: kgremban
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 3866438de8fba7a6c42777bbb57746eadf1158eb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c1314724d8094f171e4c8468d854a9d4ae0c85d7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを完了する方法
 [セキュリティ レビューが開始](active-directory-privileged-identity-management-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 ユーザーにアクセスを確認するよう求める電子メールは Azure AD Privileged Identity Management (PIM) によって自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、セキュリティ管理者が [セキュリティ レビューを実行する方法](active-directory-privileged-identity-management-how-to-perform-security-review.md)についての指示をユーザーに送信します。
@@ -53,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 > [!IMPORTANT]
 > 削除する前に警告は表示されないため、そのレビューを削除してよいのか確認してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->

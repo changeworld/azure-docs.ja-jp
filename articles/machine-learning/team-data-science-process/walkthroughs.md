@@ -1,9 +1,9 @@
 ---
-title: "Azure で Team Data Science Process を実行するチュートリアル | Microsoft Docs"
-description: "クラウドとオンプレミスのツールとサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。"
+title: Azure で Team Data Science Process を実行するチュートリアル | Microsoft Docs
+description: クラウドとオンプレミスのツールとサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: bradsev
-ms.openlocfilehash: 3a536c432f3a095d75beb57f8203f10afc074fdf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: deguhath
+ms.openlocfilehash: 6d8b8a3f5fd2d3cb0d4fcc9e17e4ec35450c1570
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process を実行するチュートリアル
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

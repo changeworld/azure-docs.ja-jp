@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0f88ca7c0353c4ab63bf4f6ca5509b0e4504929f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 46e222ffe40db186343250efc71e20d41adbc285
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で Java と MySQL Web アプリを構築する
 
@@ -139,10 +139,10 @@ az group create --name myResourceGroup --location "North Europe"
 
 Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
 
-次のコマンドの *\<mysql_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、PostgreSQL エンドポイント (`https://<mysql_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
+次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、PostgreSQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name>--location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 > [!NOTE]
@@ -154,11 +154,6 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 ```json
 {
-  "additionalProperties": {},
-  "administratorLogin": "<admin_user>",
-  "earliestRestoreDate": "2018-04-19T22:56:40.990000+00:00",
-  "fullyQualifiedDomainName": "<mysql_name>.mysql.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
   "location": "westeurope",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
@@ -171,16 +166,8 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  "storageProfile": {
-    "additionalProperties": {},
-    "backupRetentionDays": 7,
-    "geoRedundantBackup": "Disabled",
-    "storageMb": 5120
-  },
-  "tags": null,
-  "type": "Microsoft.DBforMySQL/servers",
-  "userVisibleState": "Ready",
-  "version": "5.7"
+  ...   +  
+  -  < Output has been truncated for readability >
 }
 ```
 

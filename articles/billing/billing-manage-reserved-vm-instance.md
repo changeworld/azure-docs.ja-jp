@@ -1,23 +1,23 @@
 ---
-title: "Azure Reserved Virtual Machine Instances の管理 | Microsoft Docs"
-description: "サブスクリプション スコープを変更したり、Azure Reserved VM Instances のアクセス権を管理したりする方法について説明します。"
+title: Azure Reserved Virtual Machine Instances の管理 | Microsoft Docs
+description: サブスクリプション スコープを変更したり、Azure Reserved VM Instances のアクセス権を管理したりする方法について説明します。
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikramdesai01
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: f3f5f974630c4bf1c68599e26612ed729b55bcfc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 003abb3ddf632261dc372549209ba664cb8f8398
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスの管理
 
@@ -31,7 +31,7 @@ Azure 予約 VM インスタンスの購入後、購入時に指定したもの�
 2. **[すべてのサービス]** > **[予約]** を選択します。
 3. 予約を選択します。
 4. **[設定]** > **[構成]** を選択します。
-5. スコープを変更します。 共有スコープから単一スコープに変更する場合、選択できるのは自分が所有者であるサブスクリプションだけです。 選択できるのは、予約と同じ課金コンテキスト内のサブスクリプションに限られます。 課金コンテキストは、予約の購入時に選択したサブスクリプションによって決まります。 スコープの対象となるのは、従量課金プラン MS-AZR-0003P サブスクリプションと、Enterprise プラン MS-AZR-0017P サブスクリプションだけです。 エンタープライズ契約に関して、Dev/Test サブスクリプションは予約割引の対象外となります。
+5. スコープを変更します。 共有スコープから単一スコープに変更する場合、選択できるのは自分が所有者であるサブスクリプションだけです。 選択できるのは、予約と同じ課金コンテキスト内のサブスクリプションに限られます。 課金コンテキストは、予約の購入時に選択したサブスクリプションによって決まります。 スコープの対象となるのは、従量課金制プラン MS-AZR-0003P サブスクリプションと、Enterprise プラン MS-AZR-0017P サブスクリプションだけです。 エンタープライズ契約に関して、Dev/Test サブスクリプションは予約割引の対象外となります。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>1 つの予約を 2 つの予約に分割する
  複数のインスタンスを購入した後で、予約に含まれるインスタンスを別のサブスクリプションに割り当てることができます。 既定では、すべてのインスタンス (その数は購入時に指定) に 1 つ (単一サブスクリプションと共有のどちらか) のスコープが割り当てられます。 たとえば Standard D2 VM を 10 個購入し、そのスコープをサブスクリプション A に指定したとします。その後、7 個の予約 VM インスタンスについて、そのスコープをサブスクリプション A に変更し、残りの 3 つをサブスクリプション B に変更することができます。予約を分割してインスタンスを配分することで細かなスコープ管理が可能となります。 共有スコープを選択することでサブスクリプションへの割り当てを単純化することができます。 ただし、コスト管理や予算編成の都合上、特定のサブスクリプションに数量を割り当てることもできます。
@@ -82,7 +82,8 @@ Azure 予約 VM インスタンスの購入後、購入時に指定したもの�
 - [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [予約仮想マシン インスタンスで仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
 - [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- [従量課金サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- 
+  [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 

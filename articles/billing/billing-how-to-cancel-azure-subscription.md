@@ -1,25 +1,25 @@
 ---
-title: "Azure サブスクリプションの取り消し | Microsoft Docs"
-description: "無料試用版サブスクリプションなど、Azure サブスクリプションを取り消す方法について説明します"
-services: 
-documentationcenter: 
+title: Azure サブスクリプションの取り消し | Microsoft Docs
+description: 無料試用版サブスクリプションなど、Azure サブスクリプションを取り消す方法について説明します
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 51fe2ab891e86ae4bd7402622231af47f35aa01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f9ff68d91e2ac3daba817f6d5e2bee0398d096e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Azure のサブスクリプションの取り消し
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 * データをバックアップする。 たとえば、Azure Storage や SQL にデータを格納している場合は、コピーをダウンロードします。 仮想マシンを使用している場合は、そのイメージをローカルに保存します。
 * サービスをシャットダウンする。 [管理ポータルのリソース ページ](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)に移動し、実行中の仮想マシン、アプリケーション、またはその他のサービスをすべて**停止**します。
-* データの移行を検討する。 「[Move resources to new resource group or subscription (新しいリソース グループまたはサブスクリプションへのリソースの移動)](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+* データの移行を検討する。 「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
 有料の [Azure サポート プラン](https://azure.microsoft.com/support/plans/)を取り消しても、6 か月の期間の残りの期間について毎月請求されます。
 

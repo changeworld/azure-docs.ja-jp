@@ -1,24 +1,24 @@
 ---
-title: "無料アカウントのサービスと測定のマッピング - Azure | Microsoft Docs"
-description: "無料アカウントに含まれているサービスの、サービスと測定のマッピングを理解します。"
-services: 
-documentationcenter: 
+title: 無料アカウントのサービスと測定のマッピング - Azure | Microsoft Docs
+description: 無料アカウントに含まれているサービスの、サービスと測定のマッピングを理解します。
+services: ''
+documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 9d7e355e755f2bac8929ab16f7f71aa3b0702658
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 683a94f25e94faf0eee7c6aa5fbae52132d58f34
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>無料サービスと測定のマッピングについて
 

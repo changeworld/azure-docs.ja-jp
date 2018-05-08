@@ -1,23 +1,23 @@
 ---
-title: "Azure Application Gateway を使用した Web アプリの保護 - PowerShell | Microsoft Docs"
-description: "この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。"
+title: Azure Application Gateway を使用した Web アプリの保護 - PowerShell | Microsoft Docs
+description: この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
-ms.author: davidmu
-ms.openlocfilehash: f00ad4c3f2cf08461d0258aa31fcedd7045934d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: victorh
+ms.openlocfilehash: abe48c484a232eff6f7ec1cd68e7010353d488d5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Application Gateway を使用した App Service Web Apps の構成 
 
@@ -157,6 +157,6 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 リダイレクトを構成する方法について学習するために、「[PowerShell で Application Gateway にリダイレクトを構成する](application-gateway-configure-redirect-powershell.md)」を参照してください。

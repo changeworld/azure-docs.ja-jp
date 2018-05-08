@@ -1,11 +1,11 @@
 ---
-title: "クライアント証明書認証を使用してバックエンド サービスを保護する - Azure API Management | Microsoft Docs"
-description: "Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法を説明します。"
+title: クライアント証明書認証を使用してバックエンド サービスを保護する - Azure API Management | Microsoft Docs
+description: Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法を説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: afa5c6a07432456d703020c0b8c5c3606478b8fe
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: c3060765022cabcb877041927886b59d6725c7cf
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 API Management には、クライアント証明書を使用して API のバックエンド サービスへのアクセスを保護する機能が備わっています。 このガイドでは、API パブリッシャー ポータルで証明書を管理する方法、および証明書を使用してバックエンド サービスにアクセスするように API を構成する方法を示します。
 
-API Management REST API を使用して証明書を管理する方法の詳細については、「[Azure API Management REST API 証明書エンティティ][Azure API Management REST API Certificate entity]」をご覧ください。
+API Management REST API を使用して証明書を管理する方法の詳細については、「 <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API 証明書エンティティ</a>」をご覧ください。
 
 ## <a name="prerequisites"> </a>前提条件
 このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。 このトピックの手順を実行する前に、バックエンド サービスがクライアント証明書認証用に構成されていること ([Azure WebSites での証明書認証の構成についてはこの記事を参照してください][to configure certificate authentication in Azure WebSites refer to this article])、および API Management パブリッシャー ポータルでのアップロードのために証明書へのアクセス権限と証明書のパスワードとを持っていることが必要です。
@@ -40,7 +40,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![[クライアント証明書]][api-management-security-client-certificates]
 
-新しい証明書をアップロードするには、 **[証明書のアップロード]**をクリックします。
+新しい証明書をアップロードするには、 **[証明書のアップロード]** をクリックします。
 
 ![証明書のアップロード][api-management-upload-certificate]
 

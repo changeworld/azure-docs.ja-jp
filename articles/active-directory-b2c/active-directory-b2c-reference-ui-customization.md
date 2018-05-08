@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e6d1e093fafc6ea74dfcdfa498810ff33d27d89f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b202f30e5fb47bcd16f25c5961f8345dd0324139
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Azure AD B2C ユーザー インターフェイス (UI) のカスタマイズ
 
@@ -332,7 +332,17 @@ UI オプションを使用する他のサービスとは異なり、Azure AD B2
 
 ## <a name="localizing-your-html-content"></a>HTML コンテンツのローカライズ
 
-["言語のカスタマイズ"](active-directory-b2c-reference-language-customization.md) をオンにすることで、HTML コンテンツをローカライズできます。  この機能を有効にすると、Azure AD B2C が Open ID Connect パラメーター `ui-locales` をエンドポイントに転送できるようになります。  コンテンツ サーバーは、このパラメーターを使用して、言語固有のカスタマイズされた HTML ページを提供できます。
+HTML コンテンツをローカライズする方法は 2 つあります。 方法の 1 つは、[言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)を有効にすることです。 この機能を有効にすると、Azure AD B2C が Open ID Connect パラメーター `ui-locales` をエンドポイントに転送できるようになります。  コンテンツ サーバーは、このパラメーターを使って、言語固有のカスタマイズされた HTML ページを提供できます。
+
+使われているロケールに基づいて、さまざまな場所からコンテンツをプルすることもできます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定できます。 ワイルドカード値 `{Culture:RFC5646}` を使うと、適切な言語が呼び出されます。  たとえば、次のようなカスタム ページの URI があるものとします。
+
+```
+https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
+```
+このページを `fr` で読み込むことができます。 ページは、HTML および CSS のコンテンツを取得とき、次の場所から取得します。
+```
+https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
+```
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>独自のコンテンツを構築する際の注意点
 

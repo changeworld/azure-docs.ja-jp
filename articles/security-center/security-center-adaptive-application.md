@@ -3,7 +3,7 @@ title: Azure Security Center におけるアダプティブ アプリケーシ�
 description: このドキュメントは、Azure VM で実行されるアプリケーションのホワイトリストを作成するために、Azure Security Center でアダプティブ アプリケーション制御を使用する際に役に立ちます。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/15/2018
 ms.author: yurid
-ms.openlocfilehash: 04f557d30f9b7f76bdb2a596bc3e96873876061f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 841dbbf97a7fa25aa001636ba92cc2a966be4908
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure Security Center におけるアダプティブ アプリケーション制御 (プレビュー)
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。

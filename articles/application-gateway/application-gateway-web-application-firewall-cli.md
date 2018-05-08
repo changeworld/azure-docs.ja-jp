@@ -1,20 +1,20 @@
 ---
-title: "Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs"
-description: "Azure CLI を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。"
+title: Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs
+description: Azure CLI を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: 87125b68c81af07d0ecd9693fdf7e2dc00a93324
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>WAF を含んだアプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
+[az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -102,7 +102,7 @@ az network application-gateway waf-config set \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
-この例では、アプリケーション ゲートウェイのバックエンド プールに 2 つのサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* サブネットに関連付けます。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az_vmss_create) を使用します。
+この例では、アプリケーション ゲートウェイのバックエンド プールに 2 つのサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* サブネットに関連付けます。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az_vmss_create) を使用できます。
 
 ```azurecli-interactive
 az vmss create \
@@ -129,7 +129,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>ストレージ アカウントの作成と診断の構成

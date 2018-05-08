@@ -1,24 +1,22 @@
 ---
-title: "Azure AD へのカスタム ドメインの追加 | Microsoft Docs"
-description: "Azure Active Directory にカスタム ドメインを追加する方法について説明します。"
+title: Azure AD へのカスタム ドメインの追加 | Microsoft Docs
+description: Azure Active Directory にカスタム ドメインを追加する方法について説明します。
 services: active-directory
 author: curtand
 manager: mtillman
-ms.assetid: 0a90c3c5-4e0e-43bd-a606-6ee00f163038
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: e7b85d5f4cd19c94fe904f16090e174d87ea120b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 37890ac856a6b6bd89acc17973327b239a583997
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>クイック スタート: カスタム ドメイン名を Azure Active Directory に追加する
 
@@ -79,7 +77,7 @@ DNS エントリを追加すると、Azure AD でドメイン名を検証する�
 
 [カスタム ドメイン名を管理する](active-directory-domains-manage-azure-portal.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイックスタートでは、カスタム ドメインを Azure AD に追加する方法について説明しました。 
 
 次のリンクを使用して、Azure Portal から、新しいカスタム ドメインを Azure AD に追加することができます。

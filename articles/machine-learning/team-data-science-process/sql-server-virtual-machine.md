@@ -3,7 +3,7 @@ title: Azure の SQL Server 仮想マシンに保存されたデータを探索�
 description: Azure の SQL Server 仮想マシンに保存されたデータを探索し、特徴を生成します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: ''
 ms.assetid: 3949fb2c-ffab-49fb-908d-27d5e42f743b
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: bradsev
-ms.openlocfilehash: 69ee0657479430abf4ad039efc82d85a9501c7c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 31612f56e996ba0b609a34dd556ede3a0ac498f9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="heading"></a>
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。

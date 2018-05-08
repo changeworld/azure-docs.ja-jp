@@ -1,23 +1,23 @@
 ---
-title: "前払いで Azure 仮想マシンのコスト削減 - Azure | Microsoft Docs"
-description: "Azure 予約仮想マシン インスタンスによる仮想マシンのコスト削減について説明します。"
+title: 前払いで Azure 仮想マシンのコスト削減 - Azure | Microsoft Docs
+description: Azure 予約仮想マシン インスタンスによる仮想マシンのコスト削減について説明します。
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikramdesai01
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスで仮想マシンのコストを削減する 
 仮想マシンは、予約仮想マシン インスタンスを通じて 1 年分または 3 年分の計算処理能力を前払いすることで割引価格で利用することができます。 これにより、仮想マシンのコストが大幅に削減されます。割引率は、従量課金制の料金に対し、1 年間または 3 年間の前払い契約で最大 72% となります。 予約仮想マシン インスタンスは課金割引であり、仮想マシンの実行時の状態には影響しません。
@@ -33,7 +33,8 @@ ms.lasthandoff: 02/09/2018
 ## <a name="whos-eligible-to-purchase-a-reserved-virtual-machine-instance"></a>予約仮想マシン インスタンスを購入する資格があるのはだれですか
 予約仮想マシン インスタンスは、サブスクリプションの種類が次のいずれかに該当する Azure ユーザーが購入できます。
 -   エンタープライズ契約サブスクリプション プラン タイプ (MS-AZR-0017P)。
--   [従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプション プラン タイプ (MS-AZR-003P)。
+-   
+  [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプション プラン タイプ (MS-AZR-003P)。
 予約インスタンスを購入するには、サブスクリプションの "所有者" ロールに属している必要があります。 エンタープライズ登録で予約を購入する場合、エンタープライズ管理者が EA ポータルで予約の購入を有効にする必要があります。既定では、この設定が有効になっています。
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>予約仮想マシン インスタンスを購入した場合はどのように課金されますか
@@ -44,7 +45,7 @@ ms.lasthandoff: 02/09/2018
 予約仮想マシン インスタンスの割引は、予約の購入時に選択した属性と合致した仮想マシンに適用されます。 代表的な属性の 1 つは、合致する VM が実行されるスコープです。 たとえば米国西部リージョンの Standard D2 仮想マシンの予約 VM インスタンス割引を希望する場合、その VM が実行されているサブスクリプションを選択します。 その仮想マシンが、加入契約/アカウント内の複数の異なるサブスクリプションで実行される場合は、共有スコープを選択します。 共有スコープによって、サブスクリプションをまたぐ予約割引の適用が可能となります。
 スコープは、予約 VM インスタンスの購入後に変更することができます。 スコープの変更については、予約の管理方法に関するドキュメントを参照してください。
 
-予約割引が適用されるのは、エンタープライズ プラン タイプまたは従量課金プラン タイプに該当するサブスクリプションの仮想マシンのみです。 その他のプラン タイプのサブスクリプションで実行される仮想マシンについては、予約割引の対象外となります。 エンタープライズ加入契約に関して、Enterprise Dev/Test サブスクリプションには予約インスタンスの特典が適用されません。
+予約割引が適用されるのは、エンタープライズ プラン タイプまたは従量課金制プラン タイプに該当するサブスクリプションの仮想マシンのみです。 その他のプラン タイプのサブスクリプションで実行される仮想マシンについては、予約割引の対象外となります。 エンタープライズ加入契約に関して、Enterprise Dev/Test サブスクリプションには予約インスタンスの特典が適用されません。
 
 予約の特典が仮想マシンの課金にどのように適用されるかについては、[予約による割引の適用](https://go.microsoft.com/fwlink/?linkid=863405)に関するページを参照してください。
 
@@ -66,7 +67,8 @@ ms.lasthandoff: 02/09/2018
 - [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [予約仮想マシン インスタンスの管理](billing-manage-reserved-vm-instance.md)
 - [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
-- [従量課金サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- 
+  [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 

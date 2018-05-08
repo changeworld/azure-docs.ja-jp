@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center のカスタム アラート ルール | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。"
+title: Azure Security Center のカスタム アラート ルール | Microsoft Docs
+description: このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: yurid
-ms.openlocfilehash: 10c5c3e6f714aac4c08cb810f54eb09c3d2bbe70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e43d925317e32d2fcbdeb75eff71de0cc5a91378
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure Security Center のカスタム アラート ルール (プレビュー)
 このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。
@@ -40,7 +40,7 @@ Security Center のカスタム アラート ルールを使用すると、環�
     
 3.  次のオプションを含む [カスタムのアラート ルールの作成] ページが表示されます。
     
-    ![作成](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
+    ![[作成]](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
 
 4.  **[名前]** フィールドに、このカスタム ルールの名前を入力します。
 5.  **[説明]** フィールドに、このルールの目的を示す簡単な説明を入力します。

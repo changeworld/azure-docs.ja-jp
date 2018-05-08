@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 11c737adb6578437a3708bb97397a24114e39585
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 09e20d9a80b881075d9bb6be7d4daafc739340a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>C# IoT Edge モジュールを開発して、シミュレートしたデバイスにデプロイする - プレビュー
 
@@ -45,7 +45,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンテナー]** > **[Azure Container Registry]** の順に選択します。
 2. レジストリに名前を付けて、サブスクリプション、リソース グループを選択し、SKU を **[Basic]** に設定します。 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 4. コンテナー レジストリが作成されたら、そこに移動し、**[アクセス キー]** を選択します。 
 5. **[管理者ユーザー]** を **[有効]** に切り替えます。
 6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、後ほどこのチュートリアルで、レジストリに Docker イメージを発行するときと、Edge ランタイムにレジストリの資格情報を追加するときに使用します。 
@@ -115,9 +115,10 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
     // Read TemperatureThreshold from Module Twin Desired Properties
     var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
     var moduleTwinCollection = moduleTwin.Properties.Desired;
-    if (moduleTwinCollection["TemperatureThreshold"] != null)
-    {
+    try {
         temperatureThreshold = moduleTwinCollection["TemperatureThreshold"];
+    } catch(ArgumentOutOfRangeException e) {
+        Console.WriteLine("Proerty TemperatureThreshold not exist");
     }
 
     // Attach callback for Twin desired properties updates

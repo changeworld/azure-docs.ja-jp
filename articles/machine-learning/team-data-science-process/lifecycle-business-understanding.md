@@ -3,7 +3,7 @@ title: Team Data Science Process ライフサイクルのビジネスの把握�
 description: データ サイエンス プロジェクトのビジネスの把握ステージの目標、タスク、成果物
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: daaaccaeac196b5f4651183173c8e83085d5184d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: b406a0cd3e5176649b33d6ad8f41facb7043952d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="business-understanding"></a>ビジネスの把握
 

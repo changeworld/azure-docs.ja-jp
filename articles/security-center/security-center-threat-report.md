@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center の脅威インテリジェンス レポート | Microsoft Docs"
-description: "このドキュメントでは、調査に Azure Security Center の脅威インテリジェンス レポートを使用し、セキュリティ アラートに関する詳しい情報を確認する方法を説明します。"
+title: Azure Security Center の脅威インテリジェンス レポート | Microsoft Docs
+description: このドキュメントでは、調査に Azure Security Center の脅威インテリジェンス レポートを使用し、セキュリティ アラートに関する詳しい情報を確認する方法を説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-ms.openlocfilehash: b4310cf4e6849c67031b3ec8b1fd5957e35f7ea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 540725147579f895cc17ed2dbf46471dab6b3747
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
 このドキュメントでは、セキュリティ アラートが生成される原因となった脅威に関して詳しい情報を確認するにあたり、Azure Security Center の脅威インテリジェンス レポートがどのような点で役に立つかを説明します。
@@ -52,7 +52,7 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 ## <a name="how-to-access-the-threat-intelligence-report"></a>脅威インテリジェンス レポートにアクセスする方法
 現在の警告は、 **[セキュリティ アラート]** タイルで確認できます。 各警告の詳細を確認するには、Azure Portal を開いて以下の手順に従ってください。
 
-1. [セキュリティ センター] ダッシュボードに **[セキュリティ アラート]** タイルが表示されます。
+1. [セキュリティ センター] ダッシュボードには **[セキュリティの警告]** タイルが表示されます。
 2. タイルをクリックして、**[セキュリティ アラート]** ブレードを開くと、アラートに関する詳細が表示されます。そこで、さらに詳しい情報を確認したいセキュリティ アラートをクリックします。
 
     ![セキュリティのアラート](./media/security-center-threat-report/security-center-threat-report-fig1.png)

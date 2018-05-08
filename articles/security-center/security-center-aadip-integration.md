@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory Identity Protection を Azure Security Center に接続する | Microsoft Docs"
-description: "Azure Security Center を Azure Active Directory Identity Protection と統合する方法について説明します。"
+title: Azure Active Directory Identity Protection を Azure Security Center に接続する | Microsoft Docs
+description: Azure Security Center を Azure Active Directory Identity Protection と統合する方法について説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 0d4b77c2-dba4-4e46-8f55-ab04ddd92496
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 7562dd5e1c303a6cb97d25bda5aa080bb5643583
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: b15508acea92c165cba85e39ab907fa524088164
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Azure Active Directory Identity Protection を Azure Security Center に接続する
 このドキュメントは、Azure Active Directory (AD) Identity Protection と Azure Security Center 間の統合を構成する場合に役立ちます。
@@ -39,11 +39,11 @@ ms.lasthandoff: 10/14/2017
 
     ![ワークスペース](./media/security-center-aadip-integration/security-center-aadip-integration-fig2.png)
 
-5. **[接続]**をクリックします。
+5. **[接続]** をクリックします。
 
 この構成が完了すると、**[セキュリティ ソリューション]** の **[接続済みのソリューション]** に Azure AD Identity Protection ソリューションが表示されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure AD Identity Protection を Security Center に接続する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Microsoft Advanced Threat Analytics を Azure Security Center に接続する](security-center-ata-integration.md)

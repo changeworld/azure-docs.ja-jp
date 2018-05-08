@@ -1,27 +1,27 @@
 ---
-title: "Azure の請求書と毎日の使用状況データをダウンロードする | Microsoft Docs"
-description: "Azure の請求書と毎日の使用状況データをダウンロードまたは表示する方法について説明します。"
-keywords: "請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況"
-services: 
-documentationcenter: 
+title: Azure の請求書と毎日の使用状況データをダウンロードする | Microsoft Docs
+description: Azure の請求書と毎日の使用状況データをダウンロードまたは表示する方法について説明します。
+keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況
+services: ''
+documentationcenter: ''
 author: genlin
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eea55735d0e17de4fe543847d0d521b0e8c0c3f7
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 6fa9f9ae4ef2bd39f3c6d3ec7c6d757aa50b2fd1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 請求書を [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 毎日の使用状況をダウンロードするには、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスします。 請求書と使用状況データを取得するアクセス許可を持つのは、アカウント管理者などの特定のロールのみです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/27/2017
 
 2. 請求書と使用状況を確認するサブスクリプションを選択します。
 
-3. **[請求履歴]**を選択します。 
+3. **[請求履歴]** を選択します。 
 
     ![Screenshot that shows billing history option](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 

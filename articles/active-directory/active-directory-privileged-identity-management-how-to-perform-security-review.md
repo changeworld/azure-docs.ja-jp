@@ -1,25 +1,23 @@
 ---
-title: "アクセス レビューを実行する方法 | Microsoft Docs"
-description: "Azure Privileged Identity Management アプリケーションでレビューを実行する方法について説明します。"
+title: アクセス レビューを実行する方法 | Microsoft Docs
+description: Azure Privileged Identity Management アプリケーションでレビューを実行する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 49ee2feb-7d2e-4acf-82c1-40ff23062862
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: d9885fc286e31100e14a5c8a1001df079829dcbe
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b3cc71fc11a567c0c5c62b220e25be4169bd8348
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを実行する方法
 Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
@@ -33,14 +31,14 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Portal の右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
-3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使って **Azure AD Privileged Identity Management** を検索します。
+3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使用して **Azure AD Privileged Identity Management** を検索します。
 4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
 
 ## <a name="approve-or-deny-access"></a>アクセスの承認または拒否
 アクセスを承認または拒否する場合、このロールをまだ使用するかどうかをレビュー担当者にのみ通知します。 ロールにとどまる場合は **[承認]** を選択します。また、アクセスが不要な場合は **[拒否]** を選択します。 レビュー担当者が結果を適用するまで、状態はすぐに変更されません。
 アクセス レビューを検索して完了するには、次の手順に従います。
 
-1. PIM アプリケーションで、 **[特権アクセスのレビュー]**を選択します。 保留中のアクセス レビューがある場合は、[Azure AD Access reviews (Azure AD Access レビュー)] ブレードが表示されます。
+1. PIM アプリケーションで、 **[特権アクセスのレビュー]** を選択します。 保留中のアクセス レビューがある場合は、[Azure AD Access reviews (Azure AD Access レビュー)] ブレードが表示されます。
 2. 完了するレビューを選択します。
 3. レビューを作成した場合を除き、レビューで唯一のユーザーとして表示されます。 名前の横にあるチェック マークを選択します。
 4. **[承認]** または **[拒否]** のいずれかを選択します。 **[理由の提供]** テキスト ボックスで決定の理由を含めることが必要になる場合があります。  

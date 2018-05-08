@@ -1,11 +1,11 @@
 ---
-title: "Linux での Azure Security Center と Azure 仮想マシン | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center で Azure 仮想マシンを保護する方法についてわかりやすく説明します。"
+title: Linux での Azure Security Center と Azure 仮想マシン | Microsoft Docs
+description: このドキュメントでは、Azure Security Center で Azure 仮想マシンを保護する方法についてわかりやすく説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e08444cbfdb095c79d164de06dda078c6a242b3f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Linux での Azure Security Center と Azure 仮想マシン
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -32,7 +32,7 @@ Security Center は、仮想マシンのセキュリティ設定を可視化し�
 * 不足しているシステムのセキュリティ更新プログラムと重要な更新プログラム
 * エンドポイント保護の推奨事項
 * ディスク暗号化の検証
-* ネットワーク ベースの攻撃 ([Standard バージョン](https://azure.microsoft.com/en-us/pricing/details/security-center/)でのみ使用可能)
+* ネットワーク ベースの攻撃 ([Standard バージョン](https://azure.microsoft.com/pricing/details/security-center/)でのみ使用可能)
 
 Security Center の機能は、Azure VM を保護することだけではありません。Cloud Services、App Services、Virtual Network などのセキュリティを監視して管理することもできます。 
 
@@ -64,7 +64,7 @@ Azure Security Center で必要な情報を収集し、構成したセキュリ�
 
 セキュリティ ポリシーを設定すると、セキュリティ センターではリソースのセキュリティの状態が分析され、潜在的な脆弱性が特定されます。 推奨事項は表形式で表示されます。表の行はそれぞれ特定の推奨事項を表します。 次の表には、Linux オペレーティング システムを実行している Azure VM の推奨事項の例の一部と、それぞれを適用した場合に実行される内容について記載されています。 推奨事項を選択すると、Security Center で推奨事項を実装する方法についての情報を確認できます。
 
-| 推奨 | Description |
+| 推奨 | [説明] |
 | --- | --- |
 | [サブスクリプションのデータ収集の有効化](security-center-enable-data-collection.md) |各サブスクリプションおよびサブスクリプションのすべての仮想マシン (VM) に対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。 |
 | [OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md) |OS の構成を推奨される構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。 |

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
@@ -259,7 +259,8 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
     <tr><td>Filter Period</td><td>January</td></tr>
     <tr><td>フィールド</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay* (その他のフィールドはすべてオフにする)</td></tr>
     </table>
-3.**[ダウンロード]** をクリックします。
+
+3. **[Download]** をクリックします。
 4. ファイルを **C:\Tutorials\FlightDelay\2013Data** フォルダーに解凍します。 ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
 5. ファイルの名前を、データを含む月の名前に変更します。 たとえば、1 月のデータを含むファイルの場合、 *January.csv*という名前にします。
 6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。 チュートリアルを実行するには、月別のファイルが少なくとも 1 つ必要です。
@@ -273,8 +274,9 @@ HDInsight クラスターの作成と Hive ジョブの実行の詳細につい�
     <tr><td>$storageAccountName</td><td>データのアップロード先となる Azure ストレージ アカウント。</td></tr>
     <tr><td>$blobContainerName</td><td>データのアップロード先となる BLOB コンテナー。</td></tr>
     </table>
+    
 2. Azure PowerShell ISE を開きます。
-手順 3. 次のスクリプトをスクリプト ウィンドウに貼り付けます。
+3. 次のスクリプトをスクリプト ウィンドウに貼り付けます。
 
     ```powershell
     [CmdletBinding()]

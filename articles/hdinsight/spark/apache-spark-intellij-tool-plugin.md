@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 726b062aecc11db738926586cdede045eae3a61e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -73,7 +73,7 @@ Azure Toolkit for IntelliJ プラグインを使用して Scala で記述され�
 
 <h2 id="linkcluster">クラスターのリンク</h2>
 Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。 
-1. **Azure 用エクスプローラー**の**[Link a cluster]\(クラスターのリンク\)** をクリックします。
+1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
@@ -107,7 +107,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
     ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-2. **[次へ]**を選択します。
+2. **[次へ]** を選択します。
 
 3. Scala プロジェクト作成ウィザードは Scala プラグインをインストールしたかどうかを自動的に検出します。 **[インストール]** を選択します。
 
@@ -175,7 +175,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
    b. Azure サブスクリプションの資格情報を入力するよう求められます。 **[Spark Submission]\(Spark 送信\)** ダイアログ ボックスで、次の値を入力し、**[Submit]\(送信\)** を選択します。
       
-      * **[Spark clusters (Linux only) (Spark クラスター (Linux のみ))]**では、アプリケーションを実行する HDInsight Spark クラスターを選択します。
+      * **[Spark clusters (Linux only) (Spark クラスター (Linux のみ))]** では、アプリケーションを実行する HDInsight Spark クラスターを選択します。
 
       * IntelliJ プロジェクトまたはハード ドライブからアーティファクトを選択します。
 
@@ -324,4 +324,3 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 ### <a name="managing-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
-

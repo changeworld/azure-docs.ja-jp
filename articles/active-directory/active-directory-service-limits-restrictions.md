@@ -1,26 +1,24 @@
 ---
-title: "「Azure の Active Directory サービスの制限と制約事項」"
-description: "Azure Active Directory サービスの使用上の制約およびその他のサービスの制限"
+title: 「Azure の Active Directory サービスの制限と制約事項」
+description: Azure Active Directory サービスの使用上の制約およびその他のサービスの制限
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: e4166a30-eb45-43b8-a466-6254b664fd1a
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
-ms.openlocfilehash: 9cec1e9e63d6fa9cdb372c0df8f16376482bad71
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c2cf5a401429277938d3f533d6649aefb0fb190
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD サービスの制限と制約
 この記事では、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。 Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「 [Azure サブスクリプションとサービスの制限、クォータ、および制約](../azure-subscription-service-limits.md)」を参照してください。

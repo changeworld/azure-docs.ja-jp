@@ -1,31 +1,29 @@
 ---
-title: "Azure AD Privileged Identity Management で監査ログを使用する方法 | Microsoft Docs"
-description: "Azure Privileged Identity Management 拡張機能で監査ログを使用する方法について説明します。"
+title: Azure AD Privileged Identity Management で監査ログを使用する方法 | Microsoft Docs
+description: Azure Privileged Identity Management 拡張機能で監査ログを使用する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 5d13a6dd-1fcb-4e76-82fb-cb2f4f0e4357
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/14/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: dd6cecf9211dada02025d93e4d63234ff0a73949
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 20fd9c5ee90947cc2d3816a0590d4780408baa2f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-the-audit-log-in-pim"></a>PIM での監査ログの使用
 Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](active-directory-view-access-usage-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>監査ログへの移動
-[Azure Portal](https://portal.azure.com) のダッシュボードで、 **Azure AD Privileged Identity Management** アプリを選択します。 次に、PIM ダッシュボードで**[特権ロールの管理]** > **[監査履歴]** の順にクリックして、監査ログにアクセスします。
+[Azure Portal](https://portal.azure.com) のダッシュボードで、 **Azure AD Privileged Identity Management** アプリを選択します。 次に、PIM ダッシュボードで **[特権ロールの管理]** > **[監査履歴]** の順にクリックして、監査ログにアクセスします。
 
 ## <a name="the-audit-log-graph"></a>監査ログのグラフ
 監査ログを使用すると、合計アクティブ化数、1 日あたりの最大アクティブ化数、1 日あたりの平均アクティブ化数を折れ線グラフで表示できます。  監査履歴に複数のロールがある場合は、ロールによってデータをフィルターすることもできます。
@@ -57,6 +55,6 @@ Privileged Identity Management (PIM) の監査ログを使用すると、特定�
 ロールをログに含めたりログから除外したりするには、各ロールの横にある **[ロール]** チェックボックスをオンまたはオフにします。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

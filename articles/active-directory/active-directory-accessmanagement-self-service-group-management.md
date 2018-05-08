@@ -1,26 +1,24 @@
 ---
-title: "アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定 | Microsoft Docs"
-description: "Azure Active Directory にセキュリティ グループまたは Office 365 グループを作成して管理したり、セキュリティ グループまたは Office 365 グループのメンバーシップを要求したりすることができます。"
+title: アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定 | Microsoft Docs
+description: Azure Active Directory にセキュリティ グループまたは Office 365 グループを作成して管理したり、セキュリティ グループまたは Office 365 グループのメンバーシップを要求したりすることができます。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 904d5c70-c34a-46c4-a9a7-d1efecf4821c
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 4798c9f9b289f8fa089498398079565c35ccdd2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee116762945f01c5c8031b97e0e09fa6c6ae6d7f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>セルフサービス グループ管理に必要な Azure Active Directory の設定
 Azure Active Directory (Azure AD) では、管理下のユーザーが自分でセキュリティ グループまたは Office 365 グループを作成して管理することができます。 ユーザーはセキュリティ グループまたは Office 365 グループのメンバーシップを要求することもできます。要求されたメンバーシップは、グループの所有者が承認または拒否できます。 グループの業務上の趣旨を理解している人物に日常的なメンバーシップ管理を委任することができます。 セルフサービスによるグループ管理機能を使用できるのはセキュリティ グループと Office 365 グループだけであり、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
@@ -42,7 +40,7 @@ Azure Active Directory (Azure AD) では、管理下のユーザーが自分で�
 
 **[セキュリティ グループを管理できるグループ]** または **[Office 365 グループを管理できるグループ]** を使用して、特定のグループを 1 つ指定し、そのメンバーにセルフサービス機能の利用を許可することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [Azure Active Directory のグループによるリソースへのアクセス管理](active-directory-manage-groups.md)

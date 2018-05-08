@@ -3,8 +3,8 @@ title: Azure Application Gateway を使用した Web アプリの保護 - PowerS
 description: この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: ''
 ms.service: application-gateway
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
-ms.author: davidmu
-ms.openlocfilehash: 67c7ab83d9a574631ec09c40804c942a518a2554
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: victorh
+ms.openlocfilehash: 28b200fc3fceac0995248b68963b9a79856262a7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Application Gateway を使用した App Service Web Apps の構成 
 

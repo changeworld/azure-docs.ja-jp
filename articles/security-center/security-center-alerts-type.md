@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center における各種のセキュリティ アラート | Microsoft Docs"
-description: "この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートについて説明します。"
+title: Azure Security Center における各種のセキュリティ アラート | Microsoft Docs
+description: この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートについて説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2018
 ms.author: yurid
-ms.openlocfilehash: a5c95fc7ddf78987d8a7b135d54f359eb5c49946
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3337736ebcf31ec6aa75725c37e51b1c733f5d9d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラートの概要
 この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートと関連する分析情報についてわかりやすく説明します。 アラートとインシデントを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。

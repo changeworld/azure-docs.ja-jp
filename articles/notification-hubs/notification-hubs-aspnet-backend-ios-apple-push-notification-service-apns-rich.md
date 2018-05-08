@@ -1,24 +1,24 @@
 ---
-title: "Azure Notification Hubs のリッチなプッシュ"
-description: "機能豊富なプッシュ通知を Azure から iOS アプリに送信する方法について説明します。 コード サンプルは Objective-C と C# で記述されています。"
+title: Azure Notification Hubs のリッチなプッシュ
+description: 機能豊富なプッシュ通知を Azure から iOS アプリに送信する方法について説明します。 コード サンプルは Objective-C と C# で記述されています。
 documentationcenter: ios
 services: notification-hubs
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: 21ed7dd1120958576651703283a0732e3843546d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 ## <a name="overview"></a>概要
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 1. Visual Studio で、 **ユーザーへの通知** チュートリアルで作成した [AppBackend](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) プロジェクトを開きます。
 2. ユーザーへの通知で使用する画像を取得し、プロジェクト ディレクトリの **img** フォルダーに置きます。
 3. ソリューション エクスプローラーで **[すべてのファイルを表示]** をクリックし、フォルダーを右クリックして **[プロジェクトに含める]** をクリックします。
-4. 画像が選択された状態で、プロパティ ウィンドウでビルド アクションを **[埋め込まれたリソース]**に変更します。
+4. 画像が選択された状態で、プロパティ ウィンドウでビルド アクションを **[埋め込まれたリソース]** に変更します。
    
     ![][IOS2]
 5. **Notifications.cs**に、次の using ステートメントを追加します。
@@ -126,7 +126,7 @@ ms.lasthandoff: 10/11/2017
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 8. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]**をクリックします。
+9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
 
 ## <a name="modify-the-ios-project"></a>iOS プロジェクトを変更する
 アプリ バックエンドを通知の *ID* だけを送信するように変更したので、iOS アプリをその ID を処理してバックエンドからリッチ メッセージを取得するように変更します。
@@ -347,8 +347,8 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 1. XCode を使用して、物理 iOS デバイスでアプリケーションを実行します (プッシュ通知はシミュレーターでは機能しません)。
-2. iOS アプリケーション UI で、認証に同じ値のユーザー名とパスワードを入力し、 **[Log In]**をクリックします。
-3. **[Send push]** をクリックすると、アプリ内アラートが表示されます。 **[More]**をクリックすると、アプリケーション バックエンドに含めるために選択した画像が表示されます。
+2. iOS アプリケーション UI で、認証に同じ値のユーザー名とパスワードを入力し、 **[Log In]** をクリックします。
+3. **[Send push]** をクリックすると、アプリ内アラートが表示されます。 **[More]** をクリックすると、アプリケーション バックエンドに含めるために選択した画像が表示されます。
 4. **[Send push]** をクリックし、すぐにデバイスのホーム ボタンを押すこともできます。 少し待つと、プッシュ通知が届きます。 タップするか、[More] をクリックすれば、アプリケーションとリッチな画像コンテンツが現れます。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png

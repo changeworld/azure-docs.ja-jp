@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: saveenr
-ms.openlocfilehash: bdd9ff78e8f720a7f1318c320d10070cbdd2d566
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Azure Portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -66,10 +66,9 @@ OUTPUT @a
 
 1. Data Lake Analytics アカウントから **[新しいジョブ]** をクリックします。
 2. 上記の U-SQL スクリプトのテキストを貼り付けます。 
-3. **[ジョブの送信]**をクリックします。   
+3. **[ジョブの送信]** をクリックします。   
 4. ジョブの状態が **[成功]** に変わるまで待機します。
-5. ジョブが失敗した場合は、[Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)に関する記事をご覧ください。
-6. **[出力]** タブをクリックし、`data.csv` をクリックします。 
+5. **[出力]** タブをクリックし、`data.csv` をクリックします。 
 
 ## <a name="see-also"></a>関連項目
 

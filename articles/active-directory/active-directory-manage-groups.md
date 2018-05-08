@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory でのグループを使用したリソースへのアクセス管理 | Microsoft Docs"
-description: "オンプレミスとクラウドのアプリケーションとリソースに対するユーザー アクセス管理に Azure Active Directory のグループを使用する方法について説明します。"
+title: Azure Active Directory でのグループを使用したリソースへのアクセス管理 | Microsoft Docs
+description: オンプレミスとクラウドのアプリケーションとリソースに対するユーザー アクセス管理に Azure Active Directory のグループを使用する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 714120d0-cdf9-465d-afee-39bef591c6b3
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: aaccc501526d313a572692ff8f2f5c9da38849d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ef218abb1bef4a51880187fb5764cebfb40afadd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Azure Active Directory のグループによるリソースへのアクセス管理
 Azure Active Directory (Azure AD) は、包括的な ID およびアクセス管理ソリューションであり、信頼性の高い機能セットを備えています。この機能セットにより、Office 365 のような Microsoft オンライン サービスや Microsoft 以外の数多くの SaaS アプリケーションを含む、クラウドおよびオンプレミスのアプリケーションやリソースに対するアクセスが管理できます。 この記事では概要を説明しています。Azure AD グループをすぐに使い始めたい場合は、「[Azure AD のセキュリティ グループの管理](active-directory-groups-create-azure-portal.md)」の手順に従ってください。 Azure Active ディレクトリ内のグループを PowerShell で管理する方法の詳細については、「[グループ管理用の Azure Active Directory のコマンドレット](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)」をご覧ください。
@@ -72,7 +70,7 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 * [Azure AD Connect を使用した Azure へのオンプレミス グループの同期](active-directory-aadconnect.md)
 * [グループの所有者の管理](active-directory-accessmanagement-managing-group-owners.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アクセス管理の基本については理解したので、ここでは Azure Active Directory でアプリケーションとリソースへのアクセス管理に使用できる、その他の高度な機能をいくつか紹介します。
 
 * [属性を使用した高度なルールの作成](active-directory-groups-dynamic-membership-azure-portal.md)

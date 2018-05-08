@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2017
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL データベースを Azure Stack ユーザーから使用可能にする
 Azure Stack クラウド管理者として、ユーザー (テナント) が自分のクラウド ネイティブなアプリ、Web サイト、およびワークロードで使用できる SQL データベースを作成できるようにするオファーを作成できます。 これらのカスタムの、オンデマンドで、クラウド ベースのデータベースをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
@@ -34,8 +34,8 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 このデプロイ プロセスは [Azure Stack 上での SQL データベースの使用の記事](azure-stack-sql-resource-provider-deploy.md)で詳細に説明されており、次の主要な手順で構成されています。
 
-1. [SQL リソース プロバイダーをデプロイします]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider)。
-2. [デプロイを検証します]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
+1. [SQL リソース プロバイダーをデプロイします](azure-stack-sql-resource-provider-deploy.md)。
+2. [デプロイを検証します](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)。
 3. ホスティング SQL Server に接続して容量を提供します。
 
 ## <a name="create-an-offer"></a>オファーの作成

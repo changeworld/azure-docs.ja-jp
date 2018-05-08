@@ -3,7 +3,7 @@ title: 車両の状態および運転習慣の Power BI ダッシュボード - 
 description: Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: aaeb29a5-4a13-4eab-bbf1-885690d86c56
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: bradsev
-ms.openlocfilehash: 085ce90311d4d89b365f7fe51a95c00c1a734196
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 2689e87dd41aa4494cf63c9ead1d1ca011b0b720
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>車両テレメトリ分析ソリューション テンプレートの Power BI ダッシュボードのセットアップ手順
 このメニューは、このプレイブック内の各章にリンクされています。 
@@ -180,7 +180,7 @@ ms.lasthandoff: 03/28/2018
   
       ![[ページ レベル フィルター]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
-    b. **[ページ レベル フィルター] の [MaintenanceLabel]** の下部で、**[基本フィルター]**　を選択します。
+    b. **[ページ レベル フィルター] の [MaintenanceLabel]** の下部で、**[基本フィルター]** 　を選択します。
 
       ![[基本フィルター]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png) 
 
@@ -198,7 +198,7 @@ ms.lasthandoff: 03/28/2018
 
 6. **[フィールド]** タブで、**[Model]** を **[軸]** 領域にドラッグします。 **[vin]** を **[値]** 領域にドラッグします。 次に、**[Count of vin]** で視覚エフェクトを並べ替えます。 グラフの **[タイトル]** を **Vehicles requiring maintenance by model** に変更します。 
 
-7. **[視覚化]** タブの**[フィールド]** ![[フィールド] の画像](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png)セクションで、**[vin]** を **[色の彩度]** にドラッグします。
+7. **[視覚化]** タブの **[フィールド]** ![[フィールド] の画像](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png)セクションで、**[vin]** を **[色の彩度]** にドラッグします。
 
     ![[色の彩度]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
@@ -368,7 +368,7 @@ ms.lasthandoff: 03/28/2018
 
     ![データベース](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/12-set-powerbi-database.png)
 
-6. **[OK]**を選択します。
+6. **[OK]** を選択します。
 
 7. **[Windows 資格情報]** タブは既定で選択されています。 右側の **[データベース]** タブを選択して、それを **[データベース資格情報]** に変更します。
 
@@ -376,7 +376,7 @@ ms.lasthandoff: 03/28/2018
 
     ![データベース資格情報](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/13-provide-database-credentials.png)
 
-9. **[接続]**を選択します。
+9. **[接続]** を選択します。
 
 10. 右側のウィンドウにある残り 3 つの各クエリについて、上記の手順を繰り返します。 その後、データ ソース接続の詳細を更新します。
 

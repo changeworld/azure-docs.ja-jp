@@ -1,25 +1,23 @@
 ---
-title: "Privileged Identity Management へのアクセス権を付与する方法 - Azure | Microsoft Docs"
-description: "Azure Active Directory Privileged Identity Management 拡張機能でユーザーにロールを追加して、ユーザーが PIM を管理できるようにする方法について説明します。"
+title: Privileged Identity Management へのアクセス権を付与する方法 - Azure | Microsoft Docs
+description: Azure Active Directory Privileged Identity Management 拡張機能でユーザーにロールを追加して、ユーザーが PIM を管理できるようにする方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: d4c53b53-2b37-41e6-813c-96ec08a1c897
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 39caeef2648730194827e04e020d8eaea5414f4f
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f7e08e35ce4575715a72b0880d038ce0db766b66
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を管理するためのアクセス権の付与
 組織の Azure AD Privileged Identity Management (PIM) を有効にするグローバル管理者は、自動的にロールの割り当てを取得し、PIM にアクセスします。 ただし、他のグローバル管理者も含めて、既定で書き込みアクセス権を得るユーザーは他にはいません。 その他のグローバル管理者、セキュリティ管理者、およびセキュリティ リーダーは、Azure AD PIM に対する読み取り専用アクセス権を持ちます。 PIM へのアクセス権を付与するには、最初のユーザーが他のユーザーに **特権ロール管理者** ロールを割り当てます。 この割り当ては、PIM 内から実行する必要があり、PowerShell や他のポータルを使用して変更することはできません。
@@ -39,7 +37,7 @@ ms.lasthandoff: 01/03/2018
 3. [管理対象ユーザーの追加] ブレードで、手順 1 は既に完了しています。 手順 2、 **[ユーザーを選択する]** を選択し、追加するユーザーを検索します。
    
     ![ユーザーの選択 - スクリーンショット][2]
-4. 検索結果からユーザーを選択し、 **[実行]**をクリックします。
+4. 検索結果からユーザーを選択し、 **[実行]** をクリックします。
 5. **[OK]** をクリックして選択を保存します。 選択したユーザーが特権ロール管理者の一覧に表示されます。
    
    * 新しいロールを他のユーザーに割り当てるたびに、ユーザーは自動的に対象として設定され、ロールをアクティブ化します。 ロールでユーザーを永続的にする場合は、一覧のユーザーをクリックします。 ユーザー情報メニューで **[永続的にする]** を選択します。
@@ -48,9 +46,9 @@ ms.lasthandoff: 01/03/2018
 ## <a name="remove-another-users-access-rights-for-managing-pim"></a>別のユーザーに付与された、PIM を管理するためのアクセス権を削除する
 特権ロール管理者ロールからユーザーを削除する際は、割り当てられているユーザーの人数が削除後も 2 人以上になるように、必ず事前に確認してください。
 
-1. PIM ダッシュボードで、 **[特権ロール管理者]**ロールをクリックします。  そのロールの現在のユーザー一覧が表示されます。
+1. PIM ダッシュボードで、 **[特権ロール管理者]** ロールをクリックします。  そのロールの現在のユーザー一覧が表示されます。
 2. ユーザーの一覧でユーザーをクリックします。
-3. **[削除]**をクリックします。  確認メッセージが表示されます。
+3. **[削除]** をクリックします。  確認メッセージが表示されます。
 4. **[はい]** をクリックすると、ロールからユーザーが削除されます。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

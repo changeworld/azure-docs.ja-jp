@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でのセキュリティの監視 | Microsoft Docs"
-description: "この記事は、Azure Security Center の監視機能の使用を開始する際に役立ちます。"
+title: Azure Security Center でのセキュリティの監視 | Microsoft Docs
+description: この記事は、Azure Security Center の監視機能の使用を開始する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: yurid
-ms.openlocfilehash: 608947ec4a94cad276e34e8d3457f05b06d04ad6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 330a12f851ef0191adc4dc46102b798f1b752589
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティ ヘルスの監視
 この記事は、Azure Security Center で監視機能を使用してポリシーに対するコンプライアンスを監視するうえで役立ちます。
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/09/2018
 
 **[Monitoring agent health issues]\(エージェントの正常性の問題の監視\)** が表示されます。 Security Center で正常に監視できない VM とコンピューターが一覧表示されます。 詳細については、VM またはコンピューターを選択します。 Security Center で監視できない理由が **[監視の状態]** に表示されます。 **[監視の状態]** の値、説明、解決手順を紹介した一覧については、[Security Center トラブルシューティング ガイド](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)を参照してください。
 
-#### <a name="recommendations"></a>推奨事項
+#### <a name="recommendations"></a>Recommendations
 このセクションには、Azure Security Center で監視される[各仮想マシンとコンピューターについての推奨事項](security-center-virtual-machine-recommendations.md)が表示されます。 最初の列には、推奨事項が一覧表示されます。 2 番目の列は、その推奨事項の影響を受ける仮想マシンとコンピューターの合計数を表しています。 3 番目の列は、以下のスクリーンショットに示したように、問題の重大度を表します。
 
 ![仮想マシンの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)

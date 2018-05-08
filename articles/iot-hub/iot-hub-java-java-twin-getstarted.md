@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub デバイス ツインの使用 (Java) | Microsoft Docs"
-description: "Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Java 用 Azure IoT device SDK を使用してデバイス アプリを実装し、タグの追加と IoT Hub のクエリを実行するサービス アプリを実装します。"
+title: Azure IoT Hub デバイス ツインの使用 (Java) | Microsoft Docs
+description: Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Java 用 Azure IoT device SDK を使用してデバイス アプリを実装し、タグの追加と IoT Hub のクエリを実行するサービス アプリを実装します。
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 6d306d4742a53789d8e69c80d7fbdfc4e1ade4bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8611b55f6e4f33f8946d8c7c481163166d24049c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -35,13 +35,11 @@ ms.lasthandoff: 10/11/2017
 
 * 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
-* アクティブな Azure アカウント  (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
-
-デバイス ID をプログラムで作成する場合は、記事「[Java を使用してデバイスを IoT Hub に接続する](iot-hub-java-java-getstarted.md#create-a-device-identity)」の該当セクションを参照してください。
 
 ## <a name="create-the-service-app"></a>サービス アプリを作成する
 
@@ -349,7 +347,7 @@ ms.lasthandoff: 10/11/2017
 
     デバイスが **connectivityType** プロパティを IoT Hub に送信しているため、2 回目のクエリではデバイスが返ります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリからデバイスのメタデータをタグとして追加し、デバイス ツインのデバイスの接続情報を報告するデバイス アプリを記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツイン情報のクエリを実行する方法も学習しました。
 

@@ -8,18 +8,16 @@ ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: ''
-ms.assetid: ''
+ms.component: users-groups-roles
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fc6cc88cabab1bc56b0a04ce8778823647c5b2bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD の概要
 最新の ID 管理には、アプリケーションとサービスの可用性を、認証済みユーザーに対してのみ確保できるように、スケーラブルで一貫性のある信頼性が求められています。 ユーザーの ID 管理のニーズに適切に対応するには、IT には、承認済みパブリック SaaS (サービスとしてのソフトウェア) アプリへのアクセスを提供する方法、内部の基幹業務アプリをホストする方法、さらにはオンプレミスのアプリの開発と使用を強化する方法も必要です。 こうした要件はすべて、クラウド ベースの ID 管理ソリューションの必要性を示しています。      

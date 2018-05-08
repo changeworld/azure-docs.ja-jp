@@ -2,20 +2,20 @@
 title: アプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
 description: Azure Portal を使用してアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 0df71c445d2c5fc6827b69f708203a3b3e6e2b53
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-portal"></a>Azure Portal を使用してアプリケーション ゲートウェイを作成する
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -70,7 +70,7 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]**をクリックします。
+1. **[新規]** をクリックします。
 2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 

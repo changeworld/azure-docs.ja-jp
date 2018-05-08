@@ -1,9 +1,9 @@
 ---
-title: "Azure VM で SQL Server を使用して機械学習モデルを構築してデプロイする | Microsoft Docs'"
-description: "Advanced Analytics Process and Technology の活用"
+title: Azure VM で SQL Server を使用して機械学習モデルを構築してデプロイする | Microsoft Docs'
+description: Advanced Analytics Process and Technology の活用
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: deguhath
+ms.openlocfilehash: 1e53814c0c0598380944d576e1937e38d1e1d792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -109,7 +109,7 @@ AzCopy を使用してデータをコピーするには
     ![スクリプトの実行][13]
 4. SQL Server の既定のデータベースとログ フォルダーを確認または変更し、新規作成したデータベースが確実にデータ ディスクに格納されるようにします。 データウェアハウス用に最適化された SQL Server VM イメージは、データとログ ディスクが事前構成されています。 VM にデータ ディスクが含まれていなかったため、VM のセットアップ プロセス中に新しい仮想ハードディスクを追加した場合は、既定のフォルダーを次のように変更します。
    
-   * 左側のパネルで SQL Server 名を右クリックしてから、 **[プロパティ]**をクリックします。
+   * 左側のパネルで SQL Server 名を右クリックしてから、 **[プロパティ]** をクリックします。
      
        ![SQL Server プロパティ][14]
    * 左側の **[ページの選択]** リストから、**[データベース設定]** を選択します。

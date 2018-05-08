@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
 ms.author: davidste
-ms.openlocfilehash: e46a816b9a0d66991b8f619135b657a0d51ba395
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 039e21cb3c35f8eb024ad2fca56e8a59e3182d3a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
 Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタは頻繁に更新されます。
@@ -32,11 +32,11 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 関連リンク:
 
 * [最新コネクタのダウンロード](http://go.microsoft.com/fwlink/?LinkId=717495)
-* [Generic LDAP コネクタ](active-directory-aadconnectsync-connector-genericldap.md) リファレンス ドキュメント
-* [Generic SQL コネクタ](active-directory-aadconnectsync-connector-genericsql.md) リファレンス ドキュメント
+* [Generic LDAP コネクタ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) リファレンス ドキュメント
+* [Generic SQL コネクタ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql) リファレンス ドキュメント
 * [Web サービス コネクタ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) リファレンス ドキュメント
-* [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
-* [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
+* [PowerShell コネクタ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-powershell) リファレンス ドキュメント
+* [Lotus Domino コネクタ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-domino) リファレンス ドキュメント
 
 
 ## <a name="118300"></a>1.1.830.0
@@ -117,7 +117,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 
 * Generic SQL:
   * **シナリオ: デザインを刷新して実装済み:** "*" 機能
-  * **ソリューションの説明:** [複数値参照属性処理](active-directory-aadconnectsync-connector-genericsql.md)の手法を変更。
+  * **ソリューションの説明:** [複数値参照属性処理](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)の手法を変更。
 
 
 ### <a name="fixed-issues"></a>修正された問題:
@@ -194,7 +194,7 @@ Lotus:
 リリース日: 2016 年 3
 
 **新しいコネクタ**  
-[Generic SQL コネクタ](active-directory-aadconnectsync-connector-genericsql.md)の初回リリース。
+[Generic SQL コネクタ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)の初回リリース。
 
 **新機能:**
 

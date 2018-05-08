@@ -1,21 +1,21 @@
 ---
-title: "SSL 終了でアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。"
+title: SSL 終了でアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 10796000f913428e39a0ffbd0aa2cbe0c515eb7a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
@@ -108,7 +108,7 @@ Export-PfxCertificate \
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]**をクリックします。
+1. **[新規]** をクリックします。
 2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 

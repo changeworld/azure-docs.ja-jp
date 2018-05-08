@@ -3,23 +3,21 @@ title: Azure AD Privileged Identity Management におけるロール | Microsoft
 description: Azure Privileged Identity Management 拡張機能で特権 ID に使用されるロールについて説明します。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 03/04/2018
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 94a066c43d1b04161a46dac15e5b373d97cc063d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 464b8c3433f6fbfb9e29f57ee96dd6d5e8f2109a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM での別の管理者ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -84,7 +82,7 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 3. Azure AD と、ライセンスが関連付けられていて使用するディレクトリを選択します。
 4. 左側の **[ライセンス]** を選びます。 利用可能なライセンスの一覧が表示されます。
 5. 配布するライセンスが含まれているライセンス プランを選択します。
-6. **[ユーザーの割り当て]**を選択します。
+6. **[ユーザーの割り当て]** を選択します。
 7. ライセンスを割り当てるユーザーを選択します。
 8. **[割り当て]** ボタンをクリックします。  ユーザーは Azure にサインインできるようになります。
 

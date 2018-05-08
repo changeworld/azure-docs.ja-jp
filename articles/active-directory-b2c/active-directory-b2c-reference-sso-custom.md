@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
 ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: シングル サインオン (SSO) セッション管理
 

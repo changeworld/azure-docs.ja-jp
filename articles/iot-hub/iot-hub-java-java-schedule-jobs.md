@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: af853a378a36c97edd74ea99fc5dcce92a073fea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b8b0742054b0348ded39b6357d00f6eac3449f99
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
 
@@ -64,7 +64,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-デバイス ID をプログラムで作成する場合は、記事「[Java を使用してデバイスを IoT Hub に接続する](iot-hub-java-java-getstarted.md#create-a-device-identity)」の該当セクションを参照してください。 [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使って、デバイスを IoT Hub に追加することもできます。
+[Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使って、デバイスを IoT Hub に追加することもできます。
 
 ## <a name="create-the-service-app"></a>サービス アプリを作成する
 

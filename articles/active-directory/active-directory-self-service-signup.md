@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory のセルフサービス (試用版) サインアップ | Microsoft Docs"
-description: "Azure Active Directory (Azure AD) テナントでセルフサービス サインアップを使用します。"
+title: Azure Active Directory のセルフサービス (試用版) サインアップ | Microsoft Docs
+description: Azure Active Directory (Azure AD) テナントでセルフサービス サインアップを使用します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/28/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 9f2b541d5028596f9beabc7fd82001b4c9dacad4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 67fd5ba9be2de1f79511c806ffaa0ae3001bfdcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 この記事では、セルフサービス サインアップの概要と、Azure Active Directory (Azure AD) でサポートする方法について説明します。 管理されていない Azure AD テナントからドメイン名を引き継ぐ場合は、[管理されていないディレクトリを管理者として引き継ぐ方法](domains-admin-takeover.md)に関する記事をご覧ください。

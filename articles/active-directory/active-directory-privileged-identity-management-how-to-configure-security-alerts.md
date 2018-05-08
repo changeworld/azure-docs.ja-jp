@@ -3,23 +3,21 @@ title: セキュリティ アラートを構成する方法 | Microsoft Docs
 description: Azure Privileged Identity Management 拡張機能のセキュリティ通知の構成方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: 4e0c911a-36c6-42a0-8f79-a01c03d2d04f
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 8037942cb3700f8e46d3be24b5fed04004333335
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f77567d35d3916ab1660134959d2d26916e08a0a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でセキュリティ アラートを構成する方法
 ## <a name="security-alerts"></a>セキュリティのアラート
@@ -30,8 +28,8 @@ ms.lasthandoff: 03/08/2018
 | アラート: | 重大度 | トリガー | 推奨 |
 | --- | --- | --- | --- |
 | **ロールが PIM の範囲外に割り当てられています** |高 |PIM インターフェイスの外部で、ユーザーに特権ロールが永続的に割り当てられました。 |リスト内のユーザーを確認し、PIM の外部で割り当てられた特権ロールから、これらのユーザーへの割り当てを解除します。 |
-| **ロールをアクティブ化する頻度が高すぎます** |中 |設定で許可された時間に行われた同じロールの再アクティブ化が多すぎます。 |ロールを何度もアクティブ化したユーザーに連絡を取り、理由を確認してください。 時間制限が短すぎてタスクを完了できていない場合や、ロールを自動的にアクティブ化するスクリプトを使用している可能性があります。 このロールのアクティブ化期間として、タスクを実行するのに必要な十分な期間が設定されていることを確認してください。 |
-| **Roles don't require multi-factor authentication for activation (ロールのアクティブ化に多要素認証が要求されていません)** |中 |MFA が有効化されていないロールが設定に存在します。 |最も高い特権を持つロールでは MFA が必須とされていますが、すべてのロールのアクティブ化に対して MFA を有効化することを強くお勧めします。 |
+| **ロールをアクティブ化する頻度が高すぎます** |Medium |設定で許可された時間に行われた同じロールの再アクティブ化が多すぎます。 |ロールを何度もアクティブ化したユーザーに連絡を取り、理由を確認してください。 時間制限が短すぎてタスクを完了できていない場合や、ロールを自動的にアクティブ化するスクリプトを使用している可能性があります。 このロールのアクティブ化期間として、タスクを実行するのに必要な十分な期間が設定されていることを確認してください。 |
+| **Roles don't require multi-factor authentication for activation (ロールのアクティブ化に多要素認証が要求されていません)** |Medium |MFA が有効化されていないロールが設定に存在します。 |最も高い特権を持つロールでは MFA が必須とされていますが、すべてのロールのアクティブ化に対して MFA を有効化することを強くお勧めします。 |
 | **ユーザーが特権ロールを使用していません** |低 |最近ロールをアクティブ化していない、資格のある管理者がいます。 |アクセス レビューを開始して、アクセスが不要なユーザーを確認してください。 |
 | **グローバル管理者が多すぎます** |低 |推奨されている数よりも多くのグローバル管理者がいます。 |グローバル管理者の数が多い場合、ユーザーに必要以上の権限が与えられている可能性があります。 低い権限のロールにユーザーを移動するか、一部のユーザーを永続的な割り当てではなくロールの候補にしてください。 |
 

@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory テナントの対話の特性 | Microsoft Docs"
-description: "テナントを完全に独立したリソースとして理解することによって Azure Active テナントを管理する"
+title: Azure Active Directory テナントの対話の特性 | Microsoft Docs
+description: テナントを完全に独立したリソースとして理解することによって Azure Active テナントを管理する
 services: active-tenant
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 2b862b75-14df-45f2-a8ab-2a3ff1e2eb08
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 2c00f382546a0e5f1e9da9dc90777dcf9622ec94
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 81edc75f84c1dcb4f7b94878c472569d392175b1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>複数の Azure Active Directory テナントが対話する方法を理解する
 

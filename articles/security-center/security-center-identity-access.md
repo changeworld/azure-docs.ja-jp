@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center での ID とアクセスの監視 | Microsoft Docs"
-description: "Azure Security Center の ID とアクセス機能を使用して、ユーザーのアクセス アクティビティと ID 関連の問題を監視する方法を説明します。"
+title: Azure Security Center での ID とアクセスの監視 | Microsoft Docs
+description: Azure Security Center の ID とアクセス機能を使用して、ユーザーのアクセス アクティビティと ID 関連の問題を監視する方法を説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: 842045fbcb5b4f661cc006a207f4087370a7b4ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ee263ef8fb0f20049215eda53e0d58a45342b7e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center"></a>Azure Security Center での ID とアクセスの監視
 この記事は、Azure Security Center を使用してユーザーの ID とアクセス アクティビティを監視する際に役立ちます。
@@ -52,7 +52,7 @@ ID およびアクセスに関連した現在のアクティビティを確認�
 
 4. このダッシュボードに表示される情報は、潜在的な疑わしいアクティビティを特定するのにすぐに役立ちます。 このダッシュボードは、3 つの主要な領域に分かれています。
 
-    a. **[ID ポスチャ]**。 このワークスペースで発生する ID 関連のアクティビティが示されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ID ポスチャ]**。 このワークスペースで発生する ID 関連のアクティビティが示されます。
 
     b. **[失敗したログオン]**。 失敗したログオン試行の主な原因をすばやく特定するのに役立ちます。 ログオンに最も多く失敗した上位 10 のアカウントの一覧が表示されます。
 

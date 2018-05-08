@@ -1,25 +1,23 @@
 ---
-title: "Azure Active Directory Premium へのサインアップ | Microsoft Docs"
-description: "Azure Active Directory Premium Edition にサインアップする方法について説明します。"
+title: Azure Active Directory Premium へのサインアップ | Microsoft Docs
+description: Azure Active Directory Premium Edition にサインアップする方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: 391764e5-c4eb-4ae6-b8a9-3d09f0de04a6
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.openlocfilehash: e7aa1757ec1720f15ac9d1f00129fd38f86f0668
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4048df1c5e536a4a33af39466e57b1b38c080c06
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>クイックスタート: Azure Active Directory Premium へのサインアップ
 Azure Active Directory (Azure AD) Premium を使用するためには、ライセンスを購入のうえご利用の Azure サブスクリプションに関連付けてください。 新しい Azure サブスクリプションを作成する場合は、以降のセクションの説明に従ってライセンス プランと Azure AD サービス アクセスをアクティブ化する必要もあります。 
@@ -92,7 +90,7 @@ Microsoft から購入した初めての Azure AD ライセンス プランで�
 
 アクティブ化にかかる時間はほんの数分であり、その後、Azure AD を管理するためのアクセス権が付与されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、Azure AD Premium にサインアップして、Azure Active Directory アクセスをアクティブ化する方法について説明しました。 
 
 既に Azure サブスクリプションをお持ちの場合は、次のリンクを使って Azure Portal から試用版を試すか、Azure AD Premium ライセンスをご購入いただけます。

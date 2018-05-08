@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub デバイス ツインの使用 (.NET/.NET) | Microsoft Docs"
-description: "Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、タグを追加し、IoT Hub クエリを実行するサービス アプリを実装します。"
+title: Azure IoT Hub デバイス ツインの使用 (.NET/.NET) | Microsoft Docs
+description: Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、タグを追加し、IoT Hub クエリを実行するサービス アプリを実装します。
 services: iot-hub
 documentationcenter: node
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f7e23b6e-bfde-4fba-a6ec-dbb0f0e005f4
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 6073d594117e69676b753a1e3af25fffa3583a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b337e463ac4aefd7e4644af4c2cdcad4f3c5300a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-device-twins-netnet"></a>デバイス ツインの概要 (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -37,15 +37,13 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
-代わりにプログラムを使用してデバイス ID を作成する場合は、[.NET を使用したシミュレーション対象デバイスの IoT hub への接続][lnk-device-identity-csharp]に関する記事の対応するセクションをご覧ください。
-
-## <a name="create-the-service-app"></a>サービス アプリケーションを作成する
+## <a name="create-the-service-app"></a>サービス アプリを作成する
 このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する .NET コンソール アプリを (C# を使用) 作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT Hub に格納されているデバイス ツインに対してクエリを実行します。
 
 1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **AddTagsAndQuery** という名前を付けます。
@@ -92,7 +90,7 @@ ms.lasthandoff: 10/11/2017
     更新後、2 つのクエリを実行します。1 番目のクエリでは、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 番目のクエリでは携帯ネットワーク経由で接続しているデバイスのみを選択します。
    
     前のコードでは、**query** オブジェクトの作成時に返されるドキュメントの最大数を指定します。 **query** オブジェクトには、**GetNextAsTwinAsync** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **HasMoreResults** のブール型プロパティが含まれます。 **GetNextAsJson** というメソッドは、集計クエリの結果など、デバイス ツインではない結果に使用できます。
-1. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         AddTagsAndQuery().Wait();
@@ -172,7 +170,7 @@ ms.lasthandoff: 10/11/2017
 
    上記のコードは、**myDeviceId**の報告対象プロパティを接続情報で更新します。
 
-1. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
    
        try
        {
@@ -197,7 +195,7 @@ ms.lasthandoff: 10/11/2017
    
     ![デバイスの接続性が正常に報告される][img-tagappsuccess]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリからデバイスのメタデータをタグとして追加し、シミュレート対象デバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
 
 詳細については、次のリソースをご覧ください。

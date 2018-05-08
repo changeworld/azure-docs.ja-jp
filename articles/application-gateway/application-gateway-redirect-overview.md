@@ -4,7 +4,7 @@ description: Azure Application Gateway のリダイレクト機能について�
 services: application-gateway
 documentationcenter: na
 author: amsriva
-manager: timlt
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6352873ea055965b433fbf3e6e46162890e5fec
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 

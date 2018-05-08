@@ -1,26 +1,24 @@
 ---
-title: "Azure Active Directory でのグループへのライセンス割り当て | Microsoft Docs"
-description: "Azure Active Directory のグループへのライセンスによってユーザーにライセンスを割り当てる方法"
+title: Azure Active Directory でのグループへのライセンス割り当て | Microsoft Docs
+description: Azure Active Directory のグループへのライセンスによってユーザーにライセンスを割り当てる方法
 services: active-directory
-keywords: "Azure AD のライセンス"
-documentationcenter: 
+keywords: Azure AD のライセンス
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f24daaf5690eb1d9a0ab3b27a3626d03e6021d99
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 091750d7cadd460ac46d3293951bf4423383c3c5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -29,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 この例では、テナントには**人事部**というセキュリティ グループが含まれています。 このグループには、人事部のすべてのメンバーが含まれます (約 1,000 人)。 Office 365 Enterprise E3 ライセンスを部署全体に割り当てる必要があります。 製品に含まれている Yammer Enterprise サービスは、部署で使用開始の準備が整うまで、一時的に無効する必要があります。 同じユーザー グループに、Enterprise Mobility + Security ライセンスをデプロイする必要もあります。
 
 > [!NOTE]
-> 一部の Microsoft サービスは、すべての場所で利用できないことがあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの [利用場所] プロパティを指定しておく必要があります。
+> Microsoft サービスの中には、すべての場所では利用できないものもあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの [利用場所] プロパティを指定しておく必要があります。
 
 > グループ ライセンスの割り当ての際、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。 ユーザーが複数の場所にいる場合は、Azure AD でのユーザー作成フローの一環として利用場所を常に設定することをお勧めします (AAD Connect 構成など)。これにより、ライセンス割り当ての結果が常に正しいことが保証され、ユーザーは許可されていない場所でサービスを受けられなくなります。
 

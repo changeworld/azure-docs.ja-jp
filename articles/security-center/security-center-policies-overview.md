@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center セキュリティ ポリシーの紹介 | Microsoft Docs"
-description: "Azure Security Center セキュリティ ポリシーの主な機能について説明します。"
+title: Azure Security Center セキュリティ ポリシーの紹介 | Microsoft Docs
+description: Azure Security Center セキュリティ ポリシーの主な機能について説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 7a4d056fa71f211dea5e7be649c39034eabc9395
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f552164edc22b450c4ace57cce5c051d1c93e780
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-policies-overview"></a>セキュリティ ポリシーの概要
 この記事では、Security Center のセキュリティ ポリシーの概要を示します。
@@ -41,7 +41,7 @@ Security Center ではロールベースのアクセス制御 (RBAC) が使用�
 - **セキュリティ管理者**: *セキュリティ閲覧者*と同じ閲覧権限を持ちますが、セキュリティ ポリシーの更新と推奨事項とアラートの解除を実行することもできます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure Security Center のセキュリティ ポリシーについて説明しました。 Azure Security Center の詳細については、次の記事をご覧ください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md): Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。

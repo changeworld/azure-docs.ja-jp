@@ -1,9 +1,9 @@
 ---
-title: "Azure Machine Learning 用のデータの整理と準備 | Microsoft Docs"
-description: "データの前処理とクリーンアップを行って機械学習の準備を整えます。"
+title: Azure Machine Learning 用のデータの整理と準備 | Microsoft Docs
+description: データの前処理とクリーンアップを行って機械学習の準備を整えます。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7f0c1f0f549e746cc99db3b47f6c90bb51145d5d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>機械学習を強化するためのデータを準備するタスク
 データの前処理とクリーニングは、通常は、機械学習でデータセットを効果的に使用する前に行う必要がある重要なタスクです。 未加工のデータは、多くの場合、ノイズが多く、信頼性が低く、値が欠落している可能性もあります。 このようなデータを使用してモデリングを行うと、誤解を招く結果が生成されることがあります。 これらのタスクは、Team Data Science Process (TDSP) の一部です。通常、必要な前処理の検出と計画に使用されるデータセットの初期の探察の後に行われます。 TDSP プロセスの詳細については、「[Team Data Science Process](overview.md)」の手順を参照してください。

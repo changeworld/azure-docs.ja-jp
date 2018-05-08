@@ -1,19 +1,19 @@
 ---
-title: "Azure Compute - Linux Diagnostic Extension |Microsoft ドキュメント"
-description: "Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。"
+title: Azure Compute - Linux Diagnostic Extension |Microsoft ドキュメント
+description: Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
 services: virtual-machines-linux
-author: jasonzio
-manager: anandram
+author: abhijeetgaiha
+manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
-ms.author: jasonzio
-ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: agaiha
+ms.openlocfilehash: 84be206ef02cca9cc321e9764c016ca79816edf5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -107,8 +107,8 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 推奨事項:
 
 * 自動マイナー バージョン アップグレードを有効にして、拡張機能をインストールします。
-  * Azure XPLAT CLI または Powershell を使用して拡張機能をインストールする場合は、クラシック デプロイメント モデルの VM では、バージョンを「3. *」に指定します。
-  * Azure Resource Manager デプロイメント モデルの VM では、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を含めます。
+  * Azure XPLAT CLI または Powershell を使用して拡張機能をインストールする場合は、クラシック デプロイ モデルの VM では、バージョンを「3. *」に指定します。
+  * Azure Resource Manager デプロイ モデルの VM では、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を含めます。
 * LAD 3.0 では、新規/別のストレージ アカウントを使用します。 LAD 2.3 と LAD 3.0 の間には小さな非互換性がいくつかあり、アカウントの共有には手間がかかります。
   * LAD 3.0 では、syslog イベントを別の名前のテーブルに格納します。
   * LAD 3.0 では、`builtin` メトリックの counterSpecifier 文字列が異なります。
@@ -529,7 +529,7 @@ BytesPerSecond | 1 秒あたりの読み取りまたは書き込みバイト数
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
 ```
 
-このコマンドは、Azure CLI の Azure Resource Management モード (arm) を使用していることを前提としています。 クラシック デプロイメント モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](https://docs.microsoft.com/azure/xplat-cli-connect)をご覧ください。
+このコマンドは、Azure CLI の Azure Resource Management モード (arm) を使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](https://docs.microsoft.com/azure/xplat-cli-connect)をご覧ください。
 
 ## <a name="an-example-lad-30-configuration"></a>LAD 3.0 の構成例
 

@@ -3,8 +3,8 @@ title: Azure Load Balancer のトラブルシューティング | Microsoft Docs
 description: Azure Load Balancer に関する既知の問題のトラブルシューティング
 services: load-balancer
 documentationcenter: na
-author: RamanDhillon
-manager: timlt
+author: chadmath
+manager: cshepard
 editor: ''
 ms.assetid: ''
 ms.service: load-balancer
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: genli
+ms.openlocfilehash: 294bb6dd780d1df642d6e793b29267da1e8b8336
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 

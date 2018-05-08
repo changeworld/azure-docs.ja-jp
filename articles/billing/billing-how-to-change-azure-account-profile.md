@@ -1,26 +1,26 @@
 ---
-title: "Azure アカウントのプロファイル情報を変更する | Microsoft Docs"
-description: "Azure アカウントのプロファイルを変更する方法を説明し、一般的な質問 (Azure アカウント センターで国を変更できない理由など) に回答します"
-services: 
-documentationcenter: 
+title: Azure アカウントのプロファイル情報を変更する | Microsoft Docs
+description: Azure アカウントのプロファイルを変更する方法を説明し、一般的な質問 (Azure アカウント センターで国を変更できない理由など) に回答します
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 9d4ef5d9-11fc-4684-ace6-467f4ce26ba8
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22d64ba9c9bdceda108b1160aef32ff3d38e4b03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ec0caccafd7ed6eaf91be153014d2e3aaf5a30b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する
 

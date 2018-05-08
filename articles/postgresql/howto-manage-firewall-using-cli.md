@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理"
-description: "この記事では、Azure CLI コマンド ラインを使って Azure Database for PostgreSQL ファイアウォール規則を作成し、管理する方法について説明します。"
+title: Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
+description: この記事では、Azure CLI コマンド ラインを使って Azure Database for PostgreSQL ファイアウォール規則を作成し、管理する方法について説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 1d72761f3c80fbf3068492b6843349fc9d7accfd
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 05/4/2018
+ms.openlocfilehash: ba5533184331b3692882b224b77ad1f38e970661
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for PostgreSQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for PostgreSQL ファイアウォール規則の概要については、「[Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)」をご覧ください。
@@ -49,7 +49,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ```
 Azure IP アドレスからの Azure Database for PostgreSQL サーバーへの接続を許可するには、次の例のように、開始 IP と終了 IP に IP アドレス 0.0.0.0 を指定します。
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver--name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 > [!IMPORTANT]

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 7a7529f9a0ebe43c9fd6e473baff6f7a3b61e5e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="risk-assessment-ra"></a>リスク評価 (RA)
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客は、顧客がデプロイしたリソースと含まれる情報を分類する責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-ra-2b"></a>NIST 800-53 コントロール RA-2.b
@@ -78,7 +78,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客はセキュリティ分類の決定事項が確認され、承認されていることを確認する責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-ra-3a"></a>NIST 800-53 コントロール RA-3.a
@@ -92,7 +92,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客は、リスク評価を実施する責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-ra-3b"></a>NIST 800-53 コントロール RA-3.b
@@ -106,7 +106,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客は、リスク評価を実施する責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-ra-3c"></a>NIST 800-53 コントロール RA-3.c
@@ -176,7 +176,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントは Security and Audit ソリューションをデプロイします。 ソリューション内で、更新の評価とベースライン評価の 2 つのセキュリティ ドメインを使用できます。 識別された問題には、重大度評価が割り当てられます。 ベースライン評価規則には、Common Configuration Enumeration (CCE) ID が与えられます。  |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-ra-5c"></a>NIST 800-53 コントロール RA-5.c
@@ -190,7 +190,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客は、スキャン レポートとセキュリティ制御評価の結果を分析する責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ## <a name="nist-800-53-control-ra-5d"></a>NIST 800-53 コントロール RA-5.d
@@ -218,7 +218,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客は、脆弱性スキャン プロセスとセキュリティ制御評価から取得した情報を共有して、顧客がデプロイしたリソース全体の脆弱性の解消に役立てる責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-ra-5-1"></a>NIST 800-53 コントロール RA-5 (1)
@@ -232,7 +232,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントは Security and Audit ソリューションをデプロイします。 ソリューション内で、更新の評価とベースライン評価の 2 つのセキュリティ ドメインを使用できます。 これらのソリューションでの評価基準は自動的に更新されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-ra-5-2"></a>NIST 800-53 コントロール RA-5 (2)
@@ -274,7 +274,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | 顧客は、検出可能な情報に対応して、是正措置を実行する責任があります。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-ra-5-5"></a>NIST 800-53 コントロール RA-5 (5)
@@ -288,7 +288,7 @@ ms.lasthandoff: 04/16/2018
 |||
 |---|---|
 | **お客様** | このブループリントでデプロイされた仮想マシンに構成されている Microsoft Monitoring Agent サービスは、評価アクティビティに必要な権限を持つ自動サービスとして構成されます。 |
-| **プロバイダー (Microsoft Azure)** | 適用されません |
+| **プロバイダー (Microsoft Azure)** | 適用外 |
 
 
  ### <a name="nist-800-53-control-ra-5-6"></a>NIST 800-53 コントロール RA-5 (6)

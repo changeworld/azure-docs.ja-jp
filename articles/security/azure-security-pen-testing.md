@@ -3,7 +3,7 @@ title: 侵入テスト | Microsoft Docs
 description: この記事では、侵入テスト プロセスの概要と、Azure インフラストラクチャで実行されているアプリに対して侵入テストを行う方法について提供します。
 services: security
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
 editor: TomSh
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 1b7b6604de80beadf15dabe0d2da1d7a2e5fabd6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27737c2b8b36772fc48db7a9cf97cb9a69c44cfc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="pen-testing"></a>侵入テスト
 アプリケーションのテストとデプロイに Azure を使用するメリットの 1 つが、環境をすばやく作成できることです。  オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。

@@ -1,9 +1,9 @@
 ---
-title: "Azure の SQL Server Virtual Machine に格納されているデータを探索する | Microsoft Docs"
-description: "Azure の SQL Server VM に格納されているデータを探索する方法について説明します。"
+title: Azure の SQL Server Virtual Machine に格納されているデータを探索する | Microsoft Docs
+description: Azure の SQL Server VM に格納されているデータを探索する方法について説明します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ccbb3085-af9e-4ec2-9df2-15dcab261d05
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: d5079fc9d9a0ccd89664407fcdba9a7958e1407d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: 68c8386917599afcf2819ff97453de77dea90215
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure の SQL Server Virtual Machine に格納されているデータを探索する
 このドキュメントでは、Azure の SQL Server VM に格納されているデータを探索する方法について説明します。 これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。

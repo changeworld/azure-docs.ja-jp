@@ -1,30 +1,28 @@
 ---
-title: "Azure Active Directory でグループを管理するための PowerShell の例 | Microsoft Docs"
-description: "このページでは、Azure Active Directory でグループを管理するための PowerShell の例を示します。"
-keywords: "Azure AD、Azure Active Directory、PowerShell、グループ、グループ管理"
+title: Azure Active Directory でグループを管理するための PowerShell の例 | Microsoft Docs
+description: このページでは、Azure Active Directory でグループを管理するための PowerShell の例を示します。
+keywords: Azure AD、Azure Active Directory、PowerShell、グループ、グループ管理
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 7a5023dc-2727-4c25-8254-b531fc3244ac
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: 3f57e1a0ded679325c8c739e73cc79f69c037191
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 312efd6233546ae32e498907e04fbf8aea73f7b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 > [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-groups-create-azure-portal.md)
+> * [Azure Portal](active-directory-groups-create-azure-portal.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
 >
@@ -263,7 +261,7 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 * ssl-admin 
 * webmaster 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)

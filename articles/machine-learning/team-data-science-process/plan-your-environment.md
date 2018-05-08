@@ -1,9 +1,9 @@
 ---
-title: "シナリオを特定し分析プロセスを計画する - Azure | Microsoft Docs"
-description: "一連の重要な確認事項を考慮することにより、高度な分析を計画します。"
+title: シナリオを特定し分析プロセスを計画する - Azure | Microsoft Docs
+description: 一連の重要な確認事項を考慮することにより、高度な分析を計画します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: d2b982669f126695e3e5baefce24853269947536
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。 予測分析の大まかな手順は、「 [Team Data Science Process (TDSP) について](overview.md)」に記載されています。 それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。 シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
@@ -28,13 +28,13 @@ ms.lasthandoff: 11/13/2017
 ## <a name="logistic-questions-data-locations-and-movement"></a>ロジスティックの確認事項: データの場所と移動
 ロジスティックの確認事項は、**データ ソース**の場所、Azure 内の**宛先**、データ移動の要件 (スケジュール、量、関与するリソースなど) に関連しています。 データの移動は、分析プロセス中に何度も必要になる場合があります。 一般的なシナリオでは、ローカル データを Azure 上のなんらかの形式のストレージに移動し、次に Machine Learning Studio に移動します。
 
-1. **データ ソースは何ですか。** それはローカルとクラウドのどちらにありますか。 次に例を示します。
+1. **データ ソースは何ですか。** それはローカルとクラウドのどちらにありますか。 例: 
    
    * HTTP アドレスに公開されていて、入手できるデータ。
    * ローカル/ネットワーク上のファイル位置に存在するデータ。
    * SQL Server データベースに格納されているデータ。
    * Azure ストレージ コンテナーに格納されているデータ。
-2. **Azure の送信先は何ですか。** 処理またはモデリングをするためには、どこである必要があるでしょうか。 次に例を示します。
+2. **Azure の送信先は何ですか。** 処理またはモデリングをするためには、どこである必要があるでしょうか。 例: 
    
    * Azure Blob Storage
    * SQL Azure データベース

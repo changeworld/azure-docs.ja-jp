@@ -1,21 +1,21 @@
 ---
-title: "Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。"
+title: Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 9967813b193159b68aa0f008dae4440aa6e533dc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
@@ -32,7 +32,7 @@ Azure Portal を使用して、[Web アプリケーション ファイアウォ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -78,7 +78,7 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]**をクリックします。
+1. **[新規]** をクリックします。
 2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 

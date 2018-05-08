@@ -1,25 +1,23 @@
 ---
-title: "Azure Active Directory でのカスタム ドメイン名の管理 | Microsoft Docs"
-description: "Azure Active Directory でのドメイン名の管理の概念と方法"
+title: Azure Active Directory でのカスタム ドメイン名の管理 | Microsoft Docs
+description: Azure Active Directory でのドメイン名の管理の概念と方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 5063cd0a-dba2-4ba9-aa65-b8117490d73a
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 64c1be4358305a736ac1dd8a1b7194c80100d256
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 81c2371d5dbb17399071c80ff4e8b81813ed014c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 ドメイン名は、多くのディレクトリ リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。 Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。 Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
@@ -28,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 ディレクトリを作成すると、"contoso.onmicrosoft.com" などの初期ドメイン名がプライマリ ドメイン名に設定されます。 プライマリ ドメインは、新しいユーザーを作成したときにそのユーザーの既定のドメイン名になります。 プライマリ ドメイン名の設定によって、管理者がポータルでユーザーを新規作成するプロセスが効率化されます。 プライマリ ドメイン名を変更するには、次の手順に従います。
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**を選択します。
+2. **[Azure Active Directory]** を選択します。
 3. **[カスタム ドメイン名]** を選択します。
      
    ![ユーザー管理を開く](./media/active-directory-domains-manage-azure-portal/add-custom-domain.png)
@@ -65,6 +63,6 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 * [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 * [Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [カスタム ドメイン名を追加する](add-custom-domain.md)
 

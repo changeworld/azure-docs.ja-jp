@@ -1,27 +1,27 @@
 ---
-title: "Azure サブスクリプションの課金アラートまたはクレジット アラートの設定 | Microsoft Docs"
-description: "予想外の課金を回避するために Azure の請求に関する通知を設定する方法について説明します。"
-keywords: "クレジット アラート,課金アラート"
-services: 
-documentationcenter: 
+title: Azure サブスクリプションの課金アラートまたはクレジット アラートの設定 | Microsoft Docs
+description: 予想外の課金を回避するために Azure の請求に関する通知を設定する方法について説明します。
+keywords: クレジット アラート,課金アラート
+services: ''
+documentationcenter: ''
 author: vikdesai
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: vikdesai
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fc0cb2b036e835450ee0fc404cce12439fabc77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定
 Azure サブスクリプションのアカウント管理者である場合は、Azure 課金アラート サービスを使用して、Azure アカウントの課金アクティビティを監視、管理するのに役立つ、カスタマイズされた課金アラートを作成できます。
@@ -31,7 +31,7 @@ Azure サブスクリプションのアカウント管理者である場合は�
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>アラートのしきい値と電子メールの受信者を設定する
 1. [プレビュー機能のページ](https://account.windowsazure.com/PreviewFeatures) にアクセスして、**課金アラート サービス**を有効にします。
 
-1. サブスクリプションで課金サービスが有効になったという確認メールを受信したら、アカウント ポータルの [[サブスクリプション] ページ](https://account.windowsazure.com/Subscriptions) を開きます。 監視するサブスクリプションをクリックし、 **[アラート]**をクリックします。
+1. サブスクリプションで課金サービスが有効になったという確認メールを受信したら、アカウント ポータルの [[サブスクリプション] ページ](https://account.windowsazure.com/Subscriptions) を開きます。 監視するサブスクリプションをクリックし、 **[アラート]** をクリックします。
 
     ![アラートが強調表示されている、Azure アカウント センターのサブスクリプション ビューのスクリーン ショット][Image1]
 

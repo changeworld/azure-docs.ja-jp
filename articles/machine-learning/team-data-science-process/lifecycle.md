@@ -3,7 +3,7 @@ title: Team Data Science Process ライフサイクル - Azure | Microsoft Docs
 description: データ サイエンス プロジェクトを実行するために必要な手順について説明します
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: b1f677bb-eef5-4acb-9b3b-8a5819fb0e78
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: a971e40bc4338f187991eeae991044248844d8b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 9471522bc1e26f7816807429e4f1d5aef446b670
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
 

@@ -1,10 +1,10 @@
 ---
-title: "Azure CLI 2.0 を使用した Azure DNS の DNS レコードの管理 | Microsoft Docs"
-description: "Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。 レコード セットとレコードを操作するための CLI 2.0 コマンドをすべて紹介します。"
+title: Azure CLI 2.0 を使用した Azure DNS の DNS レコードの管理 | Microsoft Docs
+description: Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。 レコード セットとレコードを操作するための CLI 2.0 コマンドをすべて紹介します。
 services: dns
 documentationcenter: na
 author: KumudD
-manager: carmonm
+manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: kumud
-ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS のレコードおよびレコード セットを管理する
 
@@ -292,7 +292,7 @@ az network dns record-set a delete --resource-group myresourcegroup --zone-name 
 
 削除操作の確認を求めるプロンプトが表示されます。 このプロンプトを抑制するには、`--yes` スイッチを使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure DNS におけるゾーンとレコード](dns-zones-records.md)について確認します。
 <br>

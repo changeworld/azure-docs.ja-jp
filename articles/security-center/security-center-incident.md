@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center でのセキュリティの警告の処理 | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center の機能を使用してセキュリティ インシデントを処理するために役立ちます。"
+title: Azure Security Center でのセキュリティの警告の処理 | Microsoft Docs
+description: このドキュメントは、Azure Security Center の機能を使用してセキュリティ インシデントを処理するために役立ちます。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: yurid
-ms.openlocfilehash: a302f8cb2555eef469a24da2523fdd9b97cc5730
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f87edc0717631775acec315dda61323b8fa5909
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの処理
 セキュリティ警告のトリアージと調査は、熟練のセキュリティ アナリストでさえ長時間を要することのある作業であり、多くのユーザーにとっては、どこから始めればよいのかもわかりません。 Security Center では、[分析](security-center-detection-capabilities.md)を利用して異なる[セキュリティ アラート](security-center-managing-and-responding-alerts.md)間の情報を結び付け、攻撃キャンペーンとそれに関連するすべてのアラートを単一のビューに表示します。これにより、攻撃者がどのような操作を実行し、どのリソースが影響を受けたのかを迅速に把握することができます。
@@ -37,7 +37,7 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 2. このタイルをクリックして展開します。セキュリティ インシデントが削除されている場合は、以下に示すようにセキュリティ アラート グラフの下に表示されます。
 
-    ![Security incident](./media/security-center-incident/security-center-incident-fig2.png)
+    ![セキュリティ インシデント](./media/security-center-incident/security-center-incident-fig2.png)
 
 3. セキュリティ インシデントの説明には、他の警告とは異なるアイコンが付いている点に注意してください。 このインシデントについての詳細を確認するには、このアイコンをクリックします。
 
@@ -45,7 +45,7 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 4. **インシデント**のブレードでは、このセキュリティ インシデントの詳細情報を確認できます。インシデントの詳しい説明、重大度 (この場合は "高")、現在の状態 (この場合は依然として "*アクティブ*" (**[セキュリティ アラート]** ブレードのインシデントを右クリックして実行できるアクションをユーザーがまだ実行していないことを示します))、攻撃を受けたリソース (この場合は *VM1*)、インシデントの修復手順が表示されるほか、このインシデントに含まれていたアラートが下部のウィンドウに表示されます。 それぞれの警告の詳細を確認する場合、その警告をクリックするだけで次のように別のブレードが開きます。
 
-    ![Security incident](./media/security-center-incident/security-center-incident-fig4.png)
+    ![セキュリティ インシデント](./media/security-center-incident/security-center-incident-fig4.png)
 
 このブレードの情報は、警告によって異なります。 これらの警告を管理する方法の詳細については、「 [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」を参照してください。 この機能に関する重要な考慮事項を以下に示します。
 

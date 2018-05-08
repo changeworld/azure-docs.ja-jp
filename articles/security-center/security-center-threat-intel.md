@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center の脅威インテリジェンス | Microsoft Docs"
-description: "Azure Security Center の脅威インテリジェンス機能を使用して、VM とコンピューターの潜在的な脅威を特定する方法について説明します。"
+title: Azure Security Center の脅威インテリジェンス | Microsoft Docs
+description: Azure Security Center の脅威インテリジェンス機能を使用して、VM とコンピューターの潜在的な脅威を特定する方法について説明します。
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: yurid
-ms.openlocfilehash: b5bdeb1c70893c2477413df02c7b1a4a07999e93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9654c25bf6b51d48dc195d6a536b61312fdcbeff
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Azure Security Center の脅威インテリジェンス
 この記事は、Azure Security Center の脅威インテリジェンスを使用して、セキュリティ関連の問題に対処する際に役立ちます。
@@ -62,7 +62,7 @@ Security Center では、この脅威インテリジェンスを構築するた�
 
 4. このダッシュボードは、4 つのタイルに分かれています。
 
-    a.  **[脅威の種類]**。 選択したワークスペースで検出された脅威の種類が示されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[脅威の種類]**。 選択したワークスペースで検出された脅威の種類が示されます。
 
     b.  **[発信元の国]**。 ソースの場所に基づいてトラフィックの量を集計します。
 

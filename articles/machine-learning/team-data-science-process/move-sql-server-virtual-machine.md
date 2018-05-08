@@ -1,9 +1,9 @@
 ---
-title: "Azure 仮想マシン上の SQL Server にデータを移動する| Microsoft Docs"
-description: "フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動します。"
+title: Azure 仮想マシン上の SQL Server にデータを移動する| Microsoft Docs
+description: フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c9ef1d3-4f5c-4b1f-bf06-223646c8af06
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: b8c936163e8e0880d3518f44dba107a0393fd11f
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 56a03347556f9ae3452548e85ce5d46f3961ed93
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 このトピックでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。 このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。

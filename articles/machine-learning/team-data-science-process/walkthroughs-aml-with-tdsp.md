@@ -3,7 +3,7 @@ title: Azure 上の PySpark と Scala を使用した HDInsight Spark のチュ�
 description: Azure HDInsight Spark で PySpark と Scala を使用して予測分析を行う Team Data Science Process の例を紹介します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 30204d1859cd72e5fb821d2f027b82c4eacaa5fc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: deguhath
+ms.openlocfilehash: a56968a1a53037c4f327dc8aeae690100ce6dfbf
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の Team Data Science体系化プロジェクト
 

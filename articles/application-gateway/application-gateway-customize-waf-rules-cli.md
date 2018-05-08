@@ -1,24 +1,24 @@
 ---
-title: "Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - Azure CLI 2.0 | Microsoft Docs"
-description: "この記事では、Azure CLI 2.0 を使用して Application Gateway で Web アプリケーション ファイアウォール ルールをカスタマイズする方法について説明します。"
+title: Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - Azure CLI 2.0 | Microsoft Docs
+description: この記事では、Azure CLI 2.0 を使用して Application Gateway で Web アプリケーション ファイアウォール ルールをカスタマイズする方法について説明します。
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
-ms.author: davidmu
-ms.openlocfilehash: 3051f71f269e409b76e6a19fdcd2feae2a04b8fa
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: b0bd79bb7ce584a9abaffbb6c30d6fbfe64f87c2
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>Azure CLI 2.0 を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
@@ -133,7 +133,7 @@ az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 無効にするルールを構成したら、WAF ログを表示する方法を学習できます。 詳細については、[Application Gateway の診断](application-gateway-diagnostics.md#diagnostic-logging)に関するトピックを参照してください。
 

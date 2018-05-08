@@ -1,25 +1,23 @@
 ---
-title: "アクセス レビューを開始する方法 | Microsoft Docs"
-description: "Azure Privileged Identity Management アプリケーションで特権 ID のアクセス レビューを作成する方法について説明します。"
+title: アクセス レビューを開始する方法 | Microsoft Docs
+description: Azure Privileged Identity Management アプリケーションで特権 ID のアクセス レビューを作成する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 3e52b731-55f4-4c8a-ba87-9fd34033f52f
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 05/04/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: f57a32ca1914d18540289ebb05421a7ae9618094
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1923890e01b351f884837e14b5e2ca736ec687ce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを開始する方法
 ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者は、ユーザーに与えられているロールを定期的に確認する必要があります。 このドキュメントでは、Azure AD Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
@@ -68,7 +66,7 @@ PIM アプリケーションのメイン ページには、アクセス レビ�
    * **[Members review themselves (メンバーによる自身のレビュー)]**: ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
 
 ### <a name="start-the-review"></a>レビューを開始する
-最後に、アクセスを承認する場合にユーザーが理由を提供することを要求するオプションがあります。 必要に応じて、レビューの説明を追加し、 **[開始]**を選択します。
+最後に、アクセスを承認する場合にユーザーが理由を提供することを要求するオプションがあります。 必要に応じて、レビューの説明を追加し、 **[開始]** を選択します。
 
 待機しているアクセス レビューがあることをユーザーに通知し、 [アクセス レビューを実行する方法](active-directory-privileged-identity-management-how-to-perform-security-review.md)を示します。
 

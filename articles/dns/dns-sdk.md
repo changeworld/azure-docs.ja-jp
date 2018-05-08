@@ -3,8 +3,8 @@ title: Azure DNS での .NET SDK を使用した DNS ゾーンとレコード �
 description: Azure DNS で、.NET SDK を使用して DNS ゾーンとレコード セットを作成する方法について説明します。
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: carmonm
+author: KumudD
+manager: jeconnoc
 ms.assetid: eed99b87-f4d4-4fbf-a926-263f7e30b884
 ms.service: dns
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
-ms.author: jonatul
-ms.openlocfilehash: f6f10649670dac523289724603e2aecaf17fa67d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: kumud
+ms.openlocfilehash: 645bf755cc3cb4036104145765196fc97039c551
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
 

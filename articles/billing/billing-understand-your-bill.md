@@ -10,16 +10,16 @@ tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: f3e0e3eeab88ad8ad0c4a21eb69a6340dbbe0441
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -48,7 +48,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
  | 請求書 (PDF) | 使用状況の詳細 (CSV)|
  | --- | --- |
 |請求サイクル | 請求期間 |
- |名前 |測定カテゴリ |
+ |Name |測定カテゴリ |
  |type |測定サブカテゴリ |
  |リソース |測定名 |
  |リージョン |測定リージョン |
@@ -102,7 +102,7 @@ Azure Portal で料金を確認することもできます。Azure Portal は、
 [サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)して、支払い状況の確認に関するサポートを要求してください。 
 
 ## <a name="tips-for-cost-management"></a>コスト管理に関するヒント
-- [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを推定し、[各サービスの詳細な料金情報](https://azure.microsoft.com/en-us/pricing/)を取得します。
+- [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを推定し、[各サービスの詳細な料金情報](https://azure.microsoft.com/pricing/)を取得します。
 - [課金アラートを設定](billing-set-up-alerts.md)します。
 - [Azure ポータルで使用状況とコストを定期的に確認します](billing-getting-started.md#costs)。
 

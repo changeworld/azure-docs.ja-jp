@@ -1,8 +1,8 @@
 ---
-title: "Azure Media Clipper への資産の読み込み | Microsoft Docs"
-description: "Azure Media Clipper へ資産を読み込む手順"
+title: Azure Media Clipper への資産の読み込み | Microsoft Docs
+description: Azure Media Clipper へ資産を読み込む手順
 services: media-services
-keywords: "クリップ;サブクリップ;エンコード;メディア"
+keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 6a479218ff8bd5addf4273b23c06380859e0ea08
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Azure Media Clipper への資産の読み込み
 資産は、次の 2 つの方法で Azure Media Clipper に読み込むことができます。

@@ -1,25 +1,23 @@
 ---
-title: "ロールをアクティブ化または非アクティブ化する方法 | Microsoft Docs"
-description: "Azure Privileged Identity Management アプリケーションで特権 ID のロールをアクティブ化する方法について説明します。"
+title: ロールをアクティブ化または非アクティブ化する方法 | Microsoft Docs
+description: Azure Privileged Identity Management アプリケーションで特権 ID のロールをアクティブ化する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 1ce9e2e7-452b-4f66-9588-0d9cd2539e45
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/14/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: a524e1f9d739b42cd63de82291d98ff8c59f2f5f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c12ba7ed076d531c75b5f9a473d124b94a6f0362
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法
 Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
@@ -33,7 +31,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Portal の右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
-3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使って **Azure AD Privileged Identity Management** を検索します。
+3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使用して **Azure AD Privileged Identity Management** を検索します。
 4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
 
 ## <a name="activate-a-role"></a>ロールのアクティブ化
@@ -42,12 +40,12 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 1. [Azure Portal](https://portal.azure.com/) にサインインし、[Azure AD Privileged Identity Management ] タイルをクリックします。
 2. **[自分のロール]** を選択します。 割り当てられた資格のあるロールの一覧がページの上部にグループで表示されます。
 3. アクティブ化するロールを選択します。
-4. **[アクティブ化]**を選択します。 **[ロール アクティブ化要求]** ブレードが表示されます。
+4. **[アクティブ化]** を選択します。 **[ロール アクティブ化要求]** ブレードが表示されます。
 5. 一部のロールをアクティブ化するには、多要素認証 (MFA) が必要になります。 認証は、セッションごとに 1 回だけ行う必要があります。
    
     ![ロール アクティブ化前の MFA の確認 - スクリーンショット][2]
 6. テキスト フィールドにアクティブ化要求の理由を入力します。  一部のロールでは、トラブル チケット番号を入力するように求められます。
-7. **[OK]**を選択します。  ロールで承認が要求されない場合、アクティブ化されています。アクティブなロールの一覧にロールが表示されます (資格のあるロールの割り当ての一覧のすぐ下)。 ロールのアクティブ化に[承認が必要](./privileged-identity-management/azure-ad-pim-approval-workflow.md)な場合、ブラウザーの右隅にトースト通知が一時的に表示され、承認待ちになっていることが通知されます。
+7. **[OK]** を選択します。  ロールで承認が要求されない場合、アクティブ化されています。アクティブなロールの一覧にロールが表示されます (資格のあるロールの割り当ての一覧のすぐ下)。 ロールのアクティブ化に[承認が必要](./privileged-identity-management/azure-ad-pim-approval-workflow.md)な場合、ブラウザーの右隅にトースト通知が一時的に表示され、承認待ちになっていることが通知されます。
 
     ![要求保留の通知 - スクリーンショット][3]
 

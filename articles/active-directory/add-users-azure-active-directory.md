@@ -1,32 +1,30 @@
 ---
-title: "Azure Active Directory でのユーザーの追加または削除 | Microsoft Docs"
-description: "Azure Active Directory で新しいユーザーを追加する方法または既存のユーザーを削除する方法について説明します。"
+title: Azure Active Directory でのユーザーの追加または削除 | Microsoft Docs
+description: Azure Active Directory で新しいユーザーを追加する方法または既存のユーザーを削除する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: f0f18f377f194e78c05e63e9b6cbc31c1b945335
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 3e8b7061e57c1baf222e5f565a5b7efc6b997507
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>クイック スタート: Azure Active Directory に新しいユーザーを追加する
 この記事では、組織のユーザーを組織の Azure Active Directory (Azure AD) テナントで削除または追加する場合に、Azure Portal を使用する方法や、オンプレミスの Windows Server AD ユーザー アカウントのデータを同期する方法を説明します。 
 
 ## <a name="add-cloud-based-users"></a>クラウドベースのユーザーを追加する
 1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
-2. **[Azure Active Directory]**を選択し、**[ユーザーとグループ]** を選択します。
+2. **[Azure Active Directory]** を選択し、**[ユーザーとグループ]** を選択します。
 3. **[ユーザーとグループ]** で、**[すべてのユーザー]** を選択し、**[新しいユーザー]** を選択します。
    ![[追加] コマンドの選択](./media/add-users-azure-active-directory/add-user.png)
 4. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "[ドメイン名].onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。

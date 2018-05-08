@@ -1,11 +1,11 @@
 ---
-title: "Python と Azure Cloud Services を使ってみる | Microsoft Docs"
-description: "Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
+title: Python と Azure Cloud Services を使ってみる | Microsoft Docs
+description: Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要
 services: cloud-services
 documentationcenter: python
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5489405d-6fa9-4b11-a161-609103cbdc18
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 030a09c05ac4b480c9326b8a9ebc585339f312b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6bd89c160387abbb2b0339a5a5f62d998c0c84e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -172,6 +172,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 このスクリプトは、Python をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 がインストールされ、それ以外の場合は Python 3.5 がインストールされます。
 
 ```powershell
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 $is_emulated = $env:EMULATED -eq "true"
 $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
@@ -328,7 +329,7 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 ### <a name="investigate-logs"></a>ログを調査する
 クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法の詳細については、次の PTVS 関連ドキュメントを参照してください。
 
 * [クラウド サービス プロジェクト][Cloud Service Projects]
