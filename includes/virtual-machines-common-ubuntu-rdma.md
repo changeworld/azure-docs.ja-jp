@@ -26,7 +26,7 @@
 4. Intel MPI ライブラリをインストールします。 Intel からライブラリを[購入してダウンロード](https://software.intel.com/intel-mpi-library/)するか、[無料評価版](https://registrationcenter.intel.com/en/forms/?productid=1740)をダウンロードします。
 
   ```bash
- wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
+ wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
  
  インストール手順については、[Intel MPI ライブラリのインストール ガイド](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)をご覧ください。
