@@ -208,7 +208,7 @@
         - name: Azure VM エージェント
           items:
             - name: 概要
-              href: agent-user-guide.md
+              href: ../extensions/agent-linux.md
             - name: エージェントの更新
               href: update-agent.md
         - name: Azure の計画メンテナンス
@@ -434,7 +434,7 @@
         - name: VMAccess 拡張機能
           href: using-vmaccess-extension.md
         - name: 拡張機能のインストールの制限
-          href: extensions-rmpolicy-howto-cli.md
+          href: ../extensions/extensions-rmpolicy-howto-cli.md
     - name: VM の移行
       items:
         - name: AWS とオンプレミスの VM を移行する

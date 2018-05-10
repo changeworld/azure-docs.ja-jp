@@ -206,7 +206,7 @@
         - name: テンプレートのダウンロード
           href: download-template.md
         - name: Azure VM エージェント
-          href: agent-user-guide.md
+          href: ../extensions/agent-windows.md
         - name: Azure の計画メンテナンス
           href: maintenance-notifications.md
         - name: 予測実行の軽減
@@ -369,7 +369,7 @@
         - name: Network Watcher Agent
           href: extensions-nwa.md
         - name: 拡張機能のインストールの制限
-          href: extensions-rmpolicy-howto-ps.md
+          href: ../extensions/extensions-rmpolicy-howto-ps.md
     - name: VM の移行
       items:
         - name: AWS とオンプレミスの VM を移行する

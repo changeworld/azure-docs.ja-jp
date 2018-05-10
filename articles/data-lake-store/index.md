@@ -1,22 +1,22 @@
 ---
-title: "Azure Data Lake Store のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。"
+title: Azure Data Lake Store のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。
 services: data-lake-store
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: data-lake-store
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 3c0327ebb4cb8d6ee66d019326ade4f4bcb258ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d738676a0a9b16c32646734168546992d8595912
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-lake-store-documentation"></a>Data Lake Store のドキュメント
 
@@ -194,8 +194,8 @@ ms.lasthandoff: 10/11/2017
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/overview/azure/data-lake-store">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.datalake.store">Java</a></p>
-                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.JS</a></p>
-                        <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html">Python (アカウント管理)</a></p>
+                        <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
+                        <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python">Python (アカウント管理)</a></p>
                         <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (ファイルシステム管理)</a></p>
                     </div>
                 </div>

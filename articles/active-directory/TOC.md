@@ -174,10 +174,6 @@
 #### [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### エージェント ベースの検出
-##### [Cloud App Discovery とは](active-directory-cloudappdiscovery-whatis.md)
-##### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-##### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
@@ -328,7 +324,7 @@
 #### [FAQ](active-directory-identity-protection-faqs.md)
 #### [用語集](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 ## [他のサービスを Azure AD と統合する]()
 ### [LinkedIn の統合を有効にする](linkedin-integration.md)
