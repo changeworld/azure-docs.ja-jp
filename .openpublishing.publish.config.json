@@ -162,6 +162,12 @@
       "url": "https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet",
       "branch": "GuidedSetup",
       "branch_mapping": {}
+      },
+    {
+      "path_to_root": "samples-cognitive-services-speech-sdk",
+      "url": "https://github.com/Azure-Samples/cognitive-services-speech-sdk",
+      "branch": "docs",
+"branch_mapping": {}
     }
   ],
   "branch_target_mapping": {
@@ -182,11 +188,10 @@
       "PDF"
     ]
   },
-  "need_generate_pdf_url_template": false,
+  "need_generate_pdf_url_template": true,
   "Targets": {
     "Pdf": {
       "template_folder": "_themes.pdf"
     }
-  },
-  "continue_with_document_error": true
+  }
 }
