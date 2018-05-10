@@ -2,20 +2,20 @@
 title: HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
 description: Azure PowerShell を使用して、HTTP から HTTPS にトラフィックがリダイレクトされるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
-ms.author: davidmu
-ms.openlocfilehash: d67ed204ee263c139b09232b63ad18a85af1e82e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: victorh
+ms.openlocfilehash: dedb9b8083f2e41de5709bc46a8cee3bdedb3f73
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Azure PowerShell を使用して HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -303,7 +303,7 @@ New-AzureRmVmss `
 ### <a name="install-iis"></a>IIS のインストール
 
 ```powershell
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
 Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `

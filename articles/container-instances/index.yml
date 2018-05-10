@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: 97ccab1070bbf045b6ca7f9659bbdd82265b7075
-  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.openlocfilehash: 29d6c0c23202dc0b980d5889a324a0c10944e314
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/28/2018
+  ms.lasthandoff: 05/07/2018
 abstract:
-  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。<p>完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/aks/">Azure Container Service (AKS) の ドキュメント</a>を参照してください。</p>
+  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。<p>完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/aks/">Azure Kubernetes Service (AKS) の ドキュメント</a>を参照してください。</p>
 sections:
 - title: 5 分間のクイック スタート
   items:

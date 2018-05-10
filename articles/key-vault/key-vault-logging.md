@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
@@ -235,32 +235,32 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | operationName | REST API コマンド |
 | --- | --- |
 | 認証 |Azure Active Directory エンドポイント経由 |
-| VaultGet |[キー コンテナーに関する情報を取得します](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
-| VaultPut |[キー コンテナーを作成または更新します](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
-| VaultDelete |[キー コンテナーを削除します](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |
+| VaultGet |[キー コンテナーに関する情報を取得します](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| VaultPut |[キー コンテナーを作成または更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| VaultDelete |[キー コンテナーを削除します](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | VaultPatch |[Key Vault を更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[リソース グループ内のすべてのキー コンテナーを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx) |
-| KeyCreate |[キーを作成します](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx) |
-| KeyGet |[キーに関する情報を取得します](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx) |
-| KeyImport |[コンテナーにキーをインポートします](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx) |
-| KeyBackup |[キーをバックアップします](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx) |
-| KeyDelete |[キーを削除します](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx) |
-| KeyRestore |[キーを復元します](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx) |
-| KeySign |[キーで署名します](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx) |
-| KeyVerify |[キーで確認します](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx) |
-| KeyWrap |[キーをラップします](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx) |
-| KeyUnwrap |[キーのラップを解除します](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx) |
-| KeyEncrypt |[キーで暗号化します](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
-| KeyDecrypt |[キーで復号化します](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
-| KeyUpdate |[キーを更新します](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[コンテナー内のキーを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[キーのバージョンを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
-| SecretSet |[シークレットを作成します](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
-| SecretGet |[シークレットを取得します](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
-| SecretUpdate |[シークレットを更新します](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
-| SecretDelete |[シークレットを削除します](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx) |
-| SecretList |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
-| SecretListVersions |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
+| VaultList |[リソース グループ内のすべてのキー コンテナーを一覧表示します](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| KeyCreate |[キーを作成します](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| KeyGet |[キーに関する情報を取得します](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| KeyImport |[コンテナーにキーをインポートします](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| KeyBackup |[キーをバックアップします](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
+| KeyDelete |[キーを削除します](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| KeyRestore |[キーを復元します](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| KeySign |[キーで署名します](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| KeyVerify |[キーで確認します](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| KeyWrap |[キーをラップします](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| KeyUnwrap |[キーのラップを解除します](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| KeyEncrypt |[キーで暗号化します](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| KeyDecrypt |[キーで復号化します](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| KeyUpdate |[キーを更新します](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| KeyList |[コンテナー内のキーを一覧表示します](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| KeyListVersions |[キーのバージョンを一覧表示します](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| SecretSet |[シークレットを作成します](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| SecretGet |[シークレットを取得します](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| SecretUpdate |[シークレットを更新します](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| SecretDelete |[シークレットを削除します](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| SecretList |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| SecretListVersions |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>Log Analytics を使用する
 

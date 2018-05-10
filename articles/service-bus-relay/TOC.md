@@ -8,8 +8,10 @@
 ## [名前空間を作成する](relay-create-namespace-portal.md)
 ## [ハイブリッド オンプレミス/クラウド アプリケーションを作成する](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## ハイブリッド接続と
-### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Node](relay-hybrid-connections-node-get-started.md)
+### [.NET WebSocket](relay-hybrid-connections-dotnet-get-started.md)
+### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+### [Node WebSocket](relay-hybrid-connections-node-get-started.md)
+### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
 ## [WCF リレー](relay-wcf-dotnet-get-started.md)
 ## [WCF Relay のチュートリアル](service-bus-relay-tutorial.md)
 ## [WCF Relay REST のチュートリアル](service-bus-relay-rest-tutorial.md)

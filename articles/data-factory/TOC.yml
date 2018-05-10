@@ -316,22 +316,24 @@
           href: compute-linked-services.md
     - name: 制御フロー
       items:
-        - name: If 条件アクティビティ
-          href: control-flow-if-condition-activity.md
-        - name: Until アクティビティ
-          href: control-flow-until-activity.md
-        - name: Web アクティビティ
-          href: control-flow-web-activity.md
-        - name: ルックアップ アクティビティ
-          href: control-flow-lookup-activity.md
-        - name: メタデータの取得アクティビティ
-          href: control-flow-get-metadata-activity.md
         - name: パイプラインの実行アクティビティ
           href: control-flow-execute-pipeline-activity.md
+        - name: アクティビティのフィルター処理
+          href: control-flow-filter-activity.md
         - name: For Each アクティビティ
           href: control-flow-for-each-activity.md
+        - name: メタデータの取得アクティビティ
+          href: control-flow-get-metadata-activity.md
+        - name: If 条件アクティビティ
+          href: control-flow-if-condition-activity.md
+        - name: ルックアップ アクティビティ
+          href: control-flow-lookup-activity.md
+        - name: Until アクティビティ
+          href: control-flow-until-activity.md
         - name: Wait アクティビティ
           href: control-flow-wait-activity.md
+        - name: Web アクティビティ
+          href: control-flow-web-activity.md
         - name: 式言語
           href: control-flow-expression-language-functions.md
         - name: システム変数

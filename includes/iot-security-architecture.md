@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-architecture"></a>モノのインターネットのセキュリティ アーキテクチャ
 
 システムを設計する際は、そのシステムに対する脅威のリスクを把握し、設計と構築時にそれに応じた適切な防御措置を講じることが重要となります。 重要なことは、最初からセキュリティを考慮に入れて製品を設計することです。攻撃者がどのような方法でシステムに侵入しうるかを把握しておけば、適切な軽減策を初期段階から講じることができるためです。

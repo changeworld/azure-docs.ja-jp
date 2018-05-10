@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0d8bee936717a5668e16fbd66d416fcc4e738814
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
@@ -73,7 +73,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 1. ExpressRoute 回線に VNET がピアリングされているサブスクリプションを [Azure Portal](https://portal.azure.com) で選択します。 **[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
 
    >[!NOTE]
-   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。  既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。  既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![ポータル](.\media\how-to-npm\3.png)<br><br>
@@ -118,7 +118,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
   >
   
   >[!NOTE]
-  >SCOM でプッシュされるエージェント ([MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx) を含む) は、Azure でホストされている場合に場所を一貫して検出できないことがあります。  ExpressRoute を監視するために Azure VNET でこれらのエージェントを使用しないことをお勧めします。
+  >SCOM でプッシュされるエージェント ([MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx) を含む) は、Azure でホストされている場合に場所を一貫して検出できないことがあります。  ExpressRoute を監視するために Azure VNET でこれらのエージェントを使用しないことをお勧めします。
   >
   >
 
@@ -128,13 +128,13 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、そのまま使用して、**[次へ]** をクリックします。
 5. **[エージェントのセットアップ オプション]** ページで、Azure Log Analytics または Operations Manager にエージェントを接続することを選択できます。 また、エージェントを後から構成する場合は、この選択肢を空欄にしておいてもかまいません。 必要な選択を行ったら、**[次へ]** をクリックします。
 
-  * **Azure Log Analytics** に接続することを選んだ場合は、前のセクションでメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー** (主キー) を貼り付けます。 次に、 **[次へ]**をクリックします。
+  * **Azure Log Analytics** に接続することを選んだ場合は、前のセクションでメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー** (主キー) を貼り付けます。 次に、 **[次へ]** をクリックします。
 
     ![ID とキー](.\media\how-to-npm\8.png)
-  * **Operations Manager** に接続することを選んだ場合は、**[管理グループの構成]** ページで **[管理グループ名]**、**[管理サーバー]**、**[管理サーバー ポート]** に入力します。 次に、 **[次へ]**をクリックします。
+  * **Operations Manager** に接続することを選んだ場合は、**[管理グループの構成]** ページで **[管理グループ名]**、**[管理サーバー]**、**[管理サーバー ポート]** に入力します。 次に、 **[次へ]** をクリックします。
 
     ![Operations Manager](.\media\how-to-npm\9.png)
-  * **[エージェント アクション アカウント]** ページで、**[ローカル システム]** アカウントまたは **[ドメインまたはローカル コンピューターのアカウント]** を選択します。 次に、 **[次へ]**をクリックします。
+  * **[エージェント アクション アカウント]** ページで、**[ローカル システム]** アカウントまたは **[ドメインまたはローカル コンピューターのアカウント]** を選択します。 次に、 **[次へ]** をクリックします。
 
     ![アカウント](.\media\how-to-npm\10.png)
 6. **[インストールの準備完了]** ページで、設定内容を確認し、**[インストール]** をクリックします。
@@ -150,7 +150,7 @@ Web プロキシを使用してインターネットにアクセスしている�
 コントロール パネルを使って Microsoft Monitoring Agent のプロキシ設定を構成するには:
 
 1. **コントロール パネル**を開きます。
-2. **[Microsoft Monitoring Agent]**を開きます。
+2. **[Microsoft Monitoring Agent]** を開きます。
 3. **[プロキシ設定]** タブをクリックします。
 4. **[プロキシ サーバーを使用する]** をオンにして、URL と (必要に応じて) ポート番号を入力します。 プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力します。
 

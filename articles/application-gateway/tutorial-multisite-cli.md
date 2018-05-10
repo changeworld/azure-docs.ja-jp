@@ -1,9 +1,9 @@
 ---
-title: "複数のサイトをホストするアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs"
-description: "Azure CLI を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。"
+title: 複数のサイトをホストするアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs
+description: Azure CLI を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: df475cb6eed2b75275e573721f754e7de87698f5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 2e1367db9c2c1d47f34cc35fc088a9eecf00247b
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Azure CLI を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -205,7 +205,7 @@ for i in `seq 1 2`; do
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
     --settings '{
-  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 done
 ```
@@ -226,7 +226,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 例: http: //www.contoso.com。
+ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 

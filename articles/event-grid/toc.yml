@@ -9,24 +9,36 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: Blob Storage イベントのルーティング - Azure CLI
+    - name: Blob Storage イベント - Azure CLI
       href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Blob Storage イベントのルーティング - Azure PowerShell
+    - name: Blob Storage イベント - PowerShell
       href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: カスタム イベントの作成 - Azure CLI
+    - name: カスタム イベント - Azure CLI
       href: custom-event-quickstart.md
-    - name: カスタム イベントの作成 - Azure PowerShell
+    - name: カスタム イベント - PowerShell
       href: custom-event-quickstart-powershell.md
-    - name: カスタム イベントの作成 - Azure Portal
+    - name: カスタム イベント - ポータル
       href: custom-event-quickstart-portal.md
+    - name: Queue Storage へのイベントの送信
+      href: custom-event-to-queue-storage.md
 - name: チュートリアル
   items:
-    - name: ロジック アプリを使用した VM の変更の監視
+    - name: VM が変更されたときに電子メールで通知する
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: アップロードされたイメージのサイズ変更
       href: resize-images-on-storage-blob-upload-event.md
     - name: Automation Runbook のトリガー
       href: ensure-tags-exists-on-new-virtual-machines.md
+    - name: IoT Hub デバイスが追加されたときに電子メールで通知する
+      href: publish-iot-hub-events-to-logic-apps.md
+    - name: Service Bus イベントへの応答
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Event Hubs からのデータのストリーム配信
+      href: event-grid-event-hubs-integration.md
+    - name: Media Services イベントのルーティング
+      href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: ハイブリッド接続へのルーティング
+      href: custom-event-to-hybrid-connection.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -43,22 +55,22 @@
       href: security-authentication.md
     - name: 配信と再試行
       href: delivery-and-retry.md
+    - name: イベント ソース
+      href: event-sources.md
+    - name: イベント ハンドラー
+      href: event-handlers.md
 - name: ハウツー ガイド
   items:
     - name: カスタム トピックへの投稿
       href: post-to-custom-topic.md
-    - name: HTTP エンドポイントへのイベントの受信
+    - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
-    - name: Event Hubs からデータ ウェアハウスへのデータ ストリーミング
-      href: event-grid-event-hubs-integration.md
-    - name: IoT Hub イベントに関する通知の送信
-      href: publish-iot-hub-events-to-logic-apps.md
-    - name: Functions と Logic Apps での Service Bus イベントのリッスン
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: イベント配信の監視
       href: monitor-event-delivery.md
     - name: イベント サブスクリプションの照会
       href: query-event-subscriptions.md
+    - name: スキーマへのカスタム フィールドのマップ
+      href: input-mappings.md
     - name: CloudEvents スキーマの使用
       href: cloudevents-schema.md
 - name: リファレンス
@@ -84,8 +96,12 @@
           href: event-schema-event-hubs.md
         - name: IoT Hub
           href: event-schema-iot-hub.md
+        - name: Media Services
+          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: リソース グループ
           href: event-schema-resource-groups.md
+        - name: Service Bus
+          href: event-schema-service-bus.md
 - name: リソース
   items:
     - name: Azure のロードマップ

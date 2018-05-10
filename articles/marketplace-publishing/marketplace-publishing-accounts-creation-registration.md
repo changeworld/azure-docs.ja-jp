@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: mbaldwin
-ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69da37cbf5691fe94b9550200e259711e9e201d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 この記事では、Azure Marketplace の承認済みの Microsoft 開発者になるために必要なアカウントの作成と登録のプロセスについて説明します。
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/16/2018
 会社のアカウントを作成する場合、そのアカウントを開いた Microsoft アカウントを使用して複数のユーザーがログインし、そのアカウントにアクセスする必要があるのであれば、次のガイドラインに従ってください。
 
 > [!Important]
-> 重要: デベロッパー センター アカウントへのアクセスを複数のユーザーに許可する場合は、各ユーザー (各自の Azure AD 資格情報を使用してサインインし、アカウントにアクセスできるユーザー) に対し、Azure Active Directory を使用してロールを割り当てることをお勧めします。 詳しくは、「[アカウント ユーザーの管理](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users)」をご覧ください。
+> 重要: デベロッパー センター アカウントへのアクセスを複数のユーザーに許可する場合は、各ユーザー (各自の Azure AD 資格情報を使用してサインインし、アカウントにアクセスできるユーザー) に対し、Azure Active Directory を使用してロールを割り当てることをお勧めします。 詳しくは、「[アカウント ユーザーの管理](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users)」をご覧ください。
 
 * 個人ではなく、会社のドメインに属する電子メール アドレスを使用して Microsoft アカウントを作成してください (たとえば、windowsapps@fabrikam.com)。
 * この Microsoft アカウントへのアクセスは、最小限の数の開発者に制限してください。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/16/2018
 
 開発者アカウントには、主に信頼済み PC からアクセスする必要があります。 アカウントごとに生成されるコードの数 (1 週間あたり) には制限があるため、このことは非常に重要です。 またこれは、サインインをシームレスするという意味でも重要でます。
 
-開発者アカウントに関するその他のガイドラインやセキュリティについて詳しくは、[こちら](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)をクリックしてください。
+開発者アカウントに関するその他のガイドラインやセキュリティについて詳しくは、[こちら](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts)をクリックしてください。
 
 ### <a name="instructions"></a>このサンプルについての指示
 1. 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、既存のアカウントにサインインしていないことを確認します。
@@ -166,7 +166,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 1. 必要に応じて、Microsoft アカウントを使用して [Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure) にサインインします。
 2. 左側のメニューの **[税プロファイル]** をクリックします。
 3. **[税フォームの設定]** ページで、永続権を持つ国または地域を選択し、第一市民権を保持する国または地域を選択します。 **[次へ]** をクリックします。
-4. 税金の詳細を入力し、 **[次へ]**をクリックします。
+4. 税金の詳細を入力し、 **[次へ]** をクリックします。
 
 > [!WARNING]
 > Microsoft デベロッパー センター アカウントで税金と銀行口座の情報の入力を完了することなく、商用プランを運用環境に移行することはできません。

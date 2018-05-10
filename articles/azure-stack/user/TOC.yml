@@ -43,7 +43,7 @@
       items:
         - name: 重要な考慮事項
           href: azure-stack-considerations.md
-        - name: コンピューティング
+        - name: Compute
           items:
             - name: 概要
               href: azure-stack-compute-overview.md
@@ -91,6 +91,10 @@
               href: azure-stack-kv-push-secret-into-vm.md
             - name: Key Vault サンプル アプリ
               href: azure-stack-kv-sample-app.md
+            - name: ソリューション テンプレート
+              items:
+                - name: Service Fabric クラスターのデプロイ
+                  href: azure-stack-solution-template-service-fabric-cluster.md
     - name: アプリの構築
       items:
         - name: Azure Stack 向けの開発

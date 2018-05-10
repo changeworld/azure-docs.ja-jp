@@ -1,4 +1,4 @@
-- name: Azure Container Service (AKS)
+- name: Azure Kubernetes サービス (AKS)
   href: ./index.yml
 - name: 概要
   items:
@@ -25,9 +25,7 @@
       href: tutorial-kubernetes-scale.md
     - name: 6 - アプリケーションを更新する
       href: tutorial-kubernetes-app-update.md
-    - name: 7 - Log Analytics を使用して監視する
-      href: tutorial-kubernetes-monitor.md
-    - name: 8 - クラスターをアップグレードする
+    - name: 7 - クラスターをアップグレードする
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: 概念
   items:
@@ -57,12 +55,16 @@
           href: azure-files-dynamic-pv.md
     - name: ネットワークを構成する
       items:
+        - name: ネットワークの概要
+          href: networking-overview.md
         - name: 静的 IP アドレス
           href: static-ip.md
         - name: 内部ロード バランサー
           href: internal-lb.md
         - name: イングレスと TLS
           href: ingress.md
+        - name: HTTP アプリケーションのルーティング
+          href: http-application-routing.md
     - name: セキュリティと認証
       items:
         - name: サービス プリンシパルの作成

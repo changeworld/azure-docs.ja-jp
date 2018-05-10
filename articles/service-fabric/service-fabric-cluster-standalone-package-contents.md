@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik;aljo
-ms.openlocfilehash: 37425f8a076be2579726e5a83bec3da8c6eb5fff
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 948b1bb2ce5a19007906262a4efb0ecca8e40482
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/16/2018
 | ClusterConfig.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (または仮想マシン) を持つ、Windows セキュリティを使用するセキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各マシンの情報を含む) が含まれています。 クラスターは [Windows ID](https://msdn.microsoft.com/library/ff649396.aspx) を使用して保護されます。 |
 | ClusterConfig.x509.DevCluster.json |クラスター構成サンプル ファイル。3 つのノードと 1 つのマシン (または仮想マシン) を持つ、セキュリティ保護された開発クラスターのすべての設定 (クラスターの各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
 | ClusterConfig.x509.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは x509 証明書を使用して保護されます。 |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)を使用して保護されます。 |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |クラスター構成サンプル ファイル。複数のマシン (仮想マシン) を持つ、セキュリティ保護されたクラスターのすべての設定 (セキュリティ保護されたクラスター内の各ノードの情報を含む) が含まれています。 クラスターは、[グループ管理サービス アカウント](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)を使用して保護されます。 |
 
 ## <a name="cluster-configuration-samples"></a>クラスター構成の例
 クラスター構成テンプレートの最新バージョンは次の GitHub ページにあります。[スタンドアロン クラスター構成のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)

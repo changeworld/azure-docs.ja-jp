@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: e421797d85dd031b77788958db6b1df62a292a8a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db910096f776f2f8710c0ac03f0378491018fc09
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -137,7 +137,7 @@ Workbench アプリからプロジェクトとワークスペースを削除す�
 Windows 10 Fall Creators Update を使用しており、プロジェクトが OneDrive にマッピングされたローカル フォルダー内に作成されている場合は、Workbench でどのファイルも開けないことに気付く可能性があります。 これは、OneDrive フォルダー内で node.js コードを失敗させる、Fall Creators Update によって導入されたバグのためです。 このバグは Windows Update によってすぐに修正されますが、それまでは OneDrive フォルダー内にプロジェクトを作成しないでください。
 
 ## <a name="file-name-too-long-on-windows"></a>Windows では長すぎるファイル名
-Windows で Workbench を使用している場合、既定の最大 260 文字のファイル名の長さ制限に達することがあります。これにより、"指定されたパスが見つかりません" というエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。
+Windows で Workbench を使用している場合、既定の最大 260 文字のファイル名の長さ制限に達することがあります。これにより、"指定されたパスが見つかりません" というエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。
 
 ## <a name="interrupt-cli-execution-output"></a>CLI 実行の出力を中断する
 `az ml experiment submit` または `az ml notebook start` を使って実験実行を開始して、出力を中断したい場合: 

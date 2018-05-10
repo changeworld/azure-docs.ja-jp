@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: e3f6f0de16fcb84872fe7b420eb0d54e86682f23
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7633d2bd15e5bc4620a4980623f3883c162f4331
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/28/2018
 API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの AzureML Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[AzureML Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
 
 ## <a name="scaling-the-api"></a>API のスケーリング
-既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる開発/テスト無料プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
+既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる開発/テスト無料プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
 
 ## <a name="managing-aml-plans"></a>AML プランの管理 
 課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)「課金プランの管理」セクションを参照してください。

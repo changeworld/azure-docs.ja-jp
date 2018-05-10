@@ -1,11 +1,11 @@
 ---
-title: "デプロイ済みの StorSimple デバイスのトラブルシューティング | Microsoft Docs"
-description: "デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。"
+title: デプロイ済みの StorSimple デバイスのトラブルシューティング | Microsoft Docs
+description: デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
 ms.service: storsimple
 ms.devlang: NA
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 4639e749cfaa6b38fa6b91ddebfc17924c1d5bd6
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cf037f7f1c1384b654a7144485d38f569eb7c167
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>StorSimple 運用デバイスのトラブルシューティング
 > [!NOTE]
-> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) に関するページを参照してください。
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
 
 ## <a name="overview"></a>概要
 この記事は、デプロイした StorSimple デバイスの運用開始後に発生する可能性のある構成の問題を解決するための有益なトラブルシューティング ガイダンスです。 Microsoft Azure StorSimple の利用時に起こることがある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。 この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/07/2017
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>セットアップ ウィザードを 2 回以上実行したときに発生するエラー
 次の表では、運用しているデバイスでセットアップ ウィザードを実行した場合に発生する可能性のあるエラー、エラーの考えられる原因、エラーを解決するための推奨される操作について説明します。 
 
-| 番号 | エラー メッセージまたは条件 | 考えられる原因 | 推奨される操作 |
+| いいえ。 | エラー メッセージまたは条件 | 考えられる原因 | 推奨される操作 |
 |:--- |:--- |:--- |:--- |
 | 1 |エラー 350032: このデバイスは既に非アクティブ化されています。 |非アクティブ化されたデバイスでセットアップ ウィザードを実行すると、このエラーが表示されます。 |[Microsoft サポート](storsimple-contact-microsoft-support.md) に対処法をお問い合わせください。 非アクティブ化されているデバイスを利用することはできません。 デバイスを再アクティブ化する前に、出荷時の設定に戻す必要があります。 |
 | 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION (HRESULT からの例外: 0x80070001) |DNS サーバーの更新に失敗しました。 DNS の設定はグローバル設定であるため、有効なすべてのネットワーク インターフェイスに適用されます。 |インターフェイスを有効にし、再度、DNS の設定を適用します。 これらの設定はグローバルであるため、有効になっている他のインターフェイスのネットワークが中断される可能性があります。 |
@@ -62,8 +62,8 @@ ms.lasthandoff: 11/07/2017
 | 390061 |システムは、ビジー状態か利用できない状態です。 |数分待ってから操作をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。 |
 | 390143 |エラー コード 390143 でエラーが発生しました  (不明なエラー)。 |引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 問題を解決できない場合は、 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md) ください。 
 
-[1]: https://technet.microsoft.com/en-us/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/en-us/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx

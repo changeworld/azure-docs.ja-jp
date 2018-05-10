@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB の概要 | Microsoft Docs"
-description: "Azure Portal 内にある Azure Cosmos DB の概要に関するヘルプ コンテンツ"
+title: Azure Cosmos DB の概要 | Microsoft Docs
+description: Azure Portal 内にある Azure Cosmos DB の概要に関するヘルプ コンテンツ
 services: cosmos-db
 author: sewatson
 manager: lwelicki
@@ -8,11 +8,11 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
-ms.openlocfilehash: 9644a587d72973239e34073188ad2cd37eaab5dc
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 13fe8d81c656aeb07947fcd8b2c8a9157b810ca6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB のドキュメント
 
@@ -26,20 +26,20 @@ Azure Cosmos DB といずれかのマルチモデル API を使用して、グ�
 
 - [.NET](/azure/cosmos-db/create-sql-api-dotnet)
 - [Java](/azure/cosmos-db/create-sql-api-java)
-- [Node.JS](/azure/cosmos-db/create-sql-api-nodejs)
+- [Node.js](/azure/cosmos-db/create-sql-api-nodejs)
 - [Python](/azure/cosmos-db/create-sql-api-python)
 
 ### <a name="mongodb-api"></a>MongoDB API
 
 - [.NET](/azure/cosmos-db/create-mongodb-dotnet)
 - [Java](/azure/cosmos-db/create-mongodb-java)
-- [Node.JS](/azure/cosmos-db/create-mongodb-nodejs)
+- [Node.js](/azure/cosmos-db/create-mongodb-nodejs)
 
 ### <a name="graph-api"></a>Graph API
 
 - [.NET](/azure/cosmos-db/create-graph-dotnet)
 - [Java](/azure/cosmos-db/create-graph-java)
-- [Node.JS](/azure/cosmos-db/create-graph-nodejs)
+- [Node.js](/azure/cosmos-db/create-graph-nodejs)
 - [Gremlin](/azure/cosmos-db/create-graph-gremlin-console)
 
 ### <a name="graph-api"></a>Graph API
@@ -50,7 +50,7 @@ Azure Cosmos DB といずれかのマルチモデル API を使用して、グ�
 
 Azure Cosmos DB を使用したアプリの開発方法の詳細:
 
-- Cosmos DB でのアプリ開発: [SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb) | [Table](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graph](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- Cosmos DB でのアプリ開発: [SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [Table](/azure/cosmos-db/tutorial-develop-table-dotnet) | [Graph](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - Cosmos DB へのデータ インポート: [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
 - Cosmos DB でのデータのクエリ: [SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [Table](/azure/cosmos-db/tutorial-query-table) | [Graph](/azure/cosmos-db/tutorial-query-graph)
 - Cosmos DB でのグローバル データベース レプリケーション: [SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Table](/azure/cosmos-db/tutorial-global-distribution-table | [Graph](/azure/cosmos-db/tutorial-global-distribution-graph)

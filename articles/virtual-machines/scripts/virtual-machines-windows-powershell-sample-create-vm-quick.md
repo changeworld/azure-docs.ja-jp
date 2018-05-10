@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Windows VM の作成 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Windows VM の作成"
+title: Azure PowerShell のサンプル スクリプト - Windows VM の作成 | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Windows VM の作成
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 2c1e86b0ef3dabdea8220747e3ada98d888a8593
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>PowerShell で仮想マシンを作成する
 

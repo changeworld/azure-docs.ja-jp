@@ -1,11 +1,11 @@
 ---
-title: "Azure Media Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "拡張可能なクラウド プラットフォームである Media Services を使用して、ブロードキャスト品質のビデオ ストリーミングをオンデマンドやライブで安全に行う方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+title: Azure Media Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: 拡張可能なクラウド プラットフォームである Media Services を使用して、ブロードキャスト品質のビデオ ストリーミングをオンデマンドやライブで安全に行う方法について説明します。 チュートリアルや API リファレンスなどを提供します。
 services: media-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: media-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: 809595570f1c82ff6ff99bc15bf813560510e7f2
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="media-services-documentation"></a>Media Services のドキュメント
 

@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/20/2018
   ms.author: bryanla
-  ms.openlocfilehash: d8b144eb52400a76395096a2577fb9ecf28e01c1
-  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+  ms.openlocfilehash: 80c88340e31ef6650dee13819dda316b4d9bcb4d
+  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/03/2018
+  ms.lasthandoff: 05/08/2018
 abstract:
   description: Microsoft Azure とモノのインターネット (IoT) にようこそ Azure IoT は、Azure におけるエンドツーエンド IoT アプリケーションの作成を支援するよう設計された、包括的な一連のサービスとソリューションです。 完全にホストおよび管理されたサービスとしてのソフトウェア (SaaS) ソリューションから、別個の特殊なサービスとしてのプラットフォーム (PaaS) サービスやインテリジェント エッジを構築するテクノロジまで、Azure IoT には、お客様の業界のニーズ、会社のスキルとリソースに合った豊富なオプションとツールが揃っています。
 sections:
@@ -29,19 +29,19 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">新しい Azure IoT Central アプリケーションを作成する方法を学習する。</a>
-    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">リモート監視の事前構成済みソリューションをデプロイする方法を学習する。</a>
+    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">リモート監視ソリューション アクセラレータをデプロイする方法を学習する。</a>
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">IoT ハブを作成し、最初のシミュレートされたデバイスを Azure に接続する方法を学習する (Node.js)。</a>
     - html: <a href="/azure/iot-edge/quickstart-linux">Windows、Linux、または Mac で初めての IoT Edge モジュールをデプロイし、シミュレートされたデバイスでデータを処理する。</a>
-    - html: <a href="/azure/location-based-services/quick-demo-map-app">Azure Location Based Services (プレビュー) を使用して地図検索アプリを起動する。</a>
+    - html: <a href="/azure/azure-maps/quick-demo-map-app">Azure Maps を使用して、マップ検索アプリを起動する。</a>
     - html: <a href="/azure/time-series-insights/time-series-quickstart">Time Series Insights を探索する。</a>
 - title: テクノロジとソリューション
   items:
   - type: paragraph
-    text: 構成済みソリューションと SaaS サービスですばやく作業を開始します。
+    text: ソリューション アクセラレータと SaaS サービスですばやく作業を開始します。
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/iot-suite">IoT Suite</a>
+    - html: <a href="/azure/iot-suite">IoT ソリューション アクセラレータ</a>
     - html: <a href="/azure/iot-central">IoT Central</a>
   - type: paragraph
     text: サービスとしてのプラットフォーム (PaaS) サービスで開発します。
@@ -50,7 +50,7 @@ sections:
     items:
     - html: <a href="/azure/iot-hub">IoT Hub</a>
     - html: <a href="/azure/iot-dps">IoT Hub Device Provisioning Services</a>
-    - html: <a href="/azure/location-based-services">Azure Location Based Services</a>
+    - html: <a href="/azure/azure-maps">Azure Maps</a>
     - html: <a href="/azure/time-series-insights">Azure Time Series Insights</a>
     - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">IoT サービス SDK</a>
   - type: paragraph
@@ -100,4 +100,4 @@ sections:
     - title: 言語
       html: <p><a href="/azure/iot-hub/iot-hub-devguide-sdks">.NET、C、Java、Node.js、Python 用の Azure IoT SDK</a></p>
     - title: REST ()
-      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">IoT Hub Device Provisioning Service</a></p><p><a href="/rest/api/location-based-services-management/">Location Based Services 管理</a></p><p><a href="/rest/api/location-based-services/">Location Based Services 関数</a></p><p><a href="/rest/api/time-series-insights-management/">Time Series Insights 管理</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>
+      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">IoT Hub Device Provisioning Service</a></p><p><a href="/rest/api/location-based-services-management/">マップ管理</a></p><p><a href="/rest/api/location-based-services/">Maps の機能性</a></p><p><a href="/rest/api/time-series-insights-management/">Time Series Insights 管理</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9c8472e74cab779e417e68316a6125d40410ef1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知
 
@@ -407,7 +407,7 @@ Smooth Streaming の取り込みでは、[SCTE-35] の表 8-1 で定義されて
 
 **[AMF0]** ["アクション メッセージ形式 AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE-FMP4]** [Azure Media Services の Fragmented MP4 ライブ取り込み仕様](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[LIVE-FMP4]** [Azure Media Services の Fragmented MP4 ライブ取り込み仕様](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]** ISO/IEC 14496-12: パート 12 ISO ベースのメディア ファイル形式、第 4 版、2012 年 7 月 15 日。
 

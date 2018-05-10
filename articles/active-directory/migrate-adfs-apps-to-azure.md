@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 5eb562901d73974765878024b1107e3b75e9abb5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6303fdce65e460489c9f66e388c28383b9942627
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -121,7 +121,7 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 |IdP </br>サインオン </br>URL|アプリの観点からの IdP のサインオン URL (ユーザーがログインのためにリダイレクトされる場所)。|AD FS のサインオン URL は、AD FS フェデレーション サービス名に "/adfs/ls/" を付加したものです。 例: https&#58;//fs.contoso.com/adfs/ls/|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます。</br></br>SAML-P プロトコルを使用するアプリの場合: https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>WS-Federation プロトコルを使用するアプリの場合: https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
 |IdP </br>サインアウト </br>URL|アプリの観点からの IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。|AD FS の場合、サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD での対応する値は、アプリが SAML 2.0 サインアウトをサポートしているかどうかによって異なります。</br></br>アプリが SAML サインアウトをサポートしている場合、値は、以下のパターンに従います。{tenant-id} はテナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//login.microsoftonline.com/{tenant-id}/saml2)。</br></br>アプリが SAML サインアウトをサポートしていない場合: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |トークン </br>署名 </br>証明書|発行されたトークンに署名するために IdP が使用する秘密キーを持つ証明書。 アプリが信頼するように構成されているのと同じ IdP からトークンが来ていることを確認します。|AD FS トークン署名証明書は、[AD FS の管理] の **[証明書]** の下にあります。|Azure AD では、トークン署名証明書は Azure Portal のアプリケーションの **[シングル サインオン]** プロパティの **[SAML 署名証明書]** ヘッダーで確認できます。 ここで、アプリにアップロードするための証明書をダウンロードすることができます。</br></br> アプリケーションに複数の証明書がある場合は、フェデレーション メタデータ XML ファイルですべての証明書を確認することができます。|
-|識別子/</br>"発行者"|アプリの観点からの IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。</br></br>SAML トークンでは、値は **Issuer** 要素として表示されます。|AD FS の識別子は、通常、[AD FS の管理] の**[サービス]** > **[フェデレーション サービスのプロパティの編集]** の下にあるフェデレーション サービス識別子です。 例: http&#58;//fs.contoso.com/adfs/services/trust|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//sts.windows.net/{tenant-id}/)。|
+|識別子/</br>"発行者"|アプリの観点からの IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。</br></br>SAML トークンでは、値は **Issuer** 要素として表示されます。|AD FS の識別子は、通常、[AD FS の管理] の **[サービス]** > **[フェデレーション サービスのプロパティの編集]** の下にあるフェデレーション サービス識別子です。 例: http&#58;//fs.contoso.com/adfs/services/trust|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//sts.windows.net/{tenant-id}/)。|
 |IdP </br>フェデレーション </br>metadata|IdP の一般公開されているフェデレーション メタデータの場所 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。|AD FS フェデレーション メタデータ URL は、[AD FS の管理] の **[サービス]** > **[エンドポイント]** > **[メタデータ]** > **[種類: フェデレーション メタデータ]** の下で確認できます。 例: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD での対応する値は、次のパターンに従います: https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。 </br></br>詳細については、「[フェデレーション メタデータ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)」を参照してください。
 
 ## <a name="migrating-saas-apps"></a>SaaS アプリの移行
@@ -230,7 +230,7 @@ Azure AD ポータルでユーザーを割り当てるには、SaaS アプリの
 ![認証サービスとしての Azure AD の選択](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>オプション: Azure AD でユーザー プロビジョニングを構成する
-Azure AD で SaaS アプリのユーザー プロビジョニングを直接処理するようにする場合は、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-app-provisioning)」を参照してください。
+Azure AD で SaaS アプリのユーザー プロビジョニングを直接処理するようにする場合は、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

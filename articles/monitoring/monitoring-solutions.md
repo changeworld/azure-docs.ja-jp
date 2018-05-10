@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: bwren
-ms.openlocfilehash: 1e22aab85976fcab8ec270bdea1b8988b4d3bfe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="management-solutions-in-azure"></a>Azure の管理ソリューション
 管理ソリューションは、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対して詳細な分析情報を提供します。 この記事では、Azure の管理ソリューションの簡単な概要と、管理ソリューションの使用とインストールの詳細について説明します。
 
 管理ソリューションは通常、Log Analytics に情報を収集し、収集されたデータを分析するためのログ検索とビューを提供します。 また、Azure Automation などの他のサービスを活用して、アプリケーションまたはサービスに関連した操作を実行することも可能です。
 
-使用する任意のアプリケーションおよびサービスの Azure サブスクリプションに、管理ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。 パートナーとお客様は、Microsoft 提供のソリューションとは別に、自身の環境で使用する[管理ソリューションを作成](../operations-management-suite/operations-management-suite-solutions-creating.md)したり、作成したソリューションをコミュニティを通じて公開したりすることができます。
+使用する任意のアプリケーションおよびサービスの Azure サブスクリプションに、管理ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。 パートナーとお客様は、Microsoft 提供のソリューションとは別に、自身の環境で使用する[管理ソリューションを作成](../monitoring/monitoring-solutions-creating.md)したり、作成したソリューションをコミュニティを通じて公開したりすることができます。
 
 ## <a name="using-management-solutions"></a>管理ソリューションの使用
 各 Log Analytics ワークスペースの **[概要]** ページに、ワークスペースにインストールされた各ソリューションのタイルが表示されます。 ソリューションのタイルをクリックすると、収集されたデータに対するより詳細な分析を含むビューが開かれます。

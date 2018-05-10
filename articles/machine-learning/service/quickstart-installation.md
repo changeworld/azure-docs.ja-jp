@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 0a24adb94930024f6eaaa5ac270ae7fc35520132
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 61f51063ea7542e11ec8488c1f526c0fff1e5e38
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>クイック スタート: Azure Machine Learning サービスのインストールと基本操作
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -64,7 +64,7 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
    リソース グループ | "_リソース グループ名_" | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力してこの実験アカウント用に新しいリソース グループを作成します。 
    場所 | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
    [Number of seats]\(シート数\) | 2 | 接続クライアント数を入力します。 [シートあたりの価格](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。<br/><br/>このクイック スタートで必要なシート数は 2 つだけです。 シートは、必要に応じて Azure Portal から追加したり削除したりすることができます。
-   ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 名前は 3 文字以上 24 文字以下にする必要があり、英数字だけを使用することができます。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
+   ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 名前は 3 文字以上 24 文字以下にする必要があり、英数字だけを使用することができます。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
    [Workspace for Experimentation account]\(実験アカウントのワークスペース\) | IrisGarden<br/>(チュートリアルで使用する名前) | このアカウントのワークスペースの名前を指定します。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
    [Assign owner for the workspace]\(ワークスペースの所有者の割り当て\) | "_自分のアカウント_" | ご自身のアカウントをワークスペースの所有者として選択します。
    [Create Model Management account]\(モデル管理アカウントを作成する\) | **check** |リアルタイム Web サービスとしてモデルをデプロイしたり管理したりする必要が生じたときにこのリソースが利用できるよう、ここでモデル管理アカウントを作成しておきます。 <br/><br/>必須ではありませんが、モデル管理アカウントは実験アカウントと同時に作成することをお勧めします。

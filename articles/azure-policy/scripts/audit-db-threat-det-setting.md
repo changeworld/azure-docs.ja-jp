@@ -1,25 +1,25 @@
 ---
-title: "Azure Policy の JSON サンプル - DB レベルの脅威検出設定の監査 | Microsoft Docs"
-description: "この JSON サンプル ポリシーは、SQL データベース セキュリティ アラート ポリシーが指定された状態に設定されていない場合、このポリシーの監査を行います。"
+title: Azure Policy の JSON サンプル - DB レベルの脅威検出設定の監査 | Microsoft Docs
+description: この JSON サンプル ポリシーは、SQL データベース セキュリティ アラート ポリシーが指定された状態に設定されていない場合、このポリシーの監査を行います。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 80c92db12e750bf24c4578c6162b792795e03481
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 9a62f5fa5bbeb48cc6f0fad64f6b856fdeeba4de
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="audit-db-level-threat-detection-setting"></a>DB レベルの脅威検出設定の監査
 
@@ -74,6 +74,6 @@ az policy assignment create --name <assignmentname> --scope <scope> --policy "au
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。

@@ -1,11 +1,11 @@
 ---
-title: "App Service Mobile Apps の管理されたクライアント ライブラリの操作 (Windows | Microsoft Docs"
-description: "Windows と Xamarin アプリで Azure App Service Mobile Apps 向け .NET クライアントを使用する方法について説明します。"
+title: App Service Mobile Apps の管理されたクライアント ライブラリの操作 (Windows | Microsoft Docs
+description: Windows と Xamarin アプリで Azure App Service Mobile Apps 向け .NET クライアントを使用する方法について説明します。
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: c80265432f4ee3120e3125b45712dc0e7a434708
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 2b7620611c4587d00612f98c86b5792984ff548b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -651,10 +651,10 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Easy Tables] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。この値は、[Easy Tables] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
+   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
      各プラットフォームに必要なコードは次のとおりです。
 
@@ -965,7 +965,7 @@ Windows ストア アプリでプッシュ通知を有効にするには、パ�
 1. Visual Studio ソリューション エクスプローラーで、Windows Store アプリ プロジェクトを右クリックし、**[ストア]**、 > **[アプリケーションをストアと関連付ける]** の順にクリックします。
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
 3. アプリの登録が正常に作成されたら、アプリ名を選択し、**[次へ]** をクリックして、**[関連付け]** をクリックします。
-4. Microsoft アカウントを使用して [Windows デベロッパー センター] にログインします。 **[マイ アプリ]**で、作成したアプリ登録をクリックします。
+4. Microsoft アカウントを使用して [Windows デベロッパー センター] にログインします。 **[マイ アプリ]** で、作成したアプリ登録をクリックします。
 5. **[アプリ管理]**、 > **[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
 
 多くの場合、パッケージ SID は URI として処理されます。その場合、スキームとして *ms-app://* を使用する必要があります。 この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
@@ -1082,7 +1082,7 @@ public class MyHandler : DelegatingHandler
 [1]: app-service-mobile-windows-store-dotnet-get-started.md
 [2]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [3]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-[4]: https://msdn.microsoft.com/en-us/library/azure/mt419521(v=azure.10).aspx
+[4]: https://msdn.microsoft.com/library/azure/mt419521(v=azure.10).aspx
 [5]: https://github.com/Azure-Samples
 [6]: http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm
 [7]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller
@@ -1090,7 +1090,7 @@ public class MyHandler : DelegatingHandler
 [9]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/
 [10]: http://www.symbolsource.org/
 [11]: http://www.symbolsource.org/Public/Wiki/Using
-[12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
+[12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [アプリケーションへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Azure モバイル アプリでのオフライン データ同期]: app-service-mobile-offline-data-sync.md
@@ -1099,35 +1099,35 @@ public class MyHandler : DelegatingHandler
 [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
-[MobileServiceCollection]: https://msdn.microsoft.com/en-us/library/azure/dn250636(v=azure.10).aspx
-[MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/en-us/library/azure/dn268408(v=azure.10).aspx
+[MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
+[MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/library/azure/dn268408(v=azure.10).aspx
 [MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
-[GetTable]: https://msdn.microsoft.com/en-us/library/azure/jj554275(v=azure.10).aspx
-[型指定されていないテーブルへの参照を作成]: https://msdn.microsoft.com/en-us/library/azure/jj554278(v=azure.10).aspx
-[DeleteAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296407(v=azure.10).aspx
-[IncludeTotalCount]: https://msdn.microsoft.com/en-us/library/azure/dn250560(v=azure.10).aspx
-[InsertAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296400(v=azure.10).aspx
-[InvokeApiAsync]: https://msdn.microsoft.com/en-us/library/azure/dn268343(v=azure.10).aspx
-[LoginAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296411(v=azure.10).aspx
-[LookupAsync]: https://msdn.microsoft.com/en-us/library/azure/jj871654(v=azure.10).aspx
-[OrderBy]: https://msdn.microsoft.com/en-us/library/azure/dn250572(v=azure.10).aspx
-[OrderByDescending]: https://msdn.microsoft.com/en-us/library/azure/dn250568(v=azure.10).aspx
-[ReadAsync]: https://msdn.microsoft.com/en-us/library/azure/mt691741(v=azure.10).aspx
-[Take]: https://msdn.microsoft.com/en-us/library/azure/dn250574(v=azure.10).aspx
-[Select]: https://msdn.microsoft.com/en-us/library/azure/dn250569(v=azure.10).aspx
-[Skip]: https://msdn.microsoft.com/en-us/library/azure/dn250573(v=azure.10).aspx
-[UpdateAsync]: https://msdn.microsoft.com/en-us/library/azure/dn250536.(v=azure.10)aspx
+[GetTable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
+[型指定されていないテーブルへの参照を作成]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
+[DeleteAsync]: https://msdn.microsoft.com/library/azure/dn296407(v=azure.10).aspx
+[IncludeTotalCount]: https://msdn.microsoft.com/library/azure/dn250560(v=azure.10).aspx
+[InsertAsync]: https://msdn.microsoft.com/library/azure/dn296400(v=azure.10).aspx
+[InvokeApiAsync]: https://msdn.microsoft.com/library/azure/dn268343(v=azure.10).aspx
+[LoginAsync]: https://msdn.microsoft.com/library/azure/dn296411(v=azure.10).aspx
+[LookupAsync]: https://msdn.microsoft.com/library/azure/jj871654(v=azure.10).aspx
+[OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
+[OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
+[ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
+[Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[where]: https://msdn.microsoft.com/en-us/library/azure/dn250579(v=azure.10).aspx
+[where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Easy Tables]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[Guid.NewGuid]: https://msdn.microsoft.com/en-us/library/system.guid.newguid(v=vs.110).aspx
+[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
 [Windows デベロッパー センター]: https://dev.windows.com/en-us/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
-[Windows Live SDK]: https://msdn.microsoft.com/en-us/library/bb404787.aspx
+[Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [Notification Hubs API]: https://msdn.microsoft.com/library/azure/dn495101.aspx

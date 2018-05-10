@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center クイックスタート - セキュリティ ソリューションの接続 | Microsoft Docs"
-description: "Azure Security Center クイックスタート - セキュリティ ソリューションの接続"
+title: Azure Security Center クイックスタート - セキュリティ ソリューションの接続 | Microsoft Docs
+description: Azure Security Center クイックスタート - セキュリティ ソリューションの接続
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3263bb3d-befc-428c-9f80-53de65761697
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: yurid
-ms.openlocfilehash: 95cc85f0c742d465ab1ed68d6c29b61a6919dd5b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: afc72f5b18460578b0cfcd085fe601184a2f898b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>クイックスタート: Security Center へのセキュリティ ソリューションの接続
 

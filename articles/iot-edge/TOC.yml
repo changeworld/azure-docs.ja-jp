@@ -53,6 +53,8 @@
           href: how-to-vscode-debug-csharp-module.md
         - name: Azure 関数のデバッグ
           href: how-to-vscode-debug-azure-function.md
+    - name: VSTS における CI/CD
+      href: how-to-ci-cd.md
     - name: エッジでのデータの格納
       href: sql-storage.md
     - name: トラブルシューティング
@@ -92,8 +94,8 @@
           href: /azure/iot-hub
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
+        - name: マップ
+          href: /azure/azure-maps
         - name: サービス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights

@@ -12,10 +12,6 @@
       href: dns-getstarted-powershell.md
     - name: DNS ゾーンとレコードを作成する - CLI
       href: dns-getstarted-cli.md
-- name: サンプル
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: チュートリアル
   items:
     - name: プライベート DNS ゾーンとレコードを作成する
@@ -24,6 +20,10 @@
       href: dns-delegate-domain-azure-dns.md
     - name: Web アプリのカスタム DNS レコードを作成する
       href: dns-web-sites-custom-domain.md
+- name: サンプル
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
 - name: 概念
   items:
     - name: DNS ゾーンとレコード
@@ -104,7 +104,7 @@
   items:
     - name: Application Gateway
       href: /azure/application-gateway/
-    - name: 仮想ネットワーク
+    - name: Virtual Network
       href: /azure/virtual-network/
     - name: 仮想マシン
       href: /azure/virtual-machines/

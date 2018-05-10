@@ -14,12 +14,6 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Standard Load Balancer を作成する - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-- name: サンプル
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: チュートリアル
   items:
     - name: VM への内部トラフィックの負荷分散を行う
@@ -28,6 +22,12 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+- name: サンプル
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
     - name: Load Balancer Standard とは
@@ -105,7 +105,7 @@
       items:
         - name: Azure Load Balancer のトラブルシューティング
           href: load-balancer-troubleshoot.md
-    - name: クラシック デプロイメント モデルに関する記事
+    - name: クラシック デプロイ モデルに関する記事
       items:
         - name: 送信接続 (クラシック)
           href: load-balancer-outbound-connections-classic.md
@@ -152,7 +152,7 @@
       href: /azure/application-gateway/
     - name: ExpressRoute
       href: /azure/expressroute/
-    - name: 仮想ネットワーク
+    - name: Virtual Network
       href: /azure/virtual-network/
     - name: VPN Gateway
       href: /azure/vpn-gateway/

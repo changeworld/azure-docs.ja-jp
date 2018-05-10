@@ -1,8 +1,8 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight での Hadoop
+- name: 概要
   items:
-    - name: 概要
+    - name: HDInsight 上の Hadoop について
       href: apache-hadoop-introduction.md
     - name: HDInsight の Hadoop アーキテクチャ
       href: ../hdinsight-hadoop-architecture.md
@@ -10,20 +10,32 @@
     - name: HDInsight の Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 作業開始
+- name: クイック スタート
   items:
-    - name: Hadoop を開始する
+    - name: Hadoop クラスターの作成 - ポータル
+      href: apache-hadoop-linux-create-cluster-get-started-portal.md
+    - name: Hadoop クラスターの作成 - Resource Manager
       href: apache-hadoop-linux-tutorial-get-started.md
-    - name: Hadoop サンドボックス
-      href: apache-hadoop-emulator-get-started.md
-    - name: HDInsight アプリをインストールする
-      href: ../hdinsight-apps-install-applications.md
+- name: チュートリアル
+  items:
+    - name: ETL 操作の実行
+      href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
+    - name: オンデマンド クラスターの作成
+      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+      maintainContext: true
+- name: 概念
+  items:
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: 高可用性と信頼性
+      href: ../hdinsight-high-availability-linux.md
+      maintainContext: true
 - name: 方法
   items:
+    - name: Hadoop サンドボックスの使用
+      href: apache-hadoop-emulator-get-started.md
     - name: クラスター ストレージの使用
       items:
         - name: Azure Storage を使用する
@@ -144,9 +156,6 @@
         - name: 格納されたツイートを分析する
           href: ../hdinsight-analyze-twitter-data-linux.md
           maintainContext: true
-        - name: フライト遅延データを分析する
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
-          maintainContext: true
         - name: Mahout で推奨事項を生成する
           href: apache-hadoop-mahout-linux-mac.md
         - name: Hive で Web サイトのログを分析する
@@ -164,6 +173,9 @@
           maintainContext: true
     - name: クラスターを拡張する
       items:
+        - name: HDInsight アプリをインストールする
+          href: ../hdinsight-apps-install-applications.md
+          maintainContext: true
         - name: ブートストラップを使用してクラスターをカスタマイズする
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
           maintainContext: true
@@ -260,9 +272,6 @@
             - name: Azure リソース マネージャー テンプレートの使用
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
               maintainContext: true
-        - name: オンデマンド クラスターの作成
-          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-          maintainContext: true
         - name: Hadoop クラスターを管理する
           href: ../hdinsight-administer-use-portal-linux.md
           maintainContext: true
@@ -329,9 +338,6 @@
           maintainContext: true
         - name: Resource Manager 開発ツールに移行する
           href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
-        - name: 高可用性と信頼性
-          href: ../hdinsight-high-availability-linux.md
           maintainContext: true
         - name: HDInsight クラスターを新しいバージョンにアップグレードする
           href: ../hdinsight-upgrade-cluster.md

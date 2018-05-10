@@ -1,12 +1,12 @@
 ---
-title: "Azure Data Catalog 導入のためのアプローチとプロセス | Microsoft Docs"
-description: "この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。"
+title: Azure Data Catalog 導入のためのアプローチとプロセス | Microsoft Docs
+description: この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: d092613d88a4186c17c8c91046bb598c4f60b307
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
 この記事は、組織における **Azure Data Catalog** の導入方法について説明します。 **Azure Data Catalog** の導入を成功に導くためには、主にビジョンの定義、組織内の主要ビジネスのユースケースの識別、パイロット プロジェクトの選択の 3 点が重要になります。
@@ -142,7 +142,7 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ�
 パイロット チームが Data Catalog の使用に参加する前に、1 回目の会議を予定し、パイロット プロジェクトの期待値について検討して、最初のトレーニングを提供します。
 
 ### <a name="set-expectations"></a>期待値の設定
-例外と目標を設定すると、ビジネス ユーザーが特定の成果物に集中するために役立ちます。 プロジェクトを順調に進めるには、定期的に (範囲およびパイロット期間に基づいて毎日または毎週など) 宿題を割り当てます。 Data Catalog の最も重要の機能の 1 つは、クラウドソーシング データ資産であるため、ビジネス ユーザーは企業データの知識から恩恵を受けることができます。 最適な宿題の割り当ては、各パイロット チーム メンバーが使用したデータ ソースを少なくとも 1 つ登録するか、注釈を付けることです。 詳細については、[データ ソースの登録](data-catalog-get-started.md)に関するページと[データ ソースに注釈を付ける方法](data-catalog-get-started.md)に関するページを、それぞれ参照してください。
+期待値と目標を設定すると、ビジネス ユーザーが特定の成果物に集中するために役立ちます。 プロジェクトを順調に進めるには、定期的に (範囲およびパイロット期間に基づいて毎日または毎週など) 宿題を割り当てます。 Data Catalog の最も重要の機能の 1 つは、クラウドソーシング データ資産であるため、ビジネス ユーザーは企業データの知識から恩恵を受けることができます。 最適な宿題の割り当ては、各パイロット チーム メンバーが使用したデータ ソースを少なくとも 1 つ登録するか、注釈を付けることです。 詳細については、[データ ソースの登録](data-catalog-get-started.md)に関するページと[データ ソースに注釈を付ける方法](data-catalog-get-started.md)に関するページを、それぞれ参照してください。
 
 定期的にチームと会議を行い、一部の注釈をレビューします。 データ ソースに関する適切な注釈は、中央の場所に意味のあるデータ ソースの洞察を提供するため、Data Catalog 導入の成功の核になります。 適切な注釈がなければ、データ ソースに関する知識は、企業全体にわたって分散して残ります。 「 [データ ソースに注釈を付ける方法](data-catalog-get-started.md)」を参照してください。
 

@@ -11,13 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/25/2018
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: ebb9fab63d57f880e8b556bf6e3a1c9c8934527d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 328f052e1ccad3ac26cce62c858e050253192ae8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -207,7 +207,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
      **CONTAINERNAME** を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 **STORAGEACCOUNTNAME** を使用したストレージ アカウント名に置き換えます。
 
-5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]**をクリックします。
+5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]** をクリックします。
 
     変更が完了したら、 **[OK]** をクリックします。
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ef6d8cb47971b1cf261edceb13485b940eff3d13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Azure VM、Service Fabric、および Azure Cloud Services で Application Insights Profiler を有効化する
 
@@ -40,7 +40,7 @@ Profiler を完全に有効にするには、次の 3 つの箇所で構成を�
 
 ## <a name="set-up-the-application-insights-instance"></a>Application Insights インスタンスを設定する
 
-1. [新しい Application Insights リソースを作成](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource)するか、または既存の Application Insights リソースを選択します。 
+1. [新しい Application Insights リソースを作成](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource)するか、または既存の Application Insights リソースを選択します。 
 
 2. Application Insights リソースに移動して、インストルメンテーション キーをコピーしてください。
 
@@ -212,7 +212,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 2. [IIS](https://www.microsoft.com/web/platform/server.aspx) 経由で目的のアプリケーションが実行されている場合は、次の操作を実行して `IIS Http Tracing` Windows 機能を有効にします。  
 
-   a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All

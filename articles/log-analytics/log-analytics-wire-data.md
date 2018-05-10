@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics のワイヤ データ ソリューション | Microsoft Docs"
-description: "ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。"
+title: Log Analytics のワイヤ データ ソリューション | Microsoft Docs
+description: ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -58,8 +58,8 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
-| Windows エージェント | [はい] | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
-| Linux エージェント | [はい] | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
+| Windows エージェント | [はい] | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | [はい] | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)」を参照してください。 |
 | System Center Operations Manager 管理グループ | [はい] | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics に転送されます。 |
 | Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 

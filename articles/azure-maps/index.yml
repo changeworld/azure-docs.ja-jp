@@ -1,0 +1,55 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Maps のドキュメント
+metadata:
+  document_id: 
+  title: Azure Maps のドキュメント | Microsoft Docs
+  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
+  services: azure-maps
+  author: philmea
+  manager: timlt
+  ms.service: azure-maps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2018
+  ms.author: philmea
+  ms.openlocfilehash: 5561f4720a396a90dbffe08e420d3b9ee66ec206
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Azure Maps は、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 このサービスは Azure One API に準拠した一連の REST API であり、開発を簡単かつ容易にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。
+sections:
+- title: 5 分間のクイックスタート
+  items:
+  - type: paragraph
+    text: Azure Maps を使用して、マップ検索アプリを起動します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/sql-database/media/index/portal.svg
+      text: デモ用の地図アプリの起動
+      href: /azure/azure-maps/quick-demo-map-app
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure Maps を使用して観光名所の検索や場所へのルート設定を行う地理空間の Web アプリケーションを作成します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/azure-maps/tutorial-search-location">観光名所の検索</a>
+    - html: <a href="/azure/azure-maps/tutorial-route-location">観光名所までのルート設定</a>
+    - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">移動モード別のルート</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsW
+    items:
+    - title: 言語
+      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール API - Javascript</a></p>
+    - title: REST ()
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/">Functional API - REST</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">Management API - REST</a></p>

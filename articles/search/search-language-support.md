@@ -6,13 +6,13 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: cb011ee54894f53cda81d9d116899dcaeb558b6d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 278539a2451eb15c7148b75497798e81f5370a57
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Azure Search でドキュメントのインデックスを複数の言語で作成する
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ ms.lasthandoff: 04/23/2018
 
 クエリを発行するエージェントの言語がわかっている場合は、 **searchFields** クエリ パラメーターを使用して、検索要求を特定のフィールドに制限できます。 次のクエリは、ポーランド語の説明に対してのみ発行されます。
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
 
 ポータルでは、インデックスをクエリし、 **検索エクスプローラー** を使用して上記のようなクエリに貼り付けることができます。 検索エクスプローラーは、サービス ブレードのコマンド バーから使用できます。 詳細については、「 [Query your Azure Search index in the portal (ポータルでの Azure Search インデックスのクエリ)](search-explorer.md) 」を参照してください。
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 04/23/2018
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
 .NET 開発者の場合は、 [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search)を使用して言語アナライザーを構成できます。 最新リリースには、Microsoft 言語アナライザーのサポートも含まれています。
 

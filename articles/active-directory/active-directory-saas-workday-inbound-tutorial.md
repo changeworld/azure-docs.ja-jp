@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -154,7 +154,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 **セキュリティ グループを作成するには、次の手順に従います。**
 
-1. 検索ボックスに「セキュリティ グループの作成」と入力し、 **[Create Security Group (セキュリティ グループの作成)]**をクリックします。 
+1. 検索ボックスに「セキュリティ グループの作成」と入力し、 **[Create Security Group (セキュリティ グループの作成)]** をクリックします。 
    
     ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity グループ")
 2. **[セキュリティ グループの作成]** タスクを完了します。  
@@ -167,7 +167,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 **統合システム ユーザーを割り当てるには、次の手順に従います。**
 
-1. 検索ボックスに「セキュリティ グループの編集」と入力し、 **[Edit Security Group (セキュリティ グループの編集)]**をクリックします。 
+1. 検索ボックスに「セキュリティ グループの編集」と入力し、 **[Edit Security Group (セキュリティ グループの編集)]** をクリックします。 
    
     ![セキュリティ グループの編集](./media/active-directory-saas-workday-inbound-tutorial/IC750983.png "セキュリティ グループの編集")
 2. 新しい統合セキュリティ グループを名前で検索し、選択します。 
@@ -213,7 +213,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 1. 検索ボックスに「アクティブ化」と入力し、**[保留中のセキュリティ ポリシーの変更をアクティブ化]** リンクをクリックします。 
    
     ![アクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750992.png "アクティブ化") 
-2. 監査用のコメントを入力し、 **[OK]**をクリックして、[Activate Pending Security Policy Changes (保留中のセキュリティ ポリシーの変更のアクティブ化)] 作業を開始します。 
+2. 監査用のコメントを入力し、 **[OK]** をクリックして、[Activate Pending Security Policy Changes (保留中のセキュリティ ポリシーの変更のアクティブ化)] 作業を開始します。 
    
     ![保留中のセキュリティのアクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750993.png "保留中のセキュリティのアクティブ化")   
 3. **[確認]** チェック ボックスをオンにして、**[OK]** をクリックし、次の画面で作業を完了します。 
@@ -274,7 +274,7 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 
 6.  アプリが追加され、アプリの詳細画面が表示されたら、**[プロビジョニング]** を選択します
 
-7.  **[プロビジョニング** **モード]**を **[自動]** に設定します
+7.  **[プロビジョニング** **モード]** を **[自動]** に設定します
 
 8.  以下のように **[管理者の資格情報]** セクションを完了します。
 
@@ -468,7 +468,7 @@ Azure Active Directory テナントが EU データ センターのいずれか�
 
 **エージェントのトラブルシューティング**
 
-エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx)には、エージェントによって実行されるすべての操作のイベントが含まれています。 これらのイベントを表示するには:
+エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx)には、エージェントによって実行されるすべての操作のイベントが含まれています。 これらのイベントを表示するには:
     
 1. **Eventvwr.msc** を開きます。
 2. **[Windows ログ] > [アプリケーション]** の順に選択します。
@@ -491,7 +491,7 @@ Powershell コマンドで指定された Active Directory または Azure Activ
 
 4. 好きなときに、Azure Portal の **[監査ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、Workday から読み込まれたユーザーや、その後 Active Directory に追加または更新されたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。 **[監査ログの読み方の詳細については、プロビジョニング レポート ガイドを参照してください](active-directory-saas-provisioning-reporting.md)**
 
-5.  エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx)で、新しいエラーや警告が発生していないかどうかを確認します。 こうしたイベントを表示するには、サーバーで **Eventvwr.msc** を起動し、**[Windows ログ] > [アプリケーション]** の順に選択します。 プロビジョニングに関連するすべてのメッセージが、ソース **AADSyncAgent** のログに記録されます。 
+5.  エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx)で、新しいエラーや警告が発生していないかどうかを確認します。 こうしたイベントを表示するには、サーバーで **Eventvwr.msc** を起動し、**[Windows ログ] > [アプリケーション]** の順に選択します。 プロビジョニングに関連するすべてのメッセージが、ソース **AADSyncAgent** のログに記録されます。 
     
 
 6. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
@@ -531,7 +531,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 6.  アプリが追加され、アプリの詳細画面が表示されたら、**[プロビジョニング]** を選択します
 
-7.  **[プロビジョニング** **モード]**を **[自動]** に設定します
+7.  **[プロビジョニング** **モード]** を **[自動]** に設定します
 
 8.  以下のように **[管理者の資格情報]** セクションを完了します。
 
@@ -636,7 +636,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 6.  アプリが追加され、アプリの詳細画面が表示されたら、**[プロビジョニング]** を選択します
 
-7.  **[プロビジョニング** **モード]**を **[自動]** に設定します
+7.  **[プロビジョニング** **モード]** を **[自動]** に設定します
 
 8.  以下のように **[管理者の資格情報]** セクションを完了します。
 
@@ -707,7 +707,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
     ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio2.PNG)
 
-9. **[OK]**を選択します。
+9. **[OK]** を選択します。
 
 10. **[Request]\(要求\)** ウィンドウに以下の XML を貼り付けます。**Employee_ID** には、ご使用の Workday テナントに存在する実際のユーザーの従業員 ID を設定してください。 抽出対象となる属性が設定されているユーザーを選択します。
 
@@ -819,7 +819,7 @@ GDPR 準拠を維持する方法は 2 つあります。
 1. 要求を受けた際、個人のデータを抽出し、Windows イベント ログからその個人のデータを削除する。 
 2. AADSyncAgent プロセスに由来する Windows イベント ログのリテンション期間を 48 時間未満に維持する
 
-Windows イベント ログのデータ保有期間の構成方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/en-us/library/cc952132.aspx)」をご覧ください。 Windows イベント ログの一般情報については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx)をご覧ください。
+Windows イベント ログのデータ保有期間の構成方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/library/cc952132.aspx)」をご覧ください。 Windows イベント ログの一般情報については、[この記事](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

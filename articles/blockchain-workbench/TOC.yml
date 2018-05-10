@@ -1,0 +1,46 @@
+- name: Azure Blockchain Workbench (パブリック プレビュー)
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Blockchain Workbench について
+      href: blockchain-workbench-overview.md
+- name: 概念
+  items:
+    - name: アーキテクチャ
+      href: blockchain-workbench-architecture.md
+    - name: 統合のパターン
+      href: blockchain-workbench-integration-patterns.md
+- name: ハウツー ガイド
+  items:
+    - name: Workbench をデプロイする
+      href: blockchain-workbench-deploy.md
+    - name: Workbench ユーザーを管理する
+      href: blockchain-workbench-manage-users.md
+    - name: ブロックチェーン アプリを作成する
+      href: blockchain-workbench-create-app.md
+    - name: ブロックチェーン アプリを使用する
+      href: blockchain-workbench-use.md
+    - name: Workbench API を使用する
+      href: blockchain-workbench-use-API.md
+    - name: アプリのトラブルシューティング
+      href: blockchain-workbench-troubleshooting.md
+    - name: Workbench DB の詳細を取得する
+      href: blockchain-workbench-getdb-details.md
+    - name: Workbench SQL DB ファイアウォールを構成する
+      href: blockchain-workbench-database-firewall.md
+    - name: Excel で Workbench のデータを使用する
+      href: blockchain-workbench-data-excel.md
+    - name: Power BI で Workbench のデータを使用する
+      href: blockchain-workbench-data-powerbi.md
+    - name: SQL Management Studio で Workbench のデータを使用する
+      href: blockchain-workbench-data-sql-management-studio.md
+- name: リファレンス
+  items:
+    - name: 構成
+      href: blockchain-workbench-configuration-overview.md
+    - name: データベース ビュー
+      href: blockchain-workbench-database-views.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+    - name: メッセージング API
+      href: blockchain-workbench-messages-overview.md

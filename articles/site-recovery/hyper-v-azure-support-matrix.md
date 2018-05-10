@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 9078b56ae9c5582aa21201c168974eb6cc7a4ed6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Azure への Hyper-V レプリケーションのサポート マトリックス
 
@@ -112,7 +112,7 @@ RDM | 該当なし | 該当なし
 ディスクの除外 | [はい] | [はい]
 マルチパス (MPIO) | [はい] | [はい]
 
-## <a name="azure-storage"></a>Azure Storage (Azure Storage)
+## <a name="azure-storage"></a>Azure Storage
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
@@ -170,7 +170,7 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 
 **名前** | **説明** | **詳細**
 --- | --- | --- | --- | ---
-Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure Portal から入手可能)<br/><br/> [最新の機能と修正](https://aka.ms/latest_asr_updates)
+Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure Portal から入手可能)<br/><br/> [最新の機能と修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager の有無にかかわらず) | ポータルから入手可能な最新のエージェント
 
 

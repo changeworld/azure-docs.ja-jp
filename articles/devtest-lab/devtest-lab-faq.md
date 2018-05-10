@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: d8b9e48db9e75fb41ecad1958b3aa930a6bce3aa
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7a65ba691b9cf8b0ce989f0c54bd0b74edd43b85
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -128,9 +128,9 @@ DevTest Labs で VM を作成すると、その VM にアクセスするため�
 Azure での開発またはテストに Windows クライアント OS イメージ (Windows 7 以降) を使用するには、次のいずれかを行う必要があります。
 
 - [MSDN サブスクリプションを購入する](https://www.visualstudio.com/products/how-to-buy-vs)。
-- Enterprise Agreement をご利用の場合は、[Enterprise Dev/Test プラン](https://azure.microsoft.com/en-us/offers/ms-azr-0148p)で Azure サブスクリプションを作成する。
+- Enterprise Agreement をご利用の場合は、[Enterprise Dev/Test プラン](https://azure.microsoft.com/offers/ms-azr-0148p)で Azure サブスクリプションを作成する。
 
-各 MSDN サービスの Azure クレジットの詳細については、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+各 MSDN サービスの Azure クレジットの詳細については、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>カスタム イメージを作成するために VHD ファイルをアップロードするプロセスを自動化するにはどうすればよいですか。
 カスタム イメージを作成するために VHD ファイルのアップロードを自動化する場合、次の 2 つのオプションがあります。
@@ -144,7 +144,7 @@ Azure での開発またはテストに Windows クライアント OS イメー�
 2. 左側のメニューの **[リソース グループ]** を選択します。
 3. ラボに関連付けられているリソース グループを見つけて選択します。
 4. **[概要]** で、いずれかのストレージ アカウントを選択します。
-5. **[BLOB]**を選択します。
+5. **[BLOB]** を選択します。
 6. 一覧内でアップロードを検索します。 存在しない場合は、手順 4. に戻り、別のストレージ アカウントを試します。
 7. AzCopy コマンドで、コピー先として **URL** を使用します。
 

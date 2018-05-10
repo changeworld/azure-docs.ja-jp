@@ -10,11 +10,11 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 03aaa6b3440c1e20028078ee3d45c13cdd16cfea
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 463b6051009ab79013f9bef958fcadec2ef3cd16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイック スタートでは、PHP を使って、Azure Blob Storage のコンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法を説明します。 
@@ -211,7 +211,7 @@ Blob Storage を使用する PHP 開発については、以下の追加リソ�
 このクイック スタートでは、PHP を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 PHP の操作の詳細を学習するには、PHP デベロッパー センターに進みます。
 
 > [!div class="nextstepaction"]
-> [PHP デベロッパー センター](https://azure.microsoft.com/en-us/develop/php/)
+> [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)
 
 
 Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

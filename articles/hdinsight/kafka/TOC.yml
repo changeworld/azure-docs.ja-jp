@@ -1,19 +1,34 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight 上の Kafka
+- name: 概要
   items:
-    - name: 概要
+    - name: HDInsight 上の Kafka について
       href: apache-kafka-introduction.md
     - name: コンポーネントのバージョン管理
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 作業開始
+- name: クイック スタート
   items:
-    - name: Kafka クラスターの作成
+    - name: Kafka クラスターの作成 - ポータル
       href: apache-kafka-get-started.md
-    - name: HDInsight アプリをインストールする
-      href: ../hdinsight-apps-install-applications.md
+    - name: Kafka クラスターの作成 - PowerShell
+      href: apache-kafka-quickstart-powershell.md
+    - name: Kafka クラスターの作成 - テンプレート
+      href: apache-kafka-quickstart-resource-manager-template.md
+- name: チュートリアル
+  items:
+    - name: Kafka と Spark
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
+    - name: Kafka と Storm
+      href: ../hdinsight-apache-storm-with-kafka.md
+      maintainContext: true
+    - name: Kafka Producer API と Consumer API
+      href: apache-kafka-producer-consumer-api.md
+    - name: Kafka Streams API
+      href: apache-kafka-streams-api.md
+- name: 概念
+  items:
     - name: 容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -23,6 +38,11 @@
       href: apache-kafka-high-availability.md
 - name: 方法
   items:
+    - name: トピックの自動作成を有効にする
+      href: apache-kafka-auto-create-topics.md
+    - name: HDInsight アプリをインストールする
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: 仮想ネットワークで Kafka を使用する
       href: apache-kafka-connect-vpn-gateway.md
     - name: Kafka データのレプリケート
@@ -31,17 +51,11 @@
       href: apache-kafka-log-analytics-operations-management.md
     - name: ストリーミング パイプラインを作成する
       items:
-        - name: Kafka と Spark (構造化ストリーミング)
-          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-          maintainContext: true
-        - name: Kafka から Azure Cosmos DB への構造化ストリーミング
+        - name: Spark、Kafka、および Azure Cosmos DB
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
           maintainContext: true
         - name: Kafka と Spark (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
-          maintainContext: true
-        - name: Kafka と Storm
-          href: ../hdinsight-apache-storm-with-kafka.md
           maintainContext: true
         - name: Azure Container Service での Kafka の使用
           href: apache-kafka-azure-container-services.md
@@ -49,10 +63,6 @@
           href: apache-kafka-azure-functions.md
     - name: 開発
       items:
-        - name: Kafka Producer API と Consumer API の使用
-          href: apache-kafka-producer-consumer-api.md
-        - name: Kafka Streams API の使用
-          href: apache-kafka-streams-api.md
         - name: 空のエッジ ノードを使用する
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

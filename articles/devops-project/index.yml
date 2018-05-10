@@ -1,0 +1,80 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure DevOps プロジェクト
+metadata:
+  document_id: 
+  title: Azure DevOps プロジェクトのドキュメント - クイックスタートとチュートリアル
+  meta.description: 
+  services: devops-project
+  author: mlearned
+  manager: douge
+  ms.service: devops-project
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/30/2018
+  ms.author: mlearned
+  ms.openlocfilehash: c3021a8d08938deceb9ec2154ddec014bd067508
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Azure DevOps プロジェクトにより、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/_img/azure-devops-project-aspnetcore/fullbrowser.png
+      width: 250
+    title: Azure DevOps プロジェクトで CI/CD を作成する (8:53)
+    href: https://channel9.msdn.com/Events/Connect/2017/T174/player/
+    width: 250
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: アプリの種類を作成して、選択した Azure サービスにデプロイする方法について説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media\logo_net.svg
+      text: .NET
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-aspnetcore
+    - image:
+        src: media\logo_nodejs.svg
+      text: Node.js
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-nodejs
+    - image:
+        src: media\logo_java.svg
+      text: Java
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-java
+    - image:
+        src: media\logo_python.svg
+      text: Python
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-python
+    - image:
+        src: media\logo_php.svg
+      text: PHP
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-php
+    - image:
+        src: media\logo_ruby.svg
+      text: Ruby
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-ruby
+    - image:
+        src: media\logo_gopher.svg
+      text: Go
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-go
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure DevOps プロジェクトを使用して VSTS リリース パイプラインを作成する方法について説明します
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-github">GitHub で独自のコードを使用する</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-vms">Azure Virtual Machines に ASP.NET アプリをデプロイする</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-sqldb">ASP.NET アプリと Azure SQL Database をデプロイする</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-aks">Azure Container Service と Kubernetes にアプリをデプロイする</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-servicefabric">Azure Service Fabric にアプリをデプロイする</a>

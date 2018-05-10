@@ -3,21 +3,23 @@
   topicHref: /azure/index
   items:
     - name: Active Directory
-      tocHref: /azure/active-directory/
+      tocHref: /event-hubs/
       topicHref: /azure/active-directory/
       items:
-        - name: 接続
-          tocHref: /azure/active-directory/connect/
-          topicHref: /azure/active-directory/connect/
-        - name: Connect Health
-          tocHref: /azure/active-directory/connect-health/
-          topicHref: /azure/active-directory/connect-health/
-        - name: 開発
-          tocHref: /azure/active-directory/develop/
-          topicHref: /azure/active-directory/develop/
-        - name: Privileged Identity Management
-          tocHref: /azure/active-directory/privileged-identity-management/
-          topicHref: /azure/active-directory/privileged-identity-management/
         - name: 管理対象のサービス ID
-          tocHref: /azure/active-directory/managed-service-identity/
+          tocHref: /event-hubs-managed-service-identity/
+          topicHref: /azure/active-directory/managed-service-identity/
+    - name: Active Directory
+      tocHref: /service-bus-messaging
+      topicHref: /azure/active-directory/
+      items:
+        - name: 管理対象のサービス ID
+          tocHref: /service-bus-managed-service-identity/
+          topicHref: /azure/active-directory/managed-service-identity/
+    - name: Active Directory
+      tocHref: /app-service
+      topicHref: /azure/active-directory/
+      items:
+        - name: 管理対象のサービス ID
+          tocHref: /app-service-managed-service-identity/
           topicHref: /azure/active-directory/managed-service-identity/

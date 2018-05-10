@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/26/2018
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: ddd27af47edd9bf4ffbf688ef6e5f12a34c681cf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9f67bc93758b98060efbef2cb7f1c200a62d7e65
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -102,7 +102,7 @@ Hive で作成できるテーブルには、次の 2 種類があります。
 
 ## <a name="user-defined-functions-udf"></a>ユーザー定義関数 (UDF)
 
-Hive は **ユーザー定義関数 (UDF)**で拡張することもできます。 UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。 Hive での UDF の使用例については、以下のドキュメントを参照してください。
+Hive は **ユーザー定義関数 (UDF)** で拡張することもできます。 UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。 Hive での UDF の使用例については、以下のドキュメントを参照してください。
 
 * [Java ユーザー定義関数と Hive の使用](../hadoop/apache-hadoop-hive-java-udf.md)
 

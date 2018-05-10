@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: b0d268937300abd105349d340f7bf1dae398fa8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24ac4d699a511cc99936cb2cd4b245de01984163
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>チュートリアル 2: あやめの分類: モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析を支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -280,7 +280,7 @@ Azure Machine Learning Workbench では、スクリプトの実行がすべて�
    >[!IMPORTANT]
    >後続の手順を実行するには、この CLI ウィンドウを使用する必要があります。
 
-1. CLI ウィンドウで Azure にログインします。 az login の詳細については、[こちら](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)を参照してください。
+1. CLI ウィンドウで Azure にログインします。 az login の詳細については、[こちら](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)を参照してください。
 
    既にログインしていることも考えられます。 その場合は、この手順を省略してかまいません。
 

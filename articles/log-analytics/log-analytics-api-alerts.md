@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 642b27405c703aa7a30d9fc544009d70b5d1b2df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e6987900ac2ef535fe31d4d1ecadb1a302a9c0be
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -101,7 +101,7 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 ### <a name="retrieving-actions"></a>アクションの取得
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 Get メソッドを使用して、スケジュールのすべてのアクションを取得します。
 
@@ -124,7 +124,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="deleting-actions"></a>アクションの削除
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 アクション ID と共に Delete メソッドを使用すると、アクションを削除できます。
 
@@ -216,7 +216,7 @@ Log Analytics を使用するとアラートをカテゴリに分類し、簡単
 #### <a name="action-groups"></a>アクション グループ
 Azure のすべてのアラートは、アクションを管理する既定のメカニズムとして、アクション グループを使用します。 アクション グループを使用すると、一度に複数のアクションを指定し、そのアクション グループを Azure 全体にわたって複数のアラートに関連付けることができます。 繰り返し宣言することなく、同じアクションを繰り返し実行できます。 アクション グループは、電子メール、SMS、音声通話、ITSM Connection、Automation Runbook、Webhook URI など、複数のアクションに対応しています。 
 
-アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を作成するか、[アクション グループ API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用できます。
+アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を作成するか、[アクション グループ API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用できます。
 
 アラートにアクション グループの関連付けを追加するには、アラートの定義にそのアクション グループの一意の Azure Resource Manager ID を指定します。 以下にサンプル図を示します。
 
@@ -322,7 +322,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 電子メール通知は、1 人以上の受信者にメールを送信します。  電子メール通知には、次の表に示したプロパティがあります。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
    
 
 | プロパティ | [説明] |
@@ -366,7 +366,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 修復では、アラートで識別された問題を修正するための Runbook が Azure Automation で開始されます。  修復アクションで使用される Runbook の Webhook を作成し、WebhookUri プロパティに URI を指定する必要があります。  OMS コンソールを使用してこのアクションを作成すると、Runbook に対して新しい Webhook が自動的に作成されます。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 修復には、次の表に示したプロパティがあります。
 
@@ -425,7 +425,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 Webhook アクションは、URL を呼び出し、送信されるペイロードをオプションで指定することにより、プロセスを開始します。  これは修復アクションに似ていますが、Azure Automation の Runbook 以外のプロセスを呼び出す可能性のある Webhook に対して使用することを意図しています。  また、リモート プロセスに配信されるペイロードを指定する追加のオプションも用意されています。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 
 Webhook アクションにはしきい値はありませんが、その代わりに、しきい値のあるアラート アクションを含むスケジュールに追加する必要があります。  

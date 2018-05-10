@@ -1,6 +1,6 @@
 ---
-title: "Azure Key Vault 開発者ガイド"
-description: "開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。"
+title: Azure Key Vault 開発者ガイド
+description: 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。
 services: key-vault
 author: lleonard-msft
 manager: mbaldwin
@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
 ms.author: alleonar
-ms.openlocfilehash: 68a08f1f6e8036b9ca966e8d9596c09f2b2ccf81
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 35e84a22eabce0b7361c2227317baab62421c301
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -109,7 +109,7 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 ### <a name="quick-start-guides"></a>クイック スタート ガイド
 
 - [Key Vault の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Node.js を使用した Key Vault の概要](https://azure.microsoft.com/en-us/resources/samples/key-vault-node-getting-started/)
+- [Node.js を使用した Key Vault の概要](https://azure.microsoft.com/resources/samples/key-vault-node-getting-started/)
 
 ### <a name="code-examples"></a>コード例
 

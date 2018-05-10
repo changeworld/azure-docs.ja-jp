@@ -1,11 +1,11 @@
 ---
-title: ".NET を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs"
-description: ".NET 用 Azure IoT device SDK を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。"
+title: .NET を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
+description: .NET 用 Azure IoT device SDK を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: 4362512121ca426fcae6716c74e1f8effa0986f1
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 901b4b6c631d47a6c37eb232f66d8350faa9be76
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>.NET を使用して IoT Hub でデバイスからクラウドにファイルをアップロードする
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/02/2018
 * 高頻度でサンプリングされる振動データ
 * 何らかの形式の前処理済みデータ
 
-これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.md) スタックなどのツールを使用してクラウドでバッチ処理されます。 デバイスからファイルをアップロードする必要がある場合も、IoT Hub のセキュリティと信頼性を利用できます。
+これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.yml) スタックなどのツールを使用してクラウドでバッチ処理されます。 デバイスからファイルをアップロードする必要がある場合も、IoT Hub のセキュリティと信頼性を利用できます。
 
 このチュートリアルの最後に、次の 2 つの .NET コンソール アプリを実行します。
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 01/02/2018
 
 1. Visual Studio で **SimulatedDevice** プロジェクトを右クリックして **[追加]** をクリックし、**[既存の項目]** をクリックします。 イメージ ファイルに移動し、プロジェクトに含めます。 このチュートリアルでは、イメージ名が `image.jpg`という前提で説明します。
 
-1. イメージを右クリックし、 **[プロパティ]**をクリックします。 **[出力ディレクトリにコピー]** が **[常にコピーする]** に設定されていることを確認します。
+1. イメージを右クリックし、 **[プロパティ]** をクリックします。 **[出力ディレクトリにコピー]** が **[常にコピーする]** に設定されていることを確認します。
 
     ![][1]
 
@@ -164,7 +164,7 @@ ms.lasthandoff: 01/02/2018
 
 これで、アプリケーションを実行する準備が整いました。
 
-1. Visual Studio でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**を選択します。 **[マルチ スタートアップ プロジェクト]** を選択してから、**ReadFileUploadNotification** と **SimulatedDevice** に対して **[開始]** アクションを選択します。
+1. Visual Studio でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。 **[マルチ スタートアップ プロジェクト]** を選択してから、**ReadFileUploadNotification** と **SimulatedDevice** に対して **[開始]** アクションを選択します。
 
 1. **F5**キーを押します。 両方のアプリケーションが開始されます。 1 つのコンソール アプリケーションでアップロードの完了が表示され、もう 1 つのコンソール アプリケーションでアップロード通知メッセージが受信されます。 [Azure Portal] または Visual Studio サーバー エクスプローラーを使用して、Azure Storage アカウントにアップロードされたファイルがあるかどうかを確認できます。
 

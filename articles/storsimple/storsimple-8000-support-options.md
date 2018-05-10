@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6753b52b02373d03a9ed5fec775c899a806aff3e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート
 
@@ -83,7 +83,7 @@ Microsoft は、StorSimple エンタープライズ ストレージのお客様�
 英語だけではなく、次の言語では、営業時間中、現地語のサポートも提供されます: 日本語、韓国語、台湾語、および繁体字中国語。
 
 ## <a name="support-scope"></a>サポート範囲 
-課金とサブスクリプション管理に関連する問題のサポートは、すべてのサポート レベルでご利用いただけます。 StorSimple サポートを利用するには、StorSimple の Standard サポート プランまたは Premium サポート プランにご自分で申し込む必要があります。 StorSimple サポート チームは、StorSimple ソリューションに影響を与えるすべての問題の解決を担当します。 StorSimple には直接関係しない Azure 関連の問題のサポートを利用するには、該当する Azure サポート プランに申し込む必要があります。 詳細については、[こちら](https://azure.microsoft.com/en-us/support/plans/)をご覧ください。 サポート チームは、お客様の Azure サポートに関する資格に基づき、StorSimple 以外のサポート ケースは Azure チームに委託して、フォローアップを行います。 
+課金とサブスクリプション管理に関連する問題のサポートは、すべてのサポート レベルでご利用いただけます。 StorSimple サポートを利用するには、StorSimple の Standard サポート プランまたは Premium サポート プランにご自分で申し込む必要があります。 StorSimple サポート チームは、StorSimple ソリューションに影響を与えるすべての問題の解決を担当します。 StorSimple には直接関係しない Azure 関連の問題のサポートを利用するには、該当する Azure サポート プランに申し込む必要があります。 詳細については、[こちら](https://azure.microsoft.com/support/plans/)をご覧ください。 サポート チームは、お客様の Azure サポートに関する資格に基づき、StorSimple 以外のサポート ケースは Azure チームに委託して、フォローアップを行います。 
 
 
 | **重大度** |**お客様の状況**                                                                                                                                | 弊社の対応<sup>2                                                                                       | お客様の対応                                                                                                                                                       |

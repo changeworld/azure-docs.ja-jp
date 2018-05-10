@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure Files に関してよく寄せられる質問
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync (プレビュー) で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -257,7 +257,7 @@ ms.lasthandoff: 03/29/2018
     はい。 Azure Files で保持できる共有スナップショットの数は最大で 200 個です。 共有スナップショットは共有クォータに対してカウントされないので、すべての共有スナップショットで使用される合計領域に共有ごとの制限はありません。 ストレージ アカウントの制限は、引き続き適用されます。 共有スナップショットの数が 200 を超えると、新しい共有スナップショットを作成するために、古い共有スナップショットを削除する必要があります。
 * <a id="snapshot-cost"></a>
 **共有スナップショットにかかるコストを教えてください。**  
-    標準トランザクションと標準ストレージのコストがスナップショットに適用されます。 スナップショットは本質的に増分です。 基本のスナップショットは共有そのものです。 それ以降のスナップショットはすべて増分であり、以前のスナップショットとの差分のみを格納しています。 つまり、ワークロード チャーンが最小であれば、請求書に表示される差分変更は最小になります。 Standard Azure Files の価格設定情報については、「[料金ページ](https://azure.microsoft.com/en-us/pricing/details/storage/files/)」を参照してください。 現在、共有スナップショットで使用されるサイズを見る方法として、請求された容量と使用した容量を比較しています。 Microsoft は、報告機能を改善するツールの開発に取り組んでいます。
+    標準トランザクションと標準ストレージのコストがスナップショットに適用されます。 スナップショットは本質的に増分です。 基本のスナップショットは共有そのものです。 それ以降のスナップショットはすべて増分であり、以前のスナップショットとの差分のみを格納しています。 つまり、ワークロード チャーンが最小であれば、請求書に表示される差分変更は最小になります。 Standard Azure Files の価格設定情報については、「[料金ページ](https://azure.microsoft.com/pricing/details/storage/files/)」を参照してください。 現在、共有スナップショットで使用されるサイズを見る方法として、請求された容量と使用した容量を比較しています。 Microsoft は、報告機能を改善するツールの開発に取り組んでいます。
 
 
 ### <a name="create-share-snapshots"></a>共有スナップショットを作成する

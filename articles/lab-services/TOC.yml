@@ -1,0 +1,177 @@
+- name: Lab Services のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Lab Services について
+      href: lab-services-overview.md
+    - name: ラボの種類を比較する
+      href: compare-lab-types.md
+- name: チュートリアル
+  items:
+    - name: DevTest Labs
+      items:
+        - name: 1. カスタム ラボを設定する
+          href: tutorial-create-custom-lab.md
+        - name: 2. カスタム ラボへのアクセス
+          href: tutorial-use-custom-lab.md
+    - name: クラスルーム ラボ
+      items:
+        - name: 1. ラボ アカウントを設定する
+          href: tutorial-setup-lab-account.md
+        - name: 2. クラスルーム ラボを設定する
+          href: tutorial-setup-classroom-lab.md
+        - name: 3. クラスルーム ラボへのアクセス
+          href: tutorial-connect-virtual-machine-classroom-lab.md
+- name: サンプル
+  items:
+    - name: DevTest Labs
+      items:
+        - name: Resource Manager テンプレート
+          href: 'https://github.com/Azure/azure-devtestlab/tree/master/Samples'
+        - name: Azure PowerShell
+          href: samples-powershell.md
+        - name: Azure CLI
+          href: samples-cli.md
+- name: 概念
+  items:
+    - name: DevTest Labs
+      href: devtest-lab-concepts.md
+      items:
+        - name: 開発者向けのラボの使用
+          href: devtest-lab-developer-lab.md
+        - name: テスト環境でのラボの使用
+          href: devtest-lab-test-env.md
+        - name: トレーニングでのラボの使用
+          href: devtest-lab-training-lab.md
+        - name: DevTest Labs
+          href: devtest-lab-overview.md
+- name: ハウツー ガイド
+  items:
+    - name: クラスルーム ラボ
+      items:
+        - name: ラボ アカウントの管理
+          href: how-to-manage-lab-accounts.md
+        - name: クラスルーム ラボの管理
+          href: how-to-manage-classroom-labs.md
+        - name: クラスルーム ラボへのアクセス
+          href: how-to-use-classroom-lab.md
+    - name: DevTest ラボ
+      items:
+        - name: カスタム ラボの作成
+          href: devtest-lab-create-lab.md
+        - name: カスタム ラボでの VM の作成
+          href: devtest-lab-create-first-vm.md
+        - name: カスタム ラボのポリシーを設定する
+          href: devtest-lab-get-started-with-lab-policies.md
+        - name: カスタム ラボでの VM の使用
+          items:
+            - name: VM の作成
+              href: devtest-lab-add-vm.md
+            - name: クレーム可能 VM の作成と管理
+              href: devtest-lab-add-claimable-vm.md
+            - name: Azure CLI を使用した VM の作成と管理
+              href: devtest-lab-vmcli.md
+            - name: Resource Manager テンプレートを使用した VM の作成
+              href: devtest-lab-use-resource-manager-template.md
+            - name: VM の再起動
+              href: devtest-lab-restart-vm.md
+        - name: カスタム ラボでの環境の使用
+          items:
+            - name: 環境の作成
+              href: devtest-lab-create-environment-from-arm.md
+        - name: ラボへのアクセスのセキュリティ保護
+          items:
+            - name: ラボの所有者とユーザーを追加する
+              href: devtest-lab-add-devtest-user.md
+            - name: カスタム ロールでのアクセス許可のカスタマイズ
+              href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+        - name: カスタム ラボの構成
+          items:
+            - name: ポリシーとスケジュールの設定
+              href: devtest-lab-set-lab-policy.md
+            - name: コスト管理の構成
+              href: devtest-lab-configure-cost-management.md
+            - name: Azure Marketplace イメージの構成
+              href: devtest-lab-configure-marketplace-images.md
+            - name: ライセンスされたイメージの有効化
+              href: devtest-lab-enable-licensed-images.md
+            - name: カスタム ラボへのタグの追加
+              href: devtest-lab-add-tag.md
+            - name: カスタム ラボでのお知らせの投稿
+              href: devtest-lab-announcements.md
+            - name: カスタム ラボへのサポート情報の追加
+              href: devtest-lab-internal-support-message.md
+        - name: カスタム イメージまたは式の選択
+          href: devtest-lab-comparing-vm-base-image-types.md
+        - name: カスタム イメージの管理
+          items:
+            - name: VM からカスタム イメージを作成する
+              href: devtest-lab-create-custom-image-from-vm-using-portal.md
+            - name: Azure Portal を使用して VHD からカスタム イメージを作成する
+              href: devtest-lab-create-template.md
+            - name: PowerShell を使用して VHD からカスタム イメージを作成する
+              href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
+            - name: AzCopy を使用して VHD ファイルをアップロードする
+              href: devtest-lab-upload-vhd-using-azcopy.md
+            - name: PowerShell を使用して VHD ファイルをアップロードする
+              href: devtest-lab-upload-vhd-using-powershell.md
+            - name: ストレージ エクスプローラーを使用して VHD ファイルをアップロードする
+              href: devtest-lab-upload-vhd-using-storage-explorer.md
+        - name: 再利用可能なテンプレートの管理
+          items:
+            - name: アーティファクトとテンプレート用の Git リポジトリの追加
+              href: devtest-lab-add-artifact-repo.md
+            - name: 数式を管理する
+              href: devtest-lab-manage-formulas.md
+        - name: アーティファクトの管理
+          items:
+            - name: カスタム アーティファクトを作成する
+              href: devtest-lab-artifact-author.md
+            - name: アーティファクトの失敗の診断
+              href: devtest-lab-troubleshoot-artifact-failure.md
+        - name: 仮想ネットワークの管理
+          items:
+            - name: 仮想ネットワークを構成する
+              href: devtest-lab-configure-vnet.md
+            - name: IP 構成オプションの選択
+              href: devtest-lab-shared-ip.md
+        - name: データ ディスクの管理
+          items:
+            - name: データ ディスクのアタッチとデタッチ
+              href: devtest-lab-attach-detach-data-disk.md
+        - name: ラボのスケーリング
+          href: devtest-lab-scale-lab.md
+        - name: CI/CD との統合
+          items:
+            - name: ラボを VSTS CI/CD パイプラインに統合する
+              href: devtest-lab-integrate-ci-cd-vsts.md
+        - name: Resource Manager テンプレートを使ってラボを作成または変更する
+          href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
+- name: リファレンス
+  items:
+    - name: CLI 2.0
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/dtl/'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: DevTest Labs - FAQ
+      href: devtest-lab-faq.md
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
+    - name: チーム ブログ
+      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'

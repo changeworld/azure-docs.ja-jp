@@ -80,6 +80,8 @@ items:
         href: unique-keys.md
       - name: サーバーレス データベース
         href: serverless-computing-database.md
+      - name: BulkExecutor の概要
+        href: bulk-executor-overview.md
       - name: セキュリティ
         href: database-security.md
         items:
@@ -87,8 +89,6 @@ items:
             href: database-encryption-at-rest.md
           - name: データへのアクセスのセキュリティ保護
             href: secure-access-to-data.md
-      - name: TCO
-        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: ユース ケース
         href: use-cases.md
         items:
@@ -171,6 +171,10 @@ items:
                 href: multi-region-writers.md
           - name: ハウツー ガイド
             items:
+              - name: BulkExecutor - .NET
+                href: bulk-executor-dot-net.md
+              - name: BulkExecutor - Java
+                href: bulk-executor-java.md
               - name: クエリ
                 items:
                   - name: SQL クエリの実行
@@ -247,6 +251,10 @@ items:
                 href: sql-api-sdk-node.md
               - name: Python
                 href: sql-api-sdk-python.md
+              - name: BulkExecutor - .NET
+                href: sql-api-sdk-bulk-executor-dot-net.md
+              - name: BulkExecutor - Java
+                href: sql-api-sdk-bulk-executor-java.md
               - name: REST ()
                 href: /rest/api/cosmos-db/
               - name: REST リソース プロバイダー
@@ -257,8 +265,6 @@ items:
             items:
               - name: Visual Studio Code 拡張機能
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-              - name: スキーマ独立型インデックス作成資料
-                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: SQL のプレイグラウンド
                 href: 'https://aka.ms/cosmos-db-playground'
       - name: MongoDB API ドキュメント
@@ -433,6 +439,8 @@ items:
         href: set-throughput.md
       - name: ファイアウォールのサポート
         href: firewall-support.md
+      - name: 仮想ネットワーク サービス エンドポイントの設定
+        href: vnet-service-endpoint.md
       - name: メトリック
         href: use-metrics.md
       - name: SLA の監視
@@ -465,3 +473,5 @@ items:
         href: faq.md
       - name: 野球で説明するデータ整合性
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+      - name: ホワイトペーパー
+        href: whitepapers.md

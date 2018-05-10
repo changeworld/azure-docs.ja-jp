@@ -1,11 +1,11 @@
 ---
-title: "Azure での Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Azure での Windows 仮想マシンのライセンス認証に関する問題を解決するためのトラブルシューティングの手順を示します"
+title: Azure での Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング | Microsoft Docs
+description: Azure での Windows 仮想マシンのライセンス認証に関する問題を解決するためのトラブルシューティングの手順を示します
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -78,7 +78,7 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>手順 2: VM と Azure KMS サービスの間の接続を確認する
 
-1. ライセンス認証できない VM のローカル フォルダーに [Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) ツールをダウンロードし、展開します。 
+1. ライセンス認証できない VM のローカル フォルダーに [Psping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) ツールをダウンロードし、展開します。 
 
 2. [スタート] で [Windows PowerShell] を検索し、それを右クリックして [管理者として実行] を選択します。
 
@@ -118,7 +118,6 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Azure Marketplace から Windows Server 2016 を作成しました。 Windows Server 2016 をライセンス認証するために KMS キーを構成する必要はありますか? 
  
-
 いいえ。 Azure Marketplace のイメージでは、適切な KMS クライアント セットアップ キーが既に構成されています。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Windows ライセンス認証は、VM が Azure Hybrid Use Benefit (HUB) を使用しているかどうかにかかわらず、同じように動作しますか? 
@@ -127,7 +126,7 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Windows ライセンス認証が期限切れになるとどうなりますか? 
  
-猶予期間が終了し、Windows がまだライセンス認証されていない場合、Windows Server 2008 R2 以降のバージョンの Windows OS では、ライセンス認証に関する追加の通知が表示されます。 デスクトップの壁紙は黒のままで、Windows Update はセキュリティ更新プログラムと重要な更新プログラムだけをインストールし、オプションの更新プログラムはインストールしません。 [ライセンスの条件](http://technet.microsoft.com/en-us/library/ff793403.aspx)に関するページの下部の「Notifications (通知)」のセクションを参照してください。   
+猶予期間が終了し、Windows がまだライセンス認証されていない場合、Windows Server 2008 R2 以降のバージョンの Windows OS では、ライセンス認証に関する追加の通知が表示されます。 デスクトップの壁紙は黒のままで、Windows Update はセキュリティ更新プログラムと重要な更新プログラムだけをインストールし、オプションの更新プログラムはインストールしません。 [ライセンスの条件](http://technet.microsoft.com/library/ff793403.aspx)に関するページの下部の「Notifications (通知)」のセクションを参照してください。   
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

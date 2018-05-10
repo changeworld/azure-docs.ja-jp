@@ -71,7 +71,7 @@
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [Azure Storage への診断データの保存と表示](cloud-services-dotnet-diagnostics-storage.md)
+### [Azure Storage への診断データの保存と表示](../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json )
 ### [診断を使用したクラウド サービスのトレース](cloud-services-dotnet-diagnostics-trace-flow.md)
 
 ## トラブルシューティング

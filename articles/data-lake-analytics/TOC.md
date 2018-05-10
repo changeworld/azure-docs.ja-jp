@@ -13,12 +13,14 @@
 
 ## Data Lake Analytics の管理
 ### [Azure Portal](data-lake-analytics-manage-use-portal.md)
-### [Azure CLI](data-lake-analytics-manage-use-cli.md)
-### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
-### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
-### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
-### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### コマンド ライン
+#### [Azure CLI](data-lake-analytics-manage-use-cli.md)
+#### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+### SDK
+#### [.NET](data-lake-analytics-manage-use-dotnet-sdk.md)
+#### [Python](data-lake-analytics-manage-use-python-sdk.md)
+#### [Java](data-lake-analytics-manage-use-java-sdk.md)
+#### [Node.js](data-lake-analytics-manage-use-nodejs.md)
 ### [ポリシー](data-lake-analytics-policies.md)
 ### [診断ログにアクセスする](data-lake-analytics-diagnostic-logs.md)
 ### [クォータ制限を調整する](data-lake-analytics-quota-limits.md)
@@ -36,6 +38,7 @@
 #### [プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 
 ### Visual Studio
+#### [インストール](data-lake-analytics-data-lake-tools-install.md)
 #### [ジョブの参照と表示](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [カスタム C# コードのデバッグ](data-lake-analytics-debug-u-sql-jobs.md)
 #### [定期的なジョブのトラブルシューティング](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

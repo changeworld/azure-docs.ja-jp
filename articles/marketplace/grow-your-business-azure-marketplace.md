@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 85baba61d5603539641f45f7ab1d722ca98514ad
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fd51ad8289ac03bf7b4d2a5bd0222db98bcf6737
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grow-your-business-by-using-the-azure-marketplace"></a>Azure Marketplace を使用したビジネスの拡大
 
 Azure Marketplace リストの技術資産を作成した後は、マーケティングのベスト プラクティスに従ってアプリにアクセスするユーザー数を増やし、製品の利用数を増やすことができます。 
 
 >[!NOTE]
->公開プロセスと技術要件については、[Azure Marketplace と AppSource の公開に関するガイド](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide)を参照してください。
+>公開プロセスと技術要件については、[Azure Marketplace と AppSource の公開に関するガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)を参照してください。
 
 ## <a name="how-marketing-helps"></a>マーケティングの機能
 

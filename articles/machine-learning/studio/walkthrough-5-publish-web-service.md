@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 416a6d1c151fae01a00d00282ab9118e7391fbb7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6472b795c9b3651160af4d1520bfd1c90a500b5f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/23/2018
 * [データの正規化][normalize-data] (両方)
 * [モデルの評価][evaluate-model] (モデルの評価は終了したため)
 
-各モジュールを選択して Delete キーを押すか、モジュールを右クリックして **[削除]**を選択します。 
+各モジュールを選択して Delete キーを押すか、モジュールを右クリックして **[削除]** を選択します。 
 
 ![SVM モデルを削除][3a]
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 03/23/2018
 > [!TIP]
 > トレーニング実験を予測実験に変換するときの動作の詳細については、[Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)に関するページを参照してください。
 
-**[Web サービスの設定]**をクリックすると、次の動作が行われます。
+**[Web サービスの設定]** をクリックすると、次の動作が行われます。
 
 * トレーニング済みのモデルが 1 つの**トレーニング済みのモデル** モジュールに変換され、実験キャンバスの左側にあるモジュール パレットに保存されます (**[トレーニング済みのモデル]** で見つけることができます)。
 * トレーニングに使用したモジュールは削除されます。具体的には次のモジュールが削除されます。
@@ -106,7 +106,7 @@ Machine Learning Studio は、[分割][split]モジュールを削除する際�
 > 
 > 
 
-最後にもう一度実験を実行します ( **[実行]**をクリックします)。モデルがまだ機能していることを確認するには、[モデルのスコア付け][score-model]モジュールをクリックし、**[結果の表示]** を選択します。 元のデータが、信用リスク値 ("スコア付けラベル") とスコア付け確率値 ("スコア付け確率") と共に表示されます。 
+最後にもう一度実験を実行します ( **[実行]** をクリックします)。モデルがまだ機能していることを確認するには、[モデルのスコア付け][score-model]モジュールをクリックし、**[結果の表示]** を選択します。 元のデータが、信用リスク値 ("スコア付けラベル") とスコア付け確率値 ("スコア付け確率") と共に表示されます。 
 
 ## <a name="deploy-the-web-service"></a>Web サービスをデプロイする
 従来の Web サービスまたは Azure Resource Manager に基づく新しい Web サービスのどちらかとして実験をデプロイできます。
@@ -133,7 +133,7 @@ Machine Learning Studio は、[分割][split]モジュールを削除する際�
 
 3. **[料金プラン]** で、既存の価格プランを選択するか、[新規作成] を選択し、新しいプランに名前を付け、月額プラン オプションを選択します。 プラン レベルは既定では既定のリージョンのプランになり、Web サービスはそのリージョンにデプロイされます。
 
-4. **[デプロイ]**をクリックします。
+4. **[デプロイ]** をクリックします。
 
 数分後に、Web サービスの **[クイック スタート]** ページが開きます。
 
@@ -170,7 +170,7 @@ Web サービスがアクセスされると、ユーザーのデータは **Web 
 
 1. Web サービスの **[ダッシュボード]** ページで、**[既定のエンドポイント]** の **[テスト]** ボタンをクリックします。 サービスの入力データを要求するダイアログが表示されます。 これらは、元の信用リスク データセットに含まれるのと同じ列です。  
 
-2. データのセットを入力し、 **[OK]**をクリックします。 
+2. データのセットを入力し、 **[OK]** をクリックします。 
 
 #### <a name="test-in-the-machine-learning-web-services-portal"></a>Machine Learning Web サービス ポータルでテストする
 
@@ -184,7 +184,7 @@ Web サービスがアクセスされると、ユーザーのデータは **Web 
 
 1. [Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルで、ページ上部の **[テスト]** をクリックします。 **[テスト]** ページが開かれ、サービスのデータを入力することができます。 表示される入力フィールドは、元の信用リスク データセットに含まれる列に対応しています。 
 
-2. データのセットを入力し、 **[Test Request-Response (要求応答のテスト)]**をクリックします。
+2. データのセットを入力し、 **[Test Request-Response (要求応答のテスト)]** をクリックします。
 
 テストの結果は、ページの右側の出力列に表示されます。 
 
@@ -220,4 +220,4 @@ Web サービスのパフォーマンスを監視するには:
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/en-us/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/

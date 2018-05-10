@@ -4,17 +4,17 @@
   expanded: true
   items:
     - name: Azure Machine Learning について
-      href: ../desktop-workbench/overview-what-is-azure-ml.md
+      href: overview-what-is-azure-ml.md
     - name: モデル管理の概要
       href: ../desktop-workbench/model-management-overview.md
     - name: その他の ML 製品
-      href: ../desktop-workbench/overview-more-machine-learning.md
+      href: overview-more-machine-learning.md
     - name: 新機能
       href: ../desktop-workbench/azure-machine-learning-release-notes.md
 - name: クイック スタート
   items:
     - name: インストールと開始
-      href: ../desktop-workbench/quickstart-installation.md
+      href: quickstart-installation.md
 - name: チュートリアル
   items:
     - name: '1: データを準備する'
@@ -29,6 +29,8 @@
   items:
     - name: 主要な概念
       href: ../desktop-workbench/overview-general-concepts.md
+    - name: FPGA アクセラレーション
+      href: concept-accelerate-with-fpgas.md
 - name: ハウツー ガイド
   items:
     - name: 上位の CLI タスク
@@ -92,8 +94,10 @@
           href: ../desktop-workbench/how-to-read-write-files.md
         - name: MMLSpark ライブラリの使用
           href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: モデルの運用化
+    - name: モデルのデプロイと使用
       items:
+        - name: モデルの FPGA へのデプロイ
+          href: how-to-deploy-fpga-web-service.md
         - name: モデル管理の設定
           href: ../desktop-workbench/deployment-setup-configuration.md
         - name: クラスターとサービスのスケーリング
@@ -142,6 +146,31 @@
           href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
 - name: リファレンス
   items:
+    - name: Python パッケージ
+      href: reference-python-package-overview.md
+      items:
+        - name: Computer Vision
+          items:
+            - name: パッケージの概要とインストール
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision'
+            - name: 画像分類モデルの構築とデプロイ
+              href: how-to-build-deploy-image-classification-models.md
+            - name: モデルの精度
+              href: how-to-improve-accuracy-for-computer-vision-models.md
+        - name: 予測
+          items:
+            - name: 概要およびインストール
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview'
+            - name: 予測モデルの構築とデプロイ
+              href: how-to-build-deploy-forecast-models.md
+        - name: FPGA アクセラレーション
+          href: reference-fpga-package-overview.md
+        - name: テキスト分析
+          items:
+            - name: 概要およびインストール
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics'
+            - name: テキスト分類モデルの構築とデプロイ
+              href: how-to-build-deploy-text-classification-models.md
     - name: データの準備
       items:
         - name: データ準備のための Python 拡張機能
@@ -191,13 +220,13 @@
     - name: よく寄せられる質問
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 問題とトラブルシューティング
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
+      href: known-issues-and-troubleshooting-guide.md
     - name: サポートとトレーニング
-      href: ../desktop-workbench/support-for-aml-services.md
+      href: support-for-aml-services.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
-      href: ../desktop-workbench/aml-pricing.md
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Team Data Science Process

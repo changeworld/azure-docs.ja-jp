@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 6bad6c7cd641a2ef5461ee37b89c0bdc6a221017
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="logs-available-in-azure"></a>Azure で利用可能なログ
 
-Azure Cosmos DB アカウントの監視方法を説明する前に、ログと監視に関するいくつかの点を明確にしておきます。 Azure プラットフォームのログには、さまざまな種類があります。 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)、イベント、ハートビート監視、操作ログなどです。 大量のログが存在します。 Azure Portal の [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) で、ログの完全な一覧を確認できます。 
+Azure Cosmos DB アカウントの監視方法を説明する前に、ログと監視に関するいくつかの点を明確にしておきます。 Azure プラットフォームのログには、さまざまな種類があります。 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)、イベント、ハートビート監視、操作ログなどです。 大量のログが存在します。 Azure Portal の [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) で、ログの完全な一覧を確認できます。 
 
 次の図は、利用可能な Azure ログの種類を示しています。
 
@@ -51,7 +51,7 @@ Azure アクティビティ ログは、Azure で発生したサブスクリプ�
 
 ### <a name="azure-metrics"></a>Azure メトリック
 
-大半の Azure リソースによって出力される Azure テレメトリ データ (_パフォーマンスカウンター_とも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使って、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
+大半の Azure リソースによって出力される Azure テレメトリ データ (_パフォーマンスカウンター_とも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使って、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 

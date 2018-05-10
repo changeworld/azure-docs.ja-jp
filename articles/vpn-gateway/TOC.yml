@@ -1,17 +1,17 @@
 - name: VPN Gateway のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: VPN Gateway について
       href: vpn-gateway-about-vpngateways.md
-- name: サンプル
-  items:
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: チュートリアル
   items:
     - name: VPN ゲートウェイを作成して管理する
       href: vpn-gateway-tutorial-create-gateway-powershell.md
+- name: サンプル
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: 概念
   items:
     - name: VPN ゲートウェイの計画と設計
@@ -175,7 +175,7 @@
               href: vpn-gateway-troubleshoot-site-to-site-cannot-connect.md
             - name: サイト対サイト接続が断続的に切断される
               href: vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md
-    - name: クラシック デプロイメント モデルに関する記事
+    - name: クラシック デプロイ モデルに関する記事
       items:
         - name: サイト対サイト接続の構成
           href: vpn-gateway-howto-site-to-site-classic-portal.md

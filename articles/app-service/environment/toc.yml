@@ -10,7 +10,7 @@
       href: create-external-ase.md
     - name: 内部 ASE の作成
       href: create-ilb-ase.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: WAF との統合
       href: app-service-app-service-environment-web-application-firewall.md
@@ -30,6 +30,8 @@
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
       href: app-service-app-service-environment-intro.md
+    - name: 診断
+      href: ../app-service-diagnostics.md
 - name: ハウツー ガイド
   items:
     - name: ASE の使用

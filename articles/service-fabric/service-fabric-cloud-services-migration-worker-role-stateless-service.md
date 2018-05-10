@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services アプリのマイクロサービスへの変換 | Microsoft Docs"
-description: "このガイドでは、Cloud Services から Service Fabric に移行するときのために、Cloud Services の Web ロールと worker ロールと、Service Fabric のステートレス サービスの比較を説明します。"
+title: Azure Cloud Services アプリのマイクロサービスへの変換 | Microsoft Docs
+description: このガイドでは、Cloud Services から Service Fabric に移行するときのために、Cloud Services の Web ロールと worker ロールと、Service Fabric のステートレス サービスの比較を説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -207,7 +207,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>スタートアップ タスク
 スタートアップ タスクは、アプリケーションの起動前に実行されるアクションです。 通常、スタートアップ タスクは、昇格された特権を使用してセットアップ スクリプトを実行するために使用されます。 Cloud Services と Service Fabric のいずれもスタートアップ タスクをサポートしています。 主な違いは、Cloud Services の場合、ロール インスタンスの一部なので、スタートアップ タスクは VM に関連付けられている点です。一方、Service Fabric では、スタートアップ タスクはサービスに関連付けられており、特定の VM には関連付けられていません。
 
-| Cloud Services | Service Fabric |
+| Service Fabric | Cloud Services |
 | --- | --- | --- |
 | 構成の場所 |ServiceDefinition.csdef |
 | 特権 |"制限付き" または "昇格された" 特権 |

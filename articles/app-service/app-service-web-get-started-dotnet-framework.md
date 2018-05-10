@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: eb1d977dddce07b3deda7eeeeb3bc93d41339de1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
@@ -51,11 +51,11 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 アプリケーションに _myFirstAzureWebApp_ という名前を付けて、**[OK]** をクリックします。
    
-![New Project dialog box](./media/app-service-web-get-started-dotnet-framework/new-project.png)
+![New Project dialog box](./media/app-service-web-get-started-dotnet/new-project.png)
 
 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、**[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
       
-**[OK]**を選択します。
+**[OK]** を選択します。
 
 ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/app-service-web-get-started-dotnet-framework/select-mvc-template.png)
 
@@ -110,7 +110,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
 | サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
-**[OK]**を選択します。
+**[OK]** を選択します。
 
 ## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
 

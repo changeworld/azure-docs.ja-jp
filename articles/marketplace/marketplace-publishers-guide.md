@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド
 
@@ -253,7 +253,7 @@ Enterprise Agreement の顧客は、Azure に対する前払いによる金銭�
 
 |**要件**  | **詳細**  |**公開オプション**  |
 |---------|---------|---------|
-|**無料試用期間および試用エクスペリエンス**     |  顧客は、限られた期間、パブリッシャーのアプリを無料で使用できる必要があります。<br><br>つまり、顧客は、パブリッシャーの製品のライセンス料またはサブスクリプション料の対象とならず、基になる Microsoft のファーストパーティ製品またはサービスのコストもかかりません。 すべての試用オプションがパブリッシャーの Microsoft 製品サブスクリプションに展開されるため、パブリッシャーのみが試用コストの最適化と管理を制御します。<br><br>無料試用版、対話型デモ、または体験版を選ぶことができます。 何を選んでも、無料試用版では顧客に、追加コストなしでアプリを試すための最低限の時間を提供する必要があります。<br><br>体験版の作成を始めるには、cloudmarketplace@microsoft.com にお問い合わせください。 <br><br>Azure Marketplace の SaaS 試用版エクスペリエンスでは、ユーザーに Active Directory の仕事用資格情報でのサインインを許可する必要があることに注意してください。 [詳細情報](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。 |   試用版      | 
+|**無料試用期間および試用エクスペリエンス**     |  顧客は、限られた期間、パブリッシャーのアプリを無料で使用できる必要があります。<br><br>つまり、顧客は、パブリッシャーの製品のライセンス料またはサブスクリプション料の対象とならず、基になる Microsoft のファーストパーティ製品またはサービスのコストもかかりません。 すべての試用オプションがパブリッシャーの Microsoft 製品サブスクリプションに展開されるため、パブリッシャーのみが試用コストの最適化と管理を制御します。<br><br>無料試用版、対話型デモ、または体験版を選ぶことができます。 何を選んでも、無料試用版では顧客に、追加コストなしでアプリを試すための最低限の時間を提供する必要があります。<br><br>体験版の作成を始めるには、cloudmarketplace@microsoft.com にお問い合わせください。 <br><br>Azure Marketplace の SaaS 試用版エクスペリエンスでは、ユーザーに Active Directory の仕事用資格情報でのサインインを許可する必要があることに注意してください。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。 |   試用版      | 
 | **簡単に構成できるターンキー ソリューション**    |  アプリは、短時間で簡単に構成およびセットアップできる必要があります。       |  試用版       |
 |**可用性/アップタイム**    |    SaaS アプリまたはプラットフォームのアップタイムは 99.9% 以上である必要があります。     |    試用版     |
 |**Azure Active Directory**    |    オファリングでは、同意が有効な Azure Active Directory (Azure AD) フェデレーション シングル サインオン (SSO) を許可する必要があります。      |  試用版|
@@ -264,7 +264,7 @@ Enterprise Agreement の顧客は、Azure に対する前払いによる金銭�
 |**要件**  |**詳細** |**公開オプション**  |
 |---------|---------|---------|
 |**請求/メータリング**    |  仮想マシンは、ライセンス持ち込みまたは使用量に基づく毎月の請求をサポートする必要があります。       |    トランザクション    |
-|**Azure と互換性がある仮想ハード ディスク (VHD)**     |   仮想マシンは、[[Windows]](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) または [[Linux] ](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上に構築されている必要があります。    |   トランザクション      |
+|**Azure と互換性がある仮想ハード ディスク (VHD)**     |   仮想マシンは、[[Windows]](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) または [[Linux] ](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上に構築されている必要があります。    |   トランザクション      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>コンサルティング サービス公開に固有の前提条件
 
@@ -277,7 +277,7 @@ Enterprise Agreement の顧客は、Azure に対する前払いによる金銭�
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする
 Azure Active Directory はクラウド ID サービスであり、業界標準のプロトコル OAuth および OpenID Connect を使って Microsoft 職場または学校アカウントでの認証を有効にします。 Azure AD の詳細については、[製品の Web ページ](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)をご覧ください。 
 
-Microsoft はすべての Marketplace ユーザーを Azure AD で認証します。 認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 [認証中に Azure AD からアプリが受信するトークン](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)には、アプリでユーザー アカウントを作成するために使う有益なユーザー情報が含まれています。 そのため、プロビジョニングのエクスペリエンスを自動化し、変換の可能性を高めることができます。 
+Microsoft はすべての Marketplace ユーザーを Azure AD で認証します。 認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 [認証中に Azure AD からアプリが受信するトークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)には、アプリでユーザー アカウントを作成するために使う有益なユーザー情報が含まれています。 そのため、プロビジョニングのエクスペリエンスを自動化し、変換の可能性を高めることができます。 
 
 Azure AD を使ってアプリまたは試用の 1 クリック認証を有効にすると、次のことが可能になります。
 
@@ -292,20 +292,20 @@ Azure AD を使ってアプリまたは試用の 1 クリック認証を有効�
 
 - Azure Portal でアプリケーションを登録する。
 - Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
-- [詳細情報](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)。
+- [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
 
 Azure AD フェデレーション SSO が初めての場合
 
 - Azure Portal でアプリケーションを登録する。
-- [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発する。
+- [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発する。
 - Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
-- [詳細情報](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
+- [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
 
 ### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>Marketplace のための Azure AD の統合を検証する: シングルテナント アプリケーション
 
 シングルテナント アプリケーションには、次のような複数の選択肢があります。
 
-- [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使って、ユーザーをパブリッシャーのディレクトリにゲスト ユーザーとして追加する。
+- [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使って、ユーザーをパブリッシャーのディレクトリにゲスト ユーザーとして追加する。
 - "連絡する" を使って顧客用に試用版を手動でプロビジョニングする。
 - 顧客ごとの "体験版" を開発する。
 - SSO を使ってマルチテナント サンプル デモ アプリをビルドする。
@@ -316,11 +316,11 @@ Azure AD フェデレーション SSO が初めての場合
 
 |製品 |公開に関する情報  |
 |---------|---------|
-|Office 365     |    [公開プロセスとガイドライン]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store)を確認します。     |
-|Dynamics 365 for Finance and Operations  |   Enterprise Edition 向けに開発している場合は、[公開プロセスとガイドライン](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。      |
-|Dynamics 365 for Customer Engagement |[公開プロセスとガイドライン](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。 |
-|Power BI   |     [公開プロセスとガイドライン]( https://docs.microsoft.com/en-us/power-bi/developer/office-store)を確認します。    |
-|Cortana Intelligence     |    [AppSource での Cortana](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) について確認します。     |
+|Office 365     |    [公開プロセスとガイドライン]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)を確認します。     |
+|Dynamics 365 for Finance and Operations  |   Enterprise Edition 向けに開発している場合は、[公開プロセスとガイドライン](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。      |
+|Dynamics 365 for Customer Engagement |[公開プロセスとガイドライン](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。 |
+|Power BI   |     [公開プロセスとガイドライン]( https://docs.microsoft.com/power-bi/developer/office-store)を確認します。    |
+|Cortana Intelligence     |    [AppSource での Cortana](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) について確認します。     |
 |AppSource コンサルティング サービス オファリング     |  [ガイドラインを確認し、オファリングの送信方法](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を学びます。    |
 
 
@@ -522,11 +522,11 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 
 開発者アカウントには、主に信頼済み PC からアクセスする必要があります。 アカウントごとに生成されるコードの数 (1 週間あたり) には制限があるため、このことは非常に重要です。 また、信頼済みの PC を使用することが、最もシームレスなサインイン エクスペリエンスを可能にします。
 
-開発者アカウントに関するその他のガイドラインやセキュリティについて詳しくは、「[開発者アカウントを開く](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account)」をご覧ください。
+開発者アカウントに関するその他のガイドラインやセキュリティについて詳しくは、「[開発者アカウントを開く](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account)」をご覧ください。
 
 ### <a name="guidance-for-microsoft-ids-in-an-azure-ad-federated-domain"></a>Azure AD フェデレーション ドメインでの Microsoft ID に関するガイダンス
 
-会社のアカウントは、[Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/) 経由でフェデレーションできます。 会社のメール アドレスを使って Microsoft ID の作成を試行すると、エラーが返されます。 エラーが発生した場合は、最初に、IT チームと共にこれがその原因かどうかを確認します。 これは既知の問題であり、解決に取り組んでいます。 
+会社のアカウントは、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) 経由でフェデレーションできます。 会社のメール アドレスを使って Microsoft ID の作成を試行すると、エラーが返されます。 エラーが発生した場合は、最初に、IT チームと共にこれがその原因かどうかを確認します。 これは既知の問題であり、解決に取り組んでいます。 
 
 対処法として、@outlook.comドドメインで新しいメール アドレスを作成して、ルールを作成することをお勧めします。 次の手順に従います。
 
@@ -562,7 +562,7 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 5. **[アカウントの種類]** に、**[会社]** を選択し、**[次へ]** をクリックします。
 
    >[!IMPORTANT]
-   >アカウントの種類と、自社に最適な選択について理解を深めるには、「[アカウントの種類、場所、料金](https://docs.microsoft.com/en-us/windows/uwp/publish/account-types-locations-and-fees)」をご覧ください。
+   >アカウントの種類と、自社に最適な選択について理解を深めるには、「[アカウントの種類、場所、料金](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)」をご覧ください。
 
 6. **発行者表示名**に、表示名 (通常は、会社名) を入力します。
 
@@ -607,13 +607,13 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
    >[!IMPORTANT]
    >支払いアカウントを更新または変更する必要がある場合は、上記と同じ手順に従い、現在の情報の代わりに新しい情報を使用します。 支払いアカウントを変更すると、最大で支払い期間 1 回分の遅延が支払いに発生する可能性があります。 この遅延は、支払いアカウントが初めて設定された場合と同様に、アカウント変更の確認が必要になるために発生します。 アカウントが検証された後は、全額の支払いを受けられます。 現在の支払サイクルの支払請求は、次の期間に追加されます。
 
-4. **[次へ]**を選択します。 
+4. **[次へ]** を選択します。 
 
 税に関する情報を追加するには、次の手順を実行します。
 
 1. 必要に応じて、Microsoft アカウントを使用して [Microsoft デベロッパー センター](https://dev.windows.com) にサインインします。
 2. 左側のメニューの **[税プロファイル]** を選択します。
-3. **[税フォームの設定]** ページで、永続権を持つ国または地域を選択し、第一市民権を保持する国または地域を選択します。 **[次へ]**を選択します。
+3. **[税フォームの設定]** ページで、永続権を持つ国または地域を選択し、第一市民権を保持する国または地域を選択します。 **[次へ]** を選択します。
 4. 税金の詳細を入力し、**[次へ]** をクリックします。
 
 デベロッパー センター登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。

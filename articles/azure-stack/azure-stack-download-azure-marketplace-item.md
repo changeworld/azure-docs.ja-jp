@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c7d28831edf028657b7dd2a6a404a692a4a3bcb0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -62,7 +62,7 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
 
 1. PowerShell コンソールを管理者として開き、[Azure Stack 固有の PowerShell モジュールをインストール](azure-stack-powershell-install.md)します。 必ず、**PowerShell バージョン 1.2.11 以上**をインストールしてください。  
 
-2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、**Connect-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
+2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したサブスクリプションを選択します。  
 

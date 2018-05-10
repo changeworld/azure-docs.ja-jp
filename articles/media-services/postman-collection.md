@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 7270c8f6e9e6bfe2eb75bf6fa14429e2f22dc4ab
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>オンデマンド ストリーミング操作による Postman コレクションのインポート
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 03/28/2018
                                 "Assets"
                             ]
                         },
-                        "description": "List Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\nAsset Entity REST API - https://msdn.microsoft.com/en-us/library/azure/hh974277.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\nAsset Entity REST API - https://msdn.microsoft.com/library/azure/hh974277.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -843,7 +843,7 @@ ms.lasthandoff: 03/28/2018
                                 "Assets"
                             ]
                         },
-                        "description": "Create Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\n[Asset Entity REST API](https://msdn.microsoft.com/en-us/library/azure/hh974277.aspx)\n\n[Full REST API documentation](https://msdn.microsoft.com/library/azure/hh973617.aspx)"
+                        "description": "Create Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\n[Asset Entity REST API](https://msdn.microsoft.com/library/azure/hh974277.aspx)\n\n[Full REST API documentation](https://msdn.microsoft.com/library/azure/hh973617.aspx)"
                     },
                     "response": []
                 },
@@ -912,7 +912,7 @@ ms.lasthandoff: 03/28/2018
                                 "Assets('{{LastAssetId}}')"
                             ]
                         },
-                        "description": "Create Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\nUse the global variable from the CreateAsset Post to delete the asset. It is stored in the LastAssetId global variable.\n\nAsset Entity REST API - https://msdn.microsoft.com/en-us/library/azure/hh974277.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\nUse the global variable from the CreateAsset Post to delete the asset. It is stored in the LastAssetId global variable.\n\nAsset Entity REST API - https://msdn.microsoft.com/library/azure/hh974277.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -982,7 +982,7 @@ ms.lasthandoff: 03/28/2018
                                 "Assets('{{LastAssetId}}')"
                             ]
                         },
-                        "description": "Update Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\nAsset Entity REST API - https://msdn.microsoft.com/en-us/library/azure/hh974277.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Update Assets\nThe Asset entity contains digital files (including video, audio, images, thumbnail collections, text tracks and closed caption files) and the metadata about these files. After the digital files are uploaded into an asset, they could be used in the Media Services encoding and streaming workflows.\n\nAsset Entity REST API - https://msdn.microsoft.com/library/azure/hh974277.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1217,7 +1217,7 @@ ms.lasthandoff: 03/28/2018
                                 }
                             ]
                         },
-                        "description": "Create Asset Files\nTo create the asset files on an asset, you have to use the CreateFileInfos function.\nA File entity is created using the CreateFileInfos function and passing in the Asset Id that is associated with the media file you uploaded into blob storage. For more information, see Upload a file to blob storage.\nhttps://msdn.microsoft.com/en-us/library/azure/jj683097.aspx\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Asset Files\nTo create the asset files on an asset, you have to use the CreateFileInfos function.\nA File entity is created using the CreateFileInfos function and passing in the Asset Id that is associated with the media file you uploaded into blob storage. For more information, see Upload a file to blob storage.\nhttps://msdn.microsoft.com/library/azure/jj683097.aspx\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1287,7 +1287,7 @@ ms.lasthandoff: 03/28/2018
                                 "Files"
                             ]
                         },
-                        "description": "Get Asset Files\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get Asset Files\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1350,7 +1350,7 @@ ms.lasthandoff: 03/28/2018
                                 "Files('nb:cid:UUID:5710445d-1500-80c4-bc75-f1e5c3a6141b')"
                             ]
                         },
-                        "description": "Update an Asset Files\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Update an Asset Files\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }
@@ -1426,7 +1426,7 @@ ms.lasthandoff: 03/28/2018
                                 "Channels"
                             ]
                         },
-                        "description": "List Channels\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List Channels\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1497,7 +1497,7 @@ ms.lasthandoff: 03/28/2018
                                 "Channels"
                             ]
                         },
-                        "description": "Create Channel\n\nChannels can be created using a POST HTTP request and specifying property values.\n\nIf successful, a 202 Accepted status code is returned along with a representation of the created entity in the response body. \n\nThe 202 Accepted status code indicates an asynchronous operation, in which case the operation-id header value is also provided for use in polling and tracking the status of long-running operations, such as starting or stopping a Channel. Pass the operation-id header value into the Operation Entity to retrieve the status. For more information, see Manually Polling Long-Running Operations.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Channel\n\nChannels can be created using a POST HTTP request and specifying property values.\n\nIf successful, a 202 Accepted status code is returned along with a representation of the created entity in the response body. \n\nThe 202 Accepted status code indicates an asynchronous operation, in which case the operation-id header value is also provided for use in polling and tracking the status of long-running operations, such as starting or stopping a Channel. Pass the operation-id header value into the Operation Entity to retrieve the status. For more information, see Manually Polling Long-Running Operations.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1566,7 +1566,7 @@ ms.lasthandoff: 03/28/2018
                                 "Channels"
                             ]
                         },
-                        "description": "Create Channel with Encoding\n\nChannels can be created using a POST HTTP request and specifying property values.\n\nIf successful, a 202 Accepted status code is returned along with a representation of the created entity in the response body. \n\nThe 202 Accepted status code indicates an asynchronous operation, in which case the operation-id header value is also provided for use in polling and tracking the status of long-running operations, such as starting or stopping a Channel. Pass the operation-id header value into the Operation Entity to retrieve the status. For more information, see Manually Polling Long-Running Operations.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Channel with Encoding\n\nChannels can be created using a POST HTTP request and specifying property values.\n\nIf successful, a 202 Accepted status code is returned along with a representation of the created entity in the response body. \n\nThe 202 Accepted status code indicates an asynchronous operation, in which case the operation-id header value is also provided for use in polling and tracking the status of long-running operations, such as starting or stopping a Channel. Pass the operation-id header value into the Operation Entity to retrieve the status. For more information, see Manually Polling Long-Running Operations.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1635,7 +1635,7 @@ ms.lasthandoff: 03/28/2018
                                 "Channels"
                             ]
                         },
-                        "description": "Create Channel with Encoding\n\nChannels can be created using a POST HTTP request and specifying property values.\n\nIf successful, a 202 Accepted status code is returned along with a representation of the created entity in the response body. \n\nThe 202 Accepted status code indicates an asynchronous operation, in which case the operation-id header value is also provided for use in polling and tracking the status of long-running operations, such as starting or stopping a Channel. Pass the operation-id header value into the Operation Entity to retrieve the status. For more information, see Manually Polling Long-Running Operations.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Channel with Encoding\n\nChannels can be created using a POST HTTP request and specifying property values.\n\nIf successful, a 202 Accepted status code is returned along with a representation of the created entity in the response body. \n\nThe 202 Accepted status code indicates an asynchronous operation, in which case the operation-id header value is also provided for use in polling and tracking the status of long-running operations, such as starting or stopping a Channel. Pass the operation-id header value into the Operation Entity to retrieve the status. For more information, see Manually Polling Long-Running Operations.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1705,7 +1705,7 @@ ms.lasthandoff: 03/28/2018
                                 "Channels('nb:chid:UUID:27ff0843-abae-4261-b46e-0558efc21f82')"
                             ]
                         },
-                        "description": "Delete Channels\n\nDelete the Channel entity\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Delete Channels\n\nDelete the Channel entity\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1772,7 +1772,7 @@ ms.lasthandoff: 03/28/2018
                                 "Start"
                             ]
                         },
-                        "description": "Start a Channel\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Start a Channel\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1839,7 +1839,7 @@ ms.lasthandoff: 03/28/2018
                                 "Stop"
                             ]
                         },
-                        "description": "Stop a Channel\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Stop a Channel\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1906,7 +1906,7 @@ ms.lasthandoff: 03/28/2018
                                 "Reset"
                             ]
                         },
-                        "description": "Reset a Channel\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Reset a Channel\n\nThe Channel entity represents a pipeline for processing live streaming content.\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -1976,7 +1976,7 @@ ms.lasthandoff: 03/28/2018
                                 "Channels"
                             ]
                         },
-                        "description": "Update Channel\n\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Update Channel\n\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -2046,7 +2046,7 @@ ms.lasthandoff: 03/28/2018
                                 "StartAdvertisement"
                             ]
                         },
-                        "description": "Start a Channel Ad Break\n\nThe live encoder can be signaled to start an advertisement or commercial break using a POST HTTP request and specifying property values of the in the StartAdvertisement Entity entity in the body of the request.\n\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Start a Channel Ad Break\n\nThe live encoder can be signaled to start an advertisement or commercial break using a POST HTTP request and specifying property values of the in the StartAdvertisement Entity entity in the body of the request.\n\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -2116,7 +2116,7 @@ ms.lasthandoff: 03/28/2018
                                 "EndAdvertisement"
                             ]
                         },
-                        "description": "End a Channel Ad Break\n\nThe live encoder can be signaled to start an advertisement or commercial break using a POST HTTP request and specifying property values of the in the StartAdvertisement Entity entity in the body of the request.\n\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "End a Channel Ad Break\n\nThe live encoder can be signaled to start an advertisement or commercial break using a POST HTTP request and specifying property values of the in the StartAdvertisement Entity entity in the body of the request.\n\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -2186,7 +2186,7 @@ ms.lasthandoff: 03/28/2018
                                 "ShowSlate"
                             ]
                         },
-                        "description": "Show Slate\n\nIndicates to the live encoder within the Channel that it needs to switch to the default slate image during the commercial break (and mask the incoming video feed). Default is false. The image used will be the one specified via the default slate asset Id property at the time of the channel creation. \n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Show Slate\n\nIndicates to the live encoder within the Channel that it needs to switch to the default slate image during the commercial break (and mask the incoming video feed). Default is false. The image used will be the one specified via the default slate asset Id property at the time of the channel creation. \n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -2256,7 +2256,7 @@ ms.lasthandoff: 03/28/2018
                                 "ShowSlate"
                             ]
                         },
-                        "description": "Show Slate\n\nIndicates to the live encoder within the Channel that it needs to switch to the default slate image during the commercial break (and mask the incoming video feed). Default is false. The image used will be the one specified via the default slate asset Id property at the time of the channel creation. \n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Show Slate\n\nIndicates to the live encoder within the Channel that it needs to switch to the default slate image during the commercial break (and mask the incoming video feed). Default is false. The image used will be the one specified via the default slate asset Id property at the time of the channel creation. \n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -2326,7 +2326,7 @@ ms.lasthandoff: 03/28/2018
                                 "HideSlate"
                             ]
                         },
-                        "description": "Hide Slate\n\nThe live encoder can be signaled to end an on-going slate using a POST HTTP request.\n\n\nChannel Entity REST API - https://msdn.microsoft.com/en-us/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Hide Slate\n\nThe live encoder can be signaled to end an on-going slate using a POST HTTP request.\n\n\nChannel Entity REST API - https://msdn.microsoft.com/library/azure/dn783458.aspx\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }
@@ -2918,7 +2918,7 @@ ms.lasthandoff: 03/28/2018
         },
         {
             "name": "Functions",
-            "description": "Rest API Functions\nhttps://msdn.microsoft.com/en-us/library/azure/jj683097.aspx\n",
+            "description": "Rest API Functions\nhttps://msdn.microsoft.com/library/azure/jj683097.aspx\n",
             "item": [
                 {
                     "name": "CreateFileInfos  Function",
@@ -2989,7 +2989,7 @@ ms.lasthandoff: 03/28/2018
                                 }
                             ]
                         },
-                        "description": "Create Asset Files\nTo create the asset files on an asset, you have to use the CreateFileInfos function.\nA File entity is created using the CreateFileInfos function and passing in the Asset Id that is associated with the media file you uploaded into blob storage. For more information, see Upload a file to blob storage.\nhttps://msdn.microsoft.com/en-us/library/azure/jj683097.aspx\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Asset Files\nTo create the asset files on an asset, you have to use the CreateFileInfos function.\nA File entity is created using the CreateFileInfos function and passing in the Asset Id that is associated with the media file you uploaded into blob storage. For more information, see Upload a file to blob storage.\nhttps://msdn.microsoft.com/library/azure/jj683097.aspx\n\nAssetFile Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974275.aspx \n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }
@@ -3064,7 +3064,7 @@ ms.lasthandoff: 03/28/2018
                                 "Jobs"
                             ]
                         },
-                        "description": "Create Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\n    NOTE: It is very important to use the JSON Verbose Accept header for the Job to submit properly. Set the Accept header to application/json;odata=verbose\n    \nThis sample creates a Job with Azure Media Encoder Standard - nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56\n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\n    NOTE: It is very important to use the JSON Verbose Accept header for the Job to submit properly. Set the Accept header to application/json;odata=verbose\n    \nThis sample creates a Job with Azure Media Encoder Standard - nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56\n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -3133,7 +3133,7 @@ ms.lasthandoff: 03/28/2018
                                 "Jobs"
                             ]
                         },
-                        "description": "Create Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\n    NOTE: It is very important to use the JSON Verbose Accept header for the Job to submit properly. Set the Accept header to application/json;odata=verbose\n    \nThis sample creates a Job with Azure Media Encoder Standard - nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56\n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\n    NOTE: It is very important to use the JSON Verbose Accept header for the Job to submit properly. Set the Accept header to application/json;odata=verbose\n    \nThis sample creates a Job with Azure Media Encoder Standard - nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56\n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": [
                         {
@@ -3336,7 +3336,7 @@ ms.lasthandoff: 03/28/2018
                                 "Jobs"
                             ]
                         },
-                        "description": "Create Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\n    NOTE: It is very important to use the JSON Verbose Accept header for the Job to submit properly. Set the Accept header to application/json;odata=verbose\n    \nThis sample creates a Job with a custom encoding profile.  For details see [Customizing Media Encoder Standard presets](https://docs.microsoft.com/azure/media-services/media-services-custom-mes-presets-with-dotnet)\nOr for JSON samples of our system presets, see the [Sample Presets page](https://docs.microsoft.com/azure/media-services/media-services-mes-presets-overview)\n\n[Job Entity REST API](https://msdn.microsoft.com/en-us/library/azure/hh974289.aspx)\n\n[Full REST API documentation](https://msdn.microsoft.com/library/azure/hh973617.aspx)"
+                        "description": "Create Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\n    NOTE: It is very important to use the JSON Verbose Accept header for the Job to submit properly. Set the Accept header to application/json;odata=verbose\n    \nThis sample creates a Job with a custom encoding profile.  For details see [Customizing Media Encoder Standard presets](https://docs.microsoft.com/azure/media-services/media-services-custom-mes-presets-with-dotnet)\nOr for JSON samples of our system presets, see the [Sample Presets page](https://docs.microsoft.com/azure/media-services/media-services-mes-presets-overview)\n\n[Job Entity REST API](https://msdn.microsoft.com/library/azure/hh974289.aspx)\n\n[Full REST API documentation](https://msdn.microsoft.com/library/azure/hh973617.aspx)"
                     },
                     "response": [
                         {
@@ -3677,7 +3677,7 @@ ms.lasthandoff: 03/28/2018
                                 "Jobs"
                             ]
                         },
-                        "description": "List Jobs\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List Jobs\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -3743,7 +3743,7 @@ ms.lasthandoff: 03/28/2018
                                 "Jobs('nb:jid:UUID:56debcff-0300-80c0-8bf6-f1e7c1785b5c')"
                             ]
                         },
-                        "description": "Get Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get Job\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -3816,7 +3816,7 @@ ms.lasthandoff: 03/28/2018
                                 }
                             ]
                         },
-                        "description": "Get Job State\n\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get Job State\n\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -3889,7 +3889,7 @@ ms.lasthandoff: 03/28/2018
                                 }
                             ]
                         },
-                        "description": "Get Job State and RunningDuration\n\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get Job State and RunningDuration\n\nA job is an entity that contains metadata about a set of tasks. Each task performs an atomic operation on the input asset(s). A job is typically used to process one audio/video presentation. If you are processing multiple videos, create a job for each video to be encoded. \n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }
@@ -4338,7 +4338,7 @@ ms.lasthandoff: 03/28/2018
                                 "NotificationEndPoints"
                             ]
                         },
-                        "description": "Create NotificationEndpoint\n\nJob Entity REST API \nhttps://msdn.microsoft.com/en-us/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Create NotificationEndpoint\n\nJob Entity REST API \nhttps://msdn.microsoft.com/library/azure/hh974289.aspx\n\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -4408,7 +4408,7 @@ ms.lasthandoff: 03/28/2018
                                 "NotificationEndPoints"
                             ]
                         },
-                        "description": "Get NotificationEndpoints\n\nThe endpoint to which the notifications about the job state are sent. Notifications can flow to an Azure Queue or a WebHook \n\nhttps://msdn.microsoft.com/en-us/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get NotificationEndpoints\n\nThe endpoint to which the notifications about the job state are sent. Notifications can flow to an Azure Queue or a WebHook \n\nhttps://msdn.microsoft.com/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -4478,7 +4478,7 @@ ms.lasthandoff: 03/28/2018
                                 "NotificationEndPoints('nb:nepid:UUID:1aa7afea-4bca-445b-82cd-ad6edeeea724')"
                             ]
                         },
-                        "description": "Delete NotificationEndpoint\n\n\nhttps://msdn.microsoft.com/en-us/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Delete NotificationEndpoint\n\n\nhttps://msdn.microsoft.com/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -4560,7 +4560,7 @@ ms.lasthandoff: 03/28/2018
                                 }
                             ]
                         },
-                        "description": "Get NotificationEndpoints with Filter\n\n\nThe endpoint to which the notifications about the job state are sent. Notifications can flow to an Azure Queue or a WebHook \n\nhttps://msdn.microsoft.com/en-us/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get NotificationEndpoints with Filter\n\n\nThe endpoint to which the notifications about the job state are sent. Notifications can flow to an Azure Queue or a WebHook \n\nhttps://msdn.microsoft.com/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 },
@@ -4637,7 +4637,7 @@ ms.lasthandoff: 03/28/2018
                                 }
                             ]
                         },
-                        "description": "Get NotificationEndpoints by Type\n\n1 = Queue\n2 = Reserved\n3 = WebHook\n\n\nThe endpoint to which the notifications about the job state are sent. Notifications can flow to an Azure Queue or a WebHook \n\nhttps://msdn.microsoft.com/en-us/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "Get NotificationEndpoints by Type\n\n1 = Queue\n2 = Reserved\n3 = WebHook\n\n\nThe endpoint to which the notifications about the job state are sent. Notifications can flow to an Azure Queue or a WebHook \n\nhttps://msdn.microsoft.com/library/azure/dn169055.aspx\n\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }

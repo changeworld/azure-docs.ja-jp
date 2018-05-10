@@ -8,7 +8,7 @@
       href: iot-services-and-technologies.md
 - name: 解決方法
   items:
-    - name: IoT Suite の構成済みソリューション
+    - name: IoT ソリューション アクセラレータ
       href: /azure/iot-suite
     - name: IoT Central
       href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -18,8 +18,8 @@
       href: /azure/iot-hub
     - name: IoT Hub Device Provisioning Service
       href: /azure/iot-dps
-    - name: Location Based Services
-      href: /azure/location-based-services
+    - name: Azure Maps
+      href: /azure/azure-maps
     - name: サービス SDK
       href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
     - name: Time Series Insights

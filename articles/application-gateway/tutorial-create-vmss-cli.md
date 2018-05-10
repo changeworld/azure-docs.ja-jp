@@ -1,20 +1,20 @@
 ---
-title: "仮想マシン スケール セットのあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs"
-description: "仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure CLI で作成する方法について説明します。"
+title: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs
+description: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure CLI で作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: 9a0119e0db834f008a1a3999ff546580499e73c3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: 22eef26750bf4d45d87f222d0d34fbd56ad589df
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure CLI で作成する
 
@@ -85,7 +85,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- アプリケーション ゲートウェイの作成には数分かかる場合があります。 アプリケーション ゲートウェイを作成すると、その新しい機能として次を確認できます。
+ アプリケーション ゲートウェイの作成には数分かかる場合があります。 アプリケーション ゲートウェイを作成すると、新たに次の機能が確認できます。
 
 - *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
 - *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
@@ -122,7 +122,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: d092f5f6c59351530941d47565ee2c4905ddd2e7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -767,7 +767,6 @@ Contoso Ads アプリケーションは、入門用のチュートリアルと�
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。 概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
 * [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure クラウド サービス多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。 Azure Storage のテーブル、BLOB、キューが紹介されています。 Azure SDK for .NET の以前のバージョンに基づいているため、現在のバージョンで作業するには一部変更する必要があります。
-* [Microsoft Azure のクラウド サービスの基礎](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。 Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
 
 クラウド向けの開発については、「 [Azure を使用した実際のクラウド アプリケーションの作成](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」をご覧ください。
 
@@ -777,5 +776,5 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 
 * [Azure Cloud Services パート 1: 概要](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](/documentation/services/storage/)
+* [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

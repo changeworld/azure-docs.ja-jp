@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics での SQL Server 環境の最適化 | Microsoft Docs"
-description: "Azure Log Analytics では、SQL 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価できます。"
+title: Azure Log Analytics での SQL Server 環境の最適化 | Microsoft Docs
+description: Azure Log Analytics では、SQL 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価できます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Log Analytics で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -54,7 +54,7 @@ SQL Server サーバーに対して正常性チェックを実行するには、
 
 1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) をインストールします。
 2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Log Analytics サービスと統合されていない場合は、サーバーを Log Analytics とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
-3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-oms)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
 Operations Manager 管理グループに報告する SQL Server 上のエージェントはデータを収集し、割り当てられている管理サーバーに転送します。このデータは、管理サーバーから Log Analytics サービスに直接送信されます。  データは Operations Manager データベースに書き込まれません。  
 
@@ -84,7 +84,7 @@ Log Analytics では、データの収集と Log Analytics サービスへのデ
 >
 >
 
-1. Operations Manager でオペレーション コンソールを開き、 **[管理]**をクリックします。
+1. Operations Manager でオペレーション コンソールを開き、 **[管理]** をクリックします。
 2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[OMS SQL の評価の実行プロファイル]** を開きます。
 3. **[実行アカウント]** ページの **[追加]** をクリックします。
 4. SQL Server に必要な資格情報を含んだ Windows 実行アカウントを選択するか、 **[新規]** をクリックして新たに作成します。
@@ -169,7 +169,7 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
 4. **[概要]** ページで、**[SQL 正常性チェック]** タイルをクリックします。
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![SQL 正常性チェックの推奨事項の画像](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+7. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。

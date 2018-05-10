@@ -54,6 +54,12 @@
 ### [.NET 2.0 への移行](key-vault-dotnet2api-release-notes.md)
 ### [Web アプリ シークレットの保存](vs-secure-secret-appsettings.md)
 ### [.NET を使用したサービス認証](service-to-service-authentication.md)
+### Visual Studio の操作
+#### [Key Vault に接続したサービスを使用する](vs-key-vault-add-connected-service.md)
+#### [ASP.NET プロジェクトを使用して作業を開始する](vs-key-vault-aspnet-get-started.md)
+#### [ASP.NET プロジェクトの変更点](vs-key-vault-aspnet-what-happened.md)
+#### [ASP.NET Core プロジェクトを使用して作業を開始する](vs-key-vault-aspnet-core-get-started.md)
+#### [ASP.NET Core プロジェクトの変更点](vs-key-vault-aspnet-core-what-happened.md)
 
 # リソース
 ## [サービスの概要](https://azure.microsoft.com/services/key-vault/)

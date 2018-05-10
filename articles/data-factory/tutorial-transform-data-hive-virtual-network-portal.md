@@ -3,21 +3,20 @@ title: Azure Virtual Network で Hive を使用してデータを変換する | 
 description: このチュートリアルでは、Azure Data Factory で Hive アクティビティを使用してデータを変換するための詳細な手順を説明します。
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
-ms.author: shengc
-ms.openlocfilehash: a5f75990ab29dc09b6c45ddae17a654f9c3dab78
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: e9ec338e04c456a9a91d51a7a4741e4760f1b3c9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure Portal を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -86,8 +85,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]**を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]**を選択し、リソース グループの名前を入力します。   
+      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
       リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2 (プレビュー)]** を選択します。

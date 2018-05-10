@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 81e0778a0ae168170436213d8aa48c8d60575da2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
 
-## <a name="access-token"></a>アクセス トークン
+## <a name="access-token"></a>Twitter アプリケーションの
 [承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、[保護されたリソース サーバー](#resource-server)にアクセスする目的で使用します。 要求されたレベルのアクセスに関して、[リソース所有者](#resource-owner)がクライアントに付与しているアクセス権限を通常 [JSON Web トークン (JWT)][JWT] の形式で 1 つにまとめたものがこのトークンです。 このトークンは、認証対象に関して当てはまる[要求](#claim)をすべて含んでおり、クライアント アプリケーションが特定のリソースにアクセスする際に一種の資格情報として使用することができます。 また、これを使用すると、リソース所有者がクライアントに資格情報を開示する必要がなくなります。
 
 表現の対象となる資格情報によっては、アクセス トークンを "User+App" や "App-Only" と呼ぶこともあります。 たとえばクライアント アプリケーションが使用する承認付与には、次のようなタイプがあります。
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/11/2017
 
 詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
 
-## <a name="authentication"></a>authentication
+## <a name="authentication"></a>[認証]
 特定の当事者に対し、本物の資格情報の提示を要求する行為。ID 管理とアクセス制御に必要なセキュリティ プリンシパルの拠り所となります。 たとえば [OAuth2 承認付与](#authorization-grant)時には、使用する付与形態に応じて、[リソース所有者](#resource-owner)または[クライアント アプリケーション](#client-application)の役割を果たす当事者が、本物であることを証明する側になります。
 
 ## <a name="authorization"></a>authorization
@@ -176,7 +176,7 @@ Web サーバーからコードをダウンロードしてユーザー エージ
 ## <a name="web-client"></a>Web クライアント
 Web サーバーですべてのコードを実行する[クライアント アプリケーション](#client-application)の一種。資格情報をサーバー上に安全に保存することで、"confidential" クライアントとして動作することができます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD 開発者ガイド][AAD-Dev-Guide]は、[アプリケーションの統合][AAD-How-To-Integrate]の概要や[Azure AD 認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。  また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。新しい定義に関するリクエストのほか、既存の定義の更新のリクエストもお待ちしております。
@@ -203,7 +203,7 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
-[O365-Perm-Ref]: https://msdn.microsoft.com/en-us/office/office365/howto/application-manifest
+[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3

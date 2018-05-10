@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91f067de33d1ff4bc272773e3db49de47fac2feb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>Azure に HPC Pack 2016 クラスターをデプロイする
 
@@ -56,7 +56,7 @@ Microsoft HPC Pack 2016 クラスターでは、HPC ノード間の通信をセ�
 
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>Azure Key Vault に証明書をアップロードします
 
-HPC クラスターを展開する前に、PFX 証明書を [Azure Key Vault](../../key-vault/index.md) に秘密証明書としてアップロードし、展開時に使用する**コンテナーの名前**、**コンテナーのリソース グループ**、**証明書の URL**、**証明書の拇印**などの情報を記録します。
+HPC クラスターを展開する前に、PFX 証明書を [Azure Key Vault](../../key-vault/index.yml) に秘密証明書としてアップロードし、展開時に使用する**コンテナーの名前**、**コンテナーのリソース グループ**、**証明書の URL**、**証明書の拇印**などの情報を記録します。
 
 証明書をアップロードし、Key Vault を作成し、必要な情報を生成するサンプルの PowerShell スクリプトを次に示します。 Azure Key Vault に証明書をアップロードする方法について詳しくは、「[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)」をご覧ください。
 

@@ -2,20 +2,20 @@
 title: Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
 description: Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: fdddcfd6ac44a0675e33e7f389a03d6dbdcfb223
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: victorh
+ms.openlocfilehash: e8bd4a9e4c14edd8ba122caa44cde5aa4e3b6125
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 

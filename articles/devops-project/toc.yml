@@ -1,0 +1,47 @@
+- name: Azure DevOps プロジェクトのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure DevOps プロジェクトとは
+      href: overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: .NET
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-aspnetcore
+      maintainContext: true
+    - name: Node.js
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-nodejs
+      maintainContext: true
+    - name: Java
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-java
+      maintainContext: true
+    - name: Python
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-python
+      maintainContext: true
+    - name: PHP
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-php
+      maintainContext: true
+    - name: Ruby
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-ruby
+      maintainContext: true
+    - name: Go
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-go
+      maintainContext: true
+- name: チュートリアル
+  items:
+    - name: 1 - GitHub と DevOps プロジェクト
+      href: /vsts/build-release/actions/azure-devops-project-github
+      maintainContext: true
+    - name: 2 - VM にデプロイする
+      href: /vsts/build-release/actions/azure-devops-project-vms
+      maintainContext: true
+    - name: 3 - Azure SQL DB にデプロイする
+      href: /vsts/build-release/actions/azure-devops-project-sqldb
+      maintainContext: true
+    - name: 4 - AKS にデプロイする
+      href: /vsts/build-release/actions/azure-devops-project-aks
+      maintainContext: true
+    - name: 5 - Azure Service Fabric にデプロイする
+      href: /vsts/build-release/actions/azure-devops-project-servicefabric
+      maintainContext: true

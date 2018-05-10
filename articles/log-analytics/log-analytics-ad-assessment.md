@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics での Active Directory 環境の最適化 | Microsoft Docs"
-description: "Active Directory 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価します。"
+title: Azure Log Analytics での Active Directory 環境の最適化 | Microsoft Docs
+description: Active Directory 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f026c605b84c5f2b6420e975a06d7c02227efbd9
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 016b5bafdf6543ad43e36a875e6aa68572b35f97
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Log Analytics で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -54,7 +54,7 @@ Active Directory 正常性チェック ソリューションを使用して、�
 
 1. ドメイン コントローラーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) をインストールします。
 2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Log Analytics サービスと統合されていない場合は、ドメイン コントローラーを Log Analytics とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
-3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-oms)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
 Operations Manager 管理グループに報告するドメイン コントローラー上のエージェントはデータを収集し、割り当てられている管理サーバーに転送します。このデータは、管理サーバーから Log Analytics サービスに直接送信されます。  データは Operations Manager データベースに書き込まれません。  
 
@@ -112,7 +112,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 4. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
-7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+7. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。

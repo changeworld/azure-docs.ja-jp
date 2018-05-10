@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
+Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化を有効にすると、Data Lake Store によってデータの永続化の前の暗号化と取得前の暗号化解除が自動的に行われるので、データにアクセスするクライアントに対してこの動作が透過的になります。 詳細については、「[Azure Data Lake Store のセキュリティ](../data-lake-store/data-lake-store-security-overview.md)」をご覧ください。 
@@ -86,7 +86,7 @@ Amazon Redshift では、保存データのクラスター暗号化をサポー�
 Salesforce では、ファイル、添付ファイル、カスタム フィールドをすべて暗号化できる Shield Platform Encryption をサポートしています。 詳細については、「[Understanding the Web Server OAuth Authentication Flow (Web サーバーの OAuth 認証フローについて)](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)」をご覧ください。  
 
 ## <a name="hybrid-scenarios"></a>ハイブリッド シナリオ
-ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。 
+ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。 
 
 ![セルフホステッド統合ランタイム チャネル](media/data-movement-security-considerations/data-management-gateway-channels.png)
 

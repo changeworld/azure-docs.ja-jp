@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - IIS | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - IIS"
+title: Azure PowerShell のサンプル スクリプト - IIS | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: cd603e00b28b2de380408707043e9806e29b74c4
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell を使用して IIS VM を作成する
 
@@ -53,7 +53,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 | [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | 仮想マシンに VM 拡張機能を追加します。 このサンプルでは、カスタム スクリプト拡張機能を使用して IIS をインストールします。 |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

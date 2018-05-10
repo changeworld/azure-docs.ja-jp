@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価 | Microsoft Docs"
-description: "Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価"
+title: 'Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価 | Microsoft Docs'
+description: 'Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価'
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: yurid
-ms.openlocfilehash: a740cec8a3177e0de5f33b362d5c4956671cd427
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>チュートリアル: セキュリティ ポリシーの定義と評価
 Security Center は、ワークロードの望ましい構成を定義するセキュリティ ポリシーを使用して、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure サブスクリプションでポリシーを定義し、それらをワークロードの種類またはデータの機密度に合わせて調整すると、コンピューティング、ネットワーク、SQL およびストレージ、アプリケーションの各リソースについてのセキュリティ推奨事項を Security Center から得ることができます。 このチュートリアルで学習する内容は次のとおりです。
@@ -47,7 +47,7 @@ Security Center がこれらのポリシーを処理し、推奨事項を生成�
 ## <a name="assess-security-of-resources"></a>リソースのセキュリティを評価する
 1. 有効にされたセキュリティ ポリシーに従って、Security Center は必要に応じて一連のセキュリティ推奨事項を提供します。 最初に、仮想マシンとコンピューターの推奨事項を確認することをお勧めします。 Security Center ダッシュボードで、**[概要]**、**[計算]** の順にクリックします。
 
-  ![コンピューティング](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
+  ![Compute](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
 
   赤色の (優先度の高い) 推奨事項を優先して、それぞれの推奨事項を確認します。 これらの推奨事項には、Security Center から直接解決策を実装できるものもあります ([エンドポイント保護の問題](https://docs.microsoft.com/azure/security-center/security-center-install-endpoint-protection)など)。 その他の推奨事項では、解決策を適用するガイドラインのみが示されます (ディスクの暗号化がないことに関する推奨事項など)。
 

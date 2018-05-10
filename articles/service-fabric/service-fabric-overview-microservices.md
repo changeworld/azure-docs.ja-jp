@@ -1,11 +1,11 @@
 ---
-title: "Azure でのマイクロサービスの概要 | Microsoft Docs"
-description: "マイクロサービスでクラウド アプリケーションを構築することが現代のアプリケーション開発にとって重要である理由と Azure Service Fabric がそれを達成するためのプラットフォームを提供するしくみの概要"
+title: Azure でのマイクロサービスの概要 | Microsoft Docs
+description: マイクロサービスでクラウド アプリケーションを構築することが現代のアプリケーション開発にとって重要である理由と Azure Service Fabric がそれを達成するためのプラットフォームを提供するしくみの概要
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: f69f594d058ba061cec116f87435c96280e19f93
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: d56b78a0274842c012e57f80f0c2fe5619a62962
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法でアプリケーションを構築する理由は何ですか。
 ソフトウェア開発者にとって、アプリケーションを構成要素化することは新しい手法ではありません。 これは、オブジェクト指向、ソフトウェア抽象化、コンポーネント化の中心的なパラダイムです。 今日、この手法では、共有ライブラリとテクノロジ層間のクラスやインターフェイスという形態が取られる傾向にあります。 通常、バックエンド ストア、ミドル層ビジネス ロジック、フロントエンド ユーザー インターフェイス (UI) による階層型のアプローチで行われています。 ここ数年で変化*した*ことは、開発者がビジネス主導のクラウドのために分散アプリケーションを構築しているということです。
@@ -179,9 +179,9 @@ Service Fabric の目的は、マイクロサービス手法によるアプリ�
  
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric の用語の概要](service-fabric-technical-overview.md)
-* [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/en-us/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

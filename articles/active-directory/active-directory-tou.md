@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of Use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。  この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。
@@ -96,7 +96,7 @@ Azure AD Terms of Use には使いやすい監査機能が備わっており、�
 2. [監査ログの表示] をクリックします。</br>
 ![監査イベント](media/active-directory-tou/tou8.png)
 3.  Azure AD の [監査ログ] 画面では、ドロップダウンを使って情報をフィルターし、特定の監査ログ情報だけを対象にすることができます。
-![監査イベント](media/active-directory-tou/tou9.png)
+[監査イベント](media/active-directory-tou/tou9.png)
 4.  .csv ファイルで情報をダウンロードしてローカルに使うこともできます。
 
 ## 

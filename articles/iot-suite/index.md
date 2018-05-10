@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Suite のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Azure IoT Suite のドキュメントには、入門ガイド、ハウツー記事、チュートリアル、API リファレンスが含まれています。"
+title: Azure IoT ソリューション アクセラレータのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Azure IoT ソリューション アクセラレータのドキュメントには、入門ガイド、ハウツー記事、チュートリアル、API リファレンスが含まれています。
 services: iot-suite
 author: czeumault
 manager: carolz
@@ -9,72 +9,81 @@ ms.service: iot-suite
 ms.topic: landing-page
 ms.date: 11/27/2017
 ms.author: carolz
-ms.openlocfilehash: 8cb979f645f0c1405ebd424d39cc2d67c5b59ba0
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 62a414697e5ce217f1533d64020d4ce06c222d10
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="iot-suite-documentation"></a>IoT Suite のドキュメント
+# <a name="iot-solution-accelerators-documentation"></a>IoT ソリューション アクセラレータのドキュメント
 
-Microsoft Azure IoT Suite はすぐに使い始められます。 事前に構成されたソリューションを利用して、モノのインターネット (IoT) ソリューションの開発を加速させることができます。 複数のプラットフォーム (Linux、Windows、リアルタイム オペレーティング システムなど) 向けのデバイス SDK を使用して、新しいデバイスを追加し、既存のデバイスを接続できます。 ほんの数台のセンサーから、何百万台ものデバイスの同時接続まで簡単にスケール調整が可能なので、プロジェクトの規模に関係なく、Azure のグローバルな可用性を頼りにできます。
+IoT ソリューションを構築するには、IoT ソリューション アクセラレータをすぐに使い始めてください。 複数のプラットフォーム (Linux、Windows、リアルタイム オペレーティング システムなど) 向けのデバイス SDK を使用して、新しいデバイスを追加し、既存のデバイスを接続できます。 ほんの数個のセンサーから、同時接続された何百万台ものデバイスまで簡単にスケーリングが可能なので、プロジェクトの規模に関係なく、Azure のグローバルな可用性を頼りにできます。
 
-<ul class="panelContent cardsFTitle">
+<h2>確認</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="/azure/iot-suite/iot-suite-what-are-preconfigured-solutions">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/iot-suite.svg" alt="Learn about IoT Suite" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>IoT Suite について</h3>
+                        <p>ソリューション アクセラレータ、主要シナリオ、および開始方法について説明します</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-what-are-solution-accelerators">ソリューション アクセラレータの概要</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">ソリューション アクセラレータのデプロイ</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">既定のソリューション機能</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">監視機能</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">ルール管理機能</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">デバイス管理機能</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
+</ul> 
+
+---
+
+<h2>接続</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="https://azure.microsoft.com/resources/videos/index/?sort=newest&tag=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="Azure Video Library" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Azure のビデオ ライブラリ</h3>
+                        <p>ご使用のデバイスをソリューション アクセラレータに接続する方法について説明します</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">デバイス モデルの概要</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">シミュレートされたデバイスのカスタマイズ</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">物理デバイスの接続</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="Deploy the remote monitoring preconfigured solution" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>リモート監視の事前構成済みソリューションをデプロイする</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>    
 </ul>
+
+---
+
+<h2>[カスタマイズ]</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <p>ソリューション アクセラレータをカスタマイズする方法について説明します</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy-local">ローカルでのソリューションの実行</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-customize#presentation-and-visualization">UX のカスタマイズ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul> 
 
 ---
 

@@ -177,8 +177,6 @@
               href: vmware-azure-set-up-process-server-scale.md
         - name: ディザスター リカバリー
           items:
-            - name: マルチテナントのサポートと CSP を利用した VMware VM のディザスター リカバリ
-              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
             - name: PowerShell を使用して VMware 仮想マシンを Azure にレプリケートする
               href: vmware-azure-disaster-recovery-powershell.md
             - name: Azure への物理サーバーのディザスター リカバリー
@@ -199,12 +197,14 @@
               href: vmware-azure-exclude-disk.md
             - name: VMware VM レプリケーションを有効にする
               href: vmware-azure-enable-replication.md
+            - name: VMWare VM 向け CSP によるマルチ テナント
+              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: モビリティ サービスをデプロイする
           items:
+            - name: モビリティ サービスの概要
+              href: vmware-azure-install-mobility-service.md
             - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
               href: vmware-azure-mobility-install-configuration-mgr.md
-            - name: Azure Automation DSC を使用してモビリティ サービスをデプロイする
-              href: vmware-azure-mobility-deploy-automation-dsc.md
         - name: フェールオーバーとフェールバック
           items:
             - name: Azure へのディザスター リカバリー訓練を実行する

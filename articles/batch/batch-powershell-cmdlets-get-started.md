@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7d263dbb89b10876c3a1deb330f969c598addd6a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する
 
@@ -32,10 +32,10 @@ Batch API、Azure ポータル、Azure コマンド ライン インターフェ
 ## <a name="prerequisites"></a>前提条件
 Azure PowerShell を使用して Batch リソースを管理するために、次の操作を実行します。
 
-* [Azure PowerShell のインストールと構成](/powershell/azure/overview)
-* **Login-AzureRmAccount** コマンドレットを実行してサブスクリプションに接続します (Azure Batch コマンドレットは、Azure Resource Manager モジュールに付属しています)。
+* [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)
+* **Connect-AzureRmAccount** コマンドレットを実行してサブスクリプションに接続します (Azure Batch コマンドレットは、Azure Resource Manager モジュールに付属しています)。
   
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 * **Batch プロバイダーの名前空間に登録します**。 この操作は、**サブスクリプションごとに 1 回だけ**実行する必要があります。
   
     `Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch`

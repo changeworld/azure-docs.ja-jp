@@ -1,12 +1,12 @@
 ---
-title: "ループ - 配列または繰り返しアクションの処理 - Azure Logic Apps | Microsoft Docs"
+title: ループ - 配列または繰り返しアクションの処理 - Azure Logic Apps | Microsoft Docs
 description: "\"for each\" ループ、または繰り返しアクションが指定された配列を、ロジック アプリで特定の条件が満たされるまで処理します"
 services: logic-apps
-keywords: "for each ループ"
-documentationcenter: 
+keywords: for each ループ
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: f634b1004fef2eb65c6b8134088ceead47c91890
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>ループ: 条件が満たされるまで配列または繰り返しアクションを処理する
 
@@ -153,9 +153,6 @@ ms.lasthandoff: 03/05/2018
 
 * 必要なレスポンスを受け取るまでエンドポイントを呼び出す。
 * データベースにレコードを作成し、そのレコード内の特定のフィールドが承認されるまで待ち、処理を続行する。 
-
-> [!NOTE]
-> "Until" ループには他の "Until" ループの "Foreach" ループを指定できません。
 
 たとえば、このロジック アプリは、毎日午前 8 時 00 分に、変数の値が 10 と等しくなるまである変数を増分させます。 その後、このロジック アプリは現在の値を確認する電子メールを送信します。 この例では Office 365 Outlook を使用していますが、Logic Apps でサポートされている電子メール プロバイダーであれば何でも使用できます ([コネクターの一覧はこちらで確認できます](https://docs.microsoft.com/connectors/))。 別のメール アカウントをお使いの場合でも、全体的な手順は同じですが、UI がやや異なる場合があります。 
 

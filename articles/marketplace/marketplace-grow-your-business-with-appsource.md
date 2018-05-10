@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: de7716a540737d4f2cc6f0f495180533ef6aa90a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grow-your-business-with-appsource"></a>AppSource を使用してビジネスを拡大する
 Azure Marketplace と AppSource はいずれも、Microsoft と協力して市場進出活動を行うための出発点であり、ビジネスの成長に弾みを付けるものです。 発売プロモーション、需要創出、共同営業およびマーケティングを利用して、マーケットプレース プランをクラウド ビジネス エンジンの中心的な場所にすることができます。 参加は無料です。 Microsoft のお客様は、クラウド マーケットプレースに毎日アクセスし、ビジネスを強化するために役立つ適切なアプリとサービスを検索しています。 Microsoft の目標は、組織と、Microsoft とパートナーのエコシステムが提供するソリューションとサービスを結び付けることです。 
@@ -117,7 +117,7 @@ https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-87
 
 #### <a name="marketplace-gtm-benefits"></a>Marketplace GTM の特典 
 
-AppSource への新規掲載は、無料のマーケットプレース GTM 特典を受け取る対象となります。 掲載されると、Microsoft のマーケティング担当者のチームが連絡いたします。また、御社の担当者と協力してこれらのアクティビティを開始します。 提供されるアクティビティは、Marketplace でのパートナーのソリューションの状態によって異なります。 無料試用版のエクスペリエンスがあるプランの場合は特典が増えます。 Microsoft ゴールド パートナーは、追加の特典を利用できます。 これらのアクティビティの影響を最大にするため、実行できる状態の発売計画を用意することをお勧めします。 これらの戦術の多くには、ランディング ページを利用できます。 One Commercial Partner カタログは Microsoft Partner Network のメンバーの特典であることに注意してください。 優れたランディング ページを構築する方法のガイダンスについては、「[優れたランディング ページを作成する](https://docs.microsoft.com/en-us/azure/marketplace/grow-your-business-azure-marketplace#build-a-great-landing-page)」を参照してください。 パートナーのビジネスをプロモーションするためのテンプレート、Web コンテンツ、トレーニング、ツールなど、その他の go-to-market サポートについては、[https://www.MicrosoftGoToMarket.com](https://www.MicrosoftGoToMarket.com) を参照してください。 
+AppSource への新規掲載は、無料のマーケットプレース GTM 特典を受け取る対象となります。 掲載されると、Microsoft のマーケティング担当者のチームが連絡いたします。また、御社の担当者と協力してこれらのアクティビティを開始します。 提供されるアクティビティは、Marketplace でのパートナーのソリューションの状態によって異なります。 無料試用版のエクスペリエンスがあるプランの場合は特典が増えます。 Microsoft ゴールド パートナーは、追加の特典を利用できます。 これらのアクティビティの影響を最大にするため、実行できる状態の発売計画を用意することをお勧めします。 これらの戦術の多くには、ランディング ページを利用できます。 One Commercial Partner カタログは Microsoft Partner Network のメンバーの特典であることに注意してください。 優れたランディング ページを構築する方法のガイダンスについては、「[優れたランディング ページを作成する](https://docs.microsoft.com/azure/marketplace/grow-your-business-azure-marketplace#build-a-great-landing-page)」を参照してください。 パートナーのビジネスをプロモーションするためのテンプレート、Web コンテンツ、トレーニング、ツールなど、その他の go-to-market サポートについては、[https://www.MicrosoftGoToMarket.com](https://www.MicrosoftGoToMarket.com) を参照してください。 
 
 #### <a name="enable-lead-sharing"></a>リードの共有を有効にする 
 アプリを試す、またはサービスに興味を持っているビジネス ユーザーの連絡先情報を受け取ることができるように、Marketplace プランでリードの管理が有効になっていることを確認します。 これらのリードは、育成キャンペーンの活動、フィールド営業スタッフによる販売活動、およびオファリングのパフォーマンスに関する情報の、基礎を提供します。 これらのリードの使用に関するベスト プラクティスは次のとおりです。

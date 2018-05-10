@@ -1,11 +1,87 @@
 # [Azure IoT の基礎](../iot-fundamentals/index.yml)
-# [IoT Hub のドキュメント](index.md)
+# [IoT Hub のドキュメント](index.yml)
 
 # 概要
-## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
-## [デバイス管理の概要](iot-hub-device-management-overview.md)
+## [Azure IoT Hub とは](about-iot-hub.md)
 
-# [作業開始](iot-hub-get-started.md)
+# クイック スタート
+## [テレメトリの送信 (Node.js)](quickstart-send-telemetry-node.md)
+## [テレメトリの送信 (.NET)](quickstart-send-telemetry-dotnet.md)
+## [テレメトリの送信 (Java)](quickstart-send-telemetry-java.md)
+## [テレメトリの送信 (Python)](quickstart-send-telemetry-python.md)
+## [デバイスの制御 (Node.js)](quickstart-control-device-node.md)
+## [デバイスの制御 (.NET)](quickstart-control-device-dotnet.md)
+## [デバイスの制御 (Java)](quickstart-control-device-java.md)
+## [デバイスの制御 (Python)](quickstart-control-device-python.md)
+
+# チュートリアル
+
+<!-- These will all be replaced by the new MVC tutorials as we write them -->
+## [メッセージのルーティング](tutorial-routing.md)
+## C2D メッセージの送信
+### [.NET](iot-hub-csharp-csharp-c2d.md)
+### [Java](iot-hub-java-java-c2d.md)
+### [Node.js](iot-hub-node-node-c2d.md)
+### [Python](iot-hub-python-python-c2d.md)
+## デバイス ツインを使ってみる
+### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
+### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
+### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
+### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
+### [Python バックエンド/Python デバイス](iot-hub-python-twin-getstarted.md)
+## デバイス管理の開始
+### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
+### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)
+### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-device-management-get-started.md)
+### [Java バックエンド/Java デバイス](iot-hub-java-java-device-management-getstarted.md)
+### [Python バックエンド/Python デバイス](iot-hub-python-python-device-management-get-started.md)
+## ツインのプロパティの使用方法
+### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-how-to-configure.md)
+### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)
+### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-how-to-configure.md)
+### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-how-to-configure.md)
+### [Python バックエンド/Python デバイス](iot-hub-python-python-twin-how-to-configure.md)
+## デバイス ジョブを使用したデバイスのファームウェアの更新
+### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
+### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
+### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-firmware-update.md)
+### [Java バックエンド/Java デバイス](iot-hub-java-java-firmware-update.md)
+### [Python バックエンド/Python デバイス](iot-hub-python-python-firmware-update.md)
+
+### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
+
+# 概念
+## [デバイス管理の概要](iot-hub-device-management-overview.md)
+## [IoT Hub と Event Hubs の比較](iot-hub-compare-event-hubs.md)
+## [適切なプランの選択](iot-hub-scaling.md)
+## [高可用性と障害復旧](iot-hub-ha-dr.md)
+## [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
+## [メッセージ ルーティングとイベント ルーティングの比較](iot-hub-event-grid-routing-comparison.md)
+
+## [開発者ガイド](iot-hub-devguide.md)
+### [デバイスからクラウドの機能ガイド](iot-hub-devguide-d2c-guidance.md)
+### [クラウドからデバイスの機能ガイド](iot-hub-devguide-c2d-guidance.md)
+### [メッセージを送受信する](iot-hub-devguide-messaging.md)
+#### [デバイスからクラウドへのメッセージを IoT Hub に送信する](iot-hub-devguide-messages-d2c.md)
+#### [デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)
+#### [IoT Hub イベントへの対応](iot-hub-event-grid.md)
+#### [デバイスからクラウドへのメッセージにカスタム エンドポイントとルーティング ルールを使用する](iot-hub-devguide-messages-read-custom.md)
+#### [クラウドからデバイスへのメッセージを IoT Hub から送信する](iot-hub-devguide-messages-c2d.md)
+#### [IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)
+#### [通信プロトコルの選択](iot-hub-devguide-protocols.md)
+### [デバイスからのファイルをアップロードする](iot-hub-devguide-file-upload.md)
+### [デバイス ID を管理する](iot-hub-devguide-identity-registry.md)
+### [IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)
+### [デバイス ツインを理解する](iot-hub-devguide-device-twins.md)
+### [デバイスでダイレクト メソッドを呼び出す](iot-hub-devguide-direct-methods.md)
+### [複数デバイスでのジョブをスケジュール設定する](iot-hub-devguide-jobs.md)
+### [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)
+### [クエリ言語](iot-hub-devguide-query-language.md)
+### [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
+### [価格の例](iot-hub-devguide-pricing.md)
+### [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
+### [MQTT サポート](iot-hub-mqtt-support.md)
+### [用語集](iot-hub-devguide-glossary.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -14,39 +90,36 @@
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 #### [iOS (Swift)](quickstart-send-telemetry-ios.md)
+## [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
+### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
+### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
 
-### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
+## [徹底的なセキュリティ](iot-hub-security-ground-up.md)
+## [セキュリティのベスト プラクティス](iot-hub-security-best-practices.md)
+## [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
+## [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
+## X.509 CA 証明書を使用したセキュリティ保護
+### [X.509 CA 証明書セキュリティの概要](iot-hub-x509ca-overview.md)
+#### [X.509 CA 証明書セキュリティの概念](iot-hub-x509ca-concept.md)
+### [X.509 CA 証明書セキュリティの作業開始](iot-hub-security-x509-get-started.md)
+#### [証明書の作成 - PowerShell](iot-hub-security-x509-create-certificates.md)
 
-### [物理デバイスを使用する](iot-hub-get-started-physical.md)
-#### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
-#### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
-#### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
 
-#### [Arduino での MXChip IoT DevKit](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+### IoT の拡張シナリオ
+#### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
+#### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
+#### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
+#### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
+#### [Azure CLI 2.0 の IoT 拡張機能を使用したデバイス管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
+#### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-#### [Node.js での Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
-#### [C での Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
-
-#### [Arduino での Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
-#### [Arduino での Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
-#### [Arduino での Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-
-## IoT の拡張シナリオ
-### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
-### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
-### [Power BI でのデータ視覚化](iot-hub-live-data-visualization-in-power-bi.md)
-### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
-### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
-### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
-### [Azure CLI 2.0 の IoT 拡張機能を使用したデバイス管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
-### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-
-## MXChip IoT DevKit の使用
-### [Azure Cognitive Services での音声メッセージの翻訳](iot-hub-arduino-iot-devkit-az3166-translator.md)
-### [Azure Functions を使用して Twitter メッセージを取得する](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
-### [Eclipse Paho API を使用して MQTT サーバーにメッセージを送信する](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
-### [Azure Functions で磁気センサーを監視してメール通知を送信する](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
-### [Azure デバイス ツインを使用して MXChip IoT DevKit RGB LED を制御する](iot-hub-arduino-iot-devkit-az3166-devkit-state.md)
+### MXChip IoT DevKit の使用
+#### [Azure Cognitive Services での音声メッセージの翻訳](iot-hub-arduino-iot-devkit-az3166-translator.md)
+#### [Azure Functions を使用して Twitter メッセージを取得する](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+#### [Eclipse Paho API を使用して MQTT サーバーにメッセージを送信する](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
+#### [Azure Functions で磁気センサーを監視してメール通知を送信する](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # ハウツー ガイド
 ## プラン
@@ -79,7 +152,6 @@
 #### [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
 #### [価格の例](iot-hub-devguide-pricing.md)
 #### [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
-#### [モバイル デバイスの場合の開発](iot-hub-how-to-develop-for-mobile-devices.md)
 #### [MQTT サポート](iot-hub-mqtt-support.md)
 #### [用語集](iot-hub-devguide-glossary.md)
 ### [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
@@ -140,38 +212,51 @@
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-schedule-jobs.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-schedule-jobs.md)
 #### [Python バックエンド/Python デバイス](iot-hub-python-python-schedule-jobs.md)
+## デバイスからファイルをアップロードする
+### [.NET](iot-hub-csharp-csharp-file-upload.md)
+### [Java](iot-hub-java-java-file-upload.md)
+### [Node.js](iot-hub-node-node-file-upload.md)
+### [Python](iot-hub-python-python-file-upload.md)
 
-## [管理]
-### IoT Hub の作成 
-#### [Azure Portal の使用](iot-hub-create-through-portal.md)
-#### [Azure PowerShell の使用](iot-hub-create-using-powershell.md)
-#### [Azure CLI の使用](iot-hub-create-using-cli.md)
-#### [CLI の使用](iot-hub-create-using-cli-nodejs.md)
-#### [REST API の使用](iot-hub-rm-rest.md)
-#### [Azure PowerShell からテンプレートを使用する](iot-hub-rm-template-powershell.md)
-#### [.NET からテンプレートを使用する](iot-hub-rm-template.md)
-### ファイルのアップロードを構成する
-#### [Azure Portal の使用](iot-hub-configure-file-upload.md)
-#### [Azure PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
-#### [Azure CLI の使用](iot-hub-configure-file-upload-cli.md)
-### [診断を使用した監視](iot-hub-monitor-resource-health.md)
-#### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
-#### [操作の監視](iot-hub-operations-monitoring.md)
-### [IoT Hub のアップグレード](iot-hub-upgrade.md)
-### [使用状況のメトリック](iot-hub-metrics.md)
-### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
-### [IP フィルター処理を構成する](iot-hub-ip-filtering.md)
+## ジョブのスケジュールとブロードキャスト
+### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
+### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
+### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-schedule-jobs.md)
+### [Java バックエンド/Java デバイス](iot-hub-java-java-schedule-jobs.md)
+### [Python バックエンド/Python デバイス](iot-hub-python-python-schedule-jobs.md)
 
-## セキュリティ保護
-### [徹底的なセキュリティ](iot-hub-security-ground-up.md)
-### [セキュリティのベスト プラクティス](iot-hub-security-best-practices.md)
-### [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
-### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
-### X.509 CA 証明書を使用したセキュリティ保護
-#### [X.509 CA 証明書セキュリティの概要](iot-hub-x509ca-overview.md)
-##### [X.509 CA 証明書セキュリティの概念](iot-hub-x509ca-concept.md)
-#### [X.509 CA 証明書セキュリティの作業開始](iot-hub-security-x509-get-started.md)
-##### [証明書の作成 - PowerShell](iot-hub-security-x509-create-certificates.md)
+## IoT Hub の作成 
+### [Azure Portal の使用](iot-hub-create-through-portal.md)
+### [Azure PowerShell の使用](iot-hub-create-using-powershell.md)
+### [Azure CLI の使用](iot-hub-create-using-cli.md)
+### [CLI の使用](iot-hub-create-using-cli-nodejs.md)
+### [REST API の使用](iot-hub-rm-rest.md)
+### [Azure PowerShell からテンプレートを使用する](iot-hub-rm-template-powershell.md)
+### [.NET からテンプレートを使用する](iot-hub-rm-template.md)
+## ファイルのアップロードを構成する
+### [Azure Portal の使用](iot-hub-configure-file-upload.md)
+### [Azure PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
+### [Azure CLI の使用](iot-hub-configure-file-upload-cli.md)
+## [診断を使用した監視](iot-hub-monitor-resource-health.md)
+### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
+### [操作の監視](iot-hub-operations-monitoring.md)
+## 実在のデバイスの使用
+### [概要](iot-hub-get-started.md)
+### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
+### [物理デバイスを使用する](iot-hub-get-started-physical.md)
+#### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
+#### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
+#### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
+#### [Arduino での MXChip IoT DevKit](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+#### [Node.js での Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
+#### [C での Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
+#### [Arduino での Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [Arduino での Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [Arduino での Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+## [IoT Hub のアップグレード](iot-hub-upgrade.md)
+## [使用状況のメトリック](iot-hub-metrics.md)
+## [IP フィルター処理を構成する](iot-hub-ip-filtering.md)
+## [大規模なデバイス構成](iot-hub-auto-device-config.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=iot-hub)
@@ -192,13 +277,13 @@
 
 # 関連項目
 ## 解決方法 
-### [IoT Suite の構成済みソリューション](/azure/iot-suite) 
+### [IoT ソリューション アクセラレータ](/azure/iot-suite) 
 ### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## プラットフォーム サービス 
 ### [IoT Hub](/azure/iot-hub) 
 ### [IoT Hub Device Provisioning Service](/azure/iot-dps)
 ### [IoT サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
-### [Location Based Services](/azure/location-based-services) 
+### [マップ](/azure/azure-maps) 
 ### [Time Series Insights](/azure/time-series-insights) 
 ## Microsoft Edge 
 ### [IoT Edge](/azure/iot-edge) 

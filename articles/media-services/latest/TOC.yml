@@ -1,0 +1,73 @@
+- name: Media Services のドキュメント
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: Media Services について
+      href: media-services-overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: .NET を使用したビデオ ファイルのストリーミング
+      href: stream-files-dotnet-quickstart.md
+- name: チュートリアル
+  items:
+    - name: アップロード、エンコード、およびストリーミング
+      href: stream-files-tutorial-with-api.md
+    - name: ビデオの分析
+      href: analyze-videos-tutorial-with-api.md
+- name: サンプル
+  items:
+    - name: Azure のコード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+    - name: Azure CLI
+      href: cli-samples.md
+- name: 概念
+  items:
+    - name: 資産
+      href: assets-concept.md
+    - name: Autogen アダプティブ ビットレート ラダー
+      href: autogen-bitrate-ladder.md
+    - name: Media Intelligence
+      href: intelligence-concept.md
+    - name: ストレージ アカウント
+      href: storage-account-concept.md
+    - name: 変換およびジョブ
+      href: transform-concept.md
+    - name: イベントへの反応
+      href: reacting-to-media-services-events.md
+- name: ハウツー ガイド
+  items:
+    - name: アカウントの作成 - CLI
+      href: create-account-cli-how-to.md
+    - name: API へのアクセス - CLI
+      href: access-api-cli-how-to.md
+    - name: ジョブの状態イベント - CLI
+      href: job-state-events-cli-how-to.md
+    - name: コンテンツのアップロード - .NET
+      items:
+        - name: HTTP から
+          href: job-input-from-http-how-to.md
+        - name: ローカル ファイルから
+          href: job-input-from-local-file-how-to.md
+- name: リファレンス
+  items:
+    - name: Azure CLI 2.0
+      href: 'https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest'
+    - name: REST ()
+      href: 'https://go.microsoft.com/fwlink/p/?linkid=873030'
+    - name: イベント スキーマ
+      href: media-services-event-schemas.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: リリース ノート
+      href: release-notes.md
+    - name: クォータと制限
+      href: limits-quotas-constraints.md

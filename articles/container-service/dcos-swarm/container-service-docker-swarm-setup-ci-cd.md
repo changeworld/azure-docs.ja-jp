@@ -1,19 +1,19 @@
 ---
-title: "Azure Container Service と Swarm を使用した CI/CD"
-description: "Azure Container Service、Docker Swarm、Azure Container Registry、および Visual Studio Team Services を使用して、複数コンテナー .NET Core アプリケーションを継続的に配信します"
+title: Azure Container Service と Swarm を使用した CI/CD
+description: Azure Container Service、Docker Swarm、Azure Container Registry、および Visual Studio Team Services を使用して、複数コンテナー .NET Core アプリケーションを継続的に配信します
 services: container-service
 author: jcorioland
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 38877afb63e993eeaab723a6ea5f4c40d3c956a5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Docker Swarm と Visual Studio Team Services を使用して、Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 12/06/2017
 
 ![MyShop サンプル アプリケーション](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-目的は、Visual Studio Team Services を使用して、Docker Swarm クラスターでこのアプリケーションを継続的に配信することです。 次の図は、この継続的な配信パイプラインの詳細を示しています。
+目的は、Visual Studio Team Services を使用して、Docker Swarm クラスターでこのアプリケーションを継続的に配信することです。 次の図は、この継続的デリバリー パイプラインの詳細を示しています。
 
 ![MyShop サンプル アプリケーション](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
@@ -159,7 +159,7 @@ CI/CD パイプラインに進む前の最後の手順として、Azure でコ�
 
 4. 5 つの各イメージのビルド ステップとプッシュ ステップを構成したら、ビルド ワークフローにステップをもう 2 つ追加します。
 
-    a. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *BuildNumber* を現在のビルド ID に置き換えるコマンド ライン タスク。詳細については、次の画面を参照してください。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *BuildNumber* を現在のビルド ID に置き換えるコマンド ライン タスク。詳細については、次の画面を参照してください。
 
     ![Visual Studio Team Services - compose ファイルの更新](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
@@ -220,6 +220,6 @@ Visual Studio Team Services を使用すると、[複数の環境のリリース
 
 構成が完了したので、この新しい CI/CD パイプラインをテストしてみましょう。 テストする最も簡単な方法は、ソース コードを更新し、変更を GitHub リポジトリにコミットすることです。 コードをプッシュしてから数秒経つと、Visual Studio Team Services に実行中の新しいビルドが表示されます。 正常に完了すると、新しいリリースがトリガーされ、アプリケーションの新しいバージョンが Azure Container Service クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Visual Studio Team Services を使用した CI/CD の詳細については、[VSTS ビルドの概要](https://www.visualstudio.com/docs/build/overview)に関するページを参照してください。

@@ -8,17 +8,16 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 0c4f6ef9d934a414ef805ddba6d2602b03bcbf16
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a9bf9748de5f390f95b8b672e0cf77afa5c49581
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可
 

@@ -1,19 +1,19 @@
 ---
-title: "Azure Container Service エンジンと Swarm Mode による CI/CD"
-description: "Azure Container Service エンジン、Docker Swarm Mode、Azure Container Registry、および Visual Studio Team Services を使用して、複数コンテナーの .NET Core アプリケーションを継続的に配信します"
+title: Azure Container Service エンジンと Swarm Mode による CI/CD
+description: Azure Container Service エンジン、Docker Swarm Mode、Azure Container Registry、および Visual Studio Team Services を使用して、複数コンテナーの .NET Core アプリケーションを継続的に配信します
 services: container-service
 author: diegomrtnzg
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 6aa690ff7ec0689db78ff1225d36171adb30ee2c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Visual Studio Team Services で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/06/2017
 
 ![MyShop サンプル アプリケーション](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/myshop-application.png)
 
-目的は、Visual Studio Team Services を使用して、Docker Swarm Mode クラスターにこのアプリケーションを継続的に配信することです。 次の図は、この継続的な配信パイプラインの詳細を示しています。
+目的は、Visual Studio Team Services を使用して、Docker Swarm Mode クラスターにこのアプリケーションを継続的に配信することです。 次の図は、この継続的デリバリー パイプラインの詳細を示しています。
 
 ![MyShop サンプル アプリケーション](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/full-ci-cd-pipeline.png)
 
@@ -244,7 +244,7 @@ Visual Studio Team Services を使用すると、[複数の環境のリリース
 
 構成が完了したので、この新しい CI/CD パイプラインをテストしてみましょう。 テストする最も簡単な方法は、ソース コードを更新し、変更を GitHub リポジトリにコミットすることです。 コードをプッシュしてから数秒経つと、Visual Studio Team Services に実行中の新しいビルドが表示されます。 正常に完了すると、新しいリリースがトリガーされ、アプリケーションの新しいバージョンが Azure Container Service クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Visual Studio Team Services を使用した CI/CD の詳細については、[VSTS ビルドの概要](https://www.visualstudio.com/docs/build/overview)に関するページを参照してください。
 * ACS エンジンの詳細については、[ACS エンジンの GitHub リポジトリ](https://github.com/Azure/acs-engine)に関するページを参照してください。

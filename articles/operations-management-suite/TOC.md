@@ -18,7 +18,7 @@
 ## 自動化
 ### [Azure Automation の概要](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
-## バックアップ
+## Backup
 ### [Backup の概要](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Site Recovery の概要](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -32,8 +32,8 @@
 ### [Web ベースライン評価](oms-security-web-baseline-assessment.md)
 
 ## ソリューションの使用
-### [管理ソリューション](operations-management-suite-solutions.md)
-### [ターゲット ソリューション](operations-management-suite-solution-targeting.md)
+### [管理ソリューション](../monitoring/monitoring-solutions.md)
+### [ターゲット ソリューション](../monitoring/monitoring-solution-targeting.md)
 ### 洞察と分析
 #### [AD 評価](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -46,10 +46,10 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### サービス マップ
-##### [チュートリアル](operations-management-suite-walkthrough-servicemap.md)
-##### [用途](operations-management-suite-service-map.md)
-##### [構成](operations-management-suite-service-map-configure.md)
-##### [Operations Manager との統合](operations-management-suite-service-map-scom.md)
+##### [チュートリアル](../monitoring/monitoring-walkthrough-servicemap.md)
+##### [用途](../monitoring/monitoring-service-map.md)
+##### [構成](../monitoring/monitoring-service-map-configure.md)
+##### [Operations Manager との統合](../monitoring/monitoring-service-map-scom.md)
 #### [SQL の評価](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -62,12 +62,12 @@
 #### [マルウェア対策評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## ソリューションを作成する
-### [設計とビルド](operations-management-suite-solutions-creating.md)
-### [ソリューション ファイル](operations-management-suite-solutions-solution-file.md)
-### [Automation リソース](operations-management-suite-solutions-resources-automation.md)
-### [ログ検索とアラート](operations-management-suite-solutions-resources-searches-alerts.md)
-### [ビュー](operations-management-suite-solutions-resources-views.md)
-### [ベスト プラクティス](operations-management-suite-solutions-best-practices.md)
+### [設計とビルド](../monitoring/monitoring-solutions-creating.md)
+### [ソリューション ファイル](../monitoring/monitoring-solutions-solution-file.md)
+### [Automation リソース](../monitoring/monitoring-solutions-resources-automation.md)
+### [ログ検索とアラート](../monitoring/monitoring-solutions-resources-searches-alerts.md)
+### [ビュー](../monitoring/monitoring-solutions-resources-views.md)
+### [ベスト プラクティス](../monitoring/monitoring-solutions-best-practices.md)
 
 ## 管理のシナリオ
 ### [Runbook からの分析データの収集](operations-management-suite-runbook-datacollect.md)

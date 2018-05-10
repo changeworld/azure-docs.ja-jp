@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
 [Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
@@ -127,7 +127,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 1. Visual Studio を開き、Azure Mobile Service プロジェクトを開きます。
 2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** を選択します。
-3. **[インポート]**をクリックします。
+3. **[インポート]** をクリックします。
 4. **[参照]** をクリックし、ダウンロードした発行設定ファイルを選択します。  **[OK]**
 5. **[接続の検証]** をクリックして、発行設定が機能していることを確認します。
 6. **[発行]** をクリックして、サイトを発行します。
@@ -218,7 +218,7 @@ Mobile Services の *[API]* タブは Azure Portal では *[API の簡単操作]
 1. [Azure Portal] にログインします。
 2. **[参照]** を選択し、*[フィルター]* ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
 3. サイトのジョブ コレクションを選択します。  <*サイト名*>-Jobs という名前が付けられます。
-4. **[設定]**をクリックします。
+4. **[設定]** をクリックします。
 5. [管理] の **[スケジューラ ジョブ]** をクリックします。
 
 スケジュールされたジョブは、移行前に指定した頻度で表示されます。  オンデマンド ジョブは無効になります。  オンデマンド ジョブを実行するには、次の手順に従います。
@@ -264,7 +264,7 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 それまでの間、従来のプッシュ設定はすべて [アプリ設定] で利用できます (大きな例外は APNs 証明書)。  APNS 証明書を更新します。そのためには、ファイル システムで適切なファイルを置き換えます。
 
 ### <a name="app-settings"></a>その他のアプリ設定
-次の追加アプリ設定はモバイル サービスから移行され、 *[設定]* > *App [設定]*にあります。
+次の追加アプリ設定はモバイル サービスから移行され、 *[設定]* > *App [設定]* にあります。
 
 | アプリケーション設定 | [説明] |
 |:--- |:--- |
@@ -372,16 +372,16 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service 価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-web-overview.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
-[Azure Region]: https://azure.microsoft.com/en-us/regions/
+[Azure Region]: https://azure.microsoft.com/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
 [連続的にデプロイ]: ../app-service/app-service-continuous-deployment.md
-[Mixed 名前空間を変換]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Mixed 名前空間を変換]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [custom domain names]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: http://www.telerik.com/fiddler
