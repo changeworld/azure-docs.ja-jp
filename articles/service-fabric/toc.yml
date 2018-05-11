@@ -27,9 +27,11 @@
           href: service-fabric-tutorial-create-dotnet-app.md
         - name: 2 - アプリケーションのデプロイ
           href: service-fabric-tutorial-deploy-app-to-party-cluster.md
-        - name: 3 - CI/CD の構成
+        - name: 3 - HTTPS の有効化
+          href: service-fabric-tutorial-dotnet-app-enable-https-endpoint.md
+        - name: 4 - CI/CD の構成
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
-        - name: 4 - 監視と診断
+        - name: 5 - 監視と診断
           href: service-fabric-tutorial-monitoring-aspnet.md
     - name: Java アプリのデプロイ
       items:
@@ -561,36 +563,42 @@
           href: service-fabric-patch-orchestration-application-linux.md
     - name: 監視と診断
       items:
-        - name: OMS での分析
+        - name: アプリケーションの監視
           items:
-            - name: OMS Log Analytics の設定
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: OMS エージェントの追加
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: OMS で監視する
-              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: Application Insights での分析
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: アプリケーションへのログ記録の追加
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: EventFlow を使ったイベントの集計
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
             - name: コンテナーの監視
               href: service-fabric-diagnostics-oms-containers.md
-        - name: Application Insights での分析
-          href: service-fabric-diagnostics-event-analysis-appinsights.md
-        - name: イベントの集計 - EventFlow
-          href: service-fabric-diagnostics-event-aggregation-eventflow.md
-        - name: イベントの集計 - Azure 診断
+        - name: クラスターの監視
           items:
-            - name: Windows
+            - name: EventStore API の照会
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Windows の Azure 診断
               href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux
+            - name: Linux の Azure 診断
               href: service-fabric-diagnostics-event-aggregation-lad.md
-        - name: WAD を使用したパフォーマンスの監視
-          href: service-fabric-diagnostics-perf-wad.md
-        - name: 正常性のレポートとチェック
-          href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-        - name: サービスへのログ記録の追加
-          href: service-fabric-how-to-diagnostics-log.md
-        - name: システム正常性レポートを使用したトラブルシューティング
-          href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-        - name: 正常性レポートを表示する
-          href: service-fabric-view-entities-aggregated-health.md
+            - name: OMS Log Analytics の設定
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: OMS で監視する
+              href: service-fabric-diagnostics-event-analysis-oms.md
+        - name: インフラストラクチャの監視
+          items:
+            - name: WAD を使用したパフォーマンスの監視
+              href: service-fabric-diagnostics-perf-wad.md
+            - name: OMS エージェント によるパフォーマンスの監視
+              href: service-fabric-diagnostics-oms-agent.md
+        - name: 正常性の監視
+          items:
+            - name: 正常性のレポートとチェック
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: システム正常性レポートを使用したトラブルシューティング
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: 正常性レポートを表示する
+              href: service-fabric-view-entities-aggregated-health.md
         - name: ローカル クラスターのトラブルシューティング
           href: service-fabric-troubleshoot-local-cluster-setup.md
 - name: リファレンス
