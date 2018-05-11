@@ -197,8 +197,6 @@
           href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
         - name: データ準備実行 API
           href: ../desktop-workbench/data-prep-python-execution-api.md
-        - name: データ準備の運用化
-          href: ../desktop-workbench/data-prep-operationalization.md
     - name: 実験
       items:
         - name: 実験サービス構成

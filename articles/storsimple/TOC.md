@@ -24,7 +24,7 @@
 ### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
 #### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-1.md)
 ##### [Update 0.6 のインストール](storsimple-virtual-array-install-update-06.md)
-##### Archive
+##### アーカイブ
 ###### [Update 0.5 のインストール](storsimple-virtual-array-install-update-05.md)
 ###### [Update 0.4 をインストールする](storsimple-virtual-array-install-update-04.md)
 ###### [Update 0.3 のインストール](storsimple-virtual-array-install-update.md)
@@ -49,7 +49,7 @@
 ## リリース ノート
 ### [Update 1 - 最新](storsimple-virtual-array-update-1-release-notes.md)
 ### [Update 0.6](storsimple-virtual-array-update-06-release-notes.md)
-### Archive
+### アーカイブ
 #### [Update 0.5](storsimple-virtual-array-update-05-release-notes.md)
 #### [Update 0.4](storsimple-virtual-array-update-04-release-notes.md)
 #### [Update 0.3](storsimple-ova-update-03-release-notes.md)
@@ -62,7 +62,7 @@
 ### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [セキュリティに関する考慮事項](storsimple-8000-security.md)
 ### [利用可能なリージョン](storsimple-regions.md)
-### [FAQ - Azure Portal に移行する](storsimple-8000-move-azure-portal-faq.md)
+
 
 ## 作業開始
 
@@ -189,10 +189,11 @@
 ## リリース ノート
 ### [Update 5 - 最新](storsimple-update5-release-notes.md)
 ### [Update 4](storsimple-update4-release-notes.md)
-### [Update 3](storsimple-update3-release-notes.md)
-### [Update 2.2](storsimple-update21-release-notes.md)
 
-### Archive
+
+### アーカイブ
+#### [Update 3](storsimple-update3-release-notes.md)
+#### [Update 2.2](storsimple-update21-release-notes.md)
 #### [Update 2](storsimple-update2-release-notes.md)
 #### [Update 1](storsimple-update1-release-notes.md)
 #### [Update 0.3](storsimple-february-2015-release-notes.md)

@@ -167,16 +167,16 @@
 #### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 
 ## アプリを管理する
-### [概要](active-directory-enable-sso-scenario.md)
-### [使用の開始](active-directory-integrating-applications-getting-started.md)
+### [概要](manage-apps/what-is-application-management.md)
+### [使用の開始](manage-apps/plan-an-application-integration.md)
 ### [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](cloudappdiscovery-get-started.md)
-#### [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
+### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
+#### [スナップショット レポートの作成](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 
-### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
+### [アプリ プロキシを使用してリモートでアプリにアクセスする](manage-apps/application-proxy.md)
 #### 作業開始
 ##### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 ##### [アプリを発行する](application-proxy-publish-azure-portal.md)

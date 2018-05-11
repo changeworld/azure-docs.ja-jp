@@ -76,7 +76,6 @@
         - name: IPv6 を使用してパブリック ロード バランサーを作成する (テンプレート)
           href: load-balancer-ipv6-internet-template.md
     - name: 内部ロード バランサーを構成する
-      href: load-balancer-get-started-ilb-arm-portal.md
       items:
         - name: 内部ロード バランサーを構成する (PowerShell)
           href: load-balancer-get-started-ilb-arm-ps.md
