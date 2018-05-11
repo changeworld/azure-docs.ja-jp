@@ -7,10 +7,13 @@
     - name: Time Series Insights について
       href: time-series-insights-overview.md
 - name: クイック スタート
-  expanded: true
   items:
     - name: Time Series Insights の探索
       href: time-series-quickstart.md
+- name: チュートリアル
+  items:
+    - name: TSI JavaScript クライアント ライブラリの探索
+      href: tutorial-explore-js-client-lib.md
 - name: 概念
   items:
     - name: 環境を計画する

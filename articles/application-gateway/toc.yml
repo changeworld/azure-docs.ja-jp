@@ -91,6 +91,8 @@
       href: tutorial-url-route-powershell.md
     - name: Azure PowerShell を使用して Web トラフィックをリダイレクトする
       href: tutorial-url-redirect-powershell.md
+    - name: ゾーン冗長アプリケーション ゲートウェイを作成する
+      href: create-zone-redundant.md
 - name: リファレンス
   items:
     - name: Azure CLI

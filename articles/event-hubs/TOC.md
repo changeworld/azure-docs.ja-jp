@@ -28,6 +28,11 @@
 ### [可用性と一貫性](event-hubs-availability-and-consistency.md)
 ### [スループット単位の自動スケール](event-hubs-auto-inflate.md)
 ### [Apache Spark を Event Hubs と統合する](event-hubs-spark-connector.md)
+## Kafka 用の Event Hubs
+### [Kafka エコシステム用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
+### [Kafka が有効なイベント ハブの作成](event-hubs-create-kafka-enabled.md) 
+### [Kafka エコシステム用の Azure Event Hubs へのストリーム配信](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+### [Kafka エコシステム用の Azure Event Hubs での Kafka MirrorMaker の使用](event-hubs-kafka-mirror-maker-tutorial.md)
 ## 開発
 ### [.NET Framework を使用したイベントの送信](event-hubs-dotnet-framework-getstarted-send.md)
 ### [.NET Framework を使用したイベントの受信](event-hubs-dotnet-framework-getstarted-receive-eph.md)

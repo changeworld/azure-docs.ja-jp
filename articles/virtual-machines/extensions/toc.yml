@@ -1,0 +1,95 @@
+- name: VM 拡張機能のドキュメント
+  href: ../index.md
+- name: 概要
+  items:
+    - name: Azure 拡張機能について
+      href: overview.md
+    - name: Linux VM エージェント
+      href: agent-linux.md
+    - name: Windows VM エージェント
+      href: agent-windows.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: カスタム スクリプト拡張機能の使用
+      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      maintainContext: true
+- name: 概念
+  items:
+    - name: Linux
+      href: features-linux.md
+    - name: Windows
+      href: features-windows.md
+- name: ハウツー ガイド
+  items:
+    - name: カスタム スクリプト拡張機能
+      items:
+        - name: Linux - バージョン 2
+          href: custom-script-linux.md
+        - name: Linux - バージョン 1 (OSTC)
+          href: custom-script-linuxOstc.md
+        - name: Windows
+          href: custom-script-windows.md
+    - name: OMS 拡張機能
+      items:
+        - name: Linux
+          href: oms-linux.md
+        - name: Windows
+          href: oms-windows.md
+    - name: 診断拡張機能
+      items:
+        - name: Linux
+          href: diagnostics-linux.md
+        - name: Windows
+          href: diagnostics-windows.md
+        - name: テンプレートの使用
+          href: diagnostics-template.md
+    - name: Network Watcher Agent
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: PowerShell DSC 拡張機能
+      href: dsc-overview.md
+      items:
+        - name: DSC と Windows
+          href: dsc-windows.md
+        - name: 資格情報のハンドル
+          href: dsc-credentials.md
+        - name: テンプレートの使用
+          href: dsc-template.md
+    - name: Windows の IaaS マルウェア対策
+      href: iaas-antimalware-windows.md
+    - name: Key Vault 拡張機能
+      href: key-vault-windows.md
+    - name: VM スナップショット拡張機能
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: サードパーティ拡張機能
+      items:
+        - name: Stackify Retrace
+          href: stackify-retrace-linux.md
+        - name: Symantec
+          href: symantec.md
+    - name: 非推奨の拡張機能
+      items:
+        - name: ログ コレクター拡張機能
+          href: log-collector.md
+        - name: Trend Micro Deep Security
+          href: trend.md
+    - name: 拡張機能のインストールの制限
+      items:
+        - name: Linux
+          href: extensions-rmpolicy-howto-cli.md
+        - name: Windows
+          href: extensions-rmpolicy-howto-ps.md
+    - name: Linux エージェントの更新
+      href: update-linux-agent.md
+    - name: 拡張機能のエクスポート
+      href: export-templates.md
+    - name: トラブルシューティング
+      href: troubleshoot.md

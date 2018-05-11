@@ -30,6 +30,8 @@
       href: render-coverage.md
     - name: ルーティングの対象範囲
       href: routing-coverage.md
+    - name: 検索カテゴリ
+      href: search-categories.md
     - name: サポートされている言語
       href: supported-languages.md
 - name: ハウツー ガイド

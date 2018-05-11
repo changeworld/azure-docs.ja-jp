@@ -115,16 +115,14 @@
           href: automation-pass-json-string.md
     - name: Hybrid Runbook Worker
       items:
-        - name: Hybrid Runbook Worker のデプロイ
+        - name: Hybrid Runbook Worker の概要
           href: automation-hybrid-runbook-worker.md
-        - name: Azure Automation の Windows Hybrid Runbook Worker
+        - name: Windows Hybrid Runbook Worker のデプロイ
           href: automation-windows-hrw-install.md
-        - name: Azure Automation の Linux Hybrid Runbook Worker
+        - name: Linux Hybrid Runbook Worker のデプロイ
           href: automation-linux-hrw-install.md
-        - name: worker での Runbook の実行
+        - name: Hybrid Runbook Worker での Runbook の実行
           href: automation-hrw-run-runbooks.md
-        - name: Azure Automation の Hybrid Runbook Worker の削除
-          href: automation-remove-hrw.md
     - name: 構成管理のデプロイ (DSC)
       items:
         - name: Desired State Configuration (DSC) の概要

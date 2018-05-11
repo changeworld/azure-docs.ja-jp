@@ -24,23 +24,27 @@
       href: blockchain-workbench-use-API.md
     - name: アプリのトラブルシューティング
       href: blockchain-workbench-troubleshooting.md
-    - name: Workbench DB の詳細を取得する
-      href: blockchain-workbench-getdb-details.md
-    - name: Workbench SQL DB ファイアウォールを構成する
-      href: blockchain-workbench-database-firewall.md
-    - name: Excel で Workbench のデータを使用する
-      href: blockchain-workbench-data-excel.md
-    - name: Power BI で Workbench のデータを使用する
-      href: blockchain-workbench-data-powerbi.md
-    - name: SQL Management Studio で Workbench のデータを使用する
-      href: blockchain-workbench-data-sql-management-studio.md
+    - name: Workbench データを使用する
+      items:
+        - name: DB ファイアウォールを構成する
+          href: blockchain-workbench-database-firewall.md
+        - name: DB の詳細を取得する
+          href: blockchain-workbench-getdb-details.md
+        - name: Excel でデータを使用する
+          href: blockchain-workbench-data-excel.md
+        - name: Power BI でデータを使用する
+          href: blockchain-workbench-data-powerbi.md
+        - name: SQL Management Studio でデータを使用する
+          href: blockchain-workbench-data-sql-management-studio.md
 - name: リファレンス
   items:
+    - name: コード サンプル
+      href: 'https://github.com/Azure-Samples/blockchain'
     - name: 構成
       href: blockchain-workbench-configuration-overview.md
     - name: データベース ビュー
       href: blockchain-workbench-database-views.md
-    - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
     - name: メッセージング API
       href: blockchain-workbench-messages-overview.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'

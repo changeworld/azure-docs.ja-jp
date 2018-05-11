@@ -6,11 +6,11 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ec0c45cd36394dfac5066e1616226ced75161459
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 04b001e816b50176ce6529ddf49036c250f0dc24
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1192,6 +1192,12 @@ Terraform </a>
                                                 <p>CLI</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/blockchain-workbench">
+                                                <img src="media/index/blockchain-workbench.svg" alt="" />
+                                                <p>Blockchain Workbench</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>モノのインターネット (IoT)</h3>
                                     <ul>
@@ -1479,15 +1485,6 @@ Terraform </a>
                                                 <p>Azure Active Directory B2C</p>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="/azure/security/">
-                                                <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>セキュリティ情報</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <h3>管理ツール</h3>
-                                    <ul>
                                         <li>
                                             <a href="/azure/security/">
                                                 <img src="media/index/SecurityCenter.svg" alt="" />
@@ -4535,6 +4532,25 @@ Terraform </a>
                                                 <div class="cardText">
                                                     <h3>CLI</h3>
                                                     <p>コマンドライン ツールで直接クラウドにアクセス</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/blockchain-workbench/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/blockchain-workbench.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Blockchain Workbench</h3>
+                                                    <p>簡単にブロックチェーンをクラウドに接続</p>
                                                 </div>
                                             </div>
                                         </div>

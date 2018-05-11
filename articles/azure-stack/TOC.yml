@@ -61,8 +61,22 @@
               href: azure-stack-prepare-pki-certs.md
             - name: PKI 証明書の検証
               href: azure-stack-validate-pki-certs.md
-        - name: ID の統合
-          href: azure-stack-integrate-identity.md
+            - name: PKI 証明書の修復
+              href: azure-stack-remediate-certs.md
+            - name: デプロイ リソース
+              items:
+                - name: Start-AzsReadiness コマンドレット リファレンス
+                  href: azure-stack-azsreadiness-cmdlet.md
+                - name: 対応状況レポートの表示
+                  href: azure-stack-validation-report.md
+            - name: ID の統合
+              items:
+                - name: ID プロバイダーの選択
+                  href: azure-stack-integrate-identity.md
+                - name: Azure ID の検証
+                  href: azure-stack-validate-identity.md
+        - name: Azure の登録の検証
+          href: azure-stack-validate-registration.md
         - name: 外部の監視
           href: azure-stack-integrate-monitor.md
         - name: セキュリティの統合
@@ -123,7 +137,7 @@
               href: azure-stack-manage-storage-accounts.md
             - name: ストレージ容量の管理
               href: azure-stack-manage-storage-shares.md
-            - name: Azure Stack の物理ストレージ容量を管理する
+            - name: 物理メモリ容量の管理
               href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: ハードウェアの交換
           items:
@@ -253,6 +267,10 @@
               href: azure-stack-compute-add-scalesets.md
             - name: Linux 仮想マシンの提供
               href: azure-stack-linux.md
+            - name: Red Hat 仮想マシンの追加
+              href: azure-stack-redhat-create-upload-vhd.md
+            - name: Kubernetes クラスターの提供
+              href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: 使用量と課金
           items:
             - name: 概要
