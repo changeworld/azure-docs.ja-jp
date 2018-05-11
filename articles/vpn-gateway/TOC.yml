@@ -8,6 +8,8 @@
   items:
     - name: VPN ゲートウェイを作成して管理する
       href: vpn-gateway-tutorial-create-gateway-powershell.md
+    - name: S2S VPN 接続を作成して管理する
+      href: vpn-gateway-tutorial-vpnconnection-powershell.md
 - name: サンプル
   items:
     - name: Azure PowerShell

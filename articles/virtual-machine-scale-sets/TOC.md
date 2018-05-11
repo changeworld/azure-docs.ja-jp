@@ -29,6 +29,8 @@
 ### [Azure CLI 2.0](tutorial-autoscale-cli.md)
 ### [Azure PowerShell](tutorial-autoscale-powershell.md)
 ### [テンプレート](tutorial-autoscale-template.md)
+## カスタム Packer イメージでの Azure 仮想マシン スケール セットへのアプリのデプロイ
+### [Azure CLI 2.0](https://docs.microsoft.com/learn/deploy-custom-vmss-app/index)
 
 # サンプル
 ## [Azure CLI 2.0](cli-samples.md)

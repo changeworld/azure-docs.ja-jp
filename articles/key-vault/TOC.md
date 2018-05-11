@@ -63,7 +63,13 @@
 
 # リソース
 ## [サービスの概要](https://azure.microsoft.com/services/key-vault/)
-## [キー、シークレット、証明書について](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
+## [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
+### [証明書の概要](certificate-scenarios.md)
+#### [証明書の作成方法](create-certificate.md)
+#### [証明書作成の監視と管理](create-certificate-scenarios.md)
+## [認証、要求、応答](authentication-requests-and-responses.md)
+## [一般的なパラメーターとヘッダー](common-parameters-and-headers.md)
+## [Key Vault のバージョン](key-vault-versions.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ブログ](http://blogs.technet.com/b/kv/)
 ## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)

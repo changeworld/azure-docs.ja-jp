@@ -51,6 +51,8 @@
       href: tutorial-mean-stack.md
     - name: 16 - SSL による Web サーバーのセキュリティ保護
       href: tutorial-secure-web-server.md
+    - name: スケール セットへの Packer イメージやアプリのデプロイ
+      href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: サンプル
   items:
     - name: Azure CLI

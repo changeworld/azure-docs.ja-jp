@@ -1,10 +1,10 @@
 - name: CDN のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: Azure CDN とは
       href: cdn-overview.md
-    - name: Azure CDN 製品の機能
+    - name: 製品の特徴の比較
       href: cdn-features.md
 - name: クイック スタート
   items:
@@ -137,13 +137,13 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: ルール エンジンの機能
           href: cdn-rules-engine-reference-features.md
+        - name: HTTP 変数
+          href: cdn-http-variables.md
     - name: Verizon 固有 HTTP ヘッダー
       href: cdn-verizon-http-headers.md
       items:
         - name: X-EC-Debug ヘッダー
           href: cdn-http-debug-headers.md
-    - name: HTTP 変数
-      href: cdn-http-variables.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

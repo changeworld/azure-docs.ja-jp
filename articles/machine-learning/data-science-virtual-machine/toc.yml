@@ -32,6 +32,16 @@
       href: use-deep-learning-dsvm.md
     - name: geo AI データ サイエンス VM の使用
       href: use-geo-ai-dsvm.md
+- name: エンタープライズ向けのガイダンス
+  items:
+    - name: 概要
+      href: dsvm-enterprise-overview.md
+    - name: スケーリング
+      href: dsvm-pools.md
+    - name: Active Directory の統合
+      href: dsvm-common-identity.md
+    - name: リソースのアクセス資格情報のセキュリティ保護
+      href: dsvm-secure-access-keys.md
 - name: リファレンス
   expanded: true
   items:

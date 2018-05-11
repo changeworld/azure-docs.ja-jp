@@ -34,6 +34,8 @@
       href: search-categories.md
     - name: サポートされている言語
       href: supported-languages.md
+    - name: 消費モデル
+      href: consumption-model.md
 - name: ハウツー ガイド
   items:
     - name: Maps のアカウントを管理する
@@ -115,7 +117,7 @@
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates'
     - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-location-based-services'
+      href: 'http://stackoverflow.com/questions/tagged/azure-maps'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: ビデオ
