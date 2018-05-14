@@ -6,11 +6,11 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 04b001e816b50176ce6529ddf49036c250f0dc24
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 58a05642ebbbce0773d20720903964a1ed3ab06c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -93,7 +93,7 @@ ms.lasthandoff: 05/10/2018
                                             <div class="cardText">
                                                 <h3>インフラストラクチャのデプロイ</h3>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux Virtual Machines</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux virtual machines</a></li>
                                                     <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows Virtual Machines</a></li>
                                                 </ul>
                                             </div>
@@ -167,7 +167,7 @@ Node.js</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/go/azure/">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="">
 Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
@@ -694,7 +694,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/machine-learning/service">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning Services</p>
+                                                <p>Machine Learning サービス</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1270,7 +1270,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/machine-learning/service">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning Services</p>
+                                                <p>Machine Learning サービス</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1497,7 +1497,8 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>Backup
+</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3259,7 +3260,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning Services</h3>
+                                                    <h3>Machine Learning サービス</h3>
                                                     <p>機会学習および AI モデルを構築、デプロイ、管理</p>
                                                 </div>
                                             </div>
@@ -3745,7 +3746,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning Services</h3>
+                                                    <h3>Machine Learning サービス</h3>
                                                     <p>機会学習および AI モデルを構築、デプロイ、管理</p>
                                                 </div>
                                             </div>
@@ -4573,7 +4574,8 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
+                                                    <h3>Backup
+</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -5396,7 +5398,7 @@ Java 開発者向けの Azure </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">

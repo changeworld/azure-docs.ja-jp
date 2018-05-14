@@ -1,22 +1,22 @@
 ---
-title: "Azure Marketplace のドキュメント | Microsoft Docs"
-description: "Azure Marketplace について説明します。"
+title: Azure Marketplace のドキュメント | Microsoft Docs
+description: Azure Marketplace について説明します。
 services: marketplace
-author: czeumault
-manager: carolz
+author: ellacroi
+manager: mbaldwin
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: marketplace
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 04/14/2017
-ms.author: carolz
-ms.openlocfilehash: ca7282e5bc9bac7677d382fd9c263f05be9ef196
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 05/10/2018
+ms.author: ellacroi
+ms.openlocfilehash: 65ad29de9eff47f14a22102729b662dad8581a7b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-marketplace-documentation"></a>Azure Marketplace のドキュメント
 
