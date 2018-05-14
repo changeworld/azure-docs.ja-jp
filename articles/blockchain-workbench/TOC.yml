@@ -14,10 +14,10 @@
   items:
     - name: Workbench をデプロイする
       href: blockchain-workbench-deploy.md
-    - name: Workbench ユーザーを管理する
-      href: blockchain-workbench-manage-users.md
     - name: ブロックチェーン アプリを作成する
       href: blockchain-workbench-create-app.md
+    - name: Workbench ユーザーを管理する
+      href: blockchain-workbench-manage-users.md
     - name: ブロックチェーン アプリを使用する
       href: blockchain-workbench-use.md
     - name: Workbench API を使用する

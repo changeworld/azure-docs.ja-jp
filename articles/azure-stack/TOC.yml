@@ -111,8 +111,6 @@
               href: azure-stack-powershell-download.md
             - name: PowerShell の構成 - クラウド オペレーター
               href: azure-stack-powershell-configure-admin.md
-            - name: PowerShell の稼働
-              href: azure-stack-powershell-configure-quickstart.md
         - name: 特権エンドポイントへのアクセス
           href: azure-stack-privileged-endpoint.md
         - name: 更新プログラムの管理
