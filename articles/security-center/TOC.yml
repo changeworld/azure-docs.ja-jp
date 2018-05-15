@@ -153,6 +153,8 @@
           href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
+        - name: コンプライアンスのレビュー (REST)
+          href: security-center-review-policy-compliance.md
     - name: シナリオ
       items:
         - name: インシデント対応

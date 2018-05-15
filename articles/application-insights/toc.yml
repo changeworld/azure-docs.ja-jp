@@ -53,6 +53,8 @@
           href: app-insights-asp-net-core.md
         - name: コンソール
           href: application-insights-console.md
+        - name: アプリケーション ダッシュボード
+          href: app-insights-overview-dashboard.md
     - name: Java アプリの監視
       items:
         - name: Web Apps
@@ -208,7 +210,7 @@
               href: app-insights-usage-flows.md
             - name: Workbooks
               href: app-insights-usage-workbooks.md
-        - name: 分析
+        - name: Analytics
           items:
             - name: 概要
               href: app-insights-analytics.md
@@ -228,6 +230,8 @@
           href: app-insights-automate-with-flow.md
         - name: Azure ロジック アプリでの自動化
           href: automate-with-logic-apps.md
+        - name: カスタム電子メール レポート
+          href: automate-custom-reports.md
     - name: 開発
       items:
         - name: カスタム イベントとメトリックの API
@@ -276,7 +280,7 @@
           href: app-insights-asp-net-troubleshoot-no-data.md
         - name: スナップショット デバッガー
           href: app-insights-troubleshoot-snapshot-debugger.md
-        - name: 分析
+        - name: Analytics
           href: app-insights-analytics-troubleshooting.md
         - name: Java
           href: app-insights-java-troubleshoot.md

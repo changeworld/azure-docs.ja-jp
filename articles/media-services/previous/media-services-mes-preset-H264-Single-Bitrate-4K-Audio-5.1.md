@@ -1,31 +1,34 @@
 ---
-title: H264 Single Bitrate 1080p Audio 5.1 | Microsoft Docs
-description: このトピックでは、**H264 Single Bitrate 1080p Audio 5.1** タスク プリセットの概要を説明します。
+title: H264 Single Bitrate 4K Audio 5.1 | Microsoft Docs
+description: このトピックでは、**H264 Single Bitrate 4K Audio 5.1** タスク プリセットの概要を説明します。
 author: Juliako
 manager: cfowler
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: b42238de-2a3c-4683-ae7f-7ce19ad5162e
+ms.assetid: 72cb95ac-2cd6-4ef4-9938-8f22cea04920
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 07440d18afa83c571f1568a2e43fb6bca5e8b452
+ms.openlocfilehash: 05c085e82adbf362a0745f7b819854086f9507f9
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
 ---
-# <a name="h264-single-bitrate-1080p-audio-51"></a>H264 Single Bitrate 1080p Audio 5.1
+# <a name="h264-single-bitrate-4k-audio-51"></a>H264 Single Bitrate 4K Audio 5.1
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
   
- このトピックでは、`H264 Single Bitrate 1080p Audio 5.1` を XML 形式と JSON 形式で示します。  
+ このトピックでは、`H264 Single Bitrate 4K Audio 5.1` (XML 形式と JSON 形式) を示します。  
   
- このプリセットにより、ビットレートが 6,750 kbps の単一の MP4 ファイルと、AAC 5.1 オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
+ このプリセットにより、ビットレートが 18,000 kbps の単一の MP4 ファイルと、AAC 5.1 オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
+  
+> [!NOTE]
+>  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
   
  XML  
   
@@ -38,9 +41,9 @@ ms.lasthandoff: 05/07/2018
       <SceneChangeDetection>true</SceneChangeDetection>  
       <H264Layers>  
         <H264Layer>  
-          <Bitrate>6750</Bitrate>  
-          <Width>1920</Width>  
-          <Height>1080</Height>  
+          <Bitrate>18000</Bitrate>  
+          <Width>3840</Width>  
+          <Height>2160</Height>  
           <FrameRate>0/1</FrameRate>  
           <Profile>Auto</Profile>  
           <Level>auto</Level>  
@@ -50,7 +53,7 @@ ms.lasthandoff: 05/07/2018
           <AdaptiveBFrame>true</AdaptiveBFrame>  
           <EntropyMode>Cabac</EntropyMode>  
           <BufferWindow>00:00:05</BufferWindow>  
-          <MaxBitrate>6750</MaxBitrate>  
+          <MaxBitrate>18000</MaxBitrate>  
         </H264Layer>  
       </H264Layers>  
       <Chapters />  
@@ -83,11 +86,11 @@ ms.lasthandoff: 05/07/2018
         {  
           "Profile": "Auto",  
           "Level": "auto",  
-          "Bitrate": 6750,  
-          "MaxBitrate": 6750,  
+          "Bitrate": 18000,  
+          "MaxBitrate": 18000,  
           "BufferWindow": "00:00:05",  
-          "Width": 1920,  
-          "Height": 1080,  
+          "Width": 3840,  
+          "Height": 2160,  
           "BFrames": 3,  
           "ReferenceFrames": 3,  
           "AdaptiveBFrame": true,  

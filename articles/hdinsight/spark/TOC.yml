@@ -19,6 +19,10 @@
   items:
     - name: Spark クラスターに対するクエリの実行
       href: apache-spark-load-data-run-query.md
+    - name: VSCode を使用した Spark クエリの実行
+      href: ../hdinsight-for-vscode.md
+    - name: IntelliJ を使用した Spark クエリの実行
+      href: apache-spark-intellij-tool-plugin.md
     - name: BI ツールを使用したデータの分析
       href: apache-spark-use-bi-tools.md
     - name: ストリーミング ジョブの実行
@@ -47,10 +51,10 @@
           href: apache-spark-eclipse-tool-plugin.md
         - name: IntelliJ を使用してアプリを作成する
           href: apache-spark-intellij-tool-plugin.md
-        - name: VPN を介して IntelliJ を使用してリモートで Spark ジョブをデバッグする
-          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: SSH を介して IntelliJ を使用してリモートで Spark ジョブをデバッグする
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+        - name: VPN を介して IntelliJ を使用してリモートで Spark ジョブをデバッグする
+          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
           maintainContext: true
@@ -316,6 +320,8 @@
       items:
         - name: Spark ジョブのデバッグ
           href: apache-spark-job-debugging.md
+        - name: IntelliJ を使用した Spark ジョブのデバッグ
+          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

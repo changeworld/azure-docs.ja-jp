@@ -39,8 +39,8 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: ネットワーク セキュリティ グループ ビュー
       href: network-watcher-security-group-view-overview.md
-    - name: ネットワーク トポロジの表示
-      href: network-watcher-topology-overview.md
+    - name: ロールベースのアクセス制御のアクセス許可
+      href: required-rbac-permissions.md
 - name: ハウツー ガイド
   items:
     - name: Network Watcher を構成する
@@ -151,15 +151,7 @@
         - name: VPN ゲートウェイ経由でオンプレミスの接続を診断する
           href: network-watcher-diagnose-on-premises-connectivity.md
     - name: ネットワーク トポロジの表示
-      items:
-        - name: Azure PowerShell
-          href: network-watcher-topology-powershell.md
-        - name: Azure CLI
-          href: network-watcher-topology-cli.md
-        - name: Azure CLI 1.0
-          href: network-watcher-topology-cli-nodejs.md
-        - name: REST ()
-          href: network-watcher-topology-rest.md
+      href: view-network-topology.md
     - name: 場所と Azure リージョンの間の相対待ち時間を確認する
       href: view-relative-latencies.md
 - name: リファレンス

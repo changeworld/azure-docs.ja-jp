@@ -1,7 +1,7 @@
 # [Key Vault のドキュメント](index.yml)
 
 # 概要
-## [Key Vault の概要](key-vault-overview.md)
+## [Key Vault について](key-vault-overview.md)
 
 # クイック スタート
 ## [キー コンテナーの作成 - CLI](quick-create-cli.md)
@@ -65,8 +65,8 @@
 ## [サービスの概要](https://azure.microsoft.com/services/key-vault/)
 ## [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
 ### [証明書の概要](certificate-scenarios.md)
-#### [証明書の作成方法](create-certificate.md)
-#### [証明書作成の監視と管理](create-certificate-scenarios.md)
+### [証明書の作成方法](create-certificate.md)
+### [証明書作成の監視と管理](create-certificate-scenarios.md)
 ## [認証、要求、応答](authentication-requests-and-responses.md)
 ## [一般的なパラメーターとヘッダー](common-parameters-and-headers.md)
 ## [Key Vault のバージョン](key-vault-versions.md)

@@ -16,6 +16,7 @@
 ## [Azure AD へのユーザーの追加](add-users-azure-active-directory.md)
 ## [ユーザーへのライセンスの割り当て](license-users-groups.md)
 ## [セルフサービスによるパスワードのリセットの構成](authentication/quickstart-sspr.md)
+## [Azure AD での組織のプライバシーに関する情報の追加](active-directory-properties-area.md)
 
 
 # 方法
@@ -58,6 +59,7 @@
 #### [B2B の共有ポリシー](active-directory-b2b-delegate-invitations.md)
 #### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
 #### [動的グループと B2B ユーザー](active-directory-b2b-dynamic-groups.md)
+#### [組織から脱退する](active-directory-b2b-leave-the-organization.md)
 #### [監査とレポート](active-directory-b2b-auditing-and-reporting.md)
 #### [ハイブリッド組織向けの B2B](active-directory-b2b-hybrid-organizations.md)
 ##### [B2B ユーザーにローカル アプリへのアクセスを付与する](active-directory-b2b-hybrid-cloud-to-on-premises.md)
@@ -178,11 +180,11 @@
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](manage-apps/application-proxy.md)
 #### 作業開始
-##### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-##### [アプリを発行する](application-proxy-publish-azure-portal.md)
-##### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
-#### [シングル サインオン](application-proxy-sso-overview.md)
-##### [KCD を使用した SSO](active-directory-application-proxy-sso-using-kcd.md)
+##### [アプリケーション プロキシを有効にする](manage-apps/application-proxy-enable.md)
+##### [アプリを発行する](manage-apps/application-proxy-publish-azure-portal.md)
+##### [カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md)
+#### [シングル サインオン](manage-apps/application-proxy-single-sign-on.md)
+##### [KCD を使用した SSO](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 ##### [ヘッダーを使用した SSO](application-proxy-ping-access.md)
 ##### [パスワード保管を使用した SSO](application-proxy-sso-azure-portal.md)
 #### 概念

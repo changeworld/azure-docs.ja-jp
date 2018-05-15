@@ -25,7 +25,7 @@
       href: role-assignments-external-users.md
     - name: アクティビティ ログ
       href: change-history-report.md
-    - name: テナント管理者のアクセス権の昇格
+    - name: 全体管理者のアクセス権の昇格
       href: elevate-access-global-admin.md
     - name: トラブルシューティング
       href: troubleshooting.md

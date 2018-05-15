@@ -49,6 +49,10 @@
         - name: Hive と Hadoop
           href: hdinsight-use-hive.md
           items:
+            - name: HDInsight tools for VSCode を使用する
+              href: ../hdinsight-for-vscode.md
+            - name: HDInsight tools for Visual Studio を使用する
+              href: apache-hadoop-use-hive-visual-studio.md
             - name: Hive ビューを使用する
               href: apache-hadoop-use-hive-ambari-view.md
             - name: Beeline を使用する
@@ -59,8 +63,6 @@
               href: apache-hadoop-use-hive-powershell.md
             - name: .NET SDK の使用
               href: apache-hadoop-use-hive-dotnet-sdk.md
-            - name: HDInsight tools for Visual Studio を使用する
-              href: apache-hadoop-use-hive-visual-studio.md
             - name: リモート デスクトップを使用する
               href: apache-hadoop-use-hive-remote-desktop.md
             - name: クエリ コンソールを使用する

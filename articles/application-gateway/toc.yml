@@ -45,6 +45,8 @@
       href: ssl-overview.md
     - name: URL リダイレクト
       href: redirect-overview.md
+    - name: 正常性の監視
+      href: application-gateway-probe-overview.md
 - name: ハウツー ガイド
   items:
     - name: アプリケーション ゲートウェイの作成
@@ -93,6 +95,20 @@
       href: tutorial-url-redirect-powershell.md
     - name: ゾーン冗長アプリケーション ゲートウェイを作成する
       href: create-zone-redundant.md
+    - name: カスタム プローブ
+      items:
+        - name: ポータル
+          href: application-gateway-create-probe-portal.md
+        - name: クラシック PowerShell
+          href: application-gateway-create-probe-classic-ps.md
+        - name: Resource Manager PowerShell
+          href: application-gateway-create-probe-ps.md
+    - name: トラブルシューティング
+      items:
+        - name: Bad Gateway (502) エラーのトラブルシューティング
+          href: application-gateway-troubleshooting-502.md
+        - name: 診断
+          href: application-gateway-diagnostics.md
 - name: リファレンス
   items:
     - name: Azure CLI

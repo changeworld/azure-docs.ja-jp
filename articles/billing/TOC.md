@@ -26,7 +26,8 @@
 ### [使用制限の確認](billing-spending-limit.md)
 ### [課金アラートのセットアップ](billing-set-up-alerts.md)
 ### [過去の延滞残高を決済する](billing-azure-subscription-past-due-balance.md)
-### [従量課金での予約インスタンスの使用について](billing-understand-reserved-instance-usage.md)
+### 
+  [従量課金制での予約インスタンスの使用について](billing-understand-reserved-instance-usage.md)
 ### [エンタープライズ向けの予約インスタンスの使用について](billing-understand-reserved-instance-usage-ea.md)
 
 ## [サブスクリプションの管理]
@@ -43,6 +44,7 @@
 ### [支払情報を更新する](billing-how-to-change-credit-card.md)
 ### [請求書によるサブスクリプションの支払い](billing-how-to-pay-by-invoice.md)
 ### [パートナー ID をリンクする](billing-partner-admin-link-started.md)
+### [請求先アカウントを表示する](billing-view-all-accounts.md)
 ## [予約 VM インスタンスを管理する](billing-manage-reserved-vm-instance.md)
 ## トラブルシューティング
 ### [サインアップの問題](https://support.microsoft.com/en-us/help/4042959)
