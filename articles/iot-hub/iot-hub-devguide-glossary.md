@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub 用語集 | Microsoft Docs"
-description: "開発者ガイド - Azure IoT Hub に関連する一般用語の用語集。"
+title: Azure IoT Hub 用語集 | Microsoft Docs
+description: 開発者ガイド - Azure IoT Hub に関連する一般用語の用語集。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
 
 ## <a name="advanced-message-queueing-protocol"></a>Advanced Message Queueing Protocol
 [Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) は、デバイスと通信するために [IoT Hub](#iot-hub) がサポートするメッセージング プロトコルの 1 つです。 IoT Hub がサポートするメッセージング プロトコルの詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
+
+## <a name="automatic-device-management"></a>自動デバイス管理
+Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](iot-hub-auto-device-config.md)と [IoT Edge の自動展開](../iot-edge/how-to-deploy-monitor.md)で構成されます。
+
+## <a name="automatic-device-configuration"></a>自動デバイス構成
+ソリューション バックエンドは、[自動デバイス構成](iot-hub-auto-device-config.md)を使用することで、[デバイス ツイン](#device-twin)のセットに必要なプロパティを割り当て、システム メトリックとカスタム メトリックを使って状態を報告することができます。 
 
 ## <a name="azure-cli"></a>Azure CLI
 [Azure CLI](../cli-install-nodejs.md) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 この CLI バージョン は、Node.js を使用して実装されます。
@@ -51,7 +57,7 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 ## <a name="azure-service-bus"></a>Azure Service Bus
 [Service Bus](../service-bus/index.md) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
 
-## <a name="azure-storage"></a>Azure Storage (Azure Storage)
+## <a name="azure-storage"></a>Azure Storage
 [Azure Storage](../storage/common/storage-introduction.md) は、クラウド ストレージ ソリューションです。 非構造化オブジェクト データの格納に使用できる Blob Storage サービスが含まれています。 一部の IoT Hub チュートリアルでは、Blob Storage を使用します。
 
 ## <a name="back-end-app"></a>バックエンド アプリ
@@ -65,6 +71,9 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 
 ## <a name="cloud-to-device"></a>クラウドからデバイスへ
 IoT Hub から接続されたデバイスに送信されるメッセージを指します。 多くの場合、これらのメッセージは、デバイスにアクションを実行することを指示するコマンドです。 詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。
+
+## <a name="configuration"></a>構成
+[自動デバイス構成](iot-hub-auto-device-config.md)のコンテキストでは、IoT Hub 内の構成は、デバイス ツインのセットに必要な構成を定義し、状態と進行状況を報告するためのメトリックのセットを提供します。
 
 ## <a name="connection-string"></a>接続文字列
 アプリのコード内の接続文字列を使用して、エンドポイントへの接続に必要な情報をカプセル化します。 通常、接続文字列には、エンドポイントのアドレスとセキュリティ情報が含まれますが、接続文字列の形式はサービス間で異なります。 IoT Hub サービスに関連付けられた接続文字列には次の 2 種類があります。
@@ -110,6 +119,9 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 ## <a name="device-identity"></a>デバイス ID
 デバイス ID は、[ID レジストリ](#identity-registry)に登録されているすべてのデバイスに割り当てられた、一意の識別子です。
 
+## <a name="module-identity"></a>モジュール ID
+モジュール ID は、デバイスに属しているすべてのモジュールに割り当てられる一意識別子です。 モジュール ID は、[ID レジストリ](#identity-registry)でも登録されます。
+
 ## <a name="device-management"></a>デバイス管理
 デバイス管理には、計画、プロビジョニング、構成、監視、インベントリからの削除などを含む IoT ソリューション内のデバイスの管理に関連するライフ サイクル全体が含まれます。
 
@@ -125,14 +137,17 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 ## <a name="device-twin"></a>デバイス ツイン
 [デバイス ツイン](iot-hub-devguide-device-twins.md)は、デバイスの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 [IoT Hub](#iot-hub) は、IoT Hub でプロビジョニングする各デバイスにデバイス ツインを保持します。 デバイス ツインを使用すると、デバイスとソリューションのバック エンド間で[デバイスの状態](#device-condition)と構成を同期できます。 デバイス ツインにクエリを実行して、特定のデバイスを見つけ、長時間実行されている操作の状態にクエリを実行できます。
 
-## <a name="device-twin-queries"></a>デバイス ツイン クエリ
-[デバイス ツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
+## <a name="module-twin"></a>モジュール ツイン
+デバイス ツインと同様に、モジュール ツインは、モジュールの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 IoT Hub は、お使いの IoT ハブ内のデバイス ID でプロビジョニングされたモジュール ID ごとにモジュール ツインを永続化します。 モジュール ツインを使用すると、モジュールとソリューションのバックエンド間でモジュールの状態と構成を同期できます。 モジュール ツインにクエリを実行して、特定のモジュールを見つけ、長時間実行されている操作の状態にクエリを実行できます。
+
+## <a name="twin-queries"></a>ツイン クエリ
+[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
 
 ## <a name="device-twin-rest-api"></a>デバイス ツイン REST API
 ソリューションのバック エンドから[デバイス ツイン REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) を使用して、デバイス ツインを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、および[ダイレクト メソッド](#direct-method)の呼び出しを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
 
-## <a name="device-twin-synchronization"></a>デバイス ツインの同期
-デバイス ツインの同期では、デバイス ツインの[必要なプロパティ](#desired-properties)を使用してデバイスを構成し、デバイスから[報告されたプロパティ](#reported-properties)を取得して、デバイス ツインに格納します。
+## <a name="twin-synchronization"></a>ツインの同期
+ツインの同期では、デバイス ツインまたはモジュール ツインの[必要なプロパティ](#desired-properties)を使用してデバイスまたはモジュールを構成し、それらから[報告されたプロパティ](#reported-properties)を取得して、ツインに格納します。
 
 ## <a name="direct-method"></a>ダイレクト メソッド
 [ダイレクト メソッド](iot-hub-devguide-direct-methods.md)は、IoT Hub 上で API を呼び出すことによって、デバイス上で実行するメソッドをトリガーするための方法です。
@@ -175,8 +190,8 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 ## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub リソースプロバイダー REST API
 [IoT Hub リソースプロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
 
-## <a name="iot-suite"></a>IoT Suite
-Azure IoT Suite では、複数の Azure サービスと構成済みソリューションがパッケージ化されています。 一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳細については、「[Azure IoT Suite とは](../iot-suite/iot-suite-overview.md)」を参照してください。
+## <a name="iot-solution-accelerators"></a>IoT ソリューション アクセラレータ
+Azure IoT ソリューション アクセラレータは、複数の Azure サービスをソリューションにパッケージ化します。 これらのソリューションを使用すると、一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳しくは、[Azure IoT ソリューション アクセラレータの概要](../iot-suite/iot-suite-overview.md)に関するページをご覧ください。
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Azure CLI 2.0 向け IoT 拡張機能
 [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、クロス プラットフォームのコマンドライン ツールです。 このツールを使用すると、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスからメッセージやファイルを送受信し、IoT Hub の操作を監視できます。

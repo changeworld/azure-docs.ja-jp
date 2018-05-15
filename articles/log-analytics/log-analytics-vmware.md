@@ -1,28 +1,31 @@
 ---
-title: "Log Analytics の VMware の監視ソリューション | Microsoft Docs"
-description: "VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。"
+title: Log Analytics の VMware の監視ソリューション | Microsoft Docs
+description: VMware の監視ソリューションを利用して ESXi ホストのログ管理と監視を行う方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
 
 ![VMware のシンボル](./media/log-analytics-vmware/vmware-symbol.png)
+
+> [!NOTE]
+> VMware の監視ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに VMware Monitoring を追加することはできません。
 
 Log Analytics の VMware の監視ソリューションは、大規模な VMware ログに対する一元化されたログ記録と監視のアプローチを作成するのに役立つソリューションです。 この記事では、このソリューションを使用して 1 つの場所で ESXi ホストのトラブルシューティング、キャプチャ、管理を行う方法を説明します。 このソリューションでは、すべての ESXi ホストの詳細なデータを 1 つの場所に表示できます。 ESXi ホストのログを通じて、VM および ESXi ホストの上位のイベント数、状態、傾向を知ることができます。 一元化された ESXi ホストのログを表示および検索して、トラブルシューティングを実行できます。 また、ログ検索クエリに基づくアラートを作成することもできます。
 
@@ -34,7 +37,7 @@ Log Analytics の VMware の監視ソリューションは、大規模な VMware
 * 「[管理ソリューションの追加](log-analytics-add-solutions.md#add-a-management-solution)」で説明されているプロセスを使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
 
 #### <a name="supported-vmware-esxi-hosts"></a>サポートされる VMware ESXi ホスト
-vSphere ESXi 5.5 および 6.0 ホスト
+vSphere ESXi Host 5.5、6.0、6.5
 
 #### <a name="prepare-a-linux-server"></a>Linux サーバーの準備
 ESXi ホストからのすべての syslog データを受信する Linux オペレーティング システムの VM を作成します。 [OMS Linux エージェント](log-analytics-linux-agents.md)は、すべての ESXi ホスト syslog データの収集ポイントです。 次の例に示すように、複数の ESXi ホストを使用して 1 台の Linux サーバーにログを転送できます。  
@@ -42,7 +45,7 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
    ![syslog のフロー](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>syslog の収集の構成
-1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法の詳細については、「[Configuring syslog on ESXi 5.x and 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.x および 6.0 での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[詳細設定]** > **[Syslog]** に移動します。
+1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法について詳しくは、「[Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.0 以降での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[詳細設定]** > **[Syslog]** に移動します。
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. *Syslog.global.logHost* フィールドに、Linux サーバーとポート番号 *1514* を追加します。 たとえば、`tcp://hostname:1514` や `tcp://123.456.789.101:1514` のようにします。
 3. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[セキュリティ プロファイル]** > **[ファイアウォール]** をクリックし、**[プロパティ]** を開きます。  
@@ -77,7 +80,7 @@ VMware の監視ソリューションは、有効にしている OMS Agents for 
 
 次の表は、データの収集手段と、データの収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | OMS Agent for Linux | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | OMS Agent for Linux | SCOM エージェント | Azure Storage | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |3 分おき |
 
@@ -167,7 +170,6 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 ソリューションでは、ESXi ホストのネイティブの syslog 転送メカニズムを使用します。 ログを記録するために、ESXi ホストに Microsoft ソフトウェアを追加する必要はありません。 既存の環境への影響はわずかですが、 ESXi の機能である syslog 転送を設定する必要があります。
 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>ESXi ホストを再起動する必要がありますか。
-
 いいえ。 このプロセスでは再起動は不要です。 vSphere で syslog が適切に更新されない場合があります。 このような場合は、ESXi ホストにログオンし、syslog を再読み込みします。 この場合もホストを再起動する必要はないので、このプロセスが環境に悪影響を及ぼすことはありません。
 
 ### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>Log Analytics に送信されるログ データの量を増減することはできますか。

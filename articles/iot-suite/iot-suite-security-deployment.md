@@ -1,12 +1,12 @@
 ---
-title: "モノのインターネットのデプロイのセキュリティ保護 | Microsoft Docs"
-description: "この記事では、IoT デプロイを保護する方法を詳しく説明します。"
-services: 
+title: モノのインターネットのデプロイのセキュリティ保護 | Microsoft Docs
+description: この記事では、IoT デプロイを保護する方法を詳しく説明します。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 95c23341-16b0-4954-b3f2-d2e82ab7b367
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 3c2c5c045ad4786ed656fbaf99373644de244570
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c14d2082854fe88df9d1139c619b061699e443aa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
-## <a name="iot-suite-cipher-suites"></a>IoT Suite の Cipher Suite
+## <a name="iot-solution-accelerator-cipher-suites"></a>IoT ソリューション アクセラレータの暗号スイート
 
-Azure IoT Suite は、次の順序で Cipher Suite をサポートしています。
+IoT ソリューション アクセラレータは、次の順序で Cipher Suite をサポートしています。
 
 | Cipher Suite | Length |
 | --- | --- |
@@ -42,10 +42,10 @@ Azure IoT Suite は、次の順序で Cipher Suite をサポートしていま�
 | TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa) |112 |
 
 ## <a name="see-also"></a>関連項目
-IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
-* [IoT スイートに関してよく寄せられる質問][lnk-faq]
+* [予測メンテナンスのソリューション アクセラレータの概要][lnk-predictive-overview]
+* [IoT ソリューション アクセラレータに関してよく寄せられる質問][lnk-faq]
 
 IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御][lnk-devguide-security]に関するページで IoT Hub のセキュリティについて学習できます。
 

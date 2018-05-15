@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN におけるファイル圧縮のトラブルシューティング | Microsoft Docs"
-description: "Azure CDN のファイル圧縮に関する問題のトラブルシューティングを行います。"
+title: Azure CDN におけるファイル圧縮のトラブルシューティング | Microsoft Docs
+description: Azure CDN のファイル圧縮に関する問題のトラブルシューティングを行います。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: cdn
 ms.workload: tbd
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14d50cb7cac77af75dd4b7293812154d1f24e47c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 
 ## <a name="symptom"></a>症状
 エンドポイントの圧縮が有効になっているにもかかわらず、ファイルが圧縮されていない状態で戻されています。
@@ -61,9 +61,9 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN 要求ヘッダー](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profile"></a>圧縮の設定を確認する (Standard CDN プロファイル)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>圧縮の設定を確認する (Standard CDN プロファイル)
 > [!NOTE]
-> この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Standard from Akamai** プロファイルの場合のみです。 
+> この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Microsoft** プロファイル、**Azure CDN Standard from Verizon** プロファイル、**Azure CDN Standard from Akamai** プロファイルのいずれかの場合のみです。 
 > 
 > 
 
@@ -74,13 +74,13 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN の圧縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profile"></a>圧縮の設定を確認する (Premium CDN プロファイル)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>圧縮の設定を確認する (Premium CDN プロファイル)
 > [!NOTE]
 > この手順が適用されるのは、CDN プロファイルが **Azure CDN Premium from Verizon** プロファイルの場合のみです。
 > 
 > 
 
-[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、 **[管理]** ボタンをクリックします。  補助ポータルが開きます。  **[HTTP Large (HTTP ラージ)]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。  **[圧縮]**をクリックします。 
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、 **[管理]** ボタンをクリックします。  補助ポータルが開きます。  **[HTTP Large (HTTP ラージ)]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。  **[圧縮]** をクリックします。 
 
 * 圧縮が有効になっていることを確認します。
 * **[ファイルの種類]** 一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。
@@ -88,22 +88,22 @@ ms.lasthandoff: 10/11/2017
 
 ![CDN Premium の圧縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>コンテンツがキャッシュされていることを確認する
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>コンテンツがキャッシュされていることを確認する (Verizon CDN プロファイル)
 > [!NOTE]
-> この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
+> この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Premium from Verizon** プロファイルの場合のみです。
 > 
 > 
 
 ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
-* **Server** 応答ヘッダーを確認します。  この応答ヘッダーの形式は、次の例に示すとおり **プラットフォーム (POP/サーバー ID)**である必要があります。
+* **Server** 応答ヘッダーを確認します。  この応答ヘッダーの形式は、次の例に示すとおり **プラットフォーム (POP/サーバー ID)** である必要があります。
 * **X-Cache** 応答ヘッダーを確認します。  ヘッダーによって **HIT**が読み取られる必要があります。  
 
 ![CDN 応答ヘッダー](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>ファイルがサイズ要件を満たしていることを確認する
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>ファイルがサイズ要件を満たしていることを確認する (Verizon CDN プロファイル)
 > [!NOTE]
-> この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
+> この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Premium from Verizon** プロファイルの場合のみです。
 > 
 > 
 

@@ -3,7 +3,7 @@ title: MongoDB 用 Azure Cosmos DB API で mongoimport と mongorestore を使�
 description: mongoimport と mongorestore を使用して、MongoDB 用 API アカウントにデータをインポートする方法について説明します
 keywords: mongoimport, mongorestore
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 documentationcenter: ''
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
-ms.author: anhoh
+ms.date: 05/07/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 5c87483e384a09591aca496292638d7b68476beb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 36d098a76e57b65ba82c24ed81ebbe3d21489a9f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB データをインポートする 
 
@@ -28,7 +28,7 @@ MongoDB 用 API で使用するために MongoDB から Azure Cosmos DB アカ�
 * *mongoimport.exe* または *mongorestore.exe* のいずれかを [MongoDB Download Center](https://www.mongodb.com/download-center) からダウンロードします。
 * [MongoDB 用 API 接続文字列](connect-mongodb-account.md)を取得します。
 
-MongoDB からデータをインポートしており、Azure Cosmos DB でそれを使用する予定がある場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
+MongoDB からデータをインポートしており、Azure Cosmos DB SQL API でそれを使用する予定がある場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -39,7 +39,7 @@ MongoDB からデータをインポートしており、Azure Cosmos DB でそ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* スループットを上げる: データの移行にかかる時間は、コレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、[Azure Cosmos DB のパフォーマンス レベルと価格レベル](performance-levels.md)に関するページを参照してください。
+* スループットを上げる: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、[Azure Cosmos DB のパフォーマンス レベルと価格レベル](performance-levels.md)に関するページを参照してください。
 
 * SSL を有効にする: Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 この記事で説明する手順の中に、mongoimport と mongorestore で SSL を有効にする方法が含まれています。
 
@@ -47,10 +47,11 @@ MongoDB からデータをインポートしており、Azure Cosmos DB でそ�
 
 1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Cosmos DB]** エントリをクリックします。
 2. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
-3. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。  
-右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
+3. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。
 
-    ![[接続文字列] ブレード](./media/mongodb-migrate/ConnectionStringBlade.png)
+   右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
+
+   ![[接続文字列] ブレード](./media/mongodb-migrate/ConnectionStringBlade.png)
 
 ## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>mongoimport を使用して MongoDB 用 API にデータをインポートする
 
@@ -80,9 +81,27 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
 
 1. コレクションを事前に作成し、拡大縮小します。
         
-    * Azure Cosmos DB は、既定で、1,000 要求ユニット (RU) を含む新しい MongoDB コレクションをプロビジョニングします。 mongoimport、mongorestore、または mongomirror を使用して移行を開始する前に、[Azure Portal](https://portal.azure.com) または MongoDB ドライバーとツールからすべてのコレクションを事前に作成してください。 コレクションが 10 GB を超える場合は、適切なシャード キーを使用して[シャード/パーティション コレクション](partition-data.md)を作成してください。
+    * Azure Cosmos DB は、既定で、1,000 要求ユニット (RU/秒) を含む新しい MongoDB コレクションをプロビジョニングします。 mongoimport、mongorestore、または mongomirror を使用して移行を開始する前に、[Azure Portal](https://portal.azure.com) または MongoDB ドライバーとツールからすべてのコレクションを事前に作成してください。 コレクションが 10 GB を超える場合は、適切なシャード キーを使用して[シャード/パーティション コレクション](partition-data.md)を作成してください。
 
-    * [Azure Portal](https://portal.azure.com) では、コレクションのスループットを 1,000 RU (単一パーティションのコレクションの場合) または 2,500 RU (移行のためだけにシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、スロットルを回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
+    * [Azure Portal](https://portal.azure.com) では、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行のためだけにシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、スロットルを回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
+
+    * コレクション レベルでの RU/秒 のプロビジョニングに加えて、親データベース レベルの一連のコレクションの RU/秒 のプロビジョニングも行う場合があります。 これを行うには、データベースとコレクションの事前作成と、各コレクションのシャード キーの定義が必要です。
+
+    * お気に入りのツールやドライバー、SDK を使用してシャード コレクションを作成できます。 この例では、Mongo シェルを使用してシャード コレクションを作成します。
+
+        ```
+        db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+        ```
+    
+        結果:
+
+        ```JSON
+        {
+            "_t" : "ShardCollectionResponse",
+            "ok" : 1,
+            "collectionsharded" : "admin.people"
+        }
+        ```
 
 2. 1 回のドキュメントの書き込みに対するおおよその RU 請求金額を計算します。
 
@@ -92,7 +111,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
-    c. ```db.runCommand({getLastRequestStatistics: 1})``` を実行すると、次のような応答が表示されます。
+    c. ```db.runCommand({getLastRequestStatistics: 1})``` を実行すると、次のような応答が返されます。
      
         ```
         globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})

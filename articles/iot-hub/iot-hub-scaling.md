@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/02/2018
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3237ee41f8596ed3ce508857adf7dc29cee1ada
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 01e6c3a6fb922a649f0ae139af9c8515fcb8b2e0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -48,7 +48,7 @@ IoT Hub を作成した後は、既存の操作を中断することなく、Bas
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | [はい] | [はい] |
 | [監視と診断](iot-hub-monitor-resource-health.md) | [はい] | [はい] |
 | [cloud-to-device メッセージング](iot-hub-devguide-c2d-guidance.md) |   | [はい] |
-| [デバイス ツイン](iot-hub-devguide-device-twins.md)と[デバイス管理](iot-hub-device-management-overview.md) |   | [はい] |
+| [デバイス ツイン](iot-hub-devguide-device-twins.md)、[モジュール ツイン](iot-hub-devguide-module-twins.md)、および[デバイス管理](iot-hub-device-management-overview.md) |   | [はい] |
 | [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | [はい] |
 
 IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。 
@@ -61,19 +61,26 @@ IoT Hub の Basic レベルと Standard レベルでサポートされる機能�
 | --- | ---------- | ------------- |
 | [デバイスの削除](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice) | [はい] | [はい] |
 | [デバイスの取得](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice) | [はい] | [はい] |
+| モジュールの削除 | [はい] | [はい] |
+| モジュールの取得 | [はい] | [はい] |
 | [レジストリの統計情報の取得](https://docs.microsoft.com/rest/api/iothub/deviceapi/getregistrystatistics) | [はい] | [はい] |
 | [サービスの統計情報の取得](https://docs.microsoft.com/rest/api/iothub/deviceapi/getservicestatistics) | [はい] | [はい] |
 | [デバイスの設定](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | [はい] | [はい] |
+| モジュールの設定 | [はい] | [はい] |
 | [デバイスのクエリ](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | [はい] | [はい] |
+| モジュールのクエリ | [はい] | [はい] |
 | [ファイル アップロード SAS URI の作成](https://docs.microsoft.com/rest/api/iothub/httpruntime/createfileuploadsasuri) | [はい] | [はい] |
 | [デバイス バインド通知の受け取り](https://docs.microsoft.com/rest/api/iothub/httpruntime/receivedeviceboundnotification) | [はい] | [はい] |
 | [デバイス イベントの送信](https://docs.microsoft.com/rest/api/iothub/httpruntime/senddeviceevent) | [はい] | [はい] |
+| モジュール イベントの送信 | [はい] | [はい] |
 | [ファイル アップロード ステータスの更新](https://docs.microsoft.com/rest/api/iothub/httpruntime/updatefileuploadstatus) | [はい] | [はい] |
 | [デバイスの一括操作](https://docs.microsoft.com/rest/api/iothub/deviceapi/bulkdeviceoperation) | はい (IoT Edge 機能を除く) | [はい] | 
 | [コマンド キューの消去](https://docs.microsoft.com/rest/api/iothub/deviceapi/purgecommandqueue) |   | [はい] |
 | [デバイス ツインの取得](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/getdevicetwin) |   | [はい] |
+| モジュール ツインの取得 |   | [はい] |
 | [デバイス メソッドの呼び出し](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/invokedevicemethod) |   | [はい] |
 | [デバイス ツインの更新](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/updatedevicetwin) |   | [はい] | 
+| モジュール ツインの更新 |   | [はい] | 
 | [デバイス バインド通知の破棄](https://docs.microsoft.com/rest/api/iothub/httpruntime/abandondeviceboundnotification) |   | [はい] |
 | [デバイス バインド通知の完了](https://docs.microsoft.com/rest/api/iothub/httpruntime/completedeviceboundnotification) |   | [はい] |
 | [ジョブの取り消し](https://docs.microsoft.com/rest/api/iothub/jobapi/canceljob) |   | [はい] |

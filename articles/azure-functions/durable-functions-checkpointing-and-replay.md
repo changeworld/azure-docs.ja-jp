@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions でのチェックポイントと再生 - Azure"
-description: "Azure Functions の Durable Functions 拡張機能でチェックポイントと再生がどのように動作するかを説明します。"
+title: Durable Functions でのチェックポイントと再生 - Azure
+description: Azure Functions の Durable Functions 拡張機能でチェックポイントと再生がどのように動作するかを説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 39cdb9b2c6eae9a3176aedc64b8d187e298fdfdd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -29,6 +29,8 @@ Durable Functions のキー属性の 1 つが**信頼性の高い実行**です�
 ## <a name="orchestration-history"></a>オーケストレーションの履歴
 
 次のオーケストレーター関数があるとします。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -46,7 +48,22 @@ public static async Task<List<string>> Run(
 }
 ```
 
-Durable Task Framework は、`await` ステートメントごとに、関数の実行状態を Table Storage にチェックポイントします。 この状態は、"*オーケストレーションの履歴*" と呼ばれます。
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const output = [];
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Tokyo"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Seattle"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "London"));
+
+    return output;
+});
+```
+
+Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステートメントごとに、関数の実行状態を Table Storage にチェックポイントします。 この状態は、"*オーケストレーションの履歴*" と呼ばれます。
 
 ## <a name="history-table"></a>履歴テーブル
 

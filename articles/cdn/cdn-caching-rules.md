@@ -6,90 +6,79 @@ documentationcenter: ''
 author: dksimpson
 manager: akucer
 editor: ''
-ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
-ms.author: rli; v-deasim
-ms.openlocfilehash: 60693b919fad6808bfe60b504d2a70caf80fbe48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/20/2018
+ms.author: v-deasim
+ms.openlocfilehash: 09705893c50e56cce5d888db097d7b810624b5d8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>キャッシュ規則で Azure CDN キャッシュの動作を制御する
 
 > [!NOTE] 
-> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** でのみ使用できます。 **Azure CDN Premium from Verizon** の場合は、**管理**ポータルの [Azure CDN ルール エンジン](cdn-rules-engine.md)を使って同様の機能を実現できます。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して**管理**ポータルで [Azure CDN ルール エンジン](cdn-rules-engine.md)を使用する必要があります。
  
 Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方法を制御する方法が 2 つあります。 
 
 - キャッシュ規則: この記事で説明する方法であり、コンテンツ配信ネットワーク (CDN) のキャッシュ規則を使って、グローバルと、URL パスやファイル拡張子などのカスタム条件の両方で、既定のキャッシュ期限切れ動作を設定または変更することができます。 Azure CDN では、2 種類のキャッシュ規則が提供されます。
+
    - グローバル キャッシュ規則: プロファイルのエンドポイントごとに 1 つのグローバル キャッシュ規則を設定することができ、エンドポイントに対するすべての要求に適用されます。 HTTP キャッシュ ディレクティブ ヘッダーが設定されている場合、グローバル キャッシュ規則はそれより優先されます。
+
    - カスタム キャッシュ規則: プロファイルのエンドポイントごとに、1 つ以上のカスタム キャッシュ規則を設定できます。 カスタム キャッシュ規則は、特定のパスおよびファイル拡張子と一致し、順番に処理され、グローバル キャッシュ規則が設定されている場合はそれより優先されます。 
 
 - クエリ文字列キャッシュ: Azure CDN が要求のキャッシュを処理する方法を、クエリ文字列で調整することができます。 詳しくは、「[クエリ文字列による Azure CDN キャッシュ動作の制御](cdn-query-string.md)」をご覧ください。 ファイルがキャッシュ可能でない場合は、クエリ文字列のキャッシュ設定に効果はなく、キャッシュ規則と CDN の既定の動作に基づきます。
 
-既定のキャッシュ動作およびキャッシュ ディレクティブ ヘッダーについては、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。
+既定のキャッシュ動作およびキャッシュ ディレクティブ ヘッダーについては、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。 
 
-## <a name="tutorial"></a>チュートリアル
 
-CDN のキャッシュ規則を設定する方法:
+## <a name="accessing-azure-cdn-caching-rules"></a>Azure CDN のキャッシュ規則へのアクセス
 
 1. Azure Portal を開き、CDN プロファイルを選んで、エンドポイントを選びます。
+
 2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** を選択します。
 
    ![CDN の [キャッシュ規則] ボタン](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-3. グローバル キャッシュ規則を次のように作成します。
-   1. **[グローバル キャッシュ ルール]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定します。
-   2. **[キャッシュ動作]** を **[存在しない場合に設定]** に設定します。
-       
-   3. **[キャッシュの有効期間]** で、**[日]** フィールドに「10」と入力します。
+   **[キャッシュ規則]** ページが表示されます。
 
-       グローバル キャッシュ規則は、エンドポイントに対するすべての要求に適用されます。 この規則は、元の要求にキャッシュ ディレクティブ ヘッダー (`Cache-Control`または`Expires`) が存在する場合はそれに従い、指定されていない場合はキャッシュを 10 日に設定します。 
+   ![CDN の [キャッシュ規則] ページ](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
-     ![グローバル キャッシュ ルール](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
-4. カスタム キャッシュ規則を次のように作成します。
-    1. **[カスタム キャッシュ ルール]** で、**[一致条件]** を **[パス]** に、**[一致する値]** を「`/images/*.jpg`」に設定します。
-    2. **[キャッシュ動作]** を **[上書き]**に設定し、**[日]** フィールドに「30」と入力します。
-       
-       このカスタム キャッシュ規則は、エンドポイントの `/images` フォルダーにあるすべての `.jpg` イメージ ファイルについて、キャッシュの有効期間を 30 日に設定します。 要求元のサーバーによって送信された `Cache-Control` または `Expires` HTTP ヘッダーより、この規則の方が優先されます。
-
-    ![カスタム キャッシュ ルール](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
-
-    
-> [!NOTE] 
-> 規則が変更される前にキャッシュされたファイルは、元のキャッシュ期間の設定のままになります。 キャッシュ期間をリセットするには、[ファイルを消去する](cdn-purge-endpoint.md)必要があります。 **Azure CDN from Verizon** エンドポイントの場合は、キャッシュ規則が有効になるまでに最大で 90 分かかることがあります。
-
-## <a name="reference"></a>リファレンス
-
-### <a name="caching-behavior-settings"></a>キャッシュ動作の設定
+## <a name="caching-behavior-settings"></a>キャッシュ動作の設定
 グローバル キャッシュ規則およびカスタム キャッシュ規則に対しては、次の**キャッシュ動作**の設定を指定できます。
 
 - **[キャッシュのバイパス]**: キャッシュを行わず、もともと指定されているキャッシュ ディレクティブ ヘッダーを無視します。
+
 - **[上書き]**: もともと指定されているキャッシュ ディレクティブ ヘッダーを無視し、代わりに指定したキャッシュ期間を使います。
+
 - **[存在しない場合に設定]**: キャッシュ ディレクティブ ヘッダーがもともと指定されていた場合はそれに従い、指定されていなかった場合は、設定したキャッシュ期間を使います。
 
-### <a name="cache-expiration-duration"></a>キャッシュの有効期間
+![グローバル キャッシュ ルール](./media/cdn-caching-rules/cdn-global-caching-rules.png)
+
+![カスタム キャッシュ ルール](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
+
+## <a name="cache-expiration-duration"></a>キャッシュの有効期間
 グローバル キャッシュ規則とカスタム キャッシュ規則では、日数、時間、分、および秒でキャッシュの有効期間を指定できます。
 
 - **[上書き]** と **[存在しない場合に設定]** の**キャッシュ動作**設定の場合、有効なキャッシュ期間は 0 秒から 366 日の範囲です。 値が 0 秒の場合は、CDN はコンテンツをキャッシュしますが、要求ごとに送信元のサーバーを再検証する必要があります。
+
 - **[キャッシュのバイパス]** 設定の場合は、キャッシュ期間は自動的に 0 秒に設定されて、変更できません。
 
-### <a name="custom-caching-rules-match-conditions"></a>カスタム キャッシュ規則の一致条件
+## <a name="custom-caching-rules-match-conditions"></a>カスタム キャッシュ規則の一致条件
 
 カスタム キャッシュ規則では、次の 2 つの一致条件を使うことができます。
  
-- **[パス]**: この条件は、ドメイン名を除く URL のパスと一致し、ワイルドカード文字 (\*) をサポートしています。 たとえば、`/myfile.html`、`/my/folder/*`、`/my/images/*.jpg` などです。 最大長は 260 文字です。
+- **[パス]**: この条件は、ドメイン名を除く URL のパスと一致し、ワイルドカード文字 (\*) をサポートしています。 たとえば、_/myfile.html_、_/my/folder/*_、_/my/images/*.jpg_ です。 最大長は 260 文字です。
 
-- **[拡張子]**: この条件は、要求されたファイルのファイル拡張子と一致します。 コンマで区切ってファイル拡張子のリストを指定できます。 たとえば、`.jpg`、`.mp3`、`.png` などです。 拡張子の最大数は 50、各拡張子の最大文字数は 16 です。 
+- **[拡張子]**: この条件は、要求されたファイルのファイル拡張子と一致します。 コンマで区切ってファイル拡張子のリストを指定できます。 たとえば、_.jpg_、_.mp3_、または _.png_ です。 拡張子の最大数は 50、各拡張子の最大文字数は 16 です。 
 
-### <a name="global-and-custom-rule-processing-order"></a>グローバル規則とカスタム規則の処理順序
+## <a name="global-and-custom-rule-processing-order"></a>グローバル規則とカスタム規則の処理順序
 グローバル キャッシュ規則とカスタム キャッシュ規則は、次の順序で処理されます。
 
 - 既定の CDN キャッシュ動作 (HTTP キャッシュ ディレクティブ ヘッダーの設定) より、グローバル キャッシュ規則の方が優先されます。 
@@ -103,15 +92,22 @@ CDN のキャッシュ規則を設定する方法:
 
 - カスタム キャッシュ規則 1:
    - 一致条件: **パス**
-   - 一致する値: `/home/*`
+   - 一致する値: _/home/*_
    - キャッシュ動作: **上書き**
    - キャッシュの有効期間: 2 日
 
 - カスタム キャッシュ規則 2:
    - 一致条件: **拡張子**
-   - 一致する値: `.html`
+   - 一致する値: _.html_
    - キャッシュ動作: **存在しない場合に設定**
    - キャッシュの有効期間: 3 日
 
-これらの規則が設定されている場合、`<endpoint>.azureedge.net/home/index.html` に対する要求は、**存在しない場合に設定**および 3 日に設定されているカスタム キャッシュ規則 2 をトリガーします。 したがって、`index.html` ファイルに `Cache-Control` または `Expires` HTTP ヘッダーがある場合はそれらが適用され、これらのヘッダーが設定されていない場合は、ファイルは 3 日間キャッシュされます。
+これらの規則が設定されている場合、_&lt;endpoint hostname&gt;_.azureedge.net/home/index.html に対する要求は、**存在しない場合に設定**および 3 日に設定されているカスタム キャッシュ規則 2 をトリガーします。 したがって、*index.html* ファイルに `Cache-Control` または `Expires` HTTP ヘッダーがある場合はそれらが適用され、これらのヘッダーが設定されていない場合は、ファイルは 3 日間キャッシュされます。
 
+> [!NOTE] 
+> 規則が変更される前にキャッシュされたファイルは、元のキャッシュ期間の設定のままになります。 キャッシュ期間をリセットするには、[ファイルを消去する](cdn-purge-endpoint.md)必要があります。 **Azure CDN from Verizon** エンドポイントの場合は、新しいキャッシュ規則が有効になるまでに最大で 90 分かかることがあります。
+
+## <a name="see-also"></a>関連項目
+
+- [キャッシュのしくみ](cdn-how-caching-works.md)
+- [チュートリアル: Azure CDN キャッシュ規則の設定](cdn-caching-rules-tutorial.md)

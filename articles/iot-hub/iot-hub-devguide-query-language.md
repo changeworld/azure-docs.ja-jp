@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub クエリ言語について | Microsoft Docs
-description: 開発者ガイド - デバイス ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
+description: 開発者ガイド - デバイス/モジュール ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
 IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]、および[メッセージ ルーティング][lnk-devguide-messaging-routes]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
@@ -29,9 +29,9 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-twin-queries"></a>デバイス ツイン クエリ
-[デバイス ツイン][lnk-twins]には、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、デバイス ツインに関するすべての情報を含む 1 つの JSON ドキュメントとしてデバイス ツインにクエリを実行できます。
-たとえば、IoT Hub デバイス ツインが次の構造を持っていると仮定します。
+## <a name="device-and-module-twin-queries"></a>デバイス ツインとモジュール ツインのクエリ
+[デバイス ツイン][lnk-twins]とモジュール ツインには、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、すべてのツイン情報を含む 1 つの JSON ドキュメントとしてデバイス ツインとモジュール ツインにクエリを実行できます。
+たとえば、IoT Hub のデバイス ツインに、次の構造があるとします (モジュール ツインも同様で、追加の moduleId があるだけです)。
 
 ```json
 {
@@ -82,6 +82,8 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
     }
 }
 ```
+
+### <a name="device-twin-queries"></a>デバイス ツイン クエリ
 
 IoT Hub はデバイス ツインを **devices** という名前のドキュメント コレクションとして公開します。
 したがって、次のクエリでは、デバイス ツインのセット全体が取得されます。
@@ -158,6 +160,26 @@ GROUP BY properties.reported.telemetryConfig.status
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+```
+
+### <a name="module-twin-queries"></a>モジュール ツイン クエリ
+
+モジュール ツインに対するクエリはデバイス ツインに対するクエリと似ていますが、("from devices" の代わりに) 異なるコレクション/名前空間を使用してクエリを実行できます
+
+```sql
+SELECT * FROM devices.modules
+```
+
+デバイスと devices.modules コレクション間の結合は許可されません。 デバイス間でモジュール ツインのクエリを実行する場合は、タグに基づいて行います。 このクエリでは、スキャン中状態のすべてのデバイスのすべてのモジュール ツインが返されます。
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning'
+```
+
+このクエリでは、指定したデバイスのサブセット上のみでスキャン中状態のすべてのモジュール ツインが返されます。
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>C# の例

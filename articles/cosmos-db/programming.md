@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 25ae6bde2ca89b2f944a8879c746dcedcf798ec2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
-Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 この JavaScript 統合により、データベース ストレージ パーティションに直接配置して実行できるデータベース プログラム アプリケーション ロジックを記述できます。 
+Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 JavaScript 統合により、データベース ストレージ パーティションに直接配置して実行できるプログラム ロジックを記述できます。 
 
 まずは、次のビデオを視聴することをお勧めします。このビデオでは、Andrew Liu が、Azure Cosmos DB のサーバー側のデータベース プログラミング モデルについて紹介しています。 
 
@@ -58,7 +58,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
 このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/) を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。   
 
 ## <a name="stored-procedures"></a>ストアド プロシージャ
-### <a name="example-write-a-simple-stored-procedure"></a>例: 単純なストアド プロシージャを記述する
+### <a name="example-write-a-stored-procedure"></a>例: ストアド プロシージャを記述する
 最初に紹介するのは、"Hello World" 応答を返す単純なストアド プロシージャです。
 
     var helloWorldStoredProc = {
@@ -96,7 +96,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
         });
 
 
-コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定しています。 詳細については、[Azure Cosmos DB JavaScript サーバー SDK のドキュメント](http://azure.github.io/azure-documentdb-js-server/)を参照してください。  
+コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー SDK のドキュメント](http://azure.github.io/azure-documentdb-js-server/)を参照してください。  
 
 この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。 ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。    
 
@@ -148,7 +148,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
     });
 
 
-このストアド プロシージャは、複数のドキュメントを複数のネットワーク要求を使って個別に作成する代わりに、ドキュメント本文の配列を入力として受け取り、すべて同じストアド プロシージャの実行で作成するように変更できます。 この方法を使用して、Cosmos DB の効率的な一括インポーターを実装できます (このチュートリアルの後半で説明します)。   
+このストアド プロシージャは、複数のドキュメントを複数の要求を使って個別に作成する代わりに、ドキュメント本文の配列を入力として受け取り、すべて同じストアド プロシージャの実行で作成するように変更できます。 このストアド プロシージャを使用して、Cosmos DB の効率的な一括インポーターを実装できます (このチュートリアルの後半で説明します)。   
 
 上の例ではストアド プロシージャの使用法について説明しました。 トリガーとユーザー定義関数 (UDF) については、このチュートリアルの後半で説明します。
 
@@ -157,7 +157,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
 
 簡単に説明すると、Atomicity (アトミック性) は、トランザクション内で実行されるすべての操作が単一の単位として扱われることを保証します。その結果は、そのすべてがコミットされるか、またはまったくコミットされないかのどちらかになります。 Consistency (一貫性) は、トランザクションにまたがってデータが常に適切な内部状態にあることを保証します。 Isolation (分離性) は、2 つのトランザクションが互いに干渉しないことを保証します。通常、ほとんどの商用システムは、アプリケーション ニーズに基づいて使用できる複数の分離性レベルを提供します。 Durability (持続性) は、データベース内でコミットされたすべての変更が常に保持されることを保証します。   
 
-Cosmos DB では、JavaScript はデータベースと同じメモリ空間でホストされます。 したがって、ストアド プロシージャおよびトリガー内で発生した要求は、データベース セッションと同じスコープで実行されます。 このため、Cosmos DB では、単一のストアド プロシージャ/トリガーに属するすべての操作の ACID が保証されます。 次のストアド プロシージャ定義を見てみましょう。
+Cosmos DB では、JavaScript はデータベースと同じメモリ空間でホストされます。 したがって、ストアド プロシージャおよびトリガー内で発生した要求は、データベース セッションと同じスコープで実行されます。 この機能により、Cosmos DB では、単一のストアド プロシージャ/トリガーに属するすべての操作の ACID が保証されます。 次のストアド プロシージャ定義を見てみましょう。
 
     // JavaScript source code
     var exchangeItemsSproc = {
@@ -239,7 +239,7 @@ Cosmos DB では、JavaScript はデータベースと同じメモリ空間で�
 
 時間制限を処理するストアド プロシージャとトリガーの開発を容易にするために、コレクション オブジェクトの (ドキュメントおよび添付ファイルの作成、読み取り、置換、削除を行う) すべての関数は、操作が完了するかどうかを表すブール値を返します。 値 false は、制限時間に近づいているためプロシージャが実行を終了する必要があることを示します。  最初の受け付けられていない格納操作の前にキューに入れられた操作は、ストアド プロシージャが時間内に完了し追加の要求がキューに入れられない限り、完了することが保証されます。  
 
-さらに、JavaScript 関数は、リソースの消費に関しても制限されます。 Cosmos DB は、データベース アカウントのプロビジョニングされたサイズに基づいて、コレクションあたりのスループットを予約します。 スループットは、要求単位 (RU) と呼ばれる、CPU、メモリ、および IO の消費の正規化された単位として表現されます。 JavaScript 関数は潜在的に短い時間内に大量の RU を消費する可能性があり、コレクションの制限に達した場合はレートが制限されます。 また、プリミティブなデータベース操作の可用性を保証するために、リソースを大量に使用するストアド プロシージャは隔離される可能性があります。  
+さらに、JavaScript 関数は、リソースの消費に関しても制限されます。 Cosmos DB は、コレクションあたりの、または一連のコンテナーに対してスループットを予約します。 スループットは、要求単位 (RU) と呼ばれる、CPU、メモリ、および IO の消費の正規化された単位として表現されます。 JavaScript 関数は潜在的に短い時間内に大量の RU を消費する可能性があり、コレクションの制限に達した場合はレートが制限されます。 また、プリミティブなデータベース操作の可用性を保証するために、リソースを大量に使用するストアド プロシージャは隔離される可能性があります。  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>例: データをデータベース プログラムに一括インポートする
 コレクションへのドキュメントの一括インポートを行うストアド プロシージャの例を次に示します。 このストアド プロシージャでは、createDocument からのブール型の戻り値を調べて制限された実行を処理し、ストアド プロシージャの各呼び出しで挿入されたドキュメントの数を使用してバッチの進行状況を追跡および再開しています。
@@ -349,7 +349,7 @@ Cosmos DB には、ドキュメントの操作によって実行またはトリ�
 
 プリトリガーは入力パラメーターを持つことができません。 要求オブジェクトを使用して、操作に関連付けられた要求メッセージを操作できます。 ここでは、ドキュメントが作成されるときにプリトリガーが実行されます。要求メッセージの本文には、作成するドキュメントが JSON 形式で格納されます。   
 
-トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 このトリガーは TriggerOperation.Create によって作成されています。つまり、次の操作は許可されません。
+トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 このトリガーは TriggerOperation.Create によって作成されました。つまり、次のコードで示す置換操作でのこのトリガーの使用は許可されません。
 
     var options = { preTriggerInclude: "validateDocumentContents" };
 
@@ -479,7 +479,7 @@ Cosmos DB には、ドキュメントの操作によって実行またはトリ�
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 統合言語クエリ API
-Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。 JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB のインデックスで効率的に実行されます。
+Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。 JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB のインデックスで効率的に実行されます。
 
 > [!NOTE]
 > `__` (二重下線) は `getContext().getCollection()` のエイリアスです。
@@ -503,7 +503,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 <b>filter(predicateFunction [, options] [, callback])</b>
 <ul>
 <li>
-入力ドキュメントを結果セットに含めたり除外したりするために、true/false を返す述語関数を使用して入力をフィルター処理します。 この動作は SQL の WHERE 句に似ています。
+入力ドキュメントを結果セットに含めたり除外したりするために、true/false を返す述語関数を使用して入力をフィルター処理します。 この関数の動作は SQL の WHERE 句に似ています。
 </li>
 </ul>
 </li>
@@ -511,7 +511,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 <b>map(transformationFunction [, options] [, callback])</b>
 <ul>
 <li>
-各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数によって返される射影を適用します。 この動作は SQL の SELECT 句に似ています。
+各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数によって返される射影を適用します。 この関数の動作は SQL の SELECT 句に似ています。
 </li>
 </ul>
 </li>
@@ -519,7 +519,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 <b>pluck([propertyName] [, options] [, callback])</b>
 <ul>
 <li>
-これは、各入力項目から 1 つのプロパティの値を抽出する関数で、map のショートカット版です。
+この関数は map のショートカット版で、各入力項目から 1 つのプロパティの値を抽出します。
 </li>
 </ul>
 </li>
@@ -527,7 +527,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 <b>flatten([isShallow] [, options] [, callback])</b>
 <ul>
 <li>
-各入力項目の配列を結合し、一次元配列にします。 この動作は LINQ の SelectMany に似ています。
+各入力項目の配列を結合し、一次元配列にします。 この関数の動作は LINQ の SelectMany に似ています。
 </li>
 </ul>
 </li>
@@ -535,7 +535,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 <b>sortBy([predicate] [, options] [, callback])</b>
 <ul>
 <li>
-指定された述語を使用して、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。 この動作は SQL の ORDER BY 句に似ています。
+指定された述語を使用して、入力ドキュメント ストリーム内のドキュメントを昇順で並べ替え、ドキュメントの新しいセットを生成します。 この関数の動作は SQL の ORDER BY 句に似ています。
 </li>
 </ul>
 </li>
@@ -543,7 +543,7 @@ Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー�
 <b>sortByDescending([predicate] [, options] [, callback])</b>
 <ul>
 <li>
-指定された述語を使用して、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。 この動作は SQL の ORDER BY x DESC 句に似ています。
+指定された述語を使用して、入力ドキュメント ストリーム内のドキュメントを降順で並べ替え、ドキュメントの新しいセットを生成します。 この関数の動作は SQL の ORDER BY x DESC 句に似ています。
 </li>
 </ul>
 </li>
@@ -648,7 +648,7 @@ Azure Cosmos DB [JavaScript サーバー側 API](http://azure.github.io/azure-do
 JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。 ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。 このため、互いの意図していない副作用に対する安全性が保証されています。
 
 ### <a name="pre-compilation"></a>プリコンパイル
-ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。 これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
+ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。 プリコンパイルにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
 ## <a name="client-sdk-support"></a>クライアント SDK のサポート
 Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だけでなく、SQL API 用の [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/)、および [Python Sdk](sql-api-sdk-python.md) も用意されています。 ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。 次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。 .NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
@@ -723,7 +723,7 @@ Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だ�
     }
 
 ## <a name="rest-api"></a>REST API
-すべての Azure Cosmos DB 操作は、REST に対応する方法で実行できます。 ストアド プロシージャ、トリガー、およびユーザー定義関数は、HTTP POST を使用してコレクションに登録できます。 ストアド プロシージャを登録する方法を次の例に示します。
+すべての Azure Cosmos DB 操作は、REST に対応する方法で実行できます。 ストアド プロシージャ、トリガー、およびユーザー定義関数は、HTTP POST を使用してコレクションに登録できます。 次の例は、ストアド プロシージャを登録する方法を示しています。
 
     POST https://<url>/sprocs/ HTTP/1.1
     authorization: <<auth>>
@@ -757,7 +757,7 @@ Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だ�
     [ { "name": "TestDocument", "book": "Autumn of the Patriarch"}, "Price", 200 ]
 
 
-ここで、ストアド プロシージャへの入力は、要求の本文に渡されます。 入力は入力パラメーターの JSON 配列として渡されることに注意してください。 ストアド プロシージャは、最初の入力をドキュメント (応答の本文) として受け取ります。 受け取る応答は次のようになります。
+ここで、ストアド プロシージャへの入力は、要求の本文に渡されます。 入力は入力パラメーターの JSON 配列として渡されます。 ストアド プロシージャは、最初の入力をドキュメント (応答の本文) として受け取ります。 受け取る応答は次のようになります。
 
     HTTP/1.1 200 OK
 
@@ -793,9 +793,9 @@ Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だ�
 ここでは、要求と共に実行されるプリトリガーが x-ms-documentdb-pre-trigger-include ヘッダーに指定されています。 同様に、x-ms-documentdb-post-trigger-include ヘッダーにはポストトリガーが指定されています。 プリトリガーとポストトリガーはどちらも任意の要求に指定できます。
 
 ## <a name="sample-code"></a>サンプル コード
-その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js)や[更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[GitHub リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
+その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)など) は、[GitHub リポジトリ](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples)で確認できます。
 
-あなたのストアド プロシージャも共有しませんか? プル要求をお送りください。 
+あなたのストアド プロシージャも共有しませんか? リポジトリに投稿し、プル要求を作成しましょう。 
 
 ## <a name="next-steps"></a>次の手順
 ストアド プロシージャ、トリガー、およびユーザー定義関数を作成したら、それらを読み込み、データ エクスプローラーを使用して Azure Portal で表示できます。

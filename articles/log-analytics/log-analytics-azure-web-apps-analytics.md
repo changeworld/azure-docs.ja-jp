@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
 ![Web Apps のシンボル](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+
+> [!NOTE]
+> Azure Web Apps Analytics ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Azure Web Apps Analytics を追加することはできません。
+
 Azure Web Apps Analytics (プレビュー) ソリューションでは、すべての Azure Web App リソースのさまざまなメトリックを収集することで、[Azure Web Apps](../app-service/app-service-web-overview.md) を把握することができます。 ソリューションを使用することで、Web アプリ リソースのメトリック データの分析および検索が可能になります。
 
 ソリューションを使用すれば、以下の情報を表示することができます。
@@ -53,7 +57,7 @@ Azure Web Apps Analytics (プレビュー) ソリューションでは、すべ�
 ワークスペースの Azure Web Apps Analytics ソリューションを構成するには、次の手順を実行します。
 
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
-2. [PowerShell を使用して OMS への Azure リソース メトリックのログ記録を有効にします](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)。
+2. [PowerShell を使用して Log Analytics への Azure リソース メトリックのログ記録を有効にします](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)。
 
 Azure Web Apps Analytics ソリューションでは Azure から以下の 2 つのメトリック セットを収集します。
 
@@ -73,10 +77,6 @@ Azure Web Apps Analytics ソリューションでは Azure から以下の 2 つ
   - メモリの割合
 
 App Service プランのメトリックは、専用のサービス プランを使用している場合にのみ収集されます。 これは、無料または共有の App Service プランには適用されません。
-
-OMS ポータルを使用してソリューションを追加する場合は、次のタイルが表示されます。 [PowerShell を使用して OMS への Azure リソース メトリックのログ記録を有効にする](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell)必要があります。
-
-![評価の実行の通知](./media/log-analytics-azure-web-apps-analytics/performing-assessment.png)
 
 ソリューションを構成した後、ワークスペースへのデータ フローが 15 分以内に始まるはずです。
 

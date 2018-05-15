@@ -1,12 +1,12 @@
 ---
-title: "コネクテッド ファクトリ ゲートウェイのデプロイ - Azure | Microsoft Docs"
-description: "Windows または Linux 上にゲートウェイをデプロイして、コネクテッド ファクトリ事前構成済みソリューションに接続できるようにする方法。"
-services: 
+title: お使いの接続済みファクトリ ゲートウェイをデプロイする - Azure | Microsoft Docs
+description: Windows または Linux 上にゲートウェイをデプロイして、接続済みファクトリ ソリューション アクセラレータに接続できるようにする方法。
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 956da99a5d67d7a2225ab3ea64b4e5a9d41ee3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>コネクテッド ファクトリ事前構成済みソリューション用のエッジ ゲートウェイを Windows または Linux 上にデプロイします
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>接続済みファクトリ ソリューション アクセラレータ用のエッジ ゲートウェイを Windows または Linux にデプロイする
 
-"*コネクテッド ファクトリ*" 事前構成済みソリューション用のエッジ ゲートウェイをデプロイするには、次の 2 つのソフトウェア コンポーネントが必要です。
+"*接続済みファクトリ*" ソリューション アクセラレータ用のエッジ ゲートウェイをデプロイするには、次の 2 つのソフトウェア コンポーネントが必要です。
 
-- *OPC Proxy* は、コネクテッド ファクトリとの接続を確立します。 OPC Proxy は、コネクテッド ファクトリ ソリューション ポータルで動作する統合された OPC ブラウザーからのコマンドと制御メッセージを待機します。
+- *OPC Proxy* は、接続済みファクトリとの接続を確立します。 OPC Proxy は、接続済みファクトリ ソリューション ポータルで動作する統合された OPC ブラウザーからのコマンドと制御メッセージを待機します。
 
-- *OPC Publisher* は、既存のオンプレミス OPC UA サーバーに接続し、そこからコネクテッド ファクトリにテレメトリ メッセージを転送します。 [OPC UA 用の OPC クラシック アダプター](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md)を使用して、OPC クラシック デバイスに接続できます。
+- *OPC Publisher* は、既存のオンプレミス OPC UA サーバーに接続し、そこから接続済みファクトリにテレメトリ メッセージを転送します。 [OPC UA 用の OPC クラシック アダプター](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md)を使用して、OPC クラシック デバイスに接続できます。
 
 どちらのコンポーネントもオープン ソースであり、GitHub 上のソースとして、または DockerHub 上の Docker コンテナーとして利用できます。
 
@@ -37,14 +37,14 @@ ms.lasthandoff: 01/17/2018
 
 どちらのコンポーネントも、公開 IP アドレスまたはゲートウェイ ファイアウォールの受信ポートの開放は必要ありません。 OPC Proxy コンポーネントと OPC Publisher コンポーネントでは、送信ポート 443 のみが使用されます。
 
-この記事では、Docker を使用して Windows または Linux 上にエッジ ゲートウェイをデプロイする手順について説明します。 ゲートウェイにより、コネクテッド ファクトリ事前構成済みソリューションに接続できるようになります。 コンポーネントは、コネクテッド ファクトリなしで使用することもできます。
+この記事では、Docker を使用して Windows または Linux 上にエッジ ゲートウェイをデプロイする手順について説明します。 ゲートウェイにより、接続済みファクトリ ソリューション アクセラレータに接続できるようになります。 コンポーネントは、接続済みファクトリなしで使用することもできます。
 
 > [!NOTE]
 > どちらのコンポーネントも、[Azure IoT Edge](https://github.com/Azure/iot-edge) 内でモジュールとして使用できます。
 
 ## <a name="choose-a-gateway-device"></a>ゲートウェイ デバイスを選択する
 
-ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 コネクテッド ファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、[Azure IoT デバイス カタログ](https://catalog.azureiotsuite.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
+ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 接続済みファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、[Azure IoT デバイス カタログ](https://catalog.azureiotsuite.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
 
 または、以下の手順に従って、既存のゲートウェイ デバイスを手動で設定します。
 
@@ -75,7 +75,7 @@ Docker コマンドで `<SharedFolder>` を参照するときは、必ずオペ�
 
 OPC コンポーネントをインストールする前に、次の手順を完了して環境を準備してください。
 
-1. ゲートウェイのデプロイを完了するには、コネクテッド ファクトリのデプロイに IoT Hub の**iothubowner** 接続文字列が必要です。 [Azure Portal](http://portal.azure.com/) で、コネクテッド ファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT Hub に移動します。 **[共有アクセス ポリシー]** をクリックして、**iothubowner** 接続文字列にアクセスします。
+1. ゲートウェイのデプロイを完了するには、接続済みファクトリのデプロイに IoTハブの**iothubowner** 接続文字列が必要です。 [Azure Portal](http://portal.azure.com/) で、接続済みファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT ハブに移動します。 **[共有アクセス ポリシー]** をクリックして、**iothubowner** 接続文字列にアクセスします。
 
     ![IoT Hub 接続文字列を見つける](./media/iot-suite-connected-factory-gateway-deployment/image2.png)
 
@@ -143,33 +143,33 @@ OPC Proxy は、インストール中に接続文字列を保存します。 セ
 
 ## <a name="enable-your-gateway"></a>ゲートウェイを有効にする
 
-次の手順を完了して、コネクテッド ファクトリ構成済みソリューションで、ゲートウェイを有効にします。
+次の手順を完了して、接続済みファクトリ ソリューション アクセラレータで、ゲートウェイを有効にします。
 
-1. 両方のコンポーネントが実行されているときに、コネクテッド ファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。 このページは、ソリューションの管理者のみが使用できます。 パブリッシャー エンドポイント URL (opc.tcp://publisher:62222) を入力し、**[接続]** をクリックします。
+1. 両方のコンポーネントが実行されているときに、接続済みファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。 このページは、ソリューションの管理者のみが使用できます。 パブリッシャー エンドポイント URL (opc.tcp://publisher:62222) を入力し、**[接続]** をクリックします。
 
-1. コネクテッド ファクトリ ポータルと OPC Publisher の間に信頼関係を確立します。 証明書の警告が表示されたら、**[続行]** をクリックします。 次に、OPC Publisher が UA Web クライアントを信頼していないことを示すエラーが表示されます。 このエラーを解決するには、**UA Web クライアント**証明書を `<SharedFolder>/CertificateStores/rejected/certs` フォルダーからゲートウェイの `<SharedFolder>/CertificateStores/trusted/certs` フォルダーにコピーします。 ゲートウェイを再起動する必要はありません。
+1. 接続済みファクトリ ポータルと OPC Publisher の間に信頼関係を確立します。 証明書の警告が表示されたら、**[続行]** をクリックします。 次に、OPC Publisher が UA Web クライアントを信頼していないことを示すエラーが表示されます。 このエラーを解決するには、**UA Web クライアント**証明書を `<SharedFolder>/CertificateStores/rejected/certs` フォルダーからゲートウェイの `<SharedFolder>/CertificateStores/trusted/certs` フォルダーにコピーします。 ゲートウェイを再起動する必要はありません。
 
 これでクラウドからゲートウェイに接続できるようになりました。OPC UA サーバーをソリューションに追加する準備ができました。
 
 ## <a name="add-your-own-opc-ua-servers"></a>独自の OPC UA サーバーを追加する
 
-独自の OPC UA サーバーをコネクテッド ファクトリの事前構成済みソリューションに追加するには:
+独自の OPC UA サーバーを接続済みファクトリ ソリューション アクセラレータに追加するには:
 
-1. コネクテッド ファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。
+1. 接続済みファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。
 
     1. 接続する OPC UA サーバーを起動します。 コンテナーで実行している OPC Publisher および OPC Proxy から OPC UA サーバーに到達できることを確認します (名前解決に関する前記のコメントを参照してください)。
     1. OPC UA サーバーのエンドポイント URL (`opc.tcp://<host>:<port>`) を入力して、**[接続]** をクリックします。
-    1. 接続のセットアップの一環として、コネクテッド ファクトリ ポータル (OPC UA クライアント) と接続しようとしている OPC UA サーバーの間に、信頼関係が確立されます。 コネクテッド ファクトリ ダッシュボードで、"**接続先のサーバーの証明書を確認できません**" という警告が表示されます。 証明書の警告が表示されたら、**[続行]** をクリックします。
-    1. 接続しようとしている OPC UA サーバーの証明書の構成は、セットアップがさらに困難です。 PC ベースの OPC UA サーバーでは、ダッシュボードの警告ダイアログに対して確認するだけで済む場合があります。 埋め込まれた OPC UA サーバー システムの場合は、お使いの OPC UA サーバーのドキュメントを参照して、このタスクの実行方法を確認してください。 このタスクを完了するには、コネクテッド ファクトリ ポータルの OPC UA クライアントの証明書が必要になる場合があります。 管理者は、この証明書を **[独自の OPC UA サーバーを接続する]** ページでダウンロードできます。
+    1. 接続のセットアップの一環として、接続済みファクトリ ポータル (OPC UA クライアント) と接続しようとしている OPC UA サーバーの間に、信頼関係が確立されます。 接続済みファクトリ ダッシュボードで、"**接続先のサーバーの証明書を確認できません**" という警告が表示されます。 証明書の警告が表示されたら、**[続行]** をクリックします。
+    1. 接続しようとしている OPC UA サーバーの証明書の構成は、セットアップがさらに困難です。 PC ベースの OPC UA サーバーでは、ダッシュボードの警告ダイアログに対して確認するだけで済む場合があります。 埋め込まれた OPC UA サーバー システムの場合は、お使いの OPC UA サーバーのドキュメントを参照して、このタスクの実行方法を確認してください。 このタスクを完了するには、接続済みファクトリ ポータルの OPC UA クライアントの証明書が必要になる場合があります。 管理者は、この証明書を **[独自の OPC UA サーバーを接続する]** ページでダウンロードできます。
 
         ![ソリューション ポータル](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. OPC UA サーバーの OPC UA ノード ツリーに移動します。コネクテッド ファクトリに値を送信する OPC ノードを右クリックし、**[発行]** を選びます。
+1. OPC UA サーバーの OPC UA ノード ツリーに移動します。接続済みファクトリに値を送信する OPC ノードを右クリックし、**[発行]** を選びます。
 
-1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[ファクトリの場所]** ビューにある **[新しいファクトリ]** で確認できます。
+1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、接続済みファクトリ ポータルの **[ファクトリの場所]** ビューにある **[新しいファクトリ]** で確認できます。
 
 ## <a name="next-steps"></a>次の手順
 
-コネクテッド ファクトリ事前構成済みソリューションのアーキテクチャの詳細については、「[コネクテッド ファクトリ事前構成済みソリューションのチュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)」をご覧ください。
+接続済みファクトリ ソリューション アクセラレータのアーキテクチャの詳細については、[接続済みファクトリ ソリューション アクセラレータのチュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)をご覧ください。
 
 [OPC Publisher のリファレンス実装](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher)をご覧ください。

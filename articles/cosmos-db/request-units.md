@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2b69b3b5fee0d1148a762f817d9c5a8bc67806e7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
@@ -32,9 +32,9 @@ Azure Cosmos DB の通貨は**要求ユニット (RU)** です。 RU を使用�
 この記事を読むと、次の質問に回答できるようになります。  
 
 * Azure Cosmos DB の要求ユニットと要求の使用量とは何ですか。
-* Azure Cosmos DB のコンテナーの要求ユニットの容量はどのように指定しますか。
+* Azure Cosmos DB の 1 つのコンテナーまたは一連のコンテナーの要求ユニットの容量はどのように指定しますか。
 * アプリケーションの要求ユニットのニーズをどのように推定しますか。
-* Azure Cosmos DB のコンテナーの要求ユニットの容量を超えた場合はどうなりますか?
+* Azure Cosmos DB の 1 つのコンテナーまたは一連のコンテナーの要求ユニットの容量を超えた場合はどうなりますか。
 
 Azure Cosmos DB は複数モデルのデータベースです。この記事は、Azure Cosmos DB のすべてのデータ モデルと API に適用されることに注意してください。 この記事では、*コンテナー*、*項目*などの一般的な用語を使用して、コレクション、グラフ、テーブル、ドキュメント、ノード、エンティティをそれぞれ一般的に参照します。
 
@@ -50,14 +50,19 @@ Azure Cosmos DB プログラム マネージャーの Andrew Liu が要求単位
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB での要求ユニット量の指定
-新しいコンテナーを開始するときに、予約する 1 秒あたりの要求ユニット数 (RU/秒) を指定します。 プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はコンテナーをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
 
-Azure Cosmos DB コンテナーは、固定または無制限として作成することができます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 無制限のコンテナーを作成する場合は、最低でも 1,000 RU/秒のスループットと[パーティション キー](partition-data.md)を指定する必要があります。 データが複数のパーティションに分割される場合があるため、高基数 (100 ～数百万の個別の値) のパーティション キーを選択する必要があります。 多数の異なる値を持つパーティション キーを選択すると、コンテナー/テーブル/グラフおよび要求を、Azure Cosmos DB で確実かつ一様に拡大縮小できるようになります。 
+個別のコンテナーまたは一連のコンテナーの両方に対して予約したい 1 秒あたりの要求ユニット数 (RU/秒) を指定できます。 プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はお使いのコンテナーをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
+
+コンテナーは、RU/秒を個別のコンテナー レベルで割り当てるときに、"*固定*" または "*無制限*" として作成できます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 無制限のコンテナーを作成する場合は、少なくとも 1,000 RU/秒のスループットと[パーティション キー](partition-data.md)を指定する必要があります。 データが複数のパーティションに分割される場合があるため、高カーディナリティ (100 ～数百万の個別の値) のパーティション キーを選択する必要があります。 多数の異なる値を持つパーティション キーを選択すると、コンテナー/テーブル/グラフおよび要求を、Azure Cosmos DB で確実かつ一様に拡大縮小できるようになります。 
+
+一連のコンテナーに RU/秒を割り当てるとき、そのセットに属するコンテナーは "*無制限*" コンテナーとして処理され、パーティション キーを指定する必要があります。
+
+![個別のコンテナーおよび一連のコンテナーに対する要求ユニットのプロビジョニング][6]
 
 > [!NOTE]
 > パーティション キーは論理境界であり、物理的な境界ではありません。 したがって、個別のパーティション キー値の数を制限する必要はありません。 Azure Cosmos DB には他にも負荷分散のオプションがあるので、個別のパーティション キー値は多くしておくことをお勧めします。
 
-次に示すコード スニペットは、.NET SDK を使用して、1 秒あたり 3,000 要求ユニットのコンテナーを作成します。
+次に示すコード スニペットでは、SQL API の .NET SDK を使用して、個別のコンテナーに対して 1 秒あたり 3,000 要求ユニットのコンテナーを作成します。
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -70,12 +75,41 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-Azure Cosmos DB は、スループットの予約モデルで運用されます。 つまり、実際に "*使用した*" スループット量ではなく、"*予約した*" スループット量に対する料金が請求されます。 アプリケーションの負荷やデータ、使用パターンが変化したときは、SDK や [Azure Portal](https://portal.azure.com) を使用して、予約済み RU の量を簡単にスケールアップしたりスケールダウンしたりできます。
+次に示すコード スニペットでは、SQL API の .NET SDK を使用して、一連のコンテナーに対して 1 秒あたり 100,000 要求ユニットをプロビジョニングします。
 
-各コンテナーは、Azure Cosmos DB の `Offer` リソースにマップされます。このリソースは、プロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コンテナーに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コンテナーのスループットを 1 秒あたり 5,000 要求ユニットに変更します。
+```csharp
+// Provision 100,000 RU/sec at the database level. 
+// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
+// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
+Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
+
+DocumentCollection sharedCollection1 = new DocumentCollection();
+sharedCollection1.Id = "sharedCollection1";
+sharedCollection1.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
+
+DocumentCollection sharedCollection2 = new DocumentCollection();
+sharedCollection2.Id = "sharedCollection2";
+sharedCollection2.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
+
+DocumentCollection dedicatedCollection = new DocumentCollection();
+dedicatedCollection.Id = "dedicatedCollection";
+dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
+```
+
+
+Azure Cosmos DB は、スループットの予約モデルで運用されます。 つまり、実際に "*使用した*" スループット量ではなく、"*予約した*" スループット量に対する料金が請求されます。 アプリケーションの負荷やデータ、使用パターンが変化したときは、SDK や [Azure Portal](https://portal.azure.com) を使用して、予約済み RU の数を簡単にスケールアップしたりスケールダウンしたりできます。
+
+各コンテナーまたは一連のコンテナーは、Azure Cosmos DB の `Offer` リソースにマップされます。このリソースは、プロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コンテナーに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コンテナーのスループットを 1 秒あたり 5,000 要求ユニットに変更します。
 
 ```csharp
 // Fetch the resource to be updated
+// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
 Offer offer = client.CreateOfferQuery()
                 .Where(r => r.ResourceLink == collection.SelfLink)    
                 .AsEnumerable()
@@ -88,21 +122,21 @@ offer = new OfferV2(offer, 5000);
 await client.ReplaceOfferAsync(offer);
 ```
 
-スループットを変更しても、コンテナーの可用性には影響しません。 通常、新しく予約されたスループットは、数秒後にアプリケーションで有効になります。
+スループットを変更しても、お使いの 1 つのコンテナーまたは一連のコンテナーの可用性には影響しません。 通常、新しく予約されたスループットは、数秒後にアプリケーションで有効になります。
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>グローバルな分散型データベースのスループット分離
 
-データベースを複数のリージョンにレプリケートした場合、Azure Cosmos DB はスループット分離を提供することで、あるリージョンの RU の使用が、別のリージョンの RU の使用状況に影響を及ぼさないようにします。 たとえば、あるリージョンにデータを書き込み、別のリージョンからデータを読み取る場合、リージョン *A* の書き込み操作の実行に使用された RU によって、リージョン *B* の読み取り操作に使用された RU の機能が低下することはありません。RU は、デプロイした複数のリージョンの枠を越えては分割されません。 データベースがレプリケートされた各リージョンには、RU の全容量がプロビジョニングされます。 グローバル レプリケーションの詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)」をご覧ください。
+データベースを複数のリージョンにレプリケートした場合、Azure Cosmos DB はスループット分離を提供することで、あるリージョンの RU の使用が、別のリージョンの RU の使用状況に影響を及ぼさないようにします。 たとえば、あるリージョンにデータを書き込み、別のリージョンからデータを読み取る場合、リージョン *A* の書き込み操作の実行に使用された RU によって、リージョン *B* の読み取り操作に使用された RU の機能が低下することはありません。RU は、デプロイした複数のリージョンの枠を越えては分割されません。 データベースがレプリケートされた各リージョンには、すべての RU がプロビジョニングされます。 グローバル レプリケーションの詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)」をご覧ください。
 
 ## <a name="request-unit-considerations"></a>要求ユニットの考慮事項
-Azure Cosmos DB コンテナー用にプロビジョニングする要求ユニット数を推定する際は、以下の変数についても検討することが重要です。
+プロビジョニングする要求ユニット数を推定するときは、以下の変数についても検討することが重要です。
 
 * **アイテムのサイズ**。 サイズが増大すると、データの読み取りまたは書き込みに使用される要求単位数も増加します。
 * **アイテム プロパティの数**。 すべてのプロパティに既定でインデックスが作成されると想定すると、プロパティ数の増加に伴って、ドキュメント/ノード/エンティティの書き込みに使用される単位が増加します。
 * **データ整合性**。 Strong または Bounded Staleness のデータの整合性モデルを使用すると、アイテムの読み取りに使用される要求単位が増加します。
-* **インデックス付きプロパティ**。 各コンテナーのインデックス ポリシーによって、既定でインデックスが作成されるプロパティが決まります。 インデックス付きプロパティの数を制限するか、非同期インデックス作成を有効にして、使用する要求ユニットを削減できます。
+* **インデックス付きプロパティ**。 各コンテナーのインデックス ポリシーによって、既定でインデックスが作成されるプロパティが決まります。 インデックス付きプロパティの数を制限するか、非同期インデックス作成を有効にして、書き込み操作に使用する要求ユニットを削減できます。
 * **ドキュメントのインデックス作成**。 既定では、アイテムごとにインデックスが自動的に作成されます。 一部のアイテムにインデックスを作成しないようにすると、使用される要求ユニットが少なくなります。
-* **クエリのパターン**。 クエリの複雑さは、操作で消費される要求ユニット数に影響します。 述語の数、述語の特性、プロジェクション、UDF 数、ソース データのサイズのすべてが、クエリ操作のコストに影響します。
+* **クエリのパターン**。 クエリの複雑さは、操作で消費される要求ユニット数に影響します。 クエリ結果の数、述語の数、述語の特性、プロジェクション、UDF 数、ソース データのサイズのすべてが、クエリ操作のコストに影響します。
 * **スクリプトの使用**。  クエリと同様に、ストアド プロシージャとトリガーは、実行する操作の複雑さに基づいて要求ユニットを使用します。 アプリケーションを開発するときは、ヘッダーを調べて、各操作で使用される要求単位の量を詳しく把握するようにしてください。
 
 ## <a name="estimating-throughput-needs"></a>スループットのニーズの推定
@@ -177,8 +211,8 @@ Azure Cosmos DB コンテナー用にプロビジョニングする要求ユニ�
 1. 代表的なアイテム (サンプルの JSON ドキュメントなど) を少なくとも 1 つアップロードします。
    
     ![要求ユニット計算ツールへのアイテムのアップロード][2]
-2. データ ストレージの要件を見積もるには、格納するアイテム (ドキュメント、テーブル、グラフなど) の総数を入力します。
-3. 作成、読み取り、更新、削除に関して必要な操作数 (毎秒あたり) を入力します。 アイテムの更新操作の要求ユニットの料金を見積もるには、上記の手順 1. のサンプル アイテムのうち、代表的なフィールドの更新が含まれているアイテムのコピーをアップロードします。  たとえば、アイテムの更新では、通常、*lastLogin* と *userVisits* という 2 つのプロパティだけを変更する場合は、サンプル アイテムをコピーし、その 2 つのプロパティの値を更新して、コピーしたアイテムをアップロードします。
+2. データ ストレージの要件を見積もるには、格納する項目 (ドキュメント、行、頂点など) の総数を入力します。
+3. 作成、読み取り、更新、削除に関して必要な操作数 (毎秒あたり) を入力します。 アイテムの更新操作の要求ユニットの料金を見積もるには、上記の手順 1. のサンプル アイテムのうち、代表的なフィールドの更新が含まれているアイテムのコピーをアップロードします。  たとえば、アイテムの更新では、通常、*lastLogin* と *userVisits* という 2 つのプロパティだけを変更する場合は、サンプル項目をコピーし、その 2 つのプロパティの値を更新して、コピーした項目をアップロードします。
    
     ![Enter throughput requirements in the request unit calculator][3]
 4. 計算ボタンをクリックして結果を確認します。
@@ -299,7 +333,7 @@ Azure Cosmos DB サービスからの各応答には、特定の要求で使用�
 | 食品グループで選択 |10 |700 |
 | 上位 10 を選択 |15 |合計 150 |
 
-この例では、平均スループット要件を 1,275 RU/s と想定しています。  100 の位で丸めて、このアプリケーションのコンテナーに 1,300 RU/s をプロビジョニングすることになります。
+この例では、平均スループット要件を 1,275 RU/s と想定しています。  100 の位で丸めると、このアプリケーションのコンテナー (または一連のコンテナー) に 1,300 RU/s をプロビジョニングすることになります。
 
 ## <a id="RequestRateTooLarge"></a> Azure Cosmos DB での予約されたスループット上限の超過
 要求ユニットの消費は、1 秒あたりのレートとして評価されることを思い出してください。 プロビジョニング済み要求ユニット レートを超過したアプリケーションの場合、レートがプロビジョニング済みスループット レベルを下回るまで、要求のレートが制限されます。 要求のレートが制限される場合、サーバーはいち早く `RequestRateTooLargeException` (HTTP 状態コード 429) で要求を終了させ、`x-ms-retry-after-ms` ヘッダーを返して、ユーザーが要求の試行を再開できるまでに待機しなければならない時間をミリ秒で示します。
@@ -310,7 +344,7 @@ Azure Cosmos DB サービスからの各応答には、特定の要求で使用�
 
 .NET クライアント SDK と LINQ クエリ使用していると、ほとんどの場合は、この例外に対処する必要がありません。最新バージョンの .NET クライアント SDK は暗黙的にこの応答を取得し、サーバーが規定した retry-after ヘッダーを考慮して、要求を自動的に再試行するからです。 アカウントに複数のクライアントが同時アクセスしている状況でなければ、次回の再試行は成功します。
 
-複数のクライアントが上述の要求レートで累積的に操作を実行している場合は、既定の再試行動作では十分な結果が得られず、クライアントは状態コード 429 で `DocumentClientException` をアプリケーションにスローします。 こうした場合は、再試行動作とアプリケーションのエラー処理ルーチンのロジックを制御するか、対象コンテナーのプロビジョニング済みスループットを増やすことを検討します。
+複数のクライアントが上述の要求レートで累積的に操作を実行している場合は、既定の再試行動作では十分な結果が得られず、クライアントは状態コード 429 で `DocumentClientException` をアプリケーションにスローします。 こうした場合は、再試行動作とアプリケーションのエラー処理ルーチンのロジックを制御するか、対象の 1 つのコンテナー (または一連のコンテナー) に対してプロビジョニングされたスループットを増やすことを検討します。
 
 ## <a name="next-steps"></a>次の手順
 Azure Cosmos DB データベースの予約済みスループットの詳細については、以下のリソースを参照してください。
@@ -326,3 +360,4 @@ Azure Cosmos DB に関するスケールとパフォーマンスのテストを�
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+[6]: ./media/request-units/provisioning_set_containers.png

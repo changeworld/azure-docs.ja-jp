@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions のバインド - Azure"
-description: "Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。"
+title: Durable Functions のバインド - Azure
+description: Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8198fbe9f919638565357c61ba487e47a8f5229c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -36,17 +36,12 @@ Azure Functions 用の Visual Studio ツールを使用する場合、オーケ�
 {
     "name": "<Name of input parameter in function signature>",
     "orchestration": "<Optional - name of the orchestration>",
-    "version": "<Optional - version label of this orchestrator function>",
     "type": "orchestrationTrigger",
     "direction": "in"
 }
 ```
 
 * `orchestration` はオーケストレーションの名前です。 これは、クライアントがこのオーケストレーター関数の新しいインスタンスを開始するときに使用する必要がある値です。 このプロパティは省略可能です。 指定されない場合は関数の名前が使用されます。
-* `version` はオーケストレーションのバージョン ラベルです。 オーケストレーションの新しいインスタンスを開始するクライアントは、一致するバージョン ラベルを含める必要があります。 このプロパティは省略可能です。 指定されない場合は、空の文字列が使用されます。 バージョン管理の詳細については、[バージョン管理](durable-functions-versioning.md)に関する記事を参照してください。
-
-> [!NOTE]
-> 現時点では `orchestration` または `version` プロパティの値は設定しないことをお勧めします。
 
 内部的には、このトリガーのバインドは、関数アプリの既定のストレージ アカウントで一連のキューをポーリングします。 これらのキューは拡張機能の内部実装の詳細であるため、バインド プロパティに明示的に構成されることはありません。
 
@@ -69,12 +64,11 @@ Azure Functions 用の Visual Studio ツールを使用する場合、オーケ�
 * **入力** - オーケストレーション関数は、パラメーター型として [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) のみをサポートします。 関数シグネチャ内で入力を直接逆シリアル化することはサポートされていません。 コードでは、[GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) メソッドを使用してオーケストレーター関数の入力をフェッチする必要があります。 これらの入力は、JSON にシリアル化できる型にする必要があります。
 * **出力** - オーケストレーション トリガーは、入力と同じように出力値をサポートします。 関数の戻り値は、出力値を割り当てるために使用され、JSON にシリアル化できる必要があります。 関数が `Task` または `void`を返した場合は、出力として `null` 値が保存されます。
 
-> [!NOTE]
-> オーケストレーション トリガーは、現時点では C# でのみサポートされています。
-
 ### <a name="trigger-sample"></a>トリガー サンプル
 
-もっとも単純な "Hello World" C# オーケストレーター関数の例を次に示します。
+最も単純な "Hello World" オーケストレーター関数の例を次に示します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -85,17 +79,45 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    return `Hello ${name}!`;
+});
+```
+
+> [!NOTE]
+> JavaScript オーケストレーターでは `return` を使用する必要があります。 `durable-functions` ライブラリは、`context.done` メソッドの呼び出しを管理します。
+
 オーケストレーター関数の大半はアクティビティ関数を呼び出すため、"Hello World" の例でアクティビティ関数を呼び出す方法を示します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
 public static async Task<string> Run(
     [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    string name = await context.GetInput<string>();
+    string name = context.GetInput<string>();
     string result = await context.CallActivityAsync<string>("SayHello", name);
     return result;
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    const result = yield context.df.callActivityAsync("SayHello", name);
+    return result;
+});
 ```
 
 ## <a name="activity-triggers"></a>アクティビティ トリガー
@@ -110,17 +132,12 @@ Azure ポータルを使用して開発する場合、アクティビティ ト�
 {
     "name": "<Name of input parameter in function signature>",
     "activity": "<Optional - name of the activity>",
-    "version": "<Optional - version label of this activity function>",
     "type": "activityTrigger",
     "direction": "in"
 }
 ```
 
 * `activity` はアクティビティの名前です。 これは、オーケストレーター関数がこのアクティビティ関数を呼び出すために使用する値です。 このプロパティは省略可能です。 指定されない場合は関数の名前が使用されます。
-* `version` はアクティビティのバージョン ラベルです。 アクティビティを呼び出すオーケストレーター関数は、一致するバージョン ラベルを含める必要があります。 このプロパティは省略可能です。 指定されない場合は、空の文字列が使用されます。 詳細については、[バージョン管理](durable-functions-versioning.md)に関する記事を参照してください。
-
-> [!NOTE]
-> この時点では `activity` または `version` プロパティの値は設定しないことをお勧めします。
 
 内部的には、このトリガーのバインドは、関数アプリの既定のストレージ アカウントでキューをポーリングします。 このキューは拡張機能の内部実装の詳細であるため、バインド プロパティに明示的に構成されることはありません。
 
@@ -129,7 +146,7 @@ Azure ポータルを使用して開発する場合、アクティビティ ト�
 アクティビティ トリガーに関する注意事項を次に示します。
 
 * **スレッド処理** - オーケストレーション トリガーとは異なり、アクティビティ トリガーにはスレッド処理と I/O に関する制限はありません。 それらは、標準的な関数と同様に扱うことができます。
-*  **有害メッセージの処理** - アクティビティ トリガーでは、有害メッセージはサポートされません。
+* **有害メッセージの処理** - アクティビティ トリガーでは、有害メッセージはサポートされません。
 * **メッセージの可視性** - アクティビティ トリガー メッセージはキューから削除され、構成可能な期間にわたって非表示を保持します。 これらのメッセージの可視性は、関数アプリが正常に実行されている限り、自動的に更新されます。
 * **戻り値** - 戻り値は JSON にシリアル化され、Azure Table ストレージのオーケストレーション履歴テーブルに保存されます。
 
@@ -144,12 +161,11 @@ Azure ポータルを使用して開発する場合、アクティビティ ト�
 * **出力** - アクティビティ関数は、入力と同じように出力値をサポートします。 関数の戻り値は、出力値を割り当てるために使用され、JSON にシリアル化できる必要があります。 関数が `Task` または `void`を返した場合は、出力として `null` 値が保存されます。
 * **メタデータ** - アクティビティ関数を `string instanceId` パラメーターにバインドして、親オーケストレーションのインスタンス ID を取得できます。
 
-> [!NOTE]
-> 現時点では、アクティビティ トリガーは、Node.js 関数ではサポートされていません。
-
 ### <a name="trigger-sample"></a>トリガー サンプル
 
-単純な "Hello World" C# アクティビティ関数の例を次に示します。
+単純な "Hello World" アクティビティ関数の例を次に示します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -160,13 +176,69 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+module.exports = function(context) {
+    context.done(null, `Hello ${context.bindings.name}!`);
+};
+```
+
 `ActivityTriggerAttribute` バインドの既定のパラメーター型は `DurableActivityContext` です。 ただし、アクティビティ トリガーは、JSON にシリアル化できる型 (プリミティブ型を含む) への直接的なバインドもサポートしているため、同じ関数を次のように単純化できます。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
 public static string SayHello([ActivityTrigger] string name)
 {
     return $"Hello {name}!";
+}
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+module.exports = function(context, name) {
+    context.done(null, `Hello ${name}!`);
+};
+```
+
+### <a name="passing-multiple-parameters"></a>複数のパラメーターを渡す 
+
+アクティビティ関数に複数のパラメーターを直接渡すことはできません。 この場合の推奨は、オブジェクトの配列を渡すか、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することです。
+
+次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) の新機能を使用しています。
+
+```csharp
+[FunctionName("GetCourseRecommendations")]
+public static async Task<dynamic> RunOrchestrator(
+    [OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    string major = "ComputerScience";
+    int universityYear = context.GetInput<int>();
+
+    dynamic courseRecommendations = await context.CallActivityAsync<dynamic>("CourseRecommendations", (major, universityYear));
+    return courseRecommendations;
+}
+
+[FunctionName("CourseRecommendations")]
+public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContext inputs)
+{
+    // parse input for student's major and year in university 
+    (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();
+
+    // retrieve and return course recommendations by major and university year
+    return new {
+        major = studentInfo.Major,
+        universityYear = studentInfo.UniversityYear,
+        recommendedCourses = new []
+        {
+            "Introduction to .NET Programming",
+            "Introduction to Linux",
+            "Becoming an Entrepreneur"
+        }
+    };
 }
 ```
 
@@ -264,9 +336,9 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 }
 ```
 
-#### <a name="nodejs-sample"></a>Node.js のサンプル
+#### <a name="javascript-sample"></a>JavaScript のサンプル
 
-次の例は、永続的なオーケストレーション クライアントのバインドを使用して、Node.js 関数から新しい関数インスタンスを開始する方法を示しています。
+次の例は、永続的なオーケストレーション クライアントのバインドを使用して、JavaScript 関数から新しい関数インスタンスを開始する方法を示しています。
 
 ```js
 module.exports = function (context, input) {

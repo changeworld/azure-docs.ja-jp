@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f8ddc9c57df878137ee1ff1b6431e40acfd5eb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Azure Cosmos DB での自動オンライン バックアップと復元
 Azure Cosmos DB は、すべてのデータのバックアップを、一定の間隔で自動的に取得します。 自動バックアップは、データベース操作のパフォーマンスにも可用性にも影響を与えずに取得されます。 すべてのバックアップは別のストレージ サービスに保存され、これらのバックアップは、局地的な障害の発生時に回復機能を提供するためにグローバルにレプリケートされます。 自動バックアップは、Cosmos DB コンテナーを誤って削除した後のデータの回復やディザスター リカバリー ソリューションを必要とするシナリオを想定しています。  
@@ -50,7 +50,11 @@ Cosmos DB の中に保存されるデータとは異なり、自動バックア�
 ## <a name="backup-retention-period"></a>バックアップのリテンション期間
 前述のように、Azure Cosmos DB では 4 時間ごとにパーティション レベルでデータのスナップショットが取得されます。 どのような場合でも、最新の 2 つのスナップショットのみが保持されます。 ただし、コレクション/データベースが削除された場合、該当するコレクション/データベース内で削除されたすべてのパーティションの既存のスナップショットが 30 日間保持されます。
 
-独自のスナップショットを保持する場合は、Azure Cosmos DB の JSON へのエクスポート オプション ([データ移行ツール](import-data.md#export-to-json-file)) を使用して、追加のバックアップをスケジュールすることができます。
+SQL API では、独自のスナップショットを保持する場合、Azure Cosmos DB の JSON へのエクスポート オプション ([データ移行ツール](import-data.md#export-to-json-file)) を使用して、追加のバックアップをスケジュールすることができます。
+
+> [!NOTE]
+> "データベース レベルで一連のコンテナーのスループットをプロビジョニング" する場合、完全なデータベース アカウント レベルで復元が行われることを忘れないでください。 この新しい機能を使用する場合、コンテナーのコレクション/テーブル/グラフを誤って削除すると、必ず 8 時間以内に Microsoft のサポートに連絡することも必要になります。 
+
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>オンライン バックアップからのデータベースの復元
 データベースまたはコレクションを誤って削除した場合は、[サポート チケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)か、[Azure サポートに問い合わせる](https://azure.microsoft.com/support/options/)ことで、最新の自動バックアップからデータを復元できます。 データ破損の問題が原因でデータベースを復元する必要がある場合は (コレクション内のドキュメントが削除された場合も含む)、「[データ破損の処理](#handling-data-corruption)」を参照し、破損したデータによって既存のバックアップが上書きされるのを防ぐために追加の手順を実行する必要があります。 バックアップの特定のスナップショットを復元するには、復元するスナップショットのバックアップ サイクル期間中のデータが Cosmos DB から入手可能である必要があります。

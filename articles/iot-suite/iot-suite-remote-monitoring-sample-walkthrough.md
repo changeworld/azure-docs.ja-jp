@@ -1,12 +1,12 @@
 ---
-title: "リモート監視ソリューションのアーキテクチャ - Azure | Microsoft Docs"
-description: "構成済みリモート監視ソリューションのアーキテクチャについてのチュートリアルです。"
-services: 
+title: リモート監視ソリューションのアーキテクチャ - Azure | Microsoft Docs
+description: リモート監視ソリューション アクセラレータのアーキテクチャのチュートリアルです。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="remote-monitoring-preconfigured-solution-architecture"></a>構成済みリモート監視ソリューションのアーキテクチャ
+# <a name="remote-monitoring-solution-accelerator-architecture"></a>リモート監視ソリューション アクセラレータのアーキテクチャ
 
-IoT Suite のリモート監視用[構成済みソリューション](iot-suite-what-are-preconfigured-solutions.md)は、遠隔地で実行されている複数のコンピューターを対象としたエンド ツー エンドの監視ソリューションを実装します。 このソリューションは、主要な Azure サービスを組み合わせることで、ビジネス シナリオの汎用的な実装を実現したものです。 このソリューションを実装の出発点として使用し、お客様固有のビジネス要件を満たすように[カスタマイズ](iot-suite-remote-monitoring-customize.md)することができます。
+リモート監視[ソリューション アクセラレータ](iot-suite-what-are-solution-accelerators.md)は、遠隔地で実行されている複数のコンピューターを対象としたエンド ツー エンドの監視ソリューションを実装します。 このソリューションは、主要な Azure サービスを組み合わせることで、ビジネス シナリオの汎用的な実装を実現したものです。 このソリューションを実装の出発点として使用し、お客様固有のビジネス要件を満たすように[カスタマイズ](iot-suite-remote-monitoring-customize.md)することができます。
 
 この記事では、リモート監視ソリューションのしくみについて理解しやすいように、その主な構成要素をいくつか取り上げて説明します。 この知識は以下の作業に役立ちます。
 
@@ -33,13 +33,13 @@ IoT Suite のリモート監視用[構成済みソリューション](iot-suite-
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
-次の図は、[IoT アーキテクチャ](iot-suite-what-is-azure-iot.md)と重ね合わせた構成済みリモート監視ソリューションの論理コンポーネントの概要です。
+次の図は、[IoT アーキテクチャ](iot-suite-what-is-azure-iot.md)と重ね合わせたリモート監視ソリューション アクセラレータの論理コンポーネントの概要です。
 
 ![論理アーキテクチャ](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 ## <a name="why-microservices"></a>マイクロサービスについて
 
-クラウドのアーキテクチャは、Microsoft がはじめて構成済みソリューションをリリースした当時から進化し続けてきました。 [マイクロサービス](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)は、開発速度を犠牲にすることなく、拡張性と柔軟性を達成できることが実証された方法として登場してきました。 Microsoft のサービスは、このアーキテクチャ パターンを内部的に使用し、優れた信頼性とスケーラビリティの成果を出しています。 最新の構成済みソリューションには、これらの成果が取り込まれているため、その成果を活用できます。
+クラウドのアーキテクチャは、Microsoft がはじめてソリューション アクセラレータをリリースした当時から進化し続けてきました。 [マイクロサービス](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)は、開発速度を犠牲にすることなく、拡張性と柔軟性を達成できることが実証された方法として登場してきました。 Microsoft のサービスは、このアーキテクチャ パターンを内部的に使用し、優れた信頼性とスケーラビリティの成果を出しています。 最新のソリューション アクセラレータには、これらの成果が取り込まれているため、その成果を活用できます。
 
 > [!TIP]
 > マイクロサービス アーキテクチャの詳細については、「[.NET Application Architecture (.NET アプリケーション アーキテクチャ)](https://www.microsoft.com/net/learn/architecture)」および「[Microservices: An application revolution powered by the cloud. (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
@@ -67,7 +67,7 @@ IoT Suite のリモート監視用[構成済みソリューション](iot-suite-
 
 ### <a name="iot-hub-and-the-iot-manager-microservice"></a>IoT Hub と IoT manager マイクロサービス
 
-[IoT Hub ](../iot-hub/index.md)は、デバイスから送信されたデータをクラウドに取り込んで、`telemetry-agent` マイクロサービスに提供します。
+[IoT Hub ](../iot-hub/index.yml)は、デバイスから送信されたデータをクラウドに取り込んで、`telemetry-agent` マイクロサービスに提供します。
 
 ソリューションの IoT ハブは、以下の操作も行います。
 
@@ -110,13 +110,13 @@ IoT Suite のリモート監視用[構成済みソリューション](iot-suite-
 
 このマイクロサービスによって提供される RESTful エンドポイントを使用しテレメトリ、ルール、およびアラームを管理できます。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
-[storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) マイクロサービスは、構成済みのソリューションに使用されるメイン ストレージ サービスの前にあるアダプターです。 単純なコレクションおよびキー値のためのストレージを提供します。
+[storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) マイクロサービスは、ソリューション アクセラレータに使用されるメイン ストレージ サービスの前にあるアダプターです。 単純なコレクションおよびキー値のためのストレージを提供します。
 
-構成済みソリューションの標準的な展開では、メイン ストレージ サービスとして Cosmos DB が使用されます。
+ソリューション アクセラレータの標準的な展開では、メイン ストレージ サービスとして Cosmos DB が使用されます。
 
-Cosmos DB データベースでは、構成済みソリューションにデータを格納します。 **storage-adapter** マイクロサービスは、ソリューション内の他のマイクロサービスがストレージ サービスにアクセスするためのアダプターとして機能します。
+Cosmos DB データベースでは、ソリューション アクセラレータにデータを格納します。 **storage-adapter** マイクロサービスは、ソリューション内の他のマイクロサービスがストレージ サービスにアクセスするためのアダプターとして機能します。
 
 ## <a name="presentation"></a>プレゼンテーション
 
@@ -128,19 +128,19 @@ Cosmos DB データベースでは、構成済みソリューションにデー�
 * CSS スタイルを使用します。
 * AJAX 呼び出しを通してパブリックのマイクロサービスと交信します。
 
-ユーザー インターフェイスが構成済みのソリューションの機能を表し、次のような他のサービスと交信します。
+ユーザー インターフェイスがソリューション アクセラレータの機能を表し、次のような他のサービスと交信します。
 
 * [authentication](https://github.com/Azure/pcs-auth-dotnet) マイクロサービスと交信してユーザー データを保護します。
 * [iothub-manager](https://github.com/Azure/iothub-manager-dotnet) サービスと交信してサービスを一覧表示し、IoT デバイスを管理します。
 
 [ui-config](https://github.com/Azure/pcs-config-dotnet) マイクロサービスと交信して、構成設定を保存および取得するためのユーザー インターフェイスを実装します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ソース コードと開発者のマニュアルを参照する場合は、次の 2 つのメイン GitHub リポジトリのいずれかを参照してください。
 
-* [Azure IoT (.NET) を使用してリモート監視するための構成済みソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
-* [Azure IoT (Java) で使用してリモート監視するための構成済みソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
-* [リモート監視アーキテクチャの構成済みソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
+* [Azure IoT を使用してリモート監視するためのソリューション アクセラレータ (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
+* [Azure IoT を使用してリモート監視するためのソリューション アクセラレータ (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
+* [リモート監視アクセラレータのソリューション アーキテクチャ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
-リモート監視の構成済みソリューションの概念の詳細については、[構成済みソリューションのカスタマイズ](iot-suite-remote-monitoring-customize.md)に関するページを参照してください。
+リモート監視ソリューション アクセラレータの概念の詳細については、[ソリューション アクセラレータのカスタマイズ](iot-suite-remote-monitoring-customize.md)に関するページをご覧ください。

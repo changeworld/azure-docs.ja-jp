@@ -11,26 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6be6bb3b6b75b278a7c28307d93d6273c5bb18d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
 ## <a name="overview"></a>概要 ##
 
-Azure App Service Environment は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 この機能は、Web アプリ、[モバイル アプリ][mobileapps]、API アプリ、および[関数][Functions]をホストすることができます。
+Azure App Service Environment は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 この機能は、以下をホストできます。
+
+* Windows Web アプリ
+* Linux Web アプリ (プレビュー段階)
+* Docker コンテナー (プレビュー段階)
+* モバイル アプリ
+* Functions
 
 App Service Environment (ASE) は、以下を必要とするアプリケーション ワークロードに最適です。
 
-- 高スケール。
-- 分離およびセキュリティで保護されたネットワーク アクセス。
-- 高いメモリ使用率。
+* 高スケール。
+* 分離およびセキュリティで保護されたネットワーク アクセス。
+* 高いメモリ使用率。
 
 顧客は、複数の ASE を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。 この柔軟性により、ASE は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
@@ -39,7 +45,7 @@ ASE は、単一の顧客のアプリケーションだけを実行するため�
 * ASE によって、高スケールなアプリ ホスティングと安全なネットワーク アクセスが実現します。 詳細については、ASE について取り上げた [AzureCon Deep Dive](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) を参照してください。
 * 複数の ASE を使って水平方向にスケーリングすることができます。 詳細については、[地理的に分散したアプリ フットプリントの設定](app-service-app-service-environment-geo-distributed-scale.md)に関するページを参照してください。
 * AzureCon Deep Dive に示されているようなセキュリティ アーキテクチャは、ASE を使用して構成できます。 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャのインプリメント方法](app-service-app-service-environment-layered-security.md)に関する記事を参照してください。
-* ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳細については、[App Service Environment に WAF を構成する方法](app-service-app-service-environment-web-application-firewall.md)に関するページを参照してください。
+* ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 [ILB App Service Environment と Azure Application Gateway の統合][AppGW]に関するページを参照してください。
 
 ## <a name="dedicated-environment"></a>専用の環境 ##
 
@@ -59,7 +65,7 @@ ASE は、フロントエンドとワーカーで構成されます。 フロン
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート ##
 
-ASE は、Azure Resource Manager 仮想ネットワークでのみ作成できます。 Azure の仮想ネットワークの詳細については、「[Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/)」を参照してください。 ASE は常に仮想ネットワーク内 (正確には仮想ネットワークのサブネット内) に存在します。 仮想ネットワークのセキュリティ機能を使って、アプリの送受信方向のネットワーク通信を制御することができます。
+ASE 機能は、お客様の Azure Resource Manager 仮想ネットワークに Azure App Service を直接デプロイしたものです。 Azure の仮想ネットワークの詳細については、「[Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/)」を参照してください。 ASE は常に仮想ネットワーク内 (正確には仮想ネットワークのサブネット内) に存在します。 仮想ネットワークのセキュリティ機能を使って、アプリの送受信方向のネットワーク通信を制御することができます。
 
 ASE は、パブリック IP アドレスでインターネットに接続することも、Azure 内部ロード バランサー (ILB) アドレスだけで内部接続することもできます。
 

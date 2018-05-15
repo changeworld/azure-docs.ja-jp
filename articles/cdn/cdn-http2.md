@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポート
 
@@ -54,7 +54,7 @@ HTTP/2 の利点には、次のものがあります。
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポートの有効化
 
-現在、HTTP/2 サポートは **Azure CDN from Akamai** および **Azure CDN from Verizon** プロファイルに対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
+現在、HTTP/2 サポートは、すべての Azure CDN プロファイルに対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
 
 ## <a name="next-steps"></a>次の手順
 

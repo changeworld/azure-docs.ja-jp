@@ -1,12 +1,12 @@
 ---
-title: "コネクテッド ファクトリ ソリューションのチュートリアル - Azure | Microsoft Docs"
-description: "Azure IoT コネクテッド ファクトリの事前構成済みソリューションとそのアーキテクチャの説明です。"
-services: 
+title: 接続済みファクトリ ソリューションのチュートリアル - Azure | Microsoft Docs
+description: Azure IoT ソリューション アクセラレータの接続済みファクトリとそのアーキテクチャの説明。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65eb24cf5f995570b7b1752fc850b596209ea59a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
+# <a name="connected-factory-solution-accelerator-walkthrough"></a>接続済みファクトリ ソリューション アクセラレータのチュートリアル
 
-IoT Suite コネクテッド ファクトリの[事前構成済みソリューション][lnk-preconfigured-solutions]は、次の処理を行うエンド ツー エンドの産業ソリューションの実装です。
+接続済みファクトリ [ソリューション アクセラレータ][lnk-preconfigured-solutions]は、次の処理を行うエンド ツー エンドの産業ソリューションの実装です。
 
-* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) に関するページをご覧ください。
+* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 * このようなデバイスと生産ラインの運用 KPI と OEE を表示します。
 * OPC UA サーバー システムを操作するためにクラウドベースのアプリケーションがどのように使用されているかを示します。
 * 独自の OPC UA サーバー デバイスを接続できるようにします。
@@ -34,19 +34,19 @@ IoT Suite コネクテッド ファクトリの[事前構成済みソリュー�
 
 このソリューションを独自の実装の出発点として使用し、独自のビジネス要件を満たすように[カスタマイズ][lnk-customize]することができます。
 
-この記事では、コネクテッド ファクトリ ソリューションのしくみを理解できるように、その主な構成要素のいくつかについて説明します。 この記事では、ソリューションにおけるデータのフローについても説明します。 この知識は以下の作業に役立ちます。
+この記事では、接続済みファクトリ ソリューションのしくみを理解できるように、その主な構成要素のいくつかについて説明します。 この記事では、ソリューションにおけるデータのフローについても説明します。 この知識は以下の作業に役立ちます。
 
 * ソリューションの問題のトラブルシューティングを行う。
 * 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
 * Azure サービスを利用する独自の IoT ソリューションを設計する。
 
-詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+詳細については、[接続済みファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
-次の図は、事前構成済みソリューションの論理コンポーネントの概要を示したものです。
+次の図は、ソリューション アクセラレータの論理コンポーネントの概要を示したものです。
 
-![コネクテッド ファクトリの論理アーキテクチャ][connected-factory-logical]
+![接続済みファクトリの論理アーキテクチャ][connected-factory-logical]
 
 ## <a name="communication-patterns"></a>通信パターン
 
@@ -118,11 +118,11 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 - すべての OPC Publisher モジュールとすべての OPC Proxy モジュールの ID を格納する ID レジストリを維持します。
 - OPC Proxy モジュールの双方向の通信用の転送プロトコルとして使用されます。
 
-## <a name="azure-storage"></a>Azure Storage (Azure Storage)
+## <a name="azure-storage"></a>Azure Storage
 このソリューションでは、Azure Blob Storage を VM のディスク ストレージとして使用したり、デプロイ データの保存に使用したりします。
 
 ## <a name="web-app"></a>Web アプリ
-事前構成済みソリューションの一部としてデプロイされた Web アプリは、統合された OPC UA クライアント、アラートの処理、テレメトリの視覚化で構成されています。
+ソリューション アクセラレータの一部としてデプロイされた Web アプリは、統合された OPC UA クライアント、アラートの処理、テレメトリの視覚化で構成されています。
 
 ## <a name="telemetry-data-flow"></a>テレメトリ データ フロー
 
@@ -162,17 +162,17 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 
 9. TSI の保存データ。
 
-10. Azure AppService のコネクテッド ファクトリ WebApp が、TSI に対して必要なデータを照会します。
+10. Azure AppService の接続済みファクトリ WebApp が、TSI に対して必要なデータを照会します。
     - TCP/TLS のセキュリティで保護された通信を使用します。
     - このステップは、データセンターの内部処理です。
 
-11. Web ブラウザーが、コネクテッド ファクトリ WebApp に接続します。
-    - コネクテッド ファクトリ ダッシュボードをレンダリングします。
+11. Web ブラウザーが、接続済みファクトリ WebApp に接続します。
+    - 接続済みファクトリ ダッシュボードをレンダリングします。
     - HTTPS で接続します。
-    - コネクテッド ファクトリ アプリにアクセスするには、Azure Active Directory を介したユーザーの認証が必要です。
-    - コネクテッド ファクトリ アプリへのすべての Web API 呼び出しは、偽造防止トークンによって保護されます。
+    - 接続済みファクトリ アプリにアクセスするには、Azure Active Directory を介したユーザーの認証が必要です。
+    - 接続済みファクトリ アプリへのすべての Web API 呼び出しは、偽造防止トークンによって保護されます。
 
-12. データが更新されると、コネクテッド ファクトリ WebApp が、更新されたデータを Web ブラウザーに送信します。
+12. データが更新されると、接続済みファクトリ WebApp が、更新されたデータを Web ブラウザーに送信します。
     - SignalR プロトコルを使用します。
     - TCP/TLS によって保護されます。
 
@@ -190,16 +190,16 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
     - IoT Hub から既知のすべてのデバイスを読み取ります。
     - Socket または Secure Websocket 上で MQTT over TLS を使用します。
 
-3. Web ブラウザーが、コネクテッド ファクトリ WebApp に接続し、コネクテッド ファクトリ ダッシュボードをレンダリングします。
+3. Web ブラウザーが、接続済みファクトリ WebApp に接続し、接続済みファクトリ ダッシュボードをレンダリングします。
     - HTTPS を使用します。
     - ユーザーが、接続先の OPC UA サーバーを選択します。
 
-4. コネクテッド ファクトリ WebApp が、選択された OPC UA サーバーへの OPC UA セッションを確立します。
+4. 接続済みファクトリ WebApp が、選択された OPC UA サーバーへの OPC UA セッションを確立します。
     - OPC UA スタックを使用します。
 
 5. OPC プロキシ転送によって OPC UA スタックからの要求が受信され、OPC UA サーバーへの TCP ソケット接続が確立されます。
     - このとき、単に TCP ペイロードが取得され、そのまま使用されます。
-    - このステップは、コネクテッド ファクトリ WebApp の内部処理です。
+    - このステップは、接続済みファクトリ WebApp の内部処理です。
 
 6. OPC プロキシ (クライアント コンポーネント) が、IoT Hub デバイス レジストリ内で OPC プロキシ (サーバー コンポーネント) デバイスを検索します。 次に、IoT Hub で OPC プロキシ (サーバー コンポーネント) デバイスのデバイス メソッドを呼び出します。
     - TCP/TLS で HTTPS を使用して、OPC プロキシを検索します。
@@ -215,29 +215,29 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 
 10. 応答が OPC プロキシ (サーバー コンポーネント) のソケットによって受信されます。
     - OPC プロキシが、データをデバイス メソッドの戻り値として IoT Hub および OPC プロキシ (クライアント コンポーネント) に送信します。
-    - このデータは、コネクテッド ファクトリ アプリの OPC UA スタックに配信されます。
+    - このデータは、接続済みファクトリ アプリの OPC UA スタックに配信されます。
 
-11. コネクテッド ファクトリ WebApp が、OPC UA サーバーから受信した OPC UA に固有の情報が付加された OPC ブラウザー UX を、レンダリングのために Web ブラウザーに返します。
-    - OPC ブラウザー UX のクライアント部分が、OPC アドレス空間を介してブラウズし、OPC アドレス空間内のノードに機能を適用する一方で、偽造防止トークンで保護された HTTPS で AJAX 呼び出しを使用して、コネクテッド ファクトリ WebApp からデータを取得します。
+11. 接続済みファクトリ WebApp が、OPC UA サーバーから受信した OPC UA に固有の情報が付加された OPC ブラウザー UX を、レンダリングのために Web ブラウザーに返します。
+    - OPC ブラウザー UX のクライアント部分が、OPC アドレス空間を介してブラウズし、OPC アドレス空間内のノードに機能を適用する一方で、偽造防止トークンで保護された HTTPS で AJAX 呼び出しを使用して、接続済みファクトリ WebApp からデータを取得します。
     - クライアントは、必要に応じて、ステップ 4 ～ 10 で説明した通信を使用して、OPC UA サーバーと情報を交換します。
 
 > [!NOTE]
 > OPC プロキシ (サーバー コンポーネント) および OPC プロキシ (クライアント) コンポーネントは、OPC UA 通信に関連するすべての TCP トラフィックについてステップ 4 ～ 10 を実行します。
 
 > [!NOTE]
-> OPC UA サーバーおよびコネクテッド ファクトリ WebApp 内の OPC UA スタックに対して OPC プロキシ通信は透過的であり、認証および暗号化のためのすべての OPC UA セキュリティ機能が適用されます。
+> OPC UA サーバーおよび接続済みファクトリ WebApp 内の OPC UA スタックに対して OPC プロキシ通信は透過的であり、認証および暗号化のためのすべての OPC UA セキュリティ機能が適用されます。
 
 ## <a name="next-steps"></a>次の手順
 
-引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
+引き続き IoT ソリューション アクセラレータの概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
-* [構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
+* [接続済みファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 * [OPC Publisher のリファレンス実装](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

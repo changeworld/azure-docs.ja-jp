@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 35877831c7f63c20fee2f2bc3838e73bb98328c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4e7b7b6af1f41eb0077d8a8605eb2a553c251f8e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -57,7 +57,13 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 オーケストレーター関数を実装するコードを次に示します。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
 このオーケストレーター関数は、基本的に次の操作を行います。
 
@@ -67,9 +73,11 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 4. すべてのアップロードが完了するまで待機します。
 5. Azure Blob ストレージにアップロードされたバイト数の合計を返します。
 
-`await Task.WhenAll(tasks);` 行に注目してください。 `E2_CopyFileToBlob` 関数に対するすべての呼び出しが*待機されているわけではありません*。 これは、呼び出しを同時に実行できるようにするための意図的な設定です。 このタスク配列を `Task.WhenAll` に渡すと、"*すべてのコピー操作が完了するまで*" 完了することがない 1 つのタスクが戻ります。 .NET のタスク並列ライブラリ (TPL) を知っていれば、これは新しい事柄ではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが Durable Functions 拡張機能によって保証されることです。
+`await Task.WhenAll(tasks);` (C#) 行または `yield context.df.Task.all(tasks);` (JS) 行に注意してください。 `E2_CopyFileToBlob` 関数に対するすべての呼び出しが*待機されているわけではありません*。 これは、呼び出しを同時に実行できるようにするための意図的な設定です。 このタスク配列を `Task.WhenAll` に渡すと、"*すべてのコピー操作が完了するまで*" 完了することがない 1 つのタスクが戻ります。 .NET のタスク並列ライブラリ (TPL) を知っていれば、これは新しい事柄ではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが Durable Functions 拡張機能によって保証されることです。
 
-`Task.WhenAll` から応答が返ることは、すべての関数呼び出しが完了し、値が戻っていることを意味します。 `E2_CopyFileToBlob` への各呼び出しがアップロードしたバイト数を返しているため、バイト数の合計を計算することは、これらの返された値をすべて合計するだけの操作です。
+タスクは、JavaScript の promise の概念によく似ています。 ただし、`Promise.all` には `Task.WhenAll` との相違点がいくつかあります。 `Task.WhenAll` の概念は、`durable-functions` JavaScript モジュールの一部として移植されており、このモジュールに限定されています。
+
+`Task.WhenAll` の待機 (または `context.df.Task.all` の一時停止) の後は、すべての関数呼び出しが完了し、値が返されていることを意味します。 `E2_CopyFileToBlob` への各呼び出しがアップロードしたバイト数を返しているため、バイト数の合計を計算することは、これらの返された値をすべて合計するだけの操作です。
 
 ## <a name="helper-activity-functions"></a>ヘルパー アクティビティ関数
 
@@ -79,7 +87,15 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 その実装を次に示します。
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
+
+`E2_GetFileList` の JavaScript 実装では、`readdirp` モジュールを使用してディレクトリ構造を再帰的に読み取ります。
 
 > [!NOTE]
 > このコードをオーケストレーター関数に直接配置できないことを疑問に思うかもしれません。 配置することは可能ですが、それを行うと、オーケストレーター関数の基本ルールの 1 つである、ローカル ファイル システムへのアクセスを含めて I/O 操作を行うべきではないというルールを破ることになります。
@@ -88,9 +104,17 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-実装も、非常にシンプルです。 Azure Functions のバインドの高度な機能を使用します (`Binder` パラメーターを使用します) が、このチュートリアルでは、詳細を気にする必要はありません。
+C# 実装も非常に簡単です。 Azure Functions のバインドの高度な機能を使用します (`Binder` パラメーターを使用します) が、このチュートリアルでは、詳細を気にする必要はありません。
+
+### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+JavaScript 実装では Azure Functions の `Binder` 機能にアクセスできないため、[Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) が代わりに使用されます。 この SDK には `AZURE_STORAGE_CONNECTION_STRING` アプリ設定が必要です。
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
 この実装は、ディスクからファイルを読み込み、"backups" コンテナー内の同じ名前の BLOB に内容を非同期でストリーミングします。 戻り値はストレージにコピーされたバイト数であり、この数値がオーケストレーター関数によって集計の合計を計算するために使用されます。
 

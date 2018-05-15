@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mazha
-ms.openlocfilehash: ed6f0b2c021fc4b31b85986c07df0502dba826f2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fcb4676325066dd6960070d996b1779fb3471dd9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル
 > [!div class="op_single_selector"]
@@ -27,11 +27,10 @@ ms.lasthandoff: 04/05/2018
 > 
 
 ## <a name="overview"></a>概要
-クエリ文字列のキャッシュでは、Azure Content Delivery Network (CDN) が、クエリ文字列を含む Web 要求に対するファイルのキャッシュ方法を制御します。 クエリ文字列を含む Web 要求で、クエリ文字列は要求の疑問符 (?) の後に指定されます。 クエリ文字列には、フィールド名とその値を等号 (=) で区切って指定される、キーと値のペア (複数可) を含めることができます。 キーと値のペアはそれぞれ、アンパサンド (&) で区切られます。 たとえば、http:\//www.contoso.com/content.mov?field1=value1&field2=value2 のようになります。 要求のクエリ文字列にキーと値のペアを複数指定する場合、どのような順序で指定してもかまいません。 
+Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエリ文字列を含む Web 要求のためにファイルをキャッシュする方法を制御できます。 クエリ文字列を含む Web 要求で、クエリ文字列は要求の疑問符 (?) の後に指定されます。 クエリ文字列には、フィールド名とその値を等号 (=) で区切って指定される、キーと値のペア (複数可) を含めることができます。 キーと値のペアはそれぞれ、アンパサンド (&) で区切られます。 たとえば、http:\//www.contoso.com/content.mov?field1=value1&field2=value2 のようになります。 要求のクエリ文字列にキーと値のペアを複数指定する場合、どのような順序で指定してもかまいません。 
 
-> [!NOTE]
-> Azure CDN の Standard および Premium 製品では同じクエリ文字列キャッシュ機能が提供されますが、ユーザー インターフェイスは異なります。  ここでは、**Azure CDN Standard from Akamai** と **Azure CDN Standard from Verizon** のインターフェイスについて説明します。 **Azure CDN Premium from Verizon** でのクエリ文字列のキャッシュについては、「[クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium レベル](cdn-query-string-premium.md)」をご覧ください。
->
+> [!IMPORTANT]
+> Azure CDN の Standard および Premium 製品では同じクエリ文字列キャッシュ機能が提供されますが、ユーザー インターフェイスは異なります。 この記事では、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard from Verizon** のインターフェイスについて説明します。 **Azure CDN Premium from Verizon** でのクエリ文字列のキャッシュについては、「[クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium レベル](cdn-query-string-premium.md)」をご覧ください。
 
 次の 3 つのクエリ文字列モードを使用できます。
 
@@ -58,9 +57,10 @@ ms.lasthandoff: 04/05/2018
    ![CDN クエリ文字列のキャッシュ オプション](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
-> 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。 
+> 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。
+> - **Azure CDN Standard from Microsoft** プロファイルの場合、通常、反映は 10 分以内で完了します。 
 > - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
-> - **Azure CDN Standard from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。
->
+> - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 
+
 
 

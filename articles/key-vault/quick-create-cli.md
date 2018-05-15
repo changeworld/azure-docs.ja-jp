@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/16/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: aaf8b93a41399b7754fb458d7d1d278a64f82139
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 64a092de1ae6c005355063d43541a20fa9076395
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>クイック スタート: CLI を使用した Azure Key Vault の作成
 
-Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Key Vault の詳細については、[概要](key-vault-overview.md)に関するページを参照してください。 Azure CLI は、コマンドまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 この記事では、Key Vault を作成します。 このクイック スタートでは、キー コンテナーを作成します。 この作業を完了したら、シークレットを格納します。
+Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Key Vault の詳細については、[概要](key-vault-overview.md)に関するページを参照してください。 Azure CLI は、コマンドまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 このクイック スタートでは、キー コンテナーを作成します。 この作業を完了したら、シークレットを格納します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -63,7 +63,7 @@ az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGrou
 - **コンテナーの名前**: この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドに使用できます。
 - **Vault URI (コンテナー URI)**: この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
-この時点で、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
+この時点で、自分の Azure アカウントが唯一、この新しいコンテナーで任意の操作を実行することを許可されています。
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 
@@ -99,4 +99,4 @@ az group delete --name ContosoResourceGroup
 このクイック スタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Web アプリケーションから Azure Key Vault を使用する](key-vault-use-from-web-application.md) [マネージド サービス ID](/active-directory/managed-service-identity/overview.md) を使用する Web アプリケーションを使用して Key Vault からシークレットを読み取る方法を学習するには、「[Configure an Azure web application to read a secret from Key vault (キー コンテナーからシークレットを読み取るための Web アプリケーションの構成)](tutorial-web-application-keyvault.md)」チュートリアルに進んでください
+> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、「[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](tutorial-web-application-keyvault.md)」チュートリアルに進んでください

@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 04/23/2018
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。 
+  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。
 
   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
   * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)
@@ -111,7 +111,7 @@ ms.lasthandoff: 04/23/2018
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * App Service 証明書
-* アプリケーション インサイト
+* Application Insights
 * Automation
 * Azure Cosmos DB
 * Batch
@@ -121,6 +121,7 @@ ms.lasthandoff: 04/23/2018
 * Cognitive Services
 * Content Moderator
 * Data Catalog
+* Data Factory - V1 は移動できますが、V2 の移動 (プレビュー) はサポートされていません
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -147,7 +148,7 @@ ms.lasthandoff: 04/23/2018
 * Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
-* SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。
+* SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 これには、Azure SQL Database と Azure SQL Data Warehouse データベースが含まれます。 
 * Traffic Manager
 * Virtual Machines - 管理ディスクを使用する VM を移動することはできません。 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
@@ -165,13 +166,12 @@ ms.lasthandoff: 04/23/2018
 * Azure Database for MySQL
 * BizTalk Services
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
-* Container Service
-* Data Factory
+* Kubernetes Service
 * DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
 * ExpressRoute
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
-* マネージ アプリケーション
+* Managed Applications
 * Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
@@ -203,13 +203,13 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 
-App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 
+App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。
 
 以上のセクションで説明した制限は、App Service 証明書ではなく、アップロードされた証明書に適用されます。 App Service 証明書は、新しいリソース グループまたはサブスクリプションに制限なく移動できます。 複数の Web アプリで同じ App Service 証明書が使用される場合、最初にすべての Web アプリを移動し、次に証明書を移動します。
 
 ### <a name="moving-within-the-same-subscription"></a>同じサブスクリプション内で移動する場合
 
-Web アプリを_同じサブスクリプション内_で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。 
+Web アプリを_同じサブスクリプション内_で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。
 
 SSL 証明書を Web アプリと共に移動したい場合は、次の手順に従います。
 
@@ -227,7 +227,7 @@ Web App を_サブスクリプション間_で移動する場合には、次の�
     - アップロードまたはインポートした SSL 証明書
     - App Service Environment
 - リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。
-- App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 App Service リソースが元のリソース グループから移動されている場合は、まず元のリソース グループに戻してから、サブスクリプション間の移動を行うことができます。 
+- App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 App Service リソースが元のリソース グループから移動されている場合は、まず元のリソース グループに戻してから、サブスクリプション間の移動を行うことができます。
 
 ## <a name="classic-deployment-limitations"></a>クラシック デプロイメントの制限事項
 

@@ -1,322 +1,118 @@
 ---
-title: Azure Cosmos DB を使用したマルチマスター データベース アーキテクチャ | Microsoft Docs
-description: Azure Cosmos DB を使用して複数の地理的リージョン間でローカルの読み取り/書き込みを実行するアプリケーション アーキテクチャを設計する方法について説明します。
+title: Azure Cosmos DB を使用した世界規模のマルチマスター | Microsoft Docs
+description: ''
 services: cosmos-db
-documentationcenter: ''
-author: SnehaGunda
+author: rimman
 manager: kfile
-ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
 ms.service: cosmos-db
-ms.devlang: multiple
+ms.workload: data-services
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/23/2017
-ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e8853d521173a9a8d3c925361e43ce469471918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 05/07/2018
+ms.author: rimman
+ms.openlocfilehash: 2446fac7526015d11737529c26d54e910643b750
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したグローバルにレプリケートされたマルチマスター データベース アーキテクチャ
-Azure Cosmos DB では、ワークロードであらゆる場所での待機時間の短いアクセスによって複数のリージョンにデータを配布できる、ターンキー [グローバル レプリケーション](distribute-data-globally.md)をサポートしています。 このモデルは、1 つの地理的リージョンにライターが存在し、他の複数の (読み取り) リージョンにグローバルに分散したリーダーが存在する発行者/コンシューマー ワークロードに一般に使用されます。 
+# <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Azure Cosmos DB を使用した世界規模のマルチマスター 
+ 
+世界中でデータの一貫したビューを維持しながら、ローカル待機時間に対応するグローバル分散アプリケーションの開発は困難な課題です。 お客様は、データ アクセスの待機時間の短縮、データの高可用性の確保、ディザスター リカバリーの確実な保証を実現し、ビジネス要件を満たす必要があるため、グローバル分散データベースを使用します。 Azure Cosmos DB のマルチマスターは、高レベルの可用性 (99.999%)、1 桁ミリ秒のデータ書き込み待機時間、組み込みの包括的かつ柔軟な競合解決のサポートによるスケーラビリティを提供します。 これらの機能により、グローバル分散アプリケーションの開発が大幅に簡素化されます。 グローバル分散アプリケーションでは、マルチマスター サポートが不可欠です。 
 
-Azure Cosmos DB のグローバル レプリケーションのサポートを使用して、ライターとリーダーがグローバルに分散するアプリケーションを構築することもできます。 このドキュメントでは、Azure Cosmos DB を使用して、分散したライターのローカル書き込みアクセスとローカル読み取りアクセスを実現するパターンの概要を説明します。
+![マルチマスター アーキテクチャ](./media/multi-region-writers/multi-master-architecture.png)
 
-## <a id="ExampleScenario"></a>コンテンツ発行 - シナリオ例
-Azure Cosmos DB でグローバルに分散したマルチリージョン/マルチマスターの読み取り/書き込みパターンを使用する方法を説明するために、実際のシナリオを見てみましょう。 Azure Cosmos DB 上に構築されたコンテンツ発行プラットフォームがあるとします。 発行者とコンシューマーの両方の優れたユーザー エクスペリエンスを実現するために、このプラットフォームが満たす必要のある要件がいくつかあります。
+Azure Cosmos DB のマルチマスター サポートにより、世界各地に分散したデータのコンテナー (コレクション、グラフ、テーブルなど) で書き込みを実行できます。 データベース アカウントに関連付けられている任意のリージョンでデータを更新できます。 これらのデータ更新は非同期に伝達できます。 マルチマスターは、データへの高速アクセスと書き込み待機時間を提供するだけでなく、フェールオーバーや負荷分散の問題に対応する実用的なソリューションも提供します。 まとめると、Azure Cosmos DB では、世界のどこでも、99 パーセンタイルでの 10 ミリ秒未満の書き込み待機時間と 99.999% の書き込み/読み取り可用性が得られ、書き込みスループットと読み取りスループットの両方をスケーリングできます。   
 
-* 作成者と購読者はどちらも世界中に分散しています。 
-* 作成者はローカル (最寄りの) リージョンに記事を発行する (書き込む) 必要があります。
-* 作成者には、世界中に分散した記事の閲覧者/購読者がいます。 
-* 新しい記事が発行されたときに、購読者に通知する必要があります。
-* 購読者はローカル リージョンから記事を読み取ることができる必要があります。 また、これらの記事にレビューを追加することもできる必要があります。 
-* 記事の作成者を含めたすべてのユーザーが、記事に添付されたすべてのレビューをローカル リージョンから表示できる必要があります。 
+## <a name="a-simple-multi-master-example--content-publishing"></a>単純なマルチマスターの例 - コンテンツ発行  
 
-数百万人のコンシューマーと発行者が存在し、数十億件の記事があると想定すると、アクセスのローカリティを保証すると共に、スケールの問題に速やかに対処する必要があります。 ほとんどのスケーラビリティの問題と同様に、ソリューションは適切なパーティション分割戦略にあります。 次に、記事、レビュー、通知をドキュメントとしてモデル化し、Azure Cosmos DB アカウントを構成して、データ アクセス層を実装する方法を見てみましょう。 
+Azure Cosmos DB でマルチマスター サポートを使用する方法を示す実際のシナリオを見てみましょう。 Azure Cosmos DB 上に構築されたコンテンツ発行プラットフォームがあるとします。 発行者とコンシューマーの両方の優れたユーザー エクスペリエンスを実現するために、このプラットフォームが満たす必要のある要件がいくつかあります。 
 
-パーティション分割とパーティション キーの詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」をご覧ください。
+* 作成者と購読者はどちらも世界中に分散しています。  
 
-## <a id="ModelingNotifications"></a>通知のモデル化
-通知はユーザーに固有のデータ フィードです。 そのため、通知ドキュメントのアクセス パターンは、常に単一ユーザーのコンテキストに存在します。 たとえば、"ユーザーに通知を送信" したり、"特定のユーザーのすべての通知を取得" したりすると考えられます。 そのため、このタイプのパーティション キーの最適な選択肢は `UserId` になります。
+* 作成者はローカル (最も近い) リージョンに記事を発行する (書き込む) 必要があります。  
 
-    class Notification 
-    { 
-        // Unique ID for Notification. 
-        public string Id { get; set; }
+* 作成者には、世界中に分散した記事の閲覧者/購読者がいます。  
 
-        // The user Id for which notification is addressed to. 
-        public string UserId { get; set; }
+* 新しい記事が発行されたときに、購読者に通知する必要があります。  
 
-        // The partition Key for the resource. 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.UserId; 
-            }
-        }
+* 購読者はローカル リージョンから記事を読み取ることができる必要があります。 また、これらの記事にレビューを追加することもできる必要があります。  
 
-        // Subscription for which this notification is raised. 
-        public string SubscriptionFilter { get; set; }
+* 記事の作成者を含めたすべてのユーザーが、記事に添付されたすべてのレビューをローカル リージョンから表示できる必要があります。  
 
-        // Subject of the notification. 
-        public string ArticleId { get; set; } 
-    }
+数百万人のコンシューマーと発行者が存在し、数十億件の記事があると想定すると、アクセスのローカリティを保証すると共に、スケールの問題に速やかに対処する必要があります。 このようなユース ケースは、Azure Cosmos DB のマルチマスターの最適な候補となります。 
 
-## <a id="ModelingSubscriptions"></a>サブスクリプションのモデル化
-サブスクリプションは、興味がある記事の特定のカテゴリや特定の発行者などのさまざまな条件に合わせて作成できます。 したがって、`SubscriptionFilter` がパーティション キーに適しています。
+## <a name="benefits-of-having-multi-master-support"></a>マルチマスター サポートの利点 
 
-    class Subscriptions 
-    { 
-        // Unique ID for Subscription 
-        public string Id { get; set; }
+マルチマスター サポートは、グローバル分散アプリケーションに不可欠です。 マルチマスターは、write-anywhere モデル (アクティブ/アクティブ パターン) に同等に関与する[複数のマスター リージョン](distribute-data-globally.md)で構成されます。マルチマスターを使用すると、必要な場所でいつでもデータを利用できます。 個々のリージョンに対して行われた更新は、他のすべてのリージョン (それぞれがマスター リージョンになります) に非同期に伝達されます。 マルチマスター構成でマスター リージョンとして稼働する Azure Cosmos DB リージョンは、すべてのレプリカのデータを集約し、[グローバルな整合性とデータ整合性](consistency-levels.md)を確保するために自動的に動作します。 次の図は、シングルマスターとマルチマスターの読み取り/書き込みレプリケーションを示しています。
 
-        // Subscription source. Could be Author | Category etc. 
-        public string SubscriptionFilter { get; set; }
+![シングルマスターとマルチマスター](./media/multi-region-writers/single-vs-multi-master.png)
 
-        // subscribing User. 
-        public string UserId { get; set; }
+マルチマスターを独自に実装すると、開発者の負担が増します。 マルチマスターを独自に実装しようとしている大規模なお客様は、世界規模のマルチマスターの構成とマルチマスター構成のテストに何百時間も費やす可能性があり、多くのお客様が、マルチマスター レプリケーションの監視と管理を担当する専任のエンジニア チームを持っています。 マルチマスター セットアップを独自に作成して管理すると、アプリケーション自体のイノベーションのための時間とリソースが奪われ、コストが大幅に増加します。 Azure Cosmos DB は "すぐに使える" マルチマスター サポートを提供し、開発者のこのオーバーヘッドを解消します。  
 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.SubscriptionFilter; 
-            } 
-        } 
-    }
+まとめると、マルチマスターには次の利点があります。
 
-## <a id="ModelingArticles"></a>記事のモデル化
-通知によって記事が特定されたら、通常、以降のクエリは `Article.Id` に基づきます。 `Article.Id` をパーティション キーとして選択すると、Azure Cosmos DB コレクション内に記事を格納するための最適な配布が実現されます。 
+* **ディザスター リカバリー、書き込み可用性、フェールオーバーの向上** - マルチマスターを使用すると、ミッション クリティカルなデータベースの高可用性をかなり保持できます。 たとえば、システム停止やリージョンの障害によってプライマリ リージョンが使用できなくなった場合に、マルチマスター データベースでは、あるリージョンからフェールオーバー リージョンにデータをレプリケートできます。 このようなフェールオーバー リージョンは、完全に機能するマスター リージョンとしてアプリケーションをサポートします。 マルチマスターでは、残りのリージョンが 99.999% を超える書き込み可用性が保証された地理的に異なるマルチマスターになるため、自然災害、停電、妨害に関して優れた "存続可能性" 保護が実現されます。 
 
-    class Article 
-    { 
-        // Unique ID for Article 
-        public string Id { get; set; }
-        
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.Id; 
-            } 
-        }
-        
-        // Author of the article
-        public string Author { get; set; }
+* **エンド ユーザーの書き込み待機時間の短縮** - 提供するデータがエンド ユーザーに近いほど、エクスペリエンスが向上します。 たとえば、ユーザーはヨーロッパにいるが、データベースは米国またはオーストラリアにある場合、それぞれのリージョンで約 140 ミリ秒、300 ミリ秒の待機時間が追加されます。 多くの人気ゲーム、銀行取引要件、または対話型アプリケーション (Web またはモバイル) では、開始時の遅延は許容できません。 待機時間は、高品質のエクスペリエンスに対する顧客の認識において大きな部分を占めており、ユーザーの行動にかなりの影響を及ぼすことが証明されています。 テクノロジが進歩し、臨場感あふれるリアルなエクスペリエンスを必要とする AR、VR、MR が登場したことで、開発者は待機時間要件の厳しいソフトウェア システムを生み出すことが必要になっています。 そのため、利用可能なアプリケーションとデータ (アプリのコンテンツ) をローカルに用意する重要性が高まっています。 Azure Cosmos DB のマルチマスターを使用すると、パフォーマンスが通常のローカルの読み取り/書き込みと同様に高速になり、地理的分散によってグローバルに強化されます。  
 
-        // Category/genre of the article
-        public string Category { get; set; }
+* **書き込みのスケーラビリティと書き込みスループットの向上** - マルチマスターでは、正確性が保証され、SLA に裏付けられた複数の整合性モデルが提供され、スループットと使用率が向上します。 
 
-        // Tags associated with the article
-        public string[] Tags { get; set; }
+  ![マルチ マスターによる書き込みスループットのスケーリング](./media/multi-region-writers/scale-write-throughput.png)
 
-        // Title of the article
-        public string Title { get; set; }
-        
-        //... 
-    }
+* **切断された環境 (エッジ デバイスなど) のサポートの向上** - マルチマスターを使用すると、ユーザーは切断された環境で、エッジ デバイスからすべてのデータまたはデータのサブセットを最も近いリージョンにレプリケートできます。 このシナリオは、個人のノート PC (切断されたデバイス) に個々の営業担当者に関連するデータのサブセットが保存される、営業支援システムでよく見られます。 世界のどこにでもあるクラウド内のマスター リージョンは、リモート エッジ デバイスからのコピーのターゲットとして動作することができます。  
 
-## <a id="ModelingReviews"></a>レビューのモデル化
-記事と同様に、レビューのほとんどの書き込みと読み取りは記事のコンテキストで実行されます。 `ArticleId` をパーティション キーとして選択すると、最適に配布され、記事に関連付けられたレビューに効率的にアクセスできます。 
+* **負荷分散** - マルチマスターでは、負荷の高いリージョンから負荷が均等に分散されたリージョンにユーザー/ワークロードを移動することによって、アプリケーション全体の負荷を再調整することができます。 新しいリージョンを追加し、一部の書き込みをその新しいリージョンに切り替えることで、書き込み容量を簡単に拡張できます。 
 
-    class Review 
-    { 
-        // Unique ID for Review 
-        public string Id { get; set; }
+* **プロビジョニング済みの容量の活用** - マルチマスターでは、書き込み負荷の高いワークロードと混合ワークロードについて、複数のリージョンでプロビジョニング済みの容量を飽和状態にすることができます。  場合によっては、読み取りと書き込みをさらに均等に再分配できるので、プロビジョニングする必要があるスループットが減り、コスト削減が促進されます。  
 
-        // Article Id of the review 
-        public string ArticleId { get; set; }
+* **シンプルで回復性に優れたアプリ アーキテクチャ** - アプリケーションをマルチマスター構成に移行すると、データの復元性が保証されます。  Azure Cosmos DB はあらゆる複雑さを隠すため、アプリケーションの設計とアーキテクチャを大幅に簡素化できます。 
 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.ArticleId; 
-            } 
-        }
-        
-        //Reviewer Id 
-        public string UserId { get; set; }
-        public string ReviewText { get; set; }
-        
-        public int Rating { get; set; } }
-    }
+* **リスクのないフェールオーバー テスト** - フェールオーバー テストで書き込みスループットが低下することはありません。 マルチマスターでは、他のすべてのリージョンがフルマスターであるため、フェールオーバーが書き込みスループットに大きな影響を及ぼすことはありません。  
 
-## <a id="DataAccessMethods"></a>データ アクセス層のメソッド
-次に、実装する必要がある主なデータ アクセス メソッドを見てみましょう。 `ContentPublishDatabase` に必要なメソッドを次に示します。
+* **総保有コスト (TCO) の削減と DevOps** - スケーラビリティ、パフォーマンス、グローバル配布、目標復旧時間への対応は、高価なアドオンや障害が発生するまで休止しているバックアップ インフラストラクチャの維持により、多くの場合、コストがかかります。 業界トップレベルの SLA に裏付けられた Azure Cosmos DB のマルチマスターを使用すると、開発者は "バックエンド グルー ロジック" を自分で構築して管理する必要がなくなり、ミッション クリティカルなワークロードを安心して実行できます。 
 
-    class ContentPublishDatabase 
-    { 
-        public async Task CreateSubscriptionAsync(string userId, string category);
-    
-        public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId);
-    
-        public async Task<Article> ReadArticleAsync(string articleId);
-    
-        public async Task WriteReviewAsync(string articleId, string userId, string reviewText, int rating);
-    
-        public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
-    }
+## <a name="use-cases-where-multi-master-support-is-needed"></a>マルチマスター サポートが必要なユース ケース
 
-## <a id="Architecture"></a>Azure Cosmos DB アカウントの構成
-ローカルの読み取りと書き込みを保証するには、パーティション キーだけでなく、リージョンへの地理的なアクセス パターンにも基づいてデータをパーティション分割する必要があります。 このモデルは、リージョンごとに geo レプリケートされた Azure Cosmos DB データベース アカウントがあることに依存します。 たとえば、2 つのリージョンでのマルチリージョンの書き込みのセットアップは次のとおりです。
+Azure Cosmos DB には、マルチマスターの多数のユース ケースがあります。 
 
-| アカウント名 | 書き込みリージョン | 読み取りリージョン |
-| --- | --- | --- |
-| `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
-| `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
+* **IoT** - Azure Cosmos DB のマルチマスターを使用すると、IoT データ処理の分散実装を簡素化できます。 CRDT (Conflict-free Replicated Data Type) を使用する地理的に分散したエッジ デプロイでは、多くの場合、複数の場所から時系列データを追跡する必要があります。 各デバイスは、最も近いリージョンのいずれかに属することができます。デバイスは移動する可能性があり (自動車など)、現在のリージョンから動的に移動して別のリージョンに書き込むことができます。  
 
-次の図は、このセットアップを使用して一般的なアプリケーションで読み取りと書き込みが実行されるしくみを示しています。
+* **e コマース** - e コマース シナリオで優れたユーザー エクスペリエンスを確保するには、高可用性と障害シナリオにおける回復性が必要です。 リージョンで障害が発生した場合、状態を失うことなく、ユーザー セッション、ショッピング カート、アクティブなウィッシュ リストを別のリージョンがシームレスに引き継ぐ必要があります。 その間に、ユーザーが行った更新を適切に処理しなければなりません (たとえば、ショッピング カートに追加された商品や削除された商品を転送する必要があります)。 マルチマスターでは、Azure Cosmos DB が、ユーザーの観点から一貫したビューを維持しながら、アクティブなリージョン間でのスムーズな移行によって、このようなシナリオを適切に処理できます。 
 
-![Azure Cosmos DB のマルチマスター アーキテクチャ](./media/multi-region-writers/multi-master.png)
+* **不正行為/異常の検出** - 多くの場合、ユーザー アクティビティやアカウント アクティビティを監視するアプリケーションはグローバルに分散しており、複数のイベントを同時に追跡する必要があります。 ユーザーのスコアを作成および維持するときに、さまざまな地理的リージョンからのアクションでスコアを同時に更新して、リスク メトリックをインラインに維持する必要があります。 Azure Cosmos DB では、開発者がアプリケーション レベルで競合シナリオに対応する必要がないことが保証されます。 
 
-`West US` リージョンで実行されている DAL でクライアントを初期化する方法を示すコード スニペットを次に示します。
-    
-    ConnectionPolicy writeClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
-    writeClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
-    writeClientPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
+* **コラボレーション** - 販売中の商品や使用されるメディアなどの記事の人気度に基づいてランク付けするアプリケーションでは、特に、ロイヤリティを支払う必要がある場合やリアルタイムの広告を決定する場合に、複数の地理的リージョンにわたる人気度の追跡は複雑になる可能性があります。 Azure Cosmos DB を使用して、世界中の多数のリージョンでランキング、並べ替え、レポート作成をリアルタイムで実行することで、開発者は待機時間の面で妥協することなく、わずかな労力で機能を提供できます。 
 
-    DocumentClient writeClient = new DocumentClient(
-        new Uri("https://contentpubdatabase-usa.documents.azure.com"), 
-        writeRegionAuthKey,
-        writeClientPolicy);
+* **計測** - 使用量 (API 呼び出し回数、1 秒あたりのトランザクション数、使用時間 (分) など) のカウントと調整は、Azure Cosmos DB のマルチマスターを使用することで簡単にグローバルに実装できます。 組み込みの競合解決により、カウントの精度と調整の両方がリアルタイムで保証されます。 
 
-    ConnectionPolicy readClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
-    readClientPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
-    readClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
+* **パーソナル化** - ロイヤリティ ポイントの授与などのアクションをトリガーする地理的に分散したカウンターを保持する場合も、パーソナル化されたユーザー セッション ビューを実装する場合も、Azure Cosmos DB で提供される高可用性と簡素化された地理的分散カウントにより、アプリケーションは高パフォーマンスを簡単に実現できます。 
 
-    DocumentClient readClient = new DocumentClient(
-        new Uri("https://contentpubdatabase-europe.documents.azure.com"),
-        readRegionAuthKey,
-        readClientPolicy);
+## <a name="conflict-resolution-with-multi-master"></a>マルチマスターでの競合の解決 
 
-前のセットアップでは、データ アクセス層は、デプロイされている場所に基づいてすべての書き込みをローカル アカウントに転送できます。 読み取りは、データのグローバル ビューを得るために両方のアカウントから読み取ることによって実行されます。 この方法は必要な数のリージョンに適用できます。 たとえば、3 つの地理的リージョンでのセットアップを次に示します。
+マルチマスターでは、複数の異なるリージョンの異なるライターによって、同じレコードの 2 つ (以上) のレプリカが同時に更新される可能性があることがよく問題になります。 同時書き込みにより、同じレコードの 2 つの異なるバージョンが作成される可能性があります。競合の解決が組み込まれていない場合、アプリケーション自体が競合の解決を実行して、この不整合を解決する必要があります。  
 
-| アカウント名 | 書き込みリージョン | 読み取りリージョン 1 | 読み取りリージョン 2 |
-| --- | --- | --- | --- |
-| `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |`Southeast Asia` |
-| `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
-| `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
+**例** - ショッピング カート アプリケーションの永続化ストアとして Azure Cosmos DB を使用しており、このアプリケーションが米国東部と米国西部の 2 つのリージョンにデプロイされているとします。  サンフランシスコのユーザーがショッピング カートに商品 (例: 書籍) を追加しました。ほぼ同時に、米国東部の在庫管理プロセスでは、リリース日が遅れているというサプライヤーからの通知に対応して、その同じユーザーのショッピング カートの別の商品 (例: 新しい携帯電話) を無効にしました。 時刻 T1 の時点で、2 つのリージョンのショッピング カート レコードは異なります。 データベースはレプリケーションと競合解決メカニズムを使用してこの不整合を解決し、最終的にショッピング カードの 2 つのバージョンのいずれかが選択されます。 マルチマスター データベースによって適用されることが多い競合解決ヒューリスティック (例: 最後の書き込みが有効) を使用すると、ユーザーまたはアプリケーションは、選択されるバージョンを予測できません。 どちらの場合も、データが失われるか、予期しない動作が発生する可能性があります。 東部リージョンのバージョンが選択された場合、ユーザーが選択した新たな購入商品 (書籍) が失われます。西部リージョンが選択された場合は、以前に選択された商品 (携帯電話) がカートに残されます。 どちらにしても情報は失われます。 最後に、時刻 T1 から T2 までの間にショッピング カートを検査するその他のプロセスでは、非決定論的な動作も発生することになります。 たとえば、フルフィルメント倉庫を選択し、カートの送料を更新するバックグラウンド プロセスでは、カートの最終的な内容と競合する結果が生成されます。 このプロセスが西部リージョンで実行され、代替 1 が実現された場合、カートの商品が間もなく 1 つだけになる可能性があっても (書籍)、2 つの商品の送料が計算されます。 
 
-## <a id="DataAccessImplementation"></a>データ アクセス層の実装
-次に、2 つの書き込み可能なリージョンでのアプリケーションのデータ アクセス層 (DAL) の実装を見てみましょう。 DAL では次の手順を実装する必要があります。
+Azure Cosmos DB は、データベース エンジン内で競合する書き込みを処理するためのロジックを実装しています。 Azure Cosmos DB では、自動 (CRDT (Conflict-free Replicated Data Type))、Last Write Wins (LWW)、カスタム (ストアド プロシージャ)、手動 (自動競合解決のため) など、複数の競合解決モデルを提供することによって、**包括的かつ柔軟な競合解決をサポート**します。 競合解決モデルでは、正確性と整合性を保証し、geo フェールオーバーやリージョンをまたがる書き込みの競合の下で、整合性、可用性、パフォーマンス、レプリケーションの待機時間、イベントの複雑な組み合わせについて考えなければならないという開発者の負担を解消します。  
 
-* アカウントごとに `DocumentClient` の複数のインスタンスを作成します。 2 つのリージョンで、各 DAL インスタンスは `writeClient` と `readClient` を 1 つずつ持ちます。 
-* アプリケーションのデプロイされたリージョンに基づいて、`writeclient` と `readClient` のエンドポイントを構成します。 たとえば、`West US` にデプロイされた DAL では、`contentpubdatabase-usa.documents.azure.com` を使用して書き込みを実行します。 `NorthEurope` にデプロイされた DAL では、書き込みに `contentpubdatabase-europ.documents.azure.com` を使用します。
+  ![マルチマスターの競合の解決](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
 
-前のセットアップでは、データ アクセス メソッドを実装できます。 書き込み操作では、書き込みが対応する `writeClient` に転送されます。
+Azure Cosmos DB には、3 種類の競合解決モデルが用意されています。 これらの競合解決モデルのセマンティクスは次のとおりです。 
 
-    public async Task CreateSubscriptionAsync(string userId, string category)
-    {
-        await this.writeClient.CreateDocumentAsync(this.contentCollection, new Subscriptions
-        {
-            UserId = userId,
-            SubscriptionFilter = category
-        });
-    }
+**自動** - これが既定の競合解決ポリシーです。 このポリシーを選択すると、Azure Cosmos DB は競合する更新をサーバー側で自動的に解決し、厳密な/最終的な整合性の保証を提供します。 内部的には、Azure Cosmos DB は、データベース エンジン内で CRDT (Conflict-free Replicated Data Type) を活用して自動競合解決を実装しています。  
 
-    public async Task WriteReviewAsync(string articleId, string userId, string reviewText, int rating)
-    {
-        await this.writeClient.CreateDocumentAsync(this.contentCollection, new Review
-        {
-            UserId = userId,
-            ArticleId = articleId,
-            ReviewText = reviewText,
-            Rating = rating
-        });
-    }
+**Last-Write-Wins (LWW)** - このポリシーを選択すると、システム定義の同期タイムスタンプ プロパティまたはレコードの競合するバージョンで定義されたカスタム プロパティに基づいて競合を解決できます。 競合の解決はサーバー側で行われ、最新のタイムスタンプを持つバージョンが有効なバージョンとして選択されます。  
 
-通知とレビューを読み取るには、次のスニペットに示すように、両方のリージョンから読み取り、結果を結合する必要があります。
+**カスタム** - ストアド プロシージャを登録することによって、アプリケーション定義の競合解決ロジックを登録できます。 データベース トランザクションの支援によって更新の競合が検出されると、ストアド プロシージャがサーバー側で呼び出されます。 このオプションを選択し、ストアド プロシージャの登録に失敗した場合 (または、ストアド プロシージャが実行時に例外をスローした場合)、Conflicts フィードを介して競合するすべてのバージョンにアクセスし、それらを個別に解決できます。  
 
-    public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId)
-    {
-        IDocumentQuery<Notification> writeAccountNotification = (
-            from notification in this.writeClient.CreateDocumentQuery<Notification>(this.contentCollection) 
-            where notification.UserId == userId 
-            select notification).AsDocumentQuery();
-        
-        IDocumentQuery<Notification> readAccountNotification = (
-            from notification in this.readClient.CreateDocumentQuery<Notification>(this.contentCollection) 
-            where notification.UserId == userId 
-            select notification).AsDocumentQuery();
+## <a name="next-steps"></a>次の手順  
 
-        List<Notification> notifications = new List<Notification>();
+この記事では、Azure Cosmos DB でグローバル分散マルチマスターを使用する方法を説明しました。 次に、以下のリソースをご覧ください。 
 
-        while (writeAccountNotification.HasMoreResults || readAccountNotification.HasMoreResults)
-        {
-            IList<Task<FeedResponse<Notification>>> results = new List<Task<FeedResponse<Notification>>>();
+* [Azure Cosmos DB のグローバル配布のサポートについて確認する](distribute-data-globally.md)  
 
-            if (writeAccountNotification.HasMoreResults)
-            {
-                results.Add(writeAccountNotification.ExecuteNextAsync<Notification>());
-            }
+* [Azure Cosmos DB の自動および手動フェールオーバーについて確認する](regional-failover.md)  
 
-            if (readAccountNotification.HasMoreResults)
-            {
-                results.Add(readAccountNotification.ExecuteNextAsync<Notification>());
-            }
+* [Azure Cosmos DB とのグローバルな整合性について確認する](consistency-levels.md)  
 
-            IList<FeedResponse<Notification>> notificationFeedResult = await Task.WhenAll(results);
-
-            foreach (FeedResponse<Notification> feed in notificationFeedResult)
-            {
-                notifications.AddRange(feed);
-            }
-        }
-        return notifications;
-    }
-
-    public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId)
-    {
-        IDocumentQuery<Review> writeAccountReviews = (
-            from review in this.writeClient.CreateDocumentQuery<Review>(this.contentCollection) 
-            where review.ArticleId == articleId 
-            select review).AsDocumentQuery();
-        
-        IDocumentQuery<Review> readAccountReviews = (
-            from review in this.readClient.CreateDocumentQuery<Review>(this.contentCollection) 
-            where review.ArticleId == articleId 
-            select review).AsDocumentQuery();
-
-        List<Review> reviews = new List<Review>();
-        
-        while (writeAccountReviews.HasMoreResults || readAccountReviews.HasMoreResults)
-        {
-            IList<Task<FeedResponse<Review>>> results = new List<Task<FeedResponse<Review>>>();
-
-            if (writeAccountReviews.HasMoreResults)
-            {
-                results.Add(writeAccountReviews.ExecuteNextAsync<Review>());
-            }
-
-            if (readAccountReviews.HasMoreResults)
-            {
-                results.Add(readAccountReviews.ExecuteNextAsync<Review>());
-            }
-
-            IList<FeedResponse<Review>> notificationFeedResult = await Task.WhenAll(results);
-
-            foreach (FeedResponse<Review> feed in notificationFeedResult)
-            {
-                reviews.AddRange(feed);
-            }
-        }
-
-        return reviews;
-    }
-
-そのため、適切なパーティション キーと静的アカウントベースのパーティション分割を選択すれば、Azure Cosmos DB を使用したマルチリージョンのローカル書き込み/読み取りを実現できます。
-
-## <a id="NextSteps"></a>次のステップ
-この記事では、サンプル シナリオとしてコンテンツ発行を使用して、グローバルに分散するマルチリージョンの読み取り/書き込みパターンを Azure Cosmos DB で使用する方法について説明しました。
-
-* Azure Cosmos DB の[グローバル配布](distribute-data-globally.md)サポートについて確認する
-* [Azure Cosmos DB の自動および手動フェールオーバー](regional-failover.md)について確認する
-* [Azure Cosmos DB とのグローバルな整合性](consistency-levels.md)について確認する
-* [Azure Cosmos DB - SQL API](tutorial-global-distribution-sql-api.md) を使用して複数リージョンで開発する
-* [Azure Cosmos DB - MongoDB API](tutorial-global-distribution-MongoDB.md) を使用して複数リージョンで開発する
-* [Azure Cosmos DB - Table API](tutorial-global-distribution-table.md) を使用して複数リージョンで開発する
+* Azure Cosmos DB - [SQL API](tutorial-global-distribution-sql-api.md)、[MongoDB API](tutorial-global-distribution-mongodb.md)、または [Table API](tutorial-global-distribution-table.md) を使用して複数のリージョンで開発する  

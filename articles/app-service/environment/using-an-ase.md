@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service Environment の使用"
-description: "Azure App Service Environment でアプリを作成、発行、スケールする方法"
+title: Azure App Service Environment の使用
+description: Azure App Service Environment でアプリを作成、発行、スケールする方法
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -58,21 +58,30 @@ ASE で Web アプリを作成するには、次の手順に従います。
 
 4. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
 
+5. OS を選択します。 
+
+    * ASE での Linux アプリのホストは新しいプレビュー機能です。そのため、実稼働ワークロードが現在実行されている ASE に Linux アプリを追加しないようお勧めします。 
+    * ASE に Linux アプリを追加することは、ASE もプレビュー モードになることを意味します。 
+
 5. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[新規作成]** を選択します。
 
     b. App Service プランの名前を入力します。
 
-    c. **[場所]** ボックスの一覧から該当する ASE を選択します。
+    c. **[場所]** ボックスの一覧から該当する ASE を選択します。 ASE での Linux アプリのホスティングが有効なのは、現時点で、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 
 
-    d. **[分離]** 価格レベルを選択します。 **[選択]**を選択します。
+    d. **[分離]** 価格レベルを選択します。 **[選択]** を選択します。
 
-    e. **[OK]**を選択します。
+    e. **[OK]** を選択します。
     
     ![[分離] 価格レベル][2]
 
-6. **[作成]**を選択します。
+    > [!NOTE]
+    > Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+    >
+
+6. **[作成]** を選択します。
 
 ## <a name="how-scale-works"></a>スケールのしくみ ##
 

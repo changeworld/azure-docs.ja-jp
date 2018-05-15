@@ -6,29 +6,31 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/24/2018
 ms.author: babanisa
-ms.openlocfilehash: e5499fca98118de6ef8e08c8ce278b90520425e6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8ddde98b448f4d6d6f24a2ee47acf9240593622c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
-Azure Event Grid の主要な概念を次に示します。
+この記事では、Azure Event Grid の主要な概念について説明します。
 
 ## <a name="events"></a>イベント
 
-イベントは、システム内で発生した何かを完全に記述する最小限の情報です。 すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。 各イベントには、特定の種類のイベントにのみ関連する情報も含まれます。 たとえば、Azure Storage に作成される新しいファイルに関するイベントには、`lastTimeModified` 値などのファイルの詳細が含まれます。 また、仮想マシンの再起動に関するイベントには、仮想マシンの名前と再起動の理由が含まれます。 各イベントは、64 KB のデータに制限されます。
+イベントは、システム内で発生した何かを完全に記述する最小限の情報です。 すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。 各イベントには、特定の種類のイベントにのみ関連する情報も含まれます。 たとえば、Azure Storage に作成される新しいファイルに関するイベントには、`lastTimeModified` 値などのファイルの詳細が含まれます。 または、Event Hubs イベントには、キャプチャ ファイルの URL が含まれます。 各イベントは、64 KB のデータに制限されます。
 
 ## <a name="event-sourcespublishers"></a>イベント ソース/発行元
 
 イベント ソースは、イベントの発生場所です。 たとえば、Azure Storage は、BLOB 作成イベントのイベント ソースです。 Azure VM Fabric は、仮想マシン イベントのイベント ソースです。 Event Grid へのイベントの発行は、イベント ソースの責任で行われます。
 
+サポートされている任意の Event Grid ソースの実装方法については、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](event-sources.md)」を参照してください。
+
 ## <a name="topics"></a>トピック
 
-発行元は、イベントをトピックに分類します。 トピックには、発行元がイベントを送信するエンドポイントが含まれます。 サブスクライバーは、特定の種類のイベントに応答するために、どのトピックをサブスクライブするかを決定します。 トピックは、サブスクライバーがイベントを適切に使用する方法を検出できるようにするイベント スキーマも提供します。
+発行元は、イベントをトピックに分類します。 Event Grid トピックには、発行元がイベントを送信するエンドポイントが含まれます。 サブスクライバーは、特定の種類のイベントに応答するために、どのトピックをサブスクライブするかを決定します。 トピックは、サブスクライバーがイベントを適切に使用する方法を学習できるようにするイベント スキーマも提供します。
 
 システム トピックは、Azure サービスが提供する組み込みのトピックです。 カスタム トピックは、アプリケーションとサード パーティのトピックです。
 
@@ -42,13 +44,15 @@ Azure Event Grid の主要な概念を次に示します。
 
 Event Grid から考えると、イベント ハンドラーはイベントの送信先です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 Event Grid は、複数の種類のサブスクライバーをサポートします。 Event Grid は、サブスクライバーの種類に応じたさまざまなメカニズムに従って、イベントの配信を保証します。 HTTP Webhook イベント ハンドラーでは、ハンドラーが状態コード `200 – OK` を返すまでイベントが再試行されます。 Azure Storage Queue では、Queue サービスがキューにメッセージのプッシュを正常に処理できるようになるまで、イベントが再試行されます。
 
+サポートされている任意の Event Grid ハンドラーの実装方法については、「[Event handlers in Azure Event Grid (Azure Event Grid 内のイベント ハンドラー)](event-handlers.md)」を参照してください。
+
 ## <a name="filters"></a>フィルター
 
-トピックをサブスクライブするときに、エンドポイントに送信されるイベントをフィルター処理できます。 イベントの種類またはサブジェクトのパターンでフィルター処理できます。 詳細については、「[Event Grid subscription schema](subscription-creation-schema.md)」(Event Grid のサブスクリプション スキーマ) を参照してください。
+Event Grid トピックをサブスクライブするときに、エンドポイントに送信されるイベントをフィルター処理できます。 イベントの種類またはサブジェクトのパターンでフィルター処理できます。 詳細については、「[Event Grid subscription schema](subscription-creation-schema.md)」(Event Grid のサブスクリプション スキーマ) を参照してください。
 
 ## <a name="security"></a>セキュリティ
 
-Event Grid は、トピックのサブスクライブと発行をセキュリティで保護します。 サブスクライブするときは、リソースまたはトピックに対する十分なアクセス許可が必要です。 発行するときは、トピック用の SAS トークンまたはキー認証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
+Event Grid は、トピックのサブスクライブと発行をセキュリティで保護します。 サブスクライブするときは、リソースまたは Event Grid トピックに対する十分なアクセス許可が必要です。 発行するときは、トピック用の SAS トークンまたはキー認証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
 
 ## <a name="failed-delivery"></a>失敗した配信
 

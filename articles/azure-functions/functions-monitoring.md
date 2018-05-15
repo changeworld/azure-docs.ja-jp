@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -29,34 +29,46 @@ ms.lasthandoff: 03/30/2018
 
 ![Application Insights メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
-Functions には、Application Insights を使用しないビルトイン監視機能もあります。 Application Insights ではより多くのデータや優れたデータ分析方法が提供されるため、Application Insights の使用をお勧めします。 ビルトイン監視機能については、[この記事の最後のセクション](#monitoring-without-application-insights)をご覧ください。
+Functions には、[Application Insights を使用しないビルトイン監視機能もあります](#monitoring-without-application-insights)。 Application Insights ではより多くのデータや優れたデータ分析方法が提供されるため、Application Insights の使用をお勧めします。
 
-## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
+## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
-関数アプリでデータを Application Insights に送信するには、Application Insights インスタンスのインストルメンテーション キーについて知っておく必要があります。 [Azure Portal](https://portal.azure.com) でその接続を行うには、次の 2 つの方法があります。
+Function App との Application Insights 統合は無料でお試しいただくことができます。 ただし、1 日に無料で処理できるデータ量には上限があり、テスト中にこの上限に達する場合があります。 1 日あたりの上限に近づいた場合は、ポータルと電子メール通知でお知らせします。  しかし、これらのアラートに気が付かず、上限に達してしまった場合は、新しいログが Application Insights クエリに表示されません。 不要なトラブルシューティングに時間を費やさずにすむように、上限には気を付けてください。 詳細については、「[Application Insights での価格とデータ ボリュームの管理](../application-insights/app-insights-pricing.md)」を参照してください。
 
-* [関数アプリの作成時に、接続された Application Insights インスタンスを作成する](#new-function-app)。
-* [Application Insights インスタンスを既存の関数アプリに接続する](#existing-function-app)。
+## <a name="enable-app-insights-integration"></a>App Insights 統合を有効にする
+
+関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、APPINSIGHTS_INSTRUMENTATIONKEY という名前のアプリ設定で指定する必要があります。
+
+この接続は、[Azure Portal](https://portal.azure.com) で次の方法で設定できます。
+
+* [新しい関数アプリに対して自動的に設定する](#new-function-app)
+* [App Insights リソースを手動で接続する](#manually-connect-an-app-insights-resource)
 
 ### <a name="new-function-app"></a>新しい関数アプリ
 
-次のようにして、Function App の **[作成]** ページで Application Insights を有効にします。
+1. 関数アプリの **[作成]** ページに移動します。
 
 1. **[Application Insights]** スイッチを **[オン]** に設定します。
 
 2. **Application Insights の場所**を選択します。
 
+   データを格納する [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)で、関数アプリのリージョンに最も近いリージョンを選択してください。
+
    ![関数アプリの作成時に Application Insights を有効にする](media/functions-monitoring/enable-ai-new-function-app.png)
 
-### <a name="existing-function-app"></a>既存の関数アプリ
+3. 必要な他の情報を入力します。
 
-インストルメンテーション キーを取得し、関数アプリに保存します。
+1. **[作成]** を選択します。
 
-1. Application Insights インスタンスを作成します。 アプリケーションの種類を **[全般]** に設定します。
+次に、[組み込みログを無効](#disable-built-in-logging)にします。
 
-   ![Application Insights インスタンスを作成して [全般] に指定する](media/functions-monitoring/ai-general.png)
+### <a name="manually-connect-an-app-insights-resource"></a>App Insights リソースを手動で接続する 
 
-2. Application Insights インスタンスの **[要点]** ページからインストルメンテーション キーをコピーします。 表示されているキー値の末尾にカーソルを合わせて、**[コピーするにはクリックします]** ボタンを表示します。
+1. Application Insights リソースを作成します。 アプリケーションの種類を **[全般]** に設定します。
+
+   ![Application Insights リソースを作成して [全般] を指定する](media/functions-monitoring/ai-general.png)
+
+2. Application Insights リソースの **[要点]** ページからインストルメンテーション キーをコピーします。 表示されているキー値の末尾にカーソルを合わせて、**[コピーするにはクリックします]** ボタンを表示します。
 
    ![Application Insights のインストルメンテーション キーをコピーする](media/functions-monitoring/copy-ai-key.png)
 
@@ -70,13 +82,46 @@ Functions には、Application Insights を使用しないビルトイン監視�
 
 Application Insights を有効にする場合は、[Azure Storage を使用する組み込みログ](#logging-to-storage)を無効にすることをお勧めします。 組み込みログは軽量のワークロードには便利ですが、高負荷の実稼働環境での使用には向きません。 実稼働環境の監視には、Application Insights をお勧めします。 組み込みログを実稼働環境で使用すると、Azure Storage での調整のためにログ レコードが不完全になる場合があります。
 
-組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。
+組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。 アプリ設定を削除する前に、同じ関数アプリの既存の関数によって、Azure Storage のトリガーまたはバインドにその設定が使用されていないことを確認します。
 
-Application Insights を有効にし、組み込みログを無効にすると、Azure Portal の関数用の**[モニター]** タブに Application Insights が表示されます。
+## <a name="view-telemetry-in-monitor-tab"></a>[監視] タブにテレメトリを表示する
 
-## <a name="view-telemetry-data"></a>テレメトリ データを表示する
+前のセクションで示したように Application Insights 統合を設定したら、**[監視]** タブにテレメトリ データを表示できます。
 
-ポータルで関数アプリから接続された Application Insights インスタンスに移動するには、関数アプリの **[概要]** ページで **[Application Insights]** リンクを選びます。
+1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択し、**[監視]** タブを選択します。
+
+   ![[監視] タブを選択する](media/functions-monitoring/monitor-tab.png)
+
+2. 関数呼び出しの一覧が表示されるまで、**[更新]** を一定間隔で選択します。
+
+   テレメトリ クライアントではサーバーに送信するデータをバッチ処理するため、一覧が表示されるには最大で 5 分かかる場合があります  (この遅延は、[Live Metrics Stream](../application-insights/app-insights-live-stream.md) には適用されません。 このサービスは、ページの読み込み時に Functions ホストに接続するため、ログがページに直接ストリーム配信されます)。
+
+   ![呼び出しリスト](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+2. 特定の関数呼び出しのログを表示するには、その呼び出しの **[日付]** 列のリンクを選択します。
+
+   ![呼び出しの詳細のリンク](media/functions-monitoring/invocation-details-link-ai.png)
+
+   その呼び出しのログ出力は、新しいページに表示されます。
+
+   ![呼び出しの詳細](media/functions-monitoring/invocation-details-ai.png)
+
+両方のページ (呼び出しの一覧と詳細) が、データを取得する Application Insights Analytics クエリにリンクしています。
+
+![Application Insights で実行する](media/functions-monitoring/run-in-ai.png)
+
+![Application Insights Analytics 呼び出しの一覧](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+これらのクエリで表示される呼び出しの一覧は、過去 30 日間、最大 20 行 (`where timestamp > ago(30d) | take 20`) に制限されています。また、呼び出しの詳細の一覧には、過去 30 日間のデータが、無制限で表示されます。
+
+詳細については、後述の「[テレメトリをクエリする](#query-telemetry-data)」を参照してください。
+
+## <a name="view-telemetry-in-app-insights"></a>App Insights でテレメトリを表示する
+
+Azure Portal 上で関数アプリから Application Insights を開くには、関数アプリの **[概要]** ページの **[構成済みの機能]** セクションで **[Application Insights]** リンクを選択します。
+
+![[概要] ページの [Application Insights] リンク](media/functions-monitoring/ai-link.png)
+
 
 Application Insights の使用方法については、「[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights をすでに使い慣れている場合は、[テレメトリ データの構成とカスタマイズに関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
 
@@ -256,7 +301,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ## <a name="configure-sampling"></a>サンプリングを構成する
 
-Application Insights には、負荷がピークのときにテレメトリ データが生成されすぎないようにする[サンプリング](../application-insights/app-insights-sampling.md)機能が備わっています。 Application Insights では、テレメトリ項目の数が特定の割合を超えると、受信した項目の一部がランダムに無視され始めます。 *host.json* でサンプリングを構成できます。  次に例を示します。
+Application Insights には、負荷がピークのときにテレメトリ データが生成されすぎないようにする[サンプリング](../application-insights/app-insights-sampling.md)機能が備わっています。 Application Insights では、テレメトリ項目の数が特定の割合を超えると、受信した項目の一部がランダムに無視され始めます。 1 秒あたりの項目の最大数に対する既定の設定は 5 です。 *host.json* でサンプリングを構成できます。  次に例を示します。
 
 ```json
 {
@@ -489,13 +534,19 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ## <a name="monitoring-without-application-insights"></a>Application Insights を使用しない監視
 
-関数の監視には Application Insights の使用をお勧めします。Application Insights ではより多くのデータと優れたデータ分析方法が提供されるためです。 ただし、ログやテレメトリ データは、Azure Portal の Function App のページで確認することもできます。
+関数の監視には Application Insights の使用をお勧めします。Application Insights ではより多くのデータと優れたデータ分析方法が提供されるためです。 ただし、必要に応じて、Azure Storage を使用する組み込みログ システムを使用し続けることもできます。
 
 ### <a name="logging-to-storage"></a>ストレージへのログ記録
 
-組み込みログは、`AzureWebJobsDashboard` アプリ設定の接続文字列で指定されたストレージ アカウントを使用します。 そのアプリ設定が構成済みの場合は、Azure Portal でログ データを確認できます。 ストレージ リソースで [ファイル] に移動し、関数のファイル サービスを選んでから、`LogFiles > Application > Functions > Function > your_function` に移動してログ ファイルを表示します。 Function App ページで、関数を選択し、次に**[モニター]** タブを選択すると、関数実行のリストが表示されます。 関数実行を選択して、時間、入力データ、エラー、および関連するログ ファイルを確認します。
+組み込みログは、`AzureWebJobsDashboard` アプリ設定の接続文字列で指定されたストレージ アカウントを使用します。 関数アプリ ページで、関数を選択し、**[監視]** タブを選択して、クラシック ビューで表示し続けるように選択します。
 
-Application Insights を使用し、[組み込みログを無効化](#disable-built-in-logging)すると、**[モニター]** タブに Application Insights が表示されます。
+![クラシック ビューに切り替える](media/functions-monitoring/switch-to-classic-view.png)
+
+ 関数の実行の一覧が表示されます。 関数実行を選択して、時間、入力データ、エラー、および関連するログ ファイルを確認します。
+
+前に Application Insights を有効にしていたが、組み込みログに戻る場合は、Application Insights を手動で無効にして、**[監視]** タブを選択します。Application Insights 統合を無効にするには、APPINSIGHTS_INSTRUMENTATIONKEY アプリ設定を削除します。
+
+**[監視]** タブに Application Insights データが表示されていても、[組み込みログを無効](#disable-built-in-logging)にしていない場合は、ファイル システムにログ データを表示できます。 ストレージ リソースで [ファイル] に移動し、関数のファイル サービスを選んでから、`LogFiles > Application > Functions > Function > your_function` に移動してログ ファイルを表示します。
 
 ### <a name="real-time-monitoring"></a>リアルタイム監視
 

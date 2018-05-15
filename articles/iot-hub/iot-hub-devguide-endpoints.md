@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 17479fce776b0786e2fa32054eec8b0456871aae
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d9378a084d8ff421539a445986a5a18d073f3ce6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -88,7 +88,7 @@ IoT Hub は、Azure Storage コンテナーに [Apache Avro](http://avro.apache.
 * バッチが特定のサイズに達したとき。
 * または一定の時間が経過したとき。
 
-書き込むデータがない場合、IoT Hub は空の BLOB を書き込みます。
+書き込むデータがない場合、IoT ハブは空の BLOB に書き込みます。
 
 IoT Hub の既定のファイル名前付け規則は次のとおりです。
 

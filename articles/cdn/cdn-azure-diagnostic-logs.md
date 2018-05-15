@@ -3,8 +3,8 @@ title: Azure 診断ログ | Microsoft Docs
 description: 顧客は、Azure CDN のログ分析を有効にすることができます。
 services: cdn
 documentationcenter: ''
-author: ''
-manager: ''
+author: dksimpson
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: v-deasim
-ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: rli
+ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -28,7 +28,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
  - Azure Event Hubs
  - [Log Analytics ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-この機能は、Verizon (Standard/Premium) および Akamai (Standard) の CDN プロファイルに属しているすべての CDN エンドポイントで使用できます。 
+この機能は、すべての価格レベルの CDN エンドポイントで使用できます。 
 
 Azure 診断ログにより、基本的な使用メトリックを CDN エンドポイントからさまざまなソースにエクスポートして、それらをカスタマイズした方法で使用できるようになります。 たとえば、次の種類のデータのエクスポートを実行できます。
 
@@ -156,10 +156,10 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 **フィールドの説明:**
 
-|value|説明|
+|値|[説明]|
 |-------|---------|
 |サブスクリプション ID    |GUID 形式の Azure サブスクリプションの ID。|
-|リソース |グループ名。CDN のリソースが属するリソース グループの名前|
+|リソース グループ名 |CDN のリソースが属するリソース グループの名前。|
 |プロファイル名 |CDN プロファイルの名前|
 |エンドポイント名 |CDN エンドポイントの名前|
 |年|  年の 4 桁表記 (例: 2017)|
@@ -276,47 +276,49 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
     
 ## <a name="log-data-delays"></a>ログ データの遅延
 
-Verizon ログ データの遅延 | Akamai ログ データの遅延
---- | ---
-Verizon のログ データには 1 時間の遅延があり、エンドポイントへの伝達が完了してから表示が開始されるまでに最大で 2 時間かかります。 | Akamai のログ データには 24 時間の遅延があります。24 時間より前に作成されている場合には、表示が開始されるまでに最大で 2 時間かかります。 ログが最近作成された場合は、表示が開始されるまでに最大で 25 時間かかることがあります。
+次の表は、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard/Premium from Verizon** のログ データの遅延を示しています。
+
+Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai ログ データの遅延
+--- | --- | ---
+1 時間の遅延。 | 1 時間の遅延があり、エンドポイントへの伝達が完了してから表示が開始されるまでに最大で 2 時間かかります。 | 24 時間の遅延があります。24 時間より前に作成されている場合には、表示が開始されるまでに最大で 2 時間かかります。 ログが最近作成された場合は、表示が開始されるまでに最大で 25 時間かかることがあります。
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>CDN コア分析での診断ログの種類
 
 現在のところ、CDN の POP/エッジから見た HTTP 応答の統計とエグレスの統計を示すメトリックを含むコア分析ログのみ提供されています。
 
 ### <a name="core-analytics-metrics-details"></a>コア分析メトリックの詳細
-コア分析ログで使用可能なメトリックの一覧を次の表に示します。 プロバイダーによっては使用できないメトリックがありますが、違いはほとんどありません。 以下の表は、そのメトリックがプロバイダーで使用できるかどうかも示しています。 メトリックを使用できるのは、トラフィックが存在する CDN エンドポイントに対してのみであることに注意してください。
+次の表は、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、および **Azure CDN Standard/Premium from Verizon** のコア分析のログで使用できるメトリックの一覧を示しています。 プロバイダーによっては使用できないメトリックがありますが、違いはほとんどありません。 この表には、指定したメトリックがプロバイダーで使用できるかどうかも示しています。 メトリックを使用できるのは、トラフィックが存在する CDN エンドポイントに対してのみであることに注意してください。
 
 
-|メトリック                     | [説明]   | Verizon  | Akamai 
-|---------------------------|---------------|---|---|
-| RequestCountTotal         |この期間中にヒットした要求の合計数| [はい]  |[はい]   |
-| RequestCountHttpStatus2xx |2xx の HTTP コード (200、202 など) になった要求の合計数              | [はい]  |[はい]   |
-| RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数              | [はい]  |[はい]   |
-| RequestCountHttpStatus4xx |4xx の HTTP コード (400、404 など) になった要求の合計数               | [はい]   |[はい]   |
-| RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数              | [はい]  |[はい]   |
-| RequestCountHttpStatusOthers |  その他のすべての HTTP コード (2xx-5xx 以外) の数 | [はい]  |[はい]   |
-| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数              |いいえ    |[はい]   |
-| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数              |いいえ    |[はい]   |
-| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数              |いいえ    |[はい]   |
-| RequestCountHttpStatus304 |  HTTP コード応答 304 になった要求の合計数             |いいえ    |[はい]   |
-| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数              |いいえ    |[はい]   |
-| RequestCountCacheHit |キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。               | [はい]  |いいえ    |
-| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 これは、クライアントに最も近い POP でアセットが見つからなかったため、配信元から取得されたことを意味します。              |[はい]   | いいえ   |
-| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。              |[はい]   | いいえ   |
-| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します                |[はい]   |いいえ    |
-| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。              |[はい]   | いいえ   |
-| EgressTotal | 送信データ転送 (GB)              |[はい]   |[はい]   |
-| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)            |[はい]   |いいえ    |
-| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)              |[はい]   |いいえ    |
-| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)               |[はい]   | いいえ   |
-| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)               |[はい]   |  いいえ  |
-| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)                |[はい]   |いいえ    |
-| EgressCacheHit |  CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送  |[はい]   |  いいえ  |
-| EgressCacheMiss | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送              |[はい]   |  いいえ  |
-| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。                |[はい]   |いいえ    |
-| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。                   |[はい]   | いいえ   |
-| EgressCacheOthers |  その他のキャッシュ シナリオの送信データ転送。             |[はい]   | いいえ   |
+|メトリック                     | [説明] | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|----------|---------|--------|
+| RequestCountTotal         | この期間中にヒットした要求の合計数。 | [はい] | はい |[はい] |
+| RequestCountHttpStatus2xx | 2xx の HTTP コード (200、202 など) になった要求の合計数。 | [はい] | はい |[はい] |
+| RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数。 | [はい] | はい |[はい] |
+| RequestCountHttpStatus4xx | 4xx の HTTP コード (400、404 など) になった要求の合計数。 | [はい] | はい |[はい] |
+| RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数。 | [はい] | はい |[はい] |
+| RequestCountHttpStatusOthers | その他のすべての HTTP コード (2xx-5xx 以外) の数。 | [はい] | はい |[はい] |
+| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数。 | [はい] | いいえ   |[はい] |
+| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数。 | [はい] | いいえ   |[はい] |
+| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数。 | [はい] | いいえ   |[はい] |
+| RequestCountHttpStatus304 | HTTP コード応答 304 になった要求の合計数。 | [はい] | いいえ   |[はい] |
+| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数。 | [はい] | いいえ   |[はい] |
+| RequestCountCacheHit | キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。 | [はい] | [はい] | いいえ   |
+| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 これは、クライアントに最も近い POP でアセットが見つからなかったため、配信元から取得されたことを意味します。 | [はい] | [はい] | いいえ  |
+| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。 | [はい] | [はい] | いいえ  |
+| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します。 | [はい] | [はい] | いいえ  |
+| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。 | いいえ  | [はい] | いいえ   |
+| EgressTotal | 送信データ転送 (GB) | [はい] |はい |[はい] |
+| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)。 | [はい] | [はい] | いいえ   |
+| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
+| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
+| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ  |
+| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)。 | [はい] | [はい] | いいえ   |
+| EgressCacheHit | CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送。 | [はい] | [はい] | いいえ  |
+| EgressCacheMiss. | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送。 | [はい] | [はい] | いいえ  |
+| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。 | [はい] | [はい] | いいえ  |
+| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。 | [はい] | [はい] | いいえ  |
+| EgressCacheOthers | その他のキャッシュ シナリオの送信データ転送。 | いいえ  | [はい] | いいえ  |
 
 * 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
 
@@ -368,7 +370,7 @@ Verizon のログ データには 1 時間の遅延があり、エンドポイ�
 }
 ```
 
-ここで 'time' とは、統計情報を報告する時間の境界の開始時刻を表します。 メトリックが CDN プロバイダーによってサポートされていない場合、double または整数の値の代わりに null 値が設定されます。 この null 値は、メトリックがないことを示し、0 の値とは異なります。 エンドポイントに構成されたドメインごとにこれらのメトリックのセットが 1 つあります。
+ここで *time* とは、統計情報を報告する時間の境界の開始時刻を表します。 メトリックが CDN プロバイダーによってサポートされていない場合、double または整数の値の代わりに null 値が設定されます。 この null 値は、メトリックがないことを示し、0 の値とは異なります。 エンドポイントに構成されたドメインごとにこれらのメトリックのセットが 1 つあります。
 
 以下にプロパティの例を示します。
 

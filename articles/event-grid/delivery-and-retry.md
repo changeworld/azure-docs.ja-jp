@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db16a4ba2177e92fa4500af0969c44471004ba73
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行 
 
@@ -35,9 +35,9 @@ Event Grid は、HTTP 応答コードを使用してイベントの受信を確�
 
 ### <a name="failure-codes"></a>エラー コード
 
-次の HTTP 応答コードは、イベントの配信が失敗したことを示します。 Event Grid は、イベントの送信を再試行します。 
+次の HTTP 応答コードは、イベントの配信が失敗したことを示します。 
 
-- 400 無効な要求です
+- 400 Bad Request
 - 401 権限がありません
 - 404 見つかりません
 - 408 要求がタイムアウトしました
@@ -46,9 +46,9 @@ Event Grid は、HTTP 応答コードを使用してイベントの受信を確�
 - 503 サービス利用不可
 - 504 ゲートウェイ タイムアウト
 
-その他の応答コードや応答がないことはエラーを示します。 Event Grid は配信を再試行します。 
+Event Grid は、このエンドポイントを使用できないことを示すエラーを受信すると、イベントの送信をもう一度試みます。 
 
-## <a name="retry-intervals"></a>再試行間隔
+## <a name="retry-intervals-and-duration"></a>再試行間隔と期間
 
 Event Grid は、イベント配信に対して指数バックオフ再試行ポリシーを使用します。 Webhook が応答しない、またはエラー コードが返らない場合、Event Grid は、次のスケジュールで配信を再試行します。
 
@@ -62,9 +62,7 @@ Event Grid は、イベント配信に対して指数バックオフ再試行ポ
 
 Event Grid は、すべての再試行間隔に小さなランダム化を追加します。 1 時間より後は、イベント配信が 1 時間に 1 回再試行されます。
 
-## <a name="retry-duration"></a>再試行期間
-
-Azure Event Grid では、24 時間内に配信されないすべてのイベントは有効期限切れになります。
+Event Grid では、既定で 24 時間内に配信されないすべてのイベントが有効期限切れになります。
 
 ## <a name="next-steps"></a>次の手順
 

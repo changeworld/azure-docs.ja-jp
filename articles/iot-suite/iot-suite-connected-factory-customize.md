@@ -1,13 +1,13 @@
 ---
-title: "コネクテッド ファクトリ ソリューションをカスタマイズする - Azure | Microsoft Docs"
-description: "コネクテッド ファクトリ事前構成済みソリューションの動作をカスタマイズする方法の説明です。"
-services: 
+title: 接続済みファクトリ ソリューションをカスタマイズする - Azure | Microsoft Docs
+description: 接続済みファクトリ ソリューション アクセラレータの動作をカスタマイズする方法の説明。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: c#
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 48c8036d0bc9534ce94529b96d32b004769246c1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5d074a5cf0dd5191b5d94531068341ad1b953391
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>接続済みファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
-コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) に関するページをご覧ください。
+接続済みファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 
 ソリューションの集計データの例には、ダッシュボードで確認できるファクトリ レベル、ライン レベル、およびステーション レベルの総合設備効率 (OEE) と主要業績評価指標 (KPI) が含まれます。 次のスクリーンショットは、**ミュンヘン** ファクトリの**生産ライン 1** にある**アセンブリ** ステーションの OEE 値と KPI 値を示しています。
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="data-sources"></a>データ ソース
 
-コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを表示します。 既定のインストールには、ファクトリ シミュレーションを実行する複数の OPC UA サーバーが含まれています。 ソリューションに[ゲートウェイ経由で接続][lnk-connect-cf]する独自の OPC UA サーバーを追加できます。
+接続済みファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを表示します。 既定のインストールには、ファクトリ シミュレーションを実行する複数の OPC UA サーバーが含まれています。 ソリューションに[ゲートウェイ経由で接続][lnk-connect-cf]する独自の OPC UA サーバーを追加できます。
 
 ダッシュボードでは、接続された OPC UA サーバーからソリューションに送信されるデータ項目を参照できます。
 
@@ -61,33 +61,33 @@ ms.lasthandoff: 12/14/2017
 
     ![公開されている項目][img-published]
 
-1. ソリューションの "*管理者*" は、データ項目を公開して、コネクテッド ファクトリ ソリューションで使用できるようにすることを選択できます。 また、データ項目の値を変更したり、OPC UA サーバーでメソッドを呼び出したりすることもできます。
+1. ソリューションの "*管理者*" は、データ項目を公開して、接続済みファクトリ ソリューションで使用できるようにすることを選択できます。 また、データ項目の値を変更したり、OPC UA サーバーでメソッドを呼び出したりすることもできます。
 
 ## <a name="map-the-data"></a>データのマップ
 
-コネクテッド ファクトリ ソリューションでは、OPC UA サーバーの公開データ項目をソリューションのさまざまなビューにマップしたり、ビューで集計したりできます。 コネクテッド ファクトリ ソリューションは、ソリューションのプロビジョニング時に Azure アカウントにデプロイされます。 Visual Studio コネクテッド ファクトリ ソリューションの JSON ファイルには、このマッピング情報が格納されます。 この JSON 構成ファイルは、Visual Studio コネクテッド ファクトリ ソリューションで表示および変更できます。 ソリューションは、変更後に再デプロイできます。
+接続済みファクトリ ソリューションでは、OPC UA サーバーの公開データ項目をソリューションのさまざまなビューにマップしたり、ビューで集計したりできます。 接続済みファクトリ ソリューションは、ソリューションのプロビジョニング時に Azure アカウントにデプロイされます。 Visual Studio 接続済みファクトリ ソリューションの JSON ファイルには、このマッピング情報が格納されます。 この JSON 構成ファイルは、Visual Studio 接続済みファクトリ ソリューションで表示および変更できます。 ソリューションは、変更後に再デプロイできます。
 
 構成ファイルを使用すると、次の操作を行うことができます。
 
 - シミュレートされた既存のファクトリ、生産ライン、ステーションを編集する。
 - ソリューションに接続する実際の OPC UA サーバーからデータをマップする。
 
-特定の要件を満たすためにデータをマッピングしたり集計したりする方法については、「[How to configure the Connected factory preconfigured solution (コネクテッド ファクトリ事前構成済みソリューションの構成方法)](iot-suite-connected-factory-configure.md)」をご覧ください。
+特定の要件を満たすためにデータをマッピングしたり集計したりする方法については、[接続済みファクトリ それを アクセラレータの構成方法](iot-suite-connected-factory-configure.md)に関するページをご覧ください。
 
 ## <a name="deploy-the-changes"></a>変更のデプロイ
 
-**ContosoTopologyDescription.json** ファイルに対する変更が完了したら、コネクテッド ファクトリ ソリューションを Azure アカウントに再デプロイする必要があります。
+**ContosoTopologyDescription.json** ファイルに対する変更が完了したら、接続済みファクトリ ソリューションを Azure アカウントに再デプロイする必要があります。
 
 **azure-iot-connected-factory** リポジトリには、ソリューションの再構築とデプロイに使用できる **build.ps1** PowerShell スクリプトが含まれています。
 
 ## <a name="next-steps"></a>次の手順
 
-コネクテッド ファクトリ事前構成済みソリューションの詳細については、次の記事を参照してください。
+接続済みファクトリ ソリューション アクセラレータの詳細については、次の記事を参照してください。
 
-* [コネクテッド ファクトリ事前構成済みソリューションのチュートリアル][lnk-rm-walkthrough]
-* [コネクティッド ファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
+* [接続済みファクトリ ソリューション アクセラレータのチュートリアル][lnk-rm-walkthrough]
+* [接続済みファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
-* [コネクテッド ファクトリに関する FAQ](iot-suite-faq-cf.md)
+* [接続済みファクトリに関する FAQ](iot-suite-faq-cf.md)
 * [FAQ][lnk-faq]
 
 

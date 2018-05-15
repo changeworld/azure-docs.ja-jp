@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7361a71d9e178f47761c42cebe706246eb9d5e64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスへの HTTPS エンドポイントの追加
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric 上で実行されている ASP.NET Core サービスで HTTPS を有効にする方法を学習します。 完了すると、ポート 443 でリッスンする、HTTPS が有効な ASP.NET Core Web フロントエンドを備えた投票アプリケーションを作成できます。 [.NET Service Fabric アプリケーションの構築](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページの投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)できます。
@@ -274,7 +274,7 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>セットアップ スクリプトをローカル管理者として実行する
 既定では、サービス セットアップ エントリ ポイント実行可能ファイルは、Service Fabric と同じ資格情報で実行されます (通常は NetworkService アカウント)。 *SetCertAccess.ps1* を実行するには、管理者特権が必要です。 アプリケーション マニフェストでは、ローカル管理者アカウントで、スタートアップ スクリプトを実行するセキュリティのアクセス許可を変更できます。  
 
-ソリューション エクスプローラーで、*Voting/ApplicationPackageRoot/ManifestManifest.xml* を開きます。 最初に、**Principals** セクションを作成し、新しいユーザー (たとえば、"SetupAdminUser") を追加します。 SetupAdminUser ユーザー アカウントを Administrators システム グループに追加します。
+ソリューション エクスプローラーで *Voting/ApplicationPackageRoot/ApplicationManifest.xml* を開きます。 最初に、**Principals** セクションを作成し、新しいユーザー (たとえば、"SetupAdminUser") を追加します。 SetupAdminUser ユーザー アカウントを Administrators システム グループに追加します。
 次に、VotingWebPkg の **ServiceManifestImport** セクションで、**RunAsPolicy** を構成して、SetupAdminUser プリンシパルをセットアップ エントリ ポイントに適用します。 このポリシーでは、Setup.bat ファイルは、(管理者特権を持つ) SetupAdminUser として実行することを Service Fabric に通知します。 
 
 ```xml

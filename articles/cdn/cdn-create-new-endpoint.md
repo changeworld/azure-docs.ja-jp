@@ -1,5 +1,5 @@
 ---
-title: Azure CDN プロファイルとエンドポイントの作成 | Microsoft Docs
+title: クイック スタート - Azure CDN プロファイルとエンドポイントの作成 | Microsoft Docs
 description: このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure CDN を有効にする方法を紹介しています。
 services: cdn
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 6237b47be878217115849b87ebcd3d980665643a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2f2d34db2bb18b93ee4d8b78a135caecde5a293b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート: Azure CDN プロファイルとエンドポイントの作成
 このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure Content Delivery Network (CDN) を有効にします。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツの配信を開始することができます。
@@ -55,7 +55,7 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
     | Setting | 値 |
     | ------- | ----- |
     | **名前** | エンドポイントのホスト名として「*my-endpoint-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 この名前は、ドメイン _&lt;エンドポイント名&gt;_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。|
-    | **配信元の種類** | **[ストレージ]**を選択します。 | 
+    | **配信元の種類** | **[ストレージ]** を選択します。 | 
     | **配信元のホスト名** | ホスト名として「*mystorageacct123.blob.core.windows.net*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください |
     | **配信元のパス** | 空白のままにします。 |
     | **配信元のホスト ヘッダー** | 生成された既定値をそのまま使用します。 |  
@@ -70,7 +70,9 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
    ![CDN エンドポイント](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    登録内容が反映されるまでに時間がかかるため、エンドポイントはすぐには使用できません。 
-
+   - **Azure CDN Standard from Microsoft** プロファイルの場合、通常、反映は 10 分以内で完了します。 
+   - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
+   - **Azure CDN Standard from Verizon** および **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 前の手順では、リソース グループ内に CDN プロファイルとエンドポイントを作成しました。 [次の手順](#next-steps)に進んでエンドポイントにカスタム ドメインを追加する方法について学習するには、これらのリソースを保存してください。 ただし、将来これらのリソースを使用する予定がない場合は、次の手順に従ってリソース グループを削除してリソースを削除することで、追加の料金が発生するのを避けることができます。
@@ -85,6 +87,6 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
 カスタム ドメインを CDN エンドポイントに追加する方法については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [カスタム ドメインの追加](cdn-map-content-to-custom-domain.md)
+> [チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
 
 

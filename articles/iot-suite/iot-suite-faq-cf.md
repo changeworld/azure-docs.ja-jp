@@ -1,13 +1,13 @@
 ---
-title: "コネクテッド ファクトリ ソリューションの FAQ - Azure | Microsoft Docs"
-description: "IoT Suite コネクテッド ファクトリに関してよく寄せられる質問"
-services: 
+title: 接続済みファクトリ ソリューションの FAQ - Azure | Microsoft Docs
+description: 接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 12ebd8b8dfa90ab736190e842b35744dbf1c5b96
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Azure IoT Suite コネクテッド ファクトリ事前構成済みソリューションに関してよく寄せられる質問
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
-IoT Suite の一般的な [FAQ](iot-suite-faq.md) もご覧ください。
+IoT ソリューション アクセラレータの一般的な [FAQ](iot-suite-faq.md) もご覧ください。
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>事前構成済みソリューションのソース コードはどこで入手できますか
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>ソリューション アクセラレータのソース コードはどこで入手できますか
 
 ソース コードは、次の GitHub リポジトリに格納されています。
 
-* [コネクテッド ファクトリの事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)
+* [接続済みファクトリ ソリューション アクセラレータ](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>OPC UA とは
 
@@ -40,7 +40,7 @@ OPC Unified Architecture (UA) は、プラットフォームに依存しない�
 * テクノロジ
 * 処理
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Microsoft が接続済みファクトリの事前に構成されたソリューションとして OPC UA を選んだ理由
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Microsoft が接続済みファクトリ ソリューション アクセラレータに OPC UA を選んだ理由
 
 Microsoft が OPC UA を選んだのは、それがオープンであり、特定の企業が占有する技術ではなく、プラットフォームから独立しており、業界で認められた実績のある標準であるためです。 OPC UA は、製造プロセスと機器の広範なセットの間の相互運用性を保証する Industrie 4.0 (RAMI4.0) 参照アーキテクチャ ソリューションの要件になっています。 Microsoft には、お客様から Industrie 4.0 ソリューション構築の要望が寄せられています。 OPC UA をサポートすることで、お客様が目標を達成するときの障害が低くなり、ビジネス価値がお客様に直接提供されます。
 
@@ -100,7 +100,7 @@ www.azureiotsuite.com からソリューションをデプロイした場合は�
 
 次のように Azure Portal を使用して、接続文字列を検索することもできます。 デプロイ環境のリソース グループに含まれる IoT Hub リソースから、接続文字列の設定を見つけます。
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>コネクテッド ファクトリのシミュレーションは、どの IoT Hub デバイスを使用しますか。
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>接続済みファクトリのシミュレーションは、どの IoT ハブ デバイスを使用しますか
 
 シミュレーション自体が次のデバイスを登録します。
 
@@ -144,15 +144,15 @@ www.azureiotsuite.com からソリューションをデプロイした場合は�
 
 IoT Hub に送信されるデータが表示されない場合は、シミュレーションに問題があります。 分析の最初の手順として、シミュレーション コンポーネントのログ ファイルを分析する必要があります。 「[シミュレーション コンポーネントからログ データを取得するにはどうすればいいですか](#how-can-i-get-log-data-from-the-simulation-components)」をご覧ください。 次にシミュレーションの停止と開始を試行して、送信データが存在しない状態から変わらない場合は、シミュレーションをすべて更新します。 「[VM のシミュレーションを更新するにはどうすればいいですか](#how-do-i-update-the-simulation-in-the-vm)」をご覧ください。
 
-### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするにはどうすればいいですか
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>接続済みファクトリ ソリューションでインタラクティブ マップを有効にするにはどうすればいいですか
 
-コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。
+接続済みファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。
 
-[www.azureiotsuite.com](http://www.azureiotsuite.com) から展開すると、展開プロセスはサブスクリプションに有効な Bing Maps API for Enterprise プランがあることを検証し、コネクテッド ファクトリにインタラクティブ マップを自動的に展開します。 このようにならない場合でも、次のようにして展開でインタラクティブ マップを有効にすることができます。
+[www.azureiotsuite.com](http://www.azureiotsuite.com) から展開すると、展開プロセスはサブスクリプションに有効な Bing Maps API for Enterprise プランがあることを検証し、接続済みファクトリにインタラクティブ マップを自動的に展開します。 このようにならない場合でも、次のようにして展開でインタラクティブ マップを有効にすることができます。
 
-コネクテッド ファクトリの GitHub リポジトリの `build.ps1` スクリプトを使ってデプロイを行い、Bing Maps API for Enterprise プランがある場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` をプランのクエリ キーに設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
+接続済みファクトリの GitHub リポジトリの `build.ps1` スクリプトを使ってデプロイを行い、Bing Maps API for Enterprise プランがある場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` をプランのクエリ キーに設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
 
-Bing Maps API for Enterprise プランがない場合は、[www.azureiotsuite.com](http://www.azureiotsuite.com) から、または `build.ps1` スクリプトを使って、コネクテッド ファクトリ ソリューションを展開します。 その後、「[Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか](#how-do-i-create-a-bing-maps-api-for-enterprise-account)」で説明したように、Bing Maps API for Enterprise プランをサブスクリプションに追加します。 「[Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)」の説明に従ってこのアカウントのクエリ キーを検索し、このキーを保存します。 Azure Portal に移動し、コネクテッド ファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリの設定]** セクションを探します。 **[MapApiQueryKey]** に取得したクエリ キーを設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
+Bing Maps API for Enterprise プランがない場合は、[www.azureiotsuite.com](http://www.azureiotsuite.com) から、または `build.ps1` スクリプトを使って、接続済みファクトリ ソリューションを展開します。 その後、「[Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか](#how-do-i-create-a-bing-maps-api-for-enterprise-account)」で説明したように、Bing Maps API for Enterprise プランをサブスクリプションに追加します。 「[Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)」の説明に従ってこのアカウントのクエリ キーを検索し、このキーを保存します。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリの設定]** セクションを探します。 **[MapApiQueryKey]** に取得したクエリ キーを設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか
 
@@ -162,7 +162,7 @@ Bing Maps API for Enterprise プランがない場合は、[www.azureiotsuite.co
 
 ### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか
 
-Bing Maps API for Enterprise プランを作成したら、Azure Portal でコネクテッド ファクトリ ソリューションのリソース グループに Bing Maps for Enterprise リソースを追加します。
+Bing Maps API for Enterprise プランを作成したら、Azure Portal 上で接続済みファクトリ ソリューションのリソース グループに Bing Maps for Enterprise リソースを追加します。
 
 1. Azure Portal で、Bing Maps API for Enterprise プランが含まれるリソース グループに移動します。
 
@@ -182,13 +182,13 @@ Bing Maps API for Enterprise プランを作成したら、Azure Portal でコ�
 
 ダッシュボードのホーム ページに表示される静的イメージを変更するには、イメージ `WebApp\Content\img\world.jpg` を置き換えます。 その後で、Web アプリをリビルドして再デプロイします。
 
-### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>OPC UA 非対応デバイスをコネクテッド ファクトリと共に使用するにはどうすればいいですか
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>OPC UA 非対応デバイスを接続済みファクトリと共に使用するにはどうすればいいですか
 
-OPC UA 非対応デバイスからコネクテッド ファクトリに利用統計情報を送信するには、次の手順に従います。
+OPC UA 非対応デバイスから接続済みファクトリに利用統計情報を送信するには、次の手順に従います。
 
-1. ファイル `ContosoTopologyDescription.json` で[コネクテッド ファクトリ トポロジ](iot-suite-connected-factory-configure.md)に新しいステーションを構成します。
+1. `ContosoTopologyDescription.json` ファイルで[接続済みファクトリ トポロジに新しいステーションを構成](iot-suite-connected-factory-configure.md)します。
 
-1. コネクテッド ファクトリが対応している次のような JSON 形式で利用統計情報を取り込みます。
+1. 接続済みファクトリと互換性のある次のような JSON 形式で利用統計情報を取り込みます。
 
     ```json
     [
@@ -206,12 +206,12 @@ OPC UA 非対応デバイスからコネクテッド ファクトリに利用統
 
 1. `<timestamp>` の書式は `2017-12-08T19:24:51.886753Z` です。
 
-1. コネクテッド ファクトリ App Service を再起動します。
+1. 接続済みファクトリ App Service を再起動します。
 
 ### <a name="next-steps"></a>次の手順
 
-IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [予測メンテナンスの構成済みソリューションの概要](iot-suite-predictive-overview.md)
-* [コネクテッド ファクトリ事前構成済みソリューションの概要](iot-suite-connected-factory-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](iot-suite-predictive-overview.md)
+* [接続済みファクトリ ソリューション アクセラレータの概要](iot-suite-connected-factory-overview.md)
 * [徹底的な IoT セキュリティ](securing-iot-ground-up.md)

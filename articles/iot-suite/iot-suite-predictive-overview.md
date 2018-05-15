@@ -1,12 +1,12 @@
 ---
-title: "予測的なメンテナンス ソリューションの概要 - Azure | Microsoft Docs"
-description: "Azure IoT Suite の予測的なメンテナンスの構成済みソリューションの説明。"
-services: 
+title: 予測メンテナンスのソリューション アクセラレータの概要 - Azure | Microsoft Docs
+description: Azure 予測メンテナンスのソリューション アクセラレータの説明。
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b370b3d7-2ce5-4906-9818-3aeedd471ee3
 ms.service: iot-suite
 ms.devlang: na
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 36cae39b7eaa0aff5f47f6a2511c7a0593f70b26
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 1a2750232f9396d8bc27e4fbb72eacf8790a1c52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="predictive-maintenance-preconfigured-solution-overview"></a>予測的なメンテナンスの構成済みソリューションの概要
+# <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
 
-"*予測的なメンテナンス*" の[構成済みのソリューション][lnk_preconfigured_solutions]は、[Microsoft Azure IoT Suite][lnk_iot_suite] の構成済みソリューションの 1 つです。 このソリューションは、リアルタイムでのデバイスのテレメトリの収集と [Azure Machine Learning][lnk-machine-learning] を使用して作成された予測モデルを統合します。
+"*予測メンテナンス*" の[ソリューション アクセラレータ][lnk_preconfigured_solutions]は、[Microsoft Azure IoT ソリューション アクセラレータ][lnk_iot_suite] ソリューション アクセラレータの 1 つです。 このソリューションは、リアルタイムでのデバイスのテレメトリの収集と [Azure Machine Learning][lnk-machine-learning] を使用して作成された予測モデルを統合します。
 
-Azure IoT Suite を使用することで、資産にすばやく簡単に接続して資産を監視したり、ダッシュボードと視覚エフェクトを使用してリアルタイムでテレメトリを分析したりできるようになります。 予測的なメンテナンス ソリューションは、ダッシュボードと視覚エフェクトを使用して、新しいインテリジェンスを提供します。それを利用して、効率化を推進し、収益ストリームを強化することができます。
+Azure IoT ソリューション アクセラレータを使用することで、資産にすばやく簡単に接続して資産を監視したり、ダッシュボードと視覚エフェクトを使用してリアルタイムでテレメトリを分析したりできるようになります。 予測メンテナンスのソリューション アクセラレータは、ダッシュボードと視覚エフェクトを使用して、新しいインテリジェンスを提供します。それを利用して、効率化を推進し、収益ストリームを強化することができます。
 
 ## <a name="the-scenario"></a>シナリオ
 
 Fabrikam は、競争力のある価格での優れたカスタマー エクスペリエンスの提供に取り組んでいる地域航空会社です。 フライトの遅延の原因の 1 つは、メンテナンスです。また、航空機のエンジンのメンテナンスは特に困難です。 Fabrikam では、飛行中のエンジンの故障は、いかなる代価を払っても避ける必要があります。そのため、定期的にエンジンを検査し、計画に従ってメンテナンスのスケジュールを設定しています。 ただし、航空機のエンジンがすべて同じように損耗するわけではありません。 必要のないメンテナンスも一部、エンジンに対し実行されています。 さらに重要なことは、問題が発生すると、メンテナンスが実行されるまでは、航空機は飛行禁止になるということです。 適切な技術者がいなかったり予備の部品がなかったりする場所に航空機がある場合、このような問題では特に費用がかかることがあります。
 
-Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を監視するセンサーを搭載しています。 Fabrikam は、予測的なメンテナンス ソリューションを使用して、フライト中に収集されるセンサー データを集めます。 長年にわたり、エンジンの運用データと障害データを蓄積した後、Fabrikam のデータ サイエンティストは、航空機エンジンの残存耐用年数 (RUL) を予測する方法をモデル化しました。 このモデルでは、4 つのエンジン センサーからのデータと最終的な障害につながるエンジンの損耗との相関関係を使用しています。 Fabrikam は、安全性を確保するための通常の検査を継続しつつ、このモデルにより、毎回の飛行後にそれぞれのエンジンの RUL を計算できるようになりました。 このモデルは、フライト中にエンジンから収集されたテレメトリを使用します。 そのため、Fabrikam は、将来における障害の時期を予測し、事前にメンテナンスおよび修復のための計画を立てることができるようになりました。
+Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を監視するセンサーを搭載しています。 Fabrikam は、予測メンテナンスのソリューション アクセラレータを使用して、フライト中に収集されるセンサー データを集めます。 長年にわたり、エンジンの運用データと障害データを蓄積した後、Fabrikam のデータ サイエンティストは、航空機エンジンの残存耐用年数 (RUL) を予測する方法をモデル化しました。 このモデルでは、4 つのエンジン センサーからのデータと最終的な障害につながるエンジンの損耗との相関関係を使用しています。 Fabrikam は、安全性を確保するための通常の検査を継続しつつ、このモデルにより、毎回の飛行後にそれぞれのエンジンの RUL を計算できるようになりました。 このモデルは、フライト中にエンジンから収集されたテレメトリを使用します。 そのため、Fabrikam は、将来における障害の時期を予測し、事前にメンテナンスおよび修復のための計画を立てることができるようになりました。
 
 > [!NOTE]
 > ソリューションのモデルでは、実際のエンジンの損耗データが使用されます。
@@ -48,19 +48,19 @@ Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を�
 
 このようなアクティビティにより、Fabrikam は航空機の飛行禁止時間を最小限に抑え、乗客と乗組員の安全を確保しながら、運用コストを削減することができます。
 
-予測的なメンテナンスの潜在力を実現するためにお客様が必要とする機能を [Azure IoT Suite][lnk_iot_suite] がどのように提供しているかについては、この[インフォグラフィック][lnk_infographic]を参照してください。
+予測メンテナンスの潜在力を実現するためにお客様が必要とする機能を [Azure IoT ソリューション アクセラレータ][lnk_iot_suite]がどのように提供しているかについては、この[インフォグラフィック][lnk_infographic]を参照してください。
 
-## <a name="how-the-predictive-maintenance-solution-is-built"></a>予測的なメンテナンス ソリューションの構築方法
+## <a name="how-the-predictive-maintenance-solution-accelerator-is-built"></a>予測メンテナンスのソリューション アクセラレータの構築方法
 
-IoT Suite サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示すために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。 Microsoft は、公開されているデータ<sup>\[1\]</sup> を基にして航空機エンジンの[回帰モデル][lnk_regression_model]と、モデルの使用方法に関するステップ バイ ステップ ガイダンスを作成しました。
+IoT ソリューション アクセラレータ サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示すために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。 Microsoft は、公開されているデータ<sup>\[1\]</sup> を基にして航空機エンジンの[回帰モデル][lnk_regression_model]と、モデルの使用方法に関するステップ バイ ステップ ガイダンスを作成しました。
 
-Azure IoT の予測的メンテナンス ソリューションは、このテンプレートから作成された回帰モデルを使用します。 モデルは、Azure サブスクリプションにデプロイされ、自動的に生成される API を通じて公開されます。 ソリューションには、4 つのエンジン (合計 100) および 4 つのセンサー データ ストリーム (合計 21) を表すテスト データのサブセットが含まれます。 このデータは、トレーニング済みのモデルから正確な結果を得るには十分な量です。
+Azure IoT 予測メンテナンスのソリューション アクセラレータは、このテンプレートから作成された回帰モデルを使用します。 モデルは、Azure サブスクリプションにデプロイされ、自動的に生成される API を通じて公開されます。 ソリューションには、4 つのエンジン (合計 100) および 4 つのセンサー データ ストリーム (合計 21) を表すテスト データのサブセットが含まれます。 このデータは、トレーニング済みのモデルから正確な結果を得るには十分な量です。
 
-*\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
+*\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/))、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
-## <a name="get-started-with-predictive-maintenance"></a>予測的なメンテナンスを使ってみる
+## <a name="get-started-with-predictive-maintenance"></a>予測メンテナンスを使ってみる
 
-このチュートリアルでは、予測的なメンテナンス ソリューションをプロビジョニングする方法を示します。 また、予測的なメンテナンス ソリューションの基本機能についても詳しく説明します。 こうした機能の多くには、事前構成済みソリューションと一緒にデプロイされるソリューション ダッシュボードを通じてアクセスできます。
+このチュートリアルでは、予測メンテナンス ソリューション アクセラレータをプロビジョニングする方法を示します。 また、予測なメンテナンス ソリューション アクセラレータの基本機能についても詳しく説明します。 こうした機能の多くには、ソリューション アクセラレータと一緒にデプロイされるソリューション ダッシュボードを通じてアクセスできます。
 
 このチュートリアルを完了するには、アクティブな Azure サブスクリプションが必要になります。
 
@@ -68,8 +68,8 @@ Azure IoT の予測的メンテナンス ソリューションは、このテン
 > アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][lnk_free_trial]をご覧ください。
 
 1. Azure アカウントの資格情報を使用して [azureiotsuite.com][lnk-azureiotsuite] にログオンし、**[+]** をクリックしてソリューションを作成します。
-1. **[Predictive maintenance (予測的なメンテナンス)]** タイルを**選択**します。
-1. 予測的なメンテナンスの事前構成済みソリューションの**ソリューション名**を入力します。
+1. **[予測メンテナンス]** タイルを**選択**します。
+1. 予測メンテナンスのソリューション アクセラレータの**ソリューション名**を入力します。
 1. ソリューションのプロビジョニングに使用する**リージョン**と**サブスクリプション**を選択します。
 1. **[ソリューションの作成]** をクリックして、プロビジョニング プロセスを開始します。 通常、このプロセスの実行までに数分かかります。
 
@@ -77,11 +77,11 @@ Azure IoT の予測的メンテナンス ソリューションは、このテン
 
 1. **プロビジョニング** の状態を表示する、目的のソリューションのタイルをクリックします。
 1. Azure サービスが Azure サブスクリプションにデプロイされたら、 **プロビジョニングの状態** を確認します。
-1. プロビジョニングが完了すると、状態が **[準備完了]**に変わります。
+1. プロビジョニングが完了すると、状態が **[準備完了]** に変わります。
 1. タイルをクリックし、右側のウィンドウでソリューションの詳細を確認します。 このウィンドウでは、ソリューション ダッシュボードを起動し、Machine Learning ワークスペースにアクセスすることができます。
 
 > [!NOTE]
-> 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と [FAQ][lnk-faq] を参照してください。 それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
+> ソリューション アクセラレータのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と [FAQ][lnk-faq]を参照してください。 それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
 
 ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)のページで機能に関する提案をお寄せください。
 
@@ -102,7 +102,7 @@ Azure Portal で、指定したソリューション名の付いたリソース 
 
 ![][img-resource-group]
 
-構成済みのソリューションをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールを受信します。 この Machine Learning ワークスペースには、プロビジョニングしたソリューションの [azureiotsuite.com][lnk-azureiotsuite] ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
+ソリューション アクセラレータをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールが届きます。 この Machine Learning ワークスペースには、プロビジョニングしたソリューションの [azureiotsuite.com][lnk-azureiotsuite] ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
 
 ![][img-machine-learning]
 
@@ -124,15 +124,15 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 
 シミュレーションは任意のポイントで停止できますが、**[Start Simulation (シミュレーションの開始)]** をクリックすると、データセットの先頭からシミュレーションが再実行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT が予測的なメンテナンスのシナリオを実現する方法の詳細については、「[Capture value from the Internet of Things (モノのインターネットから価値を得る)][lnk_capture_value]」を参照してください。
 
-予測的なメンテナンス ソリューションの[チュートリアル][lnk-predictive-walkthrough]をご利用ください。
+予測メンテナンスのソリューション アクセラレータの[チュートリアル][lnk-predictive-walkthrough]をご利用ください。
 
-IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [IoT スイートに関してよく寄せられる質問][lnk-faq]
+* [IoT ソリューション アクセラレータに関してよく寄せられる質問][lnk-faq]
 * [IoT の徹底的なセキュリティ][lnk-security-groundup]
 
 [img-resource-group]: media/iot-suite-predictive-overview/resource-group.png
@@ -143,7 +143,7 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
-[lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk_preconfigured_solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk_iot_suite]: iot-suite-options.md
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

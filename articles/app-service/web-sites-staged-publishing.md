@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -30,11 +30,7 @@ ms.lasthandoff: 04/16/2018
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。 このワークフロー全体は、スワップ前の検証が必要ない場合、 [自動スワップ](#Auto-Swap) を構成することで自動化できます。
 * スワップ後も、以前のステージング アプリ スロットに元の運用アプリが残っているため、 運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。
 
-サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 使用しているアプリのレベルでサポートされるスロット数を確認するには、「[App Service の制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits)」をご覧ください。
-
-* アプリに複数のスロットがある場合は、レベルを変更することはできません。
-* スケーリングは運用サイト スロットでのみ有効になります。
-* リンク済みリソースの管理は運用サイト スロットでのみサポートされています。 [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) を使用している場合のみ、非運用スロットを異なる App Service プラン レベルに変更することで、この運用スロットに対する影響を回避することができます。 なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じレベルにする必要があります。
+サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 使用しているアプリのレベルでサポートされるスロット数を確認するには、「[App Service の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)」をご覧ください。 アプリを別のレベルにスケーリングするには、アプリが既に使用しているスロット数がターゲット レベルによってサポートされている必要があります。 たとえば、**Standard** レベルでは 5 つのデプロイ スロットのみがサポートされるので、アプリに 5 つを超えるスロットがある場合は **Standard** レベルにスケール ダウンできません。
 
 <a name="Add"></a>
 
@@ -61,14 +57,14 @@ ms.lasthandoff: 04/16/2018
 4. アプリのリソース ブレードで **[デプロイメント スロット]** をクリックしてからデプロイ スロットをクリックして、他のアプリと同様のメトリックと構成のセットが含まれるスロットのリソース ブレードを開きます。 デプロイ スロットが表示されていることを通知するためにスロットの名前がブレードの上部に表示されます。
    
     ![デプロイ スロットのタイトル][StagingTitle]
-5. スロットのブレードで、アプリの URL をクリックします。 デプロイメント スロットが独自のホスト名を持つライブ アプリであることに注意してください。 デプロイ スロットへのパブリック アクセスを制限する方法については、「 [App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)」を参照してください。
+5. スロットのブレードで、アプリの URL をクリックします。 デプロイ スロットが独自のホスト名を持つライブ アプリであることに注意してください。 デプロイ スロットへのパブリック アクセスを制限する方法については、「 [App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)」を参照してください。
 
 デプロイ スロットを作成した直後は、コンテンツはありません。 スロットには、異なるリポジトリ分岐、またはまったく異なるリポジトリからデプロイできます。 またスロットの構成を変更することもできます。 コンテンツの更新には、デプロイ スロットに関連付けられた発行プロファイルまたはデプロイ資格情報を使用してください。  たとえば、 [Git を使用してこのスロットに発行する](app-service-deploy-local-git.md)ことができます。
 
 <a name="AboutConfiguration"></a>
 
-## <a name="configuration-for-deployment-slots"></a>デプロイ スロットの構成
-別のデプロイ スロットから構成を複製する場合、複製された構成を編集することができます。 なお、スワップ先のコンテンツに反映される構成要素 (非スロット固有) もあれば、スワップ後にも同じスロットに維持される構成要素 (スロット固有) もあります。 次の一覧では、スロットのスワップ時に変更される構成を示します。
+## <a name="which-settings-are-swapped"></a>スワップされる設定
+別のデプロイ スロットから構成を複製する場合、複製された構成を編集することができます。 なお、スワップ先のコンテンツに反映される構成要素 (非スロット固有) もあれば、スワップ後にも同じスロットに維持される構成要素 (スロット固有) もあります。 次の一覧では、スロットのスワップ時に変更される設定を示します。
 
 **スワップされる設定**:
 
@@ -146,7 +142,7 @@ ms.lasthandoff: 04/16/2018
 > [!NOTE]
 > 自動スワップは、Linux 上の Web アプリではサポートされていません。
 
-スロットの自動スワップは簡単に構成できます。 次の手順に従ってください。
+スロットの自動スワップは簡単に構成できます。 次の手順に従います。
 
 1. **[デプロイ スロット]** で、非運用スロットを選び、そのスロットのリソース ブレードで **[アプリケーション設定]** を選択します。  
    
@@ -165,7 +161,7 @@ ms.lasthandoff: 04/16/2018
 
 <a name="Rollback"></a>
 
-## <a name="to-rollback-a-production-app-after-swap"></a>スワップ後に運用環境のアプリをロールバックするには
+## <a name="roll-back-a-production-app-after-swap"></a>スワップ後に運用環境のアプリをロールバックする
 スロットのスワップ後に運用サイトでエラーが見つかった場合は、同じ 2 つのスロットをすぐにスワップして、スロットをスワップ前の状態にロールバックすることができます。
 
 <a name="Warm-up"></a>
@@ -178,9 +174,19 @@ ms.lasthandoff: 04/16/2018
         <add initializationPage="/Home/About" hostname="[app hostname]" />
     </applicationInitialization>
 
+## <a name="monitor-swap-progress"></a>スワップの進行状況の監視
+
+スワップされるアプリのウォームアップ時間が長い場合など、スワップ操作の完了に時間がかかることがあります。 スワップ操作の詳細は、[Azure Portal](https://portal.azure.com) の [[アクティビティ ログ]](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) で確認できます。
+
+ポータルのアプリ ページの左側のナビゲーションで、**[アクティビティ ログ]** を選択します。
+
+スワップ操作がログ クエリに `Slotsswap` として表示されます。 これを展開し、副操作やエラーの 1 つを選択して詳細を表示できます。
+
+![スロット スワップのアクティビティ ログ](media/web-sites-staged-publishing/activity-log.png)
+
 <a name="Delete"></a>
 
-## <a name="to-delete-a-deployment-slot"></a>デプロイ スロットを削除するには
+## <a name="delete-a-deployment-slot"></a>デプロイ スロットの削除
 デプロイ スロットのブレードで、デプロイ スロットのブレードを開き、**[概要]** (既定のページ) をクリックし、コマンド バーで **[削除]** をクリックします。  
 
 ![デプロイ スロットの削除][DeleteStagingSiteButton]
@@ -189,41 +195,47 @@ ms.lasthandoff: 04/16/2018
 
 <a name="PowerShell"></a>
 
-## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>デプロイ スロット用の Azure PowerShell コマンドレット
+## <a name="automate-with-azure-powershell"></a>Azure PowerShell での自動化
+
 Azure PowerShell は、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです (Azure App Service のデプロイ スロットを管理するためのサポートなど)。
 
 * Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「 [Microsoft Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。  
 
 - - -
 ### <a name="create-a-web-app"></a>Web アプリを作成する
-```
+```PowerShell
 New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-a-deployment-slot"></a>デプロイ スロットの作成
-```
+```PowerShell
 New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-a-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>プレビューでのスワップ (複数フェーズのスワップ) を開始し、送信先スロットの構成をソース スロットに適用する
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-a-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>保留中のスワップ (レビューでのスワップ) を取り消し、ソースのスロットの構成を復元する
-```
+```PowerShell
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>デプロイ スロットをスワップする
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+```
+
+### <a name="monitor-swap-events-in-the-activity-log"></a>アクティビティ ログでのスワップ イベントの監視
+```PowerShell
+Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
@@ -237,52 +249,13 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 
 <a name="CLI"></a>
 
-## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>デプロイ スロット用の Azure コマンド ライン インターフェイス (Azure CLI) コマンド
-Azure CLI には、App Service デプロイ スロットの管理のサポートなど、Azure を使うためのクロスプラットフォーム コマンドが用意されています。
+## <a name="automate-with-azure-cli"></a>Azure CLI での自動化
 
-* Azure サブスクリプションへのAzure CLI の接続方法に関する情報など、Azure CLI のインストールと構成手順については、「 [Azure CLI のインストールと構成](../cli-install-nodejs.md)」をご覧ください。
-* Azure CLI で Azure App Service に使用できるコマンドの一覧を表示するには、 `azure site -h`を呼び出してください。
-
-> [!NOTE] 
-> デプロイ スロット用の [Azure CLI 2.0](https://github.com/Azure/azure-cli) コマンドについては、「[az webapp deployment slot](/cli/azure/webapp/deployment/slot)」をご覧ください。
-
-- - -
-### <a name="azure-site-list"></a>azure site list
-現在のサブスクリプションのアプリに関する情報については、次の例に示すように、**azure site list** を呼び出します。
-
-`azure site list webappslotstest`
-
-- - -
-### <a name="azure-site-create"></a>azure site create
-デプロイ スロットを作成するには、次の例に示すように、**azure site create** を呼び出し、既存のアプリの名前と作成するスロットの名前を指定します。
-
-`azure site create webappslotstest --slot staging`
-
-新しいスロットのソース管理を有効にするには、次の例に示すように、 **--git** オプションを使用します。
-
-`azure site create --git webappslotstest --slot staging`
-
-- - -
-### <a name="azure-site-swap"></a>azure site swap
-更新したデプロイ スロットを運用アプリにするには、次の例に示すように、 **azure site swap** コマンドを使用してスワップ操作を実行します。 運用アプリではダウン タイムは発生せず、コールド スタートが行われることもありません。
-
-`azure site swap webappslotstest`
-
-- - -
-### <a name="azure-site-delete"></a>azure site delete
-不要になったデプロイ スロットを削除するには、次の例に示すように、 **azure site delete** コマンドを使用します。
-
-`azure site delete webappslotstest --slot staging`
-
-- - -
-> [!NOTE]
-> Web アプリの動作を確認してください。 今すぐ [App Service を試用](https://azure.microsoft.com/try/app-service/)して、有効期間が短いスターター アプリを作成してみてください。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
-> 
-> 
+デプロイ スロット用の [Azure CLI](https://github.com/Azure/azure-cli) コマンドについては、「[az webapp deployment slot](/cli/azure/webapp/deployment/slot)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-[Azure App Service Web アプリ – 非運用デプロイメント スロットへの Web アクセスのブロック](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-[App Service on Linux の概要](../app-service/containers/app-service-linux-intro.md)
+[Azure App Service Web App - 運用環境以外のデプロイ スロットへの Web アクセスの禁止](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[App Service on Linux の概要](../app-service/containers/app-service-linux-intro.md)  
 [Microsoft Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

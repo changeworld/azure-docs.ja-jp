@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -24,11 +24,15 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 * 東南アジア
 * 東アジア
+* オーストラリア東部
+* オーストラリア南東部
 * 米国中央部
 *   米国東部
 *   米国東部 2
 * 西ヨーロッパ
 * 北ヨーロッパ
+* 東日本
+* 西日本
 *   米国中西部
 *   米国西部
 *   米国西部 2
@@ -45,10 +49,13 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * カスタム トピック
 * Event Hubs
 * IoT Hub
+* Media Services
 * リソース グループ (管理操作)
 * Service Bus
 * ストレージ BLOB
 * ストレージ汎用 v2 (GPv2)
+
+各イベント ソースの使用方法を示す記事へのリンクについては、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](event-sources.md)」を参照してください。
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 
@@ -57,11 +64,15 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * Azure Automation
 * Azure Functions
 * Event Hubs
+* ハイブリッド接続と
 * Logic Apps
 * Microsoft Flow
+* Queue Storage
 * WebHook
 
 ハンドラーとして Azure Functions を使用する場合は、汎用 HTTP トリガーではなく Event Grid トリガーを使用します。 Event Grid では、Event Grid 関数トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](security-authentication.md#webhook-event-delivery)を実装する必要があります。
+
+各イベント ハンドラーの使用方法を示す記事へのリンクについては、「[vent handlers in Azure Event Grid (Azure Event Grid 内のイベント ハンドラー)](event-handlers.md)」を参照してください。
 
 ## <a name="concepts"></a>概念
 

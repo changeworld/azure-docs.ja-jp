@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 20e5a5f4fb381dedc42d698464819a6098c3579b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Function および Cognitive Services を使用してトランスレーターを作成する
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/03/2018
 
 有効な Azure サブスクリプション 持っていない場合は、次の 2 つの方法のいずれかを使用して登録できます。
 
-* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)をアクティブにする
+* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/free/)をアクティブにする
 * MSDN または Visual Studio サブスクライバーの場合、[Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を要求する
 
 ## <a name="step-1-open-the-project-folder"></a>手順 1. プロジェクト フォルダーを開く
@@ -46,17 +46,14 @@ ms.lasthandoff: 04/03/2018
 - VS Code の起動
 - DevKit をコンピューターに接続します。
 
-VS Code にって DevKit が自動的に検出され、概要ページが開きます。
-
-![[概要] ページ](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_start.png)
-
 ### <a name="b-open-the-arduino-examples-folder"></a>B. [Arduino Examples]\(Arduino の例\) フォルダーを開く
 
 左側の **[Arduino Examples]\(Arduino の例\) > [Examples for MXCHIP AZ3166] > [AzureIoT]** を展開し、**[DevKitTranslator]** を選択します。 DEVKITTRANSLATOR プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
 ![IoT DevKit のサンプル](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 
-ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+> [!NOTE]
+> コマンド パレットから例を開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="step-2-provision-azure-services"></a>手順 2. Azure サービスのプロビジョニング
 
@@ -143,4 +140,4 @@ Azure IoT Hub に登録されている既定のデバイス ID は **AZ3166** �
 他のチュートリアルに進んで、次の方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [リモート監視のために IoT DevKit AZ3166 を Azure IoT Suite に接続する](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [IoT DevKit AZ3166 を Azure IoT リモート監視ソリューション アクセラレータに接続する](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)

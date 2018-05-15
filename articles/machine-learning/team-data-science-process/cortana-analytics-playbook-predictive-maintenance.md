@@ -1,8 +1,8 @@
 ---
-title: "航空宇宙業界における Azure による予測メンテナンス - Cortana Intelligence Solution テンプレート | Microsoft Docs"
-description: "航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence による Solution Template。"
+title: 予測メンテナンス ソリューションのための Azure AI プレイブック | Microsoft Docs
+description: 複数の垂直的業界向けのメンテナンス ソリューションを実現するデータ サイエンスについて包括的に説明します。
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/01/2018
 ms.author: fboylu
-ms.openlocfilehash: da7826c49c3548600187956908f5369cc4891065
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad06617fb8c14928dca7d9ce18ad86190e8255fe
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template プレイブック
+# <a name="azure-ai-playbook-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI プレイブック 
 ## <a name="executive-summary"></a>概要
 予測的なメンテナンスとは、予測分析の最も需要のあるアプリケーションの 1 つで、コストの大幅な節約など、議論の余地のない利点をかなえます。 このプレイブックは、主要なユース ケースに重点を置いた、予測型メンテナンス ソリューションのリファレンスを提供することを目的としています。
 これにより、予測メンテナンスの最もよくあるビジネス シナリオ、こうしたソリューションを必要とするビジネス上の問題に対処する際の課題、これらのビジネス上の問題の解決に必要なデータ、このようなデータを使用してソリューションを構築するための予測モデリング手法、また、サンプルのソリューション アーキテクチャでのベスト プラクティスを理解することができます。

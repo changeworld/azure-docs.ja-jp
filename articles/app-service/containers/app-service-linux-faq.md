@@ -1,13 +1,13 @@
 ---
-title: "Azure App Service on Linux の FAQ | Microsoft Docs"
-description: "Azure App Service on Linux の FAQ"
-keywords: "Azure App Service, Web アプリ, FAQ, Linux, OSS"
+title: Azure App Service on Linux の FAQ | Microsoft Docs
+description: Azure App Service on Linux の FAQ
+keywords: Azure App Service, Web アプリ, FAQ, Linux, OSS
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -46,6 +46,10 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 **アプリ コンテナーの仮想マシン (VM) への接続に Secure Shell (SSH) を使用できますか。**
 
 はい、ソース管理 (SCM) サイトからご利用いただけます。
+
+> [!NOTE] 
+> SSH、SFTP、または Visual Studio Code (ライブ デバッグ Node.js アプリの場合) を使用して、ローカル開発マシンからアプリ コンテナーに直接接続することもできます。 詳細については、[Linux での App Service のリモート デバッグと SSH](https://aka.ms/linux-debug) に関するページをご覧ください。
+>
 
 **SDK または Azure Resource Manager テンプレートから Linux App Service プランを作成するにはどうすればよいですか。**
 
@@ -155,7 +159,7 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 [Web Apps フィードバック フォーラム](https://aka.ms/webapps-uservoice)でご自分のアイデアを送信できます。 アイデアのタイトルに "[Linux]" を追加してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure App Service on Linux とは](app-service-linux-intro.md)
 * [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

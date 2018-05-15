@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3391213600300067ad1685e4f8cccacbf52de86e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: .NET での Graph API を使用した開発
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
@@ -121,7 +121,7 @@ Azure Cosmos DB では、頂点、エッジ、プロパティの JSON スキー�
 `Microsoft.Azure.Graphs.Elements` 名前空間によって、適切に定義された .NET オブジェクトに GraphSON 応答を逆シリアル化するために、`Vertex`、`Edge`、`Property`、`VertexProperty` の各クラスが提供されます。
 
 ## <a name="run-gremlin-using-creategremlinquery"></a>CreateGremlinQuery を使用して Gremlin を実行する
-SQL と同じく Gremlin では、読み取り、書き込み、クエリの操作がサポートされます。 たとえば、次のスニペットは、頂点とエッジを作成し、`CreateGremlinQuery<T>` を使用してサンプル クエリを実行し、あらに `ExecuteNextAsync` と HasMoreResults を使用して結果を非同期で反復処理しています。
+SQL と同じく Gremlin では、読み取り、書き込み、クエリの操作がサポートされます。 たとえば、次のスニペットは、頂点とエッジを作成し、`CreateGremlinQuery<T>` を使用してサンプル クエリを実行し、さらに `ExecuteNextAsync` と `HasMoreResults` を使用して結果を非同期で反復処理しています。
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>

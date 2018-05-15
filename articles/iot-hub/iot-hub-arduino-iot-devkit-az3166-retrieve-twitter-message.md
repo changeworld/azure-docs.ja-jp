@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/03/2018
 
 有効な Azure サブスクリプション ない場合は、次のいずれかの方法を使用して登録できます。
 
-* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)をアクティブにする
+* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/free/)をアクティブにする
 * MSDN または Visual Studio サブスクライバーの場合、[Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を要求する
 
 ## <a name="open-the-project-folder"></a>プロジェクト フォルダーを開く
@@ -44,10 +44,6 @@ ms.lasthandoff: 04/03/2018
 - VS Code を起動します。
 - DevKit をコンピューターに接続します。
 
-VS Code によって自動的に DevKit が検出され、概要ページが表示されます。
-
-![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_start.png)
-
 > [!NOTE]
 > VS Code を起動するときに、Arduino IDE または関連するボード パッケージが見つからないというエラー メッセージが表示される場合があります。 このエラーが発生した場合は、VS Code を閉じて、Arduino IDE をもう一度起動します。 VS Code によって、今度は Arduino IDE のパスが正しく検索されます。
 
@@ -57,7 +53,8 @@ VS Code によって自動的に DevKit が検出され、概要ページが表�
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+> [!NOTE]
+> コマンド パレットから例を開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
@@ -68,7 +65,7 @@ VS Code ターミナルでは、対話型コマンド ラインを使用して�
 ![cloud-provision](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Azure にサインインしようとしているときに、読み込み状態で、ページがハングした場合は、この [FAQ step]({{"/docs/faq/#page-hangs-when-log-in-azure" | を参照してください。 
+> Azure にサインインしようとしているときに、読み込み状態でページがハングした場合は、こちらの [FAQ 手順](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) をご覧ください。
  
 ## <a name="modify-the-hashtag"></a># (ハッシュタグ) の変更
 
@@ -191,6 +188,6 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、DevKit デバイスを Azure IoT Suite に接続して、ツイートを取得する方法を説明しました。推奨する次の手順は、以下のとおりです。
+ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続して、ツイートを取得する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
-* [Azure IoT Suite の概要](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)

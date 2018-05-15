@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: c410db9a7255a039ab9b41ae39f2fe1018719f8f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c5a9a56d444da232717b023cb7057b96c291c265
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -358,7 +358,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="c-support"></a>C\# のサポート
 
-**RegistryManager** クラスでは、プログラムでデバイスを登録する方法が用意されています。 具体的には、**AddDeviceAsync** メソッドと **UpdateDeviceAsync** メソッドを使用することで、IoT Hub の ID レジストリにデバイスを登録して更新できます。 これら 2 つのメソッドは、入力として **Device** インスタンスを取ります。 **Device** クラスには **Authentication** プロパティが含まれています。これにより、プライマリとセカンダリの X.509 証明書拇印を指定することができます。 拇印は、X.509 証明書の SHA-1 ハッシュ (DER バイナリ エンコードを使用して格納) を表します。 プライマリ拇印、セカンダリ拇印、またはその両方を指定できます。 証明書のロールオーバー シナリオを処理するために、プライマリ拇印とセカンダリ拇印がサポートされています。
+**RegistryManager** クラスでは、プログラムでデバイスを登録する方法が用意されています。 具体的には、**AddDeviceAsync** メソッドと **UpdateDeviceAsync** メソッドを使用することで、IoT Hub の ID レジストリにデバイスを登録して更新できます。 これら 2 つのメソッドは、入力として **Device** インスタンスを取ります。 **Device** クラスには **Authentication** プロパティが含まれています。これにより、プライマリとセカンダリの X.509 証明書拇印を指定することができます。 拇印は、X.509 証明書の SHA-256 ハッシュ (DER バイナリ エンコードを使用して格納) を表します。 プライマリ拇印、セカンダリ拇印、またはその両方を指定できます。 証明書のロールオーバー シナリオを処理するために、プライマリ拇印とセカンダリ拇印がサポートされています。
 
 X.509 証明書拇印を使用してデバイスを登録するための C\# コード スニペットの例を次に示します。
 
@@ -393,27 +393,27 @@ var authMethod = new DeviceAuthenticationWithX509Certificate("<device id>", x509
 var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 ```
 
-## <a name="custom-device-authentication"></a>カスタム デバイスの認証
+## <a name="custom-device-and-module-authentication"></a>カスタム デバイスおよびモジュールの認証
 
-IoT Hub の [ID レジストリ][lnk-identity-registry]を使用して、デバイスごとのセキュリティ資格情報とアクセス制御を[トークン][lnk-sas-tokens]により構成できます。 IoT ソリューションにすでにカスタム ID レジストリや認証スキームがある場合、*トークン サービス*を作成してこのインフラストラクチャを IoT Hub と統合することを検討してください。 この方法により、ソリューションで他の IoT 機能を使用できます。
+IoT Hub の [ID レジストリ][lnk-identity-registry]を使用して、デバイス/モジュールごとのセキュリティ資格情報とアクセス制御を[トークン][lnk-sas-tokens]により構成できます。 IoT ソリューションにすでにカスタム ID レジストリや認証スキームがある場合、*トークン サービス*を作成してこのインフラストラクチャを IoT Hub と統合することを検討してください。 この方法により、ソリューションで他の IoT 機能を使用できます。
 
-トークン サービスはカスタム クラウド サービスの 1 つです。 このサービスは、**DeviceConnect** アクセス許可が指定された IoT Hub *共有アクセス ポリシー*を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。
+トークン サービスはカスタム クラウド サービスの 1 つです。 このサービスは、**DeviceConnect** または **ModuleConnect** アクセス許可が指定された IoT Hub *共有アクセス ポリシー*を使用して、*デバイスを対象とする*トークンまたは*モジュールを対象とする*トークンを作成します。 これらのトークンにより、デバイスとモジュールは IoT Hub に接続できるようになります。
 
 ![Steps of the token service pattern][img-tokenservice]
 
 トークン サービス パターンの主な手順を次に示します。
 
-1. IoT Hub 共有アクセス ポリシーを作成し、IoT Hub に対する **DeviceConnect** アクセス許可を指定します。 このポリシーは、[Azure Portal][lnk-management-portal] またはプログラムで作成できます。 トークン サービスは、このポリシーを使用して、作成されるトークンに署名します。
-1. IoT Hub にアクセスする必要があるデバイスは、トークン サービスに署名付きトークンを要求します。 デバイスは、カスタム ID レジストリ/認証スキームで認証し、トークン サービスがトークンの作成に使用するデバイス ID を特定できます。
-1. トークン サービスは、トークンを返します。 トークンは、`/devices/{deviceId}` を `resourceURI` として使用して作成され、`deviceId` は認証対象のデバイスになります。 トークン サービスは、共有アクセス ポリシーを使用してトークンを作成します。
-1. デバイスは、IoT Hub で直接トークンを使用します。
+1. IoT Hub 共有アクセス ポリシーを作成し、IoT Hub に対する **DeviceConnect** または **ModuleConnect** アクセス許可を指定します。 このポリシーは、[Azure Portal][lnk-management-portal] またはプログラムで作成できます。 トークン サービスは、このポリシーを使用して、作成されるトークンに署名します。
+1. IoT Hub にアクセスする必要があるデバイス/モジュールは、トークン サービスに署名付きトークンを要求します。 デバイスは、カスタム ID レジストリ/認証スキームで認証し、トークン サービスがトークンの作成に使用するデバイス/モジュール ID を特定できます。
+1. トークン サービスは、トークンを返します。 トークンは、`/devices/{deviceId}` または `/devices/{deviceId}/module/{moduleId}` を `resourceURI` として使用して作成され、`deviceId` は認証対象のデバイスになり、`moduleId` は認証対象のモジュールになります。 トークン サービスは、共有アクセス ポリシーを使用してトークンを作成します。
+1. デバイス/モジュールは、IoT Hub で直接トークンを使用します。
 
 > [!NOTE]
 > .NET クラス [SharedAccessSignatureBuilder][lnk-dotnet-sas] または Java クラス [IotHubServiceSasToken][lnk-java-sas] を使用して、トークン サービスでトークンを作成できます。
 
-トークン サービスは、必要に応じて、トークンの有効期限を設定できます。 トークンの期限が切れた時点で、IoT Hub はデバイスの接続を切断します。 その後、デバイスは新しいトークンをトークン サービスに要求する必要があります。 有効期限までの期間が短いと、デバイスとトークン サービスの両方で負荷が増加します。
+トークン サービスは、必要に応じて、トークンの有効期限を設定できます。 トークンの期限が切れた時点で、IoT Hub はデバイス/モジュールの接続を切断します。 その後、デバイス/モジュールは新しいトークンをトークン サービスに要求する必要があります。 有効期限までの期間が短いと、デバイス/モジュールとトークン サービスの両方で負荷が増加します。
 
-デバイスをハブに接続するには、デバイスが接続にデバイス キーではなくトークンを使用している場合でも、引き続き IoT Hub の ID レジストリにデバイスを追加する必要があります。 そのため、[ID レジストリ][lnk-identity-registry]でデバイス ID を有効または無効にすることで、引き続きデバイスごとのアクセス制御を行うことができます。 この方法は、有効期限までの期間が長い場合にトークンを使用するリスクを軽減します。
+デバイス/モジュールをハブに接続するには、デバイス/モジュールが接続にキーではなくトークンを使用している場合でも、引き続き IoT Hub の ID レジストリにデバイス/モジュールを追加する必要があります。 そのため、[ID レジストリ][lnk-identity-registry]でデバイス/モジュール ID を有効または無効にすることで、引き続きデバイスごと/モジュールごとのアクセス制御を行うことができます。 この方法は、有効期限までの期間が長い場合にトークンを使用するリスクを軽減します。
 
 ### <a name="comparison-with-a-custom-gateway"></a>カスタム ゲートウェイとの比較
 
@@ -431,7 +431,7 @@ IoT Hub でカスタム ID レジストリ/認証スキームを実装する場�
 | --- | --- |
 | **RegistryRead** |ID レジストリへの読み取りアクセスを許可します。 詳細については、「[Identity registry][lnk-identity-registry]」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **RegistryReadWrite** |ID レジストリへの読み取りと書き込みアクセスを許可します。 詳細については、「[Identity registry][lnk-identity-registry]」(ID レジストリ) を参照してください。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
-| **ServiceConnect** |クラウド サービス向けの通信エンドポイントと監視エンドポイントへのアクセスを許可します。 <br/>デバイスからクラウドへのメッセージの受信、クラウドからデバイスへのメッセージの送信、対応する配信確認メッセージの取得のアクセス許可を付与します。 <br/>ファイル アップロードの配信確認メッセージの取得のアクセス許可を付与します。 <br/>タグおよび必要なプロパティを更新するためのデバイス ツインへのアクセス、報告されるプロパティの取得、クエリの実行のアクセス許可を付与します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
+| **ServiceConnect** |クラウド サービス向けの通信エンドポイントと監視エンドポイントへのアクセスを許可します。 <br/>デバイスからクラウドへのメッセージの受信、クラウドからデバイスへのメッセージの送信、対応する配信確認メッセージの取得のアクセス許可を付与します。 <br/>ファイル アップロードの配信確認メッセージの取得のアクセス許可を付与します。 <br/>タグおよび必要なプロパティを更新するためのツインへのアクセス、報告されるプロパティの取得、クエリの実行のアクセス許可を付与します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **DeviceConnect** |デバイス向けのエンドポイントへのアクセスを許可します。 <br/>デバイスからクラウドへのメッセージの送信、クラウドからデバイスへのメッセージの受信のアクセス許可を付与します。 <br/>デバイスからのファイル アップロードの実行のアクセス許可を付与します。 <br/>デバイス ツインの必要なプロパティ通知の受信と、デバイス ツインの報告されるプロパティの更新のアクセス許可を付与します。 <br/>ファイル アップロードの実行のアクセス許可を付与します。 <br/>このアクセス許可はデバイスによって使用されます。 |
 
 ## <a name="additional-reference-material"></a>参考資料
@@ -482,7 +482,7 @@ IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 
 [lnk-java-sas]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token
 [lnk-tls-psk]: https://tools.ietf.org/html/rfc4279
 [lnk-protocols]: iot-hub-protocol-gateway.md
-[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: iot-hub-devguide-security.md#supported-x509-certificates
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md

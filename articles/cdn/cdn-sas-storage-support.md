@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: v-deasim
-ms.openlocfilehash: 8b609beb67cfb0873bf9926ca648f0ad5568ad2e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -49,15 +49,15 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
 
 ### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>オプション 1: Azure CDN から BLOB ストレージまで、SAS のパススルー機能を使用する
 
-このオプションは最も簡単で、CDN から配信元サーバーに渡される SAS トークン 1 つのみを使用します。 この機能は、**Verizon の Azure CDN** と **Akamai の Azure CDN** でサポートされています。 
+このオプションは最も簡単で、CDN から配信元サーバーに渡される SAS トークン 1 つのみを使用します。 これは、**Azure CDN Standard from Verizon** プロファイルと **Azure CDN Standard from Akamai** プロファイルでサポートされています。 
  
 1. エンドポイントを選択し、**[キャッシュ規則]** をクリックしてから、**[クエリ文字列のキャッシュ]** の一覧で **[一意の URL をすべてキャッシュ]** を選択します。
 
     ![CDN キャッシュ規則](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
-2. ストレージ アカウントに SAS を設定したら、 Azure CDN の URL が指定された SAS トークンを使用してファイルにアクセスします。 
+2. ストレージ アカウントに SAS を設定したら、CDN エンドポイントと配信元サーバーの URL と共に SAS トークンを使用してファイルにアクセスする必要があります。 
    
-   結果として生成される URL の形式は次のとおりです: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
+   結果として生成される CDN エンドポイント URL の形式は次のとおりです: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
    例:    
    ```
@@ -66,9 +66,9 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
    
 3. キャッシュ規則を使用するか、配信元サーバーに `Cache-Control` ヘッダーを追加して、キャッシュ期間を微調整します。 Azure CDN では SAS トークンはプレーンなクエリ文字列として処理されるため、ベスト プラクティスとして、SAS の有効期限か、それより前に期限が切れるようにキャッシュ期間を設定する必要があります。 そうしないと、SAS がアクティブになっている期間よりも長くファイルがキャッシュされた場合、SAS の有効期限が過ぎた後も Azure CDN 配信元サーバーからファイルにアクセスできます。 この状況が発生した場合、キャッシュされたファイルにアクセスできないようにするには、ファイルに対し消去操作を実行して、キャッシュから削除する必要があります。 Azure CDN のキャッシュ期間の設定の詳細については、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](cdn-caching-rules.md)」を参照してください。
 
-### <a name="option-2-hidden-cdn-security-token-using-a-rewrite-rule"></a>オプション 2: 書き換えルールを使用して CDN セキュリティ トークンを非表示にする
+### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>オプション 2: 書き換えルールを使用して CDN SAS トークンを非表示にする
  
-このオプションを使用すると、Azure CDN ユーザーは URL に SAS トークンを使用しなくても、配信元の BLOB ストレージをセキュリティ保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 このオプションは、**Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 
+このオプションは、**Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
  
 1. [ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールは、反映されるまで約 90 分かかります。
 
@@ -79,7 +79,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
    次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*storagedemo* という名前のエンドポイントを使用します。
    
    ソース:   
-   `(/test/*.)`
+   `(/test/.*)`
    
    変換先:   
    ```
@@ -88,22 +88,21 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
 
    ![CDN URL 書き換えルール](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
 
-2. 新しいルールが有効になると、`https://<endpoint hostname>.azureedge.net/<container>/<file>` のフォーマットを使用することで、URL に SAS トークンを使用することなく Azure CDN 上のファイルにアクセスできるようになります。
+2. 新しいルールがアクティブになった後は、URL で SAS トークンを使用しているかどうかに関係なく、CDN エンドポイント上の指定されたコンテナー内のファイルにだれでもアクセスできます。 形式は次のとおりです: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    例:    
    `https://demoendpoint.azureedge.net/container1/demo.jpg`
        
-   SAS トークンを使用しているかどうかに関係なく、CDN エンドポイント上のファイルにどのユーザーでもアクセスできることに注意してください。 
 
 3. キャッシュ規則を使用するか、配信元サーバーに `Cache-Control` ヘッダーを追加して、キャッシュ期間を微調整します。 Azure CDN では SAS トークンはプレーンなクエリ文字列として処理されるため、ベスト プラクティスとして、SAS の有効期限か、それより前に期限が切れるようにキャッシュ期間を設定する必要があります。 そうしないと、SAS がアクティブになっている期間よりも長くファイルがキャッシュされた場合、SAS の有効期限が過ぎた後も Azure CDN 配信元サーバーからファイルにアクセスできます。 この状況が発生した場合、キャッシュされたファイルにアクセスできないようにするには、ファイルに対し消去操作を実行して、キャッシュから削除する必要があります。 Azure CDN のキャッシュ期間の設定の詳細については、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](cdn-caching-rules.md)」を参照してください。
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>オプション 3: 書き換えルールと共に CDN セキュリティ トークン認証を使用する
 
-このオプションは、最も安全かつカスタマイズ可能です。 Azure CDN セキュリティ トークン認証を使用するには、**Azure CDN Premium from Verizon** プロファイルが必要です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 ただし、SAS が後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
+Azure CDN セキュリティ トークン認証を使用するには、**Azure CDN Premium from Verizon** プロファイルが必要です。 このオプションは、最も安全かつカスタマイズ可能です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 セキュリティ トークンを作成し、設定したら、すべての CDN エンドポイント URL で必要になります。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。 SAS トークンが後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
 
 1. [Azure CDN セキュリティ トークンを作成](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication)し、CDN エンドポイントのルール エンジンと、ユーザーがファイルにアクセスできる場所のパスを使用してアクティブにします。
 
-   セキュリティ トークン URL は、次のフォーマットになります。   
+   セキュリティ トークン エンドポイント URL は、次のような形式です。   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
    例:    
@@ -111,14 +110,14 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
    https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
-   セキュリティ トークン認証のためのパラメーター オプションは、SAS トークンのパラメーター オプションとは異なります。 セキュリティ トークンを作成する際に有効期限を使用する場合は、SAS トークンの有効期限と同じ値に設定します。 これにより、有効期限が予測可能になります。 
+   セキュリティ トークン認証のためのパラメーター オプションは、SAS トークンのパラメーター オプションとは異なります。 セキュリティ トークンを作成する際に有効期限を使用する場合は、SAS トークンの有効期限と同じ値に設定する必要があります。 これにより、有効期限が予測可能になります。 
  
 2. コンテナー内のすべての BLOB にアクセスできる SAS トークンを有効にするには、[ルール エンジン](cdn-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールは、反映されるまで約 90 分かかります。
 
    次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*storagedemo* という名前のエンドポイントを使用します。
    
    ソース:   
-   `(/test/*.)`
+   `(/test/.*)`
    
    変換先:   
    ```
@@ -127,7 +126,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&
 
    ![CDN URL 書き換えルール](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
 
-3. SAS を更新する場合は、新しい SAS トークンを使用するよう URL 書き換えルールを更新します。 
+3. SAS を更新する場合は、新しい SAS トークンを使用するよう URL 書き換えルールを更新してください。 
 
 ## <a name="sas-parameter-considerations"></a>SAS パラメーターに関する考慮事項
 
