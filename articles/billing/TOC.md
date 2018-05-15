@@ -26,8 +26,7 @@
 ### [使用制限の確認](billing-spending-limit.md)
 ### [課金アラートのセットアップ](billing-set-up-alerts.md)
 ### [過去の延滞残高を決済する](billing-azure-subscription-past-due-balance.md)
-### 
-  [従量課金制での予約インスタンスの使用について](billing-understand-reserved-instance-usage.md)
+### [従量課金制での予約インスタンスの使用について](billing-understand-reserved-instance-usage.md)
 ### [エンタープライズ向けの予約インスタンスの使用について](billing-understand-reserved-instance-usage-ea.md)
 
 ## [サブスクリプションの管理]
