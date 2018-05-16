@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワークのサービス エンドポイント | Microsoft Docs
+title: Azure 仮想ネットワーク サービス エンドポイント | Microsoft Docs
 description: サービス エンドポイントを使って仮想ネットワークから Azure リソースへの直接アクセスを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
@@ -21,9 +21,9 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
 ---
-# <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービスのエンドポイント
+# <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
-仮想ネットワーク (VNet) のサービス エンドポイントは、直接接続によって仮想ネットワークのプライベート アドレス空間を拡張し、VNet の ID を Azure サービスに提供します。 エンドポイントを使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 VNet から Azure サービスへのトラフィックは常に、Microsoft Azure のバックボーン ネットワーク上に残ります。
+仮想ネットワーク (VNet) サービス エンドポイントは、直接接続によって仮想ネットワークのプライベート アドレス空間を拡張し、VNet の ID を Azure サービスに提供します。 エンドポイントを使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 VNet から Azure サービスへのトラフィックは常に、Microsoft Azure のバックボーン ネットワーク上に残ります。
 
 この機能は、次の Azure サービスとリージョンで提供されています。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure サービスへのアクセスを仮想ネットワークに限定する
 
-- 仮想ネットワークのサービス エンドポイントは、ご利用の仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントが有効になったら、Azure サービス リソースに仮想ネットワーク ルールを追加することで、このリソースへのアクセスを仮想ネットワークに限定することができます。
+- 仮想ネットワーク サービス エンドポイントは、ご利用の仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントが有効になったら、Azure サービス リソースに仮想ネットワーク ルールを追加することで、このリソースへのアクセスを仮想ネットワークに限定することができます。
 - 現在、仮想ネットワークからの Azure サービス トラフィックは、パブリック IP アドレスを発信元 IP アドレスとして使用します。 サービス エンドポイントを使用すると、サービス トラフィックは、仮想ネットワークから Azure サービスにアクセスするときに、仮想ネットワークのプライベート アドレスを発信元 IP アドレスとして使用するよう切り替えます。 この切り替えにより、IP ファイアウォールで使用される予約済みのパブリック IP アドレスを使用することなく、サービスにアクセスすることができます。
 - __オンプレミスから Azure サービスへのアクセスの保護__:
 
@@ -120,7 +120,7 @@ Azure サービス リソース (Azure Storage アカウントなど) の場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [仮想ネットワークのサービス エンドポイントを構成する](tutorial-restrict-network-access-to-resources.md)方法を学習する
+- [仮想ネットワーク サービス エンドポイントを構成する](tutorial-restrict-network-access-to-resources.md)方法を学習する
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)について学習する
