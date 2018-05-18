@@ -97,13 +97,13 @@ Application Gateway でサポートされるパブリック IP アドレスは 1
 
 はい。Application Gateway は常に仮想ネットワーク サブネットにデプロイされます。 このサブネットには Application Gateway のみを含めることができます。
 
-**Q.Application Gateway サブネット内に何か他にデプロイできるものはありますか?** 
+**Q.Application Gateway はその仮想ネットワークの外部にあるインスタンスと通信できますか?**
 
 Application Gateway は IP 接続がある限り、仮想ネットワークの外部にあるインスタンスと通信できます。 内部 IP をバックエンド プールのメンバーとして使用する場合は、[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) が必要です。
 
 **Q.Application Gateway サブネット内に何か他にデプロイできるものはありますか?**
 
-いいえ。サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできません。
+いいえ。ただし、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
 
 **Q.ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますか?**
 
