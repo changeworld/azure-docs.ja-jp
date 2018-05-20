@@ -11,11 +11,11 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: a47dc3e4939dd27d7ac11be823a09b8a6cba1f60
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d429665de64dacc5818d1d26c2a9029531cd39b3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>HTTP() URL からジョブの入力を作成する
 
@@ -25,31 +25,7 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 
 次のコードは、HTTPS URL 入力を使用してジョブを作成する方法を示しています。
 
-```csharp
-private static Job SubmitJob(IAzureMediaServicesClient client, string transformName, string jobName)
-{
-    Asset outputAsset = client.Assets.CreateOrUpdate(Guid.NewGuid().ToString() + "-output", new Asset());
-
-    JobInputHttp jobInput = 
-        new JobInputHttp(files: new[] { "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4" });
-
-    JobOutput[] jobOutputs =
-    {
-        new JobOutputAsset(outputAsset.Name),
-    };
-
-    Job job = client.Jobs.CreateOrUpdate(
-        transformName,
-        jobName,
-        new Job
-        {
-            Input = jobInput,
-            Outputs = jobOutputs,
-        });
-
-    return job;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-quickstarts/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs#SubmitJob)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 33b958b97a5883d585bbfda167db35107c0c5997
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: db0117b0b4ddee002fc69d71e78eca2b9008e4f6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -58,7 +58,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。 詳細については、「[JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT 認証) を参照してください。
 
-Media Services は STS を提供しません。 カスタム STS を作成するか、Azure Access Control Service を使用してトークンを発行することができます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。 詳細については、「[Use Azure Access Control Service to issue tokens](http://mingfeiy.com/acs-with-key-services)」(Azure Access Control Service を使用してトークンを発行する) を参照してください。
+Media Services は STS を提供しません。 トークンを発行するカスタム STS を作成できます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
 トークン制限ポリシーを構成する際には、プライマリ検証キー、発行者、および対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれています。 発行者は、トークンを発行する STS です。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 

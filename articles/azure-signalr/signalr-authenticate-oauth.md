@@ -14,17 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e7107e5c75d79714ae8d2d78d35e2cd3742ac674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル: Azure SignalR Service の認証
 
+Microsoft Azure SignalR サービスは現在、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
+
 このチュートリアルは、クイック スタートで導入したチャット ルーム アプリケーションをベースにしています。 まだ「[Create a chat room with SignalR Service (SignalR Service を使用してチャット ルームを作成する)](signalr-quickstart-dotnet-core.md)」を完了していない場合は、先にこの演習を完了してください。 
 
-このチュートリアルでは、独自の認証を実装し、Azure SignalR Service と統合する方法を学習します。 
+このチュートリアルでは、独自の認証を実装し、Microsoft Azure SignalR サービスと統合する方法を学習します。 
 
 クイック スタートのチャット ルーム アプリケーションで最初に使用した認証は、現実のシナリオでは単純すぎます。 アプリケーションでは各クライアントが自分の ID を主張することができ、サーバーは単にそれを受け入れます。 このアプローチは、悪意のあるユーザーが機密データにアクセスするために他人を偽装する可能性がある現実のアプリケーションではあまり役に立ちません。 
 
@@ -32,7 +34,7 @@ ms.lasthandoff: 05/07/2018
 
 GitHub を通じて提供される OAuth 認証 API の詳細については、「[Basics of Authentication (認証の基礎)](https://developer.github.com/v3/guides/basics-of-authentication/)」を参照してください。
 
-このクイック スタートの手順の実行には、任意のコード エディターを使用することができます。 ただし、[Visual Studio Code](https://code.visualstudio.com/) は、Windows、macOS、および Linux プラットフォームで利用可能な優れた選択肢です。
+このクイック スタートの手順の実行には、任意のコード エディターを使用することができます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
 このチュートリアルのコードは、[AzureSignalR-samples の GitHub リポジトリ](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/GitHubChat)でダウンロードすることができます。
 
@@ -351,7 +353,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 
 
-## <a name="build-and-run-the-app-locally"></a>ローカルでアプリをビルドおよび実行する
+## <a name="build-and-run-the-app-locally"></a>アプリをビルドし、ローカルで実行する
 
 1. すべてのファイルの変更を保存します。 
 
@@ -603,9 +605,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure SignalR Service を使用してより良い認証方法を提供するために、OAuth による認証を追加しました。 Azure SignalR Server の使用についてさらに学習するには、Azure Functions との統合を実演する次のチュートリアルに進みます。
+このチュートリアルでは、Azure SignalR Service を使用してより良い認証方法を提供するために、OAuth による認証を追加しました。 Azure SignalR Server の使用方法の詳細については、SignalR Service の Azure CLI サンプルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Functions を Azure SignalR Service と統合する](./signalr-integrate-functions.md)
-
-
+> [Azure SignalR の CLI サンプル](./signalr-cli-samples.md)

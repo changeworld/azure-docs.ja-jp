@@ -1,53 +1,54 @@
 ---
-title: "Azure Notification Hubs の使用 (Xamarin.iOS アプリケーション) | Microsoft Docs"
-description: "このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.iOS アプリケーションにプッシュ通知を送信する方法について学習します。"
+title: Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する | Microsoft Docs
+description: このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.iOS アプリケーションにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
-keywords: "ios push notifications、プッシュ メッセージ、プッシュ通知、プッシュ メッセージ"
+keywords: ios push notifications、プッシュ メッセージ、プッシュ通知、プッシュ メッセージ
 documentationcenter: xamarin
-author: jwhiteDev
+author: dimazaid
 manager: kpiteira
-editor: 
+editor: spelluru
 ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 38ad8a15fcc4077926e735e01f877a4ee66718ef
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: babd6bff3cec38318cacc0d55394a7563f8e69a4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-azure-notification-hubs-for-xamarinios-apps"></a>Azure Notification Hubs の使用 (Xamarin iOS アプリケーション)
+# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概要
-> [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)を参照してください。
-> 
-> 
+このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。 [Apple Push Notification Service (APNS)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリを作成します。 
 
-このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。 [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。 
+完了すると、通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストできます。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
-完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+このチュートリアルでは、次のタスクを実行するコードを作成および更新します。 
 
-このチュートリアルでは、Notification Hubs を使用した簡単なプッシュ メッセージ ブロードキャスト シナリオのデモンストレーションを行います。
+> [!div class="checklist"]
+> * 証明書の署名要求ファイルを生成する
+> * アプリケーションをプッシュ通知に登録する
+> * アプリケーションのプロビジョニング プロファイルを作成する
+> * iOS プッシュ通知向けに通知ハブを構成する
+> * テスト プッシュ通知を送信する
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルには、次のものが必要です。
 
-* 最新バージョンの [XCode][Install Xcode]
-* iOS 10 以降のバージョンに対応するデバイス
-* [Apple Developer Program](https://developer.apple.com/programs/) メンバーシップ
-* [Visual Studio for Mac]
+- **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- 最新バージョンの [XCode][Install Xcode]
+- iOS 10 以降のバージョンに対応するデバイス
+- [Apple Developer Program](https://developer.apple.com/programs/) メンバーシップ
+- [Visual Studio for Mac]
   
   > [!NOTE]
   > iOS Push Notifications の構成要件に従って、サンプル アプリケーションのデプロイとテストは、シミュレーターではなく、物理的な iOS デバイス (iPhone または iPad) で行う必要があります。
-  > 
-  > 
 
 このチュートリアルを完了することは、Xamarin.iOS アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
 
@@ -58,19 +59,15 @@ ms.lasthandoff: 03/05/2018
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="6">
+### <a name="configure-ios-settings-for-the-notification-hub"></a>iOS の設定を通知ハブ用に構成する
+1. **[通知設定]** グループで、**[Apple (APNS)]** を選択します。 
+2. **[証明書]** を選択し、**ファイル** アイコンをクリックして、前にエクスポートした **.p12** ファイルを選択します。 
+3. 証明書の**パスワード**を指定します。 
+4. **[サンドボックス]** モードを選択します。 **[Production] (運用)** モードは、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
 
-<li>
+    ![Azure Portal で APNS を構成する][6]
 
-<p><b>[Notification Services]</b> ボタンをクリックし、<b>[Apple (APNS)]</b> を選択します。 <b>[証明書]</b> を選択するには、ファイル アイコンをクリックし、以前にエクスポートした <b>.p12</b> ファイルを選択します。 必ず正しいパスワードも入力してください。</p>
-
-<p>これは開発用であるため、<b>[サンドボックス]</b> モードを選択してください。 <b>[実稼働]</b> は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。</p>
-</li>
-</ol>
-
-&emsp;&emsp;&emsp;&emsp;![Azure Portal で APNS を構成する][6]
-
-&emsp;&emsp;&emsp;&emsp;![Azure Portal で APNS 証明書を構成する][7]
+    ![Azure Portal で APNS 証明書を構成する][7]
 
 これで、通知ハブが APNS と連動するように構成されました。接続文字列にアプリケーションを登録し、プッシュ通知を送信できます。
 
@@ -82,7 +79,7 @@ ms.lasthandoff: 03/05/2018
 
 2. アプリケーション名と組織の識別子を入力し、**[次へ]**、**[作成]** の順にクリックします。
 
-3. ソリューション ビューの *Info.plist* をクリックし、**[ID]** で、バンドル識別子がプロビジョニング プロファイルの作成時に使用した識別子と一致することを確認します。 **[署名]** で、**[チーム]** に Developer アカウントを選択し、[Automatically manage signing]\(署名を自動的に管理する\) をオンにし、署名証明書とプロビジョニング プロファイルが自動的に選択されることを確認します。
+3. ソリューション ビューから *[Info.plist]* をダブルクリックし、**[ID]** で、バンドル識別子がプロビジョニング プロファイルを作成するときに使用したものに一致することを確認します。 **[署名]** で、**[チーム]** に Developer アカウントを選択し、[Automatically manage signing]\(署名を自動的に管理する\) をオンにし、署名証明書とプロビジョニング プロファイルが自動的に選択されることを確認します。
 
     ![Visual Studio - iOS アプリの構成][32]
 
@@ -108,7 +105,7 @@ ms.lasthandoff: 03/05/2018
         private SBNotificationHub Hub { get; set; }
     ```
 
-8. **AppDelegate.cs** で、**FinishedLaunching()** を更新して次の内容に合わせます。
+8. **AppDelegate.cs** で、次のコードに一致するように **FinishedLaunching()** を更新します。
    
     ```csharp
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -204,23 +201,18 @@ ms.lasthandoff: 03/05/2018
 
 12. デバイスでアプリケーションを実行します。
 
-## <a name="sending-test-push-notifications"></a>テストプッシュ通知の送信
-アプリの通知の受信をテストするには、[Azure Portal] の *[テスト送信]* オプションを使用します。 テスト プッシュ通知がデバイスに送信されます。
+## <a name="send-test-push-notifications"></a>テスト プッシュ通知を送信する
+アプリの通知の受信をテストするには、[Azure Portal] の *[テスト送信]* オプションを使用します。 これは、デバイスにテスト プッシュ通知を送信します。
 
 ![Azure Portal - テスト送信][30]
 
-プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Apps などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドで利用できない場合、REST API を直接使用して通知メッセージを送信できます。
-
-ASP.NET バックエンドから通知を送信するには、次の手順として、[Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)に関するチュートリアルを参照することをお勧めします。 ただし、通知の送信には、次の方法も使用できます。
-
-通知の送信方法を確認できるチュートリアルの一覧を次に示します。
-* REST インターフェイス: [REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームのプッシュ通知をサポートできます。
-* **Microsoft Azure Notification Hubs .NET SDK**: Nuget Package Manager for Visual Studio で、 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を実行します。
-* Node.js: [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
-* Java/PHP**: REST API を使用したプッシュ通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
+プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Apps などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドに使用できない場合は、REST API を直接使用して通知メッセージを送信することもできます。
 
 ## <a name="next-steps"></a>次の手順
-この簡単な例では、すべての iOS デバイスにプッシュ通知をブロードキャストします。 特定のユーザーをターゲットとするには、「 [Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。 対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信]」を参照してください。 Notification Hubs の使用方法の詳細については、「[Notification Hubs の概要]」と [iOS 向けの Notification Hubs の使用方法]に関する記事を参照してください。
+このチュートリアルでは、バックエンドに登録されているすべての iOS デバイスにブロードキャスト通知を送信しました。 特定の iOS デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
+
+> [!div class="nextstepaction"]
+>[特定のデバイスにプッシュ通知を送信する](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png
@@ -242,13 +234,13 @@ ASP.NET バックエンドから通知を送信するには、次の手順とし
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Windows Azure Messaging Framework]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-ios
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[iOS 向けの Notification Hubs の使用方法]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
-[Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
+[Use Notification Hubs to push notifications to users]: /manage/services/notification-hubs/notify-users-aspnet
+[Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-dotnet
 
 [Local and Push Notification Programming Guide]:https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584

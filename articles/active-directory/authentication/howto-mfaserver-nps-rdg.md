@@ -2,26 +2,22 @@
 title: RADIUS を使用した RDG と Azure MFA Server | Microsoft Docs
 description: これは、RADIUS を使用してリモート デスクトップ (RD) ゲートウェイと Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: f2354ac4-a3a7-48e5-a86d-84a9e5682b42
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/27/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 5bec531d1d14bf3aaac3950762fc8d2ed545fb4b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ef090b51141e8d77f23472058f9c3a8d096ca171
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
+
 リモート デスクトップ (RD) ゲートウェイでは多くの場合、ローカル ネットワーク ポリシー サービス (NPS) を使ってユーザーを認証します。 この記事では、リモート デスクトップ ゲートウェイからの RADIUS 要求を (ローカルの NPS を通じて) Multi-Factor Authentication Server にルーティングする方法について説明します。 Azure MFA と RD ゲートウェイを組み合わせると、強力な認証を行いつつ、ユーザーが自らの作業環境にどこからでもアクセスできる状態を実現できます。 
 
 Windows Server 2012 R2 ではターミナル サービス向けの Windows 認証をサポートしていないため、MFA Server との統合には RD ゲートウェイと RADIUS を使用します。 

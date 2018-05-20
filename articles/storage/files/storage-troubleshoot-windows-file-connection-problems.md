@@ -1,8 +1,8 @@
 ---
-title: "Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Windows での Azure Files に関する問題のトラブルシューティング"
+title: Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
+description: Windows での Azure Files に関する問題のトラブルシューティング
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 78170df99e9ced304bebd9112d79b5c7e402f218
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 

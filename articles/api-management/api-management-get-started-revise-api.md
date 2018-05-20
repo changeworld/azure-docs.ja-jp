@@ -3,7 +3,7 @@ title: リビジョンを使用して Azure API Management で互換性に影響
 description: このチュートリアルの手順に従って、API Management でリビジョンを使用して互換性に影響しない変更を行う方法について説明します。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: b4812ea8d93e4bfb784370e3a3196a5d20e47519
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 864c269da61bcea885249021a44fe0259ca83e90
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>リビジョンを使用して互換性に影響しない変更を安全に行う
 API の準備が整って開発者に使用され始めたら、その API に変更を加える際には、API の呼び出し元を混乱させないように注意する必要があります。 また、行った変更内容を開発者に知らせると有効です。 Azure API Management で**リビジョン**を使用することで、これを実現できます。 詳細については、「[Versions & revisions (バージョンとリビジョン)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)」と「[API Versioning with Azure API Management (Azure API Management での API のバージョン管理)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)」を参照してください。
@@ -60,7 +60,7 @@ API の準備が整って開発者に使用され始めたら、その API に�
 ## <a name="make-non-breaking-changes-to-your-revision"></a>リビジョンに互換性に影響しない変更を加える
 
 1. API の一覧で **[Conference API]** を選択します。
-2. 画面の上部付近の**[Design] \(デザイン\)** タブを選択します。
+2. 画面の上部付近の **[Design] \(デザイン\)** タブを選択します。
 3. **リビジョン セレクター** ([Design] \(デザイン\) タブのすぐ上) に、現在のリビジョンが**リビジョン 2** として表示されます。
 
     > [!TIP]

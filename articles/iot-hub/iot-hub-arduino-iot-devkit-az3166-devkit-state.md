@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 33d8a36cc88bd1c263f2c4a38a59e04e1253357c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: feb31b0cc89c511f7487f995ba6045f89767abbb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -90,10 +90,10 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 ## <a name="next-steps"></a>次の手順
 
 ここでは、以下の方法について学習しました。
-- MXChip IoT DevKit デバイスを Azure IoT Suite に接続する。
+- MXChip IoT DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続します。
 - Azure IoT デバイス ツイン関数を使用して、DevKit の RGB LED の色を検出して制御します。
 
 推奨される次の手順は以下のとおりです。
 
-* [Azure IoT Suite の概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
+* [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

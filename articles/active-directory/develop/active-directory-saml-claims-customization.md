@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs"
-description: "Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します"
+title: Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs
+description: Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します
 services: active-directory
-documentationcenter: 
-author: jeevansd
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: jeedes
+ms.author: celested
+ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7394857f55493b072e6ea549c8eeec54a808f5e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 485e4c52751b390ebd440718e7a55de7b5b5ffd7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 現在 Azure Active Directory では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
@@ -40,7 +42,7 @@ SAML トークンで発行された要求を編集する必要がある理由は
 
 ![ユーザー属性の編集][2]
 
-コンテキスト メニューを使って、要求 (NameIdentifier 以外) を削除することもできます。メニューを開くには、**[...]** アイコンをクリックします。  **[属性の追加]** ボタンを使って、新しい要求を追加することもできます。
+コンテキスト メニューを使って、要求 (NameIdentifier 以外) を削除することもできます。メニューを開くには、**[...]** アイコンをクリックします。 **[属性の追加]** ボタンを使って、新しい要求を追加することもできます。
 
 ![ユーザー属性の編集][3]
 
@@ -125,7 +127,7 @@ SAML には制限付きの要求がいくつかあります。 これらの要�
     | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier |
     | http://schemas.microsoft.com/identity/claims/scope |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Article Index for Application Management in Azure Active Directory](../active-directory-apps-index.md)
 * [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)

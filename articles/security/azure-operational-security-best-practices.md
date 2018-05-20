@@ -4,7 +4,7 @@ description: この記事は、Azure で運用可能なセキュリティに関�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 75f0d7ffaf92558b16605c29cd99ee439ab2e3d8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
@@ -166,7 +166,7 @@ Network Watcher には、[VPN Gateway と接続に関する最も一般的な問
 ## <a name="secure-deployment-using-proven-devops-tools"></a>実証済みの DevOps ツールによるセキュリティ保護された展開
 これは、企業や開発チームの生産性と効率性を支援する、Microsoft Cloud スペースでの Azure DevOps ベスト プラクティスの一覧です。
 
--   **コードとしてのインフラストラクチャ (IaC):**コードとしてのインフラストラクチャは、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とベスト プラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。 Azure では、[Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) で提供されている宣言型のテンプレートを使用してアプリケーションをプロビジョニングできます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
+-   **コードとしてのインフラストラクチャ (IaC):** コードとしてのインフラストラクチャは、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とベスト プラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。 Azure では、[Azure Resource Manager]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) で提供されている宣言型のテンプレートを使用してアプリケーションをプロビジョニングできます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 -   **継続的インテグレーションとデプロイ:** Azure Web アプリまたはクラウド サービスを[自動的に構築しデプロイ](https://www.visualstudio.com/docs/build/overview)するよう、Visual Studio Team Services (VSTS) チーム プロジェクトを構成できます。 コードをチェックインするたびに、VSTS が、Azure へビルドを実行し、バイナリを自動的にデプロイします。 この記事で説明されているパッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
 -   **リリース管理:** Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) は、複数の段階にわかれた展開を自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Release Management を使用することにより、リリース プロセスの大部分を自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
 -   **アプリケーションのパフォーマンス監視:** 課題を検出し、問題を解決して、アプリケーションを継続的に改善します。 実際のアプリケーションの問題を今すぐ診断する。 ユーザーがそれで何を行っているかを理解します。 JS コードと webconfig エントリを追加するだけで簡単に構成でき、わずか数分間で詳細結果をポータルで確認できます。[アプリケーションに対する洞察](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/)を得ることで、企業は迅速に問題を検出し修復できます。

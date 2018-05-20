@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/30/2018
 ms.author: bryanla; v-clay
 layout: LandingPage
-ms.openlocfilehash: 183925324c404b412b5d12c3a9bff93ccd842535
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 568680d2e1eb8c09fa124a5302bb7170ba4af352
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-azure-and-the-internet-of-things"></a>Azure とモノのインターネットの概要
 
@@ -83,17 +83,6 @@ IoT ソリューション アーキテクチャでは、通常、デバイスが
 
 プレゼンテーションおよびビジネスの接続性レイヤーでは、エンド ユーザーが IoT ソリューションおよびデバイスとやり取りできます。 このレイヤーによって、ユーザーが、デバイスから収集されたデータを表示して分析することができます。 これらのビューは、履歴データとほぼリアルタイムのデータの両方を表示できる、ダッシュボードまたは BI レポートの形式をとることができます。 たとえば、オペレーターは、特定のポンプ場の状態を確認し、システムによって生成されるアラートを参照できます。 また、このレイヤーによって、IoT ソリューション バックエンドと既存の基幹業務アプリケーションの統合が可能になり、企業のビジネス プロセスやワークフローと結びつけることができます。 たとえば、予測メンテナンス ソリューションは、メンテナンスを必要とするポンプ を特定したときに、エンジニアのポンプ場訪問を予約するスケジューリング システムと統合することができます。
 
-[img-solution-architecture]: ./media/iot-introduction/iot-reference-architecture.png
-[img-dashboard]: ./media/iot-introduction/iot-suite.png
-
-[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-suite/iot-suite-overview.md
-[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
-[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
-[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-
-
 ## <a name="why-azure-iot"></a>Azure IoT を選ぶ理由
 
 Azure IoT は IoT プロジェクトの複雑さを解消し、セキュリティ、インフラストラクチャの非互換性、および IoT ソリューションのスケーリングなどの課題に対処します。 以下に、その方法を示します。
@@ -141,7 +130,7 @@ IoT の最も困難な部分であるセキュリティを解決する
                 <div class="card">
                     <div class="cardText">
                         <h3>解決方法</h3>
-                        <a href="/azure/iot-suite">IoT Suite</a><br/>
+                        <a href="/azure/iot-suite">IoT ソリューション アクセラレータ</a><br/>
                         <a href="/azure/iot-central">IoT Central</a>
                     </div>
                 </div>
@@ -179,14 +168,22 @@ IoT の最も困難な部分であるセキュリティを解決する
 </ul>
 
 [img-paas-saas-technologies-solutions]: media/index/paas-saas-technologies-solutions.png
+[img-solution-architecture]: ./media/iot-introduction/iot-reference-architecture.png
+[img-dashboard]: ./media/iot-introduction/iot-suite.png
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-iot-central-land]: https://docs.microsoft.com/microsoft-iot-central/
 [lnk-iot-dps-land]: /azure/iot-dps/index.yml
 [lnk-iot-edge-land]: /azure/iot-edge/index.yml
 [lnk-iot-hub-land]: /azure/iot-hub/index.md
-[lnk-iot-maps-land]: /azure/azure-maps/index.yml
-[lnk-iot-suite-land]: /azure/iot-suite/index.md
+[lnk-iot-maps-land]: /azure/maps/index.yml
+[lnk-iot-sa-land]: /azure/iot-suite/index.md
 [lnk-iot-tsi-land]: /azure/time-series-insights/index.yml
+
+[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
+[lnk-iot-sa]: ../articles/iot-suite/iot-suite-overview.md
+[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
+[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
+[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 

@@ -1,24 +1,24 @@
 ---
-title: "ルーティングとタグ式"
-description: "この記事では、Azure 通知ハブのルーティングとタグ式について説明します。"
+title: ルーティングとタグ式
+description: この記事では、Azure 通知ハブのルーティングとタグ式について説明します。
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-and-tag-expressions"></a>ルーティングとタグ式
 ## <a name="overview"></a>概要
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/28/2018
 3. **タグ式**:タグのセットが指定した式と一致するすべての登録が、通知を受信します。
 
 ## <a name="tags"></a>タグ
-タグは、最大 120 文字の任意の文字列です。英数字と一部の英数字以外の文字 ("_"、"@"、"#"、"."、":"、"-") を使用できます。 ‘_’, ‘@’, ‘#’, ‘.’, ‘:’, ‘-’.次の例は、特定の音楽グループに関するトースト通知を受信するアプリケーションを示します。 このシナリオで通知をルーティングする簡単な方法は、次の図のようにさまざまなバンドを表すタグを含む登録にラベルを設定することです。
+タグは、最大 120 文字の任意の文字列です。英数字と一部の英数字以外の文字 ("_"、"@"、"#"、"."、":"、"-") を使用できます。 ‘_’, ‘@’, ‘#’, ‘.’, ‘:’, ‘-’.次の例は、特定の音楽グループに関するトースト通知を受信するアプリケーションを示します。 このシナリオでは、次の図に示すように、通知をルーティングするための単純な方法として、さまざまなバンドを表すタグを使用して登録にラベルを付けます。
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -69,11 +69,11 @@ ms.lasthandoff: 02/28/2018
 関心のグループに送信するためのタグの使用方法の詳しい手順を示したチュートリアルは、「 [ニュース速報](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)」を参照してください。
 
 ## <a name="using-tags-to-target-users"></a>ターゲット ユーザーにタグを使用する
-タグを使用するもう 1 つの方法は、特定のユーザーのすべてのデバイスを識別する方法です。 登録は、次の図のように、ユーザー ID を含むタグにタグ付けすることができます。
+タグを使用するもう 1 つの方法は、特定のユーザーのすべてのデバイスを識別する方法です。 次の図に示すように、ユーザー ID を含むタグを使用して登録にタグ付けすることができます。
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-この図で、[uid:Alice] のタグが付いたメッセージは、[uid:Alice] のタグが付いたすべての登録、つまり Alice のすべてのデバイスに到達します。
+この図では、uid:Alice のタグが付けられたメッセージは uid:Alice のタグが付けられたすべての登録、つまり Alice のすべてのデバイスに到達します。
 
 ## <a name="tag-expressions"></a>タグ式
 1 つのタグではなく、タグのブール式で識別される登録のセットが通知の対象になる場合もあります。

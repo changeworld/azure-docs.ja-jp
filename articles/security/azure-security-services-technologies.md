@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: eedfca2506f9e34b8e5039b0f101b1d4e68ef5a7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e2e6e50946a009ad9fbd27b821fa6a0999c156f1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
 
@@ -78,4 +78,4 @@ ms.lasthandoff: 04/28/2018
 * [Azure Load Balancer](../load-balancer/load-balancer-overview.md)
 * [Azure ExpressRoute](../expressroute/expressroute-introduction.md)
 * [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-* [Azure アプリケーション プロキシ](../active-directory/active-directory-application-proxy-enable.md)
+* [Azure アプリケーション プロキシ](../active-directory/manage-apps/application-proxy-enable.md)

@@ -1,45 +1,45 @@
 ---
-title: "Azure Notification Hubs の欠落した通知の診断"
-description: "Azure Notification Hubs で欠落した通知に関する一般的な問題を診断する方法について説明します。"
+title: Azure Notification Hubs の欠落した通知の診断
+description: Azure Notification Hubs で欠落した通知に関する一般的な問題を診断する方法について説明します。
 services: notification-hubs
 documentationcenter: Mobile
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: 
+editor: spelluru
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 3925208fe56bcd9513ec4c0f21aa1e2dd8fbf9c5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: bc9ef70560f0485da81c1f54aa955cee76d280ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Notification Hubs での欠落した通知の診断
 
 Azure Notification Hubs のお客様からよく寄せられる質問の 1 つに、アプリケーションから送信された通知がクライアント デバイスに表示されない場合のトラブルシューティングの方法があります。 お客様は、通知が欠落した場所と理由、さらに問題の解決方法を知りたいと考えます。 この記事では、通知が欠落する、つまりデバイスで受信されない理由を特定します。 根本原因を分析し、特定する方法を説明します。 
 
-まずは、Notification Hubs がデバイスに通知をプッシュする方法を理解しておくことが重要です。
+最初に、Notification Hubs サービスがデバイスにどのようにプッシュ通知を送信するかを理解しておくことが重要です。
 
 ![Notification Hubs のアーキテクチャ][0]
 
 一般的な送信通知フローでは、メッセージは*アプリケーション バックエンド*から Notification Hubs に送信されます。 Notification Hubs は、すべての登録に対して処理を行います。 この処理では、構成済みのタグとタグ式を考慮して "ターゲット" が決定されます。 ターゲットは、プッシュ通知を受け取る必要があるすべての登録です。 これらの登録は、iOS、Google、Windows、Windows Phone、Kindle、Baidu for China Android など、サポートされているプラットフォームのいずれかまたはすべてにわたる可能性があります。
 
-ターゲットが確立されると、Notification Hubs は、デバイス プラットフォームの*プッシュ通知サービス*に通知をプッシュします。 例としては、Apple の Apple Push Notification Service (APNs) や、Google の Firebase Cloud Messaging (FCM) があります。 Notification Hubs のプッシュ通知は、複数の登録バッチに分割されます。 Notification Hubs は、Azure Portal の **[Configure Notification Hub]\(通知ハブを構成する\)** で設定された資格情報に基づいて、それぞれのプッシュ通知サービスを認証します。 その後、プッシュ通知サービスが各*クライアント デバイス*に通知を転送します。 
+ターゲットが確立されると、Notification Hubs サービスは、デバイス プラットフォームの*プッシュ通知サービス*にプッシュ通知を送信します。 例としては、Apple の Apple Push Notification Service (APNs) や、Google の Firebase Cloud Messaging (FCM) があります。 Notification Hubs のプッシュ通知は、複数の登録バッチに分割されます。 Notification Hubs は、Azure Portal の **[Configure Notification Hub]\(通知ハブを構成する\)** で設定された資格情報に基づいて、それぞれのプッシュ通知サービスを認証します。 その後、プッシュ通知サービスが各*クライアント デバイス*に通知を転送します。 
 
-通知の配信の最終段階は、プラットフォーム プッシュ通知サービスとデバイスの間で実行されることに注意してください。 プッシュ通知プロセスの 4 つの主なコンポーネント (クライアント、アプリケーション バックエンド、Notification Hubs、プラットフォーム プッシュ通知サービス) のいずれかが、通知が欠落する原因となる場合があります。 Notification Hubs のアーキテクチャの詳細については、[Notification Hubs の概要]に関する記事をご覧ください。
+通知の配信の最終段階は、プラットフォーム プッシュ通知サービスとデバイスの間で実行されます。 プッシュ通知プロセスの 4 つの主なコンポーネント (クライアント、アプリケーション バックエンド、Notification Hubs、プラットフォーム プッシュ通知サービス) のいずれかが、通知が欠落する原因となる場合があります。 Notification Hubs のアーキテクチャの詳細については、[Notification Hubs の概要]に関する記事をご覧ください。
 
 通知の配信エラーは、初期のテストまたはステージングのフェーズで発生する可能性があります。 このフェーズでの通知の欠落は、構成に問題があることを示している可能性があります。 運用環境で通知の配信エラーが発生した場合、通知の一部またはすべてが欠落することがあります。 この場合、アプリケーションまたはメッセージングのパターンに関して、より難しい問題があることを示しています。 
 
 次のセクションでは、通知が欠落するシナリオを、一般的なケースから稀なケースまで見ていきます。
 
 ## <a name="notification-hubs-misconfiguration"></a>Notification Hubs の構成の誤り
-各プッシュ通知サービスに通知を正常に送信できるようにするには、Notification Hubs を開発者のアプリケーションのコンテキストで認証する必要があります。 これを行うには、開発者は各プラットフォーム (Google、Apple、Windows など) に開発者アカウントを作成します。 次に、開発者は資格情報を取得するプラットフォームに自身のアプリケーションを登録します。 
+各プッシュ通知サービスに通知を正常に送信するには、Notification Hubs サービスが、開発者のアプリケーションのコンテキストで自身を認証する必要があります。 これを行うには、開発者は各プラットフォーム (Google、Apple、Windows など) に開発者アカウントを作成します。 次に、開発者は資格情報を取得するプラットフォームに自身のアプリケーションを登録します。 
 
 Azure Portal にプラットフォームの資格情報を追加する必要があります。 通知がデバイスに届いていない場合は、まず Notification Hubs に正しい資格情報が構成されていることを確認する必要があります。 この資格情報は、プラットフォーム固有の開発者アカウントで作成されたアプリケーションと一致している必要があります。 
 
@@ -88,7 +88,7 @@ Azure Portal にプラットフォームの資格情報を追加する必要が�
 
 * **無効な登録**
 
-    通知ハブが適切に構成されている場合、また、タグやタグ式が適切に使用されている場合は、有効なターゲットが見つかります。 通知はこれらのターゲットに送信する必要があります。 その後、Notification Hubs は複数の処理バッチを並列で実行します。 各バッチは登録のセットにメッセージを送信します。 
+    通知ハブが適切に構成されている場合、また、タグやタグ式が適切に使用されている場合は、有効なターゲットが見つかります。 通知はこれらのターゲットに送信する必要があります。 Notification Hubs サービスは次に、複数のバッチ処理を並行して起動します。 各バッチは登録のセットにメッセージを送信します。 
 
     > [!NOTE]
     > 処理は並列で実行されるため、通知の配信順序は保証されません。 
@@ -102,7 +102,7 @@ Azure Portal にプラットフォームの資格情報を追加する必要が�
     登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://msdn.microsoft.com/library/azure/mt608135.aspx)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample)に関する記事をご覧ください。
 
 ## <a name="push-notification-service-issues"></a>プッシュ通知サービスの問題
-プラットフォーム プッシュ通知サービスで通知メッセージが受け取られたら、その通知をデバイスに配信するのはプッシュ通知サービスの役割です。 この時点では、Notification Hubs は無関係で、通知がデバイスに配信されるタイミングや配信されるかどうかを制御することはありません。 
+プラットフォーム プッシュ通知サービスで通知メッセージが受け取られたら、その通知をデバイスに配信するのはプッシュ通知サービスの役割です。 この時点で、Notification Hubs サービスは無関係であり、通知がデバイスに配信されるタイミングや配信されるかどうかを制御できません。 
 
 プラットフォーム通知サービスは堅牢であるため、通知は通常数秒でプッシュ通知サービスからデバイスに届きます。 プッシュ通知サービスが調整中の場合は、Notification Hubs は指数バックオフ戦略を適用します。 プッシュ通知サービスが到達できない状態が 30 分間続いた場合には、それらのメッセージが期限切れとなり、完全に欠落するポリシーが適用されます。 
 
@@ -120,7 +120,7 @@ Azure Notification Hubs では、汎用 SendNotification API を使用するこ�
    
     各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、[Azure Notification Hubs の使用]に関する記事をご覧ください。
 
-* **Azure ポータル**
+* **Azure Portal**
    
     資格情報を確認し、プッシュ通知サービス開発者ポータルから取得した資格情報とマッチングするには、Azure Portal の **[アクセス ポリシー]** タブに移動します。 
    
@@ -146,7 +146,7 @@ Azure Notification Hubs では、汎用 SendNotification API を使用するこ�
     多くのお客様が [Service Bus Explorer] を使用して、通知ハブを表示、管理します。 Service Bus Explorer はオープンソースのプロジェクトです。 サンプルについては、[Service Bus Explorer の コード]に関する記事をご覧ください。
 
 ### <a name="verify-message-notifications"></a>メッセージ通知の確認
-* **Azure ポータル**
+* **Azure Portal**
    
     サービス バックエンドを稼働させずにクライアントにテスト通知を送信するには、**[サポート + トラブルシューティング]** から **[テスト送信]** を選択します。 
    
@@ -226,7 +226,7 @@ Notification Hubs 経由で通知を送信すると、その通知は処理の�
    
         ![Notification Hubs の概要ダッシュボード][5]
    
-    2. **[モニター]** タブでは、理解を深めるために、プラットフォーム固有のその他多数のメトリックを追加できます。 Notification Hubs がプッシュ通知サービスに通知を送信しようとするときに返される、プッシュ通知サービスに関連するエラーを重点的に確認できます。 
+    2. **[モニター]** タブでは、理解を深めるために、プラットフォーム固有のその他多数のメトリックを追加できます。 特に、Notification Hubs サービスがプッシュ通知サービスに通知を送信しようとしたときに返される、プッシュ通知サービスに関連したすべてのエラーを参照できます。 
    
         ![Azure Portal のアクティビティ ログ][6]
    

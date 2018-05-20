@@ -1,6 +1,6 @@
 ---
-title: Azure Container Service (AKS) での GPU
-description: Azure Container Service (AKS) での GPU の使用
+title: Azure Kubernetes サービス (AKS) での GPU
+description: Azure Kubernetes サービス (AKS) での GPU の使用
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 6c30c966ad88f904ee652d88abd1717819077d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7ee5198b070fee6b6ce04d9fc2639ba23ae93296
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="using-gpus-on-aks"></a>AKS での GPU の使用
 
@@ -22,7 +22,7 @@ AKS は GPU 対応ノード プールの作成をサポートしています。 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
 GPU は、一般に、グラフィック処理の負荷が高い視覚化ワークロードなど、コンピューティング処理の負荷が高いワークロードのために必要とされます。 次の[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu)を参照し、実際のワークロードにとって適切な VM サイズを判断してください。
-Azure Container Service (AKS) ノードには、最小サイズの `Standard_NC6` をお勧めします。
+Azure Kubernetes Service (AKS) ノードには、最小サイズの `Standard_NC6` をお勧めします。
 
 > [!NOTE]
 > GPU 対応 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが含まれます。 詳細については、[価格](https://azure.microsoft.com/pricing/)ツールと[利用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/)についてのサイトを参照してください。
@@ -50,7 +50,7 @@ az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 
 ## <a name="confirm-gpus-are-schedulable"></a>GPU がスケジュール可能であることの確認
 
-次のコマンドを実行して、Kubernetes から GPU がスケジュール可能であることを確認します。 
+次のコマンドを実行して、Kubernetes から GPU がスケジュール可能であることを確認します。
 
 ノードの現在の一覧を取得します。
 
@@ -165,12 +165,12 @@ spec:
       volumes:
         - name: nvidia
           hostPath:
-            path: /usr/local/nvidia         
+            path: /usr/local/nvidia
 ```
 
-[kubectl create][kubectl-create] コマンドを使ってジョブを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
+[kubectl apply][kubectl-apply] コマンドを使ってジョブを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
 ```
-$ kubectl create -f samples-tf-mnist-demo.yaml
+$ kubectl apply -f samples-tf-mnist-demo.yaml
 job "samples-tf-mnist-demo" created
 ```
 
@@ -273,12 +273,12 @@ job "samples-tf-mnist-demo" deleted
 
 ## <a name="next-steps"></a>次の手順
 
-Kubernetes で機械学習ワークロードを実行することに関心がありますか? 詳細については、Kubeflow に関するドキュメントを参照してください。
+Kubernetes で機械学習ワークロードを実行することに関心がありますか? 詳細については、Kubeflow ラボを参照してください。
 
 > [!div class="nextstepaction"]
-> [Kubeflow ユーザー ガイド][kubeflow-docs]
+> [Kubeflow ラボ][kubeflow-labs]
 
 <!-- LINKS - external -->
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubeflow-docs]: https://github.com/kubeflow/kubeflow/blob/master/user_guide.md
+[kubeflow-labs]: https://github.com/Azure/kubeflow-labs

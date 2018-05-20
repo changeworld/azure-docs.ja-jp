@@ -17,11 +17,13 @@
           href: role-assignments-powershell.md
         - name: REST ()
           href: role-assignments-rest.md
+    - name: ロール定義について
+      href: role-definitions.md
     - name: 組み込みのロール
       href: built-in-roles.md
     - name: カスタム ロール
       href: custom-roles.md
-    - name: 内部ユーザーと外部ユーザーのカスタム ロールの割り当て
+    - name: 外部ユーザーに対するロールの割り当てを管理する
       href: role-assignments-external-users.md
     - name: アクティビティ ログ
       href: change-history-report.md

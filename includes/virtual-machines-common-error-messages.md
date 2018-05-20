@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines-windows
+author: genlin
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 04/25/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: db241c1a3c8bfd15e13ae0bd9f1cdf4c92c7081d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/10/2018
+---
 >[!NOTE]
 > ご意見、ご感想については、こちらのページにコメントを投稿していただくか、または [Azure フィードバック](https://feedback.azure.com/forums/216843-virtual-machines)から #azerrormessage タグを使用してコメントをお寄せください。
 
@@ -56,7 +72,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  DiskBlobNotFound  |  URI {0} の VHD BLOB が見つかりません。  |
 |  DiskEncryptionKeySecretMissingTags  |  {0} シークレットに、{1} タグがありません。 シークレット バージョンを更新し、必要なタグを追加して再試行してください。  |
 |  DiskEncryptionKeySecretUnwrapFailed  |  キー {1} を使用したシークレット {0} 値のラップ解除に失敗しました。  |
-|  DiskImageNotReady  |  ディスク イメージ {0} の状態が {1} です。 イメージの準備が完了したら再試行してください。  |
+|  DiskImageNotReady  |  ディスク イメージ {0} は {1} 状態です。 イメージの準備が完了したら再試行してください。  |
 |  DiskPreparationError  |  VM ディスクを準備しているときに、1 つ以上のエラーが発生しました。 詳しくは、ディスクのインスタンス ビューをご覧ください。  |
 |  DiskProcessingError  |  VM には、障害が発生したディスク内に他のディスクがあるため、ディスクの処理が停止しました。  |
 |  ImageBlobNotFound  |  ディスク '{1}' の URI {0} の VHD BLOB が見つかりません。  |
@@ -81,7 +97,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  InvalidParameter  |  '{0}' という名前のディスクで既に同じ LUN: {1} を使用しています。  |
 |  InvalidParameter  |  '{0}' という名前のディスクは既に存在します。  |
 |  InvalidParameter  |  指定したイメージ参照で既に定義されているディスクに対してユーザー イメージの上書きを指定することはできません。  |
-|  InvalidParameter  |  '{0}' という名前のディスクで既に同じ VHD URL {1} を使用しています。  |
+|  InvalidParameter  |  '{0}' という名前のディスクで既に同じ VHD URL: {1} を使用しています。  |
 |  InvalidParameter  |  指定した障害ドメインの数 {0} は、{1} から {2} の範囲でなければなりません。  |
 |  InvalidParameter  |  ライセンスの種類 {0} が無効です。 有効なライセンスの種類は Windows_Client または Windows_Server (大文字小文字は区別されます) です。  |
 |  InvalidParameter  |  Linux のホスト名は {0} 文字を超えることはできません。また、次の文字を使用することはできません: {1}。  |
@@ -90,12 +106,12 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  InvalidParameter  |  要求のサブスクリプション {0} は、管理対象のディスクの ID に含まれるサブスクリプション {1} と一致している必要があります。  |
 |  InvalidParameter  |  OSProfile のカスタム データは、Base64 でエンコードし、最大長が {0} 文字である必要があります。  |
 |  InvalidParameter  |  URL {0} の BLOB 名は '{1}' という拡張子で終わる必要があります。  |
-|  InvalidParameter  |  '{0}' は、キャプチャされた VHD BLOB 名の有効なプレフィックスではありません。 有効なプレフィックスは、正規表現 '{1}' と一致します。  |
+|  InvalidParameter  |  {0} は、キャプチャされた VHD BLOB 名の有効なプレフィックスではありません。 有効なプレフィックスは、正規表現 '{1}' と一致します。  |
 |  InvalidParameter  |  VM エージェントがプロビジョニングされていない場合、証明書を VM に追加することはできません。  |
 |  InvalidParameter  |  LUN {0} には既にディスクが存在します。  |
-|  InvalidParameter  |  要求されたサイズ {0} は、可用性セットが現在割り当てられているクラスターで利用できないため、VM を作成することができません。 利用可能なサイズは、{1} です。 VM のサイズ変更の方針に関する詳細は、https://aka.ms/azure-resizevm をお読みください。  |
-|  InvalidParameter  |  要求された VM のサイズ {0} は、現在のリージョンでは利用できません。 現在のリージョンで利用可能なサイズは、{1} です。 各リージョンで利用可能な VM のサイズに関する詳細は、https://aka.ms/azure-regions をご覧ください。  |
-|  InvalidParameter  |  要求された VM のサイズ {0} は、現在のリージョンでは利用できません。 各リージョンで利用可能な VM のサイズに関する詳細は、https://aka.ms/azure-regions をご覧ください。  |
+|  InvalidParameter  |  要求されたサイズ {0} は、可用性セットが現在割り当てられているクラスターで利用できないため、VM を作成することができません。 利用可能なサイズは、{1} です。 VM のサイズ変更の方針について詳しくは、https://aka.ms/azure-resizevm をご覧ください。  |
+|  InvalidParameter  |  要求された VM のサイズ {0} は、現在のリージョンでは利用できません。 現在のリージョンで利用可能なサイズは、{1} です。 各リージョンで利用可能な VM のサイズについて詳しくは、https://aka.ms/azure-regions をご覧ください。  |
+|  InvalidParameter  |  要求された VM のサイズ {0} は、現在のリージョンでは利用できません。 各リージョンで利用可能な VM のサイズについて詳しくは、https://aka.ms/azure-regions をご覧ください。  |
 |  InvalidParameter  |  Windows の管理者のユーザー名は、{0} 文字を超えること、ピリオド (.) で終わること、次の文字を含めることはできません: {1}。  |
 |  InvalidParameter  |  Windows のコンピューター名は、{0} 文字を超えること、すべて数字にすること、次の文字を含めることはできません: {1}。  |
 |  MissingMoveDependentResources  |  リソースの移動要求に、すべての依存リソースが含まれていません。 不足しているリソース ID についてはエラーの詳細を確認してください。  |
@@ -120,7 +136,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  このサイズの VM に添付できるデータ ディスクの最大数は {0} です。  |
 |  OperationNotAllowed  |  管理ディスク付き VM への BLOB ベースのディスクの追加はサポートされていません。  |
 |  OperationNotAllowed  |  イメージ '{1}' は削除対象にマークされているため、このイメージに対して操作 '{0}' を実行することは許可されていません。 再試行できるのは削除操作のみです (または、進行中の作業が完了するまで待機してください)。  |
-|  OperationNotAllowed  |  VM '{1}' が一般化されているため、操作 '{0}' は許可されません。  |
+|  OperationNotAllowed  |  VM '{1}' が汎用化されているため、操作 '{0}' は許可されません。  |
 |  OperationNotAllowed  |  復元ポイント コレクション '{1}' は削除対象としてマークされているので、操作 '{0}' は許可されません。  |
 |  OperationNotAllowed  |  VM 拡張機能 '{1}' が削除対象としてマークされているため、操作 '{0}' は許可されません。 再試行できるのは削除操作のみです (または、進行中の作業が完了するまで待機してください)。  |
 |  OperationNotAllowed  |  イメージ '{2}' を使って仮想マシン '{1}' をプロビジョニング中であるため、操作 '{0}' を実行することは許可されていません。  |
@@ -134,29 +150,29 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  '{0}' の操作には、仮想マシン '{1}' を一般化する必要があります。  |
 |  OperationNotAllowed  |  この操作では、VM が実行されている (または実行するよう設定されている) 必要があります。  |
 |  OperationNotAllowed  |  サイズが {0} GB のディスクは、イメージ内の対応するディスクのサイズ {1} GB より小さいため、許可されません。  |
-|  OperationNotAllowed  |  ハンドラー '{0}' のVM スケール セット拡張を追加できるのは、VM スケール セットの作成時のみです。  |
-|  OperationNotAllowed  |  ハンドラー '{0}' のVM スケール セット拡張を削除できるのは、VM スケール セットの削除時のみです。  |
+|  OperationNotAllowed  |  ハンドラー '{0}' の VM スケール セット拡張を追加できるのは、VM スケール セットの作成時のみです。  |
+|  OperationNotAllowed  |  ハンドラー '{0}' の VM スケール セット拡張を削除できるのは、VM スケール セットの削除時のみです。  |
 |  OperationNotAllowed  |  VM '{0}' は既に管理ディスクを使用しています。  |
 |  OperationNotAllowed  |  VM '{0}' は 'Classic' の可用性セット '{1}' に属しています。 'Aligned' SKU を使うように可用性セットを更新してから、変換をもう一度お試しください。  |
 |  OperationNotAllowed  |  イメージから作成された VM では、BLOB ベースのディスクを持つことはできません。 すべてのディスクが管理ディスクである必要があります。  |
 |  OperationNotAllowed  |  VM が一般化されていないため、キャプチャ操作を完了できません。  |
 |  OperationNotAllowed  |  VM '{0}' のディスクが管理ディスクに変換されているので、この VM に対する管理操作は許可されません。  |
 |  OperationNotAllowed  |  実行中の操作によって、仮想マシン {0} の電源状態を {1} に変更しています。 操作 {2} はしばらくしてから実行してください。  |
-|  OperationNotAllowed  |  VM の追加または更新ができません。 要求された VM のサイズ {0} は、既存のアロケーション ユニットでは利用できない可能性があります。 VM のサイズ変更の方針に関する詳細は、https://aka.ms/azure-resizevm をお読みください。  |
-|  OperationNotAllowed  |  要求されたサイズ {0} は、可用性セットが現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 利用可能なサイズは、{1} です。 VM のサイズ変更の方針に関する詳細は、https://aka.ms/azure-resizevm をお読みください。  |
-|  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure ポータル での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針に関する詳細は、https://aka.ms/azure-resizevm をお読みください。  |
+|  OperationNotAllowed  |  VM の追加または更新ができません。 要求された VM のサイズ {0} は、既存のアロケーション ユニットでは利用できない可能性があります。 VM のサイズ変更の方針について詳しくは、https://aka.ms/azure-resizevm をご覧ください。  |
+|  OperationNotAllowed  |  要求されたサイズ {0} は、可用性セットが現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 利用可能なサイズは、{1} です。 VM のサイズ変更の方針について詳しくは、https://aka.ms/azure-resizevm をご覧ください。  |
+|  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure Portal での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針について詳しくは、https://aka.ms/azure-resizevm をご覧ください。  |
 |  OSProvisioningClientError  |  VM '{0}' に OS をプロビジョニングできませんでした。現在、ゲスト OS をプロビジョニングしています。  |
-|  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細: {1} イメージが適切に準備 (一般化) されているか確認してください。 <ul><li>Windows での手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>以下で手順を確認できます。https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ </li></ul> |
+|  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細: {1} イメージが適切に準備 (一般化) されているかをご確認ください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://azure.microsoft.com/documentation/articles/virtual-machines-linux-agent-user-guide/ で手順を確認することができます </li></ul> |
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。  |
-|  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。 また、イメージが適切に準備 (一般化) されていることも確認してください。   <ul><li>Windows での手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux での手順: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 ただし、VM ゲスト エージェントが実行中であると検出されました。 これは、ゲスト OS を VM イメージとして使用する準備が正しく行われていないことを示しています (CreateOption=FromImage を使用)。 この問題を解決するには、CreateOption=Attach を指定して VHD をそのまま使用するか、イメージとして使用できるように正しく準備してください:   <ul><li>Windows での手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux での手順: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。 また、イメージが適切に準備 (一般化) されていることも確認してください。   <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 ただし、VM ゲスト エージェントが実行中であると検出されました。 これは、ゲスト OS を VM イメージとして使用する準備が正しく行われていないことを示しています (CreateOption=FromImage を使用)。 この問題を解決するには、CreateOption=Attach を指定して VHD をそのまま使用するか、イメージとして使用できるように正しく準備してください:   <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Linux 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  選択した場所では、現在、必要な VM サイズを利用できません。  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  プラットフォームの更新が実行中であるため、現在はリソースを更新できません。 後でもう一度やり直してください。  |
 |  StorageAccountLimitation  |  ストレージ アカウント '{0}' では、ディスクを作成するために必要なページ BLOB をサポートしていません。  |
-|  StorageAccountLimitation  |  ストレージ アカウント '{0}' は割り当てられたクォータを超えています。  |
+|  StorageAccountLimitation  |  ストレージ アカウント '{0}' が割り当てられたクォータを超えています。  |
 |  StorageAccountLocationMismatch  |  ストレージ アカウント {0} を解決できません。 ストレージ アカウントがコンピューティング リソースと同じ場所にストレージ リソース プロバイダーによって作成されたことを確認してください。  |
 |  StorageAccountNotFound  |  ストレージ アカウント {0} が見つかりません。 ストレージ アカウントが削除されておらず、VM と同じ Azure の場所に属していることを確認してください。  |
 |  StorageAccountNotRecognized  |  ストレージ リソース プロバイダーが管理するストレージ アカウントを使用してください。 {0} の使用はサポートされていません。  |
@@ -164,14 +180,14 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  StorageAccountSubscriptionMismatch  |  ストレージ アカウント {0} は、サブスクリプション {1} に属していません。  |
 |  StorageAccountTooBusy  |  ストレージ アカウント '{0}' は現在ビジー状態です。 別のアカウントの使用を検討してください。  |
 |  StorageAccountTypeNotSupported  |  ディスク {0} で、BLOB ストレージ アカウント {1} を使用しています。 汎用ストレージ アカウントを使ってもう一度お試しください。  |
-|  StorageAccountTypeNotSupported  |  ストレージ アカウント {0} の種類は {1} です。 起動診断がサポートするストレージ アカウントの種類は {2} です。  |
+|  StorageAccountTypeNotSupported  |  ストレージ アカウント {0} の種類は {1} です。 起動診断がサポートするストレージ アカウントの種類は {2} です。  <ul><li>このエラーは、ブート診断に Premium Storage アカウントを使用する場合に発生します。 詳しくは、[起動診断の使用方法](../articles/virtual-machines/windows/boot-diagnostics.md)に関するページをご覧ください。 </li></ul> |
 |  SubscriptionNotAuthorizedForImage  |  許可されていないサブスクリプションです。  |
 |  TargetDiskBlobAlreadyExists  |  BLOB {0} は既に存在します。 新しい空のデータ ディスク '{1}' を作成するには、別の BLOB URI を指定してください。  |
 |  TargetDiskBlobAlreadyExists  |  ターゲット イメージ BLOB {0} は既に存在しており、VHD BLOB を上書きするフラグが設定されていないため、キャプチャ操作を続行できません。 BLOB を削除するか、VHD BLOB を上書きするフラグを設定してから、再試行してください。  |
 |  TargetDiskBlobAlreadyExists  |  ターゲット イメージ BLOB {0} にアクティブなリースがあるため、キャプチャ操作を続行できません。   |
 |  TargetDiskBlobAlreadyExists  |  BLOB {0} は既に存在します。 ディスク '{1}' のターゲットとして別の BLOB URI を指定してください。  |
 |  TooManyVMRedeploymentRequests  |  受信した、VM '{0}' またはこの VM と同じ可用性セットの VM に対する再デプロイ要求が多すぎます。 後で再試行してください。  |
-|  VHDSizeInvalid  |  BLOB {2} のディスク '{1}'に対して指定したディスク サイズの値 {0} は無効です。 ディスク サイズは、{3} と {4} の間でなければなりません。  |
+|  VHDSizeInvalid  |  BLOB {2} のディスク '{1}' に対して指定したディスク サイズの値 {0} は無効です。 ディスク サイズは、{3} と {4} の間でなければなりません。  |
 |  VMAgentStatusCommunicationError  |  VM '{0}' は VM エージェントまたは拡張機能の状態を報告していません。 VM で実行中の VM エージェントがあり、Azure ストレージへの送信接続が確立できることを確認してください。  |
 |  VMArtifactRepositoryInternalError  |  VM アーティファクトの詳細を取得するためにアーティファクト リポジトリと通信中にエラーが発生しました。  |
 |  VMArtifactRepositoryInternalError  |  アーティファクト リポジトリから VM アーティファクト データを取得中に内部エラーが発生しました。  |
@@ -190,5 +206,5 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  VMStartTimedOut  |  割り当てられた時間内に VM '{0}' が起動しませんでした。 まだ VM が正常に起動する可能性があります。 後で電源の状態を確認してください。  |
 
 
-## <a name="next-steps"></a>次のステップ
-さらに支援が必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+## <a name="next-steps"></a>次の手順
+さらに支援が必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

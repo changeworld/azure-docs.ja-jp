@@ -4,16 +4,17 @@ description: Azure のリソースに対するアクセスは、ロールベー�
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f8b7062f85a7130c73c6493f6f0c277c90374f11
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 93a4befce1f54dcc06d9a8faf31b04e5c0280276
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -25,27 +26,27 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 | **ロール** | **説明** |
 |:--- |:--- |
-| 所有者 |Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
-| 共同作成者 |Automation アカウントに対する他のユーザーのアクセス許可に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
-| 閲覧者 |閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。 |
-| Automation オペレーター |Automation オペレーター ロールでは、Runbook の名前とプロパティの表示、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。 Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
+| Owner |Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
+| Contributor |Automation アカウントに対する他のユーザーのアクセス許可に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
+| Reader |閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。 |
+| Automation Operator |Automation オペレーター ロールでは、Runbook の名前とプロパティの表示、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。 Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
 |Automation ジョブ オペレーター|Automation ジョブ オペレーター ロールでは、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。|
 |Automation Runbook オペレーター|Automation Runbook オペレーター ロールでは、Runbook の名前とプロパティを表示できます。|
 | Log Analytics 共同作成者 | Log Analytics 共同作成者ロールでは、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。|
 | Log Analytics 閲覧者 | Log Analytics 閲覧者ロールでは、すべての監視データの表示と検索、および監視設定の表示を行うことができます。 これには、すべての Azure リソースに対する Azure 診断の構成の表示が含まれます。 |
-| 監視共同作業者 | 監視共同作業者ロールでは、すべての監視データを読み取り、監視設定を更新できます。|
-| 監視閲覧者 | 監視閲覧者ロールでは、すべての監視データを読み取ることができます。 |
-| ユーザー アクセスの管理者 |Azure Automation アカウントに対するユーザー アクセスは、ユーザー アクセスの管理者ロールで管理できます。 |
+| Monitoring Contributor | 共同作成者の監視ロールでは、すべての監視データを読み取り、監視設定を更新できます。|
+| Monitoring Reader | 閲覧者の監視ロールでは、すべての監視データを読み取ることができます。 |
+| User Access Administrator |Azure Automation アカウントに対するユーザー アクセスは、ユーザー アクセスの管理者ロールで管理できます。 |
 
 ## <a name="role-permissions"></a>ロールのアクセス許可
 
 以降の表は、各ロールに割り当てられている具体的なアクセス許可の説明です。 アクセス許可を与える Actions のほか、それらを制限する NotActions が含まれている場合があります。
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>Owner
 
 所有者は、アクセス権を含めすべてを管理できます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
-|アクション|説明|
+|アクション|[説明]|
 |---|---|
 |Microsoft.Automation/automationAccounts/|あらゆる種類のリソースの作成と管理。|
 
@@ -61,7 +62,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 |Microsoft.Authorization/*/Write     |  ロールとロール割り当ての作成。       |
 |Microsoft.Authorization/elevateAccess/Action    | ユーザー アクセス管理者を作成する機能の拒否。       |
 
-### <a name="reader"></a>閲覧者
+### <a name="reader"></a>Reader
 
 閲覧者は、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。
 
@@ -103,7 +104,7 @@ Automation Runbook オペレーター ロールは、Runbook のスコープで�
 |Microsoft.Insights/alertRules/*      | アラート ルールの作成と管理。        |
 |Microsoft.Support/*      | サポート チケットの作成と管理。        |
 
-### <a name="automation-operator"></a>Automation オペレーター
+### <a name="automation-operator"></a>Automation Operator
 
 Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。  注: 個々の Runbook に対するオペレーターのアクセスを制御する場合は、このロールを設定しないでください。代わりに、"Automation ジョブ オペレーター" ロールと "Automation Runbook オペレーター" ロールを使用してください。  次の表は、このロールに付与されるアクセス許可を示しています。
 
@@ -156,7 +157,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 ### <a name="monitoring-contributor"></a>Monitoring Contributor
 
-"監視共同作業者の" は、すべての監視データを読み取り、監視設定を更新できます。 次の表は、このロールに付与されるアクセス許可を示しています。
+"共同作成者の監視" は、すべての監視データを読み取り、監視設定を更新できます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -182,7 +183,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 ### <a name="monitoring-reader"></a>Monitoring Reader
 
-"監視閲覧者" は、すべての監視データを読み取ることができます。 次の表は、このロールに付与されるアクセス許可を示しています。
+"閲覧者の監視" は、すべての監視データを読み取ることができます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -208,8 +209,8 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 |**アクション**  |**アクセス許可**  |**最小スコープ**  |
 |---------|---------|---------|
-|新しいデプロイを記述する      | Microsoft.Resources/deployments/*          |サブスクリプション          |
-|新しいリソース グループを記述する      | Microsoft.Resources/subscriptions/resourceGroups/write        | サブスクリプション          |
+|新しいデプロイを記述する      | Microsoft.Resources/deployments/*          |[サブスクリプション]          |
+|新しいリソース グループを記述する      | Microsoft.Resources/subscriptions/resourceGroups/write        | [サブスクリプション]          |
 |新しい既定のワークスペースを作成する      | Microsoft.OperationalInsights/workspaces/write         | リソース グループ         |
 |新しいアカウントを作成する      |  Microsoft.Automation/automationAccounts/write        |リソース グループ         |
 |ワークスペースとアカウントをリンクする      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|ワークスペース</br>Automation アカウント
@@ -217,10 +218,10 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |MMA 拡張機能を作成する      | Microsoft.Compute/virtualMachines/write         | 仮想マシン         |
 |保存した検索条件を作成する      | Microsoft.OperationalInsights/workspaces/write          | ワークスペース         |
 |スコープ構成を作成する      | Microsoft.OperationalInsights/workspaces/write          | ワークスペース         |
-|ソリューションをスコープ構成にリンクする      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | ソリューション         |
+|ソリューションをスコープ構成にリンクする      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解決策         |
 |オンボード状態の確認 - ワークスペースを読み取る      | Microsoft.OperationalInsights/workspaces/read         | ワークスペース         |
 |オンボード状態の確認 - アカウントのリンクされたワークスペースのプロパティを読み取る     | Microsoft.Automation/automationAccounts/read      | Automation アカウント        |
-|オンボード状態の確認 - ソリューションを読み取る      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | ソリューション         |
+|オンボード状態の確認 - ソリューションを読み取る      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | 解決策         |
 |オンボード状態の確認 - VM を読み取る      | Microsoft.Compute/virtualMachines/read         | 仮想マシン         |
 |オンボード状態の確認 - アカウントを読み取る      | Microsoft.Automation/automationAccounts/read  |  Automation アカウント   |
 
@@ -228,18 +229,18 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 |**アクション**  |**アクセス許可** |**最小スコープ**  |
 |---------|---------|---------|
-|新しいデプロイを作成する     | Microsoft.Resources/deployments/*        | サブスクリプション         |
-|新しいリソース グループを作成する     | Microsoft.Resources/subscriptions/resourceGroups/write         | サブスクリプション        |
+|新しいデプロイを作成する     | Microsoft.Resources/deployments/*        | [サブスクリプション]         |
+|新しいリソース グループの作成     | Microsoft.Resources/subscriptions/resourceGroups/write         | [サブスクリプション]        |
 |AutomationOnboarding ブレード - 新しいワークスペースを作成する     |Microsoft.OperationalInsights/workspaces/write           | リソース グループ        |
 |AutomationOnboarding ブレード - リンクされたワークスペースを読み取る     | Microsoft.Automation/automationAccounts/read        | Automation アカウント       |
-|AutomationOnboarding ブレード - ソリューションを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | ソリューション        |
+|AutomationOnboarding ブレード - ソリューションを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | 解決策        |
 |AutomationOnboarding ブレード - ワークスペースを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | ワークスペース        |
 |ワークスペースとアカウントのリンクを作成する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |Shoebox のアカウントを記述する      | Microsoft.Automation/automationAccounts/write        | アカウント        |
 |ソリューションを作成する      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | リソース グループ         |
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |スコープ構成を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
-|ソリューションをスコープ構成にリンクする      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | ソリューション         |
+|ソリューションをスコープ構成にリンクする      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解決策         |
 |**手順 2 - 複数の VM のオンボード**     |         |         |
 |VMOnboarding ブレード - MMA 拡張機能を作成する     | Microsoft.Compute/virtualMachines/write           | 仮想マシン        |
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write           | ワークスペース        |
@@ -252,11 +253,11 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |**リソース**  |**ロール**  |**スコープ**  |
 |---------|---------|---------|
 |Automation アカウント     | Log Analytics 共同作成者       | Automation アカウント        |
-|Automation アカウント    | 仮想マシン共同作業者        | アカウントのリソース グループ        |
+|Automation アカウント    | Virtual Machine Contributor        | アカウントのリソース グループ        |
 |Log Analytics ワークスペース     | Log Analytics 共同作成者| Log Analytics ワークスペース        |
-|Log Analytics ワークスペース |Log Analytics 閲覧者| サブスクリプション|
-|ソリューション     |Log Analytics 共同作成者         | ソリューション|
-|仮想マシン     | 仮想マシン共同作業者        | 仮想マシン        |
+|Log Analytics ワークスペース |Log Analytics 閲覧者| [サブスクリプション]|
+|解決策     |Log Analytics 共同作成者         | 解決策|
+|仮想マシン     | Virtual Machine Contributor        | 仮想マシン        |
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Azure Portal を使用して Automation アカウントの RBAC を構成する
 

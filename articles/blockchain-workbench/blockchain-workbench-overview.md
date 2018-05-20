@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 1f1aa6b5a81285f2f6b3a298917f3d7c48853e29
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9cd8ef3977d12364759838b46632ba32e0de6e70
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench とは
 
@@ -50,4 +50,5 @@ Azure Blockchain Workbench では、ブロックチェーン上のデータを�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Blockchain Workbench のデプロイ](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench アーキテクチャ](blockchain-workbench-architecture.md)

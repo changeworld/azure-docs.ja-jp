@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - サービス インス
 description: Azure PowerShell のサンプル スクリプト - サービス インスタンスのスケーリング
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 96a0e3789988e29a8287633941203c499d68b387
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 367108fbd2406d9e5e0b0bf374cc424cd8a6f171
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="scale-the-service-instance"></a>サービス インスタンスのスケーリング
 

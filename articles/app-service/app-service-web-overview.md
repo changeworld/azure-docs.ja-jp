@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 79828193e283f0dcb80035cae0c11b050a1639ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要
 
@@ -37,7 +37,7 @@ App Service Web Apps の主な機能をいくつか次に示します。
 * **DevOps の最適化** - [継続的インテグレーションとデプロイ](app-service-continuous-deployment.md)を、Visual Studio Team Services、GitHub、BitBucket、Docker Hub、または Azure Container Registry で設定できます。 [テスト環境やステージング環境](web-sites-staged-publishing.md)を介して更新を反映できます。 Web Apps でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。
 * **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](web-sites-scale.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP など)、SaaS サービス (Salesforce など)、インターネット サービス (Facebook など) 向けに用意された 50 を超える[コネクタ](../connectors/apis-list.md)から選択できます。 また、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
-* **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/TrustCenter/)しています。 [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) またはソーシャル ログイン ([Google](app-service-mobile-how-to-configure-google-authentication.md)、[Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)、[Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)、および[Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)) でユーザーを認証します。 [IP アドレス制限](app-service-ip-restrictions.md)を作成し、[サービス ID を管理](app-service-managed-service-identity.md)します。
+* **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/en-us/trustcenter)しています。 [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) またはソーシャル ログイン ([Google](app-service-mobile-how-to-configure-google-authentication.md)、[Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)、[Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)、および[Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)) でユーザーを認証します。 [IP アドレス制限](app-service-ip-restrictions.md)を作成し、[サービス ID を管理](app-service-managed-service-identity.md)します。
 * **アプリケーション テンプレート** - WordPress、Joomla、Drupal など、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にある詳細な一覧からアプリケーション テンプレートを選択します。
 * **Visual Studio の統合** - Visual Studio の専用ツールを使えば、作成、デプロイ、デバッグの作業が効率的になります。
 * **API とモバイル機能** - Web Apps は、RESTful API シナリオに対してターンキー CORS サポートを提供するほか、認証、オフライン データ同期、プッシュ通知などを有効にして、モバイル アプリのシナリオを簡素化します。
@@ -50,10 +50,16 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 最初の Web アプリを作成する。
 
 > [!div class="nextstepaction"]
-> [ASP.NET](app-service-web-get-started-dotnet.md)
+> [ASP.NET Core](app-service-web-get-started-dotnet.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET](app-service-web-get-started-dotnet-framework.md)
 
 > [!div class="nextstepaction"]
 > [PHP](app-service-web-get-started-php.md)
+
+> [!div class="nextstepaction"]
+> [Ruby (Linux の場合)](containers/quickstart-ruby.md)
 
 > [!div class="nextstepaction"]
 > [Node.js](app-service-web-get-started-nodejs.md)

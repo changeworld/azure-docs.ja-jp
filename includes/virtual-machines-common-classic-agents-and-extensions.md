@@ -7,7 +7,7 @@ VM 拡張機能により以下を実行できます。
 * 接続機能 (RDP や SSH など) のリセットまたはインストール
 * VM の診断、監視、管理
 
-他にも多くの機能があります。 VM 拡張機能は定期的にリリースされます。 この記事では、Windows および Linux 向けの Azure VM エージェントと、それらのエージェントの VM 拡張機能のサポート方法について説明します。 機能カテゴリごとの VM 拡張機能の一覧については、[Azure VM 拡張機能とその機能](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+他にも多くの機能があります。 VM 拡張機能は定期的にリリースされます。 この記事では、Windows および Linux 向けの Azure VM エージェントと、それらのエージェントの VM 拡張機能のサポート方法について説明します。 機能カテゴリごとの VM 拡張機能の一覧については、[Azure VM 拡張機能とその機能](../articles/virtual-machines/extensions/features-windows.md)に関するページを参照してください。
 
 ## <a name="azure-vm-agents-for-windows-and-linux"></a>Windows および Linux 用 Azure VM エージェント
 Azure Virtual Machines エージェント (VM エージェント) はセキュリティで保護された軽量のプロセスであり、Azure Virtual Machines のインスタンスに対して VM 拡張機能のインストール、構成、削除を行います。 VM エージェントは、安全な Azure VM のローカル制御サービスとして機能します。 エージェントから読み込まれるされる拡張機能によって、インスタンスを使用して生産性を向上させる機能が提供されます。
@@ -31,7 +31,7 @@ VM エージェントは、次のような状況で有効化されます。
       $vm.VM.ProvisionGuestAgent = $TRUE
       Update-AzureVM –Name $name –VM $vm.VM –ServiceName $svc
 
-* VM エージェントがインストールされている VM イメージを作成する場合。 VM エージェントが含まれているイメージが存在する場合は、そのイメージを Azure にアップロードできます。 Window VM の場合、 [Windows VM Agent.msi ファイル](http://go.microsoft.com/fwlink/?LinkID=394789) をダウンロードして、VM エージェントをインストールします。 Linux VM の場合、VM エージェントは GitHub リポジトリ (<https://github.com/Azure/WALinuxAgent>) からインストールします。 Linux への VM エージェントのインストール方法の詳細については、[Azure Linux VM エージェント ユーザー ガイド](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
+* VM エージェントがインストールされている VM イメージを作成する場合。 VM エージェントが含まれているイメージが存在する場合は、そのイメージを Azure にアップロードできます。 Window VM の場合、 [Windows VM Agent.msi ファイル](http://go.microsoft.com/fwlink/?LinkID=394789) をダウンロードして、VM エージェントをインストールします。 Linux VM の場合、VM エージェントは GitHub リポジトリ (<https://github.com/Azure/WALinuxAgent>) からインストールします。 Linux への VM エージェントのインストール方法の詳細については、[Azure Linux VM エージェント ユーザー ガイド](../articles/virtual-machines/extensions/agent-linux.md)を参照してください。
 
 > [!NOTE]
 > PaaS では VM エージェントは **WindowsAzureGuestAgent** と呼ばれ、Web ロール VM および worker ロール VM でいつでも使用できます (詳細については、[Azure ロールのアーキテクチャ](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)に関するページを参照してください)。ロール VM 用の VM エージェントで、永続 Virtual Machines の場合と同じ方法でクラウド サービス VM に拡張機能を追加できるようになりました。 ロール VM の VM 拡張機能と永続 VM の VM 拡張機能の最も大きな違いは、VM 拡張機能を追加する際にあります。 ロール VM では、拡張機能がクラウド サービス、そのクラウド サービス内のデプロイの順に追加されます。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 032412c329e79ec671f59a049da7d8ddc0b9dd08
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 23dbd1f359f947b8e87ab4115887120dfd55907a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -60,7 +60,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 CocoaPods は、サードパーティ製のライブラリを使用する iOS プロジェクトの依存関係を管理します。
 
-ターミナル ウィンドウで、前提条件でダウンロードした Azure-IoT-Samples-iOS フォルダーに移動します。 その後、サンプル プロジェクトに移動します。
+ターミナル ウィンドウで、前提条件としてダウンロードした Azure-IoT-Samples-iOS フォルダーに移動します。 その後、サンプル プロジェクトに移動します。
 
 ```sh
 cd quickstart/sample-device
@@ -143,7 +143,7 @@ pod install
 
 8. デバイス エミュレーターで、**[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
 
-   ![プロジェクトの実行](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-app.png)
 
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
@@ -166,7 +166,7 @@ pod install
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT Suite]に関するドキュメントをご覧ください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ]に関するドキュメントをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
@@ -185,4 +185,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure portal]: https://portal.azure.com
-[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Azure IoT リモート監視ソリューション アクセラレータ]: https://azure.microsoft.com/documentation/suites/iot-suite/

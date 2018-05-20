@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b1c8c981c0b1c3b599d2dd737b680390a52888eb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -37,8 +37,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
-> [!NOTE]
-> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は、ほとんどのシナリオで非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 また、ユーザー サブスクリプション モードで Batch アカウントを作成するには、ご利用のサブスクリプションを Azure Batch に登録し、アカウントを Azure Key Vault に関連付ける必要があります。
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 1. [Azure Portal][azure_portal] にサインインします。
 2. **[リソースの作成]** をクリックし、Marketplace で「**Batch サービス**」を検索します。

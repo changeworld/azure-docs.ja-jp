@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: e7f587f6126f60f18bb4c6f184ec58cf7efc1a81
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 07b7f16cc019f993df90b217abd0c7ad16db75e1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンに接続する方法
 > [!IMPORTANT] 
@@ -233,5 +233,5 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 * [Azure で Linux VM の LVM を構成する](../configure-lvm.md)
 
 <!--Link references-->
-[Agent]:../agent-user-guide.md
+[Agent]:../../extensions/agent-linux.md
 [Logon]:../mac-create-ssh-keys.md

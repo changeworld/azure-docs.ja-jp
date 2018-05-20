@@ -1,7 +1,6 @@
 ---
-title: Azure HDInsight でデータ視覚化ツールを使用する Spark BI | Microsoft Docs
-description: HDInsight クラスター上で Apache Spark BI を使用して分析用のデータ視覚化ツールを使用する
-keywords: apache spark bi,spark bi, spark データ視覚化, spark ビジネス インテリジェンス
+title: 'チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 | Microsoft ドキュメント'
+description: Microsoft Power BI を使用して HDInsight クラスターに格納されている Spark データを視覚化する
 services: hdinsight
 documentationcenter: ''
 author: mumian
@@ -10,28 +9,34 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,mvc
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 02/14/2018
+ms.topic: tutorial
+ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 0e728e17a64acd990b301bac8139c7bb395a3098
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ece0132573f25f4d288309d2e7bb6710f8fd9519
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Azure HDInsight のデータ視覚化ツールを使用する Apache Spark BI
+# <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 
 
-[Microsoft Power BI](http://powerbi.microsoft.com) を使用して Azure HDInsight の Apache Spark クラスター内のデータを視覚化する方法について説明します。
+Microsoft Power BI を使用して、Azure HDInsight で Apache Spark クラスター内のデータを視覚化する方法について説明します。
+
+このチュートリアルで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Power BI を使用して Spark データを視覚化する
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **記事「[HDInsight で Spark クラスターに対して対話型クエリを実行する](./apache-spark-load-data-run-query.md)」を完了する**。
+* **記事「[チュートリアル: Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行](./apache-spark-load-data-run-query.md)**」を完了します。
 * **Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) と [Power BI 試用版サブスクリプション](https://app.powerbi.com/signupredirect?pbi_source=web) (省略可能)。
 
 
-## <a name="hivetable"></a>データを検証する
+## <a name="verify-the-data"></a>データの検証
 
 [前のチュートリアル](apache-spark-load-data-run-query.md)で作成した Jupyter Notebook には、`hvac` テーブルを作成するコードが含まれています。 このテーブルは、**\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv** のすべての HDInsight Spark クラスターで使用可能な CSV ファイルに基づいています。 データの検証に使用する手順は、以下のとおりです。
 
@@ -46,8 +51,7 @@ ms.lasthandoff: 04/18/2018
 
     ![Spark でのテーブルの表示](./media/apache-spark-use-bi-tools/show-tables.png)
 
-    このチュートリアルを開始する前に Notebook を閉じると、`hvactemptable` はクリーンアップされるため、出力に含まれません。
-    BI ツールからアクセスできるのは、metastore に保存された Hive テーブル (**isTemporary** 列に **False** と表示される) のみです。 このチュートリアルでは、作成した **hvac** テーブルに接続します。
+    このチュートリアルを開始する前に Notebook を閉じると、`hvactemptable` はクリーンアップされるため、出力に含まれません。  BI ツールからアクセスできるのは、metastore に保存された Hive テーブル (**isTemporary** 列に **False** と表示される) のみです。 このチュートリアルでは、作成した **hvac** テーブルに接続します。
 
 2. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押します。 このコードによってテーブル内のデータが検証されます。
 
@@ -62,21 +66,7 @@ ms.lasthandoff: 04/18/2018
 
 3. Notebook の **[ファイル]** メニューの **[Close and Halt]\(閉じて停止\)** をクリックします。 Notebook をシャットダウンしてリソースを解放します。 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## <a name="powerbi"></a>Power BI の使用
+## <a name="visualize-the-data"></a>データの視覚化
 
 このセクションでは、Power BI を使用して Spark クラスター データから視覚エフェクト、レポート、およびダッシュボードを作成します。 
 
@@ -226,8 +216,11 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 ## <a name="next-steps"></a>次の手順
 
-これまでに、クラスターを作成し、データを照会するための Spark データ フレームを作成し、BI ツールからそのデータにアクセスする方法を学習しました。 次は、クラスターのリソースを管理し、HDInsight Spark クラスターで実行されているジョブをデバッグする方法を見ていきましょう。
+このチュートリアルで学習した内容は次のとおりです。
 
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
+- Power BI を使用して Spark データを視覚化します。
+
+次の記事に進んで、Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。 
+> [!div class="nextstepaction"]
+> [Spark ストリーミング ジョブの実行](apache-spark-eventhub-streaming.md)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -62,7 +62,7 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>ネットワークのプロパティ
+### <a name="network-properties"></a>Network properties
 ネットワーク インターフェイス、TCP/IP 割り当て方式、仮想ネットワーク名、仮想サブネット名、仮想ネットワークの IP アドレス範囲、サブネットの IP アドレス範囲、仮想マシン内のネットワークに使用するパブリック ドメイン名ラベルは、以下の変数を使用して定義します。
 
 適宜変更を加えたうえで次のコマンドレットを実行し、これらの変数を初期化します。
@@ -120,7 +120,7 @@ $OSDiskName = $VMName + "OSDisk"
    ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-Resource Manager デプロイメント モデルで最初に作成するオブジェクトはリソース グループです。 ここでは [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。引数には、先ほど初期化した変数で定義したリソース グループの名前と場所を指定します。
+Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 ここでは [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。引数には、先ほど初期化した変数で定義したリソース グループの名前と場所を指定します。
 
 次のコマンドレットを実行すると、新しいリソース グループが作成されます。
 
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
-[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して、仮想マシンで使用するオペレーティング システムのプロパティを指定します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../agent-user-guide.md)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
+[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して、仮想マシンで使用するオペレーティング システムのプロパティを指定します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../../extensions/agent-windows.md)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
 
 次のコマンドレットを実行することで、仮想マシンに使用するオペレーティング システムのプロパティが設定されます。
 

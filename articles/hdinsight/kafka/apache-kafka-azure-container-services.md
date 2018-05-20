@@ -1,6 +1,6 @@
 ---
-title: Azure Container Service で Kafka on HDInsight を使用する | Microsoft Docs
-description: Azure Container Service (AKS) でホストされているコンテナー イメージから、Kafka on HDInsight を使用する方法について説明します。
+title: Azure Kubernetes Service で Kafka on HDInsight を使用する | Microsoft Docs
+description: Azure Kubernetes Service (AKS) でホストされているコンテナー イメージから、HDInsight 上の Kafka を使用する方法について説明します。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 555115397d63652df53c3c5e2e85e9aa7a687623
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Azure Container Service で Kafka on HDInsight を使用する
+# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 
-Azure Container Service (AKS) で Kafka on HDInsight クラスターを使用する方法について説明します。 このドキュメント内の手順では、AKS でホストされている Node.js アプリケーションを使用して、Kafka との接続を検証します。 このアプリケーションでは、[kafka-node](https://www.npmjs.com/package/kafka-node) パッケージを使用して Kafka と通信します。 ブラウザー クライアントと、AKS でホストされているバックエンドとの間のイベント駆動型メッセージングには、[Socket.io](https://socket.io/) を使用します。
+Azure Kubernetes Service (AKS) で HDInsight クラスター上の Kafka を使用する方法について説明します。 このドキュメント内の手順では、AKS でホストされている Node.js アプリケーションを使用して、Kafka との接続を検証します。 このアプリケーションでは、[kafka-node](https://www.npmjs.com/package/kafka-node) パッケージを使用して Kafka と通信します。 ブラウザー クライアントと、AKS でホストされているバックエンドとの間のイベント駆動型メッセージングには、[Socket.io](https://socket.io/) を使用します。
 
-[Apache Kafka](https://kafka.apache.org) はオープン ソースの分散ストリーム プラットフォームで、リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できます。 Azure Container Service は、ホストされた Kubernetes 環境を管理し、コンテナー化されたアプリケーションをすばやく簡単にデプロイできるようにします。 Azure Virtual Network を使用することで、これら 2 つのサービスを接続することができます。
+[Apache Kafka](https://kafka.apache.org) はオープン ソースの分散ストリーム プラットフォームで、リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できます。 Azure Kubernetes Service は、ホストされた Kubernetes 環境を管理し、コンテナー化されたアプリケーションをすばやく簡単にデプロイできるようにします。 Azure Virtual Network を使用することで、これら 2 つのサービスを接続することができます。
 
 > [!NOTE]
-> このドキュメントは、Azure Container Services が Kafka on HDInsight と通信できるようにするための手順に主眼を置いたものです。 ドキュメント内で示す例はあくまでも、構成が機能していることを確認するための基本的な Kafka クライアントです。
+> このドキュメントは、Azure Kubernetes Service が HDInsight 上の Kafka と通信できるようにするための手順に主眼を置いたものです。 ドキュメント内で示す例はあくまでも、構成が機能していることを確認するための基本的な Kafka クライアントです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,10 +37,10 @@ Azure Container Service (AKS) で Kafka on HDInsight クラスターを使用す
 このドキュメントでは、読者が次の Azure サービスの作成と使用に慣れていることを前提としています。
 
 * HDInsight 上の Kafka
-* Azure Container Service
+* Azure Kubernetes Service
 * Azure 仮想ネットワーク
 
-またこのドキュメントでは、読者が 「[Azure Container Services tutorial (Azure Container Services チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 このチュートリアルでは、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
+またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 このチュートリアルでは、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -56,12 +56,12 @@ HDInsight と AKS はいずれも、コンピューティング リソースの�
 > [!IMPORTANT]
 > ピアリングされたネットワーク間では名前解決が有効化されていないので、IP アドレス指定が使用されます。 既定では、Kafka on HDInsight はクライアント接続時に IP アドレスではなく、ホスト名を返すように構成されています。 このドキュメントの手順では、Kafka に変更を加えて、IP アドバタイズが使用されるようにします。
 
-## <a name="create-an-azure-container-service-aks"></a>Azure Container Service (AKS) を作成する
+## <a name="create-an-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) を作成する
 
 AKS クラスターがまだない場合は、次のいずれかのドキュメントを使用して、AKS クラスターの作成方法を確認してください。
 
-* [Azure Container Service (AKS) クラスターのデプロイ - ポータル](../../aks/kubernetes-walkthrough-portal.md)
-* [Azure Container Service (AKS) クラスターのデプロイ - ポータル - CLI](../../aks/kubernetes-walkthrough.md)
+* [Azure Kubernetes Service (AKS) クラスターのデプロイ - Portal](../../aks/kubernetes-walkthrough-portal.md)
+* [Azure Kubernetes Service (AKS) クラスターのデプロイ - CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!NOTE]
 > AKS では、インストール時に仮想ネットワークが作成されます。 このネットワークは、次のセクションで HDInsight 用に作成するネットワークにピアリングされます。
@@ -154,11 +154,11 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 ## <a name="test-the-configuration"></a>構成をテストする
 
-この時点で、Kafka と Azure Container Service はピアリングされた仮想ネットワークを通じて通信できるようになっています。 この接続をテストするには、次の手順に従います。
+この時点で、Kafka と Azure Kubernetes Service はピアリングされた仮想ネットワークを通じて通信できるようになっています。 この接続をテストするには、次の手順に従います。
 
 1. テスト アプリケーションによって使用される Kafka トピックを作成します。 Kafka クラスターを作成する方法については、[Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
 
-2. サンプル アプリケーションは [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) からダウンロードできます。 
+2. サンプル アプリケーションは [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) からダウンロードできます。
 
 3. `index.js` ファイルを編集し、次の行を変更します。
 
@@ -184,7 +184,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     ```
 
     > [!NOTE]
-    > Azure Container Registry 名がわからない場合や、Azure CLI で Azure Container Service を操作する方法がわからない場合は、[AKS チュートリアル](../../aks/tutorial-kubernetes-prepare-app.md)に関するドキュメントを参照してください。
+    > Azure Container Registry 名がわからない場合や、Azure CLI で Azure Kubernetes Service を操作する方法がわからない場合は、[AKS チュートリアル](../../aks/tutorial-kubernetes-prepare-app.md)に関するドキュメントを参照してください。
 
 6. ローカルの `kafka-aks-test` イメージを、ACR の loginServer にタグ付けします。 末尾には `:v1` を付加し、イメージのバージョンを示します。
 

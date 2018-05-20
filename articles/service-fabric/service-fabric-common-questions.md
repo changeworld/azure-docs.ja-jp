@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a112951409fc6177240b9eddc9fcd7f6c0c932cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
 Service Fabric で実行できる内容とその使用方法に関してよく寄せられる多数の質問があります。 このドキュメントでは、これらのよく寄せられる質問とその回答を示します。
 
 ## <a name="cluster-setup-and-management"></a>クラスターのセットアップと管理
+
+### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書はどのようにロールバックするのですか?
+
+アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master)は、[Application アップグレード パラメーター](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
+ 
+お使いのクラスターが、Resource Manager テンプレートで旧来の証明書の Thumbprint プロパティをまだ活用している場合は、最新の機密管理機能を活用するため、[クラスターで使用するのを証明書の拇印から共通名に変更する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)ことをお勧めします。
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>複数の Azure リージョンまたは自らのデータセンターにまたがるクラスターを作成することはできますか?
 
@@ -89,7 +95,7 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で接続されたデータ ディスクを暗号化することはできますか?
 はい。  詳細については、「[接続されたデータ ディスクを備えたクラスターの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)」、[ディスクの暗号化 (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) に関するセクション、および[ディスクの暗号化 (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md) に関するセクションを参照してください。
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>クラスターでウイルス対策プログラムを実行するときに除外する必要があるディレクトリとプロセス
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>クラスターでウイルス対策プログラムを実行するときに除外する必要があるディレクトリとプロセス
 
 | **ウイルス対策の対象外ディレクトリ** |
 | --- |

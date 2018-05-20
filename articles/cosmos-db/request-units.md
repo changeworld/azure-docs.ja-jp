@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
@@ -48,81 +48,6 @@ Azure Cosmos DB プログラム マネージャーの Andrew Liu が要求単位
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
-
-## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB での要求ユニット量の指定
-
-個別のコンテナーまたは一連のコンテナーの両方に対して予約したい 1 秒あたりの要求ユニット数 (RU/秒) を指定できます。 プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はお使いのコンテナーをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
-
-コンテナーは、RU/秒を個別のコンテナー レベルで割り当てるときに、"*固定*" または "*無制限*" として作成できます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 無制限のコンテナーを作成する場合は、少なくとも 1,000 RU/秒のスループットと[パーティション キー](partition-data.md)を指定する必要があります。 データが複数のパーティションに分割される場合があるため、高カーディナリティ (100 ～数百万の個別の値) のパーティション キーを選択する必要があります。 多数の異なる値を持つパーティション キーを選択すると、コンテナー/テーブル/グラフおよび要求を、Azure Cosmos DB で確実かつ一様に拡大縮小できるようになります。 
-
-一連のコンテナーに RU/秒を割り当てるとき、そのセットに属するコンテナーは "*無制限*" コンテナーとして処理され、パーティション キーを指定する必要があります。
-
-![個別のコンテナーおよび一連のコンテナーに対する要求ユニットのプロビジョニング][6]
-
-> [!NOTE]
-> パーティション キーは論理境界であり、物理的な境界ではありません。 したがって、個別のパーティション キー値の数を制限する必要はありません。 Azure Cosmos DB には他にも負荷分散のオプションがあるので、個別のパーティション キー値は多くしておくことをお勧めします。
-
-次に示すコード スニペットでは、SQL API の .NET SDK を使用して、個別のコンテナーに対して 1 秒あたり 3,000 要求ユニットのコンテナーを作成します。
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-次に示すコード スニペットでは、SQL API の .NET SDK を使用して、一連のコンテナーに対して 1 秒あたり 100,000 要求ユニットをプロビジョニングします。
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-
-Azure Cosmos DB は、スループットの予約モデルで運用されます。 つまり、実際に "*使用した*" スループット量ではなく、"*予約した*" スループット量に対する料金が請求されます。 アプリケーションの負荷やデータ、使用パターンが変化したときは、SDK や [Azure Portal](https://portal.azure.com) を使用して、予約済み RU の数を簡単にスケールアップしたりスケールダウンしたりできます。
-
-各コンテナーまたは一連のコンテナーは、Azure Cosmos DB の `Offer` リソースにマップされます。このリソースは、プロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コンテナーに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コンテナーのスループットを 1 秒あたり 5,000 要求ユニットに変更します。
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-スループットを変更しても、お使いの 1 つのコンテナーまたは一連のコンテナーの可用性には影響しません。 通常、新しく予約されたスループットは、数秒後にアプリケーションで有効になります。
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>グローバルな分散型データベースのスループット分離
 
@@ -347,6 +272,11 @@ Azure Cosmos DB サービスからの各応答には、特定の要求で使用�
 複数のクライアントが上述の要求レートで累積的に操作を実行している場合は、既定の再試行動作では十分な結果が得られず、クライアントは状態コード 429 で `DocumentClientException` をアプリケーションにスローします。 こうした場合は、再試行動作とアプリケーションのエラー処理ルーチンのロジックを制御するか、対象の 1 つのコンテナー (または一連のコンテナー) に対してプロビジョニングされたスループットを増やすことを検討します。
 
 ## <a name="next-steps"></a>次の手順
+ 
+Azure Portal と SDK を使用してスループットを設定および取得する方法については、次を参照してください。
+
+* [Azure Cosmos DB のスループットの設定および取得](set-throughput.md)
+
 Azure Cosmos DB データベースの予約済みスループットの詳細については、以下のリソースを参照してください。
 
 * [Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)
@@ -360,4 +290,4 @@ Azure Cosmos DB に関するスケールとパフォーマンスのテストを�
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/provisioning_set_containers.png
+

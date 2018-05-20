@@ -1,24 +1,24 @@
 ---
-title: "Azure AD を使用したアプリへのアクセスの管理 | Microsoft Docs"
-description: "Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。"
+title: Azure AD を使用したアプリへのアクセスの管理 | Microsoft Docs
+description: Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。
 services: active-directory
-documentationcenter: 
-author: femila
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-editor: 
-ms.assetid: b0829f18-9e57-4107-925d-5f0457d81671
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: markvi
-ms.openlocfilehash: 363478cb1bb2637a8c4f9cf36505817b163df781
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: 41b5eaf0fabcc57349df6694696cd8b8b11b9447
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 継続的なアクセスの管理、使用状況の評価、レポート作成は、アプリが組織の ID システムに統合された後でも簡単な作業ではありません。 多くの場合、アプリへのアクセスの管理では、IT 管理者またはヘルプデスクが大きな役割を担う必要があります。 場合によっては、割り当ては一般的なまたは部門の IT チームによって実行されます。 割り当ての決定はビジネスの意思決定者に委ねられ、IT が割り当てを行う前に彼らの承認が求められることが一般的です。  他の組織は、既存の自動 ID との統合に投資し、ロール ベースの Access Control (RBAC)、属性ベースの Access Control (ABAC) などの管理システムにアクセスします。 統合とルールの開発はいずれも専門知識や高いコストが求められる傾向にあります。 いずれの管理方法での監視またはレポートも、個々にコストがかかる複雑な投資になります。

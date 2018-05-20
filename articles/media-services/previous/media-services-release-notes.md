@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: b36c9150ef251939c9c484da93bc8a086b869676
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62f5ae4a9152d3f1b1641cc69136bf472527ba2a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -44,6 +44,10 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
+
+## <a name="may-2018"></a>2018 年 5 月 
+
+2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
 
 ## <a name="october-2017-release"></a>2017 年 10 月のリリース
 > [!IMPORTANT] 
@@ -79,7 +83,7 @@ Azure Media Redactor の一般公開: このメディア プロセッサでは�
 Media Services では、[Azure AD ベースの認証](media-services-use-aad-auth-to-access-ams-api.md)がサポートされています。
 
 > [!IMPORTANT]
-> 現在 Media Services では、Access Control Service 認証モデルがサポートされています。 Access Control Service 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
+> 現在 Media Services では、Access Control Service 認証モデルがサポートされています。 Access Control Service 承認は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
 ## <a name="march-2017-release"></a>2017 年 3 月のリリース
 
@@ -158,7 +162,7 @@ Basic、Standard、および Premium エンコード予約ユニットの名前�
 
 ### <a name="media-encoder-deprecation-announcement"></a>Media Encoder 廃止のお知らせ
 
- Media Encoder は Media Encoder Standard のリリースから 12 か月ほど経過した時点で廃止される予定です。
+ Media Encoder は Media Encoder Standard のリリースから 12 か月ほど経過した時点で非推奨となる予定です。
 
 ### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) パッケージの新しいリリースを公開しました。これには Media Services の更新プログラムと新機能が含まれています。 具体的には、Media Services SDK for PHP で、最新の[コンテンツ保護](media-services-content-protection-overview.md)機能がサポートされるようになりました。 つまり、AES と DRM (PlayReady と Widevine) による動的暗号化 (トークン制限あり/なし) 機能です。 また、[エンコード ユニット](media-services-dotnet-encoding-units.md)のスケーリングにも対応しています。
@@ -512,7 +516,7 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
             既知のバグ: キャンセル トークンを使用すると、アップロードがキャンセルされます。 タスクのキャンセル状態は多数あります。 例外を適切にキャッチし、処理する必要があります。
 * ロケーター
   
-    * オリジン固有のバージョンは削除されました。 SAS 固有の context.Locators.CreateSasLocator(asset, accessPolicy) は、一般公開されるまでに非推奨化または削除されます。 更新後の動作については、新機能に関するトピックのロケーターのセクションをご覧ください。
+    * オリジン固有のバージョンは削除されました。 SAS 固有の context.Locators.CreateSasLocator(asset, accessPolicy) は、一般公開されるまでに非推奨となるか、削除されます。 更新後の動作については、新機能に関するトピックのロケーターのセクションをご覧ください。
 
 ## <a id="june_changes_12"></a>2012 年 6 月のプレビュー リリース
 以下は、SDK の 11 月のリリースでの新機能です。

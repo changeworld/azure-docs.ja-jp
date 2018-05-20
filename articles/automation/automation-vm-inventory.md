@@ -3,17 +3,18 @@ title: インベントリ収集による Azure 仮想マシンの管理 | Micros
 description: インベントリ収集による仮想マシンの管理
 services: automation
 ms.service: automation
+ms.component: change-inventory-management
 keywords: インベントリ, オートメーション, 変更, 追跡
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0b744911d37e2d54f88ebeac3ec64a309bab22b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9f9c157fc8d1674aefcfea2ddea2aab3a4e86444
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 

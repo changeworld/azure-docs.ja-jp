@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/09/2018
 ms.author: maxluk
-ms.openlocfilehash: 1d3d9d228e86df2811b92a0fcaa235f9d8c58d3f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d2b65980516a7ae1857711f2e58d9cd0a8e8ec9a
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Spark Shell から Spark を実行する
 

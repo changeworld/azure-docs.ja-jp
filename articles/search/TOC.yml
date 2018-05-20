@@ -39,7 +39,7 @@
           href: search-fiddler.md
 - name: チュートリアル
   items:
-    - name: コグニティブ検索のインデックスを作成する
+    - name: コグニティブ検索の開発
       href: cognitive-search-tutorial-blob.md
     - name: Azure SQL Database のインデックスを作成する
       href: search-indexer-tutorial.md
@@ -73,11 +73,11 @@
   items:
     - name: 計画と設計
       items:
-        - name: SKU を選択する
+        - name: レベルの選択
           href: search-sku-tier.md
         - name: サービスの制限
           href: search-limits-quotas-capacity.md
-        - name: サービスの拡張性
+        - name: パーティションとレプリカの割り当て
           href: search-capacity-planning.md
         - name: マルチテナント方式の設計パターン
           href: search-modeling-multitenant-saas-applications.md

@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e10fefdd3bd46aeb90fd2cfc82d4fee3b17d867b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>アプリケーション プロキシと Qlik Sense 
 Azure Active Directory アプリケーション プロキシと Qlik Sense は一緒に連携動作し、アプリケーション プロキシを使用して Qlik Sense 配置用のリモート アクセスを容易に提供できるようにします。  
@@ -25,13 +25,13 @@ Azure Active Directory アプリケーション プロキシと Qlik Sense は�
 このシナリオの残りは、以下を終えていることが前提となっています。
  
 - [Qlik Sense](https://community.qlik.com/docs/DOC-19822) を構成した。 
-- [アプリケーション プロキシ コネクタをインストールした](active-directory-application-proxy-enable.md#install-and-register-a-connector)。 
+- [アプリケーション プロキシ コネクタをインストールした](manage-apps/application-proxy-enable.md#install-and-register-a-connector)。 
  
 ## <a name="publish-your-applications-in-azure"></a>アプリケーションを Azure に発行する 
 QlikSense を発行するには、Azure で 2 つのアプリケーションを発行する必要があります。  
 
 ### <a name="application-1"></a>アプリケーション 1: 
-アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。 
+アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。 
 
 
 1. Azure Portal にグローバル管理者としてサインインします。 
@@ -58,5 +58,5 @@ QlikSense を発行するには、Azure で 2 つのアプリケーションを�
 
 ## <a name="next-steps"></a>次の手順
 
-- [アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)
-- [アプリケーション プロキシ コネクタの使用方法](active-directory-application-proxy-connectors-azure-portal.md)。
+- [アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)
+- [アプリケーション プロキシ コネクタの使用方法](manage-apps/application-proxy-connector-groups.md)。

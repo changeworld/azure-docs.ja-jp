@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: f6986df19482800ff676c0e05ad680e14dfeca1f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/10/2018
+---
 ## <a name="view-device-telemetry"></a>デバイス テレメトリを表示する
 
 デバイスから送信されたテレメトリは、ソリューションの **[デバイス]** ページで表示できます。
@@ -24,7 +40,7 @@
 
     ![物理デバイスを選択する](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. デバイスで呼び出すことができるメソッドの一覧を表示するには、**[スケジュール]** を選択します。 複数のデバイスで実行するメソッドのスケジュールを設定するために、一覧から複数のデバイスを選択することができます。 **[スケジュール]** パネルには、選択したすべてのデバイスに共通のメソッドの型が表示されます。
+1. デバイスで呼び出すことができるメソッドの一覧を表示するには、**[ジョブ]** を選択してから、**[Run メソッド]** を選択します。 複数のデバイスで実行するジョブのスケジュールを設定するために、一覧から複数のデバイスを選択することができます。 **[ジョブ]** パネルには、選択したすべてのデバイスに共通のメソッドの型が表示されます。
 
 1. **[FirmwareUpdate]** を選択し、ジョブ名を **UpdatePhysicalChiller** に設定します。 **[ファームウェア バージョン]** を **[2.0.0]** に、**[Firmware URI]\(ファームウェアの URI\)** を **http://contoso.com/updates/firmware.bin** に設定し、**[適用]** を選択します。
 
@@ -41,4 +57,4 @@
 
 ## <a name="next-steps"></a>次の手順
 
-[「Customize the remote monitoring preconfigured solution (リモート監視構成済みソリューションをカスタマイズする)](../articles/iot-suite/iot-suite-remote-monitoring-customize.md)」では、構成済みソリューションをカスタマイズする方法をいくつか説明します。
+[「リモート監視の構成済みソリューションのカスタマイズ](../articles/iot-suite/iot-suite-remote-monitoring-customize.md)」の記事では、ソリューション アクセラレータをカスタマイズする方法をいくつか説明します。

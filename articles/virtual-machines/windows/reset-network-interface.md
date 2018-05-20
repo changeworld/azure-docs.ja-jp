@@ -1,24 +1,24 @@
 ---
-title: "Azure Windows VM のネットワーク インターフェイスをリセットする方法 | Microsoft Docs"
-description: "Azure Windows VM のネットワーク インターフェイスをリセットする方法を示します"
+title: Azure Windows VM のネットワーク インターフェイスをリセットする方法 | Microsoft Docs
+description: Azure Windows VM のネットワーク インターフェイスをリセットする方法を示します
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6bf5c991e8a96cfdcbad971e0f2ea2dfd01f2893
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 7c78c80e5eaceb210a50549e2885e56c0d9ec7f1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 

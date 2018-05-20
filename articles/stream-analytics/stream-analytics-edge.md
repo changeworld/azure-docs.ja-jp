@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9a9608825cf041007c000729becb34e9a3063f92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics on IoT Edge (プレビュー)
 
@@ -60,11 +60,10 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge ジョブを作成する
-1. Azure Portal で、新しい "Stream Analytics ジョブ" を作成します。 新しい ASA ジョブを作成するには、[こちらの直接リンク](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)を参照してください。
-
 > [!Note]
-> ASA でサポートされているすべてのリージョンでエッジ ジョブを作成できます。ただし、**"米国西部 2" リージョンを除きます**。
-> この制限は、間もなく削除されます。
+> このチュートリアルでは、Azure Portal を使用した ASA ジョブの作成について説明します。 [Visual Studio プラグインを使用して ASA エッジ ジョブを作成する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)こともできます
+
+1. Azure Portal で、新しい "Stream Analytics ジョブ" を作成します。 新しい ASA ジョブを作成するには、[こちらの直接リンク](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)を参照してください。
 
 2. 作成画面で、**ホスティング環境**として **Edge** を選択します (次の図を参照) ![ジョブの作成](media/stream-analytics-edge/ASAEdge_create.png)
 3. ジョブ定義
@@ -147,7 +146,6 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 * Azure ML 関数。
 * 1 つの手順での 14 を超える集計の使用。
 * 入力/出力の AVRO 形式。 現時点では、CSV と JSON のみがサポートされます。
-* JSON 入力の圧縮。
 * 次の SQL 演算子:
     * AnomalyDetection
     * 地理空間演算子:
@@ -210,6 +208,7 @@ ASA on IoT Edge で参照データを使用するには、次の手順に従う�
 * [Azure IoT Edge の詳細](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [このアンケートを使用してフィードバックをチームに送信する](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

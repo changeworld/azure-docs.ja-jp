@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2018
+ms.date: 05/09/2018
 ms.author: larryfr
-ms.openlocfilehash: 01dd31c1dfd9a91483c0ac9eaca1c80410463731
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7416d064f89515feb04523ca6d4ea73f37c14e38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight の Hadoop で MapReduce ジョブを実行
 

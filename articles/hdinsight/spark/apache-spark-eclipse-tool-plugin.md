@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd54c4abeaa58c1b78f67c55eb5e8856dc5bb0c4
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -71,7 +71,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
 <h2 id="linkcluster">クラスターのリンク</h2>
 Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。
-1. **Azure 用エクスプローラー**の**[Link a cluster]\(クラスターのリンク\)** をクリックします。
+1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
@@ -142,7 +142,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Package Explorer で、プロジェクト名を右クリックし、**[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。        
    b. **[Spark Submission]\(Spark 送信\)** ダイアログ ボックスで、次の値を入力し、**[Submit]\(送信\)** を選択します。
       
-      * **[Cluster Name (クラスター名)]**で、アプリケーションを実行する HDInsight Spark クラスターを選択します。
+      * **[Cluster Name (クラスター名)]** で、アプリケーションを実行する HDInsight Spark クラスターを選択します。
       * Eclipse プロジェクトまたはハード ドライブからアーティファクトを選択します。 既定値は、Package Explorer から右クリックした項目によって異なります。
       * 送信ウィザードの **[Main class name]\(メイン クラス名\)** ボックスの一覧に、プロジェクトのすべてのオブジェクト名が表示されます。 実行するオブジェクトを選択または入力します。 ハード ドライブからアーティファクトを選択した場合は、メイン クラス名を手動で入力する必要があります。 
       * この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのテキスト ボックスは空のままでかまいません。
@@ -229,13 +229,15 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
    ![Spark アプリケーションをローカルに実行した結果](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="known-problems"></a>既知の問題
-アプリケーションを Azure Data Lake Store に送信するには、Azure サインイン プロセスで **[Interactive]\(インタラクティブ\)** モードを選択します。 **[Automated]\(自動\)** モードを選択した場合、エラーが発生することがあります。
+クラスターをリンクするとき、ストレージの資格情報を提供することをお勧めします。
 
-![対話型のサインイン](./media/apache-spark-eclipse-tool-plugin/interactive-authentication.png)
+![対話型のサインイン](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-Azure Data Lake クラスターを選択して、任意のサインイン方法でアプリケーションを送信することができます。
+ジョブの送信には、2 つのモードがあります。 ストレージ資格情報が入力されると、バッチ モードが使用され、ジョブが送信されます。 入力されない場合、対話モードが使用されます。 クラスターがビジー状態の場合、下のエラーが表示されることがあります。
 
-現在、Spark の出力を直接表示する機能はサポートされていません。
+![クラスターがビジー状態のときの Eclipse エラー](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+
+![クラスターがビジー状態のときの Eclipse エラー](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback"></a>フィードバック
 ご意見がございましたら、またはこのツールを使用していてその他の問題が発生した場合は、hdivstool@microsoft.com に電子メールでお問い合わせください。

@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid から HTTP エンドポイントへのイベントの受信"
-description: "HTTP エンドポイントを検証した後、Azure Event Grid からのイベントを受信して逆シリアル化する方法について説明します"
+title: Azure Event Grid から HTTP エンドポイントへのイベントの受信
+description: HTTP エンドポイントを検証した後、Azure Event Grid からのイベントを受信して逆シリアル化する方法について説明します
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 179f7c46186762eed2f7f8ac90620ac2fec9caf3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 
@@ -23,13 +23,13 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-* [HTTP によってトリガーされる関数](../azure-functions/functions-create-generic-webhook-triggered-function.md)を含む関数アプリが必要です。
+* [HTTP によってトリガーされる関数](../azure-functions/functions-create-generic-webhook-triggered-function.md)を含む関数アプリが必要です
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
-.Net で開発する場合は、`Microsoft.Azure.EventGrid` [Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)の関数に[依存関係を追加します](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 他の言語用の SDK は、[発行 SDK](./sdk-overview.md#publish-sdks) リファレンスを介して利用できます。 これらのパッケージには、`EventGridEvent``StorageBlobCreatedEventData`、`EventHubCaptureFileCreatedEventData` などのネイティブなイベントの種類用のモデルが含まれています。
+.NET で開発する場合は、`Microsoft.Azure.EventGrid` [Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)の関数に[依存関係を追加します](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 他の言語用の SDK は、[発行 SDK](./sdk-overview.md#data-plane-sdks) リファレンスを介して利用できます。 これらのパッケージには、`EventGridEvent``StorageBlobCreatedEventData`、`EventHubCaptureFileCreatedEventData` などのネイティブなイベントの種類用のモデルが含まれています。
 
-これを行うには、Azure 関数 (Azure functions ポータルの右端のウィンドウ) の [ファイルの表示] リンクをクリックし、project.json という名前のファイルを作成します。 `project.json` ファイルに次の内容を追加し、保存します。
+Azure 関数 (Azure functions ポータルの右端のウィンドウ) の [ファイルの表示] リンクをクリックし、project.json という名前のファイルを作成します。 `project.json` ファイルに次の内容を追加し、保存します。
 
  ```json
 {
@@ -41,19 +41,17 @@ ms.lasthandoff: 02/24/2018
     }
    }
 }
-
 ```
 
 ![追加された NuGet パッケージ](./media/receive-events/add-dependencies.png)
 
 ## <a name="endpoint-validation"></a>エンドポイントの検証
 
-最初に実行することは、`Microsoft.EventGrid.SubscriptionValidationEvent` イベントの処理です。 新しいイベント サブスクリプションが作成されるたびに、Event Grid は、データ ペイロード内に `validationCode` を含む検証イベントをエンドポイントに送信します。 エンドポイントは、これを応答本文にエコー バックして、[エンドポイントが有効であり、ユーザーによって所有されていることを証明する](security-authentication.md#webhook-event-delivery)必要があります。 WebHook によってトリガーされる関数ではなく [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用している場合、エンドポイントの検証は自動的に処理されます。
+最初に実行することは、`Microsoft.EventGrid.SubscriptionValidationEvent` イベントの処理です。 だれかがイベントにサブスクライブするたびに、Event Grid は、データ ペイロード内に `validationCode` を含む検証イベントをエンドポイントに送信します。 エンドポイントは、これを応答本文にエコー バックして、[エンドポイントが有効であり、ユーザーによって所有されていることを証明する](security-authentication.md#webhook-event-delivery)必要があります。 WebHook によってトリガーされる関数ではなく [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用している場合、エンドポイントの検証は自動的に処理されます。 サード パーティ製 API サービス ([Zapier](https://zapier.com) または [IFTTT](https://ifttt.com/) など) を使用する場合は、検証コードをプログラムでエコーできないことがあります。 このようなサービスの場合は、サブスクリプション検証イベントで送信される検証 URL を使用すると、サブスクリプションを手動で検証できます。 その URL を `validationUrl` プロパティにコピーし、REST クライアントまたは Web ブラウザーのいずれかを使って GET 要求を送信します。
 
-次のコードを使用して、サブスクリプションの検証を処理します。
+検証コードをプログラムでエコーするには、次のコードを使用します。
 
 ```csharp
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -102,7 +100,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -122,7 +119,6 @@ module.exports = function (context, req) {
     }
     context.done();
 };
-
 ```
 
 ### <a name="test-validation-response"></a>検証の応答をテストする
@@ -130,7 +126,6 @@ module.exports = function (context, req) {
 サンプル イベントを関数のテスト フィールドに貼り付けることによって、検証応答関数をテストします。
 
 ```json
-
 [{
   "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -143,7 +138,6 @@ module.exports = function (context, req) {
   "metadataVersion": "1",
   "dataVersion": "1"
 }]
-
 ```
 
 [実行] をクリックすると、200 OK と、本文に `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` が出力されます。
@@ -152,10 +146,9 @@ module.exports = function (context, req) {
 
 ## <a name="handle-blob-storage-events"></a>BLOB ストレージ イベントを処理する
 
-次に、`Microsoft.Storage.BlobCreated` を処理するように関数を拡張できます。
+次に、`Microsoft.Storage.BlobCreated` を処理するように関数を拡張してみましょう。
 
 ```cs
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -211,7 +204,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -245,7 +237,6 @@ module.exports = function (context, req) {
 テスト フィールドに [BLOB ストレージ イベント](./event-schema-blob-storage.md#example-event)を配置して実行することで、関数の新しい機能をテストします。
 
 ```json
-
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/xstoretestaccount",
   "subject": "/blobServices/default/containers/testcontainer/blobs/testfile.txt",
@@ -269,23 +260,21 @@ module.exports = function (context, req) {
   "dataVersion": "",
   "metadataVersion": "1"
 }]
-
 ```
 
 関数ログに BLOB URL が出力されます。
 
 ![出力ログ](./media/receive-events/blob-event-response.png)
 
-Blob ストレージ アカウントまたは General Purpose V2 (GPv2) Storage アカウントを作成し、[イベント サブスクリプションを追加](../storage/blobs/storage-blob-event-quickstart.md)し、エンドポイントを関数 URL に設定することで、このテストをライブで実行することもできます。
+Blob ストレージ アカウントまたは General Purpose V2 (GPv2) Storage アカウントを作成し、[イベント サブスクリプションを追加](../storage/blobs/storage-blob-event-quickstart.md)し、エンドポイントを関数 URL に設定してテストすることもできます。
 
-![関数 URL](./media/receive-events/function-url.png)
+![関数の URL](./media/receive-events/function-url.png)
 
 ## <a name="handle-custom-events"></a>カスタム イベントを処理する
 
-最後に、関数をもう一度拡張して、カスタム イベントも処理できるようにしましょう。 独自のイベント `Contoso.Items.ItemReceived` のチェックを追加します。 最終的なコードは、次のようになります。
+最後に、関数をもう一度拡張して、カスタム イベントも処理できるようにしましょう。 イベント `Contoso.Items.ItemReceived` のチェックを追加します。 最終的なコードは、次のようになります。
 
 ```cs
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -354,7 +343,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 var t = require('tcomb');
 
@@ -401,7 +389,6 @@ module.exports = function (context, req) {
 最後に、拡張した関数がカスタム イベントの種類を処理できるようになっていることをテストします。
 
 ```json
-
 [{
     "subject": "Contoso/foo/bar/items",
     "eventType": "Microsoft.EventGrid.CustomEventType",
@@ -415,7 +402,6 @@ module.exports = function (context, req) {
     "dataVersion": "",
     "metadataVersion": "1"
 }]
-
 ```
 
 この機能は、[カスタム イベントと CURL をポータルから送信する](./custom-event-quickstart-portal.md)か、[Postman](https://www.getpostman.com/) などのエンドポイントに POST できる任意のサービスまたはアプリケーションを使用して[カスタム トピックを投稿する](./post-to-custom-topic.md)ことで、ライブでテストすることもできます。 エンドポイントが関数 URL として設定されたカスタム トピックとイベント サブスクリプションを作成します。

@@ -8,16 +8,14 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/19/2018
-ms.openlocfilehash: 5ebf2d1025c8f9469a83a408cb79e3d944a601bc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/27/2018
+ms.openlocfilehash: 2b2ef68622f96d87a25d203d3d67aa0877397072
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
-
-Stream Analytics が受け取るデータは、各種のイベント ソースから着信します。 Stream Analytics ジョブに入力として与えられるデータ接続を、そのジョブの "*入力*" といいます。 
 
 Stream Analytics は、Azure データ ストリームとの統合にきわめて優れており、次の 3 種類のリソースを入力とすることができます。
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
@@ -25,17 +23,6 @@ Stream Analytics は、Azure データ ストリームとの統合にきわめ�
 - [Azure BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
 これらの入力ソースは、Stream Analytics ジョブと同じ Azure サブスクリプションに存在していても、異なるサブスクリプションに存在していてもかまいません。
-
-## <a name="compare-stream-and-reference-inputs"></a>ストリームと参照入力の比較
-データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。 入力は 2 つのタイプであるデータ ストリーム入力と参照データ入力に分けられます。
-
-### <a name="data-stream-input"></a>データ ストリーム入力
-データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。 Stream Analytics のジョブには、少なくとも 1 つのデータ ストリーム入力を含める必要があります。 Event Hubs、IoT Hub、および Blob Storage は、データ ストリーム入力ソースとしてサポートされます。 Event Hubs は、複数のデバイスとサービスからイベント ストリームを収集するために使用されます。 これらのストリームには、ソーシャル メディア アクティビティ フィード、株式取引情報、またはセンサーからのデータが含まれている場合があります。 IoT Hub はモノのインターネット化 (IoT) シナリオ内で、接続されているデバイスからデータを収集するように最適化されています。  ストリームとしてバルク データ (ログ ファイルなど) を取り込むための入力ソースとして、Blob Storage を使用できます。  
-
-### <a name="reference-data-input"></a>参照データ入力
-Stream Analytics は、"*参照データ*" と呼ばれる入力もサポートします。 これは静的データまたは変更頻度の低い補足データであり、 参照データは通常、相関関係の関連付けと参照を実行するために使用されます。 たとえば、SQL の結合を実行して静的な値を参照する場合と同様に、データ ストリーム入力のデータを参照データのデータに結合できます。 現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。 参照データ ソースの BLOB のサイズは、最大で 100 MB に制限されています。
-
-参照データ入力を作成する方法については、「[Stream Analytics の入力ストリームでの参照データまたはルックアップ テーブルの使用](stream-analytics-use-reference-data.md)」を参照してください。  
 
 ### <a name="compression"></a>圧縮
 Stream Analytics では、すべてのデータ ストリーム入力ソースにわたる圧縮がサポートされています。 現在サポートされている参照の種類は、[なし]、[GZip]、[Deflate] 圧縮です。 参照データの圧縮はサポートされていません。 入力形式が、圧縮された Avro データである場合、透過的に処理されます。 Avro のシリアル化に圧縮の種類を指定する必要はありません。 
@@ -50,7 +37,6 @@ Stream Analytics では、すべてのデータ ストリーム入力ソース�
 7. 接続オプションが有効であること、また正常に機能していることを確認するには、入力の詳細ページで **[テスト]** を選択します。 
 8. 既存の入力の名前を右クリックして **[入力からのサンプル データ]** を選択し、必要に応じてさらにテストを行います。
 
-Stream Analytics ジョブに対する入力の作成、編集、テストは、[Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput)、[.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、[REST API](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input)、[Visual Studio](stream-analytics-tools-for-visual-studio.md) を使用して行うこともできます。
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信
 
@@ -59,7 +45,7 @@ Azure Event Hubs はスケーラブルな発行/サブスクライブ イベン�
 Stream Analytics で Event Hubs から返されるイベントの既定のタイムスタンプは、このイベントが Event Hubs に到達したときのタイムスタンプです。このタイムスタンプが `EventEnqueuedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
 ### <a name="consumer-groups"></a>コンシューマー グループ
-Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。 ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。 この状況は 1 つのコンシューマー グループの閲覧者数に影響を与えます。 閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とする Event Hubs の上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。 イベント ハブごとに 20 個のコンシューマー グループという制限もあります。 詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。
+Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。 ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。 この状況は 1 つのコンシューマー グループの閲覧者数に影響を与えます。 閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とする Event Hubs の上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。 イベント ハブごとに 20 個のコンシューマー グループという制限もあります。 詳細については、[Event Hub レシーバーでの Azure Stream Analytics のトラブルシューティング](stream-analytics-event-hub-consumer-groups.md)をご覧ください。
 
 ### <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信
 次の表に示したのは、Azure Portal の **[新しい入力]** ページで Event Hubs からのデータ入力をストリーム配信するときに使う各プロパティの説明です。
@@ -72,7 +58,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 | **イベント ハブ名** | 入力として使用するイベント ハブの名前。 |
 | **イベント ハブ ポリシー名** | イベント ハブへのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ハブの設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。|
 | **イベント ハブ コンシューマー グループ** (推奨) | Stream Analytics ジョブごとに個別のコンシューマー グループを使用することを強くお勧めします。 イベント ハブからデータを取り込むために使用するコンシューマー グループが、この文字列によって識別されます。 コンシューマー グループが指定されていない場合、Stream Analytics ジョブは $Default コンシューマー グループを使用します。  |
-| **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。 |
+| **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
 | **Encoding** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | **イベントの圧縮タイプ** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
 
@@ -95,7 +81,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> IoT Hub ルートのエンドポイントとして Event Hub を使用する場合は、[GetMetadataPropertyValue 関数](https://msdn.microsoft.com/en-us/library/azure/mt793845.aspx)を使用して IoT Hub メタデータにアクセスすることができます。
+> IoT Hub ルートのエンドポイントとして Event Hub を使用する場合は、[GetMetadataPropertyValue 関数](https://msdn.microsoft.com/library/azure/mt793845.aspx)を使用して IoT Hub メタデータにアクセスすることができます。
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>IoT Hub からのデータのストリーム配信
@@ -122,7 +108,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 | **共有アクセス ポリシー名** | IoT Hub へのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 |
 | **共有アクセス ポリシー キー** | IoT Hub へのアクセスを承認するために使用する共有アクセス キー。  IoT Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
 | **コンシューマー グループ** | Stream Analytics ジョブごとに異なるコンシューマー グループを使用することを強くお勧めします。 IoT Hub からのデータを取り込むために使用するコンシューマー グループです。 明示的に指定されない限り、Stream Analytics は $Default コンシューマー グループを使用します。  |
-| **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。 |
+| **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
 | **Encoding** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | **イベントの圧縮タイプ** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
 
@@ -171,7 +157,7 @@ CSV 形式の入力については、データ セットのフィールドを定
 | **パス パターン** (省略可能) | 指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。 このパス内に、3 つの変数 (`{date}`、`{time}`、`{partition}`) の 1 つ以上のインスタンスを指定できます。<br/><br/>例 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>例 2: `cluster1/logs/{date}`<br/><br/>`*` 文字はパス プレフィックスの許容値ではありません。 許容値は、有効な <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure BLOB 文字</a>のみです。 |
 | **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` |
 | **時刻形式** (省略可能) |  パスで時刻変数を使用する場合は、ファイルを編成する時刻形式です。 現在唯一サポートされている値は `HH` (時) です。 |
-| **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。 |
+| **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。  JSON 形式が仕様に準拠しており、10 進数の先頭に 0 が含まれていないことを確認します。 |
 | **Encoding** | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | **圧縮** | 受信データ ストリームを読み取る際に使用される圧縮タイプ。[なし] (既定値)、[GZip]、[Deflate] などがあります。 |
 
@@ -195,12 +181,8 @@ FROM Input
 ```
 
 ## <a name="next-steps"></a>次の手順
-ここでは、Azure での Stream Analytics ジョブのデータ接続オプションについて説明しました。 Stream Analytics の詳細については、以下を参照してください。
-
-* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+> [!div class="nextstepaction"]
+> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

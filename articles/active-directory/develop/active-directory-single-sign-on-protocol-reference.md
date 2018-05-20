@@ -1,13 +1,14 @@
 ---
-title: "Azure でのシングル サインオンの SAML プロトコル | Microsoft Docs"
-description: "この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。"
+title: Azure でのシングル サインオンの SAML プロトコル | Microsoft Docs
+description: この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddd5fa6f2ed0878afd8bbd6399471e92dfa30385
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 この記事では、Azure Active Directory (Azure AD) がシングル サインオンに対してサポートする SAML 2.0 の認証要求と応答について説明します。
@@ -42,7 +43,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
 
 
-| パラメーター |  | Description |
+| パラメーター |  | [説明] |
 | --- | --- | --- |
 | ID |必須 |Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | バージョン |必須 |これは、 **2.0**にする必要があります。 |
@@ -93,10 +94,10 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 ### <a name="signature"></a>署名
 `AuthnRequest` 要素には `Signature` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
 
-### <a name="subject"></a>[件名]
+### <a name="subject"></a>件名
 Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
-## <a name="response"></a>応答
+## <a name="response"></a>Response
 要求されたサインオンが正常に完了すると、Azure AD はクラウド サービスに応答を送信します。 成功したサインオン試行に対する応答の例を次に示します。
 
 ```
@@ -142,7 +143,7 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 </samlp:Response>
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 `Response` 要素には、承認要求の結果が含まれます。 Azure AD は、`Response` 要素の `ID`、`Version`、`IssueInstant` の値を設定します。 また、次の属性も設定します。
 
 * `Destination`: サインオンが正常に完了すると、この属性にはサービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
@@ -198,7 +199,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>[件名]
+#### <a name="subject"></a>件名
 この要素は、アサーションのステートメントのサブジェクトであるプリンシパルを指定します。 認証されたユーザーを表す `NameID` 要素が含まれます。 `NameID` の値は、トークンの対象であるサービス プロバイダーに対してのみ送信される限定的な識別子です。 永続的であり、取り消すことはできますが、再割り当てはされません。 また、非透過的であるため、ユーザーについての情報はわからず、属性クエリに対する識別子としては使用できません。
 
 `SubjectConfirmation` 要素の `Method` 属性は、常に `urn:oasis:names:tc:SAML:2.0:cm:bearer` に設定されます。
@@ -228,7 +229,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 * `NotBefore` 属性の値は、`Assertion` 要素の `IssueInstant` 属性と同じか、またはそれよりもわずかに (1 秒未満) 後です。 Azure AD では、それ自体とクラウド サービス (サービス プロバイダー) 間の時間の違いは考慮されず、この時間に対するバッファーは追加されません。
 * `NotOnOrAfter` 属性の値は、`NotBefore` 属性の値より 70 分後です。
 
-#### <a name="audience"></a>オーディエンス
+#### <a name="audience"></a>対象ユーザー
 この要素には、対象を識別する URI が含まれます。 Azure AD は、この要素の値に、サインオンを開始した `AuthnRequest` の `Issuer` 要素の値を設定します。 `Audience` の値を評価するには、アプリケーション登録時に指定された `App ID URI` の値を使用します。
 
 ```

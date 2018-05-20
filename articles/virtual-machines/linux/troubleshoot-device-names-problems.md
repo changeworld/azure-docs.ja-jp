@@ -1,24 +1,24 @@
 ---
-title: "Azure 上の Linux VM デバイス名の変更のトラブルシューティング | Microsoft Docs"
-description: "Linux VM デバイス名が変更される理由と、問題の解決方法について説明します。"
+title: Azure 上の Linux VM デバイス名の変更のトラブルシューティング | Microsoft Docs
+description: Linux VM デバイス名が変更される理由と、問題の解決方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 891ca1c2db431c792329b1c67c24e2e453aa00d1
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1b500cc279cf9b92a3358d66e6db59dbf41d73b8
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM デバイス名の変更トラブルシューティング
 

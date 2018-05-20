@@ -1,7 +1,7 @@
 ---
-title: "リモート監視ソリューションのカスタマイズ - Azure | Microsoft Docs"
-description: "この記事では、リモート監視の構成済みソリューションのソース コードにアクセスする方法について説明します。"
-services: 
+title: リモート監視ソリューション UI のカスタマイズ - Azure | Microsoft Docs
+description: この記事では、リモート監視ソリューション アクセラレータ UI にアクセスし、いくつかのカスタマイズを行う方法について説明します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,256 +12,457 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f5d38091b59110859d4376a5cd16a19f24dad65b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: be20d45b380f66208884f15f4644f36f2a403837
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="customize-the-remote-monitoring-preconfigured-solution"></a>リモート監視の構成済みソリューションのカスタマイズ
+# <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
-この記事では、構成済みソリューションのソース コードにアクセスし、リモート監視をカスタマイズする方法について説明します。 この記事では、次の内容について説明します。
+この記事では、ソース コードにアクセスし、リモート監視ソリューション アクセラレータ UI をカスタマイズする方法について説明します。 この記事では、次の内容について説明します。
 
-* ソース コードと構成済みソリューションを構成するマイクロサービスのリソースが保存されている GitHub リポジトリ。
-* 新しいデバイスの種類を追加するなどの一般的なカスタマイズのシナリオ。
+## <a name="prepare-a-local-development-environment-for-the-ui"></a>UI のローカル開発環境を準備する
 
-次のビデオでは、リモート監視構成済みソリューションをカスタマイズするためのオプションの概要が説明されています。
+リモート監視ソリューション アクセラレータ UI のコードは、React.js フレームワークを使用して実装されます。 [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub リポジトリでソース コードを見つけることができます。
 
->[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
+UI を変更するために、そのコピーをローカルで実行できます。 ローカル コピーは、ソリューションのデプロイ済みのインスタンスに接続し、テレメトリの取得などのアクションを実行します。
 
-## <a name="project-overview"></a>プロジェクトの概要
+次の手順に、UI 開発のためのローカル環境を設定するプロセスを説明します。
 
-### <a name="implementations"></a>実装
+1. **pcs** CLI を使用して、ソリューション アクセラレータの**基本**インスタンスをデプロイします。 デプロイの名前と仮想マシンに提供した資格情報をメモしておきます。 詳しくは、[CLI を使用したデプロイ](iot-suite-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
-リモート監視ソリューションには、.NET と Java の実装の両方が含まれています。 どちらの実装も同様の機能が利用でき、基盤となる同じ Azure サービスに依存します。 最上位の GitHub リポジトリは、こちらをご覧ください。
+1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 例: 
 
-* [.NET ソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Java ソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+    ```sh
+    az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
+    ```
 
-### <a name="microservices"></a>マイクロサービス
+1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例: 
 
-ソリューションの特定の機能に関心をお持ちの場合は、各マイクロサービスの GitHub リポジトリに個別にアクセスできます。 各マイクロサービスには、ソリューションの機能の異なる部分が実装されています。 アーキテクチャ全般の詳細については、「[構成済みリモート監視ソリューションのアーキテクチャ](iot-suite-remote-monitoring-sample-walkthrough.md)」をご覧ください。
+    ```sh
+    az resource list --resource-group {your solution name} -o table
+    az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
+    ```
 
-次の表は、言語ごとに各マイクロサービスの現在の状況をまとめたものです。
+1. SSH を使用して、前の手順で取得した IP アドレスと、ソリューションをデプロイするために、**pcs** を実行したときに提供した資格情報を使用して、仮想マシンに接続します。
 
-<!-- please add links for each of the repos in the table, you can find them here https://github.com/Azure/azure-iot-pcs-team/wiki/Repositories-->
+1. ローカル UX で接続できるようにするには、仮想マシンの bash シェルで、次のコマンドを実行します。
 
-| マイクロサービス      | [説明] | Java | .NET |
-| ----------------- | ----------- | ---- | ---- |
-| Web UI            | リモート監視ソリューション向け Web アプリ。 React.js フレームワークを使用して UI を実装します。 | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
-| IoT Hub マネージャー   | IoT Hub との通信を処理します。        | [使用可能](https://github.com/Azure/iothub-manager-java) | [使用可能](https://github.com/Azure/iothub-manager-dotnet)   |
-| 認証    |  Azure Active Directory の統合を管理します。  | まだ使用できません | [使用可能](https://github.com/Azure/pcs-auth-dotnet)   |
-| デバイスのシミュレーション | シミュレートされたデバイスのプールを管理します。 | まだ使用できません | [使用可能](https://github.com/Azure/device-simulation-dotnet)   |
-| テレメトリ         | デバイスのテレメトリを UI で使用できるようにします。 | [使用可能](https://github.com/Azure/device-telemetry-java) | [使用可能](https://github.com/Azure/device-telemetry-dotnet)   |
-| テレメトリ エージェント   | テレメトリ ストリームを分析し、Azure IoT Hub のメッセージを保存して、定義した規則に従ってアラートを生成します。  | [使用可能](https://github.com/Azure/telemetry-agent-java) | [使用可能](https://github.com/Azure/telemetry-agent-dotnet)   |
-| UI コンフィグ         | UI からの構成データを管理します。 | [使用可能](https://github.com/azure/pcs-ui-config-java) | [使用可能](https://github.com/azure/pcs-ui-config-dotnet)   |
-| ストレージ アダプター   |  ストレージ サービスとのやりとりを管理します。   | [使用可能](https://github.com/azure/pcs-storage-adapter-java) | [使用可能](https://github.com/azure/pcs-storage-adapter-dotnet)   |
-| リバース プロキシ     | 管理されている方法で一意のエンドポイントを介してプライベート リソースを公開します。 | まだ使用できません | [使用可能](https://github.com/Azure/reverse-proxy-dotnet)   |
+    ```sh
+    cd /app
+    sudo ./start.sh --unsafe
+    ```
 
-現在 Java ソリューションでは .NET 認証、シミュレーション、およびリバース プロキシ マイクロサービスが使用されています。 これらのマイクロサービスは Java 版のサービスが利用可能になり次第、置き換えられます。
+1. コマンドが完了し、Web サイトが起動したことを確認したら、仮想マシンから切断できます。
 
-## <a name="presentation-and-visualization"></a>プレゼンテーションと視覚化
+1. [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) リポジトリのローカル コピーで、**.env** ファイルを編集し、デプロイ済みのソリューションの URL を追加します。
 
-以下のセクションでは、リモート監視ソリューションのプレゼンテーションおよび視覚化レイヤーをカスタマイズするオプションについて説明します。
+    ```config
+    NODE_PATH = src/
+    REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
+    ```
 
-### <a name="change-the-logo-in-the-ui"></a>UI のロゴを変更する
-
-既定のデプロイでは、Contoso 社の会社名とロゴを UI で使用します。 自分の会社名とロゴが表示されるように UI 要素を変更するには、次のようにします。
-
-1. 次のコマンドを使用して、Web UI リポジトリを複製します。
+1. `azure-iot-pcs-remote-monitoring-webui` フォルダーのローカル コピーのコマンド プロンプトで、次のコマンドを実行して、必要なライブラリをインストールし、ローカルで UI を実行します。
 
     ```cmd/sh
-    git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
+    npm install
+    npm start
     ```
 
-1. 会社名を変更するには、`src/common/lang.js` ファイルをテキスト エディターで開きます。
+1. 前のコマンドは、http://localhost:3000/dashboard のローカルで UI を実行します。 サイトの実行中にコードを編集し、動的に更新されることを確認できます。
 
-1. ファイル内で次の行を探します。
+## <a name="customize-the-layout"></a>レイアウトのカスタマイズ
 
-    ```js
-    CONTOSO: 'Contoso',
+リモート監視ソリューションの各ページは、ソース コードで*パネル*と呼ばれる一連のコントロールから構成されます。 たとえば、**ダッシュボード** ページは、概要、マップ、アラーム、テレメトリ、および KPI の 5 つのパネルのページから構成されます。 各ページとそのパネルを定義するソース コードを、[pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub リポジトリで見つけることができます。 たとえば、**Dashboard** ページ、そのレイアウト、およびページ上のパネルを定義するコードは、[src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) フォルダーにあります。
+
+パネルがその独自のレイアウトとサイズを管理するため、ユーザーはページのレイアウトを簡単に変更できます。 たとえば、`src/components/pages/dashboard/dashboard.js` ファイル内の **PageContent** 要素への次の変更により、マップ パネルとテレメトリ パネルの位置が交換され、マップ パネルと KPI パネルの相対的な幅が変更されます。
+
+```nodejs
+<PageContent className="dashboard-container" key="page-content">
+  <Grid>
+    <Cell className="col-1 devices-overview-cell">
+      <OverviewPanel
+        openWarningCount={openWarningCount}
+        openCriticalCount={openCriticalCount}
+        onlineDeviceCount={onlineDeviceCount}
+        offlineDeviceCount={offlineDeviceCount}
+        isPending={kpisIsPending || devicesIsPending}
+        error={devicesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-5">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-4">
+    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+        <MapPanel
+          azureMapsKey={azureMapsKey}
+          devices={devices}
+          devicesInAlarm={devicesInAlarm}
+          mapKeyIsPending={azureMapsKeyIsPending}
+          isPending={devicesIsPending || kpisIsPending}
+          error={azureMapsKeyError || devicesError || kpisError}
+          t={t} />
+      </PanelErrorBoundary>
+    </Cell>
+    <Cell className="col-6">
+      <KpisPanel
+        topAlarms={topAlarmsWithName}
+        alarmsPerDeviceId={alarmsPerDeviceType}
+        criticalAlarmsChange={criticalAlarmsChange}
+        warningAlarmsChange={warningAlarmsChange}
+        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || kpisError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+  </Grid>
+</PageContent>
+```
+
+![パネル レイアウトの変更](media/iot-suite-remote-monitoring-customize/layout.png)
+
+> [!NOTE]
+> マップは、ローカル デプロイでは構成されません。
+
+[パネルを複製して、カスタマイズする](#duplicate-and-customize-an-existing-control)場合は、同じパネルの複数のインスタンスや複数のバージョンを追加することもできます。 次の例は、`src/components/pages/dashboard/dashboard.js` ファイルを編集して、telemetry パネルの 2 つのインスタンスを追加する方法を示しています。
+
+```nodejs
+<PageContent className="dashboard-container" key="page-content">
+  <Grid>
+    <Cell className="col-1 devices-overview-cell">
+      <OverviewPanel
+        openWarningCount={openWarningCount}
+        openCriticalCount={openCriticalCount}
+        onlineDeviceCount={onlineDeviceCount}
+        offlineDeviceCount={offlineDeviceCount}
+        isPending={kpisIsPending || devicesIsPending}
+        error={devicesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-2">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-4">
+    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+        <MapPanel
+          azureMapsKey={azureMapsKey}
+          devices={devices}
+          devicesInAlarm={devicesInAlarm}
+          mapKeyIsPending={azureMapsKeyIsPending}
+          isPending={devicesIsPending || kpisIsPending}
+          error={azureMapsKeyError || devicesError || kpisError}
+          t={t} />
+      </PanelErrorBoundary>
+    </Cell>
+    <Cell className="col-6">
+      <KpisPanel
+        topAlarms={topAlarmsWithName}
+        alarmsPerDeviceId={alarmsPerDeviceType}
+        criticalAlarmsChange={criticalAlarmsChange}
+        warningAlarmsChange={warningAlarmsChange}
+        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || kpisError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+  </Grid>
+</PageContent>
+```
+
+各パネルでさまざまなテレメトリを表示できます。
+
+![複数のテレメトリ パネル](media/iot-suite-remote-monitoring-customize/multiple-telemetry.png)
+
+> [!NOTE]
+> マップは、ローカル デプロイでは構成されません。
+
+## <a name="duplicate-and-customize-an-existing-control"></a>既存のコントロールの複製とカスタマイズ
+
+次の手順では、既存のパネルを複製し、それを変更して、変更済みのバージョンを使用する方法の例として、**アラーム** パネルを使用する方法を説明します。
+
+1. リポジトリのローカル コピーで、`src/components/pages/dashboard/panels` フォルダー内の **alarms** フォルダーのコピーを作成します。 新しいコピーに **cust_alarms** と名付けます。
+
+1. **cust_alarms** フォルダー内の **AlarmsPanel.js** ファイルで、クラスの名前を **CustAlarmsPanel** に編集します。
+
+    ```nodejs
+    export class CustAlarmsPanel extends Component {
     ```
 
-1. `Contoso` を自分の会社名に置き換えます。 例: 
+1. 次の行を `src/components/pages/dashboard/panels/index.js` ファイルに追加します。
 
-    ```js
-    CONTOSO: 'YourCo',
+    ```nodejs
+    export * from './cust_alarms';
     ```
 
-1. ファイルを保存します。
+1. `src/components/pages/dashboard/dashboard.js` ファイル内の `AlarmsPanel` を `CustAlarmsPanel` で置き換えます。
 
-1. ロゴを更新するには、`assets/icons` フォルダーに新しい SVG ファイルを追加します。 既存のロゴは `assets/icons/Contoso.svg` ファイルです。
+    ```nodejs
+    import {
+      OverviewPanel,
+      CustAlarmsPanel,
+      TelemetryPanel,
+      KpisPanel,
+      MapPanel,
+      transformTelemetryResponse,
+      chartColors
+    } from './panels';
 
-1. テキスト エディターで `src/components/layout/leftNav/leftNav.js` ファイルを開きます。
+    ...
 
-1. ファイル内で次の行を探します。
-
-    ```js
-    import ContosoIcon from '../../../assets/icons/Contoso.svg';
+    <Cell className="col-3">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
     ```
 
-1. `Contoso.svg` を自分のロゴ ファイルの名前に置き換えます。 例: 
+これで、元の **Alarms** パネルを **CustAlarms** というコピーで置き換えました。 このコピーは、元のパネルと同一です。 これでコピーを変更できます。 たとえば、**Alarms** パネルの列の順序を変更するには、次の手順を実行します。
 
-    ```js
-    import ContosoIcon from '../../../assets/icons/YourCo.svg';
+1. `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js` ファイルを開きます。
+
+1. 列定義を次のコード スニペットに示すように変更します。
+
+    ```nodejs
+    this.columnDefs = [
+      rulesColumnDefs.severity,
+      {
+        headerName: 'rules.grid.count',
+        field: 'count'
+      },
+      {
+        ...rulesColumnDefs.ruleName,
+        minWidth: 200
+      },
+      rulesColumnDefs.explore
+    ];
     ```
 
-1. ファイル内で次の行を探します。
+次のスクリーン ショットは、**Alarms** パネルの新しいバージョンを示しています。
 
-    ```js
-    alt="ContosoIcon"
+![更新済みの Alarms パネル](media/iot-suite-remote-monitoring-customize/reorder-columns.png)
+
+## <a name="customize-the-telemetry-chart"></a>テレメトリ グラフのカスタマイズ
+
+**ダッシュ ボード** ページのテレメトリ グラフは、`src/components/pages/dashboard/panels/telemtry` フォルダー内のファイルによって定義されます。 UI は、`src/services/telemetryService.js` ファイル内のソリューション バックエンドから、テレメトリを取得します。 次の手順では、テレメトリ グラフに表示される期間を 15 分から 5 分に変更する方法を示します。
+
+1. `src/services/telemetryService.js` ファイルで、**getTelemetryByDeviceIdP15M** という関数を見つけます。 この関数のコピーを作成し、コピーを次のように変更します。
+
+    ```nodejs
+    static getTelemetryByDeviceIdP5M(devices = []) {
+      return TelemetryService.getTelemetryByMessages({
+        from: 'NOW-PT5M',
+        to: 'NOW',
+        order: 'desc',
+        devices
+      });
+    }
     ```
 
-1. `ContosoIcon` を自分の `alt` テキストに置き換えます。 例: 
+1. この新しい関数を使用して、テレメトリ グラフに入力するには、`src/components/pages/dashboard/dashboard.js` ファイルを開きます。 テレメトリ ストリームを初期化する行を見つけて、それを次のように変更します。
 
-    ```js
-    alt="YourCoIcon"
+    ```node.js
+    const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
-1. ファイルを保存します。
+テレメトリ グラフに、5 分間のテレメトリ データが表示されるようになりました。
 
-1. 変更をテストするには、更新した `webui` をローカル コンピューター上で実行します。 `webui` ソリューションをローカルで構築して実行する方法については、`webui` GitHub リポジトリの Readme ファイルにある「[Build, run and test locally (ローカルでの構築、実行、テスト)](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/README.md#build-run-and-test-locally)」をご覧ください。
+![1 日を示すテレメトリ グラフ](media/iot-suite-remote-monitoring-customize/telemetry-period.png)
 
-1. 変更をデプロイするには、「[Developer Reference Guide (開発者向けリファレンス ガイド)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)」をご覧ください。
+## <a name="add-a-new-kpi"></a>新しい KPI の追加
 
-<!--
+**ダッシュボード** ページには、**システム KPI** パネルの KPI が表示されます。 これらの KPI は、`src/components/pages/dashboard/dashboard.js` ファイルで計算されます。 KPI は `src/components/pages/dashboard/panels/kpis/kpisPanel.js` ファイルによってレンダリングされます。 次の手順で、新しい KPI 値を計算して、**ダッシュ ボード** ページにレンダリングする方法について説明します。 示している例では、警告アラーム KPI に新しいパーセンテージの変更を追加しています。
 
-### Add a new KPI to the Dashboard page
+1. `src/components/pages/dashboard/dashboard.js` ファイルを開きます。 **initialState** オブジェクトを次のように **warningAlarmsChange** プロパティを含めるように変更します。
 
-The following steps describe how to add a new KPI to display on the **Dashboard** page. The new KPI shows information about the number of alarms with specific status values as a pie chart:
+    ```nodejs
+    const initialState = {
+      ...
 
-1. Step 1
+      // Kpis data
+      currentActiveAlarms: [],
+      topAlarms: [],
+      alarmsPerDeviceId: {},
+      criticalAlarmsChange: 0,
+      warningAlarmsChange: 0,
+      kpisIsPending: true,
+      kpisError: null,
 
-1. Step 2
--->
+      ...
+    };
+    ```
 
-### <a name="customize-the-map"></a>マップをカスタマイズする
+1. **currentAlarmsStats** オブジェクトを **totalWarningCount** をプロパティとして含めるように変更します。
+
+    ```nodejs
+    return {
+      openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
+      openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
+      totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
+      totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
+      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+    };
+    ```
+
+1. 新しい KPI を計算します。 重大なアラーム数の計算を見つけます。 コードをコピーし、次のようにコピーを変更します。
+
+    ```nodejs
+    // ================== Warning Alarms Count - START
+    const currentWarningAlarms = currentAlarmsStats.totalWarningCount;
+    const previousWarningAlarms = previousAlarms.reduce(
+      (cnt, { severity }) => severity === 'warning' ? cnt + 1 : cnt,
+      0
+    );
+    const warningAlarmsChange = ((currentWarningAlarms - previousWarningAlarms) / currentWarningAlarms * 100).toFixed(2);
+    // ================== Warning Alarms Count - END
+    ```
+
+1. KPI ストリームに新しい **warningAlarmsChange** を含めます。
+
+    ```nodejs
+    return ({
+      kpisIsPending: false,
+
+      // Kpis data
+      currentActiveAlarms,
+      topAlarms,
+      criticalAlarmsChange,
+      warningAlarmsChange,
+      alarmsPerDeviceId: currentAlarmsStats.alarmsPerDeviceId,
+
+      ...
+    });
+
+1. Include the new **warningAlarmsChange** KPI in the state data used to render the UI:
+
+    ```nodejs
+    const {
+      ...
+
+      currentActiveAlarms,
+      topAlarms,
+      alarmsPerDeviceId,
+      criticalAlarmsChange,
+      warningAlarmsChange,
+      kpisIsPending,
+      kpisError,
+
+      ...
+    } = this.state;
+    ```
+
+1. KPI パネルに渡されるデータを更新します。
+
+    ```node.js
+    <KpisPanel
+      topAlarms={topAlarmsWithName}
+      alarmsPerDeviceId={alarmsPerDeviceType}
+      criticalAlarmsChange={criticalAlarmsChange}
+      warningAlarmsChange={warningAlarmsChange}
+      isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+      error={devicesError || rulesError || kpisError}
+      colors={chartColorObjects}
+      t={t} />
+    ```
+
+これで、`src/components/pages/dashboard/dashboard.js` ファイルの変更が完了しました。 次の手順では、新しい KPI を表示するために、`src/components/pages/dashboard/panels/kpis/kpisPanel.js` ファイルに行う変更について説明します。
+
+1. 次のように新しい KPI 値を取得するために、次のコードの行を変更します。
+
+    ```nodejs
+    const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
+    ```
+
+1. 次のように、新しい KPI 値を表示するために、マークアップを変更します。
+
+    ```nodejs
+    <div className="kpi-cell">
+      <div className="kpi-header">{t('dashboard.panels.kpis.criticalAlarms')}</div>
+      <div className="critical-alarms">
+        {
+          criticalAlarmsChange !== 0 &&
+            <div className="kpi-percentage-container">
+              <div className="kpi-value">{ criticalAlarmsChange }</div>
+              <div className="kpi-percentage-sign">%</div>
+            </div>
+        }
+      </div>
+      <div className="kpi-header">{t('Warning alarms')}</div>
+      <div className="critical-alarms">
+        {
+          warningAlarmsChange !== 0 &&
+            <div className="kpi-percentage-container">
+              <div className="kpi-value">{ warningAlarmsChange }</div>
+              <div className="kpi-percentage-sign">%</div>
+            </div>
+        }
+      </div>
+    </div>
+    ```
+
+これで、**ダッシュボード** ページに、新しい KPI 値が表示されるようになります。
+
+![警告 KPI](media/iot-suite-remote-monitoring-customize/new-kpi.png)
+
+## <a name="customize-the-map"></a>マップをカスタマイズする
 
 ソリューションのマップ コンポーネントの詳細については、GitHub の[マップのカスタマイズ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)に関するページをご覧ください。
 
 <!--
-### Customize the telemetry chart
-
-See the [Customize telemetry chart](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of the telemetry chart components in the solution.
-
 ### Connect an external visualization tool
 
 See the [Connect an external visualization tool](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to connect an external visualization tool.
 
-### Duplicate an existing control
-
-To duplicate an existing UI element such as a chart or alert, see the [Duplicate a control](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub.
-
 -->
 
-### <a name="other-customization-options"></a>その他のカスタマイズのオプション
+## <a name="other-customization-options"></a>その他のカスタマイズのオプション
 
-リモート監視ソリューションのプレゼンテーションおよび視覚化レイヤーをさらに変更するには、コードを編集します。 関連する GitHub リポジトリは次のとおりです。
+リモート監視ソリューションのプレゼンテーションおよび視覚化レイヤーをさらに変更するために、コードを編集します。 関連する GitHub リポジトリは次のとおりです。
 
-* [UIConfig (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [UIConfig (Java)](https://github.com/Azure/pcs-ui-config-java/)
-* [Azure PCS リモート監視 WebUI](https://github.com/Azure/pcs-remote-monitoring-webui)
-
-## <a name="device-connectivity-and-streaming"></a>デバイスの接続とストリーミング
-
-以下のセクションでは、デバイスの接続とリモート監視ソリューションのストリーミング レイヤーをカスタマイズするオプションについて説明します。 [デバイス モデル](https://github.com/Azure/device-simulation-dotnet/wiki/Device-Models)には、ソリューションにおけるデバイスの種類とテレメトリを記述します。 デバイス モデルはシミュレートされたデバイスと物理デバイスの両方で使用されます。
-
-物理デバイスの実装の例については、[デバイスのリモート監視構成済みソリューションへの接続](iot-suite-connecting-devices-node.md)に関する記事をご覧ください。
-
-_物理デバイス_を使用する場合、デバイスのメタデータとテレメトリの仕様が記述されたデバイス モデルを、クライアント アプリケーションで指定する必要があります。
-
-次のセクションでは、シミュレートされたデバイスでのデバイス モデルの使用について説明します。
-
-### <a name="add-a-telemetry-type"></a>テレメトリ タイプの追加
-
-Contoso デモ ソリューションのデバイスの種類に、各デバイスの種類が送信するテレメトリを指定します。 その他のテレメトリの種類を指定すると、デバイスはテレメトリの定義をメタデータとしてソリューションに送信できます。 この形式を使用すると、ダッシュボードはデバイスのテレメトリと利用可能な手段を動的に使用します。UI を変更する必要はありません。 また、ソリューションのデバイスの種類の定義を変更することもできます。
-
-カスタム テレメトリを追加する方法については、_"デバイス シミュレーター"_ マイクロサービスの「[Test your solution with simulated devices (シミュレートされたデバイスを使用したソリューションのテスト)](iot-suite-remote-monitoring-test.md)」をご覧ください。
-
-### <a name="add-a-device-type"></a>デバイスの種類を追加する
-
-Contoso デモ ソリューションでは、デバイスの種類のサンプルをいくつか定義します。 このソリューションでは、カスタムのデバイスの種類を定義して、アプリケーション固有の要件を満たすことができます。 たとえば、お客様の会社でソリューションに接続するプライマリ デバイスとして産業用ゲートウェイを使用できます。
-
-デバイスを正確に再現するには、デバイスで実行されているアプリケーションに変更を加え、デバイスの要件に一致させる必要があります。
-
-_"デバイス シミュレーター"_ マイクロサービスに新しいデバイスの種類を追加する方法については、「[Test your solution with simulated devices (シミュレートされたデバイスを使用したソリューションのテスト)](iot-suite-remote-monitoring-test.md)」をご覧ください。
-
-### <a name="define-custom-methods-for-simulated-devices"></a>シミュレートされたデバイスのカスタム メソッドを定義する
-
-リモート監視ソリューションでシミュレートされたデバイスのカスタム メソッドを定義する方法については、GitHub リポジトリの[デバイス モデル](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Device-Models)に関するページをご覧ください。
-
-<!--
-#### Using the simulator service
-
-TODO: add steps for the simulator microservice here
--->
-
-#### <a name="using-a-physical-device"></a>物理デバイスを使用する
-
-物理デバイスのメソッドとジョブを実装するには、IoT Hub の次の記事をご覧ください。
-
-* [IoT Hub からのダイレクト メソッドの呼び出しについて](../iot-hub/iot-hub-devguide-direct-methods.md)
-* [複数デバイスでのジョブをスケジュール設定する](../iot-hub/iot-hub-devguide-jobs.md)
-
-### <a name="other-customization-options"></a>その他のカスタマイズのオプション
-
-デバイスの接続とリモート監視ソリューションのストリーミング レイヤーをさらに変更するには、コードを編集します。 関連する GitHub リポジトリは次のとおりです。
-
-* [デバイス テレメトリ (.NET)](https://github.com/Azure/device-telemetry-dotnet)
-* [デバイス テレメトリ (Java)](https://github.com/Azure/device-telemetry-java)
-* [テレメトリ エージェント (.NET)](https://github.com/Azure/telemetry-agent-dotnet)
-* [テレメトリ エージェント (Java)](https://github.com/Azure/telemetry-agent-java)
-
-## <a name="data-processing-and-analytics"></a>データ処理と分析
-
-<!--
-The following sections describe options to customize the data processing and analytics layer in the remote monitoring solution:
-
-### Rules and actions
-
-See the [Customize rules and actions](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to customize the rules and actions in solution.
-
-
-### Other customization options
--->
-
-リモート監視ソリューションのデータ処理と分析レイヤーを変更するには、コードを編集します。 関連する GitHub リポジトリは次のとおりです。
-
-* [テレメトリ エージェント (.NET)](https://github.com/Azure/telemetry-agent-dotnet)
-* [テレメトリ エージェント (Java)](https://github.com/Azure/telemetry-agent-java)
-
-## <a name="infrastructure"></a>インフラストラクチャ
-
-<!--
-The following sections describe options for customizing the infrastructure services in the remote monitoring solution:
-
-### Change storage
-
-The default storage service for the remote monitoring solution is Cosmos DB. See the [Customize storage service](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to change the storage service the solution uses.
-
-### Change log storage
-
-The default storage service for logs is Cosmos DB. See the [Customize log storage service](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to change the storage service the solution uses for logging.
-
-### Other customization options
--->
-
-リモート監視ソリューションのインフラストラクチャを変更するには、コードを編集します。 関連する GitHub リポジトリは次のとおりです。
-
-* [IoTHub マネージャー (.NET)](https://github.com/Azure/iothub-manager-dotnet)
-* [IoTHub マネージャー (Java)](https://github.com/Azure/iothub-manager-java)
-* [ストレージ アダプター (.NET)](https://github.com/Azure/pcs-storage-adapter-dotnet)
-* [ストレージ アダプター (Java)](https://github.com/Azure/pcs-storage-adapter-java)
+* [Azure IoT ソリューションの構成マイクロサービス (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
+* [Azure IoT ソリューションの構成マイクロサービス (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Azure IoT PCS リモート監視 Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、構成済みソリューションのカスタマイズを容易にするために使用できるリソースについて説明します。
+この記事では、リモート監視ソリューション アクセラレータの Web UI のカスタマイズに役立つように使用できるリソースについて説明します。
 
-リモート監視の構成済みソリューションの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-suite-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください。
+リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-suite-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください
 
-リモート監視ソリューションのカスタマイズの詳細については次をご覧ください。
-
-* [開発者向けリファレンス ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
-* [開発者向けトラブルシューティング ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-
+リモート監視ソリューションのカスタマイズの詳細については、「[Customize and redeploy a microservice](iot-suite-microservices-example.md)」 (マイクロサービスのカスタマイズと再デプロイ) をご覧ください
 <!-- Next tutorials in the sequence -->

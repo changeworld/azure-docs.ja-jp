@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 747ee61d2620e7f79353207c0e44bcea36df30ee
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -49,7 +49,7 @@ PHP ログを有効にするには、次の手順を実行します。
 2. 上部のメニューから、**[デバッグ コンソール]** > **[CMD]** の順に選択します。
 3. **Site** フォルダーを選択します。
 4. **wwwroot** フォルダーを選択します。
-5. **+**アイコンをクリックして、**[新しいファイル]**を選択します。
+5. **+** アイコンをクリックして、**[新しいファイル]** を選択します。
 6. **.user.ini** というファイル名を設定します。
 7. **. user.ini** の横にある鉛筆のアイコンを選択します。
 8. ファイルで、コード `log_errors=on` を追加します。
@@ -240,4 +240,4 @@ WordPress 用のセキュリティのベスト プラクティスについては
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>PHPMyadmin を使用して、MySQL アプリ内データベースをインポートまたはエクスポートしようとすると、HTTP 403 エラーが表示されます。 解決するにはどうすればよいですか?
 
-以前のバージョンの Chrome を使用している場合、既知のバグが発生している可能性があります。 この問題を解決するには、Chrome の新しいバージョンにアップグレードします。 また、この問題が発生しない Internet Explorer や Microsoft Edge などの別のブラウザーを使用を試してください。
+以前のバージョンの Chrome を使用している場合、既知のバグが発生している可能性があります。 この問題を解決するには、Chrome の新しいバージョンにアップグレードします。 また、この問題が発生しない Internet Explorer や Edge などの別のブラウザーを使用を試してください。

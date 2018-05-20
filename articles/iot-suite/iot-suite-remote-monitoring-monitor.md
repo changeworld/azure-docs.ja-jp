@@ -1,7 +1,7 @@
 ---
-title: "リモート監視ソリューションでの高度な監視 - Azure | Microsoft Docs"
-description: "このチュートリアルでは、リモート監視ソリューションのダッシュボードでデバイスを監視する方法を示します。"
-services: 
+title: リモート監視ソリューションでの高度な監視 - Azure | Microsoft Docs
+description: このチュートリアルでは、リモート監視ソリューションのダッシュボードでデバイスを監視する方法を示します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,17 +12,17 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fe0d936b4ee0d7703222c86c00959869b99f7851
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>リモート監視ソリューションを使用して高度な監視を行う
 
 このチュートリアルでは、リモート監視のダッシュボードの機能を示します。 これらの機能を紹介するために、このチュートリアルでは Contoso IoT アプリケーションのシナリオを使用します。
 
-このチュートリアルでは、シミュレートされた 2 つの Contoso トラック デバイスを使用して構成済みソリューションのダッシュボードからデバイスを監視する方法を説明します。 Contoso の運用者として、フィールド上のトラックの場所と動きを監視する必要があります。
+このチュートリアルでは、シミュレートされた 2 つの Contoso トラック デバイスを使用して、ソリューション アクセラレータのダッシュボードからデバイスを監視する方法を説明します。 Contoso の運用者として、フィールド上のトラックの場所と動きを監視する必要があります。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 02/27/2018
 > * ダッシュボードのデバイスをフィルターで絞り込む
 > * テレメトリをリアルタイムで表示する
 > * デバイスの詳細の表示
-> * デバイスのアラームを表示する
+> * デバイスのアラートを表示する
 > * システムの KPI を表示する
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="choose-the-devices-to-display"></a>表示するデバイスを選択する
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 02/27/2018
 
 ## <a name="view-real-time-telemetry"></a>テレメトリをリアルタイムで表示する
 
-構成済みソリューションでは、リアルタイムの詳細なテレメトリ データがグラフとして **[ダッシュボード]** ページに表示されます。 テレメトリ グラフには、現在のフィルターによって選択されているデバイスのテレメトリが表示されます。
+ソリューション アクセラレータでは、リアルタイムの詳細なテレメトリ データがグラフとして **[ダッシュボード]** ページに表示されます。 テレメトリ グラフには、現在のフィルターによって選択されているデバイスのテレメトリが表示されます。
 
 ![トラックのテレメトリのプロット](media/iot-suite-remote-monitoring-monitor/dashboardtelemetryview.png)
 
@@ -65,39 +65,41 @@ ms.lasthandoff: 02/27/2018
 
 ![トラックのテレメトリのプロット](media/iot-suite-remote-monitoring-monitor/dashboardselecttelemetry.png)
 
-ライブ テレメトリの表示を一時停止するには、**[Flowing]\(開始\)** を選択します。 ライブ表示を再度有効にするには、**[一時停止]** を選択します。
+<!-- 05/01 - this features appears to have been removed
+To pause the live telemetry display, choose **Flowing**. To re-enable the live display, choose **Pause**:
 
-![テレメトリ表示の一時停止および再開](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)
+![Pause and restart telemetry display](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)-->
 
 ## <a name="use-the-map"></a>マップを使用する
 
-マップには、現在のフィルターで選択されているシミュレートされたトラックに関する情報が表示されます。 マップを拡大または縮小して、場所の細部や広域を表示できます。 マップ上のデバイス アイコンには、デバイスのアクティブな **[アラーム]** または **[警告]** が示されています。 **[アラーム]** と **[警告]** をまとめた数値がマップの左側に表示されます。
+マップには、現在のフィルターで選択されているシミュレートされたトラックに関する情報が表示されます。 マップを拡大または縮小して、場所の細部や広域を表示できます。 マップ上のデバイス アイコンには、デバイスのアクティブな **[アラート]** または **[警告]** が示されています。 **[アラート]** と **[警告]** をまとめた数値がマップの左側に表示されます。
 
-デバイスの詳細を表示するには、マップを拡大縮小してデバイスを探し、マップ上でデバイスをクリックします。 詳細には次のものが含まれます。
+<!-- 05/01 - cannot select a deice on the map
+To view the device details, pan and zoom the map to locate the devices, then click the device on the map. The details include:
 
-* 最新のテレメトリの値
-* デバイスがサポートしているメソッド
-* デバイスのプロパティ
+* Recent telemetry values
+* Methods the device supports
+* Device properties
 
-![ダッシュボードのデバイスの詳細を表示](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)
+![View device details on the dashboard](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)-->
 
-## <a name="view-alarms-from-your-devices"></a>デバイスのアラームを表示する
+## <a name="view-alerts-from-your-devices"></a>デバイスのアラートを表示する
 
-マップには現在のフィルターで表示されているデバイスと、**[アラーム]** および **[警告]** が強調表示されます。 **[System alarms]\(システムのアラーム\)** パネルには、デバイスからの最新の警告に関する詳細情報が表示されます。
+マップには現在のフィルターで表示されているデバイスと、**[アラート]** および **[警告]** が強調表示されます。 **[アラート]** パネルには、デバイスからの最新の警告に関する詳細情報が表示されます。
 
-![ダッシュボードにシステムのアラームを表示する](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
+![ダッシュボードにシステムのアラートを表示する](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
 
-**[System alarms]\(システムのアラーム\)** フィルターを使用して最新のアラームの時間範囲を調整できます。 既定では、パネルには過去 1 時間のアラームが表示されます。
+**[ダッシュボード]** フィルターを使用して最新のアラートの時間範囲を調整できます。 既定では、パネルには過去 1 時間のアラートが表示されます。
 
-![アラームを時間でフィルター表示する](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
+![アラートを時間でフィルター表示する](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
 
 ## <a name="view-the-system-kpis"></a>システムの KPI を表示する
 
 **[ダッシュボード]** ページには、システムの KPI が表示されます。
 
-![アラームを時間でフィルター表示する](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
+![ダッシュボード KPI](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
 
-**システム KPI** フィルターを使用して KPI を集計する時間の範囲を調整できます。 既定では、過去 1 時間に集計された KPI がパネルに表示されます。
+**ダッシュボード** フィルターを使用して KPI を集計する時間の範囲を調整できます。 既定では、過去 1 時間に集計された KPI がパネルに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -108,7 +110,7 @@ ms.lasthandoff: 02/27/2018
 > * ダッシュボードのデバイスをフィルターで絞り込む
 > * テレメトリをリアルタイムで表示する
 > * デバイスの詳細の表示
-> * デバイスのアラームを表示する
+> * デバイスのアラートを表示する
 > * システムの KPI を表示する
 
 デバイスの監視方法について説明したので、次に推奨される手順を以下に示します。

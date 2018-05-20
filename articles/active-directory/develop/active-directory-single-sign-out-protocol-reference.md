@@ -1,13 +1,14 @@
 ---
-title: "Azure でのシングル サインアウトの SAML プロトコル | Microsoft Docs"
-description: "この記事では、Azure Active Directory でのシングル サインアウト SAML プロトコルについて説明します。"
+title: Azure でのシングル サインアウトの SAML プロトコル | Microsoft Docs
+description: この記事では、Azure Active Directory でのシングル サインアウト SAML プロトコルについて説明します。
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: c77bf15d69a4c7749567f53df96c91a1d329a466
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シングル サインアウト プロファイルをサポートします。 シングル サインアウトが正常に動作するためには、アプリケーションの **LogoutURL** が、アプリケーションの登録時に Azure AD に明示的に登録されている必要があります。 Azure AD は LogoutURL を使って、サインアウト後のユーザーをリダイレクトします。

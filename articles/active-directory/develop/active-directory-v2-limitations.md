@@ -3,23 +3,25 @@ title: Azure Active Directory v2.0 エンドポイントの制限事項および
 description: Azure AD v2.0 エンドポイントに関する制限事項と制約事項のリスト
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>v2.0 エンドポイントの使用が適しているかどうかを判断するには
 Azure Active Directory と統合するアプリケーションを構築する場合は、v2.0 エンドポイントと認証プロトコルがニーズを満たすか判断する必要があります。 Azure Active Directory の元のエンドポイントは引き続き完全にサポートされ、いくつかの点においては v2.0 よりも機能が豊富です。 ただし、v2.0 エンドポイントは、開発者に[大きなメリット](active-directory-v2-compare.md)を提供します。
@@ -47,7 +49,7 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 また、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)で作成したアプリケーションの登録には、次の注意点があります。
 
 * アプリケーション ID ごとに許可されるアプリ シークレットは 2 種類のみです。
-* ユーザーが個人の Microsoft アカウントで登録したアプリの登録は、1 つの開発者アカウントでのみ表示および管理できます。 複数の開発者間で共有することはできません。  アプリケーションの登録を複数の開発者の間で共有したい場合は、Azure AD アカウントで登録ポータルにサインインすることでアプリケーションを作成できます。
+* ユーザーが個人の Microsoft アカウントで登録したアプリの登録は、1 つの開発者アカウントでのみ表示および管理できます。 複数の開発者間で共有することはできません。 アプリケーションの登録を複数の開発者の間で共有したい場合は、Azure AD アカウントで登録ポータルにサインインすることでアプリケーションを作成できます。
 * 許可されるリダイレクト URI の形式には、いくつかの制限事項があります。 リダイレクト URI の詳細については、次のセクションを参照してください。
 
 ## <a name="restrictions-on-redirect-uris"></a>リダイレクト URI に関する制限事項
@@ -89,12 +91,12 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 現時点では、v2.0 エンドポイントのライブラリ サポートは制限されています。 運用環境のアプリケーションで v2.0 エンドポイントを使用する場合は、次の選択肢があります。
 
 * Web アプリケーションを構築する場合は、Microsoft が一般提供しているサーバー側のミドルウェアを使用して、サインインとトークンの検証を安全に実行できます。 このようなミドルウェアには、OWIN の ASP.NET 用 Open ID Connect ミドルウェアや Node.js 用 Passport プラグインなどがあります。 Microsoft のミドルウェアを使用するコード サンプルについては、[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started) セクションを参照してください。
-* デスクトップまたはモバイル アプリケーションを作成する場合は、Microsoft の認証ライブラリ (MSAL) プレビューのいずれかを使用できます。  これらのライブラリは、運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](active-directory-v2-libraries.md)に関するページをご覧ください。
+* デスクトップまたはモバイル アプリケーションを作成する場合は、Microsoft の認証ライブラリ (MSAL) プレビューのいずれかを使用できます。 これらのライブラリは、運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](active-directory-v2-libraries.md)に関するページをご覧ください。
 * Microsoft ライブラリの対象ではないプラットフォームでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合できます。 v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明確に文書化](active-directory-v2-protocols.md)されています。
 * オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。 v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープンソース プロトコル ライブラリと互換性があります。 これらのライブラリが使用可能かどうかは、言語とプラットフォームによって異なります。 [Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトでは、一般的な実装のリストを公開しています。 詳細については、「[Azure Active Directory (AD) v2.0 と認証ライブラリ](active-directory-v2-libraries.md)」、および v2.0 エンドポイントでテスト済みのオープンソース クライアント ライブラリとサンプルの一覧を参照してください。
 
 ## <a name="restrictions-on-protocols"></a>プロトコルに関する制限事項
-v2.0 エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。  OAuth プロトコルの一部の機能がまだ v2.0 エンドポイントには組み込まれていません。 現時点では、次のプロトコルの機能が v2.0 エンドポイントで*利用できません*。
+v2.0 エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。 OAuth プロトコルの一部の機能がまだ v2.0 エンドポイントには組み込まれていません。 現時点では、次のプロトコルの機能が v2.0 エンドポイントで*利用できません*。
 
 * ユーザーから電子メールを表示する許可を取得していても、v2.0 エンドポイントが発行する ID トークンにはユーザーの `email` の要求は含まれません。
 * v2.0 エンドポイントに OpenID Connect UserInfo エンドポイントは実装されていません。 ただし、このエンドポイントで受け取る可能性のあるすべてのユーザー プロファイル データは、Microsoft Graph `/me` エンドポイントから使用できます。

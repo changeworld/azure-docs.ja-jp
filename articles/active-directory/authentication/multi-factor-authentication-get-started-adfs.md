@@ -2,25 +2,22 @@
 title: 2 段階認証と AD FS - Azure MFA | Microsoft Docs
 description: Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: 44fbba68-6cf9-46c1-a9df-736580b68ae3
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: 77e7bec69b2f8d237b6e71d13b88fd26c104fc23
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 5ee4f3eefb23b16bb135cb7b29511c1c0324ec2c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要
+
 <center>![クラウド](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 組織がオンプレミスの Active Directory と Azure Active Directory を AD FS を使ってフェデレーションする場合、Azure Multi-Factor Authentication の使用には 2 つの選択肢があります。

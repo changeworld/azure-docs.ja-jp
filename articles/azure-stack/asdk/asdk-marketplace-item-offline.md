@@ -10,17 +10,17 @@ ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 676dcdea5912aed5504c386f01d6809eccf763d4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 325ef42d72970f4e0962a9b1a81b78bbd39585d4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="tutorial-add-an-azure-stack-marketplace-item-from-a-local-source"></a>チュートリアル: ローカル ソースから Azure Stack マーケットプレース項目を追加する
 

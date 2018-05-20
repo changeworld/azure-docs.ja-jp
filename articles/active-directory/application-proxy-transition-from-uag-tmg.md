@@ -1,25 +1,25 @@
 ---
-title: "Azure AD アプリケーション プロキシへのアップグレード | Microsoft Docs"
-description: "Microsoft Forefront または Unified Access Gateway からアップグレードする場合に最適なプロキシ ソリューションを選択します。"
+title: Azure AD アプリケーション プロキシへのアップグレード | Microsoft Docs
+description: Microsoft Forefront または Unified Access Gateway からアップグレードする場合に最適なプロキシ ソリューションを選択します。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5323a9225adb9a9bfca2dccec5c84f288c4fd25d
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: e6764a0eeb27b8bff24140ff2c12e9e66b06b48b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="compare-remote-access-solutions"></a>リモート アクセス ソリューションを比較します
 
@@ -30,18 +30,18 @@ Azure Active Directory アプリケーション プロキシは、Microsoft が�
 
 この表を使用して、Threat Management Gateway (TMG)、Unified Access Gateway (UAG)、Web アプリケーション プロキシ (WAP)、および Azure AD アプリケーション プロキシ (AP) を相互に比較する方法を把握します。
 
-| 機能 | TMG | UAG | WAP | AP |
+| Feature | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
 | 証明書認証 | [はい] | [はい] | - | - |
-| ブラウザー アプリの選択的な発行 | [はい] | [はい] | [はい] | [はい] |
-| 事前認証とシングル サインオン | [はい] | [はい] | [はい] | [はい] | 
+| ブラウザー アプリの選択的な発行 | [はい] | はい | はい | [はい] |
+| 事前認証とシングル サインオン | [はい] | はい | はい | [はい] | 
 | レイヤー 2/3 ファイアウォール | [はい] | [はい] | - | - |
 | 転送プロキシ機能 | [はい] | - | - | - |
 | VPN 機能 | [はい] | [はい] | - | - |
 | プロトコルの豊富なサポート | - | [はい] | HTTP 経由で実行される場合はあり | HTTP 経由でまたはリモート デスクトップ ゲートウェイ経由で実行する場合はあり |
 | ADFS プロキシ サーバーとしてのサーバー | - | [はい] | [はい] | - |
 | アプリケーションにアクセスするための 1 つのポータル | - | [はい] | - | [はい] |
-| 応答本文のリンク変換 | [はい] | [はい] | - | [はい] | 
+| 応答本文のリンク変換 | [はい] | はい | - | [はい] | 
 | ヘッダーによる認証 | - | [はい] | - | あり。PingAccess を使用 | 
 | クラウド規模のセキュリティ | - | - | - | [はい] | 
 | 条件付きアクセス | - | [はい] | - | [はい] |
@@ -62,5 +62,5 @@ Azure Active Directory アプリケーション プロキシは、Microsoft が�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD アプリケーション プロキシを使用してセキュリティで保護されたオンプレミス アプリケーションへのリモート アクセスを提供する](active-directory-application-proxy-get-started.md)
+- [Azure AD アプリケーション プロキシを使用してセキュリティで保護されたオンプレミス アプリケーションへのリモート アクセスを提供する](manage-apps/application-proxy.md)
 - [Forefront TMG と UAG からアプリケーション プロキシに移行する](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)

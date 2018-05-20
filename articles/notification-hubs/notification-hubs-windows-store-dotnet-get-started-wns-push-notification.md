@@ -1,100 +1,100 @@
 ---
-title: ユニバーサル Windows プラットフォーム アプリでの Azure Notification Hubs の使用 | Microsoft Docs
+title: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs を使用して Windows ユニバーサル プラットフォーム アプリケーションにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: windows
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: ''
+editor: spelluru
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>ユニバーサル Windows プラットフォーム アプリでの Notification Hubs の使用
+# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## <a name="overview"></a>概要
-この記事では、Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法について説明します。
+このチュートリアルでは、ユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信するための通知ハブを作成します。 Windows プッシュ通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ストア アプリを作成します。 その後、通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストできます。
 
-この記事では、Windows プッシュ通知サービス (WNS) を使用してプッシュ通知を受信する、空の Windows ストア アプリを作成します。 完了すると、通知ハブを使用して、アプリが実行されているすべてのデバイスにプッシュ通知をブロードキャストできます。
+> [!NOTE]
+> このチュートリアルの完成したコードについては、[GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal) を参照してください。
 
-## <a name="before-you-begin"></a>開始する前に
-[!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
+このチュートリアルでは、次の手順を実行します。
 
-このチュートリアルの完成したコードについては、[GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal) を参照してください。
+> [!div class="checklist"]
+> * Windows ストアでアプリを作成する
+> * 通知ハブを作成する
+> * サンプルの Windows アプリを作成する
+> * テスト通知を送信する
+
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルには、次のものが必要です。
-
-* [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) 以降
-* [UWP アプリ開発ツールがインストールされている](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
-* アクティブな Azure アカウント  
-    アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)に関するページを参照してください。
-* アクティブな Windows ストア アカウント
+- **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) 以降。
+- [UWP アプリ開発ツールがインストールされている](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- アクティブな Windows ストア アカウント
 
 このチュートリアルを完了することは、UWP アプリに関する他のすべての Notification Hubs チュートリアルを行うための前提条件になっています。
 
-## <a name="register-your-app-for-the-windows-store"></a>アプリケーションを Windows ストアに登録する
+## <a name="create-an-app-in-windows-store"></a>Windows ストアでアプリを作成する
 UWP アプリにプッシュ通知を送信するには、アプリを Windows ストアに関連付けます。 次に、WNS に統合するために通知ハブを構成します。
 
-1. アプリをまだ登録していない場合は、[Windows デベロッパー センター](https://dev.windows.com/overview)に移動し、Microsoft アカウントでサインインしてから、**[新しいアプリの作成]** を選択します。
+1. [Windows デベロッパー センター](https://dev.windows.com/overview)に移動し、Microsoft アカウントでサインインしてから、**[新しいアプリの作成]** を選択します。
 
-2. アプリの名前を入力し、**[アプリ名を予約]** を選択します。 これでアプリの新しい Windows ストア登録が作成されます。
+    ![[New app] (新しいアプリ) ボタン](./media/notification-hubs-windows-store-dotnet-get-started/windows-store-new-app-button.png)
+1. アプリの名前を入力し、**[Reserve product name] (製品名を予約)** を選択します。 これでアプリの新しい Windows ストア登録が作成されます。
 
-3. Visual Studio で、UWP の **[空のアプリケーション]** テンプレートを使用して新しい Visual C# ストア アプリ プロジェクトを作成し、**[OK]** を選択します。
+    ![ストア アプリ名](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
+1. **[アプリの管理]** を展開して、**[WNS/MPNS]** を選択し、**[WNS/MPNS]** を選択してから、**[Live Services site] (Live Services サイト)** を選択します。 Microsoft アカウントにサインインする。 **アプリケーション登録ポータル**が新しいタブで開きます。あるいは、[アプリケーション登録ポータル](http://apps.dev.microsoft.com)に直接移動し、アプリケーション名を選択してこのページを表示できます。
 
-4. ターゲットとプラットフォームの最小バージョンの既定値をそのまま使用します。
+    ![[WNS MPNS] ページ](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
+1.   **アプリケーション シークレット** パスワードと**パッケージ セキュリティ ID (SID)** をメモします。
 
-5. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順に選択します。  
-    **アプリケーションを Windows ストアと関連付ける** ウィザードが表示されます。
+        >[!WARNING]
+        >アプリケーション シークレットおよびパッケージ SID は、重要なセキュリティ資格情報です。 これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
-6. ウィザードで、自分の Microsoft アカウントでサインインします。
-
-7. 手順 2. で登録したアプリを選択し、**[次へ]**、**[関連付け]** の順に選択します。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
-
-8. [Windows デベロッパー センター](http://dev.windows.com/overview)で新しいアプリのページに戻り、**[サービス]**、**[プッシュ通知]**、**[WNS/MPNS]** の順に選択します。
-
-9. **[新しい通知]** を選択します。
-
-10. **[Blank (Toast)]\(空白 (トースト)\)** テンプレートを選択して、**[OK]** を選択します。
-
-11. 通知の**名前**とビジュアル **コンテキスト** メッセージを入力してから、**[下書きとして保存]** を選択します。
-
-12. [アプリケーション登録ポータル](http://apps.dev.microsoft.com)に移動して、サインインします。
-
-13. アプリケーション名を選択します。 **Windows ストア** プラットフォームの設定で、**アプリケーション シークレット** パスワードと**パッケージ セキュリティ ID (SID)** をメモします。
-
-    >[!WARNING]
-    >アプリケーション シークレットおよびパッケージ SID は、重要なセキュリティ資格情報です。 これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
-
-## <a name="configure-your-notification-hub"></a>通知ハブを構成する
+## <a name="create-a-notification-hub"></a>通知ハブを作成する
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="6">
-<li><p><b>[Notification Services]</b> の <b>[Windows (WNS)]</b> を選択し、アプリケーション シークレット パスワードを <b>[セキュリティ キー]</b> ボックスに入力します。 前のセクションで WNS から取得した値を <b>[パッケージ SID]</b> ボックスに入力し、<b>[保存]</b> を選択します。</p>
-</li>
-</ol>
 
-![[パッケージ SID] ボックスと [セキュリティ キー] ボックス](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+### <a name="configure-wns-settings-for-the-hub"></a>WNS の設定をハブ用に構成する
+
+1. **[通知設定]** カテゴリで、**[Windows (WNS)]** を選択します。 
+2. 前のセクションからメモした**パッケージ SID** と**セキュリティ キー**の値を入力します。 
+3. ツールバーの **[保存]** を選択します。
+
+    ![[パッケージ SID] ボックスと [セキュリティ キー] ボックス](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
 これで、通知ハブが WNS と連携するように構成されました。 接続文字列を使用してアプリを登録し、通知を送信できます。
 
-## <a name="connect-your-app-to-the-notification-hub"></a>通知ハブにアプリケーションを接続する
-1. Visual Studio でソリューションを右クリックし、**[NuGet パッケージの管理]** を選択します。  
-    **[NuGet パッケージの管理]** ウィンドウが開きます。
+## <a name="create-a-sample-windows-app"></a>サンプルの Windows アプリを作成する
+1. Visual Studio で、**[ファイル]** を選択し、**[新規]** をポイントして **[プロジェクト]** を選択します。 
+2. **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。 
 
-2. 検索ボックスに「**Microsoft.Azure.NotificationHubs**」と入力し、**[インストール]** を選択して、使用条件に同意します。
+    1. **[Visual C#]** を展開します。
+    2. **[Windows ユニバーサル]** を選択します。 
+    3. **[Blank App (Universal Windows)] (空のアプリ (ユニバーサル Windows))** を選択します。 
+    4. プロジェクトの **名前** を入力します。 
+    5. **[OK]** を選択します。 
+
+        ![[新しいプロジェクト] ダイアログ](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
+1. **ターゲット**と**最小**プラットフォーム バージョンの既定値を受け入れ、**[OK]** を選択します。 
+2. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順に選択します。 **アプリケーションを Windows ストアと関連付ける** ウィザードが表示されます。
+3. ウィザードで、自分の Microsoft アカウントでサインインします。
+4. 手順 2. で登録したアプリを選択し、**[次へ]**、**[関連付け]** の順に選択します。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
+5. Visual Studio でソリューションを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[NuGet パッケージの管理]** ウィンドウが開きます。
+6. 検索ボックスに「**WindowsAzure.Messaging.Managed**」と入力し、**[インストール]** を選択して、使用条件に同意します。
    
     ![[NuGet パッケージの管理] ウィンドウ][20]
    
@@ -138,36 +138,39 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
    
     これにより、アプリケーションが起動するたびに必ずチャネル URI が通知ハブに登録されます。
 
-6. アプリを実行するには、**F5** キーを押します。 登録キーを示すダイアログ ボックスが表示されます。
+6. アプリを実行するには、**F5** キーを押します。 登録キーを示すダイアログ ボックスが表示されます。 ダイアログを閉じるには、**[OK]** を選択します。 
+
+    ![登録が成功しました](./media/notification-hubs-windows-store-dotnet-get-started/registration-successful.png)
 
 これで、アプリケーションがトースト通知を受信する準備が整いました。
 
-## <a name="send-notifications"></a>通知を送信する
-[Azure Portal](https://portal.azure.com/) で通知を送信することで、通知の受信をすばやくテストできます。 次の画像に示すように、通知ハブの **[テスト送信]** ボタンを使用します。
+## <a name="send-test-notifications"></a>テスト通知を送信する
+[Azure Portal](https://portal.azure.com/) で通知を送信することで、通知の受信をすばやくテストできます。 
 
-![[テスト送信] ウィンドウ](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
+1. Azure Portal で、[概要] タブに切り替えてから、ツールバーの **[テスト送信]** を選択します。     
 
-プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドで利用できない場合、REST API を直接使用して通知メッセージを送信することもできます。 
+    ![[テスト送信] ボタン](./media/notification-hubs-windows-store-dotnet-get-started/test-send-button.png)
+2. **[テスト送信]** ウィンドウで、次のアクションを実行します。 
+    1. **[プラットフォーム]** として、**[Windows]** を選択します。
+    2. **通知の種類** として、**[トースト]** を選択します。 
+    3. **[送信]** を選択します。 
+    
+        ![[テスト送信] ウィンドウ](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
+3. ウィンドウの一番下の **[結果]** 一覧で、[送信] 操作の結果を確認します。 アラート メッセージも表示されます。 
 
-このチュートリアルでは、バックエンド サービスを使用せず、単にコンソール アプリケーションの通知ハブに .NET SDK を使用した通知を送信することで、クライアント アプリをテストする方法を説明します。 ASP.NET バックエンドから通知を送信するには、次のステップとして [Notification Hubs を使用したユーザーへのプッシュ通知]に関するチュートリアルを参照することをお勧めします。 ただし、通知の送信には次の方法も使用できます。
+    ![[送信] 操作の結果](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
+1. 通知メッセージが表示されます。デスクトップ上の**テスト メッセージ**。 
 
-* **REST インターフェイス**: [REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
+    ![通知メッセージ](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
-* **Microsoft Azure Notification Hubs .NET SDK**: Visual Studio 用の NuGet パッケージ マネージャーで、[Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を実行します。
-
-* **Node.js**: [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)についてのページを参照してください。
-* **Azure Mobile Apps**: Notification Hubs に統合されている Azure モバイル アプリから通知を送信する方法の例については、[Mobile Apps へのプッシュ通知の追加](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)に関するページを参照してください。
-
-* **Java または PHP**: REST API を使用して通知を送信する方法の例については、以下を参照してください。
-    * [Java](notification-hubs-java-push-notification-tutorial.md)
-    * [PHP](notification-hubs-php-push-notification-tutorial.md)
 
 ## <a name="next-steps"></a>次の手順
-この簡単な例では、ポータルまたはコンソール アプリを使用して、ブロードキャスト通知をすべての Windows デバイスに送信しました。 次のステップとして、[Notification Hubs を使用したユーザーへのプッシュ通知]に関するチュートリアルをお勧めします。 このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
+このチュートリアルでは、ポータルまたはコンソール アプリを使用して、すべての Windows デバイスにブロードキャスト通知を送信しました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
 
-対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信]」を参照してください。 
+> [!div class="nextstepaction"]
+>[特定のデバイスにプッシュ通知を送信する](
+notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 
-Notification Hubs の全般的な情報については、[Notification Hubs の概要](notification-hubs-push-notification-overview.md)に関するページを参照してください。
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-console-app.png
@@ -177,8 +180,8 @@ Notification Hubs の全般的な情報については、[Notification Hubs の�
 
 <!-- URLs. -->
 
-[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
 [toast catalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
 [tile catalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx

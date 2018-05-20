@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo;kgremban
-ms.openlocfilehash: c6182f878076bae27b18d0556a77c8d95677e9c1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 98216328e970af5f8acf04c7e7c3ca855f7065f1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>IoT Hub でのメッセージのルーティング (Python)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-このチュートリアルは、チュートリアル「[SimulatedDevice]」に基づいています。  このチュートリアルでは以下を行います。
+このチュートリアルは、チュートリアル「[IoT Hub の概要]」に基づいています。  このチュートリアルでは以下を行います。
 
 * ルーティング規則を使用して、簡単な構成ベースの方法でデバイスからクラウドにメッセージをディスパッチする方法について説明します。
 * さらに処理するために早急な対応を必要とする対話型メッセージを、ソリューションのバックエンドから分離する方法を示します。  たとえば、デバイスは、CRM システムへのチケットの挿入をトリガーするアラーム メッセージを送信する場合があります。  これに対して、温度テレメトリなどのデータポイント メッセージは、分析エンジンにフィードされます。
 
 このチュートリアルの最後に、次の 3 つの Python コンソール アプリを実行します。
 
-* **SimulatedDevice.py** は [SimulatedDevice] に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージをランダムな間隔で送信します。 このアプリでは、IoT Hub との通信に MQTT プロトコルを使用します。
+* **SimulatedDevice.py** は [IoT Hub の概要] に関するチュートリアルで作成したアプリを変更したもので、デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージをランダムな間隔で送信します。 このアプリでは、IoT Hub との通信に MQTT プロトコルを使用します。
 * **ReadCriticalQueue.py** は、IoT hub に接続された Service Bus キューから重大なメッセージをデキューします。
 
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/05/2018
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [SimulatedDevice] に関するチュートリアルで完成させたアプリ。
+* [IoT Hub の概要] に関するチュートリアルで完成させたアプリ。
 * [Python 2.x または 3.x][lnk-python-download]。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用する場合は、[*pip* (Python パッケージ管理システム) をインストールまたはアップグレード][lnk-install-pip]することが必要な場合があります。
 * Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ][lnk-visual-c-redist]。これは、Python からネイティブ DLL を使用できるようにするためです。
 * [Node.js 4.0 以降][lnk-node-download]。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 これは、[IoT Hub エクスプローラー ツール][lnk-iot-hub-explorer]をインストールするために必要です。
@@ -49,9 +49,9 @@ ms.lasthandoff: 04/05/2018
 
 
 ## <a name="send-interactive-messages-from-a-device-app"></a>デバイス アプリからの対話型メッセージの送信
-このセクションでは、[SimulatedDevice]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
+このセクションでは、[IoT Hub の概要]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
 
-1. テキスト エディターを使用して **SimulatedDevice.py** ファイルを開きます。 このファイルには、 **IoT Hub の概要** のチュートリアルで作成した [SimulatedDevice] アプリのコードが含まれています。
+1. テキスト エディターを使用して **SimulatedDevice.py** ファイルを開きます。 このファイルには、 [IoT Hub の概要] のチュートリアルで作成した **SimulatedDevice** アプリのコードが含まれています。
 
 2. **iothub_client_telemetry_sample_run** 関数を次のコードに置き換えます。
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 04/05/2018
 
 このチュートリアルでは、IoT Hub のメッセージ ルーティング機能を使用して、デバイスからクラウドへのメッセージを確実にディスパッチする方法について説明しました。
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite][lnk-suite] に関するドキュメントを参照してください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ][lnk-suite]に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
@@ -287,12 +287,12 @@ IoT Hub でのメッセージのルーティングの詳細については、[Io
 
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
-[SimulatedDevice]: iot-hub-python-getstarted.md
+[IoT Hub の概要]: iot-hub-python-getstarted.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-free-trial]: https://azure.microsoft.com/free/
-[lnk-storage]: https://docs.microsoft.com/en-us/azure/storage/
+[lnk-storage]: https://docs.microsoft.com/azure/storage/
 [lnk-python-service-bus]: https://pypi.python.org/pypi/azure-servicebus

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management のページ コントロール | Microsoft Docs"
-description: "Azure API Management の開発者ポータル テンプレートで使用できるページ コントロールについて説明します。"
+title: Azure API Management のページ コントロール | Microsoft Docs
+description: Azure API Management の開発者ポータル テンプレートで使用できるページ コントロールについて説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
 Azure API Management には、開発者ポータル テンプレート用に次のページ コントロールが用意されています。  
@@ -30,7 +30,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
  パラメーターの値は、テンプレートのデータ モデルの一部として渡されます。 ほとんどのケースで、コントロールごとに用意されている例を貼り付けると正常に機能します。 パラメーター値の詳細については、コントロールを使用できる各テンプレートのデータ モデルのセクションを参照してください。  
   
- テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
+ テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
   
 ## <a name="developer-portal-template-page-controls"></a>開発者ポータル テンプレートのページ コントロール  
   
@@ -56,7 +56,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ### <a name="parameters"></a>parameters  
   
-|パラメーター|Description|  
+|パラメーター|[説明]|  
 |---------------|-----------------|  
 |appId|アプリケーションの ID。|  
   
@@ -200,7 +200,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ### <a name="parameters"></a>parameters  
   
-|パラメーター|Description|  
+|パラメーター|[説明]|  
 |---------------|-----------------|  
 |subscriptionId|キャンセルするサブスクリプションの ID。|  
 |cancelUrl|サブスクリプション キャンセル URL。|  
@@ -210,5 +210,5 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 -   [成果物](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

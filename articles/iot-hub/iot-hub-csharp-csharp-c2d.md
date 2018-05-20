@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: f3110e81a7229f8f279609a64949c7f0ce78d338
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b867976c637cdd4dd9b696382103c63f1af2e8b3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -95,7 +95,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 1. 現在の Visual Studio ソリューションで、**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# デスクトップ アプリ プロジェクトを作成します。 プロジェクトに **SendCloudToDevice**という名前を付けます。
    
     ![Visual Studio での新しいプロジェクト][20]
-2. ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューション用 NuGet パッケージの管理]**をクリックします。 
+2. ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューション用 NuGet パッケージの管理]** をクリックします。 
    
     この操作によって、**[NuGet パッケージの管理]** ウィンドウが開きます。
 3. **Microsoft.Azure.Devices** を検索し、**[インストール]** をクリックして使用条件に同意します。 
@@ -127,7 +127,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
         Console.ReadLine();
         SendCloudToDeviceMessageAsync().Wait();
         Console.ReadLine();
-8. Visual Studio 内でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**を選択します。**[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。
+8. Visual Studio 内でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。**[マルチ スタートアップ プロジェクト]** を選択してから、**ReadDeviceToCloudMessages**、**SimulatedDevice**、**SendCloudToDevice** の **[開始]** アクションを選択します。
 9. **F5**キーを押します。 3 つのすべてのアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
    
    ![アプリによるメッセージの受信][21]
@@ -176,7 +176,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT Suite]に関するドキュメントをご覧ください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ]に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
@@ -195,5 +195,5 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [Azure IoT Hub for .NET の使用]: iot-hub-csharp-csharp-getstarted.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[Azure IoT Suite]: https://docs.microsoft.com/azure/iot-suite/
+[Azure IoT リモート監視ソリューション アクセラレータ]: https://docs.microsoft.com/azure/iot-suite/
 [Azure IoT device SDK]: iot-hub-devguide-sdks.md

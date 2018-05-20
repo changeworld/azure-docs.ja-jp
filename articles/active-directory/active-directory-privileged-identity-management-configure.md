@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: b8df65c969a37eb22589c297ecb9b0d0b840a52c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4bc41727c30d4dd213baca1d7c56cdfdf741692d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/07/2018
 >- Just In Time 割り当てまたは直接割り当て (時間ベース) を使用して Azure リソース ロールに割り当て済み  
 >- アクセス レビューに割り当て済み
 >
->詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+>詳細については、「 [Azure Active Directory のエディション](active-directory-whatis.md)」をご覧ください。
 
 組織では、セキュリティで保護された情報またはリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にしたり、権限のあるユーザーの不注意で機微なリソースのセキュリティが損なわれたりする可能性が抑えられるためです。  しかし一方で、ユーザーは Azure AD、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。 組織は、サブスクリプションや Azure AD など、各種 Azure リソースへの特権アクセスをユーザーに付与する場合があります。 そこで、そうしたユーザーが管理特権で何をしているかについて監視することが必要となります。 Azure AD Privileged Identity Management は、アクセス権の過剰、無駄、乱用に伴うリスクを軽減するうえで役に立ちます。
 

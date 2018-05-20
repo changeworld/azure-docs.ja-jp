@@ -1,24 +1,24 @@
 ---
-title: "Azure Notification Hubs を使用してユーザーにクロスプラットフォーム通知を送信する (ASP.NET)"
-description: "Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。"
+title: Azure Notification Hubs を使用してユーザーにクロスプラットフォーム通知を送信する (ASP.NET)
+description: Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 3c6dde338cb154f0cbe02642e4ff0f81d070aa25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>通知ハブによるユーザーへのクロスプラットフォーム通知の送信
 前のチュートリアル ([Notification Hubs によるユーザーへの通知]) では、認証された特定のユーザーにより登録されたすべてのデバイスにプッシュ通知を行う方法について説明しました。 そのチュートリアルでは、サポートされる各クライアント プラットフォームに通知を送信するため、複数の要求が必要でした。 Azure Notification Hubs ではテンプレートがサポートされています。テンプレートを使用して、特定のデバイスが通知を受信する方法を指定できます。 この方法により、クロスプラットフォーム通知の送信が簡単になります。 
@@ -81,16 +81,16 @@ ms.lasthandoff: 10/11/2017
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    このコードは、ネイティブ ペイロードを指定しなくても、すべてのプラットフォームに通知を同時に送信します。 Notification Hubs は、登録されたテンプレートでの指定内容に従って、提供された "*タグ*" 値を使用して適切なペイロードを作成して各デバイスに配信します。
+    このコードは、ユーザーがネイティブ ペイロードを指定しなくても、すべてのプラットフォームに同時に通知を送信します。 Notification Hubs は、登録されたテンプレートでの指定内容に従って、提供された "*タグ*" 値を使用して適切なペイロードを作成して各デバイスに配信します。
 
 4. WebApi バックエンド プロジェクトを再発行します。
 
 5. もう一度クライアント アプリケーションを実行し、登録に成功したことを確認します。
 
 6. (省略可能) クライアント アプリケーションを 2 つ目のデバイスにデプロイし、アプリケーションを実行します。
-    各デバイスに通知が表示される点に注目してください。
+    通知が各デバイスに表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルを完了したら、以下のトピックで通知ハブとテンプレートの詳細を参照してください。
 
 * [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.

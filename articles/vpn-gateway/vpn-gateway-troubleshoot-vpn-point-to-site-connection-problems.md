@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/23/2018
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 503dcd87bf87ffb204b03780fc11f30825ac35ef
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0db2291b53c4fe7d2d0894a4c266ed60f78219de
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 

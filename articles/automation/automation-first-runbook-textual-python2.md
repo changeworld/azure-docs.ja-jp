@@ -3,16 +3,17 @@ title: Azure Automation での初めての Python Runbook
 description: 簡単な Python Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 950a42b2fca430998cd2816df1aca5c3d0cc8593
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b5e3d7f2cfb9d5f93d03c75cdbfa69a16bdc63d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -82,7 +83,7 @@ Runbook を発行するときは、既存の発行済みバージョンをドラ
 2. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
 3. 作成した Runbook ジョブのジョブ ウィンドウが開きます。 このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 4. ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。
-5. Runbook の状態が *[完了]*になったら、 **[出力]**をクリックします。 [出力] ウィンドウが開き、*Hello World* と表示されます。
+5. Runbook の状態が *[完了]* になったら、 **[出力]** をクリックします。 [出力] ウィンドウが開き、*Hello World* と表示されます。
 6. [出力] ウィンドウを閉じます。
 7. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは "*Hello World*" だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。
 8. ストリーム ウィンドウとジョブ ウィンドウを閉じると、MyFirstRunbook-Python のウィンドウに戻ります。
@@ -187,7 +188,7 @@ async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_n
 async_vm_start.wait()
 ```
 
-Python Runbook を開始 (**[テスト]** ページ上で、または発行済みの Runbook として) すると、**[パラメーター]**の下の **[Runbook の開始]** ページでパラメーターの値を入力できます。
+Python Runbook を開始 (**[テスト]** ページ上で、または発行済みの Runbook として) すると、**[パラメーター]** の下の **[Runbook の開始]** ページでパラメーターの値を入力できます。
 
 最初のボックスへ値を入力し始めると、2 番目のボックスが表示され、順次必要に応じた数のパラメーター値を入力できます。
 

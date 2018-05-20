@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics での Azure サービスのログとメトリックの収集 | Microsoft Docs"
-description: "Log Analytics にログとメトリックが書き込まれるように Azure のリソースの診断を構成します。"
+title: Log Analytics での Azure サービスのログとメトリックの収集 | Microsoft Docs
+description: Log Analytics にログとメトリックが書き込まれるように Azure のリソースの診断を構成します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
@@ -68,6 +68,13 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 多くの Azure リソースで診断ログとメトリックを Log Analytics に直接書き込むことができます。分析用のデータを収集するにはこの方法がお勧めです。 Azure 診断を使用すると、データが Log Analytics に即座に書き込まれるため、データを最初にストレージに出力する必要はありません。
 
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
+
+> [!NOTE]
+> 診断設定を使用した Log Analytics への多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+>
+> *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
+>
+>
 
 * 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
 * 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)」を参照してください。
@@ -145,9 +152,9 @@ Application Insights にはコネクタがあり、これを使用して、Appli
 
 Log Analytics にログとメトリックを直接送信する手段が提供されていない Azure のサービスについては、Azure Automation スクリプトを使用してログとメトリックを収集することができます。 次に、このスクリプトで[データ コレクター API](log-analytics-data-collector-api.md) を使用して Log Analytics にデータを送信できます。
 
-Azure テンプレート ギャラリーには、サービスからデータを収集し、Log Analytics に送信するために [Azure Automation を使用する例](https://azure.microsoft.com/en-us/resources/templates/?term=OMS)が用意されています。
+Azure テンプレート ギャラリーには、サービスからデータを収集し、Log Analytics に送信するために [Azure Automation を使用する例](https://azure.microsoft.com/resources/templates/?term=OMS)が用意されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Blob Storage (IIS の場合) と Table Storage (イベントの場合) を使用](log-analytics-azure-storage-iis-table.md)して、診断情報を Table Storage に出力する Azure サービスのログや、Blob Storage に出力された IIS ログを読み取ります。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。

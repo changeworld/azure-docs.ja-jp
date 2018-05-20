@@ -1,19 +1,21 @@
 ---
-title: "Azure クイックスタート - DSC を使用して VM を構成する | Microsoft Docs"
-description: "Desired State Configuration を使用して Linux 仮想マシンで LAMP スタックを構成する"
+title: Azure クイックスタート - DSC を使用して VM を構成する | Microsoft Docs
+description: Desired State Configuration を使用して Linux 仮想マシンで LAMP スタックを構成する
 services: automation
-keywords: "dsc, 構成, オートメーション"
+ms.service: automation
+ms.component: dsc
+keywords: dsc, 構成, オートメーション
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 
@@ -28,7 +30,7 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 * Red Hat Enterprise Linux、CentOS、または Oracle Linux を実行している (クラシックではなく) Azure Resource Manager VM。 VM の作成手順については、「[Azure Portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
-https://portal.azure.com で Azure にログインします
+Azure にサインインします (https://portal.azure.com)。
 
 ## <a name="onboard-a-virtual-machine"></a>仮想マシンをオンボードする
 マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
@@ -53,7 +55,7 @@ Desired State Configuration 拡張機能が仮想マシンにデプロイされ�
 1. Automation アカウントの左側のウィンドウで、([共有リソース] の下の) **[モジュール ギャラリー]** を選択します。
 1. 名前の一部「*nx*」を入力してインポートするモジュールを検索します。
 1. インポートするモジュールをクリックします
-1. **[インポート]**をクリックします。
+1. **[インポート]** をクリックします。
 
 ![DSC モジュールのインポート](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 

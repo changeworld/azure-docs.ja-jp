@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 37e305f185afbc2c1f4b2c6e7ca0b30fb5102d74
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5e5d8849e59d95640b490d29bf1233135980486c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Azure から電子メールを受信した後の支払期限を過ぎた Azure サブスクリプション未払い額の支払い
 

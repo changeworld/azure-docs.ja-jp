@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 6377b79d986d32fba8f84c670d6b69d5eda98b8a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 仮想マシン (VM) を作成するとき、停止した (割り当て解除した) VM を再起動するとき、または VM のサイズを変更するとき、Microsoft Azure はコンピューティング リソースをサブスクリプションに割り当てます。 マイクロソフトでは、お客様の要求を満たすために使用可能なすべての VM の種類が常に存在するように、追加のインフラストラクチャと機能に継続的に投資しています。 しかし、特定のリージョンでは Azure サービスの需要がかつてないほど増加しているため、リソース割り当てが失敗する場合があります。 この問題は、VM が次のエラー コードとメッセージを表示しているときに、あるリージョンで VM を作成または開始しようとした場合に発生することがあります。
 
@@ -80,7 +80,7 @@ Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサ
 |----------------------|----------------------------|--------------------|
 |Av1 シリーズ|[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または DSv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または ESv3 シリーズ](../articles/virtual-machines/windows/sizes-memory.md#esv3-series-sup1sup)|
+|Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または ESv3 シリーズ](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
 |D15v2 または DS15v2|より大きい VM サイズを利用するために Resource Manager デプロイ モデルを使用している場合は、D16v3/DS16v3 または D32v3/DS32v3 への移行を検討します。 これらは、最新の世代のハードウェア上で稼働するように設計されています。 VM インスタンスが単一の顧客に専用のハードウェアに分離されるように Resource Manager デプロイ モデルを使用している場合は、最新世代のハードウェア上で稼働するように設計された、新しい分離 VM サイズ (E64i_v3 または E64is_v3) への移行を検討してください。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大規模なデプロイ (500 個を超えるコア) での割り当ての失敗

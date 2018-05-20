@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになる | Microsoft Docs"
-description: "Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになるという問題の解決策を示します。"
-services: 
-documentationcenter: 
+title: Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになる | Microsoft Docs
+description: Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになるという問題の解決策を示します。
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: d1545298-99db-4941-8e97-f24a06bb7cb6
 ms.service: billing
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 08/30/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 19f27aa81d7b5e03828f18f5a38cf3362df17694
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 475a4ad72a1c2fc2ebf99387e193713797cc2586
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Azure Portal または Azure アカウント センターでの「サブスクリプションが見つかりません」エラー
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
 1. Azure Portal の[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
 1. 確認するサブスクリプションを選択し、**[設定]** を調べます。
-1. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。  
+1. **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。  
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

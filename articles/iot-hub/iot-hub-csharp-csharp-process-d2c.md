@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub (.NET) を使用したメッセージのルーティング | Microsoft Docs"
-description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
+title: Azure IoT Hub (.NET) を使用したメッセージのルーティング | Microsoft Docs
+description: 他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5177bac9-722f-47ef-8a14-b201142ba4bc
 ms.service: iot-hub
 ms.devlang: csharp
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 4794f81787fd575c34fa8a2ef66431d85dcf4a5d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 84a74a59417d3d1b9ebe0e2ede6c105b6fb3a576
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-net"></a>IoT Hub (.NET) でのメッセージのルーティング
 
@@ -180,7 +180,7 @@ Service Bus キューのメッセージを処理する方法の詳細につい�
 ## <a name="run-the-applications"></a>アプリケーションの実行
 これで、アプリケーションを実行する準備が整いました。
 
-1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]**を選択します。 **[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクト、**SimulatedDevice** プロジェクト、および **ReadCriticalQueue** プロジェクトの [アクション] として **[開始]** を選択します。
+1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。 **[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクト、**SimulatedDevice** プロジェクト、および **ReadCriticalQueue** プロジェクトの [アクション] として **[開始]** を選択します。
 2. **F5** キーを押して 3 つのコンソール アプリを起動します。 **ReadDeviceToCloudMessages** アプリには、**SimulatedDevice** アプリケーションから送信された重大でないメッセージのみが、**ReadCriticalQueue** アプリには重大なメッセージのみが含まれます。
    
    ![3 つのコンソール アプリ][50]
@@ -214,7 +214,7 @@ Service Bus キューのメッセージを処理する方法の詳細につい�
 
 [IoT Hub でクラウドからデバイスへのメッセージを送信する方法][lnk-c2d]に関するページでは、ソリューション バックエンドからデバイスにメッセージを送信する方法を説明しています。
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite][lnk-suite] に関するドキュメントを参照してください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ][lnk-suite]に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 

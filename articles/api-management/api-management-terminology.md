@@ -1,21 +1,21 @@
 ---
-title: "Azure API Management の 用語集 | Microsoft Docs"
-description: "この記事では、API Management に固有の用語の定義について説明します。"
+title: Azure API Management の 用語集 | Microsoft Docs
+description: この記事では、API Management に固有の用語の定義について説明します。
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
-ms.openlocfilehash: 9391b65a5aade4c050ca964354bfea2d3a2338d8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 81cf34cacdfe37e25d6b745304ab0879245fd8da
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="terminology"></a>用語集
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/04/2017
 * **リビジョン** - API の準備が整って開発者に使用され始めたら、その API に変更を加える際には、API の呼び出し元を混乱させないように注意する必要があります。 また、行った変更内容を開発者に知らせると有効です。 詳細については、[リビジョンの使用](api-management-get-started-revise-api.md)に関する記事をご覧ください。
 * **開発者ポータル** - 顧客 (開発者) は、開発者ポータルを使用して API にアクセスする必要があります。 開発者ポータルはカスタマイズできます。 詳細については、[開発者ポータルのカスタマイズ](api-management-customize-styles.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [インスタンスの作成](get-started-create-service-instance.md)

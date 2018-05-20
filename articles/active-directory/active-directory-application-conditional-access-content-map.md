@@ -1,22 +1,23 @@
 ---
-title: "いずれかのアプリケーションへの条件付きアクセスの構成に関する問題\""
-description: "いずれかのアプリケーションへの条件付きアクセスの構成に関する問題\""
+title: いずれかのアプリケーションへの条件付きアクセスの構成に関する問題"
+description: いずれかのアプリケーションへの条件付きアクセスの構成に関する問題"
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 34d375d62cd41acdbbaa8da5f6cc46605aebb81f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: d77a9c93f8c4f154e5bdda777276328b161a23b5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>アプリケーションへの条件付きアクセスの構成に関する問題
 

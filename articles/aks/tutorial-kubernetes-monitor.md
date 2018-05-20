@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 522109e37a0e8a54848b524697e601b4ea8992d5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-monitor-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) の監視
+# <a name="tutorial-monitor-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) の監視
 
 Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
@@ -84,26 +84,26 @@ spec:
     dockerProviderVersion: 1.0.0-30
   spec:
    containers:
-     - name: omsagent 
+     - name: omsagent
        image: "microsoft/oms"
        imagePullPolicy: Always
        securityContext:
          privileged: true
        ports:
        - containerPort: 25225
-         protocol: TCP 
+         protocol: TCP
        - containerPort: 25224
          protocol: UDP
        volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
-        - mountPath: /var/log 
+        - mountPath: /var/log
           name: host-log
         - mountPath: /etc/omsagent-secret
           name: omsagent-secret
           readOnly: true
-        - mountPath: /var/lib/docker/containers 
-          name: containerlog-path  
+        - mountPath: /var/lib/docker/containers
+          name: containerlog-path
        livenessProbe:
         exec:
          command:
@@ -113,26 +113,26 @@ spec:
         initialDelaySeconds: 60
         periodSeconds: 60
    nodeSelector:
-    beta.kubernetes.io/os: linux    
+    beta.kubernetes.io/os: linux
    # Tolerate a NoSchedule taint on master that ACS Engine sets.
    tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Equal"
       value: "true"
-      effect: "NoSchedule"     
+      effect: "NoSchedule"
    volumes:
-    - name: docker-sock 
+    - name: docker-sock
       hostPath:
        path: /var/run/docker.sock
     - name: host-log
       hostPath:
-       path: /var/log 
+       path: /var/log
     - name: omsagent-secret
       secret:
        secretName: omsagent-secret
     - name: containerlog-path
       hostPath:
-       path: /var/lib/docker/containers    
+       path: /var/lib/docker/containers
 ```
 
 次のコマンドを使って DaemonSet を作成します。

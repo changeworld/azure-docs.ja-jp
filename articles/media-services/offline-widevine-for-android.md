@@ -1,12 +1,12 @@
 ---
-title: "Widevine で保護されたコンテンツのオフライン ストリーミング用にアカウントを構成する - Azure"
-description: "このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services アカウントを構成する方法を示します。"
+title: Widevine で保護されたコンテンツのオフライン ストリーミング用にアカウントを構成する - Azure
+description: このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services アカウントを構成する方法を示します。
 services: media-services
-keywords: "DASH, DRM, Widevine オフライン モード, ExoPlayer, Android"
-documentationcenter: 
+keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b27ffcbf5749d612e63ba08df0adad72f357a83a
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
@@ -122,7 +122,7 @@ ExoPlayer SDK for Android でのオフライン モードを容易にするク�
 
 一部の古い Android デバイスでは、**policy_overrides** のプロパティ **rental_duration_seconds**、**playback_duration_seconds**、**license_duration_seconds** の値を設定する必要があります ([Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)で定義されています)。 または、これらを無期限/無制限の期間を意味する 0 に設定してもかまいません。  
 
-整数オーバーフローのバグを回避するには、値を設定する必要があります。 この問題について詳しくは、https://github.com/google/ExoPlayer/issues/3150 および https://github.com/google/ExoPlayer/issues/3112 をご覧ください。 <br/>値を明示的に設定しない場合、**PlaybackDurationRemaining** および **LicenseDurationRemaining** に非常に大きな値が割り当てられます (たとえば 9223372036854775807、これは 64 ビット整数の正の最大値です)。 その結果、Widevine ライセンスは有効期限切れになり、解読は行われません。 
+整数オーバーフローのバグを回避するには、値を設定する必要があります。 この問題に関する詳しい説明については、https://github.com/google/ExoPlayer/issues/3150 と https://github.com/google/ExoPlayer/issues/3112 を参照してください。 <br/>値を明示的に設定しない場合、**PlaybackDurationRemaining** および **LicenseDurationRemaining** に非常に大きな値が割り当てられます (たとえば 9223372036854775807、これは 64 ビット整数の正の最大値です)。 その結果、Widevine ライセンスは有効期限切れになり、解読は行われません。 
 
 この問題は、Android 5.0 Lollipop 以降では発生しません。Android 5.0 は ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) と 64 ビット プラットフォームを完全にサポートするように設計された最初の Android バージョンですが、Android 4.4 KitKat は他の古い Android バージョンと同じように ARMv7 と 32 ビット プラットフォームをサポートするようにもともと設計されていました。
 
@@ -148,7 +148,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 上記のオープンソース PWA アプリは、Node.js で作成されています。 独自のバージョンを Ubuntu サーバーでホストする場合は、再生を妨げる可能性のある、以下のよく発生する問題に留意してください。
 
-1. CORS の問題: サンプル アプリのサンプル ビデオは、https://storage.googleapis.com/biograf-video-files/videos/ でホストされています。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。"Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled." (https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd の読み込みが失敗しました: 要求されたリソースには 'Access-Control-Allow-Origin' ヘッダーがありません。したがって、要求元 'https://13.85.80.81:8080' はアクセスを許可されません。非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。)
+1. CORS の問題: サンプル アプリのサンプル ビデオは、https://storage.googleapis.com/biograf-video-files/videos/ でホストされています。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled." (https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd の読み込みが失敗しました: 要求されたリソースには 'Access-Control-Allow-Origin' ヘッダーがありません。したがって、要求元 'https://13.85.80.81:8080' はアクセスを許可されません。非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。)
 2. 証明書の問題: Chrome v 58 以降では、Widevine 用の EME には HTTPS が必要です。 したがって、X509 証明書を使って HTTPS 経由でサンプル アプリをホストする必要があります。 通常のテスト証明書は、以下の要件のため機能しません。次の最小要件を満たす証明書を取得する必要があります。
     - Chrome および Firefox では、SAN-Subject Alternative Name の設定が証明書に存在する必要があります
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません
@@ -172,7 +172,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 ### <a name="question"></a>質問
 
-Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
+Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
 
 ### <a name="answer"></a>リダイレクト先
 
@@ -182,7 +182,7 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 2.  セキュリティ レベル 2: 暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
 3.  セキュリティ レベル 3: デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。
 
-同時に、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview)では、content_key_specs の security_level プロパティは、次の 5 つの異なる値を持つことができるようになっています (再生のクライアント堅牢性の要件)。
+同時に、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)では、content_key_specs の security_level プロパティは、次の 5 つの異なる値を持つことができるようになっています (再生のクライアント堅牢性の要件)。
 
 1.  ソフトウェアベースのホワイトボックス暗号化が必須です。
 2.  ソフトウェア暗号化と難読化デコーダーが必須です。

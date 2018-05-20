@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: パススルー認証 - よく寄せられる質問 | Microsoft Docs"
-description: "Azure Active Directory パススルー認証に関してよく寄せられる質問への回答です。"
+title: 'Azure AD Connect: パススルー認証 - よく寄せられる質問 | Microsoft Docs'
+description: Azure Active Directory パススルー認証に関してよく寄せられる質問への回答です。
 services: active-directory
-keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 7a817092581ef0be0b6be063282f7484c46ff094
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
@@ -34,7 +34,6 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>パススルー認証は [Microsoft Azure Germany クラウド](http://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
 
-
 いいえ。 パススルー認証は、世界中の Azure AD のインスタンスでのみ使用できます。
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、パススルー認証と連携しますか。
@@ -47,10 +46,9 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
-
 いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー_されません_。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)向けにパススルー認証を構成する必要があります。
 
-## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../active-directory-application-proxy-get-started.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
+## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
 はい。 この構成は、パススルー認証エージェント (バージョン 1.5.193.0 以降) のブランド名変更バージョンでサポートされます。
 

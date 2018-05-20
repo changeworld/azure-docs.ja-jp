@@ -4,7 +4,7 @@ description: この記事では、Azure で運用可能なセキュリティの�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c03e8bcfe3b874e3897d3c2d94f42d10d64d7af5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ae8f2393b6965cc2fc78a297ea79e1170acc011f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-checklist"></a>Azure で運用可能なセキュリティのチェックリスト
 Azure でのアプリケーションのデプロイは、すばやく簡単に、高いコスト効率で行うことができます。 運用環境にクラウド アプリケーションをデプロイする前に、検討する必須および推奨の運用上のセキュリティ アクションの一覧に照らしてアプリケーションを評価する際に役立つチェックリストがあると便利です。

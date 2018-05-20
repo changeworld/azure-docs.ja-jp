@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: iainfou
 ms.openlocfilehash: f405cdaf61d6aaafa8568a9d7f21614071285c17
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="encrypt-a-windows-virtual-machine-with-azure-powershell"></a>Azure PowerShell を使用した Windows 仮想マシンの暗号化
 

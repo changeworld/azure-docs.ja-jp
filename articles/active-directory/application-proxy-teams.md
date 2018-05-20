@@ -1,25 +1,25 @@
 ---
-title: "Teams からの Azure AD アプリケーション プロキシ アプリへのアクセス | Microsoft Docs"
-description: "Azure AD アプリケーション プロキシを使用して、Microsoft Teams からオンプレミス アプリケーションにアクセスします。"
+title: Teams からの Azure AD アプリケーション プロキシ アプリへのアクセス | Microsoft Docs
+description: Azure AD アプリケーション プロキシを使用して、Microsoft Teams からオンプレミス アプリケーションにアクセスします。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a8dca307bb97898f229b39710a3b566ee913fcca
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 974c364588d34631c8214352be7821c69e5f7aa7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 
@@ -30,7 +30,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>アプリケーション プロキシ コネクタのインストールとアプリの公開
 
-まだ実行していない場合は、[テナントのアプリケーション プロキシを構成し、コネクタをインストール](active-directory-application-proxy-enable.md)します。 次に、リモート アクセス用に[オンプレミス アプリケーションを公開](application-proxy-publish-azure-portal.md)します。 アプリケーションを公開するときに、外部 URL を書き留めておきます。これは、Teams にアプリを追加するときに必要になります。
+まだ実行していない場合は、[テナントのアプリケーション プロキシを構成し、コネクタをインストール](manage-apps/application-proxy-enable.md)します。 次に、リモート アクセス用に[オンプレミス アプリケーションを公開](manage-apps/application-proxy-publish-azure-portal.md)します。 アプリケーションを公開するときに、外部 URL を書き留めておきます。これは、Teams にアプリを追加するときに必要になります。
 
 既にアプリケーションを公開していて、その外部 URL がわからない場合は、[Azure Portal](https://portal.azure.com) で確認できます。 ポータルにサインインしたら、**[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、アプリケーションを選び、**[アプリケーション プロキシ]** を選択します。
 
@@ -54,5 +54,5 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 ## <a name="next-steps"></a>次の手順
 
-- アプリケーション プロキシで[オンプレミスの SharePoint サイトを公開する](application-proxy-enable-remote-access-sharepoint.md)方法を学びます。
-- 外部 URL に[カスタム ドメイン](active-directory-application-proxy-custom-domains.md)を使用するようアプリを構成します。 
+- アプリケーション プロキシで[オンプレミスの SharePoint サイトを公開する](manage-apps/application-proxy-integrate-with-sharepoint-server.md)方法を学びます。
+- 外部 URL に[カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md)を使用するようアプリを構成します。 

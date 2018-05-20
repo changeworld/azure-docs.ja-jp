@@ -1,11 +1,11 @@
 ---
-title: "Azure の内部ロード バランサーの作成 - PowerShell クラシック | Microsoft Docs"
-description: "クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
+title: Azure の内部ロード バランサーの作成 - PowerShell クラシック | Microsoft Docs
+description: クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 3be93168-3787-45a5-a194-9124fe386493
 ms.service: load-balancer
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: 85fd757bdd6dd9906a23977b760f01bb1f85bf77
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 8b896705d90b51c056172c285a00dabeed54ebf2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>PowerShell を使用した内部ロード バランサー (クラシック) の作成の開始
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/18/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -184,7 +184,7 @@ Get-Help Get-AzureInternalLoadbalancer -full
 Get-Help Remove-AzureInternalLoadBalancer -full
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 

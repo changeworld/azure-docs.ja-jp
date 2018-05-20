@@ -2,25 +2,22 @@
 title: PhoneFactor から Azure MFA Server へのアップグレード | Microsoft Docs
 description: 古い phonefactor エージェントからアップグレードする場合の Azure MFA Server の概要。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: 42838ff7-bdf2-4d06-bacc-b3839a00cd76
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/06/2017
 ms.author: joflore
-ms.openlocfilehash: eca7e846aaa17c245a1d904489a25e6de2c3cca7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: e1a216a8bf524d22af815d077b16ab29c817e9e4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
+
 PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authentication Server にアップグレードするには、PhoneFactor エージェントと関連コンポーネントを最初にアンインストールします。 その後で、Multi-factor Authentication Server とその関連コンポーネントをインストールすることができます。
 
 ## <a name="uninstall-the-phonefactor-agent"></a>PhoneFactor エージェントのアンインストール

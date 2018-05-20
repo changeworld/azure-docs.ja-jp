@@ -1,25 +1,25 @@
 ---
-title: "Azure AD アプリ プロキシを使用したリモート デスクトップの発行 | Microsoft Docs"
-description: "Azure AD アプリケーション プロキシ コネクタの基本について説明します。"
+title: Azure AD アプリ プロキシを使用したリモート デスクトップの発行 | Microsoft Docs
+description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: daveba
+ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 44b54ad4331d48202044316486a5b1d1ef9202d2
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c24781ad432a4682ebb0afcb95390bdcf8962d90
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -46,7 +46,7 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 
 - RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイはアプリケーション プロキシで単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
 
-- [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](active-directory-application-proxy-enable.md)必要があります。
+- [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](manage-apps/application-proxy-enable.md)必要があります。
 
 - このシナリオでは、エンド ユーザーが、RD Web ページを通じて接続する Windows 7 または Windows 10 上の Internet Explorer にアクセスすることを前提としています。 その他のオペレーティング システムに対応する必要がある場合は、「[その他のクライアント構成のサポート](#support-for-other-client-configurations)」をご覧ください。
 
@@ -58,7 +58,7 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
-1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-publish-azure-portal.md)します。
+1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](manage-apps/application-proxy-publish-azure-portal.md)します。
    - [内部 URL]: https://\<rdhost\>.com/。\<rdhost\> は、RD Web と RD ゲートウェイが共有する共通のルートです。
    - [外部 URL]: このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]: Azure Active Directory

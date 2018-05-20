@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
@@ -47,7 +47,7 @@ Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 の�
 
 組織に Cloud App Discovery をデプロイして管理されていないクラウド アプリケーションを検出し、Azure Active Directory を使用してこれらのアプリケーションを管理することをお勧めします。
 
-詳細については、「 [管理されていないクラウド アプリケーションを Cloud App Discovery で検出する](active-directory-cloudappdiscovery-whatis.md)」を参照してください。
+詳細については、「 [管理されていないクラウド アプリケーションを Cloud App Discovery で検出する](manage-apps/cloud-app-discovery.md)」を参照してください。
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Privileged Identity Management からのセキュリティ アラート
 この脆弱性は、組織内の特権 ID に関するアラートを検出して解決するのに役立ちます。  

@@ -1,23 +1,23 @@
 ---
-title: "Azure Container Service (AKS) クラスターの作成"
-description: "CLI または Azure Portal を使用して AKS クラスターを作成します。"
+title: Azure Kubernetes Service (AKS) クラスターの作成
+description: CLI または Azure Portal を使用して AKS クラスターを作成します。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 37d6dfc0aa6b3e4fcd88a53e83a3a3d7f2157681
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 00672b6272ce9c775621e519c327c0b8368bc220
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="create-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターの作成
+# <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターの作成
 
-Azure Container Service (AKS) クラスターは、Azure CLI または Azure Portal を使用して作成することができます。
+Azure Kubernetes Service (AKS) クラスターは、Azure CLI または Azure Portal を使用して作成することができます。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -32,7 +32,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 | 引数 | [説明] | 必須 |
 |---|---|:---:|
 | `--name` `-n` | 管理対象クラスターのリソース名。 | はい |
-| `--resource-group` `-g` | Azure Container Service リソース グループの名前。 | はい |
+| `--resource-group` `-g` | Azure Kubernetes Service リソース グループの名前。 | はい |
 | `--admin-username` `-u` | Linux Virtual Machines のユーザー名。  既定値: azureuser。 | × |
 | ` --client-secret` | サービス プリンシパルに関連付けられているシークレット。 | × |
 | `--dns-name-prefix` `-p` | クラスター パブリック IP アドレスの DNS プレフィックス。 | × |
@@ -48,7 +48,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal を使用した AKS クラスターのデプロイ手順については、Azure Container Service (AKS) の [Azure Portal クイックスタート][aks-portal-quickstart]に関するページを参照してください。 
+Azure Portal を使用した AKS クラスターのデプロイ手順については、Azure Kubernetes Service (AKS) の [Azure Portal クイックスタート][aks-portal-quickstart]に関するページをご覧ください。
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create

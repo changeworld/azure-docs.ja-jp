@@ -1,24 +1,26 @@
 ---
-title: "Azure AD の署名キーのロールオーバー"
-description: "この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します"
+title: Azure AD の署名キーのロールオーバー
+description: この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5396baa57fe0b49809d9fe06eb2b2feda2ed9ba8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory の署名キーのロールオーバー
 この記事では、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。 これらのキーは定期的にロールオーバー (交換) されるほか、緊急時にはその場ですぐロールオーバーすることもできます。 Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -295,7 +297,7 @@ WIF v1.0 でアプリケーションを作成した場合、新しいキーを�
 FedUtil を使用して構成を更新する手順は、次のようになります。
 
 1. Visual Studio 2008 または 2010 をデプロイしてあるマシンに WIF v1.0 SDK がインストールされていることを確認します。 インストールされていない場合は、[ここからダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=4451) できます。
-2. Visual Studio でソリューションを開き、該当するプロジェクトを右クリックして、 **[Update federation metadata (フェデレーション メタデータの更新)]**を選択します。 このオプションが表示されない場合は、FedUtil と WIF v1.0 SDK の少なくともどちらかがインストールされていません。
+2. Visual Studio でソリューションを開き、該当するプロジェクトを右クリックして、 **[Update federation metadata (フェデレーション メタデータの更新)]** を選択します。 このオプションが表示されない場合は、FedUtil と WIF v1.0 SDK の少なくともどちらかがインストールされていません。
 3. プロンプトで **[更新]** を選択してフェデレーション メタデータの更新を開始します。 アプリケーションがホストされているサーバー環境にアクセスできる場合は、FedUtil の [メタデータの自動更新スケジューラ](https://msdn.microsoft.com/library/ee517272.aspx)を使用することもできます。
 4. **[完了]** をクリックして更新プロセスを完了します。
 

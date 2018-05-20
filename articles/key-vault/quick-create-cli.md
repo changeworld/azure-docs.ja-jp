@@ -5,20 +5,20 @@ services: key-vault
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
-ms.assetid: ''
+ms.assetid: 4acc894f-fee0-4c2f-988e-bc0eceea5eda
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/27/2018
+ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 64a092de1ae6c005355063d43541a20fa9076395
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ae8957e5bf87fc190076db87d4eaca0e7a757c5e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>クイック スタート: CLI を使用した Azure Key Vault の作成
 

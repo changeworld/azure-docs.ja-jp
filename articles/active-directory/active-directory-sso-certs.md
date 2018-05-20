@@ -1,31 +1,31 @@
 ---
-title: "Azure AD でのフェデレーション証明書の管理 |Microsoft Docs"
-description: "フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。"
+title: Azure AD でのフェデレーション証明書の管理 |Microsoft Docs
+description: フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeevansd
 manager: mtillman
-editor: 
-ms.assetid: f516f7f0-b25a-4901-8247-f5964666ce23
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2247b668584c7bb501043917f98e77c7c5cecfdc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 97a70781adaaaa5fd661474336373e70a3923ef5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 この記事では、SaaS アプリケーションにフェデレーション シングル サインオン (SSO) を確立するために Azure Active Directory (Azure AD) で作成される証明書に関連する一般的な質問と情報について説明します。 アプリケーションは Azure AD アプリ ギャラリーから追加するか、ギャラリー以外のアプリケーション テンプレートを使用して追加します。 アプリケーションの構成には、フェデレーション SSO オプションを使用します。
 
 次の例に示すように、この記事は、SAML フェデレーションを使用して Azure AD SSO を使用するように構成されたアプリにのみに関連します。
 
-![Azure AD のシングル サインオン](./media/active-directory-sso-certs/saml_sso.PNG)
+![Azure AD Single Sign-On](./media/active-directory-sso-certs/saml_sso.PNG)
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>ギャラリーおよびギャラリー以外のアプリケーションの証明書の自動生成
 ギャラリーから新しいアプリケーションを追加して SAML ベースのサインオンを構成すると、Azure AD によって、3 年間有効なアプリケーションの証明書が生成されます。 この証明書は、**[SAML 署名証明書]** セクションからダウンロードできます。 ギャラリー アプリケーションの場合、このセクションには、アプリケーションの要件に応じて、証明書またはメタデータのダウンロードのオプションが表示されることがあります。
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/11/2017
 
     ![Azure AD シングル サインオン](./media/active-directory-sso-certs/add_gallery_application.png)
 
-3. 左側のウィンドウの **[シングル サインオン]** リンクをクリックし、**[モード]**を **[SAML ベースのサインオン]** に変更します。 これにより、アプリケーションに対して 3 年間有効な証明書が生成されます。
+3. 左側のウィンドウの **[シングル サインオン]** リンクをクリックし、**[モード]** を **[SAML ベースのサインオン]** に変更します。 これにより、アプリケーションに対して 3 年間有効な証明書が生成されます。
 
 4. 新しい証明書を作成するには、**[SAML 署名証明書]** セクションの **[新しい証明書の作成]** リンクをクリックします。
 

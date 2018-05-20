@@ -1,13 +1,13 @@
 ---
-title: "Azure Active Directory を使用するようにアプリケーションを登録する | Microsoft Docs"
-description: "IT プロフェッショナル向けに記述されたこの記事では、Azure アプリケーションを Active Directory を統合するためのガイドラインを示します。"
+title: Azure Active Directory を使用するようにアプリケーションを登録する | Microsoft Docs
+description: IT プロフェッショナル向けに記述されたこの記事では、Azure アプリケーションを Active Directory を統合するためのガイドラインを示します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
-ms.assetid: dd69f2bc-37c5-457c-857d-27acb84267fb
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 514db22ad070fed20d89be442cecc2f3ee808ead
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 66102836b954bf4fafc4379cf573658d89e0d409
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
 このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。Active Directory/Office 365 のグローバル管理者向けに記述されています。
@@ -77,7 +77,7 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「 [Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください。
 
 ## <a name="related-articles"></a>関連記事
-* [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへの安全なリモート アクセスを有効にする](active-directory-application-proxy-get-started.md)
+* [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへの安全なリモート アクセスを有効にする](manage-apps/application-proxy.md)
 * [Azure Conditional Access Preview for SaaS Apps](active-directory-conditional-access-azure-portal-get-started.md)
 * [Azure AD を使用したアプリへのアクセスの管理](active-directory-managing-access-to-apps.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)

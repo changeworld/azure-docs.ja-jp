@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: be5f5a6c39e27ae7fedab32fea12f5cf9b7cd3bd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e12487c519a927b18574310b7af04a1811befd38
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -193,7 +193,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 **A:** Azure AD アプリケーション プロキシを使用すれば、選択したオンプレミスの Web アプリケーションに簡単かつ安全にアクセスできます。 これらのアプリケーションには、Azure AD でサービスとしてのソフトウェア (SaaS) アプリにアクセスするのと同じ方法でアクセスできます。 VPN を使ったり、ネットワーク インフラストラクチャを変更したりする必要はありません。  
 
-詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」を参照してください。
+詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md)」を参照してください。
 
 - - -
 **Q: 特定のアプリケーションにアクセスするユーザーに多要素認証を要求するにはどうすればよいですか?**

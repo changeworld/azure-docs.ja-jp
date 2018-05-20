@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 58ecf22fa0f9349a767455fe3ab08fca058d02da
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b4c1e3fb919ab9ad88a15b51a5e204290a7a12cf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="phoenix-performance-best-practices"></a>Phoenix のパフォーマンスのベスト プラクティス
 

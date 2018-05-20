@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
+ms.date: 05/08/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 1f3b26de1604fd90001d01030a33ece8cd573060
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1f8876ec21fe8f823bc4ded84ec1cd90142f96c1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 [!INCLUDE [1. Introduction](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)]
 [!INCLUDE [2. Setup](..\..\..\..\includes\active-directory-develop-guidedsetup-aspnetwebapp-setup.md)]

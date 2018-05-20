@@ -1,10 +1,10 @@
 ---
-title: "インターネットに接続するロード バランサーの作成 - Azure PowerShell クラシック | Microsoft Docs"
-description: "PowerShell を使用し、インターネットに接続するクラシック モードのロード バランサーを作成する方法について説明します"
+title: インターネットに接続するロード バランサーの作成 - Azure PowerShell クラシック | Microsoft Docs
+description: PowerShell を使用し、インターネットに接続するクラシック モードのロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
+author: genlin
+manager: cshepard
 tags: azure-service-management
 ms.assetid: 73e8bfa4-8086-4ef0-9e35-9e00b24be319
 ms.service: load-balancer
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: 56e29dc792ef832a7693b9c8769e9b4269766955
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 07d3658ff86a46875a57cb3359a60661911e0c8b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-powershell"></a>PowerShell を使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイ モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -67,7 +67,7 @@ Get-AzureVM -ServiceName "mytestcloud" -Name "web2" | Add-AzureEndpoint -Name "H
 Get-azureVM -ServiceName mytestcloud  -Name web1 |Remove-AzureEndpoint -Name httpin | Update-AzureVM
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの作成を開始](load-balancer-get-started-ilb-classic-ps.md)し、特定のロード バランサーのネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成することもできます。
 

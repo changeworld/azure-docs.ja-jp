@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2017
+ms.date: 05/01/2018
 ms.author: dkshir
-ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 656799c76a87870a19018849dbeffea3b12a356e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>CA が署名した X.509 証明書を管理する PowerShell スクリプト
 
@@ -33,15 +33,18 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
 ## <a name="create-x509-certificates"></a>X.509 証明書を作成する
 次の手順は、X.509 ルート証明書をローカルで作成する方法の例です。 
 
-1. *管理者*として PowerShell ウィンドウを開きます。 
+1. *管理者*として PowerShell ウィンドウを開きます。  
+   **注:** これは、PowerShell ISE、Visual Studio Code、または基になる PowerShell コンソールをラップしているその他のツールではなく、PowerShell 自体で開く必要があります。  コンソール ベースでない PowerShell を使用すると、下記の `openssl`コマンドがハングする結果になります。
+
 2. 作業ディレクトリに移動します。 次のスクリプトを実行して、グローバル変数を設定します。 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"
     $errorActionPreference    = "stop"
 
     # Note that these values are for test purpose only
-    $_rootCertSubject         = "CN=Azure IoT Root CA"
-    $_intermediateCertSubject = "CN=Azure IoT Intermediate {0} CA"
+    $_rootCertCommonName      = "Azure IoT Root CA"
+    $_rootCertSubject         = "CN=$_rootCertCommonName"
+    $_intermediateCertSubject = "Azure IoT Intermediate {0} CA"
     $_privateKeyPassword      = "123"
 
     $rootCACerFileName          = "./RootCA.cer"
@@ -120,10 +123,10 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
 次の PowerShell スクリプトを実行して、ルート CA を含む証明書チェーンを作成します。たとえば、このサンプルでは、"CN=Azure IoT Root CA" を使用します。 このスクリプトで、Windows OS 証明書ストアも更新され、作業ディレクトリに証明書ファイルが作成されます。 
     1. 次のスクリプトで、指定した*サブジェクト名*と署名機関について自己署名証明書を作成する PowerShell 関数が作成されます。 
     ```PowerShell
-    function New-CASelfsignedCertificate([string]$subjectName, [object]$signingCert, [bool]$isASigner=$true)
+    function New-CASelfsignedCertificate([string]$commonName, [object]$signingCert, [bool]$isASigner=$true)
     {
         # Build up argument list
-        $selfSignedArgs =@{"-DnsName"=$subjectName; 
+        $selfSignedArgs =@{"-DnsName"=$commonName; 
                            "-CertStoreLocation"="cert:\LocalMachine\My";
                            "-NotAfter"=(get-date).AddDays(30); 
                           }
@@ -156,10 +159,10 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
     ``` 
     2. 次の PowerShell 関数で、前の関数と OpenSSL バイナリを使用して中間の X.509 証明書が作成されます。 
     ```PowerShell
-    function New-CAIntermediateCert([string]$subjectName, [Microsoft.CertificateServices.Commands.Certificate]$signingCert, [string]$pemFileName)
+    function New-CAIntermediateCert([string]$commonName, [Microsoft.CertificateServices.Commands.Certificate]$signingCert, [string]$pemFileName)
     {
-        $certFileName = ($subjectName + ".cer")
-        $newCert = New-CASelfsignedCertificate $subjectName $signingCert
+        $certFileName = ($commonName + ".cer")
+        $newCert = New-CASelfsignedCertificate $commonName $signingCert
         Export-Certificate -Cert $newCert -FilePath $certFileName -Type CERT | Out-Null
         Import-Certificate -CertStoreLocation "cert:\LocalMachine\CA" -FilePath $certFileName | Out-Null
 
@@ -204,13 +207,12 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
    ```PowerShell
    function New-CAVerificationCert([string]$requestedSubjectName)
    {
-       $cnRequestedSubjectName = ("CN={0}" -f $requestedSubjectName)
        $verifyRequestedFileName = ".\verifyCert4.cer"
        $rootCACert = Get-CACertBySubjectName $_rootCertSubject
        Write-Host "Using Signing Cert:::" 
        Write-Host $rootCACert
    
-       $verifyCert = New-CASelfsignedCertificate $cnRequestedSubjectName $rootCACert $false
+       $verifyCert = New-CASelfsignedCertificate $requestedSubjectName $rootCACert $false
 
        Export-Certificate -cert $verifyCert -filePath $verifyRequestedFileName -Type Cert
        if (-not (Test-Path $verifyRequestedFileName))
@@ -218,7 +220,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
            throw ("Error: CERT file {0} doesn't exist" -f $verifyRequestedFileName)
        }
    
-       Write-Host ("Certificate with subject {0} has been output to {1}" -f $cnRequestedSubjectName, (Join-Path (get-location).path $verifyRequestedFileName)) 
+       Write-Host ("Certificate with subject {0} has been output to {1}" -f $requestedSubjectName, (Join-Path (get-location).path $verifyRequestedFileName)) 
    }
    New-CAVerificationCert "<your verification code>"
    ```
@@ -237,7 +239,6 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
    ```PowerShell
    function New-CADevice([string]$deviceName, [string]$signingCertSubject=$_rootCertSubject)
    {
-       $cnNewDeviceSubjectName = ("CN={0}" -f $deviceName)
        $newDevicePfxFileName = ("./{0}.pfx" -f $deviceName)
        $newDevicePemAllFileName      = ("./{0}-all.pem" -f $deviceName)
        $newDevicePemPrivateFileName  = ("./{0}-private.pem" -f $deviceName)
@@ -245,7 +246,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、ルート証�
    
        $signingCert = Get-CACertBySubjectName $signingCertSubject ## "CN=Azure IoT CA Intermediate 1 CA"
 
-       $newDeviceCertPfx = New-CASelfSignedCertificate $cnNewDeviceSubjectName $signingCert $false
+       $newDeviceCertPfx = New-CASelfSignedCertificate $deviceName $signingCert $false
    
        $certSecureStringPwd = ConvertTo-SecureString -String $_privateKeyPassword -Force -AsPlainText
 

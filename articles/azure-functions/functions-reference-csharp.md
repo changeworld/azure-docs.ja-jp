@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9de8119cbde486800639bc5f3559a1a2859ec204
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -335,7 +335,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 ## <a name="referencing-custom-assemblies"></a>カスタム アセンブリの参照
 
 カスタム アセンブリを参照するために、*共有*アセンブリまたは*プライベート* アセンブリのいずれかを使用できます。
-- 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリを関数アプリにアップロードします (たとえば、関数アプリのルートの `bin` フォルダーにアップロード)。 
+- 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリをご自分の[関数アプリのルート フォルダー](functions-reference.md#folder-structure) (wwwroot) 内の `bin` という名前のフォルダーにアップロードします。 
 - プライベート アセンブリは、特定の関数のコンテキストの一部であり、異なるバージョンのサイドローディングをサポートします。 プライベート アセンブリを関数ディレクトリ の `bin` フォルダーにアップロードする必要があります。 `#r "MyAssembly.dll"` などのファイル名を使用してアセンブリを参照します。 
 
 関数フォルダーにファイルをアップロードする方法については、[パッケージ管理](#using-nuget-packages)に関するセクションをご覧ください。

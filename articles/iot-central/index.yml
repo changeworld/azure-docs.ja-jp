@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT Central (プレビュー) のドキュメント
+metadata:
+  title: Azure IoT Central (プレビュー) のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Azure IoT Central は、IoT 資産の接続、監視、管理を簡単かつ大規模に行えるフルマネージド SaaS (サービスとしてのソフトウェア) ソリューションです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
+  services: iot-central
+  author: czeumault
+  manager: carolz
+  ms.prod: microsoft-iot-central
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/08/2017
+  ms.author: carolz
+  ms.openlocfilehash: 3e443a4ba2de76971ef856b67fdeb1f8836f68e1
+  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/16/2018
+abstract:
+  description: Azure IoT Central は、IoT 資産の接続、監視、管理を簡単かつ大規模に行えるフルマネージド SaaS (サービスとしてのソフトウェア) ソリューションです。 Azure IoT Central を使用すると、IoT ソリューションの初期セットアップを容易に行えるほか、一般的な IoT プロジェクトにおける管理の負担、運用コスト、オーバーヘッドを抑えることができます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure IoT Central アプリケーションの作成、カスタマイズ、管理、使用を行う方法を確認してください。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: <a href="quick-deploy-iot-central">新しい Azure IoT Central アプリケーションを作成する</a>方法について説明します。
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure IoT Central アプリケーションをカスタマイズして使用する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="tutorial-define-device-type">新しいデバイスの種類を定義する</a>
+    - html: <a href="tutorial-configure-rules">ルールを構成する</a>
+    - html: <a href="tutorial-customize-operator">オペレーターのビューをカスタマイズする</a>
+    - html: <a href="tutorial-monitor-devices">デバイスを監視する</a>
+    - html: <a href="tutorial-add-device">実デバイスを追加する</a>

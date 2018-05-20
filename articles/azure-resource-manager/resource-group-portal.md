@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fe4666f053c7f3bd582ae51dd1694a425bea35dd
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
 
 この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。 ポータルを使用したリソースのデプロイについては、「 [Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](resource-group-template-deploy-portal.md)」を参照してください。
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="manage-resource-groups"></a>リソース グループの管理
 
@@ -30,22 +32,22 @@ ms.lasthandoff: 04/16/2018
 
 リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
-1. 自分のサブスクリプションのリソース グループをすべて表示するには、 **[リソース グループ]**を選択します。
+1. 自分のサブスクリプションのリソース グループをすべて表示するには、 **[リソース グループ]** を選択します。
    
     ![リソース グループの参照](./media/resource-group-portal/browse-groups.png)
-2. 空のリソース グループを作成するために、 **[追加]**を選択します。
+2. 空のリソース グループを作成するために、 **[追加]** を選択します。
    
     ![add resource group](./media/resource-group-portal/add-resource-group.png)
-3. 新しいリソース グループの名前と場所を入力します。 **[作成]**を選択します。
+3. 新しいリソース グループの名前と場所を入力します。 **[作成]** を選択します。
    
     ![リソースグループの作成](./media/resource-group-portal/create-empty-group.png)
 4. **[最新の情報に更新]** を選択して、先ほど作成したリソース グループを表示します。
    
     ![refresh resource group](./media/resource-group-portal/refresh-resource-groups.png)
-5. リソース グループについて表示される情報をカスタマイズするために、 **[列]**を選択します。
+5. リソース グループについて表示される情報をカスタマイズするために、 **[列]** を選択します。
    
     ![customize columns](./media/resource-group-portal/select-columns.png)
-6. 追加する列を選択してから、 **[更新]**を選択します。
+6. 追加する列を選択してから、 **[更新]** を選択します。
    
     ![add columns](./media/resource-group-portal/add-columns.png)
 7. 新しいリソース グループへのリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
@@ -73,7 +75,7 @@ ms.lasthandoff: 04/16/2018
 3. セクションをダッシュボードにピン留めすると、ダッシュボード上に概要が表示されます。 さらに、それを選択すると、データの詳細情報が即時に表示されます。
    
     ![view dashboard](./media/resource-group-portal/view-startboard.png)
-4. ポータルから監視するデータを完全にカスタマイズするには、既定のダッシュボードに移動して、 **[新しいダッシュボード]**を選択します。
+4. ポータルから監視するデータを完全にカスタマイズするには、既定のダッシュボードに移動して、 **[新しいダッシュボード]** を選択します。
    
     ![dashboard](./media/resource-group-portal/dashboard.png)
 5. 新しいダッシュボードに名前を付けて、ダッシュボードにタイルをドラッグします。 タイルは、さまざまなオプションでフィルター処理されます。

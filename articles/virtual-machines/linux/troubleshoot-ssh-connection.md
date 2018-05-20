@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 Linux 仮想マシン (VM) に接続しようとしたときに、さまざまな理由で Secure Shell (SSH) エラー、SSH 接続エラー、または SSH 拒否が発生することがあります。 この記事は、問題を特定して修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](http://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](http://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="quick-troubleshooting-steps"></a>簡単なトラブルシューティング手順
 トラブルシューティングの各手順を実行した後、VM に再接続してみてください。
@@ -80,7 +80,7 @@ Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-ne
 ## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
 まだインストールしていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。
 
-カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
+カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](../extensions/agent-windows.md) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
 
 ### <a name="reset-ssh-configuration"></a>SSH 構成をリセットする
 最初に SSH 構成を既定値にリセットして、VM 上の SSH サーバーを再起動します。 ユーザー アカウントの名前、パスワード、または SSH キーは変更されません。
@@ -155,7 +155,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 azure config mode arm
 ```
 
-カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
+カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](../extensions/agent-windows.md) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
 
 ### <a name="reset-ssh-configuration"></a>SSH 構成をリセットする
 SSHD 構成自体が正しく構成されていない、またはサービスでエラーが発生した可能性があります。 SSHD をリセットして、SSH 構成自体が有効かを確認します。 最初に実行する必要があるトラブルシューティング手順は、SSHD をリセットすることです。

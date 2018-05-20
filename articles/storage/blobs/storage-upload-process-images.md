@@ -1,8 +1,8 @@
 ---
-title: "Azure Storage を使用してクラウドに画像データをアップロードする | Microsoft Docs"
-description: "Web アプリで Azure Blob Storage を使用してアプリケーション データを格納します"
+title: Azure Storage を使用してクラウドに画像データをアップロードする | Microsoft Docs
+description: Web アプリで Azure Blob Storage を使用してアプリケーション データを格納します
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: jeconnoc
 ms.service: storage
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: e3c40d0f3db1a33a405a341a714a7ce199908ca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 29accb3394e9a2f6939a657172c1a5c2e411706a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -72,7 +72,7 @@ az storage account create --name <blob_storage_account> \
 ここでは、`<blob_storage_account>` は、作成した BLOB ストレージ アカウントの名前です。 _images_ コンテナーのパブリック アクセスは `off` に、_thumbnails_ コンテナーのパブリック アクセスは `container` に設定されます。 `container` パブリック アクセス設定は、Web ページにアクセスしたユーザーに対してサムネイルを表示できるようにします。
  
 ```azurecli-interactive 
-blobStorageAccount=<blob_storage_account>
+$blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 

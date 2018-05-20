@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory のレポート通知"
-description: "疑わしいサインインに対して Azure Active Directory のレポート通知を使用する方法。"
+title: Azure Active Directory のレポート通知
+description: 疑わしいサインインに対して Azure Active Directory のレポート通知を使用する方法。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ae6d4b0e-5931-4cb3-98bf-9be91b381c92
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c279b923ed4e63d810861c579dd54b3a2b7f415e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Azure Active Directory のレポート通知
 ## <a name="what-reports-generate-email-notifications"></a>電子メール通知を生成するレポート
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/05/2018
 リンクをクリックすると、Azure Portal 内のレポート ページにリダイレクトされます。 レポートにアクセスするには、次の両方の条件を満たす必要があります。
 
 * Azure サブスクリプションの管理者または共同管理者
-* ディレクトリのグローバル管理者であり、Active Directory Premium ライセンスが割り当てられている 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+* ディレクトリのグローバル管理者であり、Active Directory Premium ライセンスが割り当てられている 詳細については、「 [Azure Active Directory のエディション](active-directory-whatis.md)」をご覧ください。
 
 ## <a name="can-i-turn-off-these-emails"></a>電子メールの通知を無効にすることができますか。
 はい。Azure Portal 内で異常なサインインに関連する通知をオフにするには、**[構成]** をクリックして **[通知]** セクションの **[無効]** を選びます。

@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 087dafe426b835d447c69a44f6842c41a48cec8c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric で Windows コンテナーを監視する
 
-これはチュートリアルの第 3 部です。Service Fabric で調整された Windows コンテナーを監視するように Log Analytics を設定する手順について説明します。
+これはチュートリアルの第 2 部です。Service Fabric で調整された Windows コンテナーを監視するように Log Analytics を設定する手順について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 

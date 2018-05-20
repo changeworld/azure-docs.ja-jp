@@ -3,7 +3,7 @@ title: Azure Portal で API の応答の模擬テストを実行する | Microso
 description: このチュートリアルでは、API Management (APIM) を使用して、モック応答を返すように API でポリシーを設定する方法について説明します。 この方法を使用すると、実際の応答を送信するためにバックエンドを使用できない場合に、開発者が、API Management インスタンスの実装とテストを進めることができます。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4383ce3788f6fade5299d69ef99b80221c58d9e7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
 
@@ -49,8 +49,8 @@ ms.lasthandoff: 04/19/2018
 2. 左側のメニューで、**[+ API の追加]** を選びます。
 3. 一覧から **[空の API]** を選択します。
 4. **[表示名]** に「*テスト API*」と入力します。
-5. **[製品]**に「*無制限*」と入力します。
-6. **[作成]**を選択します。
+5. **[製品]** に「*無制限*」と入力します。
+6. **[作成]** を選択します。
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
 

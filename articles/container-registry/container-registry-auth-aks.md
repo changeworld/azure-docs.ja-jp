@@ -1,6 +1,6 @@
 ---
-title: Azure Container Service から Azure Container Registry の認証を受ける
-description: Azure Active Directory サービス プリンシパルを使用して、Azure Container Service からプライベート コンテナー レジストリ内のイメージへのアクセスを許可する方法を説明します。
+title: Azure Kubernetes Service から Azure Container Registry の認証を受ける
+description: Azure Active Directory サービス プリンシパルを使用して、Azure Kubernetes Service からプライベート コンテナー レジストリ内のイメージへのアクセスを許可する方法を説明します。
 services: container-service
 author: neilpeterson
 manager: jeconnoc
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
-ms.openlocfilehash: 6f2f035015445ee1fb2009b64d20d654484d7775
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0888afbb9087251e2c9219e2eb32fbf0d5600304
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-service"></a>Azure Container Service から Azure Container Registry の認証を受ける
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
-Azure Container Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 このドキュメントでは、この 2 つの Azure サービス間で認証を行う場合に推奨される構成について詳しく説明します。
+Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 このドキュメントでは、この 2 つの Azure サービス間で認証を行う場合に推奨される構成について詳しく説明します。
 
 ## <a name="grant-aks-access-to-acr"></a>ACR へのアクセス許可を AKS に付与する
 
-AKS クラスターを作成すると、Azure リソースでのクラスターの運用性を管理するためにサービス プリンシパルも作成されます。 このサービス プリンシパルは、ACR レジストリでの認証も使用できます。 そのためには、ACR リソースへの読み取りアクセス許可をサービス プリンシパルに付与するロールの割り当てを作成する必要があります。 
+AKS クラスターを作成すると、Azure リソースでのクラスターの運用性を管理するためにサービス プリンシパルも作成されます。 このサービス プリンシパルは、ACR レジストリでの認証も使用できます。 そのためには、ACR リソースへの読み取りアクセス許可をサービス プリンシパルに付与するロールの割り当てを作成する必要があります。
 
 この作業は以下のサンプルを使用して実行できます。
 
@@ -46,7 +46,7 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
 場合によっては、AKS によって使用されているサービス プリンシパルの範囲を ACR レジストリに設定することができません。 このような場合は、一意のサービス プリンシパルを作成し、その範囲を ACR レジストリのみに設定することができます。
 
-次のスクリプトを使用して、サービス プリンシパルを作成することができます。 
+次のスクリプトを使用して、サービス プリンシパルを作成することができます。
 
 ```bash
 #!/bin/bash
@@ -54,11 +54,11 @@ az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ACR_NAME=myacrinstance
 SERVICE_PRINCIPAL_NAME=acr-service-principal
 
-# Populate the ACR login server and resource id. 
+# Populate the ACR login server and resource id.
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a contributor role assignment with a scope of the ACR resource. 
+# Create a contributor role assignment with a scope of the ACR resource.
 SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
 # Get the service principle client id.
@@ -69,7 +69,7 @@ echo "Service principal ID: $CLIENT_ID"
 echo "Service principal password: $SP_PASSWD"
 ```
 
-サービス プリンシパルの資格情報を Kubernetes の[イメージ プル シークレット][image-pull-secret]に格納し、AKS クラスター内でコンテナーを実行するときに参照できるようになりました。 
+サービス プリンシパルの資格情報を Kubernetes の[イメージ プル シークレット][image-pull-secret]に格納し、AKS クラスター内でコンテナーを実行するときに参照できるようになりました。
 
 次のコマンドでは、Kubernetes シークレットが作成されます。 サーバー名を ACR ログイン サーバーに、ユーザー名をサービス プリンシパル ID に、パスワードをサービス プリンシパル パスワードに置き換えます。
 
@@ -77,7 +77,7 @@ echo "Service principal password: $SP_PASSWD"
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
-`ImagePullSecrets` パラメーターを使用すれば、Kubernetes シークレットをポッド デプロイで使用することができます。 
+`ImagePullSecrets` パラメーターを使用すれば、Kubernetes シークレットをポッド デプロイで使用することができます。
 
 ```yaml
 apiVersion: apps/v1beta1

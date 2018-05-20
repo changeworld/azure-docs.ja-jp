@@ -1,9 +1,9 @@
 ---
-title: "Azure Machine Learning の高度な分析シナリオの特定 | Microsoft Docs"
-description: "Team Data Science Process での高度な予測分析の実行に適したシナリオを選択します。"
+title: Azure Machine Learning の高度な分析シナリオの特定 | Microsoft Docs
+description: Team Data Science Process での高度な予測分析の実行に適したシナリオを選択します。
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 53aecc1e-5089-42cf-8d44-77678653f92d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b6a92f4f4615954902124c59adca25560182de6
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: 7b1b8f00e109776a3a5d3cc8c2224e8160b85704
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning での高度な分析のシナリオ
 この記事では、[Team Data Science Process (TDSP)](overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。 TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。 ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/13/2017
 以下の各セクションに、サンプル シナリオを示します。 シナリオごとに、考えられるデータ サイエンスまたは高度な分析のフローと、サポートする Azure リソースの説明があります。
 
 > [!NOTE]
-> **以下のすべてのシナリオで、次の操作を行う必要があります。**
+> **次のすべてのシナリオについて、次を実行する必要があります。**
 > <br/>
 > 
 > * [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md)
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/13/2017
 2. Azure ストレージ コンテナーにデータをアップロードします。
 3. (省略可能) データの前処理とクリーニングを行います。
    
-   a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
    
        blobs.
    
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/13/2017
    c.  データをローカルの VM ファイルに保存します (IPython Notebook は VM で実行し、ローカル ドライブは VM ドライブを参照します)。
 4. Azure VM で実行している SQL Server データベースにデータを読み込みます。
    
-   a.  SQL Server VM にログインします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  SQL Server VM にログインします。
    
    b.  データが保存されていない場合は、Azure からダウンロードします。
    
@@ -162,7 +162,7 @@ ms.lasthandoff: 11/13/2017
 3. ダンプ ファイルを Azure ストレージ コンテナーにアップロードします。
 4. Azure 仮想マシンで実行している SQL Server データベースにデータを読み込みます。
    
-   a.  SQL Server VM にログインします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  SQL Server VM にログインします。
    
    b.  データ ファイルを Azure ストレージ コンテナーからローカルの VM フォルダーにダウンロードします。
    
@@ -204,7 +204,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 2. Azure HDInsight Hadoop クラスターを作成します。
 3. (省略可能) データの前処理とクリーニングを行います。
    
-   a.  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  IPython Notebook でデータの前処理とクリーニングを行い、Azure からデータにアクセスします。
    
        blobs.
    
@@ -214,7 +214,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 4. 手順 2 で選択されている Hadoop クラスターの既定のコンテナーにデータをアップロードします。
 5. Azure HDInsight Hadoop クラスターの Hive データベースにデータを読み込みます。
    
-   a.  Hadoop クラスターのヘッド ノードにログインします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  Hadoop クラスターのヘッド ノードにログインします。
    
    b.  Hadoop コマンド ラインを開きます。
    
@@ -228,7 +228,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
    > 
 6. Hadoop コマンド ラインでデータを探索し、必要に応じて機能を作成します。 機能をデータベース テーブルで具体化する必要はありません。 作成に必要なクエリに注意してください。
    
-   a.  Hadoop クラスターのヘッド ノードにログインします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  Hadoop クラスターのヘッド ノードにログインします。
    
    b.  Hadoop コマンド ラインを開きます。
    

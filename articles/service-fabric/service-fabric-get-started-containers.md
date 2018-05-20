@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 679fb066441fd75d5e12f9374d012f50c6f65966
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -132,6 +132,11 @@ docker run -d --name my-web-site helloworldapp
 コンテナーが起動したら、実行中のコンテナーにブラウザーから接続できるように、その IP アドレスを確認します。
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
+```
+
+そのコマンドが何も返さない場合は、次のコマンドを実行し、IP アドレスの **NetworkSettings**->**Networks** 要素を検査します。
+```
+docker inspect my-web-site
 ```
 
 実行中のコンテナーに接続します。 Web ブラウザーでその IP アドレスを開きます ("http://172.31.194.61" など)。 "Hello World!" という見出しが ブラウザーに表示されます。

@@ -15,11 +15,11 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 45dea9bb8ed6826d0c95a8a89e4270b82503a262
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49429dd4db4c33f16fce39a932f387e2145da250
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="billing-tags-policy-initiative"></a>課金タグ ポリシーのイニシアティブ
 
@@ -47,7 +47,7 @@ $policysetparameters = "https://raw.githubusercontent.com/Azure/azure-policy/mas
 
 $policyset= New-AzureRmPolicySetDefinition -Name "multiple-billing-tags" -DisplayName "Billing Tags Policy Initiative" -Description "Specify cost Center tag and product name tag" -PolicyDefinition $policydefinitions -Parameter $policysetparameters
 
-New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -costCenterValue <required value for Cost Center tag> -productNameValue <required value for product Name tag>  -Sku @{"Name"="A1";"Tier"="Standard"}
+New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -costCenterValue <required value for Cost Center tag> -productNameValue <required value for product Name tag>
 ```
 
 ### <a name="clean-up-powershell-deployment"></a>PowerShell でのデプロイをクリーンアップする
@@ -63,9 +63,8 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 ポリシーを割り当てたら、既存のすべてのリソースへの更新をトリガーし、追加したタグのポリシーを強制的に適用することができます。 次のスクリプトを実行すると、リソースに存在していたその他のタグがすべて保持されます。
 
 ```powershell
-$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
-
-$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
+$group = Get-AzureRmResourceGroup -Name "ExampleGroup"
+$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName
 
 foreach($r in $resources)
 {
@@ -77,7 +76,6 @@ foreach($r in $resources)
     }
 }
 ```
-
 
 ## <a name="next-steps"></a>次の手順
 

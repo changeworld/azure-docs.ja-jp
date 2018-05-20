@@ -1,6 +1,6 @@
 ---
 title: Azure での Linux 仮想マシンのデプロイに関する問題のトラブルシューティング | Microsoft Docs
-description: Azure Resource Manager デプロイメント モデルでの Linux 仮想マシンのデプロイに関する問題のトラブルシューティング。
+description: Azure Resource Manager デプロイ モデルでの Linux 仮想マシンのデプロイに関する問題のトラブルシューティング。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 7e8db2683c301de8d41f7b7276e6290532e647d1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 18a8c8c543e640af6d66d6075ca3a6c6799d4d64
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Azure での Linux 仮想マシンのデプロイに関する問題のトラブルシューティング
 
 Azure での仮想マシン (VM) のデプロイに関する問題のトラブルシューティングを行うため、よくあるエラーと解決策について、[代表的な問題](#top-issues)を確認します。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 
 ## <a name="top-issues"></a>代表的な問題
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
@@ -78,9 +78,9 @@ Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シ
 
 VM は、実行されている場合、物理サーバーにデプロイされています。 Azure リージョンの物理サーバーは、一般的な物理ハードウェアのクラスターにグループ化されます。 別のハードウェア クラスターに VM を移動することが必要になる VM のサイズ変更は、VM のデプロイに使用したデプロイメント モデルに応じて異なります。
 
-- クラシック デプロイメント モデルでデプロイされた VM の場合、VM を他のサイズ ファミリのサイズに変更するには、クラウド サービス デプロイを削除し、再デプロイする必要があります。
+- クラシック デプロイ モデルでデプロイされた VM の場合、VM を他のサイズ ファミリのサイズに変更するには、クラウド サービス デプロイを削除し、再デプロイする必要があります。
 
-- Resource Manager デプロイメント モデルでデプロイされた VM の場合は、可用性セット内の VM のサイズを変更する前に、可用性セット内のすべての VM を停止する必要があります。
+- Resource Manager デプロイ モデルでデプロイされた VM の場合は、可用性セット内の VM のサイズを変更する前に、可用性セット内のすべての VM を停止する必要があります。
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>一覧の VM サイズが、可用性セットに対するデプロイでサポートされていません。
 
@@ -98,4 +98,4 @@ VM は、実行されている場合、物理サーバーにデプロイされ�
 ## <a name="next-steps"></a>次の手順
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

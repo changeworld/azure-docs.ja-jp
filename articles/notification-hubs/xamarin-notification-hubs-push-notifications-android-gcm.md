@@ -1,9 +1,9 @@
 ---
-title: Notification Hubs の使用 (Xamarin.Android アプリケーション) | Microsoft Docs
+title: Azure Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する | Microsoft Docs
 description: このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について学習します。
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: ''
+editor: spelluru
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -11,88 +11,76 @@ ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 7fee7813bbdcf902d5f5ae2d0af7540c8899ad25
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: f75671e2e5511054f3db550a8c24e62d031492c3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-notification-hubs-for-xamarinandroid-apps"></a>Notification Hubs の使用 (Xamarin.Android アプリケーション)
+# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。 Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。 Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリを作成します。 通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストします。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
-このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
+このチュートリアルでは、次の手順を実行します。
 
-## <a name="before-you-begin"></a>開始する前に
-[!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
-
-このチュートリアルの完成したコードについては、GitHub の[こちら][GitHub]を参照してください。
+> [!div class="checklist"]
+> * Firebase プロジェクトを作成し、Firebase Cloud Messaging を有効にする
+> * 通知ハブを作成する
+> * Xamarin.Android アプリを作成し、それを通知ハブに接続する
+> * Azure Portal からテスト通知を送信する
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルには、次のものが必要です。
 
-* Windows 上では [Visual Studio と Xamarin]。OS X 上では [Visual Studio for Mac]。
-* アクティブな Google アカウント
+- **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- Windows 上では [Visual Studio と Xamarin]。OS X 上では [Visual Studio for Mac]。
+- アクティブな Google アカウント
 
-このチュートリアルを完了することは、Xamarin.Android アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
-
-> [!IMPORTANT]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
-> 
-> 
-
-## <a name="enable-firebase-cloud-messaging"></a>Firebase Cloud Messaging を有効にする
+## <a name="create-a-firebase-project-and-enable-firebase-cloud-messaging"></a>Firebase プロジェクトを作成し、Firebase Cloud Messaging を有効にする
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-your-notification-hub"></a>通知ハブを構成する
+## <a name="create-a-notification-hub"></a>通知ハブを作成する
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="6">
+### <a name="configure-gcm-settings-for-the-notification-hub"></a>GCM の設定を通知ハブ用に構成する
 
-<li><p>上部にある <b>[構成]</b> タブを選択し、前のセクションで取得した <b>API キー</b>値を入力して、<b>[保存]</b> を選択します。</p>
-</li>
-</ol>
-&emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+1. **[通知設定]** セクションで、**[Google (GCM)]** を選択します。 
+2. Google Firebase Console からメモした**レガシ サーバー キー**を入力します。 
+3. ツールバーの **[保存]** を選択します。 
+
+    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 通知ハブが FCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
 
-## <a name="connect-your-app-to-the-notification-hub"></a>通知ハブにアプリケーションを接続する
-最初に、新しいプロジェクトを作成します。 
+## <a name="create-xamainandroid-app-and-connect-it-to-notification-hub"></a>Xamain.Android アプリを作成し、それを通知ハブに接続する
 
-1. Visual Studio で **[新しいソリューション]** > **[Android アプリ]** を選択し、**[次へ]** を選択します。
+### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Visual Studio プロジェクトを作成し、NuGet パッケージを追加する
+1. Visual Studio で、**[ファイル]** をポイントし、**[新規]** を選択してから **[プロジェクト]** を選択します。 
    
-      ![Visual Studio - 新しい Android プロジェクトを作成する][22]
+      ![Visual Studio - 新しい Android プロジェクトを作成する](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog.png)
+2. **ソリューション エクスプローラー** ウィンドウで、**[プロパティ]** を展開し、**[AndroidManifest.xml]** をクリックします。 Google Firebase Console でプロジェクトに Firebase Cloud Messaging を追加するときに入力したパッケージ名に一致するようにパッケージ名を更新します。 
 
-2. **アプリケーション名**と**識別子**を入力します。 サポートする **[ターゲット プラットフォーム]** を選択し、**[次へ]**、**[作成]** の順に選択します。
-   
-      ![Visual Studio - Android アプリの構成][23]
+      ![GCM でのパッケージ名](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
+3. プロジェクトを右クリックし、**[NuGet パッケージの管理...]** を選択します。 
+4. **[参照]** タブを選択します。**Xamarin.GooglePlayServices.Base** を検索します。 結果の一覧で **[Xamarin.GooglePlayServices.Base]** を選択します。 その後、**[インストール]** を選択します。 
 
-    これにより、新しい Android プロジェクトが作成されます。
+      ![Google Play 開発者サービス NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
+5. **[NuGet パッケージ マネージャー]** ウィンドウで、**Xamarin.Firebase.Messaging** を検索します。 結果の一覧で **[Xamarin.Firebase.Messaging]** を選択します。 その後、**[インストール]** を選択します。 
+6. 次に、**Xamarin.Azure.NotificationHubs.Android** を検索します。 結果の一覧で **[Xamarin.Azure.NotificationHubs.Android]** を選択します。 その後、**[インストール]** を選択します。 
 
-3. [ソリューション] ビューで新しいプロジェクトを右クリックして **[オプション]**を選択し、プロジェクトのプロパティを開きます。 **[Build (ビルド)]** セクションで **[Android Application (Android アプリケーション)]** 項目を選択します。
-   
-    **パッケージ名** の先頭の文字は、小文字にしてください。
-   
-   > [!IMPORTANT]
-   > パッケージ名の先頭の文字は、小文字にする必要があります。 小文字にしないと、以下のプッシュ通知に登録するときに、アプリケーション マニフェスト エラーが発生します。
-   > 
-   > 
-   
-      ![Visual Studio - Android プロジェクトのオプション][24]
-4. 必要に応じて、 **[Minimum Android version]** の API レベルを変更します。
-5. 必要に応じて、**[対象の Android バージョン]** の API バージョンを変更します (API レベル 8 以上にする必要があります)。
-6. **[OK]** を選択して、[Project Options]\(プロジェクト オプション\) ダイアログを閉じます。
+### <a name="add-the-google-services-json-file"></a>Google Services JSON ファイルを追加する
 
-### <a name="add-the-required-packages-to-your-project"></a>必要なパッケージをプロジェクトに追加します。
+1. Google Firebase Console からダウンロードした **google-services.json** をプロジェクト フォルダーにコピーします。
+2. **google-services.json** をプロジェクトに追加します。
+3. **ソリューション エクスプローラー** ウィンドウで、**[google-services.json]** を選択します。
+4. **[プロパティ]** ウィンドウで、ビルド アクションを **[GoogleServicesJson]** に設定します。 **[GoogleServicesJson]** が表示されない場合は、Visual Studio を閉じて再起動し、プロジェクトを再度開いて再試行します。 
 
-1. プロジェクトを右クリックし、**[追加]** > **[NuGet パッケージの追加]** を選択します。
-2. **Xamarin.Azure.NotificationHubs.Android** を探し、プロジェクトに追加します。
-3. **Xamarin.Firebase.Messaging** を探し、プロジェクトに追加します。
+      ![GoogleServicesJson ビルド アクション](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
 
 ### <a name="set-up-notification-hubs-in-your-project"></a>プロジェクトで Notification Hubs を設定する
 
@@ -112,9 +100,10 @@ ms.lasthandoff: 04/16/2018
 1. Android アプリケーションと通知ハブについて次の情報を収集します。
    
    * **接続文字列のリッスン**: [Azure Portal] のダッシュボードで **[接続文字列の表示]** をクリックします。 この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
-   * **ハブ名**: [Azure Portal] から取得できるハブの名前です。 たとえば、 *mynotificationhub2*です。
+   * **ハブ名**: [Azure Portal] からのハブの名前。 たとえば、 *mynotificationhub2*です。
      
-2. Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。 プレースホルダーを実際の値に置き換えます。
+2. **ソリューション エクスプローラー** ウィンドウで**プロジェクト**を右クリックし、**[追加]** をポイントして **[クラス]** を選択します。 
+4. Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。 プレースホルダーを実際の値に置き換えます。
     
     ```csharp
         public static class Constants
@@ -123,19 +112,16 @@ ms.lasthandoff: 04/16/2018
            public const string NotificationHubName = "<hub name>";
         }
     ```
-
 3. 次の using ステートメントを **MainActivity.cs**に追加します。
    
     ```csharp
         using Android.Util;
     ```
-
 4. アプリを実行しているときにアラート ダイアログを表示するために使用する **MainActivity.cs** にインスタンス変数を追加します。
    
     ```csharp
         public const string TAG = "MainActivity";
     ```
-
 5. **MainActivity.cs** の `base.OnCreate(savedInstanceState)` の後にある `OnCreate` に次のコードを追加します。
 
     ```csharp   
@@ -151,32 +137,22 @@ ms.lasthandoff: 04/16/2018
             }
         }
     ```
-
-6. プロジェクトを右クリックし、前述の Firebase プロジェクトからダウンロードした `google-services.json` を追加します。 追加されたファイルを右クリックし、ビルド アクションを `GoogleServicesJson` に設定します。
-
-    ![Visual Studio - google-services.json を構成する][25]
-
-7. **MyFirebaseIIDService** という新しいクラスを作成します。
-
+7. **Constants** クラスを作成した場合と同様に、新しいクラス **MyFirebaseIIDService** を作成します。 
 8. 次の using ステートメントを **MyFirebaseIIDService.cs** に追加します。
    
     ```csharp
-        using System;
-        using Android.App;
-        using Firebase.Iid;
-        using Android.Util;
-        using WindowsAzure.Messaging;
-        using System.Collections.Generic;
+    using Android.Util;
+    using WindowsAzure.Messaging;
+    using Firebase.Iid;
     ```
 
-9. **MyFirebaseIIDService.cs** で、**クラス**の宣言の上に次のコードを追加し、クラスが **FirebaseInstanceIdService** から継承するようにします。
+9. **MyFirebaseIIDService.cs** で、次の**クラス**宣言を追加し、そのクラスが **FirebaseInstanceIdService** から継承するようにします。
    
     ```csharp
         [Service]
         [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
         public class MyFirebaseIIDService : FirebaseInstanceIdService
     ```
-
 10. **MyFirebaseIIDService.cs** に次のコードを追加します。
    
     ```csharp
@@ -202,29 +178,20 @@ ms.lasthandoff: 04/16/2018
             Log.Debug(TAG, $"Successful registration of ID {regID}");
         }
     ```
-
 11. プロジェクトに別の新しいクラスを作成し、**MyFirebaseMessagingService** という名前を付けます。
-
 12. 次の using ステートメントを **MyFirebaseMessagingService.cs** に追加します。
     
     ```csharp
-        using System;
-        using System.Linq;
-        using Android;
-        using Android.App;
-        using Android.Content;
         using Android.Util;
         using Firebase.Messaging;
     ```
-
 13. クラスの宣言の上に次のコードを追加し、クラスが **FirebaseMessagingService** から継承するようにします。
     
     ```csharp
         [Service]
         [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
         public class MyFirebaseMessagingService : FirebaseMessagingService
-    ```
-    
+    ```    
 14. 次のコードを **MyFirebaseMessagingService.cs** に追加します。
     
     ```csharp
@@ -265,24 +232,22 @@ ms.lasthandoff: 04/16/2018
             notificationManager.Notify(0, notificationBuilder.Build());
         }
     ```
+15. プロジェクトを**構築します**。 
+16. デバイスまたは読み込まれたエミュレーターでアプリを**実行する**
 
-15. デバイスまたは読み込んだエミュレーター上でアプリを実行します
+## <a name="send-test-notification-from-the-azure-portal"></a>Azure Portal からテスト通知を送信する
+アプリの通知の受信をテストするには、[Azure Portal] の *[テスト送信]* オプションを使用します。 これは、デバイスにテスト プッシュ通知を送信します。
 
-## <a name="send-notifications-from-the-portal"></a>ポータルから通知を送信する
-アプリの通知の受信をテストするには、[Azure Portal] の *[テスト送信]* オプションを使用します。 テスト プッシュ通知がデバイスに送信されます。
+![Azure Portal - テスト送信](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
-![Azure Portal - テスト送信][30]
-
-プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドで利用できない場合、REST API を直接使用して通知メッセージを送信できます。
-
-通知の送信方法を確認できるチュートリアルの一覧を次に示します。
-
-* ASP.NET: 「 [Notification Hubs を使用したユーザーへのプッシュ通知]」を参照してください。
-* Azure Notification Hub Java SDK: Java からの通知を送信するには「 [Java から Notification Hubs を使用する方法](notification-hubs-java-push-notification-tutorial.md) 」を参照してください。 これは Android の開発用に Eclipse でテストされています。
-* PHP: 「 [PHP から Notification Hubs を使用する方法](notification-hubs-php-push-notification-tutorial.md)」を参照してください。
+プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドに使用できない場合は、REST API を直接使用して通知メッセージを送信することもできます。
 
 ## <a name="next-steps"></a>次の手順
-この簡単な例では、すべての Android デバイスに通知をブロードキャストします。 特定のユーザーをターゲットとするには、「 [Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。 対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信]」を参照してください。 Notification Hubs の使用方法の詳細については、[Notification Hubs のガイダンス]に関するページと[Android 向けの Notification Hubs の手順]に関するページを参照してください。
+このチュートリアルでは、バックエンドに登録されているすべての Android デバイスにブロードキャスト通知を送信しました。 特定の Android デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
+
+> [!div class="nextstepaction"]
+>[特定のデバイスにプッシュ通知を送信する](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+
 
 <!-- Anchors. -->
 [Enable Google Cloud Messaging]: #register
@@ -323,9 +288,9 @@ ms.lasthandoff: 04/16/2018
 
 [Azure Portal]: https://portal.azure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs のガイダンス]: http://msdn.microsoft.com/library/jj927170.aspx
-[Android 向けの Notification Hubs の手順]: http://msdn.microsoft.com/library/dn282661.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Android]: http://msdn.microsoft.com/library/dn282661.aspx
 
-[Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
-[Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
+[Use Notification Hubs to push notifications to users]: /manage/services/notification-hubs/notify-users-aspnet
+[Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-dotnet
 [GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid

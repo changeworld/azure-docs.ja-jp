@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/25/2018
 ms.author: richrund
-ms.openlocfilehash: 0d9848a6477dbf1b93a7f640bc44adf627b40a45
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
@@ -230,7 +230,7 @@ ms.lasthandoff: 04/18/2018
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
+            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -506,10 +506,9 @@ Azure クイックスタート テンプレート ギャラリーに、Log Analy
 * [Linux を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Azure Site Recovery を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Azure Web Apps を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [SQL Azure を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [Service Fabric クラスターをデプロイし、既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [Service Fabric クラスターをデプロイし、Log Analytics ワークスペースを作成して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [既存のストレージ アカウントを OMS に追加する](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>次の手順
-* [Resource Manager テンプレートを使用してエージェントと Azure VM にデプロイする](log-analytics-azure-vm-extension.md)
+* [Resource Manager テンプレートを使用して Windows エージェントを Azure VM にデプロイします](../virtual-machines/windows/extensions-oms.md)。
+* [Resource Manager テンプレートを使用して Linux エージェントを Azure VM にデプロイします](../virtual-machines/linux/extensions-oms.md)。
 

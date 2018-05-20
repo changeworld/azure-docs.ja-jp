@@ -1,11 +1,11 @@
 ---
-title: "Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない | Microsoft ドキュメント"
-description: "Azure AD と統合しているオンプレミスのアプリケーションにAzure AD アプリケーション プロキシでサインインできない場合の一般的な問題のトラブルシューティング"
+title: Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない | Microsoft ドキュメント
+description: Azure AD と統合しているオンプレミスのアプリケーションにAzure AD アプリケーション プロキシでサインインできない場合の一般的な問題のトラブルシューティング
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e3db08e5615385cbbbc77972f3cc560e9de9957b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5aba26d14ba0ee8e8ee58f62deb8a82ad147a8aa
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションにサインインできない
 
@@ -27,33 +27,33 @@ ms.lasthandoff: 12/11/2017
 
 次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
 
-  * [アプリケーションにアクセスできるが、アプリケーションのページが正しく表示されない](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/)
-  * [アプリケーションにアクセスできるが、読み込みに時間がかかる](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/)
-  * [アプリケーションにアクセスできるが、アプリケーション ページへのリンクが動作しない](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/)
+  * [アプリケーションにアクセスできるが、アプリケーションのページが正しく表示されない](application-proxy-page-appearance-broken-problem.md)
+  * [アプリケーションにアクセスできるが、読み込みに時間がかかる](application-proxy-page-load-speed-problem.md)
+  * [アプリケーションにアクセスできるが、アプリケーション ページへのリンクが動作しない](application-proxy-page-links-broken-problem.md)
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>アプリケーションで接続に関する問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * [アプリケーションに対してどのポートを開くかがわからない](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/)
-  * [アプリケーションのコネクタ グループで動作しているコネクタがないため問題が発生した](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-no-working-connector/)
+  * [アプリケーションに対してどのポートを開くかがわからない](application-proxy-connectivity-ports-how-to.md)
+  * [アプリケーションのコネクタ グループで動作しているコネクタがないため問題が発生した](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>管理ポータルで Azure AD アプリケーション プロキシを構成するときに問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * [アプリケーション プロキシ アプリケーションを構成するときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-proxy-config-how-to/)
-  * [アプリケーション プロキシ アプリケーションへのシングル サインオンの構成方法がわからない](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/)
-  * [管理ポータルでアプリケーションを作成するときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-proxy-config-problem/)
+  * [アプリケーション プロキシ アプリケーションを構成するときに問題が発生した](application-proxy-config-how-to.md)
+  * [アプリケーション プロキシ アプリケーションへのシングル サインオンの構成方法がわからない](application-proxy-config-sso-how-to.md)
+  * [管理ポータルでアプリケーションを作成するときに問題が発生した](application-proxy-config-problem.md)
 
 ## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>アプリケーションに対するバックエンド認証を設定するときに問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * [Kerberos の制約付き委任の構成方法がわからない](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/)
-  * [PingAccess でのアプリケーションの構成方法がわからない](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/)
+  * [Kerberos の制約付き委任の構成方法がわからない](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+  * [PingAccess でのアプリケーションの構成方法がわからない](application-proxy-back-end-ping-access-how-to.md)
 
 ## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>アプリケーションにサインインするときに問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * ["この企業アプリケーションにアクセスできない" というエラーが発生する](https://docs.microsoft.com/azure/active-directory/application-proxy-sign-in-bad-gateway-timeout-error/)
+  * ["この企業アプリケーションにアクセスできない" というエラーが発生する](application-proxy-sign-in-bad-gateway-timeout-error.md)
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタで問題が発生する
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * [アプリケーション プロキシ エージェント コネクタのインストールで問題が発生する](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/)
+  * [アプリケーション プロキシ エージェント コネクタのインストールで問題が発生する](application-proxy-connector-installation-problem.md)
 
-## <a name="next-steps"></a>次のステップ
-[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
+## <a name="next-steps"></a>次の手順
+[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md)

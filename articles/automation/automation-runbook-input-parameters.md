@@ -3,16 +3,17 @@ title: Runbook の入力パラメーター
 description: Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 19b0e17807adc0e7a4522fd13cd85779cdbcafd6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3e1e00f81fe7761494ae73b2c8ac7419cb5ffa32
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -154,7 +155,8 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Azure クラシック デプロイメント モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://msdn.microsoft.com/library/dn690259.aspx) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
+* 
+  **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](https://msdn.microsoft.com/library/dn690259.aspx) を使用して、既定のリソース グループに作成された Automation Runbook を起動できます。
   
   **例:**
   
@@ -190,7 +192,8 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
       return response.Job;
       }
   ```
-* **Azure クラシック デプロイメント モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
+* 
+  **Azure クラシック デプロイ モデルのメソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)

@@ -5,19 +5,20 @@ services: active-directory
 documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-ms.author: bryanla
+ms.author: celested
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 27315262ff64b640acc3af16a26fc3887d852a00
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -74,7 +75,7 @@ catch (AdalSilentTokenAcquisitionException e) {
     // Exception: AdalSilentTokenAcquisitionException
     // Caused when there are no tokens in the cache or a required refresh failed. 
 
-    // Action: Case 1, resolvable with an interactive request.  
+    // Action: Case 1, resolvable with an interactive request. 
 } 
 
 catch(AdalServiceException e) {
@@ -157,7 +158,7 @@ public void onError(Exception e) {
             // Error: AD_ERROR_CACHE_MULTIPLE_USERS
             // Description: There was ambiguity in the silent request resulting in multiple cache items.
             // Action: Special Case, application should perform another silent request and specify the user using ADUserIdentifier. 
-            // Can be caused in cases of a multi-user application.  
+            // Can be caused in cases of a multi-user application. 
 
             // Action: Case 2, not resolvable with an interactive request.
             // Attempt retry after some time or user action.
@@ -170,9 +171,9 @@ public void onError(Exception e) {
 
 ## <a name="acquiretoken"></a>AcquireToken
 
-AcquireToken は、トークンを取得するために使われる既定の ADAL メソッドです。 ユーザー ID が必要な場合、AcquireToken は最初にトークンを自動で取得しようとしてから、(PromptBehavior.Never が渡されていない限り) 必要に応じて UI を表示します。 アプリケーション ID が必要な場合、AcquireToken はトークンを取得しようとしますが、エンド ユーザーが存在しないため UI は表示しません。  
+AcquireToken は、トークンを取得するために使われる既定の ADAL メソッドです。 ユーザー ID が必要な場合、AcquireToken は最初にトークンを自動で取得しようとしてから、(PromptBehavior.Never が渡されていない限り) 必要に応じて UI を表示します。 アプリケーション ID が必要な場合、AcquireToken はトークンを取得しようとしますが、エンド ユーザーが存在しないため UI は表示しません。 
 
-AcquireToken エラーを処理する場合、エラー処理は、プラットフォームと、アプリケーションが実現しようとしているシナリオに依存します。  
+AcquireToken エラーを処理する場合、エラー処理は、プラットフォームと、アプリケーションが実現しようとしているシナリオに依存します。 
 
 オペレーティング システムでは、特定のアプリケーションに依存するエラー処理を必要とする一連のエラーが生成されることもあります。 詳しくは、「[エラーとログ記録のリファレンス](#error-and-logging-reference)」の「オペレーティング システム エラー」をご覧ください。 
 
@@ -187,7 +188,7 @@ AcquireToken エラーを処理する場合、エラー処理は、プラット�
 
 ### <a name="error-cases-and-actionable-steps-native-client-applications"></a>エラー ケースと実施可能な手順: ネイティブ クライアント アプリケーション
 
-ネイティブ クライアント アプリケーションを構築する場合は、ネットワークの問題、一時的なエラー、その他のプラットフォーム固有のエラーに関連して考慮すべきいくつかのエラー処理ケースがあります。 ほとんどの場合、アプリケーションではすぐに再試行を実行する必要はなく、サインインを求めるエンドユーザー操作を待機します。  
+ネイティブ クライアント アプリケーションを構築する場合は、ネットワークの問題、一時的なエラー、その他のプラットフォーム固有のエラーに関連して考慮すべきいくつかのエラー処理ケースがあります。 ほとんどの場合、アプリケーションではすぐに再試行を実行する必要はなく、サインインを求めるエンドユーザー操作を待機します。 
 
 1 回の再試行で問題を解決できる特別なケースがいくつかあります。 たとえば、ユーザーがデバイス上のデータを有効にする必要がある場合や、最初のエラーの後に Azure AD ブローカーのダウンロードが完了した場合などです。 
 
@@ -365,7 +366,7 @@ catch (AdalException e) {
 
 ### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>エラー ケースと実施可能な手順: 単一ページ アプリケーション (adal.js)
 
-AcquireToken で adal.js を使って単一ページ アプリケーションを構築する場合、エラー処理コードは通常のサイレント呼び出しのコードと同様です。  具体的には、adal.js では AcquireToken は UI を決して表示しません。 
+AcquireToken で adal.js を使って単一ページ アプリケーションを構築する場合、エラー処理コードは通常のサイレント呼び出しのコードと同様です。 具体的には、adal.js では AcquireToken は UI を決して表示しません。 
 
 失敗した AcquireToken には次のケースがあります。
 
@@ -512,7 +513,7 @@ Logger.getInstance().setExternalLogger(new ILogger() {
     @Override   
     public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) { 
     // …
-    // You can write this to logfile depending on level or errorcode.     
+    // You can write this to logfile depending on level or errorcode. 
     writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);    
     }
 }

@@ -3,16 +3,17 @@ title: Azure Automation の Hybrid Runbook Worker のトラブルシューティ
 description: Azure Automation での Hybrid Runbook Worker の一般的な問題の、現象、原因、および解決方法について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/19/2018
+ms.date: 04/17/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2536a197cf9eca07f21b78f31f67065475054bd5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c0cbf1a5cc421ad73fa47e790b5d35042222a91
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker のトラブルシューティングのヒント
 
@@ -25,31 +26,36 @@ Runbook は、3 回実行を試みると短時間中断されます。 Runbook �
 この記事で Azure の問題に対処できない場合は、 [MSDN と Stack Overflow の Azure フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 また、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options/) を選択して、Azure サポート要求を提出することもできます。
 
 ### <a name="symptom"></a>症状
+
 Runbook の実行が失敗し、返されるエラーは "プロセスが異常停止されたため、ジョブ操作 'Activate' を実行できません。 このジョブ操作は 3 回試行されました。" です。
 
-このエラーには以下のような複数の原因が考えられます。 
+このエラーには以下のような複数の原因が考えられます。
 
 1. Hybrid Worker がプロキシまたはファイアウォールの内側にある
-2. ハイブリッド worker を実行しているコンピューターが、ハードウェアの最小[要件](automation-offering-get-started.md#hybrid-runbook-worker)を満たしていない  
-3. Runbook がローカル リソースで認証できない
+2. Runbook がローカル リソースで認証できない
 
 #### <a name="cause-1-hybrid-runbook-worker-is-behind-proxy-or-firewall"></a>原因 1: Hybrid Runbook Worker がプロキシまたはファイアウォールの内側にある
+
 Hybrid Runbook Worker を実行しているコンピューターがファイアウォールまたはプロキシ サーバーの内側にあり、発信ネットワーク アクセスが許可されていないか、または正しく構成されていない可能性があります。
 
 #### <a name="solution"></a>解決策
-コンピューターがポート 443 で *.azure-automation.net に発信アクセスできることを確認します。 
+
+コンピューターがポート 443 で *.azure-automation.net に発信アクセスできることを確認します。
 
 #### <a name="cause-2-computer-has-less-than-minimum-hardware-requirements"></a>原因 2: コンピューターが最小ハードウェア要件を満たしていない
-Hybrid Runbook Worker を実行するコンピューターは、この機能をホストするよう指定する前に、ハードウェアの最小要件を満たしている必要があります。 満たしていない場合、他のバックグラウンド プロセスのリソース使用状況および実行中の Runbook による競合によっては、コンピューターが過負荷になり、Runbook ジョブが遅延またはタイムアウトします。 
+
+Hybrid Runbook Worker を実行するコンピューターは、この機能をホストするよう指定する前に、ハードウェアの最小要件を満たしている必要があります。 満たしていない場合、他のバックグラウンド プロセスのリソース使用状況および実行中の Runbook による競合によっては、コンピューターが過負荷になり、Runbook ジョブが遅延またはタイムアウトします。
 
 #### <a name="solution"></a>解決策
-最初に、Hybrid Runbook Worker の機能を実行するように指定されているコンピューターがハードウェアの最小要件を満たしていることを確認します。 満たしている場合は、CPU とメモリの使用状況を監視して、Hybrid Runbook Worker プロセスのパフォーマンスと Windows の間の相関関係を調べます。 メモリまたは CPU に負荷がかかる場合は、リソースのボトルネックを解消してエラーを解決するには、アップグレード、プロセッサの追加、またはメモリの増設が必要である可能性があります。 または、最小要件を満たす異なるコンピューティング リソースを選択し、ワークロードがさらに多くのリソースを必要とすることを示したときは拡張します。         
+
+最初に、Hybrid Runbook Worker の機能を実行するように指定されているコンピューターがハードウェアの最小要件を満たしていることを確認します。 満たしている場合は、CPU とメモリの使用状況を監視して、Hybrid Runbook Worker プロセスのパフォーマンスと Windows の間の相関関係を調べます。 メモリまたは CPU に負荷がかかる場合は、リソースのボトルネックを解消してエラーを解決するには、アップグレード、プロセッサの追加、またはメモリの増設が必要である可能性があります。 または、最小要件を満たす異なるコンピューティング リソースを選択し、ワークロードがさらに多くのリソースを必要とすることを示したときは拡張します。
 
 #### <a name="cause-3-runbooks-cannot-authenticate-with-local-resources"></a>原因 3: Runbook がローカル リソースで認証できない
 
 #### <a name="solution"></a>解決策
-**Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。 このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。 「[Runbook のアクセス許可](automation-hrw-run-runbooks.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。  
+
+**Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。 このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。 「[Runbook のアクセス許可](automation-hrw-run-runbooks.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-Automation のその他の問題のトラブルシューティングのヒントについては、「[Azure Automation の一般的な問題のトラブルシューティング](automation-troubleshooting-automation-errors.md)」を参照してください。 
+Automation のその他の問題のトラブルシューティングのヒントについては、「[Azure Automation の一般的な問題のトラブルシューティング](automation-troubleshooting-automation-errors.md)」を参照してください。

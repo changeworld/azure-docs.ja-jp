@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: larryfr
-ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>チュートリアル: HDInsight の Kafka で Spark 構造化ストリーミングを使用する
 
@@ -147,8 +147,8 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     | [サブスクリプション] | お使いの Azure サブスクリプション |
     | リソース グループ | リソースが含まれるリソース グループ。 |
     | 場所 | リソースが作成される Azure リージョン。 |
-    | [Spark Cluster Name]\(Spark クラスター名\) | Spark クラスターの名前。 |
-    | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
+    | [Spark Cluster Name]\(Spark クラスター名\) | Spark クラスターの名前。 最初の 6 文字は、Kafka クラスターの名前と異なるものにする必要があります。 |
+    | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 最初の 6 文字は、Spark クラスターの名前と異なるものにする必要があります。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |
     | [クラスター ログイン パスワード] | クラスターの管理者ユーザー パスワード。 |
     | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |

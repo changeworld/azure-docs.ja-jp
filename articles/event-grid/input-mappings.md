@@ -6,17 +6,19 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08d1e1ad93eb69d6749860348d13a64078ed1993
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e809f83b43c32031b66c8f470575da6e9fcdc56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
 イベント データと必要な [Event Grid スキーマ](event-schema.md)が一致しない場合でも、Event Grid を使用して、イベントをサブスクライバーにルーティングできます。 この記事では、カスタム スキーマを Event Grid スキーマにマップする方法について説明します。
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>元のイベント スキーマ
 
@@ -47,6 +49,10 @@ ms.lasthandoff: 05/07/2018
 次の例では、マッピングされたフィールドと既定のフィールドが含まれるカスタム トピックを作成します。
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \

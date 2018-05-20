@@ -1,25 +1,27 @@
 ---
-title: "Azure ID 開発者向けのサポート オプションとヘルプ オプション | Microsoft Docs"
-description: "Microsoft Azure ID (Azure Active Directory や MSA) と連携するアプリケーションを作成するときに直面する、開発関連の疑問や問題に関するヘルプやサポートを入手する方法について説明します"
+title: Azure ID 開発者向けのサポート オプションとヘルプ オプション | Microsoft Docs
+description: Microsoft Azure ID (Azure Active Directory や MSA) と連携するアプリケーションを作成するときに直面する、開発関連の疑問や問題に関するヘルプやサポートを入手する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/27/2017
-ms.author: andret
+ms.author: celested
+ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 06da07aa699d19602449dc365abb971867214a31
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ae682830a8d0e2c5c27211a3396d04c881c41585
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション 
 
@@ -33,7 +35,7 @@ Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開�
 > * 最後に、サポート要求をオープンしてサポート担当者と話をする
 
 
-## <a name="search"></a>検索
+## <a name="search"></a>Search
 
 開発に関連する疑問は、マイクロソフトのドキュメント、[GitHub のサンプル](https://github.com/azure-samples)、または [Stack Overflow](https://www.stackoverflow.com) への回答から解決できる場合があります。
 
@@ -47,7 +49,7 @@ Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開�
 
 ## <a name="use-our-development-support-tools"></a>開発サポート ツールを使用する
 
-|ツール  |説明  |
+|ツール  |[説明]  |
 |---------|---------|
 |[jwt.ms](https://jwt.ms)| ID またはアクセス トークンを貼り付けて要求の名前と値をデコードする |
 |[エラー コード分析ツール](https://apps.dev.microsoft.com/portal/tools/errors)| サインイン中または同意ページで受け取ったエラー コードを貼り付けて考えられる原因や修復方法を確認する |

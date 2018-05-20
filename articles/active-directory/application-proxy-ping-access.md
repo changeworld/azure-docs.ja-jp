@@ -1,29 +1,29 @@
 ---
-title: "Azure AD アプリケーション プロキシ用 PingAccess を使用したヘッダーベースの認証 | Microsoft Docs"
-description: "ヘッダーベースの認証に対応するには、PingAccess とアプリケーション プロキシを使ってアプリケーションを発行します。"
+title: Azure AD アプリケーション プロキシ用 PingAccess を使用したヘッダーベースの認証 | Microsoft Docs
+description: ヘッダーベースの認証に対応するには、PingAccess とアプリケーション プロキシを使ってアプリケーションを発行します。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 5554260ad2b47cf4c66046c95007c95e44f188bd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
-Azure Active Directory アプリケーション プロキシと PingAccess の連携によって、Azure Active Directory でアクセスできるアプリケーションの幅が一層広がっています。 PingAccess は[既存のアプリケーション プロキシ サービス](active-directory-application-proxy-get-started.md)を拡張し、ヘッダーを使って認証を行うアプリケーションへのシングル サインオン アクセスに対応します。
+Azure Active Directory アプリケーション プロキシと PingAccess の連携によって、Azure Active Directory でアクセスできるアプリケーションの幅が一層広がっています。 PingAccess は[既存のアプリケーション プロキシ サービス](manage-apps/application-proxy.md)を拡張し、ヘッダーを使って認証を行うアプリケーションへのシングル サインオン アクセスに対応します。
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>PingAccess for Azure AD とは
 
@@ -50,7 +50,7 @@ PingAccess for Azure Active Directory は、認証用のヘッダーを使用す
 
 既にアプリケーション プロキシを有効にし、コネクタをインストールしている場合は、このセクションをスキップして「[アプリケーション プロキシを使って Azure AD にアプリを登録する](#add-your-app-to-azure-ad-with-application-proxy)」に進むことができます。
 
-アプリケーション プロキシ コネクタは、遠隔にいる従業員からのトラフィックを発行済みアプリに誘導する Windows Server サービスです。 詳しいインストール手順については、「[Azure Portal でアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)」を参照してください。
+アプリケーション プロキシ コネクタは、遠隔にいる従業員からのトラフィックを発行済みアプリに誘導する Windows Server サービスです。 詳しいインストール手順については、「[Azure Portal でアプリケーション プロキシを有効にする](manage-apps/application-proxy-enable.md)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
 2. **[Azure Active Directory]** > **[アプリケーション プロキシ]** の順に選択します。
@@ -65,7 +65,7 @@ PingAccess for Azure Active Directory は、認証用のヘッダーを使用す
 
 Azure ポータルで実行する必要がある操作は 2 つあります。 最初に、アプリケーション プロキシを使用してアプリケーションを発行する必要があります。 次に、アプリに関する情報をいくつか収集する必要があります。その情報が PingAccess の手順で必要になります。
 
-アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。
+アプリを公開するには、次の手順に従います。 手順 1 ～ 8 の詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。
 
 1. 直前のセクションの手順を省略した場合は、[Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインしてください。
 2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** の順に選択します。
@@ -108,7 +108,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 
   ![[必要なアクセス許可] を選択する](./media/application-proxy-ping-access/required-permissions.png)
 
-16. **[追加]**を選択します。 API に **[Windows Azure Active Directory]** を選び、**[選択]** を選択します。 アクセス許可に **[Read and write all applications] \(すべてのアプリケーションの読み取りと書き込み)** と **[サインインとユーザー プロファイルの読み取り]** を選び、**[選択]** と **[完了]** を選択します。  
+16. **[追加]** を選択します。 API に **[Windows Azure Active Directory]** を選び、**[選択]** を選択します。 アクセス許可に **[Read and write all applications] \(すべてのアプリケーションの読み取りと書き込み)** と **[サインインとユーザー プロファイルの読み取り]** を選び、**[選択]** と **[完了]** を選択します。  
 
   ![アクセス許可を選択](./media/application-proxy-ping-access/select-permissions.png)
 
@@ -134,7 +134,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
   ![新しいキーを作成する](./media/application-proxy-ping-access/create-keys.png)
 
 6. [アプリの登録] ブレードを閉じるか、左側いっぱいにスクロールして、Azure Active Directory メニューに戻ります。
-7. **[プロパティ]**を選択します。
+7. **[プロパティ]** を選択します。
 8. **[ディレクトリ ID]** の GUID を保存します。
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>省略可能 - GraphAPI を更新してカスタム フィールドを送信する
@@ -181,5 +181,5 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 ## <a name="next-steps"></a>次の手順
 
 - [PingAccess for Azure AD を構成する](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
-- [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](application-proxy-sso-overview.md)
+- [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](manage-apps/application-proxy-single-sign-on.md)
 - [アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md)

@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: mihauss
-ms.openlocfilehash: 649838af1d4c753ac1d82a66c855ef313f14e85b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="soft-delete-for-azure-storage-blobs-preview"></a>Azure Storage Blob の論理的な削除 (プレビュー)
 
@@ -292,7 +292,7 @@ blockBlob.StartCopy(copySource);
 
 **論理的な削除を有効にして、アカウント全体またはコンテナー全体を削除した場合、関連付けられているすべての BLOB が保存されますか?**
 
-いいえ。アカウント全体またはコンテナー全体を削除した場合は、関連付けられているすべての BLOB が完全に削除されます。 偶発的な削除からストレージ アカウントを保護する方法については、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](/azure-resource-manager/resource-group-lock-resources.md)」をご覧ください。
+いいえ。アカウント全体またはコンテナー全体を削除した場合は、関連付けられているすべての BLOB が完全に削除されます。 偶発的な削除からストレージ アカウントを保護する方法については、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/resource-group-lock-resources.md)」をご覧ください。
 
 **削除されたデータの容量メトリックを見ることはできますか?**
 
@@ -318,7 +318,7 @@ blockBlob.StartCopy(copySource);
 
 論理的な削除は、お使いの API のバージョンに関係なく利用できます。 ただし、論理的に削除された BLOB および BLOB のスナップショットを一覧表示および復旧するには、[ストレージ サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) の 2017-07-29 以降のバージョンを使う必要があります。 この機能を使っているかどうかにかかわらず、一般に、最新バージョンを常に使うことをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [.NET サンプル コード](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 

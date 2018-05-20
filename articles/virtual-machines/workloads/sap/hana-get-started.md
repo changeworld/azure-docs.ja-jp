@@ -1,13 +1,13 @@
 ---
-title: "クイックスタート ガイド: Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール | Microsoft Docs"
-description: "Azure Virtual Machines に単一インスタンスの SAP HANA を手動でインストールするためのクイック スタート ガイド"
+title: 'クイックスタート ガイド: Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール | Microsoft Docs'
+description: Azure Virtual Machines に単一インスタンスの SAP HANA を手動でインストールするためのクイック スタート ガイド
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45c7e1b76f64db142fc8fdca85b1e1fa9aca6a42
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイックスタート ガイド: Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -87,7 +87,7 @@ Azure VM の種類と SAP HANA に関連して SAP でサポートされるワ�
 SAP NetWeaver または S/4HANA アプリケーション レイヤーに関して SAP によって認定されている Azure VM の種類は、「[SAP Note 1928533 - SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533/E)」に記載されています。
 
 >[!Note]
->SAP-Linux-Azure 統合は、Azure Resource Manager でのみサポートされ、クラシック デプロイメント モデルではサポートされません。 
+>SAP-Linux-Azure 統合は、Azure Resource Manager でのみサポートされ、クラシック デプロイ モデルではサポートされません。 
 
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA の手動インストール
 このガイドでは、Azure VM に SAP HANA を手動でインストールする方法を 2 とおり説明します。
@@ -251,7 +251,7 @@ SAP HANA の標準のファイルシステム レイアウトの説明は、「[
 
 標準的な SLES/SLES for SAP Applications 12 Azure ギャラリー イメージに SAP NetWeaver をインストールすると、次のスクリーンショットに示すようにスワップ領域がないことを示すメッセージが表示されます。 このメッセージを消すために、**dd**、**mkswap**、**swapon** を使ってスワップ ファイルを手動で追加できます。 その方法については、[SUSE ドキュメントの「Using the YaST Partitioner」(YaST パーティショナーの使用) セクション](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip)で手動でのスワップ ファイルの追加に関する説明を検索してください。
 
-別の方法としては、Linux VM エージェントを使ったスワップ領域の構成があります。 詳しくは、「[Azure Linux エージェント ユーザー ガイド](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+別の方法としては、Linux VM エージェントを使ったスワップ領域の構成があります。 詳しくは、「[Azure Linux エージェント ユーザー ガイド](../../extensions/agent-linux.md)」をご覧ください。
 
 ![十分なスワップ領域がないことを示すポップアップ メッセージ](./media/hana-get-started/image010.jpg)
 

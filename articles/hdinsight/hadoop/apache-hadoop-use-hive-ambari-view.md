@@ -4,7 +4,7 @@ description: Web ブラウザーから Hive ビューを使用して Hive クエ
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 1abe9104-f4b2-41b9-9161-abbc43de8294
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: larryfr
-ms.openlocfilehash: 78fee8e3b3e4c0e0c02fa5e1c85bdef58c9cd543
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cacc22c60b2320566ffd16821bbd4a66acd0853b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>HDInsight での Ambari Hive ビューと Hadoop の使用
 

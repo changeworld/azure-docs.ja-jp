@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の調整可能なデータの一貫性レベル
 Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証と、明確に定義された複数の緩やかな一貫性モデルが提供されます。 現在、Azure Cosmos DB では、厳密、有界整合性制約、セッション、最終的の 5 つの整合性レベルが用意されています。 有界整合性制約、セッション、一貫性のあるプレフィックス、および最終的は、厳密より一貫性が低いので "緩やかな一貫性モデル" と呼ばれます。厳密は、使用できる最も一貫性の高いモデルです。 
@@ -44,7 +44,7 @@ Azure Cosmos DB は、すべてのデータ モデルについて、最初から
 | 整合性レベル | 保証内容 |
 | --- | --- |
 | Strong | 線形化可能性。 読み取りでは、項目の最新バージョンが返ることが保証されています。|
-| Bounded Staleness | 一貫性のあるプレフィックス。 読み取りが、書き込みからプレフィックス k または間隔 t ごとに実行される |
+| Bounded Staleness | 一貫性のあるプレフィックス。 書き込みに対して読み取りが最大でプレフィックス k または間隔 t の後れを取る |
 | Session   | 一貫性のあるプレフィックス。 単調読み取り、単調書き込み、書き込み後の読み取り、読み取り後の書き込み |
 | 一貫性のあるプレフィックス | 返される更新が、それ以外の全更新の一部のプレフィックスとなる (ギャップなし) |
 | Eventual  | 読み取りは順不同 |

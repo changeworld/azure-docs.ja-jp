@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 8a642b569389d960e7a3a1fa2c7cb0f2d87bd809
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 707f25a71a22f136a3cfc537ec3dd939e06dea08
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -87,7 +87,7 @@ Solr がインストールされているクラスターを作成するには、
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
      > [!IMPORTANT]
-     > このドキュメントの後半の手順では、SSL トンネルを使用して Solr Web UI に接続します。 これらの手順を使用するには、SSL トンネルを確立し、それを使用するようにブラウザーを構成する必要があります。
+     > このドキュメントの後半の手順では、SSH トンネルを使用して Solr Web UI に接続します。 これらの手順を使用するには、SSH トンネルを確立し、それを使用するようにブラウザーを構成する必要があります。
      >
      > 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。
 

@@ -1,3 +1,26 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 7e9518f8a90faa0566b96d58992b01e4b0a642f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="test-your-code"></a>コードのテスト
 
 Visual Studio でお使いのアプリケーションをテストするには、**F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、**[Microsoft アカウントでサインイン]** ボタンが表示されます。 ボタンを選択して、サインイン プロセスを開始します。
@@ -9,7 +32,7 @@ Visual Studio でお使いのアプリケーションをテストするには、
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>アプリケーションの結果を表示する
-サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定した HTTPS の URL です。 ホーム ページには、ようこそメッセージ "Hello \<ユーザー>"、サインアウトのためのリンク、およびユーザーの要求を表示するリンクが含まれます。 ユーザーの要求へのリンクは、先ほど作成した **Authorize** コントローラーを参照します。
+サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定した HTTPS の URL です。 ホーム ページには、ようこそメッセージ *"Hello \<ユーザー>"*、サインアウトのためのリンク、およびユーザーの要求を表示するリンクが含まれます。 ユーザーの要求へのリンクは、先ほど作成した *Claims* コントローラーを参照します。
 
 ### <a name="browse-to-see-the-users-claims"></a>ユーザーの要求を参照して表示する
 ユーザーの要求を表示するには、リンクを選択して、承認されたユーザーのみが使用できるコントローラー ビューを参照します。
@@ -28,40 +51,43 @@ Visual Studio でお使いのアプリケーションをテストするには、
 
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Authorize 属性を持つメソッドへのアクセスをテストする (省略可能)
-ユーザーの要求の **Authorize** コントローラーに匿名ユーザーとしてアクセスのテストを行うには、次の手順を実行します。
+`Authorize` 属性で保護されているコント ローラーに対する匿名ユーザーとしてのアクセスをテストするには、次の手順に従います。
 1. ユーザーのサインアウトのリンクを選択し、サインアウトのプロセスを完了します。
-2. お使いのブラウザーで「http://<span></span>localhost:{ポート}/authenticated」を入力し、**Authorize** 属性で保護されているコントローラーにアクセスします。
+2. お使いのブラウザーで「http://<span></span>localhost:{ポート}/claims」を入力し、`Authorize` 属性で保護されているコントローラーにアクセスします。
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>保護されているコントローラーへアクセスした後に期待される結果
 保護されているコントローラー ビューを使用するために、認証を求めるメッセージが表示されます。
 
-## <a name="additional-information"></a>追加情報
+## <a name="advanced-options"></a>[詳細オプション]
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Web サイト全体を保護する
-Web サイト全体を保護するために、**Global.asax** ファイルで、**AuthorizeAttribute** 属性を **Application_Start** メソッドの **GlobalFilters** フィルターに追加します。
+Web サイト全体を保護するには、**Global.asax** ファイルで、`AuthorizeAttribute` 属性を `Application_Start` メソッドの `GlobalFilters` フィルターに追加します。
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
 <!--end-collapse-->
 
-### <a name="restrict-sign-in-access-to-your-application"></a>アプリケーションへのサインイン アクセスを制限する
-既定では、outlook.com、live.com などの個人用アカウントおよび他のアカウントで、アプリケーションにサインインできます。 また、Azure AD で統合組織の職場または学校のアカウントでも、既定でサインインできます。
+### <a name="restrict-who-can-sign-in-to-your-application"></a>アプリケーションにサインインできるユーザーを制限する
+このガイドに従ってアプリケーションを構築すると、既定では、個人アカウント (outlook.com、live.com などを含む) だけでなく、Azure Active Directory と統合されたすべての会社や組織の職場/学校アカウントのサインインを受け入れることになります。 これは、SaaS アプリケーションに推奨されるオプションです。
 
-アプリケーションへのユーザーのサインイン アクセスを制限するには、複数のオプションを使用できます。
+アプリケーションへのユーザーのサインイン アクセスを制限するために、複数のオプションを使用できます。
 
-#### <a name="restrict-access-to-a-single-organization"></a>単一の組織へのアクセスを制限する
-単一の Azure AD 組織に属するユーザー アカウントのみに対して、アプリケーションへのサインイン アクセスを制限できます。
-1. **web.config** ファイルで、**Tenant** パラメーターの値を変更します。 **Common** から**contoso.onmicrosoft.com** などの組織のテナント名に値を変更します。
-2. **OWIN Startup** クラスの **ValidateIssuer** 引数を **true** に設定します。
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>オプション 1: アプリケーションへのサインインを 1 つの組織の Active Directory インスタンスのユーザーのみに制限する (シングルテナント)
 
-#### <a name="restrict-access-to-a-list-of-organizations"></a>組織の一覧へのアクセスを制限する
+このオプションは、"*LOB アプリケーション*" で一般的なシナリオです。アプリケーションが特定の Azure Active Directory インスタンスに属するアカウント (そのインスタンスの "*ゲスト アカウント*" を含む) からのサインインのみを受け入れるようにする場合は、以下の手順を実行します。
+
+1. **Web.config** ファイルで、`Tenant` パラメーターの値を `Common` から `contoso.onmicrosoft.com` などの組織のテナント名に変更します。
+2. [OWIN Startup クラス](#configure-the-authentication-pipeline)の `ValidateIssuer` 引数を `true` に設定します。
+
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>オプション 2: アプリケーションへのアクセスを組織の特定のリスト内のユーザーに制限する
+
 許可されている組織の一覧にある Azure AD 組織に属するユーザー アカウントのみに対して、サインイン アクセスを制限できます。
-1. **web.config** ファイルの **OWIN Startup** クラスで、**ValidateIssuer** 引数を **true** に設定します。
-2. **ValidIssuers** パラメーターの値に許可されている組織の一覧を設定します。
+1. [OWIN Startup クラス](#configure-the-authentication-pipeline)の `ValidateIssuer` 引数を `true` に設定します。
+2. `ValidIssuers` パラメーターの値を、許可される組織の一覧に設定します。
 
-#### <a name="use-a-custom-method-to-validate-issuers"></a>カスタム メソッドを使用して発行者を検証する
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3: カスタム メソッドを使用して発行者を検証する
 **IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、MSDN の [TokenValidationParameters クラス](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx)に関するページをご覧ください。
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9cc4eb8d8f1494a7ea7a63297751f8e251aedf05
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -79,7 +79,7 @@ Azure リソースは、次の 2 種類の監視データを出力します。
 
 ### <a name="stream-linux-data-to-an-event-hub"></a>Linux データをイベント ハブにストリーミングする
 
-[Linux Azure Diagnostic Agent](../virtual-machines/linux/diagnostic-extension.md) を使用して、Linux マシンの監視データをイベント ハブに送信することができます。 そうするには、LAD 構成ファイルの保護設定 JSON にイベント ハブをシンクとして追加します。 イベント ハブ シンクを Linux Azure Diagnostic Agent に追加する方法の詳細については、[こちらの記事](../virtual-machines/linux/diagnostic-extension.md#protected-settings)を参照してください。
+[Linux Azure Diagnostic Agent](../virtual-machines/extensions/diagnostics-linux.md) を使用して、Linux マシンの監視データをイベント ハブに送信することができます。 そうするには、LAD 構成ファイルの保護設定 JSON にイベント ハブをシンクとして追加します。 イベント ハブ シンクを Linux Azure Diagnostic Agent に追加する方法の詳細については、[こちらの記事](../virtual-machines/extensions/diagnostics-linux.md#protected-settings)を参照してください。
 
 > [!NOTE]
 > イベント ハブへのゲスト OS 監視データのストリーミングをポータルでセットアップすることはできません。 代わりに、構成ファイルを手動で編集する必要があります。

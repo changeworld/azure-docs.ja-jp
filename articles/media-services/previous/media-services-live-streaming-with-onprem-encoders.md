@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e1a7c3cec7925c6fb01aafba152dde2383cee442
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
 
@@ -34,7 +34,7 @@ Azure Media Services では、"*チャネル*" は、ライブ ストリーミ�
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
 
 
-* オンプレミスのライブ エンコーダーは、RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (フラグメント化 MP4) のいずれかの形式で、シングルビットレート ストリームを Media Services による Live Encoding が有効なチャネルに送信します。 次に、受信したシングルビットレート ストリームのマルチビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求した顧客にストリームを配信します。
+* オンプレミスのライブ エンコーダーは、RTMP かスムーズ ストリーミング (Fragmented MP4) 形式で、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効なチャネルに送信します。 次に、受信したシングルビットレート ストリームのマルチビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求した顧客にストリームを配信します。
 
 Media Services 2.10 リリース以降では、チャネルを作成するときに、チャネルで入力ストリームを受信する方法を指定できます。 また、そのチャネルでストリームのライブ エンコードを実行するかどうかも指定できます。 2 つのオプションがあります。
 

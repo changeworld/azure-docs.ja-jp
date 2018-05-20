@@ -1,19 +1,21 @@
 ---
-title: "Azure 仮想マシンの変更に関する問題を解決する | Microsoft Docs"
-description: "変更履歴を使用して、Azure 仮想マシンの変更に関する問題を解決します。"
+title: Azure 仮想マシンの変更に関する問題を解決する | Microsoft Docs
+description: 変更履歴を使用して、Azure 仮想マシンの変更に関する問題を解決します。
 services: automation
-keywords: "変更, 追跡, オートメーション"
+ms.service: automation
+ms.component: change-inventory-management
+keywords: 変更, 追跡, オートメーション
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -109,7 +111,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス (例: "c:\temp\myfile.txt")。       |
+|パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"       |
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 

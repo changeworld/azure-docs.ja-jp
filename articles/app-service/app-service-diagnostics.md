@@ -1,12 +1,12 @@
 ---
-title: "Azure App Service 診断の概要 | Microsoft Docs"
-description: "App Service 診断を使用して Web アプリに関する問題をトラブルシューティングする方法について説明します。"
-keywords: "アプリ サービス, azure app service, 診断, サポート, web アプリ, トラブルシューティング, セルフヘルプ"
+title: Azure App Service 診断の概要 | Microsoft Docs
+description: App Service 診断を使用して Web アプリに関する問題をトラブルシューティングする方法について説明します。
+keywords: アプリ サービス, azure app service, 診断, サポート, web アプリ, トラブルシューティング, セルフヘルプ
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: jen7714
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 9526817ce7969edcd5e9c56ec153bb4e3ebaa501
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 50e0e9f5edc18aac42ee80e232f70e09736124bc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要 
 
@@ -26,11 +26,13 @@ Web アプリケーションを実行するに当たっては、500 エラーが
  
 この機能は Web アプリの問題発生時刻が過去 24 時間以内である場合に特に役立ちますが、いずれの診断グラフも、任意の時点を対象に分析を実行することができます。 右側の列には、追加のトラブルシューティング ツールと、役立つドキュメントやフォーラムへのリンクが表示されます。
 
+App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro)、[App Service 環境](https://docs.microsoft.com/en-us/azure/app-service/environment/intro)、および [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) 上のアプリに対しても機能します。 
+
 ## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
 
-App Service 診断にアクセスするには、[Azure ポータル](https://portal.azure.com)で App Service Web アプリに移動します。 
+App Service 診断にアクセスするには、[Azure Portal](https://portal.azure.com) の App Service アプリまたは App Service 環境に移動します。 左側のナビゲーションで、**[問題の診断と解決]** をクリックします。 
 
-左側のナビゲーションで、**[問題の診断と解決]** をクリックします。
+Azure Functions の場合、関数アプリに移動し、上部ナビゲーションで、**[プラットフォーム機能]** をクリックし、**[監視]** セクションの **[問題の診断と解決]** を選択します。 
 
 ![ホームページ](./media/app-service-diagnostics/Homepage1.png)
 
@@ -46,13 +48,22 @@ Web アプリのどこに問題があるのかわからない場合や、問題�
 
 ## <a name="tile-shortcuts"></a>タイル ショートカット
 
-どのようなトラブルシューティング情報が必要なのかが正確にわかっている場合は、タイル ショートカットから、関心のある問題カテゴリのフル診断レポートに直接アクセスできます。 正常性検査と比べて、タイル ショートカットでは診断メトリックによりダイレクトにアクセスすることができますが、提供されるガイドは少なくなります。  
+どのようなトラブルシューティング情報が必要なのかが正確にわかっている場合は、タイル ショートカットから、関心のある問題カテゴリのフル診断レポートに直接アクセスできます。 正常性検査と比べて、タイル ショートカットでは診断メトリックによりダイレクトにアクセスすることができますが、提供されるガイドは少なくなります。 タイル ショートカットの一部として、これは、アプリケーション コードの問題、パフォーマンス低下、接続文字列などに関連する問題の調査に役立つより高度なツールである**診断ツール**がある場所でもあります。 
 
 ![タイル ショートカット](./media/app-service-diagnostics/TileShortcuts4.png)
 
 ## <a name="diagnostic-report"></a>診断レポート
 
-[正常性検査](#health-checkup)の実行後に詳細な情報を参照する場合でも、[ショートカット タイル](#tile-shortcuts)をクリックした場合でも、フル診断レポートには、過去 24 時間の記録から関連するグラフ メトリックが表示されます。 アプリにダウンタイムが発生した場合は、タイムラインの下にオレンジ色のバーでダウンタイムが示されます。 ダウンタイムを選択すると、そのダウンタイムに関する分析データと、推奨の解決策が表示されます。 
+[正常性検査](#health-checkup)の実行後に詳細な情報を参照する場合でも、[ショートカット タイル](#tile-shortcuts)をクリックした場合でも、フル診断レポートには、過去 24 時間の記録から関連するグラフ メトリックが表示されます。 アプリにダウンタイムが発生した場合は、タイムラインの下にオレンジ色のバーでダウンタイムが示されます。 いずれかのオレンジ色のバーを選択してダウンタイムを選択し、そのダウンタイムに関する観察と推奨されるトラブルシューティング手順を表示できます。 
 
 ![診断レポート](./media/app-service-diagnostics/DiagnosticReport5.png)
+
+
+## <a name="investigating-application-code-issues"></a>アプリケーション コードの問題の調査
+
+多くのアプリの問題は、アプリケーション コードの問題に関連しているため、App Service 診断は、[Application Insights](https://azure.microsoft.com/services/application-insights/) と統合して、選択されたダウンタイムと相関する例外と依存関係の問題を明らかにします。 Application Insights は、個別に有効にする必要があります。 
+
+Application Insights の例外と依存関係を表示するには、**[Web App Down] (Web アプリ停止)** または **[Web App Slow] (Web アプリのパフォーマンス低下)** タイル ショートカットを選択します。 
+
+![Application Insights](./media/app-service-diagnostics/AppInsights6.png)
 

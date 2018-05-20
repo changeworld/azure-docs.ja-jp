@@ -7,13 +7,13 @@ author: mayanknayar
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/24/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: e74ad30ea8c4be994c1c67735ee91ef8c033b9b3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9d4bf43ea727bbf7df79532499007dbd23eea925
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Azure へのフェールオーバー後に接続する IP アドレス指定を設定する
 

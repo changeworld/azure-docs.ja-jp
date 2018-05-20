@@ -1,25 +1,27 @@
 ---
-title: "Azure AD .NET Web API の概要 | Microsoft Docs"
-description: "認証と承認のために Azure AD と連携する .NET MVC Web API を構築する方法"
+title: Azure AD .NET Web API の概要 | Microsoft Docs
+description: 認証と承認のために Azure AD と連携する .NET MVC Web API を構築する方法
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c4cf11b26402747ef58e4fa3fbbe2154876dfae
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: aa527f66035ce8ea95ecdf405ef307c1202a92a6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET Web API の概要
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

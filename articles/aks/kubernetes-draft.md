@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f474921acbd3a5082afea03dd982bcfa9c52dcda
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-draft-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Draft の使用
+# <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 
 オープン ソース ツールである Draft を使用すると、Kubernetes クラスターにこれらのコンテナーを含めてデプロイできるため、開発サイクル (開発に重点を置いた "内部ループ") に集中できます。 Draft はコードの開発時に、バージョン コントロールにコミットする前に機能します。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[Github の Draft のドキュメント][draft-documentation]をご覧ください。
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/16/2018
 
 Azure Container Registry (ACR) のプライベート Docker レジストリも必要です。 ACR インスタンスをデプロイする手順については、[Azure Container Registry のクイックスタート][acr-quickstart]をご覧ください。
 
-Helm も AKS クラスターにインストールする必要があります。 Helm のインストールについて詳しくは、「[Azure Container Service (AKS) での Helm の使用][aks-helm]」をご覧ください。
+Helm も AKS クラスターにインストールする必要があります。 Helm のインストールについて詳しくは、「[Azure Kubernetes Service (AKS) での Helm の使用][aks-helm]」をご覧ください。
 
 最後に、[Docker](https://www.docker.com) をインストールする必要があります。
 

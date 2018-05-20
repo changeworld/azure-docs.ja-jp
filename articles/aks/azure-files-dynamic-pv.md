@@ -3,21 +3,21 @@ title: AKS で Azure Files を使用する
 description: AKS での Azure ディスクの使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Azure ファイルを含む永続ボリューム
 
-永続ボリュームとは、Kubernetes クラスターで使用するためにプロビジョニングされたストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 このドキュメントでは、Azure ファイル共有を AKS クラスター内の Kubernetes 永続ボリュームとして動的にプロビジョニングする方法について詳しく説明します。
+永続ボリュームとは、Kubernetes クラスターで使用するためにプロビジョニングされたストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 このドキュメントでは、、Azure ファイル共有を AKS クラスター内の Kubernetes 永続ボリュームとして動的にプロビジョニングする方法について詳しく説明します。
 
 Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
 
@@ -66,10 +66,10 @@ parameters:
   storageAccount: mystorageaccount
 ```
 
-[kubectl create][kubectl-create] コマンドを使用して、ストレージ クラスを作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、ストレージ クラスを作成します。
 
 ```azurecli-interactive
-kubectl create -f azure-file-sc.yaml
+kubectl apply -f azure-file-sc.yaml
 ```
 
 ## <a name="create-persistent-volume-claim"></a>永続ボリューム要求の作成
@@ -94,10 +94,10 @@ spec:
       storage: 5Gi
 ```
 
-[kubectl create][kubectl-create] コマンドを使用して、永続ボリューム要求を作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、永続ボリューム要求を作成します。
 
 ```azurecli-interactive
-kubectl create -f azure-file-pvc.yaml
+kubectl apply -f azure-file-pvc.yaml
 ```
 
 完了すると、ファイル共有が作成されます。 接続情報と資格情報を含む Kubernetes シークレットも作成されます。
@@ -126,10 +126,10 @@ spec:
         claimName: azurefile
 ```
 
-[kubectl create][kubectl-create] コマンドを使用して、ポッドを作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、ポッドを作成します。
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-files.yaml
+kubectl apply -f azure-pvc-files.yaml
 ```
 
 これで Azure ディスクが `/mnt/azure` ディレクトリにマウントされ、ポッドが稼働状態となりました。 この構成は、`kubectl describe pod mypod` 経由でポッドを調べるときに表示できます。
@@ -138,7 +138,7 @@ kubectl create -f azure-pvc-files.yaml
 
 fileMode と dirMode の既定値は、次の表に示すように Kubernetes のバージョンによって異なります。
 
-| version | value |
+| バージョン | 値 |
 | ---- | ---- |
 | v1.6.x、v1.7.x | 0777 |
 | v1.8.0 - v1.8.5 | 0700 |
@@ -174,7 +174,7 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/

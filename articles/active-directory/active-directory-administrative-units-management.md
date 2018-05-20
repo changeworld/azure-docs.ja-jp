@@ -14,11 +14,11 @@ ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 373983413ea83e5924b52fbbcbc666aa1a188d80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4fa93e4bf64e01b44b0826b2182b125004c49609
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Azure AD の管理単位 - パブリック プレビュー
 この記事では、管理単位について説明します。管理単位は、管理権限をユーザーのサブセットに委任したり、ユーザーのサブセットにポリシーを適用したりするために使用できる、Azure Active Directory の新しいリソース コンテナーです。 Azure Active Directory では、全体管理者が管理単位を使用して、各地域の管理者に権限を委任したり、細かなレベルでポリシーを設定したりできます。
@@ -38,4 +38,4 @@ ms.lasthandoff: 05/07/2018
 Azure AD モジュールのソフトウェア要件とインストールの詳細、管理単位を管理するための Azure AD モジュールのコマンドレット (構文、パラメーターの説明、例) については、「[Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Active Directory のエディション](active-directory-editions.md)
+[Azure Active Directory のエディション](active-directory-whatis.md)

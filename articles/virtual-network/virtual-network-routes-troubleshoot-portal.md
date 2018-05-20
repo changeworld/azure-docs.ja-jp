@@ -1,6 +1,6 @@
 ---
 title: ルートのトラブルシューティング | Microsoft Docs
-description: Azure Resource Manager のデプロイメント モデルで、Azure Portal を使用してルートをトラブルシューティングする方法について説明します。
+description: Azure Resource Manager デプロイ モデルで、Azure Portal を使用してルートをトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 67da2eae5ea04962cd5adeff8edd070c1a3cf95a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7c9d49a4135860bce317cd5808d3430af6b49fbd
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Azure Portal を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Azure 仮想マシン (VM) とのネットワーク接続に問題が発生し�
 * **BGP ルート:** ExpressRoute またはサイト間 VPN 接続経由のネットワーク インターフェイスに反映されます。 BGP ルーティングの詳細については、「[Azure VPN ゲートウェイを使用した BGP の概要](../vpn-gateway/vpn-gateway-bgp-overview.md)」と「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」の記事を参照してください。
 * **ユーザー定義のルート (UDR):** ネットワーク仮想アプライアンスまたは強制トンネリングを使用して、オンプレミス ネットワークにサイト間 VPN 経由でトラフィックをルートしている場合は、サブネット ルート テーブルにユーザー定義のルート (UDR) が関連付けられていることがあります。 UDR に慣れていない場合は、「 [ユーザー定義のルート](virtual-networks-udr-overview.md#user-defined) 」の記事をご覧ください。
 
-ネットワーク インターフェイスに適用できるさまざまなルートを使用する場合、有効な集約ルートの特定が難しくなることがあります。 VM ネットワーク接続をトラブルシューティングするため、Azure Resource Manager デプロイメント モデルのネットワーク インターフェイスのすべての有効なルートを表示できます。
+ネットワーク インターフェイスに適用できるさまざまなルートを使用する場合、有効な集約ルートの特定が難しくなることがあります。 VM ネットワーク接続をトラブルシューティングするため、Azure Resource Manager デプロイ モデルのネットワーク インターフェイスのすべての有効なルートを表示できます。
 
 ## <a name="using-effective-routes-to-troubleshoot-vm-traffic-flow"></a>有効なルートを使用した VM トラフィック フローのトラブルシューティング
 この記事では、例として次のシナリオを使用し、ネットワーク インターフェイスの有効な規則のトラブルシューティング方法を説明します。
@@ -54,7 +54,7 @@ VNet (*VNet1*、プレフィックス: 10.9.0.0/16) に接続する VM (*VM1*) �
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>仮想マシンの有効なルートを表示する
 VM に適用されている集約ルートを表示するには、次の手順を実行します。
 
-1. Azure Portal (https://portal.azure.com) にログインします。ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
+1. Azure Portal (https://portal.azure.com) にログインします。ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 2. **[すべてのサービス]** をクリックし、表示される一覧で **[仮想マシン]** をクリックします。
 3. 表示される一覧からトラブルシューティングを実行する VM を選択すると、VM のブレードとオプションが表示されます。
 4. **[問題の診断と解決]** をクリックし、一般的な問題を選択します。 例として、 **[Windows VM に接続できません]** を選択します。
@@ -72,7 +72,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
     VM に NIC が 1 つしかない場合は、既定でその NIC が選択されます。 複数の NIC がある場合は、表示する有効なルートの NIC を選択します。
 
    > [!NOTE]
-   > NIC に関連付けられている VM が実行中でない場合は、有効なルートは表示されません。 ポータルでは、効果的なルートのうち最初の 200 件のみが表示されます。 完全な一覧が必要な場合は、 **[ダウンロード]**をクリックします。 ダウンロードした .csv ファイルの結果をさらにフィルター処理できます。
+   > NIC に関連付けられている VM が実行中でない場合は、有効なルートは表示されません。 ポータルでは、効果的なルートのうち最初の 200 件のみが表示されます。 完全な一覧が必要な場合は、 **[ダウンロード]** をクリックします。 ダウンロードした .csv ファイルの結果をさらにフィルター処理できます。
    >
    >
 

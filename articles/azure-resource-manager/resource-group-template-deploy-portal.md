@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal を使用した Azure リソースのデプロイ | Microsoft Docs"
-description: "Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイします。"
+title: Azure Portal を使用した Azure リソースのデプロイ | Microsoft Docs
+description: Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイします。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 39680d4e70cc47cfa119b3a46e8d51ea87fa618d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0174f688cb3fd04fdd41714d54a7371319bae951
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
 このトピックでは、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="create-resource-group"></a>Create resource group
 
@@ -83,7 +85,7 @@ ms.lasthandoff: 02/21/2018
 
    ![テンプレートのデプロイの検索](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
    ![作成の選択](./media/resource-group-template-deploy-portal/show-template-option.png)
 

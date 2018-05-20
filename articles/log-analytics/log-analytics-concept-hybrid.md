@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Azure Log Analytics を使用して環境内のコンピューターからデータを収集する
 
@@ -28,7 +28,7 @@ Azure Log Analytics は、以下に存在する Windows または Linux コン�
 * 物理サーバーまたは仮想マシンとしてのデータセンター
 * アマゾン ウェブ サービス (AWS) などのクラウドでホストされているサービス内の仮想マシン
 
-環境内でホストされているコンピューターを Log Analytics に直接接続できます。これらのコンピューターを System Center Operations Manager 2012 R2 または 2016 で既に監視している場合は、Operations Manager 管理グループを Log Analytics に統合して、サービス操作のプロセスと戦略を引き続き維持できます。  
+環境内でホストされているコンピューターを Log Analytics に直接接続できます。これらのコンピューターを System Center Operations Manager 2012 R2、2016、またはバージョン 1801 で既に監視している場合は、Operations Manager 管理グループを Log Analytics に統合して、IT サービス操作のプロセスを引き続き維持できます。  
 
 ## <a name="overview"></a>概要
 
@@ -36,15 +36,11 @@ Azure Log Analytics は、以下に存在する Windows または Linux コン�
 
 収集したデータを分析して操作する前に、Log Analytics サービスにデータを送信するすべてのコンピューターにエージェントをインストールして接続しておく必要があります。 オンプレミス コンピューターへのエージェントのインストールには、Setup、コマンド ライン、Azure Automation の Desired State Configuration (DSC) を使用します。 
 
-Linux と Windows のエージェントは、TCP ポート 443 を介して Log Analytics サービスとアウトバウンド通信を行います。コンピューターがファイアウォールまたはプロキシ サーバーに接続してインターネット経由で通信している場合は、「[プロキシ サーバーまたは OMS ゲートウェイで使用するためのエージェントの構成](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway)」で、適用する必要がある構成変更を確認してください。 System Center 2016 - Operations Manager または Operations Manager 2012 R2 でコンピューターを監視している場合は、Log Analytics サービスとマルチホームしてデータを収集し、サービスに転送することで、[Operations Manager](log-analytics-om-agents.md) で引き続き監視できます。 Log Analytics に統合された Operations Manager 管理グループで監視されている Linux コンピューターは、データ ソースの構成の受信と、収集されたデータの管理グループを介した転送は行いません。 Windows エージェントは最大 4 つのワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
+Linux と Windows のエージェントは、TCP ポート 443 を介して Log Analytics サービスとアウトバウンド通信を行います。コンピューターがファイアウォールまたはプロキシ サーバーに接続してインターネット経由で通信している場合は、[前提条件のセクション](#prerequisites)を確認して、必要なネットワーク構成を把握してください。  組織の IT セキュリティ ポリシーによってネットワーク上のコンピューターにインターネットへの接続が許可されない場合は、[OMS ゲートウェイ](log-analytics-oms-gateway.md)をセットアップしてから、ゲートウェイ経由で Log Analytics に接続するようエージェントを構成できます。 その後、エージェントは、構成情報を受信したり、有効にしたデータ収集ルールとソリューションに応じて収集されたデータを送信したりできます。 
 
-Linux と Windows のエージェントは、Log Analytics への接続だけではなく、Azure Automation との接続もサポートします。これにより、Hybrid Runbook Worker ロールと、Change Tracking や Update Management などの管理ソリューションがホストされます。  Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../automation/automation-offering-get-started.md#automation-architecture-overview) に関する記事を参照してください。  
+System Center 2016 - Operations Manager または Operations Manager 2012 R2 でコンピューターを監視している場合は、Log Analytics サービスとマルチホームしてデータを収集し、サービスに転送することで、[Operations Manager](log-analytics-om-agents.md) で引き続き監視できます。 Log Analytics に統合された Operations Manager 管理グループで監視されている Linux コンピューターは、データ ソースの構成の受信と、収集されたデータの管理グループを介した転送は行いません。 Windows エージェントは最大 4 つのワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
 
-IT セキュリティ ポリシーで、ネットワーク上のコンピューターによるインターネットへの接続が許可されていない場合、有効にしたソリューションに応じて、エージェントが OMS ゲートウェイに接続して構成情報を受信し、収集されたデータを送信するように構成できます。 Linux または Windows エージェントが OMS ゲートウェイ経由で Log Analytics サービスと通信するように構成する方法の詳細と手順については、「[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する](log-analytics-oms-gateway.md)」を参照してください。 
-
-> [!NOTE]
-> Windows 用のエージェントは、トランスポート層セキュリティ (TLS) 1.0 と 1.1 のみをサポートします。  
-> 
+Linux と Windows のエージェントは、Log Analytics への接続だけではなく、Azure Automation もサポートします。これにより、Hybrid Runbook Worker ロールと、Change Tracking や Update Management などの管理ソリューションがホストされます。  Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../automation/automation-offering-get-started.md#automation-architecture-overview) に関する記事を参照してください。  
 
 ## <a name="prerequisites"></a>前提条件
 始める前に、次の詳細を見直して、前提条件が満たされていることを確認してください。
@@ -54,6 +50,9 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 
 * Windows Server 2008 Service Pack 1 (SP1) 以降
 * Windows 7 SP1 以降
+
+> [!NOTE]
+> Windows 用のエージェントは、トランスポート層セキュリティ (TLS) 1.0 と 1.1 のみをサポートします。  
 
 #### <a name="network-configuration"></a>ネットワーク構成
 Windows エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。 トラフィックはネットワークから Log Analytics サービスへの送信です。 

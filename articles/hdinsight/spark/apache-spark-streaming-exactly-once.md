@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: 61162a845f6620d7c6e5662baedfdbfae9b9653a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 48b1d3811f3a8f6190c58e9646ab0d820859fc21
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成
 

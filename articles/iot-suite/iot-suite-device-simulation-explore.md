@@ -1,6 +1,6 @@
 ---
 title: デバイス シミュレーション ソリューションを使ってみる - Azure | Microsoft Docs
-description: IoT Suite シミュレーション ソリューションは、IoT ソリューションの開発とテストの支援に使うことができるツールです。 シミュレーション サービスはスタンドアロンで提供され、他の構成済みソリューションと組み合わせて使ったり、ユーザー独自のカスタム ソリューションで使ったりすることができます。
+description: IoT アクセラレータ シミュレーション ソリューションは、IoT ソリューションの開発とテストの支援に使うことができるツールです。 シミュレーション サービスはスタンドアロンで提供され、他のソリューション アクセラレータと組み合わせて使ったり、ユーザー独自のカスタム ソリューションで使ったりすることができます。
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,15 +12,15 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7dfd56d06e180dd163fa84d4289e6daf4baefc51
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-simulation-walkthrough"></a>デバイス シミュレーションのチュートリアル
 
-Azure IoT デバイス シミュレーションは、IoT ソリューションの開発とテストの支援に使うことができるツールです。 デバイス シミュレーションはスタンドアロンで提供され、他の構成済みソリューションやユーザー独自のカスタム ソリューションと組み合わせて使うことができます。
+Azure IoT デバイス シミュレーションは、IoT ソリューションの開発とテストの支援に使うことができるツールです。 デバイス シミュレーションはスタンドアロンで提供され、他のソリューション アクセラレータやユーザー独自のカスタム ソリューションと組み合わせて使うことができます。
 
 このチュートリアルでは、デバイス シミュレーションの一部の機能を紹介します。 動作の仕組みを説明し、独自の IoT ソリューションのテストに使うことができるようにします。
 
@@ -39,7 +39,7 @@ Azure IoT デバイス シミュレーションは、IoT ソリューション�
 
 ## <a name="configuring-device-simulation"></a>デバイス シミュレーションの構成
 
-デバイス シミュレーションは、ダッシュボード内から完全に構成して実行できます。 IoT Suite の [[プロビジョニングされたソリューション]](https://www.azureiotsuite.com/) ページからダッシュボードを開きます。 新しいデバイス シミュレーションの展開の **[起動]** をクリックします。
+デバイス シミュレーションは、ダッシュボード内から完全に構成して実行できます。 IoT ソリューション アクセラレータの [[プロビジョニングされたソリューション]](https://www.azureiotsuite.com/) ページからダッシュボードを開きます。 新しいデバイス シミュレーションの展開の **[起動]** をクリックします。
 
 ### <a name="target-iot-hub"></a>IoT Hub をターゲットにする
 

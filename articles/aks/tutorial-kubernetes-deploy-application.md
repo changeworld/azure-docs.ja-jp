@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 79fc716f70fe0fb3273badd485e4c01ea5d04e1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションの実行
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
 このチュートリアルでは、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 手順は次のとおりです。
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。
 
 このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yaml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。
 
@@ -89,7 +89,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>アプリケーションをテストする
 
-アプリケーションをインターネットに公開する [Kubernetes サービス][kubernetes-service]が作成されます。 このプロセスには数分かかることがあります。 
+アプリケーションをインターネットに公開する [Kubernetes サービス][kubernetes-service]が作成されます。 このプロセスには数分かかることがあります。
 
 進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
 
@@ -98,12 +98,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-*EXTERNAL-IP* アドレスが "*保留中*" から "*IP アドレス*" に変わったら、`CTRL-C` を使用して kubectl ウォッチ プロセスを停止します。 
+*EXTERNAL-IP* アドレスが "*保留中*" から "*IP アドレス*" に変わったら、`CTRL-C` を使用して kubectl ウォッチ プロセスを停止します。
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
@@ -119,14 +119,14 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 次のタスクを行います。  
+このチュートリアルでは、Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 次のタスクを行います。
 
 > [!div class="checklist"]
 > * Kubernetes マニフェスト ファイルをダウンロードする
 > * Kubernetes でアプリケーションを実行する
 > * アプリケーションをテストする
 
-次のチュートリアルに進んで、Kubernetes アプリケーションとその基になっている Kubernetes インフラストラクチャ両方のスケーリングに関して学習してください。 
+次のチュートリアルに進んで、Kubernetes アプリケーションとその基になっている Kubernetes インフラストラクチャ両方のスケーリングに関して学習してください。
 
 > [!div class="nextstepaction"]
 > [Kubernetes アプリケーションと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]

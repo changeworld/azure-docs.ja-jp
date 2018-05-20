@@ -1,11 +1,11 @@
 ---
-title: "ハイブリッド クラウド ID 設計の ID 要件 - Azure | Microsoft Docs"
-description: "ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。"
-documentationcenter: 
+title: ハイブリッド クラウド ID 設計の ID 要件 - Azure | Microsoft Docs
+description: ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5741a5024b5f5105a71d9404191601b951a301e4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/18/2018
 * 現在、その統合は運用中ですか、パイロットですか。
 
 > [!NOTE]
-> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 作業を開始するには、「[Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)」をご覧ください。
+> すべてのアプリケーションとクラウド サービスの正確なマッピングがない場合は、Cloud App Discovery ツールを使用できます。 IT 部門はこのツールを使用して、組織のビジネス用およびコンシューマー用クラウド アプリケーションをすべて把握できます。 そのため、使用パターンの詳細や、クラウド アプリケーションにアクセスするユーザーなど、組織内のシャドウ IT を、これまで以上に簡単に見つけることができます。 作業を開始するには、「[Cloud App Discovery](manage-apps/cloud-app-discovery.md)」をご覧ください。
 > 
 > 
 

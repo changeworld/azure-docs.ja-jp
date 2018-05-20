@@ -179,8 +179,8 @@ ms.lasthandoff: 04/16/2018
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Azure ストレージ アカウント用のリンクされたサービスを追加する
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure ストレージ]** をクリックします。
-2. Azure ストレージ アカウントの名前を **[アカウント名]**に入力します。
-3. Azure ストレージ アカウントのキーを **[アカウント キー]**に入力します。
+2. Azure ストレージ アカウントの名前を **[アカウント名]** に入力します。
+3. Azure ストレージ アカウントのキーを **[アカウント キー]** に入力します。
 4. **[デプロイ]** をクリックして **AzureStorageLinkedService** をデプロイします。
 
 ## <a name="create-datasets"></a>データセットを作成する
@@ -359,7 +359,7 @@ ms.lasthandoff: 04/16/2018
 
    * activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
    * アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-   * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink ** が指定されています。
+   * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 (例: 2014-10-14T16:32:41Z)。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。

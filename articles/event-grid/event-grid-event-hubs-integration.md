@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid と Event Hubs 統合"
-description: "Azure Event Grid と Event Hubs を使用して、SQL Data Warehouse にデータを移行する方法について説明します"
+title: Azure Event Grid と Event Hubs 統合
+description: Azure Event Grid と Event Hubs を使用して、SQL Data Warehouse にデータを移行する方法について説明します
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dba17a860dffd87b3784c53cf288b7a312c77e33
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 60857327685fca9a5f97588ab51909ce2537d68f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>ビッグ データをデータ ウェアハウスにストリーミングする
 
@@ -118,67 +118,41 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. [EventHubsCaptureEventGridDemo サンプル プロジェクト](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)を Visual Studio 2017 (15.3.2 以上) で開きます。
 
-2. ソリューション エクスプローラーで、**[FunctionDWDumper]** を右クリックし、**[発行]** を選択します。
+1. ソリューション エクスプローラーで、**[FunctionEGDWDumper]** を右クリックし、**[発行]** を選択します。
 
    ![関数アプリの発行](media/event-grid-event-hubs-integration/publish-function-app.png)
 
-3. **[Azure 関数アプリ]** を選択して、**[既存のものを選択]** を選択します。 **[OK]**を選択します。
+1. **[Azure 関数アプリ]** を選択して、**[既存のものを選択]** を選択します。 **[発行]** を選択します。
 
    ![対象の関数アプリ](media/event-grid-event-hubs-integration/pick-target.png)
 
-4. テンプレートを使ってデプロイした関数アプリを選択します。 **[OK]**を選択します。
+1. テンプレートを使ってデプロイした関数アプリを選択します。 **[OK]** を選択します。
 
    ![関数アプリの選択](media/event-grid-event-hubs-integration/select-function-app.png)
 
-5. Visual Studio でプロファイルを構成している場合は、**[発行]** を選択します。
+1. Visual Studio でプロファイルを構成している場合は、**[発行]** を選択します。
 
    ![発行の選択](media/event-grid-event-hubs-integration/select-publish.png)
 
-6. 関数を発行したら、[Azure Portal](https://portal.azure.com/) に移動します。 リソース グループおよび関数アプリを選択します。
-
-   ![関数アプリの表示](media/event-grid-event-hubs-integration/view-function-app.png)
-
-7. 関数を選択します。
-
-   ![関数の選択](media/event-grid-event-hubs-integration/select-function.png)
-
-8. 関数の URL を取得します。 イベント サブスクリプションを作成するときにこの URL が必要になります。
-
-   ![関数の URL の取得](media/event-grid-event-hubs-integration/get-function-url.png)
-
-9. 値をコピーします。
-
-   ![URL のコピー](media/event-grid-event-hubs-integration/copy-url.png)
+関数を発行すれば、イベントをサブスクライブする準備が整います。
 
 ## <a name="subscribe-to-the-event"></a>イベントをサブスクライブする
 
-Azure CLI またはポータルを使用すると、イベントをサブスクライブできます。 このトピックでは、両方の方法を説明します。
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 リソース グループおよび関数アプリを選択します。
 
-### <a name="portal"></a>ポータル
+   ![関数アプリの表示](media/event-grid-event-hubs-integration/view-function-app.png)
 
-1. Event Hubs 名前空間で、左側の **[Event Grid]** を選択します。
+1. 関数を選択します。
 
-   ![Event Grid の選択](media/event-grid-event-hubs-integration/select-event-grid.png)
+   ![関数の選択](media/event-grid-event-hubs-integration/select-function.png)
 
-2. イベント サブスクリプションを追加します。
+1. **Event Grid サブスクリプションの追加**を選択します。
 
-   ![イベント サブスクリプションの追加](media/event-grid-event-hubs-integration/add-event-subscription.png)
+   ![[サブスクリプションの追加]](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-3. イベント サブスクリプションの値を指定します。 コピーした Azure Functions URL を使用します。 **[作成]**を選択します。
+9. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **[作成]** を選択します。
 
-   ![サブスクリプション値の指定](media/event-grid-event-hubs-integration/provide-values.png)
-
-### <a name="azure-cli"></a>Azure CLI
-
-イベントにサブスクライブするには、次のコマンドを実行します (これにはバージョン 2.0.24 以降の Azure CLI が必要です)。
-
-```azurecli-interactive
-namespaceid=$(az resource show --namespace Microsoft.EventHub --resource-type namespaces --name <your-EventHubs-namespace> --resource-group rgDataMigrationSample --query id --output tsv)
-az eventgrid event-subscription create \
-  --resource-id $namespaceid \
-  --name captureEventSub \
-  --endpoint <your-function-endpoint>
-```
+   ![サブスクリプションの作成](media/event-grid-event-hubs-integration/set-subscription-values.png)
 
 ## <a name="run-the-app-to-generate-data"></a>データを生成するアプリを実行する
 
@@ -192,16 +166,16 @@ az eventgrid event-subscription create \
 
    ![キーの選択](media/event-grid-event-hubs-integration/show-root-key.png)
 
-3. **[Connection string - Primary Key]\(接続文字列 – 主キー\)** をコピーします。
+3. **[Connection string - primary Key]\(接続文字列 – 主キー\)** をコピーします
 
    ![キーのコピー](media/event-grid-event-hubs-integration/copy-key.png)
 
 4. Visual Studio プロジェクトに戻ります。 WindTurbineDataGenerator プロジェクトで、**program.cs** を開きます。
 
-5. 2 つの定数の値を置き換えます。 **EventHubConnectionString** には、コピーした値を使用します。 **EventHubName** にはイベント ハブ名を使用します。
+5. 2 つの定数の値を置き換えます。 **EventHubConnectionString** には、コピーした値を使用します。 **hubdatamigration**イベント ハブの名前を使用します。
 
    ```cs
-   private const string EventHubConnectionString = "Endpoint=sb://tfdatamigratens.servicebus.windows.net/...";
+   private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 

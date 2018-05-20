@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: e15016da271d512fd9b87d5c14091305a92770b5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/10/2018
+---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>IoT デバイスの動作を指定する
 
 IoT Hub シリアライザー クライアント ライブラリでは、モデルを使用して、デバイスが IoT Hub とやり取りするメッセージの形式を指定します。
@@ -78,7 +94,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 ここで、モデルに定義された動作を実装するコードを追加します。
 
-1. 次のコールバック ハンドラーを追加します。このハンドラーは、新しく報告されたプロパティ値を、デバイスが構成済みソリューションに送信するときに実行されます。
+1. 次のコールバック ハンドラーを追加します。このハンドラーは、新しく報告されたプロパティ値を、デバイスがソリューション アクセラレータに送信するときに実行されます。
 
     ```c
     /* Callback after sending reported properties */
@@ -124,7 +140,8 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
       }
       ThreadAPI_Sleep(5000);
 
-      chiller->Firmware = _strdup(chiller->new_firmware_version);
+    #pragma warning(suppress : 4996)
+      chiller->Firmware = strdup(chiller->new_firmware_version);
       chiller->FirmwareUpdateStatus = "waiting";
       /* Send reported properties to IoT Hub */
       if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
@@ -171,8 +188,10 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
       }
       else
       {
-        chiller->new_firmware_version = _strdup(Firmware);
-        chiller->new_firmware_URI = _strdup(FirmwareUri);
+    #pragma warning(suppress : 4996)
+        chiller->new_firmware_version = strdup(Firmware);
+    #pragma warning(suppress : 4996)
+        chiller->new_firmware_URI = strdup(FirmwareUri);
         THREAD_HANDLE thread_apply;
         THREADAPI_RESULT t_result = ThreadAPI_Create(&thread_apply, do_firmware_update, chiller);
         if (t_result == THREADAPI_OK)
@@ -221,7 +240,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     }
     ```
 
-1. 次の関数を追加します。この関数は、メッセージとプロパティを、構成済みソリューションに送信します。
+1. 次の関数を追加します。この関数は、メッセージとプロパティをソリューション アクセラレータに送信します。
 
     ```c
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size, char* schema)
@@ -260,7 +279,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     }
     ```
 
-1. 次の関数を追加して、クラウドで構成済みソリューションにデバイスを接続し、データを交換します。 この関数では、次の手順を実行します。
+1. 次の関数を追加して、クラウドでソリューション アクセラレータにデバイスを接続し、データを交換します。 この関数では、次の手順を実行します。
 
     - プラットフォームを初期化する。
     - シリアル化ライブラリに Contoso の名前空間を登録する。
@@ -396,7 +415,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     }
     ```
 
-    構成済みソリューションに送信される**テレメトリ** メッセージの例を次に示します。
+    ソリューション アクセラレータに送信される**テレメトリ** メッセージの例を次に示します。
 
     ```
     Device: [myCDevice],

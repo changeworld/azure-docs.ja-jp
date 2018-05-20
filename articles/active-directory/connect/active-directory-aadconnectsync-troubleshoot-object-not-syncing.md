@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5bc0fd3854488704f5368bfe1134d8fa9c959c9b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
@@ -51,13 +51,13 @@ ms.lasthandoff: 03/29/2018
 | completed-\*-warnings |実行は完了しましたが、一部のデータが予想と異なります。 エラーがある場合には通常、このメッセージは単なる症状の 1 つにすぎません。 エラーを解決するまでは、警告を調査しないでください。 |
 | 成功 |問題ありません。 |
 
-行を選択すると、下の領域が更新され、実行の詳細が表示されます。 下の領域の左端には、 **Step #**(# は番号) という一覧が表示されることがあります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]**(パーティション) という見出しにあります。 **[Synchronization Statistics (同期統計)]**には、処理された変更の数に関する詳細が表示されます。 リンクをクリックすると、変更されたオブジェクトの一覧を取得できます。 オブジェクトにエラーがある場合、 **[Synchronization Errors (同期エラー)]**の下に表示されます。
+行を選択すると、下の領域が更新され、実行の詳細が表示されます。 下の領域の左端には、 **Step #**(# は番号) という一覧が表示されることがあります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]**(パーティション) という見出しにあります。 **[Synchronization Statistics (同期統計)]** には、処理された変更の数に関する詳細が表示されます。 リンクをクリックすると、変更されたオブジェクトの一覧を取得できます。 オブジェクトにエラーがある場合、 **[Synchronization Errors (同期エラー)]** の下に表示されます。
 
 ### <a name="troubleshoot-errors-in-operations-tab"></a>[オペレーション] タブでエラーを解決する
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorsync.png)  
 エラーがある場合、エラーのあるオブジェクトとエラー自体がリンクとなり、クリックすると詳細が表示されます。
 
-まず、エラー文字列をクリックしてみます (上の画像の**sync-rule-error-function-triggered** )。 最初にオブジェクトの概要が表示されます。 実際のエラーを確認するには、 **[スタック トレース]**ボタンをクリックします。 このトレースにより、エラーのデバッグ レベル情報が表示されます。
+まず、エラー文字列をクリックしてみます (上の画像の**sync-rule-error-function-triggered** )。 最初にオブジェクトの概要が表示されます。 実際のエラーを確認するには、 **[スタック トレース]** ボタンをクリックします。 このトレースにより、エラーのデバッグ レベル情報が表示されます。
 
 **[コール スタック情報]** ボックスで右クリックし、**[すべて選択]** を選択し、**[コピー]** を選択します。 次に、スタックをコピーし、メモ帳など、普段利用しているエディターでエラーを確認できます。
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 03/29/2018
 
 探しているオブジェクトが見つからない場合は、[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)または[組織単位ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)でフィルターされた可能性があります。 フィルター処理が期待どおりに構成されていることを確認するには、[フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)に関するトピックをご覧ください。
 
-別の便利な検索は、Azure AD コネクタを選び、**[Scope (スコープ)]** で **[インポートを保留しています]** を選択し、**[追加]**チェックボックスをオンにすることです。 この検索によって、オンプレミスのオブジェクトに関連付けできない、Azure AD 内の同期されているすべてのオブジェクトが得られます。  
+別の便利な検索は、Azure AD コネクタを選び、**[Scope (スコープ)]** で **[インポートを保留しています]** を選択し、**[追加]** チェックボックスをオンにすることです。 この検索によって、オンプレミスのオブジェクトに関連付けできない、Azure AD 内の同期されているすべてのオブジェクトが得られます。  
 ![コネクタ スペースの検索の孤立](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
 これらのオブジェクトは、別の同期エンジンまたは別のフィルター処理構成を持つ同期エンジンによって作成されています。 このビューは、管理されなくなった**孤立した**オブジェクトの一覧です。 この一覧を確認し、[Azure AD PowerShell](https://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討する必要があります。
 
@@ -139,7 +139,7 @@ cs オブジェクトを開くと、いくつかのタブが上部に表示さ�
 - ユーザーが表現される各 Active Directory フォレスト。 この表現は、foreignSecurityPrincipals と Contact オブジェクトを含むことができます。
 - Azure AD 内のコネクタ。
 
-Azure AD にコネクタが存在しない場合は、[MV 属性](#MV-attributes)を読み取って、Azure AD にプロビジョニングされる条件を確認します。
+Azure AD にコネクタが存在しない場合は、[MV 属性](#mv-attributes)を読み取って、Azure AD にプロビジョニングされる条件を確認します。
 
 このタブから[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。 行を選択し、**[プロパティ]** をクリックします。
 

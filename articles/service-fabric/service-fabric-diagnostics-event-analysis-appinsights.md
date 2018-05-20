@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: fa04e7a3c0d6f19603befed026b316eba6e46eb7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ef7517e91965b0d7444d158f041b1d2bddea6bd2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -32,7 +32,7 @@ Azure Application Insights は、アプリケーションの監視と診断の�
 
 ## <a name="monitoring-in-app-insights"></a>App Insights 内での監視
 
-Application Insights には、Service Fabric ですぐに利用できる豊富な機能が用意されています。 [概要] ページでは、AI はサービスに関する重要な情報 (応答時間や処理された要求の数など) を提供します。 上部にある [検索] をクリックすると、アプリケーション内での最近の要求の一覧を確認できます。 さらに、失敗した要求をここで確認し、発生したエラーを診断できます。
+Application Insights には、Service Fabric の使用時にすぐに利用できる豊富な機能が用意されています。 [概要] ページでは、AI はサービスに関する重要な情報 (応答時間や処理された要求の数など) を提供します。 上部にある [検索] をクリックすると、アプリケーション内での最近の要求の一覧を確認できます。 さらに、失敗した要求をここで確認し、発生したエラーを診断できます。
 
 ![AI の概要](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 

@@ -14,13 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/22/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 76ca118accf91850168f35ee3b7f66337ed96592
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d76d02ba326cf93582c03937b3ab54d806acaff1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
 

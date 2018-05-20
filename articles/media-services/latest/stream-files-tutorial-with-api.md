@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 1f0ce5599cce7fc830075e57af1bcba80d0e69e7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7e5054d6f59bb3e06e4148bd9cfb3caed9fec970
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>チュートリアル: API を使用してビデオのアップロード、エンコード、ストリーム配信を行う
 
@@ -66,17 +66,7 @@ Visual Studio がインストールされていない場合は、[Visual Studio 
 
 .NET で Media Services API の使用を始めるには、**AzureMediaServicesClient** オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure AD を使用して Azure に接続するために必要な資格情報を指定する必要があります。 まず、トークンを取得し、返されたトークンから **ClientCredential** オブジェクトを作成する必要があります。 記事の先頭で複製したコードでは、**ArmClientCredential** オブジェクトを使用してトークンを取得しています。  
 
-```csharp
-private static IAzureMediaServicesClient CreateMediaServicesClient(ConfigWrapper config)
-{
-    ArmClientCredentials credentials = new ArmClientCredentials(config);
-
-    return new AzureMediaServicesClient(config.ArmEndpoint, credentials)
-    {
-        SubscriptionId = config.SubscriptionId,
-    };
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>入力アセットを作成し、ローカル ファイルをそれにアップロードする 
 
@@ -90,61 +80,13 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 * 書き込み可能な [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) をアセットの[ストレージ内のコンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)に取得する
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする
 
-```csharp
-private static Asset CreateInputAsset(IAzureMediaServicesClient client, string resourceGroupName, string accountName, string assetName, string fileToUpload)
-{
-    // Check if an Asset already exists.
-    Asset asset = client.Assets.Get(resourceGroupName, accountName, assetName);
-
-    if (asset == null)
-    {
-        asset = client.Assets.CreateOrUpdate(resourceGroupName, accountName, assetName, new Asset());
-
-        var response = client.Assets.ListContainerSas(
-                resourceGroupName,
-                accountName,
-                assetName,
-                permissions: AssetContainerPermission.ReadWrite,
-                expiryTime: DateTime.UtcNow.AddHours(4).ToUniversalTime()
-            );
-
-        var sasUri = new Uri(response.AssetContainerSasUrls.First());
-        CloudBlobContainer container = new CloudBlobContainer(sasUri);
-        var blob = container.GetBlockBlobReference(Path.GetFileName(fileToUpload));
-        blob.UploadFromFile(fileToUpload);
-    }
-
-    // In this sample method, we are going to assume that if an Asset already exists with the desired name, 
-    // then we can go ahead an use it for encoding or analyzing.
-
-    return asset;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>ジョブの結果を格納する出力アセットを作成する 
 
 出力アセットは、エンコード ジョブの結果を格納します。 プロジェクトで定義されている **DownloadResults** 関数は、この出力アセットから "output" フォルダーに結果をダウンロードするので、取得したものを確認できます。
 
-```csharp
-private static Asset CreateOutputAsset(IAzureMediaServicesClient client, string resourceGroupName, string accountName, string assetName)
-{
-    // Check if an Asset already exists
-    Asset outputAsset = client.Assets.Get(resourceGroupName, accountName, assetName);
-    Asset asset = new Asset();
-    string outputAssetName = assetName;
-
-    if (outputAsset != null)
-    {
-        // Name collision! In order to get the sample to work, let's just go ahead and create a unique asset name
-        // Note that the returned Asset can have a different name than the one specified as an input parameter.
-        // You may want to update this part to throw an Exception instead, and handle name collisions differently.
-        string uniqueness = @"-" + Guid.NewGuid().ToString();
-        outputAssetName += uniqueness;
-    }
-
-    return client.Assets.CreateOrUpdate(resourceGroupName, accountName, outputAssetName, asset);
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>アップロードされたファイルをエンコードする変換とジョブを作成する
 Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transforms and jobs](transform-concept.md)」(変換とジョブ) をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
@@ -157,36 +99,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 **Transform** を作成するときは、次のコードに示すように、最初に **Get** メソッドを使って変換が既に存在するかどうかを確認する必要があります。  Media Services v3 では、エンティティが存在しない場合 (大文字と小文字の区別がない名前のチェック)、エンティティに対する **Get** メソッドは **null** を返します。
 
-```csharp
-private static Transform EnsureTransformExists(IAzureMediaServicesClient client,
-    string resourceGroupName,
-    string accountName,
-    string transformName)
-{
-    // Does a Transform already exist with the desired name? Assume that an existing Transform with the desired name
-    // also uses the same recipe or Preset for processing content.
-    Transform transform = client.Transforms.Get(resourceGroupName, accountName, transformName);
-
-    if (transform == null)
-    {
-        // Start by defining the desired outputs.
-        TransformOutput[] outputs = new TransformOutput[]
-        {
-            new TransformOutput
-            {
-                Preset = new BuiltInStandardEncoderPreset()
-                {
-                    PresetName = EncoderNamedPreset.AdaptiveStreaming
-                }
-            }
-        };
-
-        transform = client.Transforms.CreateOrUpdate(resourceGroupName, accountName, transformName, outputs);
-    }
-
-    return transform;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>ジョブ
 
@@ -194,44 +107,7 @@ private static Transform EnsureTransformExists(IAzureMediaServicesClient client,
 
 この例では、入力ビデオはローカル コンピューターからアップロードされています。 HTTPS URL からのエンコード方法について詳しくは、[こちら](job-input-from-http-how-to.md)の記事をご覧ください。
 
-```csharp
-private static Job SubmitJob(IAzureMediaServicesClient client, 
-    string resourceGroupName, 
-    string accountName, 
-    string transformName, 
-    string jobName, 
-    JobInput jobInput, 
-    string outputAssetName)
-{
-    string uniqueJobName = jobName;
-    Job job = client.Jobs.Get(resourceGroupName, accountName, transformName, jobName);
-
-    if (job != null)
-    {
-        // Job already exists with the same name, so let's append a GUID
-        string uniqueness = @"-" + Guid.NewGuid().ToString();
-        uniqueJobName += uniqueness;
-    }
-
-    JobOutput[] jobOutputs =
-    {
-        new JobOutputAsset(outputAssetName),
-    };
-
-    job = client.Jobs.Create(
-        resourceGroupName,
-        accountName,
-        transformName,
-        jobName,
-        new Job
-        {
-            Input = jobInput,
-            Outputs = jobOutputs,
-        });
-
-    return job;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 
 ### <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
@@ -241,43 +117,7 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態を取得します。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 
-```csharp
-private static Job WaitForJobToFinish(IAzureMediaServicesClient client,
-    string resourceGroupName,
-    string accountName,
-    string transformName,
-    string jobName)
-{
-    int SleepInterval = 60 * 1000;
-
-    Job job = null;
-
-    while (true)
-    {
-        job = client.Jobs.Get(resourceGroupName, accountName, transformName, jobName);
-
-        if (job.State == JobState.Finished || job.State == JobState.Error || job.State == JobState.Canceled)
-        {
-            break;
-        }
-
-        Console.WriteLine($"Job is {job.State}.");
-        for (int i = 0; i < job.Outputs.Count; i++)
-        {
-            JobOutput output = job.Outputs[i];
-            Console.Write($"\tJobOutput[{i}] is {output.State}.");
-            if (output.State == JobState.Processing)
-            {
-                Console.Write($"  Progress: {output.Progress}");
-            }
-            Console.WriteLine();
-        }
-        System.Threading.Thread.Sleep(SleepInterval);
-    }
-
-    return job;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
 
 ### <a name="get-a-streaminglocator"></a>StreamingLocator を取得する
 
@@ -292,26 +132,7 @@ private static Job WaitForJobToFinish(IAzureMediaServicesClient client,
 
 次のコードでは、一意の locatorName で関数を呼び出しているものとします。
 
-```csharp
-private static StreamingLocator CreateStreamingLocator(IAzureMediaServicesClient client,
-                                                        string resourceGroup,
-                                                        string accountName,
-                                                        string assetName,
-                                                        string locatorName)
-{
-    StreamingLocator locator =
-        client.StreamingLocators.Create(resourceGroup,
-        accountName,
-        locatorName,
-        new StreamingLocator()
-        {
-            AssetName = assetName,
-            StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly,
-        });
-
-    return locator;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
 このトピックのサンプルではストリーム配信について説明していますが、同じ呼び出しを使って、プログレッシブ ダウンロードによるビデオ配信用の StreamingLocator を作成できます。
 
@@ -322,57 +143,13 @@ StreamingLocator が作成されたので、**GetStreamingURLs** で示されて
 > [!NOTE]
 > このメソッドでは、出力アセットの **StreamingLocator** を作成するときに使った locatorName が必要です。
 
-```csharp
-static IList<string> GetStreamingURLs(
-    IAzureMediaServicesClient client,
-    string resourceGroupName,
-    string accountName,
-    String locatorName)
-{
-    IList<string> streamingURLs = new List<string>();
-
-    string streamingUrlPrefx = "";
-
-    StreamingEndpoint streamingEndpoint = client.StreamingEndpoints.Get(resourceGroupName, accountName, "default");
-
-    if (streamingEndpoint != null)
-    {
-        streamingUrlPrefx = streamingEndpoint.HostName;
-
-        if (streamingEndpoint.ResourceState != StreamingEndpointResourceState.Running)
-            client.StreamingEndpoints.Start(resourceGroupName, accountName, "default");
-    }
-
-    foreach (var path in client.StreamingLocators.ListPaths(resourceGroupName, accountName, locatorName).StreamingPaths)
-    {
-        streamingURLs.Add("http://" + streamingUrlPrefx + path.Paths[0].ToString());
-    }
-
-    return streamingURLs;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 
 ### <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
 一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、StreamingLocator などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  たとえば、次のコードはジョブを削除します。
 
-```csharp
-static void CleanUp(IAzureMediaServicesClient client,
-        string resourceGroupName,
-        string accountName,
-        string transformName)
-{
-    foreach (var job in client.Jobs.List(resourceGroupName, accountName, transformName))
-    {
-        client.Jobs.Delete(resourceGroupName, accountName, transformName, job.Name);
-    }
-
-    foreach (var asset in client.Assets.List(resourceGroupName, accountName))
-    {
-        client.Assets.Delete(resourceGroupName, accountName, asset.Name);
-    }
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 

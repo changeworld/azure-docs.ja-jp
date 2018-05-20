@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 25bcbbcd1615e01a384825d7bd1582a528e91f71
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>高可用性仮想マシン間でトラフィックの負荷を分散する
 

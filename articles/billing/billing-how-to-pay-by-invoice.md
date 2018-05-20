@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3bcd170ece7c85ee3fadaa952a539a7f2364ea48
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ac8262da05837dcdb4ebddd5029f9b5ece3dbc6f
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払いの要求を送信する
 

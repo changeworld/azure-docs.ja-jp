@@ -2,25 +2,19 @@
 title: Azure Active Directory での B2B コラボレーションと B2C の比較 | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションと Azure AD B2C の違いは何でしょうか。
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 03/15/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 32d7d135e67a05b59279e647c1fb2aa8c9686cef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0e8781fcf2710b00ba352bff29a370cbb73e0648
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
 
@@ -41,16 +35,6 @@ B2B コラボレーション機能 |     Azure AD B2C スタンドアロン製�
 
 ### <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+- [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
-* [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
-* [B2B コラボレーションの招待の委任](active-directory-b2b-delegate-invitations.md)
-* [動的グループと B2B コラボレーション](active-directory-b2b-dynamic-groups.md)
-* [B2B コラボレーション用の SaaS アプリの構成](active-directory-b2b-configure-saas-apps.md)
-* [B2B コラボレーション ユーザーのトークン](active-directory-b2b-user-token.md)
-* [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
-* [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
-* [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
-* [B2B コラボレーションのサポートの利用](active-directory-b2b-support.md)

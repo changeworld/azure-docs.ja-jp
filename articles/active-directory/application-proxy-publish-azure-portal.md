@@ -3,23 +3,23 @@ title: Azure AD アプリケーション プロキシを使用したアプリの
 description: Azure Portal で Azure AD アプリケーション プロキシを使用して、オンプレミス アプリケーションをクラウドに発行します。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: barbkess
 manager: mtillman
-ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b9750212925294dec2220e6ef3e6e19d3bc7c3c6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
@@ -27,7 +27,7 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
 
 この記事では、アプリケーション プロキシを使用してオンプレミス アプリを発行する手順を説明します。 この記事を完了すると、ユーザーがアプリにリモートでアクセスできるようになります。 さらに、シングル サインオン、個人用設定の情報、セキュリティ要件などのアプリケーションの追加機能を構成する準備が整います。
 
-アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」で、この機能の詳細を確認してください。
+アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md)」で、この機能の詳細を確認してください。
 
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>リモート アクセスを行うためのオンプレミス アプリの発行
@@ -73,7 +73,7 @@ Azure Active Directory (AD) アプリケーション プロキシを使用して
    
    ![アプリケーションの作成](./media/application-proxy-publish-azure-portal/additional-settings.png)
 
-6. **[追加]**を選択します。
+6. **[追加]** を選択します。
 
 
 ## <a name="add-a-test-user"></a>テスト ユーザーの選択 

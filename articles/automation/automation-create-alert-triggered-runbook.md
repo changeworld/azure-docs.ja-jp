@@ -3,16 +3,17 @@ title: Azure Automation Runbook をトリガーするアラートを使用する
 description: Azure のアラートが発生したときに Runbook の実行をトリガーする方法について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6f63244a9d3d821a71f92782951cf74539d3c750
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a226a348df4f289dd68924e24b8d4b374a87766
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -221,7 +222,7 @@ Runbook は、VM に対する管理アクションを実行するために、**A
 1. メトリック アラートに **myVMCPUAlert** という名前を付けます。 アラートに簡単な説明を入力します。
 1. メトリック アラートの条件に、**[次の値より大きい]** を選択します。 **[しきい値]** の値に、**10** を選択します。 **[期間]** の値に、**[Over the last five minutes]\(過去 5 分間\)** を選択します。
 1. **[アクションの実行]** で、**[このアラートから Runbook を実行します]** を選択します。
-1. **[Runbook の構成]** ページの **[Runbook ソース]** で **[ユーザー]** を選択します。 Automation アカウントを選択し、**Stop-AzureVmInResponsetoVMAlert** Runbook を選択します。 **[OK]**を選択します。
+1. **[Runbook の構成]** ページの **[Runbook ソース]** で **[ユーザー]** を選択します。 Automation アカウントを選択し、**Stop-AzureVmInResponsetoVMAlert** Runbook を選択します。 **[OK]** を選択します。
 1. アラート ルールを保存するには、**[OK]** を選択します。
 
 ## <a name="next-steps"></a>次の手順

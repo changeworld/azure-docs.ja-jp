@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Teamphoria の統合 | Microsoft Docs"
-description: "Azure Active Directory と Teamphoria の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Teamphoria の統合 | Microsoft Docs'
+description: Azure Active Directory と Teamphoria の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 260c85b14032e17def01ded4a461e6337d66239b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 724d1624a3ba86aba3665169a14115b2a90e0069
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル: Azure Active Directory と Teamphoria の統合
 
@@ -30,14 +30,6 @@ Teamphoria と Azure AD の統合には、次の利点があります。
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
-
-<!--## Overview
-
-To enable single sign-on with Teamphoria, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Teamphoria.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,17 +57,17 @@ Azure AD への Teamphoria の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Teamphoria を追加するには、次の手順に従います。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Teamphoria**」と入力します。
 
@@ -98,7 +90,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Teamphoria のテスト ユーザーの作成](#creating-a-teamphoria-test-user)** - Teamphoria で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -108,48 +100,48 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
 1. Microsoft Azure 管理ポータルの **Teamphoria** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
 3. **[Teamphoria のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<sub-domain>.teamphoria.com/login` という形式で URL を入力します。    
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<sub-domain>.teamphoria.com/login` という形式で URL を入力します。    
 
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 この値を実際のシングル サインオン URL に置き換える必要があります。 シングル サインオン URL を取得するには、[Teamphoria クライアント サポート チーム](https://www.teamphoria.com/)に問い合わせてください。 
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書を保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamphoria-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/tutorial_general_400.png)
 
 6. **[Teamphoria Configuration (Teamphoria 構成)]** セクションで、**[Configure Teamphoria (Teamphoria を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_configure.png) 
 
 7. **Teamphoria** 側でシングル サインオンを構成するには、Teamphoria アプリケーションに管理者としてログインします。
 
 8. 左のツールバーの [構成] タブの **[ADMIN SETTINGS (管理者設定)]** オプションに移動し、**[シングル サインオン]** をクリックして SSO 構成ウィンドウを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamphoria-tutorial/admin_sso_configure.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/admin_sso_configure.png)
 
 9. 右上隅の **[ADD NEW IDENTITY PROVIDER (新しい ID プロバイダーの追加)]** をクリックして、SSO の設定を追加するためのフォームを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamphoria-tutorial/add_new_identity_provider.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/add_new_identity_provider.png)
 
 10. 以下の説明に従って、フィールドに詳細を入力します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **表示名**: 管理者ページでのプラグインの表示名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **表示名**: 管理者ページでのプラグインの表示名を入力します。
 
     b. **ボタン名**: SSO を使用してログインするためのログイン ページに表示されるタブの名前。
 
@@ -195,7 +187,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -223,7 +215,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
     
     ![[ユーザーの招待]](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)  
 
-    a. **[EMAIL ADDRESS (電子メール アドレス)]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[EMAIL ADDRESS (電子メール アドレス)]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 
     b. **[名]** ボックスに「**Britta**」と入力します。
 
@@ -245,7 +237,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 
 2. アプリケーションの一覧で **[Teamphoria]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

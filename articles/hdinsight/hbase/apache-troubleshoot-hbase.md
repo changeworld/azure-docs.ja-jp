@@ -8,14 +8,14 @@ manager: ashitg
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: 04d8e37791c12078754a661f7a1aa8a76a6b3c44
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d5d50121cd0375af1b57baadeb40efb237aaea11
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した HBase のトラブルシューティング
 

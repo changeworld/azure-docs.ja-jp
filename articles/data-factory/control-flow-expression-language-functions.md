@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -215,7 +215,7 @@ ms.lasthandoff: 04/20/2018
 |-------------------|-----------------|  
 |int|パラメーターを整数に変換します。 たとえば、次の式は文字列ではなく、数値として 100 を返します: `int('100')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 整数に変換する値です。|  
 |文字列|パラメーターを文字列に変換します。 たとえば、次の式は `'10'` を返します: `string(10)` また、オブジェクトを文字列に変換することもできます。たとえば、**foo** パラメーターが 1 つのプロパティ `bar : baz` を持つオブジェクトである場合、次は `{"bar" : "baz"}` `string(pipeline().parameters.foo)` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 文字列に変換する値です。|  
-|json|パラメーターを JSON 型の値に変換します。 これは、string() の反対です。 たとえば、次の式は文字列ではなく、配列として `[1,2,3]` を返します。<br /><br /> `parse('[1,2,3]')`<br /><br /> 同様に、文字列をオブジェクトに変換することもできます。 たとえば、`json('{"bar" : "baz"}')` は次を返します。<br /><br /> `{ "bar" : "baz" }`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 ネイティブな型の値に変換する文字列です。<br /><br /> json 関数は、xml 入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 次の json に変換されます。<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|json|パラメーターを JSON 型の値に変換します。 これは、string() の反対です。 たとえば、次の式は文字列ではなく、配列として `[1,2,3]` を返します。<br /><br /> `json('[1,2,3]')`<br /><br /> 同様に、文字列をオブジェクトに変換することもできます。 たとえば、`json('{"bar" : "baz"}')` は次を返します。<br /><br /> `{ "bar" : "baz" }`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: String<br /><br /> **説明**: 必須。 ネイティブな型の値に変換する文字列です。<br /><br /> json 関数は、xml 入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 次の json に変換されます。<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|パラメーター引数を浮動小数点数に変換します。 たとえば、次の式は `10.333` を返します: `float('10.333')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 浮動小数点数に変換する値です。|  
 |bool|パラメーターをブール値に変換します。 たとえば、次の式は `false` を返します: `bool(0)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Value<br /><br /> **説明**: 必須。 ブール値に変換する値です。|  
 |coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 注: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、これは `fallback` を返します: `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **名前**: Object*n*<br /><br /> **説明**: 必須。 `null` をチェックするオブジェクト。|  

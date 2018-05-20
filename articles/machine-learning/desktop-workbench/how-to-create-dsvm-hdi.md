@@ -1,6 +1,6 @@
 ---
-title: "Azure ML のコンピューティング ターゲットとして DSVM と HDI を作成する方法"
-description: "Azure ML 実験用のコンピューティング ターゲットとして DSVM と HDI Spark クラスターを作成します。"
+title: Azure ML のコンピューティング ターゲットとして DSVM と HDI を作成する方法
+description: Azure ML 実験用のコンピューティング ターゲットとして DSVM と HDI Spark クラスターを作成します。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1229a66ec84b4272337a5dd1e17942e46b25e9a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>コンピューティング ターゲットとしての DSVM および HDI Spark クラスターの作成
 
@@ -148,7 +148,7 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>DSVM OS ディスクを拡張する
-Azure の Linux VM は通常、30 GB のオペレーティング システム ディスクと共に提供されます。 Azure ML のコンピューティング ターゲットとして使用すると、Docker イメージを取得し、その上に conda レイヤーを構築する Docker エンジンによって、短時間で使い果たされることがあります。 実行の途中で「ディスクがいっぱいです」というエラーが発生するのを回避するために、OS ディスクを大きなサイズ (200 GB など) に拡張することをお勧めします。 azure-cli から簡単にこの操作を行う方法については、「[Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法](../../virtual-machines/linux/expand-disks.md)」を参照してください。 
+Ubuntu DSVM には、50 GB の OS ディスクと 100 GB のデータ ディスクが付属しています。 データ ディスクではより多くの領域を使用できるため、Docker はデータ ディスクにそのイメージを格納します。 このディスクは、Azure ML のコンピューティング ターゲットとして使用すると、Docker エンジンが Docker イメージを取得し、その上に conda レイヤーを構築することによって使い尽くされる場合があります。 実行の途中で「ディスクがいっぱいです」というエラーが発生するのを回避するために、ディスクを大きなサイズ (200 GB など) に拡張する必要が生じることがあります。 azure-cli から簡単にこの操作を行う方法については、「[Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法](../../virtual-machines/linux/expand-disks.md)」を参照してください。 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Azure Portal で Azure HDInsight クラスターの Apache Spark を作成する
 

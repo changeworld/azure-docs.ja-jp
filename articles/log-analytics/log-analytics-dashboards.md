@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics でのカスタム ダッシュボードの作成| Microsoft Docs"
-description: "このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。"
+title: Azure Log Analytics でのカスタム ダッシュボードの作成| Microsoft Docs
+description: このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7eaa74655b009e3154e2cc4f09d5599040ec4589
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
 
 このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
 
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics のクエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、既存の **[マイ ダッシュボード]** を編集することはできません。 ワークスペースに **[マイ ダッシュボード]** タイルが追加されていなかった場合、アップグレードされたワークスペースに **[マイ ダッシュボード]** は表示されません。 
+> 既存の**マイ ダッシュボード**は編集できなくなりました。 この機能は非推奨となる予定です。
 
 ![サンプルのダッシュ ボード](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 
@@ -82,9 +82,9 @@ OMS ポータルで作成するカスタム ダッシュボードはすべて、
 ![ダッシュ ボードの整理](./media/log-analytics-dashboards/oms-dashboards-organize.png)
 
 ## <a name="remove-a-tile"></a>タイルの削除
-タイルを削除するには、[マイ ダッシュボード] ビューに移動し、**[カスタマイズ]** をクリックしてカスタマイズ モードにします。 削除するタイルを選択し、右側のパネルで **[タイルの削除]**を選択します。
+タイルを削除するには、[マイ ダッシュボード] ビューに移動し、**[カスタマイズ]** をクリックしてカスタマイズ モードにします。 削除するタイルを選択し、右側のパネルで **[タイルの削除]** を選択します。
 
 ![タイルの削除](./media/log-analytics-dashboards/oms-dashboards-remove-tile.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Log Analytics で[アラート](log-analytics-alerts.md)を作成して、通知を生成し、問題を修正します。

@@ -1,22 +1,23 @@
 ---
-title: "アプリケーションの開発に関する問題\""
-description: "アプリケーションの開発に関する問題\""
+title: アプリケーションの開発に関する問題"
+description: アプリケーションの開発に関する問題"
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 4e65899b0bf713313fb6ed93c7aafcac76744082
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ebb7717291b4a5c6436d72778888b76dd63e96c1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-developing-my-application"></a>アプリケーション開発に関する問題
 

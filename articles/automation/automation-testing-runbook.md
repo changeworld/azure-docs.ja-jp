@@ -3,16 +3,17 @@ title: Azure Automation での Runbook のテスト
 description: Azure Automation で Runbook を発行する前にテストを行い、期待どおりに動作することを確認できます。  この記事では、Runbook のテスト方法と出力の見方について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 531fffe1ed24016d47708a729a3ee7642a1db64a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 780d197943737c3b821cbcec3afeeb60846ddf39
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook のテスト
 Runbook のテスト時には [ドラフト バージョン](automation-creating-importing-runbook.md#publishing-a-runbook) が実行され、そのバージョンで行われるすべてのアクションが完了します。 ジョブ履歴は作成されませんが、[テスト出力] ウィンドウに[出力](automation-runbook-output-and-messages.md#output-stream)および[警告とエラー](automation-runbook-output-and-messages.md#message-streams) ストリームが表示されます。 [詳細ストリーム](automation-runbook-output-and-messages.md#message-streams)のメッセージは、[$VerbosePreference 変数](automation-runbook-output-and-messages.md#preference-variables)が [Continue] に設定されている場合のみ [出力] ウィンドウに表示されます。

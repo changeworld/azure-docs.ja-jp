@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/29/2018
+ms.date: 04/30/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7840dc86ec7753980bb2c35f932f132c50d65f9e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。  必要に応じて、このチュートリアルの[ビデオ ウォークスルー](https://channel9.msdn.com/Events/Connect/2017/E100)をご覧になることもできます。
@@ -460,13 +460,24 @@ namespace VotingData.Controllers
 }
 ```
 
-
 ## <a name="connect-the-services"></a>サービスへの接続
 次の手順では、2 つのサービスを接続し、フロントエンド Web アプリケーションでバックエンド サービスの投票情報を取得および設定できるようにします。
 
 Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。 1 つのアプリケーション内に、TCP 経由でアクセス可能なサービスが含まれる場合があります。 そのほかにも、HTTP REST API を使用してアクセスできるサービスや、Web ソケットを介してアクセスできるサービスが含まれる場合があります。 使用可能なオプションとトレードオフについては、[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照してください。
 
-このチュートリアルでは、[ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) を使用します。
+このチュートリアルでは、[ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md)と[Service Fabric リバース プロキシ](service-fabric-reverseproxy.md)を使用して、フロント エンド web サービスがバックエンド データ サービスと通信できるようにします。 リバース プロキシは、通常 19081 のポートを使用するように構成されます。 ポートは、クラスターをセットアップするために使用される ARM テンプレートで設定されます。 どのポートが使用されているかを確認するには、 **Microsoft.ServiceFabric/clusters**リソースから、クラスター テンプレートをご覧ください:
+
+```json
+"nodeTypes": [
+          {
+            ...
+            "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+            "isPrimary": true,
+            "vmInstanceCount": "[parameters('nt0InstanceCount')]",
+            "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]"
+          }
+        ],
+```
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 

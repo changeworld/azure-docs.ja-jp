@@ -1,22 +1,23 @@
 ---
-title: "Azure Active Directory のアプリケーションの管理と開発のトラブルシューティングを行う"
-description: "Azure Active Directory アプリケーションの管理と開発に関連する最も一般的な問題を解決する"
+title: Azure Active Directory のアプリケーションの管理と開発のトラブルシューティングを行う
+description: Azure Active Directory アプリケーションの管理と開発に関連する最も一般的な問題を解決する
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 5869120350ccfeacabaa79037ae57c1ee0fd8e5d
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: ccba2f485d8879cae485b0097a2e3213ff15533d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-azure-active-directory-application-management-and-development"></a>Azure Active Directory のアプリケーションの管理と開発のトラブルシューティングを行う
 この記事は、**エンタープライズ アプリケーション**の管理と、**アプリケーション レジストリ**で新しいアプリケーションの開発に関する最も一般的な問題のいくつかをトラブルシューティングするためのドキュメントの検索に役立ちます。

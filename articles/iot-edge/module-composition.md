@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 58b4c6769f6eb441e9ccaf041f3d56f4af9a0831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する - プレビュー
 
@@ -168,7 +168,7 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
 
 デプロイ マニフェストでモジュール ツインの必要なプロパティを指定しない場合、IoT Hub はモジュール ツインをどのような方法でも変更しないため、ユーザーは必要なプロパティをプログラムで設定できます。
 
-デバイス ツインを変更できるのと同じメカニズムを使用してモジュール ツインを変更できます。 詳しくは、[デバイス ツインの開発者ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)に関するページをご覧ください。   
+デバイス ツインを変更できるのと同じメカニズムを使用してモジュール ツインを変更できます。 詳しくは、[デバイス ツインの開発者ガイド](../iot-hub/iot-hub-devguide-device-twins.md)に関するページをご覧ください。   
 
 ## <a name="deployment-manifest-example"></a>デプロイ マニフェストの例
 

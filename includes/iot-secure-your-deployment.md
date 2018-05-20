@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 7d7cd8a197a89781a75f47bb4b4e2ec8fe7c3cb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/07/2018
+---
 # <a name="secure-your-iot-deployment"></a>IoT デプロイのセキュリティ保護
 
 この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。 各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。 また、さまざまな方法の比較や選択肢についても説明しています。
@@ -12,7 +28,7 @@ Azure IoT デプロイの保護は、次の 3 つのセキュリティ領域に�
 
 ## <a name="secure-device-provisioning-and-authentication"></a>安全なデバイス プロビジョニングと認証
 
-Azure IoT Suite では、次の 2 つの方法で IoT デバイスをセキュリティ保護します。
+IoT ソリューション アクセラレータでは、次の 2 つの方法で IoT デバイスをセキュリティで保護します:
 
 * デバイスで IoT Hub と通信するために使用される各デバイスの一意の id キー (セキュリティ トークン) の提供。
 * IoT Hub にデバイスを認証させる手段として、デバイスでの [X.509 証明書][lnk-x509]と秘密キーの使用。 この認証メソッドでは、デバイスの秘密キーがデバイス以外では分からなくなるため、常に高レベルのセキュリティ保護を提供できます。
@@ -33,7 +49,7 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 [IoT Hub は、MQTT、AMQP、HTTP などのプロトコルをサポートします][lnk-protocols]。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
 
 * AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、`{policyName}@sas.root.{iothubName}`。デバイス スコープのトークンの場合、`{deviceId}`)。
-* MQTT: CONNECT パケットは、`{ClientId}`、`{IoThubhostname}/{deviceId}`[ユーザー名] **フィールドの** 、および **[パスワード]** フィールドの SAS トークンとして `{deviceId}` を使用します。
+* MQTT: CONNECT パケットは、`{ClientId}`、`{IoThubhostname}/{deviceId}`[ユーザー名]**フィールドの**、および **[パスワード]** フィールドの SAS トークンとして `{deviceId}` を使用します。
 * HTTP: 有効なトークンは、承認要求ヘッダーにあります。
 
 IoT Hub ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。 ただし、IoT ソリューションで既に[カスタム デバイス ID レジストリや認証スキーム][lnk-custom-auth]にかなり投資している場合、トークン サービスを作成すると、この既存のインフラストラクチャに IoT Hub を統合できます。
@@ -89,7 +105,7 @@ Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytic
 [lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-protocols]: ../articles/iot-hub/iot-hub-devguide-security.md
-[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: http://www.itu.int/rec/T-REC-X.509-201210-I/en
 [lnk-use-x509]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-tls12]: https://tools.ietf.org/html/rfc5246

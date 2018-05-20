@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 6846791b50140f849217fe7071cfde58159e0bf8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66598bda7ca1fcf5c6e05ab47232236b740177a6
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Azure Stack での PowerShell を使用した準備と実行
 

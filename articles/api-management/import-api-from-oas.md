@@ -3,7 +3,7 @@ title: Azure Portal を使用して OpenAPI 仕様をインポートする | Mic
 description: API Management で OpenAPI 仕様をインポートする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 0ea24b58deb7b33755a44737a66938883f74a13c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f5132215b1fda93c62c1fbea46c3266fcc44ec46
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI 仕様のインポート
 
 この記事では、http://conferenceapi.azurewebsites.net?format=json に存在する "OpenAPI の仕様" のバックエンド API をインポートする方法を示します。 このバックエンド API は Microsoft によって提供され、Azure でホストされています。 また、APIM API をテストする方法についても説明します。
 
 > [!IMPORTANT]
-> OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)を参照してください。
+> OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)を参照してください。
 
 この記事では、次のことについて説明します:
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/03/2018
     |**[URL スキーム]**|*HTTPS*|API へのアクセスに使用できるプロトコルを決定します。 |
     |**成果物**|*無制限*| API を成果物に関連付けることで API を公開します。 必要に応じてこの新しい API を成果物に追加するには、成果物名を入力します。 この手順を複数回繰り返して、API を複数の成果物に追加できます。<br/>製品には、1 つまたは複数の API が関連付けられています。 複数の API を含めて、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。<br/> 各 API Management インスタンスは、**スターター**および**無制限**という 2 つのサンプル成果物を既定で備えています。 |
 
-4. **[作成]**を選択します。
+4. **[作成]** を選択します。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 

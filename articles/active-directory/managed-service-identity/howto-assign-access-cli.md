@@ -1,23 +1,24 @@
 ---
-title: "Azure CLI を使用して、Azure リソースに MSI アクセスを割り当てる方法"
-description: "Azure CLI を使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。"
+title: Azure CLI を使用して、Azure リソースに MSI アクセスを割り当てる方法
+description: Azure CLI を使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: ca228a99eec1d376e456f5730aaaf8c569620f43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 947e0140c7943954be5eb285bb7ec514b74e9022
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用してリソースに管理対象サービス ID (MSI) アクセスを割り当てる
 

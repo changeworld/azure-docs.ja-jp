@@ -3,7 +3,7 @@ title: Azure Payment Processing Blueprint - ファイアウォールの要件
 description: PCI DSS 要件 1
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: b1935d88-acae-42f9-bc25-bb0766f876ab
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 6f82c828b7cd878cc9ed9f42a4bf63d0d7aedb16
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のファイアウォール要件 
 ## <a name="pci-dss-requirement-1"></a>PCI DSS 要件 1

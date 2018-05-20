@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 53d34f373dc31befe75072733976b2e4126ff2b0
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
 Microsoft Azure Active Directory (Azure AD) は、ディレクトリ サービス、ID ガバナンス、アプリケーション アクセス管理を提供する、ID およびアクセス管理クラウド ソリューションです。 Azure AD により、[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)にある事前に統合された数千個の商用アプリやカスタム アプリへの[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) を簡単に実現できます。 Office 365、Salesforce.com、Box、ServiceNow、Workday など、これらのアプリの多くは既に使用されていると考えられます。
@@ -113,10 +113,10 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 * [任意の場所からのパスワードの管理](active-directory-passwords-update-your-own-password.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
-* [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
+* [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md)
 * [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 * [Microsoft Azure Active Directory ライセンスとは](active-directory-licensing-whatis-azure-portal.md)
-* [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
+* [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](manage-apps/cloud-app-discovery.md)
 
 ## <a name="next-steps"></a>次の手順
 

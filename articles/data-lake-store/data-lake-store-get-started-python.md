@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f060dfd061af07f220576f17110afccd01fdae5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 89d4110679d7a02d1468a9dab6816fb9e6b02181
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Python を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Azure Data Lake Store 用 Python SDK を使用して、Data Lake Store アカウ
 Python を使用して Data Lake Store を操作するには、3 つのモジュールをインストールする必要があります。
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
-* `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Store アカウント管理操作が含まれています。 このモジュールの詳細については、[Azure Data Lake Store 管理モジュール リファレンス](http://azure-sdk-for-python.readthedocs.io/sample_azure-mgmt-datalake-store.html)を参照してください。
+* `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Store アカウント管理操作が含まれています。 このモジュールの詳細については、[Azure Data Lake Store 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)を参照してください。
 * `azure-datalake-store` モジュール。これには、Azure Data Lake Store ファイルシステム操作が含まれています。 このモジュールの詳細については、[Azure Data Lake Store ファイルシステム モジュール リファレンス](http://azure-datalake-store.readthedocs.io/en/latest/)を参照してください。
 
 モジュールをインストールするには、次のコマンドを使用します。

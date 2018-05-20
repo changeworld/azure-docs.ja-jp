@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/06/2018
-ms.author: rli
+ms.date: 04/20/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
 コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 
@@ -50,7 +50,7 @@ Azure CDN を使用して Web サイト資産を配信すると、次のよう�
 6. ファイルの TTL が期限切れになっていない場合、POP エッジ サーバーはキャッシュから直接ファイルを返します。 そのプロセスの結果、応答時間が短縮されます。
 
 ## <a name="requirements"></a>必要条件
-Azure CDN を使用するには、少なくとも 1 つの Azure サブスクリプションを所有する必要があります。 さらに、少なくとも 1 つの CDN プロファイルを作成する必要があります。これは、CDN エンドポイントをまとめたものです。 各 CDN エンドポイントは、コンテンツ配信動作およびアクセスの特定の構成を表します。 インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する場合、複数のプロファイルを使用できます。 [Azure CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)は CDN プロファイル レベルで適用されるので、価格レベルを組み合わせたい場合は、複数の CDN プロファイルを作成する必要があります。
+Azure CDN を使用するには、少なくとも 1 つの Azure サブスクリプションを所有する必要があります。 さらに、少なくとも 1 つの CDN プロファイルを作成する必要があります。これは、CDN エンドポイントをまとめたものです。 各 CDN エンドポイントは、コンテンツ配信動作およびアクセスの特定の構成を表します。 インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する場合、複数のプロファイルを使用できます。 [Azure CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)は CDN プロファイル レベルで適用されるので、価格レベルを組み合わせたい場合は、複数の CDN プロファイルを作成する必要があります。 Azure CDN の課金の体系については、「[Azure CDN での課金について](cdn-billing.md)」を参照してください。
 
 ### <a name="limitations"></a>制限事項
 各 Azure サブスクリプションには、次のリソースに関して既定の制限が設けられています。
@@ -77,4 +77,5 @@ Azure CDN が提供する主要な機能は、次のとおりです。
 - [Microsoft Azure Portal](https://portal.azure.com) または [PowerShell](cdn-manage-powershell.md) を使用して、CDN エンドポイントを管理します。
 - [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
 - Azure CDN の実際の動作を確認するには、[Azure CDN の動画](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest)をご覧ください。
+- Azure CDN の最新の機能については、[Azure CDN のブログ](https://azure.microsoft.com/blog/tag/azure-cdn/)を参照してください。
 

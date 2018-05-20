@@ -1,29 +1,29 @@
-﻿---
-title: "Azure ID 管理の基礎"
-description: "ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。"
-keywords: 
+---
+title: Azure ID 管理の基礎
+description: ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewr: jsnow
 ms.author: jeffgilb
 ms.date: 07/05/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: a7eb669aac109ae8cde6d75129004d322c270651
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure ID 管理の基礎
 
 企業のデジタル リソースは、企業ネットワーク外部のクラウドやデバイスに置かれるものがますます増え、クラウド ベースの優れた ID とアクセス管理ソリューションが不可欠になっています。 ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。
 
-Microsoft は、10 年以上にわたってクラウド ベースの ID を保護してきました。そして現在、[Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions) によって、同じ保護システムをお客様にご利用いただけるようになりました。 Azure AD を使用すると、エンタープライズ管理者はこれまでにない優れたセキュリティとガバナンスで、ユーザーと管理者の説明責任を簡単に確保できます。
+Microsoft は、10 年以上にわたってクラウド ベースの ID を保護してきました。そして現在、[Azure Active Directory (AD)](active-directory-whatis.md) によって、同じ保護システムをお客様にご利用いただけるようになりました。 Azure AD を使用すると、エンタープライズ管理者はこれまでにない優れたセキュリティとガバナンスで、ユーザーと管理者の説明責任を簡単に確保できます。
 
 Azure AD Premium は、高度な保護機能を備えた、クラウド ベースの ID およびアクセス管理ソリューションです。これにより、すべてのアプリに対する 1 つの安全な ID、([Microsoft インテリジェンス セキュリティ グラフ](https://www.microsoft.com/en-us/security/intelligence)によって強化された) ID 保護、Privileged Identity Management が実現します。 Azure AD Premium は、よくある監視およびレポート ツールではなく、ユーザーの ID をリアルタイムで保護したり、組織のデータを保護するためにリスク ベースで適応性の高いアクセス ポリシーを作成できるようにしたりできます。
 
@@ -50,7 +50,7 @@ Microsoft は、どこでも使用できる ID だけでなく、組織の IT �
 Azure AD は[オンプレミスの Active Directory をクラウドに拡張](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)するため、ユーザーは、ドメイン参加デバイスと会社のリソースにも、業務で使用する必要があるすべての Web アプリケーションと SaaS アプリケーションにもプライマリ組織アカウントを使用できます。 複数のユーザー名とパスワードのセットを覚える必要がなくなるだけでなく、組織のグループ メンバーシップや従業員としての地位に基づいて、ユーザーのアプリケーション アクセスも自動的にプロビジョニング (またはプロビジョニング解除) されるようにすることができます。 また、ギャラリー アプリ、または [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)で開発および公開した独自のオンプレミス アプリについてそのアクセスを制御できます。
 
 ## <a name="manage-and-control-access-to-corporate-resources"></a>会社のリソースへのアクセスを管理および制御する
-Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、[多要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)や[条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)などの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。
+Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、[他要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)や[条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)などの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。
 
 Azure AD Premium の条件付きアクセス ポリシーを使用すると、エンタープライズ管理者は、Azure AD に接続されたどんなアプリケーション (SaaS アプリ、クラウドで実行されているカスタム アプリ、またはオンプレミス Web アプリケーション) に対しても、ポリシー ベースのアクセス規則を作成できます。 Azure AD はこれらのポリシーをリアルタイムで評価し、ユーザーがアプリケーションにアクセスしようとするたびにポリシーを適用します。 Azure ID 保護ポリシーを使用すると、疑わしいアクティビティが検出された場合に自動的に対処できます。 たとえば、リスクの高いユーザーへのアクセスのブロック、多要素認証の適用、資格情報が侵害されたと思われる場合のユーザー パスワードのリセットなどです。
 

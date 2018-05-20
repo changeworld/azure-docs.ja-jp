@@ -12,13 +12,13 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/09/2018
+ms.date: 05/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 6c462f9fe5e152c82be1a2b8643ee35d260a90f6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c657cda7dce0611cb357a0a2063a154f2f6f25f2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-kafka-on-hdinsight-from-an-azure-function-app"></a>Azure 関数アプリから HDInsight 上の Kafka を使用する
 

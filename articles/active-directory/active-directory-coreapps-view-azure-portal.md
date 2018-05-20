@@ -3,24 +3,24 @@ title: Azure Active Directory で管理できるすべてのエンタープラ�
 description: Azure Active Directory で管理アクセス許可を持つエンタープライズ アプリケーションの一覧を表示する方法
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 editor: ''
-ms.assetid: c4fb6f94-34f8-4323-8bd7-a3ee44901f7d
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 64946b3bbf39cf8153fcc8c7aa548ed6055fb47f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: dd2d941cb4066bc4f7d1cfebe17d701feb105269
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Azure Active Directory で管理できるすべてのエンタープライズ アプリケーションを表示する
 Azure Active Directory (Azure AD) でエンタープライズ アプリケーションを管理できます。 管理できるアプリの表示、アプリケーションへのユーザーまたはグループの割り当て、アプリケーションのプロパティ (アプリケーションの名前やロゴなど) の管理、ユーザーがサインインできないようにするためのアプリケーションの無効化などを行うことができます。
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) でエンタープライズ アプリケーシ
 ## <a name="how-do-i-view-all-my-apps"></a>自分のすべてのアプリケーションを表示する方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-3. **[Azure Active Directory -** directoryname***]*** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、**[エンタープライズ アプリケーション]** を選択します。
+3. **[Azure Active Directory -** directoryname ***]*** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、**[エンタープライズ アプリケーション]** を選択します。
 
     ![エンタープライズ アプリケーションを開く](./media/active-directory-coreapps-view-azure-portal/open-enterprise-apps.png)
 4. **[エンタープライズ アプリケーション]** ウィンドウで、**[すべてのアプリケーション]** を選択します。 このウィンドウで、管理するアプリケーションの選択、表示する列の変更、目的のアプリケーションを見つけるための一覧のフィルター処理 (無効になっているアプリケーションだけを表示するなど) を行うことができます。

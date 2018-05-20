@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c17a406a0fd6f1172599ac0379c6afc139403148
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのユーザーの管理
 
@@ -68,20 +68,18 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 
 コンソーシアムに属するユーザーや組織の管理は、Blockchain Workbench アプリケーションを使って行います。 ユーザーの追加や削除は、アプリケーションやロールに対して行うことができます。
 
-ブラウザーで [Blockchain Workbench を開き](blockchain-workbench-deploy.md#blockchain-workbench-web-url)、管理者としてサインインします。
+1. ブラウザーで [Blockchain Workbench を開き](blockchain-workbench-deploy.md#blockchain-workbench-web-url)、管理者としてサインインします。
 
-![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
+    ![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
 
-### <a name="managing-members-in-applications"></a>アプリケーションでのメンバー管理
+    メンバーは各アプリケーションに追加されます。 メンバーは 1 つ以上のアプリケーション ロールを持ち、コントラクトを開始したり、アクションを実行することができます。
 
-メンバーは各アプリケーションに追加されます。 メンバーは 1 つ以上のアプリケーション ロールを持ち、コントラクトを開始したり、アクションを実行することができます。
+2. アプリケーションのメンバーを管理するには、**[アプリケーション]** ウィンドウでアプリケーション タイルを選択します。
 
-アプリケーションにメンバーを追加するには、**[アプリケーション]** ウィンドウでアプリケーション タイルを選択します。
+    選択したアプリケーションに関連付けられているメンバーの数は、メンバー タイルに反映されます。
 
-![アプリケーションの選択](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
+    ![アプリケーションの選択](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
 
-> [!NOTE]
-> 選択したアプリケーションに関連付けられているメンバーの数は、メンバー タイルに反映されます。
 
 #### <a name="add-member-to-application"></a>アプリケーションにメンバーを追加する
 
@@ -116,4 +114,7 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する](blockchain-workbench-create-app.md)
+このハウツー記事では、Azure Blockchain ワークベンチのユーザーを管理する方法について説明しました。 ブロックチェーン アプリケーションの作成方法については、次のハウツー記事に進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する](blockchain-workbench-create-app.md)

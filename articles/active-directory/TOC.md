@@ -185,27 +185,27 @@
 ##### [カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md)
 #### [シングル サインオン](manage-apps/application-proxy-single-sign-on.md)
 ##### [KCD を使用した SSO](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-##### [ヘッダーを使用した SSO](application-proxy-ping-access.md)
-##### [パスワード保管を使用した SSO](application-proxy-sso-azure-portal.md)
+##### [ヘッダーを使用した SSO](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md)
+##### [パスワード保管を使用した SSO](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 #### 概念
-##### [コネクタ](application-proxy-understand-connectors.md)
-##### [セキュリティ](application-proxy-security-considerations.md)
-##### [ネットワーク](application-proxy-network-topology-considerations.md)
+##### [コネクタ](manage-apps/application-proxy-connectors.md)
+##### [セキュリティ](manage-apps/application-proxy-security.md)
+##### [ネットワーク](manage-apps/application-proxy-network-topology.md)
 
 
-##### [TMG または UAG からのアップグレード](application-proxy-transition-from-uag-tmg.md)
+##### [TMG または UAG からのアップグレード](manage-apps/application-proxy-migration.md)
 
 #### 詳細な構成
-##### [異なるネットワークに発行する](active-directory-application-proxy-connectors-azure-portal.md)
-##### [プロキシ サーバー](application-proxy-working-with-proxy-servers.md)
-##### [要求に対応するアプリケーション](active-directory-application-proxy-claims-aware-apps.md)
-##### [ネイティブ クライアント アプリ](active-directory-application-proxy-native-client.md)
-##### [サイレント インストール](active-directory-application-proxy-silent-installation.md)
-##### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)
-##### [インライン リンクの変換](application-proxy-link-translation.md)
+##### [異なるネットワークに発行する](manage-apps/application-proxy-connector-groups.md)
+##### [プロキシ サーバー](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+##### [要求に対応するアプリケーション](manage-apps/application-proxy-configure-for-claims-aware-applications.md)
+##### [ネイティブ クライアント アプリ](manage-apps/application-proxy-configure-native-client-application.md)
+##### [サイレント インストール](manage-apps/application-proxy-register-connector-powershell.md)
+##### [カスタム ホーム ページ](manage-apps/application-proxy-configure-custom-home-page.md)
+##### [インライン リンクの変換](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
 #### 発行に関するチュートリアル
-##### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
-##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [リモート デスクトップ](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
+##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 
@@ -313,7 +313,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [概要](active-directory-certificate-based-authentication-get-started.md)
+#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

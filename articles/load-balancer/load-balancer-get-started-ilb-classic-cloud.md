@@ -1,10 +1,10 @@
 ---
-title: "Azure Cloud Services 用の内部ロード バランサーの作成 | Microsoft Docs"
-description: "クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
+title: Azure Cloud Services 用の内部ロード バランサーの作成 | Microsoft Docs
+description: クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
+author: genlin
+manager: cshepard
 tags: azure-service-management
 ms.assetid: 57966056-0f46-4f95-a295-483ca1ad135d
 ms.service: load-balancer
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: 6616c26ede13919b94a098dc38bdd6e2f0fc0b5b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 96a7c5b21d78dcc84a32fbfc8835542d64a5d7af
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>クラウド サービスの内部ロード バランサー (クラシック) の作成の開始
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/18/2017
 > * [クラウド サービス](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 ## <a name="configure-internal-load-balancer-for-cloud-services"></a>クラウド サービスの内部ロード バランサーを構成する
 
@@ -91,7 +91,7 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 ネットワーク トラフィックの負荷は testLB ロード バランサーを使用して分散されます。受信要求にはポート 80 が使用されます。worker ロール インスタンスへの送信もポート 80 で行われます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 

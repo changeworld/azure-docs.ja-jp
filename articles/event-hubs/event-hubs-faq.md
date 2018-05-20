@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs の FAQ | Microsoft Docs"
-description: "Azure Event Hubs のよく寄せられる質問 (FAQ)"
+title: Azure Event Hubs の FAQ | Microsoft Docs
+description: Azure Event Hubs のよく寄せられる質問 (FAQ)
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6bdcbbe37613d5384017409f3be2772085e276ae
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -112,7 +112,7 @@ Event Hubs のすべてのクォータの一覧については、[クォータ](
 Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診断ログ](event-hubs-diagnostic-logs.md)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
 
 ### <a name="support-and-sla"></a>サポートと SLA
-Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。
+Event Hubs のテクニカル サポートは、 [コミュニティ フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)を通して利用できます。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
 

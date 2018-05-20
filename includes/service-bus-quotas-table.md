@@ -5,22 +5,22 @@ services: service-bus-messaging
 author: sethmanheim
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/12/2018
+ms.date: 05/10/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 74732008b336dc1b95ec96e8550d218105973ca4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3be379c2513fa20c1a84b547333a4ef2139bb45d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 次の表は、Service Bus メッセージングに固有のクォータ情報の一覧です。 Service Bus の料金やその他のクォータについては、「 [Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/) 」の概要を参照してください。
 
-| クォータ名 | Scope (スコープ) | メモ | 値 |
+| クォータ名 | スコープ | メモ | 値 |
 | --- | --- | --- | --- | --- |
 | Azure サブスクリプションごとの Basic/Standard 名前空間の最大数 |名前空間 |追加の Basic/Standard 名前空間に関する後続の要求はポータルで拒否されます。 |100|
 | Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 |10 |
-| キュー/トピック サイズ |エンティティ |キューおよびトピック作成時に定義 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元のコードが例外を受け取ります。 |1、2、3、4、または 5 GB。<br /><br />[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md) が有効な場合、キュー/トピックの最大サイズは 80 GB です。 |
+| キュー/トピック サイズ |エンティティ |キューおよびトピック作成時に定義 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元のコードが例外を受け取ります。 |1、2、3、4、または 5 GB。<br /><br />Premium SKU では、[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md)が有効な Standard と同じように、最大キュー/トピック サイズは 80 GB です。 |
 | 名前空間の同時接続数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |NetMessaging: 1,000<br /><br />AMQP: 5,000 |
 | キュー/トピック/サブスクリプション エンティティの同時受信要求数 |エンティティ |以後の受信要求が拒否され、呼び出し元のコードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |5,000 |
 | サービスの名前空間あたりのトピック/キュー数 |名前空間 |以後、サービス名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure Portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |10,000<br /><br />サービス名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。<br/>この制約は、エンティティがすべてパーティション分割される Premium には適用されません。 |

@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: 0a738d7e26384523e9da9c8c79e12729330fe6f7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bbb4da02cbe4b0685c715c4cd6bd7b15c6b5cce0
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>YARN で可用性の高い Spark Streaming ジョブを作成する
 

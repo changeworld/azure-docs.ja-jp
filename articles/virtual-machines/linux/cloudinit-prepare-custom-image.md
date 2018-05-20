@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>cloud-init で使用するための既存の Linux Azure VM イメージの準備
 この記事では、cloud-init を使用するように既存の Azure 仮想マシンを再デプロイおよび準備する方法を示します。 生成されるイメージを使用して、新しい仮想マシンまたは仮想マシン スケール セットをデプロイできます。そのどちらも、デプロイ時に cloud-init によってさらにカスタマイズできます。  これらの cloud-init スクリプトは、リソースが Azure によってプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
@@ -136,7 +136,7 @@ sudo waagent -deprovision+user -force
 sudo waagent -deprovision+user -force
 ```
 
-Azure Linux エージェントのプロビジョニング解除コマンドについて詳しくは、[Azure Linux エージェント](agent-user-guide.md)に関する記事をご覧ください。
+Azure Linux エージェントのプロビジョニング解除コマンドについて詳しくは、[Azure Linux エージェント](../extensions/agent-linux.md)に関する記事をご覧ください。
 
 SSH セッションを終了し、bash シェルから次の AzureCLI コマンドを実行して、Azure VM イメージの割り当て解除、汎用化、新規作成を行います。  `myResourceGroup` と `sourceVmName` は、sourceVM を反映した適切な情報で置換します。
 

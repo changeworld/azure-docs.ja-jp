@@ -3,7 +3,7 @@ title: Azure Payment Processing Blueprint - テスト要件
 description: PCI DSS 要件 11
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 9753853b-ad80-4be4-9416-2583b8fd2029
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 21cb854ba35adcf7576874e3c6c7149fbd33d998
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のテスト要件 
 ## <a name="pci-dss-requirement-11"></a>PCI DSS 要件 11

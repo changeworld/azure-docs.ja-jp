@@ -3,23 +3,23 @@ title: Azure AD アプリケーション プロキシ コネクタを理解す�
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
-ms.author: billmath
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c7f27d3fd8a5785017d580df02007abaac503c39
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/05/2018
 
 アプリケーション プロキシを正常にデプロイするには、少なくとも 1 つのコネクタが必要ですが、回復性向上のために 2 つ以上のコネクタを使うことをお勧めします。 Windows Server 2012 R2 または 2016 コンピューターにコネクタをインストールします。 コネクタは、アプリケーション プロキシ サービスおよび公開するオンプレミス アプリケーションと通信できる必要があります。 
 
-コネクタ サーバーのネットワーク要件の詳細については、[アプリケーション プロキシの概要とコネクタのインストール](active-directory-application-proxy-enable.md)に関するページをご覧ください。
+コネクタ サーバーのネットワーク要件の詳細については、[アプリケーション プロキシの概要とコネクタのインストール](manage-apps/application-proxy-enable.md)に関するページをご覧ください。
 
 ## <a name="maintenance"></a>メンテナンス 
 コネクタとサービスは、高可用性のすべてのタスクに対処します。 コネクタは動的に追加したり削除できます。 新しい要求は、受信するたびにその時点で使用できるコネクタのいずれかにルーティングされます。 コネクタは、一時的に使用できない場合はトラフィックに応答しません。
@@ -50,7 +50,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="automatic-updates"></a>自動更新
 
-Azure AD では、デプロイしたすべてのコネクタの自動更新を提供します。 アプリケーション プロキシ コネクタ アップデーター サービスを実行している限り、コネクタは自動更新されます。 サーバーにコネクタ アップデーター サービスが見つからない場合は、[コネクタを再インストール](active-directory-application-proxy-enable.md)して更新プログラムを取得する必要があります。 
+Azure AD では、デプロイしたすべてのコネクタの自動更新を提供します。 アプリケーション プロキシ コネクタ アップデーター サービスを実行している限り、コネクタは自動更新されます。 サーバーにコネクタ アップデーター サービスが見つからない場合は、[コネクタを再インストール](manage-apps/application-proxy-enable.md)して更新プログラムを取得する必要があります。 
 
 お使いのコネクタの番まで自動更新を待てない場合は、手動アップグレードを実行できます。 コネクタが配置されたサーバーの[コネクタ ダウンロード ページ](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)に移動し、**[ダウンロード]** を選択します。 このプロセスによって、ローカル コネクタのアップグレードが開始されます。 
 
@@ -123,7 +123,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 通常、コネクタのデプロイはとても簡単で、特別な構成は必要ありません。 ただし、考慮すべき特別な条件がいくつかあります。
 
-* 送信トラフィックを制限している組織では、[必要なポートを開く](active-directory-application-proxy-enable.md#open-your-ports)必要があります。
+* 送信トラフィックを制限している組織では、[必要なポートを開く](manage-apps/application-proxy-enable.md#open-your-ports)必要があります。
 * FIPS に準拠しているコンピューターは、コネクタ プロセスが証明書を生成して保存することを許可するよう、構成を変更する必要のある場合があります。
 * ネットワーク要求を発行するプロセスに基づいて環境をロック ダウンしている組織では、コネクタ サービスとコネクタ アップデーター サービスの両方が、すべての必要なポートと IP アドレスにアクセスできることを確認する必要があります。
 * 場合によっては、送信/転送プロキシにより証明書の双方向認証が中断されて、通信に失敗することがあります。

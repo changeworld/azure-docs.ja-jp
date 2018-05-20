@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management ポリシーのサンプル | Microsoft Docs"
-description: "Azure API Management で使用できるポリシーについて説明します。"
+title: Azure API Management ポリシーのサンプル | Microsoft Docs
+description: Azure API Management で使用できるポリシーについて説明します。
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e951eb47290a2d1b6f892f1ccf923f6ce0c1899c
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 3f1d9a96888732e6221722102a687e09f37333c0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="api-management-policy-samples"></a>API Management ポリシーのサンプル
 

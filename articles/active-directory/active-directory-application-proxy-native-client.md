@@ -3,23 +3,23 @@ title: ネイティブ クライアント アプリの発行 - Azure AD | Micros
 description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 823939e76bcf982d37b58595795dca84c1830e19
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 79ee3aca783d7c29959c2730696a313bf821b3bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 
@@ -34,7 +34,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。 
 
 ## <a name="step-1-publish-your-application"></a>手順 1: アプリケーションの発行
-他のアプリケーションと同様にプロキシ アプリケーションを発行し、アプリケーションにアクセスするユーザーを割り当てます。 詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)」を参照してください。
+他のアプリケーションと同様にプロキシ アプリケーションを発行し、アプリケーションにアクセスするユーザーを割り当てます。 詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。
 
 ## <a name="step-2-configure-your-application"></a>手順 2: アプリケーションの構成
 ネイティブ アプリケーションを次のように構成します。
@@ -47,7 +47,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
    ![新しいアプリ登録の作成](./media/active-directory-application-proxy-native-client/create.png)
 5. **[作成]** を選択します。
 
-新しいアプリ登録の作成について詳しくは、「[Azure Active Directory とアプリケーションの統合](.//develop/active-directory-integrating-applications.md)」をご覧ください。
+新しいアプリ登録の作成について詳しくは、「[Azure Active Directory とアプリケーションの統合](./develop/active-directory-integrating-applications.md)」をご覧ください。
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>手順 3: 他のアプリケーションに対するアクセスの許可
@@ -97,4 +97,4 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
 
-[アプリケーション プロキシのシングル サインオン](application-proxy-sso-overview.md)の設定に関する記事を参照します。
+[アプリケーション プロキシのシングル サインオン](manage-apps/application-proxy-single-sign-on.md)の設定に関する記事を参照します。

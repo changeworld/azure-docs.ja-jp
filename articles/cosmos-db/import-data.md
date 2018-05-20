@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a14dbaffe6bfa68e7606d117823195144250c230
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
 
@@ -43,6 +43,8 @@ Azure Cosmos DB で使用する API を教えてください。
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) 以降
+
+* スループットを上げる: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
 
 ## <a id="Overviewl"></a>概要
 データ移行ツールはオープン ソース ソリューションで、次のような各種ソースからデータを Azure Cosmos DB にインポートします。

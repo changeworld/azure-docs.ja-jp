@@ -1,22 +1,22 @@
 ---
-title: "Azure API Management インスタンスの作成 | Microsoft Docs"
-description: "新しい Azure API Management インスタンスを作成するには、このチュートリアルの手順に従います。"
+title: Azure API Management インスタンスの作成 | Microsoft Docs
+description: 新しい Azure API Management インスタンスを作成するには、このチュートリアルの手順に従います。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 84758fbf8f19728370280d5d94acb478ff739019
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7fb4182c0b5149a9006a30ad34782ad968e16758
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
 
@@ -51,7 +51,7 @@ Azure Portal (http://portal.azure.com) にログインします。
     |**組織名**|組織の名前|この名前は、開発者ポータルのタイトルや通知用電子メールの送信者など、さまざまな場所に使用されます。|
     |**管理者のメール アドレス**|*admin@org.com*|**API Management** からのすべての通知が送信されるメール アドレスを設定します。|
     |**[価格レベル]**|*開発者*|サービスを評価するために **[開発者]** レベルを設定します。 このレベルは運用目的では使用できません。 API Management レベルのスケーリングの詳細については、[アップグレードとスケーリング](upgrade-and-scale.md)に関するをページをご覧ください。|
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 
     > [!TIP]
     > API Management サービスの作成には、通常 20 分から 30 分かかります。 **[ダッシュボードにピン留めする]** を選択すると、新しく作成したサービスの検索が簡単になります。

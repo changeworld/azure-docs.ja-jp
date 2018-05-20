@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -114,6 +114,7 @@ ms.lasthandoff: 05/07/2018
 * Application Insights
 * Automation
 * Azure Cosmos DB
+* Azure Relay
 * Batch
 * Bing Maps
 * CDN
@@ -130,6 +131,7 @@ ms.lasthandoff: 05/07/2018
 * IoT Hub
 * Key Vault
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
+* Log Analytics
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
 * Media Services
@@ -137,7 +139,7 @@ ms.lasthandoff: 05/07/2018
 * Notification Hubs
 * Operational Insights
 * Operations Management
-* Power BI
+* Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Redis Cache
 * Scheduler
@@ -148,7 +150,7 @@ ms.lasthandoff: 05/07/2018
 * Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
-* SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 これには、Azure SQL Database と Azure SQL Data Warehouse データベースが含まれます。 
+* SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。 
 * Traffic Manager
 * Virtual Machines - 管理ディスクを使用する VM を移動することはできません。 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
@@ -164,6 +166,8 @@ ms.lasthandoff: 05/07/2018
 * AD Hybrid Health Service
 * Application Gateway
 * Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Migrate
 * BizTalk Services
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
 * Kubernetes Service
@@ -189,6 +193,11 @@ ms.lasthandoff: 05/07/2018
 * 管理ディスクから作成されたスナップショット
 * 管理ディスクを使用する仮想マシンの可用性セット
 
+マネージド ディスクは移動できませんが、コピーを作成した後、その既存のマネージド ディスクから新しい仮想マシンを作成できます。 詳細については、次を参照してください。
+
+* [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) または [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) で、マネージド ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
+* [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) or [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md)で既存のマネージド OS ディスクを使用して仮想マシンを作成する
+
 プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプション間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
@@ -200,6 +209,8 @@ ms.lasthandoff: 05/07/2018
 ピアリングされた仮想ネットワークを移動するには、最初に仮想ネットワークのピアリングを無効にする必要があります。 無効にすると、仮想ネットワークを移動できます。 移動後に、仮想ネットワークのピアリングを再度有効にします。
 
 仮想ネットワークにリソース ナビゲーション リンクのあるサブネットが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 たとえば、Redis Cache リソースがサブネットにデプロイされている場合、そのサブネットにはリソース ナビゲーション リンクがあります。
+
+仮想ネットワークにカスタム DNS サーバーが含まれる場合、仮想ネットワークを別のサブスクリプションに移動することはできません。 仮想ネットワークを移動するには、それを既定の (Azure が提供する) DNS サーバーに設定します。 移動後に、カスタム DNS サーバーを再構成します。
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 

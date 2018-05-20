@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2018
+ms.date: 5/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b69dce94e2e0bfaa413af9a95c5ef858f766ff1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する 
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを変更、削除、管理して、[Azure Policy](../azure-policy/azure-policy-introduction.md) と [Azure ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) で使用できる階層を作成できます。 管理グループについて詳しくは、「[Organize your resources with Azure management groups](management-groups-overview.md)」(Azure 管理グループでリソースを整理する) をご覧ください。
@@ -103,9 +103,9 @@ C:\> az account management-group delete --group-name Contoso
 ### <a name="view-in-the-portal"></a>ポータルでの表示
 1. [Azure Portal](https://portal.azure.com) にログインします
 2. **[すべてのサービス]** > **[管理グループ]** を選択します 
-3. アクセスできるすべてのグループが表示される [Management Group hierarchy]\(管理グループ階層\) ページが読み込まれます。 
+3. 管理グループの階層ページに、アクセスできるすべての管理グループとサブスクリプションが読み込まれ、それらを調べることができます。 グループ名を選択すると、階層の下位レベルに移動します。 ナビゲーションは、ファイル エクスプローラーと同じように機能します。 
     ![メイン](media/management-groups/main.png)
-4. 個々の管理グループを選択して詳細を表示します  
+4. 管理グループの詳細を表示するには、管理グループのタイトルの横にある **[(詳細])** リンクを選択します。 このリンクを使用できない場合は、その管理グループを表示するアクセス許可がありません。  
 
 ### <a name="view-in-powershell"></a>PowerShell での表示
 すべてのグループを取得するには、Get-AzureRmManagementGroup コマンドを使用します。  

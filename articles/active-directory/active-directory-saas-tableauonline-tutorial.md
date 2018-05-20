@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Tableau Online の統合 | Microsoft Docs"
-description: "Azure Active Directory と Tableau Online の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Tableau Online の統合 | Microsoft Docs'
+description: Azure Active Directory と Tableau Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae9dbde509726065da7eaee2c7aec491389f45
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e7de7946769eb2aeeac1c8b21448efa142728bb
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル: Azure Active Directory と Tableau Online の統合
 
@@ -63,11 +63,11 @@ Azure AD への Tableau Online の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「 **Tableau Online**」と入力します。
 
@@ -90,7 +90,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Tableau Online のテスト ユーザーの作成](#creating-a-tableau-online-test-user)** - Tableau Online で Britta Simon に対応するユーザーを作成し、Azure AD のBritta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,57 +100,57 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
 1. Azure Portal の **Tableau Online** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
 3. **[Tableau Online Domain and URLs (Tableau Online のドメインと URL)]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com`」を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com`」を入力します。
 
-    b. **[識別子]** ボックスに、URL: `https://sso.online.tableau.com/public/sp/<instancename>` を入力します。
+    b. **[識別子]** ボックスに、URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> ` を入力します。
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_general_400.png)
 
 6. 別のブラウザー ウィンドウで、Tableau Online アプリケーションにサインオンします。 **[設定]**、**[認証]** の順にクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_09.png)
     
 7. **[認証の種類]** セクションで、SAML を有効にするには、 **[Single sign-on with SAML (SAML によるシングル サインオン)]** チェック ボックスをオンにします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. 下へスクロールして、 **[Import metadata file into Tableau Online (Tableau Online にメタデータ ファイルをインポートする)]** セクションを表示します。  [Browse (参照)] をクリックし、Azure AD からダウンロードしたメタデータ ファイルをインポートします。 次に、 **[Apply (適用)]**をクリックします。
+8. 下へスクロールして、 **[Import metadata file into Tableau Online (Tableau Online にメタデータ ファイルをインポートする)]** セクションを表示します。  [Browse (参照)] をクリックし、Azure AD からダウンロードしたメタデータ ファイルをインポートします。 次に、 **[Apply (適用)]** をクリックします。
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_13.png)
 
 9. **[Match assertions (アサーションの一致)]** セクションで、**メール アドレス**、**名**、**姓**に対応する ID プロバイダーのアサーション名を挿入します。 Azure AD から情報を取得するには、以下の手順に従います。 
   
-    a. Azure Portal で **Tableau Online** アプリケーション統合ページに移動します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で **Tableau Online** アプリケーション統合ページに移動します。
     
     b. 属性セクションで、**[その他のすべてのユーザー属性を表示および編集する]** チェックボックスをオンにします。 
     
-   ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/attributesection.png)
+   ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/attributesection.png)
       
     c. 以下の手順で、属性 givenname、email、surname の名前空間の値をコピーします。
 
-   ![Azure AD のシングル サインオン](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Azure AD Single Sign-On](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_10.png)
     
     d. **user.givenname** 値をクリックします 
     
     e. **[名前空間]** ボックスから値をコピーします。
 
-   ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/attributesection2.png)
+   ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/attributesection2.png)
 
     f. email、surname の名前空間の値をコピーするには、上記の手順に従います。
 
@@ -159,11 +159,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
      * First name (名): **givenname**
      * Last name (姓): **surname**
    
-   ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_14.png)
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+   ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -188,7 +184,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauonline-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -203,7 +199,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 1. **Tableau Online** で、**[設定]**、**[認証]** セクションの順にクリックします。 下へスクロールして、 **[Select Users (ユーザーの選択)]** セクションを表示します。 **[ユーザーの追加]** をクリックし、**メール アドレスを入力**します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. **[Add users for single sign-on (SSO) authentication (シングル サインオン (SSO) 認証用にユーザーを追加する)]**を選択します。 **[Enter Email Addresses (電子メール アドレスの入力)]** ボックスに「britta.simon@contoso.com」と入力します。
+2. **[Add users for single sign-on (SSO) authentication (シングル サインオン (SSO) 認証用にユーザーを追加する)]** を選択します。 **[Enter Email Addresses (電子メール アドレスの入力)]** ボックスに「britta.simon@contoso.com」と入力します。
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_11.png)
 3. **Create** をクリックしてください。
@@ -220,9 +216,9 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Tableau Online]**を選択します。
+2. アプリケーションの一覧で **[Tableau Online]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -262,4 +258,3 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 [201]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_203.png
-

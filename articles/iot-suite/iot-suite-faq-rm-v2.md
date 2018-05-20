@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Suite のリモート監視に関する FAQ | Microsoft Docs
-description: Azure IoT Suite リモート監視事前構成済みソリューションに関してよく寄せられる質問
+title: リモート監視ソリューション アクセラレータについてよく寄せられる質問 | Microsoft Docs
+description: リモート監視ソリューション アクセラレータについてよく寄せられる質問
 services: iot-suite
 suite: iot-suite
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1cc260710d025428a1ca77c41c104dc172447e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>Azure IoT Suite リモート監視事前構成済みソリューションに関してよく寄せられる質問
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータについてよく寄せられる質問
 
 一般的な [FAQ](iot-suite-faq.md) もご覧ください。
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>新しいリモート監視ソリューションのプロビジョニング料金はいくらですか。
 
-新しい構成済みのソリューションでは、次の 2 つのデプロイ オプションを提供します。
+新しいソリューション アクセラレータでは、次の 2 つのデプロイ オプションを提供します。
 
 * より少ない開発コストを求めている開発者向け、またはデモや概念実証を構築しようとする顧客向けに設計されている*基本*オプション。
 * 実稼働の準備が完了したインフラストラクチャをデプロイしたい企業向けに設計されている*標準*オプション。
@@ -44,15 +44,11 @@ ms.lasthandoff: 04/23/2018
 
 詳細については、「[Upgrade map key to see devices on a dynamic map](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)」(マップ キーをアップグレードして動的マップ上にデバイスを表示する) を参照してください。
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる無料の Bing マップ API の数はいくつですか?
-
-2 個です。 1 つの Azure サブスクリプションでは、内部トランザクション レベル 1 のエンタープライズ向け Bing 地図プランを最大で 2 個作成できます。 リモート監視ソリューションは、既定では内部トランザクション レベル 1 のプランでプロビジョニングされます。 その結果、変更なしでサブスクリプションにプロビジョニングできるリモート監視ソリューションは最大 2 個です。
-
 ### <a name="next-steps"></a>次の手順
 
-IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [リモート監視の構成済みソリューションについて知る](iot-suite-remote-monitoring-explore.md)
-* [予測メンテナンスの構成済みソリューションの概要](iot-suite-predictive-overview.md)
-* [コネクテッド ファクトリ事前構成済みソリューションの概要](iot-suite-connected-factory-overview.md)
+* [リモート監視ソリューション アクセラレータの機能について知る](iot-suite-remote-monitoring-explore.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](iot-suite-predictive-overview.md)
+* [コネクテッド ファクトリ ソリューション アクセラレータの概要](iot-suite-connected-factory-overview.md)
 * [徹底的な IoT セキュリティ](securing-iot-ground-up.md)

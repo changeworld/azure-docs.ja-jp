@@ -3,16 +3,17 @@ title: Azure Automation DSC の使用
 description: Azure Automation Desired State Configuration (DSC) の最も一般的なタスクの説明と例
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0a00050712aa62f3b12e4af4c3da3a1dc0e60219
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7ab5c7f2f3676392b8fa0cc0b2a1c8f66d8ef3a9
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
 
@@ -141,7 +142,7 @@ Azure Automation DSC を使用すると、Azure VM (クラシックと Resource 
 
     ![[Azure VM の追加] ボタンが強調表示された [DSC ノード] ページのスクリーンショット](./media/automation-dsc-getting-started/OnboardVM.png)
 1. [仮想マシン] ページで、自分の VM を選択します。 **[Azure VM の追加]** ページで、**[オンボードする仮想マシンの選択]** をクリックします。
-1. **[接続]**をクリックします。
+1. **[接続]** をクリックします。
 
    > [!IMPORTANT]
    > これは、Windows Server 2008 R2 以降を実行している Azure Resource Manager VM である必要があります。
@@ -198,7 +199,7 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
 4. **[DSC ノード]** ページで、再割り当てするノードの名前をクリックします。
-5. そのノードのページで、**[Assign node]\(ノードの割り当て\)**をクリックします。
+5. そのノードのページで、**[Assign node]\(ノードの割り当て\)** をクリックします。
 
     ![Screenshot of the Node blade highlighting the Assign Node button](./media/automation-dsc-getting-started/AssignNode.png)
 6. **[ノード構成の割り当て]** ページで、ノードの割り当て先となるノード構成を選択し、**[OK]** をクリックします。
@@ -213,7 +214,7 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
 4. **[DSC ノード]** ページで、登録解除するノードの名前をクリックします。
-5. そのノードのページで、**[登録解除]**をクリックします。
+5. そのノードのページで、**[登録解除]** をクリックします。
 
     ![Screenshot of the Node blade highlighting the Unregister button](./media/automation-dsc-getting-started/UnregisterNode.png)
 

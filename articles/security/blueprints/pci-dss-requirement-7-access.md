@@ -1,9 +1,9 @@
 ---
-title: "Azure Payment Processing Blueprint - アクセス要件"
-description: "PCI DSS 要件 7"
+title: Azure Payment Processing Blueprint - アクセス要件
+description: PCI DSS 要件 7
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: ac3afee9-0471-465d-a115-67488a1635a6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 5a3c9eac552fb96309cfa791a2e72a7102662e60
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: fb16a7973022421525e13313f53f615120caa38a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="access-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のアクセス要件 
 ## <a name="pci-dss-requirement-7"></a>PCI DSS 要件 7
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Azure は、Azure 職員による Azure システム コンポーネントへのアクセス、アクセス制御の有効性の検証、Just-In-Time 管理アクセスの提供、不要になったときのアクセス許可の取り消し、および Azure プラットフォームにアクセスするスタッフが業務上アクセスする必要があることの保証に関する既存の ISMS ポリシーを適用します。 お客様の環境への Azure のアクセスは厳しく制限され、お客様の承認があった場合のみ許可されます。<br /><br />データセンターへの物理的なアクセスを承認された従業員、ベンダー、請負業者、および訪問者に制限する手順が確立されています。 データ センターの内部施設への一時的なアクセスを必要とする職員には、セキュリティ検証とチェックインが必要です。 物理アクセス ログは、Azure チームによって、四半期ごとに確認されます。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、システム コンポーネントとカード所有者データへのアクセスを、職務上そのようなアクセスを必要とする個人のみに制限する責任があります。 これには、Azure Management Portal へのアクセスの制限と、PaaS サービスを作成、変更、または削除する権限を持つアカウントまたは役割の指定が含まれます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、システム コンポーネントとカード所有者データへのアクセスを、職務上そのようなアクセスを必要とする個人のみに制限する責任があります。 これには、Azure Management Portal へのアクセスの制限と、PaaS サービスを作成、変更、または削除する権限を持つアカウントまたは役割の指定が含まれます。|
 
 
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、ユーザー ID 承認プロセスの定義と文書化、最小限の特権の定義、カード所有者データへのアクセスの制限、一意の ID の使用、職務の分離の提供、および不要になったときのユーザー アクセスの取り消しを行う責任があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、ユーザー ID 承認プロセスの定義と文書化、最小限の特権の定義、カード所有者データへのアクセスの制限、一意の ID の使用、職務の分離の提供、および不要になったときのユーザー アクセスの取り消しを行う責任があります。|
 
 
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | Microsoft Azure では、情報セキュリティ ポリシーを含む、適用可能な企業と組織のセキュリティ ポリシーを採用しています。 これらのポリシーは、承認され、公開され、Microsoft Azure に伝達されています。 Microsoft Azure の情報セキュリティ ポリシーでは、Microsoft Azure 資産へのアクセス権は、業務上の正当な理由、資産の所有者の承認、および "知る必要性" と "最小限の特権" の原則に基づいて付与されます。 このポリシーは、アクセスのプロビジョニング、アクセスの承認、アクセス権限の承認の削除、アクセスの定期的なレビューを含むアクセス管理ライフサイクルの要件にも対応します。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、デプロイ時に 3 つのアカウント (admin、sqladmin、および edna) を作成します (edna はデモの実行中にこの Web アプリにログインする既定のユーザーです)。 ユーザーの役割は、文書化されているデモ シナリオに基づく職務に制限されます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、デプロイ時に 3 つのアカウント (admin、sqladmin、および edna) を作成します (edna はデモの実行中にこの Web アプリにログインする既定のユーザーです)。 ユーザーの役割は、文書化されているデモ シナリオに基づく職務に制限されます。|
 
 
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、デプロイ時に 3 つのアカウント (admin、sqladmin、および edna) を作成します (edna はデモの実行中にこの Web アプリにログインする既定のユーザーです)。 ユーザーの役割は、文書化されているデモ シナリオに基づく職務に制限されます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、デプロイ時に 3 つのアカウント (admin、sqladmin、および edna) を作成します (edna はデモの実行中にこの Web アプリにログインする既定のユーザーです)。 ユーザーの役割は、文書化されているデモ シナリオに基づく職務に制限されます。|
 
 
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、システム コンポーネントとカード所有者データへのアクセスを、職務上そのようなアクセスを必要とする個人のみに制限する責任があります。 これには、Azure Management Portal へのアクセスの制限と、PaaS サービスを作成、変更、または削除する権限を持つアカウントまたは役割の指定が含まれます。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | お客様は、システム コンポーネントとカード所有者データへのアクセスを、職務上そのようなアクセスを必要とする個人のみに制限する責任があります。 これには、Azure Management Portal へのアクセスの制限と、PaaS サービスを作成、変更、または削除する権限を持つアカウントまたは役割の指定が含まれます。|
 
 
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、Azure Active Directory を使用して、指定されたユーザーのみにアクセスを制限します。 詳細については、「[PCI ガイダンス - ID 管理](payment-processing-blueprint.md#identity-management)」を参照してください。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore では、Azure Active Directory を使用して、指定されたユーザーのみにアクセスを制限します。 詳細については、[PCI ガイダンスの ID 管理](payment-processing-blueprint.md#identity-management)に関する記事を参照してください。|
 
 
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore のドキュメントに、ユースケース、CHD の使用者、および CHD の使用方法が説明されています。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore のドキュメントに、ユースケース、CHD の使用者、および CHD の使用方法が説明されています。|
 
 
 

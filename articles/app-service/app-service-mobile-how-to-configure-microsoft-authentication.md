@@ -1,24 +1,24 @@
 ---
-title: "App Services アプリケーションに Microsoft アカウント認証を構成する方法"
-description: "App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。"
+title: App Services アプリケーションに Microsoft アカウント認証を構成する方法
+description: App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。
 author: mattchenderson
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 67386b03ae4cc683fe00e11e8dad19d1442eff09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fb5bdf30502dbca3eba961165a1ab643427abd6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -26,32 +26,32 @@ ms.lasthandoff: 10/11/2017
 このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。 
 
 ## <a name="register-microsoft-account"> </a>Microsoft アカウントにアプリを登録する
-1. [Azure Portal]にログオンし、アプリケーションに移動します。 **URL** をコピーします。この URL は、後でアプリを Microsoft アカウントで構成するために使用します。
+1. [Azure ポータル]にログオンし、アプリケーションに移動します。 **URL** をコピーします。この URL は、後でアプリを Microsoft アカウントで構成するために使用します。
 2. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
-3. **[アプリの追加]** をクリックし、アプリケーション名を入力して、**[アプリケーションの作成]** をクリックします。
+3. **[アプリの追加]** をクリックし、アプリケーション名を入力して、**[作成]** をクリックします。
 4. **アプリケーション ID** をメモします。この情報は後で必要になります。 
 5. [プラットフォーム] で **[プラットフォームの追加]** をクリックし、[Web] を選択します。
-6. [リダイレクト URI] で、アプリケーションのエンドポイントを指定し、 **[保存]**をクリックします。 
+6. [リダイレクト URI] で、アプリケーションのエンドポイントを指定し、 **[保存]** をクリックします。 
    
    > [!NOTE]
-   > リダイレクト URI は、アプリケーションの URL にパス */.auth/login/microsoftaccount/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。   
+   > リダイレクト URI は、アプリケーションの URL にパス */.auth/login/microsoftaccount/callback* を追加したものです。 たとえば、「`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。   
    > HTTPS スキームを使用していることを確認します。
    
-7. [アプリケーション シークレット] で **[新しいパスワードを生成]**をクリックします。 表示される値をメモします。 ページから移動すると、このパスワードが再度表示されることはありません。
+7. [アプリケーション シークレット] で **[新しいパスワードを生成]** をクリックします。 表示される値をメモします。 ページから移動すると、このパスワードが再度表示されることはありません。
 
     > [!IMPORTANT]
     > パスワードは重要なセキュリティ資格情報です。 このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報を App Service アプリケーションに追加する
-1. [Azure Portal] に戻り、アプリケーションに移動して、**[設定]** > **[認証/承認]** の順にクリックします。
-2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]**に切り替えます。
-3. **[Microsoft アカウント]**をクリックします。 前の手順で取得したアプリケーション ID とパスワードの値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]**をクリックします
+1. [Azure ポータル] に戻り、アプリケーションに移動して、**[設定]** > **[認証/承認]** の順にクリックします。
+2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
+3. **[Microsoft アカウント]** をクリックします。 前の手順で取得したアプリケーション ID とパスワードの値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]** をクリックします
    
     ![][1]
    
     App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
 4. (省略可能) Microsoft によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されない場合に実行するアクション]** を **[Microsoft アカウント]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Microsoft アカウントにリダイレクトされます。
-5. **[保存]**をクリックします。
+5. **[Save]** をクリックします。
 
 これで、アプリケーションで認証に Microsoft アカウントを使用する準備ができました。
 
@@ -66,4 +66,4 @@ ms.lasthandoff: 10/11/2017
 <!-- URLs. -->
 
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/

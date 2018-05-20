@@ -8,18 +8,19 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 9d1763697e93ea0bd5eaeaeb92f5f882f39a6c64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/25/2018
+ms.openlocfilehash: 6dd96ee96201b05e4b272214983e955fcc5b9125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。 Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 Stream Analytics は、参照データのストレージ レイヤーとして Azure Blob Storage を使用し、Azure Data Factory を使用して参照データを Azure Blob Storage に変換、コピー、またはその両方を実行して、[任意の数のクラウドベースとオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)から、参照データとして使用することができます。 参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
 
 Stream Analytics には **BLOB あたり 100 MB の制限**がありますが、ジョブは **[パス パターン]** プロパティを使用して複数の参照 BLOB を処理できます。
 
+参照データの圧縮はサポートされていません。 
 
 ## <a name="configuring-reference-data"></a>参照データの構成
 参照データを構成するには、まず、タイプが **参照データ**の入力を作成する必要があります。 次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
@@ -91,16 +92,9 @@ Stream Analytics には **BLOB あたり 100 MB の制限**がありますが、
 2. 参照データの BLOB の並び替えは、BLOB の “最終変更” 時刻では行われ**ません**。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
 3. 多数の BLOB を列挙する必要がないように、今後処理を行う予定がない非常に古い BLOB は削除することを検討してください。 ASA では、再起動のような一部のシナリオで少量の再処理が必要になる可能性がある点に注意してください。
 
-## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
-
 ## <a name="next-steps"></a>次の手順
-モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。
-
-* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+> [!div class="nextstepaction"]
+> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

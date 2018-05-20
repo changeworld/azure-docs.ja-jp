@@ -1,24 +1,24 @@
 ---
-title: "Apache Kafka のスケーラビリティの向上 - Azure HDInsight | Microsoft Docs"
-description: "スケーラビリティが向上するように Azure HDInsight 上の Apache Kafka クラスター用の管理ディスクを構成する方法を説明します。"
+title: Apache Kafka のスケーラビリティの向上 - Azure HDInsight | Microsoft Docs
+description: スケーラビリティが向上するように Azure HDInsight 上の Apache Kafka クラスター用の管理ディスクを構成する方法を説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: hero-article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 583e1f8b9a2b6d6260efea8864839e8bbbd9a868
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 131ffd121d8d7a695e72fb4bea245428decd2833
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
@@ -53,7 +53,7 @@ Kafka クラスターのワーカー ノードによって使われるディス�
     ],
 ```
 
-管理ディスクの構成方法がわかる完全なテンプレートは、[https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) にあります。
+[https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) に、管理ディスクを構成する方法を示す完全なテンプレートがあります。
 
 ## <a name="next-steps"></a>次の手順
 

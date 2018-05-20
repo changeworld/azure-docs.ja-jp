@@ -1,25 +1,25 @@
 ---
-title: "Azure AD v2.0 エンドポイントを使用して iOS アプリケーションにサインインを追加する | Microsoft Docs"
-description: "サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する iOS アプリを、サード パーティのライブラリを使用して構築する方法を説明します。"
+title: Azure AD v2.0 エンドポイントを使用して iOS アプリケーションにサインインを追加する | Microsoft Docs
+description: サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する iOS アプリを、サード パーティのライブラリを使用して構築する方法を説明します。
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: CelesteDG
 manager: mtillman
-editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: celested
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7476417e6585976ea2404a83602a6d9aa77d9c7a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>サード パーティのライブラリと Graph API と v2.0 エンドポイントを使用して iOS アプリにサインインを追加する
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 開発者は、任意のライブラリを使用して Microsoft のサービスと連携させることができます。 Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
@@ -41,7 +41,7 @@ Azure Active Directory のシナリオおよび機能のすべてが v2.0 エン
 > 
 
 ## <a name="download-code-from-github"></a>GitHub からコードをダウンロードする
-このチュートリアルのコードは、 [GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2)で管理されています。  追加の参考資料として、 [アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) したり、スケルトンを複製したりすることができます:
+このチュートリアルのコードは、 [GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2)で管理されています。 追加の参考資料として、 [アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) したり、スケルトンを複製したりすることができます:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
@@ -54,7 +54,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 ```
 
 ## <a name="register-an-app"></a>アプリを登録します
-[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。  次のことを確認します。
+[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。 次のことを確認します。
 
 * アプリに割り当てられた**アプリケーション ID** をコピーしておきます。これは後で必要になります。
 * アプリ用の **モバイル** プラットフォームを追加します。
@@ -124,7 +124,7 @@ NXOAuth2Client ライブラリでは、いくつかの値を設定する必要�
 
 コードの詳細を見てみましょう。
 
-最初は `scopes`の文字列です。  `User.Read` 値によって、サインインしているユーザーの基本プロファイルを読み取ることができます。
+最初は `scopes`の文字列です。 `User.Read` 値によって、サインインしているユーザーの基本プロファイルを読み取ることができます。
 
 使用可能なすべてのスコープの詳細については、「 [Microsoft Graph のアクセス許可スコープ](https://graph.microsoft.io/docs/authorization/permission_scopes)」を参照してください。
 

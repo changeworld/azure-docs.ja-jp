@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 447f9867649c7c3a44c8a0ba894e037040023f79
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -31,23 +31,42 @@ ms.lasthandoff: 04/23/2018
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!NOTE]
-> [BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)は BLOB トリガーではサポートされていません。 Blob Storage のトリガーには、汎用のストレージ アカウントが必要です。 入出力バインドについては、BLOB のみのストレージ アカウントをご利用いただけます。
-
 ## <a name="packages"></a>パッケージ
 
 Blob バインディングは [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+> [!NOTE]
+> BLOB 専用ストレージ アカウントの場合、高スケールの場合、またはコールド スタート遅延を回避する場合は、Blob ストレージ トリガーではなく、Event Grid トリガーを使用してください。 詳しくは、次の「**トリガー**」セクションをご覧ください。 
+
 ## <a name="trigger"></a>トリガー
 
-Blob Storage のトリガーを使用して、新しいまたは更新された BLOB が検出されたときに関数を開始します。 BLOB のコンテンツは、関数への入力として提供されます。
+Blob ストレージ トリガーは、新しいまたは更新された BLOB が検出されたときに関数を開始します。 BLOB のコンテンツは、関数への入力として提供されます。
 
-> [!NOTE]
-> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 この初期段階の遅延を避けるために、次のオプションのいずれかを検討してください。
-> - 常時接続が有効な App Service プランを使用する。
-> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 例については、[この記事で後述する BLOB 入力バインディングの例](#input---example)をご覧ください。
+[Event Grid トリガー](functions-bindings-event-grid.md)には、[BLOB イベント](../storage/blobs/storage-blob-event-overview.md)のサポートが組み込まれており、新しいまたは更新された BLOB が検出されたときに関数を開始するために使用できます。 例については、[Event Grid を使用したイメージのサイズ変更](../event-grid/resize-images-on-storage-blob-upload-event.md)に関する記事を参照してください。
+
+次のシナリオの場合は、Blob ストレージ トリガーではなく Event Grid を使用してください。
+
+* BLOB 専用ストレージ アカウント
+* 高スケール
+* コールド スタート遅延
+
+### <a name="blob-only-storage-accounts"></a>BLOB 専用ストレージ アカウント
+
+[BLOB 専用ストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)は、BLOB の入力と出力のバインドでサポートされ、BLOB トリガーではサポートされません。 Blob Storage のトリガーには、汎用のストレージ アカウントが必要です。
+
+### <a name="high-scale"></a>高スケール
+
+高スケールとは、おおまかに言って、100,000 以上の BLOB を含むコンテナー、または 1 秒あたり 100 を超える BLOB の更新が発生するストレージ アカウントと定義できます。
+
+### <a name="cold-start-delay"></a>コールド スタート遅延
+
+関数アプリを従量課金プランで使用しているときに、関数アプリがアイドル状態になっている場合、新しい BLOB の処理が最大で 10 分間遅延する可能性があります。 このコールド スタート遅延を避けるには、Always On が有効な App Service プランに切り替えるか、別のトリガーの種類を使用できます。
+
+### <a name="queue-storage-trigger"></a>Queue ストレージ トリガー
+
+Event Grid 以外の BLOB を処理するための別の方法として、Queue ストレージ トリガーがありますが、それには BLOB イベントのサポートが組み込まれていません。 BLOB を作成または更新するとき、メッセージ キューを作成する必要があります。 それが行われていることを前提とする例については、[この記事で後述する BLOB 入力バインドの例](#input---example)をご覧ください。
 
 ## <a name="trigger---example"></a>トリガー - 例
 
@@ -289,7 +308,7 @@ BLOB の名前が *{20140101}-soundfile.mp3* の場合、関数コード内の `
 
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
-|プロパティ  |type  |[説明]  |
+|プロパティ  |型  |説明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
@@ -333,8 +352,8 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 試行が 5 回とも失敗した場合、Azure Functions は *webjobs-blobtrigger-poison* という名前のストレージ キューにメッセージを追加します。 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
 * FunctionId (形式: *&lt;Function App 名>*.Functions.*&lt;関数名>*)
-* BLOB の種類 ("BlockBlob" か "PageBlob")
-* コンテナー名
+* BlobType ("BlockBlob" か "PageBlob")
+* ContainerName
 * BlobName
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 

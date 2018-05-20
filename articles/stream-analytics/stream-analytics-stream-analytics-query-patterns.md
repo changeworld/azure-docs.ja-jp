@@ -9,15 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
+
 ## <a name="introduction"></a>はじめに
-Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表現されます。 これらのクエリについては、「[Stream Analytics query language reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) ガイドで確認できます。 この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。 このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
+Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表現されます。 言語の構造については、「[Stream Analytics query language reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) ガイドで確認できます。 
+
+クエリのデザインでは、イベント データを 1 つの入力ストリームから別の出力データ ストアに移動する単純なパススルー ロジックを表すことができます。 または、TollApp サンプルのように、豊富なパターン マッチングとテンポラル解析を行って、さまざまな時間枠にわたる集計を計算することができます。 複数の入力からのデータを結合してストリーミング イベントを結合し、静的な参照データに対する参照を行ってイベントの値を多様化することができます。 複数の出力にデータを書き込むこともできます。
+
+この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。 このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
 
 ## <a name="query-example-convert-data-types"></a>クエリの例: データ型の変換
 **説明**: 入力ストリームのプロパティの型を定義します。
@@ -571,7 +576,7 @@ WHERE
     AND t2.maxPower > 10
 ````
 
-**説明**: 1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
+**説明**: 1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
 
 
 ## <a name="get-help"></a>問い合わせ

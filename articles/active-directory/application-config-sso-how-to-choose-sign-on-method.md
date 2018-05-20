@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 4363f308f9bfa685b0f4e946cdd97d34b6ece197
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 52f4045ebb30bf32989e9f7b946fd03d468a9de2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>使用するシングル サインオン方法を確認する方法
 
@@ -80,5 +80,5 @@ Azure AD アプリケーションに対してサポートされている**シン
 7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-[アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)
+[アプリケーション プロキシを使用してアプリにシングル サインオンを提供](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

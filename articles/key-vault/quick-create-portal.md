@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/16/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 391985f3ad0e07c4559545e9d0c5fffc45fe27d2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 942c2bce3a5907917b8d1cc9e8c251b5779542b5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用した Key Vault の作成
 
@@ -52,7 +52,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 * **コンテナーの名前**: この例では、これは **Contoso-Vault2** です。 この名前は他の手順で使用します。
 * **Vault URI (コンテナー URI)**: この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
-この時点で、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
+この時点で、自分の Azure アカウントが唯一、この新しいコンテナーで任意の操作を実行することを許可されています。
 
 ![Key Vault の作成が完了した後の出力](./media/quick-create-portal/vault-properties.png)
 
@@ -87,4 +87,4 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 このクイック スタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Web アプリケーションから Azure Key Vault を使用する](key-vault-use-from-web-application.md) [マネージド サービス ID](/active-directory/managed-service-identity/overview.md) を使用する Web アプリケーションを使用して Key Vault からシークレットを読み取る方法を学習するには、「[Configure an Azure web application to read a secret from Key vault (キー コンテナーからシークレットを読み取るための Web アプリケーションの構成)](tutorial-web-application-keyvault.md)」チュートリアルに進んでください
+> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、[キー コンテナーからシークレットを読み取るように Azure Web アプリを構成する](tutorial-web-application-keyvault.md)チュートリアルに進んでください。

@@ -1,17 +1,17 @@
 ---
-title: "Azure への移行後に Azure Site Recovery を使用して Azure VM のディザスター リカバリーをセットアップする |Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して Azure に移行した後、Azure リージョン間でのディザスター リカバリーをセットアップできるようにマシンを準備する方法について説明します。"
+title: Azure への移行後に Azure Site Recovery を使用して Azure VM のディザスター リカバリーをセットアップする |Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Azure に移行した後、Azure リージョン間でのディザスター リカバリーをセットアップできるようにマシンを準備する方法について説明します。
 services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/07/2018
 ms.author: ponatara
-ms.openlocfilehash: c06af21cd6e273b98c004e8bd0e6eac61ba7d644
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 034052c0406ee51f33c598634f92d27867c7cbe7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 02/13/2018
 
 ## <a name="install-the-azure-vm-agent"></a>Azure VM エージェントのインストール
 
-Site Recovery がレプリケートできるように Azure [VM エージェント](../virtual-machines/windows/agent-user-guide.md)を VM にインストールする必要があります。
+Site Recovery がレプリケートできるように Azure [VM エージェント](../virtual-machines/extensions/agent-windows.md)を VM にインストールする必要があります。
 
 
 1. Windows を実行する VM に VM エージェントをインストールするには、[エージェント インストーラー](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードして実行します。 インストールを完了するには、VM の管理者特権が必要です。
-2. Linux を実行する VM に VM エージェントをインストールするには、最新の [Linux エージェント](../virtual-machines/linux/agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることはお勧めしません。 
+2. Linux を実行する VM に VM エージェントをインストールするには、最新の [Linux エージェント](../virtual-machines/extensions/agent-linux.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることはお勧めしません。 
 
 
 ## <a name="validate-the-installation-on-windows-vms"></a>Windows VM でのインストールの検証

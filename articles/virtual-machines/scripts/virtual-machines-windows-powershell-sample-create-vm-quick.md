@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 2c1e86b0ef3dabdea8220747e3ada98d888a8593
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>PowerShell で仮想マシンを作成する
 

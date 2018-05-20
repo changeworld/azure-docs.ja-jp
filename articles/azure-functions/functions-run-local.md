@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: f3278c064a01e3dea1d7a629b4a7b2e846a71208
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 523ef25fe0d3227d526acbdee2c7cf2660fc4f25
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -235,13 +235,13 @@ func new
 たとえば、JavaScript HTTP トリガーを作成するには、次を実行します。
 
 ```
-func new --language JavaScript --template HttpTrigger --name MyHttpTrigger
+func new --language JavaScript --template "Http Trigger" --name MyHttpTrigger
 ```
 
 キューによってトリガーされる関数を作成するには、次を実行します。
 
 ```
-func new --language JavaScript --template QueueTrigger --name QueueTriggerJS
+func new --language JavaScript --template "Queue Trigger" --name QueueTriggerJS
 ```
 <a name="start"></a>
 ## <a name="run-functions-locally"></a>関数をローカルで実行する

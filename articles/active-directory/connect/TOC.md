@@ -83,7 +83,8 @@
 
 
 ## トラブルシューティング
-### [接続](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [Azure AD Connect と Azure AD の接続](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [SQL 接続](active-directory-aadconnect-tshoot-sql-connectivity.md)
 ### [同期中のエラー](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [オブジェクトが同期されない](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [トラブルシューティング タスクを使用したオブジェクト同期](active-directory-aadconnect-troubleshoot-objectsync.md)

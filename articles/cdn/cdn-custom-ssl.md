@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f64f25713dd05ece018138624a06c225218f68e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル: Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -74,13 +74,20 @@ ms.lasthandoff: 05/07/2018
 
 4. [証明書の管理の種類] で、**[CDN 管理]** を選択します。
 
-4. **[オン]** を選択して HTTPS を有効にします。
+5. **[オン]** を選択して HTTPS を有効にします。
 
     ![カスタム ドメイン HTTPS ステータス](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
+6. [ドメインの検証](#validate-the-domain)に進みます。
+
 
 ## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>オプション 2: 独自の証明書を使用して HTTPS 機能を有効にする 
+
+> [!IMPORTANT]
+> この機能は **Azure CDN Standard from Microsoft** プロファイルでのみ利用できます。 
+>
  
+
 Azure CDN で独自の証明書を使用して、HTTPS 経由でコンテンツを配信することができます。 このプロセスは、Azure Key Vault との統合を通じて行われます。 Azure Key Vault を使用することにより、顧客はその証明書を安全に格納できます。 Azure CDN サービスは、セキュリティで保護されたこのメカニズムを活用して証明書を取得します。 独自の証明書を使用するには、いくつかの追加手順が必要です。
 
 ### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>手順 1: Azure Key Vault のアカウントと証明書を準備する
@@ -89,9 +96,23 @@ Azure CDN で独自の証明書を使用して、HTTPS 経由でコンテンツ�
  
 2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー証明機関 (CA) の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 
 
-### <a name="step-2-grant-azure-cdn-access-to-your-key-vault"></a>手順 2: Azure CDN にキー コンテナーへのアクセス権を付与する
+### <a name="step-2-register-azure-cdn"></a>手順 2. Azure CDN を登録する
+
+PowerShell を使用して、Azure Active Directory に Azure CDN をアプリとして登録します。
+
+1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) をインストールします。
+
+2. PowerShell で次のコマンドを実行します。
+
+     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+
+    ![PowerShell で Azure CDN を登録する](./media/cdn-custom-ssl/cdn-register-powershell.png)
+              
+
+### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>手順 3: Azure CDN にキー コンテナーへのアクセス権を付与する
  
-Azure Key Vault アカウント内の証明書 (シークレット) にアクセスするには、Azure CDN のアクセス許可を付与する必要があります。
+Azure Key Vault アカウント内の証明書 (シークレット) にアクセスするには、Azure CDN のアクセス許可を付与します。
+
 1. キー コンテナー アカウントで、[設定] で **[アクセス ポリシー]**、**[新規追加]** の順に選択して新しいポリシーを作成します。
 
     ![新しいアクセス ポリシーの作成](./media/cdn-custom-ssl/cdn-new-access-policy.png)
@@ -106,7 +127,7 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
     Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。
  
-### <a name="step-3-select-the-certificate-for-azure-cdn-to-deploy"></a>手順 3: デプロイする Azure CDN の証明書を選択する
+### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>手順 4: デプロイする Azure CDN の証明書を選択する
  
 1. Azure CDN ポータルに戻り、プロファイルおよびカスタム HTTPS を有効にする CDN エンドポイントを選択します。 
 
@@ -126,16 +147,20 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
     - 利用可能な証明書バージョン。 
  
 5. **[オン]** を選択して HTTPS を有効にします。
+  
+6. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
 
 
 ## <a name="validate-the-domain"></a>ドメインを検証する
 
-CNAME レコードでカスタム エンドポイントにマップされた使用中のカスタム ドメインが既にある場合、  
+CNAME レコードでカスタム エンドポイントにマップされた使用中のカスタム ドメインが既にある場合、または独自の証明書を使用している場合には、  
 「[カスタム ドメインが CNAME レコードによって CDN エンドポイントにマップされている](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record)」に進んでください。 そうではなく、エンドポイントの CNAME レコード エントリがもう存在しない場合、または CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、「[カスタム ドメインが CDN エンドポイントにマップされていない](#custom-domain-is-not-mapped-to-your-cdn-endpoint)」に進んでください。
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>カスタム ドメインが CNAME レコードによって CDN エンドポイントにマップされている
 
-カスタム ドメインをエンドポイントに追加するときに、CDN エンドポイントのホスト名にマップする、ドメイン レジストラーの DNS テーブルに CNAME レコードを作成しました。 この CNAME レコードがまだ存在し、そこに cdnverify サブドメインが含まれていない場合は、DigiCert 証明機関 (CA) は、この CNAME レコードを使用してカスタム ドメインの所有権を検証します。 
+カスタム ドメインをエンドポイントに追加するときに、CDN エンドポイントのホスト名にマップする、ドメイン レジストラーの DNS テーブルに CNAME レコードを作成しました。 この CNAME レコードがまだ存在し、そこに cdnverify サブドメインが含まれていない場合は、DigiCert 証明機関 (CA) は、この CNAME レコードを使用して自動でカスタム ドメインの所有権を検証します。 
+
+独自の証明書を使用している場合には、ドメインの検証は必要ありません。
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
@@ -147,7 +172,7 @@ CNAME レコードの詳細については、[CNAME DNS レコードの作成](h
 
 CNAME レコードが正しい形式である場合、DigiCert はカスタム ドメイン名を自動的に検証して、サブジェクトの別名 (SAN) 証明書に追加します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 
-通常、自動検証には数分かかります。 1 時間以内にドメインが検証されない場合、サポート チケットを開いてください。
+自動検証には通常、数分かかります。 1 時間以内にドメインが検証されない場合、サポート チケットを開いてください。
 
 >[!NOTE]
 >Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。 CAA レコードの管理については、「[Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/)」(CAA レコードを管理する) をご覧ください。 CAA レコード ツールについては、「[CAA Record Helper](https://sslmate.com/caa/)」(CAA レコード ヘルパー) をご覧ください。

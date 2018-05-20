@@ -3,8 +3,8 @@ title: Azure Cloud Services 用のインターネットに接続するロード 
 description: インターネットに接続するクラシック デプロイ モデルのロード バランサー (クラウド サービス用) を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
+author: genlin
+manager: cshepard
 tags: azure-service-management
 ms.assetid: 0bb16f96-56a6-429f-88f5-0de2d0136756
 ms.service: load-balancer
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: 6e4c54350d1b76b536648f7eca274e5ee3271417
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: genli
+ms.openlocfilehash: b292739f5f4b7184a24ac9b14d40ed98d4921bde
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/28/2018
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイメント モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+> Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。 Azure リソースを使用する前に、必ず [デプロイ モデルとツール](../azure-classic-rm.md) について知識をつけておいてください。 この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。 この記事では、クラシック デプロイ モデルについて説明します。 [Azure リソース マネージャーを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 クラウド サービスはロード バランサーで自動的に構成され、サービス モデルを使用してカスタマイズできます。
 

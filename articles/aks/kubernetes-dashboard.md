@@ -1,6 +1,6 @@
 ---
-title: "Web UI を使用した Azure Kubernetes クラスターの管理"
-description: "AKS での Kubernetes ダッシュボードの使用"
+title: Web UI を使用した Azure Kubernetes クラスターの管理
+description: AKS での Kubernetes ダッシュボードの使用
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 47608993320d987822422ea103e4e2043de2d2e8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ab137c8397f747ba07475910cd4461d88951d6be
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Kubernetes ダッシュボード
+# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes ダッシュボード
 
 Kubernetes ダッシュボードを起動するために Azure CLI を使用できます。 このドキュメントでは、Azure CLI での Kubernetes ダッシュボードの起動について説明します。また、いくつかの基本的なダッシュボード操作についても説明します。 Kubernetes ダッシュボードについて詳しくは、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページをご覧ください。
 

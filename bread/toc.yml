@@ -104,7 +104,8 @@
     - name: サポート
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
-    - name: Backup
+    - name: |
+        Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch
@@ -339,6 +340,9 @@
         - name: IoT ソリューション アクセラレータ
           tocHref: /azure/iot-suite/
           topicHref: /azure/iot-suite/
+        - name: IoT Central
+          tocHref: /azure/iot-central/
+          topicHref: /azure/iot-central/
         - name: マップ
           tocHref: /azure/azure-maps/
           topicHref: /azure/azure-maps/

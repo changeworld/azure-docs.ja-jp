@@ -1,25 +1,27 @@
 ---
-title: "Azure AD での OAuth2 の暗黙的な許可フローについて | Microsoft Docs"
-description: "OAuth2 の暗黙的な許可フローの Azure Active Directory の実装の詳細と、これが適切なアプリケーションについて説明します。"
+title: Azure AD での OAuth2 の暗黙的な許可フローについて | Microsoft Docs
+description: OAuth2 の暗黙的な許可フローの Azure Active Directory の実装の詳細と、これが適切なアプリケーションについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2016
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b3ed6edb0b770e8b57bb5bfde4c183d435335ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 263a093d5cf4b48ed1dadd4a288e548065ddf282
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最も多く含むアクセス許可であることで知られています。 それでも、ADAL JS によって実装されるアプローチであり、SPA アプリケーションを作成するときにお勧めするアプローチでもあります。 何のためでしょう。 これはすべてトレードオフの問題です。結局のところ、暗黙的な許可が、ブラウザーで JavaScript を使用して Web API を使用するアプリケーションのために行うことができる最善のアプローチだからです。
@@ -58,7 +60,7 @@ JavaScript ベースのアプローチを全面的に採用したアプリケー
 
 バックエンドを含む Web アプリケーションを開発しており、そのバックエンド コードから API を使用する場合も、暗黙的フローはあまり向いていません。 他の方法の方がはるかに便利です。 たとえば、OAuth2 クライアント資格情報付与では、ユーザー委任とは対照的に、アプリケーション自体に割り当てられているアクセス許可を反映したトークンを取得できます。 これは、ユーザーがセッションにアクティブに関与していない場合などでも、クライアントがプログラムによるリソース アクセスを維持できることを意味します。 メリットはそれだけにとどまりません。このような付与では、セキュリティ保証が強化されます。 たとえば、アクセス トークンがユーザーのブラウザーを通過せず、ブラウザーの履歴に保存されるなどのリスクがありません。 また、クライアント アプリケーションは、トークンの要求時に強力な認証を実行できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure AD によってサポートされるプロトコルや OAuth2 承認付与フローなどの開発者向けリソースの一覧については、[Azure Active Directory 開発者ガイド][AAD-Developers-Guide]を参照してください。
 * アプリケーションの統合プロセスの詳細については、[アプリケーションを Azure AD と統合する方法][ACOM-How-To-Integrate]についてのページを参照してください。
 

@@ -1,28 +1,22 @@
 ---
-title: "Azure Container Registry の geo レプリケーション"
-description: "geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。"
+title: Azure Container Registry の geo レプリケーション
+description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
-ms.date: 10/24/2017
+ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
-ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。
-
-geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。
-
-> [!IMPORTANT]
-> Azure Container Registry の geo レプリケーション機能は現在**プレビュー**段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
->
+ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。
 
 geo レプリケートされたレジストリには次の利点があります。
 

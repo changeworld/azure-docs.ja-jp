@@ -11,11 +11,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: omidm
-ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 31b58176a75918cf68cda695f27216031670493e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターの管理
 ドメイン参加済み HDInsight のユーザーとロールについて説明し、ドメイン参加済み HDInsight クラスターの管理方法についても説明します。
@@ -101,6 +101,8 @@ Enterprise セキュリティ パッケージ (旧称 HDInsight Premium) は、�
 |Interactive Query (LLAP)|対話|<ul><li>[Beeline](#beeline)</li><li>[Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |任意|カスタム アプリケーションのインストール|<ul><li>[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
+   > [!NOTE]
+   > Jupyter は、Enterprise セキュリティ パッケージではインストールもサポートも行われません。
 
 標準 API の使用は、セキュリティの観点から有用です。 さらに、次の利点があります。
 

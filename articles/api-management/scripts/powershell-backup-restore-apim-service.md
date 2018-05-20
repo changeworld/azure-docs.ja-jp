@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - サービスのバッ�
 description: Azure PowerShell のサンプル スクリプト - サービスのバックアップと復元
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 0b2311164b8ec5f10beea7de497a2262af77c427
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f8283a5720b457b74c26852b01ad30a423bd450d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="backup-and-restore-service"></a>サービスのバックアップと復元
 

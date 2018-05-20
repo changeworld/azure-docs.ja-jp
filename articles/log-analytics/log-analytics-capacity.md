@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db38678a05afbc764dec20f2a475e00856a1aeee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
 ![キャパシティとパフォーマンスのシンボル](./media/log-analytics-capacity/capacity-solution.png)
+
+> [!NOTE]
+> Capacity and Performance ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Capacity and Performance を追加することはできません。
 
 Log Analytics の容量とパフォーマンス ソリューションは、Hyper-V サーバーの容量の把握に役立ちます。 このソリューションでは、Hyper-V ホストとそのホストで実行中の VM に関して (CPU、メモリ、およびディスクの) 全体としての使用状況が表示されるため、Hyper-V 環境の状況を把握できます。 すべてのホストとそのホストで実行している VM について、CPU、メモリ、ディスクに関するメトリックが収集されます。
 

@@ -9,13 +9,13 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 05/10/2018
 ms.author: adhurwit
-ms.openlocfilehash: 83ce49d9ac368404edcc2d68859493476e74869e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: de8276b22377db37075c6793d0710bb18625446c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Web アプリケーションからの Azure Key Vault の使用
 

@@ -1,22 +1,23 @@
 ---
-title: "アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題\""
-description: "アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題\""
+title: アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題"
+description: アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題"
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 014139789a54004c33ab12e0cae23c294419bbb0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 429626fceaa6ec85989c89f35a02e121745498e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-using-the-application-access-panel-website-or-mobile-application"></a>アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題
 

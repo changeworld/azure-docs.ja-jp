@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: cd603e00b28b2de380408707043e9806e29b74c4
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>PowerShell を使用して IIS VM を作成する
 

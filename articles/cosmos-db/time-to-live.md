@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 61db8f85e73d2c071bdec0ace60911813fa4f0e8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
@@ -124,7 +124,7 @@ TTL 機能は、コレクション レベルとドキュメント レベルの 2
     Document readDocument = response.Resource;
     readDocument.TimeToLive = 60 * 30 * 30; // update time to live
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="removing-ttl-from-a-document"></a>ドキュメントからの TTL の削除
 TTL が設定されているドキュメントを期限切れにする必要がなくなった場合には、そのドキュメントを取得し、TTL フィールドを削除して、サーバーのドキュメントを置き換えることができます。 ドキュメントから TTL フィールドが削除されると、コレクションの既定値が適用されます。 ドキュメントが期限切れにならないようにし、コレクションから継承されないようにするには、TTL 値を -1 に設定する必要があります。
@@ -136,7 +136,7 @@ TTL が設定されているドキュメントを期限切れにする必要が�
     Document readDocument = response.Resource;
     readDocument.TimeToLive = null; // inherit the default TTL of the collection
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disabling-ttl"></a>TTL の無効化
 コレクションの TTL を完全に無効にし、バックグラウンド プロセスで期限切れのドキュメントが検索されないようにするには、コレクションの DefaultTTL プロパティを削除する必要があります。 このプロパティの削除は、-1 に設定することとは異なります。 -1 に設定すると、コレクションに追加される新しいドキュメントが永続的に存続しますが、コレクションの特定のドキュメントでこれをオーバーライドすることができます。 コレクションからこのプロパティを完全に削除すると、以前の既定値を明示的にオーバーライドしたドキュメントがある場合でも、ドキュメントは期限切れになりません。

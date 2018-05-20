@@ -1,24 +1,23 @@
 ---
-title: "Azure Stack でのスケール ユニットのノード操作 | Microsoft Docs"
-description: "Azure Stack 統合システム上でノードの状態を表示し、電源オン、電源オフ、ドレイン、および再開のノード操作を使用する方法を説明します。"
+title: Azure Stack でのスケール ユニットのノード操作 | Microsoft Docs
+description: Azure Stack 統合システム上でノードの状態を表示し、電源オン、電源オフ、ドレイン、および再開のノード操作を使用する方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: dbb68b10-c721-4188-aa07-584d0cd63138
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 55cc0eb3cc187d87e0d2ae96e2433cb9682ab370
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 01/10/2018
 スケール ユニットの状態を表示するには、以下のようにします。
 
 1. **[Region management]\(リージョンの管理\)** タイルで、リージョン名をクリックします。
-2. 左側の **[インフラストラクチャ リソース]** で、**[スケール ユニット]**を選択します。
+2. 左側の **[インフラストラクチャ リソース]** で、**[スケール ユニット]** を選択します。
 3. 結果画面で、スケール ユニットを選択します。
  
 ここでは、次の情報を表示できます。

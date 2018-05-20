@@ -3,11 +3,12 @@ title: Azure AD iOS の概要 | Microsoft Docs
 description: サインインし、OAuth を使用して Azure AD で保護されている API を呼び出すために Azure AD と統合する iOS アプリケーションを構築する方法を説明します。
 services: active-directory
 documentationcenter: ios
-author: celestedg
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 598771eb12d0608ef424c08401b04191a2cc3ee8
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1ceae59cca5790d9d74f72ce644e31fb0949cd49
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-ios-getting-started"></a>Azure AD iOS の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -67,12 +68,12 @@ iOS のリダイレクト URI の形式は次のとおりです。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. 画面の指示に従って、新しい**ネイティブ クライアント アプリケーション**を作成します。
   * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
-  * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。  上記のリダイレクト URI 情報に基づいて、アプリケーション固有の値を入力します。
-6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。  この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
-7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 API として **[Microsoft Graph]** を選択し、**[委任されたされたアクセス許可]** の下に **[ディレクトリ データの読み取り]** アクセス許可を追加します。  これにより、アプリケーションが Azure AD Graph API を使用してユーザーをクエリするようになります。
+  * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。 上記のリダイレクト URI 情報に基づいて、アプリケーション固有の値を入力します。
+6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
+7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 API として **[Microsoft Graph]** を選択し、**[委任されたされたアクセス許可]** の下に **[ディレクトリ データの読み取り]** アクセス許可を追加します。 これにより、アプリケーションが Azure AD Graph API を使用してユーザーをクエリするようになります。
 
 ## <a name="3-install-and-configure-adal"></a>手順 3.ADAL をインストールして構成する
-アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。  ADAL が Azure AD と通信するには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
+アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。 ADAL が Azure AD と通信するには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
 1. CocoaPods を使用して DirectorySearcher プロジェクトに ADAL を追加することから始めます。
 
@@ -97,15 +98,15 @@ iOS のリダイレクト URI の形式は次のとおりです。
     $ open QuickStart.xcworkspace
     ```
 
-4. QuickStart プロジェクトで、.plist ファイル `settings.plist`を開きます。  Azure Portal で入力した値が反映されるように、セクションの要素の値を置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
+4. QuickStart プロジェクトで、.plist ファイル `settings.plist`を開きます。 Azure Portal で入力した値が反映されるように、セクションの要素の値を置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
   * `tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
   * `clientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
   * `redirectUri` は、ポータルに登録したリダイレクト URL です。
 
-## <a name="4----use-adal-to-get-tokens-from-azure-ad"></a>4.  ADAL を使用して、Azure AD からトークンを取得する
-ADAL の背後にある基本的な原理として、アプリはアクセス トークンが必要になるたびに、completionBlock `+(void) getToken : ` を呼び出すだけで、残りの処理は ADAL で実行されます。  
+## <a name="4-use-adal-to-get-tokens-from-azure-ad"></a>4.ADAL を使用して、Azure AD からトークンを取得する
+ADAL の背後にある基本的な原理として、アプリはアクセス トークンが必要になるたびに、completionBlock `+(void) getToken : ` を呼び出すだけで、残りの処理は ADAL で実行されます。 
 
-1. `QuickStart` プロジェクトで、`GraphAPICaller.m` を開き、上部の近くにある `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` コメントを探します。  ここでは、CompletionBlock で ADAL に座標を渡し、Azure AD と通信して、トークンをキャッシュする方法を指示します。
+1. `QuickStart` プロジェクトで、`GraphAPICaller.m` を開き、上部の近くにある `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` コメントを探します。 ここでは、CompletionBlock で ADAL に座標を渡し、Azure AD と通信して、トークンをキャッシュする方法を指示します。
 
     ```ObjC
     +(void) getToken : (BOOL) clearCache
@@ -146,7 +147,7 @@ ADAL の背後にある基本的な原理として、アプリはアクセス �
 
     ```
 
-2. 次に、このトークンを使用して、グラフでユーザーを検索する必要があります。 `// TODO: implement SearchUsersList` コメントを検索します。 このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。  Azure AD Graph API をクエリするには、要求の `Authorization` ヘッダーに access_token を含める必要があります。 ここで、ADAL の出番です。
+2. 次に、このトークンを使用して、グラフでユーザーを検索する必要があります。 `// TODO: implement SearchUsersList` コメントを検索します。 このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。 Azure AD Graph API をクエリするには、要求の `Authorization` ヘッダーに access_token を含める必要があります。 ここで、ADAL の出番です。
 
     ```ObjC
     +(void) searchUserList:(NSString*)searchString
@@ -218,7 +219,7 @@ ADAL の背後にある基本的な原理として、アプリはアクセス �
     ```
 
 
-3. アプリが `getToken(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。  ADAL は、トークンの取得にユーザーのサインインが必要であると判断した場合、サインイン用のダイアログ ボックスを表示し、ユーザーの資格情報を収集してから、認証の成功後にトークンを返します。  何らかの理由によりトークンを返せない場合、`AdalException` をスローします。
+3. アプリが `getToken(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。 ADAL は、トークンの取得にユーザーのサインインが必要であると判断した場合、サインイン用のダイアログ ボックスを表示し、ユーザーの資格情報を収集してから、認証の成功後にトークンを返します。 何らかの理由によりトークンを返せない場合、`AdalException` をスローします。
 
 > [!Note] 
 > `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報の収集に使用される `tokenCacheStoreItem` オブジェクトが含まれています。 QuickStart では、認証が既に行われたかどうかを確認するために `tokenCacheStoreItem` が使用されます。
@@ -226,14 +227,14 @@ ADAL の背後にある基本的な原理として、アプリはアクセス �
 >
 
 ## <a name="5-build-and-run-the-application"></a>5.アプリケーションの構築と実行
-お疲れさまでした。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。  テナントに一連のユーザーを設定します (設定していない場合)。  QuickStart アプリを起動し、そのユーザーの 1 人としてサインインします。  UPN に基づいて、他のユーザーを検索します。  アプリを閉じて再起動します。  ユーザーのセッションがそのままに維持されています。
+お疲れさまでした。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。 テナントに一連のユーザーを設定します (設定していない場合)。 QuickStart アプリを起動し、そのユーザーの 1 人としてサインインします。 UPN に基づいて、他のユーザーを検索します。 アプリを閉じて再起動します。 ユーザーのセッションがそのままに維持されています。
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。  キャッシュ管理、OAuth プロトコル サポート、ユーザーへのサインイン UI の表示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。  習得する必要があるのは、単一の API 呼び出し、 `getToken`のみです。
+ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。 キャッシュ管理、OAuth プロトコル サポート、ユーザーへのサインイン UI の表示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。 習得する必要があるのは、単一の API 呼び出し、 `getToken`のみです。
 
-参考のため、完成済みサンプル (構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip) で提供されています。  
+参考のため、完成済みサンプル (構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip) で提供されています。 
 
 ## <a name="next-steps"></a>次の手順
-ここからは、さらなるシナリオに進むことができます。  次のチュートリアルを試してみてください。
+ここからは、さらなるシナリオに進むことができます。 次のチュートリアルを試してみてください。
 
 * [Azure AD による Node.JS Web API のセキュリティ保護](active-directory-devquickstarts-webapi-nodejs.md)
 * [iOS で ADAL を使用してクロス アプリ SSO を有効にする方法](active-directory-sso-ios.md)  

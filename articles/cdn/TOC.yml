@@ -12,6 +12,8 @@
       href: cdn-create-new-endpoint.md
 - name: チュートリアル
   items:
+    - name: Web アプリに Azure CDN を追加する
+      href: cdn-add-to-web-app.md
     - name: カスタム ドメインの追加
       href: cdn-map-content-to-custom-domain.md
     - name: カスタム ドメインで HTTPS を構成する
@@ -30,10 +32,6 @@
   items:
     - name: 統合
       items:
-        - name: Web Apps
-          href: ../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
-        - name: Cloud Services
-          href: cdn-cloud-service-with-cdn.md
         - name: Storage
           items:
             - name: ストレージ アカウントの統合

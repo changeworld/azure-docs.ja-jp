@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 79059fbd088d15ca62b39dacba766726119e6048
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d37913caa94dc4cf79aef9c2c12a7aacce7c03ce
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
 
@@ -83,7 +83,7 @@ Blockchain Workbench によって、2 種類のイベント コンシューマ�
 
 受信メッセージ ブローカー上のメッセージは、ブロックチェーンに書き込む必要がある場合に DLT コンシューマーによって処理されます。 DLT コンシューマーはサービスであり、必要なトランザクションで実行するメタデータを含むメッセージを取得した後、その情報を "*トランザクション ビルダーと署名者*" に送信します。 "*トランザクション ビルダーと署名者*" は、データおよび必要なブロックチェーンの変換先に基づいてブロックチェーン トランザクションを組み立てます。 組み立てが完了すると、トランザクションは署名されます。 秘密キーは Azure Key Vault に格納されます。
 
-現在、Azure Key Vault では、Key Vault 内でのブロックチェーン トランザクションのソフトウェア署名がサポートされていません。 その代わり、Blockchain Workbench は Key Vault から適切な秘密キーを取得し、Key Vault 外のトランザクションに署名します。 署名が完了すると、トランザクションはトランザクション ルーターと台帳に送信されます。
+ Blockchain Workbench は Key Vault から適切な秘密キーを取得し、Key Vault 外のトランザクションに署名します。 署名が完了すると、トランザクションはトランザクション ルーターと台帳に送信されます。
 
 ## <a name="transaction-routers-and-ledgers"></a>トランザクション ルーターと台帳
 
@@ -118,4 +118,5 @@ Azure Monitor は、ブロックチェーン ネットワークの正常性に�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Blockchain Workbench をデプロイする](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench のデプロイ](blockchain-workbench-deploy.md)

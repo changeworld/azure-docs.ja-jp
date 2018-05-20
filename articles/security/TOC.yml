@@ -143,24 +143,14 @@
       href: ./blueprints/financial-services-regulated-workloads.md
     - name: GDPR
       items:
-        - name: 個人データを管理する
-          href: manage-personal-data-azure.md
-        - name: 個人データを検出、特定、分類する
-          href: how-to-discover-classify-personal-data-azure.md
-        - name: Azure で個人データを保護する
-          href: protect-personal-data-azure.md
-        - name: Security Center で個人データを保護する
-          href: protect-personal-data-azure-security-center.md
-        - name: Application Gateway で個人データを保護する
-          href: protect-personal-data-network-security.md
-        - name: ID とアクセスの制御を使用して個人データを保護する
-          href: protect-personal-data-identity-access-controls.md
-        - name: 暗号化を使用して、保存してある個人データを保護する
-          href: protect-personal-data-at-rest.md
-        - name: 暗号化を使用して、転送中の個人データを保護する
-          href: protect-personal-data-in-transit-encryption.md
-        - name: Azure のレポート作成ツールを使用して個人データを保護する
-          href: protection-personal-data-azure-reporting-tools.md
+        - name: データ分析
+          href: ./blueprints/gdpr-analytics-overview.md
+        - name: データ ウェアハウス
+          href: ./blueprints/gdpr-datawarehouse-overview.md
+        - name: IaaS Web アプリケーション
+          href: ./blueprints/gdpr-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/gdpr-paaswa-overview.md
     - name: FedRAMP
       items:
         - name: データ分析

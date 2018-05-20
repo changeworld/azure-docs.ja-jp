@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 70255ead4a556204689e9918b9c89e396f8122c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6ab1b2357e88525f4730b5ad550cfcf3acbb906e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -31,6 +31,8 @@ ms.lasthandoff: 04/19/2018
 > サービス プリンシパルを作成する代わりに、アプリケーション ID 用に Azure AD の管理対象サービス ID を使用することを検討します。 Azure AD の MSI は、コードのために ID の作成を簡略化する、Azure Active Directory のパブリック プレビュー機能です。 コードが、Azure AD の MSI をサポートするサービス上で実行され、Azure Active Directory 認証をサポートするリソースにアクセスする場合、Azure AD の MSI は優れた選択肢となります。 Azure AD の MSI の詳細 (どのサービスが現在 MSI をサポートしているかなど) については、「[Azure リソースの管理対象サービス ID](../active-directory/managed-service-identity/overview.md)」を参照してください。
 
 この記事では、証明書を使用して認証するサービス プリンシパルの作成方法について説明します。 パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
+
+このアーティクルには、PowerShell の[最新バージョン](/powershell/azure/get-started-azureps)が必要です。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -58,61 +60,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"プリンシパル {ID} がディレクトリ {DIR-ID} にありません" というエラーが表示されます。 このエラーを解決するには、しばらく待ってから **New-AzureRmRoleAssignment** コマンドを再実行します。
 
-次の例はより複雑です。現在の Azure サブスクリプションとは異なるロールの割り当ての範囲を設定することができるためです。 ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。 ロールの割り当て中にエラーが発生した場合は、割り当てが再試行されます。 Windows 10 または Windows Server 2016 上の Azure PowerShell 2.0 が必要です。
-
-```powershell
-Param (
-
- # Use to set scope to resource group. If no value is provided, scope is set to subscription.
- [Parameter(Mandatory=$false)]
- [String] $ResourceGroup,
-
- # Use to set subscription. If no value is provided, default subscription is used. 
- [Parameter(Mandatory=$false)]
- [String] $SubscriptionId,
-
- [Parameter(Mandatory=$true)]
- [String] $ApplicationDisplayName
- )
-
- Connect-AzureRmAccount
- Import-Module AzureRM.Resources
-
- if ($SubscriptionId -eq "") 
- {
-    $SubscriptionId = (Get-AzureRmContext).Subscription.Id
- }
- else
- {
-    Set-AzureRmContext -Subscription $SubscriptionId
- }
-
- if ($ResourceGroup -eq "")
- {
-    $Scope = "/subscriptions/" + $SubscriptionId
- }
- else
- {
-    $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
- }
-
- $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleappScriptCert" -KeySpec KeyExchange
- $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore
- Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
-
- $NewRole = $null
- $Retries = 0;
- While ($NewRole -eq $null -and $Retries -le 6)
- {
-    # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-    Sleep 15
-    New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
-    $Retries++;
- }
-```
+**ResourceGroupName**パラメーターを使用して、特定のリソース グループにロールの割り当てをスコープできます。 **ResourceType**と**ResourceName**パラメーターを使用して、特定のリソースをスコープすることもできます。 
 
 **Windows 10 または Windows Server 2016 を持っていない**場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) をダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
 
@@ -137,35 +85,14 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure Active Directory のインスタンスです。
 
 ```powershell
-Param (
- 
- [Parameter(Mandatory=$true)]
- [String] $CertSubject,
- 
- [Parameter(Mandatory=$true)]
- [String] $ApplicationId,
+$TenantId = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
+$ApplicationId = (Get-AzureRmADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- [Parameter(Mandatory=$true)]
- [String] $TenantId
- )
-
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match $CertSubject }).Thumbprint
+ $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -match "CN=exampleappScriptCert" }).Thumbprint
  Connect-AzureRmAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
-```
-
-アプリケーション ID とテナント ID は機密情報ではないため、スクリプトに直接埋め込むことができます。 テナント ID を取得する必要がある場合は、次のコマンドを使用します。
-
-```powershell
-(Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
-```
-
-アプリケーション ID を取得する必要がある場合は、次のコマンドを使用します。
-
-```powershell
-(Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>証明機関の証明書を使用したサービス プリンシパルの作成
@@ -264,13 +191,13 @@ Param (
 アプリケーションのすべての資格情報を削除するには、次のコマンドレットを使用します。
 
 ```powershell
-Remove-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -All
+Get-AzureRmADApplication -DisplayName exampleapp | Remove-AzureRmADAppCredential
 ```
 
 証明書の値を追加するには、この記事の説明に従って自己署名証明書を作成します。 その後、次のコマンドレットを使用します。
 
 ```powershell
-New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 `
+Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
   -CertValue $keyValue `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
@@ -282,7 +209,7 @@ New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 `
 
 * **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
 
-* アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」:**このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
+* アカウントに **「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」:** このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
 
 ## <a name="next-steps"></a>次の手順
 * パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。

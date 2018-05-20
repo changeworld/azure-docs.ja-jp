@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 29a1d5bc839fcf533973271638bf283d6e48e93b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6071e025352199c5ec559598a580a918c2e9c666
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>従来の Linux 仮想マシンをイメージとしてキャプチャする方法
 > [!IMPORTANT]
@@ -107,7 +107,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 また、[Azure Portal](http://portal.azure.com) を使用して、**[イメージ]** メソッドを使用し、作成したイメージを選択することで、カスタム VM を作成することもできます。 詳細については、[カスタム VM を作成する方法][How to Create a Custom Virtual Machine]に関する記事をご覧ください。
 
-**関連項目:** [Azure Linux エージェント ユーザー ガイド](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**関連項目:** [Azure Linux エージェント ユーザー ガイド](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

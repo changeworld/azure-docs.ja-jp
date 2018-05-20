@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cab4e44f8c5612a71aa9e024b4327a55bd2b8b87
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 84e9e3b486e3c825e98530a30850e9f21ef41b91
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Python SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -33,8 +33,8 @@ ms.lasthandoff: 04/16/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 

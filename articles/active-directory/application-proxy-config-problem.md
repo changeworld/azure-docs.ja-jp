@@ -1,11 +1,11 @@
 ---
-title: "アプリケーション プロキシ アプリケーションの作成時に発生する問題 | Microsoft Docs"
-description: "Azure AD 管理ポータルでアプリケーション プロキシ アプリケーションを作成する際に発生する問題のトラブルシューティング方法"
+title: アプリケーション プロキシ アプリケーションの作成時に発生する問題 | Microsoft Docs
+description: Azure AD 管理ポータルでアプリケーション プロキシ アプリケーションを作成する際に発生する問題のトラブルシューティング方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 5b8346ee2e02ea62b7a11b88a790cff56a7d13f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 376925715e954904cfdadccb060d0ca242bbec4a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションの作成時に発生する問題 
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="recommended-documents"></a>推奨されるドキュメント 
 
-管理ポータルでのアプリケーション プロキシ アプリケーションの作成の詳細については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)」を参照してください。
+管理ポータルでのアプリケーション プロキシ アプリケーションの作成の詳細については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。
 
 同ドキュメントの手順に従ってアプリケーションを作成しているときにエラーが発生した場合、アプリケーションの修復方法に関する情報や推奨事項については、そのエラーの詳細を見て確認してください。 ほとんどのエラー メッセージには、推奨される解決方法が記載されています。 
 
@@ -47,5 +47,5 @@ ms.lasthandoff: 12/11/2017
 
    ![通知アイコン](./media/application-proxy-config-problem/error-message.png)
 
-## <a name="next-steps"></a>次のステップ
-[Azure Portal でアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
+## <a name="next-steps"></a>次の手順
+[Azure Portal でアプリケーション プロキシを有効にする](manage-apps/application-proxy-enable.md)

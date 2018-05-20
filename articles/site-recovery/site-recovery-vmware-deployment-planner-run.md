@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: d7b65771555fcada741b594c14b98e87e7448b24
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1d9fa845171ffa5a40ce569170dfbb577ea4e8c8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (VMware から Azure)
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -168,7 +168,7 @@ Deployment Planner ツールでは、デプロイの推奨情報をすべてま�
 | -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、管理ディスクに対して実行されることを想定して計算されます。 |
 |-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプションやそれに関連付けられているプランに基づき、ターゲット Azure リージョンと通貨を指定して、最新の料金に関するコスト見積もりレポートを生成するには、このパラメーターを使用します。|
 |-TargetRegion|(省略可) レプリケーション先となる Azure リージョン。 Azure のコストはリージョンによって異なります。そこで、特定のターゲット Azure リージョンでレポートを生成するために、このパラメーターを使用します。<br>WestUS2 または最近使用したターゲット リージョンが既定値となります。<br>「[サポートされるターゲット リージョン](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)」の一覧を参照してください。|
-|-OfferId|(省略可) 指定されたサブスクリプションに関連付けられているプラン。 既定値は MS-AZR-0003P (従量課金) です。|
+|-OfferId|(省略可) 指定されたサブスクリプションに関連付けられているプラン。 既定値は MS-AZR-0003P (従量課金制) です。|
 |-Currency|(省略可) 生成されたレポートでコストの表示に使用する通貨。 米ドル ($) または最近使用した通貨が既定値となります。<br>「[サポートされる通貨](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)」の一覧を参照してください。|
 
 既定では、このツールは最大で 1,000 台の VM をプロファイリングしてレポートを生成するよう構成されています。 上限を変更するには、*ASRDeploymentPlanner.exe.config* ファイルの MaxVMsSupported キー値を変更します。

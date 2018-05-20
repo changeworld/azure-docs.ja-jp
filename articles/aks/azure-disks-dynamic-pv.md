@@ -3,22 +3,22 @@ title: AKS での Azure ディスクの使用
 description: AKS での Azure ディスクの使用
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Azure ディスクを含む永続ボリューム
 
 永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
 
-このドキュメントでは、Azure ディスクの永続ボリュームを Azure Container Service (AKS) クラスターで使用することの詳細を説明します。
+このドキュメントでは、Azure ディスクの永続ボリュームを Azure Kubernetes Service (AKS) クラスターで使用することの詳細を説明します。
 
 > [!NOTE]
 > Azure ディスクは、アクセス モードの種類を ReadWriteOnce としてのみマウントでき、この場合、ディスクの利用は、単一の AKS ノードに限られます。 複数のノード間で固定ボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] の使用を検討してください。
@@ -60,10 +60,10 @@ spec:
       storage: 5Gi
 ```
 
-[kubectl create][kubectl-create] コマンドを使用して、永続ボリューム要求を作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、永続ボリューム要求を作成します。
 
 ```azurecli-interactive
-kubectl create -f azure-premimum.yaml
+kubectl apply -f azure-premimum.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>永続ボリュームの使用
@@ -90,10 +90,10 @@ spec:
         claimName: azure-managed-disk
 ```
 
-[kubectl create][kubectl-create] コマンドを使用して、ポッドを作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、ポッドを作成します。
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-disk.yaml
+kubectl apply -f azure-pvc-disk.yaml
 ```
 
 これで Azure ディスクが `/mnt/azure` ディレクトリにマウントされ、ポッドが稼働状態となりました。 この構成は、`kubectl describe pod mypod` 経由でポッドを調べるときに表示できます。
@@ -107,7 +107,7 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合 | Microsoft Docs"
-description: "Azure Active Directory と Mimecast Personal Portal の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合 | Microsoft Docs'
+description: Azure Active Directory と Mimecast Personal Portal の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 4f2c5f7323d9d10b6a784da8f45577ccf774b78f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7d8a746df9bea22970da9dc47b5e436a94335f49
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
 
@@ -80,8 +80,6 @@ Azure AD への Mimecast Personal Portal の統合を構成するには、ギャ
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Mimecast Personal Portal ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Mimecast Personal Portal の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-Mimecast Personal Portal で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
-
 Mimecast Personal Portal で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
@@ -108,7 +106,7 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
 
     ![[Mimecast Personal Portal のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の URL を入力します。 
 
     | リージョン  |  値 | 
     | --------------- | --------------- | 
@@ -118,7 +116,7 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|
 
-    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
 
     | リージョン  |  値 | 
     | --------------- | --------------- |
@@ -127,6 +125,16 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
     | 南アフリカ    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | オーストラリア       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | オフショア        | `https://jer-api.mimecast.com/sso/<accountcode>`|
+
+    c. **[応答 URL]** ボックスに、URL を入力します。 
+
+    | リージョン  |  値 | 
+    | --------------- | --------------- | 
+    | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
+    | 米国   | `https://us-api.mimecast.com/login/saml`|
+    | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
+    | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
+    | オフショア        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
     > この識別子の値は実際のものではありません。 この値を実際の識別子で更新してください。 この値を取得するには、[Mimecast Personal Portal クライアント サポート チーム](http://www.mimecast.com/customer-success/technical-support/)にお問い合わせください。 
@@ -149,11 +157,11 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
    
     ![アプリケーション](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic794998.png "Applications")
 
-9. **[認証プロファイル]**をクリックします。
+9. **[認証プロファイル]** をクリックします。
    
     ![Authentication Profiles](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic794999.png "Authentication Profiles")
 
-10. **[新しい認証プロファイル]**をクリックします。
+10. **[新しい認証プロファイル]** をクリックします。
    
     ![新しい認証プロファイル](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795000.png "新しい認証プロファイル")
 
@@ -161,9 +169,9 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
    
     ![Authentication Profile](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795001.png "Authentication Profile")
    
-    a. **[説明]** テキストボックスに、構成の名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[説明]** テキストボックスに、構成の名前を入力します。
    
-    b. **[Mimecast Personal Portal に SAML 認証を適用]**を選択します。
+    b. **[Mimecast Personal Portal に SAML 認証を適用]** を選択します。
    
     c. **[プロバイダー]** で **[Azure Active Directory]** を選択します。
    
@@ -171,17 +179,13 @@ Mimecast Personal Portal で Azure AD のシングル サインオンを構成�
    
     e. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
+    f. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
     g. Azure Portal からダウンロードした **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[Identity Provider Certificate (Metadata)]\(ID プロバイダー証明書 \(メタデータ\)\)** ボックスに貼り付けます。
 
-    h. **[シングル サインオンの許可]**を選択します。
+    h. **[シングル サインオンの許可]** を選択します。
    
     i. **[Save]** をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -225,15 +229,15 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 
 1. 管理者として **[Mimecast Personal Portal]** にサインオンします。
 
-2. **[ディレクトリ]\>[内部]**に移動します。
+2. **[ディレクトリ]\>[内部]** に移動します。
    
     ![Directories](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795003.png "Directories")
 
-3. **[新規ドメインの登録]**をクリックします。
+3. **[新規ドメインの登録]** をクリックします。
    
     ![Register New Domain](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795004.png "Register New Domain")
 
-4. 新しいドメインを作成したら、 **[新規アドレス]**をクリックします。
+4. 新しいドメインを作成したら、 **[新規アドレス]** をクリックします。
    
     ![New Address](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795005.png "New Address")
 
@@ -241,7 +245,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
    
     ![保存](./media/active-directory-saas-mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a. **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。
     
     b. **[Global Name]\(グローバル名\)** ボックスに、**ユーザー名**を「**BrittaSimon**」と入力します。
 

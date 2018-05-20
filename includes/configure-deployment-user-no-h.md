@@ -1,6 +1,6 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: app-service
 author: cephalin
 ms.service: app-service

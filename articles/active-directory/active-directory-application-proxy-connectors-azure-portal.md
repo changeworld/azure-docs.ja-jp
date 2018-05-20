@@ -1,25 +1,25 @@
 ---
-title: "Azure AD アプリ プロキシのコネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する | Microsoft Docs"
-description: "Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。"
+title: Azure AD アプリ プロキシのコネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する | Microsoft Docs
+description: Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 58886fc8d1b713207d8cd2c5547d2f99420ba6eb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3ffc453c98f8d21f1cd6f7025387031bdacf073a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 
@@ -33,7 +33,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 >大規模なアプリケーション プロキシをデプロイしている場合は、アプリケーションを既定のコネクタ グループに割り当てないでください。 そうすると、新しいコネクタは、アクティブなコネクタ グループに割り当てられるまではライブ トラフィックを受信しません。 この構成では、コネクタを既定のグループに戻すことでアイドル状態にすることもできるので、ユーザーに影響を与えずにメンテナンスを実行できます。
 
 ## <a name="prerequisites"></a>前提条件
-コネクタをグループ化するには、 [複数のコネクタがインストールされている](active-directory-application-proxy-enable.md)ことを確認する必要があります。 新しいコネクタをインストールすると、そのコネクタは自動的に **Default** コネクタ グループに追加されます。
+コネクタをグループ化するには、 [複数のコネクタがインストールされている](manage-apps/application-proxy-enable.md)ことを確認する必要があります。 新しいコネクタをインストールすると、そのコネクタは自動的に **Default** コネクタ グループに追加されます。
 
 ## <a name="create-connector-groups"></a>コネクタ グループを作成する
 次の手順を使用して、コネクタ グループを必要な数だけ作成します。 
@@ -51,7 +51,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 アプリケーション プロキシを使って発行するアプリケーションごとに、次の手順を実行します。 アプリケーションを最初に発行するときにコネクタ グループに割り当てることができます。また、同じ手順を使って、必要に応じていつでも割り当てを変更することができます。   
 
 1. ディレクトリの管理ダッシュボードで、**[Enterprise applications (エンタープライズ アプリケーション)]** > **[すべてのアプリケーション]**、コネクタ グループに割り当てるアプリケーション、**[アプリケーション プロキシ]** の順に選択します。
-2. **[コネクタ グループ]**のドロップダウン メニューで、アプリケーションで使用するグループを選択します。
+2. **[コネクタ グループ]** のドロップダウン メニューで、アプリケーションで使用するグループを選択します。
 3. **[保存]** をクリックして変更を適用します。
 
 ## <a name="use-cases-for-connector-groups"></a>コネクタ グループのユース ケース 
@@ -126,6 +126,6 @@ Azure AD アプリケーション プロキシ コネクタ グループを使�
 ## <a name="next-steps"></a>次の手順
 
 * [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
-* [シングル サインオンを有効にする](application-proxy-sso-overview.md)
+* [シングル サインオンを有効にする](manage-apps/application-proxy-single-sign-on.md)
 
 

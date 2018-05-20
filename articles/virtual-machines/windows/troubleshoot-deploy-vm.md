@@ -1,6 +1,6 @@
 ---
 title: Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング | Microsoft Docs
-description: Azure Resource Manager デプロイメント モデルでの Windows 仮想マシンのデプロイに関する問題のトラブルシューティング。
+description: Azure Resource Manager デプロイ モデルでの Windows 仮想マシンのデプロイに関する問題のトラブルシューティング。
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 622d9f1f498435ae36d1b35b938b513849efc3c5
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: fda249295cf3bbf6f9577eb90a147f46524b95ff
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -113,9 +113,9 @@ Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シ
 
 VM は、実行されている場合、物理サーバーにデプロイされています。 Azure リージョンの物理サーバーは、一般的な物理ハードウェアのクラスターにグループ化されます。 別のハードウェア クラスターに VM を移動することが必要になる VM のサイズ変更は、VM のデプロイに使用したデプロイメント モデルに応じて異なります。
 
-- クラシック デプロイメント モデルでデプロイされた VM の場合、VM を他のサイズ ファミリのサイズに変更するには、クラウド サービス デプロイを削除し、再デプロイする必要があります。
+- クラシック デプロイ モデルでデプロイされた VM の場合、VM を他のサイズ ファミリのサイズに変更するには、クラウド サービス デプロイを削除し、再デプロイする必要があります。
 
-- Resource Manager デプロイメント モデルでデプロイされた VM の場合は、可用性セット内の VM のサイズを変更する前に、可用性セット内のすべての VM を停止する必要があります。
+- Resource Manager デプロイ モデルでデプロイされた VM の場合は、可用性セット内の VM のサイズを変更する前に、可用性セット内のすべての VM を停止する必要があります。
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>一覧の VM サイズが、可用性セットに対するデプロイでサポートされていません。
 

@@ -6,13 +6,13 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/20/2017
+ms.date: 04/10/2018
 ms.author: marsma
-ms.openlocfilehash: c993e55193ffb140f6c3aabfa7626b501ab24b9d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1272a4b547a4ba650678ce083a44bde3a5a3e583
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="geo-replicate-multi-region-deployments"></a>Geo レプリケーション転送を使用した複数リージョンへのデプロイ
 
-複数のリージョンにコンテナーをデプロイする場合は、Azure Container Registry の [Geo レプリケーション](container-registry-geo-replication.md)機能をご使用ください。 ローカル データ センターから世界各国の顧客にサービスを提供する場合であれ、開発チームの拠点が分散している場合であれ、レジストリを Geo レプリケーション転送することにより、レジストリの管理を省力化し、待ち時間を最小限に抑えることができます。 この機能は現在プレビュー段階です。[Premium](container-registry-skus.md) レジストリでご利用いただけます。
+複数のリージョンにコンテナーをデプロイする場合は、Azure Container Registry の [Geo レプリケーション](container-registry-geo-replication.md)機能をご使用ください。 ローカル データ センターから世界各国の顧客にサービスを提供する場合であれ、開発チームの拠点が分散している場合であれ、レジストリを Geo レプリケーション転送することにより、レジストリの管理を省力化し、待ち時間を最小限に抑えることができます。 geo レプリケーションは、[Premium](container-registry-skus.md) レジストリでのみ使用できます。
 
 Geo レプリケーションの使用方法については、[Azure Container Registry の Geo レプリケーション](container-registry-tutorial-prepare-registry.md)に関する 3 部構成のチュートリアルを参照してください。
 

@@ -11,14 +11,14 @@ ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cb78808b515bb3385f7cf56725441a2b228f0aba
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -86,7 +86,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    > ![IntelliJ のストレージ エクスプローラー](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
 
    
-3. 入力した情報が正しい場合、**[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
+3. 入力した情報が正しい場合は、**[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 
    ![リンクされたクラスター](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
@@ -283,11 +283,15 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 ![IntelliJ の [VM options]\(VM オプション\) ボックスへのオプションの追加](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>FAQ
-アプリケーションを Azure Data Lake Store に送信するには、Azure サインイン プロセスで **[Interactive]\(インタラクティブ\)** モードを選択します。 **[Automated]\(自動\)** モードを選択した場合は、エラーが発生することがあります。
+クラスターをリンクするときに、ストレージの資格情報を入力することをお勧めします。
 
-![対話型のサインイン](./media/apache-spark-intellij-tool-plugin/interative-signin.png)
+![クラスターをリンクし、ストレージの資格情報を入力する](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
 
-これで解決されました。 Azure Data Lake クラスターを選択して、任意のサインイン方法でアプリケーションを送信することができます。
+ジョブの送信には、2 つのモードがあります。 ストレージ資格情報が入力されると、バッチ モードが使用され、ジョブが送信されます。 入力されない場合、対話モードが使用されます。 クラスターがビジー状態の場合、以下のエラーが表示されることがあります。
+
+![クラスターがビジー状態のときの Intellij get エラー](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
+
+![クラスターがビジー状態のときの Intellij get エラー](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback-and-known-issues"></a>フィードバックと既知の問題
 現在、Spark の出力を直接表示する機能はサポートされていません。

@@ -1,9 +1,9 @@
 ---
-title: "Azure Payment Processing Blueprint - 暗号化要件"
-description: "PCI DSS 要件 4"
+title: Azure Payment Processing Blueprint - 暗号化要件
+description: PCI DSS 要件 4
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 43f75ba9-cb4e-49ab-b3f4-09e48310bc18
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 3eb5b663558c2a68c13368b179ff942dd3c53716
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 6de3290fc2147e3c8ed63642b6e8470093898ef6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境の暗号化要件 
 ## <a name="pci-dss-requirement-4"></a>PCI DSS 要件 4
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore とは、次のように強力な暗号化を実装する PaaS ソリューションです。<br /><br />保存データの暗号化要件を満たすために、[Azure Storage](https://azure.microsoft.com/services/storage/) では以下が使用されます。<br /><br /><ul><li>[Azure Storage Service Encryption (SSE) for Data at Rest](/azure/storage/storage-service-encryption)</li><li>SQL Database: PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、[PCI ガイダンス - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database) を参照してください。</li><li>[Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Azure Key Vault を使用して Azure Government、PCI DSS、HIPAA 要件に適合します。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore とは、次のように強力な暗号化を実装する PaaS ソリューションです。<br /><br />保存データの暗号化要件を満たすために、[Azure Storage](https://azure.microsoft.com/services/storage/) では以下が使用されます。<br /><br /><ul><li>[Azure Storage Service Encryption (SSE) for Data at Rest](/azure/storage/storage-service-encryption)</li><li>SQL Database: PaaS SQL Database インスタンスを使用して、データベースのセキュリティ対策を実装します。 詳細については、「[PCI Guidance - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database)」を参照してください。</li><li>[Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Azure Key Vault を使用して Azure Government、PCI DSS、HIPAA 要件に適合します。|
 
 
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスおよび SNMP は実装されていません。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | ソリューションでは、ワイヤレスおよび SNMP は実装されていません。|
 
 
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore には、保護されていないプライマリ アカウント番号 (PAN) データを送信するメッセージング ソリューションは実装されていません。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | Contoso Webstore には、保護されていないプライマリ アカウント番号 (PAN) データを送信するメッセージング ソリューションは実装されていません。|
 
 
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/16/2017
 |||
 |---|---|
 | **プロバイダー <br />(Microsoft&nbsp;Azure)** | 適用不可。 |
-| **お客様<br /> (PCI&#8209;DSS&nbsp;Blueprint)** | お客様には、カード所有者データを含む転送を暗号化し文書化する責任があります。|
+| **お客様 <br />(PCI&#8209;DSS&nbsp;Blueprint)** | お客様には、カード所有者データを含む転送を暗号化し文書化する責任があります。|
 
 
 

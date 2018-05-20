@@ -1,24 +1,24 @@
 ---
-title: "Web API を使用した現在のユーザーのプッシュ通知への登録 | Microsoft Docs"
-description: "ASP.NET Web API により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。"
+title: Web API を使用した現在のユーザーのプッシュ通知への登録 | Microsoft Docs
+description: ASP.NET Web API により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。
 services: notification-hubs
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c43c15131afb5fbf346b0137dac566f5331c65a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 > [!div class="op_single_selector"]
@@ -98,7 +98,7 @@ ms.lasthandoff: 12/21/2017
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    最初の行では、**DeviceInfo** シングルトンが初期化されます。 2 行目では、プッシュ通知の登録が開始されます。チュートリアル「[Notification Hubs の使用]」を既に終えている場合、この登録は既に存在しています。
+    最初の行では、**DeviceInfo** シングルトンが初期化されます。 2 行目は、プッシュ通知用の登録を開始します。これは、「[Notification Hubs の使用]」のチュートリアルを以前に完了していれば既に存在します。
 7. PushToUserAppDelegate.m で、AppDelegate に **didRegisterForRemoteNotificationsWithDeviceToken** メソッドを実装し、次のコードを追加します。
    
         self.deviceInfo.deviceToken = deviceToken;
@@ -111,7 +111,7 @@ ms.lasthandoff: 12/21/2017
    > 
 8. PushToUserAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
    
-   * (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }
+   * (void) application:(UIApplication *) application didReceiveRemoteNotification:(NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notification" message:                         [userInfo objectForKey:@"inAppMessage"] delegate:nil cancelButtonTitle:                         @"OK" otherButtonTitles:nil, nil];   [alert show]; }
    
    アプリケーションが実行中に通知を受信すると、このメソッドは UI にアラートを表示します。
 9. PushToUserViewController.m ファイルを開き、次の実装でキーボードを返します。

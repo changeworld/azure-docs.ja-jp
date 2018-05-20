@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f3c3bbb23b9d4439188286342d80eb1cc1d0833
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル: Azure Active Directory と Workday の統合
 
@@ -174,19 +174,17 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML Identity Providers")
    
-    c. **[Enable idp Initiated Logout]\(idp によって開始されたログアウトを有効にする\)** をオンにします。
-   
-    d. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** の値をコピーし、**[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに貼り付けます。
+    c. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** の値をコピーし、**[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに貼り付けます。
 
-    e. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML シングル サインオン サービスの URL]** の値をコピーし、**[IdP SSO Service URL]\(IdP SSO サービス URL\)** ボックスに貼り付けます。
+    d. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML シングル サインオン サービスの URL]** の値をコピーし、**[IdP SSO Service URL]\(IdP SSO サービス URL\)** ボックスに貼り付けます。
 
-    f. **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。
+    e. **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。
 
-    g. **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。 
+    f. **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。 
 
     ![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
 
-    h. **[x509 公開鍵の作成]** をクリックします。 
+    g. **[x509 公開鍵の作成]** をクリックします。 
 
     ![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
 

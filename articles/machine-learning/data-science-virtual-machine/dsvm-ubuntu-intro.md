@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 18465463e924c10ddc35d619992655773e12cc82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -95,7 +95,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    b. **[サイズ]**:
    
-   * 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 **[すべて表示]** を選択すると、VM サイズのさらに多くの選択肢が表示されます。 GPU トレーニング用に NC クラスの VM を選択します。
+   * 機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 **[すべて表示]** を選択すると、VM サイズのさらに多くの選択肢が表示されます。 GPU トレーニング用に NC クラスまたは ND クラスの VM を選択します。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページには、GPU のあるリージョンが一覧表示されます。
    
    c. **設定**:
    

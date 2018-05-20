@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs"
-description: "Azure Active Directory Domain Services 管理対象ドメインで Azure AD アプリケーション プロキシを使用します"
+title: 'Azure Active Directory Domain Services: Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs'
+description: Azure Active Directory Domain Services 管理対象ドメインで Azure AD アプリケーション プロキシを使用します
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services 管理対象ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
 
-Azure AD アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../active-directory/active-directory-application-proxy-get-started.md)」で、この機能の詳細を確認してください。
+Azure AD アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../active-directory/manage-apps/application-proxy.md)」で、この機能の詳細を確認してください。
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -90,12 +90,12 @@ Azure AD Domain Services 管理対象ドメインを有効化済みの同じ仮�
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure AD アプリケーション プロキシを設定し、Azure AD Domain Services の管理対象ドメインと統合しました。
 
 * **アプリケーションを Azure 仮想マシンに移行する:** オンプレミスのサーバーから管理対象ドメインに参加している Azure 仮想マシンにアプリケーションをリフトアンドシフトすることができます。 これは、サーバーをオンプレミスで実行するインフラストラクチャ コストをなくすのに役立ちます。
 
-* **Azure AD アプリケーション プロキシを使用してアプリケーションを発行する:** Azure AD アプリケーション プロキシを使用して、Azure 仮想マシンで実行されるアプリケーションを発行します。 詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/application-proxy-publish-azure-portal.md)に関するページを参照してください。
+* **Azure AD アプリケーション プロキシを使用してアプリケーションを発行する:** Azure AD アプリケーション プロキシを使用して、Azure 仮想マシンで実行されるアプリケーションを発行します。 詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)に関するページを参照してください。
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>デプロイの注意 - Azure AD アプリケーション プロキシを使用して IWA (統合 Windows 認証) アプリケーションを発行する

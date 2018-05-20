@@ -1,33 +1,33 @@
 ---
-title: "Azure AD アプリケーション プロキシを使用したアプリへのシングル サインオン | Microsoft Docs"
-description: "Azure Portal で Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへのシングルサインオンを有効にします。"
+title: Azure AD アプリケーション プロキシを使用したアプリへのシングル サインオン | Microsoft Docs
+description: Azure Portal で Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへのシングルサインオンを有効にします。
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 501017ae416cc8aa473077c98ae0a213db749547
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 77e7288060abd2577867023a777eb3bdd4331e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管
 
 Azure Active Directory アプリケーション プロキシを使用してオンプレミス アプリケーションを発行して、遠隔地の従業員がオンプレミス アプリケーションに安全にアクセスできるようにすることで生産性を上げることができます。 Azure Portal で、これらのアプリに対するシングル サインオン (SSO) を設定することもできます。 ユーザーは、Azure AD で認証されれば、もう一度サインインしなくても、エンタープライズ アプリケーションにアクセスできるようになります。
 
-アプリケーション プロキシは、さまざまな[シングル サインオン モード](application-proxy-sso-overview.md)をサポートします。 パスワード ベースのサインオンは、ユーザー名とパスワードの組み合わせを使用して認証を行うアプリケーションを対象としています。 アプリケーションでパスワード ベースのサインオンを構成すると、ユーザーは、オンプレミスのアプリケーションに 1 度だけサインインする必要があります。 その後、Azure Active Directory はサインイン情報を格納し、ユーザーがアプリケーションにリモートでアクセスしたときにサインイン情報をアプリケーションに自動的に提供します。 
+アプリケーション プロキシは、さまざまな[シングル サインオン モード](manage-apps/application-proxy-single-sign-on.md)をサポートします。 パスワード ベースのサインオンは、ユーザー名とパスワードの組み合わせを使用して認証を行うアプリケーションを対象としています。 アプリケーションでパスワード ベースのサインオンを構成すると、ユーザーは、オンプレミスのアプリケーションに 1 度だけサインインする必要があります。 その後、Azure Active Directory はサインイン情報を格納し、ユーザーがアプリケーションにリモートでアクセスしたときにサインイン情報をアプリケーションに自動的に提供します。 
 
-アプリケーション プロキシを使用したアプリの発行とテストを既に行っている必要があります。 そうでない場合は、「[Azure AD アプリケーション プロキシを使用したアプリの発行](application-proxy-publish-azure-portal.md)」の手順に従った後、この記事に戻ってください。 
+アプリケーション プロキシを使用したアプリの発行とテストを既に行っている必要があります。 そうでない場合は、「[Azure AD アプリケーション プロキシを使用したアプリの発行](manage-apps/application-proxy-publish-azure-portal.md)」の手順に従った後、この記事に戻ってください。 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>アプリケーションのパスワード保管の設定
 
@@ -55,5 +55,5 @@ Azure Active Directory アプリケーション プロキシを使用してオ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [アプリケーション プロキシを使用したシングル サインオン](application-proxy-sso-overview.md)を実装するための他の方法を参照します。
+- [アプリケーション プロキシを使用したシングル サインオン](manage-apps/application-proxy-single-sign-on.md)を実装するための他の方法を参照します。
 - [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security-considerations.md)を確認します。

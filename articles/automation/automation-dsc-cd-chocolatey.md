@@ -3,16 +3,17 @@ title: Chocolatey を使用した Azure Automation DSC の継続的なデプロ�
 description: Azure Automation DSC と Chocolatey パッケージ マネージャーを使用した DevOps の継続的なデプロイメント。  完全な JSON の ARM テンプレートと PowerShell ソースの例です。
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9c3cb5a00433a76e8cc444cc48c648cb2749a2ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 DevOps 領域には、継続的な統合パイプラインのさまざまなポイントで役立つ多くのツールがあります。  Azure Automation Desired State Configuration (DSC) は、DevOps チームが採用できる新たに追加された待望のオプションです。  この記事では、Windows コンピューター用の継続的なデプロイメント (CD) の設定について説明します。  必要な数の Windows コンピューターをロール (Web サイトなど) に含め、さらにそこから追加ロールにも含めるために手法を簡単に拡張することができます。
@@ -36,7 +37,7 @@ Azure Automation は、Runbook、ノード、資格情報、スケジュール�
 
 DSC リソースは、ネットワーク、Active Directory、または SQL Server の管理などの特定の機能を備えたコードのモジュールです。  Chocolatey DSC リソースは、(特に) NuGet サーバーへのアクセス、パッケージのダウンロード、パッケージのインストールなどの方法を認識しています。  [PowerShell ギャラリー](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)には、その他の多くの DSC リソースがあります。  これらのモジュールは、(ユーザーによって) Azure Automation DSC プル サーバーにインストールされるため、ユーザーの構成で使用できます。
 
-Resource Manager テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。  この[記事](../azure-resource-manager/resource-manager-deployment-model.md)では、Resource Manager デプロイメント モデル (宣言型) と Azure Service Management (ASM、つまりクラシック) デプロイメント モデル (命令型) が比較されており、また、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
+Resource Manager テンプレートでは、インフラストラクチャ (ネットワーク、サブネット、ネットワークのセキュリティおよびルーティング、Load Balancer、NIC、VM など) を宣言的な方法で生成できます。  この[記事](../azure-resource-manager/resource-manager-deployment-model.md)では、Resource Manager デプロイ モデル (宣言型) と Azure Service Management (ASM、つまりクラシック) デプロイ モデル (命令型) が比較されており、また、コア リソース プロバイダー、コンピューティング、ストレージおよびネットワークについて記載されています。
 
 Resource Manager テンプレートの 1 つの主要機能は、プロビジョニングされている VM に VM 拡張機能をインストールする機能です。  VM 拡張機能には、カスタム スクリプトの実行、ウイルス対策ソフトウェアのインストール、DSC 構成スクリプトの実行などの特定の機能があります。  VM 拡張機能には他にも多くの種類があります。
 

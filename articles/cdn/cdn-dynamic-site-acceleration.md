@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -183,9 +183,6 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。 
 
 例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。  この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。 
-
-ASP.NET Web アプリケーションでコントローラーを使用して、特定の CDN URL を介してコンテンツを配信する方法の例については、「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller)」をご覧ください。
-
 
 
 

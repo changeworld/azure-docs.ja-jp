@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service (AKS) クラスターのスケーリング"
-description: "Azure Container Service (AKS) クラスターをスケーリングします。"
+title: Azure Kubernetes Service (AKS) クラスターのスケーリング
+description: Azure Kubernetes Service (AKS) クラスターのスケーリング。
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: fbbc24c958152806964412b426aff81a894d4412
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 37f949e1e043e62b8bd8f73a2b40d0549f77adc3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="scale-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのスケーリング
+# <a name="scale-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのスケーリング
 
 AKS クラスターをさまざまな数のノードに容易にスケーリングできます。  目的のノードの数を選択し、`az aks scale` コマンドを実行します。  スケール ダウンの際、実行中のアプリケーションへの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます][kubernetes-drain]。  スケール アップの際、ノードが Kubernetes クラスターによって `Ready` としてマークされるまで、`az` コマンドは待機します。
 

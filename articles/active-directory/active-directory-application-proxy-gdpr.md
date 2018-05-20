@@ -15,11 +15,11 @@ ms.date: 02/16/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5e99fba2f226e1e9b401bd8ef5b3b85a5e8c6a7c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a3df15743b4918d72fac5f8769a2d3ee721a452f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="gdpr-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシの GDPR  
 
@@ -80,5 +80,5 @@ GDPR 準拠を維持する方法は 2 つあります。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD アプリケーション プロキシの概要については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」をご覧ください。
+Azure AD アプリケーション プロキシの概要については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md)」をご覧ください。
 

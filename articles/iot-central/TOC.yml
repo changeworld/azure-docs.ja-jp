@@ -1,0 +1,109 @@
+- name: Azure IoT の基礎
+  href: /azure/iot-fundamentals
+- name: Azure IoT Central のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure IoT Central とは
+      href: overview-iot-central.md
+    - name: IoT ソリューションのオプション
+      href: overview-iot-options.md
+    - name: UI について
+      href: overview-iot-central-tour.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 新しいアプリケーションを作成する
+      href: quick-deploy-iot-central.md
+- name: チュートリアル
+  items:
+    - name: 開発者
+      items:
+        - name: 1 - 新しいデバイスの種類を定義する
+          href: tutorial-define-device-type.md
+        - name: 2 - ルールを構成する
+          href: tutorial-configure-rules.md
+        - name: 3 - オペレーターのビューをカスタマイズする
+          href: tutorial-customize-operator.md
+    - name: 演算子
+      items:
+        - name: 4 - デバイスを監視する
+          href: tutorial-monitor-devices.md
+        - name: 5 - デバイスを追加する
+          href: tutorial-add-device.md
+- name: 概念
+  items:
+    - name: アーキテクチャ
+      href: concepts-architecture.md
+    - name: 接続
+      href: concepts-connectivity.md
+- name: ハウツー ガイド
+  items:
+    - name: 管理者
+      items:
+        - name: アプリケーションの作成
+          href: howto-create-application.md
+        - name: アプリケーションの管理
+          href: howto-administer.md
+    - name: 開発者
+      items:
+        - name: デバイス テンプレートを設定する
+          href: howto-set-up-template.md
+        - name: デバイス テンプレートをバージョン管理する
+          href: howto-version-devicetemplate.md
+        - name: テレメトリ ルールを作成する
+          href: howto-create-telemetry-rules.md
+        - name: イベント ルールを作成する
+          href: howto-create-event-rules.md
+        - name: 画像を準備してアップロードする
+          href: howto-prepare-images.md
+    - name: 演算子
+      items:
+        - name: デバイスを管理する
+          href: howto-manage-devices.md
+        - name: デバイス セットを使用する
+          href: howto-use-device-sets.md
+        - name: カスタム分析を作成する
+          href: howto-create-analytics.md
+    - name: デバイス開発者
+      items:
+        - name: Node.js (汎用) アプリケーションを準備して接続する
+          href: howto-connect-nodejs.md
+        - name: MXChip IoT DevKit を準備して接続する
+          href: howto-connect-devkit.md
+        - name: Raspberry Pi (Python) を準備して接続する
+          href: howto-connect-raspberry-pi-python.md
+        - name: 'Raspberry Pi (C#) を準備して接続する'
+          href: howto-connect-raspberry-pi-csharp.md
+        - name: Windows IoT Core デバイスを準備して接続する
+          href: howto-connect-windowsiotcore.md
+- name: 関連項目
+  items:
+    - name: 解決方法
+      items:
+        - name: IoT Suite の構成済みソリューション
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /microsoft-iot-central
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: サービス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: リソース
+  items:
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-central'

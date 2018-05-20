@@ -4,7 +4,7 @@ description: このドキュメントは、Azure Security Center からアラー
 services: security, security-center
 documentationcenter: na
 author: TomShinder
-manager: swadhwa
+manager: mbaldwin
 editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: bde17a47e0e3e70daf52f4c460118c054b7c1152
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
 暗号化されていない仮想マシンがある場合には、Azure Security Center からアラートを受け取ります。 これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。

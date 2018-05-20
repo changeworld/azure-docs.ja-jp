@@ -15,15 +15,15 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション 
 
-Azure Active Directory (Azure AD) では、大量のオンプレミス アプリケーションを構成すると、すぐに管理できなくなる可能性があります。また、それらのアプリケーションの多数で同じ設定が必要な場合に構成エラーが発生する不要なリスクが生じます。 [Azure AD アプリケーション プロキシ](active-directory-application-proxy-get-started.md)では、ワイルドカード アプリケーション発行を使用して多数のアプリケーションを同時に発行および管理し、この問題を解決できます。 このソリューションでは、以下が可能になります。
+Azure Active Directory (Azure AD) では、大量のオンプレミス アプリケーションを構成すると、すぐに管理できなくなる可能性があります。また、それらのアプリケーションの多数で同じ設定が必要な場合に構成エラーが発生する不要なリスクが生じます。 [Azure AD アプリケーション プロキシ](manage-apps/application-proxy.md)では、ワイルドカード アプリケーション発行を使用して多数のアプリケーションを同時に発行および管理し、この問題を解決できます。 このソリューションでは、以下が可能になります。
 
 -   管理オーバーヘッドを軽減する
 -   潜在的な構成エラーの数を減少させる
@@ -48,14 +48,14 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 構成設定が異なるその他のアプリケーションがある場合、これらの例外を別個のアプリケーションとして発行し、ワイルドカードに設定された既定値を上書きする必要があります。 ワイルドカードのないアプリケーションは、常にワイルドカード アプリケーションよりも優先されます。 構成上、これらは "ただの" 通常のアプリケーションです。
 
-ワイルドカード アプリケーションの作成は、他のすべてのアプリケーションで使用できるのと同じ[アプリケーション発行フロー](application-proxy-publish-azure-portal.md)に基づきます。 唯一の違いは、URL にワイルドカードを含めることだけです。場合によっては SSO 構成にもワイルドカードを含めます。
+ワイルドカード アプリケーションの作成は、他のすべてのアプリケーションで使用できるのと同じ[アプリケーション発行フロー](manage-apps/application-proxy-publish-azure-portal.md)に基づきます。 唯一の違いは、URL にワイルドカードを含めることだけです。場合によっては SSO 構成にもワイルドカードを含めます。
 
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="custom-domains"></a>カスタム ドメイン
 
-[カスタム ドメイン](active-directory-application-proxy-custom-domains.md)は他のすべてのアプリケーションではオプションですが、ワイルドカード アプリケーションでは前提条件です。 カスタム ドメインの作成には以下が必要です。
+[カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md)は他のすべてのアプリケーションではオプションですが、ワイルドカード アプリケーションでは前提条件です。 カスタム ドメインの作成には以下が必要です。
 
 1. Azure 内で確認済みドメインを作成する 
 2. PFX 形式の SSL 証明書をアプリケーション プロキシにアップロードする。
@@ -112,12 +112,12 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 [MyApps パネル](https://myapps.microsoft.com)では、ワイルドカード アプリケーションが単一のタイルで表されます。 既定では、このタイルは非表示です。 タイルを表示してユーザーを特定のページに到達させるには:
 
-1. [ホームページ URL の設定](application-proxy-office365-app-launcher.md)に関するガイドラインに従います。
+1. [ホームページ URL の設定](manage-apps/application-proxy-configure-custom-home-page.md)に関するガイドラインに従います。
 2. アプリケーション プロパティ ページで **[Show Application]\(アプリケーションの表示\)** を **true** に設定します。
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos の制約付き委任
 
-[Kerberos の制約付き委任 (KCD) を SSO 方法として](active-directory-application-proxy-sso-using-kcd.md)使用しているアプリケーションでは、SSO 方法に関してリストされる SPN にもワイルドカードが必要な場合があります。 たとえば、SPN は `HTTP/*.adventure-works.com` などになります。 さらに、バックエンド サーバーで個別の SPN を構成する必要があります (例: `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`)。
+[Kerberos の制約付き委任 (KCD) を SSO 方法として](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)使用しているアプリケーションでは、SSO 方法に関してリストされる SPN にもワイルドカードが必要な場合があります。 たとえば、SPN は `HTTP/*.adventure-works.com` などになります。 さらに、バックエンド サーバーで個別の SPN を構成する必要があります (例: `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`)。
 
 
 
@@ -136,7 +136,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 - プロパティが同じです
 
 
-「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」で説明されている手順を使用して、ワイルドカード アプリケーションを発行できます。 このシナリオは以下を前提とします。
+「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」で説明されている手順を使用して、ワイルドカード アプリケーションを発行できます。 このシナリオは以下を前提とします。
 
 - ID が `000aa000-11b1-2ccc-d333-4444eee4444e` のテナント 
 
@@ -144,7 +144,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 - `*.adventure-works.com` が `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` を指す **CNAME** エントリが作成されている。
 
-[文書化されている手順](application-proxy-publish-azure-portal.md)に従って、新しいアプリケーション プロキシ アプリケーションをテナントに作成します。 この例では、ワイルドカードが次のフィールド内にあります。
+[文書化されている手順](manage-apps/application-proxy-publish-azure-portal.md)に従って、新しいアプリケーション プロキシ アプリケーションをテナントに作成します。 この例では、ワイルドカードが次のフィールド内にあります。
 
 - 内部 URL:
 
@@ -183,7 +183,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 `finance.adventure-works.com` がアプリケーション用のアプリケーション プロキシ ページで指定された特定のアプリケーション エンドポイントを指す CNAME レコードを用意する必要があります。 このシナリオでは、`finance.adventure-works.com` が `https://finance-awcycles.msappproxy.net/` を指します。 
 
-[文書化された手順](application-proxy-publish-azure-portal.md)に従うと、このシナリオには以下の設定が必要です。
+[文書化された手順](manage-apps/application-proxy-publish-azure-portal.md)に従うと、このシナリオには以下の設定が必要です。
 
 
 - **内部 URL** で、ワイルドカードの代わりに **finance** を設定します。 
@@ -212,8 +212,8 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 詳細情報は、次のとおりです。
 
-- **カスタム ドメイン**については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](active-directory-application-proxy-custom-domains.md)」を参照してください。
+- **カスタム ドメイン**については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](manage-apps/application-proxy-configure-custom-domain.md)」を参照してください。
 
-- **アプリケーションの発行**については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。
+- **アプリケーションの発行**については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。
 
 

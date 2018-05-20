@@ -1,6 +1,6 @@
 ---
-title: Azure Container Service での Kubernetes に対する Jenkins の継続的デプロイ
-description: Jenkins で継続的デプロイ プロセスを自動化し、Azure Container Service で Kubernetes 上のコンテナー化されたアプリをデプロイおよびアップグレードする方法
+title: Azure Kubernetes Service での Kubernetes に対する Jenkins の継続的デプロイ
+description: Jenkins で継続的デプロイ プロセスを自動化し、Azure Kubernetes Service で Kubernetes 上のコンテナー化されたアプリをデプロイおよびアップグレードする方法
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Jenkins と Azure Container Service を使った継続的デプロイ
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Jenkins と Azure Kubernetes Service を使った継続的デプロイ
 
-このドキュメントでは、Jenkins と Azure Container Service (AKS) クラスターの間の基本的な継続的デプロイのワークフローを設定する方法を示します。
+このドキュメントでは、Jenkins と Azure Kubernetes Service (AKS) クラスターの間の基本的な継続的デプロイのワークフローを設定する方法を示します。
 
 ワークフローの例には次の手順が含まれます。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 04/19/2018
 この記事の手順を完了するには、次のものが必要です。
 
 - Kubernetes、Git、CI/CD、Azure Container Registry (ACR) についての基本的な理解。
-- 開発システム上に構成された [Azure Container Service (AKS) クラスター][aks-quickstart]および [AKS 資格情報][aks-credentials]。
+- 開発システム上に構成された [Azure Kubernetes Service (AKS) クラスター][aks-quickstart]および [AKS 資格情報][aks-credentials]。
 - [Azure Container Registry (ACR) レジストリ][acr-quickstart]、ACR ログイン サーバー名、およびプッシュ アクセスとプル アクセスが可能な [ACR 資格情報][acr-authentication]。
 - 開発システムにインストールされた Azure CLI。
 - 開発システムにインストールされた Docker。

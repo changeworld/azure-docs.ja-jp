@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: bwren
-ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](monitoring-solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/03/2018
 | **管理ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
 | [Azure ネットワーク セキュリティ グループ分析](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知時 |
 | [Azure SQL Analytics (プレビュー)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 分 |
-| [Backup](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | 該当なし |
+| [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知時 |
 | [Capacity and Performance (プレビュー)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
 | [変更の追跡](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
 | [変更の追跡](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |1 時間に 1 回 |

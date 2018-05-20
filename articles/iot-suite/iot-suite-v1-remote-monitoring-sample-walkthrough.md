@@ -1,12 +1,12 @@
 ---
-title: "リモート監視の事前構成済みソリューションのチュートリアル | Microsoft Docs"
-description: "Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
-services: 
+title: リモート監視の事前構成済みソリューションのチュートリアル | Microsoft Docs
+description: Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 7cef60998cf9e46a8d89f8ad53edd0382e3ce76e
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>リモート監視の事前構成済みソリューションのチュートリアル
 
@@ -35,7 +35,17 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 次の図は、事前構成済みソリューションの論理コンポーネントの概要を示したものです。
 
-![論理アーキテクチャ](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![論理アーキテクチャ](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+
+## <a name="microservices--docker-containers"></a>Microservices および Docker コンテナー
+リモート監視は、マイクロサービス アーキテクチャを利用した最初の構成済みソリューションです。 ソリューションは、[.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) と [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) の両方で使用できます。
+マイクロサービスは、開発スピードを損なうことなく、拡張性と柔軟性を実現する (コンテナーを個別にスケーリングできることで) 一般的なパターンとして出現しました。
+マイクロサービスは、コードを区分し、適切に定義されたインターフェイスを提供して、ソリューションを理解しやすく、モノリシック化を低減します。 さらに、現在のソリューション アクセラレータを拡張して、収益化可能な完成したソリューションを構築したいと考えるパートナーにとって、選択肢を拡げます。
+
+**Docker Containers の詳細**
+* [Docker のインストール](https://docs.docker.com/engine/installation/)
+* [リモート監視のための一般的な Docker コマンド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#common-docker-commands)
+* [Docker の概要](https://docs.docker.com/get-started/)
 
 ## <a name="simulated-devices"></a>シミュレートされたデバイス
 
@@ -45,7 +55,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレーション デバイスはそれぞれ、次の種類のメッセージを IoT Hub に送信することができます。
 
-| メッセージ | Description |
+| メッセージ | [説明] |
 | --- | --- |
 | Startup |デバイスは、起動すると、デバイス自体に関する情報が含まれる **device-info** メッセージをバックエンドに送信します。 このデータには、デバイス ID と、デバイスでサポートされているコマンドとメソッドの一覧が含まれています。 |
 | プレゼンス |デバイスは定期的に **presence** メッセージを送信して、センサーの存在を感知できるかどうかを報告します。 |
@@ -92,7 +102,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレートされたデバイスは、ソリューション ポータルから IoT ハブを通じて呼び出された以下のメソッド ([ダイレクト メソッド][lnk-direct-methods]) を処理することができます。
 
-| 方法 | Description |
+| 方法 | [説明] |
 | --- | --- |
 | InitiateFirmwareUpdate |ファームウェアの更新を実行するようにデバイスに指示します |
 | Reboot |再起動するようにデバイスに指示します |
@@ -104,7 +114,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレートされたデバイスは、ソリューション ポータルから IoT ハブを通じて送信される以下のコマンド (cloud-to-device メッセージ) を処理することができます。
 
-| コマンド | Description |
+| コマンド | [説明] |
 | --- | --- |
 | PingDevice |デバイスに *ping* を送信して、デバイスが起動しているかどうかを確認します。 |
 | StartTelemetry |デバイスのテレメトリ送信を開始します。 |
@@ -260,7 +270,7 @@ Web アプリのこのページでは、デバイスから送信されたテレ�
 * デバイスのコマンド履歴を表示する
 * デバイスの有効と無効を切り替える。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 以下の TechNet ブログ投稿には、リモート監視の構成済みソリューションについての詳細情報が記載されています。
 

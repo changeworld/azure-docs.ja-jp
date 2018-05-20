@@ -41,7 +41,7 @@
 ### [OAuth 2.0 認証コード付与](active-directory-protocols-oauth-code.md)
 ### [OAuth 2.0 の暗黙的な付与](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [ロール要求の構成](active-directory-enterprise-app-role-management.md)
+### [ロール要求の構成](../active-directory-enterprise-app-role-management.md)
 ### [要求をカスタマイズする](active-directory-saml-claims-customization.md)
 ### [SAML ベースの SSO をデバッグする](active-directory-saml-debugging.md)
 ### [シングル サインオンの SAML プロトコル](active-directory-single-sign-on-protocol-reference.md)

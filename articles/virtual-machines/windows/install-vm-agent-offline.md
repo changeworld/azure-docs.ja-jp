@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: genli
-ms.openlocfilehash: 8b9d1ea3e4b5bf959484a737453d7f6f1f63d1e6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 77ce133232b63a590c6c7f9361d1ca456f484093
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -111,7 +111,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 ### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>Azure Resource Manager で作成された VM に対して ProvisionGuestAgent プロパティを使用する
 
-Resource Manager デプロイメント モデルを使用して VM を作成した場合は、Azure PowerShell モジュールを使用して **ProvisionGuestAgent** プロパティを更新します。 このプロパティによって、Azure は VM に VM エージェントがインストールされていることを認識します。
+Resource Manager デプロイ モデルを使用して VM を作成した場合は、Azure PowerShell モジュールを使用して **ProvisionGuestAgent** プロパティを更新します。 このプロパティによって、Azure は VM に VM エージェントがインストールされていることを認識します。
 
 **ProvisionGuestAgent** プロパティを設定するには、Azure PowerShell で次のコマンドを実行します。
 
@@ -130,5 +130,5 @@ Resource Manager デプロイメント モデルを使用して VM を作成し�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure 仮想マシン エージェントの概要](agent-user-guide.md)
+- [Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)
 - [Windows 用の仮想マシン拡張機能とその機能](extensions-features.md)

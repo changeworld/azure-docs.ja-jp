@@ -3,23 +3,23 @@ title: Azure Active Directory でのエンタープライズ アプリのシン�
 description: Azure Active Directory アプリケーション ギャラリーから、組織内のエンタープライズ アプリケーションのシングル サインオン設定を管理します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 editor: ''
-ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 45141551c502c89311ab7e43b53af50450d8babd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>エンタープライズ アプリのシングル サインオンの管理
 
@@ -28,16 +28,16 @@ ms.lasthandoff: 03/23/2018
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
 シングル サインオン用に設定されているすべてのエンタープライズ アプリを、Azure Portal で表示し、管理できます。 これらのアプリケーションは、ポータルの **[すべてのサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 
 
-![Enterprise Applications blade][1]
+![Enterprise Applications blade](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.png)
 
 **[すべてのアプリケーション]** を選択して、構成されているすべてのアプリの一覧を表示します。 アプリを選択すると、そのアプリのリソースが表示され、アプリのレポートを表示したり、さまざまな設定を管理したりできます。
 
-シングル サインオン設定を管理するには、 **[シングル サインオン]**を選択します。
+シングル サインオン設定を管理するには、 **[シングル サインオン]** を選択します。
 
-![Application resource blade][2]
+![Application resource blade](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.png)
 
 ## <a name="single-sign-on-modes"></a>シングル サインオン モード
-**[シングル サインオン]**ページの先頭には **[モード]** メニューがあり、これを使用してシングル サインオン モードを構成できます。 利用可能なオプションは、次のとおりです。
+**[シングル サインオン]** ページの先頭には **[モード]** メニューがあり、これを使用してシングル サインオン モードを構成できます。 利用可能なオプションは、次のとおりです。
 
 * **SAML ベースのサインオン** - Azure Active Directory に SAML 2.0 プロトコル、WS-Federation、OpenID Connect プロトコルのいずれかを組み合わせた完全なフェデレーション シングル サインオンがアプリケーションでサポートされている場合は、このオプションを使用できます。
 * **パスワード ベースのサインオン** - Azure AD でこのアプリケーションのパスワード フォームの入力がサポートされている場合は、このオプションを使用できます。
@@ -76,24 +76,19 @@ ms.lasthandoff: 03/23/2018
 > 
 > 
 
-![Embedded docs][3]
+![Embedded docs](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>パスワード ベースのサインオン
 アプリケーションでサポートされている場合は、パスワードベースの SSO モードを選択し、 **[保存]** を選択すると、パスワードベースの SSO を実行するようにアプリケーションがすぐに構成されます。 パスワードベースの SSO のデプロイの詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
 
-![パスワード ベースのサインオン][4]
+![パスワード ベースのサインオン](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>リンクされたサインオン
 アプリケーションでサポートされている場合は、リンクされた SSO モードを選択すると、このアプリでユーザーがクリックしたときに Azure AD アクセス パネルまたは Office 365 がリダイレクトする URL を入力できます。 リンクされた SSO (以前の "既存の SSO") の詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
 
-![リンクされたサインオン][5]
+![リンクされたサインオン](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 
 ## <a name="feedback"></a>フィードバック
 
 改良された Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
 
-[1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG
-[3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
-[4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
-[5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG

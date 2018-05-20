@@ -1,6 +1,6 @@
 ---
 title: ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs
-description: Azure Resource Manager デプロイメント モデルで、Azure Portal を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
+description: Azure Resource Manager デプロイ モデルで、Azure Portal を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: b053993bec74d358dd7a0a8889fa05885b563b16
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/16/2018
 
 NSG では、仮想マシン (VM) を出入りするトラフィックのタイプを制御できます。 NSG は、Azure Virtual Network (VNet)、ネットワーク インターフェイス (NIC)、または両方のサブネットに適用できます。 NIC に効果的に規則を適用するには、NSG 内にある規則の集合体を NIC と接続しているサブネットに適用します。 場合によっては、これらのNSG 全体の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。  
 
-VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイメント モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワーク](virtual-networks-overview.md)と[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の概要に関する記事を参照してください。
+VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイ モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワーク](virtual-networks-overview.md)と[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の概要に関する記事を参照してください。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング
 次のシナリオでは、一般的な接続の問題の例を示します。
@@ -46,7 +46,7 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
 
 NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧できます。 操作を行う権限を持っていれば、有効な規則のブレードから NIC とサブネット両方の NSG ルールを追加、変更、削除できます。
 
-1. Azure アカウントを使用して Azure Portal (https://portal.azure.com) にログインします。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
+1. Azure アカウントを使用して Azure Portal (https://portal.azure.com) にログインします。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 2. **[すべてのサービス]** をクリックし、表示される一覧で **[仮想マシン]** をクリックします。
 3. 表示される一覧からトラブルシューティングを実行する VM を選択すると、VM のブレードとオプションが表示されます。
 4. **[問題の診断と解決]** をクリックし、一般的な問題を選択します。 例として、 **[Windows VM に接続できません]** を選択します。 
@@ -83,7 +83,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
    > 
    > 
 8. NSG 規則を編集するには、 *[Associated NSGs (関連付けられた NSG)]* セクションの **[Subnet1-NSG]** をクリックします。
-   **Subnet1-NSG** ブレードが開きます。 **[受信セキュリティ規則]**をクリックすると規則を直接編集できます。
+   **Subnet1-NSG** ブレードが開きます。 **[受信セキュリティ規則]** をクリックすると規則を直接編集できます。
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image7.png)
 9. **Subnet1-NSG** で *denyRDP* の受信規則を削除し、*allowRDP* 規則を追加すると、有効な規則の一覧は次の図のようになります。

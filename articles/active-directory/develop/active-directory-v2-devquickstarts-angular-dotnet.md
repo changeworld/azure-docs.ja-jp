@@ -1,37 +1,39 @@
 ---
-title: "Azure AD v2.0 .NET AngularJS シングル ページ アプリの概要 | Microsoft Docs"
-description: "ユーザーのサインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法について説明します。"
+title: Azure AD v2.0 .NET AngularJS シングル ページ アプリの概要 | Microsoft Docs
+description: ユーザーのサインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Angular JS シングル ページ アプリを構築する方法について説明します。
 services: active-directory
-documentationcenter: 
-author: jmprieur
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d1ddeb957096dc506bc76e1aac600eaa5bc2fbc
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>AngularJS シングル ページ アプリへのサインインの追加 - .NET
 この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory v2.0 エンドポイントを使用して AngularJS アプリに追加します。  v2.0 エンドポイントを使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
 
-ここで扱うサンプルは、タスクをバックエンドの REST API に格納する簡単な To-Do List シングル ページ アプリです。.NET 4.5 MVC フレームワークで記述され、Azure AD の OAuth ベアラー トークンを使用して保護されます。  AngularJS アプリは、オープン ソースの JavaScript 認証ライブラリ [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) を使用して、サインイン プロセス全体を処理し、REST API を呼び出すためのトークンを取得します。  [Microsoft Graph](https://graph.microsoft.com) などの他の REST API に対する認証にも、同じパターンを適用できます。
+ここで扱うサンプルは、タスクをバックエンドの REST API に格納する簡単な To-Do List シングル ページ アプリです.NET 4.5 MVC フレームワークで記述され、Azure AD の OAuth ベアラー トークンを使用して保護されます。  AngularJS アプリは、オープン ソースの JavaScript 認証ライブラリ [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) を使用して、サインイン プロセス全体を処理し、REST API を呼び出すためのトークンを取得します。  [Microsoft Graph](https://graph.microsoft.com) などの他の REST API に対する認証にも、同じパターンを適用できます。
 
 > [!NOTE]
 > Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。  v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 > 
 > 
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 作業を開始するには、Visual Studio をダウンロードしてインストールする必要があります。  インストールが完了したら、スケルトン アプリを複製または [ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) できます。
 
 ```

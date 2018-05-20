@@ -73,6 +73,16 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 4 - Service Fabric を使用した API Management のデプロイ
           href: service-fabric-tutorial-deploy-api-management.md
+    - name: AWS でのスタンドアロン クラスターの作成
+      items:
+        - name: 1- AWS でのインフラストラクチャの作成
+          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 2- Service Fabric の設定
+          href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
+        - name: 3- クラスターへのアプリケーションのデプロイ
+          href: service-fabric-tutorial-standalone-install-an-application.md
+        - name: 4- クラスターのクリーンアップとインフラストラクチャの削除
+          href: service-fabric-tutorial-standalone-clean-up.md
 - name: サンプル
   items:
     - name: コード サンプル

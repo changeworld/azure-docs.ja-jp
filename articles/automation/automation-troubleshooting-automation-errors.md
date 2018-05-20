@@ -3,6 +3,7 @@ title: Azure Automation の一般的な問題のトラブルシューティン�
 description: この記事には、Azure Automation の一般的なエラーのトラブルシューティングを行って修正する際に役立つ情報が記載されています。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
@@ -10,11 +11,11 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Automation のエラー, トラブルシューティング, 問題
-ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d8bf617aaef463121abe76cd85a98615c83f11ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
@@ -55,7 +56,8 @@ ms.lasthandoff: 04/20/2018
 
 **エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。 代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
-**トラブルシューティングのヒント:** Azure クラシック デプロイメント モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
+
+  **トラブルシューティングのヒント:** Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
 ### <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-it-failed-to-start-each-time"></a>シナリオ: Runbook ジョブの開始を 3 回試行したが、開始できない

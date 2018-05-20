@@ -1,23 +1,23 @@
 ---
-title: "Azure Notification Hubs での APNS のトークンベース (HTTP/2) 認証 | Microsoft Docs"
-description: "このトピックでは、APNS 用の新しいトークン認証を活用する方法について説明します"
+title: Azure Notification Hubs での APNS のトークンベース (HTTP/2) 認証 | Microsoft Docs
+description: このトピックでは、APNS 用の新しいトークン認証を活用する方法について説明します
 services: notification-hubs
 documentationcenter: .net
-author: kpiteira
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/17/2017
-ms.author: kapiteir
-ms.openlocfilehash: 5a21bcd9f12fc3f96b17a556ba15526c35ababe2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: ca86130e9c184576fc44119190d6224a363c6561
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証
 ## <a name="overview"></a>概要
@@ -76,7 +76,7 @@ APNS での証明書資格情報の使用から移行する場合は、次の点
 構成しているアプリケーションがサンドボックス アプリと実稼働アプリのどちらであるか (Apple 開発者アカウントで指定) に応じて、対応するいずれかのエンドポイントを使用します。
 
 - サンドボックス エンドポイント: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-- 実稼働エンドポイント: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
+- 運用エンドポイント: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
 > トークンベースの認証には、**2017-04 以降** の API バージョンが必要です。

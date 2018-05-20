@@ -3,7 +3,7 @@ title: Azure API Management での最初の API のインポートと発行 | Mi
 description: API Management で最初の API をインポートおよび発行する方法を説明します。
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: a72e870b1c98ec363b217030cf1e2f61ceaad5d9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a7a4391b436af4ffa303741397f0be7abf0186fb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 

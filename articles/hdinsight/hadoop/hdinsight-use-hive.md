@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 9f67bc93758b98060efbef2cb7f1c200a62d7e65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e418411cc6b681e304cc1ba66f0c815ad0d4db64
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
@@ -43,11 +43,11 @@ HDInsight で Hive を使用するさまざまな方法を次の表に示しま�
 
 | **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
+| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* |Windows |
 | [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
 | [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows* |Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux または Windows* |Windows |
 | [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
 
 > [!IMPORTANT]

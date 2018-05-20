@@ -2,24 +2,25 @@
 title: Azure Active Directory のアプリケーションに対す SAML に基づいたシングル サインオンをデバッグする方法 | Microsoft Docs
 description: 'Azure Active Directory のアプリケーションに対す SAML に基づいたシングル サインオンをデバッグする方法について説明します  '
 services: active-directory
-author: asmalser-msft
+author: CelesteDG
 documentationcenter: na
 manager: mtillman
 ms.assetid: edbe492b-1050-4fca-a48a-d1fa97d47815
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/20/2017
-ms.author: asmalser
+ms.author: celested
 ms.custom: aaddev
-ms.reviewer: dastrock
-ms.openlocfilehash: 55ff6b7a70bcdcceacb1484f9969337f9853ce50
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: dastrock; smalser
+ms.openlocfilehash: 1a33b5ab9e26ed497e3be2d430f66ef41402733d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
 

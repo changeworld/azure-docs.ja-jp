@@ -1,22 +1,22 @@
 ---
-title: "IoT Hub のイベントを使用して Azure Logic Apps をトリガーする | Microsoft Docs"
-description: "Azure Event Grid のイベント ルーティング サービスを使い、IoT Hub のイベントに基づいて Azure Logic Apps のアクションを実行する自動化されたプロセスを作成します。"
+title: IoT Hub のイベントを使用して Azure Logic Apps をトリガーする | Microsoft Docs
+description: Azure Event Grid のイベント ルーティング サービスを使い、IoT Hub のイベントに基づいて Azure Logic Apps のアクションを実行する自動化されたプロセスを作成します。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: f54db95b0dfe5dc39c8e2a85375e56a93d1562ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -156,7 +156,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 このセクションでは、発生したらイベントを発行するように IoT Hub を構成します。 
 
 1. Azure Portal で、お使いの IoT ハブに移動します。 
-2. **[イベント グリッド]** を選びます。
+2. **イベント**を選択します。
 
    ![Event Grid の詳細を表示する](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
@@ -187,7 +187,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 新しいデバイスを作成してイベント通知メールをトリガーすることで、ロジック アプリをテストします。 
 
 1. IoT Hub から、**[IoT Devices]\(IoT デバイス\)** を選びます。 
-2. **[追加]**を選択します。
+2. **[追加]** を選択します。
 3. **[デバイス ID]** に「`Building1_Floor1_Room1_Temperature`」と入力します。
 4. **[保存]** を選択します。 
 5. 異なるデバイス ID で複数のデバイスを追加し、イベント サブスクリプション フィルターをテストできます。 次の例を試してください。 
@@ -220,7 +220,7 @@ IoT Hub を残しておく場合でも、作成したイベント サブスク�
 
 1. IoT Hub で **[イベント グリッド]** を選びます。
 2. 削除するイベント サブスクリプションを選びます。 
-3. **[削除]**を選択します。 
+3. **[削除]** を選択します。 
 
 ## <a name="next-steps"></a>次の手順
 

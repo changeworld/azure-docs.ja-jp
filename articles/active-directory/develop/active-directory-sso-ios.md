@@ -1,25 +1,25 @@
 ---
-title: "iOS で ADAL を使用してクロス アプリ SSO を有効にする方法 | Microsoft Docs"
-description: "ADAL SDK の機能を使用して、複数のアプリケーションでシングル サインオンを有効にする方法。 "
+title: iOS で ADAL を使用してクロス アプリ SSO を有効にする方法 | Microsoft Docs
+description: 'ADAL SDK の機能を使用して、複数のアプリケーションでシングル サインオンを有効にする方法。 '
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: CelesteDG
 manager: mtillman
-editor: 
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/07/2017
-ms.author: brandwe
+ms.author: celested
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a7d93fe6289ade7fbdf3050d49184feb8b370bb5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: b0179e217a23d612ddcdc219f589a5d1fbca644e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>iOS で ADAL を使用してクロス アプリ SSO を有効にする方法
 シングル サインオン (SSO) を提供すると、ユーザーが資格情報を 1 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。 小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
@@ -86,7 +86,7 @@ Microsoft は、すべてのモバイル プラットフォーム用に、さま
 ブローカーの支援によるログインは、ブローカー アプリケーション内で発生するログイン エクスペリエンスです。デバイス上の Microsoft Identity プラットフォームを利用するすべてのアプリケーションで資格情報を共有するために、ブローカーのストレージとセキュリティを使用します。 つまり、各アプリケーションはユーザーのサインインをブローカーに依存します。 iOS および Android では、これらのブローカーはダウンロード可能なアプリケーションを通じて提供されます。ユーザーが個別にインストールすることも、ユーザーのデバイスを管理している会社がデバイスにプッシュすることもできます。 この種のアプリケーションの例として、iOS 上の Microsoft Authenticator アプリケーションがあります。 Windows では、この機能はオペレーティング システムに組み込まれているアカウント セレクターによって提供されます。これは、技術的には Web 認証ブローカーと呼ばれています。
 プラットフォームによってエクスペリエンスが異なるため、適切に管理しないとユーザーが混乱することがあります。 Facebook アプリケーションがインストールされており、別のアプリケーションから Facebook Connect を使用する場合、このパターンが最も一般的でしょう。 Microsoft Identity プラットフォームでは、同じパターンを使用します。
 
-iOS では、このようにすると "切り替え" アニメーションが表示され、アプリケーションがバックグラウンドに送られます。Microsoft Authenticator アプリケーションがフォアグラウンドになり、ユーザーは、サインインに使用するアカウントを選択できます。  
+iOS では、このようにすると "切り替え" アニメーションが表示され、アプリケーションがバックグラウンドに送られます。Microsoft Authenticator アプリケーションがフォアグラウンドになり、ユーザーは、サインインに使用するアカウントを選択できます。 
 
 Android と Windows では、アカウント セレクターがアプリケーションの上に表示されます。この方が、ユーザーにとってはわかりやすい方法です。
 

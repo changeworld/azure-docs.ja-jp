@@ -16,11 +16,12 @@
 # サンプル
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault)
 # 概念
+## [Key Vault とは](key-vault-whatis.md)
 ## [セキュリティ ワールド](key-vault-ovw-security-worlds.md)
 ## [論理的な削除](key-vault-ovw-soft-delete.md)
 ## [ストレージ アカウント キー](key-vault-ovw-storage-keys.md)
 ## [調整](key-vault-ovw-throttling.md)
-## [Key Vault とは](key-vault-whatis.md)
+
 
 # ハウツー ガイド
 ## [管理]
@@ -68,11 +69,12 @@
 ### [証明書の作成方法](create-certificate.md)
 ### [証明書作成の監視と管理](create-certificate-scenarios.md)
 ## [認証、要求、応答](authentication-requests-and-responses.md)
+## [顧客データ機能](key-vault-customer-data.md)
 ## [一般的なパラメーターとヘッダー](common-parameters-and-headers.md)
 ## [Key Vault のバージョン](key-vault-versions.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ブログ](http://blogs.technet.com/b/kv/)
-## [コード サンプル](https://www.microsoft.com/download/details.aspx?id=45343)
+## [コード サンプル](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language=)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [料金](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

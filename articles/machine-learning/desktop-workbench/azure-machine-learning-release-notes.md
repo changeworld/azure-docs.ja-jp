@@ -9,21 +9,32 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: e30943426ad68171e1464f828a9c8672b06c975a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
 
-この記事では、[Azure Machine Learning Services](../service/overview-what-is-azure-ml.md) の新しいリリースについて説明します。 
+この記事では、[Azure Machine Learning](../service/overview-what-is-azure-ml.md) の新しいリリースについて説明します。 
+
+
+## <a name="2018-05-sprint-5"></a>2018-05 (スプリント 5)
+
+このリリースの Azure Machine Learning では、次のことができます。
++ 量子化バージョンの ResNet 50 で画像の特徴を生成し、それらの特徴に基づいて分類子をトレーニングし、待機時間の極めて短い推論のために[そのモデルを Azure 上の FPGA にデプロイします](../service/how-to-deploy-fpga-web-service.md)。
+
++ 次の分野向けの[カスタムの Azure Machine Learning パッケージ](../service/reference-python-package-overview.md)を使用して、精度の高い機械学習および深層学習モデルをすばやく構築し、デプロイします。
+  + [Computer Vision](../service/how-to-build-deploy-image-classification-models.md)
+  + [テキスト分析](../service/how-to-build-deploy-text-classification-models.md)
+  + [予測](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (スプリント 4)
 **バージョン番号**: 0.1.1801.24353  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 
-Azure Machine Learning Workbench の 5 回目の更新へようこそ。 以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 引き続きフィードバックをお寄せください。
+以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 引き続きフィードバックをお寄せください。
 
 **注目すべき新機能と変更**
 
@@ -254,9 +265,9 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 - Workbench は、ユーザーが実行を開始したとき、保存されていない_すべての_ファイルを保存します。
 - Workbench はローカル コンピューター上の最後に使用されたワークスペースを記憶しているため、それが自動的に開きます。
 - Workbench の 1 つのインスタンスだけが実行を許可されるようになりました。 以前は、複数のインスタンスを起動できたため、同じプロジェクトで動作しているときに問題が発生しました。
-- [ファイル] メニューの [Open Project...] \(プロジェクトを開く...) は [Add Existing Folder as Project...] \(既存のフォルダーをプロジェクトとして追加する...) に名前が変更されました。 
+- [ファイル] メニューの [Open Project...] (プロジェクトを開く...) は [Add Existing Folder as Project...](既存のフォルダーをプロジェクトとして追加する...) に名前が変更されました。 
 - タブの切り替えがきわめて迅速になりました。
-- [Configuring IDE]\ (IDE の構成) ダイアログ ボックスにヘルプ リンクが追加されました。
+- [Configuring IDE] (IDE の構成) ダイアログ ボックスにヘルプ リンクが追加されました。
 - フィードバック フォームが最後に入力された電子メール アドレスを記憶するようになりました。
 - 長所と欠点のフォームはテキスト領域が大きくなったため、より多くのフィードバックを送信できます。 
 - `az ml workspace create` 内の `--owner` スイッチのヘルプ テキストが修正されました。

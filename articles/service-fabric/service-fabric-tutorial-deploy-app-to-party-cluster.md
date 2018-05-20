@@ -1,9 +1,9 @@
 ---
-title: Visual Studio で Azure Service Fabric アプリケーションをクラスターにデプロイする | Microsoft Docs
-description: Visual Studio でアプリケーションをクラスターにデプロイする方法を説明します
+title: クラスターに Azure Service Fabric アプリケーションをデプロイする | Microsoft Docs
+description: Visual Studio でアプリケーションをクラスターにデプロイする方法を説明します。
 services: service-fabric
 documentationcenter: .net
--author: mikkelhegn
+-author: rwike77
 -manager: msfussell
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/23/2018
-ms.author: mikhegn
+ms.date: 05/11/2018
+ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4f0d41dbc2438217cb4f382da7c44833379b9637
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f75a05e965a025a3041036679ac06cfe4f1ec8d7
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターにアプリケーションをデプロイする
 このチュートリアルはシリーズの第 2 部です。ここでは、Visual Studio で直接 Azure Service Fabric アプリケーションを Azure の新しいクラスターにデプロイする方法について説明します。
@@ -52,48 +52,56 @@ ms.lasthandoff: 04/23/2018
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="deploy-the-sample-application"></a>サンプル アプリケーションをデプロイする
+## <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成
+これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。 [Service Fabric クラスター](/service-fabric/service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンであり、マイクロサービスがデプロイおよび管理されます
 
-### <a name="select-a-service-fabric-cluster-to-which-to-publish"></a>発行先の Service Fabric クラスターを選択する
-これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
+Visual Studio 内のデプロイには 2 つのオプションがあります。
+- Visual Studio から Azure 内にクラスターを作成します。 このオプションでは、お好きな構成を使用して、セキュリティで保護されたクラスターを Visual Studio で直接作成できます。 この種類のクラスターはテスト シナリオに最適です。Visual Studio 内でクラスターを作成して、それに対して直接発行できます。
+- サブスクリプションで既存のクラスターに発行します。  [Azure Portal](https://portal.azure.com) 経由で、[PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) または [Azure CLI](./scripts/cli-create-cluster.md) スクリプトを使用するか、または [Azure Resource Manager テンプレート](service-fabric-tutorial-create-vnet-and-windows-cluster.md)から Service Fabric クラスターを作成することができます。
 
-デプロイには 2 つのオプションがあります。
-- Visual Studio でクラスターを作成します。 このオプションでは、お好きな構成を使用して、セキュリティで保護されたクラスターを Visual Studio で直接作成できます。 この種類のクラスターはテスト シナリオに最適です。Visual Studio 内でクラスターを作成して、それに対して直接発行できます。
-- サブスクリプションで既存のクラスターに発行します。
-
-このチュートリアルでは、Visual Studio でクラスターを作成する手順を実行します。 その他のオプションについては、接続エンドポイントをコピーして貼り付けるか、サブスクリプションから選択できます。
+このチュートリアルでは、Visual Studio からクラスターを作成します。 既にクラスターがデプロイされている場合は、接続エンドポイントをコピーして貼り付けるか、サブスクリプションからそれを選択できます。
 > [!NOTE]
 > 多くのサービスは、リバース プロキシを使用して相互に通信します。 Visual Studio で作成されたクラスターとパーティ クラスターでは、既定でリバース プロキシが有効です。  既存のクラスターを使用する場合、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy.md#setup-and-configuration)必要があります。
 
-### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>アプリを Service Fabric クラスターにデプロイする
-1. ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
+### <a name="find-the-votingweb-service-endpoint"></a>VotingWeb サービス エンドポイントを見つける
+まず、フロントエンド Web サービスのエンドポイントを見つけます。  フロントエンド Web サービスは、特定のポートでリッスンしています。  Azure でアプリケーションがクラスターにデプロイされると、クラスターとアプリケーションの両方が Azure ロード バランサーの背後で実行します。  受信トラフィックが Web サービスを通過できるように、Azure ロード バランサーでアプリケーション ポートが開かれている必要があります。  ポート (8080 など) は、*VotingWeb/PackageRoot/ServiceManifest.xml* ファイルの **Endpoint** 要素にあります。
 
-2. サブスクリプションにアクセスできるように、Azure アカウントを使用してサインインします。 パーティ クラスターを使用する場合、この手順はオプションです。
+```xml
+<Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
+```
 
-3. **[接続のエンドポイント]** ドロップダウンを選択して、"<Create New Cluster...>" オプションを選択します。
+次の手順で、**[クラスターの作成]** ダイアログの **[詳細]** タブにこのポートを指定します。  既存のクラスターにアプリケーションをデプロイする場合は、[PowerShell スクリプト](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)を使用するか、または [Azure Portal](https://portal.azure.com) から Azure ロード バランサーでこのポートを開くことができます。
+
+### <a name="create-a-cluster-in-azure-through-visual-studio"></a>Visual Studio から Azure にクラスターを作成する
+ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
+
+サブスクリプションにアクセスできるように、Azure アカウントを使用してサインインします。 パーティ クラスターを使用する場合、この手順はオプションです。
+
+**[接続のエンドポイント]** ドロップダウンを選択して、**<Create New Cluster...>** オプションを選択します。
     
-    ![[発行] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+![[発行] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
     
-4. [クラスターの作成] ダイアログで、次の設定を変更します。
+**[クラスターの作成]** ダイアログで、次の設定を変更します。
 
-    1. [クラスター名] フィールドでクラスターの名前を変更します。また、使用したいサブスクリプションと場所を指定します。
-    2. 省略可能: ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
-    3. [証明書] タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
-    4. [VM の詳細] タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
-    5. 省略可能: [詳細設定] タブでは、クラスターと同時に作成されるロード バランサーでオープンにするポートの一覧を変更できます。 さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
-    6. 設定の変更が完了したら、[作成] ボタンを選択します。 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにそのことが示されます。
-    
-    ![[クラスターの作成] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+1. **[クラスター名]** フィールドでクラスターの名前を指定します。また、使用するサブスクリプションと場所を指定します。
+2. 省略可能: ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
+3. **[証明書]** タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
+4. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
+5. **[詳細設定]** タブで、クラスターと同時に作成される Azure ロード バランサーで開かせるポートの一覧を変更できます。  前の手順で検出された VotingWeb サービス エンドポイントを追加します。 さらに、アプリケーション ログ ファイルをルーティングする既存の Application Insights キーを追加することもできます。
+6. 設定の変更が完了したら、**[作成]** ボタンを選択します。 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにそのことが示されます。
 
-4. 使用するクラスターの準備が整ったら、アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
+![[クラスターの作成] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-    発行が完了した後は、ブラウザーからアプリケーションに要求を送信できます。
+## <a name="deploy-the-sample-application"></a>サンプル アプリケーションをデプロイする
+使用するクラスターの準備が整ったら、アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
 
-5. 好みのブラウザーを開き、クラスター アドレス (ポート情報を除いた接続エンドポイント。たとえば、win1kw5649s.westus.cloudapp.azure.com) を入力します。
+発行が完了した後は、ブラウザーからアプリケーションに要求を送信できます。
 
-    アプリケーションをローカルで実行するときに確認したのと同じ結果が表示されます。
+好みのブラウザーを開き、クラスター アドレス (ポート情報を除いた接続エンドポイント。たとえば、win1kw5649s.westus.cloudapp.azure.com) を入力します。
 
-    ![クラスターからの API 応答](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
+アプリケーションをローカルで実行するときに確認したのと同じ結果が表示されます。
+
+![クラスターからの API 応答](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。

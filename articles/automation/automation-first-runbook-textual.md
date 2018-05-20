@@ -4,16 +4,17 @@ description: PowerShell Workflow を使用して簡単なテキスト形式の R
 keywords: PowerShell ワークフロー, PowerShell ワークフローの例, ワークフロー PowerShell
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 33e9b68973aa399123fa9e62a2d0eea77c55add0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd57c6be9d962899bb3468fb86323af3fe01bc5b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 

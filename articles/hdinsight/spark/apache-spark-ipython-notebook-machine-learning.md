@@ -1,46 +1,51 @@
 ---
-title: Azure HDInsight で Apache Spark Machine Learning アプリケーションを作成する | Microsoft Docs
-description: Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター上で Jupyter Notebook を使用して作成するための詳細な手順
+title: 'チュートリアル: HDInsight で Spark Machine Learning アプリケーションを作成する | Microsoft Docs'
+description: Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター内に Jupyter Notebook を使用して作成するための詳細な手順。
 services: hdinsight
 documentationcenter: ''
 author: mumian
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: f584ca5e-abee-4b7c-ae58-2e45dfc56bf4
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,mvc
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/23/2018
+ms.topic: tutorial
+ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 95daab2bd7bc57d01bc9e3c05404958edd71eecc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 70876196eb6b37065a663afa56ed496a0e9755db
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Azure HDInsight で Apache Spark Machine Learning アプリケーションを作成する
+# <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>チュートリアル: HDInsight で Spark Machine Learning アプリケーションを作成する 
 
-HDInsight で Spark クラスターを使用して Apache Spark Machine Learning アプリケーションを作成する方法を説明します。 この記事では、クラスターで使用できる Jupyter Notebook を使用して、このアプリケーションを作成およびテストする方法を説明します。 このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
+このチュートリアルでは、Jupyter Notebook を使用して、Azure HDInsight の Apache Spark Machine Learning アプリケーション構築する方法を説明します。 
 
 [MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
+
+このチュートリアルで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Apache Spark Machine Learning アプリケーションを開発する
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件:
 
 次の項目が必要です。
 
-* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。 
+* 「[Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)」を完了します。
 
-## <a name="data"></a>データ セットを理解する
+## <a name="understand-the-data-set"></a>データ セットを理解する
 
-次のデータは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、**[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 このチュートリアルでは、このデータを使用し、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測します。
+このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。 このファイルは、**\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。 データは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、**[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 データを使用して、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測できます。
 
 ![Spark Machine Learning サンプルで使用されるデータのスナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning サンプルで使用されるデータのスナップショット")
 
-データ ファイル (**HVAC.csv**) は、すべての HDInsight クラスター上の **\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。
+## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Spark MLlib を使用した Spark Machine Learning アプリケーションの開発
 
-## <a name="app"></a>Spark MLlib を使用した Spark Machine Learning アプリケーションの作成
 このアプリケーションでは、Spark [ML パイプライン](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)を使用して、ドキュメントの分類を実行します。 ML パイプラインでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、統一された高レベルの API 一式が提供されます。 パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。 アプリケーションを作成するには、次の手順を実行します。
 
 1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、[Jupyter Notebook の作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)に関するページをご覧ください。
@@ -96,7 +101,7 @@ HDInsight で Spark クラスターを使用して Apache Spark Machine Learning
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
+    パイプラインとその機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark Machine Learning パイプラインに関するページ</a>をご覧ください。
 
 5. パイプラインをトレーニング ドキュメントに適合させます。
    
@@ -110,7 +115,7 @@ HDInsight で Spark クラスターを使用して Apache Spark Machine Learning
     training.show()
     ```
    
-    出力は次のようになります。
+    次のように出力されます。
 
     ```
     +----------+----------+-----+
@@ -168,7 +173,7 @@ HDInsight で Spark クラスターを使用して Apache Spark Machine Learning
         print row
     ```
 
-    次のような出力が表示されます。
+    次のように出力されます。
 
     ```   
     Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
@@ -180,43 +185,19 @@ HDInsight で Spark クラスターを使用して Apache Spark Machine Learning
     ```
    
    予測の 1 行目からは、ID が 20 でシステム経過年数が 25 年の HVAC システムではビルが暑い (**prediction=1.0**) ことがわかります。 DenseVector の 1 番目の値 (0.49999) は予測 0.0 に対応し、2 番目の値 (0.5001) は予測 1.0 に対応します。 出力では、2 番目の値はわずかに高いだけですが、モデルは **prediction=1.0**を示します。
-10. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
+10. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 このアクションにより Notebook がシャットダウンされ、Notebook が閉じます。
 
-## <a name="anaconda"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
+## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
 HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、「[ http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)」を参照してください。
 
-## <a name="seealso"></a>関連項目
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+## <a name="next-steps"></a>次の手順
 
-### <a name="scenarios"></a>シナリオ
-* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
+このチュートリアルで学習した内容は次のとおりです。
 
-### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
-* [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](apache-spark-livy-rest-interface.md)
+* Apache Spark Machine Learning アプリケーションを開発する
 
-### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
+次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。 
 
-### <a name="manage-resources"></a>リソースの管理
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
+> [!div class="nextstepaction"]
+> [IntelliJ を使用した Scala Maven アプリケーションの作成](./apache-spark-create-standalone-application.md)
 
-[hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-weblogs-sample]:../hadoop/apache-hive-analyze-website-log.md
-[hdinsight-sensor-data-sample]:../hadoop/apache-hive-analyze-sensor-data.md
-
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-create-storageaccount]:../../storage/common/storage-create-storage-account.md

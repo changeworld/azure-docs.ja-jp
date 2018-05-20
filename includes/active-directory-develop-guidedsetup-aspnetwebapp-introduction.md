@@ -1,3 +1,26 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: cf6604a0e22ca72c8aabd0603e42469cc71c9680
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/28/2018
+---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
 このガイドでは、OpenID Connect を使用する従来の Web ブラウザー ベースのアプリケーションで、ASP.NET MVC ソリューションを使用して "Microsoft でサインイン" を実装する方法を示します。 
@@ -6,11 +29,11 @@
 
 > このガイドでは、Visual Studio 2015 Update 3 または Visual Studio 2017 が必要です。  お持ちでない場合は、  [Visual Studio 2017 を無料でダウンロードできます。](https://www.visualstudio.com/downloads/)
 
-## <a name="how-this-guide-works"></a>このガイドの利用法
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
 ![このガイドの利用法](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.png)
 
-このガイドは、ブラウザーが ASP.NET Web サイトにアクセスし、[サインイン] ボタンを介した認証をユーザーに要求するシナリオに基づいています。 このシナリオでは、Web ページを表示する処理の大半がサーバー側で発生します。
+このガイドによって作成されるサンプル アプリケーションは、ユーザーがブラウザーを使用して、[サインイン] ボタンを介した認証をユーザーに要求する ASP.NET Web サイトにアクセスするシナリオに基づいています。 このシナリオでは、Web ページを表示する処理の大半がサーバー側で発生します。
 
 ## <a name="libraries"></a>ライブラリ
 

@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: a6ed74de159593003e8a18daefce2eb9a5945481
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 528832473d68fa90e6383873b1e0491f5abe09c7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: .NET での SQL API を使用した開発
 
@@ -155,7 +155,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 2500 });
 ```
 
-このメソッドでは、Azure Cosmos DB に対して REST API を呼び出します。サービスにより、要求されたスループットに基づいた数のパーティションがプロビジョニングされます。 パフォーマンス ニーズの変化に応じて、SDK または [Azure Portal](set-throughput.md) を使用して、コレクションのスループットを変更できます。
+このメソッドでは、Azure Cosmos DB に対して REST API を呼び出します。サービスにより、要求されたスループットに基づいた数のパーティションがプロビジョニングされます。 パフォーマンス ニーズの変化に応じて、SDK または [Azure Portal](set-throughput.md) を使用して、コレクションまたはコレクションのセットのスループットを変更できます。
 
 ## <a id="CreateDoc"></a>JSON ドキュメントを作成する
 Azure Cosmos DB に JSON ドキュメントを挿入してみましょう。 [ドキュメント](sql-api-resources.md#documents)は、**DocumentClient** クラスの [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 このサンプル クラスには、デバイスの新しい読み取りをコレクションに挿入するための、デバイス読み取りデータと CreateDocumentAsync への呼び出しが含まれます。

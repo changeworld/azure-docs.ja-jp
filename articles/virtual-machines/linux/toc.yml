@@ -97,7 +97,7 @@
       href: endorsed-distros.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
-    - name: ディスク ストレージ
+    - name: Disk Storage
       href: about-disks-and-vhds.md
       items:
         - name: Managed Disks
@@ -112,14 +112,6 @@
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: 書き込みアクセラレータを有効にする方法
-          href: how-to-enable-write-accelerator.md
-        - name: アタッチされた VHD のトラブルシューティング
-          items:
-            - name: ストレージ リソースの削除エラー
-              href: storage-resource-deletion-errors.md
-            - name: 接続された VHD による VM の予期しない再起動
-              href: unexpected-reboots-attached-vhds.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション
@@ -393,6 +385,8 @@
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: テンプレートによるディスクのデプロイ
           href: using-managed-disks-template-deployments.md
+        - name: 書き込みアクセラレータを有効にする
+          href: how-to-enable-write-accelerator.md
         - name: パフォーマンスを最適化する
           href: optimization.md
           items:
@@ -500,6 +494,12 @@
               href: troubleshoot-recovery-disks.md
             - name: Azure ポータル
               href: troubleshoot-recovery-disks-portal.md
+        - name: アタッチされた VHD
+          items:
+            - name: ストレージ リソースの削除エラー
+              href: storage-resource-deletion-errors.md
+            - name: 接続された VHD による VM の予期しない再起動
+              href: unexpected-reboots-attached-vhds.md
 - name: リファレンス
   items:
     - name: Azure CLI

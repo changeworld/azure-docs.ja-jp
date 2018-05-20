@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub を使用したメッセージのルーティング (Java) | Microsoft Docs"
-description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
+title: Azure IoT Hub を使用したメッセージのルーティング (Java) | Microsoft Docs
+description: 他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bd9af5f9-a740-4780-a2a6-8c0e2752cf48
 ms.service: iot-hub
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: 92ab10e5b8487e03d92b69114a2e3c5302f95ed6
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ff45e9d717b93f89eb8f751294788f08a2fd4592
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-java"></a>IoT Hub でのメッセージのルーティング (Java)
 
@@ -176,7 +176,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
    ```
    
-   ![simulated-device の実行][simulateddevice]
+   ![simulateddevice][simulateddevice]
 
 ## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(省略可能) IoT ハブにストレージ コンテナーを追加してメッセージをルーティングする
 
@@ -208,7 +208,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 [IoT Hub でクラウドからデバイスへのメッセージを送信する方法][lnk-c2d]に関するページでは、ソリューション バックエンドからデバイスにメッセージを送信する方法を説明しています。
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite][lnk-suite] に関するドキュメントを参照してください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ][lnk-suite]に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 

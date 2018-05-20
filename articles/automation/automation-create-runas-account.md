@@ -3,16 +3,17 @@ title: Azure Automation の実行アカウントを作成する
 description: この記事では、PowerShell またはポータルを使用して、Automation アカウントを更新し実行アカウントを作成する方法について説明します。
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 239478a9e697d9eed474a9bfcc0d12fb6a05faee
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 03a5cf6fd049e63616155a87bf112636b74be0a1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation アカウントの認証を実行アカウントで更新する 
 次の条件に該当する場合は、Azure Portal または PowerShell を使用して既存の Automation アカウントを更新できます。
@@ -43,7 +44,7 @@ Automation アカウントに次の項目が作成されます。
 
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、次の手順に従います。
 
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]**を選択します。
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
 2. [Automation アカウント] ページで自分の Automation アカウントを選択し、**[アカウント設定]** で **[プロパティ]** を選択します。  
 3. **[プロパティ]** ページに表示される値をメモします。<br><br> ![Automation アカウントの "プロパティ" ブレード](media/automation-create-runas-account/automation-account-properties.png)  
 
@@ -59,7 +60,7 @@ Automation アカウントを更新するには、このトピックの作業で
 このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。 実行アカウントとクラシック実行アカウントをそれぞれ作成します。 クラシック リソースを管理する必要がない場合は、Azure 実行アカウントのみを作成できます。  
 
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]**を選択します。
+2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
 3. **[Automation アカウント]** ページで、Automation アカウントの一覧からご使用の Automation アカウントを選択します。
 4. 左側のウィンドウの **[アカウント設定]** セクションで、**[実行アカウント]** を選択します。  
 5. 必要なアカウントに応じて、**[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ウィンドウが表示されます。概要情報を確認してから、**[作成]** をクリックして実行アカウントの作成を進めます。  

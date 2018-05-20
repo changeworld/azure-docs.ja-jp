@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: fd51ad8289ac03bf7b4d2a5bd0222db98bcf6737
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 24d7c206211e85fc4418e0381a40c8da3e94a69e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="grow-your-business-by-using-the-azure-marketplace"></a>Azure Marketplace を使用したビジネスの拡大
 
@@ -129,8 +129,7 @@ Marketplace のリストへの新規掲載は、無料の Marketplace GTM 特典
 >[!NOTE]
 >One Commercial Partner カタログ (OCP カタログ) は Microsoft Partner Network のメンバーシップの特典であることに注意してください。 
 
-[Marketplace GTM の特典](./media/marketplace-publishers-guide/marketplace-gtm-current-march-8.png)
-
+![Marketplace GTM の特典](./media/marketplace-publishers-guide/gtmmay2018.png)
 
 サポートについては、[Microsoft Go To Market](https://www.microsoftgotomarket.com) にアクセスしてください。 このサイトでは、ビジネスを促進するためのテンプレート、Web コンテンツ、トレーニング、およびツールを提供しています。
 

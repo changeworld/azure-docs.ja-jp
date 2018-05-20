@@ -1,18 +1,18 @@
 ---
-title: "Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にレプリケートするためのネットワーク マッピングについて | Microsoft Docs"
-description: "Azure Site Recovery を使用して、VMM クラウドで管理されている Hyper-V VM のレプリケーションのためにネットワーク マッピングを設定する方法について説明します。"
+title: Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にレプリケートするためのネットワーク マッピングについて | Microsoft Docs
+description: Azure Site Recovery を使用して、VMM クラウドで管理されている Hyper-V VM のレプリケーションのためにネットワーク マッピングを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fa596bf4941ac791fa1bc697399a4591d97ba68f
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Azure への Hyper-V VM レプリケーションのネットワーク マッピングを準備する
 
@@ -58,7 +58,7 @@ Azure にレプリケートすると、ネットワーク マッピングによ�
 ニューヨーク | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago にマップされています
  |  | VMNetwork2-NewYork | マッピングなし
 シカゴ | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork にマップされています
- | | VMNetwork1-Chicago | マッピングなし
+ | | VMNetwork2-Chicago | マッピングなし
 
 次の点に注意してください。
 

@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 2ac15e4da411efa6f018a3e3fb620023bc8964cc
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 98612730405e63c251bbba2daf770b5394db1514
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/09/2018
 2. このチュートリアルでは **[最後に処理があった時点]** 復旧ポイントを選択します。 この場合、VM が、利用可能な最新のポイントインタイムにフェールオーバーされます。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、RTO (目標復旧時間) が低くなります。
 3. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続するターゲット Azure ネットワークを選択します。
 4. **[OK]** をクリックすると、フェールオーバーが開始されます。 VM をクリックしてそのプロパティを開くことで、進行状況を追跡できます。 または、コンテナー名の **[テスト フェールオーバー]** ジョブをクリックし、**[設定]** > **[ジョブ]** >
-   **[Site Recovery ジョブ]** をクリックできます。
+    **[Site Recovery ジョブ]** をクリックできます。
 5. フェールオーバーの完了後、レプリカの Azure VM は、Azure Portal の **[仮想マシン]** に表示されます。 VM が適切なサイズであること、適切なネットワークに接続されていること、および実行されていることを確認します。
 6. これで、Azure 内のレプリケートされた VM に接続できるはずです。
 7. テスト フェールオーバー中に作成された VM を削除するには、VM で **[テスト フェールオーバーのクリーンアップ]** をクリックします。 **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。

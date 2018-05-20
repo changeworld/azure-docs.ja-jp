@@ -10,14 +10,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 2c192707c6cf8f84d2ca1c0307770cadd5cdb8bd
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 54d3b7ae22162d84ef6287945d4ff95fa1274874
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="bulk-load-data-into-phoenix-using-psql"></a>psql を使用して Phoenix にデータを一括で読み込む
 

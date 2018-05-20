@@ -78,6 +78,7 @@
 #### [Node.js (汎用)](iot-suite-connecting-devices-node.md)
 #### [Raspberry Pi の Node.js](iot-suite-connecting-pi-node.md)
 #### [Raspberry Pi の C](iot-suite-connecting-pi-c.md)
+#### [MX Chip AZ3166 DevKit](iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
 ### 概念
 #### [リモート監視の実装の詳細](iot-suite-remote-monitoring-sample-walkthrough.md)
@@ -106,7 +107,7 @@
 ### [IoT Hub](/azure/iot-hub) 
 ### [IoT Hub Device Provisioning Service](/azure/iot-dps)
 ### [IoT サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
-### [マップ](/azure/azure-maps) 
+### [Maps](/azure/azure-maps) 
 ### [Time Series Insights](/azure/time-series-insights) 
 ## Microsoft Edge 
 ### [IoT Edge](/azure/iot-edge) 

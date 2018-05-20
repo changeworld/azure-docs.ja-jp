@@ -1,12 +1,12 @@
 ---
-title: "Azure で運用可能なセキュリティ | Microsoft Docs"
-description: "Microsoft Operations Management Suite (OMS) とそのサービスおよびしくみについて説明します。"
+title: Azure で運用可能なセキュリティ | Microsoft Docs
+description: Microsoft Operations Management Suite (OMS) とそのサービスおよびしくみについて説明します。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8528eeb4eac8397beaa3d0dca37ce9eb33167b32
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -64,11 +64,12 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 
 OMS のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
-| サービス  | 説明|
+| サービス  | [説明]|
 | :------------- | :-------------|
 | Log Analytics | 物理マシンや仮想マシンなど、さまざまなリソースの可用性とパフォーマンスを監視、分析します。 |
 |Automation | 手動プロセスを自動化し、物理マシンと仮想マシンの構成を適用します。 |
-| バックアップ | 重要なデータのバックアップと復元を行います。 |
+| Backup
+ | 重要なデータのバックアップと復元を行います。 |
 | Site Recovery | 重要なアプリケーションの高可用性を実現します。 |
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -110,7 +111,7 @@ Azure Backup で保護されるデータは、特定の地域リージョンに�
 
 必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 
-## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+## <a name="azure-security-center"></a>Azure Security Center
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
 
@@ -305,7 +306,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 [監査イベント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)を長期間保存する場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 この記事は、組織の IT インフラストラクチャの管理に役立つソフトウェアやサービスを提供しながら、お客様のプライバシーとデータを保護する方法についてまとめています。 Microsoft は、他者にデータを委託する場合、信頼には厳格なセキュリティが必要であることを把握しております。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。 Microsoft においてデータの保護は最優先事項になります。
 
@@ -328,7 +329,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 </ul>
 </ul>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [設計および運用面のセキュリティ](https://www.microsoft.com/trustcenter/security/designopsecurity)
 

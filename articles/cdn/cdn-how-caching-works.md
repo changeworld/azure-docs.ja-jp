@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
-ms.author: rli; v-deasim
-ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/30/2018
+ms.author: v-deasim
+ms.openlocfilehash: bb0824995972b49febdb1695e41f45fbd0966cd1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -71,12 +71,13 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 **Cache-Control:**
 - HTTP 1.1 で導入されました。Web 発行元がコンテンツを詳細に制御できるようにします。また、`Expires` ヘッダーの制限に対処します。
 - `Expires` ヘッダーを上書きします (これと `Cache-Control` の両方が定義されている場合)。
-- HTTP 要求で使うと、既定では、`Cache-Control` は Azure CDN によって無視されます。
-- HTTP 応答で使うと、**Azure CDN from Verizon** プロファイルはすべての `Cache-Control` ディレクティブをサポートします。
-- **Azure CDN from Akamai** プロファイルは、HTTP 応答で使うと、次のディレクティブのみをサポートし、それ以外はすべて無視します。
-   - `max-age`: キャッシュは、指定された秒数だけコンテンツを格納できます。 たとえば、「`Cache-Control: max-age=5`」のように入力します。 このディレクティブは、コンテンツが新鮮であると見なされる最大時間を指定します。
-   - `no-cache`: コンテンツをキャッシュします。ただし、キャッシュから配信する前に、そのコンテンツを検証します。 `Cache-Control: max-age=0` と同等です。
-   - `no-store`: コンテンツをキャッシュしません。 以前に保存されている場合は、そのコンテンツを削除します。
+- クライアントから CDN POP への HTTP 要求で使用すると、`Cache-Control` は、既定ですべての Azure CDN プロファイルによって無視されます。
+- クライアントから CDN POP への HTTP 応答で使用された場合は、次のようになります。
+     - **Azure CDN Standard/Premium from Verizon** と **Microsoft Azure CDN Standard** はすべての `Cache-Control` ディレクティブをサポートします。
+     - **Azure CDN Standard from Akamai** は、次の `Cache-Control` ディレクティブのみをサポートし、その他はすべて無視します。
+         - `max-age`: キャッシュは、指定された秒数だけコンテンツを格納できます。 たとえば、「`Cache-Control: max-age=5`」のように入力します。 このディレクティブは、コンテンツが新鮮であると見なされる最大時間を指定します。
+         - `no-cache`: コンテンツをキャッシュします。ただし、キャッシュから配信する前に、そのコンテンツを検証します。 `Cache-Control: max-age=0` と同等です。
+         - `no-store`: コンテンツをキャッシュしません。 以前に保存されている場合は、そのコンテンツを削除します。
 
 **Expires:**
 - HTTP 1.0 で導入されたレガシ ヘッダー。下位互換性のためにサポートされています。
@@ -92,38 +93,40 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 ## <a name="validators"></a>検証コントロール
 
-キャッシュが古い場合は、HTTP キャッシュ検証コントロールを使用して、キャッシュされたバージョンのファイルと、配信元サーバーのバージョンが比較されます。 **Azure CDN from Verizon** では、`ETag` 検証コントロールと `Last-Modified` 検証コントロールの両方が既定でサポートされますが、**Azure CDN from Akamai** が既定でサポートするのは、`Last-Modified` 検証コントロールのみです。
+キャッシュが古い場合は、HTTP キャッシュ検証コントロールを使用して、キャッシュされたバージョンのファイルと、配信元サーバーのバージョンが比較されます。 **Azure CDN Standard/Premium from Verizon** では、`ETag` 検証コントロールと `Last-Modified` 検証コントロールの両方が既定でサポートされますが、**Microsoft Azure CDN Standard** と **Azure CDN Standard from Akamai** が既定でサポートするのは、`Last-Modified` 検証コントロールのみです。
 
 **ETag:**
-- **Azure CDN from Verizon** では `ETag` が既定で使用されますが、**Azure CDN from Akamai** では使用されません。
+- **Azure CDN Standard/Premium from Verizon** では、`ETag` が既定でサポートされますが、**Microsoft Azure CDN Standard** と **Azure CDN Standard from Akamai** ではサポートされていません。
 - `ETag` は、すべてのファイルとファイルのバージョンに対して一意の文字列を定義します。 たとえば、「`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`」のように入力します。
 - HTTP 1.1 で導入され、`Last-Modified` よりも新しいものです。 最終更新日を判断するのが難しいときに便利です。
 - 強い検証と弱い検証の両方をサポートしますが、Azure CDN では、強い検証のみがサポートされます。 強い検証では、2 つのリソース表現がバイト単位で同一である必要があります。 
 - キャッシュは、要求で 1 つ以上の `ETag` 検証コントロールを含む `If-None-Match` ヘッダーを送信することで、`ETag` が使用されているファイルを検証します。 たとえば、「`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`」のように入力します。 サーバーのバージョンが一覧の `ETag` 検証コントロールと一致する場合、応答で状態コード 304 (変更なし) が送信されます。 バージョンが異なる場合、サーバーは、状態コード 200 (OK) と、更新されたリソースで応答します。
 
 **Last-Modified:**
-- **Azure CDN from Verizon のみ**で、`ETag` が HTTP 応答に含まれない場合、`Last-Modified` が使用されます。 
+- **Azure CDN Standard/Premium from Verizon** でのみ、`ETag` が HTTP 応答に含まれない場合、`Last-Modified` が使用されます。 
 - リソースが最後に更新されたことが配信元サーバーによって確認された日時を指定します。 たとえば、「`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`」のように入力します。
 - キャッシュは、要求で日時を含む `If-Modified-Since` ヘッダーを送信することで、`Last-Modified` が使用されているファイルを検証します。 配信元サーバーは、その日付と、最新リソースの `Last-Modified` ヘッダーを比較します。 指定されている時刻以降、リソースが変更されていない場合、サーバーは、応答で状態コード 304 (変更なし) を返します。 リソースが変更されている場合、サーバーは、状態コード 200 (OK) と、更新されたリソースを返します。
 
 ## <a name="determining-which-files-can-be-cached"></a>キャッシュできるファイルの確認
 
-すべてのリソースをキャッシュできるわけではありません。 次の表は、HTTP 応答の種類に基づいて、どのリソースをキャッシュできるかを示しています。 HTTP 応答で配信されるリソースで、これらの条件のすべてを満たしていないものは、キャッシュすることができません。 **Azure CDN from Verizon Premium** のみについては、ルール エンジンを使用して、この条件の一部をカスタマイズできます。
+すべてのリソースをキャッシュできるわけではありません。 次の表は、HTTP 応答の種類に基づいて、どのリソースをキャッシュできるかを示しています。 HTTP 応答で配信されるリソースで、これらの条件のすべてを満たしていないものは、キャッシュすることができません。 **Azure CDN Premium from Verizon** でのみ、ルール エンジンを使用して、これらの条件の一部をカスタマイズできます。
 
-|                   | Azure CDN from Verizon | Azure CDN from Akamai            |
-|------------------ |------------------------|----------------------------------|
-| HTTP 状態コード | 200                    | 200、203、300、301、302、および 401 |
-| HTTP メソッド       | GET                    | GET                              |
-| ファイル サイズ         | 300 GB                 | - 一般的な Web 配信の最適化: 1.8 GB<br />- メディア ストリーミングの最適化: 1.8 GB<br />- 大きなファイルの最適化: 150 GB |
+|                   | Microsoft Azure CDN          | Azure CDN from Verizon | Azure CDN from Akamai        |
+|-------------------|-----------------------------------|------------------------|------------------------------|
+| HTTP 状態コード | 200、203、206、300、301、410、416 | 200                    | 200、203、300、301、302、401 |
+| HTTP メソッド      | GET、HEAD                         | GET                    | GET                          |
+| ファイル サイズ制限  | 300 GB                            | 300 GB                 | - 一般的な Web 配信の最適化: 1.8 GB<br />- メディア ストリーミングの最適化: 1.8 GB<br />- 大きなファイルの最適化: 150 GB |
+
+**Microsoft Azure CDN Standard** キャッシュをリソースに対して機能させるには、元のサーバーで、すべての HEAD および GET HTTP 要求をサポートしている必要があり、コンテンツ長の値は、アセットのすべての HEAD および GET HTTP 応答で同じである必要があります。 HEAD 要求の場合、元のサーバーは HEAD 要求をサポートしている必要があり、GET 要求を受信した場合のように、同じヘッダーで応答する必要があります。
 
 ## <a name="default-caching-behavior"></a>既定のキャッシュ動作
 
 次の表では、Azure CDN 製品の既定のキャッシュ動作とその最適化について説明します。
 
-|                    | Verizon: 一般的な Web 配信 | Verizon: DSA | Akamai: 一般的な Web 配信 | Akamai: DSA | Akamai: 大きなファイルのダウンロード | Akamai: 一般的なメディア ストリーミングまたは VOD メディア ストリーミング |
-|--------------------|--------|------|-----|----|-----|-----|
-| **配信元を優先**   | [はい]    | いいえ    | [はい] | いいえ  | 可能  | [はい] |
-| **CDN キャッシュ期間** | 7 日 | なし | 7 日 | なし | 1 日 | 1 年 |
+|    | Microsoft: 一般的な Web 配信 | Verizon: 一般的な Web 配信 | Verizon: DSA | Akamai: 一般的な Web 配信 | Akamai: DSA | Akamai: 大きなファイルのダウンロード | Akamai: 一般的なメディア ストリーミングまたは VOD メディア ストリーミング |
+|------------------------|--------|-------|------|--------|------|-------|--------|
+| **配信元を優先**       | [はい]    | [はい]   | いいえ    | [はい]    | いいえ    | 可能    | [はい]    |
+| **CDN キャッシュ期間** | 2 日 |7 日 | なし | 7 日 | なし | 1 日 | 1 年 |
 
 **配信元を優先**: [サポートされているキャッシュ ディレクティブ ヘッダー](#http-cache-directive-headers)を優先するかどうかを指定します (配信元サーバーからの HTTP 応答にヘッダーが存在する場合)。
 

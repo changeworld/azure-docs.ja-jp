@@ -1,5 +1,5 @@
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行中に発生する一般的なエラー
-この記事では、Azure クラシック デプロイメント モデルから Azure Resource Manager スタックへの IaaS リソースの移行中に発生する一般的なエラーと軽減策を一覧で示しています。
+この記事では、Azure クラシック デプロイ モデルから Azure Resource Manager スタックへの IaaS リソースの移行中に発生する一般的なエラーと軽減策を一覧で示しています。
 
 ## <a name="list-of-errors"></a>エラー一覧
 | エラー文字列 | 対応策 |
@@ -19,6 +19,7 @@
 | クラウド サービス {クラウド サービス名} 内の VM {VM 名} のメディア リンク {データ ディスク URI} を使用してデータ ディスク {データ ディスク名} を検証中にストレージ例外が発生しました。 この仮想マシンが VHD メディア リンクにアクセスできることを確認してください。 | このエラーは、VM のディスクが削除された場合、またはディスクにアクセスできなくなった場合に発生します。 VM のディスクが存在することを確認してください。|
 | HostedService {cloud-service-name} 内の VM {vm-name} に、Azure Resource Manager でサポートされない BLOB 名 {vhd-blob-name} の MediaLink {vhd-uri} があるディスクが含まれています。 | このエラーは、BLOB の名前に "/" が含まれている場合に発生します。この記号は現在、コンピューティング リソース プロバイダーでサポートされていません。 |
 | HostedService {cloud-service-name} 内のデプロイ {deployment-name} はリージョン範囲に含まれていないため、移行することができません。 このデプロイをリージョン範囲に移動する方法については、http://aka.ms/regionalscope を参照してください。 | 2014 年、Azure は、ネットワーク リソースをクラスター レベル スコープからリージョン スコープに移動すると発表しました。 詳細については、[http://aka.ms/regionalscope] \(http://aka.ms/regionalscope)) を参照してください。 移行中のデプロイで更新操作が行われていない場合に、このエラーが発生します。その場合は、自動的にリージョン スコープに移動されます。 このエラーを回避するには、エンドポイントを VM に追加するか、データ ディスクを VM に追加してから、移行を再試行してください。 <br> 「[Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法](../articles/virtual-machines/windows/classic/setup-endpoints.md#create-an-endpoint)」または「[クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](../articles/virtual-machines/windows/classic/attach-disk.md)」を参照してください。|
+| Virtual Network {vnet-name} の移行はサポートされていません。この Virtual Network にはゲートウェイ以外の PaaS 展開が含まれいるためです。 | このエラーは、Virtual Network に接続されている Application Gateway サービスや API Management サービスなどのゲートウェイ以外の PaaS デプロイがある場合に発生します。|
 
 
 ## <a name="detailed-mitigations"></a>詳細な対応策

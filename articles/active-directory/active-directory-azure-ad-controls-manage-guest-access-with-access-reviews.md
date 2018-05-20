@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2ac28c278b9ac832f05cdb19a48ea576526104b3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 ## <a name="prerequisites"></a>前提条件 
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
+アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-whatis.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
 
 ゲスト ユーザーに自身のアクセス権をレビューするよう依頼する場合は、ゲスト ユーザーのライセンスについて確認しておいてください。 詳細については、[Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)に関するページを参照してください。
 

@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - カスタム ドメイ
 description: Azure PowerShell のサンプル スクリプト - カスタム ドメインをセットアップする
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: ea2e222b66c911f30972ad58e7506eb1bf736e30
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b120f3d2731601652d46f71206637bacdda023cc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-custom-domain"></a>カスタム ドメインのセットアップ
 

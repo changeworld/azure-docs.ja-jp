@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: ef947ada93e9520e53cecf2dfc26bb1ad01155c7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 54be18f2b114f4bb3ac9dd71e4517ee8806339bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 > [!IMPORTANT]
-> これは、**Azure CDN Premium from Verizon** の機能です。Azure CDN Standard 製品では利用できません。 CDN の機能の比較については、「[Azure CDN product features](../articles/cdn/cdn-features.md)」(Azure CDN 製品の機能) を参照してください。 
+> これは、**Azure CDN Premium from Verizon**のみの機能です。Azure CDN Standard 製品では利用できません。 CDN の機能の比較については、「[Azure CDN product features](../articles/cdn/cdn-features.md)」(Azure CDN 製品の機能) を参照してください。 
 > 
 > 
 

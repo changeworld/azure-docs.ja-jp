@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
@@ -26,9 +26,11 @@ ms.lasthandoff: 04/23/2018
 
 * Ev3 シリーズは、ハイパー スレッド構成の E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
 
-## <a name="esv3-series-sup1sup"></a>Esv3 シリーズ <sup>1</sup>
+* Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。  分離された VM オプションについては、下の仮想マシン ファミリーの表をご覧ください。
 
-ACU: 160 ～ 190
+## <a name="esv3-series"></a>Esv3-series 
+
+ACU: 160-190 <sup>1</sup>
 
 ESv3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.5 GHz まで高速化でき、Premium Storage を使用します。 Ev3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
@@ -51,9 +53,9 @@ ESv3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Bro
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 
-## <a name="ev3-series-sup1sup"></a>Ev3 シリーズ <sup>1</sup>
+## <a name="ev3-series"></a>Ev3 シリーズ 
 
-ACU: 160 ～ 190 
+ACU: 160 - 190 <sup>1</sup>
 
 Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.5 GHz まで高速化できます。 Ev3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
@@ -75,9 +77,9 @@ Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broa
 <sup>2</sup> 使用可能なコア サイズに制約があります。 
 
 
-## <a name="m-series-sup1sup"></a>M シリーズ <sup>1</sup>
+## <a name="m-series"></a>M シリーズ 
 
-ACU: 160 ～ 180
+ACU: 160-180 <sup>1</sup>
 
 | サイズ            | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -95,9 +97,9 @@ ACU: 160 ～ 180
 <sup>4</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 <br>
 
-## <a name="gs-series-sup1sup"></a>GS シリーズ <sup>1</sup>
+## <a name="gs-series"></a>GS シリーズ 
 
-ACU: 180 ～ 240
+ACU: 180 - 240 <sup>1</sup>
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -131,9 +133,9 @@ ACU: 180 ～ 240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2 シリーズ <sup>1</sup>
+## <a name="dsv2-series"></a>DSv2 シリーズ 
 
-ACU: 210 ～ 250
+ACU: 210 - 250 <sup>1</sup>
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,9 +176,9 @@ ACU: 210 ～ 250
 
 <br>
 
-## <a name="ds-series-sup1sup"></a>DS シリーズ <sup>1</sup>
+## <a name="ds-series"></a>DS シリーズ 
 
-ACU: 160
+ACU: 160 <sup>1</sup>
 
 | サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

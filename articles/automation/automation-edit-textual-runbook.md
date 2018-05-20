@@ -3,16 +3,17 @@ title: Azure Automation でのテキスト形式の Runbook の編集
 description: この記事では、テキスト エディターを使用して Azure Automation で PowerShell Runbook および PowerShell ワークフロー Runbook の処理を行うためのさまざまな手順について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 055bd2a7607b8cab9c7ca417c7c3f57c2e569f77
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b5c12507ccf1ba290c4063f4e4e0e0704eec4b9b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Automation でのテキスト形式の Runbook の編集
 
@@ -40,7 +41,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 1. テキスト エディターのキャンバスで、コマンドレットを配置する場所にカーソルを置きます。
 2. ライブラリ コントロールで **[コマンドレット]** ノードを展開します。
 3. 使用するコマンドレットを含むモジュールを展開します。
-4. 挿入するコマンドレットを右クリックして、 **[キャンバスに追加]**を選択します。 コマンドレットに複数のパラメーター セットがある場合は、既定のセットが追加されます。 コマンドレットを展開して別のパラメーター セットを選択することもできます。
+4. 挿入するコマンドレットを右クリックして、 **[キャンバスに追加]** を選択します。 コマンドレットに複数のパラメーター セットがある場合は、既定のセットが追加されます。 コマンドレットを展開して別のパラメーター セットを選択することもできます。
 5. コマンドレットのコードがパラメーターのリスト全体と共に挿入されます。
 6. 必須パラメーターの山括弧 <> で囲まれているデータ型の代わりに適切な値を入力します。 必要のないパラメーターを削除します。
 
@@ -48,7 +49,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 
 1. テキスト エディターのキャンバスで、 [子 Runbook](automation-child-runbooks.md)のコードを配置する場所にカーソルを置きます。
 2. ライブラリ コントロールで **[Runbook]** ノードを展開します。
-3. 挿入する Runbook を右クリックして、 **[キャンバスに追加]**を選択します。
+3. 挿入する Runbook を右クリックして、 **[キャンバスに追加]** を選択します。
 4. 子 Runbook のコードがすべての Runbook パラメーターのプレースホルダーと共に挿入されます。
 5. 各パラメーターのプレースホルダーを適切な値に置き換えます。
 
@@ -57,7 +58,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 1. テキスト エディターのキャンバスで、子 Runbook のコードを配置する場所にカーソルを置きます。
 2. ライブラリ コントロールで **[アセット]** ノードを展開します。
 3. 必要な資産の種類のノードを展開します。
-4. 挿入する資産を右クリックして、 **[キャンバスに追加]**を選択します。 [変数資産](automation-variables.md)の場合、変数を取得するのか設定するのかに応じて、**["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
+4. 挿入する資産を右クリックして、 **[キャンバスに追加]** を選択します。 [変数資産](automation-variables.md)の場合、変数を取得するのか設定するのかに応じて、**["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
 5. 資産のコードが Runbook に挿入されます。
 
 ## <a name="to-edit-an-azure-automation-runbook-using-windows-powershell"></a>Windows PowerShell を使用して Azure Automation の Runbook を編集するには

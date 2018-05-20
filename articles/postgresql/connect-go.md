@@ -1,6 +1,6 @@
 ---
-title: "Go 言語を使用して Azure Database for PostgreSQL に接続する"
-description: "このクイックスタートでは、Azure Database for PostgreSQL に接続してデータを照会するために使用できる、Go プログラミング言語のサンプルを紹介します。"
+title: Go 言語を使用して Azure Database for PostgreSQL に接続する
+description: このクイックスタートでは、Azure Database for PostgreSQL に接続してデータを照会するために使用できる、Go プログラミング言語のサンプルを紹介します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 305a9ad066ad504b7564945d8ccce1be19a4135a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d3bcfb3369510bdbcf325eab41fb7eacf3e2a228
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Go 言語を使用した接続とデータの照会
 このクイックスタートでは、[Go](https://golang.org/) 言語 (golang) で記述されたコードを使用して、Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Go を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
@@ -213,6 +213,7 @@ func main() {
     sql_statement := "SELECT * from inventory;"
     rows, err := db.Query(sql_statement)
     checkError(err)
+    defer rows.Close()
 
     for rows.Next() {
         switch err := rows.Scan(&id, &name, &quantity); err {

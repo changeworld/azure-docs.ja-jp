@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 94b451f66d286426f6dd2cc556e8c6785c3f743e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 43a4db9114cd47da5bef98ed634847b547589b47
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行されたロール要求の構成
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 05/04/2018
 
 5. アプリケーションが追加されたら、**[プロパティ]** ページに移動して、**オブジェクト ID** をコピーします
 
-    ![[プロパティ] ページ](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.PNG)
+<!-- ![Properties Page](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png) Note: Image is missing. -->
 
 6. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 

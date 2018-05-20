@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Procore SSO の統合 | Microsoft Docs"
-description: "Azure Active Directory と Procore SSO の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Procore SSO の統合 | Microsoft Docs'
+description: Azure Active Directory と Procore SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: c6bae8e24f252a535571308467b428832b542e48
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4cba8aa046b84fe63b17a662990824b1823c1572
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -30,14 +30,6 @@ Procore SSO と Azure AD を統合すると、次の利点が得られます。
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
-
-<!--## Overview
-
-To enable single sign-on with Procore SSO, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Procore SSO.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,17 +57,17 @@ Azure AD への Procore SSO の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Procore SSO を追加するには、次の手順を実行します。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Procore SSO**」と入力します。
 
@@ -94,11 +86,11 @@ Azure AD への Procore SSO の統合を構成するには、ギャラリーか�
 
 Procore SSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Procore SSO のテスト ユーザーの作成](#creating-a-procore-sso-test-user)** - Procore SSO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -108,39 +100,39 @@ Procore SSO で Azure AD のシングル サインオンを構成してテスト
 
 1. Microsoft Azure 管理ポータルの **Procore SSO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_samlbase.png)
 
 3. アプリは Azure と事前に統合済みであるため、**[Procore SSO のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
 
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/tutorial_general_400.png)
 
 6. **[Procore SSO 構成]** セクションで、**[Procore SSO の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_configure.png) 
 
 7. **Procore SSO** 側のシングル サインオンを構成するために、Procore の企業サイトに管理者としてログインします。
 
 8. [TOOLBOX] \(ツールボックス) ドロップ ダウンから **[Admin] \(管理)** をクリックして、SSO 設定ページを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
 
 9. 以下の説明に従って、各ボックスに値を貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
 
-    a. **[Single Sign On Issuer URL] \(シングル サインオン発行者の URL)** ボックスに、Azure Portal でコピーした SAML エンティティ ID を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Single Sign On Issuer URL] \(シングル サインオン発行者の URL)** ボックスに、Azure Portal でコピーした SAML エンティティ ID を貼り付けます。
 
     b. **[SAML Sign On Target URL] \(SAML サインオンのターゲット URL)** ボックスに、Azure Portal でコピーした SAML シングル サインオン サービスの URL を貼り付けます。
 
@@ -186,7 +178,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-procoresso-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -202,13 +194,13 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 2. [TOOLBOX] \(ツールボックス) ドロップ ダウンで **[Directory] \(ディレクトリ)** をクリックして、企業のディレクトリ ページを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
 
 3. **[Add a Person] \(ユーザーの追加)** オプションをクリックしてフォームを開き、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
 
-    a. **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name] \(名)** テキストボックスに、ユーザーの名を入力します (この例では **Britta**).
 
     b. **[Last Name] \(姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon**).
 
@@ -220,11 +212,11 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 4. 新しく追加された連絡先の詳細を確認して更新します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
 
 5. メールによる招待状が必要な場合は **[Save and Send Invitiation] \(保存して招待状を送信)** を、直接保存する場合は **[Save] \(保存)** をクリックして、ユーザー登録を完了します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -240,7 +232,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 2. アプリケーションの一覧で **[Procore SSO]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

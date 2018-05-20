@@ -1,12 +1,12 @@
 ---
-title: "Azure の高度な脅威検出 | Microsoft Docs"
-description: "ID の保護とその機能について説明します。"
+title: Azure の高度な脅威検出 | Microsoft Docs
+description: ID の保護とその機能について説明します。
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威の検出
 ## <a name="introduction"></a>はじめに
@@ -155,11 +155,11 @@ Azure Automation は、PowerShell に基づいた Runbook を使用して管理�
 
 ユーザーは Azure でホストされる DSC リソースを作成または管理することができ、これをクラウドやオンプレミスのシステムに適用して定義したり、その構成を自動的に施行するか、セキュリティ構成がポリシー内に確実に留まるようにするために役立つ、誤差に関するレポートを取得することができます。
 
-## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+## <a name="azure-security-center"></a>Azure Security Center
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションに対してだけでなく、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)に対してもポリシーを定義できるため、より詳細な定義が可能になります。
 
-![[Azure Security Center] \(Azure Security Center)](./media/azure-threat-detection/azure-threat-detection-fig8.png)
+![Azure Security Center](./media/azure-threat-detection/azure-threat-detection-fig8.png)
 
 マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。 クラウドやオンプレミスにおけるマイクロソフトのグローバル プレゼンスから得た広範なテレメトリにアクセスすることが彼らには許されています。 この広範かつ多様なデータセットのコレクションによって、マイクロソフトは、そのオンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。
 
@@ -181,7 +181,7 @@ Azure、Office 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com�
 
 また研究員も、大手クラウド サービス プロバイダー間で共有されている脅威インテリジェンス情報を入手しているほか、サード パーティから脅威インテリジェンス フィードをサブスクライブしています。 Azure Security Center はこの情報を基に、既知の有害因子から生じる脅威について利用者に警告を発することができます。 次に例をいくつか示します。
 
--   **Machine Learning の力を利用する -**Azure Security Center は、クラウド ネットワークのアクティビティに関する大量のデータにアクセスし、このデータを使用して Azure デプロイメントを対象とする脅威を検出することができます。 次に例を示します。
+-   **Machine Learning の力を利用する -** Azure Security Center は、クラウド ネットワークのアクティビティに関する大量のデータにアクセスし、このデータを使用して Azure デプロイメントを対象とする脅威を検出することができます。 例: 
 
 -   **ブルート フォース検出 -** Machine learning を使用してリモート アクセスが試行された履歴のパターンを作成します。これによって SSH、RDP、および SQL の各ポートに対するブルート フォース攻撃を検出できます。
 
@@ -282,9 +282,9 @@ Azure の [Microsoft マルウェア対策](https://docs.microsoft.com/azure/sec
 
 SQL Database の脅威検出機能は、次の検出方法論を使用します。
 
--   **確定的な検出 –**既知の攻撃に一致する不審なパターン (ルール ベース) を SQL クライアントのクエリで検出します。 この方法論で検出される確率は高く、誤判定率は低くなります。ただし、「アトミック検出」のカテゴリに含まれるため範囲は制限されています。
+-   **確定的な検出 –** 既知の攻撃に一致する不審なパターン (ルール ベース) を SQL クライアントのクエリで検出します。 この方法論で検出される確率は高く、誤判定率は低くなります。ただし、「アトミック検出」のカテゴリに含まれるため範囲は制限されています。
 
--   **動作検出 –**過去 30 日間に見られなかった、データベースの異常な動作を示す、異常なアクティビティを検出します。  SQL クライアントの異常なアクティビティの例には、失敗したログイン/クエリ、大量のデータ抽出、通常でない Canonical クエリ、データベースへのアクセスに使用された特殊な IP アドレスの急増があります。
+-   **動作検出 –** 過去 30 日間に見られなかった、データベースの異常な動作を示す、異常なアクティビティを検出します。  SQL クライアントの異常なアクティビティの例には、失敗したログイン/クエリ、大量のデータ抽出、通常でない Canonical クエリ、データベースへのアクセスに使用された特殊な IP アドレスの急増があります。
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway の Web アプリケーション ファイアウォール
 
@@ -421,7 +421,7 @@ Azure Marketplace で利用可能な Web アプリケーション ファイア�
 
 [Barracuda Web アプリケーション ファイアウォール、Brocade 仮想 Web アプリケーション ファイアウォール (Brocade vWAF)、Imperva SecureSphere および ThreatSTOP IP ファイアウォールがあります。](https://azure.microsoft.com/marketplace/partners/brocade_communications/brocade-virtual-web-application-firewall-templatevtmcluster/)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Security Center の検出機能](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities)
 

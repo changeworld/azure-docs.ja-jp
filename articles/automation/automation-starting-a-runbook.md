@@ -3,16 +3,17 @@ title: Azure Automation での Runbook の開始
 description: Azure Automation の Runbook を開始するために使用できる各種方法についてまとめ、Azure ポータルと Windows PowerShell の両方の詳細な使用方法について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 064ba5f73b53681a824b1416243d10ab0e565c44
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 45ac19ad5011ae67e95281d1c9928c1db4bc7043
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の開始
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
@@ -33,7 +34,7 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="starting-a-runbook-with-the-azure-portal"></a>Azure ポータルでの Runbook の開始
 1. Azure Portal で、**[Automation]** を選択し、Automation アカウントの名前をクリックします。
-2. [ハブ] メニューで、**[Runbook]**を選択します。
+2. [ハブ] メニューで、**[Runbook]** を選択します。
 3. **[Runbook]** ページで Runbook を選択し、**[開始]** をクリックします。
 4. Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。 パラメーターについて詳しくは、「 [Runbook のパラメーター](#Runbook-parameters) 」をご覧ください。
 5. **[ジョブ]** ページで、Runbook ジョブの状態を表示することができます。
@@ -77,7 +78,7 @@ Azure Portal または Windows PowerShell から Runbook を開始する場合�
 Azure Automation Web サービスは、次のセクションで説明されているように特定のデータ型を使用してパラメーターに対して特殊な機能を提供します。
 
 ### <a name="named-values"></a>名前付きの値
-パラメーターのデータ型が [object] の場合、 *{Name1:'Value1', Name2:'Value2', Name3:'Value3'}*という JSON 形式を使用して名前付きの値の一覧を送信できます。 これらの値は単純型にする必要があります。 Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) としてパラメーターを受け取ります。
+パラメーターのデータ型が [object] の場合、 *{Name1:'Value1', Name2:'Value2', Name3:'Value3'}* という JSON 形式を使用して名前付きの値の一覧を送信できます。 これらの値は単純型にする必要があります。 Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) としてパラメーターを受け取ります。
 
 user というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
@@ -113,7 +114,7 @@ Smith
 ```
 
 ### <a name="arrays"></a>配列
-パラメーターが [array] や [string[]] などの配列の場合、*[Value1, Value2, Value3]*という JSON 形式を使用して値の一覧を送信できます。 これらの値は単純型にする必要があります。
+パラメーターが [array] や [string[]] などの配列の場合、*[Value1, Value2, Value3]* という JSON 形式を使用して値の一覧を送信できます。 これらの値は単純型にする必要があります。
 
 *user*というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 

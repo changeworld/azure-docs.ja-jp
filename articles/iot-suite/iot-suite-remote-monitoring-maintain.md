@@ -1,74 +1,74 @@
 ---
-title: "リモート監視ソリューションでのデバイスのトラブルシューティング - Azure | Microsoft Docs"
-description: "このチュートリアルでは、トラブルシューティングを行ってリモート監視ソリューションでのデバイスの問題を修復する方法を示します。"
-services: 
+title: リモート監視ソリューションでのデバイスのトラブルシューティング - Azure | Microsoft Docs
+description: このチュートリアルでは、トラブルシューティングを行ってリモート監視ソリューションでのデバイスの問題を修復する方法を示します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a959276ea61ec0e44ad45197019dfc80f26b768e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>トラブルシューティングを行ってデバイスの問題を修復する
 
 このチュートリアルでは、トラブルシューティングを行ってデバイスの問題を修復するために、ソリューションの **[メンテナンス]** ページを使用する方法を示します。 これらの機能を紹介するために、このチュートリアルでは Contoso IoT アプリケーションのシナリオを使用します。
 
-Contoso は、フィールド内の新しい**プロトタイプ** デバイスをテストしています。 Contoso の運用者であるあなたは、テスト中に**プロトタイプ** デバイスがダッシュボード上で予期せぬ温度アラームをトリガーしていることに気付きます。 今すぐこの異常のある**プロトタイプ** デバイスの動作を調査する必要があります。
+Contoso は、フィールド内の新しい**プロトタイプ** デバイスをテストしています。 Contoso の運用者であるあなたは、テスト中に**プロトタイプ** デバイスがダッシュボード上で予期せぬ温度アラートをトリガーしていることに気付きます。 今すぐこの異常のある**プロトタイプ** デバイスの動作を調査する必要があります。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 >[!div class="checklist"]
-> * **[メンテナンス]** ページを使用してアラームを調査する
+> * **[メンテナンス]** ページを使用してアラートを調査する
 > * デバイス メソッドを呼び出して問題を修復する
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-リモート監視ソリューションをまだデプロイしていない場合は、「[Deploy the remote monitoring preconfigured solution (リモート監視の事前構成済みソリューションのデプロイ)](iot-suite-remote-monitoring-deploy.md)」のチュートリアルを完了しておく必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="use-the-maintenance-dashboard"></a>メンテナンス ダッシュボードの使用
 
-**[ダッシュボード]** ページに、**プロトタイプ** デバイスに関連付けられたルールから生じる予期しない温度アラームがあります。
+**[ダッシュボード]** ページに、**プロトタイプ** デバイスに関連付けられたルールから生じる予期しない温度アラートがあることに気付きます。
 
-![ダッシュボードに表示されているアラーム](media/iot-suite-remote-monitoring-maintain/dashboardalarm.png)
+![ダッシュボードに表示されているアラート](media/iot-suite-remote-monitoring-maintain/dashboardalarm.png)
 
-問題をさらに調査するため、アラームの横にある **[Explore Alarm]\(アラームの確認\)** オプションを選択します。
+問題をさらに調査するため、アラートの横にある **[Explore Alert] (アラートの確認)** オプションを選択します。
 
-![ダッシュボードのアラームを確認する](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
+![ダッシュボードでアラートを確認する](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-アラームの詳細ビューには、以下が表示されます。
+アラートの詳細ビューには、以下が表示されます。
 
-* アラームがトリガーされた時間
-* アラームに関連付けられているデバイスに関する状態の情報
-* アラームに関連付けられているデバイスのテレメトリ
+* アラートがトリガーされた時間
+* アラートに関連付けられているデバイスに関する状態の情報
+* アラートに関連付けられているデバイスのテレメトリ
 
-![アラームの詳細](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
+![[アラートの詳細]](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
 
-アラームを確認するには、**[Alarm occurrences]\(発生したアラーム\)**、**[Acknowledge]\(確認\)** を選択します。 このアクションにより、他の運用者は、アラームが確認済みであり、対応中であることを知ることができます。
+アラートを確認するには、**[Alert occurrences] (発生したアラート)**、**[Acknowledge] (確認)** を選択します。 このアクションにより、他の運用者は、アラートが確認済みであり、対応中であることを知ることができます。
 
-![アラームを確認する](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
+![アラートを確認する](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
-アラームを確認すると、発生の状態は **[承認済み]** に変わります。
+アラートを確認すると、発生の状態は **[承認済み]** に変わります。
 
-一覧では、温度アラームを発生させた**プロトタイプ** デバイスを表示できます。
+一覧では、温度アラートを発生させた**プロトタイプ** デバイスを表示できます。
 
-![アラームの原因となったデバイスを一覧表示する](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
+![アラートの原因となったデバイスを一覧表示する](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
 
 ## <a name="remediate-the-issue"></a>問題を修復する
 
 **プロトタイプ** デバイスの問題を修復するには、デバイスで **DecreaseTemperature** メソッドを呼び出す必要があります。
 
-デバイスでの動作を設定するには、デバイスの一覧でデバイスを選択して、**[スケジュール]** を選択します。 **プロトタイプ** デバイス モデルでは、デバイスでサポートする必要のある 4 つのメソッドを指定します。
+デバイスに対処するには、デバイスの一覧でデバイスを選択して、**[ジョブ]** を選択します。 **プロトタイプ** デバイス モデルでは、デバイスでサポートする必要のある 6 つのメソッドを指定します。
 
 ![デバイスでサポートされているメソッドを表示する](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -90,7 +90,7 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * **[メンテナンス]** ページを使用してアラームを調査する
+> * **[メンテナンス]** ページを使用してアラートを調査する
 > * デバイス メソッドを呼び出して問題を修復する
 
 ここではデバイスの問題の管理方法を説明しました。推奨する次のステップは、[シミュレートされたデバイスを使用したソリューションのテスト](iot-suite-remote-monitoring-test.md)の方法の学習です。

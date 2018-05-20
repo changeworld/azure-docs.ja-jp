@@ -1,23 +1,23 @@
 ---
-title: Azure Container Service (AKS) の内部ロード バランサーを作成する
-description: Azure Container Service (AKS) で内部ロード バランサーを使用します。
+title: Azure Kubernetes Service (AKS) の内部ロード バランサーを作成する
+description: Azure Kubernetes Service (AKS) で内部ロード バランサーを使用します。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7b9ecdb5364f7c0f5bb68ce693e53bc2c5327337
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="use-an-internal-load-balancer-with-azure-container-service-aks"></a>Azure Container Service (AKS) で内部ロード バランサーを使用します
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
-内部負荷分散により、Kubernetes サービスが Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションにアクセスできるようになります。 このドキュメントでは、Azure Container Service (AKS) で内部ロード バランサーを作成する方法について説明します。
+内部負荷分散により、Kubernetes サービスが Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションにアクセスできるようになります。 このドキュメントでは、Azure Kubernetes Service (AKS) で内部ロード バランサーを作成する方法について説明します。
 
 ## <a name="create-internal-load-balancer"></a>内部ロード バランサーを作成する
 
@@ -38,11 +38,11 @@ spec:
     app: azure-vote-front
 ```
 
-デプロイすると、Azure Load Balancer が AKS クラスターと同じ仮想ネットワーク上で作成されて使用できるようになります。 
+デプロイすると、Azure Load Balancer が AKS クラスターと同じ仮想ネットワーク上で作成されて使用できるようになります。
 
 ![AKS 内部ロード バランサーの画像](media/internal-lb/internal-lb.png)
 
-サービスの詳細を取得する際は、`EXTERNAL-IP` 列にある IP アドレスが内部ロード バランサーの IP アドレスになります。 
+サービスの詳細を取得する際は、`EXTERNAL-IP` 列にある IP アドレスが内部ロード バランサーの IP アドレスになります。
 
 ```console
 $ kubectl get service azure-vote-front
@@ -71,7 +71,7 @@ spec:
     app: azure-vote-front
 ```
 
-サービスの詳細を取得する際には、`EXTERNAL-IP` の IP アドレスに指定した IP アドレスが反映されている必要があります。 
+サービスの詳細を取得する際には、`EXTERNAL-IP` の IP アドレスに指定した IP アドレスが反映されている必要があります。
 
 ```console
 $ kubectl get service azure-vote-front

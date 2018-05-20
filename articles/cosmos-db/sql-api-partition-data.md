@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50be809df0938272a3e1d710b879ca3dd5de9428
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3bdc7820910540b789fd11533389f79aa9f297f5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>SQL API を使用した Azure Cosmos DB でのパーティション分割
 
@@ -102,10 +102,10 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
-このメソッドでは、Cosmos DB に対する REST API 呼び出しを行います。サービスにより、要求されたスループットに基づいた数のパーティションがプロビジョニングされます。 パフォーマンス ニーズの変化に応じて、コンテナーのスループットを変更できます。 
+このメソッドでは、Cosmos DB に対する REST API 呼び出しを行います。サービスにより、要求されたスループットに基づいた数のパーティションがプロビジョニングされます。 パフォーマンス ニーズの変化に応じて、1 つのコンテナーまたはコンテナーのセットのスループットを変更できます。 
 
 ### <a name="reading-and-writing-items"></a>アイテムの読み取りと書き込み
-では、Cosmos DB にデータを挿入してみましょう。 デバイスの新しい読み取りをコンテナーに挿入するための、デバイスの読み取りデータを含むサンプル クラスと CreateDocumentAsync への呼び出しを次に示します。 これは、SQL API を利用する例です。
+では、Cosmos DB にデータを挿入してみましょう。 デバイスの新しい読み取りをコンテナーに挿入するための、デバイスの読み取りデータを含むサンプル クラスと CreateDocumentAsync への呼び出しを次に示します。 SQL API を活用するコード ブロックの例を次に示します。
 
 ```csharp
 public class DeviceReading
@@ -144,7 +144,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-パーティション キーと ID でアイテムを読み込んで、更新してから、最後の手順としてパーティション キーと ID でドキュメントを削除してみましょう。読み取りには (REST API 内の `x-ms-documentdb-partitionkey` 要求ヘッダーに対応する) PartitionKey 値が含まれることにご注意ください。
+パーティション キーと ID でアイテムを読み込んで、更新してから、最後の手順としてパーティション キーと ID でドキュメントを削除してみましょう。読み取りには (REST API 内の `x-ms-documentdb-partitionkey` 要求ヘッダーに対応する) PartitionKey 値が含まれます。
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified
@@ -178,7 +178,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-次のクエリにはパーティション キー (DeviceId) にフィルターがなく、パーティションのインデックスに対してこのクエリが実行されるすべてのパーティションにファン アウトされます。 パーティション全体に対して SDK にクエリを実行させるために、EnableCrossPartitionQuery (REST API 内の`x-ms-documentdb-query-enablecrosspartition` ) を指定する必要があることにご注意ください。
+次のクエリにはパーティション キー (DeviceId) にフィルターがなく、パーティションのインデックスに対してこのクエリが実行されるすべてのパーティションにファン アウトされます。 パーティション全体に対して SDK にクエリを実行させるために、EnableCrossPartitionQuery (REST API 内の `x-ms-documentdb-query-enablecrosspartition`) を指定する必要があります。
 
 ```csharp
 // Query across partition keys
@@ -188,7 +188,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-Cosmos DB は、SDK 1.12.0 以降の SQL を使用した、パーティション分割コンテナーに対する[集計関数](sql-api-sql-query.md#Aggregates) `COUNT`、`MIN`、`MAX`、`SUM`、および `AVG` をサポートしています。 クエリには、1 つの集計演算子と、プロジェクション内の 1 つの値を含める必要があります。
+Cosmos DB は、SDK 1.12.0 以降の SQL を使用した、パーティション分割コンテナーに対する[集計関数](sql-api-sql-query.md#Aggregates) `COUNT`、`MIN`、`MAX`、および `AVG` をサポートしています。 クエリには、1 つの集計演算子と、プロジェクション内の 1 つの値を含める必要があります。
 
 ### <a name="parallel-query-execution"></a>並列クエリの実行
 Cosmos DB SDK 1.9.0 以降では、並列クエリ実行オプションがサポートされています。そのため、多数のパーティションにタッチする必要がある場合でも、パーティションのコレクションに対して少ない待ち時間でクエリを実行できます。 たとえば、次のクエリはパーティション全体で並列に実行されるように構成されています。
@@ -204,8 +204,8 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
-* `MaxDegreeOfParallelism` を設定すると、並列処理次数、つまりコンテナーのパーティションに同時ネットワーク接続できる数の上限を制御することができます。 このパラメーターを -1 に設定した場合、並列処理次数は SDK によって管理されます。 `MaxDegreeOfParallelism` が指定されていないか、0 (既定値) に設定されている場合、コンテナーのパーティションへのネットワーク接続は 1 つのみです。
-* `MaxBufferedItemCount` を設定すると、クエリの待ち時間とクライアント側のメモリ使用率のバランスを取ることができます。 このパラメーターを省略するか、このパラメーターに -1 を設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
+* `MaxDegreeOfParallelism` を設定すると、並列処理次数、つまりコンテナーのパーティションに同時ネットワーク接続できる数の上限を制御することができます。 このプロパティを -1 に設定した場合、並列処理次数は SDK によって管理されます。 `MaxDegreeOfParallelism` が指定されていないか、0 (既定値) に設定されている場合、コンテナーのパーティションへのネットワーク接続は 1 つのみです。
+* `MaxBufferedItemCount` を設定すると、クエリの待ち時間とクライアント側のメモリ使用率のバランスを取ることができます。 このパラメーターを省略するか、このプロパティに -1 を設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
 コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。 並べ替え (ORDER BY、TOP、またはその両方) を含むクロスパーティション クエリを実行したときは、Azure Cosmos DB SDK からパーティション全体に並列クエリが発行され、部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
 

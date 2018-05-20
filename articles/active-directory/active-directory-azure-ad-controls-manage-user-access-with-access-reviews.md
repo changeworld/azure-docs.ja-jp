@@ -1,11 +1,11 @@
 ---
-title: "Azure AD のアクセス レビューでユーザー アクセスを管理する | Microsoft Docs"
-description: "Azure Active Directory のアクセス レビューを使用して、グループのメンバーシップやアプリケーションへの割り当てとしてのユーザー アクセスを管理する方法について説明します"
+title: Azure AD のアクセス レビューでユーザー アクセスを管理する | Microsoft Docs
+description: Azure Active Directory のアクセス レビューを使用して、グループのメンバーシップやアプリケーションへの割り当てとしてのユーザー アクセスを管理する方法について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 6a4d25b2eb228cafab48419a0d0eda92bba9f1ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b11f0b2032a102501de1da8315e80df88bfd57d5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 ## <a name="prerequisites"></a>前提条件 
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
+アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-whatis.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
 
 
 ## <a name="create-and-perform-an-access-review"></a>アクセス レビューの作成と実行
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 7. レビュー担当者が入力したら、アクセス レビューを停止し、変更を適用します。 詳細については、[アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](active-directory-azure-ad-controls-create-access-review.md)
 

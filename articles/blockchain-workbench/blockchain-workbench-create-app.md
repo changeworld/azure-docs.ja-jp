@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ffc8be29cecac05fda440eaf72b51ffc6f024424
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
 
@@ -35,6 +35,8 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 * Blockchain Workbench 管理者アカウント。 詳細については、[Azure Blockchain Workbench での Blockchain Workbench 管理者の追加](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators)に関するセクションを参照してください。
 
 ここでは、要求元が要求を送信し、レスポンダーが要求に対する応答を送信する基本的なアプリケーションを構築します。 たとえば、「こんにちは、調子はどうですか?」という要求に対し、「最高です!」という応答を返すことができます。 要求と応答の両方が、基になるブロックチェーンに記録されます。 
+
+アプリケーション ファイルを作成する手順に従うか、[サンプルを GitHub からダウンロード](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain)できます。 
 
 ## <a name="configuration-file"></a>構成ファイル
 
@@ -398,4 +400,7 @@ Blockchain Workbench でのユーザー管理の詳細については、[Azure B
 
 ## <a name="next-steps"></a>次の手順
 
-アプリケーションを作成したので、[ブロックチェーン アプリケーションを使用](blockchain-workbench-use.md)してみてください。
+このハウツー記事では、基本的な要求と応答のアプリケーションを作成しました。 アプリケーションを使用する方法については、次のハウツー記事に進みます。
+
+> [!div class="nextstepaction"]
+> [ブロックチェーン アプリケーションの使用](blockchain-workbench-use.md)

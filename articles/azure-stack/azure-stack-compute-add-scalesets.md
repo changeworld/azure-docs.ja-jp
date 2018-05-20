@@ -5,18 +5,16 @@ services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
-ms.reviewer: anajod
-keywords: ''
-ms.openlocfilehash: cdabd2a9d336cdd8ac83d27460fe129c45b7e1c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: kivenkat
+ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
@@ -38,14 +36,15 @@ Azure Stack では、仮想マシン スケール セットは自動スケール
    Azure Stack の PowerShell と Azure Stack ツールをインストールして構成します。 「[Get up and running with PowerShell in Azure Stack (Azure Stack での PowerShell の稼働)](azure-stack-powershell-configure-quickstart.md)」をご覧ください。
 
    Azure Stack ツールをインストールしたら、次の PowerShell モジュールをインポートします (AzureStack-Tools-master フォルダーの .\ComputeAdmin フォルダーからの相対パス)。
-
+  ````PowerShell
         Import-Module .\AzureStack.ComputeAdmin.psm1
+  ````
 
 * **オペレーティング システム イメージ**
 
    Azure Stack Marketplace にオペレーティング システム イメージを追加していない場合は、「[Add the Windows Server 2016 VM image to the Azure Stack marketplace (Azure Stack Marketplace に Windows Server 2016 の VM イメージを追加する)](azure-stack-add-default-image.md)」をご覧ください。
 
-   Linux のサポートでは、Ubuntu Server 16.04 をダウンロードし、```Add-AzsVMImage``` とパラメーター ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"``` を使用して追加します。
+   Linux のサポートでは、Ubuntu Server 16.04 をダウンロードし、```Add-AzsPlatformImage``` とパラメーター ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"``` を使用して追加します。
 
 
 ## <a name="add-the-virtual-machine-scale-set"></a>仮想マシン スケール セットの追加
@@ -54,7 +53,7 @@ Azure Stack では、仮想マシン スケール セットは自動スケール
 
 ``$User`` は、管理者ポータルへの接続に使用するアカウントです。 たとえば、「serviceadmin@contoso.onmicrosoft.com」のように入力します。
 
-```
+````PowerShell  
 $Arm = "https://adminmanagement.local.azurestack.external"
 $Location = "local"
 
@@ -72,7 +71,7 @@ $AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
 Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 
 Add-AzsVMSSGalleryItem -Location $Location
-```
+````
 
 ## <a name="update-images-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットのイメージを更新する 
 仮想マシン スケール セットを作成すると、スケール セットを再作成することなく、スケール セット内のイメージを更新できます。 イメージを更新するプロセスは、次のようにシナリオによって変わります。
@@ -83,12 +82,14 @@ Add-AzsVMSSGalleryItem -Location $Location
 
    *latest* を指定する例を次に示します。  
 
-          "imageReference": {
-             "publisher": "[parameters('osImagePublisher')]",
-             "offer": "[parameters('osImageOffer')]",
-             "sku": "[parameters('osImageSku')]",
-             "version": "latest"
-             }
+    ```Json  
+    "imageReference": {
+        "publisher": "[parameters('osImagePublisher')]",
+        "offer": "[parameters('osImageOffer')]",
+        "sku": "[parameters('osImageSku')]",
+        "version": "latest"
+        }
+    ```
 
    スケールアップで新しいイメージを使用するには、そのイメージをダウンロードしておく必要があります。  
 
@@ -110,12 +111,12 @@ Add-AzsVMSSGalleryItem -Location $Location
 
 仮想マシン スケール セットのギャラリー アイテムを削除するには、次の PowerShell コマンドを実行します。
 
+```PowerShell  
     Remove-AzsVMSSGalleryItem
+````
 
 > [!NOTE]
 > ギャラリー アイテムはすぐに削除されない場合があります。 Marketplace からアイテムが削除済みとして表示されるまで、ポータルを数回更新する必要がある場合があります。
 
-
 ## <a name="next-steps"></a>次の手順
 [Azure Stack に関してよく寄せられる質問](azure-stack-faq.md)
-

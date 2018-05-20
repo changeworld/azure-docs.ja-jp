@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5f323b98fa30d2c4c89fa8fe8e75c1d89089b6e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="governance-in-azure"></a>Azure でのガバナンス
 
@@ -133,7 +133,7 @@ Azure 加入契約の階層では、エンタープライズ契約の範囲内�
 
   - 制限
 
-  - 仮想ネットワーク
+  - Virtual Network
 
 - 1 つの AAD へのアタッチ (1 つの AAD は多数のサブスクリプションと関連付けられる)
 
@@ -177,11 +177,11 @@ RBAC を使用した高度なアクセス管理については、「 [What is Ro
 
 ## <a name="resource-management"></a>リソース管理
 
-Azure では当初、クラシック デプロイメント モデルのみ用意されていました。 このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。 それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。
+Azure では当初、クラシック デプロイ モデルのみ用意されていました。 このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。 それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。
 
 ソリューションをデプロイするには、Azure Portal 経由で各リソースを個別に作成するか、すべてのリソースを正しい順序でデプロイするスクリプトを作成する必要がありました。 ソリューションを削除するには、各リソースを個別に削除するほかありませんでした。 関連リソースのアクセス制御ポリシーの適用と更新は、簡単ではありませんでした。 そのうえ、タグをリソースに適用し、リソースの監視と請求の管理に役立つ単語を使ってこれらのリソースにラベル付けすることもできませんでした。
 
-2014 年、Azure に Resource Manager が導入され、リソース グループの概念が追加されました。 リソース グループとは、共通のライフサイクルが共有されるリソースのコンテナーです。 Resource Manager のデプロイ モデルにはいくつかの利点があります。
+2014 年、Azure に Resource Manager が導入され、リソース グループの概念が追加されました。 リソース グループとは、共通のライフサイクルが共有されるリソースのコンテナーです。 Resource Manager デプロイ モデルにはいくつかの利点があります。
 
 - ソリューションのすべてのサービスを、個別に処理するのではなく、グループとしてデプロイ、管理、監視できます。
 

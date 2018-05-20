@@ -1,25 +1,26 @@
 ---
-title: "Azure Active Directory のアプリケーションおよびサービス プリンシパル オブジェクト"
-description: "Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについての説明"
+title: Azure Active Directory のアプリケーションおよびサービス プリンシパル オブジェクト
+description: Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについての説明
 documentationcenter: dev-center-name
-author: bryanla
+author: CelesteDG
 manager: mtillman
 services: active-directory
-editor: 
+editor: ''
 ms.assetid: adfc0569-dc91-48fe-92c3-b5b4833703de
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/19/2017
-ms.author: bryanla
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 85731afd18304e848f8577d8a6665dca3f9ee5d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e8e693355fb9b30e1a69b49f20d5044c531e2fcd
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト (Azure AD)
 「アプリケーション」という用語の意味が、Azure AD のコンテキストで使用する場合に誤解されることがあります。 この記事の目的は、Azure AD アプリケーション統合の概念的および具体的な側面を、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)の登録と同意の例を示しながら明らかにすることです。
@@ -36,12 +37,12 @@ Azure AD アプリケーションは、その唯一のアプリケーション �
 #### <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
 Azure AD テナントによってセキュリティ保護されているリソースにアクセスするためには、アクセスを必要とするエンティティをセキュリティ プリンシパルで表す必要があります。 これは、ユーザー (ユーザー プリンシパル) とアプリケーション (サービス プリンシパル) の両方に当てはまります。 セキュリティ プリンシパルは、そのテナント内のユーザー/アプリケーションのアクセス ポリシーとアクセス許可を定義します。 これにより、サインイン時のユーザー/アプリケーションの認証、リソースへのアクセス時の承認などのコア機能を利用できるようになります。
 
-アプリケーションが (登録または[同意](active-directory-dev-glossary.md#consent)によって) テナント内のリソースへのアクセス許可を与えられると、サービス プリンシパル オブジェクトが作成されます。 サービス プリンシパル オブジェクトのプロパティのスキーマは、Azure AD Graph [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって定義されています。  
+アプリケーションが (登録または[同意](active-directory-dev-glossary.md#consent)によって) テナント内のリソースへのアクセス許可を与えられると、サービス プリンシパル オブジェクトが作成されます。 サービス プリンシパル オブジェクトのプロパティのスキーマは、Azure AD Graph [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって定義されています。 
 
 #### <a name="application-and-service-principal-relationship"></a>アプリケーションとサービス プリンシパルのリレーションシップ
 アプリケーション オブジェクトはアプリケーションの*グローバル*な表現 (すべてのテナント用) であり、サービス プリンシパル オブジェクトはアプリケーションの*ローカル*な表現 (特定のテナント用) と考えることができます。 アプリケーション オブジェクトは、対応するサービス プリンシパル オブジェクトの作成に使用するために、一般的な既定のプロパティが*派生*するテンプレートとして機能します。 そのため、アプリケーション オブジェクトにはソフトウェア アプリケーションとの 1 対 1 の関係と、対応するサービス プリンシパル オブジェクトとの 1 対多の関係が存在します。
 
-サービス プリンシパルは、テナントによってセキュリティ保護されているリソースにサインインまたはアクセスするための ID を確立できるように、アプリケーションが使用される各テナントで作成する必要があります。 シングルテナント アプリケーションには、アプリケーション登録中に作成され、使用が同意されたサービス プリンシパルが (そのホーム テナントに) 1 つだけあります。 マルチテナント Web アプリケーション/API には、そのテナントのユーザーが使用に同意した各テナントで作成されたサービス プリンシパルもあります。  
+サービス プリンシパルは、テナントによってセキュリティ保護されているリソースにサインインまたはアクセスするための ID を確立できるように、アプリケーションが使用される各テナントで作成する必要があります。 シングルテナント アプリケーションには、アプリケーション登録中に作成され、使用が同意されたサービス プリンシパルが (そのホーム テナントに) 1 つだけあります。 マルチテナント Web アプリケーション/API には、そのテナントのユーザーが使用に同意した各テナントで作成されたサービス プリンシパルもあります。 
 
 > [!NOTE]
 > アプリケーション オブジェクトに加えたすべての変更は、アプリケーションのホーム テナント (アプリケーションが登録されたテナント) にだけ存在するサービス プリンシパル オブジェクトにも反映されます。 マルチテナント アプリケーションの場合は、[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通じてアクセス権を削除し、もう一度アクセス権を付与するまで、そのコンシューマー テナントのサービス プリンシパル オブジェクトにアプリケーション オブジェクトへの変更が反映されることはありません。
@@ -65,7 +66,7 @@ Azure AD テナントによってセキュリティ保護されているリソ�
 
 ステップ 3 では、HR アプリケーション (Contoso と Fabrikam) のコンシューマー テナントにそれぞれ独自のサービス プリンシパル オブジェクトが作成されます。 それぞれ実行時におけるアプリケーションのインスタンスの使用を表し、それぞれの管理者によって同意されたアクセス許可によって管理されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure AD Graph API、[Azure ポータル][AZURE-Portal]のアプリケーション マニフェスト エディター、または [Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を通じて、OData [Application エンティティ][AAD-Graph-App-Entity]によって表されるアプリケーションのアプリケーション オブジェクトにアクセスできます。
 
 Azure AD Graph API または [Azure AD PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)を通じて、OData [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって表されるアプリケーションのサービス プリンシパル オブジェクトにアクセスできます。

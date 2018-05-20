@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management での通知と電子メール テンプレートの構成 | Microsoft Docs"
-description: "Azure API Management で通知と電子メール テンプレートを構成する方法について説明します。"
+title: Azure API Management での通知と電子メール テンプレートの構成 | Microsoft Docs
+description: Azure API Management で通知と電子メール テンプレートを構成する方法について説明します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 228cbb103e13c478bea460bb04de43d6480bc60e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 60788f76dac58ead10e43e892d587a86bdd3fcad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management で通知と電子メール テンプレートを構成する方法
 API Management には、特定のイベントの通知を構成する機能と、API Management インスタンスの管理者および開発者との通信に使用される電子メール テンプレートを構成する機能があります。 この記事では、使用可能なイベントの通知を構成する方法について説明し、これらのイベントに使用できる電子メール テンプレートを構成する方法の概要を示します。
@@ -48,7 +48,7 @@ API Management サービス インスタンスを保有していない場合は�
 3. 通知先の電子メール アドレスを指定するには、電子メール アドレス テキスト ボックスに電子メール アドレスを入力します。 複数の電子メール アドレスを指定するには、電子メール アドレスをコンマで区切ります。
 
     ![通知の受信者][api-management-email-addresses]
-4. **[追加]**をクリックします。
+4. **[追加]** をクリックします。
 
 ## <a name="email-templates"> </a>通知テンプレートの構成
 API Management には、サービスの管理および使用に関連して送信する電子メール メッセージ向けの通知テンプレートが用意されています。 次の電子メール テンプレートが用意されています。

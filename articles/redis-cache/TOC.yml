@@ -6,19 +6,19 @@
       href: cache-overview.md
 - name: クイック スタート
   items:
-    - name: ASP.NET
+    - name: ASP.NET アプリを作成する
       href: cache-web-app-howto.md
-    - name: .NET
+    - name: .NET アプリを作成する
       href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: ノード
+    - name: Node.js アプリを作成する
       href: cache-nodejs-get-started.md
-    - name: Java
+    - name: Java アプリを作成する
       href: cache-java-get-started.md
-    - name: Python
+    - name: Python アプリを作成する
       href: cache-python-get-started.md
 - name: チュートリアル
   items:
-    - name: キャッシュ ランキング
+    - name: ランキングに基づくキャッシュを使用する
       href: cache-web-app-cache-aside-leaderboard.md
 - name: サンプル
   items:

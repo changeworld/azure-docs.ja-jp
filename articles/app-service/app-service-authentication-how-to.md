@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証と承認のカスタマイズ
 
@@ -25,7 +25,8 @@ ms.lasthandoff: 04/16/2018
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル: Azure App Service でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および承認する](containers/tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Google ログインを使用するようにアプリを構成する方法](app-service-mobile-how-to-configure-google-authentication.md)
@@ -92,7 +93,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
     1. 左側のブラウザーで、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
-    1. **[編集]**をクリックします。
+    1. **[編集]** をクリックします。
     1. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
         ```json
@@ -148,4 +149,5 @@ Microsoft アカウントと Azure Active Directory の両方に複数のドメ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [チュートリアル: エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Windows)](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル: エンドツーエンドでのユーザーの認証と承認 (Linux)](containers/tutorial-auth-aad.md)

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ Update 4 リリース ノート | Microsoft Docs"
-description: "StorSimple 8000 シリーズ Update 4 における新機能、問題、回避策について説明します。"
+title: StorSimple 8000 シリーズ Update 4 リリース ノート | Microsoft Docs
+description: StorSimple 8000 シリーズ Update 4 における新機能、問題、回避策について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 シリーズ Update 4 リリース ノート
-> [!NOTE]
-> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
-
 
 ## <a name="overview"></a>概要
 
@@ -45,8 +42,7 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 
 * **ローカル固定ボリュームのパフォーマンス向上** – Update 4 では、(ボリューム サイズに匹敵するデータ量の) 大量のデータを取り込む際のローカル固定ボリュームのパフォーマンスが向上しています。
 
-* 
-            **ヒートマップベースの復元** - これまでのリリースでは、ディザスター リカバリー (DR) 後のデータの復元がアクセス パターンに基づいてクラウドから行われており、パフォーマンスの低下につながっていました。 
+* **ヒートマップベースの復元** - これまでのリリースでは、ディザスター リカバリー (DR) 後のデータの復元がアクセス パターンに基づいてクラウドから行われており、パフォーマンスの低下につながっていました。 
 
     Update 4 で実装された新しい機能では、DR が行われる前のデバイスの使用中、頻繁にアクセスされるデータが追跡され、ヒートマップが作成されます (使用頻度の高いデータ チャンクはヒート値が高く、使用頻度の低いチャンクはヒート値が低い)。 StorSimple は、DR 後にこのヒートマップを使用して、クラウドからデータを自動的に復元してリハイドレートします。 
 

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2018
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 117bf601383a2a1156f8f8dce721f45bd27f2f88
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 09c2badf6116dd36add6cccc82486d7f5b8f8697
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 

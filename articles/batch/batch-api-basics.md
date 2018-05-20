@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3423103de774faaf9e7884626a9a1a102e351b68
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -72,10 +72,7 @@ Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) 
 
 1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
-> [!NOTE]
-> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は、ほとんどのシナリオで非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 また、ユーザー サブスクリプション モードで Batch アカウントを作成するには、ご利用のサブスクリプションを Azure Batch に登録し、アカウントを Azure Key Vault に関連付ける必要があります。
->
-
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 ## <a name="azure-storage-account"></a>Azure ストレージ アカウント
 

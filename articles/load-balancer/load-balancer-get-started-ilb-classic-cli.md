@@ -1,11 +1,11 @@
 ---
-title: "内部ロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs"
-description: "クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。"
+title: 内部ロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs
+description: クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: becbbbde-a118-4269-9444-d3153f00bf34
 ms.service: load-balancer
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: f740633230b2479f77d7d09a31dbbf3f72ffb174
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサー (クラシック) の作成の概要
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/18/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-cli.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -174,7 +174,7 @@ azure vm endpoint delete DB1 tcp-1433-1433
 
 詳細については、「 `azure vm endpoint --help` 」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ソース IP アフィニティを使用したロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 

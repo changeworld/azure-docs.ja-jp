@@ -4,7 +4,7 @@ description: この記事では、Azure で運用可能なセキュリティの�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20dfbd2c5c2c38abddf332dc6a20ddb271c95ace
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)は、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワークです。
@@ -43,7 +43,8 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 
 -   Log Analytics
 -   Automation
--   バックアップ
+-   Backup
+
 -   Site Recovery
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -52,7 +53,8 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 ### <a name="automation"></a>Automation
 ユーザーは Microsoft [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。 時間を節約し、普段の管理タスクの信頼性が向上し、一定の間隔で自動的に実行されるようにスケジュールを設定します。 Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。
 
-### <a name="backup"></a>バックアップ
+### <a name="backup"></a>Backup
+
 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 [Azure Backup コンポーネントの表](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use)をご覧ください。
 
 ### <a name="site-recovery"></a>Site Recovery

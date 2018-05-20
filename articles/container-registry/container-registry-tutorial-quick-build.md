@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0259f861016716ce2fdd10b866008cf5fcc305b4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fefa6096e39d86b94f8ea348d894179220ad09e1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-build"></a>チュートリアル: Azure Container Registry Build を使用してクラウド内のコンテナー イメージをビルドする
 
@@ -30,8 +30,7 @@ Dockerfile に関する専門知識をすべて、ACR Build に直接転送で�
 
 以降のチュートリアルでは、コードのコミット時と基本イメージ更新時に自動化されたコンテナー イメージ ビルド用に ACR Build のビルド タスクを使用する方法を説明します。
 
-> [!IMPORTANT]
-> ACR Build は現在プレビュー段階にあり、**米国東部** (eastus) と**西ヨーロッパ** (westeurope) リージョンの Azure コンテナー レジストリでのみサポートされています。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -100,46 +99,58 @@ az acr build --registry $ACR_NAME --image helloacrbuild:v1 .
 
 ```console
 $ az acr build --registry $ACR_NAME --image helloacrbuild:v1 .
-Sending build context (41.042 KiB) to ACR
-Queued a build with ID: eastus1
-Sending build context to Docker daemon  191.5kB
+Sending build context (4.909 KiB) to ACR.
+Queued a build with build ID: aa1
+Waiting for a build agent...
+Sending build context to Docker daemon  22.53kB
 Step 1/5 : FROM node:9-alpine
 9-alpine: Pulling from library/node
-605ce1bd3f31: Pulling fs layer
-f10758dcda1f: Pulling fs layer
-4cbe43d669e5: Pulling fs layer
+Digest: sha256:5149aec8f508d48998e6230cdc8e6832cba192088b442c8ef7e23df3c6892cd3
+Status: Image is up to date for node:9-alpine
+ ---> 7af437a39ec2
+Step 2/5 : COPY . /src
+ ---> 0c4814714938
+Step 3/5 : RUN cd /src && npm install
+ ---> Running in 4f77ce7b330d
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN helloworld@1.0.0 No repository field.
 
-[...]
-
-Removing intermediate container 2dbac02fb0e6
- ---> 670bbc77128d
+up to date in 0.096s
+Removing intermediate container 4f77ce7b330d
+ ---> e0eb24339e07
 Step 4/5 : EXPOSE 80
- ---> Running in 1d09ee337a47
-Removing intermediate container 1d09ee337a47
- ---> f0739d333913
+ ---> Running in 872bd29edbc7
+Removing intermediate container 872bd29edbc7
+ ---> 22ba8d8ffb4e
 Step 5/5 : CMD ["node", "/src/server.js"]
- ---> Running in 1f019c4e4b24
-Removing intermediate container 1f019c4e4b24
-fbd7c8b9c17e: Preparing
+ ---> Running in 1a40c05c4122
+Removing intermediate container 1a40c05c4122
+ ---> 0a9a4b74fb53
+Successfully built 0a9a4b74fb53
+Successfully tagged mycontainerregistry.azurecr.io/helloacrbuild:v1
+time="2018-05-10T19:10:20Z" level=info msg="Running command docker push mycontainerregistry.azurecr.io/helloacrbuild:v1"
+The push refers to repository [mycontainerregistry.azurecr.io/helloacrbuild]
+d2b301f7ef94: Preparing
+d0e0f2bb8747: Preparing
 26b0c207c4a9: Preparing
 917e7cdebc8b: Preparing
 9dfa40a0da3b: Preparing
-7d7224b439b3: Pushed
-9dfa40a0da3b: Pushed
-fbd7c8b9c17e: Pushed
 26b0c207c4a9: Pushed
+d2b301f7ef94: Pushed
+d0e0f2bb8747: Pushed
+9dfa40a0da3b: Pushed
 917e7cdebc8b: Pushed
-v1: digest: sha256:60d78f0a336a387ba93f04ecf22538d01bca985a277ac77d3813ce360aba0cb1 size: 1367
-time="2018-04-18T18:28:29Z" level=info msg="Running command docker inspect --format \"{{json .RepoDigests}}\" mycontainerregistry.azurecr.io/helloacrbuild:v1"
-"["mycontainerregistry.azurecr.io/helloacrbuild@sha256:60d78f0a336a387ba93f04ecf22538d01bca985a277ac77d3813ce360aba0cb1"]"
-time="2018-04-18T18:28:30Z" level=info msg="Running command docker inspect --format \"{{json .RepoDigests}}\" node:9-alpine"
+v1: digest: sha256:78d7980b4c80a078192bd4749c27eeae56421079606ed7b7d8ae84dbb04193fd size: 1366
+time="2018-05-10T19:11:07Z" level=info msg="Running command docker inspect --format \"{{json .RepoDigests}}\" mycontainerregistry.azurecr.io/helloacrbuild:v1"
+"["mycontainerregistry.azurecr.io/helloacrbuild@sha256:78d7980b4c80a078192bd4749c27eeae56421079606ed7b7d8ae84dbb04193fd"]"
+time="2018-05-10T19:11:07Z" level=info msg="Running command docker inspect --format \"{{json .RepoDigests}}\" node:9-alpine"
 "["node@sha256:5149aec8f508d48998e6230cdc8e6832cba192088b442c8ef7e23df3c6892cd3"]"
 ACR Builder discovered the following dependencies:
 - image:
     registry: mycontainerregistry.azurecr.io
     repository: helloacrbuild
     tag: v1
-    digest: sha256:60d78f0a336a387ba93f04ecf22538d01bca985a277ac77d3813ce360aba0cb1
+    digest: sha256:78d7980b4c80a078192bd4749c27eeae56421079606ed7b7d8ae84dbb04193fd
   runtime-dependency:
     registry: registry.hub.docker.com
     repository: library/node
@@ -147,7 +158,7 @@ ACR Builder discovered the following dependencies:
     digest: sha256:5149aec8f508d48998e6230cdc8e6832cba192088b442c8ef7e23df3c6892cd3
 
 Build complete
-Build ID: eastus1 was successful after 38.116951381s
+Build ID: aa1 was successful after 52.522222729s
 ```
 
 出力の最後のほうに、ACR Build によって、イメージの検出された依存関係が表示されます。 これにより、ACR Build は基本イメージの更新時 (OS またはフレームワークの修正プログラムによる基本イメージの更新時) にイメージ ビルドを自動化できます。 基本イメージの更新プログラムの ACR Build のサポートについては、このチュートリアル シリーズで後ほど説明します。
@@ -302,7 +313,6 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

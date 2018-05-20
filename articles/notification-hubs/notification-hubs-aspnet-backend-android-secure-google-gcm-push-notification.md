@@ -1,11 +1,11 @@
 ---
-title: "Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信"
-description: "セキュリティで保護されたプッシュ通知を Azure から Android アプリに送信する方法について説明します。 コード サンプルは Java と C# で記述されています。"
+title: Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
+description: セキュリティで保護されたプッシュ通知を Azure から Android アプリに送信する方法について説明します。 コード サンプルは Java と C# で記述されています。
 documentationcenter: android
-keywords: "プッシュ通知,プッシュ通知,プッシュ メッセージ,Android プッシュ通知"
-author: ysxu
-manager: erikre
-editor: 
+keywords: プッシュ通知,プッシュ通知,プッシュ メッセージ,Android プッシュ通知
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: 58f6967c59a5060baa10ff83752b9c6ed08226cb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
 > [!div class="op_single_selector"]
@@ -29,9 +29,9 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 > [!IMPORTANT]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)を参照してください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)を参照してください。
 > 
 > 
 
@@ -48,7 +48,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
    * Android デバイスは、安全なペイロードを要求するバックエンドにアクセスします。
    * アプリケーションはデバイスに通知としてペイロードを表示できます。
 
-重要なのは、前のフロー (およびこのチュートリアル) では、デバイスは、ユーザーがログインした後、認証トークンをローカル ストレージに保存すると想定していることです。 デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、これによって完全にシームレスなエクスペリエンスが保証されます。 アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリは、プッシュ通知を受け取ったときにアプリの起動を促す一般的な通知を表示する必要があります。 その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
+前のフロー (およびこのチュートリアル) では、ユーザーがログインした後、デバイスが認証トークンをローカル ストレージに格納することを前提にしていることに注意する必要があります。 このアプローチにより、デバイスはこのトークンを使用して通知のセキュリティ保護されたペイロードを取得できるため、シームレスなエクスペリエンスが保証されます。 アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリは、プッシュ通知を受け取ったときにアプリの起動を促す一般的な通知を表示する必要があります。 その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
 このチュートリアルでは、セキュリティ保護されたプッシュ通知を送信する方法について説明します。 このチュートリアルは、 [ユーザーへの通知](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください (まだ完了していない場合)。
 
@@ -60,10 +60,10 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Android プロジェクトを変更する
-プッシュ通知の *ID* だけを送信するようにアプリ バックエンドを変更したため、Android アプリがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
+これで、プッシュ通知の *ID* のみを送信するようにアプリ バックエンドが変更されたので、その通知を処理し、バックエンドをコールバックして、表示されるセキュリティ保護されたメッセージを取得するように Android アプリを変更する必要があります。
 そのためには、Android アプリケーションが、プッシュ通知を受け取ったときにバックエンドでそれ自体を認証する方法を知っている必要があります。
 
-アプリケーションの共有設定に認証ヘッダー値を保存するために、ここでは *login* フローを変更します。 類似したメカニズムを使用して、ユーザー資格情報を要求せずに、アプリケーションが使用する必要がある任意の認証トークン (OAuth トークンなど) を保存できます。
+ここでは、認証ヘッダー値をアプリの共有設定に保存するために *login* フローを変更します。 類似のメカニズムを使用すると、ユーザー資格情報を要求せずにアプリが使用する必要がある任意の認証トークン (OAuth トークンなど) を格納できます。
 
 1. Android アプリケーション プロジェクトで、 **MainActivity** クラスの先頭に次の定数を追加します。
    
@@ -86,7 +86,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
    
         import android.content.SharedPreferences;
 
-ここで、通知を受け取ったときに呼び出されるヘッダーを変更します。
+次に、通知が受信されたときに呼び出されるハンドラーを変更します。
 
 1. **MyHandler** クラスで、次のコードを含むように `OnReceive()` メソッドを変更します。
    
@@ -126,13 +126,13 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 このメソッドは、共有設定に格納された資格情報によってアプリケーション バックエンドを呼び出して通知コンテンツを取得し、正常な通知として表示します。 この通知は、アプリケーションのユーザーにとっては、他のプッシュ通知とまったく同じように見えます。
 
-認証ヘッダー プロパティが不明な場合やバックエンドによって拒否された場合などに対応できるようにすることをお勧めします。 こうしたケースに対する特定の処理は、ターゲット ユーザーのエクスペリエンスによって異なります。 1 つのオプションとしては、ユーザーに通知と共に認証を求める一般的なプロンプトを表示して、実際の通知を取得する方法があります。
+認証ヘッダーのプロパティが見つからない場合や、バックエンドによって拒否された場合に対処することをお勧めします。 これらの場合への具体的な対処は、ほぼターゲット ユーザーのエクスペリエンスに依存します。 1 つのオプションとしては、ユーザーに通知と共に認証を求める一般的なプロンプトを表示して、実際の通知を取得する方法があります。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
-アプリケーションを実行するには、以下の手順に従います。
+アプリケーションを実行するには、次のアクションを実行します。
 
 1. **AppBackend** が Azure にデプロイされていることを確認します。 Visual Studio を使用している場合は、 **AppBackend** Web API アプリケーションを実行します。 ASP.NET Web ページが表示されます。
 2. Eclipse で、物理的な Android デバイスまたはエミュレーターでアプリケーションを実行します。
 3. Android アプリケーションの UI で、ユーザー名とパスワードを入力します。 文字列は任意ですが、値は同じである必要があります。
-4. Android アプリケーションの UI で、 **[ログイン]**をクリックします。 次に、 **[プッシュを送信する]**をクリックします。
+4. Android アプリケーションの UI で、 **[ログイン]** をクリックします。 次に、 **[プッシュを送信する]** をクリックします。
 

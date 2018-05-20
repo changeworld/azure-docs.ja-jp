@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d3ca9983eee4db09a68bf772b80c9ef841117872
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -70,7 +70,7 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 
 * 各ログ エントリに識別子を追加するか、他の手法によって、データ系列の追跡を維持することを検討します。 これにより、データと操作の元のソースを追跡し、各ステージのデータをたどって整合性と有効性を把握できます。
 
-* 1 つまたは複数のクラスターからログを収集する方法を検討し、監査、監視、計画、アラートなどの目的と照合します。 カスタム ソリューションを使って定期的にログ ファイルにアクセスしてダウンロードし、それらを結合および分析してダッシュボードの表示を提供します。 また、セキュリティや障害検出の警告用に他の機能を追加することもできます。 PowerShell、HDInsight SDK、または Azure クラシック デプロイメント モデルにアクセスするコードを使って、これらのユーティリティを作成できます。
+* 1 つまたは複数のクラスターからログを収集する方法を検討し、監査、監視、計画、アラートなどの目的と照合します。 カスタム ソリューションを使って定期的にログ ファイルにアクセスしてダウンロードし、それらを結合および分析してダッシュボードの表示を提供します。 また、セキュリティや障害検出の警告用に他の機能を追加することもできます。 PowerShell、HDInsight SDK、または Azure クラシック デプロイ モデルにアクセスするコードを使って、これらのユーティリティを作成できます。
 
 * ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://www.microsoft.com/download/details.aspx?id=42521)が提供されています。 また、Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator など、多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています。
 
@@ -105,17 +105,6 @@ HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluste
 HDInsight では、クラスター ファイル システムと Azure ストレージの両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの SSH 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure ストレージのログ ファイルは、Azure ストレージにアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、AZCopy、CloudXplorer、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
 Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
-
-#### <a name="hdinsight-logs-written-to-azure-tables"></a>Azure テーブルに書き込まれる HDInsight ログ
-
-Azure テーブルに書き込まれたログは、HDInsight クラスターで何が起こっているかを知る手がかりとなります。 Linux ベースの HDInsight クラスターを作成すると、既定の Table Storage 内に次の 6 つのテーブルが自動的に作成されます。
-
-* hdinsightagentlog
-* syslog
-* daemonlog
-* hadoopservicelog
-* ambariserverlog
-* ambariagentlog
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>Azure Blob Storage に書き込まれる HDInsight ログ
 

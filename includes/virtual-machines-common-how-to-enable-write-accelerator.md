@@ -5,14 +5,14 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2018
+ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4fe1f2ad4bad9d670094bbb4eed188baf28108ea
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="write-accelerator"></a>書き込みアクセラレータ
 書き込みアクセラレータは、専用の Azure Managed Disks がある Premium Storage 上の M シリーズ仮想マシン (VM) 用のディスク機能です。 名前が示すように、この機能の目的は、Azure Premium Storage に対する書き込みの I/O 待機時間を短縮することです。 書き込みアクセラレータは、最新のデータベース用のパフォーマンスの高い方法でログ ファイルの更新をディスクに永続化する必要がある場合に最適です。
@@ -164,6 +164,21 @@ VM、ディスク、リソース グループの各名前を調整する必要�
 
 ![Azure Portal 上の書き込みアクセラレータ](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
+### <a name="enabling-through-azure-cli"></a>Azure CLI を使用して有効にする
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) を使用し、書き込みアクセラレータを有効にできます。 
+
+既存のディスクで書き込みアクセラレータを有効にするには、下のコマンドを使用してください。diskName、VMName、ResourceGroup をそれぞれ、独自の値に変更してください。 
+```
+az vm update -g group1 -n vm1 –write-accelerator 1=true
+```
+書き込みアクセラレータを有効にしたディスクを装着するには、下のコマンドを使用してください。値は独自のものに変更してください。
+```
+az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+```
+書き込みアクセラレータを無効にするには、プロパティを false に設定します。 
+```
+az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+```
 
 ### <a name="enabling-through-rest-apis"></a>REST API で有効にする
 Azure REST API を使って展開するには、Azure armclient をインストールする必要があります。

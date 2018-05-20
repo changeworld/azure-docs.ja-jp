@@ -3,16 +3,17 @@ title: Azure Automation アカウントの構成を検証する
 description: この記事では、Automation アカウントの構成が正しく設定されていることを確認する方法について説明します。
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6b8e1f2923657965f4bab89e7a0f5f08faa1d27e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5a1e763e12163c115384a09311c2b0177481ae92
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Azure Automation 実行アカウントの認証をテストする
 Automation アカウントが正常に作成されたら、新しく作成または更新された Automation 実行アカウントを使用して Azure Resource Manager または Azure クラシック デプロイメントで正常に認証できることを確認する簡単なテストを実行できます。    
@@ -67,7 +68,7 @@ Runbook の詳細な結果を表示するには、 **[出力]** タイルをク�
 Runbook のコードを再利用する際は、`#Get all ARM resources from all resource groups` というコメントで始まるコード ブロックを忘れずに削除してください。
 
 ## <a name="classic-run-as-authentication"></a>クラシック実行認証
-クラシック実行アカウントを使った認証を検証するには、以下のサンプル コードを使って、[PowerShell Runbook を作成](automation-creating-importing-runbook.md)します。さらにカスタム Runbook でも、クラシック デプロイメント モデルにおけるリソースの認証と管理を行ってください。  
+クラシック実行アカウントを使った認証を検証するには、以下のサンプル コードを使って、[PowerShell Runbook を作成](automation-creating-importing-runbook.md)します。さらにカスタム Runbook でも、クラシック デプロイ モデルにおけるリソースの認証と管理を行ってください。  
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"
     # Get the connection

@@ -102,6 +102,7 @@
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
+## [個人データを管理する](resource-manager-personal-data.md)
 ## [スロットル リクエスト](resource-manager-request-limits.md)
 ## [非同期操作の追跡](resource-manager-async-operations.md)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)

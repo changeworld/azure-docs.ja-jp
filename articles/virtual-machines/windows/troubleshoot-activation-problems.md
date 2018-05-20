@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 11e90a79f45e54f3842d103d290c17254d0e75fc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 

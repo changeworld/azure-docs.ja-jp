@@ -1,6 +1,6 @@
 ---
 title: C を使用してリモート監視するために Raspberry Pi をプロビジョニング - Azure | Microsoft Docs
-description: C で記述されたアプリケーションを使用して、Pi デバイスを Azure IoT Suite 構成済みリモート監視ソリューションに接続する方法について説明します。
+description: C で記述されたアプリケーションを使用して、Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する方法について説明します。
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: e3fb95bc5084bb633541f70a5e68cc8d6af83298
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9de7616ec7174f6c55888a659e9a12bca1e07f94
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Raspberry Pi デバイスをリモート監視構成済みソリューションに接続する (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-このチュートリアルでは、リモート監視構成済みソリューションに物理デバイスを接続する方法について説明します。 制限付きのデバイス上で実行される多くの組み込みアプリケーションと同様、Raspberry Pi デバイス アプリケーションのためのクライアント コードは C で書かれています。このチュートリアルでは、Raspbian OS を実行する Raspberry Pi でアプリケーションを構築します。
+このチュートリアルでは、リモート監視ソリューション アクセラレータに物理デバイスを接続する方法について説明します。 制限付きのデバイス上で実行される多くの組み込みアプリケーションと同様、Raspberry Pi デバイス アプリケーションのためのクライアント コードは C で書かれています。このチュートリアルでは、Raspbian OS を実行する Raspberry Pi でアプリケーションを構築します。
 
 ### <a name="required-hardware"></a>必要なハードウェア
 
@@ -49,7 +49,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 この記事では、ユーザーが最新バージョンの [Raspbian OS を Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/) にインストール済みであることを前提としています。
 
-次の手順では、構成済みのソリューションに接続するための C アプリケーションを構築するため、Raspberry Pi を準備する方法を示しています。
+次の手順では、ソリューション アクセラレータに接続する C アプリケーションを構築するために、Raspberry Pi を準備する方法を示しています。
 
 1. **ssh** を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
 
@@ -174,16 +174,17 @@ int main(void)
     add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
 
     target_link_libraries(sample_app
-        serializer
-        iothub_client
-        iothub_client_mqtt_transport
-        aziotsharedutil
-        umqtt
-        pthread
-        curl
-        ssl
-        crypto
-        m
+      serializer
+      iothub_client_mqtt_transport
+      umqtt
+      iothub_client
+      aziotsharedutil
+      parson
+      pthread
+      curl
+      ssl
+      crypto
+      m
     )
     ```
 

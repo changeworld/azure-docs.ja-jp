@@ -1,8 +1,8 @@
 ---
-title: "OMS Log Analytics の Syslog メッセージの収集と分析 | Microsoft Docs"
-description: "Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+title: OMS Log Analytics の Syslog メッセージの収集と分析 | Microsoft Docs
+description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  OMS Agent for Linux がインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Log Analytics にメッセージを送信し、そこで対応するレコードが OMS リポジトリに作成されます。  
@@ -31,16 +31,16 @@ Syslog は、Linux に共通のイベント ログ プロトコルです。  ア
 ![Syslog collection](media/log-analytics-data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Syslog の構成
-OMS Agent for Linux は、構成で指定されているファシリティと重大度を持つイベントだけを収集します。  OMS ポータルを通じて、または Linux エージェントで構成ファイルを管理することによって、Syslog を構成できます。
+OMS Agent for Linux は、構成で指定されているファシリティと重大度を持つイベントだけを収集します。  Azure Portal を通じて、または Linux エージェントで構成ファイルを管理することによって、Syslog を構成できます。
 
-### <a name="configure-syslog-in-the-oms-portal"></a>OMS ポータルでの Syslog の構成
-[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)で Syslog を構成します。  この構成は、各 Linux エージェントの構成ファイルに配信されます。
+### <a name="configure-syslog-in-the-azure-portal"></a>Azure Portal での Syslog の構成
+[Log Analytics の [詳細設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)で Syslog を構成します。  この構成は、各 Linux エージェントの構成ファイルに配信されます。
 
-新しいファシリティを追加するには、その名前を入力して、 **+**で Syslog を構成します。  各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。  メッセージをフィルター処理するための追加条件を指定することはできません。
+新しいファシリティを追加するには、その名前を入力して、 **+** で Syslog を構成します。  各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。  メッセージをフィルター処理するための追加条件を指定することはできません。
 
 ![Configure Syslog](media/log-analytics-data-sources-syslog/configure.png)
 
-既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  各 Linux エージェントで Syslog を手動で構成する場合は、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]*チェック ボックスをオフにします。
+既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  各 Linux エージェントで Syslog を手動で構成する場合は、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスをオフにします。
 
 ### <a name="configure-syslog-on-linux-agent"></a>Linux エージェントでの Syslog の構成
 [Linux クライアントに OMS エージェントがインストールされている](log-analytics-linux-agents.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。  このファイルを修正して、構成を変更することができます。  クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
@@ -183,9 +183,9 @@ OMS エージェントは、ポート 25224 でローカル クライアント�
 ## <a name="syslog-record-properties"></a>Syslog レコードのプロパティ
 Syslog レコードの型は **Syslog** になり、次の表に示すプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| コンピューター |イベントが収集されたコンピューター。 |
+| Computer |イベントが収集されたコンピューター。 |
 | Facility |メッセージを生成したシステムの部分を定義します。 |
 | HostIP |メッセージを送信するシステムの IP アドレスです。 |
 | HostName |メッセージを送信するシステムの名前です。 |
@@ -197,14 +197,14 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 ## <a name="log-queries-with-syslog-records"></a>Syslog レコードのログ クエリ
 次の表は、Syslog レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | Description |
+| クエリ | [説明] |
 |:--- |:--- |
 | syslog |すべての Syslog です。 |
 | Syslog &#124; where SeverityLevel == "error" |重大度がエラーであるすべての Syslog レコードです。 |
 | Syslog &#124; summarize AggregatedValue = count() by Computer |コンピューターごとの Syslog レコードの数です。 |
 | Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 * [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。

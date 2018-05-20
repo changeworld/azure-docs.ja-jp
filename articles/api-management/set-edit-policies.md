@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management ポリシーの設定または編集方法 | Microsoft Docs"
-description: "このトピックでは、Azure API Management ポリシーを設定または編集する方法を示します。"
+title: Azure API Management ポリシーの設定または編集方法 | Microsoft Docs
+description: このトピックでは、Azure API Management ポリシーを設定または編集する方法を示します。
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 409069cbc382610a48139df75f0f64b1682d8ee6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ポリシーの設定または編集方法
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/04/2017
 
 ポリシーに含まれるステートメントは、`base` 要素が存在する場合は、その配置に従って評価されます。 グローバル ポリシーには親ポリシーがないため、`<base>` 要素を使用しても効果はありません。
 
-現在のスコープに含まれるポリシーをポリシー エディターに表示するには、 **[選択したスコープの有効なポリシーを再計算する]**をクリックします。
+現在のスコープに含まれるポリシーをポリシー エディターに表示するには、 **[選択したスコープの有効なポリシーを再計算する]** をクリックします。
 
 ### <a name="global-scope"></a>グローバル スコープ
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/04/2017
 3. 三角形のアイコンをクリックします。
 4. **[コード エディター]** を選択します。
 5. ポリシーを追加または編集します。
-6. **[保存]**をクリックします。 
+6. **[保存]** をクリックします。 
 
     API Management ゲートウェイに変更が直ちに反映されます。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/04/2017
 2. ポリシーを適用する成果物を選びます。
 3. **[ポリシー]** をクリックします。
 4. ポリシーを追加または編集します。
-5. **[保存]**をクリックします。 
+5. **[保存]** をクリックします。 
 
 ### <a name="api-scope"></a>API スコープ
 
@@ -113,7 +113,7 @@ API スコープは、選択した API の **[すべての操作]** に対して
 3. 三角形のアイコンをクリックします。
 4. **[コード エディター]** を選択します。
 5. ポリシーを追加または編集します。
-6. **[保存]**をクリックします。 
+6. **[保存]** をクリックします。 
 
 ### <a name="operation-scope"></a>操作スコープ 
 
@@ -127,9 +127,9 @@ API スコープは、選択した API の **[すべての操作]** に対して
 3. 三角形のアイコンをクリックします。
 4. **[コード エディター]** を選択します。
 5. ポリシーを追加または編集します。
-6. **[保存]**をクリックします。 
+6. **[保存]** をクリックします。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の関連トピックをご覧ください。
 

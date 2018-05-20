@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 31249584891a1bb07628fde56e445fda9b2bb467
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1592e47509f2537bef9cbcefd3cf49618561edcc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを作成して、[Azure Policy](../azure-policy/azure-policy-introduction.md) と [Azure ロール ベースのアクセス制御](../role-based-access-control/overview.md)で使用できる効果的で効率的な階層を構築します。 管理グループについて詳しくは、「[Organize your resources with Azure management groups](management-groups-overview.md)」(Azure 管理グループでリソースを整理する) をご覧ください。 
@@ -34,12 +34,12 @@ ms.lasthandoff: 05/04/2018
 2. **[すべてのサービス]** > **[管理グループ]** を選択します。
 3. メイン ページで、**[New Management group]\(新しい管理グループ\)** を選択します。 
 
-    ![グループの作成](media/management-groups/create_main.png) 
+    ![メイン グループ](media/management-groups/main.png) 
 4.  [管理グループ ID] フィールドに入力します。 
     - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 
     - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。  
 
-    ![[作成]](media/management-groups/create_context_menu.png)  
+    ![作成](media/management-groups/create_context_menu.png)  
 5.  **[保存]** を選びます。
 
 

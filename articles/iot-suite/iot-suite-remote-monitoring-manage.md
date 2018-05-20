@@ -1,22 +1,22 @@
 ---
-title: "リモート監視ソリューションでのデバイス管理 - Azure | Microsoft Docs"
-description: "このチュートリアルでは、リモート監視ソリューションに接続されているデバイスを管理する方法を示します。"
-services: 
+title: リモート監視ソリューションでのデバイス管理 - Azure | Microsoft Docs
+description: このチュートリアルでは、リモート監視ソリューションに接続されているデバイスを管理する方法を示します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>デバイスの管理と構成
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/27/2018
 
 Contoso は自社の施設の 1 つを拡大して生産量を増やすために、新しい機械を注文しました。 新しい機械が納品されるのを待つ間に、あなたはソリューションの動作を検証するためのシミュレーションを実施したいと考えています。 あなたはオペレーターとして、リモート監視ソリューションでデバイスを管理および構成することを希望しています。
 
-デバイスを管理および構成する拡張可能な方法を提供するために、リモート監視ソリューションでは[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)や[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)などの IoT Hub 機能を使用します。 デバイスの開発者が物理デバイスでメソッドを実装する方法については、「[Customize the remote monitoring preconfigured solution](iot-suite-remote-monitoring-customize.md)」(リモート監視構成済みソリューションのカスタマイズ) を参照してください。
+デバイスを管理および構成する拡張可能な方法を提供するために、リモート監視ソリューションでは[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)や[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)などの IoT Hub 機能を使用します。 デバイスの開発者が物理デバイスでメソッドを実装する方法については、「[リモート監視ソリューション アクセラレータをカスタマイズする](iot-suite-remote-monitoring-customize.md)」を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -38,7 +38,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 
@@ -50,7 +50,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ![シミュレートされたエンジン デバイスのプロビジョニング](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
-*物理*デバイスをプロビジョニングする方法については、「[デバイスをリモート監視構成済みソリューションに接続する](iot-suite-connecting-devices-node.md)」を参照してください。
+*物理*デバイスをプロビジョニングする方法については、「[Connect your device to the remote monitoring solution accelerator](iot-suite-connecting-devices-node.md)」 (デバイスをリモート監視ソリューション アクセラレータに接続する) を参照してください。
 
 ## <a name="test-the-simulated-device"></a>シミュレートされたデバイスのテスト
 
@@ -68,11 +68,11 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ## <a name="act-on-a-device"></a>デバイスでの動作
 
-1 つ以上のデバイスでの動作を設定するには、デバイスの一覧でデバイスを選択して、**[スケジュール]** を選択します。 **エンジン** デバイス モデルでは、デバイスでサポートする必要のある 4 つのメソッドを指定します。
+1 つ以上のデバイスに対処するには、デバイスの一覧でデバイスを選択して、**[ジョブ]** を選択します。 **エンジン** デバイス モデルでは、デバイスでサポートする必要のある 3 つのメソッドを指定します。
 
 ![エンジンのメソッド](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
-**[Restart]** を選択し、ジョブ名を **RestartEngine** に設定して、**[適用]** を選択します。
+**[FillTank]** を選択し、ジョブ名を **[FillEngineTank]** に設定して、**[適用]** を選択します。
 
 ![restart メソッドのスケジュール](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
@@ -84,11 +84,11 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 別の種類のシミュレートされたデバイスを確認すると、デバイスの種類によってサポートされるメソッドが異なることがわかります。 物理デバイスを使用した展開では、デバイスでサポートする必要のあるメソッドをデバイス モデルで指定します。 通常、メソッド呼び出しに対応してデバイスを動作させるコードの開発は、デバイス開発者が担当します。
 
-複数のデバイスで実行するメソッドのスケジュールを設定するために、**[デバイス]** ページの一覧で複数のデバイスを選択できます。 **[スケジュール]** パネルには、選択したすべてのデバイスに共通のメソッドの型が表示されます。
+複数のデバイスで実行するメソッドのスケジュールを設定するために、**[デバイス]** ページの一覧で複数のデバイスを選択できます。 **[ジョブ]** パネルには、選択したすべてのデバイスに共通のメソッドの型が表示されます。
 
 ## <a name="reconfigure-a-device"></a>デバイスの再構成
 
-デバイスの構成を変更するには、**[デバイス]** ページにあるデバイスの一覧でデバイスを選択し、**[再構成]** を選択します。 [再構成] パネルには、選択したデバイスについて変更可能なプロパティ値が表示されます。
+デバイスの構成を変更するには、**[デバイス]** ページにあるデバイスの一覧でデバイスを選択し、**[ジョブ]** を選択し、**[再構成]** を選択します。 [ジョブ] パネルには、選択したデバイスについて変更可能なプロパティ値が表示されます。
 
 ![デバイスの再構成](media/iot-suite-remote-monitoring-manage/devicesreconfigure.png)
 
@@ -113,6 +113,6 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 * [デバイスの問題をトラブルシューティングして修復する](iot-suite-remote-monitoring-maintain.md)。
 * [シミュレートされたデバイスを使用してソリューションをテストする](iot-suite-remote-monitoring-test.md)。
-* [デバイスをリモート監視構成済みソリューションに接続する](iot-suite-connecting-devices-node.md)。
+* [デバイスをリモート監視ソリューション アクセラレータに接続する](iot-suite-connecting-devices-node.md)。
 
 <!-- Next tutorials in the sequence -->

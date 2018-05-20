@@ -4,7 +4,7 @@ description: Azure のセキュリティ、サービス、およびそのしく�
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 51d0f1f6d2689e37c1c39bf4a5e8078a2482c76d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a7b8c480291360cb50af1ce4ae36cd406f0ddc21
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -83,7 +83,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 Azure Resource Manager のテンプレート ベースのデプロイにより、Azure にデプロイされたソリューションのセキュリティが向上します。これは、標準的なセキュリティ制御設定によるもので、標準化されたテンプレート ベースのデプロイに統合できます。 これにより、手動によるデプロイ時に発生する可能性のあるセキュリティ構成エラーのリスクが軽減されます。
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 [Application Insights](https://docs.microsoft.com/azure/application-insights/) は、Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights でライブ Web アプリケーションを監視し、パフォーマンス上の問題を自動的に検出することができます。 Application Insights には強力な分析ツールが組み込まれているため、問題の診断や、ユーザーがアプリを使用して実行している操作を把握できます。 テスト中と公開後またはデプロイ後の両方で、実行中のアプリケーションを常時監視します。
 
 Application Insights が作成するグラフや表を見ると、たとえば、1 日の中でユーザー数が最も多い時間帯、アプリの反応性、アプリが依存している外部サービスのサービス性能などがわかります。
@@ -306,7 +306,7 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 -   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
-## <a name="compute"></a>コンピューティング
+## <a name="compute"></a>Compute
 
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 

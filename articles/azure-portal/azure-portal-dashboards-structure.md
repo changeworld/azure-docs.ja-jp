@@ -1,23 +1,23 @@
 ---
-title: "Azure ダッシュボードの構造 | Microsoft Docs"
-description: "この記事では、Azure のダッシュボードの JSON 構造を説明します。"
+title: Azure ダッシュボードの構造 | Microsoft Docs
+description: この記事では、Azure のダッシュボードの JSON 構造を説明します。
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
-manager: timlt
+manager: dougeby
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: f71ff9383f20a1a75fd2c1cf4dc3aaf049d970cf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: fa50b31a0c8e9077658106039c4fbd2eef8b4367
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。

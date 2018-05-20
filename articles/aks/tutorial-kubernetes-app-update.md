@@ -3,21 +3,21 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: AKS チュートリアル - アプリケーションの更新
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 622cd17a93bf1b9fa9d3c138d385ca1d29426f3b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションの更新
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
-Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新がステージングされます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。 
+Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新がステージングされます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。
 
 この 8 部構成の 6 番目のチュートリアルでは、サンプルの Azure Vote アプリを更新します。 以下のタスクを行います。
 
@@ -31,15 +31,15 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 
 ## <a name="before-you-begin"></a>開始する前に
 
-これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 
+これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。
 
 アプリケーション リポジトリも複製しましたが、それにはアプリケーションのソース コードと、このチュートリアルで使用する事前作成された Docker Compose ファイルが含まれています。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 内部には、`azure-vote` という名前のディレクトリと `docker-compose.yaml` という名前のファイルがあります。
 
-これらの手順を実行していない場合で、順番に進めたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。 
+これらの手順を実行していない場合で、順番に進めたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
 
 ## <a name="update-application"></a>アプリケーションを更新する
 
-このチュートリアルでは、アプリケーションを変更し、更新したアプリケーションを Kubernetes クラスターにデプロイします。 
+このチュートリアルでは、アプリケーションを変更し、更新したアプリケーションを Kubernetes クラスターにデプロイします。
 
 アプリケーションのソース コードは、`azure-vote` ディレクトリ内にあります。 適当なコード エディターまたはテキスト エディターで `config_file.cfg` ファイルを開きます。 この例では、 `vi` が使用されます。
 
@@ -69,13 +69,13 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-ブラウザーで http://localhost:8080 に移動して、更新したアプリケーションを確認します。
+http://localhost:8080 に移動し、更新したアプリケーションを確認します。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>イメージにタグを付けてプッシュする
 
-コンテナー レジストリの loginServer で `azure-vote-front` イメージにタグを付けます。 
+コンテナー レジストリの loginServer で `azure-vote-front` イメージにタグを付けます。
 
 [az acr list](/cli/azure/acr#az_acr_list) コマンドを使用して、ログイン サーバー名を取得します。
 
@@ -164,10 +164,10 @@ kubectl get service azure-vote-front
 > * Azure Container Registry へのコンテナー イメージのプッシュ
 > * 更新したアプリケーションのデプロイ
 
-次のチュートリアルに進み、Log Analytics で Kubernetes を監視する方法について学習してください。
+次のチュートリアルに進んで、Kubernetes の新しいバージョンへのアップグレードについて学習してください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics で Kubernetes を監視する][aks-tutorial-monitor]
+> [Kubernetes のアップグレード][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/
@@ -178,5 +178,5 @@ kubectl get service azure-vote-front
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
-[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
 [az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

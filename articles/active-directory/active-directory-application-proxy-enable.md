@@ -1,30 +1,30 @@
 ---
-title: "Azure AD アプリケーション プロキシ - コネクタのインストールの概要 | Microsoft Docs"
-description: "Azure Portal でアプリケーション プロキシを有効にして、リバース プロキシ用のコネクタをインストールします。"
+title: Azure AD アプリケーション プロキシ - コネクタのインストールの概要 | Microsoft Docs
+description: Azure Portal でアプリケーション プロキシを有効にして、リバース プロキシ用のコネクタをインストールします。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2c2e0f977cdf0d31da19f71d9260b500184858e9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d636542c788aff43acf9e35583b4c0615fe0c7db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>アプリケーション プロキシの概要とコネクタのインストール
 この記事では、Microsoft Azure AD アプリケーション プロキシを Azure AD のクラウド ディレクトリに対して有効にする手順について説明します。
 
-アプリケーション プロキシが組織にもたらすセキュリティと生産性の利点については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」を参照してください。
+アプリケーション プロキシが組織にもたらすセキュリティと生産性の利点については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md)」を参照してください。
 
 ## <a name="application-proxy-prerequisites"></a>アプリケーション プロキシの前提条件
 アプリケーション プロキシ サービスを有効にして使用するためには、次の条件を満たしておく必要があります。

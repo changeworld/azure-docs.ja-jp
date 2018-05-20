@@ -11,16 +11,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 800105d29fa284531e02ce80db69eff3a9915652
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
 
 > [!NOTE] 
 > 現在、App Service および Azure Functions のための管理対象のサービス ID はプレビュー段階です。 App Service on Linux と Web App for Containers は、現時点ではサポートされていません。
+
+
+> [!Important] 
+> アプリがサブスクリプションやテナント間で移行された場合、App Service および Azure Functions での管理対象のサービス ID は想定されたとおりに動作しません。 アプリは新しい ID を取得する必要があり、サイト自体を削除しないで既存の ID を正しく削除することはできません。 アプリは新しい ID で再作成する必要があり、ダウン ストリームのリソースが、新しい ID を使用するように更新されたアクセス ポリシーを持つ必要があります。
+
 
 このトピックでは、App Service および Azure Functions アプリケーション用の管理対象アプリ ID を作成し、それを使って他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory の管理対象のサービス ID を使うと、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 管理対象のサービス ID について詳しくは、「[Managed Service Identity overview](../active-directory/managed-service-identity/overview.md)」(管理対象のサービス ID の概要) をご覧ください。
 

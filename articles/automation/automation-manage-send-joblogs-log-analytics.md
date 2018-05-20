@@ -3,16 +3,17 @@ title: Log Analytics に Azure Automation のジョブ データを転送する
 description: この記事では、ジョブの状態と Runbook ジョブ ストリームを Azure Log Analytics に送信して、詳細な情報の入手ときめ細かい管理を実現する方法について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 116096fb27af299545a0f9a6adf57d794bbb2f6e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f96419ea1e6cb8a6f15ba67948b2a139f647dd6c
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
 Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Log Analytics では、次のことが可能になりました。

@@ -1,12 +1,12 @@
 ---
-title: "コネクテッド ファクトリ トポロジの構成 | Microsoft Docs"
-description: "コネクテッド ファクトリ事前構成済みソリューションのトポロジの構成方法。"
-services: 
+title: コネクテッド ファクトリ トポロジの構成 | Microsoft Docs
+description: コネクテッド ファクトリ ソリューション アクセラレータのトポロジの構成方法。
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 4230914c6fb35201a8c162e2e7ecb31262d2bdca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="configure-the-connected-factory-preconfigured-solution"></a>コネクテッド ファクトリ事前構成済みソリューションの構成
+# <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
-コネクテッド ファクトリ事前構成済みソリューションは、Contoso という架空の会社向けにシミュレートされたダッシュボードを示しています。 この会社は、世界中のさまざまな場所に工場を持っています。
+コネクテッド ファクトリ ソリューション アクセラレータは、Contoso という架空の会社向けにシミュレートされたダッシュボードを示しています。 この会社は、世界中のさまざまな場所に工場を持っています。
 
 この記事では例として Contoso を使用して、コネクテッド ファクトリ ソリューションのトポロジの構成方法を説明します。
 
@@ -345,4 +345,4 @@ OPC Publisher を使用してテレメトリ データをコネクテッド フ�
 
 ## <a name="next-steps"></a>次の手順
 
-おすすめの次のステップは、[構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)方法の学習です。
+次は、[コネクテッド ファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)方法について学習することをお勧めします。

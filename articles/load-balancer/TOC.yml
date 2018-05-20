@@ -49,7 +49,7 @@
 - name: 方法
   items:
     - name: ゾーン冗長パブリック Standard Load Balancer を作成する
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      href: load-balancer-get-started-internet-az-portal.md
       items:
         - name: ゾーン冗長パブリック Standard Load Balancer を作成する (PowerShell)
           href: load-balancer-get-started-internet-az-powershell.md

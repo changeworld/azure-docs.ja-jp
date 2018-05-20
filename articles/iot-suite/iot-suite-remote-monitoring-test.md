@@ -1,7 +1,7 @@
 ---
-title: "リモート監視ソリューションでのデバイス シミュレーション - Azure | Microsoft Docs"
-description: "このチュートリアルでは、リモート監視の事前構成済みソリューションを使用したデバイス シミュレーターの使用方法について説明します。"
-services: 
+title: リモート監視ソリューションでのデバイス シミュレーション - Azure | Microsoft Docs
+description: このチュートリアルでは、リモート監視ソリューション アクセラレータを使用したデバイス シミュレーターの使用方法について説明します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,15 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 905e64d004c02db663634eb784cacf6fab805193
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
-このチュートリアルでは、リモート監視の事前構成済みソリューションでデバイス シミュレーター マイクロサービスをカスタマイズする方法について説明します。 デバイス シミュレーターの機能を説明するために、このチュートリアルでは Contoso の IoT アプリケーションにおける 2 つのシナリオを使用して説明します。
+このチュートリアルでは、リモート監視ソリューション アクセラレータでデバイス シミュレーター マイクロサービスをカスタマイズする方法について説明します。 デバイス シミュレーターの機能を説明するために、このチュートリアルでは Contoso の IoT アプリケーションにおける 2 つのシナリオを使用して説明します。
+
+次のビデオでは、デバイス シミュレーター マイクロサービスをカスタマイズするためのオプションの概要が説明されています。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 最初のシナリオでは、Contoso がスマート電球の新しいデバイスをテストします。 このテストを実施するには、デバイスのシミュレーションを新規作成して次の特性を含めます。
 
@@ -68,7 +72,7 @@ ms.lasthandoff: 03/09/2018
 
 2 つ目のシナリオでは、新しいテレメトリ タイプを Contoso の既存の **Chiller** デバイスに追加します。
 
-このチュートリアルでは、リモート監視の事前構成済みソリューションを使用したデバイス シミュレーターの使用方法について説明します。
+このチュートリアルでは、リモート監視ソリューション アクセラレータを使用したデバイス シミュレーターの使用方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -86,7 +90,7 @@ ms.lasthandoff: 03/09/2018
 
 このチュートリアルを実行するには、次が必要です。
 
-* お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューション インスタンス。 まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+* お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューション インスタンス。 まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 * Visual Studio 2017。 Visual Studio 2017 をインストールしていない場合は、無料の [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) エディションをダウンロードできます。
 
@@ -254,7 +258,7 @@ ms.lasthandoff: 03/09/2018
 
 1. **[環境変数]** セクションで、**PCS\_IOTHUB\_CONNSTRING** 変数の値を編集して、前にメモした IoT ハブ接続文字列に変更します。 次に、変更を保存します。
 
-1. ソリューション エクスプローラーで、**device-simulation** ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。 **[シングル スタートアップ プロジェクト]** を選択し、**[SimulationAgent]** を選択します。 次に、 **[OK]**をクリックします
+1. ソリューション エクスプローラーで、**device-simulation** ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。 **[シングル スタートアップ プロジェクト]** を選択し、**[SimulationAgent]** を選択します。 次に、 **[OK]** をクリックします
 
 1. デバイスの種類ごとに、**Services/data/devicemodels** フォルダーに、JSON モデル ファイルと関連スクリプトがあります。 ソリューション エクスプローラーで、次の表に示すように、**Chiller** ファイルをコピーして、**Lightbulb** ファイルを作成します。
 
@@ -289,10 +293,10 @@ ms.lasthandoff: 03/09/2018
         "temperature_unit": "F",
         "status": "on"
       },
-      "Script": {
+      "Interval": "00:00:20",
+      "Scripts": {
         "Type": "javascript",
-        "Path": "lightbulb-01-state.js",
-        "Interval": "00:00:20"
+        "Path": "lightbulb-01-state.js"
       }
     },
     ```
@@ -474,7 +478,7 @@ ms.lasthandoff: 03/09/2018
 
     ![接続されているデバイスの数](media/iot-suite-remote-monitoring-test/connecteddevices.png)
 
-1. お使いのブラウザーで、リモート監視ソリューションの**ダッシュボード**に移動します。 **ダッシュ ボード**のテレメトリ パネルで、**[温度]** を選択します。 2 つのシミュレートされたデバイスの温度がグラフで表示されます。
+1. お使いのブラウザーで、リモート監視ソリューションの**ダッシュボード**に移動します。 **ダッシュ ボード**のテレメトリ パネルで、**[温度]** を選択します。 すべてのシミュレートされたデバイスの温度がグラフで表示されます。
 
     ![温度テレメトリ](media/iot-suite-remote-monitoring-test/telemetry.png)
 

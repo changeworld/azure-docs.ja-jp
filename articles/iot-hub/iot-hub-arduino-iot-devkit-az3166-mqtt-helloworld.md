@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 073ac7cf2d8d8d5dac6a5a4f9b9d4e3d1af6f095
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62fdd3dae9513973d0284eda5250d9eb29bfde91
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 
@@ -94,4 +94,4 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 ここでは、MXChip Iot DevKit を MQTT クライアントとして構成し、MQTT クライアント ライブラリを使用して MQTT ブローカーにメッセージを送信する方法を説明しました。推奨される次の手順は、以下のとおりです。
 
 * [Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
-* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

@@ -1,23 +1,31 @@
 # [ExpressRoute のドキュメント](index.md)
 
 # 概要
+
 ## [ExpressRoute とは](expressroute-introduction.md)
-## [ExpressRoute の FAQ](expressroute-faqs.md)
+
+# チュートリアル
+## [回線の作成と変更](expressroute-howto-circuit-portal-resource-manager.md)
+## [ピアリング構成の作成と変更](expressroute-howto-routing-portal-resource-manager.md)
+## [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-portal-resource-manager.md)
+## [Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-portal.md)
+
+# 概念
+
 ## [接続モデル](expressroute-connectivity-models.md)
 ## [回線およびルーティング ドメイン](expressroute-circuit-peerings.md)
 ## [場所とパートナー](expressroute-locations.md)
 ### [場所別のプロバイダー](expressroute-locations-providers.md)
 ### [プロバイダー別の場所](expressroute-locations.md)
 ## [ExpressRoute 用の仮想ネットワーク ゲートウェイ](expressroute-about-virtual-network-gateways.md)
-
-# 作業の開始
 ## [前提条件](expressroute-prerequisites.md)
 ## [ワークフロー](expressroute-workflows.md)
 ## [ルーティングの要件](expressroute-routing.md)
 ## [QoS の要件](expressroute-qos.md)
 ## [クラシックから Resource Manager への回線の移行について](expressroute-move.md)
 
-# 方法
+# ハウツー ガイド
+
 ## 回線の作成と変更
 ### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-circuit-arm.md)
@@ -46,19 +54,17 @@
 ### [ルーターの構成](expressroute-config-samples-routing.md)
 ### [NAT のルーター構成サンプル](expressroute-config-samples-nat.md)
 ## [ExpressRoute に使用する Network Performance Monitor の構成](how-to-npm.md)
-## クラシック デプロイメント モデルに関する記事
+## クラシック デプロイ モデルに関する記事
 ### [回線の変更](expressroute-howto-circuit-classic.md)
 ### [ピアリング構成の作成と変更](expressroute-howto-routing-classic.md)
 ### [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)
 ### [ExpressRoute 接続と S2S 接続の共存の構成](expressroute-howto-coexist-classic.md)
 ### [ゲートウェイの VNet への追加](expressroute-howto-add-gateway-classic.md)
-
 ## ベスト プラクティス
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)
 ### [ルーティングを最適化する](expressroute-optimize-routing.md)
 ### [非対称ルーティング](expressroute-asymmetric-routing.md)
 ### [ExpressRoute の NAT](expressroute-nat.md)
-
 ## トラブルシューティング
 ### [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)
 ### [ネットワーク パフォーマンスに関する問題の解決](expressroute-troubleshooting-network-performance.md)
@@ -67,19 +73,14 @@
 ### [ARP テーブルの取得 (クラシック)](expressroute-troubleshooting-arp-classic.md)
 
 # リファレンス
-## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
+
+## [Azure PowerShell](/powershell/module/azurerm.network#expressroute)
 ## [Azure CLI](/cli/azure/network/express-route)
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/dn606310)
 
-# 関連項目
-## [Virtual Network](/azure/virtual-network/)
-## [VPN Gateway](/azure/vpn-gateway/)
-## [Virtual Machines](/azure/virtual-machines/)
-## [Load Balancer](/azure/load-balancer/)
-## [Traffic Manager](/azure/traffic-manager/)
-
 # リソース
+## [ExpressRoute の FAQ](expressroute-faqs.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [ケース スタディ](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [ネットワークのブログ](https://azure.microsoft.com/blog/topics/networking/)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d73869d1371247a269b6601c35b1a938d89176c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
@@ -80,6 +80,7 @@ ms.lasthandoff: 04/20/2018
 | 紹介   | ディープ ラーニング フレームワーク      |
 | サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Caffe は `/opt/caffe` にインストールされます。    |
+| Python 2.7 に切り替える方法 | `source activate root` を実行します。 |
 | サンプルへのリンク      | サンプルは `/opt/caffe/examples` に含まれています。      |
 | DSVM 上の関連ツール      | Caffe2      |
 ### <a name="how-to-use--run-it"></a>使用/実行方法  
@@ -88,12 +89,15 @@ X2Go を使用して VM にログインした後、新しいターミナルを�
 
 ```
 cd /opt/caffe/examples
+source activate root
 jupyter notebook
 ```
 
 新しいブラウザー ウィンドウでサンプルのノートブックが開きます。
 
-バイナリは、/opt/caffe/build/install/bin にインストールされています。 
+バイナリは、/opt/caffe/build/install/bin にインストールされています。
+
+Caffe のインストールされるバージョンは Python 2.7 を必要とします。既定でアクティブ化される Python 3.5 では機能しません。 `source activate root` を実行して Anaconda 環境に切り替えます。 
 
 ## <a name="caffe2"></a>Caffe2
 

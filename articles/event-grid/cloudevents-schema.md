@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: a882073fce28be1b93a6c9118c40398062f61bc5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
@@ -23,6 +23,8 @@ CloudEvents を使用すると、クラウド ベースのイベントを発行�
 CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 0.1 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent スキーマ
 
@@ -74,12 +76,6 @@ CloudEvents v0.1 では、次のプロパティが使えます。
 
 Azure Event Grid は現在、**米国中西部**、**米国中央部**、および**北ヨーロッパ**において、CloudEvents JSON 形式での入力と出力をプレビュー サポートしています。
 
-CloudEvent を使用するには、次のコマンドで Azure CLI の拡張機能を有効にする必要があります。
-
-```azurecli
-az extension add –-name eventgrid
-```
-
 Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の両方に使用できます。 CloudEvents は、システム イベント (Blob Storage イベントや IoT Hub イベントなど) とカスタム イベントに使用できます。 また、これらのイベントをネットワーク上で相互に変換することもできます。
 
 
@@ -99,6 +95,10 @@ Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の
 Event Grid トピックを作成するには、次のコマンドを使います。
 
 ```azurecli
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -116,7 +116,7 @@ CloudEvents の現在のバージョンでは、イベントのバッチ処理�
 
 ```azurecli
 az eventgrid event-subscription create \
-  --name <event_subscription_name> \  
+  --name <event_subscription_name> \
   --topic-name <topic_name> \
   -g gridResourceGroup \
   --endpoint <endpoint_URL> \

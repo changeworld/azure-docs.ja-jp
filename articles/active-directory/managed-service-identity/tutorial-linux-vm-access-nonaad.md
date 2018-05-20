@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: daveba
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: eb97c6ddf2300677dd1ecc94d149e0171f42e67e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bdd57e33e53bd8b3d83f8279bed5413ccd556549
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Linux VM 管理対象サービス ID (MSI) を使用した Azure Key Vault へのアクセス 
 
@@ -103,7 +104,7 @@ MSI を使用すると、Azure Active Directory 認証をサポートするリ�
     アクセス トークンの CURL 要求を次に示します。  
     
     ```bash
-    curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net -H Metadata:true  
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true  
     ```
     応答には、リソース マネージャーへのアクセスに必要なアクセス トークンが含まれています。 
     

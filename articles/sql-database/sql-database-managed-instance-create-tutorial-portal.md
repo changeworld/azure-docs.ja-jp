@@ -8,14 +8,14 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1e04b12241121d3894e2d71df423bae4f000a60d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Azure Portal で Azure SQL Database マネージ インスタンスを作成する
 
@@ -107,7 +107,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
    |**リソース グループ**|前の手順で作成したリソース グループを選択します|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**場所**|前の手順で指定した場所を選択します| リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
-   |**BCP ルートの伝達を無効にする**|無効||
+   |**BCP ルートの伝達を無効にする**|有効||
    ||||
 
    ![ルート テーブルの作成フォーム](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)

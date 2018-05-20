@@ -12,11 +12,11 @@ ms.topic: article
 ms.custom: ''
 ms.date: 04/15/2018
 ms.author: juliako
-ms.openlocfilehash: d8fda7797f02a7d0bee870dce45c6d99436f72c5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bbf69bdcc92316642f6b37d267cdea2aad920316
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Azure Media Services 用の Azure CLI の例
 
@@ -24,7 +24,15 @@ ms.lasthandoff: 05/07/2018
 
 |  |  |
 |---|---|
-|**アカウントの作成**||
+|**アカウント**||
 | [Media Services アカウントを作成する](./scripts/cli-create-account.md) | Azure Media Services アカウントを作成します。 プログラムでアカウントを管理する API にアクセスするために使用できるサービス プリンシパルも作成できます。 |
+| [アカウントの資格情報をリセットする](./scripts/cli-reset-account-credentials.md)|アカウントの資格情報をリセットし、app.config settings 設定を元に戻します。|
+|**資産**||
+| [資産を作成する](./scripts/cli-create-asset.md)|コンテンツをアップロードする Media Services Asset を作成します。|
+| [ファイルをアップロードする](./scripts/cli-upload-file-asset.md)|ローカル ファイルをストレージ コンテナーにアップロードします。|
+| [資産を公開する](./scripts/cli-publish-asset.md)| ストリーミング ロケーターを作成し、ストリーミング URL を戻します。 |
+| **トランスフォーム**と**ジョブ**||
+| [トランスフォームを作成する](./scripts/cli-create-transform.md)|トランスフォームの作成方法を示します。 トランスフォームは、ビデオまたはオーディオ ファイルを処理するためのタスクの単純なワークフローを記述します (多くの場合、"レシピ" と呼ばれます)。<br/> 必要な名前と "レシピ" を持つトランスフォームが既に存在するかどうかを必ず確認する必要があります。 該当する場合は、それを再利用します。 |
+| [ジョブを作成する](./scripts/cli-create-jobs.md)|HTTPS URL を使用する単純なエンコードされたトランスフォームにジョブを送信します。|
+| [EventGrid を作成する](./scripts/cli-create-event-grid.md)|ジョブ状態変更用のアカウント レベルの Event Grid サブスクリプションを作成します。|
 
-その他の CLI 2.0 サンプルについては、[CLI サンプル](https://github.com/johndeu/BUILD2018/tree/master/Azure%20Media%20v3/CLI)を参照してください。

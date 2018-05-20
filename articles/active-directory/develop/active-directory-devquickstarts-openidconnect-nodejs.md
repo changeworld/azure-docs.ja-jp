@@ -3,23 +3,25 @@ title: Azure AD Node.js Web アプリの概要 | Microsoft Docs
 description: サインインのために Azure AD と連携する Node.js Express MVC Web アプリを構築する方法を説明します。
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web アプリの概要
 ここでは、Passport を使用して次の操作を行います。
@@ -37,7 +39,7 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 3. Passport を使用して、サインイン要求とサインアウト要求を Azure AD に発行する
 4. ユーザーに関するデータを出力します。
 
-このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS)で管理されています。  追加の参考資料として、[アプリのスケルトン (.zip ファイル) をダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)したり、次のようにスケルトンを複製したりすることができます。
+このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS)で管理されています。 追加の参考資料として、[アプリのスケルトン (.zip ファイル) をダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)したり、次のようにスケルトンを複製したりすることができます。
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -55,7 +57,7 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 5. 画面の指示に従い、**Web アプリケーション**または **WebAPI** (またはその両方) を作成します。
   * アプリケーションの **[名前]** には、ユーザーがアプリケーションの機能を把握できるような名前を設定します。
 
-  * **[サインオン URL]** は、アプリのベース URL です。  スケルトンの既定値は、 `http://localhost:3000/auth/openid/return`です。
+  * **[サインオン URL]** は、アプリのベース URL です。 スケルトンの既定値は、 `http://localhost:3000/auth/openid/return`です。
 
 6. 登録が完了すると、Azure AD によってアプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーしておきます。
 7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。 `https://<tenant-domain>/<app-name>` の形式を使用します (例: `https://contoso.onmicrosoft.com/my-first-aad-app`)。
@@ -78,7 +80,7 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 これにより、`passport-azure-ad` が依存するライブラリがインストールされます。
 
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>手順 3: passport-node-js 戦略を使用するようにアプリを設定する
-ここでは、OpenID Connect 認証プロトコルを使用するように Express を構成します。  Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+ここでは、OpenID Connect 認証プロトコルを使用するように Express を構成します。 Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 1. 最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
 
@@ -181,7 +183,7 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
             };
     ```
 
-5.  次に、Express エンジンを読み込むコードを追加します。 ここでは、Express が提供する既定の /views と /routes のパターンを使用します。
+5. 次に、Express エンジンを読み込むコードを追加します。 ここでは、Express が提供する既定の /views と /routes のパターンを使用します。
 
     ```JavaScript
 
@@ -252,7 +254,7 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>手順 4: Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
-OpenID Connect 認証プロトコルを使用してエンドポイントと通信するように、アプリが適切に構成されました。  `passport-azure-ad` により、認証メッセージの作成、Azure AD から受け取ったトークンの検証、ユーザー セッションの維持のためのすべての処理が実行されました。 あとは、サインインとサインアウトの方法をユーザーに示し、サインインしているユーザーに関する追加情報を収集するだけです。
+OpenID Connect 認証プロトコルを使用してエンドポイントと通信するように、アプリが適切に構成されました。 `passport-azure-ad` により、認証メッセージの作成、Azure AD から受け取ったトークンの検証、ユーザー セッションの維持のためのすべての処理が実行されました。 あとは、サインインとサインアウトの方法をユーザーに示し、サインインしているユーザーに関する追加情報を収集するだけです。
 
 1. まず、既定のメソッド、sign-in メソッド、account メソッド、sign-out メソッドを `app.js` ファイルに追加します。
 
@@ -282,7 +284,7 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
 
     ```
 
-2.  これらについて詳しく説明しましょう。
+2. これらについて詳しく説明しましょう。
 
   * `/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
   * `/account` ルートは、"*ユーザーが認証されていることを確認*" した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。

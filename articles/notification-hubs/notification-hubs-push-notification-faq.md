@@ -1,25 +1,25 @@
 ---
-title: "Azure Notification Hubs: よく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Notification Hubs におけるソリューションの設計と実装についての FAQ"
+title: 'Azure Notification Hubs: よく寄せられる質問 (FAQ) | Microsoft Docs'
+description: Notification Hubs におけるソリューションの設計と実装についての FAQ
 services: notification-hubs
 documentationcenter: mobile
-author: ysxu
-manager: erikre
-keywords: "プッシュ通知、プッシュ通知、iOS のプッシュ通知、android のプッシュ通知、ios のプッシュ、android のプッシュ"
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
+keywords: プッシュ通知、プッシュ通知、iOS のプッシュ通知、android のプッシュ通知、ios のプッシュ、android のプッシュ
 ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/19/2017
-ms.author: yuaxu
-ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: fbdb52b1b2dee682021fd822d584551f41f723ff
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知: よく寄せられる質問
 ## <a name="general"></a>全般
@@ -82,7 +82,7 @@ Notification Hubs は、主にモバイル アプリに通知を送信するこ�
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Notification Hubs を使用してプッシュ通知を送信する場合、サポートされるデバイス数は何台ですか。
 サポートされているデバイス数の詳細については、「[Notification Hubs の価格]」ページを参照してください。
 
-1,000 万台を超える登録済みのデバイスをサポートしたい場合は、直接[お問い合わせ](https://azure.microsoft.com/overview/contact-us/)ください。ソリューションの拡張をお手伝いいたします。
+1,000 万台を超える登録済みデバイスのサポートが必要な場合は、直接[当社にお問い合わせ](https://azure.microsoft.com/overview/contact-us/)いただければ、ソリューションの拡張をお手伝いいたします。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>送信できるプッシュ通知の数を教えてください。
 選択されているレベルに応じて、Azure Notification Hubs は、システムで通信されている通知の数に基づいて自動的にスケールアップします。
@@ -155,7 +155,7 @@ Azure Notification Hubs を経由して送信者から PNS に至る間のすべ
 
 機密情報が含まれているペイロードを送信するには、安全なプッシュのパターンを使用することをお勧めします。 送信者は、機密情報のペイロードが含まれていない、メッセージ識別子の付いた ping 通知をデバイスに配信します。 デバイス上のアプリがペイロードを受信すると、アプリはセキュリティで保護された API を直接呼び出して、メッセージの詳細をフェッチします。 このパターンの実装方法のガイドについては、[Notification Hubs の安全なプッシュのチュートリアル]に関するページを参照してください。
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>[操作]
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>ディザスター リカバリーのためにはどのようなサポートが提供されていますか。
 Microsoft 側でのメタデータ (Notification Hubs の名前、接続文字列、その他の重要情報など) のディザスター リカバリー対応を提供しています。 ディザスター リカバリー シナリオが開始された場合、Notification Hubs インフラストラクチャで失われる "*唯一のセグメント*" は登録データです。 次のようにして、復旧後の新しいハブにこのデータを再設定するソリューションを実装する必要があります。
 

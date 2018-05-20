@@ -1,7 +1,7 @@
 ---
-title: "リモート監視ソリューションでのシミュレートされたデバイスの動作 - Azure | Microsoft Docs"
-description: "この記事では、JavaScript を使用して、リモート監視ソリューションでのシミュレートされたデバイスの動作を定義する方法について説明します。"
-services: 
+title: リモート監視ソリューションでのシミュレートされたデバイスの動作 - Azure | Microsoft Docs
+description: この記事では、JavaScript を使用して、リモート監視ソリューションでのシミュレートされたデバイスの動作を定義する方法について説明します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e5846893166c3e65b75e84d02849c2b8ab78e079
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2a2cbe5379adbd2c4ad6534b621871ecc30bfc81
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="implement-the-device-model-behavior"></a>デバイス モデルの動作の実装
 
@@ -53,10 +53,10 @@ ms.lasthandoff: 02/09/2018
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:05",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/09/2018
 以下に、一般的な `main` 関数の概要を示します。
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   // Use the previous device state to
   // generate the new device state
@@ -108,7 +108,7 @@ function restoreState(previousState) {
   }
 }
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   restoreState(previousState);
 
@@ -133,7 +133,7 @@ function vary(avg, percentage, min, max) {
 }
 
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     restoreState(previousState);
 
@@ -192,7 +192,7 @@ function main(context, previousState) {
 以下に、一般的な `main` 関数の概要を示します。
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
 }
 ```
@@ -205,15 +205,18 @@ function main(context, previousState) {
 
 `state` パラメーターには、デバイス シミュレーション サービスによって保持されるデバイスの状態が含まれます。
 
-メソッドの動作を実装する際に使用できる 2 つのグローバル関数があります。
+`properties` パラメーターには、IoT Hub デバイス ツインに報告されるプロパティとして書き込まれるデバイスのプロパティが含まれます。
+
+メソッドの動作を実装する際に使用できる 3 つのグローバル関数があります。
 
 - シミュレーション サービスで保持されている状態を更新するための `updateState`。
+- 1 つのデバイス プロパティを更新するための `updateProperty`。
 - 長時間実行されるタスクをシミュレートするために実行を一時停止するための `sleep`。
 
 次の例では、シミュレートされた冷却装置デバイスによって使用される **IncreasePressure-method.js** スクリプトを省略したものを示します。
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     log("Starting 'Increase Pressure' method simulation (5 seconds)");
 

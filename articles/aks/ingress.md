@@ -1,25 +1,25 @@
 ---
-title: Azure Container Service (AKS) クラスターでイングレスを構成する
-description: Azure Container Service (AKS) クラスターに NGINX イングレス コントローラーをインストールして構成します。
+title: Azure Kubernetes Service (AKS) クラスターでイングレスを構成する
+description: Azure Kubernetes Service (AKS) クラスターに NGINX イングレス コントローラーをインストールして構成します。
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="https-ingress-on-azure-container-service-aks"></a>Azure Container Service (AKS) での HTTPS イングレス
+# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) での HTTPS イングレス
 
 イングレス コントローラーは、リバース プロキシ、構成可能なトラフィック ルーティング、および Kubernetes サービスの TLS 終端を提供するソフトウェアです。 個別の Kubernetes サービスのイングレス ルールとルートを構成するには、Kubernetes イングレス リソースが使われます。 イングレス コントローラーとイングレス ルールを使うと、1 つの外部アドレスを使って Kubernetes クラスター内の複数のサービスにトラフィックをルーティングできます。
 
-このドキュメントでは、Azure Container Service (AKS) クラスターへの [NGINX イングレス コントローラー][nginx-ingress]のサンプル展開の手順を説明します。 さらに、[KUBE-LEGO][kube-lego] プロジェクトを使って、[Let's Encrypt][lets-encrypt] 証明書を自動的に生成して構成します。 最後に、単一のアドレスで個々にアクセスできる複数のアプリケーションを AKS クラスターで実行します。
+このドキュメントでは、Azure Kubernetes Service (AKS) クラスターへの [NGINX イングレス コントローラー][nginx-ingress]のサンプル展開の手順を説明します。 さらに、[KUBE-LEGO][kube-lego] プロジェクトを使って、[Let's Encrypt][lets-encrypt] 証明書を自動的に生成して構成します。 最後に、単一のアドレスで個々にアクセスできる複数のアプリケーションを AKS クラスターで実行します。
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -46,9 +46,9 @@ helm install stable/nginx-ingress --namespace kube-system
 ```console
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   13.82.238.45   80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>         80/TCP                       20m
+NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 イングレス ルールは作成されていないため、パブリック IP アドレスを参照すると、NGINX イングレス コントローラーの既定の 404 ページにルーティングされます。
@@ -63,7 +63,7 @@ HTTPS 証明書を使うため、イングレス コントローラーの IP ア
 #!/bin/bash
 
 # Public IP address
-IP="52.224.125.195"
+IP="51.145.155.210"
 
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"

@@ -1,5 +1,19 @@
-
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/07/2018
+---
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. **[リソースの作成]** > **[Web + モバイル]** > **[通知ハブ]** を選択します。
@@ -14,14 +28,13 @@
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前空間]** 領域で、**[既存項目の選択]** リンクを選択します。 
    
-    b. **[作成]**を選択します。
+    b. **[作成]** を選択します。
    
       ![Azure Portal - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. 名前空間と通知ハブを作成したら、**[すべてのリソース]** を選択して開き、作成した通知ハブを一覧から選択します。 
-   
-      ![Azure Portal - 通知ハブのポータル ページ](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-resources.png)
+4. **[通知]** (ベルのアイコン)、**[リソースに移動]** の順に選択します。 
 
+      ![Azure Portal > [通知] > [リソースに移動]](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)    
 5. リストから **[アクセス ポリシー]** を選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらの接続文字列は、後でプッシュ通知を処理するために必要になります。
 
       >[!IMPORTANT]

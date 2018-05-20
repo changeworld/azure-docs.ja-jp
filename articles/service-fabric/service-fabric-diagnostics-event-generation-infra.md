@@ -12,21 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1ba02afa775343f496a2b5fec98699e593a330ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>クラスターとプラットフォームの監視
 
 ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、プラットフォーム レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、ハードウェアの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
 
-Service Fabric では、次のログ チャネルが標準で提供されています。
+Service Fabric は、EventStore や標準で提供されるさまざまなログ チャネルを通じて、構造化されたプラットフォーム イベントを "[Service Fabric イベント](service-fabric-diagnostics-events.md)" としていくつか公開しています。 
 
-* **運用時**  
+EventStore は、エンティティごとの単位 (クラスター、ノード、アプリケーション、サービス、パーティション、レプリカ、コンテナーを含むエンティティ) でクラスターのイベントへのアクセスをユーザーに提供し、REST API と Service Fabric クライアント ライブラリを介してそれらを公開します。 開発/テスト クラスターを監視して、運用クラスターの状態について特定時点の情報を取得するためには、EventStore を使用します。 これについて詳しくは、「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」を参照してください。
+
+Service Fabric は、運用クラスターを監視するパイプラインの設定用に、以下のログ チャネルも標準で提供しています。
+
+* [**運用時**](service-fabric-diagnostics-event-generation-operational.md)  
 Service Fabric およびクラスターによって実行される高レベルの操作。起動中のノード、デプロイ中の新しいアプリケーション、アップグレードのロールバックなどのイベントが含まれます。
 
 * **運用時 - 詳細**  

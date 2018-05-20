@@ -1,9 +1,9 @@
 ---
-title: "Hadoop クラスターでデータを探索して Azure Machine Learning でモデルを作成する | Microsoft Docs"
-description: "HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、モデルを構築してデプロイします。"
+title: Hadoop クラスターでデータを探索して Azure Machine Learning でモデルを作成する | Microsoft Docs
+description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、モデルを構築してデプロイします。
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: deguhath
+ms.openlocfilehash: 6f16b7524bc8c268ed3a2314b8b88d25eb2f4325
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -723,7 +723,7 @@ Machine Learning の[データのインポート][import-data] モジュール�
 
 [データのインポート][import-data] モジュールと入力するパラメーターの詳細は次のとおりです。
 
-**HCatalog サーバー URI**: クラスター名が **abc123** の場合、単に https://abc123.azurehdinsight.net となります。
+**HCatalog サーバー URI**: クラスター名が **abc123** である場合、これは単純に https://abc123.azurehdinsight.net です。
 
 **Hadoop ユーザー アカウント名**: クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 

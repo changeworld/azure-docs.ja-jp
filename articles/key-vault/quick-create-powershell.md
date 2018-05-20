@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: e980eafc5bd70a15de11239c7543a7f1dde4ef64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8c10a784e80432d60fae132cd31a9cbd604b1c8e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>クイック スタート: PowerShell を使用した Azure Key Vault の作成
 
@@ -104,4 +104,4 @@ Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 このクイック スタートでは、Key Vault を作成してソフトウェア キーを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)
+> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、[キー コンテナーからシークレットを読み取るように Azure Web アプリを構成する](tutorial-web-application-keyvault.md)チュートリアルに進んでください。

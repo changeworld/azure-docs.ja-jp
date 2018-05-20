@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 76149ce3864811cf2b5648f8dc0aa214e5820d9f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
@@ -44,9 +44,9 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
       6. **場所**: 最適なデータ センターを選択します。 通常は、ネットワーク アクセスを最速にするために、データの大部分があるか、物理的に最も近いデータ センターを選びます。 
       
 > [!NOTE]
-> DLVM は Azure NC シリーズの GPU VM インスタンスでプロビジョニングされるため、GPU のある Azure 内のいずれかの場所を選択する必要があります。 現在 GPU VM がある場所は、**米国東部、米国中北部、米国中南部、米国西部 2、北ヨーロッパ、西ヨーロッパ**です。 最新の一覧については、[リージョン別の Azure 製品](https://azure.microsoft.com/en-us/regions/services/)に関するページを確認して、**コンピューティング**の **NC シリーズ**を探してください。 
+> DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
 
-   2. **設定**: 機能要件とコスト制約を満たしている、いずれかのNC シリーズ GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **設定**: 機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **まとめ**: 入力したすべての情報が正しいことを確認します。
    5. **購入**: プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
@@ -74,7 +74,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 Linux DLVM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
-2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
+2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/22/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: d1239b04bbdaf4e98323fbaaad688b2d238c1a38
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 6b0db12da7c187ce80f1d55ce8b9900601033068
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 

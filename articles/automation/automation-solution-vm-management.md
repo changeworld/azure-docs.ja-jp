@@ -3,16 +3,17 @@ title: Start/Stop VMs during off-hours ソリューション (プレビュー)
 description: この VM 管理ソリューションは、スケジュールに従って Azure Resource Manager 仮想マシンを起動および停止し、Log Analytics からプロアクティブに監視します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 410f76d406ab65ff1732525a501fe007eeeb5f6a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure Automation の Start/Stop VMs during off-hours ソリューション (プレビュー)
 
@@ -26,7 +27,7 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure 実行アカウント](automation-offering-get-started.md#authentication-methods)を使用した Runbook。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
+* [Azure 実行アカウント](automation-create-runas-account.md)を使用した Runbook。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 * このソリューションが管理するのは、Azure Automation アカウントと同じサブスクリプションの VM に限られます。
 * このソリューションがデプロイされる Azure リージョンは、オーストラリア南東部、カナダ中部、インド中部、米国東部、東日本、東南アジア、英国南部、および西ヨーロッパのみです。
 
@@ -80,8 +81,8 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    * **スケジュール**を選択します。 これは、ターゲット リソース グループの VM を定期的に起動および停止する日時です。 既定では、スケジュールは UTC タイム ゾーンに合わせて構成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedule)」を参照してください。
    * SendGrid から**電子メール通知**を受信するには、既定値 **[はい]** をそのまま使用し、有効なメール アドレスを指定します。 **[いいえ]** を選択し、後から電子メール通知を受信することにした場合は、コンマで区切られた有効な電子メール アドレスで **External_EmailToAddress** 変数を更新し、**External_IsSendEmail** 変数を **[はい]** という値で変更します。
 
-> [!IMPORTANT]
-> **[Target ResourceGroup Names]\(ターゲット リソース グループ名\)** の既定値は **&ast;** です。 これは、サブスクリプション内のすべての VM が対象です。 ソリューションでサブスクリプション内のすべての VM を対象にするのでない場合は、スケジュールを有効にする前に、この値をリソース グループ名の一覧に更新する必要があります。
+    > [!IMPORTANT]
+    > **[Target ResourceGroup Names]\(ターゲット リソース グループ名\)** の既定値は **&ast;** です。 これは、サブスクリプション内のすべての VM が対象です。 ソリューションでサブスクリプション内のすべての VM を対象にするのでない場合は、スケジュールを有効にする前に、この値をリソース グループ名の一覧に更新する必要があります。
 
 1. ソリューションに必要な初期設定を構成したら、**[OK]** をクリックして **[パラメーター]** ページを閉じ、**[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
 
@@ -218,7 +219,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
 ### <a name="schedules"></a>スケジュール
 
-次の表は、Automation アカウント内に作成される既定のスケジュールの一覧です。  それらを変更したり、独自のカスタム スケジュールを作成したりできます。 既定では、それぞれが **Scheduled_StartVM** と **Scheduled-StopVM** を除いて無効になっています。
+次の表は、Automation アカウント内に作成される既定のスケジュールの一覧です。 それらを変更したり、独自のカスタム スケジュールを作成したりできます。 既定では、それぞれが **Scheduled_StartVM** と **Scheduled-StopVM** を除いて無効になっています。
 
 すべてのスケジュールを有効にすることはお勧めしません。アクションのスケジュール間で重複が生じる可能性があるためです。 実行する必要がある最適化を特定し、それに応じて変更することをお勧めします。 詳細については、概要セクションのシナリオ例をご覧ください。
 
@@ -226,7 +227,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 時間ごと | 8 時間ごとに AutoStop_CreateAlert_Parent Runbook を実行します。Runbook は Azure Automation 変数の External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames、および External_ExcludeVMNames の VM ベースの値を停止します。 または、VMList パラメーターを使用して VM のコンマ区切りリストを指定できます。|
 |Scheduled_StopVM | ユーザー定義、毎日 | *Stop* パラメーターを持つ Scheduled_Parent Runbook を毎日指定された時刻に実行します。 アセット変数によって定義されたルールを満たす VM すべてを自動的に停止します。 関連スケジュールで **Scheduled-StartVM** を有効にすることをお勧めします。|
-|Scheduled_StartVM | ユーザー定義、毎日 | *Start* パラメーターを持つ Scheduled_Parent Runbook を毎日指定された時刻に実行します。  適切な変数によって定義されたルールを満たす VM すべてを自動的に開始します。 関連スケジュールで **Scheduled-StopVM** を有効にすることをお勧めします。|
+|Scheduled_StartVM | ユーザー定義、毎日 | *Start* パラメーターを持つ Scheduled_Parent Runbook を毎日指定された時刻に実行します。 適切な変数によって定義されたルールを満たす VM すべてを自動的に開始します。 関連スケジュールで **Scheduled-StopVM** を有効にすることをお勧めします。|
 |Sequenced-StopVM | 午前 1 時 00 分 (UTC)、毎週金曜日 | *Stop* パラメーターを持つ Sequenced_Parent Runbook を毎週金曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStop** のタグを持つ VM すべてを順番 (昇順) に停止します。 タグの値とアセット変数の詳細については、「Runbook」セクションを参照してください。 関連スケジュールで **Sequenced-StartVM** を有効にすることをお勧めします。|
 |Sequenced-StartVM | 午後 1 時 00 分 (UTC)、毎週月曜日 | *Start* パラメーターを持つ Sequenced_Parent Runbook を毎週月曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStart** のタグを持つ VM すべてを順番 (降順)に 起動します。 タグの値とアセット変数の詳細については、「Runbook」セクションを参照してください。 関連スケジュールで **Sequenced-StopVM** を有効にすることをお勧めします。|
 

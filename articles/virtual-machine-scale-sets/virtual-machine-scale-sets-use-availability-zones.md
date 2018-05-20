@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cc91366bda4dd443392c78cd61e5cc0ddb261fe2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -194,7 +194,7 @@ New-AzureRmVmss `
 }
 ```
 
-単一ゾーン スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/zones/singlezone.json)をご覧ください
+単一ゾーン スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)をご覧ください
 
 ### <a name="zone-redundant-scale-set"></a>ゾーン冗長スケール セット
 
@@ -216,7 +216,7 @@ New-AzureRmVmss `
 
 パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、*"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-standard-overview.md)」をご覧ください。
 
-ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/zones/multizone.json)をご覧ください
+ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -249,6 +249,24 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 ## <a name="log-analytics-search"></a>Log Analytics 検索 
 
 すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[Log Analytics 検索](log-analytics-log-search-new.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの  **[共通クエリ]** 領域には、便利なクエリがいくつかあります。これらのクエリは、独自のクエリとレポートを作成するための出発点として利用できます。 
+
+## <a name="alerts"></a>アラート
+
+Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) のアラート機能を使用します。
+
+これは、すべてのアラートは[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)を使用して管理されることを意味します。  
+
+OMS を介してアラートを作成する NPM ユーザーの場合: 
+1. Azure Portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。
+2. Network Performance Monitor ソリューションのタイルをクリックします。 
+3. [構成] に移動します。  
+4. アラートを作成するテストを選択し、後述する手順に従います。
+
+Azure Portal を介してアラートを作成する NPM ユーザーの場合:  
+1. 電子メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。
+2. 電子メール アドレスを直接入力する場合、**NPM Email ActionGroup** という名前のアクション グループが作成され、そのアクション グループに電子メール ID が追加されます。
+3. アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法については、[ここ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)を参照してください。 
+4. アラートが正常に作成されると、[アラートの管理] リンクを使用してアラートを管理できます。 
 
 ##<a name="pricing"></a>価格
 

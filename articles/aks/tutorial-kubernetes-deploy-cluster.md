@@ -3,19 +3,19 @@ title: Kubernetes on Azure のチュートリアル - クラスターのデプ�
 description: AKS チュートリアル - クラスターのデプロイ
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 99b65ba5e5f0be40e464fd6565db40fda4170a0f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c793aa02e614ead146806888d26a18867ff2eebb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>チュートリアル: Azure Container Service (AKS) クラスターのデプロイ
+# <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル: Azure Kubernetes Service (AKS) クラスターのデプロイ
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 AKS を使うと、運用開始準備の整った Kubernetes クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このチュートリアル (8 部構成の第 3 部) では、Kubernetes クラスターが AKS にアップグレードされます。 手順は次のとおりです。
 

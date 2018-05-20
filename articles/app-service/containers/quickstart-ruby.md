@@ -16,15 +16,15 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: def1e3f3de25478e51a069bc64c98d650f59072f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0707835cf4d6891397579cc41de49fc0462b4521
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
 
-[App Service on Linux](app-service-linux-intro.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、基本的な Ruby on Rails アプリケーションを作成した後、Web App on Linux として Azure にデプロイする方法を示します。
+[Azure App Service on Linux](app-service-linux-intro.md) は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Web App on Linux として Azure にデプロイできる基本的な [Ruby on Rails](https://rubyonrails.org/) アプリケーションの作成方法を示します。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-アプリケーションを動作させるために、Rails サーバーを実行します。 *hello-world* ディレクトリに変更し、`rails server` コマンドでサーバーを起動します。
+アプリケーションを動作させるために、Rails サーバーを実行する必要があります。 `hello-world` ディレクトリに変更し、`rails server` コマンドを使用してサーバーを起動します。
 
 ```bash
 cd hello-world\bin

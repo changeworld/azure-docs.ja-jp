@@ -350,16 +350,18 @@
           href: data-factory-service-identity.md
     - name: 監視と管理
       items:
-        - name: SDK の使用
-          href: monitor-programmatically.md
-        - name: Azure Monitor の使用
-          href: monitor-using-azure-monitor.md
         - name: 視覚的な監視
           href: monitor-visually.md
-        - name: Azure SSIS 統合ランタイムの管理
-          href: manage-azure-ssis-integration-runtime.md
+        - name: Azure Monitor による監視
+          href: monitor-using-azure-monitor.md
+        - name: SDK を使用した監視
+          href: monitor-programmatically.md
         - name: 統合ランタイムの監視
           href: monitor-integration-runtime.md
+        - name: Azure-SSIS 統合ランタイムの監視
+          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+        - name: Azure SSIS 統合ランタイムの管理
+          href: manage-azure-ssis-integration-runtime.md
     - name: 統合ランタイムの作成
       items:
         - name: Azure 統合ランタイム
@@ -370,24 +372,22 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Azure での SSIS パッケージの実行
       items:
-        - name: Azure-SSIS 統合ランタイムのカスタム セットアップ
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Azure-SSIS 統合ランタイムの Enterprise Edition のプロビジョニング
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Azure-SSIS 統合ランタイムの VNet への参加
           href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Azure SSIS 統合ランタイムの管理
-          href: manage-azure-ssis-integration-runtime.md
-        - name: Azure-SSIS 統合ランタイムのパフォーマンス設定の構成
+        - name: 高パフォーマンスを実現するための Azure-SSIS 統合ランタイムの構成
           href: configure-azure-ssis-integration-runtime-performance.md
+        - name: Azure-SSIS 統合ランタイムの Enterprise Edition のプロビジョニング
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Azure-SSIS 統合ランタイムの設定のカスタマイズ
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Azure-SSIS 統合ランタイムのライセンス付きコンポーネントのデプロイ
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: SSIS アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS 統合ランタイムのスケジュール設定
           href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: Azure-SSIS 統合ランタイムのライセンス付きコンポーネントの開発
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: トリガーの作成
       items:
         - name: スケジュール トリガーの作成

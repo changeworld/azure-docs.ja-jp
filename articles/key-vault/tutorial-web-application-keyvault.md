@@ -5,18 +5,18 @@ services: key-vault
 documentationcenter: ''
 author: barclayn
 manager: mbaldwin
-ms.assetid: ''
+ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4a765b314b9879877bb6ff926e4a6584456b7823
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>チュートリアル: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する
 
@@ -74,7 +74,7 @@ az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceG
 * **Vault URI**: この例では、これは https://<YourKeyVaultName>.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 >[!IMPORTANT]
-> パラメーター 'vault_name' は '^[a-zA-Z0-9-]{3,24}$' というパターンに準拠する必要があります。エラーを取得した場合、-name パラメーター値が一意でなかったか、または文字列が長さ 3 ～ 24 文字の英数字での構成に準拠していなかったことが原因です。
+> "パラメーター 'vault_name' は '^[a-zA-Z0-9-]{3,24}$' というパターンに準拠する必要があります" エラーを取得した場合、-name パラメーター値が一意でなかったか、文字列が長さ 3 ～ 24 文字の英数字での構成に準拠していなかったことが原因です。
 
 この時点で、自分の Azure アカウントが唯一、この新しいコンテナーで任意の操作を実行することを許可されています。
 

@@ -1,24 +1,20 @@
 ---
-title: "B2B コラボレーションの招待メールの要素 - Azure Active Directory | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションの招待メール テンプレート"
+title: B2B コラボレーションの招待メールの要素 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory B2B コラボレーションの招待メール テンプレート
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.custom: seohack1
 ms.service: active-directory
+ms.component: B2B
 ms.topic: article
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0d26fc4758b2defc3f1b8b5643daafdac4d2baac
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3767a2ce457f7aa976620fb2df217d7f0823fe99
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -72,16 +68,10 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
-* [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
-* [Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)
-* [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
-* [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
-* [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
-* [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
-* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
+- [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
+- [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
+- [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)

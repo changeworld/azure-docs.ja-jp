@@ -14,13 +14,15 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: 78e164b566194fcfe952e3ad59dd3d228f90d193
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b742dc94b6f6bea76a0809114f300287633c2a67
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート: SignalR Service を使ってチャット ルームを作成する
+
+Microsoft Azure SignalR サービスは現在、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
 
 Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは、[SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction) に基づいています。
 
@@ -84,7 +86,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-preview-10007
+        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-preview1-10009
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -95,7 +97,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString Endpoint=<Your endpoint>;AccessKey=<Your access key>;    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     シークレット マネージャーは、ローカルでホストされているときの、Web アプリのテスト用にのみ使用されます。 この後のチュートリアルでは、Azure にチャット Web アプリをデプロイします。 この Web アプリが Azure にデプロイされた後は、シークレット マネージャーで接続文字列を保存するのではなく、アプリケーション設定を使用します。

@@ -3,22 +3,24 @@ title: Azure Access Control Service からの移行 | Microsoft Docs
 description: Azure Access Control Service からアプリとサービスを移動するためのオプション
 services: active-directory
 documentationcenter: dev-center-name
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
-ms.author: dastrock
-ms.openlocfilehash: 6c22f85d3e76a005c45a4679ddfd8948a46acffc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: celested
+ms.reviewer: dastrock
+ms.openlocfilehash: c1c86f21d5a99cf251b0b83f41576c2cdaf96dfb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Azure Access Control Service からの移行
 
@@ -252,7 +254,7 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。  |
+| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 
@@ -277,7 +279,7 @@ Access Control によって発行されたトークンでセキュリティ保�
 - 次のトークン形式のサポート: JWT、SAML 1.1、SAML 2.0、および SWT。
 - シンプルなトークン変換ルール。
 
-Access Control のサービス ID は、通常はサーバー対サーバー認証の実装に使用されます。  
+Access Control のサービス ID は、通常はサーバー対サーバー認証の実装に使用されます。 
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory への移行
 
@@ -314,7 +316,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) は柔軟なクラウド ID サービスで、[Access Control のお客様向けの高レベルな移行ガイダンス](https://auth0.com/acs)が作成されているほか、ACS で提供される機能がほぼすべてサポートされます。 |
-| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。  |
+| ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
 

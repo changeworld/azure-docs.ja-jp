@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 74ea4753e36da7686ac88d4426391a38dac0b436
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 131296d5219dffb2c4d7602b61b3c69b390e211e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル: SQL API を使って Azure Cosmos DB を照会する
 
@@ -72,7 +72,7 @@ SQL クエリについて詳しくは、次を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-mongodb-nodejs.md)か[開発者向けチュートリアル](tutorial-develop-mongodb.md)を実行して、アカウントとコレクションを作成します。
+このチュートリアルでは、Azure Cosmos DB アカウントとコレクションがあると仮定しています。 どちらもない場合には、 [5 分でできるクイックスタート](create-mongodb-nodejs.md)を完了してください。
 
 ## <a name="example-query-1"></a>サンプル クエリ 1
 

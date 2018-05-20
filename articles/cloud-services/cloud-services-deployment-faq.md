@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 05217129d4993514acaf8c717847040584984cb3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題: よくあるご質問 (FAQ)
 
@@ -77,6 +77,6 @@ Cloud Services はクラシック リソースです。クラシック リソー
  
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Azure Portal がデプロイ用のストレージ アカウントの提供を要求するのはなぜですか。 
 
-クラシック ポータルでは、パッケージは管理 API レイヤーに直接アップロードされてから、API レイヤーがパッケージを内部ストレージ アカウントに一時的に格納しました。  API レイヤーはファイル アップロード サービスとして設計されていないため、このプロセスはパフォーマンスとスケーラビリティの問題の原因となります。  Azure Portal (Resource Manager デプロイメント モデル) では、 API レイヤーへの最初のアップロードの中間手順をバイパスしているため、デプロイの速度と信頼性が向上しています。 
+クラシック ポータルでは、パッケージは管理 API レイヤーに直接アップロードされてから、API レイヤーがパッケージを内部ストレージ アカウントに一時的に格納しました。  API レイヤーはファイル アップロード サービスとして設計されていないため、このプロセスはパフォーマンスとスケーラビリティの問題の原因となります。  Azure Portal (Resource Manager デプロイ モデル) では、 API レイヤーへの最初のアップロードの中間手順をバイパスしているため、デプロイの速度と信頼性が向上しています。 
 
 コストはとても低く、すべてのデプロイに同じストレージ アカウントを再利用できます。 [ストレージのコスト計算ツール](https://azure.microsoft.com/pricing/calculator/#storage1)を使用して、サービス パッケージ (CSPKG) のアップロード、CSPKG のダウンロード、CSPKG の削除にかかるコストを判断できます。 

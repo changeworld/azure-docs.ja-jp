@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric Reliable Collection のトランザクションとロック モード | Microsoft Docs"
-description: "Azure Service Fabric Reliable State Manager と Reliable Collection トランザクションとロック。"
+title: Azure Service Fabric Reliable Collection のトランザクションとロック モード | Microsoft Docs
+description: Azure Service Fabric Reliable State Manager と Reliable Collection トランザクションとロック。
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9d431d94a6df9636a48e1b2aaa59aaa576e2dc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
 
 ## <a name="transaction"></a>トランザクション
 トランザクションは、作業の単一の論理ユニットとして実行される一連の操作です。
-トランザクションは、次の ACID プロパティを示す必要があります。 (参照: https://technet.microsoft.com/en-us/library/ms190612)
+トランザクションは、次の ACID プロパティを示す必要があります。 (参照: https://technet.microsoft.com/library/ms190612)
 * **原子性**: トランザクションはアトミック作業ユニットである必要があります。 つまり、そのすべてのデータ変更が実行されるか、いずれもが実行されないということです。
 * **整合性**: 完了すると、トランザクションが整合性のある状態ですべてのデータを残す必要があります。 すべての内部データ構造は、トランザクション終了時に正しくなければなりません。
 * **分離**: 同時実行トランザクションによって行われた変更は、その他の同時実行トランザクションによって加えられた変更から分離する必要があります。 ITransaction 内の操作に使用される分離レベルは、操作を実行する IReliableState によって決まります。
@@ -34,13 +34,13 @@ ms.lasthandoff: 10/11/2017
 分離レベルは、トランザクションを他のトランザクションによって行われた変更から分離する必要がある度合を定義します。
 Reliable Collection では、次の 2 つの分離レベルがサポートされています。
 
-* **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。 詳細については、 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)をご覧ください。
+* **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。 詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
 * **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。
   トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。
   現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。
   それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです。
   スナップショットは、Reliable Collection 間で一貫しています。
-  詳細については、 [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx)をご覧ください。
+  詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
 
 Reliable Collection では、トランザクション作成時の操作とレプリカのロールに合わせて、特定の読み取り操作用の分離レベルが自動的に選択されます。
 以下の表に、Reliable Dictionary と Reliable Queue の各操作の分離レベルの既定値を示します。
@@ -74,10 +74,10 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 
 次に示すのは、ロックの互換性対応表です。
 
-| 要求\許可 | なし | 共有 | 更新 | 排他的 |
+| 要求\許可 | なし | 共有 | プライマリの | 排他的 |
 | --- |:--- |:--- |:--- |:--- |
 | 共有 |競合なし |競合なし |競合 |競合 |
-| 更新 |競合なし |競合なし |競合 |競合 |
+| プライマリの |競合なし |競合なし |競合 |競合 |
 | 排他的 |競合なし |競合 |競合 |競合 |
 
 デッドロック検出のために、Reliable Collection API のタイムアウト引数が使用されます。
@@ -87,7 +87,7 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 
 このデッドロックのシナリオは、デッドロックを更新ロックによって回避できる良い例です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)

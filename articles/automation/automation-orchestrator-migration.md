@@ -3,16 +3,17 @@ title: Orchestrator から Azure Automation への移行
 description: System Center Orchestrator の Runbook と統合パックを Azure Automation に移行する方法を説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 873d234a9ba0ae50b4b11cf65b9630bb79e883e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d692e4dc639cbd290b465980da2319ac590627c
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator から Azure Automation (ベータ版) へ移行する
 [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。  [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
@@ -99,7 +100,7 @@ Runbook コンバーターでは、変換後の Runbook と同じ場所に次の
 ### <a name="exporting-runbooks-from-orchestrator"></a>Orchestrator からの Runbook のエクスポート
 Runbook コンバーターは、1 つ以上の Runbook が含まれる、Orchestrator からのエクスポート ファイルを扱います。  これにより、各 Orchestrator Runbook に対応する Azure Automation Runbook がエクスポート ファイルに作成されます。  
 
-Orchestrator から Runbook をエクスポートするには、Runbook Designer で Runbook の名前を右クリックして **[エクスポート]**を選択します。  フォルダー内のすべての Runbook をエクスポートするには、フォルダーの名前を右クリックして **[エクスポート]**をクリックします。
+Orchestrator から Runbook をエクスポートするには、Runbook Designer で Runbook の名前を右クリックして **[エクスポート]** を選択します。  フォルダー内のすべての Runbook をエクスポートするには、フォルダーの名前を右クリックして **[エクスポート]** をクリックします。
 
 ### <a name="runbook-activities"></a>Runbook アクティビティ
 Runbook コンバーターは、Orchestrator Runbook の各活動を Azure Automation の対応する活動に変換します。  変換できない活動の場合は、プレースホルダー活動が警告テキストと共に Runbook に作成されます。  変換された Runbook を Azure Automation にインポートした後、これらの活動のいずれかを、必要な機能を実行する有効な活動に置き換える必要があります。

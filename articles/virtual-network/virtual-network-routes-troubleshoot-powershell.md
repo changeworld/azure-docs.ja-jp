@@ -1,6 +1,6 @@
 ---
 title: ルートのトラブルシューティング - PowerShell | Microsoft Docs
-description: Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してルートをトラブルシューティングする方法について説明します。
+description: Azure Resource Manager デプロイ モデルで、Azure PowerShell を使用してルートをトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 2d501419dde633f89a5760af9f82604006de6b6f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ef1387e3c8573a2bfa64c166f08bf47723eca62
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Azure PowerShell を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Azure 仮想マシン (VM) とのネットワーク接続に問題が発生し�
 * **BGP ルート:** ExpressRoute またはサイト間 VPN 接続経由のネットワーク インターフェイスに反映されます。 BGP ルーティングの詳細については、「[Azure VPN ゲートウェイを使用した BGP の概要](../vpn-gateway/vpn-gateway-bgp-overview.md)」と「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」の記事を参照してください。
 * **ユーザー定義のルート (UDR):** ネットワーク仮想アプライアンスまたは強制トンネリングを使用して、オンプレミス ネットワークにサイト間 VPN 経由でトラフィックをルートしている場合は、サブネット ルート テーブルにユーザー定義のルート (UDR) が関連付けられていることがあります。 UDR に慣れていない場合は、「 [ユーザー定義のルート](virtual-networks-udr-overview.md#user-defined) 」の記事をご覧ください。
 
-ネットワーク インターフェイスに適用できるさまざまなルートを使用する場合、有効な集約ルートの特定が難しくなることがあります。 VM ネットワーク接続をトラブルシューティングするため、Azure Resource Manager デプロイメント モデルのネットワーク インターフェイスのすべての有効なルートを表示できます。
+ネットワーク インターフェイスに適用できるさまざまなルートを使用する場合、有効な集約ルートの特定が難しくなることがあります。 VM ネットワーク接続をトラブルシューティングするため、Azure Resource Manager デプロイ モデルのネットワーク インターフェイスのすべての有効なルートを表示できます。
 
 ## <a name="using-effective-routes-to-troubleshoot-vm-traffic-flow"></a>有効なルートを使用した VM トラフィック フローのトラブルシューティング
 この記事では、例として次のシナリオを使用し、ネットワーク インターフェイスの有効な規則のトラブルシューティング方法を説明します。
@@ -57,7 +57,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
 ### <a name="view-effective-routes-for-a-network-interface"></a>ネットワーク インターフェイスの有効なルートを表示する
 ネットワーク インターフェイスに適用されている集約ルートを表示するには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 2. 次のコマンドを使用すると、リソース グループ *RG1* の *VM1-NIC1* という名前のネットワーク インターフェイスに適用されているすべてのルートが返されます。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

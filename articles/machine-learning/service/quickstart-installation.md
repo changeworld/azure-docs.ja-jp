@@ -3,7 +3,7 @@ title: Azure Machine Learning サービスのインストールに関するク�
 description: このクイック スタートでは、Azure Machine Learning のリソースを作成する方法について説明します。また、Azure Machine Learning Workbench のインストールと基本操作の方法についても説明します。
 services: machine-learning
 author: hning86
-ms.author: chhavib
+ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 61f51063ea7542e11ec8488c1f526c0fff1e5e38
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12a34bc98db396482d9fde8da778db0f0ef7de4b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>クイック スタート: Azure Machine Learning サービスのインストールと基本操作
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。

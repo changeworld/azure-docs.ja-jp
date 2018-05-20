@@ -16,11 +16,11 @@ ms.workload: media
 ms.date: 03/27/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 33afe5fb24309547a7aacfcbe3b799ed413594ac
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5c719d484684c0efff87671ba7e012d9bd7699e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -64,7 +64,7 @@ v3 は、**Azure Resource Manager** 上に構築された管理と操作の両�
 
 * [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [.NET 言語](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)
-* .NET Core 
+* [.NET core](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (**[.NET CLI]** タブを選択します)
 * Java
 
   次の依存関係をプロジェクトに追加します。

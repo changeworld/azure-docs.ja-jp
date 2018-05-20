@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/07/2018
+ms.openlocfilehash: 44a7c0721d8a0683162d2219bff0e4a4ecb117e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -35,7 +35,15 @@ Azure Stream Analytics のすべての入力では、パーティション分割
 
 ### <a name="outputs"></a>出力
 
-Azure Stream Analytics を使用するときは、ほとんどの出力シンクのパーティション分割を利用できます。 出力のパーティション分割の詳細については、[出力ページのパーティション分割セクション](stream-analytics-define-outputs.md#partitioning)を参照してください。
+Azure Stream Analytics を使用するときは、出力でパーティション分割を利用できます。
+-   Azure Data Lake Storage
+-   Azure Functions
+-   Azure テーブル
+-   Blob Storage (パーティション キーを明示的に設定できます)
+-   CosmosDB (パーティション キーを明示的に設定する必要があります)
+-   EventHub (パーティション キーを明示的に設定する必要があります)
+-   IoT Hub (パーティション キーを明示的に設定する必要があります)
+-   Service Bus
 
 PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割はサポートされません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
 
@@ -54,13 +62,13 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 
 3. ほとんどの出力でパーティション分割を利用できますが、ジョブのパーティション分割をサポートしない出力の種類を使用する場合、ジョブは完全には並列になりません。 詳しくは、「[出力](#outputs)」セクションをご覧ください。
 
-4. 入力パーティションの数が出力パーティションの数と同じである必要があります。 現在、Blob Storage 出力ではパーティションをサポートしていませんが、 アップストリーム クエリのパーティション構成を継承するので問題ありません。 完全な並列ジョブを可能にするパーティション値の例を次に示します。  
+4. 入力パーティションの数が出力パーティションの数と同じである必要があります。 Blob Storage 出力では、パーティションをサポートでき、アップストリーム クエリのパーティション構成を継承します。 Blob Storage のパーティション キーを指定すると、データが入力パーティションごとにパーティション分割されるため、結果も完全に並列になります。 完全な並列ジョブを可能にするパーティション値の例を次に示します。
 
    * 8 個のイベント ハブ入力パーティションと 8 個のイベント ハブ出力パーティション
-   * 8 個のイベント ハブ入力パーティションと Blob Storage 出力  
-   * 8 個の IoT ハブ入力パーティションと 8 個のイベント ハブ出力パーティション
-   * 8 個の Blob Storage 入力パーティションと Blob Storage 出力  
-   * 8 個の Blob Storage 入力パーティションと 8 個のイベント ハブ出力パーティション  
+   * 8 個のイベント ハブ入力パーティションと Blob Storage 出力
+   * 8 個のイベント ハブ 入力パーティションと任意のカーディナリティのカスタム フィールドによってパーティション分割された Blob Storage 出力
+   * 8 個の Blob Storage 入力パーティションと Blob Storage 出力
+   * 8 個の Blob Storage 入力パーティションと 8 個のイベント ハブ出力パーティション
 
 以下のセクションでは、驚異的並列であるシナリオの例を示します。
 

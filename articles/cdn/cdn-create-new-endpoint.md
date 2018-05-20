@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 2f2d34db2bb18b93ee4d8b78a135caecde5a293b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 91bb23b2790ed23c831bb1680f6f2bb2cdecc38f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート: Azure CDN プロファイルとエンドポイントの作成
 このクイック スタートでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure Content Delivery Network (CDN) を有効にします。 プロファイルとエンドポイントを作成すると、顧客へのコンテンツの配信を開始することができます。
@@ -72,7 +72,7 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
    登録内容が反映されるまでに時間がかかるため、エンドポイントはすぐには使用できません。 
    - **Azure CDN Standard from Microsoft** プロファイルの場合、通常、反映は 10 分以内で完了します。 
    - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
-   - **Azure CDN Standard from Verizon** および **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 
+   - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 90 分以内で完了します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 前の手順では、リソース グループ内に CDN プロファイルとエンドポイントを作成しました。 [次の手順](#next-steps)に進んでエンドポイントにカスタム ドメインを追加する方法について学習するには、これらのリソースを保存してください。 ただし、将来これらのリソースを使用する予定がない場合は、次の手順に従ってリソース グループを削除してリソースを削除することで、追加の料金が発生するのを避けることができます。
@@ -87,6 +87,6 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
 カスタム ドメインを CDN エンドポイントに追加する方法については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
+> [チュートリアル: Web アプリに Azure CDN を追加する](app-service-web-tutorial-content-delivery-network.md)
 
 

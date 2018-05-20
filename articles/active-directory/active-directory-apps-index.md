@@ -3,22 +3,22 @@ title: Azure Active Directory のアプリケーション構成の管理に関�
 description: フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: 5321b8e4-2afa-4dfe-8d53-4add7abb5ec8
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c9a60aaa627a41d023e5d5d7464046df5b55b05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -30,9 +30,9 @@ ms.lasthandoff: 04/28/2018
 
 | 記事の紹介 |  |
 |:---:| --- |
-| Azure AD によって解決されるアプリケーション管理に関する問題の概要 |[Azure Active Directory (AD) を使ったアプリケーションの管理](active-directory-enable-sso-scenario.md) |
+| Azure AD によって解決されるアプリケーション管理に関する問題の概要 |[Azure Active Directory (AD) を使ったアプリケーションの管理](manage-apps/what-is-application-management.md) |
 | シングル サインオンの有効化、アプリにアクセスできるユーザーの定義、ユーザーがアプリを起動する方法に関連した、Azure AD のさまざまな機能の概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md) |
-| アプリを Azure AD に統合するときに必要なさまざまな手順の概要 |[アプリケーションと Azure Active Directory の統合](active-directory-integrating-applications-getting-started.md)<br /><br />[SaaS アプリへのシングル サインオンの有効化](active-directory-enterprise-apps-manage-sso.md)<br /><br />[アプリへのアクセスの管理](active-directory-managing-access-to-apps.md) |
+| アプリを Azure AD に統合するときに必要なさまざまな手順の概要 |[アプリケーションと Azure Active Directory の統合](manage-apps/plan-an-application-integration.md)<br /><br />[SaaS アプリへのシングル サインオンの有効化](active-directory-enterprise-apps-manage-sso.md)<br /><br />[アプリへのアクセスの管理](active-directory-managing-access-to-apps.md) |
 | Azure AD でのアプリの表現方法に関する技術的な説明 |[アプリケーションを Azure AD に追加する方法と理由](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>トラブルシューティングの記事
@@ -78,10 +78,10 @@ ms.lasthandoff: 04/28/2018
 
 | 記事の紹介 |  |
 |:---:| --- |
-| Azure AD アプリケーション プロキシの概要としくみ |[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md) |
-| アプリケーション プロキシを構成する方法と最初のアプリを発行する方法に関するチュートリアル |[Azure AD アプリ プロキシを設定する方法](active-directory-application-proxy-enable.md)<br /><br />[アプリ プロキシ コネクタをサイレント インストールする方法](active-directory-application-proxy-silent-installation.md)<br /><br />[アプリ プロキシを使用してアプリケーションを発行する方法](active-directory-application-proxy-publish.md)<br /><br />[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](active-directory-application-proxy-custom-domains.md) |
-| アプリ プロキシを使用して発行されたアプリのシングル サインオンと条件付きアクセスを有効にする方法 |[アプリケーション プロキシを使用したシングル サインオン](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件付きアクセスとアプリケーション プロキシ](application-proxy-enable-remote-access-sharepoint.md) |
-| 次のシナリオでアプリケーション プロキシを使用する方法についてのガイダンス |[ネイティブ クライアント アプリケーションをサポートする方法](active-directory-application-proxy-native-client.md)<br /><br />[要求に対応するアプリケーションをサポートする方法](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](active-directory-application-proxy-connectors-azure-portal.md) |
+| Azure AD アプリケーション プロキシの概要としくみ |[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](manage-apps/application-proxy.md) |
+| アプリケーション プロキシを構成する方法と最初のアプリを発行する方法に関するチュートリアル |[Azure AD アプリ プロキシを設定する方法](manage-apps/application-proxy-enable.md)<br /><br />[アプリ プロキシ コネクタをサイレント インストールする方法](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[アプリ プロキシを使用してアプリケーションを発行する方法](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](manage-apps/application-proxy-configure-custom-domain.md) |
+| アプリ プロキシを使用して発行されたアプリのシングル サインオンと条件付きアクセスを有効にする方法 |[アプリケーション プロキシを使用したシングル サインオン](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[条件付きアクセスとアプリケーション プロキシ](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| 次のシナリオでアプリケーション プロキシを使用する方法についてのガイダンス |[ネイティブ クライアント アプリケーションをサポートする方法](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[要求に対応するアプリケーションをサポートする方法](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](manage-apps/application-proxy-connector-groups.md) |
 | アプリケーション プロキシのトラブルシューティング ガイド |[アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md) |
 
 アプリケーション プロキシは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
@@ -108,7 +108,7 @@ Azure AD Connect は、 [Azure Active Directory のすべてのエディショ�
 | 記事の紹介 |  |
 |:---:| --- |
 | Azure AD、Office365、Intune に提供されている条件付きアクセス機能の概要 |[条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access-azure-portal.md) |
-| 次の種類のリソースで条件付きアクセスを有効にする方法 |[SaaS アプリ向けの条件付きアクセス](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Office 365 サービス用条件付きアクセス](active-directory-conditional-access-device-policies.md)<br /><br />[オンプレミス アプリケーション用条件付きアクセス](active-directory-conditional-access-azure-portal.md)<br /><br />[条件付きアクセスの使用](application-proxy-enable-remote-access-sharepoint.md) |
+| 次の種類のリソースで条件付きアクセスを有効にする方法 |[SaaS アプリ向けの条件付きアクセス](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Office 365 サービス用条件付きアクセス](active-directory-conditional-access-device-policies.md)<br /><br />[オンプレミス アプリケーション用条件付きアクセス](active-directory-conditional-access-azure-portal.md)<br /><br />[条件付きアクセスの使用](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 |[Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[ドメイン参加済み Windows デバイスの自動デバイス登録を有効にする方法](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 デバイスの手順](active-directory-conditional-access-automatic-device-registration-setup.md)<br />— [Windows 7 デバイスの手順](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | 2 段階認証のために Microsoft Authenticator アプリを使用する方法 |[Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
@@ -121,7 +121,7 @@ Cloud App Discovery を使用すると、IT 部門は、組織全体でどの Sa
 
 | 記事の紹介 |  |
 |:---:| --- |
-| 機能の概要 |[承認されていないクラウド アプリケーションを Cloud App Discovery で検出する](active-directory-cloudappdiscovery-whatis.md) |
+| 機能の概要 |[承認されていないクラウド アプリケーションを Cloud App Discovery で検出する](manage-apps/cloud-app-discovery.md) |
 | 機能の詳細と、プライバシーに関する質問の回答 |[Cloud App Discovery のセキュリティとプライバシーの考慮事項](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
 | よく寄せられる質問 |[FAQ for Cloud App Discovery (Cloud App Discovery に関する FAQ)](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
 | Cloud App Discovery をデプロイするためのチュートリアル |[グループ ポリシーのデプロイメント ガイド](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[System Center デプロイメント ガイド](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[Cloud App Discovery のプロキシ サービス用レジストリ設定](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 7e2fe84c51f93bdeb6cd99e23624d1796aff6c1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>ライブ ストリーミングのトラブルシューティング ガイド
-このトピックでは、一部のライブ ストリーミングの問題のトラブルシューティング方法に関する推奨事項を説明します。
+この記事では、一部のライブ ストリーミングの問題のトラブルシューティング方法に関する推奨事項を説明します。
 
 ## <a name="issues-related-to-on-premises-encoders"></a>オンプレミスのエンコーダーに関連する問題
 このセクションでは、ライブ エンコードが有効になっている AMS チャネルに、単一ビットレートのストリームを送信するよう構成したオンプレミスのエンコーダーに関連する問題のトラブルシューティング方法について推奨事項を説明します。
@@ -47,20 +47,7 @@ ms.lasthandoff: 05/07/2018
     **トラブルシューティングの手順**: 推奨する GOP サイズまたはキーフレームの間隔は 2 秒です。 エンコーダーには、この設定の計算にフレーム数を使用するものと、秒を使用するものがあります。 例: 30 fps を出力する場合、GOP サイズは 60 フレームとなり、これは 2 秒に相当します。  
 * **潜在的な問題**: 閉じたポートが、ストリームをブロックしています。 
   
-    **トラブルシューティングの手順**: RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信ポート 1935 と 1936 が開いていることを確認します。 RTP ストリームを使用している場合は、送信ポート 2010 が開いていることを確認します。 
-
-### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>問題: ストリームで RTP プロトコルを使用するようエンコーダーを構成する際、ホスト名を入力する場所がない
-* **潜在的な問題**: 多くの RTP エンコーダーではホスト名は許可されていません。IP アドレスを取得する必要があります。  
-  
-    **トラブルシューティングの手順**: IP アドレスを検索するには、任意のコンピューターでコマンド プロンプトを開きます。 これを Windows で行う場合は、[ファイル名を指定して実行]\(Win + R) を開き、「cmd」と入力して開きます。  
-  
-    コマンド プロンプトが開いたら、「Ping [AMS のホスト名]」を入力します。 
-  
-    次の例で示すように、Azure 取り込み URL からポート番号を省略することでホスト名を取得できます。 
-  
-    rtp://test2-amstest009.rtp.channel.mediaservices.windows.net:2010/ 
-  
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
+    **トラブルシューティングの手順**: RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信ポート 1935 と 1936 が開いていることを確認します。 
 
 > [!NOTE]
 > このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure Portal を使用して、サポート チケットを送信してください。

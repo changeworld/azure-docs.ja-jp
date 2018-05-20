@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/06/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 1485bc5ac7ae47df9a1a36c8b88d6515b5624360
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9a590050acff814834dac85085d1a4dc5fc8190f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/06/2018
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。 Azure サポートの使用方法の詳細については、「 [Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「 [Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="components-of-a-remote-desktop-connection"></a>リモート デスクトップ接続のコンポーネント
 RDP 接続には以下のコンポーネントが関連しています。
@@ -129,7 +129,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 * Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-クラシック デプロイメント モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。 最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。 [Azure Virtual Machines への安全なリモート PowerShell アクセスの構成](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) に関するページを参照し、 **InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
+クラシック デプロイ モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。 最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。 [Azure Virtual Machines への安全なリモート PowerShell アクセスの構成](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) に関するページを参照し、 **InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
 
 次に、まだ Azure PowerShell がインストールされていなければ、インストールします。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/20/2017
+ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: d082241ee5151b199376a0c2c9baccc242ece12e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 58a283f1ce5bd2fd78c4fa2038c3998aea1598c9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure Key Vault の概要
 この記事では、PowerShell を使用した Azure Key Vault の操作について取り上げると共に、次のアクティビティの手順を紹介します。
@@ -55,7 +55,7 @@ Get-Help <cmdlet-name> -Detailed
 Get-Help Connect-AzureRmAccount -Detailed
 ```
 
-また、次の記事を読むと、Azure PowerShell での Azure Resource Manager デプロイメント モデルを理解することができます。
+また、次の記事を読むと、Azure PowerShell での Azure Resource Manager デプロイ モデルを理解することができます。
 
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 * [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
@@ -114,7 +114,7 @@ New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoReso
 このコマンドレットの出力では、作成したキー コンテナーのプロパティが示されます。 最も重要な 2 つのプロパティは、次のとおりです。
 
 * **Vault Name**: この例では、これは **ContosoKeyVault** です。 この名前を他の Key Vault コマンドレットに使用できます。
-* **Vault URI**: この例では、これは https://contosokeyvault.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+* **Vault URI (コンテナー URI)**: この例では、これは https://contosokeyvault.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 まだ、どのユーザーも許可されていません。
 
@@ -187,7 +187,7 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPasswor
 ```
 
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用します。**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用すると、この特定のバージョンが取得されます。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用します。この特定のバージョンを取得するには、**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 このシークレットの URI を表示するには、次のように入力します。
 
@@ -226,7 +226,7 @@ Azure Active Directory にアプリケーションを登録するには:
 >[!NOTE]
 キー コンテナーを作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。 
 3. **[新しいアプリケーションの登録]** をクリックします。
-4. **[作成]** ブレードでアプリケーションの名前を入力し、**[Web アプリケーションや Web API]** (既定値) を選択して、Web アプリケーションの**サインオン URL** を指定します。 この時点でこの情報がない場合は、この手順用に構成できます (たとえば、http://test1.contoso.com と指定できます)。 これらのサイトが存在するかどうかは関係ありません。 
+4. **[作成]** ブレードでアプリケーションの名前を入力し、**[Web アプリケーションや Web API]** (既定値) を選択して、Web アプリケーションの**サインオン URL** を指定します。 この時点でこの情報がない場合は、この手順で構成できます (たとえば、http://test1.contoso.com と指定できます)。 これらのサイトが存在するかどうかは関係ありません。 
 
     ![[新しいアプリケーションの登録]](./media/key-vault-get-started/new-application-registration.png)
     >[!WARNING]

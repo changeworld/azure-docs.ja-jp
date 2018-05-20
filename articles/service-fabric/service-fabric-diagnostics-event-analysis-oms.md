@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: da78f88f0c79c0ad853dd644ef278f8402824760
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8efbc1d400f1d32e6aee2c1e2d78847bea786940
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Log Analytics を使用したイベントの分析と視覚化
 
@@ -67,13 +67,14 @@ Log Analytics がデータを受け取った後、Azure にはいくつかの*�
     
     ![OMS クエリの操作チャネル](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
 
-または、左側にある虫眼鏡をクリックし、Kusto クエリ言語を使って検索対象を見つけることもできます。 たとえば、クラスター別にノード上で行われた操作に関連するすべてのイベントを検索するは、次のクエリを使用できます。 以下で使用されるイベント ID は、[操作チャネルのイベントのリファレンス](service-fabric-diagnostics-event-generation-operational.md)に関するページで確認できます。
+または、左側にある虫眼鏡をクリックし、Kusto クエリ言語を使って検索対象を見つけることもできます。 たとえば、クラスター内のノードに対して行われたすべての操作を検索するは、次のクエリを使用できます。 以下で使用されるイベント ID は、[操作チャネルのイベントのリファレンス](service-fabric-diagnostics-event-generation-operational.md)に関するページで確認できます。
 
 ```kusto
 ServiceFabricOperationalEvent
-| where EventId < 29627 and EventId > 29619 
+| where EventId < 25627 and EventId > 25619 
 ```
-特定のノード (Computer)、システム サービス (TaskName) など、より多くのフィールドに対してクエリを実行できます。
+
+特定のノード (Computer) やシステム サービス (TaskName) など、より多くのフィールドに対してクエリを実行できます。
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Service Fabric Reliable Service および Actor イベントの表示
 

@@ -3,21 +3,21 @@ title: Kubernetes on Azure のチュートリアル - クラスターの更新
 description: Kubernetes on Azure のチュートリアル - クラスターの更新
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8340ca9d95e7600e2500755de252e7f6c6de9343
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0886d13b62b6b8ad1c0dcd430ce48bcc51d6d465
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-upgrade-kubernetes-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) での Kubernetes のアップグレード
+# <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) での Kubernetes のアップグレード
 
-Azure Container Service (AKS) クラスターは、Azure CLI を使用してアップグレードできます。 アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、Kubernetes ノードは慎重に[切断およびドレインされます][kubernetes-drain]。
+Azure Kubernetes Service (AKS) クラスターは、Azure CLI を使用してアップグレードできます。 アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、Kubernetes ノードは慎重に[切断およびドレインされます][kubernetes-drain]。
 
 このチュートリアル (8 部構成の第 8 部) では、Kubernetes クラスターがアップグレードされます。 以下のタスクを行います。
 

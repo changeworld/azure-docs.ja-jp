@@ -1,24 +1,24 @@
 ---
-title: "要求に対応するアプリ - Azure AD アプリ プロキシ | Microsoft Docs"
-description: "ADFS 要求を受け入れてユーザーの安全なリモート アクセスを実現するオンプレミス ASP.NET アプリケーションを発行する方法。"
+title: 要求に対応するアプリ - Azure AD アプリ プロキシ | Microsoft Docs
+description: ADFS 要求を受け入れてユーザーの安全なリモート アクセスを実現するオンプレミス ASP.NET アプリケーションを発行する方法。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 91e6211b-fe6a-42c6-bdb3-1fff0312db15
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: a732687e47cffff6b6aae687f8e780bba630243e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 74af858c433db2a178d5fa346315e3f8a2dbd4f2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>アプリケーション プロキシで要求に対応するアプリケーションを利用する
 [要求に対応するアプリ](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)は、セキュリティ トークン サービス (STS) へのリダイレクトを実行します。 STS は、トークンと引き換えにユーザーの資格情報を要求し、アプリケーションにユーザーをリダイレクトします。 アプリケーション プロキシをこれらのリダイレクトに対応させる方法はいくつかあります。 この記事の手順に従って、要求に対応するアプリのデプロイを構成します。 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="publish-your-application"></a>アプリケーションの発行
 
-1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」で説明されている手順に従って、アプリケーションを発行します。
+1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](manage-apps/application-proxy-publish-azure-portal.md)」で説明されている手順に従って、アプリケーションを発行します。
 2. ポータルのアプリケーション ページに移動し、**[シングル サインオン]** を選択します。
 3. **[事前認証方法]** として **[Azure Active Directory]** を選択した場合は、**[内部認証方法]** として **[Azure AD シングル サインオンが無効]** を選択してください。 **[事前認証方法]** として **[パススルー]** を選択した場合は、何も変更する必要はありません。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="option-1-custom-domains"></a>方法 1: カスタム ドメイン
 
-アプリケーションのすべての内部 URL が完全修飾ドメイン名 (FQDN) になっている場合は、アプリケーションの[カスタム ドメイン](active-directory-application-proxy-custom-domains.md)を構成することができます。 このカスタム ドメインを使用して、内部 URL と同じ外部 URL を作成できます。 外部 URL が内部 URL と一致すると、ユーザーがオンプレミスかリモートかに関わらず、STS リダイレクト機能が作動します。 
+アプリケーションのすべての内部 URL が完全修飾ドメイン名 (FQDN) になっている場合は、アプリケーションの[カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md)を構成することができます。 このカスタム ドメインを使用して、内部 URL と同じ外部 URL を作成できます。 外部 URL が内部 URL と一致すると、ユーザーがオンプレミスかリモートかに関わらず、STS リダイレクト機能が作動します。 
 
 ### <a name="option-2-ws-federation"></a>方法 2: WS-Federation
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/01/2018
    ![エンドポイントを追加し、信頼された URL 値を設定しているスクリーン ショット](./media/active-directory-application-proxy-claims-aware-apps/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>次の手順
-* 要求に対応するアプリケーション以外のアプリケーショで[シングル サインオンを有効](application-proxy-sso-overview.md)にする
+* 要求に対応するアプリケーション以外のアプリケーショで[シングル サインオンを有効](manage-apps/application-proxy-single-sign-on.md)にする
 * [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする](active-directory-application-proxy-native-client.md)
 
 

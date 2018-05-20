@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: cfc8ac74f626ada30dda72b58e4b4bc7f0d9e806
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
@@ -108,7 +108,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
 * オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision、Tricaster エンコーダーは、RTMP を出力するライブ エンコーダーです。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
-* RTP (MPEG-TS)、RTMP、Smooth Streaming (Fragmented MP4) のいずれかの形式のシングル ビットレート ストリームは、Media Services による Live Encoding が有効なチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* RTMP か Smooth Streaming (Fragmented MP4) 形式のシングル ビットレート ストリームは、Media Services による Live Encoding が有効なチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 ### <a name="channel"></a>チャネル
 Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](https://docs.microsoft.com/rest/api/media/operations/channel)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します

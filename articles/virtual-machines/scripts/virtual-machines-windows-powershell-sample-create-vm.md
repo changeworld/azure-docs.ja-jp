@@ -17,10 +17,10 @@ ms.date: 03/02/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: a9e46aded0cf3792558a7fba6f00e5662166cc0a
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell を使用して、完全に構成された仮想マシンを作成する
 

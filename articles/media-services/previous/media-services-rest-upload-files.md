@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
 > [!div class="op_single_selector"]
@@ -87,11 +87,11 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
     ```
 4. **[Postman]** ウィンドウの左にある **[1 Get AAD Auth token]\(1 AAD Auth トークンの取得\)** -> **[Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\)** をクリックします。
 
-    URL の一部分には、(このチュートリアルで事前に値を設定した) **AzureADSTSEndpoint** 環境変数が適用されます。
-    
-5. **[送信]** をクリックします。
+    URL 部分には、**AzureADSTSEndpoint** 環境変数が入力されます (このチュートリアルの中で、[コレクション](#configure-the-collection)をサポートする[環境変数](#configure-the-environment)の値を設定しています)。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postment-get-token.png)
+
+5. **[送信]** をクリックします。
 
     "Access_token" が含まれている応答を確認できます。 "test" スクリプトはこの値を利用して、(前述した) **AccessToken** 環境変数に設定します。 お使いの環境変数を確認すると、現時点でこの変数には、残りの操作で使用されるアクセス トークン (ベアラー トークン) 値が格納されていることがわかります。 
 

@@ -4,13 +4,13 @@ description: この記事では、(VMM を使用せずに) Azure Site Recovery �
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/194/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 978d290287a4ff8875eea7e93f003c78e7177dae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 11ecc341977efb5c815581a77383d1c8cae51ed6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V から Azure へのレプリケーション アーキテクチャ
 

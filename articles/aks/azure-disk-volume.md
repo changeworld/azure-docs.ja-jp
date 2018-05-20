@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a2f46aba80ad47335b7cd9b5e8d615c1d895cccb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 33d9a01f063ee8ad531a3f7e01dcfbf1c4ba8901
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="volumes-with-azure-disks"></a>Azure ディスクを使用するボリューム
 
-コンテナーベースのアプリケーションは、データへのアクセスとデータの永続化の手段として、外部データ ボリュームが必要になることが少なくありません。 この外部データ ストアとして Azure ディスクを使用することができます。 この記事では、Azure Container Service (AKS) クラスターの Kubernetes ボリュームとして Azure ディスクを使用する方法について詳しく説明します。
+コンテナーベースのアプリケーションは、データへのアクセスとデータの永続化の手段として、外部データ ボリュームが必要になることが少なくありません。 この外部データ ストアとして Azure ディスクを使用することができます。 この記事では、Azure Kubernetes Service (AKS) クラスターの Kubernetes ボリュームとして Azure ディスクを使用する方法について詳しく説明します。
 
 Kubernetes ボリュームの詳細については、[Kubernetes ボリューム][kubernetes-volumes]に関するページを参照してください。
 
@@ -38,7 +38,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Azure ディスクを作成するには、[az disk create][az-disk-create] コマンドを使用します。 
+Azure ディスクを作成するには、[az disk create][az-disk-create] コマンドを使用します。
 
 この例を参考にして、`--resource-group` をリソース グループの名前に、`--name` を任意の名前に更新します。
 
@@ -58,7 +58,7 @@ az disk create \
 
 ## <a name="mount-disk-as-volume"></a>ディスクをボリュームとしてマウントする
 
-コンテナーの指定でボリュームを構成して Azure ディスクをポッドにマウントします。 
+コンテナーの指定でボリュームを構成して Azure ディスクをポッドにマウントします。
 
 次の内容で、`azure-disk-pod.yaml` という名前の新しいファイルを作成します。 `diskName` を新しく作成したディスクの名前で更新し、`diskURI` をディスク ID で更新します。 また、`mountPath` を書き留めます。これは Azure ディスクがポッドにマウントされているパスです。
 

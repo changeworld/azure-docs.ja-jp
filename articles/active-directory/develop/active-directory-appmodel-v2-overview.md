@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory v2.0 エンドポイント | Microsoft Docs"
-description: "Microsoft アカウントと Azure Active Directory の両方でサインインできるアプリケーションの構築を紹介します。"
+title: Azure Active Directory v2.0 エンドポイント | Microsoft Docs
+description: Microsoft アカウントと Azure Active Directory の両方でサインインできるアプリケーションの構築を紹介します。
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2dee579f-fdf6-474b-bc2c-016c931eaa27
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 18319ad461500fac13b3f6ac1117a52b94e695e7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fde3cb77389994352b62f06d370c709fa115749
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>単一のアプリケーションで Microsoft アカウントと Azure Active Directory にサインインする
 アプリケーションの開発者はこれまで、個人用の Microsoft アカウントと Azure Active Directory の職場アカウントの両方をサポートするには、2 つの異なるシステムを 1 つに統合する必要がありました。 Azure Active Directory (Azure AD) v2.0 のエンドポイントには、このプロセスを簡略化する新しい認証 API のバージョンが導入されています。 Azure AD v2.0 エンドポイントでは、単一の統合を使用してどちらの種類のアカウントからでもサインインできます。 Azure AD v2.0 エンドポイントを使うアプリケーションは、どちらの種類のアカウントを使用していても、[Microsoft Graph API](https://graph.microsoft.io) の REST API を使用できます。

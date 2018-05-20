@@ -1,23 +1,23 @@
 ---
-title: Apache Spark ジョブを Azure Container Service (AKS) で実行する
-description: Azure Container Service (AKS) を使用して Apache Spark job を実行します
+title: Apache Spark ジョブを Azure Kubernetes Service (AKS) で実行する
+description: Azure Kubernetes Service (AKS) を使用して Apache Spark job を実行します
 services: container-service
 author: lenadroid
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 627cb80a055fb4b66fcc428a1de87d754af6991e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cb23c21fd22a35a3e8a5920a94aa5a89fe966cfa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
-[Apache Spark] [apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark は、Kubernetes クラスターとのネイティブな統合をサポートしています。 Azure Container Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Container Service (AKS) クラスターで 実行する方法を詳しく説明します。
+[Apache Spark] [apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark は、Kubernetes クラスターとのネイティブな統合をサポートしています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Container Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
+大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Kubernetes Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
 
 この最小推奨事項を満たしている AKS クラスターが必要な場合は、次のコマンドを実行します。
 

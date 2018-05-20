@@ -3,17 +3,17 @@ title: Docker イメージをプライベート Azure レジストリにプッ�
 description: Docker CLI を使用した、Azure のプライベート コンテナー レジストリに対する Docker イメージのプッシュとプル
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d729a45b28ad02a652c265974d46fe1aaf752198
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -125,6 +125,6 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 基本を理解したので、レジストリの使用を開始する準備ができました。 レジストリから次の宛先にコンテナー イメージをデプロイします。
 
-* [Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure Kubernetes サービス (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)

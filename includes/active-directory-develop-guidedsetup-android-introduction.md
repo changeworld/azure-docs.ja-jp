@@ -1,11 +1,33 @@
-
-# <a name="call-the-microsoft-graph-api-from-an-android-app"></a>Android アプリから Microsoft Graph API を呼び出す
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/28/2018
+---
+# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Android アプリからのユーザーとすべての Microsoft Graph API をサインインする
 
 このガイドでは、ネイティブの Android アプリケーションがアクセス トークンを取得し、Azure Active Directory v2 エンドポイントからのアクセス トークンを必要とする Microsoft Graph API や他の API を 呼び出す方法について説明します。
 
 このガイドを完了すると、アプリケーションは、個人用アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れることができるようになります。 その後、アプリケーションは Azure Active Directory v2 エンドポイントで保護されている API を呼び出すことができます。  
 
-## <a name="how-this-sample-works"></a>このサンプルのしくみ
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 ![このサンプルのしくみ](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
 このガイドで作成するサンプル アプリケーションは、Android アプリケーションを使用して、Azure Active Directory v2 エンドポイントからのトークンを受け入れる Web API (ここでは Microsoft Graph API) を照会するシナリオに基づいています。 このシナリオでは、アプリケーションは、Authorization ヘッダーを使用して HTTP 要求に取得したトークンを追加します。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) が処理します。

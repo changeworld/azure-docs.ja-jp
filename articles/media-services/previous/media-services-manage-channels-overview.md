@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d71f9fc2b69e1a99b518c2317cccde712ab40fec
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Azure Media Services を使用したライブ ストリーミングの概要
 
@@ -54,7 +54,7 @@ Azure Media Services では、**チャネル**、**プログラム**、**スト�
   > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
   > 
   > 
-* オンプレミスのライブ エンコーダーは、RTMP またはスムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効なチャネルに送信します。 また、RTP (MPEG-TS) もサポートされています (Azure データ センターへの専用接続がある場合)。 RTMP を出力するライブ エンコーダーである Telestream Wirecast と FMLE が、この種類のチャネルで機能することがわかっています。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、RTMP またはスムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効なチャネルに送信します。 RTMP を出力するライブ エンコーダーである Telestream Wirecast と FMLE が、この種類のチャネルで機能することがわかっています。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 Media Services 2.10 リリース以降、チャネルを作成するときに、チャネルで入力ストリームを受信する方法、およびチャネルでストリームのライブ エンコードを実行するかどうかを指定できます。 2 つのオプションがあります。
 
@@ -68,7 +68,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 | --- | --- | --- |
 | シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
 | 最大解像度、層の数 |1080p、8 層、60 fps 以上 |720p、6 層、30 fps |
-| 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング、RTP |
+| 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング |
 | 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長実行時間 |24 時間 365 日 |8 時間 |
 | スレートの挿入のサポート |いいえ  |[はい] |

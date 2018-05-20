@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f12cdf2fc8a1aa3b7e8bc3c5eeb338601a8f2ffe
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
 この記事では、Azure Functions で [Event Grid](../event-grid/overview.md) イベントを処理する方法を説明します。
 
-Event Grid は、"*パブリッシャー*" 内で発生したイベントについてユーザーに通知する HTTP 要求を送信する Azure サービスです。 パブリッシャーは、イベントを生成するサービスまたはリソースです。 たとえば、Azure Blob Storage アカウントはパブリッシャーであり、BLOB のアップロードまたは削除がイベントです。 一部の [Azure サービスには、Event Grid にイベントを発行するサポートが組み込まれています](../event-grid/overview.md#event-sources)。 
+Event Grid は、"*パブリッシャー*" 内で発生したイベントについてユーザーに通知する HTTP 要求を送信する Azure サービスです。 パブリッシャーは、イベントを生成するサービスまたはリソースです。 たとえば、Azure Blob Storage アカウントはパブリッシャーであり、[BLOB のアップロードまたは削除がイベント](../storage/blobs/storage-blob-event-overview.md)です。 一部の [Azure サービスには、Event Grid にイベントを発行するサポートが組み込まれています](../event-grid/overview.md#event-sources)。 
 
 イベント "*ハンドラー*" は、イベントを受信して処理します。 Azure Functions は、[Event Grid イベントを処理する組み込みサポートを備えている Azure サービス](../event-grid/overview.md#event-handlers)の 1 つです。 この記事では、Event Grid からイベントを受信したときに、Event Grid トリガーを使って関数を呼び出す方法を説明します。
 
@@ -223,7 +223,8 @@ C# および F# 関数については、Event Grid トリガーに次のパラ�
 
 * `JObject`
 * `string`
-* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`- すべてのイベントの種類に共通するフィールドのプロパティを定義します。 **この型は使用されなくなりました**が、それに置き換わるものがまだ NuGet に公開されていません。
+* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`- すべてのイベントの種類に共通するフィールドのプロパティを定義します。 
+  **この型は非推奨となりました**が、それに置き換わるものがまだ NuGet に公開されていません。
 
 JavaScript 関数では、*function.json* `name` プロパティによって指定されているパラメーターが、イベント オブジェクトへの参照を保持しています。
 
@@ -337,6 +338,9 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-requestbin"></a>RequestBin でのローカル テスト
 
+> [!NOTE]
+> RequestBin サイトは現在使用できませんが、代わりに https://hookbin.com によるこのアプローチを使用できます。 そのサイトがダウンしている場合は、[ngrok](#local-testing-with-ngrok) を使用できます。
+
 Event Grid トリガーをローカルにテストするには、クラウド内の送信元からローカル コンピューターに配信された Event Grid の HTTP 要求を取得する必要があります。 これを行う方法の 1 つは、オンラインで要求をキャプチャし、ローカル コンピューター上でそれを手動で再送信することです。
 
 2. [RequestBin エンドポイントを作成](#create-a-RequestBin-endpoint)します。
@@ -348,7 +352,7 @@ Event Grid トリガーをローカルにテストするには、クラウド内
 
 ### <a name="create-a-requestbin-endpoint"></a>RequestBin エンドポイントを作成する
 
-RequestBin は、HTTP 要求を受け入れて要求本文を表示するオープン ソース ツールです。 http://requestb.in の URL は、Azure Event Grid によって特別な処理を行われます。 テストを容易にするため、Event Grid は、サブスクリプション検証要求に対する正しい応答を必要としないで、RequestBin の URL にイベントを送信します。 他の 2 つのテストツール http://webhookinbox.com および http://hookbin.com も、同じように処理されます。
+RequestBin は、HTTP 要求を受け入れて要求本文を表示するオープン ソース ツールです。 http://requestb.in の URL は、Azure Event Grid によって特別な処理を行われます。 テストを容易にするため、Event Grid は、サブスクリプション検証要求に対する正しい応答を必要としないで、RequestBin の URL にイベントを送信します。 他の 1 つのテストツール http://hookbin.com も、同じように処理されます。
 
 RequestBin は、高いスループットでの使用を意図されていません。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
 

@@ -3,19 +3,19 @@ title: Helm を使用して Azure の Kubernetes にコンテナーをデプロ�
 description: Helm パッケージ化ツールを使用して AKS の Kubernetes クラスターにコンテナーをデプロイします
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 05/13/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6a8565c70097b3ac9a419b652a652824adebba88
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 70e13fb377be3ec501cce5170ed391aac8cb6e5d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="use-helm-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Helm の使用
+# <a name="use-helm-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm の使用
 
 [Helm][helm] は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
 
@@ -53,7 +53,7 @@ Bash completion has been installed to:
 Helm コンポーネントを Kubernetes クラスターにインストールし、クライアント側の構成を行うには、[helm init][helm-init] コマンドを使用します。 次のコマンドを実行して AKS クラスターに Helm をインストールし、Helm クライアントを構成します。
 
 ```azurecli-interactive
-helm init
+helm init --upgrade --service-account default
 ```
 
 出力:
@@ -118,7 +118,7 @@ Update Complete. ⎈ Happy Helming!⎈
 NGINX イングレス コントローラーをデプロイするには、[helm install][helm-install] コマンドを使用します。
 
 ```azurecli-interactive
-helm install stable/nginx-ingress
+helm install stable/nginx-ingress --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 出力は次のようになりますが、Kubernetes のデプロイの使用方法など、追加情報が含まれます。

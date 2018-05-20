@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d539475d376e2c3e38c2cbd38de0a10645fcabe4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -27,6 +27,8 @@ Azure Event Grid には、3 種類の認証があります。
 webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid webhook は、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに送信します。
 
 Event Grid に独自の webhook エンドポイントを登録すると、エンドポイントの所有権を証明するために、単純な検証コードを含む POST 要求が送信されます。 アプリからは検証コードをエコーで応答する必要があります。 Event Grid は、検証に合格していない webhook エンドポイントにイベントを配信しません。 サード パーティ製 API サービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、検証コードをプログラムでエコーできないことがあります。 このようなサービスの場合は、サブスクリプション検証イベントで送信される検証 URL を使用すると、サブスクリプションを手動で検証できます。 その URL をコピーし、REST クライアントまたは Web ブラウザーを使って GET 要求を送信します。
+
+手動検証はプレビュー段階にあります。 使用するには、[AZ CLI 2.0](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合、`api-version=2018-05-01-preview` を使用してください。
 
 ### <a name="validation-details"></a>検証の詳細
 

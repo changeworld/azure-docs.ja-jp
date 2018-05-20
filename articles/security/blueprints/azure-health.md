@@ -3,7 +3,7 @@ title: Azure Health Analytics のブループリント
 description: HIPAA/HITRUST Health Analytics のブループリントのデプロイに関するガイダンス
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
-ms.author: simorjay
-ms.openlocfilehash: bdd7dbf4f39529ac76fb496f0d459577e6f929dc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: jomolesk
+ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -282,7 +282,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **2.Key Vault** が、要求したトークンに関連付けられているシークレットを要求します。
 
-**3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
+\*\*3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
 
 **4.Key Vault** がシークレットを返します。この例では、SQL DB 接続文字列です。
 
@@ -352,7 +352,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 ## <a name="analyze"></a>分析
 
-### <a name="machine-learning"></a>機械学習
+### <a name="machine-learning"></a>Machine Learning
 
 
 -   Machine Learning Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
@@ -365,7 +365,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 - [Azure Advisor](/azure/advisor/advisor-overview) は、ベスト プラクティスに従って Azure デプロイメントを最適化できるようにする、個人用に設定されたクラウド コンサルタントです。 Azure のリソースの構成と利用統計情報を分析し、Azure リソースの費用対効果、パフォーマンス、高可用性、およびセキュリティを向上させるために役立つソリューションを推奨します。
 
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 - [Application Insights](/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスの異常が検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ### <a name="azure-alerts"></a>Azure アラート

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/07/2017
+ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="secure-your-key-vault"></a>キー コンテナーのセキュリティ保護
 Azure Key Vault は、クラウド アプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護する必要があります。 この記事では、キー コンテナーのアクセス モデルの概要、認証と承認に加え、例を挙げて、クラウド アプリケーションのキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
@@ -57,7 +57,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 * Azure Active Directory のオプションを使用して認証をカスタマイズできます (例: セキュリティを強化するために多要素認証を有効にする)
 
 ## <a name="management-plane-and-data-plane"></a>管理プレーンとデータ プレーン
-Azure Key Vault は、Azure Resource Manager デプロイメント モデルを介して利用できる Azure サービスです。 キー コンテナーを作成すると、仮想コンテナーが作成され、そこにキー、シークレット、証明書などのオブジェクトを作成できます。 その後、管理プレーンとデータ プレーンを使ってキー コンテナーにアクセスして、特定の操作を実行することができます。 管理プレーン インターフェイスは、キー コンテナーの属性の作成、削除、更新や、データ プレーンのアクセス ポリシーの設定など、キー コンテナー自体を管理する場合に使用します。 データ プレーン インターフェイスは、キー コンテナーに格納されているキー、シークレット、証明書を追加、削除、変更、使用する場合に使用します。
+Azure Key Vault は、Azure Resource Manager デプロイ モデルを介して利用できる Azure サービスです。 キー コンテナーを作成すると、仮想コンテナーが作成され、そこにキー、シークレット、証明書などのオブジェクトを作成できます。 その後、管理プレーンとデータ プレーンを使ってキー コンテナーにアクセスして、特定の操作を実行することができます。 管理プレーン インターフェイスは、キー コンテナーの属性の作成、削除、更新や、データ プレーンのアクセス ポリシーの設定など、キー コンテナー自体を管理する場合に使用します。 データ プレーン インターフェイスは、キー コンテナーに格納されているキー、シークレット、証明書を追加、削除、変更、使用する場合に使用します。
 
 管理プレーンとデータ プレーンのインターフェイスには異なるエンドポイントを介してアクセスします (表を参照してください)。 表の 2 列目では、さまざまな Azure 環境におけるこれらのエンドポイントの DNS 名について説明しています。 3 列目では、各アクセス プレーンから実行できる操作について説明しています。 どちらのアクセス プレーンにも、独自のアクセス制御メカニズムが用意されています。管理プレーンのアクセス制御は Azure Resource Manager のロールベースのアクセス制御 (RBAC) を使用して設定し、データ プレーンのアクセス制御は Key Vault アクセス ポリシーを使用して設定します。
 
@@ -72,7 +72,7 @@ Azure Key Vault は、Azure Resource Manager デプロイメント モデルを�
 管理プレーンは、キー コンテナー自体に影響を与える操作で構成されています。 たとえば、キー コンテナーを作成または削除できます。 サブスクリプション内のコンテナーの一覧を取得できます。 キー コンテナーのプロパティ (SKU、タグなど) を取得することや、キー コンテナー内のキーやシークレットにアクセスできるユーザーとアプリケーションを制御する Key Vault アクセス ポリシーを設定することができます。 管理プレーンのアクセス制御では、RBAC を使用します。 管理プレーンを介して実行できるキー コンテナーの操作の完全な一覧については、前のセクションの表を参照してください。 
 
 ### <a name="role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC)
-各 Azure サブスクリプションには Azure Active Directory があります。 このディレクトリのユーザー、グループ、アプリケーションに対して、Azure Resource Manager デプロイメント モデルを使用する Azure サブスクリプション内にあるリソースを管理するためのアクセス権を付与できます。 この種のアクセス制御は、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用できます。
+各 Azure サブスクリプションには Azure Active Directory があります。 このディレクトリのユーザー、グループ、アプリケーションに対して、Azure Resource Manager デプロイ モデルを使用する Azure サブスクリプション内にあるリソースを管理するためのアクセス権を付与できます。 この種のアクセス制御は、ロールベースのアクセス制御 (RBAC) と呼ばれます。 このアクセスを管理するには、[Azure Portal](https://portal.azure.com/)、[Azure CLI ツール](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用できます。
 
 Azure Resource Manager モデルでは、リソース グループにキー コンテナーを作成し、Azure Active Directory を使用してこのキー コンテナーの管理プレーンに対するアクセス権を制御します。 たとえば、ユーザーまたはグループに対して、特定のリソース グループのキー コンテナーを管理する権限を付与できます。
 
@@ -212,7 +212,7 @@ ContosoAppRG リソース グループが作成されるサブスクリプショ
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
 * [リソース マネージャー デプロイと従来のデプロイを理解する](../azure-resource-manager/resource-manager-deployment-model.md)
   
-  この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。
+  この記事では、Resource Manager デプロイ モデルとクラシック デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。
 * [Azure PowerShell を使用したロールベースのアクセス制御の管理](../role-based-access-control/role-assignments-powershell.md)
   
   この記事では、Azure PowerShell を使用してロールベースのアクセス制御を管理する方法について説明しています。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 70d2f159c5485009e36aa80dfa8b73f9b3cf4ec1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -69,4 +69,4 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 ユーザー アカウントを選択し、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "グローバル管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合は、グローバル管理者ではありません。
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
+[Azure AD アプリケーション プロキシ コネクタについて](manage-apps/application-proxy-connectors.md)

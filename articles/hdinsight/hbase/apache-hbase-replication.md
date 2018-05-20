@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -52,51 +52,18 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 - 同じリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター。
 - 2 つの異なるリージョンの 2 つの異なる仮想ネットワーク内の 2 つの HBase クラスター (geo レプリケーション)。
 
+この記事では、geo レプリケーション シナリオについて説明します。
+
 環境を設定しやすくするために、複数の [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md)が用意されています。 他の方法で環境を設定する場合は、次の記事を参照してください。
 
 - [HDInsight で Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Azure Virtual Network での HBase クラスターの作成](apache-hbase-provision-vnet.md)
 
-### <a name="set-up-one-virtual-network"></a>1 つの仮想ネットワークを設定する
-
-2 つの HBase クラスターを同じ仮想ネットワーク内に作成するには、次のイメージを選択します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/)にあります。
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-### <a name="set-up-two-virtual-networks-in-the-same-region"></a>同じリージョンに 2 つの仮想ネットワークを設定する
-
-同じリージョンに、ピアリングされた 2 つの仮想ネットワークと 2 つの HBase クラスターを作成するには、次のイメージを選択します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/)にあります。
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-
-
-このシナリオでは、[仮想ネットワークのピアリング](../../virtual-network/virtual-network-peering-overview.md)が必要です。 テンプレートを使用することで、仮想ネットワークのピアリングが有効になります。   
-
-HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用します。 デスティネーション HBase ZooKeeper ノードの静的 IP アドレスを設定する必要があります。
-
-**静的 IP アドレスを構成するには**
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューの **[リソース グループ]** を選択します。
-3. デスティネーション HBase クラスターを持つリソース グループを選択します。 これは、Resource Manager テンプレートを使用して環境を作成するときに指定したリソース グループです。 フィルターを使用して一覧を絞り込むことができます。 2 つの仮想ネットワークを含むリソースの一覧を表示できます。
-4. デスティネーション HBase クラスターを含む仮想ネットワークを選択します。 たとえば、**[xxxx-vnet2]** を選択します。 **nic-zookeepermode-** で始まる名前を持つ 3 つのデバイスがリストに表示されます。 これらのデバイスは、3 つの ZooKeeper VM です。
-5. いずれかの ZooKeeper VM を選択します。
-6. **[IP 構成]** を選択します。
-7. 一覧で **[ipConfig1]** を選択します。
-8. **[静的]** を選択し、実際の IP アドレスをコピーするかメモします。 この IP アドレスは、スクリプト アクションを実行してレプリケーションを有効にするときに必要です。
-
-  ![HDInsight HBase レプリケーションの ZooKeeper の静的 IP アドレス](./media/apache-hbase-replication/hdinsight-hbase-replication-zookeeper-static-ip.png)
-
-9. 手順 6 を繰り返して、他の 2 つの ZooKeeper ノードの静的 IP アドレスを確認します。
-
-クロス仮想ネットワークのシナリオでは、`hdi_enable_replication.sh` スクリプト アクションを呼び出すときに **-ip** スイッチを使用する必要があります。
-
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンに 2 つの仮想ネットワークを設定する
 
-2 つの異なるリージョンに 2 つの仮想ネットワークを作成し、その VNet 間に VPN 接続を作成するには、次のイメージをクリックします。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)に格納されています。
+2 つの異なるリージョンに 2 つの仮想ネットワークを作成し、その VNet 間に VPN 接続を作成するには、次のイメージを選択して作成します。 このテンプレートは、[パブリック BLOB ストレージ]](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)に格納されています。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 テンプレートには、一部の値がハードコーディングされています。それらの値を次に示します。
 
@@ -116,11 +83,6 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 | ゲートウェイ VPN の種類 | RouteBased |
 | ゲートウェイ SKU | Basic |
 | ゲートウェイの IP | vnet1gwip |
-| クラスター名 | &lt;クラスター名のプレフィックス>1 |
-| クラスターのバージョン | 3.6 |
-| クラスターの種類 | hbase |
-| クラスターのワーカー ノードの数 | 2 |
-
 
 **VNet 2**
 
@@ -138,14 +100,176 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 | ゲートウェイ VPN の種類 | RouteBased |
 | ゲートウェイ SKU | Basic |
 | ゲートウェイの IP | vnet1gwip |
-| クラスター名 | &lt;クラスター名のプレフィックス>2 |
-| クラスターのバージョン | 3.6 |
-| クラスターの種類 | hbase |
-| クラスターのワーカー ノードの数 | 2 |
 
-HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用します。 デスティネーション HBase ZooKeeper ノードの静的 IP アドレスを設定する必要があります。 静的 IP を構成するには、この記事の「[同じリージョンに 2 つの仮想ネットワークを設定する](#set-up-two-virtual-networks-in-the-same-region)」を参照してください。
+## <a name="setup-dns"></a>DNS をセットアップする
 
-クロス仮想ネットワークのシナリオでは、`hdi_enable_replication.sh` スクリプト アクションを呼び出すときに **-ip** スイッチを使用する必要があります。
+最後のセクションで、テンプレートは、2 つの仮想ネットワークのそれぞれの中に Ubuntu 仮想マシンを作成します。  このセクションでは、2 つの DNS 仮想マシンに Bind をインストールし、2 つの仮想マシンで DNS の転送を構成します。
+
+Bind をインストールするには、2 つの DNS 仮想マシンのパブリック IP アドレスを見つける必要があります。
+
+1. [Azure Portal](https://portal.azure.com)を開きます。
+2. **[リソース グループ] > <リソース グループ名> [vnet1DNS]** を選択して、DNS 仮想マシンを開きます。  リソース グループ名は、最後の手順で作成する名前です。 既定の DNS 仮想マシン名は、*vnet1DNS* と *vnet2NDS* です。
+3. **[プロパティ]** を選択して、仮想ネットワークのプロパティ ページを開きます。
+4. **[パブリック IP アドレス]** を書き留めます。さらに、**[プライベート IP アドレス]** を確認します。  プライベート IP アドレスは、vnet1DNS では **10.1.0.4**、vnet2DNS では **10.2.0.4** です。  
+
+Bind をインストールするには、次の手順に従います。
+
+1. SSH を使用して、DNS 仮想マシンの__パブリック IP アドレス__にアクセスします。 次の例では、40.68.254.142 の仮想マシンに接続します。
+
+    ```bash
+    ssh sshuser@40.68.254.142
+    ```
+
+    `sshuser` を、DNS 仮想マシンの作成時に指定した SSH ユーザー アカウントに置き換えます。
+
+    > [!NOTE]
+    > `ssh` ユーティリティは、さまざまな方法で取得できます。 Linux、Unix、および macOS では、オペレーティング システムの一部として提供されます。 Windows を使用している場合は、次のオプションのいずれかを検討してください。
+    >
+    > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
+    > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+
+2. Bind をインストールするには、SSH セッションから次のコマンドを使用します。
+
+    ```bash
+    sudo apt-get update -y
+    sudo apt-get install bind9 -y
+    ```
+
+3. 名前解決の要求をオンプレミス DNS サーバーに転送するように Bind を構成するには、`/etc/bind/named.conf.options` ファイルの内容として、次のテキストを使用します。
+
+    ```
+    acl goodclients {
+        10.1.0.0/16; # Replace with the IP address range of the virtual network 1
+        10.2.0.0/16; # Replace with the IP address range of the virtual network 2
+        localhost;
+        localhost;
+    };
+    
+    options {
+        directory "/var/cache/bind";
+        recursion yes;
+        allow-query { goodclients; };
+
+        forwarders {
+            168.63.129.16 #This is the Azure DNS server
+        };
+
+        dnssec-validation auto;
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+    };
+    ```
+    
+    > [!IMPORTANT]
+    > `goodclients` セクションの値を、2 つの仮想ネットワークの IP アドレス範囲に置き換えます。 このセクションは、この DNS サーバーが受け入れる要求の転送元アドレスを定義します。
+
+    このファイルを編集するには、次のコマンドを使用します。
+
+    ```bash
+    sudo nano /etc/bind/named.conf.options
+    ```
+
+    ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
+
+4. SSH セッションでは、次のコマンドを使用します。
+
+    ```bash
+    hostname -f
+    ```
+
+    このコマンドにより、次のテキストのような値が返されます。
+
+        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__です。 この値を保存します。これは後で使用します。
+
+    他の DNS サーバーの DNS サフィックスも見つけておく必要があります。 次の手順で必要になります。
+
+5. 仮想ネットワークでリソースの DNS 名を解決するように Bind を構成するには、`/etc/bind/named.conf.local` ファイルの内容として、次のテキストを使用します。
+
+    ```
+    // Replace the following with the DNS suffix for your virtual network
+    zone "v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net" {
+            type forward;
+            forwarders {10.2.0.4;}; # The Azure recursive resolver
+    };
+    ```
+
+    > [!IMPORTANT]
+    > `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` を、別の仮想ネットワークの DNS サフィックスに置き換えます。 フォワーダー IP は、他の仮想ネットワーク内の DNS サーバーのプライベート IP アドレスです。
+
+    このファイルを編集するには、次のコマンドを使用します。
+
+    ```bash
+    sudo nano /etc/bind/named.conf.local
+    ```
+
+    ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
+
+6. Bind を起動するには、次のコマンドを使用します。
+
+    ```bash
+    sudo service bind9 restart
+    ```
+
+7. Bind が他の仮想ネットワーク内のリソース名を解決できることを確認するには、次のコマンドを使用します。
+
+    ```bash
+    sudo apt install dnsutils
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    ```
+
+    > [!IMPORTANT]
+    > `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` を、他のネットワーク内の DNS 仮想マシンの完全修飾ドメイン名 (FQDN) に置き換えます。
+    >
+    > `10.2.0.4` を、他の仮想ネットワーク内のカスタム DNS サーバーの__内部 IP アドレス__に置き換えます。
+
+    次のテキストのような応答が表示されます。
+
+    ```
+    Server:         10.2.0.4
+    Address:        10.2.0.4#53
+    
+    Non-authoritative answer:
+    Name:   vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
+    Address: 10.2.0.4
+    ```
+
+    ここまでは、DNS サーバーの IP アドレスを指定せずに他のネットワークからの IP アドレスを参照することはできません。
+
+### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>カスタム DNS サーバーを使用するように仮想ネットワークを構成する
+
+Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用するように仮想ネットワークを構成するには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、__[DNS サーバー]__ を選択します。
+
+2. __[カスタム]__ を選択し、カスタム DNS サーバーの__内部 IP アドレス__を入力します。 最後に、__[保存]__ を選択します。
+
+6. vnet1 の DNS サーバー仮想マシンを開き、**[再起動]** をクリックします。  DNS 構成が有効であることを確認するには、仮想ネットワーク内のすべての仮想マシンを再起動する必要があります。
+7. 手順を繰り返して、vnet2 のカスタムの DNS サーバーを構成します。
+
+DNS 構成をテストするには、SSH を使用して 2 つの DNS 仮想マシンに接続し、他の仮想ネットワークの DNS サーバーをそのホスト名を使用して ping します。 うまくいかない場合は、次のコマンドを使用して DNS の状態をチェックします。
+
+```bash
+sudo service bind9 status
+```
+
+## <a name="create-hbase-clusters"></a>HBase クラスターを作成する
+
+2 つの仮想ネットワークのそれぞれに、次の構成の HBase クラスターを作成します。
+
+- **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
+- **クラスターの種類**: HBase
+- **バージョン**: HBase 1.1.2 (HDI 3.6)
+- **場所**: 仮想ネットワークと同じ場所を使用します。  既定では、vnet1 は *[米国西部]*、vnet2 は *[米国東部]* です。
+- **ストレージ**: クラスター用の新しいストレージ アカウントを作成します。
+- **仮想ネットワーク**(ポータルの [詳細設定]): 最後の手順で作成した vnet1 を選択します。
+- **サブネット**: テンプレートで使われる既定の名前は **subnet1** です。
+
+環境が正しく構成されていることを確認するには、2 つのクラスター間でヘッド ノードの FQDN に ping できる必要があります。
 
 ## <a name="load-test-data"></a>テスト データの読み込み
 
@@ -180,7 +304,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 必須の引数:
 
-|Name|[説明]|
+|名前|説明|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -189,13 +313,12 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 省略可能な引数:
 
-|Name|[説明]|
+|名前|説明|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
 |-t, --table-list | レプリケートされるテーブルを指定します。 例: --table-list="table1;table2;table3"。 テーブルを指定しない場合は、すべての既存の HBase テーブルがレプリケートされます。|
 |-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 値は、**hn1** または **hn0** のいずれかです。 通常、**hn0** ヘッド ノードはビジー状態であるため、**hn1** の使用をお勧めします。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
-|-ip | 2 つの仮想ネットワーク間のレプリケーションを有効にする場合は必須です。 この引数は、FQDN 名の代わりにレプリカ クラスターの ZooKeeper ノードの静的 IP アドレスを使用するためのスイッチとして機能します。 レプリケーションを有効にする前に、静的 IP アドレスを構成しておく必要があります。 |
 |-cp, -copydata | レプリケーションが有効になっているテーブルの既存のデータの移行を有効にします。 |
 |-rpm, -replicate-phoenix-meta | Phoenix システム テーブルのレプリケーションを有効にします。 <br><br>*このオプションは慎重に使用してください。* このスクリプトを使用する前に、レプリカ クラスターで Phoenix テーブルを再作成しておくことをお勧めします。 |
 |-h, --help | 使用方法に関する情報を表示します。 |
@@ -266,7 +389,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 - **すべてのテーブルのレプリケーションを無効にする**:
 
         -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
-  or
+  または
 
         --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 

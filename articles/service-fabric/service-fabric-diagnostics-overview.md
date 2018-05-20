@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2018
+ms.date: 04/25/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -33,19 +33,20 @@ ms.lasthandoff: 04/06/2018
 
 Service Fabric は、適切なトレースとテレメトリを使用してアプリケーション コードをインストルメント化するための多くのオプションをサポートしています。 Application Insights (AI) を使用することをお勧めします。 AI と Service Fabric の統合には、Visual Studio と Azure Portal のツール エクスペリエンスだけでなく、Service Fabric 固有のメトリックが含まれているため、すぐに使える包括的なロギング エクスペリエンスが実現します。 AI を使用すると、多くのログが自動的に作成され、収集されますが、アプリケーションにさらにカスタム ログを追加して、診断エクスペリエンスをさらに豊かにすることをお勧めします。 [Application Insights を使用したイベント分析](service-fabric-diagnostics-event-analysis-appinsights.md)に関する記事で、Application Insights と Service Fabric の概要を参照してください。
 
-![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
-
 ## <a name="platform-cluster-monitoring"></a>プラットフォーム (クラスター) の監視
 Service Fabric クラスターの監視は、プラットフォームとすべてのワークロードを想定どおりに実行されていることを確認するために重要です。 Service Fabric の目標の 1 つは、ハードウェア障害に対するアプリケーションの回復力を維持することです。 この目標を実現するには、プラットフォームのシステム サービスの機能を利用します。この機能は、インフラストラクチャの問題を特定し、ワークロードをクラスター内の別のノードにすばやくフェールオーバーします。 しかし、このようなケースで、もしシステム サービス自体に問題があるとしたらどうなるでしょうか。 または、ワークロードの移動でサービス配置のルールに違反したらどうなるでしょうか。 クラスターを監視すると、クラスターで発生しているアクティビティに関する最新の情報を常に把握し、それを問題の診断や修正に効果的に役立てることができます。 お客様が監視したいと考える主な事項には、次のようなものがあります。
 * アプリケーションの配置やクラスター内での作業分散の観点から、Service Fabric が想定どおりに動作しているか。 
 * クラスター上で実行されたユーザー アクションは、想定どおりに承認され、実行されているか。 これは、クラスターのスケーリング時に特に関連します。
 * Service Fabric がデータとクラスター内のサービス間通信を適切に処理しているか。
 
-Service Fabric は、稼動チャネルや、データおよびメッセージング チャネルを通して、すぐに使える包括的なイベント セットを提供します。 Windows では、これらは関連する `logLevelKeywordFilters` セットを備えた単一の ETW プロバイダーの形式で、さまざまなチャネルから選択するのに使用されます。 Linux では、すべてのプラットフォーム イベントが LTTng から提供され、1 つのテーブルに格納されます。ここで、必要に応じてイベントをフィルター処理できます。 
+Service Fabric は、標準で、包括的なイベントのセットを提供します。 これらの [Service Fabric イベント](service-fabric-diagnostics-events.md)には、EventStore API または稼働チャネル (プラットフォームによって公開されたイベント チャネル) を通してアクセスできます。 
+* EventStore - (バージョン 6.2 以降では Windows において利用可能で、この記事の最終更新日時点で Linux への対応はまだ作業中の) EventStore は、一連の API (REST エンドポイントを介して、または、クライアント ライブラリからアクセス可能) を介してこれらのイベントを公開しています。 EventStore に関する詳細については、[「EventStore の概要](service-fabric-diagnostics-eventstore.md)」を参照してください。
+* Service Fabric イベントのチャネル - Windows では、Service Fabric イベントは、稼働およびデータのチャネルとメッセージング チャネルの選択に使用される、一連の関連する `logLevelKeywordFilters` を持つ単一の ETW プロバイダーから提供されます。これが、発信される Service Fabric イベントを必要に応じて取り出してフィルター処理する方法となっています。 Linux では、Service Fabric イベントは LTTng 経由で到着し、1 つの Storage テーブルに格納されます。ここで、必要に応じてイベントをフィルター処理できます。 これらのチャネルには、選別され、構造化されたイベントが含まれ、これを使用してクラスターの状態をより詳細に把握できます。 クラスターの作成時には、既定で診断が有効になります。それにより、Azure Storage テーブルが作成され、後でクエリを実行できるように、そこにこれらのチャネルからのイベントが送信されます。 
 
-これらのチャネルには、選別され、構造化されたイベントが含まれ、これを使用してクラスターの状態をより詳細に把握できます。 クラスターの作成時には、既定で診断が有効になります。それにより、Azure Storage テーブルが作成され、後でクエリを実行できるように、そこにこれらのチャネルからのイベントが送信されます。 クラスターの監視の詳細については、「[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)」でご覧いただけます。
+EventStore は、すばやい分析や、クラスターがどのように動作しているか、そして、物事が想定したとおりに起きているかどうかの概要を把握するために使用することをお勧めします。 クラスターによって生成されたログとイベントを収集するには、通常、[Azure 診断拡張機能](service-fabric-diagnostics-event-aggregation-wad.md)を使用することをお勧めします。 この機能は OMS Log Analytics の Service Fabric 固有のソリューションである Service Fabric Analytics と緊密に統合されています。Service Fabric Analytics は Service Fabric クラスターを監視するためのカスタム ダッシュボードを備えており、クラスターのイベントのクエリを実行し、アラートを設定することができます。 [OMS を使用したイベント分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事で、これに関する詳細をご覧ください。 
 
-クラスターによって生成されたログとイベントを収集するには、通常、[Azure 診断拡張機能](service-fabric-diagnostics-event-aggregation-wad.md)を使用することをお勧めします。 この拡張機能は OMS Log Analytics Service Fabric 固有のソリューションである Service Fabric Analytics と統合されています。Service Fabric Analytics は Service Fabric クラスターを監視するためのカスタム ダッシュボードを備えており、クラスターのイベントにクエリを実行し、アラートを設定することができます。 [OMS を使用したイベント分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事で、これに関する詳細をご覧ください。 
+ クラスターの監視の詳細については、「[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)」でご覧いただけます。
+
 
  ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 

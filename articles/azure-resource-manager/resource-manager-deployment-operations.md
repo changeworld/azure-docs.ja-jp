@@ -1,32 +1,31 @@
 ---
-title: "Azure Resource Manager でのデプロイ操作 | Microsoft Docs"
-description: "Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。"
+title: Azure Resource Manager でのデプロイ操作 | Microsoft Docs
+description: Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。
 services: azure-resource-manager,virtual-machines
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 01/13/2017
+ms.date: 04/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 26c2c333a97abff75f6b4caefb1e351dea826081
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
 
-
 デプロイの操作は、Azure ポータルから確認することができます。 最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。 Azure ポータルには、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるインターフェイスが用意されています。
 
-監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。 このトピックでは、両方のメソッドを示します。 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
+監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。 このトピックでは、両方の方法を説明します。 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 
 ## <a name="portal"></a>ポータル
 デプロイ操作を表示するには、次の手順に従います。
@@ -47,7 +46,7 @@ ms.lasthandoff: 02/09/2018
     ![view operations](./media/resource-manager-deployment-operations/view-operations.png)
    
     このケースでは、ストレージ アカウント、仮想ネットワーク、可用性セットは正しく作成されていることが確認できます。 パブリック IP アドレスはエラーとなり、他のリソースは実行されていません。
-5. デプロイのイベントは、 **[イベント]**を選択して表示できます。
+5. デプロイのイベントは、 **[イベント]** を選択して表示できます。
    
     ![view events](./media/resource-manager-deployment-operations/view-events.png)
 6. デプロイに関するすべてのイベントが表示され、いずれかを選択すると、さらに詳しい情報が表示されます。 関連付け ID にも注目してください。 この値は、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。
@@ -136,21 +135,19 @@ ms.lasthandoff: 02/09/2018
 1. **azure group deployment show** コマンドを使用して、デプロイ全体の状態を取得できます。
 
   ```azurecli
-  azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-  値の 1 つとして **correlationId** が返されます。 この値は、関連するイベントを追跡するために使用されます。また、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも有用である可能性があります。
+1. 値の 1 つとして **correlationId** が返されます。 この値は、関連するイベントを追跡するために使用されます。また、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも有用である可能性があります。
 
   ```azurecli
-  "properties": {
-    "provisioningState": "Failed",
-    "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
+  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-2. デプロイ操作を表示するには、次のコマンドを使用します。
+1. デプロイ操作を表示するには、次のコマンドを使用します。
 
   ```azurecli
-  azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
 ## <a name="rest"></a>REST ()

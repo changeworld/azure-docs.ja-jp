@@ -1,23 +1,23 @@
 ---
-title: "Azure Web アプリのパフォーマンスの監視 |Microsoft Docs"
-description: "Azure Web アプリのアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。"
+title: Azure Web アプリのパフォーマンスの監視 |Microsoft Docs
+description: Azure Web アプリのアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
-ms.service: azure-portal
+ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: e3615280ec902833248d9acc1c9348d68e5c5e82
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9de6ca48db98d7691310199b90bf7414f07547fd
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure Web アプリのパフォーマンスの監視
 [Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
@@ -111,7 +111,7 @@ Application Insights では、アプリへの SDK のインストールによっ
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [実行中のアプリに対してプロファイラーを実行](app-insights-profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
 * [Azure 診断](app-insights-azure-diagnostics.md) が Application Insights に送信されるように設定します。

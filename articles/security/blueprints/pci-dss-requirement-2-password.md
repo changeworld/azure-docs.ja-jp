@@ -3,7 +3,7 @@ title: Azure Payment Processing Blueprint - パスワード要件
 description: PCI DSS 要件 2
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 0df24870-6156-4415-a608-dd385b6ae807
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 8fafc277d7410ab3f8f54b0defee127fd6ec2f4d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: d3ca83294702a138713f31e34b0e94b1ccb87be0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境のパスワード要件 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS 要件 2

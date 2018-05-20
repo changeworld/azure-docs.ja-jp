@@ -138,6 +138,8 @@
         - name: Zeppelin を使用する
           href: ../hdinsight-apache-spark-zeppelin-notebook.md
           maintainContext: true
+        - name: Grafana を使用する
+          href: ./hdinsight-grafana.md
         - name: HDInsight アプリケーションの構築
           items:
             - name: カスタム アプリをインストールする

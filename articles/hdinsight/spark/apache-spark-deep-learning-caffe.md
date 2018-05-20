@@ -11,14 +11,14 @@ ms.assetid: 71dcd1ad-4cad-47ad-8a9d-dcb7fa3c2ff9
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 27ce89f205efa6b8f2d29e034c6e5002065879fc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 95fd9efdcd7f93d8011808af943f52d4db13de8b
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 

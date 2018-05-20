@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric のセキュリティに関するベスト プラクティス | Microsoft Docs"
-description: "この記事は、Azure Service Fabric のセキュリティに関するベスト プラクティスを提供します。"
+title: Azure Service Fabric のセキュリティに関するベスト プラクティス | Microsoft Docs
+description: この記事は、Azure Service Fabric のセキュリティに関するベスト プラクティスを提供します。
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -182,6 +182,6 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
 Azure Service Fabric では、[Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)に接続されるクライアントのために、管理者用とユーザー用の 2 種類のアクセス制御がサポートされています。 クラスターの管理者はアクセス制御を使用して、さまざまなグループのユーザーに対して特定のクラスター操作へのアクセスを制限することができます。 このため、アクセス制御を使えばクラスターのセキュリティを高めることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric [開発環境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)を設定します。
 - [Service Fabric のサポート オプション](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)について学びます。

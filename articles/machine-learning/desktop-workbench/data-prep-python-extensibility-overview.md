@@ -4,19 +4,17 @@ description: このドキュメントでは、Python コードを使用してデ
 services: machine-learning
 author: euangMS
 ms.author: euang
-manager: lanceo
-ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 05/09/2018
+ms.openlocfilehash: 6363d39b2dfbd36ccebff6780e35caf58ca84dda
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-preparations-python-extensions"></a>データ準備の Python 拡張機能
 組み込み機能間の機能性ギャップを埋める方法として、Azure Machine Learning データ準備には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 
@@ -24,14 +22,10 @@ ms.lasthandoff: 04/19/2018
 ## <a name="custom-code-steps"></a>カスタム コード ステップ 
 データ準備には、ユーザーがコードを記述できる次のカスタム ステップがあります。
 
-* ファイル リーダー*
-* ライター*
 * 列の追加
 * 高度なフィルター
 * データ フローの変換
 * パーティションの変換
-
-*これらのステップは現在、Spark 実行でサポートされていません。
 
 ## <a name="code-block-types"></a>コード ブロック タイプ 
 これらのステップごとに、2 つのコード ブロック タイプをサポートします。 まず、そのまま実行される基本の Python 式をサポートします。 次に、Python モジュールをサポートします。このモジュールでは、ユーザーが記述するコードにおいて、既知のシグネチャを使用して特定の関数を呼び出します。
@@ -158,74 +152,6 @@ def newvalue(row):
     row.ColumnA + row.ColumnB  
     row["ColumnA"] + row["ColumnB"]
 ```
-
-## <a name="file-reader"></a>ファイル リーダー 
-### <a name="purpose"></a>目的 
-ファイル リーダー拡張点を使用すると、データ フローへのファイル読み取りのプロセスを完全に制御できます。 システムがコードを呼び出し、プロセス対象のファイルの一覧を渡します。 コードは Pandas データフレームを作成して返す必要があります。 
-
->[!NOTE]
->この拡張点は Spark では機能しません。 
-
-
-### <a name="how-to-use"></a>使用方法 
-この拡張点には、**[Open Data Source]\(データ ソースを開く\)** ウィザードからアクセスします。 最初のページで **[File]\(ファイル\)** を選択し、ファイルの場所を選択します。 **[Choose File Parameters]\(ファイル パラメーターの選択\)** ページで、**[File Type]\(ファイルの種類\)** ドロップダウンリストから **[Custom File (Script)]\(カスタム ファイル (スクリプト)\)** を選択します。 
-
-読み取る必要のあるファイルに関する情報を含む、"df" という名前の Pandas データフレームがコードに与えられます。 複数のファイルを含むディレクトリを開くことを選択した場合、データフレームには複数の行が含まれます。  
-
-このデータフレームには、次の列があります。
-
-- Path: 読み取るファイル。
-- PathHint: ファイルの場所を示します。 値: Local、AzureBlobStorage、および AzureDataLakeStorage。
-- AuthenticationType: ファイルにアクセスするために使用する認証の種類。 値: None、SasToken、および OAuthToken。
-- AuthenticationValue: None または使用するトークン。
-
-### <a name="syntax"></a>構文 
-式 
-
-```python
-    paths = df['Path'].tolist()  
-    df = pd.read_csv(paths[0])
-```
-
-
-モジュール  
-```python
-PathHint = Local  
-def read(df):  
-    paths = df['Path'].tolist()  
-    filedf = pd.read_csv(paths[0])  
-    return filedf  
-```
- 
-
-## <a name="writer"></a>ライター 
-### <a name="purpose"></a>目的 
-ライター拡張点を使用すると、データ フローからのデータ書き込みのプロセスを完全に制御できます。 システムがコードを呼び出し、データフレームを渡します。 コードはそのデータフレームを使用して、指定したとおりにデータを書き込みます。 
-
->[!NOTE]
->ライター拡張点は Spark では機能しません。
-
-
-### <a name="how-to-use"></a>使用方法 
-この拡張点は、データ フローの書き込み (スクリプト) ブロックを使用して追加できます。 トップレベルの **[Transformations]\(変換\)** メニューから使用できます。
-
-### <a name="syntax"></a>構文 
-式
-
-```python
-    df.to_csv('c:\\temp\\output.csv')
-```
-
-モジュール
-
-```python
-def write(df):  
-    df.to_csv('c:\\temp\\output.csv')  
-    return df
-```
- 
- 
-このカスタム書き込みブロックは、一連のステップ実行の途中に入れることができます。 モジュールを使用する場合、書き込み関数はデータフレームを返す必要があり、それが続くステップ実行の入力となります。 
 
 ## <a name="add-column"></a>列の追加 
 ### <a name="purpose"></a>目的

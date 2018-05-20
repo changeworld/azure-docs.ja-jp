@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 07e6e5beb96042c2da82ac8be19e391d6153eabd
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -131,6 +131,7 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 |-----------------|-----------|-------------|
 | runtimeStatus   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | input           | JSON      | インスタンスを初期化するために使用される JSON データ。 |
+| customStatus    | JSON      | カスタム オーケストレーションの状態に使用された JSON データ。 セットされていない場合、このフィールドは`null`です。 |
 | output          | JSON      | インスタンスの JSON の出力。 インスタンスが完了状態でない場合、このフィールドは `null` です。 |
 | createdTime     | 文字列    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
 | lastUpdatedTime | 文字列    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
@@ -180,6 +181,7 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
       }
   ],
   "input": null,
+  "customStatus": { "nextActions": ["A", "B", "C"], "foo": 2 },
   "lastUpdatedTime": "2018-02-28T05:18:54Z",
   "output": [
       "Hello Tokyo!",

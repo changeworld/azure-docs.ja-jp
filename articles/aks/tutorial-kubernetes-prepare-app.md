@@ -3,24 +3,24 @@ title: Kubernetes on Azure のチュートリアル - アプリの準備
 description: AKS チュートリアル - アプリの準備
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8a2c2e53ed04cf00cc02135c5e5f82ded18fc2bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 50c302ddc7bad9cd2de666c1b99d1fbc6d5a62a8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-prepare-application-for-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) 用のアプリケーションの準備
+# <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
-この 8 部構成の最初のチュートリアルでは、複数コンテナー アプリケーションを Kubernetes で使用できるように準備します。 手順は次のとおりです。  
+この 8 部構成の最初のチュートリアルでは、複数コンテナー アプリケーションを Kubernetes で使用できるように準備します。 手順は次のとおりです。
 
 > [!div class="checklist"]
-> * GitHub からアプリケーション ソースを複製する  
+> * GitHub からアプリケーション ソースを複製する
 > * アプリケーション ソースからコンテナー イメージを作成する
 > * ローカル Docker 環境でアプリケーションをテストする
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 Docker コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門][docker-get-started]に関するドキュメントでコンテナーの基礎を参照してください。 
+このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 Docker コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門][docker-get-started]に関するドキュメントでコンテナーの基礎を参照してください。
 
 このチュートリアルを完了するには、Docker 開発環境が必要です。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
@@ -40,7 +40,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 ## <a name="get-application-code"></a>アプリケーションのコードを入手する
 
-このチュートリアルで使うサンプル アプリケーションは、基本的な投票アプリです。 アプリケーションは、フロントエンド Web コンポーネントとバックエンド Redis インスタンスで構成されています。 Web コンポーネントは、カスタム コンテナー イメージにパッケージ化されています。 Redis インスタンスでは、Docker Hub から変更されていないイメージを使用します。  
+このチュートリアルで使うサンプル アプリケーションは、基本的な投票アプリです。 アプリケーションは、フロントエンド Web コンポーネントとバックエンド Redis インスタンスで構成されています。 Web コンポーネントは、カスタム コンテナー イメージにパッケージ化されています。 Redis インスタンスでは、Docker Hub から変更されていないイメージを使用します。
 
 アプリケーションのコピーを開発環境にダウンロードするには、git を使います。
 
@@ -54,7 +54,7 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 cd azure-voting-app-redis
 ```
 
-ディレクトリ内には、アプリケーションのソース コード、事前作成された Docker Compose ファイル、および Kubernetes マニフェスト ファイルがあります。 これらのファイルは、チュートリアル セット全体で使用されます。 
+ディレクトリ内には、アプリケーションのソース コード、事前作成された Docker Compose ファイル、および Kubernetes マニフェスト ファイルがあります。 これらのファイルは、チュートリアル セット全体で使用されます。
 
 ## <a name="create-container-images"></a>コンテナー イメージを作成する
 
@@ -97,7 +97,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-ブラウザーで http://localhost:8080 に移動して、実行中のアプリケーションを確認します。
+実行中のアプリケーションを探すには、http://localhost:8080 を参照します。
 
 ![Azure 上の Kubernetes クラスターの図](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
@@ -124,7 +124,7 @@ docker-compose down
 このチュートリアルでは、アプリケーションをテストし、アプリケーション用のコンテナー イメージを作成しました。 次の手順を完了しました。
 
 > [!div class="checklist"]
-> * GitHub からアプリケーション ソースを複製する  
+> * GitHub からアプリケーション ソースを複製する
 > * アプリケーション ソースからコンテナー イメージを作成する
 > * ローカル Docker 環境でアプリケーションアプリケーションをテストする
 

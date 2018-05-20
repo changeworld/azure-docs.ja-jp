@@ -1,6 +1,6 @@
 ---
 title: ネットワーク セキュリティ グループのトラブルシューティング - PowerShell | Microsoft Docs
-description: Azure Resource Manager のデプロイメント モデルで、Azure PowerShell を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
+description: Azure Resource Manager デプロイ モデルで、Azure PowerShell を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 6beaeb4b7e5c9e393427d575f1cf8bc48599dbd5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Azure PowerShell を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/16/2018
 
 NSG では、仮想マシン (VM) を出入りするトラフィックのタイプを制御できます。 NSG は、Azure Virtual Network (VNet)、ネットワーク インターフェイス (NIC)、または両方のサブネットに適用できます。 NIC に効果的に規則を適用するには、NSG 内にある規則の集合体を NIC と接続しているサブネットに適用します。 場合によっては、これらのNSG 全体の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。  
 
-VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイメント モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワーク](virtual-networks-overview.md)と[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の概要に関する記事を参照してください。
+VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイ モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワーク](virtual-networks-overview.md)と[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の概要に関する記事を参照してください。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング
 次のシナリオでは、一般的な接続の問題の例を示します。
@@ -44,7 +44,7 @@ VM の NIC に適用されると、有効なセキュリティ規則を NSG か�
 ## <a name="detailed-troubleshooting-steps"></a>詳細なトラブルシューティングの手順
 VM の NSG のトラブルシューティングを行うには、次の手順を実行します。
 
-1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
+1. Azure PowerShell セッションを開始し、Azure にログインします。 Azure PowerShell の使用に慣れていない場合は、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」の記事をご覧ください。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 2. 次のコマンドを入力すると、リソース グループ *RG1* の *VM1-NIC1* という名前の NIC に適用されているすべての NSG 規則が返されます。
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

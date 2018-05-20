@@ -4,20 +4,20 @@ description: Application Insight のログを BLOB ストレージにエクス�
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 883beae6-9839-45b5-94f7-7eb0f4534ad5
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 05/09/2018
 ms.author: larryfr
-ms.openlocfilehash: ade497ecbd09d86519bb6233250a0f3f477d213f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 31068376e20b240a440432319e65f4e479163ee0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>HDInsight の Spark を使用した Application Insights テレメトリ ログの分析
 

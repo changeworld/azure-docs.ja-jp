@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 13c6fc8550f6b5bfac6d236a7145039d2622f0ae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3c7fc83e379bcd1ad084d20555d9a82697cb5069
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -43,7 +43,7 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
         * [SQL API](sql-api-introduction.md): 豊富な SQL クエリ機能を備えたスキーマのない JSON データベース エンジン。
         * [MongoDB API](mongodb-introduction.md): Azure Cosmos DB データベースを利用する非常にスケーラブルな*サービスとしての MongoDB*。 MongoDB の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
         * [Cassandra API](cassandra-introduction.md): Azure Cosmos DB データベースを利用するグローバルに分散されたサービスとしての Cassandra。 [Apache Cassandra](https://cassandra.apache.org/) の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
-        * [Gremlin (Graph) API](graph-introduction.md): 水平方向にスケーラブルなフル マネージド グラフ データベース サービス。Open Graph API (Apache Gremlin の [Apache TinkerPop 仕様](http://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
+        * [Gremlin API](graph-introduction.md): 完全に管理された水平方向にスケーラブルなグラフ データベース サービス。Open Graph API (Apache Gremlin の [Apache TinkerPop 仕様](http://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
         * [テーブル API](table-introduction.md): 既存の Azure テーブル ストレージ アプリケーションに高度な機能 (自動インデックス作成、低待機時間の保証、グローバルな分散など) を提供する、キーと値のデータベース サービス。アプリを変更する必要はありません。
         * 他のデータ モデルおよび API も近日対応予定です。
 
@@ -97,7 +97,7 @@ Azure Cosmos DB では、従来のリレーショナル データベースと非
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
 * [Azure Cosmos DB MongoDB API を使ってみる](create-mongodb-nodejs.md)
 * [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
-* [Azure Cosmos DB Graph API を使ってみる](create-graph-dotnet.md)
+* [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]

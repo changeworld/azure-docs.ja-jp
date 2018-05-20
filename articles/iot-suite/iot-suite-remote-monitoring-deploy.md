@@ -1,33 +1,33 @@
 ---
-title: "リモート監視ソリューションのデプロイ - Azure | Microsoft Docs"
-description: "このチュートリアルでは、リモート監視の事前構成済みソリューションを azureiotsuite.com からプロビジョニングする方法について説明します。"
-services: 
+title: リモート監視ソリューションのデプロイ - Azure | Microsoft Docs
+description: このチュートリアルでは、リモート監視ソリューション アクセラレータを azureiotsuite.com からプロビジョニングする方法について説明します。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fa08817c870372488b1e03a2c282add2eaa85478
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: eb78ce91755c43f1c6fedf62a70238df911b940f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>リモート監視の事前構成済みソリューションをデプロイする
+# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルでは、リモート監視の事前構成済みソリューションをプロビジョニングする方法について説明します。 azureiotsuite.com からソリューションをデプロイするとします。CLI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、[コマンドラインからの構成済みソリューションのデプロイ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#deploy-a-pcs-from-the-command-line)に関するページをご覧ください。
+このチュートリアルでは、リモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。 azureiotsuite.com からソリューションをデプロイするとします。CLI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、[コマンドラインからのソリューション アクセラレータのデプロイ](iot-suite-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 構成済みソリューションの構成
-> * 構成済みソリューションのデプロイ
-> * 構成済みソリューションへのサインイン
+> * ソリューション アクセラレータの構成
+> * ソリューション アクセラレータのデプロイ
+> * ソリューション アクセラレータへのサインイン
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,19 +35,17 @@ ms.lasthandoff: 02/23/2018
 
 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-## <a name="deploy-the-preconfigured-solution"></a>構成済みソリューションのデプロイ
+## <a name="deploy-the-solution-accelerator"></a>ソリューション アクセラレータのデプロイ
 
-お使いの Azure サブスクリプションに構成済みのソリューションをデプロイする前に、一部の構成オプションを選択する必要があります。
+Azure サブスクリプションにソリューション アクセラレータをデプロイする前に、構成オプションをいくつか選択する必要があります。
 
-1. Azure アカウントの資格情報を使用して [azureiotsuite.com](https://www.azureiotsuite.com) にログオンし、**[+]** をクリックして新しいソリューションを作成します。
+1. Azure アカウントの資格情報を使用して、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) にログオンします。
 
-    ![新しいソリューションの作成](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
-
-1. **リモート監視プレビュー** タイルで **[選択]** をクリックします。
+1. **[リモート監視]** タイルで **[Try Now]** (今すぐ試す) を選択します。
 
     ![リモート監視の選択](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
-1. **[Create Remote Monitoring soultion]\(リモート監視ソリューションの作成\)** ページでリモート監視の事前構成済みソリューションの **[ソリューション名]** を入力します。
+1. **[Create Remote Monitoring solution] (リモート監視ソリューションの作成)** ページでリモート監視のソリューション アクセラレータの **[ソリューション名]** を入力します。
 
 1. **[Basic]** または **[Standard]** デプロイを選択します。 しくみについて学ぶ、またはデモを実行するためにソリューションをデプロイする場合、**[Basic]** を選択すると費用を最小限に抑えられます。
 
@@ -63,9 +61,9 @@ ms.lasthandoff: 02/23/2018
 
 トラブルシューティングの情報については、GitHub リポジトリの「[What to do when a deployment fails (デプロイが失敗した場合の対処方法)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails)」をご覧ください。
 
-## <a name="sign-in-to-the-preconfigured-solution"></a>構成済みソリューションへのサインイン
+## <a name="sign-in-to-the-solution-accelerator"></a>ソリューション アクセラレータへのサインイン
 
-プロビジョニング プロセスが完了すると、リモート監視の構成済みソリューションにサインインできます。
+プロビジョニング プロセスが完了すると、リモート監視ソリューション アクセラレータにサインインできます。
 
 1. **[プロビジョニングされたソリューション]** ページで、新しいリモート監視ソリューションを選択します。
 
@@ -85,9 +83,9 @@ ms.lasthandoff: 02/23/2018
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * 構成済みソリューションの構成
-> * 構成済みソリューションのデプロイ
-> * 構成済みソリューションへのサインイン
+> * ソリューション アクセラレータの構成
+> * ソリューション アクセラレータのデプロイ
+> * ソリューション アクセラレータへのサインイン
 
 これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](./iot-suite-remote-monitoring-explore.md)することです。
 

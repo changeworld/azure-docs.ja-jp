@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c308b6626f9c37b3928107c4c03e9e0a5da12e6f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 要素
 新規または既存のパブリック IP アドレスを選択するコントロールのグループです。
@@ -54,7 +54,8 @@ ms.lasthandoff: 04/03/2018
   "options": {
     "hideNone": false,
     "hideDomainNameLabel": false,
-    "hideExisting": false
+    "hideExisting": false,
+    "zone": 3
   },
   "visible": true
 }
@@ -65,6 +66,7 @@ ms.lasthandoff: 04/03/2018
 - `options.hideNone` が **true** に設定されている場合、パブリック IP アドレスとして **[なし]** を選択するオプションは表示されません。 既定値は **false** です。
 - `options.hideDomainNameLabel` が **true** に設定されている場合、ドメイン名ラベルのテキスト ボックスは表示されません。 既定値は **false** です。
 - `options.hideExisting` が true である場合、既存のパブリック IP アドレスを選択することはできません。 既定値は **false** です。
+- `zone` の場合、指定されたゾーンのパブリック IP アドレスまたはゾーン回復性のパブリック IP アドレスのみを使用できます。
 
 ## <a name="sample-output"></a>サンプル出力
 ユーザーがパブリック IP アドレスを選択しなかった場合、出力は次のようになります。

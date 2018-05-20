@@ -3,16 +3,16 @@ title: Open Service Broker for Azure (OSBA) を使用して Azure で管理さ�
 description: Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 services: container-service
 author: sozercan
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: a29a3f27f7c9ab41724d400c9eb787e6888bedc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a881b08874a157b0d6781ec3859b05eeaeba6676
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Open Service Broker for Azure (OSBA) を使用して Azure で管理されたサービスと統合する
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/16/2018
 
 * Azure サブスクリプションの共同作成者ロールでサービス プリンシパルを作成するためのアクセス許可。
 
-* 既存の Azure Container Service (AKS) クラスター。 AKS クラスターが必要な場合は、「[AKS クラスターの作成][create-aks-cluster]」クイックスタートに従ってください。
+* 既存の Azure Kubernetes Service (AKS) クラスター。 AKS クラスターが必要な場合は、「[AKS クラスターの作成][create-aks-cluster]」クイックスタートに従ってください。
 
 ## <a name="install-service-catalog"></a>サービス カタログをインストールする
 
@@ -182,7 +182,7 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Container Service (AKS) クラスターにサービス カタログをデプロイしました。 Open Service Broker for Azure を使って、Azure で管理されたサービス (この例では Azure Database for MySQL) を使う WordPress のインストールをデプロイしました。
+この記事では、Azure Kubernetes Service (AKS) クラスターにサービス カタログをデプロイしました。 Open Service Broker for Azure を使って、Azure で管理されたサービス (この例では Azure Database for MySQL) を使う WordPress のインストールをデプロイしました。
 
 他の更新された OSBA ベースの Helm チャートにアクセスするには、[Azure/helm-charts][helm-charts] リポジトリを参照してください。 OSBA で動作する独自のチャートの作成に関心がある場合は、「[Creating a New Chart][helm-create-new-chart]」(新しいチャートの作成) をご覧ください。
 

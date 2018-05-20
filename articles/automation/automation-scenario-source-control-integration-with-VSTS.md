@@ -7,13 +7,14 @@ author: eamonoreilly
 ms.author: eamono
 keywords: azure powershell, VSTS, ソース管理, 自動化
 ms.service: automation
+ms.component: process-automation
 ms.topic: article
 ms.date: 03/19/2017
-ms.openlocfilehash: a60143db03e5f89685a25f26789003de30d91f4c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: edd9174a9141c4db36a1b25d5f1147f9c7b2e2c2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation のシナリオ - Automation ソース管理と Visual Studio Team Services の統合
 

@@ -1,11 +1,11 @@
 ---
 title: 264 Multiple Bitrate 4K Audio 5.1 | Microsoft Docs
-description: "このトピックでは、**264 Multiple Bitrate 4K Audio 5.1** タスク プリセットの概要を説明します。"
+description: このトピックでは、**264 Multiple Bitrate 4K Audio 5.1** タスク プリセットの概要を説明します。
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c8e0bd6a-86ef-481f-83fa-453bdb042df8
 ms.service: media-services
 ms.workload: media
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 10e5c41be42b73e3e1458adac9642547c182530b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fafaa24bece577952ec6c70c3f6bbd4d8ee5d7dd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
 `Media Encoder Standard` は、エンコード ジョブの作成時に使用できる一連のエンコード プリセットを定義します。 `preset name`を使用して、メディア ファイルをエンコードする形式を指定することも、 (UTF-8 または UTF-16 エンコードを使用して) 独自の JSON または XML ベースのプリセットを作成することもできます。 その後、カスタム プリセットをエンコーダーに渡します。 この `Media Encoder Standard` エンコーダーでサポートされているすべてのプリセット名の一覧については、[Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関する記事を参照してください。  
   
- このトピックでは、`H264 Multiple Bitrate 4K Audio 5.1` を XML 形式と JSON 形式で示します。  
+ このトピックでは、XML 形式と JSON 形式の `H264 Multiple Bitrate 4K Audio 5.1` を示します。  
   
  このプリセットにより、GOP 単位でアラインメントされた 20,000 kbps から 1,000 kbps までの一連の MP4 ファイル 12 個と、AAC 5.1 オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
+>  4K エンコードでは Premium という予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
   
 > [!NOTE]
 >  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 たとえば、1920 x 1080、1280 x 720、1080 x 576、640 x 360 のようにします。 1280 x 720、720 x 480、640 x 360 などの縦横比を組み合わせて使用しないでください。  

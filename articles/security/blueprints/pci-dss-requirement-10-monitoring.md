@@ -3,7 +3,7 @@ title: Azure Payment Processing Blueprint - 監視要件
 description: PCI DSS 要件 10
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 293a1673-54bc-478c-9400-231074004eee
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: d3d26d31c592c34d1e51c3e2c2d6501edefa8dce
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>PCI DSS に準拠する環境の監視要件 
 ## <a name="pci-dss-requirement-10"></a>PCI DSS 要件 10

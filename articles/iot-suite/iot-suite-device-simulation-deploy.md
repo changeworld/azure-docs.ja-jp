@@ -1,6 +1,6 @@
 ---
-title: "デバイス シミュレーション ソリューションのデプロイ - Azure | Microsoft Docs"
-description: "このチュートリアルでは、azureiotsuite.com からデバイス シミュレーション ソリューションをプロビジョニングする方法について説明します。"
+title: デバイス シミュレーション ソリューションのデプロイ - Azure | Microsoft Docs
+description: このチュートリアルでは、azureiotsuite.com からデバイス シミュレーション ソリューションをプロビジョニングする方法について説明します。
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: da9fb95ed5d3387c98c3274a53769d3f5f945371
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 52890c51b06777a2d74fcf143bee4e5e8919ba75
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>Azure IoT デバイス シミュレーション ソリューションをデプロイする
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/20/2017
 
     ![デバイス シミュレーションの選択](media/iot-suite-device-simulation-deploy/select.png)
 
-1. **[Create Device simulation solution]\(デバイス シミュレーション ソリューションの作成\)** ページで、デバイス シミュレーション ソリューションの**ソリューション名**を入力します。
+1. **[Create Device simulation solution (デバイス シミュレーション ソリューションの作成)]** ページで、デバイス シミュレーション ソリューションの**ソリューション名**を入力します。
 
 1. ソリューションのプロビジョニングに使用する**サブスクリプション**と**リージョン**を選択します。
 

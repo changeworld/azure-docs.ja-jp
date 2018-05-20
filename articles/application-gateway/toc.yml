@@ -7,17 +7,17 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: Web トラフィックを転送する - ポータル
+    - name: Web トラフィックを管理する - ポータル
       href: quick-create-portal.md
-    - name: Web トラフィックを転送する - PowerShell
+    - name: Web トラフィックを管理する - PowerShell
       href: quick-create-powershell.md
-    - name: Web トラフィックを転送する - Azure CLI
+    - name: Web トラフィックを管理する - Azure CLI
       href: quick-create-cli.md
 - name: チュートリアル
   items:
     - name: Web トラフィックを管理する
       href: tutorial-manage-web-traffic-cli.md
-    - name: Web トラフィックを制限する
+    - name: Web アプリケーション ファイアウォールを有効にする
       href: tutorial-restrict-web-traffic-cli.md
     - name: SSL でセキュリティ保護する
       href: tutorial-ssl-cli.md
@@ -35,18 +35,23 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: SSL 終了
+      href: ssl-overview.md
+    - name: SSL ポリシーの概要
+      href: application-gateway-ssl-policy-overview.md
     - name: Web アプリケーション ファイアウォール
       href: waf-overview.md
     - name: URL ルーティング
       href: url-route-overview.md
     - name: 複数サイトのホスティング
       href: multiple-site-overview.md
-    - name: SSL 終了
-      href: ssl-overview.md
-    - name: URL リダイレクト
+    - name: リダイレクトのサポート
       href: redirect-overview.md
+    - name: マルチテナントのサポート
     - name: 正常性の監視
       href: application-gateway-probe-overview.md
+    - name: WebSocket のサポート
+      href: application-gateway-websocket.md
 - name: ハウツー ガイド
   items:
     - name: アプリケーション ゲートウェイの作成
@@ -55,10 +60,20 @@
           href: create-vmss-template.md
         - name: Web アプリ - PowerShell
           href: create-web-app.md
-    - name: SSL 終了を有効にする - ポータル
+        - name: 内部ロード バランサーを構成する
+          href: application-gateway-ilb.md
+    - name: SSL 終了を構成する - ポータル
       href: create-ssl-portal.md
     - name: 複数のサイトをホストする - ポータル
       href: create-multiple-sites-portal.md
+    - name: WAF ルールをカスタマイズする
+      items:
+        - name: Azure ポータル
+          href: application-gateway-customize-waf-rules-portal.md
+        - name: Azure PowerShell
+          href: application-gateway-customize-waf-rules-powershell.md
+        - name: Azure CLI
+          href: application-gateway-customize-waf-rules-cli.md
     - name: 外部トラフィックをリダイレクトする
       items:
         - name: Azure PowerShell
@@ -111,6 +126,8 @@
           href: application-gateway-diagnostics.md
 - name: リファレンス
   items:
+    - name: CRS ルール
+      href: application-gateway-crs-rulegroups-rules.md
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

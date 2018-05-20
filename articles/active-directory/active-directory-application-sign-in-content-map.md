@@ -1,22 +1,23 @@
 ---
-title: "アプリケーションへのサインインに関する問題\""
-description: "アプリケーションへのサインインに関する問題\""
+title: アプリケーションへのサインインに関する問題"
+description: アプリケーションへのサインインに関する問題"
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9b342caf79802dfdc2b90306baf002dff41547bd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2d5b056af88f1260ac96187717fa1b946d783c3b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-when-signing-in-to-applications"></a>アプリケーションへのサインインに関する問題
 

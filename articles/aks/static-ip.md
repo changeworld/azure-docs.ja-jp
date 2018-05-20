@@ -1,23 +1,23 @@
 ---
-title: "Azure Container Service (AKS) ロード バランサーで静的 IP アドレスを使用する"
-description: "Azure Container Service (AKS) ロード バランサーで静的 IP アドレスを使用します。"
+title: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
+description: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用します。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 945132dd5f7e51f05ceda89a9cb16315aabbda8a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: c250ef3520079f58eea2362212d861fdb134e1af
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="use-a-static-ip-address-with-the-azure-container-service-aks-load-balancer"></a>Azure Container Service (AKS) ロード バランサーで静的 IP アドレスを使用する
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
 
-Azure Container Service (AKS) ロード バランサーが再作成される場合や、LoadBalancer 型の Kubernetes サービスが再作成される場合などは、Kubernetes サービスのパブリック IP アドレスが変更されることがあります。 このドキュメントでは、Kubernetes サービスの静的 IP アドレスの構成について詳しく説明します。
+Azure Kubernetes Service (AKS) ロード バランサーが再作成される場合や、LoadBalancer 型の Kubernetes サービスが再作成される場合などは、Kubernetes サービスのパブリック IP アドレスが変更されることがあります。 このドキュメントでは、Kubernetes サービスの静的 IP アドレスの構成について詳しく説明します。
 
 ## <a name="create-static-ip-address"></a>静的 IP アドレスを作成する
 
@@ -59,9 +59,11 @@ IP アドレスを書き留めておきます。
 
  必要であれば、アドレスは [az network public-ip list][az-network-public-ip-list] コマンドを使用して取得することができます。
 
-```console
-$ az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+```azurecli-interactive
+az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+```
 
+```console
 40.121.183.52
 ```
 
@@ -87,9 +89,11 @@ spec:
 
 静的 IP アドレスが作成されていないか、間違ったリソース グループに作成された場合、サービスの作成は失敗します。 トラブルシューティングを行うには、[kubectl describe][kubectl-describe] コマンドでサービス作成イベントを返します。
 
-```console
-$ kubectl describe service azure-vote-front
+```azurecli-interactive
+kubectl describe service azure-vote-front
+```
 
+```console
 Name:                     azure-vote-front
 Namespace:                default
 Labels:                   <none>
@@ -112,7 +116,7 @@ Events:
 ```
 
 <!-- LINKS - External -->
-[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/ 
+[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

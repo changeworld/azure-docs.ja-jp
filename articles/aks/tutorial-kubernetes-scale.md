@@ -3,19 +3,19 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: AKS チュートリアル - アプリケーションのスケーリング
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションのスケーリング
+# <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
 ここまでチュートリアルに従って進めてきた場合は、AKS で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。
 

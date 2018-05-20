@@ -11,6 +11,7 @@
 ## [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
 
 # 概念
+## [サービス プリンシパルによる自動化](analysis-services-service-principal.md)
 ## [サポートされるデータ ソース](analysis-services-datasource.md)
 ## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)
 ## [サーバーへの接続](analysis-services-connect.md)

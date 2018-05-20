@@ -1,25 +1,27 @@
 ---
-title: "Node.js を使用した Azure Active Directory v2.0 Web API のセキュリティ保護 | Microsoft Docs"
-description: "個人の Microsoft アカウントと職場/学校アカウントの両方からのトークンを受け付ける Node.js Web API を構築する方法を説明します。"
+title: Node.js を使用した Azure Active Directory v2.0 Web API のセキュリティ保護 | Microsoft Docs
+description: 個人の Microsoft アカウントと職場/学校アカウントの両方からのトークンを受け付ける Node.js Web API を構築する方法を説明します。
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19ad25c7b08ff073097cacf3be359772ca0a327f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Node.js を使用した Web API のセキュリティ保護
 > [!NOTE]
@@ -31,7 +33,7 @@ Azure Active Directory (Azure AD) v2.0 エンドポイントを使用する場�
 
 *Passport* は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップできます。 Passport では、包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。 Microsoft は Azure AD 用の認証手法を開発しました。 この記事では、モジュールをインストールした後に Azure AD `passport-azure-ad` プラグインを追加する方法について説明します。
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 このチュートリアルのコードは、 [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs)で管理されています。 チュートリアルを実行するには、[アプリのスケルトン (.zip ファイル) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip)したり、次のようにスケルトンを複製したりすることができます。
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
@@ -830,7 +832,7 @@ curl を再度使用して、エンドポイントに対して OAuth 2.0 保護�
 
 OAuth 2.0 互換のクライアントを使用することなく、このサーバーを使用して最大限のことを実現できました。 そのためには、追加のチュートリアルを確認する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 参考のため、完成済みサンプル (構成値を除く) が [.zip ファイル](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip)で提供されています。 GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```

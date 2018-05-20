@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory v2.0 のスコープ、アクセス許可、および同意 | Microsoft Docs"
-description: "スコープ、アクセス許可、同意など、Azure AD v2.0 エンドポイントでの承認の説明。"
+title: Azure Active Directory v2.0 のスコープ、アクセス許可、および同意 | Microsoft Docs
+description: スコープ、アクセス許可、同意など、Azure AD v2.0 エンドポイントでの承認の説明。
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f001751c9401b88d9bfaf35444882d3d5ccbfef3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのスコープ、アクセス許可、および同意
 Azure Active Directory (Azure AD) と統合されるアプリでは、アプリがどのようにデータにアクセスできるかをユーザーが制御できるようにする承認モデルが使用されます。 この承認モデルの v2.0 実装が更新され、アプリが Azure AD とやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
@@ -199,6 +201,6 @@ Content-Type: application/json
 }
 ```
 
-リソースへの HTTP 要求では、取得したアクセス トークンを使用できます。 アクセス トークンはリソースに対して、特定のタスクを実行する適切なアクセス許可がアプリにあることを確実に示すことができます。  
+リソースへの HTTP 要求では、取得したアクセス トークンを使用できます。 アクセス トークンはリソースに対して、特定のタスクを実行する適切なアクセス許可がアプリにあることを確実に示すことができます。 
 
 OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細については、[v2.0 エンドポイント プロトコルのリファレンス](active-directory-v2-protocols.md)を参照してください。
