@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Wdesk の統合 | Microsoft Docs"
-description: "Azure Active Directory と Wdesk の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Wdesk の統合 | Microsoft Docs'
+description: Azure Active Directory と Wdesk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 9338c8b8ef740885562ea3f2f1ac316b2a0783fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c55b9c32ccf6712da69c869a6f44c71e1c209627
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>チュートリアル: Azure Active Directory と Wdesk の統合
 
@@ -29,7 +29,7 @@ Wdesk と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Wdesk にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、 「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、 「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Wdesk の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Wdesk**」と入力します。
 
@@ -86,11 +86,11 @@ Azure AD への Wdesk の統合を構成するには、ギャラリーから管�
 
 Wdesk で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Wdesk テスト ユーザーの作成](#creating-a-wdesk-test-user)** - Wdesk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,23 +100,23 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **Wdesk** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_samlbase.png)
 
 3. **[Wdesk のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>` のパターンを使用して URL を入力します。
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_url1.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>` のパターンを使用して URL を入力します。
      
@@ -125,31 +125,31 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
   
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_general_400.png)
     
 7. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Wdesk にログインします。
 
 8. 左下の **[Admin]\(管理者\)** をクリックし、**[Account Admin]\(アカウント管理者\)** を選びます。
  
-     ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 9. Wdesk 管理ツールで、**[Security]\(セキュリティ\)** に移動した後、**[SAML]** > **[SAML Settings]\(SAML の設定\)** の順に移動します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
 10. **[General Settings]\(一般設定\)** で、**[Enable SAML Single Sign On]\(SAML のシングル サインオンを有効にする\)** をオンにします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
 11. **[Service Provider Details]\(サービス プロバイダーの詳細\)** で、以下の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. **[Login URL]\(ログイン URL\)** をコピーし、Azure Portal の **[サインオン URL]** ボックスに貼り付けます。
+      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** をコピーし、Azure Portal の **[サインオン URL]** ボックスに貼り付けます。
    
       b. **[Metadata Url]\(メタデータ URL\)** をコピーし、Azure Portal の **[識別子]** ボックスに貼り付けます。
        
@@ -159,14 +159,14 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
 12. **[Configure IdP Settings]\(IdP の設定の構成\)** をクリックして、**[Edit IdP Settings]\(IdP の設定の編集\)** ダイアログを開きます。 **[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal から保存した **Metadata.xml** ファイルを選択して、アップロードします。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-13. **[変更を保存]**をクリックします。
+13. **[変更を保存]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -191,7 +191,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-wdesk-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -208,7 +208,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
 1. セキュリティ管理者として Wdesk にログインします。
 2. **[Admin]\(管理者\)** > **[Account Admin]\(アカウント管理者\)** の順に移動します。
 
-     ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+     ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
 3. **[People]\(ユーザー\)** の **[Members]\(メンバー\)** をクリックします。
 
@@ -224,7 +224,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
   
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-wdesk-tutorial/createuser4.png)
  
-    a. **[E-mail]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[E-mail]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
 
     b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
@@ -248,7 +248,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
 
 2. アプリケーションの一覧で **[Wdesk]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-wdesk-tutorial/tutorial_wdesk_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -275,7 +275,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

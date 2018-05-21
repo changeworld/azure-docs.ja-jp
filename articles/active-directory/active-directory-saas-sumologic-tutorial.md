@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SumoLogic の統合 | Microsoft Docs"
-description: "Azure Active Directory と SumoLogic の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SumoLogic の統合 | Microsoft Docs'
+description: Azure Active Directory と SumoLogic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b737ce50c1b52c771af275f5722bfd92b2f1491
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 79db92a5ae9de6bb8f2d425c692f4d3e04ee1d3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>チュートリアル: Azure Active Directory と SumoLogic の統合
 
@@ -29,7 +29,7 @@ SumoLogic と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に SumoLogic にサインオン (シングル サインオン) できるように、設定が可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への SumoLogic の統合を構成するには、ギャラリーから
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**SumoLogic**」と入力します。
 
@@ -86,11 +86,11 @@ SumoLogic で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユ�
 
 SumoLogic で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[SumoLogic テスト ユーザーの作成](#creating-a-sumologic-test-user)** - SumoLogic で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,19 +100,19 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **SumoLogic** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_samlbase.png)
 
 3. **[SumoLogic のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenantname>.SumoLogic.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenantname>.SumoLogic.com` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<tenantname>.us2.sumologic.com` |
@@ -126,15 +126,15 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sumologic-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sumologic-tutorial/tutorial_general_400.png)
 
-6. **[SumoLogic 構成]** セクションで、**[SumoLogic の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML Single シングル サインオン サービス URL** をコピーします。
+6. **[SumoLogic 構成]** セクションで、**[SumoLogic の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、SumoLogic 企業サイトに管理者としてログインします。
 
@@ -142,7 +142,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
    
     ![Manage](./media/active-directory-saas-sumologic-tutorial/ic778556.png "Manage")
 
-9. **[SAML]**をクリックします。
+9. **[SAML]** をクリックします。
    
     ![グローバル セキュリティ設定](./media/active-directory-saas-sumologic-tutorial/ic778557.png "グローバル セキュリティ設定")
 
@@ -154,9 +154,9 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
    
     ![Configure SAML 2.0](./media/active-directory-saas-sumologic-tutorial/ic778559.png "Configure SAML 2.0")
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。 
 
-    b. **[Debug Mode]**を選択します。
+    b. **[Debug Mode]** を選択します。
 
     c. **[発行者]** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
@@ -164,14 +164,14 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
 
     e. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Email Attribute]** として、**[Use SAML subject]** を選択します。  
+    f. **[Email Attribute]** として、**[Use SAML subject]** を選択します。  
 
-    g. **[SP initiated Login Configuration]**を選択します。
+    g. **[SP initiated Login Configuration]** を選択します。
 
     h. **[Login Path]** テキスト ボックスに、「**Azure**」と入力し、**[保存]**.をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -197,7 +197,7 @@ SumoLogic で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sumologic-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -219,7 +219,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
    
     ![ユーザー](./media/active-directory-saas-sumologic-tutorial/ic778561.png "Users")
 
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
    
     ![ユーザー](./media/active-directory-saas-sumologic-tutorial/ic778562.png "Users")
 
@@ -227,7 +227,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
    
     ![New User](./media/active-directory-saas-sumologic-tutorial/ic778563.png "New User") 
  
-    a. プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]\(名\)**、**[Last Name]\(姓\)**、および **[Email]\(電子メール\)** ボックスに入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]\(名\)**、**[Last Name]\(姓\)**、および **[Email]\(電子メール\)** ボックスに入力します。
   
     b. ロールを選択します。
   
@@ -253,7 +253,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
 
 2. アプリケーションの一覧で **[SumoLogic]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -278,7 +278,7 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

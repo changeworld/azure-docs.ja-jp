@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Sequr の統合 | Microsoft Docs"
-description: "Azure Active Directory と Sequr の間にシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Sequr の統合 | Microsoft Docs'
+description: Azure Active Directory と Sequr の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a2984bc2c77e9d92d4236b01c21912c27e167f9
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f3e245f609d96cc247f10ef3c184b7fe1de53756
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル: Azure Active Directory と Sequr の統合
 
@@ -30,7 +30,7 @@ Sequr と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Sequr に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -114,7 +114,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![[Sequr のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-sequr-tutorial/tutorial_sequr_url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://login.sequr.io`」を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://login.sequr.io`」を入力します。
 
     b. **[リレー状態]** テキストボックスに、この値を取得します。これについてはチュートリアルの後半で説明しています。
      
@@ -126,7 +126,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-sequr-tutorial/tutorial_general_400.png)
     
-7. **[Sequr Configuration]**\(Sequr 構成\) セクションで、**[Configure Sequr]**\(Sequr を構成する\) をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+7. **[Sequr Configuration]** \(Sequr 構成\) セクションで、**[Configure Sequr]** \(Sequr を構成する\) をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![Sequr 構成](./media/active-directory-saas-sequr-tutorial/tutorial_sequr_configure.png)
 
@@ -136,7 +136,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![Sequr 構成](./media/active-directory-saas-sequr-tutorial/configure1.png)
 
-10. **[シングル サインオン]** セクションまで下方向にスクロールして、**[管理]**をクリックします。
+10. **[シングル サインオン]** セクションまで下方向にスクロールして、**[管理]** をクリックします。
 
     ![Sequr 構成](./media/active-directory-saas-sequr-tutorial/configure2.png)
 
@@ -144,7 +144,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 
     ![Sequr 構成](./media/active-directory-saas-sequr-tutorial/configure3.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を貼り付けます。
 
     b. Azure Portal からダウンロードした**証明書**ファイルをドラッグ アンド ドロップするか、証明書のコンテンツを手動で入力します。
 
@@ -231,7 +231,7 @@ Sequr で Azure AD のシングル サインオンを構成してテストする
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Fuze の統合 | Microsoft ドキュメント"
-description: "Azure Active Directory と Fuze の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Fuze の統合 | Microsoft ドキュメント'
+description: Azure Active Directory と Fuze の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 436fa7d8532d55d3a285917b278fd0adeab7fd7c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 18379b26a52551c95ad8a8a5661f0adb76aa9497
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル: Azure Active Directory と Fuze の統合
 
@@ -29,7 +29,7 @@ Fuze と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Fuze にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,17 +61,17 @@ Azure AD への Fuze の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Fuze を追加するには、次の手順に従います。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Fuze**」と入力します。
 
@@ -95,7 +95,7 @@ Fuze で Azure AD のシングル サインオンを構成してテストする�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Fuze テスト ユーザーの作成](#creating-a-fuze-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Fuze で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,25 +105,25 @@ Fuze で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure 管理ポータルの **Fuze** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_01.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_01.png)
 
 3. **[Fuze のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_020.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_020.png)
     
     **[サインオン URL]** テキストボックスに、サインオン URL `https://www.thinkingphones.com/jetspeed/portal/` を入力します。
 
 4.  **[保存]** ボタンをクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-fuze-tutorial/tutorial_general_400.png)
 
 5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに xml ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
 
 6. **Fuze**側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Fuze サポート チーム](https://www.fuze.com/support)に送信する必要があります。 両方の側で SAML SSO 接続を正しく設定するためにサポート チームがこれを設定します。
 
@@ -151,7 +151,7 @@ Fuze で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fuze-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -178,7 +178,7 @@ Fuze アプリケーションは、ユーザーのプロビジョニング時の
 
 2. アプリケーションの一覧で **[Fuze]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_50.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_50.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -205,7 +205,7 @@ Fuze アプリケーションは、ユーザーのプロビジョニング時の
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

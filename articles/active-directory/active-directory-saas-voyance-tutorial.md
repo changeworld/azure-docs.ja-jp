@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Voyance の統合 | Microsoft Docs"
-description: "Azure Active Directory と Voyance の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Voyance の統合 | Microsoft Docs'
+description: Azure Active Directory と Voyance の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ea3f8ff903c051ac2147408092e6f35421ed4011
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d0de0ee35805a073f08dbe1b2cab91e9342fdeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>チュートリアル: Azure Active Directory と Voyance の統合
 
@@ -30,7 +30,7 @@ Voyance と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Voyance に自動サインオン (シングル サインオン) できるようになります。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
     ![IDP の場合の [Voyance のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_url1.png)
 
-    a. **[識別子]** ボックスに、`https://<companyname>.nyansa.com` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.nyansa.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.nyansa.com/saml/create/` のパターンを使用して URL を入力します。
 
@@ -155,7 +155,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
     ![アプリ側でのシングル サインオンの構成: SAML V2](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_005.png)
     
-    a. **[Enabled]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enabled]** を選択します。
     
     b. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[IdP Login URL]\(IdP ログイン URL\)** ボックスに貼り付けます。
 
@@ -164,7 +164,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
     d. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -191,7 +191,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
  
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-voyance-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -218,7 +218,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Voyance]**を選択します。
+2. アプリケーションの一覧で **[Voyance]** を選択します。
 
     ![アプリケーションの一覧の Voyance リンク](./media/active-directory-saas-voyance-tutorial/tutorial_voyance_app.png) 
 
@@ -245,7 +245,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

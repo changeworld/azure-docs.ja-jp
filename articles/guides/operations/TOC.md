@@ -91,7 +91,7 @@
 ### [Azure Portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure PowerShell を使用した仮想ネットワークの作成](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure CLI を使用した仮想ネットワークの作成](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../../virtual-network/security-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### 仮想ネットワークのチュートリアル
 #### [VM の負荷分散](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [仮想ネットワークへのコンピューターの接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

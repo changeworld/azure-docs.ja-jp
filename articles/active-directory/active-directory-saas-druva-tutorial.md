@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Druva の統合 | Microsoft Docs"
-description: "Azure Active Directory と Druva の間にシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Druva の統合 | Microsoft Docs'
+description: Azure Active Directory と Druva の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 5be9f384d9e8c0871d26ccb5d35a49e9387ad753
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 43b09ebaac70cceb5fdee8589ef70bd9531574dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>チュートリアル: Azure Active Directory と Druva の統合
 
@@ -30,7 +30,7 @@ Druva と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Druva にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,13 +106,13 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
 3. **[Druva のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
 
     **[識別子]** ボックスに、文字列値 `druva-cloud`を入力します。
     
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-druva-tutorial/tutorial_druva_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_druva_url1.png)
     
     **[サインオン URL]** テキストボックスに、URL として「`https://cloud.druva.com/home`」と入力します。
 
@@ -122,7 +122,7 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
 6. Druva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-druva-tutorial/tutorial_druva_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_druva_attribute.png)
 
 7. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
@@ -130,25 +130,25 @@ Druva で Azure AD のシングル サインオンを構成してテストする
     | ------------------- | -------------------- |
     | insync\_auth\_token |トークン生成値を入力します |
     
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-druva-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_attribute_04.png)
     
-    ![Configure Single Sign-On](./media/active-directory-saas-druva-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。 トークン生成値については後で説明します。
     
-    d. **[OK]**をクリックします。    
+    d. **[OK]** をクリックします。    
 
 8. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-druva-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_general_400.png)
 
 9. **[Druva 構成]** セクションで、**[Druva の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-druva-tutorial/tutorial_druva_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-druva-tutorial/tutorial_druva_configure.png) 
 
 10. 別の Web ブラウザー ウィンドウで、Druva 企業サイトに管理者としてログインします。
 
@@ -160,7 +160,7 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
     ![Single Sign-On Settings](./media/active-directory-saas-druva-tutorial/ic795092.png "Single Sign-On Settings")
     
-    a. **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
         
     b. **[ID Provider Logout URL]\(ID プロバイダー ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
         
@@ -176,12 +176,12 @@ Druva で Azure AD のシングル サインオンを構成してテストする
 
     ![SSO Token](./media/active-directory-saas-druva-tutorial/ic795094.png "SSO Token")
     
-    a. **[Copy]\(コピー\)** をクリックし、Azure Portal の **[Add Attribute]\(属性の追加\)** セクションの **[Value]\(値\)** ボックスにコピーした値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Copy]\(コピー\)** をクリックし、Azure Portal の **[Add Attribute]\(属性の追加\)** セクションの **[Value]\(値\)** ボックスにコピーした値を貼り付けます。
     
-    b. **[閉じる]**をクリックします。
+    b. **[閉じる]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
  
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -228,7 +228,7 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
    
    ![Manage Users](./media/active-directory-saas-druva-tutorial/ic795097.png "Manage Users")
 
-3. **[Create New]**をクリックします。
+3. **[Create New]** をクリックします。
    
    ![Manage Users](./media/active-directory-saas-druva-tutorial/ic795098.png "Manage Users")
 
@@ -236,11 +236,11 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
    
    ![Create NewUser](./media/active-directory-saas-druva-tutorial/ic795099.png "Create NewUser")
    
-   a. **[Email address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
    
    b. **[Name]\(名前\)** ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
    
-   c. **[Create User]**をクリックします。
+   c. **[Create User]** をクリックします。
 
 >[!NOTE]
 >Druva から提供されている他の Druva ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
@@ -257,7 +257,7 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Druva]**を選択します。
+2. アプリケーションの一覧で **[Druva]** を選択します。
 
     ![アプリケーションの一覧の Druva のリンク](./media/active-directory-saas-druva-tutorial/tutorial_druva_app.png)  
 
@@ -285,7 +285,7 @@ Azure AD ユーザーが Druva にログインできるようにするには、�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

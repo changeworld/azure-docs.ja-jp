@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と RFPIO の統合 | Microsoft Docs"
-description: "Azure Active Directory と RFPIO の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と RFPIO の統合 | Microsoft Docs'
+description: Azure Active Directory と RFPIO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 57bb448f1bb858d15a7ecaad5a9ba797f5d7d85e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 915b6f9c96bc8dbab54e770340acf795df92a3fb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
 
@@ -29,7 +29,7 @@ RFPIO と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に RFPIO にサインオン (シングル サインオン) できるようにすることが可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への RFPIO の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選択します。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**RFPIO**」と入力します。
 
@@ -100,19 +100,19 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **RFPIO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_samlbase.png)
 
 3. **[RFPIO のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url.png)
 
-    a. **[識別子]** テキストボックスに、URL として「`https://www.rfpio.com`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、URL として「`https://www.rfpio.com`」と入力します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url1.png)
 
     b. **[詳細な URL 設定の表示]** をクリックします。
 
@@ -120,53 +120,53 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url2.png)
 
     **[サインオン URL]** テキストボックスに、URL として「`https://www.app.rfpio.com`」と入力します。
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_general_400.png)
 
 7. 別の Web ブラウザー ウィンドウで、**RFPIO** Web サイトに管理者としてログインします。
 
 8. 左下隅にあるドロップダウンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app1.png)
 
 9. **[組織設定]** をクリックします。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app2.png)
 
 10. **[FEATURES & INTEGRATION (機能と統合)]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app4.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app4.png)
 
-11. **[SAML SSO 構成]** で**[編集]** をクリックします。
+11. **[SAML SSO 構成]** で **[編集]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app3.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app3.png)
 
 12. このセクションでは、次のアクション実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app5.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app5.png)
     
-    a. **ダウンロードしたメタデータ XML** の内容をコピーし、**[ID 構成]** フィールドに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ダウンロードしたメタデータ XML** の内容をコピーし、**[ID 構成]** フィールドに貼り付けます。
 
     > [!NOTE]
     >ダウンロードした**メタデータ XML** の内容をコピーするには、**Notepad++** または適切な **XML エディター**を使用します。 
 
-    b. **[Validate (検証)]**をクリックします。
+    b. **[Validate (検証)]** をクリックします。
 
     c. **[検証]** をクリックした後、**[SAML(Enabled)(SAML (有効))]** をフリップしてオンにします。
 
-    d. **[Submit]**をクリックします。
+    d. **[送信]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -192,7 +192,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rfpio-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -211,25 +211,25 @@ RFPIO の場合、プロビジョニングは手動で行います。
 
 2. 左下隅にあるドロップダウンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app1.png)
 
 3. **[組織設定]** をクリックします。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app2.png)
 
 4. **[チーム メンバー]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app6.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app6.png)
 
 5. **[メンバーの追加]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app7.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app7.png)
 
 6. **[新しいメンバーの追加]** セクションで、 次の操作を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/app8.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/app8.png)
 
-    a. **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
 
     b. 要件に応じて **[ロール]** を選択します。
 
@@ -250,9 +250,9 @@ RFPIO の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[RFPIO]**を選択します。
+2. アプリケーションの一覧で **[RFPIO]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -278,7 +278,7 @@ RFPIO の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

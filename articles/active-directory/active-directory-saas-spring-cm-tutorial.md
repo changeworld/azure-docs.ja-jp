@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SpringCM の統合 | Microsoft Docs"
-description: "Azure Active Directory と SpringCM の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SpringCM の統合 | Microsoft Docs'
+description: Azure Active Directory と SpringCM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 7538c749b3fc31ad02e52ca986e43e3293e2fe20
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 70d3ef14875ef7af730b41e02b5f04e3930797ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -29,7 +29,7 @@ SpringCM と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に SpringCM にサインオン (シングル サインオン) できるように、設定が可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への SpringCM の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**SpringCM**」と入力します。
 
@@ -86,11 +86,11 @@ SpringCM で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー
 
 SpringCM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[SpringCM テスト ユーザーの作成](#creating-a-springcm-test-user)** - SpringCM で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,32 +100,32 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **SpringCM** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_samlbase.png)
 
 3. **[SpringCM のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_url.png)
 
     **[サインオン URL]** ボックスに、`https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[SpringCM クライアント サポート チーム](https://knowledge.springcm.com/support)に問い合わせてください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[SpringCM クライアント サポート チーム](https://knowledge.springcm.com/support)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-spring-cm-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-spring-cm-tutorial/tutorial_general_400.png)
 
-6. **[SpringCM 構成]** セクションで、**[SpringCM の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML Single シングル サインオン サービス URL** をコピーします。
+6. **[SpringCM 構成]** セクションで、**[SpringCM の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_configure.png)   
+    ![[Configure Single Sign-On]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_configure.png)   
 
 7. 別の Web ブラウザーのウィンドウで、管理者として **SpringCM** 企業サイトにサインオンします。
 
@@ -137,7 +137,7 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
    
     ![Identity Provider Configuration](./media/active-directory-saas-spring-cm-tutorial/ic797052.png "Identity Provider Configuration")
     
-    a. ダウンロードした Azure Active Directory 証明書をアップロードするために、**[Select Issuer Certificate]** または **[Change Issuer Certificate]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ダウンロードした Azure Active Directory 証明書をアップロードするために、**[Select Issuer Certificate]** または **[Change Issuer Certificate]** をクリックします。
     
     b. Azure Portal からコピーした **SAML エンティティ ID** の値を、**[Issuer]\(発行者\)** ボックスに貼り付けます。
     
@@ -148,7 +148,7 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
     e. **[Save]** をクリックします。
  
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -174,7 +174,7 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-spring-cm-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -197,15 +197,15 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
    
     ![Create User](./media/active-directory-saas-spring-cm-tutorial/ic797054.png "Create User")
 
-3. **[Create User]**をクリックします。
+3. **[Create User]** をクリックします。
 
-4. **[User Role]**を選択します。
+4. **[User Role]** を選択します。
 
-5. **[Send Activation Email]**を選択します。
+5. **[Send Activation Email]** を選択します。
 
 6. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの姓名と電子メール アドレスを入力します。
 
-7. ユーザーを **[Security group]**に追加します。
+7. ユーザーを **[Security group]** に追加します。
 
 8. **[Save]** をクリックします。
 
@@ -225,9 +225,9 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SpringCM]**を選択します。
+2. アプリケーションの一覧で **[SpringCM]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-spring-cm-tutorial/tutorial_springcm_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -254,7 +254,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
