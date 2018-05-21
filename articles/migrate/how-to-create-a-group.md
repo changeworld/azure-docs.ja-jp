@@ -1,17 +1,17 @@
 ---
-title: "Azure Migrate でのアセスメントのためにマシンをグループ化する | Microsoft Docs"
-description: "Azure Migrate サービスでアセスメントを実行する前にマシンをグループ化する方法について説明します。"
+title: Azure Migrate でのアセスメントのためにマシンをグループ化する | Microsoft Docs
+description: Azure Migrate サービスでアセスメントを実行する前にマシンをグループ化する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: f42b184cddb3274d7ee0163c10cac002ccfbef62
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5c5b5dc97c0faf43c9543422406c4fa1c30ed679
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="group-machines-for-assessment"></a>アセスメントためのマシンのグループ化
 

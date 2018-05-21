@@ -1,12 +1,12 @@
 ---
-title: "Azure VM の SSH の詳細なトラブルシューティング | Microsoft Docs"
-description: "Azure 仮想マシンへの接続問題に関する SSH の詳細なトラブルシューティングの手順"
-keywords: "拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH 接続"
+title: Azure VM の SSH の詳細なトラブルシューティング | Microsoft Docs
+description: Azure 仮想マシンへの接続問題に関する SSH の詳細なトラブルシューティングの手順
+keywords: 拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH 接続
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 88f3ca3202359f9f45f5b9a5054ab95b40558520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -39,7 +39,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 2. エンドポイント、IP アドレス、ネットワーク セキュリティ グループなどの設定を確認するには、**[設定]** を選択します。
 
-   VM には、**[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/virtual-networks-nsg.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
+   VM には、**[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/security-overview.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
 
 ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に接続できるかどうかを確認します。
 
@@ -111,7 +111,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ## <a name="source-4-network-security-groups"></a>ソース 4: ネットワーク セキュリティ グループ
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。 ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。
-詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)」をご覧ください。
 
 NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5b17b4e8581daa5b19aaafd911765d843a9f3fe4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -116,7 +116,7 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 >
 >
 
-## <a name="risky-ip-report"></a>危険な IP レポート 
+## <a name="risky-ip-report-public-preview"></a>危険な IP レポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
 さらに、単一の IP アドレスから複数のユーザーに対してログイン試行が複数回実行される可能性もあります。 このような場合、ユーザーあたりの試行回数が AD FS のアカウント ロックアウト保護のしきい値に達しない可能性があります。 Azure AD Connect Health では、この状態を検出し、その発生時に管理者に通知する "危険な IP のレポート" が提供されるようになりました。 このレポートの主要な利点を次に示します。 
 - 失敗したパスワードベースのログインのしきい値を超える IP アドレスの検出
@@ -152,10 +152,12 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 > - このアラート レポートには、Exchange IP アドレスまたはプライベート IP アドレスは表示されません。 ただし、エクスポートした一覧にはこれらのアドレスが含まれます。 
 >
 
-
 ![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health-adfs/report4c.png)
 
-### <a name="download-risky-ip-report"></a>危険な IP のレポートのダウンロード
+### <a name="load-balancer-ip-addresses-in-the-list"></a>一覧のロード バランサーの IP アドレス
+ロード バランサーが失敗したサインイン アクティビティを集計し、アラートのしきい値に達しました。 ロード バランサーの IP アドレスが表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。 転送クライアント IP アドレスを渡すようにロード バランサーを適切に構成してください。 
+
+### <a name="download-risky-ip-report"></a>危険な IP のレポートのダウンロード 
 **ダウンロード**機能を使用すると、過去 30 日間の危険な IP アドレスの一覧全体を Connect Health Portal からエクスポートできます。エクスポート結果には各検出時間枠の間に失敗したすべての AD FS サインイン アクティビティが含まれるため、エクスポート後にフィルター処理をカスタマイズすることができます。 エクスポート結果には、ポータルの強調表示された集計のほかに、失敗したサインイン アクティビティの詳細が IP アドレスごとに示されます。
 
 |  レポート アイテム  |  [説明]  | 
@@ -196,12 +198,14 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 
 3. IP アドレスをブロックするにはどうすればよいですか?  <br />
 特定した悪意のある IP アドレスをファイアウォールまたは Exchange のブロックに追加する必要があります。   <br />
-AD FS 2016 + 1803.C+ QFE では、AD FS で IP アドレスを直接ブロックできます。 
 
 4. このレポートに項目が何も表示されないのはなぜですか? <br />
    - 失敗したサインイン アクティビティがしきい値の設定を超えていません。 
    - AD FS サーバー リストで "Health Service が最新ではありません" アラートがアクティブになっていないことを確認します。  [このアラートのトラブルシューティングを行う方法](active-directory-aadconnect-health-data-freshness.md)を確認してください。
    - AD FS ファームで監査が有効になっていません。
+ 
+5. レポートにアクセスできないのはなぜですか?  <br />
+全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)のアクセス許可が必要です。 アクセスするには、全体管理者に連絡してください。
 
 
 ## <a name="related-links"></a>関連リンク

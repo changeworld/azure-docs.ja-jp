@@ -1,24 +1,24 @@
 ---
-title: "Linux と Windows での Azure Service Fabric の違い | Microsoft Docs"
-description: "Linux での Azure Service Fabric と Windows での Azure Service Fabric の違いについて説明します。"
+title: Linux と Windows での Azure Service Fabric の違い | Microsoft Docs
+description: Linux での Azure Service Fabric と Windows での Azure Service Fabric の違いについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0a8dd9936268a4e4cb8b744a87111c3bbf3f062d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5e0002437b4fc22d9dfdcdca9a587bf420a7d8fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux での Service Fabric と Windows での Service Fabric の違い
 

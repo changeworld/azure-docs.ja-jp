@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
-ms.openlocfilehash: 807753435f0f8b7618e38f92d58e75a30c9ecb43
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e520b4b85ff7c840c46175cae5b853ec6979c04a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
 > [!div class="op_single_selector"]

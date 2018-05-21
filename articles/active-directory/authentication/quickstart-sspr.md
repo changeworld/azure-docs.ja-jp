@@ -2,25 +2,19 @@
 title: セルフサービスによるパスワードのリセットのクイック スタート - Azure Active Directory
 description: Azure AD のセルフ サービスによるパスワードのリセットを迅速にデプロイする
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 6add6e71c9acf6d63858ea921ec85924b4e6c60f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Azure AD のセルフ サービスによるパスワード リセットの迅速なデプロイ
 
@@ -33,11 +27,13 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Azure AD テナントの SSPR の有効化
 
+> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+
 1. 既存の Azure AD テナントから、**Azure Portal** の **[Azure Active Directory]** で **[パスワード リセット]** を選択します。
 
 2. **[プロパティ]** ページの **[セルフ サービスによるパスワードのリセットが有効]** オプションで、次のいずれかを選択します。
    * **[なし]**: どのユーザーも SSPR 機能を使用できません。
-   * **[選択済み]**: 選択した特定の Azure AD グループのメンバーのみが SSPR 機能を使用できます。 この機能を概念実証のためにデプロイする場合、ユーザー グループを定義してこの設定を使用することをお勧めします。
+   * **[選択済み]**: 選択した特定の Azure AD グループのメンバーのみが SSPR 機能を使用できます。 この機能を概念実証のためにデプロイする場合、ユーザー グループを定義してこの設定を使用することをお勧めします。 ここではセキュリティ グループの入れ子はサポートされていません。
    * **[すべて]**: Azure AD テナントにアカウントを持つすべてのユーザーが SSPR 機能を使用できます。 この設定は、概念実証の完了後、この機能をテナント全体にデプロイする準備ができたときに使用することをお勧めします。
 
    > [!IMPORTANT]

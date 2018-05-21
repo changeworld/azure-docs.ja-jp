@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -45,13 +45,14 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 ### <a name="user-sign-in"></a>ユーザーのサインイン
 必要なコンポーネントがインストールされると、ユーザーによるシングル サインオンの方法を選択するように求められます。 次の表に、指定できるオプションの簡単な説明を示します。 サインイン方法の詳細については、[ユーザーのサインイン](active-directory-aadconnect-user-signin.md)に関するページを参照してください。
 
-![User Sign in](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
+![User Sign in](./media/active-directory-aadconnect-get-started-custom/usersignin4.png)
 
 | シングル サインオン オプション | [説明] |
 | --- | --- |
 | パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)に関するページを参照してください。 |
 |パススルー認証|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザー パスワードはオンプレミスの Active Directory ドメイン コントローラーにパススルーされて検証されます。
 | AD FS とのフェデレーション |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
+| PingFederate によるフェデレーション|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの PingFederate インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
 | 構成しない |ユーザー サインイン機能はインストールおよび構成されません。 サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。 |
 |シングル サインオンを有効にする|これはパスワード同期とパススルー認証の両方で使用できるオプションであり、企業ネットワーク上のデスクトップ ユーザーのシングル サインオン機能を有効にします。 詳細については、[シングル サインオン](active-directory-aadconnect-sso.md)に関するページをご覧ください。 </br>AD FS ユーザーはこのオプションを使用できません。AD FS によって同レベルのシングル サインオンが既に提供されているためです。</br>
 
@@ -301,6 +302,39 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 >
 >
 
+## <a name="configuring-federation-with-pingfederate"></a>PingFederate とのフェデレーションの構成
+Azure AD Connect との PingFederate の構成は、わずか数クリックで簡単です。 構成の前に、以下のものを用意する必要があります。  ただし、以下の前提条件が必須です。
+- PingFederate 8.4 以降。  詳細については、「[PingFederate Integration with Azure Active Directory and Office 365 (Azure Active Directory および Office 365 と PingFederate の統合)](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)」を参照してください。
+- 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
+
+### <a name="verify-the-domain"></a>ドメインの検証
+PingFederate でフェデレーションを選択すると、フェデレーションするドメインを検証するように求められます。  ドロップダウン ボックスでドメインを選択します。
+
+![ドメインの確認](./media/active-directory-aadconnect-get-started-custom/ping1.png)
+
+### <a name="export-the-pingfederate-settings"></a>PingFederate 設定のエクスポート
+
+
+PingFederate は、各フェデレーション Azure ドメインのフェデレーション サーバーとして構成する必要があります。  [設定のエクスポート] ボタンをクリックし、この情報を PingFederate 管理者と共有します。  フェデレーション サーバーの管理者は、構成を更新し、PingFederate サーバーの URL とポート番号を指定して、Azure AD Connect がメタデータ設定を検証できるようにします。  
+
+![ドメインの確認](./media/active-directory-aadconnect-get-started-custom/ping2.png)
+
+検証の問題を解決するには、PingFederate 管理者に問い合わせてください。  次の例は、Azure との有効な信頼関係がない PingFederate サーバーを示しています。
+
+![[Trust (信頼)]](./media/active-directory-aadconnect-get-started-custom/ping5.png)
+
+
+
+
+### <a name="verify-federation-connectivity"></a>フェデレーションの接続性の検証
+Azure AD Connect は、前の手順で PingFederate メタデータから取得した認証エンドポイントの検証を試みます。  まず、Azure AD Connect は、ローカル DNS サーバーを使用してエンドポイントを解決しようとします。  次に、外部 DNS プロバイダーを使用してエンドポイントを解決しようとします。  検証の問題を解決するには、PingFederate 管理者に問い合わせてください。  
+
+![接続の検証](./media/active-directory-aadconnect-get-started-custom/ping3.png)
+
+### <a name="verify-federation-login"></a>フェデレーション ログインの検証
+最後に、フェデレーション ドメインにサインインして、新しく構成されたフェデレーション ログイン フローを検証できます。 これが成功した場合、PingFederate とのフェデレーションは正常に構成されています。
+![ログインの検証](./media/active-directory-aadconnect-get-started-custom/ping4.png)
+
 ## <a name="configure-and-verify-pages"></a>ページの構成および確認
 構成は次のページで行われます。
 
@@ -308,6 +342,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 > フェデレーションを構成している場合は、インストールを続行する前に、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成済みであることを確認してください。
 >
 >
+
 
 ![構成の準備完了](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -336,8 +371,9 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 ![確認](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-さらに、次の検証手順を実行します。
+エンド ツー エンド認証の成功を検証するには、以下の 1 つ以上のテストを手動で実行する必要があります。
 
+* 同期が完了したら、Azure AD Connect で [フェデレーション ログインの検証] 追加タスクを使用して、任意のオンプレミス ユーザー アカウントの認証を検証します。
 * イントラネット上のドメイン参加済みマシンのブラウザーからサインインできることを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
 * エクストラネット上のデバイスからサインインできることを検証する。 自宅にあるマシンまたはモバイル デバイスで https://myapps.microsoft.com に接続し、資格情報を入力します。
 * リッチ クライアントのサインインを検証する。 https://testconnectivity.microsoft.com に接続し、**[Office 365]** タブ、**[Office 365 シングル サインオン テスト]** の順に選択します。
