@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Marketo の統合 | Microsoft Docs"
-description: "Azure Active Directory と Marketo の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Marketo の統合 | Microsoft Docs'
+description: Azure Active Directory と Marketo の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 10ce59668127ff918a85caf537e8ab495c542278
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 48aee4565548fd57ef9925a41299b06660df2718
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル: Marketo と Azure Active Directory の統合
 
@@ -29,7 +29,7 @@ Marketo と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Marketo にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Marketo の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Marketo**」と入力します。
 
@@ -90,7 +90,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Marketo のテスト ユーザーの作成](#creating-a-marketo-test-user)** - Marketo で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Marketo** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_samlbase.png)
 
 3. **[Marketo のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://saml.marketo.com/sp` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://saml.marketo.com/sp` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://login.marketo.com/saml/assertion/\<munchkinid\>` のパターンを使用して URL を入力します。
 
@@ -119,47 +119,47 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_general_400.png)
 
 6. **[Marketo 構成]** セクションで、**[Marketo の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_configure.png) 
 
 7. アプリケーションの Munchkin ID を取得するには、管理者の資格情報を使用して Marketo にログインし、次の操作を実行します。
    
-    a. 管理者の資格情報を使用して Marketo アプリにログインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者の資格情報を使用して Marketo アプリにログインします。
    
     b. 上部のナビゲーション ウィンドウで **[管理者]** ボタンをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
    
     c. 統合メニューに移動し、**Munchkin リンク**をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_11.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_11.png)
    
     d. 画面に表示される Munchkin ID をコピーし、Azure AD の構成ウィザードで、応答 URL を完了します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_12.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_12.png) 
 
 8. アプリケーションで SSO を構成するには、以下の手順に従ってください。
    
-    a. 管理者の資格情報を使用して Marketo アプリにログインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者の資格情報を使用して Marketo アプリにログインします。
    
     b. 上部のナビゲーション ウィンドウで **[管理者]** ボタンをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
    
     c. 統合メニューに移動し、**[シングルサインオン]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_07.png) 
    
     d. SAML 設定を有効にするには、**[編集]** ボタンをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_08.png) 
    
     e. シングル サインオン設定を**有効**にします。
    
@@ -169,7 +169,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     h. **[Name Identifier element]\(名前識別子要素\)** としてユーザー ID の場所を選択します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_09.png)
    
     > [!NOTE]
     > ユーザー識別子が UPN 値ではない場合、[属性] タブで値を変更します。
@@ -184,26 +184,26 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
    
     m. **[エラー URL]** に **Marketo インスタンス URL** をコピーし、**[保存]** ボタンをクリックして設定を保存します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_10.png)
 
 9. ユーザーの SSO を有効にするには、次の操作を行います。
    
-    a. 管理者の資格情報を使用して Marketo アプリにログインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者の資格情報を使用して Marketo アプリにログインします。
    
     b. 上部のナビゲーション ウィンドウで **[管理者]** ボタンをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
    
     c. **[セキュリティ]** メニューに移動して、**[ログイン設定]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_13.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_13.png)
    
     d. **[SSO 必須]** オプションをオンにして、設定を**保存**します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_14.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_14.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -229,7 +229,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-marketo-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -245,21 +245,21 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 
 2. 上部のナビゲーション ウィンドウで **[管理者]** ボタンをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_06.png) 
 
 3. **[セキュリティ]** メニューに移動して、**[ユーザーと役割]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_19.png)  
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_19.png)  
 
 4. [ユーザー] タブで **[新しいユーザーの追加]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_15.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_15.png) 
 
 5. [新しいユーザーの追加] ウィザードで、次の情報を入力します。
    
-    a. テキスト ボックスにユーザーの **[メール]** アドレスを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 テキスト ボックスにユーザーの **[メール]** アドレスを入力します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_16.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_16.png)
    
     b. テキスト ボックスに **[名]** を入力します。
    
@@ -269,10 +269,10 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 
 6. **[アクセス許可]** タブで **[userRoles]** を選択して **[次へ]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_17.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_17.png)
 7. **[送信]** ボタンをクリックしてユーザーの招待を送信します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_18.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_18.png)
 
 8. ユーザーは、電子メール通知を受け取った後、リンクをクリックしてパスワードを変更し、アカウントをアクティブ化する必要があります。 
 
@@ -288,9 +288,9 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Marketo]**を選択します。
+2. アプリケーションの一覧で **[Marketo]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-marketo-tutorial/tutorial_marketo_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -315,7 +315,7 @@ Marketo で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

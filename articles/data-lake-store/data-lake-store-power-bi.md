@@ -1,24 +1,22 @@
 ---
-title: "Power BI を使用して Data Lake Store のデータを分析する | Microsoft Docs"
-description: "Power BI を使用して Azure Data Lake Store に格納されているデータを分析する"
+title: Power BI を使用して Data Lake Store のデータを分析する | Microsoft Docs
+description: Power BI を使用して Azure Data Lake Store に格納されているデータを分析する
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 4a10dac1eca85b54ef144a91445af6dad3b5d93e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 08660bd1c434c9404fa53a33be209b7a3c4d9372
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Power BI を使用して Data Lake Store のデータを分析する
 この記事では、Power BI Desktop を使用して Azure Data Lake ストアに格納されているデータを分析し、視覚化する方法を説明します。
@@ -42,10 +40,10 @@ ms.lasthandoff: 02/23/2018
 5. 次のダイアログ ボックスで、 **[サインイン]** をクリックして Data Lake Store アカウントにサインインします。 組織のサインイン ページにリダイレクトされます。 画面の指示に従ってアカウントにサインインします。
    
     ![Data Lake Store にサインインする](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Data Lake Store にサインインする")
-6. 正常にサインインしたら、 **[接続]**をクリックします。
+6. 正常にサインインしたら、 **[接続]** をクリックします。
    
     ![Data Lake Store に接続する](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Store に接続する")
-7. 次のダイアログ ボックスに、Data Lake Store アカウントにアップロードしたファイルが表示されます。 情報を確認してから **[ロード]**をクリックします。
+7. 次のダイアログ ボックスに、Data Lake Store アカウントにアップロードしたファイルが表示されます。 情報を確認してから **[ロード]** をクリックします。
    
     ![Data Lake Store からデータを読み込む](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Data Lake Store からデータを読み込む")
 8. データが Power BI に正常に読み込まれたら、 **[フィールド]** タブに以下のフィールドが表示されます。
@@ -63,7 +61,7 @@ ms.lasthandoff: 02/23/2018
 10. クエリ エディターで、**[コンテンツ]** 列の下にある **[バイナリ]** をクリックします。
     
     ![クエリの編集](./media/data-lake-store-power-bi/convert-query1.png "クエリの編集")
-11. アップロードした **Drivers.txt** ファイルを表すファイル アイコンが表示されます。 このファイルを右クリックしてから **[CSV]**をクリックします。    
+11. アップロードした **Drivers.txt** ファイルを表すファイル アイコンが表示されます。 このファイルを右クリックしてから **[CSV]** をクリックします。    
     
     ![クエリの編集](./media/data-lake-store-power-bi/convert-query2.png "クエリの編集")
 12. 出力は次のようになります。 これで、データは視覚エフェクトの作成に使用できる形式で利用できるようになりました。

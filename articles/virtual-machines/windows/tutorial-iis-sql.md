@@ -1,6 +1,6 @@
 ---
-title: Azure SQL、IIS、および .NET スタックを実行する VM を Azure で作成する | Microsoft Docs
-description: チュートリアル - Windows 仮想マシンに Azure SQL、IIS、および .NET スタックをインストールします。
+title: チュートリアル - Azure での SQL&#47;IIS&#47;.NET スタックを実行する VM の作成 | Microsoft Docs
+description: このチュートリアルでは、Azure で Windows 仮想マシンに Azure SQL/IIS/.NET スタックをインストールする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac6038f7600d6eb4c8d021998f9cfc40bd369332
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f9fea933dd664955a0bc6f47db775fbc469fd684
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="install-a-sql92iis92net-stack-in-azure"></a>Azure SQL、IIS、および .NET スタックを Azure にインストールします。
+# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows VM に SQL&#47;IIS&#47;.NET スタックをインストールする
 
-このチュートリアルでは、Azure PowerShell を使用して Azure SQL、IIS、および .NET スタックをインストールします。 このスタックは、1 つは IIS および .NET を、もう 1 つは SQL Server を使用して Windows Server 2016 を実行する 2 つの VM で構成されています。
+このチュートリアルでは、Azure PowerShell を使用して SQL&#47;IIS&#47;.NET スタックをインストールします。 このスタックは、1 つは IIS および .NET を、もう 1 つは SQL Server を使用して Windows Server 2016 を実行する 2 つの VM で構成されています。
 
 > [!div class="checklist"]
 > * VM の作成 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/08/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは AzureRM.Compute モジュール バージョン 4.3.1 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM.Compute` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+PowerShell をローカルにインストールして使用する場合、このチュートリアルでは AzureRM.Compute モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM.Compute` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="create-a-iis-vm"></a>IIS の仮想マシンを作成する 
 
