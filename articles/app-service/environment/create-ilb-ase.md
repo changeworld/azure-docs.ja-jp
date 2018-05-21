@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 72ba97727fd4de1c419091475f14427065790cc7
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -176,7 +176,7 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
 
 6. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、Web アプリの名前を VIP の IP アドレスに設定します。
 
-    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 
@@ -244,7 +244,7 @@ ILB ASE と WAF デバイスを構成する方法について詳しくは、「[
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../app-service-web-overview.md

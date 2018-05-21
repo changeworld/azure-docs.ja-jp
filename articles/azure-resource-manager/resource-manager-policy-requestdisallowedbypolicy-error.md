@@ -1,7 +1,7 @@
 ---
 title: Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー | Microsoft Docs
 description: RequestDisallowedByPolicy エラーの原因について説明します。
-services: azure-resource-manager,azure-portal
+services: azure-resource-manager
 documentationcenter: ''
 author: genlin
 manager: cshepard
@@ -10,14 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 5a9efa6b807e933726104e7af315589ede5d9b74
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 474400d92660b68fd7fef906216b8e37c6e8c94d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー
 

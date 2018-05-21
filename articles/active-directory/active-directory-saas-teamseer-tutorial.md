@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TeamSeer の統合 | Microsoft Docs"
-description: "Azure Active Directory と TeamSeer の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と TeamSeer の統合 | Microsoft Docs'
+description: Azure Active Directory と TeamSeer の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b67b2e22d1b2b13ab0103d00ba6c1e62b2fdd17b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b4fd5b65bf0f5ce90aa93f89aad4617976b3a490
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>チュートリアル: Azure Active Directory と TeamSeer の統合
 
@@ -29,7 +29,7 @@ TeamSeer と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に TeamSeer にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への TeamSeer の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**TeamSeer**」と入力します。
 
@@ -86,11 +86,11 @@ TeamSeer で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー
 
 TeamSeer で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[TeamSeer テスト ユーザーの作成](#creating-a-teamseer-test-user)** - TeamSeer で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,44 +100,44 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **TeamSeer** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_samlbase.png)
 
 3. **[TeamSeer のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_url.png)
 
      **[サインオン URL]** ボックスに、`https://www.teamseer.com/<companyid>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > この値は実際のものではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[TeamSeer クライアント サポート チーム](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)に問い合わせてください。 
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[TeamSeer クライアント サポート チーム](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamseer-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamseer-tutorial/tutorial_general_400.png)
 
 6. **[TeamSeer 構成]** セクションで、**[TeamSeer の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_configure.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_configure.png)
 
 7. 別の Web ブラウザーのウィンドウで、TeamSeer 企業サイトに管理者としてログインします。
 
-8. **[HR Admin]**に移動します。
+8. **[HR Admin]** に移動します。
    
     ![HR Admin](./media/active-directory-saas-teamseer-tutorial/ic789634.png "HR Admin")
 
-9. **[Setup]**をクリックします。
+9. **[Setup]** をクリックします。
    
     ![Setup](./media/active-directory-saas-teamseer-tutorial/ic789635.png "Setup")
 
-10. **[Set up SAML provider details]**をクリックします。
+10. **[Set up SAML provider details]** をクリックします。
    
     ![SAML Settings](./media/active-directory-saas-teamseer-tutorial/ic789636.png "SAML Settings")
 
@@ -145,7 +145,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
    
     ![SAML Settings](./media/active-directory-saas-teamseer-tutorial/ic789637.png "SAML Settings")   
 
-    a. **シングル サインオン サービス URL** 値を **[URL]** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **シングル サインオン サービス URL** 値を **[URL]** ボックスに貼り付けます。
           
     b. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[IdP Public Certificate]\(IdP パブリック証明書\)** ボックスに貼り付けます。
 
@@ -153,14 +153,14 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
     
     ![SAML Settings](./media/active-directory-saas-teamseer-tutorial/ic789638.png "SAML Settings") 
 
-    a. **[Test Email Addresses]**に、テスト ユーザーの電子メール アドレスを入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Test Email Addresses]** に、テスト ユーザーの電子メール アドレスを入力します。 
   
     b. **[Issuer]** テキスト ボックスに、サービス プロバイダーの発行元 URL を入力します。 
   
     c. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -186,7 +186,7 @@ TeamSeer で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-teamseer-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,15 +206,15 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
    
     ![HR Admin](./media/active-directory-saas-teamseer-tutorial/ic789640.png "HR Admin")  
  
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[HR Admin]\>[Users]** の順に選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HR Admin]\>[Users]** の順に選択します。
   
-    b. **[Run the New User wizard]**をクリックします。
+    b. **[Run the New User wizard]** をクリックします。
 
 3. **[User Details]** セクションで、次の手順に従います。
    
     ![ユーザーの詳細](./media/active-directory-saas-teamseer-tutorial/ic789641.png "User Details")
 
-    a. プロビジョニングする有効な AAD アカウントの**名**、**姓**、**ユーザー名 (電子メール アドレス)** を、対応するボックスに入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの**名**、**姓**、**ユーザー名 (電子メール アドレス)** を、対応するボックスに入力します。
   
     b. **[次へ]** をクリックします。
 
@@ -237,7 +237,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 
 2. アプリケーションの一覧で **[TeamSeer]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-teamseer-tutorial/tutorial_teamseer_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -260,7 +260,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

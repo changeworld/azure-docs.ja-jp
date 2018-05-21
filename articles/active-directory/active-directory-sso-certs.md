@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 97a70781adaaaa5fd661474336373e70a3923ef5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9924d06f149b0d234cd8f5546cab8abbab740aac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 この記事では、SaaS アプリケーションにフェデレーション シングル サインオン (SSO) を確立するために Azure Active Directory (Azure AD) で作成される証明書に関連する一般的な質問と情報について説明します。 アプリケーションは Azure AD アプリ ギャラリーから追加するか、ギャラリー以外のアプリケーション テンプレートを使用して追加します。 アプリケーションの構成には、フェデレーション SSO オプションを使用します。
@@ -76,5 +76,5 @@ ms.lasthandoff: 05/10/2018
 ## <a name="related-articles"></a>関連記事
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [SAML に基づいたシングル サインオンのトラブルシューティング](active-directory-saml-debugging.md)

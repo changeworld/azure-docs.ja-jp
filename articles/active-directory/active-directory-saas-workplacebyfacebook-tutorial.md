@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: a1f4243eafc6a2d5c632220ec80b28b29f8ae985
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 897ee084e0b36f1729260fabb33114652b82a05d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>チュートリアル: Azure Active Directory と Workplace by Facebook の統合
 
@@ -29,7 +29,7 @@ Workplace by Facebook と Azure AD の統合には、次の利点があります
 - ユーザーが自分の Azure AD アカウントで自動的に Workplace by Facebook にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -252,7 +252,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [[ユーザー プロビジョニングの構成]](active-directory-saas-workplacebyfacebook-provisioning-tutorial.md)
 
 

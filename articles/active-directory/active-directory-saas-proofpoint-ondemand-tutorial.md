@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Proofpoint on Demand の統合 | Microsoft Docs"
-description: "Azure Active Directory と Proofpoint on Demand の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Proofpoint on Demand の統合 | Microsoft Docs'
+description: Azure Active Directory と Proofpoint on Demand の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 55479406487bf445c5f449b13663c0bfaee751fd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 62001f94ce946a36147932afb752dff9079890a4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>チュートリアル: Azure Active Directory と Proofpoint on Demand の統合
 
@@ -30,7 +30,7 @@ Proofpoint on Demand と Azure AD の統合には、次の利点があります�
 - ユーザーが自分の Azure AD アカウントで自動的に Proofpoint on Demand にサインオン (シングル サインオン) できるようにすることが可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 
     ![[Proofpoint on Demand のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp_hostname` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp_hostname` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<hostname>.pphosted.com/ppssamlsp` の形式で URL を入力します。
 
@@ -210,7 +210,7 @@ Proofpoint on Demand で Azure AD のシングル サインオンを構成して
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: bc5b41da83f183aaf62723212f7197fb50dc536d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cf955c15b1dfe3ef0c46ab5023035986da5c5c99
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル: Azure Active Directory と ServiceNow の統合
 
@@ -30,7 +30,7 @@ ServiceNow と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで ServiceNow に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -112,7 +112,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ServiceNow のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<instance-name>.service-now.com/navpage.do` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instance-name>.service-now.com/navpage.do` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<instance-name>.service-now.com` の形式で URL を入力します。
 
@@ -123,7 +123,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
 
-    a. コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。このアプリのフェデレーション メタデータ URL はこのチュートリアルで後で使用されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。このアプリのフェデレーション メタデータ URL はこのチュートリアルで後で使用されます。
 
     b. **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -135,7 +135,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
 7. **[Integration - Multiple Provider Single Sign-On Installer (統合 - 複数プロバイダーのシングル サインオン インストーラー)]** プラグインをアクティブ化するには、次の手順に従います。
 
-    a. 左側のナビゲーション ウィンドウの検索バーで **}[System Definition]\(システム定義\)** セクションを検索し、**[Plugins]\(プラグイン\)** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 左側のナビゲーション ウィンドウの検索バーで **}[System Definition]\(システム定義\)** セクションを検索し、**[Plugins]\(プラグイン\)** をクリックします。
 
     ![プラグインをアクティブにする](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "プラグインをアクティブにする")
 
@@ -151,7 +151,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
 9. **ServiceNow** を自動的に構成するには、以下の手順に従います。
 
-    a. Azure Portal で **ServiceNow** の [シングル サインオン] ページに戻ります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で **ServiceNow** の [シングル サインオン] ページに戻ります。
 
     b. SAML ベースの認証に対応するため、Azure AD による ServiceNow の自動構成を行う ServiceNow 用のワン クリック構成サービスが提供されています。 このサービスを有効にするには、**[ServiceNow 構成]** セクションに移動し、**[ServiceNow を構成する]** をクリックして [サインオンの構成] ウィンドウを開きます。
 
@@ -197,7 +197,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "Configure app URL")
 
-    a. **[Enable multiple provider SSO]** で **[Yes]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable multiple provider SSO]** で **[Yes]** を選択します。
 
     b. **[Enable Auto Importing of users from all identity providers into the user table]** で、**[Yes]** を選択します。
 
@@ -219,7 +219,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694975.png "Configure single sign-on")
 
-    a. **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
 
     b. **[アクティブ]** を選択します。
 
@@ -247,7 +247,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/idp.png "Configure single sign-on")
 
-    a. **[Import Identity Provider Metadata]** ダイアログ ボックスで **[URL]** オプションを選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Import Identity Provider Metadata]** ダイアログ ボックスで **[URL]** オプションを選択します。
 
     b. Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** を貼り付けます。
 
@@ -257,7 +257,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694982.png "Configure single sign-on")
 
-    a. **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
     
     b. **[ServiceNow Homepage]** の値をコピーして、Azure Portal の **[ServiceNow のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
 
@@ -292,7 +292,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694995.png "Configure single sign-on")
 
-    a. [名前] テキスト ボックスに値 `glide.authenticate.sso.redirect.idp` を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [名前] テキスト ボックスに値 `glide.authenticate.sso.redirect.idp` を入力します。
 
     b. **[値]** テキスト ボックスに、前の手順でコピーした copy sys_id 値を貼り付けます。
 
@@ -308,7 +308,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694996.png "Configure single sign-on")
 
-    a. [名前] テキスト ボックスに値 `glide.authenticate.multisso.test.connection.mandatory` を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [名前] テキスト ボックスに値 `glide.authenticate.multisso.test.connection.mandatory` を入力します。
 
     b. **[値]** テキスト ボックスに「**false**」を入力します。
 
@@ -333,7 +333,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<instance-name>.service-now.com/navpage.do` のパターンを使用して値を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instance-name>.service-now.com/navpage.do` のパターンを使用して値を入力します。
 
     b. **[識別子]** ボックスに、`https://<instance-name>.service-now.com` の形式で URL を入力します。
 
@@ -366,7 +366,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/ic7694981ex.png "Configure app URL")
 
-    a. **[Enable multiple provider SSO (複数プロバイダー SSO を有効にする)]** を右に切り替えます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable multiple provider SSO (複数プロバイダー SSO を有効にする)]** を右に切り替えます。
     
     b. **[Enable debug logging for the multiple provider SSO integration (複数プロバイダー SSO 統合でのデバッグ ログの有効化)]** を右に切り替えます。
     
@@ -380,7 +380,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694975.png "Configure single sign-on")
 
-    a. **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに、構成の名前を入力します (例: **TestSAML2.0**)。
 
     b. **[アクティブ]** を選択します。
 
@@ -400,7 +400,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
 
-    a. **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
 
     b. **[Identity Provider URL]\(ID プロバイダー URL\)** フィールドに、Azure Portal からコピーした **ID プロバイダー ID** の値を貼り付けます。
     
@@ -414,7 +414,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
 
-    a. **[Protocol Binding for the IDP's SingleLogoutRequest]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Protocol Binding for the IDP's SingleLogoutRequest]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
 
     b. **[NameID Policy (NameID ポリシー)]** ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified**」と入力します。
 
@@ -426,7 +426,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオンの構成](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Configure single sign-on")
 
-    a. **[ServiceNow Homepage]** ボックスに ServiceNow インスタンス ホームページの URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ServiceNow Homepage]** ボックスに ServiceNow インスタンス ホームページの URL を入力します。
 
     > [!NOTE]
     > ServiceNow インスタンス ホームページは、**ServiceNow テナント URL** と **/navpage.do** を連結した形式です (例: `https://fabrikam.service-now.com/navpage.do`)。
@@ -520,7 +520,7 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

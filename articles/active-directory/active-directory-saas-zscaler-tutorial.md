@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Zscaler の統合 | Microsoft Docs"
-description: "Azure Active Directory と Zscaler の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Zscaler の統合 | Microsoft Docs'
+description: Azure Active Directory と Zscaler の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ffb413289e9bc284c8043bc867ab00a47c8e1516
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3cf67ae81599a18aa441eced5c19c7fc9ccbc96d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>チュートリアル: Azure Active Directory と Zscaler の統合
 
@@ -29,7 +29,7 @@ Zscaler と Azure AD の統合には、次の利点があります。
 - ユーザーが Azure AD アカウントで Zscaler に自動的にサインオン (シングル サインオン) できるように設定することが可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Zscaler の統合を構成するには、管理対象の SaaS �
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Zscaler**」と入力します。
 
@@ -86,12 +86,12 @@ Zscaler で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー�
 
 Zscaler で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[プロキシ設定の構成](#configuring-proxy-settings)** - Internet Explorer でプロキシ設定を構成します
 3. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Zscaler のテスト ユーザーの作成](#creating-a-zscaler-test-user)** - Zscaler で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-6. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+6. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,36 +101,36 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Zscaler** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_samlbase.png)
 
 3. **[Zscaler のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_url.png)
 
     **[サインオン URL]** ボックスに、`https://<companyname>.zsclaer.net` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Zscaler クライアント サポート チーム](https://www.zscaler.com/company/contact)に問い合わせてください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Zscaler クライアント サポート チーム](https://www.zscaler.com/company/contact)に問い合わせてください。 
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-tutorial/tutorial_general_400.png)
 
 6. **[Zscaler 構成]** セクションで、**[Zscaler の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、Zscaler 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[管理]**をクリックします。
+8. 上部のメニューで **[管理]** をクリックします。
    
     ![Administration](./media/active-directory-saas-zscaler-tutorial/ic800206.png "Administration")
 
@@ -142,29 +142,29 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
                 
     ![Authentication](./media/active-directory-saas-zscaler-tutorial/ic800208.png "Authentication")
    
-    a. **[SAML シングル サインオンを使用した認証]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML シングル サインオンを使用した認証]** を選択します。
 
-    b. **[SAML シングル サインオン パラメーターの構成]**をクリックします。
+    b. **[SAML シングル サインオン パラメーターの構成]** をクリックします。
 
 11. **[SAML シングル サインオン パラメーターの構成]** ダイアログ ページで、次の手順に従い、**[完了]** をクリックします
 
     ![シングル サインオン](./media/active-directory-saas-zscaler-tutorial/ic800209.png "Single Sign-On")
     
-    a. Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を、**[URL of the SAML Portal to which users are sent for authentication]\(ユーザーが認証に送られる SAML ポータルの URL\)** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を、**[URL of the SAML Portal to which users are sent for authentication]\(ユーザーが認証に送られる SAML ポータルの URL\)** ボックスに貼り付けます。
     
     b. **[ログイン名を含む属性]** ボックスに「**NameID**」と入力します。
     
-    c. ダウンロードした証明書をアップロードするには、 **[Zscaler pem]**をクリックします。
+    c. ダウンロードした証明書をアップロードするには、 **[Zscaler pem]** をクリックします。
     
-    d. **[SAML 自動プロビジョニングを有効にする]**を選択します。
+    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
 12. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
     ![Administration](./media/active-directory-saas-zscaler-tutorial/ic800210.png "Administration")
     
-    a. **[Save]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Save]** をクリックします。
 
-    b. **[今すぐ認証する]**をクリックします。
+    b. **[今すぐ認証する]** をクリックします。
 
 ## <a name="configuring-proxy-settings"></a>プロキシ設定の構成
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer でプロキシ設定を構成するには
@@ -185,20 +185,20 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
    
     ![プロキシ サーバー](./media/active-directory-saas-zscaler-tutorial/ic769494.png "Proxy server")
 
-    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
     b. [アドレス] ボックスに「**gateway.zscaler.net**」と入力します。
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]**を選択します。
+    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
 6. **[OK]** をクリックして **[インターネット オプション]** ダイアログを閉じます。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -224,7 +224,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-zscaler-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -241,11 +241,11 @@ Zscaler の場合、プロビジョニングは手動で行います。
 
 1. **Zscaler** テナントにログインします。
 
-2. **[管理]**をクリックします。   
+2. **[管理]** をクリックします。   
    
     ![Administration](./media/active-directory-saas-zscaler-tutorial/ic781035.png "Administration")
 
-3. **[ユーザー管理]**をクリックします。   
+3. **[ユーザー管理]** をクリックします。   
         
      ![Add](./media/active-directory-saas-zscaler-tutorial/ic781036.png "Add")
 
@@ -257,7 +257,7 @@ Zscaler の場合、プロビジョニングは手動で行います。
         
     ![ユーザーの追加](./media/active-directory-saas-zscaler-tutorial/ic781038.png "Add User")
    
-    a. プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
 
     b. **[Save]** をクリックします。
 
@@ -278,7 +278,7 @@ Zscaler の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で、**[Zscaler]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-tutorial/tutorial_zscaler_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -304,7 +304,7 @@ Zscaler の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

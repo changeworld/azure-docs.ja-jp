@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a4c64fb8400eaf2e09be049b032535e09969fb8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c3fb9eb3e8dd4b8c3add5dcf0436958500aa0189
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>チュートリアル: Azure Active Directory と Slack の統合
 
@@ -29,7 +29,7 @@ Slack と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Slack にサインオンする機能 (シングル サインオン) を有効にできます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -141,7 +141,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
     
     b. **[値]** 一覧から、その行に対して表示される属性値を選択します。
 
-    c. **[名前空間]**は空白のままにします。
+    c. **[名前空間]** は空白のままにします。
     
     d. **[OK]**
 
@@ -179,7 +179,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
     d. 必要に応じて、Slack チームに上記の 3 つの設定を構成します。 設定の詳細については、**Slack の SSO 構成ガイド**をこちらから参照してください。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    e.  **[Save Configuration]**をクリックします。
+    e.  **[Save Configuration]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -264,7 +264,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

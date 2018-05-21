@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: b0689f9e3bf63e8ff842bb440d8a68d84a77aa5b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1fc89f2181a5b9fb6b6c5a26d974b016fa1926a6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -125,7 +125,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
     StructField("results", StringType(), False),
     StructField("violations", StringType(), True)])
     
-    df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
+    df = spark.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
     df.registerTempTable('CountResults')
     ```
 
@@ -281,7 +281,7 @@ model = pipeline.fit(labeledData)
     testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
-    testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
+    testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
     predictionsDf = model.transform(testDf)
     predictionsDf.registerTempTable('Predictions')
     predictionsDf.columns
@@ -345,13 +345,19 @@ model = pipeline.fit(labeledData)
     ```PySpark
     %%sql -q -o true_positive
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
+    ```
 
+    ```PySpark
     %%sql -q -o false_positive
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
+    ```
 
+    ```PySpark
     %%sql -q -o true_negative
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND results = 'Fail'
+    ```
 
+    ```PySpark
     %%sql -q -o false_negative
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Cisco Spark の統合 | Microsoft Docs"
-description: "Azure Active Directory と Cisco Spark の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Cisco Spark の統合 | Microsoft Docs'
+description: Azure Active Directory と Cisco Spark の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: c7ee96abacffc6599187ded9a5049cc3bf672e0a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4307904e87bdf9a0361a7fb143e87ae3a662f18e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>チュートリアル: Azure Active Directory と Cisco Spark の統合
 
@@ -29,7 +29,7 @@ Cisco Spark と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Cisco Spark にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Cisco Spark の統合を構成するには、ギャラリーか�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Cisco Spark**」と入力します。
 
@@ -86,11 +86,11 @@ Cisco Spark で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 
 Cisco Spark で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Cisco Spark のテスト ユーザーの作成](#creating-a-cisco-spark-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Cisco Spark で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Cisco Spark** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_samlbase.png)
 
 3. **[Cisco Spark のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_url.png)
 
-    a. **[サインオン URL]** ボックスに、「`https://web.ciscospark.com/#/signin`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、「`https://web.ciscospark.com/#/signin`」と入力します。
 
     b. **[識別子]** ボックスに、`https://idbroker.webex.com/<companyname>` の形式で URL を入力します。
 
@@ -119,11 +119,11 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_certificate.png) 
 
 5. Cisco Spark アプリケーションは SAML アサーションを使用し、特定の属性を含みます。 このアプリケーションには、次の属性を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_07.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_07.png) 
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -131,40 +131,40 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
     | --------------- | -------------------- |    
     |   uid    | user.userprincipalname |   
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-cisco-spark-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_general_400.png)
 
 8. 完全な管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/) にサインインします。
 
 9. **[設定]** を選択し、**[認証]** セクションの下で **[変更]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_10.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_10.png)
     
 10. **[Integrate a 3rd-party identity provider.(Advanced)] \(サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
 
 11. **[Import Idp Metadata] \(Idp メタデータのインポート)** ページで、ページ上に Azure AD メタデータ ファイルをドラッグ アンド ドロップするか、ファイルのブラウザー オプションを使用して Azure AD メタデータ ファイルを見つけてアップロードします。 次に、**[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、**[Next (次へ)]** をクリックします。 
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_11.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_11.png)
 
 12. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
 
-13. ブラウザーの**[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
+13. ブラウザーの **[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -190,7 +190,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cisco-spark-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,21 +206,21 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 
 2. **[Users]\(ユーザー\)** と **[Manage Users ]\(ユーザーの管理\)** を順にクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
 
 3. **[Manage User (ユーザーの管理)]** ウィンドウで、**[Manually add or modify users (ユーザーを手動で追加または変更)]** を選択し、**[Next (次へ)]** をクリックします。
 
 4. **[Names and Email address (名前と電子メール アドレス)]** を選択します。 次のようにテキスト ボックスに入力します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
     
-    a. **[名]** ボックスに「**Britta**」と入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。 
     
     b. **[姓]** ボックスに「**Simon**」と入力します。
     
     c. **[電子メール アドレス]** ボックスに「**britta.simon@contoso.com**」と入力します。
 
-5. プラス記号をクリックして、Britta Simon を追加します。 次に、 **[次へ]**をクリックします。
+5. プラス記号をクリックして、Britta Simon を追加します。 次に、 **[次へ]** をクリックします。
 
 6. **[Add Services for Users (ユーザーのサービスを追加)]** ウィンドウで、**[Save (保存)]** をクリックしてから **[Finish (完了)]** をクリックします。
 
@@ -236,9 +236,9 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Cisco Spark]**を選択します。
+2. アプリケーションの一覧で **[Cisco Spark]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-cisco-spark-tutorial/tutorial_ciscospark_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -263,7 +263,7 @@ Cisco Spark で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

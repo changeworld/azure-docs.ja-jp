@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Work.com の統合 | Microsoft Docs"
-description: "Azure Active Directory と Work.com の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Work.com の統合 | Microsoft Docs'
+description: Azure Active Directory と Work.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7aa04faab5da9ee7dae977be3a8c040c3aed0b9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bfc76d05a52d0283e3367f9c98dc8ed427cbe592
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル: Azure Active Directory と Work.com の統合
 
@@ -30,7 +30,7 @@ Work.com と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Work.com に自動サインオン (シングル サインオン) できるようになります。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,11 +64,11 @@ Azure AD への Work.com の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**Work.com**」と入力し、結果ウィンドウで **[Work.com]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
@@ -100,7 +100,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Work.com** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -113,7 +113,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     **[サインオン URL]** ボックスに、`http://<companyname>.my.salesforce.com` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Work.com クライアント サポート チーム](https://help.salesforce.com/articleView?id=000159855&type=3)に問い合わせてください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Work.com クライアント サポート チーム](https://help.salesforce.com/articleView?id=000159855&type=3)に問い合わせてください。 
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -128,7 +128,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     ![[Work.com 構成] セクション](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_configure.png) 
 7. 管理者として Work.com テナントにログインします。
 
-8. **[セットアップ]**に移動します。
+8. **[セットアップ]** に移動します。
    
     ![Setup](./media/active-directory-saas-work-com-tutorial/ic794108.png "Setup")
 
@@ -142,7 +142,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
 11. Work.com テナントにログインします。
 
-12. **[セットアップ]**に移動します。
+12. **[セットアップ]** に移動します。
     
     ![Setup](./media/active-directory-saas-work-com-tutorial/ic794108.png "Setup")
 
@@ -154,15 +154,15 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     ![SAML 有効](./media/active-directory-saas-work-com-tutorial/ic781026.png "SAML Enabled")
     
-    a. **[SAML Enabled]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Enabled]** を選択します。
     
-    b. **[新規]**をクリックします。
+    b. **[新規]** をクリックします。
 
 15. **[SAML シングル サインオンの設定]** セクションで、次の手順に従います。
     
     ![SAML Single Sign-On Setting](./media/active-directory-saas-work-com-tutorial/ic794114.png "SAML Single Sign-On Setting")
     
-    a. **[名前]** テキスト ボックスに、構成の名前を入力します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキスト ボックスに、構成の名前を入力します。  
        
     > [!NOTE]
     > **[名前]** の値を指定すると、**[API 名]** ボックスが自動的に入力されます。
@@ -175,7 +175,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     e. **[SAML ID の種類]** として、**[アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[SAML ID の場所]** として、**[ID を Subject ステートメントの NameIdentifier 要素にする]** チェックボックスをオンにします。
+    f. **[SAML ID の場所]** として、**[ID を Subject ステートメントの NameIdentifier 要素にする]** チェックボックスをオンにします。
     
     g. **[Identity Provider Login URL]\(ID プロバイダー ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -193,12 +193,12 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     ![Login Page Branding](./media/active-directory-saas-work-com-tutorial/ic767826.png "Login Page Branding")
 
-14. **[Login Page Branding (ログイン ページのブランド)]** ページの **[認証サービス]** セクションに、**[SAML SSO 設定]** の名前が表示されます。 それを選んで、 **[保存]**をクリックします。
+14. **[Login Page Branding (ログイン ページのブランド)]** ページの **[認証サービス]** セクションに、**[SAML SSO 設定]** の名前が表示されます。 それを選んで、 **[保存]** をクリックします。
     
     ![Login Page Branding](./media/active-directory-saas-work-com-tutorial/ic784366.png "Login Page Branding")
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -224,7 +224,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
  
     ![[ユーザー] ダイアログ ページ](./media/active-directory-saas-work-com-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -238,14 +238,14 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 1. Work.com 企業サイトに管理者としてサインオンします。
 
-2. **[セットアップ]**に移動します。
+2. **[セットアップ]** に移動します。
    
     ![Setup](./media/active-directory-saas-work-com-tutorial/IC794108.png "Setup")
 3. **[ユーザーの管理]\>[ユーザー]** に移動します。
    
     ![Manage Users](./media/active-directory-saas-work-com-tutorial/IC784369.png "Manage Users")
 
-4. **[新しいユーザー]**をクリックします。
+4. **[新しいユーザー]** をクリックします。
    
     ![All Users](./media/active-directory-saas-work-com-tutorial/IC794117.png "All Users")
 
@@ -253,7 +253,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
    
     ![User Edit](./media/active-directory-saas-work-com-tutorial/ic794118.png "User Edit")
    
-    a. **[First Name]\(名\)** ボックスに、ユーザーの**名** (**Britta**) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに、ユーザーの**名** (**Britta**) を入力します。
     
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの**姓** (**Simon**) を入力します。
     
@@ -263,7 +263,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
     
     e. **[User Name]\(ユーザー名\)** ボックスに、ユーザーのユーザー名 (**Brittasimon@contoso.com** など) を入力します。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Nick Name]\(ニック ネーム\)** ボックスに、ユーザーの**ニック ネーム** (**Simon**) を入力します。
+    f. **[Nick Name]\(ニック ネーム\)** ボックスに、ユーザーの**ニック ネーム** (**Simon**) を入力します。
     
     g. **[Role]\(役割\)**、**[User License]\(ユーザー ライセンス\)**、**[Profile]\(プロファイル\)** を選択します。
     
@@ -314,7 +314,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

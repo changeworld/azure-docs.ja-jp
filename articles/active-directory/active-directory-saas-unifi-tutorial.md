@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と UNIFI の統合 | Microsoft Docs"
-description: "Azure Active Directory と UNIFI の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と UNIFI の統合 | Microsoft Docs'
+description: Azure Active Directory と UNIFI の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 95bbbd74b2b0b99fa53d7244b45c5b1f879a37fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 47684f7878a8191c3019f39c32024bba8a38e9d4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル: Azure Active Directory と UNIFI の統合
 
@@ -29,7 +29,7 @@ UNIFI と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に UNIFI にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への UNIFI の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**UNIFI**」と入力します。
 
@@ -86,11 +86,11 @@ UNIFI で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 UNIFI で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[UNIFI テスト ユーザーの作成](#creating-a-unifi-test-user)** - UNIFI で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,51 +100,51 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **UNIFI** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_samlbase.png)
 
 3. **[UNIFI のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_url1.png)
 
     **[識別子]** テキストボックスに、値として「`INVIEWlabs`」を入力します。 
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_url2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_url2.png)
 
     **[サインオン URL]** テキストボックスに、URL として「`https://app.discoverunifi.com/login`」と入力します。
 
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_general_400.png)
     
 7. **[UNIFI 構成]** セクションで、**[UNIFI の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_configure.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_configure.png)
 
 8. 別の Web ブラウザーのウィンドウで、管理者として **UNIFI** 企業サイトにサインオンします。
 
 9. **[ユーザー]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/app1.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/app1.png) 
 
 10. **[Add New Identity Provider(新しい ID プロバイダーを追加)]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/app2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/app2.png)
 
 11. **[Add Identity Provider(ID プロバイダーの追加)]** セクションで、次の手順を実行します。   
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/app3.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/app3.png) 
 
-    a. **[プロバイダー名]** テキストボックスに、ID プロバイダーの名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[プロバイダー名]** テキストボックスに、ID プロバイダーの名前を入力します。
 
     b. **[プロバイダー URL]** テキストボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -153,7 +153,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
     d. **[is Default Provider(既定のプロバイダーにする)]** チェックボックスをオンします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -179,7 +179,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-unifi-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -203,9 +203,9 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[UNIFI]**を選択します。
+2. アプリケーションの一覧で **[UNIFI]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-unifi-tutorial/tutorial_unifi_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -231,7 +231,7 @@ UNIFI で Azure AD のシングル サインオンを構成してテストする
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -106,7 +106,7 @@ DevTest Labs の使用に伴って発生する追加コストはありません�
 
 Azure でのラボまたは運用システムのホストは、インターネットからシステムにアクセスする必要があることを意味します。 既定で、新しい Windows 仮想マシンにはインターネットからアクセス可能な RDP ポートがあり、Linux 仮想マシンの場合は SSH ポートが開いています。 承認されていないアクセスのリスクを最小限に抑えるために、公開されるエンドポイントを制限するための手順を実行する必要があります。
 
-Azure に用意されているテクノロジを使用すると、これらの管理エンドポイントへのアクセスを制限するのに役立ちます。 Azure で使用できるのは、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) (NSG) です。 Azure Resource Manager を使用してデプロイする場合は、NSG で、すべてのネットワークから管理エンドポイント (RDP または SSH) へのアクセスのみを制限します。 NSG について検討する場合は、ルーターの ACL について検討してください。 NSG を使用すると、Azure ネットワークのさまざまなセグメント間のネットワーク通信を厳密に制御できます。 これは、境界ネットワークなどの分離されたネットワークを作成する場合と同様です。 NSG はトラフィックを検査しませんが、ネットワークのセグメント化に役立ちます。
+Azure に用意されているテクノロジを使用すると、これらの管理エンドポイントへのアクセスを制限するのに役立ちます。 Azure で使用できるのは、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) (NSG) です。 Azure Resource Manager を使用してデプロイする場合は、NSG で、すべてのネットワークから管理エンドポイント (RDP または SSH) へのアクセスのみを制限します。 NSG について検討する場合は、ルーターの ACL について検討してください。 NSG を使用すると、Azure ネットワークのさまざまなセグメント間のネットワーク通信を厳密に制御できます。 これは、境界ネットワークなどの分離されたネットワークを作成する場合と同様です。 NSG はトラフィックを検査しませんが、ネットワークのセグメント化に役立ちます。
 
 
 Azure では、オンプレミスのネットワークから[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) を構成できます。 サイト間 VPN を構成すると、オンプレミス ネットワークがクラウドに拡張されます。 ここでも NSG が役立ちます。ローカル ネットワーク以外のすべての場所からのアクセスを禁止するよう NSG を変更できます。 まず VPN 経由で Azure ネットワークに接続してから管理タスクを実行するよう要求できます。

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Halogen Software の統合 | Microsoft Docs"
-description: "Azure Active Directory と Halogen Software の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Halogen Software の統合 | Microsoft Docs'
+description: Azure Active Directory と Halogen Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: af9c9d4b9bd562169bfe6c9158254beec5c3e1e7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd2a45d34d93f1233302c89c502fb171da2873e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>チュートリアル: Azure Active Directory と Halogen Software の統合
 
@@ -29,7 +29,7 @@ Halogen Software と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Halogen Software にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,11 +65,11 @@ Azure AD への Halogen Software の統合を構成するには、ギャラリ�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Halogen Software**」と入力します。
 
@@ -88,11 +88,11 @@ Halogen Software で、Azure AD の **[ユーザー名]** の値を **[Username]
 
 Halogen Software で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Halogen Software のテスト ユーザーの作成](#creating-a-halogen-software-test-user)** - Halogen Software で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -102,17 +102,17 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 1. Azure Portal の **Halogen Software** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_samlbase.png)
 
 3. **[Halogen Software のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://global.hgncloud.com/<companyname>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://global.hgncloud.com/<companyname>` のパターンを使用して URL を入力します。
 
     b. **[Identifier]\(識別子\)** ボックスに、`https://global.halogensoftware.com/<companyname>`、`https://global.hgncloud.com/<companyname>` のパターンで URL を入力します。
 
@@ -123,11 +123,11 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-halogen-software-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-halogen-software-tutorial/tutorial_general_400.png)
 
 6. 別のブラウザー ウィンドウで、管理者として **Halogen Software** アプリケーションにサインオンします。
 
@@ -135,15 +135,15 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
    
     ![What is Azure AD Connect][12]
 
-8. 左のナビゲーション ウィンドウで、 **[SAML Configuration]**をクリックします。 
+8. 左のナビゲーション ウィンドウで、 **[SAML Configuration]** をクリックします。 
    
-    ![Azure AD Connect とは][13]
+    ![What is Azure AD Connect][13]
 
 9. **[SAML 構成]** ページで、次の手順を実行します。 
 
     ![What is Azure AD Connect][14]
 
-     a. **[Unique Identifier]** で **[NameID]** を選択します。
+     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Unique Identifier]** で **[NameID]** を選択します。
 
      b. **[Unique Identifier Maps To]** で **[Username]** を選択します。
   
@@ -154,12 +154,12 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
     >[!NOTE]
     >"*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。 次に、開いているブラウザー ウィンドウを閉じます。 **[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。 
      
-     e. **[Enable SAML]**を選択します。
+     e. **[Enable SAML]** を選択します。
     
-     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[変更を保存]**をクリックします。 
+     f. **[変更を保存]** をクリックします。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -186,7 +186,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-halogen-software-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と名前を入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -204,13 +204,13 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 2. **[User Center]** タブをクリックし、**[Create User]** をクリックします。
    
-    ![Azure AD Connect とは][300]  
+    ![What is Azure AD Connect][300]  
 
 3. **[New User]** ダイアログ ページで、次の手順に従います。
    
     ![What is Azure AD Connect][301]
 
-    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
     
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。 
 
@@ -232,9 +232,9 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Halogen Software]**を選択します。
+2. アプリケーションの一覧で **[Halogen Software]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-halogen-software-tutorial/tutorial_halogensoftware_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -259,7 +259,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

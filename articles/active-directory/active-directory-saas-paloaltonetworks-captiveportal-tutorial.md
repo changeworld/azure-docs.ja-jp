@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Palo Alto Networks - Captive Portal の統合 | Microsoft Docs"
-description: "Azure Active Directory と Palo Alto Networks - Captive Portal の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Palo Alto Networks - Captive Portal の統合 | Microsoft Docs'
+description: Azure Active Directory と Palo Alto Networks - Captive Portal の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 32b3a45d9baf0b53e05708abab78a462c6780daa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aaa2adc30d1d798312b50370d4b635d0d8a123e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - Captive Portal の統合
 
@@ -30,7 +30,7 @@ Palo Alto Networks - Captive Portal と Azure AD の統合には、次のメリ�
 - ユーザーが自分の Azure AD アカウントで自動的に Palo Alto Networks - Captive Portal にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Palo Alto Networks - Captive Portal で Azure AD のシングル サインオン
 
     ![[Palo Alto Networks - Captive Portal のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-paloaltonetworks-captiveportal-tutorial/tutorial_paloaltocaptiveportal_url.png)
 
-    a. **[識別子]** ボックスに、`https://<Customer Firewall Hostname>/SAML20/SP` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<Customer Firewall Hostname>/SAML20/SP` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<Customer Firewall Hostname>/SAML20/SP/ACS` のパターンを使用して URL を入力します。
 
@@ -137,14 +137,14 @@ Palo Alto Networks - Captive Portal で Azure AD のシングル サインオン
 
     ![Palo Alto シングル サインオンの構成](./media/active-directory-saas-paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD Admin UI」など) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD Admin UI」など) を入力します。
     
     b. **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** の **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードした metadata.xml ファイルを選択します。
     
     c. **[OK]**
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -222,7 +222,7 @@ Captive Portal は、Windows VM 上のファイアウォールの内側に構成
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

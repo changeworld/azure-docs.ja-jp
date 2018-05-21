@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合 | Microsoft Docs"
-description: "Azure Active Directory と Zscaler Private Access (ZPA) の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合 | Microsoft Docs'
+description: Azure Active Directory と Zscaler Private Access (ZPA) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 9ac65791e8d50d5e5da5d36adee14cd0e88a3da8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d5434c57a95e53e4fe37c33f3fe11585fc3177f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>チュートリアル: Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -29,7 +29,7 @@ Zscaler Private Access (ZPA) と Azure AD の統合には、次の利点があ�
 - ユーザーが自分の Azure AD アカウントで自動的に Zscaler Private Access (ZPA) にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,17 +61,17 @@ Azure AD への Zscaler Private Access (ZPA) の統合を構成するには、�
 
 **ギャラリーから Zscaler Private Access (ZPA) を追加するには、次の手順を実行します。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Zscaler Private Access (ZPA)**」と入力します。
 
@@ -95,7 +95,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Zscaler Private Access (ZPA) のテスト ユーザーの作成](#creating-a-zscaler-private-access-(zpa)-test-user)** - Zscaler Private Access (ZPA) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,42 +105,42 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
 1. Microsoft Azure 管理ポータルの **Zscaler Private Access (ZPA)** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_300.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_300.png)
     
 3. **[Zscaler Private Access (ZPA) のドメインと URL]** セクションで、次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、「`https://samlsp.private.zscaler.com/auth/metadata`」と入力します。
 
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子でこれらの値を更新する必要があります。 ここでは、識別子に一意の URL を使用することをお勧めします。 これらの値を取得するには、[Zscaler Private Access (ZPA) サポート チーム](https://help.zscaler.com/zpa-submit-ticket)に連絡してください。
 
-4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
+4. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)   
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)   
 
 5. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_500.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_500.png)
 
 6. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
 
 7. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_600.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_600.png)
 
 8. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
 
 9. 別の Web ブラウザー ウィンドウで、Zscaler Private Access (ZPA) 企業サイトに管理者としてログインします。
 
@@ -156,7 +156,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
-    a. **[Select File]** をクリックし、ダウンロードしたメタデータ ファイルをアップロードします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Select File]** をクリックし、ダウンロードしたメタデータ ファイルをアップロードします。
 
     b. **[保存]** ボタンをクリックします。
     
@@ -185,7 +185,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -208,13 +208,13 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 
 **Zscaler Private Access (ZPA) に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Microsoft Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure 管理ポータルでアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
 2. アプリケーションの一覧で、**[Zscaler Private Access (ZPA)]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -242,7 +242,7 @@ Zscaler Private Access (ZPA) で Azure AD のシングル サインオンを構�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

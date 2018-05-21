@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合 | Microsoft Docs"
-description: "Azure Active Directory と Wizergos Productivity Software の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合 | Microsoft Docs'
+description: Azure Active Directory と Wizergos Productivity Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d3ed319b457abb677484d3ef32876b4af46a09ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1b78b0f2df6211626fd9b4d0cecf9f67d7f47d87
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合
 
@@ -30,7 +30,7 @@ Wizergos Productivity Software と Azure AD の統合には、次の利点があ
 - ユーザーが自分の Azure AD アカウントで自動的に Wizergos Productivity Software にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -124,7 +124,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 
 7. 別の Web ブラウザーのウィンドウで、管理者として Wizergos Productivity Software テナントにサインオンします。
 
-8. ハンバーガー メニューから **[Admin (管理者)]**を選択します。
+8. ハンバーガー メニューから **[Admin (管理者)]** を選択します。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
@@ -136,7 +136,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[UPLOAD (アップロード)]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[UPLOAD (アップロード)]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
     
     b. **[発行者の URL]** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     
@@ -147,7 +147,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
     e. **[保存]** ボタンをクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -198,7 +198,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Wizergos Productivity Software]**を選択します。
+2. アプリケーションの一覧で **[Wizergos Productivity Software]** を選択します。
 
     ![アプリケーションの一覧の Wizergos Productivity Software のリンク](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_app.png)  
 
@@ -226,7 +226,7 @@ Wizergos Productivity Software で Azure AD のシングル サインオンを�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

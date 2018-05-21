@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5c176dd185a9d2a245045e9c954279506d713e5f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 71928be07080ed14fdcb93f33ea64d2572955b53
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Manager に関連する個人データを管理する
 

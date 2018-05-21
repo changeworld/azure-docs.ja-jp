@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a3dcbfe09d47388b80cee15ff0e46f8b75b474a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 13e5836aea0e307cdce5bcdcd5cf3c50969dfbf8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 

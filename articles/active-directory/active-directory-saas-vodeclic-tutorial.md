@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Vodeclic の統合 | Microsoft Docs"
-description: "Azure Active Directory と Vodeclic の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Vodeclic の統合 | Microsoft Docs'
+description: Azure Active Directory と Vodeclic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 940c7bb5040fb91a03b01dc43ee07d52e3d4e63b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: bc889919f2d869478843881cc8eae06fc9cb232c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル: Azure Active Directory と Vodeclic の統合
 
@@ -30,7 +30,7 @@ Vodeclic と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Vodeclic にシングル サインオン (SSO) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     ![[Vodeclic のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml` というパターンで URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml` というパターンで URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml/callback` の形式で URL を入力します。
 
@@ -164,7 +164,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-a-vodeclic-test-user"></a>Vodeclic テスト ユーザーの作成
 
@@ -185,7 +185,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Vodeclic]**を選択します。
+2. アプリケーションの一覧で **[Vodeclic]** を選択します。
 
     ![アプリケーションの一覧の Vodeclic のリンク](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_app.png)  
 
@@ -214,7 +214,7 @@ Vodeclic で Azure AD のシングル サインオンを構成してテストす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

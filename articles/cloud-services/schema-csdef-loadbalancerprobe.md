@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services の定義LoadBalancerProbe スキーマ | Microsoft Docs"
-ms.custom: 
+title: Azure Cloud Services の定義LoadBalancerProbe スキーマ | Microsoft Docs
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: "14"
+caps.latest.revision: 14
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 31c974c5a4b9dc9cff882ff42b73ee023fc4ad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cd56c9b04fc4657cedf845e7f111005a8dee183
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services の定義: LoadBalancerProbe スキーマ
 ロード バランサー プローブは、ロール インスタンスのエンドポイントと UDP エンドポイントに対して利用者が定義する正常性プローブです。 `LoadBalancerProbe` はスタンドアロン要素ではなく、サービス定義ファイルで Web ロールまたは worker ロールと組み合わされます。 1 つの `LoadBalancerProbe` を複数のロールで使用することができます。
@@ -58,7 +58,7 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 
 以下の表に、`LoadBalancerProbe` 要素の属性を示します。
 
-|Attribute|型|Description|
+|Attribute|type|[説明]|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必須。 ロード バランサー プローブの名前です。 名前は一意である必要があります。|
 | `protocol`          | `string` | 必須。 エンド ポイントのプロトコルを指定します。 指定できる値は `http` または `tcp` です。 `tcp` を指定した場合、プローブが成功するためには ACK の受信が必要となります。 `http` を指定した場合、プローブが成功するためには、指定された URI から応答として 200 OK が返される必要があります。|

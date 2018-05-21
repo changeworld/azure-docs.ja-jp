@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: a578a732efa3d2b91240ef0f4c02670aea8e547f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d39c8437cbed497e2a2a7e64caa05f8e3d04869
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform の統合
 
@@ -30,7 +30,7 @@ SAP Cloud Platform と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に SAP Cloud Platform にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -165,11 +165,11 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
 
     ![Trust Management](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/ic793931.png "Trust Management")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[編集]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[編集]** をクリックします。
 
     b. **[構成の種類]** として **[カスタム]** を選択します。
 
-    c. **[Local Provider Name (ローカル プロバイダー名)]**は既定値のままにします。 この値をコピーして、SAP Cloud Platform 用の Azure AD 構成の **[識別子]** フィールドに貼り付けます。
+    c. **[Local Provider Name (ローカル プロバイダー名)]** は既定値のままにします。 この値をコピーして、SAP Cloud Platform 用の Azure AD 構成の **[識別子]** フィールドに貼り付けます。
 
     d. **署名キー**と**署名証明書**キーのペアを生成するには、**[Generate Key Pair (キー ペアの生成)]** をクリックします。
 
@@ -212,7 +212,7 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
     
     ![属性](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/ic790804.png "Attributes") 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Add Assertion-Based Attribute (アサーション ベースの属性の追加)]**をクリックして、次のアサーション ベースの属性を追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Add Assertion-Based Attribute (アサーション ベースの属性の追加)]** をクリックして、次のアサーション ベースの属性を追加します。
        
     | アサーション属性 | プリンシパル属性 |
     | --- | --- |
@@ -286,7 +286,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
    
     ![Authorizations](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/ic790805.png "Authorizations")
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Authorization]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Authorization]** をクリックします。
 
     b. **[Users]** タブをクリックします。
 
@@ -336,7 +336,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

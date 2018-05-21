@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と New Relic の統合 | Microsoft Docs"
-description: "Azure Active Directory と New Relic の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と New Relic の統合 | Microsoft Docs'
+description: Azure Active Directory と New Relic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 5c5d6eb8333083cf87e35a667159ecc71b944e9a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: fab53b33f845c277cc9b227141222c468529a75e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル: Azure Active Directory と New Relic の統合
 
@@ -30,7 +30,7 @@ New Relic と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に New Relic にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,7 +126,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
 
 7. 別の Web ブラウザーのウィンドウで、管理者として **New Relic** 企業サイトにサインオンします。
 
-8. 上部のメニューで **[アカウント設定]**をクリックします。
+8. 上部のメニューで **[アカウント設定]** をクリックします。
    
     ![Account Settings](./media/active-directory-saas-new-relic-tutorial/ic797036.png "Account Settings")
 
@@ -144,7 +144,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
    
    c. **[Logout landing URL]\(ログアウト ランディング URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-   d. **[変更を保存する]**をクリックします。
+   d. **[変更を保存する]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -190,7 +190,7 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
 1. **New Relic** 企業サイトに管理者としてログインします。
 
-2. 上部のメニューで **[アカウント設定]**をクリックします。
+2. 上部のメニューで **[アカウント設定]** をクリックします。
    
     ![Account Settings](./media/active-directory-saas-new-relic-tutorial/ic797040.png "Account Settings")
 
@@ -206,7 +206,7 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
     b. **[ロール]** として **[ユーザー]** を選びます。
 
-    c. **[このユーザーを追加]**をクリックします。
+    c. **[このユーザーを追加]** をクリックします。
 
 >[!NOTE]
 >他の New Relic ユーザー アカウントの作成ツールまたは New Relic から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -252,7 +252,7 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/18/2018
 ms.author: billmath
-ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール
 以前の Azure AD Connect ビルドでは、SQL を必要とする構成をデプロイするとき、管理の委任はサポートされていませんでした。  Azure AD Connect をインストールするユーザーには、SQL サーバーにおけるサーバー管理者 (SA) アクセス許可が必要でした。
@@ -42,7 +42,7 @@ Azure AD Connect 管理者|Azure AD Connect をインストールし、カスタ
 
 
 1.  SQL 管理者に、大文字と小文字を区別しない照合順序 **(Latin1_General_CI_AS)** で ADSync データベースを作成してもらいます。  データベースの名前は **ADSync** にします。  Azure AD Connect のインストール時に、復旧モデル、互換性レベル、およびコンテインメントの種類が正しい値に更新されます。  ただし、照合順序は、SQL 管理者が正しく設定する必要があります。これを行わないと、Azure AD Connect によってインストールがブロックされます。  復旧するには、SA はデータベースを削除して、再作成する必要があります。</br>
-![照合順序](media/active-directory-aadconnect-sql-delegation/sql1.png)
+![照合順序](media/active-directory-aadconnect-sql-delegation/sql4.png)
 2.  Azure AD Connect 管理者とドメイン サービス アカウントに次のアクセス許可を付与します。
     - SQL ログイン 
     - **データベース所有者 (dbo)** 権限。  </br>

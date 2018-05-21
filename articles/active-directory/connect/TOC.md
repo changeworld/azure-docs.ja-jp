@@ -29,7 +29,11 @@
 ## [MAzure AD Connect の管理](active-directory-aadconnect-whats-next.md)
 ### [O365 と Azure AD の証明書を更新する](active-directory-aadconnect-o365-certs.md)
 ### [Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新](active-directory-aadconnectfed-ssl-update.md)
-### [デバイスの書き戻しを有効にする](active-directory-aadconnect-feature-device-writeback.md)
+
+### [デバイス オプション](active-directory-azure-ad-connect-device-options.md)
+#### [デバイスの書き戻しを有効にする](active-directory-aadconnect-feature-device-writeback.md)
+#### [ハイブリッド Azure AD 参加の構成後のタスク](active-directory-azure-ad-connect-hybrid-azure-ad-join-post-config-tasks.md)
+
 ### [ユーザー サインオンのオプション](active-directory-aadconnect-user-signin.md)
 #### [シームレス シングル サインオン](active-directory-aadconnect-sso.md)
 ##### [クイック スタート](active-directory-aadconnect-sso-quick-start.md)

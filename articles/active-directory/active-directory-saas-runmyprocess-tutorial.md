@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と RunMyProcess の統合 | Microsoft Docs"
-description: "Azure Active Directory と RunMyProcess の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と RunMyProcess の統合 | Microsoft Docs'
+description: Azure Active Directory と RunMyProcess の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 3f718e6e93d14df6b71b99dc68fcbcd5e8264b95
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9232cbcef0bb445e8fc09475feaa2251afd3d3fb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>チュートリアル: Azure Active Directory と RunMyProcess の統合
 
@@ -29,7 +29,7 @@ RunMyProcess と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで RunMyProcess に自動的にサインオン (シングル サインオン) できるようにすることが可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への RunMyProcess の統合を構成するには、ギャラリーか
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**RunMyProcess**」と入力します。
 
@@ -86,11 +86,11 @@ RunMyProcess で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 
 RunMyProcess で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[RunMyProcess のテスト ユーザーの作成](#creating-a-runmyprocess-test-user)** - RunMyProcess で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,15 +100,15 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **RunMyProcess** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_samlbase.png)
 
 3. **[RunMyProcess のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_url.png)
 
     **[サインオン URL]** ボックスに、`https://live.runmyprocess.com/live/<tenant id>` のパターンを使用して URL を入力します。
 
@@ -117,15 +117,15 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_general_400.png)
 
-6. **[RunMyProcess Configuration (RunMyProcess 構成)]** セクションで、**[Configure RunMyProcess (RunMyProcess を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+6. **[RunMyProcess Configuration (RunMyProcess 構成)]** セクションで、**[Configure RunMyProcess (RunMyProcess を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、管理者として RunMyProcess テナントにサインオンします。
 
@@ -137,7 +137,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Method]** として、**[SSO with Samlv2]** を選択します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Method]** として、**[SSO with Samlv2]** を選択します。 
 
     b. **[SSO redirect (SSO リダイレクト)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -150,7 +150,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
     f. **[Save (保存)]** アイコンをクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -176,7 +176,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-runmyprocess-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -200,11 +200,11 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
    
     ![プロファイル](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_004.png "Profile") 
   
-    a. プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。 
 
     b. **[IDE 言語]**、**[言語]**、**[プロファイル]** を選択します。 
 
-    c. **[アカウント作成の電子メールを自分に送信]**を選択します。 
+    c. **[アカウント作成の電子メールを自分に送信]** を選択します。 
 
     d. **[Save]** をクリックします。
    
@@ -226,7 +226,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
 2. アプリケーションの一覧で **[RunMyProcess]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-runmyprocess-tutorial/tutorial_runmyprocess_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -251,7 +251,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 
