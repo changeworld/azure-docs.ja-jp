@@ -1,8 +1,8 @@
 ---
 title: 'Azure Cloud Services の定義: WorkerRole スキーマ | Microsoft Docs'
+services: cloud-services
 ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -13,11 +13,11 @@ caps.latest.revision: 55
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 0171c7254db5855f0eccd19ae9938249d8966edd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 96131a0bb928da7e22f3e26449c8b2279457d03f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services の定義: WorkerRole スキーマ
 Azure の worker ロールは、一般化された開発に役立ち、Web ロールのバックグラウンド処理を実行できるロールです。

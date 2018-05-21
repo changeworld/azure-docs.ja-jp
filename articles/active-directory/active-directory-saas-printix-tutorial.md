@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Printix の統合 | Microsoft Docs"
-description: "Azure Active Directory と Printix の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Printix の統合 | Microsoft Docs'
+description: Azure Active Directory と Printix の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b04388d3d91d9fb1ac38988071ebb5ab00366ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 23f77e791cbc171c5007795ebd2652fb3835efed
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル: Azure Active Directory と Printix の統合
 
@@ -29,7 +29,7 @@ Printix と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Printix にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Printix の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Printix**」と入力します。
 
@@ -90,7 +90,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Printix のテスト ユーザーの作成](#creating-a-printix-test-user)** - Printix で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,56 +100,56 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Printix** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_samlbase.png)
 
 3. **[Printix のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_url.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.printix.net` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > この値は実際のものではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Printix クライアント サポート チーム](mailto:support@printix.net)に問い合わせてください。 
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Printix クライアント サポート チーム](mailto:support@printix.net)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-printix-tutorial/tutorial_printix_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_general_400.png)
 
 6. Printix テナントに管理者としてサインオンします。
 
-7. 上部のメニューで右上隅のアイコンをクリックし、**[認証]**を選択します。
+7. 上部のメニューで右上隅のアイコンをクリックし、**[認証]** を選択します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_06.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_06.png)
 
 8. **[セットアップ]** タブの **[Enable Azure/Office 365 authentication (Azure/Office 365 認証の有効化)]** を選択します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_07.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_07.png)
 
 9. **[Azure]** タブの **[フェデレーション メタデータ ドキュメント]** ボックスにフェデレーション メタデータの URL を入力します。 
 
     Azure AD からダウンロードしたメタデータの XML ファイルを添付して [Printix サポート チーム](mailto:support@printix.net)に送信します。 XML ファイルはサポート チームによってアップロードされ、フェデレーション メタデータの URL が支給されます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_08.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_08.png)
    
 10. テストに成功した場合は、**[Test (テスト)]** ボタンをクリックし、**[OK]** ボタンをクリックします。
    
      **テスト** ボタンをクリックした後に Azure Active Directory ページが表示されます。 ここで「テストに成功した」とは、Azure テスト アカウントの資格情報を入力した後にメッセージ "Settings tested OK" がポップ アップ表示されるということです。**[OK]** ボタンをクリックしてください。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_09.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_09.png)
 
 11. **[Authentication (認証)]** ページの **[Save (保存)]** ボタンをクリックします。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -175,7 +175,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-printix-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -205,9 +205,9 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Printix]**を選択します。
+2. アプリケーションの一覧で **[Printix]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-printix-tutorial/tutorial_printix_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-printix-tutorial/tutorial_printix_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -232,7 +232,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Soonr Workplace の統合 | Microsoft Docs"
-description: "Azure Active Directory と Soonr Workplace の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Soonr Workplace の統合 | Microsoft Docs'
+description: Azure Active Directory と Soonr Workplace の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 55e99b2dd566dbf5a3bcb86974210c0399584e72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1725ebd39a5d976fee061ed92ddcc686fa7a1acd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>チュートリアル: Azure Active Directory と Soonr Workplace の統合
 
@@ -29,7 +29,7 @@ Soonr Workplace と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Soonr Workplace にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Soonr Workplace の統合を構成するには、ギャラリー
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Soonr Workplace**」と入力します。
 
@@ -90,7 +90,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Soonr Workplace テスト ユーザーの作成](#creating-a-soonr-workplace-test-user)** - Soonr Workplace で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,25 +100,25 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **Soonr Workplace** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_samlbase.png)
 
 3. **[Soonr Workplace のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/metadata` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
 4. **SP 開始モード**でアプリケーションを構成する場合は、**[Soonr Workplace のドメインと URL]** セクションで次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url1.png)
 
-    a. **[詳細な URL 設定の表示]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://<servername>.soonr.com/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -127,15 +127,15 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
  
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-soonr-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_general_400.png)
 
 7. **[Soonr Workplace Configuration]\(Soonr Workplace 構成\)** セクションで、**[Configure Soonr Workplace]\(Soonr Workplace を構成する\)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_configure.png) 
 
 8. **Soonr Workplace** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Soonr Workplace サポート チーム](https://awp.autotask.net/help/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -143,7 +143,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
     >Autotask Workplace の構成でサポートを必要とする場合は、[こちらのページ](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)を参照して、Workplace アカウントでサポートを受けてください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -169,7 +169,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-soonr-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -195,7 +195,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
 
 2. アプリケーションの一覧で **Soonr Workplace**を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -220,7 +220,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

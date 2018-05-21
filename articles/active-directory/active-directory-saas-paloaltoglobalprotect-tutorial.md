@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Palo Alto Networks - GlobalProtect の統合 | Microsoft Docs"
-description: "Azure Active Directory と Palo Alto Networks - GlobalProtect の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Palo Alto Networks - GlobalProtect の統合 | Microsoft Docs'
+description: Azure Active Directory と Palo Alto Networks - GlobalProtect の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c851c056095ef8e7fb40d7d2ead76457495b2118
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 43355374436cb9efac82cf118fce285c01a59175
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - GlobalProtect の統合
 
@@ -30,7 +30,7 @@ Palo Alto Networks - GlobalProtect と Azure AD の統合には、次のメリ�
 - ユーザーが自分の Azure AD アカウントで自動的に Palo Alto Networks - GlobalProtect にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -246,7 +246,7 @@ Palo Alto Networks - GlobalProtect は Just-In-Time ユーザー プロビジョ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

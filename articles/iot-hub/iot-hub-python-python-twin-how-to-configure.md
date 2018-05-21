@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2018
 ms.author: kgremban
-ms.openlocfilehash: 0ba614ab26caad31a045849d85a1abcbb5a9f818
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f6e002eb570ade7fc4008cc69e6042bd3dd97f7e
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-desired-properties-to-configure-devices-python"></a>必要なプロパティを使用してデバイスを構成する (Python)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -159,13 +159,13 @@ ms.lasthandoff: 04/16/2018
 1. デバイス アプリを実行する:
    
     ```cmd/sh
-    node SimulateDeviceConfiguration.py
+    python SimulateDeviceConfiguration.py
     ```
    
     `Device twins updated.` というメッセージが表示されます。 そのままアプリを実行します。
 
 
-## <a name="create-the-service-app"></a>サービス アプリを作成する
+## <a name="create-the-service-app"></a>デバイス アプリを作成する
 このセクションでは、新しいテレメトリの構成オブジェクトを使用して、**myDeviceId** に関連付けられたデバイス ツインの "*必要なプロパティ*" を更新する、Python コンソール アプリを作成します。 その後このアプリでは、IoT Hub に格納されているデバイス ツインにクエリを実行し、デバイスの必要な構成と報告される構成の違いを示します。
 
 1. コマンド プロンプトで次のコマンドを使用して、**Azure IoT Python Service SDK** をインストールします。

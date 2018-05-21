@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Hosted Graphite の統合 | Microsoft Docs"
-description: "Azure Active Directory と Hosted Graphite の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Hosted Graphite の統合 | Microsoft Docs'
+description: Azure Active Directory と Hosted Graphite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 57ee7770193641d0e13da2c7f8aaa6cfc6aefe73
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8a01fcfc025cf3dccad305c1baa6be4582617c42
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>チュートリアル: Azure Active Directory と Hosted Graphite の統合
 
@@ -29,7 +29,7 @@ Hosted Graphite と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Hosted Graphite にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -219,7 +219,7 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Hosted Graphite]**を選択します。
+2. アプリケーションの一覧で **[Hosted Graphite]** を選択します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_app.png) 
 
@@ -246,7 +246,7 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

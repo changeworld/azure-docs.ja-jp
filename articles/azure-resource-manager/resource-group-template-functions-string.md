@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager テンプレートの関数 - 文字列 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。"
+title: Azure Resource Manager テンプレートの関数 - 文字列 | Microsoft Docs
+description: Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: eeb3e46d9b8a5822b1aea3cc62bb214f3c3fec43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33a49a9fb66240382b0bb4e0bedbb07b8d78a763
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -64,9 +64,9 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| inputString |はい |string |Base 64 形式として返す値。 |
+| inputString |[はい] |文字列 |Base 64 形式として返す値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -115,7 +115,7 @@ base64 形式を含む文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -142,9 +142,9 @@ base64 形式を JSON オブジェクトに変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| base64Value |はい |string |JSON オブジェクトに変換する base64 形式。 |
+| base64Value |[はい] |文字列 |JSON オブジェクトに変換する base64 形式。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -193,7 +193,7 @@ JSON オブジェクト。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -220,9 +220,9 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| base64Value |はい |string |文字列に変換する base64 形式。 |
+| base64Value |[はい] |文字列 |文字列に変換する base64 形式。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -271,7 +271,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -298,10 +298,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |文字列または配列 |連結の最初の値。 |
-| 残りの引数 |いいえ |string |連結する順の追加の値。 |
+| arg1 |[はい] |文字列または配列 |連結の最初の値。 |
+| 残りの引数 |いいえ  |文字列 |連結する順の追加の値。 |
 
 ### <a name="return-value"></a>戻り値
 連結された値の文字列または配列。
@@ -332,7 +332,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -385,7 +385,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | return | array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -410,10 +410,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
-| itemToFind |はい |文字列または整数 |検索対象の値。 |
+| container |[はい] |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
+| itemToFind |[はい] |文字列または整数 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -474,7 +474,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | ブール値 | True |
 | stringFalse | ブール値 | False |
@@ -504,9 +504,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |はい |string |データ URI に変換する値。 |
+| stringToConvert |[はい] |文字列 |データ URI に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -546,7 +546,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -572,9 +572,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |あり |string |変換するデータ URI 値。 |
+| dataUriToConvert |[はい] |文字列 |変換するデータ URI 値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -614,7 +614,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -640,9 +640,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| itemToTest |あり |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
+| itemToTest |[はい] |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -691,7 +691,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | ブール値 | True |
 | objectEmpty | ブール値 | True |
@@ -718,10 +718,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |はい |string |検索対象の項目を含む値。 |
-| stringToFind |あり |string |検索対象の値。 |
+| stringToSearch |[はい] |文字列 |検索対象の項目を含む値。 |
+| stringToFind |[はい] |文字列 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -767,7 +767,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | ブール値 | True |
 | startsCapTrue | ブール値 | True |
@@ -797,9 +797,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |最初の要素または文字を取得する値。 |
+| arg1 |[はい] |配列または文字列 |最初の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -836,7 +836,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -853,7 +853,7 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
-## <a name="guid"></a>guid
+## <a name="guid"></a>GUID
 
 `guid (baseString, ...)`
 
@@ -861,10 +861,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| baseString |あり |string |GUID を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |なし |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| baseString |[はい] |文字列 |GUID を作成するためにハッシュ関数で使用される値。 |
+| 必要に応じて追加のパラメーター |いいえ  |文字列 |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 ### <a name="remarks"></a>解説
 
@@ -945,10 +945,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |はい |string |検索対象の項目を含む値。 |
-| stringToFind |あり |string |検索対象の値。 |
+| stringToSearch |[はい] |文字列 |検索対象の項目を含む値。 |
+| stringToFind |[はい] |文字列 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -990,7 +990,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1019,9 +1019,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |最後の要素または文字を取得する値。 |
+| arg1 |[はい] |配列または文字列 |最後の要素または文字を取得する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1058,7 +1058,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -1084,10 +1084,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |はい |string |検索対象の項目を含む値。 |
-| stringToFind |あり |string |検索対象の値。 |
+| stringToSearch |[はい] |文字列 |検索対象の項目を含む値。 |
+| stringToFind |[はい] |文字列 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1129,7 +1129,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1158,9 +1158,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |[はい] |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1204,7 +1204,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1230,11 +1230,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| valueToPad |はい |文字列または整数 |右揃えにする値。 |
-| totalLength |はい |int |返される文字列の文字合計数。 |
-| paddingCharacter |なし |1 文字 |左余白の長さに到達するまで使用する文字。 既定値は空白です。 |
+| valueToPad |[はい] |文字列または整数 |右揃えにする値。 |
+| totalLength |[はい] |int |返される文字列の文字合計数。 |
+| paddingCharacter |いいえ  |1 文字 |左余白の長さに到達するまで使用する文字。 既定値は空白です。 |
 
 元の文字列が、埋め込まれる文字数よりも長い場合は、文字が追加されません。
 
@@ -1268,7 +1268,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -1293,11 +1293,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| originalString |あり |string |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
-| oldString |あり |string |元の文字列から削除する文字列。 |
-| newString |あり |string |削除された文字列の代わりに追加する文字列。 |
+| originalString |[はい] |文字列 |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
+| oldString |[はい] |文字列 |元の文字列から削除する文字列。 |
+| newString |[はい] |文字列 |削除された文字列の代わりに追加する文字列。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1333,7 +1333,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
@@ -1359,10 +1359,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
-| numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
+| originalValue |[はい] |配列または文字列 |スキップ対象の配列または文字列。 |
+| numberToSkip |[はい] |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1414,7 +1414,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | array | ["three"] |
 | stringOutput | String | two three |
@@ -1440,10 +1440,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| inputString |はい |string |分割する文字列。 |
-| delimiter |あり |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
+| inputString |[はい] |文字列 |分割する文字列。 |
+| delimiter |[はい] |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1486,7 +1486,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | array | ["one", "two", "three"] |
 | secondOutput | array | ["one", "two", "three"] |
@@ -1512,10 +1512,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |はい |string |検索対象の項目を含む値。 |
-| stringToFind |あり |string |検索対象の値。 |
+| stringToSearch |[はい] |文字列 |検索対象の項目を含む値。 |
+| stringToFind |[はい] |文字列 |検索対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1561,7 +1561,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | startsTrue | ブール値 | True |
 | startsCapTrue | ブール値 | True |
@@ -1584,16 +1584,16 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="string" />
 
-## <a name="string"></a>string
+## <a name="string"></a>文字列
 `string(valueToConvert)`
 
 指定された値を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |はい | 任意 |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
+| valueToConvert |[はい] | 任意 |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1648,7 +1648,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -1675,11 +1675,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToParse |はい |string |部分文字列の抽出元となる文字列。 |
-| startIndex |なし |int |部分文字列の 0 から始まる開始文字位置。 |
-| length |いいえ |int |部分文字列の文字数。 文字列内の場所を参照する必要があります。 |
+| stringToParse |[はい] |文字列 |部分文字列の抽出元となる文字列。 |
+| startIndex |いいえ  |int |部分文字列の 0 から始まる開始文字位置。 |
+| length |いいえ  |int |部分文字列の文字数。 文字列内の場所を参照する必要があります。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1724,7 +1724,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -1749,10 +1749,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
-| numberToTake |あり |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
+| originalValue |[はい] |配列または文字列 |要素の取得元となる配列または文字列。 |
+| numberToTake |[はい] |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1804,7 +1804,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1830,9 +1830,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToChange |あり |string |小文字に変換する値。 |
+| stringToChange |[はい] |文字列 |小文字に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1868,7 +1868,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1894,9 +1894,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToChange |あり |string |大文字に変換する値。 |
+| stringToChange |[はい] |文字列 |大文字に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1932,7 +1932,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1958,9 +1958,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |はい |string |トリムする値。 |
+| stringToTrim |[はい] |文字列 |トリムする値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1992,7 +1992,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | String | one two three |
 
@@ -2017,10 +2017,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| baseString |あり |string |一意の文字列を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |なし |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| baseString |[はい] |文字列 |一意の文字列を作成するためにハッシュ関数で使用される値。 |
+| 必要に応じて追加のパラメーター |いいえ  |文字列 |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 ### <a name="remarks"></a>解説
 
@@ -2106,10 +2106,10 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| baseUri |はい |string |ベース URI 文字列。 |
-| relativeUri |あり |string |ベース URI 文字列に追加する相対 URI 文字列。 |
+| baseUri |[はい] |文字列 |ベース URI 文字列。 |
+| relativeUri |[はい] |文字列 |ベース URI 文字列に追加する相対 URI 文字列。 |
 
 **baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。 たとえば、baseUri パラメーターとして `http://contoso.com/resources/azuredeploy.json` を渡すと、`http://contoso.com/resources/` というベース URI が作成されます。
 
@@ -2156,7 +2156,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2183,9 +2183,9 @@ URI をエンコードします。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |あり |string |エンコード対象の値。 |
+| stringToEncode |[はい] |文字列 |エンコード対象の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -2224,7 +2224,7 @@ URI エンコードされた値の文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2251,9 +2251,9 @@ URI エンコードされた値の文字列を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |はい |string |文字列に変換する URI エンコードされた値。 |
+| uriEncodedString |[はい] |文字列 |文字列に変換する URI エンコードされた値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -2292,7 +2292,7 @@ URI エンコードされた値のデコード済み文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2310,7 +2310,7 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

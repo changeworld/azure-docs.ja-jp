@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 5a4e19f232abce8701e6d2e12a876c55079b91a2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c87d4f07a01fa42ceb2582b974feb4e802b3e03f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して複数の NIC を持つ Linux 仮想マシンを作成する
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -104,7 +104,7 @@ azure network nic create \
     --subnet-name mySubnetBackEnd
 ```
 
-通常は、VM 間でトラフィックを管理、分散するために、[ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md)や[ロード バランサー](../../load-balancer/load-balancer-overview.md)も作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+通常は、VM 間でトラフィックを管理、分散するために、[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)や[ロード バランサー](../../load-balancer/load-balancer-overview.md)も作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
 azure network nsg create \

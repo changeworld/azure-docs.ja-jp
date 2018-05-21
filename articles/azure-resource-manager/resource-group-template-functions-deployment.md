@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager テンプレートの関数 - デプロイ | Microsoft Docs"
-description: "Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。"
+title: Azure Resource Manager テンプレートの関数 - デプロイ | Microsoft Docs
+description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 17fe2bc467acc5542d021961a066940dbecf6120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
 
@@ -151,16 +151,16 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="parameters" />
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
 パラメーター値を返します。 指定したパラメーター名は、テンプレートのパラメーター セクションで定義されている必要があります。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| parameterName |あり |string |返されるパラメーターの名前。 |
+| parameterName |あり |文字列 |返されるパラメーターの名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -245,7 +245,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | 方法 1 |
 | intOutput | int | 1 |
@@ -274,9 +274,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| variableName |はい |string |返す変数の名前。 |
+| variableName |[はい] |String |返す変数の名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -348,7 +348,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | array | [1, 2, 3, 4] |
@@ -367,7 +367,7 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

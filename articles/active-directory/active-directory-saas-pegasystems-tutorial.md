@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Pega Systems の統合 | Microsoft Docs"
-description: "Azure Active Directory と Pega Systems の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Pega Systems の統合 | Microsoft Docs'
+description: Azure Active Directory と Pega Systems の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 924abe287b5e39bb77a418b56b5c33195095e07a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 539de49f24b2ca0c9b70be5a339625c1e14edc44
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル: Azure Active Directory と Pega Systems の統合
 
@@ -30,7 +30,7 @@ Pega Systems と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Pega Systems に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[Pega Systems のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_url.png)
 
-    a. **[識別子]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService` のパターンを使用して URL を入力します。
 
@@ -123,7 +123,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
 5. Pega Systems アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 これらの要求はお客様に固有であり、お客様の要件によって異なります。 次のオプションの要求は、アプリケーションで構成できる単なる例です。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-pegasystems-tutorial/tutorial_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-pegasystems-tutorial/tutorial_attribute.png)
 
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -142,17 +142,17 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE]
     > これらは、お客様に固有な値です。 適切な値を指定してください。
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-pegasystems-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-pegasystems-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-pegasystems-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-pegasystems-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 7. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -171,7 +171,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
-    a. [Type]\(種類\) で **[SAML 2.0]** を選択します
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Type]\(種類\) で **[SAML 2.0]** を選択します
 
     b. **[Name]\(名前\)** ボックスに名前を入力します (例: Azure AD SSO)
 
@@ -191,7 +191,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_admin4.png)
 
-    a. **[Entity Identification]\(エンティティの識別\)** の値をコピーし、Azure Portal の **[識別子]** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Entity Identification]\(エンティティの識別\)** の値をコピーし、Azure Portal の **[識別子]** ボックスに貼り付けます。
 
     b.  **[Assertion Consumer Service (ACS) location]\(Assertion Consumer Service (ACS) の場所\)** の値をコピーし、Azure Portal の **[応答 URL]** ボックスに貼り付けます。
 
@@ -200,7 +200,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 15. **[保存]**
     
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -279,7 +279,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

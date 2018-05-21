@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と ScreenSteps の統合 | Microsoft Docs"
-description: "Azure Active Directory と ScreenSteps の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と ScreenSteps の統合 | Microsoft Docs'
+description: Azure Active Directory と ScreenSteps の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: ee2adf151d47931ab6a2e3bdc5e20c16deb8e8e4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 444bc2d0724f8e7efc453c9efa577908822a4df2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル: Azure Active Directory と ScreenSteps の統合
 
@@ -30,7 +30,7 @@ ScreenSteps と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に ScreenSteps にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -131,7 +131,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![Account management](./media/active-directory-saas-screensteps-tutorial/ic778523.png "Account management")
 
-9. **[Single Sign-on]**をクリックします。
+9. **[Single Sign-on]** をクリックします。
 
     ![Remote authentication](./media/active-directory-saas-screensteps-tutorial/ic778524.png "Remote authentication")
 
@@ -143,7 +143,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![Create an authentication endpoint](./media/active-directory-saas-screensteps-tutorial/ic778526.png "Create an authentication endpoint")
     
-    a. **[Title]** テキスト ボックスに、タイトルを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Title]** テキスト ボックスに、タイトルを入力します。
     
     b. **[Mode]** 一覧から **[SAML]** を選択します。
     
@@ -157,7 +157,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 
     ![Remote authentication endpoint](./media/active-directory-saas-screensteps-tutorial/ic778527.png "Remote authentication endpoint")
 
-    a. **[Upload new SAML Certificate file]\(新しい SAML 証明書のアップロード\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Upload new SAML Certificate file]\(新しい SAML 証明書のアップロード\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
     
     b. Azure Portal からコピーした **SAML シングル サインオン サービスの URL** を **[Remote Login URL]\(Remote ログイン URL\)** ボックスに貼り付けます。
     
@@ -165,7 +165,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
     
     d. **[グループ]** を選択し、プロビジョニングされたときにユーザーを割り当てます。
     
-    e. **[Update]**をクリックします。
+    e. **[Update]** をクリックします。
 
     f. **SAML コンシューマー URL** をクリップボードにコピーし、**[ScreenSteps Domain and URLs]\(ScreenSteps ドメインおよび URL\)** セクションの **[Sign-on URL]\(サインオン URL\)** ボックスに貼り付けます。
     
@@ -174,7 +174,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
     h. ScreenSteps にログインするすべてのユーザーについて、このエンドポイントを使用するには、**[アカウントの既定値にする]** ボタンをクリックします。 または、**[サイトに追加]** ボタンをクリックして、**ScreenSteps** 内の特定のサイトにこのエンドポイントを使用することもできます。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -253,7 +253,7 @@ ScreenSteps で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

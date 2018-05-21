@@ -1,8 +1,8 @@
 ---
-title: "Azure Resource Manager テンプレートをエクスポートする | Microsoft Docs"
-description: "Azure Resource Manager を使用して、既存のリソース グループからテンプレートをエクスポートします。"
+title: Azure Resource Manager テンプレートをエクスポートする | Microsoft Docs
+description: Azure Resource Manager を使用して、既存のリソース グループからテンプレートをエクスポートします。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ac553a3608df41548f845e27c545ff63886e37c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>既存のリソースから Azure Resource Manager テンプレートをエクスポートする
 この記事では、サブスクリプション内の既存のリソースから Resource Manager テンプレートをエクスポートする方法について説明します。 生成されたそのテンプレートを使用して、テンプレートの構文について理解を深めることができます。
@@ -40,11 +40,11 @@ ms.lasthandoff: 02/27/2018
    
       ![Web アプリを SQL の検索](./media/resource-manager-export-template/webapp-sql.png)
 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 
       ![作成の選択](./media/resource-manager-export-template/create.png)
 
-4. Web アプリと SQL データベースに必要な値を入力します。 **[作成]**を選択します。
+4. Web アプリと SQL データベースに必要な値を入力します。 **[作成]** を選択します。
 
       ![Web と SQL の値の指定](./media/resource-manager-export-template/provide-web-values.png)
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 02/27/2018
 2. グループのデプロイの履歴が表示されます。 このケースでは、ポータルに表示されるデプロイはおそらく 1 つだけです。 このデプロイを選択します。
    
      ![最終デプロイ](./media/resource-manager-export-template/select-history.png)
-3. ポータルにデプロイの概要が表示されます。 概要には、デプロイの状態とその操作、およびパラメーターに指定した値が含まれています。 デプロイに使用されたテンプレートを表示するには、 **[テンプレートの表示]**を選択します。
+3. ポータルにデプロイの概要が表示されます。 概要には、デプロイの状態とその操作、およびパラメーターに指定した値が含まれています。 デプロイに使用されたテンプレートを表示するには、 **[テンプレートの表示]** を選択します。
    
      ![デプロイの概要の表示](./media/resource-manager-export-template/view-template.png)
 4. Resource Manager によって、次の 7 つのファイルが取得されます。
@@ -84,7 +84,7 @@ ms.lasthandoff: 02/27/2018
 > 
 > 
 
-1. リソース グループのテンプレートを表示するには、 **[Automation スクリプト]**を選択します。
+1. リソース グループのテンプレートを表示するには、 **[Automation スクリプト]** を選択します。
    
       ![リソース グループのエクスポート](./media/resource-manager-export-template/select-automation.png)
    

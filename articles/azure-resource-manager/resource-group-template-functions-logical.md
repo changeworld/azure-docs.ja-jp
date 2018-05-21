@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager テンプレートの関数 - 論理 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。"
+title: Azure Resource Manager テンプレートの関数 - 論理 | Microsoft Docs
+description: Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: d16264abf64ef88dfb24948fc04e33de619f4e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
 
@@ -37,10 +37,10 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |boolean |true かどうかを確認する最初の値。 |
-| arg2 |あり |boolean |true かどうかを確認する 2 番目の値。 |
+| arg1 |[はい] |ブール値 |true かどうかを確認する最初の値。 |
+| arg2 |[はい] |ブール値 |true かどうかを確認する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -74,7 +74,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | andExampleOutput | ブール値 | False |
 | orExampleOutput | ブール値 | True |
@@ -99,9 +99,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |文字列または整数 |ブール値に変換する値。 |
+| arg1 |[はい] |文字列または整数 |ブール値に変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 変換後の値のブール値。
@@ -138,7 +138,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | trueString | ブール値 | True |
 | falseString | ブール値 | False |
@@ -164,11 +164,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| condition |あり |boolean |true かどうかを確認する値。 |
-| trueValue |あり | string、int、object、または array |条件が true の場合に返される値。 |
-| falseValue |あり | string、int、object、または array |条件が false の場合に返される値。 |
+| condition |[はい] |ブール値 |true かどうかを確認する値。 |
+| trueValue |[はい] | string、int、object、または array |条件が true の場合に返される値。 |
+| falseValue |[はい] | string、int、object、または array |条件が false の場合に返される値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -245,9 +245,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
-| yesOutput | String | ○ |
+| yesOutput | String | はい |
 | noOutput | String | × |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -269,9 +269,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |boolean |変換する値。 |
+| arg1 |[はい] |ブール値 |変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -305,7 +305,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | andExampleOutput | ブール値 | False |
 | orExampleOutput | ブール値 | True |
@@ -341,7 +341,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkNotEquals | ブール値 | True |
 
@@ -364,10 +364,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |あり |boolean |true かどうかを確認する最初の値。 |
-| arg2 |あり |boolean |true かどうかを確認する 2 番目の値。 |
+| arg1 |[はい] |ブール値 |true かどうかを確認する最初の値。 |
+| arg2 |[はい] |ブール値 |true かどうかを確認する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -401,7 +401,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | andExampleOutput | ブール値 | False |
 | orExampleOutput | ブール値 | True |
@@ -419,7 +419,7 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Dome9 Arc の統合 | Microsoft Docs"
-description: "Azure Active Directory と Dome9 Arc の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Dome9 Arc の統合 | Microsoft Docs'
+description: Azure Active Directory と Dome9 Arc の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ce4bb1be8b0124c69991765e18ce9922bd2f4a4
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: de164f6a439fd68b4746dc96c43ff5cb0740ffe8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>チュートリアル: Azure Active Directory と Dome9 Arc の統合
 
@@ -30,7 +30,7 @@ Dome9 Arc と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Dome9 Arc にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -144,7 +144,7 @@ Dome9 Arc で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 7. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -246,7 +246,7 @@ Azure AD ユーザーが Dome9 Arc にログインできるようにするには
 
     c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
-    d. **[SSO User] (SSO ユーザー)**を **[オン]** にします。
+    d. **[SSO User] (SSO ユーザー)** を **[オン]** にします。
 
     e. **[作成]** をクリックします。
 
@@ -290,7 +290,7 @@ Azure AD ユーザーが Dome9 Arc にログインできるようにするには
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

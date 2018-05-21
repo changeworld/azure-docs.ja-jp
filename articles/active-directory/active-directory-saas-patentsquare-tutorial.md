@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と PatentSQUAR の統合 | Microsoft Docs"
-description: "Azure Active Directory と PatentSQUAR の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と PatentSQUAR の統合 | Microsoft Docs'
+description: Azure Active Directory と PatentSQUAR の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 47ba146d18a20cf6c7e7480d74a02ba354486988
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 97121dbdef9d3c3cd8b765ccf034fcafed7b3811
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>チュートリアル: Azure Active Directory と PatentSQUAR の統合
 
@@ -30,7 +30,7 @@ PatentSQUAR と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に PatentSQUAR にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -172,7 +172,7 @@ PatentSQUAR で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[PatentSQUARE]**を選択します。
+2. アプリケーションの一覧で **[PatentSQUARE]** を選択します。
 
     ![アプリケーションの一覧の PatentSQUARE リンク](./media/active-directory-saas-patentsquare-tutorial/tutorial_patentsquare_app.png)  
 
@@ -200,7 +200,7 @@ PatentSQUAR で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

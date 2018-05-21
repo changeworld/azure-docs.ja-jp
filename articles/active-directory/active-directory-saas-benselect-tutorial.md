@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と BenSelect の統合 | Microsoft Docs"
-description: "Azure Active Directory と BenSelect の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と BenSelect の統合 | Microsoft Docs'
+description: Azure Active Directory と BenSelect の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 22f786864067385b0a61b6d8fdb5fc314a90be1c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a1a8e8bf818ad90e0f834ab87dba929e5d1ceaa3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benselect"></a>チュートリアル: Azure Active Directory と BenSelect の統合
 
@@ -29,7 +29,7 @@ BenSelect と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に BenSelect にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への BenSelect の統合を構成するには、ギャラリーから
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **BenSelect**」と入力します。
 
@@ -86,11 +86,11 @@ BenSelect で、Azure AD での **[ユーザー名]** の値を **[ユーザー�
 
 BenSelect で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[BenSelect テスト ユーザーの作成](#creating-a-benselect-test-user)** - Azure AD でのユーザーにリンクされた、BenSelect での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,15 +100,15 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **[BenSelect]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_samlbase.png)
 
 3. **[BenSelect Domain and URLs] \(BenSelect のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_url.png)
 
     **[応答 URL]** ボックスに、`https://www.benselect.com/enroll/login.aspx?Path=<tenant name>` のパターンを使用して URL を入力します。
 
@@ -117,25 +117,25 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_certificate.png) 
 
 5. BenSelect アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_06.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_06.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a. **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
 
     b. **[Mail] \(メール)** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_general_400.png)
 
 8. **[BenSelect Configuration] \(BenSelect 構成)** セクションで、**[Configure BenSelect] \(BenSelect の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_configure.png) 
 
 9. **BenSelect** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Raw)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [BenSelect サポート チーム](mailto:support@selerix.com)に送信する必要があります。
 
@@ -143,7 +143,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
    >適切なサーバー (app2101 など) で SSO を設定するために、この統合には SHA256 アルゴリズム (SHA1 はサポート対象外) が必要であるという点を伝える必要があります。 
    
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -168,7 +168,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-benselect-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -192,9 +192,9 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[BenSelect]**を選択します。
+2. アプリケーションの一覧で **[BenSelect]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -219,7 +219,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

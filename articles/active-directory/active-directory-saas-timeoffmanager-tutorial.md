@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TimeOffManager の統合 | Microsoft Docs"
-description: "Azure Active Directory と TimeOffManager の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と TimeOffManager の統合 | Microsoft Docs'
+description: Azure Active Directory と TimeOffManager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 5638a1b2271fe50344c29de1e3883ca67c20c9ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 462a77e56f2dc28a3a3258ab44a1486a4dd257e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>チュートリアル: Azure Active Directory と TimeOffManager の統合
 
@@ -30,7 +30,7 @@ TimeOffManager と Azure AD の統合には、次の利点があります。
 - ユーザーが各自の Azure AD アカウントで TimeOffManager に自動的にサインオン (シングル サインオン) するように、設定が可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,11 +64,11 @@ Azure AD への TimeOffManager の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**TimeOffManager**」と入力し、結果ウィンドウで **[TimeOffManager]** を選び、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
@@ -97,7 +97,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
 
 1. Azure Portal の **TimeOffManager** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -128,7 +128,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
     | Lastname |User.surname |
     | 電子メール |User.mail |
     
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。  上記の表の各データ行で、 **[ユーザー属性の追加]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  上記の表の各データ行で、 **[ユーザー属性の追加]** をクリックします。
     
     ![saml token attributes](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_timeoffmanager_addattrb.png "saml token attributes")
     
@@ -138,11 +138,11 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
     
     c.  **[属性値]** テキスト ボックスで、その行に対して表示される属性値を選択します。
     
-    d.  **[OK]**をクリックします。
+    d.  **[OK]** をクリックします。
     
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-timeoffmanager-tutorial/tutorial_general_400.png)
 
 7. **[TimeOffManager 構成]** セクションで、**[Configure TimeOffManager]\(TimeOffManager を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
@@ -157,7 +157,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
    
    ![Single Sign-On Settings](./media/active-directory-saas-timeoffmanager-tutorial/ic795918.png "Single Sign-On Settings")
    
-   a. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
    
    b. **[IdP Issuer]\(IdP 発行者\)** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
    
@@ -167,7 +167,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
    
    e. **[Auto-Create Users]** で **[Yes]** を選択します。
    
-   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
+   f. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
    
    g. **[変更を保存]** をクリックします。
 
@@ -176,7 +176,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
       ![Single Sign-On Settings](./media/active-directory-saas-timeoffmanager-tutorial/ic795915.png "Single Sign-On Settings")
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -202,7 +202,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
  
     ![[ユーザー] ダイアログ ページ](./media/active-directory-saas-timeoffmanager-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -214,7 +214,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
 
 Azure AD ユーザーが TimeOffManager にログインできるようにするには、そのユーザーを TimeOffManager にプロビジョニングする必要があります。  
 
-TimeOffManager は、ジャストインタイム ユーザー プロビジョニングをサポートしています。 ユーザー側で必要な操作はありません。  
+TimeOffManager は、ジャストインタイム ユーザー プロビジョニングをサポートしています。 アイテムを操作することはありません。  
 
 シングル サインオンを使用して初めてログインするときに、ユーザーが自動的に追加されます。
 
@@ -261,7 +261,7 @@ TimeOffManager は、ジャストインタイム ユーザー プロビジョニ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

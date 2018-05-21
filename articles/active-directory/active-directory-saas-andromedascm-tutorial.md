@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e2a140ba6dc4825283801ed4f3435136b307153
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cdceb81319529a3db8b5c9809818d024acc3f80b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
 
@@ -30,7 +30,7 @@ Andromeda と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Andromeda にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +106,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Andromeda のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a. **[識別子]** ボックスに、`https://<tenantURL>.ngcxpress.com/` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<tenantURL>.ngcxpress.com/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx` のパターンを使用して URL を入力します。
 
@@ -131,13 +131,13 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
     | 属性名 | 属性値 |
     | -------------- | -------------------- |    
     | role        | アプリ固有のロール |
-    | type        | アプリの種類 |
+    | 型        | アプリの種類 |
     | company       | CompanyName    |
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値はデモ用なので、実際の組織のロールを使ってください。
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/active-directory-saas-andromedascm-tutorial/tutorial_attribute_04.png)
 
@@ -147,9 +147,9 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]**は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
     
-    e. **[OK]**をクリックします。
+    e. **[OK]** をクリックします。
 
 7. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -177,7 +177,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     ![Andromeda の構成](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
 
     b. **[Andromeda Information]\(Andromeda 情報\)** セクションで、**[SP Identity]\(SP ID\)** の値をコピーして、**[Andromeda のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
@@ -195,7 +195,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     ![Andromeda 属性マップ](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
-    i. **[保存]** をクリックします。
+    i. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -279,7 +279,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

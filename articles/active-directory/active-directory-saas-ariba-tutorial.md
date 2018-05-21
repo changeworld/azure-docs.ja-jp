@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Ariba の統合 | Microsoft Docs"
-description: "Azure Active Directory と Ariba の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Ariba の統合 | Microsoft Docs'
+description: Azure Active Directory と Ariba の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: jeedes
-ms.openlocfilehash: 167bef10b696866a9034314c383468744ebf637b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aedb8f761a16cc438a1ad6473728e29b270c3919
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
 
@@ -29,7 +29,7 @@ Ariba と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Ariba にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Ariba の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. [検索] ボックスに、「 **Ariba**」と入力します。
 
@@ -86,11 +86,11 @@ Ariba で、Azure AD での **[ユーザー名]** の値を **[ユーザー名]*
 
 Ariba で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Ariba テスト ユーザーの作成](#creating-an-ariba-test-user)** - Azure AD でのユーザーにリンクされた、Ariba での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **[Ariba]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_samlbase.png)
 
 3. **[Ariba Domain and URLs] \(Ariba のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_url.png)
 
-    a. **[サインオン URL]** テキスト ボックスに、`https://<subdomain>.sourcing.ariba.com` または `https://<subdomain>.supplier.ariba.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** テキスト ボックスに、`https://<subdomain>.sourcing.ariba.com` または `https://<subdomain>.supplier.ariba.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`http://<subdomain>.procurement-2.ariba.com` の形式で URL を入力します。
 
@@ -120,16 +120,16 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64)] \(証明書 (Base64))** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ariba-tutorial/tutorial_general_400.png)
 
 6. アプリケーション用に構成された SSO を取得するには、Ariba サポート チーム (**1-866-218-2155**) に電話すると、ダウンロードされた**証明書 (Base64)** ファイルの提供方法について詳しく教えてもらえます。  
  
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -155,7 +155,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -183,9 +183,9 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Ariba]**を選択します。
+2. アプリケーションの一覧で **[Ariba]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -209,7 +209,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: b08e2b7315d180a387f27ab2082b7f9f6a9bbfff
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 776ae83990a7799102c69347196a72a68561ee6b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -76,7 +76,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-一般に、[ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md)を作成して、VM へのネットワーク トラフィックをフィルターし、[ロード バランサー](../../load-balancer/load-balancer-overview.md)を作成して、複数の VM 間でトラフィックを分散します。
+一般に、[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)を作成して、VM へのネットワーク トラフィックをフィルターし、[ロード バランサー](../../load-balancer/load-balancer-overview.md)を作成して、複数の VM 間でトラフィックを分散します。
 
 ### <a name="create-the-virtual-machine"></a>仮想マシンの作成
 では、VM 構成を構築してみましょう。 各 VM サイズについて、1 つの VM に追加できる NIC の合計数には制限があります。 詳細については、「[Windows VM のサイズ](sizes.md)」をご覧ください。

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Lesson.ly の統合 | Microsoft Docs"
-description: "Azure Active Directory と Lesson.ly の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Lesson.ly の統合 | Microsoft Docs'
+description: Azure Active Directory と Lesson.ly の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 01e4395d5b2baaaf130f7a0fa7aaa29d611559b7
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: b5295b2c4294141cc2217a35eb943316e190b77d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>チュートリアル: Azure Active Directory と Lesson.ly の統合
 
@@ -29,7 +29,7 @@ Lesson.ly と Azure AD の統合には、次の利点があります。
 - ユーザーが各自の Azure AD アカウントで Lesson.ly に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,7 +110,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.lesson.ly/signin`|
@@ -145,7 +145,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
     | urn:oid:0.9.2342.19200300.100.1.3 |User.mail |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |user.objectid |
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_attribute_04.png)
 
@@ -155,7 +155,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。     
+    d. **[OK]** をクリックします。     
 
 7. **[保存]** ボタンをクリックします。
 
@@ -193,7 +193,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lessonly-tutorial/create_aaduser_04.png) 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -222,7 +222,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Lesson.ly]**を選択します。
+2. アプリケーションの一覧で **[Lesson.ly]** を選択します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_app.png) 
 
@@ -249,7 +249,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

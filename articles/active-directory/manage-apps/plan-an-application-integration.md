@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 523508bc2caeb4315caa6597662174aa0fdeb47b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ac3438f0c706988323318146965a87461dcce1e8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 ## <a name="overview"></a>概要
@@ -64,7 +64,7 @@ ms.lasthandoff: 05/11/2018
 前に説明したように、これまで組織で管理されていなかったアプリケーションが存在する可能性があります。  インベントリのプロセスの一環で、承認されていないクラウド アプリケーションを検索することができます。 詳細については、 [承認されていないクラウド アプリケーションを Cloud App Discovery で検出する方法](cloud-app-discovery.md)に関するページを参照してください。
 
 ### <a name="authentication-types"></a>認証の種類
-各アプリケーションにさまざまな認証の要件が存在する可能性があります。 Azure AD では、証明書の署名に、パスワードによるシングル サインオンだけでなく、SAML 2.0、WS-Federation、OpenID Connect プロトコルを使用するアプリケーションを使用することができます。 Azure AD で使用するアプリケーション認証の種類の詳細については、「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](../active-directory-sso-certs.md)」と[パスワード ベースのシングル サインオン](../active-directory-appssoaccess-whatis.md)に関するページを参照してください。
+各アプリケーションにさまざまな認証の要件が存在する可能性があります。 Azure AD では、証明書の署名に、パスワードによるシングル サインオンだけでなく、SAML 2.0、WS-Federation、OpenID Connect プロトコルを使用するアプリケーションを使用することができます。 Azure AD で使用するアプリケーション認証の種類の詳細については、「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](../active-directory-sso-certs.md)」と[パスワード ベースのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Azure AD アプリケーション プロキシを使用した SSO の有効化
 Microsoft Azure AD アプリケーション プロキシを使用すると、プライベート ネットワーク内に置かれたアプリケーションへの、任意の場所および任意のデバイスからのアクセスを安全に許可することができます。 アプリケーション プロキシ コネクタは、環境内にインストールすると、Azure AD で簡単に構成することができます。
@@ -73,7 +73,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 次の記事では、アプリケーションを Azure AD と統合するさまざまな方法について説明し、ガイダンスをいくつか示します。
 
 * [使用する Active Directory の決定](../active-directory-administer.md)
-* [Azure アプリケーション ギャラリーのアプリケーションの使用](../active-directory-appssoaccess-whatis.md)
+* [Azure アプリケーション ギャラリーのアプリケーションの使用](what-is-single-sign-on.md)
 * [SaaS アプリケーションのチュートリアルの一覧の統合](../active-directory-saas-tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>アプリケーションへのアクセスの管理

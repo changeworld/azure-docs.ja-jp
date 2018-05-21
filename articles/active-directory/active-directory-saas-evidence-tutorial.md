@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Evidence.com の統合 | Microsoft Docs"
-description: "Azure Active Directory と Evidence.com の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Evidence.com の統合 | Microsoft Docs'
+description: Azure Active Directory と Evidence.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 655a12685641964c81dd6a94ae7e7a19a9a30001
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3f0d469ac761a5db4bcaf1aaceea0b9abca33559
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>チュートリアル: Azure Active Directory と Evidence.com の統合
 
@@ -30,7 +30,7 @@ Evidence.com と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Evidence.com にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Evidence.com で Azure AD のシングル サインオンを構成してテス�
 
     ![[Evidence.com のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<yourtenant>.evidence.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<yourtenant>.evidence.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<yourtenant>.evidence.com` の形式で URL を入力します。
 
@@ -140,7 +140,7 @@ Evidence.com で Azure AD のシングル サインオンを構成してテス�
 12. Evidence.com の構成を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -185,9 +185,9 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 
 2. **[Admin] \(管理)** タブをクリックします。
 
-3. **[Add User] \(ユーザーの追加)**をクリックします。
+3. **[Add User] \(ユーザーの追加)** をクリックします。
 
-4. **[Add] \(追加)** ボタンをクリックします。
+4. **[追加]** をクリックします。
 
 5. 追加したユーザーの **[Email Address] \(電子メール アドレス)** が、アクセス権を付与する Azure AD 内のユーザーのユーザー名と一致する必要があります。 組織内でユーザー名と電子メール アドレスが同じ値でない場合は、Azure Portal の **[Evidence.com] > [属性] > [シングル サインオン]** セクションを使用して、Evidence.com に送信される nameidenitifer を電子メール アドレスに変更できます。
 
@@ -231,7 +231,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

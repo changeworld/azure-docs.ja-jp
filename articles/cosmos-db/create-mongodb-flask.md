@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
-このクイック スタート ガイドでは、次の [Flask 例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)を使用し、MongoDB の代わりに [Azure Cosmos DB Emulator](/local-emulator.md) と Azure Cosmos DB [MongoDB API](mongodb-introduction.md) を使用してシンプルな To-Do Flask アプリを構築する方法を示します。
+このクイック スタート ガイドでは、次の [Flask 例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)を使用し、MongoDB の代わりに [Azure Cosmos DB Emulator](local-emulator.md) と Azure Cosmos DB [MongoDB API](mongodb-introduction.md) を使用してシンプルな To-Do Flask アプリを構築する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Cosmos DB Emulator](/local-emulator.md) をダウンロードします。 エミュレーターは現在、Windows でのみサポートされています。 このサンプルでは、Azure のプロダクション キーと共にサンプルを使用する方法を示します。この操作は任意のプラットフォームで実行できます。
+- [Azure Cosmos DB Emulator](local-emulator.md) をダウンロードします。 エミュレーターは現在、Windows でのみサポートされています。 このサンプルでは、Azure のプロダクション キーと共にサンプルを使用する方法を示します。この操作は任意のプラットフォームで実行できます。
 
 - Visual Studio Code をまだインストールしていない場合は、お使いのプラットフォーム (Windows、Mac、Linux) 用の [VS Code](https://code.visualstudio.com/Download) をすばやくインストールできます。
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と BetterWorks の統合 | Microsoft Docs"
-description: "Azure Active Directory と BetterWorks の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と BetterWorks の統合 | Microsoft Docs'
+description: Azure Active Directory と BetterWorks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 85c815218bca322bcbfd25b5a10b9eaa17ea4adf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0d70e853450ac2ff5c16db005849239901184da9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>チュートリアル: Azure Active Directory と BetterWorks の統合
 
@@ -29,7 +29,7 @@ BetterWorks と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に BetterWorks にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への BetterWorks の統合を構成するには、ギャラリーか�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **BetterWorks**」と入力します。
 
@@ -86,11 +86,11 @@ BetterWorks で、Azure AD での **[ユーザー名]** の値を **[ユーザ�
 
 BetterWorks で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[BetterWorks テスト ユーザーの作成](#creating-a-betterworks-test-user)** - Azure AD でのユーザーにリンクされた、BetterWorks での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,25 +100,25 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **[BetterWorks]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_samlbase.png)
 
 3. **[BetterWorks Domain and URLs] \(BetterWorks のドメインと URL)** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://app.betterworks.com/saml2/metadata/` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://app.betterworks.com/saml2/metadata/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://app.betterworks.com/saml2/acs/` のパターンを使用して URL を入力します。
 
 4. **[BetterWorks Domain and URLs] \(BetterWorks のドメインと URL)** セクションで、**SP 開始モード**でアプリケーションを構成する場合は次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url1.png)
 
-    a. **[詳細な URL 設定の表示]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、`https://app.betterworks.com` のパターンを使用して URL を入力します。
 
@@ -127,11 +127,11 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_certificate.png)  
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_certificate.png)  
 
 5. BetterWorks アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーションの **[属性]** タブから管理できます。 次のスクリーンショットはその例です。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_attribute.png)
 
 6. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。
  
@@ -139,27 +139,27 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
    | -------------- |  ------------ |
    | saml_token     | bd189cf6-1701-11e6-8f90-d26992eca2a5 |
 
-   a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_officespace_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_officespace_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-betterworks-tutorial/tutorial_officespace_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_officespace_05.png)
 
    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。 
 
    c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-   d. **[OK]**をクリックします。
+   d. **[OK]** をクリックします。
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_general_400.png)
 
 8. **BetterWorks** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [BetterWorks サポート チーム](mailto:support@betterworks.com)に送信する必要があります。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -185,7 +185,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-betterworks-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -209,9 +209,9 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[BetterWorks]**を選択します。
+2. アプリケーションの一覧で **[BetterWorks]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -236,7 +236,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

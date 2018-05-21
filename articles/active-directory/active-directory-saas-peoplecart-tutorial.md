@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Peoplecart の統合 | Microsoft Docs"
-description: "Azure Active Directory と Peoplecart の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Peoplecart の統合 | Microsoft Docs'
+description: Azure Active Directory と Peoplecart の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 47203e977b4c388c5dd37eeb0bd218d0eb4ffdec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d78d923c241304b74325425a0f74175637224866
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>チュートリアル: Azure Active Directory と Peoplecart の統合
 
@@ -30,7 +30,7 @@ Peoplecart と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Peoplecart に自動的にサインオン (シングル サインオン) できるように、設定が可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -97,17 +97,17 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Peoplecart** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-peoplecart-tutorial/tutorial_peoplecart_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-peoplecart-tutorial/tutorial_peoplecart_samlbase.png)
 
 3. **[Peoplecart のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Peoplecart のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-peoplecart-tutorial/tutorial_peoplecart_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenantname>.peoplecart.com/SignIn.aspx` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenantname>.peoplecart.com/SignIn.aspx` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenantname>.peoplecart.com` の形式で URL を入力します。
 
@@ -129,7 +129,7 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 7. **Peoplecart** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [Peoplecart サポート チーム](https://peoplecart.com/ContactUs.aspx)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -155,7 +155,7 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-peoplecart-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -179,7 +179,7 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Peoplecart]**を選択します。
+2. アプリケーションの一覧で **[Peoplecart]** を選択します。
 
     ![アプリケーションの一覧の Peoplecart のリンク](./media/active-directory-saas-peoplecart-tutorial/tutorial_peoplecart_app.png) 
 
@@ -207,7 +207,7 @@ Peoplecart で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

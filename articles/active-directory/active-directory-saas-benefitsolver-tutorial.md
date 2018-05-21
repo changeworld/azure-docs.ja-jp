@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Benefitsolver の統合 | Microsoft Docs"
-description: "Azure Active Directory と Benefitsolver の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Benefitsolver の統合 | Microsoft Docs'
+description: Azure Active Directory と Benefitsolver の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d23f1c4d6613d525695ed222e0d84736b9007833
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a254f1696d60d825f637b6aa37d05cf95b318a25
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>チュートリアル: Azure Active Directory と Benefitsolver の統合
 
@@ -30,7 +30,7 @@ Benefitsolver と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Benefitsolver にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
 
     ![[Benefitsolver のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-benefitsolver-tutorial/tutorial_benefitsolver_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`http://<companyname>.benefitsolver.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`http://<companyname>.benefitsolver.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.benefitsolver.com/saml20` の形式で URL を入力します。
 
@@ -130,7 +130,7 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
     | LogoutURL | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
     | EmployeeID | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 [属性の追加] をクリックして [属性の追加] ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [属性の追加] をクリックして [属性の追加] ダイアログを開きます。
 
     ![Benefitsolver の属性セクション](./media/active-directory-saas-benefitsolver-tutorial/tutorial_attribute_04.png)
     
@@ -140,7 +140,7 @@ Benefitsolver で Azure AD のシングル サインオンを構成してテス�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -238,7 +238,7 @@ Azure AD ユーザーが Benefitsolver にログインできるようにする�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

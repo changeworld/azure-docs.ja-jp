@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b004bec7c022662a1c90f54079af4fd25c84fab
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 04a0335a819c835248e7a18afe36acf13e100fb3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
 
@@ -30,7 +30,7 @@ Springer Link と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Springer Link にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -107,7 +107,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     ![[Springer Link のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url1.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://fsso.springer.com`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://fsso.springer.com`
 
     b. **[応答 URL]** ボックスに、URL として「`https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。    
 
@@ -117,7 +117,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     **[サインオン URL]** テキストボックスに、URL として「`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。
 
-5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。 
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。 
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_certificate.png)    
 
@@ -199,7 +199,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

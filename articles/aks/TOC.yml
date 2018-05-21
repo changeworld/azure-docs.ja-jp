@@ -45,13 +45,13 @@
           href: delete-cluster.md
     - name: データ ボリュームの構成
       items:
-        - name: Azure ディスクの動的プロビジョニング
+        - name: Azure ディスク - 動的
           href: azure-disks-dynamic-pv.md
-        - name: Azure ディスクの静的プロビジョニング
+        - name: Azure ディスク - 静的
           href: azure-disk-volume.md
-        - name: Azure ファイルの動的プロビジョニング
+        - name: Azure Files - 動的
           href: azure-files-dynamic-pv.md
-        - name: Azure ファイルの静的プロビジョニング
+        - name: Azure Files - 静的
           href: azure-files-volume.md
     - name: ネットワークを構成する
       items:

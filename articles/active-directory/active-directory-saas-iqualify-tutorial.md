@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と iQualify LMS の統合 | Microsoft Docs"
-description: "Azure Active Directory と iQualify LMS の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と iQualify LMS の統合 | Microsoft Docs'
+description: Azure Active Directory と iQualify LMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f8a7b7fd155a6ad0df7cb1f9026b4acca2401cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 341f2175d283c08496534f3ac0d946dd8671f63c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
@@ -30,7 +30,7 @@ iQualify LMS と Azure AD の統合には、次の利点があります。
 - ユーザーが Azure AD アカウントで自動的に iQualify LMS にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     ![[iQualify LMS のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-iqualify-tutorial/tutorial_iqualify_url.png)
 
-    a. **[識別子]** ボックスに、次のパターンで URL を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。 
     | |
     |--|--|
     | 運用環境: `https://<yourorg>.iqualify.com/`|
@@ -135,7 +135,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
 5. iQualify LMS アプリケーションでは、Security Assertion Markup Language (SAML) のアサーションを特定の形式で表示する必要があります。 次のスクリーンショットに示すように、iQualify LMS アプリケーション統合ページの **[ユーザー属性]** セクションで、要求を構成し、属性の値を管理します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqualify-tutorial/atb.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqualify-tutorial/atb.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、以下の表に示す行ごとに、次の手順を実行します。
     
@@ -146,11 +146,11 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     | last_name | User.surname |
     | person_id | "あなたの属性" | 
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-iqualify-tutorial/atb2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqualify-tutorial/atb2.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-iqualify-tutorial/atb3.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iqualify-tutorial/atb3.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -192,7 +192,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     ![SAML 認証設定](./media/active-directory-saas-iqualify-tutorial/setting4.png)
 
-    a. **[SAML SINGLE SIGN-ON SERVICE URL]\(SAML シングル サインオン サービス URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[SAML Single Sign-on Service URL]\(SAML シングル サインオン サービス URL\)** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML SINGLE SIGN-ON SERVICE URL]\(SAML シングル サインオン サービス URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[SAML Single Sign-on Service URL]\(SAML シングル サインオン サービス URL\)** の値を貼り付けます。
     
     b. **[SAML LOGOUT URL]\(SAML ログアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[Sign‑Out URL]\(サインアウト URL\)** の値を貼り付けます。
     
@@ -200,12 +200,12 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     
     d. **[LOGIN BUTTON LABEL]\( ログイン ボタン ラベル\)** に、ログイン ページに表示するボタンの名前を入力します。
     
-    e. **[保存]**をクリックします。
+    e. **[保存]** をクリックします。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Update]\(更新\)** をクリックします。
+    f. **[Update]\(更新\)** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -290,7 +290,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Mercer BenefitsCentral (MBC) の統合 | Microsoft Docs"
-description: "Azure Active Directory と Mercer BenefitsCentral (MBC) の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Mercer BenefitsCentral (MBC) の統合 | Microsoft Docs'
+description: Azure Active Directory と Mercer BenefitsCentral (MBC) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jeedes
-ms.openlocfilehash: dfc963be9d087c6ad1c56dcdaf922ff5dbf5b284
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c0a9fc6c906af96bd613c02e8b4248fc2125d9e1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>チュートリアル: Azure Active Directory と Mercer BenefitsCentral (MBC) の統合
 
@@ -30,7 +30,7 @@ Mercer BenefitsCentral (MBC) と Azure AD の統合には、次の利点があ�
 - ユーザーが各自の Azure AD アカウントで Mercer BenefitsCentral (MBC) に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 
     ![[Mercer BenefitsCentral (MBC) Domain and URLs]\(Mercer BenefitsCentral (MBC) のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-mercerhrs-tutorial/tutorial_mercerhrs_url.png)
 
-    a. **[識別子]** ボックスに、`stg.mercerhrs.com/saml2.0` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`stg.mercerhrs.com/saml2.0` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx` のパターンを使用して URL を入力します。
 
@@ -130,7 +130,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 7. **Mercer BenefitsCentral (MBC)** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [Mercer BenefitsCentral (MBC) サポート チーム](https://www.mercer.com/contact-us.html)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -208,7 +208,7 @@ Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

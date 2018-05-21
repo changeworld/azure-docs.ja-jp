@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager テンプレートの関数 - 比較 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートで値を比較するために使用する関数について説明します。"
+title: Azure Resource Manager テンプレートの関数 - 比較 | Microsoft Docs
+description: Azure Resource Manager テンプレートで値を比較するために使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3291d545bc7a66ffa9b4845acd890a714cf84ef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 364a271d84f9abfe99c7c674a6c504ce94318ac9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの比較関数
 
@@ -37,10 +37,10 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
-| arg2 |はい |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
+| arg1 |[はい] |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 1 番目の値。 |
+| arg2 |[はい] |整数、文字列、配列、オブジェクト |等しいかどうかを確認する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -132,7 +132,7 @@ equals 関数は、リソースがデプロイされているかどうかをテ�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkInts | ブール値 | True |
 | checkStrings | ブール値 | True |
@@ -170,7 +170,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 前の例からの出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkNotEquals | ブール値 | True |
 
@@ -193,10 +193,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
-| arg2 |はい |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
+| arg1 |[はい] |整数または文字列 |大きいかどうかを比較する 1 番目の値。 |
+| arg2 |[はい] |整数または文字列 |大きいかどうかを比較する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -245,7 +245,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkInts | ブール値 | False |
 | checkStrings | ブール値 | True |
@@ -269,10 +269,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
-| arg2 |はい |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
+| arg1 |[はい] |整数または文字列 |以上かどうかを比較する 1 番目の値。 |
+| arg2 |[はい] |整数または文字列 |以上かどうかを比較する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -321,7 +321,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkInts | ブール値 | False |
 | checkStrings | ブール値 | True |
@@ -345,10 +345,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
-| arg2 |はい |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
+| arg1 |[はい] |整数または文字列 |小さいかどうかを比較する 1 番目の値。 |
+| arg2 |[はい] |整数または文字列 |小さいかどうかを比較する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -397,7 +397,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkInts | ブール値 | True |
 | checkStrings | ブール値 | False |
@@ -421,10 +421,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーターが含まれる必要があります。 | 必須 | 型 | 説明 |
+| パラメーター | 必須 | type | [説明] |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
-| arg2 |はい |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
+| arg1 |[はい] |整数または文字列 |以下かどうかを比較する 1 番目の値。 |
+| arg2 |[はい] |整数または文字列 |以下かどうかを比較する 2 番目の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -473,7 +473,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| Name | type | 値 |
 | ---- | ---- | ----- |
 | checkInts | ブール値 | True |
 | checkStrings | ブール値 | False |
@@ -490,7 +490,7 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

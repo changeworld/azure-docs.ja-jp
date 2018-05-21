@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と FloQast の統合 | Microsoft Docs"
-description: "Azure Active Directory と FloQast の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と FloQast の統合 | Microsoft Docs'
+description: Azure Active Directory と FloQast の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 8973c3289c5b17c03166c09db821e299d50f2f9c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: db254c7e0f200b447ef6d0b299080a7a542c235a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>チュートリアル: Azure Active Directory と FloQast の統合
 
@@ -30,7 +30,7 @@ FloQast と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に FloQast にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -136,9 +136,9 @@ FloQast で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]**は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
     
-    e. **[OK]**をクリックします。
+    e. **[OK]** をクリックします。
 
 7. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターにメタデータ ファイルを保存して、次の手順を実行します。
 
@@ -207,7 +207,7 @@ FloQast で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[FloQast]**を選択します。
+2. アプリケーションの一覧で **[FloQast]** を選択します。
 
     ![アプリケーションの一覧の FloQast のリンク](./media/active-directory-saas-floqast-tutorial/tutorial_floqast_app.png)  
 
@@ -235,7 +235,7 @@ FloQast で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

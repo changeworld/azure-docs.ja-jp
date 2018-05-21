@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-featureFlags: clicktale
-ms.openlocfilehash: 8540f483c15c8ca00e17bc147a8623928cb0da23
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+clicktale: true
+ms.openlocfilehash: a9f33cb87149575af4549a6e4da793852b7d18ba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>クイック スタート: SQL API と Azure Portal を使って Azure Cosmos DB による .NET Web アプリを作る
 

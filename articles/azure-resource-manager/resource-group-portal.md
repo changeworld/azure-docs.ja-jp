@@ -11,20 +11,20 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: fe4666f053c7f3bd582ae51dd1694a425bea35dd
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: fda195c03c589361b8a798166b0ae4d93611bcd0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
 
 この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。 ポータルを使用したリソースのデプロイについては、「 [Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](resource-group-template-deploy-portal.md)」を参照してください。
 
-[!INCLUDE [Handle personal data](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="manage-resource-groups"></a>リソース グループの管理
 

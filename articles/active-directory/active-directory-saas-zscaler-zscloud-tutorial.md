@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Docs"
-description: "Azure Active Directory と Zscaler ZSCloud の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合 | Microsoft Docs'
+description: Azure Active Directory と Zscaler ZSCloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 44fa15a3057975617116a10f044ddba2298feba2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b44e6c7c47eec15dab2294ca7ebcb7b7dcff3a4c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
@@ -29,7 +29,7 @@ Zscaler ZSCloud と Azure AD の統合には、次の利点があります。
 - ユーザーが Azure AD アカウントで Zscaler ZSCloud に自動的にサインオン (シングル サインオン) できるように設定することが可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Zscaler ZSCloud の統合を構成するには、管理対象の
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Zscaler ZSCloud**」と入力します。
 
@@ -86,12 +86,12 @@ Azure AD への Zscaler ZSCloud の統合を構成するには、管理対象の
 
 Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[プロキシ設定の構成](#configuring-proxy-settings)** - Internet Explorer でプロキシ設定を構成します
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Zscaler ZSCloud のテスト ユーザーの作成](#creating-a-zscaler-zscloud-test-user)** - Zscaler ZSCloud で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,15 +101,15 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure Portal の **Zscaler ZSCloud** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
 3. **[Zscaler ZSCloud Domain and URLs (Zscaler ZSCloud のドメインと URL)]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
      **[サインオン URL]** ボックスに、ユーザーが ZScaler ZSCloud アプリケーションへのサインオンに使用する URL を入力します。
     
@@ -118,19 +118,19 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_400.png)
 
-6. **[Zscaler ZSCloud Configuration (Zscaler ZSCloud 構成)]**セクションで、 **[Configure Zscaler ZSCloud (Zscaler ZSCloud を構成する)]**をクリックして、**[サインオンの構成]**ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+6. **[Zscaler ZSCloud Configuration (Zscaler ZSCloud 構成)]** セクションで、 **[Configure Zscaler ZSCloud (Zscaler ZSCloud を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、ZScaler ZSCloud 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[管理]**をクリックします。
+8. 上部のメニューで **[管理]** をクリックします。
    
     ![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800206.png "Administration")
 
@@ -142,29 +142,29 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
                 
     ![Authentication](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800208.png "Authentication")
    
-    a. **[SAML シングル サインオンを使用した認証]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML シングル サインオンを使用した認証]** を選択します。
 
-    b. **[SAML シングル サインオン パラメーターの構成]**をクリックします。
+    b. **[SAML シングル サインオン パラメーターの構成]** をクリックします。
 
 11. **[SAML シングル サインオン パラメーターの構成]** ダイアログ ページで、次の手順に従い、**[完了]** をクリックします
 
     ![シングル サインオン](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800209.png "Single Sign-On")
     
-    a. **[URL of the SAML Portal to which users are sent for authentication (ユーザーが認証に送られる SAML ポータルの URL)]** ボックスに **[SAML Single Sign-On Service URL (SAML シングル サインオン サービス URL)]** 値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[URL of the SAML Portal to which users are sent for authentication (ユーザーが認証に送られる SAML ポータルの URL)]** ボックスに **[SAML Single Sign-On Service URL (SAML シングル サインオン サービス URL)]** 値を貼り付けます。
     
     b. **[ログイン名を含む属性]** ボックスに「**NameID**」と入力します。
     
-    c. ダウンロードした証明書をアップロードするには、 **[Zscaler pem]**をクリックします。
+    c. ダウンロードした証明書をアップロードするには、 **[Zscaler pem]** をクリックします。
     
-    d. **[SAML 自動プロビジョニングを有効にする]**を選択します。
+    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
 12. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
     ![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")
     
-    a. **[Save]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Save]** をクリックします。
 
-    b. **[今すぐ認証する]**をクリックします。
+    b. **[今すぐ認証する]** をクリックします。
 
 ## <a name="configuring-proxy-settings"></a>プロキシ設定の構成
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer でプロキシ設定を構成するには
@@ -185,13 +185,13 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
    
     ![プロキシ サーバー](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769494.png "Proxy server")
 
-    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
     b. [アドレス] ボックスに「 **gateway.zscalerone.net**」と入力します。
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]**を選択します。
+    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
@@ -220,7 +220,7 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-zscaler-zscloud-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -237,11 +237,11 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
 
 1. **Zscaler** テナントにログインします。
 
-2. **[管理]**をクリックします。   
+2. **[管理]** をクリックします。   
    
     ![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781035.png "Administration")
 
-3. **[ユーザー管理]**をクリックします。   
+3. **[ユーザー管理]** をクリックします。   
         
      ![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Add")
 
@@ -253,7 +253,7 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
         
     ![ユーザーの追加](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781038.png "Add User")
    
-    a. プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
 
     b. **[Save]** をクリックします。
 
@@ -274,7 +274,7 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で、**[Zscaler ZSCloud]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -301,7 +301,7 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

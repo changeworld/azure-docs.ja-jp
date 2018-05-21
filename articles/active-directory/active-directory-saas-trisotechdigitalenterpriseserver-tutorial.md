@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: a70962c63fdf9ab723ce437563a4670d536300aa
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8be41cbdbea237d2075523f22caf52238d921f24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>チュートリアル: Azure Active Directory と Trisotech Digital Enterprise Server の統合
 
@@ -30,7 +30,7 @@ Trisotech Digital Enterprise Server と Azure AD の統合には、次の利点�
 - ユーザーが各自の Azure AD アカウントで Trisotech Digital Enterprise Server に自動的にサインオン (シングル サインオン) するように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,14 +106,14 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![[Trisotech Digital Enterprise Server のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.trisotech.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.trisotech.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.trisotech.com` の形式で URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Trisotech Digital Enterprise Server サポート チーム](mailto:support@trisotech.com)にご連絡ください。
 
-4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。 
+4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。 
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_certificate.png)
 
@@ -135,7 +135,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a. **[認証方法]** のドロップダウン リストから **[Secured Assertion Markup Language 2 (SAML 2)]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[認証方法]** のドロップダウン リストから **[Secured Assertion Markup Language 2 (SAML 2)]** を選択します。
 
     b. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付けます。
 
@@ -225,7 +225,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Questetra BPM Suite の統合 | Microsoft Docs"
-description: "Azure Active Directory と Questetra BPM Suite の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Questetra BPM Suite の統合 | Microsoft Docs'
+description: Azure Active Directory と Questetra BPM Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e2515d571aa1615f14b597ef82b1087df3827f82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 122473da723cb101e0f0f9226b34aa3294477657
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル: Azure Active Directory と Questetra BPM Suite の統合
 
@@ -30,7 +30,7 @@ Questetra BPM Suite と Azure AD の統合には、次の利点があります�
 - ユーザーが自分の Azure AD アカウントで自動的に Questetra BPM Suite にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,11 +64,11 @@ Azure AD への Questetra BPM Suite の統合を構成するには、ギャラ�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**Questetra BPM Suite**」と入力し、結果パネルで **[Questetra BPM Suite]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
@@ -97,7 +97,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 1. Azure Portal の **Questetra BPM Suite** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -107,7 +107,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     ![[Questetra BPM Suite のドメインと URL] セクション](./media/active-directory-saas-questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.questetra.net/saml/SSO/alias/bpm` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.questetra.net/saml/SSO/alias/bpm` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.questetra.net/` の形式で URL を入力します。
 
@@ -128,25 +128,25 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 7. 別の Web ブラウザーのウィンドウで、管理者として **Questetra BPM Suite** 企業サイトにログインします。
 
-8. 上部のメニューで **[システム設定]**をクリックします。 
+8. 上部のメニューで **[システム設定]** をクリックします。 
    
-    ![Azure AD のシングル サインオン][10]
+    ![Azure AD Single Sign-On][10]
 
 9. **[シングルサインオン (SAML)]** ページを開くには、**[SSO (SAML)]** をクリックします。 
    
-    ![Azure AD のシングル サインオン][11]
+    ![Azure AD Single Sign-On][11]
 
 10. **Questetra BPM Suite** 企業サイトの **[SP Information]\(SP 情報\)** セクションで、次の手順に従います。
 
-    a. **[ACS URL]** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ACS URL]** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
     
     b. **[Entity ID]\(エンティティ ID\)** をコピーし、Azure Portal の **[Questetra BPM Suite のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
 
 11. **Questetra BPM Suite** 企業サイトで、次の手順に従います。 
    
-    ![[シングル サインオンの構成]][15]
+    ![[Configure Single Sign-On]][15]
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
    
     b. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
     
@@ -156,12 +156,12 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
     
     e. **[NameID format]\(NameID の形式\)** ボックスに、「`urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`」と入力します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure Portal からダウンロードした **Base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Validation certificate]\(検証証明書\)** ボックスに貼り付けます。 
+    f. Azure Portal からダウンロードした **Base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Validation certificate]\(検証証明書\)** ボックスに貼り付けます。 
 
     g. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -187,7 +187,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-questetra-bpm-suite-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -207,13 +207,13 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
    
     ![テスト ユーザーの作成][300] 
    
-    a. **[Name]\(名前\)** ボックスに、ユーザーの**名前**を「**britta.simon@contoso.com**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに、ユーザーの**名前**を「**britta.simon@contoso.com**」と入力します。
    
     b. **[Email]\(電子メール\)** ボックスに、ユーザーの**電子メール**を「**britta.simon@contoso.com**」と入力します。
    
     c. **[Password]\(パスワード\)** ボックスに、そのユーザーの**パスワード**を入力します。
     
-    d. **[新しいユーザーの追加]**をクリックします。
+    d. **[新しいユーザーの追加]** をクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -227,7 +227,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Questetra BPM Suite]**を選択します。
+2. アプリケーションの一覧で **[Questetra BPM Suite]** を選択します。
 
     ![アプリの一覧の Questetra BPM Suite](./media/active-directory-saas-questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_app.png) 
 
@@ -255,7 +255,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

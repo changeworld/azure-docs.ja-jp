@@ -1,6 +1,6 @@
 ---
 title: Resource Manager デプロイとクラシック デプロイ | Microsoft Docs
-description: Resource Manager のデプロイ モデルと従来 (あるいはサービス管理) のデプロイ モデルの違いについて説明します。
+description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,28 +8,28 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
-この記事では、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルについて学習します。 Resource Manager デプロイメント モデルとクラシック デプロイメント モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 異なる 2 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの 2 つのモデルに互換性はありません。 この記事では、その相違点について説明します。
+この記事では、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルについて学習します。 Resource Manager デプロイ モデルとクラシック デプロイ モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 異なる 2 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの 2 つのモデルに互換性はありません。 この記事では、その相違点について説明します。
 
 リソースのデプロイと管理を簡単にするために、すべての新しいリソースに Resource Manager を利用することが推奨されています。 可能であれば、Resource Manager を使用して既存のリソースを再度デプロイすることをお勧めします。
 
 これまでに Resource Manager を使用したことがない場合は、まず「[Azure Resource Manager の概要](resource-group-overview.md)」で定義されている用語をご確認ください。
 
 ## <a name="history-of-the-deployment-models"></a>デプロイメント モデルの歴史
-Azure では当初、クラシック デプロイメント モデルのみ用意されていました。 このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。 それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。 ソリューションをデプロイするには、ポータル経由で各リソースを個別に作成するか、すべてのリソースを正しい順序でデプロイするスクリプトを作成する必要がありました。 ソリューションを削除するには、各リソースを個別に削除するほかありませんでした。 関連リソースのアクセス制御ポリシーの適用と更新は、簡単ではありませんでした。 そのうえ、タグをリソースに適用し、リソースの監視と請求の管理に役立つ単語を使ってこれらのリソースにラベル付けすることもできませんでした。
+Azure では当初、クラシック デプロイ モデルのみ用意されていました。 このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。 それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。 ソリューションをデプロイするには、ポータル経由で各リソースを個別に作成するか、すべてのリソースを正しい順序でデプロイするスクリプトを作成する必要がありました。 ソリューションを削除するには、各リソースを個別に削除するほかありませんでした。 関連リソースのアクセス制御ポリシーの適用と更新は、簡単ではありませんでした。 そのうえ、タグをリソースに適用し、リソースの監視と請求の管理に役立つ単語を使ってこれらのリソースにラベル付けすることもできませんでした。
 
-2014 年、Azure に Resource Manager が導入され、リソース グループの概念が追加されました。 リソース グループとは、共通のライフサイクルが共有されるリソースのコンテナーです。 Resource Manager のデプロイ モデルにはいくつかの利点があります。
+2014 年、Azure に Resource Manager が導入され、リソース グループの概念が追加されました。 リソース グループとは、共通のライフサイクルが共有されるリソースのコンテナーです。 Resource Manager デプロイ モデルにはいくつかの利点があります。
 
 * ソリューションのすべてのサービスを、個別に処理するのではなく、グループとしてデプロイ、管理、監視できます。
 * ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。

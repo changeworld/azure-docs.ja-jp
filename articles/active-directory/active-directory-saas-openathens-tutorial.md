@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と OpenAthens の統合 | Microsoft Docs"
-description: "Azure Active Directory と OpenAthens の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と OpenAthens の統合 | Microsoft Docs'
+description: Azure Active Directory と OpenAthens の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: af26e007c953c4157f5ee7a4251a52e9c45a6eac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3b19f3c7ed84a63f48320a2c7af8d06a9cc5deb4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>チュートリアル: Azure Active Directory と OpenAthens の統合
 
@@ -30,7 +30,7 @@ OpenAthens と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に OpenAthens にサインオン (シングル サインオン) されるように指定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -101,7 +101,7 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-openathens-tutorial/tutorial_openathens_samlbase.png)
 
-3. **[OpenAthens のドメインと URL]** セクションの **[識別子]**ボックスに、値「`https://login.openathens.net/saml/2/metadata-sp`」を入力します。
+3. **[OpenAthens のドメインと URL]** セクションの **[識別子]** ボックスに、値「`https://login.openathens.net/saml/2/metadata-sp`」を入力します。
 
     ![[OpenAthens のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-openathens-tutorial/tutorial_openathens_url.png)
 
@@ -131,7 +131,7 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure single sign-on](./media/active-directory-saas-openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. **[Display name mapping]\(表示名マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Display name mapping]\(表示名マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
     b. **[Display name attribute]\(表示名属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
     
@@ -141,7 +141,7 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
 
     e. **[状態]** で、3 つのチェック ボックスすべてをオンにします。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Create local accounts]\(ローカル アカウントの作成\)** で、**[automatically]\(自動\)** を選択します。
+    f. **[Create local accounts]\(ローカル アカウントの作成\)** で、**[automatically]\(自動\)** を選択します。
 
     g. **[変更の保存]** を選択します。
 
@@ -172,13 +172,13 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-openathens-tutorial/create_aaduser_04.png)
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon のメール アドレスを入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
   
 ### <a name="create-an-openathens-test-user"></a>OpenAthens テスト ユーザーの作成
 
@@ -224,7 +224,7 @@ OpenAthens では、Just-In-Time プロビジョニングがサポートされ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * SaaS アプリと Azure Active Directory を統合する方法のチュートリアルの一覧については、[Azure AD で使用するための SaaS アプリ統合のチュートリアル](active-directory-saas-tutorial-list.md)に関するページをご覧ください。
-* Azure Active Directory でのアプリケーション アクセスとシングル サインオンの詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+* Azure Active Directory でのアプリケーション アクセスとシングル サインオンの詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 <!--Image references-->
 
