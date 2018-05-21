@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>シナリオ 1: Azure への移行についてオンプレミスのワークロードを評価する
 
 Azure への移行を検討する際、Contoso 社は技術的および財務的な評価を実行して、オンプレミスのワークロードがクラウドへの移行に適しているかどうかを確認する必要があります。 特に、移行に関してマシンおよびデータベースの互換性を評価し、Azure でリソースを実行するための容量とコストを見積もる必要があります。
 
-関連するテクノロジに触れて理解を深めるために、小さなオンプレミス旅行アプリを評価して移行します。 これは 2 層のアプリです。1 つの VM で Web アプリが実行され、2 つ目の VM に SQL Server データベースがあります。 アプリケーションは VMware でデプロイされ、環境は vCenter Server で管理されます。 評価は、Data Migration Assistant (DMA) と Azure Migrate サービスを使用して実行します。
+関連するテクノロジに触れて理解を深めるために、小さなオンプレミス旅行アプリを評価して移行します。 これは 2 層のアプリです。1 つの VM で Web アプリが実行され、2 つ目の VM に SQL Server データベースがあります。 アプリケーションは VMware でデプロイされ、環境は vCenter Server で管理されます。 評価は、Data Migration Assistant (DMA) と Azure Migrate サービスを使用して実行します。 この説明用の旅行アプリを使用してこのシナリオを試したい場合は、[github](https://github.com/Microsoft/SmartHotel360) からダウンロードできます。
 
 **テクノロジ** | **説明** | **コスト**
 --- | --- | ---
@@ -33,11 +33,11 @@ Azure への移行を検討する際、Contoso 社は技術的および財務的
 
 ## <a name="architecture"></a>アーキテクチャ
 
-このシナリオでは設定を行います 
 
- ![移行評価のアーキテクチャ](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
+![移行評価のアーキテクチャ](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
 
 このシナリオでは:
+- Contoso は一般的なエンタープライズ組織を表す架空の名前です。 Contoso は、2 階層のオンプレミス旅行アプリを評価し、移行したいと考えています。
 - Contoso にオンプレミスのデータセンター (**contoso-datacenter**) があり、そこにオンプレミスのドメイン コントローラー (**contosodc1**) が含まれています。
 - 社内の旅行アプリは、2 つの VM (**WEBVM** と **SQLVM**) に階層化されており、VMware ESXi ホスト (**contosohost1.contoso.com**) 上に配置されています。
 - VMware 環境は、VM で実行中の vCenter Server (**vcenter.contoso.com**) によって管理されます。
@@ -489,7 +489,7 @@ Azure Migrate 評価には、オンプレミスの VM と Azure の互換性の�
 
 ## <a name="next-steps"></a>次の手順
 
-次のシナリオに進んで、オンプレミスの VM から Azure へのリフトアンドシフト移行を実行しましょう。
+次のシナリオに進んで、オンプレミスの VM とデータベースから Azure への[リフトアンドシフト移行](migrate-scenarios-lift-and-shift.md)を実行しましょう。
 
 
 

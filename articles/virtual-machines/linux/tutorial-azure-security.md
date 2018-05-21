@@ -1,12 +1,12 @@
 ---
-title: Azure の Linux 仮想マシンと Azure Security Center | Microsoft Docs
-description: Azure Security Center による Azure Linux 仮想マシンのセキュリティについて説明します。
+title: チュートリアル - Azure 内の Linux VM に Azure Security Center を使用する | Microsoft Docs
+description: このチュートリアルでは、Azure 内の Linux 仮想マシンをセキュリティで保護するために役立つ Azure Security Center の機能について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/07/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41fb802dd8f5dd7bec2c481f3719f304b0c8d0ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Azure Security Center を使った仮想マシン セキュリティの監視
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Linux 仮想マシンを監視する
 
 Azure リソースのセキュリティの状態は、Azure Security Center で可視化することができます。 Security Center には、包括的なセキュリティ監視機能が備わっています。 他の方法では見過ごされてしまう可能性のある脅威も検出することが可能です。 このチュートリアルでは、Azure Security Center と次の方法について説明します。
  
@@ -30,7 +30,7 @@ Azure リソースのセキュリティの状態は、Azure Security Center で�
 > * データ収集を設定する
 > * セキュリティ ポリシーを設定する
 > * 構成の正常性に関する問題を確認して解決する
-> * 検出された脅威を確認する  
+> * 検出された脅威を確認する
 
 ## <a name="security-center-overview"></a>Security Center の概要
 

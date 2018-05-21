@@ -1,29 +1,41 @@
 ---
-title: ゾーン内のロード バランサー VM - Azure Portal | Microsoft Docs
-description: Azure Portal を使用して、ゾーン フロントエンドを使った Standard Load Balancer を作成し、可用性ゾーン内の VM の負荷を分散します。
+title: 'チュートリアル: ゾーン内の Load Balancer VM - Azure Portal | Microsoft Docs'
+description: このチュートリアルでは、Azure Portal を使用して、ゾーン フロントエンドを使った Standard Load Balancer を作成し、可用性ゾーン内の VM の負荷を分散する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: ''
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/18/2018
+ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: 41a33436cb0d2c4c2bbfef4888bb704c62e2b91e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: mvc
+ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="load-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>Azure Portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
+# <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
-この記事では、Azure Portal を使用し、パブリック IP 標準アドレスを使ったゾーン フロントエンドでパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。
+このチュートリアルでは、Azure Portal を使用し、パブリック IP 標準アドレスを使ったゾーン フロントエンドでパブリック [Load Balancer Standard](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。 学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * ゾーンのフロントエンドを使用して Azure Standard Load Balancer を作成する
+> * 着信トラフィック規則を定義するネットワーク セキュリティ グループを作成する
+> * ゾーンの VM を作成してロード バランサーにアタッチする
+> * ロード バランサーの正常性プローブを作成する
+> * ロード バランサーのトラフィック ルールを作成する
+> * 基本的な IIS サイトを作成する
+> * 動作中のロード バランサーを表示する
+
 可用性ゾーンと Standard Load Balancer の使用方法の詳細については、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。
 
 好みに応じて、[Azure CLI](load-balancer-standard-public-zonal-cli.md) を使ってこのチュートリアルの手順を実行することもできます。

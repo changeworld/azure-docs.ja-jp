@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 692edc9a685ce7d1906f13f08c763909a2513b03
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded の概要
 
@@ -48,7 +48,7 @@ AAD にアプリケーションを登録したら、アプリケーションに 
 アプリケーションを運用環境に移行するには、Microsoft Azure に Power BI Embedded の容量を作成します。 容量を作成する方法については、「[Create Power BI Embedded capacity in the Azure portal](create-capacity.md) (Azure Portal で Power BI Embedded の容量を作成する)」を参照してください。
 
 > [!IMPORTANT]
-> 埋め込みトークンは開発テストだけを目的としているため、Power BI のマスター アカウントが生成できる埋め込みトークンの数には制限があります。 実稼働の埋め込みシナリオのためには、[容量を購入する必要があります](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 容量を購入した場合、埋め込みトークンの生成に制限はありません。
+> 埋め込みトークンは開発テストだけを目的としているため、Power BI のマスター アカウントが生成できる埋め込みトークンの数には制限があります。 実稼働の埋め込みシナリオのためには、[容量を購入する必要があります](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical)。 容量を購入した場合、埋め込みトークンの生成に制限はありません。 [Get Available Features](https://msdn.microsoft.com/en-us/library/mt846473.aspx) を参照して、パーセンテージでの現在の埋め込みの使用率を確認してください。
 
 容量は Power BI 管理ポータルで管理します。 アプリのワークスペースについて支援が必要な場合には、ワークスペースの割り当て担当者を割り当てます。 詳細については、「[Power BI Premium および Power BI Embedded の容量を管理する](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/)」を参照してください。
 

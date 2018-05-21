@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用した Azure ディスクの管理 | Microsoft Docs
-description: チュートリアル - Azure PowerShell を使用した Azure ディスクの管理
+title: チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4d84d1f5fbd0fcf5d4c6ba374b1fb5c3df2ba5c6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ea9d89b7dd94c38b326b83ff1fbf51595d67599a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-disks-with-powershell"></a>PowerShell を使用した Azure ディスクの管理
+# <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>チュートリアル - Azure PowerShell を使用して Azure ディスクを管理する
 
-Azure の仮想マシンでは、VM のオペレーティング システム、アプリケーション、データの格納にディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
+Azure Virtual Machines では、VM のオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理について説明します。 内容は次のとおりです。
 
 > [!div class="checklist"]
 > * OS ディスクと一時ディスク
@@ -35,7 +35,7 @@ Azure の仮想マシンでは、VM のオペレーティング システム、�
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="default-azure-disks"></a>既定の Azure ディスク
 
@@ -47,7 +47,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 576 |
@@ -62,7 +62,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
 
-| type | 一般的なサイズ | VM あたりの最大データ ディスク数 |
+| 種類 | 一般的なサイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](sizes-general.md) | A、B、D シリーズ | 64 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 64 |

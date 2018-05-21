@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d93ea939a938fa88615161d3d048ee1881dd319a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d707b9a4b7b683e75bb9313dae2611fd59dbb155
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>クイックスタート: Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -36,9 +36,9 @@ SQL Data Warehouse では、Data Warehouse ユニットを調整してコンピ�
 
 Data Warehouse ユニットを変更するには:
 
-1. Azure Portal の左側のページで **[SQL データベース]** を選択します。
-2. **[SQL データベース]** ページから **[mySampleDataWarehouse]** を選択します。 データ ウェアハウスが開きます。
-3. **[スケール]**をクリックします。
+1. Azure portal の左側のページで **[SQL データ ウェアハウス]** をクリックします。
+2. **[SQL データ ウェアハウス]** ページで **mySampleDataWarehouse** を選びます。 データ ウェアハウスが開きます。
+3. **[スケール]** をクリックします。
 
     ![[スケール] をクリックします。](media/quickstart-scale-compute-portal/click-scale.png)
 

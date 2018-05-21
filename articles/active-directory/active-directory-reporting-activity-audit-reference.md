@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5b94092d1fbcb76210f132d4b08d131533e25397
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: be19130f7a2f45049cd7e08bb961ac6cb5aa14ff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
 
@@ -343,7 +343,7 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |リソース|アプリケーションへの id_token の発行|
 
 
-## <a name="core-directory"></a>Core Directory (コア ディレクトリ)
+## <a name="core-directory"></a>コア ディレクトリ
 
 |監査のカテゴリ|アクティビティ|
 |---|---|
@@ -547,7 +547,7 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 
 
 
-## <a name="self-service-group-management"></a>セルフサービスによるグループ管理
+## <a name="self-service-group-management"></a>セルフサービスのグループ管理
 
 |監査のカテゴリ|アクティビティ|
 |---|---|
@@ -562,7 +562,7 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |グループ管理|管理者が一時パスワードを生成する|
 
 
-## <a name="self-service-password-management"></a>Self-service Password Management \(セルフサービスによるパスワード管理)
+## <a name="self-service-password-management"></a>セルフサービスによるパスワード管理
 
 |監査のカテゴリ|アクティビティ|
 |---|---|

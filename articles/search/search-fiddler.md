@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 6108e0061c4a8de3000de7f7a07cca313803e80d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Fiddler または Postman を使用して Azure Search REST API を探索する
 
@@ -48,14 +48,14 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 各ツールには、セッションの要求ヘッダー情報が保持されます。つまり、URL エンドポイント、API バージョン、API キー、およびコンテンツタイプの入力は 1 度だけで済みます。
 
-完全な URL は次の例のようになります。**`my-app`** プレースホルダー名は、実際の有効な値で置き換える必要があります。`https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01`
+完全な URL は次の例のようになります。**`my-app`** プレースホルダー名は、実際の有効な値で置き換える必要があります。`https://my-app.search.windows.net/indexes/hotels?api-version=2017-11-11`
 
 サービス URL の構成には、次の要素が含まれます。
 
 + HTTPS プレフィックス。
 + サービス URL。ポータルから取得します。
 + リソース。サービスでオブジェクトを作成する操作です。 この手順では、hotels というインデックスです。
-+ API バージョン。現在のバージョンでは、"?api-version=2016-09-01" のように指定された必須の小文字の文字列。 [API バージョン](search-api-versions.md)は定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
++ API バージョン。現在のバージョンでは、"?api-version=2017-11-11" のように指定された必須の小文字の文字列。 [API バージョン](search-api-versions.md)は定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
 
 要求ヘッダーの構成には、前のセクションで説明したコンテンツ タイプと API キーという 2 つの要素が含まれます。
 
@@ -124,7 +124,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 インデックスの作成とインデックスの設定は別の手順です。 Azure Search では、インデックスにはすべての検索可能なデータが含まれており、それを JSON ドキュメントとして提供できます。 この操作の API の詳細については、[ドキュメントの追加、更新、または削除 (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) に関するページを参照してください。
 
 + この手順では動詞を **POST** に変更します。
-+ `/docs/index` を含めるようにエンドポイントを変更します。 完全な URL は `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01` のようになります。
++ `/docs/index` を含めるようにエンドポイントを変更します。 完全な URL は `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11` のようになります。
 + 要求ヘッダーは変更しないでください。 
 
 要求の本文には、hotels インデックスに追加する 4 つのドキュメントが含まれています。
@@ -213,7 +213,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 インデックスとドキュメントが読み込まれたら、クエリを発行することができます。 この API の詳細については、[ドキュメントの検索 (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) に関するページを参照してください。  
 
 + この手順では動詞を **GET** に変更します。
-+ 検索文字列など、クエリ パラメーターを含めるようにエンドポイントを変更します。 クエリの URL は `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2016-09-01` のようになります
++ 検索文字列など、クエリ パラメーターを含めるようにエンドポイントを変更します。 クエリの URL は `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11` のようになります
 + 要求ヘッダーは変更しないでください
 
 このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーン ショットのようになります。 状態コードは 200 になります。
@@ -222,18 +222,18 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Fiddler で Microsoft のサンプル クエリを実行するためのヒント
 
-次のクエリは、[検索インデックス操作 (Azure Search API)](http://msdn.microsoft.com/library/dn798927.aspx) に関する記事に掲載されている例です。 この記事のクエリ例の多くには、Fiddler では許可されないスペースが含まれています。 Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
+次のクエリは、[検索インデックス操作 (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関する記事に掲載されている例です。 この記事のクエリ例の多くには、Fiddler では許可されないスペースが含まれています。 Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
 
 **(lastRenovationDate desc の) スペースを置き換える前:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
 **(lastRenovationDate+desc の) + でスペースを置き換えた後:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
 ## <a name="query-index-properties"></a>クエリ インデックスのプロパティ
-システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01`
+システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
 

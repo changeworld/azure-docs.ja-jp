@@ -1,5 +1,5 @@
 ---
-title: SSMS を使用した最初の Azure SQL データベースの設計 | Microsoft Docs
+title: 'チュートリアル: SSMS を使用して最初の Azure SQL データベースを設計する | Microsoft Docs'
 description: SQL Server Management Studio を使用して、最初の Azure SQL データベースを設計する方法について説明します。
 services: sql-database
 author: CarlRabeler
@@ -7,28 +7,30 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ba14208e971d712184052e7470757ce48ac26879
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="design-your-first-azure-sql-database-using-ssms"></a>SSMS を使用した最初の Azure SQL データベースの設計
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>チュートリアル: SSMS を使用して最初の Azure SQL データベースを設計する
 
 Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal および [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) を使用して以下の操作を行う方法を学習します。 
 
 > [!div class="checklist"]
-> * Azure Portal でデータベースを作成する
+> * Azure Portal でデータベースを作成する*
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
 > * SSMS を使用してデータベースに接続する
 > * SSMS のテーブルを作成する
 > * BCP を使用してデータを一括で読み込む
 > * SSMS を使用してデータのクエリ実行を行う
-> * Azure Portal で以前の[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)にデータベースを復元する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+   >[!NOTE]
+   > このチュートリアルでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用していますが、[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)を選択することもできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,31 +44,31 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
-Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](sql-database-features.md)内に作成されます。 
+Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers-dtu.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](sql-database-features.md)内に作成されます。 
 
 空の SQL Database を作成するには、次の手順に従います。 
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
-2. **[新規]** ページから **[データベース]** を選択し、**[新規]** ページの **[SQL Database]** で **[作成]** を選択します。
+2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、**[おすすめ]** セクションで **[SQL Database]** をクリックします。
 
    ![空のデータベースを作成](./media/sql-database-design-first-database/create-empty-database.png)
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | Setting       | 推奨値 | [説明] | 
+   | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
+   | **データベース名** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
-   | **[ソースの選択]** | 空のデータベース | 空のデータベースを作成するように指定します。 |
+   | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+   | **ソースの選択** | 空のデータベース | 空のデータベースを作成するように指定します。 |
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-   | Setting       | 推奨値 | [説明] | 
+   | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
-   | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
+   | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
+   | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
@@ -74,7 +76,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 5. **[選択]** をクリックします。
 
-6. **[価格レベル]** をクリックして、サービス レベル、DTU または仮想コア数、およびストレージの容量を指定します。 DTU または仮想コア数とストレージに関して、サービス レベルごとに利用できるオプションを調べます。 
+6. **[価格レベル]** をクリックして、サービス レベル、DTU または仮想コア数、およびストレージの容量を指定します。 DTU または仮想コア数とストレージに関して、サービス レベルごとに利用できるオプションを調べます。 このチュートリアルでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)を使用していますが、[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)を選択することもできます。 
 
 7. このチュートリアルでは、**Standard** サービス レベルを選択したうえで、スライダーを使用して **100 DTU (S3)** と **400** GB のストレージを選択します。
 
@@ -83,10 +85,9 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 8. プレビューの使用条件に同意して、**[Add-on Storage]\(アドオン ストレージ\)** オプションを使用します。 
 
    > [!IMPORTANT]
-   > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
-   >
-   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
-   > 
+   > -  付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
+   >-  Premium レベルでは、1 TB を超えるストレージは、現時点では次のリージョンで利用できます。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  
 
@@ -108,7 +109,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170824.database.windows.net** など) や追加の構成オプションが表示されます。 
 
-2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 
+2. この完全修飾サーバー名をコピーします。以降のチュートリアルとクイックスタートでサーバーとそのデータベースに接続する際に必要となります。 
 
    ![サーバー名](./media/sql-database-get-started-portal/server-name.png) 
 
@@ -118,7 +119,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[保存]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 
@@ -145,15 +146,15 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | Setting       | 推奨値 | [説明] | 
+   | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | サーバーの種類 | データベース エンジン | この値は必須です。 |
+   | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |
    | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
-   ![[サーバーへの接続]](./media/sql-database-connect-query-ssms/connect.png)
+   ![サーバーへの接続](./media/sql-database-connect-query-ssms/connect.png)
 
 3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「**mySampleDatabase**」と入力して、このデータベースに接続します。
 
@@ -170,9 +171,9 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) を用いた大学の生徒管理システムを構成する、4 つのテーブルのデータベース スキーマを作成します。
 
 - Person
-- コース
-- 生徒
-- 大学の生徒管理システムを構成するクレジット
+- Course
+- Student
+- Credit。大学の生徒管理システムをモデル化します
 
 次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば Student テーブルは、**Person** テーブルの **PersonId** 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](https://msdn.microsoft.com/library/cc505842.aspx)を参照してください。 データ型の選択については、[データ型](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
 
@@ -297,26 +298,6 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>データベースを以前の状態に復元する
-
-テーブルを誤って削除した場合を想定してください。 データの復元は容易なことではありません。 Azure SQL Database では、過去最長 35 日間における任意の時点に戻り、新しいデータベースに過去のデータを復元することができます。 このデータベースを用いることで、削除済みデータの復元が可能です。 次の手順を実行して、テーブルが追加される前の状態にサンプル データベースを復元します。
-
-1. データベースの SQL Database ページで、ツール バーの **[復元]** をクリックします。 **[復元]** ページが開きます。
-
-   ![復元](./media/sql-database-design-first-database/restore.png)
-
-2. **[復元]** フォームに必要な情報を入力します。
-    * データベース名: データベース名を指定します 
-    * 特定の時点: [復元] フォームの **[特定の時点]** タブを選択します。 
-    * 復元ポイント: データベースを変更する前の時間を選択します。
-    * 対象サーバー: データベースを復元するときは、この値を変更することはできません。 
-    * エラスティック データベース プール: **[なし]** を選択します。  
-    * 価格レベル: **20 DTU** および **40 GB** のストレージを選択します。
-
-   ![復元ポイント](./media/sql-database-design-first-database/restore-point.png)
-
-3. **[OK]** をクリックして、[テーブルが追加される前の状態にデータベースを復元](sql-database-recovery-using-backups.md#point-in-time-restore)します。 異なる時点にデータベースを復元すると、[サービス レベル](sql-database-service-tiers.md)のリテンション期間内であれば、指定した時点の元データベースと同じサーバー内に、データベースが複製されます。
-
 ## <a name="next-steps"></a>次の手順 
 このチュートリアルでは、データベースとテーブルの作成、データの読み込みとクエリ実行、以前の特定の時点へのデータベースの復元などの基本的なデータベース タスクについて学習しました。 以下の方法について学習しました。
 > [!div class="checklist"]
@@ -326,7 +307,6 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 > * テーブルの作成
 > * データの一括読み込み
 > * データのクエリ実行
-> * SQL Database の[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)機能を使用した、以前の特定の時点へのデータベースの復元
 
 次のチュートリアルでは、Visual Studio と C# を使用したデータベースの設計について学びます。
 
