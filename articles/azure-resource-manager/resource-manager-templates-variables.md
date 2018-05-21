@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートの変数 | Microsoft Docs"
-description: "宣言型 JSON 構文を使用した Azure Resource Manager テンプレートで変数を定義する方法について説明します。"
+title: Azure Resource Manager テンプレートの変数 | Microsoft Docs
+description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートで変数を定義する方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8d9f227ad1f450cf6cdfca1dafb1b51bc6f6c9f9
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 08728a3c0b4d4578939004e2d1b1ee2d30a682ab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの変数セクション
 テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
@@ -279,14 +279,14 @@ ms.lasthandoff: 12/13/2017
 
 次のサンプル テンプレートでは、変数を使用するいくつかのシナリオを例示します。 さまざまなシナリオで変数がどのように処理されるかを、このサンプルを展開して試してください。 
 
-|テンプレート  |説明  |
+|テンプレート  |[説明]  |
 |---------|---------|
 | [変数の定義](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | さまざまな種類の変数を例示します。 このテンプレートではリソースを展開しません。 変数の値を作成して、その値を返します。 |
 | [構成変数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 構成の値を定義する変数の用法を例示します。 このテンプレートではリソースを展開しません。 変数の値を作成して、その値を返します。 |
 | [ネットワーク セキュリティの規則](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json)と[パラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | ネットワーク セキュリティ グループにセキュリティの規則を割り当てるために、配列を正しい形式で作成します。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。

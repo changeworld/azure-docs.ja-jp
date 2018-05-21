@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Box を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Azure Active Directory と Box の間にシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Box を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Azure Active Directory と Box の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d1bbafdb8bbd5ea7bfa193832992d56016b6ee5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル: Box を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -43,7 +43,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box へのアクセスを許可するユーザーとグループを指定できます。 ユーザーまたはグループを割り当てると、次の処理が実行されます。
 
 * Azure AD により、(直接割り当てまたはグループのメンバーシップによって) 割り当てられたユーザーに Box への認証が許可されます。 割り当てられていないユーザーには Box へのサインインが許可されず、Azure AD のサインイン ページでエラーが返されます。
-* Box のアプリ タイルがユーザーの [アプリケーション起動プログラム](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)に追加されます。
+* Box のアプリ タイルがユーザーの [アプリケーション起動プログラム](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)に追加されます。
 * 自動プロビジョニングが有効になっている場合、割り当てられたユーザーまたはグループはプロビジョニング キューに追加され、自動的にプロビジョニングされます。
   
   * ユーザー オブジェクトのみをプロビジョニングするよう構成した場合は、直接割り当てられたすべてのユーザーがプロビジョニング キューに配置され、さらに、割り当てられたグループのメンバーであるユーザーもすべてプロビジョニング キューに配置されます。 
@@ -120,5 +120,5 @@ Box テナントでは、同期済みのユーザーは、**[管理コンソー�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](active-directory-saas-box-tutorial.md)

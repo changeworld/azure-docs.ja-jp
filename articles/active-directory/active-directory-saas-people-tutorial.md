@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: a76701e23771efa79ef39ebd6deb29cec8acaa8a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ee1c45f963482adfc29713928b7cbbc873ca1100
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>チュートリアル: Azure Active Directory と People の統合
 
@@ -29,7 +29,7 @@ People と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に People にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -133,7 +133,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_001.png)
 
-9. **[会社]**をクリックします。
+9. **[会社]** をクリックします。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_002.png)
 
@@ -192,7 +192,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[People]**を選択します。
+2. アプリケーションの一覧で **[People]** を選択します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_app.png) 
 
@@ -219,7 +219,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

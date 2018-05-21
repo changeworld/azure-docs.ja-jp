@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -64,7 +64,7 @@ Azure AD の同期について詳しくは、「[オンプレミス ID と Azure
 
 管理対象のディレクトリが複数あると、IT 部門にとって管理上の問題となるだけでなく、複数のパスワードを覚えておく必要があるエンド ユーザーにとっても問題です。 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) を使用することにより、ユーザーは、必要なリソースがオンプレミスまたはクラウドのどちらにあっても、同じ資格情報セットを使用してリソースにサインインしてアクセスできます。
 
-SSO を使用すると、ユーザーは Azure AD 内の組織アカウントに基づいて[SaaS アプリケーション](../active-directory/active-directory-appssoaccess-whatis.md)にアクセスできます。 これは、Microsoft SaaS アプリだけでなく、[Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) や [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md) などの他のアプリにも当てはまります。 [SAML ベースの ID](../active-directory/fundamentals-identity.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。 セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。 ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
+SSO を使用すると、ユーザーは Azure AD 内の組織アカウントに基づいて[SaaS アプリケーション](../active-directory/manage-apps/what-is-single-sign-on.md)にアクセスできます。 これは、Microsoft SaaS アプリだけでなく、[Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) や [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md) などの他のアプリにも当てはまります。 [SAML ベースの ID](../active-directory/fundamentals-identity.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。 セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。 ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
 
 > [!NOTE]
 > SSO を使用するかどうかにより、オンプレミスのディレクトリとクラウド ディレクトリの統合方法に影響があります。 SSO が必要な場合、ディレクトリ同期は[同じサインオン エクスペリエンス](../active-directory/active-directory-aadconnect.md)だけを提供するので、フェデレーションを使用する必要があります。

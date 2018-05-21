@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Kronos の統合 | Microsoft Docs"
-description: "Azure Active Directory と Kronos の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と Kronos の統合 | Microsoft Docs'
+description: Azure Active Directory と Kronos の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: d24bbc4ad4be23dc983e9c4dfa922e7ff9c7c2ff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1176b0c04e4ef819356103e4068a2f115ed7e3d4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>チュートリアル: Azure Active Directory と Kronos の統合
 
@@ -29,7 +29,7 @@ Kronos と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Kronos にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Kronos の統合を構成するには、ギャラリーから管
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Kronos**」と入力します。
 
@@ -90,7 +90,7 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Kronos テスト ユーザーの作成](#creating-a-kronos-test-user)** - Kronos で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Kronos** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_samlbase.png)
 
 3. **[Kronos のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.kronos.net/` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<company name>.kronos.net/` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<company name>.kronos.net/wfc/navigator/logonWithUID` のパターンを使用して URL を入力します。
 
@@ -123,26 +123,26 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
      
      次のスクリーンショットはその例です。 ここでは、**ユーザー ID (nameid)** を **user.userprincipalname** の **ExtractMailPrefix()** 関数とマップしました。 これにより、ユーザーのメール アドレスのプレフィックス値が提供され、これは一意のユーザー ID です。 これは、すべての正常な応答で Kronos アプリケーションに送信されます。 
      
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_attribute.png)
 
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a. [ユーザー識別子] ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [ユーザー識別子] ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
 
     b. **[メール]** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_certificate.png) 
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kronos-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kronos-tutorial/tutorial_general_400.png)
 
 8. **Kronos** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Kronos サポート チーム](https://www.kronos.in/contact/en-in/form)に送信する必要があります。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -167,7 +167,7 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kronos-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -193,9 +193,9 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Kronos]**を選択します。
+2. アプリケーションの一覧で **[Kronos]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -220,7 +220,7 @@ Kronos で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

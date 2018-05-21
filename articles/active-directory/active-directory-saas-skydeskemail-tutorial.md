@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SkyDesk Email の統合 | Microsoft Docs"
-description: "Azure Active Directory と SkyDesk Email の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SkyDesk Email の統合 | Microsoft Docs'
+description: Azure Active Directory と SkyDesk Email の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c495bd85fa2c55eec93f2e1100505b64389207f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1b75cf2b61b13957d918ac416b4317f4e65dca0e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>チュートリアル: Azure Active Directory と SkyDesk Email の統合
 
@@ -29,7 +29,7 @@ SkyDesk Email と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に SkyDesk Email にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への SkyDesk Email の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**SkyDesk Email**」と入力します。
 
@@ -90,7 +90,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Skydesk Email テスト ユーザーの作成](#creating-a-skydesk-email-test-user)** - Skydesk Email で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,15 +100,15 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **SkyDesk Email** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_samlbase.png)
 
 3. **[SkyDesk Email のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_url.png)
 
     **[サインオン URL]** ボックスに、`https://mail.skydesk.jp/portal/<companyname>` のパターンを使用して URL を入力します。
 
@@ -117,52 +117,52 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_400.png)
 
-6. **[SkyDesk Email Configuration (SkyDesk Email 構成)]** セクションで、**[Configure SkyDesk Email (SkyDesk Email を構成する)]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+6. **[SkyDesk Email Configuration (SkyDesk Email 構成)]** セクションで、**[Configure SkyDesk Email (SkyDesk Email を構成する)]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_configure.png) 
 
 7. **SkyDesk Email** で SSO を有効にするには、次の手順に従います。
 
-    a. 管理者として SkyDesk Email アカウントにサインオンします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者として SkyDesk Email アカウントにサインオンします。
 
     b. 上部のメニューで、**[設定]** をクリックし、**[組織]** を選択します。 
     
-      ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
     c. 左側のパネルで **[ドメイン]** をクリックします。
     
-      ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
     d. **[ドメインの追加]** をクリックします。
     
-      ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
     e. 自分のドメイン名を入力し、ドメインを確認します。
     
-      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 左側のパネルで **[SAML Authentication (SAML 認証)]** をクリックします。
+    f. 左側のパネルで **[SAML Authentication (SAML 認証)]** をクリックします。
     
-      ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 8. **[SAML 認証]** ダイアログ ページで、次の手順に従います。
    
-      ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_56.png)
    
     >[!NOTE]
     >SAML ベースの認証を使用するには、**ドメインが検証済み**または**ポータル URL** が設定済みである必要があります。 一意の名前でポータル URL を設定できます。
     > 
     > 
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
-    a. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     b. **[ログアウト]** URL ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
@@ -175,7 +175,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
     f. **[OK]** をクリックして変更を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -201,7 +201,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-skydeskemail-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -215,7 +215,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
 1. SkyDesk Email 内の左側のパネルで **[User Access (ユーザー アクセス)]** をクリックし、自分のユーザー名を入力します。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 >[!NOTE] 
 >ユーザーを一括で作成する必要がある場合は、[SkyDesk Email クライアント サポート チーム](https://www.skydesk.sg/support/)にお問い合わせください。
@@ -235,7 +235,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 
 2. アプリケーションの一覧で **[SkyDesk Email]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -260,7 +260,7 @@ SkyDesk Email で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

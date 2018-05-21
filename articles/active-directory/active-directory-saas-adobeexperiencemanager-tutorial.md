@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Adobe Experience Manager の統合 | Microsoft Docs"
-description: "Azure Active Directory と Adobe Experience Manager の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Adobe Experience Manager の統合 | Microsoft Docs'
+description: Azure Active Directory と Adobe Experience Manager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: c366e314b77cd3344a90826b22b96a45e35b0b4e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d63ee16df9b49517c93cdc405cd2525f578d2a7f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>チュートリアル: Azure Active Directory と Adobe Experience Manager の統合
 
@@ -30,7 +30,7 @@ Adobe Experience Manager と Azure AD を統合すると、次の利点があり
 - ユーザーが自分の Azure AD アカウントで自動的に Adobe Experience Manager にサインオンできるように設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -125,7 +125,7 @@ Adobe Experience Manager で Azure AD のシングル サインオンを構成�
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_certificate.png) 
 
-6. [Adobe Experience Manager Configuration]\([Adobe Experience Manager の構成]\) セクションで構成のサインオン ウィンドウを開くには **[Configure Adobe Experience Manager]\([Adobe Experience Manager を構成する]\)** をクリックします。 [クイック リファレンス] セクションから、**[SAML シングル サインオン サービス URL]**、**[SAML Entity ID]\(SAML エンティティ ID\)**、および**[Sign-Out ID]\(サインアウト ID\)** をコピーします。
+6. [Adobe Experience Manager Configuration]\([Adobe Experience Manager の構成]\) セクションで構成のサインオン ウィンドウを開くには **[Configure Adobe Experience Manager]\([Adobe Experience Manager を構成する]\)** をクリックします。 [クイック リファレンス] セクションから、**[SAML シングル サインオン サービス URL]**、**[SAML Entity ID]\(SAML エンティティ ID\)**、および **[Sign-Out ID]\(サインアウト ID\)** をコピーします。
 
     ![構成セクションのリンク](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_configure.png) 
 
@@ -232,7 +232,7 @@ Adobe Experience Manager で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
   
 ### <a name="create-an-adobe-experience-manager-test-user"></a>Adobe Experience Manager テスト ユーザーの作成
 
@@ -281,7 +281,7 @@ Adobe Experience Manager で Azure AD のシングル サインオンを構成�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

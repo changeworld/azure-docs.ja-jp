@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 905e64d004c02db663634eb784cacf6fab805193
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9b4f7f9a9c501204d48b738089dc3cbd015a744c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
@@ -90,7 +90,7 @@ ms.lasthandoff: 05/07/2018
 
 このチュートリアルを実行するには、次が必要です。
 
-* お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューション インスタンス。 まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+* お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューション インスタンス。 まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 * Visual Studio 2017。 Visual Studio 2017 をインストールしていない場合は、無料の [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) エディションをダウンロードできます。
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 05/07/2018
 1. .NET バージョンの **storage-adapter** リポジトリを複製するには、次のコマンドを実行します。
 
     ```cmd
-    git clone https://github.com/Azure/storage-adapter.git
+    git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
     デバイス シミュレーション サービスは、ストレージ アダプター サービスを使用して、Azure の Cosmos DB サービスに接続します。 リモート監視ソリューションにより、シミュレートされたデバイス構成データが Cosmos DB データベースに格納されます。
@@ -258,7 +258,11 @@ ms.lasthandoff: 05/07/2018
 
 1. **[環境変数]** セクションで、**PCS\_IOTHUB\_CONNSTRING** 変数の値を編集して、前にメモした IoT ハブ接続文字列に変更します。 次に、変更を保存します。
 
-1. ソリューション エクスプローラーで、**device-simulation** ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。 **[シングル スタートアップ プロジェクト]** を選択し、**[SimulationAgent]** を選択します。 次に、 **[OK]** をクリックします
+1. ソリューション エクスプローラーで、**WebService** プロジェクトを右クリックし、**[プロパティ]**、**[デバッグ]** の順に選択します。
+
+1. **[環境変数]** セクションで、**PCS\_IOTHUB\_CONNSTRING** 変数の値を編集して、前にメモした IoT ハブ接続文字列に変更します。 次に、変更を保存します。
+
+1. ソリューション エクスプローラーで、**device-simulation** ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。 **[シングル スタートアップ プロジェクト]** を選択し、**[WebService]** を選択します。 次に、 **[OK]** をクリックします
 
 1. デバイスの種類ごとに、**Services/data/devicemodels** フォルダーに、JSON モデル ファイルと関連スクリプトがあります。 ソリューション エクスプローラーで、次の表に示すように、**Chiller** ファイルをコピーして、**Lightbulb** ファイルを作成します。
 
@@ -294,10 +298,12 @@ ms.lasthandoff: 05/07/2018
         "status": "on"
       },
       "Interval": "00:00:20",
-      "Scripts": {
-        "Type": "javascript",
-        "Path": "lightbulb-01-state.js"
-      }
+      "Scripts": [
+        {
+          "Type": "javascript",
+          "Path": "lightbulb-01-state.js"
+        }
+      ]
     },
     ```
 
@@ -468,7 +474,7 @@ ms.lasthandoff: 05/07/2018
 
 デバイス シミュレーション プロジェクトをローカルで実行して、シミュレートされた新しい lightbulb の種類をテストする準備ができました。
 
-1. ソリューション エクスプローラーで、**SimulationAgent** を右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順に選択します。
+1. ソリューション エクスプローラーで、**WebService** を右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順に選択します。
 
 1. 2 つのシミュレートされたデバイスが IoT ハブに接続されていることを確認するには、お使いのブラウザーで Azure Portal を開きます。
 

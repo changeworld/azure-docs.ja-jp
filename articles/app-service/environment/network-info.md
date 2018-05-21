@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -224,7 +224,7 @@ VNet でルートを設定し、送信トラフィックがインターネット
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md

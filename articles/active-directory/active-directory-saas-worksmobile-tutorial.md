@@ -1,6 +1,6 @@
-﻿---
-title: "チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs"
-description: "Azure Active Directory と LINE WORKS の間のシングル サインオンを構成する方法について説明します。"
+---
+title: 'チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs'
+description: Azure Active Directory と LINE WORKS の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: b15f5d02a7baff0bc56f2928f73822214c595ab0
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 54d8221ad1707d6b981de985641291cb7ed917fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>チュートリアル: Azure Active Directory と LINE WORKS の統合
 
@@ -30,7 +30,7 @@ LINE WORKS と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に LINE WORKS にサインオンする機能 (シングル サインオン) を有効にできます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,10 +108,10 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[LINE WORKS のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-lineworks-tutorial/tutorial_lineworks_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
 
     b. **[識別子]** テキストボックスに、値として「`worksmobile.com`」を入力します。
-    
+
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[LINE WORKS クライアント サポート チーム](mailto:dl_ssoinfo@worksmobile.com)にお問い合わせください。
 
@@ -209,7 +209,7 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

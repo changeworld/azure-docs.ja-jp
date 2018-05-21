@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と LogicMonitor の統合 | Microsoft Docs"
-description: "Azure Active Directory と LogicMonitor の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と LogicMonitor の統合 | Microsoft Docs'
+description: Azure Active Directory と LogicMonitor の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: d3ef333fcb0c517c44d2d5d83c7f7a51872f1490
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8812d2794c08d2ab7a50f07835cda77c159471c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>チュートリアル: Azure Active Directory と LogicMonitor の統合
 
@@ -29,7 +29,7 @@ LogicMonitor と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に LogicMonitor にサインオン (シングル サインオン) できるように、設定が可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への LogicMonitor の統合を構成するには、ギャラリーか
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**LogicMonitor**」と入力します。
 
@@ -86,11 +86,11 @@ LogicMonitor で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 
 LogicMonitor で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[LogicMonitor テスト ユーザーの作成](#creating-a-logicmonitor-test-user)** - LogicMonitor で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **LogicMonitor** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_samlbase.png)
 
 3. **[LogicMonitor のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.logicmonitor.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.logicmonitor.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.logicmonitor.com` の形式で URL を入力します。
 
@@ -121,15 +121,15 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_general_400.png)
 
 6. **LogicMonitor** の企業サイトに管理者としてログインします。
 
-7. 上部のメニューで **[Settings]**をクリックします。
+7. 上部のメニューで **[Settings]** をクリックします。
    
    ![設定](./media/active-directory-saas-logicmonitor-tutorial/ic790052.png "Settings")
 
@@ -141,16 +141,16 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
    
    ![Single Sign-On Settings](./media/active-directory-saas-logicmonitor-tutorial/ic790054.png "Single Sign-On Settings")
    
-   a. **[シングル サインオンを有効にする]**を選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
 
    b. **[Default Role Assignment (既定のロールの割り当て)]** で、**[読み取り専用]** を選択します。
    
    c. ダウンロードしたメタデータ ファイルをメモ帳で開き、ファイルの内容を **[Identity Provider Metadata (ID プロバイダーのメタデータ)]** ボックスに貼り付けます。
    
-   d. **[変更を保存]**をクリックします。
+   d. **[変更を保存]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -176,7 +176,7 @@ LogicMonitor で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-logicmonitor-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -196,17 +196,17 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
    
    ![Roles and Users](./media/active-directory-saas-logicmonitor-tutorial/ic790056.png "Roles and Users")
 
-3. **[追加]**をクリックします。
+3. **[追加]** をクリックします。
 
 4. **[アカウントの追加]** セクションで、次の手順に従います。
    
    ![Add an account](./media/active-directory-saas-logicmonitor-tutorial/ic790057.png "Add an account")
    
-   a. 関連するテキスト ボックスにプロビジョニングする Azure Active Directory ユーザーの**ユーザー名**、**メール**、**パスワード**、**パスワードの再入力**の値を入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスにプロビジョニングする Azure Active Directory ユーザーの**ユーザー名**、**メール**、**パスワード**、**パスワードの再入力**の値を入力します。
    
    b. **[ロール]**、**[アクセス許可の表示]**、**[状態]** の順に選択します。
    
-   c. **[Submit]**をクリックします。
+   c. **[送信]** をクリックします。
 
 >[!NOTE]
 >LogicMonitor から提供されている他の LogicMonitor ユーザー アカウント作成ツールや API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。 
@@ -225,7 +225,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 2. アプリケーションの一覧で **[LogicMonitor]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-logicmonitor-tutorial/tutorial_logicmonitor_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -251,7 +251,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

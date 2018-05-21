@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Docs"
-description: "Azure Active Directory と SuccessFactors の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Docs'
+description: Azure Active Directory と SuccessFactors の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: b9545599b4ac02927c38931777a3cee623a4e940
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 63ee7f7a08d16048eb3f0672cac4c2f41a3ed0f4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル: Azure Active Directory と SuccessFactors の統合
 
@@ -30,7 +30,7 @@ SuccessFactors と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に SuccessFactors にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
 
     ![[SuccessFactors のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_url.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -156,7 +156,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
     
 6. **[SuccessFactors 構成]** セクションで、**[SuccessFactors の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、**SuccessFactors 管理者ポータル**に管理者としてログインします。
     
@@ -173,7 +173,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
    
     ![Configuring single sign-on on app side][12]
    
-    a. **[SAML v2 SSO]** オプションをクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML v2 SSO]** オプションをクリックします。
    
     b. **[SAML Asserting Party Name]\(SAML アサーティング パーティ名\)** を設定します (例: SAML 発行者 + 会社名)。
    
@@ -198,7 +198,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
    
     ![Configuring single sign-on on app side][13]
    
-    a. **[Support SP-initiated Global Logout (SP によって開始されたグローバル ログアウトのサポート)]** で **[Yes (はい)]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Support SP-initiated Global Logout (SP によって開始されたグローバル ログアウトのサポート)]** で **[Yes (はい)]** を選択します。
    
     b. **[Global Logout Service URL (LogoutRequest destination)]\(グローバル ログアウト サービスの URL (LogoutRequest の送信先)\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
    
@@ -208,15 +208,15 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
    
     e. **[Enable sp initiated login (AuthnRequest) (SP によって開始されたログインを有効にする (AuthnRequest))]** で **[Yes (はい)]** を選択します。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を、**[Send request as Company-Wide issuer]\(会社全体の発行者として要求を送信する\)** ボックスに貼り付けます。
+    f. Azure Portal からコピーした **SAML シングル サインオン サービスの URL** の値を、**[Send request as Company-Wide issuer]\(会社全体の発行者として要求を送信する\)** ボックスに貼り付けます。
 
 12. 大文字と小文字を区別しないログイン ユーザー名を作成する場合、次の手順を実行します。
    
-    ![[シングル サインオンの構成]][29]
+    ![[Configure Single Sign-On]][29]
     
-    a. 下部の **[Company Settings (会社設定)]** に移動します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 下部の **[Company Settings (会社設定)]** に移動します。
    
-    b. **[Enable Non-Case-Sensitive Username (大文字と小文字を区別しないユーザー名)]**の横のチェック ボックスをオンにします。
+    b. **[Enable Non-Case-Sensitive Username (大文字と小文字を区別しないユーザー名)]** の横のチェック ボックスをオンにします。
    
     c. **[Save (保存)]** をクリックします。
    
@@ -224,7 +224,7 @@ SuccessFactors で Azure AD のシングル サインオンを構成してテス
     > これを有効にしようとすると、重複する SAML ログイン名が作成されるかどうかがシステムによって確認されます。 たとえば、顧客が User1 および user1 というユーザー名を持っている場合などです。 大文字と小文字の区別をしないと、これらの重複が発生します。 システムによってエラー メッセージが表示され、機能は有効になりません。 顧客はユーザー名の一方を、違うスペルになるように変更する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -277,7 +277,7 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SuccessFactors]**を選択します。
+2. アプリケーションの一覧で **[SuccessFactors]** を選択します。
 
     ![アプリケーションの一覧の SuccessFactors のリンク](./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_app.png)  
 
@@ -305,7 +305,7 @@ SuccessFactors でユーザーを作成するには、 [SuccessFactors のサポ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

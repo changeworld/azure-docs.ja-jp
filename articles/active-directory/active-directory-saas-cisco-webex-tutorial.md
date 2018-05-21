@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Cisco Webex の統合 | Microsoft Docs"
-description: "Azure Active Directory と Cisco Webex の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Cisco Webex の統合 | Microsoft Docs'
+description: Azure Active Directory と Cisco Webex の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 42632dcf8997ec5e987ac8a6615aae24e903399a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 527d74910244058506e8435d431e239968896cd9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>チュートリアル: Azure Active Directory と Cisco Webex の統合
 
@@ -30,7 +30,7 @@ Cisco Webex と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Cisco Webex にサインオンできるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,7 +110,7 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
 
     ![[Cisco Webex のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.webex.com` というパターンで URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.webex.com` というパターンで URL を入力します。
 
     b. **[識別子]** ボックスに、URL `http://www.webex.com` を入力します。
 
@@ -133,7 +133,7 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
 
 7. 別の Web ブラウザー ウィンドウで、Cisco Webex 企業サイトに管理者としてサインインします。
 
-8. 上部のメニューから **[Site Administration]**を選択します。
+8. 上部のメニューから **[Site Administration]** を選択します。
 
     ![Site Administration](./media/active-directory-saas-cisco-webex-tutorial/ic777621.png "Site Administration")
 
@@ -145,7 +145,7 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
    
     ![Federated SSO Configuration](./media/active-directory-saas-cisco-webex-tutorial/ic777623.png "Federated SSO Configuration")  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Federation Protocol]** ボックスの一覧から、**[SAML 2.0]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Federation Protocol]** ボックスの一覧から、**[SAML 2.0]** を選択します。
 
     b. **[SSO profile]\(SSO プロファイル\)** で、**[SP Initiated]\(SP によって開始\)** を選択します。
 
@@ -161,12 +161,12 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
 
     h. **[AuthnContextClassRef]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:ac:classes:Password**」と入力します。
 
-    i. **[Customer SSO Service Logout URL]\(カスタマー SSO サービス ログアウト URL\)**ボックスに、Azure Portal からコピーした**サインアウト URL** を貼り付けます。
+    i. **[Customer SSO Service Logout URL]\(カスタマー SSO サービス ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** を貼り付けます。
    
     j. **[Update]\(更新\)** を選択します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。 **[Active Directory]**  >  **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブを選択し、一番下の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント](https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。 **[Active Directory]** > **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブを選択し、一番下の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント](https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -198,7 +198,7 @@ Cisco Webex で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-a-cisco-webex-test-user"></a>Cisco Webex テスト ユーザーの作成
 
@@ -216,7 +216,7 @@ Azure AD ユーザーが Cisco Webex にサインインできるようにする�
    
     ![ユーザーの追加](./media/active-directory-saas-cisco-webex-tutorial/ic777626.png "ユーザーの追加")   
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Account Type]** として **[Host]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Account Type]** として **[Host]** を選択します。
 
     b. **[First name]\(名\)** ボックスに、ユーザーの名 (この場合は **Britta**) を入力します。
 
@@ -230,7 +230,7 @@ Azure AD ユーザーが Cisco Webex にサインインできるようにする�
 
     g. **[Confirm Password]\(パスワードの確認\)** ボックスに、ユーザーのパスワードをもう一度入力します。
 
-    h. **[追加]**を選択します。
+    h. **[追加]** を選択します。
 
 >[!NOTE]
 >Cisco Webex から提供されている他の Cisco Webex ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 
@@ -249,7 +249,7 @@ Azure AD ユーザーが Cisco Webex にサインインできるようにする�
 
     ![ユーザーの割り当て][201] 
 
-3. アプリケーションの一覧で **[Cisco Webex]**を選択します。
+3. アプリケーションの一覧で **[Cisco Webex]** を選択します。
 
     ![アプリケーションの一覧の [Cisco Webex] リンク](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_app.png)  
 
@@ -278,7 +278,7 @@ Azure AD ユーザーが Cisco Webex にサインインできるようにする�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

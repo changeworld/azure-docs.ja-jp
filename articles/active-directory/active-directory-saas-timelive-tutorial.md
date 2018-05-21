@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TimeLive の統合 | Microsoft Docs"
-description: "Azure Active Directory と TimeLive の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と TimeLive の統合 | Microsoft Docs'
+description: Azure Active Directory と TimeLive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 945067f0f413790883d55ab6cc9b2721144e966a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e25ded9097a8250206f5bec3c76e872044ba597d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>チュートリアル: Azure Active Directory と TimeLive の統合
 
@@ -30,7 +30,7 @@ TimeLive と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に TimeLive にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ TimeLive で Azure AD のシングル サインオンを構成してテストす
 
     ![[TimeLive のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-timelive-tutorial/tutorial_timelive_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://domainname.livetecs.com/` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://domainname.livetecs.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://domainname.livetecs.com/` の形式で URL を入力します。
 
@@ -137,7 +137,7 @@ TimeLive で Azure AD のシングル サインオンを構成してテストす
     
     ![TimeLive 構成](./media/active-directory-saas-timelive-tutorial/configure2.png)
 
-    a. **[セキュリティ]** タブを選びます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[セキュリティ]** タブを選びます。
 
     b. **[Enable Single Sign On (SSO)]\(シングル サインオン (SSO) を有効にする\)** チェック ボックスをオンにします。
 
@@ -147,12 +147,12 @@ TimeLive で Azure AD のシングル サインオンを構成してテストす
 
     e. **[Remote logout URL]\(リモート ログアウト URL\)** に、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure Portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[X.509 証明書]** ボックスに貼り付けます。
+    f. Azure Portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[X.509 証明書]** ボックスに貼り付けます。
 
-    g. **[Update]**をクリックします。
+    g. **[Update]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -230,7 +230,7 @@ TimeLive で Azure AD のシングル サインオンを構成してテストす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

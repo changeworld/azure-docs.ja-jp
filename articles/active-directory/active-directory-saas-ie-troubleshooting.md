@@ -1,11 +1,11 @@
 ---
-title: "IE 用 Azure アクセス パネル拡張機能のトラブルシューティング | Microsoft Docs"
-description: "グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
+title: IE 用 Azure アクセス パネル拡張機能のトラブルシューティング | Microsoft Docs
+description: グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff6d0b299c45d89ee8d3a79fa98ce4a542174a5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング
 この記事は、次の問題をトラブルシューティングする際に役立ちます。
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/11/2017
 5. インストールの問題点を示す次の診断ウィンドウが表示されます。
    
     ![A sample of the diagnostic window](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
-6. **[はい]**をクリックして、見つかった問題をプログラムに修正させます。
+6. **[はい]** をクリックして、見つかった問題をプログラムに修正させます。
 7. 変更内容を保存するために、すべての Internet Explorer ウィンドウを閉じてから再び Internet Explorer を開きます。<br />まだアプリにアクセスできない場合は、次の手順をお試しください。
 
 ## <a name="check-that-the-access-panel-extension-is-enabled"></a>アクセス パネル拡張機能が有効になっていることを確認する
@@ -92,6 +92,6 @@ InPrivate ブラウズ モードを使用している場合:
 
 ## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)
 

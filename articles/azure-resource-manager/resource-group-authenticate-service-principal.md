@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/04/2018
+ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ab1b2357e88525f4730b5ad550cfcf3acbb906e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3dc62ba21458cc91d1858e11e7abbb6e96b0d5dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -73,7 +73,6 @@ Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
 
 ```powershell
 New-SelfSignedCertificateEx -StoreLocation CurrentUser `
-  -StoreName My `
   -Subject "CN=exampleapp" `
   -KeySpec "Exchange" `
   -FriendlyName "exampleapp"

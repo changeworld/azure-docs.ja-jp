@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Velpic SAML の統合 | Microsoft Docs"
-description: "Azure Active Directory と Velpic SAML の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Velpic SAML の統合 | Microsoft Docs'
+description: Azure Active Directory と Velpic SAML の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e4f7e4c9e960450f0024cd7ca35bd3808d31ee19
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03ef1ef04d80ac9bb83bcce2082b6cc3f617d812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル: Azure Active Directory と Velpic SAML の統合
 
@@ -29,7 +29,7 @@ Velpic SAML と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Velpic SAML に自動的にサインオン (シングル サインオン) するように設定できます。
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,17 +57,17 @@ Azure AD への Velpic SAML の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Velpic SAML を追加するには、次の手順を実行します。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Velpic SAML**」と入力します。
 
@@ -86,11 +86,11 @@ Azure AD への Velpic SAML の統合を構成するには、ギャラリーか�
 
 Velpic SAML で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Velpic SAML のテスト ユーザーの作成](#creating-a-velpic-saml-test-user)** - Velpic SAML で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
 1. Microsoft Azure 管理ポータルの **Velpic SAML** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_samlbase.png)
 
 3. **[Velpic SAML のドメインとURL]** セクションで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a. **[サインオン URL]** テキストボックスに、「`https://<sub-domain>.velpicsaml.net`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** テキストボックスに、「`https://<sub-domain>.velpicsaml.net`」と入力します。
 
     b. **[識別子]** テキストボックスに、"**シングル サインオン URL**" の値 (`https://auth.velpic.com/saml/v2/<entity-id>/login`) を貼り付けます。
     
@@ -119,11 +119,11 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_general_400.png)
 
 6. [Velpic SAML 構成] セクションで、[Velpic SAML の構成] をクリックして、[サインオンの構成] ウィンドウを開きます。 [クイック リファレンス] セクションから SAML エンティティ ID をコピーします。
 
@@ -149,7 +149,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     ![プラグイン](./media/active-directory-saas-velpicsaml-tutorial/velpic_5.png)
 
-    a. **[名前]** テキストボックスに、SAML プラグインの名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキストボックスに、SAML プラグインの名前を入力します。
 
     b. **[発行者の URL]** テキストボックスに、Azure Portal の **[サインオンの構成]** ウィンドウからコピーした **SAML エンティティ ID** を貼り付けます。
 
@@ -159,7 +159,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     e. テキストボックスから**シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[保存]**をクリックします。
+    f. **[Save]** をクリックします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
@@ -184,7 +184,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-velpicsaml-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,7 +206,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
     ![ユーザー](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
     
-    a. **[First Name] \(名)** テキストボックスに、Britta Simon の名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name] \(名)** テキストボックスに、Britta Simon の名を入力します。
 
     b. **[Last Name] \(姓)** テキストボックスに、Britta Simon の姓を入力します。
 
@@ -216,7 +216,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
     e. その他の情報は省略可能です。必要に応じて入力してください。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[保存]**をクリックします。  
+    f. **[保存]** をクリックします。  
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -232,7 +232,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
 2. アプリケーションの一覧から **[Velpic SAML]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -262,7 +262,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

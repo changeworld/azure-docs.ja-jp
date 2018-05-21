@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Mindflash の統合 | Microsoft Docs"
-description: "Azure Active Directory と Mindflash の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Mindflash の統合 | Microsoft Docs'
+description: Azure Active Directory と Mindflash の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: e7502e46f8aaa849155d5c330d6ff6089b2a7276
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa3cb7270b401c2ffa2a96428c7b48c6ecf1bd70
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>チュートリアル: Azure Active Directory と Mindflash の統合
 
@@ -29,7 +29,7 @@ Mindflash と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Mindflash にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Mindflash の統合を構成するには、ギャラリーから
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Mindflash**」と入力します。
 
@@ -86,11 +86,11 @@ Mindflash で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 Mindflash で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Mindflash テスト ユーザーの作成](#creating-a-mindflash-test-user)** - Mindflash で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Mindflash で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Mindflash** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_samlbase.png)
 
 3. **[Mindflash Domain and URLs]\(Mindflash のドメインと URL\)** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.mindflash.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.mindflash.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.mindflash.com` の形式で URL を入力します。
 
@@ -121,16 +121,16 @@ Mindflash で Azure AD のシングル サインオンを構成してテスト�
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-mindflash-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-mindflash-tutorial/tutorial_general_400.png)
 
 6. **Mindflash** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Mindflash サポート チーム](https://www.mindflash.com/contact/)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -156,7 +156,7 @@ Mindflash で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-mindflash-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -172,7 +172,7 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
 
 1. **Mindflash** の企業サイトに管理者としてログインします。
 
-2. **[ユーザーの管理]**に移動します。
+2. **[ユーザーの管理]** に移動します。
    
     ![Manage Users](./media/active-directory-saas-mindflash-tutorial/ic787140.png "Manage Users")
 
@@ -182,13 +182,13 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
    
     ![Add New Users](./media/active-directory-saas-mindflash-tutorial/ic787141.png "Add New Users")
    
-    a. **[名]** ボックスに、ユーザーの**名**を、「**Britta**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに、ユーザーの**名**を、「**Britta**」と入力します。
 
     b. **[姓]** ボックスに、ユーザーの**姓**を、「**Simon**」と入力します。
     
-    c. **[電子メール]** のボックスに、ユーザーの**電子メール アドレス**を**「BrittaSimon@contoso.com」**と入力します。
+    c. **[電子メール]** のボックスに、ユーザーの**電子メール アドレス**を **「BrittaSimon@contoso.com」** と入力します。
 
-    b. **[追加]**をクリックします。
+    b. **[追加]** をクリックします。
 
 >[!NOTE]
 >Mindflash から提供されている他の Mindflash ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
@@ -208,7 +208,7 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
 
 2. アプリケーションの一覧で **[Mindflash]\(Mindflash\)** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -234,7 +234,7 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

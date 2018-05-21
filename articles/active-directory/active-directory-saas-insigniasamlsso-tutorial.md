@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Insignia SAML SSO の統合 | Microsoft Docs"
-description: "Azure Active Directory と Insignia SAML SSO の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Insignia SAML SSO の統合 | Microsoft Docs'
+description: Azure Active Directory と Insignia SAML SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 9d7d780e212a409c1b868b675e190c4a03788ab1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1dc2c3ecd81cb623dd2494f538f66bd81daf4b94
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>チュートリアル: Azure Active Directory と Insignia SAML SSO の統合
 
@@ -30,7 +30,7 @@ Insignia SAML SSO と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Insignia SAML SSO にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 
     ![[Insignia SAML SSO のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |
@@ -136,7 +136,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 7. **Insignia SAML SSO** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL、SAML シングル サインオン サービス URL** を [Insignia SAML SSO サポート チーム](http://www.insigniasoftware.com/insignia/Techsupport.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -215,7 +215,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

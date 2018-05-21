@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と PingBoard の統合 | Microsoft Docs"
-description: "Azure Active Directory と PingBoard の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と PingBoard の統合 | Microsoft Docs'
+description: Azure Active Directory と PingBoard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 733eff519f75368fd78824deea56f63940c0b49f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 46d00fdcc535b85754eb2f805d2844e1526f1f86
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル: Azure Active Directory と PingBoard の統合
 
@@ -30,7 +30,7 @@ PingBoard と Azure AD の統合には、次の利点があります。
 - ユーザーが Azure AD アカウントで PingBoard に自動的にサインオン (シングル サインオン) できるように設定できます
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     ![[PingBoard のドメインと URL] のシングル サインオン情報 IDP](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_url.png)
 
-    a. **[識別子]** ボックスに、値として「`http://app.pingboard.com/sp`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、値として「`http://app.pingboard.com/sp`」と入力します。
 
     b. **[応答 URL]** ボックスに、`https://<entity-id>.pingboard.com/auth/saml/consume` のパターンを使用して URL を入力します。
 
@@ -133,7 +133,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
 8. 上部のメニューで、**[アプリ]、[統合]** の順に選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
 
 9.  **[Integrations]** ページで、**[Azure Active Directory]** タイルを探してクリックします。
 
@@ -173,7 +173,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -197,7 +197,7 @@ Azure AD ユーザーが PingBoard にログインできるようにするには
 
     ![[ユーザーの招待]](./media/active-directory-saas-pingboard-tutorial/create_testuser_name.png)
 
-    a. **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
     b. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
 
@@ -205,7 +205,7 @@ Azure AD ユーザーが PingBoard にログインできるようにするには
 
     d. **[Location]** ドロップダウン リストで、Britta Simon の場所を選択します。
     
-    e. **[追加]**をクリックします。   
+    e. **[追加]** をクリックします。   
 
 4. ユーザーの追加を確認するための確認画面が表示されます。
     
@@ -254,7 +254,7 @@ Azure AD ユーザーが PingBoard にログインできるようにするには
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 
