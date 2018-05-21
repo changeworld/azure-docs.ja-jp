@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate による評価後、マシンを移行する | Microsoft Docs"
-description: "Azure Migrate サービスを使用した評価の実行後、マシンを移行するための推奨事項を取得する方法について説明します。"
+title: Azure Migrate による評価後、マシンを移行する | Microsoft Docs
+description: Azure Migrate サービスを使用した評価の実行後、マシンを移行するための推奨事項を取得する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: e6e32e9bd2384987a1d0315bfbef913c46fc5dbb
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 242a8b95e7eb278a7884eec7d0cc6a607bdf24d4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="migrate-machines-after-assessment"></a>評価後のマシンの移行
 
@@ -23,17 +23,17 @@ ms.lasthandoff: 12/12/2017
 
 移行ツールに関する推奨事項を取得するには、オンプレミス環境の詳細検出を行う必要があります。 詳細検出を行うには、オンプレミスのマシンにエージェントをインストールします。  
 
-1. Azure Migrate プロジェクトを作成し、オンプレミスのコンピューターを検出し、移行の評価を作成します。 [詳細情報](tutorial-assessment-vmware.md)
+1. Azure Migrate プロジェクトを作成し、オンプレミスのコンピューターを検出し、移行の評価を作成します。 [詳細情報](tutorial-assessment-vmware.md)。
 2. 推奨される移行方法を取得する各オンプレミスのマシンに、Azure Migrate エージェントをダウンロードし、インストールします。 [次の手順に従って](how-to-create-group-machine-dependencies.md#prepare-machines-for-dependency-mapping)エージェントをインストールします。
 2. リフトアンドシフト移行に適している、オンプレミスのマシンを識別します。 これらは、実行中のアプリへの変更を必要とせず、そのまま移行できる VM です。
-3. リフトアンドシフト移行する場合は、Azure Site Recovery を使用することをお勧めします。 [詳細情報](../site-recovery/tutorial-migrate-on-premises-to-azure.md) または、Azure への移行をサポートするサード パーティ製ツールを使用することもできます。
+3. リフトアンドシフト移行する場合は、Azure Site Recovery を使用することをお勧めします。 [詳細情報](../site-recovery/tutorial-migrate-on-premises-to-azure.md)。 または、Azure への移行をサポートするサード パーティ製ツールを使用することもできます。
 4. リフトアンドシフト移行に適していないオンプレミスのマシンがある場合、つまり VM 全体ではなく、特定のアプリを移行する場合は、他の移行ツールを使用できます。 たとえば、SQL Server、MySQL、Oracle データベースなどのオンプレミスのデータベースを Azure に移行する場合は、[Azure Database Migration サービス](https://azure.microsoft.com/campaigns/database-migration/)をお勧めします。
 
 
 ## <a name="review-suggested-migration-methods"></a>推奨される移行方法のレビュー
 
-1. 推奨される移行方法を取得する前に、Azure Migrate プロジェクトを作成し、オンプレミスのマシンを検出し、移行評価を実行する必要があります。 [詳細情報](tutorial-assessment-vmware.md)
-2. 評価が作成されたら、[プロジェクト] > **[概要]**  >  **[ダッシュボード]** を選択して表示します。 **[Assessment Readiness]\(アセスメントの準備状態\)** をクリックします。
+1. 推奨される移行方法を取得する前に、Azure Migrate プロジェクトを作成し、オンプレミスのマシンを検出し、移行評価を実行する必要があります。 [詳細情報](tutorial-assessment-vmware.md)。
+2. 評価が作成されたら、[プロジェクト] > **[概要]**  > **[ダッシュボード]** を選択して表示します。 **[Assessment Readiness]\(アセスメントの準備状態\)** をクリックします。
 
     ![アセスメントの準備状態](./media/tutorial-assessment-vmware/assessment-report.png)  
 
@@ -44,6 +44,6 @@ ms.lasthandoff: 12/12/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。

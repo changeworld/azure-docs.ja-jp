@@ -1,24 +1,24 @@
 ---
-title: "Eclipse での Azure Service Fabric アプリケーションのデバッグ| Microsoft Docs"
-description: "Eclipse とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。"
+title: Eclipse での Azure Service Fabric アプリケーションのデバッグ| Microsoft Docs
+description: Eclipse とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: suhuruli;mikhegn
-ms.openlocfilehash: 023b878706abf524b5a7939492937a92151f6035
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: suhuruli
+ms.openlocfilehash: 0e9e816fa84816b1b5d12f066dc65aee7b4930f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Eclipse を使用して Java Service Fabric アプリケーションをデバッグする
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/21/2017
 
 アプリケーションがクラッシュする場合は、コアダンプを有効にすることもできます。 シェル内で ``ulimit -c`` を実行し、ゼロが返された場合は、コアダンプが無効になっています。 無制限コアダンプを有効にするには、次のコマンドを実行します: ``ulimit -c unlimited``。 また、コマンド ``ulimit -a`` を使用して状態を確認することもできます。  コアダンプの生成パスを更新する場合は、``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`` を実行します。 
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 * [Linux Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)。
 * [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。

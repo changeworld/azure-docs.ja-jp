@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric のサービスとの接続と通信 | Microsoft Docs"
-description: "Service Fabric のサービスに対して解決、接続、通信を行う方法について説明します。"
+title: Azure Service Fabric のサービスとの接続と通信 | Microsoft Docs
+description: Service Fabric のサービスに対して解決、接続、通信を行う方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
@@ -181,7 +181,7 @@ Reliable Services フレームワークには、事前に構築されたいく�
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>カスタム プロトコルとその他の通信フレームワークの使用
 サービスでは、通信用の任意のプロトコルまたはフレームワークを使用できるため、TCP ソケットでのカスタム バイナリ プロトコルも、 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) または [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) を介したストリーミング イベントも使用することができます。 Service Fabric では、通信スタックを接続できる通信 API が提供されるだけでなく、検出と接続のためのすべての作業が不要になります。 詳細については、 [Reliable Services 通信モデル](service-fabric-reliable-services-communication.md) に関するこの記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Reliable Services 通信モデル](service-fabric-reliable-services-communication.md)の概念と利用できる API の詳細について確認し、[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)の利用をすぐに開始するか、[OWIN 自己ホストによる Web API](service-fabric-reliable-services-communication-webapi.md) を使用して通信リスナーを記述する方法についてさらに深く理解します。
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

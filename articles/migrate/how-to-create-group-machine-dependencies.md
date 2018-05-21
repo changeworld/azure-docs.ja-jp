@@ -4,13 +4,13 @@ description: Azure Migrate サービスでマシンの依存関係を使用し�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/25/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a9850044266ec05cee5e32c6825609bcf969351d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>マシンの依存関係マッピングを使用したマシンのグループ化
 
@@ -51,7 +51,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)をご覧ください。 
+依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../monitoring/monitoring-service-map-configure.md#supported-operating-systems)をご覧ください。 
 
 ## <a name="create-a-group"></a>グループの作成
 

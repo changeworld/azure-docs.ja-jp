@@ -10,17 +10,16 @@ ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 81074d303fbcefdf396de09510f69067eac3f3f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a9f2e9c2634173cf2feb9ded2e87e49f9c8d1e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成する
+
 > [!div class="op_single_selector"]
 > * [Azure Portal の使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -38,11 +37,12 @@ HDInsight で Data Lake Store を使用するための重要な考慮事項を�
 PowerShell を使用して Data Lake Store を操作できるように HDInsight を構成するには、次の 5 つのセクションで示す手順に従います。
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを開始する前に、次の要件を満たしていることを確認します。
 
 * **An Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 * **Azure PowerShell 1.0 以上**: [PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関する記事をご覧ください。
-* **Windows ソフトウェア開発キット (SDK)**: Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/en-us/downloads)」をご覧ください。 SDK は、セキュリティ証明書の作成に使用します。
+* **Windows ソフトウェア開発キット (SDK)**: Windows SDK のインストール方法については、「[Windows 10 用のダウンロードとツール](https://dev.windows.com/downloads)」をご覧ください。 SDK は、セキュリティ証明書の作成に使用します。
 * **Azure Active Directory サービス プリンシパル**: このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
     >[!NOTE]
@@ -50,6 +50,7 @@ PowerShell を使用して Data Lake Store を操作できるように HDInsight
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
+
 Data Lake Store アカウントを作成するには、次の操作を行います。
 
 1. デスクトップで、PowerShell ウィンドウを開き、次のスニペットを入力します。 サインインを求められたら、サブスクリプションの管理者または所有者としてサインインします。 
@@ -142,7 +143,7 @@ Azure Data Lake の Active Directory 認証を設定するには、次の 2 つ�
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

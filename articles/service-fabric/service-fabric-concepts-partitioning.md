@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric サービスのパーティション分割 | Microsoft Docs"
-description: "Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。"
+title: Service Fabric サービスのパーティション分割 | Microsoft Docs
+description: Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc6f25c7a8a779d949fbd09f9a9a9a37ec83f56a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -363,7 +363,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
 サンプルの完全なソース コードについては、 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Fabric の概念についての詳細は、次を参照してください。
 
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)

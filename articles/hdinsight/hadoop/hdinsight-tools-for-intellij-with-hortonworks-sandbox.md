@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: c72fb17a53b9d373bbd141f76f01e6b029d1e8f7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59251287f7597955fe22700cc96527b9476753c1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -62,7 +62,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
 
    ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. **[次へ]**を選択します。
+2. **[次へ]** を選択します。
 3. 次の **[New Project]\(新しいプロジェクト\)** ダイアログ ボックスで、以下の手順を実行します。
 
     1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。

@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/15/2017
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 3fb08a18fea056bc06eed797a2da809d25109cae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1734e9f0002ab7f33a8a67e44811352cb5c45fdc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
 
@@ -210,7 +210,7 @@ Azure Storage エクスプローラーを使用するには、Azure Storage の�
 3. ツール バーのアップロード アイコンをクリックします。
 
     ![アップロード アイコンが強調表示されたツール バー](./media/hdinsight-upload-data/toolbar.png)
-4. アップロードするファイルを指定して、 **[開く]**をクリックします。 メッセージが表示されたら、 **[アップロード]** をクリックして、ファイルをストレージ コンテナーのルートにアップロードします。 ファイルを特定のパスにアップロードする場合は、**[アップロード先]** フィールドにパスを入力し、**[アップロード]** を選びます。
+4. アップロードするファイルを指定して、 **[開く]** をクリックします。 メッセージが表示されたら、 **[アップロード]** をクリックして、ファイルをストレージ コンテナーのルートにアップロードします。 ファイルを特定のパスにアップロードする場合は、**[アップロード先]** フィールドにパスを入力し、**[アップロード]** を選びます。
 
     ![[ファイルのアップロード] ダイアログ](./media/hdinsight-upload-data/fileupload.png)
 
