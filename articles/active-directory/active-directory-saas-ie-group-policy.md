@@ -1,8 +1,8 @@
 ---
-title: "GPO を使用して IE 用 Azure アクセス パネル拡張機能をデプロイする | Microsoft Docs"
-description: "グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。"
+title: GPO を使用して IE 用 Azure アクセス パネル拡張機能をデプロイする | Microsoft Docs
+description: グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
@@ -15,14 +15,14 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a203548575eacb2d0eb0d09a4aaf239b11caad3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
-このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
+このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
 
 管理者にはこの拡張機能のデプロイメントを自動化することをお勧めします。 自動化しないと、ユーザーは自分で拡張機能をダウンロードしてインストールする必要があるので、ユーザー エラーが発生しやすく、管理者のアクセス許可が必要になります。 このチュートリアルでは、グループ ポリシーを使用してソフトウェアのデプロイメントを自動化する方法について説明します。 [グループ ポリシーの詳細についてはこちらを参照してください。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/11/2017
 3. **[ソフトウェアのインストール]** を右クリックして、**[新規]**  >  **[パッケージ...]** の順に選択します
    
     ![新しいソフトウェア インストール パッケージを作成する](./media/active-directory-saas-ie-group-policy/new-package.png)
-4. 「 [手順 1: 配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージをダウンロードした共有フォルダーに移動し、.msi ファイルを選択して、 **[開く]**をクリックします。
+4. 「 [手順 1: 配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージをダウンロードした共有フォルダーに移動し、.msi ファイルを選択して、 **[開く]** をクリックします。
    
    > [!IMPORTANT]
    > 共有が同じサーバー上に存在する場合は、ローカル ファイル パスではなく、ネットワーク ファイル パスから .msi にアクセスしていることを確認します。
@@ -87,7 +87,7 @@ ms.lasthandoff: 12/11/2017
    > 
    
     ![共有フォルダーからインストール パッケージを選択する](./media/active-directory-saas-ie-group-policy/select-package.png)
-5. **[ソフトウェアの展開]** プロンプトで、デプロイ方法として **[割り当て]** を選択します。 次に、 **[OK]**をクリックします
+5. **[ソフトウェアの展開]** プロンプトで、デプロイ方法として **[割り当て]** を選択します。 次に、 **[OK]** をクリックします
    
     ![[割り当て] を選択し、[OK] をクリックする](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
@@ -126,10 +126,10 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 1. **グループ ポリシー管理エディター** ウィンドウで、次のパスに移動します。 この構成設定は **[ユーザー構成]** でのみ利用できます。
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
-2. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]**という名前の設定を見つけます。
+2. **[フォームのユーザー名とパスワードのオートコンプリート機能を有効にする]** という名前の設定を見つけます。
    
    > [!NOTE]
-   > 以前のバージョンの Active Directory では、この設定は、 **[パスワードを保存するオートコンプリートを許可しない]**という名前で表示される場合があります。 その設定の構成は、このチュートリアルで説明する設定とは異なります。
+   > 以前のバージョンの Active Directory では、この設定は、 **[パスワードを保存するオートコンプリートを許可しない]** という名前で表示される場合があります。 その設定の構成は、このチュートリアルで説明する設定とは異なります。
    > 
    > 
    
@@ -150,7 +150,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 ## <a name="step-6-testing-the-deployment"></a>手順 6: デプロイのテスト
 拡張機能のデプロイメントが成功したかどうかを確認するには、次の手順に従います。
 
-1. **[コンピューターの構成]**を使用してデプロイした場合は、「 [手順 2: グループ ポリシー オブジェクトを作成する](#step-2-create-the-group-policy-object)」で選択した OU に属しているクライアント コンピューターにサインインします。 **[ユーザーの構成]**を使用してデプロイした場合は、その OU に属しているユーザーとしてサインインします。
+1. **[コンピューターの構成]** を使用してデプロイした場合は、「 [手順 2: グループ ポリシー オブジェクトを作成する](#step-2-create-the-group-policy-object)」で選択した OU に属しているクライアント コンピューターにサインインします。 **[ユーザーの構成]** を使用してデプロイした場合は、その OU に属しているユーザーとしてサインインします。
 2. そのコンピューターでグループ ポリシーの変更が完全に更新されるには、2 回サインインする必要がある場合があります。 強制的に更新するには、**[コマンド プロンプト]** ウィンドウを開き、次のコマンドを実行します。`gpupdate /force`
 3. インストールが行われるには、コンピューターを再起動する必要があります。 起動には、通常の拡張機能のインストールよりかなり長い時間がかかる可能性があります。
 4. コンピューターが再起動したら、 **Internet Explorer**を開きます。 ウィンドウの右上隅の **[ツール]** (歯車アイコン) をクリックし、**[アドオンの管理]** をクリックします。
@@ -162,6 +162,6 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 ## <a name="related-articles"></a>関連記事
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md)
 

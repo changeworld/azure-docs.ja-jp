@@ -1,27 +1,23 @@
 ---
 title: Azure Multi-Factor Authentication と Active Directory 間のディレクトリ統合
-description: ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法を説明する Azure Multi-Factor Authentication のページです。
+description: ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/16/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 595359c9d50bceada3674336d4ef3fc8d5d6f416
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3f6f1f351a4870e68f2a5d6562c5c4a8f0031bdd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
+
 Azure MFA Server を Active Directory や別の LDAP ディレクトリと統合するには、Azure MFA Server の [ディレクトリの統合] セクションを使用します。 そのディレクトリ スキーマに合わせて属性を構成したり、自動ユーザー同期を設定したりすることができます。
 
 ## <a name="settings"></a>設定

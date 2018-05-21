@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric スタンドアロン クラスターを構成する | Microsoft Docs"
-description: "スタンドアロンまたはオンプレミス Azure Service Fabric クラスターを構成する方法について説明します。"
+title: Azure Service Fabric スタンドアロン クラスターを構成する | Microsoft Docs
+description: スタンドアロンまたはオンプレミス Azure Service Fabric クラスターを構成する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: bd6e5c1591d01329d95ccb168e5a14e436920baf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、ClusterConfig.json ファイルを使用して、スタンドアロン Azure Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。
@@ -200,6 +200,6 @@ KtlLogger セクションでは、Reliable Services のグローバル構成設�
 スタンドアロン クラスターの Windows Server コンテナーと Hyper-V コンテナーの両方でコンテナー サポートを有効にするには、DnsService アドオン機能を有効にする必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 スタンドアロン クラスターのセットアップに従って ClusterConfig.json ファイル全体を構成したら、クラスターをデプロイできます。 [スタンドアロン Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページの手順に従います。 その後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進み、その手順に従います。
 

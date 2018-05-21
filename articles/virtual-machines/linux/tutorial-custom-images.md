@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用したカスタム VM イメージの作成 | Microsoft Docs
-description: チュートリアル - Azure CLI を使用してカスタム VM イメージを作成する
+title: チュートリアル - Azure CLI を使用したカスタム VM イメージの作成 | Microsoft Docs
+description: このチュートリアルでは、Azure CLI 2.0 を使用して、Azure でカスタム仮想マシン イメージを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 911bb639402fb4577eb5bc3ff5b3096c66806378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 766e247775e61d7427b658b66948aa6699a7241a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>CLI を使用した Azure VM のカスタム イメージの作成
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用して Azure VM のカスタム イメージを作成する
 
 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 このチュートリアルでは、Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
 
@@ -33,10 +33,9 @@ ms.lasthandoff: 04/06/2018
 > * サブスクリプション内のすべてのイメージを一覧表示する
 > * イメージを削除する
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -52,7 +51,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 プロビジョニングを解除すると、マシン固有の情報が削除されるため、VM が汎用化されます。 この汎用化によって、1 つのイメージから多数の VM をデプロイできるようになります。 プロビジョニングの解除の際に、ホスト名は *localhost.localdomain* にリセットされます。 SSH ホスト キー、ネームサーバー構成、ルート パスワード、およびキャッシュされた DHCP リースも削除されます。
 
-VM のプロビジョニングを解除するには、Azure VM エージェント (waagent) を使用します。 Azure VM エージェントは VM にインストールして、プロビジョニングと Azure ファブリック コントローラーとのやり取りの管理に使用します。 詳細については、「[Azure Linux エージェント ユーザー ガイド](agent-user-guide.md)」をご覧ください。
+VM のプロビジョニングを解除するには、Azure VM エージェント (waagent) を使用します。 Azure VM エージェントは VM にインストールして、プロビジョニングと Azure ファブリック コントローラーとのやり取りの管理に使用します。 詳細については、「[Azure Linux エージェント ユーザー ガイド](../extensions/agent-linux.md)」をご覧ください。
 
 SSH を使用して VM に接続し、VM のプロビジョニングを解除するコマンドを実行します。 `+user` 引数を使用して、前回プロビジョニングされたユーザー アカウントおよび関連付けられたデータも削除します。 サンプルの IP アドレスは、使用している VM のパブリック IP アドレスで置き換えてください。
 

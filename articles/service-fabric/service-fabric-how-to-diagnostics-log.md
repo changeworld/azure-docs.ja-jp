@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
 ms.author: adegeo
-ms.openlocfilehash: 7c1a2330b9eb595d05df31aa8511720911dfee97
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ed9aaf67b4f6749ea6d505a51fbc76e3d1cf0870
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
 

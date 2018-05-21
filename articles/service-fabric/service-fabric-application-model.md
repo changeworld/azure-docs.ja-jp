@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric アプリケーション モデル | Microsoft Docs"
-description: "Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。"
+title: Azure Service Fabric アプリケーション モデル | Microsoft Docs
+description: Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -9,16 +9,16 @@ editor: mani-ramaswamy
 ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 506daa2dc0612fc49a67c5faf3c7ab51ac90126f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: dd453f393620923041eb8fa07b551f4945f48235
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="model-an-application-in-service-fabric"></a>Service Fabric でのアプリケーションのモデル化
 ここでは、Azure Service Fabric のアプリケーション モデルの概要と、マニフェスト ファイルを使用してアプリケーションとサービスを定義する方法について説明します。

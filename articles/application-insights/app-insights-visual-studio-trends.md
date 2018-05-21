@@ -1,9 +1,9 @@
 ---
-title: "Visual Studio での傾向の分析 | Microsoft Docs"
-description: "Visual Studio で、Application Insights テレメトリの傾向を分析、視覚化、調査します。"
+title: Visual Studio での傾向の分析 | Microsoft Docs
+description: Visual Studio で、Application Insights テレメトリの傾向を分析、視覚化、調査します。
 services: application-insights
 documentationcenter: .net
-author: numberbycolors
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: eca3cddf3677aad440378e4071f080a588397cf9
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; daviste
+ms.openlocfilehash: 77ed0b5809a1da4629b80f65d1a27da2a2758236
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
@@ -33,11 +33,11 @@ Application Insights Trends は、Visual Studio 2015 Update 3 以降で利用で
 ## <a name="open-application-insights-trends"></a>Application Insights Trends を開く方法
 [Application Insights の傾向] ウィンドウを開くには、次のいずれかを行います。
 
-* Application Insights のツール バー ボタンから、 **[テレメトリの傾向を調べる]**を選択する。
+* Application Insights のツール バー ボタンから、 **[テレメトリの傾向を調べる]** を選択する。
 * プロジェクトのコンテキスト メニューから、**[Application Insights]、[テレメトリの傾向を調べる]** の順に選択する。
 * Visual Studio のメニュー バーから、**[表示]、[その他のウィンドウ]、[Application Insights の傾向]** を選択する。
 
-リソースの選択を求めるメッセージが表示される場合があります。 **[リソースの選択]**をクリックし、Azure サブスクリプションでサインインしてから、テレメトリの傾向の分析対象とする Application Insights リソースを一覧から選択します。
+リソースの選択を求めるメッセージが表示される場合があります。 **[リソースの選択]** をクリックし、Azure サブスクリプションでサインインしてから、テレメトリの傾向の分析対象とする Application Insights リソースを一覧から選択します。
 
 ## <a name="choose-a-trend-analysis"></a>傾向分析の選択
 ![Menu of common types of trend analysis](./media/app-insights-visual-studio-trends/app-insights-trends-1-750.png)

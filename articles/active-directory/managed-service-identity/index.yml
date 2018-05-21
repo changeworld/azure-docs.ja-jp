@@ -1,0 +1,69 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Active Directory マネージド サービス ID のドキュメント
+metadata:
+  document_id: 
+  title: Azure Active Directory マネージド サービス ID のドキュメント
+  description: マネージド サービス ID (MSI) を使用して、ソース コードに資格情報を含めることなく Azure クラウド サービスの認証を安全に行う方法について説明します。
+  services: active-directory
+  ms.component: msi
+  author: daveba
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/16/2018
+  ms.author: daveba
+  ms.openlocfilehash: a6262b67e3d2029765ba798705234cb6be8abbd3
+  ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 05/17/2018
+abstract:
+  description: 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で、自動管理対象 ID を使用する Azure サービスを提供します。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、マネージド サービス ID を作成して管理する方法を確認してください。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: マネージド サービス ID (MSI) を使用して Azure Resource Manager API にアクセスする方法について説明します
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-arm">Windows Azure 仮想マシンから Azure Resource Manager にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-arm">Linux Azure 仮想マシンから Azure Resource Manager にアクセスする</a>
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: マネージド サービス ID (MSI) を使用して Azure リソースに安全にアクセスする方法について説明します
+  - type: paragraph
+    text: Windows VM/VMSS
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-datalake">Azure Data Lake Store にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-storage">アクセス キーを使用して Azure Storage にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Azure SQL にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Azure Key Vault にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Azure Cosmos DB にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">ユーザー割り当て ID で Azure Resource Manager にアクセスする</a>
+  - type: paragraph
+    text: Linux VM/VMSS
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-datalake">Azure Data Lake Store にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">アクセス キーを使用して Azure Storage にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Azure Key Vault にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Azure Cosmos DB にアクセスする</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">ユーザー割り当て ID で Azure Resource Manager にアクセスする</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/module/azurerm.managedserviceidentity#managed_service_identity">Azure PowerShell</a></p><p><a href="/cli/azure/identity">Azure CLI</a></p>
+    - title: 言語
+      html: <p><a href="dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet">.NET</a></p><p><a href="https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines">Java</a></p><p><a href="/javascript/api/ms-rest-azure">Node.js</a></p><p><a href="/python/api/azure.mgmt.msi">Python</a></p></p><a href="https://rubygems.org/gems/azure_mgmt_msi">Ruby</a></p></p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi">Go</a></p>

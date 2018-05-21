@@ -1,11 +1,11 @@
 ---
-title: "大規模な Azure 仮想マシン スケール セットの使用 | Microsoft Docs"
-description: "大規模な Azure 仮想マシン スケール セットを使用するために知っておくべきこと"
+title: 大規模な Azure 仮想マシン スケール セットの使用 | Microsoft Docs
+description: 大規模な Azure 仮想マシン スケール セットを使用するために知っておくべきこと
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: negat
-ms.openlocfilehash: 192f2c01be0992e22ce67e3df6d641ba707e22fd
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 17c8fdd0bc85b9d1a4e1b50cf422b28f32862a7e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
@@ -77,10 +77,10 @@ Azure Resource Manager テンプレートを構成して大規模なスケール
       "mode": "Automatic"
     }
 ```
-大規模なスケール セット テンプレートの完全な例については、[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) を参照してください。
+大規模なスケール セットのテンプレートの完全な例については、[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) を参照してください。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>複数の配置グループをまたぐように既存のスケール セットを変換する
-既存の仮想マシン スケール セットで 100 個を超える VM にスケールできるようにするには、スケール セット モデルで _singplePlacementGroup_ プロパティを _false_ に変更する必要があります。 このプロパティの変更は、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用してテストできます。 既存のスケール セットを探し、_[編集]_ を選択して、_singlePlacementGroup_ プロパティを変更します。 このプロパティが表示されていない場合は、スケール セットの表示に以前のバージョンの Microsoft.Compute API を使用している可能性があります。
+既存の仮想マシン スケール セットで 100 個を超える VM にスケーリングできるようにするには、スケール セット モデルで _singlePlacementGroup_ プロパティを _false_ に変更する必要があります。 このプロパティの変更は、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用してテストできます。 既存のスケール セットを探し、_[編集]_ を選択して、_singlePlacementGroup_ プロパティを変更します。 このプロパティが表示されていない場合は、スケール セットの表示に以前のバージョンの Microsoft.Compute API を使用している可能性があります。
 
 >[!NOTE] 
 スケール セットは、1 つの配置グループのみのサポート (既定の動作) から複数の配置グループのサポートに変更できますが、その逆の変換を行うことはできません。 そのため、変換する前に、大規模なスケール セットのプロパティを理解しておく必要があります。

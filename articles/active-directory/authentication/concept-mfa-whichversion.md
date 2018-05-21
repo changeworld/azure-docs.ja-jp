@@ -1,24 +1,20 @@
 ---
 title: Azure MFA クラウドかサーバーかの選択 | Microsoft Docs
-description: 保護しようとしている対象とユーザーが位置する場所をたずねることで、ユーザーに最適な多要素認証セキュリティ ソリューションを選択します。  次に、クラウド、MFA Server、または AD FS を選択します。
+description: 保護しようとしている対象とユーザーが位置する場所をたずねることで、ユーザーに最適な多要素認証セキュリティ ソリューションを選択します。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ec2270ea-13d7-4ebc-8a00-fa75ce6c746d
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 04fdd2df070ac347d5ef0a328da39141956c1df8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8314d72aa2cc6787d3f65dd48cd693a0ac332c0a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>ニーズに応じた Azure Multi-Factor Authentication ソリューションを選択する
 Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の 3 つです。
@@ -47,8 +43,8 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | AD FS によるフェデレーションを使用した Azure AD とオンプレミスの AD |● |● |
-| DirSync を使用する Azure AD とオンプレミスの AD、Azure AD Sync、Azure AD Connect。パスワード同期なし |● |● |
-| DirSync を使用する Azure AD とオンプレミスの AD、Azure AD Sync、Azure AD Connect。パスワード同期あり |● | |
+| DirSync、Azure AD Sync、Azure AD Connect を使用した Azure AD とオンプレミスの AD。パスワード ハッシュ同期またはパススルー認証なし |● |● |
+| DirSync、Azure AD Sync、Azure AD Connect を使用した Azure AD とオンプレミスの AD。パスワード ハッシュ同期またはパススルー認証あり |● | |
 | オンプレミスの Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>必要な機能
@@ -81,4 +77,4 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 
 <center>
 
-[![クラウドの MFA](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![MFA サーバー](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+[![クラウドの MFA](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![MFA サーバー](./media/concept-mfa-whichversion/server2.png)](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
