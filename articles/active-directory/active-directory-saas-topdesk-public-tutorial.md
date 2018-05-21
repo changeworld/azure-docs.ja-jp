@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TOPdesk - Public の統合 | Microsoft Docs"
-description: "Azure Active Directory と TOPdesk - Public の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と TOPdesk - Public の統合 | Microsoft Docs'
+description: Azure Active Directory と TOPdesk - Public の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 8f88b232df01aa73a7e06b891ef5ff635d03086a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 76b75ffde280047f8ed6c2d4173e905df1d7a658
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル: Azure Active Directory と TOPdesk - Public の統合
 
@@ -30,7 +30,7 @@ TOPdesk - Public と Azure AD の統合には、次の利点があります。
 - ユーザーが各自の Azure AD アカウントで TOPdesk - Public に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
     ![[TOPdesk - Public のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.topdesk.net` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.topdesk.net` のパターンを使用して URL を入力します。
     
     b. **[識別子]** ボックスに、`https://<companyname>.topdesk.net/tas/public/login/verify` の形式で URL を入力します。
 
@@ -135,7 +135,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
    
     ![設定](./media/active-directory-saas-topdesk-public-tutorial/ic790598.png "Settings")
 
-9. **[Login Settings]**をクリックします。
+9. **[Login Settings]** をクリックします。
    
     ![Login Settings](./media/active-directory-saas-topdesk-public-tutorial/ic790599.png "Login Settings")
 
@@ -147,7 +147,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
    
     ![Technical Settings](./media/active-directory-saas-topdesk-public-tutorial/ic790601.png "Technical Settings")
    
-    a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
    
     b. ダウンロードしたメタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。
 
@@ -159,7 +159,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
     
     ![Certificate](./media/active-directory-saas-topdesk-public-tutorial/ic790606.png "Certificate")
     
-    a. Azure Portal からダウンロードしたメタデータ ファイルを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードしたメタデータ ファイルを開きます。
     
     b. **fed:ApplicationServiceType** の **xsi:type** を持つ **RoleDescriptor** ノードを展開します。
     
@@ -175,7 +175,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
     
     ![SAML Configuration Assistant](./media/active-directory-saas-topdesk-public-tutorial/ic790608.png "SAML Configuration Assistant")
     
-    a. Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードしたメタデータ ファイルをアップロードするには、**[Federation Metadata]** で **[Browse]** をクリックします。
 
     b. 証明書ファイルをアップロードするには、**[Certificate (RSA)]** で **[Browse]** をクリックします。
 
@@ -185,10 +185,10 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
     e. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックします。
+    f. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -238,7 +238,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
    
     ![New Person](./media/active-directory-saas-topdesk-public-tutorial/ic790629.png "New Person")
    
-    a. [General] タブをクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [General] タブをクリックします。
 
     b. **[Surname]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
  
@@ -289,7 +289,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

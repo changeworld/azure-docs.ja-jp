@@ -16,8 +16,21 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
     - name: 管理グループを使用してリソースを整理する
       href: billing-enterprise-mgmt-group-overview.md
-    - name: 予約 VM インスタンスで費用を抑える
+    - name: Azure 予約インスタンスで節約する
       href: billing-save-compute-costs-reservations.md
+      items:
+        - name: 予約インスタンスで仮想マシンについて前払いする
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 予約インスタンスを管理する
+          href: billing-manage-reserved-vm-instance.md
+        - name: 予約インスタンスの割引の適用について理解する
+          href: billing-understand-vm-reservation-charges.md
+        - name: 従量課金制での予約インスタンスの使用について理解する
+          href: billing-understand-reserved-instance-usage.md
+        - name: エンタープライズ向けの予約インスタンスの使用について理解する
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: 予約インスタンスの Windows のコスト
+          href: billing-reserved-instance-windows-software-costs.md
     - name: 制限とクォータ
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: 方法
@@ -38,20 +51,12 @@
           href: billing-understand-your-azure-marketplace-charges.md
         - name: 無料サービスのメーターのマッピングを理解する
           href: billing-understand-free-service-meter-mapping.md
-        - name: 予約 VM インスタンスの Windows のコスト
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: 予約 VM インスタンスの割引の適用について理解する
-          href: billing-understand-vm-reservation-charges.md
         - name: 使用制限を理解する
           href: billing-spending-limit.md
         - name: 課金アラートのセットアップ
           href: billing-set-up-alerts.md
         - name: 過去の延滞残高を決済する
           href: billing-azure-subscription-past-due-balance.md
-        - name: 従量課金制での予約インスタンスの使用について理解する
-          href: billing-understand-reserved-instance-usage.md
-        - name: エンタープライズ向けの予約インスタンスの使用について理解する
-          href: billing-understand-reserved-instance-usage-ea.md
     - name: '[サブスクリプションの管理]'
       items:
         - name: サブスクリプションまたは管理グループを検索する
@@ -82,8 +87,6 @@
           href: billing-partner-admin-link-started.md
         - name: 請求先アカウントを表示する
           href: billing-view-all-accounts.md
-    - name: 予約 VM インスタンスを管理する
-      href: billing-manage-reserved-vm-instance.md
     - name: トラブルシューティング
       items:
         - name: サインアップの問題
