@@ -1,24 +1,22 @@
 ---
-title: "Stream Analytics から Data Lake Store へのデータのストリーム | Microsoft Docs"
-description: "Azure Stream Analytics を使用した Azure Data Lake Store へのデータのストリーム"
+title: Stream Analytics から Data Lake Store へのデータのストリーム | Microsoft Docs
+description: Azure Stream Analytics を使用した Azure Data Lake Store へのデータのストリーム
 services: data-lake-store,stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ff59957cf7700af79425aa005444a135b7ee098
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
 この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
@@ -58,7 +56,7 @@ ms.lasthandoff: 02/01/2018
     * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
     * **[ソースの種類]** で、**[データ ストリーム]** を選択します。
     * **[ソース]** で、**[BLOB ストレージ]** を選択します。
-    * **[サブスクリプション]** で、**[現在のサブスクリプションの BLOB ストレージを使う]**を選択します。
+    * **[サブスクリプション]** で、**[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
     * **[ストレージ アカウント]** で、前提条件の一部として作成したストレージ アカウントを選択します。 
     * **[コンテナー]** で、選択したストレージ アカウント内に作成したコンテナーを選択します。
     * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
@@ -110,7 +108,7 @@ ms.lasthandoff: 02/01/2018
 
 3. Blob からデータを取得するジョブをトリガーするには、サンプル データ ファイルを BLOB コンテナーにコピーします。 サンプル データ ファイルは [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)で取得できます。 このチュートリアルでは、**vehicle1_09142014.csv** ファイルをコピーします。 [Azure Storage Explorer](http://storageexplorer.com/)などのさまざまなクライアントを使用して、BLOB コンテナーにデータをアップロードすることができます。
 
-4. **[概要]** タブの **[監視]**で、データがどのように処理されたかを確認します。
+4. **[概要]** タブの **[監視]** で、データがどのように処理されたかを確認します。
 
     ![ジョブの監視](./media/data-lake-store-stream-analytics/run.query.3.png "ジョブの監視")
 

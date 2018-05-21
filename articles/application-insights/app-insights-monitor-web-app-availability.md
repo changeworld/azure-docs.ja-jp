@@ -1,9 +1,9 @@
 ---
-title: "Web サイトの可用性と応答性の監視 | Microsoft Docs"
-description: "Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。"
+title: Web サイトの可用性と応答性の監視 | Microsoft Docs
+description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 services: application-insights
-documentationcenter: 
-author: SoubhagyaDash
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2018
 ms.author: sdash ; mbullwin
-ms.openlocfilehash: d8d6c6a242f63ad891a8134657273ff73dfcde18
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -65,7 +65,7 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 
 * **成功の基準**:
 
-    **[テストのタイムアウト]**: この値を引き下げると、応答が遅い場合に警告されます。 テストは、この期間内にサイトから応答が返されない場合に、エラーとしてカウントされます。 **[従属要求の解析]**をオンにした場合、すべての画像、スタイル ファイル、スクリプト、その他依存するリソースがこの期間内に受信される必要があります。
+    **[テストのタイムアウト]**: この値を引き下げると、応答が遅い場合に警告されます。 テストは、この期間内にサイトから応答が返されない場合に、エラーとしてカウントされます。 **[従属要求の解析]** をオンにした場合、すべての画像、スタイル ファイル、スクリプト、その他依存するリソースがこの期間内に受信される必要があります。
 
     **[HTTP 応答]**: 成功としてカウントされる、返される状態コード。 200 は、通常の Web ページが返されたことを示すコードです。
 
@@ -199,7 +199,7 @@ Web セッションを記録するには、Visual Studio Enterprise を使用し
 
 時刻をパラメーター化するためには、Web テスト プラグインを使用します。
 
-1. 目的の各変数のパラメーター値に対して Web テスト プラグインを追加します。 Web テスト ツールバーで、 **[Web テスト プラグインを追加]**を選択します。
+1. 目的の各変数のパラメーター値に対して Web テスト プラグインを追加します。 Web テスト ツールバーで、 **[Web テスト プラグインを追加]** を選択します。
 
     ![[Web テスト プラグインを追加] を選択し、種類を選択します。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugins.png)
 
@@ -273,7 +273,7 @@ Web サイトに対してロード テストを実行できます。 可用性�
 
     エラー ("プロトコル違反..CR の後には LF を指定しなければなりません") は、サーバー (または依存関係) に問題があることを示しています。 これは、応答に形式が正しくないヘッダーが設定されている場合に発生します。 ロード バランサーまたは CDN が原因である可能性があります。 具体的には、行末の指定で CRLF を使用していないヘッダーがあります。これは HTTP 仕様に違反しているため、.NET WebRequest レベルで失敗します。 応答を検査して、違反の可能性のあるヘッダーを見つけます。
     
-    注: HTTP ヘッダーの緩和された検証を行うブラウザーでは、URL は 失敗しない場合があります。 この問題の詳細については、次のブログ記事を参照してください。http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+    注: HTTP ヘッダーの緩和された検証を行うブラウザーでは、URL は 失敗しない場合があります。 この問題の詳細については、こちらのブログ記事を参照してください: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 * *サイトには問題がないように見えるがテストは失敗する*
 
     * イメージ、スクリプト、スタイル シート、およびページによって読み込まれるその他のファイルすべてを確認してください。 これらのいずれかにエラーがある場合、メインの html ページの読み込みに問題がない場合でも、テストはエラーとして報告されます。 このようなリソース エラーをテストで検出しないようにするには、テスト構成で [依存する要求の解析] をオフにするだけです。 

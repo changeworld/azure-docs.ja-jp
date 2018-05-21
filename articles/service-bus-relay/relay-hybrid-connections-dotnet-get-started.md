@@ -1,11 +1,11 @@
 ---
-title: ".NET での Azure Relay ハイブリッド接続の概要 | Microsoft Docs"
-description: "Azure Relay ハイブリッド接続用の C# コンソール アプリケーションを作成します。"
+title: .NET での Azure Relay ハイブリッド接続 Websocket の概要 | Microsoft Docs
+description: Azure Relay ハイブリッド接続 Websocket 用 C# コンソール アプリケーションを作成します。
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
 ms.service: service-bus-relay
 ms.devlang: tbd
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3667d7f4a74ac7c43f8f443aed2beacafd909dbd
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5b900f70721f8642e27daf242295fbda77d7df6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Relay ハイブリッド接続の概要
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET での Relay ハイブリッド接続 Websocket の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
 このチュートリアルでは、[Azure Relay ハイブリッド接続](relay-what-is-it.md#hybrid-connections)の概要を紹介します。 対応するリスナー アプリケーションにメッセージを送信するクライアント アプリケーションを作成するために、Microsoft .NET を使用する方法を説明します。 

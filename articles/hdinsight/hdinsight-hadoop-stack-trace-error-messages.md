@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 8bf02df1dd2a82e9b2ea8b07ddc39bc9cc8b13f5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7b0bb58dcf255ee14dd18de3a3ac7489ae0ed1de
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight での Hadoop のトラブルシューティングに関する記事のインデックス
 記事は、エラーの種類別に整理されています。

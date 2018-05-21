@@ -10,16 +10,16 @@ ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 02/22/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.reviewer: anirudha
-ms.openlocfilehash: ce61dec785d6207e2d2df21884525f76a6778f4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 2ae2b628b2e61893a5289151c3b405e7412e7d13
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
@@ -29,13 +29,13 @@ ms.lasthandoff: 04/16/2018
 
 1. インターネット ブラウザーで、https://adminportal.local.azurestack.external に移動します。
 2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
-3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンをクリックします (**[local]** など)。
+3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンを選択します (**[local]** など)。
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. ここで、ストレージ リソース プロバイダーの管理者ウィンドウで、下にスクロールして、**[ストレージ アカウント]** タブをクリックします。
+5. ここで、ストレージ リソース プロバイダーの管理者ウィンドウで、下にスクロールして、**[ストレージ アカウント]** タブを選択します。
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -52,12 +52,12 @@ ms.lasthandoff: 04/16/2018
 
 **アカウントをフィルター処理するには:**
 
-1. ウィンドウの上部にある **[フィルター]** をクリックします。
+1. ウィンドウの上部にある **[フィルター]** を選択します。
 2. [フィルター] ウィンドウでは、**アカウント名**、**サブスクリプション ID、または**ステータス**を指定して、表示するストレージ アカウントのリストを細かく調整できます。 必要に応じてこれらを使用します。
-3. **[Update]** をクリックします。 リストが更新されます。
+3. **[Update]\(更新\)** を選択します。 リストが更新されます。
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. フィルターをリセットするには、**[フィルター]** をクリックし、選択をオフにして更新します。
+4. フィルターをリセットするには、**[フィルター]** を選択し、選択をオフにして更新します。
 
 (ストレージ アカウントのリスト ウィンドウの上部の) 検索テキスト ボックスを使用すると、アカウントのリスト内で選択したテキストを強調表示することができます。 この方法は、フル ネームまたは ID が簡単には見つからないときに役立ちます。
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 04/16/2018
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>アカウントの詳細の確認
-表示で関心のあるアカウントが見つかったら、そのアカウントをクリックして特定の詳細を表示できます。 新しいウィンドウが開き、アカウントの種類、作成時、場所などのアカウントの詳細が表示されます。
+表示で関心のあるアカウントが見つかったら、そのアカウントを選択して特定の詳細を表示できます。 新しいウィンドウが開き、アカウントの種類、作成時、場所などのアカウントの詳細が表示されます。
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
@@ -78,13 +78,13 @@ Azure Stack では、これを行う簡単な方法があります。
 1. ストレージ アカウント リストを参照します。 詳細については、このトピックの「[ストレージ アカウントの検索](#find)」を参照してください。
 2. そのリストで特定のアカウントを検索します。 場合によっては、フィルターを使用する必要があります。
 3. アカウントの*状態*を確認します。 **[削除済み]** になっているはずです。
-4. アカウントをクリックして、その詳細ウィンドウを開きます。
-5. このウィンドウの上部にある **[回復]** ボタンをクリックします。
-6. **[はい]** をクリックして確定します。
+4. アカウントを選択して、その詳細ウィンドウを開きます。
+5. このウィンドウの上部にある **[回復]** ボタンを選択します。
+6. **[はい]** を選択して確定します。
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. その結果が正常であったことを受けて、この回復は *[process…wait]\(処理中…お待ちください\)* と表示されます。
-   ポータルの上部にある “ベル” のアイコンをクリックしても進行状況インジケーターを表示できます。
+   ポータルの上部にある "ベル" アイコンを選択して、進行状況インジケーターを表示できます。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
@@ -105,10 +105,10 @@ Azure Stack では、これを行う簡単な方法があります。
 
 1. インターネット ブラウザーで、https://adminportal.local.azurestack.external に移動します。
 2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
-3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンをクリックします。例: **(local**)。
+3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンを選択します (**[local]** など)。
 4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
-5. 上部の **[設定]** をクリックして [設定] ウィンドウを開きます。
-6. **[構成]** をクリックして保有期間の値を編集します。
+5. 上部の **[設定]** を選択して [設定] ウィンドウを開きます。
+6. **[構成]** を選択してリテンション期間の値を編集します。
 
    日数を設定して保存します。
    
@@ -123,8 +123,8 @@ Azure Stack では、これを行う簡単な方法があります。
 
 **ポータルを使用して容量を回収するには:**
 1. [ストレージ アカウント] ウィンドウに移動します。 「[ストレージ アカウントの検索](#find)」を参照してください。
-2. ウィンドウの上部の **[Reclaim space]\(領域の回収\)** をクリックします。
-3. メッセージを確認し、**[OK]** をクリックします。
+2. ウィンドウの上部の **[Reclaim space]\(領域の回収\)** を選択します。
+3. メッセージを確認し、**[OK]** を選択します。
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
 4. 成功を通知するベルのアイコンがポータルに表示されるまで待ちます。
@@ -142,81 +142,17 @@ PowerShell を使用して保有期間を明示的に上書きし、すぐに容
 2. 次のコマンドレットを実行します。
 
 > [!NOTE]
-> このコマンドレットを実行すると、アカウントとその内容が完全に削除されます。 これは復旧できません。 慎重に使用してください。
+> これらのコマンドレットを実行すると、アカウントとその内容が完全に削除されます。 これは復旧できません。 慎重に使用してください。
 
-
-        Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
-
+```PowerShell  
+    $farm_name = (Get-AzsStorageFarm)[0].name
+    Start-AzsReclaimStorageCapacity -FarmName $farm_name
+````
 
 詳細については、[Azure Stack PowerShell のドキュメント](https://msdn.microsoft.com/library/mt637964.aspx)を参照してください。
  
 
-## <a name="migrate-a-container"></a>コンテナーの移行
-テナントが使用するストレージにはばらつきがあるため、クラウド オペレーターは、他よりも多くの領域を使用しているテナントへの割り当てが 1 つまたは複数あることに気付く場合があります。 このような場合、クラウド オペレーターは、一部の BLOB コンテナーを別の共有に手動で移行して、高負荷の共有での領域の解放を試みることができます。 
+## <a name="next-steps"></a>次の手順
 
-PowerShell を使用して、コンテナーを移行する必要があります。
-> [!NOTE]
->BLOB コンテナーの移行では、ライブ マイグレーションをサポートしておらず、現在はオフライン操作です。 移行中および完了するまで、そのコンテナー内の基になる BLOB は使用できず、"オフライン" です。 
-
-**PowerShell を使用してコンテナーを移行するには:**
-
-1. Azure PowerShell がインストールおよび構成されていることを確認します。 それ以外の場合は、次の手順を実行します。
-    * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。 Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
-2. ファームの名前を取得します。 
-      
-      `$farm = Get-ACSFarm -ResourceGroupName system.local`
-3. 共有を取得します。 
-
-   `$shares = Get-ACSShare -ResourceGroupName system.local -FarmName $farm.FarmName`
-
-4. 指定された共有のコンテナーを取得します。 count と intent は省略可能なパラメーターであることに注意してください。
-            
-   `$containers = Get-ACSContainer -ResourceGroupName system.local -FarmName $farm.FarmName -ShareName $shares[0].ShareName -Count 4 -Intent Migration`  
-
-   $containers を確認します。
-
-   `$containers`
-
-    ![](media/azure-stack-manage-storage-accounts/image13.png)
-5. コンテナーの移行先の最適な共有を取得します。
-
-    `$destinationshares= Get-ACSSharesForMigration  -ResourceGroupName system.local -FarmName $farm.farmname -SourceShareName $shares[0].ShareName`
-
-    $destinationshares を確認します。
-
-    `$destinationshares`
-
-    ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. コンテナーの移行を開始します。これは非同期の実装であるため、1 つが共有内のすべてのコンテナーをループでき、返されるジョブの ID を使用して状態を追跡できることに注目してください。
-
-    `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
-
-    $jobId を確認します。
-
-   ```
-   $jobId
-   d1d5277f-6b8d-4923-9db3-8bb00fa61b65
-   ```
-7. ジョブ ID で、移行ジョブの状態を確認します。 コンテナーの移行が完了すると、MigrationStatus が "Completed" に設定されます。
-
-    `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
-
-    ![](media/azure-stack-manage-storage-accounts/image15.png)
-
-8. 実行中の移行ジョブを取り消すことができます。 これも、非同期操作であるため、$jobid を使用して追跡することができます。
-
-    `Stop-ACSContainerMigration-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId-Verbose`
-
-    ![](media/azure-stack-manage-storage-accounts/image16.png)
-
-    移行取り消しの状態をもう一度確認することができます。
-
-    `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
-
-    ![](media/azure-stack-manage-storage-accounts/image17.png)
-
-
-
-
-  
-  
+ - アクセス許可の管理については、「[ロールベースのアクセス制御の管理](azure-stack-manage-permissions.md)」を参照してください。
+ - Azure Stack のストレージ容量の管理については、「[Azure Stack のストレージ容量を管理する](azure-stack-manage-storage-shares.md)」を参照してください。

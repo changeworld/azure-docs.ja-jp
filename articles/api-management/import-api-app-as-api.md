@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal を使用して API アプリを API としてインポートする | Microsoft Docs"
-description: "このチュートリアルでは、API Management (APIM) を使用して API アプリを API としてインポートする方法を示します。"
+title: Azure Portal を使用して API アプリを API としてインポートする | Microsoft Docs
+description: このチュートリアルでは、API Management (APIM) を使用して API アプリを API としてインポートする方法を示します。
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: d0e1aa6763d96b5a84bbc5fba7dcae690c051eb3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="import-an-api-app-as-an-api"></a>API アプリを API としてインポートする
 
-この記事では、API アプリを API としてインポートする方法を示します。 APIM API をテストする方法についても説明します。
+この記事では、API アプリを API としてインポートする方法を示します。 また、APIM API をテストする方法についても説明します。
 
 この記事では、次のことについて説明します:
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 12/04/2017
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
-+ サブスクリプションに API アプリがあることを確認します。 詳しくは、[App Service のドキュメント](https://docs.microsoft.com/azure/app-service/) をご覧ください
++ サブスクリプションに API アプリがあることを確認します。 詳細については、「[App Service のドキュメント][https://docs.microsoft.com/azure/app-service/]」を参照してください。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>バックエンド API のインポートと発行
+## <a name="create-api"> </a>バックエンド API のインポートと公開
 
 1. **[API MANAGEMENT]** の下から **[API]** を選択します。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[API アプリ]** を選択します。
@@ -48,34 +48,34 @@ ms.lasthandoff: 12/04/2017
 
     Swagger が見つからない場合、APIM は API を "パススルー" API として公開します。 
 5. API URL サフィックスを追加します。 サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。
-6. API を成果物に関連付けることで API を発行します。 この場合は、"*無制限*" の成果物が使用されます。  API を発行して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
+6. API を成果物に関連付けることで API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
 
-    成果物は、1 つまたは複数の API の関連付けです。 複数の API を含めて、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているので、既定ですべての成果物をサブスクライブしています。
+    製品には、1 つまたは複数の API が関連付けられています。 複数の API を含めて、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
 
     すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
     * **スターター**
     * **無制限**   
-7. **[作成]**を選択します。
+7. **[作成]** を選択します。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 
-Azure Portal には、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。  
+Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。  
 
 1. 前の手順で作成した API を選びます。
 2. **[テスト]** タブをクリックします。
 3. いくつかの操作を選びます。
 
-    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーは自動的に入力されます。 
+    ページに、クエリ パラメーターのフィールドとヘッダーのフィールドが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。 
 1. **[送信]** をクリックします。
 
-    バックエンドは "**200 OK**" といくつかのデータで応答します。
+    バックエンドは **200 OK** といくつかのデータで応答します。
 
 ## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
 
 操作を**開発者ポータル**から呼び出して API をテストすることもできます。 
 
-1. "バックエンド API のインポートと発行" の手順で作成した API を選びます。
+1. "バックエンド API のインポートと公開" の手順で作成した API を選びます。
 2. **[開発者ポータル]** をクリックします。
 
     "開発者ポータル" サイトが開きます。
@@ -90,7 +90,7 @@ Azure Portal には、API の操作を見てテストするための便利な環
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [発行された API の変換と保護](transform-api.md)
+> [公開された API の変換と保護](transform-api.md)

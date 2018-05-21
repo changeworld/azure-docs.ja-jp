@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights Telemetry のデータ モデル - 依存関係テレメトリ | Microsoft Docs"
-description: "依存関係テレメトリ用の Application Insights データ モデル"
+title: Azure Application Insights Telemetry のデータ モデル - 依存関係テレメトリ | Microsoft Docs
+description: 依存関係テレメトリ用の Application Insights データ モデル
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,20 +11,20 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ: Application Insights データ モデル
 
 依存関係テレメトリ ([Application Insights](app-insights-overview.md)) は、監視対象のコンポーネントと、SQL や HTTP エンドポイントのようなリモート コンポーネントとのやりとりを表します。
 
-## <a name="name"></a>名前
+## <a name="name"></a>Name
 
-この依存関係呼び出しで開始されたコマンドの名前。 小さな基数の値です。 例として、ストアド プロシージャ名と URL パス テンプレートがあります。
+この依存関係呼び出しで開始されたコマンドの名前。 小さなカーディナリティの値です。 例として、ストアド プロシージャ名と URL パス テンプレートがあります。
 
 ## <a name="id"></a>ID
 
@@ -34,9 +34,9 @@ ms.lasthandoff: 11/01/2017
 
 この依存関係呼び出しによって開始されるコマンド。 例: すべてのクエリ パラメーターを使用する SQL ステートメントと HTTP URL。
 
-## <a name="type"></a>型
+## <a name="type"></a>type
 
-依存関係の種類の名前。 依存関係を論理的にグループ化するための小さな基数の値と、commandName や resultCode のようなフィールドの変換です。 例: SQL、Azure テーブル、HTTP。
+依存関係の種類の名前。 依存関係を論理的にグループ化するための小さなカーディナリティの値と、commandName や resultCode のようなフィールドの変換です。 例: SQL、Azure テーブル、HTTP。
 
 ## <a name="target"></a>ターゲット
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 11/01/2017
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [.NET](app-insights-asp-net-dependencies.md) の依存関係追跡を設定します。
 - [Java](app-insights-java-agent.md) の依存関係追跡を設定します。

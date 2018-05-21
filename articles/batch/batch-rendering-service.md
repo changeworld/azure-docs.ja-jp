@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch Rendering サービス - クラウド規模のレンダリング | Microsoft Docs"
-description: "Azure 仮想マシン上のジョブを Maya から直接、従量課金ベースでレンダリングします。"
+title: Azure Batch Rendering サービス - クラウド規模のレンダリング | Microsoft Docs
+description: Azure 仮想マシン上のジョブを Maya から直接、従量課金ベースでレンダリングします。
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
-ms.date: 09/14/2017
+ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: df1b2da7628e6c3f9f4bcbb02a936c33aad49698
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch Rendering サービスの概要
 
-Azure Batch Rendering サービスは、クラウド規模のレンダリング機能を従量課金ベースで提供します。 Batch Rendering サービスは、ジョブのスケジューリングとキューの処理、エラーと再試行の管理、レンダリング ジョブの自動スケーリングを行います。 Batch Rendering サービスでは、[Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview)、[V-Ray](https://www.chaosgroup.com/vray/maya) がサポートされます。 Maya 2017 用の Batch プラグインを使用すると、Azure 上でのレンダリング ジョブをデスクトップから簡単に始めることができます。
+Azure Batch Rendering サービスは、クラウド規模のレンダリング機能を従量課金ベースで提供します。 Batch Rendering サービスは、ジョブのスケジューリングとキューの処理、エラーと再試行の管理、レンダリング ジョブの自動スケーリングを行います。 Batch Rendering サービスでは、[Autodesk Maya](https://www.autodesk.com/products/maya/overview)、[3ds Max](https://www.autodesk.com/products/3ds-max/overview)、[Arnold](https://www.autodesk.com/products/arnold/overview)、[V-Ray](https://www.chaosgroup.com/vray/maya) などのレンダリング アプリがサポートされます。 Maya 2017 用の Batch プラグインを使用すると、Azure 上でのレンダリング ジョブをデスクトップから簡単に始めることができます。
 
 Maya および 3ds Max の場合、[Batch Labs](https://github.com/Azure/BatchLabs) デスクトップ アプリケーションまたは [Batch テンプレート CLI](batch-cli-templates.md) を使用してジョブを実行できます。 Azure Batch CLI を使用すると、コードを記述せずに Batch ジョブを実行できます。 代わりに、テンプレート ファイルを使用して、Batch プール、ジョブ、およびタスクを作成することができます。 詳細については、[Azure Batch CLI のテンプレートとファイル転送の使用](batch-cli-templates.md)に関するページを参照してください。
 
@@ -25,7 +25,25 @@ Maya および 3ds Max の場合、[Batch Labs](https://github.com/Azure/BatchLa
 
 Batch Rendering サービスでは現在、以下のアプリケーションがサポートされています。
 
-•   Autodesk Maya I/O 2017 Update 4 (バージョン 17.4.5459) •   Autodesk 3ds Max I/O 2018 Update 1 (バージョン 20.1.0.238) •   Autodesk Arnold for Maya (バージョン 5.0.1.1) •   Autodesk Arnold for 3ds Max (バージョン 1.0.836) •   Chaos Group V-Ray for Maya (バージョン 3.52.03) •   Chaos Group V-Ray for 3ds Max (バージョン 3.60.02)
+CentOS 7 レンダリング ノードの場合:
+- Autodesk Maya I/O 2017 Update 5 (cut 201708032230)
+- Autodesk Maya I/O 2018 Update 2 cut 201711281015
+- Autodesk Arnold for Maya 2017 (Arnold バージョン 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya 2018 (Arnold バージョン 5.0.1.4) MtoA-2.1.0.3-2018
+- Chaos Group V-Ray for Maya 2017 (バージョン 3.60.04) 
+- Chaos Group V-Ray for Maya 2018 (バージョン 3.60.04) 
+- Blender (2.68)
+
+Windows Server 2016 レンダリング ノードの場合:
+- Autodesk Maya I/O 2017 Update 5 (バージョン 17.4.5459) 
+- Autodesk Maya I/O 2018 Update 2 (バージョン 18.2.0.6476) 
+- Autodesk 3ds Max I/O 2018 Update 4 (バージョン 20.4.0.4254) 
+- Autodesk Arnold for Maya (Arnold バージョン 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya (Arnold バージョン 5.0.1.4) MtoA-2.0.2.3-2018
+- Autodesk Arnold for 3ds Max (Arnold version 5.0.2.4 )(バージョン 1.2.926) 
+- Chaos Group V-Ray for Maya (バージョン 3.52.03) 
+- Chaos Group V-Ray for 3ds Max (バージョン 3.60.02)
+- Blender (2.79)
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,8 +51,9 @@ Batch Rendering サービスでは現在、以下のアプリケーションが�
 Batch Rendering サービスを使用するには、以下のアカウントが必要です。
 
 - [Azure アカウント](https://azure.microsoft.com/free/)。
-- **Azure Batch アカウント。** Azure Portal で Batch アカウントを作成するためのガイダンスについては、「[Azure Portal で Batch アカウントを作成する](batch-account-create-portal.md)」を参照してください。
-- **Azure ストレージ アカウント。** レンダリング ジョブのために使用されるアセットは、Azure Storage に格納されます。 Batch アカウントをセットアップするときに、ストレージ アカウントを自動的に作成できます。 既存のストレージ アカウントを使用することもできます。 ストレージ アカウントの詳細については、[Azure Portal でストレージ アカウントを作成、管理、削除する方法](https://docs.microsoft.com/azure/storage/storage-create-storage-account)に関するページを参照してください。
+- **Azure Batch アカウント**。 Azure Portal で Batch アカウントを作成するためのガイダンスについては、「[Azure Portal で Batch アカウントを作成する](batch-account-create-portal.md)」を参照してください。
+- **Azure Storage アカウント**。 レンダリング ジョブのために使用されるアセットは、通常、Azure Storage に格納されます。 Batch アカウントをセットアップするときに、ストレージ アカウントを自動的に作成できます。 既存のストレージ アカウントを使用することもできます。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。
+- **環境変数**。 ソリューションによって環境変数が変更されたら、上記のライセンスされたアプリケーションのいずれかが呼びされたときに `AZ_BATCH_ACCOUNT_URL` と `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` の値がそのままで表示されていることを確認します。 それ以外の場合は、ソフトウェア ライセンス認証の問題が発生する可能性があります。
 - **BatchLabs** (省略可能)。 [BatchLabs](https://azure.github.io/BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Rendering サービスの使用は必須ではありませんが、Batch ソリューションの開発とデバッグの手段として有効活用できます。
 
 Maya 用の Batch プラグインを使用するには、以下のアプリケーションが必要です。
@@ -54,7 +73,7 @@ Batch プールとコンピューティング ノードの詳細については�
 
 ### <a name="jobs"></a>[ジョブ]
 
-Batch **ジョブ**は、プール内のコンピューティング ノード上で実行されるタスクのコレクションです。 レンダリング ジョブを送信すると、Batch がジョブをタスクに分割し、タスクをプール内のコンピューティング ノードに分散して実行します。
+Batch **ジョブ**は、プール内のコンピューティング ノード上で実行されるタスクのコレクションです。 レンダリング ジョブを送信すると、Batch がジョブをタスクに分割し、実行するタスクをプール内のコンピューティング ノードに分散します。
 
 [Azure Portal](https://ms.portal.azure.com/) を使用して、アプリケーション ログをダウンロードし、RDP または SSH を使って個々の VM にリモートで接続することによって、ジョブを監視して失敗したタスクを診断できます。 [Batch Labs ツール](https://azure.github.io/BatchLabs)を使用して管理、監視、デバッグを行うこともできます。
 
@@ -72,18 +91,11 @@ Azure Portal と Batch Labs では、アプリケーションがプレインス�
 
 ![Batch アカウントのイメージの種類を選択する](./media/batch-rendering-service/add-pool.png)
 
-下へスクロールして **[グラフィックスとレンダリングのライセンス]** をクリックし、**[Choose licenses]\(ライセンスの選択\)** ブレードを開いて 1 つまたは複数のソフトウェア ライセンスを選択します。
+スクロールダウンし、**[グラフィックスとレンダリングのライセンス]** で **[ソフトウェアと価格の選択]** をクリックします。 ソフトウェア ライセンスの 1 つ以上を選択します。
 
 ![プールのグラフィックスとレンダリングのライセンスを選択する](./media/batch-rendering-service/graphics-licensing.png)
 
-提供される特定のライセンス バージョンは次のとおりです。
-
-- Maya 2017
-- 3ds Max 2018
-- Arnold for Maya 5.0.1.1
-- Arnold for 3ds Max 1.0.836
-- V-Ray for Maya 3.52.03
-- V-Ray for 3ds Max 3.60.01
+指定した特定のライセンス バージョンが、前述の「サポートされているアプリケーション」セクションのバージョンと一致します。
 
 ### <a name="custom-images"></a>カスタム イメージ
 
@@ -125,7 +137,7 @@ Batch プラグインは、[GitHub](https://github.com/Azure/azure-batch-maya/re
 
 1. Maya を実行します。
 2. **[ウィンドウ]** > **[設定/プリファレンス]** > **[プラグイン マネージャ]** の順に開きます。
-3. **[参照]**をクリックします。
+3. **[参照]** をクリックします。
 4. *azure_batch_maya/plug-in/AzureBatch.py* に移動して選択します。
 
 ### <a name="authenticate-access-to-your-batch-and-storage-accounts"></a>Batch アカウントとストレージ アカウントへのアクセスの認証を行う
@@ -175,12 +187,12 @@ Azure VM で料金が発生するしくみの詳細については、[Linux の�
 
 |オペレーティング システム  |イメージ  |
 |---------|---------|
-|Linux     |Batch CentOS プレビュー |
-|Windows     |Batch Windows プレビュー |
+|Linux     |Batch CentOS |
+|Windows     |Batch Windows |
 
 #### <a name="choose-a-vm-size"></a>VM サイズを選択する
 
-VM サイズを **[Env]\(環境\)** タブで指定することができます。使用可能な VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)」と「[Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)」を参照してください。 
+VM サイズを **[Env]\(環境\)** タブで指定することができます。使用可能な VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md)」と「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)」を参照してください。 
 
 ![[Env]\(環境\) タブでの VM OS イメージとサイズの指定](./media/batch-rendering-service/environment.png)
 

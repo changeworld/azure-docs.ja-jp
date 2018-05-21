@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: a786ac2e241657cc0020ecfe9438e3d1a5e4c5fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でアラートを作成する](monitor-alerts-unified-usage.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -161,9 +161,6 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     }
 }
 ```
-
-> [!NOTE]
-> Application Insights のログ アラートは現在、パブリック プレビュー段階であり、機能とユーザー エクスペリエンスは変更されることがあります。
 
 #### <a name="log-alert-with-custom-json-payload"></a>カスタム JSON ペイロードを使用したログ アラート
 たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、次のように入力します。 

@@ -7,13 +7,13 @@ ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 manager: carmonm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2017
-ms.openlocfilehash: a8533e6353e12ee6046eb4d22a3035ce9cd739d6
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 6203cc8679561fa342a2e15a3819dd5513774dde
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 

@@ -7,14 +7,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 keywords: powershell, runbook, json, azure automation
-ms.openlocfilehash: 6d8bb5ede5bb4148fd5db3c9a89003698f2e5139
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: b0eaa13baa3e787db14e7a6f915018c3a4f280a1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 

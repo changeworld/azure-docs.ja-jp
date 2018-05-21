@@ -3,7 +3,7 @@ title: Azure Application Insights .NET SDK でカスタム操作を追跡する 
 description: Azure Application Insights .NET SDK でカスタム操作を追跡する
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
-ms.author: sergkanz
-ms.openlocfilehash: 94424a3d8aad56cf4504cccd8adb1a45523d95e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: sergkanz;mbullwin
+ms.openlocfilehash: e66d5e8674d6564d3910daddb1119c22a8b8bd9f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 

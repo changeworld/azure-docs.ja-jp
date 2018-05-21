@@ -1,6 +1,6 @@
 ---
-title: Azure での Linux 仮想マシンの監視と更新 | Microsoft Docs
-description: Azure の Linux 仮想マシンを対象に、ブート診断とパフォーマンス メトリックを監視する方法と、パッケージの更新を管理する方法について説明します
+title: チュートリアル - Azure で Linux 仮想マシンの監視と更新を行う | Microsoft Docs
+description: このチュートリアルでは、Linux 仮想マシンを対象に、ブート診断とパフォーマンス メトリックを監視する方法と、パッケージの更新を管理する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d5fb239ffd6a957cbb088bf4843819e2c886cee8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 0dc403d92855902daef09c91a5dd022beb23fd71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを監視および更新する方法
+# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure で Linux 仮想マシンの監視と更新を行う
 
 Azure の仮想マシン (VM) が正常に実行されていることを確認するためには、ブート診断とパフォーマンス メトリックを確認し、パッケージの更新を管理します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -39,7 +39,7 @@ Azure の仮想マシン (VM) が正常に実行されていることを確認�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-vm"></a>VM を作成する
 

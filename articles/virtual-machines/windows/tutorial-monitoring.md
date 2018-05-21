@@ -1,6 +1,6 @@
 ---
-title: Azure で Windows Virtual Machines を監視し、更新する | Microsoft Docs
-description: チュートリアル - Azure PowerShell を使用した Windows Virtual Machine の監視と更新
+title: チュートリアル - Azure で Windows 仮想マシンの監視と更新を行う | Microsoft Docs
+description: このチュートリアルでは、Windows 仮想マシンを対象に、ブート診断とパフォーマンス メトリックを監視する方法と、パッケージの更新を管理する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -10,19 +10,19 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9181d79e6eb0443a4607824cfde95068b509a917
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Azure PowerShell を使用した Windows Virtual Machine の監視と更新
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル: Azure で Windows 仮想マシンの監視と更新を行う
 
 Azure Monitoring では、エージェントを使用して Azure VM からブートとパフォーマンス データを収集し、Azure Storage にこのデータを格納し、ポータル、Azure PowerShell モジュールと Azure CLI でアクセスできるようにします。 更新管理では、Azure Windows VM の更新プログラムとパッチを管理できます。
 
@@ -39,9 +39,27 @@ Azure Monitoring では、エージェントを使用して Azure VM からブ�
 > * 変更とインベントリを監視する
 > * 高度な監視をセットアップする
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
-このチュートリアルの例を完了するには、既存の仮想マシンが必要です。 必要に応じて、この[サンプル スクリプト](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)で仮想マシンを作成できます。 このチュートリアルを実行するときは、リソース グループ、VM の名前、場所を適宜置き換えてください。
+## <a name="create-virtual-machine"></a>仮想マシンの作成
+
+このチュートリアルで Azure の監視と更新管理を構成するには、Azure 内に Windows VM が必要です。 まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+
+```azurepowershell-interactive
+$cred = Get-Credential
+```
+
+次に、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 次の例では、場所 *EastUS* に *myVM* という名前の VM を作成します。 これらが存在しない場合は、リソース グループ *myResourceGroupMonitorMonitor* と関連ネットワーク リソースが作成されます。
+
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroupMonitor" `
+    -Name "myVM" `
+    -Location "East US" `
+    -Credential $cred
+```
+
+リソースと VM が作成されるまで数分かかります。
 
 ## <a name="view-boot-diagnostics"></a>ブート診断を表示する
 
@@ -50,14 +68,14 @@ Windows 仮想マシンが起動すると、ブート診断エージェントは
 [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata) コマンドを使用してブートの診断データを取得できます。 次の例では、ブート診断は *c:\* ドライブのルートにダウンロードされています。
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup -Name myVM -Windows -LocalPath "c:\"
+Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
 ## <a name="view-host-metrics"></a>ホストのメトリックを表示する
 
 Azure には、Windows VM と連動する専用のホスト VM があります。 メトリックは、そのホストを対象に自動的に収集され、Azure Portal に表示されます。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
+1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroupMonitor]** を選択して、リソース一覧から **[myVM]** を選択します。
 2. ホスト VM の実行状況を確認するには、VM ブレードの **[メトリック]** をクリックし、**[利用可能なメトリック]** からいずれかのホスト メトリックを選択します。
 
     ![ホストのメトリックを表示する](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
@@ -66,7 +84,7 @@ Azure には、Windows VM と連動する専用のホスト VM があります�
 
 基本的なホスト メトリックは利用できますが、さらに粒度の細かい VM 固有のメトリックを表示するためには、Azure 診断拡張機能を VM にインストールする必要があります。 Azure 診断拡張機能を通じて、より詳しい監視データと診断データを VM から取得することができます。 これらのパフォーマンス メトリックを確認したり、VM のパフォーマンスに基づくアラートを作成したりすることができます。 診断拡張機能は、次のように Azure Portal からインストールします。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
+1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroupMonitor]** を選択して、リソース一覧から **[myVM]** を選択します。
 2. **[診断の設定]** をクリックします。 *[ブート診断]* は、前のセクションで既に有効にしたので、そのように表示されています。 *[基本メトリック]* のチェック ボックスをオンにします。
 3. **[ゲスト レベルの監視を有効にする]** ボタンをクリックします。
 
@@ -76,7 +94,7 @@ Azure には、Windows VM と連動する専用のホスト VM があります�
 
 VM のメトリックは、ホスト VM のメトリックと同じ方法で表示できます。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
+1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroupMonitor]** を選択して、リソース一覧から **[myVM]** を選択します。
 2. VM の実行状況を確認するには、VM ブレードの **[メトリック]** をクリックし、**[利用可能なメトリック]** からいずれかの診断メトリックを選択します。
 
     ![VM のメトリックを表示する](./media/tutorial-monitoring/monitor-vm-metrics.png)
@@ -87,7 +105,7 @@ VM のメトリックは、ホスト VM のメトリックと同じ方法で表�
 
 平均 CPU 使用率のアラートを作成する例を次に示します。
 
-1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroup]** を選択して、リソース一覧から **[myVM]** を選択します。
+1. Azure Portal で **[リソース グループ]** をクリックし、**[myResourceGroupMonitor]** を選択して、リソース一覧から **[myVM]** を選択します。
 2. VM ブレードの **[アラート ルール]** をクリックし、アラート ブレード上部にある **[メトリック アラートの追加]** をクリックします。
 3. **[名前]** にアラートの名前を入力します (例: *myAlertRule*)。
 4. CPU の割合が 1.0 を超えた状態が 5 分間続いたときにアラートをトリガーするために、それ以外の選択肢はすべて既定値のままにします。
@@ -246,15 +264,15 @@ Log Analytics ワークスペースにアクセスして、ワークスペース
 $workspaceId = "<Replace with your workspace Id>"
 $key = "<Replace with your primary key>"
 
-Set-AzureRmVMExtension -ResourceGroupName myResourceGroup `
+Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
-  -VMName myVM `
+  -VMName "myVM" `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
   -ExtensionType "MicrosoftMonitoringAgent" `
   -TypeHandlerVersion 1.0 `
   -Settings @{"workspaceId" = $workspaceId} `
   -ProtectedSettings @{"workspaceKey" = $key} `
-  -Location eastus
+  -Location "East US"
 ```
 
 しばらくすると、Log Analytics ワークスペースに新しい VM が表示されます。

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: c4f27f59412fbfc72e193f916895c3e67091f5f6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0503b355089fe6bbcc7632ac93fd21e71f268032
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -100,7 +100,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
     - アプリケーション キー
     - テナント ID
 
-2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**。 AAD 管理者は AAD ユーザーまたは AAD グループである必要がありますが、サービス プリンシパルであることはできません。 このステップは、後続のステップで AAD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
+2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 AAD 管理者は AAD ユーザーまたは AAD グループである必要がありますが、サービス プリンシパルであることはできません。 このステップは、後続のステップで AAD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
 
 3. SSMS などのツールを使ってデータをコピーするデータベースに接続し、少なくとも ALTER ANY USER アクセス許可を持つ AAD ID を使って、次の T-SQL を実行することにより、**サービス プリンシパルの包含データベース ユーザーを作成**します。 包含データベース ユーザーについて詳しくは、[こちら](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をご覧ください。
     
@@ -111,7 +111,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 4. SQL ユーザーに対する通常の方法 (たとえば次のコマンドの実行) で、**サービス プリンシパルに必要なアクセス許可を付与**します。
 
     ```sql
-    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your application name];
     ```
 
 5. ADF で、Azure SQL Database のリンクされたサービスを構成します。
@@ -160,7 +160,7 @@ MSI ベースの AAD アプリケーション トークン認証を使うには�
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**。 AAD 管理者には、AAD ユーザーまたは AAD グループを指定できます。 グループに MSI と管理者ロールを付与する場合は、管理者は DB へのフル アクセス権を持っているので、以下のステップ 3 と 4 をスキップします。
+2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**。 AAD 管理者には、AAD ユーザーまたは AAD グループを指定できます。 グループに MSI と管理者ロールを付与する場合は、管理者は DB へのフル アクセス権を持っているので、以下のステップ 3 と 4 をスキップします。
 
 3. SSMS などのツールを使ってデータをコピーするデータベースに接続し、少なくとも ALTER ANY USER アクセス許可を持つ AAD ID を使って、次の T-SQL を実行することにより、**AAD グループの包含データベース ユーザーを作成**します。 包含データベース ユーザーについて詳しくは、[こちら](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をご覧ください。
     
@@ -171,7 +171,7 @@ MSI ベースの AAD アプリケーション トークン認証を使うには�
 4. SQL ユーザーに対する通常の方法 (たとえば次のコマンドの実行) で、**AAD グループに必要なアクセス許可を付与**します。
 
     ```sql
-    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
 5. ADF で、Azure SQL Database のリンクされたサービスを構成します。

@@ -1,39 +1,50 @@
 ---
-title: 可用性ゾーン間のロード バランサー VM - Azure Portal | Microsoft Docs
-description: Azure Portal を使用して、ゾーン冗長フロントエンドを使用する Standard Load Balancer を作成し、可用性ゾーン間で VM の負荷を分散します
+title: 'チュートリアル: 可用性ゾーン間の Load Balancer VM - Azure Portal | Microsoft Docs'
+description: このチュートリアルでは、Azure Portal を使用して、ゾーン冗長フロントエンドを使用する Standard Load Balancer を作成し、可用性ゾーン間で VM の負荷を分散する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: ''
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/18
+ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: ad476922342844a908961960407eb344711932f5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.custom: mvc
+ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル: Azure Portal と Standard Load Balancer を使用し、可用性ゾーン間で VM の負荷を分散する
 
-この記事では、複数の DNS レコードに依存せずにゾーン冗長性を実現するために、ゾーン冗長フロントエンドを使用するパブリック Load Balancer Standard を作成する手順について説明します。 Standard Load Balancer の単一のフロントエンド IP アドレスは自動的にゾーン冗長になります。 単一の IP アドレスを持つロード バランサーにゾーン冗長フロントエンドを使用すると、すべての可用性ゾーン全体でリージョン内の仮想ネットワークの任意の VM に到達できるようになります。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。 ゾーン冗長では、1 つまたは複数の可用性ゾーンで障害が発生しても対応可能であり、リージョン内に正常なゾーンが 1 つでも残っていれば、データ パスは存続します。 
+負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、可用性ゾーン間で VM の負荷を分散するパブリック Load Balancer Standard の作成手順について説明します。 この方法で、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護することができます。 ゾーン冗長では、1 つまたは複数の可用性ゾーンで障害が発生しても対応可能であり、リージョン内に正常なゾーンが 1 つでも残っていれば、データ パスは存続します。 学習内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Standard Load Balancer を作成する
+> * 着信トラフィック規則を定義するネットワーク セキュリティ グループを作成する
+> * 複数のゾーンにまたがるゾーン冗長 VM を作成し、ロード バランサーにアタッチする
+> * ロード バランサーの正常性プローブを作成する
+> * ロード バランサーのトラフィック ルールを作成する
+> * 基本的な IIS サイトを作成する
+> * 動作中のロード バランサーを表示する
 
 可用性ゾーンと Standard Load Balancer の使用方法の詳細については、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
 
-## <a name="create-a-public-standard-load-balancer"></a>パブリック Standard Load Balancer を作成する
+## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer を作成する
 
 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 ロード バランサーの作成時に新しいパブリック IP を作成すると、自動的に Standard SKU バージョンとして構成され、自動的にゾーン冗長になります。
 
@@ -51,9 +62,11 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-このセクションでは、仮想ネットワークを作成し、ロード バランサーのバックエンド プールに追加するリージョン用に異なるゾーン (ゾーン 1、ゾーン 2、およびゾーン 3) に仮想マシンを作成します。次に、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 今後ゾーンに障害が発生すると、同じゾーン内の VM のヘルス プローブは失敗し、トラフィックは他のゾーン内の VM によって引き続き処理されます。
+このセクションでは、仮想ネットワークを作成し、そのリージョンの複数のゾーンに仮想マシンを作成し、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 今後ゾーンに障害が発生すると、同じゾーン内の VM のヘルス プローブは失敗し、トラフィックは他のゾーン内の VM によって引き続き処理されます。
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+バックエンド サーバーを展開するための仮想ネットワークを作成します。
+
 1. 画面の左上で **[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順にクリックし、仮想ネットワークの以下の値を入力します。
     - *myVnet* - 仮想ネットワークの名前。
     - *myResourceGroupLBAZ* - 既存のリソース グループの名前。
@@ -64,6 +77,8 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
+ネットワーク セキュリティ グループを作成して、仮想ネットワークへの受信接続を定義します。
+
 1. 画面の左上にある **[リソースの作成]** をクリックし、検索ボックスに「*ネットワーク セキュリティ グループ*」と入力し、ネットワーク セキュリティ グループ ページで **[作成]** をクリックします。
 2. [ネットワーク セキュリティ グループの作成] で次の値を入力します。
     - *myNetworkSecurityGroup* - ネットワーク セキュリティ グループの名前。
@@ -71,9 +86,9 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
    
 ![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
-### <a name="create-nsg-rules"></a>NSG ルールを作成する
+### <a name="create-network-security-group-rules"></a>ネットワーク セキュリティ グループ規則を作成する
 
-このセクションでは、Azure Portal で HTTP と RDP を使用する受信接続を許可するための NSG 規則を作成します。
+このセクションでは、Azure Portal で HTTP と RDP を使用する受信接続を許可するためのネットワーク セキュリティ グループ規則を作成します。
 
 1. Azure Portal の左側のメニューで **[すべてのリソース]** をクリックし、**[myResourceGroupLB]** リソース グループにある **[myNetworkSecurityGroup]** を検索してクリックします。
 2. **[設定]** で **[受信セキュリティ規則]** をクリックし、**[追加]** をクリックします。
@@ -84,8 +99,8 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *TCP* - **プロトコル**
     - "*許可*" - **アクション**
     - *100* - **優先度**
-    - *myHTTPRule* - 名前
-    - "*HTTP を許可する*" - 説明
+    - *myHTTPRule* - ロード バランサー規則の名前。
+    - *HTTP を許可する* - ロード バランサー規則の説明。
 4. Click **OK**.
  
  ![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
@@ -99,8 +114,9 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *myRDPRule* - 名前
     - "*RDP を許可する*" - 説明
 
-
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
+
+リージョン内の異なるゾーン (ゾーン 1、ゾーン 2、およびゾーン 3) に、ロード バランサーのバックエンド サーバーとして機能する仮想マシンを作成します。
 
 1. 画面の左上で **[リソースの作成]** > **[コンピューティング]** > **[Windows Server 2016 Datacenter]** の順にクリックし、仮想マシンの以下の値を入力します。
     - *myVM1* - 仮想マシンの名前です。        
@@ -145,17 +161,17 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 ### <a name="create-a-backend-address-pool"></a>バックエンド アドレス プールの作成
 
-トラフィックを VM に分散するには、バックエンド アドレス プールに、ロード バランサーに接続される仮想 NIC の IP アドレスを含めます。 バックエンド アドレス プール *myBackendPool* を作成し、*VM1* および *VM2* を含めます。
+トラフィックを VM に分散するには、バックエンド アドレス プールに、ロード バランサーに接続される仮想 NIC の IP アドレスを含めます。 バックエンド アドレス プール *myBackendPool* を作成し、*VM1*、*VM2*、*VM3* を含めます。
 
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myLoadBalancer]** をクリックします。
 2. **[設定]** で **[バックエンド プール]** をクリックし、**[追加]** をクリックします。
 3. **[バックエンド プールの追加]** ページで、以下の操作を行います。
-    - バックエンド プールの名前として、「myBackEndPool」と入力します。
+    - バックエンド プールの名前として、[名前] に「*myBackEndPool*」と入力します。
     - **[仮想ネットワーク]** の場合は、ドロップダウン メニューの **[myVNet]** をクリックします。
     - **[仮想マシン]** の場合は、ドロップダウン メニューの **[myVM1]** をクリックします。
     - **[IP アドレス]** の場合、ドロップダウン メニューで、myVM1 の IP アドレスをクリックします。
 4. **[新しいローカル リソースを追加する]** をクリックして、ロード バランサーのバックエンド プールに追加する各仮想マシン (*myVM2* と *myVM3*) を追加します。
-5. **[追加]**をクリックします。
+5. **[追加]** をクリックします。
 
     ![バックエンド アドレス プールへの追加 ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
@@ -200,6 +216,8 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 IIS Web サーバーの既定のページがブラウザーに表示されます。
 
       ![IIS Web サーバー](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+
+ロード バランサーがゾーン全体に分散されている VM 間でトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
