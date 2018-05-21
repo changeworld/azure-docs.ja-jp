@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/16/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 3b138546ffb1cb6d5bec0aaf2bb11510ab399933
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4d6d3b776995233f3729a76788504678dc8979d7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -112,7 +112,7 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **プールされた仮想デスクトップ (管理対象外)** |いいえ |[はい] |いいえ  |[はい] |いいえ  |[はい] |いいえ  |
 | **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |[はい] |いいえ  |[はい] |いいえ  |[はい] |いいえ  |
-| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|[はい] |[はい] |[はい] |[はい] |[はい] |[はい] |
+| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|はい |はい |はい |はい |はい |[はい] |
 
 [Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
 

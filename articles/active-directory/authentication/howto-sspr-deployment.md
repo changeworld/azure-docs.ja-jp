@@ -2,35 +2,31 @@
 title: セルフサービスによるパスワードのリセットのデプロイ ガイド - Azure Active Directory
 description: Azure AD のセルフ サービスによるパスワードのリセットを正常に展開するためのヒント
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 22086a0d9fc774b75e1b0873188b16fc548d0791
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
 Azure Active Directory (Azure AD) のセルフサービスによるパスワード リセット (SSPR) 機能が円滑にロールアウトされるように、ほとんどのお客様は次の手順を実行します。
 
-1. [ディレクトリでパスワードのリセットを有効にします](../active-directory-passwords-getting-started.md)。
-2. [パスワード ライトバック用にオンプレミスの Active Directory のアクセス許可を構成します](../active-directory-passwords-writeback.md#active-directory-permissions)。
-3. [パスワード ライトバックを構成](../active-directory-passwords-writeback.md#configure-password-writeback)し、パスワードを Azure AD からオンプレミス ディレクトリに書き戻します。
+> [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
+
+1. [ディレクトリでパスワードのリセットを有効にします](quickstart-sspr.md)。
+2. [パスワード ライトバック用にオンプレミスの Active Directory のアクセス許可を構成します](howto-sspr-writeback.md#active-directory-permissions)。
+3. [パスワード ライトバックを構成](howto-sspr-writeback.md#configure-password-writeback)し、パスワードを Azure AD からオンプレミス ディレクトリに書き戻します。
 4. [必要なライセンスを割り当てて、確認します](concept-sspr-licensing.md)。
-5. 段階的なロールアウトを実行するかどうかを決定します。 SSPR を段階的にロールアウトする場合は、特定のグループでプログラムを試験運用できるように、アクセスをそのユーザー グループだけに制限できます。 特定のグループにロールアウトするには、**[セルフ サービスによるパスワードのリセットが有効]** スイッチを **[選択済み]** に設定し、パスワードのリセットを有効にするセキュリティ グループを選択します。 
+5. 段階的なロールアウトを実行するかどうかを決定します。 SSPR を段階的にロールアウトする場合は、特定のグループでプログラムを試験運用できるように、アクセスをそのユーザー グループだけに制限できます。 特定のグループにロールアウトするには、**[セルフ サービスによるパスワードのリセットが有効]** スイッチを **[選択済み]** に設定し、パスワードのリセットを有効にするセキュリティ グループを選択します。  ここではセキュリティ グループの入れ子はサポートされていません。
 6. 会社電話、携帯電話、連絡用メール アドレスなど、ユーザーの登録に必要な[認証データ](howto-sspr-authenticationdata.md)を設定します。
 7. [Azure AD サインイン エクスペリエンスをカスタマイズして、会社のブランドを含めます](concept-sspr-customization.md)。
 8. SSPR の使い方をユーザーに教えます。 パスワードの登録方法とリセット方法が記載されている手順書をユーザーに送信します。
@@ -41,7 +37,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
    > [!NOTE]
    > このオプションを特定のグループから全員に変更しても、ユーザーがテスト グループの一部として登録した既存の認証データは無効になりません。 構成が済んでいて有効な認証データが登録されているユーザーは、引き続き正常に機能します。
 
-12. [Windows 10 ユーザーがログイン画面でパスワードをリセットできるようにします](../active-directory-passwords-login.md)。
+12. [Windows 10 ユーザーがログイン画面でパスワードをリセットできるようにします](tutorial-sspr-windows.md)。
 
    > [!IMPORTANT]
    > Microsoft は Azure 管理者アカウントに対して強力な認証要件を適用しているため、管理者ではなくユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[パスワード ポリシー](concept-sspr-policy.md#administrator-password-policy-differences)に関する記事を参照してください。
@@ -67,6 +63,10 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 
 ユーザーがこのサービスの使用を必要とするときにアクセスできる、覚えやすいブランド化された URL を、送信する任意の電子メールまたは広告に含めることができます。 組織のニーズに応じて使用およびカスタマイズできる[パスワードのリセットのサンプル ページ](https://github.com/ajamess/password-reset-page)をご用意しました。
 
+## <a name="step-by-step-deployment-plan"></a>ステップバイステップのデプロイ プラン
+
+Azure Active Directory の製品グループは、組織がビジネス ケースを作成し、セルフサービスのパスワード リセットのデプロイを計画できるように、このサイトのドキュメントと並行して使用できる[ステップバイステップのデプロイ プラン](https://aka.ms/SSPRDeploymentPlan)を作成しました。
+
 ## <a name="use-enforced-registration"></a>強制登録を使用する
 
 ユーザーにパスワードのリセットを登録してほしい場合は、ユーザーが Azure AD を通じてサインインしたときに登録を要求できます。 このオプションを有効にするには、ディレクトリの **[パスワードのリセット]** ウィンドウで **[登録]** タブの **[サインイン時にユーザーに登録を求めますか]** オプションを有効にします。
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](../active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)

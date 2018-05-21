@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: jroth
-ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure Portal で SQL Server 2017 Windows 仮想マシンを作成する
 
@@ -72,11 +72,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="choose-virtual-machine-size"></a>仮想マシンのサイズを選択する
 
-この**サイズ**設定の手順では、**[サイズの選択]** ウィンドウで仮想マシンのサイズを選択します。 ウィンドウには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。 
+1. この**サイズ**設定の手順では、**[サイズの選択]** ウィンドウで仮想マシンのサイズを選択します。
 
-1. **[すべて表示]** をクリックして、すべての使用可能なマシンのサイズを確認します。
-
-1. このクイック スタートでは、**[D2S_V3]** を選択します。 ポータルには、継続使用時の推定の月間マシン コストが表示されます (SQL Server のライセンス コストは含まれません)。 Developer Edition では SQL Server に対する追加のライセンス コストは発生しないことに注意してください。 詳細については、 [料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)を参照してください。
+   このクイック スタートでは、**[D2S_V3]** を選択します。 ポータルには、継続使用時の推定の月間マシン コストが表示されます (SQL Server のライセンス コストは含まれません)。 Developer Edition では SQL Server に対する追加のライセンス コストは発生しないことに注意してください。 詳細については、 [料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)を参照してください。
 
    > [!TIP]
    > **D2S_V3** というマシンのサイズは、テスト中のコストを削減します。 ただし、運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
@@ -85,7 +83,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-optional-features"></a>オプション機能を構成する
 
-**[設定]** ウィンドウで、**[OK]** をクリックして既定の設定を選択します。
+1. VM にリモート デスクトップ接続する場合は、**[設定]** ウィンドウの **[Select public inbound ports]\(パブリック受信ポートの選択\)** 一覧で **[RDP (3389)]** ポートを選択します。
+
+   ![受信ポート](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > **[MS SQL (1433)]** ポートを選択すると、SQL Server にリモート アクセスできます。 ただし、「**SQL Server の設定**」の手順でもこのオプションが提供されるため、これは必要ありません。 この手順でポート 1433 を選択した場合、「**SQL Server の設定**」の手順での選択に関係なく、このポートが開かれます。
+
+1. **[OK]** をクリックして変更を保存し、続行します。
 
 ## <a name="sql-server-settings"></a>SQL Server の設定
 
@@ -127,7 +132,7 @@ Azure Portal でデプロイを監視できます。 画面の上部にある **
 
 1. **[パスワード]** ボックスに、ログインのパスワードを入力します。
 
-1. **[接続]**をクリックします。
+1. **[接続]** をクリックします。
 
     ![SSMS 接続](./media/quickstart-sql-vm-create-portal/ssms-connect.png)
 

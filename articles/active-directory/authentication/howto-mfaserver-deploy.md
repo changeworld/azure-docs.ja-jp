@@ -1,26 +1,20 @@
 ---
 title: Azure Multi-Factor Authentication Server の概要 | Microsoft Docs
-description: Azure MFA Server を開始する方法について説明する Azure Multi-Factor Authentication のページです。
+description: オンプレミスで Azure MFA Server を使い始めるための詳細な手順
 services: multi-factor-authentication
-keywords: 認証 サーバー, azure 多要素認証アプリ アクティブ化ページ, 認証サーバーのダウンロード
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e94120e4-ed77-44b8-84e4-1c5f7e186a6b
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: ea09df3bc89b646ed2f30a6c828587d6f4adbaba
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bd1b0f21162978496750886d32e7166c3a90922d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -113,7 +107,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
    ![クラウド](./media/howto-mfaserver-deploy/skip2.png)
 
-5. サーバーをダウンロードしたページに戻り、**[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]**をクリックします。
+5. サーバーをダウンロードしたページに戻り、**[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]** をクリックします。
 
 ## <a name="send-users-an-email"></a>ユーザーへの電子メールの送信
 
@@ -139,8 +133,8 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
 ### <a name="manual-import-from-active-directory"></a>Active Directory からの手動インポート
 
-1. Azure MFA Server の左側で **[ユーザー]**を選択します。
-2. 下部で **[Active Directory からインポート]**を選択します。
+1. Azure MFA Server の左側で **[ユーザー]** を選択します。
+2. 下部で **[Active Directory からインポート]** を選択します。
 3. 個々のユーザーを検索したり、AD ディレクトリでユーザーを含む OU を検索したりできるようになります。  ここではユーザー OU を指定します。
 4. 右側のすべてのユーザーを強調表示し、**[インポート]** をクリックします。  成功したことを通知するポップアップが表示されます。  インポート ウィンドウを閉じます。
 

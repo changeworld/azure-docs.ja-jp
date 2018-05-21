@@ -1,69 +1,86 @@
 ---
-title: "Azure Stack の VM ディスクを管理する | Microsoft Docs"
-description: "Azure Stack での仮想マシンのディスクをプロビジョニングします。"
+title: Azure Stack の VM ディスクを管理する | Microsoft Docs
+description: Azure Stack で仮想マシンのディスクをプロビジョニングします。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 0c36e2eaaf2d266842b2b7de0b0c8dc0ed1e0145
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8e91b4d83aa90a7e744fb8e73cda788dbf8c58ec
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="virtual-machine-disk-storage-for-azure-stack"></a>Azure Stack での仮想マシン ディスク ストレージ
+# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Azure Stack で仮想マシンのディスク ストレージをプロビジョニングする
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack では、仮想マシンのオペレーティング システム (OS) ディスクとデータ ディスクの両方を[管理されていないディスク](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)として使用することをサポートします。 管理されていないディスクを使用するには、[ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)を作成し、ストレージ アカウント内のコンテナーにページ BLOB としてディスクを格納します。 これらのディスクは、VM ディスクと呼ばれます。
+この記事では、Azure Stack ポータルまたは PowerShell を使用して、仮想マシンのディスク記憶域をプロビジョニングする方法について説明します。
 
-パフォーマンスを改善し、Azure Stack システムの管理コストを削減するために、個別のコンテナーに各 VM ディスクを配置することをお勧めします。 1 つのコンテナーには、OS ディスクまたはデータ ディスクのどちらかを保持し、同時に両方を保持しないでください。 ただし、両方を同じコンテナーに配置することを妨げる制限はありません。
+## <a name="overview"></a>概要
 
-VM に 1 つまたは複数のデータ ディスクを追加する場合は、これらのディスクを保持するための場所として追加のコンテナーを使用することを計画してください。 データ ディスクと同じように、別の VM の OS ディスクも、独自のコンテナーに配置してください。
+Azure Stack では、[アンマネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)を仮想マシンで、オペレーティング システム (OS) ディスクとして使用することも、データ ディスクとして使用することもできます。
 
-複数の VM を作成するときに、新しい VM に対して同じストレージ アカウントを再利用できます。 作成するコンテナーのみを一意にする必要があります。  
+アンマネージド ディスクを使用するには、そのディスクを格納する[ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)を作成します。 作成したディスクは VM ディスクと呼ばれ、ストレージ アカウントのコンテナーに格納されます。
 
-VM にディスクを追加するには、ユーザー ポータルまたは PowerShell を使用します。
+### <a name="best-practice-guidelines"></a>ベスト プラクティス ガイドライン
+
+パフォーマンスを改善し、全体的なコストを削減するために、個別のコンテナーに各 VM ディスクを配置することをお勧めします。 1 つのコンテナーには、OS ディスクまたはデータ ディスクのどちらかを保持し、同時に両方を保持しないでください。 (ただし、両方の種類のディスクを同じコンテナーに配置できないわけではありません。)
+
+VM に 1 つ以上のデータ ディスクを追加する場合は、追加コンテナーを、これらのディスクを格納する場所として使用してください。 追加 VM の OS ディスクも、独自のコンテナーに配置する必要があります。
+
+複数の VM を作成するときは、新しい仮想マシンごとに同じストレージ アカウントを再利用できます。 作成するコンテナーのみを一意にする必要があります。
+
+### <a name="adding-new-disks"></a>新しいディスクを追加する
+
+次の表は、ポータルおよび PowerShell を使用してディスクを追加する方法をまとめたものです。
 
 | 方法 | オプション
 |-|-|
-|[ユーザー ポータル](#use-the-portal-to-add-additional-disks-to-a-vm)|- 以前にプロビジョニングされた VM に新しいデータ ディスクを追加します。 新しいディスクは、Azure Stack によって作成されます。 </br> </br>- 以前にプロビジョニングされた VM に既存の .vhd ファイルをディスクとして追加します。 これを行うには、先に .vhd ファイルを準備して、Azure Stack に アップロードしておく必要があります。 |
+|[ユーザー ポータル](#use-the-portal-to-add-additional-disks-to-a-vm)|- 既存の VM に新しいデータ ディスクを追加します。 新しいディスクは、Azure Stack によって作成されます。 </br> </br>- 前にプロビジョニングした VM に既存のディスク (.vhd) ファイルを追加します。 これを行うには、.vhd ファイルを準備して、そのファイルを Azure Stack にアップロードする必要があります。 |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - OS ディスクがある新しい VM を作成し、同時にその VM に 1 つまたは複数のデータ ディスクを追加します。 |
 
+## <a name="use-the-portal-to-add-disks-to-a-vm"></a>ポータルを使用してディスクを VM に追加する
 
-## <a name="use-the-portal-to-add-additional-disks-to-a-vm"></a>ポータルを使用して VM に別のディスクを追加する
-既定では、ポータルを使用してほとんどのマーケットプレース品目用の VM を作成した場合は、OS ディスクのみが作成されます。 Azure によって作成されたディスクは、管理ディスクと呼ばれます。
+ポータルを使ってマーケットプレース項目のほとんどを対象とする VM を作成する場合、既定では、OS ディスクのみが作成されます。
 
-VM をプロビジョニングした後、ポータルを使用してその VM に新しいデータ ディスクまたは既存のデータ ディスクを追加できます。 各ディスクは、別々のコンテナーに配置する必要があります。 VM に追加するディスクは、管理されていないディスクと呼ばれます。
+VM の作成後、ポータルを使って次の操作を行うことができます。
+* 新しいデータ ディスクを作成し、VM に接続する。
+* 既存のデータ ディスクを作成し、VM にアップロードする。
 
-### <a name="use-the-portal-to-attach-a-new-data-disk-to-a-vm"></a>ポータルを使用して新しいデータ ディスクを VM に接続する
+追加するアンマネージド ディスクはそれぞれ、個別のコンテナーに配置する必要があります。
 
-1.  ポータルで **[仮想マシン]**を選択します。    
+>[!NOTE]
+>Azure によって作成および管理されているディスクは、[マネージド ディスク](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview)と呼ばれます。
+
+### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>ポータルを使用して新しいデータ ディスクを作成して接続する
+
+1.  ポータルで **[仮想マシン]** を選択します。    
     ![例: VM ダッシュボード](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  以前にプロビジョニングされている仮想マシンを選択します。   
     ![例: ダッシュボードで VM を選択する](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  仮想マシンで、**[ディスク]** > **[新しいディスクの接続]** をクリックします。       
+3.  仮想マシンで、**[ディスク]** > **[新しいディスクの接続]** を選択します。       
     ![例: 新しいディスクを VM に接続する](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  **[新しいディスクの接続]** ウィンドウで、**[場所]** をクリックします。 既定では、場所は、OS ディスクを保持するコンテナーに設定されます。      
+4.  **[新しいディスクの接続]** ウィンドウで、**[場所]** を選択します。 既定では、場所は、OS ディスクを保持するコンテナーに設定されます。      
     ![例: ディスクの場所を設定する](media/azure-stack-manage-vm-disks/disk-location.png)
 
-5.  使用する**ストレージ アカウント**を選択します。 次に、データ ディスクを配置する**コンテナー**を選択します。 必要に応じて、**[コンテナー]** ページで新しいコンテナーを作成できます。 その後、新しいディスクの場所をそのコンテナーに変更できます。 ディスクごとに別のコンテナーを使用する場合は、データ ディスクの分散配置することでパフォーマンスを向上させることができます。 **[選択]** をクリックして選択を保存します。     
+5.  使用する**ストレージ アカウント**を選択します。 次に、データ ディスクを配置する**コンテナー**を選択します。 必要に応じて、**[コンテナー]** ページで新しいコンテナーを作成できます。 その後、新しいディスクの場所をそのコンテナーに変更できます。 ディスクごとに別のコンテナーを使用する場合は、データ ディスクの分散配置することでパフォーマンスを向上させることができます。 **[選択]** を選択して、選択内容を保存します。     
     ![例: コンテナーを選択する](media/azure-stack-manage-vm-disks/select-container.png)
 
-6.  **[新しいディスクの接続]**ページで、ディスクの **[名前]**、**[種類]**、**[サイズ]**、および**[ホスト キャッシュ]** 設定を更新します。 **[OK]** をクリックして、VM の新しいディスク構成を保存します。  
+6.  **[新しいディスクの接続]** ページで、ディスクの **[名前]**、**[種類]**、**[サイズ]**、および **[ホスト キャッシュ]** 設定を更新します。 **[OK]** を選択して、VM の新しいディスク構成を保存します。  
     ![例: ディスクの接続を完了する](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  Azure Stack でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]** に新しいディスクが表示されます。   
@@ -71,27 +88,28 @@ VM をプロビジョニングした後、ポータルを使用してその VM �
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>VM に既存のデータ ディスクを接続する
+
 1.  VM のデータ ディスクとして使用する [.Vhd ファイルを準備します](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd)。 VM で使用するストレージ アカウントで、.vhd ファイルを接続するアカウントに .vhd ファイルをアップロードします。
 
   .vhd ファイルを保持するために使用するコンテナーは、OS ディスクを保持するコンテナーとは別のコンテナーにすることを計画してください。   
   ![例: VHD ファイルをアップロードする](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2.  .vhd ファイルをアップロードしたら、VM に VHD をアタッチできます。 左側のメニューの **[仮想マシン]** をクリックします。  
+2.  .vhd ファイルをアップロードしたら、VM に VHD をアタッチできます。 左側のメニューで **[仮想マシン]** を選択します。  
  ![例: ダッシュボードで VM を選択する](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3.  一覧から仮想マシンを選択します。    
   ![例: ダッシュボードで VM を選択する](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4.  仮想マシンのページで、**[ディスク]** > **[既存のディスクの接続]**をクリックします。   
+4.  仮想マシンのページで、**[ディスク]** > **[既存のディスクの接続]** を選択します。   
   ![例: 既存のディスクを接続する](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
-5.  **[既存のディスクの接続]** ページで、**[VHD ファイル]** をクリックします。 **[ストレージ アカウント]** ページが開きます。    
+5.  **[既存のディスクの接続]** ページで、**[VHD ファイル]** を選択します。 **[ストレージ アカウント]** ページが開きます。    
   ![例: VHD ファイルを選択する](media/azure-stack-manage-vm-disks/select-vhd.png)
 
-6.  **[ストレージ アカウント]** で、使用するアカウントを選択し、先ほどアップロードした .vhd ファイルを保持するコンテナーを選択します。 .vhd ファイルを選択し、**[選択]** をクリックして選択内容を保存します。    
+6.  **[ストレージ アカウント]** で、使用するアカウントを選択し、前にアップロードした .vhd ファイルを保持するコンテナーを選択します。 .vhd ファイルを選択し、**[選択]** を選択して、選択内容を保存します。    
   ![例: コンテナーを選択する](media/azure-stack-manage-vm-disks/select-container2.png)
 
-7.  **[既存のディスクの接続]** の **[VHD ファイル]** に、選択したファイルが表示されます。 ディスクの **[ホスト キャッシュ]** 設定を更新し、**[OK]** をクリックして VM の新しいディスク構成を保存します。    
+7.  **[既存のディスクの接続]** の **[VHD ファイル]** に、選択したファイルが表示されます。 ディスクの **[ホスト キャッシュ]** 設定を更新し、**[OK]** を選択して VM の新しいディスク構成を保存します。    
   ![例: VHD ファイルを接続する](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  Azure Stack でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]** に新しいディスクが表示されます。   
@@ -242,5 +260,5 @@ If you have a VM with more than one disk in the same container, the service oper
 To do so, use the scripts from the following location in GitHub. These scripts can be used to move the data disks to different containers.
 -->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-considerations)」に進んでください。
