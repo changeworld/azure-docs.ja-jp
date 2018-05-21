@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Mobile Xpense の統合 | Microsoft Docs"
-description: "Azure Active Directory と Mobile Xpense の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Mobile Xpense の統合 | Microsoft Docs'
+description: Azure Active Directory と Mobile Xpense の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 3beea4dc7889d84ba2724b9b4ebf88d2fae3a284
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 95d4f97104df3a196aa3d0660cf5fca0ee3d89b8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>チュートリアル: Azure Active Directory と Mobile Xpense の統合
 
@@ -30,7 +30,7 @@ Mobile Xpense と Azure AD の統合には、次の利点があります。
 - ユーザーが各自の Azure AD アカウントで Mobile Xpense に自動的にサインオン (シングル サインオン) できるようにすることが可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 
     ![[Mobile Xpense のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://mobilexpense.com/ServiceProvider`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://mobilexpense.com/ServiceProvider`
 
     b. **[応答 URL]** ボックスに、`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx` のパターンを使用して URL を入力します。
 
@@ -210,7 +210,7 @@ Mobile Xpense で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

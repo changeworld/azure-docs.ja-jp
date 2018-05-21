@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Google Apps を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Azure AD から Google Apps に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。"
+title: 'チュートリアル: Google Apps を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Azure AD から Google Apps に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5c68e709b72e4032eca76dd35103df50030ccca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Google Apps を構成する
 
@@ -62,7 +62,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
     ![API リファレンスを選択する][15]
 
-3. **[API アクセスを有効にする]**を選択します。
+3. **[API アクセスを有効にする]** を選択します。
    
     ![API リファレンスを選択する][16]
 
@@ -120,7 +120,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
      ![Google Apps を選択する][26]
 
-7. ユーザー プロビジョニングの管理にどの管理者アカウントを使用するかを決定します。 使用するアカウントの**[管理者の役割]** で、役割の **[権限]** を編集します。 このアカウントをプロビジョニングに使用できるように、**[Admin API Privileges]\(管理 API の権限\)** がすべて有効になっていることを確認します。
+7. ユーザー プロビジョニングの管理にどの管理者アカウントを使用するかを決定します。 使用するアカウントの **[管理者の役割]** で、役割の **[権限]** を編集します。 このアカウントをプロビジョニングに使用できるように、**[Admin API Privileges]\(管理 API の権限\)** がすべて有効になっていることを確認します。
    
      ![Google Apps を選択する][27]
    
@@ -164,7 +164,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](active-directory-saas-google-apps-tutorial.md)
 
 

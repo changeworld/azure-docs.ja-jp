@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と LinkedIn Elevate の統合 | Microsoft Docs"
-description: "Azure Active Directory と LinkedIn Elevate の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と LinkedIn Elevate の統合 | Microsoft Docs'
+description: Azure Active Directory と LinkedIn Elevate の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 5b46323dc487bbc714c2306ed006afffe8c1bb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3e82cf4ccdc09cd6505994f9db952ac718342bf2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>チュートリアル: Azure Active Directory と LinkedIn Elevate の統合
 
@@ -29,7 +29,7 @@ LinkedIn Elevate と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に LinkedIn Elevate にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,17 +57,17 @@ Azure AD への LinkedIn Elevate の統合を構成するには、ギャラリ�
 
 **ギャラリーから LinkedIn Elevate を追加するには、次の手順に従います。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**LinkedIn Elevate**」と入力します。 結果パネルで、**[LinkedIn Elevate]** をクリックしてアプリケーションを追加します。
 
@@ -82,11 +82,11 @@ Azure AD への LinkedIn Elevate の統合を構成するには、ギャラリ�
 
 LinkedIn Elevate で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[LinkedIn Elevate のテスト ユーザーの作成](#creating-a-linkedin-elevate-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -96,27 +96,27 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
 1. Microsoft Azure 管理ポータルの **LinkedIn Elevate** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
 
 3. 別の Web ブラウザーのウィンドウで、管理者として LinkedIn Elevate テナントにサインオンします。
 
-4. **[アカウント センター]** で、**[設定]** の下の **[グローバル設定]** をクリックします。 また、ドロップダウン リストから **[Elevate - Elevate AAD Test (Elevate - Elevate AAD テスト)]** を選択します。
+4. **[Account Center (アカウント センター)]** で、**[Settings (設定)]** の下の **[Global Settings (グローバル設定)]** をクリックします。 また、ドロップダウン リストから **[Elevate - Elevate AAD Test (Elevate - Elevate AAD テスト)]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_01.png)
 
 5. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[エンティティ ID]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_03.png)
 
 6. Azure Portal の **[LinkedIn Elevate Domain and URLs (LinkedIn Elevate のドメインと URL)]** で、SSO を **[IdP Initiated (IdP 開始)]** モードで構成する場合は、次の手順を実行します
 
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_01.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
     b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Access (ACS) URL** を入力します
 
@@ -124,11 +124,11 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` 
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_02.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_02.png) 
     
 8. LinkedIn Elevate アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[ユーザー識別子]** の既定値は **user.userprincipalname** ですが、LinkedIn Elevate はこれがユーザーの電子メール アドレスにマップされることを想定します。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。 
 
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/updateusermail.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/updateusermail.png)
 
 9. **[ユーザー属性]** セクションで、**[その他のすべてのユーザー属性を表示および編集する]** をクリックし、属性を設定します。 **department** という別の要求に追加する必要があり、値を **user.department** にマップする必要があります。
 
@@ -138,7 +138,7 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
       ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
 
-      a. [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
+      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [属性の追加] をクリックして属性の詳細ページを開き、以下のように department 属性を追加します。
 
       ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
 
@@ -149,19 +149,19 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
 
 10. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_certificate.png) 
 
-11. **[Save]**をクリックします。
+11. **[Save]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_400.png)
 
 12. **[LinkedIn Admin Settings (LinkedIn 管理者設定)]** セクションに移動します。 [Upload XML file (XML ファイルのアップロード)] オプションをクリックして、Azure Portal からダウンロードした XML ファイルをアップロードします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 13. **[On (オン)]** をクリックして SSO を有効にします。 SSO の状態が **[未接続]** から **[接続済み]** に変更されます
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Microsoft Azure 管理ポータルで Britta Simon というテスト ユーザーを作成することです。
@@ -186,7 +186,7 @@ LinkedIn Elevate で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -214,7 +214,7 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 
 2. アプリケーションの一覧で **[LinkedIn Elevate]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_0001.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_0001.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -240,7 +240,7 @@ LinkedIn Elevate アプリケーションでは、ジャストインタイムの
 
 * [チュートリアル: LinkedIn Elevate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

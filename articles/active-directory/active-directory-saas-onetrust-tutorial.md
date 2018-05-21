@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と OneTrust Privacy Management Software の統合 | Microsoft Docs"
-description: "Azure Active Directory と OneTrust Privacy Management Software の間のシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と OneTrust Privacy Management Software の統合 | Microsoft Docs'
+description: Azure Active Directory と OneTrust Privacy Management Software の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 89d657e754f6908a3afbb615a2158c9d7f3380f9
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 38125877a5ab17a81d6fe108e0e8c462ecd5d953
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル: Azure Active Directory と OneTrust Privacy Management Software の統合
 
@@ -30,7 +30,7 @@ OneTrust Privacy Management Software と Azure AD の統合には、次の利点
 - ユーザーが自分の Azure AD アカウントで自動的に OneTrust Privacy Management Software にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 
     ![[OneTrust Privacy Management Software のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-onetrust-tutorial/tutorial_onetrust_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://www.onetrust.com/saml2`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://www.onetrust.com/saml2`
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.onetrust.com/auth/consumerservice` のパターンを使用して URL を入力します。
 
@@ -185,7 +185,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[OneTrust Privacy Management Software]**を選択します。
+2. アプリケーションの一覧で **[OneTrust Privacy Management Software]** を選択します。
 
     ![アプリケーションの一覧の [OneTrust Privacy Management Software] リンク](./media/active-directory-saas-onetrust-tutorial/tutorial_onetrust_app.png)  
 
@@ -213,7 +213,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

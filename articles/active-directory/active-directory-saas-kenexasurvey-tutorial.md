@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合| Microsoft Docs"
-description: "Azure Active Directory と IBM Kenexa Survey Enterprise の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合| Microsoft Docs'
+description: Azure Active Directory と IBM Kenexa Survey Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 929ae8b780c0e18074832adfefb9a7674097fd08
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88e0072adeeebaf6c9e964db28a45f6fe038fddf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合
 
@@ -29,7 +29,7 @@ IBM Kenexa Survey Enterprise と Azure AD の統合には、次の利点があ�
 - ユーザーが自分の Azure AD アカウントで、シングル サインオン (SSO) を使用して自動的に IBM Kenexa Survey Enterprise にサインインできるようにできます。
 - 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +65,7 @@ Azure AD への IBM Kenexa Survey Enterprise の統合を構成するには、�
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. アプリケーションを追加するには、**[新しいアプリケーション]**ボタンをクリックします。
+3. アプリケーションを追加するには、**[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
 
@@ -102,7 +102,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
 
     ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a. **[識別子]** ボックスに、URL を次のパターンで入力します。`https://surveys.kenexa.com/<companycode>`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、URL を次のパターンで入力します。`https://surveys.kenexa.com/<companycode>`
 
     b. **[応答 URL]** ボックスに、`https://surveys.kenexa.com/<companycode>/tools/sso.asp` の形式で URL を入力します。
 
@@ -129,7 +129,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
 
 7. **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を **[クイック リファレンス]** セクションからコピーします。
 
-8. **[サインオンの構成]** ウィンドウの**[クイック リファレンス]** で、 **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値をコピーします。
+8. **[サインオンの構成]** ウィンドウの **[クイック リファレンス]** で、 **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値をコピーします。
 
 9. **IBM Kenexa Survey Enterprise** 側に SSO を構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に送信します。
 
@@ -184,7 +184,7 @@ IBM Kenexa Survey Enterprise システムでユーザーを作成し、それに
 
     ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
 
-2. **アプリケーション**の一覧で、**[IBM Kenexa Survey Enterprise]**を選択します。
+2. **アプリケーション**の一覧で、**[IBM Kenexa Survey Enterprise]** を選択します。
 
     ![アプリケーションの一覧の IBM Kenexa Survey Enterprise リンク](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
 
@@ -211,7 +211,7 @@ IBM Kenexa Survey Enterprise システムでユーザーを作成し、それに
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

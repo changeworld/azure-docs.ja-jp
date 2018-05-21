@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Coupa の統合 | Microsoft Docs"
-description: "Azure Active Directory と Coupa の間にシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Coupa の統合 | Microsoft Docs'
+description: Azure Active Directory と Coupa の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 30149f181d8b0ebdc1ae6820da5d561f3a942fa3
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3e87502cbcdb0eff4310ad154083c7682d752e13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル: Azure Active Directory と Coupa の統合
 
@@ -30,7 +30,7 @@ Coupa と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Coupa にサインオン (シングル サインオン) できるようにすることができます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Coupa で Azure AD のシングル サインオンを構成してテストする
 
     ![[Coupa のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-coupa-tutorial/tutorial_coupa_url.png)
 
-    a. **[サインオン URL]** ボックスに、`http://<companyname>.Coupa.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`http://<companyname>.Coupa.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<companyname>.coupahost.com` の形式で URL を入力します。
 
@@ -135,16 +135,16 @@ Coupa で Azure AD のシングル サインオンを構成してテストする
 
     ![Coupa SP metadata](./media/active-directory-saas-coupa-tutorial/ic791901.png "Coupa SP metadata")
     
-    a. **[SAML を使用してログイン]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML を使用してログイン]** を選択します。
     
-    b. コンピューターに Coupa のメタデータ ファイルをダウンロードするには、 **[SP メタデータのダウンロードとインポート]**をクリックします。 メタデータを開き、**[AssertionConsumerService index/URL]\(AssertionConsumerService インデックス/URL\)** の値をコピーして、**[Coupa のドメインと URL]** セクションの **[応答 URL]** ボックスにこの値を貼り付けます。 
+    b. コンピューターに Coupa のメタデータ ファイルをダウンロードするには、 **[SP メタデータのダウンロードとインポート]** をクリックします。 メタデータを開き、**[AssertionConsumerService index/URL]\(AssertionConsumerService インデックス/URL\)** の値をコピーして、**[Coupa のドメインと URL]** セクションの **[応答 URL]** ボックスにこの値を貼り付けます。 
     
     c. **[参照]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。
     
     d. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -201,7 +201,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
    
    ![ユーザーの詳細](./media/active-directory-saas-coupa-tutorial/ic791910.png "User Details")
    
-   a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの属性として、**ログイン**、**名**、**姓**、**シングル サインオン ID**、**電子メール**を入力します。
 
    b. **Create** をクリックしてください。   
    
@@ -224,7 +224,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Coupa]**を選択します。
+2. アプリケーションの一覧で **[Coupa]** を選択します。
 
     ![アプリケーションの一覧の Coupa のリンク](./media/active-directory-saas-coupa-tutorial/tutorial_coupa_app.png)  
 
@@ -252,7 +252,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

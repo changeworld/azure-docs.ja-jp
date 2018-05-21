@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5bcf666774876a6def48766f93066657862536df
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 711660b2360503c2dfa7b11e275cf5928983b688
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amplitude"></a>チュートリアル: Azure Active Directory と Amplitude の統合
 
@@ -30,7 +30,7 @@ Amplitude と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Amplitude にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +106,7 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Amplitude のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-amplitude-tutorial/tutorial_amplitude_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://amplitude.com/saml/sso/metadata`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://amplitude.com/saml/sso/metadata`
 
     b. **[応答 URL]** ボックスに、`https://analytics.amplitude.com/saml/sso/<uniqueid>` のパターンを使用して URL を入力します。
 
@@ -141,7 +141,7 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-amplitude-tutorial/configure3.png)
 
-    a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 
     b. **[Reply URL (ACS)]\(応答 URL (ACS)\)** の値をコピーして Azure Portal の [Amplitude のドメインと URL] セクションの **[応答 URL]** ボックスに貼り付けます。
 
@@ -228,7 +228,7 @@ Amplitude で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

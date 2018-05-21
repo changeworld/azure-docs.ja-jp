@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a317586778160781d20759e7cfab0e4625604f7e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 54bb2857c18e273fe98f2a590068d73f80d2fad1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -282,7 +282,7 @@ ms.lasthandoff: 04/28/2018
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
-[virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
+[virtual-networks-nsg]:../../../virtual-network/security-overview.md
 [virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
 [virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 [virtual-networks-udr-overview]:../../../virtual-network/virtual-networks-udr-overview.md
@@ -443,7 +443,7 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 ### <a name="high-availability-configurations-of-sap-netweaver-in-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性の構成
 タイトル: SAP NetWeaver のための Azure Virtual Machines 高可用性
 
-概要: このドキュメントでは、Azure Resource Manager デプロイメント モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。 このドキュメントでは、Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) やデータベース管理システム (DBMS) などの単一障害点コンポーネント、SAP アプリケーション サーバーなどの冗長コンポーネントが、Azure VM で実行される場合にどのように保護されるかについて説明します。 Azure の Windows Server フェールオーバー クラスタリング クラスターおよび SUSE Linux Enterprise Server クラスター フレームワークにおける高可用性 SAP システムのインストールと構成の手順を追った例についても、このドキュメントで紹介されています。
+概要: このドキュメントでは、Azure Resource Manager デプロイ モデルを使用して Azure に高可用性 SAP システムをデプロイする手順について説明します。 主要なタスクは次のとおりです。 このドキュメントでは、Advanced Business Application Programming (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) やデータベース管理システム (DBMS) などの単一障害点コンポーネント、SAP アプリケーション サーバーなどの冗長コンポーネントが、Azure VM で実行される場合にどのように保護されるかについて説明します。 Azure の Windows Server フェールオーバー クラスタリング クラスターおよび SUSE Linux Enterprise Server クラスター フレームワークにおける高可用性 SAP システムのインストールと構成の手順を追った例についても、このドキュメントで紹介されています。
 
 更新日: 2017 年 10 月
 

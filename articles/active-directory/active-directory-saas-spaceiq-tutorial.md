@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Slack の統合 | Microsoft Docs"
-description: "Azure Active Directory と SpaceIQ の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と Slack の統合 | Microsoft Docs'
+description: Azure Active Directory と SpaceIQ の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e61cff696388d181f989478ea0d0defcc323f192
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f76be8db123558d87dfa5c1756f5928aed97d63f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル: Azure Active Directory と SpaceIQ の統合
 
@@ -30,7 +30,7 @@ SpaceIQ と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで SpaceIQ に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     ![[SpaceIQ のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-spaceiq-tutorial/tutorial_spaceiq_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://api.spaceiq.com`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://api.spaceiq.com`
 
     b. **[応答 URL]** ボックスに、`https://api.spaceiq.com/saml/<instanceid>/callback` のパターンを使用して URL を入力します。
 
@@ -133,7 +133,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     ![アカウント設定](./media/active-directory-saas-spaceiq-tutorial/setting1.png) 
 
-9. **[All PROVISIONING & SSO]\(すべてのプロビジョニングと SSO\)**で、**[Azure]** タイルをクリックして、Azure インスタンスを IDP として追加します。
+9. **[All PROVISIONING & SSO]\(すべてのプロビジョニングと SSO\)** で、**[Azure]** タイルをクリックして、Azure インスタンスを IDP として追加します。
 
     ![[SAML] アイコン](./media/active-directory-saas-spaceiq-tutorial/setting2.png)
 
@@ -141,7 +141,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     ![SAML 認証設定](./media/active-directory-saas-spaceiq-tutorial/setting3.png)
 
-    a. **[SAML Issuer URL]\(SAML 発行者 URL\)** ボックスに、Azure AD のアプリケーション構成ウィンドウからコピーした **[SAML エンティティ ID]** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Issuer URL]\(SAML 発行者 URL\)** ボックスに、Azure AD のアプリケーション構成ウィンドウからコピーした **[SAML エンティティ ID]** の値を貼り付けます。
     
     b. **[SAML CallBack Endpoint URL (read-only)]\(SAML コールバック エンドポイント URL (読み取り専用)\)** の値をコピーし、Azure ポータルの **[SpaceIQ のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     
@@ -152,7 +152,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
     e. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -202,7 +202,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SpaceIQ]**を選択します。
+2. アプリケーションの一覧で **[SpaceIQ]** を選択します。
 
     ![アプリケーションの一覧の SpaceIQ のリンク](./media/active-directory-saas-spaceiq-tutorial/tutorial_spaceiq_app.png)  
 
@@ -230,7 +230,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

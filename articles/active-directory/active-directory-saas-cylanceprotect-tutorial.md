@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a4b8cbbe3d75702f38b5060957aff9f5c30e1daa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 406ff51e98e1816e1bd041d364313ee2a7b52ca3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>チュートリアル: Azure Active Directory と CylancePROTECT の統合
 
@@ -30,7 +30,7 @@ CylancePROTECT と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に CylancePROTECT にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -191,7 +191,7 @@ CylancePROTECT で Azure AD のシングル サインオンを構成してテス
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[CylancePROTECT]**を選択します。
+2. アプリケーションの一覧で **[CylancePROTECT]** を選択します。
 
     ![アプリケーションの一覧の CylancePROTECT のリンク](./media/active-directory-saas-cylanceprotect-tutorial/tutorial_cylanceprotect_app.png)  
 
@@ -219,7 +219,7 @@ CylancePROTECT で Azure AD のシングル サインオンを構成してテス
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

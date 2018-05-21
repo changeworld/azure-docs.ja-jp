@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c5be53f06e009cb2d5180e43318c8670139a68db
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aa3366810a40b004fe510cb2909f8da0f3513ddb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Azure Active Directory と Palo Alto Networks - Admin UI の統合
 
@@ -30,7 +30,7 @@ Azure AD を Palo Alto Networks - Admin UI と 統合すると、次のメリッ
 - ユーザーが自分の Azure AD アカウントで自動的に Palo Alto Networks - Admin UI にサインオン (シングル サインオンすなわち SSO) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -134,7 +134,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     
     c. **[値]** ボックスに、その行に対して表示される属性値を入力します。
     
-    d. **[OK]**を選択します。
+    d. **[OK]** を選択します。
 
     > [!NOTE]
     > これらの属性の詳細については、次の記事を参照してください。
@@ -168,7 +168,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     
     c. **[Validate Identity Provider Certificate]\(ID プロバイダー証明書の検証\)** チェック ボックスをオフにします。
     
-    d. **[OK]**を選択します。
+    d. **[OK]** を選択します。
     
     e. ファイアウォールの構成を確定するには **[コミット]** を選択します。
 
@@ -182,7 +182,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
   
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider SLO URL]\(ID プロバイダー SLO URL\)** ボックスで、前の手順でインポートした SLO URL を **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0** で置き換えます。
   
-    b. **[OK]**を選択します。
+    b. **[OK]** を選択します。
 
 12. Palo Alto Networks Firewall の Admin UI で、**[デバイス]** をクリックし、**[管理者ロール]** を選択します
 
@@ -218,9 +218,9 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
     f. **[すべて]** チェック ボックスをオンにするか、このプロファイルで認証できるユーザーとグループを選択します。  
     ユーザーが認証すると、ファイアウォールは関連するユーザー名またはグループをこの一覧のエントリと照合します。 エントリを追加しないと、ユーザーは認証できません。
 
-    g. **[OK]**を選択します。
+    g. **[OK]** を選択します。
 
-18. 管理者が Azure で SAML SSO を使用できるようにするには、**[デバイス]** > **[セットアップ]**を選択します。 **[セットアップ]** ウィンドウで **[管理]** タブを選択してから、**[認証の設定]** で **[設定]** ("歯車") ボタンを選択します。 
+18. 管理者が Azure で SAML SSO を使用できるようにするには、**[デバイス]** > **[セットアップ]** を選択します。 **[セットアップ]** ウィンドウで **[管理]** タブを選択してから、**[認証の設定]** で **[設定]** ("歯車") ボタンを選択します。 
 
  ![[設定] ボタン](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
@@ -228,7 +228,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
  ![[Authentication Profile]\(認証プロファイル\) フィールド](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-20. **[OK]**を選択します。
+20. **[OK]** を選択します。
 
 21. 構成をコミットするには **[コミット]** を選択します。
 
@@ -267,7 +267,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-a-palo-alto-networks---admin-ui-test-user"></a>Palo Alto Networks - Admin UI テスト ユーザーの作成
 
@@ -312,7 +312,7 @@ Palo Alto Networks - Admin UI では、Just-In-Time ユーザー プロビジョ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

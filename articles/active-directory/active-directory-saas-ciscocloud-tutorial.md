@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f3d97e26b71c2e17753943f7004d7eb7ee19e44
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6604c725a9c2594a2cefd79f2e0a7d0dd897e00e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>チュートリアル: Azure Active Directory と Cisco Cloud の統合
 
@@ -30,7 +30,7 @@ Cisco Cloud と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Cisco Cloud にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +106,7 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
 
     ![[Cisco Cloud のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_url.png)
 
-    a. **[識別子]** ボックスに、`<subdomain>.cisco.com` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`<subdomain>.cisco.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.cisco.com/sp/ACS.saml2` のパターンを使用して URL を入力します。
 
@@ -119,7 +119,7 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
     > [!NOTE] 
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Cisco Cloud クライアント サポート チーム](mailto:cpr-ops@cisco.com)にお問い合わせください。
 
-5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+5. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
 
@@ -205,7 +205,7 @@ Cisco Cloud で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

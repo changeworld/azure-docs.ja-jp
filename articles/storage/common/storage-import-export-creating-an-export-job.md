@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export のエクスポート ジョブを作成する | Microsoft Docs"
-description: "Microsoft Azure Import/Export サービスのエクスポート ジョブを作成する方法について説明します。"
+title: Azure Import/Export のエクスポート ジョブを作成する | Microsoft Docs
+description: Microsoft Azure Import/Export サービスのエクスポート ジョブを作成する方法について説明します。
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 613d480b-a8ef-4b28-8f54-54174d59b3f4
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 70f74b685f4d5b902b6f6780f7c1de4d357164b8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのエクスポート ジョブの作成
 REST API を使用して Microsoft Azure Import/Export サービスのエクスポート ジョブを作成するには、次の手順を実行します。
@@ -92,6 +92,8 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 ## <a name="receiving-the-package"></a>パッケージを受け取る
  エクスポート ジョブの処理が完了したら、データが暗号化された状態で、ドライブが返送されます。 お客様は、[Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) 操作呼び出すことで各ドライブの BitLocker キーを取得できます。 その後、そのキーを使用してドライブのロックを解除できます。 各ドライブのドライブ マニフェスト ファイルには、ドライブ上のファイルの一覧と、各ファイルの元の BLOB アドレスが含まれています。
 
-## <a name="next-steps"></a>次のステップ
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>次の手順
 
 * [Import/Export サービス REST API の使用](storage-import-export-using-the-rest-api.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b40aa0e105c0e9fac9c9cab63a5b0a2a6116c4c9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -95,7 +95,7 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Azure AD Domain Services を使用する仮想ネットワークのサンプル NSG
 次の表は、Azure AD Domain Services の管理対象ドメインを使用して仮想ネットワークを構成できるサンプル NSG を示しています。 この規則によって、必須ポートからの受信トラフィックで管理対象ドメインへの修正プログラムや更新プログラムを適用し、Microsoft による監視を可能にしています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。
@@ -141,5 +141,5 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 * [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* [Azure ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
+* [Azure ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
 * [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

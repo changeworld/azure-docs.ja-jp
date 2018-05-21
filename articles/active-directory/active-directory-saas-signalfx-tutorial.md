@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9db01b4ea9a4f0d307db8bb9f8b6d6437a06815d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 67e9bb69e1e8741e4a4ff7e7b78cb06856d2450f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>チュートリアル: Azure Active Directory と SignalFx の統合
 
@@ -30,7 +30,7 @@ SignalFx と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで SignalFx に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +106,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     ![[SignalFx のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://api.signalfx.com/v1/saml/metadata`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://api.signalfx.com/v1/saml/metadata`
 
     b. **[応答 URL]** ボックスに、`https://api.signalfx.com/v1/saml/acs/<integration ID>` のパターンを使用して URL を入力します。
 
@@ -126,7 +126,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | User.surname    |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/active-directory-saas-signalfx-tutorial/tutorial_attribute_04.png)
 
@@ -144,7 +144,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png)
 
-    a. コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
     b. **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -170,7 +170,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
  
     ![SignalFx samlintgpage](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_azure.png)
 
-    a. **[名前]** テキストボックスに新しい統合名を入力します。たとえば、「**OurOrgName SAML SSO**」にします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** テキストボックスに新しい統合名を入力します。たとえば、「**OurOrgName SAML SSO**」にします。
 
     b. **[統合 ID]** 値をコピーし、Azure Portal の **[SignalFx Domain and URLs]\(SignalFx のドメインと URL\)** セクションの **[応答 URL]** テキストボックスの**応答 URL** の末尾に追加します。たとえば、`https://api.signalfx.com/v1/saml/acs/<integration ID>` のようになります。
 
@@ -263,7 +263,7 @@ SAML SSO から SignalFx に初めてサインインするとき、[SignalFx サ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

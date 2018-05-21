@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: cb005549fcd9a5850c990d8ef8acb724443f9908
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3df32c39152c8dda24fd5d0796f8074af8ce8a1a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 04/16/2018
 > [!NOTE]
 > 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
 
-1. 使用中の仮想ネットワークは、従来の配置モデルですか、Resource Manager の配置モデルですか。
+1. 使用中の仮想ネットワークは、クラシック デプロイ モデルですか、Resource Manager デプロイ モデルですか。
 
     HDInsight 3.4 以降では、Resource Manager の仮想ネットワークが必要です。 HDInsight の以前のバージョンでは、従来の仮想ネットワークが必要です。
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 04/16/2018
         詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) 」をご覧ください。
 
         > [!IMPORTANT]
-        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
 
     * ユーザー定義のルート
 
@@ -214,7 +214,7 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
 
 Azure Virtual Network のネットワーク トラフィックは次のメソッドを使用してコントロールできます。
 
-* **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+* **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
 
     > [!WARNING]
     > HDInsight では、送信トラフィックの制限をサポートしていません。
@@ -242,7 +242,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 ネットワーク セキュリティ グループまたはユーザー定義のルートの詳細については、次のドキュメントをご覧ください。
 
-* [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
+* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
 
 * [ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md)
 
@@ -666,6 +666,6 @@ $vnet | Set-AzureRmVirtualNetwork
 * HBase geo レプリケーションの構成については、「[Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する](hbase/apache-hbase-replication.md)」を参照してください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
 
 * ユーザー定義のルートの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」に関するページをご覧ください。
