@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services の定義NetworkTrafficRules スキーマ | Microsoft Docs"
-ms.custom: 
+title: 'Azure Cloud Services の定義: NetworkTrafficRules スキーマ | Microsoft Docs'
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
-caps.latest.revision: "17"
+caps.latest.revision: 17
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 37ec6c771ad83be680d95e9b5597d8da3cace9ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 779d3b42aeab04bb93756439a0482f32ade6557e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services 定義 NetworkTrafficRules スキーマ
 `NetworkTrafficRules` ノードは、ロールが互いに通信する方法を指定する、サービス定義ファイル内の省略可能な要素です。 特定のロールの内部エンドポイントにアクセスできるロールを制限します。 `NetworkTrafficRules` はスタンドアロン要素ではなく、サービス定義ファイルで 2 つ以上のロールと組み合わされます。
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 要素
 `RoleEndpoint` 要素は、通信を許可するロール上のエンドポイントを記述します。 ロールに複数のエンドポイントがある場合は、複数の `RoleEndpoint` 要素を指定することができます。
 
-| Attribute      | 型     | Description |
+| Attribute      | type     | [説明] |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必須。 トラフィックの宛先として許可するエンドポイントの名前。|
 | `roleName`     | `string` | 必須。 通信の相手として許可する Web ロールの名前。|
@@ -86,14 +86,14 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="WhenSource"></a> WhenSource 要素
 `WhenSource` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールのコレクションを記述します。
 
-| Attribute | 型     | Description |
+| Attribute | type     | [説明] |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必須。 通信を許可するときに適用する規則を指定します。 有用な値は現在 `AnyRule` のみです。|
   
 ##  <a name="FromRole"></a> FromRole 要素
 `FromRole` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールを指定します。 エンドポイントと通信できるロールが複数ある場合、複数の `FromRole` 要素を指定することができます。
 
-| Attribute  | 型     | Description |
+| Attribute  | type     | [説明] |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必須。 通信の許可元のロールの名前。|
 

@@ -159,6 +159,8 @@
       items:
         - name: Runbook ギャラリー
           href: automation-runbook-gallery.md
+        - name: アクティビティ ログによる Runbook の監視
+          href: automation-alert-activity-log.md
         - name: Azure アラートから Runbook を開始する
           href: automation-create-alert-triggered-runbook.md
         - name: Amazon Web Service VM を作成する

@@ -10,16 +10,16 @@ editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 04/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 26c2c333a97abff75f6b4caefb1e351dea826081
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 523ea3bf5d41231ab3281f9d8eb1fac8c3dfb55f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
 

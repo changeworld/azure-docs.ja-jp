@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 513f10b29e761a191903c4b38c42f10eb6230404
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 61ae121f641e0056ca5992df11fe796925dc6d1d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -428,7 +428,7 @@ ms.lasthandoff: 04/23/2018
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
-[virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
+[virtual-networks-nsg]:../../../virtual-network/security-overview.md
 [virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
 [virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 [virtual-networks-udr-overview]:../../../virtual-network/virtual-networks-udr-overview.md
@@ -451,7 +451,7 @@ ms.lasthandoff: 04/23/2018
 この記事では、追加の SAP ASCS/SCS クラスター化されたインスタンスを既存 Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから、SAP マルチ SID 構成に移行する方法に焦点を当てます。 このプロレスが完了すると、SAP マルチ SID クラスターの構成が終了です。
 
 > [!NOTE]
-> この機能は、Azure Resource Manager デプロイメント モデルでのみ使用できます。
+> この機能は、Azure Resource Manager デプロイ モデルでのみ使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide]に関するページでの説明、およびこのダイアグラムに表示されているとおり、1 つの SAP ASCS/SCS インスタンスに使用される WSFC クラスターが構成済みである。

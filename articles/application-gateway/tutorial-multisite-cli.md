@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 2e1367db9c2c1d47f34cc35fc088a9eecf00247b
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7728ade5f84cd97f3ff0cebd0d5545d68d0ebd79
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Azure CLI を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -205,7 +205,7 @@ for i in `seq 1 2`; do
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
     --settings '{
-  "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
+  "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 done
 ```

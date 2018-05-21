@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Docs"
-description: "Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Docs'
+description: Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: be9b17f31bedca1ae5704b484760c3ad24fbb14d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: fd0bf33f7929d67839303d5a1e584a25862e58fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
 
@@ -30,7 +30,7 @@ SciQuest Spend Director と Azure AD の統合には、次の利点がありま�
 - ユーザーが自分の Azure AD アカウントで自動的に SciQuest Spend Director にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
     ![[SciQuest Spend Director のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.sciquest.com` の形式で URL を入力します。
 
@@ -128,7 +128,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 6. **SciQuest Spend Director** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SciQuest Spend Director サポート チーム](https://www.jaggaer.com/contact-us/)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -186,7 +186,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SciQuest Spend Director]**を選択します。
+2. アプリケーションの一覧で **[SciQuest Spend Director]** を選択します。
 
     ![アプリケーションの一覧の SciQuest Spend Director のリンク](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_app.png)  
 
@@ -214,7 +214,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

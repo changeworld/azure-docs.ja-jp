@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 81c5b6051b8e1b1812e47cfcb64538c25ee8bfe5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b57683f5b0634c27e8604c26496a3421ae386439
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -167,6 +167,11 @@ ms.lasthandoff: 04/23/2018
     requests
     | where timestamp > datetime(2016-11-19) and timestamp < datetime(2016-11-21)
     | top 5 by duration
+
+    // Between specific day/time range
+    requests
+    | where timestamp > datetime(2018-05-17T17:06:19.892Z) and timestamp <= datetime(2018-05-18T17:06:19.892Z)
+    | where duration > 0
 
 ```
 

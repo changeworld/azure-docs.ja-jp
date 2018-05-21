@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 48fe35006ca9ca5ac48e6b2d2a207576426e814d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -333,10 +333,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM 接続のトラブルシューティング
 1.  接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次の手順を実行してください。
-- ServiceNow、Cherwell および Provance の接続の場合  
+ - ServiceNow、Cherwell および Provance の接続の場合  
     - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。  
     - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。  
-- Service Manager 接続の場合  
+ - Service Manager 接続の場合  
     - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
 
 2.  ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。

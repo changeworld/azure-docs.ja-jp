@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合 | Microsoft Docs"
-description: "Azure Active Directory と SAML SSO for Jira by resolution GmbH の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合 | Microsoft Docs'
+description: Azure Active Directory と SAML SSO for Jira by resolution GmbH の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a3224acd2376efca19a29576980b6a3ca6a9e99
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b0835d89786e2d389b845c8a4bdbbfb63c0bbcd3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -29,7 +29,7 @@ SAML SSO for Jira by resolution GmbH と Azure AD の統合には、次の利点
 - ユーザーが自分の Azure AD アカウントで SAML SSO for Jira by resolution GmbH に自動的にサインオン (シングル サインオン) するように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への SAML SSO for Jira by resolution GmbH の統合を構成するに
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**SAML SSO for Jira by resolution GmbH**」と入力します。
 
@@ -86,11 +86,11 @@ SAML SSO for Jira by resolution GmbH で、Azure AD の **[ユーザー名]** �
 
 SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[SAML SSO for Jira by resolution GmbH テスト ユーザーの作成](#creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user)** - SAML SSO for Jira by resolution GmbH で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,23 +100,23 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
 1. Azure Portal の **SAML SSO for Jira by resolution GmbH** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_samlbase.png)
 
 3. **[SAML SSO for Jira by resolution GmbH のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_url_1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_url_1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
 
 4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_url_2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_url_2.png)
 
     **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
      
@@ -125,49 +125,49 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/tutorial_general_400.png)
     
 7. 別の Web ブラウザー ウィンドウで、**SAML SSO for Jira by resolution GmbH 管理者ポータル**に管理者としてログインします。
 
 8. 歯車をポイントし、**[Add-ons]\(アドオン\)** をクリックします。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon1.png)
 
 9. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされます。 **パスワード**を入力し、**[Confirm]\(確認\)** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon2.png)
 
 10. [Add-ons]\(アドオン\) タブ セクションで、**[Find new add-ons]\(新しいアドオンの検索\)** をクリックします。 **[SAML Single Sign On (SSO) for JIRA]\(JIRA の SAML シングル サインオン \(SSO\)\)** を検索し、**[Install]\(インストール\)** ボタンをクリックして、新しい SAML プラグインをインストールします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon7.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon7.png)
 
-11. プラグインのインストールが開始されます。 **[閉じる]**をクリックします。
+11. プラグインのインストールが開始されます。 **[閉じる]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon8.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon8.png)
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon9.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon9.png)
 
-12. **[管理]**をクリックします。
+12. **[Manage]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon10.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon10.png)
     
 13. **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon11.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon11.png)
 
 14. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで **[Add new IdP]\(新しい IDP の追加\)** ボタンをクリックし、ID プロバイダーの設定を構成します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon4.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon4.png)
 
 15. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon5a.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon5a.png)
  
-    a. IDP の種類として **[Azure AD]** を設定します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 IDP の種類として **[Azure AD]** を設定します。
     
     b. ID プロバイダーの**名前** (たとえば Azure AD) を追加します。
     
@@ -177,13 +177,13 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
     
 16. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon5b.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon5b.png)
 
 17. **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon5c.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon5c.png)
 
-    a. **[Load File]\(ファイルの読み込み\)** ボタンをクリックし、手順 5 でダウンロードしたメタデータ XML ファイルを選びます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Load File]\(ファイルの読み込み\)** ボタンをクリックし、手順 5 でダウンロードしたメタデータ XML ファイルを選びます。
 
     b. **[インポート]** ボタンをクリックします。
     
@@ -193,22 +193,22 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
     
 18. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、**[次へ]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon5d.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon5d.png)
     
 19. **[User creation and update]\(ユーザーの作成と更新\)** ページで、**[Save & Next]\(保存して次へ\)** をクリックして設定を保存します。   
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon6a.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon6a.png)
     
 20. **[Test your settings]\(設定のテスト\)** ページで、**[Skip test & configure manually]\(テストをスキップして手動で構成\)** をクリックしてここではユーザー テストをスキップします。 テストは次のセクションで実行し、Azure Portal でいくつか設定する必要があります。 
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon6b.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon6b.png)
     
 21. 表示される **[Skipping the test means...]\(テストをスキップすると...\)** ダイアログ ボックスで、**[OK]** をクリックします。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/addon6c.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/addon6c.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -234,7 +234,7 @@ SAML SSO for Jira by resolution GmbH で Azure AD のシングル サインオ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-samlssojira-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -267,7 +267,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 
     ![従業員の追加](./media/active-directory-saas-samlssojira-tutorial/user4.png) 
 
-    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
     b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
 
@@ -291,7 +291,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 
 2. アプリケーションの一覧で **[SAML SSO for Jira by resolution GmbH]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -317,7 +317,7 @@ SAML SSO for Jira by resolution GmbH の場合、プロビジョニングは手�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

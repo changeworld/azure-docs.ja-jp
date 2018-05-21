@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Docs"
-description: "Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Docs'
+description: Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: ed127afbca5135ade21f6ac53d18d46e88939fd9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf788f1c38c701699e0c275cabe3d12eb75270
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル: Azure Active Directory と Salesforce の統合
 
@@ -30,7 +30,7 @@ Salesforce と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Salesforce に自動的にサインオン (シングル サインオン) できるように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Salesforce のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_url.png)
     
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
     
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
@@ -139,35 +139,35 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
 8. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/configure1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/configure1.png)
 
 9. ナビゲーション ウィンドウの **[SETTINGS]\(設定\)** まで下へスクロールし、**[Identity]\(ID\)** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso.png)
 
 10. **[シングル サインオンの設定]** ページで、**[編集]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-edit.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-edit.png)
     
     > [!NOTE]
     > Salesforce アカウント用のシングル サインオン設定を有効にできない場合は、必要に応じて、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)にお問い合わせください。 
 
 11. **[SAML 有効]** を選択し、**[保存]** をクリックします。
 
-      ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-enable-saml.png)
-12. SAML のシングル サインオン設定を構成するには、 **[新規]**をクリックします。
+      ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-enable-saml.png)
+12. SAML のシングル サインオン設定を構成するには、 **[新規]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-new.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-new.png)
 
 13. **[SAML シングル サインオン設定の編集]** ページで、次の構成を行います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-saml-config.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-saml-config.png)
 
-    a. **[名前]** フィールドに、この構成の表示名を入力します。 **[名前]** の値を指定すると、**[API 名]** ボックスに値が自動的に入力されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** フィールドに、この構成の表示名を入力します。 **[名前]** の値を指定すると、**[API 名]** ボックスに値が自動的に入力されます。
 
     b. **[Issuer]\(発行者\)** フィールドに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    c. **[エンティティ ID]**ボックスに、次のパターンを使用して Salesforce のドメイン名を入力します。
+    c. **[エンティティ ID]** ボックスに、次のパターンを使用して Salesforce のドメイン名を入力します。
       
       * エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
       * 開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
@@ -182,7 +182,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
       * SAML アサーション内でユーザー オブジェクトのユーザー ID が渡される場合は、**[Assertion contains the Use ID from the User object]\(アサーションにユーザー オブジェクトのユーザー ID が含まれています\)** を選択します
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[SAML Identity Location]\(SAML ID の場所\)** で、**[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
+    f. **[SAML Identity Location]\(SAML ID の場所\)** で、**[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
 
     g. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP リダイレクト]** を選択します。
 
@@ -192,21 +192,21 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
 14. Salesforce の左側のナビゲーション ウィンドウで、**[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、**[My Domain]\(マイ ドメイン\)** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-my-domain.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-my-domain.png)
 
 15. **[認証の構成]** セクションまで下へスクロールし、**[編集]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-edit-auth-config.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-edit-auth-config.png)
 
 16. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[Login Page]\(ログイン ページ\)** をオンにし、**[Save]\(保存\)** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > 複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始すると、サインインに使用する認証サービスを選択するよう要求されます。 このメッセージが表示されないようにするには、**その他すべての認証サービスをオフのままに**しておいてください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -286,7 +286,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

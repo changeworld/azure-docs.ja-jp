@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd11ec7c8a32792853e60b4bb14d4ed52f53f4a3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2dcf93a635a8eb0a01ec266d2478b6e5a336ec00
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
 

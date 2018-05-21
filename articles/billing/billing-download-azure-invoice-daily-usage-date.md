@@ -17,17 +17,18 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18f568fdeead10fadad0e403ce0ca7fe4b3213a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 請求書を [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 毎日の使用状況をダウンロードするには、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスします。 請求書と使用状況データを取得するアクセス許可を持つのは、アカウント管理者などの特定のロールのみです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
->[!NOTE]
->この記事は、Enterprise Agreement (EA) のお客様には適用されません。 EA のお客様でない場合、請求書が登録管理者に直接送信されます。
+この記事は、Enterprise Agreement (EA) のお客様には適用されません。 EA のお客様でない場合、請求書が登録管理者に直接送信されます。
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>メールで請求書を入手する (.pdf)
 オプトインして、Azure の請求書を電子メールで受取る受信者を追加設定することができます。 この機能は、サポート プラン、エンタープライズ契約、Azure イン オープン プランなどの特定のサブスクリプションでは利用できない場合があります。
