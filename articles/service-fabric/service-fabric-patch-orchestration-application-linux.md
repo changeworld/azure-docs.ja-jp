@@ -1,24 +1,24 @@
 ---
-title: "Linux 用の Azure Service Fabric パッチ オーケストレーション アプリケーション | Microsoft Docs"
-description: "Linux Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。"
+title: Linux 用の Azure Service Fabric パッチ オーケストレーション アプリケーション | Microsoft Docs
+description: Linux Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/22/2018
 ms.author: nachandr
-ms.openlocfilehash: dac8068705e284b04d84d128eb1ce62c459d44ff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
@@ -78,9 +78,11 @@ Azure Linux クラスターの持続性層がシルバーおよびゴールド�
 ![Azure Portal から修復マネージャーを有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
-[Azure Resource Manager デプロイメント モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイメント モデル テンプレートを作成することもできます。 
 
-[Azure Resource Manager デプロイメント モデル テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して修復マネージャー サービスを有効にするには:
+  [Azure Resource Manager デプロイ モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイ モデル テンプレートを作成することもできます。 
+
+
+  [Azure Resource Manager デプロイ モデル テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して修復マネージャー サービスを有効にするには:
 
 1. まず、`Microsoft.ServiceFabric/clusters` リソースの `apiversion` が `2017-07-01-preview` に設定されていることを確認します。 値が異なる場合は、`apiVersion` を `2017-07-01-preview` 以上に更新する必要があります。
 
@@ -131,7 +133,7 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 | UpdateOperationTimeOutInMinutes | int <br>(既定: 180)                   | 更新操作 (ダウンロードまたはインストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | RescheduleCount      | int <br> (既定値: 5)                  | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする最大回数。          |
 | RescheduleTimeInMinutes  | int <br>(既定値: 30) | 操作が繰り返し失敗する場合に、サービスが OS 更新を再スケジュールする間隔。 |
-| UpdateFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY, HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
+| UpdateFrequency           | コンマ区切りの文字列 (既定値: "Weekly, Wednesday, 7:00:00")     | クラスターでの OS 更新プログラムのインストールの頻度。 形式と指定できる値は次のとおりです。 <br>-   Monthly, DD, HH:MM:SS (例: Monthly, 5, 12:22:32)。 <br> -   Weekly, DAY,HH:MM:SS (例: Weekly, Tuesday, 12:22:32)。  <br> -   Daily, HH:MM:SS (例: Daily, 12:22:32)。  <br> -   None は、更新が実行されないことを示します。  <br><br> 時刻はすべて UTC 形式です。|
 | UpdateClassification | コンマ区切りの文字列 (既定値: "securityupdates") | クラスター ノードにインストールする必要のある更新プログラムの種類。 指定できる値は、securityupdates, all です。 <br> -  securityupdates - セキュリティ更新プログラムのみをインストールします <br> -  all - apt から利用可能な更新プログラムをすべてインストールします。|
 | ApprovedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールする必要がある承認済み更新プログラムの一覧です。 コンマ区切りリストには、承認されているパッケージと、必要に応じて目的のターゲット バージョンが含まれています。<br> 例: "apt-utils = 1.2.10ubuntu1, python3-jwt, apt-transport-https < 1.2.194, libsystemd0 >= 229-4ubuntu16" <br> 上記によって、次がインストールされます <br> - バージョン 1.2.10ubuntu1 の apt-utils (apt-cache で使用可能な場合)。 この特定のバージョンを使用できない場合は、何も行われません。 <br> - python3-jwt は利用可能な最新バージョンにアップグレードされます。 パッケージが存在しない場合は、何も行われません。 <br> - apt-transport-https は最新バージョン (1.2.194 未満) にアップグレードされます。 このバージョンが存在しない場合は、何も行われません。 <br> - libsystemd0 は最新バージョン (229-4ubuntu16 以上) にアップグレードされます。 このようなバージョンが存在しない場合は、何も行われません。|
 | RejectedPatches | コンマ区切りの文字列 (既定値: "") | これは、クラスター ノードにインストールしない更新プログラムの一覧です <br> 例: "bash, sudo" <br> 前述の例では、bash、sudo が更新プログラムの受信から除外されます。 |

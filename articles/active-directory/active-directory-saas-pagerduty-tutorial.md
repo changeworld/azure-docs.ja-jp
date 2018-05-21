@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と PagerDuty の統合 | Microsoft Docs"
-description: "Azure Active Directory と PagerDuty の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と PagerDuty の統合 | Microsoft Docs'
+description: Azure Active Directory と PagerDuty の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: a5a2e3a9d8aa32894e07fb8e96389167d5bb96f9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6ba7e1fc2f58fd8fb7a05935ce2c4b99709d642c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル: Azure Active Directory と PagerDuty の統合
 
@@ -30,7 +30,7 @@ PagerDuty と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に PagerDuty にサインオン (シングル サインオン) できるようにすることが可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
     ![[PagerDuty のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.pagerduty.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.pagerduty.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.pagerduty.com` の形式で URL を入力します。
 
@@ -129,11 +129,11 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
 
 7. 別の Web ブラウザーのウィンドウで、PagerDuty 企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[アカウント設定]**をクリックします。
+8. 上部のメニューで **[アカウント設定]** をクリックします。
    
     ![Account Settings](./media/active-directory-saas-pagerduty-tutorial/ic778535.png "Account Settings")
 
-9. **[Single Sign-on]**をクリックします。
+9. **[Single Sign-on]** をクリックします。
    
     ![シングル サインオン](./media/active-directory-saas-pagerduty-tutorial/ic778536.png "シングル サインオン")
 
@@ -141,18 +141,18 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
    
     ![シングル サインオンの有効化](./media/active-directory-saas-pagerduty-tutorial/ic778537.png "シングル サインオンの有効化")
    
-    a. Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 Certificate]** ボックスに貼り付けます
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 Certificate]** ボックスに貼り付けます
   
     b. **[Login URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
   
     c. **[Logout URL]** ボックスに、Azure Portal からコピーした**サインアウト URL** を貼り付けます。
  
-    d. **[シングル サインオンを有効にする]**を選びます。
+    d. **[シングル サインオンを有効にする]** を選びます。
  
-    e. **[変更を保存]**をクリックします。
+    e. **[変更を保存]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -178,7 +178,7 @@ PagerDuty で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -198,9 +198,9 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 
 1. **PagerDuty** テナントにログインします。
 
-2. 上部のメニューで **[ユーザー]**をクリックします。
+2. 上部のメニューで **[ユーザー]** をクリックします。
 
-3. **[ユーザーの追加]**をクリックします。
+3. **[ユーザーの追加]** をクリックします。
    
     ![ユーザーの追加](./media/active-directory-saas-pagerduty-tutorial/ic778539.png "ユーザーの追加")
 
@@ -208,7 +208,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
    
     ![チームの招待](./media/active-directory-saas-pagerduty-tutorial/ic778540.png "チームの招待")
 
-    a. ユーザーの**氏名** (**Britta Simon** など) を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーの**氏名** (**Britta Simon** など) を入力します。 
    
     b. ユーザーの**電子メール** アドレス (**brittasimon@contoso.com** など) を入力します。
    
@@ -258,7 +258,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

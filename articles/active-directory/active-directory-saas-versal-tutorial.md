@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Versal の統合 | Microsoft Docs"
-description: "Azure Active Directory と Versal の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と Versal の統合 | Microsoft Docs'
+description: Azure Active Directory と Versal の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 34ac0f6f98ba84584d468b5f199d8d6a713ede8a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2710c7fa0d035cee8a16d10edf3d603443ad520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル: Azure Active Directory と Versal の統合
 
@@ -30,7 +30,7 @@ Versal と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Versal にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Versal で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Versal のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-versal-tutorial/tutorial_versal_url.png)
 
-    a. **[識別子]** テキストボックスに、値として「`VERSAL`」を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** テキストボックスに、値として「`VERSAL`」を入力します。
 
     b. **[応答 URL]** ボックスに、`https://versal.com/sso/saml/orgs/<organization_id>` のパターンを使用して URL を入力します。
 
@@ -130,7 +130,7 @@ Versal で Azure AD のシングル サインオンを構成してテストす�
 7. **Versal** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML 署名証明書**を [Versal サポート チーム](https://support.versal.com/hc/)に送信する必要があります。 サポート チームは、SAML SSO 接続が両方の側で正しく設定されるように Versal 組織をセットアップします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -180,7 +180,7 @@ Versal で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Versal]**を選択します。
+2. アプリケーションの一覧で **[Versal]** を選択します。
 
     ![アプリケーションの一覧の Versal リンク](./media/active-directory-saas-versal-tutorial/tutorial_versal_app.png)  
 
@@ -209,7 +209,7 @@ Azure AD シングル サインオンのサポートによる Versal コース�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
