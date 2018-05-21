@@ -1,26 +1,27 @@
 ---
-title: "Python で Azure Redis Cache を使用する方法 | Microsoft Docs"
-description: "Python を使用して Azure Redis Cache を使用します"
+title: Azure Redis Cache を使用する Python アプリを作成するためのクイック スタート | Microsoft Docs
+description: このクイック スタートでは、Redis Cache を使用する Python アプリを作成する方法について説明します。
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
 editor: v-lincan
 ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/10/2017
+ms.date: 05/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 17a22dc7a18931e368c7f2e61c563e0d99c3a7ac
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.custom: mvc
+ms.openlocfilehash: b66df55043e4fd29f352c6e9ec3b8674800bc4be
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="how-to-use-azure-redis-cache-with-python"></a>Python で Azure Redis Cache を使用する方法
+# <a name="quickstart-use-azure-redis-cache-with-python"></a>クイック スタート: Python で Azure Redis Cache を使用する
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -30,33 +31,109 @@ ms.lasthandoff: 01/19/2018
 > 
 > 
 
-このトピックでは、Python を使用して Azure Redis Cache を使用する方法を説明しています。
+## <a name="introduction"></a>はじめに
+
+このクイック スタートでは、Python で Azure Redis Cache に接続して、キャッシュの読み取りと書き込みを実行する方法について説明します。 
+
+![完了した Python テスト](./media/cache-python-get-started/cache-python-completed.png)
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-[redis-py](https://github.com/andymccurdy/redis-py)をインストールします。
+
+* [pip](https://pypi.org/project/pip/) と共にインストールされた [Python 2 または Python 3 環境](https://www.python.org/downloads/) 
 
 ## <a name="create-a-redis-cache-on-azure"></a>Azure で Redis Cache を作成する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="retrieve-the-host-name-and-access-keys"></a>ホスト名とアクセス キーを取得する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-## <a name="enable-the-non-ssl-endpoint"></a>非 SSL エンドポイントを有効にする
-一部の Redis クライアントは SSL をサポートしていないため、既定では、 [新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています](cache-configure.md#access-ports)。 この記事の執筆時には、 [redis-py](https://github.com/andymccurdy/redis-py) クライアントが SSL をサポートしていません。 
+## <a name="install-redis-py"></a>redis-py をインストールする
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
+[redis-py](https://github.com/andymccurdy/redis-py) は、Redis Cache の Python インターフェイスです。 Python パッケージ ツールの *pip* を使用して、redis-py パッケージをインストールします。 
 
-## <a name="add-something-to-the-cache-and-retrieve-it"></a>キャッシュに何か追加し、取得する
-    >>> import redis
-    >>> r = redis.StrictRedis(host='<name>.redis.cache.windows.net',
-          port=6380, db=0, password='<key>', ssl=True)
-    >>> r.set('foo', 'bar')
-    True
-    >>> r.get('foo')
-    b'bar'
+次の例では、Python3 の *pip3* を使用し、昇格された管理者特権で実行されている Visual Studio 2017 の開発者コマンド プロンプトを使用して、Windows 10 に redis-py パッケージをインストールします。
+
+    pip3 install redis
+
+![redis-py をインストールする](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
-`<name>` を実際のキャッシュ名、`key` を実際のアクセス キーに置き換えます。
+## <a name="read-and-write-to-the-cache"></a>キャッシュの読み取りと書き込みを実行する
+
+Python を実行し、コマンド ラインからキャッシュを使ってテストします。 `<Your Host Name>` と `<Your Access Key>` を、Redis Cache の値に置き換えます。 
+
+```python
+>>> import redis
+>>> r = redis.StrictRedis(host='<Your Host Name>.redis.cache.windows.net',
+        port=6380, db=0, password='<Your Access Key>', ssl=True)
+>>> r.set('foo', 'bar')
+True
+>>> r.get('foo')
+b'bar'
+```
+
+## <a name="create-a-python-script"></a>Python スクリプトを作成する
+
+*PythonApplication1.py* という名前の新しいスクリプト テキスト ファイルを作成します。
+
+*PythonApplication1.py* に次のスクリプトを追加し、ファイルを保存します。 このスクリプトでは、キャッシュへのアクセスをテストします。 `<Your Host Name>` と `<Your Access Key>` を、Redis Cache の値に置き換えます。 
+
+```python
+import redis
+
+myHostname = "<Your Host Name>.redis.cache.windows.net"
+myPassword = "<Your Access Key>"
+
+r = redis.StrictRedis(host=myHostname, port=6380,password=myPassword,ssl=True)
+
+result = r.ping()
+print("Ping returned : " + str(result))
+
+result = r.set("Message", "Hello!, The cache is working with Python!")
+print("SET Message returned : " + str(result))
+
+result = r.get("Message")
+print("GET Message returned : " + result.decode("utf-8"))
+
+result = r.client_list()
+print("CLIENT LIST returned : ") 
+for c in result:
+    print("id : " + c['id'] + ", addr : " + c['addr'])
+```
+
+Python でスクリプトを実行します。
+
+![完了した Python テスト](./media/cache-python-get-started/cache-python-completed.png)
+
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+別のチュートリアルを引き続き実行する場合は、このクイック スタートで作成したリソースを保持して再利用できます。
+
+クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
+
+> [!IMPORTANT]
+> いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
+>
+
+[Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
+
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+
+![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
+
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
+
+しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [Azure Redis Cache を使用する単純な ASP.NET Web アプリを作成する](./cache-web-app-howto.md)
+
+
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

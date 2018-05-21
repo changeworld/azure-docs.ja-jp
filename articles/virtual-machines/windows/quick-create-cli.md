@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - CLI で Windows VM を作成する | Microsoft Docs
-description: Azure CLI で Windows 仮想マシンを作成する方法を簡単に説明します。
+title: クイック スタート - Azure PowerShell を使用して Windows VM を作成する | Microsoft Docs
+description: このクイック スタートでは、Azure PowerShell を使用して Windows 仮想マシンを作成する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -10,56 +10,55 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/11/2017
+ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 44862756e6c5083b5cbc944b0263d7d0fe443f81
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b09a85686e19ae92c3e437bedff54bff8371784f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>Azure CLI で Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して Windows 仮想マシンを作成する
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure CLI を使用して、Windows Server 2016 を実行する仮想マシンをデプロイする方法について詳しく説明します。 デプロイが完了したら、サーバーに接続し、IIS をインストールします。
+Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI 2.0 を使用して、Windows Server 2016 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
-
+CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
-
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、VM に接続するときに必要です。
 
-次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、仮想マシンとの接続を作成する際に必要です。
-
-```azurecli-interactive 
-az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
+```azurecli-interactive
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image win2016datacenter \
+    --admin-username azureuser \
+    --admin-password myPassword12
 ```
 
-VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAaddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。
+VM とサポート リソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
 
-```azurecli-interactive 
+```azurecli-interactive
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
   "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
@@ -69,48 +68,51 @@ VM が作成されると、Azure CLI によって次の例のような情報が�
 }
 ```
 
-## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く 
+作成した VM からの出力に含まれる実際の `publicIpAddress` を記録しておいてください。 このアドレスは、次の手順で VM にアクセスするために使います。
 
-Azure にデプロイされている Windows 仮想マシンに対しては、既定で RDP 接続のみが許可されます。 この VM を Web サーバーとして使用する場合は、インターネットからポート 80 を開く必要があります。 [az vm open-port](/cli/azure/vm#az_vm_open_port) コマンドを使用して、目的のポートを開きます。  
- 
- ```azurecli-interactive  
+## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
+
+既定では、Azure において Windows VM を作成すると RDP 接続のみが開かれます。 IIS Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使います。
+
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
-次のコマンドを使用して、仮想マシンとのリモート デスクトップ セッションを作成します。 IP アドレスを仮想マシンのパブリック IP アドレスに置き換えます。 メッセージが表示されたら、仮想マシンの作成時に使用した資格情報を入力します。
+次のコマンドを使って、お使いのローカル コンピューターからリモート デスクトップ セッションを作成します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 メッセージが表示されたら、VM の作成時に使った資格情報を入力します。
 
-```bash 
-mstsc /v:Public IP Address
+```powershell
+mstsc /v:publicIpAddress
 ```
 
-## <a name="install-iis-using-powershell"></a>PowerShell を使用した IIS のインストール
+## <a name="install-web-server"></a>Web サーバーのインストール
 
-Azure VM にログインしたら、1 行の PowerShell を使用して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にできます。 PowerShell プロンプトを開き、次のコマンドを実行します。
+VM の動作を確認するために、IIS Web サーバーをインストールします。 VM で PowerShell プロンプトを開き、次のコマンドを実行します。
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
+終了したら、VM への RDP 接続を閉じます。
 
-IIS をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して IIS の既定のようこそページを表示することができます。 上の手順で指定したパブリック IP アドレスを使用して既定のページにアクセスします。 
+## <a name="view-the-web-server-in-action"></a>動作中の Web サーバーを表示する
 
-![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png) 
+IIS をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して IIS の既定のウェルカム ページを表示することができます。 前の手順で取得した VM のパブリック IP アドレスを使用します。 次の例は、既定の IIS Web サイトを示しています。
+
+![IIS の既定のサイト](./media/quick-create-powershell/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、単純な仮想マシンとネットワーク セキュリティ グループの規則をデプロイし、Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Windows VM のチュートリアルを参照してください。
+このクイック スタートでは、単純な仮想マシンをデプロイし、Web トラフィック用のネットワーク ポートを開き、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Windows VM のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Windows 仮想マシンのチュートリアル](./tutorial-manage-vm.md)

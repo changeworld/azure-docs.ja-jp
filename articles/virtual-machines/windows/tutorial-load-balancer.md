@@ -1,6 +1,6 @@
 ---
-title: Azure で Windows 仮想マシンの負荷分散を行う方法 | Microsoft Docs
-description: Azure Load Balancer を使用して、可用性が高く堅牢なアプリケーションを 3 つの Windows VM にまたがって作成する方法について説明します。
+title: チュートリアル - Azure 内で Windows 仮想マシンの負荷分散を行う | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使用して、セキュリティで保護された高可用性アプリケーションのために 3 台の Windows 仮想マシン間で負荷分散を行うロード バランサーを作成する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0ac48844932c77ea4d597da6cb18a820a34e0f39
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35de71f3cc7d865cf2235a21bebf1cfcd7f1850d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Azure の Windows 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法
-負荷分散は､外からの要求を複数の仮想マシンに分散させることによって高水準の可用性を実現します｡ このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
+# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure 内で Windows 仮想マシンの負荷分散を行って高可用性アプリケーションを作成する
+負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Load Balancer を作成する
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/19/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要

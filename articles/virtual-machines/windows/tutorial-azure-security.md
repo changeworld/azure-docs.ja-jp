@@ -1,36 +1,36 @@
 ---
-title: Azure Security Center と Azure 内の Windows 仮想マシン | Microsoft Docs
-description: Azure Security Center による Azure Windows 仮想マシンのセキュリティについて説明します。
+title: チュートリアル - Azure で Azure Security Center for Windows VM を使用する | Microsoft Docs
+description: このチュートリアルでは、Azure で Windows 仮想マシンをセキュリティで保護するために役立つ Azure Security Center の機能について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b573208107b07b47b471d9c5247b362ef144099e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Azure Security Center を使用して仮想マシンのセキュリティを監視する
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Windows 仮想マシンを監視する
 
 Azure リソースのセキュリティの状態は、Azure Security Center で可視化することができます。 Security Center には、包括的なセキュリティ監視機能が備わっています。 他の方法では見過ごされてしまう可能性のある脅威も検出することが可能です。 このチュートリアルでは、Azure Security Center と次の方法について説明します。
- 
+
 > [!div class="checklist"]
 > * データ収集を設定する
 > * セキュリティ ポリシーを設定する
 > * 構成の正常性に関する問題を確認して解決する
-> * 検出された脅威を確認する  
+> * 検出された脅威を確認する
 
 ## <a name="security-center-overview"></a>Security Center の概要
 

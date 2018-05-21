@@ -1,12 +1,13 @@
 ---
-title: パブリック Standard Load Balancer を作成する - Azure CLI | Microsoft Docs
-description: Azure CLI を使用してパブリック ロード バランサーを作成する方法について説明します
+title: 'クイック スタート: パブリック Standard Load Balancer を作成する - Azure CLI | Microsoft Docs'
+description: このクイックスタートでは、Azure CLI を使用してパブリック ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
 ms.service: load-balancer
 ms.devlang: na
@@ -15,13 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: ee2e70e710be9badda7318aec307325da66e4c58
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.custom: mvc
+ms.openlocfilehash: 997129d1c67a690fb4890aeb2de9f45a681e3efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Azure CLI 2.0 を使用して VM の負荷を分散する Standard Load Balancer を作成する
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
 このクイック スタートでは、Standard Load Balancer を作成する方法を示します。 ロード バランサーをテストするには、Ubuntu サーバーを実行する 2 つの仮想マシン (VM) をデプロイし、2 つの VM 間で Web アプリの負荷を分散します。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 仮想ネットワークと Linux 仮想マシン | Microsoft Docs
-description: チュートリアル - Azure CLI を使用した Azure 仮想ネットワークと Linux 仮想マシンの管理
+title: チュートリアル - Linux VM 用の Azure 仮想ネットワークの作成と管理を行う | Microsoft Docs
+description: このチュートリアルでは、Azure CLI 2.0 を使用して、Linux 仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4fc6779472a0c680c53d7f25e6fe412ab386fc32
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 306d33dd5b5910e990caf80dae4c37fee020f7a1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Azure CLI を使用した Azure 仮想ネットワークと Linux 仮想マシンの管理
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli-20"></a>チュートリアル - Azure CLI 2.0 を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 
 Azure 仮想マシンでは、内部と外部のネットワーク通信に Azure ネットワークが使用されます。 このチュートリアルでは、2 台の仮想マシンをデプロイし、それらの VM に使用する Azure ネットワークを構成する手順について説明します。 このチュートリアルの例では、これらの VM が、データベース バックエンドを持つ Web アプリケーションのホストになっていることを想定していますが、アプリケーションのデプロイは、このチュートリアルでは行いません。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -33,7 +33,15 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-このチュートリアルを実行していく中で、次のようなリソースが作成されます。
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+
+## <a name="vm-networking-overview"></a>VM ネットワークの概要
+
+Azure 仮想ネットワークを使用すると、仮想マシン、インターネット、その他の Azure サービス (Azure SQL Database など) の間でセキュリティ保護されたネットワーク接続を実現できます。 仮想ネットワークは、サブネットと呼ばれる論理セグメントに分割することができます。 サブネットは、ネットワーク フローを制御する目的のほか、セキュリティ境界としても使用されます。 VM をデプロイするときは、通常、そこに仮想ネットワーク インターフェイスが含まれているので、それをサブネットに接続することになります。
+
+このチュートリアルを完了すると、次の仮想ネットワーク リソースが作成されます。
 
 ![2 つのサブネットのある仮想ネットワーク](./media/tutorial-virtual-network/networktutorial.png)
 
@@ -46,15 +54,6 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 - *myBackendSubnet* - *myBackendNSG* に関連付けられ、バックエンド リソースによって使用されるサブネット。
 - *myBackendNic* - *myBackendVM* が *myFrontendVM* と通信するために使用するネットワーク インターフェイス。
 - *myBackendVM* - ポート 22 とポート 3306 を使用して *myFrontendVM* と通信する VM。
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
-
-## <a name="vm-networking-overview"></a>VM ネットワークの概要
-
-Azure 仮想ネットワークを使用すると、仮想マシン、インターネット、その他の Azure サービス (Azure SQL Database など) の間でセキュリティ保護されたネットワーク接続を実現できます。 仮想ネットワークは、サブネットと呼ばれる論理セグメントに分割することができます。 サブネットは、ネットワーク フローを制御する目的のほか、セキュリティ境界としても使用されます。 VM をデプロイするときは、通常、そこに仮想ネットワーク インターフェイスが含まれているので、それをサブネットに接続することになります。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 

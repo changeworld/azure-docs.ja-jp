@@ -1,6 +1,6 @@
 ---
-title: Azure の Linux 仮想マシンへの LEMP のデプロイ | Microsoft Docs
-description: チュートリアル - Azure 上の Linux VM に LEMP スタックをインストールする
+title: チュートリアル - Azure 内の Linux 仮想マシンに LEMP を展開する | Microsoft Docs
+description: このチュートリアルでは、Azure 内の Linux 仮想マシンに LEMP スタックをインストールする方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -15,13 +15,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: f907b468a409135d4b45e76297fc7cd86eeead78
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1f4c74ab96fc9494d1b3c7dd626265516533330b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Azure VM への LEMP Web サーバーのインストール
+# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに LEMP Web サーバーをインストールする
+
 この記事では、NGINX Web サーバー、MySQL、PHP (LEMP スタック) を Azure　上の Ubuntu VM にデプロイする方法について説明します。 LEMP スタックは、同様に Azure にインストールすることができる、一般的な [LAMP スタック](tutorial-lamp-stack.md) の代替品です。 LEMP サーバーの動作を確認するために、WordPress サイトをインストールし、構成することもできます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -31,12 +32,11 @@ ms.lasthandoff: 04/06/2018
 > * インストールと構成を確認する
 > * LEMP サーバーに WordPress をインストールする
 
-
 このセットアップは、簡単なテストまたは概念実証のためのものです。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 

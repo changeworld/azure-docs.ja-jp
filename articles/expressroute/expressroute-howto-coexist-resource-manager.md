@@ -4,7 +4,7 @@ description: 接続この記事では、リソース マネージャーのデプ
 documentationcenter: na
 services: expressroute
 author: charwen
-manager: timlt
+manager: rossort
 editor: ''
 tags: azure-resource-manager
 ms.assetid: c7717b14-3da3-4a6d-b78e-a5020766bc2c
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2017
+ms.date: 04/20/2018
 ms.author: charwen,cherylmc
-ms.openlocfilehash: 905b793ab38644ea742a108741b033ddc91ee322
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: deb2a768d766f3fcfa5523b5b3e77b85c0b87b9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>ExpressRoute 接続とサイト間接続の共存の構成
 > [!div class="op_single_selector"]
@@ -28,23 +28,17 @@ ms.lasthandoff: 04/19/2018
 > 
 > 
 
-サイト間 VPN と ExpressRoute が共存する接続を構成することには、いくつかの利点があります。 ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続したりできます。 この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイメント モデルに適用されます。また、ここでは PowerShell が使用されます。 この構成は、Azure Portal で使用できません。
-
-> [!IMPORTANT]
-> ExpressRoute 回線を事前に構成してから、以下の手順に従ってください。 作業を進める前に必ず、[ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)と[ルーティングの構成](expressroute-howto-routing-arm.md)に関するガイドに従ってください。
-> 
-> 
+サイト間 VPN と ExpressRoute が共存する接続を構成することには、いくつかの利点があります。 ExpressRoute のセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成することができます。 また、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続することもできます。 この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイメント モデルに適用されます。また、ここでは PowerShell が使用されます。 この構成は、Azure Portal で使用できません。
 
 ## <a name="limits-and-limitations"></a>制限と制限事項
 * **トランジット ルーティングはサポートされていません。** サイト間 VPN 経由で接続されたローカル ネットワークと ExpressRoute 経由で接続されたローカル ネットワーク間で (Azure 経由で) ルーティングすることはできません。
 * **Basic SKU ゲートウェイはサポートされていません。** [ExpressRoute ゲートウェイ](expressroute-about-virtual-network-gateways.md)と [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらについても、Basic SKU 以外のゲートウェイを使用する必要があります。
 * **サポートされているのはルート ベースの VPN ゲートウェイのみです。** [ルート ベースの VPN ゲートウェイを使用する必要があります](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 * **VPN ゲートウェイでは静的ルートを構成する必要があります。** ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は、ローカル ネットワーク内で静的ルートを構成して、パブリック インターネットへのサイト間 VPN 接続をルーティングする必要があります。
-* **ExpressRoute ゲートウェイを先に構成して、回路にリンクする必要があります。** サイト間 VPN ゲートウェイを追加する前に、ExpressRoute ゲートウェイを作成して回路にリンクする必要があります。
 
 ## <a name="configuration-designs"></a>構成の設計
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する
-ExpressRoute のバックアップとしてサイト間 VPN 接続を構成することができます。 これは、Azure のプライベート ピアリング パスにリンクされている仮想ネットワークにのみ適用されます。 Azure パブリックおよび Microsoft ピアリングを通じてアクセス可能なサービスの VPN ベースのフェールオーバー ソリューションはありません。 ExpressRoute 回線は常にプライマリ リンクです。 データは、ExpressRoute 回線で障害が発生した場合にのみ、サイト間 VPN パスを通過します。
+ExpressRoute のバックアップとしてサイト間 VPN 接続を構成することができます。 この接続は、Azure のプライベート ピアリング パスにリンクされている仮想ネットワークにのみ適用されます。 Azure Microsoft ピアリングを介してアクセスできるサービスの VPN ベースのフェールオーバー ソリューションはありません。 ExpressRoute 回線は常にプライマリ リンクです。 データは、ExpressRoute 回線で障害が発生した場合にのみ、サイト間 VPN パスを通過します。 非対称なルーティングを回避するには、ローカル ネットワーク構成でも、サイト間 VPN よりも ExpressRoute 回線を優先するようにします。 ExpressRoute を受け取るルートの優先度を高く設定すると、ExpressRoute パスを優先することができます。 
 
 > [!NOTE]
 > 両方のルートが同じである場合は、ExpressRoute 回線がサイト間 VPN よりも優先されますが、Azure では最長プレフィックスの一致を使用してパケットの宛先へのルートを選択します。
@@ -71,14 +65,15 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
     仮想ネットワークがまだない場合、この手順で Resource Manager デプロイメント モデルを使用して新しい仮想ネットワークを作成し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成します。 仮想ネットワークを構成する際は、「[新しい仮想ネットワークおよび共存する接続を作成するには](#new)」の手順に従ってください。
 * リソース マネージャーのデプロイ モデル VNet が既にある。
   
-    既存のサイト間 VPN 接続または ExpressRoute 接続を使用して、仮想ネットワークを既に配置している場合があります。 「[既存の VNet で共存する接続を構成するには](#add)」では、ゲートウェイを削除し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成する手順について説明しています。 新しい接続を作成する際は、特定の順序で手順を完了する必要があります。 他の記事の手順を使用してゲートウェイと接続を作成しないでください。
+    既存のサイト間 VPN 接続または ExpressRoute 接続を使用して、仮想ネットワークを既に配置している場合があります。 このシナリオでは、ゲートウェイのサブネット マスクが /28 以上の場合は、既存のゲートウェイを削除する必要があります。 「[既存の VNet で共存する接続を構成するには](#add)」では、ゲートウェイを削除し、新しい ExpressRoute 接続とサイト間 VPN 接続を作成する手順について説明しています。
   
-    この手順では、共存できる接続を作成する際に、ゲートウェイを削除してから新しいゲートウェイを構成する必要があります。 ゲートウェイと接続を削除して作成し直す間にクロスプレミス接続でダウンタイムが発生しますが、VM やサービスを新しい仮想ネットワークに移行する必要はありません。 移行するように構成されている場合でも、VM やサービスは、ゲートウェイの構成中にロード バランサーを経由して通信できます。
+    ゲートウェイを削除して再作成すると、クロスプレミス接続のダウンタイムが発生します。 ただし、移行するように構成されている場合でも、VM やサービスは、ゲートウェイの構成中にロード バランサーを経由して通信できます。
 
 ## <a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
 1. 最新バージョンの Azure PowerShell コマンドレットをインストールします。 コマンドレットのインストールについては、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。
+
 2. アカウントにログインし、環境を設定します。
 
   ```powershell
@@ -113,37 +108,23 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-4. <a name="gw"></a>ExpressRoute ゲートウェイを作成します。 ExpressRoute ゲートウェイの構成の詳細については、「 [ExpressRoute gateway configuration (ExpressRoute ゲートウェイの構成)](expressroute-howto-add-gateway-resource-manager.md)」を参照してください。 GatewaySKU には、*Standard*、*HighPerformance*、または *UltraPerformance* を指定します。
-
-  ```powershell
-  $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
-  $gwIP = New-AzureRmPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-  $gwConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
-  $gw = New-AzureRmVirtualNetworkGateway -Name "ERGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
-  ```
-5. ExpressRoute ゲートウェイを ExpressRoute 回線にリンクします。 この手順が完了すると、オンプレミスのネットワークと Azure 間の接続が ExpressRoute 経由で確立されます。 リンク操作の詳細については、「 [Link VNets to ExpressRoute (ExpressRoute への Vnet のリンク)](expressroute-howto-linkvnet-arm.md)」を参照してください。
-
-  ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
-  New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
-  ```
-6. <a name="vpngw"></a>次に、サイト間 VPN ゲートウェイを作成します。 VPN ゲートウェイの構成の詳細については、[サイト間接続を使用した VNet の構成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページを参照してください。 GatewaySKU には、*Standard*、*HighPerformance*、または *UltraPerformance* を指定します。 VpnType には、 *RouteBased*を指定する必要があります。
+4. <a name="vpngw"></a>次に、サイト間 VPN ゲートウェイを作成します。 VPN ゲートウェイの構成の詳細については、[サイト間接続を使用した VNet の構成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページを参照してください。 GatewaySku は *VpnGw1*、*VpnGw2*、*VpnGw3*、*Standard*、*HighPerformance* の各 VPN ゲートウェイでのみサポートされています。 ExpressRoute と VPN Gateway が共存する構成は、Basic SKU ではサポートされていません。 VpnType には、*RouteBased* を指定する必要があります。
 
   ```powershell
   $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
   $gwIP = New-AzureRmPublicIpAddress -Name "VPNGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
   $gwConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "VPNGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
-  New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard"
+  New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1"
   ```
    
     Azure VPN ゲートウェイは、BGP ルーティング プロトコルをサポートします。 次のコマンドに -Asn スイッチを追加することで、その仮想ネットワークの ASN (AS 番号) を指定できます。 パラメーターの指定がない場合、AS番号は既定で 65515 になります。
 
   ```powershell
-  $azureVpn = New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard" -Asn $VNetASN
+  $azureVpn = New-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1" -Asn $VNetASN
   ```
    
     Azure で VPN ゲートウェイに使用される BGP ピアリング IP と AS 番号は、$azureVpn.BgpSettings.BgpPeeringAddress と $azureVpn.BgpSettings.Asn で確認できます。 詳細については、Azure VPN ゲートウェイの [BGP の構成](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md)に関するページをご覧ください。
-7. ローカル サイト VPN ゲートウェイのエンティティを作成します。 このコマンドは、オンプレミスの VPN ゲートウェイを構成しません。 代わりに、パブリック IP やオンプレミスのアドレス空間などのローカル ゲートウェイ設定を指定できるため、Azure VPN ゲートウェイがこれに接続できます。
+5. ローカル サイト VPN ゲートウェイのエンティティを作成します。 このコマンドは、オンプレミスの VPN ゲートウェイを構成しません。 代わりに、パブリック IP やオンプレミスのアドレス空間などのローカル ゲートウェイ設定を指定できるため、Azure VPN ゲートウェイがこれに接続できます。
    
     ローカル VPN デバイスでサポートされるのが静的ルーティングのみの場合、静的ルートは次のように構成できます。
 
@@ -161,18 +142,40 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   $localAddressPrefix = $localBGPPeeringIP + "/32"
   $localVpn = New-AzureRmLocalNetworkGateway -Name "LocalVPNGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -GatewayIpAddress $localVPNPublicIP -AddressPrefix $localAddressPrefix -BgpPeeringAddress $localBGPPeeringIP -Asn $localBGPASN
   ```
-8. ローカルの VPN デバイスを構成して、新しい Azure VPN ゲートウェイに接続します。 VPN デバイス構成の詳細については、「 [VPN デバイスの構成](../vpn-gateway/vpn-gateway-about-vpn-devices.md)」を参照してください。
-9. Azure のサイト間 VPN ゲートウェイをローカル ゲートウェイにリンクします。
+6. ローカルの VPN デバイスを構成して、新しい Azure VPN ゲートウェイに接続します。 VPN デバイス構成の詳細については、「 [VPN デバイスの構成](../vpn-gateway/vpn-gateway-about-vpn-devices.md)」を参照してください。
+
+7. Azure のサイト間 VPN ゲートウェイをローカル ゲートウェイにリンクします。
 
   ```powershell
   $azureVpn = Get-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
   New-AzureRmVirtualNetworkGatewayConnection -Name "VPNConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $azureVpn -LocalNetworkGateway2 $localVpn -ConnectionType IPsec -SharedKey <yourkey>
   ```
+ 
+
+8. 既存の ExpressRoute 回線に接続する場合は、手順 8 と 9 をスキップし、手順 10 にジャンプします。 ExpressRoute 回線を構成します。 ExpressRoute 回線の構成の詳細については、[ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)に関するページを参照してください。
+
+
+9. ExpressRoute 回線上で Azure プライベート ピアリングを構成します。 ExpressRoute 回線上で Azure プライベート ピアリングを構成する方法の詳細については、[ピアリングの構成](expressroute-howto-routing-arm.md)に関するページを参照してください。
+
+10. <a name="gw"></a>ExpressRoute ゲートウェイを作成します。 ExpressRoute ゲートウェイの構成の詳細については、「 [ExpressRoute gateway configuration (ExpressRoute ゲートウェイの構成)](expressroute-howto-add-gateway-resource-manager.md)」を参照してください。 GatewaySKU には、*Standard*、*HighPerformance*、または *UltraPerformance* を指定します。
+
+  ```powershell
+  $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+  $gwIP = New-AzureRmPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
+  $gwConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
+  $gw = New-AzureRmVirtualNetworkGateway -Name "ERGateway" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
+  ```
+11. ExpressRoute ゲートウェイを ExpressRoute 回線にリンクします。 この手順が完了すると、オンプレミスのネットワークと Azure 間の接続が ExpressRoute 経由で確立されます。 リンク操作の詳細については、「 [Link VNets to ExpressRoute (ExpressRoute への Vnet のリンク)](expressroute-howto-linkvnet-arm.md)」を参照してください。
+
+  ```powershell
+  $ckt = Get-AzureRmExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
+  New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
+  ```
 
 ## <a name="add"></a>既存の VNet で共存する接続を構成するには
-既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やしてください。 このセクションの手順では、その方法を説明します。
+既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。 ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やす必要があります。 このセクションの手順では、その方法を説明します。
 
-ゲートウェイ サブネットが /27 以上で、仮想ネットワークが ExpressRoute 経由で接続されている場合、以降の手順をスキップして、前のセクションの [手順 6、サイト間 VPN ゲートウェイの作成手順](#vpngw) に進みます。 
+ゲートウェイ サブネットが /27 以上で、仮想ネットワークが ExpressRoute 経由で接続されている場合、以降の手順をスキップして、前のセクションの「[手順 4 - サイト間 VPN ゲートウェイの作成手順](#vpngw)」に進みます。 
 
 > [!NOTE]
 > この既存のゲートウェイを削除すると、この構成で作業している間、ローカル環境から仮想ネットワークに接続できなくなります。 
@@ -207,7 +210,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. この時点では、VNet にゲートウェイがありません。 新しいゲートウェイを作成し、接続を完了するには、前述の [手順 4、ExpressRoute ゲートウェイの作成手順](#gw)に進みます。
+5. この時点では、VNet にゲートウェイがありません。 新しいゲートウェイを作成し、接続を完了するには、前述の「[手順 4 - サイト間 VPN ゲートウェイを作成する](#vpngw)」に進みます。
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>VPN ゲートウェイにポイント対サイト構成を追加するには
 共存設定で VPN ゲートウェイにポイント対サイト構成を追加するのには、次の手順に従います。

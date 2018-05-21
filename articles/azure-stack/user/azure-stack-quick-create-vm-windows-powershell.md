@@ -12,20 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/19/2018
+ms.date: 04/20/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 4f0d07d2c64650091b5fc654a645785a12c3c3de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9f5752a969ff6a191ec60e175494316aea4abcaf
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>クイック スタート: Azure Stack で PowerShell を使用して Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>クイック スタート: Azure Stack で PowerShell を使用して Windows Server 仮想マシンを作成する
 
-*適用対象: Azure Stack 統合システム*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-このガイドでは、PowerShell を使用して、Azure Stack 内に Windows Server 2016 仮想マシンを作成する方法について詳しく説明します。 この記事で説明している手順は、Azure Stack Development Kit で、または VPN 経由で接続している場合は Windows ベースの外部クライアントで実行できます。
+Azure Stack PowerShell を使用して、Windows Server 2016 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下の手順についても説明します。
+
+* リモート クライアントを使用して仮想マシンに接続する。
+* IIS Web サーバーをインストールし、既定のホーム ページを表示する。
+* リソースをクリーンアップする。
+
+>[!NOTE]
+ この記事で説明している手順は、Azure Stack Development Kit で、または VPN 経由で接続している場合は Windows ベースの外部クライアントで実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 

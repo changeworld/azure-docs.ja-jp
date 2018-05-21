@@ -1,28 +1,28 @@
 ---
-title: "Azure ポータルを使用して Azure Database Migration Service インスタンスを作成する | Microsoft Docs"
-description: "Azure ポータルを使用して Azure Database Migration Service のインスタンスを作成します。"
+title: Azure ポータルを使用して Azure Database Migration Service インスタンスを作成する | Microsoft Docs
+description: Azure ポータルを使用して Azure Database Migration Service のインスタンスを作成します。
 services: database-migration
 author: edmacauley
 ms.author: edmaca
 manager: craigg
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/13/2017
-ms.openlocfilehash: 9dea80b0a6848bd69541aa9f7e0a0fe111fa0a28
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.date: 05/01/2018
+ms.openlocfilehash: 7669ee678f4049c938c6e249c26997d993fd7c6a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 このクイック スタートでは、Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します。  サービスを作成したら、それを使用してオンプレミスの SQL Server から Azure SQL Database にデータを移行できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 Web ブラウザーを開いて [Microsoft Azure Portal](https://portal.azure.com/) にアクセスし、資格情報を入力して Portal にサインインします。
 
 既定のビューはサービス ダッシュボードです。
@@ -39,9 +39,9 @@ Database Migration Service の最初のインスタンスを作成する前に�
 ![リソース プロバイダーの登録](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-an-instance-of-the-service"></a>サービスのインスタンスを作成します。
-1. **[+ リソースの作成]** をクリックして、Azure Database Migration Service (現在プレビュー段階) のインスタンスを作成します。
+1. **[+ リソースの作成]** をクリックして、Azure Database Migration Service のインスタンスを作成します。
 
-2. マーケットプレースで "migration" を検索し、**[Azure Database Migration Service]** を選択します。**[Azure Database Migration Service (プレビュー)]** 画面で **[作成]** をクリックします。
+2. マーケットプレースで "migration" を検索し、**[Azure Database Migration Service]** を選択します。**[Azure Database Migration Service]** 画面で **[作成]** をクリックします。
 
 3. **[Database Migration Service]** 画面で次の操作を行います。 
 
@@ -52,7 +52,7 @@ Database Migration Service の最初のインスタンスを作成する前に�
     - **[価格レベル]** に [Basic: 1 vCore]\(Basic: 1 仮想コア\) を選択します。
 
     ![移行サービスの作成](media/quickstart-create-data-migration-service-portal/dms-create-service.png)
-4. **[作成]**を選択します。
+4. **[作成]** を選択します。
 
 しばらくすると、Azure Database Migration Service のインスタンスが作成され、使用できるようになります。 Database Migration Service は、次の図のように表示されます。
 
@@ -61,6 +61,6 @@ Database Migration Service の最初のインスタンスを作成する前に�
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 このクイック スタートで作成したリソースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を削除することでクリーンアップできます。  リソース グループを削除するには、作成した Azure Database Migration Service のインスタンスに移動します。 **リソース グループ**名を選択し、**[リソース グループの削除]** を選択します。  この操作により、リソース グループ内のすべての資産だけでなく、グループ自体も削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [オンプレミスの SQL Server を Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)

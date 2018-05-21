@@ -8,17 +8,19 @@ ms.service: sql-database
 ms.custom: mvc
 ms.devlang: ''
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/24/2018
 ms.author: carlrab
-ms.openlocfilehash: ddb714d9fb3c750d6cebdb0d94b894dce6dab897
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ec39c5ad0771c2bc78655e52c58949db6e9b3353
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-connect-and-query-quickstarts"></a>Azure SQL Database の接続とクエリに関するクイック スタート
 
-次の表は、Azure SQL データベースに接続してクエリを実行する例を紹介した Azure ページへのリンク集です。
+次のドキュメントは、Azure SQL データベースに接続してクエリを実行する例を紹介した Azure ページへのリンク集です。 トランスポート レベルのセキュリティについての推奨事項も提供されています。
+
+## <a name="quickstarts"></a>クイック スタート
 
 | |  |
 |---|---|
@@ -36,4 +38,18 @@ ms.lasthandoff: 04/23/2018
 |[Ruby](sql-database-connect-query-ruby.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Ruby を使って作成する方法について説明します。|
 |||
 
+## <a name="tls-considerations-for-sql-database-connectivity"></a>SQL Database の接続に関する TLS の考慮事項
+トランスポート層セキュリティ (TLS) は、Azure SQL Database への接続のために Microsoft が提供またはサポートしているすべてのドライバーによって使われます。 特別な構成は必要ありません。 SQL Server または Azure SQL Database へのすべての接続について、すべてのアプリケーションで次の構成またはそれと同等の構成を設定することをお勧めします。
 
+ - **Encrypt = On**
+ - **TrustServerCertificate = Off**
+
+一部のシステムでは、これらの構成キーワードとは異なりますが同等のキーワードが使われています。 これらの構成を指定すると、サーバーから受信した TLS 証明書の ID をクライアント ドライバーが確認することが保証されます。
+
+また、Payment Card Industry - データ セキュリティ基準 (PCI-DSS) に準拠する必要がある場合は、クライアントにおいて TLS 1.1 および 1.0 を無効にすることをお勧めします。
+
+Microsoft 以外のドライバーは、既定では TLS を使用しない場合があります。 これは Azure SQL Database に接続するときに問題になる可能性があります。 埋め込みドライバーを使用するアプリケーションでは、これらの接続設定を制御できない場合があります。 このようなドライバーおよびアプリケーションについては、機密データを操作するシステムで使う前に、そのセキュリティを調べることをお勧めします。
+
+## <a name="next-steps"></a>次の手順
+
+接続アーキテクチャについては、「[Azure SQL Database 接続アーキテクチャ](sql-database-connectivity-architecture.md)」をご覧ください。

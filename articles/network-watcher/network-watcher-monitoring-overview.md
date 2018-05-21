@@ -1,145 +1,101 @@
 ---
-title: Azure Network Watcher の概要 | Microsoft Docs
-description: このページでは、Azure のネットワークに接続されたリソースを監視および視覚化する Network Watcher サービスの概要を示します。
+title: Azure Network Watcher | Microsoft Docs
+description: 仮想ネットワーク内のリソースを対象とする Azure Network Watcher の監視、診断、メトリック、ログの機能について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 04/24/2018
 ms.author: jdial
-ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: mvc
+ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="azure-network-monitoring-overview"></a>Azure のネットワーク監視の概要
+# <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
 
-Azure では、VNet、ExpressRoute、Application Gateway、ロード バランサーなどのさまざまなネットワーク リソースを調整および作成することで、エンドツーエンド ネットワークを作成できます。 各ネットワーク リソースは監視することができます。 こうした監視は、リソース レベルの監視と呼ばれます。
+Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。
 
-エンドツーエンド ネットワークの構成やリソース間の相互作用は複雑になることがあり、Network Watcher を使用してシナリオベースの監視を行う必要のある複雑なシナリオが生じる場合があります。
+## <a name="monitoring"></a>監視
 
-この記事では、シナリオ レベルおよびリソース レベルの監視について説明します。 Azure でのネットワーク監視が指す意味は広く、2 つの大まかなカテゴリを対象としています。
+### <a name = "connection-monitor"></a>仮想マシンとエンドポイントの間の通信を監視する
 
-* [**Network Watcher**](#network-watcher) - シナリオベースの監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
-* [**リソース監視**](#network-resource-level-monitoring) - リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、Resource Health の 4 つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
+エンドポイントは、別の仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、Uniform Resource Identifier (URI)、または IPv4 アドレスの場合があります。 "*接続監視*" 機能を使用すると、通信を定期的に監視できるほか、VM とエンドポイントの間の到達可能性、待ち時間、ネットワーク トポロジの変更について通知を受け取ることができます。 たとえば、データベース サーバー VM と通信する Web サーバー VM がある場合があります。 組織の他のユーザーが、自分の知らない間に Web サーバー、データベース サーバー VM またはサブネットにカスタム ルートまたはネットワーク セキュリティ規則を適用するかもしれません。
 
-## <a name="network-watcher"></a>Network Watcher
+エンドポイントが到達不能になった場合、接続のトラブルシューティングによって理由が通知されます。 理由としては、DNS 名前解決の問題、VM のオペレーティング システム内の CPU、メモリ、ファイアウォール、カスタム ルートのホップの種類、VM またはサブネットの送信接続のセキュリティ規則が考えられます。 詳しくは、Azure の[セキュリティ規則](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules)に関するページと[ルートのホップの種類](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 
-Network Watcher は地域サービスであり、ネットワーク シナリオ レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。
+また、接続監視では、時間の経過に伴う最小、平均、最大の待ち時間を観察することもできます。 接続の待ち時間を確認すると、場合によっては Azure リソースを異なる Azure リージョンに移行して待ち時間を減らせることがわかります。 詳しくは、[Azure リージョンとインターネット サービス プロバイダーの間の相対待ち時間](#determine-relative-latencies-between-azure- regions-and-internet-service-providers)を確認する方法と、[接続監視](connection-monitor.md)で VM とエンドポイントの間の通信を監視する方法を参照してください。 接続監視で行うような経時的な接続の監視を行うのではなく、ある時点の接続をテストしたい場合、[接続のトラブルシューティング](#connection-troubleshoot)機能を使用します。
 
-現在、Network Watcher が備える機能は次のとおりです。
+### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>仮想ネットワーク内のリソースとそれらの関係を表示する
 
-* **[トポロジ](network-watcher-topology-overview.md)** - リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係をネットワーク レベルで確認できます。
-* **[可変パケット キャプチャ](network-watcher-packet-capture-overview.md)** - 仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限などを設定できる詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行うことができます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
-* **[IP フロー検証](network-watcher-ip-flow-verify-overview.md)** - フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループにより拒否された場合、そのパケットを拒否した規則とグループが返されます。
-* **[次のホップ](network-watcher-next-hop-overview.md)** - Azure Network Fabric におけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
-* **[セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)** - VM に適用されている有効な適用セキュリティ規則を確認できます。
-* **[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)** - ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (発信元 IP、宛先 IP、発信元ポート、宛先ポート、プロトコル) で定義されます。
-* **[仮想ネットワーク ゲートウェイと接続のトラブルシューティング](network-watcher-troubleshoot-manage-rest.md)** - 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
-* **[ネットワーク サブスクリプションの制限](#network-subscription-limits)** - ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
-* **[診断ログの構成](#diagnostic-logs)** – 1 つのペインで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
-* **[接続のトラブルシューティング](network-watcher-connectivity-overview.md)** - 仮想マシンから、Azure のコンテキストで拡充された指定のエンドポイントまでの直接の TCP 接続が確立されたかどうかを確認します。
-* **[接続モニター](connection-monitor.md)**  - 発信元と宛先の IP アドレスとポートを使って、Azure 仮想マシンと IP アドレスの間の待機時間と構成の問題を監視します。
+リソースが仮想ネットワークに追加されると、仮想ネットワーク内にあるリソースの内容とそれらのリソースどうしの関係を把握するのが困難になる場合があります。 "*トポロジ*" 機能を使用すると、仮想ネットワーク内のリソースとリソース間の関係を示す図を生成できます。 次の画像は、3 つのサブネット、2 つの VM、ネットワーク インターフェイス、パブリック IP アドレス、ネットワーク セキュリティ グループ、ルート テーブル、およびリソース間の関係が含まれた仮想ネットワークのサンプル トポロジ図を示します。
 
-### <a name="role-based-access-control-rbac-in-network-watcher"></a>Network Watcher におけるロールベースのアクセス制御 (RBAC)
+![トポロジ ビュー](./media/network-watcher-monitoring-overview/topology.png)
 
-Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC) モデル](../role-based-access-control/overview.md)を使用しています。 Network Watcher には次のアクセス許可が必要です。 Network Watcher API を開始またはポータルから Network Watcher を使用するために用いるロールには、必ず必要なアクセスを設定してください。
+編集可能なバージョンの画像を SVG 形式でダウンロードできます。 トポロジ ビューの詳細については、[こちら](view-network-topology.md)を参照してください。
 
-|リソース| アクセス許可|
-|---|---| 
-|Microsoft.Storage/ |読み取り|
-|Microsoft.Authorization/| 読み取り| 
-|Microsoft.Resources/subscriptions/resourceGroups/| 読み取り|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | アクションを表示します。|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |アクションを表示します。|
-|Microsoft.Storage/storageAccounts/listKeys/ | アクションを表示します。|
-|Microsoft.Compute/virtualMachines/ |読み取り|
-|Microsoft.Compute/virtualMachines/ |書き込み|
-|Microsoft.Compute/virtualMachineScaleSets/ |読み取り|
-|Microsoft.Compute/virtualMachineScaleSets/ |書き込み|
-|Microsoft.Network/networkWatchers/packetCaptures/ |読み取り|
-|Microsoft.Network/networkWatchers/packetCaptures/| 書き込み|
-|Microsoft.Network/networkWatchers/packetCaptures/| 削除|
-|Microsoft.Network/networkWatchers/ |書き込み |
-|Microsoft.Network/networkWatchers/| 読み取り |
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/ | *|
+## <a name="diagnostics"></a>診断
 
-### <a name="network-subscription-limits"></a>ネットワーク サブスクリプションの制限
+### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>VM との間で発生するネットワーク トラフィック フィルターの問題を診断する
 
-ネットワーク サブスクリプションの制限では、リージョン内のサブスクリプションに含まれる各ネットワーク リソースの使用状況の詳細を、利用可能なリソースの最大数と照らし合わせて確認できます。
+VM をデプロイすると、VM との間のトラフィックを許可または拒否するいくつかのセキュリティ規則が既定で VM に適用されます。 Azure の既定の規則を上書きしたり、追加の規則を作成したりできます。 ある時点で、セキュリティ規則が原因となって VM が他のリソースと通信できなくなる場合があります。 "*IP フロー検証*" 機能を使用すると、送信元および宛先 IPv4 アドレス、ポート、プロトコル (TCP または UDP)、トラフィックの方向 (受信または送信) を指定できます。 その後 IP フロー検証によって通信のテストが行われ、接続の成否が通知されます。 接続が失敗した場合、接続を許可または拒否したセキュリティ規則が IP フロー検証によって示されます。これにより、問題を解決できます。 IP フロー検証の詳細については、[こちら](network-watcher-ip-flow-verify-overview.md)を参照してください。
 
-![ネットワーク サブスクリプションの制限][nsl]
+### <a name="diagnose-network-routing-problems-from-a-vm"></a>VM からのネットワーク ルーティングに関する問題を診断する
 
-## <a name="network-resource-level-monitoring"></a>ネットワーク リソース レベルの監視
+仮想ネットワークを作成すると、ネットワーク トラフィックの送信ルートが既定でいくつか作成されます。 仮想ネットワーク内にデプロイされたすべてのリソース (VM など) からの送信トラフィックは、Azure の既定のルートに基づいてルーティングされます。 Azure の既定のルートを上書きしたり、追加のルートを作成したりできます。 特定のルートが原因となって VM が他のリソースと通信できなくなる場合があります。 "*次ホップ*" 機能を使用すると、送信元および宛先 IPv4 アドレスを指定できます。 その後、次ホップによって通信のテストが行われ、トラフィックのルーティングに使用される次ホップの種類が通知されます。 ルートを削除、変更、または追加して、ルーティングの問題を解決できます。 次ホップ機能の詳細については、[こちら](network-watcher-next-hop-overview.md?)を参照してください。
 
-リソース レベルの監視では次の機能を使用できます。
+### <a name="connection-troubleshoot"></a>VM からの送信接続を診断する
 
-### <a name="audit-log"></a>監査ログ
+"*接続のトラブルシューティング*" 機能を使用すると、ある VM と別の VM、FQDN、URI、または IPv4 アドレスとの間の接続をテストできます。 テストは、[接続監視](#connection-monitor)機能を使用した場合に返されるのと同様の情報を返します。しかし、接続監視による経時的な監視とは異なり、テストされるのはある時点の接続です。 接続のトラブルシューティングを使用して接続のトラブルシューティングを行う方法については、[こちら](network-watcher-connectivity-overview.md)を参照してください。
 
-ネットワークの構成の一環として実行された操作が記録されます。 これらのログは、Azure Portal で確認することも、Power BI などの Microsoft ツールやサードパーティ ツールを使用して取得することもできます。 監査ログは、ポータル、PowerShell、CLI、Rest API で利用できます。 監査ログの詳細については、[Resource Manager の監査操作](../resource-group-audit.md)に関するページを参照してください。
+### <a name="capture-packets-to-and-from-a-vm"></a>VM との間のパケットをキャプチャする
 
-監査ログは、すべてのネットワーク リソースに対して実行された操作について用意されています。
+時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 キャプチャは、Azure Storage、VM のディスク、またはその両方に格納できます。 その後、いくつかの標準的なネットワーク キャプチャ分析ツールを使用して、キャプチャ ファイルを分析できます。 パケット キャプチャの詳細については、[こちら](network-watcher-packet-capture-overview.md)を参照してください。
 
-### <a name="metrics"></a>メトリック
+### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Azure 仮想ネットワーク ゲートウェイと接続に関する問題を診断する
 
-メトリックとは、一定期間にわたり収集されたパフォーマンスの測定値とカウンターのことです。 現時点では、メトリックは Application Gateway で利用できます。 メトリックを使用すると、しきい値に基づいてアラートをトリガーすることができます。 メトリックを使用してアラートを作成する方法については、[Application Gateway の診断機能](../application-gateway/application-gateway-diagnostics.md)に関するページを参照してください。
+仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 仮想ネットワークを接続できます。 ゲートウェイやその接続の監視は、通信が切断されていないことを確認するために重要です。 "*VPN 診断*" 機能を使用すると、ゲートウェイと接続を診断できます。 VPN 診断では、ゲートウェイまたはゲートウェイ接続の正常性が診断され、ゲートウェイおよびゲートウェイ接続の使用の可否が通知されます。 ゲートウェイまたは接続が使用できない場合、VPN 診断によって原因が示されます。これにより、問題を解決できます。 VPN 診断の詳細については、[こちら](network-watcher-troubleshoot-overview.md)を参照してください。
 
-![メトリック ビュー][metrics]
+### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Azure リージョンとインターネット サービス プロバイダーの間の相対待ち時間を確認する
 
-### <a name="diagnostic-logs"></a>診断ログ
+Azure リージョン間およびインターネット サービス プロバイダーとの間の待ち時間に関する情報を Network Watcher に照会できます。 Azure リージョン間およびインターネット サービス プロバイダーとの間の待ち時間を確認したら、ネットワーク応答時間が最適化されるよう Azure リソースをデプロイできます。 相対待ち時間の詳細については、[こちら](view-relative-latencies.md)を参照してください。
 
-定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Log Analytics へ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI および Log Analytics などのツールで確認できます。 診断ログを確認する方法については、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) に関するページを参照してください。
+### <a name="view-security-rules-for-a-network-interface"></a>ネットワーク インターフェイスのセキュリティ規則を表示する
 
-診断ログは、[ロード バランサー](../load-balancer/load-balancer-monitor-log.md)、[ネットワーク セキュリティ グループ](../virtual-network/virtual-network-nsg-manage-log.md)、ルーティング、および [Application Gateway](../application-gateway/application-gateway-diagnostics.md) で利用できます。
+ネットワーク インターフェイスに効果的なセキュリティ規則は、ネットワーク インターフェイスとそのネットワーク インターフェイスが存在するサブネットに適用されるすべてのセキュリティ規則を組み合わせたものです。  "*セキュリティ グループ ビュー*" 機能では、ネットワーク インターフェイスに適用されたすべてのセキュリティ規則、そのネットワーク インターフェイスが存在するサブネット、それら両方の合計が表示されます。 ネットワーク インターフェイスに適用された規則を理解すれば、変更したいトラフィックが規則によって許可または拒否されている場合に、それらの規則を追加、削除、または変更できます。 セキュリティ グループ ビューの詳細については、[こちら](network-watcher-security-group-view-overview.md)を参照してください。
 
-Network Watcher には診断ログ ビューが用意されています。 このビューには、診断ログをサポートするすべてのネットワーク リソースが表示されます。 このビューから、ネットワーク リソースの有効化および無効化を手軽に素早く行うことができます。
+## <a name="metrics"></a>メトリック
 
-![ログ][logs]
+Azure のサブスクリプションおよびリージョン内で作成できるネットワーク リソースの数には[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)があります。 制限に達すると、サブスクリプション内またはリージョン内でそれ以上リソースを作成できません。 "*ネットワーク サブスクリプションの制限*" 機能を使用すると、サブスクリプションおよびリージョンでデプロイした各ネットワーク リソースの数の概要のほか、リソースに関する制限がわかります。 次の図は、サンプルのサブスクリプションで米国東部リージョンにデプロイされたネットワーク リソースに関する出力を部分的に示しています。
 
-### <a name="troubleshooting"></a>トラブルシューティング
+![サブスクリプションの制限](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
-ポータルの 1 機能であるトラブルシューティング ブレードは、現時点ではネットワーク リソースで提供されており、個々のリソースに関連する一般的な問題を診断できます。 この機能は、ExpressRoute、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager の各ネットワーク リソースで利用できます。 リソース レベルのトラブルシューティングの詳細については、「[Diagnose and resolve issues with Azure Troubleshooting](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)」(Azure のトラブルシューティング機能を使用した問題の診断と解決) を参照してください。
+情報は将来のリソース デプロイを計画する際に役立ちます。
 
-![トラブルシューティングの情報][TS]
+## <a name="logs"></a>ログ
 
-### <a name="resource-health"></a>リソース ヘルス
+### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>ネットワーク セキュリティ グループとの間のトラフィックを分析する
 
-ネットワーク リソースの正常性に関する情報は定期的に提供されています。 対象のリソースは、VPN Gateway や VPN トンネルなどです。 Resource Health には、Azure Portal からアクセスできます。 Resource Health の詳細については、[Resource Health の概要](../resource-health/resource-health-overview.md)に関するページを参照してください。
+ネットワーク セキュリティ グループ (NSG) を使用すると、VM のネットワーク インターフェイスへの受信トラフィックまたは送信トラフィックを許可または拒否できます。 "*NSG フロー ログ*" 機能では、送信元および宛先 IP アドレス、ポート、プロトコルのほか、トラフィックが NSG によって許可または拒否されたかどうかをログに記録できます。 PowerBI や "*トラフィック分析*" 機能など、さまざまなツールを使用してログを分析できます。 トラフィック分析では、NSG フロー ログに書き込まれたデータを高度に視覚化できます。 次の図には、NSG フロー ログ データに基づいてトラフィック分析が提示した情報と視覚化の一部が示されています。
+
+![トラフィック分析](./media/network-watcher-monitoring-overview/traffic-analytics.png)
+
+詳しくは、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関するページと[トラフィック分析](traffic-analytics.md)に関するページを参照してください。
+
+### <a name="view-diagnostic-logs-for-network-resources"></a>ネットワーク リソースの診断ログを表示する
+
+ネットワーク セキュリティ グループやパブリック IP アドレス、ロード バランサー、仮想ネットワーク ゲートウェイ、アプリケーション ゲートウェイなど、Azure ネットワーク リソースの診断ログを有効にできます。 "*診断ログ*" 機能では、単一のインターフェイスを使用して、診断ログを生成する既存のネットワーク リソースに関するネットワーク リソース診断ログを有効および無効にできます。 診断ログは、Microsoft Power BI や Azure Log Analytics などのツールを使用して表示できます。 Azure ネットワーク診断ログの分析について詳しくは、[Log Analytics の Azure ネットワーク ソリューション](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-Network Watcher について学習したので、次のことが可能になりました。
-
-[Azure Portal で可変パケット キャプチャ](network-watcher-packet-capture-manage-portal.md) にアクセスして、VM でパケット キャプチャを実行する。
-
-[パケット キャプチャによりトリガーされるアラート](network-watcher-alert-triggered-packet-capture.md)を使用して、事前対応型の監視と診断を実行する。
-
-オープン ソース ツールを使用して、[Wireshark によるパケット キャプチャの分析](network-watcher-deep-packet-inspection.md)でセキュリティの脆弱性を検出する。
-
-Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
-
-<!--Image references-->
-[TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png
-[logs]: ./media/network-watcher-monitoring-overview/logs.png
-[metrics]: ./media/network-watcher-monitoring-overview/metrics.png
-[nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
-
-
-
-
-
-
-
-
-
-
+Azure Network Watcher の概要については以上です。 Network Watcher の使用を開始するには、IP フロー検証を使用して仮想マシンとの間の通信に関する一般的な問題を診断します。 方法については、[仮想マシン ネットワーク トラフィック フィルターの問題の診断](diagnose-vm-network-traffic-filtering-problem.md)に関するクイック スタートを参照してください。

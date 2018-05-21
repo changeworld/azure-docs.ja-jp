@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Azure 仮想ネットワークの DNS 設定を更新する | Microsoft Docs"
-description: "Azure Active Directory Domain Services の概要"
+title: 'Azure Active Directory Domain Services: Azure 仮想ネットワークの DNS 設定を更新する | Microsoft Docs'
+description: Azure Active Directory Domain Services の概要
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: maheshu
-ms.openlocfilehash: c99d42eaf52a13afef6df76b6bb1a714e719fa64
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 972b995d3768e765b95c136b3cfbee91ab0a88ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を有効にする
 

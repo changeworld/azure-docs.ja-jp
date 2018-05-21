@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシン スケール セットのネットワーク | Microsoft Docs"
-description: "Azure 仮想マシン スケール セットのネットワーク プロパティの構成。"
+title: Azure 仮想マシン スケール セットのネットワーク | Microsoft Docs
+description: Azure 仮想マシン スケール セットのネットワーク プロパティの構成。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 27f1ec18026b38d5cdb2aecfde2d01f32a86349e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1db4c7ae78320eb08b2aa0b9da701d9678baf798
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -55,9 +55,28 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 
 ```
 
+## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
+アプリケーション ゲートウェイを使うスケール セットを作成するには、次の ARM テンプレート構成のように、スケール セットの ipConfigurations セクションにおいてアプリケーション ゲートウェイのバックエンド アドレス プールを参照します。
+```json
+"ipConfigurations": [{
+  "name": "{config-name}",
+  "properties": {
+  "subnet": {
+    "id": "{subnet-id}"
+  },
+  "ApplicationGatewayBackendAddressPools": [{
+    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/applicationGateways/{gateway-name}/backendAddressPools/{pool-name}"
+  }]
+}]
+```
+
+>[!NOTE]
+> アプリケーション ゲートウェイは、スケール セットと同じ仮想ネットワーク内の、スケール セットとは異なるサブネット内に存在する必要があることに、注意してください。
+
+
 ## <a name="configurable-dns-settings"></a>構成可能な DNS 設定
 スケール セットは、それが作成された VNET とサブネットの特定の DNS 設定を既定で引き継ぎます。 しかし、スケール セットの DNS 設定は直接構成することができます。
-~
+
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>構成可能な DNS サーバーによるスケール セットの作成
 CLI 2.0 を使用してカスタム DNS 構成でスケール セットを作成するには、**--dns-servers** 引数とスペース区切りのサーバー IP アドレスを **vmss create** コマンドに追加します。 例: 
 ```bash

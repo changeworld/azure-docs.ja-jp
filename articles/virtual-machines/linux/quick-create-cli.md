@@ -1,6 +1,6 @@
 ---
-title: Azure クイック スタート - CLI で VM を作成する | Microsoft Docs
-description: Azure CLI で仮想マシンを作成する方法を簡単に説明します。
+title: クイック スタート - Azure CLI 2.0 を使用して Linux VM を作成する | Microsoft Docs
+description: このクイック スタートでは、Azure CLI 2.0 を使用して Linux 仮想マシンを作成する方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -9,42 +9,40 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/13/2017
+ms.date: 04/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 15dc70e8d60901b71ba7d1d9333b13d8266d18c6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1c45f8f010d69337d21fce327933990a573988a4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI で Linux 仮想マシンを作成する
+# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>クイック スタート: Azure CLI 2.0 を使用して Linux 仮想マシンを作成する
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure CLI を使用して、Ubuntu Server を実行する仮想マシンをデプロイする方法について詳しく説明します。 サーバーのデプロイ後、SSH 接続を作成し、NGINX Web サーバーをインストールします。
+Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI 2.0 を使用して、Ubuntu を実行する Linux 仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
-
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。 
+[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。
 
 次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加して、既定のキーの場所 (*~/.ssh*) にまだ SSH キーが存在しない場合は SSH キーを生成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
@@ -57,12 +55,12 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。
+VM とサポート リソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
 
-```azurecli-interactive 
+```azurecli-interactive
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
   "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
@@ -72,52 +70,55 @@ VM が作成されると、Azure CLI によって次の例のような情報が�
 }
 ```
 
-## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く 
+作成した VM からの出力に含まれる実際の `publicIpAddress` を記録しておいてください。 このアドレスは、次の手順で VM にアクセスするために使います。
 
-Azure にデプロイされている Linux 仮想マシンに対しては、既定で SSH 接続のみが許可されます。 この VM を Web サーバーとして使用する場合は、インターネットからポート 80 を開く必要があります。 [az vm open-port](/cli/azure/vm#az_vm_open_port) コマンドを使用して、目的のポートを開きます。  
- 
- ```azurecli-interactive 
+## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
+
+既定では、Azure において Linux VM を作成すると SSH 接続のみが開かれます。 NGINX Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使います。
+
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="ssh-into-your-vm"></a>VM への SSH 接続
+## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
-次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 **publicIpAddress** は、仮想マシンの正しいパブリック IP アドレスに置き換えてください。  上記の例の IP アドレスは *40.68.254.142* でした。
+通常どおりに、SSH を使って VM に接続します。 **publicIpAddress** は、VM からの前の出力で記録しておいた VM のパブリック IP アドレスに置き換えます。
 
-```bash 
-ssh publicIpAddress
+```bash
+ssh azureuser@publicIpAddress
 ```
 
-## <a name="install-nginx"></a>NGINX のインストール
+## <a name="install-web-server"></a>Web サーバーのインストール
 
-次のコマンドを使用して、パッケージ ソースを更新し、最新の NGINX パッケージをインストールします。 
+VM の動作を確認するために、NGINX Web サーバーをインストールします。 パッケージ ソースを更新して最新の NGINX パッケージをインストールするには、SSH セッションから次のコマンドを実行します。
 
-```bash 
-# update package source
+```bash
+# update packages
 sudo apt-get -y update
 
 # install NGINX
 sudo apt-get -y install nginx
 ```
 
-## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
+完了したら、`exit` を使って SSH セッションを終了します。
 
-NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示することができます。 上の手順で指定した *publicIpAddress* を使用して既定のページにアクセスします。 
+## <a name="view-the-web-server-in-action"></a>動作中の Web サーバーを表示する
 
-![NGINX の既定のサイト](./media/quick-create-cli/nginx.png) 
+NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示します。 前の手順で取得した VM のパブリック IP アドレスを使用します。 次の例は、既定の NGINX Web サイトを示しています。
 
+![NGINX の既定のサイト](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 VM への SSH セッションを終了し、次の手順でリソースを削除します。
+必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 VM への SSH セッションを終了したことを確認し、次の手順でリソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、単純な仮想マシンとネットワーク セキュリティ グループの規則をデプロイし、Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
+このクイック スタートでは、単純な仮想マシンをデプロイし、Web トラフィック用のネットワーク ポートを開き、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 
 
 > [!div class="nextstepaction"]

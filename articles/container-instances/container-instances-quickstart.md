@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 57961cf1cb64f90cec7d2be90f3fbfe33344467d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b68468cd8174d658d04d8e67433a8f18884493bd
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>クイック スタート: Azure Container Instances での最初のコンテナーの作成
 
@@ -64,19 +64,21 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-コンテナーが**成功**状態に推移すると、FQDN に移動してお使いのブラウザー内でこのコンテナーにアクセスできます。
+コンテナーが**成功**状態に推移したら、ブラウザーでその FQDN に移動します。
 
 ![Azure コンテナー インスタンスで実行されているアプリケーションを示すブラウザー スクリーンショット][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>コンテナー ログを取り込む
 
-[az container logs][az-container-logs] コマンドを使用して、作成したコンテナーのログを取り込むことができます。
+コンテナー インスタンスのログを表示すると、コンテナーまたはそれが実行するアプリケーションの問題をトラブルシューティングする際に役立ちます。
+
+[az container logs][az-container-logs] コマンドを使用して、コンテナーのログを取得します。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-次のような出力が表示されます。
+出力はコンテナーのログを表示し、ブラウザーでアプリケーションを表示したときに生成された HTTP GET 要求が表示されます。
 
 ```console
 $ az container logs --resource-group myResourceGroup -n mycontainer
@@ -85,7 +87,7 @@ listening on port 80
 ::ffff:10.240.255.105 - - [15/Mar/2018:21:18:26 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
-## <a name="attach-output-streams"></a>出力ストリームをアタッチする
+## <a name="attach-output-streams"></a>出力ストリームのアタッチ
 
 ログに追加するだけでなく、ローカルの標準出力ストリームと標準エラー ストリームをコンテナーのストリームにアタッチすることができます。
 
@@ -113,9 +115,9 @@ listening on port 80
 ::ffff:10.240.255.107 - - [15/Mar/2018:21:18:47 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
-## <a name="delete-the-container"></a>コンテナーを削除する
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-コンテナーを使い終えたら、[az container delete][az-container-delete] コマンドを使用してそのコンテナーを削除することができます。
+コンテナーを使い終えたら、[az container delete][az-container-delete] コマンドを使用して、そのコンテナーを削除します。
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -131,19 +133,19 @@ az container list --resource-group myResourceGroup --output table
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートで使用したコンテナーのコードはすべて、その Dockerfile と共に [GitHub][app-github-repo] で入手できます。 Azure Container Registry を使用してビルドと Azure Container Instances へのデプロイを自分で試す場合は、Azure Container Instances のチュートリアルに進んでください。
+このクイック スタートでは、パブリックの Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージを自分でビルドし、プライベート Azure コンテナー レジストリから Azure Container Instances にデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)
 
-Azure のオーケストレーション システムでコンテナーを実行するためのオプションを試すには、[Service Fabric][ service-fabric] または [Azure Container Service (AKS)][ container-service] のクイック スタートを参照してください。
+Azure のオーケストレーション システムでコンテナーを実行するためのオプションを試すには、[Service Fabric][service-fabric] または [Azure Kubernetes Service (AKS)][container-service] のクイック スタートを参照してください。
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git
-[azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
+[azure-account]: https://azure.microsoft.com/free/
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->

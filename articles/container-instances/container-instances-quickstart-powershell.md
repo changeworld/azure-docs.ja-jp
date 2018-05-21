@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 8670de00e3ab66ec4a5fa5c0c340e38182fd1ffd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4a1d338304dbd5e2845768b7bf0273eed23af0ec
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>クイック スタート: Azure Container Instances での最初のコンテナーの作成
 
@@ -21,7 +21,7 @@ Azure Container Instances を使用すると、仮想マシンをプロビジョ
 
 ![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][qs-powershell-01]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -81,9 +81,9 @@ Events                   : {}
 
 ![ブラウザーに表示された、Azure Container Instances を使用してデプロイされた IIS][qs-powershell-01]
 
-## <a name="delete-the-container"></a>コンテナーを削除する
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-コンテナーを使い終えたら、[Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] コマンドレットを使用してそのコンテナーを削除することができます。
+コンテナーを使い終えたら、[Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] コマンドレットを使用してそのコンテナーを削除します。
 
  ```azurepowershell-interactive
 Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -91,7 +91,7 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、事前に構築された Windows コンテナーを Azure Container Instances で起動しました。 Azure Container Registry を使用してコンテナーのビルドと Azure Container Instances へのデプロイを自分で試す場合は、Azure Container Instances のチュートリアルに進んでください。
+このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージを自分でビルドし、プライベート Azure コンテナー レジストリから Azure Container Instances にデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)

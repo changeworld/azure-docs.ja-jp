@@ -1,13 +1,13 @@
 ---
-title: "Azure で Linux 用の仮想マシン スケール セットを作成する | Microsoft Docs"
-description: "仮想マシン スケール セットを使って、Linux VM に高可用性アプリを作成およびデプロイします"
+title: チュートリアル - Azure 内に Linux 用の仮想マシン スケール セットを作成する | Microsoft Docs
+description: このチュートリアルでは、Azure CLI 2.0 で仮想マシン スケール セットを使用して、Linux VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: azure-resource-manager
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -15,13 +15,15 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 263983017e08dcc9a8e614c159ef5afaaf1d924e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.custom: mvc
+ms.openlocfilehash: 741cabd37a5a508257f0307dfec25b5bb2d25153
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>仮想マシン スケール セットを作成して Linux に高可用性アプリをデプロイする
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
+
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -32,10 +34,9 @@ ms.lasthandoff: 02/09/2018
 > * スケール セットのインスタンスの接続情報を表示する
 > * スケール セット内でデータ ディスクを使用する
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.22 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="scale-set-overview"></a>スケール セットの概要
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM は、1 つ以上の*配置グループ*内の論理障害ドメインおよび更新ドメインに配布されます。 これらは同じように構成された VM のグループであり、[可用性セット](tutorial-availability-sets.md)に似ています。

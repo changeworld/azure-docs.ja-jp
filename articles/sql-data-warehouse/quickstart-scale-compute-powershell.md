@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 40fa33aad8bf5ac042f9d80493b97a914fe770bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0718365153390f525b22ef07559a822c777c2ff4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>クイックスタート: PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -55,19 +55,19 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 次の手順に従って、データ ウェアハウスの場所の情報を検索します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の左側のページで **[SQL データベース]** を選択します。
-3. **[SQL データベース]** ページから **[mySampleDataWarehouse]** を選択します。 これにより、データ ウェアハウスが開きます。
+2. Azure portal の左側のページで **[SQL データ ウェアハウス]** をクリックします。
+3. **[SQL データ ウェアハウス]** ページで **mySampleDataWarehouse** を選びます。 これにより、データ ウェアハウスが開きます。
 
     ![サーバー名とリソース グループ](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
 4. データベース名として使用される、データ ウェアハウスの名前を書き留めます。 データ ウェアハウスはデータベースの一種であることに注意してください。 サーバー名とリソース グループも書き留めます。 これらは、一時停止コマンドと再開コマンドで使用します。
-5. サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として最初の部分のみを使用します。 前の図では、サーバーの完全名は newserver-20171113.database.windows.net です。 PowerShell コマンドレットのサーバー名として **newserver-20171113** を使用します。
+5. サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として最初の部分のみを使用します。 前の図では、サーバーの完全名は newserver-20171113.database.windows.net です。 PowerShell コマンドレットのサーバー名として **newserver-20180430** を使用します。
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
 
 SQL Data Warehouse では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
-Data Warehouse ユニットを変更するには、[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell コマンドレットを使用します。 次の例では、サーバー **mynewserver-20171113** 上のリソース グループ **myResourceGroup** にホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300 に設定します。
+Data Warehouse ユニットを変更するには、[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell コマンドレットを使用します。 次の例では、サーバー **mynewserver-20180430** 上のリソース グループ **myResourceGroup** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300 に設定します。
 
 ```Powershell
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
@@ -75,7 +75,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySam
 
 ## <a name="check-data-warehouse-state"></a>データ ウェアハウスの状態の確認
 
-データ ウェアハウスの現在の状態を確認するには、[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell コマンドレットを使用します。 これを使用すると、リソース グループ **myResourceGroup** とサーバー **mynewserver-20171113.database.windows.net** 内のデータベース **mySampleDataWarehouse** の状態が取得されます。
+データ ウェアハウスの現在の状態を確認するには、[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell コマンドレットを使用します。 これを使用すると、リソース グループ **myResourceGroup** とサーバー **mynewserver-20180430.database.windows.net** 内のデータベース **mySampleDataWarehouse** の状態が取得されます。
 
 ```powershell
 $database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse

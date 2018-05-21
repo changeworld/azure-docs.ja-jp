@@ -1,27 +1,27 @@
 ---
-title: Azure Search でのシノニム プレビュー チュートリアル | Microsoft Docs
-description: Azure Search のインデックスにシノニム プレビュー機能を追加します。
+title: Azure Search でのシノニム チュートリアル | Microsoft Docs
+description: Azure Search のインデックスにシノニム機能を追加します。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/31/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0f082397f832883b272a2ca38850a340b618adde
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a>Azure Search のシノニム (プレビュー) C# チュートリアル
+# <a name="synonym-c-tutorial-for-azure-search"></a>Azure Search のシノニム C# チュートリアル
 
 シノニムは、意味的に入力用語と同等と見なされる用語を一致させることにより、クエリを拡張します。 たとえば、"car" を "automobile" または "vehicle" という用語が含まれているドキュメントと一致させたい場合があります。
 
 Azure Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 複数のシノニム マップを作成し、サービス全体の任意のインデックスで使用できるリソースとしてポストして、フィールド レベルでどのマップを使用するかを参照することができます。 クエリの際に、Azure Search はインデックスを検索するだけでなく、クエリで使用されているフィールドにシノニム マップが指定されていれば、そのマップも参照します。
 
 > [!NOTE]
-> シノニム機能は現時点でプレビュー段階であり、最新のプレビュー API および SDK バージョン (api-version=2016-09-01-Preview、SDK version 4.x-preview) だけでサポートされています。 現在、Azure Portal でのサポートはありません。 プレビュー API は SLA の対象ではなく、プレビュー機能は変更される場合があるため、実稼働アプリケーションでの使用はお勧めしません。
+> シノニム機能は API と SDK の最新バージョン (API はバージョン 2017-11-11、SDK はバージョン 5.0.0) でサポートされています。 現時点で Azure Portal のサポートはありません。 Azure portal でのシノニムのサポートが役に立つ場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でフィードバックをお送りください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,7 @@ Azure Search では、シノニムは同等の用語を関連付ける "*マッ�
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Search サービス](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET ライブラリのプレビュー バージョン](https://aka.ms/search-sdk-preview)
+* [Microsoft.Azure.Search .NET ライブラリ](https://aka.ms/search-sdk)
 * [.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概要

@@ -7,13 +7,13 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 12/04/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: f24777fe5bb482eb74aba4acbd7313665f22c38b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9ee88b254131b40fdf1e01b771afa92127734e18
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>ポータルでの Azure Search インデックスの作成、照会、フィルター処理
 
@@ -110,7 +110,7 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 
    ![インデックスと API のコマンド][6]
 
-3. コマンド バーで **[API バージョンを設定]** をクリックし、使用できる REST API を確認します。 プレビュー API では、まだ一般にリリースされていない新しい機能を使用できます。 以下のクエリでは、特に指定がない限り、一般公開バージョン (2016-09-01) を使用します。 
+3. コマンド バーで **[API バージョンを設定]** をクリックし、使用できる REST API を確認します。 プレビュー API では、まだ一般にリリースされていない新しい機能を使用できます。 以下のクエリでは、特に指定がない限り、一般公開バージョン (2017-11-11) を使います。 
 
     > [!NOTE]
     > [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) は [.NET ライブラリ](search-howto-dotnet-sdk.md#core-scenarios)とまったく同等ですが、REST 呼び出しを処理するために **Search エクスプローラー**を備えています。 Search エクスプローラーは、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文に加え、[ドキュメント検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作で使用できるすべての検索パラメーターを受け取ります。

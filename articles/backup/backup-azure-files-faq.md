@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: fb455fe6f1b481ad2dc855d147860cb2c7898779
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c0261b4f89647a8db3b7bf452a8827d40fdc1911
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -23,7 +23,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Azure Files のバックアップ ジョブの構成
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>有効な Azure ファイル共有を含む、保護したいストレージ アカウントの一部が表示されないのはなぜですか。 <br/>
-プレビュー期間中は、Azure ファイル共有のバックアップであらゆる種類のストレージ アカウントがサポートされるわけではありません。 サポートされるストレージ アカウントの一覧は、[こちら](troubleshoot-azure-files.md#preview-boundaries)を参照してください。
+プレビュー期間中は、Azure ファイル共有のバックアップであらゆる種類のストレージ アカウントがサポートされるわけではありません。 サポートされるストレージ アカウントの一覧は、[こちら](troubleshoot-azure-files.md#preview-boundaries)を参照してください。 探しているストレージ アカウントが既に保護されているか、別のコンテナーに登録されている可能性もあります。 コンテナーから[登録を解除](troubleshoot-azure-files.md#configuring-backup)して、保護のために他のコンテナー内のストレージ アカウントを検出します。
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>バックアップを構成しようとしているときに、ストレージ アカウントに Azure ファイル共有の一部が表示されないのはなぜですか。 <br/>
 その Azure ファイル共有が既に同じ Recovery Services コンテナー内で保護されているかどうかと、その Azure ファイル共有を最近削除したかどうかを確認してください。
@@ -52,6 +52,7 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 - 西日本 (JPW)
 -   インド中部 (INC) 
 - インド南部 (INS)
+- 韓国中部 (KRC)
 - 韓国南部 (KRS)
 -   米国中北部 (NCUS) 
 -   北ヨーロッパ (NE) 

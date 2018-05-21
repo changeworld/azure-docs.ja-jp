@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: d50333888592d2d3e13c40c07a7e58f8676df075
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -29,10 +29,10 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 * **プライベート IP アドレス**: VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミスのネットワーク内での通信に使用します。
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイ モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイ モデル](virtual-network-ip-addresses-overview-classic.md)ではなくこのモデルをお勧めします。
 > 
 
-クラシック デプロイメント モデルの知識がある場合は、[クラシック デプロイメントと Resource Manager での IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。
+クラシック デプロイ モデルの知識がある場合は、[クラシックと Resource Manager での IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments)に関するページを確認してください。
 
 ## <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -53,11 +53,15 @@ Azure リソース マネージャーで、 [パブリック IP](virtual-network
 
 パブリック IP アドレスは、次の SKU のいずれかを使用して作成されます。
 
+>[!IMPORTANT]
+> ロード バランサー リソースとパブリック IP リソースには一致する SKU を使用する必要があります。 Basic SKU リソースと Standard SKU リソースを組み合わせることはできません。 スタンドアロン仮想マシン、可用性セット リソース内の仮想マシン、または仮想マシン スケール セット リソースを、両方の SKU に同時にアタッチすることはできません。  新しい設計では、Standard SKU リソースの使用を検討する必要があります。  詳しくは、[Standard ロード バランサー](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+
 #### <a name="basic"></a>Basic
 
 SKU の導入前に作成されたすべてのパブリック IP アドレスは、Basic SKU のパブリック IP アドレスです。 SKU を導入すると、どの SKU をパブリック IP アドレスにするかを設定できます。 Basic SKU のアドレスは次のとおりです。
 
 - 静的または動的な割り当て方法を使用して割り当てられます。
+- 既定で開いています。  ネットワーク セキュリティ グループは推奨されますが、受信または送信トラフィックを制限する場合は省略可能です。
 - ネットワーク インターフェイス、VPN ゲートウェイ、アプリケーション ゲートウェイ、およびインターネットに接続するロード バランサーなどのパブリック IP アドレスを割り当てることができる Azure のリソースに割り当てられます。
 - 特定のゾーンに割り当てることができます。
 - ゾーン冗長はありません。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
@@ -67,17 +71,18 @@ SKU の導入前に作成されたすべてのパブリック IP アドレスは
 Standard SKU のパブリック IP アドレスは次のとおりです。
 
 - 静的割り当て方法のみを使用して割り当てられます。
-- ネットワーク インターフェイス、または標準のインターネットに接続するロード バランサーに割り当てられます。 Azure ロード バランサー SKU の詳細については、[Azure ロード バランサー Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
-- ゾーンは既定で冗長です。 ゾーンで作成し、特定の可用性ゾーンで保証できます。 可用性ゾーンの詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
+- 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、許可された受信トラフィックを明示的なホワイト リストに登録する必要があります。
+- ネットワーク インターフェイスまたはパブリック標準ロード バランサーに割り当てられます。 Azure 標準ロード バランサーについて詳しくは、[Azure 標準ロード バランサー](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+- ゾーンは既定で冗長です。 ゾーンのパブリック IP アドレスとして作成でき、特定の可用性ゾーンで保証できます。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
  
 > [!NOTE]
-> 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、特定のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。
+> [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を作成して関連付け、目的の受信トラフィックを明示的に許可するまで、Standard SKU リソースとの通信は失敗します。
 
 ### <a name="allocation-method"></a>割り当て方法
 
-IP アドレスをパブリック IP リソースに割り当てる方法には、*動的*と*静的*の 2 種類があります。 既定の割り当て方法は *動的*で、IP アドレスの作成時に割り当ては **行われません** 。 代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。 IP アドレスは、リソースを停止 (または削除) すると解放されます。 たとえば、リソース A から解放された IP アドレスは別のリソースに関連付けられます。 リソース A が停止している間に別のリソースに IP アドレスが割り当てられた場合、リソース A を再起動したときに、別の IP アドレスが割り当てられます。
+Basic と Standard の両方の SKU のパブリック IP アドレスでは *静的*割り当て方法をサポートしています。  リソースの作成時にリソースに IP アドレスが割り当てられ、リソースの削除時に IP アドレスが解放されます。
 
-関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に *静的*に設定できます。 この場合、静的 IP アドレスが即座に割り当てられます。 アドレスは、リソースを削除するか、その割り当て方法を *動的*に変更した場合にのみ解放されます。
+Basic SKU のパブリック IP アドレスは、*動的*割り当て方法もサポートしており、この方法は、割り当て方法が指定されていない場合の既定です。  Basic パブリック IP アドレス リソースに*動的*割り当て方法を選択することは、IP アドレスがリソースの作成時に割り当てられ**ない**ことを意味します。  パブリック IP アドレスを仮想マシンに関連付けたとき、または基本ロード バランサーのバックエンド プールに、最初の仮想マシン インスタンスを配置したときに、パブリック IP アドレスが割り当てられます。   IP アドレスは、リソースを停止 (または削除) すると解放されます。  たとえば、リソース A から解放された IP アドレスは別のリソースに関連付けられます。 リソース A が停止している間に別のリソースに IP アドレスが割り当てられた場合、リソース A を再起動したときに、別の IP アドレスが割り当てられます。 基本パブリック IP アドレス リソースの割り当て方法を*静的*から*動的*に変更すると、アドレスが解放されます。 関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に *静的*に設定できます。 この場合、静的 IP アドレスが即座に割り当てられます。
 
 > [!NOTE]
 > 割り当て方法を*静的*に設定しても、パブリック IP アドレス リソースに割り当てられる実際の IP アドレスは指定できません。 リソースが作成される Azureの場所で使用可能な IP アドレスのプールから IP アドレスが割り当てられます。
@@ -111,11 +116,11 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="vpn-gateways"></a>VPN ゲートウェイ
 
-[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) は、Azure 仮想ネットワーク を他の Azure 仮想ネットワークまたはオンプレミスのネットワークに接続します。 パブリック IP アドレスは、リモート ネットワークとの通信を有効にするために VPN Gateway に割り当てられます。 VPN ゲートウェイに割り当てることができるのは、*動的*パブリック IP アドレスのみです。
+[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) は、Azure 仮想ネットワーク を他の Azure 仮想ネットワークまたはオンプレミスのネットワークに接続します。 パブリック IP アドレスは、リモート ネットワークとの通信を有効にするために VPN Gateway に割り当てられます。 VPN ゲートウェイに割り当てることができるのは、*動的*基本パブリック IP アドレスのみです。
 
 ### <a name="application-gateways"></a>アプリケーション ゲートウェイ
 
-パブリック IP アドレスをゲートウェイの [フロント エンド](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)構成に割り当てることで、Azure **Application Gateway** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
+パブリック IP アドレスをゲートウェイの [フロント エンド](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)構成に割り当てることで、Azure **Application Gateway** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*基本パブリック IP アドレスのみです。
 
 ### <a name="at-a-glance"></a>早見表
 下の表は、パブリック IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
@@ -130,7 +135,7 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、 [仮想ネットワーク](virtual-networks-overview.md) の他のリソース、あるいはオンプレミスのネットワーク (VPN ゲートウェイまたは ExpressRoute 回線経由) と通信することができます。
 
-Azure Resource Manager デプロイメント モデルでは、プライベート IP アドレスは次の種類の Azure リソースに関連付けられます。
+Azure Resource Manager デプロイ モデルでは、プライベート IP アドレスは次の種類の Azure リソースに関連付けられます。
 
 * 仮想マシン ネットワーク インターフェイス
 * 内部ロード バランサー (ILB)
