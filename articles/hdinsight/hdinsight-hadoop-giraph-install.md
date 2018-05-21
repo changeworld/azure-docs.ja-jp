@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: df7c5e175ecfd2eca2b1db7eb4ab056bb1588dda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c4cd643d4bdd95493f63bb5b1c1f855bc95bf226
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Giraph をインストールして使用する
 
@@ -85,7 +85,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 2. SimpleShortestPathsComputation サンプルを実行します。 tiny_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。
 
     > [!IMPORTANT]
-    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+    > Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**非推奨**となり、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
     >
     > [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
 
@@ -169,7 +169,6 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 * [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md)。
 * [HDInsight クラスターに Spark をインストールし、使用する][hdinsight-install-spark]: Spark のインストールに関する Script Action サンプル。
-* [HDInsight クラスターに R をインストールし、使用する][hdinsight-install-r]: R のインストールに関する Script Action サンプル。
 * [HDInsight クラスターに Solr をインストールし、使用する](hdinsight-hadoop-solr-install.md): Solr のインストールに関するスクリプト アクションのサンプル。
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
@@ -177,6 +176,5 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

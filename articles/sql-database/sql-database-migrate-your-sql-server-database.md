@@ -1,6 +1,6 @@
 ---
-title: DMS を使用して SQL Server DB を Azure SQL Database に移行する | Microsoft Docs
-description: DMS を使用して SQL Server データベースを Azure SQL Database に移行する方法について説明します。
+title: DMA を使用して SQL Server DB を Azure SQL Database に移行する | Microsoft Docs
+description: DMA を使用して SQL Server データベースを Azure SQL Database に移行する方法について説明します。
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,13 +9,13 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 36548e4d088b809f4fb16d89aaa3ef0a802d6d5c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e714667183704670807fd2f62767b75f62978a38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>DMS を使用して SQL Server データベースを Azure SQL Database に移行する
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>DMA を使用して SQL Server データベースを Azure SQL Database に移行する
 
 SQL Server データベースから Azure SQL Database の単一データベースへの移行は、Azure に空の SQL データベースを作成して、[Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) を使って Azure にデータベースをインポートする場合と同じくらい簡単です。 追加の移行オプションについては、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
-Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](sql-database-features.md)内に作成されます。 
+Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers-dtu.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](sql-database-features.md)内に作成されます。 
 
 空の SQL Database を作成するには、次の手順に従います。 
 
@@ -87,9 +87,9 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 8. プレビューの使用条件に同意して、**[Add-on Storage]\(アドオン ストレージ\)** オプションを使用します。 
 
    > [!IMPORTANT]
-   > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
+   > - 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
    >
-   >\*Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   > - 現在、Premium レベルでは、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパの各リージョンで、1 TB を超えるストレージを使用できます。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    > 
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  

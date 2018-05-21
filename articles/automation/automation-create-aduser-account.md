@@ -8,13 +8,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 07fb9284372020ba2aadb3758d0ab46682b50831
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 105dcf5564ec5c1d0b3528e9b5667d89d98c6cab
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Azure クラシック デプロイメントと Resource Manager による Runbook の認証
 この記事では、Azure クラシック デプロイ モデルまたは Azure Resource Manager のリソースに対して実行する Azure Automation Runbook 用に Azure AD ユーザー アカウントを構成するための手順を説明します。 Azure Resource Manager ベースの Runbook では、このアカウントを引き続き認証 ID として使用できますが、Azure 実行アカウントを使用することが推奨されます。       

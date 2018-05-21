@@ -3,17 +3,17 @@ title: Azure Kubernetes Service (AKS) クラスターでイングレスを構成
 description: Azure Kubernetes Service (AKS) クラスターに NGINX イングレス コントローラーをインストールして構成します。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b999792876f82de9500dccf9e6263f85e3e3105e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) での HTTPS イングレス
 
@@ -38,7 +38,7 @@ helm repo update
 NGINX イングレス コントローラーをインストールします。 この例では、`kube-system` 名前空間にコント ローラーをインストールします。このインストール先は、任意の名前空間を変更できます。
 
 ```
-helm install stable/nginx-ingress --namespace kube-system
+helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 インストールの間に、Azure パブリック IP アドレスがイングレス コントローラーに対して作成されます。 パブリック IP アドレスを取得するには、kubectl get service コマンドを使います。 IP アドレスがサービスに割り当てられるまで、少し時間がかかる場合があります。

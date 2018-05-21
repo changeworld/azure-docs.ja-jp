@@ -8,13 +8,13 @@ keywords: インベントリ, オートメーション, 変更, 追跡
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f9c157fc8d1674aefcfea2ddea2aab3a4e86444
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
