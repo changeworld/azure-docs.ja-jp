@@ -1,24 +1,24 @@
 ---
-title: "StorSimple 8000 シリーズ デバイスを Azure Portal でデプロイする | Microsoft Docs"
-description: "Update 3 以降を実行する StorSimple 8000 シリーズ デバイスと StorSimple デバイス マネージャー サービスをデプロイするための手順とベスト プラクティスを説明します。"
+title: StorSimple 8000 シリーズ デバイスを Azure Portal でデプロイする | Microsoft Docs
+description: Update 3 以降を実行する StorSimple 8000 シリーズ デバイスと StorSimple デバイス マネージャー サービスをデプロイするための手順とベスト プラクティスを説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
 
@@ -33,13 +33,13 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。 これ�
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 開始する前に、構成チェック リストを確認することをお勧めします。 デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
 > [!NOTE]
-> Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。 7000 シリーズ デバイスの詳細については、 [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)を参照してください。 7000 シリーズのデプロイについては、『 [StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。 
+> Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。 7000 シリーズ デバイスについて詳しくは、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) をご覧ください。 7000 シリーズのデプロイについては、『 [StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。 
 
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 StorSimple デバイスを構成し、StorSimple デバイス マネージャー サービスに接続するには、次の必須手順を実行します。 必須手順に加えて、デプロイ中にオプションの手順が必要になる場合があります。 デプロイの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
 
-| 手順 | Description |
+| 手順 | [説明] |
 | --- | --- |
 | **前提条件** |これらの前提条件は、今回のデプロイの準備として完了する必要があります。 |
 | [デプロイの構成チェック リスト](#deployment-configuration-checklist) |このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |
@@ -67,14 +67,14 @@ StorSimple デバイスを構成し、StorSimple デバイス マネージャー
 
 * [StorSimple デプロイ構成チェックリストをダウンロードする](http://www.microsoft.com/download/details.aspx?id=49159)
 
-## <a name="deployment-prerequisites"></a>デプロイメントの前提条件
+## <a name="deployment-prerequisites"></a>デプロイの前提条件
 ここでは、StorSimple デバイス マネージャー サービスと StorSimple デバイスの構成の前提条件について説明します。
 
 ### <a name="for-the-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスの場合
 開始する前に次の点を確認します。
 
 * アクセスの資格情報を持つ Microsoft アカウントがあること。
-* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
+* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 * Microsoft Azure サブスクリプションが StorSimple デバイス マネージャー サービスに対して有効である。 サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)を通じて購入する必要があります。
 * PuTTY などのターミナル エミュレーション ソフトウェアにアクセスできる。
 
@@ -196,7 +196,20 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="view-the-pinout-diagram-for-serial-cable-for-storsimple"></a>StorSimple 用シリアル ケーブルのピン配置図
+StorSimple シリアル コンソール ケーブルには、次のピン配置図を使うことができます。
+
+DB9 メス コネクタは P1 であり、3.5 mm コネクタは P2 です。
+
+![StorSimple シリアル コンソール ケーブルのピン配置図 1](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+
+次の図に示すように、ステレオ ジャックの先端は PIN 3 RX、中間は PIN 2 TX、根元は PIN 1 GND と見なされます。
+
+![StorSimple シリアル コンソール ケーブルのピン配置図 2](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+
+
+
+## <a name="next-steps"></a>次の手順
 * [StorSimple Cloud Appliance の構成](storsimple-8000-cloud-appliance-u2.md)を行います。
 * [StorSimple デバイス マネージャー サービス](storsimple-8000-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
 

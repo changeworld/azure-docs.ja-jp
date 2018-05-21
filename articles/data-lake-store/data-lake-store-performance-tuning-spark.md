@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store の Spark パフォーマンス チューニング ガイドライン | Microsoft Docs"
-description: "Azure Data Lake Store の Spark パフォーマンス チューニング ガイドライン"
+title: Azure Data Lake Store の Spark パフォーマンス チューニング ガイドライン | Microsoft Docs
+description: Azure Data Lake Store の Spark パフォーマンス チューニング ガイドライン
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 3c8ef6fd200f67ebc216c967bb1a6250ddcc15d4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a807bea13063d2a0b3c1c71ddb6c98aa2d2568d3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>HDInsight の Spark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
 
@@ -44,7 +42,7 @@ Spark ジョブを実行するときは、以下が ADLS のパフォーマン�
 
 **Num-executors**Num-executors では並列で実行できるタスクの最大数を設定します。  並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
 
-**Executor-memory** 各 Executor に割り当てられるメモリの量です。  各 Executor に必要なメモリは、ジョブによって異なります。  複雑な操作では、多くのメモリが必要です。  読み取りと書き込みのような単純な操作では、必要なメモリは少なくなります。  Ambari で各 Executor のメモリの量を表示できます。  Ambari で Spark に移動し、[Configs] \(構成) タブを表示します。  
+**Executor-memory** 各 Executor に割り当てられるメモリの量です。  各 Executor に必要なメモリは、ジョブによって異なります。  複雑な操作では、多くのメモリが必要です。  読み取りと書き込みのような単純な操作では、必要なメモリは少なくなります。  Ambari で各 Executor のメモリの量を表示できます。  Ambari で Spark に移動し、[Configs](構成) タブを表示します。  
 
 **Executor-cores** Executor あたりに使用するコアの量を設定します。この量で、Executor ごとに実行できる並列スレッドの数が決定されます。  たとえば、executor-cores = 2 の場合、各 Executor は 2 つの並列タスクを実行できます。  必要な executor-cores はジョブによって決まります。  大量の I/O を使用するジョブでは、タスクあたりのメモリの消費量は多くないため、各 Executor はより多くの並列タスクを処理できます。
 
@@ -65,7 +63,7 @@ I/O 集中型のジョブの同時実行性を向上させる一般的な方法�
     executor-cores = 4
 Executor-cores の数を増やすと多くの並列処理を行うことができます。Executor-cores を変えて試してみてください。  さらに複雑な操作を含むジョブの場合は、Executor あたりのコアの数を減らす必要があります。  Executor-cores を 4 より大きくすると、ガベージ コレクションが非効率的になりパフォーマンスが低下する可能性があります。
 
-**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
+**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] (構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 注: ウィンドウには、既定の YARN コンテナーのサイズも表示されます。  YARN コンテナーのサイズは、Executor パラメーターごとのメモリと同じです。
 
     Total YARN memory = nodes * YARN memory per node

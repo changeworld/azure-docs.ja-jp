@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights のインタラクティブな Workbooks で使用状況データを調査して共有する | Microsoft docs"
-description: "Web アプリのユーザーの統計分析について説明します。"
+title: Azure Application Insights のインタラクティブな Workbooks で使用状況データを調査して共有する | Microsoft docs
+description: Web アプリのユーザーの統計分析について説明します。
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3edaefa942b834a070c55fe28daf60c74ea9f59d
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.author: mbullwin; daviste
+ms.openlocfilehash: a871378b3e2cc0b34c925593c6f01952de3aa08e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Application Insights のインタラクティブなブックで使用状況データを調査して共有する
 
@@ -114,9 +114,9 @@ Workbooks は Application Insights リソース内の、ユーザー個人の **
 2. ピン留めするブックの横にある [...] ボタンをクリックします。
 3. **[ダッシュボードにピン留め]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)

@@ -1,35 +1,42 @@
 ---
-title: "Azure Stack に安全に格納されたパスワードで VM をデプロイする | Microsoft Docs"
-description: "Azure Stack Key Vault に格納されているパスワードを使って VM をデプロイする方法を説明します"
+title: Azure Stack に安全に格納されたパスワードで VM をデプロイする | Microsoft Docs
+description: Azure Stack Key Vault に格納されているパスワードを使って VM をデプロイする方法を説明します
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2017
+ms.date: 05/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8d9a2cebd7a28ca13cf88518a7c83b217af4c0e1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Key Vault に格納されているパスワードを取得して仮想マシンを作成する
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Azure Stack Key Vault に格納されているセキュリティ保護されたパスワードを使用して仮想マシンを作成する
 
-デプロイ時にセキュリティで保護されたパスワードなどの値を渡す必要があるときは、その値をシークレットとして Azure Stack Key Vault に格納し、Azure Resource Manager テンプレートで参照できます。 リソースをデプロイするたびにシークレットを手動で入力する必要はなく、シークレットにアクセスできるユーザーまたはサービス プリンシパルを指定することもできます。 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-この記事では、Key Vault に格納されているパスワードを取得することによって Azure Stack に Windows 仮想マシンをデプロイするために必要な手順について説明します。 したがって、パスワードがテンプレート パラメーター ファイルにプレーン テキストで記述されることはありません。 この手順は、Azure Stack 開発キットから、または VPN 経由で接続している場合は外部クライアントから実行できます。
+この記事では、Azure Stack Key Vault に格納されたパスワードを使用して、Windows Server 仮想マシンをデプロイする手順を説明します。 Key Vault パスワードを使用する方が、プレーンテキスト パスワードを渡すよりも安全性が高くなります。
+
+## <a name="overview"></a>概要
+
+Azure Stack Key Vault にはパスワードなどの値をシークレットとして格納できます。 シークレットの作成後、そのシークレットは Azure Resource Manager テンプレートで参照できます。 Resource Manager でシークレットを使用する利点は次のとおりです。
+
+* リソースをデプロイするたびにシークレットを手動で入力する必要がありません。
+* シークレットにアクセスできるユーザーまたはサービス プリンシパルを指定できます。
 
 ## <a name="prerequisites"></a>前提条件
- 
-* ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。  
-* [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)  
+
+* ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。
+* [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)
 * [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
 
 次の手順では、Key Vault に格納されているパスワードを取得することによって仮想マシンを作成するために必要なプロセスについて説明します。
@@ -37,6 +44,8 @@ ms.lasthandoff: 12/11/2017
 1. Key Vault シークレットを作成します。
 2. azuredeploy.parameters.json ファイルを更新します。
 3. テンプレートをデプロイします。
+
+>注: この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
 
 ## <a name="create-a-key-vault-secret"></a>Key Vault シークレットを作成する
 
@@ -74,7 +83,7 @@ Set-AzureKeyVaultSecret `
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>azuredeploy.parameters.json ファイルを更新する
 
-環境に従って仮想マシンの値の KeyVault URI、secretName、adminUsername で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。 
+環境に従って仮想マシンの値の KeyVault URI、secretName、adminUsername で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。
 
 ```json
 {
@@ -114,13 +123,13 @@ New-AzureRmResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
+
 テンプレートが正常にデプロイされると、次の出力が表示されます。
 
 ![デプロイの出力](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
 [Key Vault を使ってサンプル アプリをデプロイする](azure-stack-kv-sample-app.md)
 
 [Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
-

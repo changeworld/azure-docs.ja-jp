@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery を使用してオンプレミスのマシンを Azure に移行する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して、オンプレミスのマシンを Azure に移行する方法について説明します。"
+title: Azure Site Recovery を使用してオンプレミスのマシンを Azure に移行する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して、オンプレミスのマシンを Azure に移行する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 656ba02401d9ba610d0ebe33a683164af0b871f0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3e82983ff171e638415d6e7cafe0cb034dd978af
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/28/2018
 これは、シリーズ 3 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクがすでに完了していることを前提としています。
 
 1. [Azure を準備する](tutorial-prepare-azure.md)
-2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または Hyper-V サーバーの準備。
+2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V] (hyper-v-prepare-on-premises-tutorial.md) サーバーを準備する。
 
 開始する前に、ディザスター リカバリーのために [VMware](vmware-azure-architecture.md) または [Hyper-V](hyper-v-azure-architecture.md) アーキテクチャを確認しておくと役立ちます。
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 02/28/2018
 ターゲット リソースを選択して確認します。
 
 1. **[インフラストラクチャの準備]** > **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
-2. Resource Manager デプロイメント モデルを指定します。
+2. Resource Manager デプロイ モデルを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する

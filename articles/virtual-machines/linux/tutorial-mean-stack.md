@@ -1,6 +1,6 @@
 ---
-title: Azure の Linux VM に MEAN スタックを作成する | Microsoft Docs
-description: Azure の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する方法について説明します。
+title: チュートリアル - Azure の Linux 仮想マシンに MEAN スタックを作成する | Microsoft Docs
+description: このチュートリアルでは、Azure 内の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2bd89bf25f619caef07ae099232add55dbe0cda7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a9adcd03c5f75b4065273c4ccf657b01bc3d96d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Azure の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル: Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
-本チュートリアルでは、Azure の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを実装する方法について説明します。 MEAN スタックを作成することで、データベースに書籍を追加したり、データベースの書籍を削除したり、一覧表示したりすることが可能になります。 学習内容は次のとおりです。
+このチュートリアルでは、Azure 内の Linux 仮想マシン (VM) に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを実装する方法について説明します。 MEAN スタックを作成することで、データベースに書籍を追加したり、データベースの書籍を削除したり、一覧表示したりすることが可能になります。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Linux VM の作成
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 
 ## <a name="create-a-linux-vm"></a>Linux VM の作成
@@ -323,7 +323,7 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Web ブラウザーを開いて、VM 用に記録したアドレスに移動します。 例: *http://13.72.77.9:3300*。 次のようなページが表示されます。
+2. Web ブラウザーを開いて、VM 用に記録したアドレスに移動します。 たとえば、*http://13.72.77.9:3300* です。 次のようなページが表示されます。
 
     ![書籍のレコード](media/tutorial-mean/meanstack-init.png)
 

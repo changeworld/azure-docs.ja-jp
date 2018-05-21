@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b668ff70d627a63fb34012b07d9b41fc6f6ecb6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7dc7a1dbf024b6d334ec374f78d5e912db3835c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
@@ -297,7 +297,7 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Maps でのジオコーディングの詳細については、[検索](https://docs.microsoft.com/rest/api/azure-maps/search)のリファレンス ページを参照してください。
+Azure Maps でのジオコーディングの詳細については、[検索](https://docs.microsoft.com/rest/api/maps/search)のリファレンス ページを参照してください。
 
 [Maps トラフィック サービスの対象範囲となる領域](traffic-coverage.md)を確認してください。 
 
