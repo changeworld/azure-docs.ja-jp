@@ -1,20 +1,20 @@
 ---
-title: "Azure マネージ アプリケーションのリソースを更新する | Microsoft Docs"
-description: "Azure マネージ アプリケーションのマネージ リソース グループを操作する方法について説明します。"
+title: Azure マネージ アプリケーションのリソースを更新する | Microsoft Docs
+description: Azure マネージ アプリケーションのマネージ リソース グループを操作する方法について説明します。
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: d3c955d7be0e7e6d45751c0e685bad498e524d94
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 7c2b38055771dae458e4a3a56c2c98231335ae03
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Azure マネージ アプリケーションのマネージ リソース グループを操作する
 
@@ -93,7 +93,7 @@ az policy assignment show --name locationAssignment --scope $managedGroup --quer
 
 ![ポリシーの割り当ての表示](./media/update-managed-resources/assignment.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * マネージ アプリケーションの概要については、[マネージ アプリケーションの概要](overview.md)に関するページをご覧ください。
 * サンプル プロジェクトについては、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。

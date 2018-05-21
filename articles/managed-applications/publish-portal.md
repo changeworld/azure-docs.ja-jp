@@ -1,20 +1,20 @@
 ---
-title: "ポータル経由で Azure マネージ アプリケーションを発行する | Microsoft Docs"
-description: "組織のメンバーを対象とする Azure マネージ アプリケーションを Azure ポータルを使用して作成する方法について説明します。"
+title: ポータル経由で Azure マネージ アプリケーションを発行する | Microsoft Docs
+description: 組織のメンバーを対象とする Azure マネージ アプリケーションを Azure ポータルを使用して作成する方法について説明します。
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 764eb479733a7d4acdb6e6c3eee721cb4a161c88
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 69d31a7199347574e8866b275ec17ba3997d80c2
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Azure ポータル経由でサービス カタログ アプリケーションを発行する
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/07/2017
 
    ![マネージ アプリケーションを作成する](./media/publish-portal/create-app.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * マネージ アプリケーションの概要については、[マネージ アプリケーションの概要](overview.md)に関するページをご覧ください。
 * マネージ アプリケーションの例については、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。

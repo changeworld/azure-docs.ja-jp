@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Help Scout の統合 | Microsoft Docs"
-description: "Azure Active Directory と Help Scout の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Help Scout の統合 | Microsoft Docs'
+description: Azure Active Directory と Help Scout の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 5608df300ad3b5d3fd42bd904a52d43d115ebf53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 596a1ba27516755e586d88ab56a20a1daed63fc2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル: Azure Active Directory と Help Scout の統合
 
@@ -30,7 +30,7 @@ Help Scout と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Help Scout にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -105,7 +105,7 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Help Scout のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-    a. **識別子**は、Help Scout の "**対象ユーザー URI (サービス プロバイダーのエンティティ ID)**" で、先頭は `urn:` です
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **識別子**は、Help Scout の "**対象ユーザー URI (サービス プロバイダーのエンティティ ID)**" で、先頭は `urn:` です
 
     b. **応答 URL** は、Help Scout の "**ポスト バック URL (Assertion Consumer Service URL)**" で、先頭は `https://` です 
 
@@ -129,31 +129,31 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
 
 7. **[Help Scout 構成]** セクションで、**[Help Scout の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-helpscout-tutorial/config.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-helpscout-tutorial/config.png) 
 
 8. 別の Web ブラウザー ウィンドウで、Help Scout 企業サイトに管理者としてログインします。
 
 9. ログインしたら、上部のメニューで **[管理]** をクリックし、ドロップダウン メニューから **[会社]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-helpscout-tutorial/settings1.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-helpscout-tutorial/settings1.png) 
  
 10. 左側のメニューで **[認証]** を選択します。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-helpscout-tutorial/settings2.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-helpscout-tutorial/settings2.png) 
 
 11. [SAML 設定] セクションが表示されます。ここで次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-helpscout-tutorial/settings3.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-helpscout-tutorial/settings3.png) 
  
-    a. **[Post-back URL (Assertion Consumer Service URL)]\(ポスト バック URL (Assertion Consumer Service URL)\)** の値をコピーし、Azure Portal の **[Help Scout のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Post-back URL (Assertion Consumer Service URL)]\(ポスト バック URL (Assertion Consumer Service URL)\)** の値をコピーし、Azure Portal の **[Help Scout のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     
     b. **[Audience URI (Service Provider Entity ID)]\(対象ユーザー URI (サービス プロバイダーのエンティティ ID)\)** の値をコピーし、Azure Portal の **[Help Scout のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
 12. **[SAML を有効にする]** をオンにして、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-helpscout-tutorial/settings4.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-helpscout-tutorial/settings4.png) 
  
-    a. **[シングル サインオン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
     
     b. **[証明書のアップロード]** をクリックして、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
 
@@ -164,7 +164,7 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
     e. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -244,7 +244,7 @@ Help Scout で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

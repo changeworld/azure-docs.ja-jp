@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 52d469236d607a145430134c24c4237346dafb4c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 04/23/2018
 | [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
 
 > [!NOTE]  
-> 新しいストレージ クォータが適用されるまでに最大 2 時間かかることがあります。 
+> ストレージ クォータが適用されるまでに最大 2 時間かかることがあります。 
 > 
-> 
+
 
 ## <a name="network-quota-types"></a>Network クォータの種類
 | **項目** | **既定値** | **説明** |

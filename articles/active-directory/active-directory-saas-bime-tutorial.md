@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Bime の統合 | Microsoft Docs"
-description: "Azure Active Directory と Bime の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Bime の統合 | Microsoft Docs'
+description: Azure Active Directory と Bime の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: f48c784fe2c1fa30a034147571fac218919fe574
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 53272126310b8c1ba38f5c81518073fded18b6bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
@@ -29,7 +29,7 @@ Bime と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Bime に自動的にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Bime の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Bime**」と入力します。
 
@@ -86,11 +86,11 @@ Bime で、Azure AD の **[ユーザー名]** の値を **[Username]** の値と
 
 Bime で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Bime テスト ユーザーの作成](#creating-a-bime-test-user)** - Bime で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure Portal の **Bime** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bime-tutorial/tutorial_bime_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bime-tutorial/tutorial_bime_samlbase.png)
 
 3. **[Bime のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bime-tutorial/tutorial_bime_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bime-tutorial/tutorial_bime_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.Bimeapp.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.Bimeapp.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.Bimeapp.com` の形式で URL を入力します。
 
@@ -119,27 +119,27 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
  
 4. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bime-tutorial/tutorial_bime_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bime-tutorial/tutorial_bime_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bime-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bime-tutorial/tutorial_general_400.png)
 
 6. **[Bime 構成]** セクションで、**[Bime を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bime-tutorial/tutorial_bime_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bime-tutorial/tutorial_bime_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、Bime 企業サイトに管理者としてログインします。
 
 8. ツールバーで、**[管理者]**、**[アカウント]** の順にクリックします。
    
-    ![管理者](./media/active-directory-saas-bime-tutorial/ic775558.png "Admin")
+    ![管理](./media/active-directory-saas-bime-tutorial/ic775558.png "Admin")
 
 9. アカウント構成ページで、次の手順に従います。
    
     ![シングル サインオンの構成](./media/active-directory-saas-bime-tutorial/ic775559.png "Configure Single Sign-On")
    
-    a. **[SAML 認証を有効にする]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML 認証を有効にする]** を選択します。
 
     b. **[リモート ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -148,7 +148,7 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
     d. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -174,7 +174,7 @@ Bime で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-bime-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -192,7 +192,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 2. ツールバーで、**[管理者]**、**[ユーザー]** の順にクリックします。
    
-    ![管理者](./media/active-directory-saas-bime-tutorial/ic775561.png "Admin")
+    ![管理](./media/active-directory-saas-bime-tutorial/ic775561.png "Admin")
 
 3. **[ユーザー リスト]** で、**[新しいユーザーの追加]** ("+") をクリックします。
    
@@ -202,7 +202,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
    
     ![ユーザーの詳細](./media/active-directory-saas-bime-tutorial/ic775563.png "User Details")
    
-    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
  
@@ -226,9 +226,9 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Bime]**を選択します。
+2. アプリケーションの一覧で **[Bime]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-bime-tutorial/tutorial_bime_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-bime-tutorial/tutorial_bime_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -253,7 +253,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

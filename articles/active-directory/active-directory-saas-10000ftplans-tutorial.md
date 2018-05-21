@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と 10,000ft Plans の統合 | Microsoft Docs"
-description: "Azure Active Directory と 10,000ft Plans の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と 10,000ft Plans の統合 | Microsoft Docs'
+description: Azure Active Directory と 10,000ft Plans の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 76e91c1a4f52337fe7e24d2c7dc727d1fb0ebef2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 340bbd62de7dab9bd0ae45da3105ec2ffd271dfe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>チュートリアル: Azure Active Directory と 10,000ft Plans の統合
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/11/2017
 - ユーザーが自分の Azure AD アカウントで自動的に 10,000ft Plans にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. [検索] ボックスに、「 **10,000ft Plans**」と入力します。
 
@@ -90,7 +90,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[10,000ft Plans のテスト ユーザーの作成](#creating-a-10000ft-plans-test-user)** - 10,000ft Plans で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,39 +100,39 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 1. Azure Portal の **10,000ft Plans** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
 
 3. **[10,000ft Plans のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://app.10000ft.com`」を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://app.10000ft.com`」を入力します。
 
     b. **[識別子]** ボックスに、URL として「`https://app.10000ft.com/saml/metadata`」を入力します。
 
     > [!NOTE] 
     > カスタム ドメインがある場合は、 **[識別子]** の値が異なります。 この値を取得するには、[10,000ft Plans サポート チーム](https://www.10000ft.com/plans/support)に問い合わせてください。 
  
-4. **[SAML 署名証明書]** セクションで、**[証明書 (未加工)]** をクリックし、コンピューターに証明書ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_general_400.png)
 
 6. **[10,000ft Plans Configuration (10,000ft Plans 構成)]** セクションで、**[Configure 10,000ft Plans (10,000ft Plans を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
 
 7. **10,000ft Plans** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (未加工)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [10,000ft Plans サポート チーム](https://www.10000ft.com/plans/support)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -157,7 +157,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-10000ftplans-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -184,9 +184,9 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[10,000ft Plans]**を選択します。
+2. アプリケーションの一覧で **[10,000ft Plans]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -210,7 +210,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SAP NetWeaver の統合 | Microsoft Docs"
-description: "Azure Active Directory と SAP NetWeaver の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SAP NetWeaver の統合 | Microsoft Docs'
+description: Azure Active Directory と SAP NetWeaver の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 3987b833e5ed15082d3cc6b39bb160e3eaac6e91
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ef63353286a43afed9c8a909e121a75fc8a14c5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>チュートリアル: Azure Active Directory と SAP NetWeaver の統合
 
@@ -29,7 +29,7 @@ SAP NetWeaver と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで SAP NetWeaver に自動的にサインオン (シングル サインオン) する機能を有効にすることができます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -64,11 +64,11 @@ Azure AD への SAP NetWeaver の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「 **SAP NetWeaver**」と入力します。
 
@@ -91,7 +91,7 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[SAP NetWeaver のテスト ユーザーの作成](#creating-an-sap-netweaver-test-user)** - SAP NetWeaver で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,17 +101,17 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **SAP NetWeaver** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_samlbase.png)
 
 3. **[SAP NetWeaver のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<your company instance of SAP NetWeaver>` の形式で URL を入力します。
 
@@ -122,20 +122,20 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
 
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_general_400.png)
     
 6. **[SAP NetWeaver 構成]** セクションで、**[SAP NetWeaver を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_configure.png) 
 
 7. **SAP NetWeaver** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML エンティティ ID** を [SAP NetWeaver サポート](https://www.sap.com/support.html)に送る必要があります。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -161,7 +161,7 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-netweaver-tutorial/create_aaduser_04.png) 
 
-    a. **[Name]** ボックスに「**Britta Simon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]** ボックスに「**Britta Simon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、Britta Simon の**電子メール アドレス**を入力します。
 
@@ -185,9 +185,9 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[SAP NetWeaver]**を選択します。
+2. アプリケーションの一覧で **[SAP NetWeaver]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sap-netweaver-tutorial/tutorial_sapnetweaver_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -212,7 +212,7 @@ SAP NetWeaver で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

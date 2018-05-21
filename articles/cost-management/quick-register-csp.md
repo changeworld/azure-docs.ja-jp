@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: 839f99153e0b7458d205c1afb61a05c75cbe0fb7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b9dc2064a4d90b924730e2615378892b17340baf
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
@@ -60,7 +60,7 @@ CSP パートナーであれば、Azure Cost Management に登録できます。
 
 間接 CSP 顧客またはパートナーのアクセスを有効にするには、「[試用版の登録を作成する](#create-a-trial-registration)」の手順に従って試用版の登録を設定します。 次に、以下の手順を完了して、Cloudyn エンティティ グループを使用して間接 CSP データをセグメント化します。 次に、エンティティ グループに適切なユーザーのアクセス許可を割り当てます。
 
-1. [エンティティの作成](tutorial-user-access.md#create-entities)に関する情報を参照して、エンティティ グループを作成します。
+1. [エンティティの作成](tutorial-user-access.md#create-and-manage-entities)に関する情報を参照して、エンティティ グループを作成します。
 2. 「[Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)」(サブスクリプションをコスト エンティティに割り当てる) の手順に従って実行します。 間接 CSP 顧客のアカウントとその Azure サブスクリプションを、以前に作成したエンティティに関連付けます。
 3. 「[Create a user with admin access](tutorial-user-access.md#create-a-user-with-admin-access)」(管理者アクセス権をユーザーを作成する) の手順に従って、管理者アクセス権を使用してユーザー アカウントを作成します。 次に、間接アカウント用に以前に作成した特定のエンティティに対して、ユーザー アカウントが管理者アクセス権を持っていることを確認します。
 

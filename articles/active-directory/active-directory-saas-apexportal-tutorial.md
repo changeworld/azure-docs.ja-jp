@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Apex Portal の統合 | Microsoft Docs"
-description: "Azure Active Directory と Apex Portal の間のシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Apex Portal の統合 | Microsoft Docs'
+description: Azure Active Directory と Apex Portal の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 569151cc1ceaf7797c7de89f9093fad92a414d2e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 59d390fb25c3c3fd7efaaef89158e5a97d80c8f0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>チュートリアル: Azure Active Directory と Apex Portal の統合
 
@@ -30,7 +30,7 @@ Apex Portal と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Apex Portal にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 
     ![[Apex Portal のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-apexportal-tutorial/tutorial_apexonline_url.png)
 
-    a. **[識別子]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` のパターンを使用して URL を入力します。
 
@@ -117,7 +117,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
  
 4. Apex Portal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-apexportal-tutorial/attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-apexportal-tutorial/attribute.png)
 
 5. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -127,17 +127,17 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
     | LASTNAME | User.surname |
     | MAIL | User.mail |    
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-apexportal-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-apexportal-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-apexportal-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-apexportal-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -150,7 +150,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 8. **Apex Portal** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Apex Portal サポート チーム](mailto:support@apexanalytix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -203,7 +203,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Apex Portal]**を選択します。
+2. アプリケーションの一覧で **[Apex Portal]** を選択します。
 
     ![アプリケーションの一覧の Apex Portal のリンク](./media/active-directory-saas-apexportal-tutorial/tutorial_apexonline_app.png)  
 
@@ -231,7 +231,7 @@ Apex Portal で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

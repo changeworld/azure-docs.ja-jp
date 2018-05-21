@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce5c6ccd4c2e51375bbbb4df677ee96c839b30f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f9c3bcb6b92b43fe5b5bad72c99e6ce199c17448
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -48,7 +48,7 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 
 |タイトル  |[説明]  |
 |---------|---------|
-| [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によって Capture ファイルが作成されると、Event Grid は関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
+| [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
 | [イベント スキーマ](event-schema-event-hubs.md) | Event Hubs イベントのフィールドを示します。 |
 
 ## <a name="iot-hub"></a>IoT Hub

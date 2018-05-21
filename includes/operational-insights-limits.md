@@ -5,14 +5,14 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 各サブスクリプションの Log Analytics リソースには、次の制限が適用されます。
 
@@ -39,5 +39,5 @@ Log Analytics の各ワークスペースには次の制限が適用されます
 | カテゴリ | 制限 | 説明
 | --- | --- | --- |
 | データ コレクター API | 1 回の投稿の最大サイズは 30 MB<br>フィールド値の最大サイズは 32 KB | 大量の場合は複数の投稿に分割します<br>32 KB を超えるフィールドは切り詰められます。 |
-| Search API | 非集計データの場合に返されるレコードは 5,000 件<br>集計データの場合に返されるのは 500,000 件 | 集計データは、`measure` コマンドを含む検索です
+| Search API | 非集計データの場合に返されるレコードは 5,000 件<br>集計データの場合に返されるのは 500,000 件 | 集計データは、`summarize` コマンドを含む検索です
  

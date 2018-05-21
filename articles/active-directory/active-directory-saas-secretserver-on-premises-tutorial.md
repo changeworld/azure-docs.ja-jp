@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: c3a8f4643175e1da4dd278af238a436a34151616
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8aaf31022d54ebbd8c7c3f0bc72763f8c5139cbc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>チュートリアル: Azure Active Directory と Secret Server (On-Premises) の統合
 
@@ -30,7 +30,7 @@ Secret Server (On-Premises) と Azure AD の統合には、次の利点があり
 - ユーザーが各自の Azure AD アカウントで Secret Server (On-Premises) に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +106,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![[Secret Server (On-Premises) のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
 
-    a. **[識別子]** ボックスに、次の例のようにユーザーが選択した値を入力します。`https://secretserveronpremises.azure`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の例のようにユーザーが選択した値を入力します。`https://secretserveronpremises.azure`
 
     b. **[応答 URL]** ボックスに、`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx ` のパターンを使用して URL を入力します。
 
@@ -216,7 +216,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

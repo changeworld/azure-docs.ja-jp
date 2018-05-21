@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Land Gorilla Client の統合 | Microsoft Docs"
-description: "Azure Active Directory と Land Gorilla の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Land Gorilla Client の統合 | Microsoft Docs'
+description: Azure Active Directory と Land Gorilla の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 30c34deff9e8ec4a7df90a947d3950e4f84c9c43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f69bfdf2be89a5c4ae882491bfde8678a11bddbe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>チュートリアル: Azure Active Directory と Land Gorilla Client の統合
 
@@ -29,7 +29,7 @@ Land Gorilla Client と Azure AD の統合には、次の利点があります�
 - ユーザーが自分の Azure AD アカウントで自動的に Land Gorilla Client にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -62,17 +62,17 @@ Azure AD への Land Gorilla Client の統合を構成するには、ギャラ�
 
 **ギャラリーから Land Gorilla Client を追加するには、次の手順に従います。**
 
-1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Land Gorilla Client**」と入力します。
 
@@ -96,7 +96,7 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - 制限されたグループで Azure AD のシングル サインオンをテストします。
 3. **[Land Gorilla のテスト ユーザーの作成](#creating-a-land-gorilla-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -106,17 +106,17 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 
 1. Microsoft Azure 管理ポータルの **Land Gorilla Client** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
 
 3. **[Land Gorilla Client のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_url_02.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_url_02.png)
 
-    a. **[識別子]** ボックスに、次のいずれかの形式で値を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のいずれかの形式で値を入力します。 
     
     `https://<customer domain>.landgorilla.com/` 
     
@@ -137,11 +137,11 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-landgorilla-tutorial/tutorial_general_400.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-landgorilla-tutorial/tutorial_general_400.png) 
 
 6. アプリケーションの SSO 構成を Land Gorilla 側で完成させるには、[Land Gorilla Client サポート チーム](https://www.landgorilla.com/support/)に問い合わせてダウンロード済みの**メタデータ XML** ファイルを提供してください。
 
@@ -169,7 +169,7 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -195,7 +195,7 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 
 2. アプリケーションの一覧から、**Land Gorilla Client** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -223,7 +223,7 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

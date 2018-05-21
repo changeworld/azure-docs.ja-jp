@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Projectplace の統合 | Microsoft Docs"
-description: "Azure Active Directory と Projectplace の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Projectplace の統合 | Microsoft Docs'
+description: Azure Active Directory と Projectplace の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: d05a9f3b84e6fd0c16b27c6d84fecf7b38898c53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3301e002315e12feb0ac886d4d8451007c36e6ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>チュートリアル: Azure Active Directory と Projectplace の統合
 
@@ -29,7 +29,7 @@ Projectplace と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Projectplace にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Projectplace の統合を構成するには、ギャラリーか
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Projectplace**」と入力します。
 
@@ -86,11 +86,11 @@ Projectplace で、Azure AD の **[ユーザー名]** の値を **[Username]** �
 
 Projectplace で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Projectplace テスト ユーザーの作成](#creating-a-projectplace-test-user)** - Projectplace で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,28 +100,28 @@ Projectplace で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **Projectplace** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_samlbase.png)
 
 3. **[Projectplace のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_url.png)
 
     **[サインオン URL]** ボックスに、`https://<company>.projectplace.com` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Projectplace クライアント サポート チーム](https://success.planview.com/Projectplace/Support)に問い合わせてください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Projectplace クライアント サポート チーム](https://success.planview.com/Projectplace/Support)に問い合わせてください。 
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-projectplace-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-projectplace-tutorial/tutorial_general_400.png)
 
 7. **Projectplace** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Projectplace サポート チーム](https://success.planview.com/Projectplace/Support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -129,7 +129,7 @@ Projectplace で Azure AD のシングル サインオンを構成してテス�
 >シングル サインオンの構成は、[Projectplace サポート チーム](https://success.planview.com/Projectplace/Support)が実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -154,7 +154,7 @@ Projectplace で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-projectplace-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -174,7 +174,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
    
     ![ユーザー](./media/active-directory-saas-projectplace-tutorial/ic790228.png "People")
 
-3. **[Add Member]**をクリックします。
+3. **[Add Member]** をクリックします。
    
     ![メンバーの追加](./media/active-directory-saas-projectplace-tutorial/ic790232.png "メンバーの追加")
 
@@ -182,7 +182,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
    
     ![新しいメンバー](./media/active-directory-saas-projectplace-tutorial/ic790233.png "新しいメンバー")
    
-    a. **[New Members]** テキストボックスに、プロビジョニングする有効な AAD アカウントのメール アドレスを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[New Members]** テキストボックスに、プロビジョニングする有効な AAD アカウントのメール アドレスを入力します。
    
     b. **[送信]** をクリックします。
 
@@ -203,9 +203,9 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Projectplace]**を選択します。
+2. アプリケーションの一覧で **[Projectplace]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-projectplace-tutorial/tutorial_projectplace_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -231,7 +231,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

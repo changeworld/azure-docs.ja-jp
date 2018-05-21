@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/14/2018
 | 記事の紹介 |  |
 |:---:| --- |
 | Azure AD によって解決されるアプリケーション管理に関する問題の概要 |[Azure Active Directory (AD) を使ったアプリケーションの管理](manage-apps/what-is-application-management.md) |
-| シングル サインオンの有効化、アプリにアクセスできるユーザーの定義、ユーザーがアプリを起動する方法に関連した、Azure AD のさまざまな機能の概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md) |
+| シングル サインオンの有効化、アプリにアクセスできるユーザーの定義、ユーザーがアプリを起動する方法に関連した、Azure AD のさまざまな機能の概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md) |
 | アプリを Azure AD に統合するときに必要なさまざまな手順の概要 |[アプリケーションと Azure Active Directory の統合](manage-apps/plan-an-application-integration.md)<br /><br />[SaaS アプリへのシングル サインオンの有効化](active-directory-enterprise-apps-manage-sso.md)<br /><br />[アプリへのアクセスの管理](active-directory-managing-access-to-apps.md) |
 | Azure AD でのアプリの表現方法に関する技術的な説明 |[アプリケーションを Azure AD に追加する方法と理由](active-directory-how-applications-are-added.md) |
 
@@ -52,8 +52,8 @@ ms.lasthandoff: 05/14/2018
 
 | 記事の紹介 |  |
 |:---:| --- |
-| フェデレーションとその他の種類のサインオンの概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md) |
-| 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](active-directory-saas-tutorial-list.md)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md) |
+| フェデレーションとその他の種類のサインオンの概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md) |
+| 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](active-directory-saas-tutorial-list.md)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md) |
 | [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) などのアプリ用にシングル サインオンを構成する方法に関する 150 以上のアプリ チュートリアル |[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md) |
 | シングル サインオンの構成を手動で設定してカスタマイズする方法 |[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリへのフェデレーション シングル サインオンを構成する方法](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md) |
 | SAML プロトコルを使用するフェデレーション アプリのトラブルシューティング ガイド |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |
@@ -66,7 +66,7 @@ ms.lasthandoff: 05/14/2018
 
 | 記事の紹介 |  |
 |:---:| --- |
-| パスワード ベースの SSO のしくみと技術的な概要 |[パスワードベースのシングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
+| パスワード ベースの SSO のしくみと技術的な概要 |[パスワードベースのシングル サインオン](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | アカウント共有に関連したシナリオの概要と、Azure AD によるこれらの問題の解決方法 |[Azure AD とのアカウントの共有](active-directory-sharing-accounts.md) |
 | 定期的に特定のアプリのパスワードを自動的に変更 |[Automated Password Rollover (preview) (自動パスワード ロールオーバー (プレビュー))](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Azure AD パスワード管理拡張機能の Internet Explorer バージョンのデプロイおよびトラブルシューティング ガイド |[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
@@ -183,11 +183,11 @@ Azure AD アクセス パネルでは、エンド ユーザーがアプリを起
 
 | 記事の紹介 |  |
 |:---:| --- |
-| シングル サインオン アプリをユーザーにデプロイするために使用できるさまざまなオプションの比較 |[Azure AD 統合アプリケーションをユーザーにデプロイする](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
+| シングル サインオン アプリをユーザーにデプロイするために使用できるさまざまなオプションの比較 |[Azure AD 統合アプリケーションをユーザーにデプロイする](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | アクセス パネルとそのモバイル版である MyApps の概要 |[アクセス パネルと MyApps の概要](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Office 365 Web サイトから Azure AD アプリにアクセスする方法 |[Office 365 アプリ起動ツールの概要](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Intune Managed Browser モバイル アプリから Azure AD アプリにアクセスする方法 |[Intune Managed Browser](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
-| シングル サインオンを開始するディープ リンクを使用して Azure AD アプリにアクセスする方法 |[フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリの直接サインオン リンク](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
+| シングル サインオンを開始するディープ リンクを使用して Azure AD アプリにアクセスする方法 |[フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリの直接サインオン リンク](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 アクセス パネルは、 [Azure Active Directory のすべてのエディション](https://azure.microsoft.com/pricing/details/active-directory/)で使用できます。
 

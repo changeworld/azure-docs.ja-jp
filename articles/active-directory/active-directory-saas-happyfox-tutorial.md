@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と HappyFox の統合 | Microsoft Docs"
-description: "Azure Active Directory と HappyFox の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と HappyFox の統合 | Microsoft Docs'
+description: Azure Active Directory と HappyFox の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jeedes
-ms.openlocfilehash: f8b35f88af0ba7a0dbcf254f4db588e8e0ef9e2c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 21515b85812a3cf0b345154d2582d7236ab28d3c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>チュートリアル: Azure Active Directory と HappyFox の統合
 
@@ -29,7 +29,7 @@ HappyFox と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に HappyFox にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への HappyFox の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**HappyFox**」と入力します。
 
@@ -86,31 +86,31 @@ HappyFox で、Azure AD の **[ユーザー名]** の値を **[ユーザー名]*
 
 HappyFox で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[HappyFox テスト ユーザーの作成](#creating-a-happyfox-test-user)** - HappyFox で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure ポータルで Azure AD のシングル サインオンを有効にして、 HappyFox アプリケーションでシングル サインオンを構成します。
 
- **で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1. Azure Portal の **HappyFox** アプリケーションの統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_samlbase.png)
 
 3. **[HappyFox Domain and URLs]\(HappyFox のドメインと URL\)** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.happyfox.com/` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.happyfox.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.happyfox.com/saml/metadata/` の形式で URL を入力します。
 
@@ -119,38 +119,38 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/tutorial_general_400.png)
 
 6. **[HappyFox Configuration]\(HappyFox 構成\)** セクションで、**[Configure HappyFox]\ (HappyFox を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_configure.png) 
 
 7. HappyFox スタッフ ポータルにサインインして **[管理]** に移動し、**[統合]** タブをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/header.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/header.png) 
 
 8. [統合] タブで、**[SAML 統合]** にある **[構成]** をクリックし、[シングル サインオンの設定] を開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/configure.png) 
 
 9. [SAML configuration]\(SAML 構成\) セクションで、**[SSO Target URL]\(SSO ターゲット URL\)** テキストボックスに Azure Portal からコピーした **SAML のシングル サインオン サービスの URL** を貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/targeturl.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/targeturl.png)
 
 10. Azure Portal からダウンロードした証明書をメモ帳で開き、**[IdP Signature]\(IdP 署名\)** セクションにコンテンツを貼り付けます。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/cert.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/cert.png)
 
 11. **[設定の保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/savesettings.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/savesettings.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -176,7 +176,7 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-happyfox-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -202,7 +202,7 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[HappyFox]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-happyfox-tutorial/tutorial_happyfox_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -233,7 +233,7 @@ HappyFox で Azure AD のシングル サインオンを構成してテストす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

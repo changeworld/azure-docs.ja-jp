@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と IriusRisk の統合 | Microsoft Docs"
-description: "Azure Active Directory と IriusRisk の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と IriusRisk の統合 | Microsoft Docs'
+description: Azure Active Directory と IriusRisk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
-ms.openlocfilehash: e33d584b3e7eb939d669253e8c6ef40fd4f963c9
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: bdf46ff504a450b0c12183df911be6f0fd956f2a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル: Azure Active Directory と IriusRisk の統合
 
@@ -30,7 +30,7 @@ IriusRisk と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的にIriusRisk にサインオン (シングル サインオン) できるように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 
     ![[IriusRisk のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-iriusrisk-tutorial/tutorial_iriusrisk_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.iriusrisk.com/ui#!login` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.iriusrisk.com/ui#!login` のパターンを使用して URL を入力します。
 
     b. **[識別子]** テキストボックスに、値として「`iriusrisk-sp`」を入力します。
 
@@ -208,7 +208,7 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

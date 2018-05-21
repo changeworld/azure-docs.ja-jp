@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 01396ceba142a91a88040ac28c51275734476e5d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 3368a8a14a3d1314e4c7ecae9256071f1fe646f9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
 
@@ -44,16 +44,16 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | IPv4/IPv6 デュアルスタック | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 のサポート](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||
- **セキュリティ** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
+ **セキュリティ** | **Standard Microsoft (プレビュー)** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | CDN エンドポイントでの HTTPS のサポート | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [カスタム ドメイン HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | |**&#x2713;** |**&#x2713;** |
 | [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geo-filtering](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [認証トークン](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS 保護](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [独自の証明書の持ち込み](cdn-custom-ssl.md#option-2-enable-the-https-feature-with-your-own-certificate) |**&#x2713;** |  |  |  |
+| [独自の証明書の持ち込み](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  |  |  |
 ||||
-| **分析とレポート** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
+| **分析とレポート** | **Standard Microsoft (プレビュー)** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | [Azure 診断ログ](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Verizon からのコア レポート](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
 | [Verizon からのカスタム レポート](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
@@ -62,8 +62,8 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | [エッジ ノードのパフォーマンス](cdn-edge-performance.md)  |  | | |**&#x2713;** |
 | [リアルタイム アラート](cdn-real-time-alerts.md)  |  | | |**&#x2713;** |
 ||||
-| **使いやすさ** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
-| [Storage](cdn-create-a-storage-account-with-cdn.md)、 [Web Apps](app-service-web-tutorial-content-delivery-network.md)、および [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合できる  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| **使いやすさ** | **Standard Microsoft (プレビュー)** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
+| [Storage](cdn-create-a-storage-account-with-cdn.md)、 [Web Apps](cdn-add-to-web-app.md)、および [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) などの Azure サービスと簡単に統合できる  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md)、または [PowerShell](cdn-manage-powershell.md) を介した管理  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md)  |  | | |**&#x2713;** |
 | URL のリダイレクト/書き換え ([ルール エンジン](cdn-rules-engine.md)を使用)  |  | | |**&#x2713;** |

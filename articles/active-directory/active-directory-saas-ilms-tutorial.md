@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と iLMS の統合 | Microsoft Docs"
-description: "Azure Active Directory と iLMS の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と iLMS の統合 | Microsoft Docs'
+description: Azure Active Directory と iLMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 2764a109e92d3eabf2b7064ce7cd2e428256c8b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0281b0fca107908654dfac31014c79c187aa9b5d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>チュートリアル: Azure Active Directory と iLMS の統合
 
@@ -29,7 +29,7 @@ iLMS と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に iLMS にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への iLMS の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**iLMS**」と入力します。
 
@@ -86,11 +86,11 @@ Azure AD への iLMS の統合を構成するには、ギャラリーから管�
 
 iLMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[iLMS テスト ユーザーの作成](#creating-an-ilms-test-user)** - iLMS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure ポータルの **iLMS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_samlbase.png)
 
 3. **[iLMS のドメインと URL]** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url.png)
 
-    a. **[識別子]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした **[Identifier (識別子)]** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした **[Identifier (識別子)]** の値を貼り付けます。
 
     b. **[応答 URL]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした次のパターンの **[Endpoint (URL) (エンドポイント (URL))]** の値を貼り付けます。`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
@@ -119,13 +119,13 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
 4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
 
     **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings (SAML 設定)] の **[Service Provider (サービス プロバイダー)]** セクションからコピーした次のパターンの **[Endpoint (URL) (エンドポイント (URL))]** の値を貼り付けます。`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
 
 5. JIT のプロビジョニングを有効にするには、iLMS アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/4.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/4.png)
     
     **Department、Region**、および **Division** 属性を作成し、これらの属性の名前を iLMS に追加します。 上記の属性はすべて必須です。  
 
@@ -140,11 +140,11 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
     | region | user.state |
     | department | user.jobtitle |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
@@ -154,39 +154,39 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
 7. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_certificate.png) 
 
 8. **[保存]** ボタンをクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-iLMS-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-iLMS-tutorial/tutorial_general_400.png)
 
 9. 別の Web ブラウザー ウィンドウで、**iLMS 管理者ポータル**に管理者としてログインします。
 
 10. **[Settings (設定)]** タブの **[SSO:SAML]** をクリックして SAML 設定を開き、次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/1.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/1.png) 
 
-    a. **[Service Provider (サービス プロバイダー)]** セクションを展開し、**[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Service Provider (サービス プロバイダー)]** セクションを展開し、**[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/2.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/2.png) 
 
     b. **[Identity Provider (ID プロバイダー)]** セクションで、**[Import Metadata (メタデータのインポート)]** をクリックします。
     
     c. Azure Portal で **[SAML 署名証明書]** セクションからダウンロードした**メタデータ** ファイルを選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_ssoconfig1.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_ssoconfig1.png) 
 
     d. JIT プロビジョニングを有効にして未認識のユーザーの iLMS アカウントを作成する場合は、次の手順に従います。
         
        - **[Create Un-recognized User Account (未認識のユーザー アカウントの作成)]** をクリックします。
        
-       ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
        -  Azure AD の属性を ILMS の属性にマップします。 属性欄に、属性名または既定値を指定します。
 
     e. **[Business Rules (ビジネス ルール)]** タブに移動し、次の手順を実行します。 
         
-       ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/5.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/5.png)
 
        - シングル サインオンの時点で存在していないリージョン、事業部、および部署を作成するには、**[Create Un-recognized Regions, Divisions and Departments (未認識のリージョン、事業部、および部署)]** をオンにします。
         
@@ -198,10 +198,10 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
 11. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/save.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/save.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
     
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -226,7 +226,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ilms-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -242,7 +242,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
 1. iLMS 企業サイトに管理者としてログインします。
 
-2. **[Users (ユーザー)]** タブの**[Register User (ユーザーの登録)]** をクリックして **[Register User (ユーザーの登録)]** ページを開きます。 
+2. **[Users (ユーザー)]** タブの **[Register User (ユーザーの登録)]** をクリックして **[Register User (ユーザーの登録)]** ページを開きます。 
    
    ![従業員の追加](./media/active-directory-saas-ilms-tutorial/3.png)
 
@@ -250,7 +250,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     ![従業員の追加](./media/active-directory-saas-ilms-tutorial/create_testuser_add.png)
 
-    a. **[First Name (名)]** ボックスに、ユーザーの名 Britta を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name (名)]** ボックスに、ユーザーの名 Britta を入力します。
    
     b. **[Last Name (姓)]** ボックスに、ユーザーの姓 Simon を入力します。
 
@@ -262,7 +262,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
     f. **[Department (部署)]** ボックスの一覧から部署の値を選択します。
 
-    g. **[Save]**をクリックします。
+    g. **[Save]** をクリックします。
 
     > [!NOTE] 
     > **[Send welcome email (ようこそメールの送信)]** チェックボックスをオンにすることで、ユーザーに登録メールを送信できます。
@@ -281,7 +281,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 
 2. アプリケーションの一覧で **[iLMS]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -306,7 +306,7 @@ iLMS で Azure AD のシングル サインオンを構成してテストする�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

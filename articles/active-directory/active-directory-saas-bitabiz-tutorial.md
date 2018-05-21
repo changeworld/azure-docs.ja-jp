@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と BitaBIZ の統合 | Microsoft Docs"
-description: "Azure Active Directory と BitaBIZ の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と BitaBIZ の統合 | Microsoft Docs'
+description: Azure Active Directory と BitaBIZ の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 6265f11216aaa75a2dd0dbbf572ecbd913135458
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 031d7b11aea57b8bdd8b17e474db0c81b1bdbe76
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル: Azure Active Directory と BitaBIZ の統合
 
@@ -30,7 +30,7 @@ BitaBIZ と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に BitaBIZ にサインオン (シングル サインオン) するよう指定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -127,7 +127,7 @@ BitaBIZ で Azure AD のシングル サインオンを構成してテストす�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-bitabiz-tutorial/tutorial_general_400.png)
     
-7. **[BitaBIZ 構成]** セクションで、**[BitaBIZ の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML Single シングル サインオン サービス URL** をコピーします。
+7. **[BitaBIZ 構成]** セクションで、**[BitaBIZ の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
     ![BitaBIZ 構成](./media/active-directory-saas-bitabiz-tutorial/tutorial_bitabiz_configure.png) 
 
@@ -145,7 +145,7 @@ BitaBIZ で Azure AD のシングル サインオンを構成してテストす�
 
     ![BitaBIZ 構成](./media/active-directory-saas-bitabiz-tutorial/settings3.png)
 
-    a. **[エンティティ ID (Azure AD では "識別子")]** ボックスの値をコピーし、Azure Portal の **[BitaBIZ のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[エンティティ ID (Azure AD では "識別子")]** ボックスの値をコピーし、Azure Portal の **[BitaBIZ のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。 
     
     b. **[Azure AD Single Sign-On Service URL]\(Azure AD シングル サインオン サービス URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
     
@@ -155,12 +155,12 @@ BitaBIZ で Azure AD のシングル サインオンを構成してテストす�
 
     e. ビジネス メール ドメイン名 (mycompany.com) を **[ドメイン名]** ボックスに追加して、SSO を、このメール ドメインと共に (必須ではありません) 会社のユーザーに割り当てます。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 BitaBIZ アカウントの **[SSO enabled]\(SSO 有効\)** をオンします。
+    f. BitaBIZ アカウントの **[SSO enabled]\(SSO 有効\)** をオンします。
     
     g. **[Save Azure AD configuration]\(Azure AD 構成を保存する\)** をクリックして、SSO 構成をアクティブ化します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -219,7 +219,7 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
     ![BitaBIZ の [ユーザーの追加]](./media/active-directory-saas-bitabiz-tutorial/user3.png)
 
-    a. **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
     b. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
@@ -229,7 +229,7 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
     e. ユーザーに対して設定できる他の任意のユーザー属性があります。 詳細については、[従業員の設定ドキュメント](https://help.bitabiz.dk/manage-or-set-up-your-account/on-boarding-employees/new-employee)を参照してください。    
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save employee]\(従業員を保存\)** をクリックします。
+    f. **[Save employee]\(従業員を保存\)** をクリックします。
     
     > [!NOTE]
     > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
@@ -246,7 +246,7 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[BitaBIZ]**を選択します。
+2. アプリケーションの一覧で **[BitaBIZ]** を選択します。
 
     ![アプリケーションの一覧の BitaBIZ リンク](./media/active-directory-saas-bitabiz-tutorial/tutorial_bitabiz_app.png)  
 
@@ -274,7 +274,7 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3b0ea0e55653e7b6087e21bd531ba3f6649d4967
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5940be8c13a85e256055d6bd6362c9cd93323ee4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](../articles/virtual-network/virtual-networks-overview.md) (VNet) を作成するか、既存の VNet を使用する必要があります。 VNet における VM への望ましいアクセス方法を決定する必要もあります。 [リソースを作成する前に計画](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)を立て、必ず[ネットワーク リソースの制限](../articles/azure-subscription-service-limits.md#networking-limits)を確認することが大切です。
 
@@ -95,7 +95,7 @@ VNet を設定するときに、使用できるアドレス空間やサブネッ
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 
-[ネットワーク セキュリティ グループ (NSG)](../articles/virtual-network/virtual-networks-nsg.md) には、サブネット、NIC、またはその両方に対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) ルールが含まれています。 NSG は、サブネットかサブネットに接続された個々の NIC に関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL ルールはそのサブネット内のすべての VM に適用されます。 また、NSG を直接 NIC に関連付けることによって、個々の NIC に対するトラフィックを制限できます。
+[ネットワーク セキュリティ グループ (NSG)](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) には、サブネット、NIC、またはその両方に対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) ルールが含まれています。 NSG は、サブネットかサブネットに接続された個々の NIC に関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL ルールはそのサブネット内のすべての VM に適用されます。 また、NSG を直接 NIC に関連付けることによって、個々の NIC に対するトラフィックを制限できます。
 
 NSG には受信と送信の 2 つのルール セットがあります。 ルールの優先順位は、各セット内で一意である必要があります。 各ルールには、プロトコル、発信元ポート範囲および宛先ポート範囲、アドレス プレフィックス、トラフィックの方向、優先順位、アクセスの種類というプロパティがあります。 
 
@@ -103,7 +103,7 @@ NSG には受信と送信の 2 つのルール セットがあります。 ル�
 
 NIC に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その NIC にのみ適用されます。 複数の NIC がある VM の NIC の 1 つに NSG を適用した場合、残りの NIC へのトラフィックに影響はありません。 NIC (デプロイメント モデルによっては VM) のほか、NIC または VM の宛先のサブネットに異なる NSG を関連付けられます。 優先順位はトラフィックの方向に基づいて付与されます。
 
-VM と VNet を計画する際は、必ず NSG の[計画](../articles/virtual-network/virtual-networks-nsg.md#planning)を立ててください。
+VM と VNet を計画する際は、必ず NSG の[計画](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)を立ててください。
 
 次の表に、ネットワーク セキュリティ グループの作成に使用できる方法の一覧を示します。
 
