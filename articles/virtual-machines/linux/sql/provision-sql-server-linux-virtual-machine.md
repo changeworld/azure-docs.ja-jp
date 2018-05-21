@@ -1,22 +1,22 @@
 ---
-title: "Azure で Linux SQL Server 2017 VM を作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal で Linux SQL Server 2017 仮想マシンを作成する方法について説明します。"
+title: Azure で Linux SQL Server 2017 VM を作成する | Microsoft Docs
+description: このチュートリアルでは、Azure Portal で Linux SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-linux
 author: rothja
 ms.author: jroth
 manager: jhubbard
-ms.date: 10/25/2017
+ms.date: 05/11/2018
 ms.topic: hero-article
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b86dd47c112c38bc65c045158787d19b470899a0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -71,18 +71,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Click **OK**.
 
-1. **[サイズ]** ウィンドウで、マシンのサイズを選択します。 他のサイズを表示するには、**[すべて表示]** を選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
+1. **[サイズ]** ウィンドウで、マシンのサイズを選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
 
     ![VM サイズを選択する](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > 開発と機能テストには、**DS2** 以上の VM サイズをお勧めします。 パフォーマンス テストには、**DS13** 以上を使用してください。
 
-1. **[選択]**をクリックします。
+1. **[選択]** をクリックします。
 
-1. **[設定]** ウィンドウでは、設定を変更したり、既定の設定を保持したりできます。
+1. **[設定]** ウィンドウの **[Select public inbound ports]\(パブリック受信ポートの選択\)** の一覧で、**[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この操作が必要です。 リモートで SQL Server に接続する場合は、**[MS SQL (1433)]** も選択して、インターネット経由での接続用にポート 1433 を開きます。
 
-1. Click **OK**.
+   ![受信ポート](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+
+1. 他の設定を変更したり、既定の設定のままにしたりすることができます。 次に、 **[OK]** をクリックします
 
 1. **[概要]** ページで **[購入]** をクリックし、VM を作成します。
 
@@ -145,9 +147,12 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 
 ## <a id="remote"></a>リモート接続の構成
 
-Azure VM 上の SQL Server にリモートで接続する必要がある場合、ネットワーク セキュリティ グループで受信規則を構成する必要があります。 この規則により、SQL Server がリッスンするポート (既定では 1433) のトラフィックが許可されます。 次の手順では、この手順に Azure Portal を使用する方法について説明します。 
+Azure VM 上の SQL Server にリモートで接続する必要がある場合、ネットワーク セキュリティ グループで受信規則を構成する必要があります。 この規則により、SQL Server がリッスンするポート (既定では 1433) のトラフィックが許可されます。 次の手順では、この手順に Azure Portal を使用する方法について説明します。
 
-1. ポータルで、 **[仮想マシン]**を選び、SQL Server VM を選びます。
+> [!TIP]
+> プロビジョニング時に設定で受信ポート **[MS SQL (1433)]** を選択した場合、これらの変更が自動的に行われています。 ファイアウォールの構成方法に関する次のセクションに進むことができます。
+
+1. ポータルで、 **[仮想マシン]** を選び、SQL Server VM を選びます。
 
 1. プロパティの一覧で、**[ネットワーク]** を選択します。
 

@@ -1,38 +1,40 @@
 ---
-title: "Azure Stack に安全に格納された証明書で仮想マシンをデプロイする | Microsoft Docs"
-description: "Azure Stack の Key Vault を使って、仮想マシンをデプロイして証明書を仮想マシンにプッシュする方法について説明します。"
+title: Azure Stack に安全に格納された証明書で仮想マシンをデプロイする | Microsoft Docs
+description: Azure Stack の Key Vault を使って、仮想マシンをデプロイして証明書を仮想マシンにプッシュする方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/03/2017
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: e319f5c6d27d3a223764b0a5593480f02864ddbe
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>仮想マシンを作成して Key Vault から取得した証明書を含める
+# <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>仮想マシンを作成して、Azure Stack Key Vault から取得した証明書をインストールする
 
-この記事では、Azure Stack に仮想マシンを作成して証明書をプッシュする方法を説明します。 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-## <a name="prerequisites"></a>前提条件
+Key Vault 証明書がインストールされた Azure Stack 仮想マシン (VM) を作成する方法について説明します。
 
-* ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。 
-* [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)  
-* [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
+## <a name="overview"></a>概要
 
-Azure Stack の Key Vault を使って証明書を格納します。 証明書はさまざまなシナリオで役立ちます。 たとえば、証明書が必要なアプリケーションを実行している仮想マシンが Azure Stack 内に存在するシナリオを考えてみてください。 この証明書は、暗号化、Active Directory の認証、Web サイトでの SSL に、使うことができます。 Key Vault に証明書を格納すると、証明書をセキュリティで保護できます。
+Active Directory への認証、Web トラフィックの暗号化など、多くのシナリオで証明書が使用されます。 証明書はシークレットとして Azure Stack Key Vault に安全に格納できます。 Azure Stack Key Vault を使用する利点は次のとおりです。
 
-この記事では、Azure Stack の Windows 仮想マシンに証明書をプッシュするために必要な手順を説明します。 この手順は、Azure Stack 開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから実行できます。
+* 証明書がスクリプト、コマンド ラインの履歴、またはテンプレートに公開されません。
+* 証明書管理プロセスが合理化されます。
+* 証明書にアクセスするキーを制御できます。
+
+### <a name="process-description"></a>プロセスの説明
 
 次の手順では、仮想マシンに証明書をプッシュするために必要なプロセスについて説明します。
 
@@ -40,9 +42,21 @@ Azure Stack の Key Vault を使って証明書を格納します。 証明書�
 2. azuredeploy.parameters.json ファイルを更新します。
 3. テンプレートのデプロイ
 
+>[!NOTE]
+>この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
+
+## <a name="prerequisites"></a>前提条件
+
+* ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。
+* [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)
+* [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
+
 ## <a name="create-a-key-vault-secret"></a>Key Vault シークレットを作成する
 
-次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。 Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターを指定すると、Azure Resource Manager テンプレートから Key Vault を参照できるようになります。
+次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。
+
+>[!IMPORTANT]
+>Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターにより、Azure Resource Manager テンプレートから Key Vault を確実に参照できます。
 
 ```powershell
 
@@ -111,7 +125,7 @@ Set-AzureKeyVaultSecret `
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>azuredeploy.parameters.json ファイルを更新する
 
-環境に従って、vaultName、シークレットの URI、VmName、他の値で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。 
+環境に従って、vaultName、シークレットの URI、VmName、他の値で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。
 
 ```json
 {
@@ -161,21 +175,24 @@ New-AzureRmResourceGroupDeployment `
 
 テンプレートが正常にデプロイされると、次の出力が表示されます。
 
-![デプロイの出力](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
+![Template deployment の結果](media/azure-stack-kv-push-secret-into-vm/deployment-output.png)
 
-この仮想マシンがデプロイされると、Azure Stack は仮想マシンに証明書をプッシュします。 Windows では、証明書はユーザー指定の証明書ストアで LocalMachine の証明書の場所に追加されます。 Linux では、証明書は、X509 証明書ファイルの場合は &lt;UppercaseThumbprint&gt;.crt、秘密キーの場合は &lt;UppercaseThumbprint&gt;.prv というファイル名で、/var/lib/waagent ディレクトリに配置されます。
+証明書は、デプロイ中に Azure Stack によって仮想マシンにプッシュされします。 証明書の場所は、VM のオペレーティング システムによって異なります。
+
+* Windows では、証明書はユーザー指定の証明書ストアで LocalMachine の証明書の場所に追加されます。
+* Linux では、証明書は、X509 証明書ファイルの場合は &lt;UppercaseThumbprint&gt;.crt、秘密キーの場合は &lt;UppercaseThumbprint&gt;.prv というファイル名で、/var/lib/waagent ディレクトリに配置されます。
 
 ## <a name="retire-certificates"></a>証明書の使用を終了する
 
-前のセクションでは、仮想マシンに新しい証明書をプッシュする方法を説明しました。 古い証明書は仮想マシンにまだ存在しており、削除することはできません。 ただし、`Set-AzureKeyVaultSecretAttribute` コマンドレットを使って、古いバージョンのシークレットを無効にできます。 このコマンドレットの使用例を次に示します。 コンテナー名、シークレット名、およびバージョンの値を、環境に従って置き換えてください。
+証明書の使用は、証明書管理プロセスの一環として終了します。 以前のバージョンの証明書は削除できませんが、`Set-AzureKeyVaultSecretAttribute` コマンドレットを使って無効にすることはできます。
+
+次の例は、証明書を無効にする方法を示しています。 **VaultName**、**Name**、**Version** の各パラメーターにはご自身の値を使用してください。
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Key Vault パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
 * [アプリケーションが Key Vault にアクセスできるようにする](azure-stack-kv-sample-app.md)
-
-

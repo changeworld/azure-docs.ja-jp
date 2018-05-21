@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と EBSCO の統合 | Microsoft Docs"
-description: "Azure Active Directory と EBSCO の間にシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と EBSCO の統合 | Microsoft Docs'
+description: Azure Active Directory と EBSCO の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: ea7fe09c31d88cf2095b3a3777b6b1f9feb8df46
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9da10e134db019162abdff35a8eb742ccdc30626
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>チュートリアル: Azure Active Directory と EBSCO の統合
 
@@ -30,7 +30,7 @@ EBSCO と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に EBSCO にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -218,7 +218,7 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[EBSCO]**を選択します。
+2. アプリケーションの一覧で **[EBSCO]** を選択します。
 
     ![アプリケーションの一覧の [EBSCO] リンク](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_app.png)  
 
@@ -256,7 +256,7 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

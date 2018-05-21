@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell モジュールを使用して Windows VM を作成および管理する | Microsoft Docs
-description: チュートリアル - Azure PowerShell モジュールを使用して Windows VM を作成および管理する
+title: チュートリアル - Azure PowerShell を使用した Windows VM の作成と管理 | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使用して、Azure で Windows VM を作成し、管理する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cce3fd003888c76490cb402b658f5c3aa76ab11e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eeba3b38e4a78bc33b995ee06f76116601c4d12
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用して Windows VM を作成および管理する
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows VM を作成および管理する
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンの展開に関する基本事項について説明します。 学習内容は次のとおりです。
 
@@ -33,10 +33,9 @@ Azure 仮想マシンは、完全に構成可能で柔軟なコンピューテ�
 > * VM のサイズを変更する
 > * VM の状態を表示して理解する
 
-
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をローカルにインストールして使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-resource-group"></a>Create resource group
 
@@ -90,15 +89,15 @@ Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroupVM"  | Select IpAd
 mstsc /v:<publicIpAddress>
 ```
 
-**[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 仮想マシン用に作成したユーザー名とパスワードを入力し、**[OK]**をクリックします。
+**[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 仮想マシン用に作成したユーザー名とパスワードを入力し、**[OK]** をクリックします。
 
 ## <a name="understand-vm-images"></a>VM イメージについて
 
-Azure Marketplace には、新しい仮想マシンの作成に使用できる多数の仮想マシンのイメージが用意されています。 前の手順では、Windows Server 2016 Datacenter のイメージを使用して仮想マシンを作成しました。 この手順では、PowerShell モジュールを使用して、新しい VM のベースとしても使用できるその他の Windows イメージを Marketplace で検索します。 このプロセスは、イメージを[識別](cli-ps-findimage.md#terminology)するための発行元、プラン、SKU、およびオプションのバージョン番号の検索で構成されます。 
+Azure Marketplace には、新しい仮想マシンの作成に使用できる多数の仮想マシンのイメージが用意されています。 前の手順では、Windows Server 2016 Datacenter イメージを使用して仮想マシンを作成しました。 この手順では、PowerShell モジュールを使用して、新しい VM のベースとしても使用できるその他の Windows イメージを Marketplace で検索します。 このプロセスは、イメージを[識別](cli-ps-findimage.md#terminology)するための発行元、プラン、SKU、およびオプションのバージョン番号の検索で構成されます。 
 
 [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) コマンドを使用して、イメージ発行元の一覧を取得します。
 
-```powersehll
+```powershell
 Get-AzureRmVMImagePublisher -Location "EastUS"
 ```
 
@@ -157,7 +156,7 @@ New-AzureRmVm `
     -AsJob
 ```
 
-`-AsJob` パラメーターにより、バックグラウンド タスクとして VM が作成されるため、PowerShell プロンプトが表示されます。 `Job` コマンドレットを使用して、バックグラウンド ジョブの詳細を表示できます。
+`-AsJob` パラメーターにより、バックグラウンド タスクとして VM が作成されるため、PowerShell プロンプトが表示されます。 `Get-Job` コマンドレットを使用して、バックグラウンド ジョブの詳細を表示できます。
 
 
 ## <a name="understand-vm-sizes"></a>VM のサイズについて

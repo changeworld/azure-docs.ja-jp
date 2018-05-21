@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: ''
-ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Azure IoT Edge とは - プレビュー
 
 Azure IoT Edge は、企業がデータの管理に手間取ることなくビジネス インサイトに専念できるよう、これまでクラウドで行っていた分析とカスタム ビジネス ロジックをデバイス側で実行できるようにするものです。 ご利用の IoT ソフトウェアを構成して標準のコンテナーによりそれをデバイスにデプロイし、すべてクラウドから監視することで、カスタム ソリューションに真のスケーラビリティがもたらされます。
 
 >[!NOTE]
->Azure IoT Edge は、IoT Hub の Standard レベルだけで利用できます。 Basic レベルおよび Standard レベルの詳細については、[適切な IoT Hub レベルの選び方](../iot-hub/iot-hub-scaling.md)に関するページを参照してください。
+>Azure IoT Edge は、IoT Hub の Free および Standard レベルで利用できます。 Free レベルは、テストおよび評価用です。 Basic レベルおよび Standard レベルの詳細については、[適切な IoT Hub レベルの選び方](../iot-hub/iot-hub-scaling.md)に関するページを参照してください。
 
 分析は、IoT ソリューションのビジネス上の価値を決める重要な要素ですが、すべての分析をクラウドで行う必要はありません。 緊急事態に可能な限り速やかに対応することが要求される場合には、異常検出をデバイス側で実行することができます。 同様に、帯域幅コストを抑える必要がある場合や、テラバイト規模の生データを転送することが問題になる場合には、データのクリーニングや集約をローカルで行うことが考えられます。 クラウドには、その結果として得られた洞察を送信します。 
 

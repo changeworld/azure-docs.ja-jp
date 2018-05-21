@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 87e548dcca655436c00b84b440b72e01ad575338
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -36,7 +36,7 @@ Azure では、システム ルートが自動的に作成され、仮想ネッ�
 
 |ソース |アドレス プレフィックス                                        |次ホップの種類  |
 |-------|---------                                               |---------      |
-|既定値|仮想ネットワークに固有                           |Virtual Network|
+|既定値|仮想ネットワークに固有                           |Virtual network|
 |既定値|0.0.0.0/0                                               |インターネット       |
 |既定値|10.0.0.0/8                                              |なし           |
 |既定値|172.16.0.0/12                                           |なし           |
@@ -70,7 +70,8 @@ Azure では、Azure のさまざまな機能を有効にした場合に限り�
 - **VirtualNetworkServiceEndpoint**: サービスのサービス エンドポイントを有効にすると、Azure によって特定のサービスのパブリック IP アドレスがルート テーブルに追加されます。 サービス エンドポイントは、仮想ネットワークの個々のサブネットで有効になるので、サービス エンドポイントが有効になっているサブネットのルート テーブルにのみルートが追加されます。 Azure サービスのパブリック IP アドレスは定期的に変更されます。 アドレスが変更されると、Azure によってルート テーブルのアドレスが自動的に管理されます。 仮想ネットワークのサービス エンドポイントと、サービス エンドポイントを作成できるサービスの詳細については、[こちら](virtual-network-service-endpoints-overview.md)をご覧ください。 
 
 > [!NOTE]
-> **VNet ピアリング**と **VirtualNetworkServiceEndpoint** の各次ホップの種類は、Azure Resource Manager デプロイメント モデルを使用して作成された仮想ネットワークのサブネットのルート テーブルにのみ追加されます。 これらの次ホップの種類は、クラシック デプロイメント モデルを使用して作成された仮想ネットワークのサブネットに関連付けられているルート テーブルには追加されません。 Azure のデプロイメント モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)をご覧ください。
+> 
+  **VNet ピアリング**と **VirtualNetworkServiceEndpoint** の各次ホップの種類は、Azure Resource Manager デプロイ モデルを使用して作成された仮想ネットワークのサブネットのルート テーブルにのみ追加されます。 これらの次ホップの種類は、クラシック デプロイ モデルを使用して作成された仮想ネットワークのサブネットに関連付けられているルート テーブルには追加されません。 Azure のデプロイメント モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)をご覧ください。
 
 ## <a name="custom-routes"></a>カスタム ルート
 
@@ -102,12 +103,12 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
 
 **Azure ツールにおける次ホップの種類**
 
-次ホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイメント モデルとクラシック デプロイメント モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)で各次ホップの種類を指す際に使用される名前を次の表に示します。
+次ホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)で各次ホップの種類を指す際に使用される名前を次の表に示します。
 
 |次ホップの種類                   |Azure CLI 2.0 と PowerShell (Resource Manager) |Azure CLI 1.0 と PowerShell (クラシック)|
 |-------------                   |---------                                       |-----|
 |仮想ネットワーク ゲートウェイ         |VirtualNetworkGateway                           |VPNGateway|
-|Virtual Network                 |VNetLocal                                       |VNETLocal (asm モードの CLI 1.0 では使用不可)|
+|Virtual network                 |VNetLocal                                       |VNETLocal (asm モードの CLI 1.0 では使用不可)|
 |インターネット                        |インターネット                                        |Internet (asm モードの CLI 1.0 では使用不可)|
 |仮想アプライアンス               |VirtualAppliance                                |VirtualAppliance|
 |なし                            |なし                                            |Null (asm モードの CLI 1.0 では使用不可)|
@@ -118,12 +119,12 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
 
 オンプレミス ネットワーク ゲートウェイは、ボーダー ゲートウェイ プロトコル (BGP) を使用して Azure 仮想ネットワーク ゲートウェイとルートを交換できます。 Azure 仮想ネットワーク ゲートウェイでの BGP の使用方法は、ゲートウェイの作成時に選択した種類によって異なります。 選択した種類と BGP の使用方法は次のとおりです。
 
-- **ExpressRoute**: BGP を使用して、Microsoft エッジ ルーターにオンプレミスのルートをアドバタイズする必要があります。 種類が ExpressRoute の仮想ネットワーク ゲートウェイをデプロイした場合、ExpressRoute の仮想ネットワーク ゲートウェイにトラフィックを強制的に誘導するユーザー定義ルートは作成できません。 Express Route からのトラフィックを (ネットワーク仮想アプライアンスなどに) 強制的に誘導するユーザー定義ルートを作成することはできます。 
+- **ExpressRoute**: BGP を使用して、Microsoft エッジ ルーターにオンプレミスのルートをアドバタイズする必要があります。 種類が ExpressRoute の仮想ネットワーク ゲートウェイをデプロイした場合、ExpressRoute の仮想ネットワーク ゲートウェイにトラフィックを強制的に誘導するユーザー定義ルートは作成できません。 Express Route からのトラフィックを (ネットワーク仮想アプライアンスなどに) 強制的に誘導するユーザー定義ルートは使用できます。
 - **VPN**: 必要に応じて BGP をご利用いただけます。 詳細については、[サイト間 VPN 接続での BGP](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
 
 BGP を使用して Azure とルートを交換すると、仮想ネットワークのすべてのサブネットのルート テーブルに、アドバタイズされた各プレフィックスの個別のルートが追加されます。 追加されるルートは、ソースと次ホップの種類が "*仮想ネットワーク ゲートウェイ*" になります。 
 
-BGP ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、BGP の伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、次ホップの種類が VPN である[カスタム ルート](#custom-routes)を使用して実現されます。 詳細については、[BGP ルートの伝達を無効にする方法](/manage-route-table#create-a-route-table.md)に関するページを参照してください。
+BGP ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、BGP の伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、次ホップの種類が VPN である[カスタム ルート](#custom-routes)を使用して実現されます。 詳細については、[BGP ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table)に関するページを参照してください。
 
 ## <a name="how-azure-selects-a-route"></a>Azure がルートを選択するしくみ
 
@@ -193,7 +194,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
 
 ### <a name="implementation"></a>実装
 
-次の図は、上記の要件を満たす Azure Resource Manager デプロイメント モデルを使用した実装を示しています。
+次の図は、上記の要件を満たす Azure Resource Manager デプロイ モデルを使用した実装を示しています。
 
 ![ネットワーク図](./media/virtual-networks-udr-overview/routing-example.png)
 
@@ -207,9 +208,9 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
 
 |ID  |ソース |State  |アドレス プレフィックス    |次ホップの種類          |次ホップの IP アドレス|ユーザー定義ルートの名前| 
 |----|-------|-------|------              |-------                |--------           |--------      |
-|1   |既定値|無効|10.0.0.0/16         |Virtual Network        |                   |              |
+|1   |既定値|無効|10.0.0.0/16         |Virtual network        |                   |              |
 |2   |User   |アクティブ |10.0.0.0/16         |仮想アプライアンス      |10.0.100.4         |Within-VNet1  |
-|3   |User   |アクティブ |10.0.0.0/24         |Virtual Network        |                   |Within-Subnet1|
+|3   |User   |アクティブ |10.0.0.0/24         |Virtual network        |                   |Within-Subnet1|
 |4   |既定値|無効|10.1.0.0/16         |VNET ピアリング           |                   |              |
 |5   |既定値|無効|10.2.0.0/16         |VNET ピアリング           |                   |              |
 |6   |User   |アクティブ |10.1.0.0/16         |なし                   |                   |ToVNet2-1-Drop|
@@ -241,7 +242,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
 
 |ソース  |State  |アドレス プレフィックス    |次ホップの種類             |次ホップの IP アドレス|
 |------- |-------|------              |-------                   |--------           
-|既定値 |アクティブ |10.0.0.0/16         |Virtual Network           |                   |
+|既定値 |アクティブ |10.0.0.0/16         |Virtual network           |                   |
 |既定値 |アクティブ |10.1.0.0/16         |VNET ピアリング              |                   |
 |既定値 |アクティブ |10.2.0.0/16         |VNET ピアリング              |                   |
 |既定値 |アクティブ |10.10.0.0/16        |仮想ネットワーク ゲートウェイ   |[X.X.X.X]          |
@@ -259,4 +260,4 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
 - [Azure VPN Gateway 用の BGP を構成](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。
 - [ExpressRoute で BGP を使用](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)します。
 - [サブネットのすべてのルートを表示](virtual-network-routes-troubleshoot-portal.md)します。 ユーザー定義ルート テーブルに表示されるのは、ユーザー定義ルートだけであり、サブネットの既定のルートや BGP ルートは表示されません。 すべてのルートを表示すると、ネットワーク インターフェイスが存在するサブネットの既定のルート、BGP ルート、ユーザー定義ルートが表示されます。
-- 仮想マシンと宛先 IP アドレス間の[次ホップの種類を確認](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。 Azure Network Watcher の次ホップ機能を使用すると、トラフィックがサブネットを出ていき、想定している場所にルーティングされているかどうかを確認できます。
+- 仮想マシンと宛先 IP アドレス間の[次ホップの種類を確認](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。 Azure Network Watcher の次ホップ機能を使用すると、トラフィックがサブネットを出ていき、想定している場所にルーティングされているかどうかを確認できます。
