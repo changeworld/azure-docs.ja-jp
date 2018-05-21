@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2018
+ms.date: 05/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 555115397d63652df53c3c5e2e85e9aa7a687623
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f54039a0e702aa3c789363969120e000760f6ef5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 

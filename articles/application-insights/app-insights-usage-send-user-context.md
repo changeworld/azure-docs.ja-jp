@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights にユーザー コンテキスト ID を送信して使用状況を把握できるようにする | Microsoft Docs"
-description: "Application Insights で各ユーザーに一意の永続 ID 文字列を割り当てて、サービスにおけるユーザーの行動を追跡します。"
+title: Azure Application Insights にユーザー コンテキスト ID を送信して使用状況を把握できるようにする | Microsoft Docs
+description: Application Insights で各ユーザーに一意の永続 ID 文字列を割り当てて、サービスにおけるユーザーの行動を追跡します。
 services: application-insights
-documentationcenter: 
-author: abgreg
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mbullwin
-ms.openlocfilehash: fe4481cf851fc021b3073a6d9d6254f546218785
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin;abgreg
+ms.openlocfilehash: 196eeb7b5a817ff932f99c7db86ead5625b5f206
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 

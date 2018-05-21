@@ -17,11 +17,11 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 844c19803f57987f4435d013cd12aa3d1ef8aeb8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 [Microsoft AppSource](https://appsource.microsoft.com/) は、ビジネス ユーザーが基幹業務の SaaS アプリケーション (スタンドアロン SaaS と既存の Microsoft SaaS 製品のアドオン) を検索し、試し、管理するためのサービスです。
@@ -43,7 +43,7 @@ Azure Active Directory を持つ会社または組織のユーザーのサイン
 マルチテナントの詳細については、「[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](./active-directory-devhowto-multi-tenant-overview.md)」をご覧ください。
 
 ### <a name="single-tenant-applications"></a>シングルテナント アプリケーション
-定義された Azure Active Directory インスタンスのユーザーのサインインのみを許可しているアプリケーションは、*シングルテナント アプリケーション*と呼ばれています。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure Active Directory インスタンスに各ユーザーを*ゲスト アカウント*として追加したあと、シングルテナント アプリケーションにサインインできるようになります。 [*Azure AD B2B コラボレーション*](../active-directory-b2b-what-is-azure-ad-b2b.md)を経由して、ユーザーをゲスト アカウントとして Azure Active Directory に追加できます。また、[プログラムで](../active-directory-b2b-code-samples.md)追加することもできます。 ユーザーをゲスト アカウントとして Azure Active Directory に追加すると、招待メールがユーザーに送信されます。ユーザーは招待メール内のリンクをクリックして招待を承認する必要があります。 招待を行った組織が取引先組織のメンバーでもある場合は、その組織の追加ユーザーに送信された招待メール上でユーザーがサインインの招待を承認する必要はありません。
+定義された Azure Active Directory インスタンスのユーザーのサインインのみを許可しているアプリケーションは、*シングルテナント アプリケーション*と呼ばれています。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure Active Directory インスタンスに各ユーザーを*ゲスト アカウント*として追加したあと、シングルテナント アプリケーションにサインインできるようになります。 [*Azure AD B2B コラボレーション*](../b2b/what-is-b2b.md)を経由して、ユーザーをゲスト アカウントとして Azure Active Directory に追加できます。また、[プログラムで](../b2b/code-samples.md)追加することもできます。 ユーザーをゲスト アカウントとして Azure Active Directory に追加すると、招待メールがユーザーに送信されます。ユーザーは招待メール内のリンクをクリックして招待を承認する必要があります。 招待を行った組織が取引先組織のメンバーでもある場合は、その組織の追加ユーザーに送信された招待メール上でユーザーがサインインの招待を承認する必要はありません。
 
 シングルテナント アプリケーションで*お問い合わせ*エクスペリエンスを有効にすることはできますが、AppSource でお勧めしているシングルクリック/無料試用版のエクスペリエンスを有効にする場合は、代わりにアプリケーションのマルチテナント機能を有効にします。
 

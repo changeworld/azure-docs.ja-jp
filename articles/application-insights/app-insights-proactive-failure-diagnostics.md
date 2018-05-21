@@ -1,9 +1,9 @@
 ---
-title: "スマート検出 - Application Insights での失敗の異常 |Microsoft Docs"
-description: "Web アプリに対する要求の失敗率の異常な変化を通知し、診断分析を行います。 構成は必要ありません。"
+title: スマート検出 - Application Insights での失敗の異常 |Microsoft Docs
+description: Web アプリに対する要求の失敗率の異常な変化を通知し、診断分析を行います。 構成は必要ありません。
 services: application-insights
-documentationcenter: 
-author: yorac
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
-ms.author: mbullwin
-ms.openlocfilehash: ca484f4d11cf8ab18db2d0c6152f369a90311f10
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; yossiy
+ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](app-insights-overview.md) では、Web アプリで要求失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーに通知します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 通知には、問題のトリアージと診断に役立つよう、失敗の特性および関連するテレメトリの分析結果が記載されています。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -140,7 +140,7 @@ ms.lasthandoff: 11/01/2017
 
 * バックログでアラートを非表示にできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
