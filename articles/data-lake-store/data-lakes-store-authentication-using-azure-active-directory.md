@@ -1,23 +1,21 @@
 ---
-title: "Data Lake Store での Azure Active Directory を使用した認証 | Microsoft Docs"
-description: "Data Lake Store で Azure Active Directory を使用して認証する方法について説明します"
+title: Data Lake Store での Azure Active Directory を使用した認証 | Microsoft Docs
+description: Data Lake Store で Azure Active Directory を使用して認証する方法について説明します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 7e6e37c0f5c8447b0e6d147a297b460d323b8894
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 061a44540cb618074764ae02fecb3f43d47fe5dd
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用した認証
 

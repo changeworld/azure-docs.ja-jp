@@ -1,30 +1,30 @@
 ---
-title: "Node での Azure Relay ハイブリッド接続の概要 | Microsoft Docs"
-description: "Azure Relay ハイブリッド接続用の Node.js コンソール アプリケーションを作成します。"
+title: Node での Azure Relay ハイブリッド接続 Websocket の概要 | Microsoft Docs
+description: Azure Relay ハイブリッド接続 Websocket 用の Node.js コンソール アプリケーションを作成します
 services: service-bus-relay
 documentationcenter: node
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Relay ハイブリッド接続の概要
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Node での Relay ハイブリッド接続 Websocket の概要
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-このチュートリアルでは、[Azure Relay ハイブリッド接続](relay-what-is-it.md#hybrid-connections)の概要について説明し、対応するリスナー アプリケーションにメッセージを送信するクライアント アプリケーションを Node.js で作成する方法を紹介します。 
+このチュートリアルでは、[Azure Relay ハイブリッド接続](relay-what-is-it.md#hybrid-connections) Websocket 機能の概要について説明し、対応するリスナー アプリケーションに Websocket メッセージを送信するクライアント アプリケーションを Node.js で作成する方法を紹介します。
 
 ## <a name="what-will-be-accomplished"></a>作業内容
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights Telemetry のデータ モデル - 要求テレメトリ | Microsoft Docs"
-description: "要求テレメトリ用の Application Insights データ モデル"
+title: Azure Application Insights Telemetry のデータ モデル - 要求テレメトリ | Microsoft Docs
+description: 要求テレメトリ用の Application Insights データ モデル
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0073f38097ffbebd669754eac5f2d48a620941bf
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: e0bdaf132474d8e5eaac6a9c65093d27d673d343
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ: Application Insights データ モデル
 
@@ -24,9 +24,9 @@ ms.lasthandoff: 11/01/2017
 
 要求テレメトリは、カスタムの `properties` と `measurements` を使用する標準的な機能拡張モデルをサポートします。
 
-## <a name="name"></a>名前
+## <a name="name"></a>Name
 
-要求の名前は、要求を処理するために使用されたコード パスを表します。 小さな基数の値を使用すると、要求をより適切にグループ化できます。 HTTP 要求では、これは、実際の `id` 値ではなく、`GET /values/{id}`のような HTTP メソッドとURL パス テンプレートを表します。
+要求の名前は、要求を処理するために使用されたコード パスを表します。 小さなカーディナリティの値を使用すると、要求をより適切にグループ化できます。 HTTP 要求では、これは、実際の `id` 値ではなく、`GET /values/{id}`のような HTTP メソッドとURL パス テンプレートを表します。
 
 Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](http://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.Net Web SDK による要求名のコレクションについては、[ブログの投稿](http://apmtips.com/blog/2015/02/23/request-name-and-url/)で詳細を確認できます。
 
@@ -78,7 +78,7 @@ Web アプリケーションでは、応答コードが `400` 未満または `4
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [カスタム要求テレメトリを記述します](app-insights-api-custom-events-metrics.md#trackrequest)。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。

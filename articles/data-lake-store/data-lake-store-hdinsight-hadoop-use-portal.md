@@ -1,24 +1,22 @@
 ---
-title: "Azure Portal を使用して、Data Lake Store を使用する Azure HDInsight クラスターを作成する | Microsoft Docs"
-description: "Azure Portal を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成および使用する"
+title: Azure Portal を使用して、Data Lake Store を使用する Azure HDInsight クラスターを作成する | Microsoft Docs
+description: Azure Portal を使用して、Azure Data Lake Store を使用する HDInsight クラスターを作成および使用する
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: a8c45a83-a8e3-4227-8b02-1bc1e1de6767
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 20f87e9c545eae283ff1514feeda0b1f9057e668
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ff62ef24a2076605d759e22fcee86947fc0b9274
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -82,8 +80,8 @@ Azure Portal を使用して、既定のストレージまたは追加のスト�
 
     - **[既定のコンテナー]**: 既定値を使用するか、独自の名前を指定します。
 
-    - 追加のストレージ アカウント: 追加のストレージとして Azure Storage アカウントを追加します。
-    - Data Lake Store アクセス: Data Lake Store アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
+    - [追加のストレージ アカウント]: 追加のストレージとして Azure Storage アカウントを追加します。
+    - [Data Lake Store アクセス]: Data Lake Store アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
 
 ## <a name="configure-data-lake-store-access"></a>Data Lake Store へのアクセスを構成する 
 
@@ -140,7 +138,7 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 
 3. ページの下部にある **[選択]** をクリックします。
 4. **[実行]** をクリックして、アクセス許可を割り当てます。
-5. **[Done]**をクリックします。
+5. **[Done]** をクリックします。
 
 **HDInsight クラスターのルート レベルでアクセス許可を割り当てるには**
 
@@ -149,8 +147,8 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 2. フォルダーの左側のチェック ボックスを選択して HDInsight クラスター記憶域のルートを選択します。 前のスクリーンショットでは、クラスター記憶域のルートは、Data Lake Store を既定のストレージとして選択したときに指定した __/clusters__ フォルダーです。
 3. フォルダーのアクセス許可を設定します。  既定では、[読み取り]、[書き込み]、[実行] がすべて選択されています。
 4. ページの下部にある **[選択]** をクリックします。
-5. **[実行]**をクリックします。
-6. **[Done]**をクリックします。
+5. **[実行]** をクリックします。
+6. **[Done]** をクリックします。
 
 Data Lake Store を追加のストレージとして使用している場合は、HDInsight クラスターからアクセスするフォルダーに対してのみアクセス許可を割り当てる必要があります。 たとえば、次のスクリーンショットでは、Data Lake Store アカウントの **hdiaddonstorage** フォルダーへのアクセスのみを提供します。
 

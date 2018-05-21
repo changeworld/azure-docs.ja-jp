@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights Telemetry のデータ モデル - 例外テレメトリ | Microsoft Docs"
-description: "例外テレメトリ用の Application Insights データ モデル"
+title: Azure Application Insights Telemetry のデータ モデル - 例外テレメトリ | Microsoft Docs
+description: 例外テレメトリ用の Application Insights データ モデル
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3c3c3a39c7986cc771fe4baf60ad9b316888f6ed
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 036670c46a0ff40dd7b20a03c90f10513395cd71
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>例外テレメトリ: Application Insights データ モデル
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/01/2017
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - [Application Insights で Web アプリの例外を診断する](app-insights-asp-net-exceptions.md)方法を確認します。

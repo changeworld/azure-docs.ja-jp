@@ -1,24 +1,22 @@
 ---
-title: "Azure Data Catalog に Data Lake Store のデータを登録する | Microsoft Docs"
-description: "Azure Data Catalog に Data Lake Store のデータを登録する"
+title: Azure Data Catalog に Data Lake Store のデータを登録する | Microsoft Docs
+description: Azure Data Catalog に Data Lake Store のデータを登録する
 services: data-lake-store,data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: e341f6a4b3a6aef0a328aa4f5d8c9ae92dc24137
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ea5d658b8f465b3a527033ef5e9d2126732c7029
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Azure Data Catalog に Data Lake Store のデータを登録する
 この記事では、Azure Data Lake Store と Azure Data Catalog を統合し、データを Data Catalog と統合することで組織内で検出できるようにする方法について説明します。 データのカタログ化の詳細については、「 [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)」を参照してください。 Data Catalog を使用できるシナリオを理解するには、「 [Azure Data Catalog の一般的なシナリオ](../data-catalog/data-catalog-common-scenarios.md)」を参照してください。
@@ -37,18 +35,18 @@ ms.lasthandoff: 02/23/2018
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. `https://azure.microsoft.com/services/data-catalog`にアクセスし、 **[はじめに]**をクリックします。
-2. Azure Data Catalog ポータルにログインし、 **[データの発行]**をクリックします。
+1. `https://azure.microsoft.com/services/data-catalog`にアクセスし、 **[はじめに]** をクリックします。
+2. Azure Data Catalog ポータルにログインし、 **[データの発行]** をクリックします。
 
     ![データ ソースの登録](./media/data-lake-store-with-data-catalog/register-data-source.png "データ ソースの登録")
-3. 次のページで、 **[アプリケーションの起動]**をクリックします。 これで、コンピューター上にアプリケーション マニフェスト ファイルがダウンロードされます。 アプリケーションを起動するには、このマニフェスト ファイルをダブルクリックします。
-4. [ようこそ] ページで、 **[サインイン]**をクリックし、資格情報を入力します。
+3. 次のページで、 **[アプリケーションの起動]** をクリックします。 これで、コンピューター上にアプリケーション マニフェスト ファイルがダウンロードされます。 アプリケーションを起動するには、このマニフェスト ファイルをダブルクリックします。
+4. [ようこそ] ページで、 **[サインイン]** をクリックし、資格情報を入力します。
 
     ![[ようこそ] 画面](./media/data-lake-store-with-data-catalog/welcome.screen.png "[ようこそ] 画面")
 5. [データ ソースの選択] ページで、**[Azure Data Lake]** を選択してから **[次へ]** をクリックします。
 
     ![データ ソースの選択](./media/data-lake-store-with-data-catalog/select-source.png "データ ソースの選択")
-6. 次のページで、Data Catalog に登録する Data Lake Store アカウントの名前を指定します。 その他のオプションは既定値のままにし、 **[接続]**をクリックします。
+6. 次のページで、Data Catalog に登録する Data Lake Store アカウントの名前を指定します。 その他のオプションは既定値のままにし、 **[接続]** をクリックします。
 
     ![データ ソースへの接続](./media/data-lake-store-with-data-catalog/connect-to-source.png "データ ソースへの接続")
 7. 次のページは以下のセグメントに分けることができます。
@@ -66,7 +64,7 @@ ms.lasthandoff: 02/23/2018
 
     ![データ構造の表示](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "データ構造の表示")
 
-    **[登録]**をクリックします。
+    **[登録]** をクリックします。
 9. 次のキャプチャ画面は、データが Data Catalog に正常に登録されたことを示しています。
 
     ![登録完了](./media/data-lake-store-with-data-catalog/registration-complete.png "データ構造の表示")

@@ -1,23 +1,21 @@
 ---
-title: "サービス間認証: .NET SDK から Azure Active Directory を使用して Data Lake Store に対する認証を行う | Microsoft Docs"
-description: ".NET SDK から Azure Active Directory を使用して Data Lake Store に対するサービス間認証を行う方法について説明します"
+title: 'サービス間認証: .NET SDK から Azure Active Directory を使用して Data Lake Store に対する認証を行う | Microsoft Docs'
+description: .NET SDK から Azure Active Directory を使用して Data Lake Store に対するサービス間認証を行う方法について説明します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: fb3d3dd518cbe0a603524f1bdc38d122582aa6b0
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 794e46bd4bdbb29158a7d7111712fbf62621c79b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Data Lake Store に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -41,18 +39,18 @@ ms.lasthandoff: 01/10/2018
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
 1. Visual Studio を開き、コンソール アプリケーションを作成します。
 2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-3. **[新しいプロジェクト]**で、次の値を入力するか、選択します。
+3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
 
    | プロパティ | 値 |
    | --- | --- |
    | カテゴリ |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
-   | 名前 |CreateADLApplication |
+   | Name |CreateADLApplication |
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
 5. NuGet パッケージをプロジェクトに追加します。
 
-   1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]**をクリックします。
+   1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
    2. **[NuGet パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
 

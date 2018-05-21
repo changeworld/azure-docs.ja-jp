@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: ''
-ms.openlocfilehash: 08a4f3fc135aae2772bd60c67cbd282603cd4f8d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 49e91287d23c35d8cfea858d41c47ba15efd820c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps の交通情報の対象範囲
 
@@ -99,4 +99,4 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |米国     |✓         |✓        |
 |+ プエルトリコ     |✓         |✓         |
 
-Azure Maps の交通情報データの詳細については、[交通情報](https://docs.microsoft.com/rest/api/azure-maps/traffic)のリファレンス ページを参照してください。
+Azure Maps の交通情報データの詳細については、[交通情報](https://docs.microsoft.com/rest/api/maps/traffic)のリファレンス ページを参照してください。

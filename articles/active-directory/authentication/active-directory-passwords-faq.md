@@ -2,25 +2,19 @@
 title: セルフサービスによるパスワード リセットについての FAQ - Azure Active Directory
 description: Azure AD セルフサービスのパスワード リセットについてよく寄せられる質問
 services: active-directory
-keywords: Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: seohack1
-ms.openlocfilehash: 7500b456296dc69c70cd1b5500d40f7e007569b1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 7f54877f9218cbb0c2ac8cca86c580b7f1aa6c83
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 

@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5b83f02c55d0aa7b2e122d7fc8c9ef5734cdd924
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
@@ -84,7 +82,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
 ## <a name="filepermissions"></a>ユーザーまたはセキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる
 Azure Data Lake ファイル システムにユーザーまたはセキュリティ グループを割り当てて、Azure Data Lake Store に格納されたデータに対するアクセス制御を設定します。
 
-1. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]**をクリックします。
+1. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
    
     ![データ エクスプローラーを使用してデータを表示する](./media/data-lake-store-secure-data/adl.start.data.explorer.png "データ エクスプローラーを使用してデータを表示する")
 2. **[データ エクスプローラー]** ブレードで、ACL を構成するフォルダーをクリックし、**[アクセス]** をクリックします。 ACL をファイルに割り当てるには、まず、対象のファイルをクリックしてプレビューし、**[ファイルのプレビュー]** ブレードで **[アクセス]** をクリックする必要があります。
@@ -100,7 +98,7 @@ Azure Data Lake ファイル システムにユーザーまたはセキュリテ
    * **[割り当て済みのアクセス許可]** は POSIX ACL に対応します。この場合、ファイルの所有者またはグループだけでなく、特定の名前付きユーザーまたはグループにもアクセス許可を設定できます。 
      
      詳細については、 [HDFS ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)を参照してください。 Azure Data Lake Store で ACL がどのように実装されているかについては、[Azure Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関するページを参照してください。
-4. **[追加]** アイコンをクリックして、**[アクセス許可の割り当て]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、**[ユーザーまたはグループの選択]** ブレードで、Azure Active Directory で以前に作成したセキュリティ グループを検索します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]**をクリックします。
+4. **[追加]** アイコンをクリックして、**[アクセス許可の割り当て]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、**[ユーザーまたはグループの選択]** ブレードで、Azure Active Directory で以前に作成したセキュリティ グループを検索します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]** をクリックします。
    
     ![グループを追加する](./media/data-lake-store-secure-data/adl.acl.3.png "グループを追加する")
 5. **[アクセス許可の選択]** をクリックし、アクセス許可、アクセス許可を再帰的に適用するかどうか、アクセス許可をアクセス ACL、既定の ACL、その両方のどれとして割り当てるかを選択します。 Click **OK**.
@@ -131,14 +129,14 @@ Azure Data Lake Store アカウントからセキュリティ グループを削
 1. Data Lake Store アカウントのブレードで、**[アクセス制御 (IAM)]** をクリックします。 
    
     ![セキュリティ グループを Azure Data Lake アカウントに割り当てる](./media/data-lake-store-secure-data/adl.select.user.icon.png "セキュリティ グループを Azure Data Lake アカウントに割り当てる")
-2. **[アクセス制御 (IAM)]** ブレードで、削除するセキュリティ グループをクリックします。 **[削除]**をクリックします。
+2. **[アクセス制御 (IAM)]** ブレードで、削除するセキュリティ グループをクリックします。 **[削除]** をクリックします。
    
     ![削除されたセキュリティ グループ](./media/data-lake-store-secure-data/adl.remove.group.png "削除されたセキュリティ グループ")
 
 ## <a name="remove-security-group-acls-from-azure-data-lake-store-file-system"></a>Azure Data Lake Store ファイル システムからセキュリティ グループ ACL を削除する
 Azure Data Lake Store ファイル システムからセキュリティ グループの ACL を削除する場合は、Data Lake Store 内のデータへのアクセスを変更します。
 
-1. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]**をクリックします。
+1. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
    
     ![Data Lake アカウントにディレクトリを作成する](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Data Lake アカウントにディレクトリを作成する")
 2. **[データ エクスプローラー]** ブレードで、ACL を削除するフォルダーをクリックし、**[アクセス]** をクリックします。 ファイルの ACL を削除するには、まず、対象のファイルをクリックしてプレビューし、**[ファイルのプレビュー]** ブレードで **[アクセス]** をクリックする必要があります。 
