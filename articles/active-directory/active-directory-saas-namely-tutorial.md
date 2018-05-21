@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Namely の統合 | Microsoft Docs"
-description: "Azure Active Directory と Namely の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と Namely の統合 | Microsoft Docs'
+description: Azure Active Directory と Namely の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 774342497ad5548cb2792350905b6b9cb017be28
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a7f3fac69143cc4863b65604c6aac314157ba826
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>チュートリアル: Azure Active Directory と Namely の統合
 
@@ -29,7 +29,7 @@ Namely と Azure AD の統合には、次の利点があります。
 - ユーザーが各自の Azure AD アカウントで Namely に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Namely の統合を構成するには、ギャラリーから管
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Namely**」と入力します。
 
@@ -86,11 +86,11 @@ Namely で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Namely で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Namely のテスト ユーザーの作成](#creating-a-namely-test-user)** - Namely で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Namely** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_samlbase.png)
 
 3. **[Namely Domain and URLs]\(Namely のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.namely.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.namely.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.namely.com/saml/metadata` の形式で URL を入力します。
 
@@ -119,35 +119,35 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-namely-tutorial/tutorial_namely_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_general_400.png)
 
 6. **[Namely Configuration]\(Namely 構成\)** セクションで、**[Configure Namely]\(Namely の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_configure.png) 
 
 7. Web ブラウザーの別のウィンドウで、Namely の企業サイトに管理者としてサインオンします。
 
-8. 上部のツール バーの **[Company]**をクリックします。
+8. 上部のツール バーの **[Company]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_06.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_06.png) 
 
 9. **[設定]** タブをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_07.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_07.png) 
 
-10. **[SAML]**をクリックします。
+10. **[SAML]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_08.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_08.png) 
 
 11. **[SAML Settings]** ページで、次の手順を実行します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_09.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_09.png)
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]**をクリックします。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** をクリックします。 
 
     b. **[Identity provider SSO url]\(ID プロバイダー シングル サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
@@ -156,7 +156,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
     d. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -182,7 +182,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-namely-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -198,21 +198,21 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
 1. Namely の企業サイトに管理者としてサインオンします。
 
-2. 上部のツールバーの **[People]**をクリックします。
+2. 上部のツールバーの **[People]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_10.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_10.png) 
 
 3. **[ディレクトリ]** タブをクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_11.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_11.png) 
 
-4. **[Add New Person]**をクリックします。
+4. **[Add New Person]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_12.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_12.png)
 
 5. **[Add New Person]** ダイアログで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[First Name (名)]** ボックスに「**Britta**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name (名)]** ボックスに「**Britta**」と入力します。
 
     b. **[Last Name (姓)]** ボックスに「**Simon**」と入力します。
 
@@ -232,9 +232,9 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Namely]**を選択します。
+2. アプリケーションの一覧で **[Namely]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-namely-tutorial/tutorial_namely_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-namely-tutorial/tutorial_namely_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -259,7 +259,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 
