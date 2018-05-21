@@ -104,6 +104,16 @@
       items:
         - name: 概要
           href: sql-database-security-overview.md
+        - name: 高度な脅威保護
+          href: sql-advanced-threat-protection.md
+        - name: データの検出と分類
+          href: sql-database-data-discovery-and-classification.md
+        - name: 脆弱性評価
+          href: sql-vulnerability-assessment.md
+        - name: 脅威の検出 - SQL Database
+          href: sql-database-threat-detection.md
+        - name: 脅威の検出 - マネージ インスタンス
+          href: sql-database-managed-instance-threat-detection.md
         - name: ファイアウォール規則
           href: sql-database-firewall-configure.md
         - name: ファイアウォールの仮想ネットワーク ルール
@@ -120,18 +130,10 @@
           href: sql-database-auditing.md
         - name: 監査 - マネージ インスタンス
           href: sql-database-managed-instance-auditing.md
-        - name: 脅威の検出 - SQL Database
-          href: sql-database-threat-detection.md
-        - name: 脅威の検出 - マネージ インスタンス
-          href: sql-database-managed-instance-threat-detection.md
         - name: テーブルの監査と TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: 動的データ マスク
           href: sql-database-dynamic-data-masking-get-started.md
-        - name: 脆弱性評価
-          href: sql-vulnerability-assessment.md
-        - name: データの検出と分類
-          href: sql-database-data-discovery-and-classification.md
     - name: ビジネス継続性
       items:
         - name: 概要
@@ -250,7 +252,8 @@
           href: sql-database-temporal-tables-retention-policy.md
         - name: インメモリの構成
           href: sql-database-in-memory-oltp-migration.md
-    - name: アプリケーションの開発
+    - name: |
+        アプリの開発
       items:
         - name: 接続
           href: sql-database-libraries.md
@@ -440,7 +443,8 @@
               href: saas-multitenantdb-schema-management.md
             - name: 分析用の ETL
               href: saas-multitenantdb-tenant-analytics.md
-    - name: アプリケーションの開発
+    - name: |
+        アプリの開発
       items:
         - name: C と C++
           href: sql-database-develop-cplusplus-simple.md
