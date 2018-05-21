@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Moxtra の統合 | Microsoft Docs"
-description: "Azure Active Directory と Moxtra の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Moxtra の統合 | Microsoft Docs'
+description: Azure Active Directory と Moxtra の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b10d954a7759fe945b162119d760fd6ad44317c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d0b89cf0d090795a305b5bfcce070136cf0289a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>チュートリアル: Azure Active Directory と Moxtra の統合
 
@@ -29,7 +29,7 @@ Moxtra と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Moxtra にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Moxtra の統合を構成するには、ギャラリーから管
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Moxtra**」と入力します。
 
@@ -86,11 +86,11 @@ Moxtra で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Moxtra で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Moxtra テスト ユーザーの作成](#creating-a-moxtra-test-user)** - Moxtra で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,21 +100,21 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Moxtra** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_samlbase.png)
 
 3. **[Moxtra Domain and URLs]\(Moxtra のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_url.png)
 
     **[サインオン URL]** ボックスに、「`https://www.moxtra.com/service/#login`」と入力します。
 
 4. Moxtra アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットは、この構成の例を示しています。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_attributes.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_attributes.png)
     
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -127,41 +127,41 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
     > [!Note]
     > 属性 **idpid** の値は、実際のものではありません。 実際の値は、**[Moxtra Configuration]\(Moxtra 構成\)** の **[クイック リファレンス]** セクションから取得できます。
     
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-moxtra-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_attribute_04.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_attribute_05.png)
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
     
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_general_400.png)
 
-7. **[Moxtra Configuration]\(Moxtra 構成\)** セクションで、**[Configure Moxtra]\(Moxtra を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML Single シングル サインオン サービス URL** をコピーします。
+7. **[Moxtra Configuration]\(Moxtra 構成\)** セクションで、**[Configure Moxtra]\(Moxtra を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_configure.png) 
 
 8. 別の Web ブラウザー ウィンドウで、管理者として Moxtra 企業サイトにサインオンします。
 
 9. 左のツール バーで、**[管理コンソール] > [SAML Single Sign-on]\(SAML シングル サインオン\)** の順にクリックし、**[新規]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) 
 
 10. **[SAML]** ページで、次の手順を実行します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Name (名前)]** ボックスに、構成の名前を入力します (例: *SAML*)。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name (名前)]** ボックスに、構成の名前を入力します (例: *SAML*)。 
   
     b. **[IdP Entity ID]\(IdP エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
  
@@ -171,17 +171,17 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
  
     e. **[NameID 形式]** ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。 
  
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 Azure Portal からダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[証明書]** ボックスに貼り付けます。    
+    f. Azure Portal からダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[証明書]** ボックスに貼り付けます。    
  
     g. SAML 電子メール ドメイン テキストボックスに、SAML 電子メール ドメインを入力します。    
   
     >[!NOTE]
     >ドメインを検証するための手順を確認するには、下の**i**をクリックします。
 
-    h. **[Update]**をクリックします。
+    h. **[Update]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -206,7 +206,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moxtra-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -224,11 +224,11 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
 2. 左のツール バーで、**[Admin Console (管理コンソール)]、[User Management (ユーザー管理)]** の順にクリックし、**[Add User (ユーザーの追加)]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_10.png) 
 
 3. **[Add User]** ダイアログで、次の手順を実行します。
   
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。
   
     b. **[姓]** ボックスに「**Simon**」と入力します。
   
@@ -238,9 +238,9 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
   
     e. **[Department (部門)]** ボックスに「**IT**」と入力します。
   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[管理者]** を選択します。
+    f. **[管理者]** を選択します。
   
-    g. **[追加]**をクリックします。
+    g. **[追加]** をクリックします。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -254,9 +254,9 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Moxtra]**を選択します。
+2. アプリケーションの一覧で **[Moxtra]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -282,7 +282,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 
