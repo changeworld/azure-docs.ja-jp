@@ -2,23 +2,17 @@
 title: Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs
 description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -44,17 +38,10 @@ Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、Q
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>ストレージ エミュレーターの起動と初期化
 
-### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Docker での Azure ストレージ エミュレーターの実行](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
-```
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
-```
-
-### <a name="using-sdk"></a>SDK の使用
-
 Azure ストレージ エミュレーターを起動するには、次の手順を実行します。
 1. **[スタート]** を選択するか、**Windows** キーを押します。
-1. 「`Azure Storage Emulator`」と入力を開始します。
-1. 表示されているアプリケーションの一覧からエミュレーターを選択します。
+2. 「`Azure Storage Emulator`」と入力を開始します。
+3. 表示されているアプリケーションの一覧からエミュレーターを選択します。
 
 ストレージ エミュレーターが起動すると、コマンド プロンプト ウィンドウが表示されます。 このコンソール ウィンドウを使用して、ストレージ エミュレーターの起動と停止、データのクリア、状態の取得、およびエミュレーターの初期化を実行できます。 詳細については、この記事で後述する「[ストレージ エミュレーター コマンド ライン ツールのリファレンス](#storage-emulator-command-line-tool-reference)」を参照してください。
 
@@ -71,6 +58,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>別の SQL データベースを使用するための、ストレージ エミュレーターの初期化
+
 既定の LocalDB インスタンスとは別の SQL データベース インスタンスを参照するようにストレージ エミュレーターを初期化するには、ストレージ エミュレーター コマンド ライン ツールを使用します。
 
 1. 「[ストレージ エミュレーターの起動と初期化](#start-and-initialize-the-storage-emulator)」セクションの説明に従って、ストレージ エミュレーターのコンソール ウィンドウを開きます。
@@ -181,7 +169,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
 | **状態** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
-| **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*: BLOB データを消去します。 <br/>*queue:*キュー データを消去します。 <br/>*table*: テーブル データを消去します。 <br/>*all*: すべてのサービスのすべてのデータを消去します。 |
+| **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*: BLOB データを消去します。 <br/>*queue:* キュー データを消去します。 <br/>*table*: テーブル データを消去します。 <br/>*all*: すべてのサービスのすべてのデータを消去します。 |
 | **Init** |エミュレーターをセットアップするために、1 回限りの初期化を実行します。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName*: 既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate*: SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate*: SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports*: サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports*: サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess*: 新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>ストレージ エミュレーターと Azure ストレージとの違い
@@ -265,7 +253,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-30"></a>Version 3.0
 * Azure ストレージ エミュレーターが、コンピューティング エミュレーターと同じパッケージには同梱されないようになりました。
-* ストレージ エミュレーターのグラフィカル ユーザー インターフェイスが、スクリプト可能なコマンド ライン インターフェイスを優先して、廃止されました。 コマンド ライン インターフェイスの詳細については、ストレージ エミュレーター コマンド ライン ツールのリファレンスを参照してください。 グラフィカル インターフェイスはバージョン 3.0 までは引き続き存在しますが、計算エミュレーターがインストールされている場合にシステム トレイ アイコンを右クリックして [ストレージ エミュレーター UI の表示] を選択することによってのみアクセスできます。
+* ストレージ エミュレーターのグラフィカル ユーザー インターフェイスが、スクリプト可能なコマンド ライン インターフェイスを優先して、非推奨となりました。 コマンド ライン インターフェイスの詳細については、ストレージ エミュレーター コマンド ライン ツールのリファレンスを参照してください。 グラフィカル インターフェイスはバージョン 3.0 までは引き続き存在しますが、計算エミュレーターがインストールされている場合にシステム トレイ アイコンを右クリックして [ストレージ エミュレーター UI の表示] を選択することによってのみアクセスできます。
 * Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。 (以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
 ## <a name="next-steps"></a>次の手順

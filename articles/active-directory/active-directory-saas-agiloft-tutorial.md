@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Agiloft の統合 | Microsoft Docs"
-description: "Azure Active Directory と Agiloft の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Agiloft の統合 | Microsoft Docs'
+description: Azure Active Directory と Agiloft の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 0932bde663ea22c1e2e762dccf556253487d16e2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 296b972eced0bfb54435489d727270cc22c75798
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル: Azure Active Directory と Agiloft の統合
 
@@ -30,7 +30,7 @@ Agiloft と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Agiloft にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Agiloft のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-agiloft-tutorial/tutorial_agiloft_url.png)
 
-    a. **[識別子]** ボックスに、次のパターンで URL を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次のパターンで URL を入力します。 
     | |
     |-|-|
     | `https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>` |
@@ -159,7 +159,7 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
     
     ![Agiloft の構成](./media/active-directory-saas-agiloft-tutorial/setup4.png) 
 
-    a. **[IdP Entity Id / Issuer] \(IdP エンティティ ID / 発行者)** テキスト ボックスに、Azure ポータルからコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[IdP Entity Id / Issuer] \(IdP エンティティ ID / 発行者)** テキスト ボックスに、Azure ポータルからコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure ポータルからコピーした**シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -167,11 +167,11 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
 
     d. Azure ポータルからダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IdP Provided X.509 certificate contents]\(IdP によって提供される X.509 証明書の内容\)** ボックスに貼り付けます。
 
-    e. **[完了]**をクリックします。
+    e. **[完了]** をクリックします。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -221,7 +221,7 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Agiloft]**を選択します。
+2. アプリケーションの一覧で **[Agiloft]** を選択します。
 
     ![アプリケーションの一覧の Agiloft のリンク](./media/active-directory-saas-agiloft-tutorial/tutorial_agiloft_app.png)  
 
@@ -249,7 +249,7 @@ Agiloft で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

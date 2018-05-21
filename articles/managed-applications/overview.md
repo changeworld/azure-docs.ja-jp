@@ -6,15 +6,15 @@ author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージ アプリケーションの概要
 

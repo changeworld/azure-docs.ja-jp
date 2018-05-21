@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と etouches の統合 | Microsoft Docs"
-description: "Azure Active Directory と etouches の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と etouches の統合 | Microsoft Docs'
+description: Azure Active Directory と etouches の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: bc111d6805af9e4f86ab91b6673a0d52dca78223
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2b51227d89064e233ea1d1126bbf19169753094
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>チュートリアル: Azure Active Directory と etouches の統合
 
@@ -30,7 +30,7 @@ etouches と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に etouches にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -97,7 +97,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **etouches** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -107,7 +107,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![[etouches のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://www.eiseverywhere.com/<instance name>` の形式で URL を入力します。
 
@@ -125,7 +125,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
     | ------------------- | -------------------- |
     | 電子メール | User.mail |    
     
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[属性の追加]](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_04.png)
 
@@ -135,7 +135,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。 
+    d. **[OK]** をクリックします。 
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -149,7 +149,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![etouches の構成](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_06.png) 
 
-    a. 管理者権限を使用して **etouches** アプリケーションにログインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者権限を使用して **etouches** アプリケーションにログインします。
    
     b. **[SAML 構成]** に移動します。
 
@@ -159,7 +159,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
   
     e. [SAML Metadata (SAML メタデータ)] セクションの **[Update Metadata (メタデータの更新)]** をクリックします。 
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 ページが開き、SSO が実行されます。 SSO が実行されたら、ユーザー名を設定できます。
+    f. ページが開き、SSO が実行されます。 SSO が実行されたら、ユーザー名を設定できます。
 
     g. [Username]\(ユーザー名\) フィールドで、次の画像に示すように **emailaddress** を選びます。 
 
@@ -168,7 +168,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
     i. **SSO URL/ACS** の値をコピーし、Azure Portal の **[etouches のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
    
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -194,7 +194,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
  
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-etouches-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -218,7 +218,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[etouches]**を選択します。
+2. アプリケーションの一覧で **[etouches]** を選択します。
 
     ![アプリケーションの一覧の etouches のリンク](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_app.png) 
 
@@ -246,7 +246,7 @@ etouches で Azure AD のシングル サインオンを構成してテストす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

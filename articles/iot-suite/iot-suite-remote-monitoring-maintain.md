@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: a959276ea61ec0e44ad45197019dfc80f26b768e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 99cf9e341edf0acee434e2d01f6346291cbcea5a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>トラブルシューティングを行ってデバイスの問題を修復する
 
@@ -34,7 +34,7 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="use-the-maintenance-dashboard"></a>メンテナンス ダッシュボードの使用
 

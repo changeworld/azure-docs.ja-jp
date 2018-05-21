@@ -1,22 +1,22 @@
 ---
-title: "Azure Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法 | Microsoft Docs"
-description: "Service Fabric でパラメーターを使ってアプリケーションのポートを指定する方法を説明します"
+title: Azure Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法 | Microsoft Docs
+description: Service Fabric でパラメーターを使ってアプリケーションのポートを指定する方法を説明します
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: aca5b6a476e9526498a5e4834aaa28eb73750562
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 06cfb375c6c18082a0d0316cfcb742a7779fc8a8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法
 

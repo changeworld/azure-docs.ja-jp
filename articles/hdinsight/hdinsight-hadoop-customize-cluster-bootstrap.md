@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 1a832bfdf09fbaa5c0e083b1263393285492795c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2fdbb8730d350023035038d60d17a5ad12c98bc0
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
@@ -92,7 +92,7 @@ New-AzureRmHDInsightCluster `
 7. **[Configs]** タブをクリックします。
 8. 左側のメニューで **[Hive]** をクリックします。
 9. **[詳細]** タブをクリックします。
-10. 下にスクロールして、 **[Advanced hive-site]**を展開します。
+10. 下にスクロールして、 **[Advanced hive-site]** を展開します。
 11. セクションの **hive.metastore.client.socket.timeout** を検索します。
 
 他の構成ファイルのカスタマイズのサンプルを次に示します。
@@ -135,12 +135,10 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 * [HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]
 * [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-* [HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
 * [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs

@@ -1,16 +1,18 @@
+## <a name="register-your-application"></a>アプリケーションの登録
+次の 2 つのセクションで説明する方法のいずれかを使用して、アプリケーションを登録できます。
 
-## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
+### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
 次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)でアプリケーションを登録します。
 2.  アプリケーションの名前とお使いのメール アドレスを入力します
 3.  ガイド付きセットアップのオプションがオンになっていることを確認します。
 4.  手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
 
-### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>ソリューションへのアプリケーション登録情報の追加 (上級)
+### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
 
 1.  [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に進みます
 2.  アプリケーションの名前とお使いのメール アドレスを入力します
-3.  ガイド付きセットアップのオプションがオフになっていることを確認します。
+3.  ガイド付きセットアップのオプションがオフになっていることを確認します
 4.  [`Add Platform`] をクリックし、[`Native Application`] を選択し、[`Save`] をクリックします。
 5.  Xcode に戻ります。 `ViewController.swift` で、'`let kClientID`' で始まる行をさきほど登録したアプリケーション ID に変更します。
 

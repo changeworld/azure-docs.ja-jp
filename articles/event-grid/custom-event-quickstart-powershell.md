@@ -6,13 +6,13 @@ keywords: ''
 author: tfitzmac
 ms.author: tomfitz
 ms.date: 03/20/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 183bafad9b38ccb0e7eaae222c5569e45b15ac21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 695aa5c567882ef7742666146877e1fbc660492b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>Azure PowerShell と Event Grid を使用したカスタム イベントの作成とルーティング
 

@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 4eac453ad866910839088892de457c2cec48791c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0f0df7883b25344560514491c08af3eadf872ffb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Windows セキュリティを使用して Windows 上のスタンドアロン クラスターを保護する
 Service Fabric クラスターへの未承認のアクセスを防ぐには、クラスターをセキュリティで保護する必要があります。 クラスターで運用環境のワークロードが実行されている場合は、セキュリティが特に重要となります。 この記事では、*ClusterConfig.JSON* ファイルで Windows セキュリティを使用して、ノード間およびクライアントとノード間のセキュリティを構成する方法について説明します。  このプロセスは、[Windows 上で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事のセキュリティの構成手順に対応しています。 Service Fabric における Windows セキュリティの使用の詳細については、[クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事をご覧ください。
@@ -82,7 +82,7 @@ Service Fabric クラスターへの未承認のアクセスを防ぐには、�
 ```  
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>コンピューター グループを使用して Windows セキュリティを構成する  
-このモデルは推奨されていません。 上記の詳しい説明のとおり、gMSA を使用することをお勧めします。 [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.MultiMachine.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。  Windows セキュリティは **Properties** セクション内で構成します。 
+このモデルは非推奨となっています。 上記の詳しい説明のとおり、gMSA を使用することをお勧めします。 [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.MultiMachine.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。  Windows セキュリティは **Properties** セクション内で構成します。 
 
 ```
 "security": {

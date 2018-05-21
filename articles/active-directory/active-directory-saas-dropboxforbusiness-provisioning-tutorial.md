@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Dropbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Azure Active Directory と Dropbox for Business の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Dropbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Azure Active Directory と Dropbox for Business の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b082127f74ff5f823506c0f75f40c4b4246dcfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bdac910b5011237e26a39f3e45f3e7ad6176bc83
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル: Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -96,5 +96,5 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](active-directory-saas-dropboxforbusiness-tutorial.md)

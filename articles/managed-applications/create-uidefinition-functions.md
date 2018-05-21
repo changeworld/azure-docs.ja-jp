@@ -1,40 +1,40 @@
 ---
-title: "Azure マネージ アプリケーションの UI 定義作成機能 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの UI 定義を作成するときに使う機能について説明します"
-services: azure-resource-manager
+title: Azure マネージ アプリケーションの UI 定義作成機能 | Microsoft Docs
+description: Azure マネージ アプリケーションの UI 定義を作成するときに使う機能について説明します
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: dcf570ca4bdc8eacb7e4d7a8ff0011c8e07b7a40
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 関数
 このセクションには、サポートされているすべての CreateUiDefinition 関数の署名が含まれています。
 
-関数を使用するには、角かっこで宣言を囲みます。 For example:
+関数を使用するには、角かっこで宣言を囲みます。 例: 
 
 ```json
 "[function()]"
 ```
 
-文字列とその他の関数は、関数のパラメーターとして参照できますが、文字列は一重引用符で囲む必要があります。 For example:
+文字列とその他の関数は、関数のパラメーターとして参照できますが、文字列は一重引用符で囲む必要があります。 例: 
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-必要に応じて、ドット演算子を使用して、関数の出力のプロパティを参照できます。 For example:
+必要に応じて、ドット演算子を使用して、関数の出力のプロパティを参照できます。 例: 
 
 ```json
 "[func().prop1]"
@@ -100,7 +100,7 @@ ms.lasthandoff: 10/27/2017
 "[replace('Everything is terrible!', 'terrible', 'awesome')]"
 ```
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>GUID
 グローバルに一意の文字列 (GUID) が生成されます。
 
 次の例では、`"c7bc8bdc-7252-4a82-ba53-7c468679a511"` などが返されます。
@@ -525,7 +525,7 @@ ms.lasthandoff: 10/27/2017
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>文字列
 パラメーターが文字列に変換されます。 この関数は、すべての JSON データ型のパラメーターをサポートしています。
 
 次の例は、 `"1"`を返します。
@@ -785,6 +785,6 @@ ms.lasthandoff: 10/27/2017
 "[addHours('1990-12-31T23:59:59Z', 1)]"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Resource Manager の概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 

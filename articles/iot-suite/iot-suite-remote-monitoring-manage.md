@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 599f8327e9939f400ca18c87fa6193ac3c1e4a61
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>デバイスの管理と構成
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 05/07/2018
 
 Contoso は自社の施設の 1 つを拡大して生産量を増やすために、新しい機械を注文しました。 新しい機械が納品されるのを待つ間に、あなたはソリューションの動作を検証するためのシミュレーションを実施したいと考えています。 あなたはオペレーターとして、リモート監視ソリューションでデバイスを管理および構成することを希望しています。
 
-デバイスを管理および構成する拡張可能な方法を提供するために、リモート監視ソリューションでは[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)や[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)などの IoT Hub 機能を使用します。 デバイスの開発者が物理デバイスでメソッドを実装する方法については、「[リモート監視ソリューション アクセラレータをカスタマイズする](iot-suite-remote-monitoring-customize.md)」を参照してください。
+デバイスを管理および構成する拡張可能な方法を提供するために、リモート監視ソリューションでは[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)や[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)などの IoT Hub 機能を使用します。 デバイスの開発者が物理デバイスでメソッドを実装する方法については、「[リモート監視ソリューション アクセラレータをカスタマイズする](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)」を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -38,7 +38,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 

@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 9596e55c6c915461ef4d0bff0d7f9583aac18a1c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bc5302b9af023b04fb6b1654ac13e9fc02e0a465
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java クライアント API
 

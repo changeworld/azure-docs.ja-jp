@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric クラスター リソース マネージャー：移動コスト | Microsoft Docs"
-description: "Service Fabric サービスの移動コストの概要"
+title: Service Fabric クラスター リソース マネージャー：移動コスト | Microsoft Docs
+description: Service Fabric サービスの移動コストの概要
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3063647671fea94da3ce635b887f6f0f7de89f70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-movement-cost"></a>サービスの移動コスト
 クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。 
@@ -115,7 +115,7 @@ ClusterManifest.xml:
 ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric クラスター リソース マネージャーは、メトリックを使用して、クラスターの利用量と容量を管理します。 メトリックの詳細とその構成方法については、「 [Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「 [Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
 

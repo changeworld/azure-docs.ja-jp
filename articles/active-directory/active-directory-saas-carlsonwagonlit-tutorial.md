@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合 | Microsoft Docs"
-description: "Azure Active Directory と Carlson Wagonlit Travel の間のシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合 | Microsoft Docs'
+description: Azure Active Directory と Carlson Wagonlit Travel の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 26d141d73dfee5dd47ba09a32262343488487ad1
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 80873f9dfe94a5e83865b3617ad8dba3198a2dd7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合
 
@@ -30,7 +30,7 @@ Carlson Wagonlit Travel と Azure AD の統合には、次の利点がありま�
 - ユーザーが自分の Azure AD アカウントで自動的に Carlson Wagonlit Travel にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -200,7 +200,7 @@ Carlson Wagonlit Travel で Azure AD のシングル サインオンを構成し
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
