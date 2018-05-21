@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -120,7 +120,7 @@ Azure Load Balancer には、すべての UDP と TCP プロトコル向けの�
 
 Azure リソースとの間でやり取りされるトラフィックは、次の方法でフィルタリングすることができます。
 
-- **ネットワーク:** Azure ネットワーク セキュリティ グループ (NSG) を実装することで、Azure リソースの受信トラフィックと送信トラフィックをフィルタリングすることができます。 それぞれの NSG には、受信の規則と送信の規則が含まれています。 トラフィックのフィルタリングに使用する送信元 IP アドレス、送信先 IP アドレス、ポート、プロトコルが、個々の規則によって指定されます。 NSG は個々のサブネットに適用できるほか、個々の VM に適用することができます。 NSG の詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **ネットワーク:** Azure ネットワーク セキュリティ グループ (NSG) を実装することで、Azure リソースの受信トラフィックと送信トラフィックをフィルタリングすることができます。 それぞれの NSG には、受信の規則と送信の規則が含まれています。 トラフィックのフィルタリングに使用する送信元 IP アドレス、送信先 IP アドレス、ポート、プロトコルが、個々の規則によって指定されます。 NSG は個々のサブネットに適用できるほか、個々の VM に適用することができます。 NSG の詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **アプリケーション:** Web アプリケーション ファイアウォールを備えた Application Gateway を使用することで、Web アプリケーションを脆弱性やその悪用から保護することができます。 よくある攻撃の例としては、SQL インジェクション攻撃やクロス サイト スクリプティング、不正な形式のヘッダーが挙げられます。 Application Gateway は、このようなトラフィックをフィルターで取り除くことにより、Web サーバーへの到達を未然に防ぎます。 どの規則を有効にするかは、設定により変更することができます。 SSL ネゴシエーション ポリシーは設定で変更できるようになっており、特定のポリシーを無効にすることができます。 Web アプリケーション ファイアウォールの詳細については、[Web アプリケーション ファイアウォール](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 
 Azure に備わっていないネットワーク機能が必要になった場合や、オンプレミスでご利用のネットワーク アプリケーションを使う必要が生じた場合は、その製品を VM に実装したうえで VNet に接続することができます。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) には、今日普及しているネットワーク アプリケーションを使ってあらかじめ構成されたさまざまな VM が用意されています。 一般に、これらの事前構成済みの VM はネットワーク仮想アプライアンス (NVA) と呼ばれています。 NVA には、ファイアウォールや WAN 最適化などのアプリケーションが含まれています。

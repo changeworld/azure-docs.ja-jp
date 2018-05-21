@@ -9,16 +9,16 @@ editor: hrushib
 ms.assetid: FAA58600-897E-4CEE-9D1C-93FACF98AD1C
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: f2ab583ecc77122f2c76f905a1cd7b936278bd41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b2e2e7dcc26bece79ae0423d55b08416065d599e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
 > [!div class="op_single_selector"]

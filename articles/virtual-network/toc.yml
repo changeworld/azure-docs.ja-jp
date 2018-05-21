@@ -61,12 +61,10 @@
           href: virtual-networks-acl.md
 - name: ハウツー ガイド
   items:
-    - name: 計画と設計
+    - name: プラン
       items:
         - name: 仮想ネットワーク
           href: virtual-network-vnet-plan-design-arm.md
-        - name: ネットワーク セキュリティ グループ
-          href: virtual-networks-nsg.md
     - name: デプロイ
       items:
         - name: ネットワーク セキュリティ グループ

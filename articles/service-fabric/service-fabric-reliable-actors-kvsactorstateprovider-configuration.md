@@ -1,24 +1,24 @@
 ---
-title: "Azure マイクロサービスで KVSActorStateProvider の設定を変更する | Microsoft Docs"
-description: "KVSActorStateProvider 型の Azure Service Fabric ステートフル アクターの構成について説明します。"
+title: Azure マイクロサービスで KVSActorStateProvider の設定を変更する | Microsoft Docs
+description: KVSActorStateProvider 型の Azure Service Fabric ステートフル アクターの構成について説明します。
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: d3424aa7a8e0f6011bbef4aa61274c1f598f5c86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f29754c73db74f02214522a4de15904e65df0e98
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
 KVSActorStateProvider の既定の構成を変更するには、指定されたアクターの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートで生成された settings.xml ファイルを変更します。
@@ -45,12 +45,12 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>構成名
-| 名前 | 単位 | 既定値 | 解説 |
+| Name | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソースの定義の詳細については、「 [サービス マニフェストでのリソースの指定](service-fabric-service-manifest-resources.md) 」をご覧ください。 |
 | RetryInterval |Seconds |5 |レプリケーターが操作の受信確認を受信しなかった場合に、メッセージを再送信するまでの期間です。 |
-| MaxReplicationMessageSize |バイト |50 MB |1 つのメッセージで送信できるレプリケーション データの最大サイズです。 |
+| MaxReplicationMessageSize |Bytes |50 MB |1 つのメッセージで送信できるレプリケーション データの最大サイズです。 |
 | MaxPrimaryReplicationQueueSize |操作数 |1024 |プライマリ キューの操作の最大数です。 操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 | MaxSecondaryReplicationQueueSize |操作数 |2048 |セカンダリ キューの操作の最大数です。 操作は、永続性によってその状態の高可用性が実現されてから解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 
@@ -62,7 +62,7 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>構成名
-| 名前 | 単位 | 既定値 | 解説 |
+| Name | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |ミリ秒 |200 |持続性のあるローカル ストア コミットに、バッチ処理の最大間隔を設定します。 |
 | MaxVerPages |ページ数 |16384 |ローカル ストア データベースにおけるバージョン ページの最大数です。 未処理のトランザクションの最大数を決定します。 |

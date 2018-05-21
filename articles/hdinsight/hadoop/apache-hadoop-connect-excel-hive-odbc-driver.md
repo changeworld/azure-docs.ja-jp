@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 432fc630cad172255c6adcdce74291e3ec275c7b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 26234ca17d833fef01ad5a6465824c99d84cc556
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
 
@@ -67,7 +67,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    
     </table>
    
-    **[詳細オプション]**をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
+    **[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
    
    | パラメーター | [説明] |
    | --- | --- |
@@ -77,7 +77,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
     ![詳細オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png "DSN の詳細構成オプション")
 
-1. **[テスト]** をクリックして、データ ソースをテストします。 データ ソースが正しく構成された場合、 *テストは無事に完了しました。*と表示されます。
+1. **[テスト]** をクリックして、データ ソースをテストします。 データ ソースが正しく構成された場合、 *テストは無事に完了しました。* と表示されます。
 2. **[OK]** をクリックして [テスト] ダイアログを閉じます。 新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** に表示されます。
 3. **[OK]** をクリックしてウィザードを終了します。
 

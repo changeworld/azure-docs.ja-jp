@@ -3,22 +3,23 @@ title: Azure Active Directory での条件付きアクセスを使用して Azur
 description: Azure AD での条件付きアクセスを使用して、Azure 管理へのアクセスを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: rolyon
 manager: mtillman
-editor: bryanla
+editor: skwan
 ms.assetid: 0adc8b11-884e-476c-8c43-84f9bf12a34b
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/22/2017
-ms.author: skwan
-ms.openlocfilehash: 1716ab45ab643e7220c2d1450a7aa6636647e62d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: rolyon
+ms.reviewer: skwan
+ms.openlocfilehash: dcf701c15ee20b7d9aeea65f3d06b794006a5202
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 

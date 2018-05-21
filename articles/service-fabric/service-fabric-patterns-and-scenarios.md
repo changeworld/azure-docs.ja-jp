@@ -1,29 +1,29 @@
 ---
-title: "Azure Service Fabric のパターンとシナリオ | Microsoft Docs"
-description: "Service Fabric でマイクロサービスを設計、開発し、運用するために、ベスト プラクティスと実証済みの再利用可能なパターンについて説明します。"
+title: Azure Service Fabric のパターンとシナリオ | Microsoft Docs
+description: Service Fabric でマイクロサービスを設計、開発し、運用するために、ベスト プラクティスと実証済みの再利用可能なパターンについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d5aa75ff-98b9-4573-a2e5-7f5ab288157a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: d0b385c10df61e9719d95b29b60e0f92766b2637
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 5c2cd38001a9645011bbab84cff3b9366aa64b1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric のパターンとシナリオ
 Azure Service Fabric を使用して大規模なマイクロサービスを構築することを検討している場合は、このサービスとしてのプラットフォーム (PaaS) を設計および構築した専門家から学んでください。 適切なアーキテクチャから始め、アプリケーションのリソースを最適化する方法を確認します。 「[Service Fabric Patterns and Practices (Service Fabric のパターンと実践)](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344)」コースでは、Service Fabric のシナリオとアプリケーション領域について、実際のお客様からよく寄せられる質問に答えます。
  
-ベスト プラクティスと実証済みの再利用可能なパターンを使用して、Service Fabric でマイクロサービスを設計、開発し、運用する方法を紹介します。 Service Fabric の概要を説明した後、クラスターの最適化とセキュリティ、レガシ アプリケーションの移行、大規模な IoT、ゲーム エンジンのホストなどを取り上げたトピックを深く掘り下げます。 さまざまなワークロードの継続的配信について説明し、Linux Support とコンテナーについても詳しく説明します。 
+ベスト プラクティスと実証済みの再利用可能なパターンを使用して、Service Fabric でマイクロサービスを設計、開発し、運用する方法を紹介します。 Service Fabric の概要を説明した後、クラスターの最適化とセキュリティ、レガシ アプリケーションの移行、大規模な IoT、ゲーム エンジンのホストなどを取り上げたトピックを深く掘り下げます。 さまざまなワークロードの継続的デリバリーについて説明し、Linux Support とコンテナーについても詳しく説明します。 
 
 ## <a name="introduction"></a>はじめに
 ベスト プラクティスを紹介し、サービスとしてのインフラストラクチャ (IaaS) 上のサービスとしてのプラットフォーム (PaaS) の選択について説明します。 実証済みのアプリケーション設計原則に従う方法について詳しく説明します。
@@ -70,13 +70,13 @@ Azure IoT パイプライン、マルチテナント、大規模な IoT など�
 </a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=kfqFWMSGD_6205167344">ゲーム</a></td></tr>
 </table>
 
-## <a name="continuous-delivery"></a>継続的配信
-Visual Studio Team Services による継続的インテグレーション/継続的配信、ワークフローの構築/パッケージ化/公開、マルチ環境のセットアップ、サービス パッケージ/共有などの概念について説明します。
+## <a name="continuous-delivery"></a>継続的デリバリー
+Visual Studio Team Services による継続的インテグレーション/継続的デリバリー、ワークフローの構築/パッケージ化/公開、マルチ環境のセットアップ、サービス パッケージ/共有などの概念について説明します。
 
 <table><tr><th>ビデオ</th><th>PowerPoint デッキ</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=78h5ofSGD_305167344">
 <img src="./media/service-fabric-patterns-and-scenarios/cd.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=VlENvOSGD_105167344">継続的配信</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=VlENvOSGD_105167344">継続的デリバリー</a></td></tr>
 </table>
 
 ## <a name="migration"></a>移行
@@ -98,4 +98,4 @@ Visual Studio Team Services による継続的インテグレーション/継続
 </table>
 
 ## <a name="next-steps"></a>次の手順
-これで、Service Fabric のパターンとシナリオについて学習できました。次に、[クラスターを作成して管理する方法](service-fabric-deploy-anywhere.md)、[Cloud Services アプリを Service Fabric に移行する方法](service-fabric-cloud-services-migration-worker-role-stateless-service.md)、[継続的配信を設定する方法](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)、[コンテナーをデプロイする方法](service-fabric-containers-overview.md)の詳細を確認します。
+これで、Service Fabric のパターンとシナリオについて学習できました。次に、[クラスターを作成して管理する方法](service-fabric-deploy-anywhere.md)、[Cloud Services アプリを Service Fabric に移行する方法](service-fabric-cloud-services-migration-worker-role-stateless-service.md)、[継続的デリバリーを設定する方法](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)、[コンテナーをデプロイする方法](service-fabric-containers-overview.md)の詳細を確認します。

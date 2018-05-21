@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric クラスター リソース マネージャー - 管理の統合 | Microsoft Docs"
-description: "クラスター リソース マネージャーと Service Fabric 管理の統合ポイントの概要"
+title: Service Fabric クラスター リソース マネージャー - 管理の統合 | Microsoft Docs
+description: クラスター リソース マネージャーと Service Fabric 管理の統合ポイントの概要
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 70c0cc37a1d362c937ab86bd630c5ab051e63870
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Service Fabric クラスター管理とクラスター リソース マネージャーの統合
 Service Fabric クラスター リソース マネージャーは Service Fabric でのアップグレードを推進していませんが、関係しています。 クラスター リソース マネージャーが管理に役立つ第 1 の点は、クラスターとクラスター内のサービスの望ましい状態を追跡できることです。 クラスター リソース マネージャーは、クラスターを望ましい構成に設定できない場合に正常性レポートを送信します。 たとえば、容量が不十分な場合、クラスター リソース マネージャーから問題を示す正常性の計画とエラーが送信されます。 統合のもう 1 つの利点は、アップグレードのしくみに関係があります。 クラスター リソース マネージャーは、アップグレード中、動作を若干変更します。  
@@ -207,5 +207,5 @@ PreferredLocation 制約は、2 つの用途があるため、少し異なりま
 ### <a name="buffered-capacity--upgrade"></a>バッファーの容量とアップグレード
 一般に、クラスターが制約を受けたりいっぱいに近づいたりするとしても、ユーザーはアップグレードを完了したいと考えます。 アップグレード中は、クラスターの容量を管理できることが通常よりもいっそう重要になります。 ポリシーアップグレード ドメイン数に応じて、容量の 5% から 20% は、クラスター経由でアップグレード ロールとして移行する必要があります。 この作業は、どこかの場所で実行される必要があります。 このような場合、[バッファーの容量](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity)の概念が役立ちます。 通常の操作では、バッファーの容量が遵守されます。 クラスター リソース マネージャーは、アップグレード中に必要に応じて合計容量までノードを使用する (バッファーを消費する) 可能性があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 最初から開始して、 [Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)
