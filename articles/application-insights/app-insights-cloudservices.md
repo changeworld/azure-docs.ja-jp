@@ -1,9 +1,9 @@
 ---
-title: "Azure Cloud Services 向けの Application Insights | Microsoft Docs"
-description: "Application Insights で Web と worker ロールを効果的に監視する"
+title: Azure Cloud Services 向けの Application Insights | Microsoft Docs
+description: Application Insights で Web と worker ロールを効果的に監視する
 services: application-insights
-documentationcenter: 
-keywords: "WAD2AI, Azure 診断"
+documentationcenter: ''
+keywords: WAD2AI, Azure 診断
 author: mrbullwinkle
 manager: carmonm
 editor: alancameronwills
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
 [Microsoft Azure Cloud Services アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況は、[Application Insights][start] で監視できます。それには、Application Insights の SDK から得られるデータと、Cloud Services から得られる [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データとを組み合わせて使用します。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -223,7 +223,7 @@ Web ロールの場合、以下のカウンターも収集されます。
 
 システムで Stream Analytics などの他の Azure サービスが使用されている場合は、その監視グラフも含めます。 
 
-クライアント モバイル アプリがある場合は、主要なユーザー操作の際にカスタム イベントを送信するコードを挿入してから、[HockeyApp ブリッジ](app-insights-hockeyapp-bridge-app.md)を作成します。 [Analytics](app-insights-analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
+クライアントのモバイル アプリがある場合は、[App Center](app-insights-mobile-center-quickstart.md) を使用してください。 [Analytics](app-insights-analytics.md) でクエリを作成してイベント カウントを表示してから、それをダッシュボードにピン留めします。
 
 ## <a name="example"></a>例
 [この例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) では、1 つの Web ロールと 2 つの worker ロールが含まれたサービスを監視します。

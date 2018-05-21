@@ -16,11 +16,11 @@ f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="about-azure-storage-accounts"></a>Azure ストレージ アカウントについて
 
@@ -63,7 +63,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[その他のサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 3. ストレージ アカウントの名前を入力します。 Azure Storage 内のオブジェクトを指すためにストレージ アカウント名がどのように使用されるかについては、「 [ストレージ アカウント エンドポイント](#storage-account-endpoints) 」を参照してください。
    
@@ -80,10 +80,10 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 5. ストレージ アカウントの種類として、**[汎用]** または **[BLOB ストレージ]** を選択します。 **[汎用]** です。
    
-    **[汎用]** を選択した場合は、パフォーマンス レベルとして **[Standard]** または **[Premium]** を指定します。 既定値は **[Standard]**です。 Standard Storage アカウントと Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」と「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」を参照してください。
+    **[汎用]** を選択した場合は、パフォーマンス レベルとして **[Standard]** または **[Premium]** を指定します。 既定値は **[Standard]** です。 Standard Storage アカウントと Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」と「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」を参照してください。
    
-    **[BLOB ストレージ]** を選択した場合は、アクセス層として **[ホット]** または **[クール]** を指定します。 既定値は **[ホット]**です。 詳細については、「 [Azure Blob Storage: クール層とホット層](../blobs/storage-blob-storage-tiers.md) 」を参照してください。
-6. ストレージ アカウントのレプリケーション オプション (**[LRS]**、**[GRS]**、**[RA-GRS]**、または **[ZRS]**) を選択します。 既定値は **[RA-GRS]**です。 Azure Storage のレプリケーション オプションの詳細については、 [Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。
+    **[BLOB ストレージ]** を選択した場合は、アクセス層として **[ホット]** または **[クール]** を指定します。 既定値は **[ホット]** です。 詳細については、「 [Azure Blob Storage: クール層とホット層](../blobs/storage-blob-storage-tiers.md) 」を参照してください。
+6. ストレージ アカウントのレプリケーション オプション (**[LRS]**、**[GRS]**、**[RA-GRS]**、または **[ZRS]**) を選択します。 既定値は **[RA-GRS]** です。 Azure Storage のレプリケーション オプションの詳細については、 [Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。
 7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。 リソース グループの詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 9. ストレージ アカウントの地理的な場所を選択します。 どのリージョンでどのサービスを使用できるかについては、「 [Azure のリージョン](https://azure.microsoft.com/regions/#services) 」を参照してください。
@@ -134,16 +134,16 @@ BLOB ストレージ アカウントでは、アクセス層を変更すると�
 3. 新しいプライマリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 4. 同様に、セカンダリ アクセス キーを再生成します。
 
-## <a name="delete-a-storage-account"></a>ストレージ アカウントの削除
-使わなくなったストレージ アカウントを削除するには、 [Azure ポータル](https://portal.azure.com)でストレージ アカウントに移動し、 **[削除]**をクリックします。 ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。
+## <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する
+使わなくなったストレージ アカウントを削除するには、 [Azure ポータル](https://portal.azure.com)でストレージ アカウントに移動し、 **[削除]** をクリックします。 ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。
 
 > [!WARNING]
 > 削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。 アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。 これはアカウントのどのリソースにも当てはまります。BLOB、テーブル、キュー、またはファイルを削除すると、完全に削除されます。
 > 
 
-Azure 仮想マシンに関連付けられているストレージ アカウントを削除しようとすると、まだ使用しているストレージ アカウントに関するエラー メッセージが表示されることがあります。 このエラーのトラブルシューティングについては、[ストレージ アカウントを削除する際のエラーのトラブルシューティング](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。
+Azure 仮想マシンに関連付けられているストレージ アカウントを削除しようとすると、まだ使用しているストレージ アカウントに関するエラー メッセージが表示されることがあります。 このエラーのトラブルシューティングについては、「[Troubleshoot disks attached to Azure VMs」 (Azure VM にアタッチされたディスクのトラブルシューティング)](../blobs/storage-troubleshoot-vhds.md) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure Blob Storage: クール層とホット層](../blobs/storage-blob-storage-tiers.md)
 * [Azure Storage のレプリケーション](storage-redundancy.md)

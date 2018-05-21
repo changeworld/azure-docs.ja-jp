@@ -14,3 +14,4 @@
 ### [携帯電話を使用したサインイン](microsoft-authenticator-app-phone-signin-faq.md)
 ### [アカウント資格情報のバックアップと復旧](microsoft-authenticator-app-backup-and-recovery.md)
 ### [FAQ](microsoft-authenticator-app-faq.md)
+### [サインイン エクスペリエンスの更新](sign-in-experience-updates.md)

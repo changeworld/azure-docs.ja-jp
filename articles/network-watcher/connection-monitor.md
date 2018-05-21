@@ -1,72 +1,167 @@
 ---
-title: Azure Network Watcher との接続を監視する - Azure Portal | Microsoft Docs
-description: Azure Portal を使用して、Azure Network Watcher とのネットワーク接続を監視する方法について説明します。
+title: ネットワーク通信の監視 - チュートリアル - Azure Portal | Microsoft Docs
+description: Azure Network Watcher の接続モニター機能によって 2 つの仮想マシン間のネットワーク通信を監視する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+tags: azure-resource-manager
+Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/16/2018
+ms.date: 04/27/2018
 ms.author: jdial
-ms.openlocfilehash: 242da9a3ce52d9c7d801215cde7b72b7f8fe9a91
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: mvc
+ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用して Azure Network Watcher とのネットワーク接続を監視する
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
-接続モニターを使って、Azure Virtual Machine (VM) と IP アドレス間のネットワーク接続を監視する方法について説明します。 接続モニターを使うと、発信元と宛先の IP アドレスとポートの間を監視できます。 接続モニターにより、仮想ネットワーク内の VM から、ポート 1433 を経由して、同一または別の仮想ネットワーク内で SQL サーバーを実行している VM への接続を監視するといったシナリオを実現できます。 接続モニターでは、Azure Monitor メトリックとして、60 秒ごとに記録される接続の待機時間が提供されます。 また、ホップバイホップ トポロジを提供し、接続に影響を与える構成の問題を識別します。
+仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルで学習する内容は次のとおりです。
 
-## <a name="prerequisites"></a>前提条件
+> [!div class="checklist"]
+> * 2 つの VM を作成する
+> * Network Watcher の接続モニター機能によって VM 間の通信を監視する
+> * 2 つの VM 間の通信の問題を診断し、解決方法を学習する
 
-この記事の手順を完了するには、次の前提条件を満たす必要があります。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* 接続を監視するリージョンの Network Watcher のインスタンス。 まだ Azure Network Watcher インスタンスを作成していない場合は、「[Azure Network Watcher のインスタンスの作成](network-watcher-create.md)」の手順を実行して作成できます。
-* 監視元の VM。 VM を作成する方法については、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) での VM の作成に関するページをご覧ください。
-* 接続を監視する VM に `AzureNetworkWatcherExtension` をインストールします。 Windows VM に拡張機能をインストールする方法については、「[Windows 用 Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」を、Linux VM に拡張機能をインストールする方法については、「[Linux 用 Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」を参照してください。 監視する接続先のエンドポイントでは、拡張機能は必要ありません。
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン 
+[Azure Portal](https://portal.azure.com) にサインインします。
 
-[Azure ポータル](http://portal.azure.com)にサインインします。
+## <a name="create-vms"></a>VM の作成
+
+2 つの VM を作成します。
+
+### <a name="create-the-first-vm"></a>最初の VM を作成する
+
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[Compute]** を選択し、オペレーティング システムを選択します。 このチュートリアルでは、**[Windows Server 2016 Datacenter]** を使用します。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
+
+    |Setting|値|
+    |---|---|
+    |Name|myVm1|
+    |ユーザー名| 任意のユーザー名を入力します。|
+    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |[サブスクリプション]| サブスクリプションを選択します。|
+    |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |場所| **[米国東部]** を選択します。|
+
+4. VM のサイズを選択して、**[選択]** を選択します。
+5. **[設定]** で **[拡張機能]** を選択します。 次の図に示すように、**[拡張機能の追加]** を選択して、**[Network Watcher Agent for Windows]** を選択します。
+
+    ![Network Watcher エージェント拡張機能](./media/connection-monitor/nw-agent-extension.png)
+
+6. **[Network Watcher Agent for Windows]** の下の **[作成]** を選択し、**[拡張機能のインストール]** の下の **[OK]** を選択し、**[拡張機能]** の下の **[OK]** を選択します。
+7. 残りの **[設定]** は既定値を受け入れて、**[OK]** を選択します。
+8. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
+
+### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
+
+[最初の VM を作成する](#create-the-first-vm)の手順を、次を変更して再度実行します。
+
+|手順|Setting|値|
+|---|---|---|
+| 1 | **[Ubuntu Server 17.10 VM]** を選択します |                                                                         |
+| 3 | Name                              | myVm2                                                                   |
+| 3 | 認証の種類               | SSH 公開キーを貼り付けるか、**[パスワード]** を選択して、パスワードを入力します。 |
+| 3 | リソース グループ                    | **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。                 |
+| 6 | 拡張機能                        | **Linux 用ネットワーク エージェント**                                             |
+
+VM のデプロイには数分かかります。 残りの手順を続行する前に、VM がデプロイを完了するまで待ちます。
 
 ## <a name="create-a-connection-monitor"></a>接続モニターを作成する
 
-次の手順では、ポート 80 および 1433 経由での宛先 VM への接続監視を有効にします。
+接続モニターを作成して、*myVm1* から *myVm2* への TCP ポート 22 経由の通信を監視します。
 
 1. ポータルの左側にある **[その他のサービス]** を選びます。
 2. **[フィルター]** ボックスに「*network watcher*」の入力を始めます。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 3. **[監視]** の **[接続モニター]** を選択します。
 4. **[+ 追加]** を選択します。
-5. 監視する接続の情報を入力するか選択して、**[追加]** を選択します。 次の図に示す例では、*MultiTierApp0* VM から *Database0* VM へのポート 80 経由の接続が監視されます。
+5. 監視する接続の情報を入力するか選択して、**[追加]** を選択します。 次の図に示す例で、監視される接続は、ポート 22 経由の *myVm1* VM から *myVm2* VM への接続です。
+
+    | Setting                  | 値               |
+    | ---------                | ---------           |
+    | Name                     | myVm1-myVm2(22)     |
+    | ソース                   |                     |
+    | 仮想マシン          | myVm1               |
+    | 変換先              |                     |
+    | 仮想マシンを選択する |                     |
+    | 仮想マシン          | myVm2               |
+    | ポート                     | 22                  |
 
     ![接続モニターを追加する](./media/connection-monitor/add-connection-monitor.png)
 
-    監視が開始されます。 接続モニターは 60 秒間隔でプローブを実行します。
-6. 手順 5 をもう一度実行し、同じ発信元と宛先の VM と、次の値を指定します。
-    
-    |Setting  |値          |
-    |---------|---------      |
-    |Name     | AppToDB(1433) |
-    |ポート     | 1433          |
+## <a name="view-a-connection-monitor"></a>接続モニターを表示する
 
-## <a name="view-connection-monitoring"></a>接続監視を表示する
+1. [接続モニターを作成する](#create-a-connection-monitor)の手順 1 ~ 3 を完了して、接続監視を表示します。 次の図に示すように、既存の接続モニターの一覧が表示されます。
 
-1. [接続モニターを作成する](#create-a-connection-monitor)の手順 1 ~ 3 を完了して、接続監視を表示します。
-2. 次の図は、*AppToDB(80)* 接続の詳細を示しています。 **[ステータス]** は到達可能となっています。 **[グラフ ビュー]** には、**平均ラウンド トリップ時間**と**失敗したプローブの割合**が示されています。 グラフではホップバイホップ情報が提供され、接続先への到達可能性に影響している問題はないことが示されています。
+    ![接続モニター](./media/connection-monitor/connection-monitors.png)
 
-    ![グラフ ビュー](./media/connection-monitor/view-graph.png)
+2. 前の図に示すように、**myVm1-myVm2(22)** という名前のモニターを選択して、次の図に示すように、モニターの詳細を表示します。
 
-3. 次の図に示した *AppToDB(1433)* 接続を表示すると、同じ発信元および宛先の VM について、ポート 1433 経由ではステータスが到達不能になっていることがわかります。 このシナリオの**グリッド ビュー**では、ホップバイホップ情報と、到達可能性に影響を与えている問題が示されます。 この場合、ある NSG ルールが、2 つ目のホップでポート 1433 上のすべてのトラフィックをブロックしています。
+    ![モニターの詳細](./media/connection-monitor/vm-monitor.png)
 
-    ![グリッド ビュー](./media/connection-monitor/view-grid.png)
+    次の情報をメモしておきます。
+
+    | 項目                     | 値                      | 詳細                                                     |
+    | ---------                | ---------                  |--------                                                     |
+    | 状態                   | 到達可能                  | エンドポイントが到達可能かどうかを知ることができます。|
+    | 平均 往復時間          | 接続を作成するまでの往復時間 (ミリ秒) を知ることができます。 接続モニターは、60 秒ごとに接続をプローブするため、時間経過に伴う待機時間を監視できます。                                         |
+    | Hops                     | 接続モニターにより、2 つのエンドポイント間のホップを知ることができます。 この例では、接続は、同じ仮想ネットワーク内の 2 つの VM 間であるため、10.0.0.5 IP アドレスへのホップが 1 つだけあります。 既存のシステムまたはカスタム ルートで、VPN ゲートウェイまたはまたはネットワーク仮想アプライアンスなどを経由して VM 間のトラフィックをルーティングする場合、追加のホップが一覧表示されます。                                                                                                                         |
+    | 状態                   | 各エンドポイントの緑のチェック マークにより、各エンドポイントが正常であることを確認できます。    ||
+
+## <a name="view-a-problem"></a>問題を表示する
+
+既定で、Azure は、同じ仮想ネットワーク内の VM 間のすべてのポートで通信を許可します。 時間が経過し、組織のだれかが Azure の既定の規則を上書きし、誤って通信エラーを引き起こすことがあります。 次の手順を実行して、通信の問題を作成してから、再度接続モニターを表示します。
+
+1. ポータル上部の [検索] ボックスに「*myResourceGroup*」と入力します。 検索結果に **myResourceGroup** リソース グループが表示されたら、それを選択します。
+2. **myVm2-ns** ネットワーク セキュリティ グループを選択します。
+3. 次の図に示すように、**[受信セキュリティ規則]** を選択し、**[追加]** を選択します。
+
+    ![受信セキュリティ規則](./media/connection-monitor/inbound-security-rules.png)
+
+4. 仮想ネットワーク内のすべての VM 間の通信を許可する既定の規則は、**AllowVnetInBound** という名前の規則です。 **AllowVnetInBound** 規則よりも高い優先順位 (小さい数値) で、ポート 22 経由の受信を拒否する規則を作成します。 次の情報を選択するか、入力し、それ以外の情報は既定値を受け入れて、**[作成]** を選択します。
+
+    | Setting                 | 値          |
+    | ---                     | ---            |
+    | 宛先ポート範囲 | 22             |
+    | アクションを表示します。                  | 拒否           |
+    | 優先順位                | 100            |
+    | Name                    | DenySshInbound |
+
+5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]**、**[接続モニター]** の順に選択し、**[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。
+
+    ![Monitor details fault](./media/connection-monitor/vm-monitor-fault .png)
+
+    **myvm2529** ネットワーク インターフェイスの状態列に赤の感嘆符アイコンがあることが確認できます。
+
+6. 状態が変更された理由については、前の図の 10.0.0.5 を選択します。 接続モニターは、通信エラーの理由が　*UserRule_DenySshInbound ネットワーク セキュリティ グループ規則によってトラフィックがブロックされた* ためであることを通知します。
+
+    手順 4. で作成したセキュリティの規則をだれかが実装したことを知らなかった場合、接続モニターからこの規則が通信の問題を引き起こしていることがわかります。 その後、規則を変更、上書き、または削除して、VM 間の通信を復元できます。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+リソース グループとそれに含まれるすべてのリソースが不要になったら、それらを削除します。
+
+1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
+2. **[リソース グループの削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、VM のアラートを使用してパケット キャプチャを自動化する方法を確認します。
-- [IP フローの検証](diagnose-vm-network-traffic-filtering-problem.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを判断します。
+このチュートリアルでは、2 つの VM 間の接続を監視する方法について説明しました。 ネットワーク セキュリティ グループの規則によって、VM への通信が妨げられていたことがわかりました。 接続モニターが返すことができるすべてのさまざまな応答については、[応答の種類](network-watcher-connectivity-overview.md#response)に関するページを参照してください。 VM、完全修飾ドメイン名、URI (Uniform Resource Identifier)、または IP アドレス間の接続を監視することもできます。
+
+何らかの時点で、仮想ネットワーク内のリソースが Azure 仮想ネットワーク ゲートウェイによって接続されている他のネットワーク内のリソースと通信できないことに気付く場合があります。 次のチュートリアルに進み、仮想ネットワーク ゲートウェイに関する問題を診断する方法について学習します。
+
+> [!div class="nextstepaction"]
+> [ネットワーク間の通信に関する問題を診断する](diagnose-communication-problem-between-networks.md)

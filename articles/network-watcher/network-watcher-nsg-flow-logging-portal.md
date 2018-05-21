@@ -1,113 +1,163 @@
 ---
-title: Azure Network Watcher を使用したネットワーク セキュリティ グループのフロー ログの管理 | Microsoft Docs
-description: このページでは、Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。
+title: VM への送受信ネットワーク トラフィック フローのログ記録 - チュートリアル - Azure Portal | Microsoft Docs
+description: Network Watcher の NSG フロー ログ機能を使用して、VM への送受信ネットワーク トラフィック フローをログに記録する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
+tags: azure-resource-manager
+Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 04/30/2018
 ms.author: jdial
-ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc
+ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>Azure Portal におけるネットワーク セキュリティ グループのフロー ログの管理
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
-> [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
-> - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
-> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+ネットワーク セキュリティ グループ (NSG) により、仮想マシン (VM) への着信トラフィックと 送信トラフィックをフィルターできます。 Network Watcher の NSG フロー ログ機能により、NSG を通過するネットワーク トラフィックをログに記録できます。 このチュートリアルで学習する内容は次のとおりです。
 
-ネットワーク セキュリティ グループのフロー ログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフロー ログは JSON 形式で作成され、重要な情報が記録されています。その例を次に示します。 
+> [!div class="checklist"]
+> * ネットワーク セキュリティ グループで VM 作成する
+> * Network Watcher を有効にして、Microsoft.Insights プロバイダーを登録する
+> * Network Watcher の NSG フロー ログ機能を使用して、NSG のトラフィック フローのログを有効にする
+> * ログに記録されたデータをダウンロードする
+> * ログに記録されたデータを表示する
 
-- ルールごとの送信フローと受信フロー。
-- フローの適用先の NIC。
-- フローに関する 5 タプル情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)。
-- トラフィックが許可 (または拒否) されたかどうかの情報。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="create-a-vm"></a>VM の作成
 
-この記事の手順を行うには、次のリソースが既にある必要があります。
+1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
+2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** または **[Ubuntu Server 17.10 VM]** を選択します。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
 
-- 既存の Network Watcher。 Network Watcher を作成するには、「[Azure Network Watcher のインスタンスの作成](network-watcher-create.md)」をご覧ください。
-- 有効な仮想マシンを含む既存のリソース グループ。 仮想マシンがない場合は、[Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) での仮想マシンの作成方法をご覧ください。
+    |Setting|値|
+    |---|---|
+    |Name|myVm|
+    |ユーザー名| 任意のユーザー名を入力します。|
+    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |[サブスクリプション]| サブスクリプションを選択します。|
+    |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |場所| **[米国東部]** を選択します。|
+
+4. VM のサイズを選択して、**[選択]** を選択します。
+5. **[設定]** で、すべての既定値をそのままにして、**[OK]** を選択します。
+6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。 VM のデプロイには数分かかります。 残りの手順を続行する前に、VM がデプロイを完了するまで待ちます。
+
+VM の作成には数分かかります。 VM の作成が完了するまで、残りの手順を続行しないでください。 ポータルで、VM が作成される際に、**myVm nsg** という名前のネットワーク セキュリティ グループも作成され、それが VM のネットワーク インターフェイスに関連付けられます。
+
+## <a name="enable-network-watcher"></a>Network Watcher を有効にする
+
+米国東部リージョンで既に Network Watcher を有効にしている場合は、「[Insights プロバイダーの登録](#register-insights-provider)」に進んでください。
+
+1. ポータルで **[すべてのサービス]** を選択します。 **[フィルター]** ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
+2. 次の図に示すように、**[リージョン]** を選択して展開し、**[米国東部]** の右側の **[...]** を選択します。
+
+    ![Network Watcher を有効にする](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
+
+3. **[Network Watcher の有効化]** を選択します。
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 
-フロー ログが正常に機能するためには、**Microsoft.Insights** プロバイダーが登録されている必要があります。 このプロバイダーを登録するには、次の手順を実行します。 
+NSG フローのログ記録には、**Microsoft.Insights** プロバイダーが必要です。 このプロバイダーを登録するには、次の手順を実行します。
 
-1. **[サブスクリプション]** に移動し、フロー ログを有効にするサブスクリプションを選択します。 
-2. **[サブスクリプション]** ブレードで、**[リソース プロバイダー]** を選択します。 
-3. プロバイダーの一覧を見て、**microsoft.insights** プロバイダーが登録されていることを確認します。 登録されていなければ、**[登録]** を選択します。
+1. ポータルの左上隅の **[すべてのサービス]** を選択します。 [フィルター] ボックスに「*Subscriptions*」と入力します。 検索結果に **[Subscriptions]** が表示されたら、それを選択します。
+2. サブスクリプションの一覧から、プロバイダーを有効にするサブスクリプションを選択します。
+3. **[設定]** で、**[リソース プロバイダー]** を選択します。
+4. 次の図に示すように、**microsoft.insights** プロバイダーの **[状態]** が **[登録済み]** であることを確認します。 状態が **[未登録]** である場合、プロバイダーの右側の **[登録]** を選択します。
 
-![プロバイダーを表示する][providers]
+    ![プロバイダーの登録](./media/network-watcher-nsg-flow-logging-portal/register-provider.png)
 
-## <a name="enable-flow-logs"></a>フローのログを有効にする
+## <a name="enable-nsg-flow-log"></a>NSG フロー ログの有効化
 
-ネットワーク セキュリティ グループのフロー ログを有効にするには、次の手順に従います。
+1. NSG フロー ログ データは Azure Storage アカウントに書き込まれます。 Azure Storage アカウントを作成するには、ポータルの左上隅の **[+ リソースの作成]** を選択します。
+2. **[ストレージ]**、**[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
+3. 次の情報を入力するか選択し、それ以外の情報は既定値をそのまま使用して、**[作成]** を選択します。
 
-### <a name="step-1"></a>手順 1
+    | Setting        | 値                                                        |
+    | ---            | ---   |
+    | Name           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
+    | 場所       | **[米国東部]** を選択します。                                           |
+    | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します |
 
-Network Watcher インスタンスに移動し、**[NSG フロー ログ]** を選択します。
+    ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。 ストレージ アカウントを作成せずに、既存のものを使う場合は、ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選択されているストレージ アカウントを選択してください。
+4. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
+5. 次の図に示すように、**[ログ]** の　 **[NSG フロー ログ]** を選択します。
 
-![フロー ログの概要][1]
+    ![NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
-### <a name="step-2"></a>手順 2.
+6. NSG の一覧から **myVm-nsg** という名前の NSG を選択します。
+7. **[フローのログ設定]** の下で **[オン]** を選択します。
+8. 手順 3 で作成したストレージ アカウントを選択します。
+9. **[リテンション期間 (日数)]** を 5 に設定し、**[保存]** を選択します。
 
-一覧からネットワーク セキュリティ グループを選択します。
+## <a name="download-flow-log"></a>フロー ログのダウンロード
 
-![フロー ログの概要][2]
+1. ポータルの Network Watcher から、**[ログ]** の下の **[NSG フロー ログ]** を選択します。
+2. 次の図に示すように、**[構成済みのストレージ アカウントからフローのログをダウンロードできました。]** を選択します。
 
-### <a name="step-3"></a>手順 3. 
+  ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
-**[フローのログ設定]** ブレードで、状態を **[オン]** に設定し、ストレージ アカウントを構成します。 ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選ばれている既存のストレージ アカウントを選びます。 ストレージ アカウントを選んだ後、**[OK]** を選び、**[保存]** を選びます。
+3. 「[NSG フロー ログの有効化](#enable-nsg-flow-log)」の手順 2 で構成したストレージ アカウントを選択します。
+4. 次の図に示すように、**[BLOB サービス]** の **[コンテナー]** を選択して、**[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
 
-![フロー ログの概要][3]
+    ![コンテナーの選択](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
+5. 次の図に示すように、フォルダー階層を PT1H.json ファイルに到達するまで移動します。
 
-## <a name="download-flow-logs"></a>フロー ログをダウンロードする
+    ![ログ ファイル](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
-フローのログはストレージ アカウントに保存されます。 フロー ログを表示するには、それらをダウンロードしてください。
+    ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-### <a name="step-1"></a>手順 1
+6. PT1H.json ファイルの右側の **[...]** を選択し、**[ダウンロード]** を選択します。
 
-フロー ログをダウンロードするには、**[構成済みのストレージ アカウントからフローのログをダウンロードできました。]** を選択します。 ストレージ アカウント ビューが表示され、ダウンロードするログを選択できます。
+## <a name="view-flow-log"></a>フロー ログの表示
 
-![フロー ログ設定][4]
+次の json は、データがログに記録される各フローについて、PT1H.json ファイルに表示される内容の例です。
 
-### <a name="step-2"></a>手順 2.
+```json
+{
+    "time": "2018-05-01T15:00:02.1713710Z",
+    "systemId": "<Id>",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/<Id>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/MYVM-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 1,
+        "flows": [{
+            "rule": "UserRule_default-allow-rdp",
+            "flows": [{
+                "mac": "000D3A170C69",
+                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
+            }]
+        }]
+    }
+}
+```
 
-適切なストレージ アカウントに移動します。 次に、**[コンテナー]** > **[insights-log-networksecuritygroupflowevent]** の順にクリックします。
+前の出力の **mac** の値は、VM の作成時に作成されたネットワーク インターフェイスの MAC アドレスです。 **flowTuples** のコンマで区切られた情報を次に示します。
 
-![フロー ログ設定][5]
-
-### <a name="step-3"></a>手順 3.
-
-フロー ログの場所に移動し、フロー ログを選択して **[ダウンロード]** を選択します。
-
-![フロー ログ設定][6]
-
-ログの構造については、[ネットワーク セキュリティ グループのフロー ログの概要](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
+| サンプル データ | データが表す内容   | 説明                                                                              |
+| ---          | ---                    | ---                                                                                      |
+| 1525186745   | タイム スタンプ             | UNIX EPOCH 形式でフローが発生した際のタイム スタンプ。 前の例では、日付は 2018 年 5 月 1 日午後 2:59:05 GMT に変換されます。                                                                                    |
+| 192.168.1.4  | 送信元 IP アドレス      | フローが発生したソース IP アドレス。
+| 10.0.0.4     | 宛先 IP アドレス | フローが送信された宛先 IP アドレス。 10.0.0.4 は、「[VM の作成](#create-a-vm)」で作成した VM のプライベート IP アドレスです。                                                                                 |
+| 55960        | 発信元ポート            | フローが発生したソース ポート。                                           |
+| 3389         | 宛先ポート       | フローが送信された宛先ポート。 トラフィックの送信先はポート 3389 であったため、ログ ファイルの **UserRule_default-allow-rdp** という規則によって、フローが処理されました。                                                |
+| T            | プロトコル               | フローのプロトコルが TCP (T) かまたは UDP (U) か。                                  |
+| I            | 方向              | トラフィックが受信 (I) かまたは送信 (O) か。                                     |
+| A            | アクションを表示します。                 | トラフィックが許可された (A) かまたは拒否された (D) か。                                           |
 
 ## <a name="next-steps"></a>次の手順
 
-[Power BI を使用して、NSG フロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-power-bi.md)方法を確認します。
-
-<!-- Image references -->
-[1]: ./media/network-watcher-nsg-flow-logging-portal/figure1.png
-[2]: ./media/network-watcher-nsg-flow-logging-portal/figure2.png
-[3]: ./media/network-watcher-nsg-flow-logging-portal/figure3.png
-[4]: ./media/network-watcher-nsg-flow-logging-portal/figure4.png
-[5]: ./media/network-watcher-nsg-flow-logging-portal/figure5.png
-[6]: ./media/network-watcher-nsg-flow-logging-portal/figure6.png
-[providers]: ./media/network-watcher-nsg-flow-logging-portal/providers.png
+このチュートリアルでは、NSG の NSG フローのログ記録を有効にする方法について説明しました。 また、ファイルに記録されたデータをダウンロードし、表示する方法も説明しました。 Json ファイル内の生データは解釈が難しい場合があります。 データを視覚化するため、Network Watcher [トラフィック分析](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)、およびその他のツールを使用できます。
