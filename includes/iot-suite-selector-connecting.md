@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 43acf33ec7787378595ad62540a868100bf587f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 500e335d0b2eddc56cdfb9828236bc4676d9b6aa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 > [!div class="op_single_selector"]
-> * [Windows 上の C](../articles/iot-suite/iot-suite-connecting-devices.md)
-> * [Linux 上の C](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
-> * [Node.js (汎用)](../articles/iot-suite/iot-suite-connecting-devices-node.md)
-> * [Raspberry Pi の Node.js](../articles/iot-suite/iot-suite-connecting-pi-node.md)
-> * [Raspberry Pi の C](../articles/iot-suite/iot-suite-connecting-pi-c.md)
+> * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
+> * [Linux 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices-linux.md)
+> * [Node.js (汎用)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
+> * [Raspberry Pi の Node.js](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
+> * [Raspberry Pi の C](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 
-このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-suite/iot-suite-what-are-solution-accelerators.md)に送信する **Chiller** デバイスを実装します。
+このチュートリアルでは、次のテレメトリを、リモート監視の[ソリューション アクセラレータ](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)に送信する **Chiller** デバイスを実装します。
 
 * 気温
 * 圧力
@@ -43,7 +43,7 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)ソリューション アクセラレータのインスタンスにデータを送信します。 リモート監視ソリューション アクセラレータを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring solution accelerator (リモート監視ソリューション アクセラレータをデプロイする)](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)」を参照してください
+このチュートリアルで作成する **Chiller** デバイスは、[リモート監視](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)ソリューション アクセラレータのインスタンスにデータを送信します。 リモート監視ソリューション アクセラレータを Azure アカウントにまだプロビジョニングしていない場合は、「[Deploy the remote monitoring solution accelerator (リモート監視ソリューション アクセラレータをデプロイする)](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」を参照してください
 
 リモート監視ソリューションのデプロイ プロセスが完了したら、 **[起動]** をクリックしてブラウザーでソリューション ダッシュボードを開きます。
 

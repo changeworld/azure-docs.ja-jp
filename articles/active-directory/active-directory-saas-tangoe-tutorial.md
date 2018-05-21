@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合 | Microsoft Docs"
-description: "Azure Active Directory と Tangoe Command Premium Mobile の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合 | Microsoft Docs'
+description: Azure Active Directory と Tangoe Command Premium Mobile の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 930150c07d84f886796208d7e745bdaec78966f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f6a2ffe56e4456ab3bf5a8234837425c60db1353
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合
 
@@ -30,7 +30,7 @@ Tangoe Command Premium Mobile と Azure AD の統合には、次の利点があ�
 - ユーザーが各自の Azure AD アカウントで Tangoe Command Premium Mobile に自動的にサインオン (シングル サインオン) するように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,11 +64,11 @@ Azure AD への Tangoe Command Premium Mobile の統合を構成するには、�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**Tangoe Command Premium Mobile**」と入力して、結果パネルで **Tangoe Command Premium Mobile** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
@@ -97,7 +97,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
 1. Azure Portal の **Tangoe Command Premium Mobile** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -107,7 +107,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
 
     ![Tangoe Command Premium Mobile のドメインと URL](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>` のパターンを使用して URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://sso.tangoe.com/sp/ACS.saml2` のパターンを使用して URL を入力します。
 
@@ -134,7 +134,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
    - **サインアウト URL**
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -160,7 +160,7 @@ Tangoe Command Premium Mobile で Azure AD のシングル サインオンを構
  
     ![[ユーザー] ダイアログ ページ](./media/active-directory-saas-tangoe-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -186,7 +186,7 @@ Tangoe Command Premium Mobile アプリケーションでは、シングル サ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Tangoe Command Premium Mobile]**を選択します。
+2. アプリケーションの一覧で **[Tangoe Command Premium Mobile]** を選択します。
 
     ![アプリ一覧の Tangoe Command Premium Mobile](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_app.png) 
 
@@ -213,7 +213,7 @@ Tangoe Command Premium Mobile アプリケーションでは、シングル サ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

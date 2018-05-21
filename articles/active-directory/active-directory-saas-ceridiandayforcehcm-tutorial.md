@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合 | Microsoft Docs"
-description: "Azure Active Directory と Ceridian Dayforce HCM の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合 | Microsoft Docs'
+description: Azure Active Directory と Ceridian Dayforce HCM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b87fe59f2761c26319ce9e13168dc6c4bf95f8b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 09f9d6d096944453d28a588de4d73dc3c95fc695
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合
 
@@ -30,7 +30,7 @@ Ceridian Dayforce HCM と Azure AD の統合には、次の利点があります
 - ユーザーが自分の Azure AD アカウントで自動的に Ceridian Dayforce HCM にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,9 +106,9 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
 3. **[Ceridian Dayforce HCM Domain and URLs] \(Ceridian Dayforce HCM のドメインと URL)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
-    a. **[サインオン URL]** ボックスに、ユーザーが Ceridian Dayforce HCM アプリケーションへのサインオンに使用する URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、ユーザーが Ceridian Dayforce HCM アプリケーションへのサインオンに使用する URL を入力します。
     
     | 環境 | URL |
     | :-- | :-- |
@@ -138,7 +138,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
 5. Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAML アサーションが必要です。 正しいユーザー識別子を識別するには、まず [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/contact-us/index.html)と協力してください。 ユーザー ID として **"name"** 属性を使用することをお勧めします。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。  
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -146,18 +146,18 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
     | --------------- | -------------------- |    
     | name  | user.extensionattribute2 |    
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     c. **[値]** 一覧で、実装に使用するユーザー属性を選択します。
     たとえば、一意のユーザー識別子として EmployeeID を使用し、その属性値を ExtensionAttribute2 に保存している場合、**[user.extensionattribute2]** を選択します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 7. **[保存]** ボタンをクリックします。
 
@@ -170,7 +170,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 9. **Ceridian Dayforce HCM** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Ceridian Dayforce HCM サポート チーム](https://www.ceridian.com/contact-us/index.html)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -220,9 +220,9 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Ceridian Dayforce HCM]**を選択します。
+2. アプリケーションの一覧で **[Ceridian Dayforce HCM]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -250,7 +250,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Ceridian Dayforce HCM]**を選択します。
+2. アプリケーションの一覧で **[Ceridian Dayforce HCM]** を選択します。
 
     ![アプリケーションの一覧の The Ceridian Dayforce HCM リンク](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png)  
 
@@ -276,7 +276,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

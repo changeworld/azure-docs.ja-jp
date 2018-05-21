@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Pluralsight の統合 | Microsoft Docs"
-description: "Azure Active Directory と Pluralsight の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Pluralsight の統合 | Microsoft Docs'
+description: Azure Active Directory と Pluralsight の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 62d148d78d9f98b6a3ddf1259177936b3976aeab
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: ec199b665f0f9ed34ac6763855cfa9d35b80a7e2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>チュートリアル: Azure Active Directory と Pluralsight の統合
 
@@ -30,7 +30,7 @@ Pluralsight と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Pluralsight にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
     ![[Pluralsight のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://<instancename>.pluralsight.com/sso/<companyname>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<instancename>.pluralsight.com/sso/<companyname>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`www.pluralsight.com`
 
@@ -138,7 +138,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
    | 姓 |User.surname |
    | 電子メール |User.mail |
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
     
      ![[Configure Single Sign-On]](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_addattribute.png)
   
@@ -146,7 +146,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
   
    c. **[属性値]** リストから、その行に対して表示される属性値を選択します。
   
-   d. **[OK]**をクリックします。    
+   d. **[OK]** をクリックします。    
 
 7. **[保存]** ボタンをクリックします。
 
@@ -205,7 +205,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Pluralsight]**を選択します。
+2. アプリケーションの一覧で **[Pluralsight]** を選択します。
 
     ![アプリケーションの一覧の [Pluralsight] のリンク](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_app.png)  
 
@@ -233,7 +233,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/23/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a2818be8ef609946e53f585aadb0a5b4ac0f3a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27b394a6b2d2f85afeb809fcad3b88564f3054e7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -57,7 +57,7 @@ Azure Analysis Services サーバーは、次の [Azure リージョン](https:/
 
 | アメリカ | ヨーロッパ | アジア太平洋 |
 |----------|--------|--------------|
-|  ブラジル南部<br> カナダ中部<br> 米国東部 2<br> 米国中北部<br> 米国中南部<br> 米国中西部<br> 米国西部 | 北ヨーロッパ<br> 英国南部<br> 西ヨーロッパ |   オーストラリア南東部<br> 東日本<br> 東南アジア<br> インド西部  |
+|  ブラジル南部<br> カナダ中部<br> 米国東部<br> 米国東部 2<br> 米国中北部<br> 米国中央部<br> 米国中南部<br> 米国中西部<br> 米国西部<br> 米国西部 2 | 北ヨーロッパ<br> 英国南部<br> 西ヨーロッパ |   オーストラリア南東部<br> 東日本<br> 東南アジア<br> インド西部  |
 
 新しいリージョンが随時追加されるため、この一覧は不十分である可能性があります。 場所は、Azure Portal または Azure Resource Manager テンプレートでサーバーを作成するときに選択します。 パフォーマンスを最大限に高めるには、最大のユーザー ベースに最も近い場所を選びます。 [高可用性](analysis-services-bcdr.md)を確保するには、モデルを複数リージョンの冗長サーバーにデプロイします。
 
@@ -92,14 +92,14 @@ Azure Analysis Services では、組織のオンプレミス データ ソース
 Azure Analysis Services のユーザー認証は、[Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) によって処理されます。 ユーザーが Azure Analysis Services データベースにログインするときは、対象のデータベースへのアクセス権がある組織のアカウント ID を使います。 これらのユーザー ID は、Azure Analysis Services サーバーが存在しているサブスクリプションの既定の Azure Active Directory のメンバーである必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
 #### <a name="data-security"></a>データのセキュリティ
-Azure Analysis Services は、Azure Blob Storage を利用して、Analysis Services データベースのストレージとメタデータを保持します。 BLOB 内のデータ ファイルは、Azure Blob Server Side Encryption (SSE) を使って暗号化されます。 DirectQuery モードを使用している場合は、メタデータのみが格納されます。 実際のデータは、クエリ時にデータ ソースからアクセスされます。
+Azure Analysis Services は、Azure Blob Storage を利用して、Analysis Services データベースのストレージとメタデータを保持します。 BLOB 内のデータ ファイルは、Azure Blob Server Side Encryption (SSE) を使って暗号化されます。 直接クエリ モードを使用している場合は、メタデータのみが格納されます。 実際のデータは、クエリ時にデータ ソースからアクセスされます。
 
 #### <a name="firewall"></a>ファイアウォール
 
 Azure Analysis Services ファイアウォールは、ルールに規定されているクライアント接続を除く、すべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロックすることもできます。 
 
 #### <a name="on-premises-data-sources"></a>オンプレミス データ ソース
-組織のオンプレミス データへの安全なアクセスは、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールして構成することにより実現します。 ゲートウェイは、DirectQuery モードとインメモリ モード両方のデータへのアクセスを提供します。 Azure Analysis Services モデルがオンプレミス データ ソースに接続すると、オンプレミス データ ソースに対する暗号化された資格情報を含むクエリが作成されます。 ゲートウェイ クラウド サービスはクエリを分析して、Azure Service Bus に要求をプッシュします。 オンプレミス ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。 その後、ゲートウェイはクエリを取得して、資格情報を復号化し、データ ソースに接続して実行します。 結果は、データ ソースからゲートウェイ経由で Azure Analysis Services データベースに返送されます。
+組織のオンプレミス データへの安全なアクセスは、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールして構成することにより実現します。 ゲートウェイは、直接クエリ モードとメモリ内モード両方のデータへのアクセスを提供します。 Azure Analysis Services モデルがオンプレミス データ ソースに接続すると、オンプレミス データ ソースに対する暗号化された資格情報を含むクエリが作成されます。 ゲートウェイ クラウド サービスはクエリを分析して、Azure Service Bus に要求をプッシュします。 オンプレミス ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。 その後、ゲートウェイはクエリを取得して、資格情報を復号化し、データ ソースに接続して実行します。 結果は、データ ソースからゲートウェイ経由で Azure Analysis Services データベースに返送されます。
 
 Azure Analysis Services は、[Microsoft オンライン サービス使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)および[Microsoft オンライン サービス プライバシー表明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)によって管理されます。
 Azure のセキュリティについて詳しくは、[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter/Security/AzureSecurity)をご覧ください。

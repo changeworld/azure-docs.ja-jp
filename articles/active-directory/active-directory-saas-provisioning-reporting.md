@@ -1,8 +1,8 @@
 ---
-title: "SaaS アプリケーションへの Azure Active Directory 自動ユーザー アカウント プロビジョニングについてのレポート | Microsoft Docs"
-description: "自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。"
+title: SaaS アプリケーションへの Azure Active Directory 自動ユーザー アカウント プロビジョニングについてのレポート | Microsoft Docs
+description: 自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: d2ec1b25e39717fb2411d35e3b0a9f5eb3a977be
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1527e8fe28d395a77d7b3c1535e40fe59df1baba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル: 自動ユーザー アカウント プロビジョニングについてのレポート
 
@@ -133,4 +133,4 @@ Azure Portal で見やすく表示するには、**[列]** ボタンを選択し
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)

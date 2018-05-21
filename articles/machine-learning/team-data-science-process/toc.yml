@@ -56,6 +56,9 @@
         - name: 生体エンティティの認識
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
+        - name: 皮膚がん画像の分類
+          href: isic-image-classification.md
+          maintainContext: true
     - name: PySpark と Scala を使用した Spark
       href: walkthroughs-spark.md
       items:

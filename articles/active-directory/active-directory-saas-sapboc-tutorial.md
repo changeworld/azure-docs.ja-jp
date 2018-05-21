@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SAP Business Object Cloud の統合 | Microsoft Docs"
-description: "Azure Active Directory と SAP Business Object Cloud の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SAP Business Object Cloud の統合 | Microsoft Docs'
+description: Azure Active Directory と SAP Business Object Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a56a892ac3b28c4e90ec2ea6360da3d2eff2581
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル: Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -30,7 +30,7 @@ SAP Business Object Cloud と Azure AD の統合には、次の利点があり�
 - シングル サインオンとユーザーの Azure AD アカウントを使用して、ユーザーを SAP Business Object Cloud に自動的にサインインさせることができます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -199,7 +199,7 @@ Azure AD でテスト ユーザーを作成するには:
 
     3. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    4. **[作成]**を選択します。
+    4. **[作成]** を選択します。
 
         ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-sapboc-tutorial/create_aaduser_04.png) 
 
@@ -252,13 +252,13 @@ Britta Simon を SAP Business Object Cloud に割り当てるには:
 
 2. アプリケーションの一覧で **[SAP Business Object Cloud]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** を選択します。
 
     ![[ユーザーとグループ] の選択][202] 
 
-4. **[追加]**を選択します。 **[割り当ての追加]** ページで **[ユーザーとグループ]** を選択します。
+4. **[追加]** を選択します。 **[割り当ての追加]** ページで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ページ][203]
 
@@ -281,7 +281,7 @@ Britta Simon を SAP Business Object Cloud に割り当てるには:
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

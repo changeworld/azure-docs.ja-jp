@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 362f21ad80de3cc9f95fec3c7b4399923567f17f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e3f92c887b7bbd4160c3a9cf90af4d86b7d48d02
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
@@ -34,7 +34,7 @@ IoT ソリューション アクセラレータの他の機能についても学
 IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御][lnk-devguide-security]に関するページで IoT Hub のセキュリティについて学習できます。
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
-[lnk-faq]: iot-suite-faq.md
+[lnk-faq]:../iot-accelerators/iot-accelerators-faq.md
 
 [lnk-security-deployment]: iot-suite-security-deployment.md
 [lnk-devguide-security]: ../iot-hub/iot-hub-devguide-security.md

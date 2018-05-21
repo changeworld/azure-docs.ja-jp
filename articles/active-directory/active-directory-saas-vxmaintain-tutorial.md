@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と vxMaintain の統合 | Microsoft Docs"
-description: "Azure Active Directory と vxMaintain の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と vxMaintain の統合 | Microsoft Docs'
+description: Azure Active Directory と vxMaintain の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c30d59a2bd903a5578caf376957a22bb270455f9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル: Azure Active Directory と vxMaintain の統合
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/29/2018
 - ユーザーが Azure AD アカウントによるシングル サインオン (SSO) を使って、vxMaintain に対して自動的にサインインできるようにできます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -155,7 +155,7 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに生成された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-a-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
 
@@ -198,7 +198,7 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 ## <a name="next-steps"></a>次の手順
 
 * [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

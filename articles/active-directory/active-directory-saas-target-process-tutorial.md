@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TargetProcess の統合 | Microsoft Docs"
-description: "Azure Active Directory と TargetProcess の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と TargetProcess の統合 | Microsoft Docs'
+description: Azure Active Directory と TargetProcess の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 78d64f38edb07b9eeffbe444e8bf98845e2df8f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0f2dba144f0b7ff70e7c9996e82d0f841a76854b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>チュートリアル: Azure Active Directory と TargetProcess の統合
 
@@ -30,7 +30,7 @@ TargetProcess と Azure AD の統合には、次の利点があります。
 - ユーザーが各自の Azure AD アカウントで TargetProcess に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,11 +64,11 @@ Azure AD への TargetProcess の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**TargetProcess**」と入力して、結果パネルで **[TargetProcess]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
@@ -97,7 +97,7 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **TargetProcess** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -107,7 +107,7 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
 
     ![TargetProcess のドメインと URL セクション](./media/active-directory-saas-target-process-tutorial/tutorial_target-process_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.tpondemand.com/` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.tpondemand.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<subdomain>.tpondemand.com/` の形式で URL を入力します。
 
@@ -128,34 +128,34 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
 
 7. 管理者として TargetProcess アプリケーションにサインオンします。
 
-8. 上部のメニューで **[セットアップ]**をクリックします。
+8. 上部のメニューで **[セットアップ]** をクリックします。
    
     ![セットアップ](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_05.png)
 
-9. **[設定]**をクリックします。
+9. **[設定]** をクリックします。
    
     ![設定](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_06.png) 
 
-10. **[Single Sign-on]**をクリックします。
+10. **[Single Sign-on]** をクリックします。
    
     ![シングル サインオンのクリック](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_07.png) 
 
 11. [Single Sign-on] の設定ダイアログで、次の手順を実行します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_08.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_08.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[Enable Single Sign-on (シングル サインオンを有効にする)]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable Single Sign-on (シングル サインオンを有効にする)]** をクリックします。
     
     b. **[サインオン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     c. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[証明書]** ボックスに貼り付けます。
     
-    d. **[Enable JIT Provisioning]**をクリックします。
+    d. **[Enable JIT Provisioning]** をクリックします。
 
     e. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -181,7 +181,7 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
  
     ![ユーザー セクション](./media/active-directory-saas-target-process-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -209,7 +209,7 @@ TargetProcess では、Just-In-Time プロビジョニングがサポートさ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[TargetProcess]**を選択します。
+2. アプリケーションの一覧で **[TargetProcess]** を選択します。
 
     ![アプリ一覧の TargetProcess](./media/active-directory-saas-target-process-tutorial/tutorial_target-process_app.png) 
 
@@ -236,7 +236,7 @@ TargetProcess では、Just-In-Time プロビジョニングがサポートさ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

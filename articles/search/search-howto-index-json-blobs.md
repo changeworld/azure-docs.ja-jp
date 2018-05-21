@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成
 この記事では、Azure Blob Storage 内の JSON BLOB から構造化コンテンツを抽出するために Azure Search BLOB インデクサーを構成する方法を説明します。
@@ -23,7 +23,7 @@ Azure Blob Storage 内の JSON BLOB は通常、単一の JSON ドキュメン�
 | JSON ドキュメント | parsingMode | [説明] | 可用性 |
 |--------------|-------------|--------------|--------------|
 | BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Search ドキュメントになります。 | 一般に、[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) 両方の API で利用できます。 |
-| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | プレビュー版 ([REST api-version=`2016-09-01-Preview`](search-api-2016-09-01-preview.md) と [.NET SDK Preview](https://aka.ms/search-sdk-preview))。 |
+| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | プレビュー版 ([REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) と [.NET SDK Preview](https://aka.ms/search-sdk-preview))。 |
 
 > [!Note]
 > プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
@@ -116,7 +116,7 @@ JSON 配列のプレビュー機能を選ぶこともできます。 この機�
 
 JSON 配列の場合、インデクサー要求ではプレビュー API と `jsonArray` パーサーを使用します。 JSON BLOB のインデックス作成では配列固有の要件が 2 つだけあります。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -129,6 +129,8 @@ JSON 配列の場合、インデクサー要求ではプレビュー API と `js
     }
 
 この場合も、フィールド マッピングは必要ありません。 "id" と "text" のフィールドでインデックスを指定すると、BLOB インデクサーは、フィールド マッピング リストがない場合でも正しいマッピングを推測することができます。
+
+<a name="nested-json-arrays"></a>
 
 ### <a name="nested-json-arrays"></a>入れ子になった JSON 配列
 JSON オブジェクトの配列にインデックスを作成するときに、そのドキュメント内のどこかで配列が入れ子になっていたらどうすればよいでしょうか。 `documentRoot` 構成プロパティを使用して、入れ子になった配列が格納されているプロパティを選択できます。 たとえば、次のような BLOB があるとします。

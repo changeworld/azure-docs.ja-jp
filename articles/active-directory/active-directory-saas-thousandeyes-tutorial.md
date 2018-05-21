@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Docs"
-description: "Azure Active Directory と ThousandEyes の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Docs'
+description: Azure Active Directory と ThousandEyes の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 81132e40eba589dff7ede0ee94fab1a289dc19d7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d40ab6d2587f5d842ac98479a6db7609d8a9ce4d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル: Azure Active Directory と ThousandEyes の統合
 
@@ -29,7 +29,7 @@ ThousandEyes と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に ThousandEyes にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への ThousandEyes の統合を構成するには、ギャラリーか
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**ThousandEyes**」と入力します。
 
@@ -86,11 +86,11 @@ ThousandEyes で、Azure AD の **[ユーザー名]** の値を **[Username]\(�
 
 ThousandEyes で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[ThousandEyes のテスト ユーザーの作成](#creating-a-thousandeyes-test-user)** - ThousandEyes で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,33 +100,33 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **ThousandEyes** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
 
 3. **[ThousandEyes のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_url.png)
 
     **[サインオン URL]** ボックスに、「`https://app.thousandeyes.com/login/sso`」と入力します。
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_general_400.png)
 
 6. **[ThousandEyes 構成]** セクションで、**[ThousandEyes の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、管理者として **ThousandEyes** 企業サイトにサインオンします。
 
-8. 上部のメニューで **[Settings]**をクリックします。
+8. 上部のメニューで **[Settings]** をクリックします。
    
     ![設定](./media/active-directory-saas-thousandeyes-tutorial/ic790066.png "Settings")
 
@@ -142,7 +142,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
    
     ![シングル サインオンの設定](./media/active-directory-saas-thousandeyes-tutorial/ic790069.png "Setup Single Sign-On")
   
-    a. **[シングル サインオンを有効にする]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シングル サインオンを有効にする]** を選択します。
   
     b. **[Login Page URL]\(ログイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
   
@@ -152,10 +152,10 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
   
     e. **[Verification Certificate]\(検証証明書\)** で **[Choose file]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックします。
+    f. **[Save]** をクリックします。
  
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -180,7 +180,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thousandeyes-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -200,7 +200,7 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
 
 1. ThousandEyes 企業サイトに管理者としてログインします。
 
-2. **[設定]**をクリックします。
+2. **[設定]** をクリックします。
    
     ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
@@ -216,11 +216,11 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
    
     ![ユーザー アカウントの追加](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Add User Accounts")   
   
-    a. **[Name]\(名前\)** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
     b. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
    
-    b. **[Add New User to Account]**をクリックします。
+    b. **[Add New User to Account]** をクリックします。
       
      >[!NOTE]
      >Azure Active Directory のアカウント所有者には、アカウントを確認してアクティブにするためのリンクを含むメールが送られます。
@@ -237,9 +237,9 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ThousandEyes]**を選択します。
+2. アプリケーションの一覧で **[ThousandEyes]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-thousandeyes-tutorial/tutorial_thousandeyes_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -266,7 +266,7 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

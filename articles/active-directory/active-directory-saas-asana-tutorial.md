@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Asana の統合 | Microsoft Docs"
-description: "Azure Active Directory と Asana の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Asana の統合 | Microsoft Docs'
+description: Azure Active Directory と Asana の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 8058dcd397e5f81f4a8c8cd1845353fd789f604b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2042c1525849696efaf5fda5f35c1abc72839737
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル: Azure Active Directory と Asana の統合
 
@@ -30,7 +30,7 @@ Asana と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Asana に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -98,7 +98,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **Asana** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -108,7 +108,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     ![[Asana のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-asana-tutorial/tutorial_asana_url.png)
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://app.asana.com/`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、URL として「`https://app.asana.com/`」と入力します。
 
     b. **[識別子]** ボックスに、値として「`https://app.asana.com/`」と入力します。
  
@@ -132,14 +132,14 @@ Asana で Azure AD のシングル サインオンを構成してテストする
    
     ![[組織の設定] のシングル サインオン構成](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)  
 
-     a. **[Sign-in page URL (サインイン ページ URL)]** ボックスに、**SAML シングル サインオン サービス URL** を貼り付けます。
+     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Sign-in page URL (サインイン ページ URL)]** ボックスに、**SAML シングル サインオン サービス URL** を貼り付けます。
 
      b. Azure Portal からダウンロードした証明書を右クリックし、メモ帳またはお好きなテキスト エディターを使って証明書ファイルを開きます。 証明書タイトルの内容を最初から最後までコピーし、**[X.509 Certificate]** (X.509 証明書) ボックスに貼り付けます。
 
 9. **[Save]** をクリックします。 さらにサポートが必要な場合は、 [SSO の設定に関する Asana ガイド](https://asana.com/guide/help/premium/authentication#gl-saml) をご覧ください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -165,7 +165,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
  
     ![[追加] ボタン](./media/active-directory-saas-asana-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -181,9 +181,9 @@ Asana で Azure AD のシングル サインオンを構成してテストする
    
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-asana-tutorial/tutorial_asana_12.png) 
 
-2. 電子メール アドレス「 britta.simon@contoso.com 」をテキスト ボックスに入力し、 **[Invite (招待)]**を選択します。
+2. 電子メール アドレス「 britta.simon@contoso.com 」をテキスト ボックスに入力し、 **[Invite (招待)]** を選択します。
 
-3. **[Send Invite (招待の送信)]**をクリックします。 新しいユーザーの電子メール アカウントに電子メールが届きます。 新しいユーザーは、アカウントを作成、確認する必要があります。
+3. **[Send Invite (招待の送信)]** をクリックします。 新しいユーザーの電子メール アカウントに電子メールが届きます。 新しいユーザーは、アカウントを作成、確認する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +197,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Asana]**を選択します。
+2. アプリケーションの一覧で **[Asana]** を選択します。
 
     ![アプリケーションの一覧の Asana のリンク](./media/active-directory-saas-asana-tutorial/tutorial_asana_app.png) 
 
@@ -224,7 +224,7 @@ Asana のログイン ページに移動します。 電子メール アドレ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

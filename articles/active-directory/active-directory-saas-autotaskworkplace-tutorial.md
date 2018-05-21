@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Autotask Workplace の統合 | Microsoft Docs"
-description: "Azure Active Directory と Autotask Workplace の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Autotask Workplace の統合 | Microsoft Docs'
+description: Azure Active Directory と Autotask Workplace の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: e8bd7a770f8544ed4845dd751e43ae5325c68e07
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1468d48c7a60176638d6c0be1a0072b2e5e1ba82
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル: Azure Active Directory と Autotask Workplace の統合
 
@@ -30,7 +30,7 @@ Autotask Workplace と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Autotask Workplace にサインオンされる (シングル サインオン) ようにできます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -111,7 +111,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![IDP の場合の [Autotask Workplace のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_url.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO` のパターンを使用して URL を入力します。
 
@@ -142,7 +142,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 
     ![Autotask のシングル サインオンの構成](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
  
-    a. **[XML Metadata File]\(XML メタデータ ファイル\)** オプションを選び、Azure Portal からダウンロードした**メタデータ XML** をアップロードします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[XML Metadata File]\(XML メタデータ ファイル\)** オプションを選び、Azure Portal からダウンロードした**メタデータ XML** をアップロードします。
 
     b. **[Enable SSO]\(SSO を有効にする\)** をクリックします。
     
@@ -156,7 +156,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 >Autotask Workplace の構成でサポートを必要とする場合は、[こちらのページ](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)を参照して、Workplace アカウントでサポートを受けてください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -234,7 +234,7 @@ Autotask Workplace で Azure AD のシングル サインオンを構成して�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

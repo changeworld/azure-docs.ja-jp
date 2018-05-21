@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e6bf1962115c4ee9212ae73eb98f664efa3b6a2d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>リモート監視ソリューションを使用して高度な監視を行う
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/07/2018
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="choose-the-devices-to-display"></a>表示するデバイスを選択する
 
@@ -115,7 +115,7 @@ To view the device details, pan and zoom the map to locate the devices, then cli
 
 デバイスの監視方法について説明したので、次に推奨される手順を以下に示します。
 
-* [しきい値に基づくルールを使用して問題を検出する](./iot-suite-remote-monitoring-automate.md)。
+* [しきい値に基づくルールを使用して問題を検出する](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)。
 * [デバイスの管理と構成を行う](./iot-suite-remote-monitoring-manage.md)。
 * [トラブルシューティングを行ってデバイスの問題を修復する](./iot-suite-remote-monitoring-maintain.md)。
 * [シミュレートされたデバイスを使用してソリューションをテストする](iot-suite-remote-monitoring-test.md)。

@@ -6,13 +6,13 @@ keywords: ''
 author: tfitzmac
 ms.author: tomfitz
 ms.date: 04/05/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 3ee94025a12a004fda806183c47d5a336b958478
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a16a9bdb866803a65bf7204628b735bd9ac60aee
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Azure Portal と Event Grid を使ったカスタム イベントの作成とルーティング
 
@@ -34,11 +34,11 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
    ![Event Grid トピックの検索](./media/custom-event-quickstart-portal/search-event-grid.png)
 
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
    ![手順の開始](./media/custom-event-quickstart-portal/select-create.png)
 
-1. カスタム トピックの一意の名前を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 独自の名前を作成してください。 [サポートされているリージョン](overview.md)を 1 つ選択します。 リソース グループの名前を指定します。 **[作成]**を選択します。
+1. カスタム トピックの一意の名前を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 独自の名前を作成してください。 [サポートされているリージョン](overview.md)を 1 つ選択します。 リソース グループの名前を指定します。 **[作成]** を選択します。
 
    ![Event Grid トピックの値の指定](./media/custom-event-quickstart-portal/create-custom-topic.png)
 

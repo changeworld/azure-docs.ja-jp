@@ -4,7 +4,7 @@ description: この記事では、Azure の組み込み機能を利用した、�
 services: security
 documentationcenter: na
 author: TomShinder
-manager: swadhwa
+manager: mbaldwin
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d6d723f40cdc0382fa41a51eb32e7b59f0798627
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-best-practices"></a>Azure のネットワーク セキュリティに関するベスト プラクティス
 Microsoft Azure では、仮想マシンや仮想アプライアンスを Azure Virtual Network に配置して、ネットワークに接続された他のデバイスと接続できます。 Azure Virtual Network の構造では、仮想ネットワーク インターフェイス カードを仮想ネットワークに接続し、ネットワーク対応デバイス間で TCP/IP ベースの通信を実行できるようになっています。 Azure の仮想ネットワークに接続された Azure 仮想マシンは、同じ Azure 仮想ネットワーク上のデバイス、異なる Azure 仮想ネットワーク上のデバイス、インターネット上のデバイス、さらにはオンプレミス ネットワーク上のデバイスにも接続できます。
@@ -56,7 +56,7 @@ Microsoft Azure では、仮想マシンや仮想アプライアンスを Azure 
 
 サブネット間のルーティングは自動的に処理されるため、ルーティング テーブルを手動で構成する必要はありません。 ただし、既定の設定では、Azure Virtual Network で作成したサブネット間にはネットワーク アクセス制御がありません。 サブネット間にネットワーク アクセス制御を作成するには、サブネット間になんらかの要素を配置する必要があります。
 
-この目的に使用できる要素の 1 つは、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) (NSG) です。 NSG は、シンプルなステートフル パケット インスペクション デバイスで、5 タプル (発信元 IP、発信元ポート、接続先 IP、接続先ポート、レイヤー 4 プロトコル) アプローチを使用して、ネットワーク トラフィックに対する許可/拒否の規則を作成します。 許可または拒否の対象には、1 つの IP アドレス、複数の IP アドレス、またはサブネット全体との間のトラフィックを指定できます。
+この目的に使用できる要素の 1 つは、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) (NSG) です。 NSG は、シンプルなステートフル パケット インスペクション デバイスで、5 タプル (発信元 IP、発信元ポート、接続先 IP、接続先ポート、レイヤー 4 プロトコル) アプローチを使用して、ネットワーク トラフィックに対する許可/拒否の規則を作成します。 許可または拒否の対象には、1 つの IP アドレス、複数の IP アドレス、またはサブネット全体との間のトラフィックを指定できます。
 
 サブネット間のネットワーク アクセス制御に NSG を使用すると、同じセキュリティ ゾーンまたはロールに属するリソースを専用のサブネットに配置できます。 たとえば、Web 層、アプリケーション ロジック層、データベース層からなるシンプルな 3 層アプリケーションの場合であれば、 各階層に属している仮想マシンを専用のサブネットに配置します。 そして、NSG を使用して、サブネット間のトラフィックを制御します。
 
@@ -64,7 +64,7 @@ Microsoft Azure では、仮想マシンや仮想アプライアンスを Azure 
 * アプリケーション ロジック層の仮想マシンは、データベース層への接続のみを開始でき、Web 層からの接続のみを受け付けます。
 * データベース層の仮想マシンは自身が属するサブネットの外には接続を開始できず、アプリケーション ロジック層からの接続のみを受け付けることができます。
 
-ネットワーク セキュリティ グループ (NSG) の詳細と、NSG を使用して Azure Virtual Networks を論理的にセグメント化する方法については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) (NSG) に関するページを参照してください。
+ネットワーク セキュリティ グループ (NSG) の詳細と、NSG を使用して Azure Virtual Networks を論理的にセグメント化する方法については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) (NSG) に関するページを参照してください。
 
 ## <a name="control-routing-behavior"></a>ルーティングの動作を制御する
 Azure 仮想ネットワークに仮想マシンを配置すると、同じ Azure 仮想ネットワークにある他の仮想マシンには、たとえサブネットが異なっていても、接続することができます。 これが可能なのは、このような通信を許可する一連のシステム ルートが既定で有効になっているためです。 これらの既定のルートでは、同じ Azure 仮想ネットワーク上にある仮想マシンに対して、相互接続およびインターネットとの接続の開始が許可されています (インターネットの場合はインターネットへの送信のみ)。

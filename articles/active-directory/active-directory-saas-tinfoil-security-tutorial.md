@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TINFOIL SECURITY の統合 | Microsoft Docs"
-description: "Azure Active Directory と TINFOIL SECURITY の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と TINFOIL SECURITY の統合 | Microsoft Docs'
+description: Azure Active Directory と TINFOIL SECURITY の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 7794564396c2ade8ba45b9f2b1238f304f6b3921
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 96d7b75078fd1075d17d70ee677f28ba1bbb1576
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>チュートリアル: Azure Active Directory と TINFOIL SECURITY の統合
 
@@ -30,7 +30,7 @@ TINFOIL SECURITY と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に TINFOIL SECURITY にサインオン (シングル サインオン) できるようにすることが可能です
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,11 +64,11 @@ Azure AD への TINFOIL SECURITY の統合を構成するには、ギャラリ�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**TINFOIL SECURITY**」と入力して、結果パネルで **TINFOIL SECURITY** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
@@ -97,7 +97,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 1. Azure ポータルの **TINFOIL SECURITY** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -105,7 +105,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 3. アプリは Azure と事前に統合済みであるため、**[TINFOIL SECURITY のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
 4. **[SAML 署名証明書]** セクションで、**[拇印]** の値をコピーします。
@@ -120,7 +120,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
     | ------------------- | -------------------- |
     | accountid | UXXXXXXXXXXXXX |
     
-    a. **[ユーザー属性の追加]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー属性の追加]** をクリックします。
     
     ![属性の追加](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_attribute.png "属性")
     
@@ -130,7 +130,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
     
     c. **[属性値]** ボックスに、後で取得するアカウント ID の値を貼り付けます。
     
-    d. **[OK]**をクリックします。    
+    d. **[OK]** をクリックします。    
 
 6. **[保存]** ボタンをクリックします。
 
@@ -142,11 +142,11 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 8. 別の Web ブラウザーのウィンドウで、TINFOIL SECURITY の企業サイトに管理者としてログインします。
 
-9. 上部のツール バーの **[My Account]**をクリックします。
+9. 上部のツール バーの **[My Account]** をクリックします。
    
     ![Dashboard](./media/active-directory-saas-tinfoil-security-tutorial/ic798971.png "Dashboard")
 
-10. **[セキュリティ]**をクリックします。
+10. **[セキュリティ]** をクリックします。
    
     ![Security (セキュリティ)](./media/active-directory-saas-tinfoil-security-tutorial/ic798972.png "Security")
 
@@ -154,9 +154,9 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
    
     ![シングル サインオン](./media/active-directory-saas-tinfoil-security-tutorial/ic798973.png "Single Sign-On")
    
-    a. **[Enable SAML]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** を選択します。
    
-    b. **[Manual Configuration]**をクリックします。
+    b. **[Manual Configuration]** をクリックします。
    
     c. **[SAML Post URL]\(SAML POST の URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
@@ -164,10 +164,10 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
   
     e. **[Your Account ID]\(アカウント ID\)** の値をコピーし、Azure Portal の **[属性の追加]** セクションの **[属性値]** ボックスに値を貼り付けます。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックします。
+    f. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -193,7 +193,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -228,7 +228,7 @@ Azure AD ユーザーが TINFOIL SECURITY にログインできるようにす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[TINFOIL SECURITY]**を選択します。
+2. アプリケーションの一覧で **[TINFOIL SECURITY]** を選択します。
 
     ![TINFOIL SECURITY の選択](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
 
@@ -255,7 +255,7 @@ Azure AD ユーザーが TINFOIL SECURITY にログインできるようにす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

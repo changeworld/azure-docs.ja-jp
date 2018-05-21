@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: dc18437d554889655963270cdc051fb52325f09e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b9be74b4ef5a1239f6ce753ebf41af6b5dbacb5e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>マイクロサービスをカスタマイズして再展開する
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 05/07/2018
 このチュートリアルを実行するには、次が必要です。
 
 >[!div class="checklist"]
-> * [リモート監視構成済みソリューションをローカルに展開します](iot-suite-remote-monitoring-deploy-local.md)
+> * [リモート監視構成済みソリューションをローカルに展開します](../iot-accelerators/iot-accelerators-remote-monitoring-deploy-local.md)
 > * [Docker アカウント](https://hub.docker.com/)
 > * [Postman](https://www.getpostman.com/) - API の応答を表示するために必要です
 

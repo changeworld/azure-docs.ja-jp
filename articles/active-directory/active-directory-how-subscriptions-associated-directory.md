@@ -6,21 +6,19 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6664a2b9bb6375314090bf4dae9190c7d52565d2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法
 
@@ -53,6 +51,8 @@ ms.lasthandoff: 04/16/2018
 
     ![スイッチャーを示すスクリーンショット](./media/active-directory-how-subscriptions-associated-directory/directory-switcher.PNG)
 
+
+使用中の Azure のキー コンテナーもすべてサブスクリプションの移動の影響を受けるため、操作を再開する前に[キー コンテナーのテナント ID を変更](../key-vault/key-vault-subscription-move-fix.md)します。
 
 サブスクリプションのディレクトリの変更は、サービス レベルの操作です。 サブスクリプションの課金所有権には影響しないため、アカウント管理者は[アカウント センター](https://account.azure.com/subscriptions)を使用して引き続きサービス管理者を変更できます。 元のディレクトリを削除する場合は、新しいアカウント管理者にサブスクリプションの課金所有権を譲渡する必要があります。課金所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。 
 

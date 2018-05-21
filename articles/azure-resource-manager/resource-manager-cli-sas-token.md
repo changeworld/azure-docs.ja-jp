@@ -1,24 +1,24 @@
 ---
-title: "SAS トークンと Azure CLI を使用した Azure テンプレートのデプロイ | Microsoft Docs"
-description: "Azure Resource Manager と Azure CLI を使用して、SAS トークンで保護されているテンプレートのリソースを Azure にデプロイします。"
+title: SAS トークンと Azure CLI を使用した Azure テンプレートのデプロイ | Microsoft Docs
+description: Azure Resource Manager と Azure CLI を使用して、SAS トークンで保護されているテンプレートのリソースを Azure にデプロイします。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 22387aadd8f53a65efb76a29a9403c46a2c25954
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b97fdea36eab914926ff91e1f27bdab0fb8a3930
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>SAS トークンと Azure CLI を使用してプライベートの Resource Manager テンプレートをデプロイする
 
@@ -84,7 +84,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 リンクされたテンプレートでの SAS トークン使用例については、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * テンプレートのデプロイ方法については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。
 * テンプレートのデプロイ用の完全なサンプル スクリプトについては、[Resource Manager テンプレート スクリプトのデプロイ](resource-manager-samples-cli-deploy.md)に関するページを参照してください。
 * テンプレートのパラメーターの定義については、 [テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。

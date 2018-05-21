@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Grovo の統合 | Microsoft Docs"
-description: "Azure Active Directory と Grovo の間にシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Grovo の統合 | Microsoft Docs'
+description: Azure Active Directory と Grovo の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: e4bb050e96d3e8d9da4666f5418ac3e444f6212d
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7016208aad3ec60f2db8d071bf67f9dae66a59bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>チュートリアル: Azure Active Directory と Grovo の統合
 
@@ -30,7 +30,7 @@ Grovo と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Grovo に自動的にサインオン (シングル サインオン) できるようにすることができます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -150,9 +150,9 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]**は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
     
-    e. **[OK]**をクリックします。
+    e. **[OK]** をクリックします。
 
 
 7. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
@@ -244,7 +244,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Grovo]**を選択します。
+2. アプリケーションの一覧で **[Grovo]** を選択します。
 
     ![アプリケーションの一覧の [Grovo] リンク](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_app.png)  
 
@@ -272,7 +272,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

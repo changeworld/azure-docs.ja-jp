@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: d263f6255eedb9b45b7f0b232e1595197556b7c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caabe0fea6286c9439e8929b054d771868dcb6f1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Solr をインストールして使用する
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 04/16/2018
 3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。 HDInsight クラスターへの RDP セッションで Internet Explorer を開き、**http://headnodehost:8983/solr/#/** で Solr のダッシュ ボードを起動します。 左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から **[クエリ]** をクリックします。 例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
 
    * **[q]** ボックスに「**\*:**\*」を入力します。 これにより、Solr でインデックス付けされたすべてのドキュメントが返されます。 ドキュメント内の特定の文字列を検索する場合には、ここにその文字列を入力することができます。
-   * **[wt]** ボックスでは、出力形式を選択します。 既定値は、 **json**です。 **[Execute Query]**をクリックします。
+   * **[wt]** ボックスでは、出力形式を選択します。 既定値は、 **json**です。 **[Execute Query]** をクリックします。
 
      ![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install/hdi-solr-dashboard-query.png "Solr ダッシュボードでクエリを実行する")
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/16/2018
              </lst>
              <str name="status">OK</str>
            </response>
-   2. リモート セッションで、{SOLR_HOME}\{Collection}\data に移動します。 サンプル スクリプトを通じて作成したクラスターの場合、この部分は **C:\apps\dist\solr-4.7.2\example\solr\collection1\data** となります。 この場所には、**snapshot.*timestamp*** のような名前でスナップショット フォルダーが作成されています。
+   2. リモート セッションで、{SOLR_HOME}\{Collection}\data に移動します。 サンプル スクリプトを通じて作成したクラスターの場合、この部分は **C:\apps\dist\solr-4.7.2\example\solr\collection1\data** となります。 この場所には、**snapshot.* timestamp*** のような名前でスナップショット フォルダーが作成されています。
    3. スナップショット フォルダーを zip 圧縮して Azure BLOB ストレージにアップロードします。 Hadoop コマンド ラインで、次のコマンドを使用して、スナップショット フォルダーの場所に移動します。
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -176,11 +176,9 @@ ms.lasthandoff: 04/16/2018
 * [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md)。
 * [HDInsight クラスターに Spark をインストールし、使用する][hdinsight-install-spark]: Spark のインストールに関する Script Action サンプル。
-* [HDInsight クラスターに R をインストールし、使用する][hdinsight-install-r]: R のインストールに関する Script Action サンプル。
 * [HDInsight クラスターに Giraph をインストールし、使用する](hdinsight-hadoop-giraph-install.md): Giraph のインストールに関する Script Action サンプル。
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

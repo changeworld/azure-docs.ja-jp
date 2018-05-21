@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Flatter Files の統合 | Microsoft Docs"
-description: "Azure Active Directory と Flatter Files の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Flatter Files の統合 | Microsoft Docs'
+description: Azure Active Directory と Flatter Files の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: f66cd07c7b6cc8f8292b5ae2cc234bbe84a5ad18
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f2a068523f64eb381239560108c2a961da371be
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>チュートリアル: Azure Active Directory と Flatter Files の統合
 
@@ -29,7 +29,7 @@ Flatter Files と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Flatter Files にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Flatter Files の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Flatter Files**」と入力します。
 
@@ -90,7 +90,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Flatter Files テスト ユーザーの作成](#creating-a-flatter-files-test-user)** - Flatter Files で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,47 +100,47 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **Flatter Files** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
 
 3. アプリは Azure と事前に統合済みであるため、**[Flatter Files のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_url.png)
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_general_400.png)
 
 6. **[Flatter Files 構成]** セクションで、**[Flatter Files の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
 
 7. 管理者として Flatter Files アプリケーションにサインオンします。
 
 8. **[DASHBOARD]\(ダッシュボード\)** をクリックします。 
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 9. **[設定]** をクリックし、**[会社]** タブで次の手順に従います。 
    
-    ![Configure Single Sign-On](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
-    a. **[Use SAML 2.0 for Authentication]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Use SAML 2.0 for Authentication]** を選択します。
     
     b. **[Configure SAML]** をクリックします。
 
 8. **[SAML Configuration]** ダイアログ ボックスで、次の手順を実行します。 
    
-    ![Configure Single Sign-On](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_08.png)  
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
-    a. **[ドメイン]** ボックスに、登録済みのドメインを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ドメイン]** ボックスに、登録済みのドメインを入力します。
    
     >[!NOTE]
     >登録済みのドメインがない場合は、Flatter Files のサポート チーム ( [support@flatterfiles.com](mailto:support@flatterfiles.com)」を参照してください。 
@@ -149,10 +149,10 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     c.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
 
-    d. **[Update]**をクリックします。
+    d. **[Update]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -178,7 +178,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -198,19 +198,19 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
    
     ![Flatter Files ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_09.png)
 
-3. **[ユーザーの追加]**をクリックします。 
+3. **[ユーザーの追加]** をクリックします。 
 
 4. **[Add User]** ダイアログで、次の手順を実行します。
    
     ![Flatter Files ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatter_files_10.png)
 
-    a. **[名]** ボックスに「**Britta**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに「**Britta**」と入力します。
    
     b. **[姓]** ボックスに「**Simon**」と入力します。 
    
     c. **[Email Address]\(電子メール アドレス\)** ボックスに、Britta の Azure Portal の電子メール アドレスを入力します。
    
-    d. **[送信]**をクリックします。   
+    d. **[送信]** をクリックします。   
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -225,9 +225,9 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Flatter Files]**を選択します。
+2. アプリケーションの一覧で **[Flatter Files]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-flatter-files-tutorial/tutorial_flatterfiles_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -253,7 +253,7 @@ Flatter Files で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

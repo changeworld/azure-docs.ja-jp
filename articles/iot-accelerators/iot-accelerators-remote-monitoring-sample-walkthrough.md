@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 71b0405975d88e69d3ecea6090983bc3c779395d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 3effde81dfa48e9544d89153d40c160ff972d047
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>リモート監視ソリューション アクセラレータのアーキテクチャ
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 05/18/2018
 
 次の図は、[IoT アーキテクチャ](../iot-accelerators/iot-accelerators-what-is-azure-iot.md)と重ね合わせたリモート監視ソリューション アクセラレータの論理コンポーネントの概要です。
 
-![論理アーキテクチャ](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![論理アーキテクチャ](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 ## <a name="why-microservices"></a>マイクロサービスについて
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 76e34b2d170ad1a47dca180fe7caf8c015d17634
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c8d9bed17f33928f39c42cb6d7c25f86c1ad77d8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル: Azure Active Directory と Reward Gateway の統合
 
@@ -29,7 +29,7 @@ Reward Gateway と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Reward Gateway にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -190,7 +190,7 @@ Reward Gateway で Azure AD のシングル サインオンを構成してテス
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Reward Gateway]**を選択します。
+2. アプリケーションの一覧で **[Reward Gateway]** を選択します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-reward-gateway-tutorial/tutorial_rewardgateway_app.png) 
 
@@ -217,7 +217,7 @@ Reward Gateway で Azure AD のシングル サインオンを構成してテス
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -9,11 +9,11 @@ ms.author: philmea
 ms.date: 04/29/2018
 ms.topic: article
 ms.service: iot-suite
-ms.openlocfilehash: c7ddac84a16520d6bc4c4eeb845206f84e6edd80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 09a54e9cb1c6f063e878fd42c42699a906b60c7b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Time Series Insights を使用してリモート監視データを視覚化する
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 05/07/2018
 
 このハウツー記事を完了するには、以下が必要です。
 
-* [リモート監視の構成済みソリューションをデプロイする](/iot-suite/iot-suite-remote-monitoring-deploy)
+* [リモート監視の構成済みソリューションをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>コンシューマー グループの作成
 
@@ -52,19 +52,19 @@ Azure Time Series Insights は、IoT 規模の時系列データをクラウド�
 
 1. Time Series Insights 環境を作成するには、次の表の値を使用します。
 
-    | 設定 | 値 |
+    | Setting | 値 |
     | ------- | ----- |
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
-    | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
+    | [サブスクリプション] | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **新規作成**。 **ContosoRM** という名前を使用します。 |
     | 場所 | **[米国東部]** を使用します。 環境は、リモート監視ソリューションと同じリージョンに作成します。 |
     | SKU |**S1** |
     | 容量 | **1** |
-    | ダッシュボードにピン留めする | **はい** |
+    | [ダッシュボードにピン留めする] | **はい** |
 
     ![Time Series Insights を作成する](media/iot-suite-time-series-insights/new-time-series-insights-create.png)
 
-1. **[作成]** をクリックします。 環境が作成されるまで、少し時間がかかる可能性があります。
+1. **Create** をクリックしてください。 環境が作成されるまで、少し時間がかかる可能性があります。
 
 ## <a name="create-event-source"></a>イベント ソースを作成する
 
@@ -82,7 +82,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
 1. IoT Hub を新しいイベント ソースとして構成するには、次の表の値を使用します。
 
-    | 設定 | 値 |
+    | Setting | 値 |
     | ------- | ----- |
     | イベント ソース名 | 次のスクリーン ショットでは、**contosorm-iot-hub** という名前を使用しています。 この手順を完了したら、独自の一意の名前を使用してください。 |
     | ソース | **IoT Hub** |
@@ -96,7 +96,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 
     ![イベント ソースを作成する](media/iot-suite-time-series-insights/time-series-insights-event-source-create.png)
 
-1. **[作成]** をクリックします。
+1. **Create** をクリックしてください。
 
 > [!NOTE]
 > Time Series Insights エクスプローラーにその他のユーザー アクセスを許可する必要がある場合は、[データ アクセスを許可する](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access#grant-data-access)ための手順を使用します。

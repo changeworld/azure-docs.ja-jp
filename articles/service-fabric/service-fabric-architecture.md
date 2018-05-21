@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric のアーキテクチャ | Microsoft Docs"
-description: "Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。 この記事は、Service Fabric のアーキテクチャを説明しています。"
+title: Azure Service Fabric のアーキテクチャ | Microsoft Docs
+description: Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。 この記事は、Service Fabric のアーキテクチャを説明しています。
 services: service-fabric
 documentationcenter: .net
 author: rishirsinha
@@ -9,16 +9,16 @@ editor: rishirsinha
 ms.assetid: 6b554243-70cb-4c22-9b28-1a8b4703f45e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/12/2017
 ms.author: rsinha
-ms.openlocfilehash: 3d1f9d6136622e0e9fc1e725d8230dbedd6af24a
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 5e69d4b09261c90fd3c33e60645fe484b816e369
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric のアーキテクチャ
 Service Fabric は複数層のサブシステムで構築されています。 これらのサブシステムを使用すると、次のようなアプリケーションを作成できます。

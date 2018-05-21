@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と OfficeSpace Software の統合 | Microsoft Docs"
-description: "Azure Active Directory と OfficeSpace Software の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と OfficeSpace Software の統合 | Microsoft Docs'
+description: Azure Active Directory と OfficeSpace Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c7b456fe08db7c4e4cc71c635e405a20c24516cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f8698e50f9740d46a5cec708e3d5ae6bf1043ce
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>チュートリアル: Azure Active Directory と OfficeSpace Software の統合
 
@@ -30,7 +30,7 @@ OfficeSpace Software と Azure AD の統合には、次の利点があります�
 - ユーザーが自分の Azure AD アカウントで自動的に OfficeSpace Software にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     ![[OfficeSpace Software のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<company name>.officespacesoftware.com/users/sign_in/saml` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.officespacesoftware.com/users/sign_in/saml` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`<company name>.officespacesoftware.com` の形式で URL を入力します。
 
@@ -123,12 +123,12 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
     
     | 属性名 | 属性値 |
     | --- | --- |    
-    | 電子メール | User.mail |
+    | email | User.mail |
     | name | user.displayname |
     | first_name | User.givenname |
     | last_name | User.surname |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![構成の追加 ](./media/active-directory-saas-officespace-tutorial/tutorial_attribute_04.png)
 
@@ -154,7 +154,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
 9. 別の Web ブラウザーのウィンドウで、管理者として OfficeSpace Software テナントにログインします。
 
-10. **[設定]** に移動して、**[コネクタ]**をクリックします。
+10. **[設定]** に移動して、**[コネクタ]** をクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_002.png)
 
@@ -166,17 +166,17 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_004.png)
 
-    a. **[Logout provider url]\(ログアウト プロバイダー URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Logout provider url]\(ログアウト プロバイダー URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
     b. **[Client idp target url]\(クライアント idp ターゲット URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    c. Azure Portal からコピーした **[拇印]** の値を**[Client IDP certificate fingerprint]\(クライアント IDP 証明書フィンガープリント\)** ボックスに貼り付けます。 
+    c. Azure Portal からコピーした **[拇印]** の値を **[Client IDP certificate fingerprint]\(クライアント IDP 証明書フィンガープリント\)** ボックスに貼り付けます。 
 
-    d. **[設定の保存]**をクリックします。
+    d. **[設定の保存]** をクリックします。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -259,7 +259,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

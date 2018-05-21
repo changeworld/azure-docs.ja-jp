@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Softeon WMS の統合 | Microsoft Docs"
-description: "Azure Active Directory と Softeon WMS の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Softeon WMS の統合 | Microsoft Docs'
+description: Azure Active Directory と Softeon WMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: fa0897c89d01a6e4ada867b6b8e47c95f2988e65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c04b57d65a26d74c85f4ae81555cf405183f6ae7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>チュートリアル: Azure Active Directory と Softeon WMS の統合
 
@@ -29,7 +29,7 @@ Softeon WMS と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Softeon WMS にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Softeon WMS の統合を構成するには、ギャラリーか�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Softeon WMS**」と入力します。
 
@@ -86,11 +86,11 @@ Softeon WMS で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユ
 
 Softeon WMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Softeon WMS テスト ユーザーの作成](#creating-a-softeon-wms-test-user)** - Softeon WMS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 
 1. Azure Portal の **Softeon WMS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_samlbase.png)
 
 3. **[Softeon WMS のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.softeon.com/<instancename>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.softeon.com/<instancename>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.softeon.com/sp` の形式で URL を入力します。
 
@@ -119,20 +119,20 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-softeon-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-softeon-tutorial/tutorial_general_400.png)
 
 6. **[Softeon WMS 構成]** セクションで、**[Softeon WMS の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[Quick Reference]\(クイック リファレンス\)** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_configure.png) 
 
 7. **Softeon WMS** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [Softeon WMS サポート チーム](mailto:contact@softeon.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -158,7 +158,7 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-softeon-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -184,7 +184,7 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 
 2. アプリケーションの一覧で **[Softeon WMS]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-softeon-tutorial/tutorial_softeon_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -210,7 +210,7 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

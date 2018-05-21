@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: babanisa
-ms.openlocfilehash: 8ddde98b448f4d6d6f24a2ee47acf9240593622c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fd82d163ba8407a3dfa088cd322f3e236be5d7ea
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 

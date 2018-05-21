@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI 2.0 を使用した Linux VM へのポートの開放 | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルと Azure CLI 2.0 を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明する"
+title: Azure CLI 2.0 を使用した Linux VM へのポートの開放 | Microsoft Docs
+description: Azure Resource Manager デプロイ モデルと Azure CLI 2.0 を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明する
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: f02e9d7c794217824bb2b0fa965d1d581ec94003
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 16493d7ecdec0ec1464820be7668dfa19ec1b13c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Azure CLI 使用した Linux VM へのポートとエンドポイントの開放
 サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。 着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。 ポート 80 での Web トラフィックの一般的な例を使用して説明します。 この記事では、Azure CLI 2.0 を使用して VM へのポートを開く方法を説明します。 これらの手順は、[Azure CLI 1.0](nsg-quickstart-nodejs.md) を使用して実行することもできます。
@@ -90,4 +90,4 @@ az network vnet subnet update \
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)
-* [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md)
+* [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/security-overview.md)

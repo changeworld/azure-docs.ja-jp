@@ -4,18 +4,18 @@ description: 複数の Azure SQL Database データベースから抽出され�
 keywords: SQL チュートリアル
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: anjangsh
 ms.reviewer: billgib, genemi
-ms.openlocfilehash: 6ce67afc2959580699798dd70417ca235e743552
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c0ffbdfb9110860a6a9083423b91a571671c3308
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>抽出されたデータを使用したクロステナント分析
 
@@ -174,7 +174,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]**をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]** をクリックします。  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

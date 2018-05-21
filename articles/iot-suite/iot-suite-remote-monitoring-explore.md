@@ -1,24 +1,24 @@
 ---
-title: "リモート監視ソリューションを使ってみる - Azure | Microsoft Docs"
-description: "このチュートリアルでは、シミュレートされたシナリオを使用して、リモート監視の構成済みソリューションを紹介します。 これらのシナリオは、最初にリモート監視の構成済みソリューションをデプロイするときに作成されます。"
-services: 
+title: リモート監視ソリューションを使ってみる - Azure | Microsoft Docs
+description: このチュートリアルでは、シミュレートされたシナリオを使用して、リモート監視ソリューション アクセラレータを紹介します。 これらのシナリオは、最初にリモート監視ソリューション アクセラレータをデプロイするときに作成されます。
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 6a38098dc2bbcfc6ff59b9f8c96d1e947c637ab1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/18/2018
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>リモート監視の構成済みソリューションについて知る
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータの機能について知る
 
 このチュートリアルでは、リモート監視ソリューションの主要な機能を紹介します。 これらの機能を紹介するために、このチュートリアルでは、Contoso という会社のシミュレートされた IoT アプリケーションを使用して一般的な顧客シナリオを示します。
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/23/2018
 
 >[!div class="checklist"]
 > * ダッシュボードでデバイスの視覚化とフィルター処理を行う
-> * アラームに対処する
+> * アラートに対処する
 > * デバイスのファームウェアを更新する
 > * 資産を整理する
 > * シミュレートされたデバイスを停止し、起動する
@@ -41,21 +41,21 @@ ms.lasthandoff: 02/23/2018
 
 このチュートリアルを実行するには、Azure サブスクリプションにデプロイされたリモート監視ソリューションのインスタンスが必要です。
 
-まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
+まだリモート監視ソリューションをデプロイしていない場合は、「[リモート監視ソリューション アクセラレータをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Contoso のサンプル IoT デプロイ
 
 Contoso のサンプル IoT デプロイを使用して、リモート監視ソリューションに既定で用意されている基本シナリオを理解できます。 これらのシナリオは実際の IoT デプロイに基づいています。 ほとんどの場合では、特定の要件を満たすためにリモート監視ソリューションをカスタマイズしますが、Contoso のサンプルは基礎を学ぶのに役立ちます。
 
 > [!NOTE]
-> CLI を使用して構成済みソリューションをデプロイした場合は、デプロイに関する情報 (デプロイされたサンプルにアクセスするための URL など) がファイル `deployment-{your deployment name}-output.json` に含まれます。
+> CLI を使用してソリューション アクセラレータをデプロイした場合は、デプロイに関する情報 (デプロイされたサンプルにアクセスするための URL など) がファイル `deployment-{your deployment name}-output.json` に含まれます。
 
 Contoso のサンプルでは、シミュレートされたデバイスとそれらに影響を及ぼす規則がプロビジョニングされます。 基本シナリオを理解したら、[リモート管理ソリューションを使用した高度なデバイス監視の実行](iot-suite-remote-monitoring-monitor.md)に関するチュートリアルに進んで、ソリューションの機能についてさらに詳しく学習できます。
 
 Contoso は、さまざまな資産を複数の異なる環境で管理している企業です。 Contoso は、クラウドベースの IoT アプリケーションの力を利用して、一元化されたアプリケーションから複数の資産をリモートで監視および管理しようとしています。 以下のセクションでは、Contoso サンプルの初期構成の概要を示します。
 
 > [!NOTE]
-> この Contoso のデモは、シミュレートされたデバイスのプロビジョニングと規則の作成を行う方法の 1 つにすぎません。 他のプロビジョニング方法として、独自のカスタム デバイスを作成することもできます。 独自のデバイスと規則を作成する方法の詳細については、「[デバイスの管理と作成](iot-suite-remote-monitoring-manage.md)」と「[しきい値に基づくルールを使用して問題を検出する](iot-suite-remote-monitoring-automate.md)」をご覧ください。
+> この Contoso のデモは、シミュレートされたデバイスのプロビジョニングと規則の作成を行う方法の 1 つにすぎません。 他のプロビジョニング方法として、独自のカスタム デバイスを作成することもできます。 独自のデバイスと規則を作成する方法の詳細については、「[デバイスの管理と作成](iot-suite-remote-monitoring-manage.md)」と「[しきい値に基づくルールを使用して問題を検出する](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)」をご覧ください。
 
 ### <a name="contoso-devices"></a>Contoso のデバイス
 
@@ -67,7 +67,7 @@ Contoso は、さまざまな種類のスマート デバイスを使用して�
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
 | 冷却装置            | 温度、湿度、圧力            | タイプ、ファームウェアのバージョン、モデル               | 場所、フロア、キャンパス | 再起動、ファームウェアの更新、非常弁の解放、圧力を上げる                          |
 | プロトタイプ作成デバイス | 温度、圧力、地理的な場所        | タイプ、ファームウェアのバージョン、モデル               | 場所、モード          | 再起動、ファームウェアの更新、デバイスの移動、デバイスの停止、温度を下げる、温度を上げる |
-| エンジン             | タンク燃料レベル、冷却液センサー、振動 | タイプ、ファームウェアのバージョン、モデル               | 場所、フロア、キャンパス | 再起動、ファームウェアの更新、タンクを空にする、タンクを満たす                                              |
+| エンジン             | タンク燃料レベル、冷却液センサー、振動 | タイプ、ファームウェアのバージョン、モデル               | 場所、フロア、キャンパス | ファームウェアの更新、タンクを空にする、タンクを満たす                                              |
 | トラック              | 地理的な場所、速度、貨物温度     | タイプ、ファームウェアのバージョン、モデル               | 場所、積荷          | 貨物温度を下げる、貨物温度を上げる、ファームウェアの更新                         |
 | エレベーター           | フロア、振動、温度              | タイプ、ファームウェアのバージョン、モデル、地理的な場所 | 場所、キャンパス        | エレベーターの停止、エレベーターの起動、ファームウェアの更新                                               |
 
@@ -88,43 +88,35 @@ Contoso のオペレーターは、デバイスが正常に動作しているか
 
 ### <a name="operate-the-contoso-sample-deployment"></a>Contoso のサンプル デプロイの操作
 
-これで、Contoso のサンプルの初期設定を確認できました。 以下のセクションでは、オペレーターがこの構成済みソリューションをどのように使用するかを示す Contoso サンプルの 3 つのシナリオについて説明します。
+これで、Contoso のサンプルの初期設定を確認できました。 以下のセクションでは、オペレーターがこのソリューション アクセラレータをどのように使用するかを示す Contoso サンプルの 3 つのシナリオについて説明します。
 
-## <a name="respond-to-a-pressure-alarm"></a>圧力アラームへの対処
+## <a name="respond-to-a-pressure-alert"></a>圧力アラートへの対処
 
-このシナリオでは、冷却装置デバイスによってトリガーされたアラームを識別して対処する方法を示します。 冷却装置はレドモンドの建物 43、フロア 2 にあります。
+このシナリオでは、冷却装置デバイスによってトリガーされたアラートを識別して対処する方法を示します。 冷却装置はレドモンドの建物 43、フロア 2 にあります。
 
-オペレーターはダッシュボードで、冷却装置の圧力に関するアラームが発生していることを発見します。 マップ上でパン/ズームすると詳細を確認できます。
+オペレーターはダッシュボードで、冷却装置の圧力に関するアラートが発生していることを発見します。 マップ上でパン/ズームすると詳細を確認できます。
 
-1. **[ダッシュボード]** ページの **[System Alarms]\(システム アラーム\)** グリッドに、**[冷却装置の圧力が高すぎる]\(冷却装置の圧力が高すぎる\)** アラームが表示されています。 また、該当の冷却装置がマップ上で強調表示されます。
+1. **[ダッシュボード]** ページの **[アラート]** グリッドに、**[冷却装置の圧力が高すぎる]** アラートが表示されています。 また、該当の冷却装置がマップ上で強調表示されます。
 
-    ![圧力アラームとマップ上のデバイスが表示されたダッシュボード](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
+    ![ダッシュボードに圧力アラートとマップ上のデバイスが表示される](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
 
-1. デバイスの詳細とテレメトリを表示するには、マップ上で強調表示されている冷却装置をクリックします。 テレメトリは圧力のスパイクを示しています。
+1. **[メンテナンス]** ページに移動するには、ナビゲーション メニューで **[メンテナンス]** を選択します。 **[メンテナンス]** ページで、冷却装置の圧力アラートをトリガーした規則の詳細を確認できます。
 
-    ![マップ上のデバイスを選択して詳細を表示する](media/iot-suite-remote-monitoring-explore/dashboarddetail.png)
+1. アラートの一覧に、アラートがトリガーされた回数、確認された数、未解決のアラートと解決済みのアラートの数が表示されます。
 
-1. **[Device detail]\(デバイスの詳細\)** を閉じます。
+    ![[メンテナンス] ページにトリガーされたアラートの一覧が表示される](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. **[メンテナンス]** ページに移動するには、ナビゲーション メニューで **[メンテナンス]** を選択します。
+1. 一覧内の最後のアラートが、最新のアラートです。 **[冷却装置の圧力が高すぎる]** アラートをクリックして、関連するデバイスとテレメトリを表示します。 テレメトリは冷却装置の圧力のスパイクを示しています。
 
-**[メンテナンス]** ページで、冷却装置の圧力アラームをトリガーした規則の詳細を確認できます。
+    ![[メンテナンス] ページに選択したアラートのテレメトリが表示される](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
-1. 通知の一覧に、アラームがトリガーされた回数、確認された数、未解決のアラームと解決済みのアラームの数が表示されます。
+これで、アラートをトリガーした問題と、関連するデバイスを特定できました。 次にオペレーターが実行する手順は、アラートの確認と問題の軽減です。
 
-    ![トリガーされたアラームの一覧が表示された [メンテナンス] ページ](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
+1. これからアラートに対処することを示すために、**[アラートの状態]** を **[確認済み]** に変更します。
 
-1. 一覧内の最初のアラームが、最新のアラームです。 **[Chiller Pressure Too High]\(冷却装置の圧力が高すぎる\)** アラームをクリックして、関連するデバイスとテレメトリを表示します。 テレメトリは冷却装置の圧力のスパイクを示しています。
+    ![アラートを選択して確認する](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
 
-    ![選択したアラームのテレメトリが表示された [メンテナンス] ページ](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
-
-これで、アラームをトリガーした問題と、関連するデバイスを特定できました。 次にオペレーターが実行する手順は、アラームの確認と問題の緩和です。
-
-1. これからアラームに対処することを示すために、**[Alarm status]\(アラームの状態\)** を **[確認済み]** に変更します。
-
-    ![アラームを選択して確認する](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
-
-1. 冷却装置に対してアクションを実行するには、冷却装置を選択し、**[スケジュール]** を選択します。 **[EmergencyValveRelease]** を選択し、ジョブ名 **[ChillerPressureRelease]** を追加して、**[適用]** を選択します。 これらの設定により、すぐに実行されるジョブが作成されます。
+1. 冷却装置に対処するには、冷却装置を選択し、**[ジョブ]** を選択します。 **[Run method] (メソッドの実行)**、次に **[EmergencyValveRelease]** を選択し、ジョブ名 **[ChillerPressureRelease]** を追加して、**[適用]** を選択します。 これらの設定により、すぐに実行されるジョブが作成されます。
 
     ![デバイスを選択してアクションをスケジュールする](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
@@ -134,13 +126,13 @@ Contoso のオペレーターは、デバイスが正常に動作しているか
 
 最後に、冷却装置からのテレメトリ値が正常に戻っていることを確認します。
 
-1. アラーム グリッドを表示するには、**[ダッシュボード]** ページに移動します。
+1. アラート グリッドを表示するには、**[ダッシュボード]** ページに移動します。
 
-1. デバイスのテレメトリを表示するには、マップ上で元のアラームが発生したデバイスを選択し、正常に戻っていることを確認します。
+1. デバイスのテレメトリを表示するには、マップ上で元のアラートが発生したデバイスを選択し、正常に戻っていることを確認します。
 
-1. インシデントを閉じるには、**[メンテナンス]** ページに移動し、アラームを選択して状態を **[Closed]\(解決済み\)** に設定します。
+1. インシデントを閉じるには、**[メンテナンス]** ページに移動し、アラートを選択して状態を **[Closed] (解決済み)** に設定します。
 
-    ![アラームを選択して閉じる](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
+    ![アラートを選択して閉じる](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
 
 ## <a name="update-device-firmware"></a>デバイスのファームウェアの更新
 
@@ -159,7 +151,7 @@ Contoso は、新しい種類のデバイスを実地にテストしています
 
     ![[デバイス] ページでデバイスを選択する](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. **[スケジュール]** ボタンをクリックし、**[ファームウェア更新]** を選択します。 **[ジョブ名]**、**[ファームウェアのバージョン]**、**[Firmware URI]\(ファームウェアの URI\)** の値を入力します。 **[適用]** を選択して、今すぐ実行するようにジョブをスケジュールします。
+1. **[ジョブ]** ボタンをクリックし、**[Run method] (メソッドを実行)** を選択して、**[Firmware update] (ファームウェア更新)** を選択します。 **[ジョブ名]**、**[ファームウェアのバージョン]**、**[Firmware URI]\(ファームウェアの URI\)** の値を入力します。 **[適用]** を選択して、今すぐ実行するようにジョブをスケジュールします。
 
     ![デバイスのファームウェアの更新をスケジュールする](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
@@ -176,17 +168,18 @@ Contoso は、新しい種類のデバイスを実地にテストしています
 
 1. 作成したジョブに関連するイベントを見つけます。 ファームウェアの更新プロセスが正常に開始されたことを確認します。
 
-ファームウェアのバージョンが正しく更新されたことを確認するためのフィルターを作成できます。
+<!-- 05/01 broken 
+You can create a filter to verify the firmware version updated correctly.
 
-1. フィルターを作成するには、**[デバイス]** ページに移動して **[Manage filters]\(フィルターの管理\)** を選択します。
+1. To create a filter, navigate to the **Devices** page and select **Manage device groups**:
 
-    ![デバイス フィルターを管理する](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Manage device groups](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
-1. ファームウェアのバージョンが新しいデバイスのみを含めるフィルターを作成します。
+1. Create a filter that includes only devices with the new firmware version:
 
-    ![デバイス フィルターを作成する](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
+    ![Create device filter](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
 
-1. **[デバイス]** ページに戻り、デバイスのファームウェアのバージョンが新しいことを確認します。
+1. Return to the **Devices** page and verify that the device has the new firmware version. -->
 
 ## <a name="organize-your-assets"></a>資産を整理する
 
@@ -203,7 +196,7 @@ Contoso には、フィールド サービス アクティビティのための 
 
     ![すべてのデバイスを表示する](media/iot-suite-remote-monitoring-explore/devicesalldevices.png)
 
-1. **[トラック]** デバイスと **[Prototyping]\(プロトタイプ作成\)** デバイスを選択します。 次に、**[タグ]** を選択します。
+1. **[トラック]** デバイスと **[Prototyping]\(プロトタイプ作成\)** デバイスを選択します。 次に、**[ジョブ]** を選択します。
 
     ![プロトタイプ作成デバイスとトラック デバイスを選択する](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
@@ -211,19 +204,19 @@ Contoso には、フィールド サービス アクティビティのための 
 
     ![プロトタイプ作成デバイスとトラック デバイスにタグを追加する](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
-1. **[冷却装置]**、**[エレベーター]**、および **[エンジン]** デバイスを選択します。 次に、**[タグ]** を選択します。
+1. **[冷却装置]**、**[エレベーター]**、および **[エンジン]** デバイスを選択します。 次に、**[ジョブ]** を選択します。
 
     ![冷却装置、エンジン、エレベーター デバイスを選択する](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. **[タグ]** を選択し、値 **SmartBuilding** を使用して **FieldService** という新しいテキスト タグを作成します。 ジョブの名前を選択する その後、**[保存]**をクリックします。
+1. **[タグ]** を選択し、値 **SmartBuilding** を使用して **FieldService** という新しいテキスト タグを作成します。 ジョブの名前を選択する 次に、**[適用]** をクリックします。
 
     ![冷却装置、エンジン、エレベーター デバイスにタグを追加する](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 
 このタグ値を使用して、フィルターを作成できます。
 
-1. **[デバイス]** ページで、**[Manage filters]\(フィルターの管理\)** を選択します。
+1. **[デバイス]** ページで、**[Manage device groups] (デバイス グループの管理)** を選択します。
 
-    ![デバイス フィルターを管理する](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![デバイス グループの管理](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
 1. タグ名 **FieldService** と値 **SmartBuilding** を使用する新しいフィルターを作成します。 フィルターに **[Smart Building]\(スマート ビルディング\)** という名前を付けて保存します。
 
@@ -237,9 +230,17 @@ Contoso には、フィールド サービス アクティビティのための 
 
 1. **[設定]** アイコンを選択します。
 
-1. **[実行中]** のオンとオフを切り替えます。
+1. **[Flowing] (フロー)** のオンとオフを切り替えます。
 
     ![設定メニュー](media/iot-suite-remote-monitoring-explore/settings.png)
+
+## <a name="customize-the-ui"></a>UI のカスタマイズ
+
+設定メニューから、リモート監視ソリューション アクセラレータに基本的なカスタマイズを適用できます。 次のようにすることができます。
+
+- ライト テーマとダーク テーマを切り替える。
+- ソリューションの名前を変更する。
+- カスタム ロゴをアップロードする。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -247,7 +248,7 @@ Contoso には、フィールド サービス アクティビティのための 
 
 >[!div class="checklist"]
 > * ダッシュボードでデバイスの視覚化とフィルター処理を行う
-> * アラームに対処する
+> * アラートに対処する
 > * デバイスのファームウェアを更新する
 > * 資産を整理する
 > * シミュレートされたデバイスを停止し、起動する
@@ -256,5 +257,5 @@ Contoso には、フィールド サービス アクティビティのための 
 
 * [デバイスの監視](./iot-suite-remote-monitoring-monitor.md)
 * [デバイスの管理](./iot-suite-remote-monitoring-manage.md)
-* [規則の使用によるソリューションの自動化](./iot-suite-remote-monitoring-automate.md)
+* [規則の使用によるソリューションの自動化](./../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)
 * [ソリューションのメンテナンス](./iot-suite-remote-monitoring-maintain.md)

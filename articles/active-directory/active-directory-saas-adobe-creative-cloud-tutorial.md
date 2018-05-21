@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Adobe Creative Cloud の統合 | Microsoft Docs"
-description: "Azure Active Directory と Adobe Creative Cloud の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Adobe Creative Cloud の統合 | Microsoft Docs'
+description: Azure Active Directory と Adobe Creative Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: c34d6bddb733c5979bc2006738e950cf7a185c4e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 808debcee11eb83f7e6afa1f3443a35c9f6767c4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>チュートリアル: Azure Active Directory と Adobe Creative Cloud の統合
 
@@ -30,7 +30,7 @@ Adobe Creative Cloud と Azure AD の統合には、次の利点があります�
 - ユーザーが自分の Azure AD アカウントで自動的に Adobe Creative Cloud にサインオン (シングル サインオン) するよう指定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -147,7 +147,7 @@ Adobe Creative Cloud での Azure AD シングル サインオンを構成して
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
     
 8. **[保存]** ボタンをクリックします。
 
@@ -273,7 +273,7 @@ Azure AD ユーザーが Adobe Creative Cloud にログインできるように�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [ドメインをセットアップする (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 * [Adobe SSO で使用するために Azure を構成する (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 
