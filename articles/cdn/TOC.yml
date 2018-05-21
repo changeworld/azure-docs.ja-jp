@@ -28,6 +28,8 @@
   items:
     - name: キャッシュのしくみ
       href: cdn-how-caching-works.md
+    - name: 中国でのコンテンツ配信
+      href: cdn-china-delivery.md
 - name: ハウツー ガイド
   items:
     - name: 統合

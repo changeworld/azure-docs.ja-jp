@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 172780512dd179d91300459987ad0ba683727859
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
 このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
@@ -34,7 +34,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) または Azure Blob Storage に読み込みます。 次に、PolyBase を使って SQL Data Warehouse のステージング テーブルにデータを読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) または Azure Blob Storage に読み込みます。 次に、PolyBase を使って SQL Data Warehouse のステージング テーブルにデータを読み込みます。 次の構成を使用します。
 
 | 設計 | 推奨 |
 |:--- |:--- |
@@ -43,7 +43,7 @@ ms.lasthandoff: 04/18/2018
 | パーティション分割 | なし |
 | リソース クラス | largerc または xlargerc |
 
-[データ移行]、[データ読み込み]、および[抽出、読み込み、および変換 (ELT) プロセス](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading)の詳細を参照してください。 
+[データ移行]、[データ読み込み]、および[抽出、読み込み、および変換 (ELT) プロセス](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading)の詳細を参照してください。 
 
 ## <a name="distributed-or-replicated-tables"></a>分散テーブルまたはレプリケート テーブル
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 04/18/2018
 **ヒント:**
 * クラスター化インデックスに加えて、フィルターで使用頻度の高い列に非クラスター化インデックスを追加することが必要な場合があります。 
 * CCI を含むテーブルでのメモリの管理方法に注意する必要があります。 データを読み込むときに、大きいリソース クラスによってユーザー (またはクエリ) にメリットがあるようにします。 トリミングによって多くの小さい圧縮された行グループが作成されないようにします。
-* CCI を使用するコンピューティング層ロックに対して最適化されています。
+* Gen2 では、パフォーマンスを最大にするため、CCI テーブルはコンピューティング ノードにローカルにキャッシュされます。
 * CCI では、行グループの圧縮が不十分であるためにパフォーマンスが低下することがあります。 これが発生した場合は、CCI を再構築または再編成します。 圧縮された行グループあたり 10 万行以上が必要です。 理想は行グループあたり 100 万行です。
 * 増分読み込みの頻度とサイズに基づいて、インデックスを再編成または再構築するタイミングを自動化します。 大掃除は常に役に立ちます。
 * 行グループをトリミングする場合は、戦略的に行います。 開いている行グループはどのくらいの大きさですか。 今後、どれくらいのデータが読み込まれると予想されますか。
@@ -111,7 +111,7 @@ SQL Data Warehouse では、クエリにメモリを割り当てる方法とし�
 
 クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くの同時実行スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
-最後に、コンピューティング最適化層を使うと、各リソース クラスが取得するメモリの量がエラスティック最適化層の 2.5 倍になります。
+最後に、SQL Data Warehouse の Gen2 を使うことにより、各リソース クラスは Gen1 より 2.5 倍多いメモリを取得します。
 
 詳しくは、[リソース クラスと同時実行]の操作方法に関するページをご覧ください。
 

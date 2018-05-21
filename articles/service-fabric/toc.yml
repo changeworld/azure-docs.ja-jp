@@ -543,6 +543,8 @@
               href: service-fabric-cluster-delete.md
             - name: クラスター ノード VM へのリモート接続
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+            - name: VMSS SKU のアップグレード/移行
+              href: service-fabric-update-vmss-sku.md
         - name: スタンドアロンのクラスター
           items:
             - name: '[作成]'

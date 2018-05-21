@@ -1,12 +1,12 @@
 ---
-title: "VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "この記事では、Azure Site Recovery Deployment Planner で生成されるレポートの分析について、VMware から Azure へのシナリオを想定して説明します。"
+title: VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
+description: この記事では、Azure Site Recovery Deployment Planner で生成されるレポートの分析について、VMware から Azure へのシナリオを想定して説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: dce374d85ef32fe1fbfc88502780fa2ad7a5eae4
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2d44d8410734193ba8b7fdda3134727d9064340c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポート
 生成された Microsoft Excel レポートには、次のシートが含まれています。
@@ -198,9 +198,9 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[ストレージ アカウント]**: ストレージ アカウントの推奨プレフィックスを使用した名前です。
 
-**[R/W IOPS (with Growth Factor) (読み取り/書き込みの IOPS (増加率を考慮))]**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、必ずしもその個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。VM の読み取り/書き込みのピーク IOPS が、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークであるためです。
+**[Peak R/W IOPS (with Growth Factor) (読み取り/書き込み IOPS のピーク (増加率を考慮))]**: 将来的な増加率 (既定では 30 %) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、必ずしもその個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。VM の読み取り/書き込みのピーク IOPS が、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークであるためです。
 
-**[Data Churn in Mbps (with Growth Factor) (データの変更頻度 (Mbps) (増加率を考慮))]**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、必ずしもその個々のディスクのデータ変更頻度を足した値になるとは限りません。VM のデータ変更頻度のピークが、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークであるためです。
+**[Peak Data Churn in Mbps (with Growth Factor) ( データの変更頻度のピーク (Mbps) (増加率を考慮))]**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、必ずしもその個々のディスクのデータ変更頻度を足した値になるとは限りません。VM のデータ変更頻度のピークが、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークであるためです。
 
 **[Azure VM Size (Azure VM サイズ)]**: オンプレミス VM に対応する Azure Cloud Services の仮想マシンとして理想的なサイズです。 この判断は、オンプレミス VM のメモリ、ディスク数/コア数/NIC 数、読み取り/書き込みの IOPS に基づいて行われます。 オンプレミスの VM が備えているこうした特性をすべて満たした最小の Azure VM サイズが確実に提案されます。
 

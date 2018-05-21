@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -37,7 +37,7 @@ Azure Storage には、次のデータ サービスが含まれます。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
-Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 
+Azure Blob ストレージは、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 
 
 BLOB ストレージは、次の目的に最適です。
 
@@ -179,7 +179,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [Storage サービス REST API](https://docs.microsoft.com/rest/api/storageservices/)
 * [.NET 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Java/Android 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [Node.js 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [Node.js 用ストレージ クライアント ライブラリ](https://docs.microsoft.com/javascript/api/azure-storage)
 * [Python 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-python)
 * [PHP 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-php)
 * [Ruby 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-ruby)

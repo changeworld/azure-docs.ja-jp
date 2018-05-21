@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 2b47dfbac3ee5c91e416fb234468fe22aa936c4c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d33f220d0669c6e078e075fc0a93d8d58d491547
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
-SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージ [シングル SQL データベース](sql-database-servers-databases.md)と[エラスティック プール](sql-database-elastic-pool.md)内のマネージ SQL データベース、および SQL [マネージ インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) が用意されています。 それは、[動的にスケーラブルなパフォーマンス](sql-database-service-tiers.md)を提供し、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 
+SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージ [シングル SQL データベース](sql-database-servers-databases.md)と[エラスティック プール](sql-database-elastic-pool.md)内のマネージ SQL データベース、および SQL [マネージ インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) が用意されています。 それは、2 つの異なる購入モデル ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)) の中で動的に拡張可能なパフォーマンスを実現します。 SQL Database は、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。 
 
 SQL Database は、そのコード ベースを [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と共有しています。 Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 発表される新しい機能の詳細については、以下を参照してください。
 
@@ -35,15 +35,15 @@ SQL Database は、パフォーマンスを予測できる複数のサービス 
 
 ## <a name="scalable-performance-and-pools"></a>スケーラブルなパフォーマンスとプール
 
-SQL Database では、各データベースは互いに分離しており、移植可能です。各データベースは、パフォーマンス レベルが保証された独自の[サービス レベル](sql-database-service-tiers.md)で提供されます。 SQL Database には、さまざまなニーズに対応するための複数のパフォーマンス レベルがあり、リソースを最大限に利用してコストの節約するためにデータベースをプールすることができます。
+SQL Database では、各データベースは互いに分離しており、移植可能です。各データベースは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) 内の独自のサービス レベルと保証されたパフォーマンス レベルを持っています。 SQL Database には、さまざまなニーズに対応するための複数のパフォーマンス レベルがあり、リソースを最大限に利用してコストの節約するためにデータベースをプールすることができます。
 
 SQL Database マネージ インスタンスでは、各インスタンスが他のインスタンスから分離され、リソースが保証されます。 詳細については、[SQL Database マネージ インスタンス](sql-database-managed-instance.md)に関するページを参照してください 
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
 
-SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers.md#dtu-based-purchasing-model)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview) があります。 
+SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) があります。 
 - DTU ベースの購入モデルには、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
-- 仮想コアベースの購入モデルでは、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
+- 仮想コア ベースの購入モデル (プレビュー) では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
 
 最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
@@ -68,12 +68,12 @@ SQL Database マネージ インスタンスはプレビュー段階であり、
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>広範囲に及ぶ監視とアラートの機能
 
-しかし、単一データベースとエラスティック プールの相対的なパフォーマンスは、どのような方法で比較すればよいでしょうか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? [組み込みのパフォーマンス監視](sql-database-performance.md)および[アラート](sql-database-insights-alerts-portal.md) ツールと、パフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 詳細については、「 [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md) 」を参照してください。
+しかし、単一データベースとエラスティック プールの相対的なパフォーマンスは、どのような方法で比較すればよいでしょうか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? [組み込みのパフォーマンス監視](sql-database-performance.md)および[アラート](sql-database-insights-alerts-portal.md) ツールと、パフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
 
 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
-- **Azure Storage**: 大量の利用統計情報を低価格でアーカイブします。
-- **Azure Event Hub**: SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
+- **Azure Storage**: 大量のテレメトリを低価格でアーカイブします
+- **Azure Event Hub**: SQL Database のテレメトリを、カスタム監視ソリューションまたはホット パイプラインと統合します
 - **Azure Log Analytics**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。 これは、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) の機能です
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
@@ -84,8 +84,8 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 
 - **[自動バックアップ](sql-database-automated-backups.md)**: SQL Database は、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップを自動的に実行します。
 - **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)**: SQL Database は、自動バックアップのリテンション期間内の任意の時点への回復をサポートします。
-- **[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 アクティブ geo レプリケーションを使用すると、単一のデータベースのフェールオーバーが可能になります。 
-- **[フェールオーバー グループ](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、透過的な geo レプリケーションや大量のデータベースとエラスティック プールのフェールオーバーなどによって、高可用性と負荷分散をグローバル スケールで有効にすることができます。 フェールオーバー グループとアクティブ geo レプリケーションを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。 フェールオーバー グループを使用すると、1 つのグループ内の複数のデータベースのフェールオーバーが可能になります。 
+- **[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 
+- **[フェールオーバー グループ](sql-database-geo-replication-overview.md)**: SQL Database を使用すると、透過的な geo レプリケーションや大量のデータベースとエラスティック プールのフェールオーバーなどによって、高可用性と負荷分散をグローバル スケールで有効にすることができます。 フェールオーバー グループとアクティブ geo レプリケーションを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。
 - **[ゾーン冗長データベース](sql-database-high-availability.md)**: SQL Database の Premium または Business Critical (プレビュー) データベースまたはエラスティック プールは、複数の可用性ゾーンにまたがってプロビジョニングすることができます。 これらのデータベースとエラスティック プールには、高可用性を目的とする複数の冗長レプリカが存在します。それらのレプリカを複数の可用性ゾーンに配置することで回復性を高め、たとえばデータの損失を生じさせずにデータセンター規模の障害から自動的に復旧することができます。 現在、この機能はプレビュー段階にあります。 
 
 ## <a name="built-in-intelligence"></a>組み込みのインテリジェンス
@@ -96,9 +96,9 @@ SQL Database には、インテリジェンスが組み込まれています。�
 
 SQL Database は、監視する必要があるクエリの詳細な洞察を提供します。 SQL Database は、データベースのパターンについて学習し、データベース スキーマをワークロードに適応させることができます。 SQL Database は[パフォーマンスのチューニングに関する推奨事項](sql-database-advisor.md)を提示します。チューニング アクションを確認してそれらを適用できます。 
 
-ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](sql-database-intelligent-insights.md) は、ユーザーに代わって SQL Database のパフォーマンスを大規模に自動的に監視し、パフォーマンス低下の問題をユーザーに通知します。 Intelligent Insights は、根本原因を特定し、可能な場合はパフォーマンス改善のための推奨事項を示します。 
+ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](sql-database-intelligent-insights.md) は、スケールで SQL Database のパフォーマンスを自動的に監視することによってこのジョブを行い、パフォーマンスの低下の問題を通知し、問題の根本原因を特定し、可能な場合にはパフォーマンスの向上の推奨事項を提供します。
 
-膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行ってパフォーマンスが向上したことを確認します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応することができます。 この自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
+膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、各チューニング アクションを検証して、パフォーマンスが向上していることを確認します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
 
 今日、SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-patterns-multi-tenancy-saas-applications.md)を実行している当社の多数のパートナーは、パフォーマンスの自動チューニングを信頼して、アプリケーションが常に安定した予測可能なパフォーマンスで実行されるようにしています。 パートナーにとって、この機能は、真夜中にパフォーマンス上の問題が発生するリスクを大幅に軽減するものです。 さらに、顧客ベースの一部では、SQL Server も使用しているため、SQL Database が提示するのと同じインデックスに関する推奨事項を使用して、SQL Server を使用している顧客を支援しています。
 
@@ -113,7 +113,7 @@ SQL Database には、[クエリの適応処理機能](/sql/relational-databases
 
 ### <a name="intelligent-threat-detection"></a>インテリジェントな脅威の検出
 
- [SQL の脅威の検出](sql-database-threat-detection.md)では、[SQL Database の監査](sql-database-auditing.md)を活用して、Azure SQL データベースの機密データに対する潜在的に有害なアクセスの試みを継続的に監視します。 SQL の脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、潜在的な脅威が発生したときにユーザーがそれを検出して対応できるようにします。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかった場合に、ユーザーはアラートを受信します。 SQL の脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。 ユーザーは、疑わしいイベントを調査して、そのイベントがデータベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。 脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+ [SQL の脅威の検出](sql-database-threat-detection.md)では、[SQL Database の監査](sql-database-auditing.md)を活用して、Azure SQL データベースの機密データに対する潜在的に有害なアクセスの試みを継続的に監視します。 SQL の脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、潜在的な脅威が発生したときにユーザーがそれを検出して対応できるようにします。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、異常なデータベース アクセス パターンが見つかった場合に、ユーザーはアラートを受信します。 SQL の脅威の検出によるアラートは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法を提供します。 ユーザーは、疑わしいイベントを調査して、そのイベントがデータベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。 脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
 
 ## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス
 

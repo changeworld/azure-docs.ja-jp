@@ -1,6 +1,6 @@
 ---
-title: Azure の Linux VM 向け可用性セットのチュートリアル | Microsoft Docs
-description: Azure の Linux VM 向け可用性セットについて説明します。
+title: チュートリアル - Azure での Linux VM の高可用性 | Microsoft Docs
+description: このチュートリアルでは、Azure CLI 2.0 を使って、可用性セットに高可用性仮想マシンを展開する方法について説明します
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
@@ -16,14 +16,13 @@ ms.topic: tutorial
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d317ec8136ad7a36381239593c3a53c40f897845
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dc6fba89571515d0d2d7ed3ecc35c3065405056b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-use-availability-sets"></a>可用性セットの使用方法
-
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用して高可用性仮想マシンを作成して展開する
 
 このチュートリアルでは、可用性セットと呼ばれる機能を使用して、Azure で仮想マシン ソリューションの可用性と信頼性を向上させる方法を学習します。 可用性セットは、Azure にデプロイする VM を、複数の分離されたハードウェア クラスターに分散します。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
 
@@ -34,10 +33,9 @@ ms.lasthandoff: 04/06/2018
 > * 可用性セットに VM を作成する
 > * 使用可能な VM のサイズを確認する
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="availability-set-overview"></a>可用性セットの概要
 
@@ -50,16 +48,13 @@ Azure 内で信頼性の高い VM ベースのソリューションをデプロ�
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットは、[az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
+可用性セットは、[az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの数を *2* に設定します。
 
-リソース グループを作成します。
+最初に [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成した後、可用性セットを作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
-```
 
-
-```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupAvailability \
     --name myAvailabilitySet \
@@ -67,44 +62,44 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-可用性セットでは、障害ドメインと更新ドメインでリソースを分離できます。 **障害ドメイン**は、サーバーとネットワークとストレージ リソースの分離されたコレクションを表します。 前の例では、VM がデプロイされる際に、少なくとも 2 つの障害ドメインに可用性セットを分散することを指示しています。 さらに、可用性セットを 2 つの**更新ドメイン**に分散することも指示しています。  2 つの更新ドメインは、Azure でソフトウェアの更新が実行される際に VM リソースが分離され、VM の下で実行されているすべてのソフトウェアが同時に更新されることがないようにします。
+可用性セットでは、障害ドメインと更新ドメインでリソースを分離できます。 **障害ドメイン**は、サーバーとネットワークとストレージ リソースの分離されたコレクションを表します。 前の例では、VM が展開されるときに、少なくとも 2 つの障害ドメインに可用性セットが分散されます。 可用性セットは、2 つの**更新ドメイン**にも分散されます。 2 つの更新ドメインを使用すると、Azure がソフトウェアの更新を実行するときに、VM リソースが分離されて、VM 上で実行するすべてのソフトウェアが同時に更新されるのを防ぎます。
 
 
 ## <a name="create-vms-inside-an-availability-set"></a>可用性セット内の VM の作成
 
-VM は、ハードウェア全体で適切に分散させるために、可用性セット内に作成する必要があります。 可用性セットを作成した後に、既存の VM を追加することはできません。 
+VM は、ハードウェア全体で適切に分散させるために、可用性セット内に作成する必要があります。 可用性セットを作成した後に、既存の VM を追加することはできません。
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成するときに、`--availability-set` パラメーターを使用して可用性セットを指定し、可用性セットの名前を指定します。
+[az vm create](/cli/azure/vm#az_vm_create) を使って VM を作成するときに、`--availability-set` パラメーターを使って可用性セットの名前を指定します。
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in `seq 1 2`; do
    az vm create \
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
      --size Standard_DS1_v2  \
-     --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+     --image UbuntuLTS \
      --admin-username azureuser \
      --generate-ssh-keys \
      --no-wait
-done 
+done
 ```
 
-これで、新しく作成された可用性セット内に 2 つの仮想マシンが作成されます。 それらは同じ可用性セットに属しているため、VM と (データ ディスクを含む) すべてのリソースは、複数の分離された物理ハードウェアに分散されます。 この分散によって、VM ソリューション全体の可用性が大きく向上します。
+可用性セット内に 2 つの仮想マシンが存在するようになります。 それらは同じ可用性セットに属しているため、VM と (データ ディスクを含む) すべてのリソースは、複数の分離された物理ハードウェアに分散されます。 この分散によって、VM ソリューション全体の可用性が大きく向上します。
 
-[リソース グループ] > [myResourceGroupAvailability] > [myAvailabilitySet] の順に移動してポータルの可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
+可用性セットの分散は、ポータルで [リソース グループ]、myResourceGroupAvailability、myAvailabilitySet の順に移動して確認できます。 次の例で示すように、VM は 2 つの障害ドメインと更新ドメインに分散されています。
 
 ![ポータルの可用性セット](./media/tutorial-availability-sets/fd-ud.png)
 
-## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
+## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック
 
-可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。  ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示するには、[az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) を使用します。
+ハードウェアに VM に使用できるサイズがある場合は、後で新しい VM を可用性セットに追加できます。 ハードウェア クラスター上で可用性セットに使用可能なすべてのサイズを一覧表示するには、[az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) を使います。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm availability-set list-sizes \
      --resource-group myResourceGroupAvailability \
      --name myAvailabilitySet \
-     --output table  
+     --output table
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -120,4 +115,3 @@ az vm availability-set list-sizes \
 
 > [!div class="nextstepaction"]
 > [仮想マシン スケール セットを作成する](tutorial-create-vmss.md)
-

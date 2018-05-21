@@ -1,11 +1,11 @@
 ---
-title: "Team Services を使用して Jenkins から Azure VM への CI/CD を設定する | Microsoft Docs"
-description: "Visual Studio Team Services または Microsoft Team Foundation Server の Release Management から Jenkins を使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的デプロイ (CD) を設定します"
+title: チュートリアル - Team Services を使用して Jenkins から Azure VM への CI/CD を設定する | Microsoft Docs
+description: このチュートリアルでは、Visual Studio Team Services または Microsoft Team Foundation Server の Release Management から Jenkins を使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法を説明します
 author: ahomer
 manager: douge
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -14,19 +14,17 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>Jenkins と Team Services を使用してアプリを Linux VM にデプロイする
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>チュートリアル: Jenkins と Visual Studio Team Services を使用して Azure 内の Linux 仮想マシンにアプリを展開する
 
 継続的インテグレーション (CI) と継続的デプロイ (CD) は、コードのビルド、リリース、デプロイに使用できるパイプラインを生成します。 Visual Studio Team Services には、Azure へのデプロイに使用できる機能が一式そろった CI/CD 自動化ツールが用意されています。 Jenkins は、よく使われているサードパーティの CI/CD サーバーベースのツールであり、CI/CD 自動化機能も備えています。 Team Services と Jenkins を一緒に使用して、クラウド アプリまたはサービスの提供方法をカスタマイズすることができます。
 
-このチュートリアルでは、Jenkins を使用して Node.js Web アプリをビルドします。 続いて、Team Services または Team Foundation Server を使用して、Linux 仮想マシン (VM) を含んだ[デプロイ グループ](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/)にこれをデプロイします。
-
-このチュートリアルの内容は次のとおりです。
+このチュートリアルでは、Jenkins を使用して Node.js Web アプリをビルドします。 続いて、Team Services または Team Foundation Server を使用して、Linux 仮想マシン (VM) を含んだ[デプロイ グループ](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/)にこれをデプロイします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * サンプル アプリを入手する。
@@ -76,14 +74,14 @@ ms.lasthandoff: 12/08/2017
     ![NodeJS プラグインを Jenkins に追加する](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
 4. 一覧を絞り込んで **VS Team Services Continuous Deployment** プラグインを探し、**Install without restart \(再起動せずにインストール)** オプションを選択します。
 5. Jenkins ダッシュボードに戻り、**[Jenkins の管理]** を選択します。
-6. **[Global Tool Configuration] \(ツールのグローバル構成)** を選択します。 **[NodeJS]** を検索して **[NodeJS installations] \(NodeJS のインストール)** を選択します。
+6. **ツールのグローバル構成** を選択します。 **[NodeJS]** を検索して **[NodeJS installations] \(NodeJS のインストール)** を選択します。
 7. **[Install automatically] \(自動的にインストールする)** オプションを選択して、**[名前]** の値を入力します。
 8. **[保存]** を選択します。
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Node.js の Jenkins フリースタイル プロジェクトを構成する
 
 1. **[New Item (新しい項目)]** を選択します。 項目名を入力します。
-2. **[Freestyle project] \(フリースタイル プロジェクト)** を選択します。 **[OK]**を選択します。
+2. **[Freestyle project] \(フリースタイル プロジェクト)** を選択します。 **[OK]** を選択します。
 3. **[Source Code Management] \(ソース コードの管理)** タブで **[Git]** を選択し、アプリ コードを保存するリポジトリとブランチの詳細情報を入力します。    
     ![ビルドにリポジトリを追加する](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. **[Build Triggers] \(ビルド トリガー)** タブで **[Poll SCM] \(SCM のポーリング)** を選択し、スケジュール「`H/03 * * * *`」を入力して Git リポジトリの変更を 3 分間隔でポーリングします。 
@@ -99,10 +97,10 @@ ms.lasthandoff: 12/08/2017
 1.  Team Services アカウントに PAT を作成します (まだお持ちでない場合)。 Jenkins から Team Services アカウントにアクセスするには、この情報が必要です。 必ず、このセクションの以降の手順で必要なトークンの情報を保存します。
   
     トークンの生成方法については、[VSTS と TFS 用の個人用アクセス トークンを作成する方法](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)に関するページをご覧ください。
-2. **[Post-build Actions] \(ビルド後のアクション)** タブで **[Add post-build action] \(ビルド後のアクションを追加する)** を選択します。 **[Archive the artifacts] \(成果物のアーカイブ)** を選択します。
+2. **ビルド後のアクション** タブで **ビルド後のアクションを追加する** を選択します。 **[Archive the artifacts] \(成果物のアーカイブ)** を選択します。
 3. **[Files to archive]\(アーカイブするファイル\)** に `**/*` と入力してすべてのファイルが含まれるようにします。
 4. 別のアクションを作成するには **[Add post-build action] \(ビルド後のアクションを追加する)** をクリックします。
-5. **[Trigger release in TFS/Team Services] \(TFS/Team Services でリリースをトリガーする)** を選択します。 **https://{your-account-name}.visualstudio.com** など、Team Services のアカウントの URI を入力します。
+5. **TFS/Team Services でリリースをトリガーする** を選択します。 **https://{your-account-name}.visualstudio.com** など、Team Services のアカウントの URI を入力します。
 6. **[チーム プロジェクト]** 名を入力します。
 7. リリース定義の名前を選択します。 (Team Services で後からこのリリース定義を作成します)。
 8. Team Services や Team Foundation Server 環境に接続するための資格情報を選択します。
@@ -149,10 +147,10 @@ Team Services でリリース定義を作成するには:
 
 1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開いて、**[リリース定義の作成]** を選択します。 
 2. **[空のプロセス]** で開始することを選択して **[空]** のテンプレートを選択します。
-3. **[成果物]** セクションで**[+ 成果物の追加]** を選択し、**[ソースの種類]** に **[Jenkins]** を選択します。 Jenkins サービス エンドポイントの接続を選択します。 Jenkins ソース ジョブを選択し、**[追加]** を選択します。
-4. **[環境 1]** の横にある省略記号を選択します。 **[Add deployment group phase] \(デプロイ グループ フェーズを追加)** をクリックします。
+3. **[成果物]** セクションで **[+ 成果物の追加]** を選択し、**[ソースの種類]** に **[Jenkins]** を選択します。 Jenkins サービス エンドポイントの接続を選択します。 Jenkins ソース ジョブを選択し、**[追加]** を選択します。
+4. **[環境 1]** の横にある省略記号を選択します。 **デプロイ グループ フェーズを追加** をクリックします。
 5. ご利用のデプロイ グループを選択します。
-5. **[+]** を選択して **[Deployment group phase] \(デプロイ グループ フェーズ)** にタスクを追加します。
+5. **+** を選択して **デプロイ グループ フェーズ** にタスクを追加します。
 6. **[シェル スクリプト]** タスクを選択して **[追加]** を選択します。 **[シェル スクリプト]** タスクは、Node.js をインストールし、アプリを起動するために各サーバーで実行されるスクリプトの構成を指定します。
 8. **[スクリプト パス]** については、**$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** を入力します。
 9. **[詳細]** を選択して、**[作業ディレクトリを指定する]** を有効にします。
@@ -169,9 +167,9 @@ Team Services でリリース定義を作成するには:
 5. ブラウザーで、デプロイ グループに追加したサーバーのいずれかについて URL を開きます。 たとえば、**http://{your-server-ip-address}** と入力します。
 6. ソース Git リポジトリに移動し、app/views/index.jade ファイル内の **[h1]** 見出しの内容を、変更を行ったテキストで変更します。
 7. 変更を確定します。
-8. 数分経つと、Team Services または Team Foundation Server の **[リリース]** ページに、作成された新しいリリースが表示されます。 リリースを開き、実行された配置を確認します。 ご利用ありがとうございます。
+8. 数分経つと、Team Services または Team Foundation Server の **[リリース]** ページに、作成された新しいリリースが表示されます。 リリースを開き、実行された配置を確認します。 お疲れさまでした。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、ビルドに Jenkins を、リリースに Team Services を使用して Azure にアプリをデプロイする処理を自動化しました。 以下の方法について学習しました。
 

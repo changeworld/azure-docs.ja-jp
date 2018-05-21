@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
-description: チュートリアル - Azure PowerShell で RBAC、ポリシー、ロック、タグを適用することによって Azure 仮想マシンを管理します
+title: チュートリアル - Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell を使用して、RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -10,16 +10,17 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: d4e09eb11ea04c31b7e302b7f66f8e67c13e8252
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.custom: mvc
+ms.openlocfilehash: 154ba47881c65d963729f9074d93c7bb61020389
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="virtual-machine-governance-with-azure-powershell"></a>Azure PowerShell での仮想マシンの管理
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した Azure 仮想マシンの管理方法の説明
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 

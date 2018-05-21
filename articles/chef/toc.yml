@@ -1,25 +1,48 @@
-- name: Chef のドキュメント
-  href: index.md
+- name: Azure 上の Chef ソフトウェアのドキュメント
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: Azure 上の Chef について
+      href: ./chef-overview.md
+    - name: Azure 上の Habitat について
+      href: ./chef-habitat-overview.md
+    - name: Azure 上の InSpec について
+      href: ./chef-inspec-overview.md
 - name: クイック スタート
   expanded: true
   items:
-    - name: '自動化: クイック スタート テンプレート'
-      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+    - name: Chef
+      expanded: true
+      items:
+        - name: Azure portal を使用して Chef をインストールする
+          href: ./chef-extension-portal.md
 - name: チュートリアル
   items:
-    - name: VM の自動化
-      href: /azure/virtual-machines/windows/chef-automation
+    - name: Chef
+      items:
+        - name: Windows VM の作成
+          href: /azure/virtual-machines/windows/chef-automation
+- name: リファレンス
+  items:
+    - name: Azure Chef 拡張機能
+      href: 'https://docs.chef.io/azure_portal.html#azure-chef-extension'
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 'ブログ: VSTS と Chef'
-      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
-    - name: Chef と Azure PS
-      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
-    - name: Chef と VSTS
-      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
-    - name: Chef サイト
-      href: 'https://www.chef.io'
-    - name: 'ビデオ: Chef と VSTS'
-      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'
+    - name: Chef Automate
+      items:
+        - name: Chef Automate の概要
+          href: 'https://docs.chef.io/chef_automate.html'
+        - name: Chef Automate インストール ガイド
+          href: 'https://docs.chef.io/install_chef_automate.html'
+        - name: Azure Marketplace の Chef Automate
+          href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate'
+    - name: Chef ソフトウェアのニュース
+      items:
+        - name: Chef ソフトウェアのブログ
+          href: 'https://blog.chef.io/'
+- name: ツール
+  items:
+    - name: Chef の Visual Studio Team Services 拡張機能
+      href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks'
+    - name: Habitat の Visual Studio Team Services 拡張機能
+      href: 'https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks'

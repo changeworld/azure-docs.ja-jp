@@ -1,25 +1,25 @@
 ---
-title: "Azure Policy の JSON サンプル - ストレージ アカウントのみに対する https トラフィックの確認 | Microsoft Docs"
-description: "この JSON サンプル ポリシーは、ストレージ アカウントが HTTPS トラフィックを使用することが要件です。"
+title: Azure Policy の JSON サンプル - ストレージ アカウントのみに対する https トラフィックの確認 | Microsoft Docs
+description: この JSON サンプル ポリシーは、ストレージ アカウントが HTTPS トラフィックを使用することが要件です。
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 278cb86aba2b365f8192d5418dede33d8f6bfa92
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: cc816d74d370b32330221c267d2cc9c5b8561d47
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="ensure-https-traffic-only-for-storage-account"></a>ストレージ アカウントのみに対する https トラフィックの確認
 
@@ -74,6 +74,6 @@ az policy assignment create --name <assignmentname> --scope <scope> --policy "ht
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - その他の Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](../json-samples.md)」を参照してください。

@@ -1,25 +1,25 @@
-﻿---
+---
 title: Azure Analysis Services の概要 | Microsoft Docs
 description: Azure での Analysis Services の概要を説明します。
 author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2a2818be8ef609946e53f585aadb0a5b4ac0f3a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-analysis-services-overview"></a>Azure Analysis Services の概要
+# <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services は、クラウドにおけるエンタープライズ レベルのデータ モデリングを実現します。 これは、完全管理型のサービスとしてのプラットフォーム (PaaS) であり、Azure のデータ プラットフォーム サービスと統合されています。 
 
-Analysis Services では、複数のソースからのデータをマッシュアップして結合し、メトリックを定義して、単一の信頼されたセマンティック データ モデルで、データのセキュリティを確保することができます。 このデータ モデルにより、ユーザーはクライアント アプリケーション (Power BI、Excel、Reporting Services、サードパーティ アプリ、カスタム アプリなど) から、大量のデータを従来よりも簡単に、高速に参照できるようになります。
+Analysis Services では、複数のデータ ソースからのデータをマッシュアップして結合し、メトリックを定義して、単一の信頼されたセマンティック データ モデルで、データのセキュリティを確保することができます。 このデータ モデルにより、ユーザーはクライアント アプリケーション (Power BI、Excel、Reporting Services、サードパーティ アプリ、カスタム アプリなど) から、大量のデータを従来よりも簡単に、高速に参照できるようになります。
 
 ![データ ソース](./media/analysis-services-overview/aas-overview-data-sources.png)
 
@@ -96,7 +96,7 @@ Azure Analysis Services は、Azure Blob Storage を利用して、Analysis Serv
 
 #### <a name="firewall"></a>ファイアウォール
 
-Azure Analysis Services ファイアウォールは、ルールに規定されているクライアント接続を除く、すべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロック許可することもできます。 
+Azure Analysis Services ファイアウォールは、ルールに規定されているクライアント接続を除く、すべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロックすることもできます。 
 
 #### <a name="on-premises-data-sources"></a>オンプレミス データ ソース
 組織のオンプレミス データへの安全なアクセスは、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールして構成することにより実現します。 ゲートウェイは、DirectQuery モードとインメモリ モード両方のデータへのアクセスを提供します。 Azure Analysis Services モデルがオンプレミス データ ソースに接続すると、オンプレミス データ ソースに対する暗号化された資格情報を含むクエリが作成されます。 ゲートウェイ クラウド サービスはクエリを分析して、Azure Service Bus に要求をプッシュします。 オンプレミス ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。 その後、ゲートウェイはクエリを取得して、資格情報を復号化し、データ ソースに接続して実行します。 結果は、データ ソースからゲートウェイ経由で Azure Analysis Services データベースに返送されます。
@@ -134,4 +134,5 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 ドキュメントに関する指摘がある場合は、 各記事の下部にある Livefyre を使ってコメントを追加できます。
 
 ## <a name="next-steps"></a>次の手順
-Azure Analysis Services について理解できたら、実際に始めてみてください。 Azure で[サーバーを作成する](analysis-services-create-server.md)方法について説明します。 サーバーの準備ができたら、[Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)を進めて、完全に機能する表形式モデルを作成してサーバーにデプロイする方法を学習してください。
+Azure で[サーバーを作成する](analysis-services-create-server.md)方法について説明します。   
+サーバーを作成したら、[サンプル モデル](analysis-services-create-sample-model.md)を追加します。   

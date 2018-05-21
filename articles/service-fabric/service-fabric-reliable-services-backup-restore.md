@@ -9,16 +9,16 @@ editor: subramar,zhol
 ms.assetid: 91ea6ca4-cc2a-4155-9823-dcbd0b996349
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: dd8042620b6b9829e49f3124ecdee1c038f8c12f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services と Reliable Actors のバックアップよび復元
 Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。  つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。 このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
@@ -241,7 +241,8 @@ class MyCustomActorService : ActorService
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>具体的な内容: バックアップと復元の詳細
 バックアップと復元の詳細を以下に示します。
 
-### <a name="backup"></a>バックアップ
+### <a name="backup"></a>Backup
+
 Reliable State Manager には、読み書き操作を中断することなく、一貫性のあるバックアップを作成する機能があります。 そのために、チェックポイントとログ永続化のメカニズムが活用されます。  Reliable State Manager は特定の時点でファジー (簡易) チェックポイントを作成し、トランザクション ログからの負荷を軽減し、復元時間を早めます。  `BackupAsync` が呼び出されると、最新のチェックポイント ファイルをローカル バックアップ フォルダーにコピーするように、Reliable State Manager がすべての Reliable Object に指示します。  次に、Reliable State Manager は "開始ポインター" から最新のログ レコードまですべてのログ レコードをバックアップ フォルダーにコピーします。  最新のログ レコードまでのすべてログ レコードがバックアップに含まれており、Reliable State Manager が先書きログを維持するため、コミットされた (`CommitAsync` が正常に制御を返した) すべてのトランザクションがバックアップに含まれていることが Reliable State Manager によって保証されます。
 
 `BackupAsync` が呼び出された後にコミットするトランザクションは、バックアップに含まれていることもあれば、含まれていないこともあります。  プラットフォームによりローカルのバックアップ フォルダーにデータが入力されると (すなわち、ローカルのバックアップがランタイムにより完了すると)、サービスのバックアップ コールバックが呼び出されます。  このコールバックは、Azure Storage などの外部の場所にバックアップ フォルダーを移動する役割を担います。

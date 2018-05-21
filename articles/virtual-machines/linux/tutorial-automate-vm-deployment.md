@@ -1,13 +1,13 @@
 ---
-title: "Azure で Linux VM を初回起動するときにカスタマイズする | Microsoft Docs"
-description: "Azure で Linux VM を 最初に起動するときに cloud-init と Key Vault を使用してカスタマイズする方法を説明します。"
+title: チュートリアル - Azure で cloud-init を使用して Linux VM をカスタマイズする | Microsoft Docs
+description: このチュートリアルでは、Azure での Linux VM の初回の起動時に cloud-init と Key Vault を使用してそれらをカスタマイズする方法を説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 79d87b5d332597f2c0faf3c585eee49aba3e03bc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e3c1c0552b379ff99f27053d8f0ca8a76766a016
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Linux 仮想マシンを初回起動時にカスタマイズする方法
+# <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
+
 前のチュートリアルでは、仮想マシン (VM) に SSH 接続して NGINX を手動でインストールする方法について説明しました。 VM を迅速かつ一貫した方法で作成するには、一般的に、何らかの形で自動化することが必要です。 VM を初回起動時にカスタマイズする一般的なアプローチには、[cloud-init](https://cloudinit.readthedocs.io) を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -32,12 +33,9 @@ ms.lasthandoff: 02/09/2018
 > * Key Vault を使用して証明書を安全に格納する
 > * cloud-init を使用して NGINX のセキュリティで保護されたデプロイを自動化する
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。  
-
-
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="cloud-init-overview"></a>cloud-init の概要
 [cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
@@ -48,11 +46,11 @@ Microsoft ではパートナーと協力して、パートナーから Azure に
 
 | エイリアス | 発行元 | プラン | SKU | バージョン |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |latest |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
-| CoreOS |CoreOS |CoreOS |安定版 |latest |
-| | OpenLogic | CentOS | 7-CI | latest |
-| | RedHat | RHEL | 7-RAW-CI | latest
+| UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |最新 |
+| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |最新 |
+| CoreOS |CoreOS |CoreOS |安定版 |最新 |
+| | OpenLogic | CentOS | 7-CI | 最新 |
+| | RedHat | RHEL | 7-RAW-CI | 最新
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
