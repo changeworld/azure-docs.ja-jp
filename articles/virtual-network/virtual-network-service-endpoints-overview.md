@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2018
+ms.date: 05/04/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: fc95077ada75ef5447e80a5252bebe3ed95dc167
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -27,14 +27,12 @@ ms.lasthandoff: 04/28/2018
 
 この機能は、次の Azure サービスとリージョンで提供されています。
 
-- **Azure Storage**: 一般公開。 Azure パブリック クラウドと Azure Government のすべてのリージョン。
-- **Azure SQL Database**: 一般公開 (全 Azure リージョン)。 
-- **Azure SQL Data Warehouse**: プレビュー。 Azure パブリック クラウド内のすべてのリージョン。
+- **Azure Storage**: 一般公開 (全 Azure リージョン)
+- **Azure SQL Database**: 一般公開 (全 Azure リージョン)
+- **Azure Cosmos DB**: 一般公開 (全 Azure パブリック クラウド リージョン) 
+- **Azure SQL Data Warehouse**: プレビュー (全 Azure パブリック クラウド リージョン)
 
-このプレビュー機能に関する最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
-
->[!NOTE]
-> プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -48,9 +46,9 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="limitations"></a>制限事項
 
-- この機能は、Azure Resource Manager デプロイメント モデルを使ってデプロイされた仮想ネットワークでのみ使用できます。
+- この機能は、Azure Resource Manager デプロイ モデルを使ってデプロイされた仮想ネットワークでのみ使用できます。
 - エンドポイントは、Azure 仮想ネットワークに構成されたサブネット上で有効になります。 エンドポイントは、お客様の構内から Azure サービスへのトラフィックに対しては使用できません。 詳細については、「[オンプレミスから Azure サービスへのアクセスの保護](#securing-azure-services-to-virtual-networks)」をご覧ください。
-- サービス エンドポイントは、仮想ネットワークのリージョン内の Azure サービス トラフィックにのみ適用されます。 Azure Storage で RA-GRS および GRS のトラフィックをサポートするには、仮想ネットワークのデプロイ先のリージョンとペアになっているリージョンを含めるようにエンドポイントも拡張します。 [Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)の詳細をご覧ください。
+- Azure SQL の場合、サービス エンドポイントは、仮想ネットワークのリージョン内の Azure サービス トラフィックにのみ適用されます。 Azure Storage の場合、RA-GRS および GRS のトラフィックをサポートするには、仮想ネットワークのデプロイ先のリージョンとペアになっているリージョンを含めるようにエンドポイントも拡張します。 [Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)の詳細をご覧ください。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure サービスへのアクセスを仮想ネットワークに限定する
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 04/28/2018
 
 - サービス エンドポイントは仮想ネットワーク内のサブネット上で構成されます。 エンドポイントは、そのサブネット内で実行されているどの種類のコンピューティング インスタンスでも動作します。
 - サブネット上のサポートされているすべての Azure サービス (Azure Storage や Azure SQL Database など) に対して複数のサービス エンドポイントを構成できます。
-- 仮想ネットワークは、Azure サービス リソースと同じリージョンにある必要があります。 GRS および RA-GRS Azure Storage アカウントを使用している場合、プライマリ アカウントは仮想ネットワークと同じリージョンにある必要があります。
+- Azure SQL の場合、仮想ネットワークは、Azure サービス リソースと同じリージョンにある必要があります。 GRS および RA-GRS Azure Storage アカウントを使用している場合、プライマリ アカウントは仮想ネットワークと同じリージョンにある必要があります。 その他のすべてのサービスでは、任意のリージョンで、仮想ネットワークに対する Azure サービス リソースをセキュリティで保護できます。 
 - エンドポイントが構成されている仮想ネットワークのサブスクリプションは、Azure サービス リソースのサブスクリプションと同じでも違っていてもかまいません。 エンドポイントを設定して Azure サービスのセキュリティを保護するために必要なアクセス許可の詳細については、[プロビジョニング](#Provisioning)に関するページを参照してください。
 - サポートされているサービスについては、サービス エンドポイントを使って新規または既存のリソースへのアクセスを仮想ネットワークに限定することができます。
 
@@ -76,7 +74,7 @@ ms.lasthandoff: 04/28/2018
 
 - サービス エンドポイントを有効にすると、サブネット内の仮想マシンの発信元 IP アドレスは、そのサブネットからサービスへの通信時に、パブリック IPv4 アドレスからプライベート IPv4 アドレスを使用するように切り替わります。 この切り替え中に、サービスに接続中の既存の TCP 接続はすべて閉じられます。 サービスに接続するサブネットのサービス エンドポイントを有効または無効にするときは、重要なタスクが実行されていないことを確認してください。 また、この IP アドレスの切り替えの後に、ご利用のアプリケーションが自動的に Azure サービスに接続できることを確認してください。
 
-  IP アドレスの切り替えが影響するのは、ご利用の仮想ネットワークからのサービス トラフィックのみです。 ご利用の仮想マシンに割り当てられたパブリックIPv4アドレスとの間でやりとりされる他のトラフィックへの影響はありません。 Azure サービスについては、Azure のパブリック IP アドレスを使用する既存のファイアウォール ルールがある場合、これらのルールは仮想ネットワークのプライベート アドレスへの切り替え時に停止します。
+  IP アドレスの切り替えが影響するのは、ご利用の仮想ネットワークからのサービス トラフィックのみです。 ご利用の仮想マシンに割り当てられたパブリック IPv4 アドレスとの間でやりとりされる他のトラフィックへの影響はありません。 Azure サービスについては、Azure のパブリック IP アドレスを使用する既存のファイアウォール ルールがある場合、これらのルールは仮想ネットワークのプライベート アドレスへの切り替え時に停止します。
 - サービス エンドポイントを使用しても、Azure サービスの DNS エントリは変わらず、引き続き Azure サービスに割り当てられているパブリック IP アドレスに解決されます。
 - ネットワーク セキュリティ グループ (NSG) でのサービス エンドポイントの使用:
   - 既定では、NSG は送信インターネット トラフィックを許可するので、VNet から Azure サービスへのトラフィックも許可します。 これは、サービス エンドポイントを使用しても変わりません。 
@@ -93,7 +91,7 @@ ms.lasthandoff: 04/28/2018
 
 特定のサービスに対してサービス エンドポイントを構成したら、そのサービス エンドポイントのルートが有効であることを次の方法で検証します。 
  
-- サービスの診断で任意のサービス要求の発信元 IP アドレスを検証します。 サービス エンドポイントを使った新しい要求では、ご利用の仮想ネットワークから要求元のクライアントに割り当てられた仮想ネットワークのプライベートIPアドレスとして、要求の発信元 IP アドレスが表示されます。 エンドポイントを使用しない場合、このアドレスは Azure のパブリック IP アドレスになります。
+- サービスの診断で任意のサービス要求の発信元 IP アドレスを検証します。 サービス エンドポイントを使った新しい要求では、ご利用の仮想ネットワークから要求元のクライアントに割り当てられた仮想ネットワークのプライベート IP アドレスとして、要求の発信元 IP アドレスが表示されます。 エンドポイントを使用しない場合、このアドレスは Azure のパブリック IP アドレスになります。
 - サブネット内の任意のネットワーク インターフェイス上に有効なルートを表示する。 サービスへのルートでは次のことを確認できます。
   - 各サービスのアドレス プレフィックス範囲へのより詳細な既定のルート表示。
   - *VirtualNetworkServiceEndpoint* に存在する nextHopType
@@ -112,7 +110,7 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="pricing-and-limits"></a>料金と制限
 
-サービス エンドポイントの使用に追加料金はかかりません。 現時点では、Azure サービス (Azure Storage、Azure SQL Database) の現在の価格設定モデルが適用されます。
+サービス エンドポイントの使用に追加料金はかかりません。 現時点では、Azure サービス (Azure Storage、Azure SQL Database など) の現在の価格設定モデルが適用されます。
 
 仮想ネットワーク内のサービス エンドポイントの合計数に制限はありません。
 

@@ -10,6 +10,7 @@
 ## [Azure AD Connect Health エージェントをインストールする](active-directory-aadconnect-health-agent-install.md)
 ## [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 ## [同期中のエラー](../active-directory-aadconnect-troubleshoot-sync-errors.md)
+## [重複した属性の同期に関するエラーを診断する](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 # トラブルシューティング
 ## [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
