@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Adobe Sign の統合 | Microsoft Docs"
-description: "Azure Active Directory と Adobe Sign の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Adobe Sign の統合 | Microsoft Docs'
+description: Azure Active Directory と Adobe Sign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f68701cc345ee1bb04cde265ac4e2d6a402da557
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル: Azure Active Directory と Adobe Sign の統合
 
@@ -63,11 +64,11 @@ Azure AD への Adobe Sign の統合を構成するには、ギャラリーか�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. [検索] ボックスに、「**Adobe Sign**」と入力します。
 
@@ -86,11 +87,11 @@ Adobe Sign で、Azure AD の **[ユーザー名]** の値を **[Username]** の
 
 Adobe Sign で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Adobe Sign テスト ユーザーの作成](#creating-an-adobe-sign-test-user)** - Adobe Sign で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +101,17 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Adobe Sign** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. **[Adobe Sign のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.echosign.com/` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.echosign.com/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<companyname>.echosign.com` の形式で URL を入力します。
 
@@ -119,50 +120,41 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_400.png)
 
 6. **[Adobe Sign Configuration (Adobe Sign 構成)]** セクションで、**[Configure Adobe Sign (Adobe Sign を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
-
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、管理者として Adobe Sign 企業サイトにログインします。
 
-8. 上部のメニューで、**[アカウント]** をクリックしてから、左側のナビゲーション ウィンドウの **[アカウント設定]** 内にある **[SAML 設定]** をクリックします。
+8. SAML メニューで、**[アカウント設定]** をクリックし、**[SAML 設定]** をクリックします。
    
-   ![Account](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
+    ![Account](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
 
-9. [SAML 設定] セクションで、次の手順に従います。
+9. **[SAML 設定]** セクションで、次の手順に従います。
+  
+    ![SAML Settings](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML Settings")
    
-   ![SAML Settings](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML Settings")
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML モード]** として **[SAML Mandatory]** を選択します。
    
-   a. **[SAML モード]** として **[SAML Mandatory]** を選択します。
+    b. **[Adobe Sign 資格情報を使用して、Adobe Sign アカウント管理者のログインを許可する]** を選択します。
    
-   b. **[EchoSign 資格情報を使用して、EchoSign アカウント管理者のログインを許可する]** を選択します。
-   
-   c. **[ユーザーの作成]** として、**[SAML を使用して認証されたユーザーを自動的に追加]** を選択します。
+    c. **[ユーザーの作成]** として、**[SAML を使用して認証されたユーザーを自動的に追加]** を選択します。
 
-10. 次に、以下の手順に進みます。
-
-       ![SAML Settings](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "SAML Settings")
-
-    a. Azure Portal からコピーした **SAML エンティティ ID** を **[IdP Entity ID]\(IdP のエンティティ ID\)** ボックスに貼り付けます。
+    d. Azure Portal からコピーした **SAML エンティティ ID** を **[Entity ID/Issuer URL]\(エンティティ ID/発行者の URL\)** ボックスに貼り付けます。
     
-    b. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[IdP Login URL]\(IdP ログイン URL\)** ボックスに貼り付けます。
+    e. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[Login URL/SSO Endpoint]\(ログイン URL/SSO エンドポイント\)** テキストボックスに貼り付けます。
    
-    c. Azure Portal からコピーした**サインアウト URL** を **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに貼り付けます。
+    f. Azure Portal からコピーした **サインアウト URL** を **[Logout URL/SLO Endpoint]\(ログアウト URL/SSO エンドポイント\)** テキストボックスに貼り付けます。
 
-    d. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[IdP Certificate]** (IdP 証明書) ボックスに貼り付けます。
+    g. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[IdP Certificate]** (IdP 証明書) ボックスに貼り付けます。
 
-    e. **[変更を保存]**をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+    h. **[変更を保存]** をクリックします。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -187,7 +179,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adobe-echosign-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -208,15 +200,15 @@ Azure AD ユーザーが Adobe Sign にログインできるようにするに�
 
 2. 上部のメニューで、**[アカウント]** をクリックしてから、左側のナビゲーション ウィンドウの **[ユーザーとグループ]** をクリックし、**[新しいユーザーの作成]** をクリックします。
    
-   ![Account](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "Account")
+    ![Account](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "Account")
    
 3. **[新しいユーザーの作成]** セクションで、次の手順に従います。
    
-   ![Create User](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "Create User")
+    ![Create User](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "Create User")
    
-   a. 関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[メール アドレス]**、**[名]**、**[姓]** を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[メール アドレス]**、**[名]**、**[姓]** を入力します。
    
-   b. **[Create User]**をクリックします。
+    b. **[Create User]** をクリックします。
 
 >[!NOTE]
 >Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 
@@ -233,9 +225,9 @@ Azure AD ユーザーが Adobe Sign にログインできるようにするに�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Adobe Sign]**を選択します。
+2. アプリケーションの一覧で **[Adobe Sign]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

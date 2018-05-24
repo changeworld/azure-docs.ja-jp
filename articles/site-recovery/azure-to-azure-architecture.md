@@ -6,14 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f6ade346305ee6f18fb41b93bc8a1dc8543fcdb7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209503"
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure から Azure へのレプリケーション アーキテクチャ
 
@@ -46,7 +47,7 @@ Azure VM レプリケーションを有効にすると、ソース リージョ�
 
 **リソース** | **詳細**
 --- | ---
-**ターゲット リソース グループ** | フェールオーバー後、レプリケートされた VM が所属するリソース グループです。
+**ターゲット リソース グループ** | フェールオーバー後、レプリケートされた VM が所属するリソース グループです。 このリソース グループの場所は、ソース仮想マシンがホストされている Azure リージョンを除き、どの Azure リージョンでも構いません。
 **ターゲット仮想ネットワーク** | フェールオーバー後、レプリケートされた VM が配置される仮想ネットワークです。 ソース仮想ネットワークとターゲット仮想ネットワークの間にネットワーク マッピングが作成されます (または、その逆)。
 **キャッシュ ストレージ アカウント** | ソース VM の変更は、ターゲット ストレージ アカウントにレプリケートされる前に、追跡され、ソースの場所のキャッシュ ストレージ アカウントに送信されます。 この手順により、VM で実行されている運用アプリケーションへの影響を最小限に抑えられます。
 **ターゲット ストレージ アカウント (ソース VM では、管理ディスクが使用されません)**  | データのレプリケート先となるターゲットの場所のストレージ アカウント。

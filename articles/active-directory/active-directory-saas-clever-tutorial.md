@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b7529b0942cd86b0d9e657d8d0f61313aa7f0a66
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>チュートリアル: Azure Active Directory と Clever の統合
 
@@ -108,14 +109,14 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Clever のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-clever-tutorial/tutorial_clever_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://clever.com/in/<companyname>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://clever.com/in/<companyname>` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://clever.com/<companyname>` の形式で URL を入力します。
+    b. **[識別子]** ボックスに次の URL を入力します。`https://clever.com/oauth/saml/metadata.xml`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。
 
-4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
     
     ![[Configure Single Sign-On]](./media/active-directory-saas-clever-tutorial/tutorial_metadataurl.png)
 
@@ -129,11 +130,12 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
     
     | 属性名  | 属性値 |
     | --------------- | -------------------- |
-    | clever.student.credentials.district\_ユーザー名  | user.userprincipalname |
+    | clever.teacher.credentials.district_username|user.userprincipalname|
+    | clever.student.credentials.district_username| user.userprincipalname |
     | Firstname  | User.givenname |
     | Lastname  | User.surname |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-clever-tutorial/tutorial_attribute_04.png)
     
@@ -157,19 +159,22 @@ Clever で Azure AD のシングル サインオンを構成してテストす�
 
     ![Instant Login](./media/active-directory-saas-clever-tutorial/ic798984.png "Instant Login")
 
+    > [!NOTE]
+    > シングル サインオンをテストする前に、[Clever Client サポート チーム](https://clever.com/about/contact/)に連絡して、バック エンドで Office 365 SSO を有効にする必要があります。
+
 10. **[インスタント ログイン]** ページで、次の手順を実行します。
-      
+    
       ![Instant Login](./media/active-directory-saas-clever-tutorial/ic798985.png "Instant Login")
-      
-      a. **ログイン URL**を入力します。
-      
+    
+      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **ログイン URL**を入力します。
+    
       >[!NOTE]
       >**ログイン URL** はカスタム値です。 この値を取得するには、[Clever クライアント サポート チーム](https://clever.com/about/contact/)にお問い合わせください。
-      
+    
       b. **[ID システム]** として、**[ADFS]** を選択します。
 
       c. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付けます。
-      
+    
       d. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

@@ -1,26 +1,20 @@
 ---
-title: Porlicy のサンプル テンプレート | Microsoft Docs
+title: ポリシー テンプレートのサンプル
 description: Azure Policy の JSON サンプル
 services: azure-policy
-documentationcenter: ''
 author: DCtheGeek
 manager: carmonm
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: na
-ms.topic: samples
-ms.tgt_pltfrm: ''
-ms.workload: ''
+ms.topic: sample
 ms.date: 01/17/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 0956f42812307f88e37ef12078a86eb85f407ce6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4b9096c1fb0d9ee74849e259a6e0af2486c5d29b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195126"
 ---
 # <a name="templates-for-azure-policy"></a>Azure Policy のテンプレート
 
@@ -79,6 +73,9 @@ ms.lasthandoff: 04/28/2018
 | [許可されるリソースの種類](scripts/allowed-res-types.md) | 必ず承認されたリソースの種類のみがデプロイされるようにします。 許可されているリソースの種類の配列を指定します。  |
 | [許可されるストレージ アカウントの SKU](scripts/allowed-stor-acct-skus.md) | ストレージ アカウントが適切な SKU を使用する必要があります。 承認された SKU の配列を指定します。 |
 | [タグとその既定値の適用](scripts/apply-tag-def-val.md) | 指定されたタグがない場合、そのタグ名と値を付加します。 適用するタグ名と値を指定します。  |
+| [SQL Database の暗号化の監査](scripts/sql-database-encryption-audit.md) | SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。 |
+| [SQL Server の監査設定の監査](scripts/sql-server-audit.md) | 監査設定が有効になっているかどうかに基づいて SQL Server を監査します。 |
+| [Data Lake Store での暗号化の適用](scripts/enforce-datalakestore-encryption.md) | 暗号化が有効になっていない Data Lake Store アカウントを拒否します。 |
 | [タグとその値を強制](scripts/enforce-tag-val.md) | 指定したタグの名前と値が必要です。 強制的に適用するタグ名と値を指定します。  |
 | [許可されないリソースの種類](scripts/not-allowed-res-type.md) | 指定されたリソースの種類のデプロイを禁止します。 ブロックするリソースの種類の配列を指定します。  |
 | [SQL Server バージョン 12.0 が必要](scripts/req-sql-12.md) | SQL Server でバージョン 12.0 を使用する必要があります。  |

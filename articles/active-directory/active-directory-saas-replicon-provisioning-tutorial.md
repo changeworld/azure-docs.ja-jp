@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: v-ant
-ms.openlocfilehash: 8d612012505ea43a3635650c6a38fe993b8e57f6
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b6f536ba1711076eab0eb9dcbea7d357e9cebf3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34345597"
 ---
 # <a name="tutorial-configure-replicon-for-automatic-user-provisioning"></a>チュートリアル: Replicon を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -103,13 +104,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Replicon のプロビジョニング](./media/active-directory-saas-replicon-provisioning-tutorial/Replicon1.png)
 
-5. **[管理者資格情報]** セクションに、Replicon アカウントの **[管理ユーザー名]**、**[管理パスワード]**、**[会社 ID]**、 **[ドメイン]**を入力します。 これらの値の例を次に示します。
+5. **[管理者資格情報]** セクションに、Replicon アカウントの **[管理ユーザー名]**、**[管理パスワード]**、**[会社 ID]**、 **[ドメイン]** を入力します。 これらの値の例を次に示します。
 
     *   **[管理ユーザー名]** フィールドには、Replicon テナントの管理者アカウントのユーザー名を入力します。 例: contosoadmin。
 
     *   **[管理パスワード]** フィールドに、管理ユーザー名に対応するパスワードを入力します。
 
-    *   **[会社 ID]**フィールドには、Replicon テナントの会社 ID を入力します。 例: 下記のログインに基づく会社 ID は、Contoso です。
+    *   **[会社 ID]** フィールドには、Replicon テナントの会社 ID を入力します。 例: 下記のログインに基づく会社 ID は、Contoso です。
 
     ![Replicon のログイン](./media/active-directory-saas-replicon-provisioning-tutorial/RepliconLogin.png)
 
@@ -158,7 +159,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次の手順
 

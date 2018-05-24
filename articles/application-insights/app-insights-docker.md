@@ -1,8 +1,8 @@
 ---
-title: "Application Insights で Docker アプリケーションを監視する | Microsoft Docs"
-description: "Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。"
+title: Application Insights で Docker アプリケーションを監視する | Microsoft Docs
+description: Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68f408f18b767ed9c5aba8fed8c97f021cdeb123
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153695"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Application Insights で Docker アプリケーションを監視する
-[Docker](https://www.docker.com/) コンテナーから取得したライフサイクル イベントとパフォーマンス カウンターを Application Insights でグラフ化できます。 [Application Insights](app-insights-overview.md) イメージをホストのコンテナーにインストールすると、ホストとその他のイメージのパフォーマンス カウンターが表示されます。
+[Docker](https://www.docker.com/) コンテナーから取得したライフサイクル イベントとパフォーマンス カウンターを Application Insights でグラフ化できます。 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) イメージをホストのコンテナーにインストールすると、ホストとその他のイメージのパフォーマンス カウンターが表示されます。
 
 Docker で、すべての依存関係を備えた軽量コンテナーにアプリを配布します。 これらは、Docker エンジンを実行しているすべてのホスト コンピューターで実行します。
 
@@ -43,6 +44,10 @@ Docker ホストで [Application Insights イメージ](https://hub.docker.com/r
 2. Docker タイルを追加します。**[タイルの追加]** を選択し、ギャラリーから Docker タイルをドラッグした後、**[完了]** をクリックします。 
    
     ![例](./media/app-insights-docker/03.png)
+
+> [!NOTE]
+> Application Insights の概要ウィンドウは現在ロックされていて、ギャラリーからのタイルを追加することはできません。 Azure ダッシュボードのインターフェイスを使用して上記のように Docker タイルを追加することができます。
+
 3. **[要点]** ドロップダウンをクリックし、インストルメンテーション キーをコピーします。 これを使用して SDK にテレメトリの送信先を指示します。
 
     ![例](./media/app-insights-docker/02-props.png)
@@ -124,7 +129,7 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Java 向けの Application Insights](app-insights-java-get-started.md)
 * [Node.js 向けの Application Insights](app-insights-nodejs.md)

@@ -1,25 +1,26 @@
 ---
-title: "Azure Stack 統合システムの一般的なデータ センター統合に関する考慮事項 | Microsoft Docs"
-description: "マルチノードの Azure Stack とデータセンターの統合を今すぐ計画し、準備するためにできることを説明します。"
+title: Azure Stack 統合システムの一般的なデータ センター統合に関する考慮事項 | Microsoft Docs
+description: マルチノードの Azure Stack とデータセンターの統合を今すぐ計画し、準備するためにできることを説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32769694"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムのデータ センター統合に関する考慮事項
 Azure Stack 統合システムに関心がある場合は、デプロイや、このシステムがデータセンターにどのように適合するかに関する計画のいくつかの主な考慮事項を理解する必要があります。 この記事では、Azure Stack マルチノード システムに関するインフラストラクチャの重要な決定を行うときに役立つこれらの考慮事項の概要について説明します。 これらの考慮事項を理解していると、OEM ハードウェア ベンダーと協力して Azure Stack をデータセンターにデプロイする場合に役立ちます。  
@@ -50,7 +51,9 @@ Azure Stack は、アクセス許可とネットワークの両方の観点か�
 ## <a name="identity-considerations"></a>ID に関する考慮事項
 
 ### <a name="choose-identity-provider"></a>ID プロバイダーの選択
-Azure Stack のデプロイに Azure AD と AD FS のどちらの ID プロバイダーを使用するかを検討する必要があります。 デプロイ後に ID プロバイダーを切り替えるには、システム全体を再デプロイする必要があります。
+Azure Stack のデプロイに Azure AD と AD FS のどちらの ID プロバイダーを使用するかを検討する必要があります。 デプロイ後に ID プロバイダーを切り替えるには、システム全体を再デプロイする必要があります。 Azure AD アカウントを持っておらず、クラウド サービス プロバイダーから提供されたアカウントを使用している場合、プロバイダーを切り替えて別の Azure AD アカウントを使用するには、ソリューション プロバイダーに連絡し、有料でソリューションの再展開を依頼する必要があります。
+
+
 
 ID プロバイダーの選択は、テナントの仮想マシン、ID システム、使用するアカウント、Active Directory ドメインに参加できるかどうかなどには関係しません。この選択とは独立しています。
 

@@ -1,19 +1,20 @@
 ---
-title: "Azure DC/OS クラスターでの Vamp によるカナリア リリース"
-description: "Vamp を使用してサービスをカナリア リリースし、Azure Container Service DC/OS クラスターでスマート トラフィック フィルタリングを適用する方法を説明します。"
+title: Azure DC/OS クラスターでの Vamp によるカナリア リリース
+description: Vamp を使用してサービスをカナリア リリースし、Azure Container Service DC/OS クラスターでスマート トラフィック フィルタリングを適用する方法を説明します。
 services: container-service
 author: gggina
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e23b316311ff88d1587da8d5ef777b91bfe0a2e9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32177803"
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 12/06/2017
 
 ## <a name="set-up-vamp"></a>Vamp の設定
 
-DC/OS クラスターが実行されたので、DC/OS UI (http://localhost:80) から Vamp をインストールできます。 
+DC/OS クラスターが実行されたので、DC/OS UI (http://localhost:80)) から Vamp をインストールできます。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
@@ -90,7 +91,7 @@ Vamp では、メトリックの収集と集計に Elasticsearch が必要です
   ```
   
 
-3. **[デプロイ]**をクリックします。
+3. **[デプロイ]** をクリックします。
 
   DC/OS により、Elasticsearch コンテナーがデプロイされます。 進捗状況は **[サービス]** ページで追跡できます。  
 
@@ -132,7 +133,7 @@ Vamp が稼働状態になったので、ブループリントからサービス
 
 1. **[デプロイ]** に移動します。
 
-2. **[追加]**をクリックします。
+2. **[追加]** をクリックします。
 
 3. 次のブループリント YAML を貼り付けます。 このブループリントには、サービス バリアントが 1 つのみの 1 つのクラスターが含まれます。これは、後の手順で変更します。
 
@@ -286,7 +287,7 @@ Vamp は**条件**を使用して、ゲートウェイのルート間のトラ�
 また、次のような Vamp の強力な機能の一部を紹介しました。新しいサービス バリアントを実行中のデプロイにマージし、それを段階的に導入した後、トラフィックをフィルター処理して既知の非互換性を解決しました。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Vamp アクションの管理について詳しくは、「[Vamp REST API](http://vamp.io/documentation/api/api-reference/)」を参照してください。
 

@@ -5,25 +5,26 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 30a7f78e7bf13e6e6197e95b266dfd0d6b8f83c0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b1d4cffc3571297f2b74674156cb7f3bad7c2c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149896"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Azure ポータルでモデルを作成する
 
 Azure ポータルの Azure Analysis Services Web デザイナー (プレビュー) 機能は、表形式モデルの作成と編集、およびブラウザーでのモデル データのクエリを迅速かつ簡単に実行する方法を提供します。 
 
-この Web デザイナーは、**プレビュー**段階であることに留意してください。 新しい機能は常に追加されていますが、プレビュー段階で利用できる機能は限られています。 高度なモデルの開発とテストを実行する場合は、Visual Studio (SSDT) と SQL Server Management Studio (SSMS) を使用することが最善の方法です。
+この Web デザイナーは、**プレビュー**段階であることに留意してください。 機能が制限されます。 高度なモデルの開発とテストを実行する場合は、Visual Studio (SSDT) と SQL Server Management Studio (SSMS) を使用することが最善の方法です。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 - Standard または Developer レベルの Azure Analysis Services サーバー。 Web デザイナーを使用して作成される新しいモデルは、これらのレベルでのみサポートされる DirectQuery です。
-- データソースとしての Azure SQL Database、Azure SQL Data Warehouse、または Power BI Desktop (.pbix) ファイル。 Power BI Desktop ファイルから作成される新しいモデルは、Azure SQL Database、Azure SQL Data Warehouse、Oracle、および Teradata データ ソースをサポートします。
+- データソースとしての Azure SQL Database、Azure SQL Data Warehouse、または Power BI Desktop (.pbix) ファイル。 Power BI Desktop ファイルから作成される新しいモデルは、Azure SQL Database および Azure SQL Data Warehouse をサポートします。
 - Azure SQL Database または Azure SQL Data Warehouse データ ソースに接続するための SQL Server アカウントとパスワード。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。

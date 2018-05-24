@@ -6,13 +6,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/16/2018
 ms.author: asgang
-ms.openlocfilehash: e5947242295a9c57b1c73e202c061d222cd0842f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5e1361e681c17d4106b9c79fee56efa06be2a745
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209459"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Azure 仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -42,13 +43,13 @@ ms.lasthandoff: 03/28/2018
 
     ![レプリケーションを有効にする](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-3. **[仮想マシン] > [仮想マシンの選択]** で、レプリケートする各 VM をクリックして選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]**をクリックします
+3. **[仮想マシン] > [仮想マシンの選択]** で、レプリケートする各 VM をクリックして選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします
     ![Enable replication](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. **[設定]** では、オプションで、以下のターゲット サイトの設定を構成できます。
 
     - **ターゲットの場所**: ソース仮想マシンのデータがレプリケートされる場所。 選択したマシンの場所に応じて、適切なターゲット リージョンの一覧が表示されます。 ターゲットの場所は、Recovery Services コンテナーと同じ場所にすることをお勧めします。
-    - **ターゲット リソース グループ**: レプリケートされたすべての仮想マシンが属するリソース グループ。 既定では、Azure Site Recovery によって、名前に "asr" サフィックスが付いた新しいリソース グループがターゲット リージョンに作成されます。 Azure Site Recovery によって作成されるリソース グループが既に存在する場合は、そのグループが再利用されます。 以下のセクションで示すように、それをカスタマイズすることもできます。
+    - **ターゲット リソース グループ**: レプリケートされたすべての仮想マシンが属するリソース グループ。 既定では、Azure Site Recovery によって、名前に "asr" サフィックスが付いた新しいリソース グループがターゲット リージョンに作成されます。 Azure Site Recovery によって作成されるリソース グループが既に存在する場合は、そのグループが再利用されます。 以下のセクションで示すように、それをカスタマイズすることもできます。 ターゲット リソース グループの場所は、ソース仮想マシンがホストされているリージョンを除き、どの Azure リージョンでも構いません。
     - **ターゲット仮想ネットワーク**: 既定では、名前に "asr" サフィックスが付いた新しい仮想ネットワークが、Site Recovery によってターゲット リージョンに作成されます。 これはソース ネットワークにマップされ、今後の保護で使用されます。 ネットワーク マッピングの詳細については、[こちら](site-recovery-network-mapping-azure-to-azure.md)を参照してください。
     - **ターゲット ストレージ アカウント (ソース VM で管理ディスクが使用されていない場合)**: 既定では、Site Recovery によって、ソース VM ストレージと同じ構成で新しいターゲット ストレージ アカウントが作成されます。 ストレージ アカウントが既に存在する場合は、再利用されます。
     - **レプリカ管理ディスク (ソース VM で管理ディスクが使用されている場合)**: Site Recovery によってターゲット リージョンに新しいレプリカ管理ディスクが作成され、ソース VM の管理ディスクと同じストレージ タイプ (標準またはプレミアム) でソース VM の管理ディスクがミラーリングされます。

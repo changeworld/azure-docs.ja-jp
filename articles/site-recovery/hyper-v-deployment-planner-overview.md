@@ -1,6 +1,6 @@
 ---
-title: "Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "これは、Hyper-V から Azure へのシナリオに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。"
+title: Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
+description: これは、Hyper-V から Azure へのシナリオに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -9,11 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: dc504ee9def6b500eee640521b57dc48dac9cca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 17ff3ece76f854cd539172019f8d154742873bb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187309"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Hyper-V から Azure 用の Site Recovery Deployment Planner
 
@@ -116,9 +117,9 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 3.  zip フォルダーを展開します。
 このフォルダーには、複数のファイルとサブフォルダーが格納されています。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
 
-例: .zip ファイルを E:\ ドライブにコピーして展開します。 E:\ASR Deployment Planner_v2.1.zip
+例: .zip ファイルを E:\ ドライブにコピーして展開します。 E:\ASR Deployment Planner_v2.2.zip
 
-E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>最新バージョンの Deployment Planner への更新
 以前のバージョンの Deployment Planner をお持ちの場合、次のいずれかを行ってください。
@@ -133,7 +134,7 @@ E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
   >Deployment Planner の更新に使われる .zip ファイルには、その都度、累積的な更新が格納されています。 以前のフォルダーに最新のファイルをコピーする必要はありません。 新しいフォルダーを作成して使用できます。
 
 ## <a name="version-history"></a>バージョン履歴
-ASR Deployment Planner ツールの最新バージョンは 2.1 です。
+ASR Deployment Planner ツールの最新バージョンは 2.2 です。
 各更新で追加された修正については、「[ASR Deployment Planner Version History (ASR Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
 
 

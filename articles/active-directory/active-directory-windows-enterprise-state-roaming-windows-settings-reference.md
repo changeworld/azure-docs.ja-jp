@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 21d21c945b622c1695d8856c4baff02c098218cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 741b76935b5a6d9b2a6869ef57caa0ac0dc6351a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159079"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
@@ -29,10 +30,10 @@ ms.lasthandoff: 12/11/2017
 
 | アカウントの種類と操作 | デスクトップ | モバイル |
 | --- | --- | --- |
-| Azure Active Directory: 同期 |はい |なし |
-| Azure Active Directory: バックアップ/復元 |なし |なし |
-| Microsoft アカウント: 同期 |はい |はい |
-| Microsoft アカウント: バックアップ/復元 |なし |はい |
+| Azure Active Directory: 同期 |[はい] |いいえ  |
+| Azure Active Directory: バックアップ/復元 |いいえ  |いいえ  |
+| Microsoft アカウント: 同期 |[はい] |[はい] |
+| Microsoft アカウント: バックアップ/復元 |いいえ  |[はい] |
 
 ## <a name="what-is-backup"></a>バックアップとは
 一般に Windows の設定は既定で同期されますが、デバイスにインストールされているアプリケーションの一覧など、バックアップにのみ対応している設定もあります。 バックアップはモバイル デバイス向けのみで、Enterprise State Roaming ユーザーは現在使用できません。 バックアップには Microsoft アカウントが使用され、OneDrive に設定とアプリケーション データが保存されます。 ユーザーが設定アプリを使ってデバイス上の同期を無効にした場合、通常であれば同期されるアプリケーション データがバックアップのみになります。 バックアップ データは、新しいデバイスの初回実行時に復元操作を通じてのみアクセスできます。 バックアップは、デバイスの設定で無効にできるほか、ユーザーの OneDrive アカウントを通じて管理したり削除したりすることができます。
@@ -47,11 +48,15 @@ Windows 10 デバイス上の設定に対する同期操作は、エンド ユ�
 * コンピューターの簡単操作: ナレーター、スクリーン キーボード、拡大鏡 
 * その他の Windows 設定: 「Windows 設定の詳細」を参照
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 Microsoft Edge ブラウザーの設定 (お気に入り、リーディング リスト) の同期は [Microsoft Edge ブラウザーの設定] メニュー オプションからエンドユーザーが行うことができます。
 
-![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-edge.png)
+
+Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer の設定グループ (お気に入り、入力された URL) の同期を、Internet Explorer の [設定] メニュー オプションを使ってエンドユーザーが有効または無効にすることができます。 
+
+![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows 設定の詳細
 以下の表で "設定" の "グループ" 列に記載した "その他" という項目は、[設定]、[アカウント]、[設定の同期]、[その他の Windows の設定] の順にアクセスして無効にできる設定を表します。 
@@ -59,7 +64,7 @@ Microsoft Edge ブラウザーの設定 (お気に入り、リーディング �
 「設定」の「グループ」列に "内部" と書かれている設定とアプリは、アプリ本体の同期機能から無効にするか、モバイル デバイス管理 (MDM) またはグループ ポリシーの設定を使いデバイス全体の同期を無効にすることによってのみ無効にすることができます。
 所属グループの記載がない設定は、ローミングも同期もされない設定です。
 
-| Settings | デスクトップ | モバイル | グループ |
+| 設定 | デスクトップ | モバイル | グループ |
 | --- | --- | --- | --- |
 | **アカウント**: アカウントの画像 |sync |○ |テーマ |
 | **アカウント**: その他のアカウントの設定 |○ |○ | |
@@ -68,7 +73,7 @@ Microsoft Edge ブラウザーの設定 (お気に入り、リーディング �
 | **アプリの一覧**: インストールされているアプリの一覧 |○ |backup |その他 |
 | **Bluetooth**: Bluetooth のすべての設定 |○ |○ | |
 | **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |○ | |
-| **資格情報**: 資格情報保管ボックス |sync |sync |パスワード |
+| **資格情報**: 資格情報保管ボックス |sync |sync |password |
 | **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |言語 |
 | **日付、時刻、地域**: 24 時間形式 |sync |○ |言語 |
 | **日付、時刻、地域**: 日付と時刻 |sync |○ |言語 |
@@ -86,21 +91,21 @@ Microsoft Edge ブラウザーの設定 (お気に入り、リーディング �
 | **デスクトップの個人設定**: タスク バーの設定 (位置、自動的に隠す、など) |sync |○ |テーマ |
 | **デスクトップの個人設定**: スタート画面のレイアウト |○ |backup | |
 | **デバイス**: 接続済みの共有プリンター |○ |○ |その他 |
-| **Microsoft Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: お気に入り |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
+| **Edge ブラウザー**: お気に入り |sync |sync |内部 |
+| **Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
+| **Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **ハイ コントラスト**: オン/オフ |sync |○ |簡単操作 |
 | **ハイ コントラスト**: テーマの設定 |sync |○ |簡単操作 |
 | **Internet Explorer**: 開いているタブ (URL とタイトル) |sync |sync |Internet Explorer |

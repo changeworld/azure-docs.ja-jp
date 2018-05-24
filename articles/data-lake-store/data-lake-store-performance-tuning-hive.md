@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store Hive のパフォーマンス チューニング ガイドライン | Microsoft Docs"
-description: "Azure Data Lake Store Hive のパフォーマンス チューニング ガイドライン"
+title: Azure Data Lake Store Hive のパフォーマンス チューニング ガイドライン | Microsoft Docs
+description: Azure Data Lake Store Hive のパフォーマンス チューニング ガイドライン
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 57bd8758c2ae24922a959c9ce3893aad90dfe7e1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168913"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>HDInsight と Azure Data Lake Store の Hive のパフォーマンス チューニング ガイダンス
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/08/2017
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* **HDInsight での Hive の実行**。  HDInsight での Hive ジョブの実行については、[HDInsight での Hive の使用に関するページ] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive) を参照してください
+* **HDInsight での Hive の実行**。  HDInsight の Hive ジョブを実行する方法については、「[Use Hive on HDInsight] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive))」 (HDInsight での Hive の使用) を参照してください。
 * **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store のパフォーマンス チューニング ガイドライン](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。
 
 ## <a name="parameters"></a>parameters
@@ -88,6 +89,6 @@ ADLS によって提供される帯域幅の限界に達すると、タスクの
 ## <a name="further-information-on-hive-tuning"></a>Hive のチューニングに関する他の情報
 
 Hive クエリをチューニングする際に役立つ、いくつかのブログを次に示します。
-* [HDInsight の Hadoop に対する Hive クエリの最適化](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [HDInsight の Hadoop に対する Hive クエリの最適化](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
 * [Hive クエリ パフォーマンスのトラブルシューティング](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 * [HDInsight での Hive の最適化に関する刺激的なトーク](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

@@ -10,11 +10,12 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4585e563d59d29ba0a026c992d277e5b0607e681
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166099"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server データベースを使用したエッジでのデータの格納
 
@@ -95,7 +96,7 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
         }
    ```
 
-3. `<docker registry address>` を、終了したチュートリアル「[Azure 関数を IoT Edge モジュールとして展開する - プレビュー](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)」で入力したアドレスに置き換えます。
+3. `<docker registry address>` を、終了したチュートリアル「[Azure Function を IoT Edge モジュールとしてデプロイする](tutorial-deploy-function.md)」で入力したアドレスに置き換えます。
 
    >[!NOTE]
    >コンテナー レジストリ アドレスは、レジストリからコピーしたログイン サーバーと同じです。 `<your container registry name>.azurecr.io` の形式にする必要があります。

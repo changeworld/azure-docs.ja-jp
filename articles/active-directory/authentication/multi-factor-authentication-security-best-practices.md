@@ -1,6 +1,6 @@
 ---
-title: MFA のセキュリティのベスト プラクティス | Microsoft Docs
-description: このドキュメントでは、Azure アカウントで Azure MFA を使用する場合のベスト プラクティスについて説明します。
+title: MFA のセキュリティ ガイダンス | Microsoft Docs
+description: このドキュメントでは、Azure アカウントで Azure MFA を使用する場合のガイダンスについて説明します。
 services: multi-factor-authentication
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -15,19 +15,20 @@ ms.date: 06/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 0fd90c4e59fa64c24ecfa6d7d8f23e025210e078
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 50e6cd3c067e09ebf9ace442894d5d066141e0b6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32152300"
 ---
-# <a name="security-best-practices-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティのベスト プラクティス
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティ ガイダンス
 
 認証プロセスの強化を望むほとんどの組織には、2 段階認証を選択することをお勧めします。 Azure Multi-Factor Authentication (MFA) を使用すると、企業はセキュリティやコンプライアンスの要件を満たすと同時に、ユーザーに簡単なサインイン エクスペリエンスを提供することが容易になります。 この記事では、Azure MFA の導入を計画する際に考慮すべきヒントを紹介します。
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>Azure MFA をクラウドに展開する
 
-Azure MFA をすべてのユーザーに対して有効にする方法は 2 通りあります。
+[Azure MFA をすべてのユーザーに対して有効にする](howto-mfa-getstarted.md)方法は 2 通りあります。
 
 * 各ユーザー用にライセンスを購入する (Azure MFA、Azure AD Premium、Enterprise Mobility + Security のいずれか)
 * Multi-Factor Auth Provider を作成し、ユーザーごとまたは認証ごとに支払う
@@ -46,12 +47,12 @@ Multi-Factor Authentication を設定する場合は、次のヒントを考慮�
 ### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth Provider
 ![Multi-Factor Auth Provider](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-Azure MFA を含むライセンスを持っていない場合は、MFA 認証プロバイダーを作成できます。 
+Azure MFA を含むライセンスを持っていない場合は、[MFA 認証プロバイダーを作成できます](concept-mfa-authprovider.md)。
 
 認証プロバイダーを作成する場合は、ディレクトリを選択するとともに次の点を考慮する必要があります。
 
-* 多要素認証プロバイダーの作成に Azure AD ディレクトリは必要ありませんが、ディレクトリがあるとより高度な機能を利用できます。 Azure AD ディレクトリに認証プロバイダーを関連付けると、次に示す機能が有効になります。  
-  * すべてのユーザーを 2 段階認証の対象にする  
+* 多要素認証プロバイダーの作成に Azure AD ディレクトリは必要ありませんが、ディレクトリがあるとより高度な機能を利用できます。 Azure AD ディレクトリに認証プロバイダーを関連付けると、次に示す機能が有効になります。
+  * すべてのユーザーを 2 段階認証の対象にする
   * 管理ポータル、カスタムの案内応答、レポートなどの追加機能をグローバル管理者に提供する
 * オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期する場合は、DirSync または AAD Sync が必要です。Active Directory のオンプレミスのインスタンスと同期されない Azure AD ディレクトリを使用する場合、DirSync または AAD Sync は必要ありません。
 * ビジネスに最も適した使用モデルを選択してください。 使用モデルはいったん選択すると変更できません。 2 つのモデルを次に示します。
@@ -65,7 +66,7 @@ Azure MFA を含むライセンスを持っていない場合は、MFA 認証プ
 * 2 段階認証を最小限に留める方法として、Azure MFA の[信頼できる IP 機能](howto-mfa-mfasettings.md#trusted-ips)の利用を検討してください。 この機能を使用すると、管理者常駐型テナントまたはフェデレーション テナントの管理者は、会社のローカル イントラネットからサインインするユーザーの 2 段階認証をバイパスできます。 この機能は、Azure AD Premium、Enterprise Mobility Suite、または Azure Multi-Factor Authentication ライセンスを所有している Azure AD テナントで使用できます。
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>オンプレミス デプロイのベスト プラクティス
-企業で独自のインフラストラクチャを利用して MFA を有効にすることを決定した場合は、Azure Multi-Factor Authentication Server をオンプレミスでデプロイする必要があります。 MFA Server のコンポーネントを次の図に示します。
+企業で独自のインフラストラクチャを利用して MFA を有効にすることを決定した場合は、[Azure Multi-Factor Authentication Server をオンプレミスでデプロイする](howto-mfaserver-deploy.md)必要があります。 MFA Server のコンポーネントを次の図に示します。
 
 ![既定の MFA Server コンポーネント: コンソール、同期エンジン、管理ポータル、クラウド サービス](./media/multi-factor-authentication-security-best-practices/server.png) \*既定ではインストールされていません\**既定でインストールされますが、有効になっていません
 
@@ -112,4 +113,3 @@ Multi-Factor Authentication Server を設定する場合は、次の点を考慮
 * [Azure Multi-Factor Authentication のレポート](howto-mfa-reporting.md)
 * [2 段階認証登録エクスペリエンス](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
 * [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
-

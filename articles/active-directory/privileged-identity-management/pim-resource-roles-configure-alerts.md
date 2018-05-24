@@ -1,5 +1,5 @@
 ---
-title: Azure リソース向けの Privileged Identity Management - セキュリティ アラート | Microsoft Docs
+title: Privileged Identity Management を使用して Azure リソースのロールのセキュリティ アラートを管理する | Microsoft Docs
 description: PIM のセキュリティ アラートについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,23 +13,25 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 86c9a0f12b2598ffbd02810a11622b13b0363a1f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c6c057541b3e3067de6331bab6ca9cccfa092710
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149187"
 ---
-# <a name="privileged-identity-management---resource-roles---alerts"></a>Privileged Identity Management - リソース ロール - アラート
-Azure リソース向けの PIM は、環境内で疑わしいアクティビティや危険なアクティビティが発生したときにアラートを生成します。 アラートがトリガーされると、[アラート] ページに表示されます。 
+# <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Privileged Identity Management を使用して Azure リソースのロールのセキュリティ アラートを管理する
+環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure リソース向けの Privileged Identity Management (PIM) によりアラートが生成されます。 アラートがトリガーされると、[アラート] ページに表示されます。 
 
-![](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
+![Alerts page](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
 
 ## <a name="review-alerts"></a>アラートを確認する
 アラートを選択して、アラートをトリガーしたユーザーまたはロールの他に解決策のアドバイスを示すレポートを表示します。
-![](media/azure-pim-resource-rbac/rbac-alert-info.png)
+
+![アラート レポート](media/azure-pim-resource-rbac/rbac-alert-info.png)
 
 ## <a name="alerts"></a>アラート
-| アラート | 重大度 | トリガー | 推奨 |
+| アラート: | 重大度 | トリガー | 推奨 |
 | --- | --- | --- | --- |
 | **リソースに割り当てられている所有者が多すぎます** |中 |所有者ロールを持っているユーザーが多すぎます。 |リストに表示されているユーザーを見直して、数人のユーザーに低い特権ロールを再割り当てします。 |
 | **リソースに割り当てられている永続的な所有者が多すぎます** |中 |ロールに永続的に割り当てられているユーザーが多すぎます。 |リストに表示されているユーザーを見直して、数人のユーザーにロールを使用するにはアクティブ化が必要であるように再割り当てします。 |
@@ -42,8 +44,8 @@ Azure リソース向けの PIM は、環境内で疑わしいアクティビテ
 * **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
 
 ## <a name="configure-security-alert-settings"></a>セキュリティ アラート設定の構成
-[アラート] ページから [設定] に移動します。
-![](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
+[アラート] ページから **[設定]** に移動します。
+![設定](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
 
 環境で機能し、セキュリティの目標に合うようにさまざまなアラートの設定をカスタマイズします。
-![](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+![設定をカスタマイズする](media/azure-pim-resource-rbac/rbac-alert-settings.png)

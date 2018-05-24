@@ -13,14 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2017
+ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cb715960a516c6b2ca16376c12cb6f796e0b395
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 959a483d293caa45180c946e92ac824fc56db084
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195041"
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA on Azure 運用ガイド
 このドキュメントは、Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -177,7 +178,7 @@ Azure 書き込みアクセラレータでサポートできる VM ごとに Azu
 - M128xx VM では 16 個の VHD
 - M64xx VM では 8 個の VHD
 
-Azure 書き込みアクセラレータを有効にする方法の詳細については、「[Azure Write Accelerator for SAP deployments (SAP デプロイ用の Azure 書き込みアクセラレータ)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator)」をご覧ください。
+Azure 書き込みアクセラレータを有効にする方法の詳細については、[書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)に関する記事をご覧ください。
 
 Azure 書き込みアクセラレータの詳細と制限事項についても、同じドキュメントに記載されています。
 

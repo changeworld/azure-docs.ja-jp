@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーを使用して Azure AD プロバイダーを追加する | Microsoft Docs"
-description: "Azure Active Directory B2C のカスタム ポリシーについて説明します"
+title: 'Azure Active Directory B2C: カスタム ポリシーを使用して Azure AD プロバイダーを追加する | Microsoft Docs'
+description: Azure Active Directory B2C のカスタム ポリシーについて説明します
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: parakhj
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140225"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: Azure AD アカウントを使用したサインイン
 
@@ -45,13 +46,13 @@ ms.lasthandoff: 12/11/2017
 >[!NOTE]
 > 以下の手順では、組織の Azure AD テナントには "Contoso.com"を使用して、Azure AD B2C テナントとして "fabrikamb2c.onmicrosoft.com" を使用します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-1. 上部のバーで、自分のアカウントを選択します。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナント (contoso.com) を選択します。
-1. 左側のウィンドウで **[More Services] \(その他のサービス)** をクリックし、[App registrations] \(アプリの登録) を検索します。
-1. **[新しいアプリケーションの登録]** を選択します。
-1. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
-1. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
-1. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c.onmicrosoft.com`) で置き換えられます。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 上部のバーで、自分のアカウントを選択します。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナント (contoso.com) を選択します。
+3. 左側のウィンドウで **[More Services] \(その他のサービス)** をクリックし、[App registrations] \(アプリの登録) を検索します。
+4. **[新しいアプリケーションの登録]** を選択します。
+5. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
+6. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
+7. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c.onmicrosoft.com`) で置き換えられます。
 
     >[!NOTE]
     >**[サインイン URL]** の "yourtenant" の値は、すべて小文字にする必要があります。
@@ -60,10 +61,10 @@ ms.lasthandoff: 12/11/2017
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. アプリケーション ID を保存します。
-1. 新しく作成された Web アプリケーションを選択します。
-1. **[設定]** ブレードで **[キー]** を選択します。
-1. 新しいキーを作成して保存します。 そのキーは次のセクションの手順で使用します。
+8. アプリケーション ID を保存します。
+9. 新しく作成された Web アプリケーションを選択します。
+10. **[設定]** ブレードで **[キー]** を選択します。
+11. キーの説明を入力し、期間を選択して、**[保存]** をクリックします。 キーの値が表示されます。 そのキーは次のセクションの手順で使用するので、コピーします。
 
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Azure AD キーの Azure AD B2C への追加
 
@@ -75,7 +76,7 @@ contoso.com のアプリケーション キーを Azure AD B2C テナントに�
    * **[名前]** には、Azure AD テナント名に一致する名前 (例: `ContosoAppSecret`) を選択します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
    * アプリケーション キーを **[シークレット]** ボックスに貼り付けます。
    * **[署名]** を選択します。
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 1. キー `B2C_1A_ContosoAppSecret` を作成したことを確認します。
 
 
@@ -219,6 +220,6 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 アップロードしたカスタム ポリシーのブレードを開いて **[Run now] \(今すぐ実行)** をクリックし、ポリシーをテストします。 問題を診断するには、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)についての記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にフィードバックを提供します。

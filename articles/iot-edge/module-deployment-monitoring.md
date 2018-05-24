@@ -1,19 +1,20 @@
 ---
-title: "Azure IoT Edge のモジュールをデプロイする | Microsoft Docs"
-description: "モジュールがエッジ デバイスにどのようにデプロイされるかについて説明します"
+title: Azure IoT Edge のモジュールをデプロイする | Microsoft Docs
+description: モジュールがエッジ デバイスにどのようにデプロイされるかについて説明します
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166337"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>1 台のデバイスまたは一群のデバイスを対象とした IoT Edge デプロイについて - プレビュー
 
@@ -59,7 +60,7 @@ Azure IoT Edge では、IoT Edge デバイスで実行するモジュールを�
 
 ターゲット条件は、デプロイの有効期間をとおして、要求を満たす新しいデバイスを含めたり、要求を満たさなくなったデバイスを削除したりするために、継続的に評価されます。 サービスがターゲット条件の変化を検出した場合、デプロイが再アクティブ化されます。 たとえば、ターゲット条件が tags.environment = 'prod' であるデプロイ A があるものとします。 デプロイを開始するときは、10 個の prod デバイスが存在します。 モジュールは、これら 10 個のデバイスに正常にインストールされます。 IoT Edge エージェントの状態には、合計デバイス数 10、正常応答数 10、異常応答数 0、保留中応答数 0 と表示されます。 そして、tags.environment = 'prod' を設定したデバイスを 5 個追加します。 サービスは変更を検出し、5 個の新しいデバイスのデプロイを試みるときに、IoT Edge エージェントの状態は、合計デバイス数 15、正常応答数 10、異常応答数 0、保留中応答数 5 と表示されます。
 
-ターゲット デバイスを選ぶには、デバイス ツイン タグまたは deviceId に対する任意のブール条件を使います。 タグで条件を使う場合は、デバイス ツインのプロパティと同じレベルに "タグ":{} セクションを追加する必要があります。 [デバイス ツインのタグに関する詳細](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+ターゲット デバイスを選ぶには、デバイス ツイン タグまたは deviceId に対する任意のブール条件を使います。 タグで条件を使う場合は、デバイス ツインのプロパティと同じレベルに "タグ":{} セクションを追加する必要があります。 [デバイス ツインのタグに関する詳細](../iot-hub/iot-hub-devguide-device-twins.md)
 
 ターゲット条件の例:
 * deviceId ='linuxprod1'

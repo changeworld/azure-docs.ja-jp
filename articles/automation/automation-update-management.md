@@ -3,23 +3,25 @@ title: Azure の Update Management ソリューション
 description: この記事の目的は、このソリューションを使用して Windows コンピューターと Linux コンピューターの更新プログラムを管理する方法の理解を助けることです。
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2018
-ms.topic: article
+ms.date: 04/23/2018
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d93f79874ff65a1b6bb7ddd75932111c5caa6072
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195847"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
-Azure Automation の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムのセキュリティ更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+Azure Automation の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
-仮想マシンの更新管理は、[Azure Automation](automation-offering-get-started.md) アカウントから直接有効にすることができます。
-Automation アカウントから仮想マシンの更新管理を有効にする方法については、[多数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。
+仮想マシンの更新の管理は、Azure Automation アカウントから直接有効にすることができます。
+Automation アカウントから仮想マシンの更新管理を有効にする方法については、[多数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。 また、Azure portal の仮想マシン ページから単一の仮想マシンの Update Management を有効にすることもできます。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) と [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) 両方の仮想マシンに対して使用できます。
 
 ## <a name="solution-overview"></a>ソリューションの概要
 
@@ -38,6 +40,9 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 このソリューションは、同期先として構成されたソースに基づいて、コンピューターがどの程度最新の状態であるかをレポートします。 Windows コンピューターが WSUS にレポートするよう構成されている場合、WSUS が Microsoft Update と最後に同期したタイミングによっては、更新の結果が Microsoft Updates の示す内容と一致しない場合があります。 Linux コンピューターでも、レポート先の構成がローカル リポジトリとパブリック リポジトリとで更新結果が異なる場合があります。
 
+> [!NOTE]
+> Update Management がサービスに適切に報告するには、特定の URL とポートを有効にする必要があります。これらの要件について詳しくは、[ハイブリッド worker のネットワーク計画](automation-hybrid-runbook-worker.md#network-planning)に関するページをご覧ください。
+
 更新が必要なコンピューターへのソフトウェア更新プログラムのデプロイとインストールに、スケジュールされたデプロイを使用できます。 Windows コンピューターの場合、デプロイの範囲に含まれるのは、必須の更新プログラムのみで、"*オプション*" に分類されている更新プログラムは含まれません。 スケジュールされた展開では、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づく[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)を選択します。 また、スケジュールを指定する際は、更新プログラムのインストールを許可する期間を承認し、指定します。 更新プログラムは、Azure Automation の Runbook によってインストールされます。 これらの Runbook は表示できません。また、これらは構成不要です。 "更新プログラムの展開" を作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。 このマスター Runbook は、必要な更新プログラムのインストールを実行する子 Runbook を各エージェントで開始します。
 
 更新プログラムの展開で指定した日時に、対象のコンピューターでデプロイが並行して実行されます。 まず、スキャンが実行され、その更新プログラムが必須であることが確認されてからインストールされます。 WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムの展開は失敗します。
@@ -46,16 +51,16 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-次の表は、サポートされているオペレーティング システムの一覧です。 
+次の表は、サポートされているオペレーティング システムの一覧です。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします         |
-|Windows Server 2008 R2 SP1 以上     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 をダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br> 確実な Windows PowerShell 5.1 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616)) をお勧めします。         |
+|Windows Server 2008 R2 SP1 以上     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 をダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> 確実な Windows PowerShell 5.1 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616)) をお勧めします。         |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|Ubuntu 12.04 LTS 以降 (x86/x64)       |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
+|Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -122,7 +127,7 @@ Heartbeat
 
 Windows コンピューターでは、次の内容を調べて、Log Analytics とエージェントの接続を確認できます。
 
-1. コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。   
+1. コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics]** タブで、エージェントに "**Microsoft Monitoring Agent は Log Analytics に正常に接続しました**" というメッセージが表示されていることを確認します。
 2. Windows イベント ログを開き、**アプリケーションとサービス ログ\Operations Manager** に移動して、ソースのサービス コネクタでイベント ID 3000 および 5002 を検索します。 これらのイベントは、コンピューターが Log Analytics ワークスペースに登録され、構成を受信していることを示しています。
 
 エージェントが Log Analytics と通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されているのであれば、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関するページを参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
@@ -133,7 +138,7 @@ Windows コンピューターでは、次の内容を調べて、Log Analytics �
 
 新しく追加された Linux エージェントは、評価が完了した後、状態が "**更新済み**" と表示されます。 このプロセスには最大で 6 時間かかります。
 
-Operations Manager 管理グループが Log Analytics と通信していることを確認する方法については、「[Validate Operations Manager Integration with Log Analytics (Operations Manager と Log Analytics の統合を検証する)](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)」を参照してください。
+Operations Manager 管理グループが Log Analytics と通信していることを確認する方法については、「[Validate Operations Manager Integration with Log Analytics (Operations Manager と Log Analytics の統合を検証する)](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics)」を参照してください。
 
 ## <a name="data-collection"></a>データ収集
 
@@ -145,7 +150,7 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 | --- | --- | --- |
 | Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
 | Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。</br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 
@@ -196,6 +201,42 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
 | メンテナンス期間 |更新プログラムに対して設定された分数です。 30 分未満の値を指定することはできません。また、6 時間を超えることはできません |
 
+## <a name="update-classifications"></a>更新プログラムの分類
+
+次の表では、Update Management での更新プログラムの分類の一覧と、各分類の定義を示します。
+
+### <a name="windows"></a>Windows
+
+|分類  |[説明]  |
+|---------|---------|
+|緊急更新プログラム     | セキュリティに関連しない重大なバグを修正する、特定の問題に対する更新プログラムです。        |
+|セキュリティ更新プログラム     | 製品固有のセキュリティに関連する問題に対する更新プログラムです。        |
+|更新プログラムのロールアップ     | 容易なデプロイのためにパッケージにまとめられた修正プログラムの累積セットです。        |
+|Feature Pack     | 製品リリース外で配布される製品の新機能です。        |
+|Service Pack     | アプリケーションに適用される修正プログラムの累積セットです。        |
+|定義の更新     | ウイルスまたは他の定義ファイルに対する更新プログラムです。        |
+|ツール     | 1 つまたは複数のタスクを完了するのに役立つユーティリティまたは機能です。        |
+|更新プログラム     | 現在インストールされているアプリケーションまたはファイルに対する更新プログラムです。        |
+
+### <a name="linux"></a>Linux
+
+|分類  |[説明]  |
+|---------|---------|
+|緊急更新プログラムとセキュリティ更新プログラム     | 特定の問題または製品固有のセキュリティに関連する問題に対する更新プログラムです。         |
+|他の更新プログラム     | 本質的に重要ではない、またはセキュリティ更新プログラムではない、他のすべての更新プログラムです。        |
+
+## <a name="ports"></a>ポート
+
+Update Management には次のアドレスが明示的に必要です。 このアドレスへの通信は、ポート 443 を使用して行われます。
+
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+
+Hybrid Runbook Worker で必要なポートについて詳しくは、[ハイブリッド worker ロールのポート](automation-hybrid-runbook-worker.md#hybrid-worker-role)に関するページをご覧ください
+
 ## <a name="search-logs"></a>検索ログ
 
 ポータルで提供されている詳細のほか、ログに対して検索を実行できます。 **[Change Tracking]\(変更の追跡\)** ページを開いた状態で、**[Log Analytics]** をクリックします。これにより、**[ログ検索]** ページが開きます
@@ -206,13 +247,13 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 | クエリ | [説明] |
 | --- | --- |
-|プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
-| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
-| Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
-| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム |
-| UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
-| プライマリの<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 | 
-| UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
+|アップデート</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター</br>次のいずれかを追加して、OS を限定します。</br>OSType = "Windows"</br>OSType == "Linux" |
+| アップデート</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; where Computer == "ContosoVM1.contoso.com"</br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
+| Event</br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")</br>&#124; where UpdateState == "Needed" and Optional == false </br>&#124; distinct Computer)) |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
+| アップデート</br>&#124; where UpdateState == "Needed" and Optional == false</br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム |
+| UpdateRunProgress</br>&#124; where InstallationStatus == "failed" </br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター</br>次のいずれかを追加して、OS を限定します。</br>OSType = "Windows"</br>OSType == "Linux" |
+| アップデート</br>&#124; where OSType == "Linux"</br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")</br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 |
+| UpdateRunProgress</br>&#124; where UpdateRunName == "DeploymentName"</br>&#124; summarize AggregatedValue = count() by Computer|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) |
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
 
@@ -248,18 +289,18 @@ Red Hat Enterprise Linux で、除外するパッケージ名は redhat-release-
 
 | メッセージ | 理由 | 解決策 |
 |----------|----------|----------|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.InvalidOperationException: {"Message":"Machine is already<br>registered to a different account. "} (System.InvalidOperationException: {"メッセージ": "マシンは既に別のアカウントに登録されています。) | マシンは既に Update Management 用の別のワークスペースにオンボードされています。 | [Hybrid Runbook グループを削除する](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)ことにより、古いアーティファクトのクリーンアップを実行します。|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---><br>System.Net.WebException: 基になる接続が<br>閉じられました。受信時に予期しないエラーが<br>発生しました。 ---> System.ComponentModel.Win32Exception:<br>クライアントとサーバーは共通のアルゴリズムを保持していないため<br>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
-| サービス <wsid>.oms.opinsights.azure.com によって提示された証明書は、<br>Microsoft サービスで使用する証明機関が<br>発行したものではありませんでした。 連絡先<br>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを<br>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-offering-get-started.md#network-planning)。|
-| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>AgentService.HybridRegistration。<br>PowerShell.Certificates.CertificateCreationException:<br>自己署名証明書を作成できませんでした。 ---><br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br>読み取りアクセスを持っていることを確認します。<br>**C:\ProgramData\Microsoft\**<br>** Crypto\RSA**|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)</br>Registration Failed with Exception (登録は次の例外で失敗しました)</br>System.InvalidOperationException: {"Message":"Machine is already</br>registered to a different account. "} (System.InvalidOperationException: {"メッセージ": "マシンは既に別のアカウントに登録されています。) | マシンは既に Update Management 用の別のワークスペースにオンボードされています。 | [Hybrid Runbook グループを削除する](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)ことにより、古いアーティファクトのクリーンアップを実行します。|
+| Unable to Register Machine for Patch Management, Registration Failed with Exception (更新プログラムの管理用のマシンを登録できません。登録は次の例外で失敗しました。)</br>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---></br>System.Net.WebException: 基になる接続が</br>閉じられました。受信時に予期しないエラーが</br>発生しました。 ---> System.ComponentModel.Win32Exception:</br>クライアントとサーバーは共通のアルゴリズムを保持していないため</br>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-hybrid-runbook-worker.md#network-planning)。|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)</br>Registration Failed with Exception (登録は次の例外で失敗しました)</br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-hybrid-runbook-worker.md#network-planning)。|
+| サービス \<wsid\>.oms.opinsights.azure.com によって提示された証明書は、</br>Microsoft サービスで使用する証明機関が</br>発行したものではありませんでした。 連絡先</br>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを</br>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](automation-hybrid-runbook-worker.md#network-planning)。|
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)</br>Registration Failed with Exception (登録は次の例外で失敗しました)</br>AgentService.HybridRegistration。</br>PowerShell.Certificates.CertificateCreationException:</br>自己署名証明書を作成できませんでした。 ---></br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する</br>読み取りアクセスを持っていることを確認します。</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>次の手順
 
 使用している Windows VM の更新プログラムの管理方法を学習するためのチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-troubleshoot-changes.md)
+> [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)
 
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。

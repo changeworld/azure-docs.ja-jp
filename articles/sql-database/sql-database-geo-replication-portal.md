@@ -9,11 +9,12 @@ ms.custom: business continuity
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 09672c9f8ba725e46f2cdbb1a13de101137cb718
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 89839d18e90a75f81e78edcb7f54e77a31ea4886
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187193"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
@@ -33,7 +34,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 
 セカンダリ データベースを追加するには、サブスクリプションの所有者または共同所有者でなければなりません。
 
-セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルはプライマリ データベースと同じになります。 セカンダリ データベースは、Single Database またはエラスティック プールのデータベースにできます。 詳細については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。
+セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルはプライマリ データベースと同じになります。 セカンダリ データベースは、Single Database またはエラスティック プールのデータベースにできます。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
 セカンダリ データベースを作成しシード処理を行うと、プライマリ データベースから新しいセカンダリ データベースへのデータのレプリケートが開始されます。
 
 > [!NOTE]
@@ -82,7 +83,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 1. [Azure Portal](http://portal.azure.com) で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
 2. SQL Database ページで、**[geo レプリケーション]** を選択します。
 3. **[セカンダリ]** ボックスの一覧で、geo レプリケーション パートナーシップから削除するデータベースを選択します。
-4. **[レプリケーションを停止する]**をクリックします。
+4. **[レプリケーションを停止する]** をクリックします。
    
     ![セカンダリ データベースの削除](./media/sql-database-geo-replication-portal/remove-secondary.png)
 5. 確認ウィンドウが開きます。 **[はい]** をクリックして geo レプリケーション パートナーシップからデータベースを削除します。 (データベースを読み取り/書き込みデータベースに設定することは、レプリケーションの一部ではありません)。
