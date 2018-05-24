@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ce4522673bac56f73944413d102b7cb36cf93f30
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361840"
 ---
 # <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のカスタム ラボにアクセスする
 このチュートリアルでは、「[チュートリアル: カスタム ラボを作成する](tutorial-create-custom-lab.md)」で作成したカスタム ラボを使います。
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 
 > [!div class="checklist"]
 > * カスタム ラボの仮想マシン (VM) を要求する
-> * VM に接続する
+> * VM に接続します
 > * VM を解放する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
@@ -35,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="access-the-lab"></a>ラボにアクセスする
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで、**[すべてのリソース]** を選びます。 
+2. 左側のメニューで、**[すべてのリソース]** を選択します。 
 3. リソースの種類として **[DevTest Labs]** を選びます。 
 4. ラボを選びます。 
 
@@ -50,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![自分の仮想マシン](./media/tutorial-use-custom-lab/my-virtual-machines.png)
 
-## <a name="connect-to-the-vm"></a>VM に接続する
+## <a name="connect-to-the-vm"></a>VM に接続します
 
 1. 一覧で VM を選びます。 選んだ VM の**仮想マシン ページ**が表示されます。 ツール バーの **[接続]** を選びます。
 

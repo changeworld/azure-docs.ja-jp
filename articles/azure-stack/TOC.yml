@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: リリース ノート
       items:
+        - name: 1804 更新プログラム
+          href: azure-stack-update-1804.md
         - name: 1803 更新プログラム
           href: azure-stack-update-1803.md
         - name: 1802 更新プログラム
           href: azure-stack-update-1802.md
         - name: 1712 更新プログラム
           href: azure-stack-update-1712.md
-        - name: 1711 更新プログラム
-          href: azure-stack-update-1711.md
 - name: クイック スタート
   expanded: true
   items:
@@ -156,7 +156,9 @@
               href: azure-stack-backup-enable-backup-powershell.md
             - name: Azure Stack のバックアップ
               href: azure-stack-backup-back-up-azure-stack.md
-            - name: 致命的なデータの損失からの復旧
+            - name: Azure Stack 上のファイルとアプリケーションのバックアップ
+              href: ..\backup\backup-mabs-files-applications-azure-stack.md?toc=%2fazure%2fazure-stack%2ftoc.json
+            - name: 致命的なデータ損失からの復旧
               href: azure-stack-backup-recover-data.md
             - name: バックアップのベスト プラクティス
               href: azure-stack-backup-best-practices.md
@@ -245,6 +247,8 @@
               href: azure-stack-app-service-configure-deployment-sources.md
             - name: App Service on Azure Stack Update 1 のリリース ノート
               href: azure-stack-app-service-release-notes-update-one.md
+            - name: App Service on Azure Stack update 2 のリリース ノート
+              href: azure-stack-app-service-release-notes-update-two.md
         - name: Marketplace の設定
           items:
             - name: Marketplace の概要
