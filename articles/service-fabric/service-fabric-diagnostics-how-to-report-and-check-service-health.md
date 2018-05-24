@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric を使用した正常性のレポートとチェック | Microsoft Docs"
-description: "サービス コードから正常性レポートを送信し、Azure Service Fabric に用意されている正常性監視ツールを使用してサービスの正常性をチェックする方法について説明します。"
+title: Azure Service Fabric を使用した正常性のレポートとチェック | Microsoft Docs
+description: サービス コードから正常性レポートを送信し、Azure Service Fabric に用意されている正常性監視ツールを使用してサービスの正常性をチェックする方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: mfussell
-editor: 
+editor: ''
 ms.assetid: 7c712c22-d333-44bc-b837-d0b3603d9da8
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/2/2017
 ms.author: dekapur
-ms.openlocfilehash: a8c1ac57d38ae504e677c44c6fec08164b9b74ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 82ee3cbca40713d527f64ae4698cb9ce64a10215
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
@@ -67,7 +67,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
 2. Stateful1.cs ファイルを開き、`RunAsync` メソッドの `myDictionary.TryGetValueAsync` 呼び出しを見つけます。 カウンターの現在の値を保持している `result` がこのメソッドにより返されることがわかります。これは、このアプリケーションのキー ロジックが実行回数を保持するためです。 これが実際のアプリケーションであり、結果がないとエラーになる場合は、そのイベントにフラグを設定します。
 3. 結果がなくてエラーになるときに正常性イベントを報告するには、さらに次の手順を実行します。
    
-    a. `System.Fabric.Health` 名前空間を Stateful1.cs ファイルに追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `System.Fabric.Health` 名前空間を Stateful1.cs ファイルに追加します。
    
     ```csharp
     using System.Fabric.Health;
@@ -95,7 +95,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
     ```
 4. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護`FabricClient`されていない場合は、次の手順に示すように、](service-fabric-cluster-security.md) を利用して正常性をレポートすることもできます。  
    
-    a. `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
    
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
@@ -147,7 +147,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
 * [サービスの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
 * [アプリケーションの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)

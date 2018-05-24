@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 65185a2d594a4a251cf87ece6f758ab3db223d7d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3cb7fdf309c935c21f4e80c1d1ba529838935acc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -43,7 +43,7 @@ Visual Studio を**管理者**として起動します。
 アプリケーションに **MyGuestApp** という名前を付けて、**[OK]** をクリックします。
 
 >[!IMPORTANT]
->Node.js では、Windows のパスの上限である 260 文字を超過しやすいため、 プロジェクト自体に短いパスを使用してください (例: **c:\code\svc1**)。 Windows 10 では、**[こちらの手順](https://stackoverflow.com/a/41687101/1664231)**に従い、必要に応じて長いファイル パスを有効にすることができます。
+>Node.js では、Windows のパスの上限である 260 文字を超過しやすいため、 プロジェクト自体に短いパスを使用してください (例: **c:\code\svc1**)。 Windows 10 では、**[こちらの手順](https://stackoverflow.com/a/41687101/1664231)** に従い、必要に応じて長いファイル パスを有効にすることができます。
    
 ![Visual Studio の [新しいプロジェクト] ダイアログ][new-project]
 

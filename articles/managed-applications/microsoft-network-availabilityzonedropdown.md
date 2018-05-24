@@ -1,23 +1,23 @@
 ---
 title: Azure の AvailabilityZoneDropdown UI 要素 | Microsoft Docs
 description: Azure Portal の Microsoft.Network.AvailabilityZoneDropdown UI 要素について説明します。
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 03156f2fd763bb7f2b1d2ba86d042f43f268febe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 737971551e4bfb81c4f5fd1b53987b7a52c12669
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="microsoftnetworkavailabilityzonedropdown-ui-element"></a>Microsoft.Network.AvailabilityZoneDropdown UI 要素
 可用性ゾーンを選択するためのコントロールです。

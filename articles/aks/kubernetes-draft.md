@@ -3,17 +3,17 @@ title: AKS と Azure Container Registry で Draft を使用します。
 description: AKS と Azure Container Registry で Draft を使用します。
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f474921acbd3a5082afea03dd982bcfa9c52dcda
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a5dfecefb6ce1d74e02c64371a864a6d3b07a2e1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 
@@ -38,7 +38,7 @@ Draft CLI は、開発システムで実行され、Kubernetes クラスター�
 > [!NOTE]
 > バージョン 0.12 以前の Draft をインストールしている場合、`helm delete --purge draft` を使ってクラスターから Draft を削除してから、`rm -rf ~/.draft` を実行してローカルの構成を削除してください。 MacOS の場合は、`brew upgrade draft` を実行します。
 
-Draft CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、[Draft のインストール ガイド][install-draft]をご覧ください。
+Draft CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、[Draft のインストール ガイド][draft-documentation]をご覧ください。
 
 ```console
 brew tap azure/draft
@@ -288,7 +288,6 @@ Draft の使用方法の詳細については、GitHub の Draft のドキュメ
 
 <!-- LINKS - external -->
 [draft-documentation]: https://github.com/Azure/draft/tree/master/docs
-[install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
 [kubernetes-ingress]: ./ingress.md
 [kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
 

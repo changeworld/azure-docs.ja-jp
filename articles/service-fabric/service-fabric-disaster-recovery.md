@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric のディザスター リカバリー | Microsoft Docs"
-description: "Azure Service Fabric では、あらゆる種類の災害に対処するために必要な機能が提供されています。 この記事では、発生する可能性がある災害の種類とそれらに対処する方法について説明します。"
+title: Azure Service Fabric のディザスター リカバリー | Microsoft Docs
+description: Azure Service Fabric では、あらゆる種類の災害に対処するために必要な機能が提供されています。 この記事では、発生する可能性がある災害の種類とそれらに対処する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 295772b70529f79c7a4c135d8ea7c12a1c661fe6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric でのディザスター リカバリー
 高可用性を実現するうえで欠かせないのは、サービスがあらゆる種類の障害を切り抜けられるようにすることです。 これは、計画外の障害や、制御できない障害に関しては特に重要です。 この記事では、正しくモデル化および管理されていない場合に、災害につながる可能性がある一般的な障害モードをいくつか取り上げて説明します。 さらに、軽減策や、災害が発生した場合に実行するアクションについても解説します。 その目的は、計画的または計画外の障害が発生したときに、ダウンタイムやデータ損失のリスクを軽減または排除することです。
@@ -134,7 +134,7 @@ Service Fabric にはシード ノードの概念があります。 これは基
 
 スタンドアロンの Service Fabric クラスターと Azure の両方について、シードを実行するのは "プライマリ ノード タイプ" です。 プライマリ ノード タイプを定義するとき、Service Fabric では、システム サービスごとに最大 9 個のシード ノードと 9 個のレプリカを作成することで、提供されるノード数が自動的に使用されます。 ランダムに発生する障害によって、こうしたシステム サービス レプリカの大部分が同時に削除されると、前に説明したように、システム サービスはクォーラム損失に移行します。 シード ノードの大部分が失われた場合、クラスターは直ちにシャット ダウンします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Testability フレームワーク](service-fabric-testability-overview.md)
 - ディザスター リカバリーと高可用性に関する他のリソースを読みます。 Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。 これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、 Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
   - [可用性のチェックリスト](../best-practices-availability-checklist.md)

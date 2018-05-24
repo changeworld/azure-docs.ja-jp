@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 Azure で[ハイ パフォーマンス コンピューティング VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。 この記事では、クラスターで Intel MPI を実行するために Linux HPC イメージを準備する手順を説明します。 準備ができたら、このイメージと、RDMA 対応の Azure VM サイズのいずれか (現時点では H16r、H16mr、A8、または A9) を使用して、VM のクラスターをデプロイします。 リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信する MPI アプリケーションを実行するには、このクラスターを使用します。
@@ -30,8 +30,9 @@ Azure で[ハイ パフォーマンス コンピューティング VM サイズ]
 ## <a name="cluster-deployment-options"></a>クラスターのデプロイ オプション
 ジョブ スケジューラを使用する場合、または使用しない場合に、Linux の RDMA クラスターの作成に使用できる方法を次に示します。
 
-* **Azure CLI スクリプト**: 後で示すように、RDMA 対応の VM のクラスターをデプロイするスクリプトを作成するには、[Azure コマンド ライン インターフェイス](../../../cli-install-nodejs.md) (CLI) を使用します。 クラシック デプロイメント モデルのサービス管理モードの CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードのデプロイには数分かかる場合があります。 クラシック デプロイメント モデルの使用時に RDMA ネットワーク接続を有効にするには、同じクラウド サービス内に VM をデプロイしてください。
-* **Azure Resource Manager テンプレート**: RDMA ネットワークに接続する RDMA 対応の VM のクラスターをデプロイするには、Resource Manager デプロイメント モデルを使用することもできます。 [独自のテンプレートを作成する](../../../resource-group-authoring-templates.md)か、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。 リソース マネージャー テンプレートは、Linux クラスターをデプロイするための高速で信頼性の高い方法を提供します。 Resource Manager デプロイメント モデルの使用時に RDMA ネットワーク接続を有効にするには、同じ可用性セット内に VM をデプロイしてください。
+* **Azure CLI スクリプト**: 後で示すように、RDMA 対応の VM のクラスターをデプロイするスクリプトを作成するには、[Azure コマンド ライン インターフェイス](../../../cli-install-nodejs.md) (CLI) を使用します。 クラシック デプロイ モデルのサービス管理モードの CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードのデプロイには数分かかる場合があります。 クラシック デプロイ モデルの使用時に RDMA ネットワーク接続を有効にするには、同じクラウド サービス内に VM をデプロイしてください。
+* 
+  **Azure Resource Manager テンプレート**: RDMA ネットワークに接続する RDMA 対応の VM のクラスターをデプロイするには、Resource Manager デプロイ モデルを使用することもできます。 [独自のテンプレートを作成する](../../../resource-group-authoring-templates.md)か、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。 リソース マネージャー テンプレートは、Linux クラスターをデプロイするための高速で信頼性の高い方法を提供します。 Resource Manager デプロイ モデルの使用時に RDMA ネットワーク接続を有効にするには、同じ可用性セット内に VM をデプロイしてください。
 * **HPC Pack**: Azure で Microsoft HPC Pack クラスターを作成し、サポートされる Linux ディストリビューションを実行する RDMA 対応の計算ノードを追加して RDMA ネットワークにアクセスします。 詳しくは、「[チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md)」をご覧ください。
 
 ## <a name="sample-deployment-steps-in-the-classic-model"></a>クラシック モデルでのサンプル デプロイの手順
@@ -44,7 +45,7 @@ Azure で[ハイ パフォーマンス コンピューティング VM サイズ]
 
 ### <a name="prerequisites"></a>前提条件
 * **クライアント コンピューター**: Azure と通信するための Mac、Linux、または Windows クライアント コンピューターが必要です。 これらの手順は、Linux クライアントを使用していることを前提とします。
-* **Azure サブスクリプション**: サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
+* **Azure サブスクリプション**: サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制サブスクリプションまたはその他の購入オプションを検討してください。
 * **VM サイズの可用性**: RDMA に対応しているインスタンス サイズは H16r、H16mr、A8、A9 です。 各 Azure リージョンで利用できるかどうかについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/) 」を参照してください。
 * **コア クォータ**: コンピューティング集中型の VM のクラスターをデプロイするには、コア クォータを増やすことが必要な場合があります。 たとえば、8 個の A9 VM をデプロイする場合は、少なくとも 128 コアが必要です。 サブスクリプションによっては、H シリーズを含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../../../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
 * **Azure CLI**: Azure CLI を[インストール](../../../cli-install-nodejs.md)し、クライアント コンピューターから [Azure サブスクリプションに接続します](/cli/azure/authenticate-azure-cli)。
@@ -163,7 +164,7 @@ azure vm capture -t <vm-name> <image-name>
 これらのコマンドを実行した後、使用する VM イメージがキャプチャされ、VM が削除されます。 カスタム イメージをクラスターにデプロイする準備ができました。
 
 ### <a name="deploy-a-cluster-with-the-image"></a>イメージを使用したクラスターのデプロイ
-次の Bash スクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。 クラシック デプロイメント モデルの Azure では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
+次の Bash スクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。 クラシック デプロイ モデルの Azure では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
 
 ```
 #!/bin/bash -x
@@ -210,7 +211,7 @@ CentOS ベースの HPC クラスターで、計算ノード間に信頼関係�
 
 コミュニティから提供されたサンプル スクリプトについては、[GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) を参照してください。CentOS ベースの HPC クラスターで簡単なユーザー認証を有効にすることができます。 次の手順で、このスクリプトをダウンロードして使用します。 このスクリプトを変更するか、他の方法を使用して、クラスター コンピューティング ノード間にパスワードなしの SSH 認証を確立することもできます。
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
+    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
 
 スクリプトを実行するには、サブネットの IP アドレスのプレフィックスを知っている必要があります。 クラスター ノードのいずれかで次のコマンドを実行して、プレフィックスを取得します。 出力は 10.1.3.5 のようになります。プレフィックスは 10.1.3 の部分です。
 

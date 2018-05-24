@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と ClickTime の統合 | Microsoft Docs"
-description: "Azure Active Directory と ClickTime の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と ClickTime の統合 | Microsoft Docs'
+description: Azure Active Directory と ClickTime の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f19e1968c736cb21a2a80b9807fa86461e05ee42
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f24dab1856880a3d8c69701257167cae8d97e241
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -30,7 +30,7 @@ ClickTime と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで ClickTime に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ClickTime のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_url.png)
 
-    a. **[識別子]** ボックスに、`https://app.clicktime.com/sp/` のように URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://app.clicktime.com/sp/` のように URL を入力します。
     
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。 
 
@@ -137,7 +137,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
    
     ![Security Settings](./media/active-directory-saas-clicktime-tutorial/tic777280.png "Security Settings")
    
-    a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
    
     b. **[ID プロバイダー エンドポイント]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
    
@@ -146,7 +146,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
     d.  **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -171,7 +171,7 @@ ClickTime で Azure AD のシングル サインオンを構成してテスト�
  
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-clicktime-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -192,14 +192,14 @@ ClickTime の場合、プロビジョニングは手動で行います。
 2. 上部のツールバーで、**[Company]** をクリックし、**[People]** をクリックします。
    
     ![ユーザー](./media/active-directory-saas-clicktime-tutorial/tic777282.png "People")
-3. **[Add Person]**をクリックします。
+3. **[Add Person]** をクリックします。
    
     ![Add Person](./media/active-directory-saas-clicktime-tutorial/tic777283.png "Add Person")
 4. [New Person] セクションで、次の手順を実行します。
    
     ![ユーザー](./media/active-directory-saas-clicktime-tutorial/tic777284.png "People")
    
-    a.  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
   
     b.  **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
        
@@ -220,7 +220,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ClickTime]**を選択します。
+2. アプリケーションの一覧で **[ClickTime]** を選択します。
 
     ![アプリケーションの一覧の ClickTime のリンク](./media/active-directory-saas-clicktime-tutorial/tutorial_clicktime_app.png) 
 
@@ -248,7 +248,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce89e1caefbf73512c4ad3c2ce57ebc6f03f2616
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2b46cde4a352e647ee97669f116a6c1926879fa0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid サブスクリプションのクエリを実行する 
 

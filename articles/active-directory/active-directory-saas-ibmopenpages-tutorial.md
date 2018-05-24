@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と IBM OpenPages の統合 | Microsoft Docs"
-description: "Azure Active Directory と IBM OpenPages の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と IBM OpenPages の統合 | Microsoft Docs'
+description: Azure Active Directory と IBM OpenPages の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 6b96a54bad2166a15574cf015f1ee586cf6fcc35
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f177e8551ce6f3b9d6a452f08ebb983d0eac3bdf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>チュートリアル: Azure Active Directory と IBM OpenPages の統合
 
@@ -30,7 +30,7 @@ IBM OpenPages と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に IBM OpenPages にサインオン (シングル サインオン) できるように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ IBM OpenPages で Azure AD のシングル サインオンを構成してテス�
 
     ![[IBM OpenPages のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-ibmopenpages-tutorial/tutorial_ibmopenpage_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに、`http://<subdomain>.ibm.com:<ID>/openpages` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`http://<subdomain>.ibm.com:<ID>/openpages` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.ibm.com:<ID>/samlsps/op` のパターンを使用して URL を入力します。
 
@@ -177,7 +177,7 @@ IBM OpenPages で Azure AD のシングル サインオンを構成してテス�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[IBM OpenPages]**を選択します。
+2. アプリケーションの一覧で **[IBM OpenPages]** を選択します。
 
     ![アプリケーションの一覧の [IBM OpenPages] リンク](./media/active-directory-saas-ibmopenpages-tutorial/tutorial_ibmopenpage_app.png)  
 
@@ -205,7 +205,7 @@ IBM OpenPages で Azure AD のシングル サインオンを構成してテス�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

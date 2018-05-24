@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c219820fd5b8d5502bae394142dfbe80db1f59
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 271b090468dee306dc0bf2567aeff08eb0526642
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.lasthandoff: 05/07/2018
 
 <tr><td>**SDK のダウンロード**</td><td>[NPM](https://www.npmjs.com/package/documentdb)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[Node.js の API リファレンス ドキュメント](http://azure.github.io/azure-documentdb-node/DocumentClient.html)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Node.js の API リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/documentdb/?view=azure-node-latest)</td></tr>
 
 <tr><td>**SDK のインストール手順**</td><td>[インストール手順](http://azure.github.io/azure-documentdb-node/)</td></tr>
 
@@ -61,6 +61,16 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="1.14.4"/>1.14.4</a>
+* npm のドキュメントを修正しました。
+
+### <a name="1.14.3"/>1.14.3</a>
+* 接続に問題が発生したとき、デフォルトで再試行されるようになりました。
+* コレクション変更フィードの読み取り対応になりました。
+* "読み取りセッションを利用不可" を中断させるセッション整合性バグを修正しました。
+* クエリ メトリック対応になりました。
+* http エージェントの最大接続数を変更しました。
 
 ### <a name="1.14.2"/>1.14.2</a>
 * Azure DocumentDB ではなく Azure Cosmos DB を参照するように更新されたドキュメントです。
@@ -193,6 +203,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |
+| [1.14.3](#1.14.3) |2018 年 5 月 3 日 |--- |
 | [1.14.2](#1.14.2) |2017 年 12 月 21 日 |--- |
 | [1.14.1](#1.14.1) |2017 年 11 月 10 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 11 月 9 日 |--- |

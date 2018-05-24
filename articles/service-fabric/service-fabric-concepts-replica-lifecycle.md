@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric のレプリカとインスタンス | Microsoft Docs"
-description: "レプリカ、インスタンス、それらの機能とライフサイクルについて説明します。"
+title: Azure Service Fabric のレプリカとインスタンス | Microsoft Docs
+description: レプリカ、インスタンス、それらの機能とライフサイクルについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: appi101
 manager: anuragg
-editor: 
+editor: ''
 ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: 4037fc869d3e26d52f33baa62c626f4621cd11f5
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="replicas-and-instances"></a>レプリカとインスタンス 
 この記事では、ステートフル サービスのレプリカとステートレス サービスのインスタンスのライフサイクルの概要を示します。

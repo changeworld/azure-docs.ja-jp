@@ -1,24 +1,24 @@
 ---
-title: "Service Fabric アプリの容量計画 | Microsoft Docs"
-description: "Service Fabric アプリケーションに必要なコンピューティング ノードの数を特定する方法について説明します。"
+title: Service Fabric アプリの容量計画 | Microsoft Docs
+description: Service Fabric アプリケーションに必要なコンピューティング ノードの数を特定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: markfuss
-editor: 
+editor: ''
 ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: dc5e81ff7e5466d258624cee80c520c848bd60fa
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ac8abbdbbe9125ea036d837c08e1089aa6d1e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric アプリケーションの容量計画
 このドキュメントでは、Azure Service Fabric アプリケーションを実行するために必要なリソース (CPU、RAM、ディスク ストレージ) の量を見積もる方法について説明します。 リソース要件は、通常、時の経過と共に変化します。 一般的に、サービスの開発およびテスト中はリソースをあまり必要とせず、運用を開始したりアプリケーションが多くのユーザーに使用され始めたりすると、より多くのリソースが必要になります。 アプリケーションを設計するときは、長期的な要件を考慮し、高い顧客要求を満たすためにサービスを拡張できるようにしてください。

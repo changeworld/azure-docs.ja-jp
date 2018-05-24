@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 6c8c920a801e223e2a8f557ffb7f820a8b6db605
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 64ae39e630897c69155ee85347c90421aca394a3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>チュートリアル: Azure Active Directory と ADP の統合
 
@@ -30,7 +30,7 @@ ADP と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで ADP に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -146,7 +146,7 @@ ADP で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
     > [!NOTE] 
     > SAML アサーションを構成するには、その前に [ADP サポート チーム](https://www.adp.com/contact-us/overview.aspx)に連絡し、テナントの一意識別子属性の値を要求する必要があります。 この値は、アプリケーションのカスタム要求を構成するのに必要です。 
@@ -286,7 +286,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ADP]**を選択します。
+2. アプリケーションの一覧で **[ADP]** を選択します。
 
     ![アプリケーションの一覧の [ADP] リンク](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_app.png)  
 
@@ -314,7 +314,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

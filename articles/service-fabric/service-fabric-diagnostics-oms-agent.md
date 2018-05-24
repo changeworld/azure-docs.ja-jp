@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
-ms.author: dekapur; srrengar
-ms.openlocfilehash: 6e1c870458f43bcc5d6d40f0e40e2b2a95bee2af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: srrengar
+ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Log Analytics でのパフォーマンスの監視
 
