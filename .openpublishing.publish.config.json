@@ -15,7 +15,8 @@
         "Conceptual": "Content",
         "ManagedReference": "Content",
         "LandingData": "Content",
-        "RestApi": "Content"
+        "RestApi": "Content",
+        "ContextObject": "Toc"
       },
       "build_entry_point": "docs",
       "template_folder": "_themes",
@@ -140,6 +141,12 @@
       "branch_mapping": {}
     },
     {
+      "path_to_root": "azure-app-service-multi-container",
+      "url": "https://github.com/Azure-Samples/multicontainerwordpress",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
       "path_to_root": "samples-durable-functions",
       "url": "https://github.com/Azure/azure-functions-durable-extension",
       "branch": "master",
@@ -162,13 +169,13 @@
       "url": "https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet",
       "branch": "GuidedSetup",
       "branch_mapping": {}
-      },
+    },
     {
       "path_to_root": "samples-cognitive-services-speech-sdk",
       "url": "https://github.com/Azure-Samples/cognitive-services-speech-sdk",
       "branch": "docs",
-"branch_mapping": {}
-          },
+      "branch_mapping": {}
+    },
     {
       "path_to_root": "media-services-v3-dotnet-quickstarts",
       "url": "https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts",
@@ -186,7 +193,19 @@
       "url": "https://github.com/Microsoft/tsiclient",
       "branch": "tutorial",
       "branch_mapping": {}
-    }
+    },
+    {
+      "path_to_root": "media-services-v3-dotnet-core-tutorials",
+      "url": "https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "media-services-v3-rest-postman",
+      "url": "https://github.com/Azure-Samples/media-services-v3-rest-postman",
+      "branch": "master",
+      "branch_mapping": {}
+    }    
   ],
   "branch_target_mapping": {
     "live": [
