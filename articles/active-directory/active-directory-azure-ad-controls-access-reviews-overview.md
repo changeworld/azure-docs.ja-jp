@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2017
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 3c5d09b6f17fe8ae9be73d23d7aef6beae2ae43c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 02711f4fd54051f726a3823112230247df4776d1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193698"
 ---
 # <a name="azure-ad-access-reviews"></a>Azure AD アクセス レビュー
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: e12487c519a927b18574310b7af04a1811befd38
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 285961279a35d2770f05eb66b961f64e6781d9df
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34336553"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -175,7 +176,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 * フェデレーション アプリへの直接サインイン
 * フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリへのディープ リンク
 
-詳細については、「 [Azure AD 統合アプリケーションをユーザーにデプロイする](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)」を参照してください。
+詳細については、「 [Azure AD 統合アプリケーションをユーザーにデプロイする](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)」を参照してください。
 
 - - -
 **Q: Azure AD でアプリケーションに対する認証とシングル サインオンを有効にする方法には、どのようなものがありますか?**
@@ -186,7 +187,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 * [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
 * [Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Azure Active Directory によるシングル サインオンのしくみ](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
+* [Azure Active Directory によるシングル サインオンのしくみ](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
 
 - - -
 **Q: オンプレミスで実行しているアプリケーションを追加することはできますか?**

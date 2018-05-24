@@ -1,9 +1,9 @@
 ---
-title: "Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続 | Microsoft Docs"
-description: "Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight の Hadoop クラスターに接続し、Hive クエリを実行する方法について説明します。"
-keywords: "Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop"
+title: Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続 | Microsoft Docs
+description: Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight の Hadoop クラスターに接続し、Hive クエリを実行する方法について説明します。
+keywords: Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -15,13 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/22/2018
+ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: afd40d75bb9c5fd3170a4da215925244994d7749
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1707a681315fbb53f21df95664188463968bb855
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34202477"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する
 

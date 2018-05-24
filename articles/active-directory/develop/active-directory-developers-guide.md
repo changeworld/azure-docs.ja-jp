@@ -16,11 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f0f577e2ff18645cfa93763f2345ef4230907e09
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257551"
 ---
 # <a name="azure-active-directory-for-developers"></a>開発者のための Azure Active Directory
 
@@ -55,7 +56,6 @@ Azure Active Directory (Azure AD) はクラウドの ID サービスです。開
 |[アプリケーションの登録](active-directory-integrating-applications.md)           | Azure AD にアプリケーションを登録する方法。 |
 |[マルチテナント アプリケーション](active-directory-devhowto-multi-tenant-overview.md)    | Microsoft の職場アカウントでサインインできるようにする方法。 |
 |[OAuth と OpenID Connect プロトコル](active-directory-protocols-openid-connect-code.md)| Microsoft の認証プロトコルを使用してユーザーをサインインさせたり、Web API を呼び出したりする方法。 |
-|[その他のガイド](active-directory-developers-guide-index.md#guides)        |  Azure AD に関連したガイドの一覧。 |
 |  |  |
 
 ## <a name="reference-topics"></a>参照トピック
@@ -66,7 +66,6 @@ Azure Active Directory (Azure AD) はクラウドの ID サービスです。開
 | [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)   | Azure AD が提供するライブラリと SDK の概要。 |
 | [コード サンプル](active-directory-code-samples.md)                                  | Azure AD のコード サンプルの全一覧。 |
 | [用語集](active-directory-dev-glossary.md)                                      | このドキュメント全体で使用されている用語と語句の定義。 |
-| [その他のリファレンス トピック](active-directory-developers-guide-index.md#reference)| Azure AD に関連したリファレンス トピックの一覧。 |
 |  |  |
 
 
