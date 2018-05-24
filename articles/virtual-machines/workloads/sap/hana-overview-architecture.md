@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceeec6991aaac64211301313c1bb8dc5f5faa1c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077625"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -68,7 +69,7 @@ HANA L インスタンス ガイダンスの別のドキュメントでは、次
 - **テナント**: HANA L インスタンス スタンプにデプロイされたお客様は、"*テナント*" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 別のテナントに割り当てられているストレージ ユニットやコンピューティング ユニットは、HANA L インスタンス スタンプ レベルで相互に認識したり通信したりすることはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも HANA L インスタンス スタンプ レベルでテナント間が通信することはありません。
 - **SKU カテゴリ**: HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
     - **Type I クラス**: S72、S72m、S144、S144m、S192、S192m
-    - **Type II クラス**: S384、S384m、S384xm、S576、S768、S960
+    - **Type II クラス**: S384、S384m、S384xm、S576m、S768m、S960m
 
 
 クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で詳細を確認してください。 
@@ -144,9 +145,9 @@ Azure Virtual Machines でさまざまな VM の種類の中から選択でき�
 |---| SAP HANA on Azure S192m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド  |  4.0 TB |  16 TB | 使用可能 |
 |---| SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  6.0 TB |  18 TB | 使用可能 |
 |---| SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  8.0 TB |  22 TB |  使用可能 |
-|---| SAP HANA on Azure S576<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB |  28 TB | 使用可能 |
-|---| SAP HANA on Azure S768<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  16.0 TB |  36 TB | 使用可能 |
-|---| SAP HANA on Azure S960<br /> – 20 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 480 CPU コアと 960 CPU スレッド |  20.0 TB |  46 TB | 使用可能 |
+|---| SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB |  28 TB | 使用可能 |
+|---| SAP HANA on Azure S768m<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  16.0 TB |  36 TB | 使用可能 |
+|---| SAP HANA on Azure S960m<br /> – 20 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 480 CPU コアと 960 CPU スレッド |  20.0 TB |  46 TB | 使用可能 |
 
 - CPU コア = サーバー ユニットのプロセッサの合計の、非ハイパースレッド CPU コアの合計。
 - CPU スレッド = サーバー ユニットのプロセッサの合計の、ハイパースレッド CPU コアによって提供されるコンピューティング スレッドの合計。 すべてのユニットは、ハイパースレッディング テクノロジを使用するように既定で構成されます。
@@ -157,7 +158,7 @@ Azure Virtual Machines でさまざまな VM の種類の中から選択でき�
 すべてのプランのハードウェア ベースは、SAP HANA TDI 認定を受けています。 ハードウェアの 2 種類のクラスでは、SKU を次のように分けています。
 
 - S72、S72m、S144、S144m、S192、S192m - "Type I クラス" の SKU と呼びます。
-- S384、S384m、S384xm、S576、S768、S960 - "Type II クラス" の SKU と呼びます。
+- S384、S384m、S384xm、S576m、S768m、S960m - "Type II クラス" の SKU と呼びます。
 
 完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな &quot;テナント&quot; をデプロイします。
 
@@ -304,6 +305,8 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 
 各種 Linux バージョンと各種 SAP HANA バージョンのサポート マトリックスについては、[SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581) を確認してください。
 
+オペレーティング システムと HLI ファームウェア/ドライバーのバージョンの互換性対応表については、[HLI の OS のアップグレード](os-upgrade-hana-large-instance.md)に関するページを参照してください。
+
 
 **データベース**
 
@@ -344,9 +347,9 @@ Type I クラスの HANA L インスタンスは、ストレージ ボリュー�
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
-| S576 | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
-| S768 | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
-| S960 | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
+| S576m | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S768m | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
+| S960m | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
 
 
 実際にデプロイされるボリュームは、デプロイと、ボリューム サイズの表示に使用するツールによって異なる場合があります。

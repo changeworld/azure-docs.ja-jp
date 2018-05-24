@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 17f2afb0aaf3b899784a504b77f33a1284f0a232
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7c505080e6b6144ab3cf24ad89bb084efbb77c29
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155467"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>ページ上のリンクがアプリケーション プロキシ アプリケーションに対して機能しない
 
@@ -36,14 +37,14 @@ ms.lasthandoff: 03/14/2018
 
     内部 URL は変更するが、ユーザーのランディング ページを変更したくない場合は、ホーム ページ URL を前に発行した内部 URL に変更します。 これを行うには、[Azure Active Directory] -&gt; [アプリの登録] に移動し、アプリケーションを選択し、[プロパティ] を選択します。 このプロパティ タブには、目的のランディング ページになるように調整できるフィールド [ホーム ページ URL] が表示されます。
 
-2.  アプリケーションで完全修飾ドメイン名 (FQDN) を使用している場合は、[カスタム ドメイン](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)を使用してアプリケーションを発行します。 この機能を使用すると、同じ URL を内部と外部の両方に使用できます。
+2.  アプリケーションで完全修飾ドメイン名 (FQDN) を使用している場合は、[カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md)を使用してアプリケーションを発行します。 この機能を使用すると、同じ URL を内部と外部の両方に使用できます。
 
-    このオプションでは、内部 URL へのアプリケーション内のリンクが外部からも認識されるため、アプリケーション内のリンクがアプリケーション プロキシ経由で外部からアクセス可能なことが保証されます。 すべてのリンクが引き続き、発行済みのアプリケーションに属している必要があることに注意してください。 ただし、このオプションでは、各リンクが同じアプリケーションに属している必要はなく、複数のアプリケーションに属することができます。
+    このオプションでは、内部 URL へのアプリケーション内のリンクが外部からも認識されるため、アプリケーション内のリンクがアプリケーション プロキシ経由で外部からアクセス可能なことが保証されます。 すべてのリンクが引き続き、発行済みのアプリケーションに属している必要があります。 ただし、このオプションでは、各リンクが同じアプリケーションに属している必要はなく、複数のアプリケーションに属することができます。
 
-3.  これらのオプションのどちらも実現できない場合は、URL 変換/書き換えを実行する新機能のプレビューに参加します。 このオプションでは、アプリケーションの HTML 本文内に存在する内部 URL またはリンクが、発行済みの外部のアプリ プロキシ URL に変換または「マッピング」されます。 これは HTML または CSS 内のリンクに対してのみ機能し、リンクが JS 経由で生成されている場合は役立ちません。 
+3.  これらのオプションのどちらも実現できない場合は、URL 変換/書き換えを実行する新機能をプレビューできます。 この機能では、アプリケーションの HTML 本文内に存在する内部 URL またはリンクが、発行済みの外部のアプリ プロキシ URL に変換または "マッピング" されます。 この変換は、HTML または CSS 内のリンクに対してのみ機能し、リンクが JS 経由で生成されている場合は役立ちません。 
 
-そのため、可能な場合は[カスタム ドメイン](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) ソリューションを使用することを強くお勧めします。 プレビューに参加したい場合は、applicationId を記入して <aadapfeedback@microsoft.com> 宛にメールでご連絡ください。
+そのため、可能な場合は[カスタム ドメイン](manage-apps/application-proxy-configure-custom-domain.md) ソリューションを使用することを強くお勧めします。 プレビューに参加したい場合は、applicationId を記入して <aadapfeedback@microsoft.com> 宛にメールでご連絡ください。
 
 ## <a name="next-steps"></a>次の手順
-[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-working-with-proxy-servers.md)
+[既存のオンプレミス プロキシ サーバーと連携する](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
 

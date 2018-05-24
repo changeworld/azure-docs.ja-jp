@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: f58fb5090aba3c5052d1bbdec76225d0ae50e8f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 531ca6d781ae62aacd85dce600e3ea8b46ccf360
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777079"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -61,6 +62,7 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 
 サインインできない場合は、以下のトラブルシューティング方法を試してください。
 
+* macOS 上で、[Waiting for authentication...]\(認証の完了を待機しています\) ダイアログが表示されたままサインイン ウィンドウが表示されない場合は、[こちらの手順](#Resetting-the-Mac-Keychain)を試してください。
 * Storage Explorer を再起動する
 * 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
 * プロキシと証明書が、使用中のマシンと Storage Explorer の両方の設定用に正しく構成されていることを確認します
@@ -96,7 +98,8 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 
 最初に、入力した次の情報がすべて正しいことを確認します。
 
-*プロキシの URL およびポート番号 *プロキシで必要な場合はユーザー名とパスワード
+* プロキシの URL とポート番号
+* プロキシで必要な場合はユーザー名とパスワード
 
 ### <a name="common-solutions"></a>一般的な解決方法
 
@@ -129,7 +132,7 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 
 プロキシ経由で Azure に接続している場合は、プロキシの設定が正しいことを確認します。 サブスクリプションまたはアカウント所有者からリソースへのアクセス権が付与された場合は、該当するリソースの読み取りまたは一覧表示の権限があることを確認してください。
 
-### <a name="issues-with-sas-url"></a>SAS URL の問題
+## <a name="issues-with-sas-url"></a>SAS URL の問題
 SAS URL を使用してサービスに接続し、上記のエラーが発生する場合は、
 
 * リソースの読み取りまたは一覧表示に必要なアクセス許可が URL で提供されているかを確認します。
@@ -152,6 +155,19 @@ Ubuntu 16.04 以外の Linux ディストリビューションの場合、いく
 * 最新の GCC
 
 ご使用のディストリビューションによっては、他のパッケージのインストールも必要な場合があります。 Storage Explorer の[リリース ノート](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)には、一部のディストリビューションでの具体的な手順が掲載されています。
+
+## <a name="resetting-the-mac-keychain"></a>Mac のキーチェーンのリセット
+macOS のキーチェーンが、Storage Explorer の認証ライブラリの問題を引き起こす状態になることがあります。 この状態からキーチェーンを取得するには、以下の手順を実行します。
+1. Storage Explorer を閉じます。
+2. キーチェーンを開きます (**Cmd キーを押しながら Space キー**を押し、キーチェーンを入力し、Enter キーを押します)。
+3. "ログイン" キーチェーンを選択します。
+4. 南京錠アイコンをクリックして、キーチェーンをロックします (完了すると、鍵がかかった南京錠に表示が切り替わりますが、開いているアプリによっては数秒かかる場合があります)。
+
+    ![image](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
+
+5. Storage Explorer を起動します。
+6. "サービス ハブからキーチェーンにアクセスする必要があります" などのポップアップ メッセージが表示されたら、Mac 管理者アカウントのパスワードを入力します。**[常に許可]** をクリックします (**[常に許可]** を使用できない場合は **[許可]** をクリックします)。
+7. サインインを試します。
 
 ## <a name="next-steps"></a>次の手順
 

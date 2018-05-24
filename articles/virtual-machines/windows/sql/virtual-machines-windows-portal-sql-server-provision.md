@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
+ms.date: 05/04/2018
 ms.author: jroth
-ms.openlocfilehash: 33b7c82f08f63199cd128055bc497f61cb30fc4a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072319"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -114,12 +115,12 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 
 ![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
-運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」のマシンのサイズと構成に関する推奨事項を参照してください。 一覧にないマシン サイズが必要な場合は、**[すべて表示]** ボタンをクリックします。
+運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
 
 > [!NOTE]
 > 仮想マシン サイズの詳細については、[仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
-マシン サイズを選択し、 **[選択]**をクリックします。
+マシン サイズを選択し、 **[選択]** をクリックします。
 
 ## <a name="3-configure-optional-features"></a>手順 3.オプション機能を構成する
 
@@ -130,13 +131,20 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
    > [!NOTE]
    > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳しくは、「Azure Managed Disks の概要」(../managed-disks-overview.md) をご覧ください。 可用性セットの管理ディスクの詳細については、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md)」を参照してください。
 
-* **[ネットワーク]**で、自動的に設定された値をそのまま使用できます。 また、各機能をクリックして、**仮想ネットワーク**、**サブネット**、**パブリック IP アドレス**、**ネットワーク セキュリティ グループ**を手動で構成することもできます。 このチュートリアルでは、既定値をそのまま使用します。
+* **[ネットワーク]** で、**[Select public inbound ports]\(パブリック受信ポートの選択\)** の一覧からいずれかの受信ポートを選びます。 たとえば、VM へのリモート デスクトップの場合は、**[RDP (3389)]** ポートを選びます。
+
+   ![受信ポート](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > **[MS SQL (1433)]** ポートを選択すると、SQL Server にリモート アクセスできます。 ただし、「**SQL Server の設定**」の手順でもこのオプションが提供されるため、これは必要ありません。 この手順でポート 1433 を選択した場合、「**SQL Server の設定**」の手順での選択に関係なく、このポートが開かれます。
+
+   ネットワーク設定に対して他の変更を行ったり、既定値のままにしたりできます。
 
 * **[監視]** は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。 これらの設定はここで変更できます。
 
 * このチュートリアルでは、**[可用性セット]** を既定の **[なし]** のままにすることができます。 SQL AlwaysOn 可用性グループを設定する場合は、仮想マシンを再作成しないように可用性を構成します。  詳細については、「 [Virtual Machines の可用性管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-これらの設定の構成が済んだら、 **[OK]**をクリックします。
+これらの設定の構成が済んだら、 **[OK]** をクリックします。
 
 ## <a name="4-configure-sql-server-settings"></a>4.SQL Server の設定を構成する
 **[SQL Server の設定]** ウィンドウで、SQL Server の個々の設定と最適化を構成します。 SQL Server について構成できる設定は次のとおりです。
@@ -153,7 +161,7 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 
 ### <a name="connectivity"></a>接続
 
-**[SQL の接続]**で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。 このチュートリアルでは、 **[パブリック (インターネット)]** を選択して、インターネット上のコンピューターやサービスから SQL Server に接続できるようにします。 このオプションを選択すると、ポート 1433 のトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
+**[SQL の接続]** で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。 このチュートリアルでは、 **[パブリック (インターネット)]** を選択して、インターネット上のコンピューターやサービスから SQL Server に接続できるようにします。 このオプションを選択すると、ポート 1433 のトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
 
 ![SQL Connectivity Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-connectivity-alt.png)
 
@@ -171,7 +179,7 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 
 ### <a name="authentication"></a>認証
 
-SQL Server 認証が必要な場合は、 **[有効]** under **[有効]**にアクセスしてください。
+SQL Server 認証が必要な場合は、 **[有効]** under **[有効]** にアクセスしてください。
 
 ![パブリック](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-authentication.png)
 
@@ -196,7 +204,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 1 秒間の入力/出力操作数 (IOP)、スループット (MB/秒)、およびストレージの合計サイズで、要件を指定できます。 スライド スケールを使用してこれらを構成します。 ワークロードに基づいて、これらのストレージ設定を変更できます。 これらの要件に基づいて、アタッチおよび構成するディスクの数が自動的に計算されます。
 
-**[ストレージの最適化]**で、次のいずれかのオプションを選択します。
+**[ストレージの最適化]** で、次のいずれかのオプションを選択します。
 
 * **[全般]** は、既定の設定であり、ほとんどのワークロードをサポートします。
 * **[トランザクション]** は、従来のデータベース OLTP ワークロード用にストレージを最適化します。
@@ -204,7 +212,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 ### <a name="automated-patching"></a>自動修正
 
-**[自動修正]** は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 メンテナンス ウィンドウの曜日、時刻、および期間を指定します。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。 SQL Server とオペレーティング システムに修正プログラムを自動的に適用しない場合は、 **[無効]**をクリックします。  
+**[自動修正]** は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 メンテナンス ウィンドウの曜日、時刻、および期間を指定します。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。 SQL Server とオペレーティング システムに修正プログラムを自動的に適用しない場合は、 **[無効]** をクリックします。  
 
 ![SQL Automated Patching](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
@@ -212,7 +220,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 ### <a name="automated-backup"></a>自動化されたバックアップ
 
-**[自動バックアップ]**では、すべてのデータベースの自動データベース バックアップを有効にすることができます。 既定では、自動バックアップは無効です。
+**[自動バックアップ]** では、すべてのデータベースの自動データベース バックアップを有効にすることができます。 既定では、自動バックアップは無効です。
 
 SQL の自動バックアップを有効にするときは、以下の設定の構成を行います。
 
@@ -222,7 +230,7 @@ SQL の自動バックアップを有効にするときは、以下の設定の�
 * システム データベースのバックアップ
 * バックアップ スケジュールの構成
 
-バックアップを暗号化するには、 **[有効]**をクリックします。 **パスワード**を指定します。 Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。
+バックアップを暗号化するには、 **[有効]** をクリックします。 **パスワード**を指定します。 Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。
 
 ![SQL Automated Backup](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup2.png)
 
@@ -251,7 +259,7 @@ SQL の自動バックアップを有効にするときは、以下の設定の�
 
 ![SQL Server Machine Learning サービスの有効化](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
-SQL Server の設定の構成が完了したら、 **[OK]**をクリックします。
+SQL Server の設定の構成が完了したら、 **[OK]** をクリックします。
 
 ## <a name="5-review-the-summary"></a>5.概要を確認する
 

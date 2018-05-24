@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Application Gateway に関してよく寄せられる質問
 description: このページでは、Azure Application Gateway に関してよく寄せられる質問の回答を紹介します
 services: application-gateway
@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32309472"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -53,7 +54,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 **Q.このサービスは、どのリージョンで利用できますか?**
 
-Application Gateway は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/) で利用することもできます。
+Application Gateway は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/overview/clouds/government/) で利用することもできます。
 
 **Q.Application Gateway はサブスクリプション専用のデプロイメントですか? または、複数の顧客と共有されますか?**
 
@@ -178,6 +179,11 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 **Q.手動でのスケールアップまたはスケールダウンによってダウンタイムが発生しますか?**
 
 ダウンタイムは発生しません。アップグレード ドメインと障害ドメインにインスタンスが分散されます。
+
+**Q.アプリケーション ゲートウェイは接続のドレインに対応していますか?**
+
+はい。 中断することなくバックエンド プール内のメンバーを変更するように接続のドレインを構成できます。 そのため、既存の接続がある場合、その接続が閉じられるか、構成可能なタイムアウトに達するまで、以前の宛先に送信し続けることができます。 接続のドレインは、現在処理中の接続が完了するまで待つだけである点に注意してください。 Application Gateway は、アプリケーションのセッション状態を認識しません。
+
 
 **Q.インスタンスを中断せずにサイズを中から大に変更できますか?**
 
@@ -329,4 +335,4 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 
 ## <a name="next-steps"></a>次の手順
 
-Application Gateway について詳しくは、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+Application Gateway の詳細については、「[Azure Application Gateway とは](overview.md)」を参照してください。

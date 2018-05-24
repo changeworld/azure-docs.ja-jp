@@ -2,41 +2,44 @@
 title: Azure AD でサポートされているさまざまなトークンとクレームの種類について | Microsoft Docs
 description: Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド
 documentationcenter: na
-author: hpsin
+author: CelesteDG
 services: active-directory
 manager: mtillman
 editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/22/2018
-ms.author: hirsin
+ms.date: 05/22/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157923"
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。 
 
 ## <a name="types-of-tokens"></a>トークンの種類
-Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-code.md)をサポートしており、access_token と refresh_token の両方を利用します。  また、[OpenID Connect](active-directory-protocols-openid-connect-code.md) による認証とサインインもサポートしており、これによって 3 種類目のトークンである id_token が導入されます。  これらの各トークンは、「ベアラー トークン」として表されます。
+Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-code.md)をサポートしており、access_token と refresh_token の両方を利用します。 また、[OpenID Connect](active-directory-protocols-openid-connect-code.md) による認証とサインインもサポートしており、これによって 3 種類目のトークンである id_token が導入されます。 これらの各トークンは、「ベアラー トークン」として表されます。
 
 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。 この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。 ベアラー トークンを受信するには Azure AD による認証が必要となりますが、意図しない利用者による傍受を防ぐために、トークンをセキュリティで保護する対策を講じる必要があります。 ベアラー トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。 ベアラー トークンが暗号化されずに転送された場合、中間者攻撃によってトークンが取得され、保護されたリソースに不正アクセスされる可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。 ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750)をご覧ください。
 
-Azure AD によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。  JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。  JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。  JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。  Azure AD によって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。  そのためには、[jwt.ms](https://jwt.ms/) などの複数のツールを利用できます。 JWT の詳細については、 [JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
+Azure AD によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。 JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。 JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。 JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。 Azure AD によって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。 そのためには、[jwt.ms](https://jwt.ms/) などの複数のツールを利用できます。 JWT の詳細については、 [JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
 
 ## <a name="idtokens"></a>Id_tokens
-id_token は、アプリが [OpenID Connect](active-directory-protocols-openid-connect-code.md) を使用して認証を実行すると受け取るサインイン セキュリティ トークンの形式です。  [JWT](#types-of-tokens) として表され、ユーザーがアプリに署名するために使用できる要求が含まれます。  必要に応じて id_token で要求を使用できます。一般には、アカウント情報の表示や、アプリ内でのアクセス制御の決定に使用されます。
+id_token は、アプリが [OpenID Connect](active-directory-protocols-openid-connect-code.md) を使用して認証を実行すると受け取るサインイン セキュリティ トークンの形式です。 [JWT](#types-of-tokens) として表され、ユーザーがアプリに署名するために使用できる要求が含まれます。 必要に応じて id_token で要求を使用できます。一般には、アカウント情報の表示や、アプリ内でのアクセス制御の決定に使用されます。
 
-id_token は署名されますが、この時点では暗号化されません。  アプリは、id_token を受け取ったら、[署名を検証](#validating-tokens)してトークンの信頼性を確認し、要求を検証してトークンの有効性を確認する必要があります。  アプリで検証する要求はシナリオの要件によって異なりますが、すべてのシナリオでアプリが実行する必要がある [共通の要求検証](#validating-tokens) がいくつかあります。
+id_token は署名されますが、この時点では暗号化されません。 アプリは、id_token を受け取ったら、[署名を検証](#validating-tokens)してトークンの信頼性を確認し、要求を検証してトークンの有効性を確認する必要があります。 アプリで検証する要求はシナリオの要件によって異なりますが、すべてのシナリオでアプリが実行する必要がある [共通の要求検証](#validating-tokens) がいくつかあります。
 
-id_token の要求、およびサンプル id_token については、次のセクションを参照してください。  id_token 内のクレームは特定の順序では返されないことに注意してください。  さらに、随時、新しいクレームが id_token に導入される可能性があります。アプリは、新しいクレームが導入されても問題ないようにする必要があります。  次の一覧の要求は、この記事の執筆時点で、アプリで解釈できることが保証されているものです。  必要な場合は、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)でさらに詳細な情報を参照できます。
+id_token の要求、およびサンプル id_token については、次のセクションを参照してください。 id_token 内のクレームは特定の順序では返されないことに注意してください。 さらに、随時、新しいクレームが id_token に導入される可能性があります。アプリは、新しいクレームが導入されても問題ないようにする必要があります。 次の一覧の要求は、この記事の執筆時点で、アプリで解釈できることが保証されているものです。 必要な場合は、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)でさらに詳細な情報を参照できます。
 
 #### <a name="sample-idtoken"></a>id_token のサンプル
 ```
@@ -58,9 +61,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | 認証のインスタント |認証が行われた日時を記録します。 <br><br> **SAML 値の例**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |認証方法 |トークンのサブジェクトが認証された方法を示します。 <br><br> **SAML 値の例**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT 値の例**: `“amr”: ["pwd"]` |
 | `given_name` |名 |Azure AD ユーザー オブジェクトに設定されたユーザーの名を示します。 <br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **JWT 値の例**: <br> `"given_name": "Frank"` |
-| `groups` |グループ |サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br> **注**: <br> 暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。  <br> 他のフローでは、ユーザーが属するグループの数が制限 (SAML の場合は 150、JWT の場合は 200) を超える場合、超過分要求に、ユーザーのグループ リストを含む、Graph エンドポイントを指す要求ソースが追加されます 。 <br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **JWT 値の例**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
-|`hasgroups` | JWT の暗黙的なフロー グループ超過分インジケーター| 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。  すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。  クライアントが Graph を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
-| `groups:src1` <br> `http://schemas.microsoft.com/claims/groups.link` | グループ超過分インジケーター | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。  SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.microsoft.com/claims/groups.link”>`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` <br><br> **JWT 値の例**: <br> `"groups":"src1` <br> `_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
+| `groups` |グループ |サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br> **注**: <br> 暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。 <br> 他のフローでは、ユーザーが属するグループの数が制限 (SAML の場合は 150、JWT の場合は 200) を超える場合、超過分要求に、ユーザーのグループ リストを含む、Graph エンドポイントを指す要求ソースが追加されます 。 <br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **JWT 値の例**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+|`hasgroups` | JWT の暗黙的なフロー グループ超過分インジケーター| 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。 クライアントが Graph を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
+| `groups:src1` <br> `http://schemas.microsoft.com/claims/groups.link` | グループ超過分インジケーター | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.microsoft.com/claims/groups.link”>`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` <br><br> **JWT 値の例**: <br> `"groups":"src1` <br> `_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
 | `idp` |ID プロバイダー |トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、ユーザー アカウントが発行者とは異なるテナントにある場合を除いて、発行者クレームの値と同じです。 <br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **JWT 値の例**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `iat` |IssuedAt |トークンが発行された時刻が格納されます。 このクレームは、トークンの鮮度を測定するためによく使用されます。 <br><br> **SAML 値の例**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **JWT 値の例**: <br> `"iat": 1390234181` |
 | `iss` |発行者 |トークンを構築して返す Security Token Service (STS) を識別します。 Azure AD が返すトークンでは、発行者は sts.windows.net です。 発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。 テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。 <br><br> **SAML 値の例**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **JWT 値の例**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
@@ -80,30 +83,29 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 アプリがアクセス トークンのみを "*使用して*" API へのアクセスを取得する場合は、アクセス トークンを完全に不透明として処理できます (そうする必要があります)。アクセス トークンは、アプリが HTTP 要求内のリソースに渡すことができる単なる文字列です。
 
-アクセス トークンを要求すると、Azure AD はアプリで使用できるようにアクセス トークンに関するメタデータも返します。  この情報には、アクセス トークンの有効期限や有効な範囲が含まれます。  これにより、アプリはアクセス トークン自体を解析しなくても、アクセス トークンのインテリジェントなキャッシュを実行できます。
+アクセス トークンを要求すると、Azure AD はアプリで使用できるようにアクセス トークンに関するメタデータも返します。 この情報には、アクセス トークンの有効期限や有効な範囲が含まれます。 これにより、アプリはアクセス トークン自体を解析しなくても、アクセス トークンのインテリジェントなキャッシュを実行できます。
 
-アプリが Azure AD によって保護される APIであり、HTTP 要求内のアクセス トークンを予期している場合は、受信するトークンの検証と検査を実行する必要があります。 アプリでは、アクセス トークンを使用してリソースにアクセスする前にアクセス トークンの検証を実行する必要があります。 検証の詳細については、「[トークンの検証](#validating-tokens)」をご覧ください。  
-これを .NET で実行する方法の詳細については、「[Azure AD からのベアラー トークンの使用による Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)」を参照してください。
+アプリが Azure AD によって保護される APIであり、HTTP 要求内のアクセス トークンを予期している場合は、受信するトークンの検証と検査を実行する必要があります。 アプリでは、アクセス トークンを使用してリソースにアクセスする前にアクセス トークンの検証を実行する必要があります。 検証の詳細については、「[トークンの検証](#validating-tokens)」をご覧ください。 これを .NET で実行する方法の詳細については、「[Azure AD からのベアラー トークンの使用による Web API の保護](active-directory-devquickstarts-webapi-dotnet.md)」を参照してください。
 
 ## <a name="refresh-tokens"></a>更新トークン
 
-更新トークンは、OAuth 2.0 のフローで新しいアクセス トークンを取得するためにアプリで使用できるセキュリティ トークンです。  ユーザーが介入しなくても、アプリはユーザーに代わってリソースへの長期的なアクセスを実現できます。
+更新トークンは、OAuth 2.0 のフローで新しいアクセス トークンを取得するためにアプリで使用できるセキュリティ トークンです。 ユーザーが介入しなくても、アプリはユーザーに代わってリソースへの長期的なアクセスを実現できます。
 
-更新トークンはマルチリソースです。  つまり、あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。 このために、要求内の `resource` パラメーターを対象のリソースに設定します。
+更新トークンはマルチリソースです。 つまり、あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。 このために、要求内の `resource` パラメーターを対象のリソースに設定します。
 
-更新トークンは、アプリに対して完全に非透過的です。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。  更新トークンは、いつでもさまざまな理由で無効になる可能性があります。理由については、「[トークンの失効](#token-revocation)」をご覧ください。  アプリで更新トークンが有効かどうかを把握するための唯一の方法は、Azure AD トークン エンドポイントに対してトークン要求を行って更新トークンを利用することです。
+更新トークンは、アプリに対して完全に非透過的です。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。 更新トークンは、いつでもさまざまな理由で無効になる可能性があります。理由については、「[トークンの失効](#token-revocation)」をご覧ください。 アプリで更新トークンが有効かどうかを把握するための唯一の方法は、Azure AD トークン エンドポイントに対してトークン要求を行って更新トークンを利用することです。
 
-新しいアクセス トークンに対して更新トークンを利用すると、トークン応答で新しい更新トークンが返されます。  新しく発行された更新トークンを保存し、要求で使用したものと置き換える必要があります。  これにより、可能な限り長く更新トークンが有効であることが保証されます。
+新しいアクセス トークンに対して更新トークンを利用すると、トークン応答で新しい更新トークンが返されます。 新しく発行された更新トークンを保存し、要求で使用したものと置き換える必要があります。 これにより、可能な限り長く更新トークンが有効であることが保証されます。
 
 ## <a name="validating-tokens"></a>トークンの検証
 
-id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。 アクセス トークンを検証するには、発行者、対象ユーザー、および署名トークンをアプリで検証する必要もあります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[手動による JWT の検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。  
+id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。 アクセス トークンを検証するには、発行者、対象ユーザー、および署名トークンをアプリで検証する必要もあります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[手動による JWT の検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。 
 
-トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。  JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも 1 つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
+トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。 JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも 1 つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
 
 #### <a name="validating-the-signature"></a>署名の検証
 
-JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。  1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。  署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
+JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。 1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。 署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
 
 Azure AD によって発行されるトークンは、RSA 256 などの業界標準の非対称暗号アルゴリズムを使用して署名されます。 JWT のヘッダーには、トークンの署名に使用されたキーと暗号方法に関する情報が含まれます。
 
@@ -117,7 +119,7 @@ Azure AD によって発行されるトークンは、RSA 256 などの業界標
 
 `alg` 要求はトークンへの署名に使用されたアルゴリズムを示し、`x5t` 要求はトークンへの署名に使用された特定の公開キーを示します。
 
-いつでも、Azure AD は公開/秘密キー ペアの特定セットのいずれかを使用して、id_token に署名できます。 Azure AD は定期的に使用可能なキー セットをローテーションするので、このキー変更を自動的に処理するようにアプリを作成する必要があります。  Azure AD によって使用される公開キーの更新を確認する適切な頻度は、24 時間間隔です。
+いつでも、Azure AD は公開/秘密キー ペアの特定セットのいずれかを使用して、id_token に署名できます。 Azure AD は定期的に使用可能なキー セットをローテーションするので、このキー変更を自動的に処理するようにアプリを作成する必要があります。 Azure AD によって使用される公開キーの更新を確認する適切な頻度は、24 時間間隔です。
 
 署名の検証に必要な署名キー データは、次の場所にある OpenID Connect メタデータのドキュメントを使用して入手できます。
 
@@ -130,15 +132,15 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 > 
 > 
 
-このメタデータ ドキュメントは、OpenID Connect 認証の実行に必要なさまざまなエンドポイントの場所など、役に立つ情報を含む JSON オブジェクトです。  
+このメタデータ ドキュメントは、OpenID Connect 認証の実行に必要なさまざまなエンドポイントの場所など、役に立つ情報を含む JSON オブジェクトです。 
 
-また、トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri`も含まれます。  `jwks_uri` にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれます。  アプリでは、 `kid` 要求を JWT ヘッダーで使用して、特定のトークンの署名に使用されたこのドキュメント内の公開キーを選択できます。  その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
+また、トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri`も含まれます。 `jwks_uri` にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれます。 アプリでは、 `kid` 要求を JWT ヘッダーで使用して、特定のトークンの署名に使用されたこのドキュメント内の公開キーを選択できます。 その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
 
 署名の検証の実行は、このドキュメントの対象範囲外です。必要な場合は、役に立つオープン ソース ライブラリが数多く提供されています。
 
 #### <a name="validating-the-claims"></a>要求を検証する
 
-トークン (ユーザ―のサインイン時の id_token 、または HTTP 要求内のべアラー トークンとしてのアクセス トークンのいずれか) を受信したアプリは、トークン内のクレームをチェックする必要があります。  これらには次が含まれますが、これらに限定されるものではありません。
+トークン (ユーザ―のサインイン時の id_token 、または HTTP 要求内のべアラー トークンとしてのアクセス トークンのいずれか) を受信したアプリは、トークン内のクレームをチェックする必要があります。 これらには次が含まれますが、これらに限定されるものではありません。
 
 * **受信者**クレーム - トークンがそのアプリに与えられるものであることを検証します。
 * **期間の開始時刻**クレームと**期限切れ日時**クレーム - トークンが期限切れでないことを検証します。
@@ -150,20 +152,22 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 ## <a name="token-revocation"></a>トークンの失効
 
-更新トークンは、いつでもさまざまな理由で無効になる可能性があります。  これらはタイムアウトと失効の 2 つに大きく分けることができます。 
+更新トークンは、いつでもさまざまな理由で無効になる可能性があります。 これらはタイムアウトと失効の 2 つに大きく分けることができます。 
 * トークンのタイムアウト
   * MaxInactiveTime: 更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。 
-  * MaxSessionAge: MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定された場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。  
+  * MaxSessionAge: MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定された場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。 
   * 次に例を示します。
-    * テナントの MaxInactiveTime が 5 日間で、ユーザーが 1 週間の休暇を取った場合、7 日間にわたり AAD はユーザーからの新しいトークン要求を認識しません。  ユーザーが次に新しいトークンを要求するとき、更新トークンが失効していることがわかります。資格情報を再び入力する必要があります。 
-    * 機密性の高いアプリケーションで MaxAgeSessionSingleFactor が 1 日に設定されています。  ユーザーが月曜日にログインし、その 25 時間後の火曜日にログインした場合、再認証が必要になります。  
+    * テナントの MaxInactiveTime が 5 日間で、ユーザーが 1 週間の休暇を取った場合、7 日間にわたり AAD はユーザーからの新しいトークン要求を認識しません。 ユーザーが次に新しいトークンを要求するとき、更新トークンが失効していることがわかります。資格情報を再び入力する必要があります。 
+    * 機密性の高いアプリケーションで MaxAgeSessionSingleFactor が 1 日に設定されています。 ユーザーが月曜日にログインし、その 25 時間後の火曜日にログインした場合、再認証が必要になります。 
 * 無効化
-  * 自発的なパスワードの変更: ユーザーが自分のパスワードを変更した場合、トークンの取得方法に応じて、いくつかのアプリケーションで再認証が必要になります。  例外については下の「注意」をご覧ください。 
-  * 不本意なパスワードの変更: 管理者がユーザーのパスワード変更を強制した場合、またはパスワードをリセットした場合、そのパスワードを使用して取得されたユーザーのトークンは無効になります。  例外については下の「注意」をご覧ください。 
-  * セキュリティ違反: セキュリティ違反 (たとえば、パスワードのオンプレミス ストアの侵害) が発生した場合、管理者は現在発行されている更新トークンすべてを無効化できます。  これによりすべてのユーザーが強制的に再認証することになります。 
+  * 自発的なパスワードの変更: ユーザーが自分のパスワードを変更した場合、トークンの取得方法に応じて、いくつかのアプリケーションで再認証が必要になります。 例外については下の「注意」をご覧ください。 
+  * 不本意なパスワードの変更: 管理者がユーザーのパスワード変更を強制した場合、またはパスワードをリセットした場合、そのパスワードを使用して取得されたユーザーのトークンは無効になります。 例外については下の「注意」をご覧ください。 
+  * セキュリティ違反: セキュリティ違反 (たとえば、パスワードのオンプレミス ストアの侵害) が発生した場合、管理者は現在発行されている更新トークンすべてを無効化できます。 これによりすべてのユーザーが強制的に再認証することになります。 
 
 > [!NOTE]
->トークンの取得にパスワード以外の認証方法 (Windows Hello、認証アプリ、顔や指紋などの生体認証) が使用された場合、ユーザーのパスワードを変更しても、ユーザーの再認証は強制されません (ただし、認証アプリの再認証は強制されます)。  これは、選択した認証入力 (顔など) が変わっておらず、再認証のために再び使用できるためです。
+>トークンの取得にパスワード以外の認証方法 (Windows Hello、認証アプリ、顔や指紋などの生体認証) が使用された場合、ユーザーのパスワードを変更しても、ユーザーの再認証は強制されません (ただし、認証アプリの再認証は強制されます)。 これは、選択した認証入力 (顔など) が変わっておらず、再認証のために再び使用できるためです。
+>
+> 社外秘のクライアントはパスワード変更取り消しの影響を受けません。 パスワード変更前に更新トークンが発行された社外秘のクライアントは、その更新トークンを引き続き使用して他のトークンを取得できます。 
 
 ## <a name="sample-tokens"></a>トークンのサンプル
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778905"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
@@ -158,7 +159,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 | Name | スクリプト |
 | --- | --- |
-| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh[HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md) を参照してください。 |
+| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md) を参照してください。 |
 | **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh 。[HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md) に関する記事を参照してください。 |
 | **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh 。[HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md) を参照してください。 |
 | **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh 。[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md) をご覧ください。 |

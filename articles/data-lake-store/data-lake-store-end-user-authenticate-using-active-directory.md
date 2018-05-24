@@ -1,23 +1,22 @@
 ---
-title: "エンドユーザー認証: Data Lake Store と Azure Active Directory | Microsoft Docs"
-description: "Data Lake Store での Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します"
+title: 'エンドユーザー認証: Data Lake Store と Azure Active Directory | Microsoft Docs'
+description: Data Lake Store での Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 11aed2ee2af239b02375a2d90e2544b4b45b2d41
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197139"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証
 > [!div class="op_single_selector"]
@@ -83,7 +82,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2: アプリケーション ID とリダイレクト URI を取得する
 
-[アプリケーション ID の取得](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページを参照して、Azure AD ネイティブ アプリケーションのアプリケーション ID (Azure クラシック ポータルではクライアント ID) を取得します。
+アプリケーション ID の取得については、[アプリケーション ID の取得](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページをご覧ください。
 
 リダイレクト URI を取得するには、次の手順を実行します。
 
@@ -112,7 +111,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 
     ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    **[Done]**をクリックします。
+    **[Done]** をクリックします。
 
 5. 最後の 2 つの手順を繰り返して、**Windows Azure Service Management API** にも、アクセス許可を与えます。
    

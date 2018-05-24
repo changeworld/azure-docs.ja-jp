@@ -16,11 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3737ea08e593ae1018489633e23e80e1099296ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b416acd9a2a3b03502b7eca11eade9dbd56f3afe
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072051"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Azure VM から非管理対象 VM イメージを作成する方法
 
@@ -78,6 +79,11 @@ Azure PowerShell Version 1.0.x 以降がインストールされている必要�
     ```
 
 ## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>VM の割り当てを解除して、一般化状態に設定
+
+> [!IMPORTANT] 
+> 一般化済みとしてマークされた VM のタグを、追加、編集、削除することはできません。 VM にタグを追加したい場合は、一般化済みとしてマークする前に行ってください。
+> 
+
 1. VM リソースの割り当てを解除します。
    
     ```powershell
@@ -85,7 +91,7 @@ Azure PowerShell Version 1.0.x 以降がインストールされている必要�
     ```
    
     Azure Portal で VM の *[状態]* が **[停止済み]** から **[停止済み (割り当て解除)]** に変わります。
-2. 仮想マシンの状態を **[一般化]**に設定します。 
+2. 仮想マシンの状態を **[一般化]** に設定します。 
    
     ```powershell
     Set-AzureRmVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized

@@ -1,24 +1,26 @@
 ---
-title: "Azure Stack のバックアップ | Microsoft Docs"
-description: "Azure Stack でバックアップを設定してオンデマンド バックアップを実行します。"
+title: Azure Stack のバックアップ | Microsoft Docs
+description: Azure Stack でバックアップを設定してオンデマンド バックアップを実行します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 9565DDFB-2CDB-40CD-8964-697DA2FFF70A
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 5/08/2017
 ms.author: mabrigg
-ms.openlocfilehash: 955b286967ca2bc8450e8988ec16c6a5c352aa8a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.reviewer: hectorl
+ms.openlocfilehash: c2a6727692a7a74b3e5fe32de8800722a9ed91b5
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075189"
 ---
 # <a name="back-up-azure-stack"></a>Azure Stack のバックアップ
 
@@ -27,30 +29,28 @@ ms.lasthandoff: 01/18/2018
 Azure Stack でバックアップを設定してオンデマンド バックアップを実行します。 インフラストラクチャ バックアップ サービスを有効にする場合は、「[Enable Backup for Azure Stack from the administration portal](azure-stack-backup-enable-backup-console.md).」(管理ポータルから Azure Stack を有効にする) を参照してください。
 
 > [!Note]  
->  Azure Stack ツールには **Start-AzSBackup** コマンドレットが含まれます。 ツールをインストールする手順については、「[Azure Stack での PowerShell を使用した準備と実行](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)」を参照してください。
+>  PowerShell 環境の構成方法については、「[PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)」をご覧ください。
 
 ## <a name="start-azure-stack-backup"></a>Azure Stack のバックアップを開始する
 
 オペレーター管理環境の管理者特権のプロンプトで Windows PowerShell を開き、次のコマンドを実行します。
 
 ```powershell
-    cd C:\tools\AzureStack-Tools-master\Connect
-    Import-Module .\AzureStack.Connect.psm1
-
-    cd C:\tools\AzureStack-Tools-master\Infrastructure
-    Import-Module .\AzureStack.Infra.psm1 
-    
     Start-AzSBackup -Location $location.Name
 ```
 
 ## <a name="confirm-backup-completed-in-the-administration-portal"></a>管理ポータルでバックアップの完了を確認する
 
-1. Azure Stack 管理ポータル ([https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external)) を開きます。
+1. Azure Stack 管理者ポータル ([https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external)) を開きます。
 2. **[その他のサービス]** > **[Infrastructure backup]\(インフラストラクチャ バックアップ\)** の順に選択します。 **[Infrastructure backup]\(インフラストラクチャ バックアップ\)** ブレードで **[構成]** を選択します。
 3. **[利用可能なバックアップ]** リストから、バックアップの **[名前]** と **[完了日]** を見つけます。
 4. **[状態]** が **[成功]** であることを確認します。
 
-また、管理ポータルからバックアップが完了したことを確認することもできます。 `\MASBackup\<datetime>\<backupid>\BackupInfo.xml` に移動します
+<!-- You can also confirm the backup completed from the administration portal. Navigate to `\MASBackup\<datetime>\<backupid>\BackupInfo.xml`
+
+In ‘Confirm backup completed’ section, the path at the end doesn’t make sense (ie relative to what, datetime format, etc?)
+\MASBackup\<datetime>\<backupid>\BackupInfo.xml -->
+
 
 ## <a name="next-steps"></a>次の手順
 

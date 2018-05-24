@@ -1,64 +1,66 @@
 ---
-title: Azure Policy 定義の構造 | Microsoft Docs
-description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングと実行されるアクションを示すことで、組織でのリソースの規則を確立する方法について説明します。
+title: Azure Policy の定義の構造
+description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングとその効果を示すことで、組織でのリソースの規則を確立する方法について説明します。
 services: azure-policy
-keywords: ''
-author: bandersmsft
-ms.author: banders
-ms.date: 04/18/2018
-ms.topic: article
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 05/07/2018
+ms.topic: conceptual
 ms.service: azure-policy
-ms.custom: ''
-ms.openlocfilehash: c98712b8fb2f8d6a85906b2c78fb678fc0f970b7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+manager: carmonm
+ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194650"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
-Azure Policy で使用されるリソース ポリシー定義を利用して、ポリシーが適用されるタイミングと実行されるアクションを示し、組織でのリソースの規則を確立することができます。 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 したがって、リソース グループに適用されたポリシーは、そのリソース グループのすべてのリソースに適用されます。
+Azure Policy で使用されるリソース ポリシー定義を利用して、ポリシーが適用されるタイミングとその効果を示し、組織でのリソースの規則を確立することができます。 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 したがって、リソース グループに適用されたポリシーは、そのリソース グループのすべてのリソースに適用されます。
+
+Azure Policy で使用されるスキーマについては、[https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json) を参照してください。
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
-* モード
-* parameters
-* 表示名
-* 説明
-* ポリシー規則
-  * 論理評価
-  * 効果
+- モード
+- parameters
+- 表示名
+- 説明
+- ポリシー規則
+  - 論理評価
+  - 効果
 
 たとえば、次の JSON は、リソースがデプロイされる場所を制限するポリシーを示しています。
 
 ```json
 {
-  "properties": {
-    "mode": "all",
-    "parameters": {
-      "allowedLocations": {
-        "type": "array",
-        "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
-          "strongType": "location",
-          "displayName": "Allowed locations"
+    "properties": {
+        "mode": "all",
+        "parameters": {
+            "allowedLocations": {
+                "type": "array",
+                "metadata": {
+                    "description": "The list of locations that can be specified when deploying resources",
+                    "strongType": "location",
+                    "displayName": "Allowed locations"
+                }
+            }
+        },
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+        "policyRule": {
+            "if": {
+                "not": {
+                    "field": "location",
+                    "in": "[parameters('allowedLocations')]"
+                }
+            },
+            "then": {
+                "effect": "deny"
+            }
         }
-      }
-    },
-    "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-    "policyRule": {
-      "if": {
-        "not": {
-          "field": "location",
-          "in": "[parameters('allowedLocations')]"
-        }
-      },
-      "then": {
-        "effect": "deny"
-      }
     }
-  }
 }
 ```
 
@@ -67,10 +69,11 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 ## <a name="mode"></a>Mode
 
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
-* `all`: リソース グループとすべてのリソースの種類を評価します
-* `indexed`: タグと場所をサポートするリソースの種類のみを評価します
 
-ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定する必要があります。 ポリシー定義に **mode** の値が含まれていない場合は、下位互換性のために既定で `indexed` になります。
+- `all`: リソース グループとすべてのリソースの種類を評価します
+- `indexed`: タグと場所をサポートするリソースの種類のみを評価します
+
+ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** の値が含まれていない場合、下位互換性のために既定で、Azure PowerShell では `all` に、Azure CLI では `null` (`indexed` に相当) になります。
 
 タグまたは場所を適用するポリシーを作成するときには、`indexed` を使用する必要があります。 これは必須ではありませんが、タグや場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表れないようになります。 これの例外の 1 つは、**リソース グループ**です。 リソース グループに場所またはタグを適用しようとしているポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](scripts/enforce-tag-rg.md)ことに関する記事を参照してください。
 
@@ -80,30 +83,29 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 たとえば、リソースのデプロイ先の場所を制限するために、リソース プロパティのポリシーを定義できます。 この場合、ポリシーを作成するときに、次のパラメーターを宣言します。
 
-
 ```json
 "parameters": {
-  "allowedLocations": {
-    "type": "array",
-    "metadata": {
-      "description": "The list of allowed locations for resources.",
-      "displayName": "Allowed locations",
-      "strongType": "location"
+    "allowedLocations": {
+        "type": "array",
+        "metadata": {
+            "description": "The list of allowed locations for resources.",
+            "displayName": "Allowed locations",
+            "strongType": "location"
+        }
     }
-  }
 }
 ```
 
 パラメーターの型は、文字列または配列のどちらも可能です。 メタデータ プロパティは、Azure Portal などのツールでわかりやすい情報を表示するために、使用されます。
 
-メタデータ プロパティの中で **strongType** を使用して、Azure ポータル内にオプションの複数選択リストを用意できます。  現時点で **strongType** で使用できる値には、以下が含まれます。
+メタデータ プロパティの中で **strongType** を使用して、Azure portal 内にオプションの複数選択リストを用意できます。  現時点で **strongType** で使用できる値には、以下が含まれます。
 
-* `"location"`
-* `"resourceTypes"`
-* `"storageSkus"`
-* `"vmSKUs"`
-* `"existingResourceGroups"`
-* `"omsWorkspace"`
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ポリシー規則では、次の構文でパラメーターを参照します。
 
@@ -113,6 +115,15 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+## <a name="definition-location"></a>定義の場所
+
+イニシアティブまたはポリシー定義を作成するときに、定義の場所を指定することが重要です。
+
+定義の場所で、イニシアティブまたはポリシー定義を割り当てることができるスコープが決まります。 場所は、管理グループまたはサブスクリプションとして指定することができます。
+
+> [!NOTE]
+> このポリシー定義を複数のサブスクリプションに適用する場合、この場所は、イニシアティブまたはポリシーを割り当てるサブスクリプションを含む管理グループである必要があります。
 
 ## <a name="display-name-and-description"></a>表示名と説明
 
@@ -126,12 +137,12 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 ```json
 {
-  "if": {
-    <condition> | <logical operator>
-  },
-  "then": {
-    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
-  }
+    "if": {
+        <condition> | <logical operator>
+    },
+    "then": {
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+    }
 }
 ```
 
@@ -139,9 +150,9 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 サポートされている論理演算子は、次のとおりです。
 
-* `"not": {condition  or operator}`
-* `"allOf": [{condition or operator},{condition or operator}]`
-* `"anyOf": [{condition or operator},{condition or operator}]`
+- `"not": {condition  or operator}`
+- `"allOf": [{condition or operator},{condition or operator}]`
+- `"anyOf": [{condition or operator},{condition or operator}]`
 
 **not** 構文は、条件の結果を反転します。 **allOf** 構文 (**And** 論理演算に似ています) では、すべての条件が真である必要があります。 **anyOf** 構文 (**Or** 論理演算に似ています) では、1 つ以上の条件が真である必要があります。
 
@@ -149,18 +160,17 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 ```json
 "if": {
-  "allOf": [
-    {
-      "not": {
-        "field": "tags",
-        "containsKey": "application"
-      }
-    },
-    {
-      "field": "type",
-      "equals": "Microsoft.Storage/storageAccounts"
-    }
-  ]
+    "allOf": [{
+            "not": {
+                "field": "tags",
+                "containsKey": "application"
+            }
+        },
+        {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+        }
+    ]
 },
 ```
 
@@ -168,42 +178,44 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 条件は、**フィールド**が特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
 
-* `"equals": "value"`
-* `"notEquals": "value"`
-* `"like": "value"`
-* `"notLike": "value"`
-* `"match": "value"`
-* `"notMatch": "value"`
-* `"contains": "value"`
-* `"notContains": "value"`
-* `"in": ["value1","value2"]`
-* `"notIn": ["value1","value2"]`
-* `"containsKey": "keyName"`
-* `"notContainsKey": "keyName"`
-* `"exists": "bool"`
+- `"equals": "value"`
+- `"notEquals": "value"`
+- `"like": "value"`
+- `"notLike": "value"`
+- `"match": "value"`
+- `"notMatch": "value"`
+- `"contains": "value"`
+- `"notContains": "value"`
+- `"in": ["value1","value2"]`
+- `"notIn": ["value1","value2"]`
+- `"containsKey": "keyName"`
+- `"notContainsKey": "keyName"`
+- `"exists": "bool"`
 
 **like** 条件や **notLike** 条件を使用する場合は、値の中でワイルドカード (*) を指定できます。
 
-**match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 [承認されている VM イメージ](scripts/allowed-custom-images.md)に関する記事で、例を確認してください。
+**match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 例については、「[複数の名前パターンを許可する](scripts/allow-multiple-name-patterns.md)」を参照してください。
 
 ### <a name="fields"></a>フィールド
+
 条件は、フィールドを使用して構成されます。 フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。  
 
 次のフィールドがサポートされています。
 
-* `name`
-* `fullName`
-  * 親を含むリソースの完全な名前 (例:"myServer/myDatabase") を返します
-* `kind`
-* `type`
-* `location`
-* `tags`
-* `tags.tagName`
-* `tags[tagName]`
-  * このかっこ構文は、ピリオドを含むタグ名をサポートしています
-* プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
+- `name`
+- `fullName`
+  - 親を含むリソースの完全な名前 ("myServer/myDatabase" など) を返します
+- `kind`
+- `type`
+- `location`
+- `tags`
+- `tags.tagName`
+- `tags[tagName]`
+  - このかっこ構文は、ピリオドを含むタグ名をサポートしています
+- プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
 ### <a name="alternative-accessors"></a>代替アクセサー
+
 **Field** は、ポリシー規則で使用されるプライマリ アクセサーです。 これは、評価対象となっているリソースを直接検査します。 ただし、ポリシーは他のアクセサー **source** をサポートしています。
 
 ```json
@@ -216,24 +228,23 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 ポリシーがバック グラウンドで既存のリソースを評価するときには、そのリソースの種類に対する **action** を `/write` 承認アクションに設定します。
 
 ### <a name="effect"></a>効果
+
 ポリシーでは、次の種類の効果がサポートされています。
 
-* **deny** は監査ログでイベントを生成し、要求は失敗します。
-* **audit** は監査ログで警告イベントを生成しますが、要求は失敗しません。
-* **append** は定義済みのフィールド セットを要求に追加します。
-* **AuditIfNotExists** は、リソースが存在しない場合に監査を有効にします。
-* **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします。 現在この効果は、組み込みポリシーを通じてのみサポートされます。
+- **deny** は監査ログでイベントを生成し、要求は失敗します。
+- **audit** は監査ログで警告イベントを生成しますが、要求は失敗しません。
+- **append** は定義済みのフィールド セットを要求に追加します。
+- **AuditIfNotExists** は、リソースが存在しない場合に監査を有効にします。
+- **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします。 現在この効果は、組み込みポリシーを通じてのみサポートされます。
 
 **append** の場合、次のように詳細を指定する必要があります。
 
 ```json
 "effect": "append",
-"details": [
-  {
+"details": [{
     "field": "field name",
     "value": "value of the field"
-  }
-]
+}]
 ```
 
 値には文字列または JSON 形式オブジェクトを指定できます。
@@ -241,132 +252,71 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 **AuditIfNotExists** および **DeployIfNotExists** を使用すると、関連するリソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
 仮想マシン拡張機能がデプロイされていない場合の監査の例については、[拡張機能が存在しない場合の監査](scripts/audit-ext-not-exist.md)に関するページを参照してください。
 
-
 ## <a name="aliases"></a>エイリアス
 
 リソースの種類に固有のプロパティにアクセスするには、プロパティのエイリアスを使用します。 エイリアスを使用すると、リソースのプロパティに使用できる値または条件を制限できます。 各エイリアスは、特定のリソースの種類について異なる API バージョンのパスにマップされます。 ポリシーの評価時に、ポリシー エンジンはその API バージョンのプロパティ パスを取得します。
 
-**Microsoft.Cache/Redis**
+エイリアスの一覧は常に拡大しています。 Azure Policy で現在サポートされているエイリアスを見つけるには、次のいずれかの方法を使用します。
 
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Cache/Redis/enableNonSslPort | 非 ssl Redis サーバー ポート (6379) が有効かどうかを設定します。 |
-| Microsoft.Cache/Redis/shardCount | Premium クラスター キャッシュに作成するシャードの数を設定します。  |
-| Microsoft.Cache/Redis/sku.capacity | デプロイする Redis キャッシュのサイズを設定します。  |
-| Microsoft.Cache/Redis/sku.family | 使用する SKU ファミリを設定します。 |
-| Microsoft.Cache/Redis/sku.name | デプロイする Redis キャッシュの種類を設定します。 |
+- Azure PowerShell
 
-**Microsoft.Cdn/profiles**
+  ```azurepowershell-interactive
+  # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.CDN/profiles/sku.name | 価格レベルの名前を設定します。 |
+  $azContext = Get-AzureRmContext
+  $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+  $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+  $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+  $authHeader = @{
+      'Content-Type'='application/json'
+      'Authorization'='Bearer ' + $token.AccessToken
+  }
 
-**Microsoft.Compute/disks**
+  # Invoke the REST API
+  $response = Invoke-RestMethod -Uri 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases' -Method Get -Headers $authHeader
 
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Compute/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
-| Microsoft.Compute/imagePublisher | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの発行元を設定します。 |
-| Microsoft.Compute/imageSku | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの SKU を設定します。 |
-| Microsoft.Compute/imageVersion | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージのバージョンを設定します。 |
+  # Create an Array List to hold discovered aliases
+  $aliases = New-Object System.Collections.ArrayList
 
+  foreach ($ns in $response.value) {
+      foreach ($rT in $ns.resourceTypes) {
+          if ($rT.aliases) {
+              foreach ($obj in $rT.aliases) {
+                  $alias = [PSCustomObject]@{
+                      Namespace       = $ns.namespace
+                      resourceType    = $rT.resourceType
+                      alias           = $obj.name
+                  }
+                  $aliases.Add($alias) | Out-Null
+              }
+          }
+      }
+  }
 
-**Microsoft.Compute/virtualMachines**
+  # Output the list, sort, and format. You can customize with Where-Object to limit as desired.
+  $aliases | Sort-Object -Property Namespace, resourceType, alias | Format-Table
+  ```
 
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | 仮想マシンの作成に使用されるイメージの識別子を設定します。 |
-| Microsoft.Compute/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
-| Microsoft.Compute/imagePublisher | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの発行元を設定します。 |
-| Microsoft.Compute/imageSku | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの SKU を設定します。 |
-| Microsoft.Compute/imageVersion | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージのバージョンを設定します。 |
-| Microsoft.Compute/licenseType | イメージまたはディスクがオンプレミスでライセンスされることを設定します。 この値は、Windows Server オペレーティング システムを含むイメージでのみ使用されます。  |
-| Microsoft.Compute/virtualMachines/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
-| Microsoft.Compute/virtualMachines/imagePublisher | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの発行元を設定します。 |
-| Microsoft.Compute/virtualMachines/imageSku | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの SKU を設定します。 |
-| Microsoft.Compute/virtualMachines/imageVersion | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージのバージョンを設定します。 |
-| Microsoft.Compute/virtualMachines/osDisk.Uri | Vhd URI を設定します。 |
-| Microsoft.Compute/virtualMachines/sku.name | 仮想マシンのサイズを設定します。 |
-| Microsoft.Compute/virtualMachines/availabilitySet.id | 仮想マシンで使用する可用性セット ID を設定します。 |
+- Azure CLI
 
-**Microsoft.Compute/virtualMachines/extensions**
+  ```azurecli-interactive
+  # Login first with az login if not using Cloud Shell
 
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Compute/virtualMachines/extensions/publisher | 拡張機能の発行元の名前を設定します。 |
-| Microsoft.Compute/virtualMachines/extensions/type | 拡張機能の種類を設定します。 |
-| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | 拡張機能のバージョンを設定します。 |
+  # Get Azure Policy aliases for a specific Namespace
+  az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+  ```
 
-**Microsoft.Compute/virtualMachineScaleSets**
+- REST API / ARMClient
 
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | 仮想マシンの作成に使用されるイメージの識別子を設定します。 |
-| Microsoft.Compute/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
-| Microsoft.Compute/imagePublisher | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの発行元を設定します。 |
-| Microsoft.Compute/imageSku | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの SKU を設定します。 |
-| Microsoft.Compute/imageVersion | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージのバージョンを設定します。 |
-| Microsoft.Compute/licenseType | イメージまたはディスクがオンプレミスでライセンスされることを設定します。 この値は、Windows Server オペレーティング システムを含むイメージでのみ使用されます。 |
-| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | スケール セット内のすべての仮想マシンのコンピューター名プレフィックスを設定します。 |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | ユーザー イメージの BLOB URI を設定します。 |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | スケール セットのオペレーティング システム ディスクを保存するために使用されるコンテナーの URI を設定します。 |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.name | スケール セット内の仮想マシンのサイズを設定します。 |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | スケール セット内の仮想マシンのレベルを設定します。 |
-
-**Microsoft.Network/applicationGateways**
-
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Network/applicationGateways/sku.name | ゲートウェイのサイズを設定します。 |
-
-**Microsoft.Network/virtualNetworkGateways**
-
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Network/virtualNetworkGateways/gatewayType | この仮想ネットワーク ゲートウェイの種類を設定します。 |
-| Microsoft.Network/virtualNetworkGateways/sku.name | ゲートウェイの SKU 名を設定します。 |
-
-**Microsoft.Sql/servers**
-
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Sql/servers/version | サーバーのバージョンを設定します。 |
-
-**Microsoft.Sql/databases**
-
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Sql/servers/databases/edition | データベースのエディションを設定します。 |
-| Microsoft.Sql/servers/databases/elasticPoolName | データベースが所属するエラスティック プールの名前を設定します。 |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | データベースの構成済みのサービス レベルの目標 ID を設定します。 |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | データベースの構成済みのサービス レベルの目標の名前を設定します。  |
-
-**Microsoft.Sql/elasticpools**
-
-| エイリアス | [説明] |
-| ----- | ----------- |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | データベースのエラスティック プールの共有 DTU の合計を設定します。 |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | エラスティック プールのエディションを設定します。 |
-
-**Microsoft.Storage/storageAccounts**
-
-| エイリアス | [説明] |
-| ----- | ----------- |
-| Microsoft.Storage/storageAccounts/accessTier | 課金のために使用されるアクセス レベルを設定します。 |
-| Microsoft.Storage/storageAccounts/accountType | SKU 名を設定します。 |
-| Microsoft.Storage/storageAccounts/enableBlobEncryption | BLOB ストレージ サービスに格納されるときに、サービスがデータを暗号化するかどうかを設定します。 |
-| Microsoft.Storage/storageAccounts/enableFileEncryption | ファイル ストレージ サービスに格納されるときに、サービスがデータを暗号化するかどうかを設定します。 |
-| Microsoft.Storage/storageAccounts/sku.name | SKU 名を設定します。 |
-| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | ストレージ サービスへの https トラフィックのみを許可するように設定します。 |
-| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Virtual Network サービス エンドポイントが有効にされているかどうかを確認します。 |
+  ```http
+  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  ```
 
 ## <a name="initiatives"></a>イニシアティブ
 
 イニシアティブを使用すると、複数の関連するポリシー定義をグループ化できます。グループを単一の項目として操作するので、割り当てと管理が単純になります。 たとえば、関連するすべてのタグ付けポリシー定義を 1 つのイニシアティブとしてグループ化できます。 それぞれのポリシーを個別に割り当てるのではなく、イニシアティブを適用することになります。
 
 次の例は、2 つのタグ (`costCenter` および `productName`) を扱うためのイニシアティブの作成方法を示しています。 2 つの組み込みポリシーを使用して、既定のタグの値を適用しています。
-
 
 ```json
 {
@@ -388,8 +338,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
                 }
             }
         },
-        "policyDefinitions": [
-            {
+        "policyDefinitions": [{
                 "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "parameters": {
                     "tagName": {

@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: be8c997df5893782c469eefe4e3c79ab698f4c78
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165249"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -40,8 +41,8 @@ ms.lasthandoff: 04/28/2018
 | ![Linux 用 VM Access](media/azure-stack-marketplace-azure-items/cse.png) | [Linux 用 VM Access](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>この更新プログラムを、Linux 用 VMAccess 拡張機能のインボックス バージョンにダウンロードします。この更新プログラムは、Debian Linux VM を使う予定の場合に重要です。</b> | Microsoft | Linux |
 | ![Linux 用の Acronis Backup 拡張機能](media/azure-stack-marketplace-azure-items/acronis.png) | [ Linux 用の Acronis Backup 拡張機能 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure 用の Acronis Backup 拡張機能は、データ保護製品のAcronis Backup ファミリーの一部です。 | Acronis International GmbH。 | Linux |
 | ![Windows 用の Acronis Backup 拡張機能](media/azure-stack-marketplace-azure-items/acronis.png) | [ Windows 用の Acronis Backup 拡張機能 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure 用の Acronis Backup 拡張機能は、データ保護製品のAcronis Backup ファミリーの一部です。 | Acronis International GmbH。 | Windows |
-| ![CloudLink SecureVM Extension for Linux](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM Extension for Linux ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 | Dell EMC | Linux |
-| ![CloudLink SecureVM Extension for Windows](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM Extension for Windows ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 | Dell EMC | Windows |
+| ![CloudLink SecureVM Extension for Linux](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM Extension for Linux ](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 | Dell EMC | Linux |
+| ![CloudLink SecureVM Extension for Windows](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM Extension for Windows ](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 | Dell EMC | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft 仮想マシン イメージおよびソリューション テンプレート
 
@@ -82,6 +83,7 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 ## <a name="linux-distributions"></a>Linux ディストリビューション
 |  | 項目名 | [説明] | 発行元 |
 | --- | --- | --- | --- |
+| ![Clear Linux OS](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Clear Linux OS](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Intel アーキテクチャ用に最適化された参照 Linux ディストリビューションです。 | Clear Linux Project |
 | ![CoreOS の Container Linux](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS の Container Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Container Linux は、最新で最小の Linux ディストリビューションであり、コンテナーの実行、クラスターの管理、サーバーのシームレスな更新の簡単な方法を提供します。どのコンポーネントも、ウェアハウス規模のコンピューティングを可能にするものです。 | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server は、クラウド環境の世界で最も人気のある Linux です。 | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 | credativ |
@@ -213,11 +215,13 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![Barracuda Web Application Firewall (WAF)](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Web Application Firewall (WAF)](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf) | 自動化されたターゲット攻撃に対するセキュリティと DDoS 保護。 | Barracuda Networks, Inc. |
 | ![Check Point vSEC セキュリティ管理](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC セキュリティ管理](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Check Point vSEC は、Azure 内の顧客の資産をマルウェアや高度な脅威から保護する高性能の多層脅威防止機能を提供します。 <b>両方の Check Point vSEC Marketplace アイテムをダウンロードしてください。</b> | Check Point |
 | ![Chef Automate](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Chef Automate を使用して Continuous Automation Platform をビルド、デプロイ、管理します。 <b>両方の Chef Marketplace アイテムをダウンロードしてください</b> | Chef Software, Inc |
-| ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 <b>すべての CloudLink SecureVM 項目をダウンロードします。<b> | Dell EMC |
+| ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM ](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 <b>すべての CloudLink SecureVM 項目をダウンロードします。<b> | Dell EMC |
+| ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [ f5 Big-IP Virtual Edition ](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | 高度な負荷分散、GSLB、ネットワーク ファイアウォール、DNS、WAF、およびアプリ アクセスを提供します。 | F5 Networks |
 | ![Hortonworks Data Platform (HDP) サンドボックス](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) サンドボックス](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | HDP 2.5 を使用した、100% オープン ソースのプラットフォーム (Hadoop、Spark、Storm、HBase、Kafka、Hive、Ambari に対応)。 | Hortonworks |
 | ![KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | レイヤー 4 ～ 7 のアプリケーション配信コントローラー (ADC) ロード バランサー、コンテンツ スイッチ、および Traffic Manager。 | KEMP Technologies Inc. |
 | ![NooBaa Hybrid AWS S3 互換性 - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 互換 - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | パブリックとオンプレミスのキャパシティ リソースに対応した、S3 互換のストレージ サービス。 | NooBaa |
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application Firewall は既知の脆弱性および不明な脆弱性を検出し、Web アプリに対する攻撃を防止します。 <b>両方の PT Marketplace アイテムをダウンロードします。</b> | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise では、Azure Stack インフラストラクチャのライフ サイクル全体を自動化することができます。 <b>両方の Puppet Marketplace アイテムをダウンロードしてください。</b> | Puppet |
+| ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rapid Recovery 高度なデータ保護は、バックアップ、レプリケーション、復旧を 1 つの使いやすいソフトウェア ソリューションに統合します。 | Quest Software |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | クラス最高のオープン ソースのインフラストラクチャ管理。 | SUSE |
 | ![ZeroDown Software Tool](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Tool ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown Software Tool v7.1 - Migrate + HA。 | ZeroDown Software |

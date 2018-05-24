@@ -12,20 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/11/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: f7297e938c5561328a07e22012205cc2ef3ac419
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f34c4697439685ce6ea0ce3f2c7e954ee81b5079
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077192"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 [Azure Stack](azure-stack-poc.md) の Azure への登録により、Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 Azure Stack を登録した後は、Azure コマースに使用状況が報告され、登録に使用したサブスクリプションの下で確認できます。 
 
 > [!IMPORTANT]
-> 従量制課金モデルを選択した場合は、登録が必須です。 そうしないと、使用状況は報告されないため、Azure Stack デプロイのライセンス条項に違反します。
+> マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 さらに、従量制課金モデルを使用している場合、登録しないと、Azure Stack のライセンス条項違反になります。 Azure Stack のライセンス モデルに関する詳細は、[購入方法のページ](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 Azure を使用して Azure Stack を登録する前に、以下のものが必要です。
@@ -59,10 +60,10 @@ Azure Stack ツールの GitHub リポジトリには、Azure Stack 機能 (登�
 ### <a name="register-the-azure-stack-resource-provider"></a>Azure Stack リソース プロバイダーを登録する
 Azure Stack リソース プロバイダーを Azure に登録するには、PowerShell ISE を管理者として起動し、**EnvironmentName** パラメーターに適切な Azure サブスクリプション タイプ (以下のパラメーターを参照) に設定して、次の PowerShell コマンドを使用します。 
 
-1. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Connect-AzureRmAccount** コマンドレットを実行します。 Azure グローバル管理者アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
+1. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure グローバル管理者アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```PowerShell
-      Connect-AzureRmAccount -EnvironmentName "<Either AzureCloud or AzureChinaCloud>"
+      Add-AzureRmAccount -EnvironmentName "<Either AzureCloud or AzureChinaCloud>"
    ```
 
    | パラメーター | [説明] |  
@@ -94,7 +95,7 @@ Azure Stack リソース プロバイダーを Azure に登録するには、Pow
 2. 次に、同じ PowerShell セッションで、正しい Azure PowerShell コンテキストにログインしていることを確認します。 これは、上記の Azure Stack リソース プロバイダーの登録に使用された Azure アカウントです。 実行する PowerShell: 
 
   ```powershell 
-  Connect-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>" 
+  Add-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>" 
   ``` 
 
 3. 同じ PowerShell セッションで **Set-AzsRegistration** コマンドレットを実行します。 実行する PowerShell:  
@@ -114,7 +115,7 @@ Azure Stack リソース プロバイダーを Azure に登録するには、Pow
   |BillingModel|自分のサブスクリプションで使用する請求モデル。 このパラメーターに使用できる値は、Capacity、PayAsYouUse、および Development です。|
   |  |  |
 
-  このプロセスには 10 - 15 分かかります。 コマンドが完了すると、**「Your environment is now registered and activated using the provided parameters. (提供されたパラメーターを使用して環境が登録され、アクティブ化されました。)」**というメッセージが表示されます。
+  このプロセスには 10 - 15 分かかります。 コマンドが完了すると、**「Your environment is now registered and activated using the provided parameters. (提供されたパラメーターを使用して環境が登録され、アクティブ化されました。)」** というメッセージが表示されます。
 
 ### <a name="register-azure-stack-with-azure-using-the-capacity-billing-model"></a>容量課金モデルを使用して Azure Stack を Azure に登録する
 従量制課金モデルを使用した登録に使用したのと同じ手順に従いますが、容量を購入したときの契約番号を追加し、**BillingModel** パラメーターを **Capacity** に変更します。 その他のすべてのパラメーターは変更ありません。
@@ -147,7 +148,7 @@ Set-AzsRegistration `
 
   ```Powershell
   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-  $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<your agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+  $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
   ```
   
   > [!TIP]  

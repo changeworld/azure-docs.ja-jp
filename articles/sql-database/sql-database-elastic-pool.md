@@ -10,11 +10,12 @@ ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 33f4430baacbe50f3d4c7da857ee4345d4f74928
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195466"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -32,7 +33,7 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-エラスティック プールを使用することで、開発者は、複数のデータベースで共有されるプールのリソースを購入でき、個々のデータベースの使用期間が予測しづらい場合にも対応できます。 「[DTU-based purchasing model (preview)](sql-database-service-tiers.md#dtu-based-purchasing-model)」(DTU ベースの購入レベル (プレビュー)) または「[vCore-based purchasing model (preview)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)」(vCore ベースの購入モデル (プレビュー)) のいずれかに基づいて、プールのリソースを構成できます。 プールのリソース要件は、そのデータベースの使用量の合計によって決まります。 プールで使用可能なリソースの量は、開発者の予算に応じて決められます。 開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大のリソース (選択したリソース モデルに応じて、最小および最大の DTU、または最小および最大の仮想コアのいずれか) を設定してから、予算に基づいてプールのリソースを設定します。 開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
+エラスティック プールを使用することで、開発者は、複数のデータベースで共有されるプールのリソースを購入でき、個々のデータベースの使用期間が予測しづらい場合にも対応できます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または [仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) のいずれかに基づいて、プールのリソースを構成できます。 プールのリソース要件は、そのデータベースの使用量の合計によって決まります。 プールで使用可能なリソースの量は、開発者の予算に応じて決められます。 開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大のリソース (選択したリソース モデルに応じて、最小および最大の DTU、または最小および最大の仮想コアのいずれか) を設定してから、予算に基づいてプールのリソースを設定します。 開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
 
 プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。 負荷が大きい場合、データベースはリソースの使用量を増やして需要に対応します。 負荷が小さい場合、データベースはリソースの使用量を減らし、負荷がない場合は、リソースを使用しません。 Single Database ではなく、プール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。 さらに、プールにかかる予算を予測することができます。 データベースのダウンタイムなしで、既存のプールにさらにリソースを追加できます。ただし、新たな eDTU 予約用の追加のコンピューティング リソースを提供するためにデータベースを移動する必要がある場合は例外です。 同様に、余分なリソースが不要になった場合は、いつでも既存のプールから削除できます。 プールへのデータベースの追加、またはプールからの削除ができます。 データベースのリソース使用率が低いと予測できる場合は、プールから削除します。
 
@@ -101,7 +102,7 @@ S3 データベースが、ピーク時には 100 DTU を使用し、平均で�
 * プール内のすべてのデータベースに使用される最大リソース数 (選択したリソース モデルに応じて、最大 DTU または最大仮想コアのいずれか)。
 * プール内のすべてのデータベースに使用される記憶域の最大バイト数。
 
-各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers.md#dtu-based-purchasing-model)」(DTU ベースの購入レベル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)」(vCore ベースの購入モデル (プレビュー)) をご覧ください。
+各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入レベル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(vCore ベースの購入モデル (プレビュー)) をご覧ください。
 
 SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。 構成を推奨するだけでなく、サーバー上にあるデータベースのカスタム グループの eDTU 使用量の見積もりが、組み込み済みの機能によって実施されます。 対話形式でのプールへのデータベースの追加やデータベースの削除を行い、変更をコミットする前にリソース使用状況分析やサイズ設定のアドバイスを入手できるため、"what-if" 分析が可能です。 その方法については、 [エラスティック プールの監視、管理、およびサイズ設定に関する記事](sql-database-elastic-pool-manage-portal.md)を参照してください。
 
@@ -112,11 +113,11 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
    DTU ベースの購入モデルの場合: MAX(<*DB の合計数* X *DB あたりの DTU 平均使用率*>,<br>
    <*同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率*)
 
-   vCore ベースの購入モデルの場合: MAX(<*DB の合計数* X *DB あたりの vCore 平均使用率*>,<br>
+   仮想コアベースの購入モデル (プレビュー) の場合: MAX(<*DB の合計数* X *DB あたりの vCore 平均使用率*>,<br>
    <*同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率*)
 
 2. プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。 次に、このストレージの容量を提供する eDTU プール サイズを決定します。
-3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 vCore ベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
+3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 仮想コアベースの購入モデル (プレビュー) の場合、手順 1 の仮想コアの見積もりを使用します。
 4. 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」ページを参照し、手順 3 の見積もりを超える最小のプール サイズを探します。
 5. 手順 5. のプールの価格と、Single Database の適切なパフォーマンス レベルを使用した場合の価格を比較します。
 
@@ -233,7 +234,7 @@ Azure PowerShell を使用して SQL Database エラスティック プールを
 > Azure CLI のサンプル スクリプトについては、「[Use CLI to move an Azure SQL database in a SQL elastic pool (CLI を使用して、SQL エラスティック プール内の Azure SQL データベースを移動する)](scripts/sql-database-move-database-between-pools-cli.md)」および「[Use Azure CLI to scale a SQL elastic pool in Azure SQL Database (Azure CLI を使用して、Azure SQL Database 内の SQL エラスティック プールをスケーリングする)](scripts/sql-database-scale-pool-cli.md)」を参照してください。
 >
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 |[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|エラスティック プールを作成します。|
 |[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|サーバー内のエラスティック プールの一覧を返します。|
@@ -250,7 +251,7 @@ Transact-SQL を使用して既存のエラスティック プール内のデー
 > Transact-SQL を使用して Azure SQL Database エラスティック プールを作成、更新、または削除するすることはできません。 データベースをエラスティック プールに追加または削除したり、DMV を使用して既存のエラスティック プールに関する情報を返したりすることができます。
 >
 
-| コマンド | 説明 |
+| コマンド | [説明] |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |データベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
@@ -262,7 +263,7 @@ Transact-SQL を使用して既存のエラスティック プール内のデー
 
 SQL Database エラスティック プールを作成して管理するには、これらの REST API 要求を使用します。
 
-| コマンド | 説明 |
+| コマンド | [説明] |
 | --- | --- |
 |[エラスティック プール - 作成または更新](/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
 |[エラスティック プール - 削除](/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|

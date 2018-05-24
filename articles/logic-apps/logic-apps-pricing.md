@@ -1,24 +1,25 @@
 ---
-title: "価格と課金 - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps の価格と課金のしくみについて説明します"
-author: kevinlam1
-manager: anneta
-editor: 
+title: 価格と課金 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps の価格と課金のしくみについて説明します
 services: logic-apps
-documentationcenter: 
+author: kevinlam1
+manager: cfowler
+editor: ''
+documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: LADocs; klam
-ms.openlocfilehash: 096fdd5a6604ed8cecc931da2169194b777664d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/11/2018
+ms.author: klam
+ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166286"
 ---
 # <a name="logic-apps-pricing-model"></a>Logic Apps の料金モデル
 
@@ -57,7 +58,7 @@ Azure Logic Apps を使用して、自動化されたスケーラブルな統合
 
 ## <a name="integration-account-usage"></a>統合アカウントの使用
 
-従量制のプランには、Logic Apps の [B2B/EDI](logic-apps-enterprise-integration-b2b.md) 機能と [XML 処理](logic-apps-enterprise-integration-xml.md)機能を追加コストなしで調査、開発、およびテストできる[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)が含まれています。 リージョンごとにいずれかの統合アカウントを所有し、最大 10 件の契約と 25 のマップを格納できます。 所有してアップロードできるパートナー、スキーマ、および証明書の数に制限はありません。
+従量制のプランには、Logic Apps の [B2B/EDI](logic-apps-enterprise-integration-b2b.md) 機能と [XML 処理](logic-apps-enterprise-integration-xml.md)機能を追加コストなしで調査、開発、およびテストできる[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)が含まれています。 リージョンごとに 1 つの統合アカウントを使用して、特定の[数まで成果物](../logic-apps/logic-apps-limits-and-config.md) (EDI 取引先と契約、マップ、スキーマ、アセンブリ、証明書、バッチ構成など) を格納できます。
 
 Logic Apps は、Logic Apps SLA によってサポートされている基本統合アカウントと標準統合アカウントも提供します。 メッセージの処理のみを使用する場合、または大規模なビジネス エンティティと取引パートナー関係がある小規模なビジネス パートナーとして機能する場合は、基本統合アカウントを使用できます。 標準統合アカウントは、より複雑な B2B 関係をサポートし、管理できるエンティティの数が大きくなります。 詳しくは、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」をご覧ください。
 

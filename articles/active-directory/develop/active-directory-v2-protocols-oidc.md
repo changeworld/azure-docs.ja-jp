@@ -3,23 +3,26 @@ title: Azure Active Directory v2.0 と OpenID Connect プロトコル | Microsof
 description: Azure AD の v2.0 で導入された OpenID Connect 認証プロトコルを利用し、Web アプリケーションを構築します。
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
-ms.author: dastrock
+ms.date: 04/18/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3f5b6a68cf6ee38d1dc2317381ec33f035c57569
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a0cd077b1c6530c5794c92f131dffb814f5b341d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157719"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 と OpenID Connect プロトコル
 OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 v2.0 エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、言語に依存しないでこの操作を行う方法を説明します。 Microsoft のオープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
@@ -42,6 +45,9 @@ OpenID Connect はメタデータ ドキュメントについて説明するも�
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+> [!TIP] 
+> 試してみる [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) をクリックすると、`common` テナントの構成が表示されます。 
+>
 
 `{tenant}` は、4 つの値のいずれかを使用できます。
 
@@ -52,7 +58,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `consumers` |個人の Microsoft アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
 | `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` または `contoso.onmicrosoft.com` |特定の Azure AD テナントの職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 |
 
-メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net)に詳しく記載されています。
+メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)に詳しく記載されています。
 
 ```
 {
@@ -78,6 +84,9 @@ Web アプリでユーザーを認証する必要があるときは、ユーザ�
 * `response_type` パラメーターには、`id_token` が設定されている必要があります。
 * 要求には `nonce` パラメーターが含まれる必要があります。
 
+> [!IMPORTANT]
+> ID トークンを正しく要求するには、[登録ポータル](https://apps.dev.microsoft.com)のアプリ登録で、Web クライアントの**[暗黙的許可](active-directory-v2-protocols-implicit.md)** を有効にする必要があります。 有効になっていない場合、`unsupported_response` エラー "The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'"\(入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。\) が返されます。
+
 例: 
 
 ```
@@ -94,8 +103,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> この要求を実行するには、次のリンクをクリックしてください。 サインインした後、ブラウザーは、アドレス バーに ID トークンが指定された https://localhost/myapp/ にリダイレクトされます。 この要求では `response_mode=query` を使用していることに注意してください (デモ用のみで使用)。 `response_mode=form_post` を使用することをお勧めします。
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=query&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> この要求を実行するには、次のリンクをクリックしてください。 サインインした後、ブラウザーは、アドレス バーに ID トークンが指定された https://localhost/myapp/ にリダイレクトされます。 この要求では `response_mode=fragment` を使用していることに注意してください (デモ用のみで使用)。 `response_mode=form_post` を使用することをお勧めします。
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 
@@ -107,11 +116,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri |推奨 |アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 |
 | scope |必須 |スコープのスペース区切りリスト。 OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
 | nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な id_token 値に要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 |
-| response_mode |推奨 |結果として得られた承認コードをアプリに返す際に使用するメソッドを指定します。 `query`、`form_post`、`fragment` のいずれかを指定できます。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 |
+| response_mode |推奨 |結果として得られた承認コードをアプリに返す際に使用するメソッドを指定します。 `form_post` または `fragment` を指定できます。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 |
 | state |推奨 |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は `login`、`none`、`consent` だけです。 `prompt=login` 要求は、その要求においてユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` 要求は、その逆です。 この要求は、ユーザーに対して対話形式のプロンプトを表示しません。 シングル サインオンによって自動的に要求を完了できない場合、v2.0 エンドポイントはエラーを返します。 `prompt=consent` 要求は、ユーザーがサインインした後に OAuth 同意ダイアログをトリガーします。 ダイアログでは、ユーザーにアプリへのアクセス許可を付与するよう要求します。 |
 | login_hint |省略可能 |このパラメーターを使用すると、ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名および電子メール アドレス フィールドに入力することができます。 多くの場合、アプリは `preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
-| domain_hint |省略可能 |この値は、`consumers` または `organizations` です。 これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。 多くの場合、アプリは ID トークンから `tid` 要求を抽出して、再認証時にこのパラメーターを使用します。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用します。 それ以外の場合は、 `domain_hint=organizations`を指定します。 |
+| domain_hint |省略可能 |この値は、`consumers` または `organizations` です。 これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。 多くの場合、アプリは ID トークンから `tid` 要求を抽出して、再認証時にこのパラメーターを使用します。 要求値 `tid` が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合 (Microsoft Account コンシューマー テナント)、`domain_hint=consumers` を使用してください。 それ以外の場合は、 `domain_hint=organizations`を指定します。 |
 
 現時点では、ユーザーに資格情報の入力と認証が求められます。 v2.0 エンドポイントは、`scope` クエリ パラメーターで指定されたアクセス許可にユーザーが同意済みであることの確認も行います。 いずれのアクセス許可にもユーザーが同意しなかった場合、v2.0 エンドポイントは必要なアクセス許可に同意するようユーザーに求めます。 詳細については、[アクセス許可、同意、マルチテナント アプリ](active-directory-v2-scopes.md)に関する記事を参照してください。
 
@@ -190,12 +199,12 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | パラメーター | 条件 | [説明] |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | 推奨 | サインアウトの正常終了後にユーザーをリダイレクトする URL。このパラメーターを含めない場合、v2.0 エンドポイントによって生成された汎用メッセージがユーザーに表示されます。 この URL は、アプリ登録ポータルのアプリケーションに対する登録済みリダイレクト URI のいずれかと一致させる必要があります。  |
+| post_logout_redirect_uri | 推奨 | サインアウトの正常終了後にユーザーをリダイレクトする URL。このパラメーターを含めない場合、v2.0 エンドポイントによって生成された汎用メッセージがユーザーに表示されます。 この URL は、アプリ登録ポータルのアプリケーションに対する登録済みリダイレクト URI のいずれかと一致させる必要があります。 |
 
 ## <a name="single-sign-out"></a>シングル サインアウト
-ユーザーが `end_session_endpoint` にリダイレクトされると、v2.0 エンドポイントは、ユーザーのセッションをブラウザーから消去します。 ただし、ユーザーは認証に Microsoft アカウントを使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがアプリケーションから同時にサインアウトできるように、v2.0 エンドポイントは、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーを識別するすべてのセッションを消去して、`200` 応答を返すことで、この要求に応答する必要があります。  アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` などを実装する必要があります。  `LogoutUrl` は、アプリ登録ポータルから設定できます。
+ユーザーが `end_session_endpoint` にリダイレクトされると、v2.0 エンドポイントは、ユーザーのセッションをブラウザーから消去します。 ただし、ユーザーは認証に Microsoft アカウントを使用する他のアプリケーションにサインインしたままになることがあります。 ユーザーがアプリケーションから同時にサインアウトできるように、v2.0 エンドポイントは、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に HTTP GET 要求を送信します。 アプリケーションは、ユーザーを識別するすべてのセッションを消去して、`200` 応答を返すことで、この要求に応答する必要があります。 アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` などを実装する必要があります。 `LogoutUrl` は、アプリ登録ポータルから設定できます。
 
-## <a name="protocol-diagram-token-acquisition"></a>プロトコルのダイアグラム: トークンの取得
+## <a name="protocol-diagram-access-token-acquisition"></a>プロトコルのダイアグラム: アクセス トークンの取得
 多くの Web アプリは、ユーザーをサインインさせるだけでなく、OAuth を使用してユーザーの代わりに Web サービスにアクセスする必要もあります。 このセクションでは、OpenID Connect を使ってユーザー認証を行うと同時に、OAuth 承認コード フローを使用している場合はアクセス トークンを取得するために使用する承認コードを取得します。
 
 OpenID Connect によるサインインとトークン取得の完全なフローは、次のダイアグラムのようになります。 この記事の以降のセクションでは、各手順を詳しく説明します。
@@ -212,7 +221,7 @@ GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token%20code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F       // Your registered redirect URI, URL encoded
-&response_mode=form_post                              // 'query', 'form_post', or 'fragment'
+&response_mode=form_post                              // 'form_post' or 'fragment'
 &scope=openid%20                                      // Include both 'openid' and scopes that your app needs  
 offline_access%20                                         
 https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
@@ -221,8 +230,8 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 ```
 
 > [!TIP]
-> この要求を実行するには、次のリンクをクリックしてください。 サインインした後、ブラウザーは、アドレス バーに ID トークンとコードが指定された https://localhost/myapp/ にリダイレクトされます。 この要求では `response_mode=query` を使用していることに注意してください (デモ用のみで使用)。 `response_mode=form_post` を使用することをお勧めします。
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> この要求を実行するには、次のリンクをクリックしてください。 サインインした後、ブラウザーは、アドレス バーに ID トークンとコードが指定された https://localhost/myapp/ にリダイレクトされます。 この要求では `response_mode=fragment` を使用していることに注意してください (デモ用のみで使用)。 `response_mode=form_post` を使用することをお勧めします。
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
 

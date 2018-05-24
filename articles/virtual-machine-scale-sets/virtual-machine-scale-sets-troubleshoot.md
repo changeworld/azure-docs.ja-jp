@@ -1,11 +1,11 @@
 ---
-title: "仮想マシン スケール セットの自動スケールに関するトラブルシューティング | Microsoft Docs"
-description: "仮想マシン スケール セットの自動スケールに関するトラブルシューティングを行います。 よくある問題とその解決方法について説明します。"
+title: 仮想マシン スケール セットの自動スケールに関するトラブルシューティング | Microsoft Docs
+description: 仮想マシン スケール セットの自動スケールに関するトラブルシューティングを行います。 よくある問題とその解決方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: negat
-ms.openlocfilehash: 02a3acf818bfca31a56b364f7abab97551e0d3f0
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: ea634ea8bcb4fed1ed63dc8d1e17d215a00758c6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161024"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 **問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
@@ -78,7 +79,7 @@ ms.lasthandoff: 12/20/2017
     データがない場合、VM で実行されている診断拡張機能に問題があることがわかります。 データが存在する場合は、スケール規則と Insights サービスのどちらかに問題があることがわかります。 [Azure の状態](https://azure.microsoft.com/status/)を確認してください。
     
     これまでの手順を終えても、自動スケールに関する問題が解決しない場合は、次のリソースをご利用ください。 
-    * [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp) または [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) のフォーラムを閲覧する。 
+    * [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) または [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) のフォーラムを閲覧する。 
     * サポートに問い合わせる。 テンプレートと、パフォーマンス データのビューを共有できるように準備しておいてください。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

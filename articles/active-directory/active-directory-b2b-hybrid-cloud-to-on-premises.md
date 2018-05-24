@@ -2,22 +2,20 @@
 title: Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する | Microsoft Docs
 description: Azure AD B2B コラボレーションを使用してクラウド B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
 ms.service: active-directory
+ms.component: B2B
 ms.topic: article
-ms.workload: identity
 ms.date: 04/20/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0eb567c8587b0eec367160facc86f163ef6b3c15
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 028bbb28c7091db3c3ebea321ca2e167b999949d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068798"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -30,7 +28,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 以下の両方を行う必要があります。
 
 - 「[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)」の説明に従って、非ギャラリー アプリケーション テンプレートを使用して SAML アプリケーションを統合します。 **[サインオン URL]** 値に使用する URL をメモしておきます。
--  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。 
+-  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。 
 
    **[内部 URL]** 設定を構成するときは、ギャラリー以外のアプリケーション テンプレートで指定したサインオン URL を使用します。 このような方法で、ユーザーは組織の境界外からアプリにアクセスできるようになります。 アプリケーション プロキシは、オンプレミス アプリの SAML シングル サインオンを実行します。
  
@@ -40,13 +38,13 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 統合 Windows 認証と Kerberos の制約付き委任を使用してセキュリティで保護されたオンプレミス アプリケーションへのアクセス権を B2B ユーザーに付与するには、次のコンポーネントが必要です。
 
-- **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、「[アプリケーション プロキシの概要とコネクタのインストール](active-directory-application-proxy-enable.md)」と「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。
-- **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](active-directory-application-proxy-sso-using-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
+- **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、「[アプリケーション プロキシの概要とコネクタのインストール](manage-apps/application-proxy-enable.md)」と「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。
+- **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 
-   - [Microsoft Identity Manager (MIM) と Microsoft Graph 用 MIM 管理エージェント](#create-b2b-guest-user-objects-through-mim-preview)。 この解決策を使用するには、Azure AD Premium P1 サブスクリプションを持っている必要があります。 
-   - [PowerShell スクリプト](#create-b2b-guest-user-objects-through-a-script-preview)。 スクリプトの使用は、MIM または Azure AD Premium を必要としない、より軽い解決策です。 
+   - Microsoft Identity Manager (MIM) と [Microsoft Graph 用 MIM 管理エージェント](#create-b2b-guest-user-objects-through-mim-preview)。 
+   - [PowerShell スクリプト](#create-b2b-guest-user-objects-through-a-script-preview)。 スクリプトの使用は、MIM を必要としない、より軽い解決策です。 
 
 次の図は、Azure AD アプリケーション プロキシと、オンプレミス ディレクトリ内の B2B ユーザー オブジェクトの生成を連携して、B2B ユーザーにオンプレミス IWA および KCD アプリへのアクセス権を付与する方法の概要を示しています。 番号が付いた手順については、図の下の詳細な説明を参照してください。
 
@@ -86,6 +84,6 @@ MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェン�
 ## <a name="next-steps"></a>次の手順
 
 - [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](active-directory-b2b-hybrid-organizations.md)
-- [Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 - Azure AD Connect の概要については、「[オンプレミスのディレクトリと Azure Active Directory の統合](connect/active-directory-aadconnect.md)」を参照してください。
 

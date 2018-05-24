@@ -1,25 +1,28 @@
 ---
-title: "Azure AD フェデレーション メタデータ |Microsoft Docs"
-description: "この記事では、Azure Active Directory が Azure Active Directory トークンを受け入れるサービスに対して発行するフェデレーション メタデータ ドキュメントについて説明します。"
+title: Azure AD フェデレーション メタデータ |Microsoft Docs
+description: この記事では、Azure Active Directory が Azure Active Directory トークンを受け入れるサービスに対して発行するフェデレーション メタデータ ドキュメントについて説明します。
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 58e5f62009e4e8b688108c6098ea8eabe8020e51
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cfc79b451eafe7dcdd0b8f4285f92714138260bb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156128"
 ---
 # <a name="federation-metadata"></a>フェデレーション メタデータ
 Azure Active Directory (Azure AD) は、Azure AD が発行するセキュリティ トークンを受け入れるように構成されているサービスのフェデレーション メタデータ ドキュメントを発行します。 フェデレーション メタデータ ドキュメントの形式は、「[Web Services Federation Language (WS-Federation) Version 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)」で説明されています。これは、[OASIS SAML (Security Assertion Markup Language) v2.0 のメタデータ](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)の拡張です。
@@ -41,7 +44,7 @@ Azure AD は、フェデレーション メタデータを `https://login.micros
 
 **テナント独立のエンドポイントの場合**、`TenantDomainName` は `common` です。 このドキュメントでは、login.microsoftonline.com でホストされているすべての Azure AD テナントに共通するフェデレーション メタデータの要素のみを示します。
 
-たとえば、テナント固有のエンドポイントは、 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`にすることができます。 テナント独立のエンドポイントは [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)です。 ブラウザーにこの URL を入力することで、フェデレーション メタデータ ドキュメントを表示できます。
+たとえば、テナント固有のエンドポイントは、 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`にすることができます。 テナント独立のエンドポイントは、[https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml) です。 ブラウザーにこの URL を入力することで、フェデレーション メタデータ ドキュメントを表示できます。
 
 ## <a name="contents-of-federation-metadata"></a>フェデレーション メタデータの内容
 次のセクションでは、Azure AD によって発行されたトークンを使用するサービスに必要な情報を提供します。

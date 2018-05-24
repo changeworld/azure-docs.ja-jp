@@ -8,6 +8,7 @@ manager: mtillman
 editor: mbaldwin
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: c0f5110fe73fb48cf6cf5307de08045bd843cb5a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4b4f698042f6688e3db484f7d96ccfb06c5cdd4f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158015"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]
@@ -46,11 +48,11 @@ Azure AD Graph API には、次の機能が用意されています。
 * **Azure AD による認証**: Azure AD Graph API に対するすべての要求は、その要求の Authorization ヘッダーに JSON Web トークン (JWT) を追加することによって認証する必要があります。 このトークンを取得するには、Azure AD のトークン エンドポイントに対して要求を送信し、有効な資格情報を提供します。 OAuth 2.0 クライアント資格情報フローまたは承認コード付与フローを使用して、Graph を呼び出すためのトークンを取得することができます。 詳細については、「 [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)」を参照してください。
 * **ロールベースの承認 (RBAC)**: セキュリティ グループは、Azure AD Graph API 内で RBAC を実行するときに使われます。 たとえば、ユーザーが特定のリソースへのアクセス権を持っているかどうかを判断する場合、アプリケーションから[グループ メンバーシップの確認 (推移的)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) 操作を呼び出すことができます。この操作では、true または false が返されます。
 * **差分クエリ**: 差分クエリ を使うと、Azure AD Graph API に対して頻繁にクエリを行わなくても、2 つの期間の間でのディレクトリの変更を追跡できます。 この種の要求は、前回の差分クエリ要求と現在の要求の間で行われた変更のみを返します。 詳細については、「 [Azure AD Graph API の差分クエリ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query)」を参照してください。
-* **ディレクトリ拡張機能**: 外部データ ストアを必要とせずに、ディレクトリ オブジェクトにカスタム プロパティを追加することができます。 たとえば、アプリケーションがユーザーごとに Skype ID プロパティを必要とする場合は、ディレクトリに新しいプロパティを登録することができ、そのプロパティはすべてのユーザー オブジェクトで使用できるようになります。 詳細については、「 [Azure AD Graph API ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
+* **ディレクトリ拡張機能**: 外部データ ストアを必要とせずに、ディレクトリ オブジェクトにカスタム プロパティを追加できます。 たとえば、アプリケーションがユーザーごとに Skype ID プロパティを必要とする場合は、ディレクトリに新しいプロパティを登録することができ、そのプロパティはすべてのユーザー オブジェクトで使用できるようになります。 詳細については、「 [Azure AD Graph API ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
 * **アクセス許可スコープによる保護**: Azure AD Graph API は、OAuth 2.0 を使って Azure AD のデータに安全にアクセスできるアクセス許可スコープを公開します。 次のようなさまざまな種類のクライアント アプリをサポートします。
   
   * サインインしたユーザー (代理) からの承認によってデータへの委任アクセスを付与されるユーザー インターフェイス
-  * サインインしたユーザーなしでバックグラウンドで動作し、アプリケーションで定義されたロールベースのアクセス制御を使うサービス/デーモン アプリケーション
+  * サインインしたユーザーがいない状態でバックグラウンドで動作し、アプリケーションで定義されたロールベースのアクセス制御を使うサービス/デーモン アプリケーション
     
     委任およびアプリケーションのアクセス許可は、Azure AD Graph API によって公開されている権限を表し、[Azure Portal](https://portal.azure.com) のアプリケーション登録のアクセス許可を通じてクライアント アプリケーションによって要求できます。 [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)は、クライアント アプリケーションで使用可能なものについての情報を提供します。
 
@@ -58,7 +60,7 @@ Azure AD Graph API には、次の機能が用意されています。
 Azure AD Graph API により、多くのアプリケーション シナリオを実現できます。 最も一般的なシナリオを次に示します。
 
 * **基幹業務 (シングル テナント) アプリケーション**: このシナリオでは、エンタープライズ開発者は、Office 365 サブスクリプションを持つ組織に勤めています。 開発者は、Azure AD を操作してユーザーへのライセンスの割り当てなどのタスクを実行する Web アプリケーションを作成します。 このタスクでは、Azure AD Graph API へのアクセスが必要となるため、開発者は、Azure AD にこのシングル テナント アプリケーションを登録し、Azure AD Graph API の読み取りおよび書き込みのアクセス許可を構成します。 その後、アプリケーション独自の資格情報または現在サインインしているユーザーの資格情報を使って、Azure AD Graph API を呼び出すトークンを取得するように、アプリケーションは構成されます。
-* **サービス アプリケーション (マルチテナント) としてのソフトウェア**: このシナリオでは、独立系ソフトウェア ベンダー (ISV) が、Azure AD を使用する他の組織にユーザー管理機能を提供するホスト型のマルチテナント Web アプリケーションを開発しています。 これらの機能にはディレクトリ オブジェクトへのアクセスが必要になるため、アプリケーションは Azure AD Graph API を呼び出す必要があります。 開発者は、Azure AD にアプリケーションを登録し、Azure AD Graph API に対する読み取りと書き込みのアクセス許可を必要とするように構成して、他の組織がディレクトリ内のアプリケーションを使用することに同意できるように外部アクセスを有効にします。 別の組織のユーザーが初めてアプリケーションに対する認証を行うとき、アプリケーションが要求しているアクセス許可に関する同意ダイアログが表示されます。  同意すると、アプリケーションには、ユーザーのディレクトリでの Azure AD Graph API に対する要求されたアクセス許可が付与されます。 同意フレームワークの詳細については、「 [同意フレームワークの概要](active-directory-integrating-applications.md)」を参照してください。
+* **サービス アプリケーション (マルチテナント) としてのソフトウェア**: このシナリオでは、独立系ソフトウェア ベンダー (ISV) が、Azure AD を使用する他の組織にユーザー管理機能を提供するホスト型のマルチテナント Web アプリケーションを開発しています。 これらの機能にはディレクトリ オブジェクトへのアクセスが必要になるため、アプリケーションは Azure AD Graph API を呼び出す必要があります。 開発者は、Azure AD にアプリケーションを登録し、Azure AD Graph API に対する読み取りと書き込みのアクセス許可を必要とするように構成して、他の組織がディレクトリ内のアプリケーションを使用することに同意できるように外部アクセスを有効にします。 別の組織のユーザーが初めてアプリケーションに対する認証を行うとき、アプリケーションが要求しているアクセス許可に関する同意ダイアログが表示されます。 同意すると、アプリケーションには、ユーザーのディレクトリでの Azure AD Graph API に対する要求されたアクセス許可が付与されます。 同意フレームワークの詳細については、「 [同意フレームワークの概要](active-directory-integrating-applications.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 [Azure AD Graph API のクイック スタート ガイド](active-directory-graph-api-quickstart.md)

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160548"
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 
@@ -54,8 +55,9 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 Resource Manager ポリシーと RBAC で VM のアクセス制御を行えるようにすると、VM 全体のセキュリティを高めることができます。 ライフ サイクルが同じ VM は、同じリソース グループにまとめることをお勧めします。 皆さんが使用するリソースは、リソース グループを使ってデプロイして監視し、請求額をまとめることができます。 VM へのアクセスと VM のセットアップをユーザーに許可する際は、[最小限の権限の原則](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)に従ってください。 また、ユーザーに権限を割り当てる際は、次に示した組み込みの Azure ロールの使用を検討してください。
 
 - [仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): VM を管理することはできますが、それが接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
-- [従来の仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): クラシック デプロイメント モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
-- [セキュリティ マネージャー](../role-based-access-control/built-in-roles.md#security-manager): セキュリティ コンポーネント、セキュリティ ポリシー、VM を管理できます。
+- 
+  [従来の仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): クラシック デプロイ モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
+- [セキュリティ管理](../role-based-access-control/built-in-roles.md#security-admin): セキュリティ コンポーネントとセキュリティ ポリシーを管理できます。
 - [DevTest Labs ユーザー](../role-based-access-control/built-in-roles.md#devtest-labs-user): すべてを表示し、VM を接続、開始、再起動、シャットダウンできます。
 
 アカウントとパスワードを管理者どうしで共有したり、複数のユーザー アカウントまたは複数のサービスに同じパスワードを使用したりしないでください。特に、ソーシャル メディアなど、管理以外の作業に使用するパスワードを再利用しないでください。 理想としては、[Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) テンプレートを使って安全に VM をセットアップすることをお勧めします。 このアプローチを使うことで、デプロイの選択肢を強化し、デプロイ全体にセキュリティ設定を適用できます。

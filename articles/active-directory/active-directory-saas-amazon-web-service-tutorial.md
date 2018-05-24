@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3f553b9ea3629a38ab9dea0e93b16c62aebe301f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1cf57d76e87fcc0b6628ac194f4d5c389bf684d4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル: Azure Active Directory と Amazon Web Services (AWS) の統合
 
@@ -30,7 +31,7 @@ Amazon Web Services (AWS) と Azure AD の統合には、次の利点があり�
 - ユーザーが自分の Azure AD アカウントで自動的に Amazon Web Services (AWS) にサインオンできるようにします (シングル サインオン)。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -134,7 +135,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     d. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** をクリックします。
 
 6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -150,7 +151,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
    
     ![シングル サインオン ホームの構成][11]
 
-10. **[Identity and Access Management]**をクリックします。 
+10. **[Identity and Access Management]** をクリックします。 
    
     ![シングル サインオン ID の構成][12]
 
@@ -190,7 +191,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
   
     d. **[Next: Permissions]** をクリックします。
 
-16. **[Attach Permissions Policies]** ダイアログで **[Next: Review]** をクリックします。  
+16. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログ ボックスで、任意のポリシーをアタッチする必要はありません。 **[次へ: レビュー]** をクリックします。  
     
     ![シングル サインオン ポリシーの構成][33]
 
@@ -386,7 +387,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、 **[Amazon Web Services (AWS)]**を選択します。
+2. アプリケーションの一覧で、 **[Amazon Web Services (AWS)]** を選択します。
 
     ![アプリケーションの一覧の [Amazon Web Services (AWS)] リンク](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_app.png)  
 
@@ -414,7 +415,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

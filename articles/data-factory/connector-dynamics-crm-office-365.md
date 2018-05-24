@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: e68f8d4405ae82cfaae59b1e4d9dcea8b361baff
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b4baced183721d666354667f457f4cc5954b0d11
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32769830"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -59,14 +60,14 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 および Dynamics CRM Online
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Dynamics** に設定する必要があります。 | はい |
-| deploymentType | Dynamics インスタンスの展開の種類。 Dynamics Online を **"Online"** にする必要があります。 | はい |
-| serviceUri | Dynamics インスタンスのサービス URL (例: `https://adfdynamics.crm.dynamics.com`)。 | はい |
-| authenticationType | Dynamics サーバーに接続する認証の種類。 Dynamics Online を **"Office365"** に指定します。 | はい |
-| username | Dynamics に接続するためのユーザー名を指定します。 | はい |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| 型 | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
+| deploymentType | Dynamics インスタンスの展開の種類。 Dynamics Online を **"Online"** にする必要があります。 | [はい] |
+| serviceUri | Dynamics インスタンスのサービス URL (例: `https://adfdynamics.crm.dynamics.com`)。 | [はい] |
+| authenticationType | Dynamics サーバーに接続する認証の種類。 Dynamics Online を **"Office365"** に指定します。 | [はい] |
+| username | Dynamics に接続するためのユーザー名を指定します。 | [はい] |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
 
 >[!IMPORTANT]
@@ -75,7 +76,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 >[!NOTE]
 >Dynamics コネクタは、省略可能な "organizationName" プロパティを使用して Dynamics CRM/365 Online インスタンスを識別するために使用されていました。 それは引き続き機能しますが、代わりに新しい "serviceUri" プロパティを指定して、インスタンス検出のパフォーマンスを向上させることをお勧めします。
 
-**例: Office 365 の認証を使用する Dynamics Online**
+**例: Office 365 の認証をを使用する Dynamics Online**
 
 ```json
 {
@@ -105,16 +106,16 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 "*Dyanmics Online と比べた場合に追加されたプロパティは、"hostName" と "port" です。*"
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Dynamics** に設定する必要があります。 | はい |
-| deploymentType | Dynamics インスタンスの展開の種類。 IFD 対応オンプレミス Dynamics を **"OnPremisesWithIfd"** にする必要があります。| はい |
-| hostName | オンプレミス Dynamics サーバーのホスト名。 | はい |
-| port | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
-| organizationName | Dynamics インスタンスの組織の名前。 | はい |
-| authenticationType | Dynamics サーバーに接続する認証の種類。 IFD 対応オンプレミス Dynamics を **"Ifd"** に指定します。 | はい |
-| username | Dynamics に接続するためのユーザー名を指定します。 | はい |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
+| 型 | type プロパティを **Dynamics** に設定する必要があります。 | [はい] |
+| deploymentType | Dynamics インスタンスの展開の種類。 IFD 対応オンプレミス Dynamics を **"OnPremisesWithIfd"** にする必要があります。| [はい] |
+| hostName | オンプレミス Dynamics サーバーのホスト名。 | [はい] |
+| ポート | オンプレミス Dynamics サーバーのポート。 | いいえ (既定値は 443) |
+| organizationName | Dynamics インスタンスの組織の名前。 | [はい] |
+| authenticationType | Dynamics サーバーに接続する認証の種類。 IFD 対応オンプレミス Dynamics を **"Ifd"** に指定します。 | [はい] |
+| username | Dynamics に接続するためのユーザー名を指定します。 | [はい] |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]
@@ -154,9 +155,9 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 Dynamics をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **DynamicsEntity** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**DynamicsEntity** に設定する必要があります。 |はい |
+| 型 | データセットの type プロパティは、**DynamicsEntity** に設定する必要があります。 |[はい] |
 | entityName | 取得するエンティティの論理名。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、シンクの場合ははい |
 
 > [!IMPORTANT]
@@ -207,10 +208,10 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
 
 Dynamics からデータをコピーするは、コピー アクティビティのソースの種類を **DynamicsSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | はい |
-| クエリ | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/en-us/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティは **DynamicsSource** に設定する必要があります。 | [はい] |
+| クエリ | FetchXML は、Dynamics (オンラインおよびオンプレミス) で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの "entityName" が指定されている場合) |
 
 **例:**
 
@@ -268,15 +269,19 @@ Dynamics からデータをコピーするは、コピー アクティビティ�
 
 Dynamics にデータをコピーするは、コピー アクティビティのシンクの種類を **DynamicsSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | はい |
-| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"**。 | はい |
+| 型 | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | [はい] |
+| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"**。 | [はい] |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ (既定値は 10) |
 | ignoreNullValues | 書き込み操作時に入力データ (キー フィールドを除く) からの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**: upsert /更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**: upsert/更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
 >[!NOTE]
->Dynamics シンクでのシンク writeBatchSize とコピー アクティビティ [parallelCopies](copy-activity-performance.md#parallel-copy) の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
+>Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
+
+Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 状態が発生します。 "writeBatchSize" を 10 以下に保つと、このような同時呼び出しの制限が回避されます。
+
+"**writeBatchSize**" と "**parallelCopies**" の最適な組み合わせは、エンティティのスキーマによって変わります。たとえば、その呼び出しのためにフックされる列数、行サイズ、プラグイン/ワークフロー/ワークフロー アクティビティの数などです。10 writeBatchSize * 10 parallelCopies という既定の設定は、最高のパフォーマンスではないかもしれませんが、ほとんどの Dynamics エンティティに利用できる Dynamics サービスの推奨値です。 コピー アクティビティ設定の組み合わせを調整することで、パフォーマンスを調整できます。
 
 **例:**
 
@@ -322,12 +327,13 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | long | ✓ | ✓ |
 | AttributeTypeCode.Boolean | ブール | ✓ | ✓ |
+| AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | |
+| AttributeType.Lookup | Guid | ✓ | ✓ |
 | AttributeType.ManagedProperty | ブール | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Salesforce を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Salesforce を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d300eb397b58b4e1f8c8a6516e0a279980d8d09
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3997d913525b44f154ca1e989ee1880308b82096
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34344254"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル: Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -27,9 +28,13 @@ ms.lasthandoff: 02/09/2018
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure Active Directory テナント。
-*   Salesforce for Work または Salesforce for Education の有効なテナントが必要です。 どちらのサービスにも無料試用版のアカウントを使用できます。
-*   Team Admin アクセス許可がある Salesforce のユーザー アカウント
+*   Azure Active Directory テナント
+*   Salesforce.com テナント
+
+>[!IMPORTANT] 
+>Salesforce.com の試用アカウントを使用している場合は、自動化されたユーザー プロビジョニングを構成できません。 試用アカウントの場合、アカウントを購入するまでは、必要な API にアクセスできません。 [無料の開発者アカウント](https://developer.salesforce.com/signup) を使用してこのチュートリアルを完了することで、この制限を回避できます。
+
+Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox の統合に関するチュートリアル](https://go.microsoft.com/fwLink/?LinkID=521879)を参照してください。
 
 ## <a name="assigning-users-to-salesforce"></a>Salesforce へのユーザーの割り当て
 
@@ -89,7 +94,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. トークンをコピーして Azure AD のウィンドウに移動し、**[シークレット トークン]** フィールドに貼り付けます。
 
-11. **テナント URL** は、Salesforce のインスタンスが Salesforce Government クラウドにある場合にのみ入力する必要があります。 それ以外の場合は省略可能です。 テナント URL は、https://your-instance.my.salesforce.com 形式で入力します。your-instance は、ご利用の Salesforce のインスタンスの名前に置き換えてください。
+11. **テナント URL** は、Salesforce のインスタンスが Salesforce Government クラウドにある場合にのみ入力する必要があります。 それ以外の場合は省略可能です。 テナント URL は、https://your-instance.my.salesforce.com の形式で入力します。your-instance は、ご利用の Salesforce のインスタンスの名前に置き換えてください。
 
 12. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Salesforce アプリに接続できることを確認します。
 
@@ -112,5 +117,5 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 * [シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

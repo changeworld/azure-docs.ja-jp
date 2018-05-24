@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8cb7cd84e68420006e7c598c224580c9150ab1c7
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070500"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
 
@@ -34,6 +35,7 @@ ms.lasthandoff: 04/16/2018
 - [インスタンスに "RDP 接続" せずに証明書署名要求 (CSR) を生成する方法を教えてください。](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [クラウド サービス管理証明書の期限が切れました。更新する方法を教えてください。](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [メイン SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- ["Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **監視およびログ記録**
 
@@ -103,6 +105,10 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>メイン SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。
 
 このタスクはスタートアップ スクリプト (batch/cmd/PowerShell) を使って自動化することができ、サービス定義ファイルでそのスタートアップ スクリプトを登録します。 スタートアップ スクリプトと証明書 (.p7b ファイル) の両方を、スタートアップ スクリプトの同じディレクトリのプロジェクト フォルダーに追加します。
+
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。
+
+この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、こちらのアドバイザリ (https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731) をご覧ください。
 
 詳細については、次の記事を参照してください。
 - [クラウド サービスのスタートアップ タスクを構成して実行する方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)

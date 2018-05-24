@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Identity Protection を使用したサインイン エクスペリエンス| Microsoft Docs"
-description: "Identity Protection でユーザーの侵害が和らげられたか修正された場合、またはポリシーにより多要素認証が要求される場合のユーザー エクスペリエンスの概要を示します。"
+title: Azure AD Identity Protection を使用したサインイン エクスペリエンス| Microsoft Docs
+description: Identity Protection でユーザーの侵害が和らげられたか修正された場合、またはポリシーにより多要素認証が要求される場合のユーザー エクスペリエンスの概要を示します。
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 558d1e04e352d5f33201bb15cb7a2dd1c18f524f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164205"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
@@ -49,10 +50,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 ## <a name="multi-factor-authentication-registration"></a>多要素認証の登録
 侵害されたアカウントの復旧フローでも、リスクの高いサインインのフローでも、最善のユーザー エクスペリエンスは、ユーザーが自分で復旧できる場合です。 ユーザーは、多要素認証で登録された場合、セキュリティ チャレンジを解くために使用できる電話番号が既にアカウントに関連付けられています。 アカウントの侵害から復旧するために、ヘルプ デスクまたは管理者の介入は必要ありません。 したがって、ユーザーを多要素認証に登録させることを強くお勧めします。 
 
-管理者は次のことをできます。
-
-* 追加のセキュリティ検証用にアカウントを設定するようユーザーに要求するポリシーを設定します。 
-* 登録前に猶予期間をユーザーに与える場合、最大で 30 日間、多要素認証の登録のスキップを許可します。
+管理者は、追加のセキュリティ検証用にアカウントを設定するようユーザーに要求するポリシーを設定できます。 このポリシーでは、ユーザーは多要素認証の登録を最大で 14 日間省略できます。 14 日の猶予期間は構成できません。
 
 **多要素認証の登録には 3 つのステップがあります。**
 

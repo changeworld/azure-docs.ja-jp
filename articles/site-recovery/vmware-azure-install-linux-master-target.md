@@ -7,13 +7,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072438"
 ---
 # <a name="install-a-linux-master-target-server"></a>Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -240,18 +241,13 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 1. 新しい 1 TB ディスクを Linux マスター ターゲット仮想マシンに接続してから、マシンを起動します。
 
-2. **multipath -ll** コマンドを使用し、リテンション ディスクのマルチパス ID を確認します。
-    
-     `multipath -ll`
+2. **multipath -ll** コマンドを使用し、リテンション ディスクのマルチパス ID を確認します。**multipath -ll**
 
-        ![The multipath ID of the retention disk](./media/vmware-azure-install-linux-master-target/media/image22.png)
+    ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image22.png)
 
-3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。
-
+3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/<リテンション ディスクのマルチパス ID>**
     
-    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
-    
-    ![ドライブにファイル システムを作成する](./media/vmware-azure-install-linux-master-target/image23-centos.png)
+    ![ファイル システム](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. ファイル システムを作成したら、リテンション ディスクをマウントします。
 
@@ -335,9 +331,9 @@ Linux を使用してこれをダウンロードするには、次のように�
      スクリプトが完了するまで待機します。 マスター ターゲットが正常に登録されていれば、ポータルの **[Site Recovery インフラストラクチャ]** ページに表示されます。
 
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>マスター ターゲット サーバーに VMware ツールをインストールする
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>マスター ターゲット サーバーに VMware ツール/open-vm-tools をインストールする
 
-VMware ツールは、データストアを検出できるように、マスター ターゲット上にインストールする必要があります。 ツールをインストールしていない場合は、再保護画面にデータストアが表示されません。 VMware ツールのインストール後、再起動する必要があります。
+VMware ツールまたは open-vm-tools は、データストアを検出できるように、マスター ターゲット上にインストールする必要があります。 ツールをインストールしていない場合は、再保護画面にデータストアが表示されません。 VMware ツールのインストール後、再起動する必要があります。
 
 ### <a name="upgrade-the-master-target-server"></a>マスター ターゲット サーバーをアップグレードする
 

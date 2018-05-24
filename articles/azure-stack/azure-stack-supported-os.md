@@ -1,66 +1,75 @@
 ---
-title: "Azure Stack でサポートされているゲスト オペレーティング システム | Microsoft Docs"
-description: "これらのゲスト オペレーティング システムを Azure Stack で使用できます。"
+title: Azure Stack でサポートされているゲスト オペレーティング システム | Microsoft Docs
+description: これらのゲスト オペレーティング システムを Azure Stack で使用できます。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: Brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: 3eceb740b8115d2eaca517017f6158744d6e8e58
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34074832"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack でサポートされているゲスト オペレーティング システム
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 ## <a name="windows"></a>Windows
-Azure Stack は、次の表に記載されている Windows ゲスト オペレーティング システムをサポートしています。Marketplace 内のイメージは Azure Stack にダウンロードできます。 Marketplace では、Windows クライアント イメージを利用できません。
 
-デプロイ時に、Azure Stack により、適切なバージョンのゲスト エージェントがイメージに挿入されます。
+Azure Stack は、次の表に示す Windows ゲスト オペレーティング システムをサポートしています。
 
-| オペレーティング システム | [説明] | 発行元 | [OS Type]\(OS の種類\) | マーケットプレース |
+| オペレーティング システム | [説明] | Marketplace で利用可能 |
 | --- | --- | --- | --- | --- | --- |
-| Windows Server 2008 R2 SP1 | 64 ビット | Microsoft | Windows | データセンター |
-| Windows Server 2012 | 64 ビット | Microsoft | Windows | データセンター |
-| Windows Server 2012 R2 | 64 ビット | Microsoft | Windows | データセンター |
-| Windows Server 2016 | 64 ビット | Microsoft | Windows | Datacenter、Datacenter Core、Datacenter with Containers |
-| Windows 10 *(注 1 をご覧ください)* | 64 ビット、Pro、および Enterprise | Microsoft | Windows | いいえ  |
+| Windows Server、バージョン 1709 | 64 ビット | コンテナー付き Core |
+| Windows Server 2016 | 64 ビット |  Datacenter、Datacenter Core、Datacenter with Containers |
+| Windows Server 2012 R2 | 64 ビット |  データセンター |
+| Windows Server 2012 | 64 ビット |  データセンター |
+| Windows Server 2008 R2 SP1 | 64 ビット |  データセンター |
+| Windows Server 2008 SP2 | 64 ビット |  Bring your own image |
+| Windows 10 *(注 1 をご覧ください)* | 64 ビット、Pro、および Enterprise | Bring your own image |
 
-***注 1:***  *Azure Stack で Windows 10 クライアント オペレーティング システムを展開するには、[Windows per User Licensing](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) を所持しているか、Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)) から購入する必要があります。*
+***注 1:*** *Azure Stack で Windows 10 クライアント オペレーティング システムをデプロイするには、[Windows per User Licensing](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) を所持しているか、Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)) から購入する必要があります。*
 
+Marketplace イメージは従量課金制または BYOL (EA/SPLA) ライセンスで利用できます。 1 つの Azure Stack インスタンスで両方を使うことはサポートされていません。 デプロイ時に、Azure Stack により、適切なバージョンのゲスト エージェントがイメージに挿入されます。
+
+ Datacenter エディションは、Marketplace でダウンロードできます。お客様は、他のエディションを含む独自のサーバー イメージを使用できます。 Marketplace では、Windows クライアント イメージを利用できません。
 
 ## <a name="linux"></a>Linux
 
-ここに示す Linux ディストリビューションには、必要な Windows Azure Linux エージェント (WALA) が含まれます。
+Marketplace で入手可能として示されている Linux ディストリビューションには、必要な Windows Azure Linux エージェント (WALA) が含まれます。 Azure Stack に独自のイメージを持ち込む場合は、「[Azure Stack への Linux イメージの追加](azure-stack-linux.md)」のガイドラインに従ってください。
 
-> [!NOTE]   
-> 2.2.3 よりも古いバージョンの WALA でビルドされたイメージはサポートされて "*おらず*"、デプロイできる可能性は低いです。 バージョン 2.2.12 や 2.2.13 など、一部の WALA エージェント バージョンは、Azure Stack VM 上では動作しないことがわかっています。
+> [!NOTE]
+> カスタム イメージは、最新のパブリック WALA バージョンでビルドする必要があります。 2.2.18 より古いバージョンは、Azure Stack で正しく機能しない可能性があります。
 >
-> [cloud-init](https://cloud-init.io/) は Azure Stack 上の Ubuntu ディストリビューションでのみサポートされます。
+> 現在、[cloud-init](https://cloud-init.io/) は Azure Stack ではサポートされていません。
 
 | ディストリビューション | [説明] | 発行元 | マーケットプレース |
 | --- | --- | --- | --- | --- | --- |
-| Container Linux |  64 ビット | CoreOS | 安定版 |
 | CentOS-based 6.9 | 64 ビット | Rogue Wave | [はい] |
 | CentOS-based 7.4 | 64 ビット | Rogue Wave | [はい] |
+| ClearLinux | 64 ビット | ClearLinux.org | [はい] |
+| Container Linux |  64 ビット | CoreOS | 安定版 |
 | Debian 8 "Jessie" | 64 ビット | credativ |  [はい] |
 | Debian 9 "Stretch" | 64 ビット | credativ | [はい] |
-| Red Hat Enterprise Linux 7.x (保留中) | 64 ビット | Red Hat | いいえ  |
+| Red Hat Enterprise Linux 7.x | 64 ビット | Red Hat |Bring your own image |
 | SLES 11SP4 | 64 ビット | SUSE | [はい] |
 | SLES 12SP3 | 64 ビット | SUSE | [はい] |
 | Ubuntu 14.04-LTS | 64 ビット | Canonical | [はい] |
 | Ubuntu 16.04-LTS | 64 ビット | Canonical | [はい] |
+| Ubuntu 18.04-LTS | 64 ビット | Canonical | [はい] |
 
 他の Linux ディストリビューションは、今後サポートされる可能性があります。
+
+Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」 (Red Hat と Azure Stack: よく寄せられる質問) を参照してください。

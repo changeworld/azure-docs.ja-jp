@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077676"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -46,7 +47,14 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>サーバー エンドポイント
-サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在できます (たとえば `F:\sync1` と `F:\sync2`)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 現在、ボリュームのルートに対してサーバー エンドポイントを作成することはできません (たとえば、ボリュームがマウント ポイントとしてマウントされている場合は、`F:\` または `C:\myvolume`)。
+サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在できます (たとえば `F:\sync1` と `F:\sync2`)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 
+
+マウント ポイントを使用してサーバー エンドポイントを作成できます。 サーバー エンドポイント内のマウントポイントはスキップされることに注意してください。  
+
+システム ボリュームでサーバー エンドポイントを作成することはできますが、その場合、次の 2 つの制限があります。
+* クラウド階層化を有効にすることはできません。
+* 名前空間の迅速な復元 (システムが名前空間全体をすばやく停止した後、起動してコンテンツを呼び戻す) は実行されません。
+
 
 > [!Note]  
 > 非リムーバブル ボリュームのみがサポートされます。  サーバー エンドポイントのパスでは、リモート共有からマップされたドライブはサポートされていません。  また、システム ボリュームでは、クラウド階層経由の Windows システム ボリューム上にあるサーバー エンドポイントはサポートされていません。
@@ -105,7 +113,7 @@ Windows Server の今後のバージョンは、それらがリリースされ�
 | ~$\*.\* | Office の一時ファイル |
 | \*.tmp | 一時ファイル |
 | \*.laccdb | Access データベースのロック ファイル|
-| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| 635D02A9D91C401B97884B82B3BCDAEA.* | 内部の同期ファイル|
 | \\System Volume Information | ボリュームに固有のフォルダー |
 | $RECYCLE.BIN| フォルダー |
 | \\SyncShareState | 同期用のフォルダー |

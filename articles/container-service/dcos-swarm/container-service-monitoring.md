@@ -1,26 +1,27 @@
 ---
-title: "Azure DC/OS クラスターの監視 - Datadog"
-description: "Datadog を使用して Azure コンテナー サービス クラスターを監視します。 DC/OS の Web UI を使用して、クラスターに Datadog エージェントをデプロイします。"
+title: Azure DC/OS クラスターの監視 - Datadog
+description: Datadog を使用して Azure コンテナー サービス クラスターを監視します。 DC/OS の Web UI を使用して、クラスターに Datadog エージェントをデプロイします。
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b895ef906a8c8f3f8cc21267d80f8b59b64837f4
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 029f36e4362704fcec240f6e88da5c96e903c317
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162757"
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>Datadog を使用した Azure Container Service DC/OS クラスターの監視
 
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Datadog エージェントをデプロイする方法について説明します。 この構成を行うには、Datadog のアカウントが必要です。 
 
 ## <a name="prerequisites"></a>前提条件
-Azure Container Service によって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](../container-service-connect.md)してください。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [http://datadoghq.com](http://datadoghq.com) にアクセスし、Datadog アカウントをセットアップしてください。 
+Azure Container Service によって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](../container-service-connect.md)してください。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [http://datadoghq.com](http://datadoghq.com) に移動して、Datadog アカウントを設定します。 
 
 ## <a name="datadog"></a>Datadog
 Datadog は監視サービスです。Azure コンテナー サービス クラスター内のコンテナーから監視データを収集することができます。 Datadog には、コンテナー内の特定のメトリックを表示できる Docker 統合ダッシュボードがあります。 コンテナーから収集されたメトリックは、CPU、メモリ、ネットワーク、I/O 別に整理されます。 メトリックは Datadog によってコンテナーとイメージに分割されます。 CPU 使用率の UI の例を以下に示します。
@@ -30,7 +31,7 @@ Datadog は監視サービスです。Azure コンテナー サービス クラ�
 ## <a name="configure-a-datadog-deployment-with-marathon"></a>Marathon を使用した Datadog デプロイメントの構成
 以下の手順は、Marathon を使用して Datadog アプリケーションを構成し、クラスターにデプロイする方法を示しています。 
 
-[http://localhost:80/](http://localhost:80/)で DC/OS の UI にアクセスします。 DC/OS の UI が表示されたら、左下にある [Universe (ユニバース)] に移動し、[Datadog] を検索して、[Install (インストール)] をクリックします。
+[http://localhost:80/](http://localhost:80/) で DC/OS の UI にアクセスします。 DC/OS の UI が表示されたら、左下にある [Universe (ユニバース)] に移動し、[Datadog] を検索して、[Install (インストール)] をクリックします。
 
 ![Datadog package within the DC/OS Universe](./media/container-service-monitoring/datadog1.png)
 

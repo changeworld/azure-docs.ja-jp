@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: fb918cc70a3a3d21e86c9d530e264199794886f1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: acc7d0a031821b8b6e9c110c92597b0307e216fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193235"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル: Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -77,9 +78,9 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 5. **[選択]** をクリックします。
 
-6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスを弾力性または計算能力に最適化するかどうか、および Data Warehouse ユニットの数を指定します。 
+6. **[パフォーマンス レベル]** をクリックし、データ ウェアハウスが Gen1 または Gen2 のいずれであるかということと、Data Warehouse ユニットの数を指定します。 
 
-7. このチュートリアルでは、**[エラスティック用に最適化]** サービス レベルを選びます。 スライダーは、既定で **[DW400]** に設定されています。  上下に動かしてどうなるか試してみてください。 
+7. このチュートリアルでは、SQL Data Warehouse の **[Gen1]** を選択します。 スライダーは、既定で **[DW1000c]** に設定されています。  上下に動かしてどうなるか試してみてください。 
 
     ![パフォーマンスを構成する](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -102,7 +103,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 > SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20171113.database.windows.net** など) や追加の構成オプションが表示されます。 
+1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。 
 
 2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 その後、サーバー名をクリックしてサーバーの設定を開きます。
 
@@ -132,8 +133,8 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
+2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、**[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。 
+3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。 
 
     ![接続情報](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -148,7 +149,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     | Setting      | 推奨値 | [説明] | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
-    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20171113.database.windows.net** のような形式で指定する必要があります。 |
+    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20180430.database.windows.net** のような形式で指定する必要があります。 |
     | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
     | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
@@ -163,7 +164,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
-サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 メモリの最大値は、[パフォーマンス レベル](memory-and-concurrency-limits.md#performance-tiers)、[Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)、および[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
+サーバー管理者アカウントは管理操作を実行するためのものであり、ユーザー データに対するクエリの実行には適していません。 データの読み込みは、メモリを大量に消費する操作です。 メモリの最大値は、プロビジョニングした SQL Data Warehouse の世代、[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)、[リソース クラス](resource-classes-for-workload-management.md)に従って定義されます。 
 
 データの読み込みに専用のログインとユーザーを作成することをお勧めします。 その後、適切な最大メモリ割り当てを有効にする[リソース クラス](resource-classes-for-workload-management.md)に読み込みユーザーを追加します。
 
@@ -588,7 +589,7 @@ SQL Data Warehouse は、統計の自動作成または自動更新を行いま�
 
 3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、**[削除]** をクリックします。
 
-4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20171113.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
+4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
 
 5. リソース グループを削除するには、**myResourceGroup** をクリックして、**[リソース グループの削除]** をクリックします。
 

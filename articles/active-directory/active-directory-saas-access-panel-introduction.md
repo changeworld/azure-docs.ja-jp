@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158273"
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
@@ -50,9 +51,7 @@ ms.lasthandoff: 03/08/2018
 
 サインイン ページ用にカスタム ブランドを構成している場合は、URL に組織のドメインを追加することで、ブランドを読み込むことができます (例: `http://myapps.microsoft.com/<your domain>.com`)。
 
-次に示すように、Azure Portal で構成されている任意のアクティブなドメイン名または検証済みドメイン名を使用できます。
-
-![Wingtip Toys のドメイン名][2]  
+次に示すように、Azure portal で構成されている任意のアクティブなドメイン名または検証済みドメイン名を使用できます。![Wingtip Toys ドメイン名][2]  
 
 URL は、Azure AD と統合されたアプリケーションにサインインするすべてのユーザーに配布します。
 
@@ -75,7 +74,7 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 - **Edge**: Windows 10 Anniversary Edition 以降。 
 - **Chrome**: Windows 7 以降、MacOS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
-- **Internet Explorer 8、9、10、11**: Windows 7 以降 (制限付きサポート)。
+- **Internet Explorer 11**: Windows 7 以降 (制限付きサポート)。
 
 ## <a name="my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能
 パスワード ベースのシングル サインオンにサインインするには、拡張機能を使用する必要があります。 拡張機能のインストール後、サインインして追加の機能を有効にするには、**[開始するにはサインインしてください]** を選択します。 
@@ -83,10 +82,15 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 - アプリに直接サインインするには、そのアプリの**サインオン URL** を使用します。 アプリの URL を使用すると、そのアクションが拡張機能によって検出され、サインインするためのオプションが提供されます。
 - 拡張機能の "*クイック検索*" 機能を使用して、アクセス パネルから任意のアプリを起動することもできます。 
 - **[最近の使用]** セクションには、起動した直近のアプリケーションが拡張機能によって 3 つ表示されます。
+- 遠くにいる場合、[アプリケーション プロキシ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)を利用して社内 URL を利用できます。
 
 > [!NOTE]
 > その他の機能は、Edge、Chrome、および Firefox でのみ使用できます。
 >
+拡張は次のサイトから直接ダウンロードできます。
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 `https://myapps.microsoft.com` 以外のマイ アプリの URL を使用している場合は、次の手順に従って既定の URL を構成します。
 1. 拡張機能にサインインして "*いない*" ときに、拡張機能のアイコンを右クリックします。
@@ -94,6 +98,12 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 3. 既定の URL を選択します。
 4. 拡張機能のアイコンを選択します。
 5. **[開始するにはサインインしてください]** を選択します。
+
+拡張を利用してリモート時に社内の URL を利用するのには、次の操作を行います。
+1. テナントで[アプリケーション プロキシを構成します](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable)。
+2. アプリケーション プロキシ経由で[アプリケーションと URL を発行します](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal)。
+3. 拡張機能をインストールし、[開始するにはサインインしてください] を選択して拡張機能にサインインします。
+4. これで、リモート時にも社内 URL を参照できます。
 
 ## <a name="mobile-app-support"></a>モバイル アプリのサポート
 
