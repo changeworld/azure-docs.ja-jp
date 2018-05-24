@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2017
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 59e8e40360702d623827f6784856b874ca629591
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c8fe65d2eadaede1d99befbf76c4d06fab9598fc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin を使用して Azure HDInsight で Hive クエリを実行する 
 
@@ -39,7 +39,7 @@ HDInsight 対話型クエリ クラスターには、Zeppelin ノートブック
 2. Hadoop ユーザー名とパスワードを入力します。 Zeppelin ページで、新しいノートを作成するか、既存のノートを開きます。 HiveSample には、サンプル Hive クエリが含まれています。  
 
     ![HDInsight 対話型クエリ Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
-3. **[Note の新規作成]**をクリックします。
+3. **[Note の新規作成]** をクリックします。
 4. 次の値を入力または選択します。
 
     - Note 名: ノートの名前を入力します。

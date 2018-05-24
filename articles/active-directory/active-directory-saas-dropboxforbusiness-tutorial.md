@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Dropbox for Business の統合 | Microsoft Docs"
-description: "Azure Active Directory と Dropbox for Business の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Dropbox for Business の統合 | Microsoft Docs'
+description: Azure Active Directory と Dropbox for Business の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 255cfcb777f88fd6c6ac62b3e7c216360ea11e54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aa00a88f8325345b1b45d7d0971a03590bce1029
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>チュートリアル: Azure Active Directory と Dropbox for Business の統合
 
@@ -30,7 +30,7 @@ Dropbox for Business と Azure AD の統合には、次の利点があります�
 - ユーザーが自分の Azure AD アカウントで自動的に Dropbox for Business にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +108,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 
     ![[Dropbox for Business のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url1.png)
 
-    a. **[サインオン URL]** ボックスに、`https://www.dropbox.com/sso/<id>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://www.dropbox.com/sso/<id>` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、値 `Dropbox` を入力します。
 
@@ -130,7 +130,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 
 7. **Dropbox for Business** 側のシングル サインオンを構成するには、Dropbox for Business テナントに移動します。
 
-    a. Dropbox for Business テナントにサインオンします。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Dropbox for Business テナントにサインオンします。 
    
     ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
    
@@ -154,7 +154,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
    
     ![シングル サインオンの構成](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769516.png "Configure single sign-on")
    
-    a. **[必須項目です]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[必須項目です]** をクリックします。
    
     b. **[ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -163,7 +163,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
     d. **[変更の保存]** をクリックして、DropBox for Business テナントでの構成を完了します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -247,7 +247,7 @@ Dropbox for Business で Azure AD のシングル サインオンを構成して
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

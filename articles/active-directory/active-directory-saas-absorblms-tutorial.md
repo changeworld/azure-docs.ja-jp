@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Absorb LMS の統合 | Microsoft Docs"
-description: "Azure Active Directory と Absorb LMS の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Absorb LMS の統合 | Microsoft Docs'
+description: Azure Active Directory と Absorb LMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: f877d8fee4a94207fc01f4a5e0e7919f1286f2e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
@@ -30,7 +30,7 @@ Absorb LMS と Azure AD の統合には、次の利点があります。
 - ユーザーが Azure AD アカウントで自動的に Absorb LMS にサインオン (シングル サインオン) できるように設定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -102,7 +102,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Absorb LMS のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
      
@@ -139,7 +139,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] ページ](./media/active-directory-saas-absorblms-tutorial/4.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
     b. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
     
@@ -188,7 +188,7 @@ Azure AD でテスト ユーザーを作成するには、次の手順に従い�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスの値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
 
 ### <a name="create-an-absorb-lms-test-user"></a>Absorb LMS のテスト ユーザーの作成
 
@@ -216,7 +216,7 @@ Absorb LMS の場合、設定は手動で行います。
 
     ![[ユーザーの追加] ページ](./media/active-directory-saas-absorblms-tutorial/user.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[名]** ボックスに、ユーザーの名 (たとえば、**Britta**) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名]** ボックスに、ユーザーの名 (たとえば、**Britta**) を入力します。
 
     b. **[姓]** ボックスに、ユーザーの姓 (たとえば、**Simon**) を入力します。
     
@@ -269,7 +269,7 @@ Absorb LMS に Britta Simon というユーザーを割り当てるには、次�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 
