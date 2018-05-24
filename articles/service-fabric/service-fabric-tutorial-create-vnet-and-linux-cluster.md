@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 63d5ae371b4852be96f764b91ec44f1befbd469b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff57aec76171b45dbebff928f2898bd5f91ec1c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365544"
 ---
 # <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>チュートリアル: Azure 仮想ネットワークに Service Fabric Linux クラスターをデプロイする
-このチュートリアルは、シリーズの第 1 部です。 Azure CLI とテンプレートを使用して、Linux Service Fabric クラスターを [Azure 仮想ネットワーク (VNET)](../virtual-network/virtual-networks-overview.md) および[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md)にデプロイする方法を説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 PowerShell を使用して Windows クラスターを作成する場合は、[Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページを参照してください。
+このチュートリアルは、シリーズの第 1 部です。 Azure CLI とテンプレートを使用して、Linux Service Fabric クラスターを [Azure 仮想ネットワーク (VNET)](../virtual-network/virtual-networks-overview.md) および[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md)にデプロイする方法を説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 PowerShell を使用して Windows クラスターを作成する場合は、[Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページを参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 

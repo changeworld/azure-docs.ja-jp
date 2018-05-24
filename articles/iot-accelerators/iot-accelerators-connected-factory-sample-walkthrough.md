@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 68ed75a9ef2faee408e65c0991182b7d95bb17a8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2144747fdaa0c596397cc93d8509ca006b67c592
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303506"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366207"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>接続済みファクトリ ソリューション アクセラレータのチュートリアル
 
 接続済みファクトリ [ソリューション アクセラレータ][lnk-preconfigured-solutions]は、次の処理を行うエンド ツー エンドの産業ソリューションの実装です。
 
-* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.md) を参照してください。
 * このようなデバイスと生産ラインの運用 KPI と OEE を表示します。
 * OPC UA サーバー システムを操作するためにクラウドベースのアプリケーションがどのように使用されているかを示します。
 * 独自の OPC UA サーバー デバイスを接続できるようにします。
@@ -41,7 +41,7 @@ ms.locfileid: "34303506"
 * 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
 * Azure サービスを利用する独自の IoT ソリューションを設計する。
 
-詳細については、[接続済みファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.md) を参照してください。
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
@@ -127,7 +127,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 
 ## <a name="telemetry-data-flow"></a>テレメトリ データ フロー
 
-![テレメトリ データ フロー](media/iot-suite-connected-factory-walkthrough/telemetry_dataflow.png)
+![テレメトリ データ フロー](./media/iot-accelerators-connected-factory-sample-walkthrough/telemetry_dataflow.png)
 
 ### <a name="flow-steps"></a>フローのステップ
 
@@ -179,7 +179,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 
 ## <a name="browsing-data-flow"></a>ブラウズ操作のデータ フロー
 
-![ブラウズ操作のデータ フロー](media/iot-suite-connected-factory-walkthrough/browsing_dataflow.png)
+![ブラウズ操作のデータ フロー](./media/iot-accelerators-connected-factory-sample-walkthrough/browsing_dataflow.png)
 
 ### <a name="flow-steps"></a>フローのステップ
 
@@ -233,15 +233,15 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 引き続き IoT ソリューション アクセラレータの概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
-* [接続済みファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
+* [接続済みファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC Publisher のリファレンス実装](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
-[connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
+[connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]:../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
-[lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+[lnk-preconfigured-solutions]:iot-accelerators-what-are-solution-accelerators.md
+[lnk-customize]: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
-[lnk-permissions]: iot-suite-v1-permissions.md
+[lnk-permissions]: ../iot-suite/iot-suite-v1-permissions.md

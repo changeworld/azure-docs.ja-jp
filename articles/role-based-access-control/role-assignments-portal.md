@@ -6,7 +6,7 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 07/17/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 35cb4be5c1ee24bba8026cbe66d2316753f9ed32
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ac7fda78f456a233c8dba90a6a50e19774991df
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203654"
 ---
 # <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する
 > [!div class="op_single_selector"]

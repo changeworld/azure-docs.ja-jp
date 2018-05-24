@@ -3,8 +3,8 @@ title: PowerShell サンプル - 監査 - 脅威の検出 - Azure SQL Database |
 description: Azure SQL Database で監査と脅威の検出を構成するための Azure PowerShell サンプル スクリプト
 services: sql-database
 documentationcenter: sql-database
-author: janeng
-manager: jstrauss
+author: CarlRabeler
+manager: craigg
 editor: carlrab
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,13 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/01/2018
-ms.author: janeng
-ms.openlocfilehash: 3b3beb3b4bf88e3e18afbc3165545cebe2addbcc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.author: carlrab
+ms.openlocfilehash: 7a8d786a6f11c4bad73d714d032ec510248d5110
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365867"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>PowerShell を使用して SQL Database の監査と脅威検出を構成する
 

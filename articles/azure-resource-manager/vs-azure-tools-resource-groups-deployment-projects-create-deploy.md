@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360106"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 Visual Studio および [Azure SDK](https://azure.microsoft.com/downloads/)では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、アプリ用に Web ホスト、Web サイト、およびデータベースを定義し、そのインフラストラクチャをコードと共にデプロイできます。 または、仮想マシン、仮想ネットワーク、およびストレージ アカウントを定義し、そのインフラストラクチャを、仮想マシンで実行するスクリプトと共にデプロイすることができます。 **Azure リソース グループ** デプロイ プロジェクトでは、必要なすべてのリソースを反復可能な単一の操作でデプロイできます。 リソースのデプロイと管理の詳細については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。

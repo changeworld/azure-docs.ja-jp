@@ -11,15 +11,16 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0d6fc2a49034b2e01a0397fe256a2b44030777b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 0d38a41a33632e2c6427b75e365db468940d025d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34300970"
 ---
 # <a name="compare-azure-iot-options"></a>Azure IoT オプションの比較
 
-「[Azure とモノのインターネット](iot-suite-what-is-azure-iot.md)」の記事では、次のレイヤーごとに一般的な IoT ソリューション アーキテクチャについて説明しています。
+「[Azure とモノのインターネット](../iot-accelerators/iot-accelerators-what-is-azure-iot.md)」の記事では、次のレイヤーごとに一般的な IoT ソリューション アーキテクチャについて説明しています。
 
 * デバイスの接続と管理
 * データ処理と分析
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/10/2018
 
 このアーキテクチャを実装するために、Azure IoT には複数のオプションが用意されており、さまざまな顧客要件のセットに対応しています。
 
-* [Azure IoT ソリューション アクセラレータ](index.md)は、Azure の提供するサービスとしてのプラットフォーム (PaaS) 上に構築された、エンタープライズ グレードの[ソリューション アクセラレータ](iot-suite-what-are-solution-accelerators.md)のコレクションであり、これを使用するとカスタム IoT ソリューションの開発を加速できます。
+* [Azure IoT ソリューション アクセラレータ](index.md)は、Azure の提供するサービスとしてのプラットフォーム (PaaS) 上に構築された、エンタープライズ グレードの[ソリューション アクセラレータ](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)のコレクションであり、これを使用するとカスタム IoT ソリューションの開発を加速できます。
 
 * [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) は、モデル ベースのアプローチを使用するサービスとしてのソフトウェア (SaaS) ソリューションです。これを使用すると、クラウド ソリューション開発に関する専門知識がなくても、エンタープライズ グレードの IoT ソリューションを構築できます。
 
@@ -63,6 +64,6 @@ IoT ソリューションを計画するうえで、Azure IoT 製品の選択は
 
 選択した製品とアプローチに基づいて、以下の手順を推奨します。
 
-* **Azure IoT ソリューション アクセラレータ**: [Azure IoT ソリューション アクセラレータとは](iot-suite-what-are-solution-accelerators.md)
+* **Azure IoT ソリューション アクセラレータ**: [Azure IoT ソリューション アクセラレータとは](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
 * **Azure IoT Central**: [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)。
 * **IoT Hub**: [Azure IoT Hub サービスの概要](../iot-hub/iot-hub-what-is-iot-hub.md)。

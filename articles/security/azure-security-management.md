@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f5630c8cb9c0ca13210c62652f8d7f2e98f94438
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366649"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
@@ -111,7 +112,7 @@ Azure では、[多要素認証](../active-directory/authentication/multi-factor
 * クライアント コンピューターの名前が有効であること (ドメインに参加していること)、また Azure Portal へのアクセスが許可されていることを RD ゲートウェイが確認できるように[クライアント接続承認ポリシー](http://technet.microsoft.com/library/cc753324.aspx)を構成します。
 * [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) に IPsec を使用し、盗聴やトークンの盗難から管理トラフィックをさらに保護します。または、[Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) を介してインターネット リンクを隔離することを検討します。
 * RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) 経由) またはスマート カード認証を使用します。
-* 発信元 [IP アドレスの制限](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
+* 発信元 [IP アドレスの制限](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
 
 ## <a name="security-guidelines"></a>セキュリティ ガイドライン
 一般に、クラウドでの用途に合わせて管理者が使うワークステーションのセキュリティを高めることは、オンプレミスのワークステーションに適用される慣例 (必要最小限の機能構成とアクセス許可など) と似ています。 またクラウドの管理に伴ういくつかの作業は、企業向けのリモート管理やアウトオブバンド管理に酷似しています。 その例として、資格情報の使用や監査、リモート アクセスのセキュリティ強化、脅威の検出と対応が挙げられます。

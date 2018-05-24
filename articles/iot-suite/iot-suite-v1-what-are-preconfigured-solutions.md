@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT の構成済みソリューション | Microsoft Docs"
-description: "Azure IoT の構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
-services: 
+title: Azure IoT の構成済みソリューション | Microsoft Docs
+description: Azure IoT の構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 76df013e8e5868fcc9f5d95aa523a6a56dea7163
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d860c768a73737e6c8c52a8652d6b43434a3a07d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361990"
 ---
 # <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Azure IoT Suite の構成済みソリューションとは
 
@@ -39,9 +40,9 @@ Azure IoT Suite の構成済みソリューションとは、サブスクリプ�
 
 | 解決策 | データの取り込み | デバイス ID | デバイス管理 | コマンドと制御 | ルールとアクション | 予測分析 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [リモート監視][lnk-getstarted-preconfigured] |はい |あり |あり |あり |はい |- |
-| [予測的なメンテナンス][lnk-predictive-maintenance] |はい |あり |- |あり |あり |はい |
-| [コネクテッド ファクトリ][lnk-getstarted-factory] |あり |あり |あり |あり |はい |- |
+| [リモート監視][lnk-getstarted-preconfigured] |[はい] |はい |はい |はい |[はい] |- |
+| [予測的なメンテナンス][lnk-predictive-maintenance] |[はい] |はい |- |はい |はい |[はい] |
+| [コネクテッド ファクトリ][lnk-getstarted-factory] |[はい] |はい |はい |はい |[はい] |- |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
 * "*デバイス ID*": 一意のデバイス ID を管理し、ソリューションへのデバイス アクセスを制御します。
@@ -154,7 +155,7 @@ IoT Hub のデバイス管理機能を使用すると、ソリューション �
 
 この構成済みソリューションでは、ソリューション ポータルは **IoT ソリューション バックエンド**の一部です。また、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の**処理とビジネスの接続**に含まれています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)][lnk-refarch]」を参照してください。
 
@@ -174,4 +175,4 @@ IoT ソリューション アーキテクチャの詳細については、「[Mi
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+[lnk-getstarted-factory]:../iot-accelerators/iot-accelerators-connected-factory-overview.md

@@ -15,16 +15,17 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea22106a41e7e440cb3e76f02814b76a64627279
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f71ac333aeb73df00856dde279b56f94464127b5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361122"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-backup-and-net-device"></a>.NET バックアップおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
 > [!NOTE]
-> [モジュール ID とモジュール ツイン](iot-hub-devguide-module-twins.md)は Azure IoT Hub のデバイス ID およびデバイス ツインに類似していますが、より細かい粒度で設定できます。 Azure IoT Hub のデバイス ID とデバイス ツインを使用すると、バックエンド アプリケーションからデバイスを構成し、デバイスの状態を可視化できるのに対し、モジュール ID およびモジュール ツインは、デバイスの各コンポーネントごとにこれらの機能を提供します。 オペレーティング システム ベースのデバイスやファームウェア デバイスなどの複数のコンポーネントで構成され、この機能をサポートするデバイスの場合、各コンポーネントの状態が可視化され、個別に構成できます。
+> [モジュール ID とモジュール ツイン](iot-hub-devguide-module-twins.md)は Azure IoT Hub のデバイス ID およびデバイス ツインに類似していますが、より細かい粒度で設定できます。 Azure IoT Hub のデバイス ID とデバイス ツインを使用した場合、バックエンド アプリケーションからデバイスを構成し、デバイスの状態を可視化できるのに対し、モジュール ID とモジュール ツインでは、デバイスの各コンポーネントごとにこれらの機能を実現できます。 複数のコンポーネントで構成され、この機能をサポートしているデバイス (オペレーティング システム ベースのデバイスやファームウェア デバイスなど) であれば、各コンポーネントの状態を可視化し、個別に構成することができます。
 
 このチュートリアルの最後には、次の 2 つの .NET コンソール アプリが完成します。
 
@@ -48,7 +49,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 
 <a id="D2C_csharp"></a>
-## <a name="update-the-module-twin-using-net-device-sdk"></a>.NET device SDK を使用してモジュールを更新する
+## <a name="update-the-module-twin-using-net-device-sdk"></a>.NET デバイス SDK を使用してモジュール ツインを更新する
 
 このセクションでは、モジュール ツインによって報告されるプロパティを更新する、シミュレートされたデバイス上に.NET を作成するコンソール アプリを作成します。
 
@@ -56,7 +57,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     ![Visual Studio プロジェクトを作成する][13]
 
-2. **Azure IoT Hub .NET device SDK V1.16.0-preview-005 をインストールする** - モジュール ID およびモジュール ツインはパブリック プレビュー段階です。 これは、IoT Hub プレリリース デバイス版の SDK でのみ使用可能です。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 V1.16.0-preview-005 バージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
+2. **Azure IoT Hub .NET device SDK V1.16.0-preview-005 をインストールする** - モジュール ID およびモジュール ツインはパブリック プレビュー段階です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 V1.16.0-preview-005 バージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
 
     ![Azure IoT Hub .NET service SDK V1.16.0-preview-005 をインストールする][14]
 
@@ -73,11 +74,11 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     using Newtonsoft.Json;
     ```
 
-    **Program** クラスに次のフィールドを追加します。 プレース ホルダーの値をモジュールの接続文字列に置き換えます。
+    **Program** クラスに次のフィールドを追加します。 プレースホルダーの値をモジュールの接続文字列に置き換えます。
 
     ```csharp
     private const string ModuleConnectionString = "<Your module connection string>";
-    private static DeviceClient Client = null;
+    private static ModuleClient Client = null;
     static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
     {
         Console.WriteLine("Connection Status Changed to {0}; the reason is {1}", status, reason);
@@ -110,7 +111,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
         try
         {
-            Client = DeviceClient.CreateFromConnectionString(ModuleConnectionString, transport);
+            Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
             Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
             Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
 
@@ -137,7 +138,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     }
     ```
 
-    このコード サンプルでは、モジュール ツインを取得し、AMQP プロトコルを使って報告されるプロパティを 更新する方法を示します。 パブリック プレビューでは、AMQP 用のモジュール ツイン操作のみがサポートされています。
+    このコード サンプルは、モジュール ツインを取得し、報告されたプロパティを AMQP プロトコルを使って更新する方法を示したものです。 パブリック プレビューでは、AMQP 用のモジュール ツイン操作のみがサポートされています。
 
 5. 上記の **Main** メソッドの他に、下記のコード ブロックを追加して、モジュールから IoT Hub にイベントを送信できます。
     ```csharp

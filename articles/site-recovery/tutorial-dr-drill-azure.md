@@ -5,13 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
-ms.openlocfilehash: 98612730405e63c251bbba2daf770b5394db1514
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 724144e8f2f2f76c4ad98b4c5cad84e69dadadbb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209727"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 

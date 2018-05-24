@@ -3,8 +3,8 @@ title: PowerShell サンプル - モニター - スケーリング - SQL エラ�
 description: Azure SQL Database の SQL エラスティック プールを監視し、スケーリングするための Azure PowerShell サンプル スクリプト
 services: sql-database
 documentationcenter: sql-database
-author: janeng
-manager: jstrauss
+author: CarlRabeler
+manager: craigg
 editor: carlrab
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,13 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/01/2018
-ms.author: janeng
-ms.openlocfilehash: a66aca8420e5512eb139325f9f1b9603540f1fa7
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.author: carlrab
+ms.openlocfilehash: 52933fac0b1a9f729b7011c94e1199c7cc326214
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364031"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-sql-elastic-pool-in-azure-sql-database"></a>PowerShell を使用し、Azure SQL Database の SQL エラスティック プールを監視し、スケーリングする
 

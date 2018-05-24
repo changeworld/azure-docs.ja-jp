@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 347b7d183839868f3b52adbdfd00b38cee3f3fbc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 22a9e90404475e8ff1f1ea72c233b1abfed938f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361385"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services-formerly-azure-devtest-labs"></a>チュートリアル: Azure Lab Services (旧称 Azure DevTest Labs) でラボ アカウントを設定する
 このチュートリアルでは、ラボ管理者として、Azure Lab Services でラボ アカウントを作成します。 その後、このラボ アカウントでクラス用のラボを作成するアクセス許可を教師に与えます。 教師は、[Azure Lab Services Web サイト](https://labs.azure.com)を使って、クラス用のラボを設定できます。   

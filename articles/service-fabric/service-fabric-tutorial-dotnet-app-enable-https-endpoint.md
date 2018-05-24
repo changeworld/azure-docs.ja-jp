@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364609"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスへの HTTPS エンドポイントの追加
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric 上で実行されている ASP.NET Core サービスで HTTPS を有効にする方法を学習します。 完了すると、ポート 443 でリッスンする、HTTPS が有効な ASP.NET Core Web フロントエンドを備えた投票アプリケーションを作成できます。 [.NET Service Fabric アプリケーションの構築](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページの投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)できます。
@@ -49,7 +50,7 @@ ms.lasthandoff: 05/03/2018
 - [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
-デジタル証明書が必要です。  運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=localhost" の証明書を作成します。
+運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=localhost" の証明書を作成します。
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost

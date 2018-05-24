@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359742"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 この記事では、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルについて学習します。 Resource Manager デプロイ モデルとクラシック デプロイ モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 異なる 2 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの 2 つのモデルに互換性はありません。 この記事では、その相違点について説明します。
