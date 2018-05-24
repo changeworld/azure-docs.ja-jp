@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Inkling の統合 | Microsoft Docs"
-description: "Azure Active Directory と Inkling の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Inkling の統合 | Microsoft Docs'
+description: Azure Active Directory と Inkling の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5cc3a184c278371ad90db8a512bb34a4cb2b4b49
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 20a3212a0d4832bd64a5ca83dbef0e6fe4e2fa47
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>チュートリアル: Azure Active Directory と Inkling の統合
 
@@ -27,9 +27,9 @@ Inkling と Azure AD の統合には、次の利点があります。
 
 - Inkling にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Inkling にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure 管理ポータル) でアカウントを管理できます
+- 1 つの中央サイト (Microsoft Azure 管理ポータル) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,17 +61,17 @@ Azure AD への Inkling の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Inkling を追加するには、次の手順に従います。**
 
-1. **[Azure 管理ポータル](https://portal.azure.com)**の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Microsoft Azure 管理ポータル](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[追加]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Inkling**」と入力します。
 
@@ -95,7 +95,7 @@ Inkling で Azure AD のシングル サインオンを構成してテストす�
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Inkling テスト ユーザーの作成](#creating-an-inkling-test-user)** - Inkling で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,42 +105,42 @@ Inkling で Azure AD のシングル サインオンを構成してテストす�
 
 1. Microsoft Azure 管理ポータルの **Inkling** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-inkling-tutorial/tutorial_general_300.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_general_300.png)
     
 3. **[Inkling のドメインと URL]** セクションで、次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_01.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_01.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://api.inkling.com/saml/v2/metadata/<user-id>` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://api.inkling.com/saml/v2/metadata/<user-id>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://api.inkling.com/saml/v2/acs/<user-id>` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これは実際の値ではないので注意してください。 これらの値は、実際の識別子と応答 URL で更新する必要があります。 これらの値を取得するには、[Inkling サポート チーム](mailto:press@inkling.com)に連絡してください。
 
-4. **[SAML 署名証明書]** セクションで、**[新しい証明書の作成]** をクリックします。
+4. **[SAML 署名証明書**] セクションで、**[新しい証明書の作成]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-inkling-tutorial/tutorial_general_400.png)    
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_general_400.png)    
 
 5. **[新しい証明書の作成]** ダイアログで、カレンダー アイコンをクリックし、**期限日**を選択します。 **[保存]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-inkling-tutorial/tutorial_general_500.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_general_500.png)
 
 6. **[SAML 署名証明書]** セクションで、**[Make new certificate active (新しい証明書を有効にする)]** をクリックし、**[保存]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_02.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_02.png)
 
 7. ポップアップ表示される **[Rollover certificate (ロール オーバー証明書)]** ウィンドウで、**[OK]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-inkling-tutorial/tutorial_general_600.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_general_600.png)
 
 8. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_03.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_03.png) 
 
 9. アプリケーション用に構成された SSO を入手するには、[Inkling サポート チーム](mailto:press@inkling.com)に連絡し、ダウンロードした**メタデータ**を提供してください。 
 
@@ -168,7 +168,7 @@ Inkling で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-inkling-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -195,9 +195,9 @@ Inkling で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Inkling]**を選択します。
+2. アプリケーションの一覧で **[Inkling]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_50.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-inkling-tutorial/tutorial_inkling_50.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -225,7 +225,7 @@ Inkling で Azure AD のシングル サインオンを構成してテストす�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

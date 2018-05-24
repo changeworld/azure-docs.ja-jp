@@ -1,6 +1,6 @@
 ---
-title: "Fault Analysis Service の概要 | Microsoft Docs"
-description: "この記事では、サービスに対して障害を誘発させてテスト シナリオを実行する Service Fabric の Fault Analysis Service について説明します。"
+title: Fault Analysis Service の概要 | Microsoft Docs
+description: この記事では、サービスに対して障害を誘発させてテスト シナリオを実行する Service Fabric の Fault Analysis Service について説明します。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -9,21 +9,21 @@ editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Fault Analysis Service の概要
 Fault Analysis Service は、Microsoft Azure Service Fabric で構築されたサービスをテストするために設計されています。 Fault Analysis Service を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
 
-アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 次に例を示します。
+アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 例: 
 
 * ノードを再起動して、コンピューターまたは VM がリブートされる状況をシミュレートします。
 * ステートフル サービスのレプリカを移動して、負荷分散、フェールオーバー、またはアプリケーションのアップグレードをシミュレートします。
@@ -57,7 +57,7 @@ Service Fabric を使用すると、スケーラブルな分散アプリケー�
 1. クライアントからノードのシャットダウン要求を発行します。
 2. 適切なノードに要求を送信します。
    
-    a. ノードが見つからない場合、要求は失敗する必要があります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ノードが見つからない場合、要求は失敗する必要があります。
    
     b. ノードが見つかった場合、要求は、ノードがシャットダウンされた場合にのみ返る必要があります。
 
@@ -95,7 +95,7 @@ Fault Analysis Service 機能は、Microsoft.ServiceFabric NuGet パッケージ
 
 PowerShell を使用するには、Service Fabric SDK をインストールする必要があります。 SDK がインストールされると、ServiceFabric PowerShell モジュールが使用できるように自動的に読み込まれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 真のクラウド スケール サービスを作成するには、デプロイの前と後の両方で、サービスが現実世界の障害に耐えることができることを保証することが不可欠です。 サービスが主流の今日の世界において、短期間でコードを刷新し実稼働に移すことはきわめて重要です。 Fault Analysis Service は、まさにそれをサービス開発者が実現するために役立ちます。
 
 組み込みの[テスト シナリオ](service-fabric-testability-scenarios.md)を使用して、アプリケーションとサービスのテストを開始するか、または、Fault Analysis Service から提供される[フォールト アクション](service-fabric-testability-actions.md)を使用して、独自のテスト シナリオを作成します。

@@ -1,5 +1,5 @@
 # 概要
-## [はじめに](get-started.md)
+## [作業開始](get-started.md)
 ## [認定](sap-certifications.md)
 # SAP HANA on Azure (L インスタンス)
 ## [概要とアーキテクチャ](hana-overview-architecture.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 2796f280b2f95504be5f9691098bff07fdd93393
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f9f7cf65cc2742fef705558c3a99f9faa49a7d3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
 
@@ -29,7 +29,7 @@ LearnUpon と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に LearnUpon にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -143,7 +143,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
    
     ![[Configure Single Sign-On]](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_08.png)  
   
-    a. **[Enabled]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enabled]** を選択します。
 
     b. **[Version]\(バージョン\)** として **[2.0]** を選択します。
 
@@ -163,7 +163,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
    
      ![[Configure Single Sign-On]](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_11.png)  
  
-    a. **[First Name Identifier Format]\(名識別子形式\)** ボックスに、SAML アサーション内のユーザーの名の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[First Name Identifier Format]\(名識別子形式\)** ボックスに、SAML アサーション内のユーザーの名の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**)。
   
     b. **[Last Name Identifier Format]\(姓識別子形式\)** ボックスに、SAML アサーション内のユーザーの姓の場所を示す値を入力します (例: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**)。
 
@@ -194,7 +194,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-learnupon-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -251,7 +251,7 @@ LearnUpon で Azure AD のシングル サインオンを構成してテスト�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

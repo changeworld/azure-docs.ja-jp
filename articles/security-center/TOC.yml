@@ -109,8 +109,6 @@
           href: security-center-just-in-time.md
         - name: アダプティブ アプリケーション制御
           href: security-center-adaptive-application.md
-        - name: ファイルの整合性の監視
-          href: security-center-file-integrity-monitoring.md
     - name: セキュリティ ソリューションの管理
       href: security-center-partner-integration.md
       items:

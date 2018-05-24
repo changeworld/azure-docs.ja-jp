@@ -6,13 +6,13 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/15/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4171a904626d3b624b39b8a3a261df0d342012df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ccec4262297314bad261a852bb5db25c428ce0a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/28/2018
 
   ![再保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-2. リソース グループ、ネットワーク、ストレージ、および可用性セットを確認します。 次に、 **[OK]**をクリックします 新規としてマークされているリソースがある場合は、再保護プロセスの一環として作成されます。
+2. リソース グループ、ネットワーク、ストレージ、および可用性セットを確認します。 次に、 **[OK]** をクリックします 新規としてマークされているリソースがある場合は、再保護プロセスの一環として作成されます。
 3. 再保護のジョブにより、最新のデータでターゲット サイトがシード処理されます。 処理が完了したら、差分レプリケーションが行われます。 その後、プライマリ サイトへのフェールバックを行うことができます。 カスタマイズ オプションを使用して、再保護中に使用するストレージ アカウントまたはネットワークを選択できます。
 
   ![カスタマイズ オプション](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)

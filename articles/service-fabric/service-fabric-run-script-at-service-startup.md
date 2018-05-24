@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: bd2bb0d05029237242b42225a2c846c78a7c6de9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
 Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要がありません。
@@ -146,7 +146,7 @@ Service Fabric サービス実行可能ファイルを開始する前に、構�
 
 Visual Studio でサービス プロジェクトを右クリックし、*MySetup.bat* という名前の新しいファイルを追加します。
 
-次に、サービス パッケージに *MySetup.bat* ファイルが含まれていることを確認します。 既定では、含まれていません。 ファイルを選択し、右クリックしてコンテキスト メニューを表示し、 **[プロパティ]**を選択します。 [プロパティ] ダイアログ ボックスで、**[出力ディレクトリにコピー]** が **[新しい場合はコピーする]** に設定されていることを確認します。 次のスクリーンショットをご覧ください。
+次に、サービス パッケージに *MySetup.bat* ファイルが含まれていることを確認します。 既定では、含まれていません。 ファイルを選択し、右クリックしてコンテキスト メニューを表示し、 **[プロパティ]** を選択します。 [プロパティ] ダイアログ ボックスで、**[出力ディレクトリにコピー]** が **[新しい場合はコピーする]** に設定されていることを確認します。 次のスクリーンショットをご覧ください。
 
 ![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][image1]
 

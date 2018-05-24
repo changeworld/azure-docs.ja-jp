@@ -9,11 +9,11 @@ description: Azure Stream Analytics ジョブを使用して Azure Data Lake Sto
 +ms.date: 04/029/2018
 +ms.topic: article
 +ms.service: iot-suite
-ms.openlocfilehash: 701dd51d13ec1880f23c48cc5e8b368b15d0deca
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 75ad9e9ac79dca4db902d7e72511a384dd769463
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 05/07/2018
 
 このハウツー記事を完了するには、以下が必要です。
 
-* [リモート監視の事前構成済みソリューションをデプロイする](/iot-suite/iot-suite-remote-monitoring-deploy)
+* [リモート監視の事前構成済みソリューションをデプロイする](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
   * リモート監視ソリューションは、この記事で使用される IoT Hub と Azure Stream Analytics ジョブを Azure サブスクリプション内にデプロイします。
-* [Azure Data Lake Store をデプロイする](/data-lake-store/data-lake-store-get-started-portal)
+* [Azure Data Lake Store をデプロイする](/data-lake-store/data-lake-store-get-started-portal.md)
   * Data Lake Store は、リモート監視ソリューションと同じリージョンにデプロイする必要があります。
-  * アカウント内に "streaming" という名前の[フォルダーを作成します](/data-lake-store/data-lake-store-get-started-portal#createfolder)。
+  * アカウント内に "streaming" という名前の[フォルダーを作成します](/data-lake-store/data-lake-store-get-started-portal.md#createfolder)。
 
 ## <a name="create-a-consumer-group"></a>コンシューマー グループの作成
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 05/07/2018
 > [!NOTE]
 > コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 5 つの出力コンシューマーのすべてに対して、新しいコンシューマー グループを作成する必要があります。 最大 32 のコンシューマー グループを作成できます。
 
-1. Azure Portal にサインインします。
+1. Azure ポータルにサインインします。
 
 1. Azure Portal で **[クラウド シェル]** ボタンをクリックします。
 
@@ -67,7 +67,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
 1. ホスティング環境は、必ず、既定値である **[クラウド]** のままにしておきます。
 
-1. **[作成]** をクリックします。
+1. **Create** をクリックしてください。
 
     ![Stream Analytics ジョブを作成する](media/iot-suite-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -89,7 +89,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
     ![入力の選択](media/iot-suite-integrate-data-lake/stream-analytics-new-input.png)
 
-1. **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 
 1. [概要] ページで、**[出力]** をクリックします。
 
@@ -118,7 +118,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
     > [!NOTE]
     > ポップアップ ウィンドウにエラーが表示された場合は、新しいブラウザー ウィンドウを Incognito モードで開いてやり直してください。
 
-1. **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 
 ## <a name="edit-the-stream-analytics-query"></a>Stream Analytics クエリを編集する
 
@@ -141,14 +141,14 @@ Azure Stream Analytics では、SQL に似たクエリ言語を使用して、�
 
     ![Stream Analytics クエリ](media/iot-suite-integrate-data-lake/stream-analytics-query.png)
 
-1. **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 1. **[はい]** をクリックして変更を適用します。
 
-## <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブを開始する
+## <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブの開始
 
 1. [概要] タブで、**[開始]** をクリックします。
 
-    ![Stream Analytics ジョブの開始](media/iot-suite-integrate-data-lake/stream-analytics-start.png)
+    ![Stream Analytics ジョブを開始します。](media/iot-suite-integrate-data-lake/stream-analytics-start.png)
 
 1. [ジョブの開始] タブで、**[カスタム]** をクリックします。
 

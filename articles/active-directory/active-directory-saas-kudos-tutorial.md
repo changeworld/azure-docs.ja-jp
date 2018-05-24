@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Kudos の統合 | Microsoft Docs"
-description: "Azure Active Directory と Kudos の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Kudos の統合 | Microsoft Docs'
+description: Azure Active Directory と Kudos の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a073863a1e406c137364d1ad85a5c6c3db32777
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4708bdbcfab71ee36788addac12d11b97b03ec4a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル: Azure Active Directory と Kudos の統合
 
@@ -29,7 +29,7 @@ Kudos と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Kudos にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への Kudos の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Kudos**」と入力します。
 
@@ -86,11 +86,11 @@ Kudos で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Kudos で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Kudos テスト ユーザーの作成](#creating-a-kudos-test-user)** - Kudos で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,36 +100,36 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **Kudos** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_samlbase.png)
 
 3. **[Kudos のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_url.png)
 
     **[サインオン URL]** ボックスに、`https://<company>.kudosnow.com` のパターンを使用して URL を入力します。
     
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Kudos クライアント サポート チーム](http://success.kudosnow.com/home)にお問い合わせください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Kudos クライアント サポート チーム](http://success.kudosnow.com/home)にお問い合わせください。 
  
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kudos-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kudos-tutorial/tutorial_general_400.png)
 
 6. **[Kudos 構成]** セクションで、**[Kudos の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_configure.png) 
 
 7. 別の Web ブラウザーのウィンドウで、Kudos の企業サイトに管理者としてログインします。
 
-8. 上部のメニューで **[Settings]**をクリックします。
+8. 上部のメニューで **[Settings]** をクリックします。
    
     ![設定](./media/active-directory-saas-kudos-tutorial/ic787806.png "Settings")
 
@@ -139,7 +139,7 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
    
     ![SSO](./media/active-directory-saas-kudos-tutorial/ic787807.png "SSO")
    
-    a. **[Sign on URL]\(サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Sign on URL]\(サインオン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
 
     b. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[X.509 証明書]** テキストボックスに貼り付けます。
    
@@ -150,7 +150,7 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
     e. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -176,7 +176,7 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kudos-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -194,11 +194,11 @@ Kudos の場合、プロビジョニングは手動で行います。
 
 1. **Kudos** の企業サイトに管理者としてログインします。
 
-2. 上部のメニューで **[Settings]**をクリックします。
+2. 上部のメニューで **[Settings]** をクリックします。
    
    ![設定](./media/active-directory-saas-kudos-tutorial/ic787806.png "Settings")
 
-3. **[ユーザー管理者]**をクリックします。
+3. **[ユーザー管理者]** をクリックします。
 
 4. **[Users]\(ユーザー\)** タブをクリックして、**[Add a User]\(ユーザーの追加\)** をクリックします。
    
@@ -208,9 +208,9 @@ Kudos の場合、プロビジョニングは手動で行います。
    
     ![Add a User](./media/active-directory-saas-kudos-tutorial/ic787810.png "Add a User")
    
-    a. プロビジョニングする有効な Azure Active Directory アカウントの**[名]**、**[姓]**、**[メール]**、その他の詳細を該当するボックスに入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な Azure Active Directory アカウントの **[名]**、**[姓]**、**[メール]**、その他の詳細を該当するボックスに入力します。
    
-    b. **[Create User]**をクリックします。
+    b. **[Create User]** をクリックします。
 
 >[!NOTE]
 >Kudos から提供されている他の Canvas ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -229,7 +229,7 @@ Kudos の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で **[Kudos]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-kudos-tutorial/tutorial_kudos_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -254,7 +254,7 @@ Kudos の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,24 +1,24 @@
 ---
-title: "Visual Studio でアプリケーションをデバッグする | Microsoft Docs"
-description: "Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。"
+title: Visual Studio でアプリケーションをデバッグする | Microsoft Docs
+description: Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: vturecek;mikhegn
-ms.openlocfilehash: 8c29b54415a42ec435f2b4c3ce6b407b2155f70c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: vturecek
+ms.openlocfilehash: 4582fd16d08ae8d51460dc8cabfd282e1f2cd43e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Service Fabric アプリケーションを Azure の Service Fabric クラスタ
    
     ![リモートのストリーミング トレースの無効化][disablestreamingtraces]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric サービスのテスト](service-fabric-testability-overview.md)。
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)。
 

@@ -1,24 +1,24 @@
 ---
-title: "高度なアプリケーション アップグレードに関するトピック | Microsoft Docs"
-description: "この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。"
+title: 高度なアプリケーション アップグレードに関するトピック | Microsoft Docs
+description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e29585ff-e96f-46f4-a07f-6682bbe63281
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar;chackdan
-ms.openlocfilehash: 1bb3a5e215e3a664cf67727255840696c7f58e8c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: subramar
+ms.openlocfilehash: 168d944f72c1409b5b69c9ab7c07f7fcfa04c7c8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの種類の追加と削除

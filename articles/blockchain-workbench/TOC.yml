@@ -1,7 +1,6 @@
 - name: Azure Blockchain Workbench (パブリック プレビュー)
   href: index.yml
 - name: 概要
-  expanded: true
   items:
     - name: Azure Blockchain Workbench について
       href: blockchain-workbench-overview.md
@@ -12,7 +11,6 @@
     - name: 統合のパターン
       href: blockchain-workbench-integration-patterns.md
 - name: ハウツー ガイド
-  expanded: true
   items:
     - name: Workbench をデプロイする
       href: blockchain-workbench-deploy.md

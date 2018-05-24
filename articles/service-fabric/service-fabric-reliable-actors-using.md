@@ -9,16 +9,16 @@ editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 60989825ecdefa853d0e2df99619e3cb350cb6bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 41548c3395fa0c8f56e62cfcfb7338a2d53f040f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>アクター サービスでのサービス レベルの機能の実装
 [サービスのレイヤー](service-fabric-reliable-actors-platform.md#service-layering)で説明したように、アクター サービス自体は信頼できるサービスです。  StatefulService を継承したときと同様に、`ActorService` から派生した独自のサービスを記述し、サービス レベルの機能を実装できます。次にその例を示します。

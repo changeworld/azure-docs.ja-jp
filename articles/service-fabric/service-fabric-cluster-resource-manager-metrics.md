@@ -1,24 +1,24 @@
 ---
-title: "メトリックを使用した Azure のマイクロサービスの負荷の管理 | Microsoft Docs"
-description: "Service Fabric 内でメトリックを構成および使用して、サービスのリソース使用量を管理する方法について説明します。"
+title: メトリックを使用した Azure のマイクロサービスの負荷の管理 | Microsoft Docs
+description: Service Fabric 内でメトリックを構成および使用して、サービスのリソース使用量を管理する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Service Fabric のリソース使用量と負荷をメトリックで管理する
 "*メトリック*" は、サービスが関心を持っているリソースであり、クラスター内のノードによって提供されます。 メトリックは、サービスのパフォーマンスを向上させたり監視したりするために管理する必要があるすべての要素を指します。 たとえば、メモリの消費量を監視して、サービスが過負荷になっているかどうかを知ることができます。 パフォーマンスを向上させるためにメモリ制約が少ないところにサービスを移動できるかどうかを確認するために使用することもできます。
@@ -141,7 +141,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 次に、各設定の詳細と動作に与える影響について説明します。
 
 ## <a name="load"></a>Load
-メトリックを定義することの本質は、負荷を表現することです。 "*負荷*" とは、特定のノード上のサービス インスタンスまたはレプリカが使用する特定のメトリックの量のことです。 負荷はほぼどの時点でも構成できます。 For example:
+メトリックを定義することの本質は、負荷を表現することです。 "*負荷*" とは、特定のノード上のサービス インスタンスまたはレプリカが使用する特定のメトリックの量のことです。 負荷はほぼどの時点でも構成できます。 例: 
 
   - 負荷は、サービスの作成時に定義できます。 これは、"_既定の負荷_" と呼ばれます。
   - サービスの既定の負荷を含むメトリック情報は、サービスの作成後に更新できます。 これは、"_サービスの更新_" と呼ばれます。 
@@ -227,7 +227,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 * 負荷分散はいつ実行されるのか。
 * Memory の重みが "High" であるとは、どのような意味があるのか。
 
-## <a name="metric-weights"></a>Metric weights
+## <a name="metric-weights"></a>メトリックの重み
 異なるサービス間で同じメトリックを追跡することが重要です。 包括的な視点は、どうすれば Cluster Resource Manager がクラスター内の使用量を追跡し、ノード間で使用量の均衡をとり、ノードが容量を超えないことを保証できるかということです。 ただし、同じメトリックの重要性はサービスによって異なるため、サービスによって見方が異なる場合があります。 また、クラスターのメトリックやサービスの数が多い場合、すべてのメトリックについて完璧に均衡のとれたソリューションは存在しないことがあります。 Cluster Resource Manager はこのような状況をどのように処理するのでしょうか。
 
 メトリックの重みは、Cluster Resource Manager でクラスターの均衡をとる方法を決定するときに、完璧な答えが存在しない場合の判断材料となります。 また、Cluster Resource Manager はメトリックの重みを使用して、サービスごとに均衡をとります。 メトリックには、Zero、Low、Medium、High という 4 種類の重みレベルを設定できます。 重み Zero のメトリックは均衡がとれているかどうかを判断するときにはまったく考慮されません。 ただし、その負荷は、容量管理の際に考慮されます。 重み Zero のメトリックは、サービスの動作とパフォーマンスの監視の一部としても有用であり、その目的のために頻繁に使用されます。 サービスの監視と診断を行うためのメトリックの使用の詳細については、[こちらの記事](service-fabric-diagnostics-event-generation-infra.md)を参照してください。 
@@ -261,7 +261,7 @@ Cluster Resource Manager がグローバルとローカルのどちらかの均�
 
 下の方の例では、Cluster Resource Manager がグローバルのバランスとサービス単位のバランスの両方を考慮してレプリカを分散しています。 ソリューションのスコアを計算するとき、ほとんどの重みはグローバル ソリューションに充てられ、(構成可能な) 一部は個々のサービスに充てられます。 メトリックのグローバルな均衡は、各サービスのメトリックの重みの平均値に基づいて算出されます。 各サービスは、独自に定義されたメトリックの重みに従って均衡がとられます。 これにより、各サービスは、独自のニーズに従って、サービス内で均衡がとられます。 その結果、同じ 1 番目のノードで障害が発生した場合でも、障害はすべてのサービスのすべてのパーティションに分散され、 各サービスへの影響が同じになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - サービスの構成の詳細については、[サービスの構成](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md) に関する記事を参照してください。
 - 最適化メトリックの定義は、負荷を分散するのではなく、ノードで統合する方法の 1 つです。最適化を構成する方法については、 [この記事](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)

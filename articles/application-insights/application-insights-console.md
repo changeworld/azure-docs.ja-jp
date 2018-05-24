@@ -3,8 +3,8 @@ title: コンソール アプリケーション用の Azure Application Insights
 description: Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 services: application-insights
 documentationcenter: .net
-author: lmolkova
-manager: bfung
+author: mrbullwinkle
+manager: carmonm
 ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
 ms.workload: tbd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova; mbullwin
-ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 679a5d82fbede4d9c464e137d615fc1367522878
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 [Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
@@ -49,7 +49,7 @@ telemetryClient.TrackTrace("Hello World!");
 既定では、`TelemetryConfiguration` が作成されると、Application Insights SDK は作業ディレクトリで `ApplicationInsights.config` ファイルを検索します。
 
 ```csharp
-TelemetryConfiguration config = TelemetryConfiguration.Active; // Read ApplicationInsights.config file if present
+TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
 構成ファイルのパスを指定することもできます。
@@ -65,6 +65,7 @@ TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfigur
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
+  <InstrumentationKey>Your Key</InstrumentationKey>
   <TelemetryInitializers>
     <Add Type="Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer, Microsoft.AI.DependencyCollector"/>
   </TelemetryInitializers>
@@ -134,8 +135,10 @@ static void Main(string[] args)
     configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
     var telemetryClient = new TelemetryClient();
-    using (IntitializeDependencyTracking(configuration))
+    using (InitializeDependencyTracking(configuration))
     {
+        // run app...
+        
         telemetryClient.TrackTrace("Hello World!");
 
         using (var httpClient = new HttpClient())
@@ -143,22 +146,25 @@ static void Main(string[] args)
             // Http dependency is automatically tracked!
             httpClient.GetAsync("https://microsoft.com").Wait();
         }
+
     }
 
-    // run app...
-
-    // when application stops or you are done with dependency tracking, do not forget to dispose the module
-    dependencyTrackingModule.Dispose();
-
+    // before exit, flush the remaining data
     telemetryClient.Flush();
+    
+    // flush is not blocking so wait a bit
+    Task.Delay(5000).Wait();
+
 }
 
-static DependencyTrackingTelemetryModule IntitializeDependencyTracking(TelemetryConfiguration configuration)
+static DependencyTrackingTelemetryModule InitializeDependencyTracking(TelemetryConfiguration configuration)
 {
+    var module = new DependencyTrackingTelemetryModule();
+    
     // prevent Correlation Id to be sent to certain endpoints. You may add other domains as needed.
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.chinacloudapi.cn");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");    
+    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.usgovcloudapi.net");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("localhost");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");

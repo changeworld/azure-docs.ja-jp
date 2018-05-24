@@ -1,24 +1,24 @@
 ---
-title: "Cloud Services と Service Fabric の違い | Microsoft Docs"
-description: "アプリケーションを Cloud Services から Service Fabric に移行する際の概念の概要。"
+title: Cloud Services と Service Fabric の違い | Microsoft Docs
+description: アプリケーションを Cloud Services から Service Fabric に移行する際の概念の概要。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4bb5d92cd46533b46b388d178990f230424b09dc
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 35ab4a9bdd66bf3571e7f189191550f88e17cee2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
@@ -88,7 +88,7 @@ Service Fabric でも同じ通信モデルを使用できます。 これは、�
 
 ![Service Fabric の直接的な通信][8]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Cloud Services から Service Fabric への最も単純な移行パスは、Cloud Services デプロイメントのみを Service Fabric アプリケーションに置き換えるものです。これでは、アプリケーションの全体的なアーキテクチャはほぼ同じに維持されます。 次の記事では、Web または Worker ロールを Service Fabric ステートレス サービスに変換する方法について説明します。
 
 * [単純な移行: Web または Worker ロールを Service Fabric ステートレス サービスに変換する](service-fabric-cloud-services-migration-worker-role-stateless-service.md)

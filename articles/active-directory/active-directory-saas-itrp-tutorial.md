@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と ITRP の統合 | Microsoft Docs"
-description: "Azure Active Directory と ITRP の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と ITRP の統合 | Microsoft Docs'
+description: Azure Active Directory と ITRP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: aacfdbf9d644017c242feec90c97cd34cbd713e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f81d203d4ada286169054b35286dbbc4f9526ae
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル: Azure Active Directory と ITRP の統合
 
@@ -29,7 +29,7 @@ ITRP と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に ITRP にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +63,11 @@ Azure AD への ITRP の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**ITRP**」と入力します。
 
@@ -87,11 +87,11 @@ ITRP で、Azure AD の **[ユーザー名]** の値を **[Username]** の値と
 
 ITRP で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[ITRP テスト ユーザーの作成](#creating-an-itrp-test-user)** - ITRP で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,17 +101,17 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
 
 1. Azure Portal の **ITRP** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_samlbase.png)
 
 3. **[ITRP Domain and URLs]\(ITRP のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.itrp.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.itrp.com` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<tenant-name>.itrp.com` の形式で URL を入力します。
 
@@ -120,23 +120,23 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
  
 4. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-itrp-tutorial/tutorial_general_400.png)
 
 6. **[ITRP Configuration]\(ITRP 構成\)** セクションで、**[Configure ITRP]\(ITRP を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML シングル サインオン サービス URL と サインアウト URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_configure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、ITRP 企業サイトに管理者としてログインします。
 
-8. 上部のツールバーで **[設定]**をクリックします。
+8. 上部のツールバーで **[設定]** をクリックします。
    
     ![ITRP](./media/active-directory-saas-itrp-tutorial/ic775570.png "ITRP")
 
-8. 左側のナビゲーション ウィンドウで、 **[シングル サインオン]**を選択します。
+8. 左側のナビゲーション ウィンドウで、 **[シングル サインオン]** を選択します。
    
     ![シングル サインオン](./media/active-directory-saas-itrp-tutorial/ic775571.png "Single Sign-On")
 
@@ -146,7 +146,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
     
     ![シングル サインオン](./media/active-directory-saas-itrp-tutorial/ic775573.png "Single Sign-On")   
 
-    a. **[有効]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[有効]** をクリックします。
 
     b. **[Remote Log Out URL]\(リモート ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -157,7 +157,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
 10. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -183,7 +183,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-itrp-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -201,11 +201,11 @@ ITRP の場合、プロビジョニングは手動で行います。
 
 1. **ITRP** テナントにログインします。
 
-2. 上部のツールバーの **[レコード]**をクリックします。
+2. 上部のツールバーの **[レコード]** をクリックします。
    
     ![管理](./media/active-directory-saas-itrp-tutorial/ic775575.png "Admin")
 
-3. ポップアップ メニューから **[ユーザー]**を選択します。
+3. ポップアップ メニューから **[ユーザー]** を選択します。
    
     ![ユーザー](./media/active-directory-saas-itrp-tutorial/ic775587.png "People")
 
@@ -217,7 +217,7 @@ ITRP の場合、プロビジョニングは手動で行います。
    
     ![ユーザー](./media/active-directory-saas-itrp-tutorial/ic775577.png "User") 
       
-    a. プロビジョニングする有効な AAD アカウントの**名前**と**メール**を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロビジョニングする有効な AAD アカウントの**名前**と**メール**を入力します。
 
     b. **[Save]** をクリックします。
 
@@ -239,7 +239,7 @@ ITRP の場合、プロビジョニングは手動で行います。
 
 2. アプリケーションの一覧で **[ITRP]\(ITRP\)** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-itrp-tutorial/tutorial_itrp_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -265,7 +265,7 @@ ITRP の場合、プロビジョニングは手動で行います。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
