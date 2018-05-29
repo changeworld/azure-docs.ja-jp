@@ -1,13 +1,13 @@
 ---
-title: "Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する | Microsoft Docs"
-description: "Azure 管理ディスクを Azure PowerShell を使用して Standard から Premium に (または Premium から Standard に) 変換する方法。"
+title: Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する | Microsoft Docs
+description: Azure 管理ディスクを Azure PowerShell を使用して Standard から Premium に (または Premium から Standard に) 変換する方法。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: ramankum
 manager: kavithag
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 407cfe7d9eee4e226938f383c04bb359a17290fc
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ac3f1368fb6d3f31b75b581d56e07fe11c3722b3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33944336"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 
@@ -31,6 +32,7 @@ ms.lasthandoff: 01/09/2018
 
 * 変換作業は VM の再起動を伴うので、既に設定されているメンテナンス期間中に ディスク ストレージの移行をスケジュールしてください。 
 * 管理されていないディスクを使用している場合は、まず[管理ディスクに変換](convert-unmanaged-to-managed-disks.md)してから、この記事を参照して 2 つのストレージ オプションを切り替えてください。 
+* この記事では、Azure PowerShell モジュール バージョン 6.0.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>VM のすべての管理ディスクを Standard から Premium に (または Premium から Standard に) 変換する
@@ -44,8 +46,8 @@ $rgName = 'yourResourceGroup'
 # Name of the your virtual machine
 $vmName = 'yourVM'
 
-# Choose between StandardLRS and PremiumLRS based on your scenario
-$storageType = 'PremiumLRS'
+# Choose between Standard_LRS and Premium_LRS based on your scenario
+$storageType = 'Premium_LRS'
 
 # Premium capable size
 # Required only if converting storage from standard to premium
@@ -86,8 +88,8 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 $diskName = 'yourDiskName'
 # resource group that contains the managed disk
 $rgName = 'yourResourceGroupName'
-# Choose between StandardLRS and PremiumLRS based on your scenario
-$storageType = 'PremiumLRS'
+# Choose between Standard_LRS and Premium_LRS based on your scenario
+$storageType = 'Premium_LRS'
 # Premium capable size 
 $size = 'Standard_DS2_v2'
 

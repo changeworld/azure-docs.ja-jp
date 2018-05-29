@@ -4,7 +4,7 @@ description: ログ データを使用して、アプリケーションに関す
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b8b5095fceaa369ae8b7a426ca04685c2d86109
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057934"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに
@@ -70,7 +71,7 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 |[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager リソースのコントロールプレーン イベント|   サブスクリプションのリソースに対して実行された操作を調査できます。| Rest API & [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|サブスクリプションの Azure Resource Manager リソースの操作に関する豊富なデータ| リソース自体が実行した操作を調査できます。| Azure Monitor、[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|ログとレポート|ユーザーのサインイン アクティビティ情報と、ユーザーおよびグループ管理に関するシステム アクティビティ情報|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Virtual Machine と Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows のイベント ログと Linux の Syslog|    仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Windows Azure 診断ストレージ) を使用する Windows と Azure Monitor の Linux|
+|[Virtual Machine と Cloud Services](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows のイベント ログと Linux の Syslog| 仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Windows Azure 診断ストレージ) を使用する Windows と Azure Monitor の Linux|
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログと、ストレージ アカウントのメトリック データの提供|要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断に対する洞察が得られます。|    REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG (ネットワーク セキュリティ グループ) のフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式、送信および受信のフローをルールごとに表示|ネットワーク セキュリティ グループを介した IP トラフィックの送信と受信に関する情報を表示します。|[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|    複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。| REST API、[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

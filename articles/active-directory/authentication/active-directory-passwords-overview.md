@@ -2,24 +2,20 @@
 title: Azure AD のセルフサービスによるパスワードのリセットの概要 | Microsoft Docs
 description: Azure AD のセルフサービスによるパスワードのリセットが組織に提供するものは何か。
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 77d26d860462b1a82315bf1385bccf62047e3da3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866670"
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット
 
@@ -32,6 +28,8 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
    * 検証済みセカンダリ電子メール アカウントに電子メールを送信する。
    * セキュリティの質問に回答する。
 * **セルフ サービスによるアカウントのロック解除**: ユーザーが自分のパスワードでサインインできず、ロックアウトされている。ユーザーが管理者の介入なしで、自分の認証方法を使用したアカウントのロック解除を希望している。
+
+> [!VIDEO https://www.youtube.com/embed/hc97Yx5PJiM]
 
 ## <a name="why-choose-azure-ad-sspr"></a>Azure AD SSPR を選ぶ理由
 
@@ -50,7 +48,7 @@ Azure AD SSPR は、サブスクリプションに応じて次の 3 つのレベ
 
 * **Azure AD Free**: クラウドのみの管理者が、自分のパスワードをリセットできます。
 * **Azure AD Basic** または **Office 365 のすべての有料サブスクリプション**: クラウドのみのユーザーが自分のパスワードをリセットできます。
-* **Azure AD Premium**: クラウドのみ、フェデレーション、パスワード同期ユーザーを含むすべてのユーザーまたは管理者が、自分のパスワードをリセットできます。 オンプレミスのパスワードでは、パスワードの書き戻しが有効になっている必要があります。
+* **Azure AD Premium**: クラウドのみ、フェデレーション、パススルー認証、パスワード ハッシュ同期ユーザーを含むすべてのユーザーまたは管理者が、自分のパスワードをリセットできます。 オンプレミスのパスワードでは、パスワードの書き戻しが有効になっている必要があります。
 
 ## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Azure AD の価格、SLA、更新、およびロードマップ
 

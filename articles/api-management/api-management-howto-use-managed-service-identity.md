@@ -1,30 +1,40 @@
 ---
-title: "Azure API Management で Azure 管理対象サービス ID を使用する | Microsoft Docs"
-description: "API Management で Azure 管理対象サービス ID を使用する方法について説明します。"
+title: Azure API Management で Azure 管理対象サービス ID を使用する | Microsoft Docs
+description: API Management で Azure 管理対象サービス ID を使用する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: miaojiang
 manager: anneta
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 55fac34a5eae169a3a4fd8c64c90c552fdb5df5a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 98aa70935a3efbbe2edb07aade85fa3ea17ce786
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150432"
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure API Management で Azure 管理対象サービス ID を使用する
 
-> [!Note]
-> 現在、Azure API Management の管理対象サービス ID はプレビュー段階です。
-
 この記事では、API Management サービス インスタンスの管理対象サービス ID を作成する方法と、その他のリソースにアクセスする方法について説明します。 Azure Active Directory (Azure AD) によって生成された管理対象サービス ID によって、API Management インスタンスは、Azure AD で保護された他のリソース (Azure Key Vault など) に簡単かつ安全にアクセスすることができます。 この管理対象サービス ID は Azure によって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。 Azure 管理対象サービス ID について詳しくは、[Azure リソースの管理対象サービス ID](../active-directory/msi-overview.md) に関するページをご覧ください。
 
-## <a name="create-an-api-management-instance-with-an-identity-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して、ID を持った API Management インスタンスを作成する
+## <a name="create-a-managed-service-identity-for-an-api-management-instance"></a>API Management インスタンスの管理されたサービス ID を作成する
+
+### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
+ポータルで管理対象サービス ID を設定するには、最初に通常の方法で API 管理インスタンスを作成した後、機能を有効にします。
+
+1. ポータルを使って通常の方法で API 管理インスタンスを作成します。 ポータルでアプリに移動します。
+2. **[Managed service identity]\(管理対象のサービス ID\)** を選びます。
+3. [Azure Active Directory に登録する] を [オン] に切り替えます。 [保存] をクリックします。
+
+![MSI を有効化する](./media/api-management-msi/enable-msi.png)
+
+### <a name="using-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
 ID を持った API Management インスタンスは、リソース定義に次のプロパティを含めることによって作成できます。 
 
@@ -34,72 +44,29 @@ ID を持った API Management インスタンスは、リソース定義に次�
 }
 ```
 
-このプロパティは、API Management インスタンスの ID を作成して管理するよう Azure に命令するものです。 
+これは、API Management インスタンスの ID を作成して管理するよう Azure に命令するものです。 
 
 たとえば、Azure Resource Manager テンプレート全体は次のようになります。
 
 ```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "0.9.0.0",
-    "parameters": {
-        "serviceName": {
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "The name of the api management service"
-            }
-        },
-        "publisherEmail": {
-            "type": "string",
-            "minLength": 1,
-            "defaultValue": "admin@contoso.com",
-            "metadata": {
-                "description": "The email address of the owner of the service"
-            }
-        },
-        "publisherName": {
-            "type": "string",
-            "minLength": 1,
-            "defaultValue": "Contoso",
-            "metadata": {
-                "description": "The name of the owner of the service"
-            }
-        },
-        "sku": {
-            "type": "string",
-            "allowedValues": [
-                "Developer",
-                "Standard",
-                "Premium"
-            ],
-            "defaultValue": "Developer",
-            "metadata": {
-                "description": "The pricing tier of this API Management service"
-            }
-        },
-        "skuCount": {
-            "type": "int",
-            "defaultValue": 1,
-            "metadata": {
-                "description": "The instance size of this API Management service."
-            }
-        }
+    "contentVersion": "0.9.0.0"
     },
     "resources": [
         {
             "apiVersion": "2017-03-01",
-            "name": "[parameters('serviceName')]",
+            "name": "contoso",
             "type": "Microsoft.ApiManagement/service",
             "location": "[resourceGroup().location]",
             "tags": {},
             "sku": {
-                "name": "[parameters('sku')]",
-                "capacity": "[parameters('skuCount')]"
+                "name": "Developer",
+                "capacity": "1"
             },
             "properties": {
-                "publisherEmail": "[parameters('publisherEmail')]",
-                "publisherName": "[parameters('publisherName')]"
+                "publisherEmail": "admin@contoso.com",
+                "publisherName": "Contoso"
             },
             "identity": { 
                 "type": "systemAssigned" 
@@ -108,16 +75,17 @@ ID を持った API Management インスタンスは、リソース定義に次�
     ]
 }
 ```
+## <a name="use-the-managed-service-identity-to-access-other-resources"></a>管理されたサービス ID を使用してその他のリソースにアクセスする
 
-## <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault から証明書を取得する
+> [!NOTE]
+> 現時点では、管理サービス ID を使用して、API Management のカスタム ドメイン名用に Azure Key Vault から証明書を取得できます。 より多くのシナリオがまもなくサポートされます。
+> 
+>
 
-次の例は、Azure Key Vault から証明書を取得する方法を示しています。 たとえば次の手順が実行されます。
 
-1. ID を持った API Management インスタンスを作成します。
-2. Azure Key Vault インスタンスのアクセス ポリシーを更新し、そこからシークレットを取得することを API Management インスタンスに許可します。
-3. Key Vault インスタンスからの証明書を使用してカスタム ドメイン名を設定して API Management インスタンスを更新します。
+### <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault から証明書を取得する
 
-### <a name="prerequisites"></a>前提条件
+#### <a name="prerequisites"></a>前提条件
 1. pfx 証明書を含む Key Vault は、API Management サービスと同じ Azure サブスクリプション、同じリソース グループに属している必要があります。 これは Azure Resource Manager テンプレートの要件です。 
 2. シークレットのコンテンツ タイプは *application/x-pkcs12* にする必要があります。 証明書をアップロードするには、次のスクリプトを使用します。
 
@@ -137,6 +105,12 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 > [!Important]
 > 証明書のオブジェクト バージョンを指定しなかった場合、より新しいバージョンの証明書が Key Vault にアップロードされると、その後 API Management によって自動的に取得されます。 
+
+次の例では、次の手順を含む Azure Resource Manager テンプレートを示します。
+
+1. 管理されたサービス ID を使用して API Management インスタンスを作成します。
+2. Azure Key Vault インスタンスのアクセス ポリシーを更新し、そこからシークレットを取得することを API Management インスタンスに許可します。
+3. Key Vault インスタンスからの証明書を使用してカスタム ドメイン名を設定して API Management インスタンスを更新します。
 
 ```json
 {
@@ -261,7 +235,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure 管理対象サービス ID の詳細を確認します。
 

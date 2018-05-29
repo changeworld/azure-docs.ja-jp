@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 5/4/18
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 87396204933ca964634656f9eb84c6d245c0c6c0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201200"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -83,6 +84,12 @@ Azure AD のエディションを使用している場合は、アクセス パ�
    3. マイ アプリ ポータルで使用可能なアプリを検索します。
    4. 検索結果の一覧で、アプリを選択します。  
        最後に使用した 3 つのアプリが **[最近の使用]** ショートカットの一覧に表示されます。
+       
+* リモート時に社内の URL を使用するのには、次の操作を行います。
+    1. テナントで[アプリケーション プロキシを構成にする](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable)
+    2. アプリケーション プロキシ経由で[アプリケーションと URL を発行する](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal)
+    3. 拡張機能をインストールし、[開始するにはサインインしてください] を選択して拡張機能にサインインする
+    4. これで、リモート時にも社内 URL を参照できる
 
 > [!NOTE]
 > こうしたオプションは、Edge、Chrome、および Firefox でのみ使用できます。

@@ -9,11 +9,12 @@ ms.custom: reference
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: f98337044bdad788d2a4c9eac0c67a2031810430
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5d77c2dc121d7f291fa755f66d7d9a5d7213bf9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195432"
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -23,9 +24,9 @@ SQL Database の現在のバージョンは V12 です。 バージョン V11 �
 ## <a name="what-is-the-sla-for-sql-database"></a>SQL Database の SLA はどうなっていますか。
 Microsoft は、サービス レベルに関係なく、お使いの Microsoft Azure SQL Database と Microsoft のインターネット ゲートウェイの間で 99.99% 以上の時間接続できることを保証します。 詳細については、[SLA](http://azure.microsoft.com/support/legal/sla/) のページを参照してください。
 
-## <a name="whatis-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Azure SQL Database の新しい仮想コアベースの購入モデルとは何ですか。
+## <a name="whatis-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Azure SQL Database の新しい仮想コアベースの購入モデル (プレビュー) とは何ですか。
 
-新しい購入モデルは、既存の DTU ベースのモデルに追加されるものです。 仮想コアベースのモデルは、お客様に柔軟性、管理性、透明性が実現するように設計されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 また、お客様が自身のワークロードのニーズに基づいて、コンピューティングとストレージをスケーリングすることができます。 さらに、仮想コア モデルを使用する単一データベースとエラスティック プールのオプションは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)によって、最大 30% の割引対象になります。 DTU ベースの購入モデルと仮想コアベースの購入モデルの両方の詳細については、[サービス レベル](sql-database-service-tiers.md)に関するページをご覧ください。
+新しい購入モデルは、既存の DTU ベースのモデルに追加されるものです。 仮想コアベースのモデルは、お客様に柔軟性、管理性、透明性が実現するように設計されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 また、お客様が自身のワークロードのニーズに基づいて、コンピューティングとストレージをスケーリングすることができます。 さらに、仮想コア モデルを使用する単一データベースとエラスティック プールのオプションは、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)によって、最大 30% の割引対象になります。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関する記事を参照してください。 
 
 ## <a name="what-is-a-vcore"></a>仮想コアとは何ですか。 
 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。
@@ -37,11 +38,11 @@ Microsoft は、サービス レベルに関係なく、お使いの Microsoft A
 
 DTU ベースのモデルと仮想コアベースのモデルは並行して提供されます。 Microsoft が仮想コアベースのモデルの提供を開始するのは、データベース リソースに関する透明性の向上と、コンピューティングとストレージのスケーリングを個別に行う機能を求めるお客様の要望に応えるためです。 さらに、アクティブなソフトウェア アシュアランスを利用しているお客様は、仮想コアベースのモデルを利用すると、SQL Server 向けの Azure ハイブリッド特典を通じてさらに節約できます。
 
-## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>DTU ベースの購入モデルと仮想コアベースの購入モデルのどちらにするかは、どう選択すればよいですか。 
+## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model-preview"></a>DTU ベースの購入モデルと仮想コアベースの購入モデル (プレビュー) のどちらにするかは、どう選択すればよいですか。 
 データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、および書き込みの測定値を組み合わせて算出されます。 DTU ベースのパフォーマンス レベルは、さまざまなレベルのアプリケーション パフォーマンスを実現するリソースの構成済みバンドルを表します。 基盤となるリソースを気にすることなく、毎月固定料金を支払いながら、構成済みバンドルのシンプルさを求めるお客様については、おそらく DTU ベースのモデルの方がニーズに適しています。 ただし、お客様に、基盤となるリソースの分析情報がさらに必要な場合、またはそれらのリソースを個別にスケーリングして最適なパフォーマンスを実現する必要がある場合は、仮想コアベースのモデルが最適な選択肢になります。  さらに、SQL Server のアクティブなソフトウェア アシュアランス (SA) を所有しているお客様は、[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)で既存の投資を活用して、最大 30% を節約できます。  それぞれの購入モデルのオプションに、自動化されたバックアップ、ソフトウェア更新プログラム、パッチなど、完全に管理されたサービスのメリットがあります。 
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典とは何ですか。 
-[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)は、既存のライセンス投資価値を最大限に高め、クラウドへの移行を促進するうえで役立ちます。 SQL Server 向け Azure ハイブリッド特典は、Azure ベースの特典であり、ソフトウェア アシュアランス付きの SQL Server ライセンスを使用して、SQL Database の支払いに割引料金 ("基本料金") を適用できます。 SQL Server 向け Azure ハイブリッド特典は、仮想コアベースの購入モデル (SQL Database の単一データベースおよびエラスティック プール) のパブリック プレビューでご利用いただけます。 この特典は、SKU がアクティブな場合でも適用できます。ただし、基本料金が適用されるのは、Azure Portal で選択した時点からである点にご注意ください。 以前にさかのぼってクレジットが発行されることはありません。
+[SQL Server 向け Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)は、既存のライセンス投資価値を最大限に高め、クラウドへの移行を促進するうえで役立ちます。 SQL Server 向け Azure ハイブリッド特典は、Azure ベースの特典であり、ソフトウェア アシュアランス付きの SQL Server ライセンスを使用して、SQL Database の支払いに割引料金 ("基本料金") を適用できます。 SQL Server 向け Azure ハイブリッド特典は、仮想コアベースの購入モデル (プレビュー) (SQL Database の単一データベースおよびエラスティック プール) のパブリック プレビューでご利用いただけます。 この特典は、SKU がアクティブな場合でも適用できます。ただし、基本料金が適用されるのは、Azure Portal で選択した時点からである点にご注意ください。 以前にさかのぼってクレジットが発行されることはありません。
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、二重使用権がサポートされていますか。
 確実かつシームレスに移行を行うために、180 日間はライセンスの二重使用権があります。 この 180 日を過ぎると、SQL Server ライセンスは、SQL Database のクラウドでしか使用できません。オンプレミスとクラウドでの二重使用権はなくなります。
@@ -109,13 +110,13 @@ Microsoft の目標は、アプリケーションのニーズに近いパフォ�
 頻度に制限はありません。必要なだけ調整できます。 [エラスティック プールの管理](sql-database-elastic-pool.md)に関するページをご覧ください。
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Single Database のサービス階層またはパフォーマンス レベルの変更や、エラスティック プールからのデータベースの出し入れには、どれくらいの時間がかかりますか。
-データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-service-tiers.md)」を参照してください。 
+データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。 サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。 いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。 Single Database の変更の詳細については、「 [データベースのサービス階層の変更](sql-database-service-tiers-dtu.md)」を参照してください。 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Single Database と Elastic Database はどのように使い分けできますか。
 一般に、エラスティック プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに 1 つです。 個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。 プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。 使用パターンから利益があると判断される場合、Azure インテリジェント エンジンはデータベースにプールを推奨します。 詳しくは、「[エラスティック プールの使用に適した状況](sql-database-elastic-pool.md)」をご覧ください。
 
 ## <a name="how-does-the-usage-of-sql-database-using-the-dtu-based-purchasing-model-show-up-on-my-bill"></a>DTU ベースの購入モデルを使用した SQL Database の使用量は請求書にどのように表示されますか。
-SQL Database は、[購入モデル](sql-database-service-tiers.md)に基づいて、予測可能な時間あたりのレートで課金されます。 実際の使用量は時間単位でコンピューティングされるため、表示される請求額は 1 時間分に満たない場合があります。 たとえば、1 か月間にデータベースが存在したのが 12 時間だった場合、請求書には半日分の使用が示されます。 
+SQL Database は、[購入モデル](sql-database-service-tiers-dtu.md)に基づいて、予測可能な時間あたりのレートで課金されます。 実際の使用量は時間単位でコンピューティングされるため、表示される請求額は 1 時間分に満たない場合があります。 たとえば、1 か月間にデータベースが存在したのが 12 時間だった場合、請求書には半日分の使用が示されます。 
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Single Database がアクティブであったのが 1 時間に満たない場合や上位のサービス階層の使用が 1 時間に満たない場合はどうなりますか。
 使用状況やデータベースがアクティブであったのが 1 時間未満であったことに関係なく、データベースが存在していた 1 時間単位で、その時間に使用された最上位のサービス階層とパフォーマンス レベルで課金は行われます。 たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。 
@@ -143,7 +144,7 @@ DTU ベースの購入モデルの例:
 * エラスティック プールのサイズが変更された場合、サイズ変更の操作が完了するまでは新しいリソースの量に応じた課金はされません。 これは、Single Database のパフォーマンス レベルを変更する場合と同様のパターンに従っています。
 * エラスティック プールの価格は、プールのリソースに基づきます。 エラスティック プールの価格は、内部のエラスティック データベースの数および使用率とは関係ありません。
 
-詳細については、[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)および[サービス レベル](sql-database-service-tiers.md)に関するページをご覧ください。
+詳細については、[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)、および[仮想コア ベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。
 
 ## <a name="how-does-the-vcore-based-usage-show-up-in-my-bill"></a>請求書に仮想コアベースの使用量はどのように表示されますか。 
 仮想コアベース モデルのサービスは、サービス レベル、プロビジョニングされたコンピューティング (仮想コア)、プロビジョニングされたストレージ (GB/月)、バックアップ ストレージの使用量に基づいて、予測可能な時間単位の料金で課金されます。 バックアップのストレージがデータベースの合計サイズ (データベース サイズの 100%) を上回ると、追加の料金が発生します。 請求書には仮想コアの時間数、構成したデータベース ストレージ、使用した IO およびバックアップ ストレージが項目別で明確に記載されるため、使用したリソースの詳細がわかりやすくなっています。 最大データベース サイズの 100% までのバックアップ ストレージの使用は、料金に含まれています。この上限を超えると、1 か月の使用量 (GB/月) に応じた課金が発生します。
@@ -191,4 +192,4 @@ DMV を使ってプライマリ データベースと geo セカンダリの間�
 [Azure Portal](https://portal.azure.com) で **[SQL データベース]** をクリックし、一覧からデータベースを選択してから、**[コピー]** をクリックします。 詳細については、「 [Azure SQL データベースのコピー](sql-database-copy.md) 」を参照してください。
 
 ## <a name="to-move-a-database-between-subscriptions"></a>サブスクリプション間でデータベースを移動するには
-[Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]**をクリックし、移動するリソースと移動先のサブスクリプションを選択します。
+[Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]** をクリックし、移動するリソースと移動先のサブスクリプションを選択します。

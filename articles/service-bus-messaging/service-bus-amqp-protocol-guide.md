@@ -1,24 +1,25 @@
 ---
-title: "Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs"
-description: "Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド"
+title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs
+description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
-ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.date: 04/30/2018
+ms.author: clemensv
+ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312544"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -143,49 +144,49 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 #### <a name="create-message-receiver"></a>メッセージの受信側の作成
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link id}<br/>) |クライアントがエンティティに受信側として接続 |
 | Service Bus がそのリンクの終端を接続して応答 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link id}<br/>) |
 
 #### <a name="create-message-sender"></a>メッセージの送信側の作成
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
 
 #### <a name="create-message-sender-error"></a>メッセージの送信側の作成 (エラー)
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
 #### <a name="close-message-receiversender"></a>メッセージ受信側/送信側のクローズ
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |アクションなし |
 | アクションなし |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>送信 (成功)
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>送信 (エラー)
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
 #### <a name="receive"></a>受信
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> flow(<br/>link-credit=1<br/>) |アクションなし |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -193,7 +194,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 #### <a name="multi-message-receive"></a>複数メッセージの受信
 
-| クライアント | [SERVICE BUS] |
+| クライアント | Service Bus |
 | --- | --- |
 | --> flow(<br/>link-credit=3<br/>) |アクションなし |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -204,6 +205,8 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 ### <a name="messages"></a>メッセージ
 
 以降のセクションでは、標準 AMQP メッセージ セクションから、Service Bus でどのプロパティが使用され、Service Bus API セットに対してどのように対応付けられるかを説明します。
+
+アプリケーションで定義する必要があるプロパティはすべて、AMQP の `application-properties` マップにマッピングされる必要があります。
 
 #### <a name="header"></a>ヘッダー
 
@@ -233,6 +236,80 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | group-sequence |セッション内のメッセージの相対シーケンス番号を識別するカウンター。 Service Bus では無視されます。 |Service Bus API を介してアクセスすることはできません。 |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
+#### <a name="message-annotations"></a>メッセージの注釈
+
+AMQP メッセージ プロパティの一部ではなく、かつ、メッセージ上で `MessageAnnotations` として渡される他の Service Bus メッセージはほとんどありません。
+
+| 注釈マップ キー | 使用法 | API 名 |
+| --- | --- | --- |
+| x-opt-scheduled-enqueue-time | メッセージがエンティティ上に出現する時刻を宣言します。 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-partition-key | メッセージを受信するパーティションを指示する、アプリケーションで定義されたキー。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-via-partition-key | 転送キュー経由でメッセージを送信するためにトランザクションが使用される場合の、アプリケーションで定義されたパーティション キーの値。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-enqueued-time | メッセージをエンキューする実際の時刻を表す、サービスで定義された UTC 時刻。 インポート時には無視されます。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-sequence-number | メッセージに割り当てられる、サービスで定義された一意の番号。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x-opt-offset | サービスで定義された、エンキューされるメッセージのシーケンス番号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-locked-until | サービスで定義される。 メッセージがキュー/サブスクリプションでロックされるまでの日時。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-deadletter-source | サービスで定義される。 配信不能キューからメッセージが受信された場合の、元のメッセージのソース。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+
+### <a name="transaction-capability"></a>トランザクション機能
+
+トランザクションにより、複数の操作が 1 つの実行スコープにグループ化されます。 性質上、このようなトランザクションによって、操作の特定のグループに属する操作がすべて成功するか、すべて失敗するかのいずれかになる必要があります。
+操作は、識別子 `txn-id` によってグループ化されます。
+
+トランザクション操作の場合、クライアントは、グループ化する必要がある操作を制御する `transaction controller` を機能させます。 Service Bus サービスは、`transactional resource` として機能し、`transaction controller` による要求に従って作業を実行します。
+
+クライアントとサービスは、クライアントによって確立された `control link` 経由で通信します。 `declare` および `discharge` メッセージは、トランザクションを個別に割り当てて完了するために、制御リンク経由でコントローラーから送信されます (トランザクション作業の区別を表しているわけではありません)。 実際の送受信は、このリンク上では実行されません。 要求された各トランザクション操作は、目的の `txn-id` によって明示的に識別されるため、接続上の任意のリンクで実行される可能性があります。 作成した未送信のトランザクションが存在するときに、制御リンクが閉じられると、このようなトランザクションはすべて、ただちにローグバックされ、これらに対してさらにトランザクション作業の実行を試行した場合は、エラーが発生します。 制御リンク上のメッセージが事前に確定されることはありません。
+
+どの接続でも、独自の制御リンクを開始して、トランザクションを開始および終了できる必要があります。 サービスは、`coordinator` として機能する専用のターゲットを定義します。 クライアント/コントローラーは、このターゲットへの制御リンクを確立します。 制御リンクは、エンティティの境界の外にあります。つまり、複数のエンティティに対するトランザクションの開始と送信に、同じ制御リンクを使用できます。
+
+#### <a name="starting-a-transaction"></a>トランザクションの開始
+
+トランザクションの作業を開始するには、 コントローラーがコーディネータから `txn-id` を取得する必要があります。 `declare` 型のメッセージを送信することで、これを行います。 宣言が成功すると、コーディネーターは、割り当てられた `txn-id` を伝送する `declared` の処理出力で応答します。
+
+| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
+| --- | --- | --- |
+| attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
+|  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={transaction id}<br/>))|
+
+#### <a name="discharging-a-transaction"></a>トランザクションの送信
+
+コントローラーは、`discharge` メッセージをコーディネーターに送信することで、トランザクション作業を完了します。 コントローラーは、discharge の本文に `fail` フラグを設定して、トランザクション作業をコミットまたはロールバックするという目的を示します。 コーディネーターが送信を完了できない場合、`transaction-error` を伝送する次のような出力と共にメッセージが拒否されます。
+
+> 注: fail=true はトランザクションのロールバックを示し、fail=false はコミットを示します。
+
+| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+| | が必要です。 が必要です。 が必要です。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> が必要です。 が必要です。 が必要です。 |
+| transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
+| | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
+
+#### <a name="sending-a-message-in-a-transaction"></a>トランザクションでのメッセージの送信
+
+すべてのトランザクション作業は、txn-id を伝送するトランザクションの配信ステータス `transactional-state` を使って行われます。メッセージを送信する場合は、トランザクションのステータスは、メッセージの転送フレームによって伝送されます。 
+
+| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+| transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ payload }| ------> |  |
+| | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
+
+#### <a name="disposing-a-message-in-a-transaction"></a>トランザクションでのメッセージの処理
+
+メッセージの処理には、`Complete` / `Abandon` / `DeadLetter` / `Defer` のような操作が含まれています。 トランザクションの中でこれらの操作を実行するには、disposition を使って `transactional-state` を渡します。
+
+| クライアント (コント ローラー) | | Service Bus (コーディネーター) |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+| | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
+| disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
+
+
 ## <a name="advanced-service-bus-capabilities"></a>Advanced Service Bus の機能
 
 このセクションでは、現在 AMQP の OASIS 技術委員会で策定が進められている AMQP の拡張機能の草案に基づく Azure Service Bus の高度な機能について取り上げます。 Service Bus には、最新バージョンの草案が実装されています。変更は、草案が標準ステータスになった時点で採用される見込みです。
@@ -259,7 +336,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 当然このパターンにはクライアント コンテナーが必要です。また、応答の宛先としてクライアントが生成する ID は、すべてのクライアントを通じて一意で、なおかつセキュリティ上の理由から推測されにくいことが条件となります。
 
-管理プロトコルやそれと同じパターンを使用するすべてのプロトコルのメッセージ交換は、アプリケーション レベルで実行され、新たに AMQP プロトコル レベルのジェスチャは定義されていません。 これは意図的な措置です。こうした拡張機能と仕様に準拠した AMQP 1.0 スタックの利点をアプリケーションがそのまま活かせるようになっています。
+管理プロトコルやそれと同じパターンを使用するすべてのプロトコルのメッセージ交換は、アプリケーション レベルで実行され、新たに AMQP プロトコル レベルのジェスチャは定義されていません。 これは意図的な措置です。こうした拡張機能と仕様に準拠している AMQP 1.0 スタックの利点をアプリケーションがそのまま活かせるようになっています。
 
 Service Bus には現在、管理仕様の核となる機能が実装されていませんが、管理仕様によって定義されている要求/応答パターンは、CBS (Claims Based Security) 機能の基礎となるものです。以降のセクションで取り上げる高度な機能でも、ほぼ例外なくこのパターンが使用されています。
 
@@ -282,12 +359,12 @@ CBS には、メッセージング インフラストラクチャによって提
 
 要求メッセージには、次のアプリケーション プロパティがあります。
 
-| キー | 省略可能。 | 値の型 | 値の内容 |
+| キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| operation |なし |string |**put-token** |
-| type |なし |string |格納されるトークンの種類。 |
-| name |なし |string |発行先 (トークンの適用先)。 |
-| expiration |はい |timestamp |トークンの有効期限。 |
+| operation |いいえ  |文字列 |**put-token** |
+| 型 |いいえ  |文字列 |格納されるトークンの種類。 |
+| name |いいえ  |文字列 |発行先 (トークンの適用先)。 |
+| expiration |[はい] |timestamp |トークンの有効期限。 |
 
 トークンの関連付けの対象となるエンティティは、*name* プロパティによって識別されます。 Service Bus では、キュー (またはトピック/サブスクリプション) のパスになります。 トークンの種類は、*type* プロパティによって識別されます。
 
@@ -301,10 +378,10 @@ CBS には、メッセージング インフラストラクチャによって提
 
 応答メッセージには、次の *application-properties* 値があります。
 
-| キー | 省略可能。 | 値の型 | 値の内容 |
+| キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| status-code |なし |int |HTTP 応答コード **[RFC2616]**。 |
-| status-description |はい |string |ステータスの説明。 |
+| status-code |いいえ  |int |HTTP 応答コード **[RFC2616]**。 |
+| status-description |[はい] |文字列 |ステータスの説明。 |
 
 クライアントは、メッセージング インフラストラクチャ内の任意のエンティティに対し、*put-token* を繰り返し呼び出すことができます。 トークンの有効範囲は現在のクライアントに限定され、現在の接続に固定されます。つまり、保持されているトークンは、接続が失われた時点でサーバーによって破棄されます。
 
@@ -316,7 +393,20 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 以後トークンの期限を追跡する役割は、クライアントが果たすこととなります。 トークンの有効期限が切れるとすぐ、個々のエンティティとの間でその接続上に形成されていたリンクはすべて Service Bus によって破棄されます。 それを防ぐためにクライアントは随時、仮想 *$cbs* 管理ノードを介し、同じ *put-token* ジェスチャを使用して、ノードのトークンを新しいトークンに差し替えることができます。このとき、他のリンク上を流れるペイロード トラフィックに悪影響が生じることはありません。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="send-via-functionality"></a>経由送信の機能
+
+[経由送信 / 送信元の転送](service-bus-transactions.md#transfers-and-send-via)は、Service Bus が指定されたメッセージを別のエンティティ経由で宛先エンティティに転送できる機能です。 これは主に、単一のトランザクション内の複数のエンティティにわたる操作を実行するために使用されます。
+
+この機能により、送信元を作成して `via-entity` へのリンクを確立します。 リンクの確立中に、このリンクでのメッセージ/転送の実際の宛先を確立するために、追加の情報が渡されます。 接続に成功すると、以降はこのリンク上で送信されたすべてのメッセージが、*via-entity* 経由で *destination-entity* へ自動的に転送されます。 
+
+> 注: このリンクを確立する前に、*via-entity* と *destination-entity* の両方に対して認証が実行される必要があります。
+
+| クライアント | | Service Bus |
+| --- | --- | --- |
+| attach(<br/>name={link name},<br/>role=sender,<br/>source={client link id},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
+| | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link id},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
+
+## <a name="next-steps"></a>次の手順
 
 AMQP の詳細については、次のリンクを参照してください。
 

@@ -10,11 +10,12 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: craigg
-ms.openlocfilehash: 64896e87bf049c3ccd58f060ac27f35787d4ce4a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d2d863c0266467a60eafa70f0ef3ecaa9736ac0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188414"
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
 
@@ -24,50 +25,74 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 
 また、Excel も必要です。 この記事では、 [Microsoft Excel 2016](https://products.office.com/)を使用します。
 
-## <a name="connect-excel-to-a-sql-database-and-create-an-odc-file"></a>Excel を SQL データベースに接続して odc ファイルを作成する
+## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Excel を SQL データベースに接続してデータを読み込む
 1. Excel を SQL データベースに接続するには、Excel を開き、新しいブックを作成するか、既存の Excel ブックを開きます。
-2. ページの上部にあるメニュー バーで、**[データ]**、**[その他のデータ ソース]**、**[SQL Server]** の順にクリックします。
+2. ページ上部のメニュー バーで **[データ]** タブを選択し、**[Get Data]**(データの取得)、[From Azure](Azure から)、**[From Azure SQL Database]**(Azure SQL データベースから) の順に選択します。 
    
    ![データ ソースの選択: SQL データベースに Excel を接続します。](./media/sql-database-connect-excel/excel_data_source.png)
    
    データ接続ウィザードが開きます。
-3. **[データベース サーバーに接続]** ダイアログ ボックスで、接続する SQL データベースの**サーバー名**を <*servername*>**.database.windows.net** 形式で入力します。 たとえば、「 **adworkserver.database.windows.net**」と入力します。
-4. **[ログオン資格情報]** の下の **[以下のユーザー名とパスワードを使用する]** をクリックし、SQL データベース サーバーを作成した際に設定した**ユーザー名**と**パスワード**を入力して、**[次へ]** をクリックします。
+3. **[データベース サーバーに接続]** ダイアログ ボックスで、接続する SQL データベースの**サーバー名**を <*servername*>**.database.windows.net** 形式で入力します。 たとえば、**msftestserver.database.windows.net** のようにします。 必要に応じて、データベースの名前を入力します。 **[OK]** を選択して資格情報ウィンドウを開きます。 
+
+   ![server-name.png](media/sql-database-connect-excel/server-name.png)
+
+1. **[SQL Server Database]**(SQL Server データベース) ダイアログ ボックスで、左側の **[データベース]** を選択し、接続する SQL データベース サーバーの **[ユーザー名]** と **[パスワード]** を入力します。 **[接続]** を選択して **[ナビゲーター]** を開きます。 
+
+  ![Type the server name and login credentials](./media/sql-database-connect-excel/connect-to-server.png)
    
-   ![Type the server name and login credentials](./media/sql-database-connect-excel/connect-to-server.png)
+  > [!TIP]
+  > ネットワーク環境によっては、使用しているクライアント IP アドレスからのトラフィックを SQL データベース サーバーが許可しない場合に、接続できないことまたは接続を失うことがあります。 [Azure ポータル](https://portal.azure.com/)に移動し、[SQL サーバー]、お使いのサーバー、設定の下のファイアウォールの順にクリックし、使用しているクライアント IP アドレスを追加します。 詳細については、 [ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md) に関するページを参照してください。
    
-   > [!TIP]
-   > ネットワーク環境によっては、使用しているクライアント IP アドレスからのトラフィックを SQL データベース サーバーが許可しない場合に、接続できないことまたは接続を失うことがあります。 [Azure ポータル](https://portal.azure.com/)に移動し、[SQL サーバー]、お使いのサーバー、設定の下のファイアウォールの順にクリックし、使用しているクライアント IP アドレスを追加します。 詳細については、 [ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md) に関するページを参照してください。
-   > 
-   > 
-5. **[データベースとテーブルの選択]** ダイアログで、一覧から操作対象のデータベースを選択し、操作するテーブルまたはビューをクリックして (ここでは **vGetAllCategories** を選択)、**[次へ]** をクリックします。
+   
+5. **[ナビゲーター]** で、操作するデータベースを一覧から選択し、操作するテーブルまたはビューを選択し (**vGetAllCategories** を選択しました)、**[読み込み]** を選択して、SQL Azure データベースから Excel スプレッドシートにデータを移動します。
    
     ![データベースとテーブルを選択します。](./media/sql-database-connect-excel/select-database-and-table.png)
    
-    **[データ接続ファイルを保存して終了]** ダイアログ ボックスが開かれるので、Excel で使用される Office データベース接続 (*.odc) ファイルに関する情報を指定します。 既定値のままにすることも、選択してカスタマイズすることもできます。
-6. 既定値のままにする場合は、 **[ファイル名]** に特に注意してください。 **説明**、**フレンドリ名**、**検索キーワード**を使うと、接続対象が覚えやすくなったり、接続が検索しやすくなったりします。 接続時に更新できるように接続情報を odc ファイルに保存する場合は、**[常にこのファイルを使用してデータを更新する]** をクリックし、**[完了]** をクリックします。
-   
-    ![Saving an odc file](./media/sql-database-connect-excel/save-odc-file.png)
-   
-    **[データのインポート]** ダイアログ ボックスが表示されます。
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Excel にデータをインポートしてピボット グラフを作成する
-接続を確立し、データと接続情報を含むファイルを作成したため、データをインポートする準備ができました。
+接続を確立したので、複数の方法のいずれかでデータを読み込みます。 たとえば、次の手順は、SQL Database に見つかったデータに基づいてピボット グラフを作成します。 
 
-1. **[データのインポート]** ダイアログ ボックスで、ワークシートにデータを表示するためのオプションをクリックし、**[OK]** をクリックします。 ここでは **[ピボットグラフ​​]**を選択します。 **[新しいワークシート]** または **[このデータをデータ モデルに追加する]** を選択することもできます。 データ モデルの詳細については、「 [Excel でデータ モデルを作成する](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)」を参照してください。 **[プロパティ]** をクリックして、前の手順で作成した odc ファイルに関する情報を調べ、データを更新するためのオプションを選択します。
+1. 前のセクションの手順に従いますが、**[読み込み]** を選択する代わりに、今回は **[Load to]**(読み込み先) を **[読み込み]** ドロップダウンから選択します。
+2. 次に、ブックでこのデータを表示する方法を選択します。 ここでは **[ピボットグラフ​​]** を選択します。 **[新しいワークシート]** または **[このデータをデータ モデルに追加する]** を選択することもできます。 データ モデルの詳細については、「 [Excel でデータ モデルを作成する](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)」を参照してください。 
    
     ![Choosing the format for data in Excel](./media/sql-database-connect-excel/import-data.png)
    
     ワークシートに、空のピボット テーブルとグラフが作成されました。
-2. **[ピボットテーブルのフィールド]**で、表示するフィールドのチェック ボックスをすべてオンにします。
+2. **[ピボットテーブルのフィールド]** で、表示するフィールドのチェック ボックスをすべてオンにします。
    
     ![データベース レポートの構成](./media/sql-database-connect-excel/power-pivot-results.png)
 
 > [!TIP]
-> 他の Excel ブックおよびワークシートをデータベースに接続する場合は、**[データ]**、**[接続]**、**[追加]** の順にクリックし、作成した接続を一覧から選択して、**[開く]** をクリックします。
-> ![Open a connection from another workbook](./media/sql-database-connect-excel/open-from-another-workbook.png)
-> 
-> 
+> 他の Excel ブックおよびワークシートをデータベースに接続する場合、**[データ]** タブを選択し、**[最近のソース]** を選択して **[最近のソース]** ダイアログ ボックスを開きます。 作成した接続を一覧から選択して **[開く]** をクリックします。
+> ![最近の接続](media/sql-database-connect-excel/recent-connections.png)
+ 
+## <a name="create-a-permanent-connection-using-odc-file"></a>.odc ファイルを使用して永続的な接続を作成する
+接続の詳細を永続的に保存するために、.odc ファイルを作成し、この接続を **[既存の接続]** ダイアログ ボックス内で選択可能なオプションにすることができます。 
+
+1. ページ上部のメニュー バーで **[データ]** タブを選択し、**[既存の接続]** を選択して **[既存の接続]** ダイアログ ボックスを開きます。 
+    1. **[Browse for more]**(参照) を選択して **[データ ソースの選択]** ダイアログ ボックスを開きます。   
+    2. **+NewSqlServerConnection.odc** ファイルを選択し、**[開く]** をクリックして **[データ接続ウィザード]** を開きます。
+
+    ![新しい接続](media/sql-database-connect-excel/new-connection.png)
+
+2. **[データ接続ウィザード]** で、サーバー名と SQL Database 資格情報を入力します。 **[次へ]** を選択します。 
+    1. データが含まれるデータベースをドロップダウンから選択します。 
+    2. 関心のあるテーブルまたはビューを選択します。 ここでは vGetAllCategories を選択しました。
+    3. **[次へ]** を選択します。 
+
+    ![データ接続ウィザード](media/sql-database-connect-excel/data-connection-wizard.png) 
+
+3. [データ接続ウィザード] の次の画面で、ファイルの場所、**[ファイル名]**、および **[フレンドリ名]** を選択します。 パスワードをファイルに保存することも選択できますが、これによりデータが望ましくないアクセスにさらされる可能性があります。 準備ができたら **[完了]** を選択します。 
+
+    ![データ接続の保存](media/sql-database-connect-excel/save-data-connection.png)
+
+4. データをインポートする方法を選択します。 ここでは PivotTable の実行を選択しました。 **[プロパティ]** を選択して、接続のプロパティを変更することもできます。 準備ができたら **[OK]** を選択します。 パスワードをファイルに保存しなかった場合、資格情報の入力を求められます。 
+
+    ![データのインポート](media/sql-database-connect-excel/import-data2.png)
+
+5. **[データ]** タブを展開して **[既存の接続]** を選択することで、新しい接続が保存されていることを確認します。 
+
+    ![既存の接続](media/sql-database-connect-excel/existing-connection.png)
 
 ## <a name="next-steps"></a>次の手順
 * 高度なクエリと分析に関して、 [SQL Server Management Studio を使用して SQL Database に接続する](sql-database-connect-query-ssms.md) 方法を学習します。

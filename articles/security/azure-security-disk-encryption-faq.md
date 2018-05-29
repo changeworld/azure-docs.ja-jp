@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2018
-ms.author: devtiw
-ms.openlocfilehash: cb523b4fbf6e8abdf5c5158ab041d3485add9b23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/27/2018
+ms.author: barclayn
+ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187693"
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -34,7 +35,7 @@ Azure Disk Encryption GA は、Azure Resource Manager テンプレート、Azure
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Azure Disk Encryption の価格はどれくらいですか。
 
-Azure Disk Encryption での VM ディスクの暗号化には料金はかかりません。
+Azure Disk Encryption を使用して VM ディスクを暗号化するための料金は発生しませんが、Azure Key Vault の使用に関連する料金が発生します。 Azure Key Vault のコストの詳細については、「[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)」ページを参照してください。
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure Disk Encryption は、どのレベルの仮想マシンをサポートしていますか。
 
@@ -68,7 +69,7 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | SLES | 優先順位: 11-SP4 | データ ディスク |
 | SLES | 11 SP4 | データ ディスク |
 
-*__ADE は、RHEL のデータ ディスクでサポートされます。現在の ADE 実装は OS ディスクでも動作しますが、現時点で共同ではサポートされていません。ソリューションの共同サポートに向けて、Microsoft と Red Hat の双方が取り組んでいるところです。Linux OS ディスクの暗号化については、差し当たり、[こちら](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)の ADE ホワイトペーパーを参照してください。__
+*__ADE は、RHEL のデータ ディスクでサポートされます。現在の ADE 実装は OS ディスクでも動作しますが、現時点で共同ではサポートされていません。ソリューションの共同サポートに向けて、Microsoft と Red Hat の双方が取り組んでいるところです。Linux OS ディスクの暗号化については、差し当たり、[こちら](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)の ADE ホワイトペーパーを参照してください。__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Azure Disk Encryption の使用を開始するにはどうすればよいですか。
 

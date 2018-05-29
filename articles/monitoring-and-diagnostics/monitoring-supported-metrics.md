@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: c9dab276b39b1ceb55851e865f9166e3e9e7fee8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a5c0d529357d8ab92cf63ca4a0293753d55801d6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779092"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
@@ -88,13 +89,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |FailedRequests|失敗したゲートウェイ要求|Count|合計|ゲートウェイ要求における失敗の数|Location、Hostname|
 |OtherRequests|その他のゲートウェイ要求|Count|合計|その他のゲートウェイ要求の数|Location、Hostname|
 |時間|ゲートウェイ要求の全体の期間|ミリ秒|平均|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
-|容量|容量 (プレビュー)|Percent|最大値|ApiManagement サービスの使用状況メトリック|場所|
+|容量|容量 (プレビュー)|Percent|平均|ApiManagement サービスの使用状況メトリック|場所|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
 |---|---|---|---|---|---|
-|TotalJob|合計ジョブ数|Count|合計|ジョブの合計数|RunbookName、Status|
+|TotalJob|合計ジョブ数|Count|合計|ジョブの合計数|Runbook、Status|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -360,6 +361,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
 |CPU Credits Remaining|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
+|Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られた合計バイト数/秒|SlotId|
+|Per Disk Write Bytes/sec|データ ディスク書き込みバイト数/秒 (プレビュー)|CountPerSecond|平均|監視期間中に 1 つのディスクに書き込まれた合計バイト数/秒|SlotId|
+|Per Disk Read Operations/Sec|データ ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|平均|監視期間中、1 つのディスクからの読み取り中に実行された合計 IOPS 数|SlotId|
+|Per Disk Write Operations/Sec|データ ディスク書き込み操作数/秒 (プレビュー)|CountPerSecond|平均|監視期間中、1 つのディスクへの書き込み中に実行された合計 IOPS 数|SlotId|
+|Per Disk QD|データ ディスク QD (プレビュー)|Count|平均|データ ディスクのキューの深さ (またはキューの長さ)|SlotId|
+|OS Per Disk Read Bytes/sec|OS ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中に 1 つのディスクから読み取られた合計バイト数/秒|ディメンションなし|
+|OS Per Disk Write Bytes/sec|OS ディスク書き込みバイト数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中に 1 つのディスクに書き込まれた合計バイト数/秒|ディメンションなし|
+|OS Per Disk Read Operations/Sec|OS ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中、1 つのディスクからの読み取り中に実行された合計 IOPS 数|ディメンションなし|
+|OS Per Disk Write Operations/Sec|OS ディスク書き込み操作数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中、1 つのディスクへの書き込み中に実行された合計 IOPS 数|ディメンションなし|
+|OS Per Disk QD|OS ディスク QD (プレビュー)|Count|平均|OS ディスクのキューの深さ (またはキューの長さ)|ディメンションなし|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -374,6 +385,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
 |CPU Credits Remaining|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
+|Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られた合計バイト数/秒|SlotId|
+|Per Disk Write Bytes/sec|データ ディスク書き込みバイト数/秒 (プレビュー)|CountPerSecond|平均|監視期間中に 1 つのディスクに書き込まれた合計バイト数/秒|SlotId|
+|Per Disk Read Operations/Sec|データ ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|平均|監視期間中、1 つのディスクからの読み取り中に実行された合計 IOPS 数|SlotId|
+|Per Disk Write Operations/Sec|データ ディスク書き込み操作数/秒 (プレビュー)|CountPerSecond|平均|監視期間中、1 つのディスクへの書き込み中に実行された合計 IOPS 数|SlotId|
+|Per Disk QD|データ ディスク QD (プレビュー)|Count|平均|データ ディスクのキューの深さ (またはキューの長さ)|SlotId|
+|OS Per Disk Read Bytes/sec|OS ディスク読み取りバイト数/秒|CountPerSecond|平均|OS ディスクの監視期間中に 1 つのディスクから読み取られた合計バイト数/秒|ディメンションなし|
+|OS Per Disk Write Bytes/sec|OS ディスク書き込みバイト数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中に 1 つのディスクに書き込まれた合計バイト数/秒|ディメンションなし|
+|OS Per Disk Read Operations/Sec|OS ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中、1 つのディスクからの読み取り中に実行された合計 IOPS 数|ディメンションなし|
+|OS Per Disk Write Operations/Sec|OS ディスク書き込み操作数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中、1 つのディスクへの書き込み中に実行された合計 IOPS 数|ディメンションなし|
+|OS Per Disk QD|OS ディスク QD (プレビュー)|Count|平均|OS ディスクのキューの深さ (またはキューの長さ)|ディメンションなし|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -388,6 +409,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
 |CPU Credits Remaining|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
+|Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られた合計バイト数/秒|SlotId|
+|Per Disk Write Bytes/sec|データ ディスク書き込みバイト数/秒 (プレビュー)|CountPerSecond|平均|監視期間中に 1 つのディスクに書き込まれた合計バイト数/秒|SlotId|
+|Per Disk Read Operations/Sec|データ ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|平均|監視期間中、1 つのディスクからの読み取り中に実行された合計 IOPS 数|SlotId|
+|Per Disk Write Operations/Sec|データ ディスク書き込み操作数/秒 (プレビュー)|CountPerSecond|平均|監視期間中、1 つのディスクへの書き込み中に実行された合計 IOPS 数|SlotId|
+|Per Disk QD|データ ディスク QD (プレビュー)|Count|平均|データ ディスクのキューの深さ (またはキューの長さ)|SlotId|
+|OS Per Disk Read Bytes/sec|OS ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中に 1 つのディスクから読み取られた合計バイト数/秒|ディメンションなし|
+|OS Per Disk Write Bytes/sec|OS ディスク書き込みバイト数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中に 1 つのディスクに書き込まれた合計バイト数/秒|ディメンションなし|
+|OS Per Disk Read Operations/Sec|OS ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中、1 つのディスクからの読み取り中に実行された合計 IOPS 数|ディメンションなし|
+|OS Per Disk Write Operations/Sec|OS ディスク書き込み操作数/秒 (プレビュー)|CountPerSecond|平均|OS ディスクの監視期間中、1 つのディスクへの書き込み中に実行された合計 IOPS 数|ディメンションなし|
+|OS Per Disk QD|OS ディスク QD (プレビュー)|Count|平均|OS ディスクのキューの深さ (またはキューの長さ)|ディメンションなし|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
@@ -395,6 +426,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |CpuUsage|CPU 使用率|Count|平均|すべてのコアの CPU 使用率 (ミリコア単位)。|containerName|
 |MemoryUsage|メモリ使用量|Bytes|平均|合計メモリ使用量 (バイト単位)。|containerName|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+
+|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
+|---|---|---|---|---|---|
+|kube_node_status_allocatable_cpu_cores|Total number of available cpu cores in a managed cluster (マネージド クラスターで使用可能な CPU コアの合計数)|Count|合計|マネージド クラスターで使用可能な CPU コアの合計数|ディメンションなし|
+|kube_node_status_allocatable_memory_bytes|Total amount of available memory in a managed cluster (マネージド クラスターで使用可能なメモリの合計量)|Bytes|合計|マネージド クラスターで使用可能なメモリの合計量|ディメンションなし|
+|kube_pod_status_ready|Number of pods in Ready state (準備完了状態のポッドの数)|Count|合計|準備完了状態のポッドの数|namespace、pod|
+|kube_node_status_condition|Statuses for various node conditions (さまざまなノードの状態の条件)|Count|合計|さまざまなノードの状態の条件|condition、status、node|
+|kube_pod_status_phase|Number of pods by phase (フェーズごとのポッドの数)|Count|合計|フェーズごとのポッドの数|phase、namespace、pod|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
@@ -435,8 +476,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
 |---|---|---|---|---|---|
-|FailedRuns|失敗した実行|Count|合計||pipelineName、activityName、windowEnd、windowStart |
-|SuccessfulRuns|成功した実行|Count|合計||pipelineName、activityName、windowEnd、windowStart |
+|FailedRuns|失敗した実行|Count|合計||pipelineName、activityName、windowEnd、windowStart|
+|SuccessfulRuns|成功した実行|Count|合計||pipelineName、activityName、windowEnd、windowStart|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
@@ -477,30 +518,32 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|平均|CPU 使用率|ディメンションなし|
-|compute_limit|コンピューティング ユニットの制限|Count|平均|コンピューティング ユニットの制限|ディメンションなし|
-|compute_consumption_percent|コンピューティング ユニットの割合|Percent|平均|コンピューティング ユニットの割合|ディメンションなし|
 |memory_percent|メモリの割合|Percent|平均|メモリの割合|ディメンションなし|
 |io_consumption_percent|IO の割合|Percent|平均|IO の割合|ディメンションなし|
-|storage_percent|ストレージの割合|Percent|平均|ストレージの割合|ディメンションなし|
+|storage_percent|Storage percent (ストレージの割合)|Percent|平均|ストレージの割合|ディメンションなし|
 |storage_used|使用済みストレージ|Bytes|平均|使用済みストレージ|ディメンションなし|
 |storage_limit|ストレージの制限|Bytes|平均|ストレージの制限|ディメンションなし|
+|serverlog_storage_percent|Server Log storage percent (サーバー ログ ストレージの割合)|Percent|平均|サーバー ログ ストレージの割合|ディメンションなし|
+|serverlog_storage_usage|Server Log storage used (サーバー ログ ストレージの使用量)|Bytes|平均|サーバー ログ ストレージの使用量|ディメンションなし|
+|serverlog_storage_limit|Server Log storage limit (サーバー ログ ストレージの上限)|Bytes|平均|サーバー ログ ストレージの上限|ディメンションなし|
 |active_connections|アクティブな接続の合計|Count|平均|アクティブな接続の合計|ディメンションなし|
-|connections_failed|失敗した接続の合計|Count|平均|失敗した接続の合計|ディメンションなし|
+|connections_failed|失敗した接続の合計|Count|合計|失敗した接続の合計|ディメンションなし|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
 |---|---|---|---|---|---|
 |cpu_percent|CPU 使用率|Percent|平均|CPU 使用率|ディメンションなし|
-|compute_limit|コンピューティング ユニットの制限|Count|平均|コンピューティング ユニットの制限|ディメンションなし|
-|compute_consumption_percent|コンピューティング ユニットの割合|Percent|平均|コンピューティング ユニットの割合|ディメンションなし|
 |memory_percent|メモリの割合|Percent|平均|メモリの割合|ディメンションなし|
 |io_consumption_percent|IO の割合|Percent|平均|IO の割合|ディメンションなし|
-|storage_percent|ストレージの割合|Percent|平均|ストレージの割合|ディメンションなし|
+|storage_percent|Storage percent (ストレージの割合)|Percent|平均|ストレージの割合|ディメンションなし|
 |storage_used|使用済みストレージ|Bytes|平均|使用済みストレージ|ディメンションなし|
 |storage_limit|ストレージの制限|Bytes|平均|ストレージの制限|ディメンションなし|
-|active_connections|アクティブな接続の合計|Count|平均|アクティブな接続の合計|ディメンションなし|
-|connections_failed|失敗した接続の合計|Count|平均|失敗した接続の合計|ディメンションなし|
+|serverlog_storage_percent|Server Log storage percent (サーバー ログ ストレージの割合)|Percent|平均|サーバー ログ ストレージの割合|ディメンションなし|
+|serverlog_storage_usage|Server Log storage used (サーバー ログ ストレージの使用量)|Bytes|平均|サーバー ログ ストレージの使用量|ディメンションなし|
+|serverlog_storage_limit|Server Log storage limit (サーバー ログ ストレージの上限)|Bytes|平均|サーバー ログ ストレージの上限|ディメンションなし|
+|active_connections|アクティブな接続の合計|Count|合計|アクティブな接続の合計|ディメンションなし|
+|connections_failed|失敗した接続の合計|Count|合計|失敗した接続の合計|ディメンションなし|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
@@ -572,76 +615,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |RegistrationAttempts|Registration attempts (登録試行回数)|Count|合計|試行されたデバイス登録の回数|ProvisioningServiceName、IotHubName、Status|
 |DeviceAssignments|Devices assigned (割り当て済みデバイス数)|Count|合計|IoT Hub に割り当てられているデバイスの数|ProvisioningServiceName、IotHubName|
 |AttestationAttempts|Attestation attempts (構成証明試行回数)|Count|合計|試行されたデバイス構成証明の回数|ProvisioningServiceName、Status、Protocol|
-
-## <a name="microsoftdeviceselasticpools"></a>Microsoft.Devices/ElasticPools
-
-|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
-|---|---|---|---|---|---|
-|elasticPool.requestedUsageRate|要求された使用率|Percent|平均|要求された使用率|ディメンションなし|
-
-## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft.Devices/ElasticPools/IotHubTenants
-
-|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
-|---|---|---|---|---|---|
-|tenantHub.requestedUsageRate|要求された使用率|Percent|平均|要求された使用率|ディメンションなし|
-|deviceDataUsage|合計 devicedata 使用状況|Count|合計|Iot Hub に接続されているデバイスとの間で転送されたバイト数|ディメンションなし|
-|d2c.telemetry.ingress.allProtocol|テレメトリ メッセージ送信試行|Count|合計|IoT Hub への送信が試行された Device to Cloud テレメトリ メッセージの数|ディメンションなし|
-|d2c.telemetry.ingress.success|送信済みテレメトリ メッセージ|Count|合計|IoT Hub に正常に送信された Device to Cloud テレメトリ メッセージの数|ディメンションなし|
-|c2d.commands.egress.complete.success|完了したコマンド|Count|合計|デバイスで正常に完了した Cloud to Device コマンドの数|ディメンションなし|
-|c2d.commands.egress.abandon.success|中止したコマンド|Count|合計|デバイスで中止された Cloud to Device コマンドの数|ディメンションなし|
-|c2d.commands.egress.reject.success|拒否されたコマンド|Count|合計|デバイスで拒否された Cloud to Device コマンドの数|ディメンションなし|
-|devices.totalDevices|合計デバイス|Count|合計|IoT Hub に登録されたデバイスの数|ディメンションなし|
-|devices.connectedDevices.allProtocol|接続されているデバイス|Count|合計|IoT Hub に接続されているデバイスの数|ディメンションなし|
-|d2c.telemetry.egress.success|配信されたテレメトリ メッセージ|Count|合計|メッセージがエンドポイントに正常に書き込まれた回数 (合計)|ディメンションなし|
-|d2c.telemetry.egress.dropped|破棄されたメッセージ|Count|合計|配信エンドポイントが停止したために破棄されたメッセージの数|ディメンションなし|
-|d2c.telemetry.egress.orphaned|孤立したメッセージ|Count|合計|フォールバック ルートを含め、すべてのルートと一致しないメッセージの数|ディメンションなし|
-|d2c.telemetry.egress.invalid|無効なメッセージ|Count|合計|エンドポイントとの互換性がないために配信されなかったメッセージの数|ディメンションなし|
-|d2c.telemetry.egress.fallback|フォールバック条件に一致するメッセージ|Count|合計|フォールバック エンドポイントに書き込まれたメッセージの数|ディメンションなし|
-|d2c.endpoints.egress.eventHubs|Event Hub エンドポイントに配信されたメッセージ|Count|合計|メッセージが Event Hub エンドポイントに正常に書き込まれた回数|ディメンションなし|
-|d2c.endpoints.latency.eventHubs|イベント ハブ エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージとイベント ハブ エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|ディメンションなし|
-|d2c.endpoints.egress.serviceBusQueues|Service Bus キュー エンドポイントに配信されたメッセージ|Count|合計|メッセージが Service Bus キュー エンドポイントに正常に書き込まれた回数|ディメンションなし|
-|d2c.endpoints.latency.serviceBusQueues|Service Bus キュー エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus キュー エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|ディメンションなし|
-|d2c.endpoints.egress.serviceBusTopics|Service Bus トピック エンドポイントに配信されたメッセージ|Count|合計|メッセージが Service Bus トピック エンドポイントに正常に書き込まれた回数|ディメンションなし|
-|d2c.endpoints.latency.serviceBusTopics|Service Bus トピック エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus トピック エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|ディメンションなし|
-|d2c.endpoints.egress.builtIn.events|組み込みエンドポイント (イベント/メッセージ) に配信されたメッセージ|Count|合計|メッセージが組み込みエンドポイント (イベント/メッセージ) に正常に書き込まれた回数|ディメンションなし|
-|d2c.endpoints.latency.builtIn.events|組み込みエンドポイント (イベント/メッセージ) のメッセージ待機時間|ミリ秒|平均|IoT ハブの受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信メッセージの間の平均待機時間 (ミリ秒) |ディメンションなし|
-|d2c.endpoints.egress.storage|ストレージ エンドポイントに配信されたメッセージ|Count|合計|メッセージがストレージ エンドポイントに正常に書き込まれた回数|ディメンションなし|
-|d2c.endpoints.latency.storage|ストレージ エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージとストレージ エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|ディメンションなし|
-|d2c.endpoints.egress.storage.bytes|ストレージに書き込まれたデータ|Bytes|合計|ストレージ エンドポイントに書き込まれたデータ量 (バイト)|ディメンションなし|
-|d2c.endpoints.egress.storage.blobs|ストレージに書き込まれた BLOB|Count|合計|ストレージ エンドポイントに書き込まれた BLOB の数|ディメンションなし|
-|d2c.twin.read.success|成功したデバイスからのツイン読み取り|Count|合計|デバイスが開始して成功したツイン読み取りの数。|ディメンションなし|
-|d2c.twin.read.failure|失敗したデバイスからのツイン読み取り|Count|合計|デバイスが開始したツイン読み取りの失敗数。|ディメンションなし|
-|d2c.twin.read.size|デバイスからのツイン読み取りの応答サイズ|Bytes|平均|デバイスが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|ディメンションなし|
-|d2c.twin.update.success|成功したデバイスからのツイン更新|Count|合計|デバイスが開始して成功したツイン更新の数。|ディメンションなし|
-|d2c.twin.update.failure|失敗したデバイスからのツイン更新|Count|合計|デバイスが開始して失敗したツイン更新の数。|ディメンションなし|
-|d2c.twin.update.size|デバイスからのツイン更新のサイズ|Bytes|平均|デバイスが開始して成功したツイン更新の平均、最小、および最大サイズ。|ディメンションなし|
-|c2d.methods.success|成功したダイレクト メソッドの呼び出し|Count|合計|成功したダイレクト メソッドの呼び出しの数。|ディメンションなし|
-|c2d.methods.failure|失敗したダイレクト メソッドの呼び出し|Count|合計|失敗したダイレクト メソッドの呼び出しの数。|ディメンションなし|
-|c2d.methods.requestSize|ダイレクト メソッドの呼び出しの要求サイズ|Bytes|平均|成功したダイレクト メソッド要求の平均、最小、および最大サイズ。|ディメンションなし|
-|c2d.methods.responseSize|ダイレクト メソッドの呼び出しの応答サイズ|Bytes|平均|成功したダイレクト メソッド応答の平均、最小、および最大サイズ。|ディメンションなし|
-|c2d.twin.read.success|成功したバック エンドからのツイン読み取り|Count|合計|バックエンドが開始して成功したツイン読み取りの数。|ディメンションなし|
-|c2d.twin.read.failure|失敗したバックエンドからのツイン読み取り|Count|合計|バックエンドが開始して失敗したツイン読み取りの数。|ディメンションなし|
-|c2d.twin.read.size|バック エンドからのツイン読み取りの応答サイズ|Bytes|平均|バックエンドが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|ディメンションなし|
-|c2d.twin.update.success|成功したバックエンドからのツイン更新|Count|合計|バックエンドが開始して成功したツイン更新の数。|ディメンションなし|
-|c2d.twin.update.failure|失敗したバック エンドからのツイン更新|Count|合計|バックエンドが開始して失敗したツイン更新の数。|ディメンションなし|
-|c2d.twin.update.size|バックエンドからのツイン更新のサイズ|Bytes|平均|バックエンドが開始して成功したツイン更新の平均、最小、および最大サイズ。|ディメンションなし|
-|twinQueries.success|成功したツイン クエリ|Count|合計|成功したツイン クエリの数。|ディメンションなし|
-|twinQueries.failure|失敗したツイン クエリ|Count|合計|失敗したツイン クエリの数。|ディメンションなし|
-|twinQueries.resultSize|ツイン クエリの結果のサイズ|Bytes|平均|成功したツイン クエリの結果の平均、最小、および最大サイズ。|ディメンションなし|
-|jobs.createTwinUpdateJob.success|成功したツイン更新ジョブの作成|Count|合計|正常に作成されたツイン更新ジョブの数。|ディメンションなし|
-|jobs.createTwinUpdateJob.failure|失敗したツイン更新ジョブの作成|Count|合計|作成に失敗したツイン更新ジョブの数。|ディメンションなし|
-|jobs.createDirectMethodJob.success|成功したメソッド呼び出しジョブの作成|Count|合計|正常に作成されたダイレクト メソッド呼び出しジョブの数。|ディメンションなし|
-|jobs.createDirectMethodJob.failure|失敗したメソッド呼び出しジョブの作成|Count|合計|作成に失敗したダイレクト メソッド呼び出しジョブの数。|ディメンションなし|
-|jobs.listJobs.success|成功したジョブ一覧の呼び出し|Count|合計|正常に実行されたジョブ一覧の呼び出しの数。|ディメンションなし|
-|jobs.listJobs.failure|失敗したジョブ一覧の呼び出し|Count|合計|失敗したジョブ一覧の呼び出しの数。|ディメンションなし|
-|jobs.cancelJob.success|成功したジョブの取り消し|Count|合計|正常に実行されたジョブ取り消しの呼び出し。|ディメンションなし|
-|jobs.cancelJob.failure|失敗したジョブの取り消し|Count|合計|失敗したジョブ取り消しの呼び出し。|ディメンションなし|
-|jobs.queryJobs.success|成功したジョブ クエリ|Count|合計|正常に実行されたクエリ ジョブの呼び出しの数。|ディメンションなし|
-|jobs.queryJobs.failure|失敗したジョブ クエリ|Count|合計|失敗したジョブ クエリの呼び出しの数。|ディメンションなし|
-|jobs.completed|完了したジョブ|Count|合計|完了したジョブの数。|ディメンションなし|
-|jobs.failed|失敗したジョブ|Count|合計|失敗したジョブの数。|ディメンションなし|
-|d2c.telemetry.ingress.sendThrottle|調整エラーの数|Count|合計|デバイスのスループット調整による調整エラーの数|ディメンションなし|
-|dailyMessageQuotaUsed|使用されているメッセージの合計数|Count|平均|現在使用されているメッセージの合計数。 これは累積値であり、毎日 00 時 00 分 (UTC) になるとゼロにリセットされます。|ディメンションなし|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
@@ -920,13 +893,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |incoming.all.requests|すべての受信要求|Count|合計|Notification Hub の受信要求の合計数|ディメンションなし|
 |incoming.all.failedrequests|失敗したすべての受信要求|Count|合計|Notification Hub の失敗した受信要求の合計数|ディメンションなし|
 
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
-
-|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
-|---|---|---|---|---|---|
-|QueryDuration|クエリ実行時間|ミリ秒|平均|最後の間隔における DAX クエリの実行時間|ディメンションなし|
-|QueryPoolJobQueueLength|スレッド: クエリ プール ジョブ キューの長さ|Count|平均|クエリ スレッド プールのキューに登録されているジョブの数。|ディメンションなし|
-
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 (パブリック プレビュー)
 
@@ -1003,6 +969,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Heartbeat|Heartbeat|Count|平均|Heartbeat|Computer、OSType、Version、SourceComputerId|
 |プライマリの|プライマリの|Count|平均|プライマリの|Computer、Product、Classification、UpdateState、Optional、Approved|
 
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+
+|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
+|---|---|---|---|---|---|
+|QueryDuration|クエリ実行時間|ミリ秒|平均|最後の間隔における DAX クエリの実行時間|ディメンションなし|
+|QueryPoolJobQueueLength|スレッド: クエリ プール ジョブ キューの長さ|Count|平均|クエリ スレッド プールのキューに登録されているジョブの数。|ディメンションなし|
+|qpu_high_utilization_metric|QPU High Utilization (QPU の高使用率)|Count|合計|過去 1 分間の QPU の高使用率、QPU 使用率が高い場合は 1、それ以外の場合は 0|ディメンションなし|
+|memory_metric|メモリ|バイト|平均|メモリ。 範囲は A1 で 0 から 3 GB、A2 で 0 から 5 GB、A3 で 0 から 10 GB、A4 で 0 から 25 GB、A5 で 0 から 50 GB、A6 で 0 から 100 GB|ディメンションなし|
+|memory_thrashing_metric|メモリ スラッシング|Percent|平均|平均的なメモリ スラッシング。|ディメンションなし|
+
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
@@ -1046,6 +1022,20 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ActiveMessages|キュー/トピック内のアクティブなメッセージの数。 (プレビュー)|Count|平均|キュー/トピック内のアクティブなメッセージの数。 (プレビュー)|EntityName|
 |CPUXNS|名前空間あたりの CPU 使用率|Percent|最大値|Service Bus Premium 名前空間の CPU 使用率メトリック|ディメンションなし|
 |WSXNS|名前空間あたりのメモリ サイズの使用量|Percent|最大値|Service Bus Premium 名前空間のメモリ使用量メトリック|ディメンションなし|
+
+## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
+
+|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
+|---|---|---|---|---|---|
+|ConnectionCount|Connection Count (接続数)|Count|最大値|ユーザー接続の量。|ディメンションなし|
+|ConnectionCountPerSecond|Connection Count Per Second (1 秒あたりの接続数)|CountPerSecond|平均|1 秒あたりの平均接続数。|ディメンションなし|
+|MessageCount|メッセージ数|Count|最大値|1 か月のメッセージの総量|ディメンションなし|
+|MessageCountPerSecond|Message Count Per Second (1 秒あたりのメッセージ数)|CountPerSecond|平均|平均メッセージ数|ディメンションなし|
+|MessageUsed|Message Used (メッセージの使用率)|Percent|最大値|1 か月に使用されたメッセージの割合|ディメンションなし|
+|ConnectionUsed|Connection Used (接続の使用率)|Percent|最大値|使用された接続の割合|ディメンションなし|
+|UserErrors|User Errors (ユーザー エラー)|Percent|最大値|ユーザー エラーの割合|ディメンションなし|
+|SystemErrors|System Errors (システム エラー)|Percent|最大値|システム エラーの割合|ディメンションなし|
+|SystemLoad|System Load (システムの負荷)|Percent|最大値|システムの負荷の割合|ディメンションなし|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
@@ -1182,6 +1172,30 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |DeserializationError|逆シリアル化の入力エラー|Count|合計|逆シリアル化の入力エラー|ディメンションなし|
 |EarlyInputEvents|適用時間が受信時間よりも早いイベント。|Count|合計|適用時間が受信時間よりも早いイベント。|ディメンションなし|
 
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
+
+|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
+|---|---|---|---|---|---|
+|IngressReceivedMessages|Ingress Received Messages (受信メッセージの受信)|Count|合計|すべてのイベント ハブまたは IoT ハブ イベント ソースから読み取られたメッセージの数|ディメンションなし|
+|IngressReceivedInvalidMessages|Ingress Received Invalid Messages (無効な受信メッセージの受信)|Count|合計|すべてのイベント ハブまたは IoT ハブ イベント ソースから読み取られた無効なメッセージの数|ディメンションなし|
+|IngressReceivedBytes|Ingress Received Bytes (受信バイトの受信)|Bytes|合計|すべてのイベント ソースから読み取られたバイト数|ディメンションなし|
+|IngressStoredBytes|Ingress Stored Bytes (保存済みバイトの受信)|Bytes|合計|正常に処理され、クエリで利用できるイベントの合計サイズ|ディメンションなし|
+|IngressStoredEvents|Ingress Stored Events (保存済みイベントの受信)|Count|合計|正常に処理され、クエリで利用できるフラット化されたイベントの数|ディメンションなし|
+|IngressReceivedMessagesTimeLag|Ingress Received Messages Time Lag (受信メッセージの受信のタイム ラグ)|Seconds|最大値|メッセージがイベント ソースでエンキューされた時刻とそれがイングレスで処理された時刻の間の差|ディメンションなし|
+|IngressReceivedMessagesCountLag|Ingress Received Messages Count Lag (受信メッセージの受信のカウント ラグ)|Count|平均|イベント ソース パーティションで最後にエンキューされたメッセージのシーケンス番号とイングレスで処理されているメッセージのシーケンス番号の間の差|ディメンションなし|
+
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
+
+|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
+|---|---|---|---|---|---|
+|IngressReceivedMessages|Ingress Received Messages (受信メッセージの受信)|Count|合計|イベント ソースから読み取られたメッセージの数|ディメンションなし|
+|IngressReceivedInvalidMessages|Ingress Received Invalid Messages (無効な受信メッセージの受信)|Count|合計|イベント ソースから読み取られた無効なメッセージの数|ディメンションなし|
+|IngressReceivedBytes|Ingress Received Bytes (受信バイトの受信)|Bytes|合計|イベント ソースから読み取られたバイト数|ディメンションなし|
+|IngressStoredBytes|Ingress Stored Bytes (保存済みバイトの受信)|Bytes|合計|正常に処理され、クエリで利用できるイベントの合計サイズ|ディメンションなし|
+|IngressStoredEvents|Ingress Stored Events (保存済みイベントの受信)|Count|合計|正常に処理され、クエリで利用できるフラット化されたイベントの数|ディメンションなし|
+|IngressReceivedMessagesTimeLag|Ingress Received Messages Time Lag (受信メッセージの受信のタイム ラグ)|Seconds|最大値|メッセージがイベント ソースでエンキューされた時刻とそれがイングレスで処理された時刻の間の差|ディメンションなし|
+|IngressReceivedMessagesCountLag|Ingress Received Messages Count Lag (受信メッセージの受信のカウント ラグ)|Count|平均|イベント ソース パーティションで最後にエンキューされたメッセージのシーケンス番号とイングレスで処理されているメッセージのシーケンス番号の間の差|ディメンションなし|
+
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
@@ -1216,6 +1230,19 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |AppConnections|接続|Count|平均|接続|インスタンス|
 |Handles|ハンドルの数|Count|平均|ハンドルの数|インスタンス|
 |Threads|Thread Count|Count|平均|Thread Count|インスタンス|
+|IoReadBytesPerSecond|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|
+|IoWriteBytesPerSecond|IO 書き込みバイト/秒|BytesPerSecond|合計|IO 書き込みバイト/秒|インスタンス|
+|IoOtherBytesPerSecond|IO その他のバイト/秒|BytesPerSecond|合計|IO その他のバイト/秒|インスタンス|
+|IoReadOperationsPerSecond|IO 読み取り操作/秒|BytesPerSecond|合計|IO 読み取り操作/秒|インスタンス|
+|IoWriteOperationsPerSecond|IO 書き込み操作/秒|BytesPerSecond|合計|IO 書き込み操作/秒|インスタンス|
+|IoOtherOperationsPerSecond|IO その他の操作/秒|BytesPerSecond|合計|IO その他の操作/秒|インスタンス|
+|RequestsInApplicationQueue|アプリケーション キュー内の要求数|Count|平均|アプリケーション キュー内の要求数|インスタンス|
+|CurrentAssemblies|現在のアセンブリ|Count|平均|現在のアセンブリ|インスタンス|
+|TotalAppDomains|アプリ ドメイン合計数|Count|平均|アプリ ドメイン合計数|インスタンス|
+|TotalAppDomainsUnloaded|アンロード済みのアプリ ドメイン合計数|Count|平均|アンロード済みのアプリ ドメイン合計数|インスタンス|
+|Gen0Collections|Gen 0 ガベージ コレクション|Count|合計|Gen 0 ガベージ コレクション|インスタンス|
+|Gen1Collections|Gen 1 ガベージ コレクション|Count|合計|Gen 1 ガベージ コレクション|インスタンス|
+|Gen2Collections|Gen 2 ガベージ コレクション|Count|合計|Gen 2 ガベージ コレクション|インスタンス|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (関数)
 
@@ -1228,6 +1255,19 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|インスタンス|
 |FunctionExecutionUnits|関数の実行単位|Count|合計|関数の実行単位|インスタンス|
 |FunctionExecutionCount|関数の実行回数|Count|合計|関数の実行回数|インスタンス|
+|IoReadBytesPerSecond|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|
+|IoWriteBytesPerSecond|IO 書き込みバイト/秒|BytesPerSecond|合計|IO 書き込みバイト/秒|インスタンス|
+|IoOtherBytesPerSecond|IO その他のバイト/秒|BytesPerSecond|合計|IO その他のバイト/秒|インスタンス|
+|IoReadOperationsPerSecond|IO 読み取り操作/秒|BytesPerSecond|合計|IO 読み取り操作/秒|インスタンス|
+|IoWriteOperationsPerSecond|IO 書き込み操作/秒|BytesPerSecond|合計|IO 書き込み操作/秒|インスタンス|
+|IoOtherOperationsPerSecond|IO その他の操作/秒|BytesPerSecond|合計|IO その他の操作/秒|インスタンス|
+|RequestsInApplicationQueue|アプリケーション キュー内の要求数|Count|平均|アプリケーション キュー内の要求数|インスタンス|
+|CurrentAssemblies|現在のアセンブリ|Count|平均|現在のアセンブリ|インスタンス|
+|TotalAppDomains|アプリ ドメイン合計数|Count|平均|アプリ ドメイン合計数|インスタンス|
+|TotalAppDomainsUnloaded|アンロード済みのアプリ ドメイン合計数|Count|平均|アンロード済みのアプリ ドメイン合計数|インスタンス|
+|Gen0Collections|Gen 0 ガベージ コレクション|Count|合計|Gen 0 ガベージ コレクション|インスタンス|
+|Gen1Collections|Gen 1 ガベージ コレクション|Count|合計|Gen 1 ガベージ コレクション|インスタンス|
+|Gen2Collections|Gen 2 ガベージ コレクション|Count|合計|Gen 2 ガベージ コレクション|インスタンス|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
@@ -1254,6 +1294,19 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |AppConnections|接続|Count|平均|接続|インスタンス|
 |Handles|ハンドルの数|Count|平均|ハンドルの数|インスタンス|
 |Threads|Thread Count|Count|平均|Thread Count|インスタンス|
+|IoReadBytesPerSecond|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|
+|IoWriteBytesPerSecond|IO 書き込みバイト/秒|BytesPerSecond|合計|IO 書き込みバイト/秒|インスタンス|
+|IoOtherBytesPerSecond|IO その他のバイト/秒|BytesPerSecond|合計|IO その他のバイト/秒|インスタンス|
+|IoReadOperationsPerSecond|IO 読み取り操作/秒|BytesPerSecond|合計|IO 読み取り操作/秒|インスタンス|
+|IoWriteOperationsPerSecond|IO 書き込み操作/秒|BytesPerSecond|合計|IO 書き込み操作/秒|インスタンス|
+|IoOtherOperationsPerSecond|IO その他の操作/秒|BytesPerSecond|合計|IO その他の操作/秒|インスタンス|
+|RequestsInApplicationQueue|アプリケーション キュー内の要求数|Count|平均|アプリケーション キュー内の要求数|インスタンス|
+|CurrentAssemblies|現在のアセンブリ|Count|平均|現在のアセンブリ|インスタンス|
+|TotalAppDomains|アプリ ドメイン合計数|Count|平均|アプリ ドメイン合計数|インスタンス|
+|TotalAppDomainsUnloaded|アンロード済みのアプリ ドメイン合計数|Count|平均|アンロード済みのアプリ ドメイン合計数|インスタンス|
+|Gen0Collections|Gen 0 ガベージ コレクション|Count|合計|Gen 0 ガベージ コレクション|インスタンス|
+|Gen1Collections|Gen 1 ガベージ コレクション|Count|合計|Gen 1 ガベージ コレクション|インスタンス|
+|Gen2Collections|Gen 2 ガベージ コレクション|Count|合計|Gen 2 ガベージ コレクション|インスタンス|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 

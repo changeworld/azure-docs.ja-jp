@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/23/2017
+ms.date: 04/30/2018
 ms.author: jroth
-ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774728"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)
+
 > [!div class="op_single_selector"]
 > * [リソース マネージャー](virtual-machines-windows-ps-sql-keyvault.md)
 > * [クラシック](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -39,7 +41,7 @@ SQL Server をオンプレミス コンピューターで実行している場�
 AKV 統合はプロビジョニング時に有効にできます。または、既存の VM 用に構成できます。
 
 ### <a name="new-vms"></a>新しい VM
-リソース マネージャーで新しい SQL Server 仮想マシンをプロビジョニングしている場合は、Azure のポータルで Azure Key Vault 統合を有効にする手順を提供します。 Azure Key Vault 機能は、SQL Server の Enterprise Edition、Developer Edition、および評価版でのみ使用できます。
+リソース マネージャーで新しい SQL Server 仮想マシンをプロビジョニングしている場合は、Azure Portal で Azure Key Vault 統合を有効にすることができます。 Azure Key Vault 機能は、SQL Server の Enterprise Edition、Developer Edition、および評価版でのみ使用できます。
 
 ![SQL Azure Key Vault Integration](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 

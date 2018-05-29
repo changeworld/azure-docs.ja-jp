@@ -14,14 +14,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b7ad535976508cb195991c374995b0a0b6e45e10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159870"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -39,6 +40,217 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 -   変更の計画
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
+
+
+## <a name="april-2018"></a>2018 年 4 月
+ 
+
+
+### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C アクセス トークンが GA に
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** B2C - コンシューマー ID 管理  
+**製品の機能:** B2B/B2C
+ 
+
+Azure AD B2C によってセキュリティで保護されている Web API にアクセス トークンを使用してアクセスできるようになりました。 この機能はパブリック プレビューから GA に移行します。 Azure AD B2C アプリケーションと Web API を構成するための UI エクスペリエンスが強化され、他の小規模な改善が加えられました。
+ 
+詳細については、「[Azure AD B2C: アクセス トークンの要求](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens)」を参照してください。
+
+
+---
+ 
+
+### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>SAML ベース アプリケーションのシングル サインオン構成をテストする
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** SSO
+ 
+
+SAML ベースの SSO アプリケーションを構成するときに、構成ページで統合をテストできます。 サインイン時にエラーが発生した場合には、テスト エクスペリエンスにエラーを提供でき、特定の問題を解決するための解決手順が Azure AD から示されます。
+
+詳細については、次を参照してください。
+
+- [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
+- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+
+
+---
+ 
+### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD Terms of Use にユーザーごとのレポートが設けられた
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** コンプライアンス
+ 
+
+管理者が特定の使用条件 (ToU) を選択し、その ToU に同意したすべてのユーザーと、同意された日時を確認できるようになりました。
+
+
+詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)に関するページを参照してください。
+ 
+
+---
+ 
+### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Azure AD Connect Health: AD FS エクストラネット ロックアウト保護の危険な IP 
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** 監視とレポート
+ 
+
+Connect Health で、U/P ログインの失敗のしきい値を超える IP アドレスを時間単位または日単位で検出する機能がサポートされました。 この機能によって次のことが可能になります。
+
+- カスタマイズ可能なしきい値に基づいて時間単位または日単位で生成される、失敗したログインの IP アドレスと回数を示す包括的なレポート。
+- 特定の IP アドレスが U/P ログイン失敗のしきい値 (時間単位または日単位) をいつ超えたかを示す、電子メール ベースのアラート。
+- データの詳しい分析を実行するためのダウンロード オプション
+
+
+詳細については、[危険な IP のレポート](https://aka.ms/aadchriskyip)に関するページを参照してください。
+
+ 
+
+---
+ 
+
+### <a name="easy-app-config-with-metadata-file-or-url"></a>メタデータ ファイルまたは URL を使用した簡単なアプリ構成
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** SSO
+ 
+
+管理者は [エンタープライズ アプリケーション] ページで、AAD ギャラリーに含まれるアプリケーションとギャラリーに含まれないアプリケーション向けに SAML ベースのサインインを構成するための SAML メタデータ ファイルをアップロードできます。
+
+さらに、Azure AD アプリケーションのフェデレーション メタデータ URL を使用して、対象となるアプリケーションで SSO を構成できます。
+
+詳細については、「[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)」を参照してください。
+ 
+
+---
+ 
+
+### <a name="azure-ad-terms-of-use-now-generally-available"></a>Azure AD Terms of Use が一般公開に
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** コンプライアンス
+ 
+
+Azure AD Terms of Use がパブリック プレビューから一般公開になりました。
+
+詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)に関するページを参照してください。
+
+ 
+
+---
+ 
+
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+ 
+
+Azure AD B2B コラボレーションで共有とコラボレーションを行う相手の取引先組織を指定できるようになりました。 そのために、特定の許可ドメインまたは拒否ドメインを指定したリストを作成できます。 これらの機能を使用してドメインをブロックすると、従業員はそのドメイン内のユーザーに招待を送信できなくなります。
+
+これは、承認済みユーザーのエクスペリエンスを円滑に保ちながら、リソースに対するアクセスを制御するのに役立ちます。
+
+この B2B コラボレーション機能はすべての Azure Active Directory ユーザーが利用でき、条件付きアクセスや ID 保護などの Azure AD Premium 機能と連携させて、外部のビジネス ユーザーによるサインインやアクセス取得のタイミングと方法をより細かく制御することができます。
+
+詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list)」を参照してください。
+
+ 
+
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** サード パーティ統合
+ 
+
+2018 年 4 月に、フェデレーションをサポートする次の 13 個の新しいアプリがアプリ ギャラリーに追加されました。
+
+
+
+Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial)、[Secret Server (On-Premises)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial)、[Dynamic Signal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial)、[mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial)、[OrgChart Now](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial)、[Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial)、[AppNeta Performance Monitor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial)、[Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial)、[Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial)、[Cisco Cloud](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial)、Shelf、[SafetyNet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
+
+
+
+ 利用できるチュートリアルの一覧については、[https://aka.ms/appstutorial](https://aka.ms/appstutorial)をご覧ください。
+
+詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」を参照してください。
+
+
+ 
+
+---
+ 
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>オンプレミスのアプリケーションに対するアクセスを Azure AD の B2B ユーザーに付与する (パブリック プレビュー)
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** B2B  
+**製品の機能:** B2B/B2C
+ 
+
+Azure Active Directory (Azure AD) B2B コラボレーション機能を使用して取引先組織のゲスト ユーザーを Azure AD に招待している組織が、これらの B2B ユーザーにオンプレミスのアプリケーションへのアクセスを提供できるようになりました。 これらのオンプレミスのアプリケーションでは、Kerberos の制約付き委任 (KCD) と共に SAML ベースの認証または統合 Windows 認証 (IWA) を使用できます。
+
+詳細については、「[Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises)」を参照してください。
+ 
+
+---
+ 
+### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Azure Marketplace から SSO 統合チュートリアルを入手する
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** サード パーティ統合
+ 
+
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) にリストされているアプリケーションが SAML ベースのシングル サインオンをサポートしている場合、**[今すぐ入手する]** をクリックすると、そのアプリケーションに関連する統合チュートリアルが表示されます。 
+
+
+---
+
+### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>SaaS アプリケーションへの Azure AD 自動ユーザー プロビジョニングのパフォーマンスが向上
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+ 
+
+以前は、(Salesforce、ServiceNow、Box などの) SaaS アプリケーション向けの Azure Active Directory ユーザー プロビジョニング コネクタを使用するお客様は、Azure AD テナントに含まれるユーザーとグループが 100,000 を超え、プロビジョニングが必要なユーザーを判別するためにユーザーとグループの割り当てを使用している場合に、パフォーマンスが大幅に低下することがありました。
+
+4 月 2 日に Azure AD プロビジョニング サービスに非常に重要性の高いパフォーマンス強化がデプロイされ、Azure Active Directory とターゲット SaaS アプリケーションの間における初期同期の実行に必要な時間が大幅に短縮されました。
+
+
+その結果、これまではアプリの初期同期に多くの日数を要したり、完了に至らなかったりした多くのお客様が、わずか数分または数時間でこれを完了できるようになりました。
+
+詳細については、「[プロビジョニング中の動作](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning)」を参照してください。
+
+---
+ 
+
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>ハイブリッド Azure AD 参加マシンの Windows 10 ロック画面からのセルフ サービスによるパスワードのリセット
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** セルフ サービスのパスワード リセット  
+**製品の機能:** ユーザー認証
+ 
+
+Windows 10 SSPR 機能が更新され、ハイブリッド Azure AD に参加しているマシンがサポートされるようになりました。 この機能は Windows 10 RS4 で利用でき、ユーザーは Windows 10 マシンのロック画面からパスワードをリセットできます。 この機能を利用できるのは、セルフ サービスのパスワード リセットを有効にして登録したユーザーです。
+
+詳細については、「[ログイン画面からの Azure AD パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows)」を参照してください。
+ 
+
+---
+
+
 
 ## <a name="march-2018"></a>2018 年 3 月
  
@@ -362,7 +574,7 @@ SAML ベースのサインオンを使用したアプリケーションでは、
 
 アプリケーションをデプロイしやすくして管理オーバーヘッドを低減するために、ワイルドカードを使ってアプリケーションを発行する機能に対応しました。 ワイルドカード アプリケーションの発行は、標準的なアプリケーション発行フローに沿って行われますが、内部 URL と外部 URL にはワイルドカードが使用されます。
 
-詳細については、「[Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)」を参照してください。
+詳細については、「[Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)」を参照してください。
 
  
 
@@ -521,7 +733,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 
 **タイプ:** 変更された機能  
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス
+**製品の機能:** コンプライアンス
  
 
 使用条件が表示されたときに **[表示に問題がある場合は、ここをクリックします]** をクリックできるようになりました。 このリンクをクリックすると、お使いのデバイスでネイティブに使用条件が表示されます。 ドキュメントのフォント サイズやデバイスの画面サイズに関係なく、必要に応じてズームしてドキュメントを読むことができます。 
@@ -656,7 +868,7 @@ MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあり�
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス/コンプライアンス
+**製品の機能:** コンプライアンス
  
 アクセス パネルに移動して、以前承認した使用条件を確認できます。
 
@@ -707,7 +919,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス/コンプライアンス
+**製品の機能:** コンプライアンス
  
 条項に同意する前に使用条件を展開することをお客様のユーザーに要求する、管理者向けのオプションです。
 
@@ -864,7 +1076,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 **タイプ:** 新機能    
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス/コンプライアンス
+**製品の機能:** コンプライアンス
 
 
 
@@ -1117,7 +1329,7 @@ Azure Portal では次の機能が提供されています。
 
 **タイプ:** 固定   
 **サービス カテゴリ:** マイ アプリ  
-**製品の機能:**シングル サインオン  
+**製品の機能:** シングル サインオン  
 
 
 
@@ -1154,7 +1366,7 @@ Azure AD は、HTML ユーザー名とパスワード フィールドをレン�
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス/コンプライアンス  
+**製品の機能:** コンプライアンス  
 
 
 
@@ -1197,7 +1409,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** アクセス レビュー  
-**製品の機能:** ガバナンス/コンプライアンス  
+**製品の機能:** コンプライアンス  
 
 
 
@@ -1219,7 +1431,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
-**製品の機能:**シングル サインオン  
+**製品の機能:** シングル サインオン  
 
 
 

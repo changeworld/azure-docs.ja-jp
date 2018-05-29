@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 1ba2f2be8db424bddfccdf374704ec7be5691feb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312170"
 ---
 # <a name="overview-of-azure-monitor"></a>Azure Monitor の概要
 この記事では、Microsoft Azure の Azure Monitor サービスの概要を説明します。 Azure Monitor の動作について説明し、Azure Monitor の使用方法に関するその他の情報の参照先を紹介します。  概要ビデオをご希望の場合は、この記事の最後にある「次のステップ」のリンクを参照してください。 
@@ -108,7 +109,7 @@ Log Analytics または Application Insights を使用していない場合、�
 
 ### <a name="store-and-archive"></a>保存とアーカイブ
 一部の監視データは既に保存されており、Azure Monitor で一定期間使用できます。 
-- メトリックは 30 日間保存されます。 
+- メトリックは 90 日間保存されます。 
 - アクティビティ ログのエントリは 90 日間保存されます。 
 - 診断ログは一切保存されません。 
 

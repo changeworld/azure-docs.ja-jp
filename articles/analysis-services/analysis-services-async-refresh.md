@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153128"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
@@ -198,7 +199,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 1.  リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
 2.  「**client.BaseAddress = …**」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
-このコード サンプルでは、対話型ログイン、ユーザー名/パスワード、または[サービス プリンシパル](#service-principle)を使用できます。
+このコード サンプルでは、対話型ログイン、ユーザー名/パスワード、または[サービス プリンシパル](#service-principal)を使用できます。
 
 #### <a name="interactive-login-or-usernamepassword"></a>対話型ログインまたはユーザー名/パスワード
 

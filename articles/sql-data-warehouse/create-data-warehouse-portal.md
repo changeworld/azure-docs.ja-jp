@@ -10,11 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 284cfd3562a951da928697c91aa8234719056fa4
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e9501d023ad1e0bfdf692f31ec61ae59959c0f23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32191521"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート: Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する
 
@@ -72,15 +73,15 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 5. **[選択]** をクリックします。
 
-6. **[パフォーマンス層]** をクリックして、データ ウェアハウスのパフォーマンス構成を指定します。
+6. **[パフォーマンス レベル]** をクリックして、データ ウェアハウスのパフォーマンス構成を指定します。
 
-7. このチュートリアルでは、**[エラスティック用に最適化]** パフォーマンス レベルを選択します。 スライダーは、既定で **[DW400]** に設定されています。  上下に動かしてどうなるか試してみてください。 
+7. このチュートリアルでは、**[Gen2]** を選択します。 スライダーは、既定で **[DW1000c]** に設定されています。  上下に動かしてどうなるか試してみてください。 
 
     ![パフォーマンスを構成する](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. **[Apply]** をクリックします。
 
-9. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
+9. これで SQL Data Warehouse フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
 
     ![[作成] をクリックする](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -96,7 +97,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 > SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20171113.database.windows.net** など) や追加の構成オプションが表示されます。 
+1. デプロイが完了したら、左側のメニューから **[SQL データ ウェアハウス]** をクリックし、**[SQL データ ウェアハウス]** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。 
 
 2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 サーバー設定を開くには、サーバー名をクリックします。
 
@@ -127,8 +128,8 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
+2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、**[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。 
+3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。 
 
     ![接続情報](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -143,7 +144,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
    | Setting       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
-   | サーバー名 | 完全修飾サーバー名 | たとえば、**mynewserver-20171113.database.windows.net** です。 |
+   | サーバー名 | 完全修飾サーバー名 | 例: **mynewserver-20180430.database.windows.net** |
    | 認証 | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
@@ -197,7 +198,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 2. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、**[削除]** をクリックします。
 
-3. 作成した SQL Server を削除するには、前の画像の **mynewserver-20171113.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
+3. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 
 4. リソース グループを削除するには、**myResourceGroup** をクリックして、**[リソース グループの削除]** をクリックします。
 

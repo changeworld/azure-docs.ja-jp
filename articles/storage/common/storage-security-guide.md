@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: 2debe3bb06f00741100883ff7c9978f11f5be799
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4145f7edb93801aa6f98df7e9cff34ae7370fc52
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32768015"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -32,7 +33,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 * [管理プレーンのセキュリティ](#management-plane-security) - ストレージ アカウントのセキュリティ保護
 
-  管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
+  管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイ モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
 * [データ プレーンのセキュリティ](#data-plane-security) - データへのアクセスのセキュリティ保護
 
   このセクションでは、Shared Access Signature と保存されたアクセス ポリシーを使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
@@ -93,7 +94,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
   この記事では、RBAC で使用できるすべての組み込みロールについて詳しく説明しています。
 * [リソース マネージャー デプロイと従来のデプロイを理解する](../../azure-resource-manager/resource-manager-deployment-model.md)
 
-  この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。 また、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作についても説明します。
+  この記事では、Resource Manager デプロイ モデルとクラシック デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。 また、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作についても説明します。
 * [REST API を使用したロールベースのアクセス制御の管理](../../role-based-access-control/role-assignments-rest.md)
 
   この記事では、REST API を使用して RBAC を管理する方法について説明しています。
@@ -294,7 +295,7 @@ Azure には、保存時の暗号化を提供する機能が 3 つあります�
 
 SSE は、すべてのストレージ アカウントに対して有効になり、無効にすることはできません。 SSE は、Azure Storage への書き込み時にデータを自動的に暗号化します。 Azure Storage からデータを読み取ると、Azure Storage によって復号化されてから返されます。 SSE を使用すると、コードを変更したり、アプリケーションにコードを追加したりする必要なしにデータをセキュリティで保護できます。
 
-SSE に使用されるキーは Microsoft によって管理されます。 Microsoft は、社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。 顧客管理キーは、Microsoft が管理するキーから顧客管理キーへの移行パスに従って最終的に使用可能になります。
+Microsoft 管理キーまたは独自のカスタム キーを使用できます。 Microsoft は、Microsoft の社内ポリシーの定義に従って管理キーを生成し、キーの安全な保存と定期的な循環を処理しています。 カスタム キーを使用する方法の詳細については、[Azure Key Vault のユーザー管理キーを使用した Storage Service Encryption](storage-service-encryption-customer-managed-keys.md) に関するページを参照してください。
 
 SSE は、すべてのパフォーマンス レベル (Standard および Premium)、すべてのデプロイ モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (BLOB、Queue、Table、File) のデータを自動的に暗号化します。 
 
@@ -363,7 +364,7 @@ IaaS VM で使用されるデータ ディスクには、Azure Disk Encryption �
 
 オンプレミスの暗号化されていない VHD がある場合、カスタム イメージとしてギャラリーにアップロードし、そこから VM をプロビジョニングできます。 この処理に Resource Manager テンプレートを使用する場合、VM の起動時に Azure Disk Encryption を有効にするように指示できます。
 
-データ ディスクを追加し、VM にマウントするときに、そのデータ ディスクで Azure Disk Encryption を有効にすることができます。 有効にすると、まずそのデータ ディスクがローカルで暗号化され、クラシック デプロイメント モデル レイヤーでストレージに対して遅延書き込みが行われるので、ストレージ コンテンツは暗号化されます。
+データ ディスクを追加し、VM にマウントするときに、そのデータ ディスクで Azure Disk Encryption を有効にすることができます。 有効にすると、まずそのデータ ディスクがローカルで暗号化され、クラシック デプロイ モデル レイヤーでストレージに対して遅延書き込みが行われるので、ストレージ コンテンツは暗号化されます。
 
 #### <a name="client-side-encryption"></a>クライアント側暗号化
 クライアント側の暗号化は、転送前にデータが暗号化されるため、データを暗号化する上で最も安全な方法です。  ただし、ストレージを使用してアプリケーションにコードを追加する必要があります。 このような場合は、HTTPS を使用して転送中にデータをセキュリティで保護できます。 データが Azure Storage に到達すると、SSE によって暗号化されます。

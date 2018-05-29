@@ -1,19 +1,20 @@
 ---
-title: "Azure DC/OS クラスターの監視 - Dynatrace"
-description: "Dynatrace で Azure Container Service (DC/OS) クラスターを監視します。 DC/OS ダッシュボードを使用して Dynatrace OneAgent をデプロイします。"
+title: Azure DC/OS クラスターの監視 - Dynatrace
+description: Dynatrace で Azure Container Service (DC/OS) クラスターを監視します。 DC/OS ダッシュボードを使用して Dynatrace OneAgent をデプロイします。
 services: container-service
 author: MartinGoodwell
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 52a8a05f050017f5062ff986bad7ec2e6a650aa5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3d1bfc3bb61781d487c40831edd5da6fcb5a7df9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162043"
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Dynatrace SaaS/Managed を使用した Azure Container Service DC/OS クラスターの監視
 
@@ -27,12 +28,12 @@ Dynatrace は、変化の激しいコンテナーとクラスター環境向け�
 ![Dynatrace の UI](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>前提条件 
-Azure Container Service によって構成されたクラスターに[デプロイ](container-service-deployment.md)して[接続](./../container-service-connect.md)します。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) に移動して Dynatrace SaaS アカウントを設定します。  
+Azure Container Service によって構成されたクラスターに[デプロイ](container-service-deployment.md)して[接続](./../container-service-connect.md)します。 [Marathon UI](container-service-mesos-marathon-ui.md)の詳細を確認してください。 [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) に移動して、Dynatrace SaaS アカウントを設定します。  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Marathon を使用した Dynatrace デプロイメントの構成
 以下の手順は、Marathon を使用して Dynatrace アプリケーションを構成し、クラスターにデプロイする方法を示しています。
 
-1. [http://localhost:80/](http://localhost:80/)で DC/OS の UI にアクセスします。 DC/OS の UI を開いたら、**[Universe (ユニバース)]** タブに移動して、**Dynatrace** を検索します。
+1. [http://localhost:80/](http://localhost:80/) で DC/OS の UI にアクセスします。 DC/OS の UI を開いたら、**[Universe (ユニバース)]** タブに移動して、**Dynatrace** を検索します。
 
     ![Dynatrace in DC/OS Universe](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
@@ -52,6 +53,6 @@ Azure Container Service によって構成されたクラスターに[デプロ�
 
     ![Dynatrace configuration in the DC/OS Universe-instances](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 パッケージをインストールしたら、Dynatrace ダッシュ ボードに戻ります。 クラスター内のコンテナーのさまざまな利用状況指標をご覧ください。 

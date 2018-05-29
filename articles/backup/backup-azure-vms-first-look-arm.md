@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: markgal;jimpark
+ms.author: markgal;jimpark;sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6a29e184a47e3b4304f9c4683e76feab3e75dd4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32310606"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 
@@ -39,7 +40,9 @@ Premium Storage VM の保護の詳細については、[Premium Storage VM の�
 バックアップできるものとバックアップできないものについて詳しくは、[Azure VM をバックアップするための環境の準備](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)に関する記事をご覧ください。
 
 > [!NOTE]
-> このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。
+> Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。
+Backup サービスによって作成されるリソース グループは、AzureBackupRG_`<Geo>`_`<number>` という形式で名前が付けられます。
+<br>例: AzureBackupRG_northeurope_1
 >
 >
 

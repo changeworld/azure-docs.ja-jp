@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
-description: "Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
+title: Azure Mobile Apps 向け Apache Cordova プラグインの使用方法
+description: Azure Mobile Apps 向け Apache Cordova プラグインの使用方法
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: f166d2e533dc49ca7779b45f3dec57a53c22fc40
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32152588"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -92,7 +93,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 ローカル設定を構成に追加するには、以下の手順に従います。
 
-1. [Azure ポータル]
+1. [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. **[ツール]**
 4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、**[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
@@ -112,9 +113,9 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 この時点で設定が保存されます。  設定の保存が完了するまで、ブラウザー ウィンドウを閉じないでください。
 また、App Service の CORS 設定に、これらのループバック URL を追加します。
 
-1. [Azure ポータル]
+1. [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
-3. [設定] ブレードが自動的に開きます。  開かない場合は、 **[すべての設定]**をクリックします。
+3. [設定] ブレードが自動的に開きます。  開かない場合は、 **[すべての設定]** をクリックします。
 4. API メニューの **[CORS]** をクリックします。
 5. 表示されたボックスに追加する URL を入力して、Enter キーを押します。
 6. 必要に応じて、さらに URL を入力します。
@@ -169,7 +170,7 @@ pushHandler.on('error', function (error) {
 API の詳細については、[API に関するドキュメント](http://azure.github.io/azure-mobile-apps-js-client/)を参照してください。
 
 <!-- URLs. -->
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
@@ -180,4 +181,4 @@ API の詳細については、[API に関するドキュメント](http://azure
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

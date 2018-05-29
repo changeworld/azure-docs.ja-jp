@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32160057"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -42,7 +43,7 @@ ms.lasthandoff: 03/08/2018
 | cn |○ | |
 | displayName |○ | |
 | objectSID |○ |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
-| pwdLastSet |○ |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
+| pwdLastSet |○ |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | sourceAnchor |○ |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |○ |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |○ |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
@@ -234,7 +235,7 @@ ms.lasthandoff: 03/08/2018
 | postOfficeBox |○ |○ | |この属性は現在、SharePoint Online では使用されていません。 |
 | preferredLanguage |○ | | | |
 | proxyAddresses |○ |○ |○ | |
-| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
+| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | reportToOriginator | | |○ | |
 | reportToOwner | | |○ | |
 | securityEnabled | | |○ |groupType から派生 |
@@ -289,7 +290,7 @@ ms.lasthandoff: 03/08/2018
 | postalCode |○ |○ | | |
 | preferredLanguage |○ | | | |
 | proxyAddresses |○ |○ |○ | |
-| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
+| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | securityEnabled | | |○ |groupType から派生 |
 | sn |○ |○ | | |
 | sourceAnchor |○ |○ |○ |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
@@ -331,7 +332,7 @@ ms.lasthandoff: 03/08/2018
 | member | | |○ | |
 | objectSID |○ | |○ |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
 | proxyAddresses |○ |○ |○ | |
-| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
+| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | securityEnabled | | |○ |groupType から派生 |
 | sourceAnchor |○ |○ |○ |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |○ | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
@@ -359,7 +360,7 @@ ms.lasthandoff: 03/08/2018
 | physicalDeliveryOfficeName |○ |○ | | |
 | postalCode |○ |○ | | |
 | preferredLanguage |○ | | | |
-| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
+| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | securityEnabled | | |○ |groupType から派生 |
 | sn |○ |○ | | |
 | sourceAnchor |○ |○ |○ |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
@@ -390,7 +391,7 @@ ms.lasthandoff: 03/08/2018
 | member | | |○ | |
 | objectSID |○ | | |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
 | proxyAddresses |○ |○ |○ | |
-| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
+| pwdLastSet |○ | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | sn |○ |○ | | |
 | sourceAnchor |○ |○ |○ |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |○ | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 07d720db85a152f08cfeb278b91cce3b10d73800
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771050"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -102,7 +103,7 @@ ms.lasthandoff: 04/19/2018
 10. コンピューターで実行されている **Data Management Gateway 構成マネージャー**の **[ゲートウェイの登録]** ページで、以下の手順を実行します。
     1. テキストにキーを貼り付けます。
     2. オプションとして、キー文字列を表示する場合は **[Show gateway key (ゲートウェイのキーを表示する)]** をクリックします。
-    3. **[登録]**をクリックします。
+    3. **[登録]** をクリックします。
 
 ### <a name="register-gateway-using-key"></a>キーを使用してゲートウェイを登録する
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>ポータルに論理ゲートウェイをまだ作成していない場合
@@ -276,30 +277,30 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 
 [シングル ノード ゲートウェイ]
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript フォルダーに切り替えます。
+2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off
     ```
 4. オンに戻すには、次のコマンドを実行します。
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on  
+    .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
 [高可用性とスケーラビリティを備えたマルチノード ゲートウェイ (プレビュー)](data-factory-data-management-gateway-high-availability-scalability.md)
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript フォルダーに切り替えます。
+2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
 
     高可用性機能を備えたゲートウェイ (プレビュー) については、別途 AuthKey パラメーターが必要となります。
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
 4. オンに戻すには、次のコマンドを実行します。
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
     ```
 
 ## <a name="configuration-manager"></a>構成マネージャー

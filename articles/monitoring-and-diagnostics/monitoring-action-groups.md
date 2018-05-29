@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: dukek
-ms.openlocfilehash: a1f163acea4e1965ab90b32e23e502b13f8908be
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32170378"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -93,7 +94,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 <dt>webhook</dt>
 <dd>アクション グループには、最大 10 個の webhook アクションがあります。
-<dd>再試行ロジック - HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合、webhook の呼び出しが最大 2 回再試行されます。 1 回目の再試行は 10 秒後に実行されます。 2 回目となる最後の再試行は 100 秒後に実行されます。</dd>
+<dd>再試行ロジック - 応答のタイムアウト期間は 10 秒です。 HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合、webhook の呼び出しが最大 2 回再試行されます。 1 回目の再試行は 10 秒後に実行されます。 2 回目となる最後の再試行は 100 秒後に実行されます。</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>アクション グループの管理 ##

@@ -14,17 +14,18 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/14/2018
 ms.author: parakhj
-ms.openlocfilehash: cff5c1eed374683ad3e2c1f1a69f6f172f36c536
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d5e5ab1262a9d33fcf34cce91113f39c8c8936f4
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200520"
 ---
 # <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して、Azure Active Directory (Azure AD) の共通エンドポイントによってユーザーのサインインを有効にする方法について説明します。
+この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して、Azure Active Directory (Azure AD) のマルチテナント エンドポイントによってユーザーのサインインを有効にする方法について説明します。 これにより、複数の Azure AD テナントのユーザーが、テナントごとにテクニカル プロバイダーを構成せずに Azure AD B2C にサインインできるようになります。 ただし、これらのテナントのいずれのゲスト メンバーもサインインは**できません**。 このためには、[各テナントを個別に構成](active-directory-b2c-setup-aad-custom.md)する必要があります。
 
 >[!NOTE]
 > 以下の手順では、組織の Azure AD テナントには "Contoso.com"を使用して、Azure AD B2C テナントとして "fabrikamb2c.onmicrosoft.com" を使用します。
@@ -36,25 +37,22 @@ ms.lasthandoff: 04/18/2018
 その手順は次のとおりです。
      
 1. Azure Active Directory B2C (Azure AD B2C) テナントの作成。
-2. Azure AD B2C アプリケーションの作成。    
-3. 2 つのポリシー エンジン アプリケーションの登録。  
-4. キーのセットアップ。 
-5. スターター パックのセットアップ。
+1. Azure AD B2C アプリケーションの作成。    
+1. 2 つのポリシー エンジン アプリケーションの登録。  
+1. キーのセットアップ。 
+1. スターター パックのセットアップ。
 
 ## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>手順 1. マルチテナントの Azure AD アプリを作成する
 
 マルチテナントの Azure AD エンドポイントを使用してユーザーのサインインを有効にするには、いずれかの Azure AD テナントにマルチテナント アプリケーションが登録されている必要があります。 この記事では、Azure AD B2C テナントにマルチテナントの Azure AD アプリケーションを作成する方法を説明します。 その後、そのマルチテナントの Azure AD アプリケーションを使用して、ユーザーのサインインを有効にします。
 
->[!NOTE]
-> Azure AD ユーザー**および Microsoft アカウントのユーザー**がサインインする場合は、このセクションをスキップし、代わりに [Microsoft 開発者ポータル](https://apps.dev.microsoft.com)でアプリケーションを登録してください。
-
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 上部のバーで、自分のアカウントを選択します。 **[ディレクトリ]** の一覧で Azure AD B2C テナントを選択して、Azure AD アプリケーション (fabrikamb2c.onmicrosoft.com) を登録します。
-2. 左側のウィンドウで **[More Services] \(その他のサービス)** をクリックし、[App registrations] \(アプリの登録) を検索します。
-3. **[新しいアプリケーションの登録]** を選択します。
-4. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
-5. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
-6. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c.onmicrosoft.com`) で置き換えられます。
+1. 左側のウィンドウで **[More Services] \(その他のサービス)** をクリックし、[App registrations] \(アプリの登録) を検索します。
+1. **[新しいアプリケーションの登録]** を選択します。
+1. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
+1. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
+1. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c.onmicrosoft.com`) で置き換えられます。
 
     >[!NOTE]
     >**[サインイン URL]** の "yourtenant" の値は、すべて小文字にする必要があります。
@@ -82,8 +80,8 @@ Azure AD B2C 設定で、アプリケーション キーを登録する必要が
    * **[名前]** には、Azure AD テナント名に一致する名前 (例: `AADAppSecret`) を選択します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
    * アプリケーション キーを **[シークレット]** ボックスに貼り付けます。
    * **[署名]** を選択します。
-5. **[作成]** を選択します。
-6. キー `B2C_1A_AADAppSecret` を作成したことを確認します。
+1. **[作成]** を選択します。
+1. キー `B2C_1A_AADAppSecret` を作成したことを確認します。
 
 ## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>手順 3. 基本ポリシーでの要求プロバイダーの追加
 
@@ -114,11 +112,12 @@ Azure AD B2C 設定で、アプリケーション キーを登録する必要が
         <Item Key="HttpBinding">POST</Item>
         <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
         
-        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. If you would like only specific tenants to be able to sign in, uncomment the line below and update the GUIDs. -->
-        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item> -->
+        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
+        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
-        <!-- The commented key below specifies that users from any tenant can sign-in. Comment or remove the line below if using the line above. -->
-        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item>
+        <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
+        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+
       </Metadata>
       <CryptographicKeys>
       <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
@@ -150,14 +149,15 @@ Azure AD B2C 設定で、アプリケーション キーを登録する必要が
 1. `<Description>` の値を更新します。
 1. `<Item Key="client_id">` を、Azure AD マルチテナント アプリ登録のアプリケーション ID に設定します。
 
-### <a name="step-31-optional-restrict-access-to-specific-list-of-azure-ad-tenants"></a>手順 3.1 [省略可能] Azure AD テナントの特定の一覧へのアクセスを制限する
+### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>手順 3.1 Azure AD テナントの特定の一覧へのアクセスを制限する
+
+> [!NOTE]
+> **ValidTokenIssuerPrefixes** の値として `https://sts.windows.net` を使用すると、すべての Azure AD ユーザーがアプリにサインインできるようになります。
+
 有効なトークン発行者の一覧を更新し、ユーザーがサインインできる Azure AD テナントの特定の一覧へのアクセスを制限したい場合があります。 値を取得するには、サインインするユーザーの特定の Azure AD テナントごとのメタデータを調べる必要があります。 データの形式は、`https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration` のようになります。ここで、`yourAzureADtenant` は Azure AD テナント (contoso.com またはその他の Azure AD テナント) の名前です。
 1. ブラウザーを開き、メタデータ URL に移動します。
 1. ブラウザーで '発行者' オブジェクトを検索し、その値をコピーします。 値は `https://sts.windows.net/{tenantId}/` のようになります。
 1. `ValidTokenIssuerPrefixes` キーの値を貼り付けます。 コンマで区切って複数の値を追加することもできます。 その例は、上のサンプル XML でコメントされています。
-
-> [!NOTE]
-> プレフィックス値として `https://sts.windows.net` を使用すると、すべての Azure AD ユーザーがアプリにサインインできるようになります。
 
 ## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>手順 4. Azure AD アカウント クレーム プロバイダーを登録する
 
@@ -212,11 +212,11 @@ Azure AD B2C 設定で、アプリケーション キーを登録する必要が
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>手順 6: ポリシーをテナントにアップロードする
 
 1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、**[Azure AD B2C]** を選択します。
-2. **[Identity Experience Framework]** を選択します。
-3. **[すべてのポリシー]** を選択します。
-4. **[ポリシーのアップロード]** を選択します。
-5. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
-6. `TrustFrameworkExtensions.xml` ファイルと RP ファイル (例: `SignUpOrSignInWithAAD.xml`) をアップロードし、検証に合格したことを確認します。
+1. **[Identity Experience Framework]** を選択します。
+1. **[すべてのポリシー]** を選択します。
+1. **[ポリシーのアップロード]** を選択します。
+1. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+1. `TrustFrameworkExtensions.xml` ファイルと RP ファイル (例: `SignUpOrSignInWithAAD.xml`) をアップロードし、検証に合格したことを確認します。
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>手順 7: [今すぐ実行] を使用してカスタム ポリシーをテストする
 

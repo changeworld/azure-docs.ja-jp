@@ -1,11 +1,11 @@
 ---
-title: "アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティング | Microsoft Docs"
-description: "アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティングを行います。"
+title: アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティング | Microsoft Docs
+description: アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティングを行います。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: harshja
-ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3ba089123198631c443a759ad62cb0ae5ca40ad3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068270"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティング
 
@@ -30,7 +31,7 @@ KCD を有効にするための実際の手順は比較的簡単です。要求�
 
 この記事は以下を前提としています。
 
--   Azure アプリケーション プロキシのデプロイが[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)に従っており、非 KCD アプリケーションへの一般アクセスが正常に動作している。
+-   Azure アプリケーション プロキシのデプロイが[ドキュメント](manage-apps/application-proxy-enable.md)に従っており、非 KCD アプリケーションへの一般アクセスが正常に動作している。
 
 -   公開されているターゲット アプリケーションが IIS と Microsoft による Kerberos の実装に基づいている。
 
@@ -42,7 +43,7 @@ KCD を有効にするための実際の手順は比較的簡単です。要求�
 
 Azure アプリケーション プロキシは多くの種類のインフラストラクチャや環境にデプロイできるので、当然そのアーキテクチャは組織によって異なります。 KCD に関連した問題で最も一般的な原因の 1 つは、環境そのものではなく、単純な構成の間違いやうっかりミスです。
 
-このような理由から、トラブルシューティングを開始する前に必ず、[アプリケーション プロキシでの KCD SSO の使用に関する記事](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)に記載されている前提条件をすべて満たしていることを確認してください。
+このような理由から、トラブルシューティングを開始する前に必ず、[アプリケーション プロキシでの KCD SSO の使用に関する記事](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)に記載されている前提条件をすべて満たしていることを確認してください。
 
 Windows Server 2012 R2 における KCD の構成に関するセクションは特に重要です。KCD の構成に関して、以前のバージョンの Windows とは根本的に異なるアプローチが採用されているためです。その他、次の事柄についても十分考慮するようにしてください。
 
@@ -70,11 +71,11 @@ KCD の問題にはどのようなものがあるのでしょうか。 問題の
 
 トラブルシューティングの方法は、問題と実際の症状によって異なります。 先に進む前に、以下のリンク先を参照してください。まだご覧になっていない役立つ情報があるかもしれません。
 
--   [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+-   [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](active-directory-application-proxy-troubleshoot.md)
 
--   [Kerberos のエラーと症状](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#kerberos-errors)
+-   [Kerberos のエラーと症状](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
 
--   [オンプレミス ID とクラウド ID が同一でない場合の SSO の操作](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd#working-with-sso-when-on-premises-and-cloud-identities-are-not-identical)
+-   [オンプレミス ID とクラウド ID が同一でない場合の SSO の操作](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
 ここまできたら主な問題は間違いなく存在します。 トラブルシューティングしやすいよう、フローを 3 つの段階に分けましょう。
 
@@ -98,7 +99,7 @@ KCD SSO が正しく機能するためには、Azure に対する事前認証の
 
 -   内部 DNS では、アプリケーションのアドレスに CName ではなく A レコードを使用します。
 
--   指定されたターゲット アカウントの SPN を対象とした委任の権限がコネクタ ホストに付与されていること、また **[任意の認証プロトコルを使う]** が選択されていることをもう一度確認します。 このトピックの詳細については、[SSO 構成に関する記事](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)を参照してください。
+-   指定されたターゲット アカウントの SPN を対象とした委任の権限がコネクタ ホストに付与されていること、また **[任意の認証プロトコルを使う]** が選択されていることをもう一度確認します。 このトピックの詳細については、[SSO 構成に関する記事](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
 
 -   該当する SPN のインスタンスが AD に 1 つしか存在しないことを確認します。ドメイン メンバーとなっている任意のホストのコマンド プロンプトから `setspn -x` を実行してください。
 
@@ -179,4 +180,4 @@ Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'N
 -   ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。
 
 ## <a name="next-steps"></a>次の手順
-[管理対象ドメインで Kerberos の制約付き委任 (KCD) を構成する](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
+[管理対象ドメインで Kerberos の制約付き委任 (KCD) を構成する](../active-directory-domain-services/active-directory-ds-enable-kcd.md)

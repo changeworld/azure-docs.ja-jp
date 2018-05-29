@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: b3ecddbfdc37bc58294dff41b62e0505b90ca940
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a40971e373a6e2fe6324e06816112e2025506ba8
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057980"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -36,7 +37,7 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
-[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01
 [Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02、2017-08-01
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01
@@ -51,7 +52,7 @@ Instance Metadata Service を試すには、上記のリージョンで [Azure R
 インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2017-12-01` です。 現在サポートされているバージョンは (2017-04-02、2017-08-01、2017-12-01) です。
 
 > [!NOTE] 
-> スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後廃止される予定です。
+> スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後非推奨となる予定です。
 
 新しいバージョンが追加されても、特定のデータ形式への依存関係がスクリプトにある場合、互換性を確保するために古いバージョンにもアクセスできます。 ただし、サービスが一般公開されると、以前のプレビュー バージョン (2017-03-01) は使用できなくなる可能性があります。
 
@@ -307,6 +308,7 @@ subnet/prefix | サブネットのプレフィックス (24 など) | 2017-04-02
 ipv6/ipAddress | VM のローカル IPv6 アドレス | 2017-04-02 
 macAddress | VM の mac アドレス | 2017-04-02 
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
+ID | (プレビュー) マネージド サービス ID。 「[アクセス トークンの取得](../../active-directory/managed-service-identity/how-to-use-vm-token.md)」を参照してください | 2018-02-01
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
 
@@ -392,6 +394,7 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
+Puppet | https://github.com/keirans/azuremetadata
     
 
 ## <a name="faq"></a>FAQ

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940189"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -78,7 +79,7 @@ ms.lasthandoff: 03/29/2018
 
         2. **[プライベート IP アドレス]** の **[割り当て]** 設定で **[静的]** を選択します。
 
-        3. **[OK]**を選択します。
+        3. **[OK]** を選択します。
 
 セカンダリ NIC の 2 つ目の IP 構成が完了すると、該当する NIC の **[IP 構成]** 設定に表示されます。
 
@@ -112,7 +113,7 @@ ms.lasthandoff: 03/29/2018
 
     3. **[場所]** で VM と同じ場所を選択します。
 
-    4. **[OK]**を選択します。
+    4. **[OK]** を選択します。
 
     パブリック IP アドレスが作成されると、 **[パブリック IP アドレス]** に表示されます。
 
@@ -120,7 +121,7 @@ ms.lasthandoff: 03/29/2018
 
 4. フロントエンド IP プールを追加するロード バランサー (**mylb**) を選択します。
 
-5. **[設定]** で、**[Frontend Pools (フロントエンド プール)]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。
+5. **[設定]** で、**[フロントエンド IP の構成]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。
 
 6. フロントエンド IP アドレスの名前 (たとえば、**contosofe** または **fabrikamfe**) を入力します。
 
@@ -128,7 +129,7 @@ ms.lasthandoff: 03/29/2018
 
 8. 2 つ目のフロントエンド IP アドレスを作成するには、このセクションの<a href="#step3-3">手順 3</a> ～ <a href="#step3-7">7</a> を繰り返します。
 
-フロントエンド プールの構成が完了すると、IP アドレスがロード バランサーの **[フロントエンド IP プール]** 設定に表示されます。 
+フロントエンド プールの構成が完了すると、IP アドレスがロード バランサーの **[フロントエンド IP の構成]** 設定に表示されます。 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>手順 4: バックエンド プールを構成する
 
@@ -152,7 +153,7 @@ ms.lasthandoff: 03/29/2018
 
     2. **[Network IP configuration (ネットワーク IP 構成)]** で、前の手順で選択した VM のセカンダリ NIC の IP 構成 (たとえば、**VM1NIC2-ipconfig2** や **VM2NIC2-ipconfig2**) を選択します。
 
-7. **[OK]**を選択します。
+7. **[OK]** を選択します。
 
 バックエンド プールの構成が完了すると、アドレスがロード バランサーの **[バックエンド プール]** 設定に表示されます。
 
@@ -166,7 +167,7 @@ ms.lasthandoff: 03/29/2018
 
 3. **[設定]** で、**[正常性プローブ]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
 
-4. 正常性プローブの名前 (たとえば、**HTTP**) を入力します。 **[OK]**を選択します。
+4. 正常性プローブの名前 (たとえば、**HTTP**) を入力します。 **[OK]** を選択します。
 
 ### <a name="step-6-configure-load-balancing-rules"></a>手順 6: 負荷分散規則を構成する
 

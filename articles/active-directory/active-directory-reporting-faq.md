@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory レポートに関する FAQ | Microsoft Docs"
-description: "Azure Active Directory レポートに関する FAQ。"
+title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
+description: Azure Active Directory レポートに関する FAQ。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
@@ -11,20 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a39183e65306ddc7cb81825b7abf27677339a3ba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5fa52099f5cf55b78fd2fea407c34f29237939d3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067012"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
 
 この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」をご覧ください。 
 
-**Q: https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用して、プログラムによって、レポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
+**Q: https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用して、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 
 **A:** [API リファレンス ドキュメント](https://developer.microsoft.com/graph/)を参照して、新しい API を使用して[アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)にアクセスする方法をご確認ください。 このエンドポイントには 2 つのレポート (監査とサインイン) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 
 **Q: Azure Portal でのアクティビティ ログ (監査およびサインイン) のデータ保持期間はどのぐらいですか。** 
 
-**A:** 無料でご利用のお客様は 7 日間です。Azure AD Premium 1 または Premium 2 ライセンスを購入されると、データに最大で 30 日間アクセスできます。 レポートの保持の詳細については、「[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)」をご覧ください。
+**A:** この質問の回答については、「[収集されたデータはどのくらい保存されるのか](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored)」を参照してください。
 
 --- 
 
@@ -124,6 +125,6 @@ ms.lasthandoff: 12/11/2017
 
 **Q: リスク イベント "追加のリスクが検出されたサインイン" は何を意味していますか。**
 
-**A:** 環境内のすべての危険なサインインについて知らせるために、Azure AD Identity Protection サブスクライバー以外が検出されて危険だと見なされたサインインに対して、リスク イベント "追加のリスクが検出されたサインイン" が表示されます。
+**A:** 環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバーに限定される検出でサインインに対するプレースホルダーとして機能します。
 
 ---

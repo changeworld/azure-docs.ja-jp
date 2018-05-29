@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33775232"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -218,11 +219,12 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 
 ## <a name="limitations"></a>制限事項
 
-- 現時点では、Load Balancer のバックエンド インスタンスをピアリングされた仮想ネットワークに配置することはできません。 バックエンド インスタンスはすべて同じリージョンに存在する必要があります。
 - SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
 - スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。
-- [Azure Monitor アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)は、現時点ではサポートされていません。
+- Load Balancer の規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとその関連するバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
+- Load Balancer のフロントエンドには、グローバルな仮想ネットワークのピアリングを通じてアクセスすることはできません。
 - [サブスクリプションの移動操作](../azure-resource-manager/resource-group-move-resources.md)は、Standard SKU LB および PIP リソースではサポートされていません。
+- VNet およびその他の Microsoft プラットフォーム サービスなしの Web Worker ロールにアクセスできるのは、プリ VNet サービスおよびその他のプラットフォーム サービスの動作の副作用により、内部の Standard Load Balancer が使用される場合のみです。 各サービス自体または基になるプラットフォームは予告なく変更される場合があるため、これに依存しないでください。 内部の Standard Load Balancer のみを使用する場合は、必要に応じて、[送信接続](load-balancer-outbound-connections.md)を明示的に作成する必要があることを常に想定する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

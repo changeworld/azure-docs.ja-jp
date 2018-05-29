@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 424186a0acfe17cd7cb96f3ba7f8201e8b2b38ec
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200350"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: 組み込みのポリシー
 
@@ -81,6 +82,10 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 ## <a name="create-a-password-reset-policy"></a>パスワードのリセット ポリシーを作成する
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
+
+## <a name="preview-policies"></a>ポリシーをプレビューする
+
+新機能がリリースされると、これらのいくつかは、既存のポリシーからなくなる場合があります。  これらのポリシーが GA になったら、古いバージョンは同種の最新のものに置き換えられる計画です。  既存のポリシーには変更はなく、これらの新機能を利用するには、新しいポリシーを作成する必要があります。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 168301bbd0e7a59330ee6c87d1821db3fca39f67
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770623"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの条件 
 
@@ -38,24 +39,32 @@ ms.lasthandoff: 04/23/2018
 
 ![コントロール](./media/active-directory-conditional-access-conditions/61.png)
 
-この記事では、条件の概要と、条件付きアクセス ポリシーでの使用方法について説明します。 
 
+条件付きアクセス ポリシーで構成していない条件は適用されません。 一部の条件は、条件付きアクセス ポリシーを環境に適用するために[必須](active-directory-conditional-access-best-practices.md#whats-required-to-make-a-policy-work)です。 
+
+この記事では、条件の概要と、条件付きアクセス ポリシーでの使用方法について説明します。 
 
 ## <a name="users-and-groups"></a>[概要]
 
 ユーザーとグループの条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、**[すべてのユーザー]** を選択するか、特定のユーザーとグループを選択することができます。
 
-![コントロール](./media/active-directory-conditional-access-conditions/02.png)
+![コントロール](./media/active-directory-conditional-access-conditions/111.png)
 
 選択できるオプションは次のとおりです。
 
 - **すべてのユーザー**: ディレクトリ内のすべてのユーザーにポリシーを適用します。 これには、ゲスト ユーザーも含まれます。
 
-- **ユーザーとグループの選択**: 特定のユーザーのセットをターゲットにすることができます。 たとえば、人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 
+- **ユーザーとグループの選択**: 次のオプションを設定できます。
 
-- グループ: Azure Active Directory 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。
+    - **すべてのゲスト ユーザー**: ポリシーのターゲットを B2B ゲスト ユーザーに設定することができます。 この条件は、*userType* 属性が *guest* に設定されている任意のユーザー アカウントと一致します。 この設定は、Azure AD の招待フローでアカウントが作成されたときにすぐにポリシーを適用する必要がある場合に使用できます。
 
-ポリシーから特定のユーザーまたはグループを除外することもできます。 一般的なユース ケースとして、サービス アカウントに対してポリシーで多要素認証を強制的に適用する例が挙げられます。 
+    - **ディレクトリ ロール**: ユーザーのロールの割り当てに基づいてポリシーのターゲットを設定できます。 この条件は、*グローバル管理者*または*パスワード管理者*などのディレクトリ ロールをサポートします。
+
+    - **ユーザーとグループ**: 特定のユーザー セットのターゲットを設定することができます。 たとえば、人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。
+
+グループ: Azure Active Directory 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。
+
+ポリシーから特定のユーザーまたはグループを除外することもできます。 一般的なユース ケースとして、サービス アカウントに対してポリシーで多要素認証 (MFA) を強制的に適用する例が挙げられます。 
 
 新しいポリシーをデプロイする際は、特定のユーザーのセットをターゲットにすると役立ちます。 新しいポリシーでは、初期のユーザー セットのみをターゲットにして、ポリシーの動作を検証することをお勧めします。 
 
@@ -104,7 +113,18 @@ ms.lasthandoff: 04/23/2018
 サポートされているデバイス プラットフォームの一覧については、「[デバイス プラットフォームの条件](active-directory-conditional-access-technical-reference.md#device-platform-condition)」をご覧ください。
 
 
-この条件の一般的なユース ケースとしては、クラウド アプリへのアクセスを[信頼済みデバイス](active-directory-conditional-access-policy-connected-applications.md#trusted-devices)のみに制限するポリシーが挙げられます。 デバイス プラットフォームの条件を使用するその他のシナリオについては、「[Azure Active Directory のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)」をご覧ください。
+この条件の一般的なユース ケースとしては、クラウド アプリへのアクセスを[マネージド デバイス](active-directory-conditional-access-policy-connected-applications.md#managed-devices)のみに制限するポリシーが挙げられます。 デバイス プラットフォームの条件を使用するその他のシナリオについては、「[Azure Active Directory のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)」をご覧ください。
+
+
+
+## <a name="device-state"></a>デバイスの状態
+
+デバイスの状態の条件で、Hybrid Azure AD の参加を許可し、準拠とマークされたデバイスを条件付きアクセス ポリシーから除外することができます。 この処理は、追加のセッション セキュリティを提供するために、アンマネージド デバイスにのみポリシーを適用する必要がある場合に便利です。 たとえば、アンマネージド デバイスの場合にのみ、Microsoft Cloud App Security のセッション制御を実施します。 
+
+
+![条件](./media/active-directory-conditional-access-conditions/112.png)
+
+アンマネージド デバイスのアクセスをブロックする場合は、[デバイスベースの条件付きアクセス](active-directory-conditional-access-policy-connected-applications.md)を実装することをお勧めします。
 
 
 ## <a name="locations"></a>場所

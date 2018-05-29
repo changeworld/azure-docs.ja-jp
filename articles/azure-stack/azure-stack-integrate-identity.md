@@ -6,15 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770521"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -60,6 +61,8 @@ Graph の構成には、既存の Active Directory に対する読み取りア�
 
 ## <a name="setting-up-graph-integration"></a>Graph の統合を設定する
 
+Graph は、単一の Active Directory フォレストとの統合のみをサポートしています。 複数のフォレストが存在する場合、ユーザーとグループのフェッチには、構成で指定されたフォレストのみが使用されます。
+
 自動化パラメーターの入力として、次の情報が必要です。
 
 
@@ -95,12 +98,14 @@ Graph の構成には、既存の Active Directory に対する読み取りア�
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   メッセージが表示されたら、Graph サービスに使用するユーザー アカウントの資格情報を指定します (graphservice など)。
+   メッセージが表示されたら、Graph サービスに使用するユーザー アカウントの資格情報を指定します (graphservice など)。 Register-DirectoryService コマンドレットには、フォレスト内の他のドメインではなく、フォレスト内のフォレスト名/ルート ドメインを入力する必要があります。
 
    > [!IMPORTANT]
    > 資格情報のポップアップ (Get-Credential は特権エンドポイントではサポートされていません)が表示されるのを待ち、Graph のサービス アカウントの資格情報を入力します。
 
 #### <a name="graph-protocols-and-ports"></a>Graph のプロトコルとポート
+
+Azure Stack の Graph サービスは、次のプロトコルとポートを使用して、書き込み可能なグローバル カタログ サーバー (GC) とキー配布センター (KDC) と通信し、ターゲット Active Directory フォレストのログイン要求を処理できます。
 
 Azure Stack の Graph サービスは、次のプロトコルとポートを使用して、対象の Active Directory と通信します。
 

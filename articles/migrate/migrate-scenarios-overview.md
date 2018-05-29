@@ -4,15 +4,15 @@ description: オンプレミスのデータ センターを Azure に移行す�
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 04/08/2018
+ms.topic: conceptual
+ms.date: 04/21/2018
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: be322596da0c3e5ba18aa64285c437cdb823fc4b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8ba490998ea5f20efca591327716a6e39e9c1ba8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32167757"
 ---
 # <a name="migrating-your-on-premises-workloads-to-azure"></a>オンプレミス ワークロードの Azure への移行
 
@@ -27,11 +27,11 @@ Microsoft Azure では、クラウド サービスの包括的なセットを利
 
 **シナリオ** | **ソリューション** | **サービス** | **記事** 
 --- | --- | --- | ---
-[シナリオ 1: 検出と評価](migrate-scenarios-assessment.md) | Azure に移行するために、オンプレミスのアプリとデータを検出して評価します | Data Migration Assistant、Azure Migrate サービス  | 現在利用可能
-**シナリオ 2: リフト アンド シフト方式による移行** | Azure で内部アプリを再ホストします。 移行後、Azure で最適化を行います。 | Azure Site Recovery、Azure Database Migration Service、Azure SQL のマネージド インスタンス | 現在利用可能
-**シナリオ 3: リファクターと移行** | Azure への移行中に、オンプレミスのカスタマー アプリを最新化およびリファクターします。 | 計画中 | 対応予定
-**シナリオ 4: 再設計と移行** | Azure への移行中に、顧客のトランザクション Web サイトを再設計および移行します。 | 計画中 | 対応予定
-**シナリオ 5: 再構築** |顧客アプリとデータを再構築し、Azure に移行します。 | 計画中 | 対応予定
+[シナリオ 1: 検出と評価](migrate-scenarios-assessment.md) | Azure に移行するためにオンプレミスのアプリ、データ、インフラストラクチャを検出します。 | Data Migration Assistant、Azure Migrate サービス  | 現在利用可能
+**[シナリオ 2: 再ホスト アプリ](migrate-scenarios-lift-and-shift.md)** | アプリを Azureにリフトアンドシフトします。 | Azure Site Recovery、Azure Database Migration Service、Azure SQL のマネージド インスタンス | 現在利用可能
+**シナリオ 3: アプリのリファクタリング** | Azure への移行中にアプリをリファクタリングします。 | 計画中 | 対応予定
+**シナリオ 4: アプリの再設計** | Azure への移行中にアプリを再設計します。 | 計画中 | 対応予定
+**シナリオ 5: アプリの再構築** |Azure への移行中にアプリを再構築します。 | 計画中 | 対応予定
 
 
 

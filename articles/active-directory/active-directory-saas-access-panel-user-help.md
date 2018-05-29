@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33931266"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>マイ アプリ ポータルのアクセスと使用に関する問題のトラブルシューティング
 
@@ -55,9 +56,9 @@ ms.lasthandoff: 01/29/2018
 - **Edge**: Windows 10 Anniversary Edition 以降。
 - **Chrome**: Windows 7 以降、Mac OS X 以降。
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
-- **Internet Explorer 8、9、10、11**: Windows 7 以降 (制限付きサポート)。
+- **Internet Explorer 11**: Windows 7 以降 (制限付きサポート)。
 
-次のサイトから直接 Chrome と Edge 対応の拡張機能をダウンロードすることもできます。
+次のサイトから Chrome と Edge 対応の拡張機能を直接ダウンロードすることもできます。
 
 - [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84)
@@ -88,7 +89,7 @@ ms.lasthandoff: 01/29/2018
    1. 拡張機能のインストール後、**[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
    2. 拡張機能のアイコンを選択して、そのメニューを開きます。
    3. マイ アプリ ポータルで使用可能なアプリを検索します。
-   4. 検索結果リストで、アプリを選択します。  
+   4. 検索結果の一覧で、アプリを選択します。  
        最後に使用した 3 つのアプリが **[最近の使用]** ショートカットの一覧に表示されます。
 
 > [!NOTE]

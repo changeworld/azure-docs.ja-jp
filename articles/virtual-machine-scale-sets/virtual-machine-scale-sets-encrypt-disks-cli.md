@@ -1,6 +1,6 @@
 ---
-title: Azure 仮想マシン スケール セットでディスクを暗号化する | Microsoft Docs
-description: 仮想マシン スケール セット内の接続されているディスクを暗号化する方法について説明します。
+title: Azure CLI による Azure スケール セットのディスクの暗号化 | Microsoft Docs
+description: Azure CLI 2.0 を使用して、Linux 仮想マシン スケール セットの VM インスタンスと接続されているディスクを暗号化する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: iainfoulds
@@ -13,16 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 04/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 570764ad5d657a8b1efa2425423a89ddc518451c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 22d3c763317def137b4e0beb155f28585d7c6ae1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776416"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セット内の OS および接続されているデータ ディスクを暗号化する
-[Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)は、Azure Disk Encryption (ADE) をサポートしています。  Windows および Linux の仮想マシン スケール セットで Azure Disk Encryption を有効にすると、業界標準の暗号化テクノロジを使用して、保存されているスケール セット データを保護および防御することができます。 詳細については、Windows および Linux 仮想マシン用 Azure Disk Encryption に関するドキュメントを参照してください。
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Azure CLI 2.0 (プレビュー) による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
+
+業界標準の暗号化テクノロジを使用して保存データを保護および防御するために、仮想マシン スケール セットは Azure Disk Encryption (ADE) をサポートしています。 暗号化は､Windows および Linux の仮想マシン スケール セットに対して有効にすることができます。 詳細は、[Windows 用および Linux 用の Azure Disk Encryption](../security/azure-security-disk-encryption.md) に関するページを参照してください。
 
 > [!NOTE]
 >  仮想マシン スケール セット用 Azure Disk Encryption は、現在パブリック プレビュー段階であり、すべての Azure パブリック リージョンで利用できます。
@@ -34,74 +36,150 @@ Azure Disk Encryption は次の場合にサポートされます。
 
 現在のプレビューでは、スケール セット VM の再イメージ操作とアップグレード操作はサポートされていません。 仮想マシンのスケール セット プレビューの Azure Disk Encryption は、テスト環境でのみ推奨されます。 プレビューでは、暗号化スケール セット内の OS イメージをアップグレードする必要のある運用環境でディスクの暗号化を有効にしないでください。
 
-Linux スケール セット データ ディスクの暗号化のエンドツーエンド バッチ ファイルの例については、[こちら](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)を参照してください。  この例では、リソース グループ、Linux スケール セットを作成し、5 GB のデータ ディスクをマウントし、仮想マシン スケール セットを暗号化します。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>前提条件
-暗号化コマンドが含まれる [Azure Powershell](https://github.com/Azure/azure-powershell/releases) または [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の最新バージョンをインストールします。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.31 か それ以降のバージョンを実行していることが要件になります｡ バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
-仮想マシン スケール セット (プレビュー) の Azure Disk Encryption では、次の PowerShell コマンドを使用してサブスクリプションを自己登録する必要があります。 
+## <a name="register-for-disk-encryption-preview"></a>ディスク暗号化プレビューの登録をする
 
-```powershell
-Connect-AzureRmAccount
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+仮想マシン スケール セットのプレビューのための Azure ディスク暗号化では、 [az feature register](/cli/azure/feature#az_feature_register) を使用してサブスクリプションを自己登録する必要があります。 ディスク暗号化のプレビュー機能を初めて利用する場合は､以下の手順を行えばよいだけです｡
+
+```azurecli-interactive
+az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-次のコマンドで 'Registered' 状態が返されるまで約 10 分間待ちます。 
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Mirosoft.Compute* プロバイダーを登録し直します｡
 
-```powershell
-Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
 ```
+
+## <a name="create-a-scale-set"></a>スケール セットを作成する
+
+スケール セットを作成する前に、[az group create](/cli/azure/group#az_group_create) を使ってリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
+```
+
+ここでは、[az vmss create](/cli/azure/vmss#az_vmss_create) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成します。このスケール セットは、変更が適用されると自動的に更新するように設定され、SSH キーが *~/.ssh/id_rsa* に存在しない場合は生成します。 VM インスタンスのそれぞれに 32GB のディスクが接続され､Azure [Custom Script Extension](../virtual-machines/linux/extensions-customscript.md) では､[az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) を使用してデータ ディスクが作成されます｡
+
+```azurecli-interactive
+# Create a scale set with attached data disk
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --data-disk-sizes-gb 32
+
+# Prepare the data disk for use with the Custom Script Extension
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroup \
+  --vmss-name myScaleSet \
+  --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
+```
+
+すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
 
 ## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>ディスクの暗号化を有効にした Azure キー コンテナーを作成する
-スケール セットと同じサブスクリプションとリージョンで新しいキー コンテナーを作成し、'EnabledForDiskEncryption' アクセス ポリシーを設定します。
 
-```azurecli
-rgname="linuxdatadiskencryptiontest"
-VaultName="encryptionvault321"
+Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 暗号化キーは、ソフトウェア保護を使って Azure Key Vault に格納されます。または、FIPS 140-2 レベル 2 標準に認定された Hardware Security Module (HSM) でキーをインポートまたは生成することもできます。 これらの暗号化キーは、VM に接続された仮想ディスクの暗号化/暗号化解除に使われます。 これらの暗号化キーの制御を維持し、その使用を監査することができます。
 
-az keyvault create --name $VaultName --resource-group $rgname --enabled-for-disk-encryption
+一意の *keyvault_name* を定義します｡ [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) を使用して､スケール セットと同じサブスクリプションとリージョンに KeyVault を作成し､*--enabled-for-disk-encryption* アクセス ポリシーを設定します｡
+
+```azurecli-interactive
+# Provide your own unique Key Vault name
+keyvault_name=myuniquekeyvaultname
+
+# Create Key Vault
+az keyvault create --resource-group myResourceGroup --name $keyvault_name --enabled-for-disk-encryption
 ```
 
-または、ディスクの暗号化用のスケール セットと同じサブスクリプションとリージョンで既存のキー コンテナーを有効にします。
+### <a name="use-an-existing-key-vault"></a>既存の Key Vault を使用する
 
-```azurecli
-VaultName="encryptionvault321"
-az keyvault update --name $VaultName --enabled-for-disk-encryption
+この手順は、ディスク暗号化で使用する既存の Key Vault がある場合にのみ必要です。 前のセクションで Key Vault を作成した場合は、この手順をスキップしてください。
+
+一意の *keyvault_name* を定義します｡ [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) を使用して KeyVault を更新し､*--enabled-for-disk-encryption* アクセス ポリシーを設定します｡
+
+```azurecli-interactive
+# Provide your own unique Key Vault name
+keyvault_name=myuniquekeyvaultname
+
+# Create Key Vault
+az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 ```
 
 ## <a name="enable-encryption"></a>暗号化を有効にする
 
-次のコマンドは、同じリソース グループのキー コンテナーを使用して、実行中のスケール セット内のデータ ディスクを暗号化します。 また、テンプレートを使用して、実行中の [Windows スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)または [Linux スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)内のディスクを暗号化することもできます。
+スケールセット内の VM インスタンスを暗号化するには、まず [az keyvault show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show) を使用して Key Vault のリソース ID に関する一部情報を取得します。 これらの変数は､この後､[az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) を使用した暗号化プロセスの開始に使用されます｡
 
-```azurecli
-ResourceGroup="linuxdatadiskencryptiontest"
-VmssName="nt1vm"
-EncryptionKeyVaultUrl="https://encryptionvaultlinuxsf.vault.azure.net"
-VaultResourceId="/subscriptions/0754ecc2-d80d-426a-902c-b83f4cfbdc95/resourceGroups/linuxdatadiskencryptiontest/providers/Microsoft.KeyVault/vaults/encryptionvaultlinuxsf"
+```azurecli-interactive
+# Get the resource ID of the Key Vault
+vaultResourceId=$(az keyvault show --resource-group myResourceGroup --name $keyvault_name --query id -o tsv)
 
-az vmss encryption enable -g $ResourceGroup -n $VmssName --disk-encryption-keyvault $VaultResourceId --volume-type DATA
-az vmss update-instances -g $ResourceGroup -n $VmssName --instance-ids *
+# Enable encryption of the data disks in a scale set
+az vmss encryption enable \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --disk-encryption-keyvault $vaultResourceId \
+    --volume-type DATA
 ```
+
+暗号化プロセスを開始するのに 1~2 分ほどかかります｡
+
+前の手順で作成したスケールセットのアップグレード ポリシーが *automatic* に設定されているため､各 VM インスタンスは自動的に暗号化プロセスを開始します｡ アップグレード ポリシーが manual に設定されているスケール セットでは､[az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) を使用して手動で 各 VM インスタンスに対して暗号化プロセスを開始します｡
 
 ## <a name="check-encryption-progress"></a>暗号化の進行状況を確認する
 
-スケール セットの暗号化の状態を表示するには、次のコマンドを使用します。
+ディスク暗号化の進行状況を確認するには､[az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show) を使用します｡
 
-```azurecli
-ResourceGroup="linuxdatadiskencryptiontest"
-VmssName="nt1vm"
+```azurecli-interactive
+az vmss encryption show --resource-group myResourceGroup --name myScaleSet
+```
 
-az vmss encryption show -g $ResourceGroup -n $VmssName
+VM インスタンスが暗号化されていると､以下の出力例に見られるようにステータスコード *EncryptionState/encrypted* が報告されます｡
+
+```bash
+[
+  {
+    "disks": [
+      {
+        "encryptionSettings": null,
+        "name": "myScaleSet_myScaleSet_0_disk2_3f39c2019b174218b98b3dfae3424e69",
+        "statuses": [
+          {
+            "additionalProperties": {},
+            "code": "EncryptionState/encrypted",
+            "displayStatus": "Encryption is enabled on disk",
+            "level": "Info",
+            "message": null,
+            "time": null
+          }
+        ]
+      }
+    ],
+    "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualMachines/0",
+    "resourceGroup": "MYRESOURCEGROUP"
+  }
+]
 ```
 
 ## <a name="disable-encryption"></a>暗号化を無効にする
-実行中の仮想マシン スケール セットで暗号化を無効にするには、次のコマンドを使用します。 また、テンプレートを使用して、実行中の [Windows VM スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)または [Linux VM スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)で暗号化を無効にすることもできます。
 
-```azurecli
-ResourceGroup="linuxdatadiskencryptiontest"
-VmssName="nt1vm"
+暗号化された VM インスタンス ディスクを使用しない場合は、次のように [az vmss encryption disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) で暗号化を無効にすることができます。
 
-az vmss encryption disable -g $ResourceGroup -n $VmssName
+```azurecli-interactive
+az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 ```
 
+## <a name="next-steps"></a>次の手順
+
+この記事では、Azure CLI 2.0 を使用して仮想マシン スケール セットを暗号化しました。 [Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) や、[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) または [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) 用のテンプレートを利用することもできます。
+
+Linux スケール セット データ ディスクの暗号化のエンドツーエンド バッチ ファイルの例については、[こちら](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)を参照してください。 この例では、リソース グループ、Linux スケール セットを作成し、5 GB のデータ ディスクをマウントし、仮想マシン スケール セットを暗号化します。

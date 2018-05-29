@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157144"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights for ASP.NET Core
 
@@ -172,7 +173,7 @@ Visual Studio から、**[プロジェクト]** > **[NuGet パッケージの管
 
 1. IIS Express をクリックしてアプリを実行します ![Visual Studio IIS Express アイコンのスクリーンショット](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. **[バージョン情報]** ページ移動して、テスト例外をトリガーします (デバッグ モードで実行している場合は、例外が Application Insights によってピックアップされる前に、Visual Studio で **[続行]**をクリックする必要があります)。
+2. **[バージョン情報]** ページ移動して、テスト例外をトリガーします (デバッグ モードで実行している場合は、例外が Application Insights によってピックアップされる前に、Visual Studio で **[続行]** をクリックする必要があります)。
 
 3. 前述の手順でシミュレートされた PowerShell トランザクション スクリプトを再実行します (場合によっては、スクリプト内のポート番号を調整する必要があります)。
 
@@ -193,7 +194,7 @@ Visual Studio から、**[プロジェクト]** > **[NuGet パッケージの管
 
 Application Insights の製品グループでは、[完全な .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) と .Net Core SDK との間での機能の同等性をできるかぎり達成するべく取り組んできました。 [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) for Application Insights の 2.2.0 リリースでは、機能の差が大幅に解消されています。
 
-両者の相違点とトレードオフについて詳しくは、[.NET と .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server)に関する記事をご覧ください。
+両者の相違点とトレードオフについて詳しくは、[.NET と .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)に関する記事をご覧ください。
 
    | SDK の比較 | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
@@ -203,7 +204,7 @@ Application Insights の製品グループでは、[完全な .NET Framework SDK
    | **SQL 依存関係呼び出し**     | **+** |**-** | **+**|
    | **パフォーマンス カウンター*** | **+** | **-**| **-**|
 
-このコンテキストでの_パフォーマンス カウンター_は、[サーバー側のパフォーマンス カウンター](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) (プロセッサ、メモリ、ディスク使用率など) を参照しています。
+このコンテキストでの_パフォーマンス カウンター_は、[サーバー側のパフォーマンス カウンター](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) (プロセッサ、メモリ、ディスク使用率など) を参照しています。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 [コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)

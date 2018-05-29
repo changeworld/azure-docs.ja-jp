@@ -9,11 +9,12 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194973"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 Azure SQL Database に対する操作は、バッチ処理で行うことによりアプリケーションのパフォーマンスとスケーラビリティを大幅に高めることができます。 その利点をわかりやすく解説するために、SQL Database に対する要求を逐次処理で行った場合とバッチ処理で行った場合とを比較するサンプル テストの結果をこの記事の冒頭でいくつか取り上げます。 その後、Azure アプリケーションでバッチ処理を正しく使用するための手法、シナリオ、考慮事項について説明します。
@@ -32,9 +33,9 @@ SQL Database を使用する利点の一つは、データベースのホスト�
 この記事の冒頭では、SQL Database を使った .NET アプリケーション用のさまざまなバッチ処理手法について検討します。 最後の 2 つのセクションでは、バッチ処理のガイドラインとシナリオを取り上げます。
 
 ## <a name="batching-strategies"></a>バッチ処理の戦略
-### <a name="note-about-timing-results-in-this-topic"></a>このトピックに記載されている時間測定の結果について
+### <a name="note-about-timing-results-in-this-article"></a>この記事に記載されている時間測定の結果について
 > [!NOTE]
-> 結果はベンチマークではなく、**相対的なパフォーマンス**を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストは、V12 未満で計測しました。V12 データベースで新しい[サービス レベル](sql-database-service-tiers.md)を使って計測した場合のスループットとは必ずしも対応しません。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
+> 結果はベンチマークではなく、**相対的なパフォーマンス**を示すことを意図したものです。 計時結果は、10 回以上のテスト ランの平均値に基づいています。 空のテーブルへの挿入操作を計測対象としています。 これらのテストは、V12 未満で計測しました。V12 データベースで新しい [DTU サービス レベル](sql-database-service-tiers-dtu.md)または[仮想コア サービス レベル](sql-database-service-tiers-vcore.md)を使って計測した場合のスループットとは必ずしも対応しません。 それでもバッチ処理手法の相対的なメリットに大きな違いはないと考えられます。
 > 
 > 
 
@@ -209,7 +210,7 @@ ADO.NET におけるトランザクションの詳細については、 [ADO.NET
         }
     }
 
-テーブル値パラメーターよりも一括コピーの方が好ましいケースもいくつかあります。 [テーブル値パラメーター](https://msdn.microsoft.com/library/bb510489.aspx)に関するトピックでテーブル値パラメーターと BULK INSERT 操作の比較表を参照してください。
+テーブル値パラメーターよりも一括コピーの方が好ましいケースもいくつかあります。 [テーブル値パラメーター](https://msdn.microsoft.com/library/bb510489.aspx)に関する記事でテーブル値パラメーターと BULK INSERT 操作の比較表を参照してください。
 
 次の表は、 **SqlBulkCopy** を使ったバッチ処理のパフォーマンスを示すアドホック テストの結果です (単位はミリ秒)。
 
@@ -592,7 +593,7 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 詳細については、MERGE ステートメントのドキュメントと例を参照してください。 INSERT 操作と UPDATE 操作を個別に使用した複数のステップから成るストアド プロシージャで同じ作業を実行することもできますが、MERGE ステートメントの方が効率的です。 直接 MERGE ステートメントを使った Transact-SQL の呼び出しをデータベース コードで作成することもできます。そうすれば、INSERT 用と UPDATE 用の 2 つのデータベース呼び出しは必要ありません。
 
 ## <a name="recommendation-summary"></a>推奨事項のまとめ
-このトピックで説明したバッチ処理の推奨事項は以下のとおりです。
+この記事で説明したバッチ処理の推奨事項は以下のとおりです。
 
 * SQL Database アプリケーションのパフォーマンスとスケーラビリティを高めるには、バッファリングとバッチ処理を使用する。
 * バッチ処理/バッファリングと回復性とのトレードオフを考える。 ロールの障害発生時、業務上重要なデータのバッチが未処理となっているときに、そのデータが一度に失われてしまうリスクの方が、バッチ処理によって得られるパフォーマンスのメリットよりも大きい可能性があります。

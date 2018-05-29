@@ -12,34 +12,80 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: e8e40b763f0c6f1f994535ab2ff335cfcbf02cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011392"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
-GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 このアクティビティは、バージョン 2 の Data Factory でのみサポートされています。 これは、次のシナリオで使用できます。
+GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータの**メタデータ**を取得できます。 このアクティビティは、バージョン 2 の Data Factory でのみサポートされています。 これは、次のシナリオで使用できます。
 
 - 任意のデータのメタデータ情報を検証する
 - データが準備完了/使用可能になったらパイプラインをトリガーする
 
 制御フローでは、次の機能を使用できます。
+
 - GetMetadata アクティビティからの出力を条件式で使用することによって検証を実行できます。
 - Do-Until ループによって条件が満たされたら、パイプラインをトリガーできます。
-
-GetMetadata アクティビティは必須の入力としてデータセットを受け取り、使用可能なメタデータ情報を出力として出力します。 現在は、Azure BLOB データセットのみがサポートされています。 サポートされるメタデータ フィールドは、size、structure、および lastModified 時間です。  
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
+## <a name="supported-capabilities"></a>サポートされる機能
+
+GetMetadata アクティビティは必須の入力としてデータセットを受け取り、使用可能なメタデータ情報をアクティビティ出力として出力します。 現時点では、対応する取得可能なメタデータを持つ次のコネクタがサポートされています。
+
+>[!NOTE]
+>セルフホステッドの Integration Runtime で GetMetadata アクティビティを実行する場合、最新の機能はバージョン 3.6 以降でサポートされます。 
+
+### <a name="supported-connectors"></a>サポートされているコネクタ
+
+**File Storage**
+
+| コネクタ/メタデータ | itemName<br>(ファイル/フォルダー) | itemType<br>(ファイル/フォルダー) | size<br>(ファイル) | created<br>(ファイル/フォルダー) | lastModified<br>(ファイル/フォルダー) |childItems<br>(フォルダー) |contentMD5<br>(ファイル) | structure<br/>(ファイル) | columnCount<br>(ファイル) | exists<br>(ファイル/フォルダー) |
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure BLOB | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
+| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | ○ | √ | √ | √/√ |
+| ファイル システム | √/√ | √/√ | √ | √/√ | √/√ | √ | ○ | √ | √ | √/√ |
+| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
+| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
+
+**リレーショナル データベース**
+
+| コネクタ/メタデータ | structure | columnCount | exists |
+|:--- |:--- |:--- |:--- |
+| Azure SQL Database | √ | √ | √ |
+| Azure SQL Data Warehouse | √ | √ | √ |
+| SQL Server | √ | √ | √ |
+
+### <a name="metadata-options"></a>メタデータのオプション
+
+GetMetadata アクティビティのフィールド リストで、次のメタデータの種類を指定して取得することができます。
+
+| メタデータの種類 | [説明] |
+|:--- |:--- |
+| itemName | ファイルまたはフォルダーの名前です。 |
+| itemType | ファイルまたはフォルダーの種類です。 出力値は `File` または `Folder` です。 |
+| size | ファイルのサイズ (バイト単位) です。 ファイルのみに適用されます。 |
+| created | ファイルまたはフォルダーの作成日時です。 |
+| lastModified | ファイルまたはフォルダーが最後に変更された日時です。 |
+| childItems | 特定のフォルダー内のサブフォルダーとファイルの一覧です。 フォルダーにのみ適用されます。 出力値は、各子項目の名前と種類の一覧です。 |
+| contentMD5 | ファイルの MD5 です。 ファイルのみに適用されます。 |
+| structure | ファイルまたはリレーショナル データベース テーブル内のデータ構造です。 出力値は、列名と列の型の一覧です。 |
+| columnCount | ファイルまたはリレーショナル テーブル内の列の数です。 |
+| exists| ファイル/フォルダー/テーブルが存在するかどうかを示します。 GetaMetadata フィールド リストで "exists" が指定される場合、項目 (ファイル/フォルダー/テーブル) が存在しなくてもアクティビティは失敗せずに、`exists: false` が出力に返されることに注意してください。 |
+
+>[!TIP]
+>ファイル/フォルダー/テーブルが存在するかどうかを検証するには、`exists` を GetMetadata アクティビティのフィールド リストに指定した後、アクティビティの出力で `exists: true/false` を確認することができます。 フィールド リストで `exists` が設定されていない場合、オブジェクトが見つからないと GetMetadata アクティビティは失敗します。
 
 ## <a name="syntax"></a>構文
 
-### <a name="get-metadata-activity-definition"></a>GetMetadata アクティビティの定義:
-次の例では、GetMetadata アクティビティは MyDataset によって表されるデータに関するメタデータを返します。 
+**GetMetadata アクティビティ**
 
 ```json
 {
@@ -54,7 +100,8 @@ GetMetadata アクティビティは必須の入力としてデータセット�
     }
 }
 ```
-### <a name="dataset-definition"></a>データセットの定義:
+
+**Dataset**
 
 ```json
 {
@@ -67,37 +114,74 @@ GetMetadata アクティビティは必須の入力としてデータセット�
         },
         "typeProperties": {
             "folderPath":"container/folder",
-            "Filename": "file.json",
+            "filename": "file.json",
             "format":{
                 "type":"JsonFormat"
-                "nestedSeperator": ","
             }
         }
     }
 }
 ```
 
-### <a name="output"></a>出力
+## <a name="type-properties"></a>型のプロパティ
+
+現在、GetMetadata アクティビティは、次の種類のメタデータ情報をフェッチできます。
+
+プロパティ | [説明] | 必須
+-------- | ----------- | --------
+fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | [はい] 
+dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | [はい]
+
+## <a name="sample-output"></a>サンプル出力
+
+GetMetadata の結果は、アクティビティの出力に表示されます。 以下は、フィールド リストに参照として選択された完全なメタデータ オプションの 2 つの例です。 後続のアクティビティで結果を使用するには、パターン `@{activity('MyGetMetadataActivity').output.itemName}` を使用します。
+
+### <a name="get-a-files-metadata"></a>ファイルのメタデータを取得する
+
 ```json
 {
-    "size": 1024,
-    "structure": [
-        {
-            "name": "id",
-            "type": "Int64"
-        }, 
-    ],
-    "lastModified": "2016-07-12T00:00:00Z"
+  "exists": true,
+  "itemName": "test.csv",
+  "itemType": "File",
+  "size": 104857600,
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "contentMD5": "cMauY+Kz5zDm3eWa9VpoyQ==",
+  "structure": [
+    {
+        "name": "id",
+        "type": "Int64"
+    },
+    {
+        "name": "name",
+        "type": "String"
+    }
+  ],
+  "columnCount": 2
 }
 ```
 
-## <a name="type-properties"></a>型のプロパティ
-現在、GetMetadata アクティビティは、Azure ストレージ データセットから次のタイプのメタデータ情報をフェッチできます。
+### <a name="get-a-folders-metadata"></a>フォルダーのメタデータを取得する
 
-プロパティ | [説明] | 使用できる値 | 必須
--------- | ----------- | -------------- | --------
-fieldList | 必要なメタデータ情報のタイプを一覧表示します。  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    いいえ <br/>空の場合、アクティビティは 3 つのサポートされるすべてのメタデータ情報を返します。 
-dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 <br/><br/>現在サポートされているデータセットのタイプは Azure BLOB です。 2 つのサブプロパティは次のとおりです。 <ul><li><b>referenceName</b>: 既存の Azure BLOB データセットへの参照</li><li><b>type</b>: データセットが参照されているため、そのタイプは "DatasetReference" です</li></ul> |    <ul><li>String</li><li>DatasetReference</li></ul> | [はい]
+```json
+{
+  "exists": true,
+  "itemName": "testFolder",
+  "itemType": "Folder",
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "childItems": [
+    {
+      "name": "test.avro",
+      "type": "File"
+    },
+    {
+      "name": "folder hello",
+      "type": "Folder"
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 

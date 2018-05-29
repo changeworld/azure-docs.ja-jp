@@ -10,11 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 535c16da137b114704aa9a2e97576ced5e9eba44
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187601"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
 Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。 異なる地理的リージョンに復元するには、Geo 冗長バックアップを使用します。 
@@ -55,9 +56,9 @@ order by run_id desc
 > 
 
 ## <a name="geo-backups"></a>geo バックアップ
-SQL Data Warehouse は、1 日に 1 回、[ペアのデータ センター](../best-practices-availability-paired-regions.md)に geo バックアップを実行します。 geo 復元の RPO は 24 時間です。 geo ペア リージョン内のサーバーに geo バックアップを復元できます。 geo バックアップにより、プライマリ リージョンのスナップショットにアクセスできない場合でも、データ ウェアハウスを復元できます。
+SQL Data Warehouse は、1 日に 1 回、[ペアのデータ センター](../best-practices-availability-paired-regions.md)に geo バックアップを実行します。 geo 復元の RPO は 24 時間です。 geo バックアップは、SQL Data Warehouse がサポートされているその他の任意のリージョン内のサーバーに復元することができます。 geo バックアップにより、プライマリ リージョンのスナップショットにアクセスできない場合でも、データ ウェアハウスを復元できます。
 
-geo バックアップは既定で有効です。 データ ウェアハウスが弾力性に合わせて最適化されている場合、必要に応じて[オプトアウト](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy)できます。 コンピューティング パフォーマンス レベルに合わせて最適化されている場合、geo バックアップをオプトアウトすることはできません。
+geo バックアップは既定で有効です。 データ ウェアハウスが Gen1 である場合は、必要に応じて[オプトアウト](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy)することができます。 データ保護は組み込み保証であるため、Gen2 の geo バックアップからオプトアウトすることはできません。
 
 ## <a name="backup-costs"></a>バックアップのコスト
 Azure の課金には、Azure Premium Storage の明細項目と geo 冗長ストレージの明細項目があることがわかります。 Premium Storage の料金は、スナップショットを含む、プライマリ リージョンでのデータの格納コストの合計です。  geo 冗長の料金には、geo バックアップを格納するコストが含まれます。  

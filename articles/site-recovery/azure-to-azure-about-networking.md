@@ -6,20 +6,21 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312629"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
 >[!NOTE]
 > Azure 仮想マシンの Site Recovery レプリケーションは現在プレビューの段階です。
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、リージョン間で Azure VM をレプリケートして復旧するときの、ネットワーク ガイダンスについて説明します。 
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、リージョン間で Azure VM をレプリケートして復旧するときの、ネットワーク ガイダンスについて説明します。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -57,19 +58,18 @@ login.microsoftonline.com | Site Recovery サービス URL に対する承認と
 
 IP ベースのファイアウォール プロキシ、または NSG ルールを使用して送信接続を制御している場合は、次の IP 範囲を許可する必要があります。
 
-- ソースの場所に対応するすべての IP アドレス範囲 
-    - [IP アドレスの範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)をダウンロードできます。
-    - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可する必要があります。
+- ソース リージョンのストレージ アカウントに対応するすべての IP アドレス範囲
+    - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。
+    - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
 - Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲。
     - 今後、新しいアドレスが Office 365 の範囲に追加された場合は、新しい NSG ルールを作成する必要があります。
-- Site Recovery サービス エンドポイントの IP アドレス。 これらは [XML ファイル](https://aka.ms/site-recovery-public-ips)で利用することができ、ターゲットの場所によって異なります。
--  NSG の必要なルールを自動的に作成するには、[こちらのスクリプトをダウンロードして使用](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702)することができます。 
+- Site Recovery サービス エンドポイント IP アドレス - [XML ファイル](https://aka.ms/site-recovery-public-ips)で入手できます。ターゲットの場所によって異なります。
+-  NSG の必要なルールを自動的に作成するには、[こちらのスクリプトをダウンロードして使用](https://aka.ms/nsg-rule-script)することができます。
 - 必要な NSG ルールをテスト NSG に作成し、問題がないことを確認してから、運用環境の NSG にルールを作成することをお勧めします。
-- 必要な数の NSG ルールを作成するには、サブスクリプションがホワイトリストに登録されていることを確認します。 サブスクリプションで NSG ルールの制限値を増やすには、Azure サポートにお問い合わせください。
 
-IP アドレスの範囲は次のとおりです。
 
->
+Site Recovery IP アドレスの範囲は次のとおりです。
+
    **ターゲット** | **Site Recovery IP** |  **Site Recovery 監視 IP**
    --- | --- | ---
    東アジア | 52.175.17.132 | 13.94.47.61
@@ -99,74 +99,66 @@ IP アドレスの範囲は次のとおりです。
    英国北部 | 51.142.209.167 | 13.87.102.68
    韓国中部 | 52.231.28.253 | 52.231.32.85
    韓国南部 | 52.231.298.185 | 52.231.200.144
-   
-   
-  
+   フランス中部 | 52.143.138.106 | 52.143.136.55
+   フランス南部 | 52.136.139.227 |52.136.136.62
+
 
 ## <a name="example-nsg-configuration"></a>NSG 構成の例
 
-この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。 
+この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
 
-- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレスの範囲に対して "HTTPS 送信を許可" ルールを使用します。
+- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して "HTTPS 送信を許可" ルールを使用します。
 - この例では、VM ソースの場所は "米国東部" で、ターゲットの場所は "米国中央部" であると仮定します。
 
 ### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
 
-1. [米国東部 IP アドレスの範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)に対応するルールを作成します。 これは、VM からキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。
-2. Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲に対して、ルールを作成します。
-3. ターゲットの場所に対応するルールを作成します。
+1. 次のスクリーンショットで示すように、NSG 上の "Storage.EastUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
+
+      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+
+2. Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲に対して、送信方向の HTTPS (443) ルールを作成します。
+3. ターゲットの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
    **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
    米国中央部 | 40.69.144.231 | 52.165.34.144
 
-### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中央部 
+### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中央部
 
 フェールオーバー後にターゲット リージョンからソース リージョンへのレプリケーションが有効になるようにするには、次のルールが必要です。
 
-* [米国中部 IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)に対応するルール。 これらは、VM からキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。
+1. NSG 上の "Storage.CentralUS" に対して、送信方向の HTTPS (443) セキュリティ ルールを作成します。
 
-* Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP 範囲に対するルール。
+2. Office 365 [認証と ID IP V4 エンドポイント](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)に対応するすべての IP アドレスの範囲に対して、送信方向の HTTPS (443) ルールを作成します。
 
-* ソースの場所に対応するルール:
-    - 米国東部
-    - Site Recovery IP アドレス: 13.82.88.226
-    - Site Recovery 監視 IP アドレス: 104.45.147.24
+3. ソースの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
+   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
+    --- | --- | ---
+   米国中央部 | 13.82.88.226 | 104.45.147.24
 
-## <a name="expressroutevpn"></a>ExpressRoute/VPN 
+## <a name="network-virtual-appliance-configuration"></a>ネットワーク仮想アプライアンスの構成
 
-オンプレミスと Azure の場所が ExpressRoute または VPN で接続されている場合は、このセクションのガイドラインに従ってください。
+ネットワーク仮想アプライアンス (NVA) を使って VM からの送信方向のネットワーク トラフィックを制御する場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスが調整される可能性があります。 レプリケーション トラフィックが NVA に送られないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することをお勧めします。
+
+### <a name="create-network-service-endpoint-for-storage"></a>ストレージ用のネットワーク サービス エンドポイントを作成する
+レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することができます。
+
+- お使いの Azure 仮想ネットワークを選び、[サービス エンドポイント] をクリックします
+
+    ![storage-endpoint](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+
+- [追加] をクリックして、[サービス エンドポイントの追加] タブを開きます
+- [サービス] で "Microsoft.Storage" を選び、[サブネット] フィールドで必要なサブネットを選んで、[追加] をクリックします
+
+>[!NOTE]
+>仮想ネットワークへのアクセスを、ASR に使用されていストレージ アカウントに制限しないでください。 "すべてのネットワーク" からのアクセスを許可する必要があります
 
 ### <a name="forced-tunneling"></a>強制トンネリング
 
-通常、送信インターネット トラフィックを強制して、オンプレミスの場所を通過する既定のルート (0.0.0.0/0) を定義します。 これはお勧めしません。 レプリケーション トラフィックと Site Recovery サービスの通信は、Azure の境界を離れないようにします。 解決するには、レプリケーション トラフィックがオンプレミスに移動しないように、[こちらの IP 範囲](#outbound-connectivity-for-azure-site-recovery-ip-ranges)のユーザー定義ルート (UDR) を追加します。
-
-### <a name="connectivity"></a>接続 
-
-ターゲットの場所とオンプレミスの場所の間の接続に関する、次のガイドラインに従ってください。
-- アプリケーションがオンプレミスのマシンに接続する必要がある場合、または VPN/ExpressRoute を介してオンプレミスからアプリケーションに接続するクライアントがある場合は、ターゲットの Azure リージョンとオンプレミスのデータセンターの間に少なくとも 1 つの[サイト間接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)があることを確認します。
-
-- ターゲットの Azure リージョンとオンプレミスのデータセンターの間のトラフィック フローが多くなることが予想される場合は、ターゲットの Azure リージョンとオンプレミスのデータセンターの間に別の [ExpressRoute 接続](../expressroute/expressroute-introduction.md)を作成します。
-
-- フェールオーバー後に仮想マシンの IP を保持する必要がある場合は、ターゲット リージョンのサイト間/ExpressRoute 接続を切断状態のままにしてください。 これにより、ソース リージョンの IP 範囲とターゲット リージョンの IP 範囲の間で競合がなくなります。
-
-### <a name="expressroute-configuration"></a>ExpressRoute 構成
-ExpressRoute 構成については、次のベスト プラクティスに従ってください。
-
-- ソース リージョンとターゲット リージョンの両方で、ExpressRoute 回線を作成します。 その後、次の接続を作成します。
-    - ソース仮想ネットワークとオンプレミス ネットワークの間の接続。ソース リージョンの ExpressRoute 回線を経由。
-    - ターゲット仮想ネットワークとオンプレミス ネットワークの間の接続。ターゲット リージョンの ExpressRoute 回線を経由。
-
-
-- ExpressRoute Standard の一部として、同じ地理的リージョンに回線を作成できます。 さまざまな地理的リージョンに ExpressRoute 回線を作成するには、Azure ExpressRoute Premium が必要ですが、これには増分コストが発生します  (既に ExpressRoute Premium を使用している場合、追加コストはありません)。詳細については、[ExpressRoute の場所に関するドキュメント](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
-
-- ソース リージョンとターゲット リージョンでは、異なる IP 範囲を使用することをお勧めします。 ExpressRoute 回線は、同じ IP アドレス範囲の 2 つの Azure 仮想ネットワークに同時に接続することはできません。
-
-- 両方のリージョンに同じ IP 範囲で仮想ネットワークを作成してから、両方のリージョンに ExpressRoute 回線を作成できます。 フェールオーバー イベントの場合は、ソース仮想ネットワークから回線を切断し、ターゲット仮想ネットワークで回線を接続します。
-
- >[!IMPORTANT]
- > プライマリ リージョンが完全にダウンしている場合は、切断操作が失敗することがあります。 この場合、ターゲット仮想ネットワークは、ExpressRoute 接続を取得できません。
+0.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)で上書きし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
-[Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)することで、ワークロードの保護を開始します。
+- [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)することで、ワークロードの保護を開始します。
+- Azure 仮想マシンのフェールオーバーの [IP アドレスの保持](site-recovery-retain-ip-azure-vm-failover.md)について詳しく学習します。
+- [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習します。

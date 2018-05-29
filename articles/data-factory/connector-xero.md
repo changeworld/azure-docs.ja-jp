@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 09a1bfc47cd048e371575f80933f5bfd0116bf8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 131f147e2c445e8cfef12288d4d0d29f6fd7fe01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32167553"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Xero からデータをコピーする
 
@@ -55,7 +56,7 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
 | 型 | type プロパティは **Xero** に設定する必要があります。 | [はい] |
 | host | Xero サーバーのエンドポイント (`api.xero.com`)。  | [はい] |
 | consumerKey | Xero アプリケーションに関連付けられているコンシューマー キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー (「[Create a public/private key pair (公開/秘密キー ペアの作成)](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)」を参照してください)。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー (「[Create a public/private key pair (公開/秘密キー ペアの作成)](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)」を参照してください)。 `openssl genrsa -out privatekey.pem 512` を使用し、numbits に 512 を指定して、**privatekey.pem を生成します。** 1024 はサポートされていません。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |

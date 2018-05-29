@@ -9,11 +9,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5451046eb2bfc611db863d18cee93a248e651f88
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194251"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>SQL Database、マネージ インスタンス、または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
 
@@ -50,7 +51,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
 セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、マネージ インスタンスに Azure AD の読み取りアクセス許可が必要です。 そのためには、マネージ インスタンスに Azure AD の読み取りアクセス許可を付与する必要があります。 これには 2 つの方法があります。ポータルから付与する方法と、PowerShell を使用する方法です。 いずれの場合も、次の手順を実行します。
 
-1. Azure Portal の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 
+1. Azure Portal の右上隅にあるユーザー アイコンを選択すると、Active Directory 候補の一覧がドロップダウンで表示されます。 
 2. 既定の Azure AD として適切な Active Directory を選択します。 
 
    この手順では、Active Directory に関連付けられたサブスクリプションをマネージ インスタンスとリンクすることで、Azure AD とマネージ インスタンスの両方に同じサブスクリプションが使用されるようにします 。
@@ -58,7 +59,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4.  Active Directory 管理ページの上部にあるヘッダーをクリックします。 Azure AD のグローバル/会社の管理者としてログインしていれば、Azure Portal または PowerShell を使用してこれを行うことができます。
+4.  Active Directory 管理ページの上部にあるヘッダーを選択します。 Azure AD のグローバル/会社の管理者としてログインしていれば、Azure Portal または PowerShell を使用してこれを行うことができます。
 
     ![アクセス許可の付与 (ポータル)](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -70,17 +71,17 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     ![成功](./media/sql-database-aad-authentication/success.png)
 
-6.  これで、マネージ インスタンスの Azure AD 管理者を選択できるようになりました。 選択するには、[Active Directory 管理者] ページで **[管理者の設定]** をクリックします。
+6.  これで、マネージ インスタンスの Azure AD 管理者を選択できるようになりました。 選択するには、[Active Directory 管理者] ページで **[管理者の設定]** を選択します。
 
     ![管理者の設定](./media/sql-database-aad-authentication/set-admin.png)
 
-7. [管理者の追加] ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** をクリックします。 
+7. [管理者の追加] ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 
 
    [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません サポートされている管理者の一覧については、「[Azure AD の機能と制限事項](sql-database-aad-authentication.md#azure-ad-features-and-limitations)」をご覧ください。 ロール ベースのアクセス制御 (RBAC) は Azure Portal にのみ適用され、SQL Server には反映されません。
 
     ![管理者の追加](./media/sql-database-aad-authentication/add-admin.png)
 
-8. [Active Directory 管理者] ページの上部にある **[保存]** をクリックします。
+8. [Active Directory 管理者] ページの上部にある **[保存]** を選択します。
 
     ![[保存]](./media/sql-database-aad-authentication/save.png)
 
@@ -90,7 +91,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 > Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想マスター データベースに既に存在していてはいけません。 存在する場合、Azure AD 管理者のセットアップは失敗し、その作成がロールバックされて、そのような管理者 (名前) が既に存在していることが示されます。 そのような SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してサーバーに接続しようとしても失敗します。
 
 > [!TIP]
-> 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** をクリックし、**[保存]** をクリックします。
+> 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、**[保存]** を選択します。
  
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする
 
@@ -103,14 +104,21 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、サブスクリプションに関連付けられている Active Directory を Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします  (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。   
     ![choose-ad][8]   
     
-2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** を選択した後、**[SQL Server]** ページで、**[Active Directory 管理者]** をクリックします。   
-3. **[Active Directory 管理者]** ページで、**[管理者の設定]** をクリックします。   
+2. 左側のバナーで **[すべてのサービス]** を選択し、フィルターに「**SQL Server**」と入力します。 **[SQL Server]** を選択します。 
+
+    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)    
+
+    >[!NOTE]
+    > このページでは、**[SQL Server]** を選択する前に、名前の横にある**星マーク**を選択してそのカテゴリを "*お気に入りに追加*" し、**[SQL Server]** を左側のナビゲーション バーに追加することができます。 
+
+1. **[SQL Server]** ページで、**[Active Directory 管理者]** を選択します。   
+2. **[Active Directory 管理者]** ページで、**[管理者の設定]** を選択します。   
     ![Active Directory を選択する](./media/sql-database-aad-authentication/select-active-directory.png)  
     
-4. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** をクリックします。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](sql-database-aad-authentication.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。   
+4. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](sql-database-aad-authentication.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。   
     ![管理者を選択する](./media/sql-database-aad-authentication/select-admin.png)  
     
-5. **[Active Directory 管理者]** ページの上部にある **[保存]** をクリックします。   
+5. **[Active Directory 管理者]** ページの上部にある **[保存]** を選択します。   
     ![管理者を保存する](./media/sql-database-aad-authentication/save-admin.png)   
 
 管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 **[Active Directory 管理者]** ボックスに新しい管理者が表示されます。
@@ -120,7 +128,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
    > 
 
 
-後で管理者を削除するには、**[Active Directory 管理者]** ページの上部にある **[管理者の削除]** をクリックし、**[保存]** をクリックします。
+後で管理者を削除するには、**[Active Directory 管理者]** ページの上部にある **[管理者の削除]** を選択し、**[保存]** を選択します。
 
 ### <a name="powershell"></a>PowerShell
 PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
@@ -273,7 +281,7 @@ Azure AD ベースの包含データベース ユーザー (データベース�
 1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory - 統合]** を選択します。 接続用の既存の資格情報が表示されるため、パスワードは不要であるか、入力できません。   
 
     ![AD 統合認証を選択する][11]
-2. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。 **[AD ドメインの名前またはテナントの ID]** オプションは **MFA ユニバーサル接続**オプションでのみサポートされており、それ以外の場合はグレーで表示されます。  
+2. **[オプション]** ボタンを選択し、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。 **[AD ドメインの名前またはテナントの ID]** オプションは **MFA ユニバーサル接続**オプションでのみサポートされており、それ以外の場合はグレーで表示されます。  
 
     ![データベース名を選択する][13]
 
@@ -289,7 +297,7 @@ Azure AD のネイティブ ユーザーまたはフェデレーション ユー
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
 
     ![AD パスワード認証を選択する][12]
-4. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。 (前のオプションの図を参照してください)。
+4. **[オプション]** ボタンを選択し、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。 (前のオプションの図を参照してください)。
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>クライアント アプリケーションからの Azure AD の ID を使用した接続
 

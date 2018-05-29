@@ -1,18 +1,19 @@
 ---
-title: "カスタム イメージから Azure Batch プールをプロビジョニングする | Microsoft Docs"
-description: "カスタム イメージから Batch プールを作成して、アプリケーションで必要なソフトウェアとデータを含むコンピューティング ノードをプロビジョニングできます。 カスタム イメージは、Batch ワークロードを実行するコンピューティング ノードを構成するための効率的な方法です。"
+title: カスタム イメージから Azure Batch プールをプロビジョニングする | Microsoft Docs
+description: カスタム イメージから Batch プールを作成して、アプリケーションで必要なソフトウェアとデータを含むコンピューティング ノードをプロビジョニングできます。 カスタム イメージは、Batch ワークロードを実行するコンピューティング ノードを構成するための効率的な方法です。
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158614"
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>マネージ カスタム イメージを使用して仮想マシンのプールを作成する 
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 02/01/2018
 
     
 ## <a name="prepare-a-custom-image"></a>カスタム イメージを準備する
-マネージ イメージの準備は、VHD、マネージ ディスクを備えた Azure VM、または VM スナップショットから行います。 
+マネージ イメージの準備は、VHD、マネージ ディスクを備えた Azure VM、または VM スナップショットから行います。 バッチの場合、管理されるディスクまたは VM のスナップショットを使用して VM からマネージ イメージを作成することをお勧めします。 マネージ イメージと基になるリソースは、スケール アップするプール用に存在する必要があり、プールを削除した後は削除することができます。 
 
 イメージを準備するときには、次の点に注意してください。
 

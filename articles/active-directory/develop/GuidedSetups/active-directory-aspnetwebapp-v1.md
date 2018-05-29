@@ -1,24 +1,25 @@
 ---
-title: "Azure AD v1 の ASP.NET Web サーバーの概要 | Microsoft Docs"
-description: "OpenID 接続を使用して、従来の Web ブラウザー ベースのアプリケーションの ASP.NET ソリューションで Microsoft のサインインを実装します"
+title: Azure AD v1 の ASP.NET Web サーバーの概要 | Microsoft Docs
+description: OpenID 接続を使用して、従来の Web ブラウザー ベースのアプリケーションの ASP.NET ソリューションで Microsoft のサインインを実装します
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2017
+ms.date: 04/09/2018
 ms.author: andret
-ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32156463"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリへの "Microsoft でサインイン" の追加
@@ -250,7 +251,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--start-test-->
 ## <a name="test-your-code"></a>コードのテスト
 
-`F5` を押して、Visual Studio でプロジェクトを実行します。 ブラウザーが開き、*http://localhost:{ポート}* に移動します。*[Microsoft アカウントでサインイン]* ボタンが表示されます。 ボタンをクリックしてサインインします。
+`F5` を押して、Visual Studio でプロジェクトを実行します。 ブラウザーが開き、*http://localhost:{port}* に移動します。*[Microsoft アカウントでサインイン]* ボタンが表示されます。 ボタンをクリックしてサインインします。
 
 テストの準備ができたら、職場アカウント (Azure Active Directory) を使用してサインインします。 
 
@@ -280,7 +281,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>*[Authorize]* 属性を持つメソッドへのアクセスをテストする (省略可能)
 この手順では、匿名ユーザーとして要求コントローラーへのアクセスをテストします。<br/>
 ユーザーのサインアウトのリンクを選択し、サインアウトのプロセスを完了します。<br/>
-お使いのブラウザーで「http://localhost:{ポート}/claims」を入力し、`[Authorize]` 属性で保護されているコントローラーにアクセスします
+お使いのブラウザーで「http://localhost:{port}/claims」を入力し、`[Authorize]` 属性で保護されているコントローラーにアクセスします
 
 #### <a name="expected-results"></a>予想される結果
 ビュー表示の認証を要求するプロンプトが表示されます。

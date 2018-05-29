@@ -11,11 +11,12 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 710d517621cb9d4d9d2e9bf29e4facf7d75ab481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187831"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
@@ -49,8 +50,8 @@ Azure SQL Database では、[パフォーマンス チューニングの推奨�
 
 ## <a name="improving-database-performance-with-more-resources"></a>リソースを増やしてデータベースのパフォーマンスを向上させる
 
-最後に、データベースのパフォーマンス向上につながるすぐに実施可能な方法がない場合は、Azure SQL Database で使用できるリソースの量を変更することができます。 スタンドアロン データベースの[サービス レベル](sql-database-service-tiers.md)を変更するか、エラスティック プールの eDTU を増やすことにより、いつでもリソース割り当てを増やすことができます。
-1. スタンドアロン データベースの場合は、[サービス レベルの変更](sql-database-service-tiers.md) をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
+最後に、データベースのパフォーマンス向上につながるすぐに実施可能な方法がない場合は、Azure SQL Database で使用できるリソースの量を変更することができます。 スタンドアロン データベースの[DTU サービス レベル](sql-database-service-tiers-dtu.md)を変更するか、エラスティック プールの eDTU を増やすことにより、いつでもリソース割り当てを増やすことができます。 あるいは、[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) を使用した場合は、サービス レベルを変更することも、データベースへの割り当てリソースを増やすこともできます。 
+1. スタンドアロン データベースの場合は、[サービス レベルの変更](sql-database-service-tiers-dtu.md)または[コンピューティング リソース](sql-database-service-tiers-vcore.md)をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
 2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>アプリケーションまたはデータベース コードをチューニングおよびリファクタリングする

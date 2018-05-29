@@ -10,19 +10,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 6ad0f554161937a4fdb10179e2b310facbb91945
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32310980"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
 
 継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的配置は、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
 Azure Data Factory では、継続的インテグレーションと配置とは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと配置を行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
+
+この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを作成する
 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
@@ -90,7 +95,7 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 6.  Azure Key Vault からシークレットを取得します。 シークレットを処理する方法は 2 つあります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  シークレットをパラメーター ファイルに追加する:
+    a.  シークレットをパラメーター ファイルに追加する:
 
        -   発行ブランチにアップロードされたパラメーター ファイルのコピーを作成し、キー コンテナーから取得するパラメーターの値を次の形式で設定します。
 
@@ -123,7 +128,7 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 7.  Azure Resource Manager デプロイ タスクを追加します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
+    a.  新しいタスクを作成し、**Azure リソース グループのデプロイ**を探して追加します。
 
     b.  デプロイ タスクでは、サブスクリプション、リソース グループ、およびターゲットの Data Factory の場所を選択し、必要に応じて資格情報を指定します。
 

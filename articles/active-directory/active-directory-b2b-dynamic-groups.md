@@ -2,25 +2,20 @@
 title: 動的グループと Azure Active Directory B2B コラボレーション | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションを Azure AD の動的グループと共に使用する方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 12/14/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d96fefb859cba5db65382801fb1ac143df12b647
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 751502c2be84e9454c507f09a47b609d003ce2c5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927853"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 
@@ -47,12 +42,7 @@ Azure Active Directory (Azure AD) のセキュリティ グループ メンバ�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
-
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
-* [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
-* [B2B コラボレーションの招待の委任](active-directory-b2b-delegate-invitations.md)
-* [B2B コラボレーション コードと PowerShell サンプル](active-directory-b2b-code-samples.md)
-* [B2B コラボレーション用の SaaS アプリの構成](active-directory-b2b-configure-saas-apps.md)
+- [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
+- [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
+- [B2B コラボレーション ユーザーの条件付きアクセス](active-directory-b2b-mfa-instructions.md)
 

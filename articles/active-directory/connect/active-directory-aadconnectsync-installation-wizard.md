@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect インストール ウィザードの再実行 | Microsoft Docs"
-description: "2 回目のインストール ウィザードの実行時の動作について説明します。"
-keywords: "Azure AD Connect インストール ウィザードの 2 回目の実行では、メンテナンス設定を構成できます。"
+title: Azure AD Connect インストール ウィザードの再実行 | Microsoft Docs
+description: 2 回目のインストール ウィザードの実行時の動作について説明します。
+keywords: Azure AD Connect インストール ウィザードの 2 回目の実行では、メンテナンス設定を構成できます。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
 ms.workload: identity
@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a5a55b15bbffbcfa18e07e251180820e3d9cb6d8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 56cc38275a23eb4529558b876db619768a885a25
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150517"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同期: インストール ウィザードの 2 回目の実行
 初めて Azure AD Connect のインストール ウィザードを実行すると、インストールの構成方法が手順に沿って表示されます。 インストール ウィザードをもう一度実行すると、メンテナンスのオプションが表示されます。
 
-インストール ウィザードは、[スタート] メニューに **[Azure AD Connect]**という名前で表示されます。
+インストール ウィザードは、[スタート] メニューに **[Azure AD Connect]** という名前で表示されます。
 
 ![[スタート] メニュー](./media/active-directory-aadconnectsync-installation-wizard/startmenu.png)
 
@@ -46,7 +47,7 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 
 ![すべてのオプションとそれらの状態の一覧を含むページ](./media/active-directory-aadconnectsync-installation-wizard/viewconfig.png)
 
-戻るには、 **[前へ]** をクリックします。 **[終了]**を選択すると、インストール ウィザードが閉じます。
+戻るには、 **[前へ]** をクリックします。 **[終了]** を選択すると、インストール ウィザードが閉じます。
 
 ## <a name="customize-synchronization-options"></a>同期オプションをカスタマイズする
 同期の構成を変更するには、このオプションを使用します。 カスタム構成のインストール パスからオプションのサブセットが表示されます。 このオプションは、最初に高速インストールを使用した場合でも表示されます。
@@ -79,7 +80,7 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 ![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>ユーザー サインインの変更
-このオプションでは、パスワード同期からフェデレーションに、またはその逆に変更することができます。 **[構成しない]**に変更することはできません。
+このオプションでは、パスワード ハッシュ同期、パススルー認証、またはフェデレーションのユーザーのサインイン方法を変更することができます。 **[構成しない]** に変更することはできません。
 
 このオプションの詳細については、「 [ユーザーのサインイン](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method)」を参照してください。
 

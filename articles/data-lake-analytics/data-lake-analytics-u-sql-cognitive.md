@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Analytics で U-SQL Cognitive 機能の使用 |Microsoft Docs"
-description: "U-SQL の Cognitive 機能のインテリジェンスを使用する方法"
+title: Azure Data Lake Analytics で U-SQL Cognitive 機能の使用 |Microsoft Docs
+description: U-SQL の Cognitive 機能のインテリジェンスを使用する方法
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: ec48a07af0aba78f2e508bad232f34102f0c2073
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311116"
 ---
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>チュートリアル: U-SQL の Cognitive 機能を使い始める
 
@@ -37,8 +38,8 @@ U-SQL の Cognitive 機能により、開発者はビッグ データ プログ�
 
 全体的なプロセスは簡単です。
 
-* REFERENCE ASSEMBLY ステートメントを使用して U-SQL スクリプトの認識機能を有効にします
-* Cognitive UDO で入力行セットに対して PROCESS を使用して出力行セットを生成します。
+* `REFERENCE ASSEMBLY` ステートメントを使用して U-SQL スクリプトの認識機能を有効にします
+* Cognitive UDO で入力行セットに対して `PROCESS` を使用して出力行セットを生成します。
 
 ### <a name="detecting-objects-in-images"></a>イメージ内のオブジェクトを検出する
 
@@ -82,7 +83,7 @@ OUTPUT @tags_serialized
 ```
 その他の例については、「**次のステップ**」セクションの「**U-SQL/Cognitive Samples**」(U-SQL/Cognitive のサンプル) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [U-SQL/Cognitive のサンプル](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)

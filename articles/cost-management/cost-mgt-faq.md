@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: troubleshooting
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168651"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 

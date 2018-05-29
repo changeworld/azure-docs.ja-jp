@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights での HockeyApp データの探索 | Microsoft Docs"
-description: "Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。"
+title: Azure Application Insights での HockeyApp データの探索 | Microsoft Docs
+description: Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,18 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: bec2b2dc8a29e5c94e3d3c7f2f0333e07bfe3a4f
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: cd185d799be5051340c2bfea44a1d1e69a1eb002
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32309846"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
 > [!NOTE]
-> Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
-> 
-> 
+> HockeyApp は新しいアプリケーションでは使用できなくなりました。 既存の HockeyApp の展開については今後も動作します。 Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
 
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリを監視するためのサービスです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](app-insights-overview.md) の強力な [Analytics](app-insights-analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](app-insights-export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
 
@@ -69,6 +68,6 @@ Analytics はデータのアドホック クエリのための強力なツール
 
 [連続エクスポートの詳細](app-insights-export-telemetry.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Analytics をデータに適用する](app-insights-analytics-tour.md)
 

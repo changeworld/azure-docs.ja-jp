@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と RealtimeBoard の統合 | Microsoft Docs"
-description: "Azure Active Directory と RealtimeBoard の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と RealtimeBoard の統合 | Microsoft Docs'
+description: Azure Active Directory と RealtimeBoard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 2796280d4c8d5d2b11424cba866500aee38414ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5734d9ae2f5633fc7386b5cb0754769af9bf96bc
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/30/2018
+ms.locfileid: "32309167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル: Azure Active Directory と RealtimeBoard の統合
 
@@ -112,7 +113,7 @@ RealtimeBoard で Azure AD のシングル サインオンを構成してテス�
 
 4. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
 
     **[サインオン URL]** ボックスに、「`https://realtimeboard.com/sso/saml`」と入力します。
 
@@ -124,10 +125,10 @@ RealtimeBoard で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-realtimeboard-tutorial/tutorial_general_400.png)
 
-7. **RealtimeBoard** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [RealtimeBoard サポート チーム](mailto:support@realtimeboard.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **RealtimeBoard** 側でシングル サインオンを構成するには、[RealtimeBoard の手順](https://help.realtimeboard.com/support/solutions/articles/11000023465-saml-based-single-sign-on-)に関する記事に従って、ダウンロードした**メタデータ XML** のデータを使用します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

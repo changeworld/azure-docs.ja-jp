@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6452d8f88b91fe0cbf144ce951b84ba4cec0047
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939823"
 ---
 # <a name="outbound-connections-classic"></a>送信接続 (クラシック)
 
@@ -37,11 +38,11 @@ Azure は送信元ネットワーク アドレス変換 (SNAT) を使用して�
 
 Azure では、送信接続のクラシック デプロイを実現するために、3 つの異なる方法が提供されます。  すべてのクラシック デプロイで、3 つのシナリオすべてを使用できるわけではありません。
 
-| シナリオ | 方法 | [説明] | Web worker ロール | IaaS | 
-| --- | --- | --- | --- | --- |
-| [1.インスタンス レベルのパブリック IP アドレスがある VM](#ilpip) | SNAT (ポート マスカレードは不使用) |Azure は仮想マシンに割り当てられたパブリック IP アドレスを使います。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 | いいえ  | [はい] |
-| [2. パブリックに負荷分散されたエンドポイント](#publiclbendpoint) | パブリック エンドポイントに対するポート マスカレード (PAT) による SNAT |Azure は、複数のプライベート エンドポイントとパブリック IP アドレスのパブリック エンドポイントを共有します。 Azure は、PAT のパブリック エンドポイントのエフェメラル ポートを使います。 | [はい] | [はい] |
-| [3.スタンドアロン VM ](#defaultsnat) | ポート マスカレード (PAT) による SNAT | Azure は自動的に、SNAT のパブリック IP アドレスを指定し、このパブリック IP アドレスをデプロイ全体で共有して、PAT のパブリック エンドポイント IP アドレスのエフェメラル ポートを使います。 これは、上記のシナリオのフォールバック シナリオです。 可視性と制御が必要は場合は推奨されません。 | [はい] | [はい]|
+| シナリオ | 方法 | IP プロトコル | [説明] | Web worker ロール | IaaS | 
+| --- | --- | --- | --- | --- | --- |
+| [1.インスタンス レベルのパブリック IP アドレスがある VM](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | Azure は仮想マシンに割り当てられたパブリック IP アドレスを使います。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 | いいえ  | [はい] |
+| [2. パブリックに負荷分散されたエンドポイント](#publiclbendpoint) | パブリック エンドポイントに対するポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は、複数のプライベート エンドポイントとパブリック IP アドレスのパブリック エンドポイントを共有します。 Azure は、PAT のパブリック エンドポイントのエフェメラル ポートを使います。 | [はい] | [はい] |
+| [3.スタンドアロン VM ](#defaultsnat) | ポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は自動的に、SNAT のパブリック IP アドレスを指定し、このパブリック IP アドレスをデプロイ全体で共有して、PAT のパブリック エンドポイント IP アドレスのエフェメラル ポートを使います。 これは、上記のシナリオのフォールバック シナリオです。 可視性と制御が必要は場合は推奨されません。 | [はい] | [はい] |
 
 これは、Azure の Resource Manager デプロイで使用できる送信接続機能のサブセットです。  
 

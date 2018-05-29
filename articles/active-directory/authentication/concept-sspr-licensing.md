@@ -16,15 +16,16 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: cebfc1dcaca562d26eb9e85d9b8bf0fa14e5edc9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 699d621856e9febf7a5d4093d7fdc86c39d5f242
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149238"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
-Azure Active Directory (Azure AD) のパスワード リセットを機能させるには、*ご自分の組織に少なくとも 1 つライセンスが割り当てられている必要があります*。 パスワード リセット エクスペリエンスに関して、ユーザーごとのライセンスは強制していません。 Microsoft ライセンス契約とのコンプライアンスを維持するには、プレミアム機能を使用するすべてのユーザーにライセンスを割り当てる必要があります。
+Azure Active Directory (Azure AD) のパスワード リセットを機能させるには、*ご自分の組織に少なくとも 1 つライセンスが割り当てられている必要があります*。 パスワード リセット エクスペリエンスに関して、ユーザーごとのライセンスは強制していません。 ユーザーがこのライセンスで提供される機能を直接的または間接的を問わず利用するには、適切なライセンスが必要になります。
 
 * **クラウドのみのユーザー**: Office 365 のすべての有料 SKU、または Azure AD Basic
 * **クラウド**または**オンプレミス ユーザー**: Azure AD Premium P1 または P2、Enterprise Mobility + Security (EMS)、または Microsoft 365
@@ -37,8 +38,9 @@ Azure Active Directory (Azure AD) のパスワード リセットを機能させ
 * Azure AD Premium P2
 * Enterprise Mobility + Security E3
 * Enterprise Mobility + Security E5
-* Microsoft 365 (Plan E3)
-* Microsoft 365 (Plan E5)
+* Microsoft 365 E3
+* Microsoft 365 E5
+* Microsoft 365 F1
 
 > [!WARNING]
 > スタンドアロンの Office 365 ライセンス プランは、*パスワード ライトバックをサポートしていません*。この機能を動作させるには、上記プランのいずれかが必要になります。

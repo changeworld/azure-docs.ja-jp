@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Cloud Shell (プレビュー) の PowerShell のクイック スタート | Microsoft Docs
 description: Cloud Shell の PowerShell のクイックスタート
 services: Azure
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3e59395b7066169b8a7863f45a446051b830a71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159274"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の PowerShell のクイックスタート
 
@@ -54,7 +55,7 @@ MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    S
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
 ```
 
-## <a name="navigate-azure-resources"></a>Azure リソース間を移動する	
+## <a name="navigate-azure-resources"></a>Azure リソース間を移動する
 
  1. サブスクリプションを一覧表示します
 
@@ -88,13 +89,13 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
      ```
 
 ### <a name="allresources-view"></a>AllResources ビュー 
-`AllResources` ディレクトリで「`dir`」と入力して、Azure リソースを表示します。	
+`AllResources` ディレクトリで「`dir`」と入力して、Azure リソースを表示します。
     
     PS Azure:\MySubscriptionName> dir AllResources
 
-### <a name="explore-resource-groups"></a>リソース グループを探索する
+### <a name="explore-resource-groups"></a>リソース グループを調べる
 
- `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内で仮想マシンを検索できます。	
+ `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内で仮想マシンを検索できます。
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -116,10 +117,10 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 > これは、ユーザー エクスペリエンス向上のため、子項目がメモリ内にキャッシュされるためです。
 ただし、`dir -Force` を使うと常に最新のデータを取得できます。
 
-### <a name="navigate-storage-resources"></a>ストレージ リソース間を移動する	
+### <a name="navigate-storage-resources"></a>ストレージ リソース間を移動する
     
 `StorageAccounts` ディレクトリに入ることで、ストレージ リソース間を簡単に移動することができます
-    
+    
 ``` PowerShell 
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
 
@@ -135,7 +136,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 
 ```
 
-次のコマンドを接続文字列（ConnectionString）と共に使用することで、Azure ファイル共有をマウントできます。
+接続文字列で次のコマンドを使って、Azure Files 共有をマウントできます。
         
 ``` PowerShell
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
@@ -225,7 +226,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
  ```
 
-### <a name="discover-webapps"></a>WebApps を検出する	
+### <a name="discover-webapps"></a>WebApps を検出する
 
 `WebApps` ディレクトリに入ることで、Web アプリ リソース間を簡単に移動することができます
 
@@ -266,21 +267,21 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-PowerShell Cloud Shell 上で [Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) を利用できます。
-SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開キーと秘密キーの組を生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
+[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) は、PowerShell Cloud Shell で使うことができます。
+SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開/秘密キー ペアを生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
 
 > [!NOTE]
-> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、Cloud Shell でそれらを `$env:USERPROFILE\.ssh` に発行できます。	
+> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、Cloud Shell でそれらを `$env:USERPROFILE\.ssh` に発行できます。
 
-### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って Git と SSH の設定を保持する
+### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って GiT と SSH の設定を保持する
 
-サインアウトするとセッションは保持されないので、`$env:USERPROFILE\.ssh` ディレクトリを `CloudDrive` に保存するか、Cloud Shell の起動時にシンボリック リンクを作成します。
-CloudDrive へのシンボリック リンクを作成するには、profile.ps1 に次のコード スニペットを追加します。
+サインアウトするとセッションは保持されないので、`$env:USERPROFILE\.ssh` ディレクトリを `clouddrive` に保存するか、Cloud Shell の起動時にシンボリック リンクを作成します。
+`clouddrive` へのシンボリック リンクを作成するには、profile.ps1 で次のコード スニペットを追加します。
 
 ``` PowerShell
 # Check if the .ssh directory exists
-if( -not (Test-Path $home\CloudDrive\.ssh)){
-    mkdir $home\CloudDrive\.ssh
+if( -not (Test-Path $home\clouddrive\.ssh)){
+    mkdir $home\clouddrive\.ssh
 }
 
 # .ssh path relative to this script
@@ -347,21 +348,21 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Azure Files を使ってデータを保存する
 
-たとえば `helloworld.ps1` といったスクリプトを作成して `CloudDrive` に保存し、それを異なるシェル セッションで使うことができます。
+たとえば `helloworld.ps1` といったスクリプトを作成して `clouddrive` に保存し、それを異なるシェル セッションで使うことができます。
 
 ``` PowerShell
-cd C:\users\ContainerAdministrator\CloudDrive
-PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
+cd C:\users\ContainerAdministrator\clouddrive
+PS C:\users\ContainerAdministrator\clouddrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
-PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
+PS C:\users\ContainerAdministrator\clouddrive> .\helloworld.ps1
 Hello World!
 ```
 
-Cloud Shell で PowerShell を次に使用するときは、`helloworld.ps1` ファイルが Azure Files 共有をマウントした `CloudDrive` ディレクトリにあります。
+Cloud Shell で PowerShell を次に使用するときは、`helloworld.ps1` ファイルが Azure Files 共有をマウントした `clouddrive` ディレクトリにあります。
 
 ## <a name="use-custom-profile"></a>カスタム プロファイルを使う
 
-PowerShell プロファイル `profile.ps1` または `Microsoft.PowerShell_profile.ps1` を作成することで、PowerShell 環境をカスタマイズできます。 それを `CloudDrive` に保存し、Cloud Shell の起動時にすべての PowerShell セッションで読み込むことができるようにします。
+PowerShell プロファイル `profile.ps1` または `Microsoft.PowerShell_profile.ps1` を作成することで、PowerShell 環境をカスタマイズできます。 それを `clouddrive` に保存し、Cloud Shell の起動時にすべての PowerShell セッションで読み込むことができるようにします。
 
 プロファイルの作成方法については、「[About Profiles][profile]」(プロファイルについて) を参照してください。
 
@@ -373,7 +374,7 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-ユーザーがサインアウトするか、セッションがタイムアウトすると、Cloud Shell のセッションは保持されないので、次のログオン時に Git 構成ファイルは存在しません。 Git の構成を保持するには、.gitconfig を `CloudDrive` に保存してそれをコピーするか、または Cloud Shell が起動されるときにシンボリック リンクを作成します。 `CloudDrive` へのシンボリック リンクを作成するには、profile.ps1 で次のコード スニペットを使います。
+ユーザーがサインアウトするか、セッションがタイムアウトすると、Cloud Shell のセッションは保持されないので、次のログオン時に Git 構成ファイルは存在しません。 Git の構成を保持するには、.gitconfig を `clouddrive` に保存してそれをコピーするか、または Cloud Shell が起動されるときにシンボリック リンクを作成します。 `clouddrive` へのシンボリック リンクを作成するには、profile.ps1 で次のコード スニペットを使います。
 
  ``` PowerShell
  

@@ -1,11 +1,11 @@
 ---
-title: "Azure Application Gateway の作成 - Azure CLI 1.0 | Microsoft Docs"
-description: "Resource Manager で Azure CLI 1.0 を使用して、アプリケーション ゲートウェイを作成する方法について説明します。"
+title: Azure Application Gateway の作成 - Azure CLI 1.0 | Microsoft Docs
+description: Resource Manager で Azure CLI 1.0 を使用して、アプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
@@ -14,17 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: davidmu
-ms.openlocfilehash: fe50fb3a7434702101dc5ae7a9dd176a33423119
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 3d67e896da5e616e443fc4e1edd9aaafb0f0e2f9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201873"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
@@ -59,7 +60,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 Azure Application Gateway には、専用のサブネットが必要です。 仮想ネットワークを作成する場合は、複数のサブネットを持つことができるように十分なアドレス空間を残しておいてください。 アプリケーション ゲートウェイをサブネットにデプロイすると、追加のアプリケーション ゲートウェイのみをそのサブネットにデプロイすることができます。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 **Microsoft Azure コマンド プロンプト**を開き、ログインします。 
 
@@ -67,7 +68,7 @@ Azure Application Gateway には、専用のサブネットが必要です。 �
 azure login
 ```
 
-上記の例に従って入力すると、コードが表示されます。 ブラウザーで https://aka.ms/devicelogin に移動して、ログイン プロセスを続行します。
+上記の例に従って入力すると、コードが表示されます。 ブラウザーの https://aka.ms/devicelogin に移動して、ログイン プロセスを続行します。
 
 ![cmd showing device login][1]
 
@@ -148,7 +149,7 @@ azure network application-gateway create \
 この例では、リスナー、バックエンド プール、バックエンド http 設定、規則の既定の設定を持つ基本的なアプリケーション ゲートウェイを作成しています。 プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。
 前の手順でバックエンド プールに対して既に Web アプリケーションを定義している場合、アプリケーション ゲートウェイを作成すると負荷分散が開始されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
 

@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 05/01/2018
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770255"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -117,9 +118,9 @@ NPS 拡張機能をデプロイするときに、これらの要素を使用し�
 
 Azure で[サポートされていない認証方法を無効にする](howto-mfa-mfasettings.md#selectable-verification-methods)ことができます。
 
-### <a name="enable-users-for-mfa"></a>ユーザーの MFA を有効にする
+### <a name="register-users-for-mfa"></a>ユーザーを MFA に登録する
 
-完全な NPS 拡張機能をデプロイする前に、2 段階認証を実行するユーザーに対して MFA を有効にする必要があります。 もっと早く、拡張機能をデプロイ時にテストするには、Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。
+NPS 拡張機能を展開して使用する前に、2 段階認証を実行する必要があるユーザーを MFA に登録する必要があります。 もっと早く、拡張機能をデプロイ時にテストするには、Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。
 
 テスト アカウントを開始するには、次の手順を使用します。
 1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。 

@@ -1,8 +1,8 @@
 ---
-title: "Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除 | Microsoft Docs"
-description: "Azure Files のデプロイを計画するときの考慮事項について説明します。"
+title: Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除 | Microsoft Docs
+description: Azure Files のデプロイを計画するときの考慮事項について説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187744"
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -49,7 +50,7 @@ Azure ファイル同期をエンドツーエンドでデプロイする方法�
 **[作成]** を選択してサーバー エンドポイントを追加します。 これで、同期グループの名前空間内のファイルは同期状態が維持されるようになります。 
 
 ## <a name="remove-a-server-endpoint"></a>サーバー エンドポイントを削除する
-サーバー エンドポイントでクラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 その結果、オンプレミスのファイル共有は、データセットの完全なコピーでなくキャッシュとして動作するので、ファイル サーバー上の領域を効率的に使用できるようになります。 ただし、階層化されたファイルがサーバーのローカルにまだある状態でサーバー エンドポイントを削除すると、それらのファイルにアクセスできなくなります。 そのため、ファイルのアクセスを継続するには、Azure Files から階層化されたファイルをすべて回収してから、登録解除を進める必要があります。 
+サーバー エンドポイントでクラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 その結果、オンプレミスのファイル共有は、データセットの完全なコピーでなくキャッシュとして動作するので、ファイル サーバー上の領域を効率的に使用できるようになります。 ただし、**階層化されたファイルがサーバーのローカルにまだある状態でサーバー エンドポイントを削除すると、それらのファイルにアクセスできなくなります**。 そのため、オンプレミスのファイル共有でファイルのアクセスを継続するには、Azure Files から階層化されたファイルをすべて回収してから、サーバー エンドポイントの削除を進める必要があります。 
 
 この処理は、次のように PowerShell コマンドレットを使用して実行できます。
 

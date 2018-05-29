@@ -1,9 +1,9 @@
 ---
-title: "Resource Manager テンプレートでのメトリック アラートの作成 | Microsoft Docs"
-description: "Resource Manager テンプレートを使用してメトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。"
+title: Resource Manager テンプレートでの Azure のクラシック メトリック アラートの作成 | Microsoft Docs
+description: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成し、電子メールまたは webhook で通知を受信する方法について説明します。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
@@ -12,16 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/21/2017
+ms.date: 4/27/2018
 ms.author: johnkem
-ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c83eeaf6c26aca3acdd43a767aa11357fa502544
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32177301"
 ---
-# <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
+# <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
 この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して Azure メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。
+
+> [!NOTE]
+> 
+> この記事では、Resource Manager テンプレートを使用した**クラシック メトリック アラート**の作成方法について説明します。 テンプレートを使用して[新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)を作成する方法を探している場合、[この資料](monitoring-create-metric-alerts-with-templates.md)で詳細を提供します。
+>
+
 
 基本的な手順は次のとおりです。
 
@@ -30,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 ここでは、Resource Manager テンプレートを作成して 1 つのアラートを作成する方法を説明してから、他のリソースを作成しながらアラートを作成する方法を説明します。
 
-## <a name="resource-manager-template-for-a-metric-alert"></a>メトリック アラートの Resource Manager テンプレート
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>クラシック メトリック アラートの Resource Manager テンプレート
 Resource Manager テンプレートを使用してアラートを作成するには、 `Microsoft.Insights/alertRules` 型のリソースを作成し、関連するすべてのプロパティを入力します。 アラート ルールを作成するテンプレートを以下に示します。
 
 ```json
@@ -180,7 +187,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
 
 アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](https://msdn.microsoft.com/library/azure/dn933805.aspx)。
 
-## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>アラートが設定されたリソースの Resource Manager テンプレート
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>クラシック メトリック アラートを含むリソース向けの Resource Manager テンプレート
 Resource Manager テンプレートのアラートは、多くの場合、リソースを作成しながらアラートを作成するときに役に立ちます。 たとえば、仮想マシンをデプロイするたびに "CPU % > 80" ルールを設定する必要があるとします。 これを行うには、VM テンプレートのリソース配列にリソースとしてアラート ルールを追加し、 `dependsOn` プロパティを使用して依存関係を VM リソース ID に追加します。 次の例は、Windows VM を作成し、CPU 使用率が 80% を超えたときにサブスクリプション管理者に通知するアラートを追加しています。
 
 ```json
@@ -400,7 +407,7 @@ Resource Manager テンプレートのアラートは、多くの場合、リソ
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アラートの詳細を確認します](insights-receive-alert-notifications.md)
 * [診断の設定を追加](monitoring-enable-diagnostic-logs-using-template.md) します
 

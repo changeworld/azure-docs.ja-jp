@@ -12,11 +12,12 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311133"
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics のクォータ制限
 
@@ -24,9 +25,13 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 ## <a name="azure-subscriptions-limits"></a>Azure サブスクリプションの制限
 
-**サブスクリプションあたりの ADLA アカウントの最大数:** 5
+**各リージョンのサブスクリプションあたりの ADLA アカウントの最大数:** 5
 
-これは、各リージョンでサブスクリプションごとに作成できる ADLA アカウントの最大数です。 6 番目の ADLA アカウントを作成しようとすると、エラー "サブスクリプション name のリージョンで許容される Data Lake Analytics アカウントの最大数 (5) に達しました。" が表示されます。 この状況では、適切であれば別のリージョンを選択するか、同じリージョンの使用されてない ADLA アカウントを削除できます。クォータの引き上げをリクエストする[サポート チケット](#increase-maximum-quota-limits)を開いて Azure サポートに連絡することもできます。
+6 番目の ADLA アカウントを作成しようとすると、エラー "サブスクリプション name のリージョンで許容される Data Lake Analytics アカウントの最大数 (5) に達しました。" が表示されます。 
+
+この制限を超える数にするには、次の方法を試すことができます。
+* 適切であれば、別のリージョンを作成する
+* [サポート チケットを開き](#increase-maximum-quota-limits)、Azure サポートにクォータの増加を依頼する
 
 ## <a name="adla-account-limits"></a>ADLA アカウントの制限
 
@@ -45,7 +50,7 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. 既存の ADLA アカウントを選びます。
-3. **[プロパティ]**をクリックします。
+3. **[プロパティ]** をクリックします。
 4. ニーズに合わせて **[並行処理]** と **[最大同時ジョブ数]** を調整します。
 
     ![Azure Data Lake Analytics ポータル ページ](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)

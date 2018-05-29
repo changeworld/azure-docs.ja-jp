@@ -10,11 +10,12 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193286"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージ インスタンス (プレビュー) とは?
 
@@ -67,9 +68,9 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 ![シングル サインオン](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
+## <a name="vcore-based-purchasing-model-preview"></a>仮想コアベースの購入モデル (プレビュー)
 
-仮想コアベースの購入モデルでは、柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージをスケーリングできます。 また、仮想コア モデルは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)による最大 30% の割引の対象となります。
+仮想コアベースの購入モデル (プレビュー) では、柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージをスケーリングできます。 また、仮想コア モデルは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)による最大 30% の割引の対象となります。
 
 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。
 - Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz のプロセッサを基盤とします。
@@ -186,7 +187,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 移行方法では、Azure BLOB ストレージへの SQL バックアップが活用されます。 Azure BLOB ストレージに格納されたバックアップは、マネージ インスタンスに直接復元できます。 既存の SQL データベースをマネージド インスタンスに復元するには、次の方法があります。
 
 - [Database Migration Service (DMS)](/sql/dma/dma-overview) を使用します。 データベースのバックアップ ファイルから復元するチュートリアルについては、[Azure Database Migration Service (DMS) を使用してマネージド インスタンスに移行する](../dms/tutorial-sql-server-to-managed-instance.md)方法に関するページを参照してください。
-- [T-SQL RESTORE コマンド](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql)を使用します。 
+- [T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)を使用します。 
   - Wide World Importers - Standard データベース のバックアップ ファイルを復元する方法を説明したチュートリアルについては、[バックアップ ファイルをマネージド インスタンスに復元する](sql-database-managed-instance-restore-from-backup-tutorial.md)方法に関するページを参照してください。 このチュートリアルでは、バックアップ ファイルを Azure ブログ ストレージにアップロードし、Secure Access Signature (SAS) キーを使用してセキュリティで保護する必要があることが説明されています。
   - URL からの復元については、「[URL からのネイティブ復元](sql-database-managed-instance-migrate.md#native-restore-from-url)」を参照してください。
 - [BACPAC ファイルからインポートします](sql-database-import.md)

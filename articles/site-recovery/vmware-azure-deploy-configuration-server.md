@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します"
+title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
+description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 99b368ca364bd7c5bebfc00c2df0f04333293388
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188482"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -108,6 +109,11 @@ Site Recovery では、高可用性の VMware VM として構成サーバーを�
 8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときに Azure Site Recovery モビリティ サービスをマシンに自動的にインストールするために使われるユーザー名とパスワードを入力します。 Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。 Linux の場合は、ルート アカウントの詳細を指定します。
 9. **[構成の確定]** を選択して、登録を完了します。 
 10. 登録が完了したら、Azure Portal で、構成サーバーおよび VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを確認します。 その後、**[OK]** を選択して、ターゲットの設定を構成します。
+
+
+## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
+
+構成サーバーを最新バージョンにアップグレードするには、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)にある手順を参照してください。
 
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング

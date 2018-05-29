@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2183576e87aa2fb31f8be8f676a5aee7d52f68df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204634"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 [ASDK をインストール](asdk-install.md)した後、推奨されるインストール後の構成変更がいくつかあります。 
@@ -37,7 +38,10 @@ Set-PSRepository `
 
  Azure Stack と互換性のある AzureRM モジュールは、API バージョン プロファイルを使用してインストールされます。 Azure Stack には 2017-03-09-profile API バージョン プロファイルが必要です。このプロファイルは、AzureRM.Bootstrapper モジュールをインストールすることで利用できます。 
  
- ASDK ホスト コンピューターへのインターネット接続の有無にかかわらず、Azure Stack PowerShell をインストールすることができます。
+ ASDK ホスト コンピューターへのインターネット接続の有無にかかわらず、最新の Azure Stack PowerShell モジュールをインストールすることができます。
+
+> [!IMPORTANT]
+> 必要なバージョンをインストールする前に、必ず[既存の Azure PowerShell モジュールをアンインストールしてください](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell)。
 
 - ASDK ホスト コンピューターからの**インターネット接続がある場合**。 次の PowerShell スクリプトを実行して、これらのモジュールを開発キット インストールにインストールします。
 

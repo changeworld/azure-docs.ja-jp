@@ -3,20 +3,24 @@ title: Azure Automation での Runbook の実行
 description: Azure Automation で Runbook が処理される方法の詳細について説明します。
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 05/08/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 74ee26b961a765276aaa1f0bf17603f22bc8dd20
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a6a429b85e0d7522e5840a0ad020d12f4f4d471e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055872"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
 Azure Automation で runbook を開始するときに、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 各ジョブを実行する Azure Automation ワーカーが割り当てられます。 ワーカーは複数の Azure アカウントで共有されるが、さまざまな Automation アカウントからのジョブは互いに分離されます。 ジョブに対する要求をどのワーカーで処理するかを制御することはできません。 1 つの Runbook で、複数のジョブを同時に実行することができます。 同じ Automation アカウントからのジョブの実行環境を再利用できます。 Azure Portal で Runbook の一覧を表示すると、各 Runbook に対して起動されたすべてのジョブの状態が一覧表示されます。 それぞれの状態を追跡するために、Runbook ごとにジョブの一覧を表示できます。 ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」をご覧ください。
+
+[!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
 次の図に、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) と [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のための Runbook ジョブのライフサイクルを示します。
 
@@ -53,7 +57,7 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 
 ### <a name="automation-runbook-jobs-summary"></a>Automation Runbook ジョブの概要
 
-選択した [Automation アカウント] の右にある**[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。
+選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。
 
 ![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)が必要です。
 
@@ -88,13 +92,31 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 
 次のサンプル コマンドは、サンプル Runbook の最後のジョブを取得し、その状態、Runbook パラメーターに指定された値、およびジョブの出力を表示します。
 
-```powershell-interactive
+```azurepowershell-interactive
 $job = (Get-AzureRmAutomationJob –AutomationAccountName "MyAutomationAccount" `
 –RunbookName "Test-Runbook" -ResourceGroupName "ResourceGroup01" | sort LastModifiedDate –desc)[0]
 $job.Status
 $job.JobParameters
 Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
+```
+
+次の例では、特定のジョブの出力を取得し、各レコードを返します。 いずれかのレコードで例外が発生した場合、値ではなく、その例外が書き出されます。 例外は、出力中に正常にログに記録されない可能性がある追加情報を提供できるため有用です。
+
+```azurepowershell-interactive
+$output = Get-AzureRmAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
+foreach($item in $output)
+{
+    $fullRecord = Get-AzureRmAutomationJobOutputRecord -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -JobId <jobID> -Id $item.StreamRecordId
+    if ($fullRecord.Type -eq "Error")
+    {
+        $fullRecord.Value.Exception
+    }
+    else
+    {
+    $fullRecord.Value
+    }
+}
 ```
 
 ## <a name="get-details-from-activity-log"></a>アクティビティ ログから詳細を取得する

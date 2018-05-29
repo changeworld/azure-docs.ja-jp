@@ -1,39 +1,36 @@
 ---
-title: "Azure Stack での SQL ホスティング サーバー | Microsoft Docs"
-description: "SQL アダプター リソースプロバイダーを使用したプロビジョニングのための SQL インスタンスを追加する方法"
+title: Azure Stack での SQL ホスティング サーバー | Microsoft Docs
+description: SQL アダプター リソースプロバイダーを使用したプロビジョニングのための SQL インスタンスを追加する方法
 services: azure-stack
-documentationCenter: 
-author: mattbriggs
+documentationCenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0a29ef133a045b2828777050f2d7a204c0add4a8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 05/01/2018
+ms.author: jeffgilb
+ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202594"
 ---
-# <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>SQL アダプターが使用するホスティング サーバーを追加する
-
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
-
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 [Azure Stack](azure-stack-poc.md) 内の VM 上の SQL インスタンスを使用するか、またはリソースプロバイダーに接続できる場合には Azure Stack 環境外のインスタンスを使用できます。 一般的な要件は次のとおりです。
 
 * SQL インスタンスは、RP とユーザー ワークロードでのみ使用できるようにする必要があります。 他のコンシューマーが使用中の SQL インスタンス (App Services など) は使用できません。
-* RP アダプターはドメインに参加しておらず、SQL 認証によってのみ接続できます。
-* RP で使用するために、適切な特権を設定してアカウントを構成する必要があります。
-* RP や、Web アプリなどのユーザーはユーザー ネットワークを使用するため、このネットワーク上の SQL インスタンスへの接続が必要となります。 通常、この要件により、使用する SQL インスタンスの IP はパブリック ネットワーク上になくてはならないことになります。
-* SQL インスタンスとそのホストは自由に管理できます。ただし、RP は修正プログラムの適用、バックアップ、資格情報のローテーションなどを行いません。
+* SQL リソース プロバイダーの VM はドメインに参加しておらず、SQL 認証によってのみ接続できます。
+* リソース プロバイダーで使用するために、適切な特権を設定してアカウントを構成する必要があります。
+* リソース プロバイダーや、Web アプリなどのユーザーはユーザー ネットワークを使用するため、このネットワーク上の SQL インスタンスへの接続が必要となります。 通常、この要件により、使用する SQL インスタンスの IP はパブリック ネットワーク上になくてはならないことになります。
+* SQL インスタンスとそのホストは自由に管理できます。ただし、リソース プロバイダーは修正プログラムの適用、バックアップ、資格情報のローテーションなどを行いません。
 * SKU は、パフォーマンス、Always On などのさまざまなクラスの SQL 機能を作成するのに使用できます。
 
-
-Marketplace 管理機能により、多数の SQL IaaS 仮想マシン イメージを使用できます。 Marketplace 項目を使用して VM をデプロイする前に、必ず SQL IaaS 拡張機能の最新バージョンをダウンロードしてください。 これらの SQL イメージは、Azure で使用できる SQL VM と同じです。 これらのイメージから作成された SQL VM の場合、IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの機能が提供されます。
+Marketplace 管理機能により、多数の SQL IaaS 仮想マシン イメージを使用できます。 Marketplace 項目を使用して VM をデプロイする前に、必ず **SQL IaaS 拡張機能**の最新バージョンをダウンロードしてください。 これらの SQL イメージは、Azure で使用できる SQL VM と同じです。 これらのイメージから作成された SQL VM の場合、IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの機能が提供されます。
 
 SQL VM のデプロイにはその他の選択肢もあります。[Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates) のテンプレートなどです。
 
@@ -84,7 +81,10 @@ SQL Server 2014 または SQL Server 2016 の任意のエディションを使�
 
   ユーザーが各自のデータベースを適切に配置できるように、SKU 名には特性を反映させる必要があります。 SKU 内のすべてのホスティング サーバーの機能が同じである必要があります。
 
-    例:
+> [!IMPORTANT]
+> SQL と MySQL リソース プロバイダーの SKU を作成する場合、**[ファミリ]** または **[層]** 名では、スペースやピリオドなどの特殊文字はサポートされていません。
+
+例:
 
 ![SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
@@ -140,27 +140,6 @@ SQL Always On のホスティング サーバーを追加するには、次の�
 ユーザーが SQL データベースを使用できるようにするプランとオファーを作成します。 プランに Microsoft.SqlAdapter サービスを追加し、既存のクォータを追加するか新しいクォータを作成します。 クォータを作成する場合、ユーザーに許可する容量を指定します。
 
 ![データベースに含めるプランとサービスの作成](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
-
-## <a name="maintenance-of-the-sql-adapter-rp"></a>SQL アダプター RP のメンテナンス
-
-SQL インスタンスのメンテナンスについては、パスワード ローテーションの情報を除き、ここでは説明しません。 管理者は、修正プログラムの適用、SQL アダプターで使用するデータベース サーバーのバックアップ/復元を担当します。
-
-### <a name="patching-and-updating"></a>修正プログラム適用と更新
- SQL アダプターはアドオン コンポーネントであるため、Azure Stack の一部としては提供されません。 必要に応じて、SQL アダプターの更新プログラムが提供されます。 SQL アダプターは、既定のプロバイダー サブスクリプションの下で、_ユーザー_の仮想マシンでインスタンス化されます。 そのため、Windows 修正プログラム、ウイルス対策シグネチャなどを提供する必要があります。修正プログラム適用と更新のサイクルの一環で提供される Windows 更新プログラムを使用して、Windows VM に更新プログラムを適用できます。 更新されたアダプターがリリースされると、更新プログラムを適用するためのスクリプトが提供されます。 このスクリプトでは、新しい RP VM を作成し、既に存在する状態に移行させます。
-
- ### <a name="backuprestoredisaster-recovery"></a>バックアップ/復元/ディザスター リカバリー
- SQL アダプターはアドオン コンポーネントであるため、Azure Stack BC-DR プロセスの一部としてはバックアップされません。 以下を容易にするスクリプトが提供されます。
-- 必要な状態情報のバックアップ (Azure Stack ストレージ アカウントに格納されている)
-- スタックをすべて回復する場合には RP の復元が必要になります。
-データベース サーバーの回復は (必要な場合)、RP を復元する前に最初に行う必要があります。
-
-### <a name="updating-sql-credentials"></a>SQL 資格情報の更新
-
-管理者は、SQL Server のシステム管理者アカウントの作成と保守を担当します。 RP には、ユーザーに代わってデータベースを管理するためにこれらの権限があるアカウントが必要となりますが、データベース内のデータにアクセスする必要はありません。 SQL Server で sa パスワードを更新する必要がある場合、RP の管理者インターフェイスの更新機能を使用して、RP が使用する保存済みパスワードを変更できます。 これらのパスワードは、Azure Stack インスタンス上の Key Vault に格納されています。
-
-設定を変更するには、**[参照]** &gt; **[管理リソース]** &gt; **[SQL Hosting Servers]\(SQL ホスティング サーバー\)** &gt; **[SQL ログイン]** の順にクリックし、ログイン名を選択します。 変更は、最初に SQL インスタンス (および必要な場合はレプリカ) で行う必要があります 。 **[設定]** パネルで、**[パスワード]** をクリックします。
-
-![管理パスワードの更新](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 
 ## <a name="next-steps"></a>次の手順

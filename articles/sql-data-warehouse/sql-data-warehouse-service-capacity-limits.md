@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a0646bad9f440fc1e7d0bbdfae5bd2a23156c52f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a2a6c78444cb385a2e74b108000555ff056fe9f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189685"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -22,7 +23,7 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="workload-management"></a>ワークロード管理
 | カテゴリ | [説明] | 最大値 |
 |:--- |:--- |:--- |
-| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL Data Warehouse に対する 最大 DWU | 弾力性[パフォーマンス レベル](memory-and-concurrency-limits.md#performance-tiers)のための最適化: DW6000<br></br>コンピューティング [パフォーマンス レベル](memory-and-concurrency-limits.md#performance-tiers)のための最適化: DW30000c |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL Data Warehouse に対する 最大 DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 例: <br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW600c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
 | データベース接続 |同時に開かれるセッション数 |1024<br/><br/>1024 個のアクティブな各セッションが同時に、SQL Data Warehouse データベースに要求を送信できます。 同時に実行できるクエリ数については、制限があるので注意してください。 同時実行の制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |

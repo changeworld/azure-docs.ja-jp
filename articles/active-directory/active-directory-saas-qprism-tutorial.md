@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と QPrism の統合 | Microsoft Docs"
-description: "Azure Active Directory と QPrism の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と QPrism の統合 | Microsoft Docs'
+description: Azure Active Directory と QPrism の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b924ea1df926518ba1d86909f8e6a78deabd5468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル: Azure Active Directory と QPrism の統合
 
@@ -103,41 +104,22 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
     ![[QPrism のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<customer domain>.qmyzone.com/login` という形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<customer domain>.qmyzone.com/login` という形式で URL を入力します。
 
     b. **[識別子]** ボックスに、`https://<customer domain>.qmyzone.com/metadata.php` という形式で URL を入力します。
          
     > [!NOTE] 
     > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[QPrism クライアント サポート チーム](mailto:qsupport-ce@quatrro.com)にお問い合わせください。 
 
-4. **メタデータ URL** を生成するには、次の手順を実行します。
+4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
-    a. **[アプリの登録]** を選択します。
-    
-    ![アプリの登録のシングル サインオンの構成](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appregistrations.png)
-   
-    b. **[エンドポイント]** を選択して **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![シングル サインオン エンドポイントの構成](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpointicon.png)
-
-    c. コピー ボタンを選択して、**フェデレーション メタデータ ドキュメント**の URL をコピーしてメモ帳に貼り付けます。
-    
-    ![シングル サインオン エンドポイントの構成](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
-     
-    d. 次に、**QPrism** のプロパティ ページに移動し、**[コピー]** を使用して **[アプリケーション ID]** をコピーして、 メモ帳に貼り付けます。
- 
-    ![アプリケーション ID のシングル サインオンの構成](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 
+     ![証明書のダウンロードのリンク](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
 5. **[保存]** を選択します。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-qprism-tutorial/tutorial_general_400.png)
     
-6. **QPrism** 側でシングル サインオンを構成するために、**メタデータ URL** を [QPrism サポート チーム](mailto:qsupport-ce@quatrro.com)に送信します。 サポート チームによって、SAML シングル サインオン接続が両方の側で正しく設定されたことが保証されます。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure ポータル](https://portal.azure.com)内で上記の手順の簡易版を確認できるようになりました。 **[Active Directory]** > **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブを選択し、一番下の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+6. **QPrism** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [QPrism サポート チーム](mailto:qsupport-ce@quatrro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -169,7 +151,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-a-qprism-test-user"></a>QPrism テスト ユーザーの作成
 
@@ -195,7 +177,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]**を選択します。 **[割り当ての追加]** で **[ユーザーとグループ]** を選択します。
+4. **[追加]** を選択します。 **[割り当ての追加]** で **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
@@ -203,7 +185,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
 6. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** を選択します。
 
-7. **[割り当ての追加]**で **[割り当て]** を選択します。
+7. **[割り当ての追加]** で **[割り当て]** を選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

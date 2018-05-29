@@ -1,11 +1,11 @@
 ---
-title: "Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する場合の問題 | Microsoft Docs"
-description: "Azure AD アプリケーション ギャラリーに既に表示されているアプリケーションのパスワード シングル サインオンを構成する場合に直面する一般的な問題について説明します"
+title: Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する場合の問題 | Microsoft Docs
+description: Azure AD アプリケーション ギャラリーに既に表示されているアプリケーションのパスワード シングル サインオンを構成する場合に直面する一般的な問題について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9550b28b373a59a6d41cee487aed9afc6c464479
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f19b684a6c7426134844a2657b886280af2f061c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067063"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する場合の問題
 
@@ -25,19 +26,19 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>資格情報を入力したが、拡張機能によって送信されない
 
-これは通常、アプリケーション ベンダーがサインイン ページを最近変更して、フィールドを追加したり、ユーザー名とパスワードのフィールドを検出するために使用されていた基になる識別子を変更したり、アプリケーションのサインイン エクスペリエンスのしくみを変更したりした場合に発生します。 多くの場合は、Microsoft がアプリケーション ベンダーと協力して、これらの問題を迅速に解決することができます。
+この問題は通常、アプリケーション ベンダーがサインイン ページを最近変更して、フィールドを追加したり、ユーザー名とパスワードのフィールドを検出するために使用されていた識別子を変更したり、アプリケーションのサインイン エクスペリエンスのしくみを変更したりした場合に発生します。 多くの場合は、Microsoft がアプリケーション ベンダーと協力して、これらの問題を迅速に解決することができます。
 
-Microsoft には、このような統合の破綻を自動的に検出するテクノロジがありますが、このような問題をすぐに発見できなかったり、修正に時間がかかったりする場合があります。 このような統合が正しく機能しない場合は、サポート ケースを開いていただければ、できるだけ早く対処いたします。
+Microsoft には、統合の破綻を自動的に検出するテクノロジがありますが、このような問題をすぐに発見できなかったり、修正に時間がかかったりする場合があります。 このような統合が正しく機能しない場合は、サポート ケースを開いていただければ、できるだけ早く対処いたします。
 
-さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」をベンダーに参照してもらいます。
+**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、Microsoft と連係するよう伝えてください。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](./develop/active-directory-app-gallery-listing.md)」をベンダーに参照してもらいます。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>資格情報を入力して送信したが、ページには資格情報が正しくないと表示される
 
-この問題を解決するには、最初に次の点を確認します。
+この問題を解決するには、まず次のことを試してください。
 
 -   まずユーザーに、格納されている資格情報で**アプリケーション Web サイトに直接サインイン**してみてもらいます。
 
-  * うまくいった場合は、[アプリケーション アクセス パネル](https://myapps.microsoft.com/)の **[アプリ]** セクションにある**アプリケーション タイル**の **[資格情報の更新]** ボタンをユーザーにクリックしてもらい、動作している最新の既知のユーザー名とパスワードに資格情報を更新します。
+  * サインインできた場合は、[アプリケーション アクセス パネル](https://myapps.microsoft.com/)の **[アプリ]** セクションにある**アプリケーション タイル**の **[資格情報の更新]** ボタンをユーザーにクリックしてもらい、動作している最新の既知のユーザー名とパスワードに資格情報を更新します。
 
    * 自分または別の管理者がこのユーザーに資格情報を割り当てた場合は、アプリケーションの **[Users & Groups (ユーザーとグループ)]** タブに移動してユーザーまたはグループのアプリケーション割り当てを見つけ、割り当てを選択してから **[資格情報の更新]** ボタンをクリックします。
 
@@ -55,9 +56,9 @@ Microsoft には、このような統合の破綻を自動的に検出するテ�
 
 これでうまくいかない場合は、アプリケーション側で変更が行われ、アプリケーションと Azure AD との統合が一時的に破綻している可能性があります。 たとえば、アプリケーション ベンダーがページに導入したスクリプトの動作が手動入力と自動入力で異なることが原因で、Azure AD との場合のような自動化された統合が破綻することがあります。 多くの場合は、Microsoft がアプリケーション ベンダーと協力して、これらの問題を迅速に解決することができます。
 
-Microsoft には、このような統合の破綻を自動的に検出するテクノロジがありますが、このような問題をすぐに発見できなかったり、修正に時間がかかったりする場合があります。 このような統合が正しく機能しない場合は、サポート ケースを開いていただければ、できるだけ早く対処いたします。
+Microsoft には、アプリケーションの統合の破綻を自動的に検出するテクノロジがありますが、このような問題をすぐに発見できなかったり、修正に時間がかかったりする場合があります。 統合が正常に機能しないときは、サポート ケースを開いていただければ、できるだけ早く対処いたします。 
 
-さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」をベンダーに参照してもらいます。
+さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](./develop/active-directory-app-gallery-listing.md)」をベンダーに参照してもらいます。
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>拡張機能が Chrome と Firefox で機能するが、Internet Explorer で機能しない
 
@@ -71,15 +72,15 @@ Microsoft には、このような統合の破綻を自動的に検出するテ�
 
    * 残念ながら、このような状況は、ブラウザーのバージョン、コンピューターの速度、またはアクセスしたサイトによって異なります。 この場合は、この特定のアプリケーションの統合を修正できるように、サポートに問い合わせることをお勧めします。
 
-さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」をベンダーに参照してもらいます。
+さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](./develop/active-directory-app-gallery-listing.md)」をベンダーに参照してもらいます。
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>アプリケーションのログイン ページが最近変更されたり、追加のフィールドが必要になったりしたかどうかを確認する
 
 アプリケーションのログイン ページが大幅に変更されると、それによって統合が破綻することがあります。 たとえば、アプリケーション ベンダーがエクスペリエンスにサインイン フィールド、CAPTCHA、または多要素認証を追加した場合です。 多くの場合は、Microsoft がアプリケーション ベンダーと協力して、これらの問題を迅速に解決することができます。
 
-Microsoft には、このような統合の破綻を自動的に検出するテクノロジがありますが、このような問題をすぐに発見できない場合もあります。 また、修正に時間がかかることもあります。 このような統合が正しく機能しない場合は、サポート ケースを開いていただければ、できるだけ早く対処いたします。
+Microsoft には、アプリケーションの統合の破綻を自動的に検出するテクノロジがありますが、このような問題をすぐに発見できなかったり、修正に時間がかかったりする場合があります。 統合が正常に機能しないときは、サポート ケースを開いていただければ、できるだけ早く対処いたします。 
 
-さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」をベンダーに参照してもらいます。
+さらに、**このアプリケーションのベンダーに連絡する**場合は、アプリケーションを Azure Active Directory にネイティブに統合できるように、**Microsoft と連係するようお伝えください**。 連係を開始するために、「[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](./develop/active-directory-app-gallery-listing.md)」をベンダーに参照してもらいます。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能をインストールする方法
 
@@ -105,6 +106,6 @@ Microsoft には、このような統合の破綻を自動的に検出するテ�
 
 -   [Firefox アクセス パネル拡張機能](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>次のステップ
-[アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)
+## <a name="next-steps"></a>次の手順
+[アプリケーション プロキシを使用してアプリにシングル サインオンを提供](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

@@ -1,26 +1,21 @@
 ---
-title: "Azure Active Directory での B2B コラボレーション用の SaaS アプリの構成 | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル"
+title: Azure Active Directory での B2B コラボレーション用の SaaS アプリの構成 | Microsoft Docs
+description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: e2206ca8ddee867b9ea48911f70793010989ad69
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 36fe82311b180a1dbe4fb81b78f10482cb8bb4ac
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33928798"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
 
@@ -105,13 +100,8 @@ Dropbox での招待されるユーザーのように、Box での招待され�
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
-* [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
-* [B2B コラボレーションの招待の委任](active-directory-b2b-delegate-invitations.md)
-* [動的グループと B2B コラボレーション](active-directory-b2b-dynamic-groups.md)
-* [B2B コラボレーション コードと PowerShell サンプル](active-directory-b2b-code-samples.md)
-* [B2B コラボレーション ユーザーのトークン](active-directory-b2b-user-token.md)
-* [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
-* [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
-* [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
+- [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [動的グループと B2B コラボレーション](active-directory-b2b-dynamic-groups.md)
+- [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
+- [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
+

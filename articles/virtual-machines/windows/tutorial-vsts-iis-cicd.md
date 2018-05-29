@@ -1,6 +1,6 @@
 ---
-title: Team Services を使用して Azure に CI/CD パイプラインを作成する | Microsoft Docs
-description: Windows VM 上の IIS に Web アプリをデプロイする継続的インテグレーションと継続的配信のための Visual Studio Team Services パイプラインを作成する方法について説明します。
+title: チュートリアル - Team Services を使用して Azure に CI/CD パイプラインを作成する | Microsoft Docs
+description: このチュートリアルでは、Azure の Windows VM 上の IIS に Web アプリをデプロイする継続的インテグレーションと継続的配信のための Visual Studio Team Services パイプラインを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192222"
 ---
-# <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Visual Studio Team Services と IIS を使用して継続的インテグレーション パイプラインを作成する
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>チュートリアル: Visual Studio Team Services と IIS を使用して継続的インテグレーション パイプラインを作成する
 ビルド、テスト、デプロイというアプリケーション開発の各フェーズを自動化するには、継続的インテグレーション/継続的配置 (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Visual Studio Team Services と、IIS を実行する Azure の Windows 仮想マシン (VM) を使用して CI/CD パイプラインを作成します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/06/2018
 > * 新しい Web デプロイ パッケージを IIS に発行するためのリリース定義を作成する
 > * CI/CD パイプラインのテスト
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 
 ## <a name="create-project-in-team-services"></a>Team Services でのプロジェクトの作成
@@ -62,7 +63,7 @@ Visual Studio Team Services を使用すると、オンプレミスのコード�
 3. **[Web]** テンプレートを選択し、**[ASP.NET Web アプリケーション]** テンプレートを選択します。
     1. アプリケーションの名前 (例: *myWebApp*) を入力し、**[ソリューションのディレクトリを作成]** チェック ボックスをオフにします。
     2. **[Application Insights をプロジェクトに追加する]** チェック ボックスをオフにします (このオプションが選択可能である場合)。 Application Insights を使用するには、Web アプリケーションを Azure Application Insights で承認する必要があります。 このチュートリアルでは簡潔にするために、このプロセスをスキップします。
-    3. **[OK]**を選択します。
+    3. **[OK]** を選択します。
 4. テンプレート一覧から **[MVC]** を選択します。
     1. **[認証の変更]** を選択し、**[認証なし]** を選択して、**[OK]** を選択します。
     2. **[OK]** を選択してソリューションを作成します。
@@ -94,29 +95,30 @@ Team Services では、ビルド定義を使用してアプリケーションの
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 ASP.NET Web アプリを実行するプラットフォームを提供するには、IIS を実行する Windows 仮想マシンが必要です。 Team Services は、コードがコミットされてビルドがトリガーされるときの IIS インスタンスとのやり取りを、エージェントを使って行います。
 
-[このスクリプト サンプル](../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)を使用して Windows Server 2016 VM を作成してください。 このスクリプトを実行してから VM が作成されるまでに数分かかります。 VM が作成されたら、次のように [Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して、Web トラフィック用にポート 80 を開きます。
+[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して Windows Server 2016 VM を作成します。 次の例では、場所 *East US* に *myVM* という名前の VM を作成します。 リソース グループ *myResourceGroupVSTS* と、サポートするネットワーク リソースも作成されます。 Web トラフィックを許可するために、VM に対して TCP ポート *80* が開かれます。 メッセージが表示されたら、VM のログオン資格情報として使用するユーザー名とパスワードを入力します。
 
 ```powershell
-Get-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName $resourceGroup `
-  -Name "myNetworkSecurityGroup" | `
-Add-AzureRmNetworkSecurityRuleConfig `
-  -Name "myNetworkSecurityGroupRuleWeb" `
-  -Protocol "Tcp" `
-  -Direction "Inbound" `
-  -Priority "1001" `
-  -SourceAddressPrefix "*" `
-  -SourcePortRange "*" `
-  -DestinationAddressPrefix "*" `
-  -DestinationPortRange "80" `
-  -Access "Allow" | `
-Set-AzureRmNetworkSecurityGroup
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a virtual machine
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroupVSTS" `
+  -Name "myVM" `
+  -Location "East US" `
+  -ImageName "Win2016Datacenter" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -SecurityGroupName "myNetworkSecurityGroup" `
+  -PublicIpAddressName "myPublicIp" `
+  -Credential $cred `
+  -OpenPorts 80
 ```
 
 VM に接続するには、次のように [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用してパブリック IP アドレスを取得します。
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 ```
 
 VM へのリモート デスクトップ セッションを作成します。
@@ -184,7 +186,7 @@ Web デプロイ パッケージを IIS サーバーにプッシュするには�
 Web デプロイ パッケージを新しいリリースとしてプッシュできるようになりました。 この手順では、配置グループに属している各インスタンスのエージェントとやり取りして、Web デプロイ パッケージをプッシュし、最新の Web アプリケーションを実行するように IIS を構成します。
 
 1. リリース定義で **[+ リリース]** を選択し、**[リリースの作成]** を選択します。
-2. ドロップダウン リストで最新のビルドが、**[自動配置: リリース作成後]** と共に選択されていることを確認します。 **[作成]**を選択します。
+2. ドロップダウン リストで最新のビルドが、**[自動配置: リリース作成後]** と共に選択されていることを確認します。 **[作成]** を選択します。
 3. リリース定義の上部に、"*Release 'Release-1' has been created (リリース 'Release-1' が作成されました)*" のように小さなバナーが表示されます。 該当するリリースのリンクを選択します。
 4. **[ログ]** タブを開いて、リリースの進行状況を監視します。
     

@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 095b0cba8f7d22920203e5e3c4bcd83666188023
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a39cabeb35450e98cc7d7d64645642959aacde0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194990"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/06/2018
 
 以下のスニペットは、テンプレートの **Resource** セクションに含まれます。
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)」をご覧ください。
+詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)」をご覧ください。
 
 ```json
 {
@@ -83,7 +84,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 **[拡張機能]** の下に DSC 拡張機能の詳細を追加します。
 
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)」をご覧ください。
+詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)」をご覧ください。
 
 ```json
 "extensionProfile": {
@@ -197,7 +198,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ## <a name="default-configuration-script"></a>既定の構成スクリプト
 
-次の値について詳しくは、[ローカル構成マネージャーの基本設定](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
+次の値について詳しくは、[ローカル構成マネージャーの基本設定](https://docs.microsoft.com/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
 | プロパティ名 | type | [説明] |
@@ -352,7 +353,7 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 ### <a name="invalid-url"></a>無効な URL
 
-"ConfigurationData.url is '{0}'.This is not a valid URL (ConfigurationData.url は '{0}' です。 これは有効な URL ではありません)" "DataBlobUri is '{0}'.This is not a valid URL (DataBlobUri は '{0}' です。 これは有効な URL ではありません)" "Configuration.url is '{0}'.This is not a valid URL (Configuration.url は '{0}' です。 これは有効な URL ではありません)"
+"ConfigurationData.url is '{0}'.This is not a valid URL (ConfigurationData.url は {0}' です。 これは有効な URL ではありません)" "DataBlobUri is '{0}'.This is not a valid URL (DataBlobUri は '{0}' です。 これは有効な URL ではありません)" "Configuration.url is '{0}'.This is not a valid URL (Configuration.url は '{0}' です。 これは有効な URL ではありません)"
 
 **問題点**: 指定した URL が無効です。
 

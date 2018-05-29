@@ -7,19 +7,20 @@ manager: craigg
 ms.service: sql-database
 ms.custom: ''
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: xiwu
-ms.openlocfilehash: 46849d551b6996caaf020caec1ab8104d5388c8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 393af463c4145e1d865c14f2ace7d5123ab12cfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187387"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL Database と SQL Server 用の Spark コネクタを使用してビッグ データのリアルタイム分析を高速化する
 
 Azure SQL Database と SQL Server 用の Spark コネクタを使用して、Azure SQL Database と SQL Server を含む SQL データベースを Spark ジョブの入力データ ソースまたは出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。 組み込みの JDBC コネクタに比べて、このコネクタには、SQL データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 Azure SQL Database と SQL Server 用の Spark コネクタは、AAD 認証もサポートします。 AAD アカウントを使用して Azure Databricks から Azure SQL Database に安全に接続できます。 組み込みの JDBC コネクタと同様のインターフェイスを備えています。 この新しいコネクタを使用するための既存の Spark ジョブの移行は簡単に実行できます。
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 最初に、GitHub の [azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark) から Spark to SQL DB コネクタをダウンロードします。
 
 ## <a name="official-supported-versions"></a>正式にサポートされているバージョン
@@ -39,8 +40,12 @@ Azure SQL Database と SQL Server 用の Spark コネクタは、SQL Server 用�
 2. Spark のマスター ノードが、変換のためにワーカー ノードにデータを分散します。 
 3. ワーカー ノードが、SQL Server または Azure SQL Database に接続し、データベースにデータを書き込みます。 ユーザーは、使用する挿入方法 (行単位または一括) を選択できます。
 
+次の図にデータ フローを示します。
+
+   ![アーキテクチャ](./media/sql-database-spark-connector/architecture.png)
+
 ### <a name="build-the-spark-to-sql-db-connector"></a>Spark to SQL DB コネクタをビルドする
-現在、コネクタ プロジェクトでは Maven を使用します。 依存関係なしにコネクタを構築するには、以下を実行します。
+現在、コネクタ プロジェクトでは Maven を使用します。 依存関係なしにコネクタを構築するには、次のコードを実行します。
 
 - mvn クリーン パッケージ
 - releases フォルダーから最新バージョンの JAR をダウンロードします
@@ -153,7 +158,7 @@ collection.show()
 #### <a name="setup-requirement"></a>設定要件
 アクセス トークンに基づく認証モードを使用する場合は、[azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) とその依存関係をダウンロードし、それらを Java ビルド パスに含める必要があります。
 
-Azure SQL Ｄatabase のアクセス トークンを取得する方法については、[Azure Active Directory 認証を使用した SQL Database の認証](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication)に関する記事を参照してください。
+Azure SQL Ｄatabase のアクセス トークンを取得する方法については、[Azure Active Directory 認証を使用した SQL Database の認証](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)に関する記事を参照してください。
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -211,5 +216,5 @@ Azure SQL Database と SQL Server 用の Spark コネクタをまだダウンロ
 -   [Azure Databricks ノートブックのサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [サンプル スクリプト (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/en-us/azure/azure-databricks/)を確認することもできます。
+また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。
 

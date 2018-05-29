@@ -1,50 +1,36 @@
 ---
-title: "Azure Active Directory B2B コラボレーションのためのセルフサービス サインアップ ポータル | Microsoft ドキュメント"
-description: "Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします"
+title: Azure Active Directory B2B コラボレーションのためのセルフサービス サインアップ ポータル | Microsoft ドキュメント
+description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
 services: active-directory
-documentationcenter: 
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 05/08/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
-ms.service: active-directory
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
-ms.date: 05/24/2017
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: bb63a3b23bdcaac5c94d43bb8e7294a82b0c3fa0
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b16f7c040212db6d0dbeb7161a18f205cf524090
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930437"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル
 
-お客様は、当社の IT 管理 [Azure Portal](https://portal.azure.com) とエンド ユーザー向けの[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通して公開される組み込み機能を使用して、さまざまな操作を実行できます。 しかし、当社では、企業が B2B ユーザーのために配布準備ワークフローをカスタマイズして、ユーザーの組織のニーズを満たす必要があることについても認識しています。 これは、[招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用することで実現します。
+お客様は、[Azure portal](https://portal.azure.com) とエンド ユーザー向けの[アプリケーション アクセス パネル](https://myapps.microsoft.com)を通して公開される組み込み機能を使用して、さまざまな操作を実行できます。 ただし、ユーザーの組織のニーズに合わせて、B2B ユーザー向けのオンボード ワークフローをカスタマイズすることが必要な場合があります。 これは、[招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使って行うことができます。
 
-お客様との話し合いの中で、他のすべてに抜きんでて求められる共通する 1 つのニーズがあることがわかりました。 招待側組織は、誰が社外のコラボレーターであり、誰が企業のリソースへのアクセスを必要としているのが事前にわからないことがあります。 招待側組織は、パートナー企業のユーザーが、招待側組織によって制御されるポリシーに従ってセルフサインアップする方法を求めていました。 このシナリオは API を通じて実現できるため、当社では、それを行うための[サンプル Github プロジェクト](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)を Github に発行しました。
+招待する側の組織は、誰が社外のコラボレーターであり、誰が企業のリソースへのアクセスを必要としているのが事前にわからないことがあります。 招待する側の組織によって制御されるポリシーのセットに従って、パートナー企業のユーザーがサインアップするための方法が必要です。 このシナリオは、API を使って実現できます。 それを行う[サンプル プロジェクトが GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) にあります。
 
-この Github プロジェクトでは、組織による API の使用方法を説明しています。さらに、信頼できるパートナー向けのポリシー ベースのセルフサービス サインアップ機能と、パートナーがアクセスできるアプリを決定するルールを提示しています。 パートナーのユーザーは必要なときにリソースに安全にアクセスすることができ、招待側組織はパートナーを手動で招待する必要はありません。 プロジェクトは、選択した Azure サブスクリプションに簡単にデプロイできます。
+この GitHub プロジェクトでは、招待する組織が API を使って、信頼できるパートナーがアクセスできるアプリを決定するルールを作成し、パートナーに対してポリシー ベースのセルフサービス サインアップ機能を提供する方法が示されています。 パートナーのユーザーは、必要に応じてリソースにアクセスできます。 パートナーは安全にこれを行うことができ、招待する側の組織が手動でオンボードする必要はありません。 プロジェクトは、選択した Azure サブスクリプションに簡単にデプロイできます。
 
 ## <a name="as-is-code"></a>現況コード
 
-このコードは、Azure Active Directory B2B 招待 API の使用法を示すサンプルとして提供されているコードであることに注意してください。 開発チームまたはパートナーによってカスタマイズする必要があり、実稼働のシナリオにデプロイする前に確認する必要があります。
+このコードは、Azure Active Directory B2B 招待 API の使用法を示すサンプルとして利用できます。 開発チームまたはパートナーはカスタマイズして、運用シナリオにデプロイする前に確認する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
-* [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
-* [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
 * [Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)
-* [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
-* [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
-* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)

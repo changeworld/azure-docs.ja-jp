@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2018
+ms.date: 5/4/2018
 ms.author: raiye
-ms.openlocfilehash: 1f24db331b3d59eaad54c5c2488e56913261cff2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e97b5535ac635fb5982b4dc6fb384414e3a2cfc7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765775"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -42,6 +43,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## <a name="news-updates"></a>最新情報
+###### <a name="may-4-2018"></a>**2018 年 5 月 4 日**
+4 月のゲスト OS がリリースされました。
+
 ###### <a name="april-6-2018"></a>**2018 年 4 月 6 日**
 3 月のゲスト OS がリリースされました。
 
@@ -69,14 +73,6 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 ###### <a name="september-14-2017"></a>**2017 年 9 月 14 日**
 9 月のゲスト OS ロールアウトは 9 月 14 日に開始され、10 月 9 日にリリースされる予定です。
 
-###### <a name="august-24-2017"></a>**2017 年 8 月 24 日**
-8 月のゲスト OS がリリースされました。
-
-###### <a name="august-3-2017"></a>**2017 年 8 月 3 日**
-7 月のゲスト OS がリリースされました。
-
-###### <a name="july-19-2017"></a>**2017 年 7 月 19 日**
-7 月のゲスト OS ロールアウトは、7 月 19 日に開始し、8 月 8 日にリリースされる予定です。
 
 
 ## <a name="releases"></a>リリース
@@ -93,8 +89,9 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.18_201804-01 |2018 年 5 月 4 日 |Post 5.20 |TBD |
 | WA-GUEST-OS-5.17_201803-01 |2018 年 4 月 6 日 |Post 5.19 |TBD |
-| WA-GUEST-OS-5.16_201802-01 |2018 年 3 月 12 日 |Post 5.18 |TBD |
+|~~WA-GUEST-OS-5.16_201802-01~~ |2018 年 3 月 12 日 |2018 年 5 月 4 日 |TBD |
 |~~WA-GUEST-OS-5.15_201801-01~~ |2018 年 1 月 4 日 |2018 年 4 月 6 日 |TBD |
 |~~WA-GUEST-OS-5.14_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日|TBD |
@@ -105,8 +102,7 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 |~~WA-GUEST-OS-5.8_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-5.7_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-5.6_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-5.5_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-5.4_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日|TBD |
+
 
 ## <a name="family-4-releases"></a>ファミリ 4 のリリース
 **Windows Server 2012 R2**
@@ -120,8 +116,9 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.53_201804-01 |2018 年 5 月 4 日 |Post 4.55 |TBD |
 | WA-GUEST-OS-4.52_201803-01 |2018 年 4 月 6 日 |Post 4.54 |TBD |
-| WA-GUEST-OS-4.51_201802-01 |2018 年 3 月 12 日 |Post 4.53 |TBD |
+|~~WA-GUEST-OS-4.51_201802-01~~ |2018 年 3 月 12 日 |2018 年 5 月 4 日 |TBD |
 |~~WA-GUEST-OS-4.50_201801-01~~ |2018 年 1 月 4 日 |2018 年 4 月 6 日 |TBD |
 |~~WA-GUEST-OS-4.49_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日 |TBD |
@@ -132,8 +129,7 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 |~~WA-GUEST-OS-4.43_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-4.42_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-4.41_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-4.40_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-4.39_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日 |TBD |
+
 
 ## <a name="family-3-releases"></a>ファミリ 3 のリリース
 **Windows Server 2012**
@@ -147,8 +143,9 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.60_201804-01 |2018 年 5 月 4 日 |Post 3.62 |TBD |
 | WA-GUEST-OS-3.59_201803-01 |2018 年 4 月 6 日 |Post 3.61 |TBD |
-| WA-GUEST-OS-3.58_201802-01 |2018 年 3 月 19 日 |Post 3.60 |TBD |
+|~~WA-GUEST-OS-3.58_201802-01~~ |2018 年 3 月 19 日 |2018 年 5 月 4 日 |TBD |
 |~~WA-GUEST-OS-3.57_201801-01~~ |2018 年 1 月 29 日 |2018 年 4 月 6 日 |TBD |
 |~~WA-GUEST-OS-3.56_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 19 日 |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
@@ -159,8 +156,7 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 |~~WA-GUEST-OS-3.50_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-3.49_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-3.48_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
-|~~WA-GUEST-OS-3.47_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-3.46_201612-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日 |TBD |
+
 
 ## <a name="family-2-releases"></a>ファミリ 2 のリリース
 **Windows Server 2008 R2 SP1**
@@ -174,8 +170,9 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.73_201804-01 |2018 年 5 月 4 日 |Post 2.75 |TBD |
 | WA-GUEST-OS-2.72_201803-01 |2018 年 4 月 6 日 |Post 2.74 |TBD |
-| WA-GUEST-OS-2.71_201802-01 |2018 年 3 月 12 日 |Post 2.73 |TBD |
+|~~WA-GUEST-OS-2.71_201802-01~~ |2018 年 3 月 12 日 |2018 年 5 月 4 日 |TBD |
 |~~WA-GUEST-OS-2.70_201801-01~~ |2018 年 1 月 29 日 |2018 年 4 月 6 日 |TBD |
 |~~WA-GUEST-OS-2.69_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
 |~~WA-GUEST-OS-2.68_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
@@ -187,8 +184,6 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 |~~WA-GUEST-OS-2.62_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-2.61_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-2.60_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
-|~~WA-GUEST-OS-2.59_201701-01~~ |2017 年 1 月 10 日 |2017 年 6 月 5 日 |TBD |
-|~~WA-GUEST-OS-2.58_201612-01~~ |2017 年 1 月 10 日 |2017 年 5 月 9 日|TBD |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC 修正プログラム
@@ -247,7 +242,7 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明しています。
 
 [ゲスト OS 更新 RSS フィード]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
@@ -265,4 +260,4 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx

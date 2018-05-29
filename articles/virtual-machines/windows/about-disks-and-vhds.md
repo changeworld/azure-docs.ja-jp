@@ -10,11 +10,12 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 3d82416b7382b8e09706fd7fb8af9e1d3fe79f01
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e95b5a6037c791f501a04ebe468b1c781805f693
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32313513"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Azure Windows VM 用のディスク ストレージについて
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
@@ -70,7 +71,7 @@ fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> 注: Trim は Windows Server 2012/Windows 8 以上でサポートされます。「[New API allows apps to send "TRIM and Unmap" hints to storage media](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints) (新しい API を使用してアプリで "TRIM および Unmap" のヒントをストレージ メディアに送る方法)」をご覧ください。
+> 注: Trim は Windows Server 2012/Windows 8 以上でサポートされます。「[New API allows apps to send "TRIM and Unmap" hints to storage media](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints)」(新しい API を使用してアプリで "TRIM および Unmap" のヒントをストレージ メディアに送る方法) を参照してください。
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->

@@ -9,11 +9,12 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1fe162beca258fe8ec3d03ce2844c1abe3176dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188975"
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースを管理する
 
@@ -109,6 +110,6 @@ Azure SQL Database のサービス レベル、パフォーマンス レベル�
 
 ## <a name="next-steps"></a>次の手順
 
-- サービス レベル、パフォーマンス レベル、およびストレージ量については、「[Azure SQL Database で利用可能なパフォーマンス オプション](sql-database-service-tiers.md)」をご覧ください。
+- サービス レベル、パフォーマンス レベル、およびストレージ容量については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事を参照してください。
 - エラスティック プールについては、「[エラスティック プールを利用して複数の SQL データベースの管理およびスケーリングを行う](sql-database-elastic-pool.md)」をご覧ください。
 - 「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。

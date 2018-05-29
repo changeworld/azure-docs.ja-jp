@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/01/2018
 ms.author: shlo
-ms.openlocfilehash: e6846661370fcad139730fc0443d9df54fa12a70
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58faed48f5031b26f1340f3766fdd8bdc6bd2ccb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770759"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
@@ -78,6 +79,16 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 
 > [!NOTE]
 > Web アクティビティが呼び出す REST エンドポイントは、型 JSON の応答を返す必要があります。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。
+
+次の表に、JSON コンテンツの要件を示します。
+
+| 値の型 | 要求本文 | 応答本文 |
+|---|---|---|
+|JSON オブジェクト | サポートされています | サポートされています |
+|JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていません |
+| JSON 値 | サポートされています | サポートされていません |
+| 非 JSON 型 | サポートされていません | サポートされていません |
+||||
 
 ## <a name="authentication"></a>認証
 

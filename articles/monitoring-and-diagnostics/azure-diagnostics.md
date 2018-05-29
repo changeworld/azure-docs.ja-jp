@@ -1,11 +1,11 @@
 ---
-title: "Azure 診断の概要 | Microsoft Docs"
-description: "Azure 診断は、Cloud Services、Virtual Machines、および Service Fabric でのデバッグ、パフォーマンス測定、監視、トラフィック分析に使用できます。"
+title: Azure 診断の概要 | Microsoft Docs
+description: Azure 診断は、Cloud Services、Virtual Machines、および Service Fabric でのデバッグ、パフォーマンス測定、監視、トラフィック分析に使用できます。
 services: multiple
 documentationcenter: .net
 author: rboucher
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
 ms.service: multiple
 ms.workload: na
@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32169137"
 ---
 # <a name="what-is-azure-diagnostics"></a>Azure 診断について
-Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現在時点でのサポート対象は、Azure Cloud Service Web および Worker ロール、Microsoft Windows を実行している Azure Virtual Machines、および Service Fabric となっています。 その他の Azure サービスには、独自の独立した診断があります。
+Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。 
 
 ## <a name="data-you-can-collect"></a>収集可能なデータ
 Azure 診断は、次の種類のデータを収集できます。
@@ -38,16 +39,13 @@ Azure 診断は、次の種類のデータを収集できます。
 | カスタム エラー ログ |アプリケーションまたはサービスで作成されたログ |
 | Azure 診断インフラストラクチャ ログ |診断自体に関する情報 |
 
-Azure 診断拡張機能は、このデータを Azure ストレージ アカウントに転送したり、[Application Insights](../application-insights/app-insights-cloudservices.md) のようなサービスに送信したりすることができます。 データは、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、監査などに使用できます。
+Azure 診断拡張機能は、このデータを Azure ストレージ アカウントに転送したり、[Application Insights](../application-insights/app-insights-cloudservices.md) に送信したりすることができます。 [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーム配信することもできます。その後で Azure 以外の監視サービスに送信することができます。 データは、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、監査などに使用できます。
 
 ## <a name="versioning"></a>バージョン管理
 「 [Azure Diagnostics Versioning History (Azure 診断のバージョン履歴)](azure-diagnostics-versioning-history.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 診断情報を収集するサービスを選択し、以下の記事の説明に従って操作を開始してください。 特定のタスクのリファレンスについては、一般的な Azure 診断リンクを使用してください。
-
-## <a name="web-apps"></a>Web Apps
-Web Apps では Azure 診断が使用されないので注意してください。 Azure 診断に相当する情報については、[Web Apps](../app-service/web-sites-enable-diagnostic-log.md) に関するページを参照してください。
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloud Services で Azure 診断を使用する
 * Visual Studio を使用する場合は、[Visual Studio を使用した Cloud Services アプリケーションのトレース](../vs-azure-tools-debug-cloud-services-virtual-machines.md)に関するページを参照して操作を開始してください。 それ以外の場合は次を参照してください。

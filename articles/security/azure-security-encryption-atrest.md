@@ -3,7 +3,7 @@ title: Microsoft Azure Data Encryption-at-Rest | Microsoft Docs
 description: この記事では、Microsoft Azure の保存データの暗号化の概要、全体的な機能、および一般的な考慮事項について説明します。
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 54dc97c0d20f90d3b57b715fb21714a11e5a1525
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312578"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 Microsoft Azure では、会社のセキュリティとコンプライアンスのニーズに合わせてデータを保護するためのツールが複数用意されています。 このドキュメントでは次に重点を置いています。
@@ -236,10 +237,10 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 
 #### <a name="azure-storage"></a>Azure Storage
 
-Azure の Blob、およびファイルは、サーバー側暗号化のシナリオおよびユーザーによる暗号化データ (クライアント側暗号化) の保存時暗号化をサポートします。
+すべての Azure Storage サービス (Blob Storage、Queue Storage、Table Storage、Azure Files) では、サーバー側の保存データの暗号化がサポートされています。一部のサービスでは、ユーザー管理キーとクライアント側の暗号化がサポートされています。  
 
-- サーバー側: Azure Blob ストレージを使用しているお客様は、各 Azure ストレージ リソースのアカウントで保存時の暗号化を有効にできます。 サーバー側の暗号化を有効にすると、アプリケーションに対し透過的に暗号化されます。 詳細については、「[保存データ向け Azure Storage Service Encryption ](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。
-- クライアント側: Azure Blob のクライアント側暗号化がサポートされています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳細については、「[クライアント側の暗号化と Azure Key Vault for Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)」を参照してください。
+- サーバー側: すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault のユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys)」を参照してください。
+- クライアント側: Azure BLOB、テーブル、およびキューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)」をご覧ください。
 
 
 #### <a name="sql-azure"></a>SQL Azure
@@ -257,10 +258,10 @@ SQL Azure データのクライアント側の暗号化は、[Always Encrypted](
 | **ストレージとデータベース**            |                |                     |                              |                              |        |
 | ディスク (IaaS)                      |                | -                   | [はい]                          | はい*                         | -      |
 | SQL Server (IaaS)                |                | [はい]                 | はい                          | はい                          | [はい]    |
-| SQL Azure (PaaS)                 |                | [はい]                 | プレビュー                      | -                            | [はい]    |
-| Azure Storage (ブロック/ページ Blob) |                | [はい]                 | プレビュー                      | -                            | [はい]    |
-| Azure Storage (ファイル)            |                | [はい]                 | -                            | -                            | -      |
-| Azure Storage (テーブル、キュー)   |                | -                   | -                            | -                            | [はい]    |
+| SQL Azure (PaaS)                 |                | [はい]                 | はい                          | -                            | [はい]    |
+| Azure Storage (ブロック/ページ Blob) |                | [はい]                 | はい                          | -                            | [はい]    |
+| Azure Storage (ファイル)            |                | [はい]                 | [はい]                          | -                            | -      |
+| Azure Storage (テーブル、キュー)   |                | [はい]                 | -                            | -                            | [はい]    |
 | Cosmos DB (ドキュメント DB)          |                | [はい]                 | -                            | -                            | -      |
 | StorSimple                       |                | [はい]                 | -                            | -                            | [はい]    |
 | バックアップ                           |                | -                   | -                            | -                            | [はい]    |
@@ -275,7 +276,7 @@ SQL Azure データのクライアント側の暗号化は、[Always Encrypted](
 | Power BI                         |                | [はい]                 | -                            | -                            | -      |
 | **IoT サービス**                     |                |                     |                              |                              |        |
 | IoT Hub                          |                | -                   | -                            | -                            | [はい]    |
-| Service Bus                      |                | あり (Premium 階層)              | -                            | -                            | [はい]    |
+| Service Bus                      |                | [はい]              | -                            | -                            | [はい]    |
 | Event Hubs                       |                | [はい]             | -                            | -                            | -      |
 
 

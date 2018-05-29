@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770725"
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスのアクセス制御 
 
@@ -75,13 +76,13 @@ ms.lasthandoff: 04/03/2018
 
 ### <a name="compliant-device"></a>準拠デバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠しているデバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、条件付きアクセス ポリシーは、Azure Active Directory に参加し、MDM ソリューションによって準拠としてマークされているデバイスで行われるアクセスの試行へのアクセスを許可します。
+デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、[マネージド デバイス](active-directory-conditional-access-policy-connected-applications.md#managed-devices)のみに許可することです。 準拠しているデバイスの要求は、マネージド デバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、条件付きアクセス ポリシーは、Azure Active Directory に[登録](device-management-introduction.md)され、MDM ソリューションによって準拠としてマークされているデバイスで行われるアクセスの試行へのアクセスを許可します。
 
 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 
-### <a name="domain-joined-device"></a>ドメイン参加済みデバイス
+### <a name="hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みデバイス
 
-デバイス ベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ドメインに参加しているデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 このオプションを選ぶと、条件付きアクセス ポリシーは、オンプレミスの Active Directory とユーザーの Azure Active Directory に参加しているデバイスで行われるアクセスの試行へのアクセスを許可します。  
+デバイス ベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ハイブリッド Azure AD に参加しているデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 このオプションを選ぶと、条件付きアクセス ポリシーは、オンプレミスの Active Directory とユーザーの Azure Active Directory に参加しているデバイスで行われるアクセスの試行へのアクセスを許可します。  
 
 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 
@@ -147,7 +148,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 2. […] をクリックします。  
 
-3. **[削除]**を選択します。
+3. **[削除]** を選択します。
 
 ### <a name="editing-custom-controls"></a>カスタム コントロールの編集
 

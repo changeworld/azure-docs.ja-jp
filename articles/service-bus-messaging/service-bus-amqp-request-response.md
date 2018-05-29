@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: d72a4de8591898a55e4225ace154fd5ed53e6f91
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 847fe0c08d442388cfa506042272bb358058cb4c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194702"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -69,7 +70,8 @@ role: RECEIVER,
 ### <a name="transfer-a-request-message"></a>要求メッセージの転送  
 
 要求メッセージを転送します。  
-  
+トランザクションをサポートする操作の場合は、必要に応じてトランザクション状態を追加することができます。
+
 ```  
 requestLink.sendTransfer(  
         Message(  
@@ -79,8 +81,12 @@ requestLink.sendTransfer(
                 },  
                 application-properties: {  
                         "operation" -> "<operation>",  
-                },  
-        )  
+                }
+        ),
+        [Optional] State = transactional-state: {
+                txn-id: <txn-id>
+        }
+)
 ```  
   
 ### <a name="receive-a-response-message"></a>応答メッセージの受信  
@@ -195,7 +201,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 ### <a name="schedule-message"></a>メッセージのスケジュール設定  
 
-メッセージのスケジュールを設定します。  
+メッセージのスケジュールを設定します。 この操作はトランザクションをサポートします。
   
 #### <a name="request"></a>要求  
 
@@ -217,8 +223,9 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |message-id|文字列|[はい]|文字列としての `amqpMessage.Properties.MessageId`|  
-|session-id|文字列|[はい]|`amqpMessage.Properties.GroupId as string`|  
-|partition-key|文字列|[はい]|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|  
+|session-id|文字列|いいえ |`amqpMessage.Properties.GroupId as string`|  
+|partition-key|文字列|いいえ |`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|文字列|いいえ |`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |Message|byte 型の配列|[はい]|AMQP 1.0 のワイヤーエンコードされたメッセージ。|  
   
 #### <a name="response"></a>Response  
@@ -537,6 +544,85 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
 |statusDescription|文字列|いいえ |ステータスの説明。|  
   
+### <a name="get-rules"></a>ルールの取得
+
+#### <a name="request"></a>要求
+
+要求メッセージには、次のアプリケーション プロパティが含まれている必要があります。
+
+|キー|値の型|必須|値の内容|  
+|---------|----------------|--------------|--------------------|  
+|operation|文字列|[はい]|`com.microsoft:enumerate-rules`|  
+|`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
+
+要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
+  
+|キー|値の型|必須|値の内容|  
+|---------|----------------|--------------|--------------------|  
+|top|int|[はい]|ページ内でフェッチされるルールの数。|  
+|skip|int|[はい]|スキップするルールの数。 ルールの一覧で開始インデックス (+1) を定義します。 | 
+
+#### <a name="response"></a>Response
+
+応答メッセージには、次のプロパティが含まれています。
+
+|キー|値の型|必須|値の内容|  
+|---------|----------------|--------------|--------------------|  
+|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
+|規則| マップの配列|[はい]|ルールの配列。 各ルールはマップで表現されます。|
+
+配列内の各マップ エントリには、次のプロパティが含まれています。
+
+|キー|値の型|必須|値の内容|  
+|---------|----------------|--------------|--------------------|  
+|rule-description|記述されたオブジェクトの配列|[はい]|AMQP で記述されたコード 0x0000013700000004 が含まれる `com.microsoft:rule-description:list`| 
+
+`com.microsoft.rule-description:list` は記述されたオブジェクトの配列です。 配列の内容は次のとおりです。
+
+|Index|値の型|必須|値の内容|  
+|---------|----------------|--------------|--------------------|  
+| 0 | 記述されたオブジェクトの配列 | [はい] | 以下に指定された `filter`。 |
+| 1 | 記述されたオブジェクトの配列 | [はい] | 以下に指定された `ruleAction`。 |
+| 2 | 文字列 | [はい] | ルールの名前です。 |
+
+`filter` は次のいずれかの種類になります。
+
+| 記述子名 | 記述子コード | 値 |
+| --- | --- | ---|
+| `com.microsoft:sql-filter:list` | 0x000001370000006 | SQL フィルター |
+| `com.microsoft:correlation-filter:list` | 0x000001370000009 | 関連付けフィルター |
+| `com.microsoft:true-filter:list` | 0x000001370000007 | 1=1 を表す true フィルター |
+| `com.microsoft:false-filter:list` | 0x000001370000008 | 1=0 を表す false フィルター |
+
+`com.microsoft:sql-filter:list` は以下の内容が含まれる、配列の記述です。
+
+|Index|値の型|必須|値の内容|  
+|---------|----------------|--------------|--------------------|  
+| 0 | 文字列 | [はい] | SQL フィルター式 |
+
+`com.microsoft:correlation-filter:list` は以下の内容が含まれる、配列の記述です。
+
+|インデックス (存在する場合)|値の型|値の内容|  
+|---------|----------------|--------------|--------------------|  
+| 0 | 文字列 | 関連付け ID |
+| 1 | 文字列 | メッセージ ID |
+| 2 | 文字列 | ターゲット |
+| 3 | 文字列 | 返信 |
+| 4 | 文字列 | ラベル |
+| 5 | 文字列 | セッション ID |
+| 6 | 文字列 | 返信セッション ID|
+| 7 | 文字列 | コンテンツの種類 |
+| 8 | マップ | アプリケーションで定義されているプロパティのマップ |
+
+`ruleAction` は次のいずれかの種類になります。
+
+| 記述子名 | 記述子コード | 値 |
+| --- | --- | ---|
+| `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | 空のルール アクション - ルール アクションは存在しません |
+| `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL ルール アクション |
+
+`com.microsoft:sql-rule-action:list` は記述されたオブジェクトの配列であり、この配列の最初のエントリは SQL ルール アクションの式が含まれている文字列となります。
+
 ## <a name="deferred-message-operations"></a>遅延メッセージ操作  
   
 ### <a name="receive-by-sequence-number"></a>シーケンス番号での受信  
@@ -583,7 +669,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
   
 ### <a name="update-disposition-status"></a>廃棄状態の更新  
 
-遅延メッセージの廃棄状態を更新します。  
+遅延メッセージの廃棄状態を更新します。 この操作はトランザクションをサポートします。
   
 #### <a name="request"></a>要求  
 

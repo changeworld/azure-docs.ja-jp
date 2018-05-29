@@ -1,19 +1,20 @@
 ---
-title: "Marathon UI を使用した Azure DC/OS クラスターの管理"
-description: "Marathon Web UI を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。"
+title: Marathon UI を使用した Azure DC/OS クラスターの管理
+description: Marathon Web UI を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b1c5fc223105b1dae0ce07f242a6b42b34fd2ab3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 43407d40db0aab2772cb1baeab3471be68aee2ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32166985"
 ---
 # <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Marathon Web UI による Azure Container Service DC/OS クラスターの管理
 
@@ -38,7 +39,7 @@ Secure Shell (SSH) トンネルを[確立](../container-service-connect.md)し�
 ![DC/OS UI](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Marathon UI について知る
-Marathon UI を表示するには、http://localhost/marathon に移動します。 この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。 コンテナーとアプリケーションの実行に関する情報も確認できます。  
+Marathon UI を参照するには、http://localhost/marathon に移動します。 この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。 コンテナーとアプリケーションの実行に関する情報も確認できます。  
 
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -82,7 +83,7 @@ Marathon メイン ページに戻ると、コンテナーのデプロイの状�
 
 ![Marathon main page UI--container deployment status](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-DC/OS の Web UI (http://localhost/) に戻ると、タスク (この場合は Docker 形式のコンテナー) が DC/OS クラスターで実行されていることがわかります。
+DC/OS の Web UI (http://localhost/)) に戻ると、タスク (この場合は Docker 形式のコンテナー) が DC/OS クラスターで実行されていることがわかります。
 
 ![DC/OS web UI--task running on the cluster](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -100,7 +101,7 @@ DC/OS の Web UI (http://localhost/) に戻ると、タスク (この場合は D
     ![インターネットから nginx へ](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [DC/OS と Marathon API の使用](container-service-mesos-marathon-rest.md)
 
 * Mesos と共に Azure Container Service を使用する方法の詳細

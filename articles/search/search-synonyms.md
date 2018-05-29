@@ -1,21 +1,21 @@
 ---
-pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
-description: Azure Search REST API で公開されているシノニム (プレビュー) 機能の暫定版ドキュメント。
+pageTitle: Synonyms in Azure Search | Microsoft Docs
+description: シノニムを使用して検索クエリの範囲を拡大する
 authors: mhko
-services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 07/07/2016
+ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 612bf30281703bd9cdec3a904f27df8e7dba3641
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 03e45aae37a0c0474dbd9cc5dd5e3fddd347bd62
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186909"
 ---
-# <a name="synonyms-in-azure-search-preview"></a>Azure Search のシノニム (プレビュー)
+# <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
 
 検索エンジンのシノニムは、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを暗黙的に拡張する同等の用語を関連付けます。 たとえば、用語 "dog" と、"canine" と "puppy" のシノニムの関連付けを指定すると、"dog"、"canine"、または "puppy" を含むすべてのドキュメントがクエリのスコープ内に収まります。
 
@@ -23,7 +23,7 @@ Azure Search では、シノニムの拡張は、クエリ時に行われます�
 
 ## <a name="feature-availability"></a>使用可能な機能
 
-シノニム機能は現在プレビューで、最新のプレビュー api-version (api-version=2016-09-01-Preview) でのみサポートされています。 現時点で Azure Portal のサポートはありません。 API バージョンは要求で指定するため、同じアプリで一般公開 (GA) API とプレビュー API を組み合わせることができます。 ただし、プレビュー API は SLA の対象ではなく、機能が変更される場合があるため、実稼働アプリケーションでの使用はお勧めしません。
+シノニム機能は最新の api バージョン (api バージョン = 2017-11-11) でサポートされています。 現時点で Azure Portal のサポートはありません。
 
 ## <a name="how-to-use-synonyms-in-azure-search"></a>Azure search でシノニムを使用する方法
 
@@ -43,11 +43,11 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 シノニム マップは、POST または PUT を使用してサービスにアップロードします。 各規則は、改行文字 ('\n') で区切る必要があります。 無料サービスでシノニム マップあたり最大 5,000 規則、およびその他のすべての SKU で 10,000 規則を定義できます。 各規則には、最大 20 個の拡張を設定できます。
 
-このプレビューでは、シノニム マップは、次に説明する Apache Solr 形式である必要があります。 別の形式の既存のシノニム辞書があり、それを直接使用する場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
+シノニム マップは、次に説明する Apache Solr 形式である必要があります。 別の形式の既存のシノニム辞書があり、それを直接使用する場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
 
 次の例のように、HTTP POST を使用して、新しいシノニム マップを作成できます。
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
     {  
@@ -60,7 +60,7 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 または、PUT を使用し、URI にシノニム マップ名を指定できます。 シノニム マップが存在しない場合、作成されます。
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
     {  
@@ -86,24 +86,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>サービスのシノニム マップを取得します。
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>サービスのシノニム マップを削除します。
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
 
 新しいフィールド プロパティ **synonymMaps** を使用して、検索可能フィールドに使用するシノニム マップを指定できます。 シノニム マップは、サービス レベル リソースであり、そのサービスに属するインデックスの任意のフィールドによって参照できます。
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2016-09-01-Preview
+    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
     api-key: [admin key]
 
     {
@@ -138,7 +138,7 @@ Washington, Wash., WA => WA
 **synonymMaps** は型 'Edm.String' または 'Collection(Edm.String)' の検索可能フィールドに指定できます。
 
 > [!NOTE]
-> このプレビューでは、フィールドあたり 1 つのシノニム マップのみを指定できます。 複数のシノニム マップを使用する必要がある場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
+> フィールドあたり 1 つのシノニム マップのみを指定できます。 複数のシノニム マップを使用する必要がある場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でお知らせください。
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>他の検索機能へのシノニムの影響
 

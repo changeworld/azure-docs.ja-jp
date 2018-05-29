@@ -1,24 +1,25 @@
 ---
-title: "Azure の Linux VM で cloud-init を使用してパッケージを更新およびインストールする | Microsoft Docs"
-description: "Azure CLI 2.0 による作成時に Linux VM で cloud-init を使用してパッケージを更新およびインストールする方法"
+title: Azure の Linux VM で cloud-init を使用してパッケージを更新およびインストールする | Microsoft Docs
+description: Azure CLI 2.0 による作成時に Linux VM で cloud-init を使用してパッケージを更新およびインストールする方法
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 04/20/2018
 ms.author: rclaus
-ms.openlocfilehash: e45bec2a71f94c66ce3044fb81bd2d7cefdf53a5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8d5835b5d1b0c2f77bdf5e1a2b808478b8f4de22
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186156"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Azure の Linux VM で cloud-init を使用してパッケージを更新およびインストールする
 この記事では、Azure でのプロビジョニング時に、[cloud-init](https://cloudinit.readthedocs.io) を使用して、Linux 仮想マシン (VM) または仮想マシン スケール セット (VMSS) でパッケージを更新する方法を示します。 この cloud-init スクリプトは、リソースが Azure によってプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください
@@ -58,23 +59,22 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-パッケージ管理ツールを実行し、更新プログラムを確認します。 次の例では、Ubuntu VM で `apt-get` を使用します。
+パッケージ管理ツールを実行し、更新プログラムを確認します。
 
 ```bash
-sudo apt-get upgrade
+sudo yum update
 ```
 
-cloud-init によって起動時に更新プログラムが確認され、インストールされるため、次の出力例に示すように、適用する更新プログラムはありません。
+cloud-init によって起動時に更新プログラムが確認され、インストールされるため、追加で適用する更新プログラムはありません。  更新プロセス、変更されたパッケージの数、`httpd` のインストールを確認するには、`yum history` を実行します。以下のような出力が表示されます。
 
 ```bash
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Loaded plugins: fastestmirror, langpacks
+ID     | Command line             | Date and time    | Action(s)      | Altered
+-------------------------------------------------------------------------------
+     3 | -t -y install httpd      | 2018-04-20 22:42 | Install        |    5
+     2 | -t -y upgrade            | 2018-04-20 22:38 | I, U           |   65
+     1 |                          | 2017-12-12 20:32 | Install        |  522
 ```
-
-`yum history` を実行して `httpd` がインストールされていることを表示し、`httpd` を参照する出力を確認することもできます。 
 
 ## <a name="next-steps"></a>次の手順
 構成変更の cloud-init の他の例については、以下をご覧ください。

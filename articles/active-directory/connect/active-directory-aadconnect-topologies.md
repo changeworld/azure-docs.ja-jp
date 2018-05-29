@@ -14,11 +14,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: f47cf18f70572ad93f5075c2f2c883d80af8220e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2f72f2dd3dbaaf17494d09a36159afc464cc64d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32154292"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -44,7 +45,7 @@ ms.lasthandoff: 04/18/2018
 ## <a name="single-forest-single-azure-ad-tenant"></a>単一のフォレスト、単一の Azure AD テナント
 ![単一のフォレストと単一のテナントのトポロジ](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-最も一般的なトポロジは、1 つのオンプレミス フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。 Azure AD 認証では、パスワード同期が使用されます。 Azure AD Connect の高速インストールでは、このトポロジのみがサポートされます。
+最も一般的なトポロジは、1 つのオンプレミス フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。 Azure AD 認証では、パスワード ハッシュ同期が使用されます。 Azure AD Connect の高速インストールでは、このトポロジのみがサポートされます。
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>単一のフォレスト、1 つの Azure AD テナントに対する複数の同期サーバー
 ![サポートされていない、単一のフォレストのフィルター処理されたトポロジ](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -64,7 +65,7 @@ Azure AD Connect のインストール ウィザードには、複数のフォ�
 
 Azure AD Connect 同期の既定の構成では、次のことを前提としています。
 
-* 各ユーザーが持つ有効なアカウントは 1 つのみで、このアカウントが配置されているフォレストがユーザーの認証に使用されます。 この前提は、パスワード同期とフェデレーションの両方に該当します。 UserPrincipalName と sourceAnchor/immutableID は、このフォレストから取得されます。
+* 各ユーザーが持つ有効なアカウントは 1 つのみで、このアカウントが配置されているフォレストがユーザーの認証に使用されます。 これは、パスワード ハッシュ同期、パススルー認証、およびフェデレーションを前提としています。 UserPrincipalName と sourceAnchor/immutableID は、このフォレストから取得されます。
 * 各ユーザーは、メールボックスを 1 つだけ持っています。
 * ユーザーのメールボックスをホストするフォレストは、Exchange のグローバル アドレス一覧 (GAL) で確認できる属性に対して最適なデータ品質を備えています。 ユーザーにメールボックスがない場合、どのフォレストを使用してもこれらの属性値を提供できます。
 * リンクされたメールボックスがある場合は、別のフォレストに、サインインに使用されるアカウントもあります。
@@ -157,7 +158,7 @@ DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。
 
 * Azure AD テナントのいずれか 1 つのみが、オンプレミスの Active Directory インスタンスを持つ Exchange ハイブリッドを有効にできます。
 * Windows 10 デバイスは、1 つの Azure AD テナントだけに関連付けることができます。
-* パスワード同期とパススルー認証のシングル サインオン (SSO) オプションは、1 つの Azure AD テナントでのみ使用できます。
+* パスワード ハッシュ同期とパススルー認証のシングル サインオン (SSO) オプションは、1 つの Azure AD テナントでのみ使用できます。
 
 オブジェクトの相互排他的なセットの要件は、書き戻しにも適用されます。 一部の書き戻し機能は、単一オンプレミス構成を前提としているため、このトポロジではサポートされていません。 次のような機能が該当します。
 

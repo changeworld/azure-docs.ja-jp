@@ -9,18 +9,19 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195534"
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database のサーバーとデータベースを作成し、管理する
 
 SQL Database には、次の 3 つの種類のデータベースが用意されています。
 
-- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、[異なるワークロードのためのコンピューティング リソースおよびストレージ リソースの定義済みセットを使って作成された単一のデータベース](sql-database-service-tiers.md)。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
-- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、プール内のすべてのデータベース間で共有された、[異なるワークロードのためのコンピューティング リソースおよびストレージ リソース](sql-database-service-tiers.md)の定義済みセットを使って[データベースのプール](sql-database-elastic-pool.md)の一部として作成されたデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
+- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、[コンピューティング リソースとストレージ リソースの組み合わせ](sql-database-service-tiers-dtu.md)または[コンピューティング リソースとストレージ リソースの独立したスケール](sql-database-service-tiers-vcore.md)を使用して作成された単一のデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
+- [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、プール内のすべてのデータベース間で共有された[コンピューティング リソースとストレージ リソースの独立したスケール (仮想コアベース)](sql-database-service-tiers-vcore.md) または[コンピューティング リソースとストレージ リソースの組み合わせ (DTU ベース)](sql-database-service-tiers-dtu.md) を使用して、[データベースのプール](sql-database-elastic-pool.md)の一部として作成されたデータベース。 Azure SQL データベースは、特定の Azure リージョン内に作成される、Azure SQL Database の論理サーバーと関連付けられます。
 - [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内で、そのサーバー インスタンス上のすべてのデータベースのためにコンピューティング リソースおよびストレージ リソースの定義済みセットを使って作成された [SQL Server のインスタンス](sql-database-managed-instance.md) (マネージ インスタンス)。 マネージ インスタンスには、システム データベースとユーザー データベースの両方が含まれています。 マネージ インスタンスは、アプリケーションを再設計せずに、データベースを完全に管理された PaaS にリフトアンドシフトできるように設計されています。 マネージ インスタンスは、オンプレミスの SQL Server プログラミング モデルとの高い互換性を備えています。また、SQL Server の機能や SQL Server に付随するツールとサービスの大多数を利用できます。  
 
 Microsoft Azure SQL Database では、表形式データ ストリーム (TDS) プロトコル クライアント バージョン 7.3 以降をサポートしており、暗号化された TCP/IP 接続のみを使用できます。
@@ -52,7 +53,7 @@ Azure SQL Database 論理サーバーは、
 - データベース アクセスの接続エンドポイント (<serverName>.database.windows.net) を提供します
 - マスター データベースに接続することで、含まれているリソースに関するメタデータへの DMV 経由のアクセスを提供します 
 - データベースに適用される管理ポリシーの範囲 (ログイン、ファイアウォール、監査、脅威の検出など) を提供します 
-- 親サブスクリプション内のクォータによって制限されます (既定でサブスクリプションあたり 20 サーバー - [サブスクリプションの制限についてはこちらを参照してください](../azure-subscription-service-limits.md))
+- 親サブスクリプション内のクォータによって制限されます (既定でサブスクリプションあたり 6 サーバー - [サブスクリプションの制限についてはここを参照してください](../azure-subscription-service-limits.md))
 - 含まれるリソースのデータベースのクォータと DTU または仮想コア クォータの範囲 (45,000 DTU など) を提供します
 - 含まれるリソースで有効な機能のバージョン管理の範囲です 
 - サーバー レベルのプリンシパルのログインによってサーバー上のすべてのデータベースを管理できます
@@ -65,11 +66,11 @@ Azure SQL Database 論理サーバーは、
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Azure Portal を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
-サーバー自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループを作成できます。 
+サーバー自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループを作成できます。 新しい SQL サーバーのフォームは新しい SQL サーバーか新しいデータベースを作成するときに表示されます。 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>空の SQL サーバー (論理サーバー) を作成する
 
-[Azure Portal](https://portal.azure.com) を使用して (データベースのない) Azure SQL Database サーバー を作成するには、空の SQL (論理) サーバー フォームに移動します。  
+[Azure ポータル](https://portal.azure.com)を利用して Azure SQL Database サーバーを作成するには、空の SQL サーバー (論理サーバー) フォームに移動します。  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>空またはサンプルの SQL データベースを作成する
 
@@ -78,7 +79,7 @@ Azure SQL Database 論理サーバーは、
   ![データベースの作成 -1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> データベースの価格レベルを選択する方法については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。
+> データベースの価格レベルを選択する方法については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 
 Azure SQL Database マネージ インスタンスを作成する方法については、[マネージ インスタンスを作成する](sql-database-managed-instance-create-tutorial-portal.md)を参照してください。
 
@@ -91,7 +92,7 @@ Azure SQL Database マネージ インスタンスを作成する方法につい
    ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> データベースのパフォーマンス プロパティを構成する方法については、「[サービス層](sql-database-service-tiers.md)」を参照してください。
+> データベースのパフォーマンス プロパティを構成するには、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md)に関するページを参照してください。
 >
 
 > [!TIP]
@@ -127,7 +128,7 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 
 [Azure CLI](/cli/azure) を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az_sql_db_create) |データベースを作成します。|
 |[az sql db list](/cli/azure/sql/db#az_sql_db_list)|サーバー内のすべてのデータベースとデータ ウェアハウス、またはエラスティック プール内のすべてのデータベースを一覧表示します。|
@@ -161,7 +162,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 > Transact-SQL を利用してサーバーを作成または削除することはできません。
 >
 
-| コマンド | 説明 |
+| コマンド | [説明] |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Azure SQL データベースを変更します。 |
@@ -187,7 +188,7 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 
 Azure SQL のサーバー、データベース、ファイアウォールを作成して管理するには、以下の REST API 要求を使います。
 
-| コマンド | 説明 |
+| コマンド | [説明] |
 | --- | --- |
 |[サーバー - 作成または更新](/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
 |[サーバー - 削除](/rest/api/sql/servers/delete)|SQL サーバーを削除します。|

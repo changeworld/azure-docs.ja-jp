@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f40bd7954bbf079c87f8312bff731b68d1acb7dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192766"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 SQL Database は、[自動データベース バックアップ](sql-database-automated-backups.md)および[長期保存でのバックアップ](sql-database-long-term-retention.md)を使用して、データベース復旧のためのこれらのオプションを提供します。 データベース バックアップは、次のものに復元できます。
@@ -97,7 +98,7 @@ Azure Portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal を使用して、削除されたみデータベースをその[保有期間](sql-database-service-tiers.md)中に復旧するには、サーバーのページを開き、[操作] 領域で **[削除済みデータベース]** をクリックします。
+Azure Portal を使用して、削除されたみデータベースを、その[DTU ベースのモデル リテンション期間](sql-database-service-tiers-dtu.md)中または[仮想コア ベースのモデル リテンション期間](sql-database-service-tiers-vcore.md)中に復旧するには、サーバーのページを開き、[操作] 領域で **[削除済みデータベース]** をクリックします。
 
 ![削除されたデータベースの復元 1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
@@ -123,7 +124,7 @@ geo セカンダリでのポイントインタイム リストアは、現在は
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal を使用して、データベースをその[保有期間](sql-database-service-tiers.md)中に geo リストアするには、[SQL データベース] ページを開き、**[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、**[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。 
+Azure Portal を使用して、データベースをその [DTU ベースのモデル リテンション期間](sql-database-service-tiers-dtu.md)中または[仮想コアベースのモデル リテンション期間](sql-database-service-tiers-vcore.md)中に geo リストアするには、[SQL データベース] ページを開き、**[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、**[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>自動バックアップを使用したプログラム実行の復旧
 前に説明したように、データベースの復旧は、Azure Portal のほかに、Azure PowerShell または REST API を使用してプログラムで実行できます。 次の表では、使用できるコマンド セットについて説明します。

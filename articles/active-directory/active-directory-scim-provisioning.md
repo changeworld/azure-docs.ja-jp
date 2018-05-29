@@ -6,8 +6,8 @@ documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
 editor: ''
-ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19a1ae7ae7acc6fe09a529dd174363735343027e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932015"
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -56,7 +57,7 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
 **SCIM をサポートするアプリケーションを接続するには:**
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
-2. **[Azure Active Directory] > [エンタープライズ アプリケーション] を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。
+2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。
 3. アプリケーションの名前を入力し、**[追加]** アイコンをクリックしてアプリ オブジェクトを作成します。
     
   ![][1]
@@ -131,12 +132,12 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
    FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
   ````
 8. **[Windows の設定] の [ネットワークとインターネット]** 設定で、**[Windows ファイアウォール]、[詳細設定]** の順に選択し、ポート 9000 への入力方向のアクセスを許可する**受信規則**を作成します。
-9. Windows コンピューターがルーターの内側にある場合は、インターネットに公開されているルーターのポート 9000 と Windows コンピューターのポート 9000 の間でネットワーク アクセス変換を実行するようにルーターを構成する必要があります。 これは、Azure AD がクラウド上にあるこのエンドポイントにアクセスするために必要な措置です。
+9. Windows コンピューターがルーターの内側にある場合は、インターネットに公開されているルーターのポート 9000 と Windows コンピューターのポート 9000 の間でネットワーク アクセス変換を実行するようにルーターを構成する必要があります。 この構成は、Azure AD がクラウド上にあるこのエンドポイントにアクセスするために必要です。
 
 **Azure AD にサンプルの SCIM エンドポイントを登録するには:**
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
-2. **[Azure Active Directory] > [エンタープライズ アプリケーション] を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。
+2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。
 3. アプリケーションの名前を入力し、**[追加]** アイコンをクリックしてアプリ オブジェクトを作成します。 作成されるアプリケーション オブジェクトは、単なる SCIM エンドポイントではなく、シングル サインオンのプロビジョニングと実装の対象であるアプリケーションを表しています。
 4. 結果の画面で、左側の列の **[プロビジョニング]** タブを選択します。
 5. **[プロビジョニング モード]** メニューの **[自動]** を選択します。
@@ -144,7 +145,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
   ![][2]
   *図 4: Azure ポータルでのプロビジョニングの構成*
     
-6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、http://testmachine.contoso.com:9000 または http://<IP アドレス>: 9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
+6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、http://testmachine.contoso.com:9000 または http://<IP アドレス>:9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
 8. **[テスト接続]** ボタンをクリックして、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試みが失敗した場合は、エラー情報が表示されます。  
 9. アプリケーションへの接続の試みが成功した場合は、**[保存]** をクリックして管理者資格情報を保存します。
@@ -239,7 +240,7 @@ SCIM 仕様に準拠する独自の Web サービスを開発するにあたっ�
     }
     }
 
-このサービスには、HTTP アドレスと、ルート証明機関が次のいずれかであるサーバー認証証明書が設定されている必要があります。 
+このサービスには、HTTP アドレスと、ルート証明機関が次のいずれかの名前であるサーバー認証証明書が設定されている必要があります。 
 
 * CNNIC
 * Comodo
@@ -347,12 +348,12 @@ Microsoft が提供する CLA ライブラリを使用して SCIM サービス�
 ## <a name="user-and-group-schema"></a>ユーザーとグループのスキーマ
 Azure Active Directory は、2 種類のリソースを SCIM Web サービスにプロビジョニングできます。  その 2 種類のリソースは、ユーザーとグループです。  
 
-ユーザー リソースは、スキーマ識別子 urn:ietf:params:scim:schemas:extension:enterprise:2.0:User で識別されます。この識別子については、このプロトコル仕様 (http://tools.ietf.org/html/draft-ietf-scim-core-schema) に記載されています。  Azure Active Directory 内のユーザーの属性を urn:ietf:params:scim:schemas:extension:enterprise:2.0:User リソースの属性に対応付ける既定のマッピングを下の表 1 に示します。  
+ユーザー リソースは、スキーマ識別子 "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" で識別されます。この識別子については、このプロトコル仕様 (http://tools.ietf.org/html/draft-ietf-scim-core-schema) に記載されています。  Azure Active Directory 内のユーザーの属性を "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" リソースの属性に対応付ける既定のマッピングを下の表 1 に示します。  
 
 グループ リソースは、スキーマ識別子 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group で識別されます。  Azure Active Directory 内のグループの属性を http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group リソースの属性に対応付ける既定のマッピングを下記の表 2 に示します。  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>表 1: 既定のユーザー属性マッピング
-| Azure Active Directory ユーザー | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
+| Azure Active Directory ユーザー | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |active |
 | displayName |displayName |
@@ -534,7 +535,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
   ````
-  属性のクエリ パラメーター id は、filter クエリ パラメーターの値として指定された式を満たすユーザー オブジェクトが存在する場合は、サービスが (そのリソースの id 属性の値のみが含まれた) urn:ietf:params:scim:schemas:core:2.0:User リソースまたは urn:ietf:params:scim:schemas:extension:enterprise:2.0:User リソースで応答すると想定されていることを示しています。  **id** 属性の値は要求元には既知です。 それは filter クエリ パラメーターの値に含まれています。これを要求する目的は、このようなオブジェクトが存在するかどうかを示す指標としてフィルター式を満たすリソースの最小表現を要求することにあります。   
+  属性のクエリ パラメーター "id" は、filter クエリ パラメーターの値として指定された式を満たすユーザー オブジェクトが存在する場合は、サービスが (そのリソースの "id" 属性の値のみが含まれた) "urn:ietf:params:scim:schemas:core:2.0:User" リソースまたは "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" リソースで応答すると想定されていることを示しています。  **id** 属性の値は要求元には既知です。 それは filter クエリ パラメーターの値に含まれています。これを要求する目的は、このようなオブジェクトが存在するかどうかを示す指標としてフィルター式を満たすリソースの最小表現を要求することにあります。   
 
   サービスの作成時に SCIM サービスの実装用に Microsoft が提供する共通言語基盤ライブラリを使用した場合、要求はサービスのプロバイダーの Query メソッドの呼び出しに変換されます。 parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
   

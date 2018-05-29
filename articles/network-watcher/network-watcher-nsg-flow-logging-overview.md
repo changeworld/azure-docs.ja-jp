@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher を使用したネットワーク セキュリティ グループに関するフローのログ記録の概要 - Azure CLI | Microsoft Docs"
-description: "このページでは Azure Network Watcher の機能である NSG のフロー ログの使用方法について説明します"
+title: Azure Network Watcher を使用したネットワーク セキュリティ グループに関するフローのログ記録の概要 | Microsoft Docs
+description: この記事では Azure Network Watcher の機能である NSG のフロー ログの使用方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,33 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4eaffba08ccf601e440709d804891668340a376d
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: c6a24fbca37d6aa1d775a70c708a139dfb70b813
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182427"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
-ネットワーク セキュリティ グループ フロー ログは、ネットワーク セキュリティ グループを介して IP トラフィックの送信と受信に関する情報を表示できるようにする Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信、受信フロー、フロー (送信元/送信先 IP、送信元/送信先ポート、プロトコル) についての 5 組の情報が適用される NIC、トラフィックが許可されているか、拒否されているかを示しています。
+ネットワーク セキュリティ グループ (NSG) のフローのログは、NSG を使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用されるネットワーク インターフェイス (NIC)、フローに関する 5 組の情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
 
-![フロー ログの概要][1]
+![フローのログの概要](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-フロー ログはネットワーク セキュリティ グループを対象としていますが、その他のログと同じようには表示されません。 フロー ログは、次の例で示すようにストレージ アカウント内と下記のログ記録パスにのみ格納されます。
+フロー ログは NSG を対象としていますが、その他のログと同じようには表示されません。 フロー ログは、次の例で示すようにストレージ アカウント内と下記のログ記録パスにのみ格納されます。
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログにはリテンション期間ポリシーがあり、1 日 から 365 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
+その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログの保持ポリシーの期間は、1 日から 365 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
 
 ## <a name="log-file"></a>ログ ファイル
 
-フロー ログには複数のプロパティがあります。 次の一覧は、NSG フロー ログ内で返されるプロパティの一覧です。
+フローのログには、次のプロパティが含まれています。
 
 * **time** - イベントがログに記録された時間
 * **systemId** - ネットワーク セキュリティ グループのリソース ID。
-* **category** - イベントのカテゴリ名で、常に NetworkSecurityGroupFlowEvent
+* **カテゴリ** - イベントのカテゴリです。 カテゴリは常に **NetworkSecurityGroupFlowEvent** となります。
 * **resourceid** - NSG のリソース ID
 * **operationName** -常に NetworkSecurityGroupFlowEvents
 * **properties** - フローのプロパティのコレクション
@@ -59,15 +60,14 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
                     * **Traffic Flow** - トラフィック フローの方向。 有効な値は受信の **I** と送信の **O** です。
                     * **Traffic** - トラフィックが許可された、または拒否された。 有効な値は許可の **A** と拒否の **D** です。
 
-
-以下はフロー ログの例です。 ご覧の通り、前のセクションで説明されているプロパティの一覧に従って、複数のレコードが存在します。 
+以下のテキストはフロー ログの例です。 ご覧の通り、前のセクションで説明されているプロパティの一覧に従って、複数のレコードが存在します。
 
 > [!NOTE]
-> FlowTuples プロパティの値は、コンマで区切られたリストです。
+> **FlowTuples* プロパティの値は、コンマで区切られたリストです。
  
 ```json
 {
-    "records": 
+    "records":
     [
         
         {
@@ -102,12 +102,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="next-steps"></a>次の手順
 
-フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
-
-NSG のログ記録については、「[ネットワーク セキュリティ グループ (NSG) のログ分析](../virtual-network/virtual-network-nsg-manage-log.md)」をご覧ください。
-
-VM におけるトラフィックの許可または拒否を確認するには、[IP フローの確認によるトラフィックの検証](network-watcher-check-ip-flow-verify-portal.md)に関するページをご覧ください
-
-<!-- Image references -->
-[1]: ./media/network-watcher-nsg-flow-logging-overview/figure1.png
-
+- フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
+- NSG のログ記録の詳細については、「[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+- VM に対するトラフィックを許可するのか拒否するのかを判断するには、[VM ネットワーク トラフィック フィルターの問題のトラブルシューティング](diagnose-vm-network-traffic-filtering-problem.md)に関するページを参照してください。

@@ -1,6 +1,6 @@
 ---
 title: Azure で特殊化したディスクから VM を作成する | Microsoft Docs
-description: Resource Manager デプロイメント モデルで、特殊化された非管理ディスクを接続して新しい VM を作成します。
+description: Resource Manager デプロイ モデルで、特殊化された非管理ディスクを接続して新しい VM を作成します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,11 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ffa36967eb987f5e1b66f007ae60a63e640a609a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: da1fa2b182888e623f8df734c9119e208433e2bd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012711"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 
@@ -320,5 +321,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>次の手順
-新しい仮想マシンにサインインするには、 [ポータル](https://portal.azure.com)で VM を参照し、 **[接続]**をクリックして、リモート デスクトップ RDP ファイルを開きます。 元の仮想マシンのアカウント資格情報を使用して、新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
+新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
 

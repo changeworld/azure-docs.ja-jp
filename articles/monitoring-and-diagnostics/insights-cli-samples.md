@@ -2,7 +2,7 @@
 title: Azure Monitor の CLI 2.0 クイック スタート サンプル。 | Microsoft Docs
 description: Azure Monitor の機能用のサンプル CLI 2.0 コマンド。 Azure Monitor は、アラート通知の送信、構成済みのテレメトリ データの値に基づく Web URL の呼び出しに加え、Cloud Services、Virtual Machines、Web Apps の自動スケールを行うことができる Microsoft Azure サービスです。
 author: kamathashwin
-manager: orenr
+manager: ''
 editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/09/2018
 ms.author: ashwink
-ms.openlocfilehash: e429ba460a97daed4a7bdf71895fe24c1619a645
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34009760"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Azure Monitor の CLI 2.0 クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
@@ -89,18 +90,17 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>アラートの操作
+## <a name="work-with-alerts"></a>アラートの操作 
+[!NOTE] 現時点で CLI でサポートされるのはアラート (クラシック) のみです。 
 
-このセクションの情報を使用すると、アラートを操作できます。
-
-### <a name="get-alert-rules-in-a-resource-group"></a>リソース グループのアラート ルールの取得
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>リソース グループのアラート (クラシック) の取得
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-rule"></a>メトリックのアラート ルールの作成
+### <a name="create-a-metric-alert-classic-rule"></a>メトリック アラート (クラシック) の作成
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -110,7 +110,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-an-alert-rule"></a>アラート ルールの削除
+### <a name="delete-an-alert-classic-rule"></a>アラート (クラシック) ルールの削除
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -206,7 +206,7 @@ az monitor autoscale list --resource-group <group name>
 az monitor autoscale show --name <settings name> --resource-group <group name>
 ```
 
-### <a name="set-auotoscale-settings"></a>自動スケール設定の設定
+### <a name="set-autoscale-settings"></a>自動スケール設定の設定
 
 ```azurecli
 az monitor autoscale create --name <settings name> --resource-group <group name> \

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17dea2d1106a57aa678a88db6647c71048d8c38f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7799eeb65a109a6ff517d50bb9603fe83f80ed14
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32769881"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -75,6 +76,9 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | ポート |FTP サーバーがリッスンしているポートを指定します。 |いいえ  |21 |
 | enableSsl |SSL/TLS チャネル上の FTP を使用するかどうかを指定します。 |いいえ  |true |
 | enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用しているときにサーバーの SSL 証明書の検証を有効にするかどうかを指定します。 |いいえ  |true |
+
+>[!NOTE]
+>FTP コネクタでは、暗号化なしまたは明示的な SSL/TLS 暗号化での FTP サーバーへのアクセスがサポートされています。暗黙的な SSL/TLS 暗号化はサポートされていません。
 
 ### <a name="use-anonymous-authentication"></a>匿名認証を使用
 

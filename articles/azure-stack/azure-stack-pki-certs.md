@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935644"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -35,7 +36,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
 - 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 詳細な一覧については、https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca をご覧ください。 
-- Azure Stack インフラストラクチャが、証明書の署名に使用する証明機関にネットワーク アクセスできる必要があります。
+- お使いの Azure Stack インフラストラクチャは、証明書において公開されている証明機関の証明書失効リスト (CRL) の場所にネットワーク アクセスできる必要があります。 この CRL は、http エンドポイントである必要があります
 - 証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。
 - 自己署名証明書は使用できません。
 - この証明書は、サブジェクトの別名 (SAN) フィールドにすべての名前空間を含む 1 つのワイルドカード証明書にすることができます。 または、必要な場所に **acs** や Key Vault などのエンドポイント用のワイルド カードを使った個々の証明書を使用できます。 
@@ -45,6 +46,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - 証明書の pfx ファイルの "Enhanced Key Usage" フィールドには、"Server Authentication (1.3.6.1.5.5.7.3.1)" と "Client Authentication (1.3.6.1.5.5.7.3.2)" の値が含まれている必要があります。
 - 証明書の "Issued to:" フィールドは "Issued by:" フィールドと同じにしないでください。
 - デプロイの時点で、すべての証明書 pfx ファイルのパスワードが同じである必要があります。
+- 証明書 pfx に対するパスワードは、複雑なパスワードである必要があります。
 - デプロイの失敗を回避するために、すべての証明書のサブジェクト名とサブジェクトの別名がこの記事で説明されている仕様に一致していることを確認してください。
 
 > [!NOTE]

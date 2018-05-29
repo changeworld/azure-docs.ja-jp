@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Netsuite の統合 | Microsoft Docs"
-description: "Azure Active Directory と Netsuite の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Netsuite の統合 | Microsoft Docs'
+description: Azure Active Directory と Netsuite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 04/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 23e39f20f5b3faa4f6cfba57508d1649e2bbdaa3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ecbadd45f964e4d4d36dcf67cf85cd878f012150
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル: Azure Active Directory と Netsuite の統合
 
@@ -63,11 +64,11 @@ Azure AD への Netsuite の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Netsuite**」と入力します。
 
@@ -86,11 +87,11 @@ Azure AD への Netsuite の統合を構成するには、ギャラリーから�
 
 Netsuite で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Netsuite テスト ユーザーの作成](#creating-a-netsuite-test-user)** - Netsuite で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,15 +101,15 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Netsuite** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_samlbase.png)
 
 3. **[Netsuite のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_url.png)
 
     **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
@@ -117,108 +118,104 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/tutorial_general_400.png)
 
 6. **[Netsuite 構成]** セクションで、**[Netsuite の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_configure.png) 
 
 7. ブラウザーで新しいタブを開き、Netsuite の会社のサイトに管理者としてサインインします。
 
 8. ページの上部にあるツール バーで、**[Setup]**、**[Setup Manager]** の順にクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
 9. **[Setup Tasks]** 一覧で、**[Integration]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-integration.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-integration.png)
 
 10. **[Manage Authentication]** セクションで、**[SAML Single Sign-on]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-saml.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-saml.png)
 
 11. **[SAML Setup]** ページで、次の手順を実行します。
    
-    a. **[サインオンの構成]** の **[クイック リファレンス]** セクションから **SAML シングル サインオン サービス URL** の値をコピーし、Netsuite の **[Identity Provider Login Page]\(ID プロバイダー ログイン ページ\)** フィールドに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオンの構成]** の **[クイック リファレンス]** セクションから **SAML シングル サインオン サービス URL** の値をコピーし、Netsuite の **[Identity Provider Login Page]\(ID プロバイダー ログイン ページ\)** フィールドに貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/ns-saml-setup.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/ns-saml-setup.png)
   
     b. Netsuite で、**[Primary Authentication Method]** を選択します。
 
     c. **[SAMLV2 Identity Provider Metadata]** フィールドで、**[Upload IDP Metadata File]** を選択します。 **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/ns-sso-setup.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/ns-sso-setup.png)
 
-    d. **[Submit]**をクリックします。
+    d. **[送信]** をクリックします。
 
 12. Azure AD で **[その他のすべてのユーザー属性を表示および編集する]** チェック ボックスをオンにして、属性を追加します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-attributes.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-attributes.png)
 
 13. **[属性名]** フィールドに、「`account`」と入力します。 **[属性値]** フィールドに、Netsuite アカウント ID を入力します。 この値は定数であり、アカウントによって異なります。 アカウント ID を確認する方法を次に示します。
 
-      ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-add-attribute.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-add-attribute.png)
 
-    a. Netsuite で、上部のナビゲーション メニューから **[Setup]\(セットアップ\)** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Netsuite で、上部のナビゲーション メニューから **[Setup]\(セットアップ\)** をクリックします。
 
     b. 左側のナビゲーション メニューの **[Setup Tasks]\(セットアップ タスク\)** セクションで、**[Integration]\(統合\)** セクションを選択し、**[Web Services Preferences]\(Web サービスの設定\)** をクリックします。
 
     c. Netsuite アカウント ID をコピーし、Azure AD の **[属性値]** フィールドに貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-account-id.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-account-id.png)
 
 14. ユーザーは Netsuite にシングル サインオンする前に、まず、Netsuite で適切なアクセス許可が割り当てられている必要があります。 次の手順に従って、アクセス許可を割り当てます。
 
-    a. 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
       
-      ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
     b. 左側のナビゲーション メニューで、**[Users/Roles]**、**[Manage Roles]** の順にクリックします。
       
-      ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-manage-roles.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-manage-roles.png)
 
-    c. **[New Role]**をクリックします。
+    c. **[New Role]** をクリックします。
 
-    d. 新しいロールの **[Name]\(名前\)** を入力し、**[Single Sign-On Only]\(シングル サインオンのみ\)** チェック ボックスをオンにします。
+    d. 新しいロールの**名前**を入力します:
       
-      ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-new-role.png)
+      ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-new-role.png)
 
     e. **[Save]** をクリックします。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 上部のメニューで、 **[Permissions]**をクリックします。 **[Setup]**をクリックします。
+    f. 上部のメニューで、 **[Permissions]** をクリックします。 **[Setup]** をクリックします。
       
-       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-sso.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-sso.png)
 
-    g. **[Set Up SAM Single Sign-on]**、**[Add]** の順にクリックします。
+    g. **[Set Up SAML Single Sign-on]**、**[Add]** の順にクリックします。
 
     h. **[Save]** をクリックします。
 
     i. 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
       
-       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-setup.png)
 
     j. 左側のナビゲーション メニューで、**[Users/Roles]**、**[Manage Users]** の順にクリックします。
       
-       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-manage-users.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-manage-users.png)
 
-    k. テスト ユーザーを選択します。 **[Edit]**をクリックします。
+    k. テスト ユーザーを選択します。 **[Edit]** をクリックします。
       
-       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-edit-user.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-edit-user.png)
 
-    l. [Roles] ダイアログ ボックスで、作成したロールを選択し、 **[Add]**をクリックします。
+    l. [Roles] ダイアログ ボックスで、作成したロールを選択し、 **[Add]** をクリックします。
       
-       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-add-role.png)
+       ![[Configure Single Sign-On]](./media/active-directory-saas-Netsuite-tutorial/ns-add-role.png)
 
     m. **[Save]** をクリックします。
     
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -242,7 +239,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-netsuite-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -270,7 +267,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[Netsuite]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -290,7 +287,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインし、 **[Netsuite]** をクリックします。
+シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインし、**[Netsuite]** をクリックします。
 
 ## <a name="additional-resources"></a>その他のリソース
 

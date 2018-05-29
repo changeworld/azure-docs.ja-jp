@@ -1,13 +1,13 @@
 ---
-title: "Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復 | Microsoft Docs"
-description: "Azure 環境で Oracle Database 12c データベースをバックアップおよび回復する方法について説明します。"
+title: Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復 | Microsoft Docs
+description: Azure 環境で Oracle Database 12c データベースをバックアップおよび回復する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e804fd17c3dbe9df9e9dc258e67b8f9192c1f8ad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193107"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復
 
@@ -169,7 +170,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 4. JSON ファイルを編集します。
 
-    VMSnapshotScriptPluginConfig.json ファイルを編集して、`PreScriptLocation` と `PostScriptlocation` パラメーターを含めます。 For example:
+    VMSnapshotScriptPluginConfig.json ファイルを編集して、`PreScriptLocation` と `PostScriptlocation` パラメーターを含めます。 例: 
 
     ```azurecli
     {
@@ -262,7 +263,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     # /etc/azure/post_script.sh
     ```
 
-詳細については、「[Application consistent backup for Linux VMs](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)」(Linux VM のアプリケーション整合性バックアップ) を参照してください。
+詳細については、「[Application consistent backup for Linux VMs](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)」(Linux VM のアプリケーション整合性バックアップ) を参照してください。
 
 
 ### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>手順 5: Azure Recovery Services コンテナーを使用してVM をバックアップする
@@ -283,11 +284,11 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
     ![Recovery Services コンテナーのバックアップ ページ](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  **[バックアップの目標]** ブレードには、既定の **[Azure]** と **[仮想マシン]** の値を使用します。 **[OK]**をクリックします。
+5.  **[バックアップの目標]** ブレードには、既定の **[Azure]** と **[仮想マシン]** の値を使用します。 Click **OK**.
 
     ![Recovery Services コンテナーの詳細ページ](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  **[バックアップ ポリシー]** には、**[DefaultPolicy]** または**[新しいポリシーの作成]** を使用します。 **[OK]**をクリックします。
+6.  **[バックアップ ポリシー]** には、**[DefaultPolicy]** または **[新しいポリシーの作成]** を使用します。 Click **OK**.
 
     ![Recovery Services コンテナーのバックアップ ポリシーの詳細ページ](./media/oracle-backup-recovery/recovery_service_06.png)
 
@@ -354,7 +355,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
     ![Recovery Services コンテナーファイル回復ページのスクリーンショット](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. [**ファイルの回復 (プレビュー)**] ウィンドウで、**[スクリプトのダウンロード]** をクリックします。 次に、クライアント コンピューター上のフォルダーにダウンロードされた (.sh) ファイルを保存します。
+4. **[ファイルの回復 (プレビュー)]** ウィンドウで、**[スクリプトのダウンロード]** をクリックします。 次に、クライアント コンピューター上のフォルダーにダウンロードされた (.sh) ファイルを保存します。
 
     ![スクリプト ファイルのダウンロードの保存オプション](./media/oracle-backup-recovery/recovery_service_15.png)
 
@@ -467,7 +468,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
     ![myVault のバックアップ項目](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  **[バックアップ項目 (Azure Virtual Machin)]**ブレードで、 **[myvm1]** を選択します。
+3.  **[バックアップ項目 (Azure Virtual Machin)]** ブレードで、 **[myvm1]** を選択します。
 
     ![VM の復元ページ](./media/oracle-backup-recovery/recover_vm_04.png)
 
@@ -502,7 +503,7 @@ VM を復元したら、パブリック IP アドレスを設定します。
 
     ![パブリック IP アドレスのリスト](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  **[パブリック IP アドレス]** ブレードで、**[追加]** をクリックします。 **[パブリック IP アドレスの作成]** ブレードの **[名前]** で、パブリック IP 名を選択します。 **[リソース グループ]** では、**[既存のものを使用]** を選択します。 **[作成]**をクリックします。
+2.  **[パブリック IP アドレス]** ブレードで、**[追加]** をクリックします。 **[パブリック IP アドレスの作成]** ブレードの **[名前]** で、パブリック IP 名を選択します。 **[リソース グループ]** では、**[既存のものを使用]** を選択します。 **[作成]** をクリックします。
 
     ![IP アドレスを作成する](./media/oracle-backup-recovery/create_ip_01.png)
 
@@ -561,7 +562,7 @@ VM が必要なくなったら、次のコマンドを使用して、リソー�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 

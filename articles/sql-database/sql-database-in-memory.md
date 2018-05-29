@@ -9,11 +9,12 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b4f8388fdf104253aad07de77e89c30df4e4b128
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195170"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -43,7 +44,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 列ストア インデックスは 2012 年以降、インメモリ OLTP は 2014 年以降、SQL Server 製品の一部です。 Azure SQL Database と SQL Server では、インメモリ テクノロジの同一の実装が使用されています。 今後、これらのテクノロジの新しい機能は最初に Azure SQL Database でリリースされてから、SQL Server でリリースされます。
 
-このトピックでは、Azure SQL Database に固有のインメモリ OLTP と列ストア インデックスの側面について説明し、サンプルも示します。
+この記事では、Azure SQL Database に固有のインメモリ OLTP と列ストア インデックスの側面について説明し、サンプルも示します。
 - これらのテクノロジがストレージに及ぼす影響と、データ サイズの上限について説明します。
 - これらのテクノロジを活用するデータベースを、異なる価格レベルの間で移動する際の管理方法を説明します。
 - インメモリ OLTP と列ストア インデックスを Azure SQL Database で使用する方法を示す 2 つのサンプルを確認します。
@@ -92,7 +93,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列ストア インデックスのデータ サイズとストレージ
 
-列ストア インデックスはメモリに収まる必要がありません。 そのため、インデックス サイズの唯一の上限は、[SQL Database のサービス レベル](sql-database-service-tiers.md)に関する記事で記述されているデータベース全体の最大サイズです。
+列ストア インデックスはメモリに収まる必要がありません。 そのため、インデックス サイズの唯一の上限は、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル (プレビュー)](sql-database-service-tiers-vcore.md) に関する記事で記述されているデータベース全体の最大サイズです。
 
 クラスター化列ストア インデックスを使用する場合、ベース テーブル ストレージでは列圧縮が使用されます。 この圧縮により、ユーザー データのストレージ フットプリントが大幅に削減されるため、データベースにより多くのデータを格納できます。 これは、[列アーカイブ圧縮](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression)でさらに拡張できます。 実行できる圧縮の量はデータの性質に依存しますが、10 倍の圧縮は珍しくありません。
 
@@ -223,8 +224,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 次の 2 つの *ストアド プロシージャ* の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
 
-- SalesLT**.**usp_InsertSalesOrder**_inmem**
-- SalesLT**.**usp_InsertSalesOrder**_ondisk**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
+- SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 このセクションでは、便利な **ostress.exe** ユーティリティを使用して、負荷が高い状態で 2 つのストアド プロシージャを実行する方法について説明します。 2 つのストレス実行が完了するまでの時間を比較することができます。
