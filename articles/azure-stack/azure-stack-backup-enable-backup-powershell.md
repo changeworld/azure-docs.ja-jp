@@ -6,84 +6,50 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 7DFEFEBE-D6B7-4BE0-ADC1-1C01FB7E81A6
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 5/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 6fbd82c3d49a4d64523bf0e10b67ce3aabe96de2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: hectorl
+ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34074934"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>PowerShell で Azure Stack のバックアップを有効にする
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Windows PowerShell でインフラストラクチャ バックアップ サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにします。 PowerShell コマンドレットにアクセスして、オペレーター管理エンドポイント経由でバックアップを有効にし、バックアップを開始し、バックアップ情報を取得できます。
+Windows PowerShell で Infrastructure Backup サービスを有効にして、次のものを定期的にバックアップします。
+ - 内部 ID サービスとルート証明書
+ - ユーザー プラン、オファー、サブスクリプション
+ - KeyVault シークレット
+ - ユーザー RBAC ロールとポリシー
 
-## <a name="download-azure-stack-tools"></a>Azure Stack ツールをダウンロードする
+PowerShell コマンドレットにアクセスして、オペレーター管理エンドポイント経由でバックアップを有効にし、バックアップを開始し、バックアップ情報を取得できます。
 
-Azure Stack の PowerShell と Azure Stack ツールをインストールして構成します。 「[Get up and running with PowerShell in Azure Stack (Azure Stack での PowerShell の稼働)](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)」をご覧ください。
+## <a name="prepare-powershell-environment"></a>PowerShell 環境を準備する
 
-##  <a name="load-the-connect-and-infrastructure-modules"></a>接続モジュールとインフラストラクチャ モジュールを読み込む
+PowerShell 環境の構成方法については、「[PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)」をご覧ください。
 
-管理者特権のプロンプトで Windows PowerShell を開き、次のコマンドを実行します。
-
-   ```powershell
-    cd C:\tools\AzureStack-Tools-master\Connect
-    Import-Module .\AzureStack.Connect.psm1
-    
-    cd C:\tools\AzureStack-Tools-master\Infrastructure
-    Import-Module .\AzureStack.Infra.psm1 
-    
-   ```
-
-##  <a name="setup-rm-environment-and-log-into-the-operator-management-endpoint"></a>Rm 環境を設定し、オペレーター管理エンドポイントにログインする
-
-同じ PowerShell セッションで、環境変数を追加して次の PowerShell スクリプトを編集します。 更新されたスクリプトを実行して RM 環境を設定し、オペレーター管理エンドポイントにログインします。
-
-| 変数    | [説明] |
-|---          |---          |
-| $TenantName | Azure Active Directory テナント名。 |
-| オペレーター アカウント名        | Azure Stack オペレーター アカウント名。 |
-| Azure Resource Manager エンドポイント | Azure Resource Manager の URL。 |
-
-   ```powershell
-   # Specify Azure Active Directory tenant name
-    $TenantName = "contoso.onmicrosoft.com"
-    
-    # Set the module repository and the execution policy
-    Set-PSRepository `
-      -Name "PSGallery" `
-      -InstallationPolicy Trusted
-    
-    Set-ExecutionPolicy RemoteSigned `
-      -force
-    
-    # Configure the Azure Stack operator’s PowerShell environment.
-    Add-AzureRMEnvironment `
-      -Name "AzureStackAdmin" `
-      -ArmEndpoint "https://adminmanagement.seattle.contoso.com"
-    
-    Set-AzureRmEnvironment `
-      -Name "AzureStackAdmin" `
-      -GraphAudience "https://graph.windows.net/"
-    
-    $TenantID = Get-AzsDirectoryTenantId `
-      -AADTenantName $TenantName `
-      -EnvironmentName AzureStackAdmin
-    
-    # Sign-in to the operator's console.
-    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID 
-    
-   ```
 ## <a name="generate-a-new-encryption-key"></a>新しい暗号化キーを生成する
 
+Azure Stack の PowerShell と Azure Stack ツールをインストールして構成します。
+ - 「[Get up and running with PowerShell in Azure Stack (Azure Stack での PowerShell の稼働)](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)」をご覧ください。
+ - 「[GitHub からの Azure Stack ツールのダウンロード](azure-stack-powershell-download.md)」をご覧ください
+
+管理者特権のプロンプトで Windows PowerShell を開き、次のコマンドを実行します。
+   
+   ```powershell
+    cd C:\tools\AzureStack-Tools-master\Infrastructure
+    Import-Module .\AzureStack.Infra.psm1 
+   ```
+   
 同じ PowerShell セッションで、次のコマンドを実行します。
 
    ```powershell
@@ -118,7 +84,7 @@ Azure Stack の PowerShell と Azure Stack ツールをインストールして�
 同じ PowerShell セッションで、次のコマンドを実行します。
 
    ```powershell
-   Get-AzsBackupLocation | Select-Object -Property Path, UserName, Password | ConvertTo-Json 
+   Get-AzsBackupLocation | Select-Object -ExpandProperty externalStoreDefault | Select-Object -Property Path, UserName, Password | ConvertTo-Json
    ```
 
 結果は次の JSON 出力のようになります。
@@ -136,4 +102,4 @@ Azure Stack の PowerShell と Azure Stack ツールをインストールして�
 ## <a name="next-steps"></a>次の手順
 
  - 「[Back up Azure Stack](azure-stack-backup-back-up-azure-stack.md )」(Azure Stack のバックアップ) でバックアップの実行方法を学びます。  
-- 「[Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md )」(管理ポータルでのバックアップ完了の確認) でバックアップが実行されたことを確認する方法について学びます。
+ - 「[Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md )」(管理ポータルでのバックアップ完了の確認) でバックアップが実行されたことを確認する方法について学びます。

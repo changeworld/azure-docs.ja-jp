@@ -1,19 +1,20 @@
 ---
-title: "Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して Active Directory 用のディザスター リカバリー ソリューションを実装する方法について説明します。"
+title: Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Active Directory 用のディザスター リカバリー ソリューションを実装する方法について説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 97923af5ed4191f66434166c4743e398f8ac635a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072608"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
 
@@ -57,16 +58,16 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 セカンダリ サイトでドメイン コントローラーを作成します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側で使用されているのと同じドメイン名を指定してください。 **Active Directory サイトとサービス** スナップインを使用して、サイトの追加先となるサイト リンク オブジェクトに対する設定を構成することができます。 サイト リンクで設定を構成することで、2 つまたはそれ以上のサイト間でレプリケーションを発生させる時間と頻度を制御できます。 詳細については、「[Scheduling replication between sites](https://technet.microsoft.com/library/cc731862.aspx)」(サイト間でのレプリケーションをスケジュールする) をご覧ください。
 
 ### <a name="site-to-azure-protection"></a>サイトと Azure 間の保護
-最初に、[Azure 仮想ネットワークでドメイン コントローラーを作成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
+最初に、Azure 仮想ネットワークでドメイン コントローラーを作成します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
 
-その後、Azure の DNS サーバーを使用するように[仮想ネットワークの DNS サーバーを再構成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)します。
+その後、Azure の DNS サーバーを使用するように仮想ネットワークの DNS サーバーを再構成します。
 
 ![Azure ネットワーク](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Azure 間の保護
-最初に、[Azure 仮想ネットワークでドメイン コントローラーを作成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
+最初に、Azure 仮想ネットワークでドメイン コントローラーを作成します。 サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
 
-その後、Azure の DNS サーバーを使用するように[仮想ネットワークの DNS サーバーを再構成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)します。
+その後、Azure の DNS サーバーを使用するように仮想ネットワークの DNS サーバーを再構成します。
 
 ## <a name="test-failover-considerations"></a>テスト フェールオーバーの考慮事項
 運用環境のワークロードに影響が生じないように、テスト フェールオーバーは、運用ネットワークから分離されたネットワークで行われます。

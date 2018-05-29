@@ -1,11 +1,11 @@
 ---
-title: "アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない | Microsoft Docs"
-description: "Azure AD アプリケーション プロキシを使用したアプリケーション用のコネクタ グループ内に動作するコネクタがない場合に発生する可能性のある問題に対処します"
+title: アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない | Microsoft Docs
+description: Azure AD アプリケーション プロキシを使用したアプリケーション用のコネクタ グループ内に動作するコネクタがない場合に発生する可能性のある問題に対処します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 7aad43be4dc411215a4b54c21a16c4cbb949c7ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 679b8654ad926ddb80747ad4c93064946c9bc82b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155424"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない
 
@@ -38,21 +39,21 @@ ms.lasthandoff: 12/11/2017
 
     -   アクティブなコネクタをグループ内に移動する
 
-どちらの問題が該当するかを調べるには、アプリケーションの [アプリケーション プロキシ] メニューを開き、[コネクタ グループ] の警告メッセージを確認します。 このメッセージには、グループに少なくとも 1 つのコネクタが必要である (グループ内にコネクタが 1 つもない) ことか、またはアクティブなコネクタがない (ただし、おそらくアクティブではないコネクタがある) ことが示されます。
+問題を調べるには、アプリケーションの [アプリケーション プロキシ] メニューを開き、[コネクタ グループ] の警告メッセージを確認します。 グループ内にコネクタがない場合、警告メッセージには、グループには少なくとも 1 つのコネクタが必要であることが明記されます。 アクティブなコネクタがない場合、警告メッセージにそのことが説明されます。 非アクティブなコネクタがあるのは一般的です。 
 
-   ![Azure Portal でのコネクタ グループの選択](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
+   ![Azure portal でのコネクタ グループの選択](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-これらの各オプションの詳細については、以下の対応するセクションを参照してください。 各セクションでは、コネクタ管理ページから操作を開始していることを前提としています。 上記のエラー メッセージが表示される場合は、警告メッセージをクリックすることで、このページにアクセスできます。 それ以外には、**Azure Active Directory** にアクセスし、**[エンタープライズ アプリケーション]**、**[アプリケーション プロキシ]** の順にクリックすることで、このページを確認できます。
+これらの各オプションの詳細については、以下の対応するセクションを参照してください。 これらの手順では、コネクタ管理ページから操作を開始していることを前提としています。 上記のエラー メッセージが表示される場合は、警告メッセージをクリックすることで、このページにアクセスできます。 **Azure Active Directory** にアクセスし、**[エンタープライズ アプリケーション]**、**[アプリケーション プロキシ]** の順にクリックしても、このページにアクセスできます。
 
-   ![Azure Portal でのコネクタ グループの管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
+   ![Azure portal でのコネクタ グループの管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
 ## <a name="download-a-new-connector"></a>新しいコネクタをダウンロードする
 
 新しいコネクタをダウンロードするには、ページの上部にある [コネクタのダウンロード] ボタンを使用します。
 
-コネクタは、バックエンド アプリケーションに直接アクセスできるコンピューターにインストールする必要があり、通常はアプリケーションと同じサーバーに配置されます。 ダウンロード後、コネクタがこのメニュー内に表示されます。 コネクタをクリックし、[コネクタ グループ] ドロップダウンを使用して、そのコネクタが正しいグループに属すようにします。 変更を保存します。
+コネクタをバックエンド アプリケーションに直接視線がある状態でコンピューターにインストールします。 通常、コネクタはアプリケーションと同じサーバーにインストールされます。 ダウンロード後、コネクタがこのメニュー内に表示されます。 コネクタをクリックし、[コネクタ グループ] ドロップダウンを使用して、そのコネクタが正しいグループに属すようにします。 変更を保存します。
 
-   ![Azure Portal からコネクタをダウンロードする](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
+   ![Azure portal からコネクタをダウンロードする](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
 ## <a name="move-an-active-connector"></a>アクティブなコネクタを移動する
 
@@ -64,7 +65,7 @@ ms.lasthandoff: 12/11/2017
 
 この問題の調査方法の詳細については、ポートのトラブルシューティングに関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次のステップ
-[Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
+## <a name="next-steps"></a>次の手順
+[Azure AD アプリケーション プロキシ コネクタについて](manage-apps/application-proxy-connectors.md)
 
 

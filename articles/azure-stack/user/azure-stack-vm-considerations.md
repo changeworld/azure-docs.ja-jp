@@ -12,19 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 05/10/2018
 ms.author: brenduns
-ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076164"
 ---
-# <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure Stack の仮想マシンに関する考慮事項
+# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Azure Stack で仮想マシンを操作する際の考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-仮想マシンは、Azure Stack によって提供される、オンデマンドのスケーラブルなコンピューティング リソースです。 仮想マシンを使用する場合は、Azure で使用できる機能と Azure Stack で使用できる機能には違いがあることを理解する必要があります。 この記事では、Azure Stack の仮想マシンとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
+Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコンピューティング リソースを提供します。 仮想マシン (Vm) を展開する前に、Azure スタックと Microsoft Azure で使用できる仮想マシンの機能の違いを理解する必要があります。 この記事では、これらの相違点について説明し、仮想マシンの展開を計画するための重要な考慮事項を特定します。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>チート シート: 仮想マシンの相違点
 
@@ -41,14 +42,16 @@ ms.lasthandoff: 03/17/2018
 |仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
-Azure は、リソースの過剰消費を防ぐため、複数の方法でリソースの制限を適用します (サーバー ローカルおよびサービス レベル)。 テナントのリソース消費量に何らかの制限を設けないと、"うるさい隣人" がリソースを過剰に消費してテナントのパフォーマンスが低下することがあります。 
-- VM からのネットワーク送信には、帯域幅の上限が設けられます。 Azure Stack での上限は、Azure での上限と一致します。  
-- ストレージ リソースの場合、テナントによるストレージ アクセスのためのリソースの基本的な過剰消費を防ぐため、Azure Stack によってストレージ IOP 制限が実装されます。 
-- 複数のデータ ディスクが接続された VM では、各個別データ ディスクの最大スループットは、HHD で 500 IOPS、SSD で 2300 IOPS です。
+
+Azure Stack は、リソースの過剰消費を防ぐため、(サーバー ローカルおよびサービス レベルで) リソースの制限を適用します。これらの制限は、他のテナントによるリソース消費の影響を軽減してテナントのエクスペリエンスを改善します。
+
+- VM からのネットワーク送信には、帯域幅の上限が設けられます。 Azure Stack での上限は、Azure での上限と同様です。
+- ストレージ リソースの場合、テナントによるストレージ アクセスのためのリソースの基本的な過剰消費を防ぐため、Azure Stack によってストレージ IOPS 制限が実装されます。
+- 複数のデータ ディスクが接続された VM では、各データ ディスクの最大スループットは、HHD で 500 IOPS、SSD で 2300 IOPS です。
 
 次の表は、Azure Stack でサポートされている VM とその構成の一覧です。
 
-| 種類           | サイズ          | サポートされるサイズの範囲 |
+| type           | サイズ          | サポートされるサイズの範囲 |
 | ---------------| ------------- | ------------------------ |
 |汎用 |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
 |汎用 |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
@@ -61,7 +64,7 @@ Azure は、リソースの過剰消費を防ぐため、複数の方法でリ�
 |メモリ最適化|Dv2 シリーズ     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |メモリ最適化|DSv2 シリーズ  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-仮想マシンのサイズと、それに関連付けられるリソースの量は、Azure Stack と Azure の間で一貫しています。 たとえば、この一貫性には、作成できるメモリの量、コアの数、データ ディスクの数やサイズが含まれます。 ただし、Azure Stack 内で VM サイズが同じ場合のパフォーマンスは、基になっている特定の Azure Stack 環境の特性によって異なります。
+仮想マシンのサイズと、それに関連付けられるリソースの量は、Azure Stack と Azure の間で一貫しています。 そのようなリソースには、作成できるメモリの量、コアの数、データ ディスクの数やサイズが含まれます。 ただし、同じサイズの VM のパフォーマンスは、基になっている特定の Azure Stack 環境の特性によって異なります。
 
 ## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
 
@@ -92,7 +95,17 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
+
 サポートされるリソースの種類と API バージョンの一覧は、クラウド オペレーターが Azure Stack 環境を新しいバージョンに更新した場合は異なっている可能性があります。
+
+## <a name="windows-activation"></a>Windows のライセンス認証
+
+Windows の製品は、製品使用権利およびマイクロソフのライセンス条項に従って使用する必要があります。 Azure Stack は [VM の自動ライセンス認証](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) を使用して Windows Server 仮想マシン (VM) をアクティブ化します。
+
+- Azure Stack のホストは、Windows Server 2016 の AVMA キーを使用して Windows をアクティブ化します。 Windows Server 2012 またはそれ以降を実行する VM は、自動的にアクティブ化されます。
+- Windows Server 2008 R2 を実行する VM は、自動的にアクティブ化されないので、[MAK ライセンス認証](https://technet.microsoft.com/library/ff793438.aspx)を使用してアクティブ化する必要があります。
+
+Microsoft Azure では、KMS ライセンス認証を使用して、Windows VM をアクティブ化します。 Azure Stack から Azure に VM を移行して、アクティブ化の問題があった場合は、[Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems)を参照してください。 追加の情報は、Azure サポート チームのブログ投稿、[Azure VM での Windows のライセンス認証の失敗をトラブルシューティングする](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

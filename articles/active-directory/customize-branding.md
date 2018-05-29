@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory テナントのサインイン ページをカスタマイズする | Microsoft Docs"
-description: "Azure サインイン ページに会社のブランドを追加する方法について説明します。"
+title: Azure Active Directory テナントのサインイン ページをカスタマイズする | Microsoft Docs
+description: Azure サインイン ページに会社のブランドを追加する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 03a6b82f769ed9a36c5d3ff9934de75d1536e1ae
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33764446"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する
 多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory (Azure AD) では、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 サインイン ページは、Azure AD を ID プロバイダーとして使用する、Office 365 などの Web ベースのアプリケーションにサインインするときに表示されます。 このページを使用して資格情報を入力します。

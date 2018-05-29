@@ -3,23 +3,25 @@ title: Azure Active Directory とアプリケーションの統合
 description: Azure Active Directory (Azure AD) でアプリケーションを追加、更新、または削除する方法。
 services: active-directory
 documentationcenter: ''
-author: PatAltimore
+author: CelesteDG
 manager: mtillman
-editor: mbaldwin
+editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
-ms.author: bryanla
+ms.date: 04/18/2018
+ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 76c6ef7d4cf53872dda308628790994b35d8431c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157998"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Azure Active Directory とアプリケーションの統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -56,7 +58,7 @@ ms.lasthandoff: 04/16/2018
 5. 完了したら、**[作成]** をクリックします。 Azure AD によりアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。 同意の概要と、アプリケーション登録で追加の構成機能 (資格情報、アクセス許可、他のテナントのユーザーによるサインインの有効化) を有効にする方法の詳細については、次のセクションを参照してください。
 
   > [!NOTE]
-  > 既定では、新しく登録されたアプリケーションは、同じテナントのユーザー**のみ**サインインできる構成になります。
+  > 既定では、新しく登録された Web アプリケーションは、同じテナントのユーザー**のみ**サインインできる構成になります。
   > 
   > 
 
@@ -65,7 +67,7 @@ ms.lasthandoff: 04/16/2018
 
 ### <a name="overview-of-the-consent-framework"></a>同意フレームワークの概要
 
-Azure AD の同意フレームワークを使用すると、多層アプリケーションも含め、マルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、独自の Web API に加えて、Microsoft Graph API (Azure Active Directory、Intune、および Office 365 のサービスへのアクセスに使用する API) をはじめとする Microsoft サービスの API など、各種の Web API にもアクセスが必要になることがあります。 このフレームワークの根底には、ディレクトリのデータにアクセスする可能性があるためにディレクトリへの登録を要求しているアプリケーションに対して同意を与えるユーザーまたは管理者が存在します。
+Azure AD の同意フレームワークを使用すると、マルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、独自の Web API に加えて、Microsoft Graph API (Azure Active Directory、Intune、および Office 365 のサービスへのアクセスに使用する API) をはじめとする Microsoft サービスの API など、各種の Web API にもアクセスが必要になることがあります。 このフレームワークの根底には、ディレクトリのデータにアクセスする可能性があるためにディレクトリへの登録を要求しているアプリケーションに対して同意を与えるユーザーまたは管理者が存在します。
 
 たとえば、Web クライアント アプリケーションで Office 365 ユーザーの予定表情報を読み取る必要があるときは、まずそのユーザーがクライアント アプリケーションに同意を与える必要があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて予定表情報を利用できるようになります。 [Microsoft Graph API](https://graph.microsoft.io) は、Office 365 のデータ (Exchange の予定表とメッセージ、SharePoint のサイトとリスト、OneDrive のドキュメント、OneNote のノートブック、Planner のタスク、Excel のブックなど)、Azure AD のユーザーとグループなど、Microsoft クラウド サービスのさまざまなデータ オブジェクトにアクセスするための API です。 
 
@@ -93,15 +95,15 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
 
 5. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローの詳細については、「Azure AD の認証シナリオ」の「[Web アプリケーション対 Web API](active-directory-authentication-scenarios.md#web-application-to-web-api)」を参照してください。
 
-6. 管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、そのテナントのユーザーには同意ダイアログが表示されなくなります。この管理者による同意は、[Azure Portal](https://portal.azure.com) のアプリケーション ページから行います。 アプリケーションの **[設定]** ページで、**[必要なアクセス許可]**、**[アクセス許可の付与]** の順にクリックしてください。 
+6. 管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、そのテナントのユーザーには同意ダイアログが表示されなくなります。この同意は、管理者ロールが与えられたユーザーが [Azure portal](https://portal.azure.com) で行うことができます。 アプリケーションの **[設定]** ページで、**[必要なアクセス許可]**、**[アクセス許可の付与]** の順にクリックしてください。 
 
   ![明示的な管理者の同意としてアクセス許可を付与する](./media/active-directory-integrating-applications/grantpermissions.png)
     
   > [!NOTE]
-  > ADAL.js を使用するシングルページ アプリ (SPA) では現在、**[アクセス許可の付与]** ボタンを使用して明示的に同意する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。   
+  > ADAL.js を使用するシングルページ アプリ (SPA) では現在、**[アクセス許可の付与]** ボタンを使用して明示的に同意する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Web API にアクセスするためのクライアント アプリケーションの構成
-Web/confidential クライアント アプリケーションが認証を必要とする認可付与フローに参加 (し、アクセス トークンを取得) するためには、セキュリティで保護された資格情報を確立する必要があります。 Azure Portal でサポートされている既定の認証方法は、クライアント ID と秘密鍵の組み合わせです。 このセクションでは、クライアントの資格情報に秘密鍵を追加するために必要な構成手順について説明します。
+Web/confidential クライアント アプリケーションが認証を必要とする認可付与フローに参加 (し、アクセス トークンを取得) するためには、セキュリティで保護された資格情報を確立する必要があります。 Azure portal でサポートされている既定の認証方法は、クライアント ID と秘密鍵の組み合わせです。 このセクションでは、クライアントの資格情報に秘密鍵を追加するために必要な構成手順について説明します。
 
 さらに、同意フレームワークでは、リソース アプリケーションによって公開されている Web API (Microsoft Graph API など) にクライアントがアクセスできるようになる前に、要求されたアクセス許可に基づいてクライアントに必要なアクセス許可が付与されていることを確認します。 既定では、どのアプリケーションも "Windows Azure Active Directory" (Graph API) および "Windows Azure Service Management API" のアクセス許可を選択できます。 また、[Graph API の [サインインとユーザー プロファイルの読み取り] アクセス許可](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)が既定で選択されています。 Office 365 のサブスクリプションを保有しているアカウントが存在するテナントにクライアントを登録しようとしている場合には、SharePoint と Exchange Online 用の Web API とアクセス許可を選択できます。 目的の Web API ごとに [2 種類のアクセス許可](active-directory-dev-glossary.md#permissions)から選択できます。
 
@@ -120,7 +122,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
    ![アプリケーションの登録の更新](./media/active-directory-integrating-applications/update-app-registration.png)
 
 4. アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。 Web アプリケーションの資格情報の秘密鍵を追加するには、次の操作を行います。
-  - **[設定]** ページの **[キー]** セクションをクリックします。  
+  - **[設定]** ページの **[キー]** セクションをクリックします。 
   - 鍵の説明を追加します。
   - 期間として 1 年または 2 年を選択します。
   - **[保存]** をクリックします。 構成の変更を保存すると、右端の列に鍵の値が格納されます。 クライアント アプリケーションのコードで使用するので、**必ず鍵をコピーしておいてください**。このページを一度閉じると、鍵にアクセスできなくなります。
@@ -141,7 +143,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 6. 完了したら、**[アクセスの有効化]** ページで **[選択]** をクリックし、**[API アクセスの追加]** ページ で **[完了]** をクリックします。 **[必要なアクセス許可]** ページに戻ります。ページでは API の一覧に新しいリソースが追加されています。
 
   > [!NOTE]
-  > **[完了]** をクリックすると、構成済みの他のアプリケーションに対するアクセス許可に基づいて、ディレクトリ内のアプリケーションのアクセス許可も自動的に設定されます。  これらのアプリケーションのアクセス許可は、アプリケーションの **[設定]** ページで確認できます。
+  > **[完了]** をクリックすると、構成済みの他のアプリケーションに対するアクセス許可に基づいて、ディレクトリ内のアプリケーションのアクセス許可も自動的に設定されます。 これらのアプリケーションのアクセス許可は、アプリケーションの **[設定]** ページで確認できます。
   > 
   > 
 
@@ -182,7 +184,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
   > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースでは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
   > 
 
-6. 完了したら、**[保存]** をクリックします。 これで Web API の構成が終わり、ディレクトリ内の他のアプリケーションが利用できるようになりました。  
+6. 完了したら、**[保存]** をクリックします。 これで Web API の構成が終わり、ディレクトリ内の他のアプリケーションが利用できるようになりました。 
 
   ![アプリケーションの登録の更新](./media/active-directory-integrating-applications/update-app-registration-manifest.png)
 
@@ -210,7 +212,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 前に説明したように、独自のアプリケーションのための API を公開してそれにアクセスするだけでなく、クライアント アプリケーションを登録して、Microsoft のリソースにより公開されている API にアクセスすることもできます。 Microsoft Graph API (ポータルのリソース/API 一覧では "Microsoft Graph") は、Azure AD に登録されているすべてのアプリケーションが利用できます。 Office 365 サブスクリプションにサインアップしたアカウントが存在するテナントにクライアント アプリケーションを登録した場合には、さまざまな Office 365 リソースにより公開されているスコープにもアクセスできます。
 
-Microsoft Graph API により公開されているスコープの全容については、[アクセス許可スコープ | Microsoft Graph API の概念](https://graph.microsoft.io/docs/authorization/permission_scopes)に関する記事を参照してください。
+Microsoft Graph API により公開されているスコープの全容については、[Microsoft Graph のアクセス許可に関するリファレンス](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference)を参照してください。
 
 > [!NOTE]
 > 現時点では、ネイティブ クライアント アプリケーションに [Access your organization's directory]\(組織のディレクトリにアクセスする\) アクセス許可を使用した場合、そのアプリケーションで Azure AD Graph API しか呼び出すことができなくなるという制約があります。 この制約は、Web アプリケーションには適用されません。
@@ -309,13 +311,13 @@ Web アプリケーションではほかにも、次のものが提供される�
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>別の組織によって承認されているマルチテナント アプリケーションの削除
 テナントの [アプリの登録] メイン ページで [すべてのアプリ] フィルターを適用すると表示されるアプリケーションのうち、[マイ アプリ] に登録されているものを除いたものが、マルチテナント アプリケーションです。 技術的な話をすると、ここに挙げたマルチテナント アプリケーションは、別のテナントに存在し、同意プロセスの最中に組織のテナントに登録されたものです。 さらに具体的には、組織のテナントの中に対応するアプリケーション オブジェクトが存在せず、サービス プリンシパル オブジェクトのみによって表されるアプリケーションです。 アプリケーション オブジェクトとサービス プリンシパル オブジェクトの違いの詳細については、[Azure AD のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。
 
-(同意を与えた後に) ディレクトリに対するマルチテナント アプリケーションのアクセス権を削除するには、会社の管理者がアプリケーションのサービス プリンシパルを削除する必要があります。 アクセス権の削除にあたっては、管理者にグローバル管理者のアクセス権が必要になります。削除には Azure Portal または [Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用します。
+(同意を与えた後に) ディレクトリに対するマルチテナント アプリケーションのアクセス権を削除するには、会社の管理者がアプリケーションのサービス プリンシパルを削除する必要があります。 削除にあたっては、管理者にグローバル管理者のアクセス権が必要になります。Azure portal で削除するか、[Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用して削除できます。
 
 ## <a name="next-steps"></a>次の手順
 - Azure AD での認証のしくみの詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
 - アプリのビジュアル面のガイダンスに関するヒントについては、[統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照してください。
 - アプリケーションのアプリケーション オブジェクトとサービス プリンシパル オブジェクトの関係の詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。
 - アプリ マニフェストの役割の詳細については、[Azure Active Directory のアプリケーション マニフェスト](active-directory-application-manifest.md)に関するページを参照してください。
-- Azure Active Directory (AD) の開発者向けの重要な概念の定義については、[Azure AD の 開発者向け用語集](active-directory-dev-glossary.md)のページを参照してください。
+- Azure AD の開発者向けの重要な概念の定義については、[Azure AD の開発者向け用語集](active-directory-dev-glossary.md)のページを参照してください。
 - 開発者向けのすべての関連コンテンツの概要については、[Active Directory 開発者ガイド](active-directory-developers-guide.md)を参照してください。
 

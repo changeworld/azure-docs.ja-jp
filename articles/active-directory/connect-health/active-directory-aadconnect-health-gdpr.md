@@ -1,36 +1,33 @@
 ---
-title: "Azure AD Connect Health と一般データ保護規則 | Microsoft Docs"
-description: "このドキュメントでは、Azure AD Connect で GDPR コンプライアンスを取得する方法について説明します。"
+title: Azure AD Connect Health とユーザー プライバシー | Microsoft Docs
+description: このドキュメントでは、Azure AD Connect Health とユーザー プライバシーについて説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5fedbac439636b56da217e7babd30820bce7b342
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33931760"
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR コンプライアンスと Azure AD Connect Health 
+# <a name="user-privacy-and-azure-ad-connect-health"></a>ユーザー プライバシーと Azure AD Connect Health 
 
-[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とする新しいルールです。 
-
-Microsoft では、GDPR の要件を満たすのに役立つ製品やサービスを提供しています。 Microsoft のプライバシー ポリシーについては、[セキュリティ センター](https://www.microsoft.com/trustcenter)をご覧ください。
-
-Azure AD Connect Health は、オンプレミスの ID インフラストラクチャと同期サービスを監視します。 また、インサイトやサーフェスのアラートも提供します。 Microsoft は、2018 年に施行される GDPR にすべてのクラウド サービスを準拠させ、契約上のコミットメントにおいて、GDPR 関連の保証を提供します。 
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
-> この記事では、Azure AD Connect Health での GDPR コンプライアンスについて説明します。 Azure AD Connect での GDPR コンプライアンスについては、「[GDPR compliance and Azure AD Connect (GDPR コンプライアンスと Azure AD Connect)](../../active-directory/connect/active-directory-aadconnect-gdpr.md)」をご覧ください。
+>この記事では、Azure AD Connect Health とユーザー プライバシーについて説明します。  Azure AD Connect とユーザー プライバシーについては、[こちら](../../active-directory/connect/active-directory-aadconnect-gdpr.md)の記事をご覧ください。
 
-## <a name="gdpr-classification"></a>GDPR の分類
+## <a name="user-privacy-classification"></a>ユーザー プライバシーの分類
 Azure AD Connect Health は、GDPR の**データ プロセッサ** カテゴリに分類されます。 このサービスは、データ プロセッサ パイプラインとして、重要なパートナーやエンド コンシューマーにデータ処理サービスを提供するものです。 Azure AD Connect Health は、ユーザー データを生成するものではなく、どのような個人データが収集されるかや、それらのデータの用途について、独立した制御を持つものでもありません。 Azure AD Connect Health でのデータの取得、集計、分析、およびレポートは、既存のオンプレミス データに基づいて行われます。 
 
 ## <a name="data-retention-policy"></a>データ リテンション期間ポリシー
@@ -54,18 +51,50 @@ Azure AD Connect Health では、各監視対象サーバーや、監視対象�
 - Health エージェントをアンインストールせずにこの手順を実行した場合、Health エージェントに関連したエラー イベントがそのサーバー上に表示されます。
 - 監視対象サービスのインスタンスに属するすべてのデータは、Microsoft Azure のデータ リテンション期間ポリシーに従って削除されます。
 
-### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>監視対象サーバーのデータ収集と監視を無効にする
-「[Azure AD Connect Health サービスからサーバーを削除するには](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)」をご覧ください。
-
 ### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>監視対象サービスのインスタンスのデータ収集と監視を無効にする
 「[Azure AD Connect Health サービスからのサービス インスタンスの削除](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service)」をご覧ください。
 
+### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>監視対象サーバーのデータ収集と監視を無効にする
+「[Azure AD Connect Health サービスからサーバーを削除するには](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)」をご覧ください。
+
+### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Azure AD Connect Health でのすべての監視対象サービスのデータ収集と監視を無効にする
+Azure AD Connect Health では、テナントの**すべて**の登録済みサービスのデータ収集を停止することもできます。 操作を実行する前に、すべてのグローバル管理者の慎重な検討と十分な確認をお勧めします。 プロセスが開始されると、Connect Health サービスはすべてのサービスのすべてのデータの受信、処理、およびレポートを停止します。 Connect Health サービスの既存のデータは 30 日を超えない範囲で保持されます。
+特定のサーバーのデータ収集を停止する場合は、特定のサーバーの削除時の手順に従ってください。 テナントのデータ収集を停止するには、次の手順に従って、データの収集を停止し、テナントのすべてのサービスを削除します。
+
+1.  メイン ブレードの構成で **[全般設定]** をクリックします。 
+2.  ブレードの上部にある **[データ収集の停止]** ボタンをクリックします。 プロセスが開始されると、テナント構成設定のその他のオプションは使用できなくなります。  
+ 
+ ![データ収集の停止](./media/active-directory-aadconnect-health-gdpr/gdpr4.png)
+  
+3.  データ収集の停止による影響を受けるオンボード サービスの一覧を確認します。 
+4.  正確なテナント名を入力し、**[削除]** アクション ボタンを有効にします
+5.  **[削除]** をクリックし、すべてのサービスの削除を実行します。 Connect Health は、オンボード サービスから送信されたすべてのデータの受信、処理、レポートを停止します。 プロセス全体で最大 24 時間かかることがあります。 この手順は元に戻せないことに注意してください。 
+6.  プロセスが完了した後は、Connect Health に登録されているサービスは表示されなくなります。 
+
+ ![データ収集の停止後](./media/active-directory-aadconnect-health-gdpr/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health でのデータの収集と 監視を再度有効にする
 以前に削除された監視対象サービスについて Azure AD Connect Health での監視を再度有効にするには、正常性エージェントをアンインストールし、すべてのサーバーに[正常性エージェントを再インストールする](active-directory-aadconnect-health-agent-install.md)必要があります。
 
+### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>すべての監視対象サービスのデータ収集と監視を再度有効にする
+
+Azure AD Connect Health でテナントのデータ収集を再開することができます。 操作を実行する前に、すべてのグローバル管理者の慎重な検討と十分な確認をお勧めします。
+
+>[!IMPORTANT]
+> アクションが 24 時間無効になった後、次の手順が使用可能になります。
+> データの収集を有効にすると、Connect Health の分析情報の提示とデータの監視では、以前に収集されたレガシ データは表示されません。 
+
+1.  メイン ブレードの構成で **[全般設定]** をクリックします。 
+2.  ブレードの上部にある **[データ収集の有効化]** ボタンをクリックします。 
+ 
+ ![データ収集を有効にする](./media/active-directory-aadconnect-health-gdpr/gdpr6.png)
+ 
+3.  正確なテナント名を入力し、**[有効化]** ボタンをアクティブにします。
+4.  **[有効化]** ボタンをクリックし、Connect Health サービスのデータ収集の権限を許可します。 変更はすぐに適用されます。 
+5.  [インストール プロセス](active-directory-aadconnect-health-agent-install.md)に関する記事に従って監視対象のサーバーにエージェントを再インストールすると、ポータルにサービスが表示されます。  
+
 
 ## <a name="next-steps"></a>次の手順
 * [セキュリティ センターで Microsoft のプライバシー ポリシーを確認する](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect と GDPR](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
-* [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
+* [Azure AD Connect とユーザー プライバシー](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
+

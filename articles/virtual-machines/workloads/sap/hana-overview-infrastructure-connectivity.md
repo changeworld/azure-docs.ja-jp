@@ -14,18 +14,19 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778292"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続 
 
 このガイドを読む前に、いくつかの定義を確認しておいてください。 「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」では、HANA L インスタンス ユニットの次の 2 種類のクラスを紹介しました。
 
 - S72、S72m、S144、S144m、S192、S192m - "Type I クラス" の SKU と呼びます。
-- S384、S384m、S384xm、S576、S768、S960 - "Type II クラス" の SKU と呼びます。
+- S384、S384m、S384xm、S576m、S768m、S960m - "Type II クラス" の SKU と呼びます。
 
 クラス指定子は、HANA L インスタンス SKU に基づいてさまざまな機能や要件について言及する際に、HANA L インスタンスのドキュメント全体にわたって使用されます。
 
@@ -73,7 +74,7 @@ Azure VNet 側をよく見ると、次のものが必要であることがわか
 ### <a name="creating-the-azure-vnet-for-hana-large-instances"></a>Azure VNet for HANA L インスタンスの作成
 
 >[!Note]
->Azure VNet for HANA L インスタンスは、Azure Resource Manager デプロイメント モデルを使って作成する必要があります。 クラシック デプロイメント モデルとして一般的に知られている以前の Azure デプロイメント モデルは、HANA L インスタンス ソリューションではサポートされていません。
+>Azure VNet for HANA L インスタンスは、Azure Resource Manager デプロイ モデルを使って作成する必要があります。 クラシック デプロイ モデルとして一般的に知られている以前の Azure デプロイ モデルは、HANA L インスタンス ソリューションではサポートされていません。
 
 VNet は、Azure Portal、PowerShell、Azure テンプレート、または Azure CLI を使用して作成することができます ([Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)に関するページを参照してください)。 以下の例では、Azure Portal で作成した VNet について詳しく説明しています。
 
@@ -213,7 +214,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 この例では、HighPerformance ゲートウェイ SKU が使用されました。 使用できるのは、HighPerformance または UltraPerformance です。SAP HANA on Azure (L インスタンス) でサポートされているゲートウェイ SKU はこれらのみとなります。
 
 > [!IMPORTANT]
-> SKU タイプ S384、S384m、S384xm、S576、S768、S960 (Type II クラス SKU) の HANA L インスタンスの場合、UltraPerformance Gateway SKU の使用は必須です。
+> SKU タイプ S384、S384m、S384xm、S576m、S768m、S960m (Type II クラス SKU) の HANA L インスタンスの場合、UltraPerformance Gateway SKU の使用は必須です。
 
 ### <a name="linking-vnets"></a>VNet のリンク
 

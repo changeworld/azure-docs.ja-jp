@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: dfa3e1996ecbd3d78fef9f85facb7da1c209fafa
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7754242aa79a2ba7931a6d80a7a12a0858c6f260
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33776398"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
 Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンの公開が必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
@@ -30,16 +31,17 @@ Azure Search とのすべてのプログラミング インターフェイスの
 
 | インターフェイス | 最新のメジャー バージョン | 状態 |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |3.0 |一般公開、2016年 11 月にリリース済み |
+| [.NET SDK](https://aka.ms/search-sdk) |5.0 |一般公開、2018 年 4 月にリリース済み |
 | [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |4.0.1-preview |プレビュー (2017 年 5 月リリース) |
 | [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2016-09-01 |一般公開 |
-| [サービス REST API プレビュー](search-api-2016-09-01-preview.md) |2016-09-01-Preview |プレビュー |
+| [サービス REST API 2016-09-01 プレビュー](search-api-2016-09-01-preview.md) |2016-09-01-Preview |プレビュー |
+| [サービス REST API 2017-11-11 プレビュー](search-api-2017-11-11-preview.md) |2017-11-11 プレビュー |プレビュー |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |2.0 |一般公開 |
 | [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |一般公開 |
 
 REST API の場合は、各呼び出しに対して `api-version` を含める必要があります。 これにより、容易にプレビュー API などの特定のバージョンを対象にすることができます。 次の例に、 `api-version` パラメーターを指定する方法を示します。
 
-    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2016-09-01
+    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
 
 > [!NOTE]
 > 各要求で `api-version` を指定するとしても、すべての API 要求で同じバージョンを使用することをお勧めします。 このことは、特に、新しい API バージョンが、以前のバージョンで認識されない属性または操作を導入している場合に当てはまります。 API バージョンを混在させると、意図しない結果を招くおそれがあるので、お勧めしません。

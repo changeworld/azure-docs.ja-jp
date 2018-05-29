@@ -3,8 +3,8 @@ title: 前払いで Azure 仮想マシンのコスト削減 - Azure | Microsoft 
 description: Azure 予約仮想マシン インスタンスによる仮想マシンのコスト削減について説明します。
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikramdesai01
+author: yashesvi
+manager: yashesvi
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: yashar
+ms.openlocfilehash: 9c73102f09e252b449f78603debaf707b3c89c3b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34056688"
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスで仮想マシンのコストを削減する 
 仮想マシンは、予約仮想マシン インスタンスを通じて 1 年分または 3 年分の計算処理能力を前払いすることで割引価格で利用することができます。 これにより、仮想マシンのコストが大幅に削減されます。割引率は、従量課金制の料金に対し、1 年間または 3 年間の前払い契約で最大 72% となります。 予約仮想マシン インスタンスは課金割引であり、仮想マシンの実行時の状態には影響しません。
@@ -36,6 +37,7 @@ ms.lasthandoff: 05/03/2018
 -   
   [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプション プラン タイプ (MS-AZR-003P)。
 予約インスタンスを購入するには、サブスクリプションの "所有者" ロールに属している必要があります。 エンタープライズ登録で予約を購入する場合、エンタープライズ管理者が EA ポータルで予約の購入を有効にする必要があります。既定では、この設定が有効になっています。
+-   クラウド ソリューション プロバイダー (CSP) パートナーは、Azure 管理ポータルまたは[パートナー センター](https://docs.microsoft.com/partner-center/azure-reservations)を使用して予約を購入できます。
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>予約仮想マシン インスタンスを購入した場合はどのように課金されますか
 予約の購入は、サブスクリプションに紐付けられている支払い方法に対して課金されます。 エンタープライズ サブスクリプションの場合、予約コストは年額コミットメントの残高から差し引かれます。 年額コミットメントの残高で予約のコストを賄えない場合は、超過分が課金されます。
@@ -71,5 +73,7 @@ ms.lasthandoff: 05/03/2018
   [従量課金制サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
+- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムで予約済みのインスタンス](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

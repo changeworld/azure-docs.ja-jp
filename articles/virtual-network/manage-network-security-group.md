@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894250"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -34,6 +35,8 @@ ms.lasthandoff: 05/04/2018
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.28 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
+Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
+
 ## <a name="work-with-network-security-groups"></a>ネットワーク セキュリティ グループを操作する
 
 ネットワーク セキュリティ グループは、作成、[すべて表示](#view-all-network-security-groups)、[詳細の表示](#view-details-of-a-network-security-group)、[変更](#change-a-network-security-group)、および[削除](#delete-a-network-security-group)できます。 ネットワーク インターフェイスまたはサブネットに対して、ネットワーク セキュリティ グループを[関連付けるか、関連付けを解除する](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)こともできます。
@@ -44,7 +47,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 
 1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
 2. **[ネットワーク]** を選択した後、**[ネットワーク セキュリティ グループ]** を選択します。
-3. ネットワーク セキュリティ グループの **[名前]** を入力し、**サブスクリプション**を選択します。新しい**リソース グループ**を作成するか、既存のリソース グループを選択し、**場所**を選択してから、**[作成]** を選択します。 
+3. ネットワーク セキュリティ グループの **[名前]** を入力し、**サブスクリプション**を選択します。新しい**リソース グループ**を作成するか、既存のリソース グループを選択し、**場所**を選択してから、**[作成]** を選択します。
 
 **コマンド**
 
@@ -67,7 +70,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 3. Azure の一般的な設定の詳細については、次の記事を参照してください。
     *   [アクティビティ ログ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -211,7 +214,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="delete-an-application-security-group"></a>アプリケーション セキュリティ グループを削除する
 
-アプリケーション セキュリティ グループ内にネットワーク インターフェイスがある場合、アプリケーション セキュリティ グループを削除することはできません。 ネットワーク インターフェイスの設定を変更するかネットワーク インターフェイスを削除することで、アプリケーション セキュリティ グループからすべてのネットワーク インターフェイスを削除する必要があります。 詳細については、[アプリケーション セキュリティ グループに対するネットワークインターフェイスの追加または削除](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)に関する記事または「[ネットワーク インターフェイスの削除](virtual-network-network-interface.md#delete-a-network-interface)」を参照してください。
+アプリケーション セキュリティ グループ内にネットワーク インターフェイスがある場合、アプリケーション セキュリティ グループを削除することはできません。 ネットワーク インターフェイスの設定を変更するかネットワーク インターフェイスを削除することで、アプリケーション セキュリティ グループからすべてのネットワーク インターフェイスを削除します。 詳細については、[アプリケーション セキュリティ グループに対するネットワークインターフェイスの追加または削除](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)に関する記事または「[ネットワーク インターフェイスの削除](virtual-network-network-interface.md#delete-a-network-interface)」を参照してください。
 
 **コマンド**
 
@@ -220,18 +223,33 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ## <a name="permissions"></a>アクセス許可
 
-ネットワーク セキュリティ グループ、セキュリティ規則、およびアプリケーション セキュリティ グループのタスクを実行するには、自分のアカウントが[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に示す適切なアクセス許可が割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに割り当てられている必要があります。
+ネットワーク セキュリティ グループ、セキュリティ規則、およびアプリケーション セキュリティ グループに関するタスクを実行するには、使用するアカウントが[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に示す適切なアクセス許可が割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
 
-|操作                                                       |   操作の名前                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/ruleTables/read                              |   ネットワーク セキュリティ グループの取得                              |
-|Microsoft.Network/ruleTables/write                             |   ネットワーク セキュリティ グループの作成または更新                 |
-|Microsoft.Network/ruleTables/delete                            |   ネットワーク セキュリティ グループの削除                           |
-|Microsoft.Network/ruleTables/join/action                       |   ネットワーク セキュリティ グループの結合                             |
-|Microsoft.Network/ruleTables/rules/read                       |   規則の取得                                    |
-|Microsoft.Network/ruleTables/rules/write                      |   規則の作成または更新                       |
-|Microsoft.Network/ruleTables/rules/delete                     |   規則の削除                                 |
-|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   ネットワーク インターフェイスの有効なネットワーク セキュリティ グループの取得  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   VM から次ホップを取得する                  |
+### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 
-ネットワーク セキュリティ グループをサブネットに関連付けるには、*ネットワーク セキュリティ グループの結合*操作が必要です。
+| アクションを表示します。                                                        |   Name                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/ruleTables/read                             |   ネットワーク セキュリティ グループの取得                                          |
+| Microsoft.Network/ruleTables/write                            |   ネットワーク セキュリティ グループの作成または更新                             |
+| Microsoft.Network/ruleTables/delete                           |   ネットワーク セキュリティ グループの削除                                       |
+| Microsoft.Network/ruleTables/join/action                      |   サブネットまたはネットワーク インターフェイスへのネットワーク セキュリティ グループの関連付け |
+| Microsoft.Network/ruleTables/rules/read                       |   規則の取得                                                            |
+| Microsoft.Network/ruleTables/rules/write                      |   規則の作成または更新                                               |
+| Microsoft.Network/ruleTables/rules/delete                     |   規則の削除                                                         |
+| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   ネットワーク インターフェイスの有効なネットワーク セキュリティ グループの取得              |
+| Microsoft.Network/networkWatchers/nextHop/action              |   VM から次ホップを取得する                                         |
+
+### <a name="application-security-groups"></a>アプリケーション セキュリティ グループ
+
+| アクションを表示します。                                                                     | Name                                                     |
+| --------------------------------------------------------------             | -------------------------------------------              |
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP 構成をアプリケーション セキュリティ グループに結合する|
+| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | セキュリティ ルールをアプリケーション セキュリティ グループに結合する    |
+| Microsoft.Network/applicationSecurityGroups/read                           | アプリケーション セキュリティ グループを取得する                        |
+| Microsoft.Network/applicationSecurityGroups/write                          | アプリケーション セキュリティ グループを作成または更新する           |
+| Microsoft.Network/applicationSecurityGroups/delete                         | アプリケーション セキュリティ グループを削除する                     |
+
+## <a name="next-steps"></a>次の手順
+
+- [PowerShell](powershell-samples.md) か [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、ネットワークまたはアプリケーション セキュリティ グループを作成します
+- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

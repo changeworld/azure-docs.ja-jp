@@ -1,11 +1,11 @@
 ---
-title: "Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題 | Microsoft Docs"
-description: "Azure AD アプリケーション ギャラリーの一覧にあるアプリケーションの SAML を使用してフェデレーション シングル サインオンを構成するときに発生することがある一般的な問題の一部に対処します"
+title: Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題 | Microsoft Docs
+description: Azure AD アプリケーション ギャラリーの一覧にあるアプリケーションの SAML を使用してフェデレーション シングル サインオンを構成するときに発生することがある一般的な問題の一部に対処します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 581b3c4ff7cc7b25f238602560f30280efa34edd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053311"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 02/21/2018
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
+4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
@@ -53,7 +54,7 @@ ms.lasthandoff: 02/21/2018
 
 6.  シングル サインオンを構成するアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
+7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
 8.  **[モード]** ボックスの一覧から、**[SAML ベースのサインオン]** を選択します。
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 02/21/2018
 
 10. アプリケーションでサポートされているパターンを確認するには、次の 3 つの方法があります。
 
-   * テキスト ボックスで、サポートされているバターンが、 <https://contoso.com> *のようにプレースホルダーとして表示されます*。
+   * テキスト ボックスで、サポートされているパターンがプレースホルダーとして表示されます (*例*: <https://contoso.com>)。
 
    * パターンがサポートされていない場合は、テキスト ボックスに値を入力しようとすると、赤い感嘆符が表示されます。 赤い感嘆符にポインターを置くと、サポートされているパターンが表示されます。
 
@@ -71,7 +72,7 @@ ms.lasthandoff: 02/21/2018
 
 -   アプリケーションのベンダーと連係して、Azure AD で構成済みのパターンに一致する値を取得する
 
--   または、<aadapprequest@microsoft.com> で Azure AD チームに連絡するか、コメントをチュートリアルに残して、アプリケーションでサポートされるパターンの更新をリクエストする
+-   または、<aadapprequest@microsoft.com> で Azure AD チームに連絡するか、コメントをチュートリアルに残して、アプリケーションでサポートされるパターンの更新を要求する
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityID (ユーザー識別子) の形式はどこで設定しますか
 
@@ -89,7 +90,7 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
+4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
@@ -97,7 +98,7 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 6.  シングル サインオンを構成したアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
+7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
 8.  **[SAML 署名証明書]** セクションに移動して、**[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
 
@@ -108,4 +109,4 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
+[Azure Active Directory でのアプリケーションの管理](manage-apps/what-is-application-management.md)

@@ -1,30 +1,34 @@
 ---
-title: "Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs"
-description: "Azure Active Directory サインイン アクティビティ レポート API のリファレンス"
+title: Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs
+description: Azure Active Directory サインイン アクティビティ レポート API のリファレンス
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 3831146caad4fe922e482ce782d5d41fb70338f4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155798"
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory サインイン アクティビティ レポート API リファレンス
-このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
-Azure AD レポートは、コードまたは関連ツールを使用してサインイン アクティビティ レポート データにアクセスできるようにする API を提供します。
-このトピックでは、 **サインイン アクティビティ レポート API**に関する参照情報について説明します。
+
+> [!TIP] 
+> 新しい Microsoft Graph API の[レポート](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)を確認してください。これが最終的にこの API に置き換えられます。 
+
+この記事は Azure Active Directory (Azure AD) のレポート API に関する記事のコレクションの一部です。 Azure AD レポートは、コードまたは関連ツールを使用して監査データにアクセスできるようにする API を提供します。
+この記事では、**監査 API** に関する参照情報について説明します。
 
 参照:
 
@@ -37,7 +41,7 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
 * グローバル管理者
 * API へのアクセスを承認するすべてのアプリ (アプリの承認は、グローバル管理者のアクセス許可に基づいてのみ設定できます)
 
-イベントの署名などのセキュリティ API にアクセスするようにアプリケーションのアクセスを構成するには、次の PowerShell を使用して、サービス プリンシパルのアプリケーションをセキュリティ リーダーの役割に追加します。
+イベントの署名などのセキュリティ API にアクセスするようにアプリケーションのアクセスを構成するには、次の PowerShell を使用して、サービス プリンシパルのアプリケーションをセキュリティ リーダーの役割に追加します
 
 ```PowerShell
 Connect-MsolService
@@ -49,11 +53,11 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 ## <a name="prerequisites"></a>前提条件
 Reporting API を使用してこのレポートにアクセスするには、次が必要です。
 
-* [Azure Active Directory Premium P1 または P2 エディション](active-directory-editions.md)
+* [Azure Active Directory Premium P1 または P2 エディション](active-directory-whatis.md)
 * 「 [Azure AD Reporting API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)」の完了。 
 
 ## <a name="accessing-the-api"></a>API へのアクセス
-この API にアクセスするには、 [Graph Explorer](https://graphexplorer2.cloudapp.net) またはプログラム (例: PowerShell) を使用します。 PowerShell に AAD Graph REST 呼び出しで使用される OData フィルターの構文を正しく解釈させるには、バックティック (別名: グレーブ アクセント) 文字を使用して、$ 文字を “エスケープ” する必要があります。 バックティック文字は、 [PowerShell のエスケープ文字](https://technet.microsoft.com/library/hh847755.aspx)として機能し、PowerShell に $ 文字をリテラルに解釈させ、PowerShell 変数名 (例: $filter) と混同させないようにすることができます。
+この API にアクセスするには、 [Graph Explorer](https://graphexplorer2.cloudapp.net) またはプログラム (例: PowerShell) を使用します。 PowerShell に AAD Graph REST 呼び出しで使用される OData フィルターの構文を正しく解釈させるには、バックティック (別名: グレーブ アクセント) 文字を使用して、$ 文字を “エスケープ” します。 バックティック文字は、[PowerShell のエスケープ文字](https://technet.microsoft.com/library/hh847755.aspx)として機能し、PowerShell に $ 文字をリテラルに解釈させ、PowerShell 変数名 (例: $filter) と混同させないようにすることができます。
 
 このトピックでは、Graph Explorer に焦点を当てます。 PowerShell の例については、 「 [PowerShell スクリプト](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script)」を参照してください。
 
@@ -64,10 +68,9 @@ Reporting API を使用してこのレポートにアクセスするには、次
 
 
 
-データ量により、この API は返されるレコードが 100 万に制限されています。 
+データ量により、この API は返されるレコードが 1,000,000 に制限されています。 
 
-この呼び出しはバッチでデータを返します。 各バッチには最大 1000 個のレコードがあります。  
-レコードの次のバッチを取得するには、Next リンクを使用します。 返されるレコードの最初のセットから [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) 情報を取得します。 skip トークンは結果セットの最後に配置されます。  
+この呼び出しはバッチでデータを返します。 各バッチには最大 1000 個のレコードがあります。 レコードの次のバッチを取得するには、Next リンクを使用します。 返されるレコードの最初のセットから [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) 情報を取得します。 skip トークンは結果セットの最後に配置されます。  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
@@ -76,7 +79,7 @@ Reporting API を使用してこのレポートにアクセスするには、次
 フィルターの形式で API 呼び出しによって返されるレコードの数を絞り込むことができます。  
 サインイン API 関連データについては、次のフィルターがサポートされています。
 
-* **$top = \<返されるレコードの数\>** - 返されるレコードの数を制限します。 これは負荷の高い操作です。 数千のオブジェクトを取得する場合、このフィルターを使用する必要はりません。  
+* **$top = \<返されるレコードの数\>** - 返されるレコードの数を制限します。 これは負荷の高い操作です。 数千のオブジェクトを取得する場合、このフィルターは使用しないでください。  
 * **$filter = \<フィルター ステートメント\>** - サポートされているフィルター フィールドに基づいて、重要なレコードの種類を指定します。
 
 ## <a name="supported-filter-fields-and-operators"></a>サポートされているフィルター フィールドと演算子
@@ -94,7 +97,7 @@ Reporting API を使用してこのレポートにアクセスするには、次
 > 
 > 
 
-返されるデータのスコープを絞り込むには、サポートされているフィルターとフィルター フィールドの組み合わせを構築します。 たとえば、次のステートメントは、2016 年 7 月 1 日～ 2016 年 7 月 6日 の間で上位 10 個のレコードを返します。
+返されるデータのスコープを絞り込むには、サポートされているフィルターとフィルター フィールドの組み合わせを構築します。 たとえば、次のステートメントは、2016 年 7 月 1 日から 2016 年 7 月 6 日の間で上位 10 個のレコードを返します。
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 

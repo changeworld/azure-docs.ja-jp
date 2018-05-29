@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053426"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure Virtual Machine から Update Management、Change Tracking、および Inventory ソリューションの使用準備を行う
 
@@ -42,7 +43,13 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、**[関連リソース]** の Automation アカウントで、**[ワークスペース]** を選択します。次に、**[ワークスペースのデータ ソース]** のワークスペースで、**[スコープ構成]** を選択します。
 
-既定では、**MicrosoftDefaultScopeConfig-ChangeTracking** と **MicrosoftDefaultScopeConfig-Updates** の 2 つのスコープ構成が作成されます。
+選択したワークスペースに Update Management や Change Tracking のソリューションがまだない場合、次のスコープ構成が作成されます。
+
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
+
+* **MicrosoftDefaultScopeConfig-Updates**
+
+選択したワークスペースに既にソリューションがある場合、 ソリューションは再デプロイされず、スコープ構成は追加されません。
 
 いずれかの構成の省略記号 (...) をクリックし、**[編集]** を選択します。 **[スコープ構成の編集]** ページで **[コンピューター グループの選択]** を選択して、**[コンピューター グループ]** ページを開きます。 このページには、スコープ構成の作成に使用された、保存された検索条件が表示されます。
 

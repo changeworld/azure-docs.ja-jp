@@ -1,11 +1,11 @@
 ---
-title: "カスタム プローブを作成する - Azure Application Gateway - Azure Portal | Microsoft Docs"
-description: "ポータルを使用してアプリケーション ゲートウェイ用カスタム プローブを作成する方法について説明します。"
+title: カスタム プローブを作成する - Azure Application Gateway - Azure Portal | Microsoft Docs
+description: ポータルを使用してアプリケーション ゲートウェイ用カスタム プローブを作成する方法について説明します。
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
@@ -14,17 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: bb77c9b39e1aa89f6411de8ec3b1fca41e954bf2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 45737c1c378ec56a5e2bedec8c1f7b7bc7ba6225
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203915"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
 
@@ -38,7 +39,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 
 プローブは、ポータルを通じて 2 段階の手順で構成されます。 最初の手順で、プローブを作成します。 次の手順で、Application Gateway のバックエンド http 設定にプローブを追加します。
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free)にサインアップできます。
+1. [Azure Portal](https://portal.azure.com) にログインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free)にサインアップできます。
 
 1. Azure Portal の [お気に入り] ウィンドウで [すべてのリソース] をクリックします。 [すべてのリソース] ブレードで Application Gateway をクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「partners.contoso.net」と入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
 
@@ -53,7 +54,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
   |**名前**|customProbe|この値は、ポータルでアクセス可能なプローブのフレンドリ名です。|
   |**プロトコル**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。|
   |**Host**|つまり  contoso.com|この値は、プローブに使用されるホスト名です。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。|
-  |**パス**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http://contoso.com では "/" のみを使用します。 |
+  |**パス**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 http://contoso.com の既定のパスの場合は、'/' だけを使用します |
   |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
   |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。|
   |**異常のしきい値**|3|異常であると見なされるまでの試行の失敗回数です。 しきい値を 0 に設定すると、正常性チェックが失敗した場合に、バックエンドが異常であると即座に判断されます。|
@@ -74,7 +75,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 
 既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。 カスタム プローブが作成されたら、Application Gateway は、定義されているカスタム パスを使用して、バックエンド サーバーの正常性を監視します。 定義された条件に基づいて、Application Gateway は、プローブで指定されているパスをチェックします。 host:Port/path への呼び出しによって HTTP 200-399 という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。 プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。 インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Application Gateway で SSL オフロードを構成する方法を学習するには、[SSL オフロードの構成](application-gateway-ssl-portal.md)に関するページをご覧ください。
 

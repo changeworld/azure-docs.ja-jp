@@ -15,15 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: d6a4701c0318edf8292c777615196a2170a68750
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 065ac8b2e9cb48408c7922a1937e541521ccd8cf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895597"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
-Azure では、Azure のサブネット、仮想ネットワーク、およびオンプレミスのネットワーク間のトラフィックが自動的にルーティングされます。 Azure の既定のルーティングを変更する場合は、ルート テーブルを作成して変更します。 Azure ルーティングを使い慣れていない場合は、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照し、[ルート テーブルを使用したネットワーク トラフィックのルーティング](tutorial-create-route-table-portal.md)のチュートリアルを実行してから、この記事のタスクを実行することをお勧めします。
+Azure では、Azure のサブネット、仮想ネットワーク、およびオンプレミスのネットワーク間のトラフィックが自動的にルーティングされます。 Azure の既定のルーティングを変更する場合は、ルート テーブルを作成して変更します。 仮想ネットワークでのルーティングについて初心者の場合は、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを読むか、[チュートリアル](tutorial-create-route-table-portal.md)を行うことで、詳しく学習できます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -31,8 +32,10 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.26 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+
+Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
@@ -59,11 +62,11 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 ## <a name="view-details-of-a-route-table"></a>ルート テーブルの詳細の表示
 
 1. ポータルの上部にある検索ボックスに、「*ルート テーブル*」と入力します。 検索結果に **[ルート テーブル]** が表示されたら、それを選択します。
-2. 詳細を表示するルート テーブルを一覧から選択します。 **[設定]** で、ルート テーブル内の**ルート**と、そのルート テーブルが関連付けられている**サブネット**を表示することができます。
+2. 詳細を表示するルート テーブルを一覧から選択します。 **[設定]** では、ルート テーブル内の**ルート**と、ルート テーブルが関連付けられている**サブネット**を確認できます。
 3. Azure の一般的な設定の詳細については、次の情報を参照してください。
     *   [アクティビティ ログ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -132,12 +135,12 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 1. ポータルの上部にある検索ボックスに、「*ルート テーブル*」と入力します。 検索結果に **[ルート テーブル]** が表示されたら、それを選択します。
 2. ルートを追加するルート テーブルを一覧から選択します。
 3. **[設定]** で、**[ルート]** を選択します。
-4. **[+ 追加]**を選択します。
+4. **[+ 追加]** を選択します。
 5. ルート テーブル内のルートの一意の**名前**を入力します。
 6. トラフィックをルーティングする**アドレス プレフィックス**を CIDR 表記で入力します。 ルート テーブル内の複数のルート上でプレフィックスを重複させることはできません。ただし、プレフィックスを別のプレフィックス内に指定することはできます。 たとえば、あるルートでプレフィックスとして 10.0.0.0/16 を定義した場合、アドレス プレフィックス 10.0.0.0/24 を持つ別のルートを定義することは可能です。 Azure では、最長プレフィックス一致に基づいてトラフィックのルートが選択されます。 Azure のルート選択方法の詳細については、[ルーティングの概要](virtual-networks-udr-overview.md#how-azure-selects-a-route)に関するページを参照してください。
 7. **[次ホップの種類]** を選択します。 すべての次のホップの種類の詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照してください。
 8. **次ホップ アドレス**の IP アドレスを入力します。 **[次ホップの種類]** に *[仮想アプライアンス]* を選択した場合は、アドレスのみを入力できます。
-9. **[OK]**を選択します。 
+9. **[OK]** を選択します。
 
 **コマンド**
 
@@ -226,21 +229,24 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 - Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
 - PowerShell: [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 
- 
+
 ## <a name="permissions"></a>アクセス許可
 
-ルート テーブルおよびルートでタスクを実行するには、自分のアカウントを[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に示す適切なアクセス許可が割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに割り当てる必要があります。
+ルート テーブルとルートに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-|操作                                                       |   操作の名前                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/routeTables/read                              |   ルート テーブルを取得する                              |
-|Microsoft.Network/routeTables/write                             |   ルート テーブルを作成または更新する                 |
-|Microsoft.Network/routeTables/delete                            |   ルート テーブルを削除する                           |
-|Microsoft.Network/routeTables/join/action                       |   ルート テーブルを結合する                             |
-|Microsoft.Network/routeTables/routes/read                       |   ルートを取得する                                    |
-|Microsoft.Network/routeTables/routes/write                      |   ルートを作成または更新する                       |
-|Microsoft.Network/routeTables/routes/delete                     |   ルートを削除する                                 |
-|Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   ネットワーク インターフェイスの有効なルート テーブルを取得する  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   VM から次ホップを取得する                  |
+| アクションを表示します。                                                          |   Name                                                  |
+|--------------------------------------------------------------   |   -------------------------------------------           |
+| Microsoft.Network/routeTables/read                              |   ルート テーブルの読み取り                                    |
+| Microsoft.Network/routeTables/write                             |   ルート テーブルの作成または更新                        |
+| Microsoft.Network/routeTables/delete                            |   ルート テーブルの削除                                  |
+| Microsoft.Network/routeTables/join/action                       |   サブネットへのルート テーブルの関連付け                   |
+| Microsoft.Network/routeTables/routes/read                       |   ルートの読み取り                                          |
+| Microsoft.Network/routeTables/routes/write                      |   ルートの作成または更新                              |
+| Microsoft.Network/routeTables/routes/delete                     |   ルートの削除                                        |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   ネットワーク インターフェイスに対する有効なルート テーブルの取得 |
+| Microsoft.Network/networkWatchers/nextHop/action                |   VM から次ホップを取得する                           |
 
-"*ルート テーブルを結合する*" 操作は、ルート テーブルをサブネットに関連付ける際に必要となります。
+## <a name="next-steps"></a>次の手順
+
+- [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、ルート テーブルを作成します
+- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

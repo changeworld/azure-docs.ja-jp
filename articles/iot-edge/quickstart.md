@@ -6,14 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 05/03/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f9ad01d3194ee0f8be4c3b4321c83c4bb15ea55c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 888f74d215956f4ad38605ca247f681da700a787
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166218"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/28/2018
    * Windows 10 
    * Windows Server
 2. [Docker for Windows][lnk-docker] をインストールし、実行します。
-3. [Python 2.7 を Windows][lnk-python] にインストールし、pip コマンドを使用できるようにします。
+3. [Python を Windows][lnk-python] にインストールし、pip コマンドを使用できるようにします。 このクイック スタートは、Python バージョン 2.7.9 以降および 3.5.4 でテストされました。  
 4. 次のコマンドを実行して、IoT Edge 制御スクリプトをダウンロードします。
 
    ```cmd

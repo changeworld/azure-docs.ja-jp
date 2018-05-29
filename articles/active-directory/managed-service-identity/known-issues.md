@@ -8,27 +8,25 @@ manager: mtillman
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
+ms.component: msi
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: a50854b2e12db9a202d769f9e5feebee8e5f9395
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 552f9e7cae4d7f46ea1548cfe7d9482bff79e5bc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930988"
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
-
-### <a name="is-there-a-private-preview-program-available-for-upcoming-msi-features-and-integrations"></a>今後の MSI 機能や統合のために使用できるプライベート プレビュー プログラムはありますか?
-
-はい。 プライベート プレビュー プログラムへの登録をご希望の場合は、[サインアップ ページにアクセス](https://aka.ms/azuremsiprivatepreview)してください。
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI は Azure Cloud Services で動作しますか。
 
@@ -53,7 +51,7 @@ VM で MSI を使用する場合は、MSI IMDS エンドポイントの使用を
 
 MSI VM 拡張機能は、現在でも使用可能です。ただし、今後は IMDS エンドポイントの使用が既定になります。 MSI VM 拡張機能は、間もなく廃止計画が開始されます。 
 
-Azure Instance Metada Service の詳細については、[IMDS のドキュメント](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service)を参照してください。
+Azure Instance Metada Service の詳細については、[IMDS のドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)を参照してください。
 
 ### <a name="what-are-the-supported-linux-distributions"></a>どのような Linux ディストリビューションがサポートされていますか。
 
@@ -91,7 +89,7 @@ VM で管理対象サービス ID が有効になっている場合、その VM 
 
 現時点では、管理対象サービス ID の VM 拡張機能では、そのスキーマをリソース グループ テンプレートにエクスポートする機能はサポートされていません。 その結果、生成されたテンプレートには、リソース上で管理対象サービス ID を有効にする構成パラメーターは示されません。 これらのセクションは、「[テンプレートを使用して、VM 管理対象サービス ID (MSI) を構成する](qs-configure-template-windows-vm.md)」の例に従うことで、手動で追加できます。
 
-MSI VM 拡張機能でスキーマのエクスポート機能が利用可能になると、「[VM 拡張機能を含むリソース グループのエクスポート](../../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions)」の一覧に表示されます。
+MSI VM 拡張機能でスキーマのエクスポート機能が利用可能になると、「[VM 拡張機能を含むリソース グループのエクスポート](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions)」の一覧に表示されます。
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>構成ブレードが Azure ポータルに表示されない
 
@@ -122,3 +120,16 @@ VM が開始されると、次のコマンドを使用してタグを削除で�
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
+
+## <a name="known-issues-with-user-assigned-identities"></a>ユーザー割り当て ID に関する既知の問題
+
+- ユーザー割り当て ID の割り当ては、VM および VMSS に対してのみ使用できます。 重要: ユーザー割り当て ID の割り当ては、今後数か月間に変更されます。
+- 同じ VM/VMSS においてユーザー割り当て ID が重複している、VM/VMSS は失敗します。 大文字と小文字の違いだけでは重複と見なされます。 たとえば、MyUserAssignedIdentity と myuserassignedidentity などです。 
+- VM に対する VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 VM を再起動して、もう一度やり直してください。 
+- "存在しない" ユーザー割り当て ID を追加すると、VM は失敗します。 
+- 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当て ID の作成はサポートされていません。
+- ユーザー割り当て ID の名前は、エンド ツー エンドのシナリオで 24 文字に制限されています。 ユーザー割り当て ID の名前が 24 文字より長いと、割り当ては失敗します。  
+- 2 番目のユーザー割り当て ID を追加すると、VM 拡張機能のトークンを要求するときに、clientID を使用できなくなる場合があります。 この問題を軽減するには、次の 2 つのバッシュ コマンドを使用して、MSI VM 拡張機能を再起動します。
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
+- VM にユーザー割り当て ID がありシステム割り当て ID がない場合、ポータルの UI では、MSI は "無効" と表示されます。 システム割り当て ID を有効にするには、Azure Resource Manager テンプレート、Azure CLI、または SDK を使用してください。

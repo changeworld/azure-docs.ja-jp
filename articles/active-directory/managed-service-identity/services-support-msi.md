@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: d31c169600c594fc4764262cb8d080e9aee96b21
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ff56928748f536ffe1cfc30891585565e962d9fe
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34353613"
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930297"
 ---
 # <a name="services-that-support-managed-service-identity"></a>マネージド サービス ID をサポートするサービス 
 
@@ -30,7 +30,6 @@ ms.locfileid: "34353613"
 | Azure App Service | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Functions | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Data Factory V2 | プレビュー | 2017 年 11 月 | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | プレビュー | 2017 年 10 月 | [Azure Resource Manager テンプレート](/azure/api-management/api-management-howto-use-managed-service-identity) |
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD 認証をサポートしている Azure サービス
 
@@ -38,9 +37,9 @@ ms.locfileid: "34353613"
 
 | サービス | Resource ID | 状態 | 日付 | アクセス権を割り当てる |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com/ | 使用可能 | 2017 年 9 月 | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
+| Azure Resource Manager | https://management.azure.com | 使用可能 | 2017 年 9 月 | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net | 使用可能 | 2017 年 9 月 | |
-| Azure Data Lake | https://datalake.azure.net/ | 使用可能 | 2017 年 9 月 | |
-| Azure SQL | https://database.windows.net/ | 使用可能 | 2017 年 10 月 | |
+| Azure Data Lake | https://datalake.azure.net | 使用可能 | 2017 年 9 月 | |
+| Azure SQL | https://database.windows.net | 使用可能 | 2017 年 10 月 | |
 | Azure Event Hubs | https://eventhubs.azure.net | 使用可能 | 2017 年 12 月 | |
 | Azure Service Bus | https://servicebus.azure.net | 使用可能 | 2017 年 12 月 | |

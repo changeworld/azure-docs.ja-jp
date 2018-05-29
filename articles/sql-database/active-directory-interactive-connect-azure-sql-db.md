@@ -3,19 +3,19 @@ title: ActiveDirectoryInteractive を使用した SQL への接続 | Microsoft D
 description: SqlAuthenticationMethod.ActiveDirectoryInteractive モードを使用して Azure SQL Database に接続するための C# コード例と説明。
 services: sql-database
 author: GithubMirek
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: active directory
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 163b55e0f1727cc2ba9e3ee84eb58fe29f7a005d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6489fb5630e1990c942b461859650e2e469cda73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779690"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365017"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>ActiveDirectoryInteractive モードを使用した Azure SQL Database への接続
 

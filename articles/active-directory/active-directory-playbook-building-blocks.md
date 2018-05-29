@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157700"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -162,7 +163,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 ### <a name="considerations"></a>考慮事項
 
-1. 上記の[チュートリアル](active-directory-saas-servicenow-tutorial.md)では、以前の Azure AD の管理環境が使用されています。 一方 PoC は、[クイック スタート](active-directory-enterprise-apps-whats-new-azure-portal.md#quick-start-get-going-with-your-new-application-right-away)のエクスペリエンスに基づいています。
+1. 上記の[チュートリアル](active-directory-saas-servicenow-tutorial.md)では、以前の Azure AD の管理環境が使用されています。 一方 PoC は、[クイック スタート](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away)に基づいています。
 2. ギャラリーにターゲット アプリケーションが存在しない場合は、"独自のアプリの持ち込み" を使用できます。 詳細情報: [Azure Active Directory でのエンタープライズ アプリケーション管理の新機能: 1 つの場所からカスタム アプリケーションを追加する](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>SaaS パスワード SSO 構成
@@ -241,27 +242,27 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| Microsoft Azure AD の Basic または Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリ。 | [Azure Active Directory のエディション](active-directory-editions.md) |
+| Microsoft Azure AD の Basic または Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリ。 | [Azure Active Directory のエディション](active-directory-whatis.md) |
 | リモート アクセスの構成対象となる、オンプレミスでホストされている Web アプリケーション。 |  |
-| アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。 | [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md) |
-| 経路上にファイアウォールがある場合、コネクタからアプリケーション プロキシに HTTPS (TCP) 要求を送信できるように、ファイアウォールを開放する必要があります。 | [Azure Portal でアプリケーション プロキシを有効にする: アプリケーション プロキシの前提条件](active-directory-application-proxy-enable.md#application-proxy-prerequisites) |
-| 組織でインターネットへの接続にプロキシ サーバーを使用している場合、その構成方法の詳細については、既存のオンプレミス プロキシ サーバーの操作に関するブログ記事を参照してください。 | [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-working-with-proxy-servers.md) |
+| アプリケーション プロキシ コネクタをインストールできる Windows Server 2012 R2 または Windows 8.1 以降が実行されているサーバー。 | [Azure AD アプリケーション プロキシ コネクタについて](manage-apps/application-proxy-connectors.md) |
+| 経路上にファイアウォールがある場合、コネクタからアプリケーション プロキシに HTTPS (TCP) 要求を送信できるように、ファイアウォールを開放する必要があります。 | [Azure Portal でアプリケーション プロキシを有効にする: アプリケーション プロキシの前提条件](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
+| 組織でインターネットへの接続にプロキシ サーバーを使用している場合、その構成方法の詳細については、既存のオンプレミス プロキシ サーバーの操作に関するブログ記事を参照してください。 | [既存のオンプレミス プロキシ サーバーと連携する](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) |
 
 
 ### <a name="steps"></a>手順
 
 | 手順 | リソース |
 | --- | --- |
-| サーバーにコネクタをインストールします。 | [Azure Portal でアプリケーション プロキシを有効にする: コネクタのインストールと登録](active-directory-application-proxy-enable.md#install-and-register-a-connector) |
-| オンプレミス アプリケーションを Azure AD にアプリケーション プロキシ アプリケーションとして発行します。 | [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md) |
-| テスト ユーザーを割り当てます。 | [Azure AD アプリケーション プロキシを使用したアプリケーションの発行: テスト ユーザーの選択](application-proxy-publish-azure-portal.md#add-a-test-user) |
-| 必要に応じて、ユーザーのシングル サインオン エクスペリエンスを構成します。 | [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](application-proxy-sso-azure-portal.md) |
+| サーバーにコネクタをインストールします。 | [Azure Portal でアプリケーション プロキシを有効にする: コネクタのインストールと登録](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
+| オンプレミス アプリケーションを Azure AD にアプリケーション プロキシ アプリケーションとして発行します。 | [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md) |
+| テスト ユーザーを割り当てます。 | [Azure AD アプリケーション プロキシを使用したアプリケーションの発行: テスト ユーザーの選択](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
+| 必要に応じて、ユーザーのシングル サインオン エクスペリエンスを構成します。 | [Azure AD アプリケーション プロキシを使用したシングル サインオンの提供](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) |
 | 割り当てられたユーザーとして MyApps ポータルにサインインしてアプリをテストします。 | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>考慮事項
 
-1. ここでは、コネクタを企業ネットワーク内に配置することをお勧めしますが、クラウドに配置した方がパフォーマンスが向上する場合もあります。 詳細情報: [Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](application-proxy-network-topology-considerations.md)
-2. セキュリティに関するさらに詳しい情報と、送信接続を維持するだけできわめて安全なリモート アクセス ソリューションを実現するしくみについては、「[Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security-considerations.md)」を参照してください。
+1. ここでは、コネクタを企業ネットワーク内に配置することをお勧めしますが、クラウドに配置した方がパフォーマンスが向上する場合もあります。 詳細情報: [Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](manage-apps/application-proxy-network-topology.md)
+2. セキュリティに関するさらに詳しい情報と、送信接続を維持するだけできわめて安全なリモート アクセス ソリューションを実現するしくみについては、「[Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](manage-apps/application-proxy-security.md)」を参照してください。
 
 ## <a name="generic-ldap-connector-configuration"></a>Generic LDAP コネクタ構成
 

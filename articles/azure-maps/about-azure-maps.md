@@ -12,14 +12,15 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e84580c4023be87ebfc1988c631af0b76e213987
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193953"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Azure Maps の概要
-Azure Maps は、Maps、Search、Routing、Traffic、Time Zones のサービス API を含む地理空間サービスのポートフォリオです。 Azure OneAPI に準拠するサービスのポートフォリオにより、使い慣れたツールを使って、Azure ソリューションに場所情報を統合するソリューションを迅速に開発および拡張できます。 Azure Maps は、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 Azure Maps は一連の REST API であり、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。 
+Azure Maps は、Maps、Search、Routing、Traffic、Time Zones のサービス API を含む地理空間サービスのポートフォリオです。 サービスのポートフォリオにより、使い慣れたツールを使って、Azure ソリューションに場所情報を統合するソリューションを迅速に開発および拡張できます。 Azure Maps は、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 Azure Maps は一連の REST API であり、開発を簡単かつ柔軟にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。 
 
 Azure Maps については、次のビデオで紹介されています。
 
@@ -87,7 +88,7 @@ Microsoft の目標は、位置情報サービスの観点から開発者コミ�
 | シナリオ | Azure Maps を使用するタイミング | Bing 地図を使用するタイミング |
 | ------------- | ------------- | ------------- |
 | 開発環境 | 他の Azure サービスへの組み込みまたは調整 | サード パーティのクラウドまたはその他の開発環境の使用 |
-| 開発段階  | Azure Maps は現在のところパブリック プレビュー段階のため、初期段階のテストと概念実証開発用に最適化されています | 運用環境にはエンタープライズ グレード SLA が必要です |
+| 開発段階  | Azure Maps は、初期段階のテストと概念実証開発用に最適化されています | 運用環境にはエンタープライズ グレード SLA が必要です |
 | 価格オプション | 予備の開発者向けの価格オプションで十分です | カスタマイズされたエンタープライズ グレードの価格が必要です |
 | ユース ケース環境 | 車内での使用が必要です | 車内での使用は不要です |
 | 地理的範囲 | インド、中国、日本、および韓国は不要です | インド、中国、日本、および韓国のマップ カバレッジが必要です |

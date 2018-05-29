@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Citrix ShareFile の統合 | Microsoft Docs"
-description: "Azure Active Directory と Citrix ShareFile の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Citrix ShareFile の統合 | Microsoft Docs'
+description: Azure Active Directory と Citrix ShareFile の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2017
+ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 8473c262f98e77708f01d17419e935979a533307
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f633206c03a9639a375535ed7c8f5c84aa334ebf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合
 
@@ -108,14 +109,33 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 
     ![[Citrix ShareFile のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_url.png)
     
-    **[サインオン URL]** ボックスに、`https://<tenant-name>.sharefile.com/saml/login` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenant-name>.sharefile.com/saml/login` のパターンを使用して URL を入力します。
 
-    > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Citrix ShareFile クライアント サポート チーム](https://www.citrix.co.in/products/sharefile/support.html)に問い合わせてください。 
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
+
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com`|
+    | `https://<tenant-name>.sharefile.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.eu/saml/info`|
+    | `https://<tenant-name>.sharefile.eu/saml/info`|
+    | |
+    
+    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com/saml/acs`|
+    | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
+    | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
+    | |
+
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得する場合は、[Citrix ShareFile クライアント サポート チーム](https://www.citrix.co.in/products/sharefile/support.html)に問い合わせてください。
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png)
 
 5. **[保存]** ボタンをクリックします。
 
@@ -123,13 +143,13 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
 
 6. **[Citrix ShareFile Configuration (Citrix ShareFile 構成)]** セクションで、**[Configure Citrix ShareFile (Citrix ShareFile の構成)]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![Citrix ShareFile の構成](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png) 
+    ![Citrix ShareFile の構成](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png)
 
 7. 別の Web ブラウザー ウィンドウで、 **Citrix ShareFile** 企業サイトに管理者としてログインします。
 
-8. 上部のツールバーの **[Admin]**をクリックします。
+8. 上部のツールバーの **[Admin]** をクリックします。
 
-9. 左側のナビゲーション ウィンドウで、 **[Configure Single Sign-On]**を選択します。
+9. 左側のナビゲーション ウィンドウで、 **[Configure Single Sign-On]** を選択します。
    
     ![Account Administration](./media/active-directory-saas-sharefile-tutorial/ic773627.png "Account Administration")
 
@@ -137,21 +157,17 @@ Citrix ShareFile で Azure AD シングル サインオンを構成してテス�
    
     ![シングル サインオン](./media/active-directory-saas-sharefile-tutorial/ic773628.png "シングル サインオン")
    
-    a. **[Enable SAML]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SAML]** をクリックします。
     
     b. **[Your IDP Issuer/ Entity ID]\(IDP 発行者/エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     c. **[X.509 Certificate]\(X.509証明書\)** フィールドの横の **[変更]** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
     
-    d. **[ログイン URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d. **[Login URL]\(ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
     e. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
 11. Citrix ShareFile 管理ポータルで **[Save]** をクリックします。
-
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -201,13 +217,13 @@ Azure AD ユーザーが Citrix ShareFile にログインできるようにす�
    
    ![Basic Information](./media/active-directory-saas-sharefile-tutorial/IC799951.png "Basic Information")
    
-   a. **[Email Address]\(電子メール アドレス\)** ボックスに、Britta Simon アカウントの電子メール アドレスを **brittasimon@contoso.com** と入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email Address]\(電子メール アドレス\)** ボックスに、Britta Simon アカウントの電子メール アドレスを **brittasimon@contoso.com** と入力します。
    
    b. **[名]** ボックスに、ユーザーの**名**を、「**Britta**」と入力します。
    
    c. **[姓]** ボックスに、ユーザーの**姓**を、「**Simon**」と入力します。
 
-4. **[ユーザーの追加]**をクリックします。
+4. **[ユーザーの追加]** をクリックします。
   
    >[!NOTE]
    >Azure AD のアカウント所有者が電子メールを受信し、リンクをたどって自分のアカウントを確認すると、アカウントがアクティブになります。Azure AD ユーザー アカウントのプロビジョニングには、他の Citrix ShareFile ユーザー アカウント作成ツールまたは Citrix ShareFile が提供する API を使用できます。
@@ -254,8 +270,6 @@ Azure AD ユーザーが Citrix ShareFile にログインできるようにす�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_01.png
@@ -269,4 +283,3 @@ Azure AD ユーザーが Citrix ShareFile にログインできるようにす�
 [201]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_203.png
-

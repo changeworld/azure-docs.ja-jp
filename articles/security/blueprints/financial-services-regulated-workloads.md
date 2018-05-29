@@ -3,7 +3,7 @@ title: 'Azure Security and Compliance Blueprint: FFIEC Financial Services 規制
 description: 'Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード'
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 17794288-9074-44b5-acc8-1dacceb3f56c
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: f1339af22132d19f14ea8ebb72fe0e6bd45b7fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895556"
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード
 
@@ -42,7 +43,7 @@ Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象�
 - **デプロイ テンプレート**:  このデプロイでは、[Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-overview#template-deployment) を使用してアーキテクチャのコンポーネントを Microsoft Azure に自動的にデプロイします (これは、セットアップ時に構成パラメーターを指定することによって行います)。
 - **自動化されたデプロイ スクリプト**:  これらのスクリプトを使用して、エンド ツー エンド ソリューションをデプロイします。 次のスクリプトが含まれます。
     - モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。 
-    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[Payment Processing Blueprint コード リポジトリ][code-repo] のページでレビュー用に入手できます。 
+    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[Payment Processing Blueprint コード リポジトリ][code-repo]でレビュー用に入手できます。 
 
 ## <a name="architectural-diagram"></a>アーキテクチャ図
 
@@ -127,7 +128,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 >- ネットワーク セキュリティ グループ
 >- Azure SQL DB
 >- Azure Load Balancer
->- アプリケーション インサイト
+>- Application Insights
 >- Azure Security Center
 >- Azure Web アプリ
 >- Azure Automation
@@ -160,7 +161,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 - [カスタム正常性プローブ](/azure/application-gateway/application-gateway-create-gateway-portal)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) による、保護の追加と通知の提供。 Azure Security Center は評価システムも提供します。
 
-#### <a name="virtual-network"></a>Virtual Network
+#### <a name="virtual-network"></a>Virtual network
 
 この基本アーキテクチャは、10.0.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
@@ -278,7 +279,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 ### <a name="operations-management"></a>運用管理
 
-#### <a name="application-insights"></a>アプリケーション インサイト
+#### <a name="application-insights"></a>Application Insights
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) を使用すると、アプリケーションのパフォーマンス管理と瞬時の分析によって、行動につながる知見を得ることができます。
 
@@ -305,7 +306,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このソリューションをデプロイするためのコンポーネントは、[ブループリントのコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
+このソリューションをデプロイするためのコンポーネントは、[Blueprint のコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
 
 スクリプトにより、指定した Azure AD テナントにドメイン ユーザーが追加されます。 テストとして使用する新しい Azure AD テナントを作成することをお勧めします。
 
@@ -388,8 +389,3 @@ Contoso Webstore [ブループリントの脅威モデル](https://aka.ms/pciblu
 - このページに記載されているすべての顧客名、トランザクション レコード、およびすべての関連データは架空のものであり、この基本アーキテクチャ用に作成され、説明のためだけに使用されています。 実在するものとは一切関係ありません。  
 - このソリューションは Microsoft と Avyan Consulting の共同によって開発され、[MIT ライセンス](https://opensource.org/licenses/MIT)の下で提供されています。
 
-### <a name="document-authors"></a>ドキュメント作成者
-
-* *Frank Simorjay (Microsoft)*  
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "コード リポジトリ"

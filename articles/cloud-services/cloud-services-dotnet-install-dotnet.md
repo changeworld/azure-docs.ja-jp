@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2017
+ms.date: 05/10/2018
 ms.author: adegeo
-ms.openlocfilehash: fa41a18b31a255fa7cda90e33a948f5c6c65434f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 125aae1820a43da3b74533bcb382eab27b9cb5da
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057793"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
@@ -33,7 +34,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 .NET Framework の Web インストーラーをダウンロードするには、次のうち、インストールするバージョンを選択します。
 
-* [.NET 4.7.1 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=852095)
+* [.NET 4.7.2 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.1 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=671729)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。
@@ -95,11 +96,12 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     REM Set the value of netfx to install appropriate .NET Framework. 
     REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
     REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
-    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
+    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" ***** http://go.microsoft.com/fwlink/?LinkId=671729
     REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
-    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" *****
-    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" *****
-    set netfx="NDP471"
+    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" ***** 
+    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** http://go.microsoft.com/fwlink/?LinkId=852095
+    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** http://go.microsoft.com/fwlink/?LinkId=863262
+    set netfx="NDP472"
     
     REM ***** Set script start timestamp *****
     set timehour=%time:~0,2%
@@ -114,14 +116,16 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     set TEMP=%PathToNETFXInstall%
     
     REM ***** Setup .NET filenames and registry keys *****
+    if %netfx%=="NDP472" goto NDP472
     if %netfx%=="NDP471" goto NDP471
     if %netfx%=="NDP47" goto NDP47
     if %netfx%=="NDP462" goto NDP462
     if %netfx%=="NDP461" goto NDP461
     if %netfx%=="NDP46" goto NDP46
-        set "netfxinstallfile=NDP452-KB2901954-Web.exe"
-        set netfxregkey="0x5cbf5"
-        goto logtimestamp
+    
+    set "netfxinstallfile=NDP452-KB2901954-Web.exe"
+    set netfxregkey="0x5cbf5"
+    goto logtimestamp
     
     :NDP46
     set "netfxinstallfile=NDP46-KB3045560-Web.exe"
@@ -138,7 +142,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     set netfxregkey="0x60632"
     goto logtimestamp
     
-    :NPD47
+    :NDP47
     set "netfxinstallfile=NDP47-KB3186500-Web.exe"
     set netfxregkey="0x707FE"
     goto logtimestamp
@@ -147,6 +151,12 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     set "netfxinstallfile=NDP471-KB4033344-Web.exe"
     set netfxregkey="0x709fc"
     goto logtimestamp
+    
+    :NDP472
+    set "netfxinstallfile=NDP472-NDP472-KB4054531-Web.exe"
+    set netfxregkey="0x70BF6"
+    goto logtimestamp
+    
     
     :logtimestamp
     REM ***** Setup LogFile with timestamp *****

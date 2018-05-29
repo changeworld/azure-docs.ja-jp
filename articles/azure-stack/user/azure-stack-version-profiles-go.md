@@ -5,21 +5,20 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 84475302-EFC2-4C35-B4CF-60C857A96345
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 09a774e5dda71d87c3862a6152ff5d2c9468c40c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010066"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Azure Stack での GO による API バージョンのプロファイルの使用
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 04/03/2018
 Go SDK では、プロファイルは、**YYYY-MM-DD** 形式のバージョンと共に、profiles/ パスで使用可能です。 現在の最新の Azure Stack プロファイル バージョンは **2017-03-09** です。 指定されたサービスをプロファイルからインポートするには、プロファイルから該当するモジュールをインポートする必要があります。 たとえば、**2017-03-09** プロファイルから **Compute** サービスをインポートするには、次のように指定します。
 
 ````go
-import "github.com/Azure/azure-sdk-for-go/profi1es/2e17-e3-eg/compute/mgmt/compute" 
+import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
 ## <a name="install-azure-sdk-for-go"></a>GO 対応の Azure SDK をインストールする
@@ -63,7 +62,8 @@ GO SDK は、Azure Go-AutoRest モジュールに依存し、Azure Resource Mana
 Azure Stack でサンプルの Go コードを実行するには、次の手順に従います。
   1. Go 対応の Azure SDK とその依存関係をインストールします。 手順については、前のセクションの「[GO 対応の Azure SDK をインストールする](#install-azure-sdk-for-go)」をご覧ください。
   2. リソース マネージャー エンドポイントからメタデータ情報を取得します。 エンドポイントは、Go コードを実行するために必要な情報と共に、JSON ファイルを返します。
-  > [!note]  
+
+  > [!Note]  
   > Azure Stack Development Kit (ASDK) の **ResourceManagerUrl** は `https://management.local.azurestack.external/` になります。  
   > 統合システムの **ResourceManagerUrl** は `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` になります。  
   > 必要なメタデータを取得するには、`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` になります。
@@ -129,7 +129,7 @@ Authorizer には、リソース クライアントの承認者を設定する�
 
 このセクションでは、クライアント資格情報を使用して Azure Stack に authorizer トークンを取得する一般的な方法を示します。
 
-  1. サブスクリプションの所有者ロールを備えたサービス プリンシパルが使用可能な場合は、この手順を省略します。 それ以外の場合は、サービス プリンシパルの[指示]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals)を作成し、サブスクリプションの[指示]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)にスコープ設定した "所有者" ロールを割り当てます。 サービス プリンシパルのアプリケーション ID とシークレットを保存します。 
+  1. サブスクリプションの所有者ロールを備えたサービス プリンシパルが使用可能な場合は、この手順を省略します。 それ以外の場合は、サービス プリンシパルの[指示]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)を作成し、サブスクリプションの[指示]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)にスコープ設定した "所有者" ロールを割り当てます。 サービス プリンシパルのアプリケーション ID とシークレットを保存します。 
 
   2. コード内で Go-AutoRest から **adal**パッケージをインポートします。 
   
@@ -178,7 +178,8 @@ Authorizer には、リソース クライアントの承認者を設定する�
 ## <a name="example"></a>例
 
 このセクションでは、Azure Stack で仮想ネットワークを作成するための Go コードのサンプルを示します。 Go SDK の詳細な例については、[Azure Go SDk サンプル リポジトリ](https://github.com/Azure-Samples/azure-sdk-for-go-samples)に関するページをご覧ください。 Azure Stack サンプルは、リポジトリのサービス ホルダー内にある hybrid/ パスで使用可能です。
-> [!note]  
+
+> [!Note]  
 > この例のコードを実行するには、使用されるサブスクリプションが、**ネットワーク** リソース プロバイダーの一覧に**登録済み**として示されていることを確認します。 これを確認するには、Azure Stack ポータルでサブスクリプションを検索し、**リソース プロバイダー**をクリックします。
 
 1. コード内で必要なパッケージをインポートします。 ネットワーク モジュールをインポートするには、Azure Stack で使用可能な最新のプロファイルを使用する必要があります。 
@@ -196,7 +197,7 @@ Authorizer には、リソース クライアントの承認者を設定する�
   )
   ````
 
-2. 使用する環境変数を定義します。 仮想ネットワークを作成するには、リソース グループを保持している必要があることに注意してください。 
+2. 使用する環境変数を定義します。 仮想ネットワークを作成するには、リソース グループを保持している必要があります。 
 
   ````go
   var (

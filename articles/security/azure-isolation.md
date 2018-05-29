@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010882"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -124,6 +125,20 @@ ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは�
 
 ## <a name="compute-isolation"></a>コンピューティングの分離
 Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。 これらのコンピューティング インスタンスおよびサービスでは、複数のレベルで分離が提供され、お客様が求める構成の柔軟性を損なわずにデータを保護することができます。
+
+### <a name="isolated-virtual-machine-sizes"></a>分離された仮想マシン サイズ
+Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。
+
+分離されたサイズを利用することで、お使いの仮想マシンがその特定のサーバー インスタンス上で実行されている唯一のマシンであることが保証されます。  現在の分離された仮想マシンのプランには、以下が含まれます。
+* Standard_E64is_v3
+* Standard_E64i_v3
+* Standard_M128ms
+* Standard_GS5
+* Standard_G5
+* Standard_DS15_v2
+* Standard_D15_v2
+
+利用可能な分離されたサイズごとの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory)を参照してください。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
 Azure のコンピューティング プラットフォームは、コンピューターの仮想化に基づいています。つまり、顧客のすべてのコードは Hyper-V 仮想マシンで実行します。 各 Azure ノード (またはネットワーク エンドポイント) にはハイパーバイザーがあり、ハードウェア上で直接実行して、ノードをいくつものゲスト仮想マシン (VM) に分割します。

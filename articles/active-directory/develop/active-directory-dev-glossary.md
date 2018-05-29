@@ -3,23 +3,25 @@ title: Azure Active Directory 開発者向け用語集 | Microsoft Docs
 description: Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。
 services: active-directory
 documentationcenter: ''
-author: bryanla
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/16/2017
-ms.author: bryanla
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158151"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
@@ -35,7 +37,7 @@ ms.lasthandoff: 04/28/2018
 詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
 ## <a name="application-id-client-id"></a>アプリケーション ID (クライアント ID)
-特定のアプリケーションと関連付けられた構成を識別する、Azure AD がアプリケーションの登録に発行する一意識別子。  このアプリケーション ID ([クライアント ID](https://tools.ietf.org/html/rfc6749#page-15)) は、認証要求の実行時に使用され、開発時に認証ライブラリに提供されます。 アプリケーション ID (クライアント ID) はシークレットではありません。 
+特定のアプリケーションと関連付けられた構成を識別する、Azure AD がアプリケーションの登録に発行する一意識別子。 このアプリケーション ID ([クライアント ID](https://tools.ietf.org/html/rfc6749#page-15)) は、認証要求の実行時に使用され、開発時に認証ライブラリに提供されます。 アプリケーション ID (クライアント ID) はシークレットではありません。 
 
 ## <a name="application-manifest"></a>アプリケーション マニフェスト
 [Azure Portal][AZURE-portal]に備わっている機能の 1 つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。 詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
@@ -85,7 +87,7 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
 ## <a name="client-application"></a>クライアント アプリケーション
-[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)に代わって、保護されたリソースを要求するアプリケーションをいいます。 "クライアント" という言葉の意味には、特定のハードウェア実装上の特性 (アプリケーションがサーバーで実行されるのか、デスクトップで実行されるのか、またはそれ以外のデバイスで実行されるのか、など) は含まれません。  
+[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)に代わって、保護されたリソースを要求するアプリケーションをいいます。 "クライアント" という言葉の意味には、特定のハードウェア実装上の特性 (アプリケーションがサーバーで実行されるのか、デスクトップで実行されるのか、またはそれ以外のデバイスで実行されるのか、など) は含まれません。 
 
 クライアント アプリケーションは、リソース所有者に[承認](#authorization)を要求することによって、[OAuth2 承認付与](#authorization-grant)フローに参加し、リソース所有者に代わって API やデータにアクセスすることができます。 OAuth2 Authorization Framework では、資格情報の機密維持に対するクライアントの能力に基づき、"confidential" と "public" という [2 種類のクライアントを定義][OAuth2-Client-Types]しています。 アプリケーションは、Web サーバー上で実行される [Web クライアント (confidential)](#web-client)、デバイス上にインストールされる[ネイティブ クライアント (public)](#native-client)、またはデバイスのブラウザーで実行される[ユーザーエージェントベース クライアント (public)](#user-agent-based-client) を実装できます。
 
@@ -121,7 +123,7 @@ Azure AD アプリケーション統合の場合、Azure AD アプリケーシ�
 ## <a name="resource-server"></a>リソース サーバー
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースのホストとして、[アクセス トークン](#access-token)を提示する[クライアント アプリケーション](#client-application)からのリソース要求 (保護されたリソースに対する要求) を受理し、応答する機能を備えたサーバーをいいます。 保護されたリソース サーバーまたはリソース アプリケーションと呼ばれることもあります。
 
-リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する Azure AD Graph API や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。 これらの API はどちらも [Microsoft Graph API][Microsoft-Graph] から利用することができます。  
+リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。 たとえば、Azure AD テナント データへのアクセスを提供する Azure AD Graph API や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。 これらの API はどちらも [Microsoft Graph API][Microsoft-Graph] から利用することができます。 
 
 リソース アプリケーションの ID 構成は、クライアント アプリケーションと同様、Azure AD テナントへの [登録](#application-registration) を通じて確立され、アプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方が得られます。 Azure AD Graph API など、Microsoft が提供している一部の API には、あらかじめ登録されているサービス プリンシパルが存在し、プロビジョニング時にすべてのテナントで利用できるようになっています。
 
@@ -177,7 +179,7 @@ Web サーバーからコードをダウンロードしてユーザー エージ
 Web サーバーですべてのコードを実行する[クライアント アプリケーション](#client-application)の一種。資格情報をサーバー上に安全に保存することで、"confidential" クライアントとして動作することができます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD 開発者ガイド][AAD-Dev-Guide]は、[アプリケーションの統合][AAD-How-To-Integrate]の概要や[Azure AD 認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。  また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
+[Azure AD 開発者ガイド][AAD-Dev-Guide]は、[アプリケーションの統合][AAD-How-To-Integrate]の概要や[Azure AD 認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。 また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。新しい定義に関するリクエストのほか、既存の定義の更新のリクエストもお待ちしております。
 

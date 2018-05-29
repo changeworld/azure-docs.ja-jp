@@ -10,13 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: 8390284f969fe9375a70801724881db26806a1d8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b377b5ca9d46d66fe99a8f60383076920b098a7d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33769717"
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムのカスタム セットアップ
 
@@ -29,13 +30,7 @@ Azure SSIS 統合ランタイムのカスタム セットアップ インター�
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
--   現時点では、xcopy や robocopy、または類似のツールを呼び出すスクリプトを直接使用して、ファイルをコピーすることはできません。 対処法として、xcopy または robocopy ツールを呼び出すスクリプトを含む `cmd` ファイル (`install.cmd` など) を作成して、この `cmd` ファイルを代わりに呼び出します。 例: 
-
-    ```
-    start /wait cmd /c "call install.cmd > %CUSTOM\_SETUP\_SCRIPT\_LOG\_DIR%\\install.cmd.log"
-    ```
-
--   現時点では、`gacutil.exe` を直接呼び出して グローバル アセンブリ キャッシュ (GAC) のアセンブリをインストールすることはできません。 対処法として、`gacinstall.cmd` (パブリック プレビュー コンテナーで提供されます) を使用します。
+-   `gacutil.exe` を使用してアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールする場合は、カスタム セットアップの一部として指定するか、パブリック プレビュー コンテナー内に提供されているコピーを使用する必要があります。
 
 -   カスタム セットアップを備えた Azure SSIS IR を VNet に参加させる必要がある場合、Azure Resource Manager の VNet のみがサポートされます。 従来の VNet はサポートされません。
 
@@ -125,29 +120,31 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
     c. 接続されたパブリック プレビュー コンテナーを選択して、`CustomSetupScript` フォルダーをダブルクリックします。 このフォルダーには、次のアイテムが含まれています。
 
-       1. `Sample` フォルダー。Azure SSIS IR の各ノード上に基本タスクをインストールするための 1 個のカスタム セットアップが格納されています。 タスクは何も行いませんが、数秒間スリープ状態になります。 また、フォルダーには、`gacutil.exe` を置換するための `gacinstall.cmd` も格納されています。
+       1. `Sample` フォルダー。Azure SSIS IR の各ノード上に基本タスクをインストールするための 1 個のカスタム セットアップが格納されています。 タスクは何も行いませんが、数秒間スリープ状態になります。 フォルダーには、`gacutil.exe` を含む `gacutil` フォルダーも含まれます。
 
-       2. `UserScenarios` フォルダー。実際のユーザー シナリオに対応する 8 個のカスタム セットアップが格納されています。
+       2. `UserScenarios` フォルダー。実際のユーザー シナリオに対応する複数のカスタム セットアップが格納されています。
 
     ![パブリック プレビュー コンテナーの内容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
     d. `UserScenarios` フォルダーをダブルクリックします。 このフォルダーには、次のアイテムが含まれています。
 
-       1. `BCP` フォルダー。Azure SSIS IR の各ノード上に、一括コピー プログラム (`bcp`) を含む SQL Server コマンドライン ユーティリティ (`MsSqlCmdLnUtils.msi`) をインストールするための 1 個のカスタム セットアップが格納されています。
+       1. `.NET FRAMEWORK 3.5` フォルダー。Azure-SSIS IR の各ノードのカスタム コンポーネントに必要となる可能性がある、.NET Framework の以前のバージョンをインストールするためのカスタム設定が格納されています。
 
-       2. `EXCEL` フォルダー。Azure SSIS IR の各ノード上にオープンソース アセンブリ (`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll`、および `ExcelDataReader.dll`) をインストールするための 1 個のカスタム セットアップが格納されています。
+       2. `BCP` フォルダー。Azure SSIS IR の各ノード上に、一括コピー プログラム (`bcp`) を含む SQL Server コマンドライン ユーティリティ (`MsSqlCmdLnUtils.msi`) をインストールするための 1 個のカスタム セットアップが格納されています。
 
-       3. `MSDTC` フォルダー。Azure SSIS IR の各ノード上で Microsoft 分散トランザクション コーディネーター (MSDTC) を有効にして開始するための 1 個のカスタム セットアップが格納されています。
+       3. `EXCEL` フォルダー。Azure SSIS IR の各ノード上にオープンソース アセンブリ (`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll`、および `ExcelDataReader.dll`) をインストールするための 1 個のカスタム セットアップが格納されています。
 
-       4. `ORACLE ENTERPRISE` フォルダー。Azure SSIS IR Enterprise Edition (プライベート プレビュー) の各ノードに Oracle OCI ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) とサイレント インストールの構成ファイル (`client.rsp`) が格納されています。 このセットアップによって、Oracle 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) から `winx64_12102_client.zip`をダウンロードしてから、`main.cmd` および `client.rsp` と共にコンテナーへアップロードする必要があります。 TNS を使用して Oracle に接続する場合、`tnsnames.ora` をダウンロードし、編集し、コンテナーにアップロードする必要があります。そのため、セットアップ時にこのファイルを Oracle インストール フォルダーにコピーできます。
+       4. `MSDTC` フォルダー。Azure SSIS IR の各ノード上の Microsoft 分散トランザクション コーディネーター (MSDTC) インスタンスのネットワークおよびセキュリティの構成を変更するためのカスタム セットアップが格納されています。
 
-       5. `ORACLE STANDARD` フォルダー。Azure SSIS IR の各ノード上に Oracle ODP.NET ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、ADO.NET 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)から `ODP.NET_Managed_ODAC122cR1.zip`をダウンロードし、`main.cmd` と共にコンテナーへアップロードします。
+       5. `ORACLE ENTERPRISE` フォルダー。Azure SSIS IR Enterprise Edition (プライベート プレビュー) の各ノードに Oracle OCI ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) とサイレント インストールの構成ファイル (`client.rsp`) が格納されています。 このセットアップによって、Oracle 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) から `winx64_12102_client.zip`をダウンロードしてから、`main.cmd` および `client.rsp` と共にコンテナーへアップロードする必要があります。 TNS を使用して Oracle に接続する場合、`tnsnames.ora` をダウンロードし、編集し、コンテナーにアップロードする必要があります。そのため、セットアップ時にこのファイルを Oracle インストール フォルダーにコピーできます。
 
-       6. `SAP BW` フォルダー。Azure SSIS IR Enterprise Edition (プライベート プレビュー) の各ノードに SAP .NET コネクター アセンブリ (`librfc32.dll`) をインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、SAP BW 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、64 ビットまたは 32 ビットバージョンの `librfc32.dll`を `main.cmd`と共に、 SAP インストール フォルダーからコンテナーにアップロードします。 その後、セットアップ中に、スクリプトによって SAP アセンブリが `%windir%\SysWow64` または `%windir%\System32` フォルダーにコピーされます。
+       6. `ORACLE STANDARD` フォルダー。Azure SSIS IR の各ノード上に Oracle ODP.NET ドライバーをインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、ADO.NET 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、[Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)から `ODP.NET_Managed_ODAC122cR1.zip`をダウンロードし、`main.cmd` と共にコンテナーへアップロードします。
 
-       7. `STORAGE` フォルダー。Azure SSIS IR の各ノード上に Azure PowerShell をインストールするための 1 個のカスタム セットアップが格納されています。 このセットアップによって、[Azure Storage アカウントを操作するための PowerShell スクリプト](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)を実行する SSIS パッケージをデプロイして実行できるようになります。 `main.cmd`、サンプルの `AzurePowerShell.msi` (または最新バージョンをインストールする)、および `storage.ps1` をお使いのコンテナーにコピーします。 パッケージのテンプレートとして PowerShell.dtsx を使用します。 パッケージ テンプレートでは、`storage.ps1` を修正可能な PowerShell スクリプトとしてダウンロードする [Azure BLOB のダウンロード タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)と、各ノード上でスクリプトを実行する[プロセス実行タスク](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)を結合しています。
+       7. `SAP BW` フォルダー。Azure SSIS IR Enterprise Edition (プライベート プレビュー) の各ノードに SAP .NET コネクター アセンブリ (`librfc32.dll`) をインストールするための 1 個のカスタム セットアップ スクリプト (`main.cmd`) が格納されています。 このセットアップによって、SAP BW 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、64 ビットまたは 32 ビットバージョンの `librfc32.dll`を `main.cmd`と共に、 SAP インストール フォルダーからコンテナーにアップロードします。 その後、セットアップ中に、スクリプトによって SAP アセンブリが `%windir%\SysWow64` または `%windir%\System32` フォルダーにコピーされます。
 
-       8. `TERADATA` フォルダー。カスタム セットアップ スクリプト (`main.cmd)`とその関連ファイルである (`install.cmd`)、およびインストーラー パッケージ (`.msi`) が格納されています。 これらのファイルは、Azure SSIS IR Enterprise Edition (プライベート プレビュー) の各ノード上に Teradata コネクター、TPT API、および ODBC ドライバーをインストールします。 このセットアップによって、Teradata 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、Teradata Tools and Utilities (TTU) 15.x の zip ファイル (たとえば、`TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) を [Teradata](http://partnerintelligence.teradata.com) からダウンロードしてから、上述の `.cmd` および `.msi` ファイルと共にコンテナーへアップロードします。
+       8. `STORAGE` フォルダー。Azure SSIS IR の各ノード上に Azure PowerShell をインストールするための 1 個のカスタム セットアップが格納されています。 このセットアップによって、[Azure Storage アカウントを操作するための PowerShell スクリプト](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)を実行する SSIS パッケージをデプロイして実行できるようになります。 `main.cmd`、サンプルの `AzurePowerShell.msi` (または最新バージョンをインストールする)、および `storage.ps1` をお使いのコンテナーにコピーします。 パッケージのテンプレートとして PowerShell.dtsx を使用します。 パッケージ テンプレートでは、`storage.ps1` を修正可能な PowerShell スクリプトとしてダウンロードする [Azure BLOB のダウンロード タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)と、各ノード上でスクリプトを実行する[プロセス実行タスク](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)を結合しています。
+
+       9. `TERADATA` フォルダー。カスタム セットアップ スクリプト (`main.cmd)`とその関連ファイルである (`install.cmd`)、およびインストーラー パッケージ (`.msi`) が格納されています。 これらのファイルは、Azure SSIS IR Enterprise Edition (プライベート プレビュー) の各ノード上に Teradata コネクター、TPT API、および ODBC ドライバーをインストールします。 このセットアップによって、Teradata 接続マネージャー、接続元、および接続先を使用できるようになります。 最初に、Teradata Tools and Utilities (TTU) 15.x の zip ファイル (たとえば、`TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) を [Teradata](http://partnerintelligence.teradata.com) からダウンロードしてから、上述の `.cmd` および `.msi` ファイルと共にコンテナーへアップロードします。
 
     ![ユーザー シナリオ フォルダー内のフォルダー](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

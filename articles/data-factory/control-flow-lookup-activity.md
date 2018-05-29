@@ -11,44 +11,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011528"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
-ルックアップ アクティビティを使用して、任意の外部ソースからレコード、テーブル名、または値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
 
-ルックアップ アクティビティは、構成ファイルまたはデータ ソースからファイル、レコード、またはテーブルのリストを動的に取得する場合に役立ちます。 アクティビティからの出力は、他のアクティビティでそれらのアイテムに対してのみ特定の処理を実行するためにさらに使用できます。
+ルックアップ アクティビティを使用して、ADF でサポートされるいずれかのデータ ソースからデータセットを取得することができます。  これは、次のシナリオで使用できます。
+- オブジェクト名をハード コーディングする代わりに、後続のアクティビティで操作するオブジェクト (ファイル、テーブルなど) を動的に決定する
+
+ルックアップ アクティビティでは、構成ファイルの内容、構成テーブル、あるいはクエリまたはストアド プロシージャの実行結果を読み取り、返すことができます。  ルックアップ アクティビティからの出力は、シングルトン値である場合、後続のコピーや変換アクティビティで使用することができ、属性の配列である場合は ForEach アクティビティで使用できます。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-現在、ルックアップでは次のデータ ソースがサポートされています。
+ルックアップでは次のデータ ソースがサポートされています。 ルックアップ アクティビティによって返すことができる最大行数は **5000** で、サイズは最大 **2 MB** です。 現時点では、タイムアウト前のルックアップ アクティビティの最長期間は 1 時間です。
 
-- Amazon Redshift
-- Azure BLOB ストレージ
-- Azure Cosmos DB
-- Azure Data Lake Store
-- Azure File ストレージ
-- Azure SQL Database
-- Azure SQL Data Warehouse
-- Azure Table Storage
-- Dynamics 365
-- Dynamics CRM
-- ファイル システム
-- PostgreSQL
-- Salesforce
-- Salesforce Service Cloud
-- SFTP
-- SQL Server
-
-ルックアップ アクティビティによって返される最大行数は **5000** であり、サイズは最大 **10MB** です。
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 ## <a name="syntax"></a>構文
 
@@ -77,10 +63,11 @@ dataset | ルックアップ用のデータセット参照を提供します。 
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「コピー アクティビティのプロパティ」セクションから詳細を取得します。 | キーと値のペア | [はい]
 firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | ブール | いいえ。 既定値は `true` です。
 
-以下の点に注意してください。
+**以下の点に注意してください。**
 
 1. ByteArray 型のソース列はサポートされていません。
 2. データセット定義で構造体はサポートされていません。 特にテキスト形式のファイルの場合は、ヘッダー行を使用して列名を指定できます。
+3. ルックアップ ソースが JSON ファイルである場合、JSON オブジェクトを整形するための `jsonPathDefinition` 設定はサポートされません。オブジェクト全体が取得されます。
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>後続のアクティビティでルックアップ アクティビティの結果を使用する
 

@@ -14,35 +14,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.date: 05/11/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: 96a3b6f8f8a03019f0446aa7ba42f53298e21009
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 1038f0c8a967c05ebf07849619268f22b1eb0c4b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160905"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 
-SAP および Microsoft は、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 マイクロソフトでは、定期的にプラットフォームを更新し、Microsoft Azureが SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定資格の詳細を SAP に提出しています。 次の表に、サポート対象の構成と増加する認定資格の一覧を示します。 
+SAP および Microsoft は、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 Microsoft では、定期的にプラットフォームを更新し、Microsoft Azure が SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定の詳細を SAP に提出しています。 次の表に、Azure がサポートする構成と、増加する SAP 認定資格の一覧を示します。 
 
 ## <a name="sap-hana-certifications"></a>SAP HANA 認定
 参照:
 
-- SAP HANA のサポートに関する HANA L インスタンスついて記載している「[SAP Note 2316233 - SAP HANA on Microsoft Azure (Large Instances)](https://launchpad.support.sap.com/#/notes/2316233)」(SAP Note 2316233 - SAP HANA on Microsoft Azure (L インスタンス))。
-- ネイティブ Azure VM の SAP HANA サポートに関する「[SAP HANA certified IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Amazon%20Web%20Services%2CMicrosoft%20Azure)」(SAP HANA 認定の IaaS プラットフォーム)。
+- ネイティブな Azure VM と HANA L インスタンスの SAP HANA によるサポートに関する「[SAP HANA certified IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)」(SAP HANA 認定の IaaS プラットフォーム)。
 
 | SAP 製品 | サポート対象 OS | Azure のサービス |
 | --- | --- | --- |
 | SAP HANA Developer Edition (SQLODBC、ODBO (Windows のみ)、ODBC、JDBC ドライバー、HANA Studio、HANA データベースで構成される HANA クライアント ソフトウェアを含む) | Red Hat Enterprise Linux、SUSE Linux Enterprise | D シリーズ VM ファミリ |
 | Business One on HANA | SUSE Linux Enterprise | DS14_v2 |
-| SAP S/4 HANA |Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、SAP HANA on Azure (L インスタンス) 用に制御された可用性 |
-| Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | 非運用シナリオでの単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
-| HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
+| SAP S/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) 用に制御された可用性 |
+| Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | 非運用シナリオ、M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) 用の GS5 |
+| HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) |
+| SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、SAP HANA on Azure (L インスタンス) |
 
-## <a name="sap-netweaver-certifications"></a>SAP NetWeaver 認定資格
+今のところ、すべての Azure VM が SAP HANA のスケールアップに認定されています。
+
+## <a name="sap-netweaver-certifications"></a>SAP NetWeaver 認定
 以下の SAP 製品に関して Microsoft Azure は認定を受けており、マイクロソフトと SAP から完全サポートを受けることができます。
 参照:
 
@@ -51,17 +53,17 @@ SAP および Microsoft は、お客様に対して相互にメリットを持�
 
 | SAP 製品 | ゲスト OS | RDBMS | 仮想マシンの種類 |
 | --- | --- | --- | --- |
-| SAP Business Suite ソフトウェア |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
-| SAP Business All-in-One |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
-| SAP BusinessObjects BI |Windows |該当なし |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
-| SAP NetWeaver |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
+| SAP Business Suite ソフトウェア | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
+| SAP Business All-in-One | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
+| SAP BusinessObjects BI | Windows |該当なし |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
+| SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle (Windows および Oracle Linux のみ)、DB2、SAP ASE |A5 から A11、D11 から D14、DS11 から DS14、DS11_v2 から DS15_v2、GS1 から GS5、D2s_v3 から D64s_v3、E2s_v3 から E64s_v3、M64s から M128ms |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Azure でサポートされているその他の SAP ワークロード
 
 | SAP 製品 | ゲスト OS | RDBMS | 仮想マシンの種類 |
 | --- | --- | --- | --- |
 | SAP Business One on SQL Server | Windows  | SQL Server | すべての種類の NetWeaver 認定 VM |
-| SAP BPC 10.01 MS SP08 | Windows | | すべての種類の NetWeaver 認定 VM<br /> SAP Note #2451795 |
-| SAP ビジネス オブジェクト BI プラットフォーム | Windows | | SAP Note #2145537 |
+| SAP BPC 10.01 MS SP08 | Windows および Linux | | すべての種類の NetWeaver 認定 VM<br /> SAP Note #2451795 |
+| SAP ビジネス オブジェクト BI プラットフォーム | Windows および Linux | | SAP Note #2145537 |
 | SAP Data Services 4.2 | | | SAP Note #2288344 |
 | SAP Hybris Commerce Platform 5.x および 6.x | Windows | SQL Server、Oracle | すべての種類の NetWeaver 認定 VM<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |

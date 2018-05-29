@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207208"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>クイック スタート: Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -109,6 +110,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     - 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
 
 4. **F5** キーを押して続行します。
+    - ブラウザーのプロンプトが表示された場合は、デバッグ モードに使用する読み取りと実行のアクセス許可を ServiceFabricAllowedUsers グループに与えます。
     - 今度は、バックエンド サービスのブレークポイントに到達します。
     
     ![投票バックエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
@@ -166,7 +168,7 @@ Thumbprint                                Subject
 
     クラスター内の各アプリケーションには、一意の名前が必要です。  パーティ クラスターはパブリックの共有環境ですが、既存のアプリケーションと競合している可能性があります。  名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
 
-3. **[発行]**をクリックします。
+3. **[発行]** をクリックします。
 
 4. ブラウザーを開き、クラスターのアドレスに続いて「:8080」を入力して、クラスター内のアプリケーションを取得します (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`)。 Azure のクラスターでアプリケーションが実行されていることがわかります。
 
@@ -175,13 +177,15 @@ Thumbprint                                Subject
 ## <a name="scale-applications-and-services-in-a-cluster"></a>クラスター内のアプリケーションとサービスをスケールする
 Service Fabric サービスは、その負荷の変化に対応するために、クラスターで簡単にスケールすることができます。 サービスをスケールするには、クラスターで実行されるインスタンスの数を変更します。 サービスをスケールする方法は複数あり、PowerShell や Service Fabric CLI (sfctl) からスクリプトやコマンドを使用して行うことができます。 この例では、Service Fabric Explorer を使用します。
 
-Service Fabric Explorer は、あらゆる Service Fabric クラスターで動作し、ブラウザーからクラスターの HTTP 管理ポート (19080) にアクセスして利用することができます (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
+Service Fabric Explorer は、あらゆる Service Fabric クラスターで動作し、ブラウザーからクラスターの HTTP 管理ポート (19080) にアクセスして利用することができます (例: `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
 
-場所が信頼されていないというブラウザーの警告が表示される場合があります。 これは、証明書が自己署名であることが原因です。 警告を無視することを選択して続行できます。 ブラウザーに求められたら、インストールされた証明書を選択して接続します。 
+場所が信頼されていないというブラウザーの警告が表示される場合があります。 これは、証明書が自己署名であることが原因です。 警告を無視することを選択して続行できます。
+1. ブラウザーに求められたら、インストールされた証明書を選択して接続します。 リストから選択するパーティ クラスター証明書は、アクセスしようとしているパーティ クラスターと一致している必要があります  (例: win243uja6w62r.westus.cloudapp.azure.com)。
+2. ブラウザーのプロンプトが表示された場合は、このセッションの CryptoAPI 秘密キーに対する権利を与えます。
 
 Web フロントエンド サービスをスケールするには、次の手順に従います。
 
-1. クラスターで Service Fabric Explorer を開きます (例: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
+1. クラスターで Service Fabric Explorer を開きます (例: `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`)。 
 2. ツリー ビューで、**[アプリケーション]**->**[VotingType]**->**[fabric:/Voting]** の順に展開します。 ツリー ビューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)

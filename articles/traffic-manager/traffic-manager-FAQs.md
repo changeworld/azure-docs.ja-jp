@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942358"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -29,6 +30,10 @@ ms.lasthandoff: 04/16/2018
 「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 Traffic Manager では、DNS 応答を送信して、クライアントを適切なサービス エンドポイントに転送します。 クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。
 
 そのため、Traffic Manager では、クライアントが接続するエンドポイントまたは IP アドレスが提供されません。 サービスに静的 IP アドレスが必要な場合は、Traffic Manager ではなくサービス側で構成する必要があります。
+
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager を使用して、どのような種類のトラフィックをルーティングできますか。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をそれらのトラフックで使用することはできません。
+
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager では "スティッキー" セッションはサポートされていますか。
 

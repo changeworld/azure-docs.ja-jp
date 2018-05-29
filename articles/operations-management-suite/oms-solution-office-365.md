@@ -1,35 +1,36 @@
 ---
-title: "Operations Management Suite (OMS) の Office 365 ソリューション | Microsoft Docs"
-description: "この記事では、OMS での Office 365 ソリューションの構成と使用について詳しく説明します。  Log Analytics で作成された Office 365 レコードの詳細な説明が含まれています。"
+title: Azure の Office 365 管理ソリューション | Microsoft Docs
+description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Log Analytics で作成された Office 365 レコードの詳細な説明が含まれています。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777850"
 ---
-# <a name="office-365-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) の Office 365 ソリューション
+# <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
 ![Office 365 のロゴ](media/oms-solution-office-365/icon.png)
 
-Operations Management Suite (OMS) 用の Office 365 ソリューションでは、Log Analytics で Office 365 環境を監視できます。  
+Office 365 管理ソリューションでは、Log Analytics で Office 365 環境を監視できます。
 
 - Office 365 アカウント上でのユーザー アクティビティを監視し、使用パターンを分析したり、行動傾向を識別したりします。 たとえば、組織の外で共有されるファイルや、最も人気のある SharePoint サイトといった特定の使用シナリオを抽出することができます。
 - 管理者のアクティビティを監視し、構成変更や高権限操作を追跡します。
 - 不必要なユーザーの行動を検出および調査します。これは、組織のニーズに合わせてカスタマイズできます。
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
-- 組織の Office 365 アクティビティ データに対して OMS 検索を使用し、運用上のトラブルシューティングを実行します。
+- 組織の Office 365 アクティビティ データに対して[ログ検索](../log-analytics/log-analytics-log-search.md)を使用し、運用上のトラブルシューティングを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションをインストールして構成する前に、次のものが必要です。
@@ -47,7 +48,7 @@ Operations Management Suite (OMS) 用の Office 365 ソリューションでは�
 ## <a name="configuration"></a>構成
 [Office 365 ソリューションをサブスクリプションに追加](../log-analytics/log-analytics-add-solutions.md)したら、ソリューションを Office 365 サブスクリプションに接続する必要があります。
 
-1. [ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順に従って、アラート管理ソリューションを OMS ワークスペースに追加します。
+1. [ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。
 2. OMS ポータルで **[Settings] \(設定)** に進みます。
 3. **[Connected Sources] \(接続済みソース)** で、**[Office 365]** を選択します。
 4. **[Connect Office 365] \(Office 365 を接続)** をクリックします。<br>![Office 365 を接続する](media/oms-solution-office-365/configure.png)
@@ -63,7 +64,7 @@ Office 365 ソリューションは、どの [OMS エージェント](../log-ana
 レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Log Analytics に送信します。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
-OMS ワークスペースに Office 365 ソリューションを追加すると、OMS ダッシュボードに **[Office 365]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
+Log Analytics ワークスペースに Office 365 ソリューションを追加すると、ダッシュボードに **[Office 365]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
 ![Office 365 の概要タイル](media/oms-solution-office-365/tile.png)  
 
 **[Office 365]** タイルをクリックして **[Office 365]** ダッシュボードを開きます。
@@ -72,7 +73,7 @@ OMS ワークスペースに Office 365 ソリューションを追加すると�
 
 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある [See all] \(すべて表示) をクリックするか、列ヘッダーをクリックします。
 
-| 分割 | Description |
+| 分割 | [説明] |
 |:--|:--|
 | [操作] | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
 | Exchange | Add-Mailbox Permission、または Set-Mailbox などの Exchange Server アクティビティの内訳を示します。 |
@@ -89,9 +90,9 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="common-properties"></a>共通のプロパティ
 次のプロパティは、Office 365 のすべてのレコードに共通です。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 | *OfficeActivity* |
+| type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | 操作 | ユーザーまたは管理者アクティビティの名前。  |
@@ -106,7 +107,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="azure-active-directory-base"></a>Azure Active Directory ベース
 次のプロパティは、Azure Active Directory のすべてのレコードに共通です。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -117,7 +118,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory アカウント ログオン
 これらのレコードは、Active Directory のユーザーがログオンを試みたときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
@@ -130,7 +131,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="azure-active-directory"></a>Azure Active Directory
 これらのレコードは、変更または追加が Azure Active Directory オブジェクトに行われたときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -147,7 +148,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="data-center-security"></a>データ センター セキュリティ
 これらのレコードは、データ センター セキュリティの監査データから作成されます。  
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | EffectiveOrganization | 昇格/コマンドレットのターゲットだったテナントの名前。 |
 | ElevationApprovedTime | 昇格が承認されたときのタイムスタンプ。 |
@@ -162,7 +163,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="exchange-admin"></a>Exchange 管理者
 これらのレコードは、Exchange 構成が変更されたときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -176,7 +177,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="exchange-mailbox"></a>Exchange メールボックス
 これらのレコードは、変更または追加が Exchange メールボックスに行われたときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -198,7 +199,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="exchange-mailbox-audit"></a>Exchange メールボックス監査
 これらのレコードは、メールボックス監査エントリが作成されるときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -212,7 +213,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="exchange-mailbox-audit-group"></a>Exchange メールボックス監査グループ
 これらのレコードは、変更または追加が Exchange グループに行われたときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -230,7 +231,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="sharepoint-base"></a>SharePoint ベース
 これらのプロパティは、SharePoint のすべてのレコードに共通です。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -246,7 +247,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="sharepoint-schema"></a>SharePoint スキーマ
 これらのレコードは、SharePoint の構成変更が行われたときに作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -258,7 +259,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ### <a name="sharepoint-file-operations"></a>SharePoint ファイル操作
 これらのレコードは、SharePoint でのファイル操作に応答して作成されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -278,7 +279,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| クエリ | Description |
+| クエリ | [説明] |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |Type = OfficeActivity &#124; measure count() by Operation |
 |SharePoint サイトの使用率|Type=OfficeActivity OfficeWorkload=sharepoint &#124; measure count() as Count by SiteUrl &#124; sort Count asc|
@@ -292,15 +293,15 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 
 Office 365 ソリューションで期待どおりにデータが収集されない場合、**[Settings] \(設定)** -> **[Connected Sources] \(接続済みソース)** -> **[Office 365]** から OMS ポータルにアクセスし、ソリューションの状態を確認します。 次の表は、それぞれの状態の説明です。
 
-| 状態 | Description |
+| 状態 | [説明] |
 |:--|:--|
-| アクティブ | Office 365 サブスクリプションがアクティブであり、ワークロードは OMS ワークスペースに正常に接続しています。 |
-| Pending | Office 365 サブスクリプションはアクティブですが、ワークロードはまだ OMS ワークスペースに正常に接続していません。 Office 365 サブスクリプションを初めて接続するとき、すべてのワークロードは、正常に接続されるまでの間はこの状態になります。 すべてのワークロードがアクティブに切り替わるまで、最大 24 時間かかります。 |
-| 非アクティブ | Office 365 サブスクリプションは非アクティブ状態です。 Office 365 管理ページで詳細を確認してください。 Office 365 サブスクリプションをアクティブ化した後、データの受信を開始するには、OMS ワークスペースからサブスクリプションをリンク解除して再度リンクします。 |
+| アクティブ | Office 365 サブスクリプションがアクティブであり、ワークロードは Log Analytics ワークスペースに正常に接続しています。 |
+| Pending | Office 365 サブスクリプションはアクティブですが、ワークロードはまだ Log Analytics ワークスペースに正常に接続していません。 Office 365 サブスクリプションを初めて接続するとき、すべてのワークロードは、正常に接続されるまでの間はこの状態になります。 すべてのワークロードがアクティブに切り替わるまで、最大 24 時間かかります。 |
+| 非アクティブ | Office 365 サブスクリプションは非アクティブ状態です。 Office 365 管理ページで詳細を確認してください。 Office 365 サブスクリプションをアクティブ化した後、データの受信を開始するには、Log Analytics ワークスペースからサブスクリプションをリンク解除して再度リンクします。 |
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * [独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
 * [アラートを作成](../log-analytics/log-analytics-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

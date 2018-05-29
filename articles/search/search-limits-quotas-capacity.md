@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072591"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、または **Standard** の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -87,12 +88,13 @@ ms.lasthandoff: 04/23/2018
 
 ## <a name="indexer-limits"></a>インデクサー制限
 
-2017 年末以降に作成された Basic サービスについては、インデックス、データ ソース、およびインデクサーの制限が 15 に増えました。
+2017 年末以降に作成された Basic サービスについては、インデックス、データ ソース、スキルセット、およびインデクサーの制限が 15 に増えました。
 
 | リソース | Free&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | 最大インデクサー |3 |5 または 15|50 |200 |200 |該当なし |
 | 最大データソース |3 |5 または 15 |50 |200 |200 |該当なし |
+| 最大スキルセット |3 |5 または 15 |50 |200 |200 |該当なし |
 | 呼び出しあたりの最大インデックス作成負荷 |10,000 ドキュメント |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |該当なし |
 | 最大実行時間 | 1 ～ 3 分 |24 時間 |24 時間 |24 時間 |24 時間 |該当なし  |
 | BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |該当なし  |

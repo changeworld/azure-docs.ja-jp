@@ -15,20 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 56839c38de135a805c51bb96ad5d7abc41ebcad7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895376"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
-仮想ネットワークを作成および削除する方法と、既存の仮想ネットワークの DNS サーバーや IP アドレス空間などの設定を変更する方法について説明します。
-
-仮想ネットワークとは、クラウド内のユーザー独自のネットワークを表したものです。 Azure サブスクリプション専用に Azure クラウドが論理的に分離されています。 作成する各仮想ネットワークでは、次のことを実行できます。
-- 割り当てるアドレス空間を選択する。 アドレス空間は、10.0.0.0/16 のように Classless Inter-Domain Routing (CIDR) 表記を使用して定義された 1 つ以上のアドレス範囲で構成されます。
-- Azure で提供される DNS サーバーを使用するか独自の DNS サーバーを使用するかを選択する。 仮想ネットワーク内で名前を解決するために、仮想ネットワークに接続されているすべてのリソースにこの DNS サーバーが割り当てられます。
-- 仮想ネットワークをサブネットに分割し、仮想ネットワークのアドレス空間内で各サブネットに専用のアドレス範囲を設定する。 サブネットを作成、変更、および削除する方法については、[サブネットの追加、変更、削除](virtual-network-manage-subnet.md)に関する記事を参照してください。
+仮想ネットワークを作成および削除する方法と、既存の仮想ネットワークの DNS サーバーや IP アドレス空間などの設定を変更する方法について説明します。 仮想ネットワーク初心者の場合は、「[Virtual Network の概要](virtual-networks-overview.md)」を読むか、[チュートリアル](quick-create-portal.md)を行うことで、詳しく学習できます。 仮想ネットワークにはサブネットが含まれます。 サブネットを作成、変更、および削除する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -36,8 +32,9 @@ ms.lasthandoff: 04/28/2018
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.2.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.26 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -94,7 +91,7 @@ ms.lasthandoff: 04/28/2018
     - **Azure の一般的な設定**: Azure の一般的な設定の詳細については、次の情報を参照してください。
         *   [アクティビティ ログ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
         *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-        *   [タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+        *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -167,17 +164,15 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="permissions"></a>アクセス許可
 
-仮想ネットワークでタスクを実行するには、自分のアカウントを[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に表示されている適切なアクセス許可が割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに割り当てる必要があります。
+仮想ネットワークに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-|操作                                    |   操作の名前                    |
-|-------------------------------------------  |   --------------------------------  |
-|Microsoft.Network/virtualNetworks/read       |   仮想ネットワークを取得する               |
-|Microsoft.Network/virtualNetworks/write      |   仮想ネットワークを作成または更新する  |
-|Microsoft.Network/virtualNetworks/delete     |   仮想ネットワークを削除する            |
+| アクションを表示します。                                  |   Name                                |
+|---------------------------------------- |   --------------------------------    |
+|Microsoft.Network/virtualNetworks/read   |   仮想ネットワークの読み取り              |
+|Microsoft.Network/virtualNetworks/write  |   仮想ネットワークの作成または更新  |
+|Microsoft.Network/virtualNetworks/delete |   仮想ネットワークの削除            |
 
 ## <a name="next-steps"></a>次の手順
 
-- VM を作成して仮想ネットワークに接続する場合は、[仮想ネットワークの作成と VM の接続](quick-create-portal.md#create-virtual-machines)に関するページを参照してください。
-- 仮想ネットワーク内のサブネット間のネットワーク トラフィックをフィルター処理する場合は、[ネットワーク セキュリティ グループの作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事を参照してください。
-- 仮想ネットワークを別の仮想ネットワークにピアリングする場合は、[仮想ネットワーク ピアリングの作成](tutorial-connect-virtual-networks-portal.md)に関する記事を参照してください。
-- オンプレミスのネットワークに仮想ネットワークを接続するためのオプションの詳細については、[VPN Gateway の概要](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)に関する記事を参照してください。
+- [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、仮想ネットワークを作成します
+- [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

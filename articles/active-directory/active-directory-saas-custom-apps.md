@@ -1,6 +1,6 @@
 ---
-title: "アプリケーション用の Azure AD SSO の構成 | Microsoft Docs"
-description: "SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。"
+title: アプリケーション用の Azure AD SSO の構成 | Microsoft Docs
+description: SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,18 +15,19 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e161bb308f08e2a7c137c696e77bf1dfb86e8d31
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158032"
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成
-この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、[Azure Active Directory Premium](active-directory-editions.md) に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
+この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、[Azure Active Directory Premium](active-directory-whatis.md) に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
 
 [この記事](active-directory-appssoaccess-whatis.md)で説明されているように、Azure Active Directory アプリケーション ギャラリーには、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。 (組織内の IT スペシャリストまたはシステム インテグレーターとして) 接続するアプリケーションを見つけたら、Azure Portal に示される詳細な手順に従って、シングル サインオンを有効にできます。
 
-[Azure Active Directory Premium](active-directory-editions.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
+[Azure Active Directory Premium](active-directory-whatis.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
 
 * SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
 * [パスワードベースの SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
@@ -48,12 +49,12 @@ ms.lasthandoff: 02/11/2018
 
   ![][2]
 
-このようにアプリケーションを追加することで、事前に統合されたアプリケーションで使用可能なものによく似たエクスペリエンスが提供されます。 作業を開始するには、 **[シングル サインオンの構成]**を選択します。 次の画面には、以降のセクションで説明されているシングル サインオンを構成するための 3 つのオプションが示されています。
+このようにアプリケーションを追加することで、事前に統合されたアプリケーションで使用可能なものによく似たエクスペリエンスが提供されます。 作業を開始するには、 **[シングル サインオンの構成]** を選択します。 次の画面には、以降のセクションで説明されているシングル サインオンを構成するための 3 つのオプションが示されています。
 
   ![][3]
 
 ## <a name="saml-based-sign-on"></a>SAML ベースのサインオン
-アプリケーションの SAML ベースの認証を構成するには、このオプションを選択します。 その場合、アプリケーションで SAML 2.0 がサポートされている必要があり、ユーザーは作業を続行する前に、アプリケーションの SAML 機能の使用方法に関する情報を収集する必要があります。 **[次へ]**を選択すると、アプリケーションの SAML エンドポイントに対応する 3 つの異なる URL を入力するように求められます。
+アプリケーションの SAML ベースの認証を構成するには、このオプションを選択します。 その場合、アプリケーションで SAML 2.0 がサポートされている必要があり、ユーザーは作業を続行する前に、アプリケーションの SAML 機能の使用方法に関する情報を収集する必要があります。 **[次へ]** を選択すると、アプリケーションの SAML エンドポイントに対応する 3 つの異なる URL を入力するように求められます。
 
   ![][4]
 
@@ -117,7 +118,7 @@ SAML URL と証明書が Azure AD とアプリケーションで構成される�
 ## <a name="password-single-sign-on"></a>パスワード シングル サインオン
 HTML サインイン ページがある Web アプリケーションの [パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md) を構成するには、このオプションを選択します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
 
-**[次へ]**を選択すると、アプリケーションの Web ベースのサインイン ページの URL を入力するように求められます。 このページには、ユーザー名とパスワードの入力フィールドが含まれている必要があることに注意してください。 入力すると、Azure AD が、ユーザー名とパスワードを入力するためのサインイン ページを解析するプロセスを開始します。 プロセスが失敗した場合は、フィールドを手動でキャプチャできるようにするブラウザー拡張機能 (Internet Explorer、Chrome、または Firefox が必要) をインストールする代替プロセスが示されます。
+**[次へ]** を選択すると、アプリケーションの Web ベースのサインイン ページの URL を入力するように求められます。 このページには、ユーザー名とパスワードの入力フィールドが含まれている必要があることに注意してください。 入力すると、Azure AD が、ユーザー名とパスワードを入力するためのサインイン ページを解析するプロセスを開始します。 プロセスが失敗した場合は、フィールドを手動でキャプチャできるようにするブラウザー拡張機能 (Internet Explorer、Chrome、または Firefox が必要) をインストールする代替プロセスが示されます。
 
 サインイン ページをキャプチャしたら、ユーザーとグループを割り当てることができ、資格情報ポリシーは通常の [パスワード SSO アプリ](active-directory-appssoaccess-whatis.md)の場合と同様に設定できます。
 
@@ -126,7 +127,7 @@ HTML サインイン ページがある Web アプリケーションの [パス�
 ## <a name="existing-single-sign-on"></a>既存のシングル サインオン
 組織の Azure AD アクセス パネルまたは Office 365 ポータルにアプリケーションへのリンクを追加するには、このオプションを選択します。 これを使用して、認証用に Azure AD の代わりに現在 Azure Active Directory フェデレーション サービス (または他のフェデレーション サービス) を使用しているカスタム Web アプリへのリンクを追加することができます。 または、ユーザーのアクセス パネルに表示するだけの特定の SharePoint ページまたは他の Web ページにディープ リンクを追加することもできます。 
 
-**[次へ]**を選択すると、リンクするアプリケーションの URL を入力するように求められます。 入力したら、ユーザーとグループをアプリケーションに割り当てることができます。これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
+**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。 入力したら、ユーザーとグループをアプリケーションに割り当てることができます。これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
 
 注: アプリケーションの **[構成]** タブにある **[ロゴのアップロード]** ボタンを使用して、アプリケーションのタイル ロゴをアップロードできます。
 

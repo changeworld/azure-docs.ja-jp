@@ -2,23 +2,26 @@
 title: Azure AD アプリケーションに省略可能な要求を提供する方法 | Microsoft Docs
 description: Azure Active Directory から発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) にカスタムまたは追加の要求を追加する方法について説明します。
 documentationcenter: na
-author: hpsin
+author: CelesteDG
 services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/15/2018
-ms.author: hirsin
+ms.date: 04/24/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c4670a7e957970acea54ff69d56edcd45092c8fe
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157233"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD の省略可能な要求 (プレビュー)
 
@@ -65,11 +68,9 @@ ms.lasthandoff: 03/29/2018
 | `fwd`                      | IP アドレス。  要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合)                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | ユーザーの国                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | リソース テナントの国                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `is_device_known`          | デバイスがワークプレースに参加しているかどうかを示します。 条件付きアクセス ポリシーに関連します                                                                                                                 | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
-| `is_device_managed`        | デバイスに MDM がインストールされているかどうかを示します。 条件付きアクセス ポリシーに関連します。                                                                                                                  | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
-| `is_device_compliant`      | デバイスが組織のデバイス セキュリティ ポリシーに準拠していると MDM が判断したことを示します。                                                                                  | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
-| `kmsi`                     | ユーザーが [サインインしたままにする] オプションを選択したかどうかを示します。                                                                                                                                    | SAML       |           | JWT の場合、signin_state に収束します                                                                                                                                                                                                                                                   |
+| `acct`    | テナント内のユーザー アカウントの状態。  ユーザーがテナントのメンバーである場合、値は `0` です。  ユーザーがゲストの場合、値は `1` です。  | JWT、SAML | | |
 | `upn`                      | UserPrincipalName 要求。  この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 | JWT、SAML  |           | 追加のプロパティ: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+
 ### <a name="v20-optional-claims"></a>V2.0 の省略可能な要求
 これらの要求は常に v1.0 トークンに含まれますが、要求されない限り v2.0 トークンからは削除されます。  これらの要求は、JWT (ID トークンとアクセス トークン) にのみ適用されます。  
 
