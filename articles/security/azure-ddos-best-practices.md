@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011290"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365663"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ
 
@@ -87,8 +87,8 @@ Microsoft Azure で実行されるサービスを保護するには、お客様�
 
 多層防御の基になっている考え方は、多様な防御戦略によってリスクを管理することです。 アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 お客様には、Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装することをお勧めします。
 
-たとえば、攻撃のリスクは、アプリケーションの規模 (*攻撃対象領域*) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) と [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) に必要のないポートをリッスンすることで、攻撃対象領域を減らすことができます。 [ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) も、攻撃対象領域を軽減する 1 つの手段です。
-[サービス タグ](/virtual-network/security-overview.md)および[アプリケーション セキュリティ グループ](/virtual-network/security-overview.md)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
+たとえば、攻撃のリスクは、アプリケーションの規模 (*攻撃対象領域*) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) と [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) に必要のないポートをリッスンすることで、攻撃対象領域を減らすことができます。 [ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) も、攻撃対象領域を軽減する 1 つの手段です。
+[サービス タグ](/virtual-network/security-overview.md#service-tags)および[アプリケーション セキュリティ グループ](/virtual-network/security-overview.md#application-security-groups)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
 
 お客様は、可能な限り、[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に Azure サービスをデプロイする必要があります。 このプラクティスを使用すると、サービス リソースはプライベート IP アドレスを通して通信できます。 仮想ネットワークからの Azure サービス トラフィックは、パブリック IP アドレスを発信元 IP アドレスとして既定で使用します。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、サービス トラフィックは、仮想ネットワークから Azure サービスにアクセスするときに、仮想ネットワークのプライベート アドレスを発信元 IP アドレスとして使用するように切り替わります。
 

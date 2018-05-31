@@ -11,20 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360327"
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法 
 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には料金が設定されています。 このため、SSIS パッケージを Azure で実行する必要がある場合のみ IR を実行し、必要ないときには停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 この記事で説明する手順の概要を次に示します。
 
 1. **Azure Automation Runbook を作成してテストします。** この手順では、Azure SSIS IR を開始または停止するスクリプトを含む PowerShell Runbook を作成します。 次に、開始と停止両方のシナリオで Runbook をテストし、IR の開始または停止を確認します。 
 2. **Runbook の 2 つのスケジュールを作成します。** 1 つ目のスケジュールでは、操作として開始を含む Runbook を構成します。 2 つ目のスケジュールでは、操作として停止を含む Runbook を構成します。 どちらのスケジュールでも、Runbook を実行する間隔を指定します。 たとえば、1 つ目を毎日午前 8 時に実行し、2 つ目を毎日午後 11 時に実行するようにスケジュール設定するとします。 最初の Runbook が実行すると、Azure SSIS IR が開始されます。 次の Runbook が実行すると、Azure SSIS IR が停止します。 
-3. **Runbook に対して 2 つの webhook を作成します。**1 つは開始操作用、もう 1 つは停止操作用です。 データ ファクトリ パイプラインで Web アクティビティを構成するときは、これらの webhook の URL を使用します。 
+3. **Runbook に対して 2 つの webhook を作成します。** 1 つは開始操作用、もう 1 つは停止操作用です。 データ ファクトリ パイプラインで Web アクティビティを構成するときは、これらの webhook の URL を使用します。 
 4. **データ ファクトリ パイプラインを作成します**。 作成するパイプラインは、3 つのアクティビティで構成されます。 最初の **Web** アクティビティは、最初の webhook を呼び出して Azure SSIS IR を開始します。 **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 次に、スケジュール トリガーを作成し、パイプラインが指定した間隔で実行するようにスケジュール設定します。
 
 > [!NOTE]
@@ -69,21 +70,17 @@ Azure Automation アカウントを持っていない場合は、この手順の
 
 ### <a name="import-data-factory-modules"></a>データ ファクトリ モジュールをインポートする
 
-1. 左側のメニューの **[共有リソース]** セクションで **[モジュール]** を選択し、モジュールの一覧に **AzureRM.Profile** と **AzureRM.DataFactoryV2** があるかどうか確認します。 ない場合は、ツールバーの **[ギャラリーを参照]** を選択します。
+1. 左側のメニューの **[共有リソース]** セクションで **[モジュール]** を選択し、モジュールの一覧に **AzureRM.Profile** と **AzureRM.DataFactoryV2** があるかどうか確認します。
 
-    ![Automation ホームページ](./media/how-to-schedule-azure-ssis-integration-runtime/automation-modules.png)
-2. **[ギャラリーを参照]** ウィンドウで、検索ウィンドウに「**AzureRM.Profile**」と入力し、**ENTER** キーを押します。 一覧の **AzureRM.Profile** を選択します。 次に、ツールバーの **[インポート]** をクリックします。 
+    ![必要なモジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-    ![AzureRM.Profile の選択](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
-1. **[インポート]** ウィンドウで、**[すべての Azure モジュールを更新することに同意します]** オプションを選択して **[OK]** をクリックします。  
+2.  [AzureRM.DataFactoryV2 0.5.2 モジュール](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2)の PowerShell ギャラリーに移動して、**[Deploy to Azure Automation]\(Azure Automation にデプロイする\)**、自分の Automation アカウントの順に選択し、**[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** に戻り、**AzureRM.DataFactoryV2 0.5.2** モジュールの **[ステータス]** が**利用可能**に変わるまで待ちます。
 
-    ![AzureRM.Profile のインポート](./media/how-to-schedule-azure-ssis-integration-runtime/import-azurerm-profile.png)
-4. ウィンドウを閉じて、**[モジュール]** ウィンドウに戻ります。 インポートの状態は一覧に表示されます。 **[最新の情報に更新]** を選択して、一覧を更新します。 **[状態]** が **[使用可能]** になるまで待機します。
+    ![データ ファクトリ モジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-    ![インポートの状態](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-profile.png)
-1. 手順を繰り返して、**AzureRM.DataFactoryV2** モジュールをインポートします。 このモジュールの状態が **[使用可能]** に設定されたことを確認してから、次に進みます。 
+3.  [AzureRM.Profile 4.5.0 モジュール](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0)の PowerShell ギャラリーに移動して、**[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** をクリックして、自分の Automation アカウントを選択し、**[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** に戻り、**AzureRM.Profile 4.5.0** モジュールの **[ステータス]** が**利用可能**に変わるまで待ちます。
 
-    ![最終的なインポートの状態](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-datafactoryv2.png)
+    ![プロファイル モジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
 ### <a name="create-a-powershell-runbook"></a>PowerShell Runbook を作成する
 次に、PowerShell Runbook を作成する手順を説明します。 Runbooku に関連付けられるスクリプトは、**OPERATION** パラメーターに指定するコマンドに応じて、Azure SSIS IR を開始または停止します。 このセクションでは、Runbook を作成するためのすべての詳細は説明しません。 詳しくは、[Runbook の作成](../automation/automation-quickstart-create-runbook.md)に関する記事をご覧ください。

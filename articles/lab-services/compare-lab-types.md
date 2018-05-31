@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/30/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3b2fd59444f50f4ac5da6bf569cb0247f3a36943
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361184"
 ---
-# <a name="compare-managed-and-custom-labs-in-azure-lab-services"></a>Azure Lab Services のマネージド ラボとカスタム ラボを比較する
+# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>Azure Lab Services のマネージド ラボと DevTest ラボを比較する
 Azure Lab Services の**マネージド ラボ**と Azure DevTest Labs の**カスタム ラボ**の、2 種類のラボを作成できます。 ラボで必要な情報だけを入力し、ラボに必要なインフラストラクチャの設定と管理はサービスに任せる場合は、いずれかの**マネージド ラボ**を選びます。 現在、Azure Lab Services で作成できるマネージド ラボの種類は**クラスルーム ラボ**だけです。 独自のインフラストラクチャを管理する場合は、Azure DevTest Labs を使って**カスタム ラボ**を作成します。
 
 以下のセクションでは、これらのラボについて詳しく説明します。 
@@ -37,10 +38,10 @@ Azure Lab Services の**マネージド ラボ**と Azure DevTest Labs の**カ�
 - ハッカソンをホストするための仮想マシンのラボを迅速にプロビジョニングします。 終了したらシングル クリックでラボを削除します。 
 
 
-## <a name="custom-labs"></a>カスタム ラボ
+## <a name="devtest-labs"></a>DevTest ラボ
 ユーザーが、ユーザー自身のサブスクリプション内で、すべてのインフラストラクチャと構成を自分で管理したい場合があります。 そのためには、Azure portal で Azure DevTest Labs を使ってカスタム ラボを作成できます。 このようなラボについては、ラボ アカウントを作成する必要はありません。 これらのラボは、(マネージド ラボ用に存在する) ラボ アカウントには表示されません。  
 
-**カスタム ラボを使うユース ケース**をいくつか次に示します。 
+**DevTest ラボを使うユース ケース**をいくつか次に示します。 
 
 - ハッカソンや、カンファレンスでのハンズオン セッションをホストするために、仮想マシンのラボを迅速にプロビジョニングします。 終了したらシングル クリックでラボを削除します。 
 - ユーザーのアプリケーションで構成された VM のプールを作成し、チームがバグ潰し用の仮想マシンを簡単に使用できるようにします。  
@@ -50,10 +51,10 @@ Azure Lab Services の**マネージド ラボ**と Azure DevTest Labs の**カ�
 - ユーザーの製品の最新バージョンで構成されたラボを使って、顧客にトレーニング セッションを提供します。 各顧客が一定の時間だけラボを使用できるようにします。 
 
 
-## <a name="managed-labs-vs-custom-labs"></a>マネージド ラボとカスタム ラボの比較
+## <a name="managed-labs-vs-devtest-labs"></a>マネージド ラボ対DevTest ラボ
 次の表では、Azure Lab Services によってサポートされている 2 種類のラボを比較します。 
 
-| 機能 | マネージド ラボ | カスタム ラボ |
+| 機能 | マネージド ラボ | DevTest ラボ |
 | -------- | ----------------  | ---------- |
 | ラボ内の Azure インフラストラクチャの管理 |  サービスによって自動的に管理されます | ユーザーが自分で管理します  |
 | インフラストラクチャの問題に対する組み込みの回復性 | サービスによって自動的に処理されます | ユーザーが自分で管理します  |
