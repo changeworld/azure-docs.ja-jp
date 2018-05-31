@@ -9,11 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 023e55724124afb9c97d01540c6319a775681c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366751"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>チュートリアル: コグニティブ検索 API を呼び出す方法を学習する (プレビュー)
 
@@ -23,7 +24,7 @@ ms.lasthandoff: 05/07/2018
 
 > [!div class="checklist"]
 > * インデックスへのルートでソース データをエンリッチする、インデックス作成パイプラインを作成する
-> * サンプルのデータ セットの組み込みのエンティティの認識、言語の検出、テキスト操作、およびキー フレーズ抽出のスキルを使用する
+> * サンプル データで、組み込みのスキル (エンティティの認識、言語の検出、テキスト操作、キー フレーズ抽出) を使用する
 > * スキルセットの出力に入力をマップして、スキルをまとめて連結する方法を学習する
 > * 要求を実行し、結果を確認する
 > * 将来の開発のためにインデックスとインデクサーをリセットする
@@ -84,7 +85,7 @@ Azure Search への REST 呼び出しを行うには、PowerShell、または Te
   接続文字列は次の例のような URL です。
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=y1NIlE9wFVBIabcd562GzZl+JO9TEGdqOerqfbT78C8zrn28Te8DsWlxvKKnjh67P/HM5k80zt4shOt9vqlbg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
       ```
 
 共有アクセス署名の提供など、接続文字列を指定する方法は他にもあります。 データ ソースの資格情報の詳細については、「[Azure Blob Storage のインデックスを Azure Search で作成する](search-howto-indexing-azure-blob-storage.md#Credentials)」をご覧ください。

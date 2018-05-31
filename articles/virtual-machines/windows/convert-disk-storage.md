@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: ac3f1368fb6d3f31b75b581d56e07fe11c3722b3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 19979240e13ac822921b7f43a158d171aeea0123
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944336"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365238"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 
@@ -46,8 +46,8 @@ $rgName = 'yourResourceGroup'
 # Name of the your virtual machine
 $vmName = 'yourVM'
 
-# Choose between Standard_LRS and Premium_LRS based on your scenario
-$storageType = 'Premium_LRS'
+# Choose between StandardLRS and PremiumLRS based on your scenario
+$storageType = 'PremiumLRS'
 
 # Premium capable size
 # Required only if converting storage from standard to premium
@@ -88,8 +88,8 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 $diskName = 'yourDiskName'
 # resource group that contains the managed disk
 $rgName = 'yourResourceGroupName'
-# Choose between Standard_LRS and Premium_LRS based on your scenario
-$storageType = 'Premium_LRS'
+# Choose between StandardLRS and PremiumLRS based on your scenario
+$storageType = 'PremiumLRS'
 # Premium capable size 
 $size = 'Standard_DS2_v2'
 

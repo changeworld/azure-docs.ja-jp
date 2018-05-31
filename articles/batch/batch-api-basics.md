@@ -15,11 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3423103de774faaf9e7884626a9a1a102e351b68
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: add8e184db102d48275bd8d3faa42def63918c19
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360491"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -82,7 +83,7 @@ Batch では、次の Azure ストレージ [アカウント オプション](..
 
 * 汎用 v2 (GPv2) アカウント 
 * 汎用 v1 (GPv1) アカウント
-* BLOB ストレージ アカウント
+* BLOB ストレージ アカウント (現在、仮想マシン構成のプールに対してのみサポートされます)
 
 ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています  (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
 

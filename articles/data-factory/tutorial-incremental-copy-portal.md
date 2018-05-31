@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406492"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -302,7 +303,7 @@ END
 24. パイプライン デザイナーで **[ストアド プロシージャ アクティビティ]** を選択し、その名前を **StoredProceduretoWriteWatermarkActivity** に変更します。 
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. **[SQL Account]\(SQL アカウント\)** タブに切り替えて、**[リンクされたサービス]** で *[AzureSqlDatabaseLinkedService]* を選択します。 
+25. **[SQL Account]\(SQL アカウント\)** タブに切り替えて、**[リンクされたサービス]** で *[AzureSqlDatabaseLinkedService]* \* を選択します。 
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 

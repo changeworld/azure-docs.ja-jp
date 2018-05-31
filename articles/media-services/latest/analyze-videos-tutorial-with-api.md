@@ -12,11 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 54c49645722b6545d8ae872151b9b82674d44523
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362296"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>チュートリアル: Azure Media Services を使用してビデオを分析する 
 
@@ -66,7 +67,7 @@ Visual Studio がインストールされていない場合は、[Visual Studio 
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>ジョブの結果を格納する出力アセットを作成する 
 
-出力アセットは、ジョブの結果を格納します。 プロジェクトで定義されている **DownloadResults** 関数は、この出力アセットから "output" フォルダーに結果をダウンロードするので、取得したものを確認できます。
+出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、ジョブの結果が格納されます。 プロジェクトで定義されている **DownloadResults** 関数は、この出力アセットから "output" フォルダーに結果をダウンロードするので、取得したものを確認できます。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
@@ -76,7 +77,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 #### <a name="transform"></a>変換
 
-新しい **Transform** インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、下記のコードで示すように **TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この例では、**VideoAnalyzerPreset** プリセットが使われていて、言語 ("en-US") がコンストラクターに渡されています。 このプリセットを使用して、ビデオから複数の音声と画像の分析情報を抽出できます。 複数のオーディオ情報をビデオから抽出する必要がある場合は、**AudioAnalyzerPreset** プリセットを使用できます。 
+新しい [Transform](https://docs.microsoft.com/rest/api/media/transforms) インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、下記のコードで示すように **TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この例では、**VideoAnalyzerPreset** プリセットが使われていて、言語 ("en-US") がコンストラクターに渡されています。 このプリセットを使用して、ビデオから複数の音声と画像の分析情報を抽出できます。 複数のオーディオ情報をビデオから抽出する必要がある場合は、**AudioAnalyzerPreset** プリセットを使用できます。 
 
 **Transform** を作成するときは、次のコードに示すように、最初に **Get** メソッドを使って変換が既に存在するかどうかを確認する必要があります。  Media Services v3 では、エンティティが存在しない場合 (大文字と小文字の区別がない名前のチェック)、エンティティに対する **Get** メソッドは **null** を返します。
 
@@ -84,7 +85,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 #### <a name="job"></a>ジョブ
 
-上で説明したように、**Transform** オブジェクトはレシピであり、**Job** は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または Media Services アカウント内にあるアセットを使用して指定できます。 
+上で説明したように、[Transform](https://docs.microsoft.com/rest/api/media/transforms) オブジェクトはレシピであり、[Job](https://docs.microsoft.com/en-us/rest/api/media/jobs) は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または Media Services アカウント内にあるアセットを使用して指定できます。 
 
 この例では、ジョブの入力はローカル ビデオです。  
 
@@ -92,7 +93,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 ジョブ完了の通知の取得にはさまざまなオプションがあります。 最も簡単なオプション (次に示すもの) は、ポーリングを使うものです。 
+ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 [ジョブ](https://docs.microsoft.com/en-us/rest/api/media/jobs)完了の通知の取得にはさまざまなオプションがあります。 最も簡単なオプション (次に示すもの) は、ポーリングを使うものです。 
 
 潜在的な待機時間により、ポーリングは運用アプリケーション用の推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。
 
@@ -104,7 +105,7 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 
 ### <a name="download-the-result-of-the-job"></a>ジョブの結果をダウンロードする
 
-次の関数は出力アセットから "output" フォルダーに結果をダウンロードするので、ジョブの結果を調べることができます。 
+次の関数は出力[アセット](https://docs.microsoft.com/rest/api/media/assets)から "output" フォルダーに結果をダウンロードするので、ジョブの結果を調べることができます。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 

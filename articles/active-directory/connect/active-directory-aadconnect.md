@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 73baef03f7b240e7bb33f3d5f827b1fc72c985f2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 128a6bffe4e604eb4e02a10f13d561a336fc8c61
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34354420"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>オンプレミスのディレクトリと Azure Active Directory の統合
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
 
 > [!IMPORTANT]
-> [Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日以降はサポートされなくなるので、Azure AD Connect へアップグレードする絶好の機会です。](active-directory-aadconnect-dirsync-deprecated.md)  また、次の点にも注目してください。
+> [Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は非推奨となり、2017 年 4 月 13 日以降はサポートされなくなるので、Azure AD Connect へアップグレードする絶好の機会です。](active-directory-aadconnect-dirsync-deprecated.md)  また、次の点にも注目してください。
 
 
 
@@ -146,7 +147,7 @@ Azure AD Connect には、Azure AD との認証連携を AD FS の使用とフ�
 
 ADFS は [複数のドメイン](active-directory-aadconnect-multiple-domains.md)をサポートするように構成できます。 たとえば、フェデレーションに利用する複数の上位ドメインが必要になることがあります。
 
-Azure AD から証明書を自動更新するように ADFS サーバーを更新していない場合、または非 ADFS ソリューションを使用している場合、 [証明書の更新](active-directory-aadconnect-o365-certs.md)が必要になったときに通知されます。
+Azure AD から証明書を自動更新するように ADFS サーバーを更新していない場合、または非 ADFS ソリューションを使用している場合、[証明書の更新](active-directory-aadconnect-o365-certs.md)が必要になったときに通知されます。
 
 ### <a name="next-steps-to-configure-federation-features"></a>フェデレーション機能を構成する次のステップ
 |トピック |リンク|  

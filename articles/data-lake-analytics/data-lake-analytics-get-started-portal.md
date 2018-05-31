@@ -1,24 +1,21 @@
 ---
-title: Azure Portal で Azure Data Lake Analytics の使用を開始する | Microsoft Docs
-description: 'Azure Portal を使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信する方法について説明します。 '
+title: Azure portal で Azure Data Lake Analytics の使用を開始する
+description: Azure Portal を使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信する方法について説明します。
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
+ms.author: saveenr
 manager: kfile
-editor: cgronlun
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
-ms.author: saveenr
-ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358287"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Azure Portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -64,11 +61,11 @@ OUTPUT @a
 
 ## <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
 
-1. Data Lake Analytics アカウントから **[新しいジョブ]** をクリックします。
-2. 上記の U-SQL スクリプトのテキストを貼り付けます。 
-3. **[ジョブの送信]** をクリックします。   
-4. ジョブの状態が **[成功]** に変わるまで待機します。
-5. **[出力]** タブをクリックし、`data.csv` をクリックします。 
+1. Data Lake Analytics アカウントから **[新しいジョブ]** を選択します。
+2. 上記の U-SQL スクリプトのテキストを貼り付けます。 ジョブに名前を付けます。 
+3. **[送信]** ボタンを選択して、ジョブを開始します。   
+4. ジョブの **[状態]** を監視して、ジョブの状態が **[成功]** に変わるまで待ちます。
+5. **[データ]** タブで、**[出力]** タブを選択します。`data.csv` という名前の出力ファイルを選択し、出力データを表示します。
 
 ## <a name="see-also"></a>関連項目
 
