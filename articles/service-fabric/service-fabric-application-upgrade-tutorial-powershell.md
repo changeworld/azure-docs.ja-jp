@@ -1,24 +1,25 @@
 ---
-title: "PowerShell を使用した Service Fabric アプリのアップグレード | Microsoft Docs"
-description: "この記事では、PowerShell による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。"
+title: PowerShell を使用した Service Fabric アプリのアップグレード | Microsoft Docs
+description: この記事では、PowerShell による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0306a219112a14121fd881a7cc52d58597a073a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44f4dc3a9c876e383a6e4df8ef5f467f2b93eaa9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205486"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
 > [!div class="op_single_selector"]
@@ -47,7 +48,7 @@ Service Fabric による監視付きローリング アップグレードを使�
 
 Visual Studio でプロジェクトをビルドした後に、PowerShell コマンド [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) を使用してアプリケーション パッケージを ImageStore にコピーできます。 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) コマンドレットを使用します。 次に、[Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) コマンドレットを使用して、Service Fabric ランタイムにアプリケーションを登録します。 次の手順は、[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットを使用して、アプリケーションのインスタンスを開始します。  これら 3 つの手順は、Visual Studio の **[配置]** メニュー項目を使用する場合と似ています。  プロビジョニングが完了したら、リソースの消費を少なくするために、コピーしたアプリケーション パッケージをイメージ ストアからクリーンアップする必要があります。  アプリケーションの種類が不要になった場合は、同様の理由で登録を解除する必要があります。 詳細については、[PowerShell を使用したアプリケーションのデプロイと削除](service-fabric-application-upgrade-tutorial-powershell.md)に関するページをご覧ください。
 
-これで、 [クラスターおよびアプリケーションを表示する Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)を使用できます。 このアプリケーションには Web サービスが設けられており、Internet explorer のアドレス バーに「 [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) 」と入力して移動できます。  画面上を動くフローティング ビジュアル オブジェクトが表示されます。  さらに、 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) を使用すると、アプリケーションの状態を確認できます。
+これで、 [クラスターおよびアプリケーションを表示する Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)を使用できます。 このアプリケーションには Web サービスが設けられており、Internet explorer のアドレス バーに「[http://localhost:8081/visualobjects](http://localhost:8081/visualobjects)」と入力して移動できます。  画面上を動くフローティング ビジュアル オブジェクトが表示されます。  さらに、 [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) を使用すると、アプリケーションの状態を確認できます。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>手順 2: ビジュアル オブジェクト サンプルの更新
 手順 1. でデプロイされたバージョンでは、ビジュアル オブジェクトが回転しないことにお気付きになったことでしょう。 アプリケーションをアップグレードして、ビジュアル オブジェクトも回転させてみましょう。
@@ -73,7 +74,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-ここで、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、**[ビルド]** オプションを選択して、プロジェクトをビルドします。 コードが変更されているため、 **[すべてリビルド]**を選択すると、すべてのプロジェクトのバージョンを更新する必要があります。 次は、***VisualObjectsApplication*** を右クリックし、Service Fabric のメニュー、**[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。 このアクションにより、デプロイ可能なアプリケーション パッケージが作成されます。  更新されたアプリケーションをデプロイする準備は完了です。
+ここで、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、**[ビルド]** オプションを選択して、プロジェクトをビルドします。 コードが変更されているため、 **[すべてリビルド]** を選択すると、すべてのプロジェクトのバージョンを更新する必要があります。 次は、***VisualObjectsApplication*** を右クリックし、Service Fabric のメニュー、**[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。 このアクションにより、デプロイ可能なアプリケーション パッケージが作成されます。  更新されたアプリケーションをデプロイする準備は完了です。
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>手順 3: 正常性ポリシーとアップグレード パラメーターの決定
 [アプリケーション アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)と[アップグレード プロセス](service-fabric-application-upgrade.md)に詳しくなって、アップグレードのさまざまなパラメーター、タイムアウト、および適用されている正常性条件に対する理解を深めます。 このチュートリアルでは、サービスの正常性評価条件は既定 (推奨値) に設定されています。つまり、すべてのサービスとインスタンスは、アップグレード後も *healthy* である必要があります。  

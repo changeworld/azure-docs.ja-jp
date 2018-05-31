@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6cc35697573ae2997f289f67c7867d9c522149be
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176288"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203779"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>使用量と推定コストの監視
 
@@ -93,7 +93,7 @@ Microsoft Operations Management Suite E1 および E2 を購入されたお客�
 コスト見積もりには、こうした変更の影響が示されます。
 
 > [!WARNING]
-> 重要な注意事項として、Azure Resource Manager または PowerShell を使用して [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) または [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) をサブスクリプションに展開している場合、新しい価格モデルに移動しています。 Log Analytics で “pergb2018” 以外または Application Insights で “Basic” 以外の価格レベル/プランを指定した場合、無効な価格レベル/プランを指定したために展開が失敗するのではなく、成功しますが**有効な価格レベル/プランのみを使用します**。 
+> 重要な注意事項として、Azure Resource Manager または PowerShell を使用して [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) または [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) をサブスクリプションに展開している場合、新しい価格モデルに移動しています。 Log Analytics で “pergb2018” 以外または Application Insights で “Basic” 以外の価格レベル/プランを指定した場合、無効な価格レベル/プランを指定したために展開が失敗するのではなく、成功しますが**有効な価格レベル/プランのみを使用します** (Log Analytics Free レベルはこれに該当せず、価格レベルが無効であるというメッセージが表示されます)。
 >
 
 ## <a name="moving-to-the-new-pricing-model"></a>新しい価格モデルへの移行

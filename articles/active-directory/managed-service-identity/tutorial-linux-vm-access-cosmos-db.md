@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: bcbafcb5b72fd156f0d8b4a4ddd52aab1d699996
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: b84426ad28dbc2264bd9b28fe0697a88390bb58d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076257"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304132"
 ---
-# <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Linux VM の MSI を使用した Azure Cosmos DB へのアクセス 
+# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>チュートリアル: Linux VM の MSI を使用した Azure Cosmos DB へのアクセス 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

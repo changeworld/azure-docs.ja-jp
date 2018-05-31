@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010926"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213267"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -155,7 +155,7 @@ Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -Vo
     2. Azure File Sync サービスがサーバーで実行されていることを確認します。 これを行うには、サービスの MMC スナップインを開き、ストレージ同期エージェント サービス (FileSyncSvc) が実行されていることを確認します。
 
 <a id="replica-not-ready"></a>**同期が "0x80c8300f - レプリカでは、必要な操作を実行する準備ができていません" エラーで失敗する**  
-この問題は、クラウド エンドポイントを作成してデータが格納されている Azure ファイル共有を使用した場合に発生することが予期されます。 Azure ファイル共有での変更検出ジョブの実行が終了すると (最大 24 時間がかかることがあります)、同期は正常に動作を開始します。
+この問題は、クラウド エンドポイントを作成してデータが格納されている Azure ファイル共有を使用した場合に発生することが予期されます。 Azure ファイル共有の変更を確認する変更検出ジョブは、24 時間ごとに 1 回でスケジュールされます。  完了までの時間は、Azure ファイル共有の名前空間のサイズに依存します。  完了後、このエラーはなくなるはずです。
 
 
     > [!NOTE]

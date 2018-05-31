@@ -9,21 +9,22 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/09/2018
+ms.date: 05/15/2018
 ms.author: ryanwi
-ms.openlocfilehash: 48ee54460454368deef44c8f84624e32856efafa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b2b3562f65e7e861b7e4dff7b7c26d58081ff29e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211927"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric コンテナー サービスのログを表示する
-Azure Service Fabric はコンテナー オーケストレーターであり、[Linux コンテナーと Windows コンテナー](service-fabric-containers-overview.md)の両方をサポートします。  この記事では、問題を診断してトラブルシューティングできるように、実行中のコンテナー サービスのコンテナー ログを表示する方法について説明します。
+Azure Service Fabric はコンテナー オーケストレーターであり、[Linux コンテナーと Windows コンテナー](service-fabric-containers-overview.md)の両方をサポートします。  この記事では、問題を診断してトラブルシューティングできるように、実行中のコンテナー サービスまたはデッド コンテナー (クラッシュしたコンテナー) のコンテナー ログを表示する方法について説明します。
 
-## <a name="access-container-logs"></a>コンテナー ログにアクセスする
+## <a name="access-the-logs-of-a-running-container"></a>実行中のコンテナーのログにアクセスする
 コンテナー ログには、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用してアクセスできます。  Web ブラウザーで、[http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer) に移動することによってクラスターの管理エンドポイントから Service Fabric Explorer を開きます。  
 
 コンテナー ログは、コンテナー サービス インスタンスが実行しているクラスター ノードにあります。 例として、[Linux Voting サンプル アプリケーション](service-fabric-quickstart-containers-linux.md)の Web フロントエンド コンテナーのログを取得します。 ツリー ビューで、**[クラスター]**>**[アプリケーション]**>**[VotingType]**>**[fabric:/Voting/azurevotefront]** の順に展開します。  次に、パーティション (この例では d1aa737e-f22a-e347-be16-eec90be24bc1) を展開し、コンテナーがクラスター ノード *_lnxvm_0* 上で実行していることを確認します。
@@ -32,6 +33,38 @@ Azure Service Fabric はコンテナー オーケストレーターであり、[
 
 ![Service Fabric platform][Image1]
 
+## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>デッド コンテナー (クラッシュしたコンテナー) のログにアクセスする
+v6.2 以降、[REST API](/rest/api/servicefabric/sfclient-index) または [Service Fabric CLI (SFCTL)](service-fabric-cli.md) コマンドを利用し、デッド コンテナー (クラッシュしたコンテナー) のログも取得できるようになりました。
+
+### <a name="rest"></a>REST ()
+「[Get Container Logs Deployed On Node](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)」 (ノードにデプロイされているコンテナーのログを取得する) の操作を使用し、クラッシュしたコンテナーのログを取得します。 コンテナーが実行されたノードの名前、アプリケーション名、サービス マニフェスト名、コード パッケージ名を指定します。  `&Previous=true` を指定します。 応答には、コード パッケージ インスタンスのデッド コンテナーのコンテナー ログが含まれます。
+
+要求 URI の形式は次のようになります。
+
+```
+/Nodes/{nodeName}/$/GetApplications/{applicationId}/$/GetCodePackages/$/ContainerLogs?api-version=6.2&ServiceManifestName={ServiceManifestName}&CodePackageName={CodePackageName}&Previous={Previous}
+```
+
+要求の例:
+```
+GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$/GetCodePackages/$/ContainerLogs?api-version=6.2&ServiceManifestName=SimpleHttpServerSvcPkg&CodePackageName=Code&Previous=true  
+```
+
+200 応答本文:
+```json
+{   "Content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" } 
+```
+
+### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
+[sfctl service get-container-logs](service-fabric-sfctl-service.md) コマンドを使用し、クラッシュしたコンテナーのログを取得します。  コンテナーが実行されたノードの名前、アプリケーション名、サービス マニフェスト名、コード パッケージ名を指定します。 `-previous` フラグを指定します。  応答には、コード パッケージ インスタンスのデッド コンテナーのコンテナー ログが含まれます。
+
+```
+sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –previous
+```
+応答:
+```json
+{   "content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" }
+```
 
 ## <a name="next-steps"></a>次の手順
 - [Linux コンテナー アプリケーションの作成チュートリアル](service-fabric-tutorial-create-container-images.md)を行う。

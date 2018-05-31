@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions のアプリケーション設定のリファレンス"
-description: "Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。"
+title: Azure Functions のアプリケーション設定のリファレンス
+description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
 ms.author: tdykstra
-ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd5603b8f0e15eeae9dd3799d4e10952e115680f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194269"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -36,7 +37,7 @@ Application Insights を使用している場合の Application Insights イン�
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-ログの保存と、それらをポータルの [**モニター**] タブに表示する、オプションのストレージ アカウントの接続文字列です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
+ログの保存と、それらをポータルの **[モニター]** タブに表示する、オプションのストレージ アカウントの接続文字列です。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](functions-create-function-app-portal.md#storage-account-requirements)」を参照してください。
 
 |キー|値の例|
 |---|------------|
@@ -56,7 +57,7 @@ Application Insights を使用している場合の Application Insights イン�
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true`です。
+`true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true` です。
 
 |キー|値の例|
 |---|------------|
@@ -153,10 +154,10 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 |---|------------|
 |WEBSITE\_NODE\_DEFAULT_VERSION|6.5.0|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
 
-> [!div class="nextstepaction"]
-> [host.json ファイルのグローバル設定を参照する](functions-host-json.md)
+[host.json ファイルのグローバル設定を参照する](functions-host-json.md)
+
+[App Service アプリの他のアプリ設定を参照する](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

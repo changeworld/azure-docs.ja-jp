@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8a2715666c4fff490f5184b7b8719b412952b9bf
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 419ed6dc76101366e47ae94067f7b671a10c94e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196336"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench のトラブルシューティング
 
@@ -49,7 +50,8 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 |---------|---------|----|
 | サブスクリプション ID | すべてのリソースを作成または特定する SubscriptionID。 | [はい] |
 | ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | [はい] |
-| OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ 
+| OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
+| LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
 | OmsSubscriptionId | OMS が展開されているサブスクリプション ID。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。| いいえ  |
 | OmsResourceGroup |OMS が展開されているリソース グループ。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。| いいえ  |
 | OmsWorkspaceName | OMS ワークスペースの名前。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。 | いいえ  |
@@ -58,15 +60,17 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 出力 ZIP ファイルのフォルダー構造は次のとおりです。
 
-| フォルダー \ ファイル | [説明]  |
+| フォルダーまたはファイル | [説明]  |
 |---------|---------|
 | \Summary.txt | システムの概要 |
-| \metrics\blockchain | ブロックチェーンに関するメトリック |
-| \metrics\workbench | ワークベンチに関するメトリック |
-| \details\blockchain | ブロックチェーンに関する詳細なログ |
-| \details\workbench | ワークベンチに関する詳細なログ |
+| \Metrics\blockchain | ブロックチェーンに関するメトリック |
+| \Metrics\Workbench | ワークベンチに関するメトリック |
+| \Details\Blockchain | ブロックチェーンに関する詳細なログ |
+| \Details\Workbench | ワークベンチに関する詳細なログ |
 
 概要ファイルは、アプリケーションの全体的な状態とアプリケーションの正常性のスナップショットです。 この概要から、推奨されるアクション、主なエラー、実行中のサービスに関するメタデータがわかります。
+
+**Metrics** フォルダーには、時間の経過に伴う各種システム コンポーネントのメトリックが格納されます。 たとえば、出力ファイル `\Details\Workbench\apiMetrics.txt` には、さまざまな応答コードと収集期間全体の応答時間の概要が格納されます。 **Details** フォルダーには、Workbench または基盤のブロックチェーン ネットワークの特定の問題のトラブルシューティングのための詳細なログが格納されます。 たとえば、`\Details\Workbench\Exceptions.csv` にはシステムで発生した最新の例外の一覧が格納されますが、これはスマート コントラクトやブロックチェーンとの相互作用のエラーのトラブルシューティングに役立ちます。 
 
 ## <a name="next-steps"></a>次の手順
 

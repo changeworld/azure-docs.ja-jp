@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/15/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 7e3b084f833b6d84e5c5102555eb586e306e9de8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8144f70737e5f78f568a8a6dd35ddc7d43ced0fd
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895573"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210057"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較: Azure SQL Database と SQL Server 
 
@@ -71,7 +71,8 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [DML トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |  [はい] |
 | [DMV](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | ほとんどの場合 - 個々の DMV に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 |[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[はい](sql-database-dynamic-data-masking-get-started.md)| [はい](sql-database-dynamic-data-masking-get-started.md) |
-| [エラスティック プール](sql-database-elastic-pool.md) | [はい] | 組み込み - 単一のマネージド インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます |
+| 
+  [エラスティック プール](sql-database-elastic-pool.md) | [はい] | 組み込み - 単一のマネージド インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます |
 | [イベント通知](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | × - [アラート](sql-database-insights-alerts-portal.md)に関する記事を参照してください | [はい] |
 | [式](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |[はい] | [はい] |
 | [拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | 一部 - 「[SQL Database の拡張イベント](sql-database-xevent-db-diff-from-svr.md)」を参照してください | はい - [拡張イベントの相違点](sql-database-managed-instance-transact-sql-information.md#extended-events)を参照してください |
@@ -83,7 +84,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | [はい] | いいえ (定期的に取得する COPY_ONLY の完全バックアップを復元できます) - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)と[復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
 | [geo レプリケーション](sql-database-geo-replication-overview.md) | [はい] | いいえ  |
 | [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | [はい] | [はい] |
-| [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | はい - [Premium および Business Critical レベルのみ](sql-database-in-memory.md) | いいえ  |
+| [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | はい - [Premium レベルと Business Critical レベルのみ](sql-database-in-memory.md) | いいえ  |
 | [JSON データのサポート](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [はい](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [はい](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [言語要素](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | ほとんどの場合 - 個々の要素に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 | [リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | × - [エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md)に関する記事を参照してください | SQL Server and SQL Database のみ |

@@ -1,25 +1,28 @@
 ---
-title: "Azure Active Directory v2.0 エンドポイントのアプリの種類 | Microsoft Docs"
-description: "Azure Active Directory v2.0 エンドポイントでサポートされているアプリの種類とシナリオ。"
+title: Azure Active Directory v2.0 エンドポイントのアプリの種類 | Microsoft Docs
+description: Azure Active Directory v2.0 エンドポイントでサポートされているアプリの種類とシナリオ。
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
-ms.author: dastrock
+ms.date: 04/17/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b0344c1da626a8b4679a632db239fc9ded9d5ce6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 134199c879f6793cb4ed0a88cf0593786341f6d8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157687"
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントのアプリの種類
 Azure Active Directory (Azure AD) v2.0 エンドポイントは、さまざまな最新アプリ アーキテクチャ向けの認証をサポートしています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Azure AD v2.0 を使用して作成できるアプリの種類について説明します。 この記事の情報は、[コードを詳しく確認する](active-directory-appmodel-v2-overview.md#getting-started)前に大まかなシナリオを理解するうえで役立ちます。
@@ -95,7 +98,7 @@ Web API は、すべての種類のアプリ (Web サーバー アプリ、デ�
 
 OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションで Web API コード サンプルを確認してください。
 
-多くの場合、Web API は Azure Active Directory で保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。  そのために、Web API は Azure AD の**代理**フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。  v2.0 エンドポイントの代理フローの詳細については、[ここ](active-directory-v2-protocols-oauth-on-behalf-of.md)で説明されています。
+多くの場合、Web API は Azure Active Directory で保護されているその他のダウンストリーム Web API に、送信要求を行う必要もあります。 そのために、Web API は Azure AD の**代理**フローを利用できます。それにより、Web API は受信アクセス トークンを、送信要求で使用される別のアクセス トークンに交換できます。 v2.0 エンドポイントの代理フローの詳細については、[ここ](active-directory-v2-protocols-oauth-on-behalf-of.md)で説明されています。
 
 ## <a name="mobile-and-native-apps"></a>モバイル アプリとネイティブ アプリ
 多くの場合、モバイル アプリやデスクトップ アプリなど、デバイスにインストールされているアプリは、データを格納し、ユーザーの代わりにさまざまな処理を実行するバックエンド サービスや Web API にアクセスする必要があります。 これらのアプリは、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)を使ってバックエンド サービスにサインインと承認を追加します。
@@ -120,4 +123,4 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 
 ![デーモン アプリの認証フロー](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-デーモン アプリを作成するには、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションのクライアントの資格情報に関する記述を参照するか、または [.NET サンプル アプリ](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)をお試しください。
+デーモン アプリを作成するには、[クライアントの資格情報に関する記述](active-directory-v2-protocols-oauth-client-creds.md)を参照するか、[.NET サンプル アプリ](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)をお試しください。
