@@ -10,15 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 648b67f4b782b2a2318170ae2b655af40b7bd2a5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e9340e5db78315470052e0c0c70eeef6bf6dafa
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885521"
 ---
 # <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>BulkExecutor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コレクションに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
+このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 BulkExecutor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[BulkExecutor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コレクションに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,7 +92,7 @@ ms.lasthandoff: 05/07/2018
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
 ```
-   一括インポート API は、JSON でシリアル化されたドキュメントのコレクションを受け取ります。構文は次のとおりです。詳しくは、[API のドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)をご覧ください。
+   一括インポート API は、JSON でシリアル化されたドキュメントのコレクションを受け取ります。構文は次のとおりです。詳しくは、[API のドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)をご覧ください。
 
    ```java
    public BulkImportResponse importAll(
@@ -135,9 +136,9 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの一括更新
 
-BulkUpdateAsync API を使用すると、既存のドキュメントを更新できます。 この例では、Name フィールドを新しい値に設定し、既存のドキュメントから Description フィールドを削除します。 サポートされているすべてのフィールド更新操作については、[API ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)を参照してください。 
+BulkUpdateAsync API を使用すると、既存のドキュメントを更新できます。 この例では、Name フィールドを新しい値に設定し、既存のドキュメントから Description フィールドを削除します。 サポートされているすべてのフィールド更新操作については、[API ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)を参照してください。 
 
-1. 更新項目と、対応するフィールド更新操作を定義します。 この例では、SetUpdateOperation を使用して Name フィールドを更新し、UnsetUpdateOperation を使用してすべてのドキュメントから Description フィールドを削除します。 ドキュメント フィールドの値に特定の値を加算したり、特定の値を配列フィールドにプッシュしたり、配列フィールドから特定の値を削除したりするなど、他の操作を実行することもできます。 一括更新 API が提供するさまざまなメソッドについては、[API ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)を参照してください。  
+1. 更新項目と、対応するフィールド更新操作を定義します。 この例では、SetUpdateOperation を使用して Name フィールドを更新し、UnsetUpdateOperation を使用してすべてのドキュメントから Description フィールドを削除します。 ドキュメント フィールドの値に特定の値を加算したり、特定の値を配列フィールドにプッシュしたり、配列フィールドから特定の値を削除したりするなど、他の操作を実行することもできます。 一括更新 API が提供するさまざまなメソッドについては、[API ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)を参照してください。  
 
    ```java
    SetUpdateOperation<String> nameUpdate = new SetUpdateOperation<>("Name","UpdatedDocValue");
@@ -159,7 +160,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
    ```
 
-   一括更新 API は、更新する項目のコレクションを受け取ります。 各更新項目では、ID とパーティション キーの値で識別されるドキュメントに対して実行するフィールド更新操作のリストが指定されています。 詳しくは、[API ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client/async)をご覧ください。
+   一括更新 API は、更新する項目のコレクションを受け取ります。 各更新項目では、ID とパーティション キーの値で識別されるドキュメントに対して実行するフィールド更新操作のリストが指定されています。 詳しくは、[API ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)をご覧ください。
 
    ```java
    public BulkUpdateResponse updateAll(

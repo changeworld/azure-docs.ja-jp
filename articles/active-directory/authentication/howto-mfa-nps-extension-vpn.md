@@ -1,26 +1,21 @@
 ---
 title: ネットワーク ポリシー サーバー拡張機能を使用して VPN を Azure MFA と統合する | Microsoft Docs
-description: この記事では、Microsoft Azure のネットワーク ポリシー サーバー拡張機能を使用して、VPN インフラストラクチャを Azure MFA と統合する方法について説明します。
-services: active-directory
-keywords: Azure MFA, VPN の統合, Azure Active Directory, ネットワーク ポリシー サーバー拡張機能
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
+description: Microsoft Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合します。
+services: multi-factor-authentication
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 15d69c6b964c0efdc5578d09c5dea8dde85df83f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cfdb89ae833dc2450a4670a84af305f1caa10591
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869514"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -104,7 +99,7 @@ Azure の NPS 拡張機能を NPS と統合した場合、正常な認証フロ�
 
 ネットワーク ポリシーとアクセス サービスは、RADIUS サーバーと RADIUS クライアントの機能を提供します。 この記事では、環境内のメンバー サーバーまたはドメイン コントローラーにネットワーク ポリシーとアクセス サービス ロールがインストールされていることを前提としています。 このガイドで、VPN 構成の RADIUS を構成します。 ネットワーク ポリシーとアクセス サービス ロールは、VPN サーバー*以外の*サーバーにインストールします。
 
-Windows Server 2012 以降にネットワーク ポリシーとアクセス サービス ロール サービスをインストールする方法については、「[Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx)」(NAP 正常性ポリシー サーバーのインストール) を参照してください。 Windows Server 2016 では、NAP は使用されていません。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS](https://technet.microsoft.com/library/cc771746)」(NPS のベスト プラクティス) を参照してください。
+Windows Server 2012 以降にネットワーク ポリシーとアクセス サービス ロール サービスをインストールする方法については、「[Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx)」(NAP 正常性ポリシー サーバーのインストール) を参照してください。 Windows Server 2016 では、NAP は非推奨となります。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS](https://technet.microsoft.com/library/cc771746)」(NPS のベスト プラクティス) を参照してください。
 
 ### <a name="azure-mfa-license"></a>Azure MFA のライセンス
 

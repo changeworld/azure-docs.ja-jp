@@ -3,8 +3,8 @@ title: 高速ネットワークを使った Azure 仮想マシンの作成 | Mic
 description: 高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: gsilva5
+manager: gedegrac
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,23 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
-ms.author: jdial
+ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893951"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
-> [!IMPORTANT] 
-> 仮想マシンは、高速ネットワークを有効にして作成する必要があります。 この機能は、既存の仮想マシンでは有効にできません。 高速ネットワークを有効にするには、次の手順を実行します。
->   1. 仮想マシンを削除します。
->   2. 高速ネットワークを有効にして仮想マシンを再作成します。
->
-
-このチュートリアルでは、高速ネットワークを有効にして Linux 仮想マシン (VM) を作成する方法について説明します。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
+このチュートリアルでは、高速ネットワークを有効にして Linux 仮想マシン (VM) を作成する方法について説明します。 高速ネットワークを使って Windows VM を作成する場合は、「[Accelerated Networking を使った Windows VM を作成する](create-vm-accelerated-networking-powershell.md)」をご覧ください。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
 
 ![比較](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -46,29 +41,39 @@ ms.lasthandoff: 04/16/2018
 * **CPU 使用率の削減:** ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU の使用率を軽減できます。
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
-* **Ubuntu 16.04**: 4.11.0-1013 以上のカーネル バージョン
-* **SLES 12 SP3**: 4.4.92-6.18 以上のカーネル バージョン
-* **RHEL 7.4**: 7.4.2017120423 以上のカーネル バージョン
-* **CentOS 7.4**: 7.4.20171206 以上のカーネル バージョン
+Azure ギャラリーでは次のディストリビューションが既定でサポートされています。 
+* **Ubuntu 16.04** 
+* **SLES 12 SP3** 
+* **RHEL 7.4**
+* **CentOS 7.4**
+* **CoreOS Linux**
+* **Debian "Stretch" (バックポート カーネルを含む)**
+* **Oracle Linux 7.4**
 
-## <a name="supported-vm-instances"></a>サポートされている VM インスタンス
-高速ネットワークは、4 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。 ハイパースレッディングをサポートする D/DSv3 や E/ESv3 などのインスタンスでは、8 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。  D/DSv2、D/DSv3、E/ESv3、F/Fs/Fsv2 および Ms/Mms のシリーズがサポートされています。 
+## <a name="limitations-and-constraints"></a>制限と制約
+
+### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です
+
+ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされているシリーズは、D/DSv3、E/ESv3、Fsv2、Ms/Mms です。
 
 VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
-## <a name="regions"></a>リージョン
+### <a name="regions"></a>リージョン
 すべてのパブリック Azure リージョンと Azure Government クラウドで使用できます。
 
-## <a name="limitations"></a>制限事項
-この機能を使用する場合は、次の制限事項があります。
+### <a name="network-interface-creation"></a>ネットワーク インターフェイスの作成 
+高速ネットワークは、新しい NIC でのみ有効にできます。 既存の NIC に対して有効にすることはできません。
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>実行中の VM で高速ネットワークを有効にする
+サポートされる VM サイズで、高速ネットワークが有効になっていない場合は、VM が停止され割り当てを解除されているときにだけ機能を有効にできます。  
+### <a name="deployment-through-azure-resource-manager"></a>Azure Resource Manager によるデプロイ
+仮想マシン (クラシック) は、高速ネットワークを使用したデプロイはできません。
 
-* **ネットワーク インターフェイスの作成:** 高速ネットワークは、新しい NIC でのみ有効にできます。 既存の NIC に対して有効にすることはできません。
-* **VM の作成:** 高速ネットワークを有効にした NIC は、VM の作成時にのみ VM に接続できます。 既存の VM に NIC を接続することはできません。 VM を既存の可用性セットに追加する場合は、可用性セット内のすべての VM でも高速ネットワークが有効になっている必要があります。
-* **Azure Resource Manager でのデプロイのみ:** 仮想マシン (クラシック) は高速ネットワークを使用してデプロイできません。
+## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Azure 高速ネットワークが有効な Linux VM を作成する
 
 この記事では、高速ネットワークを使用した仮想マシンを、Azure CLI を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成する際に、**[設定]** の **[高速ネットワーク]** で **[有効]** を選択します。 高速ネットワークを有効にするオプションは、[サポートされるオペレーティング システム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択しない限り、ポータルには表示されません。 仮想マシンが作成されたら、「[オペレーティング システムで高速ネットワークが有効化されていることを確認する](#confirm-that-accelerated-networking-is-enabled)」の手順を実行する必要があります。
 
-## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
 
@@ -78,7 +83,7 @@ VM インスタンスの詳細については、「[Linux 仮想マシンのサ�
 az group create --name myResourceGroup --location centralus
 ```
 
-「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」 (Linux 高速ネットワーク) に記載されているサポート対象の Linux リージョンを選択する必要があります。
+「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」(Linux 高速ネットワーク) に記載されているサポート対象の Linux リージョンを選択します。
 
 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 次の例では、1 つのサブネットで *myVnet* という名前の仮想ネットワークを作成します。
 
@@ -91,7 +96,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
@@ -117,7 +122,7 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-## <a name="create-a-network-interface-with-accelerated-networking"></a>高速ネットワークを使ったネットワーク インターフェイスの作成
+### <a name="create-a-network-interface-with-accelerated-networking"></a>高速ネットワークを使ったネットワーク インターフェイスの作成
 
 パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) で作成します。 インターネットから仮想マシンにアクセスする計画がない場合、パブリック IP アドレスは不要ですが、この記事の手順を完了するには必要です。
 
@@ -140,8 +145,8 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nic"></a>VM を作成して NIC を接続する
-VM を作成するとき、`--nics` を使用して作成した NIC を指定します。 「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」 (Linux 高速ネットワーク) に記載されているサイズとディストリビューションを選択する必要があります。 
+### <a name="create-a-vm-and-attach-the-nic"></a>VM を作成して NIC を接続する
+VM を作成するとき、`--nics` を使用して作成した NIC を指定します。 「[Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)」(Linux 高速ネットワーク) に記載されているサイズとディストリビューションを選択します。 
 
 [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、UbuntuLTS イメージと高速ネットワークをサポートするサイズ (*Standard_DS4_v2*) を使用して、*myVM* という VM を作成します。
 
@@ -173,7 +178,7 @@ VM が作成されると、次のサンプル出力のような出力が返さ�
 }
 ```
 
-## <a name="confirm-that-accelerated-networking-is-enabled"></a>高速ネットワークが有効になっていることを確認します。
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>高速ネットワークが有効になっていることを確認します。
 
 次のコマンドを使用して、VM との SSH セッションを作成します。 作成した仮想マシンに割り当てたパブリック IP アドレスに `<your-public-ip-address>` を置き換え、VM の作成時に `--admin-username` に異なる値を使用していた場合は、*azureuser* を置き換えます。
 
@@ -210,3 +215,84 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 VM の高速ネットワークが有効になりました。
+
+## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
+高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができです。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
+
+* VM は高速ネットワークがサポートされるサイズである必要があります
+* VM はサポートされる Azure ギャラリー イメージ (および Linux のカーネル バージョン) である必要があります
+* 可用性セット内または VMSS 内のすべての VM は、NIC において高速ネットワークを有効にする前に、停止/割り当てを解除しておく必要があります
+
+### <a name="individual-vms--vms-in-an-availability-set"></a>個別の VM および可用性セット内の VM
+最初に、VM (可用性セットの場合は、セット内のすべての VM) を停止/割り当てを解除します。
+
+```azurecli
+az vm deallocate \
+    --resource-group myResourceGroup \
+    --name myVM
+```
+
+可用性セットを使用しないで個別に作成した VM の場合、高速ネットワークを有効にするには、個別の VM を停止/割り当てを解除することだけが必要です。  可用性セットを使用して作成された VM の場合は、いずれかの NIC において高速ネットワークを有効にする前に、可用性セットに含まれるすべての VM を停止/割り当てを解除する必要があります。 
+
+停止した後、VM の NIC において高速ネットワークを有効にします。
+
+```azurecli
+az network nic update \
+    --name myVM -n myNic \
+    --resource-group myResourceGroup \
+    --accelerated-networking true
+```
+
+VM (可用性セットの場合はセット内のすべての VM) を再起動し、高速ネットワークが有効になっていることを確認します。 
+
+```azurecli
+az vm start --resource-group myResourceGroup \
+    --name myVM
+```
+
+### <a name="vmss"></a>VMSS
+VMSS は若干異なりますが、同じワークフローに従います。  最初に、VM を停止します。
+
+```azurecli
+az vmss deallocate \
+    --name myvmss \
+    --resource-group myrg
+```
+
+VM が停止した後、ネットワーク インターフェイスにおいて高速ネットワークのプロパティを更新します。
+
+```azurecli
+az vmss update --name myvmss \
+    --resource-group myrg \
+    --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
+```
+
+VMSS には、3 つの異なる設定 (自動、ローリング、手動) を使用して更新を適用する VM のアップグレードがあります。  この手順では、再起動後すぐに VMSS がポリシーを選択するように、ポリシーを自動に設定します。  変更がすぐに選択されるように自動に設定するには、次のようにします。 
+
+```azurecli
+az vmss update \
+    --name myvmss \
+    --resource-group myrg \
+    --set upgradePolicy.mode="automatic"
+```
+
+最後に、VMSS を再起動します。
+
+```azurecli
+az vmss start \
+    --name myvmss \
+    --resource-group myrg
+```
+
+再起動した後、アップグレードが完了するまで待ちます。完了すると、VM 内に VF が表示されます。  (サポートされる OS と VM サイズを使用していることを確認してください。)
+
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>高速ネットワークが有効な既存の VM のサイズを変更する
+
+高速ネットワークが有効になっている VM のサイズは、高速ネットワークをサポートする VM にのみ変更できます。  
+
+高速ネットワークが有効になっている VM のサイズを、高速ネットワークをサポートしていない VM インスタンスに、サイズ変更操作を使って変更することはできません。  このような VM のサイズを変更するには、次のようにします。 
+
+* VM を停止/割り当てを解除します。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM を停止/割り当てを解除します。
+* VM の NIC において、高速ネットワークを無効にする必要があります。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM において無効にします。
+* 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。  
+

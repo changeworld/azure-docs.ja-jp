@@ -1,111 +1,127 @@
 ---
-title: テナント管理者によるアクセス権の昇格 | Microsoft Docs
-description: このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。
+title: Azure Active Directory で全体管理者のアクセス権を昇格する | Microsoft Docs
+description: Azure Portal または REST API を使用して、Azure Active Directory の全体管理者のアクセス権を昇格する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: rqureshi
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/30/2017
+ms.date: 05/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 7b4625bff277851fb9002e54b26485b948981252
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b671ff6b473093e59bce18c7bf98b32e9849bbb0
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077209"
 ---
-# <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>ロール ベースのアクセス制御を使用してテナント管理者としてアクセス権を昇格させる
+# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory で全体管理者のアクセス権を昇格する
 
-テナント管理者は、ロール ベースのアクセス制御を使用して、通常よりも上位のアクセス許可を付与できるように、アクセス権を一時的に昇格させることができます。 テナント管理者は、必要に応じて、自分自身をユーザー アクセス管理者ロールに昇格させることができます。 このロールは、自分自身または他のユーザーに "/" スコープでロールを付与する特権をテナント管理者に与えます。
+Azure Active Directory (Azure AD) の[全体管理者](../active-directory/active-directory-assign-admin-roles-azure-portal.md#global-administrator)の場合は、以下の操作を行うことがあります。
 
-この機能は、組織内に存在するすべてのサブスクリプションをテナント管理者が確認できるようにするために重要です。 さらに、請求、監査などのオートメーション アプリからすべてのサブスクリプションにアクセスし、課金や資産管理のために組織の状況を正確に提供できるようになります。  
+- ユーザーがアクセス権を失ったときに Azure サブスクリプションへのアクセス権を回復する
+- 別のユーザーまたは自分に Azure サブスクリプションへのアクセス権を付与する
+- 組織内のすべての Azure サブスクリプションを表示する
+- オートメーション アプリ (請求書作成アプリや監査アプリなど) がすべての Azure サブスクリプションにアクセスできるようにする
 
-## <a name="use-elevateaccess-for-tenant-access-with-azure-ad-admin-center"></a>Azure AD 管理センターでテナントへのアクセスに elevateAccess を使用する
+既定では、Azure AD の管理者ロールと Azure のロールベース アクセス制御 (RBAC) ロールは、Azure AD と Azure にまたがっていません。 ただし、Azure AD の全体管理者であれば、アクセス権を昇格して Azure のサブスクリプションと管理グループを管理することができます。 アクセス権を昇格すると、特定のテナント内のすべてのサブスクリプションに対して[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (RBAC ロール) が付与されます。 ユーザー アクセス管理者ロールを使用すると、ルート スコープ (`/`) の Azure リソースに対するアクセス権を他のユーザーに付与できます。
 
-1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に移動し、ご自身の資格情報でログインします。
+この昇格は一時的なものにして、必要なときにのみ実行するようにしてください。
 
-2. Azure AD の左側のメニューから **[プロパティ]** を選択します。
+## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Azure Portal を使用して全体管理者のアクセス権を昇格する
 
-3. **[全体管理者は Azure サブスクリプションを管理できます]** を見つけて、**[はい]**、**[保存]** の順に選択します。
-    > [!IMPORTANT] 
-    > **[はい]** を選択した場合は、ポータルに現在ログインしているユーザーについて、ルート "/" (ルート スコープ) で、**ユーザー アクセス管理者**のロールが割り当てられます。 **これにより、ユーザーにその他のすべての Azure サブスクリプションが表示されます。**
-    
-    > [!NOTE] 
-    > **[いいえ]** を選択した場合は、ポータルに現在ログインしているユーザーについて、ルート "/" (ルート スコープ) で、**ユーザー アクセス管理者**のロールが削除されます。
+1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 
-> [!TIP] 
-> これは、Azure Active Directory のグローバル プロパティと似ているように思われるかもしれませんが、現在ログオンしているユーザーを対象にして、ユーザーごとに機能します。 Azure Active Directory のグローバル管理者権限がある場合は、Azure Active Directory 管理センターに現在ログインしているユーザーに対してこの elevateAccess 機能を呼び出すことができます。
+1. ナビゲーション リストで **[Azure Active Directory]**、**[プロパティ]** の順にクリックします。
 
-![Azure AD 管理センター - プロパティ - 全体管理者は Azure サブスクリプションを管理できます - スクリーンショット](./media/elevate-access-global-admin/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+   ![Azure AD のプロパティ - スクリーンショット](./media/elevate-access-global-admin/aad-properties.png)
 
-## <a name="view-role-assignments-at-the--scope-using-powershell"></a>PowerShell を使用して、"/" スコープでロールの割り当てを表示する
-**/** スコープで **[ユーザー アクセス管理者]** を表示するには、`Get-AzureRmRoleAssignment` PowerShell コマンドレットを使用します。
-    
-```powershell
-Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_.SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
+1. **[全体管理者は、Azure サブスクリプションと管理グループを管理できます]** のスイッチを **[はい]** に設定します。
+
+   ![[全体管理者は、Azure サブスクリプションと管理グループを管理できます] - スクリーンショット](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+
+   スイッチを **[はい]** に設定すると、全体管理者アカウント (現在ログインしているユーザー) は、ルート スコープ (`/`) にある Azure RBAC のユーザー アクセス管理者ロールに追加されます。これで、Azure AD テナントに関連付けられているすべての Azure サブスクリプションについて表示およびレポートできるアクセス権が付与されます。
+
+   **[いいえ]** にスイッチを設定すると、全体管理者アカウント (現在ログインしているユーザー) は Azure RBAC のユーザー アクセス管理者ロールから削除されます。 Azure AD テナントに関連付けられているすべての Azure サブスクリプションは表示できません。アクセス権が付与されている Azure サブスクリプションのみを表示および管理できます。
+
+1. **[保存]** をクリックして設定を保存します。
+
+   この設定はグローバル プロパティではなく、現在ログインしているユーザーのみに適用されます。
+
+1. 昇格したアクセス権で行う必要のあるタスクを実行します。 完了したら、スイッチを **[いいえ]** に戻します。
+
+## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>PowerShell を使用してルート スコープ (/) のロールの割り当てを一覧表示する
+
+ルート スコープ (`/`) のユーザーについてユーザー アクセス管理者ロールの割り当てを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) コマンドを使用します。
+
+```azurepowershell
+Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
+  -and $_.SignInName -eq "<username@example.com>" -and $_.Scope -eq "/"}
 ```
 
-**出力例**:
-```
-RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
-Scope              : /    
-DisplayName        : username    
-SignInName         : username@somedomain.com    
-RoleDefinitionName : User Access Administrator    
-RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
-ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc    
-ObjectType         : User    
-```
-
-## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>PowerShell を使用して、"/" スコープでロールの割り当てを削除する
-次の PowerShell コマンドレットを使用して割り当てを削除することができます。
-
-```powershell
-Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefinitionName "User Access Administrator" -Scope "/" 
+```Example
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0
+Scope              : /
+DisplayName        : username
+SignInName         : username@example.com
+RoleDefinitionName : User Access Administrator
+RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
+ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
+ObjectType         : User
 ```
 
-## <a name="use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>REST API で elevateAccess を使用してテナントへのアクセス権を付与する
+## <a name="delete-a-role-assignment-at-the-root-scope--using-powershell"></a>PowerShell を使用してルート スコープ (/) のロールの割り当てを削除する
 
-基本的なプロセスは、次の手順で動作します。
+ルート スコープ (`/`) のユーザーについてユーザー アクセス管理者ロールの割り当てを削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) コマンドを使用します。
 
-1. REST を使用して *elevateAccess*を呼び出します。これにより、ユーザー アクセス管理者ロールが "/" スコープで付与されます。
+```azurepowershell
+Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+  -RoleDefinitionName "User Access Administrator" -Scope "/"
+```
 
-    ```
-    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
-    ```
+## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>REST API を使用して全体管理者のアクセス権を昇格する
 
-2. [ロールの割り当て](/rest/api/authorization/roleassignments)を作成し、任意の役割を任意のスコープで割り当てます。 次の例は、閲覧者ロールを "/" スコープで割り当てるためのプロパティを示しています。
+REST API を使用して全体管理者のアクセス権を昇格するには、以下の基本的な手順を実行します。
 
-    ```json
-    { 
-      "properties": {
-        "roleDefinitionId": "providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionID}",
-        "principalId": "{objectID}",
-        "scope": "/"
-      },
-      "id": "providers/Microsoft.Authorization/roleAssignments/64736CA0-56D7-4A94-A551-973C2FE7888B",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "name": "64736CA0-56D7-4A94-A551-973C2FE7888B"
-    }
-    ```
+1. REST を使用して `elevateAccess` を呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
 
-3. ユーザー アクセス管理管理者である間は、ロールの割り当てを "/" スコープで削除することもできます。
+   ```http
+   POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
+   ```
 
-4. 再び必要になるまで、ユーザー アクセス管理権限を取り消します。
+1. [ロールの割り当て](/rest/api/authorization/roleassignments)を作成し、任意の役割を任意のスコープで割り当てます。 次の例は、{roleDefinitionID} ロールをルート スコープ (`/`) で割り当てるためのプロパティを示しています。
+
+   ```json
+   { 
+     "properties": {
+       "roleDefinitionId": "providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionID}",
+       "principalId": "{objectID}",
+       "scope": "/"
+     },
+     "id": "providers/Microsoft.Authorization/roleAssignments/64736CA0-56D7-4A94-A551-973C2FE7888B",
+     "type": "Microsoft.Authorization/roleAssignments",
+     "name": "64736CA0-56D7-4A94-A551-973C2FE7888B"
+   }
+   ```
+
+1. ユーザー アクセス管理者である間は、ルート スコープ (`/`) でロールの割り当てを削除することもできます。
+
+1. 再び必要になるまで、ユーザー アクセス管理者特権を取り消します。
 
 
 ## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>REST API で elevateAccess アクションを取り消す方法
 
-*elevateAccess* を呼び出すと、自分自身に対するロールの割り当てが作成されます。このため、これらの権限を取り消すには、割り当てを削除する必要があります。
+`elevateAccess` を呼び出すと、自分自身に対するロールの割り当てが作成されます。このため、これらの権限を取り消すには、割り当てを削除する必要があります。
 
-1.  GET roleDefinitions を呼び出します。roleName = User Access Administrator で、ユーザー アクセス管理者ロールの名前の GUID を判別します。
-    ```
+1. [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) を呼び出します。この `roleName` はユーザー アクセス管理者であり、ユーザー アクセス管理者ロールの名前 ID を判別します。
+
+    ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
     ```
 
@@ -144,19 +160,18 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
     }
     ```
 
-    *name* パラメーターの GUID を保存します (この例では **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**)。
+    この場合の `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9` では、`name` パラメーターの ID を省略できます。
 
-2. また、テナント スコープでテナント管理者のロール割り当ての一覧を表示する必要もあります。 アクセス権の昇格呼び出しを行った TenantAdmin の PrincipalId について、テナント スコープの割り当て一覧を表示します。 これにより、ObjectID についてテナントの割り当ての一覧が表示されます。
+2. また、テナント スコープでテナント管理者のロール割り当ての一覧を表示する必要もあります。 アクセス権の昇格呼び出しを行ったテナント管理者の `principalId` について、テナント スコープの割り当て一覧を表示します。 これにより、objectid についてテナントの割り当ての一覧が表示されます。
 
-    ```
+    ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >テナント管理者の割り当ては多くありません。前のクエリが返す割り当ての数が多すぎる場合は、テナント スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルターすることもできます: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
-    
+    >テナント管理者の割り当ては多くありません。前のクエリが返す割り当ての数が多すぎる場合は、テナント スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルターすることもできます。`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが "/" で、RoleDefinitionId が手順 1. で見つかったロール名 GUID で終了し、PrincipalId がテナント管理者の ObjectId と一致する、ロール割り当てを検索します。 
+    2. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが "/" で、`roleDefinitionId` が手順 1. で見つかったロール名 ID で終了し、`principalId` がテナント管理者の objectId と一致する、ロール割り当てを検索します。 
     
     サンプル ロールの割り当て
 
@@ -182,16 +197,15 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
         }
         ```
         
-    もう一度、*name* パラメーターの GUID を保存します (この例では **e7dd75bc-06f6-4e71-9014-ee96a929d099**)。
+    もう一度、`name` パラメーターの ID を保存します (この例では e7dd75bc-06f6-4e71-9014-ee96a929d099)。
 
-    3. 最後に、強調表示された **RoleAssignment ID** を使用して、アクセス権の昇格によって追加された割り当てを削除します。
+    3. 最後に、ロール割り当て ID を使用して、`elevateAccess` によって追加された割り当てを削除します。
 
-    ```
+    ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
     ```
 
 ## <a name="next-steps"></a>次の手順
 
-- 「[REST API を使用したロールベースの Access Control の管理](role-assignments-rest.md)」を参照する
-
-- Azure Portal で[アクセスの割り当ての管理](role-assignments-users.md)を行う
+- [REST を使用したロールベースのアクセス制御](role-assignments-rest.md)
+- [アクセス権の割り当てを管理する](role-assignments-users.md)
