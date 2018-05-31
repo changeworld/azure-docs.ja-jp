@@ -12,13 +12,14 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: d02ecc3293d0607dd3e19ade3c1d9087b544703b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 072e3bc2e1a13476b43fb72c8631453e2ffa3b27
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071607"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>ロール ベースのアクセス制御を使用した Azure Site Recovery の管理
 
@@ -47,7 +48,7 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 
 | **リソースの種類** | **デプロイメント モデル** | **アクセス許可** |
 | --- | --- | --- |
-| コンピューティング | リソース マネージャー | Microsoft.Compute/availabilitySets/read |
+| Compute | リソース マネージャー | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
 |  |  | Microsoft.Compute/virtualMachines/write |
 |  |  | Microsoft.Compute/virtualMachines/delete |
@@ -73,7 +74,7 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 | リソース グループ | リソース マネージャー | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
-Resource Manager と Classic のデプロイメント モデルそれぞれに、'仮想マシン共同作業者' と '従来の仮想マシン共同作業者' の[組み込みのロール](../role-based-access-control/built-in-roles.md)を使用することを検討してください。
+Resource Manager デプロイ モデルとクラシック デプロイ モデルそれぞれに、'仮想マシン共同作業者' と '従来の仮想マシン共同作業者' の[組み込みのロール](../role-based-access-control/built-in-roles.md)を使用することを検討してください。
 
 ## <a name="next-steps"></a>次の手順
 * [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure ポータルでの RBAC の基本について説明します。

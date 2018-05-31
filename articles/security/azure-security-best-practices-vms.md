@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160548"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364405"
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 
@@ -70,7 +70,7 @@ RBAC などの機能を利用したデータ アクセス制御を組織が適�
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) も、同じ可用性セットに属している負荷分散された VM を必要とします。 これらの VM にインターネットからアクセスをする必要がある場合は、[インターネットに接続するロード バランサー](../load-balancer/load-balancer-internet-overview.md)を構成する必要があります。
 
-VM がインターネットに公開される場合は、[ネットワーク セキュリティ グループ (NSG) でネットワーク トラフィック フローを制御する](../virtual-network/virtual-networks-nsg.md)ことが重要です。 NSG はサブネットに適用できるため、リソースをサブネットごとにグループ化し、NSG をサブネットに適用することで、NSG の数を最小限に抑えることができます。 目的はネットワーク分離のレイヤーを作成することであり、これは Azure で[ネットワーク セキュリティ](../best-practices-network-security.md)機能を適切に構成することにより実現できます。
+VM がインターネットに公開される場合は、[ネットワーク セキュリティ グループ (NSG) でネットワーク トラフィック フローを制御する](../virtual-network/security-overview.md)ことが重要です。 NSG はサブネットに適用できるため、リソースをサブネットごとにグループ化し、NSG をサブネットに適用することで、NSG の数を最小限に抑えることができます。 目的はネットワーク分離のレイヤーを作成することであり、これは Azure で[ネットワーク セキュリティ](../best-practices-network-security.md)機能を適切に構成することにより実現できます。
 
 また、Azure Security Center の JIT (Just In Time) VM アクセス機能を使って、特定の VM にリモート アクセスできるユーザーと時間を制御することもできます。
 
