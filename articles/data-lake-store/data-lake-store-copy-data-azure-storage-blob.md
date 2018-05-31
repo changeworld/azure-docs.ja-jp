@@ -1,24 +1,23 @@
 ---
-title: "Azure Storage BLOB のデータを Data Lake Store にコピーする | Microsoft Docs"
-description: "AdlCopy ツールを使用して Azure Storage Blob のデータを Data Lake Store にコピーします"
+title: Azure Storage BLOB のデータを Data Lake Store にコピーする | Microsoft Docs
+description: AdlCopy ツールを使用して Azure Storage Blob のデータを Data Lake Store にコピーします
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 33bfd200f72cb56b391cab52bf90f19b568893a9
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 964ba0eb9c619fa226b0704a6c83c05186a95261
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197156"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Azure Storage BLOB から Data Lake Store へのデータのコピー
 > [!div class="op_single_selector"]
@@ -44,7 +43,7 @@ AdlCopy ツールは 2 つの異なるモードで使用できます。
 * **Azure Storage Blobs** コンテナー。
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * **Azure Data Lake Analytics アカウント (省略可能)** - Data Lake Store アカウントの作成手順については、「 [チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md) 」を参照してください。
-* **AdlCopy ツール**。 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy)の AdlCopy ツールをインストールします。
+* **AdlCopy ツール**。 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy) から AdlCopy ツールをインストールします。
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy ツールの構文
 AdlCopy ツールを操作するには、次の構文を使用します。

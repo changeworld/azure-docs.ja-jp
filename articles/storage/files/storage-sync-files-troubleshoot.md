@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010926"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -34,6 +35,14 @@ Azure File Sync (プレビュー) を使用して、オンプレミスのファ�
 1 つのサブスクリプションから別のサブスクリプションにリソースを移動する場合、ファイル同期 (Storage Sync Service) リソースは移動をブロックされます。 
 
 ## <a name="agent-installation-and-server-registration"></a>エージェントのインストールとサーバー登録
+### <a name="during-server-registration-get-the-error-the-term-find-azurermresource-is-not-recognized-as-the-name"></a>サーバーの登録中に、"用語 'find-AzureRMResource' は...の名前として認識されません" という内容のエラーが表示されます。
+問題は、コマンドレット find-AzureRMResource が AzureRM v6 で変更されたことです。  AzureRM v6 をサポートするために、同期エージェントの次のバージョンが修正されます。  それまでは、次のようにしてこの問題を回避できます。
+1. taskmgr を使用して現在の ServerRegistration.exe を停止します
+2. 管理者として PowerShell コマンド プロンプトを起動します
+3. PS C:\> Uninstall-Module AzureRM を実行します
+4. PS C:\> install-module -name AzureRM -RequiredVersion 5.7.0 を実行します
+5. Start C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe を実行します。
+
 <a id="agent-installation-failures"></a>**エージェントのインストール エラーをトラブルシューティングする**  
 管理者特権でのコマンド プロンプトで Azure File Sync エージェントのインストールに失敗した場合は、次のコマンドを実行してエージェントのインストール時のログ記録を有効にします。
 
@@ -107,7 +116,7 @@ Reset-StorageSyncServer
 * ユーザー アクセス管理者: 現在のユーザー アカウントのロールに必要なアクセス許可が付与されているかどうかを確認するには:  
 1. Azure ポータルで、**[リソース グループ]** を選択します。
 2. ストレージ アカウントのあるリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。
-3. ユーザー アカウントに割り当てる**[ロール]** (所有者や共同作成者など) を選択します。
+3. ユーザー アカウントに割り当てる **[ロール]** (所有者や共同作成者など) を選択します。
 4. **[リソース プロバイダー]** 一覧で、**[Microsoft 承認]** を選択します。 
     * **[ロールの割り当て]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
     * **[ロール定義]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
