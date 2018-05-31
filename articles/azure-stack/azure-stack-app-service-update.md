@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 151456bbb7f9331730e640e4bece3872c3c92f8d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c822f25e25953b8709f481e51d6a63e6a912a60a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358814"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を更新する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!IMPORTANT]
-> Azure App Service をデプロイする前に、Azure Stack 統合システムに 1802 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
+> Azure App Service 1.2 をデプロイする前に、Azure Stack 統合システムに 1804 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
 >
 >
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 03/12/2018
 
 App Service on Azure Stack のデプロイをアップグレードするには、次の手順に従います。
 
-1. [App Service インストーラー](https://aka.ms/appsvcupdate1installer)をダウンロードする
+1. [App Service インストーラー](https://aka.ms/appsvcupdate2installer)をダウンロードする
 
 2. 管理者として appservice.exe を実行する
 
@@ -75,7 +76,7 @@ App Service on Azure Stack のデプロイをアップグレードするには�
    1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
         * Azure Active Directory (Azure AD) を使っている場合は、Azure Stack のデプロイ時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]** をクリックします。
         * Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、*cloudadmin@azurestack.local* です。 パスワードを入力し、**[サインイン]** をクリックします。
-   2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、自分のサブスクリプションを選びます。
+   2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選びます。
    3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
    4. 既存の App Service デプロイが検出された場合は、リソース グループとストレージ アカウントにデータが入力され、灰色表示されます。
    5. **[次へ]** をクリックして、アップグレードの概要を確認します。
