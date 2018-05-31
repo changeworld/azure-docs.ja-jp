@@ -1,6 +1,6 @@
 ---
-title: SSL 終了でアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
-description: Azure Portal を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。
+title: SSL 終了でアプリケーション ゲートウェイを構成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して、アプリケーション ゲートウェイを構成し、SSL 終了の証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,18 +8,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: a24cec5dfa8034cf43ce7cfe26308587cf20dc44
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c64754595ef67b7c083ee8d47da5b412467c191b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195915"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを作成する
+# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
 
-Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL 終了の証明書で、[アプリケーション ゲートウェイ](overview.md)を作成することができます。
+Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL 終了の証明書で、[アプリケーション ゲートウェイ](overview.md)を構成することができます。
 
 この記事では、次のことについて説明します:
 

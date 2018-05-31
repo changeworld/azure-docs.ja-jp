@@ -12,23 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 05/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7a909a36597d9ceb31b6dc9f142c4a9d9d37b464
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 538cf0eb0f9f2351f7a71a1dd24aab05938963c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34259085"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack ポリシー モジュールを使用して Azure ポリシー管理する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack ポリシー モジュールにより、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションを構成できます。  このモジュールでは、**New-AzureRMPolicyAssignment** コマンドレットを使用して、サブスクリプションで使用できるリソースの種類とサービスを制限する Azure ポリシーを作成します。  完了すると、Azure サブスクリプションを使用して Azure Stack を対象とするアプリを開発できます。  
+Azure Stack ポリシー モジュールにより、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションを構成できます。  このモジュールでは、**New-AzureRMPolicyAssignment** コマンドレットを使用して、サブスクリプションで使用できるリソースの種類とサービスを制限する Azure ポリシーを作成します。  ポリシーの構成が完了すると、Azure サブスクリプションを使用して Azure Stack を対象とするアプリを開発できます。
 
 ## <a name="install-the-module"></a>モジュールのインストール
-1. 「[PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)」の手順 1 の説明に従って、AzureRM PowerShell モジュールの必要なバージョンをインストールします。   
-2. [GitHub から Azure Stack ツールをダウンロード](azure-stack-powershell-download.md)します。  
+
+1. 「[PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)」の手順 1 の説明に従って、AzureRM PowerShell モジュールの必要なバージョンをインストールします。
+2. [GitHub から Azure Stack ツールをダウンロード](azure-stack-powershell-download.md)します。
 3. [PowerShell を Azure Stack で使用するための構成](azure-stack-powershell-configure-user.md)
 
 4. AzureStack.Policy.psm1 モジュールをインポートします。
@@ -37,11 +39,12 @@ Azure Stack ポリシー モジュールにより、Azure Stack と同じバー�
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-subscription"></a>サブスクリプションにポリシーを適用する
-次のコマンドを使用して、Azure サブスクリプションに対して既定のAzure Stack ポリシーを適用できます。 実行する前に、*Azure サブスクリプション名* を自分の Azure サブスクリプションに置き換えます。
+## <a name="apply-policy-to-azure-subscription"></a>Azure サブスクリプションにポリシーを適用する
+
+次のコマンドを使用して、Azure サブスクリプションに対して既定の Azure Stack ポリシーを適用できます。 このコマンドを実行する前に、*Azure サブスクリプション名*を自分の Azure サブスクリプションに置き換えます。
 
 ```PowerShell
-Connect-AzureRmAccount
+Add-AzureRmAccount
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -50,10 +53,11 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 ```
 
 ## <a name="apply-policy-to-a-resource-group"></a>リソース グループにポリシーを適用する
-さらに詳細な方法でポリシーを適用する必要がある場合があります。  たとえば、同じサブスクリプションで他のリソースが実行されている場合があります。  ポリシー適用のスコープを特定のリソース グループに設定することで、Azure リソースを使用して Azure Stack のアプリをテストできます。 実行する前に、*Azure サブスクリプション名* を自分の Azure サブスクリプション名に置き換えます。
+
+さらに詳細な方法でポリシーを適用する必要がある場合があります。 たとえば、同じサブスクリプションで他のリソースが実行されている場合があります。 ポリシー適用のスコープを特定のリソース グループに設定することで、Azure リソースを使用して Azure Stack のアプリをテストできます。 次のコマンドを実行する前に、*Azure サブスクリプション名*を自分の Azure サブスクリプション名に置き換えます。
 
 ```PowerShell
-Connect-AzureRmAccount
+Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
@@ -62,13 +66,13 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 ```
 
 ## <a name="policy-in-action"></a>実行中のポリシー
-Azure ポリシーをデプロイしたら、ポリシーで禁止されているリソースをデプロイしようとすると、エラーが表示されます。  
+
+Azure ポリシーをデプロイしたら、ポリシーで禁止されているリソースをデプロイしようとすると、エラーが表示されます。
 
 ![ポリシーの制約によるリソースのデプロイの失敗の結果](./media/azure-stack-policy-module/image1.png)
 
 ## <a name="next-steps"></a>次の手順
-[PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
 
-[Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
-
-[Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)
+* [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+* [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
+* [Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)

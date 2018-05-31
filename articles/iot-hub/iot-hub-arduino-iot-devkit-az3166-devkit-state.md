@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: feb31b0cc89c511f7487f995ba6045f89767abbb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3678eb20429d9e5123272499d474fdec2cdab065
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34202188"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -86,6 +87,9 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 ## <a name="example-operation"></a>操作の例
 
 ![テスト手順の例](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
+
+> [!NOTE]
+> Azure Portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT devices] (IoT デバイス) -\> *\<ご利用のデバイス\>* -\>[Device Twin] (デバイス ツイン) と移動します。
 
 ## <a name="next-steps"></a>次の手順
 

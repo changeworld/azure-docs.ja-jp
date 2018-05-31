@@ -1,29 +1,28 @@
 ---
-title: "Azure Stack ネットワーク: 違いと考慮事項"
-description: "Azure Stack でネットワークを操作する際の違いと考慮事項について説明します。"
+title: 'Azure Stack ネットワーク: 違いと考慮事項'
+description: Azure Stack でネットワークを操作する際の違いと考慮事項について説明します。
 services: azure-stack
-keywords: 
+keywords: ''
 author: mattbriggs
 manager: femila
 ms.author: mabrigg
-ms.date: 02/28/2018
+ms.date: 05/14/2018
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 4c881a5f5e64ddc9fc67060208f3bef6ae0f5028
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2a4c5bce072970f158a89763ebdf4132eafe9cbe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196255"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack ネットワークは Azure に備えられている機能の多くを備えていますが、デプロイを開始する前に把握しておいていただきたい違いがいくつかあります。
+Azure Stack のネットワークは、Azure のネットワークで提供される機能の多くを備えています。 ただし、Azure Stack ネットワークをデプロイする前に理解しておくべき大きな違いがいくつか存在します。
 
-
-この記事では、Azure Stack のネットワークと その機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
-
+この記事では、Azure Stack のネットワークとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
 
 ## <a name="cheat-sheet-networking-differences"></a>チート シート: ネットワークの違い
 
@@ -34,7 +33,7 @@ Azure Stack ネットワークは Azure に備えられている機能の多く�
 | |サブスクリプションあたりの DNS ゾーン数|100 (既定値)<br>ご希望により増やすことができます。|100|
 | |ゾーンあたりの DNS レコード セット数|5000 (既定値)<br>ご希望により増やすことができます。|5000|
 ||ゾーンの委任用のネーム サーバー|Azure では、作成されるユーザー (テナント) ゾーンごとに 4 つのネーム サーバーを提供します。|Azure Stack では、作成されるユーザー (テナント) ゾーンごとに 2 つのネーム サーバーを提供します。|
-| Virtual Network|仮想ネットワーク ピアリング|同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続します。|まだサポートされていません|
+| Virtual network|仮想ネットワーク ピアリング|同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続します。|まだサポートされていません|
 | |IPv6 アドレス|[ネットワーク インターフェイス構成](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions)の一部として IPv6 アドレスを割り当てることができます。|IPv4 のみがサポートされています。|
 |VPN ゲートウェイ|ポイント対サイト VPN ゲートウェイ|サポートされています|まだサポートされていません|
 | |VNet 間ゲートウェイ|サポートされています|まだサポートされていません|

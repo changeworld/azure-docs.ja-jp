@@ -15,24 +15,24 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5316cca9d3c944735355d7912a0f1e044c585001
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34339810"
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158032"
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成
 この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、[Azure Active Directory Premium](active-directory-whatis.md) に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
 
-[この記事](manage-apps/what-is-single-sign-on.md)で説明されているように、Azure Active Directory アプリケーション ギャラリーには、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。 (組織内の IT スペシャリストまたはシステム インテグレーターとして) 接続するアプリケーションを見つけたら、Azure Portal に示される詳細な手順に従って、シングル サインオンを有効にできます。
+[この記事](active-directory-appssoaccess-whatis.md)で説明されているように、Azure Active Directory アプリケーション ギャラリーには、Azure Active Directory によるシングル サインオンの形式をサポートすることがわかっているアプリケーションの一覧が表示されます。 (組織内の IT スペシャリストまたはシステム インテグレーターとして) 接続するアプリケーションを見つけたら、Azure Portal に示される詳細な手順に従って、シングル サインオンを有効にできます。
 
 [Azure Active Directory Premium](active-directory-whatis.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
 
 * SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
-* [パスワードベースの SSO](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
+* [パスワードベースの SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
 * ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](active-directory-scim-provisioning.md))
-* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
+* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
 
 これには、使用するが Azure AD アプリケーション ギャラリーにはまだ追加されていない SaaS アプリケーションだけでなく、組織がクラウドまたはオンプレミスで制御対象のサーバーにデプロイしたサードパーティの Web アプリケーションも含まれる場合があります。
 
@@ -116,18 +116,18 @@ SAML URL と証明書が Azure AD とアプリケーションで構成される�
 デバッグのヒントについては、この [アプリケーションへの SAML ベースのシングル サインオンのデバッグ方法に関する記事](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>パスワード シングル サインオン
-HTML サインイン ページがある Web アプリケーションの [パスワード ベースのシングル サインオン](manage-apps/what-is-single-sign-on.md) を構成するには、このオプションを選択します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
+HTML サインイン ページがある Web アプリケーションの [パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md) を構成するには、このオプションを選択します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
 
 **[次へ]** を選択すると、アプリケーションの Web ベースのサインイン ページの URL を入力するように求められます。 このページには、ユーザー名とパスワードの入力フィールドが含まれている必要があることに注意してください。 入力すると、Azure AD が、ユーザー名とパスワードを入力するためのサインイン ページを解析するプロセスを開始します。 プロセスが失敗した場合は、フィールドを手動でキャプチャできるようにするブラウザー拡張機能 (Internet Explorer、Chrome、または Firefox が必要) をインストールする代替プロセスが示されます。
 
-サインイン ページをキャプチャしたら、ユーザーとグループを割り当てることができ、資格情報ポリシーは通常の [パスワード SSO アプリ](manage-apps/what-is-single-sign-on.md)の場合と同様に設定できます。
+サインイン ページをキャプチャしたら、ユーザーとグループを割り当てることができ、資格情報ポリシーは通常の [パスワード SSO アプリ](active-directory-appssoaccess-whatis.md)の場合と同様に設定できます。
 
 注: アプリケーションの **[構成]** タブにある **[ロゴのアップロード]** ボタンを使用して、アプリケーションのタイル ロゴをアップロードできます。 
 
 ## <a name="existing-single-sign-on"></a>既存のシングル サインオン
 組織の Azure AD アクセス パネルまたは Office 365 ポータルにアプリケーションへのリンクを追加するには、このオプションを選択します。 これを使用して、認証用に Azure AD の代わりに現在 Azure Active Directory フェデレーション サービス (または他のフェデレーション サービス) を使用しているカスタム Web アプリへのリンクを追加することができます。 または、ユーザーのアクセス パネルに表示するだけの特定の SharePoint ページまたは他の Web ページにディープ リンクを追加することもできます。 
 
-**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。 入力したら、ユーザーとグループをアプリケーションに割り当てることができます。これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
+**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。 入力したら、ユーザーとグループをアプリケーションに割り当てることができます。これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
 
 注: アプリケーションの **[構成]** タブにある **[ロゴのアップロード]** ボタンを使用して、アプリケーションのタイル ロゴをアップロードできます。
 
