@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940189"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261457"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -173,7 +173,7 @@ ms.locfileid: "33940189"
 
 次のように各 Web サイト (contoso.com と fabrikam.com) で、負荷分散規則を構成します。
     
-1. <a name="step6-1"></a>**[設定]** で、**[正常性プローブ]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
+1. <a name="step6-1"></a> **[設定]** で、**[負荷分散規則]** を選択します。 表示されたウィンドウの上部近くにある **[追加]** を選択します。 
 
 2. **[名前]** に、負荷分散規則の名前 (たとえば、contoso.com には **HTTPc**、fabrikam.com には **HTTPf**) を入力します。
 

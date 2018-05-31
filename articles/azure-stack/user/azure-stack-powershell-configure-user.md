@@ -12,32 +12,45 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/26/2017
+ms.date: 5/15/2018
 ms.author: mabrigg
 ms.reviewer: Balsu.G
-ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2655b682d35dd1879c649ed58d524ecd80808896
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258024"
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Azure Stack ユーザーの PowerShell 環境の構成
 
-Azure Stack ユーザーの場合は、Azure Stack Development Kit の PowerShell 環境を構成できます。 構成後は、PowerShell を使って、オファーのサブスクライブ、仮想マシンの作成、Azure Resource Manager テンプレートのデプロイなどの Azure Stack のリソースを管理できます。このトピックではユーザー環境での使用についてのみ扱っています。クラウド オペレーター環境用に PowerShell を設定する場合は、「[Azure Stack オペレーターの PowerShell 環境の構成](../azure-stack-powershell-configure-admin.md)」の記事をご覧ください。 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-## <a name="prerequisites"></a>前提条件 
+この記事の指示に従い、Azure Stack ユーザーの PowerShell 環境を構成します。
+環境の構成後、PowerShell を使用して Azure Stack リソースを管理できます。 たとえば、PowerShell を使用し、オファーをサブスクライブしたり、仮想マシンを作成したり、Azure Resource Manager テンプレートをデプロイしたりできます。
 
-[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)から、または [VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合は Windows ベースの外部クライアントから、次の前提条件を実行します。
+>[!NOTE]
+>この記事では、Azure Stack ユーザー環境について説明します。 クラウド オペレーター環境用に PowerShell を設定する場合、[Azure Stack オペレーターの PowerShell 環境の構成](../azure-stack-powershell-configure-admin.md)に関する記事をご覧ください。
 
-* [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。  
-* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。 
+## <a name="prerequisites"></a>前提条件
+
+次の前提条件は[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)から構成するか、[VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合、Windows ベースの外部クライアントから構成できます。
+
+* [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。
+* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>ユーザー環境の構成と Azure Stack へのサインイン
 
-デプロイのタイプ (Azure AD または AD FS) に基づいて、次のいずれかのスクリプトを実行して Azure Stack 用に PowerShell を構成します (環境の構成に従って、必ず AAD tenantName、GraphAudience エンドポイント、および ArmEndpoint の値を置き換えてください)。
+Azure Stack デプロイのタイプ (Azure AD または AD FS) に基づいて、次のいずれかのスクリプトを実行して Azure Stack 用に PowerShell を構成します。
+
+次のスクリプト変数を自分の Azure Stack 構成の値に必ず変更してください。
+
+* AAD tenantName
+* GraphAudience エンドポイント
+* ArmEndpoint
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) ベースのデプロイ
-       
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -67,11 +80,11 @@ Azure Stack ユーザーの場合は、Azure Stack Development Kit の PowerShel
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Active Directory フェデレーション サービス (AD FS) ベースのデプロイ 
-          
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Active Directory フェデレーション サービス (AD FS) ベースのデプロイ
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -94,7 +107,7 @@ Azure Stack ユーザーの場合は、Azure Stack Development Kit の PowerShel
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
+  # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
     -ADFS `
     -EnvironmentName "AzureStackUser"
@@ -102,29 +115,30 @@ Azure Stack ユーザーの場合は、Azure Stack Development Kit の PowerShel
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
   ```
 
 ## <a name="register-resource-providers"></a>リソース プロバイダーを登録する
 
-ポータルからリソースをデプロイしていない、新しく作成したユーザーのサブスクリプションで使用する場合、リソース プロバイダーは自動的には登録されません。 次のスクリプトを使用して明示的に登録する必要があります。
+ポータル経由でリソースがデプロイされていない新しいユーザー サブスクリプションの場合、リソース プロバイダーが自動登録されません。 次のスクリプトを実行し、リソース プロバイダーを明示的に登録できます。
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
-    } 
+    }
 ```
 
 ## <a name="test-the-connectivity"></a>接続のテスト
 
-必要な設定がすべて整ったら、PowerShell を使って Azure Stack にリソースを作成してみましょう。 たとえば、アプリケーションのリソース グループを作成して仮想マシンを追加できます。 次のコマンドを使用して、"MyResourceGroup" という名前のリソース グループを作成します。
+すべてが整ったら、PowerShell を使って接続をテストし、Azure Stack でリソースを作成します。 テストとして、アプリケーションのリソース グループを作成し、仮想マシンを追加します。 次のコマンドを実行し、"MyResourceGroup" という名前のリソース グループを作成します。
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
 * [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)

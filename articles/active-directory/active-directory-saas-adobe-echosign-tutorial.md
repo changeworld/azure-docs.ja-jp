@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c3b7e7178ef68475f331edf058ca0f23661af3ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140378"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル: Azure Active Directory と Adobe Sign の統合
 
@@ -30,7 +30,7 @@ Adobe Sign と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Adobe Sign にサインオン (シングル サインオン) できるようにします
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -104,7 +104,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
     ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
+
     ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. **[Adobe Sign のドメインと URL]** セクションで、次の手順を実行します。
@@ -116,8 +116,8 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
     b. **[識別子]** ボックスに、`https://<companyname>.echosign.com` の形式で URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に問い合わせください。 
- 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に問い合わせください。
+
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -128,15 +128,34 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
 
 6. **[Adobe Sign Configuration (Adobe Sign 構成)]** セクションで、**[Configure Adobe Sign (Adobe Sign を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. 別の Web ブラウザーのウィンドウで、管理者として Adobe Sign 企業サイトにログインします。
+7. Adobe Sign で自分のドメインをホワイトリストに登録するには、構成する前に、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に連絡する必要があります。 次の手順に従ってドメインを追加します。
 
-8. SAML メニューで、**[アカウント設定]** をクリックし、**[SAML 設定]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)からランダムに生成されたトークンが送信されます。 ドメインの場合、トークンは **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx** のようになります。
+
+    b. DNS テキスト レコードで検証トークンを発行し、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に通知する必要があります。
+    
+    > [!NOTE]
+    > これには数日またはそれ以上かかる場合があります。 DNS への反映の遅延は、DNS で公開された値が 1 時間以上表示されない可能性があることを意味することに注意してください。 DNS テキスト レコードでこのトークンを発行する方法については、組織の IT 管理者が熟知しているものと想定しています。
+    
+    c. トークンが発行された後に、サポート チケットを通じて [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に通知すると、サポート チームがドメインを検証し、それをユーザーのアカウントに追加します。
+    
+    d. DNS レコードでトークンを発行するための一般的な手順
+
+    * 自分のドメイン アカウントにログインする
+    * DNS レコードを更新するためのページを検索する。 このページは、DNS 管理、ネーム サーバー管理、または詳細設定と呼ばれる場合があります。
+    * 自分のドメインの TXT レコードを検索する。
+    * Adobe から提供された完全なトークン値を使用して TXT レコードを追加する
+    * 変更を保存します。
+
+8. 別の Web ブラウザーのウィンドウで、管理者として Adobe Sign 企業サイトにログインします。
+
+9. SAML メニューで、**[アカウント設定]** をクリックし、**[SAML 設定]** をクリックします。
    
     ![Account](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Account")
 
-9. **[SAML 設定]** セクションで、次の手順に従います。
+10. **[SAML 設定]** セクションで、次の手順に従います。
   
     ![SAML Settings](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML Settings")
    
@@ -251,7 +270,7 @@ Azure AD ユーザーが Adobe Sign にログインできるようにするに�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -266,4 +285,3 @@ Azure AD ユーザーが Adobe Sign にログインできるようにするに�
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-

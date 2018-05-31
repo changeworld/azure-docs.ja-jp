@@ -4,26 +4,28 @@ description: Azure Stack Storage の開発ツールの使用方法の概要
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 02/21/2018
+ms.date: 05/14/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 81c62fc569e9f758d08bfca0bdfc5bcc9ed5860f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198937"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack Storage の開発ツールの概要
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Microsoft Azure Stack には、Azure Blob、Table、および Queue Storage などの一連のストレージ サービスがあります。
+Microsoft Azure Stack には、Blob Storage、Table Storage、Queue Storage など一連のストレージ サービスがあります。
 
-この記事では、Azure Stack Storage の開発ツールを使い始める方法を簡単に説明します。 より詳細な情報とサンプル コードについては、該当する Azure Storage のチュートリアルを参照してください。
+この記事は、Azure Stack Storage の開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure Storage のチュートリアルでご覧いただけます。
 
-Azure Storage と Azure Stack Storage には、各プラットフォームでのいくつかの具体的な要件などの既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳細については、「[Azure Stack Storage: 違いと考慮事項](azure-stack-acs-differences.md)」を参照してください。
+>[!NOTE]
+>Azure Stack Storage と Azure Storage には、プラットフォームごとの固有の要件など、既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳細については、「[Azure Stack Storage: 違いと考慮事項](azure-stack-acs-differences.md)」を参照してください。
 
 ## <a name="azure-client-libraries"></a>Azure のクライアント ライブラリ
 
@@ -46,6 +48,7 @@ Azure Stack Storage でサポートされる REST API のバージョンは、18
 Composer 経由でインストールするには (BLOB の例):
 
 1. プロジェクトのルートに **composer.json** という名前のファイルを次のコードを使用して作成します。
+
   ```php
     {
       "require": {
@@ -53,6 +56,7 @@ Composer 経由でインストールするには (BLOB の例):
       }
     }
   ```
+
 2. [composer.phar](http://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
 3. `php composer.phar install` を実行します。
 
@@ -73,6 +77,7 @@ Composer 経由でインストールするには (BLOB の例):
 Composer 経由でインストールするには:
 
 1. プロジェクトのルートに **composer.json** という名前のファイルを次のコードを使用して作成します。
+
   ```php
     {
           "require":{
@@ -80,6 +85,7 @@ Composer 経由でインストールするには:
           }
     }
   ```
+
 2. [composer.phar](http://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
 3. `php composer.phar install` を実行します。
 
@@ -91,16 +97,16 @@ Azure Stack Development Kit の既定のエンドポイントは **local.azurest
 
 ## <a name="examples"></a>例
 
-
 ### <a name="net"></a>.NET
 
 Azure Stack のエンドポイントのサフィックスは、app.config ファイルに指定されています。
 
 ```
-<add key="StorageConnectionString" 
+<add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
 ```
+
 ### <a name="java"></a>Java
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
@@ -121,6 +127,7 @@ Azure Stack のエンドポイントのサフィックスは、宣言のイン�
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
+
 ### <a name="c"></a>C++
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
@@ -152,6 +159,7 @@ block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
 ```
+
 ### <a name="ruby"></a>Ruby
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
@@ -187,7 +195,6 @@ Azure Stack に、次の Azure キュー ストレージのチュートリアル
 * [PHP から Queue ストレージを使用する方法](../../storage/queues/storage-php-how-to-use-queues.md)
 * [Python から Queue ストレージを使用する方法](../../storage/queues/storage-python-how-to-use-queue-storage.md)
 * [Ruby から Queue ストレージを使用する方法](../../storage/queues/storage-ruby-how-to-use-queue-storage.md)
-
 
 ## <a name="table-storage"></a>テーブル ストレージ
 
