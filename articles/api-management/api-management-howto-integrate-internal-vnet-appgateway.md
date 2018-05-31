@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 9a6e63e95b833c960356b82a19127ec91a791b98
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 595abcaafdea5cde3f868567bac7fb9cf0ee424b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936107"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合 
 
@@ -298,7 +299,7 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-パスが API Management から使用可能にするパス ルールと一致しない場合、ルール パス マップ構成では、**dummyBackendPool** という名前の既定のバックエンド アドレス プールも構成されます。 たとえば、 http://api.contoso.net/calc/* は、一致しないトラフィックの既定のプールとして定義されているので、**dummyBackendPool** に移動します。
+パスが API Management から使用可能にするパス ルールと一致しない場合、ルール パス マップ構成では、**dummyBackendPool** という名前の既定のバックエンド アドレス プールも構成されます。 たとえば、http://api.contoso.net/calc/sum は、一致しないトラフィックの既定のプールとして定義されている **dummyBackendPool** に移動します。
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting

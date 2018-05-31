@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 0896f2b23f9b74e12935c0a8b073b64dc743e6a8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940139"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Netezza からデータをコピーする
 
@@ -50,6 +51,13 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 | 型 | type プロパティを **Netezza** に設定する必要があります | [はい] |
 | connectionString | Netezza に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+
+一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` です。 ケースごとにさらに多くのプロパティを設定できます。
+
+| プロパティ | [説明] | 必須 |
+|:--- |:--- |:--- |:--- |
+| SecurityLevel | ドライバーがデータ ストアへの接続に使用するセキュリティ (SSL/TLS) のレベル。 例:  `SecurityLevel=preferredSecured` サポートされる値は次のとおりです。<br/>- セキュリティで保護されていない接続のみ (**onlyUnSecured**): ドライバーは SSL を使用しません。<br/>- **セキュリティで保護されていない接続を推奨 (preferredUnSecured) (既定値)** : サーバーで選択できる場合、ドライバーは SSL を使用しません。 <br/>- **セキュリティで保護されている接続を推奨 (preferredSecured)**: サーバーで選択できる場合、ドライバーは SSL を使用します。 <br/>- **セキュリティで保護されている接続のみ (onlySecured)**: SSL 接続を利用できない場合、ドライバーは接続しません | いいえ  |
+| CaCertFile | サーバーによって使用される SSL 証明書の完全パス。 例:  `UseSystemTrustStore=<cert path>;`| はい (SSL が有効になっている場合) |
 
 **例:**
 

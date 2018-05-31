@@ -1,229 +1,355 @@
 ---
 title: ワークフローのトリガーとアクション - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリで自動のワークフローとプロセスを作成するためのトリガーとアクションについて説明します。
+description: Azure Logic Apps のワークフロー定義のトリガーとアクションについて説明します
 services: logic-apps
-author: divyaswarnkar
-manager: anneta
+author: kevinlam1
+manager: SyntaxC4
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: article
-ms.date: 10/13/2017
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.topic: reference
+ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886784"
 ---
-# <a name="triggers-and-actions-for-logic-app-workflows"></a>ロジック アプリ ワークフローのトリガーとアクション
+# <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義のトリガーとアクション
 
-すべてのロジック アプリは、アクションに続くトリガーから開始されます。 この記事では、ロジック アプリを構築してシステム統合の作成とビジネス ワークフローおよびプロセスの自動化に使用できるトリガーとアクションの種類について説明します。 
-  
-## <a name="triggers-overview"></a>トリガーの概要 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) では、すべてのロジック アプリのワークフローは、アクションに続くトリガーから開始されます。 この記事では、統合ソリューションのビジネス ワークフローまたはプロセスを自動化するロジック アプリのビルドに使用できる、トリガーとアクションについて説明します。 ロジック アプリは、Logic Apps デザイナーを使って視覚的にビルドするか、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)を使って基になるワークフロー定義を直接作成してビルドすることができます。 Azure Portal または Visual Studio のいずれかを使用できます。 [トリガーとアクションの価格](../logic-apps/logic-apps-pricing.md)に関するページをご覧ください。
 
-すべてのロジック アプリはトリガーから開始されます。トリガーには、ロジック アプリの実行を開始できる呼び出しが指定されています。 使用できるトリガーの種類を次に示します。
+<a name="triggers-overview"></a>
+
+## <a name="triggers-overview"></a>トリガーの概要
+
+すべてのロジック アプリはトリガーから開始されます。トリガーには、ロジック アプリのワークフローをインスタンス化して開始できる呼び出しが定義されています。 使用できるトリガーの種類を次に示します。
 
 * *ポーリング* トリガー (定期的にサービスの HTTP エンドポイントをチェックします)
 * *プッシュ* トリガー ([ワークフロー サービスの REST API](https://docs.microsoft.com/rest/api/logic/workflows) を呼び出します)
-  
-すべてのトリガーには、以下の最上位要素が含まれます。  
+ 
+すべてのトリガーには以下の最上位要素がありますが、一部は省略可能です。  
   
 ```json
-"<myTriggerName>": {
-    "type": "<triggerType>",
-    "inputs": { <callSettings> },
-    "recurrence": {  
-        "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
-        "interval": "<recurrence-interval-based-on-frequency>"
-    },
-    "conditions": [ <array-with-required-conditions> ],
-    "splitOn": "<property-used-for-creating-runs>",
-    "operationOptions": "<options-for-operations-on-the-trigger>"
+"<triggerName>": {
+   "type": "<triggerType>",
+   "inputs": { "<trigger-behavior-settings>" },
+   "recurrence": { 
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": "<recurrence-interval-based-on-frequency>"
+   },
+   "conditions": [ <array-with-required-conditions> ],
+   "splitOn": "<property-used-for-creating-runs>",
+   "operationOptions": "<optional-trigger-operations>"
 }
 ```
 
-## <a name="trigger-types-and-inputs"></a>トリガーの種類と入力  
+*必須*
 
-各トリガーの種類には、その動作を定義するさまざまなインターフェイスとさまざまな*入力*があります。 
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| <*triggerName*> | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。例: "Http" または "ApiConnection" | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+| recurrence | JSON オブジェクト | トリガーが起動する頻度を記述する頻度と間隔 |  
+| frequency | String | トリガーが起動する頻度を記述する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、または "Month" | 
+| interval | 整数 | トリガーの起動間隔を、frequency に指定された単位に基づいて記述する正の整数。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "month" である場合は、繰り返しは 6 か月ごとになります。 | 
+|||| 
+
+*省略可能*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| [conditions](#trigger-conditions) | array | ワークフローを実行するかどうかを決定する 1 つまたは複数の条件 | 
+| [splitOn](#split-on-debatch) | String | 処理のために配列を複数のワークフロー インスタンスに分割、つまり*バッチ解除*する式。 このオプションは、配列を返すトリガーに対して、コード ビューで直接作業する場合のみ使用できます。 | 
+| [operationOptions](#trigger-operation-options) | String | 一部のトリガーには、既定のトリガー動作を変更できる追加のオプションがあります | 
+||||| 
+
+## <a name="trigger-types-and-details"></a>トリガーの種類と詳細  
+
+各トリガーの種類には、トリガーの動作を定義するさまざまなインターフェイスと入力があります。 
 
 | トリガーの種類 | [説明] | 
 | ------------ | ----------- | 
-| **定期的なアイテム** | 定義されているスケジュールに基づいて呼び出されます。 今後このトリガーを呼び出す日時を設定できます。 頻度に基づいて、ワークフローを実行する日時を指定することもできます。 | 
-| **要求**  | ロジック アプリを呼び出し可能なエンドポイント ("手動" トリガーとも呼ばれます) にします。 | 
-| **HTTP** | HTTP Web エンドポイントのチェックまたは*ポーリング*を行います。 HTTP エンドポイントは、"202" 非同期パターンを使うか、または配列を返すことによって、特定のトリガー コントラクトに従う必要があります | 
-| **ApiConnection** | HTTP トリガーと同様にポーリングしますが、[Microsoft が管理する API](../connectors/apis-list.md) を使用します。 | 
-| **HTTPWebhook** | **要求**トリガーと同様に、ロジック アプリを呼び出し可能なエンドポイントにします。ただし、登録と登録解除には指定された URL を呼び出します。 |
-| **ApiConnectionWebhook** | **HTTPWebhook** トリガーと同様に動作しますが、Microsoft が管理する API を使用します。 | 
+| [**Recurrence**](#recurrence-trigger) | 定義されているスケジュールに基づいて呼び出されます。 今後このトリガーを呼び出す日時を設定できます。 頻度に基づいて、ワークフローを実行する日時を指定することもできます。 | 
+| [**Request**](#request-trigger)  | ロジック アプリを呼び出し可能なエンドポイント ("手動" トリガーとも呼ばれます) にします。 例として、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 | 
+| [**HTTP**](#http-trigger) | HTTP Web エンドポイントのチェックまたは*ポーリング*を行います。 HTTP エンドポイントは、"202" 非同期パターンを使うか、または配列を返すことによって、特定のトリガー コントラクトに従う必要があります。 | 
+| [**ApiConnection**](#apiconnection-trigger) | HTTP トリガーと同様に動作しますが、[Microsoft が管理する API](../connectors/apis-list.md) を使用します。 | 
+| [**HTTPWebhook**](#httpwebhook-trigger) | Request トリガーと同様に動作しますが、登録と登録解除には指定された URL を呼び出します。 |
+| [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | HTTPWebhook トリガーと同様に動作しますが、[Microsoft が管理する API](../connectors/apis-list.md) を使用します。 | 
 ||| 
-
-詳しくは、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)に関するページをご覧ください。 
 
 <a name="recurrence-trigger"></a>
 
 ## <a name="recurrence-trigger"></a>Recurrence トリガー  
 
-このトリガーは、指定した繰り返しとスケジュールに基づいて実行されます。ワークフローを定期的に実行するための簡単な方法として利用できます。 
+このトリガーは、指定した繰り返しとスケジュールに基づいて実行され、ワークフローを定期的に実行するための簡単な方法として利用できます。 
 
-毎日実行される基本の定期的なトリガー例を紹介します。
+次にトリガーの定義を示します。
 
 ```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Day",
-        "interval": 1
-    }
+"Recurrence": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month",
+      "interval": <recurrence-interval-based-on-frequency>,
+      "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
+      "timeZone": "<time-zone>",
+      "schedule": {
+         // Applies only when frequency is Day or Week. Separate values with commas.
+         "hours": [ <one-or-more-hour-marks> ], 
+         // Applies only when frequency is Day or Week. Separate values with commas.
+         "minutes": [ <one-or-more-minute-marks> ], 
+         // Applies only when frequency is Week. Separate values with commas.
+         "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
+      }
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
+}
+```
+*必須*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| 繰り返し | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。"Recurrence" です | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+| recurrence | JSON オブジェクト | トリガーが起動する頻度を記述する頻度と間隔 |  
+| frequency | String | トリガーが起動する頻度を記述する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、または "Month" | 
+| interval | 整数 | トリガーの起動間隔を、frequency に指定された単位に基づいて記述する正の整数。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "month" である場合は、繰り返しは 6 か月ごとになります。 | 
+|||| 
+
+*省略可能*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| startTime | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
+| timeZone | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
+| hours | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻として 0 ～ 23 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば "10"、"12"、"14" を指定した場合、時刻のマークとして 10 AM、12 PM、2 PM が取得されます。 | 
+| minutes | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻の分として 0 ～ 59 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 | 
+| weekDays | 文字列または文字列配列 | `frequency` に "Week" を指定した場合、ワークフローを実行する 1 日または複数の日 ("Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、および "Sunday") をコンマ区切りで指定できます | 
+| concurrency | JSON オブジェクト | 定期的なトリガーとポーリング トリガーの場合、このオブジェクトは、同時に実行できるワークフロー インスタンスの最大数を指定します。 この値を使用して、バックエンド システムを受信する要求を制限します。 <p>たとえば、`"concurrency": { "runs": 10 }` の値は同時実行の制限を 10 インスタンスに設定します。 | 
+| operationOptions | String | `singleInstance` オプションは、トリガーがすべてのアクティブな実行の完了後にのみ起動することを指定します。 「[トリガー: アクティブな実行の完了後にのみ起動する](#single-instance)」をご覧ください。 | 
+|||| 
+
+*例 1*
+
+次の基本的な Recurrence トリガーは、毎日実行されます。
+
+```json
+"recurrenceTriggerName": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-トリガーを呼び出す開始日時をスケジュールすることもできます。 たとえば、毎週月曜日に週間レポートを開始するには、次の例のように特定の月曜日に開始されるようにロジック アプリをスケジュールできます。 
+*例 2*
+
+トリガーを起動する開始日時を指定できます。 次の Recurrence トリガーは、指定した日に開始され、毎日起動します。
 
 ```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": "1",
-        "startTime": "2017-09-18T00:00:00Z"
-    }
+"recurrenceTriggerName": {
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1,
+      "startTime": "2017-09-18T00:00:00Z"
+   }
 }
 ```
 
-このトリガーの定義は次のとおりです。
+*例 3*
 
-```json
-"myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "second|minute|hour|day|week|month",
-        "interval": <recurrence-interval-based-on-frequency>,
-        "schedule": {
-            // Applies only when frequency is Day or Week. Separate values with commas.
-            "hours": [ <one-or-more-hour-marks> ], 
-            // Applies only when frequency is Day or Week. Separate values with commas.
-            "minutes": [ <one-or-more-minute-marks> ], 
-            // Applies only when frequency is Week. Separate values with commas.
-            "weekDays": [ "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday" ] 
-        },
-        "startTime": "<start-date-time-with-format-YYYY-MM-DDThh:mm:ss>",
-        "timeZone": "<specify-time-zone>"
-    }
-}
-```
-
-| 要素名 | 必須 | type | [説明] | 
-| ------------ | -------- | ---- | ----------- | 
-| frequency | [はい] | String | トリガーが呼び出される頻度の時間単位。 使用できる値は "second"、"minute"、"hour"、"day"、"week"、または "month" のみです | 
-| interval | [はい] | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "month" である場合は、繰り返しは 6 か月ごとになります。 | 
-| timeZone | いいえ  | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
-| startTime | いいえ  | String | この形式の開始日時を指定します。 <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2:00 の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
-| weekDays | いいえ  | 文字列または文字列配列 | `frequency` に "Week" を指定した場合、ワークフローを実行する 1 日または複数の日 ("Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、および "Sunday") をコンマ区切りで指定できます | 
-| hours | いいえ  | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻として 0 ～ 23 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば "10"、"12"、"14" を指定した場合、時刻のマークとして 10 AM、12 PM、2 PM が取得されます。 | 
-| minutes | いいえ  | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻の分として 0 ～ 59 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば、分のマークとして「30」を指定し、時刻に前の例を使用すると、10:30 AM、12:30 PM、2:30 PM が取得されます。 | 
-||||| 
-
-たとえば、この定期的なトリガーは、2017 年 9 月 9 日の 2:00 PM から、ロジック アプリが毎週月曜日の太平洋標準時の 10:30 AM、12:30 PM、および 2:30 PM に実行されることを指定します。
+次の Recurrence トリガーは、2017 年 9 月 9 日午後 2 時に開始され、毎週月曜日の太平洋標準時の午前 10 時 30 分、午後 12 時 30 分、および午後 2 時 30 分に起動します。
 
 ``` json
 "myRecurrenceTrigger": {
-    "type": "Recurrence",
-    "recurrence": {
-        "frequency": "Week",
-        "interval": 1,
-        "schedule": {
-            "hours": [
-                10,
-                12,
-                14
-            ],
-            "minutes": [
-                30
-            ],
-            "weekDays": [
-                "Monday"
-            ]
-        },
-       "startTime": "2017-09-07T14:00:00",
-       "timeZone": "Pacific Standard Time"
-    }
+   "type": "Recurrence",
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "hours": [ 10, 12, 14 ],
+         "minutes": [ 30 ],
+         "weekDays": [ "Monday" ]
+      },
+      "startTime": "2017-09-07T14:00:00",
+      "timeZone": "Pacific Standard Time"
+   }
 }
 ```
 
-このトリガーの定期的な例と開始時刻の例の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。
+このトリガーの詳細と例については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページをご覧ください。
+
+<a name="request-trigger"></a>
 
 ## <a name="request-trigger"></a>Request トリガー
 
-このトリガーは、HTTP 要求を介してロジック アプリを呼び出すために使用できるエンドポイントとして機能します。 Request トリガーの例を次に示します。  
-  
+このトリガーは、受信 HTTP 要求を受け入れることができるエンドポイントを作成して、ロジック アプリを呼び出し可能にします。 このトリガーを呼び出すには、[ワークフロー サービスの REST API](https://docs.microsoft.com/rest/api/logic/workflows) の `listCallbackUrl` API を使用する必要があります。 このトリガーを HTTP エンドポイントとして使用する方法については、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
+
 ```json
-"myRequestTrigger": {
-    "type": "Request",
-    "kind": "Http",
-    "inputs": {
-        "schema": {
-            "type": "Object",
-            "properties": {
-                "myInputProperty1": { "type" : "string" },
-                "myInputProperty2": { "type" : "number" }
-            },
-            "required": [ "myInputProperty1" ]
-        }
-    }
-} 
-```
-
-このトリガーには、`schema` という省略可能なプロパティもあります。
-  
-| 要素名 | 必須 | type | [説明] |
-| ------------ | -------- | ---- | ----------- |
-| schema | いいえ  | オブジェクト | 受信要求を検証する JSON スキーマです。 以降のワークフロー手順において参照するプロパティを特定するのに役立ちます。 | 
-||||| 
-
-このトリガーをエンドポイントとして起動するには、`listCallbackUrl`API を呼び出す必要があります。 [ワークフロー サービスの REST API に関するページ](https://docs.microsoft.com/rest/api/logic/workflows)をご覧ください。
-
-## <a name="http-trigger"></a>HTTP トリガー  
-
-このトリガーは、指定されたエンドポイントをポーリングし、応答を調べて、ワークフローを実行する必要があるかどうかを判断します。 この `inputs` オブジェクトは、HTTP 呼び出しの構築に必要な以下のパラメーターを受け取ります。 
-
-| 要素名 | 必須 | type | [説明] | 
-| ------------ | -------- | ---- | ----------- | 
-| method | [はい] | String | HTTP メソッド "GET"、"POST"、"PUT"、"DELETE"、"PATCH"、または "HEAD" のいずれかを使用します。 | 
-| uri | [はい]| String | チェックをトリガーする HTTP または HTTPS エンドポイント。 文字列の最大サイズ: 2 KB | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ  | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
-| [認証] | いいえ  | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 <p>Scheduler 以外に、もう 1 つのプロパティ `authority` がサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、異なる値を使用できます。 | 
-||||| 
-
-*再試行*ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
-  
-```json
-"retryPolicy": {
-    "type": "<retry-policy-type>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"manual": {
+   "type": "Request",
+   "kind": "Http",
+   "inputs": {
+      "method": "GET | POST | PUT | PATCH | DELETE | HEAD",
+      "relativePath": "<relative-path-for-accepted-parameter>",
+      "schema": {
+         "type": "object",
+         "properties": { 
+            "<propertyName>": {
+               "type": "<property-type>"
+            }
+         },
+         "required": [ "<required-properties>" ]
+      }
+   }
 }
 ```
 
-HTTP トリガーがロジック アプリでうまく動作するには、HTTP API が特定のパターンに準拠している必要があります。 トリガーは、以下のプロパティを認識します。  
+*必須*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| manual | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。"Request" です | 
+| kind | String | 要求の種類。"Http" です | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+|||| 
+
+*省略可能*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| method | String | 要求がトリガーの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または "HEAD" |
+| relativePath | String | HTTP エンドポイントの URL が受け入れるパラメーターの相対パス | 
+| schema | JSON オブジェクト | トリガーが受信要求から受信するペイロード、つまり入力を、記述および検証する JSON スキーマ。 このスキーマは、以降のワークフロー アクションを参照するプロパティを特定するのに役立ちます。 | 
+| プロパティ | JSON オブジェクト | ペイロードを記述する JSON スキーマの 1 つまたは複数のプロパティ | 
+| 必須 | array | 値が必要な 1 つ以上のプロパティ | 
+|||| 
+
+*例*
+
+この Request トリガーは、受信要求が HTTP POST メソッドを使用して、このトリガーと、受信要求からの入力を検証するスキーマを呼び出すことを指定します。 
+
+```json
+"myRequestTrigger": {
+   "type": "Request",
+   "kind": "Http",
+   "inputs": {
+      "method": "POST",
+      "schema": {
+         "type": "Object",
+         "properties": {
+            "customerName": {
+               "type": "String"
+            },
+            "customerAddress": { 
+               "type": "Object",
+               "properties": {
+                  "streetAddress": {
+                     "type": "String"
+                  },
+                  "city": {
+                     "type": "String"
+                  }
+               }
+            }
+         }
+      }
+   }
+} 
+```
+
+<a name="http-trigger"></a>
+
+## <a name="http-trigger"></a>HTTP トリガー  
+
+このトリガーは、指定されたエンドポイントをポーリングし、応答を確認します。 応答は、ワークフローが実行されるかどうかを決定します。 `inputs` JSON オブジェクトには、HTTP 呼び出しを作成するために必要な `method` および `uri` パラメーターが含まれ、これらのパラメーターを必要とします。
+
+```json
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET | PUT | POST | PATCH | DELETE | HEAD",
+      "uri": "<HTTP-or-HTTPS-endpoint-to-poll>",
+      "queries": "<query-parameters>",
+      "headers": { "<headers-for-request>" },
+      "body": { "<payload-to-send>" },
+      "authentication": { "<authentication-method>" },
+      "retryPolicy": {
+          "type": "<retry-policy-type>",
+          "interval": "<retry-interval>",
+          "count": <number-retry-attempts>
+      }
+   },
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": <recurrence-interval-based-on-frequency>
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
+}
+```
+
+*必須*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| HTTP | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。"Http" です | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+| method | [はい] | String | 指定されたエンドポイントをポーリングする HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または"HEAD" | 
+| uri | [はい]| String | トリガーがチェックまたはポーリングする HTTP または HTTPS エンドポイント URL <p>文字列の最大サイズ: 2 KB | 
+| recurrence | JSON オブジェクト | トリガーが起動する頻度を記述する頻度と間隔 |  
+| frequency | String | トリガーが起動する頻度を記述する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、または "Month" | 
+| interval | 整数 | トリガーの起動間隔を、frequency に指定された単位に基づいて記述する正の整数。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "month" である場合は、繰り返しは 6 か月ごとになります。 | 
+|||| 
+
+*省略可能*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| クエリ | JSON オブジェクト | URL に含める任意のクエリ パラメーター <p>たとえば、この要素は `?api-version=2015-02-01` クエリ文字列を URL に追加します。 <p>`"queries": { "api-version": "2015-02-01" }` <p>結果は次のとおりです。`https://contoso.com?api-version=2015-02-01` | 
+| headers | JSON オブジェクト | 要求で送信される 1 つまたは複数のヘッダー <p>要求の言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | JSON オブジェクト | エンドポイントに送信されるペイロード (データ) | 
+| [認証] | JSON オブジェクト | 受信要求が認証に使用する方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 Scheduler 以外に、`authority` プロパティがサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、別の値を使用できます。 | 
+| retryPolicy | JSON オブジェクト | このオブジェクトは、状態コードが 4xx または 5xx の断続的なエラーの再試行動作をカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
+| concurrency | JSON オブジェクト | 定期的なトリガーとポーリング トリガーの場合、このオブジェクトは、同時に実行できるワークフロー インスタンスの最大数を指定します。 この値を使用して、バックエンド システムを受信する要求を制限します。 <p>たとえば、次の値は同時実行の制限を 10 インスタンスに設定します。 <p>`"concurrency": { "runs": 10 }` | 
+| operationOptions | String | `singleInstance` オプションは、トリガーがすべてのアクティブな実行の完了後にのみ起動することを指定します。 「[トリガー: アクティブな実行の完了後にのみ起動する](#single-instance)」をご覧ください。 | 
+|||| 
+
+HTTP トリガーがロジック アプリでうまく動作するには、HTTP API が特定のパターンに準拠している必要があります。 HTTP トリガーは、以下のプロパティを認識します。  
   
 | Response | 必須 | [説明] | 
 | -------- | -------- | ----------- |  
-| 状態コード | [はい] | 状態コード 200 ("OK") によって実行されます。 その他のすべての状態コードでは実行されません。 | 
-| Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数です。 | 
+| 状態コード | [はい] | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
+| Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
 | Location ヘッダー | いいえ  | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
 |||| 
 
-異なる要求の種類に対する動作の例を次に示します。
-  
-| 応答コード | 再試行までの時間 | 動作 | 
-| ------------- | ----------- | -------- | 
+*さまざまな要求の動作の例*
+
+| 状態コード | 再試行までの時間 | 動作 | 
+| ----------- | ----------- | -------- | 
 | 200 | {なし} | ワークフローを実行し、定義済みの繰り返しの後に、まだデータがあるかどうかを再確認します。 | 
 | 200 | 10 秒 | ワークフローを実行し、10 秒後に、まだデータがあるかどうかを再確認します。 |  
 | 202 | 60 秒 | ワークフローをトリガーしません。 次の試行は、定義済みの繰り返しに従って 1 分後に行われます。 定義済みの繰り返しが 1 分未満の場合は、retry-after ヘッダーが優先されます。 それ以外の場合、定義済みの繰り返しが使用されます。 | 
@@ -231,181 +357,314 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 | 500 | {なし}| サーバー エラーです。ワークフローを実行しないでください。 `retryPolicy` が定義されていない場合は、既定のポリシーが使用されます。 再試行回数に達すると、定義済みの繰り返しの後に、トリガーはデータがあるかどうかを再確認します。 | 
 |||| 
 
-HTTP トリガーの出力は次のとおりです。 
-  
+### <a name="http-trigger-outputs"></a>HTTP トリガーの出力
+
 | 要素名 | type | [説明] |
 | ------------ | ---- | ----------- |
-| headers | オブジェクト | HTTP 応答のヘッダー | 
-| body | オブジェクト | HTTP 応答の本文 | 
+| headers | JSON オブジェクト | HTTP 応答からのヘッダー | 
+| body | JSON オブジェクト | HTTP 応答からの本文 | 
 |||| 
 
 <a name="apiconnection-trigger"></a>
 
 ## <a name="apiconnection-trigger"></a>APIConnection トリガー  
 
-このトリガーは基本的には HTTP トリガーと同様に動作します。 ただし、アクションを識別するためのパラメーターは異なります。 たとえば次のようになります。   
-  
+このトリガーは [HTTP トリガー](#http-trigger)と同様に動作します。ただし、[Microsoft が管理する API](../connectors/apis-list.md) を使用するため、このトリガーのパラメーターは異なります。 
+
+次にトリガーの定義を示します。ただし、多くのセクションは省略可能なため、トリガーの動作はセクションが含まれているかどうかによって異なります。
+
 ```json
-"myDailyReportTrigger": {
-    "type": "ApiConnection",
-    "inputs": {
-        "host": {
-            "api": {
-                "runtimeUrl": "https://myarticles.example.com/"
-            }
-        },
-        "connection": {
-            "name": "@parameters('$connections')['myconnection'].name"
-        }
-    },  
-    "method": "POST",
-    "body": {
-        "category": "myCategory"
-    }
+"<APIConnectionTriggerName>": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "api": {
+            "runtimeUrl": "<managed-API-endpoint-URL>"
+         },
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>'].name"
+         },
+      },
+      "method": "GET | PUT | POST | PATCH | DELETE | HEAD",
+      "queries": "<query-parameters>",
+      "headers": { "<headers-for-request>" },
+      "body": { "<payload-to-send>" },
+      "authentication": { "<authentication-method>" },
+      "retryPolicy": {
+          "type": "<retry-policy-type>",
+          "interval": "<retry-interval>",
+          "count": <number-retry-attempts>
+      }
+   },
+   "recurrence": {
+      "frequency": "Second | Minute | Hour | Day | Week | Month | Year",
+      "interval": "<recurrence-interval-based-on-frequency>"
+   },
+   "runtimeConfiguration": {
+      "concurrency": {
+         "runs": <maximum-number-for-concurrently-running-workflow-instances>
+      }
+   },
+   "operationOptions": "singleInstance"
 }
 ```
 
-| 要素名 | 必須 | type | [説明] | 
-| ------------ | -------- | ---- | ----------- | 
-| host | [はい] | オブジェクト | ホストされているゲートウェイと、API アプリの ID | 
-| method | [はい] | String | HTTP メソッド "GET"、"POST"、"PUT"、"DELETE"、"PATCH"、または "HEAD" のいずれかを使用します。 | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ  | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
-| [認証] | いいえ  | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 | 
-||||| 
+*必須*
 
-`host` オブジェクトの場合、プロパティは以下のとおりです。  
-  
-| 要素名 | 必須 | [説明] | 
-| ------------ | -------- | ----------- | 
-| api runtimeUrl | [はい] | マネージ API のエンドポイントです。 | 
-| connection name |  | ワークフローが使用するマネージ API 接続の名前です。 `$connection` というパラメーターを参照する必要があります。 |
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| *APIConnectionTriggerName* | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。"ApiConnection" です | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+| host | JSON オブジェクト | マネージ API のホスト ゲートウェイと ID を記述する JSON オブジェクト <p>`host` JSON オブジェクトには要素 `api` と `connection` が含まれます | 
+| api | JSON オブジェクト | マネージ API のエンドポイント URL。 <p>`"runtimeUrl": "<managed-API-endpoint-URL>"` | 
+| connection | JSON オブジェクト | ワークフローが使用し、`$connection` という名前のパラメーターへの参照でなければならない、マネージ API 接続の名前。 <p>`"name": "@parameters('$connections')['<connection-name>'].name"` | 
+| method | String | マネージ API と通信するための HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または "HEAD" | 
+| recurrence | JSON オブジェクト | トリガーが起動する頻度を記述する頻度と間隔 |  
+| frequency | String | トリガーが起動する頻度を記述する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、または "Month" | 
+| interval | 整数 | トリガーの起動間隔を、frequency に指定された単位に基づいて記述する正の整数。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "month" である場合は、繰り返しは 6 か月ごとになります。 | 
 |||| 
 
-*再試行*ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
-  
+*省略可能*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| クエリ | JSON オブジェクト | URL に含める任意のクエリ パラメーター <p>たとえば、この要素は `?api-version=2015-02-01` クエリ文字列を URL に追加します。 <p>`"queries": { "api-version": "2015-02-01" }` <p>結果は次のとおりです。`https://contoso.com?api-version=2015-02-01` | 
+| headers | JSON オブジェクト | 要求で送信される 1 つまたは複数のヘッダー <p>要求の言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | JSON オブジェクト | マネージ API に送信されるペイロード (データ) を記述する JSON オブジェクト | 
+| [認証] | JSON オブジェクト | 受信要求が認証に使用する方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
+| retryPolicy | JSON オブジェクト | このオブジェクトは、状態コードが 4xx または 5xx の断続的なエラーの再試行動作をカスタマイズします。 <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
+| concurrency | JSON オブジェクト | 定期的なトリガーとポーリング トリガーの場合、このオブジェクトは、同時に実行できるワークフロー インスタンスの最大数を指定します。 この値を使用して、バックエンド システムを受信する要求を制限します。 <p>たとえば、`"concurrency": { "runs": 10 }` の値は同時実行の制限を 10 インスタンスに設定します。 | 
+| operationOptions | String | `singleInstance` オプションは、トリガーがすべてのアクティブな実行の完了後にのみ起動することを指定します。 「[トリガー: アクティブな実行の完了後にのみ起動する](#single-instance)」をご覧ください。 | 
+||||
+
+*例*
+
 ```json
-"retryPolicy": {
-    "type": "<retry-policy-type>",
-    "interval": <retry-interval>,
-    "count": <number-of-retry-attempts>
+"Create_daily_report": {
+   "type": "ApiConnection",
+   "inputs": {
+      "host": {
+         "api": {
+            "runtimeUrl": "https://myReportsRepo.example.com/"
+         },
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>'].name"
+         }     
+      },
+      "method": "POST",
+      "body": {
+         "category": "statusReports"
+      }  
+   },
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-API 接続トリガーの出力は以下のとおりです。
-  
+### <a name="apiconnection-trigger-outputs"></a>APIConnection トリガーの出力
+ 
 | 要素名 | type | [説明] |
 | ------------ | ---- | ----------- |
-| headers | オブジェクト | HTTP 応答のヘッダー | 
-| body | オブジェクト | HTTP 応答の本文 | 
+| headers | JSON オブジェクト | HTTP 応答からのヘッダー | 
+| body | JSON オブジェクト | HTTP 応答からの本文 | 
 |||| 
 
-詳細については、[API 接続トリガーの料金体系](../logic-apps/logic-apps-pricing.md#triggers)に関するページを参照してください。
+<a name="httpwebhook-trigger"></a>
 
 ## <a name="httpwebhook-trigger"></a>HTTPWebhook トリガー  
 
-このトリガーは、`Request` トリガーと同様にエンドポイントを提供しますが、HTTPWebhook トリガーは登録と登録解除のために指定された URL も呼び出します。 HTTPWebhook トリガーの例を次に示します。
+このトリガーは、ロジック アプリの呼び出し可能なエンドポイントを作成することによって、[Request トリガー](#request-trigger)と同様に動作します。 ただし、このトリガーは、サブスクリプションの登録と登録解除に指定されたエンドポイント URL も呼び出します。 webhook トリガーに対する制限は、[HTTP 非同期制限](#asynchronous-limits)と同じ方法で指定できます。 
+
+次にトリガーの定義を示します。ただし、多くのセクションは省略可能であり、トリガーの動作は使用または省略するセクションによって異なります。
 
 ```json
-"myAppsSpotTrigger": {
+"HTTP_Webhook": {
     "type": "HttpWebhook",
     "inputs": {
         "subscribe": {
             "method": "POST",
-            "uri": "https://pubsubhubbub.appspot.com/subscribe",
-            "headers": {},
+            "uri": "<subscribe-to-endpoint-URL>",
+            "headers": { "<headers-for-request>" },
             "body": {
                 "hub.callback": "@{listCallbackUrl()}",
                 "hub.mode": "subscribe",
-                "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+                "hub.topic": "<subscription-topic>"
             },
             "authentication": {},
             "retryPolicy": {}
         },
         "unsubscribe": {
             "method": "POST",
-            "url": "https://pubsubhubbub.appspot.com/subscribe",
+            "url": "<unsubscribe-from-endpoint-URL>",
             "body": {
                 "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
                 "hub.mode": "unsubscribe",
-                "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+                "hub.topic": "<subscription-topic>"
             },
             "authentication": {}
         }
     },
-    "conditions": []
 }
 ```
 
-これらのセクションの多くは省略可能であり、HTTPWebhook トリガーの動作は、指定または省略するセクションによって変わります。 HTTPWebhook トリガーのプロパティを次に示します。
-  
-| 要素名 | 必須 | [説明] | 
-| ------------ | -------- | ----------- |  
-| subscribe | いいえ  | トリガーが作成されて初期登録を実行するときに呼び出される送信要求を指定します。 | 
-| unsubscribe | いいえ  | トリガーが削除されるときに呼び出す送信要求を指定します。 | 
+*必須*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| HTTP_Webhook | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。"HttpWebhook" です | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+| subscribe | JSON オブジェクト| トリガーが作成されるときに初期登録を呼び出して実行する送信要求。 この呼び出しは、トリガーがエンドポイントでイベントに対するリッスンを開始できるように行われます。 詳細については、「[subscribe と unsubscribe](#subscribe-unsubscribe)」をご覧ください。 | 
+| method | String | サブスクリプション要求に使用される HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または "HEAD" | 
+| uri | String | サブスクリプション要求の送信先のエンドポイント URL | 
 |||| 
 
-webhook トリガーに対する制限は、[HTTP 非同期制限](#asynchronous-limits)と同じ方法で指定できます。 ここでは、`subscribe` および `unsubscribe` アクションについて詳細に説明します。
+*省略可能*
 
-* トリガーがイベントに対するリッスンを開始できるように `subscribe` が呼び出されます。 この送信呼び出しは、標準の HTTP アクションと同じパラメーターから始まります。 この呼び出しは、何らかの方法でワークフローが変更されると行われます。たとえば、資格情報が展開されたときや、トリガーの入力パラメーターが変化したときなどです。 
-  
-  この呼び出しをサポートするために、`@listCallbackUrl()` 関数はワークフローのこの特定のトリガーに一意の URL を返します。 この URL は、サービスの REST API を使用するエンドポイントの一意識別子を表します。
-  
-* `unsubscribe` は、以下の操作など、ある操作によってこのトリガーが無効になると自動的に呼び出されます。
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| unsubscribe | JSON オブジェクト | 操作によってトリガーが無効になったときに、サブスクリプションを自動的に呼び出して取り消す送信要求。 詳細については、「[subscribe と unsubscribe](#subscribe-unsubscribe)」をご覧ください。 | 
+| method | String | 取り消し要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または "HEAD" | 
+| uri | String | 取り消し要求の送信先のエンドポイント URL | 
+| body | JSON オブジェクト | サブスクリプションまたは取り消し要求のペイロード (データ) を記述する JSON オブジェクト | 
+| [認証] | JSON オブジェクト | 受信要求が認証に使用する方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
+| retryPolicy | JSON オブジェクト | このオブジェクトは、状態コードが 4xx または 5xx の断続的なエラーの再試行動作をカスタマイズします。 <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
+|||| 
 
-  * トリガーを削除または無効にする。 
-  * ワークフローを削除または無効にする。 
-  * サブスクリプションを削除または無効にする。 
-  
-  この関数のパラメーターは、HTTP トリガーと同じです。
+*例*
 
-HTTPWebhook トリガーの出力は以下のとおりです。これは受信要求の内容です。
-  
+```json
+"myAppSpotTrigger": {
+   "type": "HttpWebhook",
+   "inputs": {
+      "subscribe": {
+         "method": "POST",
+         "uri": "https://pubsubhubbub.appspot.com/subscribe",
+         "headers": {},
+         "body": {
+            "hub.callback": "@{listCallbackUrl()}",
+            "hub.mode": "subscribe",
+            "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+         },
+      },
+      "unsubscribe": {
+         "method": "POST",
+         "url": "https://pubsubhubbub.appspot.com/subscribe",
+         "body": {
+            "hub.callback": "@{workflow().endpoint}@{listCallbackUrl()}",
+            "hub.mode": "unsubscribe",
+            "hub.topic": "https://pubsubhubbub.appspot.com/articleCategories/technology"
+         },
+      }
+   },
+}
+```
+
+<a name="subscribe-unsubscribe"></a>
+
+### <a name="subscribe-and-unsubscribe"></a>`subscribe` と `unsubscribe`
+
+`subscribe` 呼び出しは、何らかの方法でワークフローが変更されると行われます。たとえば、資格情報が更新されたときや、トリガーの入力パラメーターが変化したときなどです。 この呼び出しは、標準の HTTP アクションと同じパラメーターを使用します。 
+ 
+`unsubscribe` 呼び出しは、以下のような操作によって HTTPWebhook トリガーが無効になると、自動的に行われます。
+
+* トリガーを削除または無効にする。 
+* ワークフローを削除または無効にする。 
+* サブスクリプションを削除または無効にする。 
+
+これらの呼び出しをサポートするために、`@listCallbackUrl()` 関数はこのトリガーの一意の "コールバック URL" を返します。 この URL は、サービスの REST API を使用するエンドポイントの一意識別子を表します。 この関数のパラメーターは、HTTP トリガーと同じです。
+
+### <a name="httpwebhook-trigger-outputs"></a>HTTPWebhook トリガーの出力
+
 | 要素名 | type | [説明] |
 | ------------ | ---- | ----------- |
-| headers | オブジェクト | HTTP 応答のヘッダー | 
-| body | オブジェクト | HTTP 応答の本文 | 
+| headers | JSON オブジェクト | HTTP 応答からのヘッダー | 
+| body | JSON オブジェクト | HTTP 応答からの本文 | 
 |||| 
+
+<a name="apiconnectionwebhook-trigger"></a>
+
+## <a name="apiconnectionwebhook-trigger"></a>ApiConnectionWebhook トリガー
+
+このトリガーは [HTTPWebhook](#httpwebhook-trigger) トリガーと同様に動作しますが、[Microsoft が管理する API](../connectors/apis-list.md) を使用します。 
+
+次にトリガーの定義を示します。
+
+```json
+"<ApiConnectionWebhookTriggerName>": {
+   "type": "ApiConnectionWebhook",
+   "inputs": {
+      "host": {
+         "connection": {
+            "name": "@parameters('$connections')['<connection-name>']['connectionId']"
+         }
+      },        
+      "body": {
+          "NotificationUrl": "@{listCallbackUrl()}"
+      },
+      "queries": "<query-parameters>"
+   }
+}
+```
+
+*必須*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| <*ApiConnectionWebhookTriggerName*> | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
+| 型 | String | トリガーの種類。"ApiConnectionWebhook" です | 
+| inputs | JSON オブジェクト | トリガーの動作を定義するトリガーの入力 | 
+| host | JSON オブジェクト | マネージ API のホスト ゲートウェイと ID を記述する JSON オブジェクト <p>`host` JSON オブジェクトには要素 `api` と `connection` が含まれます | 
+| connection | JSON オブジェクト | ワークフローが使用し、`$connection` という名前のパラメーターへの参照でなければならない、マネージ API 接続の名前。 <p>`"name": "@parameters('$connections')['<connection-name>']['connectionId']"` | 
+| body | JSON オブジェクト | マネージ API に送信されるペイロード (データ) を記述する JSON オブジェクト | 
+| NotificationUrl | String | このトリガーにマネージ API が使用できる一意の "コールバック URL" を返します | 
+|||| 
+
+*省略可能*
+
+| 要素名 | type | [説明] | 
+| ------------ | ---- | ----------- | 
+| クエリ | JSON オブジェクト | URL に含める任意のクエリ パラメーター <p>たとえば、この要素は `?folderPath=Inbox` クエリ文字列を URL に追加します。 <p>`"queries": { "folderPath": "Inbox" }` <p>結果は次のとおりです。`https://<managed-API-URL>?folderPath=Inbox` | 
+|||| 
+
+<a name="trigger-conditions"></a>
 
 ## <a name="triggers-conditions"></a>トリガー: 条件
 
-すべてのトリガーについて、1 つまたは複数の条件を使って、ワークフローを実行する必要があるかどうかを決定できます。 この例では、ワークフローの `sendReports` パラメーターが true に設定されている間だけレポートはトリガーします。 
+すべてのトリガーについて、ワークフローを実行する必要があるかどうかを決定する 1 つまたは複数の条件のある配列を含めることができます。 この例では、ワークフローの `sendReports` パラメーターが true に設定されている間だけレポート トリガーが起動します。 
 
 ```json
 "myDailyReportTrigger": {
-    "type": "Recurrence",
-    "conditions": [ 
-        {
-            "expression": "@parameters('sendReports')"
-        } 
-    ],
-    "recurrence": {
-        "frequency": "Day",
-        "interval": 1
-    }
+   "type": "Recurrence",
+   "conditions": [ {
+      "expression": "@parameters('sendReports')"
+   } ],
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 1
+   }
 }
 ```
 
-最後に、条件はトリガーの状態コードを参照できます。 たとえば、Web サイトが状態コード 500 を返したときにのみ、ワークフローを開始できます。
-  
+また、条件はトリガーの状態コードを参照することもできます。 たとえば、Web サイトが状態コード "500" を返したときにのみ、ワークフローを開始するとします。
+
 ``` json
-"conditions": [ 
-    {  
-      "expression": "@equals(triggers().code, 'InternalServerError')"  
-    }  
-]  
+"conditions": [ {
+   "expression": "@equals(triggers().code, 'InternalServerError')"  
+} ]  
 ```  
 
 > [!NOTE]
-> 既定では、"200 OK" を受信したときのみトリガーが起動します。 何らかの方法で式がトリガーの状態コードを参照すると、トリガーの既定動作が置き換えられます。 つまり、複数の状態コード (状態コード 200 と状態コード 201 など) に基づいてトリガーを起動したい場合は、条件として次のステートメントを含める必要があります。 
+> 既定では、"200 OK" を受信したときのみトリガーが起動します。 何らかの方法で式がトリガーの状態コードを参照すると、トリガーの既定動作が置き換えられます。 つまり、複数の状態コード (状態コード 200 と状態コード 201 など) に対してトリガーを起動したい場合は、条件として次のステートメントを含める必要があります。 
 >
 > `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
 
 <a name="split-on-debatch"></a>
 
-## <a name="triggers-process-an-array-with-multiple-runs"></a>トリガー: 複数の実行を含む配列を処理する
+## <a name="triggers-split-an-array-into-multiple-runs"></a>トリガー: 配列を複数の実行に分割する
 
 トリガーによって返される配列をロジック アプリが処理する場合、"for each" ループに時間がかかりすぎて、配列の各項目を処理できないことがあります。 この場合は、トリガーで **SplitOn** プロパティを使用すると、配列を "*バッチ解除*" できます。 
 
@@ -442,7 +701,7 @@ HTTPWebhook トリガーの出力は以下のとおりです。これは受信�
     "type": "Http",
     "recurrence": {
         "frequency": "Second",
-        "interval": "1"
+        "interval": 1
     },
     "inputs": {
         "uri": "https://mydomain.com/myAPI",
@@ -476,21 +735,36 @@ HTTPWebhook トリガーの出力は以下のとおりです。これは受信�
     }
 }
 ```
-  
-## <a name="triggers-fire-only-after-all-active-runs-finish"></a>トリガー: すべてのアクティブな実行の完了後に起動する
 
-すべてのアクティブな実行が完了したときにのみ呼び出される定期実行のトリガーを構成できます。 この設定を構成するには設定、`operationOptions` プロパティを `singleInstance` に設定します。
+<a name="trigger-operation-options"></a>
+
+## <a name="triggers-operation-options"></a>トリガー: 操作オプション
+
+これらのトリガーには、既定のトリガー動作を変更できる追加のオプションがあります。
+
+| トリガー | 操作オプション | [説明] |
+|---------|------------------|-------------|
+| [Recurrence](#recurrence-trigger)、 <br>[HTTP](#http-trigger)、 <br>[ApiConnection](#apiconnection-trigger) | singleInstance | すべてのアクティブな実行の完了後にのみ、トリガーを起動します。 |
+||||
+
+<a name="single-instance"></a>
+
+### <a name="triggers-fire-only-after-active-runs-finish"></a>トリガー: アクティブな実行の完了後にのみ起動する
+
+繰り返しを設定できるトリガーの場合は、すべてのアクティブな実行の完了後にのみトリガーが起動することを指定できます。 ワークフロー インスタンスが実行中にスケジュールされた繰り返しが発生した場合、トリガーはスキップし、次のスケジュールされた繰り返しを再確認するまで待機します。 例: 
 
 ```json
-"myTrigger": {
-    "type": "Http",
-    "inputs": { },
-    "recurrence": { },
+"myRecurringTrigger": {
+    "type": "Recurrence",
+    "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+    },
     "operationOptions": "singleInstance"
 }
 ```
 
-ワークフロー インスタンスが実行中にスケジュールされた繰り返しが発生した場合、トリガーはスキップし、次のスケジュールされた反復間隔を再確認するまで待機します。
+<a name="actions-overview"></a>
 
 ## <a name="actions-overview"></a>アクションの概要
 
@@ -548,12 +822,12 @@ HTTP アクションは、指定されたエンドポイントをポーリング
 | ------------ | -------- | ---- | ----------- | 
 | method | [はい] | String | HTTP メソッド "GET"、"POST"、"PUT"、"DELETE"、"PATCH"、または "HEAD" のいずれかを使用します。 | 
 | uri | [はい]| String | チェックをトリガーする HTTP または HTTPS エンドポイント。 文字列の最大サイズ: 2 KB | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ  | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
+| クエリ | いいえ  | JSON オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
+| headers | いいえ  | JSON オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | いいえ  | JSON オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
+| retryPolicy | いいえ  | JSON オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | operationsOptions | いいえ  | String | オーバーライドする特殊な動作のセットを定義します。 | 
-| [認証] | いいえ  | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 <p>Scheduler 以外に、もう 1 つのプロパティ `authority` がサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、異なる値を使用できます。 | 
+| [認証] | いいえ  | JSON オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 <p>Scheduler 以外に、もう 1 つのプロパティ `authority` がサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、異なる値を使用できます。 | 
 ||||| 
 
 HTTP アクションと APIConnection アクションは、*再試行ポリシー*をサポートします。 再試行ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5 xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
@@ -649,15 +923,15 @@ HTTP アクションと APIConnection アクションは、*再試行ポリシ�
 
 | 要素名 | 必須 | type | [説明] | 
 | ------------ | -------- | ---- | ----------- | 
-| host | [はい] | オブジェクト | `runtimeUrl` などのコネクタ情報と、接続オブジェクトへの参照を表します。 | 
+| host | [はい] | JSON オブジェクト | `runtimeUrl` などのコネクタ情報と、接続オブジェクトへの参照を表します。 | 
 | method | [はい] | String | HTTP メソッド "GET"、"POST"、"PUT"、"DELETE"、"PATCH"、または "HEAD" のいずれかを使用します。 | 
 | パス | [はい] | String | API 操作のパスです。 | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ  | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
+| クエリ | いいえ  | JSON オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
+| headers | いいえ  | JSON オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | いいえ  | JSON オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
+| retryPolicy | いいえ  | JSON オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | operationsOptions | いいえ  | String | オーバーライドする特殊な動作のセットを定義します。 | 
-| [認証] | いいえ  | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
+| [認証] | いいえ  | JSON オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
 ||||| 
 
 再試行ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5 xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
@@ -703,14 +977,14 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 | 要素名 | 必須 | type | [説明] | 
 | ------------ | -------- | ---- | ----------- | 
-| host | [はい] | オブジェクト | `runtimeUrl` などのコネクタ情報と、接続オブジェクトへの参照を表します。 | 
+| host | [はい] | JSON オブジェクト | `runtimeUrl` などのコネクタ情報と、接続オブジェクトへの参照を表します。 | 
 | パス | [はい] | String | API 操作のパスです。 | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ  | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
+| クエリ | いいえ  | JSON オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
+| headers | いいえ  | JSON オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | いいえ  | JSON オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
+| retryPolicy | いいえ  | JSON オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | operationsOptions | いいえ  | String | オーバーライドする特殊な動作のセットを定義します。 | 
-| [認証] | いいえ  | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
+| [認証] | いいえ  | JSON オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
 ||||| 
 
 ## <a name="response-action"></a>応答アクション  
@@ -794,9 +1068,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | ------------ | -------- | ---- | ----------- |  
 | function id | [はい] | String | 呼び出す Azure 関数のリソース ID。 | 
 | method | いいえ  | String | 関数の呼び出しに使用する HTTP メソッド。 指定しない場合、既定のメソッドは "POST" です。 | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
+| クエリ | いいえ  | JSON オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
+| headers | いいえ  | JSON オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | いいえ  | JSON オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
 |||||
 
 ロジック アプリを保存すると、参照される関数に対するいくつかのチェックが Logic Apps エンジンによって実行されます。
@@ -829,7 +1103,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | select | [はい] | 任意 | ソース配列の各要素に適用するプロジェクション |
 ||||| 
 
-`select` アクションの出力は、入力配列と同じ基数を持つ配列です。 各要素は、`select` プロパティの定義に従って変換されます。 入力が空の配列の場合、出力も空の配列になります。
+`select` アクションの出力は、入力配列と同じカーディナリティを持つ配列です。 各要素は、`select` プロパティの定義に従って変換されます。 入力が空の配列の場合、出力も空の配列になります。
 
 ## <a name="terminate-action"></a>終了アクション
 
@@ -853,7 +1127,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | Name | 必須 | type | [説明] | 
 | ---- | -------- | ---- | ----------- | 
 | runStatus | [はい] | String | ターゲットの実行の状態 (`Failed` または `Cancelled`) |
-| runError | いいえ  | オブジェクト | エラーの詳細です。 `runStatus` が `Failed` に設定されているときにのみサポートされます |
+| runError | いいえ  | JSON オブジェクト | エラーの詳細です。 `runStatus` が `Failed` に設定されているときにのみサポートされます |
 | runError code | いいえ  | String | 実行のエラー コード |
 | runError message | いいえ  | String | 実行のエラー メッセージ | 
 ||||| 
@@ -990,9 +1264,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 | 要素名 | 必須 | type | [説明] | 
 | ------------ | -------- | ---- | ----------- | 
-| until | いいえ  | オブジェクト | 特定の時刻に基づく待機期間です。 | 
+| until | いいえ  | JSON オブジェクト | 特定の時刻に基づく待機期間です。 | 
 | until timestamp | [はい] | String | 待機の期限を示す [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)の時点です。 | 
-| interval | いいえ  | オブジェクト | 間隔の単位とカウントに基づく待機時間 | 
+| interval | いいえ  | JSON オブジェクト | 間隔の単位とカウントに基づく待機時間 | 
 | interval unit | [はい] | String | 時間の単位。 使用できる値は "second"、"minute"、"hour"、"day"、"week"、または "month" のみです | 
 | interval count | [はい] | 整数 | 待機時間に使用される間隔の単位数を表す整数値 | 
 ||||| 
@@ -1029,9 +1303,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | ------------ | -------- | ---- | ----------- |  
 | host id | [はい] | String| 呼び出すワークフローのリソース ID | 
 | host triggerName | [はい] | String | 呼び出すトリガーの名前 | 
-| クエリ | いいえ  | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
-| headers | いいえ  | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
-| body | いいえ  | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
+| クエリ | いいえ  | JSON オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
+| headers | いいえ  | JSON オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
+| body | いいえ  | JSON オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
 ||||| 
 
 アクションの出力は、子ワークフローの `Response` アクションの定義内容に基づきます。 子ワークフローに `Response` アクションが定義されていない場合、出力は空になります。
@@ -1042,7 +1316,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 ## <a name="if-action"></a>If アクション
 
-このアクション (条件付きステートメント) を使うと、条件を評価し、式が true に評価されたかどうかに基づいて分岐を実行できます。 条件が正常に true に評価されると、条件は "Succeeded" とマークされます。 `actions` オブジェクトまたは `else` オブジェクト内のアクションは、次のいずれかの値に評価されます。
+このアクション (条件付きステートメント) を使うと、条件を評価し、式が true に評価されたかどうかに基づいて分岐を実行できます。 条件が正常に true に評価されると、条件は "Succeeded" 状態とマークされます。 `actions` オブジェクトまたは `else` オブジェクト内のアクションは、次のいずれかの値に評価されます。
 
 * "Succeeded": 実行して成功した場合
 * "Failed": 実行して失敗した場合
@@ -1076,9 +1350,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 | Name | 必須 | type | [説明] | 
 | ---- | -------- | ---- | ----------- | 
-| アクション | [はい] | オブジェクト | `expression` が `true` に評価されるときに実行する内部アクション | 
+| アクション | [はい] | JSON オブジェクト | `expression` が `true` に評価されるときに実行する内部アクション | 
 | expression | [はい] | String | 評価する式です。 |
-| else | いいえ  | オブジェクト | `expression` が `false` に評価されるときに実行する内部アクション |
+| else | いいえ  | JSON オブジェクト | `expression` が `false` に評価されるときに実行する内部アクション |
 ||||| 
 
 例: 
@@ -1133,14 +1407,14 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
    "type": "Switch",
    "expression": "<evaluate-this-object-expression-token>",
    "cases": {
-      "myCase1" : {
-         "actions" : {
+      "myCase1": {
+         "actions": {
            "myAction1": {}
          },
          "case": "<result1>"
       },
       "myCase2": {
-         "actions" : {
+         "actions": {
            "myAction2": {}
          },
          "case": "<result2>"
@@ -1158,10 +1432,10 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | Name | 必須 | type | [説明] | 
 | ---- | -------- | ---- | ----------- | 
 | expression | [はい] | String | 評価するオブジェクト、式、トークン | 
-| cases | [はい] | オブジェクト | 式の結果に基づいて実行する内部アクションのセットを含みます。 | 
+| cases | [はい] | JSON オブジェクト | 式の結果に基づいて実行する内部アクションのセットを含みます。 | 
 | case | [はい] | String | 結果と照合する値 | 
-| アクション | [はい] | オブジェクト | 式の結果と一致するケースで実行する内部アクション | 
-| default | いいえ  | オブジェクト | 結果と一致するケースがない場合に実行する内部アクション | 
+| アクション | [はい] | JSON オブジェクト | 式の結果と一致するケースで実行する内部アクション | 
+| default | いいえ  | JSON オブジェクト | 結果と一致するケースがない場合に実行する内部アクション | 
 ||||| 
 
 例: 
@@ -1172,13 +1446,13 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
    "expression": "@body('Send_approval_email')?['SelectedOption']",
    "cases": {
       "Case": {
-         "actions" : {
+         "actions": {
            "Send_an_email": {...}
          },
          "case": "Approve"
       },
       "Case_2": {
-         "actions" : {
+         "actions": {
            "Send_an_email_2": {...}
          },
          "case": "Reject"
@@ -1219,7 +1493,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 | Name | 必須 | type | [説明] | 
 | ---- | -------- | ---- | ----------- | 
-| アクション | [はい] | オブジェクト | ループ内で実行する内部アクション | 
+| アクション | [はい] | JSON オブジェクト | ループ内で実行する内部アクション | 
 | foreach | [はい] | String | 反復処理する配列です | 
 | operationOptions | いいえ  | String | 動作をカスタマイズする任意の操作オプションを指定します。 既定動作が並列の反復処理を順に実行する場合、現在 `Sequential` のみがサポートされています。 |
 ||||| 
@@ -1279,9 +1553,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 | Name | 必須 | type | [説明] | 
 | ---- | -------- | ---- | ----------- | 
-| アクション | [はい] | オブジェクト | ループ内で実行する内部アクション | 
+| アクション | [はい] | JSON オブジェクト | ループ内で実行する内部アクション | 
 | expression | [はい] | String | 反復のたびに評価する式です。 | 
-| limit | [はい] | オブジェクト | ループの制限。 1 つ以上の制限を定義する必要があります。 | 
+| limit | [はい] | JSON オブジェクト | ループの制限。 1 つ以上の制限を定義する必要があります。 | 
 | count | いいえ  | 整数 | 実行する反復処理回数の制限 | 
 | timeout | いいえ  | String | ループの実行期間を指定する [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)のタイムアウト制限 |
 ||||| 
@@ -1332,7 +1606,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 | Name | 必須 | type | [説明] | 
 | ---- | -------- | ---- | ----------- |  
-| アクション | [はい] | オブジェクト | スコープ内で実行する内部アクション |
+| アクション | [はい] | JSON オブジェクト | スコープ内で実行する内部アクション |
 ||||| 
 
 ## <a name="next-steps"></a>次の手順

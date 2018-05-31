@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights の利用状況分析のトラブルシューティング"
-description: "トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。"
+title: Azure Application Insights の利用状況分析のトラブルシューティング
+description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb5f3052301b23eb10cd6b84ab6fae98bcc7ea18
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: mbullwin;daviste
+ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33867570"
 ---
 # <a name="troubleshoot-usage-analytics-in-application-insights"></a>Application Insights の利用状況分析のトラブルシューティング
 [Application Insights の利用状況分析ツール](app-insights-usage-overview.md): [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](app-insights-usage-flows.md)、[リテンション](app-insights-usage-retention.md)、またはコーホートについて質問がありますか?  いくつかの答えを次に示します。
@@ -39,7 +40,7 @@ Web アプリを監視している場合の最も簡単なソリューション�
 
 ページ ビューとカスタム イベント名は、利用状況分析ツール全体で使用されます。 イベントに適切な名前を付けることは、これらのツールから価値を引き出すためにきわめて重要です。 目標は、少数の過度に汎用的な名前 ("ボタンがクリックされた") と、多数の過度に具体的な名前 ("http://www.contoso.com/index で [編集] ボタンがクリックされた") の間でバランスを取ることです。
 
-アプリが送信するページ ビューとカスタム イベント名を変更するには、アプリのソース コードを変更し、再展開する必要があります。 **Application Insights のすべてのテレメトリ データは 90 日間保存され、削除することはできません。**このため、イベント名に対して行った変更が完全に有効になるには 90 日かかります。 名前を変更した後 90 日間は、新旧のイベント名の両方がテレメトリに表示されるため、適切な方法でクエリを調整し、チームに伝達してください。
+アプリが送信するページ ビューとカスタム イベント名を変更するには、アプリのソース コードを変更し、再展開する必要があります。 **Application Insights のすべてのテレメトリ データは 90 日間保存され、削除することはできません。** このため、イベント名に対して行った変更が完全に有効になるには 90 日かかります。 名前を変更した後 90 日間は、新旧のイベント名の両方がテレメトリに表示されるため、適切な方法でクエリを調整し、チームに伝達してください。
 
 アプリが送信するページ ビューの名前が多すぎる場合は、これらのページ ビュー名がコード内に手動で指定されているか、Application Insights JavaScript SDK によって自動的に送信されているかをチェックします。
 

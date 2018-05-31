@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0fe4816dbafc28974796c7d9cd307b04fdb9d6d4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a6a44e30fe58617b43c5491a72fc882015bc9591
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886065"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 
@@ -213,7 +214,7 @@ Azure Blockchain Workbench には、REST とメッセージ ベースの API に
 
 ## <a name="storage-integration"></a>ストレージの統合
 
-多くのシナリオでは、証明可能なファイルを組み込む必要があります。 複数の理由から、ファイルをブロックチェーンに配置することは適切ではありません。 その代替となる一般的な方法は、ファイルに対して一方向のハッシュを実行し、分散型台帳上でそのハッシュを共有することです。 以降、ハッシュを実行すると、常に同じ結果が返されます。 ファイルが変更された場合、画像の 1 ピクセルのみが変更された場合でも、ハッシュは異なる値を返します。
+多くのシナリオでは、証明可能なファイルを組み込む必要があります。 複数の理由から、ファイルをブロックチェーンに配置することは適切ではありません。 その代替となる一般的な方法は、ファイルに対して暗号化ハッシュ (SHA-256 など) を実行し、分散型台帳上でそのハッシュを共有することです。 以降、ハッシュを実行すると、常に同じ結果が返されます。 ファイルが変更された場合、画像の 1 ピクセルのみが変更された場合でも、ハッシュは異なる値を返します。
 
 ![ストレージの統合](media/blockchain-workbench-integration-patterns/storage-integration.png)
 
