@@ -1,32 +1,33 @@
 ---
-title: "Azure Active Directory レポートの保持ポリシー | Microsoft Docs"
-description: "Azure Active Directory でのレポート データの保持ポリシー"
+title: Azure Active Directory レポートの保持ポリシー | Microsoft Docs
+description: Azure Active Directory でのレポート データの保持ポリシー
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/15/2017
+ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 61d3e8fbe26ab24ba0b551e52be0769228f09a11
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 9101b3877f8a011878baeed0d5c23d29fddaeaad
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055173"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
 
 
 このトピックでは、最も一般的な質問に対する回答を、Azure Active Directory のさまざまなアクティビティ レポートのデータ保持と一緒に説明します。 
 
-**Q: アクティビティ データの収集を開始するにはどうすればよいか**
+### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>Q: アクティビティ データの収集を開始するにはどうすればよいか
 
 **A:**
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 12/16/2017
 | Azure AD Free | [Azure Active Directory ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)を初めて開いたとき、または [Reporting API](https://aka.ms/aadreports) を初めて使用したとき  |
 
 ---
-**Q: Azure Portal でアクティビティ データを使用できるようになるのはいつか**
+### <a name="q-when-is-your-activity-data-available-in-the-azure-portal"></a>Q: Azure portal でアクティビティ データを使用できるようになるのはいつか
 
 **A:**
 
@@ -44,13 +45,15 @@ ms.lasthandoff: 12/16/2017
 - **2 時間以内** - Azure Portal でレポートを有効にしていない場合
 
 ---
-**Q: セキュリティ シグナルの収集を開始するにはどうすればよいか**  
+
+### <a name="q-how-can-you-get-the-collection-of-security-signals-started"></a>Q: セキュリティ シグナルの収集を開始するにはどうすればよいか  
 
 **A:** セキュリティ シグナルの場合、収集プロセスは Identity Protection センターを使用することを選択した時点から開始されます。 
 
 
 ---
-**Q: 収集されたデータのどのくらい保存されるのか**
+
+### <a name="q-for-how-long-is-the-collected-data-stored"></a>Q: 収集されたデータはどのくらい保存されるのか
 
 **A:**
 

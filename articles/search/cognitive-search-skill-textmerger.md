@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f349158873acca9d50d4d6e5fdfa3539f26207fe
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e288748d7433f4b3c7da7db1ab1ef2ee487318df
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362569"
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33786741"
 ---
 #    <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
 
@@ -129,14 +129,16 @@ Microsoft.Skills.Util.TextMerger
 上記のサンプル スキルセットは、normalized-images フィールドが存在していることを前提としています。 normalized-images フィールドを取得するには、以下に示すように、インデクサー定義内の *imageAction* 構成を *generateNormalizedImages* に設定します。
 
 ```json
-{  
-   //...rest of your indexer definition goes here ... 
-  "parameters":{  
-      "configuration":{  
-         "dataToExtract":"contentAndMetadata",
-         "imageAction":"generateNormalizedImages"
+{
+    "values": [
+      {
+        "recordId": "1",
+        "data":
+           {
+             "mergedText": "The quick brown fox jumps over the lazy dog" 
+           }
       }
-   }
+    ]
 }
 ```
 
@@ -144,4 +146,3 @@ Microsoft.Skills.Util.TextMerger
 
 + [定義済みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [インデクサーの作成 (REST)](ref-create-indexer.md)
