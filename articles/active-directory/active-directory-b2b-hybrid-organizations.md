@@ -2,22 +2,20 @@
 title: ハイブリッド組織向けの B2B コラボレーション - Azure Active Directory | Microsoft Docs
 description: Azure AD B2B コラボレーションによって、パートナーがオンプレミスのリソースとクラウド リソースの両方にアクセスできるようにします。
 services: active-directory
-documentationcenter: ''
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 04/26/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: ''
-tags: ''
-ms.service: active-directory
-ms.topic: article
-ms.workload: identity
-ms.date: 04/20/2018
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 943ccadbc87cd8d2345078405e2a27930634668e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33928098"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>ハイブリッド組織向けの Azure Active Directory B2B コラボレーション
 
@@ -31,8 +29,8 @@ SAML ベースの認証を使用するアプリの場合、Azure Portal を通�
 
 統合 Windows 認証 (IWA) を Kerberos の制約付き委任 (KCD) と共に使用するアプリの場合、認証に Azure AD プロキシを使用することもできます。 ただし、承認を機能させるには、オンプレミスの Windows Server Active Directory にユーザー オブジェクトが必要です。 B2B ゲスト ユーザーを表すローカル ユーザー オブジェクトの作成に使用できる方法は 2 つあります。
 
-- Microsoft Identity Manager (MIM) 2016 SP1 と、Microsoft Graph 用 MIM 管理エージェントです。 (Azure AD Premium 1 サブスクリプションが必要。)
-- PowerShell スクリプトを使用できます。 (このソリューションでは、MIM または AD Premium は不要です。)
+- Microsoft Identity Manager (MIM) 2016 SP1 と、Microsoft Graph 用 MIM 管理エージェントです。
+- PowerShell スクリプトを使用できます。 (このソリューションでは、MIM は不要です。)
 
 これらのソリューションを実装する方法について詳しくは、「[Grant B2B users in Azure AD access to your on-premises applications](active-directory-b2b-hybrid-cloud-to-on-premises.md)」(Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する) をご覧ください。
 
@@ -40,7 +38,7 @@ SAML ベースの認証を使用するアプリの場合、Azure Portal を通�
 
 Azure AD 以前は、オンプレミスの ID システムを持つ組織は、パートナーのアカウントを従来、オンプレミスのディレクトリで管理してきました。 このような組織では、アプリとその他のリソースをクラウドに移動した場合に、パートナーが引き続きアクセスできることを確認する必要があります。 これらのユーザーが同じ資格情報セットを使用して、クラウドとオンプレミスの両方のリソースにアクセスできるようにするのが理想的です。 
 
-Azure AD Connect を使用して "ゲスト ユーザー" としてこれらのローカル アカウントをクラウドと同期したり、アカウントを Azure AD B2B ユーザーと同じように動作させたりすることができるようになりました。 このソリューションは、パートナーにサインイン名として独自の外部電子メール アドレスを使用させるオンプレミスの ID システムがある場合でも機能します。
+Azure AD Connect を使用して "ゲスト ユーザー" としてこれらのローカル アカウントをクラウドと同期したり、アカウントを Azure AD B2B ユーザーと同じように動作させたりすることができるようになりました。
 
 会社のデータを保護するために、適切なリソースのみへのアクセスを制御し、これらのゲスト ユーザーを自社の従業員と区別して処理する承認ポリシーを構成できます。
 
@@ -50,4 +48,5 @@ Azure AD Connect を使用して "ゲスト ユーザー" としてこれらの�
 
 - [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](active-directory-b2b-hybrid-cloud-to-on-premises.md)
 - [Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 

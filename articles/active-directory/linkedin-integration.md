@@ -6,24 +6,27 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/02/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762372"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Microsoft のアプリとサービスに対する LinkedIn アカウント接続
 この記事では、Azure Active Directory (Azure AD) 管理センターで、テナントに対する LinkedIn アカウント接続を管理する方法を説明します。 
 
 > [!IMPORTANT]
 > LinkedIn アカウント接続機能は、現在 Azure AD テナントにロールアウト中です。 テナントにロールアウトされると、既定で有効になります。 米国政府機関向けの顧客、およびオーストラリア、カナダ、中国、フランス、ドイツ、インド、韓国、英国、日本、および南アフリカでホストされている Exchange Online メールボックスを使用する組織は使用できません。 これらのメールボックスの場所に対するサポートは、近日対応予定です。  ロールアウト情報の最新にビューについては、「[Office 365 ロードマップ](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)」ページを参照してください。
+
+## <a name="benefit-to-users"></a>ユーザーにとっての利点
+ユーザーが自分の LinkedIn アカウントに接続すると、さまざまな Microsoft アプリまたはサービスで個人用に設定された情報と機能を表示するために LinkedIn 情報が使用されます。 ユーザーは、Microsoft プロファイル カードで、一緒に作業をしている人が組織外の人であっても、その人に関する詳細情報を確認できます。 時間の経過と共に、LinkedIn エクスペリエンスはユーザーの作業により関連性が高く、カスタマイズされるようになります。 たとえば、LinkedIn は、一緒に作業している人に基づいて、新しいつながりを提案したり、その日のその人の予定表でその人に関する詳細情報を明らかにすることができます。
 
 ## <a name="how-linkedin-account-connections-appear-to-the-user"></a>ユーザーへの LinkedIn アカウント接続の表示方法
 LinkedIn アカウント接続では、ユーザーは、一部の Microsoft のアプリの中で、パブリックな LinkedIn プロファイル情報を表示できます。 テナントのユーザーは、自分の LinkedIn と 職場または学校の Microsoft アカウントに接続して、追加の LinkedIn プロファイル情報を表示することを選択できます。 詳細については、「[LinkedIn information and features in Microsoft apps and services](https://go.microsoft.com/fwlink/?linkid=850740)」(Microsoft のアプリとサービスにおける LinkedIn 情報と機能) を参照してください。

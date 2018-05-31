@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory のデバイス管理の概要 | Microsoft Docs"
-description: "デバイス管理を利用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。"
+title: Azure Active Directory のデバイス管理の概要 | Microsoft Docs
+description: デバイス管理を利用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: faea960d2b6207aab5a2f5df8dc65fddc9ba5b54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202135"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
 
@@ -73,7 +74,7 @@ Azure AD 参加済みデバイスの目的は、次の操作を単純化する�
 
 
 これらの目標は、ユーザーが職場所有のデバイスを Azure AD の管理下におくためのセルフサービス エクスペリエンスを用意することによって実現されます。  
-**Azure AD に参加すること**は、クラウド ファースト/クラウド オンリーの組織向けです。 これらの組織は、通常は中規模から小規模の企業であり、オンプレミスの Windows Server Active Directory インフラストラクチャがありません。 
+**Azure AD 参加**は、クラウド ファースト/クラウド オンリーを希望する組織を対象にしています。 Azure AD 参加が配置できる組織の規模または種類に制限はありません。 Azure AD 参加は、ハイブリッド環境でも動作し、オンプレミス アプリやリソースへもアクセスできます。
 
 Azure AD 参加済みデバイスを実装すると、次のメリットを得ることができます。
 
@@ -81,11 +82,14 @@ Azure AD 参加済みデバイスを実装すると、次のメリットを得�
 
 - 参加デバイス間でのユーザー設定の**企業に準拠しているローミング**。 ユーザーは、デバイスの設定を確認するときに Microsoft アカウント (Hotmail など) に接続する必要はありません。
 
-- AD アカウントを使用した**ビジネス向け Windows ストアへのアクセス**。 ユーザーは、組織によって事前選択されているアプリケーションのインベントリから選択できます。
+- Azure AD アカウントを使用した**ビジネス向け Windows ストアへのアクセス**。 ユーザーは、組織によって事前選択されているアプリケーションのインベントリから選択できます。
 
 - **Windows Hello** のサポート。
 
 - コンプライアンス ポリシーを満たしているデバイスのみにアプリへのアクセスを許可する**アクセスの制限**。
+
+- デバイスがオンプレミスのドメイン コントローラーにアクセスできる場合の**オンプレミス リソースへのシームレスなアクセス**。
+
 
 Azure AD への参加は、主にオンプレミスの Windows Server Active Directory インフラストラクチャを持っていない組織向けですが、次のようなシナリオでも確実に使用できます。
 
@@ -163,7 +167,7 @@ Azure AD のデバイス管理を使用して、次の操作を実行できま�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure Portal でデバイスを管理する方法の概要については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください
 
