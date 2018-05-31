@@ -12,13 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/18/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366530"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -198,6 +199,8 @@ Service Fabric SDK およびツールには、コンテナー化されたアプ�
 ```
 
 Service Fabric は、エンドポイントを定義することによって、ネーム サービスにそのエンドポイントを発行します。 同じクラスターで実行されている他のサービスは、このコンテナーを名前解決することができます。 コンテナー対コンテナーの通信は、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して実行することもできます。 通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。
+
+サービスは、特定のポートでリッスンしています (この例では 8081)。 Azure でアプリケーションがクラスターにデプロイされると、クラスターとアプリケーションの両方が Azure ロード バランサーの背後で実行します。 受信トラフィックがサービスを通過できるように、Azure ロード バランサーでアプリケーション ポートが開かれている必要があります。  [PowerShell スクリプト](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)または [Azure portal](https://portal.azure.com) を使用して、Azure Load Balancer でこのポートを開くことができます。
 
 ## <a name="configure-and-set-environment-variables"></a>環境変数の構成と設定
 環境変数は、サービス マニフェストのコード パッケージごとに指定できます。 この機能は、コンテナー、プロセス、またはゲスト実行可能ファイルとしてデプロイされているかどうかに関係なく、すべてのサービスで使用できます。 環境変数の値は、アプリケーション マニフェスト内で上書きすることも、デプロイ中にアプリケーションのパラメーターとして指定することもできます。

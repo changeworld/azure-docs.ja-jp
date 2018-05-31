@@ -1,18 +1,19 @@
 ---
-title: "Azure Batch API と開発者向けツール | Microsoft Docs"
-description: "Azure Batch サービスを使用したソリューションの開発に利用できる API とツールについて説明します。"
+title: Azure Batch API と開発者向けツール | Microsoft Docs
+description: Azure Batch サービスを使用したソリューションの開発に利用できる API とツールについて説明します。
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: get-started-article
-ms.date: 02/26/2018
+ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0d3720d33de2237b0d8cce2ae56bcc7ccf6acc43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a47c7355e8dfea97f7dee6787da87444a7642c3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359324"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API とツールの概要
 
@@ -26,11 +27,10 @@ Azure Batch による並列ワークロードの処理は、通常、[Batch API]
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>バッチの開発用の Azure アカウント
-Batch ソリューションを開発するとき、Microsoft Azure で次のアカウントが必要になります。
+Batch ソリューションを開発するとき、ご自身の Azure サブスクリプションで次のアカウントを使用します。
 
-* **Azure アカウントとサブスクリプション** - Azure サブスクリプションを取得していない場合は、[Visual Studio サブスクライバーの特典][msdn_benefits]を有効にするか、[無料 Azure アカウント][free_account]にサインアップしてください。 アカウントを作成すると、既定のサブスクリプションが自動的に作成されます。
-* **Batch アカウント** - Azure Batch リソース (プール、コンピューティング ノード、ジョブ、タスクなど) は、Azure Batch アカウントに関連付けられています。 アプリケーションは、Batch サービスに対する要求を行う際に、Azure Batch アカウント名、アカウントの URL、およびアクセス キーまたは Azure Active Directory トークンを使用して要求を認証します。 Azure Portal またはプログラムで [Batch アカウントを作成](batch-account-create-portal.md)できます。
-* **ストレージ アカウント** - Batch には、[Azure Storage][azure_storage] のファイルを操作するためのサポートが組み込まれています。 ほぼすべての Batch シナリオで、Azure Blob Storage が使用されます。タスクで実行されるプログラムや、プログラムで処理されるデータのステージングに使用されたり、プログラムで生成される出力データの格納に使用されたりします。 ストレージ アカウントの作成方法については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
+* **Batch アカウント** - Azure Batch リソース (プール、コンピューティング ノード、ジョブ、タスクなど) は、Azure [Batch アカウント](batch-api-basics.md#account)に関連付けられています。 アプリケーションは、Batch サービスに対する要求を行う際に、Azure Batch アカウント名、アカウントの URL、およびアクセス キーまたは Azure Active Directory トークンを使用して要求を認証します。 Azure Portal またはプログラムで [Batch アカウントを作成](batch-account-create-portal.md)できます。
+* **ストレージ アカウント** - Batch には、[Azure Storage][azure_storage] のファイルを操作するためのサポートが組み込まれています。 ほぼすべての Batch シナリオで、Azure Blob Storage が使用されます。タスクで実行されるプログラムや、プログラムで処理されるデータのステージングに使用されたり、プログラムで生成される出力データの格納に使用されたりします。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。
 
 ## <a name="batch-service-apis"></a>Batch サービス API
 

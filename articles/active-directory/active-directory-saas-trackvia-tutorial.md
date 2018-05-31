@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と TrackVia の統合 | Microsoft Docs"
-description: "Azure Active Directory と TrackVia の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と TrackVia の統合 | Microsoft Docs'
+description: Azure Active Directory と TrackVia の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 51b040e1dfaba8fff8136e8947edf716919f53b0
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: f0b0a2f29a1c14477fcd52e03fdfc47fee728c78
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34348395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>チュートリアル: Azure Active Directory と TrackVia の統合
 
@@ -30,7 +31,7 @@ TrackVia と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に TrackVia にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,11 +127,22 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-trackvia-tutorial/tutorial_general_400.png)
-    
-7. **TrackVia** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [TrackVia サポート チーム](mailto:support@trackvia.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+7. **[TrackVia Configuration]\(TrackVia 構成\)** セクションで、**[Configure TrackVia]\(TrackVia を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
+
+    ![TrackVia の構成](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_configure.png)
+    
+8. 別の Web ブラウザー ウィンドウで、管理者として TrackVia 企業サイトにサインオンします。
+
+9. Trackvia の **[My Account]\(マイ アカウント\)** 設定をクリックし、**[Single Sign On]\(シングル サインオン\)** タブを選択し、次の手順を実行します。
+
+    ![TrackVia の構成](./media/active-directory-saas-trackvia-tutorial/configure1.png)
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Entity ID]\(ID プロバイダー エンティティ ID\)** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+
+    b. **[Choose File]\(ファイルの選択\)** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+
+    c. **[保存]**
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -210,9 +222,7 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -227,4 +237,3 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 [201]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_203.png
-
