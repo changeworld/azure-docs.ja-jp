@@ -9,12 +9,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 754b0bdea4ccb93de16fda4eea5e012e0630daea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e2c288af881fa925c1680efdb0f86deec60b7510
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939029"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302680"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン
 
@@ -32,6 +32,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 |:--- |:--- |:--- |
 | アジア |東アジア |東南アジア |
 | オーストラリア |オーストラリア東部 |オーストラリア南東部 |
+| オーストラリア |オーストラリア中部 |オーストラリア中部 (2) |
 | ブラジル |ブラジル南部 (2) |米国中南部 |
 | カナダ |カナダ中部 |カナダ東部 |
 | 中国 |中国 (北部) |中国 (東部)|

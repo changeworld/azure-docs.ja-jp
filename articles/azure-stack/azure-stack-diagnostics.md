@@ -1,25 +1,24 @@
 ---
-title: "Azure Stack の診断"
-description: "Azure Stack の診断のログ ファイルを収集する方法"
+title: Azure Stack の診断
+description: Azure Stack の診断のログ ファイルを収集する方法
 services: azure-stack
 author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 04/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196465"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
- 
 Azure Stack は、相互に連携して作用する複数のコンポーネントによって構成された大規模なコレクションです。 これらすべてのコンポーネントは、独自の一意のログを生成します。 このため、問題を診断するのは困難な作業になります。相互に作用する複数の Azure Stack コンポーネントのエラーについては、特にそう言えます。 
 
 Microsoft の診断ツールは、ログ収集のメカニズムを簡単で効率的なものにする助けとなります。 次の図は、Azure Stack のログ収集ツールのしくみを示しています。
@@ -79,7 +78,36 @@ PowerShell コマンドレット **Get-AzureStackLog** を使用して、Azure S
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>Azure Stack 統合システムで Get-AzureStackLog を実行するには
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>Azure Stack 統合システムバージョン 1804 以降で Get-AzureStackLog を実行するには
+
+統合システムでログ収集ツールを実行するには、特権エンド ポイント (PEP) へのアクセス権が必要です。 PEP を使用して統合システムでログを収集するのに実行できるスクリプト例を次に示します。
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターは、外部の共有フォルダーにログをアップロードするときに使用されます。
+- 前の例で示したように、**FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これは、統合システムへの更新パッケージ適用後のログ収集などのシナリオに役立ちます。
+
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>Azure Stack 統合システムバージョン 1803 以前で Get-AzureStackLog を実行するには
 
 統合システムでログ収集ツールを実行するには、特権エンド ポイント (PEP) へのアクセス権が必要です。 PEP を使用して統合システムでログを収集するのに実行できるスクリプト例を次に示します。
 
@@ -108,6 +136,7 @@ if($s)
 - **OutputSharePath** パラメーターと **OutputShareCredential** パラメーターはオプションであり、外部の共有フォルダーにログをアップロードするときに使用されます。 これらのパラメーターは、**OutputPath** に "*追加して*" 使用します。 **OutputPath** が指定されていない場合、ログ収集ツールはストレージの PEP VM のシステム ドライブを使用します。 この場合、ドライブ容量が限られているためにスクリプトが失敗する可能性があります。
 - 前の例で示したように、**FromDate** パラメーターと **ToDate** パラメーターを使用して、特定の期間のログを収集できます。 これは、統合システムへの更新パッケージ適用後のログ収集などのシナリオに役立ちます。
 
+
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK および統合システムの両方に関するパラメーターの考慮事項
 
 - **FromDate** パラメーターと **ToDate** パラメーターが指定されない場合は、既定で過去 4 時間分のログが収集されます。
@@ -117,23 +146,32 @@ if($s)
 
    |   |   |   |
    | - | - | - |
-   | ACSMigrationService     | ACSMonitoringService   | ACSSettingsService |
-   | ACS                     | ACSFabric              | ACSFabric        |
-   | ACSTableMaster          | ACSFabric         | ACSWac             |
-   | ADFS                    | ASAppGateway           | BareMetal          |
-   | BRP                     | CA                     | CPI                |
-   | CRP                     | DeploymentMachine      | DHCP               |
-   | ドメイン                  | ECE                    | ECESeedRing        | 
-   | FabricRing              | FabricRingServices     | FRP                |
-   | ゲートウェイ                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
-   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
-   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
-   | SeedRingServices        | SLB                    | SQL                |   
-   | SRP                     | Storage                | StorageController  |
-   | URP                     | UsageBridge            | VirtualMachines    |  
-   | WAS                     | WASPUBLIC              | WDS                |
-
+   | ACS                    | DeploymentMachine                | NC                         |
+   | ACSBlob                | DiskRP                           | ネットワーク                    |
+   | ACSFabric              | ドメイン                           | NonPrivilegedAppGateway    |
+   | ACSFabric            | ECE                              | NRP                        |
+   | ACSMetrics             | ExternalDNS                      | OEM                        |
+   | ACSMigrationService    | Fabric                           | PXE                        |
+   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
+   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
+   | ACSTableMaster         | FRP                              | SLB                        |   
+   | ACSFabric         | [ギャラリー]                          | SlbVips                    |
+   | ACSWac                 | ゲートウェイ                          | SQL                        |   
+   | ADFS                   | HealthMonitoring                 | SRP                        |
+   | ASAppGateway           | HRP                              | Storage                    |   
+   | NCAzureBridge          | IBC                              | ストレージ アカウント            |    
+   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
+   | AzureStackBitlocker    | iDns                             | テナント                     |
+   | BareMetal              | InfraServiceController           | TraceCollector             |
+   | BRP                    | インフラストラクチャ                   | URP                        |
+   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
+   | クラウド                  | KeyVaultControlPlane             | VirtualMachines            |
+   | クラスター                | KeyVaultDataPlane                | WAS                        |
+   | コンピューティング                | KeyVaultInternalControlPlane     | WASBootstrap               |
+   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
+   | CRP                    | KeyVaultNamingService            |                            |
+   | DatacenterIntegration  | MonitoringAgent                  |                            |
+   |                        |                                  |                            |
 
 ### <a name="bkmk_gui"></a>グラフィカル ユーザー インターフェイスを使用してログを収集する
 Get-AzureStackLog コマンドレットのパラメーターを指定して Azure Stack ログを取得する代わりに、主要な Azure Stack ツールの GitHub ツール リポジトリ (http://aka.ms/AzureStackTools) にあるオープン ソースの Azure Stack ツールを使用することもできます。
@@ -145,7 +183,7 @@ ERCS_AzureStackLogs.ps1 PowerShell スクリプトの詳細については、[�
 ### <a name="additional-considerations"></a>追加の考慮事項
 
 * このコマンドは、どのロールに基づいてログが収集されるかによって、実行にいくらかの時間がかかります。 また、関連する要素には、ログ収集に指定した期間と、Azure Stack 環境のノード数が含まれます。
-* ログの収集が完了したら、コマンドで指定した **OutputPath**パラメーターに作成された新しいフォルダーを確認します。
+* ログの収集と同時に、コマンドで指定した **OutputSharePath** パラメーターに作成された新しいフォルダーを確認します。
 * ロールごとに、個別の zip ファイル内にログがあります。 収集されたログのサイズによっては、1 つのロールのログが複数の zip ファイルに分割されることがあります。 そのようなロールでは、すべてのログ ファイルを単一のフォルダーに解凍したい場合は、一括で解凍するツール (7zip など) を使用します。 そのロールのすべての圧縮済みファイルを選択し、**[ここに展開]** を選択します。 これで、そのロールのすべてのログ ファイルが 1 つのマージされたフォルダーに解凍されます。
 * また、**Get-AzureStackLog_Output.log** と呼ばれるファイルが、圧縮済みログ ファイルを含むフォルダーに作成されます。 このファイルはコマンド出力のログで、ログ収集中の問題のトラブルシューティングに使用できます。
 * 特定のエラーを調べるには、複数のコンポーネントのログが必要な場合があります。

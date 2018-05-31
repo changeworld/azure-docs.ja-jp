@@ -10,11 +10,12 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 213a0e7cebda6a8b89ef460799cbec477b487a64
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166116"
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Windows のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー
 
@@ -42,7 +43,7 @@ Azure IoT Edge を使用すると、すべてのデータをクラウドにプ�
    * Windows 10 
    * Windows Server
 2. [Docker for Windows][lnk-docker] をインストールし、実行します。
-3. [Python 2.7 を Windows][lnk-python] にインストールし、pip コマンドを使用できるようにします。
+3. [Python を Windows][lnk-python] にインストールし、pip コマンドを使用できるようにします。 このチュートリアルは、Python バージョン 2.7.9 以降および 3.5.4 でテストされました。  
 4. 次のコマンドを実行して、IoT Edge 制御スクリプトをダウンロードします。
 
    ```cmd

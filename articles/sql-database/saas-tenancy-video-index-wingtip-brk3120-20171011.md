@@ -2,20 +2,21 @@
 title: インデックス付きビデオ、Azure SaaS SQL アプリ | Microsoft Docs
 description: この記事では、2017 年 10 月 11 日に開催された Ignite カンファレンスで公開された、SaaS DB テナント アプリの設計に関する 81 分間のビデオのさまざまな時点のインデックスを示します。 興味のある部分にスキップできます。 少なくとも 3 つのパターンについて説明されています。 開発と管理を簡略化する Azure の機能が説明されています。
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 05/14/2018
 ms.service: sql-database
 ms.reviewer: billgib
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4ea62855b61cb7439b19204564cbc2d7fcdbd0fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211295"
 ---
-# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスおよび注釈付きのビデオ
+# <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 
 この記事は、SaaS テナント モデルまたはパターンに関する 81 分間のビデオの時間位置への注釈付きインデックスです。 この記事から、ビデオの後方や前方の興味のある位置にスキップできます。 ビデオでは、Azure SQL Database でのマルチテナント データベース アプリケーションに関する主要な設計オプションが説明されています。 ビデオには、デモ、管理コードのチュートリアル、および場合によってはドキュメントより詳細な経験に基づく情報が含まれます。
 

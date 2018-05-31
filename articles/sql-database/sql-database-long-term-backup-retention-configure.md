@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 130b3ea0012c5fb21766b26ce2c3e589f0916736
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df3d843516bce30253c23080716e606dfb56f25e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211563"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
@@ -80,6 +81,10 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 ## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>PowerShell を使用して長期的な保有期間ポリシーを構成し、バックアップを復元する
 
 以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure SQL ストレージ内のバックアップを表示し、Azure SQL ストレージ内のバックアップから復元する方法について説明します。
+
+> [!IMPORTANT]
+> LTR V2 ポリシーを設定するには、最新の AzureRM PowerShell を使用する必要があります。 現在のバージョンは [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview) です。これはプレビュー バージョンです。コマンド `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force` でインストールします。
+> プレリリース版のインストール方法については、[PowerShellGet モジュールの取得](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget)に関するページを参照してください。 AzureRM PowerShell の 2018 年 5 月リリースが数日後に予定されています (2018 年 5 月 18 日予定)。リリース後、リリース版をインストールするとき、-AllowPrelease スイッチを無視できます。コマンド `Install-Module -Name AzureRM.Sql -Force` を使用してください。
 
 ### <a name="create-an-ltr-policy"></a>LTR ポリシーを作成する
 
