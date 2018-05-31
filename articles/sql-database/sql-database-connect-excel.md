@@ -4,18 +4,18 @@ description: Microsoft Excel をクラウド内の Azure SQL データベース�
 services: sql-database
 keywords: SQL への Excel の接続、Excel へのデータのインポート
 author: joseidz
-manager: craigg
+manager: jhubbard
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: craigg
-ms.openlocfilehash: 6f2894d65240580346b99d203f8289652d8e6618
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5d2d863c0266467a60eafa70f0ef3ecaa9736ac0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364092"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188414"
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
 
@@ -96,7 +96,6 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 
 ## <a name="next-steps"></a>次の手順
 * 高度なクエリと分析に関して、 [SQL Server Management Studio を使用して SQL Database に接続する](sql-database-connect-query-ssms.md) 方法を学習します。
-* 
-  [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
+* [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
 * [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)方法を学習します。
 

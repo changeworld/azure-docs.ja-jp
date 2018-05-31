@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4f7806e1155a0129d67f8848b9ba8c4d07cb126d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360327"
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33770931"
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法 
 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には料金が設定されています。 このため、SSIS パッケージを Azure で実行する必要がある場合のみ IR を実行し、必要ないときには停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 この記事で説明する手順の概要を次に示します。
@@ -71,6 +71,9 @@ Azure Automation アカウントを持っていない場合は、この手順の
 ### <a name="import-data-factory-modules"></a>データ ファクトリ モジュールをインポートする
 
 1. 左側のメニューの **[共有リソース]** セクションで **[モジュール]** を選択し、モジュールの一覧に **AzureRM.Profile** と **AzureRM.DataFactoryV2** があるかどうか確認します。
+
+    > [!IMPORTANT]
+    > 現時点で使用できるのは、**AzureRM.DataFactoryV2 0.5.2** モジュールと **AzureRM.Profile 4.5.0** モジュールだけです。
 
     ![必要なモジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 

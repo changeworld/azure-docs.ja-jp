@@ -7,13 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: fdfee4e06994de1b9a63996203b1a1b9fed9b768
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940156"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -486,7 +487,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 以下の点に注意してください。
 
 * 複雑なデータ型はサポートされていません (MAP、LIST)。
-* Parquet ファイルには圧縮関連のオプション (NONE、SNAPPY、GZIP、LZO) があります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+* Parquet ファイルには圧縮関連のオプション (NONE、SNAPPY、GZIP、LZO) があります。 Data Factory では、これらすべての圧縮形式の Parquet ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Parquet ファイルのデータ型マッピング
 
