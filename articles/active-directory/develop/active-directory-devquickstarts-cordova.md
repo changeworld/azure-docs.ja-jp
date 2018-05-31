@@ -1,25 +1,27 @@
 ---
-title: "Azure AD Cordova の概要 | Microsoft Docs"
-description: "OAuth を使用して、Azure AD と連携してサインインし、Azure AD で保護されている API を呼び出す Cordova アプリケーションを構築する方法を説明します。"
+title: Azure AD Cordova の概要 | Microsoft Docs
+description: OAuth を使用して、Azure AD と連携してサインインし、Azure AD で保護されている API を呼び出す Cordova アプリケーションを構築する方法を説明します。
 services: active-directory
-documentationcenter: 
-author: vibronet
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b1a8d7bd-7ad6-44d5-8ccb-5255bb623345
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: vittorib
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6d6d514875aa675bf160ee08a3e94b58944020ee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156733"
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Azure AD Cordova の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -33,7 +35,7 @@ Cordova プラグインは、iOS、Android、Windows ストア、および Windo
 このチュートリアルでは、Active Directory 認証ライブラリ (ADAL) の Apache Cordova プラグインを使用して、次の機能を付加して簡単なアプリケーションを改善します。
 
 * 数行のコードのみを追加して、ユーザーを認証し、トークンを取得します。
-* そのトークンを使用して Graph API を呼び出し、そのディレクトリのクエリを実行して結果を表示します。  
+* そのトークンを使用して Graph API を呼び出し、そのディレクトリのクエリを実行して結果を表示します。 
 * ADAL トークン キャッシュを利用して、ユーザーに対する認証プロンプトを最小限に抑えます。
 
 以上の改善を行うには、次の手順に従う必要があります。
@@ -47,7 +49,7 @@ Cordova プラグインは、iOS、Android、Windows ストア、および Windo
 このチュートリアルを完了するには、次のものが必要です。
 
 * アプリケーション開発権限を持つアカウントが登録されている Azure AD テナント
-* Apache Cordova を使用するように構成された開発環境  
+* Apache Cordova を使用するように構成された開発環境 
 
 両方とも設定済みの場合は、手順 1. に直接進んでください。
 
@@ -98,8 +100,8 @@ Azure AD では、既知のアプリケーションにのみトークンを発�
 
 `DirSearchClient Sample` を実行するには、新しく作成されたアプリに Azure AD Graph API をクエリするためのアクセス許可を付与します。
 
-1. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。  
-2. Azure Active Directory アプリケーションの場合は、API として **[Microsoft Graph]** を選択し、 **[デリゲートされたアクセス許可]** の下に **[サインイン ユーザーとしてディレクトリにアクセスする]** アクセス許可を追加します。  これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
+1. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 
+2. Azure Active Directory アプリケーションの場合は、API として **[Microsoft Graph]** を選択し、 **[デリゲートされたアクセス許可]** の下に **[サインイン ユーザーとしてディレクトリにアクセスする]** アクセス許可を追加します。 これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
 ## <a name="step-2-clone-the-sample-app-repository"></a>ステップ 2. サンプル アプリ リポジトリを複製する
 シェルまたはコマンド ラインから、次のコマンドを入力します。

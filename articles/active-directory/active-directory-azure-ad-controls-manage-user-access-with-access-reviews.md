@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 05/16/2018
 ms.author: billmath
-ms.openlocfilehash: b11f0b2032a102501de1da8315e80df88bfd57d5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2b80a09bc84166b65a731f1bd544e1cb40ff2eef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192491"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
@@ -30,7 +31,11 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 ## <a name="prerequisites"></a>前提条件 
 
+
+アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 レビューの作成、レビューへの回答、アクセスの確認を含め、この機能を使用する各ユーザーにライセンスが必要です。 
+
 アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](active-directory-whatis.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
+
 
 
 ## <a name="create-and-perform-an-access-review"></a>アクセス レビューの作成と実行
