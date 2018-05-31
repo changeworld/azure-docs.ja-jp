@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011375"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Azure への Hyper-V レプリケーションのサポート マトリックス
 
@@ -23,9 +24,9 @@ ms.lasthandoff: 04/28/2018
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
 **シナリオ** | **詳細**
---- | --- 
+--- | ---
 Hyper-V (Virtual Machine Manager あり) | System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](tutorial-vmm-to-vmm.md)を参照してください。
-Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。 
+Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。
 
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
@@ -39,7 +40,7 @@ Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016
 ## <a name="replicated-vms"></a>レプリケートされた VM
 
 
-次の表は、VM のサポートをまとめた一覧です。 Site Recovery は、サポートされているオペレーティング システム上で実行されているすべてのワークロードをサポートします。 
+次の表は、VM のサポートをまとめた一覧です。 Site Recovery は、サポートされているオペレーティング システム上で実行されているすべてのワークロードをサポートします。
 
  **コンポーネント** | **詳細**
 --- | ---
@@ -78,7 +79,8 @@ Azure の Traffic Manager | [はい] | [はい]
 予約済み IP | [はい] | [はい]
 IPv4 | [はい] | [はい]
 送信元 IP アドレスを保持する | [はい] | [はい]
-Azure Virtual Network サービス エンドポイント<br/><br/> (Azure Storage ファイアウォールと仮想ネットワーク) | いいえ  | いいえ 
+Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | [はい] | [はい]
+高速ネットワーク | いいえ  | いいえ 
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V ホスト ストレージ
@@ -125,7 +127,7 @@ geo 冗長ストレージ | [はい] | [はい]
 保存時の暗号化 (SSE)| [はい] | [はい]
 Premium Storage | [はい] | [はい]
 インポート/エクスポート サービス | いいえ  | いいえ 
-レプリケーション データに使用されるストレージ アカウントをキャッシュするターゲット上の Azure Virtual Network サービス エンドポイント (Azure Storage ファイアウォールと仮想ネットワーク) | いいえ  | いいえ 
+ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ  | いいえ 
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能
@@ -159,9 +161,9 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 ## <a name="recovery-services-vault-actions"></a>Recovery Services コンテナーのアクション
 
 **アクション** |  **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
---- | --- | --- 
-リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ  
-リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ  
+--- | --- | ---
+リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ 
+リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ 
 
 
 ## <a name="provider-and-agent"></a>プロバイダーとエージェント
@@ -179,4 +181,4 @@ Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の�
 
 
 ## <a name="next-steps"></a>次の手順
-オンプレミス Hyper-V VM のディザスター リカバリーのために [Azure を準備する](tutorial-prepare-azure.md)方法を学びます。 
+オンプレミス Hyper-V VM のディザスター リカバリーのために [Azure を準備する](tutorial-prepare-azure.md)方法を学びます。

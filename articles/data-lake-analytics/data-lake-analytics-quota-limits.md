@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 4334a438f09d7c18912262e9c70bfffbcdeb1d9e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311133"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34199026"
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics のクォータ制限
 
@@ -33,29 +33,33 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 * 適切であれば、別のリージョンを作成する
 * [サポート チケットを開き](#increase-maximum-quota-limits)、Azure サポートにクォータの増加を依頼する
 
-## <a name="adla-account-limits"></a>ADLA アカウントの制限
+## <a name="default-adla-account-limits"></a>既定の ADLA アカウントの制限
 
-**アカウントあたりの Analytics ユニット (AU) の最大数:** 250
+**アカウントあたりの Analytics ユニット (AU) の最大数:** 32
 
 これは、アカウントで同時に実行できる AU の最大数です。 すべてのジョブで実行されている AU の総数がこの制限を超えている場合は、新しいジョブが自動的にキューに挿入されます。 例: 
 
-* 250 個の AU を使用する 1 つのジョブのみ実行されているときに 2 つ目のジョブを送信した場合、そのジョブは 1 つ目のジョブが完了するまでジョブ キューで待機します。
-* 実行しているジョブが既に 5 つあり、それぞれが 50 AU を使用している場合に、20 個の AU 必要とする 6 番目のジョブを送信すると、そのジョブは、20 個の AU が使用可能になるまでジョブ キューで待機します。
+* 32 個の AU を使用する 1 つのジョブのみ実行されているときに 2 つ目のジョブを送信した場合、そのジョブは 1 つ目のジョブが完了するまでジョブ キューで待機します。
+* 実行しているジョブが既に 4 つあり、それぞれが 8 AU を使用している場合に、8 個の AU 必要とする 5 番目のジョブを送信すると、そのジョブは、8 個の AU が使用可能になるまでジョブ キューで待機します。
+
+**ジョブあたりの Analytics ユニット (AU) の最大数:** 32
+
+これは、アカウントで個別ジョブを割り当てられる AU の既定最大数です。 ジョブあたりでさらに多くの AU を割り当てるコンピューティング ポリシー (ジョブ送信制限) が送信元に適用されない限り、この限度を超えて割り当てられたジョブは拒否されます。 この値の上限は、アカウントの AU の制限です。
 
 **アカウントあたりの同時実行 U-SQL ジョブの最大数:** 20
 
 これは、アカウントで同時に実行できるジョブの最大数です。 この値を超えると、新しいジョブは自動的にキューイングされます。
 
-## <a name="adjust-adla-quota-limits-per-account"></a>アカウントあたりの ADLA クォータ制限を調整する
+## <a name="adjust-adla-account-limits"></a>ADLA アカウントの制限を調整する
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. 既存の ADLA アカウントを選びます。
 3. **[プロパティ]** をクリックします。
-4. ニーズに合わせて **[並行処理]** と **[最大同時ジョブ数]** を調整します。
-
-    ![Azure Data Lake Analytics ポータル ページ](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)
+4. **最大 AU**、**実行ジョブの最大数**、**ジョブ送信の制限**の値を必要に応じて調整します。
 
 ## <a name="increase-maximum-quota-limits"></a>最大クォータ制限を増やす
+
+[Azure サービス固有の制限に関するドキュメント](../azure-subscription-service-limits.md#data-lake-analytics-limits)に、Azure 制限に関する詳細があります。
 
 1. Azure Portal でサポート要求を開きます。
 
