@@ -12,14 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/14/2017
+ms.date: 05/15/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1c8c981c0b1c3b599d2dd737b680390a52888eb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 83d97d9ed9c51d59500115c4ee3896d471024999
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359759"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -33,17 +34,17 @@ ms.lasthandoff: 05/08/2018
 
 Batch アカウントとシナリオの背景情報については、[機能の概要](batch-api-basics.md)に関するページを参照してください。
 
-
-
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 1. [Azure Portal][azure_portal] にサインインします。
-2. **[リソースの作成]** をクリックし、Marketplace で「**Batch サービス**」を検索します。
+
+2. **[新規]**  >  **[Compute]**  >  **[Batch サービス]** の順にクリックします。
 
     ![Marketplace での Batch][marketplace_portal]
-3. **[Batch サービス]** を選択し、**[作成]** をクリックして、**[新しい Batch アカウント]** の設定を入力します。 次の詳細を確認してください。
+
+3. **[新しい Batch アカウント]** 設定を入力します。 次の詳細を確認してください。
 
     ![Batch アカウントを作成する][account_portal]
 
@@ -51,13 +52,15 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     b. **サブスクリプション**: Batch アカウントを作成するサブスクリプション。 サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
 
-    c. **[プール割り当てモード]**: この設定が表示される場合は、既定の **[Batch サービス]** をそのまま使用してください。
-
     c. **リソース グループ**: 新しい Batch アカウント用の既存のリソース グループを選択します。必要に応じて、新しく作成することもできます。
 
     d. **場所**: Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける Azure ストレージ アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 詳細については、この記事で後に出てくる「[リンクされた Azure ストレージ アカウント](#linked-azure-storage-account)」を参照してください。
+    e. **ストレージ アカウント** (省略可能): Batch アカウントに関連付ける Azure ストレージ アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。 ポータルで、既存のストレージ アカウントを選択するか、必要に応じて新しいストレージ アカウントを作成します。
+
+      ![ストレージ アカウントの作成][storage_account]
+
+    f. **プール割り当てモード**: ほとんどのシナリオで、既定の **[Batch サービス]** をそのまま使用してください。
 
 4. **[作成]** をクリックしてアカウントを作成します。
 
@@ -68,34 +71,16 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ![Azure Portal の [Batch アカウント] ブレード][account_blade]
 
-* **Batch アカウント URL**: [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウント URL が必要になります。 Batch アカウント URL の形式を次に示します。
+* **Batch アカウントの名前、URL、およびキー**: [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウント URL およびキーが必要になります  (Batch では Azure Active Directory 認証もサポートされます)。
 
-    `https://<account_name>.<region>.batch.azure.com`
-
-![Batch account URL in portal][account_url]
-
-* **アクセス キー**: アプリケーションから Batch アカウントへのアクセスを認証するには、アカウント アクセス キーを使用できます  (Batch では Azure Active Directory 認証もサポートされます)。
-
-    アクセス キーを表示または再生成するには、**[キー]** を選択します。
+    Batch アカウント アクセス情報を表示するには、**[キー]** をクリックします。
 
     ![Batch account keys in Azure portal][account_keys]
 
-[!INCLUDE [batch-pricing-include](../../includes/batch-pricing-include.md)]
+* Batch アカウントに関連付けられているストレージ アカウントの名前とキーを表示するには、**[ストレージ アカウント]** をクリックします。
 
-## <a name="linked-azure-storage-account"></a>リンクされた Azure Storage アカウント
+* Batch アカウントに適用されるリソース クォータを表示するには、**[クォータ]** をクリックします。 詳細については、「[Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
-Azure ストレージ アカウントを Batch アカウントにリンクできます。これは、多くのシナリオで役に立ちます。 Batch の[アプリケーション パッケージ](batch-application-packages.md)機能は、[Batch File Conventions .NET](batch-task-output.md) ライブラリと同様に、Azure Blob Storage を使用します。 これらのオプション機能は、Batch タスクで実行するアプリケーションのデプロイや、そのアプリケーションによって生成されるデータの保持に役立ちます。
-
-Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。
-
-![ストレージ アカウントの作成][storage_account]
-
-> [!NOTE]
-> リンクされた Storage アカウントのアクセス キーを再生成する際は次の点に注意してください。 Storage アカウントのキーは 1 つだけ再生成し、リンクされた Storage アカウントのページにある **[キーの同期]** をクリックします。 キーがプール内のコンピューティング ノードに反映されるまで 5 分待ってから、必要に応じて他のキーの再生成と同期を行います。 両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、Storage アカウントにアクセスできなくなります。
->
->
-
-![ストレージ アカウント キーの再生成][4]
 
 ## <a name="additional-configuration-for-user-subscription-mode"></a>ユーザー サブスクリプション モードのための追加構成
 
@@ -124,24 +109,14 @@ Batch のストレージ アカウント オプションについては、[Batch
 ### <a name="create-a-key-vault"></a>Key Vault を作成します
 ユーザー サブスクリプション モードでは、作成する Batch アカウントと同じリソース グループに属する Azure キー コンテナーが必要です。 Batch を[利用でき](https://azure.microsoft.com/regions/services/)、お使いのサブスクリプションでサポートされているリージョンにそのリソース グループが属していることを確認してください。
 
-1. [Azure Portal][azure_portal] で、**[新規]** > **[セキュリティ + ID]** > **[Key Vault]** の順にクリックします。
+1. [Azure portal][azure_portal] で、**[新規]** > **[セキュリティ]** > **[Key Vault]** の順にクリックします。
 
 2. **[Key Vault の作成]** ページで、キー コンテナーの名前を入力し、Batch アカウント用のリージョンでリソース グループを作成します。 残りの設定については既定値のままにして、**[作成]** をクリックします。
 
-
-
-
-## <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
-Azure サブスクリプションやその他の Azure サービスと同様に、Batch アカウントにも特定の[クォータと制限](batch-quota-limit.md)が適用されます。 Batch アカウントの現在のクォータは、**[クォータ]** に表示されます。
-
-![Batch account quotas in Azure portal][quotas]
-
-
-
-また、これらのクォータの多くは、Azure Portal で無料の製品サポート要求を送信して増やすことができます。 クォータ引き上げ要求の詳細については、「 [Azure Batch サービスのクォータと制限](batch-quota-limit.md) 」を参照してください。
+ユーザー サブスクリプション モードで Batch アカウントを作成しているときに、キー コンテナーのリソース グループを使用して、**ユーザー サブスクリプション**をプール割り当てモードとして指定し、キー コンテナーを選択します。
 
 ## <a name="other-batch-account-management-options"></a>その他の Batch アカウント管理オプション
-Azure Portal を利用する方法に加えて、次の方法で Batch アカウントを作成および管理できます。
+Azure portal を利用する方法に加えて、次のようなツールを使用して Batch アカウントを作成および管理できます。
 
 * [Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)
 * [Azure CLI](batch-cli-get-started.md)
@@ -151,20 +126,15 @@ Azure Portal を利用する方法に加えて、次の方法で Batch アカウ
 * Batch サービスの概念と機能の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 この記事では、プール、コンピューティング ノード、ジョブ、タスクなど、主要な Batch リソースについて説明するほか、大規模なコンピューティング ワークロード向けのこのサービスの機能の概要について説明します。
 * [Batch .NET クライアント ライブラリ](batch-dotnet-get-started.md)または [Python](batch-python-tutorial.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらの入門記事では、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行する実用アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
-
 [azure_portal]: https://portal.azure.com
 [batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
 
-[4]: ./media/batch-account-create-portal/batch_acct_04.png "ストレージ アカウント キーの再生成"
-[marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
+[marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
-[account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
-[account_keys]: ./media/batch-account-create-portal/account_keys.PNG
+[account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
+[account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
 [account_url]: ./media/batch-account-create-portal/account_url.png
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
-[quotas]: ./media/batch-account-create-portal/quotas.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
 

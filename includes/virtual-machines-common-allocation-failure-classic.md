@@ -13,6 +13,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31531057"
 ---
 以下に、割り当て要求が固定されることになる一般的な割り当てシナリオを示します。 この記事の後の方で、各シナリオについて説明します。
 
@@ -79,7 +80,7 @@ GeneralError*
 ## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>ステージング環境/運用環境のデプロイメント (サービスとしてのプラットフォームのみ)
 **エラー**
 
-New_General* または New_VMSizeNotSupported*
+New_General* または New_VMSizeNotSupported\*
 
 **クラスターの固定の原因**
 
@@ -92,7 +93,7 @@ New_General* または New_VMSizeNotSupported*
 ## <a name="affinity-group-vmservice-proximity"></a>アフィニティ グループ (VM/サービス近接性)
 **エラー**
 
-New_General* または New_VMSizeNotSupported*
+New_General* または New_VMSizeNotSupported\*
 
 **クラスターの固定の原因**
 
@@ -105,7 +106,7 @@ New_General* または New_VMSizeNotSupported*
 ## <a name="affinity-group-based-virtual-network"></a>アフィニティ グループ ベースの仮想ネットワーク
 **エラー**
 
-New_General* または New_VMSizeNotSupported*
+New_General* または New_VMSizeNotSupported\*
 
 **クラスターの固定の原因**
 

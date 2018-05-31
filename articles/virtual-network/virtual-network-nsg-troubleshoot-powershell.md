@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: edbf76ef5dcf581acfec17970becdf698445cbeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365442"
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Azure PowerShell を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -30,9 +31,9 @@ ms.lasthandoff: 05/14/2018
 
 この記事では、仮想マシン (VM) にネットワーク セキュリティ グループ (NSG) を構成している場合に、VM の接続の問題が発生したときのトラブルシューティングに役立つ NSG の診断機能の概要を説明します。
 
-NSG では、仮想マシン (VM) を出入りするトラフィックのタイプを制御できます。 NSG は、Azure Virtual Network (VNet)、ネットワーク インターフェイス (NIC)、または両方のサブネットに適用できます。 NIC に効果的に規則を適用するには、NSG 内にある規則の集合体を NIC と接続しているサブネットに適用します。 場合によっては、これらのNSG 全体の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。  
+NSG では、仮想マシン (VM) を出入りするトラフィックのタイプを制御できます。 NSG は、Azure Virtual Network (VNet)、ネットワーク インターフェイス (NIC)、または両方のサブネットに適用できます。 NIC に効果的に規則を適用するには、NSG 内にある規則の集合体を NIC と接続しているサブネットに適用します。 場合によっては、これらのNSG 全体の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。
 
-VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイ モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワーク](virtual-networks-overview.md)と[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の概要に関する記事を参照してください。
+VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイ モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワークの概要](virtual-networks-overview.md)と、[ネットワーク セキュリティ グループの概要](security-overview.md)に関するページを参照してください。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング
 次のシナリオでは、一般的な接続の問題の例を示します。
@@ -159,8 +160,7 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
    
    * **NetworkSecurityGroup** セクションが 2 つあります。1 つは、サブネット (*Subnet1*) に関連付けられたもので、もう 1 つは NIC (*VM1-NIC1*) に関連付けられたものです。 この例では、それぞれに NSG が適用されています。
    * **Association** には、特定の NSG が関連付けられているリソース (サブネットまたは NIC) が表示されます。 このコマンドを実行する直前に NSG リソースが移動されたり、関連付けが解除されたりした場合は、コマンドの出力にその変更が反映されるまで数秒間待たなければならないことがあります。 
-   * *defaultSecurityRules*から始まる規則名: NSG を作成すると、その規則内にいくつかの既定のセキュリティ規則が作成されます。 既定の規則は削除できませんが、優先順位の高い規則で上書きできます。
-     NSG の既定の規則の詳細については、「 [NSG の概要](virtual-networks-nsg.md#default-rules) 」の記事をご覧ください。
+   * *defaultSecurityRules*から始まる規則名: NSG を作成すると、その規則内にいくつかの既定のセキュリティ規則が作成されます。 既定の規則は削除できませんが、優先順位の高い規則で上書きできます。 詳しくは、「[既定セキュリティ規則](security-overview.md#default-security-rules)」をご覧ください。
    * **ExpandedAddressPrefix** は、NSG の既定のタグのアドレス プレフィックスを拡張します。 タグは、複数のアドレス プレフィックスを表します。 タグの拡張は、特定のアドレス プレフィックスとの VM 接続のトラブルシューティングを行う場合に便利です。 たとえば、VNET ピアリングを使用する場合、VIRTUAL_NETWORK タグを拡張すると、前の出力の際にピアリングされた VNet プレフィックスが表示されます。
      
      > [!NOTE]
