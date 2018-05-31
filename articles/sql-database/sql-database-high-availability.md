@@ -6,14 +6,15 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e85db04206927eaf17cf52c11b536c75a47a088e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777020"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 マイクロソフトは、Azure SQL Database PaaS サービスの開発当初から、お客様が操作したり、特別なロジックを追加したり、高可用性に関する意思決定をしなくても実現できる高可用性 (HA) をサービスに組み込むことをお約束してきました。 マイクロソフトは、お客様に SLA を提供し、HA システム構成および運用を完全に制御します。 HA SLA は、領域内の SQL データベースに適用され、マイクロソフトの妥当な制御の及ばない事象 (自然災害、戦争、テロ行為、暴動、政府の行為、または、お客様の施設、またはお客様の施設とマイクロソフトのデータ センターの間を含む、マイクロソフトのデータ センター外のネットワークまたはデバイスの障害など) に起因する、領域全体の障害の場合の保護は提供できません。
@@ -30,7 +31,7 @@ HA の問題領域を簡略化するため、マイクロソフトは、次の�
 
 Microsoft Azure SQL Database では、直結されたディスク/VHD を使用するローカル ストレージ (LS) と、Azure Premium Storage ページ blob を使用するリモート ストレージ (RS) の両方を使用します。 
 - ローカル ストレージは、IOPS の要件の高いミッション クリティカル OLTP アプリケーション用に設計された Premium または Business Critical (プレビュー) データベースとエラスティック プールで使用されます。 
-- リモート ストレージは、ストレージとコンピューティング能力が独立して拡張できる必要がある、予算重視のビジネス ワークロード向けに設計された、Basic および Standard サービス レベルで使用されます。 データベースおよびログ ファイル用の単一のページ blob と、組込みストレージ レプリケーションおよびフェイルオーバー メカニズムが使用されます。
+- リモート ストレージは、ストレージとコンピューティング能力が独立して拡張できる必要がある、予算重視のビジネス ワークロード向けに設計された、Basic、Standard、および General Purpose サービス レベルで使用されます。 データベースおよびログ ファイル用の単一のページ blob と、組込みストレージ レプリケーションおよびフェイルオーバー メカニズムが使用されます。
 
 いずれの場合も、Microsoft Azure SQL Database のレプリケーション、障害検知、およびフェイルオーバー メカニズムは完全に自動化されており、ユーザーが介入しなくても運用できます。 このアーキテクチャの目的は、コミットされたデータを絶対に損失しないことと、データの持続性を最優先することです。
 
@@ -56,7 +57,7 @@ SQL Database の高可用性ソリューションは、SQL Server の [Always ON
 
 ## <a name="remote-storage-configuration"></a>リモート ストレージの構成
 
-リモート ストレージの構成 (Basic および Standard レベル) の場合、リモート blob ストレージにコピーが 1 つのみ保持され、ストレージ システムが提供する、持続性、冗長性、およびビット崩壊検出機能を活用できます。 
+リモート ストレージの構成 (Basic、Standard、または General Purpose レベル) の場合、リモート blob ストレージにコピーが 1 つのみ保持され、ストレージ システムが提供する、持続性、冗長性、およびビット崩壊検出機能を活用できます。 
 
 高可用性アーキテクチャを、次の図に示します。
  
@@ -89,7 +90,12 @@ SQL Database の高可用性ソリューションは、SQL Server の [Always ON
 
 特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) または [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。
 
-データベースの読み取りスケールアウトが有効になると、そのデータベースに接続するアプリケーションが、アプリケーションの接続文字列で構成されている `ApplicationIntent` プロパティに応じて、データベースの読み取り/書き込みレプリカまたは読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」をご覧ください。 
+データベースの読み取りスケールアウトが有効になると、そのデータベースに接続するアプリケーションが、アプリケーションの接続文字列で構成されている `ApplicationIntent` プロパティに応じて、データベースの読み取り/書き込みレプリカまたは読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」を参照してください。 
+
+読み取りスケールアウトが無効の場合またはサポートされていないサービス レベルで ReadScale プロパティを設定した場合、`ApplicationIntent` プロパティとは関係なく、すべての接続が読み取り/書き込みレプリカにリダイレクトされます。  
+
+> [!NOTE]
+> 読み取り専用のセッションを別のレプリカにルーティングしない場合でも、Standard または General Purpose データベースで読み取りスケールアウトを有効にすることができます。 この処理の目的は、Standard/General Purpose および Premium/Business Critical レベル間でスケールアップおよびスケールダウンする既存のアプリケーションをサポートするためです。  
 
 読み取りスケールアウト機能は、セッション レベルの一貫性をサポートしています。 レプリカが使用できないことが原因で接続エラーが発生した後に読み取り専用セッションが再接続された場合、別のレプリカにリダイレクトされる可能性があります。 まれに、古いデータ セットを処理してしまう場合があります。 また、アプリケーションが読み取り/書き込みセッションを使用してデータを書き込み、読み取り専用セッションを使用してすぐに読み取る場合、最新データがすぐに表示されない可能性があります。
 

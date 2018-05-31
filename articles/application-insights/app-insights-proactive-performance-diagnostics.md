@@ -1,9 +1,9 @@
 ---
-title: "スマート検出 - パフォーマンスの異常 |Microsoft Docs"
-description: "Application Insights は、アプリのテレメトリの高度な分析を実行し、潜在的なパフォーマンスの問題について警告します。 この機能には設定は不要です。"
+title: スマート検出 - パフォーマンスの異常 |Microsoft Docs
+description: Application Insights は、アプリのテレメトリの高度な分析を実行し、潜在的なパフォーマンスの問題について警告します。 この機能には設定は不要です。
 services: application-insights
 documentationcenter: windows
-author: antonfrMSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; antonfr
+ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868936"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -68,8 +69,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 ## <a name="faq"></a>FAQ
 
 * *私のデータは Microsoft のスタッフに見られますか。*
-  * 
-いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](app-insights-data-retention-privacy.md)です。
+  * いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](app-insights-data-retention-privacy.md)です。
 * *Application Insights によって収集されたすべてのデータが分析されるのですか。*
   * 現時点ではすべてではありません。 現在は、要求の応答時間、依存関係の応答時間、およびページの読み込み時間が分析されます。 その他のメトリックの分析も行われる予定です。
 
@@ -85,12 +85,11 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
 * *これにより、[メトリック アラート](app-insights-alerts.md)が置き換えられるのですか。*
-  * 
-いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
+  * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
-* *通知に対して何もしない場合、リマインダーが送信されますか。*
-  * いいえ。各問題についてのメッセージが送信されるのは 1 回のみです。 解決しない問題は、スマート検出のフィード ブレードで更新されます。
+* *通知に応答して何も行わない場合は、リマインダーが受信されますか*
+  * いいえ。各問題についてのメッセージが送信されるのは 1 回のみです。 問題が引き続き発生する場合、その問題は [スマート検出] フィード ブレードで更新されます。
 * *メールが消えました。どうしたらポータルで通知を見つけられますか。*
   * アプリの Application Insights の概要で、 **[スマート検出]** タイルをクリックします。 これで、最大 90 日前までのすべての通知を検索できるようになります。
 
@@ -134,7 +133,7 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 * 問題の診断に役立つリンク
   * 操作の時間を要した場所を表示するためのプロファイラー トレース (このリンクは、プロファイラー トレースの例が検出期間中に対象の操作で収集された場合に使用できます) 
   * メトリック エクスプローラーのパフォーマンス レポート。このレポートでは、対象の操作の時間の範囲/フィルターを詳細に分析できます。
-  * 対象の呼び出しの検索による特定の呼び出しのプロパティの表示
+  * この呼び出しを検索して、特定の呼び出しプロパティを表示します。
   * エラー レポート - カウントが 1 より大きい場合は、パフォーマンス低下の一因となるエラーが対象の操作で発生したことを示します。
 
 ## <a name="dependency-duration-degradation"></a>依存関係の期間の低下
@@ -154,7 +153,7 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 * 問題の診断に役立つリンク
   * 対象の依存関係に関するメトリック エクスプローラーのパフォーマンス レポート
   * 対象の依存関係の呼び出しの検索による呼び出しのプロパティの表示
-  * エラー レポート - カウントが 1 より大きい場合は、期間の低下の一因となる依存関係の呼び出しのエラーが検出期間中に発生したことを示します。 
+  * エラー レポート - カウントが 1 より大きい場合は、検出期間中に、期間の低下の原因になった可能性のある失敗した依存関係呼び出しが存在したことを示します。 
   * 対象の依存関係の期間と数を計算するクエリと Analytics を開きます。  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>低パフォーマンスのパターンのスマート検出 

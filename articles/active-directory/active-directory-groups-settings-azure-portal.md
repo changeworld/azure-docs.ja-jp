@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33760485"
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Azure Active Directory でグループの設定を管理する
 この記事では、Azure Active Directory (Azure AD) でグループの設定を管理する方法について説明します。
@@ -32,7 +33,7 @@ ms.lasthandoff: 05/07/2018
 
    ![[すべてのグループ] ブレードを開く](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
-5. **[グループ - *グループ名*]** ブレードで、**[プロパティ]** を選択します。
+5. **[グループ - \*グループ名\*]** ブレードで、**[プロパティ]** を選択します。
 
    ![[プロパティ] ブレードを開く](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
 6. グループのプロパティの変更が完了したら、 **[保存]** をクリックします。    

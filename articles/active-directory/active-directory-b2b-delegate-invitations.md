@@ -1,26 +1,21 @@
 ---
-title: "Azure Active Directory B2B コラボレーションの招待の委任 | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます"
+title: Azure Active Directory B2B コラボレーションの招待の委任 | Microsoft Docs
+description: Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: facf0f62823c84742986c9fb585990d7fedb2ab1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a4a1303c3992b8c576650859eea65591392b9b20
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929289"
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションの招待の委任
 
@@ -50,15 +45,10 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
-* [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
-* [動的グループと B2B コラボレーション](active-directory-b2b-dynamic-groups.md)
-* [B2B コラボレーション コードと PowerShell サンプル](active-directory-b2b-code-samples.md)
-* [B2B コラボレーション用の SaaS アプリの構成](active-directory-b2b-configure-saas-apps.md)
-* [B2B コラボレーション ユーザーのトークン](active-directory-b2b-user-token.md)
-* [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
-* [Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
-* [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
+- [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [招待を使用せずに B2B コラボレーション ゲスト ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
+- [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
+
+
