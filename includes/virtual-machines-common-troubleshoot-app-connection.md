@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371271"
+---
 Azure 仮想マシン (VM) で実行されているアプリケーションを起動できなかったり、アプリケーションに接続できなかったりする理由はいろいろあります。 アプリケーションが適切なポートで実行されていない、適切なポートでリッスンしていない、リスニング ポートがブロックされている、ネットワーク ルールがトラフィックをアプリケーションに正しく渡していない、などの理由です。 この記事では、問題を検出して解決するための系統的アプローチについて説明します。
 
 RDP または SSH を使用した VM への接続で問題が発生している場合は、最初に、次のいずれかの記事を参照してください。
@@ -8,7 +25,7 @@ RDP または SSH を使用した VM への接続で問題が発生している�
 > [!NOTE]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../articles/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]**をクリックします。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 
 ## <a name="quick-start-troubleshooting-steps"></a>簡単なトラブルシューティング手順
 アプリケーションへの接続に問題がある場合は、次の一般的なトラブルシューティング手順を実行してください。 各手順の実行後に、アプリケーションへの接続を再度試してください。
@@ -35,8 +52,8 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 2. Azure 仮想マシン。
    * VM 自体は正常に実行され、要求に応答しているか。
 3. Azure のネットワーク エンドポイント。
-   * クラシック デプロイメント モデルの仮想マシンのクラウド サービス エンドポイント。
-   * Resource Manager デプロイメント モデルの仮想マシンのネットワーク セキュリティ グループと受信 NAT 規則。
+   * クラシック デプロイ モデルの仮想マシンのクラウド サービス エンドポイント。
+   * Resource Manager デプロイ モデルの仮想マシンのネットワーク セキュリティ グループと受信 NAT 規則。
    * ユーザーから VM/アプリケーションへのトラフィック フローは、期待どおりのポートで行われているか。
 4. インターネット エッジ デバイス。
    * 所定のファイアウォール規則がトラフィック フローを適切に処理しているか。
@@ -90,16 +107,16 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 アプリケーションにアクセスできない場合は、次の設定をご確認ください。
 
-* クラシック デプロイメント モデルを使用して作成された VM:
+* クラシック デプロイ モデルを使用して作成された VM:
   
   * VM のエンドポイント構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
   * エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうかを確認します。
   * 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
-* Resource Manager デプロイメント モデルを使用して作成された VM:
+* Resource Manager デプロイ モデルを使用して作成された VM:
   
   * VM の受信 NAT 規則構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
   * ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうかを確認します。
-  * 詳細については、「 [ネットワーク セキュリティ グループ (NSG) について](../articles/virtual-network/virtual-networks-nsg.md)
+  * 詳細については、[ネットワーク セキュリティ グループ](../articles/virtual-network/security-overview.md)に関するページを参照してください。
 
 仮想マシンまたはエンドポイントが負荷分散セットのメンバーである場合:
 

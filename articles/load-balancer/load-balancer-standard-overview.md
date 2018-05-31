@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775232"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362313"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -120,7 +120,7 @@ HA ポートの負荷分散ルールでは、ネットワーク仮想アプラ�
 
 Standard Load Balancer は仮想ネットワークに完全にオンボードされます。  仮想ネットワークは、プライベートのクローズ ネットワークです。  Standard Load Balancer と Standard パブリック IP アドレスは、この仮想ネットワークに仮想ネットワークの外部からアクセスできるように設計されているので、これらのリソースは、ユーザーがオープンしない限り、既定ではクローズになります。 つまり、トラフィックを明示的に許可し、許可されたトラフィックをホワイトリストに登録するには、ネットワーク セキュリティ グループ (NSG) が使われるようになっています。  仮想データ センター全体を作成し、それを何がいつ使用できるようにする必要があるかを、NSG によって決定できます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合は、トラフィックがこのリソースに到達することを許可できません。
 
-NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関する記事をご覧ください。
+NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関する記事をご覧ください。
 
 ### <a name="outbound"></a> 送信接続
 
@@ -225,6 +225,8 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 - Load Balancer のフロントエンドには、グローバルな仮想ネットワークのピアリングを通じてアクセスすることはできません。
 - [サブスクリプションの移動操作](../azure-resource-manager/resource-group-move-resources.md)は、Standard SKU LB および PIP リソースではサポートされていません。
 - VNet およびその他の Microsoft プラットフォーム サービスなしの Web Worker ロールにアクセスできるのは、プリ VNet サービスおよびその他のプラットフォーム サービスの動作の副作用により、内部の Standard Load Balancer が使用される場合のみです。 各サービス自体または基になるプラットフォームは予告なく変更される場合があるため、これに依存しないでください。 内部の Standard Load Balancer のみを使用する場合は、必要に応じて、[送信接続](load-balancer-outbound-connections.md)を明示的に作成する必要があることを常に想定する必要があります。
+- Load Balancer は TCP または UDP 製品であり、これらの特定の IP プロトコルに対する負荷分散とポート フォワーディングを行います。  負荷分散規則と受信 NAT 規則は TCP および UDP についてサポートされており、ICMP を含む他の IP プロトコルについてはサポートされていません。 Load Balancer は、UDP または TCP のフローのペイロードを終了したり、それに応答したり、それ以外の対話を行うことはありません。 プロキシではありません。 フロントエンドへの接続の検証が、負荷分散または受信 NAT 規則 (TCP または UDP) で使用されるのと同じプロトコルの帯域内で成功する必要があり、"_かつ_"、仮想マシンの少なくとも 1 つがクライアントに対するフロントエンドからの応答を生成する必要があります。  Load Balancer フロントエンドからの帯域内応答を受け取らない場合は、仮想マシンが応答できないことを示します。  応答できる仮想マシンがない状態で、Load Balancer フロントエンドと対話することはできません。  これは、[ポート マスカレード SNAT](load-balancer-outbound-connections.md#snat) が TCP および UDP に対してのみサポートされている送信接続にも当てはまります。ICMP などの他の IP プロトコルも失敗します。  軽減のためにインスタンスレベルのパブリック IP アドレスを割り当てます。
+- 仮想ネットワーク内のプライベート IP アドレスからパブリック IP アドレスに遷移するときに[送信接続](load-balancer-outbound-connections.md)を提供するパブリック ロード バランサーとは異なり、内部ロード バランサーは、内部ロード バランサーのフロントエンドへの送信発信接続を変換しません (両方ともプライベート IP アドレス空間内にあるため)。  これにより、変換が必要ない固有内部 IP アドレス空間内の SNAT 枯渇が発生する可能性が回避されます。  副作用として、バックエンド プール内の VM からの送信フローが、それが存在するプール内の内部ロード バランサーのフロントエンド サーバーへのフローを試み、"_かつ_"、それ自体にマップバックされている場合、フローの両方のレッグは一致せず、フローは失敗します。  フローが、フロントエンドへのフローを作成したバックエンド プール内の同じ VM にマップバックしなかった場合、フローは成功します。   フローがそれ自体にマップバックする場合、送信フローは VM からフロントエンドに発信されるように見え、対応する受信フローは VM からそれ自体に発信されるように見えます。 ゲスト OS の観点からは、同じフローの受信部分と送信部分は、仮想マシン内と一致しません。 送信元と送信先が一致しないため、TCP スタックは、同じフローのこれらの半分を、同じフローの一部と認識しません。  フローがバックエンド プール内の他の VM にマップする場合、フローの半分は一致し、VM はフローに正常に応答できます。  このシナリオの現象は、断続的な接続のタイムアウトです。 このシナリオを確実に実現するためのいくつかの一般的な回避策があり (バックエンド プールから、バックエンド プールのそれぞれの内部ロード バランサー フロントエンドへの送信フロー)、それには内部ロード バランサーの背後にあるサード パーティ製プロキシの挿入、または [DSR スタイル規則の使用](load-balancer-multivip-overview.md)が含まれます。  パブリック ロード バランサーを使って軽減できますが、結果として得られるシナリオは、[SNAT の枯渇](load-balancer-outbound-connections.md#snat)が発生しやすいでの、慎重に管理されている場合を除き、回避する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -236,7 +238,7 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 - [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
 - [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) について学習する。
 - [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)について学習する。
-- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)の詳細を確認する。
+- [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。
 - [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)について学習する
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
 - [Load Balancer](load-balancer-overview.md) について詳しく学習する。

@@ -8,11 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366462"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
 「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
@@ -52,14 +53,14 @@ Azure Search に必要な、暗号化された接続を設定した後は、Azur
 ## <a name="configure-the-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) を構成する
 外部から Azure VM にアクセスできるように、NSG および対応する Azure エンドポイントまたはアクセス制御リスト (ACL) を構成することはめずらしくありません。 独自のアプリケーション ロジックから SQL Azure VM に接続できるようにするために、この構成を既に実行している可能性があります。 Azure Search から SQL Azure VM への接続もこれと同じです。 
 
-以下のリンクでは、VM デプロイメントの NSG を構成する手順を説明しています。 これらの手順を、IP アドレスに基づいて ACL および Azure Search エンドポイントに 使用してください。
+以下のリンクでは、VM デプロイメントの NSG を構成する手順を説明しています。 これらの手順を、IP アドレスに基づいて ACL および Azure Search エンドポイントに使用してください。
 
 > [!NOTE]
-> バックグラウンドの場合は、「 [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+> バックグラウンドの場合は、「 [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/security-overview.md)
 > 
 > 
 
-* **リソース マネージャー** VM の場合は、「 [How to create NSGs for ARM deployments](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)」(ARM デプロイメントの NSG を作成する方法) をご覧ください。 
+* **リソース マネージャー** VM の場合は、「 [How to create NSGs for ARM deployments](../virtual-network/tutorial-filter-network-traffic.md)」(ARM デプロイメントの NSG を作成する方法) をご覧ください。 
 * **クラシック** VM の場合は、「 [How to create NSGs for Classic deployments](../virtual-network/virtual-networks-create-nsg-classic-ps.md)」(クラシック デプロイメントの NSG を作成する方法) をご覧ください。
 
 IP アドレスの指定ではいくつかの課題が生じる可能性がありますが、問題点と考えられる回避策を理解していれば簡単に解決できます。 以降のセクションでは、ACL 内の IP アドレスに関する問題に対処するための推奨事項を説明します。
