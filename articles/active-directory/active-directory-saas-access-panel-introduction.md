@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158273"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34347501"
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
@@ -61,7 +61,7 @@ URL は、Azure AD と統合されたアプリケーションにサインイン�
 
 Azure または Office 365 のサブスクリプションを持っていて、Azure Portal または Office 365 アプリケーションを使っている場合は、サインインし直さなくてもアプリケーションの一覧が表示されます。 認証を行っていない場合は、Azure AD アカウントのユーザー名とパスワードを使ってサインインするように求められます。 組織がフェデレーションを構成している場合は、ユーザー名を入力するだけで十分です。
 
-認証を行うと、管理者によってディレクトリに統合されているアプリケーションを使うことができるようになります。 アプリケーションを Azure AD に統合する方法については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+認証を行うと、管理者によってディレクトリに統合されているアプリケーションを使うことができるようになります。 アプリケーションを Azure AD に統合する方法については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="web-browser-requirements"></a>Web ブラウザーの要件
 
@@ -216,7 +216,7 @@ Azure Portal でアプリケーションの SSO を構成する場合、第 3 �
  
 - SaaS アプリを Azure AD に統合する方法については、[SaaS アプリの統合方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)をご覧ください。
  
-- Azure AD でのアプリの管理について詳しくは、[Azure Active Directory でのシングル サインオンとアプリのアクセスの管理の概要](active-directory-appssoaccess-whatis.md)に関する記事をご覧ください。
+- Azure AD でのアプリの管理について詳しくは、[Azure Active Directory でのシングル サインオンとアプリのアクセスの管理の概要](manage-apps/what-is-single-sign-on.md)に関する記事をご覧ください。
  
 - ユーザーのプロビジョニングについて詳しくは、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」をご覧ください。
 

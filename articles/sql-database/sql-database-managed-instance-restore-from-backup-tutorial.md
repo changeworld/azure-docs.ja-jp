@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426204"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する
 
@@ -56,7 +57,7 @@ Internet Explorer を使用して、URL アドレス ボックスに https://git
    |**アカウントの種類**|BLOB ストレージ||
    |**パフォーマンス**|Standard または Premium|磁気ドライブまたは SSD|
    |**レプリケーション**|ローカル冗長ストレージ||
-   |**アクセス層 (既定)|クールまたはホット||
+   |\*\*アクセス層 (既定)|クールまたはホット||
    |**安全な転送が必須**|無効||
    |**サブスクリプション**|該当するサブスクリプション|サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。|
    |**[リソース グループ]**|以前の手順で作成したリソース グループ|| 

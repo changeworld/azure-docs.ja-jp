@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33780230"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -154,7 +155,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 以下に定義した **UploadFile** メソッドは、(.NET SDK Extensions で定義されている) **CreateFromFile** を呼び出します。 **CreateFromFile** によって、指定されたソース ファイルのアップロード先となる新しいアセットが作成されます。
 
-**CreateFromFile** メソッドの **AssetCreationOptions 引数には、次のいずれかの資産作成オプションを指定できます。
+**CreateFromFile** メソッドの \*\*AssetCreationOptions 引数には、次のいずれかの資産作成オプションを指定できます。
 
 * **None** : 暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
   プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。

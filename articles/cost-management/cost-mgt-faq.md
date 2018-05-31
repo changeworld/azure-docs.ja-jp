@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302741"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168651"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
@@ -149,4 +149,4 @@ Azure Resource Manager アクセスを追加し、データが収集されると
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn レポートでは、レポートあたり複数の AD テナントが表示されますか
 
-はい。 自身の AD テナントごとに[対応するクラウド アカウント エンティティを作成](tutorial-user-access.md#create-and-manage-entities)できます。 その後、すべての Azure AD テナント データと、アマゾン ウェブ サービス、Google Cloud Platform など、他のクラウド プラットフォーム プロバイダーを表示できます。
+はい。 自身の AD テナントごとに[対応するクラウド アカウント エンティティを作成](tutorial-user-access.md#create-entities)できます。 その後、すべての Azure AD テナント データと、アマゾン ウェブ サービス、Google Cloud Platform など、他のクラウド プラットフォーム プロバイダーを表示できます。

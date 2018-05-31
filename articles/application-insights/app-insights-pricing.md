@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771400"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
 
@@ -34,17 +35,14 @@ Application Insights の課金のしくみについてご質問がある場合�
 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格][pricing]」をご覧ください。
 
 > [!NOTE]
-> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)をご確認ください。
+> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)をご確認ください。
 
 ### <a name="basic-plan"></a>Basic プラン
 
 Basic プランは、新しい Application Insights リソースを作成する場合の既定の価格プランです。 Basic プランは、Operations Management Suite サブスクリプションをご利用のお客様を除くすべてのお客様に最適です。
 
-* Basic プランでは、データ ボリュームによって課金されます。 データ ボリュームとは、Application Insights で受信したテレメトリのバイト数です。 
-    
-    データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。
-
-    [Analytics にインポートされた表形式データ](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。
+* Basic プランでは、データ ボリュームによって課金されます。 データ ボリュームとは、Application Insights で受信したテレメトリのバイト数です。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Analytics にインポートされた表形式データ](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。
+* アプリケーションのデータ ボリューム料金は、2018 年 4 月から**データ インジェスト**という新しい課金メーターで報告されるようになりました。 この新しいメーターは Applications Insights や Log Analytics などの監視テクノロジで共有され、現在は **App Services** というサービス名の下に表示されます (間もなく **Log Analytics** に変更されます)。 
 * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。
 * 2018 年 4 月の時点で、Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)と [Azure Log Analytics コネクタ](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)を追加料金なしでご利用いただけます。
 

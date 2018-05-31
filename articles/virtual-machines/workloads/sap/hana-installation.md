@@ -14,18 +14,19 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778598"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
 このガイドを読む前に、確認しておく必要がある重要な定義を以下に示します。 「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」で、HANA L インスタンス ユニットの次の 2 種類のクラスを紹介しました。
 
 - S72、S72m、S144、S144m、S192、S192m - "Type I クラス" の SKU と呼びます。
-- S384、S384m、S384xm、S576、S768、S960 - "Type II クラス" の SKU と呼びます。
+- S384、S384m、S384xm、S576m、S768m、S960m - "Type II クラス" の SKU と呼びます。
 
 クラス指定子は、HANA L インスタンス SKU に基づいてさまざまな機能や要件を最終的に参照するために、HANA L インスタンスのドキュメント全体にわたって使用されます。
 

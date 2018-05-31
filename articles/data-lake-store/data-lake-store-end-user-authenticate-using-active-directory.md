@@ -8,15 +8,17 @@ manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 11aed2ee2af239b02375a2d90e2544b4b45b2d41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 39ee32ec8b1d005aac12cb88262d7e2f37898721
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197139"
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33938581"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証
 > [!div class="op_single_selector"]

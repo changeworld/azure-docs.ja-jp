@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f0b0a2f29a1c14477fcd52e03fdfc47fee728c78
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 54e830f2ead2887c941d81a97ed619ae5cb1c750
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34348395"
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>チュートリアル: Azure Active Directory と TrackVia の統合
 
@@ -31,7 +31,7 @@ TrackVia と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に TrackVia にサインオン (シングル サインオン) できるように、設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -222,7 +222,7 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

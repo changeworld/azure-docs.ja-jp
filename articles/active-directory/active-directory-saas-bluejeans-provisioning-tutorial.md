@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: 9b071d166f741df523d6343ba771b7a29cd4a303
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 522d94e2a6fbd8e7eb32941e2cab59de7b28384c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32139663"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337250"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル: BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -152,7 +152,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>次の手順
 

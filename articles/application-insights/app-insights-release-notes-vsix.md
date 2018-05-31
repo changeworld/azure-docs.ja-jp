@@ -1,9 +1,9 @@
 ---
-title: "開発者分析用 Visual Studio 拡張機能のリリース ノート"
-description: "開発者分析用 Visual Studio ツールの更新内容。"
+title: 開発者分析用 Visual Studio 拡張機能のリリース ノート
+description: 開発者分析用 Visual Studio ツールの更新内容。
 services: application-insights
-documentationcenter: 
-author: acearun
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: mbullwin
-ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; aruna
+ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869548"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools のリリース ノート
 
@@ -167,7 +168,7 @@ Visual Studio からベータ版配布用にビルドをアップロードする
 
 ![Upload dialog for Universal Windows apps](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-アップロードするコンテンツ (.appxbundle ファイルまたは .appx ファイル) を選択し、ウィザードでリリース オプションを選択します。 必要に応じて、次のページでリリース ノートを追加できます。 **[Finish (終了)]** を選択してアップロードを開始します。
+アップロードするコンテンツ (.appxbundle または .appx ファイル) を選択してから、ウィザードでリリース オプションを選択します。 必要に応じて、次のページでリリース ノートを追加できます。 **[Finish (終了)]** を選択してアップロードを開始します。
 
 アップロードが完了すると、HockeyApp の通知画面に確認メッセージと HockeyApp ポータルのアプリへのリンクが表示されます。
 
@@ -221,7 +222,7 @@ ASP.NET アプリケーションと Application Insights SDK がある場合は�
 **Application Insights が既に追加されている場合:**
 
 1. プロジェクト ノードを右クリックし、**[Application Insights]** をクリックして、**[Application Insights の構成]** をクリックします。 構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。
-2. または、ソリューションをビルドするときに、画面右上に表示されるポップアップ ウィンドウの **[構成]**をクリックします。
+2. または、ソリューションをビルドするときに、画面右上に表示されるポップアップ ウィンドウの **[構成]** をクリックします。
 
 ![Logging notification](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
@@ -289,8 +290,3 @@ Visual Studio の [診断ツール] ページで、ローカルにあるテレ�
 
 ![[新しいプロジェクト] ダイアログ](./media/app-insights-release-notes-vsix/newproject.png)
 
-### <a name="device-support"></a>デバイスのサポート
-*Connect();* 2015 において、Microsoft は、モバイル デバイス向けのアプリ開発を支援する機能として HockeyApp を [発表](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/) しました。 HockeyApp は、テスト担当者へのベータ版ビルドの配布、アプリのすべてのクラッシュの収集と分析、およびお客様からのフィードバックの直接収集を支援します。
-HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、あらゆるプラットフォームのアプリに対応しています。
-
-Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio の連携をさらに進化させる予定です。 現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。 詳細については、 [ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) をご覧ください。

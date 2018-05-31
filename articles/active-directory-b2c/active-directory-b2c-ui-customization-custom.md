@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: f92629a3a5d20cce050aa7f124b140b1f4eb32d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 41b756855ea91db291f4fdb5a963993de4b9cd7e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200860"
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズの構成
 
@@ -87,10 +88,10 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 3. **[名前]** に「**$root**」と入力します。
 4. **[Access type]** (アクセスの種類) を **[Blob]** に設定します。
 5. **$root** をクリックして、新しいコンテナーを開きます。
-6. **[アップロード]**をクリックします。
+6. **[アップロード]** をクリックします。
 7. **[ファイルの選択]** の横にあるフォルダー アイコンをクリックします。
 8. 先ほど「[ページ UI のカスタマイズ](#the-page-ui-customization-feature)」セクションで作成した **customize-ui.html** に移動します。
-9. **[アップロード]**をクリックします。
+9. **[アップロード]** をクリックします。
 10. アップロードした customize-ui.html BLOB を選択します。
 11. **[URL]** の横にある **[コピー]** をクリックします。
 12. ブラウザーで、コピーした URL を貼り付けて、そのサイトに移動します。 サイトにアクセスできない場合は、コンテナーのアクセスの種類が **[BLOB]** に設定されていることを確認してください。
@@ -103,13 +104,13 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 >サンプル HTML と CSS コンテンツを使用して UI のカスタマイズ機能を試すことができます。 Blob Storage アカウントにサンプル コンテンツをアップロードし、構成する[簡単なヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)が提供されています。 このツールを使用する場合は、「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」に進んでください。
 
 1. **[設定]** の下にある **[ストレージ]** ブレードで、**[CORS]** を開きます。
-2. **[追加]**をクリックします。
+2. **[追加]** をクリックします。
 3. **[Allowed origins]\(許可されたオリジン\)** にアスタリスク (\*) を入力します。
 4. **[使用できる動詞]** ボックスの一覧で、**[GET]** と **[OPTIONS]** の両方を選択します。
 5. **[許可されたヘッダー]** にアスタリスク (\*) を入力します。
 6. **[公開されるヘッダー]** にアスタリスク (\*) を入力します。
 7. **[最大期間 (秒)]** に「**200**」と入力します。
-8. **[追加]**をクリックします。
+8. **[追加]** をクリックします。
 
 ## <a name="test-cors"></a>CORS のテスト
 

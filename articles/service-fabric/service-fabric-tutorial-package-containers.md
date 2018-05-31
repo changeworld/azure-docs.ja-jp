@@ -1,14 +1,14 @@
 ---
-title: "Service Fabric コンテナー アプリケーションをパッケージ化およびデプロイする | Microsoft Docs"
-description: "このチュートリアルでは、Yeoman を使用して Azure Service Fabric アプリケーションの定義を作成し、アプリケーションをパッケージ化する方法について説明します。"
+title: Service Fabric コンテナー アプリケーションをパッケージ化およびデプロイする | Microsoft Docs
+description: このチュートリアルでは、Yeoman を使用して Azure Service Fabric アプリケーションの定義を作成し、アプリケーションをパッケージ化する方法について説明します。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, コンテナー, マイクロサービス, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365387"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>チュートリアル: Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
@@ -45,7 +46,8 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 1. マシンに nodejs と NPM をインストールします。 Mac OSX ユーザーは、Homebrew パッケージ マネージャーを使用する必要があります
 
     ```bash
-    sudo apt-get install npm && sudo apt install nodejs-legacy
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
+    sudo apt-get install -y nodejs 
     ```
 2. NPM からマシンに Yeoman テンプレート ジェネレーターをインストールします 
 
@@ -247,11 +249,11 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
 ./install.sh
 ```
 
-ブラウザーを開いて、Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
+ブラウザーを開いて､Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
 
 ![Service Fabric Explorer][sfx]
 
-実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80 )。 Web UI に Voting アプリケーションが表示されます。
+実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80)。 Web UI に Voting アプリケーションが表示されます。
 
 ![Voting アプリケーション][votingapp]
 

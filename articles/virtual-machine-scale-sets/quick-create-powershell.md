@@ -16,11 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
 ms.author: iainfou
-ms.openlocfilehash: ee3042bd50ec54a16f4a52ecf6625cb8100e13f9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b50c72756f96a8f7d121c72f9f24065f810852ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362773"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure PowerShell を使用して仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
@@ -29,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.6.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 6.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
@@ -44,7 +45,7 @@ New-AzureRmVmss `
   -SubnetName "mySubnet" `
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicy "Automatic"
+  -UpgradePolicyMode "Automatic"
 ```
 
 すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。

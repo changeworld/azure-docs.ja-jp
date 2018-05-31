@@ -16,11 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: c161b8fb70f20ef7d82834e6c61daff759726b93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895326"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -236,9 +237,9 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)に関するページを参照してください。
   
 
-### <a name="how-do-i-remove-deprecated-certificates"></a>使用されていない証明書を削除するにはどうすればよいですか? 
+### <a name="how-do-i-remove-deprecated-certificates"></a>非推奨の証明書を削除するにはどうすればよいですか? 
 
-今後使用しない証明書を削除するには、コンテナーの証明書一覧からその古い証明書を削除します。 コンピューターに残しておきたい証明書はすべて一覧に残しておいてください。 この操作ですべての VM から証明書が削除されるわけではありません。 また、仮想マシン スケール セットに作成された新しい VM にその証明書が追加されることもありません。 
+今後非推奨の証明書を削除するには、コンテナーの証明書一覧からその古い証明書を削除します。 コンピューターに残しておきたい証明書はすべて一覧に残しておいてください。 この操作ですべての VM から証明書が削除されるわけではありません。 また、仮想マシン スケール セットに作成された新しい VM にその証明書が追加されることもありません。 
 
 既存の VM から証明書を削除するには、証明書ストアから証明書を手動で削除するカスタム スクリプト拡張機能を作成する必要があります。
  
@@ -450,9 +451,9 @@ Log Analytics と統合する仮想マシン スケール セット テンプレ
 
 既存の VM でサービス復旧を実行した場合、これは VM の再起動と同様であり、拡張機能は再実行されません。 既存の VM を再イメージ化した場合、これは OS ドライブをソース イメージに置き換えた場合と同様です。 最新モデルの特性 (拡張機能など) が実行されます。
  
-### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-azure-ad-domain"></a>仮想マシン スケール セットを Azure AD ドメインに参加させるにはどうすればよいですか。
+### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>仮想マシン スケール セットを Active Directory ドメインに参加させるにはどうすればよいですか。
 
-仮想マシン スケール セットを Azure Active Directory (Azure AD) ドメインに参加させるには、拡張機能を定義してください。 
+仮想マシン スケール セットを Active Directory (AD) ドメインに参加させるには、拡張機能を定義してください。 
 
 拡張機能を定義するには、JsonADDomainExtension プロパティを使用します。
 

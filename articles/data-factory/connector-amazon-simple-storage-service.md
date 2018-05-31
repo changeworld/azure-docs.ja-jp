@@ -8,13 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b2f87c965a7c69614d476f0d931802587f0f1297
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011249"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -93,15 +94,15 @@ Amazon S3 からデータをコピーするには、データセットの type �
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |[はい] |
-| bucketName | S3 バケットの名前。 |[はい] |
-| key | S3 オブジェクト キー。 prefix が指定されていないときにのみ適用されます。 |いいえ  |
-| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 key が指定されていない場合にのみ適用されます。 |いいえ  |
+| bucketName | S3 バケットの名前。 ワイルドカード フィルターはサポートされていません。 |[はい] |
+| key | 指定されたバケットの下にある S3 オブジェクト キーの**名前またはワイルドカード フィルター**です。 "prefix" プロパティが指定されていないときにのみ適用されます。 <br/><br/>ワイルドカード フィルターがサポートされているのは、フォルダー部分ではなくファイル名部分に関してのみです。 使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/>- 例 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- 例 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
+| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 "key" プロパティが指定されていないときにのみ適用されます。 |いいえ  |
 | version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
-> [!NOTE]
-> **bucketName とキーの組み合わせ**によって S3 オブジェクトの場所が指定されます。バケットは S3 オブジェクトのルート コンテナーであり、キーは、S3 オブジェクトへの完全パスです。
+>[!TIP]
+>フォルダーの下のすべてのファイルをコピーするには、バケットに **bucketName**、フォルダー部分に **prefix** を指定します。<br>特定の名前の単一のファイルをコピーするには、バケットに **bucketName**、フォルダー部分とファイル名に **key** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、バケットに **bucketName**、フォルダー部分とファイル名に **key** を指定します。
 
 **例: prefix の使用**
 

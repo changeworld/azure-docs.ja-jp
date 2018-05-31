@@ -16,11 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 700d9759ae4833145c88fcda346a3fc7aec0ed29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a44df847ebc7793cf231c542d2267b267fe59432
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365901"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -35,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.6.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 6.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
 
 
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
@@ -113,7 +114,7 @@ New-AzureRmImage -Image $image -ImageName "myImage" -ResourceGroupName "myResour
 
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>カスタム VM イメージからのスケール セットの作成
-[New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) を使用して、スケール セットを作成します。このとき、`-ImageName` パラメーターを使用して、前の手順で作成したカスタム VM イメージを定義します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。
+[New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) を使用して、スケール セットを作成します。このとき、`-ImageName` パラメーターを使用して、前の手順で作成したカスタム VM イメージを定義します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -124,7 +125,7 @@ New-AzureRmVmss `
   -SubnetName "mySubnet" `
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicy "Automatic" `
+  -UpgradePolicyMode "Automatic" `
   -ImageName "myImage"
 ```
 

@@ -16,11 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fd28b7e1f7407b1d1ee08c2f5774d939852e57b5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6543c8fc337e56d3691c2c2eb5ddea63e72fddda
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365510"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -36,7 +37,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.6.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 6.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
 
 
 ## <a name="default-azure-disks"></a>既定の Azure ディスク
@@ -96,7 +97,7 @@ Premium ディスクは、SSD ベースの高パフォーマンスで待機時�
 ### <a name="attach-disks-at-scale-set-creation"></a>スケール セットの作成時にディスクを接続する
 [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、VM インスタンスのユーザー名とパスワードを入力します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。
 
-`-DataDiskSizeGb` パラメーターを使用して 2 つのディスクを作成します。 1 つ目のディスクのサイズは *64* GB、2 つ目のディスクは *128* GB です。
+`-DataDiskSizeGb` パラメーターを使用して 2 つのディスクを作成します。 1 つ目のディスクのサイズは *64* GB、2 つ目のディスクは *128* GB です。 メッセージが表示されたら、スケール セット内の VM インスタンス用の自分の管理者資格情報を指定します。
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -107,8 +108,8 @@ New-AzureRmVmss `
   -SubnetName "mySubnet" `
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicy "Automatic" `
-  -DataDiskSizeGb 64,128
+  -UpgradePolicyMode "Automatic" `
+  -DataDiskSizeInGb 64,128
 ```
 
 すべてのスケール セット リソースと VM インスタンスを作成して構成するには数分かかります。
