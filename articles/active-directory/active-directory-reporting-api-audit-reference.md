@@ -1,30 +1,35 @@
 ---
-title: "Azure Active Directory 監査 API リファレンス | Microsoft Docs"
-description: "Azure Active Directory 監査 API の概要について説明します。"
+title: Azure Active Directory 監査 API リファレンス | Microsoft Docs
+description: Azure Active Directory 監査 API の概要について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cdf80ff1cc49b1582302d411ee6fcc8f193c021
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: e620a7f488e51a60bff6943135831eea0d12816d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158049"
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 監査 API リファレンス
-このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
-Azure AD レポートは、コードまたは関連ツールを使用して監査データにアクセスできるようにする API を提供します。
-このトピックでは、 **監査 API**に関する参照情報について説明します。
+
+> [!TIP] 
+> 新しい Microsoft Graph API の[レポート](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)を確認してください。これが最終的にこの API に置き換えられます。 
+
+
+この記事は Azure Active Directory (Azure AD) のレポート API に関する記事のコレクションの一部です。 Azure AD レポートは、コードまたは関連ツールを使用して監査データにアクセスできるようにする API を提供します。
+この記事では、**監査 API** に関する参照情報について説明します。
 
 参照:
 
@@ -48,24 +53,23 @@ Azure AD レポートは、コードまたは関連ツールを使用して監�
 ## <a name="prerequisites"></a>前提条件
 Reporting API を使用してこのレポートにアクセスするには、次が必要です。
 
-* [Azure Active Directory Free 以上のエディション](active-directory-editions.md)
+* [Azure Active Directory Free 以上のエディション](active-directory-whatis.md)
 * 「 [Azure AD Reporting API にアクセスするための前提条件](active-directory-reporting-api-prerequisites.md)」の完了。 
 
 ## <a name="accessing-the-api"></a>API へのアクセス
-この API にアクセスするには、 [Graph Explorer](https://graphexplorer2.cloudapp.net) またはプログラム (例: PowerShell) を使用します。 PowerShell に AAD Graph REST 呼び出しで使用される OData フィルターの構文を正しく解釈させるには、バックティック (別名: グレーブ アクセント) 文字を使用して、$ 文字を “エスケープ” する必要があります。 バックティック文字は、 [PowerShell のエスケープ文字](https://technet.microsoft.com/library/hh847755.aspx)として機能し、PowerShell に $ 文字をリテラルに解釈させ、PowerShell 変数名 (例: $filter) と混同させないようにすることができます。
+この API にアクセスするには、 [Graph Explorer](https://graphexplorer2.cloudapp.net) またはプログラム (例: PowerShell) を使用します。 PowerShell に AAD Graph REST 呼び出しで使用される OData フィルターの構文を正しく解釈させるには、バックティック (別名: グレーブ アクセント) 文字を使用して、$ 文字を “エスケープ” します。 バックティック文字は、[PowerShell のエスケープ文字](https://technet.microsoft.com/library/hh847755.aspx)として機能し、PowerShell に $ 文字をリテラルに解釈させ、PowerShell 変数名 (例: $filter) と混同させないようにすることができます。
 
-このトピックでは、Graph Explorer に焦点を当てます。 PowerShell の例については、 「 [PowerShell スクリプト](active-directory-reporting-api-audit-samples.md#powershell-script)」を参照してください。
+この記事では、Graph Explorer に焦点を当てます。 PowerShell の例については、 「 [PowerShell スクリプト](active-directory-reporting-api-audit-samples.md#powershell-script)」を参照してください。
 
 ## <a name="api-endpoint"></a>API エンドポイント
+
 次の URI を使用して、この API にアクセスできます。  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Azure AD 監査 API によって (OData 改ページ調整を使用) 返されるレコードの数に制限はありません。
-レポート データの保持制限については、 [レポートの保持ポリシー](active-directory-reporting-retention.md)を参照してください。
+Azure AD 監査 API によって (OData 改ページ調整を使用) 返されるレコードの数に制限はありません。 レポート データの保持制限については、[レポートの保持ポリシー](active-directory-reporting-retention.md)を参照してください。
 
-この呼び出しはバッチでデータを返します。 各バッチには最大 1000 個のレコードがあります。  
-レコードの次のバッチを取得するには、Next リンクを使用します。 返されるレコードの最初のセットから skiptoken 情報を取得します。 skip トークンは結果セットの最後に配置されます。  
+この呼び出しはバッチでデータを返します。 各バッチには最大 1000 個のレコードがあります。 レコードの次のバッチを取得するには、**Next** リンクを使用します。 返されるレコードの最初のセットから skip トークン情報を取得します。 skip トークンは結果セットの最後に配置されます。  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,14 +77,15 @@ Azure AD 監査 API によって (OData 改ページ調整を使用) 返され�
 
 
 ## <a name="supported-filters"></a>サポートされているフィルター
-フィルターの形式で API 呼び出しによって返されるレコードの数を絞り込むことができます。  
+
+フィルターを利用し、API 呼び出しによって返されるレコードの数を絞り込むことができます。  
 サインイン API 関連データについては、次のフィルターがサポートされています。
 
-* **$top = \<返されるレコードの数\>** - 返されるレコードの数を制限します。 これは負荷の高い操作です。 数千のオブジェクトを取得する場合、このフィルターを使用する必要はりません。     
+* **$top = \<返されるレコードの数\>** - 返されるレコードの数を制限します。 これは負荷の高い操作です。 数千のオブジェクトを取得する場合、このフィルターは使用しないでください。     
 * **$filter = \<フィルター ステートメント\>** - サポートされているフィルター フィールドに基づいて、重要なレコードの種類を指定します。
 
 ## <a name="supported-filter-fields-and-operators"></a>サポートされているフィルター フィールドと演算子
-重要なレコードの種類を指定するには、次のフィルター フィールドの 1 つまたは組み合わせのいずれかを含めることができるフィルター ステートメントを構築します。
+重要なレコードの種類を指定するには、次のフィルター フィールドを 1 つ利用するか、組み合わせてフィルター ステートメントを構築します。
 
 * [activityDate](#activitydate) - 日付または日付範囲を定義します。
 * [category](#category) - フィルターを適用するカテゴリを定義します。
@@ -213,7 +218,7 @@ datetime は UTC 形式にする必要があります。
 **注**:
 
 * 大文字と小文字は区別されない
-* Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity を照会する場合は、完全な名前空間を追加する必要があります。
+* Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity を照会するときに、完全な名前空間を追加します
 
 - - -
 ### <a name="targetobjectid"></a>target/name
@@ -234,10 +239,12 @@ datetime は UTC 形式にする必要があります。
 **注**:
 
 * 大文字と小文字は区別されない 
-* Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity を照会する場合は、完全な名前空間を追加する必要があります。
+* Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity を照会するときに、完全な名前空間を追加します
 
 - - -
 ## <a name="next-steps"></a>次の手順
-* フィルター処理されたシステム アクティビティの例を参照しますか。 [Azure Active Directory 監査 API のサンプル](active-directory-reporting-api-audit-samples.md)に関する記事を確認してください。
-* Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
+
+- フィルター処理されたシステム アクティビティの例を参照しますか。 [Azure Active Directory 監査 API のサンプル](active-directory-reporting-api-audit-samples.md)に関する記事を確認してください。
+
+- Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
 

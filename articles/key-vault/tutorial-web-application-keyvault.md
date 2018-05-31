@@ -1,5 +1,5 @@
 ---
-title: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する | Microsoft Docs
+title: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成するためのチュートリアル | Microsoft Docs
 description: 'チュートリアル: キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する'
 services: key-vault
 documentationcenter: ''
@@ -8,15 +8,16 @@ manager: mbaldwin
 ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 146ea04081a4adebe4a6e9249bb1fe34ba76e3a4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305176"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>チュートリアル: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する
 
@@ -48,24 +49,22 @@ az login
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
-az group create --name ContosoResourceGroup --location eastus
+# To list locations: az account list-locations --output table
+az group create --name "ContosoResourceGroup" --location "East US"
 ```
 
 作成したリソース グループは、このチュートリアルの全体を通して使用します。
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
 
-次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 以下の情報を提供する必要があります。
-
->[!NOTE]
-> このチュートリアル全体でキー コンテナーの名前として "ContosoKeyVault" を使用していますが、一意の名前を使用する必要があります。
+次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 このチュートリアル全体でキー コンテナーの名前として "ContosoKeyVault" を使用していますが、一意の名前を使用する必要があります。 次の情報を指定します。
 
 * コンテナー名: **ContosoKeyVault**
 * リソース グループ名: **ContosoResourceGroup**
 * 場所: **米国東部**
 
 ```azurecli
-az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East US"
 ```
 
 このコマンドの出力では、新しく作成したキー コンテナーのプロパティが表示されます。 次の 2 つのプロパティをメモしておきます。
@@ -85,16 +84,16 @@ az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceG
 次のコマンドを入力して、値 **MySecret** を保存する **AppSecret** というシークレットをキー コンテナーに作成します。
 
 ```azurecli
-az keyvault secret set --vault-name '<YourKeyVaultName>' --name 'AppSecret' --value 'MySecret'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "AppSecret" --value "MySecret"
 ```
 
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
 ```azurecli
-az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
+az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 ```
 
-このコマンドは、URI を含むシークレットの情報を表示します。 これらの手順を完了すると、Azure Key Vault のシークレットに対する URI がわかります。 この情報をメモしてください。 後の手順で必要になります。
+このコマンドは、URI を含むシークレットの情報を表示します。 これらの手順を完了すると、Azure Key Vault のシークレットへの URI がわかります。 この情報をメモしてください。 後の手順で必要になります。
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -122,7 +121,7 @@ az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
 
 ## <a name="modify-the-web-app"></a>Web アプリを変更する
 
-Web アプリケーションでインストールしておく必要のある NuGet パッケージは 2 つあります。 インストールするには、次の手順に従います。
+Web アプリケーションでインストールしておく必要のある NuGet パッケージは 2 つあります。 それらをインストールするには、次の手順に従います。
 
 1. ソリューション エクスプローラーで、Web サイト名を右クリックします。
 2. **[ソリューションの NuGet パッケージの管理...]** を選択します。
@@ -212,8 +211,8 @@ Web アプリケーションでインストールしておく必要のある NuG
 ## <a name="publish-the-web-application-to-azure"></a>Azure に Web アプリケーションを発行する
 
 1. エディターの上にある **[WebKeyVault]** を選択します。
-2. **[発行]** を選択します。
-3. もう一度、**[発行]** を選択します。
+2. **[発行]**、**[開始]** の順に選択します。
+3. 新しい **App Service** を作成し、**[発行]** を選択します。
 4. **[作成]** を選択します。
 
 >[!IMPORTANT]
@@ -227,11 +226,11 @@ Azure Key Vault は、資格情報およびその他のキーやシークレッ�
 2. assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
 
 ```azurecli
-az webapp assign-identity --name WebKeyVault --resource-group ContosoResourcegroup
+az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResourcegroup"
 ```
 
 >[!NOTE]
->これは、ポータルに移動して、Web アプリケーション プロパティの **[マネージド サービス ID]** を **[オン]** に切り替えることと同等です。
+>このコマンドは、ポータルに移動して、Web アプリケーション プロパティの **[マネージド サービス ID]** を **[オン]** に切り替えることと同等です。
 
 ## <a name="grant-rights-to-the-application-identity"></a>アプリケーション ID に権限を付与する
 
@@ -243,14 +242,14 @@ Azure Portal を使用して、キー コンテナーのアクセス ポリシ�
 4. **[プリンシパルの選択]** を選択して、アプリケーション ID を追加します。 これは、アプリケーションと同じ名前になります。
 5. **[OK]** を選択します。
 
-これで、Azure の自分のアカウントとアプリケーション ID に、キー コンテナーからの情報を読み取る権限が付与されました。 ページを更新すると、サイトのランディング ページが表示されます。 **[About]\(詳細\)** を選択すると、 キー コンテナーに格納した値が表示されます。
+これで、Azure の自分のアカウントとアプリケーション ID に、キー コンテナーからの情報を読み取る権限が付与されました。 ページを更新すると、サイトのランディング ページが表示されます。 **[About]\(詳細\)** を選択すると、キー コンテナーに格納した値が表示されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 リソース グループとそのすべてのリソースを削除するには、**az group delete** コマンドを使用します。
 
   ```azurecli
-  az group delete -n ContosoResourceGroup
+  az group delete -n "ContosoResourceGroup"
   ```
 
 ## <a name="next-steps"></a>次の手順
