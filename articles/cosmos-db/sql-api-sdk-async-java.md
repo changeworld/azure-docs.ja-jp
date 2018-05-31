@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/18/2018
 ms.author: sngun
-ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9dae401bc007b78d8ee3c6993735650e3b26b9d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359528"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -44,7 +45,7 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
 
-<tr><td>**作業開始**</td><td>[Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
+<tr><td>**はじめに**</td><td>[Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
 
 <tr><td>**Code sample**</td><td>[Github](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
 
@@ -54,6 +55,18 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
+* 一意なインデックス ポリシーのサポートが追加されました。
+* フィード オプションに、応答継続トークンのサイズを制限するためのサポートが追加されました。
+* クロス パーティション クエリに、パーティション分割のサポートが追加されました。
+* Json のタイムスタンプ シリアル化のバグを修正しました ([github #32](https://github.com/Azure/azure-cosmosdb-java/issues/32))。
+* Json 列挙型のシリアル化のバグを修正しました。
+* サイズが 2 MB のドキュメントを管理する際のバグを修正しました ([github #33](https://github.com/Azure/azure-cosmosdb-java/issues/33))。
+* バグのため、依存関係 com.fasterxml.jackson.core:jackson-databind が 2.9.5 にアップグレードされました ([jackson-databind: github #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
+* バグのため、rxjava-extras への依存関係が 0.8.0.17 にアップグレードされました ([rxjava-extras: github #30](https://github.com/davidmoten/rxjava-extras/issues/30))。
+* pom ファイル内のメタデータの記述が、ドキュメントの残りの部分とインラインとなるように更新されました。
+* 構文の改善 ([github #41](https://github.com/Azure/azure-cosmosdb-java/issues/41))、([github #40](https://github.com/Azure/azure-cosmosdb-java/issues/40))。
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * クエリでのバック プレッシャーのサポートが追加されました。
@@ -79,6 +92,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.0.2](#1.0.2) |2018 年 5 月 18 日|--- |
 | [1.0.1](#1.0.1) |2018 年 4 月 20 日|--- |
 | [1.0.0](#1.0.0) |2018 年 2 月 27 日|--- |
 

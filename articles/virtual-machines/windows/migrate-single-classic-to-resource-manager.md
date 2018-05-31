@@ -1,6 +1,6 @@
 ---
 title: ARM Managed Disk VM にクラシック VM を移行する | Microsoft Docs
-description: Resource Manager デプロイメント モデルで、1 つの Azure VM をクラシック デプロイメント モデルから Managed Disks に移行します。
+description: Resource Manager デプロイ モデルで、1 つの Azure VM をクラシック デプロイ モデルから Managed Disks に移行します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: b81f3719f8781cf6cdb724108f4dd730f3380c86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33943583"
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>VHD から新しい ARM Managed Disk VM にクラシック VM を手動で移行する 
 
 
-このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](managed-disks-overview.md) する方法を説明します。
+このセクションでは、Resource Manager デプロイ モデルで、既存の Azure VM をクラシック デプロイ モデルから [Managed Disks](managed-disks-overview.md) に移行する方法を説明します。
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
@@ -92,6 +93,8 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
 
 ダウンタイムに備えてアプリケーションを準備します。 移行を問題なく実行するには、現在のシステムですべての処理を停止する必要があります。 そうすることで初めて、新しいプラットフォームに移行できる安定した状態になります。 ダウンタイム時間は、移行するディスクのデータ量によって異なります。
 
+ここでは、Azure PowerShell モジュール バージョン 6.0.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。
+
 
 1.  最初に、共通のパラメーターを設定します。
 
@@ -121,11 +124,11 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
 
 2.  VHD を使用してクラシック VM から管理 OS ディスクを作成します。
 
-    $osVhdUri パラメーターには、OS VHD の完全な URI を指定してください。 また、移行先のディスクの種類 (Premium または Standard) に合わせて、**-AccountType** で「**PremiumLRS**」または「**StandardLRS**」と入力します。
+    $osVhdUri パラメーターには、OS VHD の完全な URI を指定してください。 また、移行先のディスクの種類 (Premium または Standard) に合わせて、**-AccountType** で「**Premium_LRS**」または「**Standard_LRS**」と入力します。
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
+    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
     -ResourceGroupName $resourceGroupName
     ```
 
@@ -134,14 +137,14 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  データ VHD ファイルから管理データ ディスクを作成し、新しい VM に追加します。
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreationDataCreateOption Import '
+    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
     -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
     
     $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
