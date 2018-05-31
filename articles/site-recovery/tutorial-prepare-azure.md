@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212791"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
@@ -47,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。
 
 1. [Azure Portal](https://portal.azure.com) のメニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** を選択します。
-2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** という名前を使用します。 名前は Azure 内で一意にする必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
+2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** を使用します。 選択する名前は Azure 内で一意である必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
 3. **[デプロイ モデル]** で、**[Resource Manager]** を選択します。
 4. **[アカウントの種類]** で **[汎用]** を選択します。 **[パフォーマンス]** で **[Standard]** を選択します。 Blob ストレージを選択しないでください。
 5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。
@@ -62,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-vault"></a>コンテナーの作成
 
 1. Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]\(Backup と Site Recovery\)** の順に選択します。
-2. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 このチュートリアルでは **ContosoVMVault** を使用します。
+2. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
 3. **[リソース グループ]** で、**contosoRG** という名前の既存のリソース グループを選択します。
 4. **[場所]** で、この一連のチュートリアルで使用している Azure リージョン **[西ヨーロッパ]** を指定します。
 5. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** > **[作成]** の順に選択します。

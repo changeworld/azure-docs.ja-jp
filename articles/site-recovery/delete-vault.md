@@ -7,13 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/16/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 62792747b4efe2de4c22af6f0886503d7d63ed44
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1c069e8b09f71ac46017974dfd94945c404b16ba
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209894"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Site Recovery コンテナーを削除する
 依存関係により、Azure Site Recovery コンテナーが削除できない場合があります。 実行する必要のあるアクションは、サイトの回復シナリオ (VMware から Azure、Hyper-v (System Center Virtual Machine Manager あり/なし) から Azure と Azure Backup) によって異なります。 Azure Backup で使用されているコンテナーを削除するには、「[Azure のバックアップ コンテナーを削除する](../backup/backup-azure-delete-vault.md)」を参照してください。
@@ -69,6 +70,8 @@ ms.lasthandoff: 04/19/2018
 
     Select-AzureRmSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzureRmSiteRecoveryVault -Name "vaultname"
+    $vault = Get-AzureRmRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzureRmSiteRecoveryVault -Vault $vault
+    Remove-AzureRmRecoveryServicesVault -Vault $vault
+
+[Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault?view=azurermps-6.0.0) と [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault?view=azurermps-6.0.0) の詳細をご覧ください。

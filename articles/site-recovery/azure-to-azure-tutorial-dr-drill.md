@@ -1,21 +1,22 @@
 ---
-title: "Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する (プレビュー)"
-description: "Azure Site Recovery サービスを使用してセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する方法について説明します。"
+title: Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
+description: Azure Site Recovery サービスを使用してセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/07/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 66ad4f782917d41a0fd1fbbe5ce50de0dda4589e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fb1c41e6fe254fbcbee8cb91a177777ed4e37fbb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208976"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する (プレビュー)
+# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、復旧など、オンプレミスのマシンと Azure 仮想マシン (VM) のディザスター リカバリーを管理し、調整します。
 
@@ -24,6 +25,8 @@ ms.lasthandoff: 02/09/2018
 > [!div class="checklist"]
 > * 前提条件を確認する
 > * 1 台の VM のテスト フェールオーバーを実行する
+
+Azure から Azure へのレプリケーションは、現在プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 
