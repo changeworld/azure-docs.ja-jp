@@ -1,24 +1,21 @@
 ---
-title: カスタム アプリ用の MFA ソフトウェア開発キット | Microsoft Docs
+title: カスタム アプリ用の Azure MFA ソフトウェア開発キット
 description: この記事では、Azure MFA SDK をダウンロードし、それを使用して、カスタム アプリの 2 段階検証を有効にする方法を示します。
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: 1c152f67-be02-42a5-a0c7-246fb6b34377
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: 28efd5a5e9e757f3e2eae64fc770393608c9c028
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 28b48df27bf9b2f7176b886ef684f9281b3c4f37
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866041"
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>カスタム アプリに Multi-Factor Authentication を構築する (SDK)
 
@@ -38,7 +35,7 @@ API は Azure Active Directory に登録されたユーザーにアクセスで�
 
 
 ## <a name="download-the-sdk"></a>SDK のダウンロード
-Azure Multi-Factor SDK のダウンロードには、 [Azure Multi-Factor Auth プロバイダー](concept-mfa-authprovider.md)が必要です。  これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。 SDK は廃止されたため、公開されていた SDK のダウンロード方法は使用できなくなりました。 SDK をダウンロードする必要がある場合は、Microsoft のサポート ケースを開く必要があります。 この SDK は既に SDK を使用しているお客様にのみ提供されます。 新規のお客様には提供されません。
+Azure Multi-Factor SDK のダウンロードには、 [Azure Multi-Factor Auth プロバイダー](concept-mfa-authprovider.md)が必要です。  これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。 SDK は非推奨となったため、公開されていた SDK のダウンロード方法は使用できなくなりました。 SDK をダウンロードする必要がある場合は、Microsoft のサポート ケースを開く必要があります。 この SDK は既に SDK を使用しているお客様にのみ提供されます。 新規のお客様には提供されません。
 
 ## <a name="whats-in-the-sdk"></a>SDK の内容
 SDK には、以下のアイテムが含まれています。

@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193765"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
 このドキュメントでは、トラブルシューティング タスクを使用してオブジェクト同期の問題のトラブルシューティングを行う手順を示します。
@@ -34,6 +35,7 @@ Azure Active Directory (AAD) Connect のバージョン 1.1.749.0 以上のデ�
 4.  [追加のタスク] ページに移動し、[トラブルシューティング] を選択して [次へ] をクリックします。
 5.  トラブルシューティング ページで、[起動] をクリックして PowerShell でトラブルシューティング メニューを起動します。
 6.  メイン メニューで、[オブジェクト同期のトラブルシューティング]\(Troubleshoot Object Synchronization\) を選択します。
+![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>入力パラメーターのトラブルシューティング
 トラブルシューティング タスクでは、次の入力パラメーターが必要です。
@@ -47,6 +49,8 @@ Azure Active Directory (AAD) Connect のバージョン 1.1.749.0 以上のデ�
 1.  オブジェクトが Azure Active Directory に同期される場合は、UPN の不一致を検出します
 2.  オブジェクトがドメイン フィルタリングによってフィルター処理されるかどうかを確認します
 3.  オブジェクトが OU フィルタリングによってフィルター処理されるかどうかを確認します
+4.  リンクされたメールボックスによってオブジェクトの同期がブロックされているかどうかを確認します
+5. オブジェクトが同期されることになっていない動的配布グループかどうかを確認します
 
 このセクションの残りの部分では、タスクによって返される具体的な結果について説明します。 各ケースでは、タスクによって分析が示され、その後、問題を解決するための推奨の操作が示されます。
 
@@ -76,9 +80,19 @@ Azure AD テナントの DirSync 機能 'SynchronizeUpnForManagedUsers' が無�
 ドメインの実行プロファイル/実行スッテップがないため、オブジェクトはスコープ外となります。 下記の例では、オブジェクトの属しているドメインにフル インポート実行プロファイルの実行ステップがないため、オブジェクトが同期スコープ外となっています。
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
-### <a name="object-is-filtered-due-to-ou-filtering"></a>オブジェクトが OU フィルタリングによってフィルター処理されている
-OU フィルタリング構成によって、オブジェクトは同期スコープ外となります。 下記の例では、オブジェクトは OU=NoSync,DC=bvtadwbackdc,DC=com に属しています。この OU は同期スコープに含まれません。
-![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+## <a name="object-is-filtered-due-to-ou-filtering"></a>オブジェクトが OU フィルタリングによってフィルター処理されている
+OU フィルタリング構成によって、オブジェクトは同期スコープ外となります。 下記の例では、オブジェクトは OU=NoSync,DC=bvtadwbackdc,DC=com に属しています。この OU は同期スコープに含まれません。</br>
+
+![OU](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+
+## <a name="linked-mailbox-issue"></a>リンクされたメールボックスの問題
+リンクされたメールボックスは、別の信頼できるアカウント フォレストにある外部マスター アカウントに関連付けられることが想定されています。 そのような外部マスター アカウントが存在しない場合、Azure AD Connect は、Exchange フォレスト内のリンクされたメールボックスに対応するユーザー アカウントを、Azure AD テナントに同期しません。</br>
+![リンクされたメールボックス](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch12.png)
+
+## <a name="dynamic-distribution-group-issue"></a>動的配布グループの問題
+オンプレミスの Active Directory と Azure Active Directory の間にはさまざまな相違があるため、Azure AD Connect は動的配布グループを Azure AD テナントに同期しません。
+
+![動的配布グループ](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch13.png)
 
 ## <a name="html-report"></a>HTML レポート
 トラブルシューティング タスクでは、オブジェクトを分析するだけでなく、オブジェクトについてわかっているすべての情報を含んだ、HTML レポートを生成することもできます。 この HTML レポートを必要に応じてサポート チームと共有し、さらなるトラブルシューティングを行うこともできます。

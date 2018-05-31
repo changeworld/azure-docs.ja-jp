@@ -1,9 +1,9 @@
 ---
-title: "Azure での PowerShell を使用した Application Insights の設定 | Microsoft Docs"
-description: "Application Insights にパイプするための Azure 診断の構成を自動化します。"
+title: Azure での PowerShell を使用した Application Insights の設定 | Microsoft Docs
+description: Application Insights にパイプするための Azure 診断の構成を自動化します。
 services: application-insights
 documentationcenter: .net
-author: sbtron
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 46f148cc69a8e36500dc351f74fa87576eb86a6b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1be5e07da1f8d9ba2db6bbe37c84fa242b830d35
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868162"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
 [Microsoft Azure](https://azure.com) は、[Azure Application Insights](app-insights-overview.md) に [Azure 診断を送信するように構成](app-insights-azure-diagnostics.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
@@ -43,10 +44,10 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
      } 
 
 * `nameOfAIAppResource` - Application Insights リソースの名前。
-* `myWebAppName` - Web アプリの ID。
+* `myWebAppName` - Web アプリの ID
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Cloud Service のデプロイの一環としての診断拡張機能の有効化
-`New-AzureDeployment` コマンドレットの `ExtensionConfiguration` パラメーターは、診断構成の配列を受け取ります。 この情報は、 `New-AzureServiceDiagnosticsExtensionConfig` コマンドレットを使用して作成できます。 次に例を示します。
+`New-AzureDeployment` コマンドレットの `ExtensionConfiguration` パラメーターは、診断構成の配列を受け取ります。 この情報は、 `New-AzureServiceDiagnosticsExtensionConfig` コマンドレットを使用して作成できます。 例: 
 
 ```ps
 

@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359881"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!IMPORTANT]
-> Azure App Service をデプロイする前に、Azure Stack 統合システムに 1802 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
+> Azure App Service 1.2 をデプロイする前に、Azure Stack 統合システムに 1804 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
 >
 >
 
@@ -49,15 +50,19 @@ Azure App Service on Azure Stack をデプロイする前に、この記事に�
 
 Azure Stack の 1802 リリースでは、障害ドメインへのサポートが追加されたため、Azure App Service on Azure Stack の新規デプロイメントが障害ドメイン間で分散され、フォールト トレランスを実現します。  1802 更新プログラムのリリース前に Azure Stack に展開されていた Azure App Service の既存の展開の場合は、[こちらのドキュメント](azure-stack-app-service-fault-domain-update.md)で展開を再調整する方法を確認してください。
 
-高可用性のための Azure App Service on Azure Stack に加えて、必要なファイル サーバーと SQL Server インスタンスを高可用性構成で展開します。 
+高可用性のための Azure App Service on Azure Stack に加えて、必要なファイル サーバーと SQL Server インスタンスを高可用性構成で展開します。
 
 ## <a name="get-certificates"></a>証明書を取得する
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure Stack 用の Azure Resource Manager ルート証明書
 
-Azure Stack 統合システムまたは Azure Stack Development Kit ホスト 上の特権エンドポイントにアクセスできるマシンで azurestack\CloudAdmin として実行する PowerShell セッションで、ヘルパー スクリプトを抽出したフォルダーから Get-AzureStackRootCert.ps1 スクリプトを実行します。 このスクリプトは、証明書を作成するために App Service で必要となるスクリプトと同じフォルダーにルート証明書を作成します。
+Azure Stack 統合システムまたは Azure Stack Development Kit ホスト上の特権エンドポイントにアクセスできるマシンで azurestack\CloudAdmin として実行する PowerShell セッションで、ヘルパー スクリプトを抽出したフォルダーから Get-AzureStackRootCert.ps1 スクリプトを実行します。 このスクリプトは、証明書を作成するために App Service で必要となるスクリプトと同じフォルダーにルート証明書を作成します。
 
-| Get-AzureStackRootCert.ps1 パラメーター | 必須または省略可能 | 既定値 | [説明] |
+```PowerShell
+    Get-AzureStackRootCert.ps1
+```
+
+| パラメーター | 必須または省略可能 | 既定値 | [説明] |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | 必須 | AzS-ERCS01 | 特権エンドポイント |
 | CloudAdminCredential | 必須 | AzureStack\CloudAdmin | Azure Stack クラウド管理者のドメイン アカウントの資格情報 |
@@ -80,6 +85,10 @@ Azure Stack 統合システムまたは Azure Stack Development Kit ホスト �
 
 #### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 のパラメーター
 
+```PowerShell
+    Create-AppServiceCerts.ps1
+```
+
 | パラメーター | 必須または省略可能 | 既定値 | [説明] |
 | --- | --- | --- | --- |
 | pfxPassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード |
@@ -93,7 +102,7 @@ Azure Stack 統合システムまたは Azure Stack Development Kit ホスト �
 
 既定のドメイン証明書は、フロントエンド ロールに配置されます。 ユーザー アプリケーションが Azure App Service へのワイルドカードまたは既定のドメイン要求のためにこの証明書を使用します。 この証明書は、ソース管理操作 (Kudu) にも使用されます。
 
-この証明書は .pfx 形式の、3 つのサブジェクトのワイルドカード証明書である必要があります。 これにより、1 つの証明書で、既定のドメインとソース管理操作の SCM エンドポイントの両方に対応できます。
+この証明書は .pfx 形式の、3 つのサブジェクトのワイルドカード証明書である必要があります。 この要件により、1 つの証明書で、既定のドメインとソース管理操作の SCM エンドポイントの両方に対応できます。
 
 | 形式 | 例 |
 | --- | --- |
@@ -130,7 +139,7 @@ ID 用の証明書には、次の形式に一致するサブジェクトが含�
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-## <a name="virtual-network"></a>仮想ネットワーク
+## <a name="virtual-network"></a>Virtual Network
 
 Azure App Service on Azure Stack を使用すると、リソース プロバイダーを既存の仮想ネットワークにデプロイできます。あるいは、App Service によってデプロイメントの一部としてリソース プロバイダーが作成されます。  既存の仮想ネットワークを使用すると、内部 IP を使用して、Azure App Service on Azure Stack で必要なファイル サーバーと SQL Server に接続できます。  Azure App Service on Azure Stack をインストールする前に、仮想ネットワークを次のアドレス範囲とサブネットで構成する必要があります。
 
@@ -138,11 +147,11 @@ Azure App Service on Azure Stack を使用すると、リソース プロバイ�
 
 サブネット
 
-* ControllersSubnet /24
-* ManagementServersSubnet /24
-* FrontEndsSubnet /24
-* PublishersSubnet /24
-* WorkersSubnet /21
+- ControllersSubnet /24
+- ManagementServersSubnet /24
+- FrontEndsSubnet /24
+- PublishersSubnet /24
+- WorkersSubnet /21
 
 ## <a name="prepare-the-file-server"></a>ファイル サーバーを準備する
 
@@ -272,6 +281,9 @@ Azure Stack Development Kit のデプロイの場合は、SQL Server Express 201
 
 Azure App Service on Azure Stack の SQL Server インスタンスは、すべての App Service ロールからアクセスできる必要があります。 SQL Server は、Azure Stack の既定のプロバイダー サブスクリプション内でデプロイできます。 あるいは、組織内の既存のインフラストラクチャーを利用できます (Azure Stack に接続されている場合)。 Azure Marketplace イメージを使用している場合は、それに応じてファイアウォールを構成することを忘れないでください。
 
+>[!NOTE]
+> Marketplace 管理機能により、多数の SQL IaaS 仮想マシン イメージを使用できます。 Marketplace 項目を使用して VM をデプロイする前に、必ず SQL IaaS 拡張機能の最新バージョンをダウンロードしてください。 これらの SQL イメージは、Azure で使用できる SQL VM と同じです。 これらのイメージから作成された SQL VM の場合、IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの機能が提供されます。
+>
 どの SQL Server ロールの場合も、既定のインスタンスまたは名前付きインスタンスを使用できます。 名前付きインスタンスを使用する場合は、手動で SQL Server Browser サービスを開始し、ポート 1434 を開くようにしてください。
 
 >[!IMPORTANT]
@@ -280,7 +292,7 @@ Azure App Service on Azure Stack の SQL Server インスタンスは、すべ�
 
 ## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
-Azure AD サービス プリンシパルで以下をサポートするように構成します。
+Azure AD サービス プリンシパルで以下の操作をサポートするように構成します。
 
 - worker 層での仮想マシン スケール セットの統合。
 - Azure Functions ポータルと高度な開発者ツールのための SSO。
@@ -298,7 +310,7 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 2. [前提条件の手順](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)でダウンロードして展開したスクリプトの場所に移動します。
 3. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 4. **Create-AADIdentityApp.ps1** スクリプトを実行します。 メッセージが表示されたら、Azure Stack デプロイのために使用している Azure AD テナント ID を入力します。 たとえば、「**myazurestack.onmicrosoft.com**」と入力します。
-5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]**を選択します。
+5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
 6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 7. このスクリプトは、テナント Azure AD インスタンス内に新しいアプリケーションを作成します。 PowerShell の出力で返されるアプリケーション ID を書き留めておきます。 インストール時にこの情報が必要になります。
 8. 新しいブラウザー ウィンドウを開き、Azure Active Directory サービス管理者として [Azure Portal](https://portal.azure.com) にサインインします。
@@ -306,10 +318,14 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 10. **[アプリの登録]** を選択します。
 11. 手順 7 の一部として返されたアプリケーション ID を検索します。 一覧に App Service アプリケーションが表示されます。
 12. 一覧で **[アプリケーション]** を選択します。
-13. **[設定]**をクリックします。
+13. **[設定]** をクリックします。
 14. **[必要なアクセス許可]** > **[アクセス許可の付与]** > **[はい]** の順に選択します。
 
-| Create-AADIdentityApp.ps1 パラメーター | 必須または省略可能 | 既定値 | [説明] |
+```PowerShell
+    Create-AADIdentityApp.ps1
+```
+
+| パラメーター | 必須または省略可能 | 既定値 | [説明] |
 | --- | --- | --- | --- |
 | DirectoryTenantName | 必須 | Null | Azure AD テナント ID。 GUID または文字列を指定します。 例として、myazureaaddirectory.onmicrosoft.com があります。 |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例として、adminmanagement.local.azurestack.external があります。 |
@@ -320,7 +336,7 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory フェデレーション サービス アプリケーションを作成する
 
-AD FS によって保護されている Azure Stack 環境の場合、 AD FS サービス プリンシパルで以下をサポートするように構成する必要があります。
+AD FS によって保護されている Azure Stack 環境の場合、 AD FS サービス プリンシパルで以下の操作をサポートするように構成する必要があります。
 
 - worker 層での仮想マシン スケール セットの統合。
 - Azure Functions ポータルと高度な開発者ツールのための SSO。
@@ -337,10 +353,14 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
 2. [前提条件の手順](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)でダウンロードして展開したスクリプトの場所に移動します。
 3. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 4. **Create-ADFSIdentityApp.ps1** スクリプトを実行します。
-5. **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]**を選択します。
+5. **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
 6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 
-| Create-ADFSIdentityApp.ps1 パラメーター | 必須または省略可能 | 既定値 | [説明] |
+```PowerShell
+    Create-ADFSIdentityApp.ps1
+```
+
+| パラメーター | 必須または省略可能 | 既定値 | [説明] |
 | --- | --- | --- | --- |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例として、adminmanagement.local.azurestack.external があります。 |
 | PrivilegedEndpoint | 必須 | Null | 特権エンドポイント。 例として、AzS-ERCS01 があります。 |

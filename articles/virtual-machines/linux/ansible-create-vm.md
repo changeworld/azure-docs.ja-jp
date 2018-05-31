@@ -1,13 +1,13 @@
 ---
-title: "Ansible を使用して Azure で基本的な Linux VM を作成する |Microsoft Docs"
-description: "Ansible を使用して、Azure で基本的な Linux 仮想マシンを作成し管理する方法を説明します"
+title: Ansible を使用して Azure で基本的な Linux VM を作成する |Microsoft Docs
+description: Ansible を使用して、Azure で基本的な Linux 仮想マシンを作成し管理する方法を説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 80406994402b488f4172069b13dca593c470efe4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896165"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Ansible を使用して Azure で基本的な仮想マシンを作成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 他のリソースの場合と同じように、Ansible を使用して、Azure の仮想マシン (VM) を管理できます。 この記事では、Ansible で基本的な VM を作成する方法を説明します。 また、[Ansible を使用して完全な VM 環境を作成する](ansible-create-complete-vm.md)方法についても説明します。
@@ -29,7 +30,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 Ansible で Azure リソースを管理するには、次の項目が必要です。
 
 - ホスト システムにインストールされた Ansible および Azure Python SDK モジュール。
-    - [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[CentOS 7.3](ansible-install-configure.md#centos-73)、[SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) への Ansible のインストール
+    - [CentOS 7.4](ansible-install-configure.md#centos-74)、[Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) への Ansible のインストール
 - Azure の資格情報と、それを使用するように構成された Ansible。
     - [Azure 資格情報の作成と Ansible の構成](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI バージョン 2.0.4 以降。 バージョンを確認するには、`az --version` を実行します。 

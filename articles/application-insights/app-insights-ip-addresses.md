@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: f56810d6520edd19ce757a91712698714902e668
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4ed0c84dfab58f8a92e0f366bb65634b9e3dab82
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935652"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -49,11 +50,6 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 | 構成 |`auth.gfx.ms` | |`443` |
 | 構成 |`login.live.com` | |`443` |
 | インストール |`packages.nuget.org`、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net` (NuGet ダウンロード) | |`443` |
-
-## <a name="hockeyapp"></a>HockeyApp
-| 目的 | URL | IP | ポート |
-| --- | --- | --- | --- |
-| クラッシュ データ |gate.hockeyapp.net |104.45.136.42 |80、443 |
 
 ## <a name="availability-tests"></a>可用性テスト
 これは [可用性 Web テスト](app-insights-monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
@@ -218,7 +214,7 @@ East US
 
 注: *.loganalytics.io ドメインは Log Analytics チームによって所有されています。
 
-## <a name="application-insights-azure-portal-extension"></a>Application Insights Azure Portal 拡張機能
+## <a name="application-insights-azure-portal-extension"></a>Application Insights Azure portal 拡張機能
 
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
@@ -236,14 +232,17 @@ East US
 
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
-| エージェント | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
+| エージェント | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | ポータル | gateway.azureserviceprofiler.net | 動的 | 443
 | Storage | *.core.windows.net | 動的 | 443
 
 ## <a name="snapshot-debugger"></a>スナップショット デバッガー
 
+> [!NOTE]
+> プロファイラーとスナップショット デバッガーは、同じ IP アドレスのセットを共有します。
+
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
-| エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
+| エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71<br/>52.230.124.46<br/>52.230.122.9 | 443
 | ポータル | ppe.gateway.azureserviceprofiler.net | 動的 | 443
 | Storage | *.core.windows.net | 動的 | 443

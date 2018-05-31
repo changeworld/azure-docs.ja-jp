@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9a8b85539ac26629c31e49097fca5c3ce5c5abc2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34350867"
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053372"
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory でのエンタープライズ アプリケーション管理の新機能 
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) では、エンタープライズ アプリケ
 
 ## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーの改良。
 
-[アプリケーション ギャラリー](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)のアプリケーションでも、クラウドに展開しているカスタム アプリケーションでも、開発中の新しいアプリケーションでも、お気に入りのアプリケーションを追加できます。  この新しいエクスペリエンスは、**エンタープライズ アプリケーション**または **[すべてのアプリケーション]** で **[追加]** をクリックすることで開始できます。
+[アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)のアプリケーションでも、クラウドに展開しているカスタム アプリケーションでも、開発中の新しいアプリケーションでも、お気に入りのアプリケーションを追加できます。  この新しいエクスペリエンスは、**エンタープライズ アプリケーション**または **[すべてのアプリケーション]** で **[追加]** をクリックすることで開始できます。
  
   ![アプリケーションの追加](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
