@@ -1,8 +1,8 @@
-﻿---
-title: "Azure Active Directory リスク イベント | Microsoft Docs"
-description: "このトピックでは、リスク イベントの詳細な概要を示します。"
+---
+title: Azure Active Directory リスク イベント | Microsoft Docs
+description: この記事では、リスク イベントの詳細な概要を示します。
 services: active-directory
-keywords: "azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+keywords: azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 author: MarkusVi
 manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 05/14/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e883caa63bde26e13234dde949ce4517b328e3a5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195320"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -39,12 +40,13 @@ ms.lasthandoff: 01/06/2018
 検出されたリスク イベントに対して取得する洞察は、Azure AD サブスクリプションに関連付けられています。 Azure AD Premium P2 エディションでは、基になるすべての検出に関する最も詳細な情報を取得できます。 Azure AD Premium P1 エディションでは、ライセンスに含まれない検出は**追加のリスクが検出されたサインイン**というリスク イベントとして表示されます。
 
 
-このトピックでは、リスク イベントの概要と、リスク イベントを使用して Azure AD の ID を保護する方法について説明します。
+この記事では、リスク イベントの概要と、リスク イベントを使用して Azure AD の ID を保護する方法について説明します。
 
 
 ## <a name="risk-event-types"></a>リスク イベントの種類
 
-リスク イベントの種類のプロパティは、リスク イベント レコードが作成される疑わしいアクションの内容を示しています。  
+リスク イベントの種類のプロパティは、リスク イベント レコードが作成される疑わしいアクションの内容を示しています。
+
 Microsoft は引き続き検出プロセスに投資して、次を実現していきます。
 
 - 既存のリスク イベントの検出精度の向上 
@@ -76,6 +78,8 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 
 このリスク イベントの種類は、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を判別します。 システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。 システムには 30 日間の初期学習期間があり、この間はどの新しい場所にも未知の場所としてのフラグは設定されません。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 
 
+Identity Protection では、基本認証や従来のプロトコルについても、不明な場所からのサインインを検出します。 これらのプロトコルには、クライアント ID などの使い慣れた最新機能がないため、誤検知を減らすのに十分なテレメトリがありません。 検出されるリスク イベントの数を減らすには、最新の認証に移行する必要があります。   
+
 ### <a name="sign-ins-from-infected-devices"></a>感染しているデバイスからのサインイン
 
 このリスク イベントの種類は、ボット サーバーと頻繁に通信していることがわかっている、マルウェアに感染したデバイスからのサインインを示します。 これは、ボット サーバーと接触していた IP アドレスに対してユーザーのデバイスの IP アドレスを関連付けることによって決定されます。 
@@ -86,8 +90,7 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 
 ## <a name="detection-type"></a>検出の種類
 
-検出の種類プロパティは、リスク イベントの検出期間 (リアルタイムまたはオフライン) を示します。  
-現在、リスク イベントのほとんどが、リスク イベント発生後の後処理中にオフラインで検出されます。
+検出の種類プロパティは、リスク イベントの検出期間 (リアルタイムまたはオフライン) を示します。 現在、リスク イベントのほとんどが、リスク イベント発生後の後処理中にオフラインで検出されます。
 
 次の表は、検出されたリスク イベントが関連レポートに表示されるまでの時間を、検出の種類別に示しています。
 
@@ -113,8 +116,7 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 リスク イベントのリスク レベル プロパティは、リスク イベントの重大度と信頼度 (高、中、低) を示します。 このプロパティは、必要なアクションの優先順位を決めるときに役立ちます。 
 
-リスク イベントの重大度は、ID 侵害の予測因子としての信号の強度を表します。  
-信頼度は誤検知の可能性を示します。 
+リスク イベントの重大度は、ID 侵害の予測因子としての信号の強度を表します。 信頼度は誤検知の可能性を示します。 
 
 たとえば、次のように入力します。 
 
@@ -132,8 +134,7 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
 
-匿名 IP アドレスはアカウント侵害をはっきりと示しているわけではないので、このリスク イベントの種類のリスク レベルは "**中**" です。  
-直ちにユーザーに連絡し、匿名 IP アドレスを使用していたかどうかを確認することをお勧めします。
+匿名 IP アドレスはアカウント侵害をはっきりと示しているわけではないので、このリスク イベントの種類のリスク レベルは "**中**" です。 直ちにユーザーに連絡し、匿名 IP アドレスを使用していたかどうかを確認することをお勧めします。
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>特殊な場所へのあり得ない移動
@@ -170,11 +171,11 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 | リスク イベントの種類 | リスク レベル | 検出の種類 |
 | :-- | --- | --- |
 | [資格情報が漏洩したユーザー](#leaked-credentials) | 高 | オフライン |
-| [匿名の IP アドレスからのサインイン](#sign-ins-from-anonymous-ip-addresses) | 中 | リアルタイム |
-| [特殊な場所へのあり得ない移動](#impossible-travel-to-atypical-locations) | 中 | オフライン |
-| [未知の場所からのサインイン](#sign-in-from-unfamiliar-locations) | 中 | リアルタイム |
+| [匿名の IP アドレスからのサインイン](#sign-ins-from-anonymous-ip-addresses) | Medium | リアルタイム |
+| [特殊な場所へのあり得ない移動](#impossible-travel-to-atypical-locations) | Medium | オフライン |
+| [未知の場所からのサインイン](#sign-in-from-unfamiliar-locations) | Medium | リアルタイム |
 | [感染しているデバイスからのサインイン](#sign-ins-from-infected-devices) | 低 | オフライン |
-| [不審なアクティビティのある IP アドレスからのサインイン](#sign-ins-from-ip-addresses-with-suspicious-activity) | 中 | オフライン|
+| [不審なアクティビティのある IP アドレスからのサインイン](#sign-ins-from-ip-addresses-with-suspicious-activity) | Medium | オフライン|
 
 環境内で検出されたリスク イベントはどこで確認できるのでしょうか。
 報告されたリスク イベントは、次の 2 つの場所で確認できます。
@@ -184,5 +185,5 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
  - **Azure AD Identity Protection** - リスク イベントは、[Azure Active Directory Identity Protection](active-directory-identityprotection.md) のレポート機能の一部でもあります。
     
 
-リスク イベントの検出は既に ID 保護の重要な側面となっていますが、リスク イベントに手動で対処することも、条件付きアクセス ポリシーを構成して自動応答を実装することもできます。 詳細については、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
+リスク イベントの検出は既に ID 保護の重要な側面となっていますが、リスク イベントに手動で対処することも、条件付きアクセス ポリシーを構成して自動応答を実装することもできます。 詳しくは、「[Azure Active Directory Identity Protection](active-directory-identityprotection.md)」をご覧ください。
  

@@ -1,13 +1,13 @@
 ---
-title: "Ansible を使用して、Azure の完全な Linux VM を作成する | Microsoft Docs"
-description: "Ansible を使用して、Azure で完全な Linux 仮想マシン環境を作成して管理する方法について説明します。"
+title: Ansible を使用して、Azure の完全な Linux VM を作成する | Microsoft Docs
+description: Ansible を使用して、Azure で完全な Linux 仮想マシン環境を作成して管理する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 5efb666652bf124160df836b5d12305903d907ba
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896182"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Ansible によって Azure に完全な Linux 仮想マシンの環境を作成する
 Ansible を使用すると、環境内のリソースのデプロイと構成を自動化することができます。 Ansible を使用すると、他のリソースと同じように、Azure で仮想マシン (VM) を管理できます。 この記事では、Ansible を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Ansible を使用して基本的な VM を作成する](ansible-create-vm.md)方法も説明します。
@@ -29,7 +30,7 @@ Ansible を使用すると、環境内のリソースのデプロイと構成を
 Ansible で Azure リソースを管理するには、次の項目が必要です。
 
 - ホスト システムにインストールされた Ansible および Azure Python SDK モジュール。
-    - [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[CentOS 7.3](ansible-install-configure.md#centos-73)、[SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) への Ansible のインストール
+    - [CentOS 7.4](ansible-install-configure.md#centos-74)、[Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts)、[SLES 12 SP2](ansible-install-configure.md#sles-12-sp2) への Ansible のインストール
 - Azure の資格情報と、それを使用するように構成された Ansible。
     - [Azure 資格情報の作成と Ansible の構成](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI バージョン 2.0.4 以降。 バージョンを確認するには、`az --version` を実行します。 

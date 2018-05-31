@@ -7,13 +7,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 754b0bdea4ccb93de16fda4eea5e012e0630daea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939029"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン
 
@@ -25,31 +26,30 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-図 1 – Azure リージョン ペアの図
+図 1 – Azure リージョン ペア
 
 | [地理的な場所] | ペアになっているリージョン |  |
 |:--- |:--- |:--- |
 | アジア |東アジア |東南アジア |
 | オーストラリア |オーストラリア東部 |オーストラリア南東部 |
+| ブラジル |ブラジル南部 (2) |米国中南部 |
 | カナダ |カナダ中部 |カナダ東部 |
 | 中国 |中国 (北部) |中国 (東部)|
+| ヨーロッパ |北ヨーロッパ |西ヨーロッパ |
+| ドイツ |ドイツ中部 |ドイツ北東部 |
 | インド |インド中部 |インド南部 |
 | インド |インド西部 (1) |インド南部 |
 | 日本 |東日本 |西日本 |
 | 韓国 |韓国中部 |韓国南部 |
-| 北米 |米国中北部 |米国中南部 |
 | 北米 |米国東部 |米国西部 |
 | 北米 |米国東部 2 |米国中央部 |
-| 北米 |米国西部 2 |米国中西部 |
-| ヨーロッパ |北ヨーロッパ |西ヨーロッパ |
-| 日本 |東日本 |西日本 |
-| ブラジル |ブラジル南部 (2) |米国中南部 |
+| 北米 |米国中北部 |米国中南部 |
+| 北米 |米国西部 2 |米国中西部 
+| 英国 |英国西部 |英国南部 |
+| 米国国防総省 |US DoD East |US DoD Central |
+| 米国政府 |米国政府アリゾナ |米国政府テキサス |
 | 米国政府 |米国政府アイオワ (3) |米国政府バージニア州 |
 | 米国政府 |米国政府バージニア (4) |米国政府テキサス |
-| 米国政府 |米国政府アリゾナ |米国政府テキサス |
-| 米国国防総省 |US DoD East |US DoD Central |
-| 英国 |英国西部 |英国南部 |
-| ドイツ |ドイツ中部 |ドイツ北東部 |
 
 表 1 - Azure リージョン ペアの組み合わせ
 

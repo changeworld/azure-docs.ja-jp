@@ -7,18 +7,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0154ec9f08f81d2aa47c607c05f09309f7c23c7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942430"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して Azure SQL Database から長期的なバックアップ保有期間を構成して復元する
 
 Azure SQL データベースのバックアップを保存し、Azure Portal または PowerShell を使用してコンテナー内のバックアップからデータベースを復元するように Azure Recovery Services コンテナーを構成できます。
+
+> [!NOTE]
+> 2016 年 10 月の長期的なバックアップ保有期間のプレビューの初期リリースの一環として、バックアップは Azure Services Recovery Service コンテナーに保存されていました。 この更新プログラムではこの依存関係は削除されていますが、下位互換性のために元の API は 2018 年 5 月 31 日までサポートされます。 Azure Services Recovery コンテナーのバックアップと操作する必要がある場合は、[Azure Services Recovery Service コンテナーを使用した長期的なバックアップ保有期間](sql-database-long-term-backup-retention-configure-vault.md)に関するページを参照してください。 
+
 
 ## <a name="azure-portal"></a>Azure ポータル
 

@@ -2,18 +2,19 @@
 title: Azure Policy の定義の構造
 description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングとその効果を示すことで、組織でのリソースの規則を確立する方法について説明します。
 services: azure-policy
+keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
-ms.topic: conceptual
+ms.topic: article
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.custom: ''
+ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194650"
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057252"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 

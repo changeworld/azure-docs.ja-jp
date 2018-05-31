@@ -1,27 +1,21 @@
 ---
-title: "Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションでは、Azure AD 有料ライセンスは必要ありませんが、B2B ゲスト ユーザー用の有料機能を利用することもできます。"
+title: Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス | Microsoft Docs
+description: Azure Active Directory B2B コラボレーションでは、Azure AD 有料ライセンスは必要ありませんが、B2B ゲスト ユーザー用の有料機能を利用することもできます。
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 08/09/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.custom: it-pro
-ms.openlocfilehash: d4a739e5cb4dc4a6ccafac683fe913592f985ce2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5709c6db422a2357589f35fd77a2b1681a3e446a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33928866"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
@@ -71,16 +65,7 @@ B2B ゲスト ユーザーとは、パートナー組織から招待されてホ
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+Azure AD B2B コラボレーションに関する以下の記事をご覧ください。
 
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
-* [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
-* [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
-* [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
-* [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
-* [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
-* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)

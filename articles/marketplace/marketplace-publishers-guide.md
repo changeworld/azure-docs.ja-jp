@@ -1,6 +1,6 @@
 ---
 title: Azure Marketplace と AppSource のパブリッシャー ガイド
-description: Azure Marketplace の新しいパブリッシャーのためのステップ バイ ステップ ガイドと公開チェックリスト
+description: アプリ パブリッシャーとサービス パブリッシャー向け Azure Marketplace および AppSource の概要
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -12,15 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30847ff20abf6654e58a0e72a12f04dcd88d5871
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011113"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド
+
+## <a name="overview"></a>概要
 
 これは [Azure Marketplace](https://azuremarketplace.microsoft.com) と [AppSource](https://appsource.microsoft.com) のパブリッシャー ガイドです。 このガイドは、新しいパブリッシャーおよび既存のパブリッシャーが、Azure Marketplace と AppSource のネットショップを利用する方法、アプリケーションとサービスを掲載する方法、および Microsoft とのパートナーシップでビジネスを成長させる方法を理解できるように作られています。 
 
@@ -39,9 +42,11 @@ ms.lasthandoff: 04/28/2018
 
 Azure Marketplace、AppSource、またはこの公開ガイドに関する疑問点については、cloudmarketplace@microsoft.com で Marketplace チームにお問い合わせください。 
 
-## <a name="benefits-of-participating-in-the-marketplace"></a>Marketplace に参加することの利点
+## <a name="benefits"></a>メリット
 
-Azure Marketplace と AppSource は、Microsoft と協力して市場進出活動を行うための出発点であり、ビジネスの成長に弾みを付けるものです。 発売プロモーション、需要創出、共同営業およびマーケティングを使用して、Marketplace カタログをクラウド ビジネス エンジンの中心的な場所にできます。 Marketplace には無料で参加できます。 目標は、Microsoft のお客様と、パートナーのエコシステムが提供する最高のソリューションとサービスを結び付けることです。
+**Marketplace に参加することの利点**
+
+Azure Marketplace と AppSource は、Microsoft と共同で行う市場投入活動の出発点であり、共同販売対応パートナーシップという舞台に通じる扉です。 発売プロモーション、需要創出、共同営業およびマーケティングを使用して、Marketplace のリストをクラウド ビジネス エンジンの中心的な場所にすることができ、ビジネスの成長に弾みを付けることができます。 Marketplace には無料で参加できます。 目標は、Microsoft のお客様と、パートナーのエコシステムが提供する最高のソリューションとサービスを結び付けることです。
 
 Marketplace の機能を活用して、ビジネスを成長させることができます。
 
@@ -52,11 +57,11 @@ Marketplace の機能を活用して、ビジネスを成長させることが�
 >[!NOTE]
 >Office を拡張するアプリでは、Office アプリの公開プロセス経由で洞察にアクセスします。
 
-## <a name="azure-marketplace-and-appsource-storefronts"></a>Azure Marketplace および AppSource のネットショップ
+## <a name="storefronts"></a>ネットショップ
 
 Microsoft が提供する 2 つの異なる Marketplace ネットショップ [Azure Marketplace](https://azuremarketplace.microsoft.com) と [AppSource](https://appsource.microsoft.com) では、パートナーは、オファリングを掲載し、試用版を利用できるようにし、Microsoft の顧客やエコシステムと直接取り引きすることができます。 これらのネットショップでは、顧客は、デジタル変換を高速化するアプリケーションとサービスの検索、試行、および購入が可能です。 Microsoft の顧客やパートナー エコシステムへのアクセスを増加させることで、パブリッシャーのビジネス成長を支援します。
  
-Marketplace のネットショップは、対象ユーザーや Microsoft のクラウド製品に合わせて作られており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップでは、公開への投資を最大限に活かすための特別な公開オプションが提供されています。 これらのオプションを以下の表にまとめています。
+各ネットショップでは、公開への投資を最大限に活かすための特別な公開オプションが提供されています。 これらのオプションを以下の表にまとめています。
 
 
 |          |Azure Marketplace |AppSource  |
@@ -67,408 +72,55 @@ Marketplace のネットショップは、対象ユーザーや Microsoft のク
 |公開オプション     |  連絡する、コンサルティング サービス オファリング、試用版、仮想マシン、ソリューション テンプレート、管理対象アプリ       |  無料試用版、今すぐ取得、体験版、連絡する、コンサルティング サービス オファリング      |
 |アプリ内エクスぺリエンス (アプリケーションのコンテキストに応じてアプリとサービスへのアクセスをユーザーに提供)  | Azure Portal、Azure CLI         | Office 365、Dynamics 365、Power BI、Office クライアント アプリ       |
 
-## <a name="using-the-storefronts"></a>ネットショップの使用
+## <a name="how-to-publish-on-cloud-marketplace"></a>クラウド マーケットプレースでの公開方法
 
-各ネットショップは、一意の顧客ニーズに対して機能します。 これにより、役割ごとにターゲットを設定でき、顧客の人物像に基づいた適切なソリューションやサービスを提供できます。
-
-Azure Marketplace を通して IT 専門家やクラウド開発者が IaaS、SaaS、PaaS ソリューションを発見、試用、購入できるようにします。
-
-
-|顧客ニーズ  |Azure Marketplace |
-|---------|---------|
-|**ビジネス上のニーズと技術的なニーズを満たすため、追加のクラウド プラットフォーム機能が必要である**     |  Azure での実行に最適化された補完的アプリケーションとサービスのポートフォリオを提供し、その数を増やし続ける       |
-|**適切なアプリケーションまたはサービスを見つけ出すことが困難と判明した**    |  Azure 用のソリューションとサービスを発見、試用、購入するためのワンストップ ショップを提供する        |
-|**サードパーティ製のアプリケーションとサービスをデプロイするためのスケーラブルなしくみが必要である**   | サードパーティ製のアプリケーションとサービス向けにスケーラブルなデプロイの作成と構成ができるようにする        |
-|**新しいアプリケーションとサービスを既存のソリューションと統合して使用することが必要である**  |   Azure でサードパーティ製のアプリケーションとサービスを既存のソリューションと簡単に統合できる      |
-
-AppSource を通してビジネス ユーザーが、業績を推進し、価値を得るまでの時間を短縮する基幹業務 SaaS アプリケーションと実装サービスを発見、試用、購入できるようにします。 
+クラウド マーケットプレースのパブリッシャーになるには、簡単な 3 つの手順を実施します。
+1.  オファーの登録リストの種類権限を選定します
+2.  サインアップしてクラウド マーケットプレース パブリッシャーになります
+3.  オファーと登録リストの種類で必要な技術およびコンテンツの前提条件を満たします
 
 
-|顧客ニーズ  |AppSource  |
-|---------|---------|
-|**既に使用している Microsoft 製品と連携するビジネス ソリューション** | 顧客がサードパーティ製アプリケーションとサービスを使って、Microsoft のクラウド アプリケーションとテクノロジを拡張できるようにする       |
-|**適切なソリューションまたは実装サービスを簡単に見つけることができる**    |   アプリケーション、サービス、アドインなどを発見し、試用して入手するためのワンストップ ショップを提供する      |
-|**具体的なビジネスの課題を解決する業界固有の基幹業務ソリューション**   | 多くの業界にまたがる具体的な要件の解決に役立つ、完成したエンドツーエンドの業界向けソリューションを提供する     |
-|**生産性、効率性、ビジネスの洞察を高めるアプリ**    | カスタマー サービス、HR、運用など、基幹業務向けのアプリを提供する        |
-| **固有の状況へのアプリの導入を支援する、経験を積んだ実装パートナー** | ビジネス ユーザーが予測可能な結果をもたらすために役立つ、Dynamics 365、Power BI、PowerApps、およびサード パーティ アプリに基づいたソリューション向けのコンサルティング サービス オファリングのカタログを提供する |
+**1.  オファーの登録リストの種類を選定する**
 
-## <a name="understanding-the-differences-between-storefronts"></a>ネットショップ間の相違点の概要
-
-ネットショップの選択は、オファリングの対象者を識別することから始まります。 Azure Marketplace は、IT 専門家と開発者のニーズに対応しています。 AppSource は、ビジネス ユーザーのニーズに対応しています。 両方の対象ユーザーをターゲットとするソリューションの場合は、1 回公開するだけで、両方のネットショップに陳列できます。
- 
-各ネットショップの他の利点を考慮してください。
-
-|ネットショップの利点  |Azure Marketplace  |AppSource   |
-|---------|---------|---------|
-|**課金の柔軟性**    | 仮想マシンの場合、"従量課金制" オプションは、Microsoft Enterprise Agreement (EA) または Web 直販モデルを使います。 価格のオプションには、プランが永続的に無料の、Free レベルのサブスクリプションも含まれます。 また、販売促進のために限られた期間中は無料になり、その後は課金のサブスクリプションに変換される、"今だけのお試し" サブスクリプションも含まれます。 また、ライセンス持ち込みのアクティブ化は、パブリッシャーをサポートするためのオプションです。 <br><br>どちらの課金オプションでも、仮想マシンが Azure アプリ (たとえば、ソリューション テンプレートや管理対象アプリなど) 経由で展開されるシナリオでは、プロビジョニングされたすべての Azure リソースが顧客に対して直接課金されます。 | AppSource は、試用版エクスペリエンスのプロビジョニングを提供していますが、現在は商取引が有効な公開オプションは提供していません。 追加の投資や変更なしで、現在の注文および課金インフラストラクチャを利用できます        |
-|**他のパートナーとの接続の促進**     |現在、Azure Marketplace では、パブリッシャーはサービス プロバイダーまたは配信パートナーをオファリングにリンクすることはできませんが、この機能は 2018 年に使用できるようになります。         |  独立系ソフトウェア ベンダー、システム インテグレーター、および管理対象サービス プロバイダーは、特定の実装シナリオにリンクできます。 この機能は、新しい顧客に対する共同販売をサポートします。      |
-|**Automation**     |    現在、Azure Marketplace では、パブリッシャーはサービス プロバイダーまたは配信パートナーをオファリングにリンクすることはできません     | アドイン プロビジョニングで自動化された SaaS を利用します。 ソリューション テンプレートを使って SaaS ベースのデータ コレクションと展開シナリオを自動化します。        |独立系ソフトウェア ベンダー、システム インテグレーター、および管理対象サービス プロバイダーは、特定の実装シナリオにリンクでき、新規顧客への共同販売をサポートできます。
-|**複数のクラウド種類**     |   Azure Stack によりパブリック クラウドとオンプレミス ソリューションの両方に公開します。または、Azure Government および中国やドイツなどのリージョン クラウドに公開します。      |    現在、AppSource では、Azure Stack、Azure Government、またはリージョン クラウドのサポートは提供されていません。     |
-|**顧客へのコンテキスト内プレゼンテーション**     |  コンテキスト検索のために、Azure Portal 内エクスペリエンスでソリューションを利用できるようにします (仮想マシンとソリューション テンプレート)。       |  Dynamics 365、Power BI、Office 365 など Microsoft 製品のアプリ内エクスペリエンスをより多くのお客様に届けます。    |
-
-## <a name="publishing-options"></a>公開オプション
-
-各ネットショップは、複数の公開オプションとオファリング タイプをサポートします。 アプリケーションとサービスの詳細情報を最もよく表すオファリング タイプを選びます。 すべての公開オプションで、パートナーはリード共有にアクセスできます。 
+各ネットショップは、複数の公開オプションとオファリング タイプをサポートします。 アプリケーションとサービスの詳細情報を最もよく表すオファリング タイプを選びます。 すべての公開オプションで、パートナーはリード共有にアクセスできます。
 
 |**公開オプション**  | **オファリング タイプ** | **ネットショップ**  |
 |---------|---------|---------|
 |**リスト**    |    連絡する、コンサルティング サービス     |  Azure Marketplace、AppSource       |
 |**試用版**   |     無料試用版、SaaS 試用版、対話型デモ、体験版    |  Azure Marketplace、AppSource       |
-|**トランザクション**     |   仮想マシン、ソリューション テンプレート、管理対象アプリ      |    Azure Marketplace     |
+|**トランザクション**     |   仮想マシン、ソリューション テンプレート、マネージド アプリケーション、コンテナー、SaaS サブスクリプション      |    Azure Marketplace     |
 
-### <a name="list"></a>一覧表示
 
-試用レベルまたはトランザクション レベルの参加が適していない場合は、"連絡する" を使います。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに、基本的な取引に発展させてビジネスを開始できるリードの受け取りを始められることです。 一方、欠点は、他のオファリング タイプと比べて顧客エンゲージメントが制限されることです。
 
->[!IMPORTANT]
->顧客エンゲージメントが最も高いのは試用版とトランザクションです。 "連絡する" の値は受け取るリードなので、このタイプの一覧を選択すると、リードの宛先が構成され、リードを最大限に拡大する準備が整います。 
+**2.  クラウド パートナー パブリッシャーになる**
 
-製品が主にプロフェッショナル サービス (評価、実装、ワーク ショップなど) で構成される場合は、コンサルティング サービスのオファリング タイプを使います。 オファリングの範囲、期間、価格は固定でなければならず、1 顧客を対象として、オンサイトで実施する必要があります。
-
-### <a name="trial"></a>試用版
-
-試用版エクスペリエンスを提供すると、顧客に対するエンゲージメント レベルが高くなり、ソリューションの公開がいっそう充実します。 試用版を使うと、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。
- 
-すべての試用オプションは、顧客の環境または Azure サブスクリプションではなく、パートナーの試用版環境や Azure サブスクリプションに展開されます。 試用は顧客主導にする必要があり、追加購入はなくし、最小限の追加構成 (ある場合) で簡単なユース ケースが完成するようにします。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。 最善の結果が得られるように、試用ユーザーは熟考された評価パスに沿って進展および監視する必要があります。 パブリッシャーには、Marketplace のリードとパブリッシャー独自のアプリ内インテリジェンスの両方を使って、試用ユーザーを監視および管理することをお勧めします。
-
-試用の一般的なシナリオは次の 3 つです。
-
-
-|**試用のオプション**  |**主な利点**  |**このオプションを選ぶ場合**  |
-|---------|---------|---------|
-|**無料試用版**    |     自動で有料での使用に変換される方式で購入する前に、顧客が製品を試用できます。 また、顧客の概念実証を可能にし、Microsoft 販売チームによるエンゲージメントに参画します。 |     ソリューションが仮想マシンまたはソリューション テンプレートの場合<br><br> ソリューションが SaaS オファリングであり、マルチテナント SaaS 製品を提供する場合 <br><br>顧客を誘って迅速に実行させる最初の実行エクスペリエンスがある場合 <br><br>1 つのテナントがあるが、ゲスト ユーザーとして顧客を追加している場合|
-**体験版**     |     購入前に、顧客が製品を試すことができる。 事前構成済みのセットアップでソリューションのガイド付きエクスペリエンスも提供します。 |   ソリューションがシングルテナントの仮想マシン、ソリューション、テンプレート、SaaS アプリである場合、またはソリューションのプロビジョニングが複雑である場合 <br><br>試用版を有料のオファリングに変換する方法がない場合 |
-|**対話型デモ**    |  複雑なセットアップなしで、動作する製品を顧客が見られるようにします       |    試用期間に実現するのが困難な複雑なセットアップを必要とするソリューションの場合     |
-
-
-#### <a name="free-trial"></a>無料試用版
-
-ソリューションまたはアプリが無料で試用できる SaaS ベースの試用版を提供するときは、無料試用を使います。 このオプションは、関心のある顧客から高品質のリードを抽出し、ビジネスを開始するのに役立ちます。 無料試用版は、制限付き利用または制限された期間の試用版アカウントとして表示できます。 無料試用版には、ソフトウェアの有料利用への変換を促すための行動への呼び掛けが必ず含まれます。
-
-#### <a name="test-drive"></a>体験版
-
-ソリューションが IaaS または SaaS アプリ経由で 1 つまたは複数の仮想マシンを使って展開されるときは、体験版を使います。 このアプローチの利点は、顧客が追加コストなしで評価できる、パートナーがホストするソリューションの "ガイド付きツアー" に格納された仮想アプライアンスまたはソリューション全体の環境の自動プロビジョニングです。 顧客は既存の Azure 顧客である必要はなく、高品質のリードを生成するのに役立ちます。
-
-体験版には他に次の利点があります。
-
-- Marketplace でのユーザー検索の 27% は、ユーザーが体験版でオファリングを見るだけで改善されます。 
-- 体験版ありのオファリングは、体験版なしのオファリングよりリードが 38% 増えます。 
-- Marketplace での新規顧客獲得の 36% は体験版を利用した顧客からです。 
-- 体験版では、Microsoft の現場販売者は共同販売作業のためにパートナーの製品をよりよく理解できます。
-
-#### <a name="interactive-demo"></a>対話型デモ
-
-対話型デモを使って顧客に製品のガイド付きエクスペリエンスを提供します。 このオプションの利点は、複雑なソリューションの複雑なプロビジョニングなしで試用エクスペリエンスを提供できることです。 このオプションによって、顧客はソリューション関連の知見を得ます。 また、パブリッシャーは、基本的な取引に発展させてビジネスを開始できるリードの受け取りを始められます。 
-
-### <a name="transaction"></a>トランザクション
-
-Azure Marketplace では、顧客のサブスクリプションに仮想アプライアンスとしてソリューションを展開するときに*仮想マシン*を使います。 仮想マシンは、従量課金制モデルまたは BYOL 対応ライセンス モデルで完全に販売可能です。 Microsoft は商用トランザクションをホストし、パブリッシャーに代わって顧客に請求します。 パブリッシャーには、顧客が好む Microsoft との支払い関係 (Enterprise Agreement など) を利用できる利点があります。 
-
->[!NOTE]
->現在、Enterprise Agreement の年額コミットメントは仮想アプライアンスの Azure 利用には使えますが、パブリッシャーのソフトウェア ライセンス料金には使えません。
-
-仮想アプライアンスに加えて追加の展開と構成の自動化がソリューションに必要な場合は、*Azure ソリューション テンプレート*を使います。 ソリューション テンプレートは、1 つまたは複数の仮想マシン リソースのプロビジョニングを自動化でき、ネットワーク リソースとストレージ リソースをプロビジョニングできます。 ソリューション テンプレートは、1 つの仮想マシンで、また、IaaS ベースのソリューション環境全体でも、オートメーションの利点を提供できます。 ソリューション テンプレートの作成について詳しくは、[GitHub](https://github.com/MicrosoftDocs/azure-docs) をご覧ください。
-
-パブリッシャーまたは顧客がサードパーティ (SI や MSP など) によるソリューションの管理を希望する場合に、顧客のサブスクリプションに仮想マシンまたは IaaS ベースのソリューション全体を展開するときは、*Azure 管理対象アプリ*を使います。 管理対象アプリの構築の詳細については、「[Azure マネージ アプリケーションの概要](https://docs.microsoft.com/azure/managed-applications/overview)」をご覧ください。 よく寄せられる質問の一覧については、「[Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)」をご覧ください。
-
->[!NOTE]
-> 管理対象アプリは、Marketplace から展開できる必要があります。 お客様の通信に懸念がある場合、リード共有を有効にしておけば、興味を持つお客様に連絡することができます。
-
-### <a name="azure-certified-program"></a>Azure 認定プログラム
-
-Azure Marketplace で公開されるすべての仮想マシンは、Azure 認定プログラムに関してテストされます。 プログラムでは、次のことが可能です。
-
-- 仮想マシンが Azure プラットフォームおよび Marketplace 販売モデルと互換性があることを顧客に保証する。
-- オンライン イメージがウイルスやマルウェアなどの安全性コンプライアンス対応であることをテストする。
-- 検証済みソリューションとして Microsoft の企業顧客へのプロモーションを強化するオファリング レベルでのバッジ取得を可能にする。
-
-#### <a name="marketplace-commercial-considerations"></a>Marketplace での販売に関する考慮事項
-
-Marketplace には無料で参加できます。 リスト、試用、および BYOL トランザクションのオプションを使って公開している場合、Marketplace への参加に対する収益の共有はありません。 詳細については、[Marketplace 参加ポリシーに関するページ](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)をご覧ください。
-
-#### <a name="pay-as-you-go-and-bring-your-own-license-billing-options"></a>従量課金制とライセンス持ち込みの課金オプション
-
-従量課金制トランザクションを公開オプションとして使用すると、パブリッシャーの使用量ベースのソフトウェア ライセンスの収益は、パブリッシャーと Microsoft の間で 80%/20% で折半されます。 1 つのオファリングを従量課金制とライセンス持ち込み両方の課金モデルで価格設定でき、異なる SKU としてオファリング レベルで共存できます。 これは、Cloud パートナー ポータルのオファリングで構成できます。
-
-各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。
-
-オプションとして従量課金制を有効にする場合:
-
-
-|ライセンス コスト   | 1.00 ドル/時間        |
-|---------|---------|
-|Azure 使用コスト (D1/1 コア)     | 0.14 ドル/時間  |
-|**顧客は Microsoft から請求されます**    | **1.14 ドル/時間**       |
-
-このシナリオでは、Microsoft は公開された仮想マシン イメージの使用に対して 1 時間あたり 1.14 ドルを請求します。
-
-
-|**Microsoft が請求** |**1.14 ドル/時間**  |
-|---------|---------|
-|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います | 0.80 ドル/時間        |
-|Microsoft は、ライセンス コストの 20% を受け取ります    | 0.20 ドル/時間        |
-|Microsoft は、Azure の使用コストを受け取ります     |   0.14 ドル/時間      |
-
-オプションとしてライセンス持ち込みを有効にした場合:
-
-|ライセンス コスト     | ライセンス料はパブリッシャーによって交渉および請求されます        |
-|---------|---------|
-|Azure 使用コスト (D1/1 コア)    | 0.14 ドル/時間         |
-|**顧客は Microsoft から請求されます**     | **0.14 ドル/時間**        |
-
-このシナリオでは、Microsoft は公開された仮想マシン イメージの使用に対して 1 時間あたり 0.14 ドルを請求します。 
-
-|**Microsoft が請求**    |   **0.14 ドル/時間**      |
-|---------|---------|
-|Microsoft は、Azure の使用コストを受け取ります     |    0.14 ドル/時間     |
-|Microsoft は、ライセンス コストの 0% を受け取ります     |  0.00 ドル/時間       |
-
-### <a name="single-billing-and-payment-methods"></a>一括請求および支払い方法
-
-トランザクション公開オプションを使う重要な利点は、Microsoft が基になっている Azure の使用料と同時にライセンス コストを顧客に直接 "一括して請求" できることです。 このシナリオでは、Microsoft がパブリッシャーに代わって請求および徴収を行うので、パブリッシャーが独自に顧客と調達関係を築く必要はありません。 これはパブリッシャーの時間とリソースの節約になり、パブリッシャーは請求ではなく販売に集中できます。
-
-### <a name="enterprise-agreement"></a>Enterprise Agreement
-
-マイクロソフトの顧客は、Enterprise Agreement を使って、Azure の使用料など、Microsoft 製品の料金を支払う場合があります。 この支払いオプションは、ソフトウェアおよびクラウド サービスのライセンスを最低 3 年間供与したい組織のために作られています。 顧客は、1 回前払いする代わりに、分割して支払うことができます。 EA の顧客が従量課金制のトランザクション リストを使うときは、パブリッシャーのソフトウェア ライセンス コストの請求は、四半期ごとの EA 超過請求サイクルに従います。
-
-### <a name="monetary-commitment"></a>年額コミットメント 
-
-Enterprise Agreement の顧客は、Azure に対する前払いによる金銭的コミットメントにより、Azure を契約に追加できます。 このコミットメントは、Azure がグローバル データセンターから提供するさまざまな Cloud Services の組み合わせを使用して、年間を通じて使用されます。
-
-## <a name="prerequisites-for-marketplace-publishing"></a>Marketplace での公開に関する前提条件
-
-### <a name="prerequisites-for-all-marketplace-publishing-options"></a>すべての Marketplace オプションに関する前提条件
-
-
-|**要件**  |**詳細**  |**公開オプション**  |
-|---------|---------|---------|
-|**参加ポリシー**    | Azure Marketplace の[参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)を確認してください。       | リスト、試用、トランザクション        |
-|**Microsoft との統合**    | Azure Marketplace のオファリングでは、コンピューティング、ネットワーク、またはストレージなどの Microsoft Azure サービス タイプを使用または拡張する必要があります。 データベース、セキュリティ、およびネットワークなどの既存の Azure Marketplace カテゴリに、それらを配置する必要があります。 [完全なリスト](https://azuremarketplace.microsoft.com/marketplace/apps)をご覧ください。        | リスト、試用、トランザクション        |
-|**対象ユーザー**    | Azure Marketplace のオファリングは、IT 専門化、クラウド開発者、または顧客のその他の技術的役割を対象としたものでなければなりません。       |  リスト、試用、トランザクション 
-|**リード管理**    | Marketplace からリードを受け取るには、リード データを受け付けるように CRM (Marketo、Microsoft Dynamics、または Salesforce) を有効にする必要があります。        |   リスト、試用、トランザクション      |
-|**プライバシー ポリシーと使用条件**     |   プライバシー ポリシーは、パブリック URL 経由で使用可能にする必要があります。 使用条件は、公開時にテキストとして入力する必要があります。      |   リスト、試用、トランザクション      |
-|**サポート**     |  パブリッシャーのオファリングには、顧客がヘルプを発見できるパブリックに利用可能なサポート URL を含める必要があります。 試用版では、試用期間中は追加コストなしでサポートを提供する必要があります。       |  試用、トランザクション       |
-
-### <a name="prerequisites-specific-to-trial-publishing"></a>試用公開に固有の前提条件
-
-|**要件**  | **詳細**  |**公開オプション**  |
-|---------|---------|---------|
-|**無料試用期間および試用エクスペリエンス**     |  顧客は、限られた期間、パブリッシャーのアプリを無料で使用できる必要があります。<br><br>つまり、顧客は、パブリッシャーの製品のライセンス料またはサブスクリプション料の対象とならず、基になる Microsoft のファーストパーティ製品またはサービスのコストもかかりません。 すべての試用オプションがパブリッシャーの Microsoft 製品サブスクリプションに展開されるため、パブリッシャーのみが試用コストの最適化と管理を制御します。<br><br>無料試用版、対話型デモ、または体験版を選ぶことができます。 何を選んでも、無料試用版では顧客に、追加コストなしでアプリを試すための最低限の時間を提供する必要があります。<br><br>体験版の作成を始めるには、cloudmarketplace@microsoft.com にお問い合わせください。 <br><br>Azure Marketplace の SaaS 試用版エクスペリエンスでは、ユーザーに Active Directory の仕事用資格情報でのサインインを許可する必要があることに注意してください。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。 |   試用版      | 
-| **簡単に構成できるターンキー ソリューション**    |  アプリは、短時間で簡単に構成およびセットアップできる必要があります。       |  試用版       |
-|**可用性/アップタイム**    |    SaaS アプリまたはプラットフォームのアップタイムは 99.9% 以上である必要があります。     |    試用版     |
-|**Azure Active Directory**    |    オファリングでは、同意が有効な Azure Active Directory (Azure AD) フェデレーション シングル サインオン (SSO) を許可する必要があります。      |  試用版|
-
-### <a name="prerequisites-specific-to-transaction-publishing"></a>トランザクション公開に固有の前提条件
-
-
-|**要件**  |**詳細** |**公開オプション**  |
-|---------|---------|---------|
-|**請求/メータリング**    |  仮想マシンは、ライセンス持ち込みまたは使用量に基づく毎月の請求をサポートする必要があります。       |    トランザクション    |
-|**Azure と互換性がある仮想ハード ディスク (VHD)**     |   仮想マシンは、[[Windows]](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) または [[Linux] ](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上に構築されている必要があります。    |   トランザクション      |
-
-### <a name="prerequisites-specific-to-consulting-services-publishing"></a>コンサルティング サービス公開に固有の前提条件
-
-
-|**要件** |**詳細**  |**公開オプション**  |
-|---------|---------|---------|
-|**サービス オファリングの特性**     | コンサルティング サービスは、次の特性を備える必要があります。 <br>- 固定スコープ、固定期間、固定価格 (または無料) の契約として提供される。 <br>- 基本的に購入前が優先される。 <br>- 単一顧客に限定される。 <br>- サイト上で実施される。        |    一覧表示     |
-|**コンサルティング サービスのパートナー要件**    |   "*AppSource のみ。*"  <br>- **Dynamics 365 for Customer Engagement:** Silver または Gold [クラウド カスタマー リレーションシップ マネジメント](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency) コンピテンシーを備える。 <br>- **Dynamics 365 for Finance および Operations Enterprise エディション**: Silver または Gold の[エンタープライズ リソース プラニング](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) コンピテンシー、および以降の 12 か月間にクラウド運用で 25,000 ドル以上の収益がある。 <br>- **Dynamics 365 for Finance and Operations、Business エディション**: 少なくとも 1 顧客に[クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) または [デジタル指名パートナー (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) としてサービスを提供している。 <br>- **Power BI**: [ソリューション パートナー](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf) の条件を満たしている。 <br>- **PowerApps**: [パートナー ショーケース](https://powerapps.microsoft.com/en-us/partner-showcase/) ソリューションを備える。 |    一覧表示     |
-
-## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする
-Azure Active Directory はクラウド ID サービスであり、業界標準のプロトコル OAuth および OpenID Connect を使って Microsoft 職場または学校アカウントでの認証を有効にします。 Azure AD の詳細については、[製品の Web ページ](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)をご覧ください。 
-
-Microsoft はすべての Marketplace ユーザーを Azure AD で認証します。 認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 [認証中に Azure AD からアプリが受信するトークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)には、アプリでユーザー アカウントを作成するために使う有益なユーザー情報が含まれています。 そのため、プロビジョニングのエクスペリエンスを自動化し、変換の可能性を高めることができます。 
-
-Azure AD を使ってアプリまたは試用の 1 クリック認証を有効にすると、次のことが可能になります。
-
-- Marketplace から試用版への顧客エクスペリエンスを簡素化する。 
-- ユーザーが Marketplace からパブリッシャーのドメインまたは試用環境にリダイレクトされる場合でも、製品内エクスペリエンスの感覚を維持する。
-- 余分なサインイン手順がないため、リダイレクトで中止される可能性を低くする。
-- 大規模な Azure AD ユーザーの展開障壁を削減する。
-
-### <a name="certify-your-azure-ad-integration-for-the-marketplace-multitenant-applications"></a>Marketplace のための Azure AD の統合を検証する: マルチテナント アプリケーション
-
-現在 Azure AD をサポートしている場合
-
-- Azure Portal でアプリケーションを登録する。
-- Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
-- [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
-
-Azure AD フェデレーション SSO が初めての場合
-
-- Azure Portal でアプリケーションを登録する。
-- [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発する。
-- Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
-- [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
-
-### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>Marketplace のための Azure AD の統合を検証する: シングルテナント アプリケーション
-
-シングルテナント アプリケーションには、次のような複数の選択肢があります。
-
-- [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使って、ユーザーをパブリッシャーのディレクトリにゲスト ユーザーとして追加する。
-- "連絡する" を使って顧客用に試用版を手動でプロビジョニングする。
-- 顧客ごとの "体験版" を開発する。
-- SSO を使ってマルチテナント サンプル デモ アプリをビルドする。
-
-## <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>製品別のプロセスの公開 (Office、Dynamics、Power BI)
-このセクションでは、Office、Dynamics、Power BI を拡張する AppSource アプリについて固有の要件を製品のドキュメントで確認してください。 
-
-
-|製品 |公開に関する情報  |
-|---------|---------|
-|Office 365     |    [公開プロセスとガイドライン]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)を確認します。     |
-|Dynamics 365 for Finance and Operations  |   Enterprise Edition 向けに開発している場合は、[公開プロセスとガイドライン](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。      |
-|Dynamics 365 for Customer Engagement |[公開プロセスとガイドライン](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。 |
-|Power BI   |     [公開プロセスとガイドライン]( https://docs.microsoft.com/power-bi/developer/office-store)を確認します。    |
-|Cortana Intelligence     |    [AppSource での Cortana](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) について確認します。     |
-|AppSource コンサルティング サービス オファリング     |  [ガイドラインを確認し、オファリングの送信方法](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を学びます。    |
-
-
-
-## <a name="cloud-partner-portal-pre-publishing-checklist-for-the-azure-marketplace"></a>Azure Marketplace での Cloud パートナー ポータル公開前チェックリスト
-
-公開プロセスを始める前に、オファリングを作成するために必要なコンポーネントを理解することをお勧めします。 Cloud パートナー ポータルでオファリングの作成公開ワークフローを実行するには、次のアーティファクトが必要です。 
-
-### <a name="storefront-details"></a>ネットショップの詳細
-
-
-|必要なアーティファクト  |オファリングの種類  |
-|---------|---------|
-|**プランの名前 (200 文字) と説明 (2,000 文字)**    |  すべて        |
-|**Microsoft Partner Network (MPN) ID**   |  すべて       |
-|**国/リージョンの可用性**   | すべて        |
-|**契約の期間**     |   コンサルティング サービス      |
-|**該当する業界、カテゴリ、検索キーワード**     |  すべて       |
-|**会社のロゴ (48 x 48、216 x 216)**     |  コンサルティング サービス       |
-|**製品の概要ビデオ (省略可能)**  |  すべて       |
-|**スクリーンショット (最大 5 個、1280 x 720)**   |    すべて     |
-|**マーケティング ドキュメント (最大 3 個)**    |  すべて       |
-|**リードの宛先**    |   すべて      |
-
-### <a name="contacts"></a>連絡先
-
-
-|必要なアーティファクト  |オファリングの種類  |
-|---------|---------|
-|**連絡先情報 (サポート、エンジニアリング、営業)**    |    すべて     |
-
-### <a name="technical-info"></a>技術情報
-
-
-|必要なアーティファクト  |オファリングの種類 |
-|---------|---------|
-|**試用版 URL**     |  すべての試用オファリングの種類       |
-|**サポートされている言語**    |   すべての試用オファリングの種類      |
-|**アプリのバージョン番号とリリース日**    |   すべての試用オファリングの種類      |
-|**サポート URL**    |   すべての試用オファリングの種類、仮想マシン      |
-|**使用条件とプライバシー ポリシーの URL**     |    すべて     |
-
-### <a name="test-drive"></a>体験版
-
-
-|必要なアーティファクト  |オファリングの種類  |
-|---------|---------|
-|**説明と期間**     |  体験版のみ       |
-|**ユーザー マニュアル**     |   体験版のみ      |
-|**体験版ビデオ (最大 1 個)**     |  体験版のみ       |
-|**体験版の国/リージョンの可用性**    |   体験版のみ      |
-|**Azure リソース グループ名**   |         |
-|**Azure サブスクリプション ID**     |  体験版のみ       |
-|**Azure AD テナント ID**   |    体験版のみ     |
-|**Azure AD アプリ ID**  |  体験版のみ       |
-|**Azure AD アプリ キー**     |   体験版のみ      |
-
-### <a name="storefrontmarketplace"></a>ネットショップ/Marketplace
-
-
-|必要なアーティファクト  |オファリングの種類  |
-|---------|---------|
-|**タイトル (最大 50 文字)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)       |
-|**概要 (最大 200 文字)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)       |
-|**長めの概要 (最大 256 文字)**     |   トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)      |
-|**HTML 形式の説明 (最大 3,000 文字)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)       |
-|**会社のロゴ (40 x 40、90 x 90、115 x 115、255 x 115、815 x 290)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)       |
-
-### <a name="sku"></a>SKU
-
-
-|必要なアーティファクト  |オファリングの種類  |
-|---------|---------|
-|**バージョン番号**     |    トランザクション: Azure アプリ (ソリューション テンプレートと管理対象アプリ)     |
-|**すべてのテンプレート ファイルと createUIDefinitionFile を含むパッケージ ファイル**   |トランザクション: Azure アプリ (ソリューション テンプレートと管理対象アプリ)         |
-|**オペレーティング システムの詳細**    |   トランザクション: 仮想マシン      |
-|**使用するポートとプロトコル**    |  トランザクション: 仮想マシン       |
-|**使用する各 VHD のディスク バージョンと SAS URL**   |  トランザクション: 仮想マシン       |
-
-## <a name="becoming-a-publisher"></a>パブリッシャーになる
-
-このセクションでは、以下の手順について説明します。
-
-- Azure Marketplace および AppSource のパブリッシャーになる。
-- Cloud パートナー ポータルへのアクセスを取得する。 プランの作成、公開、およびメンテナンスに、このポータルを使用します。 
-
-### <a name="process-overview"></a>プロセスの概要
-
+以下の手順に従って、クラウド マーケットプレース上でパブリッシャーとして登録します。 Microsoft との既存のエンゲージメントと選択された登録リストの種類によっては、省略できる手順もあります。 
 
 |Marketplace の登録手順  |Time  |[説明]  |
 |---------|---------|---------|
-| Microoft Partner Network に登録する | 15 分 | パブリッシャーは、第一レベルのアカウントの認証を備え、Azure Marketplace パブリッシャーになるための追加の利点とサポートを受けるために、Microsoft Partner Network (MPN) に登録する必要があります。 |
-|Microsoft ID を作成する     |   約 15 分      |   パートナーは、Microsoft ID を持っている必要があります。 この Microsoft ID を使って、Cloud パートナー ポータルにアクセスします。       |
-|Marketplace 申請フォームを送信する     |  1 ～ 3 日       |  パートナーは、申請フォームを送信して、Marketplace の承認プロセスを開始する必要があります。 フォームが送信された後、Marketplace オンボード チームによって申し込みが確認され、要求が検証されます。       |
-|デベロッパー センターに登録する     |    5 ～ 10 日     | パートナーが登録されている国において有効な税 ID を持つ有効な法人であることを Microsoft が確認するため、Microsoft デベロッパー センターでの登録が必要です。 デベロッパー センターでは、パートナーは Microsoft 開発者として登録でき、Azure 開発者プログラムにアクセスできます。 <br><br>Marketplace 申請フォームに入力しない場合、99 ドルの登録料金の支払いを求められる点に注意してください。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出すると、メールでプロモーション コードを受け取ります。  |
-|クラウド パートナー ポータルにサインインする     |  約 15 分       |   パートナーは、申請承認通知を Marketplace チームから受け取った後、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にアクセスできるようになります。 パートナーは、申請フォームの Microsoft ID を使って、Cloud パートナー ポータルのパブリッシャー プロファイルにサインインする必要があります。 デベロッパー センターに登録した後、パートナーは、デベロッパー センター アカウントと、公開する Azure Marketplace パブリッシャー プロファイルを関連付ける必要があります。      |
+| 1.Microoft Partner Network に登録する | 15 分 | Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、Azure Marketplace パブリッシャーになるための追加の利点とサポートを受けます。 MPN に登録するには、Microsoft Partner Network にアクセスして、"登録" をクリックします。 該当する場合、登録中に組織の既存のメンバーシップに参加できるようになります。 登録したら、組織の MPN ID を書き留めます。これは、Cloud パートナー ポータルでパブリッシャー プロファイルをアクティブにする (手順 3) ために必要です。      |
+|2.Microsoft ID を作成する     |   約 15 分      |  この Microsoft ID を使って、Cloud パートナー ポータルにアクセスします。 このメール アドレスは、Microsoft ID として登録されている必要があり、Cloud パートナー ポータル (手順 3) と Microsoft デベロッパー センター (手順 4) の両方で使われます。 選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。 ID 作成の前に行う作業のガイドラインについては、「ガイドラインと方法」のセクションをご覧ください。 |
+|手順 3.Marketplace 申請フォームを送信する     |  1 ～ 3 日       | 組織をノミネートして、Microsoft クラウド マーケットプレース パブリッシャーとして登録します。 フォームには、組織に関する情報、公開する最初のアプリケーションまたはサービス オファリングに関する情報、提供されるサポートのレベルが含まれます。 <ul><li>[Azure Marketplace 申請フォーム](http://aka.ms/listonazuremarketplace)</li><li>[AppSource 申請フォーム](http://aka.ms/listonappsource)</li></ul> フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、承認済みパートナーになって、Cloud パートナー ポータルにアクセスするための次の手順を記載した通知をメールで受け取ります。ここでは、最初のオファーの登録リストを入力し、追加のオファーを作成できます。 承認されると、お客様にご利用コードが送信されます。このコードを使用すると、Microsoft デベロッパー センターの登録料金が免除されます (手順 4)。 |
+|4.デベロッパー センターに登録する     |    5 ～ 10 日     | マーケットプレースでの仮想マシン、ソリューション テンプレート、および Azure Managed Apps などのトランザクション機能を備えたアプリケーションの公開には、Microsoft デベロッパー センターが必要です。 この要件によって、会社の法律、税、および銀行取引のエンティティについて、Microsoft でパブリッシャーの会社情報を検証できるようになります。 登録者は、合法的な組織の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 登録時には、会社用に共有されている Microsoft ID (手順 2) を使う必要があり、Cloud パートナー ポータルでも同じアカウントを使う必要があります。 <ul>Marketplace 申請フォームに入力しない場合、99 ドルの登録料金の支払いを求められる点に注意してください。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出すると、メールでプロモーション コードを受け取ります。 重要: Microsoft デベロッパー センターのアカウント作成を試行する前に、会社がアカウントを既に所有していないことを確認してください。 このプロセスの詳細な手順については、「デベロッパー センターに登録する方法の説明」をご覧ください。</ul>   |
+|5.クラウド パートナー ポータルにサインインする     |  約 15 分       |  申請承認通知を受け取り、[Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) と [Microsoft デベロッパー センター](https://dev.windows.com/) で登録した後は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にアクセスするためのアカウントが自動的に作成されます。 初回サインイン用の資格情報は、申請承認のメールに含まれます。 Cloud パートナー ポータルの使い方について詳しくは、ポータル内の [[学習]](https://cloudpartner.azure.com/#Learn) メニューに移動して、[ドキュメント] セクションを確認してください。    |
 
-#### <a name="create-a-microsoft-id"></a>Microsoft ID を作成する
+**3.  オファーと登録リストの種類の前提条件を入力します。**
 
-Marketplace の公開プロセス全体を通して、Marketplace アカウントを示すメール アドレスを使います。 このメール アドレスは、Microsoft ID として登録されている必要があり、[Microsoft デベロッパー センター](https://developer.microsoft.com/)と [Cloud パートナー ポータル](https://cloudpartner.azure.com/)の両方で使われます。 
-
-複数の Azure Marketplace および AppSource のオファリングに対して、1 つの Microsoft ID アカウントのみを使用してください。 他のサービスやオファリングとは共有しないことを強くお勧めします。
-
-選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。 ID 作成の前に行う作業のガイドラインについては、「[ガイドラインと方法](#guidelines-and-how-tos)」のセクションをご覧ください。 
-
-#### <a name="register-in-microsoft-partner-network"></a>Microoft Partner Network に登録する 
-Azure Marketplace または AppSource のパブリッシャーになると、会社は Microsoft とパートナー提携していることになります。 Microsoft Partner Network (MPN) に参加することで、会社の技術的なソリューションを発展させビジネスを成長させる一連の主な利点 (例: テクニカル サポートなど) にアクセスできるようになります。 パブリッシャーとして Marketplace に参加することで、Microsoft Partner Network での利点を享受できます。 MPN に登録するには、[Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/)に関するページにアクセスしてください。 会社が既に MPN に登録済みかどうかを確認する必要があります。 登録すると、アカウントを検証するために MPN ID を求められ、[Cloud Partner Portal](https://cloudpartner.azure.com/)でパブリッシャー プロファイルが検証されます。 
-
-#### <a name="submit-the-marketplace-nomination-form"></a>Marketplace 申請フォームを送信する
-Marketplace のオンボード プロセスの一環として、申請フォームを送信する必要があります。 フォームには、アプリケーションまたはサービス オファリングに関する情報、会社に関する情報、提供されるサポートのレベルが含まれます。 
-
-- [Azure Marketplace 申請フォーム](http://aka.ms/listonazuremarketplace)   
-- [AppSource 申請フォーム](http://aka.ms/listonappsource)
-
-フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、Cloud パートナー ポータルで承認済みパートナーになるために、次の手順についての通知をメールで受け取ります。
-
-#### <a name="register-in-the-developer-center"></a>デベロッパー センターに登録する
-
-仮想マシン、ソリューション テンプレート、および Azure Managed Apps などのトランザクション機能を備えたアプリケーションの公開には、[Microsoft デベロッパー センター](https://developer.microsoft.com/)が必要です。 この要件によって、会社の法律、税、および銀行取引のエンティティについて、Microsoft でパブリッシャーの会社情報を検証できるようになります。 登録者は、合法的な企業の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 登録時には、会社用に共有されている Microsoft ID を使う必要があり、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)でも同じアカウントを使う必要があります。 
-
->[!IMPORTANT]
->Microsoft デベロッパー センターのアカウント作成を試行する前に、会社がアカウントを既に所有していないことを確認してください。
-
-作成中は、会社の住所情報、銀行口座情報、および税金に関する情報が収集されます。 通常、これらは財務またはビジネス用連絡先から取得できます。 さらに、オファリングの作成と展開のさまざまなフェーズを終らせるために、次のようなパブリッシャー プロファイル コンポーネントを完成させる必要があります。
-
-
-|**パブリッシャー プロファイル**  |**プロファイルの開始**  |**ステージング**  |**リストと試用**  |**トランザクション**
-|---------|---------|---------|---------|---------|
-|**会社の登録**     | 必須        |  必須       | 必須        |  必須       |
-|**税プロファイル ID**   |    省略可能     |    省略可能     |  省略可能       | 必須      |
-|**銀行口座**     |   省略可能      |    省略可能     |  省略可能       |  必須      |
-
-このプロセスの詳細な手順については、「[デベロッパー センターに登録する方法の説明](#instructions-on-how-to-register-in-the-developer-center)」をご覧ください。 
-
-#### <a name="sign-in-to-the-cloud-partner-portal"></a>クラウド パートナー ポータルにサインインする
-
-Marketplace チームから申請承認通知を受け取り、[Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) および [Microsoft デベロッパー センター](https://dev.windows.com) (必要な場合) で登録した後は、[Cloud パートナー ポータル](https://cloudpartner.azure.com)にアクセスするためのアカウントが自動的に作成されます。 初回サインイン用の資格情報は、申請承認のメールに含まれます。 
-
-Marketplace アカウント (Microsoft ID) を使って、パブリッシャー プロファイルにアクセスします。 Cloud パートナー ポータルでの最後の手順は、Microsoft Partner Network およびデベロッパー センター アカウント (必要な場合) と公開のための各 Marketplace パブリッシャー プロファイルを関連付けることです。 これは、Cloud パートナー ポータルでパブリッシャー プロファイル画面の下部にあるボタンを使って行うことができます。
-
-Cloud パートナー ポータルの使い方について詳しくは、ポータル内の [[学習]](https://cloudpartner.azure.com/#Learn) メニューに移動して、**[ドキュメント]** セクションを確認してください。 
-
+技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしていることを確認します。
+-   ネットショップの要件: Azure Marketplace と AppSource
+-   登録リストの種類の要件: リスト、試用、トランザクション
+-   オファーの種類の要件: 
+ -  アプリ – 仮想マシン、コンテナー、SaaS
+ -  コンサルティング オファー
 
 ## <a name="support"></a>サポート
+
+**サポート**
 
 Azure Marketplace のサポート オプションの一覧を次に示します。
 
 **Azure Marketplace の一般的な問い合わせ**
+
 |サポート窓口 |[説明] |
 |---------|---------|
 |電子メール: cloudmarketplace@microsoft.com     |  オンボーディング サポート配布リスト。 オンボーディングの要求、探索セッションの設定、およびパートナーとのアーキテクチャ デザイン セッションに使われます。        |
@@ -489,7 +141,6 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 
 **テクニカル サポート**
 
-
 |サポート窓口  |[説明]  |
 |---------|---------|
 |MSDN フォーラム: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network のフォーラム。         |
@@ -504,9 +155,218 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 |電子メール: gtm@microsoft.com    |  Go-to-Market の特典とプログラムに関する質問へのサポート。 営業時間は、太平洋標準時ゾーンで示されています。        |
 |電子メール: CEBrand@Microsoft.com     |  Azure ロゴの使用とブランド化に関する質問にお答えします。       |
 
-## <a name="guidelines-and-how-tos"></a>ガイドラインと方法
 
-### <a name="guidelines-for-creating-a-microsoft-id-to-manage-an-azure-marketplace-account"></a>Azure Marketplace アカウントを管理するための Microsoft ID の作成に関するガイドライン
+### <a name="go-to-market-benefits"></a>Go-To-Market 特典
+
+Azure Marketplace と AppSource は、発行元が独自のソリューションを何百万ものユーザーに紹介できる場です。 Microsoft の顧客エコシステムにおける皆様のソリューションの認知度を高めるために、Marketplace に登録された新しいソリューションには市場投入を後押しする一連の特典が自動的に無料で提供されます。
+
+Marketplace ネットショップでのオファーのリストは、Microsoft と共同で行う市場投入活動の出発点であり、共同販売対応パートナーシップという舞台に通じる扉です。 Microsoft の顧客エコシステムにおける皆様のソリューションの認知度を高めるために、新しく登録されたソリューションにはすべて、市場投入を後押しする一連の特典が自動的に無料で提供されます。 Microsoft のブランドとチャンネル、エコシステムを活用して、パートナーの皆様のソリューションに対する認知度を高め、収益を生むことに寄与するべく用意されたさまざまな共同マーケティング活動や共同販売活動が、この市場投入の特典によってもたらされます。 パートナー様側での対応は必要ありません。 ソリューションの配布を開始されるパートナー様には、ソリューションの発行後すぐに、Microsoft の市場投入チームからご連絡いたします。
+Microsoft が提供する市場投入の特典と、Marketplace で貴社のビジネスを成長させる方法について詳しくは、[MPN サイトの GTM の利点](https://partner.microsoft.com/en-US/reach-customers/gtm)に関するページをご覧ください。
+
+
+### <a name="requirements-by-listing-type"></a>登録リストの要件
+
+#### <a name="prerequisites-for-marketplace-publishing"></a>Marketplace での公開に関する前提条件
+
+**AppSource: 公開オプションの前提条件**
+
+|**要件**  |**詳細**  |**必須または推奨**  |
+|---------|---------|---------|
+|**Azure Active Directory (AAD)**    |  アプリでは、同意が有効な Azure Active Directory フェデレーション シングル サインオン (AAD フェデレーション SSO) を許可する必要があります。 AAD フェデレーション SSO を有効にする方法については、ここをご覧ください。     |    必須   |
+|**Microsoft クラウド サービスとの統合**    |  アプリを、Microsoft Power BI、Cortana Intelligence、または Microsoft Azure サービス (モノのインターネットなど) など、他の Microsoft クラウド サービスと統合する必要があります       |    推奨    |
+|**対象ユーザー**    |  AppSource オファーは、基幹業務のユーザーやビジネス オーナーである必要があります     |    必須   |
+|**ビジネス向けサービスとしてのソフトウェア (SaaS) アプリ**    |  アプリの要件は次のとおりです。 <ul><li>基幹業務 SaaS アプリ</li><li>業務プロセスに重点を置いている</li><li>企業のお客様を対象とする</li><li>ユーザーの仕事用の資格情報 (ユーザー名とパスワード) によるサインインを有効にしている</li></ul>       |    必須    |
+|**無料試用期間および試用エクスペリエンス**    |  顧客は、限られた期間、パブリッシャーのアプリを無料で使用できる必要があります。 無料試用版の形式は、次のいずれかになります。 <ul><li>顧客が AppSource 内から試用版を開始できるように、"試す" オプションを提供します。</li><li>顧客に AppSource 内から "試用版を要求" させます。</li></ul> いずれの方法でも、無料試用では顧客に、追加コストなしでアプリを試すための最低限の時間を提供する必要があります。      |    必須    |
+|**簡単に構成できるターンキー ソリューション**    |  アプリは、短時間で簡単に構成およびセットアップできる必要があります (カスタマイズ不要)。     |    必須   |
+|**リード管理**    |  Marketplace からリードを受け取るには、リード データを受け付けるように CRM (Marketo、Microsoft Dynamics、または Salesforce) を有効にする必要があります。       |    必須    |
+|**プライバシー ポリシーと使用条件**    |  プライバシー ポリシーは、パブリック URL 経由で使用可能にする必要があります。 使用条件は、公開時にテキストとして入力する必要があります。     |    必須   |
+|**サポート**    |  パブリッシャーのオファリングには、顧客がヘルプを発見できるパブリックに利用可能なサポート URL を含める必要があります。 試用版では、試用期間中は追加コストなしでサポートを提供する必要があります。     |    必須   |
+
+**Azure Marketplace: 公開オプションに関する前提条件**
+
+|**要件**  |**詳細**  |**公開オプション**  |
+|---------|---------|---------|
+|**参加ポリシー**    | Azure Marketplace の[参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)を確認してください。       | リスト、試用、トランザクション        |
+|**Microsoft との統合**    | Azure Marketplace のオファリングでは、コンピューティング、ネットワーク、またはストレージなどの Microsoft Azure サービス タイプを使用または拡張する必要があります。 データベース、セキュリティ、およびネットワークなどの既存の Azure Marketplace カテゴリに、それらを配置する必要があります。 [完全なリスト](https://azuremarketplace.microsoft.com/marketplace/apps)をご覧ください。        | リスト、試用、トランザクション        |
+|**対象ユーザー**    | Azure Marketplace のオファリングは、IT 専門化、クラウド開発者、または顧客のその他の技術的役割を対象としたものでなければなりません。       |  リスト、試用、トランザクション 
+|**リード管理**    | Marketplace からリードを受け取るには、リード データを受け付けるように CRM (Marketo、Microsoft Dynamics、または Salesforce) を有効にする必要があります。        |   リスト、試用、トランザクション      |
+|**プライバシー ポリシーと使用条件**     |   プライバシー ポリシーは、パブリック URL 経由で使用可能にする必要があります。 使用条件は、公開時にテキストとして入力する必要があります。      |   リスト、試用、トランザクション      |
+|**サポート**     |  パブリッシャーのオファリングには、顧客がヘルプを発見できるパブリックに利用可能なサポート URL を含める必要があります。 試用版では、試用期間中は追加コストなしでサポートを提供する必要があります。       |  試用、トランザクション       |
+
+#### <a name="prerequisites-specific-to-trial-publishing"></a>試用公開に固有の前提条件
+
+|**要件**  | **詳細**  |**公開オプション**  |
+|---------|---------|---------|
+|**無料試用期間および試用エクスペリエンス**     |  顧客は、限られた期間、パブリッシャーのアプリを無料で使用できる必要があります。<br><br>つまり、顧客は、パブリッシャーの製品のライセンス料またはサブスクリプション料の対象とならず、基になる Microsoft のファーストパーティ製品またはサービスのコストもかかりません。 すべての試用オプションがパブリッシャーの Microsoft 製品サブスクリプションに展開されるため、パブリッシャーのみが試用コストの最適化と管理を制御します。<br><br>無料試用版、対話型デモ、または体験版を選ぶことができます。 何を選んでも、無料試用版では顧客に、追加コストなしでアプリを試すための最低限の時間を提供する必要があります。<br><br>体験版の作成を始めるには、amp-testdrive@microsoft.com にお問い合わせください。 <br><br>Azure Marketplace の SaaS 試用版エクスペリエンスでは、ユーザーに Active Directory の仕事用資格情報でのサインインを許可する必要があることに注意してください。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences)。 |   試用版      | 
+| **簡単に構成できるターンキー ソリューション**    |  アプリは、短時間で簡単に構成およびセットアップできる必要があります。       |  試用版       |
+|**可用性/アップタイム**    |    SaaS アプリまたはプラットフォームのアップタイムは 99.9% 以上である必要があります。     |    試用版     |
+|**Azure Active Directory**    |    オファリングでは、同意が有効な Azure Active Directory (Azure AD) フェデレーション シングル サインオン (SSO) を許可する必要があります。      |  試用版|
+
+#### <a name="prerequisites-specific-to-transaction-publishing"></a>トランザクション公開に固有の前提条件
+
+|**要件**  |**詳細** |**公開オプション**  |
+|---------|---------|---------|
+|**請求/メータリング**    |  仮想マシンは、ライセンス持ち込みまたは使用量に基づく毎月の請求をサポートする必要があります。       |    トランザクション    |
+|**Azure と互換性がある仮想ハード ディスク (VHD)**     |   仮想マシンは、[[Windows]](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) または [[Linux] ](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上に構築されている必要があります。    |   トランザクション      |
+
+#### <a name="prerequisites-specific-to-transaction-publishing-for-containers"></a>コンテナー向けトランザクション公開に固有の前提条件
+
+
+|**要件**  |**詳細** |**公開オプション**  |
+|---------|---------|---------|
+|**請求/メータリング**   |  コンテナーでは、無料またはライセンス持ち込み課金モデルがサポートされる必要があります。       |  トランザクション       |
+|**Docker ベースのイメージ**    |   コンテナー イメージは、Docker イメージの形式に基づき、Azure Container Registry から取得される必要があります。      |  トランザクション       |
+
+#### <a name="prerequisites-specific-to-transation-publishing-for-saas-app-subscriptions"></a>SaaS アプリ サブスクリプション向けトランザクション公開に固有の前提条件
+
+|**要件**  |**詳細** |**公開オプション**  |
+|---------|---------|---------|
+|**請求/メータリング**    |   オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。      |   トランザクション      |
+|**解約**  |   オファーは、いつでも顧客が解約できます。      |   トランザクション      |
+|**トランザクションのランディング ページ**     |   Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。      |    トランザクション     |
+|**SaaS サブスクリプション API**    |   SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。      |     トランザクション    |
+
+### <a name="prerequisites-specific-to-consulting-services-publishing"></a>コンサルティング サービス公開に固有の前提条件
+
+|**要件** |**詳細**  |**公開オプション**  |
+|---------|---------|---------|
+|**サービス オファリングの特性**     | コンサルティング サービスは、次の特性を備える必要があります。 <br>- 固定スコープ、固定期間、固定価格 (または無料) の契約として提供される。 <br>- 基本的に購入前が優先される。 <br>- 単一顧客に限定される。 <br>- サイト上で実施される。        |    一覧表示     |
+|**コンサルティング サービスのパートナー要件**    |   "*AppSource のみ。*"  <br>- **Dynamics 365 for Customer Engagement:** Silver または Gold [クラウド カスタマー リレーションシップ マネジメント](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency) コンピテンシーを備える。 <br>- **Dynamics 365 for Finance および Operations Enterprise エディション**: Silver または Gold の[エンタープライズ リソース プラニング](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) コンピテンシー、および以降の 12 か月間にクラウド運用で 25,000 ドル以上の収益がある。 <br>- **Dynamics 365 for Finance and Operations、Business エディション**: 少なくとも 1 顧客に[クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) または [デジタル指名パートナー (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) としてサービスを提供している。 <br>- **Power BI**: [ソリューション パートナー](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf) の条件を満たしている。 <br>- **PowerApps**: [パートナー ショーケース](https://powerapps.microsoft.com/en-us/partner-showcase/) ソリューションを備える。 |    一覧表示     |
+|**コンサルティング サービスのパートナー要件**    |  *Azure Marketplace のみ*: <br>パートナーは、当該サービス分野において **Silver または Gold コンピテンシー**を持っている必要もあります。 適格なコンピテンシーを以下に示します。</br><br><ul><li> **コンピテンシー**: クラウド プラットフォームとインフラストラクチャ <br>**ソリューション分野**: クラウド プラットフォーム、データ センター</li><br><li>**コンピテンシー**: アプリケーション開発と ISV <br>**ソリューション分野**: アプリケーション開発、アプリケーション統合、DevOps</li><br><li>**コンピテンシー**: データ管理と分析 <br>**ソリューション分野**: データ分析、データ プラットフォーム </li></br></ul>詳細については、[Microsoft Partner Network を通じたコンピテンシー](https://partner.microsoft.com/en-US/membership/competencies)に関するページをご覧ください。</br><br>リストの詳細については、「[Azure Marketplace コンサルティング サービス](https://docs.microsoft.com/en-us/azure/marketplace/consulting-services)」をご覧ください。 |    一覧表示     | 
+
+
+#### <a name="cloud-partner-portal-pre-publishing-checklist-for-the-azure-marketplace"></a>Azure Marketplace での Cloud パートナー ポータル公開前チェックリスト
+
+公開プロセスを始める前に、オファリングを作成するために必要なコンポーネントを理解することをお勧めします。 Cloud パートナー ポータルでオファリングの作成公開ワークフローを実行するには、次のアーティファクトが必要です。 
+
+**ネットショップの詳細**
+
+|必要なアーティファクト  |オファリングの種類  |
+|---------|---------|
+|**プランの名前 (200 文字) と説明 (2,000 文字)**    |  すべて        |
+|**Microsoft Partner Network (MPN) ID**   |  すべて       |
+|**国/リージョンの可用性**   | すべて        |
+|**契約の期間**     |   コンサルティング サービス      |
+|**該当する業界、カテゴリ、検索キーワード**     |  すべて       |
+|**会社のロゴ (48 x 48、216 x 216)**     |  コンサルティング サービス       |
+|**製品の概要ビデオ (省略可能)**  |  すべて       |
+|**スクリーンショット (最大 5 個、1280 x 720)**   |    すべて     |
+|**マーケティング ドキュメント (最大 3 個)**    |  すべて       |
+|**リードの宛先**    |   すべて      |
+
+**連絡先**
+
+|必要なアーティファクト  |オファリングの種類  |
+|---------|---------|
+|**連絡先情報 (サポート、エンジニアリング、営業)**    |    すべて     |
+
+
+**技術情報**
+
+|必要なアーティファクト  |オファリングの種類 |
+|---------|---------|
+|**試用版 URL**     |  すべての試用オファリングの種類       |
+|**サポートされている言語**    |   すべての試用オファリングの種類      |
+|**アプリのバージョン番号とリリース日**    |   すべての試用オファリングの種類      |
+|**サポート URL**    |   すべての試用オファリングの種類、仮想マシン      |
+|**使用条件とプライバシー ポリシーの URL**     |    すべて     |
+
+
+**体験版**
+
+|必要なアーティファクト  |オファリングの種類  |
+|---------|---------|
+|**説明と期間**     |  体験版のみ       |
+|**ユーザー マニュアル**     |   体験版のみ      |
+|**体験版ビデオ (最大 1 個)**     |  体験版のみ       |
+|**体験版の国/リージョンの可用性**    |   体験版のみ      |
+|**Azure リソース グループ名**   |         |
+|**Azure サブスクリプション ID**     |  体験版のみ       |
+|**Azure AD テナント ID**   |    体験版のみ     |
+|**Azure AD アプリ ID**  |  体験版のみ       |
+|**Azure AD アプリ キー**     |   体験版のみ      |
+
+
+**ネットショップ/Marketplace**
+
+|必要なアーティファクト  |オファリングの種類  |
+|---------|---------|
+|**タイトル (最大 50 文字)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)、コンテナー、SaaS サブスクリプション       |
+|**概要 (最大 200 文字)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)、コンテナー、SaaS サブスクリプション       |
+|**長めの概要 (最大 256 文字)**     |   トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)、コンテナー、SaaS サブスクリプション      |
+|**HTML 形式の説明 (最大 3,000 文字)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)、コンテナー、SaaS サブスクリプション      |
+|**会社のロゴ (40 x 40、90 x 90、115 x 115、255 x 115、815 x 290)**    |  トランザクション: 仮想マシン、Azure アプリ (ソリューション テンプレートと管理対象アプリ)、コンテナー、SaaS サブスクリプション     |
+
+
+**SKU**
+
+|必要なアーティファクト  |オファリングの種類  |
+|---------|---------|
+|**バージョン番号**     |    トランザクション: Azure アプリ (ソリューション テンプレートと管理対象アプリ)     |
+|**すべてのテンプレート ファイルと createUIDefinitionFile を含むパッケージ ファイル**   |トランザクション: Azure アプリ (ソリューション テンプレートと管理対象アプリ)         |
+|**オペレーティング システムの詳細**    |   トランザクション: 仮想マシン      |
+|**使用するポートとプロトコル**    |  トランザクション: 仮想マシン       |
+|**使用する各 VHD のディスク バージョンと SAS URL**   |  トランザクション: 仮想マシン       |
+|**Azure Container Registry (ACR) イメージ リポジトリの詳細 (サブスクリプション ID、リソース グループ名、レジストリ名、リポジトリ名、ユーザー名、パスワード、イメージ タグ (オプション) など)** | トランザクション: コンテナー |
+
+
+#### <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする
+Azure Active Directory はクラウド ID サービスであり、業界標準のプロトコル OAuth および OpenID Connect を使って Microsoft 職場または学校アカウントでの認証を有効にします。 Azure AD の詳細については、[製品の Web ページ](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)をご覧ください。 
+
+Microsoft はすべての Marketplace ユーザーを Azure AD で認証します。 認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 [認証中に Azure AD からアプリが受信するトークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens)には、アプリでユーザー アカウントを作成するために使う有益なユーザー情報が含まれています。 そのため、プロビジョニングのエクスペリエンスを自動化し、変換の可能性を高めることができます。 
+
+Azure AD を使ってアプリまたは試用の 1 クリック認証を有効にすると、次のことが可能になります。
+
+- Marketplace から試用版への顧客エクスペリエンスを簡素化する。 
+- ユーザーが Marketplace からパブリッシャーのドメインまたは試用環境にリダイレクトされる場合でも、製品内エクスペリエンスの感覚を維持する。
+- 余分なサインイン手順がないため、リダイレクトで中止される可能性を低くする。
+- 大規模な Azure AD ユーザーの展開障壁を削減する。
+
+**Marketplace のための Azure AD の統合を検証する: マルチテナント アプリケーション**
+
+現在 Azure AD をサポートしている場合
+
+- Azure Portal でアプリケーションを登録する。
+- Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
+- [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。
+
+Azure AD フェデレーション SSO が初めての場合
+
+- Azure Portal でアプリケーションを登録する。
+- [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発する。
+- Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
+- [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)。
+
+**Marketplace のための Azure AD の統合を検証する: シングルテナント アプリケーション**
+
+シングルテナント アプリケーションには、次のような複数の選択肢があります。
+
+- [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使って、ユーザーをパブリッシャーのディレクトリにゲスト ユーザーとして追加する。
+- "連絡する" を使って顧客用に試用版を手動でプロビジョニングする。
+- 顧客ごとの "体験版" を開発する。
+- SSO を使ってマルチテナント サンプル デモ アプリをビルドする。
+
+
+### <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
+
+#### <a name="becoming-a-publisher"></a>パブリッシャーになる
+
+このセクションでは、以下の手順について説明します。 <ul><li>Azure Marketplace および AppSource のパブリッシャーになる。</li><li>Cloud パートナー ポータルへのアクセスを取得する。 プランの作成、公開、およびメンテナンスに、このポータルを使用します。</li></ul>
+
+**プロセスの概要**
+
+|Marketplace の登録手順  |Time  |[説明]  |
+|---------|---------|---------|
+| 1.Microoft Partner Network に登録する | 15 分 | Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、Azure Marketplace パブリッシャーになるための追加の利点とサポートを受けます。 MPN に登録するには、Microsoft Partner Network にアクセスして、"登録" をクリックします。 該当する場合、登録中に組織の既存のメンバーシップに参加できるようになります。 登録したら、組織の MPN ID を書き留めます。これは、Cloud パートナー ポータルでパブリッシャー プロファイルをアクティブにする (手順 3) ために必要です。      |
+|2.Microsoft ID を作成する     |   約 15 分      |  この Microsoft ID を使って、Cloud パートナー ポータルにアクセスします。 このメール アドレスは、Microsoft ID として登録されている必要があり、Cloud パートナー ポータル (手順 3) と Microsoft デベロッパー センター (手順 4) の両方で使われます。 選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。 ID 作成の前に行う作業のガイドラインについては、「ガイドラインと方法」のセクションをご覧ください。 |
+|手順 3.Marketplace 申請フォームを送信する     |  1 ～ 3 日       | 組織をノミネートして、Microsoft クラウド マーケットプレース パブリッシャーとして登録します。 フォームには、組織に関する情報、公開する最初のアプリケーションまたはサービス オファリングに関する情報、提供されるサポートのレベルが含まれます。 <ul><li>[Azure Marketplace 申請フォーム](http://aka.ms/listonazuremarketplace)</li><li>[AppSource 申請フォーム](http://aka.ms/listonappsource)</li></ul> フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、承認済みパートナーになって、Cloud パートナー ポータルにアクセスするための次の手順を記載した通知をメールで受け取ります。ここでは、最初のオファーの登録リストを入力し、追加のオファーを作成できます。 承認されると、お客様にご利用コードが送信されます。このコードを使用すると、Microsoft デベロッパー センターの登録料金が免除されます (手順 4)。 |
+|4.デベロッパー センターに登録する     |    5 ～ 10 日     | マーケットプレースでの仮想マシン、ソリューション テンプレート、および Azure Managed Apps などのトランザクション機能を備えたアプリケーションの公開には、Microsoft デベロッパー センターが必要です。 この要件によって、会社の法律、税、および銀行取引のエンティティについて、Microsoft でパブリッシャーの会社情報を検証できるようになります。 登録者は、合法的な組織の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 登録時には、会社用に共有されている Microsoft ID (手順 2) を使う必要があり、Cloud パートナー ポータルでも同じアカウントを使う必要があります。 <ul>Marketplace 申請フォームに入力しない場合、99 ドルの登録料金の支払いを求められる点に注意してください。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出すると、メールでプロモーション コードを受け取ります。 重要: Microsoft デベロッパー センターのアカウント作成を試行する前に、会社がアカウントを既に所有していないことを確認してください。 このプロセスの詳細な手順については、「デベロッパー センターに登録する方法の説明」をご覧ください。</ul>   |
+|5.クラウド パートナー ポータルにサインインする     |  約 15 分       |  申請承認通知を受け取り、[Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) と [Microsoft デベロッパー センター](https://dev.windows.com/) で登録した後は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にアクセスするためのアカウントが自動的に作成されます。 初回サインイン用の資格情報は、申請承認のメールに含まれます。 Cloud パートナー ポータルの使い方について詳しくは、ポータル内の [[学習]](https://cloudpartner.azure.com/#Learn) メニューに移動して、[ドキュメント] セクションを確認してください。    |
+
+
+#### <a name="guidelines-and-how-tos"></a>ガイドラインと方法
+
+**Azure Marketplace アカウントを管理するための Microsoft ID の作成に関するガイドライン**
 
 会社のアカウントを作成しているときに、そのアカウントを開いた Microsoft アカウントで複数のユーザーがログインし、そのアカウントにアクセスする必要がある場合は、次のガイドラインに従ってください。
 
@@ -626,3 +486,99 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 3. **[問題の種類]** で **[Dev Center のヘルプ]** を、**[カテゴリ]** で **[アプリの発行と管理]** を選択します。 その後、**[Start email]/(メールを開始する/)** ボタンを選択します。   
 4. [サインイン] ページで、任意の Microsoft アカウントを使用してサインインします。 Microsoft アカウントを持っていない場合は、リンクを使用して作成します。 
 5. 問題の詳細を入力し、**[送信]** ボタンを選択してチケットを送信します。
+
+#### <a name="billing-options"></a>課金オプション
+
+**Marketplace での販売に関する考慮事項**
+
+Marketplace には無料で参加できます。 リスト、試用、および BYOL トランザクションのオプションを使って公開している場合、Marketplace への参加に対する収益の共有はありません。 詳細については、[Marketplace 参加ポリシーに関するページ](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)をご覧ください。
+
+**従量課金制とライセンス持ち込みの課金オプション**
+
+従量課金制トランザクションを公開オプションとして使用すると、パブリッシャーの使用量ベースのソフトウェア ライセンスの収益は、パブリッシャーと Microsoft の間で 80%/20% で折半されます。 1 つのオファリングを従量課金制とライセンス持ち込み両方の課金モデルで価格設定でき、異なる SKU としてオファリング レベルで共存できます。 これは、Cloud パートナー ポータルのオファリングで構成できます。
+
+各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。
+
+オプションとして従量課金制を有効にする場合:
+
+
+|ライセンス コスト   | 1.00 ドル/時間        |
+|---------|---------|
+|Azure 使用コスト (D1/1 コア)     | 0.14 ドル/時間  |
+|**顧客は Microsoft から請求されます**    | **1.14 ドル/時間**       |
+
+このシナリオでは、Microsoft は公開された仮想マシン イメージの使用に対して 1 時間あたり 1.14 ドルを請求します。
+
+
+|**Microsoft が請求** |**1.14 ドル/時間**  |
+|---------|---------|
+|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います | 0.80 ドル/時間        |
+|Microsoft は、ライセンス コストの 20% を受け取ります    | 0.20 ドル/時間        |
+|Microsoft は、Azure の使用コストを受け取ります     |   0.14 ドル/時間      |
+
+オプションとしてライセンス持ち込みを有効にした場合:
+
+|ライセンス コスト     | ライセンス料はパブリッシャーによって交渉および請求されます        |
+|---------|---------|
+|Azure 使用コスト (D1/1 コア)    | 0.14 ドル/時間         |
+|**顧客は Microsoft から請求されます**     | **0.14 ドル/時間**        |
+
+このシナリオでは、Microsoft は公開された仮想マシン イメージの使用に対して 1 時間あたり 0.14 ドルを請求します。 
+
+|**Microsoft が請求**    |   **0.14 ドル/時間**      |
+|---------|---------|
+|Microsoft は、Azure の使用コストを受け取ります     |    0.14 ドル/時間     |
+|Microsoft は、ライセンス コストの 0% を受け取ります     |  0.00 ドル/時間       |
+
+**一括請求および支払い方法**
+
+トランザクション公開オプションを使う重要な利点は、Microsoft が基になっている Azure の使用料と同時にライセンス コストを顧客に直接 "一括して請求" できることです。 このシナリオでは、Microsoft がパブリッシャーに代わって請求および徴収を行うので、パブリッシャーが独自に顧客と調達関係を築く必要はありません。 これはパブリッシャーの時間とリソースの節約になり、パブリッシャーは請求ではなく販売に集中できます。
+
+**マイクロソフトエンタープライズ契約**
+
+マイクロソフトの顧客は、Enterprise Agreement を使って、Azure の使用料など、Microsoft 製品の料金を支払う場合があります。 この支払いオプションは、ソフトウェアおよびクラウド サービスのライセンスを最低 3 年間供与したい組織のために作られています。 顧客は、1 回前払いする代わりに、分割して支払うことができます。 EA の顧客が従量課金制のトランザクション リストを使うときは、パブリッシャーのソフトウェア ライセンス コストの請求は、四半期ごとの EA 超過請求サイクルに従います。
+
+**年額コミットメント** 
+
+Enterprise Agreement の顧客は、Azure に対する前払いによる金銭的コミットメントにより、Azure を契約に追加できます。 このコミットメントは、Azure がグローバル データセンターから提供するさまざまな Cloud Services の組み合わせを使用して、年間を通じて使用されます。
+
+
+### <a name="azure-marketplace-vs-appsource"></a>Azure Marketplace とAppSource
+
+各ネットショップは、一意の顧客ニーズに対して機能します。 これにより、役割ごとにターゲットを設定でき、顧客の人物像に基づいた適切なソリューションやサービスを提供できます。
+
+**Azure Marketplace** を通して IT 専門家やクラウド開発者が IaaS、SaaS、PaaS ソリューションを発見、試用、購入できるようにします。
+
+
+|**顧客ニーズ**  |**Azure Marketplace** |
+|---------|---------|
+|**ビジネス上のニーズと技術的なニーズを満たすため、追加のクラウド プラットフォーム機能が必要である**     |  Azure での実行に最適化された補完的アプリケーションとサービスのポートフォリオを提供し、その数を増やし続ける       |
+|**適切なアプリケーションまたはサービスを見つけ出すことが困難と判明した**    |  Azure 用のソリューションとサービスを発見、試用、購入するためのワンストップ ショップを提供する        |
+|**サードパーティ製のアプリケーションとサービスをデプロイするためのスケーラブルなしくみが必要である**   | サードパーティ製のアプリケーションとサービス向けにスケーラブルなデプロイの作成と構成ができるようにする        |
+|**新しいアプリケーションとサービスを既存のソリューションと統合して使用することが必要である**  |   Azure でサードパーティ製のアプリケーションとサービスを既存のソリューションと簡単に統合できる      |
+
+**AppSource** を通してビジネス ユーザーが、業績を推進し、価値を得るまでの時間を短縮する基幹業務 SaaS アプリケーションと実装サービスを発見、試用、購入できるようにします。 
+
+
+|**顧客ニーズ**  |**AppSource**  |
+|---------|---------|
+|**既に使用している Microsoft 製品と連携するビジネス ソリューション** | 顧客がサードパーティ製アプリケーションとサービスを使って、Microsoft のクラウド アプリケーションとテクノロジを拡張できるようにする       |
+|**適切なソリューションまたは実装サービスを簡単に見つけることができる**    |   アプリケーション、サービス、アドインなどを発見し、試用して入手するためのワンストップ ショップを提供する      |
+|**具体的なビジネスの課題を解決する業界固有の基幹業務ソリューション**   | 多くの業界にまたがる具体的な要件の解決に役立つ、完成したエンドツーエンドの業界向けソリューションを提供する     |
+|**生産性、効率性、ビジネスの洞察を高めるアプリ**    | カスタマー サービス、HR、運用など、基幹業務向けのアプリを提供する        |
+| **固有の状況へのアプリの導入を支援する、経験を積んだ実装パートナー** | ビジネス ユーザーが予測可能な結果をもたらすために役立つ、Dynamics 365、Power BI、PowerApps、およびサード パーティ アプリに基づいたソリューション向けのコンサルティング サービス オファリングのカタログを提供する |
+
+#### <a name="understanding-the-differences-between-storefronts"></a>ネットショップ間の相違点の概要
+
+ネットショップの選択は、オファリングの対象者を識別することから始まります。 両方の対象ユーザーをターゲットとするソリューションの場合は、1 回公開するだけで、両方のネットショップに陳列できます。
+ 
+各ネットショップの他の利点を考慮してください。
+
+|ネットショップの利点  |Azure Marketplace  |AppSource   |
+|---------|---------|---------|
+|**課金の柔軟性**    | 仮想マシンの場合、"従量課金制" オプションは、Microsoft Enterprise Agreement (EA) または Web 直販モデルを使います。 価格のオプションには、プランが永続的に無料の、Free レベルのサブスクリプションも含まれます。 また、販売促進のために限られた期間中は無料になり、その後は課金のサブスクリプションに変換される、"今だけのお試し" サブスクリプションも含まれます。 また、ライセンス持ち込みのアクティブ化は、パブリッシャーをサポートするためのオプションです。 <br><br>どちらの課金オプションでも、仮想マシンが Azure アプリ (たとえば、ソリューション テンプレートや管理対象アプリなど) 経由で展開されるシナリオでは、プロビジョニングされたすべての Azure リソースが顧客に対して直接課金されます。 | AppSource は、試用版エクスペリエンスのプロビジョニングを提供していますが、現在は商取引が有効な公開オプションは提供していません。 追加の投資や変更なしで、現在の注文および課金インフラストラクチャを利用できます        |
+|**他のパートナーとの接続の促進**     |現在、Azure Marketplace では、パブリッシャーはサービス プロバイダーまたは配信パートナーをオファリングにリンクすることはできませんが、この機能は 2018 年に使用できるようになります。         |  独立系ソフトウェア ベンダー、システム インテグレーター、および管理対象サービス プロバイダーは、特定の実装シナリオにリンクできます。 この機能は、新しい顧客に対する共同販売をサポートします。      |
+|**Automation**     |    現在、Azure Marketplace では、パブリッシャーはサービス プロバイダーまたは配信パートナーをオファリングにリンクすることはできません     | アドイン プロビジョニングで自動化された SaaS を利用します。 ソリューション テンプレートを使って SaaS ベースのデータ コレクションと展開シナリオを自動化します。        |独立系ソフトウェア ベンダー、システム インテグレーター、および管理対象サービス プロバイダーは、特定の実装シナリオにリンクでき、新規顧客への共同販売をサポートできます。
+|**複数のクラウド種類**     |   Azure Stack によりパブリック クラウドとオンプレミス ソリューションの両方に公開します。または、Azure Government および中国やドイツなどのリージョン クラウドに公開します。      |    現在、AppSource では、Azure Stack、Azure Government、またはリージョン クラウドのサポートは提供されていません。     |
+|**顧客へのコンテキスト内プレゼンテーション**     |  コンテキスト検索のために、Azure Portal 内エクスペリエンスでソリューションを利用できるようにします (仮想マシンとソリューション テンプレート)。       |  Dynamics 365、Power BI、Office 365 など Microsoft 製品のアプリ内エクスペリエンスをより多くのお客様に届けます。    |
+

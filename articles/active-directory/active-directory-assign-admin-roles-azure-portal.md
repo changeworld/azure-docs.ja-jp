@@ -14,11 +14,12 @@ ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: fc7a67c644894606b09ed3ad594ff9f87b29f307
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e663fe275fc195cb611e1032adc147bf4e99b1d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932151"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 
@@ -41,7 +42,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   > [!NOTE]
   > Azure で Exchange ActiveSync の条件付きアクセス ポリシーをデプロイするには、ユーザーは、グローバル管理者である必要もあります。
   
-* **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **Dynamics 365 サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
 * **デバイス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル コンピューター管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
 
@@ -68,9 +69,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **メールボックス管理者**: このロールは、RIM Blackberry デバイスの Exchange Online 電子メール サポートの一部としてのみ使用されます。 組織が RIM Blackberry デバイスの Exchange Online 電子メールを使用していない場合、このロールは使用しません。
 
-* **Partner Tier 1 サポート**: 使用しないでください。 このロールは廃止されており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
+* **Partner Tier 1 サポート**: 使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
-* **Partner Tier 2 サポート**: 使用しないでください。 このロールは廃止されており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
+* **Partner Tier 2 サポート**: 使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
 * **パスワード管理者/ヘルプデスク管理者**: このロールが割り当てられたユーザーは、パスワードの変更、サービス要求の管理、サービス正常性の監視を行うことができます。 ヘルプデスク管理者が変更できるのは、ユーザーと他のヘルプデスク管理者のパスワードだけです。 
 
@@ -176,7 +177,7 @@ Azure AD サインイン レポートと監査ログの表示<br>会社情報と
 
 ## <a name="deprecated-roles"></a>非推奨のロール
 
-次のロールは使用しないでください。 これらは廃止されており、将来的に Azure AD から削除されます。
+次のロールは使用しないでください。 これらは非推奨となっており、将来的に Azure AD から削除されます。
 
 * アドホック ライセンス管理者
 * メールで確認済みのユーザー作成者

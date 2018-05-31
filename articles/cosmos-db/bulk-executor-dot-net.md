@@ -10,15 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 0e559b7ebb5f9efefed194f87e73219fecd1e6ac
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 608551090ce10e08ba517def644c72186a6f25e1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887244"
 ---
 # <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>BulkExecutor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の BulkExecutor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションにインポートし、更新する方法について説明します。 このチュートリアルでは、サンプル .NET アプリケーションを使って、ランダムに生成されたドキュメントを Azure Cosmos DB コレクションに一括インポートする手順を説明します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。
+このチュートリアルでは、Azure Cosmos DB の BulkExecutor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コレクションにインポートし、更新する方法について説明します。 BulkExecutor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[BulkExecutor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、サンプル .NET アプリケーションを使って、ランダムに生成されたドキュメントを Azure Cosmos DB コレクションに一括インポートする手順を説明します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

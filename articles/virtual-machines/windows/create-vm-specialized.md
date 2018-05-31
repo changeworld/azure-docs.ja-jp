@@ -1,11 +1,11 @@
 ---
-title: "Azure で特殊化された VHD から Windows VM を作成する | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルで、特殊化された管理ディスクを OS ディスクとして接続して新しい Windows VM を作成します。"
+title: Azure で特殊化された VHD から Windows VM を作成する | Microsoft Docs
+description: Resource Manager デプロイ モデルで、特殊化された管理ディスクを OS ディスクとして接続して新しい Windows VM を作成します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -13,13 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 578d31aef5ddeafbd806d0bae4231c135968f78a
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: be7933b038fb5a648249e9b0c73415bff778930b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012786"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -40,7 +41,7 @@ Azure Portal を使用して、[特殊化された VHD から新しい VM を作
 PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM -RequiredVersion 6.0.0
 ```
 詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
@@ -137,7 +138,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>VHD から管理ディスクを作成する
 
-[New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) を使用してストレージ アカウント内の既存の特殊化された VHD から管理ディスクを作成します。 この例では、ディスク名に **myOSDisk1** を使用し、*StandardLRS* ストレージにディスクを挿入して、*https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* をソース VHD の URI として使用します。
+[New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) を使用してストレージ アカウント内の既存の特殊化された VHD から管理ディスクを作成します。 この例では、ディスク名に **myOSDisk1** を使用して、ディスクを *Standard_LRS* ストレージに配置し、ソース VHD の URI として *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* を使用します。
 
 新しい VM の新しいリソース グループを作成します。
 
@@ -153,7 +154,7 @@ New-AzureRmResourceGroup -Location $location `
 $sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig -AccountType StandardLRS  `
+    (New-AzureRmDiskConfig -AccountType Standard_LRS  `
     -Location $location -CreateOption Import `
     -SourceUri $sourceUri) `
     -ResourceGroupName $destinationResourceGroup
@@ -337,7 +338,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) を使用して OS ディスクを構成に追加します。 この例では、ディスクのサイズを *128 GB* に設定し、管理ディスクを *Windows* OS ディスクとして接続します。
  
 ```powershell
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType StandardLRS `
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
@@ -367,5 +368,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>次の手順
-新しい仮想マシンにサインインするには、 [ポータル](https://portal.azure.com)で VM を参照し、 **[接続]**をクリックして、リモート デスクトップ RDP ファイルを開きます。 元の仮想マシンのアカウント資格情報を使用して、新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
+新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
 

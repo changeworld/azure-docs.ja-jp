@@ -7,13 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/25/2018
 ms.author: sujayt
-ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011630"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 04/18/2018
 --- | ---
 **Azure Portal** | サポートされています
 **クラシック ポータル** | サポートされていません
-**PowerShell** | 現在、サポートされていません
+**PowerShell** | [プレビュー](azure-to-azure-powershell.md)
 **REST API** | 現在、サポートされていません
 **CLI** | 現在、サポートされていません
 
@@ -95,22 +96,22 @@ ms.lasthandoff: 04/18/2018
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-14.04 LTS | 9.11 | 3.13.0-24-generic ～ 3.13.0-125-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-83-generic、 |
 14.04 LTS | 9.12 | 3.13.0-24-generic ～ 3.13.0-132-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-generic ～ 3.13.0-137-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-104-generic |
 14.04 LTS | 9.14 | 3.13.0-24-generic ～ 3.13.0-141-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-112-generic |
-16.04 LTS | 9.11 | 4.4.0-21-generic ～ 4.4.0-83-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-27-generic |
+14.04 LTS | 9.15 | 3.13.0-24-generic ～ 3.13.0-143-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-116-generic |
 16.04 LTS | 9.12 | 4.4.0-21-generic ～ 4.4.0-96-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-generic ～ 4.4.0-104-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic |
 16.04 LTS | 9.14 | 4.4.0-21-generic ～ 4.4.0-112-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic ～ 4.13.0-32-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure ～ 4.13.0-1009-azure |
+16.04 LTS | 9.15 | 4.4.0-21-generic ～ 4.4.0-116-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic ～ 4.13.0-37-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure ～ 4.13.0-1012-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Debian カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.14、9.15 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14、9.15 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Linux OS を実行している Azure 仮想マシンでサポートされるファイル システムおよびゲスト ストレージ構成
 
@@ -125,7 +126,7 @@ Debian 8 | 9.14 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.
 **地理クラスター** | **Azure リージョン**
 -- | --
 アメリカ | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
-ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ
+ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ、フランス中部、フランス南部
 アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部
 オーストラリア   | オーストラリア東部、オーストラリア南東部
 Azure Government    | 米国政府バージニア、米国政府アイオワ、米国政府アリゾナ、米国政府テキサス、米国防総省東部、米国防総省中部
@@ -175,7 +176,7 @@ GRS | サポートされています |
 RA-GRS | サポートされています |
 ZRS | サポートされていません |  
 クールおよびホット ストレージ | サポートされていません | 仮想マシン ディスクは、クールおよびホット ストレージではサポートされません
-Virtual Networks のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク)  | いいえ  | レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
+仮想ネットワークの Azure Storage ファイアウォール  | いいえ  | レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
 汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ  | 汎用目的 V1 のストレージ アカウントに比べて、トランザクション コストが非常に大きくなります
 
 >[!IMPORTANT]
@@ -200,6 +201,8 @@ Azure 管理 DNS | サポートされています |
 認証済みプロキシ | サポートされていません | VM が送信接続に認証済みプロキシを使用している場合は、Azure Site Recovery でレプリケートできません。    
 オンプレミスでのサイト間 VPN (ExpressRoute あり/なし)| サポートされています | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
 VNet 間接続 | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
+仮想ネットワーク サービスのエンドポイント | サポートされています | 仮想ネットワークの Azure Storage ファイアウォールはサポートされていません。 レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
+高速ネットワーク | サポートされていません | Accelerated Networking が有効になっている VM をレプリケートすることはできますが、フェールオーバー VM では Accelerated Networking が有効になりません。 Accelerated Networking はフェールバックのソース VM でも無効になります。
 
 
 ## <a name="next-steps"></a>次の手順

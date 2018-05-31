@@ -1,13 +1,14 @@
 ---
 layout: HubPage
-hide_bc: ''
+hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
-ms.openlocfilehash: 5084e6f9ab8d73e2c8ffefc95a376bc85222320c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c7f46f9b22bd3696b7d281815687cca2b90b22b3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070063"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -90,8 +91,8 @@ ms.lasthandoff: 03/09/2018
                                             <div class="cardText">
                                                 <h3>インフラストラクチャのデプロイ</h3>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux 仮想マシン</a></li>
-                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows 仮想マシン</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux virtual machines</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows virtual machines</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -103,7 +104,8 @@ ms.lasthandoff: 03/09/2018
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>アプリケーションの開発</h3>
+                                                <h3>アプリの開発
+</h3>
                                                 <div class="ico48Link">
                                                     <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
                                                         <img src="media/index/logo_NET.svg" alt="">
@@ -136,6 +138,7 @@ ms.lasthandoff: 03/09/2018
                                                 </div>
                                                 <div class="ico48Link">
                                                     <a href="/go/azure/">
+                                                        <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt=""/>
                                                         <span>Go</span>
                                                     </a>
                                                 </div>
@@ -143,7 +146,7 @@ ms.lasthandoff: 03/09/2018
                                                     <h4>アプリ モデル</h4>
                                                     <ul class="noBullet">
                                                         <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
-                                                        <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
+                                                        <li><a class="barLink" href="/azure/azure-functions/">サーバーレスな Functions</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -182,7 +185,7 @@ ms.lasthandoff: 03/09/2018
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>コマンド ライン ツール</h3>
+                                                <h3>コマンドライン ツール</h3>
                                                 <div class="ico48Link">
                                                     <a href="/cli/azure">
                                                         <img src="media/index/azure_dev-7.svg" alt="">
@@ -222,18 +225,18 @@ ms.lasthandoff: 03/09/2018
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
-                                    <h3>コンピューティング</h3>
+                                    <h3>Compute</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/virtual-machines/linux/">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
-                                                <p>Linux 仮想マシン</p>
+                                                <p>Linux Virtual Machines</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/virtual-machines/windows/">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
-                                                <p>Windows 仮想マシン</p>
+                                                <p>Windows Virtual Machines</p>
                                             </a>
                                         </li>
                                         <li>
@@ -331,7 +334,7 @@ ms.lasthandoff: 03/09/2018
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>コンテナー</h3>
+                                    <h3>Containers</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/container-service/">
@@ -443,7 +446,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>仮想ネットワーク</p>
+                                                <p>Virtual Network</p>
                                             </a>
                                         </li>
                                         <li>
@@ -699,7 +702,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>バックアップ</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -720,7 +723,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>機械学習</p>
+                                                <p>Machine Learning</p>
                                             </a>
                                         </li>
                                         <li>
@@ -789,7 +792,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/application-insights/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
-                                                <p>アプリケーション インサイト</p>
+                                                <p>Application Insights</p>
                                             </a>
                                         </li>
                                         <li>
@@ -805,7 +808,7 @@ ms.lasthandoff: 03/09/2018
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>モノのインターネット</h3>
+                                    <h3>モノのインターネット (IoT)</h3>
                                     <ul>
                                         <li>
                                             <a href="https://azure.microsoft.com/develop/iot/">
@@ -846,7 +849,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>機械学習</p>
+                                                <p>Machine Learning</p>
                                             </a>
                                         </li>
                                         <li>
@@ -965,7 +968,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/application-insights/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
-                                                <p>アプリケーション インサイト</p>
+                                                <p>Application Insights</p>
                                             </a>
                                         </li>
                                         <li>
@@ -983,7 +986,8 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>バックアップ</p>
+                                                <p>Backup
+</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1047,7 +1051,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Linux 仮想マシン</h3>
+                                                    <h3>Linux Virtual Machines</h3>
                                                     <p>Ubuntu、Red Hat などの仮想マシンをプロビジョニング</p>
                                                 </div>
                                             </div>
@@ -1066,7 +1070,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Windows 仮想マシン</h3>
+                                                    <h3>Windows Virtual Machines</h3>
                                                     <p>SQL Server、SharePoint などの仮想マシンをプロビジョニング</p>
                                                 </div>
                                             </div>
@@ -1241,7 +1245,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>仮想ネットワーク</h3>
+                                                    <h3>Virtual Network</h3>
                                                     <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続</p>
                                                 </div>
                                             </div>
@@ -2126,7 +2130,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>機械学習</h3>
+                                                    <h3>Machine Learning</h3>
                                                     <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
@@ -2279,7 +2283,7 @@ ms.lasthandoff: 03/09/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Bot Service</h3>
-                                                    <p>必要に応じて拡大縮小できるインテリジェントなサーバーレス ボット サービス</p>
+                                                    <p>必要に応じてスケーリングできるインテリジェントなサーバーレス ボット サービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2289,7 +2293,7 @@ ms.lasthandoff: 03/09/2018
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">モノのインターネット</a>
+                        <a href="#iot">モノのインターネット (IoT)</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="https://azure.microsoft.com/develop/iot/">
@@ -2397,7 +2401,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>機械学習</h3>
+                                                    <h3>Machine Learning</h3>
                                                     <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
@@ -2773,7 +2777,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>アプリケーション インサイト</h3>
+                                                    <h3>Application Insights</h3>
                                                     <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
@@ -2835,7 +2839,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>アプリケーション インサイト</h3>
+                                                    <h3>Application Insights</h3>
                                                     <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
@@ -2892,7 +2896,8 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>バックアップ</h3>
+                                                    <h3>Backup
+</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -3069,7 +3074,7 @@ ms.lasthandoff: 03/09/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure Germany</h3>
-                                                    <p>データ トラスティによる追加規制により、主要な国際基準だけでなくドイツの規制にも準拠してアプリケーションを構築してホストします</p>
+                                                    <p>データ保護受託者による管理を追加して、主要な国際基準だけでなくドイツの規制にも準拠しているアプリケーションを構築してホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3254,6 +3259,7 @@ ms.lasthandoff: 03/09/2018
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
@@ -3576,7 +3582,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>クラウドの設計パターン</h3>
+                                                    <h3>クラウド設計パターン</h3>
                                                     <p>クラウドの設計パターン。 各パターンでは、問題、その問題を解決するパターン、Azure に基づく例を説明します。</p>
                                                 </div>
                                             </div>
