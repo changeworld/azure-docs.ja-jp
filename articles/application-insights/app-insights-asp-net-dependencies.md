@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights における依存関係の追跡 | Microsoft Docs"
-description: "オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
+title: Azure Application Insights における依存関係の追跡 | Microsoft Docs
+description: オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010466"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定: 依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -41,7 +42,7 @@ ms.lasthandoff: 01/24/2018
 ## <a name="set-up-dependency-monitoring"></a>依存関係の監視の設定
 [Application Insights SDK](app-insights-asp-net.md) では、部分的な依存関係情報が自動的に収集されます。 完全なデータを取得するには、ホスト サーバー用の適切なエージェントをインストールします。
 
-| プラットフォーム | [インストール] |
+| プラットフォーム | Install |
 | --- | --- |
 | IIS サーバー |[サーバーに Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)するか、[アプリを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)して [Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
 | Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](app-insights-azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
@@ -131,7 +132,7 @@ ms.lasthandoff: 01/24/2018
 
 ![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
-## <a name="analytics"></a>[分析]
+## <a name="analytics"></a>Analytics
 依存関係は [Log Analytics クエリ言語](https://docs.loganalytics.io/)によって追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
@@ -200,9 +201,12 @@ ms.lasthandoff: 01/24/2018
 
 *SQL クエリが完全に表示されません。*
 
-* 最新バージョンの SDK にアップグレードしてください。 .NET バージョンが 4.6 未満の場合は、次のようにします。
-  * IIS ホスト: [Application Insights エージェント](app-insights-monitor-performance-live-website-now.md)をホスト サーバーにインストールします。
-  * Azure Web アプリ: Web アプリのコントロール パネルで [Application Insights] タブを開き、Application Insights をインストールします。
+* Application Insights SDK の最新の安定バージョンにアップグレードします。
+
+ .NET バージョンが 4.6 未満の場合は、次のようにします。
+
+* IIS ホスト: [Application Insights エージェント](app-insights-monitor-performance-live-website-now.md)をホスト サーバーにインストールします。
+* Azure Web アプリ: Web アプリのコントロール パネルで [Application Insights] タブを開き、Application Insights をインストールします。
 
 ## <a name="video"></a>ビデオ
 
