@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2018
+ms.date: 05/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d8ef36e001aaf417b84efaf99a992fd64f01b6f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366343"
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>シナリオ 1: Azure への移行についてオンプレミスのワークロードを評価する
 
@@ -22,9 +23,9 @@ Azure への移行を検討する際、Contoso 社は技術的および財務的
 
 **テクノロジ** | **説明** | **コスト**
 --- | --- | ---
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | DMA は、Azure のデータベース機能に影響を及ぼす可能性がある互換性の問題を評価して検出します。 さらに、SQL Server ソースとターゲットの間の機能パリティを評価し、ターゲット環境のパフォーマンスと信頼性の向上を推奨します。 | これは無料でダウンロードできるツールです。 
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | DMA は、Azure のデータベース機能に影響を及ぼす可能性がある互換性の問題を評価して検出します。 さらに、SQL Server ソースとターゲットの間の機能パリティを評価し、ターゲット環境のパフォーマンスと信頼性の向上を推奨します。 | これは無料でダウンロードできるツールです。
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | このサービスは、Azure への移行についてオンプレミスのマシンを評価するのに役立ちます。 マシンの移行適合性を評価し、Azure で実行する場合のサイズ設定とコストの見積もりを提供します。 現時点では、Azure Migrate サービスを使用して、Azure への移行についてオンプレミスの VMware VM を評価できます。 | 現時点では (2018 年 4 月)、このサービスは無料で使用できます。
-[サービス マップ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate では、移行したいマシン間の依存関係を示すために Service Map が使用されます。 |  Service Map は Azure Log Analytics に含まれています。 これは現在、180 日間無料で使用できます。 
+[サービス マップ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate では、移行したいマシン間の依存関係を示すために Service Map が使用されます。 |  Service Map は Azure Log Analytics に含まれています。 これは現在、180 日間無料で使用できます。
 
 このシナリオでは、DMA をダウンロードして実行し、旅行アプリ用のオンプレミス SQL Server データベースを評価します。 Azure に移行する前に、Azure Migrate と依存関係マッピングを使用してアプリ VM を評価します。
 
@@ -50,7 +51,7 @@ Azure への移行を検討する際、Contoso 社は技術的および財務的
 このシナリオをデプロイするために必要なものを次に示します。
 
 - バージョン 5.5、6.0、または 6.5 を実行しているオンプレミスの vCenter サーバー。
-- vCenter サーバーの読み取り専用アカウント、またはそれを作成するためのアクセス許可。 
+- vCenter サーバーの読み取り専用アカウント、またはそれを作成するためのアクセス許可。
 - .OVA テンプレートを使用して vCenter サーバー上に VM を作成するためのアクセス許可。
 - バージョン 5.0 以上を実行している少なくとも 1 つの ESXi ホスト。
 - 少なくとも 2 つのオンプレミス VMware VM (1 つは SQL Server データベースを実行)。
@@ -106,15 +107,15 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
       現時点の DMA では、SQL マネージド インスタンスへの移行の評価はサポートされていません。 この問題を回避するために、Azure VM 上の SQL Server を想定されるターゲットとして評価に使用します。
 
 1.  **[ターゲット バージョンを選択する]** で、Azure で実行したい SQL Server のターゲット バージョンと、評価で検出したい内容を指定します。
-    - **[Compatibility Issues]\(互換性の問題\)** では、移行を中断させる可能性がある変更や、移行前に微調整が必要な変更についてわかります。 さらに、現在使用している非推奨の機能についてもわかります。 問題は、互換性レベルごとに整理されます。 
-    - **[新機能のお勧め]** では、移行後にデータベースで使用できる、ターゲット SQL Server プラットフォームの新機能についてわかります。 これらは、パフォーマンス、セキュリティ、ストレージごとに整理されます。 
+    - **[Compatibility Issues]\(互換性の問題\)** では、移行を中断させる可能性がある変更や、移行前に微調整が必要な変更についてわかります。 さらに、現在使用している非推奨の機能についてもわかります。 問題は、互換性レベルごとに整理されます。
+    - **[新機能のお勧め]** では、移行後にデータベースで使用できる、ターゲット SQL Server プラットフォームの新機能についてわかります。 これらは、パフォーマンス、セキュリティ、ストレージごとに整理されます。
 
     ![ターゲット デバイスの選択](./media/migrate-scenarios-assessment/dma-assessment-2.png)
 
 2. **[サーバーへの接続]** で、SQL Server インスタンスを実行しているマシンの名前、認証の種類、接続の詳細を指定します。 次いで **[接続]** をクリックします。
 
     ![ターゲット デバイスの選択](./media/migrate-scenarios-assessment/dma-assessment-3.png)
-    
+
 3. **[ソースの追加]** で評価したいデータベースを選択し、**[追加]** をクリックします。
 4. 指定した名前の評価が作成されます。
 
@@ -126,7 +127,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ### <a name="analyze-the-database-assessment"></a>データベース評価を分析する
 
-結果は、利用可能になるとすぐに Assistant に表示されます。 
+結果は、利用可能になるとすぐに Assistant に表示されます。
 
 1. **[Compatibility Issues]\(互換性の問題\)** レポートでは、各互換性レベルでデータベースに問題があるかどうかを確認します。また、問題がある場合は、それらの問題を修正する方法を確認します。 互換性レベルでは SQL Server バージョンが次のようにマップされます。
     - 100: SQL Server 2008/Azure SQL Database
@@ -141,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     ![機能に関する推奨事項](./media/migrate-scenarios-assessment/dma-assessment-6.png)
 
-3. 問題を修正した場合、**[評価の再開]** をクリックして再実行します。 
+3. 問題を修正した場合、**[評価の再開]** をクリックして再実行します。
 4. **[レポートのエクスポート]** をクリックして、JSON または CSV 形式で評価レポートを取得します。
 
 より大規模に評価を実行する場合:
@@ -182,8 +183,8 @@ vCenter Server の統計情報設定は、デプロイを開始する前に、�
     - ストレージに関して、オンプレミス ディスクとサイズが同じ Azure の Standard ディスクが Azure Migrate によって推奨されます。
     - ネットワークに関して、各オンプレミス ネットワーク アダプターごとに Azure のネットワーク アダプターが推奨されます。
     - コンピューティングに関して、Azure Migrate によって VM コアとメモリ サイズが調査され、同じ構成の Azure VM が推奨されます。 条件を満たす Azure VM サイズが複数ある場合、最も低コストのディスクをお勧めします。
-   
-    
+
+
 レベル 3 でのサイズ設定の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)をご覧ください。
 
 レベルは次のように設定します。
@@ -215,7 +216,7 @@ Azure Migrate プロジェクトを作成し、コレクター VM をダウン�
     ![Azure Migrate](./media/migrate-scenarios-assessment/project-1.png)
 
 
-    
+
 
 ### <a name="download-the-collector-appliance"></a>コレクター アプライアンスをダウンロードする
 
@@ -225,7 +226,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 2. **[マシンの検出]** で **[ダウンロード]** をクリックし、.OVA ファイルをダウンロードします。
 3. **[プロジェクトの資格情報をコピーします]** で、プロジェクトの ID とキーをコピーします。 これらの情報はコレクターを構成するときに必要になります。
 
-    ![.ova ファイルをダウンロードする](./media/migrate-scenarios-assessment/download-ova.png) 
+    ![.ova ファイルをダウンロードする](./media/migrate-scenarios-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>コレクター アプライアンスを確認する
 
@@ -235,14 +236,14 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.7)
-    
+3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.8)
+
     **アルゴリズム** | **ハッシュ値**
     --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 
@@ -250,14 +251,14 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 1. vSphere Client コンソールで、**[File]\(ファイル\)** > **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** の順にクリックします。
 
-    ![OVF をデプロイする](./media/migrate-scenarios-assessment/vcenter-wizard.png) 
+    ![OVF をデプロイする](./media/migrate-scenarios-assessment/vcenter-wizard.png)
 
 2. [Deploy OVF Template]\(OVF テンプレートのデプロイ\) ウィザードで **[Source]\(ソース\)** を選択し、.OVA ファイルの場所を指定して、**[Next]\(次へ\)** をクリックします。
 3. **[OVF Template Details]\(OVF テンプレートの詳細\)** で、**[Next]\(次へ\)** をクリックします。 **[End User License Agreement]\(使用許諾契約書\)** で **[Accept]\(同意する\)** をクリックして契約に同意し、**[Next]\(次へ\)** をクリックします。
 4. **[Name]\(名前\) と [Location]\(場所\)** で、コレクター VM のフレンドリ名と、VM がホストされるインベントリの場所を指定して、**[Next]\(次へ\)** をクリックします。 コレクター アプライアンスが実行されるホストまたはクラスターを指定します。
 5. **[Storage]\(ストレージ\)** で、アプライアンスのファイルの格納先を指定し、**[Next]\(次へ\)** をクリックします。
 6. **[Disk Format]\(ディスク フォーマット\)** で、ストレージをプロビジョニングする方法を指定します。
-7. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。 
+7. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。
 8. **[Ready to Complete]\(終了の準備完了\)** で設定を確認し、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** を選択して、**[Finish]\(完了\)** をクリックします。
 
 アプライアンスの作成後、正常に完了したことを確認するメッセージが発行されます。
@@ -270,22 +271,22 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 2. アプライアンスの設定で、言語、タイム ゾーン、パスワードを指定します。
 3. デスクトップにある **[Run collector]\(コレクターの実行\)** ショートカットをクリックします。
 
-    ![コレクターのショートカット](./media/migrate-scenarios-assessment/collector-shortcut.png) 
-    
+    ![コレクターのショートカット](./media/migrate-scenarios-assessment/collector-shortcut.png)
+
 4. Azure Migrate Collector で、**[Set Up Prerequisites]\(前提条件の設定\)** を開きます。
     - ライセンス条項に同意し、サード パーティの情報を確認します。
-    - コレクターによって、VM にインターネット アクセスがあること、時間が同期されたこと、(既定で VM にインストールされる) コレクター サービスが実行されていることがチェックされます。 さらに、VMware PowerCLI がインストールされます。 
-    
+    - コレクターによって、VM にインターネット アクセスがあること、時間が同期されたこと、(既定で VM にインストールされる) コレクター サービスが実行されていることがチェックされます。 さらに、VMware PowerCLI がインストールされます。
+
     > [!NOTE]
     > VM に、プロキシを使用しないインターネットへの直接アクセスがあると仮定しています。
 
     ![前提条件を確認する](./media/migrate-scenarios-assessment/collector-verify-prereqs.png)
-    
+
 
 5. **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
     - vCenter サーバーの名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter サーバー上の VM を検出するために使用する読み取り専用アカウント資格情報を指定します。
-    - **[Select scope]\(スコープの選択\)** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1,500 台を超えないようにします。 
+    - **[Select scope]\(スコープの選択\)** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1,500 台を超えないようにします。
 
     ![vCenter に接続する](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 
@@ -296,7 +297,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 7. **[View collection progress]\(収集の進行状況の表示\)** で検出を監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。
 
     ![進行中の収集](./media/migrate-scenarios-assessment/collector-collection-process.png)
-   
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定
@@ -309,7 +310,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     ![検出されたマシン](./media/migrate-scenarios-assessment/discovery-complete.png)
 
 3. 現時点では、マシンに Azure Migrate エージェントがインストールされていないことに注意してください。 依存関係を表示できるよう、それらをインストールする必要があります。
-    
+
     ![検出されたマシン](./media/migrate-scenarios-assessment/machines-no-agent.png)
 
 
@@ -322,7 +323,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 修正する前の VM のコピーを用意したい場合、エージェントをインストールする前にスナップショットを取得します。
 
-![マシンのスナップショット](./media/migrate-scenarios-assessment/snapshot-vm.png) 
+![マシンのスナップショット](./media/migrate-scenarios-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
@@ -331,7 +332,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 2.  **[マシンの検出]** ページで、それぞれの VM について、Microsoft Monitoring Agent (MMA) と依存関係エージェントをダウンロードしてインストールします。
 3.  ワークスペース ID とキーをコピーします。 これらは、MMA をインストールするときに必要です。
 
-    ![エージェントのダウンロード](./media/migrate-scenarios-assessment/download-agents.png) 
+    ![エージェントのダウンロード](./media/migrate-scenarios-assessment/download-agents.png)
 
 
 
@@ -339,12 +340,12 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 1. ダウンロードしたエージェントをダブルクリックします。
 2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
-3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用して、**[次へ]** をクリックします。 
-4. **[エージェントのセットアップ オプション]** で、**[Connect the agent to Azure Log Analytics]\(Azure Log Analytics にエージェントを接続する\)** > **[次へ]** の順にクリックします。 
+3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用して、**[次へ]** をクリックします。
+4. **[エージェントのセットアップ オプション]** で、**[Connect the agent to Azure Log Analytics]\(Azure Log Analytics にエージェントを接続する\)** > **[次へ]** の順にクリックします。
 
-    ![MMA のインストール](./media/migrate-scenarios-assessment/mma-install.png) 
+    ![MMA のインストール](./media/migrate-scenarios-assessment/mma-install.png)
 5. **[Azure Log Analytics]** で、ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
-    ![MMA のインストール](./media/migrate-scenarios-assessment/mma-install2.png) 
+    ![MMA のインストール](./media/migrate-scenarios-assessment/mma-install2.png)
 
 6. **[インストールの準備完了]** で、MMA をインストールします。
 
@@ -356,10 +357,10 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 2.  **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
 3.  **[インストール中]** で、インストールの完了を待ちます。 その後、 **[次へ]** をクリックします。
 
-    ![依存関係エージェント](./media/migrate-scenarios-assessment/dependency-agent.png) 
+    ![依存関係エージェント](./media/migrate-scenarios-assessment/dependency-agent.png)
 
 
-       
+
 ## <a name="step-7-run-and-analyze-the-vm-assessment"></a>手順 7: VM 評価を実行して分析する
 
 マシンの依存関係を確認し、グループを作成します。 次に、評価を実行します。
@@ -368,7 +369,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 1.  **[マシン]** ページで、分析したい VM について **[依存関係の表示]** をクリックします。
 
-    ![マシンの依存関係の表示](./media/migrate-scenarios-assessment/view-machine-dependencies.png) 
+    ![マシンの依存関係の表示](./media/migrate-scenarios-assessment/view-machine-dependencies.png)
 
 2. 依存関係マップでは、SQLVM について次の詳細が表示されます。
 
@@ -376,8 +377,8 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     - 依存関係にあるすべてのマシン間の受信 (クライアント) および送信 (サーバー) TCP 接続。
     - Azure Migrate エージェントがインストールされた依存関係にあるマシンは、別々のボックスに表示されます
     - エージェントがインストールされていないマシンには、ポートと IP アドレスの情報が表示されます。
-    
- 3. エージェントがインストールされたマシン (WEBVM) について、マシンのボックスをクリックし、FQDN、オペレーティング システム、MAC アドレスなどの詳しい情報を表示します。 
+
+ 3. エージェントがインストールされたマシン (WEBVM) について、マシンのボックスをクリックし、FQDN、オペレーティング システム、MAC アドレスなどの詳しい情報を表示します。
 
     ![グループの依存関係の表示](./media/migrate-scenarios-assessment/sqlvm-dependencies.png)
 
@@ -385,7 +386,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 5. **[グループの作成]** をクリックし、名前 (smarthotelapp) を指定します。
 
 > [!NOTE]
-    > さらに細かい依存関係を表示するために、時間の範囲を拡張できます。 特定の期間、つまり開始日と終了日を選択できます。 
+    > さらに細かい依存関係を表示するために、時間の範囲を拡張できます。 特定の期間、つまり開始日と終了日を選択できます。
 
 
 ### <a name="run-an-assessment"></a>評価を実行する
@@ -409,7 +410,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     **設定** | **詳細** | **既定値**
     --- | --- | ---
     **ターゲットの場所** | 移行先にする Azure の場所 | 既定値はありません。
-    **ストレージ冗長** | 移行後に Azure VM で使用されるストレージ冗長の種類。 | [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) が既定値です。 Azure Migrate ではマネージド ディスク ベースの評価だけがサポートされ、マネージド ディスクでは LRS だけがサポートされています。そのため、LRS オプションです。 
+    **ストレージ冗長** | 移行後に Azure VM で使用されるストレージ冗長の種類。 | [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) が既定値です。 Azure Migrate ではマネージド ディスク ベースの評価だけがサポートされ、マネージド ディスクでは LRS だけがサポートされています。そのため、LRS オプションです。
     **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 "*パフォーマンスに基づく*" サイズ変更、またはパフォーマンスの履歴を考慮しない "*オンプレミスとしての*" VM のサイズ変更を実行できます。 | パフォーマンスに基づくサイズ変更が既定のオプションです。
     **パフォーマンス履歴** | VM のパフォーマンスを評価するために考慮する期間。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。 | 既定値は 1 日です。
     **百分位数の使用率** | 適切なサイズ設定のために考慮するパフォーマンス サンプル セットのパーセンタイル値。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。  | 既定は 95 パーセンタイルです。
@@ -425,7 +426,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 ### <a name="analyze-the-vm-assessment"></a>VM 評価を分析する
 
-Azure Migrate 評価には、オンプレミスの VM と Azure の互換性の有無、推奨される適切な Azure VM サイズ設定、推定月間 Azure コストに関する情報が含まれています。 
+Azure Migrate 評価には、オンプレミスの VM と Azure の互換性の有無、推奨される適切な Azure VM サイズ設定、推定月間 Azure コストに関する情報が含まれています。
 
 ![評価レポート](./media/migrate-scenarios-assessment/assessment-overview.png)
 
@@ -470,12 +471,12 @@ Azure Migrate 評価には、オンプレミスの VM と Azure の互換性の�
 
 #### <a name="review-monthly-cost-estimates"></a>推定月間コストを確認する
 
-このビューには、Azure で VM を実行する際のコンピューティング コストおよびストレージ コストの合計と、各マシンの詳細が表示されます。 
+このビューには、Azure で VM を実行する際のコンピューティング コストおよびストレージ コストの合計と、各マシンの詳細が表示されます。
 
-![アセスメントの準備状態](./media/migrate-scenarios-assessment/azure-costs.png) 
+![アセスメントの準備状態](./media/migrate-scenarios-assessment/azure-costs.png)
 
 - コストの見積もりは、マシンの推奨サイズを使って計算されます。
-- コンピューティングとストレージの見積もり月額コストが、グループ内の全 VM について集計されます。 
+- コンピューティングとストレージの見積もり月額コストが、グループ内の全 VM について集計されます。
 
 
 ## <a name="conclusion"></a>まとめ
@@ -490,6 +491,3 @@ Azure Migrate 評価には、オンプレミスの VM と Azure の互換性の�
 ## <a name="next-steps"></a>次の手順
 
 次のシナリオに進んで、オンプレミスの VM とデータベースから Azure への[リフトアンドシフト移行](migrate-scenarios-lift-and-shift.md)を実行しましょう。
-
-
-

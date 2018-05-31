@@ -10,11 +10,12 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187676"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
@@ -34,7 +35,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="resource-limitations"></a>リソースの制限事項
 Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
 
-* 詳細: [Azure SQL Database のリソース制限](sql-database-service-tiers.md)。
+* 詳細については、「[Azure SQL Database の DTU ベースのリソース モデル制限](sql-database-dtu-resource-limits.md)」および [Azure SQL Database 仮想コアのリソース モデルの制限 (プレビュー)](sql-database-vcore-resource-limits.md) に関するページを参照してください。
 
 ## <a name="security"></a>セキュリティ
 Azure SQL Database には、SQL Database に対するアクセスの制限、データの保護、およびアクティビティの監視を行うためのリソースが用意されています。

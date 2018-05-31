@@ -6,7 +6,7 @@
 > 
 
 #### <a name="to-configure-rbs"></a>RBS を構成するには
-1. [SharePoint サーバーの全体管理] ページを開き、 **[システム設定]**を参照します。 
+1. [SharePoint サーバーの全体管理] ページを開き、 **[システム設定]** を参照します。 
 2. **[Azure StorSimple]** セクションで、**[StorSimple アダプターの構成]** をクリックします。
    
     ![Configure the StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
@@ -29,7 +29,7 @@
       
       ![Configure StorSimple Adapter Enable Disable](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. **[更新]** をクリックして構成を適用します。 [ **更新** ] をクリックすると、すべての WFE サーバー上で RBS 構成状態が更新され、ファーム全体で RBS が有効になります。 次のメッセージが表示されます。
+   4. **[更新]** をクリックして構成を適用します。 **[更新]** をクリックすると、すべての WFE サーバー上で RBS 構成状態が更新され、ファーム全体で RBS が有効になります。 次のメッセージが表示されます。
       
       ![Adapter configuration message](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
@@ -44,7 +44,7 @@
    
    1. ドキュメントを SharePoint にアップロードします。 
    2. 構成した UNC パスを参照します。 RBS のディレクトリ構造が作成されていること、およびアップロードしたオブジェクトがそこに含まれていることを確認します。
-6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳しくは、「[コンテンツを SharePoint 2013 の RBS 外に移行する]」[6]または「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)]」[7]をご覧ください。
+6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳しくは、 [コンテンツを SharePoint 2013 の RBS 外に移行する][6] または [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)][7] をご覧ください。
 7. (省略可能) テスト インストールで、次のように、BLOB がコンテンツ データベースから移動されたことを確認できます。 
    
    1. SQL Management Studio を起動します。

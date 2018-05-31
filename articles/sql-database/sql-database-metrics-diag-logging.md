@@ -10,19 +10,19 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: c18d4d175bace79fefedc09fb887e707b8c066d9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312822"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365765"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
 * **Azure Storage**: 大量のテレメトリを低価格でアーカイブします。
 * **Azure Event Hubs**: SQL Database のテレメトリを、カスタム監視ソリューションまたはホット パイプラインと統合します。
-* **Azure Log Analytics**: レポート機能、アラート機能、および移行機能を備えた既製の監視ソリューション用です。 これは、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) の機能です。
+* **Azure Log Analytics**: レポート機能、アラート機能、および移行機能を備えた既製の監視ソリューション用です。 これは、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) の機能です
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -156,7 +156,7 @@ Azure CLI を使用してメトリックと診断のロギングを有効にす�
 
 ### <a name="rest-api"></a>REST API
 
-[Azure Monitor REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)方法を参照してください。 
+[Azure Monitor REST API を使用して診断設定を変更する](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)方法を参照してください。 
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 

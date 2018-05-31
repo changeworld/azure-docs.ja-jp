@@ -1,12 +1,12 @@
 ---
-title: "Azure Stack のテレメトリ | Microsoft Docs"
-description: "Azure Stack のテレメトリの設定を PowerShell で構成する方法について説明します。"
+title: Azure Stack のテレメトリ | Microsoft Docs
+description: Azure Stack のテレメトリの設定を PowerShell で構成する方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29734633"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 
@@ -92,7 +93,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
  - ストレージ属性 (ドライブの数、種類、サイズなど)
 - **テレメトリの機能**: アップロードされたイベントの割合、ドロップされたイベントの割合、前回のアップロード時刻などが収集されます。
 - **品質関連の情報**: Microsoft は、この情報を通じて、Azure Stack がどのように実行されているかについての基本的な理解を深めることができます。 たとえば、特定のハードウェア構成に関する重要なアラートの件数が該当します。
-- **互換性データ: システムや仮想マシンにインストールされているリソース プロバイダーを把握したり、互換性に関する問題のリスクを特定したりするために役立てられます。
+- \*\*互換性データ: システムや仮想マシンにインストールされているリソース プロバイダーを把握したり、互換性に関する問題のリスクを特定したりするために役立てられます。
 
 **2 (Enhanced)**。 さらに詳しい洞察につながるデータ。Basic レベルと Security レベルからのデータに加え、オペレーティング システムや他の Azure Stack サービスがどのように使用され、どのように実行されているかについてのデータ、詳細な信頼性データが対象となります。 
 
