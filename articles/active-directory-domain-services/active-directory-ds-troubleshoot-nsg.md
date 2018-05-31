@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2336277a960925a92af3578850453ba6ae78abda
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201268"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>管理対象ドメインの無効なネットワーク構成のトラブルシューティング
 この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
@@ -28,6 +29,13 @@ ms.lasthandoff: 04/19/2018
 
 無効な NSG 構成が、Azure AD Domain Services のネットワーク エラーの最も一般的な原因です。 仮想ネットワーク用に構成されたネットワーク セキュリティ グループ (NSG) は、[特定のポート](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)へのアクセスを許可する必要があります。 こうしたポートがブロックされていると、Microsoft は、管理対象ドメインを監視または更新できません。 さらに、Azure AD ディレクトリと管理対象ドメインの間の同期が影響を受けます。 NSG を作成するときは、こうしたポートを開いたままにして、サービスが中断されないようにしてください。
 
+### <a name="checking-your-nsg-for-compliance"></a>NSG のコンプライアンス対応の確認
+
+1. Azure Portal で、[ネットワーク セキュリティ グループ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)のページに移動します
+2. テーブルから、管理対象ドメインが有効になっているサブネットに関連付けられている NSG を選択します。
+3. 左側のウィンドウの **[設定]** の下で、**[受信セキュリティ規則]** をクリックします。
+4. 現在の規則を確認し、どのルールが[これらのポート](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)へのアクセスをブロックしているか確認します。
+5. NSG を編集し、規則を削除するか、規則を追加するか、または完全に新しい NSG を作成することによって、コンプライアンスを確認します。 [規則の追加](#add-a-rule-to-a-network-security-group-using-the-azure-portal)または[準拠している新しい NSG の作成](#create-a-nsg-for-azure-ad-domain-services-using-powershell)方法は以下のとおりです。
 
 ## <a name="sample-nsg"></a>NSG のサンプル
 次の表では、管理対象ドメインのセキュリティ保護を維持しながら、Microsoft が情報を監視、管理、更新できるようにする、NSG の例を示します。
@@ -47,7 +55,7 @@ PowerShell を使いたくない場合は、Azure Portal を使って手動で 1
 5. 規則テーブルで検索して、規則が作成されたことを確認します。
 
 
-## <a name="create-an-nsg-for-azure-ad-domain-services-using-powershell"></a>PowerShell を使用して Azure AD Domain Services の NSG を作成する
+## <a name="create-a-nsg-for-azure-ad-domain-services-using-powershell"></a>PowerShell を使用して Azure AD Domain Services の NSG を作成する
 この NSG は、望ましくない着信アクセスを拒否しながら、Azure AD Domain Services に必要なポートへの着信トラフィックを許可するように構成されています。
 
 **前提条件: Azure PowerShell をインストールして構成する。**[Azure PowerShell モジュールをインストールして Azure サブスクリプションに接続](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json)する手順に従います。

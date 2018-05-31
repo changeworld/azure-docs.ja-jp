@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778174"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -127,7 +128,7 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 - 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの ACL エントリを保持できます。
 
-- 仮想ネットワーク規則は[従来のデプロイメント モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
+- 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
 - Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL のインスタンスへの接続の試行は失敗します。
     - 根本的な理由は、MySQL と PostgreSQL が現在は ACL 処理をサポートしていないためです。
@@ -207,7 +208,7 @@ PowerShell を使用することで、**IgnoreMissingServiceEndpoint** フラグ
 
 #### <a name="error-40615"></a>エラー 40615
 
-*メッセージ テキスト:* ログインで要求されたサーバー '{0}' を開くことができません。 IP アドレス '{1}' のクライアントはこのサーバーへのアクセスが許可されていません。
+*メッセージ テキスト:* ログインで要求されたサーバー '{0}' を開くことができません。 IP アドレス ’{1}' のクライアントはこのサーバーへのアクセスが許可されていません。
 
 *エラーの説明:* クライアントは、Azure SQL Database サーバーへの接続を許可されていない IP アドレスから接続しようとしています。 サーバーのファイアウォールには、指定された IP アドレスから SQL Database への通信をクライアントに許可する IP アドレス規則がありません。
 
@@ -334,7 +335,7 @@ Azure SQL Database の仮想ネットワーク ルール機能は、2017 年 9 �
 
 [vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
 
-[vpn-gateway-indexmd-608y]: ../vpn-gateway/index.md
+[vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 
 

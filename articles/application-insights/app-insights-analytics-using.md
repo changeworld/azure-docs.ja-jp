@@ -1,9 +1,9 @@
 ---
-title: "Analytics の使用 - Azure Application Insights の強力な検索ツール | Microsoft Docs"
-description: "Application Insights の強力な診断検索ツールである Analytics を使用します。 "
+title: Analytics の使用 - Azure Application Insights の強力な検索ツール | Microsoft Docs
+description: 'Application Insights の強力な診断検索ツールである Analytics を使用します。 '
 services: application-insights
-documentationcenter: 
-author: danhadari
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869888"
 ---
 # <a name="using-analytics-in-application-insights"></a>Application Insights の Analytics の使用
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -143,7 +144,7 @@ Analytics Diagnostics の詳細については、[こちら](app-insights-analyt
 列の数が 4 列以下のテーブルはダッシュボードにテーブルをピン留めすることができます。 最初の 7 行のみが表示されます。
 
 ### <a name="dashboard-refresh"></a>ダッシュボードの更新
-ダッシュボードにピン留めされているグラフは、クエリの再実行によって約 1 時間おきに自動的に更新されます。 また、[更新] ボタンをクリックして更新することもできます。
+ダッシュボードにピン留めされているグラフは、約 1 時間ごとにクエリを再実行することによって自動的に更新されます。 また、[更新] ボタンをクリックして更新することもできます。
 
 ### <a name="automatic-simplifications"></a>自動簡略化
 
@@ -205,7 +206,7 @@ CSV ファイルからデータをインポートすることができます。 
 ### <a name="define-your-data-schema"></a>データ スキーマを定義する
 
 1. **[設定]** (左上にある) に続けて **[データ ソース]** をクリックします。 
-2. 指示に従ってデータ ソースを追加します。 データのサンプル (少なくとも 10 行が含まれる必要がある) を提供するよう要求されます。 その後でスキーマを修正します。
+2. 指示に従ってデータ ソースを追加します。 データのサンプル (少なくとも 10 行が含まれている必要があります) を指定するよう求められます。 その後でスキーマを修正します。
 
 これにより、個々 のテーブルをインポートするために使用できるデータ ソースが定義されます。
 

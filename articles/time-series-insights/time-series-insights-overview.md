@@ -11,17 +11,18 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
-ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f29fe50468aabadcf92d2ed3de3f9ec631d17f21
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33941535"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
 Time Series Insights は、IoT デバイスによって生成されるデータなど、大量の時系列データの保存、視覚化、照会を目的としています。  クラウドの時系列データを保存、管理、照会、または視覚化する場合は、Time Series Insights が適しています。  
 
-![Time Series Insights のフローチャート] (media/overview/time-series-insights-flowchart.png)
+![Time Series Insights フローチャート](media/overview/time-series-insights-flowchart.png)
 
 Time Series Insights には 4 つの主要な仕事があります。
 
@@ -68,7 +69,7 @@ Time Series Insights には 4 つの主要な仕事があります。
 4.  Time Series Insights エクスプローラーを使用して、数分でデータを表示できます。
 
 ## <a name="time-series-insights-explorer"></a>Time Series Insights エクスプローラー
-次の図は、エクスプローラーを使用して表示された Time Series Insights のデータの例を示しています。![Time Series Insights エクスプローラー] (media/time-series-insights-explorer/explorer4.png)
+次の図は、エクスプローラーを使用して表示された Time Series Insights データの例を示しています。![Time Series Insights エクスプローラー](media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>次の手順
  - [デモ環境で Time Series Insights エクスプローラーを使用して探索する](./time-series-quickstart.md)

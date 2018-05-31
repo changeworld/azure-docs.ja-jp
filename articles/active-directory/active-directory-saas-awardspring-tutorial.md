@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 591232aca57902d8f11bf3422c972021922bf204
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 13736a1125fb57b2fffb8df189dc7227ab4c5e80
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34341850"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>チュートリアル: Azure Active Directory と AwardSpring の統合
 
@@ -31,7 +31,7 @@ AwardSpring と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に AwardSpring にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -240,7 +240,7 @@ AwardSpring で Azure AD のシングル サインオンを構成してテスト
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 

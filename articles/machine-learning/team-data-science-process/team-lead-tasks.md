@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777953"
 ---
 # <a name="team-lead-tasks"></a>チーム リーダーのタスク
 
@@ -343,7 +344,7 @@ Azure File Storage が正常に作成されたら、次の PowerShell スクリ�
     
 まだログインしていない場合は、まずログインするよう求められます。 
 
-Azure File Storage の情報ファイルがあるかどうかをたずねられたら、**Enter** キーまたは **y** キーを押して続行し、前の手順で作成したファイルの**完全なパスと名前**を入力します。 Azure File Storage をマウントするための情報がそのファイルから直接読み取られ、次の手順に進む準備が整います。
+Azure File Storage の情報ファイルがあるかどうかをたずねられたら、**Enter** キーまたは **y** キーを押して続行し、前の手順で作成したファイルの ***完全なパスと名前**を入力します。 Azure File Storage をマウントするための情報がそのファイルから直接読み取られ、次の手順に進む準備が整います。
 
 ![32](./media/team-lead-tasks/team-leads-32-attach-s1.png)
 
@@ -374,7 +375,7 @@ Azure サブスクリプション名を入力し、Azure File Storage が作成�
 
 まだログインしていない場合は、まずログインするよう求められます。 
 
-Azure File Storage の情報ファイルがあるかどうかをたずねられたら、**Enter** キーまたは **y** キーを押して続行し、前の手順で作成したファイルの**完全なパスと名前**を入力します。 Azure File Storage をマウントするための情報がそのファイルから直接読み取られ、次の手順に進む準備が整います。
+Azure File Storage の情報ファイルがあるかどうかをたずねられたら、**Enter** キーまたは **y** キーを押して続行し、前の手順で作成したファイルの ***完全なパスと名前**を入力します。 Azure File Storage をマウントするための情報がそのファイルから直接読み取られ、次の手順に進む準備が整います。
 
 ![38](./media/team-lead-tasks/team-leads-38-attach-s2-linux.png)
 

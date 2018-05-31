@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights から Power BI にエクスポートする | Microsoft Docs"
-description: "Power BI で Analytics クエリを表示できます。"
+title: Azure Application Insights から Power BI にエクスポートする | Microsoft Docs
+description: Power BI で Analytics クエリを表示できます。
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869055"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -82,7 +83,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 
 ### <a name="export-a-funnel"></a>フィルターをエクスポートする
 1. [フィルターを作成します](usage-funnels.md)。
-2. **[Power BI]**を選択します。 
+2. **[Power BI]** を選択します。 
 
    ![Power BI ボタンのスクリーンショット](./media/app-insights-export-power-bi/button.png)
    
@@ -121,8 +122,8 @@ Analytics クエリから取得するデータセットを小さくすると要�
 
 1. [API キー](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)を作成します。
 2. Azure Resource Manager の URL を Application Insights の API に置き換えて、Analytics からエクスポートした Power BI の M スクリプトを更新します。
-   * **https://management.azure.com/subscriptions/...** を
-   * **https://api.applicationinsights.io/beta/apps/...**に置き換える
+   * 置き換え前 **https://management.azure.com/subscriptions/...**
+   * 置き換え後 **https://api.applicationinsights.io/beta/apps/...**
 3. 最後に、資格情報を基本に更新して、API キーを使います。
   
 
@@ -139,7 +140,7 @@ Analytics クエリから取得するデータセットを小さくすると要�
 アプリケーションで大量のデータを送信する場合は、アダプティブ サンプリング機能を使って、テレメトリの一部だけを送信することができます。 これは、SDK または取り込みでサンプリングを手動で設定した場合にも当てはまります。 [サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Power BI - 詳細](http://www.powerbi.com/learning/)
 * [Analytics のチュートリアル](app-insights-analytics-tour.md)
 

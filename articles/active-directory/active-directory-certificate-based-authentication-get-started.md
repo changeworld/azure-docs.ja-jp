@@ -1,30 +1,27 @@
 ---
-title: "Azure Active Directory の証明書ベースの認証 - 概要 | Microsoft Docs"
-description: "各環境で証明書ベースの認証を構成する方法について説明します。"
-author: MarkusVi
-documentationcenter: na
-manager: mtillman
-ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
+title: Azure Active Directory 証明書ベースの認証の概要
+description: 各環境で証明書ベースの認証を構成する方法について説明します。
+services: active-directory
 ms.service: active-directory
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/15/2018
-ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 5c96f33b8f678155dc4b7a84718e5eadc541f441
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: annaba
+ms.openlocfilehash: db2c19bdc303f6f7773772dd7873878ceb892cc3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33882853"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
-証明書ベースの認証では、Exchange Online アカウントを次に接続する場合、Azure Active Directory と、Windows、Android または iOS デバイス上のクライアント証明書を使用して認証できます。
+証明書ベースの認証では、Exchange Online アカウントを次に接続する場合、Azure Active Directory を Windows、Android、または iOS デバイス上のクライアント証明書と共に使用して認証できます。
 
-- Microsoft Outlook や Microsoft Word などの Microsoft モバイル アプリケーション   
-
+- Microsoft Outlook や Microsoft Word などの Microsoft モバイル アプリケーション
 - Exchange ActiveSync (EAS) クライアント
 
 この機能を構成すると、モバイル デバイスで特定のメールおよび Microsoft Office アプリケーションにユーザー名とパスワードの組み合わせを入力する必要がなくなります。
@@ -32,43 +29,31 @@ ms.lasthandoff: 01/16/2018
 このトピックの内容と前提条件:
 
 - Office 365 Enterprise、Business、Education、および US Government の各プランのテナントのユーザー向けに証明書ベースの認証 (CBA) を構成し、使用する方法について説明します。 Office 365 China、US Government Defense、および US Government Federal の各プランでは、この機能はプレビュー版として提供されています。
-
-- [公開キー基盤 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) と [AD FS](connect/active-directory-aadconnectfed-whatis.md) が構成されていることを前提としています。    
-
+- [公開キー基盤 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) と [AD FS](connect/active-directory-aadconnectfed-whatis.md) が構成されていることを前提としています。
 
 ## <a name="requirements"></a>必要条件
 
-証明書ベースの認証を構成するには、次の条件を満たしている必要があります。  
+証明書ベースの認証を構成するには、次のステートメントが当てはまる必要があります。
 
-- 証明書ベース認証 (CBA) は、フェデレーション環境で最新の認証 (ADAL) を使用するブラウザー アプリケーションやネイティブのクライアントのみに対しサポートされます。 この例外は、EXO 上 の Exchange Active Sync (EAS) で、これはフェデレーション アカウントと管理アカウントの両方に使用できます。
-
-- ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。  
-
-- 各証明機関には、インターネットに接続する URL から参照できる証明書失効リスト (CRL) が必要です。  
-
-- Azure Active Directory で少なくとも 1 つの証明機関が構成されている必要があります。 この手順については、「[証明機関を構成する](#step-2-configure-the-certificate-authorities)」セクションをご覧ください。  
-
-- Exchange ActiveSync クライアントの場合、クライアント証明書では、サブジェクト代替名フィールドのプリンシパル名または RFC822 名の値のいずれかで、Exchange Online のユーザーのルーティング可能な電子メール アドレスが必要になります。 Azure Active Directory は、ディレクトリ内のプロキシ アドレス属性に RFC822 値をマップします。  
-
-- クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも 1 つにアクセスできる必要があります。  
-
-- クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。  
-
-
-
+- 証明書ベース認証 (CBA) は、フェデレーション環境で最新の認証 (ADAL) を使用するブラウザー アプリケーションやネイティブのクライアントのみに対しサポートされます。 1 つの例外は、Exchange Online (EXO) の Exchange Active Sync (EAS) です。これは、フェデレーション アカウントや管理アカウントに使用できます。
+- ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。
+- 各証明機関には、インターネットに接続する URL から参照できる証明書失効リスト (CRL) が必要です。
+- Azure Active Directory で少なくとも 1 つの証明機関が構成されている必要があります。 この手順については、「[証明機関を構成する](#step-2-configure-the-certificate-authorities)」セクションをご覧ください。
+- Exchange ActiveSync クライアントの場合、クライアント証明書では、サブジェクト代替名フィールドのプリンシパル名または RFC822 名の値のいずれかで、Exchange Online のユーザーのルーティング可能な電子メール アドレスが必要になります。 Azure Active Directory は、ディレクトリ内のプロキシ アドレス属性に RFC822 値をマップします。
+- クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも 1 つにアクセスできる必要があります。
+- クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。
 
 ## <a name="step-1-select-your-device-platform"></a>手順 1: デバイス プラットフォームを選択する
 
 まず、対象のデバイス プラットフォームについて、次の項目を確認する必要があります。
 
 - Office モバイル アプリケーションのサポート
-- 特別な実装要件  
+- 特別な実装要件
 
 関連情報については、次のリンク先をご覧ください。
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
-
 
 ## <a name="step-2-configure-the-certificate-authorities"></a>手順 2: 証明機関を構成する
 
@@ -81,7 +66,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
     class TrustedCAsForPasswordlessAuth
     {
-       CertificateAuthorityInformation[] certificateAuthorities;    
+       CertificateAuthorityInformation[] certificateAuthorities;
     }
 
     class CertificateAuthorityInformation
@@ -93,7 +78,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
         string deltaCrlDistributionPoint;
         string trustedIssuer;
         string trustedIssuerSKI;
-    }                
+    }
 
     enum CertAuthorityType
     {
@@ -101,14 +86,14 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
         IntermediateAuthority = 1
     }
 
-構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/install-adv2?view=azureadps-2.0) を使用できます。  
+構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/install-adv2?view=azureadps-2.0) を使用できます。
 
 1. Windows PowerShell を管理者特権で起動します。
-2. Azure AD モジュールをインストールします。 バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールする必要があります。  
+2. Azure AD モジュール バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールします。
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-構成の最初の手順では、テナントとの接続を確立する必要があります。 テナントへの接続が確立されるとすぐに、ディレクトリに定義されている信頼された証明機関を表示、追加、削除、および変更できるようになります。
+構成の最初の手順では、テナントとの接続を確立する必要があります。 テナントへの接続が確立されるとすぐに、ディレクトリに定義されている信頼された証明機関をレビュー、追加、削除、および変更できます。
 
 ### <a name="connect"></a>接続
 
@@ -116,13 +101,11 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
     Connect-AzureAD
 
-
 ### <a name="retrieve"></a>デバイス ハンドルの
 
 ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
 
     Get-AzureADTrustedCertificateAuthority
-
 
 ### <a name="add"></a>Add
 
@@ -135,7 +118,6 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
     $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-
 ### <a name="remove"></a>Remove
 
 信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
@@ -143,15 +125,13 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
-
-### <a name="modfiy"></a>変更
+### <a name="modify"></a>[変更]
 
 信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
-
 
 ## <a name="step-3-configure-revocation"></a>手順 3: 失効を構成する
 
@@ -181,7 +161,6 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 設定する日付は、現在より後の日付にする必要があります。 日付を現在より後の日付にしないと、 **StsRefreshTokensValidFrom** プロパティは設定されません。 日付を現在より後の日付にすると、 **StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
-
 ## <a name="step-4-test-your-configuration"></a>手順 4: 構成をテストする
 
 ### <a name="testing-your-certificate"></a>証明書のテスト
@@ -191,14 +170,13 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 サインインが成功した場合、次のことがわかります。
 
 - ユーザー証明書がテスト デバイスにプロビジョニングされている
-- AD FS が正しく構成されている  
-
+- AD FS が正しく構成されている
 
 ### <a name="testing-office-mobile-applications"></a>Office モバイル アプリケーションのテスト
 
 **Office モバイル アプリケーションで証明書ベースの認証をテストするには:**
 
-1. テスト デバイスで、Office モバイル アプリケーション (例: OneDrive) をインストールします。
+1. テスト デバイス上で、Office モバイル アプリケーション (OneDrive など) をインストールします。
 3. アプリケーションを起動します。
 4. ユーザー名を入力し、使用するユーザー証明書を選択します。
 
@@ -214,11 +192,17 @@ EAS プロファイルには次の情報が表示されます。
 
 - EAS エンドポイント (例: outlook.office365.com)
 
-EAS プロファイルをデバイス上に構成して配置するには、Intune などのモバイル デバイス管理 (MDM) を使用するか、EAS プロファイルの証明書をデバイス上に手動で配置します。  
+EAS プロファイルをデバイス上に構成して配置するには、Intune などのモバイル デバイス管理 (MDM) を使用するか、EAS プロファイルの証明書をデバイス上に手動で配置します。
 
 ### <a name="testing-eas-client-applications-on-android"></a>Android の EAS クライアント アプリケーションのテスト
 
-**証明書の認証をテストするには:**  
+**証明書の認証をテストするには:**
 
-1. 上記の要件を満たすアプリケーションで EAS プロファイルを構成します。  
+1. 前のセクションの要件を満たすアプリケーションで EAS プロファイルを構成します。
 2. アプリケーションを開き、メールが同期されていることを確認します。
+
+## <a name="next-steps"></a>次の手順
+
+[Android デバイス上の証明書ベースの認証に関する追加情報。](active-directory-certificate-based-authentication-android.md)
+
+[iOS デバイス上の証明書ベースの認証に関する追加情報。](active-directory-certificate-based-authentication-ios.md)

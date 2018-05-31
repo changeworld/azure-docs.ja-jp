@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 404ede664f13900137c730034798fbb4b8307852
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777554"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure のアプリケーションおよびリソースの監視
 
@@ -90,7 +91,7 @@ Azure には、監視領域において特定の役割やタスクを個別に�
 以下の Azure サービスでは、監視データの収集と分析に関する高度な機能が詳細レベルで提供されます。 これらのサービスはコアな監視機能を基盤として Azure の共通機能を活用します。 収集されたデータについて強力な分析を行い、アプリケーションやインフラストラクチャに関する他では得られない洞察を提供します。 さまざまなユーザーを対象としたシナリオにおいても、状況に応じたデータを提供します。
 
 ## <a name="deep-application-monitoring"></a>詳細なアプリケーション監視
-### <a name="application-insights"></a>アプリケーション インサイト
+### <a name="application-insights"></a>Application Insights
 [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) を使用すると、クラウドにホストされているかオンプレミスかにかかわらず、アプリケーションの可用性、パフォーマンス、使用状況を監視できます。
 
 Application Insights と連携するようにアプリケーションをインストルメント化すると、詳細な洞察を取得し、DevOps のシナリオを実装することができます。 そのため、ユーザーからの報告を待たずに、エラーを速やかに特定して診断できます。 収集した情報を活用すれば、アプリケーションのメンテナンスや機能強化に関する選択を十分な情報に基づいて判断することができます。
@@ -161,6 +162,6 @@ Azure で Windows 仮想マシンと Linux 仮想マシンが混在して実行�
 ## <a name="next-steps"></a>次の手順
 各項目の詳細情報
 
-* [Azure Monitor](https://azure.microsoft.com/en-us/services/monitor/)。コアな監視のメトリックとアラートの使用を開始します。
+* [Azure Monitor](https://azure.microsoft.com/services/monitor/)。コアな監視のメトリックとアラートの使用を開始します。
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) (App Service Web アプリの問題を診断する場合)。
 * [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/)。収集した監視データとログを分析する場合は、こちらをご覧ください。
