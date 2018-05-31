@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 5/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5fab656734d0984cf44a9fe1f29fd73530bd9aa8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074934"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34259857"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>PowerShell で Azure Stack のバックアップを有効にする
 
@@ -65,7 +65,7 @@ Azure Stack の PowerShell と Azure Stack ツールをインストールして�
 
 | 変数        | [説明]   |
 |---              |---                                        |
-| $username       | 共有ドライブの場所のドメインとユーザー名を使用して**ユーザー名**を入力します。 たとえば、「`Contoso\administrator`」のように入力します。 |
+| $username       | ファイルを読み書きするための十分なアクセス権がある共有ドライブの場所のドメインとユーザー名を使用して**ユーザー名**を入力します。 たとえば、「`Contoso\backupshareuser`」のように入力します。 |
 | $password       | ユーザーの**パスワード**を入力します。 |
 | $sharepath      | **バックアップ ストレージの場所**のパスを入力します。 別のデバイスでホストされるファイル共有へのパスの場合、汎用名前付け規則 (UNC) の文字列を使用する必要があります。 UNC 文字列は、共有ファイルやデバイスといった、リソースの場所を指定します。 バックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。 |
 

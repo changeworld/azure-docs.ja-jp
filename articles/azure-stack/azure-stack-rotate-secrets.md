@@ -6,20 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 49071044-6767-4041-9EDD-6132295FA551
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a158da6fb397b864a439e067ca99d79814e2b8d2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258683"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -48,6 +48,24 @@ Azure Stack オペレーターによって提供される、外部に接続さ�
 > BMC やスイッチ パスワードなどの他のすべてのセキュリティで保護されたキーと文字列、ユーザーおよび管理者アカウントのパスワードは、まだ管理者が手動で更新します。 
 
 Azure Stack インフラストラクチャの整合性を維持するため、オペレーターは、組織のセキュリティ要件と一致する頻度でインフラストラクチャのシークレットを定期的にローテーションできる必要があります。
+
+### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>新しい証明書機関からの外部証明書を使用してシークレットをローテーションする
+
+Azure Stack では、次のようなコンテキストで、新しい証明書機関 (CA) からの外部証明書を使用したシークレットのローテーションをサポートしています。
+
+|インストール済みの証明書 CA|ローテーション先の CA|サポートされています|サポートされる Azure Stack のバージョン|
+|-----|-----|-----|-----|-----|
+|自己署名済みから|Enterprise へ|サポートされていません||
+|自己署名済みから|自己署名済みへ|サポートされていません||
+|自己署名済みから|公開へ<sup>*</sup>|サポートされています|1803 以降|
+|Enterprise から|Enterprise へ|顧客がデプロイ時に使用したのと同じエンタープライズ CA を使用している限りサポートされる|1803 以降|
+|Enterprise から|自己署名済みへ|サポートされていません||
+|Enterprise から|公開へ<sup>*</sup>|サポートされています|1803 以降|
+|公開から<sup>*</sup>|Enterprise へ|サポートされていません|1803 以降|
+|公開から<sup>*</sup>|自己署名済みへ|サポートされていません||
+|公開から<sup>*</sup>|公開へ<sup>*</sup>|サポートされています|1803 以降|
+
+<sup>*</sup> ここでの公開証明機関は、Windows の信頼されたルート プログラムに含まれているものです。 [Microsoft の信頼されたルート証明書プログラム: 参加者 (2017 年 6 月 27 日時点)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) に完全な一覧があります。
 
 ## <a name="alert-remediation"></a>アラートの修復
 

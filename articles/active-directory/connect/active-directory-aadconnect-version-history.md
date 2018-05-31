@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: eb824913a4b3482879ccc45e2f660342695b1618
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258948"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -34,6 +35,64 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
 ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+## <a name="118190"></a>1.1.819.0
+
+### <a name="release-status"></a>リリースの状態
+
+5/14/2018: 自動アップグレードとダウンロード向けにリリース済み。
+
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+
+新機能と機能強化
+
+- このリリースには、Azure AD Connect での PingFederate の統合のパブリック プレビューが含まれます。 このリリースでは、PingFederate をフェデレーション プロバイダーとして使用するように Azure Active Directory 環境を簡単かつ確実に構成できます。 この新しい機能を使用する方法の詳細については、こちらの[オンライン ドキュメント](active-directory-aadconnect-user-signin.md#federation-with-pingfederate)を参照してください。 
+- Azure AD Connect ウィザードのトラブルシューティング ユーティリティが更新され、分析されるエラー シナリオが増えました (リンクされたメールボックスや AD の動的グループなど)。 トラブルシューティング ユーティリティの詳細については、[こちら](active-directory-aadconnect-troubleshoot-objectsync.md)を参照してください。
+- デバイスの書き戻しの構成は、Azure AD Connect ウィザード内でのみ管理されるようになりました。
+- SQL 接続の問題とその他のさまざまなトラブルシューティング ユーティリティをトラブルシューティングするために使用できる ADSyncTools.psm1 という名前の新しい PowerShell モジュールが追加されました。 ADSyncTools モジュールの詳細については、[こちら](active-directory-aadconnect-tshoot-sql-connectivity.md)を参照してください。 
+- 新しいタスクである "デバイス オプションの構成" が追加されました。 このタスクを使用して、次の 2 つの操作を構成できます。 
+    -   **ハイブリッド Azure AD の参加**: 環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加しているデバイスです。
+    -   **デバイスの書き戻し**: デバイスの書き戻しを使用して、AD FS (2012 R2 以降) で保護されているデバイスでのデバイスに基づく条件付きアクセスを有効にできます。
+
+   >[!NOTE] 
+   > - 同期カスタマイズ オプションからデバイスの書き戻しを有効にするオプションはグレー表示されます。 
+   > -  このリリースでは、ADPrep の PowerShell モジュールは非推奨になりました。
+
+
+
+### <a name="fixed-issues"></a>修正された問題 
+
+- このリリースでは、SQL Server 2012 SP4 への SQL Server Express のインストールを更新します。とりわけ、複数のセキュリティの脆弱性の修正プログラムを提供します。  SQL Server 2012 SP4 の詳細については、[こちら](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information)を参照してください。
+- 同期ルールの処理: 親同期規則が適用可能でなくなった場合、結合条件のない送信結合同期規則は適用されない
+- 複数のアクセシビリティの修正が Synchronization Service Manager の UI と Sync Rules Editor に適用されている
+- Azure AD Connect ウィザード: Azure AD Connect がワークグループに含まれている場合の AD Connect アカウント作成エラー
+- Azure AD Connect ウィザード: AD ドメインと Azure AD の確認済みドメインが食い違う場合に常にAzure AD サインイン ページに検証チェックボックスが表示される
+- 自動アップグレードの試行後、特定の状況で自動アップグレードの状態を正しく設定するように自動アップグレード PowerShell を修正
+- Azure AD Connect ウィザード: 前回見逃していた情報をキャプチャするようにテレメトリを更新
+- Azure AD Connect ウィザード: AD FS からパススルー認証に切り替えるために**ユーザー サインインの変更**タスクを使用する際に、次の変更が加えられています。
+    - ドメインをフェデレーションから管理対象に変換する前に、Azure AD Connect サーバーにパススルー認証エージェントがインストールされ、パススルー認証機能が有効になります。
+    - ユーザーがフェデレーションから管理対象に変換されることはなくなります。 ドメインのみが変換されます。
+- Azure AD Connect ウィザード: ユーザーの UPN に特殊文字がある場合、AD FS マルチドメイン Regex が正確ではない。特殊文字をサポートするように Regex を更新
+- Azure AD Connect ウィザード: 変更がない場合の偽の "ソース アンカー属性を構成します" メッセージを削除 
+- Azure AD Connect ウィザード: AD FS でデュアル フェデレーション シナリオをサポート
+- Azure AD Connect ウィザード: マネージド ドメインのフェデレーションへの変換時に追加されたドメインでは AD FS 要求は更新されない
+- Azure AD Connect ウィザード: インストール済みのパッケージの検出中に古い Dirsync/Azure AD Sync/Azure AD Connect 関連製品が検出される。 今後、古い製品がアンインストールされるように修正
+- Azure AD Connect ウィザード: パススルー認証エージェントのインストールが失敗した場合のエラー メッセージのマッピングを修正
+- Azure AD Connect ウィザード: ドメイン OU フィルタリング ページから "構成" コンテナーを削除
+- 同期エンジンのインストール: 失敗することがある不要なレガシ ロジックを同期エンジンのインストール msi から削除
+- Azure AD Connect ウィザード: パスワード ハッシュ同期の [オプション機能] ページのポップアップ ヘルプ テキストを修正
+- 同期エンジン ランタイム: CS オブジェクトに削除がインポートされているときに同期規則がそのオブジェクトの再プロビジョニングを試行するシナリオを修正
+- 同期エンジンの実行時: インポート エラーのイベント ログにオンライン接続トラブルシューティング ガイドへのリンクを追加
+- 同期エンジン ランタイム: コネクタの列挙時に同期スケジューラが使用するメモリの量を削減
+- Azure AD Connect ウィザード: AD 読み取り特権がないカスタム同期サービス アカウントの解決問題を修正
+- Azure AD Connect ウィザード: ドメインと OU の選択内容のログ記録を改善
+- Azure AD Connect ウィザード: MFA シナリオ用に作成されたフェデレーションの信頼に AD FS の既定の要求を追加
+- Azure AD Connect ウィザード: AD FS デプロイ WAP: 新しい証明書を使用するサーバーの追加は失敗する
+- Azure AD Connect ウィザード: OnPremCredentials がドメインに対して初期化されていない場合は DSSO 例外 
+- アクティブなユーザー オブジェクトから AD の distinguishedName属性を優先的にフロー
+- 最初の OOB の同期ルールの優先順位が 100 ではなく 99 に設定される表面的なバグを修正
+
+
 
 ## <a name="117510"></a>1.1.751.0
 状況 4/12/2018: ダウンロード用のみにリリース済み
@@ -343,7 +402,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、*[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
 
-*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは*“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -371,7 +430,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、*[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
 
-*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは*“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 

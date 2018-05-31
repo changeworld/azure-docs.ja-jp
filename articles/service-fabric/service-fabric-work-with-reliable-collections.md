@@ -1,24 +1,25 @@
 ---
-title: "Reliable Collection での作業 | Microsoft Docs"
-description: "Reliable Collection で作業するためのベスト プラクティスについて説明します。"
+title: Reliable Collection での作業 | Microsoft Docs
+description: Reliable Collection で作業するためのベスト プラクティスについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: rajak
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
 ms.author: rajak
-ms.openlocfilehash: f53f13e4fb83b1cd370ec673e86e5311cd93055f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2568e116fdb3f80976d49787877d2ecf68f128ef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210819"
 ---
 # <a name="working-with-reliable-collections"></a>Reliable Collection での作業
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。 具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。 これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。 Reliable Dictionary オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
@@ -142,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>変更不可のデータ型を定義してプログラマ エラーを防ぐ
-変更不可と見なすオブジェクトの状態を変更するコードを誤って生成してしまった場合にエラーを報告するコンパイラがあると便利です。 しかし、C# コンパイラには、このような機能はありません。 プログラマのバグが発生する可能性を避けるため、Reliable Collection で使用する型を変更不可の型として定義することを強くお勧めします。 つまり、核となる値の型 (Int32、UInt64 のような数値型、DateTime、Guid、TimeSpan など) に従うということです。 もちろん、文字列を使用することもできます。 コレクション プロパティをシリアル化/逆シリアル化すると、パフォーマンスへの影響が頻繁に発生するので、コレクション プロパティは避けることが賢明です。 ただし、コレクション プロパティを使用する場合は、.NET の変更不可コレクション ライブラリ ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) を使用することを強くお勧めします。 このライブラリは http://nuget.org からダウンロードすることができます。クラスをシールして、なるべくフィールドを読み取り専用にすることもお勧めします。
+変更不可と見なすオブジェクトの状態を変更するコードを誤って生成してしまった場合にエラーを報告するコンパイラがあると便利です。 しかし、C# コンパイラには、このような機能はありません。 プログラマのバグが発生する可能性を避けるため、Reliable Collection で使用する型を変更不可の型として定義することを強くお勧めします。 つまり、核となる値の型 (Int32、UInt64 のような数値型、DateTime、Guid、TimeSpan など) に従うということです。 もちろん、文字列を使用することもできます。 コレクション プロパティをシリアル化/逆シリアル化すると、パフォーマンスへの影響が頻繁に発生するので、コレクション プロパティは避けることが賢明です。 ただし、コレクション プロパティを使用する場合は、.NET の変更不可コレクション ライブラリ ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) を使用することを強くお勧めします。 このライブラリは http://nuget.org からダウンロードできます。クラスをシールして、なるべくフィールドを読み取り専用にすることもお勧めします。
 
 下記の UserInfo 型は、前述の推奨事項を利用して変更不可の型を定義する方法を示しています。
 
@@ -208,7 +209,7 @@ Reliable Collection は、内部で .NET の DataContractSerializer を使用し
 
 または、いわゆる 2 段階アップグレードを実行することができます。 2 段階アップグレードでは、V1 から V2 にサービスをアップグレードします。V2 には新しいスキーマの変更を処理できるコードが含まれていますが、このコードは実行しません。 V2 コードが V1 のデータを読み取ると、V1 に対する操作を行い、V1 のデータを書き込みます。 次に、すべてのアップグレード ドメインでアップグレードが完了したら、アップグレードが完了したことを実行中の V2 のインスタンスに何らかの方法で通知できます。 (1 つの通知方法として、構成のアップグレードのロールアウトがあります。これにより 2 段階アップグレードが行われます。)これで、V2 のインスタンスが V1 のデータを読み取り、V2 のデータに変換し、処理を行って、V2 のデータとして書き出すことができます。 他のインスタンスが V2 のデータを読み取るときに、変換の必要はありません。インスタンスは操作を行い、V2 のデータを書き出すだけです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 上位互換性のあるデータ コントラクトを作成する方法については、「 [上位互換性のあるデータ コントラクト](https://msdn.microsoft.com/library/ms731083.aspx)」を参照してください。
 
 データ コントラクトのバージョン管理のベスト プラクティスについては、「 [データ コントラクトのバージョン管理](https://msdn.microsoft.com/library/ms731138.aspx)」を参照してください。

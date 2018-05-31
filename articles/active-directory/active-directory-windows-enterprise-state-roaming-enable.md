@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory の Enterprise State Roaming を有効にする | Microsoft Docs"
-description: "Windows デバイスの Enterprise State Roaming の設定に関してよく寄せられる質問について取り上げます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。"
+title: Azure Active Directory の Enterprise State Roaming を有効にする | Microsoft Docs
+description: Windows デバイスの Enterprise State Roaming の設定に関してよく寄せられる質問について取り上げます。 Enterprise State Roaming によって複数の Windows デバイスの使用環境が統一され、新しいデバイスを構成するために必要な時間が短縮されます。
 services: active-directory
-keywords: "Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法"
-documentationcenter: 
+keywords: Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 3a8714ddbda10d8e1b4a8de35711101f4c8a0106
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dba749b6d85898e6438ce1160b9bf6eaff6f4ac9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257973"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
 
-Enterprise State Roaming を有効にすると、組織には、Azure Rights Management の無料、制限付き使用ライセンスが自動的に付与されます。 この無料サブスクリプションは、Enterprise State Roaming サービスで同期されたエンタープライズ設定データおよびアプリケーション データの暗号化と暗号化の解除に限定されます。 Azure Rights Management のすべての機能を使用するには、[有料サブスクリプション](https://azure.microsoft.com/pricing/details/active-directory/)が必要です。
+Enterprise State Roaming を有効にすると、組織には、Azure Information Protection の Azure Rights Management 保護を制限付きで無料使用できるライセンスが自動的に付与されます。 この無料サブスクリプションは、Enterprise State Roaming サービスで同期されたエンタープライズ設定データおよびアプリケーション データの暗号化と暗号化の解除に限定されます。 Azure Rights Management サービスのすべての機能を使用するには、[有料サブスクリプション](https://azure.microsoft.com/pricing/details/information-protection/)が必要です。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming を有効にするには
 
@@ -39,7 +40,7 @@ Enterprise State Roaming を有効にすると、組織には、Azure Rights Man
 Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)必要があります。
 
 ## <a name="data-storage"></a>データ ストレージ
-Enterprise State Roaming のデータは、Azure Active Directory のインスタンスに設定されている国/リージョンの値と最も適合する 1 つ以上の [Azure リージョン](https://azure.microsoft.com/regions/)でホストされます。 Enterprise State Roaming データは、北米、EMEA、および APAC という主な 3 つの地域リージョンに基づいてパーティション分割されます。 テナントの Enterprise State Roaming データは、地域リージョンでローカルに配置されますが、リージョン間ではレプリケートされません。  次に例を示します。
+Enterprise State Roaming のデータは、Azure Active Directory のインスタンスに設定されている国/リージョンの値と最も適合する 1 つ以上の [Azure リージョン](https://azure.microsoft.com/regions/)でホストされます。 Enterprise State Roaming データは、北米、EMEA、および APAC という主な 3 つの地域リージョンに基づいてパーティション分割されます。 テナントの Enterprise State Roaming データは、地域リージョンでローカルに配置されますが、リージョン間ではレプリケートされません。  例: 
 国/リージョンの値 | データがホストされる場所
 ---------------------|-------------------------
 EMEA。"フランス"、"ザンビア" など | ヨーロッパ内の 1 つ以上の Azure リージョン 
@@ -77,7 +78,7 @@ Enterprise State Roaming を使用して Azure と同期されたデータは、
 * **要求による削除**: Azure AD 管理者の方は、特定のユーザーのデータまたは設定データを手動で削除する必要がある場合、 [Azure サポート](https://azure.microsoft.com/support/)にチケットを提出してください。 
 
 ### <a name="stale-data-deletion"></a>古いデータの削除
-1 年間 ("リテンション期間") にわたってアクセスされていないデータは古いデータと見なされ、Azure から削除される場合があります。 リテンション期間は変更されることがありますが、90 日未満になることはありません。 Windows またはアプリケーションの特定の設定のまとまりや、ユーザーの全設定が古いデータと見なされることもあります。 For example:
+1 年間 ("リテンション期間") にわたってアクセスされていないデータは古いデータと見なされ、Azure から削除される場合があります。 リテンション期間は変更されることがありますが、90 日未満になることはありません。 Windows またはアプリケーションの特定の設定のまとまりや、ユーザーの全設定が古いデータと見なされることもあります。 例: 
 
 * 特定の設定全体にデバイスからのアクセスがない場合 (アプリケーションがデバイスから削除された場合や、特定のユーザーの全デバイスで "テーマ" などの設定グループが無効にされた場合など)、リテンション期間の経過後その設定全体が古いと見なされ、削除される可能性があります。 
 * ユーザーがそのすべてのデバイスで設定の同期をオフにした場合、いずれの設定データもアクセスされなくなり、リテンション期間の経過後にそのユーザーのすべての設定データが古いと見なされ、削除される可能性があります。 
