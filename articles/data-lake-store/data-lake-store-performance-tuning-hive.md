@@ -10,16 +10,14 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168913"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198971"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>HDInsight と Azure Data Lake Store の Hive のパフォーマンス チューニング ガイダンス
 
@@ -47,9 +45,9 @@ ADLS のパフォーマンスを向上させるためにチューニングする
 
 **hive.tez.container.size** - このコンテナーのサイズは、各タスクで使用可能なメモリの量を決定します。  これは、Hive での同時実行を制御するための主要な入力です。  
 
-**tez.grouping.min-size** – このパラメーターを使用して、各マッパーの最小サイズを設定できます。  Tez が選択したマッパーの数がこのパラメーターの値よりも小さい場合、Tez はここに設定された値を使用します。  
+**tez.grouping.min-size** – このパラメーターを使用して、各マッパーの最小サイズを設定できます。  Tez が選択したマッパーの数がこのパラメーターの値よりも小さい場合、Tez はここに設定された値を使用します。
 
-**tez.grouping.max-size** – このパラメーターを使用して、各マッパーの最大サイズを設定できます。  Tez が選択したマッパーの数がこのパラメーターの値よりも大きい場合、Tez はここに設定された値を使用します。  
+**tez.grouping.max-size** – このパラメーターを使用して、各マッパーの最大サイズを設定できます。  Tez が選択したマッパーの数がこのパラメーターの値よりも大きい場合、Tez はここに設定された値を使用します。
 
 **hive.exec.reducer.bytes.per.reducer** – このパラメーターは、各レジューサーのサイズを設定します。  既定では、各レジューサーは 256 MB です。  
 
@@ -76,9 +74,10 @@ ADLS を使用してパフォーマンスを向上させる鍵は、同時実行
     # of YARN containers = 768GB / 3072MB = 256
 
 ## <a name="limitations"></a>制限事項
+
 **ADLS の調整** 
 
-ADLS によって提供される帯域幅の限界に達すると、タスクの失敗が発生し始めます。 このことは、タスク ログの調整エラーを監視することで確認できます。  コンテナーのサイズを増やすことで、並列処理を軽減できます。  ジョブのためにより高い同時実行性が必要な場合は、お問い合わせください。   
+ADLS によって提供される帯域幅の限界に達すると、タスクの失敗が発生し始めます。 このことは、タスク ログの調整エラーを監視することで確認できます。  コンテナーのサイズを増やすことで、並列処理を軽減できます。  ジョブのためにより高い同時実行性が必要な場合は、お問い合わせください。
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にする必要があります。 その方法は次のとおりです。
 

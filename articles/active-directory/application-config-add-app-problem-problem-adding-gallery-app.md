@@ -1,11 +1,11 @@
 ---
-title: "Azure AD ギャラリーのアプリケーションの追加に関する問題 |Microsoft Docs"
-description: "Azure AD ギャラリーのアプリケーションを追加するときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容の説明"
+title: Azure AD ギャラリーのアプリケーションの追加に関する問題 |Microsoft Docs
+description: Azure AD ギャラリーのアプリケーションを追加するときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容の説明
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,27 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 79713cd343e1b876cd7a1b6653bbe00b43272a55
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5cb43976c17bfd46d1f16f0bdaff1c164bdc0fb6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053761"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD ギャラリーのアプリケーションの追加に関する問題
 
-この記事では、Azure AD ギャラリーのアプリケーションを追加するときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容について説明します。
+この記事は、Azure AD ギャラリーのアプリケーションを追加するときにユーザーが直面する一般的な問題と、それらを解決するために実行できる内容を理解するのに役立ちます。
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されるまでに長い時間がかかる
 
-状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure Portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ベル) をクリックし、**[進行中]** または **[アプリケーションを作成]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
+状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、**[進行中]** または **[アプリケーションを作成]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
 
-アプリケーションが追加されていない場合、または **[追加]** ボタンをクリックしたときにエラーが発生した場合は、**[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりするには、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
+アプリケーションが追加されていない場合、または **[追加]** ボタンをクリックしたときにエラーが発生した場合は、**[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されない
 
-一時的な問題、ネットワークの問題、または、バグによって、アプリケーションの追加に失敗することがあります。 このような状況が発生すると、Azure Portal の右上隅にある **[通知]** アイコン (ビープ音) をクリックしたときに、**[アプリケーションの作成]** 通知の横に赤い (!) アイコンが表示されます。 これは、アプリケーションを作成するときにエラーが発生したことを示します。
+一時的な問題、ネットワークの問題、または、バグによって、アプリケーションの追加に失敗することがあります。 このような状況が発生すると、Azure portal の右上隅にある **[通知]** アイコン (ビープ音) をクリックしたときに、**[アプリケーションの作成]** 通知の横に赤い (!) アイコンが表示されます。 これは、アプリケーションを作成するときにエラーが発生したことを示します。
 
-エラーが発生すると、**[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりするには、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
+エラーが発生すると、**[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
  ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>アプリケーションを追加した後に設定する方法がわからない
 
@@ -54,9 +55,7 @@ ms.lasthandoff: 12/11/2017
     >
     >
 
-3.  これにより、**[通知の詳細]** ブレードが開きます。
-
-4.  この情報を使用して、問題に関する詳細を把握します。
+4.  **[通知の詳細]** の情報を使用して、問題に関する詳細を把握します。
 
 5.  サポートが必要な場合は、この情報をサポート エンジニアや製品グループと共有して支援を受けることもできます。
 
@@ -68,7 +67,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="notification-details-explained"></a>通知の詳細についての説明
 
-各通知項目についての詳細な説明とそれぞれの例を以下に示します。
+通知の詳細については、次の説明を参照してください。
 
 ### <a name="essential-notification-items"></a>重要な通知項目
 
@@ -92,7 +91,7 @@ ms.lasthandoff: 12/11/2017
 
     -   例 – **2017-03-23T19:50:43.7583681Z**
 
--   **内部トランザクション ID** – システムでエラーを検索するために使用する内部 ID
+-   **内部トランザクション ID** – システムでエラーを検索するために使用できる内部 ID
 
     -   例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
@@ -100,7 +99,7 @@ ms.lasthandoff: 12/11/2017
 
     -   例 – **tperkins@f128.info**
 
--   **テナント ID** – 操作を実行したユーザーがメンバーとなっていたテナントの一意の ID
+-   **テナント ID** – 操作を実行したユーザーがメンバーであったテナントの一意の ID
 
     -   例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
@@ -118,17 +117,18 @@ ms.lasthandoff: 12/11/2017
 
     -   例 – **失敗**
 
--   **オブジェクト ID** – **(空白でも可)** 実行した操作に対するオブジェクト ID
+-   **オブジェクト ID** – **(空でも可)** 実行された操作の対象であるオブジェクト ID
 
     -   例 – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
 -   **詳細** – 操作の結果として発生した内容についての詳細な説明
 
-    -   例 – **内部 URL "http://bing.com/" は既に使用中のため無効です**
+    -   例 - **内部 URL "http://bing.com/" は既に使用中のため無効です**
 
--   **コピー エラー** - **[コピー エラー]** ボックスの右にある **[コピー] アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有します。
+-   **エラーのコピー** – **[エラーのコピー]** ボックスの右にある**コピー アイコン**をクリックしてすべての通知の詳細をコピーし、サポートまたは製品グループと共有します 
+-   エンジニア
 
     -   例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-## <a name="next-steps"></a>次のステップ
-[Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
+## <a name="next-steps"></a>次の手順
+[Azure Active Directory でのアプリケーションの管理](manage-apps/what-is-application-management.md)

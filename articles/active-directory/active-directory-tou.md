@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192957"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of Use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。  この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。
@@ -39,7 +40,7 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 Azure AD Terms of Use を構成する手順は次のとおりです。
 
 1. グローバル管理者、セキュリティ管理者、または Azure AD Terms of Use を構成するディレクトリの条件付きアクセス管理者を使って、Azure AD にサインインします。
-2. ディレクトリに、Azure AD Premium P1、P2、EMS E3、EMS E5 のいずれかのサブスクリプションがあることを確認します。  ない場合は、[Azure AD Premium](active-directory-get-started-premium.md) を入手するか、[試用版の利用を開始](https://azure.microsoft.com/trial/get-started-active-directory/)します。
+2. ディレクトリに、Azure AD Premium P1、P2、EMS E3、EMS E5 のいずれかのサブスクリプションがあることを確認します。  ない場合は、[Azure AD Premium を入手](active-directory-get-started-premium.md)するか、[試用版の利用を開始](https://azure.microsoft.com/trial/get-started-active-directory/)します。
 3. [https://aka.ms/catou](https://aka.ms/catou) で Azure AD Terms of User ダッシュボードを表示します。
 
 >[!IMPORTANT]
@@ -120,6 +121,13 @@ Azure AD Terms of Use には使いやすい監査機能が備わっており、�
 
 4.  そこから同意した使用条件を確認できます。 
 
+## <a name="removing-users-from-an-active-terms-of-use"></a>アクティブな使用条件からユーザーを削除する
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
+
+既定では、削除されたユーザーが Azure AD に 30 日間、削除状態で維持されます。その間は、管理者が必要に応じて復元することができます。  30 日後、そのユーザーは完全に削除されます。  その期間に達していなくても、全体管理者は、Azure Active Directory ポータルを使用して明示的に、[最近削除したユーザーを完全に削除](active-directory-users-restore.md)することができます。  ユーザーが完全に削除されると、以降そのユーザーに関するデータは、アクティブな使用条件から削除されます。  監査ログには、削除済みユーザーに関する監査情報が維持されます。
+
+
 
 ## <a name="additional-information"></a>追加情報
 使用条件を使うときに知っておくべき情報と役に立つ情報を次に示します。
@@ -153,7 +161,7 @@ A: 使用条件は、サインイン エクスペリエンスの間にトリガ�
 A: 最新の認証を使ったエンタープライズ アプリケーションに条件付きアクセス ポリシーを作成できます。  詳細については、[エンタープライズ アプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-view-azure-portal)に関するページをご覧ください。
 
 **Q: 特定のユーザーまたはアプリケーションに複数の使用条件を追加できますか?**</br>
-A: はい、そのグループやアプリを対象とする複数の条件付きアクセス ポリシーを作成することで可能です。 複数の使用条件の対象になっているユーザーは、一度に 1 つに使用条件に同意します。
+A: はい、そのグループやアプリを対象とする複数の条件付きアクセス ポリシーを作成することで可能です。 複数の使用条件の対象になっているユーザーは、一度に 1 つの使用条件に同意します。
  
 **Q: ユーザーが使用条件を拒否した場合はどうなりますか?**</br>
 A: ユーザーは、アプリケーションへのアクセスをブロックされます。 ユーザーは、アクセスするには、もう一度サインインして使用条件に同意する必要があります。

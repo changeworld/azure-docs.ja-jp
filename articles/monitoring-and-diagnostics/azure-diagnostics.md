@@ -1,5 +1,5 @@
 ---
-title: Azure 診断の概要 | Microsoft Docs
+title: Azure 診断拡張機能の概要 | Microsoft Docs
 description: Azure 診断は、Cloud Services、Virtual Machines、および Service Fabric でのデバッグ、パフォーマンス測定、監視、トラフィック分析に使用できます。
 services: multiple
 documentationcenter: .net
@@ -12,20 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2017
+ms.date: 05/01/2018
 ms.author: robb
-ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daeaddefa461e71fcc62af4efc4fb7084b237cf9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169137"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886397"
 ---
-# <a name="what-is-azure-diagnostics"></a>Azure 診断について
-Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。 
+# <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
+Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。 
+
+## <a name="linux-agent"></a>Linux エージェント
+Linux を実行する仮想マシンには、[Linux 版の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をご利用いただけます。 収集される統計情報と動作は、Windows 版とは異なります。 
 
 ## <a name="data-you-can-collect"></a>収集可能なデータ
-Azure 診断は、次の種類のデータを収集できます。
+Azure 診断拡張機能では、次の種類のデータを収集できます。
 
 | [データ ソース] | [説明] |
 | --- | --- |
@@ -39,10 +42,15 @@ Azure 診断は、次の種類のデータを収集できます。
 | カスタム エラー ログ |アプリケーションまたはサービスで作成されたログ |
 | Azure 診断インフラストラクチャ ログ |診断自体に関する情報 |
 
-Azure 診断拡張機能は、このデータを Azure ストレージ アカウントに転送したり、[Application Insights](../application-insights/app-insights-cloudservices.md) に送信したりすることができます。 [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーム配信することもできます。その後で Azure 以外の監視サービスに送信することができます。 データは、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、監査などに使用できます。
+## <a name="data-storage"></a>データ ストレージ
+この拡張機能では、指定した [Azure Storage アカウント](azure-diagnostics-storage.md)にそのデータが格納されます。 
 
-## <a name="versioning"></a>バージョン管理
-「 [Azure Diagnostics Versioning History (Azure 診断のバージョン履歴)](azure-diagnostics-versioning-history.md)」を参照してください。
+[Application Insights](../application-insights/app-insights-cloudservices.md) に送信することもできます。 [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーム配信するという選択肢もあります。その場合、後で Azure 以外の監視サービスに送信できます。 
+
+
+## <a name="versioning-and-configuration-schema"></a>バージョン管理と構成スキーマ
+[Azure 診断のバージョン履歴とスキーマ](azure-diagnostics-versioning-history.md)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 診断情報を収集するサービスを選択し、以下の記事の説明に従って操作を開始してください。 特定のタスクのリファレンスについては、一般的な Azure 診断リンクを使用してください。
@@ -58,7 +66,7 @@ Azure 診断拡張機能は、このデータを Azure ストレージ アカウ
 * [Azure 診断で Cloud Services アプリケーションのフローをトレースする](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [PowerShell を使用した Cloud Services での診断の設定](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="virtual-machines-using-azure-diagnostics"></a>Virtual Machines で Azure 診断を使用する
+## <a name="virtual-machines"></a>Virtual Machines
 * Visual Studio を使用する場合は、[Visual Studio を使用した Azure Virtual Machines のトレース](../vs-azure-tools-debug-cloud-services-virtual-machines.md)に関するページを参照して操作を開始してください。 それ以外の場合は次を参照してください。
 * [Azure 仮想マシンでの Azure 診断の設定](../virtual-machines-dotnet-diagnostics.md)
 
@@ -67,12 +75,9 @@ Azure 診断拡張機能は、このデータを Azure ストレージ アカウ
 * [PowerShell を使用した Azure Virtual Machines での診断の設定](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="service-fabric-using-azure-diagnostics"></a>Service Fabric で Azure 診断を使用する
+## <a name="service-fabric"></a>Service Fabric
 [Service Fabric アプリケーションの監視](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)に関するページを参照して操作を開始してください。 この記事にアクセスすると、左側のナビゲーション ツリーに Service Fabric 診断に関するその他の記事が多数あります。
 
-## <a name="general-azure-diagnostics-articles"></a>Azure 診断に関する一般的な記事
-* [Azure Diagnostics Schema Configuration (Azure 診断スキーマの構成)](https://msdn.microsoft.com/library/azure/mt634524.aspx) - 診断データを収集して送信するようにスキーマ ファイルを変更する方法について説明します。 Visual Studio を使用してスキーマ ファイルを変更することもできます。
-* [Azure Storage に Azure 診断データを格納する方法](../cloud-services/cloud-services-dotnet-diagnostics-storage.md) - 診断データが書き込まれるテーブルと BLOB の名前を示します。
+## <a name="general-articles"></a>全般記事
 * [Azure 診断でのパフォーマンス カウンターの使用](../cloud-services/diagnostics-performance-counters.md)について説明します。
-* [Application Insights への Azure 診断情報の送信](azure-diagnostics-configure-application-insights.md)について説明します。
 * Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、[Azure 診断のトラブルシューティング](azure-diagnostics-troubleshooting.md)に関するページを参照してください。

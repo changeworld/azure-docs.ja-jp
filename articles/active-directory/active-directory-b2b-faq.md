@@ -2,25 +2,20 @@
 title: Azure Active Directory B2B コラボレーションの FAQ | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。
 services: active-directory
-documentationcenter: ''
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 05/11/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: active-directory
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
-ms.date: 03/06/2018
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2f039361bce9615e8b8b9aa62dc152db504a6dc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77dc239385261c9544b00cf2cf2e450136dce0ae
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076575"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -37,9 +32,6 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>招待の電子メールは、どのようにカスタマイズできますか。
 [B2B 招待 API](active-directory-b2b-api.md) を使用して、招待元プロセスのほぼすべてをカスタマイズすることができます。
-
-### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>招待された外部ユーザーは、招待後に組織から離れることができますか。
-招待側組織の管理者は、自社のディレクトリから B2B コラボレーションのゲスト ユーザーを削除できますが、ゲスト ユーザーは、独力で招待側組織から離れることはできません。 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>ゲスト ユーザーは、Multi-Factor Authentication 方法をリセットできますか。
 はい。 ゲスト ユーザーは、通常のユーザーと同じように、Multi-Factor Authentication 方法をリセットできます。
@@ -61,7 +53,7 @@ B2B コラボレーション ユーザーは、制限付き管理者または全
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
 はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
-ゲスト ユーザーの [Azure ポータル](https://portal.azure.com)へのアクセスをブロックするには、Windows Azure クラシック デプロイメント モデル API で条件付きアクセス ポリシーを使用します。
+ゲスト ユーザーの [Azure ポータル](https://portal.azure.com)へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
 1. **すべてのユーザー** グループをメンバーだけが含まれるように変更します。
   ![グループの変更スクリーンショット](media/active-directory-b2b-faq/modify-all-users-group.png)
 2. ゲスト ユーザーを含む動的グループを作成します。
@@ -105,9 +97,7 @@ B2B コラボレーションを向上させるためのフィードバックは�
 また、[B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) でも、ご意見の送信や、今後の機能への投票を行うことができます。
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>ユーザーがすぐに "準備" できるように、自動的に引き換えられる招待を送信できますか。 それとも、ユーザーは常に引き換えの URL をクリックする必要があるのですか。
-招待状を送信した招待側組織のユーザーがパートナー組織のメンバーでもある場合、B2B ユーザーによる引き換えは必要ありません。
-
-パートナー組織から 1 人のユーザーを招待側組織に招待することをお勧めします。 [このユーザーを、リソース組織のゲスト招待者ロールに追加](active-directory-b2b-add-guest-to-role.md)します。 このユーザーは、サインイン UI、PowerShell スクリプト、または API を使用して、パートナー組織の他のユーザーを招待できます。 これで、その組織の B2B コラボレーション ユーザーは、招待状を引き換える必要がなくなります。
+招待元は、UI、PowerShell スクリプト、または API を使用して、取引先組織の他のユーザーを招待できます。 次に、招待元はゲスト ユーザーに共有アプリへの直接リンクを送信できます。 ほとんどの場合、メール招待状を開いて、引き換えの URL をクリックする必要はなくなります。 詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)」を参照してください。
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>招待されたパートナーがフェデレーションを使用して独自のオンプレミス認証を追加するとき、B2B コラボレーションはどのように機能しますか?
 パートナーの Azure AD テナントがオンプレミス認証インフラストラクチャにフェデレーションされている場合、オンプレミスのシングル サインオン (SSO) が自動的に実行されます。 パートナーに Azure AD テナントがない場合、新しいユーザーに対し Azure AD アカウントが作成されます。 
@@ -129,16 +119,5 @@ B2B コラボレーションを向上させるためのフィードバックは�
 
 ### <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+- [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Azure AD 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
-* [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
-* [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
-* [Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)
-* [Azure AD B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
-* [Azure AD B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
-* [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
-* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
