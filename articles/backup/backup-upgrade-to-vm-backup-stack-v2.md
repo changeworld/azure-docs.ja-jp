@@ -1,6 +1,6 @@
 ---
-title: Azure VM バックアップ スタック V2 にアップグレードする | Microsoft Docs
-description: VM バックアップ スタック V2 のアップグレード プロセスとよく寄せられる質問です
+title: Azure VM バックアップ スタック用 Azure Resource Manager デプロイメント モデルへのアップグレード | Microsoft Docs
+description: VM バックアップ スタック、Resource Manager デプロイメント モデルのアップグレード プロセスとよくある質問
 services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhk
@@ -13,84 +13,83 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1e5515486afac5a6d84a35bca33f55ae98e287d3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33764861"
 ---
-# <a name="upgrade-to-vm-backup-stack-v2"></a>VM バックアップ スタック V2 へのアップグレード
-仮想マシン (VM) バックアップ スタック V2 にアップグレードすると、次の機能強化が提供されます。
-* データ転送の完了を待たずに復旧に利用できるように、バックアップ ジョブの一環として取得されるスナップショットを表示できます。
-復元を開始する前に、スナップショットがコンテナーにコピーされるのを待つ時間が短縮されます。 また、最初のバックアップを除き、Premium VM をバックアップするための追加ストレージ要件がなくなります。  
+# <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Azure VM バックアップ スタック用 Azure Resource Manager デプロイメント モデルへのアップグレード
+仮想マシン (VM) バックアップ スタックへのアップグレード用 Resource Manager デプロイメント モデルには、次の拡張機能が用意されています。
+* データ転送の終了を待たずに復旧に利用できるバックアップ ジョブの一環として取得されるスナップショットを表示できます。 これにより、復元をトリガーする前にスナップショットをコンテナーにコピーする待機時間が短縮されます。 また、この機能により、最初のバックアップを除き、Premium VM をバックアップするための追加ストレージ要件がなくなります。  
 
-* スナップショットを 7 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。 
+* スナップショットを 7 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。
 
-* 最大 4 TB のディスク サイズをサポートします。  
+* 最大 4 TB のディスク サイズをサポートします。
 
-* 非管理対象 VM の復元を行うときに、(VM に複数のストレージ アカウントに分散されたディスクがある場合でも) 元のストレージ アカウントを使うことができます。 これにより、多様な VM 構成で復元が速くなります。 
+* 復元時に非管理対象 VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 これにより、多様な VM 構成で復元が速くなります。
     > [!NOTE] 
-    > これは、元の VM のオーバーライドと同じではありません。 
-    > 
+    > この機能は、元の VM のオーバーライドと同じではありません。 
     >
 
-## <a name="what-is-changing-in-the-new-stack"></a>新しいスタックでの変更点
+## <a name="whats-changing-in-the-new-stack"></a>新しいスタックでの変更点
 現在、バックアップ ジョブは 2 つのフェーズで構成されます。
 1.  VM スナップショットを作成します。 
 2.  Azure Backup コンテナーに VM スナップショットを転送します。 
 
-復旧ポイントは、フェーズ 1 および 2 が完了した後でのみ、作成されたものと見なされます。 新しいスタックでは、復旧ポイントはスナップショットが完了するとすぐに作成されます。 同じ復元フローを使ってこの復旧ポイントから復元することもできます。 Azure Portal では、復旧ポイントの種類として "スナップショット" を使って、この復旧ポイントを識別できます。 コンテナーにスナップショットが転送されると、復旧ポイントの種類は "スナップショットとコンテナー" に変わります。 
+復旧ポイントは、フェーズ 1 および 2 が完了した後でのみ、作成されたものと見なされます。 新しいスタックでは、復旧ポイントはスナップショットが終了するとすぐに作成されます。 同じ復元フローを使ってこの復旧ポイントから復元することもできます。 Azure Portal では、復旧ポイントの種類として "スナップショット" を使って、この復旧ポイントを識別できます。 コンテナーにスナップショットが転送されると、復旧ポイントの種類は "スナップショットとコンテナー" に変わります。 
 
-![VM バックアップ スタック V2 でのバックアップ ジョブ](./media/backup-azure-vms/instant-rp-flow.jpg) 
+![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: ストレージとコンテナー](./media/backup-azure-vms/instant-rp-flow.jpg) 
 
-既定では、スナップショットは 7 日間保持されます。 これにより、顧客のストレージ アカウントにコンテナーからデータをコピーして戻すために必要な時間が短縮されるので、スナップショットからの復元は速く完了します。 
+既定では、スナップショットは 7 日間保持されます。 この機能により、このスナップショットからすばやく復元を終了できます。 データをコンテナーからユーザーのストレージ アカウントにコピーして戻すために必要な時間が短縮されます。 
 
 ## <a name="considerations-before-upgrade"></a>アップグレードの前の考慮事項
-* これは、VM バックアップ スタックの一方向のアップグレードです。 そのため、将来のバックアップはすべて、このフローになります。 **これはサブスクリプション レベルで有効にされるので、すべての VM がこのフローになります**。 新しい機能の追加はすべて、同じスタックに基づきます。 ポリシー レベルでこれを制御する機能は、将来のリリースで予定されています。 
-* Premium ディスクを使う VM では、最初のバックアップの間に、最初のバックアップが完了するまで、VM のサイズと等しい記憶域スペースがストレージ アカウントで利用できることを確認します。 
-* 復旧ポイントの作成と復元を高速化するため、スナップショットはローカルに格納されるので、7 日の期間中、スナップショットに対応するストレージ コストが発生します。
-* 増分スナップショットは、ページ BLOB として格納されます。 アンマネージド ディスクを使用しているすべてのユーザーは、自分のローカル ストレージ アカウントに格納されている 7 日間のスナップショットに対して課金されます。 現在の価格モデルでは、マネージド ディスクのユーザーにはコストがかかりません。
-* Premium VM のスナップショット復旧ポイントから復元を行う場合、復元の一部として VM が作成されている間、一時的な保存場所が使われます。 
-* Premium Storage アカウントの場合、インスタント回復用に作成されたスナップショットは、Premium Storage アカウントに割り当てられている 10 TB の領域を占有します。
+* VM バックアップ スタックのアップグレードは一方向です。 そのため、すべてのバックアップはそのフローになります。 これはサブスクリプション レベルで有効になっているため、すべての VM はそのフローになります。 新しい機能の追加はすべて、同じスタックに基づきます。 ポリシー レベルでこれを制御する機能は、将来のリリースで予定されています。
 
-## <a name="how-to-upgrade"></a>アップグレードする方法
+* 復旧ポイントの作成を促進し、復元の速度を上げるため、スナップショットはローカルに格納されます。 そのため、ストレージのコストは 7 日間のスナップショットに対応したものになります。
+
+* 増分スナップショットは、ページ BLOB として格納されます。 非管理対象ディスクを使用しているすべてのユーザーは、スナップショットが自分のローカル ストレージ アカウントに格納される 7 日間に対して課金されます。 現在の価格モデルでは、管理対象ディスクのユーザーにはコストがかかりません。
+
+* Premium VM のスナップショット復旧ポイントから復元を行う場合、復元の一部として VM が作成される間、一時的な保存場所が使われます。
+
+* Premium Storage アカウントの場合、即時の復旧のために作成されるスナップショットは 10 TB の割り当て領域を占めます。
+
+## <a name="upgrade"></a>アップグレード
 ### <a name="the-azure-portal"></a>Azure ポータル
-Azure Portal を使っている場合、大容量ディスクのサポートおよびバックアップと復元の速度向上に関する通知が、コンテナーのダッシュボードに表示されます。
+Azure ポータルを使用する場合は、コンテナーのダッシュボードに通知が表示されます。 この通知は、大容量ディスクのサポートと、バックアップおよび復元の速度向上に関連しています。
 
-![VM バックアップ スタック V2 でのバックアップ ジョブ](./media/backup-azure-vms/instant-rp-banner.png) 
+![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: サポート通知](./media/backup-azure-vms/instant-rp-banner.png) 
 
 新しいスタックにアップグレードするための画面を開くには、バナーを選びます。 
 
-![VM バックアップ スタック V2 でのバックアップ ジョブ](./media/backup-azure-vms/instant-rp.png) 
+![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: アップグレード](./media/backup-azure-vms/instant-rp.png) 
 
 ### <a name="powershell"></a>PowerShell
 管理者特権の PowerShell ターミナルから次のコマンドレットを実行します。
 1.  Azure アカウントにサインインします。 
 
-```
-PS C:> Connect-AzureRmAccount
-```
+    ```
+    PS C:> Connect-AzureRmAccount
+    ```
 
 2.  プレビュー用に登録するサブスクリプションを選びます。
 
-```
-PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-```
+    ```
+    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    ```
 
 3.  プライベート プレビュー用にこのサブスクリプションを登録します。
 
-```
-PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
-```
+    ```
+    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    ```
 
-## <a name="verify-whether-the-upgrade-is-complete"></a>アップグレードが完了したかどうかを確認します。
+## <a name="verify-that-the-upgrade-is-finished"></a>アップグレードが終了したことを確認する
 管理者特権の PowerShell ターミナルから、次のコマンドレットを実行します。
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-登録済みと表示されたら、サブスクリプションは VM バックアップ スタック V2 にアップグレードされています。 
-
-
-
+"登録済み" と表示されたら、サブスクリプションは VM バックアップ スタック Resource Manager デプロイメント モデルにアップグレードされています。

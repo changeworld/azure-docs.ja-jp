@@ -1,25 +1,26 @@
 ---
-title: "アプリケーション プロキシのトラブルシューティング | Microsoft Docs"
-description: "Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。"
+title: アプリケーション プロキシのトラブルシューティング | Microsoft Docs
+description: Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 970caafb-40b8-483c-bb46-c8b032a4fb74
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 838bdccb06e5763d33f63208cb6f941a55778b32
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155815"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
@@ -27,14 +28,14 @@ ms.lasthandoff: 02/21/2018
 * Windows サービス コンソールを開き、**Microsoft AAD アプリケーション プロキシ コネクタ** サービスが有効で実行されていることを確認します。 次の図のように、アプリケーション プロキシ サービスのプロパティ ページで確認することもできます。  
   ![Microsoft AAD アプリケーション プロキシ コネクタのプロパティのスクリーンショット](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * イベント ビューアーを開き、**[アプリケーションとサービス ログ]** > **[Microsoft]** > **[AadApplicationProxy]** > **[コネクタ]** > **[Admin]** の順に移動して、[Admin] の下にあるアプリケーション プロキシ コネクタ イベントを探します。
-* 必要に応じて、[アプリケーション プロキシ コネクタのセッション ログを有効にする](application-proxy-understand-connectors.md#under-the-hood)ことで、より詳細なログを使用できます。
+* 必要に応じて、[アプリケーション プロキシ コネクタのセッション ログを有効にする](manage-apps/application-proxy-connectors.md#under-the-hood)ことで、より詳細なログを使用できます。
 
 Azure AD のトラブルシューティング ツールについて詳しくは、「[Troubleshooting tool to validate connector networking prerequisites (コネクタのネットワークの前提条件を検証するためのトラブルシューティング ツール)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites)」をご覧ください。
 
 ## <a name="the-page-is-not-rendered-correctly"></a>ページが正しく表示されない
 特定のエラー メッセージが表示されない場合でも、アプリケーションが正しくレンダリングまたは機能しないことがあります。 これは、記事のパスを発行した場合に発生することがありますが、アプリケーションは、そのパスの外部に存在するコンテンツを必要とします。
 
-たとえば、https://yourapp/app というパスを発行しても、アプリケーションが https://yourapp/media 内のイメージを呼び出した場合、イメージは表示されません。 アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。 この例では、http://yourapp/ となります。
+たとえば、https://yourapp/app というパスを発行しても、アプリケーションが https://yourapp/media 内のイメージを呼び出した場合、イメージは表示されません。 アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。 この例では http://yourapp/ になります。
 
 参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
 
@@ -50,7 +51,7 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 
 | エラー | 推奨される手順 |
 | ----- | ----------------- |
-| コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。 エラー: '1 つ以上のエラーが発生しました。' | Azure AD にサインインせずに登録ウィンドウを閉じた場合は、コネクタ ウィザードを再実行してコネクタを登録します。 <br><br> 登録ウィンドウが開き、ログインを許さずにすぐに閉じてしまった場合は、通常、このエラーが発生します。 このエラーは、ネットワーク エラーがシステムで起きた場合に発生します。 ブラウザーから一般 Web サイトに接続できることと、「 [アプリケーション プロキシの前提条件](active-directory-application-proxy-enable.md)」で指定されているようにポートが開かれていることを確認してください。 |
+| コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。 エラー: '1 つ以上のエラーが発生しました。' | Azure AD にサインインせずに登録ウィンドウを閉じた場合は、コネクタ ウィザードを再実行してコネクタを登録します。 <br><br> 登録ウィンドウが開き、ログインを許さずにすぐに閉じてしまった場合は、通常、このエラーが発生します。 このエラーは、ネットワーク エラーがシステムで起きた場合に発生します。 ブラウザーから一般 Web サイトに接続できることと、「 [アプリケーション プロキシの前提条件](manage-apps/application-proxy-enable.md)」で指定されているようにポートが開かれていることを確認してください。 |
 | 登録ウィンドウに明確なエラーが表示されています。 続行できません。 | このエラーが表示されてウィンドウが閉じた場合は、入力したユーザー名かパスワードが間違っています。 やり直してください。 |
 | コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。 エラー: 'AADSTS50059: テナントを識別する情報が要求内に見つからず、指定されたどの資格情報でも暗黙的に示されなかったため、サービス プリンシパル URI による検索が失敗しました。 | Microsoft アカウントと、アクセスしようとしているディレクトリの組織 ID の一部であるドメイン以外を使用して、サインインしようとしています。 admin がテナント ドメインと同じドメイン名の一部であることを確認します。たとえば、Azure AD ドメインが contoso.com である場合、admin は admin@contoso.com である必要があります。 |
 | PowerShell スクリプトを実行するための現在の実行ポリシーを取得できませんでした。 | コネクタのインストールに失敗した場合は、PowerShell 実行ポリシーが無効になっていないことを確認します。 <br><br>1.グループ ポリシー エディターを開きます。<br>2.**[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Windows PowerShell]** の順に移動して、**[スクリプトの実行を有効にする]** をダブルクリックします。<br>手順 3.実行ポリシーは、**[未構成]** または **[有効]** に設定できます。 **[有効]** に設定した場合は、[オプション] で実行ポリシーが **[ローカル スクリプトおよびリモートの署名済みスクリプトを許可する]** または **[すべてのスクリプトを許可する]** に設定されていることを確認します。 |
@@ -87,10 +88,10 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 Azure AD アプリケーション プロキシでこのトラブルシューティング ガイドの一覧にないエラーまたは問題が発生した場合は、 発生したエラーの詳細を記した電子メールを[フィードバック チーム](mailto:aadapfeedback@microsoft.com)までお送りください。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Active Directory のアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-* [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
-* [シングル サインオンの有効化](active-directory-application-proxy-sso-using-kcd.md)
-* [条件付きアクセスを有効にする](application-proxy-enable-remote-access-sharepoint.md)
+* [Azure Active Directory のアプリケーション プロキシを有効にする](manage-apps/application-proxy-enable.md)
+* [アプリケーション プロキシを使用してアプリケーションを発行する](manage-apps/application-proxy-publish-azure-portal.md)
+* [シングル サインオンの有効化](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+* [条件付きアクセスを有効にする](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

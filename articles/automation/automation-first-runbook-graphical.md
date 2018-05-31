@@ -4,16 +4,18 @@ description: 簡単なグラフィカル Runbook を作成、テスト、およ�
 keywords: Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7804c67871de546d217d85a4215c817f9c08f6b8
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055746"
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
 
@@ -117,6 +119,10 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. **Write Hello World to output** はもう必要ないので、省略記号ボタン ([...]) をクリックして **[削除]** を選択します。
 1. ライブラリ コントロールで **[資産]**、**[接続]** の順に展開し、**[キャンバスに追加]** を選択して、**AzureRunAsConnection** をキャンバスに追加します。
 1. ライブラリ コントロールの検索ボックスに「**Connect-AzureRmAccount**」と入力します。
+
+   > [!IMPORTANT]
+   > これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
+
 1. **Connect-AzureRmAccount** をキャンバスに追加します。
 1. **Get Run As Connection** にポインターを合わせて、図形の下部に円を表示します。 円をクリックし、矢印を **Connect-AzureRmAccount** にドラッグします。 作成した矢印は "*リンク*" です。 Runbook で、まず **Get Run As Connection** が実行され、次に **Connect-AzureRmAccount** が実行されます。<br> ![アクティビティ間のリンクの作成](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 1. キャンバスで **Connect-AzureRmAccount** を選択し、[構成コントロール] ウィンドウの **[ラベル]** ボックスに「**Login to Azure**」と入力します。
@@ -135,9 +141,6 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. パラメーター セットを選択すると、[アクティビティ パラメーター構成] ページにパラメーターが表示されます。 **SubscriptionID**
 1. [パラメーター値] ページで、**[データ ソース]** に **[変数資産]** を選択し、一覧から **AzureSubscriptionId** を選択して、**[OK]** を 2 回クリックします。
 1. **Login to Azure** にポインターを合わせて、図形の下部に円を表示します。 円をクリックし、矢印を **[Specify Subscription Id]** までドラッグします。
-
-> [!IMPORTANT]
-> これで、**Connect-AzureRmAccount** のエイリアスは **Connect-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Connect-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
 
 この時点の Runbook は次のようになります。 <br>![Runbook 認証の構成](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

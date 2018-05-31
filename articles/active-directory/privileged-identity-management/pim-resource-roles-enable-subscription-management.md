@@ -13,52 +13,55 @@ ms.workload: identity
 ms.date: 03/27/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 4c6ae3da34fe5157314b8ea422591f7ecbd2a667
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e164d8adaf5df63dba31bb6aa8e56f768741479c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200877"
 ---
-# <a name="enable-subscription-management"></a>サブスクリプションの管理を有効化する
+# <a name="enable-subscription-management-in-your-tenant"></a>テナントのサブスクリプション管理を有効にする
 
-ディレクトリのグローバル管理者は、既定のアクセスではテナント内のすべてのサブスクリプションのリソースにアクセスできないことがあります。 この記事では、テナント内のすべてのサブスクリプションにアクセスできるようにするための手順と、アクセス権の取得後に組織で要求されているセキュリティ コントロールへの準拠を維持するために推奨されるアプローチについて説明します。
+ディレクトリのグローバル管理者は、既定のアクセスではテナント内の一部サブスクリプション リソースを利用できないことがあります。 この記事では､テナントのすべてのサブスクリプションにアクセスできるようにする手順の概略を説明します｡ また､アクセス権を受け取った後で引き続き組織が求めるセキュリティ制御に遵守するための推奨方法も紹介します｡
 
 ## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>自分のディレクトリ内のサブスクリプションの管理を有効にできるのは誰か
 
-グローバル管理者ロールに割り当てられた各ユーザーは、次の手順に従って、サブスクリプションの管理を有効にする必要があります。 自分自身に対してサブスクリプションの管理を有効にした後、リソースへのアクセスが必要な場合がある他のグローバル管理者を追加できます。 グローバル管理者ロールのすべてのメンバーに対してアクセスを有効にするディレクトリ設定はありません。
+サブスクリプション管理を有効にする場合､グローバル管理者ロールに割り当てられたユーザーは､必ず下記手順に従う必要があります｡ 自分自身に対してサブスクリプションの管理を有効にした後、リソースへのアクセスを必要とする他のグローバル管理者を追加できます。 グローバル管理者ロールのすべてのメンバーに対してアクセスを有効にするディレクトリ設定はありません。
 
-## <a name="log-on-to-the-azure-portal"></a>Azure Portal にログオンする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-グローバル管理者ロールの有資格メンバーまたはアクティブ メンバーであるアカウントで Azure Portal にログインすることから始めます。 アカウントが有資格のグローバル管理者の場合は、次の手順に進む前にロールをアクティブ化しておく必要があります。
+グローバル管理者ロールの有資格メンバーまたはアクティブ メンバーであるアカウントを使用して Azure Portal にサインインします｡ アカウントが有資格のグローバル管理者の場合は、次の手順に進む前にロールをアクティブ化しておく必要があります。
 
-## <a name="access-the-azure-ad-admin-center"></a>Azure AD 管理センターにアクセスする
+## <a name="access-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センターにアクセスする
 
-Azure Portal にグローバル管理者としてにログオンしているため、Azure サブスクリプションへのアクセスを提供する設定を編集できます。 Azure AD 管理センターに移動し、左側のナビゲーションで [プロパティ] タブを見つけて選択します。
+Azure Portal にグローバル管理者としてサインインすると、Azure サブスクリプションへのアクセス権を提供する設定を編集することができます。 Azure Active Directory (Azure AD) 管理センターに移動して､**Properties** を選択します｡
 
-![](media/azure-pim-resource-rbac/aad_properties.png)
+![Azure AD 管理センターのスクリーンショット - プロパティを強調表示した状態](media/azure-pim-resource-rbac/aad_properties.png)
 
-プロパティの一覧で、[Global admin can manage Azure subscriptions]\(グローバル管理者は Azure サブスクリプションを管理できる\) オプションを [はい] に切り替えます。
+プロパティの一覧の **Global admin can manage Azure subscriptions** で **Yes** を選択します｡
 
-![](media/azure-pim-resource-rbac/aad_properties_save.png)
+![[プロパティ] ページのスクリーンショット - Yes に設定した状態](media/azure-pim-resource-rbac/aad_properties_save.png)
 
-## <a name="navigate-to-azure-ad-pim"></a>Azure AD PIM に移動する
+これで､テナント内のすべてのサブスクリプション リソースに対するユーザー アクセス管理者ロールに自動的にアカウントが追加されます。
 
-このオプションを有効にすると、テナント内のすべてのサブスクリプション リソースに対する [ユーザー アクセス管理者] ロールに自分のアカウントが自動的に追加されます。 ここから、Azure AD PIM に移動し、左側のナビゲーションの [管理] セクションで [Azure リソース] を選択します。
+## <a name="browse-to-azure-ad-pim"></a>Azure AD PIM に移動する
 
-![](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+ ここから､Azure AD Privileged Identity Management (PIM) に移動します｡ **Manage** で **Azure resources** を選択します｡
+
+![PIM のスクリーンショット - Azure リソースを強調表示した状態](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
 ## <a name="manage-and-discover-resources"></a>リソースの管理と探索を行う
 
-組織が既に Azure AD PIM を使用して Azure Active directory で管理者を保護している場合は、ブレードが読み込まれたときにサブスクリプションの一覧が表示されます。
+組織が既に Azure AD PIM を使用して Azure AD で管理者を保護している場合は、ブレードが読み込まれたときにサブスクリプションの一覧が表示されます。
 
-![](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+![PIM のスクリーンショット - サブスクリプション一覧をブレード表示した状態](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
 > [!NOTE]
 > リソースが表示されない場合は、以下を確認してください。
 >- グローバル管理者ロールの有効期限が切れていないこと 
 >- 組織が Azure サブスクリプションを持っていること
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
+![PIM のスクリーンショット - リソース一覧が空の状態](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
 
 ## <a name="configure-assignments"></a>割り当てを構成する
 
@@ -69,9 +72,9 @@ Azure Portal にグローバル管理者としてにログオンしているた�
 
 ## <a name="clean-up-standing-access"></a>永続的なアクセスをクリーンアップする
 
-組織内の重要なサブスクリプションに対する有資格割り当てを行ったため、ディレクトリのプロパティに含まれるオプションを無効にすることで、永続的なアクセスをクリーンアップできます。
+組織内の重要なサブスクリプションに対する有資格割り当てを受けると、ディレクトリのプロパティに含まれるオプションを無効にすることで、永続的なアクセスをクリーンアップできます。
 
-![](media/azure-pim-resource-rbac/aad_properties_no.png)
+![[プロパティ] ページのスクリーンショット - No に設定した状態](media/azure-pim-resource-rbac/aad_properties_no.png)
 
 ## <a name="next-steps"></a>次の手順
 

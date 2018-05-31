@@ -3,7 +3,7 @@ title: Azure のセキュリティとコンプライアンスのブループリ�
 description: Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 2f1e00a8-0dd6-477f-9453-75424d06a1df
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895488"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境
 
@@ -43,7 +44,7 @@ ms.lasthandoff: 04/16/2018
 - **デプロイ テンプレート**:  このデプロイでは、[Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-overview#template-deployment) を使用してアーキテクチャのコンポーネントを Microsoft Azure に自動的にデプロイします (これは、セットアップ時に構成パラメーターを指定することによって行います)。
 - **自動化されたデプロイ スクリプト**:  これらのスクリプトを使用して、エンド ツー エンド ソリューションをデプロイします。 次のスクリプトが含まれます。
     - モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。
-    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[ブループリントのコード リポジトリ][code-repo]でレビュー用に入手できます。 
+    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[Blueprint のコード リポジトリ][code-repo]でレビュー用に入手できます。 
 
 ## <a name="architectural-diagram"></a>アーキテクチャ図
 
@@ -125,7 +126,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 >- ネットワーク セキュリティ グループ
 >- Azure SQL DB
 >- Azure Load Balancer
->- アプリケーション インサイト
+>- Application Insights
 >- Azure Security Center
 >- Azure Web アプリ
 >- Azure Automation
@@ -158,7 +159,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 - [カスタム正常性プローブ](/azure/application-gateway/application-gateway-create-gateway-portal)
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) と [Azure Advisor](/azure/advisor/advisor-security-recommendations) による、その他の保護と通知の提供。 Azure Security Center は評価システムも提供します。
 
-#### <a name="virtual-network"></a>Virtual Network
+#### <a name="virtual-network"></a>Virtual network
 
 この基本アーキテクチャは、10.0.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
@@ -243,7 +244,8 @@ ASE は、単一の顧客のアプリケーションだけを実行するため�
 - セキュリティ保護された Virtual Network 内でのホストと、ネットワーク セキュリティ規則
 - HTTPS 通信用の自己署名 ILB 証明書で構成された ASE
 - [内部負荷分散モード](/azure/app-service-web/app-service-environment-with-internal-load-balancer) (モード 3)
-- [TLS 1.0](/azure/app-service-web/app-service-app-service-environment-custom-settings) の無効化 - PCI DSS の観点から非推奨になった TLS プロトコル
+- 
+  [TLS 1.0](/azure/app-service-web/app-service-app-service-environment-custom-settings) の無効化 - PCI DSS の観点から非推奨になった TLS プロトコル
 - [TLS 暗号](/azure/app-service-web/app-service-app-service-environment-custom-settings)の変更
 - [受信トラフィック N/W ポート](/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)のコントロール 
 - [WAF – データの制限](/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -272,7 +274,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 ### <a name="operations-management"></a>運用管理
 
-#### <a name="application-insights"></a>アプリケーション インサイト
+#### <a name="application-insights"></a>Application Insights
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) を使用すると、アプリケーションのパフォーマンス管理と瞬時の分析によって、行動につながる知見を得ることができます。
 
@@ -299,7 +301,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このソリューションをデプロイするためのコンポーネントは、[PCI ブループリントのコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
+このソリューションをデプロイするためのコンポーネントは、[PCI Blueprint のコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
 
 スクリプトにより、指定した Azure AD テナントにドメイン ユーザーが追加されます。 テストとして使用する新しい Azure AD テナントを作成することをお勧めします。
 
@@ -384,11 +386,3 @@ Contoso Webstore [ブループリントの脅威モデル](https://aka.ms/pciblu
 - このページに記載されているすべての顧客名、トランザクション レコード、およびすべての関連データは架空のものであり、この基本アーキテクチャ用に作成され、説明のためだけに使用されています。 実在するものとは一切関係ありません。  
 - このソリューションは Microsoft と Avyan Consulting の共同によって開発され、[MIT ライセンス](https://opensource.org/licenses/MIT)の下で提供されています。
 - このソリューションは、Microsoft の PCI-DSS 監査人である Coalfire によってレビューされました。 [PCI へのコンプライアンスのレビュー](https://aka.ms/pciblueprintcrm32)には、このソリューションおよび対応する必要があるコンポーネントの、独立したサードパーティによるレビューが記載されています。 
-
-### <a name="document-authors"></a>ドキュメント作成者
-
-- *Frank Simorjay (Microsoft)*  
-- *Gururaj Pandurangi (Avyan Consulting)*
-
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "コード リポジトリ"

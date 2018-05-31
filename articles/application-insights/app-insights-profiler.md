@@ -1,8 +1,8 @@
 ---
-title: "Application Insights Profiler を使用して Azure でライブ Web アプリをプロファイルする | Microsoft Docs"
-description: "フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。"
+title: Application Insights Profiler を使用して Azure でライブ Web アプリをプロファイルする | Microsoft Docs
+description: フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c65ef9141898369b8fcadd4c52972b767aca7cfe
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936727"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Application Insights を使用してライブ Azure Web アプリをプロファイルする
 
-*Azure Application Insights のこの機能は Azure App Service の Web Apps 機能のために一般公開されており、Azure コンピューティング リソースに対してはプレビューの段階です。*
+*Azure Application Insights のこの機能は Azure App Service の Web Apps 機能のために一般公開されており、Azure コンピューティング リソースに対してはプレビューの段階です。[プロファイラーのオンプレミスの使用に関してはこちら](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers)をご覧ください。*
 
 この記事では、[Application Insights](app-insights-overview.md) を使用したときにライブ Web アプリケーションの各メソッドで費やされる時間について説明します。 Application Insights Profiler ツールは、アプリによって処理されたライブ要求の詳細なプロファイルを表示します。 Profiler は、ほとんどの時間を使用する*ホット パス*を強調します。 さまざまな応答時間を持つ要求がサンプリングごとにプロファイルされます。 さまざまな手法を使用することによって、アプリケーションに関連付けられたオーバーヘッドを最小限に抑えることができます。
 
@@ -63,7 +64,7 @@ Web Apps プランによってホストされる Web アプリとは異なり、
 
 ## <a name="view-profiler-data"></a>プロファイラー データを表示する
 
-アプリケーションがトラフィックを受信していることを確認します。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 新しく Profiler を有効にした場合は、短いロード テストを約 15 分間実行できます。これにより、プロファイラー トレースが生成されます。 既にしばらくの間 Profiler を有効にしている場合は、Profiler が 1 時間に 2 回ランダムに、また毎回 2 分間実行されることに注意してください。 確実にサンプル プロファイラー トレースを取得できるように、最初に 1 時間のロード テストを実行することをお勧めします。
+アプリケーションがトラフィックを受信していることを確認します。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 新しく Profiler を有効にした場合は、短いロード テストを約 15 分間実行できます。これにより、プロファイラー トレースが生成されます。 既にしばらくの間 Profiler を有効にしている場合は、Profiler が 1 時間に 2 回ランダムに、また毎回 2 分間実行されることに注意してください。 確実にサンプル プロファイラー トレースを取得できるように、最初に 1 時間のロード テストを実行することをお勧めします。
 
 アプリケーションがトラフィックをいくつか受信したら、**[パフォーマンス]** ウィンドウに移動し、**[Take Actions] \(アクションの実行)** を選択してプロファイラー トレースを表示してから、**[Profiler Traces] \(プロファイラー トレース)** ボタンを選択します。
 
@@ -284,7 +285,7 @@ Web ジョブの .zip ファイルが作成されたので、これを使用し�
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[種類]** ボックスで、**[トリガー]** を選択します。  
     b.  **[トリガー]** ボックスで、**[手動]** を選択します。
 
-5.  **[OK]**を選択します。
+5.  **[OK]** を選択します。
 
 ![Profiler の起動コマンド](./media/app-insights-profiler/create-webjob.png)
 
@@ -311,7 +312,7 @@ Web ジョブの .zip ファイルが作成されたので、これを使用し�
 
 * Web Apps の Web ジョブ機能は独特です。 Web ジョブを実行するときは、そのプロセスの環境変数とアプリ設定が Web サイトのものと同じであることが保証されます。 つまり、コマンド ラインから Profiler にインストルメンテーション キーを渡す必要はありません。 Profiler は、環境からインストルメンテーション キーを選択します。 ただし、Web Apps の外部にある開発ボックスまたはマシンで Profiler を実行する場合は、インストルメンテーション キーを指定する必要があります。 これは、引数 `--ikey <instrumentation-key>` を渡すことによって実行できます。 この値は、アプリケーションが使用しているインストルメンテーション キーに一致している必要があります。 Profiler からのログ出力により、Profiler がどの ikey で起動されたかや、プロファイリング中にそのインストルメンテーション キーからのアクティビティが検出されたかどうかが示されます。
 
-* 手動でトリガーされる Web ジョブは、Web フックでトリガーできます。 この URL は、ダッシュボードで Web ジョブを右クリックし、プロパティを表示することによって取得できます。 または、ツールバーで、テーブル内の Web ジョブを選択した後に **[プロパティ]** を選択できます。 このアプローチにより、CI/CD パイプライン (VSTS など) や Microsoft Flow (https://flow.microsoft.com/en-us/) のようなものから Profiler をトリガーするなど、無限の可能性が開かれます。 最終的に、ユーザーの選択肢は *run.cmd* ファイル (*run.ps1* ファイルでもかまいません) をどれだけ複雑にするかによって異なりますが、そこには柔軟性があります。
+* 手動でトリガーされる Web ジョブは、Web フックでトリガーできます。 この URL は、ダッシュボードで Web ジョブを右クリックし、プロパティを表示することによって取得できます。 または、ツールバーで、テーブル内の Web ジョブを選択した後に **[プロパティ]** を選択できます。 このアプローチにより、CI/CD パイプライン (VSTS など) や Microsoft Flow (https://flow.microsoft.com/en-us/)) のようなものから Profiler をトリガーするなど、無限の可能性が開かれます。 最終的に、ユーザーの選択肢は *run.cmd* ファイル (*run.ps1* ファイルでもかまいません) をどれだけ複雑にするかによって異なりますが、そこには柔軟性があります。
 
 ## <a name="next-steps"></a>次の手順
 

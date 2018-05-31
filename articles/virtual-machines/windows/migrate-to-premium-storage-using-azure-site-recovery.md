@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 171b0f938e44218d11cfb001e3f58ebd0feb35fd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8a7becc1dc5a2556ace249b7a743836ebf4cc048
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779453"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -164,7 +165,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
    4. 手順 3 では、保護されている VM を IP アドレスを指定して追加します (検出するには、内部 IP アドレスが必要な場合があります)。
    5. 手順 4 で、以前にプロセス サーバー上で設定したアカウントを選択して、プロパティを構成します。
    6. 手順 5 で、「手順 5: レプリケーション設定をセットアップする」で以前に作成したレプリケーション ポリシーを選択します。
-   7. **[OK]**を選択します。
+   7. **[OK]** を選択します。
 
    > [!NOTE]
    > Azure VM の割り当てを解除して再起動した場合、同じ IP アドレスが割り当てられる保証はありません。 構成サーバー、プロセス サーバー、または保護対象の Azure VM の IP アドレスが変更された場合、このシナリオのレプリケーションが正常に機能するとは限りません。
@@ -202,7 +203,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
    * クラシック デプロイ モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../linux/classic/configure-availability-classic.md)」を参照してください。
    * Resource Manager デプロイ モデルで作成した VM の場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトを実行する前に、制限を確認し、ダウンタイムを計画します。
 
-2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、[VHD を削除するときに生じるエラーのトラブルシューティング](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。
+2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、「[Troubleshoot storage resource deletion errors](storage-resource-deletion-errors.md)」(ストレージのリソースを削除するときに生じるエラーのトラブルシューティング) を参照してください。
 
 3. **Azure Site Recovery インフラストラクチャをクリーンアップします**。 Site Recovery が不要になったら、インフラストラクチャをクリーンアップすることができます。 レプリケートされた項目、構成サーバー、回復ポリシーを削除してから、Azure Site Recovery コンテナーを削除します。
 

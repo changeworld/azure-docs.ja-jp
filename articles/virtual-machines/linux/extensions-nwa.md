@@ -3,7 +3,7 @@ title: Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能 | Micro
 description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Network Watcher Agent をデプロイします。
 services: virtual-machines-linux
 documentationcenter: ''
-author: dennisg
+author: gurudennis
 manager: amku
 editor: ''
 tags: azure-resource-manager
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 83e2c726228e43612caf94bd8564abc9df3882f9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5a33f183470ec3879344f0cfe335bab38f9ff30f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778667"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -39,11 +40,12 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、12.04 LTS |
 | Debian | 7、8 |
-| RedHat | 6.x、7.x |
-| Oracle Linux | 7x |
-| SUSE | 11、12 |
-| openSUSE | 7.0 |
-| CentOS | 7.0 |
+| RedHat | 6、7 |
+| Oracle Linux | 6.8 以降、7 |
+| SUSE Linux Enterprise Server | 11、12 |
+| OpenSUSE Leap | 42.3 以降 |
+| CentOS | 6.5 以降、7 |
+| CoreOS | 899.17.0 以降 |
 
 現時点では、CoreOS はサポートされていません。
 
@@ -112,4 +114,4 @@ azure vm extension get myResourceGroup1 myVM1
 
 ### <a name="support"></a>サポート
 
-この記事についてさらにヘルプが必要な場合は、Network Watcher のドキュメントをご覧ください。また、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/en-us/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/en-us/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、Network Watcher のドキュメントをご覧ください。また、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることもできます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

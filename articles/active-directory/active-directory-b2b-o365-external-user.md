@@ -1,26 +1,21 @@
 ---
-title: "Office 365 の外部共有と Azure Active Directory B2B コラボレーション | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションの要求マッピング リファレンス"
+title: Office 365 の外部共有と Azure Active Directory B2B コラボレーション | Microsoft Docs
+description: O365 および Azure Active Directory B2B コラボレーションを使用する外部パートナーとのリソースの共有について説明します。
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/24/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8486c7518e2cabb1d17a8f38442b7b5a77fddb01
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4421e6ca2bdce721c360f2701b3693024a694eb6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33931964"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 の外部共有と Azure Active Directory B2B コラボレーション
 
@@ -34,21 +29,13 @@ OneDrive/SharePoint Online には、独自の招待マネージャーがあり�
 
 - Azure AD B2B コラボレーションで招待されたユーザーは、OneDrive/SharePoint Online 共有の各ダイアログ ボックスで選択できます。 OneDrive/SharePoint Online で招待されたユーザーも、招待に応じた後は、Azure AD に表示されます。
 
-- OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共有を管理するには、OneDrive/SharePoint Online の外部共有の設定を **[Only allow sharing with external users already in the directory]\(既にディレクトリに存在する外部ユーザーのみに共有を許可する\)**に設定します。 ユーザーは外部の共有サイトに移動し、管理者が追加した外部コラボレーターを選択できます。 管理者は、B2B コラボレーションの招待 API を通じて、外部コラボレーターを追加できます。
+- OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共有を管理するには、OneDrive/SharePoint Online の外部共有の設定を **[Only allow sharing with external users already in the directory]\(既にディレクトリに存在する外部ユーザーのみに共有を許可する\)** に設定します。 ユーザーは外部の共有サイトに移動し、管理者が追加した外部コラボレーターを選択できます。 管理者は、B2B コラボレーションの招待 API を通じて、外部コラボレーターを追加できます。
 
 ![OneDrive/SharePoint Online の外部共有の設定](media/active-directory-b2b-o365-external-user/odsp-sharing-setting.png)
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
-
 * [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B コラボレーション ユーザーのプロパティ](active-directory-b2b-user-properties.md)
 * [B2B コラボレーション ユーザーのロールへの追加](active-directory-b2b-add-guest-to-role.md)
 * [B2B コラボレーションの招待の委任](active-directory-b2b-delegate-invitations.md)
 * [動的グループと B2B コラボレーション](active-directory-b2b-dynamic-groups.md)
-* [B2B コラボレーション コードと PowerShell サンプル](active-directory-b2b-code-samples.md)
-* [B2B コラボレーション用の SaaS アプリの構成](active-directory-b2b-configure-saas-apps.md)
-* [B2B コラボレーション ユーザーのトークン](active-directory-b2b-user-token.md)
-* [B2B コラボレーション ユーザーの要求マッピング](active-directory-b2b-claims-mapping.md)
-* [B2B コラボレーションの現在の制限](active-directory-b2b-current-limitations.md)
