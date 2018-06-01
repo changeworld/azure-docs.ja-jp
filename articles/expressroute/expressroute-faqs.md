@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 05/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f68a4d699d1ad6592fe5481cd69795b06e7d8fca
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160871"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -156,7 +157,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>同じ都市圏に複数の ExpressRoute 回線を配置することはできますか。 同じ仮想ネットワークにリンクすることはできますか。
 
-はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、さまざまな場所で回路が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回路が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。
+はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回路が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。 Azure portal または PowerShell/CLI API における各場所の名前は、1 つのピアリング場所を表します。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 

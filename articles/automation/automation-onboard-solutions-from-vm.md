@@ -5,16 +5,16 @@ services: automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/25/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053426"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193096"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure Virtual Machine から Update Management、Change Tracking、および Inventory ソリューションの使用準備を行う
 

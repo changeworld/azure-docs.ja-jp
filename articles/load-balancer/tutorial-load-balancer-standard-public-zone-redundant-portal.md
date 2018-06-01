@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304462"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル: Azure Portal と Standard Load Balancer を使用し、可用性ゾーン間で VM の負荷を分散する
 
@@ -37,6 +38,8 @@ ms.lasthandoff: 04/28/2018
 > * 動作中のロード バランサーを表示する
 
 可用性ゾーンと Standard Load Balancer の使用方法の詳細については、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。
+
+好みに応じて、[Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
@@ -141,18 +144,21 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で *[myResourceGroupLBAZ]* リソース グループにある **[myVM1]** をクリックします。
 2. **[概要]** ページで **[接続]** をクリックして、RDP で VM に接続します。
 3. ユーザー名 *azureuser* で VM にログインします。
-4. サーバーのデスクトップで、**[Windows 管理ツール]**>**[サーバー マネージャー]** の順に移動します。
-5. [サーバー マネージャー] クイック スタート ページの **[役割と機能の追加]** をクリックします。
-
-   ![バックエンド アドレス プールへの追加 ](./media/load-balancer-standard-public-availability-zones-portal/servermanager.png)    
-
-1. **役割と機能の追加ウィザード**で、次の値を指定します。
-    - **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** をクリックします。
-    - **[対象サーバーの選択]** ページで **[myVM1]** をクリックします。
-    - **[サーバーの役割を選択してください]** ページで、**[Web Server (IIS)]** をクリックします。
-    - 指示に従って、ウィザードの残りの部分を完了します。
-2. 仮想マシン *myVM1* との RDP セッションを閉じます。
-3. 手順 1 ～ 7 を繰り返して、VM *myVM2* および *myVM3* に IIS をインストールします。
+4. サーバーのデスクトップで、**[Windows 管理ツール]**>**[Windows PowerShell]** の順に移動します。
+5. PowerShell ウィンドウで、以下のコマンドを実行して IIS サーバーをインストールし、既定の iisstart.htm ファイルを削除して、VM の名前を表示する新しい iisstart.htm ファイルを追加します。
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
+   ```
+6. *myVM1* で RDP セッションを閉じます。
+7. 手順 1. から 6. を繰り返して、IIS と更新済み iisstart.htm ファイルを *myVM2* と *myVM3* にインストールします。
 
 ## <a name="create-load-balancer-resources"></a>ロード バランサーのリソースを作成する
 
@@ -215,7 +221,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 IIS Web サーバーの既定のページがブラウザーに表示されます。
 
-      ![IIS Web サーバー](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+      ![IIS Web サーバー](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 ロード バランサーがゾーン全体に分散されている VM 間でトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
 

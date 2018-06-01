@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0946d5234292cfb69a7e9b5bc7846e6acf94dff4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072625"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトに移行したマシンの再保護
 
@@ -39,6 +40,8 @@ ms.lasthandoff: 04/16/2018
 - フェールオーバーとフェールバックのために以下のポートを開いておく必要があります。
 
     ![フェールオーバーおよびフェールバック用のポート](./media/vmware-azure-reprotect/failover-failback.png)
+
+- ポートと URL のホワイト リストに関するすべての前提条件については、[こちら](vmware-azure-deploy-configuration-server.md#prerequisites)をご覧ください
 
 ## <a name="deploy-a-process-server-in-azure"></a>Azure でプロセス サーバーをデプロイする
 
@@ -77,7 +80,7 @@ ms.lasthandoff: 04/16/2018
     - Windows の既定のリテンション ボリュームは R ボリュームです。
     - Linux の既定のリテンション ボリュームは /mnt/retention/ です。
 - 既存のプロセス サーバー/構成サーバー マシン、スケール、またはプロセス サーバー/マスター ターゲット サーバー マシンを使用している場合は、新しいドライブを追加する必要があります。 新しいドライブは、前の要件を満たしている必要があります。 リテンション ドライブが存在しない場合、そのドライブは、ポータル上の選択ドロップダウン リストに表示されません。 オンプレミスのマスター ターゲットにドライブを追加した後、そのドライブがポータル上の選択リストに表示されるまでに最大 15 分かかります。 15 分経ってもドライブが表示されない場合は、構成サーバーを更新することもできます。
-- VMware ツールをマスター ターゲット サーバーにインストールします。 VMware ツールがない場合、マスター ターゲットの ESXi ホスト上のデータストアを検出できません。
+- マスター ターゲット サーバーに VMware ツールまたは open-vm-tools をインストールします。 ツールがない場合、マスター ターゲットの ESXi ホスト上のデータストアを検出できません。
 - VMware でマスター ターゲット仮想マシンの構成パラメーターに `disk.EnableUUID=true` を設定します。 この行が存在しない場合は追加してください。 この設定は、一貫性のある UUID を仮想マシン ディスク (VMDK) に提供することでマウントが適切に実行されるようにするために必要です。
 - マスター ターゲットが作成される ESX ホストには、少なくとも 1 つの VMFS データストアが接続されている必要があります。 1 つも存在しない場合、再保護ページ上の **[Datastore] \(データストア)** 入力は空になり、処理を続行できません。
 - マスター ターゲット サーバーのディスクにはスナップショットが存在してはいけません。 スナップショットが存在する場合、再保護およびフェールバックは失敗します。

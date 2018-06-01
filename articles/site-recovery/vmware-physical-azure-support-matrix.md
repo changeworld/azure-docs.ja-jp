@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a7e0455d92635b7767227685b622bdae303f9621
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160643"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
@@ -22,14 +23,14 @@ ms.lasthandoff: 04/16/2018
 
 **シナリオ** | **詳細**
 --- | ---
-VMware VM | オンプレミス VMware VM の Azure へのレプリケーション。 このシナリオは、Azure Portal または PowerShell を使用して展開できます。
+VMware VM | オンプレミス VMware VM の Azure へのレプリケーション。 このシナリオは、Azure portal または [PowerShell](vmware-azure-disaster-recovery-powershell.md) を使用してデプロイできます。
 物理サーバー | オンプレミスの Windows または Linux の物理サーバーから Azure へのレプリケーション。 このシナリオは、Azure Portal で展開できます。
 
 ## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
 **サーバー** | **要件** | **詳細**
 --- | --- | ---
-VMware | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。<br/><br/> vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバー コンポーネントは構成サーバーで実行されるため、専用のプロセス サーバーを設定していなければ、これがその中に構成サーバーを設定するネットワークになります。 
+VMware | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。<br/><br/> vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバー コンポーネントは構成サーバーで実行されるため、専用のプロセス サーバーを設定していなければ、これがその中に構成サーバーを設定するネットワークになります。
 物理 | 該当なし
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery 構成サーバー
@@ -38,19 +39,19 @@ VMware | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vC
 
 **コンポーネント** | **要件**
 --- |---
-CPU コア数 | 8 
+CPU コア数 | 8
 RAM | 12 GB
 ディスクの数 | ディスク 3 台<br/><br/> ディスクには、OS ディスク、プロセス サーバーのキャッシュ ディスク、フェールバック用リテンション ドライブが含まれます。
 ディスクの空き領域 | プロセス サーバーのキャッシュのために必要な 600 GB の領域。
 ディスクの空き領域 | リテンション ドライブのために必要な 600 GB の領域。
-オペレーティング システム  | Windows Server 2012 R2 または Windows Server 2016 | 
-オペレーティング システムのロケール | 英語 (en-us) 
+オペレーティング システム  | Windows Server 2012 R2 または Windows Server 2016 |
+オペレーティング システムのロケール | 英語 (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") をインストールする必要があります。
 Windows Server の役割 | 以下は有効にしません: <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |
 グループ ポリシー| 以下は有効にしません: <br> - コマンド プロンプトへのアクセス禁止。 <br> - レジストリ編集ツールへのアクセス禁止。 <br> - ファイル添付の信頼ロジック。 <br> - スクリプト実行の有効化。 <br> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | 以下を実行します。<br/><br/> - 既定の Web サイトが事前に存在しないようにする <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリがないようにする<br>
-NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) 
-IP アドレスの種類 | 静的 
+NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合)
+IP アドレスの種類 | 静的
 ポート | コントロール チャネルのオーケストレーションに使用される 443<br>データ転送に使用される 9443
 
 ## <a name="replicated-machines"></a>レプリケートされるマシン
@@ -75,14 +76,15 @@ Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 か�
 
 **サポートされているリリース** | **Azure Site Recovery モビリティ サービスのバージョン** | **カーネル バージョン** |
 --- | --- | --- |
-14.04 LTS | 9.11 | 3.13.0-24-generic ～ 3.13.0-128-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-91-generic、 |
 14.04 LTS | 9.12 | 3.13.0-24-generic ～ 3.13.0-132-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-generic ～ 3.13.0-137-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-104-generic |
 14.04 LTS | 9.14 | 3.13.0-24-generic ～ 3.13.0-142-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-116-generic |
-16.04 LTS | 9.11 | 4.4.0-21-generic ～ 4.4.0-91-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-32-generic |
+14.04 LTS | 9.15 | 3.13.0-24-generic ～ 3.13.0-144-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-119-generic、 |
 16.04 LTS | 9.12 | 4.4.0-21-generic ～ 4.4.0-96-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-generic ～ 4.4.0-104-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic |
 16.04 LTS | 9.14 | 4.4.0-21-generic ～ 4.4.0-116-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic ～ 4.13.0-36-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure ～ 4.13.0-1011-azure |
+16.04 LTS | 9.15 | 4.4.0-21-generic ～ 4.4.0-119-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic ～ 4.13.0-38-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure ～ 4.13.0-1012-azure |
+
 
 
 ### <a name="debian-kernel-versions"></a>Debian カーネルのバージョン
@@ -90,8 +92,8 @@ Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 か�
 
 **サポートされているリリース** | **Azure Site Recovery モビリティ サービスのバージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.14、9.15 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14、9.15 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux ファイル システム/ゲストのストレージ
@@ -100,7 +102,6 @@ Debian 8 | 9.14 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.
 --- | ---
 ファイル システム | ext3、ext4、XFS。
 ボリューム マネージャー | LVM2。
-マルチパス ソフトウェア | デバイス マッパー。
 準仮想化ストレージ デバイス | 準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
 マルチ キュー ブロック IO デバイス | サポートされていません。
 HP CCISS ストレージ コントローラーを使用する物理サーバー | サポートされていません。
@@ -138,14 +139,17 @@ Azure の Traffic Manager | [はい]
 予約済み IP アドレス | [はい]
 IPv4 | [はい]
 送信元 IP アドレスを保持する | [はい]
-Azure Virtual Network サービス エンドポイント<br/><br/> (Azure Storage ファイアウォールと仮想ネットワーク) | いいえ 
+Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | [はい]
+高速ネットワーク | いいえ 
 
 ## <a name="storage"></a>Storage
 **コンポーネント** | **サポートされています**
 --- | ---
 ホスト NFS | VMware = はい<br/><br/> 物理サーバー = いいえ
-ホスト SAN (ISCSI) | [はい]
+ホスト SAN (iSCSI/FC) | [はい]
+ホスト vSAN | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ホスト マルチパス (MPIO) | はい - テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
+ホストの仮想ボリューム (VVols) | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ゲスト/サーバー VMDK | [はい]
 ゲスト/サーバー EFI/UEFI| ポータル (Azure for Windows Server 2012 およびそれ以降の VMware 仮想マシンへの移行のみ) </br></br> この表の下部の注意事項をご覧ください
 ゲスト/サーバー共有クラスター ディスク | いいえ 
@@ -160,7 +164,7 @@ Azure Virtual Network サービス エンドポイント<br/><br/> (Azure Storag
 ゲスト/サーバー - 記憶域スペース | いいえ 
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ 
 ゲスト/サーバー - ディスクの除外 | [はい]
-ゲスト/サーバー マルチパス (MPIO) | 該当なし
+ゲスト/サーバー マルチパス (MPIO) | いいえ 
 
 > [!NOTE]
 > Windows Server 2012 以降を実行する VMware 仮想マシンの UEFI ブートは、Azure に移行できます。 次の制限事項が適用されます。
@@ -183,7 +187,7 @@ geo 冗長ストレージ | [はい]
 保存時の暗号化 (Storage サービスの暗号化)| [はい]
 Premium Storage | [はい]
 インポート/エクスポート サービス | いいえ 
-Virtual Network サービスのエンドポイント<br/><br/> ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成されたストレージ ファイアウォールと仮想ネットワーク | いいえ 
+ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ 
 汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ 
 
 ## <a name="azure-compute"></a>Azure コンピューティング
@@ -200,16 +204,16 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
-ゲスト オペレーティング システム | [サポートされているオペレーティング システム](#replicated machines)を確認してください | サポートされていない場合、確認は失敗します。 
-ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。 
-オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。 
+ゲスト オペレーティング システム | [サポートされているオペレーティング システム](#replicated machines)を確認してください | サポートされていない場合、確認は失敗します。
+ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。
+オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、確認は失敗します。  
 データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。  
-データ ディスク サイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。 
-ネットワーク アダプター | 複数のアダプターがサポートされます。 | 
-共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。 
-FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。 
-BitLocker | サポートされていません。 | マシンのレプリケーションを有効にする前に、BitLocker を無効にする必要があります。 | 
+データ ディスク サイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。
+ネットワーク アダプター | 複数のアダプターがサポートされます。 |
+共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。
+FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。
+BitLocker | サポートされていません。 | マシンのレプリケーションを有効にする前に、BitLocker を無効にする必要があります。 |
 VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。 |  Site Recovery でマシンのプロパティの値を更新します。
 
 
