@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197995"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
@@ -151,6 +152,21 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
 このストアド プロシージャは、複数のドキュメントを複数の要求を使って個別に作成する代わりに、ドキュメント本文の配列を入力として受け取り、すべて同じストアド プロシージャの実行で作成するように変更できます。 このストアド プロシージャを使用して、Cosmos DB の効率的な一括インポーターを実装できます (このチュートリアルの後半で説明します)。   
 
 上の例ではストアド プロシージャの使用法について説明しました。 トリガーとユーザー定義関数 (UDF) については、このチュートリアルの後半で説明します。
+
+### <a name="known-issues"></a>既知の問題
+
+Azure Portal を使用してストアド プロシージャを定義するときには、入力パラメーターは常に文字列としてストアド プロシージャに送信されます。 入力として文字列の配列を渡す場合でも、配列は文字列に変換されてストアド プロシージャに送信されます。 この問題を解決するため、ストアド プロシージャ内に関数を定義し、文字列を配列として解析できます。 次のコードで、文字列を配列として解析する例を示します。 
+
+``` 
+function sample(arr) {
+    if (typeof arr === "string") arr = JSON.parse(arr);
+    
+    arr.forEach(function(a) {
+        // do something here
+        console.log(a);
+    });
+}
+```
 
 ## <a name="database-program-transactions"></a>プログラム データベース トランザクション
 一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。 各トランザクションは、 **ACID の保証**を提供します。 ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の 4 つの特性のよく知られた頭字語です。  

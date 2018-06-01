@@ -15,11 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 87e548dcca655436c00b84b440b72e01ad575338
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 926f256de0974112c1571fe4d1d48b6e7f530362
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211798"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
