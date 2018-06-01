@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/2/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: cec2ab862a34a8753601dfeef3081ae9e9ca9fd9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 63e87c59a2e560b5a78708482c2ed89f5f8fb127
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257905"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Azure Blockchain Workbench REST API を使用する 
 
@@ -26,12 +27,14 @@ Azure Blockchain Workbench REST API は、開発者やインフォメーショ�
 * コントラクトで使用可能なアクションを一覧表示する
 * コントラクトのアクションを実行する
 
+このシナリオで使用されているブロックチェーン アプリケーションのサンプルは [GitHub からダウンロード](https://github.com/Azure-Samples/blockchain)できます。 
+
 ## <a name="list-applications"></a>List applications
 
-ブロックチェーン クライアントにユーザーがサインインしたら、最初のタスクは、そのユーザーのすべての Blockchain Workbench ブロックチェーン アプリケーションを取得することです。 このシナリオでは、ユーザーは、次の 2 つのアプリケーションへのアクセスがあります。
+ブロックチェーン クライアントにユーザーがサインインしたら、最初のタスクは、そのユーザーのすべての Blockchain Workbench アプリケーションを取得することです。 このシナリオでは、ユーザーは、次の 2 つのアプリケーションへのアクセスがあります。
 
-1.  Asset Transfer
-2.  Refrigerated Transportation
+1.  [Asset Transfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+2.  [Refrigerated Transportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 [Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) を使用します。
 
@@ -74,7 +77,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>アプリケーションのワークフローを一覧表示する
 
-ユーザーが利用可能なブロックチェーン アプリケーションを選択すると (この場合は Asset Transfer)、ブロックチェーン クライアントは指定されたブロックチェーン アプリケーションのすべてのワークフローを取得します。 その後ユーザーは、ワークフローのすべてのスマート コントラクトのインスタンスが表示される前に、該当するワークフローを選択できます。 各ブロックチェーン アプリケーションには 1 つ以上のワークフローがあり、各ワークフローにはゼロまたはスマート コントラクトのインスタンスがあります。 ブロックチェーン クライアント アプリケーションをビルドする際に、ブロックチェーン アプリケーションのワークフローが 1 つしかない場合は、ユーザーが適切なワークフローを選択することができるユーザー エクスペリエンス フローをスキップすることをお勧めします。 この場合では、Asset Transfer には Asset Transfer と呼ばれる 1 つのみのワークフローがあります。
+ユーザーが利用可能なブロックチェーン アプリケーションを選択すると (この場合は **Asset Transfer**)、ブロックチェーン クライアントは指定されたブロックチェーン アプリケーションのすべてのワークフローを取得します。 その後ユーザーは、ワークフローのすべてのスマート コントラクトのインスタンスが表示される前に、該当するワークフローを選択できます。 各ブロックチェーン アプリケーションには 1 つ以上のワークフローがあり、各ワークフローにはゼロまたはスマート コントラクトのインスタンスがあります。 ブロックチェーン クライアント アプリケーションをビルドする際に、ブロックチェーン アプリケーションのワークフローが 1 つしかない場合は、ユーザーが適切なワークフローを選択することができるユーザー エクスペリエンス フローをスキップすることをお勧めします。 この場合では、**Asset Transfer** には **Asset Transfer** と呼ばれる 1 つのみのワークフローがあります。
 
 [Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) を使用します。
 
@@ -106,7 +109,7 @@ Content-type: application/json
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>ワークフローのスマート コントラクトのインスタンスを一覧表示する
 
-ユーザーが該当するワークフローを選択すると (この場合は Asset Transfer)、ブロックチェーン クライアントは指定されたワークフローのすべてのスマート コントラクトのインスタンスを取得します。 この情報を利用して、ワークフローのすべてのスマート コントラクトのインスタンスを表示して、表示されたスマート コントラクトのインスタンスにユーザーがディープ ダイブすることができます。 この例では、ユーザーがスマート コントラクトのインスタンスの 1 つにアクションを実行させるように対話することを検討します。
+ユーザーが該当するワークフローを選択すると (この場合は **Asset Transfer**)、ブロックチェーン クライアントは指定されたワークフローのすべてのスマート コントラクトのインスタンスを取得します。 この情報を利用して、ワークフローのすべてのスマート コントラクトのインスタンスを表示して、表示されたスマート コントラクトのインスタンスにユーザーがディープ ダイブすることができます。 この例では、ユーザーがスマート コントラクトのインスタンスの 1 つにアクションを実行させるように対話することを検討します。
 
 [Contracts GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractsget) を使用します。
 

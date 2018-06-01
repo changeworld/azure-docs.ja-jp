@@ -1,75 +1,148 @@
 ---
-title: ロジック アプリに Azure SQL Database コネクタを追加する | Microsoft Docs
-description: Azure SQL Database コネクタと REST API パラメーターの概要
-services: ''
+title: SQL Server または Azure SQL Database に接続する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps からオンプレミスの SQL Server クラウド内の Azure SQL Databaseへの接続を作成します
+services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: anneta
+manager: cfowler
 editor: ''
 tags: connectors
 ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
 ms.service: logic-apps
-ms.devlang: na
+ms.workload: logic-apps
+ms.devlang: ''
+ms.tgt_pltfrm: ''
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 4313ead0c31ab2e72238701d58dc2f321f116fa6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 05/15/2018
+ms.author: estfan
+ms.openlocfilehash: 4917f784c07919155e006711026899ce7712fecb
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164800"
 ---
-# <a name="get-started-with-the-azure-sql-database-connector"></a>Azure SQL Database コネクタの概要
-Azure SQL Database コネクタを使用して、テーブル内のデータを管理する組織のワークフローを作成します。 
+# <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>SQL Server または Azure SQL Database に接続する - Azure Logic Apps
 
-SQL Database では次のことを行います。
+この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 その方法で、データを管理するためのタスクとワークフローを自動化するロジック アプリを作成できます。 コネクタは、[オンプレミスの SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と[クラウド内の Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)の両方で動作します。 
 
-* 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
-* データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。 たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Azure SQL Database に行を挿入します (アクション)。 
+SQL データベースや Dynamics CRM Online などの他のシステム内のイベントによってトリガーされたときに実行されるロジック アプリをビルドできます。 ロジック アプリは、データの取得、挿入、または削除も実行でき、さらに SQL クエリまたはストアド プロシージャも実行できます。 たとえば、Dynamics CRM Online の新しいレコードを自動的に確認し、新しいレコード用の項目を SQL データベースに追加した後、電子メール アラートを送信するロジック アプリをビルドできます。
 
-この記事では、ロジック アプリ内で SQL Database コネクタを使用する方法を説明し、アクションの一覧を示します。
+Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。 コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server コネクタ リファレンス</a>に関する記事を参照してください。
 
-Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="connect-to-azure-sql-database"></a>Azure SQL Database に接続する
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、SQL Database に接続するには、まず SQL Database "*接続*" を作成します。 接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。 そのため、SQL Database の場合は、SQL Database の資格情報を入力して接続を作成します。 
+* SQL データベースにアクセスする必要があるロジック アプリ。 SQL トリガーを使用してロジック アプリを起動するには、[空のロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)が必要です。 
 
-#### <a name="create-the-connection"></a>接続の作成
-> [!INCLUDE [Create the connection to SQL Azure](../../includes/connectors-create-api-sqlazure.md)]
-> 
-> 
+* [Azure SQL Database](../sql-database/sql-database-get-started-portal.md) または [SQL Server データベース](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) 
 
-## <a name="use-a-trigger"></a>トリガーを使用する
-このコネクタにはトリガーがありません。 定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事に例が記載されています。
+  テーブルには、ロジック アプリが操作を呼び出したときに結果を返すことができるように、データが含まれている必要があります。 Azure SQL Database を作成する場合は、用意されているサンプル データベースを使用できます。 
 
-## <a name="use-an-action"></a>アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。
+* SQL サーバー名、データベース名、ユーザー名およびパスワード。 ロジックを承認して SQL Server にアクセスできるようにするには、これらの資格情報が必要です。 
 
-1. プラス記号を選択します。 **[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
+  * Azure SQL Database の場合、これらの詳細は、接続文字列か、Azure Portal の SQL Database のプロパティで確認できます。
+
+    "Server=tcp:<*yourServerName*>.database.windows.net,1433;Initial Catalog=<*yourDatabaseName*>;Persist Security Info=False;User ID=<*yourUserName*>;Password=<*yourPassword*>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+
+  * SQL Server の場合、これらの詳細は、接続文字列で確認できます。 
+
+    "Server=<*yourServerAddress*>;Database=<*yourDatabaseName*>;User Id=<*yourUserName*>;Password=<*yourPassword*>;"
+
+* SQL Server などのオンプレミス システムにロジック アプリを接続する前に、[オンプレミス データ ゲートウェイをセットアップする](../logic-apps/logic-apps-gateway-install.md)必要があります。 これにより、ロジック アプリの SQL 接続を作成するときに、ゲートウェイを選択できます。
+
+<a name="add-sql-trigger"></a>
+
+## <a name="add-sql-trigger"></a>SQL トリガーを追加する
+
+Azure Logic Apps では、すべてのロジック アプリは、必ず[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)から起動されます。トリガーは、特定のイベントが起こるか特定の条件が満たされたときに発生します。 トリガーが発生するたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成され、アプリのワークフローが開始されます。
+
+1. Azure Portal または Visual Studio で、Logic Apps デザイナーを開いて、空のロジック アプリを作成します。 この例では、Azure Portal を使用します。
+
+2. 検索ボックスに、フィルターとして「sql server」と入力します。 トリガーの一覧から、使用する SQL トリガーを選択します。 
+
+   この例では、次のトリガーを選択します。**［SQL Server - When an item is created］\(SQL Server - 項目が作成されたとき\)**
+
+   ![［SQL Server - When an item is created］\(SQL Server - 項目が作成されたとき\) トリガーの選択](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
+
+3. 接続の詳細の入力を求められたら、[SQL 接続を今すぐ作成](#create-connection)します。 
+   接続が既に存在する場合は、使用するテーブルを **［テーブル名］** の一覧から選択します。
+
+   ![テーブルの選択](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
+
+4. **［間隔］** プロパティと **［頻度］** を設定します。これらは、ロジック アプリがテーブルをチェックする頻度を指定します。
+
+   この例では、選択したテーブルのみをチェックし、それ以外は何もしません。 
+   反応を見るために、望みのタスクを実行するアクションを追加します。 
    
-    ![](./media/connectors-create-api-sqlazure/add-action.png)
-2. **[アクションの追加]**を選択します。
-3. テキスト ボックスに「sql」と入力して、使用可能なすべてのアクションの一覧を取得します。
+   たとえば、テーブルの新しい項目を表示するには、そのテーブルと同じフィールドを持つファイルを作成し、電子メール アラートを送信するアクションなどを追加します。 
+   このコネクタまたは他のコネクタのその他のアクションについては、[Logic Apps コネクタ](../connectors/apis-list.md)に関する記事を参照してください。
+
+5. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。 
+
+   この手順によって、ロジック アプリが自動的に有効化され、Azure に発行されます。 
+
+<a name="add-sql-action"></a>
+
+## <a name="add-sql-action"></a>SQL アクションを追加する
+
+Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)とは、トリガーまたは別のアクションに続くワークフロー内のステップです。 この例では、ロジック アプリは、[繰り返しトリガー](../connectors/connectors-native-recurrence.md)で起動され、SQL データベースから行を取得するアクションを呼び出します。
+
+1. Azure Portal または Visual Studio で、Logic Apps デザイナーでロジック アプリを開きます。 この例では、Azure Portal を使用します。
+
+2. Logic Apps デザイナーのトリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
+
+   ![[新しいステップ] > [アクションの追加] の選択](./media/connectors-create-api-sqlazure/add-action.png)
    
-    ![](./media/connectors-create-api-sqlazure/sql-1.png) 
-4. この例では、**[SQL Server - Get row]\(SQL Server - 行を取得する\)** を選択します。 接続が既に存在する場合は、**[テーブル名]** ボックスの一覧でテーブル名を選択し、**[行 ID]** に返される ID を入力します。
+   既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+
+2. 検索ボックスに、フィルターとして「sql server」と入力します。 アクションの一覧から、使用する SQL アクションを選択します。 
+
+   この例では、1 つのレコードを取得する次の操作を選択します。**[SQL Server - Get row]\(SQL Server - 行の取得\)**
+
+   ![「sql server」入力、[SQL Server - Get row]\(SQL Server - 行の取得\) 選択](./media/connectors-create-api-sqlazure/select-sql-get-row.png) 
+
+3. 接続の詳細の入力を求められたら、[SQL 接続を今すぐ作成](#create-connection)します。 
+   接続が存在する場合は、**［テーブル名］** を入力し、使用するレコードの **［行 ID］** を入力します。
+
+   ![テーブル名と行 ID の入力](./media/connectors-create-api-sqlazure/table-row-id.png)
    
-    ![](./media/connectors-create-api-sqlazure/sample-table.png)
-   
-    接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、この記事の「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」を参照してください。 
-   
-   > [!NOTE]
-   > この例では、テーブルから 1 行が返されます。 この行のデータを確認するには、テーブルのフィールドを使用してファイルを作成する別のアクションを追加してください。 たとえば、FirstName フィールドと LastName フィールドを使用してクラウド ストレージ アカウントに新しいファイルを作成する OneDrive アクションを追加します。 
-   > 
-   > 
-5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。 ロジック アプリが保存され、場合によっては、自動的に有効になります。
+   この例では、選択したテーブルから 1 行のみを返し、それ以外は何もしません。 
+   この行のデータを表示するには、後でレビューするための行のフィールドが含まれるファイルを作成し、そのファイルをクラウドのストレージ アカウントに格納するその他のアクションを追加します。 このコネクタまたは他のコネクタのその他のアクションについては、[Logic Apps コネクタ](../connectors/apis-list.md)に関する記事を参照してください。
+
+4. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。 
+
+<a name="create-connection"></a>
+
+## <a name="connect-to-your-database"></a>データベースに接続する
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+[!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
+
+## <a name="process-data-in-bulk"></a>データを一括処理する
+
+サイズが大きすぎてコネクタが同時にすべての結果を返さない結果セットを操作する場合、または、結果セットのサイズと構造を詳細に制御する場合は、*改ページ*を使用して、結果を小さなセットにして管理できます。 
+
+[!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
+
+### <a name="create-a-stored-procedure"></a>ストアド プロシージャを作成する
+
+複数の行を取得または挿入する場合、ロジック アプリは、こちらの[制限](../logic-apps/logic-apps-limits-and-config.md)の中で "[*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、項目を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。 
+
+代わりに、SQL インスタンスで実行され、**SELECT - ORDER BY**ステートメントを使用して、望みどおりの方法で結果を整理する "<a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank">*ストアド プロシージャ*</a>" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。 
+
+ソリューションの詳細については、次の記事を参照してください。
+
+* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">Logic Apps での一括データ転送に対する SQL の改ページ処理</a>
+
+* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">SELECT - ORDER BY Clause</a>
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-[コネクタの詳細](/connectors/sql/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
+このコネクタのトリガー、アクション、および制限に関する技術情報については、[コネクタ リファレンス](/connectors/sql/)を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
-[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
 

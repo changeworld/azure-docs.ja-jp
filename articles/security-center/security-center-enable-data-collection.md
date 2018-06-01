@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203973"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM) と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 また、クラッシュ ダンプ ファイルもワークスペースにコピーします。
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Microsoft Monitoring Agent の自動プロビジョニングの有効化     
-自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をプロビジョニングします。 自動プロビジョニングを強くお勧めしますが、エージェントを手動でインストールすることもできます。 [Microsoft Monitoring Agent の拡張機能をインストールする方法を参照してください](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
+自動プロビジョニングは、既定ではオフです。 自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をプロビジョニングします。 自動プロビジョニングを強くお勧めしますが、エージェントを手動でインストールすることもできます。 [Microsoft Monitoring Agent の拡張機能をインストールする方法を参照してください](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
 
 > [!NOTE]
 > 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。 詳細については、この記事の「[自動プロビジョニングの無効化](security-center-enable-data-collection.md#disable-automatic-provisioning)」をご覧ください。 自動プロビジョニングが無効になっていても、VM ディスクのスナップショットとアーティファクトの収集は有効です。
@@ -34,11 +35,14 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 Microsoft Monitoring Agent の自動プロビジョニングを有効にするには、次の手順に従います。
 1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
 2. サブスクリプションを選択します。
+
+  ![サブスクリプションを選択します。][7]
+
 3. **[セキュリティ ポリシー]** で **[データ収集]** を選択します。
-4. **[オンボード]** の **[オン]** を選択して、自動プロビジョニングを有効にします。
+4. **[Auto Provisioning] (自動プロビジョニング)** で **[オン]** を選択して、自動プロビジョニングを有効にします。
 5. **[保存]** を選択します。
 
-![自動プロビジョニングを有効にする][1]
+  ![自動プロビジョニングを有効にする][1]
 
 ## <a name="default-workspace-configuration"></a>既定のワークスペース構成
 Security Center によって収集されたデータは、Log Analytics ワークスペースに保存されます。  Azure VM から収集したデータを、Security Center によって作成されたワークスペースと自分で作成した既存のワークスペースのどちらに保存するかを選択できます。
@@ -49,16 +53,16 @@ Security Center によって収集されたデータは、Log Analytics ワー�
 
 既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
 
-1. **[セキュリティ ポリシー - データ収集]** で、**[Use another workspace]\(別のワークスペースを使用する\)** を選択します。
+1. **[Default workspace configuration] (既定のワークスペース構成)** で **[Use another workspace]\(別のワークスペースを使用する\)** を選択します。
 
    ![既存のワークスペースを選択する][2]
 
 2. プルダウン メニューから、収集したデータを保存するワークスペースを選択します。
 
-> [!NOTE]
-> プルダウン メニューには、Azure サブスクリプション内の、アクセスできるワークスペースだけが表示されます。
->
->
+  > [!NOTE]
+  > プルダウン メニューでは、ご利用のすべてのサブスクリプションにわたって、すべてのワークスペースを選択できます。 詳細については、「[クロス サブスクリプションのワークスペースの選択](security-center-enable-data-collection.md#cross-subscription-workspace-selection)」を参照してください。
+  >
+  >
 
 3. **[保存]** を選択します。
 4. **[保存]** をクリックすると、監視対象の VM を再構成するかどうかをたずねられます。
@@ -73,7 +77,15 @@ Security Center によって収集されたデータは、Log Analytics ワー�
 
    - 操作を取り消すには、**[キャンセル]** をクリックします。
 
-   ![既存のワークスペースを選択する][3]
+     ![既存のワークスペースを選択する][3]
+
+## <a name="cross-subscription-workspace-selection"></a>クロス サブスクリプションのワークスペースの選択
+データを格納するワークスペースを選択するときには、ご利用のすべてのサブスクリプションにわたって、すべてのワークスペースを選択できます。 クロス サブスクリプションのワークスペースの選択を行うと、異なるサブスクリプションで実行されている仮想マシンからデータを収集し、選択したワークスペースに格納できます。 この機能は、Linux と Windows のどちらで実行されている仮想マシンに対しても機能します。
+
+> [!NOTE]
+> クロス サブスクリプションのワークスペースの選択は、Azure Security Center の Free レベルに含まれます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+>
+>
 
 ## <a name="data-collection-tier"></a>データ収集レベル
 Security Center では、調査、監査、脅威検出のための十分なイベントを保持しながら、イベントのボリュームを減らすことができます。 エージェントによって収集されるイベントの 4 つのセットの中から、サブスクリプションとワークスペースに最適なフィルタリング ポリシーを選択できます。
@@ -84,7 +96,8 @@ Security Center では、調査、監査、脅威検出のための十分なイ�
 - **なし** - セキュリティ ログと AppLocker ログからのセキュリティ イベントの収集を無効にします。 このオプションを選択した場合、セキュリティ ダッシュボードには、Windows ファイアウォールのログと、マルウェア対策、ベースライン、更新などの事前評価だけが表示されます。
 
 > [!NOTE]
-> これらのセットは、一般的なシナリオに対応するように設計されています。 実装前に、どのセットがニーズに合うかを必ず評価してください。
+> これらのセキュリティ イベントは、Security Center の Standard レベルでのみ使用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+これらのセットは、一般的なシナリオに対応するように設計されています。 実装前に、どのセットがニーズに合うかを必ず評価してください。
 >
 >
 
@@ -115,7 +128,7 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 >
 
 フィルタリグ ポリシーを選択するには、次の手順に従います。
-1. **[Security policy & settings]\(セキュリティ ポリシーと設定\)** ブレードの **[セキュリティ イベント]** で、フィルタリング ポリシーを選択します。
+1. **[Security policy Data Collection] (セキュリティ ポリシーのデータ収集)** ブレードの **[セキュリティ イベント]** で、フィルタリング ポリシーを選択します。
 2. **[保存]** を選択します。
 
    ![フィルタリング ポリシーを選択する][5]
@@ -129,12 +142,13 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 >
 
 1. Security Center のメイン メニューに戻り、[セキュリティ ポリシー] を選択します。
-
-   ![自動プロビジョニングを無効にする][6]
-
 2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
-3. **[セキュリティ ポリシー - データ収集]** ブレードで、**[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
-4. **[保存]** を選択します。  
+3. **[セキュリティ ポリシー - データ収集]** ブレードの **[Auto provisioning] (自動プロビジョニング)** で、**[オフ]** を選択します。
+4. **[保存]** を選択します。
+
+  ![自動プロビジョニングの無効化][6]
+
+自動プロビジョニングを無効 (オフ) にすると、既定のワークスペース構成セクションは表示されません。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center のデータ収集と自動プロビジョニングのしくみについて説明しました。 セキュリティ センターの詳細については、次を参照してください。
@@ -153,4 +167,5 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png
+[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
+[7]: ./media/security-center-enable-data-collection/select-subscription.png

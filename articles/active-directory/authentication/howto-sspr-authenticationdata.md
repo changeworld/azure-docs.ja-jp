@@ -2,25 +2,20 @@
 title: Azure AD SSPR データ要件 |Microsoft Docs
 description: Azure AD のセルフ サービスによるパスワード リセットのデータ要件とそれらを満たす方法
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: 790ca2ccb2d365876e15ca57e1aa199ac519fd73
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 5409bf198d0e3f6537619ef4698d9f2e31bd27c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257590"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
@@ -39,16 +34,27 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 
 Azure AD Connect で既定の設定を使用する場合、次のマッピングが行われます。
 
-| オンプレミスの Active Directory | Azure AD | Azure AD 認証の連絡先情報 |
-| --- | --- | --- |
-| telephoneNumber | 会社電話 | Alternate phone |
-| mobile | 携帯電話 | 電話 |
+| オンプレミスの Active Directory | Azure AD |
+| --- | --- |
+| telephoneNumber | 会社電話 |
+| mobile | 携帯電話 |
 
-これらのフィールドは、ユーザーが認証データを確認するまでの間、空白で表示されることがあります。
+ユーザーが携帯電話番号を認証すると、Azure AD の [認証の連絡先情報] の下にある [電話番号] フィールドにもその番号が入力されます。
+
+## <a name="authentication-contact-info"></a>認証の連絡先情報
 
 グローバル管理者は、次のスクリーンショットに示すように、ユーザーの認証の連絡先情報を手動で設定できます。
 
 ![連絡先][Contact]
+
+[電話番号] フィールドに電話番号が入力され、SSPR ポリシーの携帯電話が有効になると、その番号がパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。 
+
+パスワード リセットには、[代替の電話] フィールドは使用されません。
+
+[電子メール] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になると、その電子メールがパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。
+
+[連絡用メール アドレス] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になった場合、その電子メールはパスワード リセット登録ページには**表示されません**が、パスワード リセット ワークフロー中に表示されます。 
+
 
 ## <a name="security-questions-and-answers"></a>セキュリティの質問と回答
 
