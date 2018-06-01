@@ -15,6 +15,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778191"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通話データを分析して結果を Power BI ダッシュボードで視覚化する Stream Analytics ジョブの作成
 
@@ -172,7 +173,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 2. [Stream Analytics ジョブ] ウィンドウの **[ジョブ トポロジ]** セクションで、**[出力]** オプションを選択します。  
 
-3. **[+ 追加]** > [Power BI]** の順に選択し、フォームに次の詳細を入力して (表に示されているように、出力エイリアス、データセットの名前、テーブル名を識別するためのわかりやすい名前を入力してください)、**[承認]** を選択します。  
+3. **[+ 追加]** > **[Power BI]** の順に選択し、フォームに次の詳細を入力して (表に示されているように、出力エイリアス、データセットの名前、テーブル名を識別するためのわかりやすい名前を入力してください)、**[承認]** を選択します。  
 
    |**設定**  |**推奨値**  |
    |---------|---------|---------|
