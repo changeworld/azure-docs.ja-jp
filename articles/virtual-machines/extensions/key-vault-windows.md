@@ -74,11 +74,11 @@ Windows 用の Key Vault VM 拡張機能では、ターゲットの仮想マシ�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2016-10-01 | date |
 | publisher | Microsoft.Azure.KeyVault.Edp | 文字列 |
-| 型 | KeyVaultForWindows | 文字列 |
+| type | KeyVaultForWindows | 文字列 |
 | typeHandlerVersion | 0.0 | int |
 | pollingIntervalInS | 3600 | int |
 | certificateStoreName | MY | 文字列 |
