@@ -1,31 +1,32 @@
 ---
-title: "Azure Security Center で Web アプリケーション ファイアウォールを追加する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項である **\"Web アプリケーション ファイアウォールを追加する\"** と **\"アプリケーションの保護を完了する\"** を実装する方法について説明します。"
+title: Azure Security Center で Web アプリケーション ファイアウォールを追加する | Microsoft Docs
+description: このドキュメントでは、Azure Security Center の推奨事項である **"Web アプリケーション ファイアウォールを追加する"** と **"アプリケーションの保護を完了する"** を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 05/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 4454d18893d698e49f118048eca0bfc94df315a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e28a1f6b865dae3abe2cb9dfac2921c6a2034491
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203524"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。
 
 WAF の推奨事項は、開いている受信 Web ポート (80,443) にネットワーク セキュリティ グループが関連付けられている公開 IP (インスタンス レベルの IP または負荷分散された IP) に対して表示されます。
 
-Security Center では、仮想マシン上および外部 App Service 環境 (ASE) の Web アプリケーションを対象とする攻撃から保護するために WAF をプロビジョニングするよう勧めます。 App Service 環境 (ASE) は、Azure App Service アプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium](https://azure.microsoft.com/pricing/details/app-service/) サービス プラン オプションです。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/environment/intro.md)をご覧ください。
+Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/app-service/windows/) サービス プランでデプロイされた仮想マシンや外部の App Service Environment (ASE) 上の Web アプリケーションを対象にした攻撃に対する防御に役立てるために、WAF をプロビジョニングすることをお勧めします。 Isolated プランは、プライベートな専用の Azure 環境内のアプリをホストするため、オンプレミスのネットワークとのセキュリティ保護された接続や、追加のパフォーマンスおよびスケールが必要なアプリに最適です。 アプリは、分離された環境内にあることに加えて、外部 IP アドレスのロード バランサーが必要です。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/environment/intro.md)をご覧ください。
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  このドキュメントはステップ バイ ステップ ガイドではありません。
@@ -39,11 +40,11 @@ Security Center では、仮想マシン上および外部 App Service 環境 (A
    ![Web アプリケーション ファイアウォールの追加][2]
 3. 利用可能な場合は、既存の Web アプリケーション ファイアウォールを使用することを選択するか、または新しい WAF を作成することができます。 この例では、利用可能な既存の WAF がないため、WAF を作成します。
 4. WAF を作成するには、統合されたパートナーの一覧からソリューションを選択します。 この例では、**[Barracuda Web アプリケーション ファイアウォール]** を選択します。
-5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** が開きます。 **[作成]**を選択します。
+5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** が開きます。 **[作成]** を選択します。
 
    ![ファイアウォール情報ブレード][3]
 
-6. **[新しい Web アプリケーション ファイアウォール]** が開きます。ここで **VM 構成手順**を実行して、**WAF 情報**を提供できます。 情報ブレードで **[VM 構成]**を選択します。
+6. **[新しい Web アプリケーション ファイアウォール]** が開きます。ここで **VM 構成手順**を実行して、**WAF 情報**を提供できます。 情報ブレードで **[VM 構成]** を選択します。
 7. **[VM 構成]** で、WAF を実行する仮想マシンの起動に必要な情報を入力します。
    ![VM configuration][4]
 8. **[新しい Web アプリケーション ファイアウォール]** に戻り、**[WAF 情報]** を選択します。 **[WAF 情報]** で、WAF 自体を構成します。 手順 7. では、WAF が実行される仮想マシンを構成できます。手順 8. では、WAF 自体をプロビジョニングできます。
@@ -54,7 +55,7 @@ Security Center では、仮想マシン上および外部 App Service 環境 (A
    ![アプリケーション保護を完了する][5]
 
 2. **[Finalize application protection] \(アプリケーション保護を完了する)** を選択します。 新しいブレードが開きます。 トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
-3. 対象の Web アプリケーションを選択します。 Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。 手順を最後まで実行し、 **[トラフィックを制限する]**を選択します。 Security Center によって WAF が接続されます。
+3. 対象の Web アプリケーションを選択します。 Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。 手順を最後まで実行し、 **[トラフィックを制限する]** を選択します。 Security Center によって WAF が接続されます。
 
    ![トラフィックを制限する][6]
 

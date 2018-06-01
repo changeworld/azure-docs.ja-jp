@@ -11,16 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166184"
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>OMS から Azure にアラートを拡張 (コピー) する方法
 **2018 年 5 月 14 日**以降、[Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) で構成されているアラートを使っているすべてのユーザーは、Azure に拡張される予定です。 Azure に拡張されたアラートは、OMS と同じように動作します。 監視機能も変わりません。 OMS で作成したアラートを Azure に拡張すると、多くのメリットがあります。 OMS から Azure へのアラートの拡張の利点とプロセスについて詳しくは、「[OMS から Azure にアラートを拡張する](monitoring-alerts-extend.md)」をご覧ください。
+
+> [!NOTE]
+> 2018 年 5 月 14 日以降、Microsoft は Azure にアラートを自動拡張するプロセスを開始します。 この日にすべてのワークスペースとアラートが拡張されるわけではありません。今後数週間かけて段階的に自動的にアラートを拡張します。 そのため、2018 年 5 月 14 日にすぐに OMS ポータルのアラートが Azure に自動拡張されず、まだ以下のオプションを使ってアラートを手動拡張する場合があります。
 
 OMS から Azure にアラートをすぐに移行することを希望するユーザーは、以下で説明するオプションのいずれかを使って実行できます。
 
@@ -236,6 +240,14 @@ OMS から Azure にアラートを拡張するプロセスでは、システム
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 スコープ ロックを有効にすると、Log Analytics (OMS) ワークスペースを含むサブスクリプションまたはリソース グループの新しい変更がすべて制限されます。システムはアラートを Azure に拡張 (コピー) することができず、必要なアクション グループを作成することができません。
     
     b. 解決するには、Azure Portal、Powershell、Azure CLI、または API を使用して、ワークスペースを含むサブスクリプションまたはリソース グループの *ReadOnly* ロックを削除します。 詳細については、[リソース ロックの使用方法](../azure-resource-manager/resource-group-lock-resources.md)に関する記事を参照してください。 
+    
+    c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
+
+3. **エラー: Policy is present at subscription/resource group level (サブスクリプション/リソース グループ レベルにポリシーが存在します)**。![ポリシー エラー メッセージが表示された OMS ポータルの [アラート設定] ページ](./media/monitor-alerts-extend/ErrorPolicy.png)
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure Policy](../azure-policy/azure-policy-introduction.md) が適用されると、Log Analytics (OMS) ワークスペースを含むサブスクリプションまたはリソース グループの新しいリソースがすべて制限されます。システムはアラートを Azure に拡張 (コピー) することができず、必要なアクション グループを作成することができません。
+    
+    b. これを解決するには、ワークスペースを含むサブスクリプションまたはリソース グループでの新しいリソースの作成を妨げている *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* エラーの原因であるポリシーを編集します。 Azure portal、Powershell、Azure CLI、または API を使って、障害の原因になっている適切なポリシーを検索するアクションを監査できます。 詳しくは、[アクティビティ ログを見てアクションを監査する](../azure-resource-manager/resource-group-audit.md)方法についての記事をご覧ください。 
     
     c. この記事で説明されている手順に従って問題を解決すると、OMS は翌日の予定された実行時間までにアラートを Azure に拡張します。アクションや開始の必要はありません。
 
