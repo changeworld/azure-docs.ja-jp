@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
-ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359426"
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202594"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 [Azure Stack](azure-stack-poc.md) 内の VM 上の SQL インスタンスを使用するか、またはリソースプロバイダーに接続できる場合には Azure Stack 環境外のインスタンスを使用できます。 一般的な要件は次のとおりです。
@@ -97,21 +97,25 @@ SQL Always On インスタンスの構成にはさらに手順が必要で、少
 > [!NOTE]
 > SQL アダプター RP では、Always On では SQL 2016 SP1 Enterprise 以降のインスタンス_のみ_がサポートされています。それは、自動シード処理などの新しい SQL 機能が必要なためです。 上記の一般的な要件に加え、次のような要件があります。
 
-具体的には、SQL Server のインスタンスごとに各可用性グループで[自動シード](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
+* SQL Always On コンピューターだけでなく、ファイル サーバーも準備する必要がある。 この環境を独自に作成できる [Azure Stack クイックスタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-ha)がある。 これは、独自のインスタンスを構築するためのガイドとしても役立ちます。
 
-  ```
-  ALTER AVAILABILITY GROUP [<availability_group_name>]
-      MODIFY REPLICA ON 'InstanceName'
-      WITH (SEEDING_MODE = AUTOMATIC)
-  GO
-  ```
+* SQL Server をセットアップする必要がある。 具体的には、SQL Server のインスタンスごとに各可用性グループで[自動シード](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。
 
-セカンダリ インスタンスでは、これらの SQL コマンドを使用します。
+```
+ALTER AVAILABILITY GROUP [<availability_group_name>]
+    MODIFY REPLICA ON 'InstanceName'
+    WITH (SEEDING_MODE = AUTOMATIC)
+GO
+```
 
-  ```
-  ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
-  GO
-  ```
+セカンダリ インスタンス上
+```
+ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+GO
+
+```
+
+
 
 SQL Always On のホスティング サーバーを追加するには、次の手順を実行します。
 
@@ -121,16 +125,14 @@ SQL Always On のホスティング サーバーを追加するには、次の�
 
     **[SQL Hosting Servers]\(SQL ホスティング サーバー\)** ブレードでは、リソース プロバイダーのバックエンドとして機能する SQL Server の実際のインスタンスに SQL Server リソース プロバイダーを接続できます。
 
-3. 使用する SQL Server インスタンスの接続詳細をフォームに入力します。必ず、Always On リスナーの FQDN アドレス (およびオプションのポート番号) を使用してください。 システム管理特権で構成したアカウントのアカウント情報を提供します。
+
+3. 使用する SQL Server インスタンスの接続詳細をフォームに入力します。必ず、Always On リスナーの FQDN または IPv4 アドレス (およびオプションのポート番号) を使用してください。 システム管理特権で構成したアカウントのアカウント情報を提供します。
 
 4. SQL Always On 可用性グループのインスタンスのサポートを有効にするには、このボックスをオンにします。
 
     ![ホスティング サーバー](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. SKU に SQL Always On インスタンスを追加します。 
-
-> [!IMPORTANT]
-> 同じ SKU にスタンドアロン サーバーと Always On インスタンスを混在させることはできません。 最初のホスティング サーバーを追加した後に型を混在させようとすると、エラーになります。
+5. SKU に SQL Always On インスタンスを追加します。 同じ SKU にスタンドアロン サーバーと Always On インスタンスを混在させることはできません。 最初のホスティング サーバーを追加するときにこれが決まります。 後でタイプを混在させようとするとエラーが発生します。
 
 
 ## <a name="making-sql-databases-available-to-users"></a>ユーザーが SQL データベースを使用できるようにする
