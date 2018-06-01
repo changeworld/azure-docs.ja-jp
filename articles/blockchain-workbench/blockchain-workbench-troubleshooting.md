@@ -46,10 +46,10 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 このスクリプトは、次のパラメーターを受け取ります。
 
-| パラメーター  | [説明] | 必須 |
+| パラメーター  | 説明 | 必須 |
 |---------|---------|----|
-| サブスクリプション ID | すべてのリソースを作成または特定する SubscriptionID。 | [はい] |
-| ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | [はい] |
+| SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | はい |
+| ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | はい |
 | OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
 | LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
 | OmsSubscriptionId | OMS が展開されているサブスクリプション ID。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。| いいえ  |
@@ -60,7 +60,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 出力 ZIP ファイルのフォルダー構造は次のとおりです。
 
-| フォルダーまたはファイル | [説明]  |
+| フォルダーまたはファイル | 説明  |
 |---------|---------|
 | \Summary.txt | システムの概要 |
 | \Metrics\blockchain | ブロックチェーンに関するメトリック |
