@@ -83,17 +83,17 @@ ms.locfileid: "34359205"
 }
 ```
 
-| 要素名 | 必須 | [説明] |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| parameterName |[はい] |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| 型 |[はい] |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
+| parameterName |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
+| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
 | defaultValue |いいえ  |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ  |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ  |int 型パラメーターの最小値。 |
 | maxValue |いいえ  |int 型パラメーターの最大値。 |
 | minLength |いいえ  |文字列型、securestring 型、配列型パラメーターの長さの最小値。 |
 | maxLength |いいえ  |文字列型、securestring 型、配列型パラメーターの長さの最大値。 |
-| 説明 |いいえ  |ポータルを通じてユーザーに表示されるパラメーターの説明。 |
+| description |いいえ  |ポータルを通じてユーザーに表示されるパラメーターの説明。 |
 
 ## <a name="template-functions-with-parameters"></a>テンプレート関数とパラメーター
 
