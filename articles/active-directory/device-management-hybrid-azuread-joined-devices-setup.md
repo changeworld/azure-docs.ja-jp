@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258314"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -83,8 +84,21 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 
 - https://device.login.microsoftonline.com
 
-送信プロキシ経由でインターネットにアクセスする必要がある組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装する必要があります。
+- 組織の STS (フェデレーション ドメイン)
 
+ユーザーのローカル イントラネット設定に組織の STS (フェデレーション ドメイン) が含まれていない場合、追加してください。
+
+組織がシームレス SSO の使用を計画している場合、組織内のコンピューターから次の URL に到達できる必要があります。また、ユーザーのローカル イントラネット ゾーンに追加する必要があります。
+
+- https://autologon.microsoftazuread-sso.com
+
+- https://aadg.windows.net.nsatc.net
+
+- また、ユーザーのイントラネット ゾーンで "スクリプトを介したステータス バーの更新を許可する" という設定を有効にしてください。
+
+組織がオンプレミス AI に (フェデレーションではない) 管理セットアップを使用しており、Azure AD とのフェデレーションに ADFS を使用しない場合、Windows 10 のハイブリッド Azure AD 参加は、AD のコンピューター オブジェクトを利用して Azure AD と同期します。 Azure AD Connect 同期構成の同期に対して、ハイブリッド Azure AD に参加する必要があるコンピューター オブジェクトが含まれる組織単位 (OU) が有効になっていることを確認します。
+
+送信プロキシ経由でインターネットにアクセスする必要がある組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装する必要があります。
 
 ## <a name="configuration-steps"></a>構成の手順
 
@@ -174,6 +188,14 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
     $deSCP.CommitChanges()
 
+上記のスクリプトで、
+
+- `$verifiedDomain = "contoso.com"` は、Azure AD で検証済みドメイン名のいずれかに置き換える必要があるプレースホルダーです。 これを使用するには、先にドメインを所有する必要があります。
+
+確認済みのドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)」を参照してください。  
+確認済みの会社のドメインの一覧を取得するには、[Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) コマンドレットを使用できます。 
+
+![Get-AzureADDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
 ## <a name="step-2-setup-issuance-of-claims"></a>手順 2: 要求の発行のセットアップ
 
@@ -317,6 +339,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 
 確認済みのドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)」を参照してください。  
+
 確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) コマンドレットを使用できます。 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
@@ -501,7 +524,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 ### <a name="configure-on-premises-federation-service"></a>オンプレミス フェデレーション サービスを構成する 
 
-オンプレミス フェデレーション サービスは、Azure AD 証明書利用者への認証要求を受信したときに、resouce_params パラメーターに以下のエンコード値が保持されている場合、**authenticationmehod** および **wiaormultiauthn** 要求の発行をサポートしている必要があります。
+オンプレミス フェデレーション サービスは、Azure AD 証明書利用者への認証要求を受信したときに、resouce_params パラメーターに以下のエンコード値が保持されている場合、**authenticationmehod** と **wiaormultiauthn** 要求の発行をサポートしている必要があります。
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 
@@ -517,10 +540,10 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 **この規則を追加するには:**
 
 1. AD FS 管理コンソールで、`AD FS > Trust Relationships > Relying Party Trusts` に移動します。
-2. [Microsoft Office 365 ID プラットフォーム] 証明書利用者信頼オブジェクトを右クリックし、 **[要求規則の編集]**を選択します。
+2. [Microsoft Office 365 ID プラットフォーム] 証明書利用者信頼オブジェクトを右クリックし、 **[要求規則の編集]** を選択します。
 3. **[発行変換規則]** タブで、**[規則の追加]** を選択します。
 4. **[要求規則]** テンプレート一覧から **[カスタム規則を使用して要求を送信]** を選択します。
-5. **[次へ]**を選択します。
+5. **[次へ]** を選択します。
 6. **[要求規則名]** ボックスに「**Auth Method Claim Rule**」と入力します。
 7. **[要求規則]** ボックスに、次の規則を入力します。
 
@@ -550,8 +573,6 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 
 - ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターについては、自動登録のロールアウトをグループ ポリシー オブジェクトで制御することができます。 **これらのデバイスを Azure AD に自動登録したくない場合、または登録を制御したい場合は**、構成手順を開始する前に、自動登録を無効にするグループ ポリシーをそのすべてのデバイスに展開する必要があります。 構成が完了し、テストする準備ができたら、自動登録を有効にするグループ ポリシーを、最初はテスト デバイスにのみ展開し、その後、他のすべてのデバイスに好きなように展開します。
 
-- Windows 10 November 2015 Update は、ロールアウト グループ ポリシー オブジェクトが**設定されている場合にのみ**、自動的に Azure AD に参加します。
-
 - ダウンレベルの Windows コンピューターをロールアウトするために、選択したコンピューターに [Windows インストーラー パッケージ](#windows-installer-packages-for-non-windows-10-computers)をデプロイできます。
 
 - グループ ポリシー オブジェクトを Windows 8.1 ドメイン参加済みデバイスにプッシュすると参加が試行されますが、すべてのダウンレベルの Windows デバイスを参加させるには、[Windows インストーラー パッケージ](#windows-installer-packages-for-non-windows-10-computers)を使用することをお勧めします。 
@@ -567,7 +588,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。
 4. グループ ポリシー オブジェクトの名前を入力します。 例: *Hybrid Azure AD join。 
 5. Click **OK**.
-6. 新しいグループ ポリシー オブジェクトを右クリックし、**[編集]**を選択します。
+6. 新しいグループ ポリシー オブジェクトを右クリックし、**[編集]** を選択します。
 7. **[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[デバイスの登録]** に移動します。 
 8. **[ドメインに参加しているコンピューターをデバイスとして登録する]** を右クリックし、**[編集]** を選択します。
    

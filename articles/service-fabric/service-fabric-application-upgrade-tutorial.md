@@ -1,24 +1,25 @@
 ---
-title: "Service Fabric アプリのアップグレード チュートリアル | Microsoft Docs"
-description: "この記事では、Visual Studio による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。"
+title: Service Fabric アプリのアップグレード チュートリアル | Microsoft Docs
+description: この記事では、Visual Studio による Service Fabric アプリケーションのデプロイ、コードの変更、アップグレードのロールアウトを段階的に説明します。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3388257399ce8d2e0ac84b9bff746e1acf153312
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0a94dc91308f21d9e2b440f9638829ee03a8b903
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205197"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのアップグレード チュートリアル
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Azure Service Fabric では、変更されたサービスのみをアップグ�
 
 ![Context menu for a Service Fabric application][image1]
 
-**[発行]** を選択してポップアップが表示されたら、**[ターゲット プロファイル]** を **PublishProfiles\Local.xml** に設定します。 **[発行]**をクリックする前に、ウィンドウを次のように設定します。
+**[発行]** を選択してポップアップが表示されたら、**[ターゲット プロファイル]** を **PublishProfiles\Local.xml** に設定します。 **[発行]** をクリックする前に、ウィンドウを次のように設定します。
 
 ![Publishing a Service Fabric application][image2]
 
@@ -57,7 +58,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 
 ![Updating versions][image4]
 
-**[アプリケーションとサービスのバージョンを自動的に更新する]**を選択すると、Visual Studio ツールでバージョンの自動ロールアップを実行できます。 [SemVer](http://www.semver.org)を使用する場合、このオプションが選択されていると、コードまたは構成パッケージ (あるいはその両方) のバージョンのみを更新する必要があります。
+**[アプリケーションとサービスのバージョンを自動的に更新する]** を選択すると、Visual Studio ツールでバージョンの自動ロールアップを実行できます。 [SemVer](http://www.semver.org)を使用する場合、このオプションが選択されていると、コードまたは構成パッケージ (あるいはその両方) のバージョンのみを更新する必要があります。
 
 変更を保存し、 **[アプリケーションのアップグレード]** ボックスをオンにします。
 

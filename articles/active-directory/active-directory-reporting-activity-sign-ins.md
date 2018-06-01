@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 579af89c0d6d184b517ecb9e8a53be9d76cf1c93
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 78d3399aab8e3c3b1d98946cb3ac6ffab353d95c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257715"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -36,10 +37,10 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 このトピックでは、サインイン アクティビティの概要を説明します。
 
-## <a name="pre-requisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
-* セキュリティ管理者またはセキュリティ リーダーの役割のユーザー
+* セキュリティ管理者、セキュリティ閲覧者、またはレポート閲覧者ロールのユーザー
 * グローバル管理者
 * 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
@@ -47,7 +48,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 * すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。
 
 
-## <a name="signs-in-activities"></a>サインイン アクティビティ
+## <a name="sign-in-activities"></a>サインイン アクティビティ
 
 ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
@@ -85,7 +86,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 ![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/03.png "サインイン アクティビティ")
 
 
-## <a name="filtering-sign-in-activities"></a>サインイン アクティビティのフィルター処理
+## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理
 
 報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用してサインイン データをフィルター処理できます。
 
@@ -141,6 +142,19 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 ![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/12.png "サインイン アクティビティ")
 
 
+> [!TIP] 
+> 既定のフィルターの他に、サインイン ビューに追加するすべてのフィールドが、フィルター フィールドになります。
+
+
+## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
+
+サインイン アクティビティ データを Azure portal の外部で操作する場合は、ダウンロードすることができます。 Azure portal では、ダウンロード ボタンの他に、データをダウンロードするためのスクリプトを生成するオプションも提供されています。  
+
+![ダウンロード](./media/active-directory-reporting-activity-sign-ins/71.png "ダウンロード")
+
+**[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。 さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含むスクリプトが作成されます。 ダウンロードできるレコードの数は、技術的な実装だけでなく、[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)によっても制限されます。  
+
+
 
 ## <a name="sign-in-activities-shortcuts"></a>サインイン アクティビティのショートカット
 
@@ -168,7 +182,6 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 サインイン グラフ内の日付をクリックすると、その日のサインイン アクティビティの概要が表示されます。
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/07.png "サインイン アクティビティ")
 
 サインイン アクティビティ リストの各行には、次の情報が表示されます。
 
@@ -223,7 +236,6 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 アプリ使用状況グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
 
 
-![サインイン アクティビティ](./media/active-directory-reporting-activity-sign-ins/48.png "サインイン アクティビティ")
 
 
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。

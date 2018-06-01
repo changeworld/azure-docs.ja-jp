@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/26/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258041"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのアプリケーションの使用
 
@@ -33,7 +34,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 ## <a name="create-new-contract"></a>新しいコントラクトの作成 
 
-新しいコントラクトを作成するには、**AllowedInstanceRoles** ロールのメンバーになる必要があります。 
+新しいコントラクトを作成するには、コントラクト **イニシエーター**として指定されているメンバーになる必要があります。 コントラクトのアプリケーション ロールとイニシエーターの定義については、[構成概要ページのワークフローに関するセクション](blockchain-workbench-configuration-overview.md#workflows)を参照してください。 アプリケーション ロールにメンバーを割り当てる方法については、[アプリケーションにメンバーを追加する](blockchain-workbench-manage-users.md#add-member-to-application)方法に関するページを参照してください。
 
 1. Blockchain Workbench のアプリケーション セクションで、作成するコントラクトを含んだアプリケーション タイルを選択します。 アクティブなコントラクトの一覧が表示されます。
 
@@ -51,15 +52,10 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 ## <a name="take-action-on-contract"></a>コントラクトに対してアクションを実行する
 
+コントラクトの状態によっては、コントラクトの次の状態に遷移するアクションをメンバーは行うことができます。 アクションは[状態](blockchain-workbench-configuration-overview.md#states)内で[遷移](blockchain-workbench-configuration-overview.md#transitions)として定義されています。 遷移に許可されるアプリケーションまたはインスタンス ロールに属するメンバーはアクションを行うことができます。 
+
 1. Blockchain Workbench のアプリケーション セクションで、アクションを実行するコントラクトを含んだアプリケーション タイルを選択します。
-
-    ![アプリケーションの一覧](media/blockchain-workbench-use/apps-list.png)
-
-2. 一覧からコントラクトを選択します。
-
-    ![コントラクトの一覧](media/blockchain-workbench-use/select-contract.png)
-
-    コントラクトの詳細が各セクションに表示されます。 
+2. 一覧からコントラクトを選択します。 コントラクトの詳細が各セクションに表示されます。 
 
     ![コントラクト詳細](media/blockchain-workbench-use/contract-details.png)
 
@@ -74,9 +70,14 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 4. コントラクトの現在の状態に関する詳細がウィンに表示されます。 ドロップダウン リストから、実行するアクションを選択します。 
 
+    ![アクションの選択](media/blockchain-workbench-use/choose-action.png)
+
+5. **[アクションの実行]** を選択し、アクションを開始します。
+6. アクションにパラメーターが必要な場合、アクションの値を指定します。
+
     ![アクションの実行](media/blockchain-workbench-use/take-action.png)
 
-5. **[実行]** を選択してアクションを実行します。
+7. **[アクションの実行]** を選択し、アクションを実行します。
 
 ## <a name="next-steps"></a>次の手順
 

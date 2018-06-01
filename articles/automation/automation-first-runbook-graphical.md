@@ -8,14 +8,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7804c67871de546d217d85a4215c817f9c08f6b8
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 6a9e6bbf3bc507a4d45af03c791104c9490cd36f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055746"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195898"
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
 
