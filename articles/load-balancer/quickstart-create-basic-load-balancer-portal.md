@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 610aa8d5652b89f36aeb2a6ae517d378c5bfa666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304880"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用してパブリック Basic Load Balancer を作成する
 
@@ -194,4 +195,7 @@ Basic Load Balancer でアプリの状態を監視するには、正常性プロ
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、リソース グループ、ネットワーク リソース、およびバックエンド サーバーを作成しました。 その後、それらのリソースを使用して、ロード バランサーを作成しました。 ロード バランサーとその関連リソースの詳細を確認するには、チュートリアル記事に進みます。
+このクイック スタートでは、リソース グループ、ネットワーク リソース、およびバックエンド サーバーを作成しました。 その後、それらのリソースを使用して、Basic Load Balancer を作成しました。 Azure Load Balancer についてさらに学習するには、Azure Load Balancer のチュートリアルに進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer のチュートリアル](tutorial-load-balancer-basic-internal-portal.md)

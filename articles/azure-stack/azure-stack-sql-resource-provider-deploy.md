@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 70b07cae9a1dc8b45e27f95e19fbc84f06a0b6d3
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204583"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198577"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 Azure Stack SQL Server リソースプロバイダーを使用して、SQL データベースを Azure Stack のサービスとして公開します。 SQL リソース プロバイダー サービスは、Windows Server コア仮想マシンである SQL リソース プロバイダー VM 上で動作します。
@@ -74,6 +74,8 @@ SQL リソース プロバイダーのデプロイが開始し、system.local.sq
 | **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  |
 | **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  |
 
+>[!NOTE]
+> SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU が作成されるまで、データベースを作成できません。
 
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>カスタム スクリプトを使用して SQL リソース プロバイダーをデプロイする

@@ -7,14 +7,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc51fabaffd0f9de5c2a460922dadc0abf74577e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: b813ba564e6451f973972f08f297399c3af1747b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055441"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195490"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 

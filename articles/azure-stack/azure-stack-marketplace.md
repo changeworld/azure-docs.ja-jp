@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 588da055d06d7e63510085ff48169f3ea756c53c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7b1a6020fb8730aee7ed41d8c82358db0945e4ef
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257644"
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 
@@ -29,7 +30,7 @@ Marketplace は Azure Stack 向けにカスタマイズされたサービス、�
 
 Azure Stack オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などを公開できます。 公開すると、アイテムはすべてのユーザーに表示されます。 作成したカスタム アイテムを公開できます。 拡大を続ける [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
 
-Marketplace を開くには、 **[新規]**をクリックします。
+Marketplace を開くには、管理者コンソールで **[新規]** を選択します。
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
@@ -47,5 +48,6 @@ Marketplace に公開されるすべてのアイテムは、Azure ギャラリ�
 Azure Stack バージョン 1803 以降では、Azure からダウンロードするときや、カスタム画像をアップロードするときに画像はスパース ファイルに変換されます。 このプロセスは画像を追加するときに時間がかかりますが、領域を節約し、画像の展開時間を短縮することができます。 変換は新しい画像にのみ適用されます。  既存の画像は変更されません。 
 
 ## <a name="next-steps"></a>次の手順
+[Marketplace アイテムのダウンロード](azure-stack-download-azure-marketplace-item.md)  
 [Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)
 

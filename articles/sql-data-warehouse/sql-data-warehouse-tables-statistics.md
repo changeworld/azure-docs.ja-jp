@@ -7,14 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 05/09/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011766"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 内のテーブルに関する統計の作成と更新
 Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
@@ -22,24 +23,46 @@ Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化�
 ## <a name="why-use-statistics"></a>統計を使用する理由
 Azure SQL Data Warehouse がデータに関する情報を多く持っているほど、データに対するクエリを高速に実行できます。 データに関する統計情報を収集し、それを SQL Data Warehouse に読み込むことは、クエリの最適化のために実行できる最も重要なことの 1 つです。 これは、SQL Data Warehouse のクエリ オプティマイザーがコストに基づくオプティマイザーであるためです。 オプティマイザーはさまざまなクエリ プランのコストを比較して、最も低コストなプランを選択します。多くの場合、それは最も高速に実行されるプランです。 たとえば、オプティマイザーが、クエリでフィルター選択されている日付が 1 行を返すと推定した場合、選択された日付が 100 万行を返すと推定した場合とはまったく異なるプランを選択する可能性があります。
 
-現時点では、統計を作成および更新するプロセスは手動ですが、簡単に実行できます。  まもなく、単一の列およびインデックスの統計を自動的に作成して更新することが可能になります。  次の情報を使用すると、データの統計情報の管理を大幅に自動化できます。 
+## <a name="automatic-creation-of-statistics"></a>統計の自動作成
+統計の自動作成オプション (AUTO_CREATE_STATISTICS) が有効な場合､SQL Data Warehouse は送られてくるユーザー クエリを分析し､統計がない列に対して統計列を 1 つ作成します｡ クエリ オプティマイザーはクエリ述語あるいは結合条件内の個々の列に統計を作成することでクエリ プランに対するカーディナリティ評価を改善します｡ 既定では､統計の自動作成は有効です｡
 
-## <a name="scenarios"></a>シナリオ
-作業を開始する簡単な方法は、すべての列のサンプリングされた統計を作成することです。 統計情報が古いと、クエリのパフォーマンスが最適化されなくなります。 ただし、すべての列の統計を更新すると、データが増すにつれてメモリが消費される可能性があります。 
+データ ウェアハウスにこのオプションが構成されているかどうかは､次のコマンドで確認できます｡
 
-さまざまなシナリオの推奨事項を次に示します。
-| **シナリオ** | 推奨 |
-|:--- |:--- |
-| **作業の開始** | SQL Data Warehouse への移行後にすべての列を更新 |
-| **最も重要な列の統計** | ハッシュ分散キー |
-| **次に重要な列の統計** | パーティション キー |
-| **その他の重要な列の統計** | Date、頻繁な JOIN、GROUP BY、HAVING と WHERE |
-| **統計の更新の頻度**  | 控えめ: 毎日 <br></br> データを読み込むか変換した後 |
-| **サンプリング** |  行数が 10 億未満の場合は、既定のサンプリング (20%) を使用 <br></br> 行数が 10 億を超える場合は、2% の範囲に関する統計が適切 |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+データ ウェアハウスに AUTO_CREATE_STATISTICS が構成されていない場合は､次のコマンドでこのプロパティを有効にすることをお勧めします｡
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+結合が含まれていること､あるいは述語の存在が検出されると､SELECT､INSERT-SELECT､CTAS､UPDATE､ DELETE､および EXPLAIN ステートメントによって統計の自動作成がトリガーされmす｡ 
+
+> [!NOTE]
+> 一時テーブルや外部テーブルに対して自動作成の統計が作成にされることはありません｡
+> 
+
+自動作成の統計は同期生成されるため､列にすべてに統計が作成されている場合は､クエリのパフォーマンスが多少低下することがあります｡ テーブルのサイズによって異なりますが､統計の作成には列 1 つあたり数秒を要します｡ 性能低下の測定､特に性能ベンチマーク時の測定を回避するには､システムをプロファイルする前にベンチマーク用ワークロード実行することによって統計を先に作成しておくようにしてください｡
+
+> [!NOTE]
+> 統計の作成は､各ユーザー コンテキスト内の [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) にログ記録されます｡
+> 
+
+自動統計が作成されると､_WA_Sys_<16 進 8 桁の列 ID>_<16 進 8 桁のテーブル ID> の形式でログ記録されます｡ 作成済みの統計は次のコマンドで表示できます｡
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
 
 ## <a name="updating-statistics"></a>統計の更新
 
 ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。 一方、顧客テーブルの国列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの国しか含まれておらず、新しい国のデータを取り込んで複数の国のデータが格納されるようになった場合は、国列の統計を更新する必要があります。
+
+統計更新のレコメンデーションは次の通りです｡
+
+| **統計更新の頻度**  | 控えめ : 毎日 <br></br> データの読み込みまたは転換後 | | **サンプリング** |  行数 10 億行未満｡既定のサンプリングを利用 (20%) <br></br> 行数が 10 億行を超える場合は、2% の範囲に関する統計が適切 |
 
 クエリのトラブルシューティングを行うときに最初に尋ねる質問の 1 つが、「**統計は最新の状態ですか**」というものです。
 
@@ -359,7 +382,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="catalog-views-for-statistics"></a>統計のカタログ ビュー
 次のシステム ビューは、統計に関する情報を提供します。
 
-| カタログ ビュー | 説明 |
+| カタログ ビュー | [説明] |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |列ごとに 1 行。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |データベース内のオブジェクトごとに 1 行。 |
@@ -372,7 +395,7 @@ UPDATE STATISTICS dbo.table1;
 ### <a name="system-functions-for-statistics"></a>統計のシステム関数
 次のシステム関数は統計の操作に役立ちます。
 
-| システム関数 | 説明 |
+| システム関数 | [説明] |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |統計オブジェクトの最終更新日。 |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |統計オブジェクトで認識される値の分布に関する概要レベルの情報と詳細情報。 |
@@ -423,7 +446,7 @@ DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されている
 - 密度ベクトル
 - ヒストグラム
 
-ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。 SQL Data Warehouse では、統計オブジェクト内のデータを使用して基数推定値を計算します。
+ヘッダーには、統計に関するメタデータが含まれます。 ヒストグラムには、統計オブジェクトの最初のキー列の値の分布が表示されます。 密度ベクトルは、列間の相関関係を測定します。 SQL Data Warehouse では、統計オブジェクト内のデータを使用してカーディナリティ推定値を計算します。
 
 ### <a name="show-header-density-and-histogram"></a>ヘッダー、密度、ヒストグラムの表示
 次の簡単な例は、統計オブジェクトの 3 つの部分をすべて表示します。

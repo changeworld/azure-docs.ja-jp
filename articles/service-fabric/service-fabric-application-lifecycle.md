@@ -1,24 +1,25 @@
 ---
-title: "Service Fabric のアプリケーション ライフサイクル | Microsoft Docs"
-description: "Service Fabric アプリケーションの開発、デプロイ、テスト、アップグレード、保守、および削除について説明します。"
+title: Service Fabric のアプリケーション ライフサイクル | Microsoft Docs
+description: Service Fabric アプリケーションの開発、デプロイ、テスト、アップグレード、保守、および削除について説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 923778e54a1ae5967d681751841c3a2b3fb45130
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: e7dddfca3640615cb851fb6dce9eaa80260ccbf6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212563"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric アプリケーションのライフサイクル
 通常は、その他のプラットフォームと同様に、Azure Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを通過します。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 この記事では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズでさまざまなロールがその API をどのように使用するかを示します。
