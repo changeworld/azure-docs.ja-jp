@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/17/2018
 ms.author: curtand
-ms.reviewer: piotrci
+ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 43f364ed7e8539397fe8662a8c75804883a82e4f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303370"
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
 Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
@@ -278,7 +279,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
  domainName | 任意の文字列値 | (device.domainName -eq "contoso.com")
- enrollmentProfileName | Apple Device Enrollment Profile 名 | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Apple デバイス登録プロファイルまたは Windows Autopilot プロファイルの名前 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
  organizationalUnit | オンプレミスの Active Directory で設定される組織単位の名前と一致する任意の文字列値 | (device.organizationalUnit -eq "US PCs")

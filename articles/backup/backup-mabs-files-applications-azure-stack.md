@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/11/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 99ac43efa5d3211bbe2d790f28532e682058313c
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34075879"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196714"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack 上のファイルとアプリケーションのバックアップ
 Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上で実行されているすべてのアプリケーションを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
@@ -65,7 +65,7 @@ Azure Backup Server は、運用の復旧のために、仮想マシンに接続
 
 バックアップ データを Azure に保存すると、Azure Stack 上のバックアップ インフラストラクチャが減ります。 5 日間を超えるデータの場合は、Azure に保存するようにしてください。
 
-Azure にバックアップ データを保存するには、Recovery Services コンテナーを作成または使用します。 Azure Backup Server ワークロードのバックアップを準備するときに、[Recovery Services コンテナー](backup-azure-microsoft-azure-backup.md#recovery-services-vault)を構成します。 構成が完了した後は、バックアップ ジョブが実行されるたびに、コンテナーに復旧ポイントが作成されます。 各 Recovery Services コンテナーは、最大 9999 個の復旧ポイントを保持します。 作成された復旧ポイントの数と保持期間に応じて、バックアップ データを長年にわたって保持することができます。 たとえば、毎月の復旧ポイントを作成して 5 年間保持することができます。
+Azure にバックアップ データを保存するには、Recovery Services コンテナーを作成または使用します。 Azure Backup Server ワークロードのバックアップを準備するときに、[Recovery Services コンテナーを構成](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)します。 構成が完了した後は、バックアップ ジョブが実行されるたびに、コンテナーに復旧ポイントが作成されます。 各 Recovery Services コンテナーは、最大 9999 個の復旧ポイントを保持します。 作成された復旧ポイントの数と保持期間に応じて、バックアップ データを長年にわたって保持することができます。 たとえば、毎月の復旧ポイントを作成して 5 年間保持することができます。
  
 ### <a name="using-sql-server"></a>SQL Server の使用
 Azure Backup Server データベースにリモート SQL Server を使用する場合は、SQL Server を実行する Azure Stack VM のみを選択します。

@@ -6,24 +6,25 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/17/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356445"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Azure ファイルを含む永続ボリューム
 
-永続ボリュームとは、Kubernetes クラスターで使用するためにプロビジョニングされたストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 このドキュメントでは、、Azure ファイル共有を AKS クラスター内の Kubernetes 永続ボリュームとして動的にプロビジョニングする方法について詳しく説明します。
+永続ボリュームとは、Kubernetes クラスターで使用するために作成されたストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的に作成できます。 このドキュメントでは、永続ボリュームとしての Azure ファイル共有の**動的な作成**について詳しく説明します。
 
-Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
+静的な作成など、Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
 
 ## <a name="create-storage-account"></a>[ストレージ アカウントの作成]
 
-Azure ファイル共有を Kubernetes ボリュームとして動的にプロビジョニングするときは、AKS クラスターと同じリソース グループに含まれている限り、任意のストレージ アカウントを使用できます。 必要であれば、AKS クラスターと同じリソース グループ内にストレージ アカウントを作成します。
+Azure ファイル共有を Kubernetes ボリュームとして動的に作成するときは、AKS クラスターと同じリソース グループ内にある限り、任意のストレージ アカウントを使用できます。 必要であれば、AKS クラスターと同じリソース グループ内にストレージ アカウントを作成します。
 
 適切なリソース グループを識別するには、[az group list][az-group-list] コマンドを使用します。
 
@@ -31,7 +32,7 @@ Azure ファイル共有を Kubernetes ボリュームとして動的にプロ�
 az group list --output table
 ```
 
-`MC_clustername_clustername_locaton` のような名前のリソース グループを検索します。clustername は AKS クラスターの名前、location はクラスターが展開されている Azure リージョンです。
+`MC_clustername_clustername_locaton` のような名前のリソース グループを探します。
 
 ```
 Name                                 Location    Status
@@ -76,9 +77,9 @@ kubectl apply -f azure-file-sc.yaml
 
 永続ボリューム要求 (PVC) は、ストレージ クラス オブジェクトを使用して、Azure ファイル共有を動的にプロビジョニングします。
 
-次のマニフェストを使用すると、サイズが `5GB` で `ReadWriteOnce` アクセスの永続ボリューム要求を作成できます。
+次の YAML を使うと、サイズが `5GB` で `ReadWriteOnce` アクセスの永続ボリューム要求を作成できます。 アクセス モードについて詳しくは、[Kubernetes 永続ボリューム][ access-modes]のドキュメントをご覧ください。
 
-`azure-file-pvc.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 `storageClassName` が最後の手順で作成したストレージ クラスと一致していることを確認します。
+`azure-file-pvc.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `storageClassName` が最後の手順で作成したストレージ クラスと一致していることを確認します。
 
 ```yaml
 apiVersion: v1
@@ -104,9 +105,9 @@ kubectl apply -f azure-file-pvc.yaml
 
 ## <a name="using-the-persistent-volume"></a>永続ボリュームの使用
 
-次のマニフェストでは、永続ボリューム要求 `azurefile` を使用して、`/mnt/azure` パスに Azure ファイル共有をマウントするポッドが作成されます。
+次の YAML は、永続ボリューム要求 `azurefile` を使って、`/mnt/azure` パスに Azure ファイル共有をマウントするポッドを作成します。
 
-`azure-pvc-files.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 `claimName` が最後の手順で作成したPVC と一致していることを確認します。
+`azure-pvc-files.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `claimName` が最後の手順で作成したPVC と一致していることを確認します。
 
 ```yaml
 kind: Pod
@@ -138,7 +139,7 @@ kubectl apply -f azure-pvc-files.yaml
 
 fileMode と dirMode の既定値は、次の表に示すように Kubernetes のバージョンによって異なります。
 
-| バージョン | 値 |
+| version | value |
 | ---- | ---- |
 | v1.6.x、v1.7.x | 0777 |
 | v1.8.0 - v1.8.5 | 0700 |
@@ -146,7 +147,7 @@ fileMode と dirMode の既定値は、次の表に示すように Kubernetes �
 | v1.9.0 | 0700 |
 | v1.9.1 以上 | 0755 |
 
-バージョン 1.8.5 以上のクラスターを使用している場合は、マウント オプションをストレージ クラス オブジェクトに指定できます。 次の例では、`0777`が設定されます。
+バージョン 1.8.5 以降のクラスターを使い、ストレージ クラスに永続ボリュームを動的に作成している場合は、ストレージ クラスのオブジェクトに対してマウント オプションを指定できます。 次の例では、`0777`が設定されます。
 
 ```yaml
 kind: StorageClass
@@ -163,6 +164,29 @@ parameters:
   skuName: Standard_LRS
 ```
 
+バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成している場合は、`PersistentVolume` オブジェクトに対してマウント オプションを指定する必要があります。 永続ボリュームの静的作成について詳しくは、[静的な永続ボリューム][pv-static]に関するページをご覧ください。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azure-secret
+    shareName: azurefile
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  ```
+
 バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、`runAsUser` の値を `0` に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
@@ -173,7 +197,7 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 > [Azure Files 対応の Kubernetes プラグイン][kubernetes-files]
 
 <!-- LINKS - external -->
-[access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+[access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
@@ -181,6 +205,7 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 [kubernetes-security-context]: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create

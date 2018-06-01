@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs"
-description: "Azure Active Directory と HR2day by Merces の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs'
+description: Azure Active Directory と HR2day by Merces の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: fae6a376d4a53a23e22e585c63d97f22ca76c66d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b6f839ace5d80d41b242992feba8dea546b51c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34340874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル: Azure Active Directory と HR2day by Merces の統合
 
@@ -29,7 +30,7 @@ HR2day by Merces と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に HR2day by Merces にサインオンできるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +64,11 @@ Azure AD への HR2day by Merces の統合を構成するには、ギャラリ�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. [検索] ボックスに、「 **HR2day by Merces**」と入力します。
 
@@ -110,7 +111,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     ![Configure single sign-on](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenantname>.force.com/<instancename>` という形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<tenantname>.force.com/<instancename>` という形式で URL を入力します。
 
     b. **[識別子]** ボックスに、`https://hr2day.force.com/<companyname>` という形式で URL を入力します。
 
@@ -138,7 +139,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
     | ------------------- | -------------------- |    
     | ATTR_LOGINCLAIM | join([mail],"102938475Z","@" |
     
-      a. **[属性の追加]** ダイアログを開くには、**[属性の追加]** を選びます。
+      a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** ダイアログを開くには、**[属性の追加]** を選びます。
 
     ![Configure single sign-on](./media/active-directory-saas-hr2day-tutorial/tutorial_attribute_04.png)
 
@@ -152,7 +153,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     e. **[文字列 2]** にで、HR2day チームから提供された一意識別子を入力します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[区切り記号]** ボックスに「**@**」と入力します。
+    f. **[区切り記号]** ボックスに「**@**」と入力します。
     
     g. **[OK]** を選びます。
 
@@ -196,13 +197,13 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hr2day-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**メール アドレス**を入力します。
 
     c. **[パスワードを表示]** を選び、パスワードを書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-an-hr2day-by-merces-test-user"></a>HR2day by Merces テスト ユーザーの作成
 
@@ -223,7 +224,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[HR2day by Merces]**を選択します。
+2. アプリケーションの一覧で **[HR2day by Merces]** を選択します。
 
     ![Configure single sign-on](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
@@ -250,7 +251,7 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

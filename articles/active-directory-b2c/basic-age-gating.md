@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d6804f7e546547d734f966656362111b31078a4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206448"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261284"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Azure AD B2C で年齢制限を使用する
 
@@ -48,25 +48,22 @@ ms.locfileid: "33206448"
 ユーザー フローで年齢制限が有効になると、ユーザー エクスペリエンスが変化します。  ユーザーは、サインアップ時に、ユーザー フローに対して構成されたユーザー属性と共に、生年月日と居住国が求められるようになります。  サインイン時には、これまでに生年月日と居住国を入力していないユーザーは、次回サインイン時にこの情報を求められます。  これらの 2 つの値から、Azure AD B2C は、ユーザーが未成年者かどうかを特定し、`ageGroup` フィールドを更新します。この値は `null`、`Undefined`、`Minor`、`Adult`、`NotAdult` になります。  その後、`ageGroup` フィールドと `consentProvidedForMinor` フィールドは `legalAgeGroupClassification` の計算に使用されます。 
 
 ##<a name="age-gating-options"></a>年齢制限のオプション
-Azure AD B2C で保護者の同意なしに未成年者をブロックまたは許可するか、アプリケーションに未成年者の扱いを決定させるかを選択することができます。  
+Active Directory B2C で保護者の同意なしに未成年者をブロックまたは許可するか、アプリケーションに未成年者の扱いを決定させるかを選択することができます。  
 
 ###<a name="allowing-minors-without-parental-consent"></a>保護者の同意がない未成年者を許可する
-サインアップ、サインイン、またはその両方を伴うユーザー フローでは、同意のない未成年者にアプリケーションの使用を許可することを選択できます。  保護者の同意がない未成年者については、通常どおりにサインインまたはサインアップし、`legalAgeGroupClassification` 要求を含む ID トークンを発行できます。  この要求を使用することで、保護者の同意を得るなど、このようなユーザーのエクスペリエンスを選択できます (さらに、`consentProvidedForMinor` フィールドを更新できます)。
+サインアップ、サインイン、またはその両方を許可するユーザー フローでは、同意のない未成年者にアプリケーションの使用を許可することを選択できます。  保護者の同意がない未成年者は、通常どおりにサインインまたはサインアップすることが許可され、Active Directory B2C は`legalAgeGroupClassification` 要求を含む ID トークンを発行します。  この要求を使用することで、保護者の同意を得るなど、このようなユーザーのエクスペリエンスを選択できます (さらに、`consentProvidedForMinor` フィールドを更新できます)。
 
 ###<a name="blocking-minors-without-parental-consent"></a>保護者の同意がない未成年者をブロックする
-サインアップ、サインイン、またはその両方を伴うユーザー フローでは、同意のない未成年者にアプリケーションの使用をブロックすることを選択できます。  ブロックされているユーザーを Azure AD B2C で処理するためのオプションは 2 つあります。
+サインアップ、サインイン、またはその両方を許可するユーザー フローでは、アプリケーションからの同意のない未成年者をブロックすることを選択できます。  ブロックされているユーザーを Azure AD B2C で処理するためのオプションは 2 つあります。
 * JSON をアプリケーションに再度送信する - このオプションでは、未成年者がブロックされたという応答をアプリケーションに再度送信します。
 * エラー ページを表示する - アプリケーションにアクセスできないことを知らせるページがユーザーに表示されます。
 
 ##<a name="known-issues"></a>既知の問題
-###<a name="customization-unavailable-for-new-pages"></a>新しいページのカスタマイズを利用できない
-年齢制限を有効にしたときにユーザー フローで使用できる新しいページが 2 つあります。  これらのページはサインイン時に国と生年月日を収集するためのもので、エラー ページは、ページ レイアウトまたは言語のカスタマイズでは使用できません。  このオプションは、今後の更新で利用可能になる予定です。
-
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>未成年者がブロックされる場合の応答の形式
 現在、この応答の形式は正しくありません。このバグは今後の更新で解決される予定です。
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>セットアップ時に追加された特定の属性を削除するとディレクトリで年齢制限を使用できなくなる
-年齢制限の設定では、`Properties` のオプションを使用してディレクトリを構成しました。  `legalCountry` または `dateOfBirth` を削除した場合、テナントでは年齢制限を使用できなくなります。また、これらのプロパティを再作成することはできません。
+年齢制限の設定では、`Properties` のオプションを使用してディレクトリを構成しました。  グラフから `legalCountry` または `dateOfBirth` を削除した場合、ディレクトリで年齢制限を使用できなくなります。また、これらのプロパティを再作成することはできません。
 
 ###<a name="list-of-countries-is-incomplete"></a>国の一覧が不完全である
 現在、legalCountry の国の一覧は不完全なため、今後の更新で残りの国を追加する予定です。

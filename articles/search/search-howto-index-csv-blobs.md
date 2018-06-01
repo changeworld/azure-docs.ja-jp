@@ -9,26 +9,24 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: dfb1bd48a47e45363e8761a3d79901e5171b37d1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bf65ab7858ba792418e325e7a025ee1bd88bbb27
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363038"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成
-既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストがあるとします。 
+既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストを解析し、それぞれが "id"、"datePublished"、"tags" フィールドを含む 2 つのドキュメントに格納するような場合です。 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-この場合、区切りテキストを解析して、"id"、"datePublished"、"tags" の各フィールドがそれぞれ含まれた 2 つのドキュメントにすることができます。
-
 この記事では、Azure Search BLOB インデクサーを使用して CSV BLOB を解析する方法について説明します。 
 
 > [!IMPORTANT]
-> 現在この機能はプレビュー版です。 バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。 
-> 
+> この機能は現在パブリック プレビューなので、運用環境では使わないでください。 詳しくは、[REST api-version 2017-11-11-Preview](search-api-2017-11-11-preview.md) に関するページをご覧ください。 
 > 
 
 ## <a name="setting-up-csv-indexing"></a>CSV インデックス作成の設定
@@ -52,10 +50,10 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> 現在サポートされているのは、UTF-8 エンコードだけです。 他のエンコードのサポートが必要な場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+> 現在サポートされているのは、UTF-8 エンコードだけです。 他のエンコードのサポートが必要な場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) で投票してください。
 
 > [!IMPORTANT]
-> 区切りテキスト解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が CSV になると見なされます。 CSV と CSV 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+> 区切りテキスト解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が CSV になると見なされます。 CSV と CSV 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) で投票してください。
 > 
 > 
 
@@ -64,7 +62,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
 データソース: 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -77,7 +75,7 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
 インデクサー:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -89,5 +87,5 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
     }
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
-ご希望の機能や品質向上のアイデアがありましたら、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice](https://feedback.azure.com/forums/263029-azure-search/) までお寄せください。
 

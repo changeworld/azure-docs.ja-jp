@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ec330570604494503de2fa3f5484a1e41ddf4603
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943995"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271962"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -35,6 +35,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
   - ローカル管理者アカウントへの依存度を低減することで、資格情報の損失/漏洩や、セキュリティ性の弱い資格情報をユーザーが設定することを憂慮する必要がなくなります。
   - Azure AD ディレクトリ用に設定されたパスワードの複雑性と、パスワードの有効期間ポリシーを使用して、Linux VM もセキュリティ保護できます。
   - Azure 仮想マシンへのログイン セキュリティをさらに強化するために、多要素認証を設定することができます。
+  - Azure Active Directory を使用して Linux VM にログインする機能は、[フェデレーション サービス](../../active-directory/connect/active-directory-aadconnectfed-whatis.md)を使用するお客様も使用できます。
 
 - **シームレスなコラボレーション:** ロールベースのアクセス制御 (RBAC) を使用することで、どのユーザーが、正規のユーザーまたは管理者権限を持つユーザーとして特定の VM にサインインできるかを指定できます。 ユーザーがチームに参加またはチームから脱退する場合は、適切なアクセス権が付与されるよう VM の RBAC ポリシーを更新できます。 この操作は、不要な SSH 公開キーを削除して VM をスクラブするよりも簡単です。 従業員が退職し、そのユーザー アカウントが無効化または Azure AD から削除されると、リソースにアクセスできなくなります。
 
@@ -46,11 +47,11 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 | --- | --- |
 | CentOS | CentOS 6.9 および CentOS 7.4 |
 | RedHat Enterprise Linux | RHEL 7 | 
-| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 および Ubuntu Server 17.10 |
+| Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 17.10 |
 
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 
-- すべてのパブリック Azure リージョン
+- すべてのグローバル Azure リージョン
 
 >[!IMPORTANT]
 > このプレビュー機能を使用するには、サポートされている Linux ディストリビューションおよびサポートされている Azure リージョンのみに展開してください。 この機能は、Azure Government やソブリン クラウドではサポートされていません。
@@ -167,6 +168,10 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 - SSH プロンプトに入力したサインイン名が正しいことを確認します。 サインイン名の入力ミスにより、SSH プロンプトに指定したサインイン名と Azure AD へのサインインに使用するアカウントの間で不整合が発生している場合があります。 たとえば、*azuresuer@contoso.onmicrosoft.com* を *azureuser@contoso.onmicrosoft.com* と入力した場合です。
 - 複数のユーザー アカウントを使用している場合は、Azure AD にサインインするときに、ブラウザーのウィンドウに別のユーザー アカウントを入力していないことを確認します。
 - Linux は、大文字と小文字を区別するオペレーティング システムです。 'Azureuser@contoso.onmicrosoft.com' と 'azureuser@contoso.onmicrosoft.com' の差により、不一致が発生します。 SSH プロンプトに大文字と小文字を正しく入力して UPN を指定してください。
+
+## <a name="preview-feedback"></a>プレビューのフィードバック
+
+[Azure AD フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)で、このプレビュー機能に関するフィードバックを共有するか、その使用に関する問題を報告してください
 
 ## <a name="next-steps"></a>次の手順
 

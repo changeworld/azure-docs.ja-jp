@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363963"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -51,16 +52,18 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
 
 ## <a name="data-collection"></a>データ収集
-Security Center では、仮想マシンからデータを収集して、そのセキュリティ状態の評価、セキュリティ推奨事項の提供、脅威についての警告を行います。 最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 Security Center のポリシーでデータ収集を有効にすることもできます。
+Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM) と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
 
 ### <a name="how-do-i-disable-data-collection"></a>データ収集を無効にするにはどうしたらよいですか。
-Azure Security Center の Free レベルを使用している場合は、仮想マシンからのデータ収集をいつでも無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。 サブスクリプションのデータ収集は、セキュリティ ポリシーで無効にできます。 ([Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します)。サブスクリプションを選択すると、新しいブレードが開き、**データ収集**をオフにするオプションが表示されます。
+自動プロビジョニングは、既定ではオフです。 リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 セキュリティ アラートや、システムの更新プログラム、OS の脆弱性、Endpoint Protection に関する推奨事項を取得するために、自動プロビジョニングを使用することを強くお勧めします。
+
+データ収集を無効にするには、[Azure portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシーの選択]** の順に選びます。 自動プロビジョニングを無効にするサブスクリプションを選択します。 サブスクリプションを選ぶと、**[セキュリティ ポリシー] - [データ収集]** が開きます。 **[自動プロビジョニング]** で **[オフ]** を選びます。
 
 ### <a name="how-do-i-enable-data-collection"></a>データ収集を有効にするにはどうしたらよいですか。
-Azure サブスクリプションのデータ収集の有効化は、セキュリティ ポリシーで行うことができます。 データ収集を有効にするには、 [Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します。 **[データ収集]** を **[オン]** に設定します。
+Azure サブスクリプションのデータ収集の有効化は、セキュリティ ポリシーで行うことができます。 データ収集を有効にするには、 [Azure portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[セキュリティ ポリシー]** の順に選びます。 自動プロビジョニングを有効にするサブスクリプションを選択します。 サブスクリプションを選ぶと、**[セキュリティ ポリシー] - [データ収集]** が開きます。 **[自動プロビジョニング]** で **[オン]** を選びます。
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>データ収集を有効にするとどうなりますか。
-データ収集を有効にすると、サブスクリプションにデプロイされる既存の仮想マシンと新しくサポートされる仮想マシンすべてで Microsoft Monitoring Agent が自動的にプロビジョニングされます。
+自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をプロビジョニングします。 自動プロビジョニングを強くお勧めしますが、エージェントを手動でインストールすることもできます。 [Microsoft Monitoring Agent の拡張機能をインストールする方法を参照してください](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。
 
 エージェントで、プロセス作成イベント 4688 とイベント 4688 内の *CommandLine* フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。 新しいプロセスごとに記録される詳細については、[4688 の説明フィールド](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)を参照してください。 また、エージェントは VM に作成された 4688 イベントも収集し、検索に保存します。
 
@@ -87,7 +90,7 @@ Azure Security Center で有効になっているセキュリティ ポリシー
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
 
 * 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
-* 仮想マシンへのトラフィックを制御するために [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) とルールを構成する
+* 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とルール
 * Web アプリケーションを対象とする攻撃から保護するための Web アプリケーション ファイアウォールをプロビジョニングする
 * 不足しているシステムの更新をデプロイする
 * 推奨基準と一致しない OS 構成に対処する
@@ -122,7 +125,7 @@ Azure Security Center は、次の Azure リソースを監視します。
 
 ## <a name="virtual-machines"></a>Virtual Machines
 ### <a name="what-types-of-virtual-machines-are-supported"></a>サポートされる仮想マシンのタイプは何ですか。
-監視と推奨事項は、[クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
+監視と推奨事項は、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
 
 サポートされるプラットフォームの一覧については、「[Azure Security Center でサポートされているプラットフォーム](security-center-os-coverage.md)」を参照してください。
 

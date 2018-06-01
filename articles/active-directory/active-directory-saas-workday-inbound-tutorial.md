@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258999"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -804,20 +805,13 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 * EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
 
-## <a name="gdpr-compliance"></a>GDPR コンプライアンス
+## <a name="gdpr-information"></a>GDPR 情報
 
 [一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とするルールです。 
 
-Azure AD プロビジョニング サービスは、Microsoft の他のサービスおよび機能と共に GDPR に準拠しています。 Microsoft の GDPR ストーリーについて詳しくは、[サービス利用規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に関するページをご覧ください。
+Microsoft の GDPR ストーリーについて詳しくは、[サービス利用規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に関するページをご覧ください。
 
-ただし、Active Directory の Workday プロビジョニング ソリューションでは、ドメインに参加しているサーバーに同期エージェントをインストールする必要があるため、GDPR 準拠を維持していることの監視が必要な場合があります。
- 
-エージェントはログを **Windows イベント ログ**に作成し、ここには個人を特定できる情報が含まれることがあります。
-
-GDPR 準拠を維持する方法は 2 つあります。
-
-1. 要求を受けた際、個人のデータを抽出し、Windows イベント ログからその個人のデータを削除する。 
-2. AADSyncAgent プロセスに由来する Windows イベント ログのリテンション期間を 48 時間未満に維持する
+Active Directory のための Workday プロビジョニング ソリューションには、ドメインに参加しているサーバーに同期エージェントがインストールされている必要があります。このエージェントは、個人を特定できる情報が含まれている可能性のあるログを **Windows イベント ログ**内に作成することに注意してください。
 
 Windows イベント ログのデータ保有期間の構成方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/library/cc952132.aspx)」をご覧ください。 Windows イベント ログの一般情報については、[この記事](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx)をご覧ください。
 
@@ -827,4 +821,3 @@ Windows イベント ログのデータ保有期間の構成方法について�
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 * [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](active-directory-saas-workday-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](active-directory-saas-tutorial-list.md)
-

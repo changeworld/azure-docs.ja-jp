@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合 | Microsoft Docs"
-description: "Azure Active Directory と Perception United States (非 UltiPro) の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合 | Microsoft Docs'
+description: Azure Active Directory と Perception United States (非 UltiPro) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d94d233a12e51bf851a791fda481b91c513d64b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da0529897bb02745a2346f6a0282be86923468ba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -30,7 +31,7 @@ Perception United States (非 UltiPro) と Azure AD の統合には、次の利�
 - ユーザーが自分の Azure AD アカウントで自動的に Perception United States (非 UltiPro) にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +109,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     ![[Perception United States (非 UltiPro) のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://perception.kanjoya.com/sp`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://perception.kanjoya.com/sp`
 
     b. **[応答 URL]** ボックスに、`https://perception.kanjoya.com/sso?idp=<entity_id>` のパターンを使用して URL を入力します。
 
@@ -125,7 +126,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
 6. **[Perception United States (非 UltiPro) 構成]** セクションで、**[Perception United States (非 UltiPro) の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から **SAML エンティティ ID** をコピーします。
 
-    a. **Perception United States (非 UltiPro)** アプリケーションでは、先ほどコピーした **SAML エンティティ ID** 値を URI でエンコードする必要があります。 URI でエンコードされた値を取得するには、**http://www.url-encode-decode.com/** リンクを使用してください。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **Perception United States (非 UltiPro)** アプリケーションでは、先ほどコピーした **SAML エンティティ ID** 値を URI でエンコードする必要があります。 URI でエンコードされた値を取得するには、**http://www.url-encode-decode.com/** リンクを使用してください。
 
     b. URI でエンコードされた値を取得した後に、次の説明に従って、その値を**応答 URL** と結合します。
 
@@ -145,7 +146,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     ![Perception United States (非 UltiPro) ユーザー](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. **[Company Name]** ボックスに、**会社**の名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Company Name]** ボックスに、**会社**の名前を入力します。
     
     b. **[Account Name]** ボックスに、**アカウント**の名前を入力します。
 
@@ -157,7 +158,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     ![Perception United States (非 UltiPro) SSOConfig](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a. **[SAML NameID Type]** として **[EMAIL]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML NameID Type]** として **[EMAIL]** を選択します。
 
     b. **[SSO Configuration Name]** ボックスに**構成**の名前を入力します。
     
@@ -167,11 +168,11 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     e. **[Upload Again]** をクリックして、**メタデータ XML** ファイルをアップロードします。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Update]**をクリックします。
+    f. **[Update]** をクリックします。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -249,7 +250,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

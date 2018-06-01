@@ -12,13 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 77ce133232b63a590c6c7f9361d1ca456f484093
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2d332ce0da8622441d31a16a0addb9c06058998c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363296"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -106,12 +107,11 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 13.  VM にアクセスします。 RdAgent が実行されていて、ログが生成されていることがわかります。
 
-クラシック デプロイ モデルを使用して VM を作成した場合は、これで完了です。
-
+Resource Manager デプロイ モデルを使用して VM を作成した場合は、これで完了です。
 
 ### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>Azure Resource Manager で作成された VM に対して ProvisionGuestAgent プロパティを使用する
 
-Resource Manager デプロイ モデルを使用して VM を作成した場合は、Azure PowerShell モジュールを使用して **ProvisionGuestAgent** プロパティを更新します。 このプロパティによって、Azure は VM に VM エージェントがインストールされていることを認識します。
+クラシック モデルを使用して VM を作成した場合は、Azure PowerShell モジュールを使用して **ProvisionGuestAgent** プロパティを更新します。 このプロパティによって、Azure は VM に VM エージェントがインストールされていることを認識します。
 
 **ProvisionGuestAgent** プロパティを設定するには、Azure PowerShell で次のコマンドを実行します。
 

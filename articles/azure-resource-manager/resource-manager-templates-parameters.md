@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートの parameters セクション | Microsoft Docs"
-description: "宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの parameters セクションについて説明します。"
+title: Azure Resource Manager テンプレートの parameters セクション | Microsoft Docs
+description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの parameters セクションについて説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,17 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2018
+ms.date: 05/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 193e74d94017cf0ca8ec0600c7e5a3dc4b7a6dea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359205"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの parameters セクション
 テンプレートの parameters セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 特定の環境 (開発、テスト、運用など) に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 テンプレートでは必ずしもパラメーターを使用する必要はありませんが、パラメーターを使わなかった場合、常に同じリソースが同じ名前、同じ場所、同じプロパティでデプロイされます。
@@ -85,13 +86,13 @@ ms.lasthandoff: 01/22/2018
 | 要素名 | 必須 | [説明] |
 |:--- |:--- |:--- |
 | parameterName |[はい] |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| 型 |[はい] |パラメーター値の型。 使用できる型および値は、**string**、**secureString**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
+| 型 |[はい] |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
 | defaultValue |いいえ  |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ  |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ  |int 型パラメーターの最小値。 |
 | maxValue |いいえ  |int 型パラメーターの最大値。 |
-| minLength |いいえ  |文字列型、secureString 型、配列型パラメーターの長さの最小値。 |
-| maxLength |いいえ  |文字列型、secureString 型、配列型パラメーターの長さの最大値。 |
+| minLength |いいえ  |文字列型、securestring 型、配列型パラメーターの長さの最小値。 |
+| maxLength |いいえ  |文字列型、securestring 型、配列型パラメーターの長さの最大値。 |
 | 説明 |いいえ  |ポータルを通じてユーザーに表示されるパラメーターの説明。 |
 
 ## <a name="template-functions-with-parameters"></a>テンプレート関数とパラメーター
@@ -225,7 +226,7 @@ parameters セクションで `reference` 関数を使用することはでき�
    }
    ```
 
-* すべてのパスワードおよびシークレットには **SecureString** を使用します。 JSON オブジェクトに機密データを渡す場合は、**secureObject** 型を使用します。 secureString 型または secureObject 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
+* すべてのパスワードおよびシークレット情報には **securestring** を使用してください。 JSON オブジェクトに機密データを渡す場合は、**secureObject** 型を使用します。 securestring 型または secureObject 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
    
    ```json
    "parameters": {

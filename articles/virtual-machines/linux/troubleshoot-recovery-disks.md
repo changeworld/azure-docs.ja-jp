@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: e96f31b3e91066bfc04af62c2bf82db200f35002
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bff31dafdf3263ec189f67da7de8fea6eb3d2662
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271488"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
 Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI 2.0 で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
@@ -31,6 +32,8 @@ Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが�
 3. トラブルシューティング用 VM に接続します。 元の仮想ハード ディスクで、ファイルを編集するか、任意のツールを実行して問題を解決します。
 4. 仮想ハード ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。
 5. 元の仮想ハード ディスクを使用して VM を作成します。
+
+マネージド ディスクを使用する VM の場合は、「[新しい OS ディスクを接続することでマネージド ディスク VM のトラブルシューティングを行う](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk)」をご覧ください。
 
 上記のトラブルシューティング手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしておく必要があります。
 
@@ -183,6 +186,13 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
 ```
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>新しい OS ディスクを接続することでマネージド ディスク VM のトラブルシューティングを行う
+1. 影響を受けるマネージド ディスク Windows VM を停止します。
+2. マネージド ディスク VM の OS ディスクの[マネージド ディスク スナップショットを作成](../windows/snapshot-copy-managed-disk.md)します。
+3. [スナップショットから新しいマネージド ディスクを作成](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)します。
+4. [マネージド ディスクを VM のデータ ディスクとして接続](../windows/attach-disk-ps.md)します。
+5. [手順 4 のデータ ディスクを OS ディスクに変更](../windows/os-disk-swap.md)します。
 
 ## <a name="next-steps"></a>次の手順
 VM への接続の問題が発生した場合は、[Azure VM への SSH 接続のトラブルシューティング](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Linux VM でのアプリケーションの接続の問題のトラブルシューティング](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。

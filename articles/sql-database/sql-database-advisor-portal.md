@@ -3,17 +3,18 @@ title: パフォーマンスに関する推奨事項の適用 - Azure SQL Databa
 description: Azure Portal を使用して、Azure SQL Database のパフォーマンスを最適化できるパフォーマンスの推奨事項を調べます。
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364354"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -38,7 +39,7 @@ Azure Portal でパフォーマンスに関する推奨事項を調べるには�
 | 影響 | [説明] |
 |:--- |:--- |
 | 高 |高い影響を及ぼすお勧め候補は、パフォーマンスに最も重要な影響を与えます。 |
-| 中 |中程度の影響を及ぼすおすすめ候補は、パフォーマンスを向上しますが、それほど著しい向上ではありません。 |
+| Medium |中程度の影響を及ぼすおすすめ候補は、パフォーマンスを向上しますが、それほど著しい向上ではありません。 |
 | 低 |低い影響を及ぼすおすすめ候補は、推奨事項を行わない場合よりも優れたパフォーマンスを提供しますが、大きくは改善されない可能性があります。 |
 
 
@@ -98,10 +99,14 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
     ![Advisor settings](./media/sql-database-advisor-portal/settings.png)
 2. 自動化するアクションを選択します。
    
-    ![推奨インデックス](./media/sql-database-advisor-portal/automation.png)
+    ![推奨インデックス](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> **DROP_INDEX** オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。
+>
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>推奨される T-SQL スクリプトを手動で実行する
-任意の推奨インデックスを選択し、 **[スクリプトの表示]**をクリックします。 データベースに対してこのスクリプトを実行し、推奨インデックスを手動で適用します。
+任意の推奨インデックスを選択し、 **[スクリプトの表示]** をクリックします。 データベースに対してこのスクリプトを実行し、推奨インデックスを手動で適用します。
 
 *手動で実行されたインデックスは、パフォーマンスへの影響についてサービスによる監視や検証が行われません。* そのため、作成後にこれらのインデックスを監視して、パフォーマンスが向上するかどうかを検証し、必要に応じて調整または削除することをお勧めします。 インデックスの作成方法の詳細については、「 [CREATE INDEX (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)」を参照してください。
 

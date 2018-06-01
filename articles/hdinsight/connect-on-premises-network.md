@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51307e1bdb31d902636787790d1c4f1248f3886b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361922"
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -336,6 +337,6 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
 
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
 
-* ユーザー定義のルートの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」に関するページをご覧ください。
+* ユーザー定義のルートについて詳しくは、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。

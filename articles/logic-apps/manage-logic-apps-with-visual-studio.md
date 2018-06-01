@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: db847d5fa3d5f5b2b2f0293f1756226870a8b47e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7914bce6ca71b1b3f00c69fb6f33154f0f52dc7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362198"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -46,7 +47,7 @@ ms.lasthandoff: 03/16/2018
     Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、<a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">この拡張機能を Visual Studio 内からインストールする方法</a>を確認できます。 
     インストールが完了したら、必ず Visual Studio を再起動してください。
 
-* 組み込みのロジック アプリ デザイナーを使用する際の Web へのアクセス
+* 組み込みの Logic Apps デザイナーを使用する際の Web へのアクセス
 
   デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティとデータを読み取るためには、インターネット接続が必要です。 
   たとえば、Dynamics CRM Online コネクタを使用する場合、デザイナーは CRM インスタンスの使用可能な既定およびカスタムのプロパティをチェックします。
@@ -84,7 +85,7 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
   ![Azure Portal から展開済みのロジック アプリを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   ロジック アプリ デザイナーでロジック アプリを開いた後、デザイナーの下端で **[コード ビュー]** を選んで、基になっているロジック アプリの定義構造を確認することができます。 
+   Logic Apps デザイナーでロジック アプリを開いた後、デザイナーの下端で **[コード ビュー]** を選んで、基になっているロジック アプリの定義構造を確認することができます。 
    ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)に関するページをご覧ください。
 
 <a name="download-logic-app"></a>

@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2016
+ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 1cdf33632c282a872d0eb83dd1a1b1c639fc14bd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 661d2f789ace8da68b6d65609d4584a11967a01f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366615"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>PowerShell を使用した静的内部プライベート IP アドレスの設定方法 (クラシック)
 ほとんどの場合は、仮想マシンに対して静的内部 IP アドレスを指定する必要はありません。 仮想ネットワーク内の VM は、指定された範囲の内部 IP アドレスを自動的に受け取るからです。 ただし、場合によっては、特定の VM に対して静的 IP アドレスを指定したほうが効果的な場合があります。 たとえば、VM が、DNS を実行したり、ドメイン コントローラーとして機能する場合です。 静的内部 IP アドレスは、VM が停止またはプロビジョニング解除された状態になっても VM で保持されます。 
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、[Resource Manager デプロイメント モデル](virtual-networks-static-private-ip-arm-ps.md)を使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、[Resource Manager デプロイ モデル](virtual-networks-static-private-ip-arm-ps.md)を使用することをお勧めします。
 > 
 > 
 

@@ -16,11 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ae24031922c2ef01c9274f6ecf572158a9a194d4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 01ddebd219a97a59ba3f979d32d6c563a0d31f8a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304115"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -33,6 +34,8 @@ ms.lasthandoff: 04/23/2018
 Service Bus のバインドは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="trigger"></a>トリガー
 
@@ -49,16 +52,22 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
-次の例は、Service Bus キュー メッセージを記録する [C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus キュー メッセージをログに記録する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
     [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
-    string myQueueItem, 
+    string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
     TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -66,7 +75,7 @@ public static void Run(
  
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
-次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、Service Bus キュー メッセージを記録します。
+次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この機能は[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus のキュー メッセージをログに記録します。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -88,9 +97,19 @@ public static void Run(
 C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(string myQueueItem, TraceWriter log)
+using System;
+
+public static void Run(string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
+    TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -124,7 +143,7 @@ let Run(myQueueItem: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
-次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、Service Bus キュー メッセージを記録します。 
+次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この機能は[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus のキュー メッセージをログに記録します。 
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -148,6 +167,9 @@ JavaScript スクリプト コードを次に示します。
 ```javascript
 module.exports = function(context, myQueueItem) {
     context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
     context.done();
 };
 ```
@@ -247,7 +269,30 @@ Azure Functions では、有害メッセージの処理を制御することも�
 
 ## <a name="trigger---peeklock-behavior"></a>トリガー - PeekLock 動作
 
-Functions ランタイムは、メッセージを [PeekLock モード](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)で受信します。 それは、関数が正常に終了した場合はメッセージに対して `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。 関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
+Functions ランタイムは、メッセージを [PeekLock モード](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)で受信します。 それは、関数が正常に終了した場合はメッセージに対して `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。 関数が実行されている限り、関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。 
+
+Functions 1.x では、*host.json* に `autoRenewTimeout` を構成できます。これは [OnMessageOptions.AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout?view=azure-dotnet#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout) にマップされます。 この設定に許可される最大値は、Service Bus のドキュメントに従って 5 分ですが、Functions の制限時間は既定の 5 分から 10 分に増やすことができます。 Service Bus 関数の場合は、Service Bus の更新制限を超えるので増やしません。
+
+## <a name="trigger---message-metadata"></a>トリガー - メッセージのメタデータ
+
+Service Bus トリガーには、いくつかの[メタデータ プロパティ](functions-triggers-bindings.md#binding-expressions---trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのプロパティです。
+
+|プロパティ|type|[説明]|
+|--------|----|-----------|
+|`DeliveryCount`|`Int32`|配信回数。|
+|`DeadLetterSource`|`string`|配信不能のソース。|
+|`ExpiresAtUtc`|`DateTime`|有効期限 (UTC)。|
+|`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
+|`MessageId`|`string`|有効になっている場合に、重複するメッセージを識別するために Service Bus が使用できるユーザー定義の値|
+|`ContentType`|`string`|アプリケーション固有のロジックのために送信者と受信者が利用するコンテンツ タイプ識別子。|
+|`ReplyTo`|`string`|キュー アドレスへの返信。|
+|`SequenceNumber`|`Int64`|Service Bus によってメッセージに割り当てられる一意の番号。|
+|`To`|`string`|送信先アドレス。|
+|`Label`|`string`|アプリケーション固有のラベル。|
+|`CorrelationId`|`string`|関連付け ID。|
+|`Properties`|`IDictionary<String,Object>`|アプリケーション固有のメッセージ プロパティ。|
+
+この記事の前半でこれらのプロパティを使用している[コード例](#trigger---example)を参照してください。
 
 ## <a name="trigger---hostjson-properties"></a>トリガー - host.json のプロパティ
 
@@ -404,7 +449,7 @@ let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = message;
+    context.bindings.outputSbQueue = message;
     context.done();
 };
 ```
@@ -415,9 +460,9 @@ module.exports = function (context, myTimer) {
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = [];
-    context.bindings.outputSbQueueMsg.push("1 " + message);
-    context.bindings.outputSbQueueMsg.push("2 " + message);
+    context.bindings.outputSbQueue = [];
+    context.bindings.outputSbQueue.push("1 " + message);
+    context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
 ```

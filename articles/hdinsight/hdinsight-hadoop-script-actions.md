@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271617"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>HDInsight の Windows ベースのクラスター用 Script Action スクリプトを開発する
 HDInsight 用の Script Action スクリプトを記述する方法について説明します。 Script Action スクリプトの使用方法については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。 Linux ベースの HDInsight クラスターに関する同様の記事については、「 [HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
@@ -103,7 +104,7 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 | Name | スクリプト |
 | --- | --- |
 | **Spark のインストール** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
-| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 [HDInsight クラスターでの R のインストールと使用][hdinsight-r-scripts]に関する記事を参照してください。 |
+| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 [HDInsight クラスターへの R のインストールと使用][hdinsight-r-scripts] に関するページをご覧ください。 |
 | **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
 | - **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
 
@@ -300,14 +301,12 @@ or
 ## <a name="see-also"></a>関連項目
 * [Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]
 * [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-* [HDInsight クラスターに R をインストールして使用する][hdinsight-r-scripts]
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
 * [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
 [powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->

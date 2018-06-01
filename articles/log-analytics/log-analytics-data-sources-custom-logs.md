@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361891"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics のカスタム ログ
 Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。  収集後、Log Analytics の [カスタム フィールド](log-analytics-custom-fields.md)機能を利用し、ログの各レコードを個別のフィールドに解析できます。
@@ -29,7 +30,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 - ログでは 1 行につき 1 エントリとするか、各エントリの先頭に次のいずれかの形式に一致するタイムスタンプを使用する必要があります。
 
-    YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM <br>Mon DD,YYYY HH:MM:SS
+    YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - ログ ファイルでは、新しいエントリでファイルが上書きされる巡回ログまたはログ ローテーションを許可しないでください。
 - ログ ファイルでは、ASCII または UTF-8 エンコードを使用する必要があります。  UTF-16 など他の形式はサポートされていません。
@@ -46,7 +47,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 1. Azure Portal で、**[Log Analytics]**、目的のワークスペース、**[詳細設定]** の順に選択します。
 2. **[データ]** > **[カスタム ログ]** をクリックします。
-3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]*チェック ボックスのチェックを外します。
+3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>手順 2. サンプル ログをアップロードし、解析する
@@ -85,7 +86,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 指定した名前は上述の種類のログに使用されます。  カスタム ログとして区別されるように常に _CL で終わります。
 
 1. ログの名前を入力します。  **\_CL** が接尾辞として自動的に追加されます。
-2. 任意で **[説明]**を追加します。
+2. 任意で **[説明]** を追加します。
 3. **[次へ]** をクリックし、カスタム ログ定義を保存します。
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>手順 5. カスタム ログが収集されていることを確認する

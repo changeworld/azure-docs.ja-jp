@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 67ffe826ba13576578e8f09e36f84128f4ceb0f2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366496"
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -30,9 +31,9 @@ ms.lasthandoff: 05/14/2018
 
 この記事では、仮想マシン (VM) にネットワーク セキュリティ グループ (NSG) を構成している場合に、VM の接続の問題が発生したときのトラブルシューティングに役立つ NSG の診断機能の概要を説明します。
 
-NSG では、仮想マシン (VM) を出入りするトラフィックのタイプを制御できます。 NSG は、Azure Virtual Network (VNet)、ネットワーク インターフェイス (NIC)、または両方のサブネットに適用できます。 NIC に効果的に規則を適用するには、NSG 内にある規則の集合体を NIC と接続しているサブネットに適用します。 場合によっては、これらのNSG 全体の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。  
+NSG では、仮想マシン (VM) を出入りするトラフィックのタイプを制御できます。 NSG は、Azure Virtual Network (VNet)、ネットワーク インターフェイス (NIC)、または両方のサブネットに適用できます。 NIC に効果的に規則を適用するには、NSG 内にある規則の集合体を NIC と接続しているサブネットに適用します。 場合によっては、これらのNSG 全体の規則が競合し、VM のネットワーク接続に影響を及ぼすことがあります。
 
-VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイ モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワーク](virtual-networks-overview.md)と[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)の概要に関する記事を参照してください。
+VM の NIC に適用されると、有効なセキュリティ規則を NSG からすべて表示できます。 この記事では、Azure Resource Manager デプロイ モデルで、これらの規則を使用して VM の接続問題をトラブルシューティングする方法について説明します。 VNet と NSG の概念については、[仮想ネットワークの概要](virtual-networks-overview.md)と[ネットワーク セキュリティ グループの概要](security-overview.md)に関する記事をご覧ください。
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング
 次のシナリオでは、一般的な接続の問題の例を示します。
@@ -66,7 +67,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
    * **[スコープ]:** 手順 3 で選択した「 *VM1*」に設定されています。
    * **[ネットワーク インターフェイス]:** *VM1-NIC1* を選択します。 VM には複数のネットワーク インターフェイス (NIC) を実装できます。 各 NIC には一意の有効なセキュリティ規則を使用できます。 トラブルシューティングを行うときは、それぞれの NIC の有効なセキュリティの規則の表示が必要になる場合があります。
    * **[Associated NSGs (関連付けられている NSG)]:** NSG は、NIC と NIC が接続されているサブネットの両方に適用できます。 この図では、NIC と接続しているサブネットの両方に NSG が適用されています。 NSG 名をクリックすると、NSG の規則を直接変更できます。
-   * **[VM1-nsg] タブ:** 図に表示されている規則の一覧は、NIC に適用された NSG です。 NSG の作成時には、複数の既定の規則が Azure によって作成されます。 既定の規則は削除できませんが、優先順位の高い規則を使ってオーバーライドできます。 既定の規則の詳細については、「 [NSG の概要](virtual-networks-nsg.md#default-rules) 」の記事をご覧ください。
+   * **[VM1-nsg] タブ:** 図に表示されている規則の一覧は、NIC に適用された NSG です。 NSG の作成時には、複数の既定の規則が Azure によって作成されます。 既定の規則は削除できませんが、優先順位の高い規則を使ってオーバーライドできます。 詳しくは、「[既定セキュリティ規則](security-overview.md#default-security-rules)」をご覧ください。
    * **[変換先] 列:** 列にテキストが入る規則と、アドレス プレフィックスが入る規則があります。 テキストは、セキュリティ規則の作成時に適用された既定のタグの名前です。 タグは、システムから提供された識別子で、複数のプレフィックスを表します。 *AllowInternetOutBound*などのタグ付きの規則を選択すると、 **アドレス プレフィックス** ブレードにプレフィックスの一覧が表示されます。
    * **[ダウンロード]:** 規則の一覧には多数の項目が含まれる場合があります。 **[ダウンロード]** をクリックしてファイルを保存すると、規則の .csv ファイルをダウンロードして、オフライン分析に使用できます。
    * **[AllowRDP]** 受信規則: この規則は VM への RDP 接続を許可します。

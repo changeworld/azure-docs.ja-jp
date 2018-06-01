@@ -207,7 +207,7 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 
 REST API の仕様の詳細については、[管理ディスク作成の REST API に関するドキュメント](/rest/api/manageddisks/disks/disks-create-or-update)を参照してください。 その他のシナリオや、テンプレートのデプロイ時に API に送信できる既定値や許容値についても説明されています。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 管理ディスクを使用した完全なテンプレートについては、次の Azure クイック スタート リポジトリのリンクを参照してください。
     * [管理ディスクを使用した Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -216,4 +216,4 @@ REST API の仕様の詳細については、[管理ディスク作成の REST A
 * 管理ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」のドキュメントを参照してください。
 * 仮想マシン リソースのテンプレートについては、[Microsoft.Compute/virtualMachines テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines) ドキュメントを参照してください。
 * ディスク リソースのテンプレートについては、[Microsoft.Compute/disks テンプレート リファレンス](/azure/templates/microsoft.compute/disks) ドキュメントを参照してください。
- 
+* Azure VM Scale Sets でマネージド ディスクを使う方法については、「[スケール セットでデータ ディスクを使用する](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md)」をご覧ください。

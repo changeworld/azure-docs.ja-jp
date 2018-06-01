@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 66032a68634be5b52bbfa544d0a3bcd3d1090652
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359987"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 05/14/2018
 >   
 > **Azure CDN from Verizon** プロファイルでは、CDN エンドポイントの作成後にエンドポイントの最適化を変更することはできません。
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>動的ファイルの配信を高速化する CDN エンドポイントを構成する
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>動的ファイルの配信を高速化する CDN エンドポイントの構成
 
 動的ファイルの配信を最適化するように CDN エンドポイントを構成するには、Azure Portal を使用するか、REST API またはいずれかのクライアント SDK を使用して同じことをプログラムで実行します。 
 

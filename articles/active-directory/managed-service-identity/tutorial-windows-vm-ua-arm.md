@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: b81d4b669898a7acc428fe22a070ccd76dc5e546
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a2225409e4cb50d91c09207ee70b76df12925192
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932465"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301213"
 ---
-# <a name="use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Windows VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスする
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル: Windows VM 上でユーザー割り当てマネージド サービス ID (MSI) を使用して Azure Resource Manager にアクセスする
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -81,7 +81,7 @@ New-AzureRmVm `
 ユーザー割り当て ID は、スタンドアロン Azure リソースとして作成されます。 [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) を使用して、Azure 内の Azure AD テナントで、複数の Azure サービス インスタンスに割り当てることができるユーザー ID が作成されます。
 
 > [!IMPORTANT]
-> ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前は 24 文字の長さに制限する必要があります。 アップデートは後ほどご確認ください。 詳細については、[FAQ と既知の問題](known-issues.md)をご覧ください。
+> ユーザー割り当て ID の作成には、英数字およびハイフン (0-9、a-z、A-Z、-) 文字のみがサポートされます。 さらに、VM/VMSS への割り当てが適切に動作するためには、名前の長さは 24 文字以下にする必要があります。 アップデートは後ほどご確認ください。 詳細については、[FAQ と既知の問題](known-issues.md)をご覧ください。
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1

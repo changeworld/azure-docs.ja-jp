@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 203e53cb21e1a2b4b0e31bcb5b8213d9e8cb01c7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ac807bf12e0d6a465b1741d34e6d3d02885c8ea1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303775"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Windows VM 管理対象サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Windows VM マネージド サービス ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

@@ -12,13 +12,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361973"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 
@@ -108,7 +109,7 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
     * **[リソース正常性]**: 「[Azure Resource Health の概要](../service-health/resource-health-overview.md)」をご覧ください。
     * **[新しいサポート要求]**: Microsoft サポートのサポート チケットを作成できます。
     
-6. **[プロパティ]**をクリックします。
+6. **[プロパティ]** をクリックします。
 
     プロパティは次のとおりです。
 
@@ -125,7 +126,7 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
    * **[既定のデータ ソース]**: クラスターの既定のファイル システムです。
    * **[ワーカー ノードのサイズ]**: worker ノードの選択されている VM のサイズ。
    * **[ヘッド ノードのサイズ]**: ヘッド ノードの選択されている VM のサイズ。
-   * **[仮想ネットワーク]**: クラスターのデプロイ先の Virtual Network とサブネットの名前 (デプロイ時に選択された場合)。
+   * **[仮想ネットワーク]**: クラスターのデプロイ先の仮想ネットワークの名前 (デプロイ時に選択された場合)。
 
 ## <a name="delete-clusters"></a>クラスターの削除
 クラスターを削除しても、既定のストレージ アカウントまたはリンクされたストレージ アカウントは削除されません。 同じストレージ アカウントと同じメタストアを使用してクラスターを再作成することができます。 クラスターを再作成するときに、新しい既定の BLOB コンテナーを使うことをお勧めします。
@@ -198,7 +199,7 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
 2. 左側のメニューの **[HDInsight クラスター]** をクリックする。
 3. スケールを設定するクラスターをクリックします。
 3. **[クラスターのスケール設定]** をクリックします。
-4. **[worker ノードの数]**を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
+4. **[worker ノードの数]** を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
 
     ![HDInsight Hadoop HBase Storm および Spark のスケール](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
@@ -252,9 +253,9 @@ Ambari Web UI を使用してクラスターのユーザー パスワードを�
 
 1. HDInsight クラスター ユーザーの資格情報を使用して Ambari Web UI にサインインします。 既定のユーザー名は **admin**です。URL は **https://&lt;HDInsight Cluster Name>azurehdinsight.net** です。
 2. 上部のメニューの **[Admin]** をクリックしてから [Ambari の管理] をクリックします。
-3. 左側のメニューで **[ユーザー]**をクリックします。
-4. **[Admin]**をクリックします。
-5. **[パスワードの変更]**をクリックします。
+3. 左側のメニューで **[ユーザー]** をクリックします。
+4. **[Admin]** をクリックします。
+5. **[パスワードの変更]** をクリックします。
 
 その後、Ambari は、クラスター内のすべてのノードでパスワードを変更します。
 

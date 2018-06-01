@@ -16,11 +16,12 @@ ms.workload: identity
 ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 94d34df771334319db36009053a7264f0aeacf46
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257735"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
@@ -121,3 +122,5 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 - 条件付きアクセス ポリシーの構成について経験するには、「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」をご覧ください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
+
+- 推奨されるポリシーを使った段階的なデプロイメント計画を策定する場合は、[条件付きアクセスの展開計画](http://aka.ms/conditionalaccessdeploymentplan)に関する記事を参照してください。

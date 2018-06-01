@@ -13,11 +13,12 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3603a1e91bc6bcf8a472b41bb0d0a276bf231d7c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302861"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure ID 管理の基礎
 
@@ -30,7 +31,7 @@ Azure AD Premium は、高度な保護機能を備えた、クラウド ベー�
 Azure AD の ID 管理および保護の概要については、この簡単なビデオをご覧ください。
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Microsoft は、どこでも使用できる ID だけでなく、組織の IT の自動化、セキュリティ支援、管理のための一連のツールも提供しています。 クラウド コンピューティングの登場後も、ヘルプデスクへのユーザー パスワードのリセット依頼、ユーザー グループ管理、アプリケーションの要求など、IT タスクの管理と制御の需要はまだ存在します。 さらに事態を複雑にしているのが、従業員による職場への個人用デバイスの持ち込みと、すぐに利用可能な SaaS アプリケーションの使用です。 その結果、企業のデータセンターとパブリック クラウド プラットフォーム全体でアプリケーションの制御を維持することが重要な課題です。
+Microsoft は、どこでも使用できる ID だけでなく、組織の IT の自動化、セキュリティ支援、管理のための一連のツールも提供しています。 クラウド コンピューティングの登場後も、ヘルプデスクへのユーザー パスワードのリセット依頼、ユーザー グループ管理、アプリケーションの要求など、IT タスクの管理と制御の需要はまだ存在します。 さらに複雑なことに、従業員は個人のデバイスを職場に持ち込み、利用できる状態の SaaS アプリケーションを使用しています。そのため、企業のデータセンターやパブリック クラウド プラットフォーム全体のアプリケーションに対する制御を維持することが非常に困難になっています。
 
 [!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
@@ -40,7 +41,7 @@ Microsoft は、どこでも使用できる ID だけでなく、組織の IT �
 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) は、統合の実施に必要な唯一のツールです。 Azure AD Connect は、ID 同期のニーズをサポートするための機能を備えた、DirSync や Azure AD Sync などの古いバージョンの ID 統合ツールに代わる機能です。Azure AD Connect を使用すると、次の機能によってオンプレミスと Azure AD 間の ID 管理と同期が可能になります。
 
 - 同期 - ユーザーやグループなどのオブジェクトを作成するためのコンポーネントです。 さらに、オンプレミス ユーザーやオンプレミス グループの ID 情報をクラウド側と一致させる働きをします。 ユーザーが Azure AD でパスワードを更新したときにオンプレミスのディレクトリを同期した状態にしておくために、パスワード ライトバックも有効にすることができます。
-- AD FS - フェデレーションは Azure AD Connect によって提供されるオプション機能です。オンプレミスの AD FS インフラストラクチャを使用することで、ハイブリッド環境を構成できます。 シングル サインオンや AD サインイン ポリシーの適用、スマート カードやサード パーティの MFA など、複雑なデプロイに対応する組織でフェデレーションを利用できます。
+- AD FS - フェデレーションは Azure AD Connect によって提供されるオプション機能です。オンプレミスの AD FS インフラストラクチャを使用することで、ハイブリッド環境を構成できます。 フェデレーションは、組織がスマート カードやサードパーティの MFA などの複雑な展開に対応するために利用できます。
 - 正常性の監視 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) により、厳重に監視し、Azure Portal でこのアクティビティを一元的に表示できます。
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>セルフサービスとシングル サインオン エクスペリエンスで生産性の向上とヘルプデスクのコスト削減を実現する

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365204"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
 
@@ -46,13 +47,13 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、**[プライベート]** は指定した [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) 内でのみの SQL Server への通信をセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
 
-ポータルで選択されたオプションは、VM の[ネットワーク セキュリティ グループ](../../../virtual-network/virtual-networks-nsg.md) (NSG) の受信セキュリティ ルールを使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 SQL Server ポート (既定値 1433) へのトラフィックを許可するには、受信 NSG ルールを変更または新規作成します。 また、このポートでの通信を許可する、特定の IP アドレスを指定することもできます。
+ポータルで選択されたオプションは、VM の[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md) (NSG) の受信セキュリティ ルールを使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 SQL Server ポート (既定値 1433) へのトラフィックを許可するには、受信 NSG ルールを変更または新規作成します。 また、このポートでの通信を許可する、特定の IP アドレスを指定することもできます。
 
 ![ネットワーク セキュリティ グループ ルール](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 
 ネットワーク トラフィックを制限する NSG ルールに加え、仮想マシンで Windows ファイアウォールを使用することもできます。
 
-クラシック デプロイメント モデルでエンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。 これは、Resource Manager を使用する VM には必要ありません。
+クラシック デプロイ モデルでエンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。 これは、Resource Manager を使用する VM には必要ありません。
 
 最後に、Azure の仮想マシンの SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にすることを検討してください。 署名付き証明書で SQL Server インスタンスを構成します。 詳細については、「[データベース エンジンへの暗号化接続の有効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」をご覧ください。
 

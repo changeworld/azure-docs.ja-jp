@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8c67c89f00362b0fc6a510a8117ac176bb3c8b6c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271308"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に [カスタム スクリプト](hdinsight-hadoop-script-actions.md) を起動できます。
@@ -53,7 +54,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 | Name | スクリプト |
 | --- | --- |
 | **Spark のインストール** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1 「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。 |
-| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 [HDInsight クラスターでの R のインストールと使用][hdinsight-install-r]に関する記事を参照してください。 |
+| **R のインストール** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1 [HDInsight クラスターへの R のインストールと使用][hdinsight-install-r] に関するページをご覧ください。 |
 | **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md) をご覧ください。 |
 | - **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md) をご覧ください。 |
 | **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1 「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
@@ -295,7 +296,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/) などのような [http://apache.org](http://apache.org) 上のプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/) などのプロジェクト サイトもあります。
 >
 >
 
@@ -312,12 +313,10 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 * [HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]
 * [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-* [HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
 * [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs

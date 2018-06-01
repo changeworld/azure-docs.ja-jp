@@ -1,8 +1,8 @@
 ---
-title: "チュートリアル: LinkedIn Sales Navigator を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Azure Active Directory を構成して、ユーザー アカウントを LinkedIn Sales Navigator に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。"
+title: 'チュートリアル: LinkedIn Sales Navigator を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Azure Active Directory を構成して、ユーザー アカウントを LinkedIn Sales Navigator に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 563cb4e231aaa3abf6e70320df8cfa6b56cd354c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 56060d11373f767b023b092cf01ceb894f70efed
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34346491"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Sales Navigator を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -99,7 +100,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11)  **[管理者資格情報]** の下で、以下のフィールドを入力します。
 
-* **[テナントの URL]** フィールドに、https://api.linkedin.com を入力します。
+* **[テナント URL]** フィールドに、「https://api.linkedin.com」と入力します。
 
 * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、**[テスト接続]** をクリックします。
 
@@ -125,4 +126,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-enterprise-apps-manage-provisioning.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)

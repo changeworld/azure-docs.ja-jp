@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: db0fab5b619ddbca4663a0f6afedfff373d406f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 223fa9bc4a19264cc1dcba9830726b30b0f7446c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355085"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -168,6 +169,7 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 * サブネットと API Management サービスは、同じサブスクリプション内になければなりません。
 * API Management インスタンスが含まれるサブネットは、サブスクリプション間で移動できません。
 * 内部仮想ネットワーク モードで構成された複数リージョンの API Management デプロイでは、ルーティングを設定するユーザーが分散負荷の管理を担当します。デプロイでは、ユーザーが、ルーティングを担当するように、複数のリージョンの負荷分散の管理を担当します。
+* 別のリージョン内にあるグローバルにピアリングされた VNET 内のリソースから、内部モードの API Management サービスへの接続は、プラットフォームの制限により機能しません。 詳しくは、[ある仮想ネットワーク内のリソースは、ピアリングされた仮想ネットワークの Azure 内部ロード バランサーと通信できない](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)ことに関するページをご覧ください。
 
 
 ## <a name="related-content"> </a>関連コンテンツ
@@ -188,4 +190,4 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/virtual-networks-nsg.md
+[Network Security Group]: ../virtual-network/security-overview.md

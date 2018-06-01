@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure StorSimple データ マネージャーの概要 | Microsoft Docs"
-description: "StorSimple Data Manager サービスの概要について説明します"
+title: Microsoft Azure StorSimple データ マネージャーの概要 | Microsoft Docs
+description: StorSimple Data Manager サービスの概要について説明します
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271906"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -80,6 +81,11 @@ StorSimple Data Manager では、StorSimple 形式からネイティブ形式に
 Data Manager のリージョンがジョブ定義のリージョンと異なる場合は、これらの各リージョンにどのようなデータ/メタデータが存在するかを理解しておくことが重要です。 次の図では、Data Manager とジョブ定義が異なるリージョンにある場合の影響を示します。
 
 ![異なるリージョンのサービスとジョブ定義](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="gdpr-compliance"></a>GDPR コンプライアンス
+
+[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR には、個人情報を収集、格納、および使用する方法に関する多くの要件が含まれています。 GDPR の規則は、EU で運営され、EU の居住者に関係するデータを収集して分析する企業、政府機関、およびその他の組織に課されます。 StorSimple Data Manager は GDPR に準拠しています。 Data Manager サービスでは、個人データは収集されません。
+詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

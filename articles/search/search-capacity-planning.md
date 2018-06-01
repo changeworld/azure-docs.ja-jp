@@ -1,5 +1,5 @@
 ---
-title: Azure Search の容量計画 | Microsoft Docs
+title: Azure Search でクエリおよびインデックス作成のためのパーティションとレプリカを割り当てる | Microsoft Docs
 description: Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。
 author: HeidiSteen
 manager: cgronlun
@@ -8,13 +8,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b6c2c8283d5a60013c525db296bf84cc50d76617
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203095"
 ---
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする
+# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてパーティションとレプリカを割り当てる
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。
 
 [Basic レベル](http://aka.ms/azuresearchbasic)または [Standard レベル](search-limits-quotas-capacity.md)のいずれかでサービスを設定すると、リソース構成を使用できます。 このレベルのサービスでは、容量は "*検索単位*" (SU) ごとに購入します。各パーティションとレプリカは 1 SU としてカウントします。 

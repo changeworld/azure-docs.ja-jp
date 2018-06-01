@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SAP HANA の統合 | Microsoft Docs"
-description: "Azure Active Directory と SAP HANA の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SAP HANA の統合 | Microsoft Docs'
+description: Azure Active Directory と SAP HANA の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 855525e2c1d3c33cc7134bbc1cd9b53ca59e1a70
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 626dfe07c13c90686157dea710715b333a378136
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>チュートリアル: Azure Active Directory と SAP HANA の統合
 
@@ -30,7 +31,7 @@ SAP HANA と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に SAP HANA にサインインできるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -109,7 +110,7 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
     ![[SAP HANA のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-saphana-tutorial/tutorial_saphana_url.png)
 
-    a. **[識別子]** ボックスに「`HA100`」と入力します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに「`HA100`」と入力します。 
 
     b. **[応答 URL]** ボックスに、`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc` の形式で URL を入力します。
 
@@ -131,7 +132,7 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
 6. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a. **[ユーザー識別子]** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザー識別子]** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
     
     b. **[メール]** ドロップダウン リストで **[user.mail]** を選択します。
 
@@ -148,11 +149,11 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
     ![ID プロバイダーの追加](./media/active-directory-saas-saphana-tutorial/sap1.png)
 
-    a. **[Add Identity Provider Info]\(ID プロバイダーの情報の追加\)** ウィンドウで、Azure Portal からダウンロードしたメタデータ XML の内容を、**[Metadata]\(メタデータ\)** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Add Identity Provider Info]\(ID プロバイダーの情報の追加\)** ウィンドウで、Azure Portal からダウンロードしたメタデータ XML の内容を、**[Metadata]\(メタデータ\)** ボックスに貼り付けます。
 
     ![ID プロバイダーの設定の追加](./media/active-directory-saas-saphana-tutorial/sap2.png)
 
-    b. XML ドキュメントの内容が有効な場合、解析プロセスで、**[General data]\(全般的なデータ\)** 画面領域の **[Subject, Entity ID, and Issuer]\(件名、エンティティ ID、発行者\)** に必要な情報が抽出されます。 **[Base URL and SingleSignOn URL (*)]\(ベース URL と SingleSignOn URL\)* のフィールドなど、**[Destination]\(接続先\)** 画面領域に URL フィールドに必要な情報も抽出されます。
+    b. XML ドキュメントの内容が有効な場合、解析プロセスで、**[General data]\(全般的なデータ\)** 画面領域の **[Subject, Entity ID, and Issuer]\(件名、エンティティ ID、発行者\)** に必要な情報が抽出されます。 **[Base URL and SingleSignOn URL (*)]\(ベース URL と SingleSignOn URL (*)\)** のフィールドなど、**[Destination]\(接続先\)** 画面領域に URL フィールドに必要な情報も抽出されます。
 
     ![ID プロバイダーの設定の追加](./media/active-directory-saas-saphana-tutorial/sap3.png)
 
@@ -202,7 +203,7 @@ SAP HANA で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選び、パスワードを書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-a-sap-hana-test-user"></a>SAP HANA テスト ユーザーの作成
 
@@ -276,7 +277,7 @@ SAP HANA では、Just-In-Time プロビジョニングがサポートされて�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

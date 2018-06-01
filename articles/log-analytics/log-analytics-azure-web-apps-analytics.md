@@ -12,20 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261370"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
 ![Web Apps のシンボル](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> Azure Web Apps Analytics ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Azure Web Apps Analytics を追加することはできません。
+> Azure Web Apps Analytics ソリューションは非推奨になりました。  このソリューションを既にインストール済みのユーザーは引き続き使用できますが、新しいワークスペースに Azure Web Apps Analytics を追加することはできません。  Web アプリケーションを監視するには、[Application Insights](../application-insights/app-insights-overview.md) を使用することをお勧めします。 
 
 Azure Web Apps Analytics (プレビュー) ソリューションでは、すべての Azure Web App リソースのさまざまなメトリックを収集することで、[Azure Web Apps](../app-service/app-service-web-overview.md) を把握することができます。 ソリューションを使用することで、Web アプリ リソースのメトリック データの分析および検索が可能になります。
 

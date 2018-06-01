@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/9/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302155"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
 
@@ -33,6 +34,8 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 * Blockchain Workbench のデプロイ。 デプロイの詳細については、[Azure Blockchain Workbench のデプロイ](blockchain-workbench-deploy.md)に関するページを参照してください。
 * Blockchain Workbench に関連付けられているテナントの Azure Active Directory ユーザー。 詳細については、[Azure Blockchain Workbench での Azure AD ユーザーの追加](blockchain-workbench-manage-users.md#add-azure-ad-users)に関するセクションを参照してください。
 * Blockchain Workbench 管理者アカウント。 詳細については、[Azure Blockchain Workbench での Blockchain Workbench 管理者の追加](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators)に関するセクションを参照してください。
+
+## <a name="hello-blockchain"></a>ブロックチェーンの基本
 
 ここでは、要求元が要求を送信し、レスポンダーが要求に対する応答を送信する基本的なアプリケーションを構築します。 たとえば、「こんにちは、調子はどうですか?」という要求に対し、「最高です!」という応答を返すことができます。 要求と応答の両方が、基になるブロックチェーンに記録されます。 
 

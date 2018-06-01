@@ -5,7 +5,7 @@ keywords: hadoop バージョン,hadoop エコシステム コンポーネント
 services: hdinsight
 editor: cgronlun
 manager: asadk
-author: bprakash
+author: kkampf
 tags: azure-portal
 documentationcenter: ''
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
@@ -14,12 +14,13 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
-ms.author: bprakash
-ms.openlocfilehash: ebfbc53b751bc6669e2c4aee16deb09b463b0661
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: kakampf
+ms.openlocfilehash: 3d98ed2be7a040ad889d1d504f303569c265360b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271593"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 
@@ -82,7 +83,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |[はい] |[はい] |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 5 月 31 日 |[はい] |[はい] |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 年 6 月 28 日 |[はい] |[はい] |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2018 年 7 月 31日 |[はい] |いいえ  |
 
 > [!NOTE]

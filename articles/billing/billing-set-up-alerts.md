@@ -4,8 +4,8 @@ description: 予想外の課金を回避するために Azure の請求に関す
 keywords: クレジット アラート,課金アラート
 services: ''
 documentationcenter: ''
-author: vikdesai
-manager: tonguyen
+author: adpick
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
-ms.author: vikdesai
+ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359052"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定
 Azure サブスクリプションのアカウント管理者である場合は、Azure 課金アラート サービスを使用して、Azure アカウントの課金アクティビティを監視、管理するのに役立つ、カスタマイズされた課金アラートを作成できます。
 
 このサービスはプレビュー段階なので、まずプレビュー機能のページで機能を有効にする必要があります。
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>アラートのしきい値と電子メールの受信者を設定する
 1. [プレビュー機能のページ](https://account.windowsazure.com/PreviewFeatures) にアクセスして、**課金アラート サービス**を有効にします。
@@ -49,7 +52,7 @@ Azure は任意の電子メール アドレスをサポートしていますが�
 アラートを設定した後、アカウント センターで一覧表示され、設定可能な残数も表示されます。 それぞれのアラートに対し、送信された日付と時刻、アラートが請求合計または通貨クレジットであるか、設定した制限が表示されます。 日付と時刻形式は 24 時間協定世界時 (UTC) で、日付は yyyy-mm-dd の形式です。 アラートを編集するには、リストのアラートのプラス記号をクリックします。アラートを削除するには、ごみ箱アイコンをクリックします。
 
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>エンタープライズ契約 (EA) のお客様に対する課金アラート
-EA のお客様は、加入契約の下にある各部署ごとに、使用金額クォータを設定してアラートを取得できます。 ご利用を開始するには EA ポータルの「[	部署課金クォータ](https://ea.azure.com/helpdocs/departmentSpendingQuotas)」をご覧ください。
+EA サブスクリプションは、このサービスではサポートされていません。代わりに、EA のお客様は、加入契約の下にある各部署ごとに、使用金額クォータを設定してアラートを取得できます。 ご利用を開始するには EA ポータルの「[	部署課金クォータ](https://ea.azure.com/helpdocs/departmentSpendingQuotas)」をご覧ください。
 
 ## <a name="learn-more-about-azure-cost-management"></a>Azure コスト管理の詳細情報
 - [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを見積もり、サービスを追加するときにもコストを見積もる

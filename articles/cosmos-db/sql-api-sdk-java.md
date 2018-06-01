@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/16/2018
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1d8c1dee087abdc13ff1b1a0a9595d1e5b29d9f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62941b3654204533d982b11f56b6ca08d591a72f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360150"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -46,7 +47,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 <tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**作業の開始**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
+<tr><td>**はじめに**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)</td></tr>
 
@@ -54,6 +55,22 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* 一意なインデックスのサポートが追加されました。
+* フィード オプションに、継続トークンのサイズを制限するためのサポートが追加されました。
+* JSON のシリアル化のバグを修正しました (タイムスタンプ)。
+* JSON のシリアル化のバグを修正しました (列挙)。
+* com.fasterxml.jackson.core:jackson-databind への依存関係が 2.9.5 にアップグレードされました。
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+* 直接モードの接続プールが改善されました。
+* orderby 以外のクロス パーティション クエリのプリフェッチが向上しました。
+* UUID の生成が強化されました。
+* セッション整合性ロジックが改善されました。
+* マルチポリゴンのサポートが追加されました
+* コレクションに対するパーティション キー範囲の統計のサポートが追加されました。
+* マルチリージョンのサポートでのバグを修正します。
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * JSON シリアル化のパフォーマンスが向上しました。
@@ -133,7 +150,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 最大再試行回数と最大再試行待機時間をカスタマイズするオプションと共に、調整された要求での自動再試行のサポートを追加しました。  RetryOptions と ConnectionPolicy.getRetryOptions() をご覧ください。
-* IPartitionResolver に基づくカスタム パーティション分割コードを廃止しました。 大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
+* IPartitionResolver に基づくカスタム パーティション分割コードを非推奨にしました。 大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
 * スロットルのための再試行ポリシー サポートを追加しました。  
@@ -184,6 +201,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.16.1](#1.16.1) |2018 年 5 月 16 日 |--- |
+| [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 11 月 14 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 10 月 28 日 |--- |
 | [1.13.0](#1.13.0) |2017 年 8 月 25 日 |--- |

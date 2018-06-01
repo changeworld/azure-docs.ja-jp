@@ -9,11 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34272184"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -87,7 +88,16 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
 
-## <a name="backup"></a>バックアップ
+### <a name="reaching-the-store-limit"></a>容量の上限に到達
+
+サーバーは、ストレージの空き容量が 5 GB 未満またはプロビジョニングされたストレージの 5% 未満のどちらか少ない方に達すると、読み取り専用としてマークされます。 たとえば、100 GB のストレージをプロビジョニングした場合に、実際の使用量が 95 GB を超えると、サーバーは読み取り専用としてマークされます。 または、5 GB のストレージをプロビジョニングした場合、ストレージの空き容量が 250 MB 未満になるとサーバーは読み取り専用としてマークされます。  
+
+サーバーが読み取り専用に設定されると、既存のすべてのセッションが切断され、コミットされていないトランザクションがロールバックされます。 後続の書き込み操作とトランザクションのコミットは失敗します。 後続のすべての読み取りクエリは、中断せずに作業を続行します。  
+
+サーバーにプロビジョニングされたストレージの量を増やすか、読み取り/書き込みモードで新しいセッションを開始し、データを削除して空きストレージを回収できます。 `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` を実行すると、現在のセッションが読み取り/書き込みモードに設定されます。 データの破損を回避するために、サーバーがまだ読み取り専用の状態のときに書き込み操作を実行しないでください。
+
+## <a name="backup"></a>Backup
+
 
 サービスによって、サーバーのバックアップが自動的に取得されます。 バックアップの最小リテンション期間は 7 日です。 最大 35 日のリテンション期間を設定できます。 リテンション期間は、サーバーの有効期間中、任意の時点で調整できます。 ローカル冗長バックアップまたは geo 冗長バックアップのいずれかを選択することができます。 geo 冗長バックアップは、ご利用のサーバーが作成されたリージョンの [geo ペア リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)内にも保存されます。 この冗長性により、障害発生時に保護が提供されます。 また、geo 冗長バックアップで使用できるサービスが提供されている他の Azure リージョンに、サーバーを復元できるようになります。 サーバーを作成した後に、2 つのバックアップ ストレージ オプションを切り替えることはできません。
 

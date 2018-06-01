@@ -6,14 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 05/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362041"
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics を IoT Edge モジュールとしてデプロイする - プレビュー
 
@@ -57,7 +58,7 @@ Azure Stream Analytics ジョブの出力として使うエンドポイントを
 
 1. Azure Portal で **[リソースの作成]** に移動し、[検索] ボックスに「**ストレージ アカウント**」と入力して、**[ストレージ アカウント - Blob、File、Table、Queue]** を選びます。
 
-2. **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力し、IoT Hub が格納されるのと同じ場所を選んで、**[作成]** を選びます。 後で使うので名前をメモしておきます。
+2. **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力し、お使いの IoT ハブが格納されるのと同じ場所を選び、お使いの IoT ハブと同じリソース グループを選んで、**[作成]** を選びます。 後で使うので名前をメモしておきます。
 
     ![ストレージ アカウントの作成][1]
 
@@ -82,34 +83,27 @@ Azure Stream Analytics ジョブの出力として使うエンドポイントを
     > [!NOTE]
     > 現在、IoT Edge 上の Azure Stream Analytics ジョブは、米国西部 2 リージョンではサポートされていません。 
 
-3. **[作成]**を選択します。
+3. **[作成]** を選択します。
 
-4. 作成したジョブで、**[ジョブ トポロジ]** の **[入力]** を選び、**[追加]** を選びます。
-
-5. **[新しい入力]** ウィンドウで、次のようにします。
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[入力のエイリアス]** ボックスに、「**temperature**」と入力します。
-    
-    b. **[ソースの種類]** ボックスで、**[データ ストリーム]** を選びます。
-    
-    c. 残りのフィールドについては既定値を使います。
+4. 作成したジョブの **[ジョブ トポロジ]** で **[入力]** を開きます。
 
    ![Azure Stream Analytics の入力](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. **[作成]**を選択します。
+5. **[ストリーム入力の追加]** を選んでから、**[Edge Hub]** を選びます。
 
-7. **[ジョブ トポロジ]** で **[出力]** を選び、**[追加]** を選びます。
+5. **[新しい入力]** ウィンドウで、入力のエイリアスとして「**温度**」と入力します。 
 
-8. **[新しい出力]** ウィンドウで、次のようにします。
+6. **[保存]** を選択します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[出力のエイリアス]** ボックスに、「**alert**」と入力します。
-    
-    b. 残りのフィールドについては既定値を使います。 
-    
-    c. **[作成]**を選択します。
+7. **[ジョブ トポロジ]** で **[出力]** を開きます。
 
    ![Azure Stream Analytics の出力](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
+8. **[追加]** を選んでから、**[Edge Hub]** を選びます。
+
+8. **[新しい出力]** ウィンドウで、出力のエイリアスとして「**アラート**」と入力します。 
+
+9. **[作成]** を選択します。
 
 9. **[ジョブ トポロジ]** で **[クエリ]** を選び、既定のテキストを次のクエリに置き換えます。
 
@@ -172,7 +166,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
     }
     ```
 
-9. **[次へ]**を選択します。
+9. **[次へ]** を選択します。
 
 10. **[Review template]\(テンプレートのレビュー\)** ステップで、**[送信]** を選びます。
 

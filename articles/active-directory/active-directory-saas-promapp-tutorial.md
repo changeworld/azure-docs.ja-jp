@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Promapp の統合 | Microsoft Docs"
-description: "Azure Active Directory と Promapp の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Promapp の統合 | Microsoft Docs'
+description: Azure Active Directory と Promapp の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4a0630bf015361833ed3a6949ea7b29450d53701
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02deefa82abc7d776e64de7a5a78c46b971f9ee5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
 
@@ -29,7 +30,7 @@ Promapp と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで自動的に Promapp にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +64,11 @@ Azure AD への Promapp の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「 **Promapp**」と入力します。
 
@@ -86,11 +87,11 @@ Promapp で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 
 Promapp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Promapp のテスト ユーザーの作成](#creating-a-promapp-test-user)** - Promapp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,34 +101,33 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Promapp** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
 
 3. **[Promapp のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
 
-    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
-    | `https://demo.promapp.com/TENANTNAME`|
-    | `https://go.promapp.com/TENANTNAME`|
-    | `https://demoau.promapp.com/TENANTNAME`|
-    | `https://au.promapp.com/TENANTNAME`|
-    | `https://demous.promapp.com/TENANTNAME`|
-    | `https://us.promapp.com/TENANTNAME`|
-    | `https://dev.promapp.com/TENANTNAME`|
-    | `https://test.promapp.com/TENANTNAME`|
-    | `https://staging.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME/`|
+    | `https://au.promapp.com/TENANTNAME/`|
+    | `https://us.promapp.com/TENANTNAME/`|
+    | `https://eu.promapp.com/TENANTNAME/`|
+    | `https://ca.promapp.com/TENANTNAME/`|
+    
+    > [!NOTE] 
+    > 現在、Promapp との Azure AD の統合は、サービスで開始された認証についてのみ構成されています。たとえば、Promapp URL にアクセスすると、認証プロセスが開始します。 ただし、応答 URL は必須フィールドです。
     
     b. **[応答 URL]** ボックスに、`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx` のパターンを使用して URL を入力します。
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
 
     **[サインオン URL]** ボックスに、`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate` のパターンを使用して URL を入力します。
 
@@ -136,31 +136,31 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
 
-7. **[Promapp Configuration] \(Promapp 構成)** セクションで、**[Configure Promapp] \(Promapp を構成する)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+7. **[Promapp Configuration] (Promapp 構成)** セクションで、**[Configure Promapp] (Promapp を構成する)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
 
 8. Promapp 企業サイトに管理者としてサインオンします。 
 
-9. 上部のメニューで **[管理者]**をクリックします。 
+9. 上部のメニューで **[Admin]** をクリックします。 
    
     ![Azure AD Single Sign-On][12]
 
-10. **[構成]**をクリックします。 
+10. **[構成]** をクリックします。 
    
     ![Azure AD Single Sign-On][13]
 
 11. **[Security]** ダイアログで、次の手順を実行します。
    
-    ![Azure AD のシングル サインオン][14]
+    ![Azure AD Single Sign-On][14]
     
-    a. Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[SSO-Login URL]** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal からコピーした **SAML シングル サインオン サービス URL** を **[SSO-Login URL]** ボックスに貼り付けます。
     
     b. **[SSO - Single Sign-on Mode]** として **[Optional]** を選択し、**[Save]** をクリックします。
 
@@ -170,7 +170,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
     c. ダウンロードした証明書をメモ帳で開き、最初の行 (----**BEGIN CERTIFICATE**-----) と最後の行 (-----**END CERTIFICATE**-----) を除く証明書の内容をコピーして、**[SSO-x.509 Certificate]** に貼り付け、**[Save]** をクリックします。
         
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -196,7 +196,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -220,9 +220,9 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Promapp]**を選択します。
+2. アプリケーションの一覧で **[Promapp]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -240,16 +240,12 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
-
-**IDP** 開始モードでアプリケーションをテストするには、アクセス パネルで [Promapp] タイルをクリックしたときに、自動的に Promapp アプリケーションにサインオンする必要があります。
-
-**SP** 開始モードでアプリケーションをテストするには、Promapp サイトから認証を開始する必要があります。 これは、**Optional** モードが有効になっているときに、ログイン時にパスワード フィールドを空白のままにすることで行えます。
+**SP** 開始モードでアプリケーションをテストするには、Promapp サイトから認証を開始する必要があります。 これは、**[Optional]\(オプション\)** モードを有効にした状態で、ログイン ページの [Login with Single Sign-on]\(シングル サインオンでログイン\) ボタンをクリックすることにより、行うことができます。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

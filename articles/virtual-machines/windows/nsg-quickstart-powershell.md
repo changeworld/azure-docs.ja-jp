@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: b8eb36e4abad12cb46493846a024da00f9146d40
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a7564c19f8318d62260d03b92f8115c8f3fa887a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367058"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell を使用して Azure の VM へのポートとエンドポイントを開放する方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -96,6 +97,6 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)
-* [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md)
+* [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)
 * [ロード バランサー用の Azure Resource Manager の概要](../../load-balancer/load-balancer-arm.md)
 

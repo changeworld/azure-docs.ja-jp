@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 8c052b45a0db42e2220c052b03f53f538de107ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c28d409bbdb7a4100f2bb9f00ff6f58a13855ea4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895050"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305057"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>パブリック IP アドレスの作成、変更、削除
 
-パブリック IP アドレスとその作成、変更、削除の方法について説明します。 パブリック IP アドレスは、変更可能な独自の設定を備えたリソースです。 パブリック IP アドレスを他の Azure リソースに割り当てることで次のことが可能となります。
-- Azure Virtual Machines、Azure Virtual Machine Scale Sets、Azure VPN Gateway、Application Gateway、インターネットに接続する Azure Load Balancer などのリソースへの受信インターネット接続。 パブリック IP アドレスが割り当てられていない Azure リソースは、インターネットからの受信方向の通信を受信できません。 一部の Azure リソースは何もしなくてもパブリック IP アドレスでアクセスできますが、そうではないリソースにインターネットからアクセスするには、パブリック IP アドレスを割り当てる必要があります。
-- 予測できる IP アドレスを使ったインターネットへの送信方向の接続。 たとえば、仮想マシンは、パブリック IP アドレスが割り当てられていなくてもインターネットに対して送信方向の通信を行うことができますが、そのアドレスは Azure によって予測できないパブリック アドレスに変換されたネットワーク アドレスです。 パブリック IP アドレスをリソースに割り当てると、送信方向の接続に使われる IP アドレスがわかります。 アドレスは、予測することはできますが、選ばれている割り当て方法によっては変化する可能性があります。 詳細については、「[パブリック IP アドレスの作成](#create-a-public-ip-address)」を参照してください。 Azure リソースからの送信接続の詳細については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
+パブリック IP アドレスとその作成、変更、削除の方法について説明します。 パブリック IP アドレスは、変更可能な独自の設定を備えたリソースです。 パブリック IP アドレスをパブリック IP アドレスをサポートする Azure リソースに割り当てると、次のことが可能になります。
+- インターネットから、Azure Virtual Machines (VM)、Azure Application Gateway、Azure Load Balancer、Azure VPN Gateway などのリソースへの受信。 パブリック IP アドレスが割り当てられていないリソース (VM など) でも、インターネットから一部のリソースと通信することができます。ただし、そのリソースがロード バランサーのバックエンド プールの一部であり、ロード バランサーにパブリック IP アドレスが割り当てられている必要があります。 特定の Azure サービスのリソースにパブリック IP アドレスを割り当てることができるかどうか、または別の Azure リソースのパブリック IP アドレスを使用して通信できるかどうかを判断するには、そのサービスのドキュメントを参照してください。 
+- 予測できる IP アドレスを使ったインターネットへの送信方向の接続。 たとえば、仮想マシンは、パブリック IP アドレスが割り当てられていなくてもインターネットに対して送信方向の通信を行うことができますが、既定でそのアドレスは Azure によって予測できないパブリック アドレスに変換されたネットワーク アドレスです。 パブリック IP アドレスをリソースに割り当てると、送信方向の接続に使われる IP アドレスがわかります。 アドレスは、予測することはできますが、選ばれている割り当て方法によっては変化する可能性があります。 詳細については、「[パブリック IP アドレスの作成](#create-a-public-ip-address)」を参照してください。 Azure リソースからの送信接続の詳細については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 

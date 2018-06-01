@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SAP Cloud Platform Identity Authentication の統合 | Microsoft Docs"
-description: "Azure Active Directory と SAP Cloud Platform Identity Authentication の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SAP Cloud Platform Identity Authentication の統合 | Microsoft Docs'
+description: Azure Active Directory と SAP Cloud Platform Identity Authentication の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0c7dd884eaadd1fba4fcbc19b6c9cf92c68a59ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e7cc1df5e550dec62869c2a6f68cdc2a84167142
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform Identity Authentication の統合
 
@@ -30,7 +31,7 @@ SAP Cloud Platform Identity Authentication を Azure AD と統合すると、次
 - ユーザーが自分の Azure AD アカウントで SAP アプリケーションに自動的にサインインできるように設定が可能です。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」の記事をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」の記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,21 +127,25 @@ SAP Cloud Platform Identity Authentication で Azure AD のシングル サイ�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. **IDP** 開始モードでアプリケーションを構成する場合は、**[SAP Cloud Platform Identity Authentication のドメインと URL]** セクションの **[識別子]** ボックスに、`https://<entity-id>.accounts.ondemand.com` というパターンで URL を入力します。  
+3. **IDP** 開始モードでアプリケーションを構成する場合は、**[SAP Cloud Platform Identity Authentication のドメインと URL]** セクションで、以下の手順を実行します。  
 
     ![[SAP Cloud Platform Identity Authentication] のシングル サインオン情報](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url.png)
 
-    > [!NOTE] 
-    > これは実際の値ではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。 この値がわからない場合は、[テナントの SAML 2.0 の構成](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)に関する SAP Cloud Platform Identity Authentication のドキュメントをお読みください。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`<IAS-tenant-id>.accounts.ondemand.com` というパターンで URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** を選択します。 
+    b. **[応答 URL]** ボックスに、`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com` の形式で URL を入力します。
+
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。 識別子の値がわからない場合は、[テナントの SAML 2.0 の構成](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)に関する SAP Cloud Platform Identity Authentication のドキュメントをお読みください。
+
+4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** を選択します。
 
     ![[SAP Cloud Platform Identity Authentication] のシングル サインオン情報](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<entity-id>.accounts.ondemand.com/admin` 形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`{YOUR BUSINESS APPLICATION URL}` 形式で URL を入力します。
 
-    > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。
+    > [!NOTE]
+    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 特定のビジネス アプリケーションのサインオン URL を使ってください。 わからないことがある場合は、[SAP Cloud Platform Identity Authentication クライアント サポート チーム](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)にお問い合わせください。
 
 5. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** を選択します。 次に、コンピューターにメタデータ ファイルを保存します。
 
@@ -152,7 +157,7 @@ SAP Cloud Platform Identity Authentication で Azure AD のシングル サイ�
 
 7. SAP アプリケーションに **firstName** などの属性が必要な場合は、**[ユーザー属性]** セクションに **firstName** 属性を追加します。 このオプションは、**[SAML トークン属性]** ダイアログ ボックスの **[シングル サインオン]** ダイアログ ボックスにあります。
 
-    a. **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。 
     
     ![Configure single sign-on](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_attribute_04.png)
     
@@ -221,7 +226,7 @@ SAP Cloud Platform Identity Authentication で Azure AD のシングル サイ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**を選択します。
+    d. **[作成]** を選択します。
  
 ### <a name="create-an-sap-cloud-platform-identity-authentication-test-user"></a>SAP Cloud Platform Identity Authentication テスト ユーザーの作成
 
@@ -274,7 +279,7 @@ SAP Cloud Platform Identity Authentication との ID フェデレーションを
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -289,4 +294,3 @@ SAP Cloud Platform Identity Authentication との ID フェデレーションを
 [201]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_203.png
-

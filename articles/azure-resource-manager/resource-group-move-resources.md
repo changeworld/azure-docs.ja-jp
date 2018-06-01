@@ -11,14 +11,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6c0e9c96840995c7d5a067e60264c66ce987af93
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360089"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -156,6 +157,7 @@ ms.lasthandoff: 05/14/2018
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Virtual Machine Scale Sets - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Networks - 「[Virtual Networks の制限事項](#virtual-networks-limitations)」を参照してください。
+* Visual Studio Team Services - Microsoft 以外の拡張機能を購入している VSTS アカウントは、[それらの購入をキャンセル](https://go.microsoft.com/fwlink/?linkid=871160)してからでないと、アカウントを異なるサブスクリプションに移動できません。
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>移動不可能なサービス
@@ -170,10 +172,10 @@ ms.lasthandoff: 05/14/2018
 * Azure Migrate
 * BizTalk Services
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
-* Kubernetes Service
 * DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
 * ExpressRoute
+* Kubernetes Service
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Managed Applications
 * Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。

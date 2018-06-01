@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 9c5b1270f93c1c6331b8e18db8b5137f19bc18d3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a7bdbee064e6acdd3d1ef95879b98daa43fdb230
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301752"
 ---
-# <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Windows VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Windows VM マネージド サービス ID を使用してアクセス キーで Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

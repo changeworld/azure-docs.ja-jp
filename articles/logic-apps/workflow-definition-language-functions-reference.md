@@ -1,9 +1,9 @@
 ---
 title: ワークフロー定義言語関数 - Azure Logic Apps | Microsoft Docs
-description: ロジック アプリのワークフロー定義で使用できる関数について説明します。
+description: ワークフロー定義言語でロジック アプリを作成するための関数について説明します
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 0155e35641a0407fe48c4da07400fa188152b0af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182252"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886614"
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語関数リファレンス
 
-この記事では、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) でワークフローを作成するときに使用できる関数について説明します。 ロジック アプリの定義について詳しくは、[Azure Logic Apps のワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)に関するページをご覧ください。 
+この記事では、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) でワークフローを作成するときに使用できる関数について説明します。 ロジック アプリの定義における関数について詳しくは、[Azure Logic Apps のワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md#functions)に関するページをご覧ください。 
 
 > [!NOTE]
 > パラメーターの定義の構文において、パラメーターの後に疑問符 (?) が付いている場合は、そのパラメーターが省略可能であることを意味します。 たとえば、[getFutureTime()](#getFutureTime) をご覧ください。
@@ -3580,7 +3580,7 @@ uriPort('<uri>')
 
 | 戻り値 | type | [説明] | 
 | ------------ | ---- | ----------- | 
-| <*port-value*> | 整数 | 指定した URI の `port` 値。 `port` の値が指定されていない場合は、プロトコルの既定のポートを返します。 | 
+| <*port-value*> | 整数 | 指定した URI の `port` 値 `port` の値が指定されていない場合は、プロトコルの既定のポートを返します。 | 
 |||| 
 
 *例*
@@ -3610,7 +3610,7 @@ uriQuery('<uri>')
 
 | 戻り値 | type | [説明] | 
 | ------------ | ---- | ----------- | 
-| <*query-value*> | String | 指定した URI の `query` 値。 | 
+| <*query-value*> | String | 指定した URI の `query` 値 | 
 |||| 
 
 *例*

@@ -1,11 +1,11 @@
 ---
-title: "Azure Application Gateway での無効なゲートウェイによる (502) エラーのトラブルシューティング | Microsoft Docs"
-description: "Application Gateway の 502 エラーに関するトラブルシューティングの方法を説明します"
+title: Azure Application Gateway での無効なゲートウェイによる (502) エラーのトラブルシューティング | Microsoft Docs
+description: Application Gateway の 502 エラーに関するトラブルシューティングの方法を説明します
 services: application-gateway
 documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1d431ead-d318-47d8-b3ad-9c69f7e08813
 ms.service: application-gateway
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: e0099734a81cd8b1edf5cf80cb56b5c322a5feee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356037"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
@@ -92,7 +93,7 @@ DhcpOptions            : {
 * http://127.0.0.1:port の呼び出しで、HTTP 結果コード 200 が返されるようにする必要があります。 30 秒のタイムアウト期間内に返されるようにする必要があります。
 * 構成済みのポートを開き、構成済みのポートでの送受信トラフィックをブロックするファイアウォール規則または Azure ネットワーク セキュリティ グループが存在しないようにします。
 * FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する [エンドポイント](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) を必ず開いてください。
-* Azure Resource Manager を介して VM を構成しており、Application Gateway がデプロイされた VNet の外側に VM がある場合、 [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) は、目的のポートにアクセスできるように構成する必要があります。
+* Azure Resource Manager を介して VM を構成しており、Application Gateway がデプロイされた VNet の外側に VM がある場合、 [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) は、目的のポートにアクセスできるように構成する必要があります。
 
 ## <a name="problems-with-custom-health-probe"></a>カスタムの正常性プローブに関する問題
 
@@ -102,7 +103,7 @@ DhcpOptions            : {
 
 | プローブのプロパティ | [説明] |
 | --- | --- |
-| 名前 |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトを構成する場合にのみ適用可能です。 これは VM ホスト名とは異なります。 |
 | パス |プローブの相対パス。 パスは、先頭が '/' である必要があります。 プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 |

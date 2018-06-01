@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor の新しいアラート (プレビュー) エクスペリエンスを使用したアクティビティ ログ アラートの作成と管理 | Microsoft Docs
-description: この記事では、Azure Monitor の [アラート (プレビュー)] タブからアクティビティ ログ アラートを作成する方法について説明します。 この記事では、この機能の新しいユーザー エクスペリエンスについて詳しく説明します。
+title: Azure Monitor の新しいアラート エクスペリエンスを使用したアクティビティ ログ アラートの作成と管理 | Microsoft Docs
+description: この記事では、Azure Monitor の [アラート] タブからアクティビティ ログ アラートを作成する方法について説明します。
 author: JYOTHIRMAISURI
 manager: vvithal
 editor: ''
@@ -15,17 +15,18 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: ''
-ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 070acc6fb6f6f744474edeef0e914dda9d24c558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34202822"
 ---
-# <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>新しいアラート (プレビュー) のエクスペリエンスを使用してアクティビティ ログ アラートを作成する
+# <a name="create-activity-log-alerts-using-the-new-alerts-experience"></a>新しいアラート エクスペリエンスを使用してアクティビティ ログ アラートを作成する
 
 アクティビティ ログ アラートは、アラートで指定した条件と一致する新しいアクティビティ ログ イベントが発生したときにアクティブになるアラートです。
 
-これらのアラートは Azure リソースに対応しており、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 その後、Azure Portal を使用して、[Azure アラート (プレビュー)](monitoring-overview-unified-alerts.md) の新しいエクスペリエンスを使ってアクティビティ ログ イベントにアラートを設定する方法について説明します。
+これらのアラートは Azure リソースに対応しており、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 次に、Azure Portal を使用して、[Azure アラート](monitoring-overview-unified-alerts.md)の新しいエクスペリエンスを使ってアクティビティ ログ イベントにアラートを設定する方法について説明します。
 
 通常は、Azure サブスクリプション内のリソースに特定の変更が発生した場合に通知を受け取るためにアクティビティ ログ アラートを作成します。多くの場合、特定のリソース グループまたはリソースを対象とします。 たとえば、**myProductionResourceGroup** (サンプル リソース グループ) 内の任意の仮想マシンが削除されたときに通知を受け取りたい場合やサブスクリプション内のユーザーに新しいロールが割り当てられた場合に通知を受け取ることができます。
 
@@ -46,11 +47,11 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 サービス正常性通知について詳しくは、[サービス正常性通知のアクティビティ ログ アラートの受け取り](monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
 
 
-## <a name="whats-new-in-alerts-preview-for-activity-logs"></a>アラート (プレビュー) のアクティビティ ログに関する新機能
+## <a name="whats-new-in-alerts-for-activity-logs"></a>アラートのアクティビティ ログに関する新機能
 
-[Azure アラート (プレビュー)](monitoring-overview-unified-alerts.md) では、アクティビティ ログ アラートのユーザー エクスペリエンスが強化されました。 [アラートの強化されたユーザー エクスペリエンス](monitoring-overview-unified-alerts.md)により、次のことが可能になりました。
+[Azure アラート](monitoring-overview-unified-alerts.md)では、アクティビティ ログ アラートのユーザー エクスペリエンスが強化されました。 [アラートの強化されたユーザー エクスペリエンス](monitoring-overview-unified-alerts.md)により、次のことが可能になりました。
 
-- **[モニター]** > **[アラート (プレビュー)]** ブレードから、アクティビティ ログ アラート ルールを[作成](#create-an-alert-rule-for-an-activity-log)および[管理](#view-and-manage-activity-log-alert-rules)します。 [アクティビティ ログ](monitoring-overview-activity-logs.md)の詳細を確認してください。
+- **[モニター]** > **[アラート]** ブレードから、アクティビティ ログ アラート ルールを[作成](#create-an-alert-rule-for-an-activity-log)および[管理](#view-and-manage-activity-log-alert-rules)します。 [アクティビティ ログ](monitoring-overview-activity-logs.md)の詳細を確認してください。
 
 - **アラートの対象に関する新しいオプション**: 新しいアクティビティ ログ アラート ルールを作成する際に、ターゲット リソース、リソース グループ、またはサブスクリプションを選択できるようになりました。
 
@@ -68,8 +69,8 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 
 次の手順に従います。
 
-1. Azure Portal で、**[モニター]** > **[アラート (プレビュー)]** の順に選択します。
-2. **[アラート (プレビュー)]** ウィンドウの上部にある **[新しいアラート ルール]** をクリックします。
+1. Azure Portal で、**[モニター]** > **[アラート]** の順に選択します。
+2. **[アラート]** ウィンドウの上部にある **[新しいアラート ルール]** をクリックします。
 
      ![新しいアラート ルール](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule.png)
 
@@ -130,7 +131,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 
 ## <a name="view-and-manage-activity-log-alert-rules"></a>アクティビティ ログ アラート ルールの表示と管理
 
-1. Azure Portal で、**[モニター]** > **[アラート (プレビュー)]** の順にクリックし、ウィンドウの左上にある **[ルールの管理]** をクリックします。
+1. Azure Portal で、**[モニター]** > **[アラート]** の順にクリックし、ウィンドウの左上にある **[ルールの管理]** をクリックします。
 
     ![ manage alert rules](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
 

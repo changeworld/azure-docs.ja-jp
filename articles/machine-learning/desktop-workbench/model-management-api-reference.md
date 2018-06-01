@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: e518799fb4144093e5c3caf0524254a098e4b9cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3efc351861a7d5b3c02c08b96494e83a3ccb99f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362143"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning モデル管理アカウント API リファレンス
 
@@ -483,7 +484,7 @@ ID でサービスを取得します。
 ### <a name="request"></a>要求
 | 方法 | 要求 URI |
 |------------|------------|
-| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/regenerateKeys | 
 
 ### <a name="description"></a>[説明]
 サービス キーを再生成して返します。

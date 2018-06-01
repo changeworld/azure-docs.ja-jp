@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 3ee70c3784205a70f455bd7ef147467e4547d167
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d15c5556325284dd3b0b6f11a080c9abc263286c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356326"
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 
@@ -37,11 +38,13 @@ HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](http://w
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
 ## <a name="trigger"></a>トリガー
 
 HTTP トリガーでは、HTTP 要求で関数を呼び出すことができます。 HTTP トリガーを使用して、サーバーなしの API を構築し、webhook に応答することができます。 
 
-既定では、HTTP トリガーは要求に HTTP 200 OK 状態コードおよび空の本文で応答します。 応答を変更するには、[HTTP 出力バインド](#http-output-binding)を構成します。
+既定では、HTTP トリガーは、Functions 1.x では HTTP 200 OK と空の本文を返し、Functions 2.x では HTTP 204 No Content と空の本文を返します。 応答を変更するには、[HTTP 出力バインド](#http-output-binding)を構成します。
 
 ## <a name="trigger---example"></a>トリガー - 例
 
@@ -54,7 +57,7 @@ HTTP トリガーでは、HTTP 要求で関数を呼び出すことができま�
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
-次の例は、クエリ文字列または HTTP 要求の本文で `name`パラメーターを探す [C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、クエリ文字列または HTTP 要求の本文で `name`パラメーターを探す [C# 関数](functions-dotnet-class-library.md)を示しています。 戻り値は出力バインドの使われますが、戻り値の属性は必要ないことに注意してください。
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -85,15 +88,29 @@ public static async Task<HttpResponseMessage> Run(
 
 次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
-*function.json* ファイルのバインディング データを次に示します。
+*function.json* ファイルを次に示します。
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+    "disabled": false,
+    "bindings": [
+        {
+            "authLevel": "function",
+            "name": "req",
+            "type": "httpTrigger",
+            "direction": "in",
+            "methods": [
+                "get",
+                "post"
+            ]
+        },
+        {
+            "name": "$return",
+            "type": "http",
+            "direction": "out"
+        }
+    ]
+}
 ```
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
@@ -145,15 +162,25 @@ public class CustomObject {
 
 次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
-*function.json* ファイルのバインディング データを次に示します。
+*function.json* ファイルを次に示します。
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
@@ -201,15 +228,25 @@ let Run(req: HttpRequestMessage) =
 
 次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
-*function.json* ファイルのバインディング データを次に示します。
+*function.json* ファイルを次に示します。
 
 ```json
 {
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-    "authLevel": "function"
-},
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
 ```
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
@@ -222,7 +259,7 @@ module.exports = function(context, req) {
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: "Hello " + (req.query.name || req.body.name)
         };
     }
@@ -261,15 +298,25 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 次の例は、*function.json* ファイルの webhook トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、GitHub の問題に対するコメントをログに記録します。
 
-*function.json* ファイルのバインディング データを次に示します。
+*function.json* ファイルを次に示します。
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
@@ -301,15 +348,25 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 次の例は、*function.json* ファイルの webhook トリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数は、GitHub の問題に対するコメントをログに記録します。
 
-*function.json* ファイルのバインディング データを次に示します。
+*function.json* ファイルを次に示します。
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
@@ -345,11 +402,21 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 
 ```json
 {
-    "webHookType": "github",
-    "name": "req",
-    "type": "httpTrigger",
-    "direction": "in",
-},
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "webHookType": "github",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "disabled": false
+}
 ```
 
 これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
@@ -384,7 +451,6 @@ public static HttpResponseMessage Run(
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
 次の表は、*function.json* ファイルと `HttpTrigger` 属性で設定したバインド構成のプロパティを説明しています。
-
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
@@ -470,13 +536,13 @@ module.exports = function (context, req) {
 
     if (!id) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: "All " + category + " items were requested."
         };
     }
     else {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status defaults to 200 */
             body: category + " item with id = " + id + " was requested."
         };
     }
@@ -547,35 +613,24 @@ HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場�
 
 ## <a name="output"></a>出力
 
-HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインドには、HTTP トリガーが必要です。このバインドを使用すると、トリガーの要求に関連付けられている応答をカスタマイズすることができます。 HTTP 出力バインドが指定されない場合、HTTP トリガーは HTTP 200 OK と空の本文を返します。 
+HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインドには、HTTP トリガーが必要です。このバインドを使用すると、トリガーの要求に関連付けられている応答をカスタマイズすることができます。 HTTP 出力バインドが提供されていない場合、HTTP トリガーは、Functions 1.x では HTTP 200 OK と空の本文を返し、Functions 2.x では HTTP 204 No Content と空の本文を返します。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
-C# クラス ライブラリの場合、出力固有のバインド構成プロパティはありません。 HTTP 応答を送信するには、関数が型 `HttpResponseMessage` または `Task<HttpResponseMessage>` を戻すようにします。
-
-他の言語では、HTTP 出力バインドは、次の例に示すように、function.json の `bindings` 配列の JSON オブジェクトとして定義されます。
-
-```json
-{
-    "name": "res",
-    "type": "http",
-    "direction": "out"
-}
-```
-
-次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 C# クラス ライブラリには、*function.json* のこれらのプロパティに対応する属性プロパティはありません。 
 
 |プロパティ  |[説明]  |
 |---------|---------|
 | **type** |`http` に設定する必要があります。 |
 | **direction** | `out` に設定する必要があります。 |
-|**name** | 応答の関数コードで使用される変数名。 |
+|**name** | 応答の関数コードで使用される変数名、または戻り値を使うことを示す `$return`。 |
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-HTTP または webhook の呼び出し元に応答するために、出力パラメーターを使用できます。 また、言語標準の応答パターンを使用することもできます。 応答の例については、[トリガーの例](#trigger---example)および[webhook の例](#trigger---webhook-example)をご覧ください。
+HTTP 応答を送信するには、言語標準の応答パターンを使います。 C# またはで C# スクリプトでは、関数の戻り値の型を `HttpResponseMessage` または `Task<HttpResponseMessage>` にします。 C# の場合、戻り値の属性は必要ありません。
+
+応答の例については、[トリガーの例](#trigger---example)および[webhook の例](#trigger---webhook-example)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+[Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

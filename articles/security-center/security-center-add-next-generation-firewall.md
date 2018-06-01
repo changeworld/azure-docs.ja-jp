@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center で次世代ファイアウォールを追加する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項、\"**次世代ファイアウォールの追加**\" および \"**NGFW 経由に限定したトラフィックのルーティング**\" を実装する方法について説明します。"
+title: Azure Security Center で次世代ファイアウォールを追加する | Microsoft Docs
+description: このドキュメントでは、Azure Security Center の推奨事項、"**次世代ファイアウォールの追加**" および "**NGFW 経由に限定したトラフィックのルーティング**" を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363691"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Azure Security Center で次世代ファイアウォールを追加する
 Azure Security Center では、セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。 このドキュメントでは、追加方法の例を紹介します。
@@ -49,7 +50,7 @@ Azure Security Center では、セキュリティ保護を強化するために�
    ![NGFW 経由に限定したトラフィックのルーティング][7]
 2. **[Route traffic through NGFW only (NGFW 経由に限定したトラフィックのルーティング)]** ブレードが開き、トラフィックのルーティング先として指定できる VM の一覧が表示されます。 一覧から VM を選択します。
    ![Select a VM][8]
-3. 選択した VM のブレードが開き、関連する受信規則が表示されます。 考えられる次のステップに関する詳細情報が示されます。 **[受信の規則を編集する]** を選択して、受信規則の編集に進みます。 NGFW にリンクされているインターネット接続エンドポイントの場合、**[ソース]** は **[任意]** に設定されません。 受信規則のプロパティの詳細については、「 [NSG ルール](../virtual-network/virtual-networks-nsg.md#nsg-rules)」をご覧ください。
+3. 選択した VM のブレードが開き、関連する受信規則が表示されます。 考えられる次のステップに関する詳細情報が示されます。 **[受信の規則を編集する]** を選択して、受信規則の編集に進みます。 NGFW にリンクされているインターネット接続エンドポイントの場合、**[ソース]** は **[任意]** に設定されません。 受信規則のプロパティの詳細については、「[セキュリティ規則](../virtual-network/security-overview.md#security-rules)」をご覧ください。
    ![アクセスを制限する規則の構成][9]
    ![受信規則の編集][10]
 

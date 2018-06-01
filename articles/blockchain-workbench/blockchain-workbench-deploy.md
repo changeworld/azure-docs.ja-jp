@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/22/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 80a40cec8ebd062751e896f9b555c5ed5464d7a3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303945"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -23,6 +24,25 @@ Azure Blockchain Workbench は、Azure Marketplace のソリューション テ�
 Blockchain Workbench のコンポーネントについて詳しくは、「[Azure Blockchain Workbench アーキテクチャ](blockchain-workbench-architecture.md)」をご覧ください。
 
 ## <a name="prepare-for-deployment"></a>デプロイの準備をする
+
+Blockchain Workbench を使用すると、ブロックチェーン台帳を、ブロックチェーンベース アプリケーションの構築に最もよく使用される関連 Azure サービスのセットと共にデプロイできます。 Blockchain Workbench をデプロイすると、Azure サブスクリプションのリソース グループ内に次の Azure サービスがプロビジョニングされます。
+
+* 1 Event Grid トピック
+* 1 Service Bus 名前空間
+* 1 Application Insights
+* 1 SQL Database (Standard S0)
+* 2 App Services (Standard)
+* 2 Azure Key Vault
+* 2 Azure Storage アカウント (Standard LRS)
+* 2 仮想マシン スケール セット (検証コントロールおよび worker ノードの場合)
+* 2 Virtual Network (各仮想ネットワークにロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレスが含まれます)
+* 省略可能: Azure Monitor
+
+次に **myblockchain** リソース グループ内に作成されるデプロイの例を次に示します。
+
+![デプロイ例](media/blockchain-workbench-deploy/example-deployment.png)
+
+Blockchain Workbench のコストは、基礎となる Azure サービスのコストの総計です。 Azure サービスの料金情報は、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用して計算できます。
 
 Azure Blockchain Workbench の展開にはいくつかの前提条件があります。 前提条件には、Azure AD の構成とアプリケーションの登録が含まれます。
 
@@ -79,27 +99,6 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 
 4.  **[保存]** をクリックして、アプリケーション マニフェストの変更を保存します。
 
-### <a name="add-graph-api-key-to-application"></a>Graph API キーをアプリケーションに追加する
-
-Blockchain Workbench は、ブロックチェーン アプリケーションと対話するユーザーのメイン ID 管理システムとして、Azure AD を使います。 Blockchain Workbench が Azure AD にアクセスして、名前やメール アドレスなどのユーザー情報を取得するためには、アクセス キーを追加する必要があります。 Blockchain Workbench は、Azure AD での認証にこのキーを使います。
-
-1. 登録したアプリケーションの詳細ウィンドウで **[設定]** を選びます。
-2. **[キー]** を選択します。
-3. キーの**説明**を指定し、**有効期限**の値を選ぶことで、新しいキーを追加します。 
-
-    ![キーを作成する](media/blockchain-workbench-deploy/app-key-create.png)
-
-    |Setting  | 値  |
-    |---------|---------|
-    | [説明] | `Service` |
-    | Expires | 有効期限を選びます |
-
-4. **[保存]** を選択します。 
-5. 後で使うので、キーの値をコピーして保存します。 展開を行うときに必要です。
-
-    > [!IMPORTANT]
-    >  展開のためにキーを保存しておかないと、新しいキーを生成する必要があります。 後でポータルからキーの値を取得することはできません。
-
 ### <a name="add-graph-api-required-permissions"></a>Graph API で必要なアクセス許可を追加する
 
 API アプリケーションは、ディレクトリにアクセスするために、ユーザーからのアクセス許可を要求する必要があります。 API アプリケーションに必要な次のアクセス許可を設定します。
@@ -122,6 +121,27 @@ API アプリケーションは、ディレクトリにアクセスするため�
 
    アクセス許可を付与することで、Blockchain Workbench はディレクトリのユーザーにアクセスできます。 メンバーを検索して Blockchain Workbench に追加するには、読み取りアクセス許可が必要です。
 
+### <a name="add-graph-api-key-to-application"></a>Graph API キーをアプリケーションに追加する
+
+Blockchain Workbench は、ブロックチェーン アプリケーションと対話するユーザーのメイン ID 管理システムとして、Azure AD を使います。 Blockchain Workbench が Azure AD にアクセスして、名前やメール アドレスなどのユーザー情報を取得するためには、アクセス キーを追加する必要があります。 Blockchain Workbench は、Azure AD での認証にこのキーを使います。
+
+1. 登録したアプリケーションの詳細ウィンドウで **[設定]** を選びます。
+2. **[キー]** を選択します。
+3. キーの**説明**を指定し、**有効期限**の値を選ぶことで、新しいキーを追加します。 
+
+    ![キーを作成する](media/blockchain-workbench-deploy/app-key-create.png)
+
+    |Setting  | 値  |
+    |---------|---------|
+    | [説明] | `Service` |
+    | Expires | 有効期限を選びます |
+
+4. **[保存]** を選択します。 
+5. 後で使うので、キーの値をコピーして保存します。 展開を行うときに必要です。
+
+    > [!IMPORTANT]
+    >  展開のためにキーを保存しておかないと、新しいキーを生成する必要があります。 後でポータルからキーの値を取得することはできません。
+
 ### <a name="get-application-id"></a>アプリケーション ID を取得する
 
 展開には、アプリケーション ID とテナントの情報が必要です。 展開の間に使用できるように、情報を収集して保存します。
@@ -134,23 +154,6 @@ API アプリケーションは、ディレクトリにアクセスするため�
     | 保存する設定  | 展開での使用 |
     |------------------|-------------------|
     | アプリケーション ID | [Azure Active Directory setup]\(Azure Active Directory のセットアップ\) > [アプリケーション ID] |
-
-### <a name="create-an-azure-ad-key-vault-application"></a>Azure AD Key Vault アプリケーションを作成する
-
-Blockchain Workbench の展開には、Azure AD Key Vault アプリケーションの登録が必要です。
-
-1. Azure portal の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選びます。 **[アプリの登録]** > **[新しいアプリケーションの登録]** の順に選びます。
-2. アプリケーションの **[名前]** と **[サインオン URL]** を指定します。 後で展開の間に値が変更される可能性があるため、プレースホルダーの値を使用できます。
-
-    ![Key Vault アプリの登録を作成する](media/blockchain-workbench-deploy/key-vault-app-create.png)
-
-    | Setting  | 値  |
-    |---------|---------|
-    | Name | `Blockchain Key Vault app` |
-    | アプリケーションの種類 | Web アプリ/API |
-    | [サインオン URL] | `https://keyvaultclient |
-
-5. **[作成]** を選んで、Azure AD Key Vault アプリケーションを登録します。
 
 ### <a name="get-tenant-domain-name"></a>テナントのドメイン名を取得する
 
@@ -187,6 +190,7 @@ Blockchain Workbench の展開には、Azure AD Key Vault アプリケーショ�
     | パスワード | このパスワードは、VM に接続するために使われます。 |
     | SSH | **ssh-rsa** で始まる単一行形式の RSA 公開キー、または複数行の PEM 形式を使います。 SSH キーは、Linux と OS X では `ssh-keygen` を使って、Windows では PuTTYGen を使って、生成できます。 SSH キーについて詳しくは、「[Azure 上の Windows で SSH キーを使用する方法](../virtual-machines/linux/ssh-from-windows.md)」をご覧ください。 |
     | Database password (データベース パスワード) / Confirm database password (データベース パスワードの確認) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 |
+    | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、**[場所]** 設定と一致させる必要があります。 |
     | [サブスクリプション] | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
     | 場所 | フレームワークを展開するリージョンを指定します。 |
@@ -224,8 +228,8 @@ Blockchain Workbench の展開には、Azure AD Key Vault アプリケーショ�
 
     | Setting | [説明]  |
     |---------|--------------|
-    | 監視 | Blockchain ネットワークの監視に Azure Monitor を使うかどうかを選びます。 |
-    | Connect to existing OMS instance (既存の OMS インスタンスに接続する) | 既存の Operations Management Suite インスタンスを使うか、新しいインスタンスを作成するかを選びます。 
+    | 監視 | Blockchain ネットワークを監視するために Azure Monitor を有効にするかどうかを選択します。 |
+    | Connect to existing Log Analytics instance (既存の Log Analytics インスタンスに接続する) | 既存の Log Analytics インスタンスを使用するか、新しいインスタンスを作成するかを選択します。 既存のインスタンスを使用する場合は、ワークスペース ID とプライマリ キーを入力します。 |
 
 12. **[OK]** をクリックして、Azure Monitor のセクションを完了します。
 
@@ -253,6 +257,8 @@ Blockchain Workbench の展開が完了すると、新しいリソース グル�
 
     ![App Service の基礎](media/blockchain-workbench-deploy/app-service.png)
 
+カスタム ドメイン名を Blockchain Workbench に関連付けるには、「[Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する](../app-service/web-sites-traffic-manager-custom-domain-name.md)」を参照してください。
+
 ## <a name="configuring-the-reply-url"></a>応答 URL の構成
 
 Azure Blockchain Workbench を展開した後は、次に、Azure Active Directory (Azure AD) クライアント アプリケーションが展開した Blockchain Workbench Web URL の正しい**応答 URL** に登録されていることを確認します。
@@ -262,12 +268,24 @@ Azure Blockchain Workbench を展開した後は、次に、Azure Active Directo
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選びます。 **[アプリの登録]** を選択します。
 4. 前提条件セクションで登録した Azure AD クライアント アプリケーションを選びます。
 5. **[設定] > [応答 URL]** を選びます。
-6. 「**Blockchain Workbench の Web URL**」セクションで取得した Azure Blockchain Workbench の展開のメイン Web URL を指定します。 応答 URL には、プレフィックス `https://` が付加されます。  たとえば、`https://myblockchain2-7v75.azurewebsites.net` のように指定します。
+6. 「**Blockchain Workbench の Web URL**」セクションで取得した Azure Blockchain Workbench の展開のメイン Web URL を指定します。 応答 URL には、プレフィックス `https://` が付加されます。 たとえば、`https://myblockchain2-7v75.azurewebsites.net` のように指定します。
 
     ![応答 URL](media/blockchain-workbench-deploy/configure-reply-url.png)
 
 7. **[保存]** を選んで、クライアントの登録を更新します。
 
+## <a name="remove-a-deployment"></a>デプロイの削除
+
+デプロイが不要になった場合は、Blockchain Workbench リソース グループを削除してデプロイを削除できます。
+
+1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。 
+2. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、**[削除]** を選択します。
+
+    ![Delete resource group](media/blockchain-workbench-deploy/delete-resource-group.png)
+
 ## <a name="next-steps"></a>次の手順
 
-これで、Azure Blockchain Workbench が展開されました。次に、[Azure Blockchain Workbench でユーザーを管理](blockchain-workbench-manage-users.md)します。
+このハウツー記事では、Azure Blockchain Workbench をデプロイしました。 ブロックチェーン アプリケーションの作成方法については、次のハウツー記事に進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する](blockchain-workbench-create-app.md)

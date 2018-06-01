@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: sedusch
-ms.openlocfilehash: b1a7b962d07b64aaa662aab937feed1782851a7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bc4a6f4ecca8ffe3575a038b86192a8663c35c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261485"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -129,12 +130,11 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 1. 可用性セットを作成します  
    更新ドメインの最大数を設定します
 1. 仮想マシン 1 を作成します   
-   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1) を使用します  
-   SLES For SAP Applications 12 SP1 (BYOS) が使用されています  
+   SLES4SAP 12 SP3 以上を使用してください。この例では、SLES4SAP 12 SP3 BYOS イメージ SLES For SAP Applications 12 SP3 (BYOS) が使用されています  
    前に作成された可用性セットを選択します  
 1. 仮想マシン 2 を作成します   
-   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1) を使用します  
-   SLES For SAP Applications 12 SP1 (BYOS) が使用されています  
+   SLES4SAP 12 SP3 以上を使用してください。この例では、SLES4SAP 12 SP3 BYOS イメージを使用します  
+   SLES For SAP Applications 12 SP3 (BYOS) が使用されています  
    前に作成された可用性セットを選択します  
 1. SAP システムごとに 1 つのデータ ディスクを両方の仮想マシンに追加します。
 1. ロード バランサー (内部) を作成します  

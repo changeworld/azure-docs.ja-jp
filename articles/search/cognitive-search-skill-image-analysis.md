@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: f4b0758ed6f1a0d11aeb1061cac34f1e9084ef53
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 271f3231078b8842b040509ccf0406ed2415e5ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786881"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363946"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Image Analysis の認知スキル
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
-パラメーターの大文字と小文字は区別されます｡
+パラメーターの大文字と小文字は区別されます。
 
 | パラメーター名     | [説明] |
 |--------------------|-------------|
@@ -40,9 +40,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力     | [説明] |
-|--------------------|-------------|
-| url | イメージに対する一意のロケーター｡ Web の URL か BLOB ストレージの場所のいずれかになります｡|
+| 入力名      | [説明]                                          |
+|---------------|------------------------------------------------------|
+| image         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```generateNormalizedImages``` に設定されている場合に､Azure Blob インデクサーによって生成されます｡ 詳しくは､[サンプル](#sample-output) をご覧ください｡|
 
 
 
@@ -63,8 +63,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
     "defaultLanguageCode": "en",
     "inputs": [
         {
-            "name": "url",
-            "source": "/document/metadata_storage_path"
+            "name": "image",
+            "source": "/document/normalized_images/*"
         }
     ],
     "outputs": [
@@ -249,3 +249,4 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 + [定義済みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
++ [インデクサーの作成 (REST)](ref-create-indexer.md)

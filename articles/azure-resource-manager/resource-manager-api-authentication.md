@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 認証と Resource Manager | Microsoft Docs"
-description: "アプリケーションを他の Azure サブスクリプションと統合するための Azure Resource Manager API と Azure Active Directory を使用した認証の開発者ガイド。"
+title: Azure Active Directory 認証と Resource Manager | Microsoft Docs
+description: アプリケーションを他の Azure サブスクリプションと統合するための Azure Resource Manager API と Azure Active Directory を使用した認証の開発者ガイド。
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: dugill
+ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359864"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -29,7 +30,7 @@ ms.lasthandoff: 11/16/2017
 1. **ユーザー + アプリケーション アクセス**: サインインしたユーザーに代わってリソースにアクセスするアプリケーションの場合。 この方法は、Web アプリケーションやコマンド ライン ツールなど、Azure リソースの "対話形式の管理" だけに対応するアプリケーションに適しています。
 2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間のヘッドレス (無人) アクセスを必要とするアプリケーションに適しています。
 
-この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、 [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense)で入手できます。
+この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、[https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) で入手できます。
 
 ## <a name="what-the-web-app-does"></a>Web アプリケーションで実行する内容
 Web アプリケーションで実行する内容は次のとおりです。
@@ -297,7 +298,7 @@ ASP.NET MVC サンプル アプリケーションの [GetRoleId](https://github.
 | 役割 | GUID |
 | --- | --- |
 | Reader |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
-| 共同作成者 |b24988ac-6180-42a0-ab88-20f7382dd24c |
+| Contributor |b24988ac-6180-42a0-ab88-20f7382dd24c |
 | 仮想マシンの共同作業者 |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | 仮想ネットワークの共同作業者 |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 | ストレージ アカウントの共同作業者 |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
@@ -323,7 +324,7 @@ ASP.NET MVC サンプル アプリケーションの [GrantRoleToServicePrincipa
 
 この要求では、次の値が使用されています。
 
-| Guid | Description |
+| Guid | [説明] |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |サブスクリプションの ID |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |アプリケーションのサービス プリンシパルのオブジェクト ID |

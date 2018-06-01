@@ -3,7 +3,7 @@ title: ワークフロー定義言語スキーマ - Azure Logic Apps | Microsoft
 description: ワークフロー定義言語を使って Azure Logic Apps 用のカスタム ワークフロー定義を記述します。
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 14b273841d1fc15df635eb3b41b02ad77cbef90d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775283"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886809"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>ワークフロー定義言語スキーマによるロジック アプリのワークフロー定義
 
@@ -220,7 +220,8 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 
 ## <a name="functions"></a>Functions
 
-一部の式では、ロジック アプリの実行開始時には存在しない可能性のある値を実行時のアクションから取得します。 このような値を式で参照または使用するには、"*関数*" を使います。 たとえば、計算に数学関数をつかうことができます。[add()](../logic-apps/workflow-definition-language-functions-reference.md#add) 関数は、整数または浮動小数点数から合計を返します。 
+一部の式では、ロジック アプリの実行開始時には存在しない可能性のある値を実行時のアクションから取得します。 このような値を式で参照または使用するには、"[*関数*](../logic-apps/workflow-definition-language-functions-reference.md)" を使います。 たとえば、計算に数学関数をつかうことができます。[add()](../logic-apps/workflow-definition-language-functions-reference.md#add) 関数は、整数または浮動小数点数から合計を返します。 各関数について詳しくは、[アルファベット順のリファレンス記事](../logic-apps/workflow-definition-language-functions-reference.md)をご覧ください。
+または、関数とその一般的な用途についての学習を続けてください。
 
 関数を使用して実行できるタスクの例を 2 つ示します。 
 

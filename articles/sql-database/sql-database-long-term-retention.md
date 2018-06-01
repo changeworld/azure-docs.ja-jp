@@ -7,14 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce78201e3f87b9687ced181f90d352d73aa29431
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366064"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
@@ -54,8 +55,13 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
 
 
  
-このポリシーを変更して、W = 0 (毎週のバックアップなし) を設定すると、上記の表のバックアップ コピーの周期は、強調表示された日付のように変更されます。 それに応じて、これらのバックアップの保持に必要なストレージの量は減ります。 注: LTR コピーは Azure Storage サービスによって作成されます。したがって、既存のデータベースが、コピー処理の影響を受けることはありません。
-LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。   データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 
+このポリシーを変更して、W = 0 (毎週のバックアップなし) を設定すると、上記の表のバックアップ コピーの周期は、強調表示された日付のように変更されます。 それに応じて、これらのバックアップの保持に必要なストレージの量は減ります。 
+
+> [!NOTE]
+1. LTR コピーは Azure Storage サービスによって作成されます。したがって、既存のデータベースが、コピー処理の影響を受けることはありません。
+2. ポリシーは現在以降のバックアップに適用されます。 例:  指定した WeekOfYear がポリシーの構成時点で既に過去である場合、初回の LTR バックアップは次の年に作成されます。 
+3. LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。   データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 
+> 
 
 ## <a name="configure-long-term-backup-retention"></a>長期のバックアップ リテンション期間の構成
 

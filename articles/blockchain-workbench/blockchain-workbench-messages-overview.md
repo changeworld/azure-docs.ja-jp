@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 8d9b9c74ead54280d82bf2b0f9a2232723b2af63
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302094"
 ---
 # <a name="azure-blockchain-workbench-messages-overview"></a>Azure Blockchain Workbench のメッセージの概要
 
@@ -247,4 +248,4 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench アーキテクチャ](blockchain-workbench-architecture.md)
+> [スマート コントラクトの統合パターン](blockchain-workbench-integration-patterns.md)

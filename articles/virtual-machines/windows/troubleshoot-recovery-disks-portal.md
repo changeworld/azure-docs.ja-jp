@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/07/2018
 ms.author: genli
-ms.openlocfilehash: 818e4ca5c4985d1740c477bf4a5aa198e64b506d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db6a2279347b5746da706e7ad3629b141afd205b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271166"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。
@@ -31,6 +32,7 @@ Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク �
 4. 仮想ハード ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。
 5. 元の仮想ハード ディスクを使用して VM を作成します。
 
+マネージド ディスクを使用する VM の場合は、「[新しい OS ディスクを接続することでマネージド ディスク VM のトラブルシューティングを行う](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk)」をご覧ください。
 
 ## <a name="determine-boot-issues"></a>起動の問題を特定する
 VM が正常に起動できない理由を特定するには、ブート診断と VM のスクリーンショットを調べます。 一般的な例として、失敗したアプリケーション更新や、基になる仮想ハード ディスクが削除または移動されている場合が挙げられます。
@@ -144,6 +146,13 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 既存の仮想ハード ディスクから VM を作成したときに、ブート診断が自動的に有効にならない場合があります。 ブート診断の状態を確認し、必要に応じて有効にするには、ポータルで VM を選択します。 **[監視]** の **[診断設定]** をクリックします。 状態が **[オン]** になっており、**[ブート診断]** の横のチェック ボックスがオンになっていることを確認します。 設定を変更した場合は、**[保存]** をクリックします。
 
 ![ブート診断設定を更新する](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>新しい OS ディスクを接続することでマネージド ディスク VM のトラブルシューティングを行う
+1. 影響を受けるマネージド ディスク Windows VM を停止します。
+2. マネージド ディスク VM の OS ディスクの[マネージド ディスク スナップショットを作成](snapshot-copy-managed-disk.md)します。
+3. [スナップショットから新しいマネージド ディスクを作成](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)します。
+4. [マネージド ディスクを VM のデータ ディスクとして接続](attach-disk-ps.md)します。
+5. [手順 4 のデータ ディスクを OS ディスクに変更](os-disk-swap.md)します。
 
 ## <a name="next-steps"></a>次の手順
 VM への接続の問題が発生した場合は、[Azure VM への RDP 接続のトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Windows VM でのアプリケーションの接続の問題のトラブルシューティング](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271651"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  OMS ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  
@@ -131,20 +132,18 @@ or
 
 Windows Server 2016 のネットワーク負荷分散クラスターの設計およびデプロイの方法については、「[ネットワーク負荷分散](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing)」を参照してください。  以下の手順では、Microsoft ネットワーク負荷分散クラスターの構成方法を説明します。  
 
-1.  管理者アカウントを使用して、NLB クラスターのメンバーとなっている Windows サーバーにサインオンします。  
-2.  サーバー マネージャーでネットワーク負荷分散マネージャーを開いて、**[ツール]**、**[ネットワーク負荷分散マネージャー]** の順にクリックします。
+1. 管理者アカウントを使用して、NLB クラスターのメンバーとなっている Windows サーバーにサインオンします。  
+2. サーバー マネージャーでネットワーク負荷分散マネージャーを開いて、**[ツール]**、**[ネットワーク負荷分散マネージャー]** の順にクリックします。
 3. Microsoft Monitoring Agent がインストールされている OMS ゲートウェイ サーバーを接続するには、**[ホストをクラスターに追加]** をクリックします。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加](./media/log-analytics-oms-gateway/nlb02.png)<br> 
 4. 接続するゲートウェイ サーバーの IP アドレスを入力します。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加: 接続](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>OMS エージェントと Operations Manager 管理グループを構成する
 以下のセクションでは、直接接続されている OMS エージェント、Operations Manager 管理グループ、または Azure Automation Hybrid Runbook Worker に対して Azure Automation または Log Analytics との通信のために OMS ゲートウェイを構成する手順を説明します。  
 
-Log Analytics に直接接続している Windows コンピューターに OMS エージェントをインストールするための要件と手順については、[Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)方法に関するページをご覧ください。Linux コンピューターの場合には、[Linux コンピューターを Log Analytics に接続する](log-analytics-quick-collect-linux-computer.md)方法に関するページをご覧ください。  Automation Hybrid Runbook Worker に関連する情報は、[Hybrid Runbook Worker のデプロイ](../automation/automation-hybrid-runbook-worker.md)に関するページをご覧ください。
-
-### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>OMS エージェントと Operations Manager に対してプロキシ サーバーとして OMS ゲートウェイを構成する
-
 ### <a name="configure-standalone-oms-agent"></a>スタンドアロンの OMS エージェントを構成する
-プロキシ サーバー (この場合はゲートウェイ) を使うようにエージェントを構成する方法については、[Microsoft Monitoring Agent を使ってプロキシとファイアウォールの設定を構成する](log-analytics-proxy-firewall.md)方法に関するページをご覧ください。  ネットワーク ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、OMS エージェントのプロキシ構成が、NLB の仮想 IP アドレスとなります。<br><br> ![Microsoft Monitoring Agent のプロパティ – プロキシの設定](./media/log-analytics-oms-gateway/nlb04.png)
+Log Analytics に直接接続している Windows コンピューターに OMS エージェントをインストールするための要件と手順については、[Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)方法に関するページをご覧ください。Linux コンピューターの場合には、[Linux コンピューターを Log Analytics に接続する](log-analytics-quick-collect-linux-computer.md)方法に関するページをご覧ください。 エージェントを構成するときにプロキシ サーバーを指定する代わりに、その値を OMS ゲートウェイ サーバーの IP アドレスとそのポート番号に置き換えます。  ネットワーク ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、OMS エージェントのプロキシ構成が、NLB の仮想 IP アドレスとなります。  
+
+Automation Hybrid Runbook Worker に関連する情報は、[Hybrid Runbook Worker のデプロイ](../automation/automation-hybrid-runbook-worker.md)に関するページをご覧ください。
 
 ### <a name="configure-operations-manager---all-agents-use-the-same-proxy-server"></a>Operations Manager を構成する (エージェントがすべて同じプロキシ サーバーを使用する)
 ゲートウェイ サーバーを追加するように Operations Manager を構成します。  Operations Manager に報告するすべてのエージェントに Operations Manager のプロキシ構成が自動的に適用されます (設定が空欄であっても同じです)。  

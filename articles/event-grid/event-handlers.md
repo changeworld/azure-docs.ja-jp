@@ -5,14 +5,15 @@ services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
-ms.date: 04/25/2018
+ms.topic: conceptual
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: ccbabed3fd1df39ac2ba732064392a1a0ecede2a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 996bd4b3497861a3bfcbfecebe18a6936f487028
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301769"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid のイベント ハンドラー
 
@@ -39,6 +40,14 @@ Azure Functions を使うと、サーバーを介さずにイベントに応答�
 | [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリはキャプチャ ファイルを取得し、データ ウェアハウスにデータを移行します。 |
 | [Azure Service Bus と Azure Event Grid の統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
 
+## <a name="hybrid-connections"></a>ハイブリッド接続と
+
+Azure Relay ハイブリッド接続を使用して、エンタープライズ ネットワーク内にあり、パブリックにアクセスできるエンドポイントがないアプリケーションにイベントを送信します。
+
+|タイトル  |[説明]  |
+|---------|---------|
+| [ハイブリッド接続にイベントを送信する](custom-event-to-hybrid-connection.md) | リスナー アプリケーションで処理するために既存のハイブリッド接続にカスタム イベントを送信します。 |
+
 ## <a name="logic-apps"></a>Logic Apps
 
 Logic Apps を使うと、イベントに応答するためのビジネス プロセスを自動化できます。
@@ -55,7 +64,7 @@ Logic Apps を使うと、イベントに応答するためのビジネス プ�
 
 |タイトル  |[説明]  |
 |---------|---------|
-| [Route custom events to Azure Queue storage with Azure CLI and Event Grid (Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする)](custom-event-to-queue-storage.md) | カスタム イベントをキュー ストレージに送信する方法について説明します。 |
+| [Route custom events to Azure Queue storage with Azure CLI and Event Grid (Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする)](custom-event-to-queue-storage.md) | Queue Storage にカスタム イベントを送信する方法について説明します。 |
 
 ## <a name="webhooks"></a>WebHook
 

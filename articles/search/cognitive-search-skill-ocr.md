@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 84988c815759a726abe93d931f73c284d771a5ba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786711"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365826"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
@@ -33,7 +33,7 @@ ms.locfileid: "33786711"
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
-パラメーターの大文字と小文字は区別されます｡
+パラメーターの大文字と小文字は区別されます。
 
 | パラメーター名     | [説明] |
 |--------------------|-------------|
@@ -186,16 +186,14 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 上記のスキルセット例は､normalized-images フィールドが存在していることを前提としています｡ このフィールドを生成するには､以下に示すように､インデクサー定義内の *imageAction* 構成を *generateNormalizedImages* に設定します｡
 
 ```json
-{
-  //...rest of your indexer definition goes here ...
-  "parameters":
-  {
-    "configuration": 
-    {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
-  }
+{  
+   //...rest of your indexer definition goes here ... 
+  "parameters":{  
+      "configuration":{  
+         "dataToExtract":"contentAndMetadata",
+         "imageAction":"generateNormalizedImages"
+      }
+   }
 }
 ```
 
@@ -203,3 +201,4 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 + [定義済みのスキル](cognitive-search-predefined-skills.md)
 + [TextMerger スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
++ [インデクサーの作成 (REST)](ref-create-indexer.md)

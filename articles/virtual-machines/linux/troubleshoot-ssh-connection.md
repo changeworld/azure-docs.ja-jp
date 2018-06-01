@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e5d9fb76f66ffb98addab24e9e8bf8b82a82af7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365680"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 Linux 仮想マシン (VM) に接続しようとしたときに、さまざまな理由で Secure Shell (SSH) エラー、SSH 接続エラー、または SSH 拒否が発生することがあります。 この記事は、問題を特定して修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -34,7 +35,7 @@ Linux 仮想マシン (VM) に接続しようとしたときに、さまざま�
 
 1. SSH 構成をリセットします。
 2. ユーザーの資格情報をリセットします。
-3. [ネットワーク セキュリティ グループ](../../virtual-network/virtual-networks-nsg.md) ルールで SSH トラフィックが許可されていることを確認します。
+3. [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) ルールで SSH トラフィックが許可されていることを確認します。
    * SSH トラフィックを許可するネットワーク セキュリティ グループ ルールが存在することを確認します (既定では TCP ポート 22)。
    * ポートのリダイレクト/マッピングは、Azure Load Balancer なしでは使用できません。
 4. [VM リソースの正常性](../../resource-health/resource-health-overview.md)を確認します。 

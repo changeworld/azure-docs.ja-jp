@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と 123ContactForm の統合 | Microsoft Docs"
-description: "Azure Active Directory と 123ContactForm の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と 123ContactForm の統合 | Microsoft Docs'
+description: Azure Active Directory と 123ContactForm の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 70955676e78642e6c8a6eb85f8165b327baece3f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f7ad606fc8ee394125300a55dc0586a055a33be
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34341432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>チュートリアル: Azure Active Directory と 123ContactForm の統合
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 12/11/2017
 - ユーザーが自分の Azure AD アカウントで自動的に 123ContactForm にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,11 +64,11 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**123ContactForm**」と入力します。
 
@@ -86,11 +87,11 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 123ContactForm で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[123ContactForm テスト ユーザーの作成](#creating-a-123contactform-test-user)** - 123ContactForm で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,25 +101,25 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 1. Azure Portal の **123ContactForm** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/tutorial_123contactform_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/tutorial_123contactform_samlbase.png)
 
 3. **[123ContactForm のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/url1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs` のパターンを使用して URL を入力します。
 
 4. **SP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/url2.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/url2.png)
 
-    a. **[詳細な URL 設定の表示]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、URL として「`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`」と入力します。
 
@@ -127,17 +128,17 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
     
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-123contactform-tutorial/tutorial_123contactform_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/tutorial_123contactform_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/tutorial_general_400.png)
 
 7. **123ContactForm** 側からシングル サインオンを構成するために、[https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) に移動して次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/submit.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/submit.png) 
 
-    a. **[Email]\(電子メール\)** ボックスに、ユーザーの電子メールを入力します。例:  **BrittaSimon@Contoso.com**。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Email]\(電子メール\)** ボックスに、ユーザーの電子メールを入力します。例:  **BrittaSimon@Contoso.com**。
 
     b. **[Upload]\(アップロード\)** をクリックし、Azure Portal からダウンロードしたメタデータ XML ファイルを参照します。
 
@@ -145,16 +146,16 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 8. **[Microsoft Azure AD - Single sign-on - Configure App Settings]\(Microsoft Azure AD - シングル サインオン - アプリケーション設定の構成\)** で、次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/url3.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/url3.png)
 
-    a. アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[IDENTIFIER]\(識別子\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[IDENTIFIER]\(識別子\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
     
     b. アプリケーションを **IDP 開始モード**で構成する場合は、インスタンスの **[REPLY URL]\(応答 URL\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
     c. アプリケーションを **SP 開始モード**で構成する場合は、インスタンスの **[SIGN ON URL]\(サインオン URL\)** をコピーし、Azure ポータルの **[123ContactForm のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -180,7 +181,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-123contactform-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -206,7 +207,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
 2. アプリケーションの一覧で **[123ContactForm]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-123contactform-tutorial/tutorial_123contactform_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-123contactform-tutorial/tutorial_123contactform_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -232,7 +233,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

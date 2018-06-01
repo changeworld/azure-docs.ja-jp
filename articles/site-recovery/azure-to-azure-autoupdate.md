@@ -6,18 +6,18 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: rajanaki
-ms.openlocfilehash: 45f2e2927f699769bb385038c04d4dd23e075a9a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779685"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209833"
 ---
-# <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのモビリティ サービス拡張機能の自動更新
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
-Azure Site Recovery は、月 1 回のリリース周期で、既存の機能の機能強化や新機能が追加され、既知の問題がある場合は修正されます。 そのため、サービスを最新の状態に維持するには、月 1 回の周期に合わせてこれらのパッチのデプロイを計画する必要があります。 アップグレードに伴うオーバーヘッドを回避するために、ユーザーは代わりに Site Recovery でコンポーネントの更新を管理することもできます。 Azure から Azure へのディザスター リカバリーのための[アーキテクチャー リファレンス](azure-to-azure-architecture.md)で詳しく説明されているように、モビリティ サービスはレプリケーションが有効なすべての Azure 仮想マシンにインストールされ、仮想マシンを別の Azure リージョンにレプリケートします。 このドキュメントでは、次について詳しく説明します。
+Azure Site Recovery は、月 1 回のリリース周期で、既存の機能の機能強化や新機能が追加され、既知の問題がある場合は修正されます。 そのため、サービスを最新の状態に維持するには、月 1 回の周期に合わせてこれらのパッチのデプロイを計画する必要があります。 アップグレードに伴うオーバーヘッドを回避するために、ユーザーは代わりに Site Recovery でコンポーネントの更新を管理することもできます。 Azure から Azure へのディザスター リカバリーのための[アーキテクチャー リファレンス](azure-to-azure-architecture.md)で詳しく説明されているように、モビリティ サービスはレプリケーションが有効なすべての Azure 仮想マシンにインストールされ、仮想マシンを別の Azure リージョンにレプリケートします。 自動更新を有効にすると、モビリティ サービスの拡張機能は、新しいリリースが発行されるたびに更新されます。 このドキュメントでは、次について詳しく説明します。
 
 - 自動更新のしくみ
 - 自動更新を有効にする
@@ -26,6 +26,9 @@ Azure Site Recovery は、月 1 回のリリース周期で、既存の機能の
 ## <a name="how-does-automatic-update-work"></a>自動更新のしくみ
 
 Site Recovery で更新を管理できるようにすると、コンテナーと同じサブスクリプションに作成された Automation アカウントを介してグローバル Runbook (Azure サービスによって使用されます) がデプロイされます。 特定のコンテナーに対して 1 つの Automation アカウントが使用されます。 この Runbook は、自動更新がオンになっているコンテナー内の各 VM をチェックし、新しいバージョンが利用可能であれば、モビリティ サービス拡張機能のアップグレードを開始します。 Runbook の既定のスケジュールでは、レプリケートされた仮想マシンの geo のタイム ゾーンに従って毎日午前 12 時に実行されます。 Runbook のスケジュールは、必要に応じて、ユーザーが Automation アカウントを介して変更することもできます。 
+
+> [!NOTE]
+> 自動更新を有効しても、Azure VM を再起動する必要はないため、実行中のレプリケーションに影響しません。
 
 ## <a name="enable-automatic-updates"></a>自動更新を有効にする
 

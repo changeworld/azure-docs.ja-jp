@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 7372a0c49f6e41ef4d336188ceb5cf4393f4c982
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8a7207328f49488b0df8f6e1e0ed86c6f965d32f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34307439"
 ---
 B シリーズ VM ファミリでは、ワークロードで必要とされるベース レベル パフォーマンスを備えた VM を選べるだけでなく、負荷が急増した場合に Intel® Broadwell E5-2673 v4 2.3 GHz または Intel® Haswell 2.4 GHz E5-2673 v3 プロセッサ vCPU の CPU パフォーマンスを 100% 引き出すことができます。
 
@@ -58,8 +59,8 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Q: B シリーズでは、Premium Storage データ ディスクをサポートしていますか?
 **A**: はい。B シリーズのどのサイズでも、Premium Storage データ ディスクをサポートしています。   
     
-### <a name="q-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、私のクレジットの残りが 0 に設定されます。
-**A**: VM が "再デプロイされた" 場合 (VM を別のノードに移動した場合)、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240 分)。
+### <a name="q-why-is-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
+**A**: VM が "再デプロイ" されて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240 分)。
 
     
 

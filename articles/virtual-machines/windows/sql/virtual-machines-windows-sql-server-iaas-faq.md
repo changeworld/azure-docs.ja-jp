@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/20/2018
 ms.author: v-shysun
-ms.openlocfilehash: 42a82a59d0cf786e80b93f124cbe04007b2a4704
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e0254cd16c27597c3d52aed19b4c4ece49bac765
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366394"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-windows-azure-virtual-machines"></a>Windows Azure Virtual Machines における SQL Server についてよく寄せられる質問
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Windows Azure Virtual Machines 上で実行されている SQL Server についてよく寄せられる質問
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
@@ -72,7 +73,8 @@ ms.lasthandoff: 03/23/2018
 
    2 つの方法があります。 [ライセンスをサポートする仮想マシン イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)のいずれかをプロビジョニングできます。 SQL Server インストール メディアを Windows Server VM にコピーしてから、SQL Server を VM にインストールするオプションもあります。 ライセンス上の理由で、 [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)が必要です。 詳細については、「[Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md)」(SQL Server Azure VM の料金ガイダンス) を参照してください。
 
-1. **従量課金のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
+1. 
+  **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
    いいえ。 秒単位のライセンスから独自のライセンスの使用に切り替えることはできません。 いずれかの [BYOL イメージ](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)を使用して新しい Azure 仮想マシンを作成し、標準の[データ移行方法](virtual-machines-windows-migrate-sql.md)を使用して、データベースを新しいサーバーに移行します。
 
