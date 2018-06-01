@@ -1,21 +1,22 @@
 ---
-title: "Azure Site Recovery でレプリケート済み Azure VM をセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする (プレビュー)"
-description: "Azure Site Recovery で Azure VM レプリケーションをセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します"
+title: Azure Site Recovery でレプリケート済み Azure VM をセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする
+description: Azure Site Recovery で Azure VM レプリケーションをセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a27142f9110fd26daa8ea0ebd151a67769e6568
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209275"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする (プレビュー)
+# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
@@ -26,6 +27,8 @@ ms.lasthandoff: 03/09/2018
 > * プライマリ リージョンにレプリケートされるように、セカンダリ Azure VM を再保護する
 > * セカンダリ VM をフェールバックする
 > * プライマリ VM をセカンダリ リージョンに再保護する
+
+Azure から Azure へのレプリケーションは、現在プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 

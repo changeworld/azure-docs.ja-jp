@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 05/16/2018
 ms.author: sujayt
-ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: daaca3c7b389642a288f738eb0954050e168abef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011630"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210564"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
@@ -31,7 +31,7 @@ ms.locfileid: "34011630"
 --- | ---
 **Azure Portal** | サポートされています
 **クラシック ポータル** | サポートされていません
-**PowerShell** | [プレビュー](azure-to-azure-powershell.md)
+**PowerShell** | [PowerShell を使用した Azure から Azure へのレプリケーション](azure-to-azure-powershell.md)
 **REST API** | 現在、サポートされていません
 **CLI** | 現在、サポートされていません
 
@@ -201,7 +201,7 @@ Azure 管理 DNS | サポートされています |
 認証済みプロキシ | サポートされていません | VM が送信接続に認証済みプロキシを使用している場合は、Azure Site Recovery でレプリケートできません。    
 オンプレミスでのサイト間 VPN (ExpressRoute あり/なし)| サポートされています | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
 VNet 間接続 | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
-仮想ネットワーク サービスのエンドポイント | サポートされています | 仮想ネットワークの Azure Storage ファイアウォールはサポートされていません。 レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
+仮想ネットワーク サービス エンドポイント | サポートされています | 仮想ネットワークの Azure Storage ファイアウォールはサポートされていません。 レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
 高速ネットワーク | サポートされていません | Accelerated Networking が有効になっている VM をレプリケートすることはできますが、フェールオーバー VM では Accelerated Networking が有効になりません。 Accelerated Networking はフェールバックのソース VM でも無効になります。
 
 
