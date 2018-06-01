@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 52d0aeabab173caf4460827ca0d5984070688f0e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304727"
 ---
 # <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
@@ -139,7 +140,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 2. **[概要]** ページで **[接続]** をクリックして、RDP で VM に接続します。
 3. VM の作成時に指定したユーザー名とパスワードを指定して VM にログインし (VM の作成時に入力した資格情報を指定するために、**[その他]**、**[別のアカウントを使う]** の選択が必要になる場合があります)、**[OK]** を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** を選択して、接続処理を続行します。
 4. サーバーのデスクトップで、**[Windows 管理ツール]**>**[Windows PowerShell]** の順に移動します。
-6. PowerShell ウィンドウで、以下のコマンドを実行して IIS サーバーをインストールし、既定の .htm ファイルを削除して、VM の名前を表示する既定の.htm と同名の新しいファイルを追加します。
+6. PowerShell ウィンドウで、以下のコマンドを実行して IIS サーバーをインストールし、既定の iisstart.htm ファイルを削除して、VM の名前を表示する新しい iisstart.htm ファイルを追加します。
 
    ```azurepowershell-interactive
     # install IIS server role
@@ -147,10 +148,10 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     # remove default htm file
      remove-item  C:\inetpub\wwwroot\iisstart.htm
     # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
    ```
-8. *myVM1* で RDP セッションを閉じます。
-9. 手順 1 ～ 8 を繰り返して、*myVM2* に IIS をインストールします。
+7. *myVM1* で RDP セッションを閉じます。
+8. 手順 1. から 7. を繰り返して、*myVM2* に IIS をインストールします。
 
 ## <a name="create-load-balancer-resources"></a>ロード バランサーのリソースを作成する
 
