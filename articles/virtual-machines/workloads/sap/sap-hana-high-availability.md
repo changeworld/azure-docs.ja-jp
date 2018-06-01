@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: 5bc578d617edd093a3b7eec7903209bfdb9ebfce
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1965438e64af84d0c808b0684f9e81c797193bff
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34266863"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
 
@@ -228,10 +229,10 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
        sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
        </code></pre>
        
-       論理ボリュームを作成します
+        論理ボリュームを作成します。 i スイッチなしで lvcreate を使用すると、線形のボリュームが作成されます。 IO パフォーマンスを向上するためにストライプ ボリュームを作成することをお勧めします。-i 引数は、基になる物理ボリュームの数と同じである必要があります。 このドキュメントでは、2 つの物理ボリュームが使用されるため、-i スイッチ引数は 2 になります。 ログ ボリュームには物理ボリュームが 1 つ使用されるため、-i スイッチは明示的には使用されません。 -i スイッチを使用し、各データ、ログまたは共有ボリュームに複数の物理ボリュームを使用する場合は、基となる物理ボリューム数と同じ数字に -i スイッチを置き換えてください。
 
        <pre><code>
-       sudo lvcreate -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+       sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
        sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
        sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
        sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
