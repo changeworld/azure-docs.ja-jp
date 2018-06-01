@@ -1,11 +1,11 @@
 ---
-title: "Azure マイクロサービスをローカルでデプロイおよびアップグレードする | Microsoft Docs"
-description: "Service Fabric のローカル クラスターをセットアップし、それに既存のアプリケーションをデプロイして、そのアプリケーションをアップグレードする方法について説明します。"
+title: Azure マイクロサービスをローカルでデプロイおよびアップグレードする | Microsoft Docs
+description: Service Fabric のローカル クラスターをセットアップし、それに既存のアプリケーションをデプロイして、そのアプリケーションをアップグレードする方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
-ms.author: ryanwi;mikhegn
-ms.openlocfilehash: 9d547039491f6b0c0d308c64d11e9c54b4b4e3d5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.author: ryanwi
+ms.openlocfilehash: ca19b70e3651f72d6fe87fcb3cd2ace2eecf3402
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205248"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
 Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。 この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイして、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。
@@ -85,7 +86,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
     すべて成功すると、次のような出力が表示されます。
    
     ![アプリケーションをローカル クラスターにデプロイする][deploy-app-to-local-cluster]
-7. アプリケーションの動作を確認するには、ブラウザーを起動し、 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)に移動します。 次のような結果が表示されます。
+7. アプリケーションの動作を確認するには、ブラウザーを起動し、[http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html) に移動します。 次のような結果が表示されます。
    
     ![デプロイされたアプリケーション UI][deployed-app-ui]
    
@@ -148,7 +149,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
     アップグレードが始まると、PowerShell に次の出力が表示されます。
    
     ![PowerShell でのアップグレードの進行状況][ps-appupgradeprogress]
-3. アップグレードの進行中は、Service Fabric Explorer でその状態を監視するのが簡単な場合もあります。 ブラウザー ウィンドウを起動して、 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)に移動します。 左側のツリーで **[アプリケーション]** を展開し、**[WordCount]** を選択して、最後に **[fabric:/WordCount]** を選択します。 [essentials (基礎)] タブには、クラスターのアップグレード ドメインごとにアップグレードの進行状況が表示されます。
+3. アップグレードの進行中は、Service Fabric Explorer でその状態を監視するのが簡単な場合もあります。 ブラウザー ウィンドウを起動して、[http://localhost:19080/Explorer](http://localhost:19080/Explorer) に移動します。 左側のツリーで **[アプリケーション]** を展開し、**[WordCount]** を選択して、最後に **[fabric:/WordCount]** を選択します。 [essentials (基礎)] タブには、クラスターのアップグレード ドメインごとにアップグレードの進行状況が表示されます。
    
     ![Service Fabric Explorer でのアップグレードの進行状況][sfx-upgradeprogress]
    
@@ -216,7 +217,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
    
     ![クラスターのセットアップに関する出力][cluster-setup-success-1-node]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * いくつかのビルド済みのアプリケーションをデプロイし、アップグレードしたので、今度は [Visual Studio で自身のアプリケーションをビルドしてみます](service-fabric-create-your-first-application-in-visual-studio.md)。
 * この記事の中でローカル クラスターに対して実行したアクションはすべて、 [Azure クラスター](service-fabric-cluster-creation-via-portal.md) に対しても実行することができます。
 * この記事で実行したアップグレードは基本的なものでした。 Service Fabric アップグレードの機能と柔軟性の詳細については、「 [アップグレードに関するドキュメント](service-fabric-application-upgrade.md) 」を参照してください。

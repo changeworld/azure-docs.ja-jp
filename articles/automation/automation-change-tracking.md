@@ -7,14 +7,15 @@ ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0716466eab69ef2a2439a533cd51e92307bd056
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: b110f83274b2b42896bd18fb364c355ecc97a028
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258262"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -97,6 +98,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 * Windows ファイル追跡用のフォルダー (ディレクトリ)
 * Windows ファイル追跡用の再帰
 * Windows ファイル追跡用のワイルドカード
+* Windows レジストリ追跡用の再帰
 * パス変数
 * ネットワーク ファイル システム
 * ファイル コンテンツ

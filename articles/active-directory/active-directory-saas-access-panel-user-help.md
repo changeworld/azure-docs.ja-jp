@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0604007255d829cab0502e93895ca541da3b93a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931266"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260511"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>マイ アプリ ポータルのアクセスと使用に関する問題のトラブルシューティング
 
@@ -58,10 +58,11 @@ ms.locfileid: "33931266"
 - **Firefox 26.0 以降**: Windows XP SP2 以降、Mac OS X 10.6 以降。
 - **Internet Explorer 11**: Windows 7 以降 (制限付きサポート)。
 
-次のサイトから Chrome と Edge 対応の拡張機能を直接ダウンロードすることもできます。
+拡張は次のサイトから直接ダウンロードすることもできます。
 
-- [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 拡張機能をインストールしても、引き続き問題が発生する場合は、次をお試しください。
 

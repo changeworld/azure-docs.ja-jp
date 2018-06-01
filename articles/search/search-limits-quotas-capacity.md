@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072591"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203394"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、または **Standard** の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -45,10 +45,13 @@ ms.locfileid: "34072591"
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | 最大インデックス |3 |5 または 15 |50 |200 |200 |パーティションあたり 1,000、またはサービスあたり 3,000 |
 | インデックスあたりの最大フィールド |1,000 |100 |1,000 |1,000 |1,000 |1,000 |
-| インデックスあたりの最大スコアリング プロファイル |100 |100 |100 |100 |100 |100 |
+| インデックスあたりの最大[サジェスター](https://docs.microsoft.com/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |
+| インデックスあたりの最大[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) |100 |100 |100 |100 |100 |100 |
 | プロファイルあたりの最大関数 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> 2017 年末以降に作成された Basic サービスについては、インデックス、データ ソース、およびインデクサーの制限が 15 に増えました。 その前に作成されたサービスについては 5 です。 Basic レベルにのみ下限 (インデックスあたり 100 フィールド) があります。
+
+<a name="document-limits"></a>
 
 ## <a name="document-limits"></a>ドキュメントの制限 
 
@@ -94,7 +97,7 @@ ms.locfileid: "34072591"
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | 最大インデクサー |3 |5 または 15|50 |200 |200 |該当なし |
 | 最大データソース |3 |5 または 15 |50 |200 |200 |該当なし |
-| 最大スキルセット |3 |5 または 15 |50 |200 |200 |該当なし |
+| 最大スキルセット <sup>4</sup> |3 |5 または 15 |50 |200 |200 |該当なし |
 | 呼び出しあたりの最大インデックス作成負荷 |10,000 ドキュメント |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |該当なし |
 | 最大実行時間 | 1 ～ 3 分 |24 時間 |24 時間 |24 時間 |24 時間 |該当なし  |
 | BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |該当なし  |
@@ -105,6 +108,8 @@ ms.locfileid: "34072591"
 <sup>2</sup> 2017 年末以降に作成された Basic サービスについては、インデックス、データ ソース、およびインデクサーの制限が 15 に増えました。 その前に作成されたサービスについては 5 です。
 
 <sup>3</sup> S3 HD サービスには、インデクサー サポートが含まれません。
+
+<sup>4</sup> スキルセットあたり最大 30 スキル。
 
 ## <a name="queries-per-second-qps"></a>秒間クエリ (QPS)
 

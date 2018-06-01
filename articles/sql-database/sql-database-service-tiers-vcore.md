@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057929"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212383"
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>Azure SQL Database の仮想コア ベースの購入モデル (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "34057929"
 |**購入モデル**|**説明**|**最適な用途**|
 |---|---|---|
 |DTU ベースのモデル|このモデルは、コンピューティング、ストレージ、および IO リソースのバンドルされた測定値に基づいています。 パフォーマンス レベルは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU と eDTU の概要](sql-database-what-is-a-dtu.md)に関する記事をご覧ください。|シンプルな構成済みリソースのオプションを希望するお客様に最適です。| 
-|仮想コアベースのモデル|このモデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングできます。 また、SQL Server 向けの Azure ハイブリッド特典を使用して、コストを削減することもできます。|柔軟性、制御、および透明性を重視するお客様に最適です。|
+|仮想コアベースのモデル|このモデルでは、コンピューティング リソースとストレージ リソース (最大 80 個の仮想コア、4 TB のデータ ストレージ、200000 IOPS) を個別にスケーリングできます。 また、SQL Server 向けの Azure ハイブリッド特典を使用して、コストを削減することもできます。|柔軟性、制御、および透明性を重視するお客様に最適です。|
 ||||  
 
 ![価格モデル](./media/sql-database-service-tiers/pricing-model.png)
@@ -66,10 +66,10 @@ ms.locfileid: "34057929"
 ||**汎用**|**Business Critical**|
 |---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
-|Compute|1 ～ 16 仮想コア|1 ～ 16 仮想コア|
+|コンピューティング|1 から 80 個の仮想コア、世代 4 と世代 5 |1 から 80 個の仮想コア、世代 4 と世代 5|
 |メモリ|コアあたり 7 GB |コアあたり 7 GB |
-|Storage|Premium リモート ストレージ、5 GB ～ 4 TB|ローカル SSD ストレージ、5 GB ～ 1 TB|
-|IO スループット (概算)|仮想コアあたり 500 IOPS (最大 7500 IOPS)|コアあたり 5000 IOPS|
+|Storage|Premium リモート ストレージ、5 GB ～ 4 TB|ローカル SSD ストレージ、5 GB から 4 TB|
+|IO スループット (概算)|仮想コアあたり 500 IOPS (最大 7000 IOPS)|コアあたり 5000 IOPS (最大 200000 IOPS)|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール](sql-database-read-scale-out.md)、ゾーン冗長 HA|
 |バックアップ|RA-GRS、7 ～ 35 日 (既定では 7 日)|RA-GRS、7 ～ 35 日 (既定では 7 日)*|
 |インメモリ|該当なし|サポートされています|
