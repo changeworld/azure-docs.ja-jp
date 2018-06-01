@@ -7,14 +7,14 @@ ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4493f9da0de12fbdfffdf0f4da0dd581ac3b589f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055523"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195558"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC による管理のためのマシンのオンボード
 
