@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936160"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304360"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 証明書署名要求の生成
 
@@ -69,10 +69,10 @@ Azure Stack デプロイのための PKI 証明書に対する CSR を生成す�
     > [!note]  
     > 共通名 (CN) が指定されている場合、証明書要求の最初の DNS 名によって上書きされます。
 
-3.  既に存在する出力ディレクトリを宣言します。
+3.  既に存在する出力ディレクトリを宣言します。 例: 
 
     ````PowerShell  
-    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
 4.  ID システムを宣言します
 
@@ -96,7 +96,7 @@ Azure Stack デプロイのための PKI 証明書に対する CSR を生成す�
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` は、Azure Stack のすべての外部 DNS が作成されるベースを形成します。この例では、ポータルは `portal.east.azurestack.contoso.com` となります。
+    > `<regionName>.<externalFQDN>` は、Azure Stack のすべての外部 DNS が作成されるベースを形成します。この例では、ポータルは `portal.east.azurestack.contoso.com` となります。  
 
 6. 複数のサブジェクトの別名がある 1 つの証明書要求を生成する場合は、次のように実行します。
 
