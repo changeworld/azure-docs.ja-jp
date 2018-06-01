@@ -1,20 +1,21 @@
 ---
-title: "Azure サービス カタログ マネージ アプリケーションの作成と発行 | Microsoft Docs"
-description: "組織のメンバーを対象とする Azure マネージ アプリケーションを作成する方法について説明します。"
+title: Azure サービス カタログ マネージ アプリケーションの作成と発行 | Microsoft Docs
+description: 組織のメンバーを対象とする Azure マネージ アプリケーションを作成する方法について説明します。
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 11/02/2017
+ms.date: 05/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46adcdf39625c85dc962a7541b68c5500cf920ee
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305312"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>社内従量課金プラン向けマネージ アプリケーションの発行
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 12/19/2017
         }
     },
     "variables": {
-        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString('storage'))]"
+        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -138,7 +139,7 @@ Azure Portal で **createUiDefinition.json** ファイルを使用して、マ�
 }
 ```
 
-createUIDefinition.json ファイルを保存します。
+createUiDefinition.json ファイルを保存します。
 
 ## <a name="package-the-files"></a>ファイルのパッケージ化
 
@@ -152,8 +153,7 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage `
-  -EnableEncryptionService Blob
+  -Kind Storage
 
 $ctx = $storageAccount.Context
 
@@ -173,7 +173,9 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 
 リソースの管理に使用するユーザー グループのオブジェクト ID が必要です。 
 
-![グループ ID の取得](./media/publish-service-catalog-app/get-group-id.png)
+```powershell
+$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+```
 
 ### <a name="get-the-role-definition-id"></a>ロール定義 ID の取得
 
@@ -203,41 +205,69 @@ New-AzureRmManagedApplicationDefinition `
   -LockLevel ReadOnly `
   -DisplayName "Managed Storage Account" `
   -Description "Managed Azure Storage Account" `
-  -Authorization "<group-id>:$ownerID" `
+  -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="create-the-managed-application-by-using-the-portal"></a>ポータルを使ったマネージ アプリケーションの作成
+## <a name="create-the-managed-application"></a>マネージド アプリケーションの作成
+
+マネージド アプリケーションは、ポータル、PowerShell、または Azure CLI を介してデプロイすることができます。
+
+### <a name="powershell"></a>PowerShell
+
+まず、PowerShell を使用してマネージド アプリケーションをデプロイしましょう。
+
+```powershell
+# Create resource group
+New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
+
+# Get ID of managed application definition
+$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
+
+# Create the managed application
+New-AzureRmManagedApplication `
+  -Name storageApp `
+  -Location westcentralus `
+  -Kind ServiceCatalog `
+  -ResourceGroupName applicationGroup `
+  -ManagedApplicationDefinitionId $appid `
+  -ManagedResourceGroupName "InfrastructureGroup" `
+  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
+```
+
+マネージド アプリケーションおよびマネージド インフラストラクチャが、サブスクリプション内に存在するようになりました。
+
+### <a name="portal"></a>ポータル
 
 次はポータルを使用してマネージ アプリケーションをデプロイしてみましょう。 パッケージで作成したユーザー インターフェイスが表示されます。
 
-1. Azure Portal にアクセスします。 **[+ 新規]** を選択して**サービス カタログ**を検索します。
+1. Azure Portal にアクセスします。 **[+ リソースの作成]** を選択し、**サービス カタログ**を検索します。
 
-   ![サービス カタログの検索](./media/publish-service-catalog-app/select-new.png)
+   ![サービス カタログの検索](./media/publish-service-catalog-app/create-new.png)
 
 1. **[サービス カタログの管理されているアプリケーション]** を選択します。
 
-   ![サービス カタログの選択](./media/publish-service-catalog-app/select-service-catalog.png)
+   ![サービス カタログの選択](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 
    ![作成の選択](./media/publish-service-catalog-app/select-create.png)
 
-1. 利用可能なソリューションの一覧から、作成するマネージ アプリケーションを見つけて選択します。 **[作成]**を選択します。
+1. 利用可能なソリューションの一覧から、作成するマネージ アプリケーションを見つけて選択します。 **[作成]** を選択します。
 
    ![マネージ アプリケーションを見つける](./media/publish-service-catalog-app/find-application.png)
 
 1. マネージ アプリケーションに必要な基本情報を入力します。 サブスクリプションと、マネージ アプリケーションを格納する新しいリソース グループを指定します。 場所は **[米国中西部]** を選択します。 操作が完了したら、**[OK]** をクリックします。
 
-   ![マネージ アプリケーションのパラメーターの指定](./media/publish-service-catalog-app/provide-basics.png)
+   ![マネージ アプリケーションのパラメーターの指定](./media/publish-service-catalog-app/add-basics.png)
 
 1. マネージ アプリケーションのリソースに固有の値を指定します。 操作が完了したら、**[OK]** をクリックします。
 
-   ![リソース パラメーターの指定](./media/publish-service-catalog-app/provide-resource-values.png)
+   ![リソース パラメーターの指定](./media/publish-service-catalog-app/add-storage-settings.png)
 
 1. テンプレートは指定した値を検証します。 検証が成功したら、**[OK]** を選択してデプロイを開始します。
 
-   ![マネージ アプリケーションの検証](./media/publish-service-catalog-app/validate.png)
+   ![マネージ アプリケーションの検証](./media/publish-service-catalog-app/view-summary.png)
 
 デプロイが完了すると、マネージ アプリケーションが applicationGroup という名前のリソース グループに配置されます。 ストレージ アカウントは、applicationGroup にハッシュされた文字列値を加えた名前のリソース グループに配置されます。
 
