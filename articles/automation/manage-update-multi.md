@@ -7,14 +7,14 @@ ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/20/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae5d2e38f11abfabda067e9affbf81159002cb99
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34054808"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194021"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -143,7 +143,7 @@ Azure 以外の Linux 仮想マシンとコンピューターの更新管理を�
 
   ![[新しい更新プログラムの展開] ウィンドウ](./media/manage-update-multi/update-select-computers.png)
 
-- **[更新プログラムの分類]**: 更新プログラムの展開に含まれるソフトウェアの種類を選択します。 分類の種類の詳細については、「[更新プログラムの分類](automation-update-management.md#update-classifications)」を参照してください。 分類の種類は次のとおりです。
+- **[更新プログラムの分類]**: 更新プログラムの展開に含まれるソフトウェアの種類を選択します。 分類の種類の詳細については、「[Update classifications (更新プログラムの分類)](automation-update-management.md#update-classifications)」をご覧ください。 分類の種類は次のとおりです。
   - 緊急更新プログラム
   - セキュリティ更新プログラム
   - 更新プログラムのロールアップ
