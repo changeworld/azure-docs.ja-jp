@@ -1,9 +1,9 @@
 ---
-title: "設定とデータのローミングに関する FAQ | Microsoft Docs"
-description: "設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。"
+title: 設定とデータのローミングに関する FAQ | Microsoft Docs
+description: 設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
 services: active-directory
-keywords: "Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問"
-documentationcenter: 
+keywords: Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,23 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 0aac3a9d3595ea0e761ba14070bf7cff4d4b264c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f33376d5f68d64495a7a90e62870f3ec14f73246
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258716"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
-このトピックでは、設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
+この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
 
 ## <a name="what-data-roams"></a>ローミングの対象データは
 **Windows 設定**: Windows オペレーティング システムに組み込まれている PC 設定。 主に、お使いの PC をカスタマイズする設定が該当し、大きく次のカテゴリに分けられます。
 
 * *テーマ*: デスクトップ テーマやタスク バーの設定などの機能が含まれています。
 * *Internet Explorer の設定*: 最近開いたタブ、お気に入りなどが含まれています。
-* *Microsoft Edge ブラウザーの設定*: お気に入り、リーディング リストなどがあります。
+* *Edge ブラウザーの設定*: お気に入り、リーディング リストなどがあります。
 * *パスワード*: インターネット パスワード、Wi-Fi プロファイルなどが含まれています。
 * *言語設定*: キーボード レイアウト、システム言語、日付と時刻などの設定が含まれています。
 * *簡単操作機能*: ハイ コントラスト テーマ、ナレーター、拡大鏡などがあります。
@@ -70,12 +71,12 @@ Active Directory に接続されている Microsoft アカウントで Active Di
 November 2015 以降のリリースの Windows 10 では、Enterprise State Roaming が一度に 1 つのアカウントでのみサポートされます。 職場や学校の Azure AD アカウントで Windows にサインインした場合は、すべてのデータが Azure AD 経由で同期されます。 個人用 Microsoft アカウントで Windows にサインインした場合は、すべてのデータが Microsoft アカウント経由で同期されます。 ユニバーサル アプリのデータはデバイスのプライマリ サインイン アカウントのみを使用してローミングされ、アプリのライセンスがプライマリ アカウントによって所有されている場合にのみローミングされます。 セカンダリ アカウントによって所有されているアプリのユニバーサル アプリ データは同期されません。
 
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>複数テナントの Azure AD アカウントが存在する場合、設定は同期されますか
-異なる Azure AD テナントに属している複数の Azure AD アカウントが同じデバイスに存在する場合、その各 Azure AD テナントについて、Azure Rights Management Service (Azure RMS) と通信するようにデバイスのレジストリを更新する必要があります。  
+異なる Azure AD テナントの複数の Azure AD アカウントが同じデバイス上に存在する場合は、そのデバイスのレジストリを、Azure AD テナントごとに Azure Rights Management サービスと通信するように更新する必要があります。  
 
-1. 各 Azure AD テナントの GUID を見つけます。 Azure Portal を開いて Azure AD テナントを選択します。 テナントの GUID は、選択したテナントの [プロパティ] ページ (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) にあり、**ディレクトリ ID** のラベルが付いています。 
+1. 各 Azure AD テナントの GUID を見つけます。 Azure Portal を開いて Azure AD テナントを選択します。 テナントの GUID は、選択されたテナントの [プロパティ] ページ (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)) にあり、**[ディレクトリ ID]** というラベルが付いています。 
 2. GUID を特定したら、レジストリ キー **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** を追加する必要があります。
    **テナント ID の GUID** キーから、**AllowedRMSServerUrls** という名前の新しい複数行文字列値 (REG-MULTI-SZ) を作成します。 そのデータに対して、デバイスがアクセスする他の Azure テナントのライセンス配布ポイントの URL を指定します。
-3. ライセンス配布ポイントの URL は、 **Get-AadrmConfiguration** コマンドレットを実行して確認できます。 **LicensingIntranetDistributionPointUrl** の値と **LicensingExtranetDistributionPointUrl** の値とが異なる場合は、両方の値を指定します。 同じ値である場合は、その値を一度だけ指定してください。
+3. ライセンス配布ポイントの URL は、AADRM モジュールから **Get-AadrmConfiguration** コマンドレットを実行することによって見つけることができます。 **LicensingIntranetDistributionPointUrl** の値と **LicensingExtranetDistributionPointUrl** の値とが異なる場合は、両方の値を指定します。 同じ値である場合は、その値を一度だけ指定してください。
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>既存の Windows デスクトップ アプリケーションに使用されるローミングの設定に関しては、どのような選択肢がありますか
 ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。 既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の 2 つの選択肢があります。
@@ -95,9 +96,9 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 Enterprise State Roaming は同期されたすべてのデータを Azure クラウドに格納します。 オンプレミスのローミング ソリューションとしては UE-V をご利用ください。
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>ローミングされるデータはだれが所有するのですか
-Enterprise State Roaming でローミングされたデータは各企業の所有となります。 データは Azure データセンターに保存されます。 すべてのユーザー データは、転送されているときも、クラウドに保存されている間も、Azure RMS を使用して暗号化されます。 これが Microsoft アカウント ベースの設定の同期機能から改良された点であり、Microsoft アカウント ベースでは特定の機密データ (ユーザーの資格情報など) だけが、デバイスから送信される前に暗号化されていました。
+Enterprise State Roaming でローミングされたデータは各企業の所有となります。 データは Azure データセンターに保存されます。 すべてのユーザー データが、Azure Information Protection の Azure Rights Management サービスを使用して、転送中とクラウド内の保存時のどちらの状態でも暗号化されます。 これが Microsoft アカウント ベースの設定の同期機能から改良された点であり、Microsoft アカウント ベースでは特定の機密データ (ユーザーの資格情報など) だけが、デバイスから送信される前に暗号化されていました。
 
-マイクロソフトは、顧客データの保護に積極的に取り組んでいます。 企業ユーザーの設定データは、Windows 10 デバイスから送信される前に、Azure RMS によって自動的に暗号化されるため、別のユーザーがそのデータを読み取ることはできません。 勤務先が Azure RMS の有料サブスクリプションを取得済みである場合は、他の Azure RMS 機能 (ドキュメントの追跡と失効など) を利用したり、機密情報を含んだ電子メールを自動的に保護したり、独自にキーを管理したり ("Bring Your Own Key" ソリューション、BYOK とも呼ばれます) することができます。 これらの機能や Azure RMS の機能について詳しくは、「 [Azure Active Directory Rights Management の概要](https://technet.microsoft.com/jj585026.aspx)」を参照してください。
+マイクロソフトは、顧客データの保護に積極的に取り組んでいます。 企業ユーザーの設定データは、Windows 10 デバイスから送信される前に Azure Rights Management サービスによって自動的に暗号化されるため、他のユーザーがこのデータを読み取ることはできません。 組織に Azure Rights Management サービスの有料サブスクリプションがある場合は、他の保護機能 (ドキュメントの追跡や失効など) を使用したり、機密情報を含む電子メールを自動的に保護したり、独自のキー ("Bring Your Own Key" ソリューション、BYOK とも呼ばれます) を管理したりできます。 これらの機能およびこの保護サービスの動作の詳細については、「[Azure Active Directory Rights Management の概要](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection)」を参照してください。
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>特定のアプリや設定の同期を管理することはできますか
 Windows 10 の MDM やグループ ポリシーには、個々のアプリケーションを対象にローミングを無効にするための設定は存在しません。 テナントの管理者がその管理対象デバイス上の全アプリを対象にアプリ データの同期を無効にすることはできますが、アプリ単位やアプリ内の階層単位で細かく制御することはできません。
@@ -116,8 +117,8 @@ Enterprise State Roaming と UE-V を併用するときは、次の規則が当�
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>仮想デスクトップ インフラストラクチャ (VDI) に対する Enterprise State Roaming の対応について教えてください
 Enterprise State Roaming は Windows 10 クライアント SKU でサポートされていますが、サーバー SKU ではサポートされません。 ハイパーバイザー コンピューターでクライアント VM がホストされており、その仮想マシンにリモートでサインインしている場合、データはローミングされます。 複数のユーザーが同じ OS を共有しており、ユーザーがリモートからサーバーにログインしてデスクトップとまったく同じようにその環境を利用している場合、ローミングは正常に機能しない場合があります。 後者のセッション ベースのシナリオは公式対応していません。
 
-## <a name="what-happens-when-my-organization-purchases-azure-rms-after-using-roaming"></a>ローミング機能を使用した後に勤務先が Azure RMS を購入したらどうなりますか
-Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプションでのローミングを既にご利用の場合、有料の Azure RMS サブスクリプションを購入しても、ローミング機能の働きには一切影響せず、IT 管理者が構成に変更を加える必要もありません。
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>組織が、ローミングを使用した後に Azure Rights Management を含むサブスクリプションを購入するとどうなりますか
+組織が既に Windows 10 および Azure Rights Management 使用制限付き無料サブスクリプションでローミングを使用している場合は、Azure Rights Management 保護サービスを含む[有料サブスクリプション](https://azure.microsoft.com/pricing/details/information-protection/)を購入してもローミングの機能には影響せず、IT 管理者による構成変更は必要ありません。
 
 ## <a name="known-issues"></a>既知の問題
 既知の問題の一覧については、「[troubleshooting](active-directory-windows-enterprise-state-roaming-troubleshooting.md)」(トラブルシューティング) セクションのドキュメントを参照してください。 

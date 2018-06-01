@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 05/14/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 165a899dbad0893b3a2bddcfc68c9b5d737e9d3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197812"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage : 違いと考慮事項
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/28/2018
 
 Azure Stack Storage は、Microsoft Azure Stack 内のストレージ クラウド サービスのセットです。 Azure Stack Storage では、Azure と整合性のあるセマンティクスによって BLOB、テーブル、キュー、アカウント管理機能が提供されます。
 
-この記事では、Azure Stack Storage と Azure Storage について明らかになっている相違点をまとめています。 また、Azure Stack をデプロイするときに留意するその他の考慮事項についてもまとめています。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
+この記事では、Azure Stack Storage サービスと Azure Storage サービスとの間で確認されている相違点をまとめています。 Azure Stack をデプロイするときに考慮すべき事柄も取り上げています。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
 
 ## <a name="cheat-sheet-storage-differences"></a>チート シート: ストレージの相違点
 
@@ -49,26 +50,28 @@ Blob Storage の論理的な削除|プレビュー|まだサポートされて�
 |テーブルのパーティション キーと行キーのサイズ|1,024 文字 (2,048 バイト)|400 文字 (800 バイト)
 |BLOB スナップショット|1 つの BLOB の最大スナップショット数は制限されていません。|1 つの BLOB の最大スナップショット数は 1,000 です。|
 
-### <a name="metrics"></a>メトリック
-ストレージ メトリックにもいくつかの相違点があります。
+ストレージ メトリックにも相違点があります。
+
 * ストレージ メトリックのトランザクション データでは、内部と外部のネットワーク帯域幅が区別されません。
 * ストレージ メトリックのトランザクション データには、マウントされたディスクへの仮想マシンのアクセスは含まれません。
 
 ## <a name="api-version"></a>API バージョン
+
 Azure Stack Storage では以下のバージョンがサポートされます。
 
 Azure Storage サービスの API:
 
 1802 update 以降:
+
  - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
  - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
  - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08 ](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
  - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 以前のバージョン:
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Azure Storage サービスの Management API:
 
@@ -78,7 +81,7 @@ Azure Storage サービスの Management API:
 
 ## <a name="sdk-versions"></a>SDK バージョン
 
-Azure Stack Storage では次のクライアント ライブラリがサポートされます。
+Azure Stack Storage は、次のクライアント ライブラリをサポートしています。
 
 | クライアント ライブラリ | Azure Stack でサポートされるバージョン | リンク                                                                                                                                                                                                                                                                                                                                     | エンドポイントの指定       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -94,4 +97,3 @@ Azure Stack Storage では次のクライアント ライブラリがサポー�
 
 * [Azure Stack Storage の開発ツールの概要](azure-stack-storage-dev.md)
 * [Azure Stack Storage の概要](azure-stack-storage-overview.md)
-

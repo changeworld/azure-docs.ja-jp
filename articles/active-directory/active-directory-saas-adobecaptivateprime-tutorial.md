@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jeedes
-ms.openlocfilehash: f61ab05d2c89167eeef0cb930a734bfafeeded1c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1cb31fa9a5c7fdcd4158c9c2d2ddccc7125ba3bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206461"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル: Azure Active Directory と Adobe Captivate Prime
 
@@ -31,7 +31,7 @@ Adobe Captivate Prime と Azure AD の統合には、次の利点があります
 - ユーザーが自分の Azure AD アカウントで自動的に Adobe Captivate Prime にサインオン (シングル サインオン) するよう指定できます。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -201,7 +201,7 @@ Adobe Captivate Prime での Azure AD シングル サインオンを構成し�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](manage-apps/what-is-single-sign-on.md)
 
 
 

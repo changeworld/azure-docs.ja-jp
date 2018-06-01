@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 05/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 9ee54827ae9e8a803a5e3d7464559aec62c67119
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59b0f8e4c7234b246d4fb54d065ff318939e2662
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301837"
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナントの有効化
 
@@ -75,7 +76,7 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 あなたが Azure Stack ディレクトリでの手順を完了した後に、メアリーは Azure Stack がゲスト ディレクトリにアクセスすることに同意し、Azure Stack をゲスト ディレクトリに登録する必要があります。 
 
 ### <a name="registering-azure-stack-with-the-guest-directory"></a>ゲスト ディレクトリへの Azure Stack の登録
-ゲスト ディレクトリの管理者は、Azure Stack が Fabrikam のディレクトリにアクセスすることに同意したら、Azure Stack を Fabrikam のディレクトリ テナントに登録する必要があります。
+ゲスト ディレクトリの管理者が、Azure Stack が Fabrikam のディレクトリにアクセスすることに同意したら、メアリーは Azure Stack を Fabrikam のディレクトリ テナントに登録する必要があります。
 
 ````PowerShell
 $tenantARMEndpoint = "https://management.local.azurestack.external"

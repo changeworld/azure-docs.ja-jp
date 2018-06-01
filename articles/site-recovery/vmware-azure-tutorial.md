@@ -6,14 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 173e31e3b1f855d488f7f8baf6659b1521ea7aa5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2a96655c26e2df2534f420239b56ef0c3959319a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212876"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 05/07/2018
 
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
 
-1. **[Recovery Services コンテナー]** で、コンテナー名 **ContosoVMVault** を選択します。
+1. **[Recovery Services コンテナー]** で、コンテナー名を選択します。 このシナリオでは、**ContosoVMVault** を使います。
 2. **[作業の開始]** で、[Site Recovery] を選択します。 次に、**[インフラストラクチャの準備]** を選択します。
 3. **[保護の目標]** > **[マシンのある場所]** で、**[オンプレミス]** を選びます。
 4. **[マシンをどこにレプリケートしますか]** で、**[To Azure]\(Azure\)** を選びます。
@@ -139,7 +140,7 @@ Site Recovery は指定された設定を使用して VMware サーバーに接�
 1. [Azure Portal](https://portal.azure.com) を開いて **[すべてのリソース]** を選択します。
 2. **ContosoVMVault** という名前の Recovery Service コンテナーを選択します。
 3. レプリケーション ポリシーを作成するには、**[Site Recovery インフラストラクチャ]** > **[レプリケーション ポリシー]** > **[+ レプリケーション ポリシー]** の順に選択します。
-4. **[レプリケーション ポリシーの作成]** で、ポリシー名として「**VMwareRepPolicy**」を入力します。
+4. **[レプリケーション ポリシーの作成]** で、ポリシー名を入力します。 このシナリオでは、**VMwareRepPolicy** を使います。
 5. **[RPO しきい値]** では、既定値の 60 分が使用されます。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
 6. **[復旧ポイントのリテンション期間]** では、各復旧ポイントのリテンション期間に既定値の 24 時間が使用されます。 このチュートリアルでは 72 時間を使用します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。
 7. **[アプリ整合性スナップショットの頻度]** では、アプリ整合性スナップショットの作成頻度に既定値の 60 分が使用されます。 **[OK]** を選択してポリシーを作成します。

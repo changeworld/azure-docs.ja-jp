@@ -1,23 +1,24 @@
 ---
-title: Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
+title: Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する
 description: Azure Site Recovery サービスを使用して、別の Azure リージョンへの Azure VM のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211669"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する
 
-[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミス マシンと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、フェールバックを管理し、調整することでディザスター リカバリー戦略に貢献します。
+[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
 このチュートリアルでは、セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -27,6 +28,7 @@ ms.lasthandoff: 05/08/2018
 > * VM の発信アクセスを設定する
 > * VM のレプリケーションを有効にする
 
+Azure から Azure へのレプリケーションは、現在プレビュー段階です。
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
@@ -109,7 +111,7 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 ### <a name="select-the-source"></a>ソースを選択する
 
 1. [Recovery Services コンテナー] で、[コンテナー名] > **[+ レプリケート]** の順にクリックします。
-2. **[ソース]** で **[Azure - プレビュー]** を選択します。
+2. **[ソース]** で **[Azure]** を選択します。
 3. **[ソースの場所]** で、現在 VM が実行されているソースの Azure リージョンを選択します。
 4. VM の **Azure 仮想マシンのデプロイ モデル**として、**[Resource Manager]** または **[クラシック]** を選択します。
 5. Resource Manager VM の場合は**ソース リソース グループ**を、クラシック VM の場合は**クラウド サービス**を選択します。
