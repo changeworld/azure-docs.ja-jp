@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940226"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361949"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -236,9 +236,9 @@ nslookup コマンドを使用することで、名前 myip.opendns.com に関�
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventoutbound"></a>送信接続の防止
-場合によっては、VM で送信フローを作成できるのは望ましくない場合があります。 また、送信フローで接続できる宛先や受信フローを開始できる宛先を管理するための要件がある場合もあります。 このような場合は、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) を使用すると、VM が接続できる宛先を管理できます。 また、NSG を使用して、受信フローを開始できるパブリックの宛先を管理することもできます。 
+場合によっては、VM で送信フローを作成できるのは望ましくない場合があります。 また、送信フローで接続できる宛先や受信フローを開始できる宛先を管理するための要件がある場合もあります。 このような場合は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) を使用すると、VM が接続できる宛先を管理できます。 また、NSG を使用して、受信フローを開始できるパブリックの宛先を管理することもできます。
 
-負荷分散された VM に NSG を適用するときは、[既定のタグ](../virtual-network/virtual-networks-nsg.md#default-tags)と[既定のルール](../virtual-network/virtual-networks-nsg.md#default-rules)に注意してください。 VM が Azure Load Balancer からのヘルス プローブ要求を受け取ることができるようにしておいてください。 
+負荷分散された VM に NSG を適用するときは、[サービス タグ](../virtual-network/security-overview.md#service-tags)と[既定のセキュリティ規則](../virtual-network/security-overview.md#default-security-rules)に注意してください。 VM が Azure Load Balancer からのヘルス プローブ要求を受け取ることができるようにしておいてください。 
 
 NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求をブロックすると、VM のヘルス プローブが失敗して VM が停止しているとマークされます。 ロード バランサーはその VM への新しいフローの送信を停止します。
 
@@ -250,5 +250,5 @@ NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求を�
 
 - [Load Balancer](load-balancer-overview.md) について詳しく学習する。
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
-- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)の詳細を確認する。
+- [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)の詳細を確認する。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
