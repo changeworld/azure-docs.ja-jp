@@ -205,17 +205,9 @@
     - name: トラブルシューティング
       items:
         - name: ネットワーク セキュリティ グループ
-          items:
-            - name: Azure ポータル
-              href: virtual-network-nsg-troubleshoot-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-nsg-troubleshoot-powershell.md
+          href: diagnose-network-traffic-filter-problem.md
         - name: ルート
-          items:
-            - name: Azure ポータル
-              href: virtual-network-routes-troubleshoot-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-routes-troubleshoot-powershell.md
+          href: diagnose-network-routing-problem.md
         - name: スループットのテスト
           href: virtual-network-bandwidth-testing.md
         - name: 仮想ネットワークを削除できない

@@ -4,22 +4,22 @@
   items:
     - name: Active Directory
       tocHref: /event-hubs/
-      topicHref: /azure/active-directory/
+      topicHref: /azure/active-directory/index
       items:
         - name: 管理対象のサービス ID
           tocHref: /event-hubs-managed-service-identity/
-          topicHref: /azure/active-directory/managed-service-identity/
+          topicHref: /azure/active-directory/managed-service-identity/index
     - name: Active Directory
-      tocHref: /service-bus-messaging
-      topicHref: /azure/active-directory/
+      tocHref: /service-bus-messaging/
+      topicHref: /azure/active-directory/index
       items:
         - name: 管理対象のサービス ID
           tocHref: /service-bus-managed-service-identity/
-          topicHref: /azure/active-directory/managed-service-identity/
+          topicHref: /azure/active-directory/managed-service-identity/index
     - name: Active Directory
-      tocHref: /app-service
-      topicHref: /azure/active-directory/
+      tocHref: /app-service/
+      topicHref: /azure/active-directory/index
       items:
         - name: 管理対象のサービス ID
           tocHref: /app-service-managed-service-identity/
-          topicHref: /azure/active-directory/managed-service-identity/
+          topicHref: /azure/active-directory/managed-service-identity/index

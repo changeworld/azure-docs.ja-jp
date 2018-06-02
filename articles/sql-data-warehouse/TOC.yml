@@ -6,6 +6,10 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: チート シート
       href: cheat-sheet.md
+- name: リリース ノート
+  items:
+    - name: 2018 年 5 月
+      href: release-notes-may-2018.md
 - name: クイック スタート
   expanded: true
   items:

@@ -379,7 +379,7 @@
           topicHref: /azure/machine-learning/team-data-science-process/overview
         - name: データ サイエンス仮想マシン
           tocHref: /azure/machine-learning/data-science-virtual-machine
-          topicHref: /azure/machine-learning/data-science-virtual-machine/virtual-machine-overview
+          topicHref: /azure/machine-learning/data-science-virtual-machine/
     - name: Marketplace のコンシューマー
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/
@@ -522,6 +522,9 @@
         - name: キュー
           tocHref: /azure/storage/queues/
           topicHref: /azure/storage/queues/storage-queues-introduction
+        - name: テーブル
+          tocHref: /azure/storage/tables/
+          topicHref: /azure/storage/tables/table-storage-overview
     - name: StorSimple
       tocHref: /azure/storsimple/
       topicHref: /azure/storsimple/

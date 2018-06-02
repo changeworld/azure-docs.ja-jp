@@ -19,17 +19,17 @@
 ### [Azure Automation の概要](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Backup
+
 ### [Backup の概要](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Site Recovery の概要](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## セキュリティ保護
-### [リソースの監視](oms-security-monitoring-resources.md)
-### [セキュリティの警告への対応](oms-security-responding-alerts.md)
-### [ベースライン評価](oms-security-baseline.md)
-### [マルウェアの評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [システムの更新の評価](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [セキュリティ製品の接続](oms-security-connect-products.md)
-### [Web ベースライン評価](oms-security-web-baseline-assessment.md)
+### [リソースの監視](../security-center/security-center-monitoring.md)
+### [セキュリティの警告への対応](../security-center/security-center-managing-and-responding-alerts.md)
+### [ベースライン評価](../security-center/security-center-customize-os-security-config.md)
+### [マルウェアの評価](../security-center/security-center-install-endpoint-protection.md)
+### [セキュリティ製品の接続](../security-center/quick-security-solutions.md)
+### [Web ベースライン評価](../security-center/security-center-customize-os-security-config.md)
 
 ## ソリューションの使用
 ### [管理ソリューション](../monitoring/monitoring-solutions.md)

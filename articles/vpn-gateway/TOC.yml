@@ -30,7 +30,7 @@
       href: vpn-gateway-highlyavailable.md
     - name: ポイント対サイト接続について
       href: point-to-site-about.md
-    - name: ポイント対サイト ルーティングについて
+    - name: ポイント対サイト VPN ルーティングについて
       href: vpn-gateway-about-point-to-site-routing.md
 - name: ハウツー ガイド
   items:
