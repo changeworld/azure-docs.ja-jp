@@ -49,14 +49,14 @@ FTP サーバーから、サポートされている任意のシンク データ
 
 FTP のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **FtpServer** に設定する必要があります。 | [はい] |
-| host | FTP サーバーの名前または IP アドレスを指定します。 | [はい] |
-| ポート | FTP サーバーがリッスンしているポートを指定します。<br/>使用可能な値: 整数。既定値は **21**。 | いいえ  |
+| type | type プロパティは **FtpServer** に設定する必要があります。 | はい |
+| host | FTP サーバーの名前または IP アドレスを指定します。 | はい |
+| port | FTP サーバーがリッスンしているポートを指定します。<br/>使用可能な値: 整数。既定値は **21**。 | いいえ  |
 | enableSsl | SSL/TLS チャネル上の FTP を使用するかどうかを指定します。<br/>使用可能な値: **true** (既定値)、**false**。 | いいえ  |
 | enableServerCertificateValidation | FTP over SSL/TLS チャネルを使用しているときにサーバーの SSL 証明書の検証を有効にするかどうかを指定します。<br/>使用可能な値: **true** (既定値)、**false**。 | いいえ  |
-| authenticationType | 認証の種類を指定します。<br/>使用可能な値: **Basic** および **Anonymous** | [はい] |
+| authenticationType | 認証の種類を指定します。<br/>使用可能な値: **Basic** および **Anonymous** | はい |
 | userName | FTP サーバーへのアクセスを持つユーザーを指定します。 | いいえ  |
 | password | ユーザー (username) のパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -119,10 +119,10 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 
 FTP からデータをコピーするには、データセットの type プロパティを **FileShare** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **FileShare** に設定する必要があります。 |[はい] |
-| folderPath | フォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 例: folder/subfolder/ |[はい] |
+| type | データセットの type プロパティは **FileShare** に設定する必要があります。 |はい |
+| folderPath | フォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 例: folder/subfolder/ |はい |
 | fileName | 指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターの場合、使用可能なワイルドカードは `*` (複数の文字) および `?` (単一の文字) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
@@ -170,9 +170,9 @@ FTP からデータをコピーするには、データセットの type プロ�
 
 FTP からデータをコピーするには、コピー アクティビティのソース タイプを **FileSystemSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | [説明] | 必須 |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
+| type | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |はい |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**
