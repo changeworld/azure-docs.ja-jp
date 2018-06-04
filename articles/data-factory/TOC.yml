@@ -1,5 +1,7 @@
 - name: Data Factory V2 のドキュメント
   href: index.yml
+- name: バージョン 1 のドキュメントに切り替える
+  href: v1/data-factory-introduction.md
 - name: 概要
   items:
     - name: Data Factory の概要
@@ -374,6 +376,8 @@
       items:
         - name: Azure-SSIS 統合ランタイムの VNet への参加
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Azure-SSIS 統合ランタイムの Azure AD 認証の有効化
+          href: enable-aad-authentication-azure-ssis-ir.md
         - name: 高パフォーマンスを実現するための Azure-SSIS 統合ランタイムの構成
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Azure-SSIS 統合ランタイムの Enterprise Edition のプロビジョニング
@@ -382,7 +386,7 @@
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Azure-SSIS 統合ランタイムのライセンス付きコンポーネントのデプロイ
           href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: SSIS アクティビティを使用した SSIS パッケージの実行
+        - name: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-stored-procedure-activity.md

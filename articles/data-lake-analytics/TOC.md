@@ -22,7 +22,9 @@
 #### [Python](data-lake-analytics-manage-use-python-sdk.md)
 #### [Java](data-lake-analytics-manage-use-java-sdk.md)
 #### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [ユーザーの追加](data-lake-analytics-add-users.md)
 ### [ポリシー](data-lake-analytics-policies.md)
+### [ジョブ フォルダーをセキュリティ保護する](data-lake-analytics-secure.md)
 ### [診断ログにアクセスする](data-lake-analytics-diagnostic-logs.md)
 ### [クォータ制限を調整する](data-lake-analytics-quota-limits.md)
 
@@ -38,6 +40,10 @@
 #### [Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
 #### [プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 
+### U-SQL SDK
+#### [ローカルの実行とデバッグ](data-lake-analytics-data-lake-tools-local-run.md)
+#### [実行とテスト](data-lake-analytics-u-sql-sdk.md) 
+
 ### Visual Studio
 #### [インストール](data-lake-analytics-data-lake-tools-install.md)
 #### [ジョブの参照と表示](data-lake-analytics-data-lake-tools-view-jobs.md)
@@ -46,6 +52,7 @@
 #### [頂点実行の詳細](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 #### [U-SQL データベースのエクスポート](data-lake-analytics-data-lake-tools-export-database.md)
 #### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
+#### [データ スキューを解決する](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 #### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ### Visual Studio Code
@@ -64,7 +71,7 @@
 # リソース
 ## [Azure Data Lake のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
+## [変更の要求](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [料金](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

@@ -43,7 +43,7 @@
       items:
         - name: 重要な考慮事項
           href: azure-stack-considerations.md
-        - name: Compute
+        - name: コンピューティング
           items:
             - name: 概要
               href: azure-stack-compute-overview.md
@@ -55,6 +55,8 @@
               href: azure-stack-manage-vm-disks.md
             - name: VM の保護
               href: azure-stack-manage-vm-protect.md
+            - name: SQL Server VM に関する考慮事項
+              href: azure-stack-sql-server-vm-considerations.md
         - name: Storage
           items:
             - name: 概要
@@ -104,7 +106,7 @@
         - name: 開発環境をセットアップする
           items:
             - name: Azure Stack PowerShell のインストール
-              href: azure-stack-powershell-install.md
+              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
             - name: ツールのダウンロード
               href: azure-stack-powershell-download.md
             - name: PowerShell の構成 - ユーザー

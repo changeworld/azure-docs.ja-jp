@@ -45,8 +45,6 @@
           href: container-instances-using-azure-container-registry.md
         - name: 環境変数の設定 (env)
           href: container-instances-environment-variables.md
-        - name: デプロイのトラブルシューティング
-          href: container-instances-troubleshooting.md
     - name: '[管理]'
       items:
         - name: コマンドの実行 (exec)
@@ -69,6 +67,12 @@
           href: container-instances-volume-gitrepo.md
         - name: secret
           href: container-instances-volume-secret.md
+    - name: トラブルシューティング
+      items:
+        - name: コンテナー ログとコンテナー イベントの取得
+          href: container-instances-get-logs.md
+        - name: 一般的な問題のトラブルシューティング
+          href: container-instances-troubleshooting.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -78,7 +82,7 @@
     - name: PowerShell
       href: '/powershell/module/azurerm.containerinstance#container_instances'
     - name: .NET
-      href: /dotnet/api/overview/azure/containerinstances
+      href: /dotnet/api/overview/azure/containerinstance
     - name: Python
       href: /python/api/overview/azure/containerinstance
     - name: Java

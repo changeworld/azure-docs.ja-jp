@@ -137,24 +137,20 @@
           href: log-analytics-powerbi.md
     - name: アラートを作成する
       items:
-        - name: アラートについて
-          href: log-analytics-alerts.md
-        - name: アラート アクション
-          href: log-analytics-alerts-actions.md
-        - name: アラート ルールの作成
-          items:
-            - name: OMS ポータル
-              href: log-analytics-alerts-creating.md
-            - name: REST API
-              href: log-analytics-api-alerts.md
-            - name: Resource Manager テンプレート
-              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
-        - name: webhook アクションのサンプル
-          href: log-analytics-alerts-webhooks.md
-        - name: Alert Management ソリューション
-          href: log-analytics-solution-alert-management.md
+        - name: ログ アラートについて
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+        - name: ログ アラートの作成
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+        - name: ログ アラートの webhook アクション
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+        - name: Resource Manager テンプレートでログ アラートを作成する
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+        - name: Log Analytics アラートから Azure アラートへのコピー
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
     - name: '[管理]'
       items:
+        - name: 個人データの処理
+          href: log-analytics-personal-data-mgmt.md
         - name: エージェント管理
           href: log-analytics-agent-manage.md
         - name: ワークスペースのコストを管理する
@@ -218,8 +214,6 @@
               href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
             - name: Logic Apps B2B カスタム追跡スキーマ
               href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: マルウェアの評価
-          href: log-analytics-malware.md
         - name: ネットワーク分析
           href: log-analytics-azure-networking-analytics.md
         - name: ネットワーク パフォーマンス監視
@@ -239,7 +233,7 @@
         - name: SCOM の正常性チェック
           href: log-analytics-scom-assessment.md
         - name: セキュリティ監査
-          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../security-center/security-center-intro.md
         - name: Azure PowerShell を使用した Service Fabric
           href: log-analytics-service-fabric.md
           items:
