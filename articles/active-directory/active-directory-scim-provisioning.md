@@ -694,7 +694,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 *図 6: グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
 ## <a name="related-articles"></a>関連記事
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
 * [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
