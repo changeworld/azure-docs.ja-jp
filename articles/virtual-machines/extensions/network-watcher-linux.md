@@ -1,4 +1,4 @@
----
+﻿---
 title: Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能 | Microsoft Docs
 description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Network Watcher Agent をデプロイします。
 services: virtual-machines-linux
