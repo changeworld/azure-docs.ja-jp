@@ -89,7 +89,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
         "storageAccountKey" : "the key of the account"
     }
 
-手順 2. \* *azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** を実行します。
+手順 2. *azure vm extension set vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* \* --private-config-path PrivateConfig.json を実行します。
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>シナリオ 2. パフォーマンス モニターのメトリックをカスタマイズする
 
