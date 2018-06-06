@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "31589630"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -35,7 +36,7 @@ ms.lasthandoff: 04/19/2018
 サーバー SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET リファレンス][1]」を参照してください。
 
 ## <a name="create-app"></a>方法: .NET モバイル アプリ バックエンドを作成する
-新しいプロジェクトを開始する場合は、 [Azure ポータル] または Visual Studio を使用して、App Service アプリケーションを作成できます。 App Service アプリケーションをローカルで実行することも、プロジェクトをクラウドベースの App Service モバイル アプリに発行することもできます。
+新しいプロジェクトを開始する場合は、 [Azure Portal] または Visual Studio を使用して、App Service アプリケーションを作成できます。 App Service アプリケーションをローカルで実行することも、プロジェクトをクラウドベースの App Service モバイル アプリに発行することもできます。
 
 既存のプロジェクトにモバイル機能を追加する場合は、「 [SDK をダウンロードして初期化する](#install-sdk) 」セクションを参照してください。
 
@@ -468,7 +469,7 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 前の例では、Web.config ファイル内のアプリケーション設定 *authAudience* と *authIssuer* を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。 同様に、*authSigningKey* をアプリケーションの署名キーの値に設定する必要があります。
 署名キーを取得するには、次の手順を実行します。
 
-1. [Azure ポータル]
+1. [Azure Portal]
 2. **[ツール]**、**[Kudu]**、**[移動]** の順にクリックします。
 3. Kudu 管理サイトで、 **[環境]** をクリックします。
 4. *WEBSITE\_AUTH\_SIGNING\_KEY* の値を見つけます。
@@ -481,7 +482,7 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [NuGet.org]: http://www.nuget.org/
 [Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

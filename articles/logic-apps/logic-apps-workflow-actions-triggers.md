@@ -15,10 +15,10 @@ ms.topic: reference
 ms.date: 5/8/2018
 ms.author: klam; LADocs
 ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33886784"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義のトリガーとアクション
@@ -52,7 +52,7 @@ ms.locfileid: "33886784"
 
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | <*triggerName*> | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。例: "Http" または "ApiConnection" | 
@@ -64,9 +64,9 @@ ms.locfileid: "33886784"
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
-| [conditions](#trigger-conditions) | array | ワークフローを実行するかどうかを決定する 1 つまたは複数の条件 | 
+| [conditions](#trigger-conditions) | Array | ワークフローを実行するかどうかを決定する 1 つまたは複数の条件 | 
 | [splitOn](#split-on-debatch) | String | 処理のために配列を複数のワークフロー インスタンスに分割、つまり*バッチ解除*する式。 このオプションは、配列を返すトリガーに対して、コード ビューで直接作業する場合のみ使用できます。 | 
 | [operationOptions](#trigger-operation-options) | String | 一部のトリガーには、既定のトリガー動作を変更できる追加のオプションがあります | 
 ||||| 
@@ -75,7 +75,7 @@ ms.locfileid: "33886784"
 
 各トリガーの種類には、トリガーの動作を定義するさまざまなインターフェイスと入力があります。 
 
-| トリガーの種類 | [説明] | 
+| トリガーの種類 | 説明 | 
 | ------------ | ----------- | 
 | [**Recurrence**](#recurrence-trigger) | 定義されているスケジュールに基づいて呼び出されます。 今後このトリガーを呼び出す日時を設定できます。 頻度に基づいて、ワークフローを実行する日時を指定することもできます。 | 
 | [**Request**](#request-trigger)  | ロジック アプリを呼び出し可能なエンドポイント ("手動" トリガーとも呼ばれます) にします。 例として、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 | 
@@ -120,7 +120,7 @@ ms.locfileid: "33886784"
 ```
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | 繰り返し | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。"Recurrence" です | 
@@ -132,7 +132,7 @@ ms.locfileid: "33886784"
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | startTime | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
 | timeZone | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
@@ -223,7 +223,7 @@ ms.locfileid: "33886784"
 
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | manual | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。"Request" です | 
@@ -233,13 +233,13 @@ ms.locfileid: "33886784"
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | method | String | 要求がトリガーの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または "HEAD" |
 | relativePath | String | HTTP エンドポイントの URL が受け入れるパラメーターの相対パス | 
 | schema | JSON オブジェクト | トリガーが受信要求から受信するペイロード、つまり入力を、記述および検証する JSON スキーマ。 このスキーマは、以降のワークフロー アクションを参照するプロパティを特定するのに役立ちます。 | 
 | プロパティ | JSON オブジェクト | ペイロードを記述する JSON スキーマの 1 つまたは複数のプロパティ | 
-| 必須 | array | 値が必要な 1 つ以上のプロパティ | 
+| 必須 | Array | 値が必要な 1 つ以上のプロパティ | 
 |||| 
 
 *例*
@@ -312,7 +312,7 @@ ms.locfileid: "33886784"
 
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | HTTP | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。"Http" です | 
@@ -326,7 +326,7 @@ ms.locfileid: "33886784"
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | クエリ | JSON オブジェクト | URL に含める任意のクエリ パラメーター <p>たとえば、この要素は `?api-version=2015-02-01` クエリ文字列を URL に追加します。 <p>`"queries": { "api-version": "2015-02-01" }` <p>結果は次のとおりです。`https://contoso.com?api-version=2015-02-01` | 
 | headers | JSON オブジェクト | 要求で送信される 1 つまたは複数のヘッダー <p>要求の言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -339,7 +339,7 @@ ms.locfileid: "33886784"
 
 HTTP トリガーがロジック アプリでうまく動作するには、HTTP API が特定のパターンに準拠している必要があります。 HTTP トリガーは、以下のプロパティを認識します。  
   
-| Response | 必須 | [説明] | 
+| Response | 必須 | 説明 | 
 | -------- | -------- | ----------- |  
 | 状態コード | [はい] | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
 | Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
@@ -359,7 +359,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 ### <a name="http-trigger-outputs"></a>HTTP トリガーの出力
 
-| 要素名 | type | [説明] |
+| 要素名 | データ型 | 説明 |
 | ------------ | ---- | ----------- |
 | headers | JSON オブジェクト | HTTP 応答からのヘッダー | 
 | body | JSON オブジェクト | HTTP 応答からの本文 | 
@@ -411,7 +411,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | *APIConnectionTriggerName* | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。"ApiConnection" です | 
@@ -427,7 +427,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | クエリ | JSON オブジェクト | URL に含める任意のクエリ パラメーター <p>たとえば、この要素は `?api-version=2015-02-01` クエリ文字列を URL に追加します。 <p>`"queries": { "api-version": "2015-02-01" }` <p>結果は次のとおりです。`https://contoso.com?api-version=2015-02-01` | 
 | headers | JSON オブジェクト | 要求で送信される 1 つまたは複数のヘッダー <p>要求の言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
@@ -466,7 +466,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 ### <a name="apiconnection-trigger-outputs"></a>APIConnection トリガーの出力
  
-| 要素名 | type | [説明] |
+| 要素名 | データ型 | 説明 |
 | ------------ | ---- | ----------- |
 | headers | JSON オブジェクト | HTTP 応答からのヘッダー | 
 | body | JSON オブジェクト | HTTP 応答からの本文 | 
@@ -512,7 +512,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | HTTP_Webhook | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。"HttpWebhook" です | 
@@ -524,7 +524,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | unsubscribe | JSON オブジェクト | 操作によってトリガーが無効になったときに、サブスクリプションを自動的に呼び出して取り消す送信要求。 詳細については、「[subscribe と unsubscribe](#subscribe-unsubscribe)」をご覧ください。 | 
 | method | String | 取り消し要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE"、または "HEAD" | 
@@ -579,7 +579,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 ### <a name="httpwebhook-trigger-outputs"></a>HTTPWebhook トリガーの出力
 
-| 要素名 | type | [説明] |
+| 要素名 | データ型 | 説明 |
 | ------------ | ---- | ----------- |
 | headers | JSON オブジェクト | HTTP 応答からのヘッダー | 
 | body | JSON オブジェクト | HTTP 応答からの本文 | 
@@ -612,7 +612,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 *必須*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | <*ApiConnectionWebhookTriggerName*> | JSON オブジェクト | トリガーの名前。Javascript Object Notation (JSON) 形式で記述されたオブジェクトです  | 
 | 型 | String | トリガーの種類。"ApiConnectionWebhook" です | 
@@ -625,7 +625,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 *省略可能*
 
-| 要素名 | type | [説明] | 
+| 要素名 | データ型 | 説明 | 
 | ------------ | ---- | ----------- | 
 | クエリ | JSON オブジェクト | URL に含める任意のクエリ パラメーター <p>たとえば、この要素は `?folderPath=Inbox` クエリ文字列を URL に追加します。 <p>`"queries": { "folderPath": "Inbox" }` <p>結果は次のとおりです。`https://<managed-API-URL>?folderPath=Inbox` | 
 |||| 
@@ -672,7 +672,8 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 **SplitOn** が 1 つのロジック アプリ実行で処理できる配列項目の最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
 
 > [!NOTE]
-> **SplitOn** をトリガーに追加する方法としては、ロジック アプリの JSON 定義のコード ビューで手動で定義するか上書きするしかありません。 同期応答パターンを実装しようとするときは **SplitOn** を使用できません。 **SplitOn** を使用して、応答アクションを含むワークフローは、非同期で実行して、すぐに `202 ACCEPTED` 応答を送信します。
+> 
+>   **SplitOn** をトリガーに追加する方法としては、ロジック アプリの JSON 定義のコード ビューで手動で定義するかオーバーライドするしかありません。 同期応答パターンを実装しようとするときは **SplitOn** を使用できません。 **SplitOn** を使用して、応答アクションを含むワークフローは、非同期で実行して、すぐに `202 ACCEPTED` 応答を送信します。
 
 トリガーの Swagger ファイルに、配列であるペイロードが記述されている場合、**SplitOn** プロパティが自動的にトリガーに追加されます。 それ以外の場合は、バッチ解除する配列を含む応答ペイロード内にこのプロパティを追加します。 
 
@@ -742,7 +743,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 これらのトリガーには、既定のトリガー動作を変更できる追加のオプションがあります。
 
-| トリガー | 操作オプション | [説明] |
+| トリガー | 操作オプション | 説明 |
 |---------|------------------|-------------|
 | [Recurrence](#recurrence-trigger)、 <br>[HTTP](#http-trigger)、 <br>[ApiConnection](#apiconnection-trigger) | singleInstance | すべてのアクティブな実行の完了後にのみ、トリガーを起動します。 |
 ||||
@@ -772,7 +773,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 ### <a name="standard-actions"></a>標準アクション  
 
-| アクションの種類 | [説明] | 
+| アクションの種類 | 説明 | 
 | ----------- | ----------- | 
 | **HTTP** | HTTP Web エンドポイントを呼び出します。 | 
 | **ApiConnection**  | HTTP アクションと同様に動作しますが、[Microsoft が管理する API](https://docs.microsoft.com/azure/connectors/apis-list) を使用します。 | 
@@ -793,7 +794,7 @@ HTTP トリガーがロジック アプリでうまく動作するには、HTTP 
 
 ### <a name="collection-actions"></a>コレクション アクション
 
-| アクションの種類 | [説明] | 
+| アクションの種類 | 説明 | 
 | ----------- | ----------- | 
 | **If** | 式を評価し、結果に基づいて対応する分岐を実行します。 | 
 | **Switch** | オブジェクトの特定の値に基づいてさまざまなアクションを実行します。 | 
@@ -818,7 +819,7 @@ HTTP アクションは、指定されたエンドポイントをポーリング
 
 この `inputs` オブジェクトは、HTTP 呼び出しの構築に必要な以下のパラメーターを受け取ります。 
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | データ型 | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | method | [はい] | String | HTTP メソッド "GET"、"POST"、"PUT"、"DELETE"、"PATCH"、または "HEAD" のいずれかを使用します。 | 
 | uri | [はい]| String | チェックをトリガーする HTTP または HTTPS エンドポイント。 文字列の最大サイズ: 2 KB | 
@@ -921,7 +922,7 @@ HTTP アクションと APIConnection アクションは、*再試行ポリシ�
 }
 ```
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | データ型 | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | host | [はい] | JSON オブジェクト | `runtimeUrl` などのコネクタ情報と、接続オブジェクトへの参照を表します。 | 
 | method | [はい] | String | HTTP メソッド "GET"、"POST"、"PUT"、"DELETE"、"PATCH"、または "HEAD" のいずれかを使用します。 | 
@@ -975,7 +976,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | データ型 | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | host | [はい] | JSON オブジェクト | `runtimeUrl` などのコネクタ情報と、接続オブジェクトへの参照を表します。 | 
 | パス | [はい] | String | API 操作のパスです。 | 
@@ -1064,7 +1065,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | データ型 | 説明 | 
 | ------------ | -------- | ---- | ----------- |  
 | function id | [はい] | String | 呼び出す Azure 関数のリソース ID。 | 
 | method | いいえ  | String | 関数の呼び出しに使用する HTTP メソッド。 指定しない場合、既定のメソッドは "POST" です。 | 
@@ -1097,9 +1098,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
-| from | [はい] | array | ソース配列 |
+| from | [はい] | Array | ソース配列 |
 | select | [はい] | 任意 | ソース配列の各要素に適用するプロジェクション |
 ||||| 
 
@@ -1124,7 +1125,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
 | runStatus | [はい] | String | ターゲットの実行の状態 (`Failed` または `Cancelled`) |
 | runError | いいえ  | JSON オブジェクト | エラーの詳細です。 `runStatus` が `Failed` に設定されているときにのみサポートされます |
@@ -1151,9 +1152,9 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
-| from | [はい] | array | ソース配列 |
+| from | [はい] | Array | ソース配列 |
 | 各値の説明: | [はい] | String | ソース配列の各要素に適用される条件。 `where` の条件を満たす値がない場合、結果は空の配列になります。 |
 ||||| 
 
@@ -1173,11 +1174,11 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
-| from | [はい] | array | ソース配列です。 `from` プロパティ値が空の配列の場合、出力は空のテーブルになります。 | 
+| from | [はい] | Array | ソース配列です。 `from` プロパティ値が空の配列の場合、出力は空のテーブルになります。 | 
 | format | [はい] | String | 使用するテーブル形式 ("CSV" または "HTML") | 
-| columns | いいえ  | array | 使用するテーブルの列。 既定のテーブル シェイプの上書きに使用します。 | 
+| columns | いいえ  | Array | 使用するテーブルの列。 既定のテーブル シェイプのオーバーライドに使用します。 | 
 | column header | いいえ  | String | 列ヘッダー | 
 | column value | [はい] | String | 列の値 | 
 ||||| 
@@ -1228,7 +1229,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 
 この例の出力を次に示します。
 
-<table><thead><tr><th>Produce ID</th><th>[説明]</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>
+<table><thead><tr><th>Produce ID</th><th>説明</th></tr></thead><tbody><tr><td>0</td><td>fresh apples</td></tr><tr><td>1</td><td>fresh oranges</td></tr></tbody></table>
 
 ## <a name="wait-action"></a>待機アクション  
 
@@ -1262,7 +1263,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 > [!NOTE]  
 > 待機期間は `interval` オブジェクトまたは `until` オブジェクトを使って指定できますが、両方を使うことはできません。
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | データ型 | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | until | いいえ  | JSON オブジェクト | 特定の時刻に基づく待機期間です。 | 
 | until timestamp | [はい] | String | 待機の期限を示す [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)の時点です。 | 
@@ -1299,7 +1300,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| 要素名 | 必須 | type | [説明] | 
+| 要素名 | 必須 | データ型 | 説明 | 
 | ------------ | -------- | ---- | ----------- |  
 | host id | [はい] | String| 呼び出すワークフローのリソース ID | 
 | host triggerName | [はい] | String | 呼び出すトリガーの名前 | 
@@ -1348,7 +1349,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
 | アクション | [はい] | JSON オブジェクト | `expression` が `true` に評価されるときに実行する内部アクション | 
 | expression | [はい] | String | 評価する式です。 |
@@ -1429,7 +1430,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
 | expression | [はい] | String | 評価するオブジェクト、式、トークン | 
 | cases | [はい] | JSON オブジェクト | 式の結果に基づいて実行する内部アクションのセットを含みます。 | 
@@ -1491,7 +1492,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
 | アクション | [はい] | JSON オブジェクト | ループ内で実行する内部アクション | 
 | foreach | [はい] | String | 反復処理する配列です | 
@@ -1551,7 +1552,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- | 
 | アクション | [はい] | JSON オブジェクト | ループ内で実行する内部アクション | 
 | expression | [はい] | String | 反復のたびに評価する式です。 | 
@@ -1604,7 +1605,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 }
 ```
 
-| Name | 必須 | type | [説明] | 
+| Name | 必須 | データ型 | 説明 | 
 | ---- | -------- | ---- | ----------- |  
 | アクション | [はい] | JSON オブジェクト | スコープ内で実行する内部アクション |
 ||||| 
