@@ -1,8 +1,8 @@
 ---
-title: "ソース環境のセットアップ (物理サーバーから Azure へ) | Microsoft Docs"
-description: "この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。"
+title: ソース環境のセットアップ (物理サーバーから Azure へ) | Microsoft Docs
+description: この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811139"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>ソース環境のセットアップ (物理サーバーから Azure へ)
 
