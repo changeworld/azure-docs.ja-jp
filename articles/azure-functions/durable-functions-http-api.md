@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
 ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "32309982"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -42,7 +43,7 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 
 この例の関数では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
 
-| フィールド             |[説明]                           |
+| フィールド             |説明                           |
 |-------------------|--------------------------------------|
 | id                |オーケストレーション インスタンスの ID。 |
 | statusQueryGetUri |オーケストレーション インスタンスの状態の URL。 |
@@ -85,7 +86,7 @@ Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a2
 
 拡張機能によって実装されるすべての HTTP API では、次のパラメーターを指定します。 すべてのパラメーターのデータ型は `string` です。
 
-| パラメーター  | パラメーターのタイプ  | [説明] |
+| パラメーター  | パラメーターのタイプ  | 説明 |
 |------------|-----------------|-------------|
 | instanceId | URL             | オーケストレーション インスタンスの ID。 |
 | taskHub    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
@@ -127,7 +128,7 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド           | データ型 | [説明] |
+| フィールド           | データ型 | 説明 |
 |-----------------|-----------|-------------|
 | runtimeStatus   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | input           | JSON      | インスタンスを初期化するために使用される JSON データ。 |
@@ -214,7 +215,7 @@ POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド       | パラメーターのタイプ  | データ型 | [説明] |
+| フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
 | eventName   | URL             | 文字列    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
 | {content}   | 要求内容 | JSON      | JSON 形式のイベント ペイロード。 |
@@ -260,7 +261,7 @@ DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?r
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド       | パラメーターのタイプ  | データ型 | [説明] |
+| フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
 | reason      | クエリ文字列    | 文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
 

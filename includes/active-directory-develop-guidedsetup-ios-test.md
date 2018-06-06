@@ -7,7 +7,7 @@
 テストの準備ができたら、**[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** を選択します。 メッセージが表示されたら、ユーザー名とパスワードを入力します。
 
 ### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
-アプリケーションに初めてサインインするときに、アプリケーションがプロファイルにアクセスし、サインインできることへの同意を求められます。
+アプリケーションに初めてサインインするとき、アプリケーションがプロファイルにアクセスし、サインインできることへの同意を求められます。
 
 ![アプリケーションによるアクセスに同意する](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 

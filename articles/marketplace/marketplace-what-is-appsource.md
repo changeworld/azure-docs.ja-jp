@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
 ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "32178238"
 ---
 # <a name="what-is-appsource"></a>AppSource とは
 Microsoft パートナーは AppSource を使用し、Microsoft がサポートするオンライン ストアフロントを介して、顧客が自社のテクノロジとサービスを検索できるようにすることができます。 AppSource の公開元の場合、AppSource 上でビジネス ユーザーが、業績を推進し、価値を得るまでの時間を短縮する基幹業務 SaaS アプリケーションと実装サービスを検索、試用、購入できるようにすることができます。 

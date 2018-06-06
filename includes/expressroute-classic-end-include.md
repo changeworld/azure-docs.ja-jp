@@ -9,18 +9,20 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 064bda1b4201d30e32766b4d0e19e9950901152f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "30197484"
 ---
 > [!IMPORTANT] 
-> 2017 年 3 月 1 日の時点で、クラシック デプロイメント モデルに新しい ExpressRoute 回線を作成することはできません。
+> 2017 年 3 月 1 日の時点で、クラシック デプロイ モデルに新しい ExpressRoute 回線を作成することはできません。
 > 
-> - 接続のダウン タイムを発生させずに、クラシック デプロイメント モデルから Resource Manager デプロイメント モデルに既存の ExpressRoute 回線を移動できます。 詳しくは、[既存の回線の移動](../articles/expressroute/expressroute-move.md)に関する記事をご覧ください。
-> - **allowClassicOperations** を TRUE に設定することで、クラシック デプロイメント モデル内の仮想ネットワークを接続できます。
+> - 接続のダウン タイムを発生させずに、クラシック デプロイ モデルから Resource Manager デプロイ モデルに既存の ExpressRoute 回線を移動できます。 詳しくは、[既存の回線の移動](../articles/expressroute/expressroute-move.md)に関する記事をご覧ください。
+> - 
+  **allowClassicOperations** を TRUE に設定することで、クラシック デプロイ モデル内の仮想ネットワークを接続できます。
 > 
-> Resource Manager デプロイメント モデルで ExpressRoute 回線を作成して管理するには、次のリンクを使用します。
+> Resource Manager デプロイ モデルで ExpressRoute 回線を作成して管理するには、次のリンクを使用します。
 
 > - [ExpressRoute 回線の作成と管理](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
 > - [ExpressRoute 回線用のルーティング (ピアリング) の構成](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)

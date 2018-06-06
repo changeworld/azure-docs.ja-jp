@@ -29,7 +29,7 @@ MSAL がアクセス トークンのキャッシュと更新を管理するた�
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|Description|
+|ライブラリ|説明|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|Microsoft Authentication Library の iOS 用プレビュー|
 

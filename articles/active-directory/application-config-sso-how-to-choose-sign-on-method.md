@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 52f4045ebb30bf32989e9f7b946fd03d468a9de2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34070670"
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>使用するシングル サインオン方法を確認する方法
 

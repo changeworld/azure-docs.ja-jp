@@ -22,7 +22,7 @@ Usage:
 ./install -d <Install Location> -r <MS|MT> -v VmWare -q
 ```
 
-|パラメーター|type|[説明]|指定できる値|
+|パラメーター|データ型|説明|指定できる値|
 |-|-|-|-|
 |-r |必須|モビリティ サービス (MS) とマスター ターゲット (MS) のどちらをインストールするかを指定します。|MS </br> MT|
 |-d |省略可能|モビリティ サービスをインストールする場所。|/usr/local/ASR|
@@ -38,7 +38,7 @@ cd /usr/local/ASR/Vx/bin
 UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 ```
 
-|パラメーター|type|[説明]|指定できる値|
+|パラメーター|データ型|説明|指定できる値|
 |-|-|-|-|
 |-i |必須|構成サーバーの IP|任意の有効な IP アドレス|
 |-P |必須|接続パスフレーズが保存されているファイルの完全パス|任意の有効なフォルダー|

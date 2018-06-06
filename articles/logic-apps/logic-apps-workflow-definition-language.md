@@ -15,10 +15,10 @@ ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
 ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33886809"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>ワークフロー定義言語スキーマによるロジック アプリのワークフロー定義
@@ -42,7 +42,7 @@ ms.locfileid: "33886809"
 }
 ```
   
-| 要素 | 必須 | [説明] | 
+| 要素 | 必須 | 説明 | 
 |---------|----------|-------------| 
 | 定義 | [はい] | ワークフロー定義の開始要素 | 
 | $schema | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
@@ -74,7 +74,7 @@ ms.locfileid: "33886809"
 },
 ```
 
-| 要素 | 必須 | type | [説明] |  
+| 要素 | 必須 | データ型 | 説明 |  
 |---------|----------|------|-------------|  
 | 型 | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**注**: すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 | パラメーターの型 |
 | defaultValue | いいえ  | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 | 
@@ -104,7 +104,7 @@ ms.locfileid: "33886809"
 } 
 ```
 
-| 要素 | 必須 | type | [説明] | 
+| 要素 | 必須 | データ型 | 説明 | 
 |---------|----------|------|-------------| 
 | <*key-name*> | [はい] | String | 出力戻り値のキーの名前 |  
 | 型 | [はい] | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 | 

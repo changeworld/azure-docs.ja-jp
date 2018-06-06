@@ -16,10 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: cynthn
 ms.openlocfilehash: 70a62608b7c55caad827400587f867440ad87566
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "30177765"
 ---
 # <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画メンテナンス  
 

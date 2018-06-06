@@ -2,7 +2,7 @@ Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デ�
 
 1. Azure Portal で、お使いの IoT ハブに移動します。
 1. **[IoT Edge (preview)]\(IoT Edge \(プレビュー\)\)** に移動し、IoT Edge デバイスを選びます。
-1. **[Set Modules] (モジュールの設定)** を選択します。
+1. **[Set Modules] \(モジュールの設定)** を選択します。
 1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
 1. **[名前]** フィールドに「`tempSensor`」と入力します。 
 1. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。 

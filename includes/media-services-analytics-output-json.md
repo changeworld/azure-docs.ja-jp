@@ -4,7 +4,7 @@
 
 ### <a name="root-json-elements"></a>ルート JSON 要素
 
-| 要素 | [説明] |
+| 要素 | 説明 |
 | --- | --- |
 | version |Video API のバージョンを示します。 |
 | timescale |ビデオの 1 秒あたりの "ティック数" です。 |
@@ -15,7 +15,7 @@
 
 ### <a name="fragments-json-elements"></a>フラグメント JSON 要素
 
-|要素|[説明]|
+|要素|説明|
 |---|---|
 | start |最初のイベントの開始時間です ("ティック数")。 |
 | duration |フラグメントの長さです ("ティック数")。 |

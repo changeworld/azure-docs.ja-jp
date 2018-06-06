@@ -1,4 +1,4 @@
-# [Azure AD Domain Services のドキュメント](index.md)
+# [Azure AD Domain Services のドキュメント](index.yml)
 
 # 概要
 ## [Azure AD Domain Services とは](active-directory-ds-overview.md)

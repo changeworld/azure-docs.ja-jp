@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33894315"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -282,7 +283,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **2.Key Vault** が、要求したトークンに関連付けられているシークレットを要求します。
 
-\*\*3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
+**3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
 
 **4.Key Vault** がシークレットを返します。この例では、SQL DB 接続文字列です。
 

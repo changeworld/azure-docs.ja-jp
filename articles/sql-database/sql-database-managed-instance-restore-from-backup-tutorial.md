@@ -1,7 +1,7 @@
 ---
-title: Azure SQL Database マネージド インスタンスにバックアップを復元する | Microsoft Docs
+title: Azure SQL Database Managed Instance にバックアップを復元する | Microsoft Docs
 description: SSMS を使用して Azure SQL Database マネージド インスタンスにデータベース バックアップを復元します。
-keywords: SQL Database チュートリアル, SQL Database マネージド インスタンス, バックアップの復元
+keywords: SQL Database チュートリアル, SQL Database Managed Instance, バックアップの復元
 services: sql-database
 author: bonova
 ms.reviewer: carlrab, srbozovi
@@ -12,15 +12,15 @@ ms.date: 04/10/2018
 ms.author: bonova
 manager: craigg
 ms.openlocfilehash: ff605b7512a27f81b111560f5d151010dbb62273
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "31426204"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する
 
-このチュートリアルでは、Wide World Importers - Standard バックアップ ファイルを使用して、Azure Blob Storage に格納されたデータベースのバックアップをマネージド インスタンスに復元する方法について説明します。 この方法には、ある程度のダウンタイムが必要です。 Azure Database Migration Service (DMS) を使用して移行する方法のチュートリアルについては、[DMS を使用したマネージ インスタンスの移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。 各種の移行方法の説明については、「[Azure SQL Database マネージド インスタンスへの SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
+このチュートリアルでは、Wide World Importers - Standard バックアップ ファイルを使用して、Azure Blob Storage に格納されたデータベースのバックアップをマネージド インスタンスに復元する方法について説明します。 この方法には、ある程度のダウンタイムが必要です。 Azure Database Migration Service (DMS) を使用して移行する方法のチュートリアルについては、[DMS を使用したマネージド インスタンスの移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。 各種の移行方法の説明については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
 
 > [!div class="checklist"]
 > * Wide World Importers - 標準のバックアップ ファイルをダウンロードする
@@ -118,7 +118,7 @@ Internet Explorer を使用して、URL アドレス ボックスに https://git
 
 ## <a name="restore-the-wide-world-importers-database-from-a-backup-file"></a>バックアップ ファイルから Wide World Importers データベースを復元する
 
-SSMS で、以下の手順を使用して、バックアップ ファイルから Wide World Importers データベースをマネージ インスタンスに復元します。
+SSMS で、以下の手順を使用して、バックアップ ファイルから Wide World Importers データベースをマネージド インスタンスに復元します。
 
 1. SSMS で、新しいクエリ ウィンドウを開きます。
 2. 次のスクリプトを使用して SAS 資格情報を作成します。ストレージ アカウント コンテナーと SAS キーの URL を指示に従って入力します。
@@ -174,7 +174,8 @@ SSMS で、以下の手順を使用して、バックアップ ファイルか�
 > * Azure ストレージ アカウントを作成してバックアップ ファイルをアップロードする
 > * バックアップ ファイルから Wide World Importers データベースを復元する
 
-次のチュートリアルに進んで、DMS を使用して SQL Server を Azure SQL Database マネージド インスタンスに移行する方法を学習してください。
+次のチュートリアルに進んで、DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する方法を学習してください。
 
 > [!div class="nextstepaction"]
->[DMS を使用して SQL Server を Azure SQL Database マネージド インスタンスに移行する](../dms/tutorial-sql-server-to-managed-instance.md)
+>
+  [DMS を使用して SQL Server を Azure SQL Database Managed Instance に移行する](../dms/tutorial-sql-server-to-managed-instance.md)
