@@ -73,10 +73,15 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: OS 機能
       href: web-sites-available-operating-system-functionality.md
+    - name: セキュリティ
+      href: app-service-security.md
+      items:
+        - name: 認証と権限承認
+          href: app-service-authentication-overview.md
+        - name: OS とランタイムの修正プログラムの適用
+          href: app-service-patch-os-runtime.md
     - name: 受信 IP と送信 IP
       href: app-service-ip-addresses.md
-    - name: 認証と権限承認
-      href: app-service-authentication-overview.md
     - name: Hybrid Connections (ハイブリッド接続)
       href: app-service-hybrid-connections.md
     - name: Traffic Manager 統合
@@ -85,8 +90,6 @@
       href: app-service-local-cache-overview.md
     - name: 診断
       href: app-service-diagnostics.md
-    - name: OS とランタイムの修正プログラムの適用
-      href: app-service-patch-os-runtime.md
 - name: ハウツー ガイド
   items:
     - name: アプリの構成

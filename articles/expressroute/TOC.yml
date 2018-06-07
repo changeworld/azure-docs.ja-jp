@@ -1,5 +1,5 @@
 - name: ExpressRoute のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: ExpressRoute とは何ですか。
@@ -31,7 +31,7 @@
       href: expressroute-about-virtual-network-gateways.md
     - name: 前提条件
       href: expressroute-prerequisites.md
-    - name: ワークフロー
+    - name: Workflows
       href: expressroute-workflows.md
     - name: ルーティングの要件
       href: expressroute-routing.md

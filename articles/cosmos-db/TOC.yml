@@ -1,3 +1,4 @@
+metadata: {}
 items:
   - name: Azure Cosmos DB のドキュメント
     href: index.yml
@@ -70,6 +71,8 @@ items:
     items:
       - name: グローバル配信
         href: distribute-data-globally.md
+      - name: 複数のマスターのセットアップ
+        href: multi-region-writers.md
       - name: パーティション分割
         href: partition-data.md
       - name: Throughput
@@ -165,8 +168,6 @@ items:
                 href: sql-api-resources.md
               - name: モデル ドキュメント データ
                 href: modeling-data.md
-              - name: 複数のマスターのセットアップ
-                href: multi-region-writers.md
           - name: ハウツー ガイド
             items:
               - name: BulkExecutor - .NET
@@ -397,8 +398,6 @@ items:
                 href: table-storage-how-to-use-dotnet.md
               - name: 'F#'
                 href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-              - name: Node.js
-                href: table-storage-cloud-service-nodejs.md
               - name: Java
                 href: table-storage-how-to-use-java.md
               - name: Node.js
@@ -411,8 +410,6 @@ items:
                 href: table-storage-how-to-use-python.md
               - name: Ruby
                 href: table-storage-how-to-use-ruby.md
-              - name: PowerShell
-                href: table-storage-how-to-use-powershell.md
           - name: リファレンス
             items:
               - name: .NET

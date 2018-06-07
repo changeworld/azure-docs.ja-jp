@@ -13,7 +13,7 @@
 - name: キュー
   href: ./queues/storage-queues-introduction.md
 - name: テーブル
-  href: ../cosmos-db/table-storage-overview.md
+  href: ./tables/table-storage-overview.md
 - name: ディスク
   items:
     - name: Windows

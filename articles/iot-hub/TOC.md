@@ -151,11 +151,6 @@
 #### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
 ### [制約のあるデバイスの場合の開発](iot-hub-devguide-develop-for-constrained-devices.md)
 ### [モバイル デバイスの場合の開発](iot-hub-how-to-develop-for-mobile-devices.md)
-### メッセージのルーティング
-#### [.NET](iot-hub-csharp-csharp-process-d2c.md)
-#### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.js](iot-hub-node-node-process-d2c.md)
-#### [Python](iot-hub-python-python-process-d2c.md)
 ### [ハブ ルートからの Avro データのクエリ](iot-hub-query-avro-data.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -235,7 +230,7 @@
 ### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
 ### [操作の監視](iot-hub-operations-monitoring.md)
 ## 実在のデバイスの使用
-### [作業開始](iot-hub-get-started.md)
+### [はじめに](iot-hub-get-started.md)
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)

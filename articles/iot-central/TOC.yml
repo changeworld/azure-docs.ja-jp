@@ -81,7 +81,7 @@
   items:
     - name: 解決方法
       items:
-        - name: IoT Suite の構成済みソリューション
+        - name: IoT ソリューション アクセラレータ
           href: /azure/iot-suite
         - name: IoT Central
           href: /microsoft-iot-central

@@ -7,9 +7,9 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: Docker Swarm Linux
-      href: container-service-swarm-walkthrough.md
-    - name: DC/OS Linux
+    - name: Docker Swarm
+      href: container-service-swarm-mode-walkthrough.md
+    - name: DC/OS
       href: container-service-dcos-quickstart.md
 - name: チュートリアル
   items:
@@ -27,10 +27,6 @@
       href: container-service-security.md
 - name: ハウツー ガイド
   items:
-    - name: ACS クラスターを作成する
-      href: container-service-create-acs-cluster-cli.md
-    - name: ACS クラスターに接続する
-      href: container-service-connect.md
     - name: ACS クラスターをスケールする
       href: container-service-scale.md
     - name: DC/OS
