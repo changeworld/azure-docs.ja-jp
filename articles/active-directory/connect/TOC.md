@@ -54,7 +54,7 @@
 ### [フェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)
 ### [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](active-directory-aadconnect-federation-saml-idp.md)
-### [サインインにメールを使うゲスト ユーザーのユーザー アカウントを同期する](active-directory-aadconnect-guest-sync.md)
+
 
 
 ## Azure AD Connect 同期を管理する
