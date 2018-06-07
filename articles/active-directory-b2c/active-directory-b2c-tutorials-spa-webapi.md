@@ -3,16 +3,19 @@ title: チュートリアル - Azure Active Directory B2C を使用してシン�
 description: Active Directory B2C を使用して .NET Core Web API を保護し、シングルページ アプリからそれを呼び出す方法に関するチュートリアル。
 services: active-directory-b2c
 author: davidmu1
+manager: mtillman
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9e3074e2cdd9ec3adc814779811d150cd11010
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 5b99f60c1bd81b77a5fc2be5575f65fc63eb0c11
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34711095"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してシングルページ アプリから ASP.NET Core Web API へのアクセスを許可する
 
@@ -84,7 +87,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 ![Web API で定義されているスコープ](media/active-directory-b2c-tutorials-spa-webapi/scopes-web-api.png)
 
-| Setting      | 推奨値  | [説明]                                        |
+| Setting      | 推奨値  | 説明                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **スコープ** | demo.read | デモ API への読み取りアクセス |
 
@@ -155,13 +158,15 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
+3. **[プロパティ]** の **launchSettings.json** ファイルを開き、*applicationURL* 設定を探して、次のセクションで使用する値をメモします。
+
 ### <a name="configure-the-single-page-app"></a>シングルページ アプリを構成する
 
 シングルページ アプリでは、ユーザーのサインアップ、サインイン、保護された ASP.NET Core Web API を呼び出しに Azure AD B2C を使用します。 NET Core Web API を呼び出すようにシングルページ アプリを更新する必要があります。
 アプリの設定を変更するには、次の手順に従います。
 
 1. Node.js シングルページ アプリのサンプルの `index.html` ファイルを開きます。
-2. Azure AD B2C テナントの登録情報でサンプルを構成します。 次のコード行で **b2cScopes** と **webApi** の値を変更します。
+2. Azure AD B2C テナントの登録情報でサンプルを構成します。 次のコードで、テナント名を **b2cScopes** に追加し、**webApi** の値を、先ほどメモした *applicationURL* の値に変更します。
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -169,7 +174,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:58553/api/values',
+        webApi: 'http://localhost:64791/api/values',
     };
     ```
 

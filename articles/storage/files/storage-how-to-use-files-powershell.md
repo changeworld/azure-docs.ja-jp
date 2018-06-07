@@ -4,8 +4,8 @@ description: Azure PowerShell を使用して Azure ファイル共有を管理�
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: c796ac54eb21af18d21144a00b633c6b6efc28be
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4a7d39910fac6096ef17873a9f81c5e1d1508857
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34757141"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Azure PowerShell での Azure ファイル共有の管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、PowerShell を使用して Azure ファイル共有を操作する方法の基本について説明します。 この記事では、次の方法について説明します。
@@ -165,7 +166,7 @@ Start-AzureStorageFileCopy `
 Get-AzureStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myDirectory2" 
 ```
 
-`Start-AzureStorageFileCopy` コマンドレットは、Azure ファイル共有と Azure BLOB ストレージ コンテナーの間でのアドホック ファイル移動に便利です。ただし、(移動するファイルの数やサイズの点で) 移動の規模が大きい場合は AzCopy の使用をお勧めします。 [Windows 用の AzCopy](../common/storage-use-azcopy.md) と [Linux 用の AzCopy](../common/storage-use-azcopy-linux.md) についてご確認ください。 AzCopy はローカルにインストールする必要があります。Cloud Shell では使用できません 
+`Start-AzureStorageFileCopy` コマンドレットは、Azure ファイル共有と Azure BLOB ストレージ コンテナーの間でのアドホック ファイル移動に便利です。ただし、(移動するファイルの数やサイズの点で) 移動の規模が大きい場合は AzCopy の使用をお勧めします。 [Windows 用の AzCopy](../common/storage-use-azcopy.md) と [Linux 用の AzCopy](../common/storage-use-azcopy-linux.md) についてご確認ください。 AzCopy はローカルにインストールする必要があります。Cloud Shell では使用できません。 
 
 ## <a name="create-and-modify-share-snapshots"></a>共有スナップショットの作成と変更
 さらに、Azure ファイル共有で実行できる便利なタスクの 1 つとして、共有スナップショットの作成があります。 スナップショットでは、特定の時点の Azure ファイル共有が保存されます。 共有スナップショットは、場合によっては既に使い慣れている、次のようなオペレーティング システム テクノロジに類似しています。
