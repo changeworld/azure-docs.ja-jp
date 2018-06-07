@@ -4,7 +4,7 @@
 ## [Azure Resource Manager とは](resource-group-overview.md)
 ## [リソース プロバイダーと種類](resource-manager-supported-services.md)
 ## [Resource Manager デプロイメントとクラシック デプロイメント](resource-manager-deployment-model.md)
-## [サブスクリプションのガバナンス](resource-manager-subscription-governance.md)
+## [サブスクリプションのガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance)
 ## [管理グループを使用してリソースを整理する](management-groups-overview.md)
 
 # 作業開始
@@ -50,7 +50,6 @@
 ### [プログラムによる EA サブスクリプションの作成](programmatically-create-subscription.md)
 ### [管理グループを作成する](management-groups-create.md)
 ### [管理グループを管理する](management-groups-manage.md)
-### [ガバナンスの例](resource-manager-subscription-examples.md)
 
 ## アクセスを制御する
 ### サービス プリンシパルの作成

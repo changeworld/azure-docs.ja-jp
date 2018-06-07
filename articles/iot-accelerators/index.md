@@ -1,19 +1,19 @@
 ---
 title: Azure IoT ソリューション アクセラレータのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
 description: Azure IoT ソリューション アクセラレータのドキュメントには、入門ガイド、ハウツー記事、チュートリアル、API リファレンスが含まれています。
-services: iot-suite
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.service: iot-suite
+author: dominicbetts
+manager: timlt
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.topic: landing-page
 ms.date: 11/27/2017
-ms.author: carolz
-ms.openlocfilehash: cacc09cf926c5af9a770e42967a5e6cbbb46bfd7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: dobett
+ms.openlocfilehash: 3e9fe2b67980e83f57732c10da99738a15a5219e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626974"
 ---
 # <a name="iot-solution-accelerators-documentation"></a>IoT ソリューション アクセラレータのドキュメント
 
@@ -30,10 +30,10 @@ IoT ソリューションを構築するには、IoT ソリューション ア�
                         <ul>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-what-are-solution-accelerators">ソリューション アクセラレータの概要</a></li>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">ソリューション アクセラレータのデプロイ</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">既定のソリューション機能</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">監視機能</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-explore">既定のソリューション機能</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">監視機能</a></li>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">ルール管理機能</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-manage">デバイス管理機能</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">デバイス管理機能</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,9 +53,9 @@ IoT ソリューションを構築するには、IoT ソリューション ア�
                     <div class="cardText">
                         <p>ご使用のデバイスをソリューション アクセラレータに接続する方法について説明します</p>
                         <ul>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">デバイス モデルの概要</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">シミュレートされたデバイスのカスタマイズ</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">物理デバイスの接続</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-device-schema">デバイス モデルの概要</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-device-behavior">シミュレートされたデバイスのカスタマイズ</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-connecting-devices-node">物理デバイスの接続</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,10 +95,10 @@ IoT ソリューションを構築するには、IoT ソリューション ア�
                 <div class="card">
                     <div class="cardText">
                         <h3>リソース</h3>
-                        <p><a href="/azure/iot-suite/iot-security-architecture">セキュリティのアーキテクチャ</a></p>
-                        <p><a href="/azure/iot-suite/iot-security-best-practices">セキュリティのベスト プラクティス</a></p>
-                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">IoT デプロイのセキュリティ保護</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">徹底的なセキュリティ</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-security-architecture">セキュリティのアーキテクチャ</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-security-best-practices">セキュリティのベスト プラクティス</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-accelerators-security-deployment">IoT デプロイのセキュリティ保護</a></p>
+                        <p><a href="/azure/iot-accelerators/securing-iot-ground-up">徹底的なセキュリティ</a></p>
                    </div>
                 </div>
             </div>

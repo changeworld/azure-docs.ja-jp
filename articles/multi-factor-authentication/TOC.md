@@ -54,6 +54,7 @@
 ### [カスタム アプリへの組み込み (SDK)](../active-directory/authentication/howto-mfa-sdk.md)
 
 ## [レポート](../active-directory/authentication/howto-mfa-reporting.md)
+### [データ収集](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
 ## [MFA ユーザー ガイド](./end-user/multi-factor-authentication-end-user.md)
 
