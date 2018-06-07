@@ -17,26 +17,50 @@
   items:
     - name: Azure Policy の作成と管理
       href: create-manage-policy.md
+    - name: Azure Policy の探索 (ハンズオン ラボ)
+      href: 'https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: サンプル
   items:
-    - name: ポリシー テンプレート
+    - name: Azure Policy のサンプル
       href: json-samples.md
 - name: 概念
   items:
     - name: Azure Policy の定義の構造
       href: policy-definition.md
+    - name: Policy の効果について
+      href: policy-effects.md
 - name: ハウツー ガイド
   items:
     - name: プログラムによるポリシーの作成
       href: policy-insights.md
+    - name: コンプライアンス データの収集
+      href: policy-compliance.md
 - name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.resources/#policies'
+    - name: REST API
+      items:
+        - name: イベント
+          href: /rest/api/policy-insights/policyevents
+        - name: States
+          href: /rest/api/policy-insights/policystates
+        - name: 割り当て
+          href: /rest/api/resources/policyassignments
+        - name: ポリシーの定義
+          href: /rest/api/resources/policydefinitions
+        - name: イニシアティブの定義
+          href: /rest/api/resources/policysetdefinitions
 - name: リソース
   items:
+    - name: GitHub - Azure Policy サンプル
+      href: 'https://github.com/Azure/azure-policy'
+    - name: 動画 - Build 2018
+      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: 動画 - Ignite 2017
+      href: 'https://myignite.microsoft.com/videos/54781'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール

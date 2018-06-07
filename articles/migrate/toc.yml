@@ -10,7 +10,7 @@
       href: tutorial-assessment-vmware.md
 - name: 概念
   items:
-    - name: コレクターの概念
+    - name: コレクターについて
       href: concepts-collector.md
     - name: 評価の計算
       href: concepts-assessment-calculation.md
@@ -18,13 +18,15 @@
       href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
-    - name: オンプレミスのリソースを Azure に移行する
+    - name: Contoso 移行シリーズ
       items:
-        - name: シナリオの概要 - オンプレミスのリソースを Azure に移行する
-          href: migrate-scenarios-overview.md
-        - name: シナリオ 1 - Azure への移行についてオンプレミスのリソースを評価する
+        - name: 1. Contoso 移行の概要
+          href: contoso-migration-overview.md
+        - name: 2. Contoso - Azure インフラストラクチャを設定する
+          href: contoso-migration-infrastructure.md
+        - name: 3. Contoso - Azure への移行についてオンプレミスのリソースを評価する
           href: migrate-scenarios-assessment.md
-        - name: シナリオ 2 - リフト アンド シフト方式による Azure への移行
+        - name: 4. Contoso - Azure VM と Azure SQL Managed Instance でリホストする
           href: migrate-scenarios-lift-and-shift.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md

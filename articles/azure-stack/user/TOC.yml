@@ -35,9 +35,9 @@
       href: azure-stack-rest-api-use.md
     - name: セキュリティとコンプライアンス
       items:
-        - name: RBAC の管理
+        - name: ロールベースのアクセス制御を使用する
           href: azure-stack-manage-permissions.md
-        - name: サービス プリンシパルの作成
+        - name: サービス プリンシパルの使用
           href: Azure-stack-create-service-principals.md
     - name: サービスの使用
       items:
@@ -107,7 +107,7 @@
           items:
             - name: Azure Stack PowerShell のインストール
               href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: ツールのダウンロード
+            - name: Azure Stack ツールのダウンロード
               href: azure-stack-powershell-download.md
             - name: PowerShell の構成 - ユーザー
               href: azure-stack-powershell-configure-user.md
@@ -128,13 +128,13 @@
                   href: azure-stack-version-profiles-python.md
                 - name: プロファイルでサポートされているリソース プロバイダー API
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: ポリシー モジュールの使用
+        - name: Azure Stack ポリシー モジュールの使用
           href: azure-stack-policy-module.md
         - name: テンプレートの使用
           items:
             - name: テンプレートの概要
               href: azure-stack-arm-templates.md
-            - name: テンプレートの開発
+            - name: テンプレートに関する考慮事項
               href: azure-stack-develop-templates.md
             - name: テンプレートの確認
               href: azure-stack-validate-templates.md

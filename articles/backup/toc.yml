@@ -63,6 +63,8 @@
           items:
             - name: Azure Portal での Azure Backup Server ワークロードの準備
               href: backup-azure-microsoft-azure-backup.md
+            - name: Azure Stack への Azure Backup Server のインストール
+              href: backup-mabs-install-azure-stack.md
             - name: Azure Backup Server へのストレージの追加
               href: backup-mabs-add-storage.md
             - name: Azure Backup Server の v.2 へのアップグレード
@@ -157,12 +159,10 @@
           href: backup-dpm-automation.md
         - name: Azure Portal での Windows Server
           href: backup-client-automation.md
-    - name: Azure SQL Database
+    - name: Azure VM での SQL
       items:
-        - name: SQL Database バックアップの構成と復元 - SQL ストレージ
-          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: SQL Database バックアップの構成と復元 - Recovery Services コンテナー
-          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Azure での SQL データベースのバックアップ
+          href: backup-azure-sql-database.md
     - name: Windows Server
       items:
         - name: Windows Server のファイルとフォルダーのバックアップ

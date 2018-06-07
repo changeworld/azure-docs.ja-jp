@@ -155,6 +155,8 @@
               href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision'
             - name: 画像分類モデルの構築とデプロイ
               href: how-to-build-deploy-image-classification-models.md
+            - name: オブジェクト検出モデルの構築とデプロイ
+              href: how-to-build-deploy-object-detection-models.md
             - name: モデルの精度
               href: how-to-improve-accuracy-for-computer-vision-models.md
         - name: 予測
@@ -219,6 +221,8 @@
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 問題とトラブルシューティング
       href: known-issues-and-troubleshooting-guide.md
+    - name: アカウント データのエクスポートまたは削除
+      href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
     - name: サポートとトレーニング
       href: support-for-aml-services.md
     - name: Azure のロードマップ

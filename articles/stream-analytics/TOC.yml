@@ -50,8 +50,6 @@
   items:
     - name: '[管理]'
       items:
-        - name: ジョブの更新
-          href: stream-analytics-job-reliability.md
         - name: 資格情報の更新
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: アラートを構成する
@@ -60,6 +58,10 @@
           href: stream-analytics-test-query.md
         - name: ダッシュボードに結果を表示する
           href: stream-analytics-power-bi-dashboard.md
+        - name: ジョブをクリーンアップする
+          href: stream-analytics-clean-up-your-job.md
+        - name: ジョブをペアリングして信頼性を高める
+          href: stream-analytics-job-reliability.md
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析

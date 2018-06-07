@@ -433,6 +433,8 @@
           href: service-fabric-visualstudio-configure-secure-connections.md
         - name: VS での .NET サービスのデバッグ
           href: service-fabric-debugging-your-application.md
+        - name: Service Fabric と VS での Windows コンテナーのデバッグ
+          href: service-fabric-how-to-debug-windows-containers.md
         - name: 一般的なエラーと例外
           href: service-fabric-errors-and-exceptions.md
         - name: ローカルでの監視と診断
@@ -521,12 +523,18 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: 証明書共通名を使用したクラスター
                   href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Windows でのディスク暗号化の有効化
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Linux でのディスク暗号化の有効化
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: スケール
               items:
-                - name: 手動
+                - name: 手動によるスケールアウト
                   href: service-fabric-cluster-scale-up-down.md
-                - name: プログラムを使用する
+                - name: プログラムによるスケールアウト
                   href: service-fabric-cluster-programmatic-scaling.md
+                - name: プライマリ ノード タイプの VM のスケールアップ
+                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: アップグレード
               href: service-fabric-cluster-upgrade.md
             - name: アクセス制御の設定
@@ -599,10 +607,10 @@
               href: service-fabric-diagnostics-event-analysis-oms.md
         - name: インフラストラクチャの監視
           items:
-            - name: WAD を使用したパフォーマンスの監視
-              href: service-fabric-diagnostics-perf-wad.md
             - name: OMS エージェント によるパフォーマンスの監視
               href: service-fabric-diagnostics-oms-agent.md
+            - name: WAD を使用したパフォーマンスの監視
+              href: service-fabric-diagnostics-perf-wad.md
         - name: 正常性の監視
           items:
             - name: 正常性のレポートとチェック
@@ -613,6 +621,8 @@
               href: service-fabric-view-entities-aggregated-health.md
         - name: ローカル クラスターのトラブルシューティング
           href: service-fabric-troubleshoot-local-cluster-setup.md
+        - name: 一般的なシナリオの診断
+          href: service-fabric-diagnostics-common-scenarios.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
@@ -628,20 +638,29 @@
           href: service-fabric-sfctl-application.md
         - name: sfctl chaos
           href: service-fabric-sfctl-chaos.md
+          items:
+            - name: sfctl chaos schedule
+              href: service-fabric-sfctl-chaos-schedule.md
         - name: sfctl cluster
           href: service-fabric-sfctl-cluster.md
         - name: sfctl compose
           href: service-fabric-sfctl-compose.md
+        - name: sfctl container
+          href: service-fabric-sfctl-container.md
         - name: sfctl is
           href: service-fabric-sfctl-is.md
         - name: sfctl node
           href: service-fabric-sfctl-node.md
         - name: sfctl partition
           href: service-fabric-sfctl-partition.md
+        - name: sfctl property
+          href: service-fabric-sfctl-property.md
         - name: sfctl replica
           href: service-fabric-sfctl-replica.md
         - name: sfctl rpm
           href: service-fabric-sfctl-rpm.md
+        - name: sfctl sa-cluster
+          href: service-fabric-sfctl-sa-cluster.md
         - name: sfctl service
           href: service-fabric-sfctl-service.md
         - name: sfctl store

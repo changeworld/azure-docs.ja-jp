@@ -12,9 +12,15 @@
 - name: チュートリアル
   items:
     - name: アップロード、エンコード、およびストリーミング
-      href: stream-files-tutorial-with-api.md
+      items:
+        - name: .NET の場合
+          href: stream-files-tutorial-with-api.md
+        - name: REST の場合
+          href: stream-files-tutorial-with-rest.md
     - name: ビデオの分析
-      href: analyze-videos-tutorial-with-api.md
+      items:
+        - name: .NET の場合
+          href: analyze-videos-tutorial-with-api.md
 - name: サンプル
   items:
     - name: Azure のコード サンプル
@@ -25,18 +31,24 @@
   items:
     - name: 資産
       href: assets-concept.md
-    - name: Autogen アダプティブ ビットレート ラダー
-      href: autogen-bitrate-ladder.md
+    - name: エンコード
+      items:
+        - name: 概要
+          href: encoding-concept.md
+        - name: Autogen アダプティブ ビットレート ラダー
+          href: autogen-bitrate-ladder.md
     - name: メディア インテリジェンス
       href: intelligence-concept.md
+    - name: イベントへの反応
+      href: reacting-to-media-services-events.md
     - name: ストレージ アカウント
       href: storage-account-concept.md
     - name: 変換およびジョブ
       href: transform-concept.md
-    - name: イベントへの反応
-      href: reacting-to-media-services-events.md
 - name: ハウツー ガイド
   items:
+    - name: v2 から v3 への移行
+      href: migrate-from-v2-to-v3.md
     - name: アカウントの作成 - CLI
       href: create-account-cli-how-to.md
     - name: API へのアクセス - CLI
@@ -49,8 +61,14 @@
           href: job-input-from-http-how-to.md
         - name: ローカル ファイルから
           href: job-input-from-local-file-how-to.md
+    - name: 変換プリセットのカスタマイズ
+      items:
+        - name: .NET Core の場合
+          href: customize-encoder-presets-how-to.md
 - name: リファレンス
   items:
+    - name: OpenAPI の仕様 (Swagger)
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
     - name: Azure CLI 2.0
       href: 'https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest'
     - name: REST ()
@@ -61,6 +79,8 @@
       href: 'https://docs.microsoft.com/java/api/overview/azure/mediaservices'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python'
+    - name: Node .js
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: イベント スキーマ
       href: media-services-event-schemas.md
 - name: リソース
@@ -77,3 +97,5 @@
       href: release-notes.md
     - name: クォータと制限
       href: limits-quotas-constraints.md
+    - name: FAQ
+      href: frequently-asked-questions.md

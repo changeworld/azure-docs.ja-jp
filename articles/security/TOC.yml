@@ -95,11 +95,11 @@
           href: security-internet-of-things-overview.md
           items:
             - name: IoT セキュリティのベスト プラクティス
-              href: ../iot-suite/iot-security-best-practices.md
+              href: ../iot-accelerators/iot-security-best-practices.md
             - name: IoT のセキュリティ
-              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+              href: '../iot-accelerators/iot-security-architecture.md#security-in-iot'
             - name: IoT デプロイのセキュリティ保護
-              href: ../iot-suite/iot-suite-security-deployment.md
+              href: ../iot-accelerators/iot-accelerators-security-deployment.md
     - name: Azure Service Fabric のセキュリティ
       href: azure-service-fabric-security-overview.md
       items:
@@ -159,6 +159,8 @@
           href: ./blueprints/fedramp-datawarehouse-overview.md
         - name: IaaS Web アプリケーション
           href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS Web アプリケーション
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:
@@ -197,6 +199,8 @@
       href: ./blueprints/azure-health.md
 - name: ホワイト ペーパー
   href: security-white-papers.md
+- name: Azure セキュリティ サービス
+  href: azure-security-services-technologies.md
 - name: 技術的概要
   href: security-overviews.md
 - name: ベスト プラクティス

@@ -141,6 +141,8 @@
           href: functions-run-local.md
         - name: Visual Studio 開発
           href: functions-develop-vs.md
+        - name: 接続の管理
+          href: manage-connections.md
         - name: エラー処理
           href: functions-bindings-error-pages.md
     - name: デプロイ
@@ -200,7 +202,11 @@
         - name: BLOB ストレージ
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
-          href: functions-bindings-cosmosdb.md
+          items:
+            - name: Functions 1.x
+              href: functions-bindings-cosmosdb.md
+            - name: Functions 2.x
+              href: functions-bindings-cosmosdb-v2.md
         - name: Event Grid
           href: functions-bindings-event-grid.md
         - name: Event Hubs

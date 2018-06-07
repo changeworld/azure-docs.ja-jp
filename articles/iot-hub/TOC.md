@@ -9,6 +9,7 @@
 ## [テレメトリの送信 (.NET)](quickstart-send-telemetry-dotnet.md)
 ## [テレメトリの送信 (Java)](quickstart-send-telemetry-java.md)
 ## [テレメトリの送信 (Python)](quickstart-send-telemetry-python.md)
+## [テレメトリの送信 (iOS)](quickstart-send-telemetry-ios.md)
 ## [デバイスの制御 (Node.js)](quickstart-control-device-node.md)
 ## [デバイスの制御 (.NET)](quickstart-control-device-dotnet.md)
 ## [デバイスの制御 (Java)](quickstart-control-device-java.md)
@@ -18,29 +19,19 @@
 
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [メッセージのルーティング](tutorial-routing.md)
+## [デバイスの構成](tutorial-device-twins.md)
+## [デバイス接続のテスト](tutorial-connectivity.md)
 ## C2D メッセージの送信
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
 ### [Java](iot-hub-java-java-c2d.md)
 ### [Node.js](iot-hub-node-node-c2d.md)
 ### [Python](iot-hub-python-python-c2d.md)
-## デバイス ツインを使ってみる
-### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
-### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
-### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
-### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
-### [Python バックエンド/Python デバイス](iot-hub-python-twin-getstarted.md)
 ## デバイス管理の開始
 ### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
 ### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)
 ### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-device-management-get-started.md)
 ### [Java バックエンド/Java デバイス](iot-hub-java-java-device-management-getstarted.md)
 ### [Python バックエンド/Python デバイス](iot-hub-python-python-device-management-get-started.md)
-## ツインのプロパティの使用方法
-### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-how-to-configure.md)
-### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)
-### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-how-to-configure.md)
-### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-how-to-configure.md)
-### [Python バックエンド/Python デバイス](iot-hub-python-python-twin-how-to-configure.md)
 ## デバイス ジョブを使用したデバイスのファームウェアの更新
 ### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
 ### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
@@ -80,6 +71,8 @@
 ### [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
 ### [価格の例](iot-hub-devguide-pricing.md)
 ### [デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md)
+### [制約のあるデバイスの場合の開発](iot-hub-devguide-develop-for-constrained-devices.md)
+### [モバイル デバイスの場合の開発](iot-hub-how-to-develop-for-mobile-devices.md)
 ### [MQTT サポート](iot-hub-mqtt-support.md)
 ### [用語集](iot-hub-devguide-glossary.md)
 
@@ -89,7 +82,6 @@
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
-#### [iOS (Swift)](quickstart-send-telemetry-ios.md)
 ## [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
 ### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
 ### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
@@ -157,17 +149,26 @@
 ### [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
 #### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
 #### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
+### [制約のあるデバイスの場合の開発](iot-hub-devguide-develop-for-constrained-devices.md)
+### [モバイル デバイスの場合の開発](iot-hub-how-to-develop-for-mobile-devices.md)
 ### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
+### [ハブ ルートからの Avro データのクエリ](iot-hub-query-avro-data.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
 #### [iOS](iot-hub-ios-swift-c2d.md)
+### デバイス ツインを使ってみる
+#### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
+#### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-twin-getstarted.md)
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
@@ -217,13 +218,6 @@
 ### [Java](iot-hub-java-java-file-upload.md)
 ### [Node.js](iot-hub-node-node-file-upload.md)
 ### [Python](iot-hub-python-python-file-upload.md)
-
-## ジョブのスケジュールとブロードキャスト
-### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
-### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
-### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-schedule-jobs.md)
-### [Java バックエンド/Java デバイス](iot-hub-java-java-schedule-jobs.md)
-### [Python バックエンド/Python デバイス](iot-hub-python-python-schedule-jobs.md)
 
 ## IoT Hub の作成 
 ### [Azure Portal の使用](iot-hub-create-through-portal.md)
