@@ -162,6 +162,8 @@
               href: app-insights-proactive-low-utilization-cloud-resources.md
             - name: セキュリティの検出
               href: app-insights-proactive-application-security-detection-pack.md
+            - name: Azure クラウド サービス
+              href: app-insights-proactive-cloud-services.md
         - name: リソースの作成
           href: app-insights-create-new-resource.md
     - name: 分析

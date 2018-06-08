@@ -9,27 +9,11 @@
       href: asdk-release-notes.md
 - name: チュートリアル
   items:
-    - name: 1. ASDK のデプロイ
-      items:
-        - name: ASDK のデプロイ - インストーラー
-          href: asdk-deploy.md
-        - name: ASDK のデプロイ - PowerShell
-          href: asdk-deploy-powershell.md
-        - name: ASDK の再デプロイ
-          href: asdk-redeploy.md
-    - name: 2. マーケットプレース項目の追加
-      items:
-        - name: Azure からのダウンロード
-          href: asdk-marketplace-item.md
-        - name: ローカル ソースからの追加
-          href: asdk-marketplace-item-offline.md
-    - name: 3. IaaS サービスの提供
-      href: asdk-offer-services.md
-    - name: 4. プランへのサブスクライブ
+    - name: プランへのサブスクライブ
       href: asdk-subscribe-services.md
-    - name: 5. オファーとプランの更新
+    - name: オファーとプランの更新
       href: asdk-update-offers.md
-    - name: 6. テンプレートからの VM の作成
+    - name: テンプレートからの VM の作成
       href: asdk-create-vm-template.md
 - name: 概念
   items:
@@ -49,10 +33,14 @@
           href: asdk-download.md
         - name: ASDK ホスト コンピューターの準備
           href: asdk-prepare-host.md
-        - name: ASDK のインストール
+        - name: ASDK のデプロイ - インストーラー
           href: asdk-install.md
+        - name: ASDK のデプロイ - PowerShell
+          href: asdk-deploy-powershell.md
         - name: デプロイ後の構成
           href: asdk-post-deploy.md
+        - name: ASDK の再デプロイ
+          href: asdk-redeploy.md
     - name: ASDK の登録
       href: asdk-register.md
     - name: Azure Stack のテレメトリ設定の構成

@@ -21,6 +21,8 @@
       href: custom-event-quickstart-portal.md
     - name: Queue Storage へのイベントの送信
       href: custom-event-to-queue-storage.md
+    - name: イベントを Event Hubs に送信する
+      href: custom-event-to-eventhub.md
 - name: チュートリアル
   items:
     - name: VM が変更されたときに電子メールで通知する
