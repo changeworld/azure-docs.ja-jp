@@ -61,7 +61,7 @@ ms.locfileid: "32160057"
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
 | department |○ |○ | | |
-| 説明 |○ |○ |○ | |
+| description |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | dLMemRejectPerms |○ |○ |○ | |
 | dLMemSubmitPerms |○ |○ |○ | |
@@ -183,7 +183,7 @@ ms.locfileid: "32160057"
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
 | department |○ |○ | | |
-| 説明 |○ |○ |○ | |
+| description |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | dLMemRejectPerms |○ |○ |○ | |
 | dLMemSubmitPerms |○ |○ |○ | |
@@ -263,7 +263,7 @@ ms.locfileid: "32160057"
 | co |○ |○ | | |
 | company |○ |○ | | |
 | department |○ |○ | | |
-| 説明 |○ |○ |○ | |
+| description |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | facsimiletelephonenumber |○ |○ |○ | |
 | givenName |○ |○ | | |
@@ -325,7 +325,7 @@ ms.locfileid: "32160057"
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | c |○ |○ | | |
 | cn |○ | |○ | |
-| 説明 |○ |○ |○ | |
+| description |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | mail |○ |○ |○ | |
 | mailNickname |○ |○ |○ | |
@@ -347,7 +347,7 @@ ms.locfileid: "32160057"
 | co |○ |○ | | |
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
-| 説明 |○ |○ |○ | |
+| description |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | facsimiletelephonenumber |○ |○ | | |
 | givenName |○ |○ | | |
