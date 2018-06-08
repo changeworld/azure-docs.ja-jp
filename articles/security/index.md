@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: carolz
-ms.openlocfilehash: d05b90b5c961bcbdca4b3ac904e015623b05f1a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4122afcc730c9c8b312373b77eaf4fd004b2248b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641154"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -48,7 +49,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">自社で Azure を導入することを検討しています。 Azure にはどのような機能がありますか?</p>
+                            <p style="font-size: 1.12rem;">自社で Azure を導入することを検討しています。 Azure のセキュリティはどのようなものですか?</p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +96,7 @@ Azure のすべての要素にセキュリティが統合されています。 A
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-network-security-best-practices">
+        <a href="/azure/security/security-network-overview">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">

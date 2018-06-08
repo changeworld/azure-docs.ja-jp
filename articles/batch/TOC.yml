@@ -73,6 +73,8 @@
           href: batch-custom-images.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
+        - name: Azure ファイル共有をマウントする
+          href: pool-file-shares.md
         - name: コンピューティング集中型 VM を使用する
           href: batch-pool-compute-intensive-sizes.md
         - name: Linux コンピューティング ノードを使用する

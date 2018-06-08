@@ -25,9 +25,11 @@
         - name: 2. Contoso - Azure インフラストラクチャを設定する
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso - Azure への移行についてオンプレミスのリソースを評価する
-          href: migrate-scenarios-assessment.md
-        - name: 4. Contoso - Azure VM と Azure SQL Managed Instance でリホストする
-          href: migrate-scenarios-lift-and-shift.md
+          href: contoso-migration-assessment.md
+        - name: 4. Contoso - Azure VM と Azure SQL Managed Instance でアプリをリホストする
+          href: contoso-migration-rehost-vm-sql-managed-instance.md
+        - name: 5. Contoso - Azure VM でアプリをリホストする
+          href: contoso-migration-rehost-vm.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md
     - name: マシンのグループ化
@@ -48,3 +50,5 @@
       href: 'https://azure.microsoft.com/migrate'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: FAQ
+      href: resources-faq.md

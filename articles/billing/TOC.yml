@@ -1,104 +1,116 @@
-- name: Azure Billing のドキュメント
+- name: Azure の課金とコスト管理に関するドキュメント
   href: index.md
-- name: 作業開始
+- name: Azure の課金の詳細
+  expanded: true
+  items:
+    - name: 課金内容を確認する
+      href: billing-understand-your-bill.md
+    - name: 請求書および使用状況データを取得する
+      href: billing-download-azure-invoice-daily-usage-date.md
+    - name: サードパーティのサービス料金
+      href: billing-understand-your-azure-marketplace-charges.md
+    - name: 使用条件の説明
+      href: billing-understand-your-usage.md
+    - name: 請求条件の説明
+      href: billing-understand-your-invoice.md
+- name: コストを管理する
   items:
     - name: 予想外のコストを防ぐ
       href: billing-getting-started.md
-    - name: 無料アカウントに含まれるサービスを作成する
-      href: billing-create-free-services-included-free-account.md
-    - name: 無料アカウントに課金されないようにする
-      href: billing-avoid-charges-free-account.md
+    - name: 課金アラートのセットアップ
+      href: billing-set-up-alerts.md
+    - name: 料金の計算
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: リソース タグの利用
+      href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+    - name: 使用制限を理解する
+      href: billing-spending-limit.md
+    - name: Reserved VM Instances による節約
+      items:
+        - name: 予約インスタンスとは
+          href: billing-save-compute-costs-reservations.md
+        - name: 予約インスタンスを購入する
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 割り引きの適用方法
+          href: billing-understand-vm-reservation-charges.md
+        - name: 含まれないソフトウェアのコスト
+          href: billing-reserved-instance-windows-software-costs.md
+        - name: 従量課金制の使用量
+          href: billing-understand-reserved-instance-usage.md
+        - name: エンタープライズの場合の使用量
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: 予約インスタンスの管理
+          href: billing-manage-reserved-vm-instance.md
+- name: アカウントを管理する
+  items:
+    - name: 無料アカウント
+      items:
+        - name: 無料のサービスの作成
+          href: billing-create-free-services-included-free-account.md
+        - name: 請求の回避
+          href: billing-avoid-charges-free-account.md
+        - name: 使用量を確認する
+          href: billing-check-free-service-usage.md
+        - name: サブスクリプションのアップグレード
+          href: billing-upgrade-azure-subscription.md
+        - name: メーターのマッピングを理解する
+          href: billing-understand-free-service-meter-mapping.md
+    - name: プロファイルを編集する
+      href: billing-how-to-change-azure-account-profile.md
     - name: 課金情報へのアクセスを許可する
       href: billing-manage-access.md
+    - name: パートナー ID をリンクする
+      href: billing-partner-admin-link-started.md
+    - name: 請求先アカウントを表示する
+      href: billing-view-all-accounts.md
+    - name: 過去の延滞残高を決済する
+      href: billing-azure-subscription-past-due-balance.md
     - name: Office 365 アカウントでサインアップする
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Azure アカウントで Office 365 にサインアップする
       href: billing-use-existing-azure-account-for-office-365-subscription.md
-    - name: 管理グループを使用してリソースを整理する
-      href: billing-enterprise-mgmt-group-overview.md
-    - name: Azure 予約インスタンスで節約する
-      href: billing-save-compute-costs-reservations.md
-      items:
-        - name: 予約インスタンスで仮想マシンについて前払いする
-          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
-        - name: 予約インスタンスを管理する
-          href: billing-manage-reserved-vm-instance.md
-        - name: 予約インスタンスの割引の適用について理解する
-          href: billing-understand-vm-reservation-charges.md
-        - name: 従量課金制での予約インスタンスの使用について理解する
-          href: billing-understand-reserved-instance-usage.md
-        - name: エンタープライズ向けの予約インスタンスの使用について理解する
-          href: billing-understand-reserved-instance-usage-ea.md
-        - name: 予約インスタンスの Windows のコスト
-          href: billing-reserved-instance-windows-software-costs.md
+- name: サブスクリプションの管理
+  items:
+    - name: サブスクリプションの再アクティブ化
+      href: billing-subscription-become-disable.md
+    - name: 所有権の移転
+      href: billing-subscription-transfer.md
+    - name: サブスクリプションを取り消す
+      href: billing-how-to-cancel-azure-subscription.md
+    - name: クレジット カードの変更
+      href: billing-how-to-change-credit-card.md
+    - name: 管理者の変更
+      href: billing-add-change-azure-subscription-administrator.md
+    - name: サブスクリプション プランの切り替え
+      href: billing-how-to-switch-azure-offer.md
+    - name: 請求書による支払い
+      href: billing-how-to-pay-by-invoice.md
+    - name: 管理グループの作成
+      href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
+    - name: Azure リソースの移動
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
+    - name: Enterprise サブスクリプションの作成
+      href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
+    - name: サブスクリプション情報のエクスポート
+      href: billing-export-subscriptions.md
+    - name: Azure AD テナントをリンクさせる
+      href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: 制限とクォータ
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
-- name: 方法
+- name: トラブルシューティング
   items:
-    - name: 使用状況とコストの監視
-      items:
-        - name: 請求書および使用状況を取得する
-          href: billing-download-azure-invoice-daily-usage-date.md
-        - name: 無料サービスの使用状況を確認する
-          href: billing-check-free-service-usage.md
-        - name: 課金内容を確認する
-          href: billing-understand-your-bill.md
-        - name: 請求書の用語を理解する
-          href: billing-understand-your-invoice.md
-        - name: 使用状況に関する用語を理解する
-          href: billing-understand-your-usage.md
-        - name: 外部サービスの料金を理解する
-          href: billing-understand-your-azure-marketplace-charges.md
-        - name: 無料サービスのメーターのマッピングを理解する
-          href: billing-understand-free-service-meter-mapping.md
-        - name: 使用制限を理解する
-          href: billing-spending-limit.md
-        - name: 課金アラートのセットアップ
-          href: billing-set-up-alerts.md
-        - name: 過去の延滞残高を決済する
-          href: billing-azure-subscription-past-due-balance.md
-    - name: '[サブスクリプションの管理]'
-      items:
-        - name: サブスクリプションまたは管理グループを検索する
-          href: billing-enterprise-mgmt-grp-find.md
-        - name: 管理者ロールを管理する
-          href: billing-add-change-azure-subscription-administrator.md
-        - name: サブスクリプションの所有権を転送する
-          href: billing-subscription-transfer.md
-        - name: 無効にしたサブスクリプションを再びアクティブにする
-          href: billing-subscription-become-disable.md
-        - name: 無料サブスクリプションからアップグレードする
-          href: billing-upgrade-azure-subscription.md
-        - name: サブスクリプション プランの切り替え
-          href: billing-how-to-switch-azure-offer.md
-        - name: Azure AD テナントをリンクさせる
-          href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
-        - name: サブスクリプションを取り消す
-          href: billing-how-to-cancel-azure-subscription.md
-    - name: アカウントを管理する
-      items:
-        - name: プロファイルを編集する
-          href: billing-how-to-change-azure-account-profile.md
-        - name: 支払情報を更新する
-          href: billing-how-to-change-credit-card.md
-        - name: 請求書でサブスクリプションの支払いを行う
-          href: billing-how-to-pay-by-invoice.md
-        - name: パートナー ID をリンクする
-          href: billing-partner-admin-link-started.md
-        - name: 請求先アカウントを表示する
-          href: billing-view-all-accounts.md
-    - name: トラブルシューティング
-      items:
-        - name: サインアップの問題
-          href: 'https://support.microsoft.com/en-us/help/4042959'
-        - name: 拒否されたカード
-          href: 'https://support.microsoft.com/en-us/help/4042960'
-        - name: サインインの問題
-          href: 'https://support.microsoft.com/en-us/help/4042961'
-        - name: サブスクリプションが見つからない
-          href: billing-no-subscriptions-found.md
-        - name: エンタープライズ コスト ビューが無効になっている
-          href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: サブスクリプションが見つからない
+      href: billing-no-subscriptions-found.md
+    - name: 拒否されたカード
+      href: 'https://support.microsoft.com/en-us/help/4042960'
+    - name: サインアップの問題
+      href: 'https://support.microsoft.com/en-us/help/4042959'
+    - name: サインインの問題
+      href: 'https://support.microsoft.com/en-us/help/4042961'
+    - name: エンタープライズ コスト ビューが無効になっている
+      href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: サポートにお問い合せください
+      href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: リファレンス
   items:
     - name: Azure Billing API の概要
@@ -129,11 +141,3 @@
           href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
         - name: RateCard API のコード サンプル
           href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
-- name: リソース
-  items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: サポートにお問い合せください
-      href: ../azure-supportability/how-to-create-azure-support-request.md
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'

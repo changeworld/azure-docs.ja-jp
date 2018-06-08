@@ -1,26 +1,24 @@
 ---
-title: "Azure Data Lake Analytics のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Data Lake Analytics によるビッグ データの分析について説明します。 チュートリアルでは、バッチ型、リアルタイム型、対話型の分析の実行方法と、U-SQL クエリの記述方法を紹介します。"
+title: Azure Data Lake Analytics のドキュメント - チュートリアル、API リファレンス
+description: Azure Data Lake Analytics によるビッグ データの分析について説明します。 チュートリアルでは、バッチ型、リアルタイム型、対話型の分析の実行方法と、U-SQL クエリの記述方法を紹介します。
 services: data-lake-analytics
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.assetid: 
 ms.service: data-lake-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc7b85e5a5f6173572e390c1073971d927aa7df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624218"
 ---
-# <a name="data-lake-analytics-documentation"></a>Data Lake Analytics のドキュメント
+# <a name="azure-data-lake-analytics-documentation"></a>Azure Data Lake Analytics のドキュメント
 
-Data Lake Analytics を使用して、大規模なデータ セットに対応するビッグ データ分析ジョブを実行する方法について説明します。 チュートリアルなどのドキュメントでは、バッチ型、リアルタイム型、対話型の分析ジョブを作成および管理する方法と、U-SQL 言語を使用してクエリを実行する方法を紹介します。
+Azure Data Lake Analytics を使用して、大規模なデータ セットに対応するビッグ データ分析ジョブを実行する方法について説明します。 チュートリアルなどのドキュメントでは、バッチ型、リアルタイム型、対話型の分析ジョブを作成および管理する方法と、U-SQL 言語を使用してクエリを実行する方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,7 +96,6 @@ Data Lake Analytics を使用して、大規模なデータ セットに対応�
         <td><a href="data-lake-analytics-manage-use-cli.md">Azure CLI</a></td>
         <td><a href="data-lake-analytics-manage-use-dotnet-sdk.md">.NET SDK</a></td>
         <td><a href="data-lake-analytics-get-started-python.md">Python SDK</a></td>
-        <td><a href="data-lake-analytics-get-started-java-sdk.md">Java SDK</a></td>
     </tr>
 </table>
 

@@ -1,50 +1,52 @@
 # [Analysis Services のドキュメント](index.md)
 
 # 概要
-## [Azure Analysis Services とは](analysis-services-overview.md)
 
+## [Analysis Services とは](analysis-services-overview.md)
 
-# 作業開始
-## [Azure Portal でサーバーを作成する](analysis-services-create-server.md)
-## [Azure PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
-## [Visual Studio からモデルをデプロイする](analysis-services-deploy.md)
-## [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
+# クイック スタート
+
+## [サーバーの作成 - ポータル](analysis-services-create-server.md)
+## [サーバーの作成 - PowerShell](analysis-services-create-powershell.md)
+## [サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)
+
+# チュートリアル
+
+## [1 - ポータルからサンプル モデルを追加する](analysis-services-create-sample-model.md) 
+## [2 - サーバー管理者とユーザー ロールを構成する](tutorials/analysis-services-tutorial-roles.md)
+## [3 - Power BI Desktop を使用して接続する](tutorials/analysis-services-tutorial-pbid.md)
 
 # 概念
+
+## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
 ## [サービス プリンシパルによる自動化](analysis-services-service-principal.md)
-## [サポートされるデータ ソース](analysis-services-datasource.md)
+## [クライアント ライブラリ](analysis-services-data-providers.md)
+## [互換性レベル](analysis-services-compat-level.md)
 ## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)
 ## [サーバーへの接続](analysis-services-connect.md)
-## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
-## [互換性レベル](analysis-services-compat-level.md)
 ## [高可用性](analysis-services-bcdr.md)
+## [サポートされるデータ ソース](analysis-services-datasource.md)
 
 # 操作方法 
-## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
-## [Power BI Desktop ファイルのインポート](analysis-services-import-pbix.md)
-## [バックアップと復元](analysis-services-backup.md)
-## [REST API を使用した更新](analysis-services-async-refresh.md)
-## [スケールアウトの構成](analysis-services-scale-out.md)
-## 管理タスクの自動化
-### [サービス プリンシパルを作成する - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [サービス プリンシパルを作成する - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-### [サーバー管理者ロールにサービス プリンシパルを追加する](analysis-services-addservprinc-admins.md)
-## サーバー管理
+
+## サーバー
+### [バックアップと復元](analysis-services-backup.md)
 ### [サーバー名の別名の構成](analysis-services-server-alias.md)
+### [スケールアウトの構成](analysis-services-scale-out.md)
+### [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
 ### [サーバーの管理](analysis-services-manage.md)
-### [データベース ユーザーの管理](analysis-services-database-users.md)
-### [サーバー管理者の管理](analysis-services-server-admins.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
 ### [診断ログのセットアップ](analysis-services-logging.md)
-### [VNet 上のデータ ソースにゲートウェイを使用する](analysis-services-vnet-gateway.md)
-## 接続
-### [クライアント ライブラリの取得](analysis-services-data-providers.md)
-### [Excel を使用した接続](analysis-services-connect-excel.md)
-### [Power BI を使用した接続](analysis-services-connect-pbi.md)
-### [.odc ファイルの作成](analysis-services-odc.md)
-## チュートリアル
-### [1 - サンプル モデルを追加する](analysis-services-create-sample-model.md)
-### [データ モデリング - Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)
+### [サービス プリンシパルの作成 - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [サービス プリンシパルの作成 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)
+
+## モデル
+### [Power BI Desktop ファイルのインポート](analysis-services-import-pbix.md)
+### [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
+### [Visual Studio からのデプロイ (SSDT)](analysis-services-deploy.md)
+### [REST API を使用した更新](analysis-services-async-refresh.md)
+### [Visual Studio でのデータ モデリング - Adventure Works (1400) チュートリアル](tutorials/aas-adventure-works-tutorial.md)
 #### [1 - 表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 #### [2 - データを取得する](tutorials/aas-lesson-2-get-data.md)
 #### [3 - 日付テーブルとしてマークする](tutorials/aas-lesson-3-mark-as-date-table.md) 
@@ -62,14 +64,25 @@
 #### [補足のレッスン - 動的なセキュリティ](tutorials/aas-supplemental-lesson-dynamic-security.md)
 #### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
+## セキュリティ
+### [データベース ユーザーの管理](analysis-services-database-users.md)
+### [サーバー管理者の管理](analysis-services-server-admins.md)
+
+## 接続
+### [Excel を使用した接続](analysis-services-connect-excel.md)
+### [Power BI を使用した接続](analysis-services-connect-pbi.md)
+### [.odc ファイルの作成](analysis-services-odc.md)
+
 # リファレンス
-## [Azure PowerShell](analysis-services-powershell.md)
+
+## [PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # リソース
+
 ## [サンプル](analysis-services-samples.md)
 ## [Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
@@ -80,4 +93,13 @@
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [StackOverflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+
+
+
+
+
+
+
+
+
 

@@ -15,6 +15,7 @@
 ### [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)
 ## [管理]
 ### [ハイコントラストの有効化またはテーマの変更](azure-portal-change-theme-high-contrast.md)
+### [ユーザー設定のエクスポートまたは削除](azure-portal-export-delete-settings.md)
 ### [ポータルを使用したリソースの管理](../azure-resource-manager/resource-group-portal.md)
 ### [ロールベースのアクセス制御を使用したアクセス管理](../role-based-access-control/role-assignments-portal.md)
 ### [ロールベースのアクセス制御を使用したダッシュボードの共有](azure-portal-dashboard-share-access.md)

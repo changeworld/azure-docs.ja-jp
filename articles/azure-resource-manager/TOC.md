@@ -3,7 +3,7 @@
 # 概要
 ## [Azure Resource Manager とは](resource-group-overview.md)
 ## [リソース プロバイダーと種類](resource-manager-supported-services.md)
-## [Resource Manager デプロイメントとクラシック デプロイメント](resource-manager-deployment-model.md)
+## [Resource Manager デプロイとクラシック デプロイ](resource-manager-deployment-model.md)
 ## [サブスクリプションのガバナンス](/azure/architecture/cloud-adoption-guide/subscription-governance)
 ## [管理グループを使用してリソースを整理する](management-groups-overview.md)
 

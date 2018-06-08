@@ -51,6 +51,8 @@
           href: container-instances-exec.md
         - name: CPU とメモリの使用率の監視
           href: container-instances-monitor.md
+        - name: Azure Log Analytics によるログ記録
+          href: container-instances-log-analytics.md
     - name: ワークロードの実行
       items:
         - name: コンテナー化されたタスクの実行

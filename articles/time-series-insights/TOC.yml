@@ -14,6 +14,8 @@
   items:
     - name: TSI JavaScript クライアント ライブラリの探索
       href: tutorial-explore-js-client-lib.md
+    - name: TSI 環境の作成
+      href: tutorial-create-populate-tsi-environment.md
 - name: 概念
   items:
     - name: 環境を計画する
@@ -56,6 +58,8 @@
       href: time-series-insights-how-to-scale-your-environment.md
     - name: テンプレートを使用したリソースの管理
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
+    - name: クエリのための JSON の作成
+      href: how-to-shape-query-json.md
 - name: リファレンス
   items:
     - name: クエリ API

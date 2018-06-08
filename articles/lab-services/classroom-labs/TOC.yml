@@ -1,0 +1,50 @@
+- name: Lab Services のドキュメント
+  href: /azure/lab-services
+- name: 概要
+  items:
+    - name: クラスルーム ラボについて
+      href: classroom-labs-overview.md
+    - name: ラボの種類を比較する
+      href: ../compare-lab-types.md
+- name: チュートリアル
+  items:
+    - name: 1. ラボ アカウントを設定する
+      href: tutorial-setup-lab-account.md
+    - name: 2. クラスルーム ラボを設定する
+      href: tutorial-setup-classroom-lab.md
+    - name: 3. クラスルーム ラボへのアクセス
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+- name: ハウツー ガイド
+  items:
+    - name: ラボ アカウントの管理
+      href: how-to-manage-lab-accounts.md
+    - name: クラスルーム ラボの管理
+      href: how-to-manage-classroom-labs.md
+    - name: クラスルーム ラボへのアクセス
+      href: how-to-use-classroom-lab.md
+- name: リファレンス
+  items:
+    - name: CLI 2.0
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/dtl/'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
+    - name: チーム ブログ
+      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'

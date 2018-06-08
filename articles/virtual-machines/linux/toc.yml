@@ -89,6 +89,8 @@
               href: n-series-driver-setup.md
         - name: ハイ パフォーマンス コンピューティング
           href: sizes-hpc.md
+        - name: 旧世代
+          href: sizes-previous-gen.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: ベンチマーク スコア
@@ -140,6 +142,8 @@
           href: create-cli-complete.md
         - name: テンプレートの使用
           href: create-ssh-secured-vm-from-template.md
+        - name: REST API を使用する
+          href: create-vm-rest-api.md
         - name: VM のコピーまたは複製
           href: copy-vm.md
     - name: VM のセキュリティ保護
@@ -188,7 +192,12 @@
         - name: VM にタグを付ける
           href: tag.md
         - name: VM でのスクリプトの実行
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: カスタム スクリプト拡張機能
+              href: ../extensions/custom-script-linux.md
+            - name: 実行コマンド
+              href: run-command.md
         - name: リモート デスクトップを使用する
           href: use-remote-desktop.md
         - name: VM を Azure Active Directory に参加させる
@@ -416,21 +425,7 @@
             - name: 内部 DNS の使用
               href: static-dns-name-resolution-for-linux-on-azure.md
     - name: VM 拡張機能の使用
-      items:
-        - name: VM 拡張機能の概要
-          href: extensions-features.md
-        - name: カスタム スクリプト拡張機能
-          href: extensions-customscript.md
-        - name: OMS エージェント拡張機能
-          href: extensions-oms.md
-        - name: Linux Diagnostic Extension
-          href: diagnostic-extension.md
-        - name: Network Watcher Agent
-          href: extensions-nwa.md
-        - name: VMAccess 拡張機能
-          href: using-vmaccess-extension.md
-        - name: 拡張機能のインストールの制限
-          href: ../extensions/extensions-rmpolicy-howto-cli.md
+      href: ../extensions/overview.md
     - name: VM の移行
       items:
         - name: AWS とオンプレミスの VM を移行する

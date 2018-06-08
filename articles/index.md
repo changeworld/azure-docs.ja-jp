@@ -6,11 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ed49f1e7f203d67335ccddea1b7f5ab7b1b050a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6405adeb697b68a651e31d348ffb525d926fd3f4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627195"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -245,9 +246,14 @@ Azure PowerShell </a>
                                                 <h3>DevOps</h3>
                                                 <ul class="noBullet">
                                                     <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Azure へのデプロイ</a>
+                                                        <a class="barLink" href="/azure/ansible/">
+                                                            <img src="media/index/ansible.svg" alt="">
+Ansible </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/azure/chef">
+                                                            <img src="chef/media/Chef_Regular.svg" alt="">
+Chef </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/jenkins">
@@ -260,9 +266,9 @@ Jenkins </a>
 Terraform </a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/azure/chef">
-                                                            <img src="chef/media/Chef_Regular.svg" alt="">
-Chef </a>
+                                                        <a class="barLink" href="https://docs.microsoft.com/vsts/deploy-azure/">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Visual Studio Team Services </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -349,7 +355,7 @@ Chef </a>
                                         <li>
                                             <a href="/azure/aks/">
                                                 <img src="media/index/containerservice.svg" alt="" />
-                                                <p>Azure Kubernetes サービス (AKS)</p>
+                                                <p>Azure Kubernetes Service (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -475,7 +481,7 @@ Chef </a>
                                         <li>
                                             <a href="/azure/aks/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
-                                                <p>Azure Kubernetes サービス (AKS)</p>
+                                                <p>Azure Kubernetes Service (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1816,7 +1822,7 @@ Chef </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Kubernetes サービス (AKS)</h3>
+                                                    <h3>Azure Kubernetes Service (AKS)</h3>
                                                     <p>Kubernetes のデプロイ、管理、操作を簡略化</p>
                                                 </div>
                                             </div>
@@ -2639,7 +2645,7 @@ Chef </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Kubernetes サービス (AKS)</h3>
+                                                    <h3>Azure Kubernetes Service (AKS)</h3>
                                                     <p>Kubernetes のデプロイ、管理、操作を簡略化</p>
                                                 </div>
                                             </div>

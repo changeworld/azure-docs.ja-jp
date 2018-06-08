@@ -19,7 +19,8 @@
 #### [Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)
 ## バックアップと復元
 ### [バックアップと復元](virtual-machines-windows-sql-backup-recovery.md)
-### [自動バックアップ](virtual-machines-windows-sql-automated-backup.md)
+### [SQL Server 2014 の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)
+### [SQL Server 2016 以降の自動バックアップ](virtual-machines-windows-sql-automated-backup-v2.md)
 ### [Azure Storage を使用したバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # ハウツー ガイド
@@ -45,7 +46,7 @@
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
 ## [SQL Server ドライバー](https://docs.microsoft.com/sql/connect/sql-connection-libraries)
-## [REST ()](/rest/api/)
+## [REST](/rest/api/)
 
 # リソース
 ## [FAQ](virtual-machines-windows-sql-server-iaas-faq.md)

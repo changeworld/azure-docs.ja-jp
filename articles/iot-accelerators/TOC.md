@@ -3,13 +3,13 @@
 
 # 概要
 ## [IoT アーキテクチャの概念](iot-accelerators-what-is-azure-iot.md)
-## [Azure IoT オプションの比較](../iot-suite/iot-suite-options.md)
+## [Azure IoT オプションの比較](iot-accelerators-options.md)
 ## [ソリューション アクセラレータの概要](iot-accelerators-what-are-solution-accelerators.md)
 
 # 作業開始
 ## リモート監視
 ### [ソリューション アクセラレータをデプロイする](iot-accelerators-remote-monitoring-deploy.md)
-### [ソリューション アクセラレータを操作する](../iot-suite/iot-suite-remote-monitoring-explore.md)
+### [ソリューション アクセラレータを操作する](iot-accelerators-remote-monitoring-explore.md)
 
 ## リモート監視 (以前のバージョン)
 ### [ソリューション アクセラレータとは](../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md)
@@ -35,16 +35,16 @@
 ##### [Windows 上の C](../iot-suite/iot-suite-v1-connecting-devices.md)
 ##### [Linux 上の C](../iot-suite/iot-suite-v1-connecting-devices-linux.md)
 ##### [Node.js](../iot-suite/iot-suite-v1-connecting-devices-node.md)
-#### [ロジック アプリをリモート監視ソリューションへに接続する](../iot-suite/iot-suite-v1-logic-apps-tutorial.md)
+#### [ロジック アプリをリモート監視ソリューションに接続する](../iot-suite/iot-suite-v1-logic-apps-tutorial.md)
 #### [ソリューション アクセラレータをカスタマイズする](../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
-#### [リモート監視ソリューションでの動的テレメトリを使用する](../iot-suite/iot-suite-v1-dynamic-telemetry.md)
-#### [リモート監視ソリューションでカスタム規則を作成する](../iot-suite/iot-suite-v1-custom-rule.md)
+#### [リモート監視ソリューションで動的テレメトリを使用する](../iot-suite/iot-suite-v1-dynamic-telemetry.md)
+#### [リモート監視ソリューションでカスタム ルールを作成する](../iot-suite/iot-suite-v1-custom-rule.md)
 #### [リモート監視ソリューションでのデバイス情報](../iot-suite/iot-suite-v1-remote-monitoring-device-info.md)
 
 
 ## 予測メンテナンス
-### [予測メンテナンスのソリューション アクセラレータの概要](../iot-suite/iot-suite-predictive-overview.md)
-### [予測メンテナンスのソリューション アクセラレータのチュートリアル](../iot-suite/iot-suite-predictive-walkthrough.md)
+### [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
+### [予測メンテナンスのソリューション アクセラレータのチュートリアル](iot-accelerators-predictive-walkthrough.md)
 
 ## 接続済みファクトリ
 ### [接続済みファクトリとは](iot-accelerators-connected-factory-features.md)
@@ -70,7 +70,7 @@
 ### [マイクロサービスのカスタマイズと再デプロイ](iot-accelerators-microservices-example.md)
 ### [CLI を使用したデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [ローカルでのデプロイ](iot-accelerators-remote-monitoring-deploy-local.md)
-### [Time Series Insights を使用したデータの視覚化](../iot-suite/iot-suite-time-series-insights.md)
+### [Time Series Insights を使用したデータの視覚化](iot-accelerators-time-series-insights.md)
 ### [Data Lake Store との統合](iot-accelerators-integrate-data-lake.md)
 ### 物理デバイスの接続
 #### [Windows 上の C](iot-accelerators-connecting-devices.md)
@@ -78,7 +78,7 @@
 #### [Node.js (汎用)](iot-accelerators-connecting-devices-node.md)
 #### [Raspberry Pi の Node.js](iot-accelerators-connecting-pi-node.md)
 #### [Raspberry Pi の C](iot-accelerators-connecting-pi-c.md)
-#### [MX Chip AZ3166 DevKit](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+#### [MX Chip AZ3166 DevKit](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### 概念
 #### [リモート監視の実装の詳細](iot-accelerators-remote-monitoring-sample-walkthrough.md)
@@ -89,19 +89,19 @@
 ### [接続済みファクトリをカスタマイズする](iot-accelerators-connected-factory-customize.md)
 ### [接続済みファクトリに OPC Publisher を使用する](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [接続済みファクトリを構成する](iot-accelerators-connected-factory-configure.md)
-## [azureiotsuite.com のアクセス許可](../iot-suite/iot-suite-permissions.md)
+## [azureiotsuite.com のアクセス許可](iot-accelerators-permissions.md)
 
 # リファレンス
 ## [開発者向けリファレンス ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [開発者向けトラブルシューティング ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [セキュリティのアーキテクチャ](../iot-suite/iot-security-architecture.md)
-## [セキュリティのベスト プラクティス](../iot-suite/iot-security-best-practices.md)
-## [IoT デプロイのセキュリティ保護](../iot-suite/iot-suite-security-deployment.md)
-## [徹底的なセキュリティ](../iot-suite/securing-iot-ground-up.md)
+## [セキュリティのアーキテクチャ](iot-security-architecture.md)
+## [セキュリティのベスト プラクティス](iot-security-best-practices.md)
+## [IoT デプロイのセキュリティ保護](iot-accelerators-security-deployment.md)
+## [徹底的なセキュリティ](securing-iot-ground-up.md)
 
 # 関連項目
 ## 解決方法 
-### [IoT Suite の構成済みソリューション](/azure/iot-suite) 
+### [IoT ソリューション アクセラレータ](/azure/iot-suite) 
 ### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## プラットフォーム サービス 
 ### [IoT Hub](/azure/iot-hub) 
