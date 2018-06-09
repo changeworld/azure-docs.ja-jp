@@ -199,6 +199,8 @@
               href: azure-stack-plan-offer-quota-overview.md
             - name: プランの作成
               href: azure-stack-create-plan.md
+            - name: アドオン プランを作成する
+              href: create-add-on-plan.md
             - name: オファーの作成
               href: azure-stack-create-offer.md
             - name: プランへのサブスクライブ

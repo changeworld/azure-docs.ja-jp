@@ -17,6 +17,10 @@
           href: stream-files-tutorial-with-api.md
         - name: REST の場合
           href: stream-files-tutorial-with-rest.md
+    - name: ライブ ストリーム配信
+      items:
+        - name: .NET Core の場合
+          href: stream-live-tutorial-with-api.md
     - name: ビデオの分析
       items:
         - name: .NET の場合
@@ -37,6 +41,8 @@
           href: encoding-concept.md
         - name: Autogen アダプティブ ビットレート ラダー
           href: autogen-bitrate-ladder.md
+    - name: ライブ ストリーミング
+      href: live-streaming-overview.md
     - name: メディア インテリジェンス
       href: intelligence-concept.md
     - name: イベントへの反応

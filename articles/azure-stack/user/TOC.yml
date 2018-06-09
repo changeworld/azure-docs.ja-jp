@@ -27,6 +27,10 @@
       href: azure-stack-solution-hybrid-identity.md
     - name: ハイブリッド クラウド接続の構成
       href: azure-stack-solution-hybrid-connectivity.md
+    - name: プランへのサブスクライブ
+      href: azure-stack-subscribe-services.md
+    - name: テンプレートからの VM の作成
+      href: azure-stack-create-vm-template.md
 - name: ハウツー ガイド
   items:
     - name: Azure Stack ポータルの使用

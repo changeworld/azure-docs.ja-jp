@@ -7,14 +7,6 @@
       href: asdk-what-is.md
     - name: ASDK リリース ノート
       href: asdk-release-notes.md
-- name: チュートリアル
-  items:
-    - name: プランへのサブスクライブ
-      href: asdk-subscribe-services.md
-    - name: オファーとプランの更新
-      href: asdk-update-offers.md
-    - name: テンプレートからの VM の作成
-      href: asdk-create-vm-template.md
 - name: 概念
   items:
     - name: デプロイ計画に関する考慮事項
