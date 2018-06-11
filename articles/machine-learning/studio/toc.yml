@@ -63,6 +63,8 @@
               href: deploy-with-resource-manager-template.md
             - name: 別のリージョンで作成する
               href: multi-geo.md
+            - name: Studio アカウント データの表示と削除
+              href: export-delete-personal-data-dsr.md
     - name: データの取得と理解
       items:
         - name: トレーニング データをインポートする
@@ -215,6 +217,8 @@
           href: gallery-collections.md
         - name: カスタム モジュール
           href: gallery-custom-modules.md
+        - name: アカウント データの表示と削除
+          href: ai-gallery-control-personal-data-dsr.md
 - name: リソース
   items:
     - name: Azure のロードマップ

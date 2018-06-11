@@ -10,18 +10,18 @@
   items:
     - name: DevTest Labs
       items:
-        - name: 1. カスタム ラボを設定する
+        - name: 1. ラボを設定する
           href: tutorial-create-custom-lab.md
-        - name: 2. カスタム ラボへのアクセス
+        - name: 2. ラボにアクセスする
           href: tutorial-use-custom-lab.md
     - name: クラスルーム ラボ
       items:
         - name: 1. ラボ アカウントを設定する
-          href: tutorial-setup-lab-account.md
+          href: classroom-labs/tutorial-setup-lab-account.md
         - name: 2. クラスルーム ラボを設定する
-          href: tutorial-setup-classroom-lab.md
+          href: classroom-labs/tutorial-setup-classroom-lab.md
         - name: 3. クラスルーム ラボへのアクセス
-          href: tutorial-connect-virtual-machine-classroom-lab.md
+          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
 - name: サンプル
   items:
     - name: DevTest Labs
@@ -50,20 +50,20 @@
     - name: クラスルーム ラボ
       items:
         - name: ラボ アカウントの管理
-          href: how-to-manage-lab-accounts.md
+          href: classroom-labs/how-to-manage-lab-accounts.md
         - name: クラスルーム ラボの管理
-          href: how-to-manage-classroom-labs.md
+          href: classroom-labs/how-to-manage-classroom-labs.md
         - name: クラスルーム ラボへのアクセス
-          href: how-to-use-classroom-lab.md
+          href: classroom-labs/how-to-use-classroom-lab.md
     - name: DevTest ラボ
       items:
-        - name: カスタム ラボの作成
+        - name: ラボを作成する
           href: devtest-lab-create-lab.md
-        - name: カスタム ラボでの VM の作成
+        - name: ラボで VM を作成する
           href: devtest-lab-create-first-vm.md
-        - name: カスタム ラボのポリシーを設定する
+        - name: ラボのポリシーを設定する
           href: devtest-lab-get-started-with-lab-policies.md
-        - name: カスタム ラボでの VM の使用
+        - name: ラボでの VM の使用
           items:
             - name: VM の作成
               href: devtest-lab-add-vm.md
@@ -75,7 +75,7 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: VM の再起動
               href: devtest-lab-restart-vm.md
-        - name: カスタム ラボでの環境の使用
+        - name: ラボでの環境の使用
           items:
             - name: 環境の作成
               href: devtest-lab-create-environment-from-arm.md
@@ -85,7 +85,7 @@
               href: devtest-lab-add-devtest-user.md
             - name: カスタム ロールでのアクセス許可のカスタマイズ
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-        - name: カスタム ラボの構成
+        - name: ラボの構成
           items:
             - name: ポリシーとスケジュールの設定
               href: devtest-lab-set-lab-policy.md
@@ -95,11 +95,11 @@
               href: devtest-lab-configure-marketplace-images.md
             - name: ライセンスされたイメージの有効化
               href: devtest-lab-enable-licensed-images.md
-            - name: カスタム ラボへのタグの追加
+            - name: ラボへのタグの追加
               href: devtest-lab-add-tag.md
-            - name: カスタム ラボでのお知らせの投稿
+            - name: ラボでのお知らせの投稿
               href: devtest-lab-announcements.md
-            - name: カスタム ラボへのサポート情報の追加
+            - name: ラボへのサポート情報の追加
               href: devtest-lab-internal-support-message.md
         - name: カスタム イメージまたは式の選択
           href: devtest-lab-comparing-vm-base-image-types.md

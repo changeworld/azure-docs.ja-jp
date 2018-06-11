@@ -10,6 +10,8 @@
       href: cache-web-app-howto.md
     - name: .NET アプリを作成する
       href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: .NET Core アプリを作成する
+      href: cache-dotnet-core-quickstart.md
     - name: Node.js アプリを作成する
       href: cache-nodejs-get-started.md
     - name: Java アプリを作成する
@@ -48,6 +50,8 @@
           href: cache-how-to-premium-vnet.md
         - name: クラスタリングによってキャッシュを分散する
           href: cache-how-to-premium-clustering.md
+        - name: Managed Cache Service から移行する
+          href: cache-migrate-to-redis.md
     - name: 自動化
       items:
         - name: Azure PowerShell でデプロイして管理する

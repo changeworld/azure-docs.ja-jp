@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: SSL の構成
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: ビジネス継続性
       items:
         - name: 概要
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: アプリケーション開発
           href: concepts-database-application-development.md
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーション
+          href: concepts-data-in-replication.md
 - name: ハウツー ガイド
   items:
     - name: サーバーの管理
@@ -141,18 +147,30 @@
       items:
         - name: メトリックに基づいたアラートの作成
           href: howto-alert-on-metric.md
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーションの構成
+          href: howto-data-in-replication.md
     - name: トラブルシューティング
       items:
         - name: クエリ パフォーマンスのトラブルシューティング
           href: howto-troubleshoot-query-performance.md
         - name: sys スキーマでビューを使用する方法
           href: howto-troubleshoot-sys-schema.md
+    - name: Virtual Network
+      items:
+        - name: Azure ポータル
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
 - name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
+    - name: データイン レプリケーションのストアド プロシージャ
+      href: reference-data-in-stored-procedures.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

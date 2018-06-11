@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: ExpressRoute のドキュメント
+metadata:
+  document_id: 
+  title: ExpressRoute
+  meta.description: Learn how to use ExpressRoute. Tutorials, REST APIs and other documentation show you how to configure and manage an ExpressRoute circuit.
+  author: cherylmc
+  manager: jeconnoc
+  ms.service: ExpressRoute
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/18/2018
+  ms.author: cherylmc
+  ms.openlocfilehash: d46854679e8f802e7c3d66daf5b48d2f38a2e0dc
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34648513"
+abstract:
+  description: ExpressRoute を使用して、オンプレミス インフラストラクチャや共用施設から Microsoft クラウド サービスへの高速なプライベート接続を設定する方法について説明します。 チュートリアルや REST API などのドキュメントは、ExpressRoute 回線の構成と管理に役立ちます。
+sections:
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: ExpressRoute 回線を構成して管理する方法について説明します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/expressroute/expressroute-howto-circuit-portal-resource-manager">ExpressRoute 回線の作成と変更</a>
+    - html: <a href="/azure/expressroute/expressroute-howto-routing-portal-resource-manager">ピアリング構成の作成と変更</a>
+    - html: <a href="/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager">ExpressRoute 回線への仮想ネットワークのリンク</a>
+    - html: <a href="/azure/expressroute/how-to-routefilter-portal">Microsoft ピアリングのルート フィルターを構成する</a>
+- title: 無料の Pluralsight ビデオ トレーニング
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Microsoft Azure ネットワークの実装
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Microsoft Azure ネットワーク ソリューションの計画と設計
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: コマンド ライン
+      html: <p><a href="/powershell/module/azurerm.network/#expressroute">PowerShell</a></p><p><a href="/cli/azure/network/express-route">Azure CLI</a></p>
+    - title: REST ()
+      html: <p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API リファレンスに関するページ</a></p><p><a href="https://msdn.microsoft.com/library/azure/dn606310">Classic REST API リファレンス</a></p>

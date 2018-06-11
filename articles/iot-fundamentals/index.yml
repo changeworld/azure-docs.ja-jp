@@ -4,20 +4,19 @@ title: Azure IoT の基礎
 metadata:
   title: Azure IoT の基礎
   description: Azure IoT は、何十億ものモノのインターネット (IoT) 資産を接続、監視、制御する一連のクラウド サービスであり、Microsoft によって管理されます。
-  services: iot
   author: BryanLa
   manager: timlt
-  ms.service: iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: iot-fundamentals
+  services: iot-fundamentals
   ms.topic: landing-page
-  ms.date: 04/20/2018
+  ms.date: 05/18/2018
   ms.author: bryanla
-  ms.openlocfilehash: 0a5f1d482b0298ddd65746783e3744728b1a5da5
-  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.openlocfilehash: 32db74234f05fcf76c8ccfe18ce295fd30a15b58
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/16/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34631158"
 abstract:
   description: Microsoft Azure とモノのインターネット (IoT) にようこそ Azure IoT は、Azure におけるエンドツーエンド IoT アプリケーションの作成を支援するよう設計された、包括的な一連のサービスとソリューションです。 完全にホストおよび管理されたサービスとしてのソフトウェア (SaaS) ソリューションから、別個の特殊なサービスとしてのプラットフォーム (PaaS) サービスやインテリジェント エッジを構築するテクノロジまで、Azure IoT には、お客様の業界のニーズ、会社のスキルとリソースに合った豊富なオプションとツールが揃っています。
 sections:
@@ -29,7 +28,7 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">新しい Azure IoT Central アプリケーションを作成する方法を学習する。</a>
-    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">リモート監視ソリューション アクセラレータをデプロイする方法を学習する。</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">リモート監視ソリューション アクセラレータをデプロイする方法を学習する。</a>
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">IoT ハブを作成し、最初のシミュレートされたデバイスを Azure に接続する方法を学習する (Node.js)。</a>
     - html: <a href="/azure/iot-edge/quickstart-linux">Windows、Linux、または Mac で初めての IoT Edge モジュールをデプロイし、シミュレートされたデバイスでデータを処理する。</a>
     - html: <a href="/azure/azure-maps/quick-demo-map-app">Azure Maps を使用して、マップ検索アプリを起動する。</a>

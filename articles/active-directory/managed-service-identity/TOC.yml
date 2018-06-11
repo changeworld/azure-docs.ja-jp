@@ -4,20 +4,22 @@
   items:
     - name: マネージド サービス ID について
       href: overview.md
-    - name: クイック スタート
+- name: クイック スタート
+  items:
+    - name: VM MSI を使用した Azure Resource Manager へのアクセス
       items:
-        - name: VM MSI を使用した Azure Resource Manager へのアクセス
-          items:
-            - name: Windows VM
-              href: tutorial-windows-vm-access-arm.md
-            - name: Linux VM
-              href: tutorial-linux-vm-access-arm.md
+        - name: Windows VM
+          href: tutorial-windows-vm-access-arm.md
+        - name: Linux VM
+          href: tutorial-linux-vm-access-arm.md
 - name: チュートリアル
   items:
     - name: Windows VM/VMSS
       items:
         - name: Azure Data Lake Store へのアクセス
           href: tutorial-windows-vm-access-datalake.md
+        - name: Azure Storage へのアクセス
+          href: tutorial-vm-windows-access-storage.md
         - name: アクセス キーを使用した Azure Storage へのアクセス
           href: tutorial-windows-vm-access-storage.md
         - name: SAS を使用した Azure Storage へのアクセス
@@ -34,6 +36,8 @@
       items:
         - name: Azure Data Lake Store へのアクセス
           href: tutorial-linux-vm-access-datalake.md
+        - name: Azure Storage へのアクセス
+          href: tutorial-linux-vm-access-storage.md
         - name: アクセス キーを使用した Azure Storage へのアクセス
           href: tutorial-linux-vm-access-storage-access-key.md
         - name: SAS を使用した Azure Storage へのアクセス
@@ -116,3 +120,7 @@
       href: known-issues.md
     - name: マネージド ID をサポートする Azure サービス
       href: services-support-msi.md
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-msi'
+    - name: AAD 開発者フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

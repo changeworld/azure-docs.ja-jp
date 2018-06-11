@@ -81,6 +81,8 @@
               href: n-series-driver-setup.md
         - name: ハイ パフォーマンス コンピューティング
           href: sizes-hpc.md
+        - name: 旧世代
+          href: sizes-previous-gen.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: ベンチマーク スコア
@@ -190,7 +192,12 @@
         - name: VM にタグを付ける
           href: tag.md
         - name: VM でのスクリプトの実行
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: カスタム スクリプト拡張機能
+              href: ../extensions/custom-script-windows.md
+            - name: 実行コマンド
+              href: run-command.md
         - name: 一時的なドライブ文字の変更
           href: change-drive-letter.md
         - name: 可用性セットの変更
@@ -329,41 +336,7 @@
         - name: DNS の解決
           href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: VM 拡張機能の使用
-      items:
-        - name: VM 拡張機能の概要
-          href: extensions-features.md
-        - name: カスタム スクリプト拡張機能
-          href: extensions-customscript.md
-        - name: OMS エージェント拡張機能
-          href: extensions-oms.md
-        - name: PowerShell DSC 拡張機能
-          href: extensions-dsc-overview.md
-          items:
-            - name: PowerShell DSC 拡張機能の資格情報の処理
-              href: extensions-dsc-credentials.md
-            - name: テンプレートを備えた VMSS と DSC
-              href: extensions-dsc-template.md
-        - name: Azure Log Collector 拡張機能
-          href: log-collector-extension.md
-        - name: Azure 診断拡張機能
-          href: extensions-diagnostics.md
-          items:
-            - name: 拡張機能のスキーマ
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
-            - name: PowerShell を使用した有効化
-              href: ps-extensions-diagnostics.md
-            - name: テンプレートを使用した有効化
-              href: extensions-diagnostics-template.md
-            - name: トラブルシューティング
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
-        - name: VM 拡張機能のエクスポート
-          href: extensions-export-templates.md
-        - name: 拡張機能のトラブルシューティングを行う
-          href: extensions-troubleshoot.md
-        - name: Network Watcher Agent
-          href: extensions-nwa.md
-        - name: 拡張機能のインストールの制限
-          href: ../extensions/extensions-rmpolicy-howto-ps.md
+      href: ../extensions/overview.md
     - name: VM の移行
       items:
         - name: AWS とオンプレミスの VM を移行する

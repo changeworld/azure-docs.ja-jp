@@ -47,6 +47,8 @@
               href: logic-apps-control-flow-loops.md
             - name: スコープ
               href: logic-apps-control-flow-run-steps-group-scopes.md
+        - name: 値を保存するための変数を作成する
+          href: logic-apps-create-variables-store-values.md
         - name: Azure Functions でカスタム コードを追加する
           href: logic-apps-azure-functions.md
         - name: Azure Functions でロジック アプリを呼び出す

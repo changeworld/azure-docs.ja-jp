@@ -11,21 +11,22 @@ metadata:
   ms.service: stream-analytics
   ms.topic: landing-page
   ms.date: 04/25/2018
-  ms.openlocfilehash: aad76cc87130e66908779c07b03d5db326f726ea
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.openlocfilehash: 67ed04486ef6ddd94d6783188f9b94c723506a7a
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/28/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34652816"
 abstract:
   description: 完全管理型のイベント処理エンジンである Stream Analytics を使用してクラウド内で IoT (モノのインターネット) 分析を実行する方法について説明します。 チュートリアルなどのドキュメントでは、アプリケーション、センサー、デバイス、ソーシャル メディアなどからリアルタイムでデータを分析する方法を紹介します。
   aside:
     image:
       alt: 
       height: 110
-      src: https://sec.ch9.ms/sessions/connect/T157.png
+      src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: Azure Stream Analytics による IoT Edge でのリアルタイム分析。 (8:51)
-    href: https://azure.microsoft.com/en-us/resources/videos/connect-2017-real-time-analytics-on-iot-edge-with-azure-stream-analytics/
+    title: Microsoft Azure での Streaming Analytics。 (8:48)
+    href: https://channel9.msdn.com/Events/Connect/2016/161
     width: 250
 sections:
 - title: 5 分間のクイック スタート

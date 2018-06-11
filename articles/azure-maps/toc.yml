@@ -30,12 +30,14 @@
       href: render-coverage.md
     - name: ルーティングの対象範囲
       href: routing-coverage.md
-    - name: 検索カテゴリ
-      href: search-categories.md
+    - name: サポートされている検索カテゴリ
+      href: supported-search-categories.md
     - name: サポートされている言語
       href: supported-languages.md
     - name: 消費モデル
       href: consumption-model.md
+    - name: GeoJSON の拡張
+      href: extend-geojson.md
 - name: ハウツー ガイド
   items:
     - name: Maps のアカウントを管理する
@@ -70,17 +72,33 @@
           href: map-show-traffic.md
         - name: マウス イベントと連動させる
           href: map-events.md
+        - name: アクセス可能なマップ アプリケーション
+          href: map-accessibility.md
 - name: リファレンス
   items:
-    - name: サービス API - REST
-      href: 'https://docs.microsoft.com/rest/api/maps/'
-    - name: マップ コントロール API - Javascript
-      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+    - name: REST ()
+      items:
+        - name: Render Service
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/renderservice'
+        - name: Route Service
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/routeservice'
+        - name: 検索サービス
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/searchservice'
+        - name: タイムゾーン サービス
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/timezoneservice'
+        - name: Traffic Service
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/trafficservice'
+        - name: Maps アカウント管理
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: マップ コントロール
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
 - name: 関連項目
   items:
     - name: 解決方法
       items:
-        - name: IoT Suite の構成済みソリューション
+        - name: IoT ソリューション アクセラレータ
           href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

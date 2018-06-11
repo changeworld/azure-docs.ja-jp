@@ -32,7 +32,7 @@
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: プロジェクトの計画
   href: team-data-science-process-project-templates.md
-- name: プロジェクトの実行
+- name: 開発
   items:
     - name: アジャイル開発
       href: agile-development.md
@@ -40,9 +40,15 @@
       href: collaborative-coding-with-git.md
     - name: データ サイエンス タスクの実行
       href: execute-data-science-tasks.md
+    - name: コード テスト
+      href: code-test.md
     - name: 進捗状況の追跡
       href: track-progress.md
-- name: 例
+- name: 運用化
+  items:
+    - name: DevOps - CI/CD
+      href: ci-cd-flask.md
+- name: 完成済みのサンプル
   href: walkthroughs.md
   items:
     - name: Azure Machine Learning
@@ -76,6 +82,10 @@
       href: walkthroughs-sql-server.md
     - name: SQL DW での T-SQL と Python の使用
       href: walkthroughs-sql-data-warehouse.md
+- name: ユーティリティとツール
+  items:
+    - name: データ探索とモデリングのユーティリティ (GitHub)
+      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
 - name: トレーニング
   items:
     - name: データ サイエンティスト向け
@@ -226,6 +236,8 @@
       href: deploy-models-in-production.md
 - name: 関連項目
   items:
+    - name: Azure Machine Learning - AML
+      href: 'https://docs.microsoft.com/en-us/azure/machine-learning/service/'
     - name: Microsoft Cognitive Toolkit - CNTK
       href: 'https://docs.microsoft.com/cognitive-toolkit/'
       maintainContext: true
@@ -263,20 +275,16 @@
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: リソース
   items:
-    - name: TDSP のツールとユーティリティ
-      items:
-        - name: GitHub からのダウンロード
-          href: 'https://github.com/Azure/Azure-TDSP-Utilities'
-        - name: TDSP のデータ サイエンス ユーティリティ v.0.11
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
-        - name: TDSP の最新のユーティリティ
-          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
     - name: ブログ
       items:
         - name: TDSP の最近の更新
           href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
         - name: Azure Machine Learning での TDSP の使用
           href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
+        - name: TDSP のデータ サイエンス ユーティリティ v.0.11
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
+        - name: TDSP の最新のユーティリティ
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
         - name: データ サイエンス プロジェクト計画のテンプレート
           href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
         - name: Cortana Intelligence と Machine Learning のブログ

@@ -1,4 +1,4 @@
-- name: Azure Kubernetes サービス (AKS)
+- name: Azure Kubernetes Service (AKS)
   href: ./index.yml
 - name: 概要
   items:
@@ -63,6 +63,8 @@
           href: internal-lb.md
         - name: イングレスと TLS
           href: ingress.md
+        - name: エグレス トラフィック
+          href: egress.md
         - name: HTTP アプリケーション ルーティング
           href: http-application-routing.md
     - name: セキュリティと認証

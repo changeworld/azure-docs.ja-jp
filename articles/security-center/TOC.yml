@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: アダプティブ アプリケーション制御
           href: security-center-adaptive-application.md
+        - name: ファイルの整合性の監視
+          href: security-center-file-integrity-monitoring.md
     - name: セキュリティ ソリューションの管理
       href: security-center-partner-integration.md
       items:
@@ -145,6 +147,8 @@
           href: security-center-threat-intel.md
         - name: 調査
           href: security-center-investigation.md
+        - name: 調査で得られたユーザー データの管理
+          href: security-center-investigation-user-data.md
     - name: セキュリティ ワークフローの自動化
       items:
         - name: Logic Apps のプレイブック
@@ -169,6 +173,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: リソース
   items:
+    - name: ユーザー データを管理する
+      href: security-center-privacy.md
     - name: FAQ
       href: security-center-faq.md
     - name: サポートされるプラットフォーム

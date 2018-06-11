@@ -129,6 +129,8 @@
           href: monitoring-rest-api-walkthrough.md
         - name: Azure PowerShell のサンプル
           href: insights-powershell-samples.md
+        - name: Azure CLI のサンプル
+          href: insights-cli-samples.md
     - name: Azure 診断拡張機能の使用
       items:
         - name: Azure Storage への送信

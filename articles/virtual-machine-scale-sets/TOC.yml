@@ -5,6 +5,7 @@
     - name: 仮想マシン スケール セットとは
       href: overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: Azure Portal で作成する
       href: quick-create-portal.md
@@ -64,6 +65,102 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+- name: 概念
+  items:
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+      maintainContext: true
+    - name: リージョンと可用性
+      href: ../virtual-machines/windows/regions-and-availability.md
+      maintainContext: true
+    - name: VM の種類とサイズ
+      href: ../virtual-machines/windows/sizes.md
+      maintainContext: true
+      items:
+        - name: 汎用
+          href: ../virtual-machines/windows/sizes-general.md
+          maintainContext: true
+          items:
+            - name: 負荷の急増に対応できる B シリーズ
+              href: ../virtual-machines/windows/b-series-burstable.md
+              maintainContext: true
+        - name: コンピューティング最適化
+          href: ../virtual-machines/windows/sizes-compute.md
+          maintainContext: true
+        - name: メモリ最適化
+          href: ../virtual-machines/windows/sizes-memory.md
+          maintainContext: true
+          items:
+            - name: 制約付き vCPU
+              href: ../virtual-machines/windows/constrained-vcpu.md
+              maintainContext: true
+        - name: ストレージ最適化
+          href: ../virtual-machines/windows/sizes-storage.md
+          maintainContext: true
+        - name: GPU 最適化
+          href: ../virtual-machines/windows/sizes-gpu.md
+          maintainContext: true
+          items:
+            - name: GPU ドライバーの設定
+              href: ../virtual-machines/windows/n-series-driver-setup.md
+              maintainContext: true
+        - name: ハイ パフォーマンス コンピューティング
+          href: ../virtual-machines/windows/sizes-hpc.md
+          maintainContext: true
+        - name: Azure コンピューティング ユニット (ACU)
+          href: ../virtual-machines/windows/acu.md
+          maintainContext: true
+        - name: ベンチマーク スコア
+          href: ../virtual-machines/windows/compute-benchmark-scores.md
+          maintainContext: true
+    - name: 動作保証済み Linux ディストリビューション
+      href: ../virtual-machines/linux/endorsed-distros.md
+      maintainContext: true
+    - name: メンテナンスと更新
+      href: ../virtual-machines/windows/maintenance-and-updates.md
+      maintainContext: true
+    - name: Disk Storage
+      href: ../virtual-machines/windows/about-disks-and-vhds.md
+      maintainContext: true
+      items:
+        - name: Managed Disks
+          href: ../virtual-machines/windows/managed-disks-overview.md
+          maintainContext: true
+        - name: Premium Storage
+          href: ../virtual-machines/windows/premium-storage.md
+          maintainContext: true
+        - name: Premium Storage のパフォーマンス
+          href: ../virtual-machines/windows/premium-storage-performance.md
+          maintainContext: true
+        - name: Standard Storage
+          href: ../virtual-machines/windows/standard-storage.md
+          maintainContext: true
+        - name: ディスクのスケーラビリティ ターゲット
+          href: ../virtual-machines/windows/disk-scalability-targets.md
+          maintainContext: true
+        - name: ディスクのバックアップとディザスター リカバリー
+          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          maintainContext: true
+    - name: ネットワーク
+      href: ../virtual-machines/windows/network-overview.md
+      maintainContext: true
+    - name: インフラストラクチャの自動化
+      href: ../virtual-machines/windows/infrastructure-automation.md
+      maintainContext: true
+    - name: セキュリティとポリシー
+      href: ../virtual-machines/windows/security-policy.md
+      maintainContext: true
+    - name: 監視
+      href: ../virtual-machines/windows/monitor.md
+      maintainContext: true
+    - name: ハイ パフォーマンス コンピューティング
+      href: ../virtual-machines/windows/high-performance-computing.md
+      maintainContext: true
+    - name: デプロイに関する考慮事項
+      items:
+        - name: vCPU のクォータ
+          href: ../virtual-machines/windows/quotas.md
+          maintainContext: true
 - name: 方法
   items:
     - name: 計画と設計
