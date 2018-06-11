@@ -159,14 +159,12 @@
       items:
         - name: Runbook ギャラリー
           href: automation-runbook-gallery.md
-        - name: アクティビティ ログによる Runbook の監視
-          href: automation-alert-activity-log.md
+        - name: メトリック アラートによる Runbook の監視
+          href: automation-alert-metric.md
         - name: Azure アラートから Runbook を開始する
           href: automation-create-alert-triggered-runbook.md
         - name: Amazon Web Service VM を作成する
           href: automation-scenario-aws-deployment.md
-        - name: Azure VM アラートを修復する
-          href: automation-azure-vm-alert-integration.md
         - name: 勤務時間外の VM の起動/停止
           href: automation-solution-vm-management.md
         - name: リソース グループを削除する
@@ -215,16 +213,12 @@
   items:
     - name: Automation の紹介ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
-    - name: Azure Automation トレーニング
-      href: 'https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382'
     - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: ラーニング パス
-      href: 'https://azure.microsoft.com/documentation/learning-paths/automation/'
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/automation/)'
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: リリース ノート
