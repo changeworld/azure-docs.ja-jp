@@ -47,7 +47,8 @@
 ### [Azure Portal](resource-group-portal.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
-### [プログラムによる EA サブスクリプションの作成](programmatically-create-subscription.md)
+### [EA サブスクリプションを作成する](programmatically-create-subscription.md)
+### [EA サブスクリプションを作成するためのアクセスを許可する](grant-access-to-create-subscription.md)
 ### [管理グループを作成する](management-groups-create.md)
 ### [管理グループを管理する](management-groups-manage.md)
 

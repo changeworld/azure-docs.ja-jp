@@ -11,6 +11,10 @@
       href: quickstart-cli.md
     - name: トレーニング ジョブの実行 - Python
       href: quickstart-python.md
+- name: ハウツー ガイド
+  items:
+    - name: 更新された API への移行
+      href: migrate-to-new-api.md
 - name: リファレンス
   items:
     - name: Azure CLI

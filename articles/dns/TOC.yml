@@ -40,6 +40,8 @@
       href: dns-alerts-metrics.md
     - name: 逆引き DNS
       href: dns-reverse-dns-overview.md
+    - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: 方法
   items:
     - name: カスタム DNS ゾーンとレコードを作成する - Azure CLI

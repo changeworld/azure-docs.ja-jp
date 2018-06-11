@@ -1,6 +1,6 @@
 ---
-title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
-description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。
+title: Visual Studio を使用した Azure 関数の開発 | Microsoft Docs
+description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure 関数を開発およびテストする方法を説明します。
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2018
+ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: dddb35ea2ba1c02f78234fe33cdb832e9aacbff5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a38729c266a4dd214c3de97c6b9d92df6ed2dd96
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735121"
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -31,7 +32,7 @@ Azure Functions Tools には、次のような利点があります。
 * コンパイル済み C# 関数を開発およびデプロイできます。 コンパイル済み関数では、C# スクリプト ベースの関数より優れたコールド スタート パフォーマンスが得られます。 
 * Visual Studio 開発のすべての利点を得ながら、C# で関数をコーディングできます。 
 
-このトピックでは、Azure Functions Tools for Visual Studio 2017 を使用して、C# で関数を開発する方法を示します。 .NET アセンブリとして Azure にプロジェクトを発行する方法についても説明します。
+この時事では、Azure Functions Tools for Visual Studio 2017 を使用して、C# で関数を開発する方法を示します。 .NET アセンブリとして Azure にプロジェクトを発行する方法についても説明します。
 
 > [!IMPORTANT]
 > 同じ関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
@@ -74,15 +75,15 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 4. 更新が完了したら、**[閉じる]** を選択して Visual Studio を再起動します。
 
-## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する 
+## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
 プロジェクト テンプレートでは、C# プロジェクトの作成、`Microsoft.NET.Sdk.Functions` NuGet パッケージのインストール、およびターゲット フレームワークの設定が行われます。 Functions 1.x の対象は .NET Framework で、Functions 2.x の対象は .NET Standard です。 新しいプロジェクトには次のファイルが含まれます。
 
 * **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
-    
-* **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、他の Azure サービスに対する接続文字列などの設定を指定します。 新しいキーを、プロジェクトの関数に必要な各接続の **Values** 配列に追加します。 詳細については、Azure Functions Core Tools トピックの[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記述を参照してください。
+
+* **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必な変数のアプリ設定を指定します。 プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
 
 詳細については、「[関数クラス ライブラリ プロジェクト](functions-dotnet-class-library.md#functions-class-library-project)」を参照してください。
 
@@ -92,13 +93,13 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 [!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
 
- ストレージ アカウントの接続文字列を設定するには、次のようにします。
+ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
-1. Visual Studio で **Cloud Explorer** を開き、**[ストレージ アカウント]** > **[Your Storage Account]\(ストレージ アカウント\)** を展開し、**[プロパティ]** を選択し、**[プライマリ接続文字列]** 値をコピーします。   
+1. Visual Studio で **Cloud Explorer** を開き、**[ストレージ アカウント]** > **[Your Storage Account]\(ストレージ アカウント\)** を展開し、**[プロパティ]** を選択し、**[プライマリ接続文字列]** 値をコピーします。
 
 2. プロジェクトで、local.settings.json ファイルを開き、コピーした接続文字列に **AzureWebJobsStorage** キーの値を設定します。
 
-3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。  
+3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。
 
 ## <a name="create-a-function"></a>関数を作成する
 
@@ -108,11 +109,11 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 2. トリガーを選択し、バインドのプロパティを設定して、**[作成]** をクリックします。 次の例は、Queue Storage によってトリガーされる関数を作成する場合の設定を示しています。 
 
-    ![](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
-    
-    このトリガーの例では、**QueueStorage** という名前のキーと共に接続文字列を使用します。 この接続文字列の設定は、local.settings.json ファイルで定義する必要があります。 
- 
-3. 新しく追加されたクラスを確認します。 **FunctionName** 属性に関連付けられている、静的な **Run** メソッドが表示されています。 この属性は、メソッドが関数のエントリ ポイントであることを示します。 
+    ![キューによってトリガーされる関数の作成](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
+
+    このトリガーの例では、**QueueStorage** という名前のキーと共に接続文字列を使用します。 この接続文字列の設定は、local.settings.json ファイルで定義する必要があります。
+
+3. 新しく追加されたクラスを確認します。 **FunctionName** 属性に関連付けられている、静的な **Run** メソッドが表示されています。 この属性は、メソッドが関数のエントリ ポイントであることを示します。
 
     たとえば、次の C# クラスは基本的な Queue Storage トリガー関数を表します。
 
@@ -120,25 +121,56 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
-    
+
     namespace FunctionApp1
     {
         public static class Function1
         {
-            [FunctionName("QueueTriggerCSharp")]        
+            [FunctionName("QueueTriggerCSharp")]
             public static void Run([QueueTrigger("myqueue-items", Connection = "QueueStorage")]string myQueueItem, TraceWriter log)
             {
                 log.Info($"C# Queue trigger function processed: {myQueueItem}");
             }
         }
-    } 
+    }
     ````
- 
     バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を意味します。 キュー名および接続文字列の設定名は、パラメーターとして **QueueTrigger** 属性に渡されます。
+    
+上記の手順を使用して、複数の関数を関数アプリ プロジェクトに追加できます。 プロジェクト内の各関数で異なるトリガーを使用できますが、1 つの関数には 1 つのトリガーのみを使用する必要があります。 詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
+
+## <a name="add-bindings"></a>バインドの追加
+
+トリガーと同じように、入力バインドと出力バインドも、バインド属性として関数に追加されます。 以下のように、関数にバインドを追加します。
+
+1. [プロジェクトをローカル開発用に構成](#configure-the-project-for-local-development)したことを確認します。
+
+2. 特定のバインディングに適した NuGet 拡張機能パッケージを追加します。 詳細については、「Azure Functions でのトリガーとバインドの概念」の記事の「[Visual Studio を使用したローカルでの C# 開発](functions-triggers-bindings.md#local-csharp)」を参照してください。 バインド固有の NuGet パッケージの要件については、バインドの参照記事で確認できます。 たとえば、Event Hubs トリガーのパッケージ要件については、[Event Hubs のバインドの参照記事](functions-bindings-event-hubs.md)を参照してください。
+
+3. バインドが必要なアプリ設定がある場合は、[ローカル ファイルの設定](functions-run-local.md#local-settings-file)の **Values** コレクションに追加します。 関数がローカルで実行される場合は、これらの値が使用されます。 関数が Azure の関数アプリ で実行される場合は、[関数アプリの設定](#function-app-settings)が使用されます。
+
+4. 適切なバインド属性をメソッド シグネチャに追加します。 次の例では、キュー メッセージによって関数がトリガーされ、出力バインドによって、同じテキストの新しいキュー メッセージが別のキューに作成されます。
+
+    ```csharp
+    public static class SimpleExampleWithOutput
+    {
+        [FunctionName("CopyQueueMessage")]
+        public static void Run(
+            [QueueTrigger("myqueue-items-source", Connection = "AzureWebJobsStorage")] string myQueueItem, 
+            [Queue("myqueue-items-destination", Connection = "AzureWebJobsStorage")] out string myQueueItemCopy,
+            TraceWriter log)
+        {
+            log.Info($"CopyQueueMessage function processed: {myQueueItem}");
+            myQueueItemCopy = myQueueItem;
+        }
+    }
+    ```
+Queue Storage への接続は、`AzureWebJobsStorage` 設定から取得されます。 詳しくは、特定のバインドの参照記事をご覧ください。 
+
+[!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
 ## <a name="testing-functions"></a>関数のテスト
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio から初めて関数を開始すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio から初めて関数を開始すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
 関数をテストするには、F5 キーを押します。 メッセージが表示されたら、Visual Studio からの要求に同意し、Azure Functions Core (CLI) ツールをダウンロードしてインストールします。 また、ツールで HTTP 要求を処理できるようにファイアウォールの例外を有効にすることが必要になる場合もあります。
 
@@ -152,9 +184,9 @@ Azure Functions Core Tools の使用の詳細については、「[Azure Functio
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Function App の設定   
+## <a name="function-app-settings"></a>Function App の設定
 
-Local.settings.json で追加したすべての設定は、Azure の関数アプリにも追加する必要があります。 プロジェクトを発行するとき、これらの設定は自動的にアップロードされません。 
+Local.settings.json で追加したすべての設定は、Azure の関数アプリにも追加する必要があります。 プロジェクトを発行するとき、これらの設定は自動的にアップロードされません。
 
 Azure の関数アプリに必要な設定をアップロードする最も簡単な方法として、プロジェクトが正常に発行された後に表示される **[アプリケーション設定の管理]** リンクを使用できます。 
 
@@ -176,4 +208,4 @@ Azure Functions Tools の詳細については、[Visual Studio 2017 Tools for A
 
 Azure Functions Core Tools の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
-.NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)」を参照してください。 このトピックは、Azure Functions でサポートされる各種バインディングを宣言するための属性の使用例にもリンクしています。    
+.NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)」を参照してください。 この記事は、Azure Functions でサポートされる各種バインドを宣言するための属性の使用例にもリンクしています。    

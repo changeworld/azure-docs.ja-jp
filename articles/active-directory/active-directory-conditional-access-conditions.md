@@ -9,19 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770623"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735143"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの条件 
 
@@ -44,7 +45,7 @@ ms.locfileid: "32770623"
 
 この記事では、条件の概要と、条件付きアクセス ポリシーでの使用方法について説明します。 
 
-## <a name="users-and-groups"></a>[概要]
+## <a name="users-and-groups"></a>ユーザーとグループ
 
 ユーザーとグループの条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、**[すべてのユーザー]** を選択するか、特定のユーザーとグループを選択することができます。
 
@@ -149,7 +150,7 @@ ms.locfileid: "32770623"
 - Web サイトと Web サービス
 - モバイル アプリとデスクトップ アプリ 
 
-![条件](./media/active-directory-conditional-access-conditions/04.png)
+
 
 アプリケーションは、次のように分類されます。
 
@@ -157,7 +158,7 @@ ms.locfileid: "32770623"
 
 - モバイル アプリまたはデスクトップ アプリ: ネイティブ クライアントに対してモバイル アプリ向けの OpenID Connect を使用する場合。
 
-条件付きアクセス ポリシーで使用できるクライアント アプリの一覧については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](active-directory-conditional-access-technical-reference.md#client-apps-condition)」をご覧ください。
+条件付きアクセス ポリシーで使用できるクライアント アプリの完全な一覧については、「Azure Active Directory の条件付きアクセス設定に関するリファレンス」の「[クライアント アプリの条件](active-directory-conditional-access-technical-reference.md#client-apps-condition)」をご覧ください。
 
 この条件の一般的なユース ケースには、次のようなものがあります。
 
@@ -167,6 +168,20 @@ ms.locfileid: "32770623"
 
 Web SSO や最新の認証プロトコルを使用できるだけでなく、ほとんどのスマートフォン上のネイティブ メール アプリなど、Exchange ActiveSync を使用するメール アプリケーションにこの条件を適用できます。 現時点では、従来のプロトコルを使用するクライアント アプリでは、Active Directory フェデレーション サービス (AD FS) を使用してセキュリティ保護する必要があります。
 
+この条件は、選択しているクラウド アプリが **Office 365 Exchange Online** の場合にのみ選択できます。
+
+![クラウド アプリ](./media/active-directory-conditional-access-conditions/32.png)
+
+クライアント アプリの条件としての **Exchange ActiveSync** の選択は、構成するポリシー内にそれ以外の条件がない場合にのみサポートされます。 ただし、この条件の範囲を絞り込んで、サポートされるプラットフォームのみに適用できます。
+
+ 
+![サポートされるプラットフォーム](./media/active-directory-conditional-access-conditions/33.png)
+
+この条件をサポートされるプラットフォームのみに適用することは、[デバイス プラットフォームの条件](active-directory-conditional-access-conditions.md#device-platforms)のすべてのデバイス プラットフォームに相当します。
+
+![サポートされるプラットフォーム](./media/active-directory-conditional-access-conditions/34.png)
+
+
  詳細については、次を参照してください。
 
 - [SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する](active-directory-conditional-access-no-modern-authentication.md)
@@ -174,9 +189,53 @@ Web SSO や最新の認証プロトコルを使用できるだけでなく、ほ
 - [Azure Active Directory のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md) 
 
 
+### <a name="legacy-authentication"></a>レガシ認証  
+
+条件付きアクセスは、先進認証をサポートしていない古い Office クライアントだけでなく、POP、IMAP、SMTP などのメール プロトコルを使用するクライアントにも適用されるようになりました。これにより、**その他のクライアントからのアクセスのブロック**などのポリシーを構成できます。
+
+
+![レガシ認証](./media/active-directory-conditional-access-conditions/160.png)
+ 
 
 
 
+#### <a name="known-issues"></a>既知の問題
+
+- **その他のクライアント**を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 これは、古いクライアントでは予期しない方法で認証が行われるためです。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。 
+
+- ポリシーが有効になるまで、最大で 24 時間かかる可能性があります。 
+
+
+#### <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+**Exchange Web Services (EWS) はブロックされますか?**
+
+EWS が使用している認証プロトコルによります。 EWS アプリケーションが先進認証を使用している場合は、"モバイル アプリとデスクトップ クライアント" クライアント アプリによって対応されます。 EWS アプリケーションが基本認証を使用している場合は、"その他のクライアント" クライアント アプリによって対応されます。
+
+
+**その他のクライアントに対して、どのようなコントロールを使用できますか?**
+
+任意のコントロールを "その他のクライアント" に構成できます。 ただし、どの場合でも、エンド ユーザー エクスペリエンスのアクセスはブロックされます。 "その他のクライアント" では、MFA、対応デバイス、ドメインへの参加などのコントロールはサポートされません。 
+ 
+**その他のクライアントに対して、どのような条件を使用できますか?**
+
+任意の条件を "その他のクライアント" に構成できます。
+
+**Exchange ActiveSync はすべての条件とコントロールをサポートしますか?**
+
+いいえ。 Exchange ActiveSync (EAS) のサポートの概要を次に示します。
+
+- EAS は、ユーザーとグループのターゲット設定のみをサポートされます。 ゲストとロールはサポートされません。 ゲスト/ロールの条件が構成された場合、ポリシーをユーザーに適用する必要があるかどうかを判別できないため、すべてのユーザーがブロックされます。
+
+- EAS は、クラウド アプリとして Exchange でのみ機能します。 
+
+- EAS では、クライアント アプリ自体を除く条件をサポートしません。
+
+- EAS では、任意のコントロールを構成できます (デバイス対応以外はすべてブロックされます)。
+
+**今後、ポリシーは、すべてのクライアント アプリに既定で適用されますか?**
+
+いいえ。 ポリシーの既定の動作に変更はありません。 ポリシーは、引き続き、ブラウザーとモバイル アプリケーション/デスクトップ クライアントに既定で適用されます。
 
 
 

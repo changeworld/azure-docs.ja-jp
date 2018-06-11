@@ -125,7 +125,7 @@
 #### [Notifications](active-directory-reporting-notifications.md)
 #### [監査アクティビティのリファレンス](active-directory-reporting-activity-audit-reference.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
-#### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md
+#### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
 
@@ -326,6 +326,7 @@
 #### [条件](active-directory-conditional-access-conditions.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
+#### [ベースラインの保護](active-directory-conditional-access-baseline-protection.md)
 #### [はじめに](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)

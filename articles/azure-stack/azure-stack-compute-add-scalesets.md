@@ -1,20 +1,21 @@
 ---
 title: 仮想マシン スケール セットを Azure Stack で使用できるようにする | Microsoft Docs
-description: クラウド オペレーターが Azure Stack Marketplace に仮想マシン スケールを追加する方法
+description: クラウド オペレーターが Azure Stack Marketplace に仮想マシン スケール セットを追加する方法
 services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34800642"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
@@ -28,52 +29,27 @@ Azure Stack の仮想マシン スケール セットは、Azure の仮想マシ
 * [Mark Russinovich が語る Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [Virtual Machine Scale Sets を Guy Bowerman が解説](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-Azure Stack では、仮想マシン スケール セットは自動スケールをサポートしていません。 Azure Stack ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにインスタンスを追加できます。
+Azure Stack では、仮想マシン スケール セットは自動スケールをサポートしていません。 Resource Manager テンプレート、CLI、または PowerShell を使用して、スケール セットに複数のインスタンスを追加できます。
 
 ## <a name="prerequisites"></a>前提条件
-* **Powershell とツール**
 
-   Azure Stack の PowerShell と Azure Stack ツールをインストールして構成します。 「[Get up and running with PowerShell in Azure Stack (Azure Stack での PowerShell の稼働)](azure-stack-powershell-configure-quickstart.md)」をご覧ください。
+- **Marketplace シンジケーション**  
+    Marketplace シンジケーションを有効にするには、Azure Stack をグローバル Azure に登録します。 [Azure Stack の Azure への登録](azure-stack-registration.md)に関する記事の手順に従います。
+- **オペレーティング システム イメージ**  
+    Azure Stack Marketplace にオペレーティング システム イメージを追加していない場合は、[Azure からの Azure Stack マーケットプレース項目の追加](asdk/asdk-marketplace-item.md)に関する記事をご覧ください。
 
-   Azure Stack ツールをインストールしたら、次の PowerShell モジュールをインポートします (AzureStack-Tools-master フォルダーの .\ComputeAdmin フォルダーからの相対パス)。
-  ````PowerShell
-        Import-Module .\AzureStack.ComputeAdmin.psm1
-  ````
+## <a name="add-the-virtual-machine-scale-set"></a>仮想マシン スケール セットを追加する
 
-* **オペレーティング システム イメージ**
+1. Azure Stack Marketplace を開き、Azure に接続します。 **[Marketplace Management]**> **[+ Azure から追加]** を選択します。
 
-   Azure Stack Marketplace にオペレーティング システム イメージを追加していない場合は、「[Add the Windows Server 2016 VM image to the Azure Stack marketplace (Azure Stack Marketplace に Windows Server 2016 の VM イメージを追加する)](azure-stack-add-default-image.md)」をご覧ください。
+    ![Marketplace Management](media/azure-stack-compute-add-scalesets/image01.png)
 
-   Linux のサポートでは、Ubuntu Server 16.04 をダウンロードし、```Add-AzsPlatformImage``` とパラメーター ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"``` を使用して追加します。
+2. 仮想マシン スケール セット マーケットプレース項目を追加してダウンロードします。
 
+    ![仮想マシン スケール セット](media/azure-stack-compute-add-scalesets/image02.png)
 
-## <a name="add-the-virtual-machine-scale-set"></a>仮想マシン スケール セットの追加
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セット内のイメージを更新する
 
-お使いの環境に合わせて次の PowerShell スクリプトを編集し、スクリプトを実行して Azure Stack Marketplace に仮想マシン スケール セットを追加します。 
-
-``$User`` は、管理者ポータルへの接続に使用するアカウントです。 たとえば、「serviceadmin@contoso.onmicrosoft.com」のように入力します。
-
-````PowerShell  
-$Arm = "https://adminmanagement.local.azurestack.external"
-$Location = "local"
-
-Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint $Arm
-
-$Password = ConvertTo-SecureString -AsPlainText -Force "<your Azure Stack administrator password>"
-
-$User = "<your Azure Stack service administrator user name>"
-
-$Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
-
-$AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
-$AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-
-Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
-
-Add-AzsVMSSGalleryItem -Location $Location
-````
-
-## <a name="update-images-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットのイメージを更新する 
 仮想マシン スケール セットを作成すると、スケール セットを再作成することなく、スケール セット内のイメージを更新できます。 イメージを更新するプロセスは、次のようにシナリオによって変わります。
 
 1. 仮想マシン スケール セット デプロイ テンプレートの *version* には **latest を指定**します。  
@@ -102,17 +78,17 @@ Add-AzsVMSSGalleryItem -Location $Location
 
 2. 仮想マシン スケール セット デプロイ テンプレートで *version* に **latest を指定せず**、代わりにバージョン番号を指定します。  
 
-     (使用可能なバージョンを変更する) 新しいバージョンを含むイメージをダウンロードした場合、スケール セットはスケールアップできません。 スケール セット テンプレートに指定されたイメージのバージョンを使用できる必要があるため、これは仕様です。  
+    (使用可能なバージョンを変更する) 新しいバージョンを含むイメージをダウンロードした場合、スケール セットはスケールアップできません。 スケール セット テンプレートに指定されたイメージのバージョンを使用できる必要があるため、これは仕様です。  
 
 詳細は、[オペレーティング システムのディスクとイメージ](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images)に関するページを参照してください。  
 
 
-## <a name="remove-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの削除
+## <a name="remove-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを削除する
 
 仮想マシン スケール セットのギャラリー アイテムを削除するには、次の PowerShell コマンドを実行します。
 
 ```PowerShell  
-    Remove-AzsVMSSGalleryItem
+    Remove-AzsGalleryItem
 ````
 
 > [!NOTE]

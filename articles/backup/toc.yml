@@ -63,8 +63,6 @@
           items:
             - name: Azure Portal での Azure Backup Server ワークロードの準備
               href: backup-azure-microsoft-azure-backup.md
-            - name: Azure Stack への Azure Backup Server のインストール
-              href: backup-mabs-install-azure-stack.md
             - name: Azure Backup Server へのストレージの追加
               href: backup-mabs-add-storage.md
             - name: Azure Backup Server の v.2 へのアップグレード
@@ -83,10 +81,18 @@
               href: backup-azure-sql-mabs.md
             - name: システムの状態とベア メタル回復の保護
               href: backup-mabs-system-state-and-bmr.md
-            - name: Azure Stack 上のファイルとアプリケーション
-              href: backup-mabs-files-applications-azure-stack.md
         - name: Azure Backup Server からデータを回復する
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure Stack の Azure Backup Server
+      items:
+        - name: Azure Backup Server のインストール
+          href: backup-mabs-install-azure-stack.md
+        - name: ファイルとアプリケーションの保護
+          href: backup-mabs-files-applications-azure-stack.md
+        - name: SharePoint ファームの保護
+          href: backup-mabs-sharepoint-azure-stack.md
+        - name: SQL Server データベースの保護
+          href: backup-mabs-sql-azure-stack.md
     - name: Azure ファイル共有
       items:
         - name: Azure ファイル共有のバックアップ

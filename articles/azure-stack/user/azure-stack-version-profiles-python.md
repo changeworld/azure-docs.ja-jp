@@ -10,20 +10,53 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: a4fe62ba8c0732745326831b977e8975e1210436
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310299"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34806838"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack での Python による API バージョンのプロファイルの使用
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+## <a name="python-and-api-version-profiles"></a>Python と API バージョン プロファイル
+
+Python SDK では、Azure Stack とグローバル Azure などの異なるクラウド プラットフォームをターゲットとする API バージョン プロファイルをサポートします。 ハイブリッド クラウド向けのソリューションの作成時に API プロファイルを使用できます。 Python SDK では、以下の API プロファイルをサポートします。
+
+1. **latest**  
+    プロファイルは、Azure Platform 内のすべてのサービス プロバイダーの最新の API バージョンをターゲットにします。
+2.  **2017-03-09-profile**  
+    **2017-03-09-profile**  
+    このプロファイルは、Azure Stack がサポートするリソース プロバイダーの API バージョンをターゲットにします。
+
+    API プロファイルと Azure Stack の詳細については、「[Azure Stack での API バージョンのプロファイルの管理](azure-stack-version-profiles.md)」を参照してください。
+
+## <a name="install-azure-python-sdk"></a>Azure Python SDK をインストールする
+
+1.  Git を[公式サイト](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)からインストールします。
+2.  Python SDK インストール手順については、[Python 開発者向け Azure](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python)に関する記事を参照してください。
+3.  使用できない場合は、サブスクリプションを作成し、サブスクリプション ID を保存して後で使用します。 サブスクリプションの作成手順については、「[Azure Stack でオファーのサブスクリプションを作成する](../azure-stack-subscribe-plan-provision-vm.md)」をご覧ください。 
+4.  サービス プリンシパルを作成し、その ID とシークレットを保存します。 Azure Stack 用のサービス プリンシパルの作成手順については、「[Azure Stack へのアクセスをアプリケーションに提供する](../azure-stack-create-service-principals.md)」を参照してください。 
+5.  サブスクリプションでサービス プリンシパルのロールが共同作成者/所有者であることを確認します。 サービス プリンシパルへのロールの割り当て手順については、「[Azure Stack へのアクセスをアプリケーションに提供する](../azure-stack-create-service-principals.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+Azure Stack で Python Azure SDK を使用するには、次の値を指定した後、環境変数に値を設定する必要があります。 環境変数を設定する方法については、表の後にある、オペレーティング システム別の手順を参照してください。 
+
+| 値 | 環境変数 | 説明 |
+|---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
+| テナント ID | AZURE_TENANT_ID | Azure Stack の[テナント ID](../azure-stack-identity-overview.md) の値。 |
+| クライアント ID | AZURE_CLIENT_ID | このドキュメントの前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリケーション ID。 |
+| サブスクリプション ID | AZURE_SUBSCRIPTION_ID | [サブスクリプション ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
+| クライアント シークレット | AZURE_CLIENT_SECRET | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット 。 |
+| Resource Manager エンドポイント | ARM_ENDPOINT | 「[Azure Stack Resource Manager エンドポイント](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)」をご覧ください。 |
+
 
 ## <a name="python-samples-for-azure-stack"></a>Azure Stack 向けの Python 例 
 
@@ -84,11 +117,9 @@ GitHub レポジトリ [virtual-machines-python-manage](https://github.com/viana
     pip install -r requirements.txt
     ````
 
-5.  Azure Stack と連携させる[サービス プリンシパル](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals)を作成します｡ サブスクリプションでサービスプリンシパルのロールが[共同作成者/所有者](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)であることを確認します｡
+5.  Azure Stack と連携させる[サービス プリンシパル](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)を作成します｡ サブスクリプションでサービスプリンシパルのロールが[共同作成者/所有者](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)であることを確認します｡
 
 6.  次の環境変数を設定して､現在のシェルにエクスポートします｡ 
-
-`Note: provide an explanation of where these variables come from?`
 
     ````bash
     export AZURE_TENANT_ID={your tenant id}
@@ -98,30 +129,32 @@ GitHub レポジトリ [virtual-machines-python-manage](https://github.com/viana
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  このサンプルを実行するには､Azure Stack マーケット プレイスに Ubuntu 16.04-LTS と WindowsServer 2012-R2-Datacenter イメージが存在している必要があります｡ これらは [Azure からダウンロード](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-download-azure-marketplace-item)することも､あるいは [プラットフォーム イメージ リポジトリに追加](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-add-vm-image)することもできます｡
+7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
-
-8. サンプルを実行します。
+8. Run the sample.
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## <a name="notes"></a>メモ
+## Notes
 
-`virtual_machine.storage_profile.os_disk` を使用して仮想マシンの OS ディスクを取得することができます｡
-その場合､望んでいることを行えるかもしれませんが､`OSDisk` オブジェクトが提供されることに注意してください｡
-OS ディスクのサイズを更新する場合､必要になるのは､`example.py` のとき同様 `OSDisk` オブジェクトではなく､`Disk` オブジェクトです｡
-`example.py` は以下を使用して `Disk` オブジェクトを取得します｡
+You may be tempted to try to retrieve a VM's OS disk by using
+`virtual_machine.storage_profile.os_disk`.
+In some cases, this may do what you want,
+but be aware that it gives you an `OSDisk` object.
+In order to update the OS Disk's size, as `example.py` does,
+you need not an `OSDisk` object but a `Disk` object.
+`example.py` gets the `Disk` object with the following:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## <a name="next-steps"></a>次の手順
+## Next steps
 
-- [Azure Python 開発センター](https://azure.microsoft.com/develop/python/)
-- [Azure Virtual Machines 関係のドキュメント](https://azure.microsoft.com/services/virtual-machines/)
-- [Virtual Machines のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- Microsoft Azure のサブスクリプションをお持ちでない場合は､[ここe](http://go.microsoft.com/fwlink/?LinkId=330212) から無料の試用アカウントを入手できます｡
+- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
+- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
+- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).

@@ -5,21 +5,17 @@ keywords: データベース質問, よく寄せられる質問, documentdb, azu
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771237"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735166"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -62,6 +58,9 @@ Azure Cosmos DB でコンテナーが格納できるデータの合計量に制�
 
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Azure Cosmos DB のスループットの制限を教えてください。
 Azure Cosmos DB でコンテナーがサポートできるスループットの総量に制限はありません。 基本的な考え方は、十分な数のパーティション キーにワークロードをほぼ均等に分散させることです。
+
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>ダイレクトとゲートウェイの接続モードは暗号化されますか? 
+はい、どちらのモードも常に完全に暗号化されます。 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB の料金はいくらですか?
 詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 この場合の "*コンテナー*" とは、SQL API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
@@ -165,6 +164,10 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 * データ移行ツール。[Azure Cosmos DB 用のデータベース移行ツール](import-data.md)に関する記事で説明されています。
 * ストアド プロシージャ。[Azure Cosmos DB のサーバー側 JavaScript プログラミング](programming.md)に関する記事で説明されています。
 
+### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>非同期インデックスを使用するようにコレクションを設定しましたが、クエリで期待される結果が返りません。 
+インデックス作成セクションに説明されているように、非同期インデックスではこのような結果になる可能性があります。 常にすべてのアプリケーションで同期インデックスを使用する必要があります。 
+
+
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>SQL API はリソース リンク キャッシュをサポートしていますか?
 はい。Azure Cosmos DB は RESTful サービスであるため、リソース リンクは不変であり、キャッシュできます。 SQL API クライアントは、ドキュメントやコレクションなどのリソースに対する読み取りに "If-None-Match" ヘッダーを指定し、サーバー バージョンが変更されたらローカル コピーを更新できます。
 
@@ -172,7 +175,12 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 はい。 [Azure Cosmos DB Emulator](local-emulator.md) には、Cosmos DB サービスの高忠実度エミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure Cosmos DB と同じ機能がサポートされています。 Azure Cosmos DB Emulator を使用してアプリケーションの開発とテストを行い、Azure Cosmos DB の接続エンドポイントの構成を 1 つ変更するだけで、世界規模で Azure にデプロイできます。
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>ポータルのデータ エクスプローラーから表示したとき、ドキュメント内の長い浮動小数点値が丸められるのはなぜですか? 
-これは、JavaScript の制限です。 JavaScript は IEEE 754 で指定されている倍精度浮動小数点形式の値を使用しており、安全に表現できるのは -(253 - 1) から 253 – 1 (つまり 9007199254740991) の範囲の値だけです。
+これは、JavaScript の制限です。 JavaScript は IEEE 754 で指定されている倍精度浮動小数点形式の値を使用しており、安全に表現できるのは -(253 - 1) ～ 253 - 1 (つまり 9007199254740991) の範囲の値だけです。
+
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>アクセス許可はオブジェクト階層のどこで許可されますか?
+
+ResourceTokens の使用によるアクセス許可の作成は、コレクション レベルとその子孫 (ドキュメントや添付ファイルなど) で許可されます。 これは、データベースまたはアカウント レベルでのアクセス許可の作成は、現時点では許可されないことを示唆しています。
+
 
 ## <a name="develop-against-the-api-for-mongodb"></a>MongoDB 用 API に対する開発
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API とは何ですか?
@@ -189,7 +197,7 @@ Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用さ�
 MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、独自のエラー コードがあります。
 
 
-| エラー               | コード  | [説明]  | 解決策  |
+| エラー               | コード  | 説明  | 解決策  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済み要求ユニット レートを超えたため調整されました。 | Azure Portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングするか、再試行することを検討してください。 |
 | ExceededMemoryLimit | 16501 | マルチ テナント サービスとして、操作がクライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
@@ -233,8 +241,8 @@ Azure Cosmos DB は Shared Access Signature (SAS) をサポートしています
 
 | クラス | サポートされていないメソッド |
 |-------|-------- |
-| CloudTableClient | \*ServiceProperties\* |
-|                  | \*ServiceStats\* |
+| CloudTableClient | \*ServiceProperties* |
+|                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
 | TableServiceContext | * (このクラスは実際には非推奨です) |
@@ -258,7 +266,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
 ```
 接続文字列は、Azure Portal の [接続文字列] ページから取得できます。 
 
-### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Table API の .NET SDK で、要求オプションの構成設定を上書きするにはどうすればよいですか?
+### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Table API の .NET SDK で、要求オプションの構成設定をオーバーライドするにはどうすればよいですか?
 構成設定については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。 一部の設定は CreateCloudTableClient メソッドで処理され、他の設定はクライアント アプリケーションの appSettings セクションの app.config で処理されます。
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>既存の Azure Table Storage SDK を使っている顧客に関する変更はありますか?
@@ -393,7 +401,7 @@ Table API は Azure Table Storage と同じクエリ機能を提供します。 
 はい。スループットのスケーリングは、Azure Cosmos DB ポータルのスケール ウィンドウを使用して実行できます。 詳細については、[スループットの設定](set-throughput.md)に関する記事をご覧ください。
 
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>新しくプロビジョニングされたテーブルには、既定の TableThroughput が設定されるのですか?
-はい。app.config で TableThroughput を上書きしておらず、Azure Cosmos DB であらかじめ作成されているコンテナーを使用していない場合、スループットが 400 に設定されたテーブルが作成されます。
+はい。app.config で TableThroughput をオーバーライドしておらず、Azure Cosmos DB であらかじめ作成されているコンテナーを使用していない場合、スループットが 400 に設定されたテーブルが作成されます。
  
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Azure Table Storage サービスの既存の顧客を対象とする価格の変更はありますか?
 なし。 Azure Table Storage の既存のお客様を対象とする価格の変更はありません。 

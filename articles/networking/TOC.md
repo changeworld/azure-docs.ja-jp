@@ -8,6 +8,7 @@
 ### [ネットワーク セキュリティのベスト プラクティス](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [可用性の高いネットワーク仮想アプライアンス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [負荷分散方法の組み合わせ](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Azure DNS と Traffic Manager を使用したディザスター リカバリー](disaster-recovery-dns-traffic-manager.md)
 ## 計画と設計
 ### [仮想ネットワーク](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [クロスプレミス接続 - VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
