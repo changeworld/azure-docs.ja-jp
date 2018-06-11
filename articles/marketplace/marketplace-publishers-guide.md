@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 30847ff20abf6654e58a0e72a12f04dcd88d5871
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: f84be4ec4d42b77e93cf0855d7fe4740256ed199
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011113"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34715362"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド
 
@@ -96,11 +96,11 @@ Microsoft が提供する 2 つの異なる Marketplace ネットショップ [A
 
 以下の手順に従って、クラウド マーケットプレース上でパブリッシャーとして登録します。 Microsoft との既存のエンゲージメントと選択された登録リストの種類によっては、省略できる手順もあります。 
 
-|Marketplace の登録手順  |Time  |[説明]  |
+|Marketplace の登録手順  |Time  |説明  |
 |---------|---------|---------|
 | 1.Microoft Partner Network に登録する | 15 分 | Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、Azure Marketplace パブリッシャーになるための追加の利点とサポートを受けます。 MPN に登録するには、Microsoft Partner Network にアクセスして、"登録" をクリックします。 該当する場合、登録中に組織の既存のメンバーシップに参加できるようになります。 登録したら、組織の MPN ID を書き留めます。これは、Cloud パートナー ポータルでパブリッシャー プロファイルをアクティブにする (手順 3) ために必要です。      |
 |2.Microsoft ID を作成する     |   約 15 分      |  この Microsoft ID を使って、Cloud パートナー ポータルにアクセスします。 このメール アドレスは、Microsoft ID として登録されている必要があり、Cloud パートナー ポータル (手順 3) と Microsoft デベロッパー センター (手順 4) の両方で使われます。 選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。 ID 作成の前に行う作業のガイドラインについては、「ガイドラインと方法」のセクションをご覧ください。 |
-|手順 3.Marketplace 申請フォームを送信する     |  1 ～ 3 日       | 組織をノミネートして、Microsoft クラウド マーケットプレース パブリッシャーとして登録します。 フォームには、組織に関する情報、公開する最初のアプリケーションまたはサービス オファリングに関する情報、提供されるサポートのレベルが含まれます。 <ul><li>[Azure Marketplace 申請フォーム](http://aka.ms/listonazuremarketplace)</li><li>[AppSource 申請フォーム](http://aka.ms/listonappsource)</li></ul> フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、承認済みパートナーになって、Cloud パートナー ポータルにアクセスするための次の手順を記載した通知をメールで受け取ります。ここでは、最初のオファーの登録リストを入力し、追加のオファーを作成できます。 承認されると、お客様にご利用コードが送信されます。このコードを使用すると、Microsoft デベロッパー センターの登録料金が免除されます (手順 4)。 |
+|手順 3.Marketplace 申請フォームを送信する     |  1 ～ 3 日       | 組織をノミネートして、Microsoft クラウド マーケットプレース パブリッシャーとして登録します。 フォームには、組織に関する情報、公開する最初のアプリケーションまたはサービス オファリングに関する情報、提供されるサポートのレベルが含まれます。 <ul><li>[Azure Marketplace 申請フォーム](https://azuremarketplace.microsoft.com/sell/signup)</li><li>[AppSource 申請フォーム](http://aka.ms/listonappsource)</li></ul> フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、承認済みパートナーになって、Cloud パートナー ポータルにアクセスするための次の手順を記載した通知をメールで受け取ります。ここでは、最初のオファーの登録リストを入力し、追加のオファーを作成できます。 承認されると、お客様にご利用コードが送信されます。このコードを使用すると、Microsoft デベロッパー センターの登録料金が免除されます (手順 4)。 |
 |4.デベロッパー センターに登録する     |    5 ～ 10 日     | マーケットプレースでの仮想マシン、ソリューション テンプレート、および Azure Managed Apps などのトランザクション機能を備えたアプリケーションの公開には、Microsoft デベロッパー センターが必要です。 この要件によって、会社の法律、税、および銀行取引のエンティティについて、Microsoft でパブリッシャーの会社情報を検証できるようになります。 登録者は、合法的な組織の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 登録時には、会社用に共有されている Microsoft ID (手順 2) を使う必要があり、Cloud パートナー ポータルでも同じアカウントを使う必要があります。 <ul>Marketplace 申請フォームに入力しない場合、99 ドルの登録料金の支払いを求められる点に注意してください。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出すると、メールでプロモーション コードを受け取ります。 重要: Microsoft デベロッパー センターのアカウント作成を試行する前に、会社がアカウントを既に所有していないことを確認してください。 このプロセスの詳細な手順については、「デベロッパー センターに登録する方法の説明」をご覧ください。</ul>   |
 |5.クラウド パートナー ポータルにサインインする     |  約 15 分       |  申請承認通知を受け取り、[Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) と [Microsoft デベロッパー センター](https://dev.windows.com/) で登録した後は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にアクセスするためのアカウントが自動的に作成されます。 初回サインイン用の資格情報は、申請承認のメールに含まれます。 Cloud パートナー ポータルの使い方について詳しくは、ポータル内の [[学習]](https://cloudpartner.azure.com/#Learn) メニューに移動して、[ドキュメント] セクションを確認してください。    |
 
@@ -121,13 +121,13 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 
 **Azure Marketplace の一般的な問い合わせ**
 
-|サポート窓口 |[説明] |
+|サポート窓口 |説明 |
 |---------|---------|
 |電子メール: cloudmarketplace@microsoft.com     |  オンボーディング サポート配布リスト。 オンボーディングの要求、探索セッションの設定、およびパートナーとのアーキテクチャ デザイン セッションに使われます。        |
 
 **Azure Marketplace の公開サポート:**
 
-|サポート窓口  |[説明]  |
+|サポート窓口  |説明  |
 |---------|---------|
 |電子メール: azurecertified@microsoft.com |   パートナーの Azure Marketplace でのアプリケーションの公開に関するサポート。 営業時間は、太平洋標準時ゾーンで示されています。      |
 |電子メール: AzureMarketOnboard@microsoft.com |   Azure Marketplace ソリューション申請フォームとプロセスに関するサポート。 営業時間は、太平洋標準時ゾーンで示されています。      |
@@ -135,13 +135,13 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 
 **Azure Marketplace ポータルのサポート**
 
-|サポート窓口  |[説明]  |
+|サポート窓口  |説明  |
 |---------|---------|
 |電子メール: [サポート](https://go.microsoft.com/fwlink/?linkid=844975)    |   Marketplace 公開ポータルのサポート。 日中でも夜間でも、サポートが常に提供されます。        |
 
 **テクニカル サポート**
 
-|サポート窓口  |[説明]  |
+|サポート窓口  |説明  |
 |---------|---------|
 |MSDN フォーラム: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network のフォーラム。         |
 |Stack Overflow: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    次に示すように、ソリューションを入手して Azure と Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境があります。<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
@@ -149,7 +149,7 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 
 **マーケティング リソース**
 
-|サポート窓口  |[説明]  |
+|サポート窓口  |説明  |
 |---------|---------|
 |電子メール: cosell@microsoft.com    |  オンボーディング プロセスと、共同販売プログラムに関する質問に対するサポート。 太平洋標準時ゾーンに基づきます。        |
 |電子メール: gtm@microsoft.com    |  Go-to-Market の特典とプログラムに関する質問へのサポート。 営業時間は、太平洋標準時ゾーンで示されています。        |
@@ -230,9 +230,9 @@ Microsoft が提供する市場投入の特典と、Marketplace で貴社のビ�
 
 |**要件** |**詳細**  |**公開オプション**  |
 |---------|---------|---------|
-|**サービス オファリングの特性**     | コンサルティング サービスは、次の特性を備える必要があります。 <br>- 固定スコープ、固定期間、固定価格 (または無料) の契約として提供される。 <br>- 基本的に購入前が優先される。 <br>- 単一顧客に限定される。 <br>- サイト上で実施される。        |    一覧表示     |
-|**コンサルティング サービスのパートナー要件**    |   "*AppSource のみ。*"  <br>- **Dynamics 365 for Customer Engagement:** Silver または Gold [クラウド カスタマー リレーションシップ マネジメント](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency) コンピテンシーを備える。 <br>- **Dynamics 365 for Finance および Operations Enterprise エディション**: Silver または Gold の[エンタープライズ リソース プラニング](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) コンピテンシー、および以降の 12 か月間にクラウド運用で 25,000 ドル以上の収益がある。 <br>- **Dynamics 365 for Finance and Operations、Business エディション**: 少なくとも 1 顧客に[クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) または [デジタル指名パートナー (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) としてサービスを提供している。 <br>- **Power BI**: [ソリューション パートナー](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf) の条件を満たしている。 <br>- **PowerApps**: [パートナー ショーケース](https://powerapps.microsoft.com/en-us/partner-showcase/) ソリューションを備える。 |    一覧表示     |
-|**コンサルティング サービスのパートナー要件**    |  *Azure Marketplace のみ*: <br>パートナーは、当該サービス分野において **Silver または Gold コンピテンシー**を持っている必要もあります。 適格なコンピテンシーを以下に示します。</br><br><ul><li> **コンピテンシー**: クラウド プラットフォームとインフラストラクチャ <br>**ソリューション分野**: クラウド プラットフォーム、データ センター</li><br><li>**コンピテンシー**: アプリケーション開発と ISV <br>**ソリューション分野**: アプリケーション開発、アプリケーション統合、DevOps</li><br><li>**コンピテンシー**: データ管理と分析 <br>**ソリューション分野**: データ分析、データ プラットフォーム </li></br></ul>詳細については、[Microsoft Partner Network を通じたコンピテンシー](https://partner.microsoft.com/en-US/membership/competencies)に関するページをご覧ください。</br><br>リストの詳細については、「[Azure Marketplace コンサルティング サービス](https://docs.microsoft.com/en-us/azure/marketplace/consulting-services)」をご覧ください。 |    一覧表示     | 
+|**サービス オファリングの特性**     | コンサルティング サービスは、次の特性を備える必要があります。 <br>- 固定スコープ、固定期間、固定価格 (または無料) の契約として提供される。 <br>- 基本的に購入前が優先される。 <br>- 単一顧客に限定される。 <br>- サイト上で実施される。        |    List     |
+|**コンサルティング サービスのパートナー要件**    |   "*AppSource のみ。*"  <br>- **Dynamics 365 for Customer Engagement:** Silver または Gold [クラウド カスタマー リレーションシップ マネジメント](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency) コンピテンシーを備える。 <br>- **Dynamics 365 for Finance および Operations Enterprise エディション**: Silver または Gold の[エンタープライズ リソース プラニング](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) コンピテンシー、および以降の 12 か月間にクラウド運用で 25,000 ドル以上の収益がある。 <br>- **Dynamics 365 for Finance and Operations、Business エディション**: 少なくとも 1 顧客に[クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) または [デジタル指名パートナー (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) としてサービスを提供している。 <br>- **Power BI**: [ソリューション パートナー](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf) の条件を満たしている。 <br>- **PowerApps**: [パートナー ショーケース](https://powerapps.microsoft.com/en-us/partner-showcase/) ソリューションを備える。 |    List     |
+|**コンサルティング サービスのパートナー要件**    |  *Azure Marketplace のみ*: <br>パートナーは、当該サービス分野において **Silver または Gold コンピテンシー**を持っている必要もあります。 適格なコンピテンシーを以下に示します。</br><br><ul><li> **コンピテンシー**: クラウド プラットフォームとインフラストラクチャ <br>**ソリューション分野**: クラウド プラットフォーム、データ センター</li><br><li>**コンピテンシー**: アプリケーション開発と ISV <br>**ソリューション分野**: アプリケーション開発、アプリケーション統合、DevOps</li><br><li>**コンピテンシー**: データ管理と分析 <br>**ソリューション分野**: データ分析、データ プラットフォーム </li></br></ul>詳細については、[Microsoft Partner Network を通じたコンピテンシー](https://partner.microsoft.com/en-US/membership/competencies)に関するページをご覧ください。</br><br>リストの詳細については、「[Azure Marketplace コンサルティング サービス](https://docs.microsoft.com/en-us/azure/marketplace/consulting-services)」をご覧ください。 |    List     | 
 
 
 #### <a name="cloud-partner-portal-pre-publishing-checklist-for-the-azure-marketplace"></a>Azure Marketplace での Cloud パートナー ポータル公開前チェックリスト
@@ -355,12 +355,12 @@ Azure AD フェデレーション SSO が初めての場合
 
 **プロセスの概要**
 
-|Marketplace の登録手順  |Time  |[説明]  |
+|Marketplace の登録手順  |時間  |説明  |
 |---------|---------|---------|
 | 1.Microoft Partner Network に登録する | 15 分 | Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、Azure Marketplace パブリッシャーになるための追加の利点とサポートを受けます。 MPN に登録するには、Microsoft Partner Network にアクセスして、"登録" をクリックします。 該当する場合、登録中に組織の既存のメンバーシップに参加できるようになります。 登録したら、組織の MPN ID を書き留めます。これは、Cloud パートナー ポータルでパブリッシャー プロファイルをアクティブにする (手順 3) ために必要です。      |
 |2.Microsoft ID を作成する     |   約 15 分      |  この Microsoft ID を使って、Cloud パートナー ポータルにアクセスします。 このメール アドレスは、Microsoft ID として登録されている必要があり、Cloud パートナー ポータル (手順 3) と Microsoft デベロッパー センター (手順 4) の両方で使われます。 選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。 ID 作成の前に行う作業のガイドラインについては、「ガイドラインと方法」のセクションをご覧ください。 |
-|手順 3.Marketplace 申請フォームを送信する     |  1 ～ 3 日       | 組織をノミネートして、Microsoft クラウド マーケットプレース パブリッシャーとして登録します。 フォームには、組織に関する情報、公開する最初のアプリケーションまたはサービス オファリングに関する情報、提供されるサポートのレベルが含まれます。 <ul><li>[Azure Marketplace 申請フォーム](http://aka.ms/listonazuremarketplace)</li><li>[AppSource 申請フォーム](http://aka.ms/listonappsource)</li></ul> フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、承認済みパートナーになって、Cloud パートナー ポータルにアクセスするための次の手順を記載した通知をメールで受け取ります。ここでは、最初のオファーの登録リストを入力し、追加のオファーを作成できます。 承認されると、お客様にご利用コードが送信されます。このコードを使用すると、Microsoft デベロッパー センターの登録料金が免除されます (手順 4)。 |
-|4.デベロッパー センターに登録する     |    5 ～ 10 日     | マーケットプレースでの仮想マシン、ソリューション テンプレート、および Azure Managed Apps などのトランザクション機能を備えたアプリケーションの公開には、Microsoft デベロッパー センターが必要です。 この要件によって、会社の法律、税、および銀行取引のエンティティについて、Microsoft でパブリッシャーの会社情報を検証できるようになります。 登録者は、合法的な組織の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 登録時には、会社用に共有されている Microsoft ID (手順 2) を使う必要があり、Cloud パートナー ポータルでも同じアカウントを使う必要があります。 <ul>Marketplace 申請フォームに入力しない場合、99 ドルの登録料金の支払いを求められる点に注意してください。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出すると、メールでプロモーション コードを受け取ります。 重要: Microsoft デベロッパー センターのアカウント作成を試行する前に、会社がアカウントを既に所有していないことを確認してください。 このプロセスの詳細な手順については、「デベロッパー センターに登録する方法の説明」をご覧ください。</ul>   |
+|手順 3.Marketplace 申請フォームを送信する     |  1 ～ 3 日       | 組織をノミネートして、Microsoft クラウド マーケットプレース パブリッシャーとして登録します。 フォームには、組織に関する情報、公開する最初のアプリケーションまたはサービス オファリングに関する情報、提供されるサポートのレベルが含まれます。 <ul><li>[Azure Marketplace 申請フォーム](https://azuremarketplace.microsoft.com/sell/signup)</li><li>[AppSource 申請フォーム](http://aka.ms/listonappsource)</li></ul> フォームを送信した後は、Marketplace チームによって申し込みが確認され、要求が検証されます。 要求が確認された後は、承認済みパートナーになって、Cloud パートナー ポータルにアクセスするための次の手順を記載した通知をメールで受け取ります。ここでは、最初のオファーの登録リストを入力し、追加のオファーを作成できます。 承認されると、お客様にご利用コードが送信されます。このコードを使用すると、Microsoft デベロッパー センターの登録料金が免除されます (手順 4)。 |
+|4.デベロッパー センターに登録する     |    5 ～ 10 日     | マーケットプレースでの Virtual Machines、ソリューション テンプレート、および Azure Managed Apps、コンテナー、SaaS サブスクリプションなどのトランザクション機能を備えたアプリケーションの公開には、Microsoft デベロッパー センターが必要です。 この要件によって、会社の法律、税、および銀行取引のエンティティについて、Microsoft でパブリッシャーの会社情報を検証できるようになります。 登録者は、合法的な組織の代表者である必要があります。また、ID を検証するために、個人情報を提供する必要があります。 登録時には、会社用に共有されている Microsoft ID (手順 2) を使う必要があり、Cloud パートナー ポータルでも同じアカウントを使う必要があります。 <ul>Marketplace 申請フォームに入力しない場合、99 ドルの登録料金の支払いを求められる点に注意してください。 この手数料を払わなくて済むようにするには、Marketplace 申請フォームを提出すると、メールでプロモーション コードを受け取ります。 重要: Microsoft デベロッパー センターのアカウント作成を試行する前に、会社がアカウントを既に所有していないことを確認してください。 このプロセスの詳細な手順については、「デベロッパー センターに登録する方法の説明」をご覧ください。</ul>   |
 |5.クラウド パートナー ポータルにサインインする     |  約 15 分       |  申請承認通知を受け取り、[Microsoft Partner Network](https://partner.microsoft.com/en-us/membership/) と [Microsoft デベロッパー センター](https://dev.windows.com/) で登録した後は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にアクセスするためのアカウントが自動的に作成されます。 初回サインイン用の資格情報は、申請承認のメールに含まれます。 Cloud パートナー ポータルの使い方について詳しくは、ポータル内の [[学習]](https://cloudpartner.azure.com/#Learn) メニューに移動して、[ドキュメント] セクションを確認してください。    |
 
 
