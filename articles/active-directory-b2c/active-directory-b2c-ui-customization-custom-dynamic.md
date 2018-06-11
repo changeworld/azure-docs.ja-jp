@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーを使用して Azure AD B2C ユーザー インターフェイス (UI) を動的にカスタマイズする'
+title: カスタム ポリシーを使用して Azure Active Directory B2C ユーザー インターフェイス (UI) を動的にカスタマイズする | Microsoft Docs
 description: 実行時に動的に変化する HTML5/CSS コンテンツで複数のブランド エクスペリエンスをサポートします。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 77f6ae1df8a364eecc5e7d6d6fe3a07dd215ac16
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: d01f7b884e03bb311350c508dc46f699cd6717c0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709344"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 `ContentDefinitions` セクションには一連の `ContentDefinition` XML 要素が含まれます。 `ContentDefinition` 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 つまり、要素では、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表で、IEF エンジンで認識されたコンテンツ定義 ID のセットと、それに関連するページの種類について説明します。
 
-| コンテンツ定義 ID | 既定の HTML5 テンプレート| [説明] | 
+| コンテンツ定義 ID | 既定の HTML5 テンプレート| 説明 | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーが一覧表示されます。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |

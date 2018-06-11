@@ -1,22 +1,21 @@
 ---
-title: カスタム ポリシーを使用した UI のカスタマイズ - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C のカスタム ポリシーを使用した UI のカスタマイズ | Microsoft Docs
 description: Azure AD B2C でカスタム ポリシーを使用して、ユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 41b756855ea91db291f4fdb5a963993de4b9cd7e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: 3a8d797793b0e54df112ec44cdb37cbb1b40ce86
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200860"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34710143"
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズの構成
 
@@ -158,7 +157,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip フォルダーには、次の HTML ファイルが含まれています。
 
-| HTML5 テンプレート | [説明] |
+| HTML5 テンプレート | 説明 |
 |----------------|-------------|
 | *phonefactor.html* | このファイルは、多要素認証ページのテンプレートとして使用します。 |
 | *resetpassword.html* | このファイルは、パスワードを忘れた場合のページのテンプレートとして使用します。 |
@@ -168,7 +167,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 
 「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
-| コンテンツ定義 ID | [説明] | 
+| コンテンツ定義 ID | 説明 | 
 |-----------------------|-------------|
 | *api.error* | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 ID プロバイダーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |

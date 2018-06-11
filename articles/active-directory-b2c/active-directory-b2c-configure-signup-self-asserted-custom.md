@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーのサインアップを変更し、セルフ アサート プロバイダーを構成する'
+title: カスタム ポリシーのサインアップを変更してセルフ アサート プロバイダーを構成する | Microsoft Docs
 description: サインアップに要求を追加し、ユーザー入力を構成するチュートリアル
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2017
 ms.author: davidmu
-ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 9d8f644e819ceb83f0b436789d6d8610ed01f6a6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34710799"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: 新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成する
 

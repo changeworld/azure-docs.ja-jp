@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する'
-description: OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使う例
+title: Azure Active Directory B2C のカスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する | Microsoft Docs
+description: OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使用する例。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 3426b6f3f248b670016713d2b58425ff030605af
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709123"
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/23/2018
 Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。 Microsoft アカウントが必要です。 アカウントがない場合は、[https://www.live.com/](https://www.live.com/) にアクセスしてください。
 
 1.  [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) に移動し、Microsoft アカウントの資格情報でサインインします。
-2.  **[アプリの追加]**をクリックします。
+2.  **[アプリの追加]** をクリックします。
 
     ![Microsoft アカウント - アプリの追加](media/active-directory-b2c-custom-setup-ms-account-idp/msa-add-new-app.png)
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 
     ![Microsoft アカウント - アプリケーションの登録](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-name.png)
 
-4.  **[アプリケーション ID]**の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
+4.  **[アプリケーション ID]** の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
 
     ![Microsoft アカウント - アプリケーション ID の値のコピー](media/active-directory-b2c-custom-setup-ms-account-idp/msa-app-id.png)
 

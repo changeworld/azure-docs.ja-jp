@@ -1,21 +1,21 @@
 ---
-title: トークン リファレンス - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C のトークン リファレンス | Microsoft Docs
 description: Azure Active Directory B2C で発行されるトークンの種類
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 09d776b54941e33979d7969b25c35e67a53cf8f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e2ca582c9ec767e9b810c574e3efddc6485bb6a0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709310"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス
 
@@ -70,7 +70,7 @@ Azure AD B2C では、トークンの内容を細かく制御できます。 ア
 
 ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 Azure AD B2C によって発行された ID およびアクセス トークン内に存在することが予測される要求を次に示します。 追加の要求はすべて、ポリシーによって決定されます。 試しに、サンプルの ID トークンを [jwt.ms](https://jwt.ms) に貼り付けて、その中の要求を調べてみてください。 さらに詳細な情報は、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で参照できます。
 
-| Name | 要求 | 値の例 | [説明] |
+| Name | 要求 | 値の例 | 説明 |
 | --- | --- | --- | --- |
 | 対象ユーザー |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受信者要求は、トークンの受信対象を識別します。 Azure AD B2C の場合、対象となる読者は、アプリ登録ポータルでアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、一致しない場合はトークンを拒否する必要があります。 |
 | 発行者 |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |この要求は、トークンを構築して返す Security Token Service (STS) を識別します。 また、ユーザーが認証された Azure AD ディレクトリも識別します。 アプリは、そのトークンが Azure Active Directory v2.0 エンドポイントから来たことを確認するために発行者要求を検証する必要があります。 |
@@ -148,7 +148,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/key
 ## <a name="token-lifetimes"></a>トークンの有効期間
 以下のトークンの有効期間は、より詳細な知識が必要な場合のために提供されています。 アプリの開発やデバッグの際に、役立つ場合があります。 これらの有効期間が一定で変わらないものという想定でアプリを記述しないでください。 変更される可能性があります。 Azure AD B2C での[トークンの有効期間のカスタマイズ](active-directory-b2c-token-session-sso.md)に関する詳細を参照してください。
 
-| トークン | 有効期間 | [説明] |
+| トークン | 有効期間 | 説明 |
 | --- | --- | --- |
 | ID トークン |1 時間 |通常、ID トークンの有効期間は 1 時間です。 Web アプリは、この有効期間を使用して、ユーザーとの独自のセッションを維持できます (推奨)。 また、別のセッション有効期間を選択することもできます。 アプリで新しい ID トークンを取得する必要がある場合は、Azure AD に対して新しいサインイン要求を行うだけで済みます。 ユーザーが Azure AD との有効なブラウザー セッションを使用している場合、そのユーザーは資格情報を再度入力する必要がない可能性があります。 |
 | 更新トークン |最大 14 日 |1 つの更新トークンは、最大 14 日間有効です。 ただし、更新トークンはさまざまな理由で、いつでも無効になる可能性があります。 アプリは、要求が失敗するまで、またはアプリが更新トークンを新しいトークンに置き換えるまで、更新トークンの使用を試み続ける必要があります。 更新トークンはまた、ユーザーが最後に資格情報を入力してから 90 日が経過した場合にも無効になる可能性があります。 |

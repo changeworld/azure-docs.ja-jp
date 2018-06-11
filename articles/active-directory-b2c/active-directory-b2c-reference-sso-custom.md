@@ -1,21 +1,21 @@
 ---
-title: カスタム ポリシーを使用した SSO セッション管理 - Azure AD B2C | Microsoft Docs
+title: Azure Active Directory B2C のカスタム ポリシーを使用した SSO セッション管理 | Microsoft Docs
 description: Azure AD B2C でカスタム ポリシーを使用して SSO セッションを管理する方法について説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
-ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: 8e05b057f6d7bfe0d836bb31e3fc656c17d4f18e
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34710177"
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: シングル サインオン (SSO) セッション管理
 
@@ -25,7 +25,7 @@ Azure AD B2C を使用すると、管理者は、ユーザーが既に認証さ�
 
 ## <a name="overview"></a>概要
 
-SSO セッション管理は 2 つの部分で構成されています。 1 つはユーザーと Azure AD B2C の直接対話を処理し、もう 1 つはユーザーと Facebook などの外部パーティの対話を処理します。 Azure AD B2C は、外部パーティが保持している可能性のある SSO セッションを無視したりバイパスしたりしません。 むしろ、Azure AD B2C を経由して外部パーティにアクセスするルートは "記憶される" ため、ユーザーにソーシャル ID プロバイダーやエンタープライズ ID プロバイダーを選択するよう再度求める必要がなくなります。 最終的な SSO の決定は、外部パーティに残ります。
+SSO セッション管理は 2 つの部分で構成されています。 1 つはユーザーと Azure AD B2C の直接対話を処理し、もう 1 つはユーザーと Facebook などの外部パーティの対話を処理します。 Azure AD B2C は、外部パーティが保持している可能性のある SSO セッションをオーバーライドしたりバイパスしたりしません。 むしろ、Azure AD B2C を経由して外部パーティにアクセスするルートは "記憶される" ため、ユーザーにソーシャル ID プロバイダーやエンタープライズ ID プロバイダーを選択するよう再度求める必要がなくなります。 最終的な SSO の決定は、外部パーティに残ります。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
@@ -96,7 +96,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 技術プロファイルには 2 つのメタデータ項目があります。
 
-| 項目 | 既定値 | 指定できる値 | [説明]
+| 項目 | 既定値 | 指定できる値 | 説明
 | --- | --- | --- | --- |
 | IncludeSessionIndex | true | true または false | セッション インデックスを格納する必要があることをプロバイダーに指示します。 |
 | RegisterServiceProviders | true | true または false | アサーションが発行された SAML サービス プロバイダーすべてをプロバイダーが登録する必要があることを示します。 |

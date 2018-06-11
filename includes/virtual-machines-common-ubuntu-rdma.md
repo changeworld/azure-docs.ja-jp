@@ -15,7 +15,7 @@
   OS.UpdateRdmaDriver=y
   ```
 
-3. /etc/security/limits.conf ファイルで次のメモリ設定 (KB単位) を追加または変更します。 このファイルを編集するにはルート アクセスが必要です。 テスト目的で、memlock を無制限に設定することができます。 (例: `<User or group name>   hard    memlock   unlimited`)。
+3. /etc/security/limits.conf ファイルで次のメモリ設定 (KB単位) を追加または変更します。 このファイルを編集するにはルート アクセスが必要です。 テスト目的で、memlock を無制限に設定することができます。 たとえば、「 `<User or group name>   hard    memlock   unlimited`」のように入力します。
 
   ```
   <User or group name> hard    memlock <memory required for your application in KB>
@@ -28,6 +28,8 @@
   ```bash
  wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
+ 
+ Intel MPI 5.x ランタイムのみがサポートされています。
  
  インストール手順については、[Intel MPI ライブラリのインストール ガイド](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)をご覧ください。
 

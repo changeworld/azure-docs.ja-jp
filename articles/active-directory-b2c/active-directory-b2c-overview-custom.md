@@ -1,22 +1,20 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシー | Microsoft Docs'
-description: Azure Active Directory B2C のカスタム ポリシーに関するトピック
+title: Azure Active Directory B2C のカスタム ポリシー | Microsoft Docs
+description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 0d507c2116aa9e420ddc0dec4999ea21d28e60fc
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32138919"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709259"
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシー
 
@@ -40,13 +38,13 @@ ms.locfileid: "32138919"
 
 ## <a name="policy-files"></a>ポリシー ファイル
 
-カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、要求プロバイダー/技術プロファイル、Userjourney オーケストレーションの手順などの要素を定義します。
+カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、クレーム プロバイダー/技術プロファイル、ユーザー体験のオーケストレーション手順などの要素を定義します。
 
 次の 3 種類のポリシー ファイルを使用することをお勧めします。
 
 - **BASE ファイル**。ほとんどの定義が含まれており、Azure はこの完全なサンプルを提供しています。  ポリシーのトラブルシューティングおよび長期間の保守に役立つように、このファイルへの変更は最小限に抑えることをお勧めします
 - **EXTensions ファイル**。テナントの固有の構成変更を保持しています
-- **証明書利用者 (RP) ファイル**。これは、アプリケーションまたはサービス (証明書利用者) から直接呼び出される、単一タスクに焦点を置いたファイルです。  詳細については、ポリシー ファイルの定義に関する記事を参照してください。  固有の各タスクには独自の RP が必要であり、ブランドの要件に応じて、この数は "アプリケーションの合計 x ユースケースの総数" になることがあります。
+- **証明書利用者 (RP) ファイル**。アプリケーションまたはサービス (証明書利用者) から直接呼び出される、単一タスクに焦点を置いています。  詳細については、ポリシー ファイルの定義に関する記事を参照してください。  固有の各タスクには独自の RP が必要であり、ブランドの要件に応じて、この数は "アプリケーションの合計 x ユースケースの総数" になることがあります。
 
 
 Azure AD B2C での組み込みのポリシーは上に示した 3 つのファイルのパターンに従いますが、ポータルが EXTensions ファイルへの変更をバックグラウンドで行なっている間、開発者には証明書利用者 (RP) ファイルしか表示されません。
@@ -76,7 +74,7 @@ OpenIDConnect、OAuth、SAML、WSFed などの標準のプロトコル形式、�
 
 Azure AD B2C テナント内の Identity Experience Framework の動作を定義する構成ファイル。 カスタム ポリシーは、証明書利用者 (アプリケーションなど) から呼び出されたときに Identity Experience Framework によって実行される 1 つまたは複数の XML ファイル (ポリシー ファイルの定義を参照) としてアクセス可能です。 カスタム ポリシーは、ほぼ無制限の数のタスクを完了するために ID 開発者が直接編集できます。 カスタム ポリシーを構成する開発者は、信頼できる関係の詳細をメタデータ エンドポイント、正確な要求交換定義を含むように慎重に定義し、各 ID プロバイダーの必要に応じてシークレット、キー、および証明書を構成する必要があります。
 
-## <a name="policy-file-definitions-for-identity-experience-framework-trustframeworks"></a>Identity Experience Framework 信頼フレームワークのためのポリシー ファイルの定義
+## <a name="policy-file-definitions-for-identity-experience-framework-trust-frameworks"></a>Identity Experience Framework 信頼フレームワークのためのポリシー ファイルの定義
 
 ### <a name="policy-files"></a>ポリシー ファイル
 
@@ -96,7 +94,7 @@ Azure AD B2C テナント内の Identity Experience Framework の動作を定義
 
 ### <a name="inheritance-model"></a>継承モデル
 
-アプリケーションが RP ポリシー ファイルを呼び出すと、B2C の Identity Experience Framework はまず BASE から、次に EXTENSIONS から、最後に RP ポリシー ファイルからすべての要素を追加して、有効な現在のポリシーを組み立てます。  要素の種類と名前が同じ場合は RP ファイルの要素によって EXTENSIONS の内容が上書きされ、EXTENSIONS によって BASE が上書きされます。
+アプリケーションが RP ポリシー ファイルを呼び出すと、B2C の Identity Experience Framework はまず BASE から、次に EXTENSIONS から、最後に RP ポリシー ファイルからすべての要素を追加して、有効な現在のポリシーを組み立てます。  要素の種類と名前が同じ場合は RP ファイルの要素によって EXTENSIONS の内容がオーバーライドされ、EXTENSIONS によって BASE がオーバーライドされます。
 
 Azure AD B2C での**組み込みのポリシー**は上に示した 3 つのファイルのパターンに従いますが、ポータルが EXTenstions ファイルへの変更をバックグラウンドで行なっている間、開発者には証明書利用者 (RP) ファイルしか表示されません。  Azure B2C チームの制御下にあり、頻繁に更新される BASE ポリシー ファイルをすべての Azure AD B2C が共有します。
 

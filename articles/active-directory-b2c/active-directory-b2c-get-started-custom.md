@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーの概要 | Microsoft Docs'
-description: Azure Active Directory B2C のカスタム ポリシーの使用を開始する方法
+title: Azure Active Directory B2C のカスタム ポリシーの概要 | Microsoft Docs
+description: Azure Active Directory B2C のカスタム ポリシーの使用を開始する方法。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8ff69942971950e2d4a274e7d3502379a26326c7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709293"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
 
@@ -35,26 +35,26 @@ ms.lasthandoff: 03/23/2018
 1. Azure AD B2C テナント設定の **[Identity Experience Framework]** ブレードを開きます。
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 3. 存在しない場合は、B2C_1A_TokenSigningKeyContainer を作成します。<br>
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]**を選択します。 <br>
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]** を選択します。 <br>
     b. **[Generate] \(生成)** を選択します。<br>
     c. **[名前]** には `TokenSigningKeyContainer` を使用します。 <br> 
     プレフィックス `B2C_1A_` が自動的に追加される場合があります。<br>
     d. **[キーの種類]** には **[RSA]** を使用します。<br>
     e. **[日付]** には既定値を使用します。 <br>
     f. **[キー使用法]** には **[署名]** を使用します。<br>
-    g. **[作成]**を選択します。<br>
+    g. **[作成]** を選択します。<br>
 4. 存在しない場合は、B2C_1A_TokenEncryptionKeyContainer を作成します。<br>
- a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]**を選択します。<br>
+ a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]** を選択します。<br>
  b. **[Generate] \(生成)** を選択します。<br>
  c. **[名前]** には `TokenEncryptionKeyContainer` を使用します。 <br>
    プレフィックス `B2C_1A`_ が自動的に追加される場合があります。<br>
  d. **[キーの種類]** には **[RSA]** を使用します。<br>
  e. **[日付]** には既定値を使用します。<br>
  f. **[キー使用法]** には **[暗号化]** を使用します。<br>
- g. **[作成]**を選択します。<br>
+ g. **[作成]** を選択します。<br>
 5. B2C_1A_FacebookSecret を作成します。 <br>
 Facebook アプリケーション シークレットが既にある場合は、それをポリシー キーとしてテナントに追加します。 ない場合は、ポリシーが検証にパスするように、プレースホルダー値を含むキーを作成する必要があります。<br>
- a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]**を選択します。<br>
+ a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[追加]** を選択します。<br>
  b. **[オプション]** には **[Manual] \(手動)** を使用します。<br>
  c. **[名前]** には `FacebookSecret` を使用します。 <br>
  プレフィックス `B2C_1A_` が自動的に追加される場合があります。<br>
@@ -78,9 +78,9 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
    * **[名前]** には `IdentityExperienceFramework` を使用します。
    * **[アプリケーションの種類]** には **[Web アプリ/API]** を使用します。
    * **[サインオン URL]** には `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントのドメイン名です。
-5. **[作成]**を選択します。
+5. **[作成]** を選択します。
 6. 作成されたら、新しく作成されたアプリケーション **IdentityExperienceFramework** を選択します。<br>
-   * **[プロパティ]**を選択します。<br>
+   * **[プロパティ]** を選択します。<br>
    * アプリケーション ID をコピーし、後のために保存します。
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを作成する
@@ -90,16 +90,16 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
    * **[名前]** には `ProxyIdentityExperienceFramework` を使用します。
    * **[アプリケーションの種類]** には **[ネイティブ]** を使用します。
    * **[リダイレクト URI]** には `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントです。
-1. **[作成]**を選択します。
+1. **[作成]** を選択します。
 1. 作成されたら、アプリケーション **ProxyIdentityExperienceFramework** を選択します。<br>
-   * **[プロパティ]**を選択します。 <br>
+   * **[プロパティ]** を選択します。 <br>
    * アプリケーション ID をコピーし、後のために保存します。
 1. **[必要なアクセス許可]** を選択します。
-1. **[追加]**を選択します。
+1. **[追加]** を選択します。
 1. **[API を選択します]** を選択します。
 1. IdentityExperienceFramework という名前を検索します。 結果で **[IdentityExperienceFramework]** を選択して、**[選択]** をクリックします。
 1. **[Access IdentityExperienceFramework] \(IdentityExperienceFramework にアクセスする)** の横にあるチェック ボックスをオンにして、**[選択]** を選択します。
-1. **[完了]**を選択します。
+1. **[完了]** を選択します。
 1. **[Grant Permissions] \(アクセス許可の付与)** を選択してから、**[はい]** を選択して確認します。
 
 ## <a name="download-starter-pack-and-modify-policies"></a>スターター パックをダウンロードしてポリシーを変更する

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を OAuth2 ID プロバイダーとして追加する'
-description: OAuth2 プロトコルとカスタム ポリシーを使用した LinkedIn アプリケーションの設定に関するハウツー記事
+title: Azure Active Directory B2C のカスタム ポリシーを使って LinkedIn を OAuth2 ID プロバイダーとして追加する | Microsoft Docs
+description: OAuth2 プロトコルとカスタム ポリシーを使用した LinkedIn アプリケーションの設定に関するハウツー記事。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 0544daf310d40ea419cb6a46cbbf308ebc924715
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709327"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -57,7 +57,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Lin
     >[!NOTE]
     >クライアント シークレットは、重要なセキュリティ資格情報です。 このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
 
-5. **[追加]**を選択します。
+5. **[追加]** を選択します。
 
 6. **[設定]** を選択して、**[アプリケーションの状態]** を **[ライブ]** に変更し、**[更新]** を選択します。
 
@@ -70,7 +70,7 @@ LinkedIn アカウントでのフェデレーションには、アプリケー�
 
 2. テナント内で使用できるキーを表示するには、**[ポリシー キー]** を選択します。
 
-3. **[追加]**を選択します。
+3. **[追加]** を選択します。
 
 4. **[オプション]** ボックスで、**[アップロード]** を選択します。
 
@@ -81,7 +81,7 @@ LinkedIn アカウントでのフェデレーションには、アプリケー�
 
 7. **[キー使用法]** には **[暗号化]** を選択します。
 
-8. **[作成]**を選択します。 
+8. **[作成]** を選択します。 
 
 9. キー `B2C_1A_LinkedInSecret` を作成したことを確認します。
 

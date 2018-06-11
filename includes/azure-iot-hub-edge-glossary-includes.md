@@ -1,3 +1,6 @@
+## <a name="automatic-device-management"></a>自動デバイス管理
+Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](/articles/iot-hub/iot-hub-auto-device-config.md)と [IoT Edge の自動展開](/articles/iot-edge/how-to-deploy-monitor.md)で構成されます。
+
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge は、Azure サービスのクラウド中心のデプロイと、オンプレミスのデバイスに対するソリューション固有のコードを可能にします。 IoT Edge デバイスでは、他のデバイスからデータを集計して、データがクラウドに送信される前にコンピューティングと分析を実行できます。 詳細については、「[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)」をご覧ください。
 
@@ -7,8 +10,8 @@ IoT Edge ランタイムの、モジュールのデプロイと監視を担当�
 ## <a name="iot-edge-device"></a>IoT Edge デバイス
 IoT Edge デバイスには IoT Edge ランタイムがインストールされており、デバイスの詳細で "IoT Edge デバイス" としてフラグが付けられています。 「[Linux のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)」をご覧ください。
 
-## <a name="iot-edge-deployment"></a>IoT Edge のデプロイ
-IoT Edge のデプロイでは、一連の IoT Edge モジュールを実行する IoT Edge デバイスの対象のセットを構成します。 各デプロイでは、新しいデバイスが作成されたかターゲット条件と一致するよう変更されたときでも、対象の条件と一致するすべてのデバイスが特定のモジュールのセットを実行することが継続的に保証されます。 各 IoT Edge デバイスは、そのターゲット条件を満たす最優先のデプロイのみを受け取ります。 詳細については、[IoT Edge のデプロイ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)に関するページをご覧ください。
+## <a name="iot-edge-automatic-deployment"></a>IoT Edge の自動デプロイ
+IoT Edge の自動デプロイでは、一連の IoT Edge モジュールを実行する IoT Edge デバイスの対象のセットを構成します。 各デプロイでは、新しいデバイスが作成されたかターゲット条件と一致するよう変更されたときでも、対象の条件と一致するすべてのデバイスが特定のモジュールのセットを実行することが継続的に保証されます。 各 IoT Edge デバイスは、そのターゲット条件を満たす最優先のデプロイのみを受け取ります。 詳細については、[IoT Edge の自動デプロイ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)に関するページをご覧ください。
 
 ## <a name="iot-edge-deployment-manifest"></a>IoT Edge のデプロイ マニフェスト
 一連のモジュール、ルート、関連するモジュールに必要なプロパティをデプロイするために、1 つ以上の IoT Edge デバイスのモジュール ツインにコピーされる情報を含んだ Json ドキュメントです。

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: オーケストレーション手順としての REST API 要求の交換 | Microsoft Docs'
-description: API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック
+title: Azure Active Directory B2C でのオーケストレーション手順としての REST API 要求の交換 | Microsoft Docs
+description: API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.openlocfilehash: 0a3f69f8262e67de624d4cd97e0cad49c6a96ef0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 0b8fff2e7a47ad84c146a02fb09b64931398b208
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34710782"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
 

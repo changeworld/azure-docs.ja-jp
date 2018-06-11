@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: KMSI | Microsoft Docs'
-description: "\"サインインしたままにする\" ための設定方法を説明するトピック"
+title: Azure Active Directory B2C の "サインインしたままにする (KMSI)" | Microsoft Docs
+description: "\"サインインしたままにする\" ための設定方法を説明するトピック。"
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/05/2016
 ms.author: davidmu
-ms.openlocfilehash: 073ba8eef7f2f42d1c308fb20d3bfdbfc8d321b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: a32aaa5d91426199c29765d2d9645e8a4ddb03b4
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709157"
 ---
 # <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: "サインインしたままにする (KMSI)" を有効にする  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

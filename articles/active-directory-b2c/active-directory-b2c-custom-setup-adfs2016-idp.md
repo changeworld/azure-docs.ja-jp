@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する'
+title: Azure Active Directory B2C のカスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する | Microsoft Docs
 description: SAML プロトコルとカスタム ポリシーを使用した ADFS 2016 の設定方法に関する記事
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: af102bbc3bc7608fe641db19f4af8c760907a564
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 06b70e48398fd720b6c87cc4575b7a7973f5bce5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709191"
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する
 
@@ -53,17 +53,17 @@ AD FS 管理スナップインを使用して新しい証明書利用者信頼�
 4.  **[データ ソースの選択]** ページで、**[証明書利用者に関するデータを手動で入力する]** をクリックし、**[次へ]** をクリックします。
     ![証明書利用者に関するデータを入力する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-3.png)
 
-5.  **[表示名の指定]** ページで、**[表示名]**に名前を入力し、**[メモ]**にこの証明書利用者の説明を入力して、**[次へ]** をクリックします。
+5.  **[表示名の指定]** ページで、**[表示名]** に名前を入力し、**[メモ]** にこの証明書利用者の説明を入力して、**[次へ]** をクリックします。
     ![表示名とメモを指定する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-4.png)
 6.  省略可能。 省略可能なトークン暗号化証明書がある場合、**[証明書の構成]** ページで、**[参照]** をクリックして証明書ファイルを検索し、**[次へ]** をクリックします。
     ![証明書を構成する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-5.png)
-7.  **[URL の構成]** ページで、**[SAML 2.0 WebSSO プロトコルのサポートを有効にする]** チェック ボックスをオンにします。 **[証明書利用者 SAML 2.0 SSO サービスの URL]**で、この証明書利用者信頼の Security Assertion Markup Language (SAML) サービス エンドポイントの URL を入力し、**[次へ]** をクリックします。  **[証明書利用者 SAML 2.0 SSO サービスの URL]** に、`https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}` を貼り付けます。 {tenant} を使用しているテナントの名前 (contosob2c.onmicrosoft.com など) に置き換えて、{policy} を拡張ポリシーの名前 (B2C_1A_TrustFrameworkExtensions など) に置き換えます。
+7.  **[URL の構成]** ページで、**[SAML 2.0 WebSSO プロトコルのサポートを有効にする]** チェック ボックスをオンにします。 **[証明書利用者 SAML 2.0 SSO サービスの URL]** で、この証明書利用者信頼の Security Assertion Markup Language (SAML) サービス エンドポイントの URL を入力し、**[次へ]** をクリックします。  **[証明書利用者 SAML 2.0 SSO サービスの URL]** に、`https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}` を貼り付けます。 {tenant} を使用しているテナントの名前 (contosob2c.onmicrosoft.com など) に置き換えて、{policy} を拡張ポリシーの名前 (B2C_1A_TrustFrameworkExtensions など) に置き換えます。
     > [!IMPORTANT]
     >ポリシーの名前は、signup_ または _signin ポリシーが継承しているものです。この場合は、`B2C_1A_TrustFrameworkExtensions` になります。
     >例として、URL は https://login.microsoftonline.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase** のようになります。
 
     ![証明書利用者 SAML 2.0 SSO サービスの URL](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
-8. **[識別子の構成]** ページで、前の手順と同じ URL を指定して、**[追加]** をクリックして一覧に追加し、**[次へ]**をクリックします。
+8. **[識別子の構成]** ページで、前の手順と同じ URL を指定して、**[追加]** をクリックして一覧に追加し、**[次へ]** をクリックします。
     ![証明書利用者信頼の識別子](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-7.png)
 9.  **[アクセス制御ポリシーの選択]** で、ポリシーを選択して、**[次へ]** をクリックします。
     ![アクセス制御ポリシーを選択する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-8.png)
@@ -71,11 +71,11 @@ AD FS 管理スナップインを使用して新しい証明書利用者信頼�
     ![証明書利用者信頼の情報を保存する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-9.png)
 11.  **[完了]** ページで、**[閉じる]** をクリックすると、この操作によって、**[要求規則の編集]** ダイアログ ボックスが自動的に表示されます。
     ![要求規則を編集する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-10.png)
-12. **[規則の追加]**をクリックします。  
+12. **[規則の追加]** をクリックします。  
       ![新しい規則を追加する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-1.png)
 13.  **[要求規則テンプレート]** で、**[LDAP 属性を要求として送信]** を選択します。
     ![[LDAP 属性を要求として送信] テンプレート規則を選択する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-2.png)
-14.  **[要求規則名]** を指定します。 **[属性ストア]**で、**[Active Directory] を選択して**次の要求を追加し、**[完了]**、**[OK]** の順にクリックします。
+14.  **[要求規則名]** を指定します。 **[属性ストア]** で、**[Active Directory] を選択して**次の要求を追加し、**[完了]**、**[OK]** の順にクリックします。
     ![規則のプロパティを設定する](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-3.png)
 15.  サーバー マネージャーで、**[証明書利用者信頼]** を選択し、作成した証明書利用者信頼を選んで **[プロパティ]** をクリックします。
     ![証明書利用者の編集プロパティ](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-sig-1.png)

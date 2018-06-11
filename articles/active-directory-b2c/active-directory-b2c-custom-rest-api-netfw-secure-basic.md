@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する'
-description: HTTP 基本認証を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
+title: Azure Active Directory B2C の HTTP 基本認証を使用して RESTful サービスをセキュリティ保護する | Microsoft Docs
+description: HTTP 基本認証を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する。
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 749157d16c1c394b173545dddb8751d58fdcfd56
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 18aeeef1aa2ef322f78e7e10118464d542926e59
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709796"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 
@@ -228,7 +228,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 2. **[ポリシー キー]** を選択して、テナント内で使用できるキーを表示します。
 
-3. **[追加]**を選択します。
+3. **[追加]** を選択します。
 
 4. **[オプション]** には **[手動]** を選択します。
 
@@ -239,7 +239,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 7. **[キー使用法]** には **[シークレット]** を選択します。
 
-8. **[作成]**を選択します。
+8. **[作成]** を選択します。
 
 9. `B2C_1A_B2cRestClientId` キーを作成したことを確認します。
 
@@ -248,7 +248,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 
-3. **[追加]**を選択します。
+3. **[追加]** を選択します。
 
 4. **[オプション]** には **[手動]** を選択します。
 
@@ -259,7 +259,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 7. **[キー使用法]** には **[シークレット]** を選択します。
 
-8. **[作成]**を選択します。
+8. **[作成]** を選択します。
 
 9. `B2C_1A_B2cRestClientSecret` キーを作成したことを確認します。
 
