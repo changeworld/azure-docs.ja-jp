@@ -14,7 +14,7 @@
       href: concepts-collector.md
     - name: 評価の計算
       href: concepts-assessment-calculation.md
-    - name: 依存関係の視覚化
+    - name: 依存関係の視覚化について
       href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
@@ -30,6 +30,8 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso - Azure VM でアプリをリホストする
           href: contoso-migration-rehost-vm.md
+        - name: 6. Contoso - Azure VM と Azure SQL AlwaysOn でアプリをリホストする
+          href: contoso-migration-rehost-vm-sql-ag.md
     - name: 大規模な環境の検出と評価
       href: how-to-scale-assessment.md
     - name: マシンのグループ化

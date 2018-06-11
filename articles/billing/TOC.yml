@@ -113,6 +113,8 @@
       href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: リファレンス
   items:
+    - name: 課金自動化のシナリオ
+      href: billing-cost-management-automation-scenarios.md
     - name: Azure Billing API の概要
       href: billing-usage-rate-card-overview.md
       items:
@@ -120,7 +122,8 @@
           href: 'https://docs.microsoft.com/rest/api/billing'
         - name: パートナー ソリューション – Cloud Cruiser
           href: billing-usage-rate-card-partner-solution-cloudcruiser.md
-    - name: Azure Consumption API
+    - name: Azure Consumption API の概要
+      href: billing-consumption-api-overview.md
       items:
         - name: Azure Consumption REST API
           href: 'https://docs.microsoft.com/rest/api/consumption'
