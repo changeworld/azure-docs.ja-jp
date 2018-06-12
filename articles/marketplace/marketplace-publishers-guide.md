@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: f84be4ec4d42b77e93cf0855d7fe4740256ed199
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 79e7d049ebf184e273e05250bd6f112d4c6be53d
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34715362"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34806872"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド
 
@@ -144,7 +144,7 @@ Azure Marketplace のサポート オプションの一覧を次に示します�
 |サポート窓口  |説明  |
 |---------|---------|
 |MSDN フォーラム: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network のフォーラム。         |
-|Stack Overflow: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    次に示すように、ソリューションを入手して Azure と Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境があります。<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
+|Stack Overflow: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    次に示すように、ソリューションを入手して Azure と Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境があります。<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li><li>[Azure 上のコンテナー](https://stackoverflow.com/search?q=azure+container)</li></ul> |
 
 
 **マーケティング リソース**
@@ -215,7 +215,10 @@ Microsoft が提供する市場投入の特典と、Marketplace で貴社のビ�
 |**要件**  |**詳細** |**公開オプション**  |
 |---------|---------|---------|
 |**請求/メータリング**   |  コンテナーでは、無料またはライセンス持ち込み課金モデルがサポートされる必要があります。       |  トランザクション       |
-|**Docker ベースのイメージ**    |   コンテナー イメージは、Docker イメージの形式に基づき、Azure Container Registry から取得される必要があります。      |  トランザクション       |
+|**Dockerfile からビルドされたイメージ**    |   コンテナー イメージは、Docker イメージの仕様に基づき、Dockerfile からビルドされる必要があります。 Docker イメージのビルドの詳細については、こちら (https://docs.docker.com/engine/reference/builder/#usage)) をご覧ください。     |  トランザクション       |
+|**ACR でのホスティング**    |   コンテナー イメージは、Azure Container Registry (ACR) リポジトリでホストされる必要があります。 ACR の使用の詳細については、こちら (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)) をご覧ください。     |  トランザクション       |
+|**イメージのタグ付け**    |   コンテナー イメージには、少なくとも 1 つのタグを含める必要があります (タグの最大数: 16)。 イメージのタグ付けの詳細については、こちら (https://docs.docker.com/engine/reference/commandline/tag/)) を参照してください。     |  トランザクション       |
+
 
 #### <a name="prerequisites-specific-to-transation-publishing-for-saas-app-subscriptions"></a>SaaS アプリ サブスクリプション向けトランザクション公開に固有の前提条件
 
@@ -224,7 +227,8 @@ Microsoft が提供する市場投入の特典と、Marketplace で貴社のビ�
 |**請求/メータリング**    |   オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。      |   トランザクション      |
 |**解約**  |   オファーは、いつでも顧客が解約できます。      |   トランザクション      |
 |**トランザクションのランディング ページ**     |   Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。      |    トランザクション     |
-|**SaaS サブスクリプション API**    |   SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。      |     トランザクション    |
+|**サブスクリプション API**    |   SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。      |     トランザクション    |
+
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>コンサルティング サービス公開に固有の前提条件
 
@@ -355,7 +359,7 @@ Azure AD フェデレーション SSO が初めての場合
 
 **プロセスの概要**
 
-|Marketplace の登録手順  |時間  |説明  |
+|Marketplace の登録手順  |Time  |説明  |
 |---------|---------|---------|
 | 1.Microoft Partner Network に登録する | 15 分 | Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、Azure Marketplace パブリッシャーになるための追加の利点とサポートを受けます。 MPN に登録するには、Microsoft Partner Network にアクセスして、"登録" をクリックします。 該当する場合、登録中に組織の既存のメンバーシップに参加できるようになります。 登録したら、組織の MPN ID を書き留めます。これは、Cloud パートナー ポータルでパブリッシャー プロファイルをアクティブにする (手順 3) ために必要です。      |
 |2.Microsoft ID を作成する     |   約 15 分      |  この Microsoft ID を使って、Cloud パートナー ポータルにアクセスします。 このメール アドレスは、Microsoft ID として登録されている必要があり、Cloud パートナー ポータル (手順 3) と Microsoft デベロッパー センター (手順 4) の両方で使われます。 選択するメール アドレスは、できる限り、会社のドメインに含まれ、社内の IT チームによって管理されている必要があります。 ID 作成の前に行う作業のガイドラインについては、「ガイドラインと方法」のセクションをご覧ください。 |
