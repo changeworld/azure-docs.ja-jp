@@ -28,7 +28,11 @@
 - name: 概念
   items:
     - name: OMS ポータルの移行
-      href: log-analytics-oms-portal-faq.md
+      items:
+        - name: 概要
+          href: log-analytics-oms-portal-transition.md
+        - name: 一般的な質問
+          href: log-analytics-oms-portal-faq.md
     - name: ワークスペースのアップグレード
       items:
         - name: アップグレードの概要

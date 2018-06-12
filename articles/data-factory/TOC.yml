@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: チュートリアル
   items:
-    - name: 1 - SSIS パッケージを Azure にデプロイする
+    - name: 1 - Azure-SSIS 統合ランタイムを作成する
       items:
         - name: ユーザー インターフェイス (UI)
           href: tutorial-deploy-ssis-packages-azure.md
@@ -362,7 +362,7 @@
           href: monitor-integration-runtime.md
         - name: Azure-SSIS 統合ランタイムの監視
           href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
-        - name: Azure SSIS 統合ランタイムの管理
+        - name: Azure-SSIS 統合ランタイムの再構成
           href: manage-azure-ssis-integration-runtime.md
     - name: 統合ランタイムの作成
       items:
@@ -374,7 +374,7 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Azure での SSIS パッケージの実行
       items:
-        - name: VNET への Azure-SSIS IR の参加
+        - name: 仮想ネットワークへの Azure-SSIS IR の参加
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: Azure-SSIS IR の Azure AD 認証の有効化
           href: enable-aad-authentication-azure-ssis-ir.md

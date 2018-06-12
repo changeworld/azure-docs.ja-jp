@@ -235,6 +235,8 @@
               href: vmware-azure-manage-configuration-server.md
             - name: 物理サーバー レプリケーション用の構成サーバーの管理
               href: physical-manage-configuration-server.md
+            - name: プロセス サーバーの管理
+              href: vmware-azure-manage-process-server.md
             - name: vCenter サーバーの管理
               href: vmware-azure-manage-vcenter.md
             - name: サーバーの削除と保護の無効化

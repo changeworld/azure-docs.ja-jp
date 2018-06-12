@@ -33,6 +33,8 @@
 ### [Kafka が有効なイベント ハブの作成](event-hubs-create-kafka-enabled.md) 
 ### [Kafka エコシステム用の Azure Event Hubs へのストリーム配信](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 ### [Kafka エコシステム用の Azure Event Hubs での Kafka MirrorMaker の使用](event-hubs-kafka-mirror-maker-tutorial.md)
+### [Kafka エコシステム用の Event Hubs での Apache Flink の使用](event-hubs-kafka-flink-tutorial.md)
+### [Kafka エコシステム用の Event Hubs での Akka Streams の使用](event-hubs-kafka-akka-streams-tutorial.md)
 ## 開発
 ### [.NET Framework を使用したイベントの送信](event-hubs-dotnet-framework-getstarted-send.md)
 ### [.NET Framework を使用したイベントの受信](event-hubs-dotnet-framework-getstarted-receive-eph.md)
