@@ -1,11 +1,11 @@
 ---
-title: "DMZ の例 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する | Microsoft Docs"
-description: "ファイアウォール、ユーザー定義ルーティング (UDR)、ネットワーク セキュリティ グループ (NSG) から成る DMZ を構築する"
+title: DMZ の例 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する | Microsoft Docs
+description: ファイアウォール、ユーザー定義ルーティング (UDR)、ネットワーク セキュリティ グループ (NSG) から成る DMZ を構築する
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: dc01ccfb-27b0-4887-8f0b-2792f770ffff
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23127160"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]

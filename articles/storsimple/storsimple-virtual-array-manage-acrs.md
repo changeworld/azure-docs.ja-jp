@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Virtual Array のアクセス制御レコードの管理 | Microsoft Docs"
-description: "ACR (アクセス制御レコード) を管理して、StorSimple Virtual Array 上のボリュームに接続できるホストを判別する方法について説明します。"
+title: StorSimple Virtual Array のアクセス制御レコードの管理 | Microsoft Docs
+description: ACR (アクセス制御レコード) を管理して、StorSimple Virtual Array 上のボリュームに接続できるホストを判別する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110040"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアクセス制御レコードを管理する
 
@@ -68,7 +69,7 @@ ACR とボリュームの関連付けについては、[ボリュームの追加
    
     1. ACR の **[名前]** を入力します。
     
-    2. **[iSCSI イニシエーターの名前]**で Windows ホストの IQN 名を指定します。 Windows Server ホストの IQN を取得するには、次のようにします。
+    2. **[iSCSI イニシエーターの名前]** で Windows ホストの IQN 名を指定します。 Windows Server ホストの IQN を取得するには、次のようにします。
    
     3. Windows ホストで、Microsoft iSCSI イニシエーターを起動します。 [iSCSI イニシエーターのプロパティ] ウィンドウの **[構成]** タブで、**[イニシエーター名]** フィールドの文字列を選択してコピーします。
     この文字列を、**[ACR の追加]** ブレードの **[IQN]** フィールドに貼り付けます。

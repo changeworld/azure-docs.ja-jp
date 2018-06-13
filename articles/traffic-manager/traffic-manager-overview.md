@@ -1,11 +1,11 @@
 ---
-title: "Traffic Manager の概要 | Microsoft Docs"
-description: "この記事は、Traffic Manager の内容と、これがアプリケーションに適したトラフィック ルーティングかどうかを理解するのに役立ちます"
+title: Traffic Manager の概要 | Microsoft Docs
+description: この記事は、Traffic Manager の内容と、これがアプリケーションに適したトラフィック ルーティングかどうかを理解するのに役立ちます
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111830"
 ---
 # <a name="overview-of-traffic-manager"></a>Traffic Manager の概要
 

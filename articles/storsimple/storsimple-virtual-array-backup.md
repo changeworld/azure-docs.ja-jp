@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure StorSimple Virtual Array のバックアップ チュートリアル | Microsoft Docs"
-description: "StorSimple Virtual Array の共有/ボリュームをバックアップする方法について説明します。"
+title: Microsoft Azure StorSimple Virtual Array のバックアップ チュートリアル | Microsoft Docs
+description: StorSimple Virtual Array の共有/ボリュームをバックアップする方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e3cdcd9e-33b1-424d-82aa-b369d934067e
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109570"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 
@@ -57,7 +58,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
     ![バックアップ ポリシーに移動](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. **[Save]**をクリックします。
+4. **[Save]** をクリックします。
 
 ### <a name="take-a-manual-backup"></a>手動バックアップの取得
 
@@ -107,7 +108,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
     ![バックアップのフィルター処理](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. **[Apply]**をクリックします。 **[バックアップ カタログ]** ブレードに、フィルター処理されたバックアップの一覧が表示されます。 一度に表示できるバックアップ要素は 100 個だけです。
+3. **[Apply]** をクリックします。 **[バックアップ カタログ]** ブレードに、フィルター処理されたバックアップの一覧が表示されます。 一度に表示できるバックアップ要素は 100 個だけです。
    
     ![更新されたバックアップ カタログ](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

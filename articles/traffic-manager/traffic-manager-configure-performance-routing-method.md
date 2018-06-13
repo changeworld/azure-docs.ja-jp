@@ -1,11 +1,11 @@
 ---
-title: "Azure Traffic Manager を使用したパフォーマンスによるトラフィック ルーティング方法の構成 | Microsoft Docs"
-description: "この記事では、最も短い待機時間でエンドポイントにトラフィックをルーティングする Traffic Manager を構成する方法について説明します"
+title: Azure Traffic Manager を使用したパフォーマンスによるトラフィック ルーティング方法の構成 | Microsoft Docs
+description: この記事では、最も短い待機時間でエンドポイントにトラフィックをルーティングする Traffic Manager を構成する方法について説明します
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110660"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>パフォーマンスによるトラフィック ルーティング方法の構成
 

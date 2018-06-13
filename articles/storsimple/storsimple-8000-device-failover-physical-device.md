@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズ物理アプライアンスへの StorSimple のフェールオーバー、ディザスター リカバリー |Microsoft Docs"
-description: "StorSimple 8000 シリーズ物理デバイスを別の物理デバイスにフェールオーバーする方法を説明します。"
+title: StorSimple 8000 シリーズ物理アプライアンスへの StorSimple のフェールオーバー、ディザスター リカバリー |Microsoft Docs
+description: StorSimple 8000 シリーズ物理デバイスを別の物理デバイスにフェールオーバーする方法を説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108270"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 シリーズ物理デバイスにフェールオーバーする
 
@@ -60,7 +61,7 @@ StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオ�
 
         ![ターゲット デバイスの選択](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. 最後に、**[概要]** ですべてのフェールオーバー設定を見直します。 設定を確認し多後で、選択されたボリューム コンテナーのボリュームがオフラインであることを示すチェック ボックスをオンにします。 **[OK]**をクリックします。
+   3. 最後に、**[概要]** ですべてのフェールオーバー設定を見直します。 設定を確認し多後で、選択されたボリューム コンテナーのボリュームがオフラインであることを示すチェック ボックスをオンにします。 **[OK]** をクリックします。
 
        ![フェールオーバー設定を確認する](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   
