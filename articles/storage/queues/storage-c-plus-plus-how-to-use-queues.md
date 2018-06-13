@@ -1,6 +1,6 @@
 ---
-title: "Queue Storage を使用する方法 (C++) | Microsoft Docs"
-description: "Azure で Queue ストレージ サービスを使用する方法について説明します。 サンプルは C++ で記述されています。"
+title: Queue Storage を使用する方法 (C++) | Microsoft Docs
+description: Azure で Queue ストレージ サービスを使用する方法について説明します。 サンプルは C++ で記述されています。
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059947"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

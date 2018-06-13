@@ -1,12 +1,12 @@
 ---
-title: "Batch でのコンピューティング集中型 Azure VM の使用 | Microsoft Docs"
-description: "Azure Batch プールで RDMA 対応または GPU 対応の VM サイズを利用する方法"
+title: Batch でのコンピューティング集中型 Azure VM の使用 | Microsoft Docs
+description: Azure Batch プールで RDMA 対応または GPU 対応の VM サイズを利用する方法
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29762443"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 

@@ -1,11 +1,11 @@
 ---
-title: "Xamarin Android アプリに Azure Mobile Apps を使用する"
-description: "次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します"
+title: Xamarin Android アプリに Azure Mobile Apps を使用する
+description: 次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592781"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

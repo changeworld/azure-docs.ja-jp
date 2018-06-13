@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - Log Analytics ワークスペースを作成する | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - Log Analytics ワークスペースを作成する"
+title: Azure PowerShell のサンプル スクリプト - Log Analytics ワークスペースを作成する | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Log Analytics ワークスペースを作成する
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: sample
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23021337"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>PowerShell を使用して Log Analytics ワークスペースを作成する
 

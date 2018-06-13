@@ -1,8 +1,8 @@
 ---
-title: "Visual Studio Team Services からデプロイされる関数を Azure で作成する | Microsoft Docs"
-description: "Function App の作成と Visual Studio Team Services からの関数コードのデプロイ"
+title: Visual Studio Team Services からデプロイされる関数を Azure で作成する | Microsoft Docs
+description: Function App の作成と Visual Studio Team Services からの関数コードのデプロイ
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 01/09/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842349"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>関数アプリの作成と Visual Studio Team Services からの関数コードのデプロイ
 

@@ -1,6 +1,6 @@
 ---
-title: "Site Recovery を使用して Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック | Microsoft Docs"
-description: "Azure Site Recovery を使用して、VMware VM と物理サーバーを Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します。"
+title: Site Recovery を使用して Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック | Microsoft Docs
+description: Azure Site Recovery を使用して、VMware VM と物理サーバーを Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852797"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 
@@ -64,7 +65,7 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 
 1. **[設定]** > **[レプリケートされたアイテム]** で、[VM] > **[フェールオーバー]** の順にクリックします。
 
-2. **[フェールオーバー]** で、フェールオーバーする**[復旧ポイント]** を選択します。 次のいずれかのオプションを使うことができます。
+2. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。 次のいずれかのオプションを使うことができます。
    - **[最新]** (既定値): 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
    - **[最後に処理があった時点]**: Site Recovery によって処理された最新の復旧ポイントに VM をフェールオーバーします。 このオプションを使用すると、未処理のデータの処理に時間がかからないため、RTO (目標復旧時間) を低くできます。
    - **[最新のアプリ整合性]**: Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントに VM をフェールオーバーします。

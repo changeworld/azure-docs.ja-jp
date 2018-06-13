@@ -1,11 +1,11 @@
 ---
-title: "Azure の自動スケールで Linux スケール セット テンプレートのゲスト メトリックを使用する | Microsoft Docs"
-description: "Linux 仮想マシン スケール セット テンプレートのゲスト メトリックを使用して自動スケールを行う方法について説明します。"
+title: Azure の自動スケールで Linux スケール セット テンプレートのゲスト メトリックを使用する | Microsoft Docs
+description: Linux 仮想マシン スケール セット テンプレートのゲスト メトリックを使用して自動スケールを行う方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: na
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781430"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
 

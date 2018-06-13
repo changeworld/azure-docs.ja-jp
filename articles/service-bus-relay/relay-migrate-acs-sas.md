@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory Access Control Service から Shared Access Signature 承認への移行 | Microsoft Docs"
-description: "Access Control Service から SAS へのアプリケーションの移行"
+title: Azure Active Directory Access Control Service から Shared Access Signature 承認への移行 | Microsoft Docs
+description: Access Control Service から SAS へのアプリケーションの移行
 services: service-bus-relay
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855384"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
 
