@@ -1,12 +1,12 @@
 ---
-title: "Azure Event Hubs アーカイブ | Microsoft Docs"
-description: "Azure Event Hubs サンプル"
+title: Azure Event Hubs アーカイブ | Microsoft Docs
+description: Azure Event Hubs サンプル
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802789"
 ---
 # <a name="event-hubs-samples"></a>Event Hubs サンプル 
 

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Batch のドキュメント"
+title: Batch のドキュメント
 metadata:
-  title: "Batch のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-  description: "Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。"
+  title: Batch のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。
   services: batch
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 02/28/2018
+  ms.locfileid: "29686573"
 abstract:
-  description: "Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。"
+  description: Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: "Azure で最初の Batch ジョブを実行する方法を学習します。"
+    text: Azure で最初の Batch ジョブを実行する方法を学習します。
   - type: list
     style: icon48
     items:
@@ -44,33 +45,33 @@ sections:
         src: https://docs.microsoft.com/en-us/media/logos/logo_python.svg
       text: Python
       href: quick-run-python
-- title: "ステップバイステップのチュートリアル"
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: "Batch でコンピューティング集中型ワークロードを実行する方法を学習します。"
+    text: Batch でコンピューティング集中型ワークロードを実行する方法を学習します。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-parallel-dotnet\">.NET SDK を使用したファイルの並列処理</a>"
-    - html: "<a href=\"tutorial-parallel-python\">Python SDK を使用したファイルの並列処理</a>"
-    - html: "<a href=\"tutorial-rendering-cli\">Arnold を使用したシーンのレンダリング</a>"
-    - html: "<a href=\"tutorial-r-doazureparallel\">並列 R シミュレーション</a>"
-- title: "サンプル"
+    - html: <a href="tutorial-parallel-dotnet">.NET SDK を使用したファイルの並列処理</a>
+    - html: <a href="tutorial-parallel-python">Python SDK を使用したファイルの並列処理</a>
+    - html: <a href="tutorial-rendering-cli">Arnold を使用したシーンのレンダリング</a>
+    - html: <a href="tutorial-r-doazureparallel">並列 R シミュレーション</a>
+- title: サンプル
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="cli-samples">Azure CLI</a>
-- title: "リファレンス"
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "コマンド ライン"
+    - title: コマンド ライン
       html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
-    - title: "言語"
+    - title: 言語
       html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/batchservice">Batch Service REST API</a></p><p><a href="/rest/api/batchmanagement/">Batch Management REST API</a></p>

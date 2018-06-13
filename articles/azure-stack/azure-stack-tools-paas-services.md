@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack 用のツールおよび PaaS サービス | Microsoft Docs"
-description: "Azure Stack で PaaS サービスを開始する方法について説明します。"
+title: Azure Stack 用のツールおよび PaaS サービス | Microsoft Docs
+description: Azure Stack で PaaS サービスを開始する方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 2ce8d7e3-bc5d-4d61-8ab8-e8f61df40675
 ms.service: multiple
 ms.workload: na
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
 ms.author: brenduns
-ms.reviewer: 
+ms.reviewer: ''
 ms.openlocfilehash: 878bbbfe8fafce8c5d7c18bd0ac6f848e4513e03
 ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29385349"
 ---
 # <a name="paas-services-for-azure-stack"></a>Azure Stack 用の PaaS サービス
 

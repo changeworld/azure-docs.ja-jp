@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL でのサービスのパラメーターの構成"
-description: "この記事では、Azure CLI コマンド ラインを使って Azure Database for PostgreSQL のサービス パラメーターを構成する方法について説明します。"
+title: Azure Database for PostgreSQL でのサービスのパラメーターの構成
+description: この記事では、Azure CLI コマンド ラインを使って Azure Database for PostgreSQL のサービス パラメーターを構成する方法について説明します。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -15,6 +15,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691395"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 コマンド ライン インターフェイス (Azure CLI) を使用して、Azure PostgreSQL サーバーの構成パラメーターを一覧表示、表示、更新できます。 エンジン構成のサブセットは、サーバーレベルで公開され、変更が可能です。 
