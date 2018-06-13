@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs"
-description: "Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。"
+title: 'チュートリアル: Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs'
+description: Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "27815815"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 ## <a name="introduction"></a>はじめに
