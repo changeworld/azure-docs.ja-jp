@@ -1,9 +1,9 @@
 ---
-title: "GitHub からデプロイされる関数を Azure で作成する | Microsoft Docs"
-description: "Azure Functions を使用して、関数アプリを作成し、GitHub リポジトリから関数コードをデプロイします。"
+title: GitHub からデプロイされる関数を Azure で作成する | Microsoft Docs
+description: Azure Functions を使用して、関数アプリを作成し、GitHub リポジトリから関数コードをデプロイします。
 services: functions
 ms.service: functions
-keywords: 
+keywords: ''
 ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842730"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる関数アプリを Azure で作成する
 

@@ -1,10 +1,10 @@
 ---
-title: "Jenkins を使用した Web アプリの Azure へのデプロイ | Microsoft Docs"
-description: "Jenkins と Docker を使用して、GitHub から Azure App Service に Java Web アプリの継続的インテグレーションを設定します。"
+title: Jenkins を使用した Web アプリの Azure へのデプロイ | Microsoft Docs
+description: Jenkins と Docker を使用して、GitHub から Azure App Service に Java Web アプリの継続的インテグレーションを設定します。
 author: rloutlaw
 manager: douge
 ms.service: jenkins
-ms.search.scope: 
+ms.search.scope: ''
 ms.devlang: java
 ms.topic: article
 ms.workload: web
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29853001"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Jenkins による Azure App Service への継続的インテグレーションとデプロイの設定
 

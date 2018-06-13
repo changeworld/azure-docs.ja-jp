@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack でパブリック IP アドレスの使用量を表示する | Microsoft Docs"
-description: "管理者は、リージョン内のパブリック IP アドレスの使用量を表示できます。"
+title: Azure Stack でパブリック IP アドレスの使用量を表示する | Microsoft Docs
+description: 管理者は、リージョン内のパブリック IP アドレスの使用量を表示できます。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0f77be49-eafe-4886-8c58-a17061e8120f
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742460"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
 

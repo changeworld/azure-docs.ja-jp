@@ -1,14 +1,14 @@
 ---
-title: "Azure Batch プールの VM サイズを選択する | Microsoft Docs"
-description: "Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法"
+title: Azure Batch プールの VM サイズを選択する | Microsoft Docs
+description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29763946"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 

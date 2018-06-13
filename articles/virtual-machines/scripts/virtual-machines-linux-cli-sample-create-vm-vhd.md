@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI のサンプル スクリプト - VHD を使用した VM の作成 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - 仮想ハード ディスクを使用して VM を作成します。"
+title: Azure CLI のサンプル スクリプト - VHD を使用した VM の作成 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - 仮想ハード ディスクを使用して VM を作成します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: allclark
 manager: douge
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29849343"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>仮想ハード ディスクを使用した VM の作成
 

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246289"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して基本的な仮想マシン スケール セットを作成する
 このスクリプトは、Windows Server 2016 を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP で VM インスタンスにアクセスできるようになります。

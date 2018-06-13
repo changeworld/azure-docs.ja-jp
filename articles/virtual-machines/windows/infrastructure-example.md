@@ -21,6 +21,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809871"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワーク、およびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -53,7 +54,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 
 * Adventure Works Cycles は、プレフィックスとして **[IT ワークロード]-[場所]-[Azure リソース]** を使用します。
   * たとえば、"**azos**" (Azure Online Store) は IT ワークロード名であり、"**use**" (米国東部 2) は場所です。
-* 仮想ネットワークは、AZOS-USE-VN**[番号]** を使用します。
+* 仮想ネットワークは、AZOS-USE-VN **[番号]** を使用します。
 * 可用性セットは、azos-use-as-**[ロール]** を使用します。
 * 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
 

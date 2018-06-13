@@ -4,7 +4,7 @@
 
 ### <a name="configure-redirect-url"></a>リダイレクト URL の構成
 
-[`Redirect URL`] フィールドを Web サーバーに基づく index.html ページの URL に構成し、*[更新]*をクリックします。
+[`Redirect URL`] フィールドを Web サーバーに基づく index.html ページの URL に構成し、*[更新]* をクリックします。
 
 
 > #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>Visual Studio で、リダイレクト URL を取得する手順

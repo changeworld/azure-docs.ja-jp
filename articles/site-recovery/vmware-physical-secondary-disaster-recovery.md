@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery を使用して VMware VM または物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする | Microsoft Docs"
-description: "Azure Site Recovery を使用して、セカンダリ サイトへの VMware VM または Windows/Linux 物理サーバーのディザスター リカバリーをセットアップする方法を説明します。"
+title: Azure Site Recovery を使用して VMware VM または物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする | Microsoft Docs
+description: Azure Site Recovery を使用して、セカンダリ サイトへの VMware VM または Windows/Linux 物理サーバーのディザスター リカバリーをセットアップする方法を説明します。
 services: site-recovery
 author: nsoneji
 manager: gauarvd
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852219"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -38,7 +39,7 @@ ms.lasthandoff: 03/09/2018
 レプリケート対象とレプリケート場所を選択します。
 
 1. **[Site Recovery]** > **[インフラストラクチャの準備]** > **[保護の目標]** の順にクリックします。
-2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]**をクリックします
+2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]** をクリックします
 3. **[Scout のセットアップ]** で、InMage Scout 8.0.1 GA ソフトウェアと登録キーをダウンロードします。 すべてのコンポーネントのセットアップ ファイルは、ダウンロードした .zip ファイルに含まれています。
 
 ## <a name="download-and-install-component-updates"></a>コンポーネント更新プログラムのダウンロードとインストール

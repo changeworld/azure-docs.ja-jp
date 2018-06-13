@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29845657"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
 最初に、Azure に Virtual Network (VNet) を設定します。 次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNet に追加します。 次に、事前に作成した VNet に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。

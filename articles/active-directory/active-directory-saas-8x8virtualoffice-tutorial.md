@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>チュートリアル: Azure Active Directory と 8x8 Virtual Office の統合
 

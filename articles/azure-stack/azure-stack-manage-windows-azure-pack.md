@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack からの Windows Azure Pack 仮想マシンの管理 | Microsoft Docs"
-description: "Azure Stack 内のユーザー ポータルから Windows Azure Pack (WAP) VM を管理する方法について説明します。"
+title: Azure Stack からの Windows Azure Pack 仮想マシンの管理 | Microsoft Docs
+description: Azure Stack 内のユーザー ポータルから Windows Azure Pack (WAP) VM を管理する方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 213c2792-d404-4b44-8340-235adf3f8f0b
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29735826"
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Azure Stack からの Windows Azure Pack 仮想マシンの管理
 

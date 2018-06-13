@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery でのフェールバック | Microsoft Docs"
-description: "この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用してオンプレミスにフェールバックする際に考慮すべき注意事項を示します。"
+title: Azure Site Recovery でのフェールバック | Microsoft Docs
+description: この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用してオンプレミスにフェールバックする際に考慮すべき注意事項を示します。
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29803554"
 ---
 # <a name="overview-of-failback"></a>フェールバックの概要
 

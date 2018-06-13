@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30840907"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 

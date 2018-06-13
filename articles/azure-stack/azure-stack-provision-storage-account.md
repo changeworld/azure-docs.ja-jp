@@ -1,8 +1,8 @@
 ---
-title: "Azure Stack のストレージ アカウントについて | Microsoft Docs"
-description: "Azure Stack のストレージ アカウントの作成方法について説明します。"
+title: Azure Stack のストレージ アカウントについて | Microsoft Docs
+description: Azure Stack のストレージ アカウントの作成方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733725"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack のストレージ アカウント
 ストレージ アカウントには、BLOB や Table service、およびストレージ データ オブジェクトの一意の名前空間が含まれます。 既定では、アカウントのデータはストレージ アカウント所有者だけが使用できます。
