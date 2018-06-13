@@ -1,8 +1,8 @@
 ---
-title: "Operations Management Suite (OMS) との統合 | Microsoft Docs"
-description: "OMS の標準機能を使用するだけでなく、他の管理アプリケーションおよびサービスと統合して、ハイブリッドの管理環境を提供したり、環境に固有のカスタム管理シナリオを提供したり、お客様用のカスタム管理エクスペリエンスを提供したりすることができます。  この記事では、OMS と統合するさまざまなオプションおよび詳細な技術情報を提供する記事へのリンクを示します。"
+title: Operations Management Suite (OMS) との統合 | Microsoft Docs
+description: OMS の標準機能を使用するだけでなく、他の管理アプリケーションおよびサービスと統合して、ハイブリッドの管理環境を提供したり、環境に固有のカスタム管理シナリオを提供したり、お客様用のカスタム管理エクスペリエンスを提供したりすることができます。  この記事では、OMS と統合するさまざまなオプションおよび詳細な技術情報を提供する記事へのリンクを示します。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039467"
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Operations Management Suite (OMS) との統合
 Operations Management Suite は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  OMS の標準機能を使用するだけでなく、他の管理アプリケーションおよびサービスと統合して、ハイブリッドの管理環境を提供したり、環境に固有のカスタム管理シナリオを提供したり、お客様用のカスタム管理エクスペリエンスを提供したりすることができます。  この記事では、OMS サービスと統合するさまざまなオプションおよび詳細な技術情報を提供する記事へのリンクを示します。 

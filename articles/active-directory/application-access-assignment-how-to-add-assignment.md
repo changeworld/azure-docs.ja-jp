@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068424"
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>アプリケーションにユーザーとグループを割り当てる方法
 

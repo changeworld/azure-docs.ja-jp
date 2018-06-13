@@ -1,6 +1,6 @@
 ---
-title: "クラウド サービスの複数の VIP"
-description: "MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法"
+title: クラウド サービスの複数の VIP
+description: MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020847"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
 

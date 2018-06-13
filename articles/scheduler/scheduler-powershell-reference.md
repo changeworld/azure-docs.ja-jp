@@ -1,11 +1,11 @@
 ---
-title: "Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
-description: "Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
+title: Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
+description: Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039837"
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
 次のテーブルでは、Azure Scheduler の主なコマンドレットを説明し、各コマンドレットのリファレンス ページへのリンクを示します。

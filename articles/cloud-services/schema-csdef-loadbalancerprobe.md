@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360055"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services の定義: LoadBalancerProbe スキーマ
 ロード バランサー プローブは、ロール インスタンスのエンドポイントと UDP エンドポイントに対して利用者が定義する正常性プローブです。 `LoadBalancerProbe` はスタンドアロン要素ではなく、サービス定義ファイルで Web ロールまたは worker ロールと組み合わされます。 1 つの `LoadBalancerProbe` を複数のロールで使用することができます。

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918440"
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Azure CLI 1.0 による作成時に cloud-init を使用して Linux VM をカスタマイズする
 この記事では、ホスト名の設定、インストールされているパッケージの更新、およびユーザー アカウントの管理を行う cloud-init スクリプトを作成する方法について説明します。  cloud-init スクリプトは、VM の作成時に Azure CLI から呼び出します。  この記事では以下が必要です。

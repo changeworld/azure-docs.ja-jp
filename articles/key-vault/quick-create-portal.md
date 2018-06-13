@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068882"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用した Key Vault の作成
 

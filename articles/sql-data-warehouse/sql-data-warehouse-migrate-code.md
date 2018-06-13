@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527455"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>SQL Data Warehouse への SQL コードの移行
 この記事では、他のデータベースから SQL Data Warehouse にコードを移行するときに一般に行う必要があるコードの変更について説明します。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。

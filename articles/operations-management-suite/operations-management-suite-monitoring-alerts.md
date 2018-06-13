@@ -1,8 +1,8 @@
 ---
-title: "Microsoft 監視製品のアラート管理 | Microsoft Docs"
-description: "アラートには、管理者の注意が必要な問題が示されます。  この記事では、System Center Operations Manager (SCOM) と Log Analytics におけるアラートの作成と管理の方法の違いについて説明し、ハイブリッド アラート管理戦略で 2 つの製品を活用するためのベスト プラクティスを紹介します。"
+title: Microsoft 監視製品のアラート管理 | Microsoft Docs
+description: アラートには、管理者の注意が必要な問題が示されます。  この記事では、System Center Operations Manager (SCOM) と Log Analytics におけるアラートの作成と管理の方法の違いについて説明し、ハイブリッド アラート管理戦略で 2 つの製品を活用するためのベスト プラクティスを紹介します。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039287"
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>Microsoft の監視製品を使用したアラートの管理
 アラートには、管理者の注意が必要な問題が示されます。  System Center Operations Manager (SCOM) と、Operations Management Suite (OMS) の Log Analytics は、アラートの生成方法、アラートの管理と分析の方法、重要な問題が検出された場合の通知方法に明確な相違点があります。

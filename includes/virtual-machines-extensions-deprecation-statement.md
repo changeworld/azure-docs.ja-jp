@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33953736"
 ---
 > [!IMPORTANT]
 > この拡張は現在使用されておらず、情報目的でのみここに記録されています。 自分のデプロイ内で引き続きこの拡張を使用することはお勧めしません。 

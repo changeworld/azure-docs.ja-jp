@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969204"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。

@@ -21,6 +21,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072285"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-a-linux-virtual-machine-in-azure"></a>Azure 上の Linux 仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../../includes/virtual-machines-common-troubleshoot-app-connection.md)]

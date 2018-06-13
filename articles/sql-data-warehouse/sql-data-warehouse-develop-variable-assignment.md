@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598746"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での変数の代入
 ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
