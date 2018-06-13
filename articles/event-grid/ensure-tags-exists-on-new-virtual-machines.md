@@ -1,12 +1,12 @@
 ---
-title: "Azure Automation を Event Grid と統合する | Microsoft Docs"
-description: "新しい VM を作成するときに自動的にタグを追加し、Microsoft Teams に通知を送信する方法について説明します。"
-keywords: "Automation, Runbook, チーム, Event Grid, 仮想マシン, VM"
+title: Azure Automation を Event Grid と統合する | Microsoft Docs
+description: 新しい VM を作成するときに自動的にタグを追加し、Microsoft Teams に通知を送信する方法について説明します。
+keywords: Automation, Runbook, チーム, Event Grid, 仮想マシン, VM
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: eamonoreilly
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: automation
 ms.devlang: na
 ms.topic: tutorial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26349071"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Azure Automation を Event Grid および Microsoft Teams と統合する
 

@@ -1,11 +1,11 @@
 ---
-title: "ハイブリッド接続の作成と管理 | Microsoft Docs"
-description: "ハイブリッド接続の作成、接続の管理、Hybrid Connection Manager のインストールの方法について説明します。 MABS、WABS"
+title: ハイブリッド接続の作成と管理 | Microsoft Docs
+description: ハイブリッド接続の作成、接続の管理、Hybrid Connection Manager のインストールの方法について説明します。 MABS、WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aac0546b-3bae-41e0-b874-583491a395ea
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628847"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>ハイブリッド接続の作成と管理
 

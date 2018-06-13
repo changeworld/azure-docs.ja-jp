@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache を監視する方法 | Microsoft Docs"
-description: "Azure Redis Cache のインスタンスの正常性とパフォーマンスを監視する方法を学習する"
+title: Azure Redis Cache を監視する方法 | Microsoft Docs
+description: Azure Redis Cache のインスタンスの正常性とパフォーマンスを監視する方法を学習する
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910651"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Azure Redis Cache の監視方法
 Azure Redis Cache は [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するためのオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。
@@ -60,7 +61,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>キャッシュ メトリックをエクスポートする
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの**[リテンション期間 (日数)]** ポリシーを指定します。 
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive)され、その後削除されます。 キャッシュ メトリックを 30 日を超えて保持するには、[ストレージ アカウントを指定](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)し、対象のキャッシュ メトリックの **[リテンション期間 (日数)]** ポリシーを指定します。 
 
 対象のキャッシュ メトリックのストレージ アカウントを構成するには:
 

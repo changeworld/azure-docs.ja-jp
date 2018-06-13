@@ -1,11 +1,11 @@
 ---
-title: "Azure Multi-Factor Authentication のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "簡単なサインイン プロセスを提供するさまざまな検証方法で多要素認証をデプロイする方法について説明します。 チュートリアルや SDK などを提供します。"
+title: Azure Multi-Factor Authentication のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: 簡単なサインイン プロセスを提供するさまざまな検証方法で多要素認証をデプロイする方法について説明します。 チュートリアルや SDK などを提供します。
 services: multi-factor-authentication
 author: czeumault
 manager: mtillman
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26630820"
 ---
 # <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication のドキュメント
 

@@ -1,12 +1,12 @@
 ---
-title: "Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する | Microsoft Docs"
-description: "このページでは、Office 365 でフェデレーション信頼の SHA アルゴリズムを変更するガイドラインについて説明します。"
-keywords: "SHA1、SHA256、O365、フェデレーション、aadconnect、adfs、ad fs、sha の変更、フェデレーション信頼、証明書利用者信頼"
+title: Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する | Microsoft Docs
+description: このページでは、Office 365 でフェデレーション信頼の SHA アルゴリズムを変更するガイドラインについて説明します。
+keywords: SHA1、SHA256、O365、フェデレーション、aadconnect、adfs、ad fs、sha の変更、フェデレーション信頼、証明書利用者信頼
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598963"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する
 ## <a name="overview"></a>概要
@@ -33,10 +34,10 @@ Active Directory フェデレーション サービス (AD FS) から Microsoft 
 
 ### <a name="ad-fs-management-console"></a>AD FS 管理コンソール
 1. プライマリ AD FS サーバーで AD FS 管理コンソールを開きます。
-2. AD FS ノードを展開し、 **[証明書利用者信頼]**をクリックします。
-3. Office 365/Azure 証明書利用者信頼を右クリックし、 **[プロパティ]**を選択します。
+2. AD FS ノードを展開し、 **[証明書利用者信頼]** をクリックします。
+3. Office 365/Azure 証明書利用者信頼を右クリックし、 **[プロパティ]** を選択します。
 4. **[詳細設定]** タブを選択し、セキュア ハッシュ アルゴリズムとして SHA 256 を選択します。
-5. **[OK]**をクリックします。
+5. **[OK]** をクリックします。
 
 ![SHA256 署名アルゴリズム - MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
 

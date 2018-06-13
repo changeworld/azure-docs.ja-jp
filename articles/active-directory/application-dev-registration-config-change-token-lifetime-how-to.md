@@ -1,11 +1,11 @@
 ---
-title: "独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法 | Microsoft Docs"
-description: "Azure AD で開発しているアプリケーションのトークンの有効期間ポリシーを更新する方法"
+title: 独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法 | Microsoft Docs
+description: Azure AD で開発しているアプリケーションのトークンの有効期間ポリシーを更新する方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614378"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法
 

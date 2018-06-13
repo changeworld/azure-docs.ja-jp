@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack での正常性およびアラートの監視 | Microsoft Docs"
-description: "Azure Stack で正常性およびアラートを監視する方法を説明します。"
+title: Azure Stack での正常性およびアラートの監視 | Microsoft Docs
+description: Azure Stack で正常性およびアラートを監視する方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26640380"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 
@@ -48,7 +49,7 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
  
 ## <a name="view-alerts"></a>アラートを表示する
 
-各 Azure Stack リージョンのアクティブなアラートのリストは、**[Region management]** \(リージョン管理) ブレードから直接使用できます。 既定の構成の最初のタイルは**[Alerts]** (アラート) タイルで、リージョンの重大アラートと警告アラートの概要が表示されます。 アラート タイルは、このブレードの他のタイルと同様、ダッシュボードに固定してすばやくアクセスできます。   
+各 Azure Stack リージョンのアクティブなアラートのリストは、**[Region management]** \(リージョン管理) ブレードから直接使用できます。 既定の構成の最初のタイルは **[Alerts]** (アラート) タイルで、リージョンの重大アラートと警告アラートの概要が表示されます。 アラート タイルは、このブレードの他のタイルと同様、ダッシュボードに固定してすばやくアクセスできます。   
 
 ![警告が表示された [Alerts] \(アラート) タイル](media/azure-stack-monitor-health/image3.png)
 

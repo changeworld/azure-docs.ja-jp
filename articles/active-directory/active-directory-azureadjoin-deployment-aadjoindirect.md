@@ -1,11 +1,11 @@
 ---
-title: "Azure AD 参加の使用シナリオとデプロイに関する考慮事項 | Microsoft Docs"
-description: "管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明します。 また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。"
+title: Azure AD 参加の使用シナリオとデプロイに関する考慮事項 | Microsoft Docs
+description: 管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明します。 また、Azure AD 参加を使用するさまざまな実際のシナリオについても説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26602433"
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Azure AD 参加の使用シナリオとデプロイに関する考慮事項
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Azure AD 参加の使用シナリオ

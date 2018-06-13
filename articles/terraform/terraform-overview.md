@@ -1,8 +1,8 @@
 ---
-title: "Azure で Terraform を使用する"
-description: "Terraform を使用した Azure インフラストラクチャのバージョン管理およびデプロイの概要"
+title: Azure で Terraform を使用する
+description: Terraform を使用した Azure インフラストラクチャのバージョン管理およびデプロイの概要
 ms.service: virtual-machines-linux
-keywords: "Terraform, DevOps, 概要, 計画, 適用, 自動化"
+keywords: Terraform, DevOps, 概要, 計画, 適用, 自動化
 author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
@@ -12,6 +12,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26364472"
 ---
 # <a name="terraform-with-azure"></a>Azure での Terraform
 
