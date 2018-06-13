@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949533"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics のビュー デザイナー 視覚化パーツのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペースからのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。

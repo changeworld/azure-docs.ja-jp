@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29938646"
 ---
 # <a name="portals-you-will-need"></a>必要なポータル
 プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure Portal の概要を、やり取りする順番で示します。                                                                            
