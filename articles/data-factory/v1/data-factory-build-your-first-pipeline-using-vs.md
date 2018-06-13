@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31404873"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -292,7 +293,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 ### <a name="publishdeploy-data-factory-entities"></a>Data Factory エンティティの発行/デプロイ
 この手順では、プロジェクト内で Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) を Azure Data Factory サービスに発行します。 発行プロセス中に、データ ファクトリの名前を指定します。 
 
-1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]**をクリックします。
+1. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** をクリックします。
 2. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
 3. 次のダイアログ ボックスが表示されます。
 
@@ -347,7 +348,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
    2. データ ファクトリの一覧から、データ ファクトリの名前 (例: **DataFactoryUsingVS09152016**) を選択します。
    
        ![Select your data factory](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
-2. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]**をクリックします。
+2. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
 
     ![Diagram tile](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
 3. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。

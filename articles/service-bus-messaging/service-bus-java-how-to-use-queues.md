@@ -1,6 +1,6 @@
 ---
-title: "Java での Azure Service Bus キューの使用方法 | Microsoft Docs"
-description: "Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Java で記述されています。"
+title: Java での Azure Service Bus キューの使用方法 | Microsoft Docs
+description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Java で記述されています。
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23044257"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Java で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

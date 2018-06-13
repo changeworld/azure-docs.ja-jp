@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30832100"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要

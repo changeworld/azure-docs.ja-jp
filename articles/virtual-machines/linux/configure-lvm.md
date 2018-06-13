@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30912231"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure で Linux VM の LVM を構成する
 このドキュメントでは、Azure 仮想マシンに論理ボリューム マネージャー (LVM) を構成する方法を説明します。 仮想マシンにアタッチされているすべてのディスクに LVM を構成できますが、既定では、ほとんどのクラウド イメージでは OS ディスクに構成された LVM はありません。 これは、ディストリビューションと種類が同じ別の VM に OS ディスクがアタッチされている場合のボリューム グループの重複に伴う問題、つまり回復シナリオにおける問題を予防するためです。 したがって、LVM は、データ ディスクでのみ使用することをお勧めします。

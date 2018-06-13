@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23059847"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
 バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。 CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。 CORS について詳しくは、[CORS の仕様](http://www.w3.org/TR/cors/)をご覧ください。

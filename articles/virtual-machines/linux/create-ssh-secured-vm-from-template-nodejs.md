@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905553"
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Azure CLI 1.0 と Azure Resource Manager テンプレートを使用して Linux VM を作成する方法
 この記事では、Azure CLI 1.0 と Azure Resource Manager テンプレートを使用してすばやく Linux 仮想マシンをデプロイする方法を説明します。 この記事では以下が必要です。

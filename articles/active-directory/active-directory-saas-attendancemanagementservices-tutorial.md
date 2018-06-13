@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル: Azure Active Directory と Attendance Management Services の統合
 

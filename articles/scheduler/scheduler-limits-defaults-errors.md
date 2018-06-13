@@ -1,11 +1,11 @@
 ---
-title: "Scheduler の制限と既定値"
-description: "Scheduler の制限と既定値"
+title: Scheduler の制限と既定値
+description: Scheduler の制限と既定値
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23043167"
 ---
 # <a name="scheduler-limits-and-defaults"></a>Scheduler の制限と既定値
 ## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Scheduler のクォータ、制限、既定値、調整

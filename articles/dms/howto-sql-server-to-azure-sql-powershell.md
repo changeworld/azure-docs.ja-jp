@@ -16,6 +16,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905376"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。

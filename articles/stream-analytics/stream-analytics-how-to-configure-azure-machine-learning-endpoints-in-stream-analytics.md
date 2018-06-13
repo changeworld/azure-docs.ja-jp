@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911203"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Stream Analytics への Machine Learning の統合
 Stream Analytics では、Azure Machine Learning のエンドポイントを呼び出す、ユーザー定義の関数をサポートしています。 この機能でサポートされている REST API の詳細については、「 [Stream Analytics の REST API ライブラリ](https://msdn.microsoft.com/library/azure/dn835031.aspx)」を参照してください。 この資料では、Stream Analytics にこの機能を正しく実装するために必要な補足的な情報を示します。 チュートリアルも用意しており、 [ここ](stream-analytics-machine-learning-integration-tutorial.md)から確認できます。

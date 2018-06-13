@@ -1,11 +1,11 @@
 ---
-title: "音声および SMS に Twilio を使用する方法 (Ruby) | Microsoft Docs"
-description: "Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Ruby で記述されています。"
-services: 
+title: 音声および SMS に Twilio を使用する方法 (Ruby) | Microsoft Docs
+description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Ruby で記述されています。
+services: ''
 documentationcenter: ruby
 author: devinrader
 manager: twilio
-editor: 
+editor: ''
 ms.assetid: 60e512f6-fa47-47c0-aedc-f19bb72a1158
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039887"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。

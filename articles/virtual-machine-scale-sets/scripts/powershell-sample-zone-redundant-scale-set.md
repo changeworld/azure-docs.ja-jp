@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31413643"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用してゾーン冗長仮想マシン スケール セットを作成する
 このスクリプトでは、複数の可用性ゾーンにわたって Windows Server 2016 を実行する仮想マシン スケール セットを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31401025"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>発行済みアプリケーションのインストール - StreamSets Data Collector
 

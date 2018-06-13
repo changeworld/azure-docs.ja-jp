@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841266"
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>負荷分散セットを使用して Linux の MySQL をクラスター化する
 > [!IMPORTANT]

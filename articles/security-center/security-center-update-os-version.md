@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center で OS バージョンを更新する | Microsoft Docs"
-description: "この記事では、\"**OS バージョンの更新**\" という Azure Security Center の推奨事項を実装する方法について説明します。"
+title: Azure Security Center で OS バージョンを更新する | Microsoft Docs
+description: この記事では、"**OS バージョンの更新**" という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040667"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Azure Security Center で OS バージョンを更新する
 Azure Security Center では、クラウド サービス内の仮想マシン (VM) で使用しているオペレーティング システム (OS) の最新バージョンが提供されている場合、そのバージョンに更新するよう推奨されます。  監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。
@@ -31,7 +32,7 @@ Azure Security Center では、クラウド サービス内の仮想マシン (V
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[OS バージョンの更新]** を選択します。
    ![OS バージョンの更新][1]
-2. これにより、 **[Update OS version (OS バージョンの更新)]**ブレードが開きます。 このブレードの手順に従い、OS バージョンを更新します。
+2. これにより、 **[Update OS version (OS バージョンの更新)]** ブレードが開きます。 このブレードの手順に従い、OS バージョンを更新します。
 
 ## <a name="see-also"></a>関連項目
 この記事では、"OS バージョンの更新" という Security Center の推奨事項を実装する方法について説明しました。 クラウド サービス、およびクラウド サービスの OS バージョンの更新について詳しくは、以下の記事を参照してください。

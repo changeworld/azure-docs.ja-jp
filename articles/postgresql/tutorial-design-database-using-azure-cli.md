@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31417767"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for PostgreSQL を設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。

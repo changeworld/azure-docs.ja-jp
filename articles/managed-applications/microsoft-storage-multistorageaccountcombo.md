@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261158"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI 要素
 名前が共通のプレフィックスで始まる複数のストレージ アカウントを作成するコントロールのグループです。

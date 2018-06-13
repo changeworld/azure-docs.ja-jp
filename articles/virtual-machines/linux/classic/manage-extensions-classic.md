@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841454"
 ---
 # <a name="manage-virtual-machine-extensions"></a>仮想マシン拡張機能の管理
 Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。

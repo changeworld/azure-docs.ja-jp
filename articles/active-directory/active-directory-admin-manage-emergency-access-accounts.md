@@ -15,6 +15,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30901107"
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する 
 

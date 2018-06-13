@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31405706"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213148"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
 Service Fabric クラスター リソース マネージャーは、動的な負荷の変更、ノードやサービスの追加や削除への応答をサポートしています。 また、制約違反を自動的に修正し、必要に応じてクラスターを再調整することもできます。 このような操作はどのくらいの頻度で実行されるでしょうか。また、何によってトリガーされるでしょうか。
