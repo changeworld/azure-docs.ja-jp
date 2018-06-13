@@ -1,8 +1,8 @@
 ---
-title: "Azure Cloud Shell で Bash から Terraform を使ってデプロイする | Microsoft Docs"
-description: "Azure Cloud Shell で Bash から Terraform を使ってデプロイする"
+title: Azure Cloud Shell で Bash から Terraform を使ってデプロイする | Microsoft Docs
+description: Azure Cloud Shell で Bash から Terraform を使ってデプロイする
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: tomarcher
 manager: routlaw
 tags: azure-cloud-shell
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386522"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell で Bash から Terraform を使ってデプロイする
 この記事では、[Terraform AzureRM プロバイダー](https://www.terraform.io/docs/providers/azurerm/index.html)を使ってリソース グループを作成する手順について説明します。 

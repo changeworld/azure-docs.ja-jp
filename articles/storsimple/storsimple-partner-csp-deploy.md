@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure StorSimple とクラウド ソリューション プロバイダー プログラムの概要 | Microsoft Docs"
-description: "StorSimple と StorSimple パートナー向け CSP に関する概要。"
+title: Microsoft Azure StorSimple とクラウド ソリューション プロバイダー プログラムの概要 | Microsoft Docs
+description: StorSimple と StorSimple パートナー向け CSP に関する概要。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109580"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム用の StorSimple Virtual Array をデプロイする
 
@@ -39,7 +40,7 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
 顧客を追加すると、サブスクリプションが自動的に作成されます。 顧客を追加 (およびサブスクリプションを自動的に作成) するには、Microsoft Partners Web で次の手順を実行します。
 
-1. [パートナー センター](http://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]**をクリックします。
+1. [パートナー センター](http://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]** をクリックします。
 
      ![パートナー センターのダッシュボード](./media/storsimple-partner-csp-deploy/image1.png)
                               
@@ -51,7 +52,7 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
     ![サブスクリプション情報のレビュー](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. 情報をレビューし、**[送信]**をクリックします。
+4. 情報をレビューし、**[送信]** をクリックします。
 
     ![サブスクリプションを送信する](./media/storsimple-partner-csp-deploy/image4.png)
 
@@ -76,7 +77,7 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
 場合によっては、既存の顧客にサブスクリプションを追加することが必要になります。 既存の顧客にサブスクリプションを追加するには、Microsoft Partners Web で次の手順を実行します。
 
-1. [パートナー センター](http://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]**をクリックします。
+1. [パートナー センター](http://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]** をクリックします。
 
      ![パートナー センターのダッシュボード](./media/storsimple-partner-csp-deploy/image1.png)
                               

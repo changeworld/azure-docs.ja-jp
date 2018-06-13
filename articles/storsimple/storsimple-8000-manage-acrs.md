@@ -1,12 +1,12 @@
 ---
-title: "StorSimple でのアクセス制御レコードの管理 | Microsoft Docs"
-description: "ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
+title: StorSimple でのアクセス制御レコードの管理 | Microsoft Docs
+description: ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108340"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>StorSimple Manager サービスを使用してアクセス制御レコードを管理する
 
@@ -90,7 +91,7 @@ ACR を編集するには、StorSimple デバイス マネージャー サービ
 
     ![アクセス制御レコードの編集](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. [ **Save**] をクリックします。 確認を求められたら、 **[はい]**をクリックします。 
+4. [ **Save**] をクリックします。 確認を求められたら、 **[はい]** をクリックします。 
 
     ![アクセス制御レコードの編集](./media/storsimple-8000-manage-acrs/editacr3.png)
 

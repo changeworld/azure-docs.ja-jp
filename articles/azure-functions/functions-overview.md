@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions の概要 | Microsoft Docs"
-description: "Azure Functions を使用して非同期ワークロードを最適化する方法を簡単に説明します。"
+title: Azure Functions の概要 | Microsoft Docs
+description: Azure Functions を使用して非同期ワークロードを最適化する方法を簡単に説明します。
 services: functions
 documentationcenter: na
 author: mattchenderson
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.service: functions
 ms.devlang: multiple
@@ -22,6 +22,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24877903"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
 Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、F#、Node.js、Java、PHP などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure で[サーバー不要](https://azure.microsoft.com/overview/serverless-computing/)のアプリケーションを作成できます。

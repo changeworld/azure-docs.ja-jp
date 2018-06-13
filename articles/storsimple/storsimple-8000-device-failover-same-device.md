@@ -1,12 +1,12 @@
 ---
-title: "StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs"
-description: "StorSimple デバイスを同じデバイスにフェールオーバーする方法について説明します。"
+title: StorSimple での 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー | Microsoft Docs
+description: StorSimple デバイスを同じデバイスにフェールオーバーする方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108200"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
     ![新しく登録されたデバイスがオンライン](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
 
-6. 古いデバイス (状態はオフライン) を選択し、コマンド バーの **[フェールオーバー]**をクリックします。 **[フェールオーバー]** ブレードで、ソース デバイスとして古いデバイスを選択し、ターゲット デバイスとして新しく登録したデバイスを指定します。
+6. 古いデバイス (状態はオフライン) を選択し、コマンド バーの **[フェールオーバー]** をクリックします。 **[フェールオーバー]** ブレードで、ソース デバイスとして古いデバイスを選択し、ターゲット デバイスとして新しく登録したデバイスを指定します。
 
     ![フェールオーバーの概要](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 

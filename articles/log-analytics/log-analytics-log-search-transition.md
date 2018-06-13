@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "25958173"
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Azure Log Analytics の新しいクエリ言語への移行
 最近、Log Analytics は新しいクエリ言語を実装しました。  この記事は、従来のクエリ言語を使い慣れていて、ある程度のサポートが必要な方を対象に、Log Analytics のこの言語への移行を支援する内容となっています。

@@ -1,12 +1,12 @@
 ---
-title: "パートナー向けの Microsoft Azure StorSimple とクラウド ソリューション プロバイダー プログラムについてよく寄せられる質問 | Microsoft Docs"
-description: "パートナー向けの StorSimple と CSP について、一般的な質問にお答えします。"
+title: パートナー向けの Microsoft Azure StorSimple とクラウド ソリューション プロバイダー プログラムについてよく寄せられる質問 | Microsoft Docs
+description: パートナー向けの StorSimple と CSP について、一般的な質問にお答えします。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109060"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple: よく寄せられる質問
 

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 8000 シリーズのハードウェア コンポーネントと状態 | Microsoft Docs"
-description: "StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。"
+title: StorSimple 8000 シリーズのハードウェア コンポーネントと状態 | Microsoft Docs
+description: StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110060"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>StorSimple デバイス マネージャー サービスを使用してハードウェア コンポーネントと状態を監視する
 ## <a name="overview"></a>概要
@@ -45,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="monitor-the-hardware-status"></a>ハードウェアの状態を監視する
 デバイス コンポーネントのハードウェアの状態を表示するには、次の手順を実行します。
 
-1. **[デバイス]**に移動し、特定の StorSimple デバイスを選択します。 **[モニター]、[ハードウェアの正常性]** の順に移動します。
+1. **[デバイス]** に移動し、特定の StorSimple デバイスを選択します。 **[モニター]、[ハードウェアの正常性]** の順に移動します。
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 10/11/2017
    * **赤色の感嘆符**: **[失敗]** 状態にある、失敗したコンポーネントを示します。
    * **白地に黒色のテキスト** : 存在しないコンポーネントを示します。
    
-   次のスクリーン ショットは、コンポーネントの状態が **[OK]**、**[警告]**、および**[失敗]** であるデバイスを示しています。
+   次のスクリーン ショットは、コンポーネントの状態が **[OK]**、**[警告]**、および **[失敗]** であるデバイスを示しています。
        
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 

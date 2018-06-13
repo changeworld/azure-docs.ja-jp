@@ -1,12 +1,12 @@
 ---
-title: "Log Analytics でのユーザーが開始した Azure Automation Runbook アクション | Microsoft Docs"
-description: "この記事では、Log Analytics の検索結果から Automation Runbook をオンデマンドで実行する方法について説明します。"
+title: Log Analytics でのユーザーが開始した Azure Automation Runbook アクション | Microsoft Docs
+description: この記事では、Log Analytics の検索結果から Automation Runbook をオンデマンドで実行する方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394617"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Log Analytics のログ検索結果から Automation Runbook を使用してアクションを実行する
 

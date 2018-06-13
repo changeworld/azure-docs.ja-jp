@@ -9,7 +9,7 @@
 
     ![[スケジュールの管理]](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
-3. **[スケジュールの追加]** ブレードで、スナップショットの種類、バックアップの頻度、リテンション期間、開始日時を変更します。 **[追加]**をクリックします。
+3. **[スケジュールの追加]** ブレードで、スナップショットの種類、バックアップの頻度、リテンション期間、開始日時を変更します。 **[追加]** をクリックします。
 
     ![[スケジュールの管理]](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
