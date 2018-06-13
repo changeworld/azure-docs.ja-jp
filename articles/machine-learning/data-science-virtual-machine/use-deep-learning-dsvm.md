@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 66994dfcd84db1de0ba072e9e3a45e7ec11fcec0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2053ed8cc420183d493097eeb2cd2ad93c82c70c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32167247"
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンの使用
 
@@ -35,7 +36,7 @@ AI 用の ディープ ラーニング VM で提供されるツールはたく�
 
 - [イメージ内で製品を検出するためのエンド ツー エンドのソリューションのビルドのハウツー ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images): イメージの検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの実際のビジネス ドメインに大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
 
-- [PubMed アブストラクトからの名前付きエンティティ抽出](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) このチュートリアルでは、非構造化テキストから薬品名や病名などの名前付きエンティティを抽出する方法について学びます。 1,800 万個の PubMed アブストラクトのテキスト コーパスにカスタマイズした単語を埋め込むようモデルを教育し、そのモデルを使用して、エンティティ抽出のための Long Short-Term Memory (LSTM) 再起型ニュートラル ネットワーク モデルを構築することにより、汎用単語を埋め込んでエンティティを抽出する方法よりも、ドメイン固有の単語を埋め込むモデルの方がパフォーマンスが高いことを証明します。
+- [PubMed アブストラクトからの名前付きエンティティ抽出](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) このチュートリアルでは、非構造化テキストから薬品名や病名などの名前付きエンティティを抽出する方法について学びます。 1,800 万個の PubMed アブストラクトのテキスト コーパスにカスタマイズした単語を埋め込むようモデルを教育し、そのモデルを使用して、エンティティ抽出のための Long Short-Term Memory (LSTM) 再起型ニュートラル ネットワーク モデルを構築することにより、汎用単語を埋め込んでエンティティを抽出する方法よりも、ドメイン固有の単語を埋め込むモデルの方がパフォーマンスが高いことを証明します。
 
 - [音声の深層学習](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するための深層学習モデルの教育方法と、音声データの操作方法の概要について説明します。
 

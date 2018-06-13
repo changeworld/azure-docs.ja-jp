@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796005"
 ---
 # <a name="migrate-your-data"></a>データの移行
 さまざまなソースのデータを、さまざまなツールを使って SQL Data Warehouse に移動することができます。  この目的を果たすうえで、ADF コピー、SSIS、bcp はすべて使用できます。 ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。 これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。

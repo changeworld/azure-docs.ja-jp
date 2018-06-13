@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782681"
 ---
 # <a name="configure-localization"></a>ローカライズを構成する
 Azure Media Clipper は、18 の言語で使用可能です。 ウィジェットの言語を設定するには、初期化中に `language` パラメーターを定義する必要があります。 下記の一覧から、目的の言語コード文字列を渡します。

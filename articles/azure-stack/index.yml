@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 04/23/2018
+  ms.locfileid: "31786538"
 abstract:
   description: Microsoft Azure Stack は、データセンターからの Azure サービスの提供を可能にするハイブリッド クラウド プラットフォームです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure Stack 統合システム インフラストラクチャを管理する方法とサービスを提供する方法を確認してください。<br/><br/>Azure Stack でサービスを使用するかアプリを作成する Azure Stack ユーザーは、<a href="/azure/azure-stack/user">ユーザー ドキュメント</a>を参照してください。<br/><br/>Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイであり、無料でダウンロードして使用できます。この ASDK に興味をお持ちの Azure Stack オペレーターの方は、<a href="/azure/azure-stack/asdk">ASDK のドキュメント</a>をご覧ください。
 sections:

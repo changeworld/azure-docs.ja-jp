@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 04/28/2018
+  ms.locfileid: "32187858"
 abstract:
   description: Azure Virtual Network の使用方法について説明します。 クイック スタート、チュートリアル、サンプルなどで、仮想ネットワークのデプロイ、トラフィックのフィルター処理とルーティングの制御、仮想ネットワークどうしの接続を行う方法を紹介します。
 sections:

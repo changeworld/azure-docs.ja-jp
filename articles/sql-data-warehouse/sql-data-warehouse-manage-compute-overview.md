@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31528496"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのコンピューティングの管理
 Azure SQL Data Warehouse でコンピューティング リソースを管理する方法について説明します。 また、データ ウェアハウスを一時停止してコストを削減したり、データ ウェアハウスをパフォーマンス需要に応じてスケーリングしたりする方法についても説明します。 

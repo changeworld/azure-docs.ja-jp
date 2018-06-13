@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782581"
 ---
 # <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Azure Media Clipper キーボード ショートカットの構成
 Azure Media Clipper では、オプションの `keymap` JSON パラメーターを指定することで、既定のキーボード ショートカットをカスタマイズできます。

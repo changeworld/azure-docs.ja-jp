@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805220"
 ---
 > [!div class="op_single_selector"]
 > * [ポータル](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
