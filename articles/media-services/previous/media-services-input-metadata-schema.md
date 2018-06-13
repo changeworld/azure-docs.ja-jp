@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783821"
 ---
 # <a name="input-metadata"></a>入力メタデータ
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。  タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、&lt;asset_id&gt;_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、&lt;asset_id&gt; は入力資産の AssetId の値です。  

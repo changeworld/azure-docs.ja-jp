@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181822"
 ---
 # <a name="azure-status"></a>Azure の状態
 [Azure の状態](https://azure.microsoft.com/status/)により、Azure サービスの正常性をグローバルに確認できるビューが提供されます。 Azure の状態を利用し、サービスの可用性に関する最新情報を取得できます。 すべてのユーザーが Azure の状態にアクセス可能で、サービスの正常性について報告するすべてのサービスを表示できます。 

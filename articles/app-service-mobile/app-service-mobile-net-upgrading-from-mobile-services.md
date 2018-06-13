@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157046"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>既存の .NET Azure Mobile Service を App Service にアップグレードする
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。

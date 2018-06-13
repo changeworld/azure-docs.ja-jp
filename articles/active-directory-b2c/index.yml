@@ -16,6 +16,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 04/30/2018
+  ms.locfileid: "32308867"
 abstract:
   description: Azure Active Directory (Azure AD) B2C は、アプリケーション使用時の顧客のサインアップ、サインイン、プロファイル管理をカスタマイズして制御できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、同時に顧客の ID を保護します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure AD B2C の使用方法を確認してください。
   aside:

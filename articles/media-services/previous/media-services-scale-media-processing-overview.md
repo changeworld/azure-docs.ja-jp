@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33785851"
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要
 このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。 

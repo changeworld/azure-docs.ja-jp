@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190981"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

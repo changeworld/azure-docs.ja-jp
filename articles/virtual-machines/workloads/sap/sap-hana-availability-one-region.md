@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192800"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性
 この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)内にデプロイできます。 

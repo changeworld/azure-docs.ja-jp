@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792550"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、接続されたソースからデータを収集して Log Analytics ワークスペースに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  Log Analytics のデータは、レコード セットとして格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。

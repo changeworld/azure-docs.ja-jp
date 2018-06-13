@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798711"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 このチュートリアルはシリーズの第 4 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
