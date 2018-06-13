@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery を使用した保護の対象からディスクを除外する | Microsoft Docs"
-description: "Hyper-V から Azure へのレプリケーションで VM ディスクを除外する理由とその方法を説明します。"
+title: Azure Site Recovery を使用した保護の対象からディスクを除外する | Microsoft Docs
+description: Hyper-V から Azure へのレプリケーションで VM ディスクを除外する理由とその方法を説明します。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466838"
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 この記事では、ディスクをレプリケーションから除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。

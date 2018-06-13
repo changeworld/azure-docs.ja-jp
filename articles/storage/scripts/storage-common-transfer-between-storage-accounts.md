@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト サンプル - Windows での AzCopy を使用したストレージ アカウント間での BLOB の移行 | Microsoft Docs"
-description: "AzCopy を使用して、Azure Storage アカウントの BLOB の内容を別のアカウントにコピーします。"
+title: Azure PowerShell スクリプト サンプル - Windows での AzCopy を使用したストレージ アカウント間での BLOB の移行 | Microsoft Docs
+description: AzCopy を使用して、Azure Storage アカウントの BLOB の内容を別のアカウントにコピーします。
 services: storage
 documentationcenter: na
 author: roygara
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "29360719"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Windows での AzCopy を使用したストレージ アカウント間での BLOB の移行
 
